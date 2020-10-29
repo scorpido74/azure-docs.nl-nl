@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ecf00b608121271e98ca5abbbd5e69ca811fd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 297395fbd0a7fd3fc8959eed5c0aeabd7b8e5751
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858214"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Zelfstudie: Azure Active Directory-integratie met LearnUpon
 
@@ -27,7 +27,7 @@ De integratie van LearnUpon met Azure AD biedt de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij LearnUpon (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -53,11 +53,11 @@ Om de integratie van LearnUpon te configureren in Azure AD, moet u LearnUpon uit
 
 **Voer de volgende stappen uit om LearnUpon toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -65,13 +65,13 @@ Om de integratie van LearnUpon te configureren in Azure AD, moet u LearnUpon uit
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **LearnUpon**, selecteer **LearnUpon** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **LearnUpon** , selecteer **LearnUpon** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![LearnUpon in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie gaat u Azure AD-eenmalige aanmelding met LearnUpon configureren en testen met behulp van een testgebruiker met de naam **Britta Simon**.
+In deze sectie gaat u Azure AD-eenmalige aanmelding met LearnUpon configureren en testen met behulp van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in LearnUpon tot stand is gebracht.
 
 Als u Azure AD-eenmalige aanmelding met LearnUpon wilt configureren en testen, moet u de volgende stappen uitvoeren:
@@ -89,7 +89,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren voor LearnUpon:
 
-1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **LearnUpon** en selecteer **Eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **LearnUpon** en selecteer **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -110,7 +110,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
     > [!NOTE]
     > De waarde is niet echt. Werk de waarde bij met de werkelijke antwoord-URL. Neem contact op met het [ondersteuningsteam van LearnUpon](https://www.learnupon.com/features/support/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Zoek op de pagina **Eenmalige aanmelding instellen met SAML** de **THUMBPRINT**: deze wordt toegevoegd aan uw SAML-instellingen voor LearnUpon.
+5. Zoek op de pagina **Eenmalige aanmelding instellen met SAML** de **THUMBPRINT** : deze wordt toegevoegd aan uw SAML-instellingen voor LearnUpon.
 
     ![De link om het certificaat te downloaden](common/certificateraw.png)
 
@@ -140,13 +140,13 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
    
     ![Schermopname van de sectie General Settings (Algemene instellingen) waarin u de beschreven waarden kunt invoeren.](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
-    a. Selecteer **Ingeschakeld**.
+    a. Selecteer **Ingeschakeld** .
 
-    b. Selecteer bij **Version** versie **2.0**.
+    b. Selecteer bij **Version** versie **2.0** .
 
     c. Selecteer bij **Skip conditions** (Voorwaarden overslaan) **No** (Nee).
 
-    d. Typ in het tekstvak **SAML Token Post param name** de naam van de post-parameter van de aanvraag voor de hierboven vermelde SAML-consumer-URL met de SAML-assertie die moet worden geverifieerd en geauthenticeerd, bijvoorbeeld **SAMLResponse**.
+    d. Typ in het tekstvak **SAML Token Post param name** de naam van de post-parameter van de aanvraag voor de hierboven vermelde SAML-consumer-URL met de SAML-assertie die moet worden geverifieerd en geauthenticeerd, bijvoorbeeld **SAMLResponse** .
 
     e. Typ in het tekstvak **Name Identifier Format** de waarde die aangeeft waar de gebruikers-id (het e-mailadres) zich in uw SAML-assertie bevindt, bijvoorbeeld `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
   
@@ -168,7 +168,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -180,19 +180,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot LearnUpon.
 
-1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **LearnUpon**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **LearnUpon** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -200,11 +200,11 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
     ![De LearnUpon-link in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -212,7 +212,7 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-learnupon-test-user"></a>Testgebruiker voor LearnUpon maken
 
@@ -222,12 +222,12 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in LearnUpon
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel LearnUpon klikt, wordt u automatisch aangemeld bij het exemplaar van LearnUpon waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel LearnUpon klikt, wordt u automatisch aangemeld bij het exemplaar van LearnUpon waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ff7f6468b5556b56c5c2aeaba6107cac48d1ed4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88530287"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456446"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Catchpoint
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Catchpoint kunt integreren met Azure Active Dir
 * Ervoor zorgen dat gebruikers met Azure AD-accounts zich automatisch kunnen aanmelden bij Catchpoint.
 * Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,22 +41,22 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Catchpoint ondersteunt door SP geïnitieerde en door IDP geïnitieerde eenmalige aanmelding.
 * Catchpoint biedt ondersteuning voor het just-in-time inrichten van gebruikers.
-* Nadat u Catchpoint hebt geconfigureerd, kunt u sessiebeheer afdwingen. Deze voorzorgsmaatregel biedt in realtime bescherming tegen de exfiltratie en infiltratie van gevoelige bedrijfsgegevens. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Nadat u Catchpoint hebt geconfigureerd, kunt u sessiebeheer afdwingen. Deze voorzorgsmaatregel biedt in realtime bescherming tegen de exfiltratie en infiltratie van gevoelige bedrijfsgegevens. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-catchpoint-from-the-gallery"></a>Catchpoint toevoegen vanuit de galerie
 
 Als u de integratie van Catchpoint in Azure AD wilt configureren, voegt u Catchpoint toe aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkerdeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
-1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Selecteer in het linkerdeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** .
 1. Typ in de sectie **Toevoegen uit de galerie** **Catchpoint** in het zoekvak.
 1. Selecteer **Catchpoint** in de resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-catchpoint"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Catchpoint
 
-Eenmalige aanmelding werkt alleen als u een Azure AD-gebruiker koppelt aan een gebruiker in Catchpoint. Voor deze zelfstudie configureren we een testgebruiker met de naam **B.Simon**. 
+Eenmalige aanmelding werkt alleen als u een Azure AD-gebruiker koppelt aan een gebruiker in Catchpoint. Voor deze zelfstudie configureren we een testgebruiker met de naam **B.Simon** . 
 
 Voltooi de volgende secties:
 
@@ -72,18 +72,18 @@ Voltooi de volgende secties:
 Volg deze stappen in de Azure-portal om eenmalige aanmelding van Azure AD in te schakelen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Zoek op de integratiepagina van de toepassing **Catchpoint** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek op de integratiepagina van de toepassing **Catchpoint** de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het penpictogram bij **Standaard SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
 1. De geïnitieerde modus configureren voor Catchpoint:
    - Voer waarden in voor de volgende velden voor de door de **IDP** geïnitieerde modus:
-     - Voor **Id**: `https://portal.catchpoint.com/SAML2`
-     - Voor **Antwoord-URL**: `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+     - Voor **Id** : `https://portal.catchpoint.com/SAML2`
+     - Voor **Antwoord-URL** : `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
    - Voor door de **SP** geïnitieerde modus: selecteer **Extra URL's instellen** en voer de volgende waarde in:
-     - Voor **Aanmeldings-URL**: `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+     - Voor **Aanmeldings-URL** : `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
 
 1. In de Catchpoint-toepassing wordt verwacht dat de SAML-asserties een specifieke indeling hebben. Voeg aangepaste kenmerktoewijzingen toe aan de configuratie van uw SAML-tokenkenmerken. De volgende tabel bevat de lijst met standaardkenmerken:
 
@@ -104,9 +104,9 @@ Volg deze stappen in de Azure-portal om eenmalige aanmelding van Azure AD in te 
     | naamruimte | user.assignedrole |
 
     > [!NOTE]
-    > De claim `namespace` moet worden toegewezen met de accountnaam. Deze accountnaam moet worden ingesteld met een rol in Azure AD om te worden teruggegeven in het SAML-antwoord. Zie [De rolclaim configureren die in het SAML-token is uitgegeven voor bedrijfstoepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) voor meer informatie over rollen in Azure AD.
+    > De claim `namespace` moet worden toegewezen met de accountnaam. Deze accountnaam moet worden ingesteld met een rol in Azure AD om te worden teruggegeven in het SAML-antwoord. Zie [De rolclaim configureren die in het SAML-token is uitgegeven voor bedrijfstoepassingen](../develop/active-directory-enterprise-app-role-management.md) voor meer informatie over rollen in Azure AD.
 
-1. Ga naar de pagina **Eenmalige aanmelding instellen met SAML**. Zoek **Certificaat (Base64)** in de sectie **SAML-handtekeningcertificaat**. Selecteer **Downloaden** om het certificaat op uw computer op te slaan.
+1. Ga naar de pagina **Eenmalige aanmelding instellen met SAML** . Zoek **Certificaat (Base64)** in de sectie **SAML-handtekeningcertificaat** . Selecteer **Downloaden** om het certificaat op uw computer op te slaan.
 
     ![De koppeling om het certificaat te downloaden](common/certificatebase64.png)
 
@@ -118,37 +118,37 @@ Volg deze stappen in de Azure-portal om eenmalige aanmelding van Azure AD in te 
 
 In deze sectie gebruikt u de Azure-portal om een Azure AD-testgebruiker met de naam B.Simon te maken.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Voer bijvoorbeeld `B.Simon@contoso.com` in.
    1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer de weergegeven wachtwoordwaarde.
-   1. Selecteer **Maken**.
+   1. Selecteer **Maken** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Catchpoint.
 
-1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen** .
 1. Selecteer **Catchpoint** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De link Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** **B.Simon** in de lijst met gebruikers. Klik op **Selecteren** onderaan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-assertie, kijkt u in het dialoogvenster **Rol selecteren** en kiest u de juiste rol voor de gebruiker in de lijst. Klik onder aan het scherm op de knop **Selecteren**.
-1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Als u een rolwaarde verwacht in de SAML-assertie, kijkt u in het dialoogvenster **Rol selecteren** en kiest u de juiste rol voor de gebruiker in de lijst. Klik onder aan het scherm op de knop **Selecteren** .
+1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen** .
 
 ## <a name="configure-catchpoint-sso"></a>Eenmalige aanmelding configureren voor Catchpoint
 
 1. Meld u in een ander browservenster als beheerder aan bij Catchpoint.
 
-1. Selecteer het pictogram **Settings** en daarna **SSO Identity Provider**.
+1. Selecteer het pictogram **Settings** en daarna **SSO Identity Provider** .
 
     ![Schermopname van Catchpoint-instellingen met SSO Identity Provider geselecteerd](./media/catchpoint-tutorial/configuration1.png)
 
@@ -165,7 +165,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
    U kunt ook het **XML-bestand met federatieve** gegevens uploaden door de optie **Upload Metadata** te selecteren.
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
 ### <a name="create-a-catchpoint-test-user"></a>Een Catchpoint-testgebruiker maken
 
@@ -175,21 +175,21 @@ Catchpoint biedt ondersteuning voor het just-in-time inrichten van gebruikers. D
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding met Azure AD met behulp van de portal Mijn apps.
 
-Wanneer u de tegel Catchpoint selecteert in de portal Mijn apps, moet u automatisch worden aangemeld bij de Catchpoint-app waarvoor eenmalige aanmelding is geconfigureerd. Zie [Aanmelden bij en het starten van apps vanuit de Mijn apps-portal](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) voor meer informatie over de portal Mijn apps.
+Wanneer u de tegel Catchpoint selecteert in de portal Mijn apps, moet u automatisch worden aangemeld bij de Catchpoint-app waarvoor eenmalige aanmelding is geconfigureerd. Zie [Aanmelden bij en het starten van apps vanuit de Mijn apps-portal](../user-help/my-apps-portal-end-user-access.md) voor meer informatie over de portal Mijn apps.
 
 > [!NOTE]
-> Wanneer u zich via de aanmeldingspagina hebt aangemeld bij de Catchpoint-toepassing, voert u na het opgeven van uw **Catchpoint-referenties** in het veld **Company Credentials (SSO)** de geldige waarde voor **naamruimte** in en selecteert u **Login**.
+> Wanneer u zich via de aanmeldingspagina hebt aangemeld bij de Catchpoint-toepassing, voert u na het opgeven van uw **Catchpoint-referenties** in het veld **Company Credentials (SSO)** de geldige waarde voor **naamruimte** in en selecteert u **Login** .
 > 
 > ![Configuratie van Catchpoint](./media/catchpoint-tutorial/loginimage.png)
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Catchpoint uitproberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

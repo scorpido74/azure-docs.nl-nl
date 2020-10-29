@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
-ms.openlocfilehash: ed4725a98939e160f42d3087b86e591b09c026c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faea5fdc7fdab11c630f24dbb8527e5bf198765c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540164"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Zelfstudie: Azure Active Directory-integratie met IBM Kenexa Survey Enterprise
 
@@ -27,7 +27,7 @@ De integratie van IBM Kenexa Survey Enterprise met Azure AD biedt u de volgende 
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij IBM Kenexa Survey Enterprise (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,11 +49,11 @@ Voor het configureren van de integratie van IBM Kenexa Survey Enterprise in Azur
 
 **Voer de volgende stappen uit om IBM Kenexa Survey Enterprise vanuit de galerie toe te voegen:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Voor het configureren van de integratie van IBM Kenexa Survey Enterprise in Azur
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **IMB Kenexa Survey Enterprise**, selecteer **IBM Kenexa Survey Enterprise** in het deelvenster met resultaten en klik vervolgens op **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **IMB Kenexa Survey Enterprise** , selecteer **IBM Kenexa Survey Enterprise** in het deelvenster met resultaten en klik vervolgens op **Toevoegen** om de toepassing toe te voegen.
 
      ![IBM Kenexa Survey Enterprise in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD-eenmalige aanmelding met IBM Kenexa Survey Enterprise op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u Azure AD-eenmalige aanmelding met IBM Kenexa Survey Enterprise op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in IBM Kenexa Survey Enterprise tot stand is gebracht.
 
 U hebt de volgende bouwstenen nodig om eenmalige aanmelding van Azure AD met IBM Kenexa Survey Enterprise te configureren en testen:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit om eenmalige aanmelding in Azure AD te configureren voor IBM Kenexa Survey Enterprise:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **IBM Kenexa Survey Enterprise** de optie **Eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **IBM Kenexa Survey Enterprise** de optie **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -110,7 +110,7 @@ Voer de volgende stappen uit om eenmalige aanmelding in Azure AD te configureren
 
 5. In de IBM Kenexa Survey Enterprise-toepassing worden de SAML-asserties (Security Assertions Markup Language) in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. De waarde van de claim voor de gebruikers-id in het antwoord moet overeenkomen met de id voor eenmalige aanmelding die is geconfigureerd in het Kenexa-systeem. Als u de juiste gebruikers-id in uw organisatie wilt toewijzen als IDP (Internet Data gram Protocol) voor eenmalige aanmelding, neemt u contact op met het [ondersteuningsteam van IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw).
 
-    In azure AD wordt standaard de gebruikers-id ingesteld als de waarde voor de user principal name (UPN). U kunt deze waarde wijzigen op het tabblad **Gebruikerskenmerken**, zoals wordt weergegeven in de volgende schermopname. De integratie werkt pas nadat u de toewijzing op de juiste wijze hebt voltooid.
+    In azure AD wordt standaard de gebruikers-id ingesteld als de waarde voor de user principal name (UPN). U kunt deze waarde wijzigen op het tabblad **Gebruikerskenmerken** , zoals wordt weergegeven in de volgende schermopname. De integratie werkt pas nadat u de toewijzing op de juiste wijze hebt voltooid.
 
     ![image](common/edit-attribute.png)
 
@@ -136,7 +136,7 @@ Als u eenmalige aanmelding aan de zijde van **IBM Kenexa Survey Enterprise** wil
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -148,20 +148,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanmelding via Azure door haar toegang te geven tot IBM Kenexa Survey Enterprise.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **IBM Kenexa Survey Enterprise**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **IBM Kenexa Survey Enterprise** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -169,11 +169,11 @@ In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanm
 
     ![De koppeling naar IBM Kenexa Survey Enterprise in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -181,25 +181,24 @@ In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanm
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-ibm-kenexa-survey-enterprise-test-user"></a>Testgebruiker voor IBM Kenexa Survey Enterprise maken
 
 In deze sectie maakt u een gebruiker met de naam Britta Simon in IBM Kenexa Survey Enterprise.
 
-Als u gebruikers in het IBM Kenexa Survey Enterprise-systeem wilt maken en de id voor eenmalige aanmelding aan hen wilt toewijzen, kunt u contact opnemen met het [ondersteuningsteam van IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw). Deze id voor eenmalige aanmelding moet ook worden toegewezen aan de gebruikers-id uit Azure AD. U kunt deze standaard instelling wijzigen op het tabblad **Kenmerk**.
+Als u gebruikers in het IBM Kenexa Survey Enterprise-systeem wilt maken en de id voor eenmalige aanmelding aan hen wilt toewijzen, kunt u contact opnemen met het [ondersteuningsteam van IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw). Deze id voor eenmalige aanmelding moet ook worden toegewezen aan de gebruikers-id uit Azure AD. U kunt deze standaard instelling wijzigen op het tabblad **Kenmerk** .
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel IBM Kenexa Survey Enterprise in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van IBM Kenexa Survey Enterprise waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel IBM Kenexa Survey Enterprise in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van IBM Kenexa Survey Enterprise waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

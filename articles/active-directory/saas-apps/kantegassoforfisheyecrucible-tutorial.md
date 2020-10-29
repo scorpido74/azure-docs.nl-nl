@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 6742253ad815ab8058a9c05d82200e77d9d18a43
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 06a4e8aa1ad74f47526f3a39931632953bfaaec2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945955"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Zelfstudie: Azure Active Directory-integratie met Kantega SSO voor FishEye/Crucible
 
@@ -27,7 +27,7 @@ Het integreren van Kantega SSO voor FishEye/Crucible met Azure AD biedt de volge
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Kantega SSO voor FishEye/Crucible (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,11 +49,11 @@ Als u de integratie van Kantega SSO voor FishEye/Crucible wilt configureren in A
 
 **Voer de volgende stappen uit om Kantega SSO voor FishEye/Crucible toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Als u de integratie van Kantega SSO voor FishEye/Crucible wilt configureren in A
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In dit gedeelte configureert en test u eenmalige aanmelding van Azure Active Directory met Kantega SSO voor FishEye/Crucible op basis van een testgebruiker met de naam **Britta Simon**.
+In dit gedeelte configureert en test u eenmalige aanmelding van Azure Active Directory met Kantega SSO voor FishEye/Crucible op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure Active Directory-gebruiker en de daaraan gerelateerde gebruiker in Kantega SSO voor FishEye/Crucible tot stand is gebracht.
 
 Als u eenmalige aanmelding van Azure AD met Kantega SSO voor FishEye/Crucible wilt configureren en testen, moet u de volgende stappen voltooien:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor FishEye/Crucible, voert u de volgende stappen uit:
 
-1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **Kantega SSO voor FishEye/Crucible** en selecteer **Eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **Kantega SSO voor FishEye/Crucible** en selecteer **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -132,11 +132,11 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
 1. Meld u in een ander browservenster als beheerder aan bij de on-premises server van Kantega SSO voor FishEye/Crucible.
 
-1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
+1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons** .
 
     ![Schermopname waarin het pictogram 'Tandwiel' en 'Invoegtoepassingen' geselecteerd worden weergegeven.](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
-1. Klik onder de sectie Systeeminstellingen op **Nieuwe invoegtoepassingen zoeken**. 
+1. Klik onder de sectie Systeeminstellingen op **Nieuwe invoegtoepassingen zoeken** . 
 
     ![Schermopname van de sectie 'Systeeminstellingen' met 'Nieuwe invoegtoepassingen zoeken' geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
@@ -148,11 +148,11 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
     ![Schermopname van het dialoogvenster 'Installeren' voor de invoegtoepassing.](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
-1. Nadat de installatie is voltooid. Klik op **Sluiten**.
+1. Nadat de installatie is voltooid. Klik op **Sluiten** .
 
     ![Schermopname van het dialoogvenster 'Geïnstalleerd en klaar voor gebruik' en de knop 'Sluiten' geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
 
-1.  Klik op **Beheren**.
+1.  Klik op **Beheren** .
 
     ![Schermopname waarin de app-pagina 'Kantega SSO voor Crucible SAML & Kerberos' en de knop 'Beheren' geselecteerd worden weergegeven.](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
 
@@ -160,51 +160,51 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
     ![Schermopname van de pagina 'Door de gebruiker geïnstalleerde invoegtoepassingen' en de knop 'Configureren' geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
-1. In het gedeelte **SAML**. Selecteer **Azure Active Directory (Azure AD)** in de vervolgkeuzelijst **Id-provider toevoegen**.
+1. In het gedeelte **SAML** . Selecteer **Azure Active Directory (Azure AD)** in de vervolgkeuzelijst **Id-provider toevoegen** .
 
     ![Schermopname van de pagina 'Invoegtoepassingen - Eenmalige aanmelding van Kantega' met de vervolgkeuzelijst 'Id-provider toevoegen' en 'Azure Active Directory (Azure AD)' geselecteerd. ](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
-1. Selecteer als abonnementsniveau de optie **Basic**.
+1. Selecteer als abonnementsniveau de optie **Basic** .
 
     ![Schermopname van de sectie 'Azure AD voorbereiden' met 'Basic' geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
-1. Voer de volgende stappen uit in het gedeelte **App-eigenschappen**:
+1. Voer de volgende stappen uit in het gedeelte **App-eigenschappen** :
 
     ![Schermopname van de sectie 'App-eigenschappen' met het tekstvak 'App ID URI' en de knop kopiëren geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
     a. Kopieer de waarde voor de **app-id-URI** en gebruik deze als **id, antwoord-URL en aanmeldings-URL** in het gedeelte **Standaard SAML-configuratie** in Azure Portal.
 
-    b. Klik op **Volgende**.
+    b. Klik op **Volgende** .
 
-1. Voer de volgende stappen uit in het gedeelte **Metagegevens importeren**:
+1. Voer de volgende stappen uit in het gedeelte **Metagegevens importeren** :
 
     ![Schermopname van de sectie 'Importeren metagegevens' met 'Metagegevensbestand op mijn computer' geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
     a. Selecteer **Metadata file on my computer** en upload het metagegevensbestand dat u vanuit Azure Portal hebt gedownload.
 
-    b. Klik op **Volgende**.
+    b. Klik op **Volgende** .
 
-1. Voer de volgende stappen uit op in het gedeelte **Name and SSO location**:
+1. Voer de volgende stappen uit op in het gedeelte **Name and SSO location** :
 
     ![Schermopname van de 'Naam en SSO-locatie', waarbij het tekstvak 'Naam van de id-provider' is gemarkeerd en de knop 'Volgende' is geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
     a. In het tekstvak **Identity provider name** (bijvoorbeeld Azure AD) voegt u de naam van de id-provider toe.
 
-    b. Klik op **Volgende**.
+    b. Klik op **Volgende** .
 
-1. Controleer het handtekeningcertificaat en klik op **Volgende**.   
+1. Controleer het handtekeningcertificaat en klik op **Volgende** .   
 
     ![Schermopname met de informatie over de sectie 'Handtekening controleren' en de knop 'Volgende' geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
-1. Voer de volgende stappen uit in het gedeelte **FishEye user accounts**:
+1. Voer de volgende stappen uit in het gedeelte **FishEye user accounts** :
 
     ![Schermopname met de sectie 'FishEye-gebruikersaccounts' met de optie 'Gebruikers in de interne map van FishEye maken indien nodig' en de knop 'Volgende' geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
     a. Selecteer **Create users in FishEye's internal Directory if needed** en voer de juiste naam van de groep voor gebruikers in (dit kunnen meerdere aantallen groepen zijn, gescheiden door komma's).
 
-    b. Klik op **Volgende**.
+    b. Klik op **Volgende** .
 
-1. Klik op **Voltooien**.
+1. Klik op **Voltooien** .
 
     ![Schermopname van de sectie 'Samenvatting' met de knop 'Voltooien' geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
@@ -216,13 +216,13 @@ Als u eenmalige aanmelding van Azure AD wilt configureren voor Kantega SSO voor 
 
     b. Voer de domeinnaam in het tekstvak **Known domains** in.
 
-    c. Klik op **Opslaan**.
+    c. Klik op **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -234,31 +234,31 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door haar toegangsrechten voor Kantega SSO voor FishEye/Crucible te verlenen.
 
-1. Selecteer in Azure Portal **Bedrijfstoepassingen**, selecteer **Alle toepassingen** en selecteer vervolgens **Kantega SSO voor FishEye/Crucible**.
+1. Selecteer in Azure Portal **Bedrijfstoepassingen** , selecteer **Alle toepassingen** en selecteer vervolgens **Kantega SSO voor FishEye/Crucible** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen de optie **Kantega SSO voor FishEye/Crucible**.
+2. Selecteer in de lijst met toepassingen de optie **Kantega SSO voor FishEye/Crucible** .
 
     ![De koppeling Kantega SSO voor FishEye/Crucible in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -266,7 +266,7 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-kantega-sso-for-fisheyecrucible-test-user"></a>Een testgebruiker maken voor Kantega SSO voor FishEye/Crucible
 
@@ -276,15 +276,15 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Kantega SSO voor Fi
 
 1. Meld u als beheerder aan bij de on-premises server van Crucible.
 
-1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Users**.
+1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Users** .
 
     ![Schermopname met het pictogram 'Tandwiel' geselecteerd en 'Gebruikers' geselecteerd in de vervolgkeuzelijst.](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
 
-1. Klik onder de sectie **Users** op **Add users**.
+1. Klik onder de sectie **Users** op **Add users** .
 
     ![Schermopname van de sectie 'Gebruikers' met 'Gebruiker toevoegen' geselecteerd.](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 
-1. Voer de volgende stappen uit in het dialoogvenster **Nieuwe gebruiker toevoegen**:
+1. Voer de volgende stappen uit in het dialoogvenster **Nieuwe gebruiker toevoegen** :
 
     ![Werknemer toevoegen](./media/kantegassoforfisheyecrucible-tutorial/user3.png)
 
@@ -298,18 +298,18 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Kantega SSO voor Fi
 
     e. Voer in het tekstvak **Wachtwoord bevestigen** het wachtwoord van de gebruiker opnieuw in.
 
-    f. Klik op **Add**.
+    f. Klik op **Add** .
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Kantega SSO voor FishEye/Crucible in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Kantega SSO voor FishEye/Crucible waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Kantega SSO voor FishEye/Crucible in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Kantega SSO voor FishEye/Crucible waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

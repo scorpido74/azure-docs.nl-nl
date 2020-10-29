@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bad9757bb62d5175e725bfe8e005155040dccf36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549956"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Zelfstudie: Azure Active Directory-integratie met Kontiki
 
@@ -28,7 +28,7 @@ Kontiki-integratie met Azure AD biedt u de volgende voordelen:
 * Gebruikers kunnen automatisch worden aangemeld bij Kontiki met hun Azure AD-accounts (eenmalige aanmelding).
 * U kunt uw accounts vanaf één locatie beheren, de Azure-portal.
 
-Zie voor meer informatie over de integratie van SaaS-apps (software als een service) met Azure AD [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie voor meer informatie over de integratie van SaaS-apps (software als een service) met Azure AD [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -52,11 +52,11 @@ Om Kontiki te integreren met Azure AD moet u Kontiki toevoegen aan de lijst met 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer in het linkermenu de knop **Azure Active Directory**.
+1. Selecteer in het linkermenu de knop **Azure Active Directory** .
 
     ![De optie voor Azure Active Directory](common/select-azuread.png)
 
-1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen**.
+1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen** .
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -64,13 +64,13 @@ Om Kontiki te integreren met Azure AD moet u Kontiki toevoegen aan de lijst met 
 
     ![De optie Nieuwe toepassing](common/add-new-app.png)
 
-1. Voer in het zoekvak in: **Kontiki**. Selecteer **Kontiki** in de zoekresultaten en selecteer vervolgens **Toevoegen**.
+1. Voer in het zoekvak in: **Kontiki** . Selecteer **Kontiki** in de zoekresultaten en selecteer vervolgens **Toevoegen** .
 
     ![Kontiki in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u eenmalige aanmelding van Azure AD met Kontiki op basis van een testgebruiker met de naam **Britta Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Kontiki.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met Kontiki op basis van een testgebruiker met de naam **Britta Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Kontiki.
 
 Als u eenmalige aanmelding van Azure AD wilt configureren en testen met Kontiki, moet u de volgende procedures uitvoeren:
 
@@ -87,7 +87,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren en testen met Kontiki,
 
 In dit gedeelte configureert u eenmalige aanmelding van Azure AD met Kontiki in Azure Portal.
 
-1. Selecteer in [Azure Portal](https://portal.azure.com/) in het integratiedeelvenster van de toepassing **Kontiki** de optie **Eenmalige aanmelding**.
+1. Selecteer in [Azure Portal](https://portal.azure.com/) in het integratiedeelvenster van de toepassing **Kontiki** de optie **Eenmalige aanmelding** .
 
     ![De optie voor eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -106,7 +106,7 @@ In dit gedeelte configureert u eenmalige aanmelding van Azure AD met Kontiki in 
     > [!NOTE]
     > Neem contact op met het [klantondersteuningsteam van Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html) om de juiste waarde voor gebruik op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Selecteer in het deelvenster **Eenmalige aanmelding instellen met SAML** in de sectie **SAML-handtekeningcertificaat** de optie **Downloaden** naast **XML-bestand met federatieve metagegevens**. Selecteer een downloadoptie op basis van uw vereisten. Sla het certificaat op uw computer op.
+1. Selecteer in het deelvenster **Eenmalige aanmelding instellen met SAML** in de sectie **SAML-handtekeningcertificaat** de optie **Downloaden** naast **XML-bestand met federatieve metagegevens** . Selecteer een downloadoptie op basis van uw vereisten. Sla het certificaat op uw computer op.
 
     ![De optie voor het downloaden van het XML-certificaat met federatieve metagegevens](common/metadataxml.png)
 
@@ -126,23 +126,23 @@ Als u eenmalige aanmelding aan de zijde van Kontiki wilt configureren, verzendt 
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer in de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer in de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers** .
 
     ![De opties Gebruikers en Alle gebruikers](common/users.png)
 
-1. Selecteer **Nieuwe gebruiker**.
+1. Selecteer **Nieuwe gebruiker** .
 
     ![De optie Nieuwe gebruiker](common/new-user.png)
 
 1. Voer in het deelvenster **Gebruiker** de volgende stappen uit:
 
-    1. Voer in het vak **Naam** **Britta Simon**in.
+    1. Voer in het vak **Naam** **Britta Simon** in.
   
-    1. Voer in het vak **Gebruikersnaam** **brittasimon\@\<your-company-domain> in.\<extension>** . Bijvoorbeeld **brittasimon\@contoso.com**.
+    1. Voer in het vak **Gebruikersnaam** **brittasimon\@\<your-company-domain> in.\<extension>** . Bijvoorbeeld **brittasimon\@contoso.com** .
 
-    1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+    1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
 
-    1. Selecteer **Maken**.
+    1. Selecteer **Maken** .
 
     ![Het deelvenster Gebruiker](common/user-properties.png)
 
@@ -150,7 +150,7 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
 In deze sectie verleent u Britta Simon toegang tot Kontiki zodat ze eenmalige aanmelding van Azure kan gebruiken.
 
-1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen** > **Alle toepassingen** > **Kontiki**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen** > **Alle toepassingen** > **Kontiki** .
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -162,15 +162,15 @@ In deze sectie verleent u Britta Simon toegang tot Kontiki zodat ze eenmalige aa
 
     ![De optie Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**. Selecteer vervolgens **Gebruikers en groepen** in het deelvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** . Selecteer vervolgens **Gebruikers en groepen** in het deelvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het deelvenster **Gebruikers en groepen** de optie **Britta Simon** in de lijst met gebruikers. Kies **Selecteren**.
+1. Selecteer in het deelvenster **Gebruikers en groepen** de optie **Britta Simon** in de lijst met gebruikers. Kies **Selecteren** .
 
-1. Als u een rolwaarde in de SAML-assertie verwacht, selecteert u in het deelvenster **Rol selecteren** de relevante rol voor de gebruiker in de lijst. Kies **Selecteren**.
+1. Als u een rolwaarde in de SAML-assertie verwacht, selecteert u in het deelvenster **Rol selecteren** de relevante rol voor de gebruiker in de lijst. Kies **Selecteren** .
 
-1. Selecteer **Toewijzen** in het deelvenster **Toewijzing toevoegen**.
+1. Selecteer **Toewijzen** in het deelvenster **Toewijzing toevoegen** .
 
 ### <a name="create-a-kontiki-test-user"></a>Een Kontiki-testgebruiker maken
 
@@ -186,6 +186,6 @@ Als u eenmalige aanmelding hebt ingesteld en **Kontiki** selecteert in de portal
 
 Lees voor meer informatie de volgende artikelen:
 
-- [Lijst met zelfstudies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Lijst met zelfstudies voor het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
+- [Eenmalige aanmelding bij toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

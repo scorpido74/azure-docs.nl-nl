@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a49edf738586dce190fa90f7349f2c9b01e2050d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850367"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Zelfstudie: Azure Active Directory-integratie met ITRP
 
@@ -27,7 +27,7 @@ Deze integratie biedt de volgende voordelen:
 * U kunt ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij ITRP (eenmalige aanmelding).
 * U kunt uw accounts vanaf één locatie beheren: de Azure-portal.
 
-Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -48,11 +48,11 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 Om de integratie van ITRP in Azure AD te configureren, moet u ITRP uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**:
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory** :
 
     ![Selecteer Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Bedrijfstoepassingen** > **Alle toepassingen**:
+2. Ga naar **Bedrijfstoepassingen** > **Alle toepassingen** :
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -60,7 +60,7 @@ Om de integratie van ITRP in Azure AD te configureren, moet u ITRP uit de galeri
 
     ![Selecteer Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **ITRP** in het zoekvak. Selecteer **ITRP** in de zoekresultaten en selecteer vervolgens **Toevoegen**.
+4. Typ **ITRP** in het zoekvak. Selecteer **ITRP** in de zoekresultaten en selecteer vervolgens **Toevoegen** .
 
      ![Zoekresultaten](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configureren:
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing ITRP en selecteer **Eenmalige aanmelding**:
+1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing ITRP en selecteer **Eenmalige aanmelding** :
 
     ![‘Eenmalige aanmelding’ selecteren](common/select-sso.png)
 
@@ -123,17 +123,17 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configure
 
     ![De configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-    1. **Aanmeldings-URL**.
+    1. **Aanmeldings-URL** .
 
-    1. **Azure AD-id**.
+    1. **Azure AD-id** .
 
-    1. **Afmeldings-URL**.
+    1. **Afmeldings-URL** .
 
 ### <a name="configure-itrp-single-sign-on"></a>Eenmalige aanmelding voor ITRP configureren
 
 1. Meld u in een nieuw browservenster als beheerder aan bij de bedrijfssite van ITRP.
 
-1. Selecteer bovenaan het venster het pictogram **Instellingen**:
+1. Selecteer bovenaan het venster het pictogram **Instellingen** :
 
     ![Het pictogram Instellingen](./media/itrp-tutorial/ic775570.png "Het pictogram Instellingen")
 
@@ -147,7 +147,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configure
 
     ![Schermopname van de sectie Eenmalige aanmelding, waarin u de informatie kunt toevoegen die in deze stap is beschreven.](./media/itrp-tutorial/ic775573.png "Sectie ‘Eenmalige aanmelding’")
 
-    1. Selecteer **Ingeschakeld**.
+    1. Selecteer **Ingeschakeld** .
 
     1. Plak in het vak **URL voor externe afmelding** de **Afmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
@@ -155,13 +155,13 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met ITRP te configure
 
     1. Plak in het vak **Certificaatvingerafdruk** de waarde van **Vingerafdruk** die u hebt gekopieerd uit de Azure-portal.
 
-    1. Selecteer **Opslaan**.
+    1. Selecteer **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**:
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** :
 
     ![Selecteer Alle gebruikers](common/users.png)
 
@@ -173,19 +173,19 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
     ![Dialoogvenster Gebruiker](common/user-properties.png)
 
-    1. Voer in het vak **Naam** **Britta Simon**in.
+    1. Voer in het vak **Naam** **Britta Simon** in.
   
     1. Voer in het vak **Naam** **Britta Simon@\<yourcompanydomain> in.\<extension>** . (Bijvoorbeeld: BrittaSimon@contoso.com.)
 
     1. Selecteer **Wachtwoord weergeven** en noteer de waarde die in het vak **Wachtwoord** wordt getoond.
 
-    1. Selecteer **Maken**.
+    1. Selecteer **Maken** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot ITRP.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **ITRP**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **ITRP** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -193,19 +193,19 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
     ![Lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het linkerdeelvenster **Gebruikers en groepen**:
+3. Selecteer in het linkerdeelvenster **Gebruikers en groepen** :
 
     ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
-4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Gebruiker toevoegen selecteren](common/add-assign-user.png)
 
 5. Selecteer **Britta Simon** in de gebruikerslijst van het dialoogvenster **Gebruikers en groepen** en klik vervolgens op de knop **Selecteren** onderaan het venster.
 
-6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onderaan het venster op de knop **Selecteren**.
+6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onderaan het venster op de knop **Selecteren** .
 
-7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
+7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen** .
 
 ### <a name="create-an-itrp-test-user"></a>Een testgebruiker voor ITRP maken
 
@@ -215,7 +215,7 @@ Voer deze stappen uit om een gebruikersaccount te maken:
 
 1. Meld u aan bij uw ITRP-tenant.
 
-1. Selecteer bovenaan het venster het pictogram **Records**:
+1. Selecteer bovenaan het venster het pictogram **Records** :
 
     ![Pictogram Records](./media/itrp-tutorial/ic775575.png "Pictogram Records")
 
@@ -233,7 +233,7 @@ Voer deze stappen uit om een gebruikersaccount te maken:
 
     1. Voer de naam en het e-mailadres in van een geldig Azure AD-account dat u wilt toevoegen.
 
-    1. Selecteer **Opslaan**.
+    1. Selecteer **Opslaan** .
 
 > [!NOTE]
 > U kunt ook alle andere door ITRP geleverde hulpprogramma's of API's voor het maken van gebruikersaccounts gebruiken om Azure AD-gebruikersaccounts in te richten.
@@ -242,12 +242,12 @@ Voer deze stappen uit om een gebruikersaccount te maken:
 
 Nu moet u de configuratie voor eenmalige aanmelding van Azure AD testen met behulp van het toegangsvenster.
 
-Wanneer u in het toegangsvenster de tegel ITRP selecteert, zou u automatisch moeten worden aangemeld bij het exemplaar van ITRP waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Apps openen en gebruiken in de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster de tegel ITRP selecteert, zou u automatisch moeten worden aangemeld bij het exemplaar van ITRP waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Apps openen en gebruiken in de portal Mijn apps](../user-help/my-apps-portal-end-user-access.md) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](./tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

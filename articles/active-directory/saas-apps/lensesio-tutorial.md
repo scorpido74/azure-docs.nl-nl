@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 48a1e50d451abb429e9bc33308909b368283644f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661449"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458605"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met de Lenses.io DataOps-portal
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u de [Lenses.io](https://lenses.io/) DataOps-port
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Lenses.
 * Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Wat is toegangsbeheer? en Wat is eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
+Zie [Wat is toegangsbeheer? en Wat is eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,17 +42,17 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Lenses.io biedt ondersteuning voor door serviceprovider (SP) geïnitieerde eenmalige aanmelding.
 
-* Nadat u Lenses.io hebt geconfigureerd, kunt u sessiebeheer afdwingen. Sessiebeheer beschermt in realtime tegen de exfiltratie en infiltratie van gevoelige bedrijfsgegevens. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Nadat u Lenses.io hebt geconfigureerd, kunt u sessiebeheer afdwingen. Sessiebeheer beschermt in realtime tegen de exfiltratie en infiltratie van gevoelige bedrijfsgegevens. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-lensesio-from-the-gallery"></a>Lenses.io toevoegen vanuit de galerie
 
 Om de integratie van Lenses.io in Azure AD te configureren, voegt u Lenses.io vanuit de galerie toe aan uw lijst met beheerde SaaS-apps:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkerdeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
-1. Selecteer **Nieuwe toepassing**.
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Lenses.io**.
+1. Selecteer in het linkerdeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
+1. Selecteer **Nieuwe toepassing** .
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Lenses.io** .
 1. Selecteer **Lenses.io** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Eenmalige aanmelding van Azure AD voor Lenses.io configureren en testen
@@ -72,24 +72,24 @@ Voer de volgende stappen uit:
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azure-portal:
 
-1. Zoek in [Azure Portal](https://portal.azure.com/), op de integratiepagina van de toepassing **Lenses.io**, de sectie **Beheren** en selecteer vervolgens **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in [Azure Portal](https://portal.azure.com/), op de integratiepagina van de toepassing **Lenses.io** , de sectie **Beheren** en selecteer vervolgens **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het pictogram voor bewerken (de pen) voor **Standaard SAML-configuratie** om de instellingen te bewerken.
 
    ![Schermopname van het pictogram voor het bewerken van de standaard SAML-configuratie.](common/edit-urls.png)
 
 1. In de sectie **Standaard SAML-configuratie** geeft u waarden op in de volgende tekstinvoervakken:
 
-    a. **Aanmeldings-URL**: voer een URL in met het volgende patroon: `https://<CUSTOMER_LENSES_BASE_URL>`. Een voorbeeld is `https://lenses.my.company.com`.
+    a. **Aanmeldings-URL** : voer een URL in met het volgende patroon: `https://<CUSTOMER_LENSES_BASE_URL>`. Een voorbeeld is `https://lenses.my.company.com`.
 
     b. **Id (Entiteits-id)** : voer een URL in met het volgende patroon: `https://<CUSTOMER_LENSES_BASE_URL>`. Een voorbeeld is `https://lenses.my.company.com`.
 
-    c. **Antwoord-URL**: voer een URL in met het volgende patroon: `https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`. Een voorbeeld is `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`.
+    c. **Antwoord-URL** : voer een URL in met het volgende patroon: `https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`. Een voorbeeld is `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`.
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, antwoord-URL en id, op basis van de basis-URL van uw exemplaar van de Lenses-portal. Zie de [Lenses-documentatie voor eenmalige aanmelding](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0) voor meer informatie.
 
-1. Ga op de pagina **Eenmalige aanmelding instellen met SAML** naar de sectie **SAML-handtekeningcertificaat**. Zoek het **XML-bestand met federatieve metagegevens** en selecteer vervolgens **Downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding instellen met SAML** naar de sectie **SAML-handtekeningcertificaat** . Zoek het **XML-bestand met federatieve metagegevens** en selecteer vervolgens **Downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![Schermopname van de downloadkoppeling voor het certificaat.](common/metadataxml.png)
 
@@ -103,59 +103,59 @@ U kunt in de [Lenses-documentatie voor eenmalige aanmelding](https://docs.lenses
 
 **De testgebruiker maken:**
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
-1. Selecteer bovenaan het scherm **Nieuwe gebruiker**.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
+1. Selecteer bovenaan het scherm **Nieuwe gebruiker** .
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het vak **Naam** de naam **B.Simon** in.  
    1. Voer in het vak **Gebruikersnaam** username@companydomain.extension in. Bijvoorbeeld B.Simon@contoso.com.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer het wachtwoord dat wordt weergegeven in het vak **Wachtwoord**.
-   1. Selecteer **Maken**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer het wachtwoord dat wordt weergegeven in het vak **Wachtwoord** .
+   1. Selecteer **Maken** .
 
 **De groep maken:**
 
-1. Ga naar **Azure Active Directory** en selecteer vervolgens **Groepen**.
-1. Selecteer bovenaan het scherm **Nieuwe groep**.
+1. Ga naar **Azure Active Directory** en selecteer vervolgens **Groepen** .
+1. Selecteer bovenaan het scherm **Nieuwe groep** .
 1. Volg in **Eigenschappen van groep** de volgende stappen:
-   1. Selecteer **Beveiliging** in het vak **Groepstype**.
-   1. Voer in het vak **Groepsnaam** **LensesUsers**in.
-   1. Selecteer **Maken**.
+   1. Selecteer **Beveiliging** in het vak **Groepstype** .
+   1. Voer in het vak **Groepsnaam** **LensesUsers** in.
+   1. Selecteer **Maken** .
 1. Selecteer de groep **LensesUsers** en kopieer de **object-id** (bijvoorbeeld f8b5c1ec-45de-4abd-af5c-e874091fb5f7). U gebruikt deze id in Lenses om gebruikers van deze groep toe te wijzen aan de [juiste machtigingen](https://docs.lenses.io/install_setup/configuration/security.html#id3).  
 
 **De groep toewijzen aan de testgebruiker:**
 
-1. Ga naar **Azure Active Directory** en selecteer vervolgens **Gebruikers**.
-1. Selecteer de testgebruiker **B.Simon**.
-1. Selecteer **Groepen**.
-1. Selecteer bovenaan het scherm **Lidmaatschappen toevoegen**.
-1. Zoek en selecteer **LensesUsers**.
-1. Klik op **Selecteren**.
+1. Ga naar **Azure Active Directory** en selecteer vervolgens **Gebruikers** .
+1. Selecteer de testgebruiker **B.Simon** .
+1. Selecteer **Groepen** .
+1. Selecteer bovenaan het scherm **Lidmaatschappen toevoegen** .
+1. Zoek en selecteer **LensesUsers** .
+1. Klik op **Selecteren** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Lenses.io.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Lenses.io** in de lijst met toepassingen.
-1. Ga op de overzichtspagina van de app naar de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Ga op de overzichtspagina van de app naar de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![Schermopname van de koppeling Gebruikers en groepen.](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**.
+1. Selecteer **Gebruiker toevoegen** .
 
    ![Schermopname van de koppeling Gebruiker toevoegen.](common/add-assign-user.png)
 
-1. Selecteer **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
-1. In het dialoogvenster **Gebruikers en groepen** selecteert u **B.Simon** in de lijst Gebruikers. Klik vervolgens onder aan het scherm op de knop **Selecteren**.
-1. Als u een rolwaarde verwacht in de SAML-assertie, kiest u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik vervolgens onder aan het scherm op de knop **Selecteren**.
-1. Selecteer in het dialoogvenster **Toewijzing toevoegen** de knop **Toewijzen**.
+1. Selecteer **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
+1. In het dialoogvenster **Gebruikers en groepen** selecteert u **B.Simon** in de lijst Gebruikers. Klik vervolgens onder aan het scherm op de knop **Selecteren** .
+1. Als u een rolwaarde verwacht in de SAML-assertie, kiest u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik vervolgens onder aan het scherm op de knop **Selecteren** .
+1. Selecteer in het dialoogvenster **Toewijzing toevoegen** de knop **Toewijzen** .
 
 ## <a name="configure-lensesio-sso"></a>Eenmalige aanmelding voor Lenses.io configureren
 
-Als u eenmalige aanmelding wilt configureren in de **Lenses.io**-portal, installeert u het gedownloade **XML-bestand met federatieve metagegevens** op uw instantie van Lenses en [configureert u Lenses om eenmalige aanmelding in te schakelen](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses).
+Als u eenmalige aanmelding wilt configureren in de **Lenses.io** -portal, installeert u het gedownloade **XML-bestand met federatieve metagegevens** op uw instantie van Lenses en [configureert u Lenses om eenmalige aanmelding in te schakelen](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses).
 
 ### <a name="create-lensesio-test-group-permissions"></a>Machtigingen voor een Lenses.io-testgroep maken
 
-1. Als u een groep in Lenses wilt maken, gebruikt u de **object-id** van de groep **LensesUsers**. Dit is de id die u hebt gekopieerd uit de [maaksectie](#create-an-azure-ad-test-user-and-group).
+1. Als u een groep in Lenses wilt maken, gebruikt u de **object-id** van de groep **LensesUsers** . Dit is de id die u hebt gekopieerd uit de [maaksectie](#create-an-azure-ad-test-user-and-group).
 1. Wijs de gewenste machtigingen voor B.Simon toe.
 
 Zie [Azure - Lenses-groepstoewijzing](https://docs.lenses.io/install_setup/configuration/security.html#azure-groups) voor meer informatie.
@@ -164,20 +164,20 @@ Zie [Azure - Lenses-groepstoewijzing](https://docs.lenses.io/install_setup/confi
 
 In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u in het toegangsvenster de tegel Lenses.io selecteert, wordt u automatisch aangemeld bij de Lenses.io-portal. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie.
+Wanneer u in het toegangsvenster de tegel Lenses.io selecteert, wordt u automatisch aangemeld bij de Lenses.io-portal. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie.
 
 ## <a name="additional-resources"></a>Extra resources
 
 - [Eenmalige aanmelding instellen in uw exemplaar van Lenses.io](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure AD](./tutorial-list.md)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Wat is voorwaardelijke toegang in Azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure AD?](../conditional-access/overview.md)
 
 - [Lenses.io met Azure AD uitproberen](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Lenses.io beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Lenses.io beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)
