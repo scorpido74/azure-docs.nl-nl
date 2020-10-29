@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f92ff60dacd78687207c7523504182521700a7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423ac882c81582f2843eeba37d11c660662ad6e2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554495"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519398"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Netvision Compas
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Netvision Compas kunt integreren met Azure Acti
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Netvision Compas.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Netvision Compas ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
-* Zodra u Netvision Compas hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Zodra u Netvision Compas hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 
 ## <a name="adding-netvision-compas-from-the-gallery"></a>Netvision Compas toevoegen uit de galerie
@@ -48,16 +48,16 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 Om de integratie van Netvision Compas te configureren in Azure AD, moet u Netvision Compas uit de galerie toevoegen aan uw lijst van beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Netvision Compas**.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Netvision Compas** .
 1. Selecteer **Netvision Compas** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netvision-compas"></a>Azure AD-eenmalige aanmelding configureren en testen voor Netvision Compas
 
-Configureer en test eenmalige aanmelding van Azure AD met Netvision Compas met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Netvision Compas.
+Configureer en test eenmalige aanmelding van Azure AD met Netvision Compas met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Netvision Compas.
 
 Als u Azure AD-eenmalige aanmelding met Netvision Compas wilt configureren en testen, moet u de volgende stappen uitvoeren:
 
@@ -72,8 +72,8 @@ Als u Azure AD-eenmalige aanmelding met Netvision Compas wilt configureren en te
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in [Azure Portal](https://portal.azure.com/) op de pagina voor integratie van de toepassing **Netvision Compas** naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) op de pagina voor integratie van de toepassing **Netvision Compas** naar de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -101,35 +101,35 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot Netvision Compas.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Netvision Compas** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-netvision-compas-sso"></a>Eenmalige aanmelding voor Netvision Compas configureren
 
-In deze sectie schakelt u SAML SSO in **Netvision Compas**.
+In deze sectie schakelt u SAML SSO in **Netvision Compas** .
 1. Meld u aan bij **Netvision Compas** met een beheerdersaccount en open het beheergebied.
 
     ![Beheergebied](media/netvision-compas-tutorial/admin.png)
@@ -142,11 +142,11 @@ In deze sectie schakelt u SAML SSO in **Netvision Compas**.
 
     ![IDP toevoegen](media/netvision-compas-tutorial/idps-add.png)
 
-1. Selecteer **SAML** als **Provider Type**.
+1. Selecteer **SAML** als **Provider Type** .
 1. Voer betekenisvolle waarden in voor de velden **Display name** (Weergavenaam) en **Description** (Beschrijving).
-1. Wijs **Netvision Compas**-gebruikers toe aan de IDP door ze te selecteren in de lijst **Available users** (Beschikbare gebruikers). Selecteer vervolgens de knop **Add selected** (Geselecteerde toevoegen). Gebruikers kunnen ook aan de IDP worden toegewezen tijdens de inrichtingsprocedure.
+1. Wijs **Netvision Compas** -gebruikers toe aan de IDP door ze te selecteren in de lijst **Available users** (Beschikbare gebruikers). Selecteer vervolgens de knop **Add selected** (Geselecteerde toevoegen). Gebruikers kunnen ook aan de IDP worden toegewezen tijdens de inrichtingsprocedure.
 1. Klik voor de SAML-optie **Metadata** (Metagegevens) op de knop **Choose File** (Bestand kiezen) en selecteer het metagegevensbestand dat u eerder op de computer hebt opgeslagen.
-1. Klik op **Opslaan**.
+1. Klik op **Opslaan** .
 
     ![IDP bewerken](media/netvision-compas-tutorial/idp-edit.png)
 
@@ -167,16 +167,16 @@ In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD.
 
 ### <a name="using-the-access-panel-idp-initiated"></a>Het toegangsvenster gebruiken (geïnitieerd door IDP).
 
-Wanneer u in het toegangsvenster op de tegel Netvision Compas klikt, wordt u automatisch aangemeld bij het exemplaar van Netvision Compas waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Netvision Compas klikt, wordt u automatisch aangemeld bij het exemplaar van Netvision Compas waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ### <a name="directly-accessing-netvision-compas-sp-initiated"></a>Rechtstreekse toegang tot Netvision Compas (geïnitieerd door SP).
 
-1. Open de URL voor **Netvision Compas**. Bijvoorbeeld `https://tenant.compas.cloud`.
-1. Voer de **Netvision Compas**-gebruikersnaam in en selecteer **Volgende**.
+1. Open de URL voor **Netvision Compas** . Bijvoorbeeld `https://tenant.compas.cloud`.
+1. Voer de **Netvision Compas** -gebruikersnaam in en selecteer **Volgende** .
 
     ![Aangemelde gebruiker](media/netvision-compas-tutorial/login-user.png)
 
-1. **(optioneel)** Als de gebruiker aan meerdere IDP's in **Netvision Compas** is toegewezen, wordt een lijst met beschikbare IDP's weergegeven. Selecteer de Azure AD-IDP die u eerder hebt geconfigureerd in **Netvision Compas**.
+1. **(optioneel)** Als de gebruiker aan meerdere IDP's in **Netvision Compas** is toegewezen, wordt een lijst met beschikbare IDP's weergegeven. Selecteer de Azure AD-IDP die u eerder hebt geconfigureerd in **Netvision Compas** .
 
     ![Aanmeldingsmethode kiezen](media/netvision-compas-tutorial/login-choose.png)
 
@@ -184,12 +184,12 @@ Wanneer u in het toegangsvenster op de tegel Netvision Compas klikt, wordt u aut
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Netvision Compas met Azure AD uitproberen](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

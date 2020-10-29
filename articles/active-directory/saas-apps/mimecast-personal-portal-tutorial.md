@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c006e38d30e4e32645024a8c307a18767e8a1090
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ad7b5b97149d38b64d75f5a02cd0aa776893e832
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91941055"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522560"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>Zelfstudie: Azure Active Directory-integratie met Mimecast Personal Portal voor eenmalige aanmelding
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Mimecast Personal Portal kunt integreren met Az
 * Uw gebruikers zich automatisch laten aanmelden bij Mimecast Personal Portal met hun Azure AD-account.
 * Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,22 +40,22 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Mimecast Personal Portal ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
-* Zodra u Mimecast Personal Portal hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u Mimecast Personal Portal hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-mimecast-personal-portal-from-the-gallery"></a>Mimecast Personal Portal toevoegen vanuit de galerie
 
 Voor het configureren van de integratie van Mimecast Personal Portal in Azure AD moet u Mimecast Personal Portal uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
 1. Typ in de sectie **Toevoegen uit de galerie** **Mimecast Personal Portal** in het zoekvak.
 1. Selecteer **Mimecast Personal Portal** uit het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mimecast-personal-portal"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Mimecast Personal Portal
 
-Configureer en test eenmalige aanmelding van Azure AD met Mimecast Personal Portal met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Mimecast Personal Portal.
+Configureer en test eenmalige aanmelding van Azure AD met Mimecast Personal Portal met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Mimecast Personal Portal.
 
 Als u eenmalige aanmelding van Azure AD met Mimecast Personal Portal wilt configureren en testen, moet u de volgende stappen voltooien:
 
@@ -70,8 +70,8 @@ Als u eenmalige aanmelding van Azure AD met Mimecast Personal Portal wilt config
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azure-portal.
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) op de toepassingsintegratiepagina van **Mimecast Personal Portal** naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/) op de toepassingsintegratiepagina van **Mimecast Personal Portal** naar de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -89,21 +89,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
     | Offshore        | `https://jer-api.mimecast.com/sso/<accountcode>`|
 
     > [!NOTE]
-    > U vindt de waarde `accountcode` in Mimecast Personal Portal onder **Account** > **Instellingen** > **Accountcode**. Voeg de `accountcode` toe aan de id.
+    > U vindt de waarde `accountcode` in Mimecast Personal Portal onder **Account** > **Instellingen** > **Accountcode** . Voeg de `accountcode` toe aan de id.
 
-    b. Typ een URL in het tekstvak **Antwoord-URL**:
-
-    | Regio  |  Waarde |
-    | --------------- | --------------- |
-    | Europa          | `https://eu-api.mimecast.com/login/saml`|
-    | Verenigde Staten   | `https://us-api.mimecast.com/login/saml`|
-    | Zuid-Afrika    | `https://za-api.mimecast.com/login/saml`|
-    | Australië       | `https://au-api.mimecast.com/login/saml`|
-    | Offshore        | `https://jer-api.mimecast.com/login/saml`|
-
-1. Als u de toepassing wilt configureren in door **SP**geïnitieerde modus:
-
-    Typ een URL in het tekstvak **Aanmeldings-URL**:
+    b. Typ een URL in het tekstvak **Antwoord-URL** :
 
     | Regio  |  Waarde |
     | --------------- | --------------- |
@@ -113,7 +101,19 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
     | Australië       | `https://au-api.mimecast.com/login/saml`|
     | Offshore        | `https://jer-api.mimecast.com/login/saml`|
 
-1. Klik op **Opslaan**.
+1. Als u de toepassing wilt configureren in door **SP** geïnitieerde modus:
+
+    Typ een URL in het tekstvak **Aanmeldings-URL** :
+
+    | Regio  |  Waarde |
+    | --------------- | --------------- |
+    | Europa          | `https://eu-api.mimecast.com/login/saml`|
+    | Verenigde Staten   | `https://us-api.mimecast.com/login/saml`|
+    | Zuid-Afrika    | `https://za-api.mimecast.com/login/saml`|
+    | Australië       | `https://au-api.mimecast.com/login/saml`|
+    | Offshore        | `https://jer-api.mimecast.com/login/saml`|
+
+1. Klik op **Opslaan** .
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
@@ -123,45 +123,45 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Mimecast Personal Portal.
 
-1. Selecteer in de Azure-portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in de Azure-portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Mimecast Personal Portal** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-mimecast-personal-portal-sso"></a>Eenmalige aanmelding voor Mimecast Personal Portal configureren
 
 1. Meld u in een ander browservenster bij de Mimecast-beheerconsole aan.
 
-1. Ga naar **Administration** > **Services** > **Applications**.
+1. Ga naar **Administration** > **Services** > **Applications** .
 
     ![Schermopname van het Mimecast-venster met Applications geselecteerd.](./media/mimecast-personal-portal-tutorial/services.png)
 
-1. Klik op het tabblad **Authentication Profiles**.
+1. Klik op het tabblad **Authentication Profiles** .
     
     ![Schermopname van het tabblad Application met Authentication Profiles geselecteerd.](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
 
-1. Klik op het tabblad **New Authentication Profile**.
+1. Klik op het tabblad **New Authentication Profile** .
 
     ![Schermopname met New Authentication Profile geselecteerd.](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
 
@@ -169,7 +169,7 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
     ![Schermopname met New Authentication Profile geselecteerd.](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
 
-1. Voer de volgende stappen uit op de pagina **SAML Configuration for Mimecast Personal Portal**:
+1. Voer de volgende stappen uit op de pagina **SAML Configuration for Mimecast Personal Portal** :
 
     ![Schermopname laat zien waar u Enforce SAML Authentication for Administration Console selecteert.](./media/mimecast-personal-portal-tutorial/sso-settings.png)
 
@@ -177,17 +177,17 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
     b. Plak in het tekstvak **Metadata URL** de waarde van **App Federation Metadata URL** die u uit de Azure-portal hebt gekopieerd.
 
-    c. Klik op **Import**. Na het importeren van de metagegevens-URL, worden de velden automatisch ingevuld. U hoeft geen actie uit te voeren voor deze velden.
+    c. Klik op **Import** . Na het importeren van de metagegevens-URL, worden de velden automatisch ingevuld. U hoeft geen actie uit te voeren voor deze velden.
 
     d. Schakel de selectievakjes **Use Password protected Context** en **Use Integrated Authentication Context** uit.
 
-    e. Klik op **Opslaan**.
+    e. Klik op **Opslaan** .
 
 ### <a name="create-mimecast-personal-portal-test-user"></a>Een testgebruiker maken in Mimecast Personal Portal
 
 1. Meld u in een ander browservenster bij de Mimecast-beheerconsole aan.
 
-1. Ga naar **Administration** > **Directories** > **Internal Directories**.
+1. Ga naar **Administration** > **Directories** > **Internal Directories** .
 
     ![Schermopname van de pagina SAML Configuration for Mimecast Personal Portal waar u de beschreven waarden kunt invoeren.](./media/mimecast-personal-portal-tutorial/internal-directories.png)
 
@@ -195,7 +195,7 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
     ![Schermopname van het Mimecast-venster met Internal Directories geselecteerd.](./media/mimecast-personal-portal-tutorial/domain-name.png)
 
-1. Klik op het tabblad **New Address**.
+1. Klik op het tabblad **New Address** .
 
     ![Schermopname van het geselecteerde domein.](./media/mimecast-personal-portal-tutorial/new-address.png)
 
@@ -205,13 +205,13 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
     a. Voer in het tekstvak **Email Address** het e-mailadres van de gebruiker in, bijvoorbeeld `B.Simon@yourdomainname.com`.
 
-    b. Voer in het tekstvak **Global Name** de volledige naam van de gebruiker in bij **Full name**.
+    b. Voer in het tekstvak **Global Name** de volledige naam van de gebruiker in bij **Full name** .
 
     c. Voer in de tekstvakken **Password** en **Confirm Password** het wachtwoord van de gebruiker in.
 
     d. Schakel het selectievakje **Force Change at Login** in.
 
-    e. Klik op **Opslaan**.
+    e. Klik op **Opslaan** .
 
     f. Als u rollen aan de gebruiker wilt toewijzen, klikt u op **Role Edit** en wijst u de vereiste rol toe aan de gebruiker volgens de vereisten van uw organisatie.
 
@@ -222,18 +222,18 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Mimecast Personal Portal in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Mimecast Personal Portal waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Mimecast Personal Portal in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Mimecast Personal Portal waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Mimecast Personal Portal met Azure AD proberen](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Mimecast Personal Portal beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mimecast Personal Portal beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)

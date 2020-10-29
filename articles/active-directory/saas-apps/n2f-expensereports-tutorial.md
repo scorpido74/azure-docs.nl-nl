@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 9eee16c1ba207eb35633d7ec1a7167300d40d662
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: b260e51321e14a6ea1d1ee75f88ca7564b83d492
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91941008"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Zelfstudie: Azure Active Directory-integratie met N2F - Onkostendeclaratie
 
@@ -27,7 +27,7 @@ De integratie van N2F - Onkostendeclaratie met Azure AD biedt de volgende voorde
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij N2F - Onkostendeclaratie (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,11 +49,11 @@ Om de integratie van N2F - Onkostendeclaratie in Azure AD te configureren, moet 
 
 **Voer de volgende stappen uit om N2F - Onkostendeclaratie toe te voegen uit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Om de integratie van N2F - Onkostendeclaratie in Azure AD te configureren, moet 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **N2F - Onkostendeclaratie**, selecteer **N2F - Onkostendeclaratie** in het resultatenvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **N2F - Onkostendeclaratie** , selecteer **N2F - Onkostendeclaratie** in het resultatenvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![N2F - Onkostendeclaratie in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u eenmalige aanmelding van Azure AD met N2F - Onkostendeclaratie op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met N2F - Onkostendeclaratie op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in N2F - Onkostendeclaratie tot stand is gebracht.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met N2F - Onkostendeclaratie te configureren en testen:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met N2F - Onkostendeclaratie te configureren:
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **N2F - Onkostendeclaratie** en selecteer **Eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **N2F - Onkostendeclaratie** en selecteer **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -129,11 +129,11 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met N2F - Onko
 
     ![Schermopname met Geavanceerde instellingen geselecteerd.](./media/n2f-expensereports-tutorial/configure1.png)
 
-3. Selecteer het tabblad **Accountinstellingen**.
+3. Selecteer het tabblad **Accountinstellingen** .
 
     ![Schermopname met Accountinstellingen geselecteerd.](./media/n2f-expensereports-tutorial/configure2.png)
 
-4. Selecteer **Verificatie** en selecteer vervolgens het tabblad **+ Een verificatiemethode toevoegen**.
+4. Selecteer **Verificatie** en selecteer vervolgens het tabblad **+ Een verificatiemethode toevoegen** .
 
     ![Schermopname van de accountinstelling Verificatie waar u een verificatiemethode kunt instellen.](./media/n2f-expensereports-tutorial/configure3.png)
 
@@ -149,13 +149,13 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met N2F - Onko
 
     b. Plak in het tekstvak **Metagegevens-URL** de waarde van **App-URL voor federatieve metagegevens** die u uit de Azure-portal hebt gekopieerd.
 
-    c. Klik op **Opslaan**.
+    c. Klik op **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -167,20 +167,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot N2F - Onkostendeclaratie.
 
-1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **N2F - Onkostendeclaratie**.
+1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **N2F - Onkostendeclaratie** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -188,11 +188,11 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
     ![De koppeling naar N2F - Onkostendeclaratie in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -200,7 +200,7 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-n2f---expense-reports-test-user"></a>Testgebruiker voor N2F - Onkostendeclaratie maken
 
@@ -218,7 +218,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij N2F - Onkostendecla
 
     ![Schermopname met Gebruikers geselecteerd.](./media/n2f-expensereports-tutorial/user1.png)
 
-4. Selecteer het tabblad **+ Nieuwe gebruiker**.
+4. Selecteer het tabblad **+ Nieuwe gebruiker** .
 
     ![Schermopname van de optie Nieuwe gebruiker.](./media/n2f-expensereports-tutorial/user2.png)
 
@@ -226,15 +226,15 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij N2F - Onkostendecla
 
     ![Schermopname van de sectie waarin u de beschreven waarden kunt invoeren.](./media/n2f-expensereports-tutorial/user3.png)
 
-    a. Voer in het tekstvak **E-mailadres** het e-mailadres in van de gebruiker, bijvoorbeeld **brittasimon\@contoso.com**.
+    a. Voer in het tekstvak **E-mailadres** het e-mailadres in van de gebruiker, bijvoorbeeld **brittasimon\@contoso.com** .
 
-    b. Voer in het tekstvak **First name** de voornaam van de gebruiker in, zoals **Britta**.
+    b. Voer in het tekstvak **First name** de voornaam van de gebruiker in, zoals **Britta** .
 
-    c. Voer in het tekstvak **Volledige naam** de volledige naam van de gebruiker in, bijvoorbeeld **Britta Simon**.
+    c. Voer in het tekstvak **Volledige naam** de volledige naam van de gebruiker in, bijvoorbeeld **Britta Simon** .
 
     d. Kies **Rol, Directe manager (N+1)** en **Divisie** op basis van de behoeften van uw organisatie.
 
-    e. Klik op **Valideren en uitnodiging verzenden**.
+    e. Klik op **Valideren en uitnodiging verzenden** .
 
     > [!NOTE]
     > Als u problemen ondervindt tijdens het toevoegen van de gebruiker, neemt u contact op met het [ondersteuningsteam van N2F - Onkostendeclaratie](mailto:support@n2f.com)
@@ -243,13 +243,12 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij N2F - Onkostendecla
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel N2F - Onkostendeclaratie klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van N2F - Onkostendeclaratie waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel N2F - Onkostendeclaratie klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van N2F - Onkostendeclaratie waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

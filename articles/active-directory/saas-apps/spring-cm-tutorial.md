@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
-ms.openlocfilehash: d043386f7d0a4713c605f87a9f7bc9f65183029b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7348cc2559e73c83ea4c65bc67efebcfe2b031d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88517075"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Zelfstudie: Integratie van Azure Active Directory met SpringCM
 
@@ -27,7 +27,7 @@ Integratie van SpringCM met Azure AD heeft de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij SpringCM (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,11 +49,11 @@ Voor het configureren van de integratie van SpringCM met Microsoft Azure Active 
 
 **Voer de volgende stappen uit om SpringCM toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** klikt u in het navigatievenster aan de linkerkant op het pictogram **Azure Active Directory**.
+1. In de **[Azure-portal](https://portal.azure.com)** klikt u in het navigatievenster aan de linkerkant op het pictogram **Azure Active Directory** .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Voor het configureren van de integratie van SpringCM met Microsoft Azure Active 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **SpringCM**, selecteer **SpringCM** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **SpringCM** , selecteer **SpringCM** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![SpringCM in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie gaat u Azure AD-eenmalige aanmelding bij SpringCM configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie gaat u Azure AD-eenmalige aanmelding bij SpringCM configureren en testen op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in SpringCM tot stand is gebracht.
 
 Als u Azure AD-eenmalige aanmelding met SpringCM wilt configureren en testen, moet u de volgende bouwstenen uitvoeren:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configureren met SpringCM:
 
-1. In de [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **SpringCM**.
+1. In de [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **SpringCM** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -122,9 +122,9 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 ### <a name="configure-springcm-single-sign-on"></a>Eenmalige aanmelding voor SpringCM configureren
 
-1. Meld u in een andere browser als beheerder aan bij de bedrijfssite van **SpringCM**.
+1. Meld u in een andere browser als beheerder aan bij de bedrijfssite van **SpringCM** .
 
-1. Klik in het menu bovenaan op **GO TO**, klik op **Preferences**en klik vervolgens in de sectie **Account Preferences** op **SAML SSO**.
+1. Klik in het menu bovenaan op **GO TO** , klik op **Preferences** en klik vervolgens in de sectie **Account Preferences** op **SAML SSO** .
    
     ![Eenmalige aanmelding op basis van SAML](./media/spring-cm-tutorial/ic797051.png "Eenmalige aanmelding op basis van SAML")
 
@@ -132,21 +132,21 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
    
     ![Identity Provider Configuration](./media/spring-cm-tutorial/ic797052.png "Identity Provider Configuration")
     
-    a. Als u het gedownloade Azure Active Directory-certificaat wilt uploaden, klikt u op **Select Issuer Certificate** of **Change Issuer Certificate**.
+    a. Als u het gedownloade Azure Active Directory-certificaat wilt uploaden, klikt u op **Select Issuer Certificate** of **Change Issuer Certificate** .
     
     b. Plak in het tekstvak **Issuer** de waarde van de **Azure AD-id** die u uit Azure Portal hebt gekopieerd.
     
     c. Plak in het tekstvak voor het **Service Provider (SP) Initiated Endpoint** de waarde van de **aanmeldings-URL** die u uit Azure Portal hebt gekopieerd.
             
-    d. Stel **SAML Enabled** in op **Enable**.
+    d. Stel **SAML Enabled** in op **Enable** .
 
-    e. Klik op **Opslaan**.
+    e. Klik op **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -158,19 +158,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door haar toegang te geven tot SpringCM.
 
-1. In Azure Portal selecteert u **Enterprise Applications** en vervolgens **All applications** en **SpringCM**.
+1. In Azure Portal selecteert u **Enterprise Applications** en vervolgens **All applications** en **SpringCM** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -178,11 +178,11 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
     ![De koppeling naar SpringCM in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -190,7 +190,7 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-springcm-test-user"></a>Testgebruiker maken voor SpringCM
 
@@ -201,23 +201,23 @@ Om Azure Active Directory-gebruikers in staat te stellen zich aan te melden bij 
 
 **Voer de volgende stappen uit als u een gebruikersaccount voor SpringCM wilt inrichten:**
 
-1. Meld u als beheerder aan bij de bedrijfssite van **SpringCM**.
+1. Meld u als beheerder aan bij de bedrijfssite van **SpringCM** .
 
-1. Klik op **GO TO** en klik vervolgens op **ADDRESS BOOK**.
+1. Klik op **GO TO** en klik vervolgens op **ADDRESS BOOK** .
    
     ![Create User](./media/spring-cm-tutorial/ic797054.png "Gebruiker maken")
 
-1. Klik op **Gebruiker maken**.
+1. Klik op **Gebruiker maken** .
 
-1. Selecteer een **User Role**.
+1. Selecteer een **User Role** .
 
-1. Selecteer **Send Activation Email**.
+1. Selecteer **Send Activation Email** .
 
 1. Typ de voornaam, achternaam en het e-mailadres van een geldig Azure Active Directory-gebruikersaccount dat u wilt inrichten in de desbetreffende tekstvakken.
 
-1. Voeg de gebruiker toe aan een **beveiligingsgroep**.
+1. Voeg de gebruiker toe aan een **beveiligingsgroep** .
 
-1. Klik op **Opslaan**.
+1. Klik op **Opslaan** .
 
    > [!NOTE]
    > U kunt ook alle andere SpringCM-hulpprogramma's voor het maken van gebruikersaccounts of API's van SpringCM gebruiken om Microsoft Azure Active Directory-gebruikersaccounts in te richten.
@@ -226,13 +226,12 @@ Om Azure Active Directory-gebruikers in staat te stellen zich aan te melden bij 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel SpringCM klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van SpringCM waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel SpringCM klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van SpringCM waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

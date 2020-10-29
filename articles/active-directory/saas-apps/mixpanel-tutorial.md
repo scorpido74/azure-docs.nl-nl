@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 123b85905a5c56949a0c1d35bb1e37215ed8097c
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: dfd262c1dc7aa2e6cfa6ae8835210086dd45e4f6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940715"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Zelfstudie: Azure Active Directory-integratie met Mixpanel
 
@@ -27,7 +27,7 @@ De integratie van Mixpanel met Azure AD biedt de volgende voordelen:
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Mixpanel (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,11 +49,11 @@ Voor het configureren van de integratie van Mixpanel in Azure AD moet u Mixpanel
 
 **Als u Mixpanel wilt toevoegen vanuit de galerie, moet u de volgende stappen uitvoeren:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Voor het configureren van de integratie van Mixpanel in Azure AD moet u Mixpanel
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Mixpanel**, selecteer **Mixpanel** in de resultaten en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Mixpanel** , selecteer **Mixpanel** in de resultaten en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![Mixpanel in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met Mixpanel op basis van een testgebruiker met de naam **Britta Simon**.
+In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met Mixpanel op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Mixpanel tot stand is gebracht.
 
 Als u Azure AD-eenmalige aanmelding wilt configureren en testen met Mixpanel, dient u de volgende procedures te voltooien:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Mixpanel moet u de volgende stappen uitvoeren:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/) **Eenmalige aanmelding** op de integratiepagina van de toepassing **Mixpanel**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/) **Eenmalige aanmelding** op de integratiepagina van de toepassing **Mixpanel** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -128,25 +128,25 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Mi
    
     ![Eenmalige aanmelding in Mixpanel](./media/mixpanel-tutorial/tutorial_mixpanel_06.png) 
 
-3. Klik op het tabblad **Access security** en klik vervolgens op **Change settings**.
+3. Klik op het tabblad **Access security** en klik vervolgens op **Change settings** .
    
     ![Schermopname van het tabblad Access security waar u instellingen kunt wijzigen.](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
-4. Klik in het dialoogvenster **Change your certificate** op **Choose file** om uw gedownloade certificaat te uploaden en klik vervolgens op **NEXT**.
+4. Klik in het dialoogvenster **Change your certificate** op **Choose file** om uw gedownloade certificaat te uploaden en klik vervolgens op **NEXT** .
    
     ![Schermopname van het dialoogvenster 'Change your certificate' (Uw certificaat wijzigen), waarin u een certificaatbestand kunt kiezen.](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
-5.  Plak in het tekstvak Authentication URL op de pagina **Change your authentication URL** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal en klik vervolgens op **NEXT**.
+5.  Plak in het tekstvak Authentication URL op de pagina **Change your authentication URL** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal en klik vervolgens op **NEXT** .
    
     ![Schermopname van het deelvenster 'Change your authentication URL' (Uw verificatie-URL wijzigen), waar u uw aanmeldings-URL kunt kopiëren.](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
-6. Klik op **Gereed**.
+6. Klik op **Gereed** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -158,20 +158,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Mixpanel.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Mixpanel**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **Mixpanel** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -179,11 +179,11 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling naar Mixpanel in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -191,7 +191,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-mixpanel-test-user"></a>Testgebruiker voor Mixpanel maken
 
@@ -201,13 +201,13 @@ Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon
 
 2. Klik onderaan de pagina op de knop met het tandwiel om het venster **Settings** te openen.
 
-3. Klik op het tabblad **Team**.
+3. Klik op het tabblad **Team** .
 
 4. Typ in het tekstvak **team member** het e-mailadres van Britta van Azure.
    
     ![Schermopname van het tabblad Team waar u een adres voor een uitnodiging toevoegt.](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
-5. Klik op **Uitnodigen**. 
+5. Klik op **Uitnodigen** . 
 
 > [!Note]
 > De gebruiker krijgt een e-mail om het profiel in te stellen.
@@ -216,13 +216,12 @@ Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Mixpanel klikt, wordt u automatisch aangemeld bij de instantie van Mixpanel waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Mixpanel klikt, wordt u automatisch aangemeld bij de instantie van Mixpanel waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

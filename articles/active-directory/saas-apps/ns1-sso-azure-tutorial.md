@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
-ms.openlocfilehash: d0fee044506a9a19e09478ef8d70b3719ecc167a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7fad0af26d15bc77a52d55309c594937ba3be13
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554253"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518616"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Zelfstudie: Integratie van eenmalige aanmelding bij Azure Active Directory met NS1 SSO voor Azure
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u NS1 SSO voor Azure kunt integreren met Azure AD
 * Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij NS1 SSO voor Azure.
 * Uw accounts op een centrale locatie beheren, namelijk de Azure-portal.
 
-Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * NS1 SSO voor Azure ondersteunt door SP en IDP geïnitieerde eenmalige aanmelding.
-* Nadat u NS1 SSO voor Azure hebt geconfigureerd, kunt u sessiebeheer afdwingen. Dit biedt realtime bescherming tegen de exfiltratie en infiltratie van gevoelige bedrijfsgegevens. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Nadat u NS1 SSO voor Azure hebt geconfigureerd, kunt u sessiebeheer afdwingen. Dit biedt realtime bescherming tegen de exfiltratie en infiltratie van gevoelige bedrijfsgegevens. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 
 ## <a name="add-ns1-sso-for-azure-from-the-gallery"></a>NS1 SSO voor Azure toevoegen vanuit de galerie
@@ -48,16 +48,16 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 Om de integratie van NS1 SSO voor Azure in Azure AD te configureren, moet u NS1 SSO voor Azure uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
-1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **NS1 SSO voor Azure**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** .
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **NS1 SSO voor Azure** .
 1. Selecteer **NS1 SSO voor Azure** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ns1-sso-for-azure"></a>Eenmalige aanmelding van Azure AD configureren en testen voor NS1 SSO voor Azure
 
-Configureer en test eenmalige aanmelding van Azure AD met NS1 SSO voor Azure met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in NS1 SSO voor Azure.
+Configureer en test eenmalige aanmelding van Azure AD met NS1 SSO voor Azure met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in NS1 SSO voor Azure.
 
 Hier volgen de algemene stappen voor het configureren en testen van eenmalige aanmelding van Azure AD met NS1 SSO voor Azure:
 
@@ -75,8 +75,8 @@ Hier volgen de algemene stappen voor het configureren en testen van eenmalige aa
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **NS1 SSO voor Azure** de sectie **Beheren**. Selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **NS1 SSO voor Azure** de sectie **Beheren** . Selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het potloodpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Schermopname van de pagina Eenmalige aanmelding instellen met SAML, met het potloodpictogram gemarkeerd](common/edit-urls.png)
@@ -102,7 +102,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     ![Schermopname van de sectie Gebruikerskenmerken & Claims, waarbij de kenmerknaam is gemarkeerd](./media/ns1-sso-for-azure-tutorial/attribute-claim-edit.png)
 
-1. Selecteer **Transformatie**.
+1. Selecteer **Transformatie** .
 
     ![Schermopname van de sectie Claim beheren, met Transformatie gemarkeerd](./media/ns1-sso-for-azure-tutorial/prefix-edit.png)
 
@@ -110,13 +110,13 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     ![Schermopname van de sectie Transformatie beheren, waarbij verschillende velden zijn gemarkeerd](./media/ns1-sso-for-azure-tutorial/prefix-added.png)
 
-    1. Selecteer **ExactMailPrefix()** als **Transformatie**.
+    1. Selecteer **ExactMailPrefix()** als **Transformatie** .
 
-    1. Selecteer **user.userprincipalname** als **Parameter 1**.
+    1. Selecteer **user.userprincipalname** als **Parameter 1** .
 
-    1. Selecteer **Toevoegen**.
+    1. Selecteer **Toevoegen** .
 
-    1. Selecteer **Opslaan**.
+    1. Selecteer **Opslaan** .
 
 1. Ga naar de pagina **Eenmalige aanmelding met SAML instellen** en selecteer in de sectie **SAML-handtekeningcertificaat** de knop Kopiëren. Hiermee wordt de URL van de **App-URL voor federatieve metagegevens** gekopieerd en op uw computer opgeslagen.
 
@@ -126,32 +126,32 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
 
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het veld **Wachtwoord**.
-   1. Selecteer **Maken**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het veld **Wachtwoord** .
+   1. Selecteer **Maken** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot NS1 SSO voor Azure.
 
-1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen**.
-1. Selecteer in de lijst met toepassingen de optie **NS1 SSO voor Azure**.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen** .
+1. Selecteer in de lijst met toepassingen de optie **NS1 SSO voor Azure** .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![Het gedeelte Beheren, met Gebruikers en groepen gemarkeerd](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**. Selecteer **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** . Selecteer **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Schermopname van de pagina Gebruikers en groepen, met Gebruiker toevoegen gemarkeerd](common/add-assign-user.png)
 
-1. Selecteer in het dialoogvenster **Gebruikers en groepen** in de lijst met gebruikers **B.Simon**. Kies vervolgens onderaan het scherm de knop **Selecteren**.
-1. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens onderaan het scherm de knop **Selecteren**.
-1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** in de lijst met gebruikers **B.Simon** . Kies vervolgens onderaan het scherm de knop **Selecteren** .
+1. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens onderaan het scherm de knop **Selecteren** .
+1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen** .
 
 ## <a name="configure-ns1-sso-for-azure-sso"></a>NS1 SSO voor Azure SSO configureren
 
@@ -165,16 +165,16 @@ In deze sectie maakt u een gebruiker met de naam B.Simon in NS1 SSO voor Azure. 
 
 In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel NS1 SSO voor Azure in het Toegangsvenster selecteert, wordt u automatisch aangemeld bij de NS1 SSO voor Azure waarvoor u SSO hebt ingesteld. Zie [Inleiding tot het toegangsvenster](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie.
+Wanneer u de tegel NS1 SSO voor Azure in het Toegangsvenster selecteert, wordt u automatisch aangemeld bij de NS1 SSO voor Azure waarvoor u SSO hebt ingesteld. Zie [Inleiding tot het toegangsvenster](../user-help/my-apps-portal-end-user-access.md) voor meer informatie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](./tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [NS1 SSO voor Azure proberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

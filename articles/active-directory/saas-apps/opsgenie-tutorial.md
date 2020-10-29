@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 8958e16ef4b1b7033fa0757e2a70eb053896b143
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: a71c29032730e0724213f9f5ef17f7336c188741
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996567"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516678"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met OpsGenie
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u OpsGenie integreert met Azure AD (Azure Active 
 * Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij OpsGenie.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,22 +40,22 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * OpsGenie ondersteunt door **IDP** geïnitieerde eenmalige aanmelding
-* Zodra u OpsGenie hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u OpsGenie hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-opsgenie-from-the-gallery"></a>OpsGenie toevoegen vanuit de galerie
 
 Voor het configureren van de integratie van OpsGenie met Microsoft Azure Active Directory moet u OpsGenie vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
 1. Typ in de sectie **Toevoegen vanuit de galerie** **OpsGenie** in het zoekvak.
 1. Selecteer **OpsGenie** in de resultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-opsgenie"></a>Eenmalige aanmelding van Azure AD configureren en testen voor OpsGenie
 
-Configureer en test eenmalige aanmelding van Azure AD met OpsGenie met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in OpsGenie.
+Configureer en test eenmalige aanmelding van Azure AD met OpsGenie met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in OpsGenie.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met OpsGenie te configureren en te testen:
 
@@ -70,8 +70,8 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met OpsGenie te
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **OpsGenie** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **OpsGenie** de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -97,45 +97,45 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot OpsGenie.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **OpsGenie** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-opsgenie-sso"></a>Eenmalige aanmelding voor OpsGenie configureren
 
 1. Open een ander browserexemplaar en meld u vervolgens aan bij OpsGenie als beheerder.
 
-2. Klik op **Instellingen**en klik vervolgens op het tabblad **Eenmalige aanmelding** .
+2. Klik op **Instellingen** en klik vervolgens op het tabblad **Eenmalige aanmelding** .
    
     ![Eenmalige aanmelding voor OpsGenie](./media/opsgenie-tutorial/tutorial-opsgenie-06.png)
 
-3. Als u eenmalige aanmelding wilt inschakelen, selecteert u **Ingeschakeld**.
+3. Als u eenmalige aanmelding wilt inschakelen, selecteert u **Ingeschakeld** .
    
     ![Schermopname van het selectievakje Ingeschakeld geselecteerd.](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
-4. Klik in de sectie **Provider** op het tabblad **Azure Active Directory**.
+4. Klik in de sectie **Provider** op het tabblad **Azure Active Directory** .
    
     ![Schermopname van de sectie Provider met het tabblad Azure Active Directory geselecteerd.](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
@@ -153,7 +153,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     
     c. Als u eenmalige aanmelding wilt inschakelen, schakelt u de knop **Eenmalige aanmelding inschakelen** in.
 
-    d. Klik op **Instellingen voor eenmalige aanmelding toepassen**.
+    d. Klik op **Instellingen voor eenmalige aanmelding toepassen** .
 
 ### <a name="create-opsgenie-test-user"></a>OpsGenie-testgebruiker maken
 
@@ -165,7 +165,7 @@ Het doel van dit gedeelte is het maken van een gebruiker met de naam B.Simon in 
    
     ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial-opsgenie-10.png) 
 
-3. Klik op **Add User**.
+3. Klik op **Add User** .
 
 4. Voer in het dialoogvenster **Add User** de volgende stappen uit:
    
@@ -173,9 +173,9 @@ Het doel van dit gedeelte is het maken van een gebruiker met de naam B.Simon in 
    
     a. Typ in het tekstvak **E-mail** het e-mailadres van B. Simon dat is geregistreerd in Azure Active Directory.
    
-    b. Typ **B. Simon** in het tekstvak **Volledige naam**.
+    b. Typ **B. Simon** in het tekstvak **Volledige naam** .
    
-    c. Klik op **Opslaan**. 
+    c. Klik op **Opslaan** . 
 
 > [!NOTE]
 > B. Simon ontvangt een e-mailbericht met instructies voor het instellen van het profiel.
@@ -184,16 +184,16 @@ Het doel van dit gedeelte is het maken van een gebruiker met de naam B.Simon in 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel OpsGenie in het toegangsvenster klikt, wordt u automatisch aangemeld bij het OpsGenie-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel OpsGenie in het toegangsvenster klikt, wordt u automatisch aangemeld bij het OpsGenie-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Probeer OpsGenie met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

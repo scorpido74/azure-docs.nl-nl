@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.openlocfilehash: fade4176cbbf432aabae4422553a3caf0235ebed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f20849e4085adcca909d990a2ae9fb7b9751220b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88526411"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520095"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Zelfstudie: Azure Active Directory-integratie voor eenmalige aanmelding met Workplace by Facebook
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Workplace by Facebook integreert met Azure Acti
 * Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Workplace by Facebook.
 * Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,22 +46,22 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * Workplace by Facebook ondersteunt **just-in-time inrichten**
 * Workplace by Facebook ondersteunt **[automatisch inrichten van gebruikers](workplacebyfacebook-provisioning-tutorial.md)**
 * De Workplace by Facebook-toepassing kan nu worden geconfigureerd met Azure AD voor het inschakelen van eenmalige aanmelding. In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
-* Zodra u Workplace by Facebook hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Zodra u Workplace by Facebook hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Workplace by Facebook toevoegen vanuit de galerie
 
 Om de integratie van Workplace by Facebook in Azure AD te configureren, moet u Workplace by Facebook vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
 1. Typ in de sectie **Toevoegen uit de galerie** **Workplace by Facebook** in het zoekvak.
 1. Selecteer **Workplace by Facebook** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-sso-for-workplace-by-facebook"></a>Eenmalige aanmelding van Azure AD voor Workplace by Facebook configureren en testen
 
-Configureer en test eenmalige aanmelding van Azure AD met Workplace by Facebook met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Workplace by Facebook.
+Configureer en test eenmalige aanmelding van Azure AD met Workplace by Facebook met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Workplace by Facebook.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Workplace by Facebook te configureren en te testen:
 
@@ -76,8 +76,8 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Workplace b
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azure-portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Workplace by Facebook** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Workplace by Facebook** de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -105,31 +105,31 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Workplace by Facebook.
 
-1. Selecteer in de Azure-portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in de Azure-portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Workplace by Facebook** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-workplace-by-facebook-sso"></a>Eenmalige aanmelding voor Workplace by Facebook configureren
 
@@ -137,7 +137,7 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
     ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
 
-1. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op **Workplace by Facebook instellen**. U wordt naar de toepassing Workplace by Facebook geleid. Geef hier de Administrator-referenties op om u aan te melden bij Workplace by Facebook. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 5 geautomatiseerd.
+1. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op **Workplace by Facebook instellen** . U wordt naar de toepassing Workplace by Facebook geleid. Geef hier de Administrator-referenties op om u aan te melden bij Workplace by Facebook. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 5 geautomatiseerd.
 
     ![Instelling configureren](common/setup-sso.png)
 
@@ -146,13 +146,13 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
     > [!NOTE]
     > Als onderdeel van het SAML-verificatieproces kan Workplace queryreeksen van maximaal 2,5 kB gebruiken om parameters door te geven aan Azure AD.
 
-1. Navigeer in het navigatievenster aan de linkerkant naar het tabblad **Beveiliging** > **Verificatie**.
+1. Navigeer in het navigatievenster aan de linkerkant naar het tabblad **Beveiliging** > **Verificatie** .
 
     ![Deelvenster Beheer](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
     a. Schakel de optie **Eenmalige aanmelding** in.
     
-    b. Klik op **+Nieuwe provider voor eenmalige aanmelding toevoegen**.
+    b. Klik op **+Nieuwe provider voor eenmalige aanmelding toevoegen** .
     > [!NOTE]
     > Zorg ervoor dat u het selectievakje Aanmelden met wachtwoord ook inschakelt. Beheerders hebben deze optie mogelijk nodig voor aanmelding tijdens het aanwijzen van het certificaat om te voorkomen dat ze worden afgemeld.
 
@@ -162,11 +162,11 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
     a. Voer bij **Naam van provider van eenmalige aanmelding** de naam van het exemplaar voor eenmalige aanmelding in, bijvoorbeeld Azureadsso.
 
-    b. Plak in het tekstvak **SAM-URL** de waarde van **Aanmeldings-URL**, die u hebt gekopieerd uit de Azure-portal.
+    b. Plak in het tekstvak **SAM-URL** de waarde van **Aanmeldings-URL** , die u hebt gekopieerd uit de Azure-portal.
 
-    c. Plak in het tekstvak **URL SAML-uitgever** de waarde van **Azure AD-id**, die u hebt gekopieerd uit de Azure-portal.
+    c. Plak in het tekstvak **URL SAML-uitgever** de waarde van **Azure AD-id** , die u hebt gekopieerd uit de Azure-portal.
 
-    d. Open in Kladblok het **met Base 64 gecodeerde certificaat** dat u hebt gedownload uit de Azure-portal, kopieer de inhoud ervan naar het Klembord en plak deze vervolgens in het tekstvak **SAML-certificaat**.
+    d. Open in Kladblok het **met Base 64 gecodeerde certificaat** dat u hebt gedownload uit de Azure-portal, kopieer de inhoud ervan naar het Klembord en plak deze vervolgens in het tekstvak **SAML-certificaat** .
 
     e. Kopieer de **Doelgroep-URL** voor uw exemplaar en plak deze in het tekstvak **Id (Entiteits-id)** in de sectie **SAML-basisconfiguratie** in de Azure-portal.
 
@@ -174,11 +174,11 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
     g. Kopieer de **Assertion Consumer Service-URL** voor uw exemplaar en plak deze in het tekstvak **Aanmeldings-URL** in de sectie **SAML-basisconfiguratie** in de Azure-portal.
 
-    h. Blader naar de onderkant van het gedeelte en klik op de knop **SSO testen**. Er verschijnt een pop-upvenster met de aanmeldingspagina van Azure AD. Voer uw referenties op de gebruikelijke manier in om te verifiëren.
+    h. Blader naar de onderkant van het gedeelte en klik op de knop **SSO testen** . Er verschijnt een pop-upvenster met de aanmeldingspagina van Azure AD. Voer uw referenties op de gebruikelijke manier in om te verifiëren.
 
     **Problemen oplossen:** Controleer of het e-mailadres dat wordt geretourneerd door Azure AD hetzelfde is als het Workplace-account waarbij u bent aangemeld.
 
-    i. Zodra de test is voltooid, bladert u naar de onderkant van de pagina en klikt u op de knop **Opslaan**.
+    i. Zodra de test is voltooid, bladert u naar de onderkant van de pagina en klikt u op de knop **Opslaan** .
 
     j. Alle gebruikers van Workplace zien nu voortaan de Azure AD-aanmeldingspagina voor verificatie.
 
@@ -208,23 +208,23 @@ U hoeft geen handelingen uit te voeren in dit gedeelte. Als er geen gebruiker be
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Workplace by Facebook klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van in het toegangsvenster waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Workplace by Facebook klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van in het toegangsvenster waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="test-sso-for-workplace-by-facebook-mobile"></a>Eenmalige aanmelding voor Workplace by Facebook testen (mobiel)
 
-1. Open de mobiele toepassing Workplace by Facebook. Klik op de aanmeldpagina op **LOG IN**.
+1. Open de mobiele toepassing Workplace by Facebook. Klik op de aanmeldpagina op **LOG IN** .
 
     ![Het aanmelden](./media/workplacebyfacebook-tutorial/test05.png)
 
-2. Voer uw zakelijke e-mailadres in en klik op **CONTINUE**.
+2. Voer uw zakelijke e-mailadres in en klik op **CONTINUE** .
 
     ![Het e-mailadres](./media/workplacebyfacebook-tutorial/test02.png)
 
-3. Klik op **JUST ONCE**.
+3. Klik op **JUST ONCE** .
 
     ![Eenmalig](./media/workplacebyfacebook-tutorial/test04.png)
 
-4. Klik op **Allow**.
+4. Klik op **Allow** .
 
     ![Toestaan](./media/workplacebyfacebook-tutorial/test03.png)
 
@@ -234,14 +234,14 @@ Wanneer u in het toegangsvenster op de tegel Workplace by Facebook klikt, zou u 
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Inrichten van gebruikers configureren](workplacebyfacebook-provisioning-tutorial.md)
 
 - [Workplace by Facebook proberen met Azure AD](https://aad.portal.azure.com)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
