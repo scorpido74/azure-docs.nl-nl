@@ -4,19 +4,19 @@ description: Ontdek hoe u een elastische-taakagent maakt met behulp van PowerShe
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurepowershell
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-ms.date: 03/13/2019
-ms.openlocfilehash: aaf749708b49c57d08a63581f3d911b04aba2103
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408664"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427288"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Een elastische-taakagent maken met behulp van PowerShell (preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,13 +53,13 @@ Find-Package PowerShellGet | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Install and import the Az.Sql module, then confirm
-Install-Module -Name Az.Sql
+Install-Module -Name Az.Sql
 Import-Module Az.Sql
 
 Get-Module Az.Sql
 ```
 
-Voor deze zelfstudie heeft u niet alleen de module **Az.Sql** nodig, maar ook de PowerShell-module *sqlserver*. Zie [SQL Server PowerShell-module installeren](/sql/powershell/download-sql-server-ps-module) voor meer informatie.
+Voor deze zelfstudie heeft u niet alleen de module **Az.Sql** nodig, maar ook de PowerShell-module *sqlserver* . Zie [SQL Server PowerShell-module installeren](/sql/powershell/download-sql-server-ps-module) voor meer informatie.
 
 ## <a name="create-required-resources"></a>Vereiste resources maken
 
@@ -135,7 +135,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 Een Elastic Jobs-agent is een Azure-resource voor het maken, uitvoeren en beheren van taken. De agent voert taken uit op basis van een planning of als eenmalige taak.
 
-De **New-AzSqlElasticJobAgent**-cmdlet vereist een reeds bestaande Microsoft Azure SQL-database, dus de parameters van de *ResourceGroupName*, *ServerName*en *DatabaseName* moeten allemaal naar bestaande bronnen verwijzen.
+De **New-AzSqlElasticJobAgent** -cmdlet vereist een reeds bestaande Microsoft Azure SQL-database, dus de parameters van de *ResourceGroupName* , *ServerName* en *DatabaseName* moeten allemaal naar bestaande bronnen verwijzen.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -152,7 +152,7 @@ De databasereferenties moeten worden gemaakt in de taakdatabase. Alle doeldataba
 
 ![Referenties voor Elastic Jobs](./media/elastic-jobs-powershell-create/job-credentials.png)
 
-Let behalve op de inloggegevens in de afbeelding op de toevoeging van de **GRANT**-opdrachten in het volgende script. Deze machtigingen zijn vereist voor het script dat we hebben gekozen voor deze voorbeeldtaak. Omdat in het voorbeeld een nieuwe tabel in de doeldatabases wordt gemaakt, heeft elke doeldatabase de juiste machtigingen nodig om met succes te worden uitgevoerd.
+Let behalve op de inloggegevens in de afbeelding op de toevoeging van de **GRANT** -opdrachten in het volgende script. Deze machtigingen zijn vereist voor het script dat we hebben gekozen voor deze voorbeeldtaak. Omdat in het voorbeeld een nieuwe tabel in de doeldatabases wordt gemaakt, heeft elke doeldatabase de juiste machtigingen nodig om met succes te worden uitgevoerd.
 
 Voer het volgende script uit om de vereiste taakreferenties (in de taakdatabase) te maken:
 
@@ -165,12 +165,12 @@ $params = @{
   'username' = $adminLogin
   'password' = $adminPassword
   'outputSqlErrors' = $true
-  'query' = "CREATE LOGIN masteruser WITH PASSWORD='password!123'"
+  'query' = 'CREATE LOGIN masteruser WITH PASSWORD=''password!123'''
 }
 Invoke-SqlCmd @params
 $params.query = "CREATE USER masteruser FROM LOGIN masteruser"
 Invoke-SqlCmd @params
-$params.query = "CREATE LOGIN jobuser WITH PASSWORD='password!123'"
+$params.query = 'CREATE LOGIN jobuser WITH PASSWORD=''password!123'''
 Invoke-SqlCmd @params
 
 # for each target database
@@ -192,7 +192,7 @@ $targetDatabases | % {
 
 # create job credential in Job database for master user
 Write-Output "Creating job credentials..."
-$loginPasswordSecure = (ConvertTo-SecureString -String "password!123" -AsPlainText -Force)
+$loginPasswordSecure = (ConvertTo-SecureString -String 'password!123' -AsPlainText -Force)
 
 $masterCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "masteruser", $loginPasswordSecure
 $masterCred = $jobAgent | New-AzSqlElasticJobCredential -Name "masteruser" -Credential $masterCred
@@ -205,7 +205,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 Een [doelgroep](job-automation-overview.md#target-group) definieert een verzameling van een of meer databases waarop een taakstap wordt uitgevoerd.
 
-Met het volgende codefragment worden twee doelgroepen gemaakt: *ServerGroup*en *ServerGroupExcludingDb2*. *ServerGroup* zijn alle databases die bestaan ​​op de server op het moment van uitvoering en *ServerGroupExcludingDb2* zijn alle databases op de server behalve *TargetDb2*:
+Met het volgende codefragment worden twee doelgroepen gemaakt: *ServerGroup* en *ServerGroupExcludingDb2* . *ServerGroup* zijn alle databases die bestaan ​​op de server op het moment van uitvoering en *ServerGroupExcludingDb2* zijn alle databases op de server behalve *TargetDb2* :
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -221,7 +221,7 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 
 ### <a name="create-a-job-and-steps"></a>Een taak en stappen maken
 
-In dit voorbeeld worden een taak en twee taakstappen gedefinieerd voor de taak die moet worden uitgevoerd. Met de eerste taakstap (*stap 1*) wordt een nieuwe tabel (*Step1Table*) gemaakt in elke database in de doelgroep *ServerGroup*. Met de tweede taakstap (*stap2*) wordt een nieuwe tabel (*Step2Table*) gemaakt in elke database behalve in *TargetDb2*, omdat in de doelgroep die eerder is gedefinieerd is opgegeven dat deze moet worden uitgesloten.
+In dit voorbeeld worden een taak en twee taakstappen gedefinieerd voor de taak die moet worden uitgevoerd. Met de eerste taakstap ( *stap 1* ) wordt een nieuwe tabel ( *Step1Table* ) gemaakt in elke database in de doelgroep *ServerGroup* . Met de tweede taakstap ( *stap2* ) wordt een nieuwe tabel ( *Step2Table* ) gemaakt in elke database behalve in *TargetDb2* , omdat in de doelgroep die eerder is gedefinieerd is opgegeven dat deze moet worden uitgesloten.
 
 ```powershell
 Write-Output "Creating a new job..."

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c53b7fed17ba4ef2000b905b202286338cd461ed
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551440"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Zelfstudie: Azure Active Directory-integratie met HubSpot
 
@@ -28,7 +28,7 @@ Integratie van HubSpot met Azure AD biedt u de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-accounts worden aangemeld bij HubSpot (eenmalige aanmelding).
 * U kunt uw accounts vanaf één locatie beheren, de Azure-portal.
 
-Zie voor meer informatie over de integratie van SaaS-apps (software als een service) met Azure AD [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie voor meer informatie over de integratie van SaaS-apps (software als een service) met Azure AD [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -56,7 +56,7 @@ Om HubSpot met Azure AD te integreren, moet u HubSpot toevoegen aan uw lijst met
 
     ![De optie voor Azure Active Directory](common/select-azuread.png)
 
-1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen**.
+1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen** .
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -64,13 +64,13 @@ Om HubSpot met Azure AD te integreren, moet u HubSpot toevoegen aan uw lijst met
 
     ![De optie Nieuwe toepassing](common/add-new-app.png)
 
-1. Typ **HubSpot** in het zoekvak. Selecteer **HubSpot** in de zoekresultaten en selecteer vervolgens **Toevoegen**.
+1. Typ **HubSpot** in het zoekvak. Selecteer **HubSpot** in de zoekresultaten en selecteer vervolgens **Toevoegen** .
 
     ![HubSpot in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met HubSpot op basis van een testgebruiker met de naam **Britta Simon**. Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in HubSpot tot stand is gebracht.
+In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met HubSpot op basis van een testgebruiker met de naam **Britta Simon** . Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in HubSpot tot stand is gebracht.
 
 Als u eenmalige aanmelding van Azure AD wilt configureren en testen met HubSpot, moet u de volgende stappen uitvoeren:
 
@@ -87,7 +87,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren en testen met HubSpot,
 
 In dit gedeelte configureert u eenmalige aanmelding van Azure AD met HubSpot in Azure Portal.
 
-1. Selecteer in [Azure Portal](https://portal.azure.com/) **Eenmalige aanmelding** op de integratiepagina van de toepassing **HubSpot**.
+1. Selecteer in [Azure Portal](https://portal.azure.com/) **Eenmalige aanmelding** op de integratiepagina van de toepassing **HubSpot** .
 
     ![De optie voor eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -112,9 +112,9 @@ In dit gedeelte configureert u eenmalige aanmelding van Azure AD met HubSpot in 
 
 1. Als u de toepassing wilt configureren in de *door SP geïnitieerde* modus:
 
-    1. Selecteer **Extra URL's instellen**.
+    1. Selecteer **Extra URL's instellen** .
 
-    1. Voer in het vak **Aanmeldings-URL** het volgende in: **https:\//app.hubspot.com/login**.
+    1. Voer in het vak **Aanmeldings-URL** het volgende in: **https:\//app.hubspot.com/login** .
 
     ![De optie Extra URL’s instellen](common/metadata-upload-additional-signon.png)
 
@@ -138,27 +138,27 @@ In dit gedeelte configureert u eenmalige aanmelding van Azure AD met HubSpot in 
 
     ![Het pictogram Instellingen in HubSpot](./media/hubspot-tutorial/config1.png)
 
-1. Selecteer **Standaardinstellingen van account**.
+1. Selecteer **Standaardinstellingen van account** .
 
     ![De optie Standaardinstellingen van account in HubSpot](./media/hubspot-tutorial/config2.png)
 
-1. Schuif omlaag naar de sectie **Beveiliging** en selecteer vervolgens **Instellen**.
+1. Schuif omlaag naar de sectie **Beveiliging** en selecteer vervolgens **Instellen** .
 
     ![De optie Instellen in HubSpot](./media/hubspot-tutorial/config3.png)
 
-1. Voer de volgende stappen uit in het gedeelte **Eenmalige aanmelding instellen**:
+1. Voer de volgende stappen uit in het gedeelte **Eenmalige aanmelding instellen** :
 
-    1. Selecteer **Kopiëren** in het vak **URl van doelgroep (entiteits-id van serviceprovider)** om de waarde te kopiëren. Ga in Azure Portal naar het deelvenster **Standaard SAML-configuratie** en plak de waarde in het vak **Id**.
+    1. Selecteer **Kopiëren** in het vak **URl van doelgroep (entiteits-id van serviceprovider)** om de waarde te kopiëren. Ga in Azure Portal naar het deelvenster **Standaard SAML-configuratie** en plak de waarde in het vak **Id** .
 
-    1. Selecteer in het vak **URl voor aanmelding, ACS, ontvanger of doorsturen** **Kopiëren** om de waarde te kopiëren. Ga in Azure Portal naar het deelvenster **Standaard SAML-configuratie** en plak de waarde in het vak **Antwoord-URL**.
+    1. Selecteer in het vak **URl voor aanmelding, ACS, ontvanger of doorsturen** **Kopiëren** om de waarde te kopiëren. Ga in Azure Portal naar het deelvenster **Standaard SAML-configuratie** en plak de waarde in het vak **Antwoord-URL** .
 
     1. Plak in het vak **ID van identiteitsprovider of URL van verlener** in HubSpot de waarde voor **Azure AD-id** die u in Azure Portal hebt gekopieerd.
 
     1. Plak in HubSpot in het vak **URL van id-provider voor eenmalige aanmelding** de **aanmeldings-URL** die u hebt gekopieerd in Azure Portal.
 
-    1. Open in Windows Kladblok het certificaatbestand (Base64) dat u hebt gedownload. Selecteer en kopieer de inhoud van het bestand. Plak deze vervolgens in HubSpot in het vak **X.509-certificaat**.
+    1. Open in Windows Kladblok het certificaatbestand (Base64) dat u hebt gedownload. Selecteer en kopieer de inhoud van het bestand. Plak deze vervolgens in HubSpot in het vak **X.509-certificaat** .
 
-    1. Selecteer **Verifiëren**.
+    1. Selecteer **Verifiëren** .
 
         ![De sectie Eenmalige aanmelding instellen in HubSpot](./media/hubspot-tutorial/config4.png)
 
@@ -166,23 +166,23 @@ In dit gedeelte configureert u eenmalige aanmelding van Azure AD met HubSpot in 
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer in de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer in de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers** .
 
     ![De opties Gebruikers en Alle gebruikers](common/users.png)
 
-1. Selecteer **Nieuwe gebruiker**.
+1. Selecteer **Nieuwe gebruiker** .
 
     ![De optie Nieuwe gebruiker](common/new-user.png)
 
 1. Voer in het deelvenster **Gebruiker** de volgende stappen uit:
 
-    1. Voer in het vak **Naam** **Britta Simon**in.
+    1. Voer in het vak **Naam** **Britta Simon** in.
   
-    1. Voer in het vak **Gebruikersnaam** **brittasimon\@\<your-company-domain> in.\<extension\>** . Bijvoorbeeld **brittasimon\@contoso.com**.
+    1. Voer in het vak **Gebruikersnaam** **brittasimon\@\<your-company-domain> in.\<extension\>** . Bijvoorbeeld **brittasimon\@contoso.com** .
 
-    1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+    1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
 
-    1. Selecteer **Maken**.
+    1. Selecteer **Maken** .
 
     ![Het deelvenster Gebruiker](common/user-properties.png)
 
@@ -190,7 +190,7 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
 In deze sectie verleent u Britta Simon toegang tot HubSpot zodat ze de eenmalige aanmelding van Azure kan gebruiken.
 
-1. Selecteer in Azure Portal **Bedrijfstoepassingen** > **Alle toepassingen** > **HubSpot**.
+1. Selecteer in Azure Portal **Bedrijfstoepassingen** > **Alle toepassingen** > **HubSpot** .
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -202,15 +202,15 @@ In deze sectie verleent u Britta Simon toegang tot HubSpot zodat ze de eenmalige
 
     ![De optie Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**. Selecteer vervolgens **Gebruikers en groepen** in het deelvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** . Selecteer vervolgens **Gebruikers en groepen** in het deelvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het deelvenster **Gebruikers en groepen** de optie **Britta Simon** in de lijst met gebruikers. Kies **Selecteren**.
+1. Selecteer in het deelvenster **Gebruikers en groepen** de optie **Britta Simon** in de lijst met gebruikers. Kies **Selecteren** .
 
-1. Als u een rolwaarde in de SAML-assertie verwacht, selecteert u in het deelvenster **Rol selecteren** de relevante rol voor de gebruiker in de lijst. Kies **Selecteren**.
+1. Als u een rolwaarde in de SAML-assertie verwacht, selecteert u in het deelvenster **Rol selecteren** de relevante rol voor de gebruiker in de lijst. Kies **Selecteren** .
 
-1. Selecteer **Toewijzen** in het deelvenster **Toewijzing toevoegen**.
+1. Selecteer **Toewijzen** in het deelvenster **Toewijzing toevoegen** .
 
 ### <a name="create-a-hubspot-test-user"></a>Een HubSpot-testgebruiker maken
 
@@ -224,19 +224,19 @@ Ga als volgt te werk om een gebruikersaccount in te richten in HubSpot:
 
     ![Het pictogram Instellingen in HubSpot](./media/hubspot-tutorial/config1.png)
 
-1. Selecteer **Gebruikers en teams**.
+1. Selecteer **Gebruikers en teams** .
 
     ![De optie Gebruikers en teams in HubSpot](./media/hubspot-tutorial/user1.png)
 
-1. Selecteer **Create user**.
+1. Selecteer **Create user** .
 
     ![De optie Gebruiker maken in HubSpot](./media/hubspot-tutorial/user2.png)
 
-1. Voer in het vak **E-mailadres(sen) toevoegen** het e-mailadres van de gebruiker in met de indeling brittasimon\@contoso.com en selecteer vervolgens **Volgende**.
+1. Voer in het vak **E-mailadres(sen) toevoegen** het e-mailadres van de gebruiker in met de indeling brittasimon\@contoso.com en selecteer vervolgens **Volgende** .
 
     ![Het vak E-mailadres(sen) toevoegen in de sectie Gebruikers maken in HubSpot](./media/hubspot-tutorial/user3.png)
 
-1. Selecteer elk tabblad in de sectie **Gebruikers maken**. Stel op elk tabblad de relevante opties en machtigingen voor de gebruiker in. Selecteer vervolgens **Volgende**.
+1. Selecteer elk tabblad in de sectie **Gebruikers maken** . Stel op elk tabblad de relevante opties en machtigingen voor de gebruiker in. Selecteer vervolgens **Volgende** .
 
     ![Tabbladen in de sectie Gebruikers maken in HubSpot](./media/hubspot-tutorial/user4.png)
 
@@ -257,6 +257,6 @@ Als u eenmalige aanmelding hebt ingesteld en **HubSpot** selecteert in de Mijn a
 
 Lees voor meer informatie de volgende artikelen:
 
-- [Lijst met zelfstudies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Lijst met zelfstudies voor het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
+- [Eenmalige aanmelding bij toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

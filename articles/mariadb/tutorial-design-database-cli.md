@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f08f9065b2a7361294a2f6257c85be772d0f7119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 205fe47acb6d10b7596c462476b4e9e718a3d813
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496063"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424965"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Zelfstudie: een Azure Database for MariaDB ontwerpen met Azure CLI
 
@@ -42,7 +42,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
-Maak een [Azure-resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) met de opdracht [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
+Maak een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) met de opdracht [az group create](/cli/azure/group#az-group-create). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
 
 In het volgende voorbeeld wordt een resourcegroep met de naam `myresourcegroup` gemaakt op de locatie `westus`.
 
@@ -85,7 +85,7 @@ Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsrefere
 az mariadb server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Het resultaat wordt in JSON-indeling weergegeven. Noteer de **fullyQualifiedDomainName** en de **administratorLogin**.
+Het resultaat wordt in JSON-indeling weergegeven. Noteer de **fullyQualifiedDomainName** en de **administratorLogin** .
 ```json
 {
   "administratorLogin": "myadmin",
@@ -185,9 +185,9 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 De opdracht `az mariadb server restore` vereist de volgende parameters:
 
-| Instelling | Voorgestelde waarde | Beschrijving  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resourcegroep waarin de bronserver bestaat.  |
+| resource-group |  myResourceGroup |  De resourcegroep waarin de bronserver bestaat.  |
 | naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Selecteer een bepaald tijdstip om naar te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik ISO8601-notatie voor datum en tijd. U kunt bijvoorbeeld uw eigen lokale tijdzone, zoals `2017-04-13T05:59:00-08:00`, gebruiken of de UTC Zulu-notatie `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | De naam of ID van de bronserver voor het herstellen. |
