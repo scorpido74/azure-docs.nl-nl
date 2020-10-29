@@ -3,12 +3,12 @@ title: Verificatie tussen het REGI ster van de ACR-taak
 description: Een Azure Container Registry taak (ACR Task) configureren om toegang te krijgen tot een ander persoonlijk Azure container Registry met behulp van een beheerde identiteit voor Azure-resources
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86057349"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026255"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Verificatie tussen het REGI ster in een ACR-taak met behulp van een door Azure beheerde identiteit 
 
@@ -30,8 +30,8 @@ In een praktijk scenario kan een organisatie een set basis installatie kopieën 
 
 Voor dit artikel hebt u twee Azure-container registers nodig:
 
-* U gebruikt het eerste REGI ster om ACR-taken te maken en uit te voeren. In dit artikel heeft dit REGI ster de naam *myregistry*. 
-* Het tweede REGI ster fungeert als host voor een basis installatie kopie die wordt gebruikt voor de taak om een installatie kopie te maken. In dit artikel heeft het tweede REGI ster de naam *mybaseregistry*. 
+* U gebruikt het eerste REGI ster om ACR-taken te maken en uit te voeren. In dit artikel heeft dit REGI ster de naam *myregistry* . 
+* Het tweede REGI ster fungeert als host voor een basis installatie kopie die wordt gebruikt voor de taak om een installatie kopie te maken. In dit artikel heeft het tweede REGI ster de naam *mybaseregistry* . 
 
 Vervang door uw eigen register namen in latere stappen.
 
@@ -39,16 +39,12 @@ Als u nog niet beschikt over de benodigde Azure-container registers, raadpleegt 
 
 ## <a name="prepare-base-registry"></a>Basis register voorbereiden
 
-Maak eerst een werkmap en maak een bestand met de naam Dockerfile met de volgende inhoud. In dit eenvoudige voor beeld wordt een Node.js basis installatie kopie samengesteld uit een open bare installatie kopie in docker hub.
-    
-```bash
-echo FROM node:9-alpine > Dockerfile
-```
+Voor demonstratie doeleinden voert u als eenmalige bewerking [AZ ACR import] [AZ-ACR-import] uit om een open bare Node.js-installatie kopie van docker hub te importeren in het basis register. In de praktijk kan een ander team of proces in de organisatie installatie kopieën behouden in het basis register.
 
-Voer in de huidige map de opdracht [AZ ACR build][az-acr-build] uit om de basis installatie kopie te bouwen en naar het basis register te pushen. In de praktijk kan een ander team of proces in de organisatie het basis register behouden.
-    
 ```azurecli
-az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
+az acr import --name mybaseregistry \
+  --source docker.io/library/node:9-alpine \
+  --image baseimages/node:9-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>Taak stappen definiëren in het YAML-bestand
@@ -88,7 +84,7 @@ az acr task create \
 
 ### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Machtigingen voor het verzamelen van identiteiten aan het basis register geven
 
-In deze sectie geeft u de beheerde identiteits machtigingen die moeten worden opgehaald uit het basis register, *mybaseregistry*.
+In deze sectie geeft u de beheerde identiteits machtigingen die moeten worden opgehaald uit het basis register, *mybaseregistry* .
 
 Gebruik de opdracht [AZ ACR show][az-acr-show] om de resource-id van het basis register op te halen en op te slaan in een variabele:
 
@@ -127,7 +123,7 @@ az acr task create \
 
 ### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Machtigingen voor het verzamelen van identiteiten aan het basis register geven
 
-In deze sectie geeft u de beheerde identiteits machtigingen die moeten worden opgehaald uit het basis register, *mybaseregistry*.
+In deze sectie geeft u de beheerde identiteits machtigingen die moeten worden opgehaald uit het basis register, *mybaseregistry* .
 
 Gebruik de opdracht [AZ ACR show][az-acr-show] om de resource-id van het basis register op te halen en op te slaan in een variabele:
 
@@ -223,7 +219,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-Voer de opdracht [AZ ACR repository show-Tags][az-acr-repository-show-tags] uit om te controleren of de installatie kopie is gebouwd en is gepusht naar *myregistry*:
+Voer de opdracht [AZ ACR repository show-Tags][az-acr-repository-show-tags] uit om te controleren of de installatie kopie is gebouwd en is gepusht naar *myregistry* :
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv

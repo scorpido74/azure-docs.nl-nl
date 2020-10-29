@@ -3,12 +3,12 @@ title: Basis installatie kopie-updates-taken
 description: Meer informatie over basis installatie kopieën voor installatie kopieën van de toepassings container en over hoe een update van een basis installatie kopie een Azure Container Registry taak kan activeren.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85918508"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025762"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Over updates van basis installatie kopieën voor ACR-taken
 
@@ -16,15 +16,19 @@ Dit artikel bevat achtergrond informatie over updates voor de basis installatie 
 
 ## <a name="what-are-base-images"></a>Wat zijn basis installatie kopieën?
 
-Dockerfiles het definiëren van de meeste container installatie kopieën geven een bovenliggende installatie kopie op van waaruit de installatie kopie is gebaseerd, dikwijls aangeduid met de *basis installatie kopie*. Basisinstallatiekopieën bevatten doorgaans het besturingssysteem, bijvoorbeeld [Alpine Linux][base-alpine] of [Windows Nano Server][base-windows], waarop de overige lagen van de container worden toegepast. Ook kunnen basisinstallatiekopieën toepassingsframeworks zoals [Node.js][base-node] of [.NET Core][base-dotnet] bevatten. Deze basis installatie kopieën zijn gewoonlijk gebaseerd op open bare upstream-installatie kopieën. Diverse installatie kopieën van uw toepassing kunnen een gemeen schappelijke basis installatie kopie delen.
+Dockerfiles het definiëren van de meeste container installatie kopieën geven een bovenliggende installatie kopie op van waaruit de installatie kopie is gebaseerd, dikwijls aangeduid met de *basis installatie kopie* . Basisinstallatiekopieën bevatten doorgaans het besturingssysteem, bijvoorbeeld [Alpine Linux][base-alpine] of [Windows Nano Server][base-windows], waarop de overige lagen van de container worden toegepast. Ook kunnen basisinstallatiekopieën toepassingsframeworks zoals [Node.js][base-node] of [.NET Core][base-dotnet] bevatten. Deze basis installatie kopieën zijn gewoonlijk gebaseerd op open bare upstream-installatie kopieën. Diverse installatie kopieën van uw toepassing kunnen een gemeen schappelijke basis installatie kopie delen.
 
 Een basisinstallatiekopie wordt vaak door de installatiekopie-maintainer bijgewerkt om nieuwe functies of verbeteringen toe te voegen aan het besturingssysteem of framework in de installatiekopie. Beveiligingspatches zijn een andere veelvoorkomende oorzaak van een update van de basisinstallatiekopie. Wanneer deze upstream-updates worden uitgevoerd, moet u ook uw basis installatie kopieën bijwerken om de essentiële oplossing op te nemen. Elke toepassings installatie kopie moet vervolgens ook opnieuw worden opgebouwd om deze upstream-oplossingen op te nemen die nu zijn opgenomen in uw basis installatie kopie.
 
 In sommige gevallen, zoals een team van een persoonlijke ontwikkeling, kan een basis installatie kopie meer dan het besturings systeem of het Framework opgeven. Een basis installatie kopie kan bijvoorbeeld een installatie kopie van een gedeeld service onderdeel zijn die moet worden bijgehouden. Leden van een team moeten deze basis afbeelding volgen voor het testen of moeten de installatie kopie regel matig bijwerken bij het ontwikkelen van installatie kopieën van toepassingen.
 
+## <a name="maintain-copies-of-base-images"></a>Kopieën van basis installatie kopieën onderhouden
+
+We raden u aan om de inhoud naar een Azure container Registry of een ander persoonlijk REGI ster te kopiëren voor alle inhoud in uw registers die afhankelijk zijn van basis inhoud in een openbaar REGI ster, zoals docker hub. Zorg er vervolgens voor dat u de installatie kopieën van uw toepassing bouwt door te verwijzen naar de persoonlijke basis installatie kopieën. Azure Container Registry biedt een functie voor het [importeren van afbeeldingen](container-registry-import-images.md) om eenvoudig inhoud van open bare registers of andere Azure-container registers te kopiëren. In de volgende sectie wordt beschreven hoe u met behulp van ACR-taken updates van basis afbeeldingen bijhoudt bij het bouwen van toepassings updates. U kunt basis installatie kopieën in uw eigen Azure-container registers en optioneel in de upstream-open bare registers volgen.
+
 ## <a name="track-base-image-updates"></a>Updates van basis installatie kopieën bijhouden
 
-Met ACR Tasks hebt u de mogelijkheid om automatisch installatiekopieën te maken wanneer een containerinstallatiekopie wordt bijgewerkt.
+Met ACR Tasks hebt u de mogelijkheid om automatisch installatiekopieën te maken wanneer een containerinstallatiekopie wordt bijgewerkt. U kunt deze mogelijkheid gebruiken om kopieën van open bare basis installatie kopieën in uw Azure-container registers te onderhouden en bij te werken, en vervolgens toepassings installatie kopieën te maken die afhankelijk zijn van basis installatie kopieën.
 
 Met ACR-taken worden afhankelijkheden van basis installatie kopieën dynamisch gedetecteerd bij het samen stellen van een container installatie kopie. Als gevolg hiervan kan worden gedetecteerd wanneer de basis installatie kopie van een toepassings afbeelding wordt bijgewerkt. Met één vooraf geconfigureerde build-taak kan ACR-taken elke toepassings installatie kopie die verwijst naar de basis installatie kopie automatisch opnieuw samen stellen. Met deze automatische detectie en het opnieuw samen stellen van ACR-taken bespaart u de tijd en inspanningen die normaal gesp roken nodig zijn voor het hand matig bijhouden en bijwerken van elke toepassings installatie kopie die verwijst naar de bijgewerkte basis installatie kopie.
 
@@ -48,7 +52,7 @@ De tijd tussen het moment dat een basis installatie kopie wordt bijgewerkt en wa
 
 ## <a name="additional-considerations"></a>Aanvullende overwegingen
 
-* **Basis installatie kopieën voor toepassings installatie** kopieën: op dit moment wordt met een ACR-taak alleen de basis installatie kopieën van updates voor de toepassing (*runtime*) bijgehouden. Updates voor tussenliggende installatie kopieën (*buildtime*) die worden gebruikt in de multi-fase Dockerfiles, worden niet bijgehouden.  
+* **Basis installatie kopieën voor toepassings installatie** kopieën: op dit moment wordt met een ACR-taak alleen de basis installatie kopieën van updates voor de toepassing ( *runtime* ) bijgehouden. Updates voor tussenliggende installatie kopieën ( *buildtime* ) die worden gebruikt in de multi-fase Dockerfiles, worden niet bijgehouden.  
 
 * **Standaard ingeschakeld** : wanneer u een ACR-taak maakt met de opdracht [AZ ACR Task Create][az-acr-task-create] , wordt de taak standaard *ingeschakeld* voor trigger door een update van de basis installatie kopie. Dat wil zeggen, de `base-image-trigger-enabled` eigenschap is ingesteld op True. Als u dit gedrag in een taak wilt uitschakelen, werkt u de eigenschap bij op ONWAAR. Voer bijvoorbeeld de volgende opdracht [AZ ACR Task update][az-acr-task-update] uit:
 
@@ -56,7 +60,7 @@ De tijd tussen het moment dat een basis installatie kopie wordt bijgewerkt en wa
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* **Trigger voor het bijhouden van afhankelijkheden** : om een ACR-taak in te scha kelen om de afhankelijkheden van een container installatie kopie te bepalen en bij te houden, zoals de basis installatie kopie, moet u eerst de taak activeren om de installatie kopie **ten minste één keer**te bouwen. Activeer de taak bijvoorbeeld hand matig met behulp van de opdracht [AZ ACR Task run][az-acr-task-run] .
+* **Trigger voor het bijhouden van afhankelijkheden** : om een ACR-taak in te scha kelen om de afhankelijkheden van een container installatie kopie te bepalen en bij te houden, zoals de basis installatie kopie, moet u eerst de taak activeren om de installatie kopie **ten minste één keer** te bouwen. Activeer de taak bijvoorbeeld hand matig met behulp van de opdracht [AZ ACR Task run][az-acr-task-run] .
 
 * **Stabiele tag voor basis installatie kopie** : als u een taak wilt activeren bij het bijwerken van de basis installatie kopie, moet de basis installatie kopie een *stabiele* tag hebben, zoals `node:9-alpine` . Deze code ring is gebruikelijk voor een basis installatie kopie die wordt bijgewerkt met OS-en Framework patches naar een laatste stabiele release. Als de basis installatie kopie wordt bijgewerkt met een nieuwe versie label, wordt er geen taak geactiveerd. Zie de [Best practices-richt lijnen](container-registry-image-tag-version.md)voor meer informatie over afbeeldings codes. 
 

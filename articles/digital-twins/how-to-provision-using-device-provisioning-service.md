@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b6dbcaf317efb8589a92275527f992029b7eb8a6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 0c82114f697227b96e3548fff24314d4774455b9
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494746"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026442"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Apparaten in azure Digital Apparaatdubbels automatisch beheren met behulp van de Device Provisioning Service (DPS)
 
@@ -20,7 +20,7 @@ In dit artikel leert u hoe u Azure Digital Apparaatdubbels integreert met de [De
 
 Met de oplossing die in dit artikel wordt beschreven, kunt u het proces voor het **_inrichten_** en **_buiten gebruik_** stellen van IOT Hub apparaten in azure Digital apparaatdubbels met behulp van Device Provisioning Service automatiseren. 
 
-Zie de [sectie *levens cyclus van apparaten* ](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle) in de documentatie van IOT hub Apparaatbeheer voor meer informatie over de fase van het _inrichten_ en de _buiten gebruiks telling_ en voor een beter begrip van de set algemene Apparaatbeheer die gemeen schappelijk zijn voor alle zakelijke IOT-projecten.
+Zie de [sectie *levens cyclus van apparaten*](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle) in de documentatie van IOT hub Apparaatbeheer voor meer informatie over de fase van het _inrichten_ en de _buiten gebruiks telling_ en voor een beter begrip van de set algemene Apparaatbeheer die gemeen schappelijk zijn voor alle zakelijke IOT-projecten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,12 +29,12 @@ Voordat u het inrichten kunt instellen, moet u een **Azure Digital apparaatdubbe
 Als u deze instelling nog niet hebt ingesteld, kunt u deze maken met behulp van de Azure Digital Apparaatdubbels- [*zelf studie: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md). In deze zelf studie wordt u begeleid bij het instellen van een Azure Digital Apparaatdubbels-exemplaar met modellen en apparaatdubbels, een verbonden Azure- [IOT hub](../iot-hub/about-iot-hub.md)en verschillende [Azure-functies](../azure-functions/functions-overview.md) voor het door geven van de gegevens stroom.
 
 U hebt de volgende waarden later in dit artikel nodig bij het instellen van uw exemplaar. Als u deze waarden opnieuw wilt verzamelen, gebruikt u de onderstaande koppelingen voor instructies.
-* Azure Digital Twins-exemplaar **_hostnaam_** ([beschikbaar in de portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure Event Hubs connection string **_Connection String_** ([Zoeken in portal](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
+* Azure Digital Twins-exemplaar **_hostnaam_** ( [beschikbaar in de portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+* Azure Event Hubs connection string **_Connection String_** ( [Zoeken in portal](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
 
 In dit voor beeld wordt ook een **device Simulator** gebruikt die het inrichten met behulp van de Device Provisioning Service bevat. De Device Simulator bevindt zich hier: [Azure Digital apparaatdubbels-en IOT hub Integration](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)-voor beeld. Down load het voorbeeld project op uw machine door te navigeren naar de voorbeeld koppeling en de knop *zip downloaden* te selecteren onder de titel. De gedownloade map uitpakken.
 
-De Device Simulator is gebaseerd op **Node.js**, versie 10.0. x of hoger. [*Uw ontwikkel omgeving voorbereiden*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) bevat informatie over het installeren van Node.js voor deze zelf studie over Windows of Linux.
+De Device Simulator is gebaseerd op **Node.js** , versie 10.0. x of hoger. [*Uw ontwikkel omgeving voorbereiden*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) bevat informatie over het installeren van Node.js voor deze zelf studie over Windows of Linux.
 
 ## <a name="solution-architecture"></a>Architectuur voor de oplossing
 
@@ -77,7 +77,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 ### <a name="create-an-azure-function"></a>Een Azure-functie maken
 
-Vervolgens maakt u een door een HTTP-aanvraag geactiveerde functie binnen een functie-app. U kunt de functie-app die u in de end-to-end zelf studie hebt gemaakt, gebruiken ([*zelf studie: een end-to-end-oplossing verbinden*](tutorial-end-to-end.md)) of uw eigen.
+Vervolgens maakt u een door een HTTP-aanvraag geactiveerde functie binnen een functie-app. U kunt de functie-app die u in de end-to-end zelf studie hebt gemaakt, gebruiken ( [*zelf studie: een end-to-end-oplossing verbinden*](tutorial-end-to-end.md)) of uw eigen.
 
 Deze functie wordt gebruikt door de Device Provisioning Service in een [aangepast toewijzings beleid](../iot-dps/how-to-use-custom-allocation-policies.md) om een nieuw apparaat in te richten. Zie [*Azure HTTP-aanvraag trigger voor Azure functions*](../azure-functions/functions-bindings-http-webhook-trigger.md)voor meer informatie over het gebruik van HTTP-aanvragen met Azure functions.
 
@@ -233,7 +233,7 @@ Sla het bestand op en publiceer vervolgens de functie-app opnieuw. Zie het gedee
 
 ### <a name="configure-your-function"></a>Uw functie configureren
 
-Vervolgens moet u de omgevings variabelen in uw functie-app van eerder instellen, met daarin de verwijzing naar het Azure Digital Apparaatdubbels-exemplaar dat u hebt gemaakt. Als u de end-to-end zelf studie hebt gebruikt ([*zelf studie: een end-to-end oplossing verbinden*](tutorial-end-to-end.md)), is de instelling al geconfigureerd.
+Vervolgens moet u de omgevings variabelen in uw functie-app van eerder instellen, met daarin de verwijzing naar het Azure Digital Apparaatdubbels-exemplaar dat u hebt gemaakt. Als u de end-to-end zelf studie hebt gebruikt ( [*zelf studie: een end-to-end oplossing verbinden*](tutorial-end-to-end.md)), is de instelling al geconfigureerd.
 
 Voeg de instelling toe met deze Azure CLI-opdracht:
 
@@ -243,18 +243,11 @@ az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure
 
 Zorg ervoor dat de machtigingen en de rol van beheerde identiteits toewijzing correct zijn geconfigureerd voor de functie-app, zoals beschreven in de sectie [*machtigingen toewijzen aan de functie-app*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) in de end-to-end zelf studie.
 
-<!-- 
-* Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
-
-```azurecli-interactive
-az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
-``` -->
-
 ### <a name="create-device-provisioning-enrollment"></a>Inschrijving voor Device Provisioning maken
 
-Vervolgens moet u een registratie in Device Provisioning Service maken met behulp van een **aangepaste toewijzings functie**. Volg de instructies om dit te doen in de secties [*de inschrijving maken*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) en [*unieke Apparaatinstellingen afleiden*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) van het artikel van de Device Provisioning Services over het aangepaste toewijzings beleid.
+Vervolgens moet u een registratie in Device Provisioning Service maken met behulp van een **aangepaste toewijzings functie** . Volg de instructies om dit te doen in de secties [*de inschrijving maken*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) en [*unieke Apparaatinstellingen afleiden*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) van het artikel van de Device Provisioning Services over het aangepaste toewijzings beleid.
 
-Terwijl u deze stroom doorloopt, koppelt u de registratie aan de functie die u zojuist hebt gemaakt door tijdens de stap de functie te selecteren om te **selecteren hoe u apparaten aan hubs wilt toewijzen**. Nadat de inschrijving is gemaakt, worden de registratie naam en de primaire of secundaire SAS-sleutel later gebruikt om de Device Simulator voor dit artikel te configureren.
+Terwijl u deze stroom doorloopt, koppelt u de registratie aan de functie die u zojuist hebt gemaakt door tijdens de stap de functie te selecteren om te **selecteren hoe u apparaten aan hubs wilt toewijzen** . Nadat de inschrijving is gemaakt, worden de registratie naam en de primaire of secundaire SAS-sleutel later gebruikt om de Device Simulator voor dit artikel te configureren.
 
 ### <a name="set-up-the-device-simulator"></a>De Device Simulator instellen
 
@@ -266,7 +259,7 @@ Open een opdracht venster en navigeer naar de gedownloade map en vervolgens naar
 npm install
 ```
 
-Kopieer vervolgens het bestand *. env. sjabloon* naar een nieuw bestand met de naam *. env*en vul de volgende instellingen in:
+Kopieer vervolgens het bestand *. env. sjabloon* naar een nieuw bestand met de naam *. env* en vul de volgende instellingen in:
 
 ```cmd
 PROVISIONING_HOST = "global.azure-devices-provisioning.net"
@@ -318,18 +311,18 @@ In de volgende secties worden de stappen beschreven voor het instellen van deze 
 U moet nu een Azure- [Event hub](../event-hubs/event-hubs-about.md)maken, die wordt gebruikt om de gebeurtenissen van de IOT hub levenscyclus te ontvangen. 
 
 Volg de stappen die worden beschreven in de Snelstartgids [*Create a Event hub*](../event-hubs/event-hubs-create.md) , met behulp van de volgende informatie:
-* Als u de end-to-end-zelf studie gebruikt ([*zelf studie: een end-to-end oplossing verbinden*](tutorial-end-to-end.md)), kunt u de resource groep die u hebt gemaakt voor de end-to-end zelf studie hergebruiken.
-* Noem uw Event Hub *lifecycleevents*of iets anders van uw keuze en onthoud de naam ruimte die u hebt gemaakt. U gebruikt deze bij het instellen van de levenscyclus functie en IoT Hub route in de volgende secties.
+* Als u de end-to-end-zelf studie gebruikt ( [*zelf studie: een end-to-end oplossing verbinden*](tutorial-end-to-end.md)), kunt u de resource groep die u hebt gemaakt voor de end-to-end zelf studie hergebruiken.
+* Noem uw Event Hub *lifecycleevents* of iets anders van uw keuze en onthoud de naam ruimte die u hebt gemaakt. U gebruikt deze bij het instellen van de levenscyclus functie en IoT Hub route in de volgende secties.
 
 ### <a name="create-an-azure-function"></a>Een Azure-functie maken
 
-Vervolgens maakt u een door Event Hubs geactiveerde functie binnen een functie-app. U kunt de functie-app die u in de end-to-end zelf studie hebt gemaakt, gebruiken ([*zelf studie: een end-to-end-oplossing verbinden*](tutorial-end-to-end.md)) of uw eigen. 
+Vervolgens maakt u een door Event Hubs geactiveerde functie binnen een functie-app. U kunt de functie-app die u in de end-to-end zelf studie hebt gemaakt, gebruiken ( [*zelf studie: een end-to-end-oplossing verbinden*](tutorial-end-to-end.md)) of uw eigen. 
 
-Noem uw Event Hub trigger *lifecycleevents*en verbind de Event hub trigger met de Event hub die u in de vorige stap hebt gemaakt. Als u een andere Event Hub naam hebt gebruikt, wijzigt u deze in overeenkomstig de naam van de trigger hieronder.
+Noem uw Event Hub trigger *lifecycleevents* en verbind de Event hub trigger met de Event hub die u in de vorige stap hebt gemaakt. Als u een andere Event Hub naam hebt gebruikt, wijzigt u deze in overeenkomstig de naam van de trigger hieronder.
 
 Deze functie maakt gebruik van de gebeurtenis levens cyclus van IoT Hub om een bestaand apparaat buiten gebruik te stellen. Zie [*IOT hub niet-telemetrie-gebeurtenissen*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)voor meer informatie over levenscyclus gebeurtenissen. Zie [*Azure Event hubs trigger voor Azure functions*](../azure-functions/functions-bindings-event-hubs-trigger.md)voor meer informatie over het gebruik van Event hubs met Azure functions.
 
-Voeg in de gepubliceerde functie-app een nieuwe functie klasse van het type *Event hub-trigger*toe en plak de onderstaande code.
+Voeg in de gepubliceerde functie-app een nieuwe functie klasse van het type *Event hub-trigger* toe en plak de onderstaande code.
 
 ```C#
 using System;
@@ -445,7 +438,7 @@ Sla het project op en publiceer vervolgens de functie-app opnieuw. Zie het gedee
 
 ### <a name="configure-your-function"></a>Uw functie configureren
 
-Vervolgens moet u de omgevings variabelen in uw functie-app van eerder instellen, met daarin de verwijzing naar het Azure Digital Apparaatdubbels-exemplaar dat u hebt gemaakt en de Event Hub. Als u de end-to-end zelf studie hebt gebruikt ([*zelf studie: een end-to-end oplossing verbinden*](./tutorial-end-to-end.md)), is de eerste instelling al geconfigureerd.
+Vervolgens moet u de omgevings variabelen in uw functie-app van eerder instellen, met daarin de verwijzing naar het Azure Digital Apparaatdubbels-exemplaar dat u hebt gemaakt en de Event Hub. Als u de end-to-end zelf studie hebt gebruikt ( [*zelf studie: een end-to-end oplossing verbinden*](./tutorial-end-to-end.md)), is de eerste instelling al geconfigureerd.
 
 Voeg de instelling toe met deze Azure CLI-opdracht. De opdracht kan worden uitgevoerd in [Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 

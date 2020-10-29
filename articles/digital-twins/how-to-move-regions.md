@@ -8,16 +8,16 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e586e9acc9510dc1aaae511fa51e5a0c3255bd8f
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047383"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026493"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Een Azure Digital Apparaatdubbels-exemplaar verplaatsen naar een andere Azure-regio
 
-Als u uw Azure Digital Apparaatdubbels-exemplaar wilt verplaatsen van de ene regio naar een andere, is het huidige proces om **uw resources opnieuw te maken in de nieuwe regio**en vervolgens de oorspronkelijke resources te verwijderen. Aan het einde van dit proces werkt u met een nieuw exemplaar van Azure Digital Apparaatdubbels dat identiek is aan de eerste, behalve voor de bijgewerkte locatie.
+Als u uw Azure Digital Apparaatdubbels-exemplaar wilt verplaatsen van de ene regio naar een andere, is het huidige proces om **uw resources opnieuw te maken in de nieuwe regio** en vervolgens de oorspronkelijke resources te verwijderen. Aan het einde van dit proces werkt u met een nieuw exemplaar van Azure Digital Apparaatdubbels dat identiek is aan de eerste, behalve voor de bijgewerkte locatie.
 
 Dit artikel bevat richt lijnen voor het uitvoeren van een volledige verhuizing, kopiëren over alles wat u moet doen om ervoor te zorgen dat het nieuwe exemplaar overeenkomt met het origineel.
 
@@ -40,7 +40,7 @@ Hier volgen enkele vragen die u kunt overwegen:
 * Wat is de algemene vorm van de **grafiek** in mijn exemplaar? Hoeveel relaties zijn er?
 * Welke **eind punten** heb ik in mijn exemplaar?
 * Welke **routes** heb ik in mijn exemplaar? Hebben ze filters?
-* Waar maakt mijn exemplaar **verbinding met andere Azure-Services**? Enkele algemene integratie punten zijn...
+* Waar maakt mijn exemplaar **verbinding met andere Azure-Services** ? Enkele algemene integratie punten zijn...
     - Event Grid, Event hub of Service Bus
     - Azure Functions
     - Logic Apps
@@ -76,11 +76,13 @@ Als het voor beeld de grootte van uw grafiek niet kan verwerken, kunt u de grafi
 
 Als u wilt door gaan met ADT Explorer, downloadt u eerst de code van de voorbeeld toepassing en stelt u deze in op de computer. 
 
-Ga hier naar het voor beeld: [Azure Digital apparaatdubbels (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klik op de knop *Download ZIP* om een *.zip*-bestand met deze voorbeeldcode naar uw machine te downloaden als _**ADT_Explorer.zip**_. Pak het bestand uit.
+Ga hier naar het voor beeld: [Azure Digital apparaatdubbels (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klik op de knop *ZIP downloaden* om een *.zip* -bestand met deze voorbeeldcode naar uw machine te downloaden als _**Azure_Digital_Twins__ADT__explorer.zip**_ . Pak het bestand uit.
 
-Stel vervolgens de machtigingen in om ADT Explorer op uw computer uit te voeren. Volg hiervoor de stappen in de sectie Machtigingen voor [*ADT Explorer instellen*](quickstart-adt-explorer.md#set-adt-explorer-permissions) van de Snelstartgids voor Azure Digital apparaatdubbels.
-
-Ten slotte voert u ADT Explorer uit en configureert u deze om verbinding te maken met uw oorspronkelijke Azure Digital Apparaatdubbels-exemplaar. Volg de stappen in de sectie [*ADT Explorer uitvoeren en configureren*](quickstart-adt-explorer.md#run-and-configure-adt-explorer) van de Snelstartgids.
+Stel vervolgens de machtigingen voor ADT Explorer in en configureer deze. Volg hiervoor de instructies in de sectie [*Azure Digital apparaatdubbels en ADT Explorer instellen*](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer) van de Snelstartgids voor Azure Digital apparaatdubbels. In deze sectie wordt u begeleid bij de volgende stappen:
+1. Een Azure Digital Apparaatdubbels-exemplaar instellen (u kunt dit onderdeel overs Laan omdat u al een exemplaar hebt)
+2. Een **Azure AD-App-registratie** instellen om toegang te bieden tot uw exemplaar
+3. Machtigingen instellen om ADT Explorer uit te voeren op uw computer
+4. Voer ADT Explorer uit en configureer deze om verbinding te maken met uw exemplaar. U gebruikt de **hostnaam** van uw oorspronkelijke Azure Digital apparaatdubbels-exemplaar dat u verplaatst, en de **client-ID** en **Tenant-id** van de app-registratie.
 
 U moet nu de voorbeeld toepassing ADT Explorer in een browser op uw computer laten worden uitgevoerd. Het voor beeld moet worden verbonden met uw oorspronkelijke Azure Digital Apparaatdubbels-exemplaar.
 
@@ -102,10 +104,10 @@ Klik vervolgens op het pictogram *grafiek exporteren* in het vak *grafiek weerga
 
 :::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/export-graph.png":::
 
-Hiermee wordt een *Download* koppeling in de *weer gave grafiek*ingeschakeld. Selecteer deze optie om een op JSON gebaseerde weer gave van het query resultaat te downloaden, inclusief uw modellen, apparaatdubbels en relaties. Hiermee wordt een *JSON* -bestand gedownload naar uw computer.
+Hiermee wordt een *Download* koppeling in de *weer gave grafiek* ingeschakeld. Selecteer deze optie om een op JSON gebaseerde weer gave van het query resultaat te downloaden, inclusief uw modellen, apparaatdubbels en relaties. Hiermee wordt een *JSON* -bestand gedownload naar uw computer.
 
 >[!NOTE]
->Als het gedownloade bestand een andere bestands extensie heeft, probeert u de extensie rechtstreeks te bewerken en te wijzigen in *. json*.
+>Als het gedownloade bestand een andere bestands extensie heeft, probeert u de extensie rechtstreeks te bewerken en te wijzigen in *. json* .
 
 ## <a name="move"></a>Verplaatsen
 
@@ -113,12 +115,9 @@ Daarna voltooit u het ' verplaatsen ' van uw exemplaar door een nieuw exemplaar 
 
 ### <a name="create-a-new-instance"></a>Een nieuw exemplaar maken
 
-Maak eerst **een nieuw exemplaar van Azure Digital apparaatdubbels in de doel regio**. Volg hiervoor de stappen in [*How-to: een instantie en verificatie instellen*](how-to-set-up-instance-portal.md), waarbij u de volgende aanwijzers in acht houdt:
+Maak eerst **een nieuw exemplaar van Azure Digital apparaatdubbels in de doel regio** . Volg hiervoor de stappen in [*How-to: een instantie en verificatie instellen*](how-to-set-up-instance-portal.md), waarbij u de volgende aanwijzers in acht houdt:
 * U kunt de naam **van het nieuwe exemplaar in** een andere resource groep blijven gebruiken. Als u dezelfde resource groep wilt gebruiken als de oorspronkelijke instantie, heeft het nieuwe exemplaar een eigen naam nodig.
 * Voer de nieuwe regio voor het doel in als u wordt gevraagd om een locatie.
-* U hoeft de registratie van de app **niet** opnieuw te maken. Uw nieuwe exemplaar kan dezelfde app-registratie gebruiken die u al hebt.
-    - Als u het artikel voor [script](how-to-set-up-instance-scripted.md) Setup gebruikt, kunt u de details van uw bestaande app-registratie opnieuw opgeven in plaats van een nieuwe naam op te geven wanneer u hierom wordt gevraagd.
-    - Als u de artikelen hand matige [Portal](how-to-set-up-instance-portal.md) of [cli](how-to-set-up-instance-cli.md) -installatie gebruikt, kunt u stoppen nadat het *Azure Digital apparaatdubbels-exemplaar is gemaakt en de* stappen voor *gebruikers toegangs machtigingen zijn ingesteld* . U hoeft niet door te gaan met het *instellen van toegangs machtigingen voor client toepassingen*.
 
 Zodra dit is voltooid, hebt u de **hostnaam** van het nieuwe exemplaar nodig om de installatie van de gegevens te kunnen voortzetten. Als u tijdens de installatie geen notitie hebt gemaakt, kunt u [deze instructies](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values) volgen om de app nu te downloaden van de Azure Portal.
 
@@ -138,21 +137,21 @@ Op dit moment is ADT Explorer verbonden met uw oorspronkelijke Azure Digital App
 
 :::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/sign-in.png":::
 
-Omdat u de app-registratie opnieuw gebruikt, hoeft u alleen de ADT- *URL*te vervangen. Wijzig deze waarde in dat de *https://{New Instance hostname}* wordt gelezen.
+U kunt dezelfde app-registratie opnieuw gebruiken, dus u hoeft alleen de *ADT-URL* te vervangen om uw nieuwe instantie weer te geven. Wijzig deze waarde in dat de *https://{New Instance hostname}* wordt gelezen.
 
-Druk op *verbinding maken*. U wordt mogelijk gevraagd om u opnieuw aan te melden met uw Azure-referenties en/of deze toepassing toestemming te geven voor uw exemplaar.
+Druk op *verbinding maken* . U wordt mogelijk gevraagd om u opnieuw aan te melden met uw Azure-referenties en/of deze toepassing toestemming te geven voor uw exemplaar.
 
 ##### <a name="upload-models-twins-and-graph"></a>Modellen, apparaatdubbels en grafieken uploaden
 
 Upload vervolgens de oplossings onderdelen die u eerder hebt gedownload naar uw nieuwe exemplaar.
 
-Als u uw **modellen, apparaatdubbels en grafiek**wilt uploaden, klikt u op het pictogram voor het *importeren* van de grafiek in het vak *diagram* . Met deze optie worden alle drie deze onderdelen tegelijk geüpload (zelfs modellen die momenteel niet worden gebruikt in de grafiek).
+Als u uw **modellen, apparaatdubbels en grafiek** wilt uploaden, klikt u op het pictogram voor het *importeren* van de grafiek in het vak *diagram* . Met deze optie worden alle drie deze onderdelen tegelijk geüpload (zelfs modellen die momenteel niet worden gebruikt in de grafiek).
 
 :::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/import-graph.png":::
 
-In het vak bestands kiezer gaat u naar de gedownloade grafiek. Selecteer het bestand Graph *. json* en klik op *Open*.
+In het vak bestands kiezer gaat u naar de gedownloade grafiek. Selecteer het bestand Graph *. json* en klik op *Open* .
 
-Na een paar seconden opent ADT Explorer een *Import*-weergave met een preview van de graaf die wordt geladen.
+Na een paar seconden opent ADT Explorer een *Import* -weergave met een preview van de graaf die wordt geladen.
 
 Als u het uploaden van de graaf wilt bevestigen, klikt u op het pictogram *Save* (Opslaan) in de rechterbovenhoek van de *GRAPH VIEW* (GRAAFWEERGAVE):
 
@@ -176,7 +175,7 @@ ADT Explorer uploadt nu uw modellen en grafiek (inclusief de apparaatdubbels en 
     :::column-end:::
 :::row-end:::
 
-Als u wilt controleren of alles is geüpload, klikt u op de knop *query uitvoeren* in het vak *Graph Explorer* om de standaard query uit te voeren waarin alle apparaatdubbels en relaties in de grafiek worden weer gegeven. Hiermee wordt ook de lijst met modellen in de *model weergave*vernieuwd.
+Als u wilt controleren of alles is geüpload, klikt u op de knop *query uitvoeren* in het vak *Graph Explorer* om de standaard query uit te voeren waarin alle apparaatdubbels en relaties in de grafiek worden weer gegeven. Hiermee wordt ook de lijst met modellen in de *model weergave* vernieuwd.
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/run-query.png":::
 
@@ -191,8 +190,8 @@ Hiermee wordt bevestigd dat uw modellen, apparaatdubbels en grafiek opnieuw zijn
 Als u **eind punten en/of routes** in uw oorspronkelijke exemplaar hebt, moet u ze opnieuw maken in uw nieuwe exemplaar. Als u geen eind punten of routes in uw oorspronkelijke exemplaar hebt of als u deze niet naar het nieuwe exemplaar wilt verplaatsen, kunt u door gaan naar de [volgende sectie](#re-link-connected-resources).
 
 Als dat niet het geval is, volgt u de stappen in [*How-to: Manage eind punten en routes*](how-to-manage-routes-portal.md) met het nieuwe exemplaar en houdt u de volgende punten in acht: 
-* U hoeft de Event Grid, de Event hub of de Service Bus resource die u voor het eind punt gebruikt, **niet** opnieuw te maken (de*vereiste* secties in de instructies voor het eind punt). U hoeft het eind punt alleen opnieuw te maken op het Azure Digital Apparaatdubbels-exemplaar.
-* U kunt de **namen**van eind punten en routes hergebruiken, omdat deze zijn afgestemd op een ander exemplaar.
+* U hoeft de Event Grid, de Event hub of de Service Bus resource die u voor het eind punt gebruikt, **niet** opnieuw te maken (de *vereiste* secties in de instructies voor het eind punt). U hoeft het eind punt alleen opnieuw te maken op het Azure Digital Apparaatdubbels-exemplaar.
+* U kunt de **namen** van eind punten en routes hergebruiken, omdat deze zijn afgestemd op een ander exemplaar.
 * Vergeet niet om de vereiste **filters** toe te voegen aan de routes die u maakt.
 
 #### <a name="re-link-connected-resources"></a>Verbonden resources opnieuw koppelen
@@ -201,7 +200,7 @@ Als u andere apps of Azure-resources hebt die zijn verbonden met uw oorspronkeli
 
 Als u geen andere resources hebt die zijn verbonden met uw oorspronkelijke exemplaar of als u deze niet wilt verplaatsen naar het nieuwe exemplaar, kunt u door gaan naar de [volgende sectie](#verify).
 
-Als u wilt door gaan, moet u rekening houden met de verbonden resources in uw scenario. U hoeft geen verbonden resources te verwijderen en opnieuw te maken. in plaats daarvan hoeft u alleen de punten te bewerken waar ze verbinding maken met een Azure Digital Apparaatdubbels-exemplaar via de **hostnaam**, en dit bijwerken om de hostnaam van het nieuwe exemplaar te gebruiken in plaats van het origineel.
+Als u wilt door gaan, moet u rekening houden met de verbonden resources in uw scenario. U hoeft geen verbonden resources te verwijderen en opnieuw te maken. in plaats daarvan hoeft u alleen de punten te bewerken waar ze verbinding maken met een Azure Digital Apparaatdubbels-exemplaar via de **hostnaam** , en dit bijwerken om de hostnaam van het nieuwe exemplaar te gebruiken in plaats van het origineel.
 
 De exacte resources die u nodig hebt om te bewerken, zijn afhankelijk van uw scenario, maar hier volgen enkele algemene integratie punten:
 * Azure Functions. Als u een Azure-functie hebt waarvan de code de hostnaam van het oorspronkelijke exemplaar bevat, moet u deze waarde bijwerken naar de hostnaam van het nieuwe exemplaar en de functie opnieuw publiceren.
@@ -218,7 +217,7 @@ Nadat deze stap is voltooid, moet het nieuwe exemplaar in de doel regio een kopi
 
 U kunt de volgende hulpprogram ma's gebruiken om te controleren of het nieuwe exemplaar correct is ingesteld:
 * De [**Azure Portal**](https://portal.azure.com) (goed om te controleren of het nieuwe exemplaar bestaat en zich in de juiste doel regio bevindt, is ook geschikt voor het controleren van eind punten en routes en verbindingen met andere Azure-Services)
-* De [Azure Digital Apparaatdubbels **cli-opdrachten** ](how-to-use-cli.md) (goed om te controleren of het nieuwe exemplaar bestaat en zich in de juiste doel regio bevindt, kan ook worden gebruikt voor het controleren van exemplaar gegevens)
+* De [Azure Digital Apparaatdubbels **cli-opdrachten**](how-to-use-cli.md) (goed om te controleren of het nieuwe exemplaar bestaat en zich in de juiste doel regio bevindt, kan ook worden gebruikt voor het controleren van exemplaar gegevens)
 * [**ADT Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (geschikt voor het controleren van exemplaar gegevens, zoals modellen, apparaatdubbels en Graph)
 * De [Azure Digital Apparaatdubbels api's en sdk's](how-to-use-apis-sdks.md) (geschikt voor het controleren van exemplaar gegevens, zoals modellen, apparaatdubbels en Graph, zijn ook geschikt voor het controleren van eind punten en routes)
 
@@ -226,7 +225,7 @@ U kunt ook proberen aangepaste apps of end-to-end-stromen uit te voeren die u me
 
 ## <a name="clean-up-source-resources"></a>Bron resources opschonen
 
-Nu het nieuwe exemplaar is ingesteld in de doel regio met een kopie van de gegevens en verbindingen van het oorspronkelijke exemplaar, kunt u **het oorspronkelijke exemplaar verwijderen**.
+Nu het nieuwe exemplaar is ingesteld in de doel regio met een kopie van de gegevens en verbindingen van het oorspronkelijke exemplaar, kunt u **het oorspronkelijke exemplaar verwijderen** .
 
 U kunt dit doen in de [Azure Portal](https://portal.azure.com), met de [cli](how-to-use-cli.md)of met behulp van de [Control vlak-api's](how-to-use-apis-sdks.md#overview-control-plane-apis).
 

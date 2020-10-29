@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 84cb7e7e98e81e242ec1cac554fe073370e45645
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 7f5ca063bcc784498dddf87f34f0f7974b95ecaf
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495784"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027309"
 ---
 # <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u referenties kunt verkrijgen met behulp van
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi eerst de installatie stappen in [*instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md). Dit zorgt ervoor dat u een Azure Digital Apparaatdubbels-exemplaar hebt, uw gebruiker heeft toegangs machtigingen en u hebt machtigingen ingesteld voor client toepassingen. Nadat u deze instellingen hebt ingesteld, bent u klaar voor het schrijven van client-app-code.
+Voltooi eerst de installatie stappen in [*instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md). Dit zorgt ervoor dat u een Azure Digital Apparaatdubbels-exemplaar hebt en dat uw gebruiker toegangs rechten heeft. Nadat de installatie is voltooid, bent u klaar voor het schrijven van client-app-code.
 
 Als u wilt door gaan, hebt u een client-app-project nodig waarin u uw code schrijft. Als u nog geen client-app-project hebt ingesteld, maakt u een eenvoudig project in de taal van uw keuze voor gebruik in deze zelf studie.
 
@@ -37,7 +37,7 @@ Als u wilt door gaan, hebt u een client-app-project nodig waarin u uw code schri
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 Drie veelvoorkomende methoden voor het verkrijgen van referenties in `Azure.Identity` zijn:
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) biedt een standaard `TokenCredential` verificatie stroom voor toepassingen die worden geïmplementeerd in azure, en is **de aanbevolen keuze voor lokale ontwikkeling**. Het kan ook worden ingeschakeld om de andere twee methoden te proberen die in dit artikel worden aanbevolen. Er wordt gewikkeld `ManagedIdentityCredential` en kan toegang krijgen tot `InteractiveBrowserCredential` een configuratie variabele.
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) biedt een standaard `TokenCredential` verificatie stroom voor toepassingen die worden geïmplementeerd in azure, en is **de aanbevolen keuze voor lokale ontwikkeling** . Het kan ook worden ingeschakeld om de andere twee methoden te proberen die in dit artikel worden aanbevolen. Er wordt gewikkeld `ManagedIdentityCredential` en kan toegang krijgen tot `InteractiveBrowserCredential` een configuratie variabele.
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) werkt prima in gevallen waarin u [beheerde identiteiten (MSI)](../active-directory/managed-identities-azure-resources/overview.md)nodig hebt, en is een goede kandidaat voor het werken met Azure functions en het implementeren van Azure-Services.
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) is bedoeld voor interactieve toepassingen en kan worden gebruikt voor het maken van een geverifieerde SDK-client
 
@@ -60,7 +60,7 @@ Voeg vervolgens code toe om referenties te verkrijgen met een van de methoden in
 
 ### <a name="defaultazurecredential-method"></a>Methode DefaultAzureCredential
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) biedt een standaard `TokenCredential` verificatie stroom voor toepassingen die worden geïmplementeerd in azure, en is **de aanbevolen keuze voor lokale ontwikkeling**.
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) biedt een standaard `TokenCredential` verificatie stroom voor toepassingen die worden geïmplementeerd in azure, en is **de aanbevolen keuze voor lokale ontwikkeling** .
 
 Als u de standaard Azure-referenties wilt gebruiken, hebt u de URL van het Azure Digital Apparaatdubbels-exemplaar ([instructies om te vinden](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) nodig.
 
@@ -84,7 +84,7 @@ try
 }
 ```
 
-#### <a name="set-up-local-azure-credentials"></a>Lokale Azure-Referenties instellen
+#### <a name="set-up-local-azure-credentials"></a>Lokale Azure-referenties instellen
 
 [!INCLUDE [Azure Digital Twins: local credentials prereq (inner)](../../includes/digital-twins-local-credentials-inner.md)]
 
@@ -110,8 +110,8 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 De methode [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) is bedoeld voor interactieve toepassingen en brengt een webbrowser voor verificatie. U kunt dit in plaats van gebruiken `DefaultAzureCredential` in gevallen waarin u interactieve verificatie nodig hebt.
 
 Als u de interactieve browser referenties wilt gebruiken, hebt u een **app-registratie** nodig die machtigingen heeft voor de Azure Digital Apparaatdubbels-api's. Zie [*How to: Create a app Registration*](how-to-create-app-registration.md)(Engelstalig) voor de stappen voor het instellen van deze app-registratie. Zodra de app-registratie is ingesteld, hebt u nodig...
-* de *toepassings-id* van de app-registratie (client) ([te vinden instructies](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* de *Directory-id (Tenant)* van de app-registratie ([te vinden instructies](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* de *toepassings-id* van de app-registratie (client) ( [te vinden instructies](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* de *Directory-id (Tenant)* van de app-registratie ( [te vinden instructies](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * de URL van het Azure Digital Apparaatdubbels-exemplaar ([instructies om te vinden](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 Hier volgt een voor beeld van de code voor het maken van een geverifieerde SDK-client met `InteractiveBrowserCredential` .

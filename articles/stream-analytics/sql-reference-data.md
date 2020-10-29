@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ae5908fe3ab95dcd62da976988bd7ce107217e5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039293"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027374"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Referentie gegevens van een SQL Database gebruiken voor een Azure Stream Analytics taak
 
@@ -32,7 +32,7 @@ Gebruik de volgende stappen om Azure SQL Database toe te voegen als een invoer b
 
 ### <a name="define-sql-database-reference-data-input"></a>Invoer van SQL Database referentie gegevens definiëren
 
-1. Selecteer in uw Stream Analytics-taak de optie **invoer** onder **taak topologie**. Klik op **referentie-invoer toevoegen** en kies **SQL database**.
+1. Selecteer in uw Stream Analytics-taak de optie **invoer** onder **taak topologie** . Klik op **referentie-invoer toevoegen** en kies **SQL database** .
 
    ![Invoer van Stream Analytics-taak](./media/sql-reference-data/stream-analytics-inputs.png)
 
@@ -44,7 +44,7 @@ Gebruik de volgende stappen om Azure SQL Database toe te voegen als een invoer b
 
 ### <a name="specify-storage-account-in-job-config"></a>Geef het opslag account op in de taak configuratie
 
-Navigeer naar **instellingen voor het opslag account** onder **configureren** en selecteer **opslag account toevoegen**.
+Navigeer naar **instellingen voor het opslag account** onder **configureren** en selecteer **opslag account toevoegen** .
 
    ![Instellingen voor Stream Analytics Storage-account](./media/sql-reference-data/storage-account-settings.png)
 
@@ -79,17 +79,17 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ### <a name="choose-your-subscription"></a>Kies uw abonnement
 
-1. Selecteer in Visual Studio in het menu **Beeld** de optie **Server Explorer**.
+1. Selecteer in Visual Studio in het menu **Beeld** de optie **Server Explorer** .
 
-2. Klik met de rechter muisknop op **Azure**, selecteer **verbinding maken met Microsoft Azure abonnement**en meld u aan met uw Azure-account.
+2. Klik met de rechter muisknop op **Azure** , selecteer **verbinding maken met Microsoft Azure abonnement** en meld u aan met uw Azure-account.
 
 ### <a name="create-a-stream-analytics-project"></a>Een Stream Analytics-project maken
 
-1. Selecteer **Bestand > Nieuw > Project**. 
+1. Selecteer **Bestand > Nieuw > Project** . 
 
-2. Selecteer **Stream Analytics**in de sjablonenlijst aan de linkerkant en selecteer vervolgens **Azure Stream Analytics Application**. 
+2. Selecteer **Stream Analytics** in de sjablonenlijst aan de linkerkant en selecteer vervolgens **Azure Stream Analytics Application** . 
 
-3. Voer de project **naam**, **locatie**en naam van de **oplossing**in en selecteer **OK**.
+3. Voer de project **naam** , **locatie** en naam van de **oplossing** in en selecteer **OK** .
 
    ![Nieuw Stream Analytics project in Visual Studio](./media/sql-reference-data/stream-analytics-vs-new-project.png)
 
@@ -99,9 +99,9 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
    ![Nieuwe Stream Analytics invoer in Visual Studio](./media/sql-reference-data/stream-analytics-vs-input.png)
 
-2. Dubbel klik op **Input.js** in het **Solution Explorer**.
+2. Dubbel klik op **Input.js** in het **Solution Explorer** .
 
-3. Vul de **Stream Analytics invoer configuratie**in. Kies de database naam, de server naam, het vernieuwings type en de vernieuwings frequentie. Geef de vernieuwings frequentie in de notatie op `DD:HH:MM` .
+3. Vul de **Stream Analytics invoer configuratie** in. Kies de database naam, de server naam, het vernieuwings type en de vernieuwings frequentie. Geef de vernieuwings frequentie in de notatie op `DD:HH:MM` .
 
    ![Stream Analytics invoer configuratie in Visual Studio](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
@@ -109,13 +109,13 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
    ![Invoer code achter in Visual Studio](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
-   Als u ' periodiek vernieuwen met Delta ' kiest, worden er twee SQL CodeBehind-bestanden gegenereerd: **[invoer alias]. snap shot. SQL** en **[invoer alias]. Delta. SQL**.
+   Als u ' periodiek vernieuwen met Delta ' kiest, worden er twee SQL CodeBehind-bestanden gegenereerd: **[invoer alias]. snap shot. SQL** en **[invoer alias]. Delta. SQL** .
 
    ![Code achter in Solution Explorer](./media/sql-reference-data/periodically-delta-codebehind.png)
 
 4. Open het SQL-bestand in de editor en schrijf de SQL-query.
 
-5. Als u Visual Studio 2019 gebruikt en u SQL Server Data tools hebt geïnstalleerd, kunt u de query testen door te klikken op **uitvoeren**. Er wordt een pop-upvenster weer gegeven om u te helpen bij het maken van een verbinding met SQL Database en het query resultaat wordt onderaan in het venster geopend.
+5. Als u Visual Studio 2019 gebruikt en u SQL Server Data tools hebt geïnstalleerd, kunt u de query testen door te klikken op **uitvoeren** . Er wordt een pop-upvenster weer gegeven om u te helpen bij het maken van een verbinding met SQL Database en het query resultaat wordt onderaan in het venster geopend.
 
 ### <a name="specify-storage-account"></a>Opslag account opgeven
 
@@ -125,7 +125,7 @@ Open **JobConfig.jsin** om het opslag account op te geven voor het opslaan van S
 
 ### <a name="test-locally-and-deploy-to-azure"></a>Lokaal testen en implementeren in azure
 
-Voordat u de taak implementeert in azure, kunt u de query logica lokaal testen op Live invoer gegevens. Zie [Live-gegevens lokaal testen met Azure stream Analytics tools for Visual Studio (preview)](stream-analytics-live-data-local-testing.md)voor meer informatie over deze functie. Wanneer u klaar bent met testen, klikt **u op verzenden naar Azure**. Raadpleeg de Snelstartgids [Create a stream Analytics met de Azure stream Analytics-hulpprogram ma's voor Visual Studio voor](stream-analytics-quick-create-vs.md) meer informatie over het starten van de taak.
+Voordat u de taak implementeert in azure, kunt u de query logica lokaal testen op Live invoer gegevens. Zie [Live-gegevens lokaal testen met Azure stream Analytics tools for Visual Studio (preview)](stream-analytics-live-data-local-testing.md)voor meer informatie over deze functie. Wanneer u klaar bent met testen, klikt **u op verzenden naar Azure** . Raadpleeg de Snelstartgids [Create a stream Analytics met de Azure stream Analytics-hulpprogram ma's voor Visual Studio voor](stream-analytics-quick-create-vs.md) meer informatie over het starten van de taak.
 
 ## <a name="delta-query"></a>Delta query
 
@@ -147,7 +147,7 @@ Wanneer u de Delta query gebruikt, worden [tijdelijke tabellen in Azure SQL data
    ```
 2. Maak een auteur van de momentopname query. 
 
-   Gebruik de para meter ** \@ snapshotTime** om de stream Analytics runtime te instrueren de referentie gegevensverzameling te verkrijgen van SQL database tijdelijke tabel die op de systeem tijd geldig is. Als u deze para meter niet opgeeft, krijgt u een risico dat er een onnauwkeurige basis referentie gegevens worden ingesteld vanwege de klok scheefheid. Hieronder ziet u een voor beeld van een volledige momentopname query:
+   Gebruik de para meter **\@ snapshotTime** om de stream Analytics runtime te instrueren de referentie gegevensverzameling te verkrijgen van SQL database tijdelijke tabel die op de systeem tijd geldig is. Als u deze para meter niet opgeeft, krijgt u een risico dat er een onnauwkeurige basis referentie gegevens worden ingesteld vanwege de klok scheefheid. Hieronder ziet u een voor beeld van een volledige momentopname query:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,7 +156,7 @@ Wanneer u de Delta query gebruikt, worden [tijdelijke tabellen in Azure SQL data
  
 2. Ontwerp de Delta-query. 
    
-   Met deze query worden alle rijen in SQL Database opgehaald die zijn ingevoegd of verwijderd in een begin tijd, ** \@ deltaStartTime**en een eind tijd ** \@ deltaEndTime**. De Delta query moet dezelfde kolommen retour neren als de momentopname query, evenals de kolom **_bewerking_**. Deze kolom definieert of de rij wordt ingevoegd of verwijderd tussen ** \@ deltaStartTime** en ** \@ deltaEndTime**. De resulterende rijen worden gemarkeerd als **1** als de records zijn ingevoegd, of **2** indien verwijderd. De query moet ook een **water merk** toevoegen uit de SQL Server-zijde om ervoor te zorgen dat alle updates in de Delta periode op de juiste wijze worden vastgelegd. Het gebruik van een Delta query zonder **water merk** kan resulteren in een onjuiste referentie gegevensset.  
+   Met deze query worden alle rijen in SQL Database opgehaald die zijn ingevoegd of verwijderd in een begin tijd, **\@ deltaStartTime** en een eind tijd **\@ deltaEndTime** . De Delta query moet dezelfde kolommen retour neren als de momentopname query, evenals de kolom **_bewerking_** . Deze kolom definieert of de rij wordt ingevoegd of verwijderd tussen **\@ deltaStartTime** en **\@ deltaEndTime** . De resulterende rijen worden gemarkeerd als **1** als de records zijn ingevoegd, of **2** indien verwijderd. De query moet ook een **water merk** toevoegen uit de SQL Server-zijde om ervoor te zorgen dat alle updates in de Delta periode op de juiste wijze worden vastgelegd. Het gebruik van een Delta query zonder **water merk** kan resulteren in een onjuiste referentie gegevensset.  
 
    Voor records die zijn bijgewerkt, houdt de tijdelijke tabel boekingen toe door het invoegen en verwijderen van een bewerking. De resultaten van de Delta query worden vervolgens toegepast op de vorige moment opname om de referentie gegevens up-to-date te houden. Stream Analytics Hieronder ziet u een voor beeld van een Delta query:
 
@@ -174,6 +174,35 @@ Wanneer u de Delta query gebruikt, worden [tijdelijke tabellen in Azure SQL data
 
 ## <a name="test-your-query"></a>De query testen
    Het is belang rijk om te controleren of uw query de verwachte gegevensset retourneert die de Stream Analytics taak als referentie gegevens zal gebruiken. Als u uw query wilt testen, gaat u naar invoer onder taak topologie in de portal. U kunt vervolgens voorbeeld gegevens selecteren op uw SQL Database referentie-invoer. Nadat het voor beeld beschikbaar is, kunt u het bestand downloaden en controleren of de gegevens die worden geretourneerd, naar verwachting worden weer gegeven. Als u uw ontwikkel-en test herhalingen wilt optimaliseren, kunt u het beste de [Stream Analytics-hulpprogram ma's voor Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)gebruiken. U kunt ook een ander hulp programma van uw voor keur gebruiken om ervoor te zorgen dat de query de juiste resultaten retourneert uit Azure SQL Database en deze vervolgens gebruikt in uw Stream Analytics-taak. 
+
+### <a name="test-your-query-with-visual-studio-code"></a>Uw query testen met Visual Studio code
+
+   Installeer [Azure stream Analytics tools](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) en [SQL Server (Mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) op Visual Studio code en stel uw ASA-project in. Zie [Quick Start: een Azure stream Analytics-taak maken in Visual Studio code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code) en de [zelf studie over de SQL Server (Mssql)-extensie](https://aka.ms/mssql-getting-started)voor meer informatie.
+
+1. Configureer de invoer van SQL-referentie gegevens.
+   
+   ![Invoer van SQL-referentie gegevens configureren](./media/sql-reference-data/configure-sql-reference-data-input.png)
+
+2. Selecteer het SQL Server pictogram en klik op **verbinding toevoegen** .
+   
+   ![Klik op SQL Server pictogram en klik op verbinding toevoegen](./media/sql-reference-data/add-sql-connection.png)
+
+3. Vul de verbindings gegevens in.
+   
+   ![Stream Analytics invoer configuratie in Visual Studio](./media/sql-reference-data/fill-connection-information.png)
+
+4. Klik met de rechter muisknop in referentie SQL en selecteer **query uitvoeren** .
+   
+   ![Stream Analytics invoer configuratie in Visual Studio](./media/sql-reference-data/execute-query.png)
+
+5. Kies uw verbinding.
+   
+   ![Stream Analytics invoer configuratie in Visual Studio](./media/sql-reference-data/choose-connection.png)
+
+6. Controleer en controleer het query resultaat.
+   
+   ![Stream Analytics invoer configuratie in Visual Studio](./media/sql-reference-data/verify-result.png)
+
 
 ## <a name="faqs"></a>Veelgestelde vragen
 

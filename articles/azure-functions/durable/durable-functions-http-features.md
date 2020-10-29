@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4f84ccbddc6f5244ac8f4334b716d770e0ed4afc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328918"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027258"
 ---
 # <a name="http-features"></a>HTTP-functies
 
@@ -57,7 +57,7 @@ De [Orchestration-client binding](durable-functions-bindings.md#orchestration-cl
 
 # <a name="python"></a>[Python](#tab/python)
 
-**__init__. py**
+**__init__ . py**
 
 ```python
 import logging
@@ -140,7 +140,7 @@ Zie de [http API-verwijzing](durable-functions-http-api.md)voor een beschrijving
 
 ### <a name="async-operation-tracking"></a>Asynchrone bewerkingen bijhouden
 
-Het HTTP-antwoord dat eerder is vermeld, is ontworpen om te helpen met het implementeren van langlopende HTTP async-Api's met Durable Functions. Dit patroon wordt soms ook wel het *polling Consumer-patroon*genoemd. De client/server-stroom werkt als volgt:
+Het HTTP-antwoord dat eerder is vermeld, is ontworpen om te helpen met het implementeren van langlopende HTTP async-Api's met Durable Functions. Dit patroon wordt soms ook wel het *polling Consumer-patroon* genoemd. De client/server-stroom werkt als volgt:
 
 1. De client geeft een HTTP-aanvraag om een langlopend proces te starten, zoals een Orchestrator-functie.
 1. De HTTP-trigger van het doel retourneert een HTTP 202-antwoord met een locatie header met de waarde ' statusQueryGetUri '.
@@ -304,7 +304,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
     # get a list of the Azure subscriptions that I have access to
     restart_response = yield context.call_http("POST", 
-        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        f"https://management.azure.com/subscriptions/{subscription_id}/resourceGroups/{resource_group}/providers/Microsoft.Compute/virtualMachines/{vm_name}/restart?api-version={api_version}",
         None,
         None,
         token_source)

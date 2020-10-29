@@ -3,12 +3,12 @@ title: Taak uitvoer logboeken weer geven-taken
 description: Uitvoerings logboeken weer geven en beheren die door ACR-taken worden gegenereerd.
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871929"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027173"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Taak uitvoer logboeken weer geven en beheren
 
@@ -65,14 +65,14 @@ Als een taak automatisch wordt geactiveerd, bijvoorbeeld door het bijwerken van 
 Uitvoerings logboeken weer geven in de portal:
 
 1. Navigeer naar het container register.
-1. In **Services**selecteert u **taken**worden  >  **uitgevoerd**.
+1. In **Services** selecteert u **taken** worden  >  **uitgevoerd** .
 1. Selecteer een **Run-id** om de uitvoerings status te bekijken en Logboeken uit te voeren. Het logboek bevat dezelfde informatie als een gestreamd logboek als er een wordt gegenereerd.
 
 ![Aanmeldings portal voor taak uitvoering weer geven](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
 Als u een logboek wilt weer geven met behulp van de Azure CLI, voert u [AZ ACR-taak logboeken](/cli/azure/acr/task#az-acr-task-logs) uit en geeft u een run-id, een taak naam of een specifieke installatie kopie op die wordt gemaakt door een build-taak. Als er een taak naam wordt opgegeven, wordt in de opdracht het logboek voor de laatst gemaakte uitvoering weer gegeven.
 
-In het volgende voor beeld wordt het logboek uitgevoerd voor de run with ID *cf4*:
+In het volgende voor beeld wordt het logboek uitgevoerd voor de run with ID *cf4* :
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
@@ -94,18 +94,10 @@ az acr task logs --registry mycontainerregistry1220 \
 
 U kunt ook lokale logboek bestanden opslaan in Azure Storage. Gebruik bijvoorbeeld de [Azure cli](../storage/blobs/storage-quickstart-blobs-cli.md), de [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)of andere methoden om bestanden te uploaden naar een opslag account.
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [Azure container Registry taken](container-registry-tasks-overview.md)
 
-<!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
-[sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

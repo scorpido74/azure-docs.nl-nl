@@ -1,15 +1,15 @@
 ---
 title: Azure Policy-beleid exporteren
 description: Meer informatie over het exporteren van Azure Policy-resources naar GitHub, zoals beleids definities en beleids toewijzingen.
-ms.date: 09/30/2020
+ms.date: 10/29/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c16ceed755cab3228b8f9e401f486a0629f3a60d
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777085"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025711"
 ---
 # <a name="export-azure-policy-resources"></a>Azure Policy-beleid exporteren
 
@@ -17,37 +17,37 @@ Dit artikel bevat informatie over het exporteren van uw bestaande Azure Policy-r
 
 ## <a name="export-with-azure-portal"></a>Exporteren met Azure Portal
 
-Voer de volgende stappen uit om een beleids definitie te exporteren uit Azure Portal:
+Voer de volgende stappen uit om een beleidsdefinitie te exporteren uit Azure Portal:
 
 1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
-1. Selecteer **definities** aan de linkerkant van de pagina Azure Policy.
+1. Selecteer **Definities** aan de linkerkant van de Azure Policy-pagina.
 
-1. Gebruik de knop **definities exporteren** of selecteer het weglatings teken in de rij van een beleids definitie en selecteer vervolgens **definitie exporteren**.
+1. Gebruik de knop **Definities exporteren** of selecteer het beletselteken in de rij van een beleidsdefinitie en selecteer vervolgens **Definitie exporteren** .
 
-1. Selecteer de knop **Aanmelden met github** . Als u nog niet hebt geverifieerd met GitHub om Azure Policy te autoriseren voor het exporteren van de resource, controleert u de toegang tot de [github-actie](https://github.com/features/actions) behoeften in het nieuwe venster dat wordt geopend en selecteert u **AzureGitHubActions autoriseren** om door te gaan met het export proces. Zodra de bewerking is voltooid, wordt het nieuwe venster automatisch gesloten.
+1. Selecteer de knop **Aanmelden bij GitHub** . Als u nog niet hebt geverifieerd met GitHub om Azure Policy te autoriseren voor het exporteren van de resource, bekijkt u de toegang tot de [GitHub-actie](https://github.com/features/actions) in het nieuwe venster dat wordt geopend en selecteert u **AzureGitHubActions autoriseren** om door te gaan met het exportproces. Zodra dit is voltooid, wordt het nieuwe venster automatisch gesloten.
 
-1. Stel op het tabblad **basis beginselen** de volgende opties in en selecteer vervolgens het tabblad **beleid** of **volgende:** de knop beleid onder aan de pagina.
+1. Stel op het tabblad **Basisprincipes** de volgende opties in en selecteer vervolgens het tabblad **Beleid** of de knop **Volgende: Beleid** onderaan de pagina.
 
-   - **Opslagplaats filter**: Stel deze in op _mijn opslag_ plaatsen om alleen opslag plaatsen weer te geven waarvan u de eigenaar bent of _alle opslag_ plaatsen om alles weer te geven waaraan u de GitHub-actie toegang hebt verleend.
-   - **Opslag plaats**: Stel in de opslag plaats in waarnaar u de Azure Policy resources wilt exporteren.
-   - **Vertakking**: Stel de vertakking in de opslag plaats in. Het gebruik van een andere vertakking dan het standaard filiaal is een goede manier om uw updates te valideren voordat u de bron code verder samenvoegt.
-   - **Map**: de _map op het hoofd niveau_ waarnaar de Azure Policy resources moeten worden geëxporteerd. Submappen onder deze map worden gemaakt op basis van de resources die worden geëxporteerd.
+   - **Filter voor opslagplaats** : Ingesteld op _Mijn opslagplaatsen_ om alleen opslagplaatsen weer te geven waarvan u de eigenaar bent, of _Alle opslagplaatsen_ om alles weer te geven waaraan u de GitHub-actie toegang hebt verleend.
+   - **Opslagplaats** : Stel in op de opslagplaats waarnaar u de Azure Policy-resources wilt exporteren.
+   - **Vertakking** : Stel de vertakking in de opslagplaats in. Het gebruik van een andere vertakking dan de standaard is een goede manier om uw updates te valideren voordat u de broncode verder samenvoegt.
+   - **Map** : De _map op het hoofdniveau_ om de Azure Policy-resources naar te exporteren. Submappen onder deze map worden gemaakt op basis van de resources die worden geëxporteerd.
 
-1. Stel op het tabblad **beleid** het bereik in op zoeken door het weglatings teken te selecteren en een combi natie van beheer groepen, abonnementen of resource groepen te kiezen.
+1. Stel op het tabblad **Beleid** het bereik in op zoeken door het beletselteken te selecteren en een combinatie van beheergroepen, abonnementen of resourcegroepen te kiezen.
    
-1. Gebruik de knop **beleids definities toevoegen** om te zoeken naar de scope waarvan de objecten moeten worden geëxporteerd. Selecteer in het side-venster dat wordt geopend elk object dat u wilt exporteren. De selectie filteren op het zoekvak of het type. Als u alle objecten hebt geselecteerd die u wilt exporteren, klikt u op de knop **toevoegen** onder aan de pagina.
+1. Gebruik de knop **Beleidsdefinitie(s) toevoegen** om het bereik te doorzoeken op zoek naar welke objecten moeten worden geëxporteerd. Selecteer in het venster aan de zijkant dat wordt geopend elk object dat u wilt exporteren. Filter de selectie door middel van het zoekvak of het type. Wanneer u alle objecten hebt geselecteerd die u wilt exporteren, gebruikt u de knop **Toevoegen** onderaan de pagina.
 
-1. Selecteer voor elk geselecteerd object de gewenste export opties zoals _definitie_ of _definitie en toewijzing (en)_ voor een beleids definitie. Selecteer vervolgens het tabblad **controleren + exporteren** of **volgende: de knop controleren + exporteren** onder aan de pagina.
+1. Selecteer voor elk geselecteerd object de gewenste exportopties, zoals _Alleen definitie_ of _Definitie en toewijzing(en)_ voor een beleidsdefinitie. Selecteer vervolgens het tabblad **Beoordelen + exporteren** of de knop **Volgende: Beoordelen + exporteren** onderaan de pagina.
 
    > [!NOTE]
-   > Als optie _definitie en toewijzing (en)_ is gekozen, worden alleen beleids toewijzingen binnen het bereik dat is ingesteld door het filter bij het toevoegen van de beleids definitie, geëxporteerd.
+   > Als de optie _Definitie en toewijzing(en)_ wordt gekozen, worden alleen beleidstoewijzingen geëxporteerd binnen het bereik dat is ingesteld door het filter wanneer de beleidsdefinitie wordt toegevoegd.
 
-1. Controleer op het tabblad **controleren en exporteren** de gegevens overeenkomst en gebruik vervolgens de knop **exporteren** onder aan de pagina.
+1. Controleer op het tabblad **Beoordelen + exporteren** of de informatie overeenkomt en gebruik vervolgens de knop **Exporteren** aan de onderkant van de pagina.
 
-1. Controleer uw GitHub-opslag plaats, vertakkings-en _hoofdmap_ om te zien of de geselecteerde resources nu zijn geëxporteerd naar het bron beheer.
+1. Controleer uw GitHub-opslagplaats, vertakking en _map op het hoofdniveau_ om te zien of de geselecteerde resources nu zijn geëxporteerd naar uw broncodebeheer.
 
-De Azure Policy resources worden geëxporteerd naar de volgende structuur in de geselecteerde GitHub-opslag plaats en- _hoofdmap_:
+De Azure Policy-resources worden geëxporteerd naar de volgende structuur in de geselecteerde GitHub-opslagplaats en _map op het hoofdniveau_ :
 
 ```text
 |
@@ -67,7 +67,7 @@ Azure Policy definities, initiatieven en toewijzingen kunnen elk worden geëxpor
 - Initiative- [AZ policy set-definition show](/cli/azure/policy/set-definition#az-policy-set-definition-show)
 - Toewijzing- [AZ-beleids toewijzing weer geven](/cli/azure/policy/assignment#az-policy-assignment-show)
 
-Hier volgt een voor beeld van het ophalen van de JSON voor een beleids definitie met de **naam** _VirtualMachineStorage_:
+Hier volgt een voor beeld van het ophalen van de JSON voor een beleids definitie met de **naam** _VirtualMachineStorage_ :
 
 ```azurecli-interactive
 az policy definition show --name 'VirtualMachineStorage'
@@ -81,10 +81,10 @@ Azure Policy definities, initiatieven en toewijzingen kunnen worden geëxporteer
 - Initiative- [Get-AzPolicySetDefinition](/powershell/module/az.resources/get-azpolicysetdefinition)
 - Toewijzing- [Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment)
 
-Hier volgt een voor beeld van het ophalen van de JSON voor een beleids definitie met de **naam** _VirtualMachineStorage_:
+Hier volgt een voor beeld van het ophalen van de JSON voor een beleids definitie met de **naam** _VirtualMachineStorage_ :
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage' | ConvertTo-Json -Depth 10
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

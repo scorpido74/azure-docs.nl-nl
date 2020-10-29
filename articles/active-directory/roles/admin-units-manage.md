@@ -14,41 +14,47 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b47ea3cc55be26521dfa6e2b3230b477f82f442
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: aa0abffc9bfb1a0c6511af331d1e8dbc10cff455
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376114"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026527"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Beheer eenheden in Azure Active Directory beheren
 
-Voor gedetailleerdere administratieve controle in Azure Active Directory (Azure AD) kunt u gebruikers toewijzen aan een Azure AD-rol met een bereik dat beperkt is tot een of meer administratieve eenheden (AUs).
+Voor gedetailleerdere administratieve controle in Azure Active Directory (Azure AD) kunt u gebruikers toewijzen aan een Azure AD-rol met een bereik dat beperkt is tot een of meer beheer eenheden.
 
 ## <a name="get-started"></a>Aan de slag
 
 1. Ga als volgt te werk om query's uit te voeren vanuit de volgende instructies via [Graph Explorer](https://aka.ms/ge):
 
-    a. Ga in de Azure Portal naar Azure AD. Selecteer in de lijst toepassingen de optie **Graph Explorer**en selecteer vervolgens **toestemming geven voor de beheerder voor Graph Explorer**.
+    a. Ga in de Azure Portal naar Azure AD. 
+    
+    b. Selecteer in de lijst toepassingen de optie **Graph Explorer** .
+    
+    c. Selecteer in het deel venster **machtigingen** de optie **beheerder toestemming geven voor Graph Explorer** .
 
-    ![Scherm afbeelding met een koppeling naar ' toestemming van beheerder verlenen '](./media/admin-units-manage/select-graph-explorer.png)
+    ![Scherm afbeelding van de koppeling ' toestemming geven aan beheerder voor Graph Explorer '.](./media/admin-units-manage/select-graph-explorer.png)
 
 
 1. De preview-versie van Azure AD Power shell gebruiken.
 
 ## <a name="add-an-administrative-unit"></a>Een beheer eenheid toevoegen
 
-### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+U kunt een administratieve eenheid toevoegen met behulp van de Azure Portal of Power shell.
 
-1. Ga in de Azure Portal naar Azure AD en selecteer vervolgens in het linkerdeel venster **beheer eenheden**.
+### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
-    ![Scherm afbeelding van de beheer unitslink in azure AD](./media/admin-units-manage/nav-to-admin-units.png)
+1. Ga in de Azure Portal naar Azure AD. Selecteer vervolgens in het linkerdeel venster **beheer eenheden** .
 
-1. Selecteer **toevoegen** en voer vervolgens de naam van de beheer eenheid in. U kunt desgewenst een beschrijving van de beheer eenheid toevoegen.
+    ![Scherm afbeelding van de koppeling "administratieve eenheden" in azure AD.](./media/admin-units-manage/nav-to-admin-units.png)
 
-    ![Scherm afbeelding van de knop toevoegen en het tekstvak voor het invoeren van de naam van de beheer eenheid](./media/admin-units-manage/add-new-admin-unit.png)
+1. Selecteer de knop **toevoegen** in het bovenste gedeelte van het deel venster en voer vervolgens in het vak **naam** de naam van de beheer eenheid in. U kunt desgewenst een beschrijving van de beheer eenheid toevoegen.
 
-1. Selecteer **toevoegen** om de beheer eenheid te volt ooien.
+    ![Scherm afbeelding met de knop toevoegen en het vak naam voor het invoeren van de naam van de beheer eenheid.](./media/admin-units-manage/add-new-admin-unit.png)
+
+1. Selecteer de knop Blue **toevoegen** om de beheer eenheid te volt ooien.
 
 ### <a name="use-powershell"></a>PowerShell gebruiken
 
@@ -77,13 +83,13 @@ Request body
 
 In azure AD kunt u een administratieve eenheid verwijderen die u niet meer nodig hebt als een eenheid van het bereik voor beheerders rollen.
 
-### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
-1. Ga in de Azure Portal naar **Azure AD**-  >  **beheer eenheden**. 
-1. Selecteer de beheer eenheid die u wilt verwijderen en selecteer vervolgens **verwijderen**. 
-1. Selecteer **Ja**om te bevestigen dat u de beheer eenheid wilt verwijderen. De administratieve eenheid wordt verwijderd.
+1. Ga in de Azure Portal naar **Azure AD** en selecteer vervolgens **beheer eenheden** . 
+1. Selecteer de beheer eenheid die u wilt verwijderen en selecteer vervolgens **verwijderen** . 
+1. Selecteer **Ja** om te bevestigen dat u de beheer eenheid wilt verwijderen. De administratieve eenheid wordt verwijderd.
 
-![Scherm afbeelding van de knop voor het verwijderen van de beheer eenheid en het bevestigings venster](./media/admin-units-manage/select-admin-unit-to-delete.png)
+![Scherm afbeelding van de knop voor het verwijderen van de beheer eenheid en het bevestigings venster.](./media/admin-units-manage/select-admin-unit-to-delete.png)
 
 ### <a name="use-powershell"></a>PowerShell gebruiken
 

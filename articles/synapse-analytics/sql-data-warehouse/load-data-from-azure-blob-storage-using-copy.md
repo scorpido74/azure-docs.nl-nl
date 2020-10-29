@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb5984ba5d5764ee2ffa3f28e2d95612c14f7e27
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371521"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025932"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Zelf studie: de over taxi's-gegevensset van New York laden
 
@@ -48,11 +48,11 @@ Een Azure SQL-pool wordt gemaakt met een gedefinieerde set [compute-resources](m
 
 Volg deze stappen om een lege database te maken.
 
-1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
+1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken** .
 
 2. Selecteer **data bases** op de pagina **Nieuw** en selecteer **Azure Synapse Analytics** onder **Aanbevolen** op de pagina **Nieuw** .
 
-    ![datawarehouse maken](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
+    ![Scherm afbeelding toont SQL Data Warehouse geselecteerd in data bases in de Azure Portal.](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
 3. Vul het formulier in met de volgende gegevens:
 
@@ -63,7 +63,7 @@ Volg deze stappen om een lege database te maken.
    | **Resourcegroep** | myResourceGroup       | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige resourcegroepnamen. |
    | **Bron selecteren**  | Lege database        | Geeft aan dat er een lege database wordt gemaakt. Opmerking: een datawarehouse is een type database. |
 
-    ![datawarehouse maken](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
+    ![Scherm afbeelding toont het deel venster SQL Data Warehouse waarin u deze waarden kunt invoeren.](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
 4. Selecteer **Server** als u een nieuwe server voor de nieuwe database wilt maken en configureren. Vul het **nieuwe serverformulier** in met de volgende gegevens:
 
@@ -76,15 +76,15 @@ Volg deze stappen om een lege database te maken.
 
     ![server maken](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. Kies **Selecteren**.
+5. Kies **Selecteren** .
 
 6. Selecteer **prestatie niveau** om op te geven of het Data Warehouse gen1 of Gen2 is en het aantal data warehouse-eenheden.
 
-7. Voor deze zelf studie selecteert u de SQL-groep **Gen2**. De schuif regelaar wordt standaard ingesteld op **DW1000c** .  Verplaats de regelaar omhoog en omlaag om te zien hoe dit werkt.
+7. Voor deze zelf studie selecteert u de SQL-groep **Gen2** . De schuif regelaar wordt standaard ingesteld op **DW1000c** .  Verplaats de regelaar omhoog en omlaag om te zien hoe dit werkt.
 
     ![prestaties configureren](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Selecteer **Toepassen**.
+8. Selecteer **Toepassen** .
 9. Selecteer op de Blade inrichten een **sortering** voor de lege data base. Gebruik voor deze zelfstudie de standaardwaarde. Zie [Collations](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Sorteringen) voor meer informatie over sorteringen
 
 10. Nu u het formulier hebt ingevuld, selecteert u **maken** om de data base in te richten. De inrichting duurt een paar minuten.
@@ -100,7 +100,7 @@ Een firewall op server niveau die voor komt dat externe toepassingen en hulpprog
 > [!NOTE]
 > Azure Synapse Analytics communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 1433 openstelt.
 
-1. Nadat de implementatie is voltooid, selecteert u **SQL-data bases** in het menu aan de linkerkant en selecteert u vervolgens **mySampleDatabase** op de pagina **SQL-data bases** . De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde server naam (zoals **mynewserver-20180430.database.Windows.net**) en biedt opties voor verdere configuratie.
+1. Nadat de implementatie is voltooid, selecteert u **SQL-data bases** in het menu aan de linkerkant en selecteert u vervolgens **mySampleDatabase** op de pagina **SQL-data bases** . De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde server naam (zoals **mynewserver-20180430.database.Windows.net** ) en biedt opties voor verdere configuratie.
 
 2. Kopieer deze volledig gekwalificeerde servernaam om in volgende Quick Starts verbinding te maken met de server en de bijbehorende databases. Selecteer vervolgens de server naam om de server instellingen te openen.
 
@@ -110,13 +110,13 @@ Een firewall op server niveau die voor komt dat externe toepassingen en hulpprog
 
     ![serverinstellingen](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-4. Selecteer **Firewallinstellingen weergeven**. De pagina **Firewallinstellingen** voor de server wordt geopend.
+4. Selecteer **Firewallinstellingen weergeven** . De pagina **Firewallinstellingen** voor de server wordt geopend.
 
     ![serverfirewallregel](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
 5. Selecteer **IP van client toevoegen** op de werkbalk om uw huidige IP-adres aan een nieuwe firewallregel toe te voegen. Een firewallregel kan poort 1433 openen voor een afzonderlijk IP-adres of voor een aantal IP-adressen.
 
-6. Selecteer **Opslaan**. Er wordt een firewallregel op serverniveau gemaakt voor uw huidige IP-adres, waarbij poort 1433 wordt geopend op de server.
+6. Selecteer **Opslaan** . Er wordt een firewallregel op serverniveau gemaakt voor uw huidige IP-adres, waarbij poort 1433 wordt geopend op de server.
 
 7. Selecteer **OK** en sluit vervolgens de pagina **firewall instellingen** .
 
@@ -131,7 +131,7 @@ Haal de volledig gekwalificeerde servernaam van uw server op uit de Azure-portal
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **Azure Synapse Analytics** in het menu aan de linkerkant en selecteer uw Data Base op de pagina **Azure Synapse Analytics** .
-3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam**. In dit voor beeld is de volledig gekwalificeerde naam mynewserver-20180430.database.windows.net.
+3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam** . In dit voor beeld is de volledig gekwalificeerde naam mynewserver-20180430.database.windows.net.
 
     ![verbindingsgegevens](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -146,14 +146,14 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
     | Instelling        | Voorgestelde waarde                            | Beschrijving                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Servertype    | Database-engine                            | Deze waarde is verplicht                                       |
-    | Servernaam    | De volledig gekwalificeerde servernaam            | De naam moet er ongeveer als volgt uitzien: **mynewserver-20180430.database.Windows.net**. |
+    | Servernaam    | De volledig gekwalificeerde servernaam            | De naam moet er ongeveer als volgt uitzien: **mynewserver-20180430.database.Windows.net** . |
     | Verificatie | SQL Server-verificatie                  | SQL-verificatie is het enige verificatietype dat we in deze zelfstudie hebben geconfigureerd. |
     | Aanmelden          | Het beheerdersaccount voor de server                   | Dit is het account dat u hebt opgegeven tijdens het maken van de server. |
     | Wachtwoord       | Het wachtwoord voor het beheerdersaccount voor de server | Dit is het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
 
     ![verbinding maken met server](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Selecteer **Verbinding maken**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
+3. Selecteer **Verbinding maken** . Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
 
 4. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **mySampleDatabase** uit om de objecten in uw nieuwe database weer te geven.
 
@@ -165,9 +165,9 @@ De serverbeheerdersaccount is bedoeld voor het uitvoeren van beheerbewerkingen e
 
 Het is raadzaam een aanmelding en gebruiker te maken die speciaal wordt toegewezen voor het laden van gegevens. Voeg vervolgens de ladende gebruiker toe aan een [bronklasse](resource-classes-for-workload-management.md). Hiermee wordt een maximale hoeveelheid geheugen ingesteld.
 
-Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en gebruikers maken. Gebruik deze stappen om een aanmelding en gebruiker te maken met de naam **LoaderRC20**. Wijs de gebruiker vervolgens toe aan de bronklasse **staticrc20**.
+Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en gebruikers maken. Gebruik deze stappen om een aanmelding en gebruiker te maken met de naam **LoaderRC20** . Wijs de gebruiker vervolgens toe aan de bronklasse **staticrc20** .
 
-1. Klik in SSMS met de rechter muisknop op **model** om een vervolg keuzelijst weer te geven en kies **nieuwe query**. Een nieuwe queryvenster wordt geopend.
+1. Klik in SSMS met de rechter muisknop op **model** om een vervolg keuzelijst weer te geven en kies **nieuwe query** . Een nieuwe queryvenster wordt geopend.
 
     ![Nieuwe query in Hoofd](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -178,9 +178,9 @@ Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en geb
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
     ```
 
-3. Selecteer **Uitvoeren**.
+3. Selecteer **Uitvoeren** .
 
-4. Klik met de rechtermuisknop op **mySampleDataWarehouse** en kies **Nieuwe query**. Er wordt een nieuw queryvenster geopend.  
+4. Klik met de rechtermuisknop op **mySampleDataWarehouse** en kies **Nieuwe query** . Er wordt een nieuw queryvenster geopend.  
 
     ![Nieuwe query op voorbeeld van datawarehouse](./media/load-data-from-azure-blob-storage-using-polybase/create-loading-user.png)
 
@@ -192,19 +192,19 @@ Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en geb
     EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
     ```
 
-6. Selecteer **Uitvoeren**.
+6. Selecteer **Uitvoeren** .
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Verbinding maken met de server als de ladende gebruiker
 
 De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC20.  
 
-1. Selecteer in Objectverkenner de vervolg keuzelijst **verbinding maken** en selecteer **Data base-engine**. Het dialoogvenster **Verbinding maken met server** wordt geopend.
+1. Selecteer in Objectverkenner de vervolg keuzelijst **verbinding maken** en selecteer **Data base-engine** . Het dialoogvenster **Verbinding maken met server** wordt geopend.
 
     ![Verbinding maken met nieuwe aanmelding](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
 2. Voer de volledig gekwalificeerde servernaam in en voer **LoaderRC20** als de aanmelding in.  Voer uw wachtwoord in voor LoaderRC20.
 
-3. Selecteer **Verbinding maken**.
+3. Selecteer **Verbinding maken** .
 
 4. Wanneer de verbinding gereed is, ziet u twee serververbindingen in Objectverkenner. Eén verbinding als de serverbeheerder en één verbinding als MedRCLogin.
 
@@ -216,7 +216,7 @@ U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehous
 
 Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wilt laden. Deze informatie omvat de locatie waar de gegevens zich bevinden, de indeling van de inhoud van de gegevens en de tabeldefinitie voor de gegevens.
 
-1. In de vorige sectie hebt u zich bij uw datawarehouse aangemeld als LoaderRC20. Klik in SMMS met de rechtermuisknop op uw LoaderRC20-verbinding en selecteer **Nieuwe query**.  Er wordt een nieuw queryvenster geopend.
+1. In de vorige sectie hebt u zich bij uw datawarehouse aangemeld als LoaderRC20. Klik in SMMS met de rechtermuisknop op uw LoaderRC20-verbinding en selecteer **Nieuwe query** .  Er wordt een nieuw queryvenster geopend.
 
     ![Nieuw venster voor het laden van een query](./media/load-data-from-azure-blob-storage-using-polybase/new-loading-query.png)
 
@@ -505,13 +505,13 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
     ![Resources opschonen](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Als u het berekenen wilt onderbreken, selecteert u de knop **Onderbreken**. Als het datawarehouse is onderbroken, ziet u de knop **Start**.  Als u de berekening wilt hervatten, selecteert u **Starten**.
+2. Als u het berekenen wilt onderbreken, selecteert u de knop **Onderbreken** . Als het datawarehouse is onderbroken, ziet u de knop **Start** .  Als u de berekening wilt hervatten, selecteert u **Starten** .
 
-3. Selecteer **verwijderen**om het Data Warehouse te verwijderen, zodat er geen kosten in rekening worden gebracht voor berekenen of opslag.
+3. Selecteer **verwijderen** om het Data Warehouse te verwijderen, zodat er geen kosten in rekening worden gebracht voor berekenen of opslag.
 
-4. Als u de server die u hebt gemaakt, wilt verwijderen, selecteert u **mynewserver-20180430.database.Windows.net** in de vorige installatie kopie en selecteert u vervolgens **verwijderen**.  Wees hiermee voorzichtig. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
+4. Als u de server die u hebt gemaakt, wilt verwijderen, selecteert u **mynewserver-20180430.database.Windows.net** in de vorige installatie kopie en selecteert u vervolgens **verwijderen** .  Wees hiermee voorzichtig. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
 
-5. Als u de resourcegroep wilt verwijderen, selecteert u **myResourceGroup**. Selecteer vervolgens **Resourcegroep verwijderen**.
+5. Als u de resourcegroep wilt verwijderen, selecteert u **myResourceGroup** . Selecteer vervolgens **Resourcegroep verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

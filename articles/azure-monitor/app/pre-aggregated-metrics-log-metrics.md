@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539126"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027156"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Vooraf samengevoegde metrische gegevens op basis van logboeken in Application Insights
 
@@ -40,6 +40,28 @@ De nieuwere Sdk's ([Application Insights 2,7](https://www.nuget.org/packages/Mic
 Voor de Sdk's die geen vooraf aggregatie implementeren (dat wil zeggen, oudere versies van Application Insights Sdk's of voor browser instrumentatie), vult de Application Insights back-end de nieuwe metrische gegevens in door het samen voegen van de gebeurtenissen die worden ontvangen door het Application Insights eind punt voor gebeurtenis verzameling. Dit betekent dat u niet profiteert van de gereduceerde hoeveelheid gegevens die via de kabel wordt verzonden, maar u kunt nog steeds gebruikmaken van de vooraf geaggregeerde metrieken en betere prestaties en ondersteuning bieden voor de nabije real-time driedimensionale waarschuwing met Sdk's die geen prestatistische metrische gegevens tijdens de verzameling hebben.
 
 Het is belang rijk dat het verzamelings eindpunt gebeurtenissen vóór opname samenvoegt, wat betekent dat de [steek proeven voor opname](./sampling.md) nooit van invloed zijn op de nauw keurigheid van vooraf geaggregeerde metrische gegevens, ongeacht de SDK-versie die u met uw toepassing gebruikt.  
+
+### <a name="sdk-supported-pre-aggregated-metrics-table"></a>Door SDK ondersteunde tabel met vooraf samengestelde metrische gegevens
+
+| Huidige productie-Sdk's | Standaard metrische gegevens (vooraf aggregatie van SDK) | Aangepaste metrische gegevens (zonder vooraf aggregatie van de SDK) | Aangepaste metrische gegevens (met vooraf aggregatie van SDK)|
+|------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
+| .NET core en .NET Framework | Ondersteund (V 2.13.1 +)| Ondersteund via [TrackMetric](api-custom-events-metrics.md#trackmetric)| Ondersteund (V 2.7.2 +) via [GetMetric](get-metric.md) |
+| Java                         | Niet ondersteund       | Ondersteund via [TrackMetric](api-custom-events-metrics.md#trackmetric)| Niet ondersteund                           |
+| Node.js                      | Niet ondersteund       | Ondersteund via  [TrackMetric](api-custom-events-metrics.md#trackmetric)| Niet ondersteund                           |
+| Python                       | Niet ondersteund       | Ondersteund                                 | Ondersteund via [Opentellingen. statistieken](opencensus-python.md#metrics) |  
+
+
+### <a name="codeless-supported-pre-aggregated-metrics-table"></a>Niet-ondersteunde, vooraf geaggregeerde metrische tabel met code ring
+
+| Huidige productie-Sdk's | Standaard metrische gegevens (vooraf aggregatie van SDK) | Aangepaste metrische gegevens (zonder vooraf aggregatie van de SDK) | Aangepaste metrische gegevens (met vooraf aggregatie van SDK)|
+|-------------------------|--------------------------|-------------------------------------------|-----------------------------------------|
+| ASP.NET                 | Ondersteund <sup> 1<sup>    | Niet ondersteund                             | Niet ondersteund                           |
+| ASP.NET Core            | Ondersteund <sup> 2<sup>    | Niet ondersteund                             | Niet ondersteund                           |
+| Java                    | Niet ondersteund            | Niet ondersteund                             | [Ondersteund](java-in-process-agent.md#metrics) |
+| Node.js                 | Niet ondersteund            | Niet ondersteund                             | Niet ondersteund                           |
+
+1. ASP.NET-koppeling op App Service worden alleen metrische gegevens in de modus ' Full ' verzonden. ASP.NET is gekoppeld aan App Service, VM/VMSS, en on-premises maakt standaard metrieken zonder dimensies. SDK is vereist voor alle dimensies.
+2. ASP.NET Core zonder code aan te sluiten op App Service worden standaard metrische gegevens met maat eenheden verzonden. SDK is vereist voor alle dimensies.
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Vooraf aggregatie gebruiken met Application Insights aangepaste metrische gegevens
 

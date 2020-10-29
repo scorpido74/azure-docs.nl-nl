@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707979"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026952"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
@@ -20,7 +20,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de commerciële Ma
 
 ## <a name="general"></a>Algemeen
 
-### <a name="what-is-the-microsoft-commercial-marketplace"></a>Wat is de micro soft Commercial Marketplace?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Wat is de commerciële marketplace van Microsoft?
 
 De commerciële Marketplace verbindt zakelijke en overheids instanties met oplossingen die zijn gebouwd door onze partners. Onze partners maken en beheren aanbiedingen in partner centrum en klanten kunnen oplossingen ontdekken en kopen via productervaringen, zoals Microsoft AppSource, Azure Marketplace, wederverkopers in het Cloud Solution Provider-programma en onze verkoop teams via het programma voor gezamenlijk verkopen.
 
@@ -58,10 +58,10 @@ Als u zich wilt aanmelden als een commerciële Marketplace-Uitgever, gaat u naar
 
 De manieren waarop klanten uw commerciële Marketplace-aanbieding kunnen gebruiken, zijn afhankelijk van hoe u de aanbiedingen maakt.
 
-- Voor oplossingen die u automatisch geeft, ongeacht of ze worden betaald, uw eigen licentie (BYOL) of gratis, worden klanten gevraagd om *dit nu te doen*.
-- Aanbiedingen die ondersteuning bieden voor een test drive (demo) aanvragen van de klant om het *station te testen*. 
-- SaaS-aanbiedingen (Software as a Service) die een proef versie bieden buiten de commerciële Marketplace *gratis proef versie*.
-- Met eenvoudige vermeldingen kan de klant *contact met mij opnemen*.
+- Voor oplossingen die u automatisch geeft, ongeacht of ze worden betaald, uw eigen licentie (BYOL) of gratis, worden klanten gevraagd om *dit nu te doen* .
+- Aanbiedingen die ondersteuning bieden voor een test drive (demo) aanvragen van de klant om het *station te testen* . 
+- SaaS-aanbiedingen (Software as a Service) die een proef versie bieden buiten de commerciële Marketplace *gratis proef versie* .
+- Met eenvoudige vermeldingen kan de klant *contact met mij opnemen* .
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Hoe kan ik aanbiedingen voor de commerciële Marketplace maken?
 
@@ -99,10 +99,10 @@ Ja, de Azure Government Marketplace is beschikbaar in Azure Government regio's e
 
 Er zijn vier relevante rollen die van toepassing zijn op Partner Center-toegang.
 
-- *Manager*: biedt machtigingen voor het beheren van partner centrum-gebruikers in de Directory en het maken en bijwerken van aanbiedingen.
-- *Ontwikkelaar*: Hiermee kan een gebruiker aanbiedingen maken en bijwerken.
-- *Financiële bijdrager*: biedt machtigingen voor het weer geven van uitbetalings rapportage.
-- *Eigenaar*: kan het uitbetalings account en het BTW-profiel instellen. De gebruiker die de uitgever overeenkomst heeft geaccepteerd, wordt standaard de eigenaar.
+- *Manager* : biedt machtigingen voor het beheren van partner centrum-gebruikers in de Directory en het maken en bijwerken van aanbiedingen.
+- *Ontwikkelaar* : Hiermee kan een gebruiker aanbiedingen maken en bijwerken.
+- *Financiële bijdrager* : biedt machtigingen voor het weer geven van uitbetalings rapportage.
+- *Eigenaar* : kan het uitbetalings account en het BTW-profiel instellen. De gebruiker die de uitgever overeenkomst heeft geaccepteerd, wordt standaard de eigenaar.
 
 Azure Active Directory (Azure AD) *globale beheerders* machtigingen zijn nodig voor het maken van nieuwe gebruikers accounts of het uitnodigen van Gast accounts in de onderliggende map. Het partner centrum past Azure AD toe op het identiteits model en de Azure AD-instantie van een organisatie wordt vaak beheerd en beheerd door de IT-of beveiligings teams.
 
@@ -140,7 +140,7 @@ Aanbiedingen worden aangeboden aan klanten via productervaringen, websites, wede
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Kan mijn aanbieding worden weer gegeven in zowel Microsoft AppSource als Azure Marketplace?
 
-Microsoft AppSource is het doel voor zakelijke en industriële oplossingen en Azure Marketplace is ontworpen voor IT-en ontwikkel oplossingen. Aanbiedingen zijn beschikbaar in elk van de online winkels op basis van categorieën en branches die u hebt geselecteerd tijdens het maken van de aanbieding. In het zeldzame geval dat de aanbieding relevant is voor de gebruikers van beide online winkels, kan deze worden weer gegeven in beide.
+Microsoft AppSource is het doel voor zakelijke en industriële oplossingen en Azure Marketplace is ontworpen voor IT-en ontwikkel oplossingen. Aanbiedingen zijn beschikbaar in elk van de online winkels op basis van categorieën en branches die u hebt geselecteerd tijdens het maken van de aanbieding. In het zeldzame geval dat de aanbieding relevant is voor de gebruikers van beide online winkels, kan deze in beide worden weergegeven.
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>Wat is het Cloud Solution Provider-programma?
 
@@ -303,7 +303,7 @@ Zie [uw uitbetalings account en BTW-formulieren instellen](/partner-center/set-u
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Worden er retour-en restituties ondersteund voor de commerciële Marketplace?
 
-Voor het ontvangen van terugbetalingen kunnen klanten binnen een opgegeven periode abonnementen annuleren. Voor maandelijkse abonnementen is het 24 uur en voor jaarlijkse abonnementen 14 dagen. Aanbiedingen die worden gefactureerd op basis van verbruik nadat een oplossing is gebruikt, komen niet in aanmerking voor restituties.
+De restituties zijn beschikbaar voor klanten onder bepaalde voor waarden en voor bepaalde kosten. Aanvragen voor terugstorting van terugkerende kosten moeten binnen 24 uur na de aanschaf of verlenging worden ontvangen. Daarnaast moeten aanvragen voor terugstorting van terugkerende kosten jaarlijks worden ontvangen binnen 14 dagen na aanschaf of verlenging. Dit type restitutie geldt niet voor kosten die voortkomen uit het gebruik (van de aanbiedingen van virtuele machines of facturen met een Data limiet).
 
 ## <a name="resources"></a>Resources
 
@@ -311,7 +311,7 @@ Voor het ontvangen van terugbetalingen kunnen klanten binnen een opgegeven perio
 
 Hier volgen enkele bronnen om aan de slag te gaan:
 
-- [Wat is de micro soft Commercial Marketplace?](overview.md)
+- [Wat is de commerciële marketplace van Microsoft?](overview.md)
 - [Micro soft Commercial Marketplace-partner-hub](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Hoe kan ik contact opnemen met micro soft en andere partners?
@@ -323,7 +323,7 @@ Deze resources worden aangeraden:
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Waar kan ik meer informatie vinden over Partner Center?
 
-- [Documentatie voor Partner Center](/partner-center/)
+- [Documentatie voor Partnercentrum](/partner-center/)
 - [Welkom bij de commerciële marketplace](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Waar kan ik meer informatie vinden over het micro soft-beheer centrum?

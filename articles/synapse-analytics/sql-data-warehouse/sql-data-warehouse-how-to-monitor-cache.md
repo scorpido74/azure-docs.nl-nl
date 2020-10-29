@@ -11,12 +11,12 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa5025e0a2bd260adeb23b4ab7c4d5f8bd83a43a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211881"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026799"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>De Gen2-cache bewaken
 
@@ -26,15 +26,15 @@ De Gen2-opslag architectuur bevat automatisch uw meest query's in de opgeslagen 
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>Problemen oplossen met behulp van de Azure Portal
 
-U kunt Azure Monitor gebruiken om de Gen2-cache gegevens weer te geven om de prestaties van query's op te lossen. Ga eerst naar de Azure Portal en klik op **monitor**, **metrische gegevens** en **+ een bereik selecteren**:
+U kunt Azure Monitor gebruiken om de Gen2-cache gegevens weer te geven om de prestaties van query's op te lossen. Ga eerst naar de Azure Portal en klik op **monitor** , **metrische gegevens** en **+ een bereik selecteren** :
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
+![Scherm afbeelding toont een bereik selecteren dat is geselecteerd in metrische gegevens in de Azure Portal.](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
 Gebruik de balken zoeken en vervolg keuzelijst om uw data warehouse te zoeken. Selecteer vervolgens Toep assen.
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
+![Scherm afbeelding toont het deel venster een bereik selecteren waar u uw data warehouse kunt selecteren.](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-De belangrijkste metrische gegevens voor het oplossen van problemen met de Gen2-cache zijn het **percentage cache treffers** en het **percentage cache gebruik**. Selecteer **percentage cache treffers** en gebruik vervolgens de knop **metriek toevoegen** om **percentage gebruikt geheugen**toe te voegen. 
+De belangrijkste metrische gegevens voor het oplossen van problemen met de Gen2-cache zijn het **percentage cache treffers** en het **percentage cache gebruik** . Selecteer **percentage cache treffers** en gebruik vervolgens de knop **metriek toevoegen** om **percentage gebruikt geheugen** toe te voegen. 
 
 ![Metrische cache gegevens](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 

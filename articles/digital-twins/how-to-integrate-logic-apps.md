@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 54a96d1f3227cd4a66e344b63b2ecb337df31aba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9ea85449d3980f46e88eddc7e06e4a5384b8cea3
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461070"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027547"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -40,21 +40,21 @@ U moet ook de volgende items uitvoeren als onderdeel van de vereiste configurati
 
 Als u een Azure Digital Apparaatdubbels-exemplaar wilt verbinden met Logic Apps in dit artikel, moet u de **Azure Digital apparaatdubbels-instantie** al hebben ingesteld. 
 
-Stel eerst **een Azure Digital apparaatdubbels-exemplaar** in en de vereiste verificatie zodat u ermee kunt werken. Volg hiervoor de instructies in [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md). Afhankelijk van uw favoriete ervaring wordt het configuratie-artikel aangeboden voor de [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)of [geautomatiseerd voorbeeld van een Cloud Shell-implementatiescript](how-to-set-up-instance-scripted.md). Alle versies van de instructies bevatten ook stappen om te controleren of u elke stap hebt voltooid en gereed bent om door te gaan met het nieuwe exemplaar.
-* Nadat u uw Azure Digital Apparaatdubbels-exemplaar hebt ingesteld, hebt u de **_hostnaam_** van het exemplaar ([zoek in de Azure Portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) nodig.
+**Stel eerst een Azure Digital Twins-instantie in** en de vereiste verificatie, zodat u ermee kunt werken. Volg hiervoor de instructies in [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md).
+* Nadat u uw Azure Digital Apparaatdubbels-exemplaar hebt ingesteld, hebt u de **_hostnaam_** van het exemplaar ( [zoek in de Azure Portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) nodig.
 
-Als u de connector wilt verifiëren, moet u ook een app- **registratie**instellen. Volg de instructies in [*procedure: een app-registratie maken*](how-to-create-app-registration.md) om dit in te stellen. 
-* Zodra u een app hebt geregistreerd, hebt u de toepassings-ID van de registratie **_(client)-ID_** en de **_map (Tenant)_** nodig ([Zoek in de Azure Portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
+Als u de connector wilt verifiëren, moet u ook een app- **registratie** instellen. Volg de instructies in [*Instructies: een app-registratie maken*](how-to-create-app-registration.md) om dit in te stellen. 
+* Zodra u een app hebt geregistreerd, hebt u de toepassings-ID van de registratie **_(client)-ID_** en de **_map (Tenant)_** nodig ( [Zoek in de Azure Portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
 
 ### <a name="get-app-registration-client-secret"></a>Client geheim voor registratie van apps ophalen
 
 U moet ook een **_client geheim_** maken voor de registratie van uw Azure AD-app. Als u dit wilt doen, gaat u naar de pagina [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in het Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Selecteer in de lijst de registratie die u hebt gemaakt in de vorige sectie, zodat u de details ervan kunt openen. 
 
-Klik op *certificaten en geheimen* in het menu van de registratie en selecteer *+ Nieuw client geheim*.
+Klik op *certificaten en geheimen* in het menu van de registratie en selecteer *+ Nieuw client geheim* .
 
 :::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
-Voer de gewenste waarden in voor beschrijving en verloopt en klik op *toevoegen*.
+Voer de gewenste waarden in voor beschrijving en verloopt en klik op *toevoegen* .
 
 :::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
@@ -74,11 +74,11 @@ U hebt de **_dubbele id_** nodig van een dubbele naam in uw exemplaar dat u hebt
 
 In deze stap gaat u een [aangepaste Logic Apps-Connector](../logic-apps/custom-connector-overview.md) maken voor de Azure Digital Apparaatdubbels-api's. Nadat u dit hebt gedaan, kunt u Azure Digital Apparaatdubbels koppelen bij het maken van een logische app in de volgende sectie.
 
-Ga naar de pagina [Logic apps aangepaste connector](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) in de Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Druk op *+ toevoegen*.
+Ga naar de pagina [Logic apps aangepaste connector](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) in de Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Druk op *+ toevoegen* .
 
 :::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
-Selecteer uw abonnement en resource groep en een naam en implementatie locatie voor uw nieuwe connector op de pagina *Logic apps aangepaste connector maken* die volgt. Druk op *beoordelen + maken*. 
+Selecteer uw abonnement en resource groep en een naam en implementatie locatie voor uw nieuwe connector op de pagina *Logic apps aangepaste connector maken* die volgt. Druk op *beoordelen + maken* . 
 
 :::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
@@ -94,12 +94,12 @@ Vervolgens configureert u de connector die u hebt gemaakt om Azure Digital Appar
 
 Down load eerst een aangepaste Apparaatdubbels Swagger van Azure die is gewijzigd om met Logic Apps te werken. Down load het voor beeld van een **aangepaste Swagger (Logic Apps Connector) van Azure Digital apparaatdubbels** door te [**klikken op de**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) knop voor het downloaden van het *zip-bestand* . Ga naar de map gedownloade *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* en pak deze uit. 
 
-De aangepaste Swagger voor deze zelf studie bevindt zich in de map _* * Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps **_. Deze map bevat submappen met de naam *stabiel* en *Preview*, die beide verschillende versies van de Swagger bevatten, geordend op datum. De map met de meest recente datum bevat de laatste kopie van de Swagger. Welke versie u selecteert, is het Swagger-bestand met de naam _** digitaltwins.jsop * * _.
+De aangepaste Swagger voor deze zelf studie bevindt zich in de map _* * Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_ \LogicApps **_. Deze map bevat submappen met de naam *stabiel* en *Preview* , die beide verschillende versies van de Swagger bevatten, geordend op datum. De map met de meest recente datum bevat de laatste kopie van de Swagger. Welke versie u selecteert, is het Swagger-bestand met de naam _** digitaltwins.jsop * * _.
 
 > [!NOTE]
 > Tenzij u werkt met een preview-functie, wordt het over het algemeen aanbevolen de meest recente *stabiele* versie van de Swagger te gebruiken. Eerdere versies en Preview-versies van de Swagger worden echter ook nog steeds ondersteund. 
 
-Ga vervolgens naar de overzichts pagina van uw connector in de [Azure Portal](https://portal.azure.com) en klik op *bewerken*.
+Ga vervolgens naar de overzichts pagina van uw connector in de [Azure Portal](https://portal.azure.com) en klik op *bewerken* .
 
 :::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
@@ -107,7 +107,7 @@ Configureer de volgende gegevens op de pagina *Logic apps aangepaste connector b
 * **Aangepaste connectors**
     - API-eind punt: REST (laat de standaard instelling)
     - Import modus: OpenAPI-bestand (standaard instelling behouden)
-    - Bestand: dit is het aangepaste Swagger-bestand dat u eerder hebt gedownload. Klik op *importeren*, zoek het bestand op uw computer (*Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_ \LogicApps \...\digitaltwins.jsaan*) en klik op *openen*.
+    - Bestand: dit is het aangepaste Swagger-bestand dat u eerder hebt gedownload. Klik op *importeren* , zoek het bestand op uw computer ( *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_ \LogicApps \...\digitaltwins.jsaan* ) en klik op *openen* .
 * **Algemene informatie**
     - Pictogram: Upload een pictogram dat u wilt
     - Achtergrond kleur van pictogram: Voer hexadecimale code in de notatie #xxxxxx in voor de kleur.
@@ -121,8 +121,8 @@ Klik vervolgens op de knop *beveiliging* aan de onderkant van het venster om doo
 :::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
 Klik in de beveiligings stap op *bewerken* en configureer deze gegevens:
-* **Verificatie type**: OAuth 2,0
-* **OAuth 2,0**:
+* **Verificatie type** : OAuth 2,0
+* **OAuth 2,0** :
     - ID-provider: Azure Active Directory
     - Client-ID: de *toepassing (client)-ID* voor uw Azure AD-App-registratie
     - Client geheim: het *client geheim* dat u hebt gemaakt in [*vereisten*](#prerequisites) voor uw Azure AD-App-registratie
@@ -132,7 +132,7 @@ Klik in de beveiligings stap op *bewerken* en configureer deze gegevens:
     - Bereik: map. AccessAsUser. all
     - Omleidings-URL: (de standaard instelling voor nu laten staan)
 
-Houd er rekening mee dat het veld omleidings-URL *de aangepaste connector opslaat om de omleidings-URL te genereren*. Doe dit nu door op de pagina *Update connector* boven aan het deel venster te gaan om de connector instellingen te bevestigen.
+Houd er rekening mee dat het veld omleidings-URL *de aangepaste connector opslaat om de omleidings-URL te genereren* . Doe dit nu door op de pagina *Update connector* boven aan het deel venster te gaan om de connector instellingen te bevestigen.
 
 :::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
@@ -145,7 +145,7 @@ Ga terug naar het veld omleidings-URL en kopieer de waarde die is gegenereerd. U
 Dit is alle informatie die nodig is voor het maken van de connector (u hoeft de beveiliging van de definitie niet te voortzetten. U kunt het deel venster *aangepaste connector bewerken Logic apps* sluiten.
 
 >[!NOTE]
->Op de overzichts pagina van uw connector waar u oorspronkelijk hebt *geklikt, moet u*er rekening mee houden dat het hele proces van het invoeren van de configuratie *keuzes opnieuw wordt* gestart. Uw waarden worden niet gevuld wanneer u deze voor het laatst hebt door lopen, dus als u een bijgewerkte configuratie met gewijzigde waarden wilt opslaan, moet u alle andere waarden ook opnieuw invoeren om te voor komen dat ze worden overschreven door de standaard instellingen.
+>Op de overzichts pagina van uw connector waar u oorspronkelijk hebt *geklikt, moet u* er rekening mee houden dat het hele proces van het invoeren van de configuratie *keuzes opnieuw wordt* gestart. Uw waarden worden niet gevuld wanneer u deze voor het laatst hebt door lopen, dus als u een bijgewerkte configuratie met gewijzigde waarden wilt opslaan, moet u alle andere waarden ook opnieuw invoeren om te voor komen dat ze worden overschreven door de standaard instellingen.
 
 ### <a name="grant-connector-permissions-in-the-azure-ad-app"></a>Connector machtigingen verlenen in de Azure AD-app
 
@@ -177,30 +177,30 @@ Druk op de knop _beoordeling + maken_ .
 
 Hiermee gaat u naar het tabblad *controleren en maken* , waar u uw gegevens kunt bekijken en onder aan de slag wilt gaan om uw resource *te maken.*
 
-U gaat naar de implementatie pagina voor de logische app. Wanneer de implementatie is voltooid, klikt u op de knop *Ga naar resource* om door te gaan naar de *Logic apps Designer*, waarin u de logica van de werk stroom moet invullen.
+U gaat naar de implementatie pagina voor de logische app. Wanneer de implementatie is voltooid, klikt u op de knop *Ga naar resource* om door te gaan naar de *Logic apps Designer* , waarin u de logica van de werk stroom moet invullen.
 
 ### <a name="design-workflow"></a>Ontwerp werk stroom
 
-Selecteer in de *ontwerp functie voor Logic apps*onder *beginnen met een algemene trigger de*optie _**terugkeer patroon**_.
+Selecteer in de *ontwerp functie voor Logic apps* onder *beginnen met een algemene trigger de* optie _**terugkeer patroon**_ .
 
 :::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
-Wijzig de frequentie van het **terugkeer patroon** in de pagina *Logic apps Designer* die volgt op de *tweede*plaats, zodat de gebeurtenis elke 3 seconden wordt geactiveerd. Dit maakt het eenvoudig om de resultaten later te bekijken zonder lang te hoeven wachten.
+Wijzig de frequentie van het **terugkeer patroon** in de pagina *Logic apps Designer* die volgt op de *tweede* plaats, zodat de gebeurtenis elke 3 seconden wordt geactiveerd. Dit maakt het eenvoudig om de resultaten later te bekijken zonder lang te hoeven wachten.
 
-Druk op *+ nieuwe stap*.
+Druk op *+ nieuwe stap* .
 
 Hiermee opent u een vak *actie kiezen* . Schakel over naar het tabblad *aangepast* . U ziet de aangepaste connector eerder in het bovenste vak.
 
 :::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
-Selecteer deze optie om de lijst met Api's in die connector weer te geven. Gebruik de zoek balk of blader door de lijst om **DigitalTwins_Add**te selecteren. (Dit is de API die in dit artikel wordt gebruikt, maar u kunt ook een andere API selecteren als een geldige keuze voor een Logic Apps verbinding).
+Selecteer deze optie om de lijst met Api's in die connector weer te geven. Gebruik de zoek balk of blader door de lijst om **DigitalTwins_Add** te selecteren. (Dit is de API die in dit artikel wordt gebruikt, maar u kunt ook een andere API selecteren als een geldige keuze voor een Logic Apps verbinding).
 
 U wordt mogelijk gevraagd om u aan te melden met uw Azure-referenties om verbinding te maken met de connector. Als u een dialoog venster *machtigingen hebt aangevraagd* , volgt u de aanwijzingen om toestemming te geven voor uw app en om te accepteren.
 
 Vul in het vak nieuwe *DigitalTwinsAdd* de velden als volgt in:
-* _id_: Vul de *dubbele id* van het digitale dubbele item in uw exemplaar dat u wilt dat de logische app wordt bijgewerkt.
-* _dubbele_: in dit veld voert u de hoofd tekst in die voor de gekozen API-aanvraag nodig is. Voor *DigitalTwinsUpdate*is deze tekst in de vorm van de JSON-patch code. Voor meer informatie over het structureren van een JSON-patch voor het bijwerken van uw twee, raadpleegt u het artikel [een digitale dubbele sectie bijwerken](how-to-manage-twin.md#update-a-digital-twin) van *How-to: Manage Digital apparaatdubbels*.
-* _API-Version_: de nieuwste API-versie. Op dit moment is deze waarde *2020-10-31*.
+* _id_ : Vul de *dubbele id* van het digitale dubbele item in uw exemplaar dat u wilt dat de logische app wordt bijgewerkt.
+* _dubbele_ : in dit veld voert u de hoofd tekst in die voor de gekozen API-aanvraag nodig is. Voor *DigitalTwinsUpdate* is deze tekst in de vorm van de JSON-patch code. Voor meer informatie over het structureren van een JSON-patch voor het bijwerken van uw twee, raadpleegt u het artikel [een digitale dubbele sectie bijwerken](how-to-manage-twin.md#update-a-digital-twin) van *How-to: Manage Digital apparaatdubbels* .
+* _API-Version_ : de nieuwste API-versie. Op dit moment is deze waarde *2020-10-31* .
 
 Druk op *Opslaan* in de Logic apps Designer.
 

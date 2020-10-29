@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1ad9d72d69e23e4029de163ded1a71ae4dfb82fb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 89fb0e8435bd1804193db5b0f8c0596733a7e674
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913769"
+ms.locfileid: "93026136"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -306,7 +306,7 @@ Hier kunt u de metrische gegevens voor uw exemplaar bekijken en aangepaste weer 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie hoe u de Api's gebruikt om een Azure Digital Apparaatdubbels-exemplaar en-verificatie in te stellen:
-* [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md)
+* [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-cli.md)
 
 Of volg de stappen voor het maken van een client-app, zoals de toepassing die wordt gebruikt in deze procedure:
 * [*Zelfstudie: Een client-app coderen*](tutorial-code.md)

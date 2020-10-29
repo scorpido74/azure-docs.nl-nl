@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15a4a0ea78ef169480d4494683cb929cfefd16f2
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420085"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026969"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>De grafiek toewijzings gegevens stroom beheren
 
@@ -27,7 +27,7 @@ Als uw gegevens stromen complex worden, kunt u de volgende mechanismen gebruiken
 
 ## <a name="moving-transformations"></a>Trans formaties verplaatsen
 
-Bij het toewijzen van gegevens stromen wordt een reeks verbonden transformatie logica een **stroom**genoemd. Het veld voor de **inkomende stroom** bepaalt welke gegevens stroom de huidige trans formatie bedient. Elke trans formatie heeft een of twee inkomende streams, afhankelijk van de functie en duidt een uitvoer stroom aan. Het uitvoer schema van de binnenkomende stromen bepaalt op welke kolom meta gegevens kunnen worden verwezen door de huidige trans formatie.
+Bij het toewijzen van gegevens stromen wordt een reeks verbonden transformatie logica een **stroom** genoemd. Het veld voor de **inkomende stroom** bepaalt welke gegevens stroom de huidige trans formatie bedient. Elke trans formatie heeft een of twee inkomende streams, afhankelijk van de functie en duidt een uitvoer stroom aan. Het uitvoer schema van de binnenkomende stromen bepaalt op welke kolom meta gegevens kunnen worden verwezen door de huidige trans formatie.
 
 ![Knoop punt verplaatsen](media/data-flow/move-nodes.png "knoop punt verplaatsen")
 
@@ -39,7 +39,7 @@ Wanneer u uw trans formatie bewerkt, kunt u het configuratie paneel uitvouwen om
 
 ![Grafiek verbergen](media/data-flow/hide-graph.png "grafiek verbergen")
 
-Wanneer de grafiek is verborgen, kunt u tussen trans formaties binnen een stroom scha kelen door op **volgende** of **vorige**te klikken. Klik op de omlaag gerichte dubbele punt haak om de grafiek weer te geven.
+Wanneer de grafiek is verborgen, kunt u tussen trans formaties binnen een stroom scha kelen door op **volgende** of **vorige** te klikken. Klik op de omlaag gerichte dubbele punt haak om de grafiek weer te geven.
 
 ![Grafiek weer geven](media/data-flow/show-graph.png "grafiek weer geven")
 
@@ -47,15 +47,15 @@ Wanneer de grafiek is verborgen, kunt u tussen trans formaties binnen een stroom
 
 Als u snel een trans formatie in uw grafiek wilt vinden, klikt u op het **Zoek** pictogram boven de zoom instelling.
 
-![Zoeken](media/data-flow/search-1.png "Zoeken in grafiek")
+![Scherm afbeelding toont de knop zoeken.](media/data-flow/search-1.png "Zoeken in grafiek")
 
 U kunt zoeken op transformatie naam of beschrijving om een trans formatie te vinden.
 
-![Zoeken](media/data-flow/search-2.png "Zoeken in grafiek")
+![Scherm afbeelding toont het zoekvak.](media/data-flow/search-2.png "Zoeken in grafiek")
 
 ## <a name="hide-reference-nodes"></a>Verwijzings knooppunten verbergen
 
-Als uw gegevens stroom een koppelings-, opzoek-, exists-of Union-trans formaties bevat, toont de gegevens stroom referentie knooppunten naar alle inkomende streams. Als u de hoeveelheid benodigde verticale ruimte wilt minimaliseren, kunt u de referentie knooppunten minimaliseren. Hiertoe klikt u met de rechter muisknop op het canvas en selecteert u **referentie knooppunten verbergen**.
+Als uw gegevens stroom een koppelings-, opzoek-, exists-of Union-trans formaties bevat, toont de gegevens stroom referentie knooppunten naar alle inkomende streams. Als u de hoeveelheid benodigde verticale ruimte wilt minimaliseren, kunt u de referentie knooppunten minimaliseren. Hiertoe klikt u met de rechter muisknop op het canvas en selecteert u **referentie knooppunten verbergen** .
 
 ![Verwijzings knooppunten verbergen](media/data-flow/hide-reference-nodes.png "Verwijzings knooppunten verbergen")
 

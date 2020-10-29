@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370909"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027598"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Gegevens stromen toewijzen in Azure Data Factory
 
@@ -27,7 +27,7 @@ Het toewijzen van gegevens stromen biedt een volledig visuele ervaring zonder co
 
 ## <a name="getting-started"></a>Aan de slag
 
-Gegevens stromen worden gemaakt op basis van het deel venster resources, zoals pijp lijnen en gegevens sets. Als u een gegevens stroom wilt maken, selecteert u het plus teken naast **Factory-resources**en selecteert u vervolgens **gegevens stroom**. 
+Gegevens stromen worden gemaakt op basis van het deel venster resources, zoals pijp lijnen en gegevens sets. Als u een gegevens stroom wilt maken, selecteert u het plus teken naast **Factory-resources** en selecteert u vervolgens **gegevens stroom** . 
 
 ![Nieuwe gegevens stroom](media/data-flow/new-data-flow.png "nieuwe gegevens stroom")
 
@@ -37,13 +37,13 @@ Met deze actie gaat u naar het canvas voor gegevens stromen, waar u uw transform
 
 De toewijzing van gegevens stroom heeft een uniek ontwerp teken dat is ontworpen om het maken van transformatie logica eenvoudig te maken. Het canvas voor de gegevens stroom is onderverdeeld in drie delen: de bovenste balk, de grafiek en het configuratie paneel. 
 
-![Canvas](media/data-flow/canvas1.png "Canvas")
+![Scherm afbeelding toont het canvas gegevensstroom met de bovenste balk, het diagram en het configuratie venster met het label.](media/data-flow/canvas1.png "Canvas")
 
 ### <a name="graph"></a>Graph
 
-In de grafiek wordt de transformatie stroom weer gegeven. De afkomst van de bron gegevens worden weer gegeven terwijl deze in een of meer sinks worden stromen. Selecteer **bron toevoegen**om een nieuwe bron toe te voegen. Als u een nieuwe trans formatie wilt toevoegen, selecteert u het plus teken aan de rechter benedenhoek van een bestaande trans formatie. Meer informatie over [het beheren van de gegevens stroom grafiek](concepts-data-flow-manage-graph.md).
+In de grafiek wordt de transformatie stroom weer gegeven. De afkomst van de bron gegevens worden weer gegeven terwijl deze in een of meer sinks worden stromen. Selecteer **bron toevoegen** om een nieuwe bron toe te voegen. Als u een nieuwe trans formatie wilt toevoegen, selecteert u het plus teken aan de rechter benedenhoek van een bestaande trans formatie. Meer informatie over [het beheren van de gegevens stroom grafiek](concepts-data-flow-manage-graph.md).
 
-![Canvas](media/data-flow/canvas2.png "Canvas")
+![Scherm afbeelding toont het grafiek gedeelte van het canvas met een zoekvak.](media/data-flow/canvas2.png "Canvas")
 
 ### <a name="configuration-panel"></a>Configuratie paneel
 
@@ -118,7 +118,7 @@ Toewijzing van gegevens stromen is beschikbaar in de volgende regio's:
 | China - noord 2 | |  |
 | Azië - oost | ✓ | |
 | VS - oost   | ✓ | ✓ |
-| VS - oost 2 | ✓ | ✓ |
+| US - oost 2 | ✓ | ✓ |
 | Frankrijk - centraal | ✓ | ✓ |
 | Frankrijk - zuid  | | |
 | Duitsland-centraal (soeverein) | | |

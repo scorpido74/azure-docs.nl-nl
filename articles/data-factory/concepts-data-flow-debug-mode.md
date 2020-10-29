@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/11/2020
-ms.openlocfilehash: 41153c488825e87583284b23a287353f63ff8db8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cfd498f73646b0021d5fbb3e982dc82871ef35c
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085090"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026986"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Fout opsporings modus gegevens stroom toewijzen
 
@@ -60,7 +60,7 @@ De standaard-IR die wordt gebruikt voor de foutopsporingsmodus in ADF-gegevens s
 
 Met fout opsporing in wordt het tabblad voor beeld van gegevens lichter op het onderste paneel. Zonder de foutopsporingsmodus in, worden in de gegevens stroom alleen de huidige meta gegevens in en uit elk van de trans formaties op het tabblad inspectie weer gegeven. In de preview van de gegevens wordt alleen het aantal rijen weer gegeven dat u hebt ingesteld als uw limiet voor de instellingen voor fout opsporing. Klik op **vernieuwen** om de voorbeeld gegevens op te halen.
 
-![Voor beeld van gegevens](media/data-flow/datapreview.png "Voorbeeld van gegevens")
+![Voorbeeld van gegevens](media/data-flow/datapreview.png "Voorbeeld van gegevens")
 
 > [!NOTE]
 > Bestands bronnen beperken alleen de rijen die u ziet, niet de rijen die worden gelezen. Voor zeer grote gegevens sets wordt u aangeraden een klein deel van het bestand te maken en dit te gebruiken voor uw test doeleinden. U kunt een tijdelijk bestand selecteren in instellingen voor fout opsporing voor elke bron die een bestands gegevensset type is.
@@ -77,15 +77,15 @@ Wanneer eenheids testen samen voegen, bestaan of trans formaties opzoeken, moet 
 
 Zodra u het voor beeld van de gegevens ziet, kunt u een snelle trans formatie genereren om een kolom te typecast, te verwijderen of te wijzigen. Klik op de kolomkop en selecteer een van de opties op de werk balk data preview.
 
-![Snelle acties](media/data-flow/quick-actions1.png "Snelle acties")
+![In de scherm afbeelding wordt de werk balk data preview weer gegeven met opties: typecast, Modify, Statistics en Remove.](media/data-flow/quick-actions1.png "Snelle acties")
 
 Wanneer u een wijziging hebt geselecteerd, wordt de preview van de gegevens direct vernieuwd. Klik op **bevestigen** in de rechter bovenhoek om een nieuwe trans formatie te genereren.
 
-![Snelle acties](media/data-flow/quick-actions2.png "Snelle acties")
+![Scherm afbeelding toont de knop bevestigen.](media/data-flow/quick-actions2.png "Snelle acties")
 
 Met **typecast** en **Modify** wordt een afgeleide kolom transformatie **gegenereerd en wordt** er een selectie transformatie gegenereerd.
 
-![Snelle acties](media/data-flow/quick-actions3.png "Snelle acties")
+![De scherm opname toont de instellingen van de afgeleide kolom.](media/data-flow/quick-actions3.png "Snelle acties")
 
 > [!NOTE]
 > Als u de gegevens stroom bewerkt, moet u de voor beeld van de gegevens opnieuw ophalen voordat u een snelle trans formatie toevoegt.

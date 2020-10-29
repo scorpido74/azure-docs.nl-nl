@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/19/2020
-ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9636e7227671cd5a8ed31904e6bc27782d3bd6a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650890"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025830"
 ---
 # <a name="monitor-data-flows"></a>Gegevens stromen bewaken
 
@@ -23,15 +23,15 @@ Nadat u klaar bent met het maken en opsporen van fouten in uw gegevens stroom, w
 
 Wanneer u de pijp lijn uitvoert, kunt u de pijp lijn en alle activiteiten in de pijp lijn bewaken, met inbegrip van de activiteit gegevens stroom. Klik op het pictogram monitor in het deel venster aan de linkerkant Azure Data Factory gebruikers interface. U ziet een scherm zoals hieronder. Met de gemarkeerde pictogrammen kunt u inzoomen op de activiteiten in de pijp lijn, met inbegrip van de activiteit gegevens stroom.
 
-![Bewaking van gegevens stromen](media/data-flow/mon001.png "Bewaking gegevensstroom")
+![Scherm afbeelding toont pictogrammen die u voor pijp lijnen wilt selecteren voor meer informatie.](media/data-flow/mon001.png "Bewaking gegevensstroom")
 
 U ziet de statistieken op dit niveau en ook de uitvoerings tijden en-status. De uitvoerings-ID op het activiteit niveau wijkt af van de uitvoerings-ID op het pijplijn niveau. De uitvoerings-ID op het vorige niveau is voor de pijp lijn. Als u de bril selecteert, krijgt u gedetailleerde informatie over de uitvoering van de gegevens stroom.
 
-![Bewaking van gegevens stromen](media/data-flow/monitoring-details.png "Bewaking gegevensstroom")
+![Scherm afbeelding toont het bril pictogram om details van de uitvoering van de gegevens stroom weer te geven.](media/data-flow/monitoring-details.png "Bewaking gegevensstroom")
 
 Wanneer u zich in de weer gave van het grafische knoop punt bevindt, ziet u een vereenvoudigde alleen-lezen versie van uw gegevens stroom diagram.
 
-![Bewaking van gegevens stromen](media/data-flow/mon003.png "Bewaking gegevensstroom")
+![Scherm afbeelding toont de alleen-lezen versie van de grafiek.](media/data-flow/mon003.png "Bewaking gegevensstroom")
 
 Hier volgt een video overzicht van het controleren van de prestaties van uw gegevens stromen vanuit het scherm van de ADF-bewaking:
 
@@ -41,7 +41,7 @@ Hier volgt een video overzicht van het controleren van de prestaties van uw gege
 
 Wanneer uw gegevens stroom in Spark wordt uitgevoerd, bepaalt Azure Data Factory optimale code paden op basis van het geheel van uw gegevens stroom. Daarnaast kunnen de uitvoerings paden optreden op verschillende scale-out knoop punten en gegevens partities. Daarom vertegenwoordigt de bewakings grafiek het ontwerp van uw stroom, waarbij rekening wordt gehouden met het pad van de uitvoering van de trans formaties. Wanneer u afzonderlijke knoop punten selecteert, ziet u ' groeperingen ' die de code vertegenwoordigen die samen in het cluster is uitgevoerd. De tijds instellingen en aantallen die u ziet, worden weer gegeven in plaats van de afzonderlijke stappen in uw ontwerp.
 
-![Bewaking van gegevens stromen](media/data-flow/mon004.png "Bewaking gegevensstroom")
+![Scherm afbeelding toont de pagina voor een gegevens stroom.](media/data-flow/mon004.png "Bewaking gegevensstroom")
 
 * Wanneer u in het venster bewaking de optie ruimte openen selecteert, worden in het onderste deel venster de timing en het aantal rijen weer gegeven voor elke Sink en de trans formaties die leiden tot de Sink-gegevens voor transformatie afkomst.
 
@@ -56,7 +56,7 @@ Wanneer uw gegevens stroom in Spark wordt uitgevoerd, bepaalt Azure Data Factory
   * Opstart tijd van het cluster: de hoeveelheid tijd voor het verkrijgen van de JIT Spark-Compute-omgeving voor het uitvoeren van gegevens stromen
   * Aantal trans formaties: hoeveel transformatie stappen worden uitgevoerd in uw stroom
   
-![Bewaking van gegevens stromen](media/data-flow/monitornew.png "Gegevens stroom bewaking nieuw")
+![Scherm afbeelding toont de optie vernieuwen.](media/data-flow/monitornew.png "Gegevens stroom bewaking nieuw")
 
 ## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Totale verwerkings tijd van Sink versus verwerkings tijd van trans formatie
 
@@ -85,6 +85,6 @@ Wanneer u een Sink-transformatie pictogram in de kaart selecteert, wordt in het 
 
 Dit pictogram geeft aan dat de transformatie gegevens al in de cache zijn opgeslagen op het cluster, waardoor de timing en het uitvoerings traject hebben geduurd in het account:
 
-![Bewaking van gegevens stromen](media/data-flow/mon005.png "Bewaking gegevensstroom")
+![Scherm afbeelding toont het schijf pictogram.](media/data-flow/mon005.png "Bewaking gegevensstroom")
 
 U ziet ook groene cirkel pictogrammen in de trans formatie. Ze vertegenwoordigen een telling van het aantal sinks dat de gegevens stromen.
