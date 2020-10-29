@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 62d6d5527cd917304e4c8bc0c4740f4edb772218
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 1ae9e39f5a23725b17451d7144c8304194d2a1d0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939168"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514364"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Netskope-gebruikersverificatie
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Netskope-gebruikersverificatie integreert met A
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-accounts kunnen aanmelden bij Netskope-gebruikersverificatie.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,16 +46,16 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 Voor het configureren van de integratie van Netskope-gebruikersverificatie met Azure AD moet u Netskope-gebruikersverificatie uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
-1. Typ **Netskope-gebruikersverificatie**  in het zoekvak in de sectie **Toevoegen uit de galerie**.
+1. Typ **Netskope-gebruikersverificatie**  in het zoekvak in de sectie **Toevoegen uit de galerie** .
 1. Selecteer **Netskope-gebruikersverificatie** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netskope-user-authentication"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Netskope-gebruikersverificatie
 
-Configureer en test eenmalige aanmelding van Azure AD met Netskope-gebruikersverificatie met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Netskope-gebruikersverificatie.
+Configureer en test eenmalige aanmelding van Azure AD met Netskope-gebruikersverificatie met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Netskope-gebruikersverificatie.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Netskope-gebruikersverificatie te configureren en te testen:
 
@@ -70,8 +70,8 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Netskope-ge
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Netskope-gebruikersverificatie** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Netskope-gebruikersverificatie** de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -104,41 +104,41 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Netskope-gebruikersverificatie.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Netskope-gebruikersverificatie** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-netskope-user-authentication-sso"></a>Eenmalige aanmelding van Netskope-gebruikersverificatie configureren
 
 1. Open een nieuw tabblad in uw browser en meld u als beheerder aan bij de bedrijfssite van Netskope-gebruikersverificatie.
 
-1. Klik op het tabblad **Active Platform**.
+1. Klik op het tabblad **Active Platform** .
 
     ![Schermopname met de optie Actief platform geselecteerd in Instellingen.](./media/netskope-user-authentication-tutorial/user1.png)
 
-1. Schuif omlaag naar **FORWARD PROXY** en selecteer **SAML**.
+1. Schuif omlaag naar **FORWARD PROXY** en selecteer **SAML** .
 
     ![Schermopname met SAML geselecteerd in Actief platform.](./media/netskope-user-authentication-tutorial/config-saml.png)
 
@@ -150,7 +150,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     b. Kopieer de waarde van **SAML ACS-URL** en plak deze in het tekstvak **Antwoord-URL** in de sectie **Standaard SAML-configuratie** in Azure Portal.
 
-1. Klik op **ACCOUNT TOEVOEGEN**.
+1. Klik op **ACCOUNT TOEVOEGEN** .
 
     ![Schermopname van ACCOUNT TOEVOEGEN geselecteerd in het deelvenster SAML.](./media/netskope-user-authentication-tutorial/config-addaccount.png)
 
@@ -164,31 +164,31 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     c. Plak in het tekstvak **IDP ENTITY ID** de waarde van de **Azure AD-id** die u uit Azure Portal hebt gekopieerd.
 
-    d. Open het gedownloade bestand met metagegevens in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze in het tekstvak **IDP CERTIFICATE**.
+    d. Open het gedownloade bestand met metagegevens in Kladblok, kopieer de inhoud ervan naar het klembord en plak deze in het tekstvak **IDP CERTIFICATE** .
 
-    e. Klik op **OPSLAAN**.
+    e. Klik op **OPSLAAN** .
 
 ### <a name="create-netskope-user-authentication-test-user"></a>Testgebruiker voor Netskope-gebruikersverificatie maken
 
 1. Open een nieuw tabblad in uw browser en meld u als beheerder aan bij de bedrijfssite van Netskope-gebruikersverificatie.
 
-1. Klik in het linkernavigatievenster op het tabblad **Settings**.
+1. Klik in het linkernavigatievenster op het tabblad **Settings** .
 
     ![Schermopname met Instelling geselecteerd.](./media/netskope-user-authentication-tutorial/config-settings.png)
 
-1. Klik op het tabblad **Active Platform**.
+1. Klik op het tabblad **Active Platform** .
 
     ![Schermopname met de optie Actief platform geselecteerd in Instellingen.](./media/netskope-user-authentication-tutorial/user1.png)
 
-1. Klik op het tabblad **Users**.
+1. Klik op het tabblad **Users** .
 
     ![Schermopname met Gebruikers geselecteerd in Actief platform.](./media/netskope-user-authentication-tutorial/add-user.png)
 
-1. Klik op **ADD USERS**.
+1. Klik op **ADD USERS** .
 
     ![Schermopname met het dialoogvenster Gebruikers waarin u GEBRUIKERS TOEVOEGEN kunt selecteren.](./media/netskope-user-authentication-tutorial/user-add.png)
 
-1. Voer het e-mailadres van de gebruiker in die u wilt toevoegen en klik op **ADD**.
+1. Voer het e-mailadres van de gebruiker in die u wilt toevoegen en klik op **ADD** .
 
     ![Schermopname van Gebruikers toevoegen waarin u een lijst met gebruikers kunt invoeren.](./media/netskope-user-authentication-tutorial/add-user-popup.png)
 
@@ -196,14 +196,14 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Netskope-gebruikersverificatie klikt in het toegangsvenster wordt u automatisch aangemeld bij de instantie van Netskope-gebruikersverificatie waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Netskope-gebruikersverificatie klikt in het toegangsvenster wordt u automatisch aangemeld bij de instantie van Netskope-gebruikersverificatie waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Probeer Netskope-gebruikersverificatie met Azure AD](https://aad.portal.azure.com/)

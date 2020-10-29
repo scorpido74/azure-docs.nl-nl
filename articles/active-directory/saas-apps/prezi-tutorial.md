@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658929"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515318"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Prezi
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Prezi kunt integreren met Azure Active Director
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Prezi.
 * Uw accounts beheren in Azure Portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding van Azure Active Directory?) voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding van Azure Active Directory?) voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +41,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Prezi ondersteunt door SP en IDP geïnitieerde eenmalige aanmelding.
 * Prezi biedt ondersteuning voor het Just-In-Time inrichten van gebruikers.
-* Zodra u Prezi hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. Zie [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) voor meer informatie.
+* Zodra u Prezi hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. Zie [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app) voor meer informatie.
 
 > [!NOTE]
 > De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
@@ -51,9 +51,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 Voor het configureren van de integratie van Prezi in Azure AD moet u Prezi vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het meest linkse deelvenster **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
-1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Selecteer in het meest linkse deelvenster **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** .
 1. Ga in het gedeelte **Toevoegen uit de galerie** naar het zoekvak en voer **Prezi** in.
 1. Selecteer **Prezi** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
@@ -74,8 +74,8 @@ Als u eenmalige aanmelding van Azure AD wilt configureren en testen met Prezi, g
 
 Eenmalige aanmelding van Azure AD inschakelen in Azure Portal:
 
-1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Prezi** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Prezi** de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** op het pictogram **Bewerken** om de instellingen voor **Standaard SAML-configuratie** te bewerken.
 
    ![Eenvoudige SAML-configuratie bewerken](common/edit-urls.png)
@@ -86,7 +86,7 @@ Eenmalige aanmelding van Azure AD inschakelen in Azure Portal:
 
     Voer in het vak **Aanmeldings-URL** de URL `https://prezi.com/login/sso/` in.
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
 1. In de Prezi-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
@@ -111,37 +111,37 @@ Eenmalige aanmelding van Azure AD inschakelen in Azure Portal:
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het meest linkse deelvenster in Azure Portal de optie **Azure Active Directory**. Ga naar **Gebruikers** en selecteer **Alle gebruikers**.
+1. Selecteer in het meest linkse deelvenster in Azure Portal de optie **Azure Active Directory** . Ga naar **Gebruikers** en selecteer **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer in de gebruikerseigenschappen de volgende stappen uit:
    1. Voer in het vak **Naam** de naam **B.Simon** in.
    1. Voer in het vak **Gebruikersnaam** `username@companydomain.extension` in, bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer de waarde die wordt weer gegeven in het vak **Wachtwoord**.
-   1. Selecteer **Maken**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in. Noteer de waarde die wordt weer gegeven in het vak **Wachtwoord** .
+   1. Selecteer **Maken** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte geeft u B.Simon toestemming voor het gebruik eenmalige aanmelding van Azure door toegang te geven tot Prezi.
 
-1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen** .
 1. Selecteer **Prezi** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in de lijst met gebruikers in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** en klik onderaan het scherm vervolgens op de knop **Selecteren**.
+1. Selecteer in de lijst met gebruikers in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** en klik onderaan het scherm vervolgens op de knop **Selecteren** .
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen** .
 
 ## <a name="configure-prezi-sso"></a>Prezi SSO configureren
 
 1. Meld u in een ander browservenster aan bij Prezi met uw team account en ga naar de [Beheerconsole](https://prezi.com/organizations/manage).
 
-1. Selecteer in de **Beheerconsole**het tabblad **Instellingen**.
+1. Selecteer in de **Beheerconsole** het tabblad **Instellingen** .
 
     ![Tabblad Instellingen](./media/prezi-tutorial/settings-image.png)
 
@@ -159,7 +159,7 @@ In dit gedeelte geeft u B.Simon toestemming voor het gebruik eenmalige aanmeldin
 
     1. Open het **certificaat (Base64)** dat u vanuit Azure Portal hebt gedownload, in Kladblok. Kopieer de inhoud van het certificaat en plak de inhoud in het vak **Certificaat (X. 509)** .
 
-    1. Selecteer **Opslaan**.
+    1. Selecteer **Opslaan** .
 
 ### <a name="create-a-prezi-test-user"></a>Een Prezi-testgebruiker maken
 
@@ -169,14 +169,13 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Prezi. Pr
 
 In deze sectie test u met behulp van het toegangsvenster de configuratie voor eenmalige aanmelding van Azure AD.
 
-Wanneer u de tegel Prezi selecteert in het toegangsvenster, wordt u automatisch aangemeld bij het Prezi-account waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel Prezi selecteert in het toegangsvenster, wordt u automatisch aangemeld bij het Prezi-account waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 - [Probeer Prezi met Azure AD](https://aad.portal.azure.com/)
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [Prezi beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Prezi beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)

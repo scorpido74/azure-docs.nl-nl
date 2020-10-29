@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d9c7014e3dfada1fb301c66c234ca18d4a89c65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97d74a1a2e309b85ebad529b797dd4af9c1554ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554129"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92513701"
 ---
 # <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>Zelfstudie: OutSystems Azure AD integreren met Azure Active Directory
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u OutSystems Azure AD kunt integreren met Azure A
 * Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij OutSystems Azure AD.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,22 +37,22 @@ U hebt het volgende nodig om aan de slag te gaan:
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen. OutSystems Azure AD ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding en **Just-In-Time**-inrichting van gebruikers.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen. OutSystems Azure AD ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding en **Just-In-Time** -inrichting van gebruikers.
 
 ## <a name="adding-outsystems-azure-ad-from-the-gallery"></a>OutSystems Azure AD toevoegen uit de galerie
 
 Voor het configureren van de integratie van OutSystems Azure AD moet u OutSystems Azure AD uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **OutSystems Azure AD**.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **OutSystems Azure AD** .
 1. Selecteer **OutSystems Azure AD** in de zoekresultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureer en test eenmalige aanmelding van Azure AD met OutSystems Azure AD met behulp van een testgebruiker met de naam **B. Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in OutSystems Azure AD.
+Configureer en test eenmalige aanmelding van Azure AD met OutSystems Azure AD met behulp van een testgebruiker met de naam **B. Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in OutSystems Azure AD.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met OutSystems Azure AD te configureren en te testen:
 
@@ -67,8 +67,8 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met OutSystems 
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **OutSystems Azure AD** naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **OutSystems Azure AD** naar de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -102,31 +102,31 @@ Om eenmalige aanmelding aan de zijde van OutSystems te configureren, moet u het 
 
 In deze sectie gaat u een testgebruiker met de naam B. Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B. Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot OutSystems Azure AD.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **OutSystems Azure AD** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B. Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-outsystems-azure-ad-test-user"></a>Een OutSystems Azure AD-testgebruiker maken
 
@@ -134,12 +134,12 @@ In deze sectie wordt een gebruiker met de naam B.Simon gemaakt in OutSystems. Ou
 
 ### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u in het toegangsvenster op de tegel OutSystems Azure AD klikt, wordt u automatisch aangemeld bij de instantie van OutSystems Azure AD waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel OutSystems Azure AD klikt, wordt u automatisch aangemeld bij de instantie van OutSystems Azure AD waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

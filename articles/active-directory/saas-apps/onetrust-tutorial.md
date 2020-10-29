@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: cf2ac8cda9df18bf02b93446605ed2283562cf6b
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b0cd4b3343cefa25f9c5429ce8e4ca3c65b52123
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996195"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Zelfstudie: Azure Active Directory-integratie met OneTrust Privacy Management Software
 
@@ -27,7 +27,7 @@ De integratie van OneTrust Privacy Management Software met Azure Active Director
 * U kunt ervoor zorgen dat uw gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij OneTrust Privacy Management Software (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -43,7 +43,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * OneTrust Privacy Management Software ondersteunt door **SP** en **IDP** geïnitieerde eenmalige aanmelding
 
-* OneTrust Privacy Management Software ondersteunt **Just-In-Time**-inrichting van gebruikers
+* OneTrust Privacy Management Software ondersteunt **Just-In-Time** -inrichting van gebruikers
 
 ## <a name="adding-onetrust-privacy-management-software-from-the-gallery"></a>OneTrust Privacy Management Software toevoegen uit de galerie
 
@@ -51,11 +51,11 @@ Om de integratie van OneTrust Privacy Management Software in Azure AD te configu
 
 **Voer de volgende stappen uit om OneTrust Privacy Management Software toe te voegen uit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -69,7 +69,7 @@ Om de integratie van OneTrust Privacy Management Software in Azure AD te configu
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u eenmalige aanmelding van Azure AD met OneTrust Privacy Management Software op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u eenmalige aanmelding van Azure AD met OneTrust Privacy Management Software op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in OneTrust Privacy Management Software tot stand is gebracht.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met OneTrust Privacy Management Software te configureren en testen:
@@ -87,7 +87,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met OneTrust Privacy Management Software te configureren:
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **OneTrust Privacy Management Software** en selecteer **Eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **OneTrust Privacy Management Software** en selecteer **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -138,7 +138,7 @@ Als u eenmalige aanmelding aan de zijde van **OneTrust Privacy Management Softwa
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -150,20 +150,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot OneTrust Privacy Management Software.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **OneTrust Privacy Management Software**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **OneTrust Privacy Management Software** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -171,11 +171,11 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
     ![De koppeling naar OneTrust Privacy Management Software in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -183,7 +183,7 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-onetrust-privacy-management-software-test-user"></a>Testgebruiker voor OneTrust Privacy Management Software maken
 
@@ -196,13 +196,12 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in OneTrust 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel OneTrust Privacy Management Software klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van OneTrust Privacy Management Software waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel OneTrust Privacy Management Software klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van OneTrust Privacy Management Software waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

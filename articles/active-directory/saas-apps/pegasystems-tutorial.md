@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 3dd09770ef5f747f008090368c35b1f274374c5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fb117b7f7b9a0c7a6a67e2714380a01cd53a4e0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549066"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Zelfstudie: Azure Active Directory-integratie met Pega Systems
 
@@ -28,7 +28,7 @@ Deze integratie biedt de volgende voordelen:
 * U kunt inschakelen dat gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij Pega Systems (eenmalige aanmelding).
 * U kunt uw accounts vanaf één locatie beheren: de Azure-portal.
 
-Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 Als u geen abonnement op Azure hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -49,11 +49,11 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 Voor het instellen van de integratie van Pega Systems met Azure Active Directory moet u Pega Systems vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**:
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory** :
 
     ![Selecteer Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Bedrijfstoepassingen** > **Alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** > **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,7 +61,7 @@ Voor het instellen van de integratie van Pega Systems met Azure Active Directory
 
     ![Selecteer Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer **Pega Systems** in in het zoekvak. Selecteer **Pega Systems** in de zoekresultaten en selecteer vervolgens **Toevoegen**.
+4. Voer **Pega Systems** in in het zoekvak. Selecteer **Pega Systems** in de zoekresultaten en selecteer vervolgens **Toevoegen** .
 
      ![Zoekresultaten](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Als u eenmalige aanmelding voor Azure AD met Pega Systems wilt configureren, moet u deze stappen voltooien:
 
-1. In de [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Pega Systems**:
+1. In de [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Pega Systems** :
 
     ![Selecteer Eenmalige aanmelding](common/select-sso.png)
 
@@ -150,15 +150,15 @@ Als u eenmalige aanmelding voor Azure AD met Pega Systems wilt configureren, moe
 
     1. Laat het vak **Naamruimte** leeg.
 
-    1. Als **Bron** selecteert u **Kenmerk**.
+    1. Als **Bron** selecteert u **Kenmerk** .
 
-    1. Selecteer de kenmerkwaarde voor die rij in de lijst met **Bronkenmerken**.
+    1. Selecteer de kenmerkwaarde voor die rij in de lijst met **Bronkenmerken** .
 
-    1. Selecteer **OK**.
+    1. Selecteer **OK** .
 
-    1. Selecteer **Opslaan**.
+    1. Selecteer **Opslaan** .
 
-8. Op de pagina **Eenmalige aanmelding met SAML instellen**, in de sectie **SAML-handtekeningcertificaat**, selecteert u de koppeling **Downloaden** naast **XML-bestand met federatieve metagegevens** overeenkomstig uw behoeften, en slaat u het certificaat op uw computer op:
+8. Op de pagina **Eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekeningcertificaat** , selecteert u de koppeling **Downloaden** naast **XML-bestand met federatieve metagegevens** overeenkomstig uw behoeften, en slaat u het certificaat op uw computer op:
 
     ![De koppeling om het certificaat te downloaden](common/metadataxml.png)
 
@@ -166,31 +166,31 @@ Als u eenmalige aanmelding voor Azure AD met Pega Systems wilt configureren, moe
 
     ![De configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-    1. **Aanmeldings-URL**.
+    1. **Aanmeldings-URL** .
 
-    1. **Azure AD-id**.
+    1. **Azure AD-id** .
 
-    1. **Afmeldings-URL**.
+    1. **Afmeldings-URL** .
 
 ### <a name="configure-pega-systems-single-sign-on"></a>Eenmalige aanmelding van Pega Systems configureren
 
-1. Meld u aan bij de Pega-Portal met een beheerdersaccount in een ander browservenster om eenmalige aanmelding te configureren aan de **Pega Systems**-zijde.
+1. Meld u aan bij de Pega-Portal met een beheerdersaccount in een ander browservenster om eenmalige aanmelding te configureren aan de **Pega Systems** -zijde.
 
-2. Selecteer **Maken** > **SysAdmin** > **Verificatieservice**:
+2. Selecteer **Maken** > **SysAdmin** > **Verificatieservice** :
 
     ![Selecteer verificatieservice](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
-3. Voer de volgende stappen uit op het scherm **Verificatieservice maken**.
+3. Voer de volgende stappen uit op het scherm **Verificatieservice maken** .
 
     ![Verificatieservice-scherm maken](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
 
-    1. Selecteer **SAML 2.0** in de lijst **Type**.
+    1. Selecteer **SAML 2.0** in de lijst **Type** .
 
-    1. Voer in het vak **Naam** een naam in (bijvoorbeeld **Azure AD SSO**).
+    1. Voer in het vak **Naam** een naam in (bijvoorbeeld **Azure AD SSO** ).
 
-    1. Voer een beschrijving in in het venster **Korte beschrijving**.  
+    1. Voer een beschrijving in in het venster **Korte beschrijving** .  
 
-    1. Selecteer **Maken en openen**.
+    1. Selecteer **Maken en openen** .
     
 4. Selecteer in de sectie **Informatie over id-provider (IdP)** **Metagegevens van IdP importeren** en blader naar het metagegevensbestand dat u hebt gedownload van Azure Portal. Klik op **Verzenden** om de metagegevens te laden:
 
@@ -208,15 +208,15 @@ Als u eenmalige aanmelding voor Azure AD met Pega Systems wilt configureren, moe
 
     1. Kopieer de waarde van de **Assertion Consumer Service (ACS)-locatie** en plak deze in het tekstvak **Antwoord-URL** in de sectie **Standaard SAML-configuratie** in Azure Portal.
 
-    1. Selecteer **Uitschakelen aanvraag ondertekening**.
+    1. Selecteer **Uitschakelen aanvraag ondertekening** .
 
-7. Selecteer **Opslaan**.
+7. Selecteer **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**:
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** :
 
     ![Selecteer Alle gebruikers](common/users.png)
 
@@ -228,19 +228,19 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
     ![Dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het vak **Naam** **Britta Simon**in.
+    a. Voer in het vak **Naam** **Britta Simon** in.
   
     b. Voer in het vak **Gebruikersnaam** **brittasimon@\<yourcompanydomain>.\<extension>** in. (Bijvoorbeeld: BrittaSimon@contoso.com.)
 
     c. Selecteer **Wachtwoord weergeven** en noteer de waarde die in het vak **Wachtwoord** wordt getoond.
 
-    d. Selecteer **Maken**.
+    d. Selecteer **Maken** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanmelding van Azure door haar toegang te geven tot Pega Systems.
 
-1. Selecteer in Azure Portal achtereenvolgens **Ondernemingstoepassingen**, **Alle toepassingen** en **Pega Systems**.
+1. Selecteer in Azure Portal achtereenvolgens **Ondernemingstoepassingen** , **Alle toepassingen** en **Pega Systems** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -248,19 +248,19 @@ In deze sectie stelt u Britta Simon in staat gebruik te maken van eenmalige aanm
 
     ![Lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het linkerdeelvenster **Gebruikers en groepen**:
+3. Selecteer in het linkerdeelvenster **Gebruikers en groepen** :
 
     ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
-4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Gebruiker toevoegen selecteren](common/add-assign-user.png)
 
 5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de gebruikerslijst en selecteer vervolgens de knop **Selecteren** onderaan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onder aan het scherm op de knop **Selecteren**.
+6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onder aan het scherm op de knop **Selecteren** .
 
-7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
+7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen** .
 
 ### <a name="create-a-pega-systems-test-user"></a>Maak een Pega Systems-testgebruiker
 
@@ -270,12 +270,12 @@ Vervolgens moet u een gebruiker met de naam Britta Simon maken in Pega Systems. 
 
 Nu moet u de configuratie voor eenmalige aanmelding van Azure AD testen met behulp van het toegangsvenster.
 
-Wanneer u de tegel Pega Systems selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij de instantie van Pega Systems waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Toepassingen openen en gebruiken in de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie.
+Wanneer u de tegel Pega Systems selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij de instantie van Pega Systems waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Toepassingen openen en gebruiken in de portal Mijn apps](../user-help/my-apps-portal-end-user-access.md) voor meer informatie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](./tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

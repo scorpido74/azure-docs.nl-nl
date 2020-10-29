@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 08d9c2f1676c0a04e9cd191b64c41af276521b3d
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d9850c83fc949aa3a2b0521dfa0d41d49b7283bd
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996094"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515624"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Zelfstudie: Azure Active Directory-integratie met Peakon
 
@@ -27,7 +27,7 @@ De integratie van Peakon met Azure AD biedt u de volgende voordelen:
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Peakon (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -52,11 +52,11 @@ Voor het configureren van de integratie van Peakon in Azure AD moet u Peakon van
 
 **Als u Peakon wilt toevoegen uit de galerie, moet u de volgende stappen uitvoeren:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -64,13 +64,13 @@ Voor het configureren van de integratie van Peakon in Azure AD moet u Peakon van
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Peakon**, selecteer **Peakon** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Peakon** , selecteer **Peakon** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![Peakon in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met Peakon op basis van een testgebruiker met de naam **Britta Simon**.
+In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met Peakon op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Peakon tot stand is gebracht.
 
 Voltooi de volgende stappen om Azure AD-eenmalige aanmelding met Peakon te configureren en te testen:
@@ -88,7 +88,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor het configureren van Azure AD-eenmalige aanmelding met Peakon voert u de volgende stappen uit:
 
-1. Ga naar [Azure Portal](https://portal.azure.com/) en selecteer **Eenmalige aanmelding** op de pagina voor de toepassingsintegratie van **Peakon**.
+1. Ga naar [Azure Portal](https://portal.azure.com/) en selecteer **Eenmalige aanmelding** op de pagina voor de toepassingsintegratie van **Peakon** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -135,15 +135,15 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Peakon voert u de vo
 
 1. Meld u in een ander browservenster bij Peakon aan als beveiligingsbeheerder.
 
-2. Klik in de menubalk aan de linkerkant van de pagina op **Configuratie**en navigeer vervolgens naar **Integraties**.
+2. Klik in de menubalk aan de linkerkant van de pagina op **Configuratie** en navigeer vervolgens naar **Integraties** .
 
     ![Configuratie](./media/peakon-tutorial/tutorial_peakon_config.png)
 
-3. Ga naar de pagina **Integraties** en klik op **Eenmalige aanmelding**.
+3. Ga naar de pagina **Integraties** en klik op **Eenmalige aanmelding** .
 
     ![Eenmalig](./media/peakon-tutorial/tutorial_peakon_single.png)
 
-4. Klik in het gedeelte **Eenmalige aanmelding** op **Inschakelen**.
+4. Klik in het gedeelte **Eenmalige aanmelding** op **Inschakelen** .
 
     ![Inschakelen](./media/peakon-tutorial/tutorial_peakon_enable.png)
 
@@ -161,13 +161,13 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Peakon voert u de vo
 
     e. Klik op het **pictogram** om de **Antwoord-URL (ACS)** te kopiëren en plak deze in het tekstvak **Antwoord-URL** in de sectie **Standaard SAML-configuratie** in Azure Portal.
 
-    f. Klik op **Opslaan**.
+    f. Klik op **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -179,20 +179,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte geeft u Britta Simon toestemming om eenmalige aanmelding voor Azure te gebruiken door haar toegang te geven tot Peakon.
 
-1. Selecteer **Bedrijfstoepassingen** in Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **Peakon**.
+1. Selecteer **Bedrijfstoepassingen** in Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **Peakon** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -200,11 +200,11 @@ In dit gedeelte geeft u Britta Simon toestemming om eenmalige aanmelding voor Az
 
     ![De koppeling naar Peakon in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -212,7 +212,7 @@ In dit gedeelte geeft u Britta Simon toestemming om eenmalige aanmelding voor Az
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-peakon-test-user"></a>Een Peakon-testgebruiker maken
 
@@ -223,35 +223,34 @@ In het geval van Peakon is het inrichten een handmatige taak.
 
 1. Meld u als beheerder aan bij de Peakon-bedrijfssite.
 
-2. Klik in de menubalk aan de linkerkant van de pagina op **Configuratie**en navigeer vervolgens naar **Werknemers**.
+2. Klik in de menubalk aan de linkerkant van de pagina op **Configuratie** en navigeer vervolgens naar **Werknemers** .
 
     ![Werknemer](./media/peakon-tutorial/tutorial_peakon_employee.png)
 
-3. Klik rechtsboven op **Werknemer toevoegen**.
+3. Klik rechtsboven op **Werknemer toevoegen** .
 
       ![Werknemer toevoegen](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
-3. Voer de volgende stappen uit op de dialoogpagina **Nieuwe werknemer toevoegen**:
+3. Voer de volgende stappen uit op de dialoogpagina **Nieuwe werknemer toevoegen** :
 
      ![Nieuwe werknemer](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. Typ in het tekstvak **Naam** de voornaam als **Britta** en de achternaam als **simon**.
+    a. Typ in het tekstvak **Naam** de voornaam als **Britta** en de achternaam als **simon** .
 
-    b. Typ in het tekstvak **E-mail** het e-mailadres van de gebruiker, bijvoorbeeld **Brittasimon\@contoso.com**.
+    b. Typ in het tekstvak **E-mail** het e-mailadres van de gebruiker, bijvoorbeeld **Brittasimon\@contoso.com** .
 
-    c. Klik op **Werknemer maken**.
+    c. Klik op **Werknemer maken** .
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Peakon klikt, wordt u automatisch aangemeld bij de instantie van Peakon waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Peakon klikt, wordt u automatisch aangemeld bij de instantie van Peakon waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
