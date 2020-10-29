@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d0d621728ac1956b2c036c9a45202c5d75ee9153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a289a0d963c8e20a3b861ff9964e8afd6665de22
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499565"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542349"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-voorbeelden
 
@@ -26,13 +26,13 @@ In dit artikel vindt u voorbeelden van scripts voor algemene taken. Werk voor el
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure CLI. Raadpleeg [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) voor instructies.
+* Azure CLI. Raadpleeg [De Azure CLI installeren](/cli/azure/install-azure-cli) voor instructies.
 
-* Optioneel: Bash. In de voorbeelden in dit artikel wordt gebruikgemaakt van de Bash-shell in Windows 10. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  De voorbeelden kunnen met enige aanpassingen worden gebruikt vanaf een Windows-opdrachtprompt.
+* Optioneel: Bash. In de voorbeelden in dit artikel wordt gebruikgemaakt van de Bash-shell in Windows 10. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](/windows/wsl/install-win10) voor installatiestappen.  De voorbeelden kunnen met enige aanpassingen worden gebruikt vanaf een Windows-opdrachtprompt.
 
 ## <a name="az-login"></a>az login
 
-[Aanmelden bij Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).
+[Aanmelden bij Azure](/cli/azure/reference-index#az-login).
 
 ```azurecli
 az login
@@ -43,7 +43,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>az hdinsight create
 
-[Een nieuw cluster maken](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
+[Een nieuw cluster maken](/cli/azure/hdinsight#az-hdinsight-create).
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>Een cluster maken met een bestaand opslagaccount
 
@@ -176,7 +176,7 @@ az hdinsight create \
 
 ## <a name="az-hdinsight-application-create"></a>az hdinsight application create
 
-[Een toepassing maken voor een HDInsight-cluster](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create).
+[Een toepassing maken voor een HDInsight-cluster](/cli/azure/hdinsight/application#az-hdinsight-application-create).
 
 ### <a name="create-an-application-with-a-script-uri"></a>Een toepassing maken met een script-URI
 
@@ -243,7 +243,7 @@ az hdinsight application create \
 
 ## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-action execute
 
-[Scriptacties uitvoeren op het opgegeven HDInsight-cluster](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).
+[Scriptacties uitvoeren op het opgegeven HDInsight-cluster](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute).
 
 ### <a name="execute-a-script-action-and-persist-on-success"></a>Een scriptactie uitvoeren en deze persistent maken bij succesvol uitvoeren
 

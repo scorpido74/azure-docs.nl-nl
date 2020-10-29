@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319188"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534580"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Zelfstudie: Gegevens extraheren, transformeren en laden met Interactive Query in Azure HDInsight
 
@@ -30,9 +30,9 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Interactive Query-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en **Interactive Query** selecteren voor **Cluster-type**.
+* Een Interactive Query-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en **Interactive Query** selecteren voor **Cluster-type** .
 
-* Een database in Azure SQL Database. U gebruikt de database als doelgegevensopslag. Als u geen database in Azure SQL Database hebt, raadpleegt u het artikel [Een database in Azure SQL Database maken in de Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
+* Een database in Azure SQL Database. U gebruikt de database als doelgegevensopslag. Als u geen database in Azure SQL Database hebt, raadpleegt u het artikel [Een database in Azure SQL Database maken in de Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -48,7 +48,7 @@ Deze zelfstudie bestaat uit de volgende taken:
    | Filterperiode |Januari |
    | Velden |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
-3. Selecteer **Download**. U krijgt een ZIP-bestand met de gegevensvelden die u hebt geselecteerd.
+3. Selecteer **Download** . U krijgt een ZIP-bestand met de gegevensvelden die u hebt geselecteerd.
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>Gegevens uploaden naar een HDInsight-cluster
 
@@ -95,7 +95,7 @@ Er zijn veel manieren om gegevens te uploaden naar de opslag die is gekoppeld aa
 
 Er zijn veel manieren om een Hive-taak uit te voeren in een HDInsight-cluster. In dit gedeelte gebruikt u [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) om een Hive-taak uit te voeren. Zie [Hive in Apache HDInsight gebruiken](../hadoop/hdinsight-use-hive.md) voor meer informatie over de andere methoden voor het uitvoeren van een Hive-taak.
 
-Als onderdeel van de Hive-taak, importeert u de gegevens uit het CSV-bestand naar een Hive-tabel met de naam **Delays**.
+Als onderdeel van de Hive-taak, importeert u de gegevens uit het CSV-bestand naar een Hive-tabel met de naam **Delays** .
 
 1. Gebruik op de SSH-prompt die al is geopend voor het HDInsight-cluster de volgende opdracht om een nieuw bestand met de naam **flightdelays.hql** te maken en bewerken:
 
@@ -165,7 +165,7 @@ Als onderdeel van de Hive-taak, importeert u de gegevens uit het CSV-bestand naa
     FROM delays_raw;
     ```
 
-3. Om het bestand op te slaan, drukt u achtereenvolgens op **Ctrl + X**, op **y** en op Enter.
+3. Om het bestand op te slaan, drukt u achtereenvolgens op **Ctrl + X** , op **y** en op Enter.
 
 4. Gebruik de volgende opdracht om Hive te starten en het bestand **flightdelays.hql** uit te voeren:
 
@@ -232,7 +232,7 @@ Er zijn veel manieren om verbinding te maken met SQL Database en een tabel te ma
     GO
     ```
 
-    Wanneer u de instructie `GO` invoert, worden de vorige instructies geëvalueerd. Met deze instructie maakt u een tabel met de naam **delays**, met een geclusterde index.
+    Wanneer u de instructie `GO` invoert, worden de vorige instructies geëvalueerd. Met deze instructie maakt u een tabel met de naam **delays** , met een geclusterde index.
 
     Gebruik de volgende query om te controleren of de tabel is gemaakt:
 

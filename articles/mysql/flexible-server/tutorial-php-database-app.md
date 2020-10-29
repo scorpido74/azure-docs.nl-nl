@@ -8,19 +8,19 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90929394"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537929"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Zelfstudie: Een PHP-app (Laravel) en een MySQL Flexible Server-app (preview) bouwen in Azure App Service
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="PHP-web-app in Azure met Flexible Server":::
 
-[Azure App Service](https://docs.microsoft.com/azure/app-service/overview) biedt een uiterst schaalbare webhostingservice met self-patchfunctie via het Linux-besturingssysteem. In deze zelfstudie wordt getoond hoe u een PHP-app in Azure maakt en hoe u deze verbinding laat maken met een MySQL-database. Wanneer u klaar bent, hebt u een [Laravel](https://laravel.com/)-app die in Azure App Service op Linux wordt uitgevoerd.
+[Azure App Service](../../app-service/overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie via het Linux-besturingssysteem. In deze zelfstudie wordt getoond hoe u een PHP-app in Azure maakt en hoe u deze verbinding laat maken met een MySQL-database. Wanneer u klaar bent, hebt u een [Laravel](https://laravel.com/)-app die in Azure App Service op Linux wordt uitgevoerd.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -31,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 > * Het gegevensmodel bijwerken en de app opnieuw implementeren
 > * De app in Azure Portal beheren
 
-Als u geen [Azure-abonnement](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
+Als u geen [Azure-abonnement](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -96,7 +96,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL-verbinding configureren
 
-Maak een bestand met de naam *.env* in de hoofdmap van de opslagplaats. Kopieer de volgende variabelen in het bestand *.env*. Vervang de tijdelijke aanduiding _&lt;root_password>_ met het wachtwoord van de MySQL-hoofdgebruiker.
+Maak een bestand met de naam *.env* in de hoofdmap van de opslagplaats. Kopieer de volgende variabelen in het bestand *.env* . Vervang de tijdelijke aanduiding _&lt;root_password>_ met het wachtwoord van de MySQL-hoofdgebruiker.
 
 ```txt
 APP_ENV=local
@@ -110,7 +110,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-Zie [Laravel-omgeving configureren](https://laravel.com/docs/5.4/configuration#environment-configuration) voor informatie over hoe Laravel het _.env_-bestand gebruikt.
+Zie [Laravel-omgeving configureren](https://laravel.com/docs/5.4/configuration#environment-configuration) voor informatie over hoe Laravel het _.env_ -bestand gebruikt.
 
 ### <a name="run-the-sample-locally"></a>Het voorbeeld lokaal uitvoeren
 
@@ -139,7 +139,7 @@ Ga naar `http://localhost:8000` in een browser. Voeg een paar taken op de pagina
 Typ `Ctrl + C` in de terminal om PHP te stoppen.
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>Een MySQL Flexible Server maken (preview)
-In deze stap maakt u een MySQL-database in [Azure Database for MySQL Flexible Server](/azure/mysql) die in openbare preview is. Later configureert u de PHP-toepassing om verbinding te maken met deze database. Maak vanuit de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) een server met behulp van de opdracht [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create).
+In deze stap maakt u een MySQL-database in [Azure Database for MySQL Flexible Server](../index.yml) die in openbare preview is. Later configureert u de PHP-toepassing om verbinding te maken met deze database. Maak vanuit de [Azure Cloud Shell](../../cloud-shell/overview.md) een server met behulp van de opdracht [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create).
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
@@ -147,7 +147,7 @@ az mysql flexible-server create  --resource-group myResourceGroup --public-acces
 
 > [!IMPORTANT]
 > - Noteer de **servernaam** en **verbindingsreeks** om deze te gebruiken in de volgende stap om verbinding te maken en Laravel-gegevensmigratie uit te voeren.
-> - Geef het IP-adres van uw clientcomputer op voor het argument **IP-Address**. De server is vergrendeld wanneer deze is gemaakt en u moet toegang tot uw clientcomputer toestaan om de server lokaal te beheren.
+> - Geef het IP-adres van uw clientcomputer op voor het argument **IP-Address** . De server is vergrendeld wanneer deze is gemaakt en u moet toegang tot uw clientcomputer toestaan om de server lokaal te beheren.
 
 ### <a name="configure-server-firewall-to-allow-web-app-to-connect-to-the-server"></a>Serverfirewall configureren zodat web-apps verbinding kunnen maken met de server
 
@@ -196,7 +196,7 @@ In deze stap verbindt u de PHP-toepassing met de MySQL-database die u in Azure D
 
 ### <a name="configure-the-database-connection"></a>Verbinding met de database configureren
 
-Maak in de hoofdmap van de opslagplaats een _.env.production_-bestand en kopieer de volgende variabelen ernaartoe. Vervang de tijdelijke aanduiding _&lt;mysql-server-name>_ in zowel *DB_HOST* als *DB_USERNAME*.
+Maak in de hoofdmap van de opslagplaats een _.env.production_ -bestand en kopieer de volgende variabelen ernaartoe. Vervang de tijdelijke aanduiding _&lt;mysql-server-name>_ in zowel *DB_HOST* als *DB_USERNAME* .
 
 ```
 APP_ENV=production
@@ -214,12 +214,12 @@ MYSQL_SSL=true
 Sla de wijzigingen op.
 
 > [!TIP]
-> Dit bestand is voor het beveiligen van uw MySQL-verbindingsgegevens al uitgesloten van de Git-opslagplaats (zie _.gitignore_ in de hoofdmap van de opslagplaats). Later leert u hoe u omgevingsvariabelen in App Service configureert om verbinding te maken met uw database in Azure Database for MySQL. Met omgevingsvariabelen heeft u het *.env*-bestand in App Service niet nodig.
+> Dit bestand is voor het beveiligen van uw MySQL-verbindingsgegevens al uitgesloten van de Git-opslagplaats (zie _.gitignore_ in de hoofdmap van de opslagplaats). Later leert u hoe u omgevingsvariabelen in App Service configureert om verbinding te maken met uw database in Azure Database for MySQL. Met omgevingsvariabelen heeft u het *.env* -bestand in App Service niet nodig.
 >
 
 ### <a name="configure-tlsssl-certificate"></a>TLS-/SSL-certificaat configureren
 
-MySQL Flexible Server dwingt standaard TLS-verbindingen van clients af. Voor verbinding met uw MySQL-database in Azure moet u het [ _.pem_-certificaat gebruiken dat is opgegeven door Azure Database for MySQL Flexible Server](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem). Download [dit certificaat](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) en plaats het in de map **SSL** in het lokale exemplaar van de opslagplaats van de voorbeeld-app.
+MySQL Flexible Server dwingt standaard TLS-verbindingen van clients af. Voor verbinding met uw MySQL-database in Azure moet u het [ _.pem_ -certificaat gebruiken dat is opgegeven door Azure Database for MySQL Flexible Server](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem). Download [dit certificaat](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) en plaats het in de map **SSL** in het lokale exemplaar van de opslagplaats van de voorbeeld-app.
 
 Open _config/database.php_ en voeg de parameters `sslmode` en `options` toe aan `connections.mysql`, zoals wordt weergegeven in de volgende code.
 
@@ -280,7 +280,7 @@ In deze stap implementeert u de met MySQL verbonden PHP-toepassing naar Azure Ap
 
 FTP en lokale Git kunnen worden geïmplementeerd in een Azure-web-app met behulp van een implementatiegebruikers. Zodra u deze implementatiegebruiker hebt gemaakt, kunt u deze voor al uw Azure-implementaties gebruiken. Uw gebruikersnaam en wachtwoord voor implementatie op accountniveau verschillen van de referenties voor uw Azure-abonnement.
 
-Als u de implementatiegebruiker wilt configureren, voert u de opdracht [az webapp deployment user set](https://docs.microsoft.com/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) uit in Azure Cloud Shell. Vervang _&lt;gebruikersnaam >_ en _&lt;wachtwoord >_ door de gebruikersnaam en het wachtwoord van uw implementatiegebruiker.
+Als u de implementatiegebruiker wilt configureren, voert u de opdracht [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) uit in Azure Cloud Shell. Vervang _&lt;gebruikersnaam >_ en _&lt;wachtwoord >_ door de gebruikersnaam en het wachtwoord van uw implementatiegebruiker.
 
 De gebruikersnaam moet uniek zijn binnen Azure en voor lokale Git-pushes en mag het symbool @ niet bevatten.
 Het wachtwoord moet ten minste acht tekens lang zijn en minimaal twee van de volgende drie typen elementen bevatten: letters, cijfers en symbolen.
@@ -293,7 +293,7 @@ De JSON-uitvoer toont het wachtwoord als null. Als u de fout 'Conflict'. Details
 
 ### <a name="create-an-app-service-plan"></a>Een App Service-plan maken
 
-Maak in de Cloud Shell een App Service-plan in de resourcegroep met de opdracht [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create). In het volgende voorbeeld wordt een App Service-plan gemaakt met de naam myAppServicePlan in de prijscategorie Gratis (--sku F1) en in een Linux-container (--is-linux).
+Maak in de Cloud Shell een App Service-plan in de resourcegroep met de opdracht [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create). In het volgende voorbeeld wordt een App Service-plan gemaakt met de naam myAppServicePlan in de prijscategorie Gratis (--sku F1) en in een Linux-container (--is-linux).
 
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux
 
@@ -301,9 +301,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-a-web-app"></a>Een webtoepassing maken
 
-Maak een [web-app](https://docs.microsoft.com/azure/app-service/overview#app-service-on-linux) in het App Service-plan myAppServicePlan.
+Maak een [web-app](../../app-service/overview.md#app-service-on-linux) in het App Service-plan myAppServicePlan.
 
-In de Cloud Shell kunt u de opdracht [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) gebruiken. Vervang in het volgende voorbeeld _&lt;app-name>_ door een unieke naam (geldige tekens zijn `a-z`, `0-9` en `-`). De runtime is ingesteld op `PHP|7.0`. Voer [az webapp list-runtimes --linux](https://docs.microsoft.com/cli/azure/webapp#az-webapp-list-runtimes) uit om alle ondersteunde runtimes te bekijken.
+In de Cloud Shell kunt u de opdracht [az webapp create](/cli/azure/webapp#az-webapp-create) gebruiken. Vervang in het volgende voorbeeld _&lt;app-name>_ door een unieke naam (geldige tekens zijn `a-z`, `0-9` en `-`). De runtime is ingesteld op `PHP|7.0`. Voer [az webapp list-runtimes --linux](/cli/azure/webapp#az-webapp-list-runtimes) uit om alle ondersteunde runtimes te bekijken.
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -359,7 +359,7 @@ U kunt de PHP-methode [getenv](https://www.php.net/manual/en/function.getenv.php
 
 Laravel heeft een toepassingssleutel nodig in App Service. U kunt deze configureren met app-instellingen.
 
-In het lokale terminalvenster gebruikt u `php artisan` voor het genereren van een nieuwe toepassingssleutel zonder deze op te slaan in _.env_.
+In het lokale terminalvenster gebruikt u `php artisan` voor het genereren van een nieuwe toepassingssleutel zonder deze op te slaan in _.env_ .
 
 ```bash
 php artisan key:generate --show
@@ -377,7 +377,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 [Levenscyclus van de Laravel-toepassing](https://laravel.com/docs/5.4/lifecycle) begint in de map _public_ en niet in de hoofdmap van de toepassing. De standaardinstallatiekopie van PHP Docker voor App Service maakt gebruik van Apache, dit laat u de `DocumentRoot` niet aanpassen voor Laravel. U kunt echter `.htaccess` gebruiken om alle aanvragen te herschrijven, zodat zij verwijzen naar _/openbaar_ in plaats van naar de hoofdmap. In de hoofdmap van de opslagplaats is voor dit doel al een `.htaccess` toegevoegd. Uw Laravel-toepassing is hiermee gereed om te worden geïmplementeerd.
 
-Zie [Sitehoofdmap wijzigen](https://docs.microsoft.com/azure/app-service/configure-language-php?pivots=platform-linux#change-site-root) voor meer informatie.
+Zie [Sitehoofdmap wijzigen](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root) voor meer informatie.
 
 ### <a name="push-to-azure-from-git"></a>Pushen naar Azure vanaf Git
 
@@ -387,7 +387,7 @@ Voeg, eenmaal terug in het lokale terminalvenster, een externe Azure-instantie t
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-Push naar de externe Azure-instantie om uw app te implementeren met de volgende opdracht. Wanneer Git Credential Manager u om referenties vraagt, geeft u de referenties op die u hebt gemaakt in **Een implementatiegebruiker configureren**, en niet de referenties die u gebruikt om u aan te melden bij de Azure-portal.
+Push naar de externe Azure-instantie om uw app te implementeren met de volgende opdracht. Wanneer Git Credential Manager u om referenties vraagt, geeft u de referenties op die u hebt gemaakt in **Een implementatiegebruiker configureren** , en niet de referenties die u gebruikt om u aan te melden bij de Azure-portal.
 
 ```bash
 git push azure master
@@ -466,11 +466,11 @@ Voer in het lokale terminalvenster Laravel-database-migraties uit om de wijzigin
 php artisan migrate
 ```
 
-Op basis van de [Laravel-naamgevingsconventie](https://laravel.com/docs/5.4/eloquent#defining-models) wordt het model `Task` (zie _app/Task.php_) standaard toegewezen aan de `tasks`-tabel.
+Op basis van de [Laravel-naamgevingsconventie](https://laravel.com/docs/5.4/eloquent#defining-models) wordt het model `Task` (zie _app/Task.php_ ) standaard toegewezen aan de `tasks`-tabel.
 
 ### <a name="update-application-logic"></a>Toepassingslogica bijwerken
 
-Open het bestand *routes/web.php*. De toepassing definieert hier de routes en bedrijfslogica.
+Open het bestand *routes/web.php* . De toepassing definieert hier de routes en bedrijfslogica.
 
 Voeg aan het einde van het bestand een route toe met de volgende code:
 
@@ -493,7 +493,7 @@ De bovenstaande code voert een eenvoudige update uit op het gegevensmodel door h
 
 ### <a name="update-the-view"></a>De weergave bijwerken
 
-Open het bestand *resources/views/tasks.blade.php*. Zoek de `<tr>`-openingstag en vervang deze door:
+Open het bestand *resources/views/tasks.blade.php* . Zoek de `<tr>`-openingstag en vervang deze door:
 
 ```html
 <tr class="{{ $task->complete ? 'success' : 'active' }}" >
@@ -572,6 +572,6 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uw resources beheren in Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal) <br/>
+> [Uw resources beheren in Azure Portal](../../azure-resource-manager/management/manage-resources-portal.md) <br/>
 > [!div class="nextstepaction"]
 > [Uw server beheren](how-to-manage-server-cli.md)

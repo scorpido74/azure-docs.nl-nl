@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
-ms.openlocfilehash: 5876626ed4ba27c0f39b0c02af926c61261fca71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7c89706d749151b5a59667282eb6675fd18dc8c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327426"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535362"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java-voorbeelden
 
@@ -32,7 +32,7 @@ Dit artikel bevat:
 
 ## <a name="prerequisites"></a>Vereisten
 
-[Azure HDInsight-SDK voor Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+[Azure HDInsight-SDK voor Java](/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>Clusterbeheer - maken
 
@@ -45,4 +45,4 @@ U kunt deze voorbeelden voor Java verkrijgen door de GitHub-opslagplaats [hdinsi
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Codefragmenten voor deze aanvullende SDK-functionaliteit vindt u in de [referentiedocumentatie voor HDInsight SDK voor Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview).
+Codefragmenten voor deze aanvullende SDK-functionaliteit vindt u in de [referentiedocumentatie voor HDInsight SDK voor Java](/java/api/overview/azure/hdinsight).

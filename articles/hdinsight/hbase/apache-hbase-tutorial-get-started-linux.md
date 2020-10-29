@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: 7ce183595ed8e20c4b5cf4afe9ac1174882dc392
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d24c63e3a2989173e718cd27fa43cecc50181047
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370318"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533492"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Zelfstudie: Apache HBase gebruiken in Azure HDInsight
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Bash. In de voorbeelden in dit artikel wordt gebruikgemaakt van de Bash-shell in Windows 10 voor de cURL-opdrachten. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) kunnen ook worden gebruikt.  De cURL-voorbeelden kunnen, met enige aanpassingen, worden gebruikt in een Windows-opdrachtprompt.  U kunt ook de Windows PowerShell-cmdlet [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod) gebruiken.
+* Bash. In de voorbeelden in dit artikel wordt gebruikgemaakt van de Bash-shell in Windows 10 voor de cURL-opdrachten. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](/windows/wsl/install-win10) voor installatiestappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) kunnen ook worden gebruikt.  De cURL-voorbeelden kunnen, met enige aanpassingen, worden gebruikt in een Windows-opdrachtprompt.  U kunt ook de Windows PowerShell-cmdlet [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) gebruiken.
 
 ## <a name="create-apache-hbase-cluster"></a>Een Apache HBase-cluster maken
 

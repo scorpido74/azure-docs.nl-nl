@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 44951fc19f36bb6652caf79ded96484bcc4b38f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503137"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539476"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Zelfstudie: Een cluster met de Apache Kafka REST-proxy ingeschakeld maken in HDInsight met behulp van Azure CLI
 
-In deze zelfstudie leert u hoe u met behulp van de Azure-opdrachtregelinterface (CLI) een cluster maakt waarvoor de Apache Kafka [REST-proxy](./rest-proxy.md) is ingeschakeld in Azure HDInsight. Azure HDInsight is een beheerde, zeer uitgebreide open-source analyseservice voor bedrijven. Apache Kafka is een open-source, gedistribueerd streamingplatform. Het wordt vaak gebruikt als een berichtenbroker, omdat het een functionaliteit biedt die vergelijkbaar is met een publicatie-/abonnementswachtrij voor berichten. Met de Kafka REST-proxy kunt u met uw Kafka-cluster communiceren via een [REST API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) over HTTP. De Azure CLI is de platformoverschrijdende opdrachtregelervaring van Microsoft voor het beheren van Azure-resources.
+In deze zelfstudie leert u hoe u met behulp van de Azure-opdrachtregelinterface (CLI) een cluster maakt waarvoor de Apache Kafka [REST-proxy](./rest-proxy.md) is ingeschakeld in Azure HDInsight. Azure HDInsight is een beheerde, zeer uitgebreide open-source analyseservice voor bedrijven. Apache Kafka is een open-source, gedistribueerd streamingplatform. Het wordt vaak gebruikt als een berichtenbroker, omdat het een functionaliteit biedt die vergelijkbaar is met een publicatie-/abonnementswachtrij voor berichten. Met de Kafka REST-proxy kunt u met uw Kafka-cluster communiceren via een [REST API](/rest/api/hdinsight-kafka-rest-proxy/) over HTTP. De Azure CLI is de platformoverschrijdende opdrachtregelervaring van Microsoft voor het beheren van Azure-resources.
 
 De Apache Kafka-API is alleen toegankelijk voor resources binnen hetzelfde virtuele netwerk. U kunt het cluster rechtstreeks openen via SSH. Als u andere services, netwerken of virtuele machines wilt verbinden met Apache Kafka, moet u eerst een virtueel netwerk maken en vervolgens de resources maken in het netwerk. Zie [Verbinding maken met Apache Kafka via een virtueel netwerk](./apache-kafka-connect-vpn-gateway.md) voor meer informatie.
 
@@ -27,7 +27,7 @@ In deze zelfstudie komen deze onderwerpen aan bod:
 > * Vereisten voor de Kafka REST-proxy
 > * Een Apache Kafka-cluster maken met Azure CLI
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,7 +35,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 * Een Azure AD-beveiligingsgroep waarvan uw geregistreerde toepassing lid is. Deze beveiligingsgroep wordt gebruikt om te bepalen welke toepassingen mogen communiceren met de REST-proxy. Zie [Een basisgroep maken en leden toevoegen met Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie over het maken van Azure AD-groepen.
 
-* Azure CLI. Zorg ervoor dat u ten minste versie 2.0.79 hebt. Raadpleeg [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI. Zorg ervoor dat u ten minste versie 2.0.79 hebt. Raadpleeg [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-cluster maken
 
@@ -56,8 +56,8 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
     |location|Vervang LOCATION door de regio waar het cluster wordt gemaakt. Gebruik de opdracht `az account list-locations` voor een lijst met geldige locaties|
     |clusterName|Vervang CLUSTERNAME door een globaal unieke naam voor uw nieuwe cluster.|
     |storageAccount|Vervang STORAGEACCOUNTNAME door een naam voor uw nieuwe opslagaccount.|
-    |httpPassword|Vervang PASSWORD door een wachtwoord voor de clusteraanmelding, **admin**.|
-    |sshPassword|Vervang PASSWORD door een wachtwoord voor de gebruikersnaam van de beveiligde shell, **sshuser**.|
+    |httpPassword|Vervang PASSWORD door een wachtwoord voor de clusteraanmelding, **admin** .|
+    |sshPassword|Vervang PASSWORD door een wachtwoord voor de gebruikersnaam van de beveiligde shell, **sshuser** .|
     |securityGroupName|Vervang SECURITYGROUPNAME door de naam van de AAD-clientbeveiligingsgroep voor de Kafka REST-proxy. De variabele wordt doorgegeven aan de parameter `--kafka-client-group-name` voor `az-hdinsight-create`.|
     |securityGroupID|Vervang SECURITYGROUPID door de id van de AAD-clientbeveiligingsgroep voor de Kafka REST-proxy. De variabele wordt doorgegeven aan de parameter `--kafka-client-group-id` voor `az-hdinsight-create`.|
     |storageContainer|Opslagcontainer die door het cluster wordt gebruikt. Laat deze staan voor deze zelfstudie. Deze variabele wordt ingesteld met de naam van het cluster.|
@@ -85,7 +85,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
     export componentVersion=kafka=2.1
     ```
 
-1. [Maak de resourcegroep](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) door de onderstaande opdracht in te voeren:
+1. [Maak de resourcegroep](/cli/azure/group#az-group-create) door de onderstaande opdracht in te voeren:
 
     ```azurecli
      az group create \
@@ -93,7 +93,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
         --name $resourceGroupName
     ```
 
-1. [Maak een Azure Storage-account](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) door de onderstaande opdracht in te voeren:
+1. [Maak een Azure Storage-account](/cli/azure/storage/account#az-storage-account-create) door de onderstaande opdracht in te voeren:
 
     ```azurecli
     # Note: kind BlobStorage is not available as the default storage account.
@@ -106,7 +106,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
         --sku Standard_LRS
     ```
 
-1. [Extraheer de primaire sleutel](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) uit het Azure Storage-account en sla deze op in een variabele door de onderstaande opdracht in te voeren:
+1. [Extraheer de primaire sleutel](/cli/azure/storage/account/keys#az-storage-account-keys-list) uit het Azure Storage-account en sla deze op in een variabele door de onderstaande opdracht in te voeren:
 
     ```azurecli
     export storageAccountKey=$(az storage account keys list \
@@ -115,7 +115,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
         --query [0].value -o tsv)
     ```
 
-1. [Maak een Azure Storage-container](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) door de onderstaande opdracht in te voeren:
+1. [Maak een Azure Storage-container](/cli/azure/storage/container#az-storage-container-create) door de onderstaande opdracht in te voeren:
 
     ```azurecli
     az storage container create \
@@ -124,7 +124,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
         --account-name $storageAccount
     ```
 
-1. [Maak het HDInsight-cluster](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create). Noteer de volgende parameters voordat u de opdracht invoert:
+1. [Maak het HDInsight-cluster](/cli/azure/hdinsight#az-hdinsight-create). Noteer de volgende parameters voordat u de opdracht invoert:
 
     1. Vereiste parameters voor Kafka-clusters:
 
@@ -138,10 +138,10 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
         |Parameter | Beschrijving|
         |---|---|
         |--kafka-management-node-size|De grootte van het knooppunt. In deze zelfstudie wordt de waarde **Standard_D4_v2** gebruikt.|
-        |--kafka-client-group-id|De id van de AAD-clientbeveiligingsgroep voor de Kafka REST-proxy. De waarde wordt doorgegeven vanuit de variabele **$securityGroupID**.|
-        |--kafka-client-group-name|De naam van de AAD-clientbeveiligingsgroep voor de Kafka REST-proxy. De waarde wordt doorgegeven vanuit de variabele **$securityGroupName**.|
-        |--version|De versie van het HDInsight-cluster moet ten minste 4.0 zijn. De waarde wordt doorgegeven vanuit de variabele **$clusterVersion**.|
-        |--component-version|De Kafka-versie moet ten minste 2.1 zijn. De waarde wordt doorgegeven vanuit de variabele **$componentVersion**.|
+        |--kafka-client-group-id|De id van de AAD-clientbeveiligingsgroep voor de Kafka REST-proxy. De waarde wordt doorgegeven vanuit de variabele **$securityGroupID** .|
+        |--kafka-client-group-name|De naam van de AAD-clientbeveiligingsgroep voor de Kafka REST-proxy. De waarde wordt doorgegeven vanuit de variabele **$securityGroupName** .|
+        |--version|De versie van het HDInsight-cluster moet ten minste 4.0 zijn. De waarde wordt doorgegeven vanuit de variabele **$clusterVersion** .|
+        |--component-version|De Kafka-versie moet ten minste 2.1 zijn. De waarde wordt doorgegeven vanuit de variabele **$componentVersion** .|
     
         Als u het cluster wilt maken zonder REST-proxy, verwijdert u `--kafka-management-node-size`, `--kafka-client-group-id` en `--kafka-client-group-name` uit de opdracht `az hdinsight create`.
 
