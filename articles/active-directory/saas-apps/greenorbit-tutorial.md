@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 7fc9aeadcfff06d6fa498e838d09dfa9f4bd8054
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ada12eb34325180e86be35b30bc955c3a8514c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550024"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92446989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenorbit"></a>Zelfstudie: Integratie van Azure Active Directory met GreenOrbit
 
@@ -27,7 +27,7 @@ De integratie van GreenOrbit met Azure AD biedt de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij GreenOrbit (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -43,7 +43,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * GreenOrbit biedt ondersteuning voor met **SP** geïnitieerde eenmalige aanmelding
 
-* GreenOrbit biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
+* GreenOrbit biedt ondersteuning voor **Just-In-Time** -inrichting van gebruikers
 
 ## <a name="adding-greenorbit-from-the-gallery"></a>GreenOrbit toevoegen vanuit de galerie
 
@@ -51,11 +51,11 @@ Voor het configureren van de integratie van GreenOrbit in Azure AD moet u GreenO
 
 **Voer de volgende stappen uit als u GreenOrbit wilt toevoegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -69,7 +69,7 @@ Voor het configureren van de integratie van GreenOrbit in Azure AD moet u GreenO
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met GreenOrbit op basis van een testgebruiker met de naam **Britta Simon**.
+In dit gedeelte configureert en test u eenmalige aanmelding van Azure AD met GreenOrbit op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in GreenOrbit tot stand is gebracht.
 
 Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directory voor GreenOrbit wilt configureren en testen:
@@ -87,7 +87,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor het configureren van eenmalige aanmelding van Azure Active Directory met Greenhouse moet u de volgende stappen uitvoeren:
 
-1. In [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Greenhouse**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Greenhouse** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -132,7 +132,7 @@ Als u eenmalige aanmelding aan de zijde van **GreenOrbit** wilt configureren, mo
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -144,19 +144,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot GreenOrbit.
 
-1. In Azure Portal selecteert u achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **GreenOrbit**.
+1. In Azure Portal selecteert u achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **GreenOrbit** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -164,11 +164,11 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling naar GreenOrbit in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -176,7 +176,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-greenorbit-test-user"></a>GreenOrbit-testgebruiker maken
 
@@ -186,13 +186,12 @@ In deze sectie maakt u in GreenOrbit een gebruiker met de naam Britta Simon. Gre
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de GreenOrbit-tegel in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van GreenOrbit waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de GreenOrbit-tegel in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van GreenOrbit waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

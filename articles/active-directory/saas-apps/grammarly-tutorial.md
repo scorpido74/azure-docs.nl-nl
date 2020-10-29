@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 989e3f4a285d44128bba1c9811aebcb76b8c0220
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13b62646728eb03a7470d9bb57741bcb90cc24fb
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327949"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92447701"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Grammarly
 
@@ -38,7 +38,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Grammarly biedt ondersteuning voor met **IDP** geïnitieerde eenmalige aanmelding
-* Grammarly biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
+* Grammarly biedt ondersteuning voor **Just-In-Time** -inrichting van gebruikers
 
 > [!NOTE]
 > De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
@@ -48,8 +48,8 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 Voor het configureren van de integratie van Grammarly met Azure Active Directory moet u Grammarly vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de Azure-portal aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
 1. Typ in de sectie **Toevoegen uit de galerie** **Grammarly** in het zoekvak.
 1. Selecteer **Grammarly** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
@@ -57,7 +57,7 @@ Voor het configureren van de integratie van Grammarly met Azure Active Directory
 
 ## <a name="configure-and-test-azure-ad-sso-for-grammarly"></a>Eenmalige aanmelding van Azure AD voor Grammarly configureren en testen
 
-Configureer en test eenmalige aanmelding van Azure AD met Grammarly met behulp van een testgebruiker met de naam **B. Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Grammarly.
+Configureer en test eenmalige aanmelding van Azure AD met Grammarly met behulp van een testgebruiker met de naam **B. Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Grammarly.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Grammarly te configureren en testen:
 
@@ -72,8 +72,8 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Grammarly t
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in Azure Portal, op de integratiepagina van de toepassing **Grammarly** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in Azure Portal, op de integratiepagina van de toepassing **Grammarly** de sectie **Beheren** en selecteer **eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -101,29 +101,29 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Grammarly.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Grammarly** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u verwacht dat er een rol aan de gebruikers moet worden toegewezen, kunt u de rol selecteren in de vervolgkeuzelijst **Selecteer een rol**. Als er geen rol is ingesteld voor deze app, wordt de rol Standaardtoegang geselecteerd.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Als u verwacht dat er een rol aan de gebruikers moet worden toegewezen, kunt u de rol selecteren in de vervolgkeuzelijst **Selecteer een rol** . Als er geen rol is ingesteld voor deze app, wordt de rol Standaardtoegang geselecteerd.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-grammarly-sso"></a>Eenmalige aanmelding voor Grammarly configureren
 
-Voor het configureren van eenmalige aanmelding op **Grammarly**, moet u de **aanmeldings-URL**, **Azure AD-id** en het gedownloade **certificaat (base64)** naar het deelvenster Beheer van Grammarly kopiëren. [Meer informatie](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
+Voor het configureren van eenmalige aanmelding op **Grammarly** , moet u de **aanmeldings-URL** , **Azure AD-id** en het gedownloade **certificaat (base64)** naar het deelvenster Beheer van Grammarly kopiëren. [Meer informatie](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
 
 ### <a name="create-grammarly-test-user"></a>Testgebruiker voor Grammarly maken
 
@@ -135,8 +135,8 @@ In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met
 
 1. Klik op **Deze toepassing testen** in Azure Portal. U wordt automatisch aangemeld bij de instantie van Grammarly waarvoor u eenmalige aanmelding hebt ingesteld 
 
-2. U kunt het Microsoft-toegangsvenster gebruiken. Wanneer u op de tegel Grammarly in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Grammarly waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+2. U kunt het Microsoft-toegangsvenster gebruiken. Wanneer u op de tegel Grammarly in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Grammarly waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zodra u Grammarly hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Zodra u Grammarly hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
