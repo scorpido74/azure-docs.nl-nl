@@ -1,5 +1,9 @@
 - name: Overzicht
   href: overview.md
+- name: Red Hat-quickstarts
+  items: null
+- name: Quickstart - WildFly in CentOS
+  href: wildfly-on-centos.md
 - name: Red Hat Enterprise Linux-installatiekopieën (RHEL)
   items:
     - name: Overzicht van Red Hat Enterprise Linux-installatiekopieën

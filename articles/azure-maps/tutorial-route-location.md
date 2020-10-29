@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321710"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896677"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Zelfstudie: Routebeschrijvingen weergeven met behulp van de Azure Maps-routeservice en een kaartbesturingselement
 
-In deze zelfstudie ziet u hoe u de Azure Maps-[routeservice-API ](https://docs.microsoft.com/rest/api/maps/route) en een [kaartbesturingselement](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) kunt gebruiken om de routebeschrijving van het begin- tot het eindpunt weer te geven. In deze zelfstudie leert u het volgende:
+In deze zelfstudie ziet u hoe u de Azure Maps-[routeservice-API ](/rest/api/maps/route) en een [kaartbesturingselement](./how-to-use-map-control.md) kunt gebruiken om de routebeschrijving van het begin- tot het eindpunt weer te geven. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Het kaartbesturingselement maken en weergeven op een webpagina. 
 > * Definiëren hoe de route wordt weergegeven door [symboollagen](map-add-pin.md) en [lijnlagen](map-add-line-layer.md) te definiëren.
 > * GeoJSON-objecten maken en toevoegen aan de kaart om begin- en eindpunten aan te duiden.
-> * Routebeschrijving van de begin- en eindpunten ophalen met behulp van de [API Routebeschrijving ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+> * Routebeschrijving van de begin- en eindpunten ophalen met behulp van de [API Routebeschrijving ophalen](/rest/api/maps/route/getroutedirections).
 
 U kunt de volledige broncode voor het voorbeeld [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html) ophalen. Een livevoorbeeld is [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination) te vinden.
 
@@ -39,7 +39,7 @@ U kunt de volledige broncode voor het voorbeeld [hier](https://github.com/Azure-
 
 De volgende stappen laten zien hoe u het kaartbesturingselement maakt en weergeeft op een webpagina.
 
-1. Maak een nieuw bestand op uw lokale computer en noem dit **MapRoute.html**.
+1. Maak een nieuw bestand op uw lokale computer en noem dit **MapRoute.html** .
 2. Kopieer de volgende HTML-opmaak en plak deze in het bestand.
 
     ```HTML
@@ -170,7 +170,7 @@ In deze zelfstudie gaat u met behulp van een lijnlaag de route weergeven. De beg
 
     Deze code maakt twee [GeoJSON-puntobjecten](https://en.wikipedia.org/wiki/GeoJSON) die de begin- en eindpunten vertegenwoordigen, die vervolgens aan de gegevensbron worden toegevoegd. 
 
-    In het laatste codeblok wordt de cameraweergave ingesteld met de breedtegraad en de lengtegraad van het begin- en eindpunt. De begin- en eindpunten worden toegevoegd aan de gegevensbron. Het begrenzingsvak voor de begin- en eindpunten wordt berekend met behulp van de functie `atlas.data.BoundingBox.fromData`. Dit begrenzingsvak wordt gebruikt om de cameraweergave van de kaart met behulp van de functie `map.setCamera` in te stellen op de hele route. Er wordt opvulling toegevoegd om de grootte van de pixels in de symboolpictogrammen te compenseren. Zie de eigenschap [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) voor meer informatie over de eigenschap setCamera van het kaartbesturingselement.
+    In het laatste codeblok wordt de cameraweergave ingesteld met de breedtegraad en de lengtegraad van het begin- en eindpunt. De begin- en eindpunten worden toegevoegd aan de gegevensbron. Het begrenzingsvak voor de begin- en eindpunten wordt berekend met behulp van de functie `atlas.data.BoundingBox.fromData`. Dit begrenzingsvak wordt gebruikt om de cameraweergave van de kaart met behulp van de functie `map.setCamera` in te stellen op de hele route. Er wordt opvulling toegevoegd om de grootte van de pixels in de symboolpictogrammen te compenseren. Zie de eigenschap [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) voor meer informatie over de eigenschap setCamera van het kaartbesturingselement.
 
 3. Sla **MapRoute.html** op en vernieuw de browser. De kaart is nu gecentreerd op Seattle. De blauwe druppelvormige speld duidt het beginpunt aan. De blauwe ronde speld duidt het eindpunt aan.
 
@@ -183,7 +183,7 @@ In deze zelfstudie gaat u met behulp van een lijnlaag de route weergeven. De beg
 In deze sectie wordt beschreven hoe u de API voor routebeschrijvingen van Azure Maps kunt gebruiken om routebeschrijvingen van het ene punt naar het andere en de geschatte aankomsttijd op te halen.
 
 >[!TIP]
->De routeservices van Azure Maps bieden API's om routes te plannen op basis van verschillende routetypen zoals *snelste*, *kortste*, *zuinigste* of *leukste*, waarbij rekening wordt gehouden met afstand, verkeersomstandigheden en het gebruikte vervoersmiddel. Met de service kunnen gebruikers ook toekomstige routes plannen op basis van historische verkeersomstandigheden. Gebruikers kunnen de voorspelling van de duur van de route voor elke gewenste tijd bekijken. Zie [API Routebeschrijving ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) voor meer informatie.
+>De routeservices van Azure Maps bieden API's om routes te plannen op basis van verschillende routetypen zoals *snelste* , *kortste* , *zuinigste* of *leukste* , waarbij rekening wordt gehouden met afstand, verkeersomstandigheden en het gebruikte vervoersmiddel. Met de service kunnen gebruikers ook toekomstige routes plannen op basis van historische verkeersomstandigheden. Gebruikers kunnen de voorspelling van de duur van de route voor elke gewenste tijd bekijken. Zie [API Routebeschrijving ophalen](/rest/api/maps/route/getroutedirections) voor meer informatie.
 
 1. Voeg in de functie `GetMap` in de gebeurtenis-handler `ready` van het besturingselement het volgende toe aan de JavaScript-code.
 
@@ -198,7 +198,7 @@ In deze sectie wordt beschreven hoe u de API voor routebeschrijvingen van Azure 
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   De `SubscriptionKeyCredential` maakt een `SubscriptionKeyCredentialPolicy` voor het verifiëren van HTTP-aanvragen voor Azure Maps met de abonnementssleutel. De `atlas.service.MapsURL.newPipeline()` neemt het beleid `SubscriptionKeyCredential` op en maakt een [pijplijn](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)instantie. De `routeURL` staat voor een URL voor [route](https://docs.microsoft.com/rest/api/maps/route)bewerkingen van Azure Maps.
+   De `SubscriptionKeyCredential` maakt een `SubscriptionKeyCredentialPolicy` voor het verifiëren van HTTP-aanvragen voor Azure Maps met de abonnementssleutel. De `atlas.service.MapsURL.newPipeline()` neemt het beleid `SubscriptionKeyCredential` op en maakt een [pijplijn](/javascript/api/azure-maps-rest/atlas.service.pipeline)instantie. De `routeURL` staat voor een URL voor [route](/rest/api/maps/route)bewerkingen van Azure Maps.
 
 2. Nadat u referenties en de URL hebt ingesteld, voegt u de volgende code toe aan de gebeurtenis-handler `ready` van het besturingselement. Met deze code wordt de route van het beginpunt naar het eindpunt samengesteld. De `routeURL` vraagt de API Azure Maps-routeservice om de routebeschrijving te berekenen. Met behulp van de methode `geojson.getFeatures()` wordt vervolgens uit het antwoord een verzameling GeoJSON-kenmerken geëxtraheerd en aan de gegevensbron toegevoegd.
 

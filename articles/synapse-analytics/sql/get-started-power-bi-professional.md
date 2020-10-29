@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Power BI Professional
+title: Verbinding maken met Synapse SQL met behulp van Power BI Professional
 description: In deze zelfstudie voert u stappen uit om te leren hoe u Power BI Desktop kunt verbinden met SQL on-demand (preview).
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 48b6639ad8228347737669fffca06eb660a25874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288695"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899118"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Verbinding maken met Synapse SQL met behulp van Power BI Professional
 
@@ -92,13 +92,13 @@ GO
 
 ## <a name="create-a-power-bi-desktop-report"></a>Een Power BI Desktop-rapport maken
 
-Open de toepassing Power BI Desktop en selecteer de optie **Gegevens ophalen**.
+Open de toepassing Power BI Desktop en selecteer de optie **Gegevens ophalen** .
 
 ![Open de toepassing Power BI Desktop en selecteer Gegevens ophalen.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
 ### <a name="step-1---select-data-source"></a>Stap 1 - gegevensbron selecteren
 
-Selecteer **Azure** in het menu en vervolgens **Azure SQL Database**.
+Selecteer **Azure** in het menu en vervolgens **Azure SQL Database** .
 ![Selecteer de gegevensbron.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>Step 2 - database selecteren

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335259"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896846"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Zelfstudie: Een winkelzoeker maken met behulp van Azure Maps
 
@@ -87,7 +87,7 @@ Er zijn veel manieren om de gegevensset in de toepassing beschikbaar te maken. E
 
 Een andere benadering is om deze dataset om te zetten in een bestand met platte tekst dat de browser gemakkelijk kan parseren. Het bestand zelf kan worden gehost bij de rest van de toepassing. Deze optie houdt het eenvoudig, maar het is alleen een goede optie voor kleinere gegevenssets, omdat de gebruiker alle gegevens downloadt. We gebruiken het platte-tekstbestand voor deze gegevensset, omdat de bestandsgrootte kleiner is dan 1 MB.  
 
-Als u de werkmap wilt converteren naar een platte-tekstbestand, slaat u de werkmap op als een door tabs gescheiden bestand. De kolommen worden gescheiden door tabtekens, zodat de kolommen gemakkelijk te parseren zijn in onze code. U zou de CSV-indeling kunnen gebruiken (bestand met door komma's gescheiden waarden), maar voor die optie is meer parseringslogica nodig. Elk veld dat door komma's wordt gescheiden, zou dan worden omgeven door aanhalingstekens. Om deze gegevens in Excel te exporteren als een door tabs gescheiden bestand, selecteert u **Opslaan als**. Selecteer in de vervolgkeuzelijst **Opslaan als** de optie **Tekst (tab is scheidingsteken) (*.txt)** . Noem het bestand *ContosoCoffee.txt*.
+Als u de werkmap wilt converteren naar een platte-tekstbestand, slaat u de werkmap op als een door tabs gescheiden bestand. De kolommen worden gescheiden door tabtekens, zodat de kolommen gemakkelijk te parseren zijn in onze code. U zou de CSV-indeling kunnen gebruiken (bestand met door komma's gescheiden waarden), maar voor die optie is meer parseringslogica nodig. Elk veld dat door komma's wordt gescheiden, zou dan worden omgeven door aanhalingstekens. Om deze gegevens in Excel te exporteren als een door tabs gescheiden bestand, selecteert u **Opslaan als** . Selecteer in de vervolgkeuzelijst **Opslaan als** de optie **Tekst (tab is scheidingsteken) (*.txt)** . Noem het bestand *ContosoCoffee.txt* .
 
 ![Schermopname van het dialoogvenster Opslaan als](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -97,15 +97,15 @@ Als u het bestand in Kladblok opent, ziet dit eruit als in de volgende afbeeldin
 
 ## <a name="set-up-the-project"></a>Het project instellen
 
-Voor het maken van het project kunt u [Visual Studio](https://visualstudio.microsoft.com) of de code-editor van uw keuze gebruiken. Maak in de projectmap drie bestanden: *index.html*, *index.css* en *index.js*. Deze bestanden definiëren de lay-out, stijl en logica voor de toepassing. Maak een map met de naam *data* en voeg *ContosoCoffee.txt* toe aan deze map. Maak een andere map met de naam *images* (afbeeldingen). We gebruiken 10 afbeeldingen in deze toepassing, voor pictogrammen, knoppen en markeringen op de kaart. U kunt [deze afbeeldingen downloaden](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Uw projectmap zou er nu uit moeten zien als in de volgende afbeelding:
+Voor het maken van het project kunt u [Visual Studio](https://visualstudio.microsoft.com) of de code-editor van uw keuze gebruiken. Maak in de projectmap drie bestanden: *index.html* , *index.css* en *index.js* . Deze bestanden definiëren de lay-out, stijl en logica voor de toepassing. Maak een map met de naam *data* en voeg *ContosoCoffee.txt* toe aan deze map. Maak een andere map met de naam *images* (afbeeldingen). We gebruiken 10 afbeeldingen in deze toepassing, voor pictogrammen, knoppen en markeringen op de kaart. U kunt [deze afbeeldingen downloaden](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Uw projectmap zou er nu uit moeten zien als in de volgende afbeelding:
 
 ![Schermafbeelding van de projectmap Simple Store Locator](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>De gebruikersinterface maken
 
-Voor het maken van de gebruikersinterface voegt u code toe aan *index.html*:
+Voor het maken van de gebruikersinterface voegt u code toe aan *index.html* :
 
-1. Voeg de volgende `meta`-tags toe aan de `head` van *index.html*. Met de `charset`-tag wordt de tekenset (UTF-8) gedefinieerd. Met de waarde van `http-equiv` verplicht u de gebruiker om de nieuwste browserversies van Internet Explorer en Microsoft Edge te gebruiken. En met de laatste `meta`-tag geeft u een viewport op die geschikt is voor responsieve indelingen.
+1. Voeg de volgende `meta`-tags toe aan de `head` van *index.html* . Met de `charset`-tag wordt de tekenset (UTF-8) gedefinieerd. Met de waarde van `http-equiv` verplicht u de gebruiker om de nieuwste browserversies van Internet Explorer en Microsoft Edge te gebruiken. En met de laatste `meta`-tag geeft u een viewport op die geschikt is voor responsieve indelingen.
 
     ```HTML
     <meta charset="utf-8">
@@ -126,7 +126,7 @@ Voor het maken van de gebruikersinterface voegt u code toe aan *index.html*:
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. Voeg verwijzingen toe naar *index.js* en *index.css*:
+1. Voeg verwijzingen toe naar *index.js* en *index.css* :
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
@@ -385,7 +385,7 @@ Nu is alles ingesteld in de gebruikersinterface. We moeten nog steeds JavaScript
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Voeg code toe aan *index.js*. Met de volgende code wordt de kaart geïnitialiseerd. Er is een [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events) toegevoegd om te wachten tot de pagina is geladen. Vervolgens zijn er gebeurtenissen samengesteld voor het bewaken van het laden van de kaart, waarbij de zoekknop en de knop Mijn locatie in werking wordt gesteld.
+1. Voeg code toe aan *index.js* . Met de volgende code wordt de kaart geïnitialiseerd. Er is een [gebeurtenislistener](/javascript/api/azure-maps-control/atlas.map#events) toegevoegd om te wachten tot de pagina is geladen. Vervolgens zijn er gebeurtenissen samengesteld voor het bewaken van het laden van de kaart, waarbij de zoekknop en de knop Mijn locatie in werking wordt gesteld.
 
    Wanneer de gebruiker de zoekknop selecteert, of een locatie intypt in het zoekvak en op Enter drukt, wordt een fuzzy zoekopdracht gestart met de zoekopdracht van de gebruiker. Geef een matrix met ISO 2-land-/regiowaarden door aan de `countrySet`-optie om de zoekresultaten te beperken tot die landen/regio's. Het beperken van de te doorzoeken landen/regio's helpt de nauwkeurigheid van de geretourneerde zoekresultaten te verhogen. 
   
@@ -910,7 +910,7 @@ Nu is alles ingesteld in de gebruikersinterface. We moeten nog steeds JavaScript
     }
     ```
 
-Nu hebt u een volledig functionele winkelzoeker. Open het *index.html*-bestand van de winkelzoeker in een webbrowser. Wanneer de clusters op de kaart worden weergegeven, kunt u naar een locatie zoeken met behulp van het zoekvak, door de knop Mijn locatie te selecteren, door een cluster te selecteren of door in te zoomen op de kaart om afzonderlijke locaties te bekijken.
+Nu hebt u een volledig functionele winkelzoeker. Open het *index.html* -bestand van de winkelzoeker in een webbrowser. Wanneer de clusters op de kaart worden weergegeven, kunt u naar een locatie zoeken met behulp van het zoekvak, door de knop Mijn locatie te selecteren, door een cluster te selecteren of door in te zoomen op de kaart om afzonderlijke locaties te bekijken.
 
 De eerste keer dat een gebruiker de knop Mijn locatie selecteert, geeft de browser een beveiligingswaarschuwing weer die om toestemming vraagt ​​voor toegang tot de locatie van de gebruiker. Als de gebruiker ermee instemt om zijn/haar locatie te delen, zoomt de kaart in op de locatie van de gebruiker en worden nabijgelegen koffiebars getoond.
 
@@ -931,8 +931,8 @@ In deze zelfstudie hebt u geleerd hoe u een eenvoudige winkellocator kunt maken 
  * Geef de gebruiker de mogelijkheid [locaties langs een route te filteren](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
  * Voeg de mogelijkheid toe om [filters in te stellen](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
  * Voeg ondersteuning toe voor het opgeven van een aanvankelijke zoekwaarde door een queryreeks te gebruiken. Wanneer u deze optie in uw winkelzoeker opneemt, kunnen gebruikers zoekopdrachten markeren met een bladwijzer en delen. Dit biedt ook een eenvoudige methode waarmee u zoekopdrachten naar deze pagina kunt doorgeven vanaf een andere pagina.  
- * Implementeer uw winkelzoeker als een [Azure App Service-web-app](https://docs.microsoft.com/azure/app-service/quickstart-html). 
- * Sla uw gegevens op in een database en zoek naar nabijgelegen locaties. Zie voor meer informatie [SQL Server spatial data types overview](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true) (overzicht van ruimtelijke gegevenstypen in SQL Server) en [Query spatial data for the nearest neighbor](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true) (ruimtelijke gegevens opvragen voor de dichtstbijzijnde buren).
+ * Implementeer uw winkelzoeker als een [Azure App Service-web-app](../app-service/quickstart-html.md). 
+ * Sla uw gegevens op in een database en zoek naar nabijgelegen locaties. Zie voor meer informatie [SQL Server spatial data types overview](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017) (overzicht van ruimtelijke gegevenstypen in SQL Server) en [Query spatial data for the nearest neighbor](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017) (ruimtelijke gegevens opvragen voor de dichtstbijzijnde buren).
 
 U kunt de [volledige broncode weergeven](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), een [livevoorbeeld weergeven](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) en meer informatie bekijken over de dekking en mogelijkheden van Azure Maps met behulp van [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md). U kunt ook [gegevensgestuurde stijlexpressies gebruiken](data-driven-style-expressions-web-sdk.md) die u kunt toepassen op uw bedrijfslogica.
 

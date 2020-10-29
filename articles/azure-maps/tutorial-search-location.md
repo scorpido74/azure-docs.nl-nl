@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321693"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896657"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Zelfstudie: Zoeken naar nuttige plaatsen in de buurt met behulp van Azure Maps
 
@@ -41,7 +41,7 @@ Deze zelfstudie laat zien hoe u een account van Azure Maps instelt en vervolgens
 
 De Map Control-API is een handige clientbibliotheek. Met deze API kunt u eenvoudig kaarten integreren in uw webtoepassing. Het verbergt de complexiteit van het aanroepen van de REST-service en verhoogt de productiviteit met aanpasbare onderdelen. Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesloten met de Map Control-API.
 
-1. Maak een nieuw bestand op uw lokale computer en noem dit **MapSearch.html**.
+1. Maak een nieuw bestand op uw lokale computer en noem dit **MapSearch.html** .
 2. Voeg de volgende HTML-onderdelen toe aan het bestand:
 
    ```HTML
@@ -139,7 +139,7 @@ De Map Control-API is een handige clientbibliotheek. Met deze API kunt u eenvoud
 
 ## <a name="add-search-capabilities"></a>Zoekmogelijkheden toevoegen
 
-In dit gedeelte ziet u hoe u met de [Maps Search-API](https://docs.microsoft.com/rest/api/maps/search) een nuttige plaats vindt op de kaart. Het is een RESTful-API die is bedoeld voor ontwikkelaars om te zoeken naar adressen, nuttige plaatsen en andere geografische informatie. De Search-service wijst een breedtegraad en lengtegraad toe aan een opgegeven adres. Met de **servicemodule** die hieronder wordt beschreven, kunt u zoeken naar een locatie met de Kaarten zoeken-API.
+In dit gedeelte ziet u hoe u met de [Maps Search-API](/rest/api/maps/search) een nuttige plaats vindt op de kaart. Het is een RESTful-API die is bedoeld voor ontwikkelaars om te zoeken naar adressen, nuttige plaatsen en andere geografische informatie. De Search-service wijst een breedtegraad en lengtegraad toe aan een opgegeven adres. Met de **servicemodule** die hieronder wordt beschreven, kunt u zoeken naar een locatie met de Kaarten zoeken-API.
 
 ### <a name="service-module"></a>Servicemodule
 
@@ -156,7 +156,7 @@ In dit gedeelte ziet u hoe u met de [Maps Search-API](https://docs.microsoft.com
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   De `SubscriptionKeyCredential` maakt een `SubscriptionKeyCredentialPolicy` voor het verifiëren van HTTP-aanvragen voor Azure Maps met de abonnementssleutel. De `atlas.service.MapsURL.newPipeline()` neemt het beleid `SubscriptionKeyCredential` op en maakt een [pijplijn](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)instantie. De `searchURL` staat voor een URL voor [zoek](https://docs.microsoft.com/rest/api/maps/search)bewerkingen van Azure Maps.
+   De `SubscriptionKeyCredential` maakt een `SubscriptionKeyCredentialPolicy` voor het verifiëren van HTTP-aanvragen voor Azure Maps met de abonnementssleutel. De `atlas.service.MapsURL.newPipeline()` neemt het beleid `SubscriptionKeyCredential` op en maakt een [pijplijn](/javascript/api/azure-maps-rest/atlas.service.pipeline)instantie. De `searchURL` staat voor een URL voor [zoek](/rest/api/maps/search)bewerkingen van Azure Maps.
 
 2. Voeg vervolgens het volgende scriptblok toe om de zoekquery te maken. Hierin wordt de service Fuzzy zoeken gebruikt, een basiszoek-API van de Search Service. Via de service Fuzzy zoeken wordt de meeste fuzzy invoer verwerkt, zoals adressen, plaatsen en nuttige plaatsen. Met deze code wordt gezocht naar tankstations in de buurt, binnen een straal van de opgegeven breedtegraad en lengtegraad. Een GeoJSON-functiecollectie van het antwoord wordt vervolgens geëxtraheerd met de methode `geojson.getFeatures()` en toegevoegd aan de gegevensbron. Dit leidt er automatisch toe dat de gegevens worden weergegeven op de kaart via de symboollaag. In het laatste deel van het script wordt de cameraweergave van de kaarten weergegeven met behulp van het selectiekader van de resultaten met behulp van de eigenschap [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) van Maps.
 

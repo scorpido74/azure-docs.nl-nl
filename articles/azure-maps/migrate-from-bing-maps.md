@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ab4b4e0ab7d0474dc4fe7692cfe3c46835095f45
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 0045520849ea20d3e53a30101e6db0f5d495ab15
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873741"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897004"
 ---
 # <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>Zelfstudie: migreren van Bing Kaarten naar Azure Maps
 
@@ -69,7 +69,7 @@ Hier volgen enkele informatiebronnen met betrekking tot licenties voor Azure Map
 -   [Pagina met Azure Maps-prijzen](https://azure.microsoft.com/pricing/details/azure-maps/)
 -   [Azure-prijscalculator](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 -   [Azure Maps-gebruiksvoorwaarden](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (opgenomen in de Voorwaarden voor Online Diensten van Microsoft)
--   [De juiste prijscategorie kiezen in Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+-   [De juiste prijscategorie kiezen in Azure Maps](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>Voorgesteld migratieplan
 
@@ -77,7 +77,7 @@ Het volgende is een algemeen migratieplan.
 
 1.  Inventariseer de Bing Maps-SDK’s en -services die uw toepassing gebruikt en verifieer of Azure Maps alternatieve SDK’s en services biedt waarnaar u kunt migreren.
 2.  Maak een Azure-abonnement via <https://azure.com> als u nog geen abonnement hebt.
-3.  Maak een Azure Maps-account ([documentatie](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) en de verificatiesleutel of Azure Active Directory ([documentatie](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
+3.  Maak een Azure Maps-account ([documentatie](./how-to-manage-account-keys.md)) en de verificatiesleutel of Azure Active Directory ([documentatie](./how-to-manage-authentication.md)).
 4.  Migreer uw toepassingscode.
 5.  Test uw gemigreerde toepassing.
 6.  Implementeer uw gemigreerde toepassing naar productie.
@@ -88,8 +88,8 @@ Ga als volgt te werk om een Azure Maps-account te maken en toegang te krijgen to
 
 1. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 2. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-3. Maak een [Azure Maps-account](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
-4. [Download uw Azure Maps-abonnementssleutel](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) of configureer Azure Active Directory-verificatie voor verbeterde beveiliging.
+3. Maak een [Azure Maps-account](./how-to-manage-account-keys.md). 
+4. [Download uw Azure Maps-abonnementssleutel](./how-to-manage-authentication.md#view-authentication-details) of configureer Azure Active Directory-verificatie voor verbeterde beveiliging.
 
 ## <a name="azure-maps-technical-resources"></a>Technische informatiebronnen voor Azure Maps
 
@@ -105,7 +105,7 @@ Hier volgt een lijst met nuttige technische informatiebronnen voor Azure Maps.
 
 ## <a name="migration-support"></a>Ondersteuning voor migratie
 
-Ontwikkelaars kunnen migratieondersteuning zoeken via de [forums](https://aka.ms/AzureMapsForums) of via een van de vele opties voor ondersteuning voor Azure: <https://azure.microsoft.com/support/options/>
+Ontwikkelaars kunnen migratieondersteuning zoeken via de [forums](/answers/topics/azure-maps.html) of via een van de vele opties voor ondersteuning voor Azure: <https://azure.microsoft.com/support/options/>
 
 ## <a name="new-terminology"></a>Nieuwe terminologie 
 

@@ -4,7 +4,7 @@
   items:
     - name: Over Key Vault-sleutels
       href: about-keys.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: CLI
@@ -16,6 +16,7 @@
     - name: Python
       href: quick-create-python.md
     - name: ARM-sjabloon
+      displayName: Resource Manager
       href: quick-create-template.md
 - name: Zelfstudies
   items:

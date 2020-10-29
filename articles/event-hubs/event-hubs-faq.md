@@ -3,12 +3,12 @@ title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 051122c2030683eb2f3c57191dbbfa3bfd2bf6b7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789366"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909706"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -119,6 +119,9 @@ Schakel vervolgens de volgende instructies in [Diagnostische logboeken inschakel
     "Category": "EventHubVNetConnectionEvent"
 }
 ```
+
+> [!IMPORTANT]
+> Virtuele netwerk logboeken worden alleen gegenereerd als de naam ruimte toegang tot **specifieke IP-adressen** (IP-filter regels) toestaat. Als u de toegang tot uw naam ruimte niet wilt beperken met behulp van deze functies en toch virtuele netwerk logboeken wilt ophalen voor het bijhouden van IP-adressen van clients die verbinding maken met de naam ruimte van Event Hubs, kunt u de volgende tijdelijke oplossing gebruiken: IP-filtering inschakelen en het totale adresseer bare IPv4-bereik toevoegen (1.0.0.0/1-255.0.0.0/1). Event Hubs biedt geen ondersteuning voor IPv6-adresbereiken. 
 
 ## <a name="apache-kafka-integration"></a>Integratie van Apache Kafka
 

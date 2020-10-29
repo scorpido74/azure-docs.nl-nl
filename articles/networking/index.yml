@@ -12,12 +12,12 @@ metadata:
   ms.author: kumud
   manager: mtillman
   ms.date: 09/28/2020
-  ms.openlocfilehash: bb515afe97116041ca30de31bdb70544cfe29e69
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: e348e1e93506a668f448e834ad1eaa5ce0c36d4a
+  ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91446031"
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92900316"
 highlightedContent:
   items:
   - title: Wat is Azure-netwerken?
@@ -115,7 +115,7 @@ conceptualContent:
       text: Wat is Azure Load Balancer?
     - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
       itemType: whats-new
-      text: Nieuwe functies
+      text: Nieuw
     - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
       itemType: quickstart
       text: Internetverkeer gelijkmatig verdelen over VM's
@@ -268,17 +268,17 @@ conceptualContent:
       text: Meer informatie
   - title: DDoS Protection
     links:
-    - url: ../virtual-network/ddos-protection-overview.md
+    - url: ../ddos-protection/ddos-protection-overview.md
       itemType: overview
       text: Wat is Azure DDoS Protection Standard?
-    - url: ../virtual-network/manage-ddos-protection.md
+    - url: ../ddos-protection/manage-ddos-protection.md
       itemType: how-to-guide
       text: DDoS Protection beheren
-    - url: ../virtual-network/ddos-protection-partner-onboarding.md
+    - url: ../ddos-protection/ddos-protection-partner-onboarding.md
       itemType: concept
       text: Onboarding-partners
     footerLink:
-      url: https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices
+      url: ../ddos-protection/index.yml
       text: Meer informatie
   - title: Content Delivery Network
     links:

@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4979405c7675b5eff9f6940cd34e0c974ebad217
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538269"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909638"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -52,7 +52,7 @@ Voor MQTT zijn sommige Sdk's afhankelijk van IoT Hub om de verbinding te verbrek
 
 ### <a name="cause-2"></a>Oorzaak 2
 
-IoT Hub kan de Authentication Header, regel of sleutel niet verifiëren.
+IoT Hub kan de Authentication Header, regel of sleutel niet verifiëren. Dit kan worden veroorzaakt door een van de redenen die in de symptomen worden genoemd.
 
 ## <a name="solution"></a>Oplossing
 
@@ -66,10 +66,13 @@ Als het fouten volume een probleem is, gaat u naar de C-SDK, waarmee het SAS-tok
 
 In het algemeen wordt het fout bericht weer gegeven waarin wordt uitgelegd hoe de fout moet worden opgelost. Als u om een of andere reden geen toegang hebt tot de details van het fout bericht, controleert u het volgende:
 
-- De SAS of een ander beveiligings token dat u gebruikt, is niet verlopen. 
-- De autorisatie referentie is goed gevormd voor het protocol dat u gebruikt. Zie [IOT hub Access Control](iot-hub-devguide-security.md)(Engelstalig) voor meer informatie.
+- De SAS of een ander beveiligings token dat u gebruikt, is niet verlopen.
+- Voor X. 509-certificaat authenticatie is het certificaat van het apparaat of het CA-certificaat dat is gekoppeld aan het apparaat, niet verlopen. Zie [x. 509-beveiliging instellen in uw Azure IOT hub](iot-hub-security-x509-get-started.md)voor meer informatie over het registreren van x. 509 CA-certificaten met IOT hub.
+- Voor X. 509 certificaat vingerafdruk verificatie wordt de vinger afdruk van het certificaat van het apparaat geregistreerd bij IoT Hub.
+- De autorisatie referentie is goed gevormd voor het protocol dat u gebruikt. Zie [toegang tot IOT hub beheren](iot-hub-devguide-security.md)voor meer informatie.
 - De autorisatie regel die wordt gebruikt, heeft de machtiging voor de aangevraagde bewerking.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het verifiëren van IoT Hub eenvoudiger wilt maken, raden wij u aan [Azure IOT sdk's](iot-hub-devguide-sdks.md)te gebruiken.
+- Als u het verifiëren van IoT Hub eenvoudiger wilt maken, raden wij u aan [Azure IOT sdk's](iot-hub-devguide-sdks.md)te gebruiken.
+- Zie [toegang tot IOT hub beheren](iot-hub-devguide-security.md)voor meer informatie over verificatie met IOT hub.

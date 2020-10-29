@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 65e424c6275f9990a5d5a42a54bc4131300a45bf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "88526516"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Zelfstudie: Integratie van Azure Active Directory met Workspot Control
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u Workspot Control te integreren met Azure Active Direc
 * Gebruikers in staat stellen om zich automatisch aan te melden bij Workspot Control (eenmalige aanmelding) met hun Azure AD-accounts.
 * Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -100,20 +100,20 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD bij Workspot Control 
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door IDP geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Workspot Control](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     1. Typ in het tekstvak **Id** een URL met de volgende indeling:<br/>
     **_https://<<i></i>EXEMPLAARNAAM>-saml.workspot.com/saml/metadata_* _
 
     1. Voer in het tekstvak _*antwoord-URL* * een URL in met het volgende patroon:<br/>
-    **_https://<<i></i>EXEMPLAARNAAM>-saml.workspot.com/saml/assertion_*_
+    **_https://< <i></i>EXEMPLAARNAAM>-saml.workspot.com/saml/assertion_*_
 
 5. Als u de toepassing in de door de SP geïnitieerde modus wilt configureren, selecteert u _*Extra URL's instellen**.
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Workspot Control](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     Typ in het tekstvak **Aanmeldings-URL** een URL met de volgende indeling:<br/>
-    **_https://<<i></i>EXEMPLAARNAAM>-saml.workspot.com/_* _
+    **_https://< <i></i>EXEMPLAARNAAM>-saml.workspot.com/_* _
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Vervang deze waarden door de werkelijke id, antwoord-URL en aanmeldings-URL. Neem contact op met het [klantondersteuningsteam van Workspot Control](mailto:support@workspot.com) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie _ *Basic SAML-configuratie* * in Azure Portal.
@@ -236,12 +236,12 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Workspot Control, m
 
 In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het *toegangsvenster* .
 
-Wanneer u in het toegangsvenster op de tegel **Workspot Control** klikt, wordt u als het goed is automatisch aangemeld bij het exemplaar van Workspot Control waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) (Inleiding tot het toegangsvenster) voor meer informatie.
+Wanneer u in het toegangsvenster op de tegel **Workspot Control** klikt, wordt u als het goed is automatisch aangemeld bij het exemplaar van Workspot Control waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](./tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [Eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Eenmalige aanmelding bij toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
