@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058553"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790794"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Zelfstudie: Transactionele replicatie tussen Azure SQL Managed Instance en SQL Server configureren
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Deze zelfstudie is bedoeld voor een ervaren doelgroep en er wordt verondersteld 
 
 
 > [!NOTE]
-> In dit artikel wordt het gebruik van [transactionele replicatie](/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL Managed Instance beschreven. Dit is niet verwant aan [failovergroepen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), een functie van Azure SQL Managed Instance waarmee u volledige, leesbare replica's van afzonderlijke instanties kunt maken. Er zijn zaken waarmee u extra rekening moet houden wanneer u [transactionele replicatie met failovergroepen](replication-transactional-overview.md#with-failover-groups) configureert.
+> In dit artikel wordt het gebruik van [transactionele replicatie](/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL Managed Instance beschreven. Dit is niet verwant aan [failovergroepen](../database/auto-failover-group-overview.md), een functie van Azure SQL Managed Instance waarmee u volledige, leesbare replica's van afzonderlijke instanties kunt maken. Er zijn zaken waarmee u extra rekening moet houden wanneer u [transactionele replicatie met failovergroepen](replication-transactional-overview.md#with-failover-groups) configureert.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -155,11 +155,11 @@ Met een privé-DNS-zone is DNS-routering tussen de beheerde exemplaren en SQL Se
 
    ![Privé-DNS-zone maken](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. Selecteer **Controleren + maken**. Controleer de parameters voor uw privé-DNS-zone en selecteer vervolgens **Maken** om uw resource te maken.
+1. Selecteer **Controleren + maken** . Controleer de parameters voor uw privé-DNS-zone en selecteer vervolgens **Maken** om uw resource te maken.
 
 ### <a name="create-an-a-record"></a>Een A-record maken
 
-1. Ga naar uw nieuwe **privé-DNS-zone** en selecteer **Overzicht**.
+1. Ga naar uw nieuwe **privé-DNS-zone** en selecteer **Overzicht** .
 1. Selecteer **+ Recordset** om een nieuwe A-record te maken.
 1. Geef de naam van uw SQL Server-VM en het interne privé IP-adres op.
 
@@ -169,8 +169,8 @@ Met een privé-DNS-zone is DNS-routering tussen de beheerde exemplaren en SQL Se
 
 ### <a name="link-the-virtual-network"></a>Het virtuele netwerk koppelen
 
-1. Ga naar uw nieuwe **privé-DNS-zone** en selecteer **Koppelingen voor het virtuele netwerk**.
-1. Selecteer **+ Toevoegen**.
+1. Ga naar uw nieuwe **privé-DNS-zone** en selecteer **Koppelingen voor het virtuele netwerk** .
+1. Selecteer **+ Toevoegen** .
 1. Geef een naam op voor de koppeling, zoals `Pub-link`.
 1. Selecteer uw abonnement in de vervolgkeuzelijst en selecteer vervolgens het virtuele netwerk voor het beheerde exemplaar voor de uitgever.
 1. Schakel het selectievakje naast **Automatische registratie inschakelen** in.
@@ -182,7 +182,7 @@ Met een privé-DNS-zone is DNS-routering tussen de beheerde exemplaren en SQL Se
 
 ## <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 
-[Maak een Azure-opslagaccount](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) voor de werkmap en maak vervolgens een [bestandsshare](../../storage/files/storage-how-to-create-file-share.md) in het opslagaccount.
+[Maak een Azure-opslagaccount](../../storage/common/storage-account-create.md#create-a-storage-account) voor de werkmap en maak vervolgens een [bestandsshare](../../storage/files/storage-how-to-create-file-share.md) in het opslagaccount.
 
 Kopieer het pad naar de bestandsshare in de volgende notatie: `\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -210,7 +210,7 @@ GO
 -- Drop database if it exists
 IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'ReplTutorial')
 BEGIN
-    DROP DATABASE ReplTutorial
+    DROP DATABASE ReplTutorial
 END
 GO
 
@@ -283,14 +283,14 @@ Wanneer de distributie is geconfigureerd, kunt u de publicatie maken. Voer hierv
 
 1. Start SQL Server Management Studio in SQL Server.
 1. Maak verbinding met het beheerde exemplaar `sql-mi-publisher`.
-1. Vouw in **Objectverkenner** het knooppunt **Replicatie** uit en klik met de rechtermuisknop op de map **Lokale publicatie**. Selecteer **Nieuwe publicatie...** .
+1. Vouw in **Objectverkenner** het knooppunt **Replicatie** uit en klik met de rechtermuisknop op de map **Lokale publicatie** . Selecteer **Nieuwe publicatie...** .
 1. Selecteer **Volgende** om vanaf de welkomstpagina verder te gaan.
-1. Selecteer op de pagina **Publicatiedatabase** de database `ReplTutorial` die u eerder hebt gemaakt. Selecteer **Next**.
-1. Selecteer op de pagina **Publicatietype** de optie **Transactionele publicatie**. Selecteer **Next**.
-1. Schakel op de pagina **Artikelen** het selectievakje naast **Tabellen** in. Selecteer **Next**.
+1. Selecteer op de pagina **Publicatiedatabase** de database `ReplTutorial` die u eerder hebt gemaakt. Selecteer **Next** .
+1. Selecteer op de pagina **Publicatietype** de optie **Transactionele publicatie** . Selecteer **Next** .
+1. Schakel op de pagina **Artikelen** het selectievakje naast **Tabellen** in. Selecteer **Next** .
 1. Op de pagina **Tabelrijen filteren** selecteert u **Volgende** zonder filters toe te voegen.
-1. Schakel op de pagina **Momentopname-agent** het selectievakje in naast **Onmiddellijk momentopname maken en de momentopname beschikbaar houden voor het initialiseren van abonnementen**. Selecteer **Next**.
-1. Selecteer op de pagina **Agentbeveiliging** de optie **Beveiligingsinstellingen...** . Geef de SQL Server-aanmeldingsgegevens op die moeten worden gebruikt voor de momentopname-agent en om verbinding te maken met de uitgever. Selecteer **OK** om de pagina **Beveiliging momentopname-agent** te sluiten. Selecteer **Next**.
+1. Schakel op de pagina **Momentopname-agent** het selectievakje in naast **Onmiddellijk momentopname maken en de momentopname beschikbaar houden voor het initialiseren van abonnementen** . Selecteer **Next** .
+1. Selecteer op de pagina **Agentbeveiliging** de optie **Beveiligingsinstellingen...** . Geef de SQL Server-aanmeldingsgegevens op die moeten worden gebruikt voor de momentopname-agent en om verbinding te maken met de uitgever. Selecteer **OK** om de pagina **Beveiliging momentopname-agent** te sluiten. Selecteer **Next** .
 
    ![Beveiliging van de momentopname-agent configureren](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 
@@ -352,9 +352,9 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 1. Navigeer in [Azure Portal](https://portal.azure.com) naar uw resourcegroep.
-1. Selecteer het beheerde exemplaar of de beheerde exemplaren en selecteer vervolgens **Verwijderen**. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen**. Het kan enige tijd duren voordat dit proces op de achtergrond is voltooid. Zolang het nog niet is voltooid, kunt u het *virtuele cluster* of andere afhankelijke resources niet verwijderen. Controleer de verwijdering op het tabblad **Activiteit** om na te gaan of uw beheerde exemplaar is verwijderd.
-1. Wanneer het beheerde exemplaar is verwijderd, verwijdert u het *virtuele cluster* door dit te selecteren in uw resourcegroep en vervolgens **Verwijderen** te kiezen. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen**.
-1. Verwijder eventuele andere resources. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen**.
+1. Selecteer het beheerde exemplaar of de beheerde exemplaren en selecteer vervolgens **Verwijderen** . Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen** . Het kan enige tijd duren voordat dit proces op de achtergrond is voltooid. Zolang het nog niet is voltooid, kunt u het *virtuele cluster* of andere afhankelijke resources niet verwijderen. Controleer de verwijdering op het tabblad **Activiteit** om na te gaan of uw beheerde exemplaar is verwijderd.
+1. Wanneer het beheerde exemplaar is verwijderd, verwijdert u het *virtuele cluster* door dit te selecteren in uw resourcegroep en vervolgens **Verwijderen** te kiezen. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen** .
+1. Verwijder eventuele andere resources. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen** .
 1. Verwijder de resourcegroep door **Resourcegroep verwijderen** te selecteren, de naam van de resourcegroep, `myResourceGroup`, in te voeren en vervolgens **Verwijderen** te selecteren.
 
 ## <a name="known-errors"></a>Bekende fouten
@@ -397,7 +397,7 @@ Mogelijke oplossingen:
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>Er zijn geen publicaties waarop u zich kunt abonneren
 
-Wanneer u een nieuw abonnement toevoegt met de wizard **Nieuw abonnement**, op de pagina **Publicatie**, worden er mogelijk geen databases en publicaties als beschikbare opties vermeld en wordt mogelijk het volgende foutbericht weergegeven:
+Wanneer u een nieuw abonnement toevoegt met de wizard **Nieuw abonnement** , op de pagina **Publicatie** , worden er mogelijk geen databases en publicaties als beschikbare opties vermeld en wordt mogelijk het volgende foutbericht weergegeven:
 
 `There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
 
@@ -414,7 +414,7 @@ Raadpleeg het artikel [Wat is Azure SQL Managed Instance?](sql-managed-instance-
 - [Detectie van bedreigingen](threat-detection-configure.md)
 - [Dynamische gegevensmaskering](/sql/relational-databases/security/dynamic-data-masking)
 - [Beveiliging op rijniveau](/sql/relational-databases/security/row-level-security)
-- [TDE (Transparent Data Encryption)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [TDE (Transparent Data Encryption)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>Mogelijkheden van SQL Managed Instance
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 340cdd97e7097a9fe6f0653d9f50f5a5cc41f890
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740924"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787955"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Zelfstudie: Door AI gegenereerde doorzoekbare inhoud van Azure-blobs met behulp van de .NET SDK
 
@@ -52,9 +52,9 @@ De voorbeeldgegevens bestaan uit 14 bestanden van het gemengde inhoudstype dat u
 
 1. Open deze [OneDrive-map](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) en klik in de linkerbovenhoek op **Downloaden** om de bestanden naar uw computer te kopiëren. 
 
-1. Klik met de rechtermuisknop op het zip-bestand en selecteer **Alles extraheren**. Er zijn 14 bestanden van verschillende typen. U gebruikt 7 voor deze oefening.
+1. Klik met de rechtermuisknop op het zip-bestand en selecteer **Alles extraheren** . Er zijn 14 bestanden van verschillende typen. U gebruikt 7 voor deze oefening.
 
-U kunt ook de broncode voor deze zelfstudie downloaden. De broncode bevindt zich in de map **tutorial-ai-enrichment/v11**, in de opslagplaats [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+U kunt ook de broncode voor deze zelfstudie downloaden. De broncode bevindt zich in de map **tutorial-ai-enrichment/v11** , in de opslagplaats [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="1---create-services"></a>1 - Services maken
 
@@ -64,7 +64,7 @@ Maak, indien mogelijk, beide in dezelfde regio en resourcegroep voor nabijheid e
 
 ### <a name="start-with-azure-storage"></a>Aan de slag met Azure Storage
 
-1. [Meld u aan bij de Azure-portal](https://portal.azure.com/) en klik op **En resourcegroepen maken**.
+1. [Meld u aan bij de Azure-portal](https://portal.azure.com/) en klik op **En resourcegroepen maken** .
 
 1. Zoek naar *Opslagaccount* en selecteer de aanbieding van het Microsoft-opslagaccount.
 
@@ -72,21 +72,21 @@ Maak, indien mogelijk, beide in dezelfde regio en resourcegroep voor nabijheid e
 
 1. Op het tabblad Basisinstellingen zijn de volgende items vereist. Accepteer de standaardwaarden voor alle andere.
 
-   * **Resourcegroep**. Selecteer een bestaande naam of maak een nieuwe, maar gebruik dezelfde groep voor alle services, zodat u ze gezamenlijk kunt beheren.
+   * **Resourcegroep** . Selecteer een bestaande naam of maak een nieuwe, maar gebruik dezelfde groep voor alle services, zodat u ze gezamenlijk kunt beheren.
 
-   * **Naam van opslagaccount**. Als u denkt dat u mogelijk meerdere resources van hetzelfde type hebt, gebruikt u de naam om op type en regio te onderscheiden, bijvoorbeeld *blobstoragewestus*. 
+   * **Naam van opslagaccount** . Als u denkt dat u mogelijk meerdere resources van hetzelfde type hebt, gebruikt u de naam om op type en regio te onderscheiden, bijvoorbeeld *blobstoragewestus* . 
 
-   * **Locatie**. Kies indien mogelijk dezelfde locatie die wordt gebruikt voor Azure Cognitive Search en Cognitive Services. Een enkele locatie vermindert bandbreedtekosten aanzienlijk.
+   * **Locatie** . Kies indien mogelijk dezelfde locatie die wordt gebruikt voor Azure Cognitive Search en Cognitive Services. Een enkele locatie vermindert bandbreedtekosten aanzienlijk.
 
-   * **Soort account**. Kies de standaardinstelling *StorageV2 (algemeen gebruik v2)* .
+   * **Soort account** . Kies de standaardinstelling *StorageV2 (algemeen gebruik v2)* .
 
 1. Klik vervolgens op **Beoordelen en maken** om de service te maken.
 
 1. Zodra de app is gemaakt, klikt u op **Ga naar de resource** om de pagina Overzicht te openen.
 
-1. Klik op **Blobs**-service.
+1. Klik op **Blobs** -service.
 
-1. Klik op **En container** om een container te maken en geef deze de naam *cog-search-demo*.
+1. Klik op **En container** om een container te maken en geef deze de naam *cog-search-demo* .
 
 1. Selecteer *cog-search-demo* en klik vervolgens op **Uploaden** om de map te openen waar u de downloadbestanden hebt opgeslagen. Selecteer alle veertien bestanden en klik op **OK** om ze te uploaden.
 
@@ -128,7 +128,7 @@ Als u wilt communiceren met uw Azure Cognitive Search-service, hebt u de service
 
    Haal ook de querysleutel op. Het is een aanbevolen procedure voor het uitgeven van queryaanvragen met alleen-lezen-toegang.
 
-   ![De naam van de service en de querysleutels voor beheer ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![De naam van de service en de querysleutels voor beheer ophalen](media/search-get-started-javascript/service-name-and-keys.png)
 
 Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
@@ -146,7 +146,7 @@ Voor dit project installeert u versie 11 of hoger van het `Azure.Search.Document
 
 1. Blader naar [Azure.Search.Document](https://www.nuget.org/packages/Azure.Search.Documents).
 
-1. Selecteer de nieuwste versie en klik vervolgens op **Installeren**.
+1. Selecteer de nieuwste versie en klik vervolgens op **Installeren** .
 
 1. Herhaal de vorige stappen voor het installeren van [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) en [Microsoft.Extensions.Configuration.Json](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json).
 
@@ -154,11 +154,11 @@ Voor dit project installeert u versie 11 of hoger van het `Azure.Search.Document
 
 1. Klik met de rechtermuisknop in Solution Explorer en selecteer **Toevoegen** > **Nieuw item...** . 
 
-1. Geef het bestand de naam `appsettings.json` en selecteer **Toevoegen**. 
+1. Geef het bestand de naam `appsettings.json` en selecteer **Toevoegen** . 
 
 1. Neem dit bestand op in de uitvoermap.
-    1. Klik met de rechtermuisknop op `appsettings.json` en selecteer **Eigenschappen**. 
-    1. Wijzig de waarde van **Naar uitvoermap kopiëren** in **Kopiëren indien nieuwer**.
+    1. Klik met de rechtermuisknop op `appsettings.json` en selecteer **Eigenschappen** . 
+    1. Wijzig de waarde van **Naar uitvoermap kopiëren** in **Kopiëren indien nieuwer** .
 
 1. Kopieer de onderstaande JSON in uw nieuwe JSON-bestand.
 
@@ -285,7 +285,7 @@ Bouw de oplossing en voer deze uit. Aangezien dit uw eerste aanvraag is, control
 
 ### <a name="step-2-create-a-skillset"></a>Stap 2: Een set vaardigheden maken
 
-In deze stap definieert u een reeks verrijkingsstappen die u op uw gegevens wilt toepassen. Elke verrijkingsstap wordt een *vaardigheid* genoemd en de reeks verrijkingsstappen heet een *vaardighedenset*. In deze zelfstudie wordt gebruikgemaakt van [ingebouwde cognitieve tekstvaardigheden](cognitive-search-predefined-skills.md) voor de set vaardigheden:
+In deze stap definieert u een reeks verrijkingsstappen die u op uw gegevens wilt toepassen. Elke verrijkingsstap wordt een *vaardigheid* genoemd en de reeks verrijkingsstappen heet een *vaardighedenset* . In deze zelfstudie wordt gebruikgemaakt van [ingebouwde cognitieve tekstvaardigheden](cognitive-search-predefined-skills.md) voor de set vaardigheden:
 
 * [Optical Character Recognition](cognitive-search-skill-ocr.md), voor het herkennen van gedrukte en handgeschreven tekst in afbeeldingsbestanden.
 
@@ -377,7 +377,7 @@ private static MergeSkill CreateMergeSkill()
 
 ### <a name="language-detection-skill"></a>Vaardigheid Taaldetectie
 
-De vaardigheid **Taaldetectie** detecteert in welke taal de ingevoerde tekst is geschreven en rapporteert één taalcode voor elk document dat bij de aanvraag is ingediend. De uitvoer van de vaardigheid **Taaldetectie** wordt gebruikt als onderdeel van de invoer voor de vaardigheid **Tekst splitsen**.
+De vaardigheid **Taaldetectie** detecteert in welke taal de ingevoerde tekst is geschreven en rapporteert één taalcode voor elk document dat bij de aanvraag is ingediend. De uitvoer van de vaardigheid **Taaldetectie** wordt gebruikt als onderdeel van de invoer voor de vaardigheid **Tekst splitsen** .
 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
@@ -580,7 +580,7 @@ In deze oefening worden de volgende velden en veldtypen gebruikt:
 
 De velden voor deze index worden gedefinieerd met behulp van een modelklasse. Elke eigenschap van de modelklasse heeft kenmerken die het zoekgerelateerde gedrag van het bijbehorende indexveld bepalen. 
 
-De modelklasse wordt toegevoegd aan een nieuw C#-bestand. Klik met de rechtermuisknop op het project en selecteer **Toevoegen** > **Nieuw item...** , selecteer Klasse en geef het bestand de naam `DemoIndex.cs`. Selecteer vervolgens **Toevoegen**.
+De modelklasse wordt toegevoegd aan een nieuw C#-bestand. Klik met de rechtermuisknop op het project en selecteer **Toevoegen** > **Nieuw item...** , selecteer Klasse en geef het bestand de naam `DemoIndex.cs`. Selecteer vervolgens **Toevoegen** .
 
 Geef aan dat u typen wilt gebruiken van de naamruimten `Azure.Search.Documents.Indexes` en `System.Text.Json.Serialization`.
 
@@ -826,13 +826,13 @@ In de console-apps van de Azure Cognitive Search-zelfstudie voegen we meestal ee
 
 De meest eenvoudige optie is [Search Explorer](search-explorer.md) in de portal. U kunt eerst een lege query uitvoeren waarmee alle documenten worden geretourneerd, of een gerichte zoekopdracht uitvoeren waarmee nieuwe veldinhoud wordt geretourneerd die is gemaakt via de pijplijn. 
 
-1. Selecteer in de Azure-portal, op de pagina Overzicht, de optie **Indexen**.
+1. Selecteer in de Azure-portal, op de pagina Overzicht, de optie **Indexen** .
 
 1. Zoek **`demoindex`** in de lijst. Het resultaat moet 14 documenten bevatten. Als het aantal documenten nul is, is de Indexeerfunctie nog actief of is de pagina nog niet vernieuwd. 
 
-1. Selecteer **`demoindex`**. Search Explorer is het eerste tabblad.
+1. Selecteer **`demoindex`** . Search Explorer is het eerste tabblad.
 
-1. Inhoud is doorzoekbaar zodra het eerste document is geladen. Als u wilt controleren of inhoud bestaat, voert u een niet-opgegeven query uit door te klikken op **Zoeken**. Met deze query worden alle momenteel geïndexeerde documenten geretourneerd, waardoor u een idee krijgt van wat de index bevat.
+1. Inhoud is doorzoekbaar zodra het eerste document is geladen. Als u wilt controleren of inhoud bestaat, voert u een niet-opgegeven query uit door te klikken op **Zoeken** . Met deze query worden alle momenteel geïndexeerde documenten geretourneerd, waardoor u een idee krijgt van wat de index bevat.
 
 1. Plak vervolgens de volgende tekenreeks voor meer beheerbare resultaten: `search=*&$select=id, languageCode, organizations`
 

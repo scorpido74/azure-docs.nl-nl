@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885406"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792681"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Zelfstudie: Een database beveiligen in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,10 +39,10 @@ Met Azure SQL Database kunt u gegevens beveiligen door:
 > [!NOTE]
 > Een beheerd exemplaar voor Azure SQL wordt beveiligd met behulp van netwerkbeveiligingsregels en privé-eindpunten, zoals beschreven in [Beheerd exemplaar voor Azure SQL ](../managed-instance/sql-managed-instance-paas-overview.md) en [connectiviteitsarchitectuur](../managed-instance/connectivity-architecture-overview.md).
 
-Zie voor meer informatie de artikelen [Overzicht van Azure SQL Database-beveiliging](/azure/sql-database/sql-database-security-index) en [-mogelijkheden](security-overview.md).
+Zie voor meer informatie de artikelen [Overzicht van Azure SQL Database-beveiliging](./security-overview.md) en [-mogelijkheden](security-overview.md).
 
 > [!TIP]
-> De volgende Microsoft Learn-module helpt u gratis te leren over het [Beveiligen van uw database in Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
+> De volgende Microsoft Learn-module helpt u gratis te leren over het [Beveiligen van uw database in Azure SQL Database](/learn/modules/secure-your-azure-sql-database/).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -62,7 +62,7 @@ Voor alle stappen in deze zelfstudie moet u zich aanmelden bij de [Azure-portal]
 
 Databases in SQL Database worden in Azure beveiligd door een firewall. Standaard worden alle verbindingen met de server en database geweigerd. Zie voor meer informatie [Firewallregels op server- en databaseniveau maken](firewall-configure.md).
 
-Stel **Toegang tot Azure services toestaan** in op **UIT** voor de veiligste configuratie. Vervolgens maakt u een [gereserveerd IP-adres (klassieke implementatie)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) voor de resource die verbinding moet maken, zoals een Azure-VM of cloudservice, en laat u alleen dat IP-adres toe door de firewall. Als u het [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm)-implementatiemodel gebruikt, is er voor elke resource een toegewezen openbaar IP-adres nodig.
+Stel **Toegang tot Azure services toestaan** in op **UIT** voor de veiligste configuratie. Vervolgens maakt u een [gereserveerd IP-adres (klassieke implementatie)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) voor de resource die verbinding moet maken, zoals een Azure-VM of cloudservice, en laat u alleen dat IP-adres toe door de firewall. Als u het [Resource Manager](../../virtual-network/public-ip-addresses.md)-implementatiemodel gebruikt, is er voor elke resource een toegewezen openbaar IP-adres nodig.
 
 > [!NOTE]
 > SQL Database communiceert via poort 1433. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met de server, tenzij de beheerder poort 1433 openstelt.
@@ -73,20 +73,20 @@ IP-firewallregels op serverniveau zijn van toepassing op alle databases binnen d
 
 Stel als volgt een serverfirewallregel in:
 
-1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases**.
+1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases** .
 
     ![serverfirewallregel](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > Kopieer de volledig gekwalificeerde naam van uw server (zoals *uwserver.database.windows.net*) voor gebruik verderop in de zelfstudie.
+    > Kopieer de volledig gekwalificeerde naam van uw server (zoals *uwserver.database.windows.net* ) voor gebruik verderop in de zelfstudie.
 
-1. Selecteer **Serverfirewall instellen** op de pagina **Overzicht**. De pagina **Firewallinstellingen** voor de server wordt geopend.
+1. Selecteer **Serverfirewall instellen** op de pagina **Overzicht** . De pagina **Firewallinstellingen** voor de server wordt geopend.
 
-   1. Selecteer **IP van client toevoegen** op de werkbalk om uw huidige IP-adres aan een nieuwe firewallregel toe te voegen. De regel kan poort 1433 openen voor één IP-adres of voor een bereik met IP-adressen. Selecteer **Opslaan**.
+   1. Selecteer **IP van client toevoegen** op de werkbalk om uw huidige IP-adres aan een nieuwe firewallregel toe te voegen. De regel kan poort 1433 openen voor één IP-adres of voor een bereik met IP-adressen. Selecteer **Opslaan** .
 
       ![serverfirewallregel instellen](./media/secure-database-tutorial/server-firewall-rule2.png)
 
-   1. Selecteer **OK** en sluit de pagina **Firewallinstellingen**.
+   1. Selecteer **OK** en sluit de pagina **Firewallinstellingen** .
 
 U kunt nu verbinding maken met elke database op de server met het opgegeven IP-adres of IP-adresbereik.
 
@@ -98,7 +98,7 @@ Firewallregel op databaseniveau instellen:
 
 1. Maak verbinding met de database, bijvoorbeeld met behulp van [SQL Server Management Studio](connect-query-ssms.md).
 
-1. Klik in **Objectverkenner** met de rechtermuisknop op de database en selecteer **Nieuwe query**.
+1. Klik in **Objectverkenner** met de rechtermuisknop op de database en selecteer **Nieuwe query** .
 
 1. Voeg in het queryvenster de volgende instructie toe, waarbij u het IP-adres wijzigt in uw openbare IP-adres:
 
@@ -109,7 +109,7 @@ Firewallregel op databaseniveau instellen:
 1. Selecteer **Uitvoeren** op de werkbalk om de firewallregel te maken.
 
 > [!NOTE]
-> U kunt ook een firewallregel op serverniveau maken in SSMS met behulp van de opdracht [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current), maar u moet zijn verbonden met de *hoofd*database.
+> U kunt ook een firewallregel op serverniveau maken in SSMS met behulp van de opdracht [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current), maar u moet zijn verbonden met de *hoofd* database.
 
 ## <a name="create-an-azure-ad-admin"></a>Een Azure-beheerder maken
 
@@ -119,26 +119,26 @@ Zorg ervoor dat u het juiste beheerde Azure Active Directory-domein gebruikt. Se
 
 De Azure AD-beheerder instellen:
 
-1. Selecteer in de Azure-portal **Active Directory-beheerder** op de pagina **SQL-server**. Selecteer vervolgens **Beheerder instellen**.
+1. Selecteer in de Azure-portal **Active Directory-beheerder** op de pagina **SQL-server** . Selecteer vervolgens **Beheerder instellen** .
 
     ![active directory selecteren](./media/secure-database-tutorial/admin-settings.png)  
 
     > [!IMPORTANT]
     > U moet een 'Bedrijfsbeheerder' of 'Globale beheerder' zijn om deze taak uit te voeren.
 
-1. Zoek en selecteer op de pagina **Beheerder toevoegen** de gewenste AD-gebruiker of groep en kies **Selecteren**. Alle leden en groepen in uw Active Directory worden weergegeven. Namen die grijs worden weergegeven, worden niet ondersteund als beheerders voor Azure AD. Zie [Functies en beperkingen van Azure AD](authentication-aad-overview.md#azure-ad-features-and-limitations).
+1. Zoek en selecteer op de pagina **Beheerder toevoegen** de gewenste AD-gebruiker of groep en kies **Selecteren** . Alle leden en groepen in uw Active Directory worden weergegeven. Namen die grijs worden weergegeven, worden niet ondersteund als beheerders voor Azure AD. Zie [Functies en beperkingen van Azure AD](authentication-aad-overview.md#azure-ad-features-and-limitations).
 
     ![beheerder selecteren](./media/secure-database-tutorial/admin-select.png)
 
     > [!IMPORTANT]
     > Op rollen gebaseerd toegangsbeheer (RBAC) is alleen van toepassing op de portal en wordt niet doorgegeven aan SQL Server.
 
-1. Selecteer bovenaan de pagina **Active Directory-beheerder** de optie **Opslaan**.
+1. Selecteer bovenaan de pagina **Active Directory-beheerder** de optie **Opslaan** .
 
-    Het proces voor het wijzigen van de beheerder kan enkele minuten duren. De nieuwe beheerder wordt weergegeven in het vak **Active Directory-beheerder**.
+    Het proces voor het wijzigen van de beheerder kan enkele minuten duren. De nieuwe beheerder wordt weergegeven in het vak **Active Directory-beheerder** .
 
 > [!NOTE]
-> Als u een Azure AD-beheerder instelt, mag de naam van de nieuwe beheerder (gebruiker of groep) niet voorkomen als SQL Server-aanmelding of -gebruiker in de *hoofd*database. Als deze aanwezig is, mislukt de installatie en worden de wijzigingen teruggedraaid, en wordt aangegeven dat die beheerdersnaam al bestaat. Omdat de SQL Server-aanmelding of -gebruiker geen deel uitmaakt van Azure AD, kan er geen verbinding met de gebruiker worden gemaakt met behulp van Azure AD-verificatie.
+> Als u een Azure AD-beheerder instelt, mag de naam van de nieuwe beheerder (gebruiker of groep) niet voorkomen als SQL Server-aanmelding of -gebruiker in de *hoofd* database. Als deze aanwezig is, mislukt de installatie en worden de wijzigingen teruggedraaid, en wordt aangegeven dat die beheerdersnaam al bestaat. Omdat de SQL Server-aanmelding of -gebruiker geen deel uitmaakt van Azure AD, kan er geen verbinding met de gebruiker worden gemaakt met behulp van Azure AD-verificatie.
 
 Zie voor informatie over het configureren van Azure AD:
 
@@ -155,9 +155,9 @@ Beheer databasetoegang door gebruikers toe te voegen aan de database, of door ge
 
 Kies het databaseverificatietype om gebruikers toe te voegen:
 
-- **SQL-verificatie**, waarbij voor aanmelding gebruikersnamen en wachtwoorden worden gebruikt die alleen geldig zijn in de context van een bepaalde database binnen de server
+- **SQL-verificatie** , waarbij voor aanmelding gebruikersnamen en wachtwoorden worden gebruikt die alleen geldig zijn in de context van een bepaalde database binnen de server
 
-- **Azure AD-verificatie**, waarbij door Azure AD beheerde identiteiten worden gebruikt
+- **Azure AD-verificatie** , waarbij door Azure AD beheerde identiteiten worden gebruikt
 
 ### <a name="sql-authentication"></a>SQL-verificatie
 
@@ -165,7 +165,7 @@ Toevoegen van een gebruiker met SQL-verificatie:
 
 1. Maak verbinding met de database, bijvoorbeeld met behulp van [SQL Server Management Studio](connect-query-ssms.md).
 
-1. Klik in **Objectverkenner** met de rechtermuisknop op de database en kies **Nieuwe query**.
+1. Klik in **Objectverkenner** met de rechtermuisknop op de database en kies **Nieuwe query** .
 
 1. Voer in het queryvenster de volgende opdracht in:
 
@@ -187,7 +187,7 @@ Toevoegen van een gebruiker met SQL-verificatie:
 
 ### <a name="azure-ad-authentication"></a>Azure Active Directory-verificatie
 
-Voor verificatie met Azure Active Directory moeten databasegebruikers ingesloten worden gemaakt. Een ingesloten databasegebruiker wordt toegewezen aan een identiteit in de Azure AD-directory die is gekoppeld aan de database, en heeft geen aanmelding in de *hoofd*database. De Azure AD-identiteit kan een individuele gebruiker of een groep zijn. Zie voor meer informatie [Contained Database Users - Making Your Database Portable](/sql/relational-databases/security/contained-database-users-making-your-database-portable) en raadpleeg de [Azure AD-zelfstudie](authentication-aad-configure.md) over verificatie met behulp van Azure AD.
+Voor verificatie met Azure Active Directory moeten databasegebruikers ingesloten worden gemaakt. Een ingesloten databasegebruiker wordt toegewezen aan een identiteit in de Azure AD-directory die is gekoppeld aan de database, en heeft geen aanmelding in de *hoofd* database. De Azure AD-identiteit kan een individuele gebruiker of een groep zijn. Zie voor meer informatie [Contained Database Users - Making Your Database Portable](/sql/relational-databases/security/contained-database-users-making-your-database-portable) en raadpleeg de [Azure AD-zelfstudie](authentication-aad-configure.md) over verificatie met behulp van Azure AD.
 
 > [!NOTE]
 > Databasegebruikers (behalve beheerders) kunnen niet in de Azure-portal worden gemaakt. Azure-rollen worden niet doorgegeven aan SQL-servers, databases of datawarehouses. Ze worden alleen gebruikt voor het beheren van Azure-resources, en zijn niet van toepassing op databasemachtigingen.
@@ -201,7 +201,7 @@ Toevoegen van een gebruiker met Azure AD-verificatie:
 
 1. Maak verbinding met de server in Azure met behulp van uw Azure AD-account, waarbij u ten minste over de machtiging *ALTER ANY USER* moet beschikken.
 
-1. Klik in **Objectverkenner** met de rechtermuisknop op de database en selecteer **Nieuwe query**.
+1. Klik in **Objectverkenner** met de rechtermuisknop op de database en selecteer **Nieuwe query** .
 
 1. Voer in het queryvenster de volgende opdracht in en wijzig `<Azure_AD_principal_name>` in de principal-naam van de Azure AD-gebruiker of de weergavenaam van de Azure AD-groep:
 
@@ -223,9 +223,9 @@ Er wordt verbinding gemaakt via TLS (Transport Layer Security), waardoor het ris
 
 Ga als volgt te werk om een beveiligde verbindingsreeks te kopiëren:
 
-1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases**.
+1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases** .
 
-1. Selecteer **Databaseverbindingsreeksen tonen** op de pagina **Overzicht**.
+1. Selecteer **Databaseverbindingsreeksen tonen** op de pagina **Overzicht** .
 
 1. Selecteer een stuurprogrammatabblad en kopieer de volledige verbindingsreeks.
 
@@ -244,19 +244,19 @@ De functie Azure Defender voor SQL detecteert bedreigingen terwijl ze zich voord
 
 Azure Defender voor SQL inschakelen:
 
-1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases**.
+1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases** .
 
-1. Selecteer op de pagina **Overzicht** de koppeling **Servernaam**. De pagina Server wordt geopend.
+1. Selecteer op de pagina **Overzicht** de koppeling **Servernaam** . De pagina Server wordt geopend.
 
-1. Zoek op de pagina **SQL-server** de sectie **Beveiliging** en selecteer **Beveiligingscentrum**.
+1. Zoek op de pagina **SQL-server** de sectie **Beveiliging** en selecteer **Beveiligingscentrum** .
 
-   1. Selecteer **AAN** onder **Azure Defender voor SQL** om de functie in te schakelen. Kies een opslagaccount om de evaluaties van beveiligingsproblemen in op te slaan. Selecteer vervolgens **Opslaan**.
+   1. Selecteer **AAN** onder **Azure Defender voor SQL** om de functie in te schakelen. Kies een opslagaccount om de evaluaties van beveiligingsproblemen in op te slaan. Selecteer vervolgens **Opslaan** .
 
       ![Navigatievenster](./media/secure-database-tutorial/threat-settings.png)
 
       U kunt ook e-mailberichten configureren voor het ontvangen van beveiligingswaarschuwingen, opslaggegevens en detectie van typen bedreigingen.
 
-1. Ga terug naar de pagina**SQL-databases** van uw database en selecteer **Beveiligingscentrum** in de sectie **Beveiliging**. Hier vindt u verschillende beveiligingsindicatoren die beschikbaar zijn voor de database.
+1. Ga terug naar de pagina **SQL-databases** van uw database en selecteer **Beveiligingscentrum** in de sectie **Beveiliging** . Hier vindt u verschillende beveiligingsindicatoren die beschikbaar zijn voor de database.
 
     ![Bedreigingsstatus](./media/secure-database-tutorial/threat-status.png)
 
@@ -270,29 +270,29 @@ De controlefunctie houdt databasegebeurtenissen bij en schrijft gebeurtenissen n
 
 Controle inschakelen:
 
-1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases**.
+1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases** .
 
-1. Selecteer **Controle** in de sectie **Beveiliging**.
+1. Selecteer **Controle** in de sectie **Beveiliging** .
 
-1. Stel bij de **Controle**-instellingen de volgende waarden in:
+1. Stel bij de **Controle** -instellingen de volgende waarden in:
 
-   1. Stel **Controle** in op **AAN**.
+   1. Stel **Controle** in op **AAN** .
 
    1. Selecteer bij **Bestemming voor auditlogboek** een van de volgende mogelijkheden:
 
-       - **Storage**, een Azure-opslagaccount waar gebeurtenislogboeken worden opgeslagen en als *.xel*-bestanden kunnen worden gedownload
+       - **Storage** , een Azure-opslagaccount waar gebeurtenislogboeken worden opgeslagen en als *.xel* -bestanden kunnen worden gedownload
 
           > [!TIP]
           > Gebruik hetzelfde opslagaccount voor alle gecontroleerde databases om optimaal gebruik te maken van de sjablonen voor auditrapporten.
 
-       - **Log Analytics**, waarin gebeurtenissen automatisch worden opgeslagen voor het uitvoeren query’s of verdere analyse
+       - **Log Analytics** , waarin gebeurtenissen automatisch worden opgeslagen voor het uitvoeren query’s of verdere analyse
 
            > [!NOTE]
            > Een **Log Analytics-werkruimte** is vereist voor de ondersteuning van geavanceerde functies zoals analyses, aangepaste waarschuwingsregels en uitvoer naar Excel of Power BI. Zonder een werkruimte is alleen de query-editor beschikbaar.
 
-       - **Event Hub**, waarmee gebeurtenissen kunnen worden gerouteerd voor gebruik in andere toepassingen
+       - **Event Hub** , waarmee gebeurtenissen kunnen worden gerouteerd voor gebruik in andere toepassingen
 
-   1. Selecteer **Opslaan**.
+   1. Selecteer **Opslaan** .
 
       ![Controle-instellingen](./media/secure-database-tutorial/audit-settings.png)
 
@@ -309,15 +309,15 @@ De functie voor het maskeren van gegevens verbergt automatisch gevoelige gegeven
 
 Gegevensmaskering inschakelen:
 
-1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases**.
+1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases** .
 
-1. Selecteer **Dynamische gegevensmaskering** in de sectie **Beveiliging**.
+1. Selecteer **Dynamische gegevensmaskering** in de sectie **Beveiliging** .
 
 1. Selecteer **Masker toevoegen** in de instellingen bij **Dynamische gegevensmaskering** om een maskeringsregel toe te voegen. Azure vult automatisch beschikbare databaseschema's, tabellen en kolommen in waaruit u kunt kiezen.
 
     ![Maskerinstellingen](./media/secure-database-tutorial/mask-settings.png)
 
-1. Selecteer **Opslaan**. De geselecteerde gegevens wordt nu voor privacy gemaskeerd.
+1. Selecteer **Opslaan** . De geselecteerde gegevens wordt nu voor privacy gemaskeerd.
 
     ![Maskervoorbeeld](./media/secure-database-tutorial/mask-query.png)
 
@@ -327,11 +327,11 @@ De versleutelingsfunctie versleutelt automatisch uw data-at-rest en vereist geen
 
 Versleuteling inschakelen of controleren:
 
-1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases**.
+1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases** .
 
-1. Selecteer **Transparante gegevensversleuteling** in de sectie **Beveiliging**.
+1. Selecteer **Transparante gegevensversleuteling** in de sectie **Beveiliging** .
 
-1. Zet **Gegevensversleuteling** indien nodig **AAN**. Selecteer **Opslaan**.
+1. Zet **Gegevensversleuteling** indien nodig **AAN** . Selecteer **Opslaan** .
 
     ![Transparante gegevensversleuteling](./media/secure-database-tutorial/encryption-settings.png)
 

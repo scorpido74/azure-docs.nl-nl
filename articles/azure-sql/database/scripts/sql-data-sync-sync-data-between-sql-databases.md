@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: a2e371ea49b9b2a0e7bd14e91a0b80c54f6c21ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e92f3e36b3dd7c407b9c490151f9b32446145771
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321468"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792766"
 ---
 # <a name="use-powershell-to-sync-data-between-multiple-databases-in-azure-sql-database"></a>PowerShell gebruiken voor het synchroniseren van gegevens tussen meerdere databases in Azure SQL Database
 
@@ -281,7 +281,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [Get-AzSqlSyncAgentLinkedDatabase](/powershell/module/az.sql/Get-azSqlSyncAgentLinkedDatabase) |  Hiermee vraagt u alle gegevens op voor de synchronisatieagent. |
 | [New-AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Hiermee voegt u een nieuw lid toe aan de synchronisatiegroep. |
 | [Update-AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Hiermee vernieuwt u de gegevens van het databaseschema. |
-| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/Get-azSqlSyncSchema) |  Hiermee vraagt u de gegevens van het databaseschema op. |
+| [Get-AzSqlSyncSchema](/powershell/module/az.sql/Get-azSqlSyncSchema) |  Hiermee vraagt u de gegevens van het databaseschema op. |
 | [Update-AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  Hiermee werkt u de synchronisatiegroep bij. |
 | [Start-AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | Hiermee activeert u een synchronisatie. |
 | [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  Hiermee controleert u het synchronisatielogboek. |
@@ -301,7 +301,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
     - PowerShell gebruiken: [PowerShell gebruiken om gegevens te synchroniseren tussen een database in Azure SQL Database en SQL Server](sql-data-sync-sync-data-between-azure-onprem.md)
 - Data Sync Agent: [Data Sync Agent voor SQL Data Sync in Azure](../sql-data-sync-agent-overview.md)
 - Best practices: [Best practices voor SQL Data Sync in Azure](../sql-data-sync-best-practices.md)
-- Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](../sql-data-sync-monitor-sync.md)
+- Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](../monitor-tune-overview.md)
 - Problemen oplossen: [Problemen met SQL Data Sync in Azure oplossen](../sql-data-sync-troubleshoot.md)
 - Het synchronisatieschema bijwerken
     - Transact-SQL gebruiken: [De replicatie van schemawijzigingen in SQL Data Sync in Azure automatiseren](../sql-data-sync-update-sync-schema.md)
@@ -310,4 +310,4 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 Meer informatie over SQL Database vindt u in:
 
 - [Overzicht van SQL Database?](../sql-database-paas-overview.md)
-- [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)
+- [Database Lifecycle Management (DLM)](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84defa0704c44bb0ed4564195725f7dd1c42312c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936007"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788057"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelfstudie: REST en AI gebruiken voor het genereren van doorzoekbare inhoud van Azure-blobs
 
@@ -43,7 +43,7 @@ Als u geen abonnement op Azure hebt, opent u een [gratis account](https://azure.
 
 1. Open deze [OneDrive-map](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) en klik in de linkerbovenhoek op **Downloaden** om de bestanden naar uw computer te kopiëren. 
 
-1. Klik met de rechtermuisknop op het zip-bestand en selecteer **Alles extraheren**. Er zijn 14 bestanden van verschillende typen. U gebruikt 7 voor deze oefening.
+1. Klik met de rechtermuisknop op het zip-bestand en selecteer **Alles extraheren** . Er zijn 14 bestanden van verschillende typen. U gebruikt 7 voor deze oefening.
 
 ## <a name="1---create-services"></a>1- Services maken
 
@@ -53,7 +53,7 @@ Maak, indien mogelijk, beide in dezelfde regio en resourcegroep voor nabijheid e
 
 ### <a name="start-with-azure-storage"></a>Aan de slag met Azure Storage
 
-1. [Meld u aan bij de Azure-portal](https://portal.azure.com/) en klik op **En resourcegroepen maken**.
+1. [Meld u aan bij de Azure-portal](https://portal.azure.com/) en klik op **En resourcegroepen maken** .
 
 1. Zoek naar *Opslagaccount* en selecteer de aanbieding van het Microsoft-opslagaccount.
 
@@ -61,21 +61,21 @@ Maak, indien mogelijk, beide in dezelfde regio en resourcegroep voor nabijheid e
 
 1. Op het tabblad Basisinstellingen zijn de volgende items vereist. Accepteer de standaardwaarden voor alle andere.
 
-   + **Resourcegroep**. Selecteer een bestaande naam of maak een nieuwe, maar gebruik dezelfde groep voor alle services, zodat u ze gezamenlijk kunt beheren.
+   + **Resourcegroep** . Selecteer een bestaande naam of maak een nieuwe, maar gebruik dezelfde groep voor alle services, zodat u ze gezamenlijk kunt beheren.
 
-   + **Naam van opslagaccount**. Als u denkt dat u mogelijk meerdere resources van hetzelfde type hebt, gebruikt u de naam om op type en regio te onderscheiden, bijvoorbeeld *blobstoragewestus*. 
+   + **Naam van opslagaccount** . Als u denkt dat u mogelijk meerdere resources van hetzelfde type hebt, gebruikt u de naam om op type en regio te onderscheiden, bijvoorbeeld *blobstoragewestus* . 
 
-   + **Locatie**. Kies indien mogelijk dezelfde locatie die wordt gebruikt voor Azure Cognitive Search en Cognitive Services. Een enkele locatie vermindert bandbreedtekosten aanzienlijk.
+   + **Locatie** . Kies indien mogelijk dezelfde locatie die wordt gebruikt voor Azure Cognitive Search en Cognitive Services. Een enkele locatie vermindert bandbreedtekosten aanzienlijk.
 
-   + **Soort account**. Kies de standaardinstelling *StorageV2 (algemeen gebruik v2)* .
+   + **Soort account** . Kies de standaardinstelling *StorageV2 (algemeen gebruik v2)* .
 
 1. Klik vervolgens op **Beoordelen en maken** om de service te maken.
 
 1. Zodra de app is gemaakt, klikt u op **Ga naar de resource** om de pagina Overzicht te openen.
 
-1. Klik op **Blobs**-service.
+1. Klik op **Blobs** -service.
 
-1. Klik op **En container** om een container te maken en geef deze de naam *cog-search-demo*.
+1. Klik op **En container** om een container te maken en geef deze de naam *cog-search-demo* .
 
 1. Selecteer *cog-search-demo* en klik vervolgens op **Uploaden** om de map te openen waar u de downloadbestanden hebt opgeslagen. Selecteer alle niet-afbeeldingsbestanden. U moet 7 bestanden hebben. Klik op **OK** om deze te uploaden.
 
@@ -115,7 +115,7 @@ Net als bij Azure Blob-opslag duurt het even om de toegangssleutel te verzamelen
 
    Haal ook de querysleutel op. Het is een aanbevolen procedure voor het uitgeven van queryaanvragen met alleen-lezen-toegang.
 
-   ![De naam van de service en de querysleutels voor beheer ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![De naam van de service en de querysleutels voor beheer ophalen](media/search-get-started-javascript/service-name-and-keys.png)
 
 Voor alle aanvragen is een API-sleutel vereist in de header die naar uw service wordt verzonden. Me een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
@@ -123,7 +123,7 @@ Voor alle aanvragen is een API-sleutel vereist in de header die naar uw service 
 
 Start Postman en stel een HTTP-aanvraag in. Als u niet bekend bent met dit hulpprogramma, raadpleegt u [REST API's van Azure Cognitive Search verkennen in Postman](search-get-started-postman.md).
 
-De aanvraagmethoden in deze zelfstudie zijn **POST**, **PUT** en **GET**. U gebruikt de methoden om vier API-aanroepen uit te voeren naar uw zoekservice: voor het maken van een gegevensbron, een vaardighedenset, een index en een indexeerfunctie.
+De aanvraagmethoden in deze zelfstudie zijn **POST** , **PUT** en **GET** . U gebruikt de methoden om vier API-aanroepen uit te voeren naar uw zoekservice: voor het maken van een gegevensbron, een vaardighedenset, een index en een indexeerfunctie.
 
 Stel bij Headers de optie Inhoudstype in op `application/json` en stel `api-key` in op de API-sleutel voor beheerders van uw Azure Cognitive Search-service. Zodra u de headers hebt ingesteld, kunt u ze gebruiken voor elke aanvraag in deze oefening.
 

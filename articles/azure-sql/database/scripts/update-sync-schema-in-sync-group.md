@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: c60bff122b6ad9bef4e9e4558d9858e1243ebd1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d346d1ff30c138667749822b258bab4c6a621f4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321438"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792715"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -78,11 +78,11 @@ Het script **UpdateSyncSchema** gebruikt de volgende opdrachten. Elke opdracht i
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncgroup) | Hiermee wordt informatie over een synchronisatiegroep geretourneerd. |
-| [Update-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | Werkt een synchronisatiegroep bij. |
-| [Get-AzSqlSyncMember](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncmember) | Hiermee wordt informatie over een sync-lid geretourneerd. |
-| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncschema) | Hiermee wordt informatie over een synchronisatieschema geretourneerd. |
-| [Update-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | Werkt een synchronisatieschema bij. |
+| [Get-AzSqlSyncGroup](/powershell/module/az.sql/get-azsqlsyncgroup) | Hiermee wordt informatie over een synchronisatiegroep geretourneerd. |
+| [Update-AzSqlSyncGroup](/powershell/module/az.sql/update-azsqlsyncgroup) | Werkt een synchronisatiegroep bij. |
+| [Get-AzSqlSyncMember](/powershell/module/az.sql/get-azsqlsyncmember) | Hiermee wordt informatie over een sync-lid geretourneerd. |
+| [Get-AzSqlSyncSchema](/powershell/module/az.sql/get-azsqlsyncschema) | Hiermee wordt informatie over een synchronisatieschema geretourneerd. |
+| [Update-AzSqlSyncSchema](/powershell/module/az.sql/update-azsqlsyncschema) | Werkt een synchronisatieschema bij. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -100,7 +100,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
         -  [PowerShell gebruiken voor het synchroniseren van gegevens tussen Azure SQL-database en SQL Server](sql-data-sync-sync-data-between-azure-onprem.md)
 - Data Sync Agent: [Data Sync Agent voor SQL Data Sync in Azure](../sql-data-sync-agent-overview.md)
 - Best practices: [Best practices voor SQL Data Sync in Azure](../sql-data-sync-best-practices.md)
-- Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](../sql-data-sync-monitor-sync.md)
+- Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](../monitor-tune-overview.md)
 - Problemen oplossen: [Problemen met SQL Data Sync in Azure oplossen](../sql-data-sync-troubleshoot.md)
 - Het synchronisatieschema bijwerken
     - Transact-SQL gebruiken: [De replicatie van schemawijzigingen in SQL Data Sync in Azure automatiseren](../sql-data-sync-update-sync-schema.md)
@@ -108,4 +108,4 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 Meer informatie over SQL Database vindt u in:
 
 - [Overzicht van SQL Database?](../sql-database-paas-overview.md)
-- [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)
+- [Database Lifecycle Management (DLM)](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

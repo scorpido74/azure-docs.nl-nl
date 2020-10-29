@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 6758aed67949032bb93086527623b60af33e716e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c364fe7fa0ac4dd70a01a75478289ea861dee7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079554"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790828"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>PowerShell gebruiken met een Azure Resource Manager-sjabloon om een beheerd exemplaar te maken
 
@@ -46,7 +46,7 @@ Exemplaarnaam, gebruikersnaam van SQL-beheerder, VNet/subnet en sortering kunnen
 In dit voorbeeld wordt ervan uitgegaan dat u[ een geldige netwerkomgeving hebt gemaakt](../virtual-network-subnet-create-arm-template.md) of [ een bestaand VNet](../vnet-existing-add-subnet.md) hebt gewijzigd voor uw beheerde exemplaar. U kunt, indien nodig, de netwerkomgeving voorbereiden met een afzonderlijke [Azure Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment). 
 
 
-In het voorbeeld worden de cmdlets [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) en [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) gebruikt, dus zorg ervoor dat u de volgende PowerShell-modules hebt geïnstalleerd:
+In het voorbeeld worden de cmdlets [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) en [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) gebruikt, dus zorg ervoor dat u de volgende PowerShell-modules hebt geïnstalleerd:
 
 ```powershell
 Install-Module Az.Network

@@ -10,13 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 661622b296a7a81a8d4c203e86a7c8d61c386e5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 0da0a56a64aa9b4500d36da2f6c86fc4c07f4c0f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843223"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786051"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Het rouleren van een geheim voor resources met één set verificatiereferenties automatiseren
 
@@ -44,9 +44,9 @@ U kunt de onderstaande implementatiekoppeling gebruiken als u geen bestaande sle
 
 [![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. Selecteer onder **Resourcegroep** de optie **Nieuwe maken**. Geef de groep de naam **akvrotation**.
+1. Selecteer onder **Resourcegroep** de optie **Nieuwe maken** . Geef de groep de naam **akvrotation** .
 1. Typ bij **Aanmeldgegevens SQL-beheerder** de aanmeldings-id van de SQL-beheerder. 
-1. Selecteer **Controleren + maken**.
+1. Selecteer **Controleren + maken** .
 1. Selecteer **Maken**
 
     ![Een resourcegroep maken](../media/rotate-2.png)
@@ -84,14 +84,14 @@ Voor de functie-app zijn de volgende onderdelen vereist:
 
    [![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
-1. Selecteer in de lijst **Resourcegroep** de optie **akvrotation**.
+1. Selecteer in de lijst **Resourcegroep** de optie **akvrotation** .
 1. Typ in **SQL Server-naam** de naam van de SQL Server met het wachtwoord dat u wilt rouleren
 1. Typ in **Naam voor Key Vault** de naam van de sleutelkluis
 1. Typ in **Naam van de functie-app** de naam van de functie-app
 1. Typ in **Geheime naam** de naam van het geheim waarin het wachtwoord moet worden opgeslagen
 1. Typ in **Opslagplaats-URL** de GitHub-locatie van de functiecode ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp.git** )
-1. Selecteer **Controleren + maken**.
-1. Selecteer **Maken**.
+1. Selecteer **Controleren + maken** .
+1. Selecteer **Maken** .
 
    ![Selecteer Beoordelen en maken](../media/rotate-3.png)
 
@@ -115,7 +115,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-Zie [Een functie-app maken vanuit de Azure-portal](/azure/azure-functions/functions-create-function-app-portal), [Beheerde identiteit gebruiken voor App Service en Azure Functions](/azure/app-service/overview-managed-identity) en [Key Vault-toegangsbeleid toewijzen met behulp van de Azure-portal](../general/assign-access-policy-portal.md) voor informatie over het maken van een functie-app en het gebruik van beheerde identiteit voor toegang tot Key Vault.
+Zie [Een functie-app maken vanuit de Azure-portal](../../azure-functions/functions-create-function-app-portal.md), [Beheerde identiteit gebruiken voor App Service en Azure Functions](../../app-service/overview-managed-identity.md) en [Key Vault-toegangsbeleid toewijzen met behulp van de Azure-portal](../general/assign-access-policy-portal.md) voor informatie over het maken van een functie-app en het gebruik van beheerde identiteit voor toegang tot Key Vault.
 
 ### <a name="rotation-function"></a>Roulatiefunctie
 De in de vorige stap geïmplementeerde functie gebruikt een gebeurtenis om de roulatie van een geheim te activeren door Key Vault en de SQL database bij te werken. 
@@ -207,11 +207,11 @@ Als u een geheim met een korte vervaldatum maakt, wordt een `SecretNearExpiry`-g
 
 ## <a name="test-and-verify"></a>Testen en verifiëren
 
-Als u wilt controleren of het geheim is gerouleerd, gaat u naar **Key Vault** > **Geheimen**:
+Als u wilt controleren of het geheim is gerouleerd, gaat u naar **Key Vault** > **Geheimen** :
 
 ![Naar Geheimen gaan](../media/rotate-8.png)
 
-Open het **sqlPassword**-geheim en bekijk de oorspronkelijke en gerouleerde versies:
+Open het **sqlPassword** -geheim en bekijk de oorspronkelijke en gerouleerde versies:
 
 ![Het sqluser-geheim openen](../media/rotate-9.png)
 
@@ -227,13 +227,13 @@ Voor de web-app zijn de volgende onderdelen vereist:
 
    [![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json)
 
-1. Selecteer de resourcegroep **akvrotation**.
+1. Selecteer de resourcegroep **akvrotation** .
 1. Typ in **SQL Server-naam** de naam van de SQL Server met het wachtwoord dat u wilt rouleren
 1. Typ in **Naam voor Key Vault** de naam van de sleutelkluis
 1. Typ in **Geheime naam** de naam van het geheim waarin het wachtwoord wordt opgeslagen
 1. Typ in **Opslagplaats-URL** de GitHub-locatie van de web-appcode ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** )
-1. Selecteer **Controleren + maken**.
-1. Selecteer **Maken**.
+1. Selecteer **Controleren + maken** .
+1. Selecteer **Maken** .
 
 
 ### <a name="open-the-web-app"></a>De web-app openen
@@ -242,7 +242,7 @@ Ga naar de URL van de geïmplementeerde toepassing:
  
 https://akvrotation-app.azurewebsites.net/
 
-Wanneer de toepassing in de browser wordt geopend, ziet u de **gegenereerde waarde van het geheim** en de waarde voor de **databaseverbinding** ingesteld op *true*.
+Wanneer de toepassing in de browser wordt geopend, ziet u de **gegenereerde waarde van het geheim** en de waarde voor de **databaseverbinding** ingesteld op *true* .
 
 ## <a name="learn-more"></a>Meer informatie
 
