@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: d34be152a0d104e688abd6e53c97353b69012670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d0c4167192c42939e16dfd36bdc3eeef4b54b7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906548"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543709"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Zelfstudie: een Azure Database for MySQL-database ontwerpen met Azure Portal
 
@@ -37,15 +37,15 @@ Open uw favoriete webbrowser en ga naar [Microsoft Azure Portal](https://portal.
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Een Azure-database voor MySQL-server maken
 
-Een Azure Database voor MySQL-server wordt gemaakt met een gedefinieerde set [reken- en opslagresources](./concepts-compute-unit-and-storage.md). De server wordt gemaakt in een [Azure-resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Een Azure Database voor MySQL-server wordt gemaakt met een gedefinieerde set [reken- en opslagresources](./concepts-pricing-tiers.md). De server wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/management/overview.md).
 
 1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal.
 
-2. Selecteer **Databases** > **Azure Database voor MySQL**. Als u MySQL Server niet ziet in de categorie **Databases**, klikt u op **Alles weergeven** om alle beschikbare databaseservices weer te geven. U kunt ook **Azure Database voor MySQL** in het zoekvak typen om de service snel te vinden.
+2. Selecteer **Databases** > **Azure Database voor MySQL** . Als u MySQL Server niet ziet in de categorie **Databases** , klikt u op **Alles weergeven** om alle beschikbare databaseservices weer te geven. U kunt ook **Azure Database voor MySQL** in het zoekvak typen om de service snel te vinden.
    
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png" alt-text="Navigeren naar MySQL":::
 
-3. Klik op de tegel **Azure Database for MySQL-server**. Vul het Azure Database for MySQL-formulier in.
+3. Klik op de tegel **Azure Database for MySQL-server** . Vul het Azure Database for MySQL-formulier in.
    
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="Navigeren naar MySQL":::
 
@@ -55,25 +55,25 @@ Een Azure Database voor MySQL-server wordt gemaakt met een gedefinieerde set [re
     Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw server. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
     Resourcegroep | *myresourcegroup* | Geef een nieuwe of bestaande resourcegroepnaam op.
     Bron selecteren | *Leeg* | Selecteer *Leeg* om een nieuwe server te maken. (Selecteer *Back-up* als u een server maakt op basis van een geo-back-up van een bestaande Azure Database for MySQL-server).
-    Aanmeldgegevens van serverbeheerder | myadmin | Een aanmeldingsaccount die moet worden gebruikt om verbinding te maken met de server. De aanmeldingsnaam voor de beheerder kan niet **azure_superuser**, **admin**, **administrator**, **root**, **guest** of **public** zijn.
+    Aanmeldgegevens van serverbeheerder | myadmin | Een aanmeldingsaccount die moet worden gebruikt om verbinding te maken met de server. De aanmeldingsnaam voor de beheerder kan niet **azure_superuser** , **admin** , **administrator** , **root** , **guest** of **public** zijn.
     Wachtwoord | *Uw keuze* | Geef een nieuw wachtwoord op voor het beheerdersaccount voor de server. Het wachtwoord moet tussen 8 en 128 tekens lang zijn. Uw wachtwoord moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofdletters, Nederlandse kleine letters, cijfers (0-9) en niet-alfanumerieke tekens (!, $, #, %, enzovoort).
     Wachtwoord bevestigen | *Uw keuze*| Bevestig het wachtwoord voor het beheerdersaccount.
     Locatie | *De regio het dichtst bij uw gebruikers*| Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
     Versie | *De nieuwste versie*| De nieuwste versie (tenzij u specifieke vereisten hebt en een andere versie moet gebruiken).
-    Prijscategorie | **Algemeen**, **Gen 5**, **2 vCores**, **5 GB**, **7 dagen**, **Geografisch redundant** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Prijscategorie**. Selecteer vervolgens het tabblad **Algemeen**. *Gen 5*, *2 vCores*, *5 GB* en *7 dagen* zijn de standaardwaarden voor **Bewerking voor compute**, **vCore**, **Opslag** en **Bewaarperiode voor back-up**. U kunt deze schuifregelaars laten zoals ze zijn. Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
+    Prijscategorie | **Algemeen** , **Gen 5** , **2 vCores** , **5 GB** , **7 dagen** , **Geografisch redundant** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Prijscategorie** . Selecteer vervolgens het tabblad **Algemeen** . *Gen 5* , *2 vCores* , *5 GB* en *7 dagen* zijn de standaardwaarden voor **Bewerking voor compute** , **vCore** , **Opslag** en **Bewaarperiode voor back-up** . U kunt deze schuifregelaars laten zoals ze zijn. Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up** . Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="Navigeren naar MySQL":::
 
    > [!TIP]
    > Als **automatische groei** voor uw server is ingeschakeld, hebt u meer opslagruimte als u de toewijzingslimiet nadert. Dit is niet van invloed op de workload.
 
-4. Klik op **Controleren + maken**. Klik op de knop **Meldingen** op de werkbalk om het implementatieproces te volgen. De implementatie kan twintig minuten duren.
+4. Klik op **Controleren + maken** . Klik op de knop **Meldingen** op de werkbalk om het implementatieproces te volgen. De implementatie kan twintig minuten duren.
 
 ## <a name="configure-firewall"></a>Firewall configureren
 
 Databases van Azure Database voor MySQL worden beveiligd door een firewall. Standaard worden alle verbindingen met de server en de databases op de server geweigerd. Voordat u voor het eerst verbinding maakt met Azure Database voor MySQL moet u de firewall configureren en het IP-adres (of IP-adresbereik) van het openbare netwerk van de clientcomputer toevoegen.
 
-1. Klik op uw zojuist gemaakte server en klik vervolgens op **Verbindingsbeveiliging**.
+1. Klik op uw zojuist gemaakte server en klik vervolgens op **Verbindingsbeveiliging** .
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="Navigeren naar MySQL":::
 2. U kunt **Mijn IP toevoegen** kiezen of hier firewallregels configureren. Vergeet niet op **Opslaan** te klikken nadat u de regels hebt gemaakt.
@@ -88,10 +88,10 @@ Ga naar Azure Portal om de volledig gekwalificeerde **servernaam** en **aanmeldi
 
 1. Klik in [Azure Portal](https://portal.azure.com/) op **Alle resources** in het menu aan de linkerkant, typ de naam en zoek naar uw Azure Database voor MySQL-server. Selecteer de naam van de server om de details te bekijken.
 
-2. Noteer op de pagina **Overzicht** de waarden voor de **servernaam** en de **aanmeldingsgegevens van de serverbeheerder**. U kunt op de knop Kopiëren naast elk veld klikken om de gegevens naar het klembord te kopiëren.
+2. Noteer op de pagina **Overzicht** de waarden voor de **servernaam** en de **aanmeldingsgegevens van de serverbeheerder** . U kunt op de knop Kopiëren naast elk veld klikken om de gegevens naar het klembord te kopiëren.
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="Navigeren naar MySQL":::
 
-In dit voorbeeld is de servernaam *mydemoserver.mysql.database.azure.com* en zijn de aanmeldingsgegevens van de serverbeheerder *myadmin\@mydemoserver*.
+In dit voorbeeld is de servernaam *mydemoserver.mysql.database.azure.com* en zijn de aanmeldingsgegevens van de serverbeheerder *myadmin\@mydemoserver* .
 
 ## <a name="connect-to-the-server-using-mysql"></a>Verbinding maken met de server met behulp van mysql
 
@@ -174,10 +174,10 @@ Stel dat u per ongeluk een belangrijke databasetabel hebt verwijderd en dat de g
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="Navigeren naar MySQL":::
 
-   - **Herstelpunt**: selecteer een tijdstip in het verleden waarnaar u wilt herstellen, binnen de vermelde periode. Zorg ervoor dat u de lokale tijdzone converteert naar UTC.
-   - **Herstellen naar nieuwe server**: geef de naam op van de nieuwe server waarnaar u wilt herstellen.
-   - **Locatie**: de regio is hetzelfde als van de bronserver en kan niet worden gewijzigd.
-   - **Prijscategorie**: de prijscategorie is hetzelfde als van de bronserver en kan niet worden gewijzigd.
+   - **Herstelpunt** : selecteer een tijdstip in het verleden waarnaar u wilt herstellen, binnen de vermelde periode. Zorg ervoor dat u de lokale tijdzone converteert naar UTC.
+   - **Herstellen naar nieuwe server** : geef de naam op van de nieuwe server waarnaar u wilt herstellen.
+   - **Locatie** : de regio is hetzelfde als van de bronserver en kan niet worden gewijzigd.
+   - **Prijscategorie** : de prijscategorie is hetzelfde als van de bronserver en kan niet worden gewijzigd.
    
 3. Klik op **OK** om de server te [herstellen naar een eerder tijdstip](./howto-restore-server-portal.md), voordat de tabel werd toegevoegd. Als u een server herstelt, wordt er een nieuwe kopie van de server gemaakt, vanaf het tijdstip dat u opgeeft.
 

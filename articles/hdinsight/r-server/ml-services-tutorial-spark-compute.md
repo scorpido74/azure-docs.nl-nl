@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71121937"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545902"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Zelfstudie: R gebruiken in een Spark-compute-context in Azure HDInsight
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure HDInsight Machine Learning Services-cluster. Ga naar [Apache Hadoop-clusters maken met behulp van Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ML Services** als **Clustertype**.
+* Een Azure HDInsight Machine Learning Services-cluster. Ga naar [Apache Hadoop-clusters maken met behulp van Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ML Services** als **Clustertype** .
 
 ## <a name="connect-to-rstudio-server"></a>Verbinding maken met RStudio Server
 
@@ -43,7 +43,7 @@ RStudio Server wordt uitgevoerd op het edge-knooppunt van het cluster. Ga naar d
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-De eerste keer dat u zich aanmeldt, moet u tweemaal verifiëren. Bij de eerste verificatieprompt geeft u de gebruikers-id en het wachtwoord voor de clusterbeheerder op (de standaardwaarde is *admin*). Bij de tweede verificatieprompt geeft u de gebruikers-id en het wachtwoord voor SSH op (de standaardwaarde is *sshuser*). Voor volgende aanmeldingen zijn alleen de SSH-referenties vereist.
+De eerste keer dat u zich aanmeldt, moet u tweemaal verifiëren. Bij de eerste verificatieprompt geeft u de gebruikers-id en het wachtwoord voor de clusterbeheerder op (de standaardwaarde is *admin* ). Bij de tweede verificatieprompt geeft u de gebruikers-id en het wachtwoord voor SSH op (de standaardwaarde is *sshuser* ). Voor volgende aanmeldingen zijn alleen de SSH-referenties vereist.
 
 ## <a name="download-the-sample-data-to-local-storage"></a>De voorbeeldgegevens downloaden naar lokale opslag
 
@@ -113,7 +113,7 @@ Deze stap zou ongeveer 10 seconden moeten duren.
     hdfsFS <- RxHdfsFileSystem()
     ```
 
-1. Omdat de oorspronkelijke CSV-bestanden nogal onhandige variabelenamen hebben, geeft u een *colInfo*-lijst op om ze beter te kunnen beheren. Voer in RStudio de volgende code in:
+1. Omdat de oorspronkelijke CSV-bestanden nogal onhandige variabelenamen hebben, geeft u een *colInfo* -lijst op om ze beter te kunnen beheren. Voer in RStudio de volgende code in:
 
     ```R
     airlineColInfo <- list(
@@ -168,7 +168,7 @@ In een Spark-compute-context kunt u gegevensbronnen maken met behulp van de volg
 |`RxParquetData` | Hiermee wordt een Parquet-gegevensbronobject gegenereerd.|
 |`RxOrcData` | Hiermee wordt een Orc-gegevensbronobject gegenereerd.|
 
-Maak een [RxTextData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata)-object met behulp van de bestanden die u naar HDFS hebt gekopieerd. Voer in RStudio de volgende code in:
+Maak een [RxTextData](/machine-learning-server/r-reference/revoscaler/rxtextdata)-object met behulp van de bestanden die u naar HDFS hebt gekopieerd. Voer in RStudio de volgende code in:
 
 ```R
 airDS <- RxTextData( airDataDir,
@@ -179,7 +179,7 @@ airDS <- RxTextData( airDataDir,
 
 ## <a name="create-a-compute-context-for-spark"></a>Een compute-context voor Spark maken
 
-Stel de compute-context in uw script in op [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark) om gegevens te laden en analyses uit te voeren op werkknooppunten. In deze context distribueren R-functies automatisch de werkbelasting over alle werkknooppunten, zonder ingebouwde vereiste voor het beheren van taken of de wachtrij. De Spark-compute-context wordt tot stand gebracht met `RxSpark` of `rxSparkConnect()`, en gebruikt `rxSparkDisconnect()` om terug te keren naar een lokale compute-context. Voer in RStudio de volgende code in:
+Stel de compute-context in uw script in op [RxSpark](/machine-learning-server/r-reference/revoscaler/rxspark) om gegevens te laden en analyses uit te voeren op werkknooppunten. In deze context distribueren R-functies automatisch de werkbelasting over alle werkknooppunten, zonder ingebouwde vereiste voor het beheren van taken of de wachtrij. De Spark-compute-context wordt tot stand gebracht met `RxSpark` of `rxSparkConnect()`, en gebruikt `rxSparkDisconnect()` om terug te keren naar een lokale compute-context. Voer in RStudio de volgende code in:
 
 ```R
 # Define the Spark compute context
@@ -191,7 +191,7 @@ rxSetComputeContext(mySparkCluster)
 
 ## <a name="fit-a-linear-model"></a>Een lineair model passend maken
 
-1. Gebruik de [rxLinMod](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod)-functie om een lineair model passend te maken met behulp van uw `airDS`-gegevensbron. Voer in RStudio de volgende code in:
+1. Gebruik de [rxLinMod](/machine-learning-server/r-reference/revoscaler/rxlinmod)-functie om een lineair model passend te maken met behulp van uw `airDS`-gegevensbron. Voer in RStudio de volgende code in:
 
     ```R
     system.time(
@@ -225,14 +225,14 @@ rxSetComputeContext(mySparkCluster)
     Coefficients:
                    Estimate Std. Error t value Pr(>|t|)     | Counts
     DayOfWeek=Mon   3.54210    0.03736   94.80 2.22e-16 *** | 901592
-    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 *** | 855805
-    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 *** | 868505
-    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 *** | 891674
-    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 *** | 896495
-    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 *** | 732944
-    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 *** | 858366
+    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 **_ | 855805
+    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 _*_ | 868505
+    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 _*_ | 891674
+    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 _*_ | 896495
+    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 _*_ | 732944
+    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 _*_ | 858366
     ---
-    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    Signif. codes:  0 ‘_*_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
     Residual standard error: 35.48 on 6005374 degrees of freedom
     Multiple R-squared: 0.001827 (as if intercept included)
@@ -247,7 +247,7 @@ rxSetComputeContext(mySparkCluster)
 
 Zoals u hebt gezien, kunt u CSV-bestanden rechtstreeks analyseren met R op Hadoop. U kunt de analyse echter sneller uitvoeren als u de gegevens in een efficiëntere indeling opslaat. De R XDF-bestandsindeling is efficiënt, maar is enigszins gewijzigd voor HDFS zodat afzonderlijke bestanden binnen één HDFS-blok blijven. (De blokgrootte van HDFS verschilt per installatie, maar is doorgaans 64 of 128 MB.) 
 
-Wanneer u [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) op Hadoop gebruikt om een set samengestelde XDF-bestanden te maken, geeft u een `RxTextData`-gegevensbron zoals `AirDS` op als inData-argument en een `RxXdfData`-gegevensbron met fileSystem ingesteld op een HDFS-bestandssysteem als outFile-argument. U kunt het `RxXdfData`-object vervolgens gebruiken als het gegevensargument in latere R-analyses.
+Wanneer u [rxImport](/machine-learning-server/r-reference/revoscaler/rximport) op Hadoop gebruikt om een set samengestelde XDF-bestanden te maken, geeft u een `RxTextData`-gegevensbron zoals `AirDS` op als inData-argument en een `RxXdfData`-gegevensbron met fileSystem ingesteld op een HDFS-bestandssysteem als outFile-argument. U kunt het `RxXdfData`-object vervolgens gebruiken als het gegevensargument in latere R-analyses.
 
 1. Definieer een `RxXdfData`-object. Voer in RStudio de volgende code in:
 
@@ -298,7 +298,7 @@ Wanneer u [rxImport](https://docs.microsoft.com/machine-learning-server/r-refere
 
 ### <a name="in-a-spark-context"></a>In een Spark-context
 
-Als u uw CSV-bestanden hebt geconverteerd naar een XDF-bestandsindeling voor grotere efficiëntie tijdens het uitvoeren van de analyses, maar u de gegevens nu weer naar CSV wilt converteren, kunt u dit doen met behulp van [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep).
+Als u uw CSV-bestanden hebt geconverteerd naar een XDF-bestandsindeling voor grotere efficiëntie tijdens het uitvoeren van de analyses, maar u de gegevens nu weer naar CSV wilt converteren, kunt u dit doen met behulp van [rxDataStep](/machine-learning-server/r-reference/revoscaler/rxdatastep).
 
 Maak om een map met CSV-bestanden te maken eerst een `RxTextData`-object door een mapnaam te gebruiken als bestandsargument. Dit object vertegenwoordigt de map waarin de CSV-bestanden worden gemaakt. Deze map wordt gemaakt wanneer u de `rxDataStep` uitvoert. Verwijs vervolgens naar dit `RxTextData`-object in het `outFile`-argument van de `rxDataStep`. Elk CSV-bestand dat wordt gemaakt, krijgt een naam op basis van de mapnaam gevolgd door een getal.
 
@@ -366,4 +366,4 @@ Als u een cluster wilt verwijderen, raadpleegt u [HDInsight-cluster verwijderen 
 In deze zelfstudie hebt u geleerd hoe u R-functies gebruikt in Apache Spark die worden uitgevoerd op een HDInsight Machine Learning Services-cluster. Raadpleeg voor meer informatie de volgende artikelen:
 
 * [Compute-contextopties voor een Azure HDInsight Machine Learning Services-cluster](r-server-compute-contexts.md)
-* [R-functies voor Spark op Hadoop](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)
+* [R-functies voor Spark op Hadoop](/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0c504ebdec524390d9deb22088979199f80e4f13
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275959"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558632"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Inleiding tot Azure Defender voor containerregisters
 
@@ -37,11 +37,11 @@ Door alleen een melding te geven als er problemen zijn, vermindert Security Cent
 
 Er zijn drie triggers voor het scannen van installatiekopieën:
 
-- **Bij push**: wanneer een installatiekopie naar het register wordt gepusht, wordt deze automatisch door Security Center gescand. U kunt het scannen van een installatiekopie activeren door deze naar uw opslagplaats te pushen.
+- **Bij push** : wanneer een installatiekopie naar het register wordt gepusht, wordt deze automatisch door Security Center gescand. U kunt het scannen van een installatiekopie activeren door deze naar uw opslagplaats te pushen.
 
-- **Recent opgehaald**: aangezien er elke dag nieuwe beveiligingsproblemen worden ontdekt, scant **Azure Defender voor containerregisters** ook alle installatiekopieën die de afgelopen 30 dagen zijn opgehaald. Er zijn geen extra kosten verbonden aan het opnieuw scannen. Zoals hierboven gezegd, wordt u één keer per installatiekopie gefactureerd.
+- **Recent opgehaald** : aangezien er elke dag nieuwe beveiligingsproblemen worden ontdekt, scant **Azure Defender voor containerregisters** ook alle installatiekopieën die de afgelopen 30 dagen zijn opgehaald. Er zijn geen extra kosten verbonden aan het opnieuw scannen. Zoals hierboven gezegd, wordt u één keer per installatiekopie gefactureerd.
 
-- **Bij import**: Azure Container Registry heeft functies voor het importeren van installatiekopieën in uw register vanuit Docker Hub, Microsoft-containerregister of een ander Azure-containerregister. **Azure Defender voor containerregisters** scant alle ondersteunde installatiekopieën die u importeert. Zie [Containerinstallatiekopieën importeren in een containerregister](../container-registry/container-registry-import-images.md) voor meer informatie.
+- **Bij import** : Azure Container Registry heeft functies voor het importeren van installatiekopieën in uw register vanuit Docker Hub, Microsoft-containerregister of een ander Azure-containerregister. **Azure Defender voor containerregisters** scant alle ondersteunde installatiekopieën die u importeert. Zie [Containerinstallatiekopieën importeren in een containerregister](../container-registry/container-registry-import-images.md) voor meer informatie.
  
 De scan wordt doorgaans binnen 2 minuten voltooid, maar kan tot 15 minuten duren. Bevindingen worden beschikbaar gesteld als Security Center-aanbevelingen zoals deze:
 
@@ -71,6 +71,12 @@ Ja. De resultaten staan onder [Subevaluaties REST API](/rest/api/securitycenter/
 Zie [Beschikbaarheid](defender-for-container-registries-usage.md#availability)voor een lijst met de typen containerregisters die worden ondersteund door Azure Defender voor containerregisters.
 
 Als u niet-ondersteunde registers verbindt met uw Azure-abonnement, worden deze niet gescand en worden er geen kosten in rekening gebracht.
+
+### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>Kan ik de bevindingen van de kwetsbaarheidsscanner aanpassen?
+Ja. Als u een organisatorische behoefte hebt om een resultaat te negeren in plaats van dit te herstellen, kunt u het eventueel uitschakelen. Uitgeschakelde resultaten hebben geen invloed op uw beveiligingsscore en genereren geen ongewenste ruis.
+
+[Meer informatie over het maken van rollen om bevindingen uit te schakelen uit het geïntegreerde evaluatiehulpprogramma voor beveiligingsproblemen](defender-for-container-registries-usage.md#disable-specific-findings-preview).
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

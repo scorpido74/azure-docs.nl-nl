@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73241206"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545443"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Zelfstudie: Schrijven naar Apache Hadoop HDFS van Apache Storm in Azure HDInsight
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Java Developer Kit (JDK) versie 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) versie 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
 
@@ -160,7 +160,7 @@ Zie het document [HDInsight-clusters aanpassen met behulp van scriptacties](./..
     hdfs.url: wasbs:///
     ```
 
-    Als u het bestand wilt opslaan, gebruikt u achtereenvolgens __Ctrl+X__, __J__ en __Enter__. Met de waarden in dit bestand stelt u de opslag-URL en de naam in van de map waarnaar gegevens worden geschreven.
+    Als u het bestand wilt opslaan, gebruikt u achtereenvolgens __Ctrl+X__ , __J__ en __Enter__ . Met de waarden in dit bestand stelt u de opslag-URL en de naam in van de map waarnaar gegevens worden geschreven.
 
 1. Gebruik de volgende opdracht om de topologie te starten:
 

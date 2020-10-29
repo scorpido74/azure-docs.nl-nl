@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: b5e335659a26568ae11a17425c4e53c53f02a843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d06b7be7be06d037589e482fe59c4326cbfad29
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282354"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546701"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Zelfstudie: MongoDB migreren naar Azure Cosmos DB's API voor offline MongoDB met behulp van DMS
 
@@ -56,25 +56,25 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registreer de Microsoft.DataMigration-resourceprovider
 
-1. Meld u aan bij de Azure-portal, selecteer **Alle services** en selecteer vervolgens **Abonnementen**.
+1. Meld u aan bij de Azure-portal, selecteer **Alle services** en selecteer vervolgens **Abonnementen** .
 
    ![Portal-abonnementen weergeven](media/tutorial-mongodb-to-cosmosdb/portal-select-subscription1.png)
 
-2. Selecteer het abonnement waarin u het Azure Database Migration Service-exemplaar wilt maken en selecteer vervolgens **Resourceproviders**.
+2. Selecteer het abonnement waarin u het Azure Database Migration Service-exemplaar wilt maken en selecteer vervolgens **Resourceproviders** .
 
     ![Resourceproviders weergeven](media/tutorial-mongodb-to-cosmosdb/portal-select-resource-provider.png)
 
-3. Zoek naar migratie en selecteer rechts van **Microsoft.DataMigration** de optie **Registreren**.
+3. Zoek naar migratie en selecteer rechts van **Microsoft.DataMigration** de optie **Registreren** .
 
     ![Resourceprovider registreren](media/tutorial-mongodb-to-cosmosdb/portal-register-resource-provider.png)    
 
 ## <a name="create-an-instance"></a>Een instantie maken
 
-1. Selecteer in de Azure-portal **Een resource maken**, zoek naar Azure Database Migration Service, en selecteer vervolgens **Azure Database Migration Service** uit de vervolgkeuzelijst.
+1. Selecteer in de Azure-portal **Een resource maken** , zoek naar Azure Database Migration Service, en selecteer vervolgens **Azure Database Migration Service** uit de vervolgkeuzelijst.
 
     ![Azure Marketplace](media/tutorial-mongodb-to-cosmosdb/portal-marketplace.png)
 
-2. Selecteer in het scherm **Azure Database Migration Service****Maken**.
+2. Selecteer in het scherm **Azure Database Migration Service****Maken** .
 
     ![Azure Database Migration Service-exemplaar maken](media/tutorial-mongodb-to-cosmosdb/dms-create1.png)
   
@@ -100,15 +100,15 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak vervolgens een nieuw migratieproject.
 
-1. Selecteer in de Azure-portal **Alle diensten**, zoek naar Azure Database Migration Service, en selecteer vervolgens **Azure Database Migration Service**.
+1. Selecteer in de Azure-portal **Alle diensten** , zoek naar Azure Database Migration Service, en selecteer vervolgens **Azure Database Migration Service** .
 
       ![Zoek alle exemplaren van Azure Database Migration Service](media/tutorial-mongodb-to-cosmosdb/dms-search.png)
 
 2. Zoek in het scherm **Azure Database Migration Service** naar de naam van de Azure Database Migration Service-instantie die u hebt gemaakt en selecteer vervolgens de instantie.
 
-3. Selecteer + **Nieuw migratieproject**.
+3. Selecteer + **Nieuw migratieproject** .
 
-4. Geef in het scherm **Nieuw migratieproject** een naam op voor het project in het tekstvak **bronservertype**, selecteer **MongoDB**, selecteer in het tekstvak **Type doelserver****CosmosDB (MongoDB-API)**, en selecteer bij **Type activiteit kiezen** de optie **Offline gegevensmigratie**. 
+4. Geef in het scherm **Nieuw migratieproject** een naam op voor het project in het tekstvak **bronservertype** , selecteer **MongoDB** , selecteer in het tekstvak **Type doelserver****CosmosDB (MongoDB-API)** , en selecteer bij **Type activiteit kiezen** de optie **Offline gegevensmigratie** . 
 
     ![Database Migration Service-project maken](media/tutorial-mongodb-to-cosmosdb/dms-create-project.png)
 
@@ -122,9 +122,9 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
    > Azure Database Migration Service biedt geen ondersteuning voor Azure Cosmos DB als bron.
 
     Er zijn drie modi om verbinding te maken met een bron:
-   * **Standaardmodus**: deze accepteert een Fully Qualified Domain Name of een IP-adres, poortnummer en verbindingsreferenties.
-   * **Modus verbindingsreeks**: deze accepteert een MongoDB-verbindingsreeks, zoals beschreven in het artikel [Connection String URI Format](https://docs.mongodb.com/manual/reference/connection-string/) (URI-indeling van verbindingsreeks).
-   * **Gegevens uit Azure-opslag**: deze accepteert een SAS-URL van de blob-container. Selecteer **Blob contains BSON dump** als de blob-container BSON-dumps bevat die zijn geproduceerd door het [bsondump-hulpprogramma](https://docs.mongodb.com/manual/reference/program/bsondump/) van MongoDB en deselecteer het als de container JSON-bestanden bevat.
+   * **Standaardmodus** : deze accepteert een Fully Qualified Domain Name of een IP-adres, poortnummer en verbindingsreferenties.
+   * **Modus verbindingsreeks** : deze accepteert een MongoDB-verbindingsreeks, zoals beschreven in het artikel [Connection String URI Format](https://docs.mongodb.com/manual/reference/connection-string/) (URI-indeling van verbindingsreeks).
+   * **Gegevens uit Azure-opslag** : deze accepteert een SAS-URL van de blob-container. Selecteer **Blob contains BSON dump** als de blob-container BSON-dumps bevat die zijn geproduceerd door het [bsondump-hulpprogramma](https://docs.mongodb.com/manual/reference/program/bsondump/) van MongoDB en deselecteer het als de container JSON-bestanden bevat.
 
      Als u deze optie selecteert, controleer dan of de verbindingsreeks van het opslagaccount wordt weergegeven in de volgende indeling:
 
@@ -136,9 +136,9 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
      
      Vanwege het type dumpgegevens in Azure Storage moet u ook rekening houden met het volgende.
 
-     * Voor BSON-dumps moeten de gegevens in de blob-container de bsondump-indeling hebben, zodat de gegevensbestanden worden geplaatst in mappen die worden genoemd naar de omvattende databases in de collection.bson-indeling. Metagegevensbestanden (indien aanwezig) moeten een naam krijgen op basis van de indeling *verzameling*.metadata.json.
+     * Voor BSON-dumps moeten de gegevens in de blob-container de bsondump-indeling hebben, zodat de gegevensbestanden worden geplaatst in mappen die worden genoemd naar de omvattende databases in de collection.bson-indeling. Metagegevensbestanden (indien aanwezig) moeten een naam krijgen op basis van de indeling *verzameling* .metadata.json.
 
-     * Voor JSON-dumps moeten de bestanden in de blob-container worden geplaatst in mappen die zijn genoemd naar de omvattende databases. In elke databasemap moeten gegevensbestanden worden geplaatst in een submap met de naam 'data' en ze moeten een naam krijgen op basis van de indeling *verzameling*.json. Metagegevensbestanden (indien aanwezig) moeten worden geplaatst in een submap met de naam 'metadata' en ze moeten een naam krijgen op basis van dezelfde indeling *verzameling*.json. De metagegevensbestanden moeten de indeling hebben die wordt geproduceerd door het MongoDB-hulpprogramma bsondump.
+     * Voor JSON-dumps moeten de bestanden in de blob-container worden geplaatst in mappen die zijn genoemd naar de omvattende databases. In elke databasemap moeten gegevensbestanden worden geplaatst in een submap met de naam 'data' en ze moeten een naam krijgen op basis van de indeling *verzameling* .json. Metagegevensbestanden (indien aanwezig) moeten worden geplaatst in een submap met de naam 'metadata' en ze moeten een naam krijgen op basis van dezelfde indeling *verzameling* .json. De metagegevensbestanden moeten de indeling hebben die wordt geproduceerd door het MongoDB-hulpprogramma bsondump.
 
     > [!IMPORTANT]
     > Het wordt afgeraden om een zelfondertekend certificaat te gebruiken op de Mongo-server. Als echter wel een zelfondertekend certificaat wordt gebruikt, moet u verbinding maken met de server in de **verbindingsreeksmodus** en ervoor zorgen dat de verbindingsreeks het volgende bevat: “”
@@ -151,7 +151,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
    ![Geef brondetails op](media/tutorial-mongodb-to-cosmosdb/dms-specify-source.png)
 
-2. Selecteer **Opslaan**.
+2. Selecteer **Opslaan** .
 
 ## <a name="specify-target-details"></a>Doeldetails opgeven
 
@@ -159,7 +159,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
     ![Doeldetails opgeven](media/tutorial-mongodb-to-cosmosdb/dms-specify-target.png)
 
-2. Selecteer **Opslaan**.
+2. Selecteer **Opslaan** .
 
 ## <a name="map-to-target-databases"></a>Toewijzen aan doeldatabases
 
@@ -173,7 +173,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
     ![Toewijzen aan doeldatabases](media/tutorial-mongodb-to-cosmosdb/dms-map-target-databases.png)
 
-2. Selecteer **Opslaan**.
+2. Selecteer **Opslaan** .
 3. Vouw in het scherm **Verzamelingsinstelling** de lijst met verzamelingen uit en bekijk welke verzamelingen worden gemigreerd.
 
     Azure Database Migration Service selecteert automatisch alle verzamelingen op de MongoDB-broninstantie die niet aanwezig zijn in het Azure Cosmos DB-doelaccount. Als u verzamelingen die al gegevens bevatten opnieuw wilt migreren, moet u die verzamelingen expliciet selecteren op deze blade.
@@ -187,7 +187,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
     ![Verzamelingstabellen selecteren](media/tutorial-mongodb-to-cosmosdb/dms-collection-setting.png)
 
-4. Selecteer **Opslaan**.
+4. Selecteer **Opslaan** .
 
 5. Geef in het tekstvak **Naam activiteit** van het scherm **Migratieoverzicht** een naam op voor de migratieactiviteit.
 
@@ -195,9 +195,9 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 ## <a name="run-the-migration"></a>De migratie uitvoeren
 
-* Selecteer **Migratie uitvoeren**.
+* Selecteer **Migratie uitvoeren** .
 
-    Het venster van de migratieactiviteit wordt weergegeven en de **status** van de activiteit is **Niet gestart**.
+    Het venster van de migratieactiviteit wordt weergegeven en de **status** van de activiteit is **Niet gestart** .
 
     ![Activiteitsstatus](media/tutorial-mongodb-to-cosmosdb/dms-activity-status.png)
 
@@ -214,7 +214,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 * Nadat de migratie is voltooid, kunt u in uw Azure Cosmos DB-account controleren of alle verzamelingen met succes zijn gemigreerd.
 
-    ![Activiteitsstatus Voltooid](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
+    ![Schermopname die laat zien waar in uw Azure Cosmos DB-account u kunt controleren of alle verzamelingen met succes zijn gemigreerd.](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
 
 ## <a name="post-migration-optimization"></a>Optimalisatie na migratie
 

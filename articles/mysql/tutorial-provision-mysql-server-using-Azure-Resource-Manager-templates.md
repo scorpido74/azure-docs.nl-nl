@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66d09503f5db95811f807aa7faa83b92facca992
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74771085"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543692"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Zelfstudie: Een Azure Database for MySQL-server inrichten met behulp van een Azure Resource Manager-sjabloon
 
-Met de [Azure Database for MySQL REST API](https://docs.microsoft.com/rest/api/mysql/) kunnen DevOps-technici de inrichting, configuratie en bewerkingen van beheerde MySQL-servers en -databases in Azure automatiseren en integreren.  Met de API kunnen MySQL-servers en -databases in de Azure Database for MySQL-service worden gemaakt, opgesomd, beheerd en verwijderd.
+Met de [Azure Database for MySQL REST API](/rest/api/mysql/) kunnen DevOps-technici de inrichting, configuratie en bewerkingen van beheerde MySQL-servers en -databases in Azure automatiseren en integreren.  Met de API kunnen MySQL-servers en -databases in de Azure Database for MySQL-service worden gemaakt, opgesomd, beheerd en verwijderd.
 
-Azure Resource Manager maakt gebruik van de onderliggende REST-API om de Azure-resources te declareren en te programmeren die nodig zijn voor grootschalige implementaties, in lijn met de infrastructuur als codeconcept. De sjabloon maakt een parameter van de Azure-resourcenaam, de SKU, het netwerk, de firewallconfiguratie en de instellingen, zodat deze eenmalig kan worden gemaakt en meerdere malen kan worden gebruikt.  Azure Resource Manager-sjablonen kunnen eenvoudig worden gemaakt met behulp van [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) of [Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI). Ze zijn bedoeld voor het inpakken van toepassingen, standaardisatie en automatisering van de implementatie, geschikt voor integratie in de CI/CD-pijplijn van DevOps.  Als u bijvoorbeeld snel een web-app met Azure Database for MySQL-back-end wilt implementeren, kunt u de end-to-end-implementatie uitvoeren met behulp van deze [snelstartsjabloon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) uit de GitHub-galerie.
+Azure Resource Manager maakt gebruik van de onderliggende REST-API om de Azure-resources te declareren en te programmeren die nodig zijn voor grootschalige implementaties, in lijn met de infrastructuur als codeconcept. De sjabloon maakt een parameter van de Azure-resourcenaam, de SKU, het netwerk, de firewallconfiguratie en de instellingen, zodat deze eenmalig kan worden gemaakt en meerdere malen kan worden gebruikt.  Azure Resource Manager-sjablonen kunnen eenvoudig worden gemaakt met behulp van [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) of [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI). Ze zijn bedoeld voor het inpakken van toepassingen, standaardisatie en automatisering van de implementatie, geschikt voor integratie in de CI/CD-pijplijn van DevOps.  Als u bijvoorbeeld snel een web-app met Azure Database for MySQL-back-end wilt implementeren, kunt u de end-to-end-implementatie uitvoeren met behulp van deze [snelstartsjabloon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) uit de GitHub-galerie.
 
 In deze zelfstudie gebruikt u een sjabloon van Azure Resource Manager en andere hulpprogramma's om het volgende te leren:
 
@@ -115,7 +115,7 @@ Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsrefere
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Het resultaat wordt in JSON-indeling weergegeven. Noteer de **fullyQualifiedDomainName** en de **administratorLogin**.
+Het resultaat wordt in JSON-indeling weergegeven. Noteer de **fullyQualifiedDomainName** en de **administratorLogin** .
 ```json
 {
   "administratorLogin": "myadmin",

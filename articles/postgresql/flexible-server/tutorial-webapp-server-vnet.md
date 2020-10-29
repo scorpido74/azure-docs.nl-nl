@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 20401a3c96a9a20399c07d1a30370d27f2858e29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90929354"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546565"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Zelfstudie: Azure Database for PostgreSQL - Flexible Server met App Services-web-app in een virtueel netwerk maken
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - Flexible Server is als preview-versie beschikbaar
 
-In deze zelfstudie leert u hoe u een Azure App Service-web-app met Azure Database for PostgreSQL - Flexible Server (Preview) in een [virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) maakt.
+In deze zelfstudie leert u hoe u een Azure App Service-web-app met Azure Database for PostgreSQL - Flexible Server (Preview) in een [virtueel netwerk](../../virtual-network/virtual-networks-overview.md) maakt.
 
 In deze zelfstudie gaat u
 >[!div class="checklist"]
@@ -35,13 +35,13 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 In dit artikel moet u Azure CLI-versie 2.0 of later lokaal uitvoeren. Voer de opdracht `az --version` uit om de geïnstalleerde versie te zien. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-U moet zich aanmelden bij uw account met behulp van de opdracht [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in). Let op de **id**-eigenschap van de opdrachtuitvoer voor de naam van het desbetreffende abonnement.
+U moet zich aanmelden bij uw account met behulp van de opdracht [az login](/cli/azure/authenticate-azure-cli). Let op de **id** -eigenschap van de opdrachtuitvoer voor de naam van het desbetreffende abonnement.
 
 ```azurecli
 az login
 ```
 
-Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer de specifieke abonnements-id in uw account met de opdracht [az account set](/cli/azure/account). Gebruik de eigenschap **abonnement-id** uit de **az login**-uitvoer voor uw abonnement in de tijdelijke aanduiding voor de abonnement-id.
+Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer de specifieke abonnements-id in uw account met de opdracht [az account set](/cli/azure/account). Gebruik de eigenschap **abonnement-id** uit de **az login** -uitvoer voor uw abonnement in de tijdelijke aanduiding voor de abonnement-id.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -121,4 +121,4 @@ az group delete -n myresourcegroup
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Een bestaande aangepaste DNS-naam toewijzen aan Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
+> [Een bestaande aangepaste DNS-naam toewijzen aan Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)

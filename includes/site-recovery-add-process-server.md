@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31e61069c95be9bd1c7a684bb83ebcd93bcb14be
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175740"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548235"
 ---
 1. De Azure Site Recovery UnifiedSetup.exe starten
 2. In **Voordat u begint** selecteert u **Add additional process servers to scale out deployment** (Extra processervers toevoegen om implementatie uit te schalen).
@@ -23,14 +23,14 @@ ms.locfileid: "67175740"
 
    ![Processerver 3 toevoegen](./media/site-recovery-add-process-server/ps-page-3.png)
 
-   * Als u verbinding wilt maken met de proxy die momenteel op de computer is ingesteld, selecteert u **Verbinding maken met bestaande proxyinstellingen**.
-   * Als u wilt dat de provider rechtstreeks verbinding maakt, selecteert u **Rechtstreeks verbinden zonder proxy**.
-   * Als voor de bestaande proxy verificatie is vereist of als u voor de verbinding met de provider een aangepaste proxy wilt gebruiken, selecteert u **Verbinding maken met aangepaste proxyinstellingen**.
+   * Als u verbinding wilt maken met de proxy die momenteel op de computer is ingesteld, selecteert u **Verbinding maken met bestaande proxyinstellingen** .
+   * Als u wilt dat de provider rechtstreeks verbinding maakt, selecteert u **Rechtstreeks verbinden zonder proxy** .
+   * Als voor de bestaande proxy verificatie is vereist of als u voor de verbinding met de provider een aangepaste proxy wilt gebruiken, selecteert u **Verbinding maken met aangepaste proxyinstellingen** .
 
      * Als u een aangepaste proxy gebruikt, moet u het adres, de poort en de referenties opgeven.
      * Als u een proxy gebruikt, hebt u, als het goed is, al toegang tot de service-URL's toegestaan.
 
-5. Tijdens Setup wordt in **Controle op vereisten** gecontroleerd of de installatie kan worden uitgevoerd. Als er een waarschuwing wordt weergegeven over **Synchronisatiecontrole voor algemene tijd**, moet u controleren of de tijd op de systeemklok (instellingen voor **datum en tijd**) overeenkomt met de tijdzone.
+5. Tijdens Setup wordt in **Controle op vereisten** gecontroleerd of de installatie kan worden uitgevoerd. Als er een waarschuwing wordt weergegeven over **Synchronisatiecontrole voor algemene tijd** , moet u controleren of de tijd op de systeemklok (instellingen voor **datum en tijd** ) overeenkomt met de tijdzone.
 
      ![Processerver 4 toevoegen](./media/site-recovery-add-process-server/ps-page-4.png)
 
@@ -39,11 +39,11 @@ ms.locfileid: "67175740"
      ![Processerver 5 toevoegen](./media/site-recovery-add-process-server/ps-page-5.png)
 
 7. Selecteer bij **Installatielocatie** waar u de binaire bestanden wilt installeren en de cache wilt opslaan. Het station dat u selecteert, moet ten minste 5 GB vrije schijfruimte bevatten, maar wij raden u aan een cachestation te gebruiken met minstens 600 GB vrije ruimte.
-     ![Processerver 5 toevoegen](./media/site-recovery-add-process-server/ps-page-6.png)
+     ![Screenshot met de installatielocatie voor de binaire bestanden en cache-opslag.](./media/site-recovery-add-process-server/ps-page-6.png)
 
 8. Geef bij **Netwerk selecteren** de listener op (netwerkadapter en SSL-poort) met behulp waarvan de configuratieserver replicatiegegevens verzendt en ontvangt. Poort 9443 is de standaardpoort voor het verzenden en ontvangen van replicatieverkeer, maar u kunt dit poortnummer aanpassen aan de vereisten van de omgeving. Naast poort 9443 wordt ook poort 443 geopend. Deze wordt door een webserver gebruikt om replicatiebewerkingen in te delen. Gebruik poort 443 niet voor het verzenden of ontvangen van replicatieverkeer.
 
      ![Processerver 6 toevoegen](./media/site-recovery-add-process-server/ps-page-7.png)
-9. Lees de informatie bij **Samenvatting** en klik op **Installeren**. Wanneer de installatie is voltooid, wordt er een wachtwoordzin gegenereerd. U hebt deze nodig bij het inschakelen van de replicatie. Kopieer de wachtwoordzin daarom en bewaar deze op een veilige locatie.
+9. Lees de informatie bij **Samenvatting** en klik op **Installeren** . Wanneer de installatie is voltooid, wordt er een wachtwoordzin gegenereerd. U hebt deze nodig bij het inschakelen van de replicatie. Kopieer de wachtwoordzin daarom en bewaar deze op een veilige locatie.
 
      ![Processerver 7 toevoegen](./media/site-recovery-add-process-server/ps-page-8.png)

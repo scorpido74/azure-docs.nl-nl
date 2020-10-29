@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 10/29/2020
 ms.locfileid: "92544763"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
@@ -31,7 +31,7 @@ Azure cache voor redis-instellingen worden weer gegeven en geconfigureerd op de 
 U kunt de volgende instellingen weer geven en configureren met behulp van het **resource menu** .
 
 * [Overzicht](#overview)
-* [Activiteitenlogboek](#activity-log)
+* [Activiteiten logboek](#activity-log)
 * [Toegangsbeheer (IAM)](#access-control-iam)
 * [Tags](#tags)
 * [Problemen vaststellen en oplossen](#diagnose-and-solve-problems)
@@ -392,7 +392,7 @@ Nieuwe Azure-cache voor redis-exemplaren worden geconfigureerd met de volgende s
 | `maxclients` |Is afhankelijk van de prijs categorie<sup>2</sup> |Deze waarde is het maximum aantal aangesloten clients dat tegelijkertijd is toegestaan. Zodra de limiet is bereikt, sluit redis alle nieuwe verbindingen af en wordt de fout ' maximum aantal clients bereikt ' geretourneerd. |
 | `maxmemory-policy` |`volatile-lru` |Maxmemory-beleid is de instelling voor hoe redis selecteert wat moet worden verwijderd wanneer `maxmemory` (de grootte van de cache aanbieding die u hebt geselecteerd tijdens het maken van de cache) is bereikt. Met Azure cache voor redis is de standaard instelling `volatile-lru` , waarmee de sleutels met een verloopset worden verwijderd met behulp van een LRU-algoritme. Deze instelling kan worden geconfigureerd in de Azure Portal. Zie [geheugen beleid](#memory-policies)voor meer informatie. |
 | `maxmemory-samples` |3 |Voor het opslaan van geheugen zijn LRU en minimale TTL-algoritmen een geschatte algoritme in plaats van nauw keurige algoritmen. Standaard worden met redis drie sleutels gecontroleerd en wordt de versie gekozen die minder recent is gebruikt. |
-| `lua-time-limit` |5.000 |Maximale uitvoerings tijd van een Lua-script in milliseconden. Als de maximale uitvoerings tijd is bereikt, redis logboeken dat een script nog steeds wordt uitgevoerd na de Maxi maal toegestane tijd en begint met het beantwoorden van query's met een fout. |
+| `lua-time-limit` |5\.000 |Maximale uitvoerings tijd van een Lua-script in milliseconden. Als de maximale uitvoerings tijd is bereikt, redis logboeken dat een script nog steeds wordt uitgevoerd na de Maxi maal toegestane tijd en begint met het beantwoorden van query's met een fout. |
 | `lua-event-limit` |500 |Maximale grootte van script gebeurtenis wachtrij. |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |De limieten voor client uitvoer buffers kunnen worden gebruikt om te voor komen dat clients die geen gegevens van de server snel genoeg worden gelezen, om een of andere reden. (een veelvoorkomende reden is dat een pub/sub-client berichten niet kan gebruiken als de uitgever deze kan produceren). Zie [https://redis.io/topics/clients](https://redis.io/topics/clients) voor meer informatie. |
 
