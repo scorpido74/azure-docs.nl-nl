@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: fae86e13be624d7a5304aa04b82432e1163b1244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: f94a68833347d662f427fa0944dd83d33458bd14
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84629553"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745998"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Zelfstudie: Een virtuele-machineschaalset automatisch schalen met een Azure-sjabloon
 Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt uitvoeren. Wanneer de vraag van de toepassing verandert, kunt u het aantal VM-exemplaren automatisch vergroten of verkleinen. De mogelijkheid van automatisch schalen stelt u in staat om altijd te voldoen aan de vraag van klanten houden of om gedurende de levenscyclus van uw app te reageren op wijzigingen in de prestaties van de toepassing. In deze zelfstudie leert u het volgende:
@@ -33,7 +33,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 
 ## <a name="define-an-autoscale-profile"></a>Een profiel voor automatisch schalen definiëren
-U definieert een profiel voor automatisch schalen in een Azure-sjabloon met de resourceprovider *Microsoft.insights/autoscalesettings*. Een *profiel* bevat informatie over de capaciteit van de schaalset en eventuele gekoppelde regels. In het volgende voorbeeld wordt een profiel gedefinieerd met de naam *Autoscale by percentage based on CPU usage* en worden de minimum-, maximum- en standaardcapaciteit van *2* VM-exemplaren ingesteld op een maximum van *10*:
+U definieert een profiel voor automatisch schalen in een Azure-sjabloon met de resourceprovider *Microsoft.insights/autoscalesettings* . Een *profiel* bevat informatie over de capaciteit van de schaalset en eventuele gekoppelde regels. In het volgende voorbeeld wordt een profiel gedefinieerd met de naam *Autoscale by percentage based on CPU usage* en worden de minimum-, maximum- en standaardcapaciteit van *2* VM-exemplaren ingesteld op een maximum van *10* :
 
 ```json
 {
@@ -137,13 +137,13 @@ In het volgende voorbeeld wordt een regel gedefinieerd waarmee het aantal VM-exe
 ## <a name="create-an-autoscaling-scale-set"></a>Een schaalset voor automatisch schalen maken
 We gebruiken een voorbeeldsjabloon om een schaalset te maken en regels voor automatisch schalen toe te passen. U kunt [de volledige sjabloon bekijken](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json) of [de sectie *Microsoft.insights/autoscalesettings* met de resourceprovider](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220) van de sjabloon.
 
-Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
+Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een schaalset voor virtuele machines met [az group deployment create](/cli/azure/group/deployment). Geef desgevraagd uw eigen gebruikersnaam en wachtwoord op, zoals *azureuser*, voor gebruik als de referenties voor elk VM-exemplaar:
+Maak nu een schaalset voor virtuele machines met [az group deployment create](/cli/azure/group/deployment). Geef desgevraagd uw eigen gebruikersnaam en wachtwoord op, zoals *azureuser* , voor gebruik als de referenties voor elk VM-exemplaar:
 
 ```azurecli-interactive
 az group deployment create \
@@ -180,7 +180,7 @@ Ga met SSH naar uw eerste VM-exemplaar. Geef met de parameter `-p` uw eigen open
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-Als u bent aangemeld, installeert u het hulpprogramma **stress**. Start *10* **stress**-werkrollen die CPU-belasting genereren. Deze werkrollen worden gedurende *420* seconden uitgevoerd, wat voldoende is om met de regels voor automatisch schalen de gewenste actie te implementeren.
+Als u bent aangemeld, installeert u het hulpprogramma **stress** . Start *10* **stress** -werkrollen die CPU-belasting genereren. Deze werkrollen worden gedurende *420* seconden uitgevoerd, wat voldoende is om met de regels voor automatisch schalen de gewenste actie te implementeren.
 
 ```console
 sudo apt-get update
@@ -188,9 +188,9 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Wanneer **stress** uitvoer toont die lijkt op *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, drukt u op de *Enter*-toets om terug te keren naar de prompt.
+Wanneer **stress** uitvoer toont die lijkt op *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* , drukt u op de *Enter* -toets om terug te keren naar de prompt.
 
-Om te controleren of **stress** CPU-belasting genereert, onderzoekt u de actieve systeembelasting met het hulpprogramma **top**:
+Om te controleren of **stress** CPU-belasting genereert, onderzoekt u de actieve systeembelasting met het hulpprogramma **top** :
 
 ```console
 top
@@ -216,7 +216,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Wanneer **stress** uitvoer toont die lijkt op *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, drukt u op de *Enter*-toets om terug te keren naar de prompt.
+Wanneer **stress** uitvoer toont die lijkt op *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* , drukt u op de *Enter* -toets om terug te keren naar de prompt.
 
 Verbreek de verbinding met het tweede VM-exemplaar. **stress** wordt nog gewoon uitgevoerd op het VM-exemplaar.
 

@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842526"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745980"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Zelfstudie: Een toepassing in Service Fabric Mesh implementeren met behulp van een sjabloon
 
@@ -156,7 +156,7 @@ seabreeze/azure-mesh-todo-webfrontend
 seabreeze/azure-mesh-todo-service
 ```
 
-In het volgende voorbeeld worden de tags in de **azure-mesh-todo-service**-opslagplaats vermeld.
+In het volgende voorbeeld worden de tags in de **azure-mesh-todo-service** -opslagplaats vermeld.
 
 ```azurecli
 az acr repository show-tags --name myContainerRegistry --repository seabreeze/azure-mesh-todo-service --output table
@@ -196,9 +196,9 @@ Een Service Fabric Mesh-toepassing is een Azure-resource die u met behulp van Az
 In deze zelfstudie wordt de takenlijst als voorbeeld gebruikt.  Download de bestanden [mesh_rp.windows.json deployment template](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) en [mesh_rp.windows.parameter.json parameters](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) zodat u geen nieuwe sjabloon- en parameterbestanden hoeft te bouwen.
 
 ### <a name="parameters"></a>Parameters
-Wanneer de sjabloon waarden bevat die naar verwachting zullen wijzigen nadat de toepassing is geïmplementeerd, of als u de mogelijkheid wilt hebben om de waarden per implementatie aan te passen (als u van plan bent om deze sjabloon te hergebruiken voor andere implementaties), is de aanbevolen procedure om de waarden door te geven via parameters. De juiste manier om dit te doen, is door een gedeelte ‘parameters’ aan de bovenkant van uw implementatiesjabloon te maken, waarin u parameternamen en -eigenschappen opgeeft waarnaar later in de implementatiesjabloon wordt verwezen. Elke parameterdefinitie bevat *type*, *standaardwaarde* en een optioneel gedeelte *metagegevens* met een *beschrijving*.
+Wanneer de sjabloon waarden bevat die naar verwachting zullen wijzigen nadat de toepassing is geïmplementeerd, of als u de mogelijkheid wilt hebben om de waarden per implementatie aan te passen (als u van plan bent om deze sjabloon te hergebruiken voor andere implementaties), is de aanbevolen procedure om de waarden door te geven via parameters. De juiste manier om dit te doen, is door een gedeelte ‘parameters’ aan de bovenkant van uw implementatiesjabloon te maken, waarin u parameternamen en -eigenschappen opgeeft waarnaar later in de implementatiesjabloon wordt verwezen. Elke parameterdefinitie bevat *type* , *standaardwaarde* en een optioneel gedeelte *metagegevens* met een *beschrijving* .
 
-Het parametergedeelte is aan de bovenkant van uw implementatiesjabloon gedefinieerd, direct voor het gedeelte *resources*:
+Het parametergedeelte is aan de bovenkant van uw implementatiesjabloon gedefinieerd, direct voor het gedeelte *resources* :
 
 ```json
 {

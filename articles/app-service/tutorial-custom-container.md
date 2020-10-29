@@ -5,14 +5,14 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
 keywords: azure-app-service, web-app, linux, windows, docker, container
-ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
+ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 0cb1aa2d922db96eff21a128eaa60363b37db9d7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f3c687d5c8b4e4c6d0b7f4ff912137066fe10bbb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152097"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743728"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Aangepaste software naar Azure App Service migreren met een aangepaste container
 
@@ -29,9 +29,9 @@ Vereisten voor het voltooien van deze zelfstudie:
 - <a href="https://hub.docker.com/" target="_blank">Registreren voor een Docker Hub-account</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker voor Windows installeren</a>.
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 installeren</a> met de workloads **ASP.NET- en webontwikkeling** en **Azure-ontwikkeling**. Als u Visual Studio 2019 al hebt geïnstalleerd:
-    - Installeer de nieuwste updates in Visual Studio door te klikken op **Help** > **Check for Updates**.
-    - Voeg de werkbelastingen toe in Visual Studio door te klikken op **Tools** > **Get Tools and Features**.
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 installeren</a> met de workloads **ASP.NET- en webontwikkeling** en **Azure-ontwikkeling** . Als u Visual Studio 2019 al hebt geïnstalleerd:
+    - Installeer de nieuwste updates in Visual Studio door te klikken op **Help** > **Check for Updates** .
+    - Voeg de werkbelastingen toe in Visual Studio door te klikken op **Tools** > **Get Tools and Features** .
 
 ## <a name="set-up-the-app-locally"></a>De app lokaal instellen
 
@@ -46,7 +46,7 @@ Het voorbeeldproject bevat een eenvoudige ASP.NET toepassing die een aangepast l
 
 ### <a name="install-the-font"></a>Het lettertype installeren
 
-Navigeer in Windows Verkenner naar _custom-font-win-container-master/CustomFontSample_, klik met de rechtermuisknop op _FrederickatheGreat-Regular.ttf_ en selecteer **Installeren**.
+Navigeer in Windows Verkenner naar _custom-font-win-container-master/CustomFontSample_ , klik met de rechtermuisknop op _FrederickatheGreat-Regular.ttf_ en selecteer **Installeren** .
 
 Dit lettertype is openbaar beschikbaar via [Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great).
 
@@ -62,13 +62,13 @@ Omdat de app een geïnstalleerd lettertype gebruikt, kan deze niet worden uitgev
 
 ### <a name="configure-windows-container"></a>Windows-container configureren
 
-Klik in Solution Explorer met de rechtermuisknop op het project **CustomFontSample** en selecteer **Add** > **Container Orchestration Support**.
+Klik in Solution Explorer met de rechtermuisknop op het project **CustomFontSample** en selecteer **Add** > **Container Orchestration Support** .
 
 :::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Schermopname waarin de app wordt weergegeven in de standaardbrowser.":::
 
-Selecteer **Docker Compose** > **OK**.
+Selecteer **Docker Compose** > **OK** .
 
-Uw project is nu ingesteld om te worden uitgevoerd in een Windows-container. Er wordt een _Dockerfile_ toegevoegd aan het project **CustomFontSample**, en er wordt een **docker-compose**-project toegevoegd aan de oplossing. 
+Uw project is nu ingesteld om te worden uitgevoerd in een Windows-container. Er wordt een _Dockerfile_ toegevoegd aan het project **CustomFontSample** , en er wordt een **docker-compose** -project toegevoegd aan de oplossing. 
 
 Open **Dockerfile** vanuit Solution Explorer.
 
@@ -84,7 +84,7 @@ Voeg aan het einde van het bestand de volgende regel toe en sla het bestand op:
 RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 ```
 
-U kunt _InstallFont.ps1_ vinden in het project **CustomFontSample**. Het is een eenvoudig script waarmee het lettertype wordt geïnstalleerd. U vindt een complexere versie van het script in het [Script Center](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133).
+U kunt _InstallFont.ps1_ vinden in het project **CustomFontSample** . Het is een eenvoudig script waarmee het lettertype wordt geïnstalleerd. U vindt een complexere versie van het script in het [Script Center](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133).
 
 > [!NOTE]
 > Als u de Windows-container lokaal wilt testen, controleert u of Docker is gestart op de lokale computer.
@@ -119,7 +119,7 @@ Configureer het nieuwe containerregister op basis van de voorgestelde waarden in
 | Instelling  | Voorgestelde waarde | Voor meer informatie |
 | ----------------- | ------------ | ----|
 |**DNS-voorvoegsel**| Behoud de gegenereerde registernaam of wijzig deze in een andere unieke naam. |  |
-|**Resourcegroep**| Klik op **New** (nieuw), typ **myResourceGroup** en klik op **OK**. |  |
+|**Resourcegroep**| Klik op **New** (nieuw), typ **myResourceGroup** en klik op **OK** . |  |
 |**SKU**| Basic | [Prijscategorieën](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Registerlocatie**| Europa -west | |
 
@@ -133,21 +133,21 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-web-app"></a>Een webtoepassing maken
 
-Selecteer in het menu links **Create a resource** (een resource maken) > **Web** > **Web App for Containers**.
+Selecteer in het menu links **Create a resource** (een resource maken) > **Web** > **Web App for Containers** .
 
 ### <a name="configure-app-basics"></a>Basisprincipes van app configureren
 
-Configureer op het tabblad **Basisprincipes** de instellingen volgens de volgende tabel en klik op **Volgende: Docker**.
+Configureer op het tabblad **Basisprincipes** de instellingen volgens de volgende tabel en klik op **Volgende: Docker** .
 
 | Instelling  | Voorgestelde waarde | Voor meer informatie |
 | ----------------- | ------------ | ----|
 |**Abonnement**| Zorg ervoor dat het correcte abonnement is geselecteerd. |  |
-|**Resourcegroep**| Selecteer **Nieuwe maken**, typ **myResourceGroup** en klik op **OK**. |  |
+|**Resourcegroep**| Selecteer **Nieuwe maken** , typ **myResourceGroup** en klik op **OK** . |  |
 |**Naam**| Typ een unieke naam. | De URL van de web-app is `http://<app-name>.azurewebsites.net`, waarbij `<app-name>` de naam van uw app is. |
 |**Publiceren**| Docker-container | |
 |**Besturingssysteem**| Windows | |
 |**Regio**| Europa -west | |
-|**Windows Plan**| Selecteer **Nieuwe** maken, typ **myAppServicePlan** en klik op **OK**. | |
+|**Windows Plan**| Selecteer **Nieuwe** maken, typ **myAppServicePlan** en klik op **OK** . | |
 
 Uw tabblad **Basisprincipes** moet er zo uitzien:
 
@@ -155,7 +155,7 @@ Uw tabblad **Basisprincipes** moet er zo uitzien:
 
 ### <a name="configure-windows-container"></a>Windows-container configureren
 
-Configureer op het tabblad **Docker** uw aangepaste Windows-container, zoals wordt weergegeven in de volgende tabel, en selecteer **Beoordelen + maken**.
+Configureer op het tabblad **Docker** uw aangepaste Windows-container, zoals wordt weergegeven in de volgende tabel, en selecteer **Beoordelen + maken** .
 
 | Instelling  | Voorgestelde waarde |
 | ----------------- | ------------ |
@@ -174,7 +174,7 @@ Als de bewerking in Azure is voltooid, wordt er een melding weergegeven.
 
 ![Toont dat de Azure-bewerking is voltooid.](media/tutorial-custom-container/portal-create-finished.png)
 
-1. Klik op **Ga naar resource**.
+1. Klik op **Ga naar resource** .
 
 2. Klik op de app-pagina onder **URL** op de koppeling.
 
@@ -278,9 +278,9 @@ cd docker-django-webapp-linux
 
 In plaats van de git-kloon te gebruiken kunt u naar [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) gaan, **Klonen** selecteren, en vervolgens **ZIP downloaden** selecteren. 
 
-Pak het ZIP-bestand uit in een map met de naam *docker-django-webapp-linux*. 
+Pak het ZIP-bestand uit in een map met de naam *docker-django-webapp-linux* . 
 
-Open vervolgens een terminalvenster in deze map *docker-django-webapp-linux*.
+Open vervolgens een terminalvenster in deze map *docker-django-webapp-linux* .
 
 ## <a name="optional-examine-the-docker-file"></a>Het Docker-bestand bekijken (optioneel)
 
@@ -334,7 +334,7 @@ ENTRYPOINT ["init.sh"]
     Met deze opdracht [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) wordt de poort opgegeven met het argument `-p`, gevolgd door de naam van de installatiekopie. 
     
     > [!TIP]
-    > Als u uitvoert in Windows en deze fout ziet: *standard_init_linux.go:211: exec user process caused ‘bestand of map bestaat niet’* , bevat het *init.sh*-bestand CR-LF-regeleinden in plaats van de verwachte LF-einden. Deze fout treedt op als u de git hebt gebruikt om de voorbeeldopslagplaats te klonen, maar de parameter `--config core.autocrlf=input` hebt weggelaten. In dit geval moet u de opslagplaats opnieuw klonen met het argument --config. U ziet de fout mogelijk ook als u *init.sh* hebt bewerkt en vervolgens hebt opgeslagen met CRLF-einden. In dit geval slaat u het bestand opnieuw op met alleen LF-einden.
+    > Als u uitvoert in Windows en deze fout ziet: *standard_init_linux.go:211: exec user process caused ‘bestand of map bestaat niet’* , bevat het *init.sh* -bestand CR-LF-regeleinden in plaats van de verwachte LF-einden. Deze fout treedt op als u de git hebt gebruikt om de voorbeeldopslagplaats te klonen, maar de parameter `--config core.autocrlf=input` hebt weggelaten. In dit geval moet u de opslagplaats opnieuw klonen met het argument --config. U ziet de fout mogelijk ook als u *init.sh* hebt bewerkt en vervolgens hebt opgeslagen met CRLF-einden. In dit geval slaat u het bestand opnieuw op met alleen LF-einden.
 
 1. Blader naar `http://localhost:8000` om te controleren of de web-app en de container goed werken.
 
@@ -497,7 +497,7 @@ U kunt deze stappen voltooien zodra de installatiekopie naar het containerregist
 
 In deze sectie brengt u een wijziging aan in de code van de web-app, bouwt u de container opnieuw, en pusht u de container naar het register. In App Service wordt vervolgens automatisch de bijgewerkte installatiekopie opgehaald uit het register om de actieve web-app bij te werken.
 
-1. Open in uw lokale map *docker-django-webapp-linux* het bestand *app/templates/app/index.html*.
+1. Open in uw lokale map *docker-django-webapp-linux* het bestand *app/templates/app/index.html* .
 
 1. Wijzig eerst het HTML-element om overeen te komen met de volgende code.
 
@@ -569,7 +569,7 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
 
 ### <a name="configure-the-container-for-ssh"></a>De container configureren voor SSH
 
-De voorbeeld-app die in deze zelfstudie wordt gebruikt, beschikt al over de benodigde configuratie in het *Dockerfile*, waarmee de SSH-server wordt geïnstalleerd en de aanmeldingsreferenties worden ingesteld. Deze sectie is alleen ter informatie. Ga naar de volgende sectie om verbinding te maken met de container
+De voorbeeld-app die in deze zelfstudie wordt gebruikt, beschikt al over de benodigde configuratie in het *Dockerfile* , waarmee de SSH-server wordt geïnstalleerd en de aanmeldingsreferenties worden ingesteld. Deze sectie is alleen ter informatie. Ga naar de volgende sectie om verbinding te maken met de container
 
 ```Dockerfile
 ENV SSH_PASSWD "root:Docker!"
@@ -595,7 +595,7 @@ EXPOSE 8000 2222
 
 Poort 2222 is interne poort die alleen toegankelijk is voor containers in het brugnetwerk van een virtueel particulier netwerk. 
 
-Ten slotte wordt de SSH-server gestart met het invoerscript *init.sh*.
+Ten slotte wordt de SSH-server gestart met het invoerscript *init.sh* .
 
 ```bash
 #!/bin/bash

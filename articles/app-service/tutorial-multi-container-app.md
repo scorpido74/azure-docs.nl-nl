@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: cli-validate
-ms.openlocfilehash: 9c984daa380f1d4f0a7b067604ab66ba14a0b70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cli-validate, devx-track-azurecli
+ms.openlocfilehash: 7945c6c6f834de068665e3400440d2be5dd713ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88082150"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743440"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Zelfstudie: Een app met meerdere containers (preview) maken in Web App for Containers
 
@@ -63,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-Maak een resourcegroep in Cloud Shell met de opdracht [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - zuid-centraal*. Als u alle ondersteunde locaties voor App Service op Linux in prijscategorie **Standard** wilt zien, voert u de opdracht [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) uit.
+Maak een resourcegroep in Cloud Shell met de opdracht [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - zuid-centraal* . Als u alle ondersteunde locaties voor App Service op Linux in prijscategorie **Standard** wilt zien, voert u de opdracht [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) uit.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -138,7 +138,7 @@ Blader naar de geïmplementeerde app in (`http://<app-name>.azurewebsites.net`).
 
 ![Voorbeeld-app met meerdere containers in Web App for Containers][1]
 
-**Gefeliciteerd**, u hebt een app met meerdere containers gemaakt in Web App for Containers. Vervolgens configureert u uw app voor gebruik met Azure Database for MySQL. Installeer WordPress nu nog niet.
+**Gefeliciteerd** , u hebt een app met meerdere containers gemaakt in Web App for Containers. Vervolgens configureert u uw app voor gebruik met Azure Database for MySQL. Installeer WordPress nu nog niet.
 
 ## <a name="connect-to-production-database"></a>Verbinding maken met de productiedatabase
 
@@ -464,21 +464,21 @@ Voer de stappen uit en installeer WordPress.
 
 ### <a name="connect-wordpress-to-redis"></a>WordPress verbinden met Redis
 
-Meld u aan bij WordPress-beheer. Selecteer **Invoegtoepassingen** in het linkernavigatievenster en selecteer vervolgens **Geïnstalleerde invoegtoepassingen**.
+Meld u aan bij WordPress-beheer. Selecteer **Invoegtoepassingen** in het linkernavigatievenster en selecteer vervolgens **Geïnstalleerde invoegtoepassingen** .
 
 ![WordPress-invoegtoepassingen selecteren][2]
 
 Alle invoegtoepassingen hier weergeven
 
-Zoek op de pagina met invoegtoepassingen naar **Redis-objectcache** en klik op **Activeren**.
+Zoek op de pagina met invoegtoepassingen naar **Redis-objectcache** en klik op **Activeren** .
 
 ![Redis activeren][3]
 
-Klik op **Instellingen**.
+Klik op **Instellingen** .
 
 ![Klik op Instellingen][4]
 
-Klik op de knop **Objectcache inschakelen**.
+Klik op de knop **Objectcache inschakelen** .
 
 ![Klik op de knop Objectcache inschakelen][5]
 
@@ -486,7 +486,7 @@ WordPress wordt verbonden met de Redis-server. De **status** van de verbinding w
 
 ![WordPress wordt verbonden met de Redis-server. De **status** van de verbinding wordt weergegeven op dezelfde pagina.][6]
 
-**Gefeliciteerd**, u hebt WordPress verbonden met Redis. De app die klaar is voor productie, maakt nu gebruik van **Azure Database for MySQL, permanente opslag en Redis**. U kunt uw App Service-plan nu uitbreiden naar meerdere exemplaren.
+**Gefeliciteerd** , u hebt WordPress verbonden met Redis. De app die klaar is voor productie, maakt nu gebruik van **Azure Database for MySQL, permanente opslag en Redis** . U kunt uw App Service-plan nu uitbreiden naar meerdere exemplaren.
 
 ## <a name="find-docker-container-logs"></a>Logboeken voor Docker-containers zoeken
 

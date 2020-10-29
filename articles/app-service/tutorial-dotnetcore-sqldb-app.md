@@ -4,14 +4,14 @@ description: Leer hoe u een .NET Core-app kunt laten werken in Azure App Service
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
+ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b83dfbd715a6b27491fd5f5efd41213210092325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 305137cf371d7a9e3d336d8142ef9a03eb38421f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982889"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743710"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Zelfstudie: een ASP.NET Core- en Azure SQL Database-app bouwen in Azure App Service
 
@@ -75,7 +75,7 @@ dotnet ef database update
 dotnet run
 ```
 
-Ga naar `http://localhost:5000` in een browser. Selecteer de koppeling **Nieuwe maken** en maak enkele _taakitems_.
+Ga naar `http://localhost:5000` in een browser. Selecteer de koppeling **Nieuwe maken** en maak enkele _taakitems_ .
 
 ![is verbonden met SQL Database](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
@@ -214,7 +214,7 @@ Nu de databasemigraties worden uitgevoerd op de productiedatabase, test u uw app
 dotnet run
 ```
 
-Ga naar `http://localhost:5000` in een browser. Selecteer de koppeling **Nieuwe maken** en maak enkele _taakitems_. Uw app leest en schrijft nu gegevens van en naar de productiedatabase.
+Ga naar `http://localhost:5000` in een browser. Selecteer de koppeling **Nieuwe maken** en maak enkele _taakitems_ . Uw app leest en schrijft nu gegevens van en naar de productiedatabase.
 
 Voer uw lokale wijzigingen door en voer de app door naar de Git-opslagplaats. 
 
@@ -269,7 +269,7 @@ Als u verbindingsreeksen voor de Azure-app wilt instellen, gebruikt u de opdrach
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
-In ASP.NET Core kunt u deze benoemde verbindingsreeks (`MyDbConnection`) gebruiken met het standaardpatroon, zoals elke verbindingsreeks die wordt opgegeven in *appsettings.json*. In dit geval wordt `MyDbConnection` ook gedefinieerd in uw *appsettings.json*. Bij het uitvoeren in App Service heeft de in App Service gedefinieerde verbindingsreeks voorrang op de verbindingsreeks die wordt gedefinieerd in uw *appsettings.json*. De code gebruikt de waarde uit *appsettings.json* tijdens de lokale ontwikkeling, en dezelfde code gebruikt de waarde van App Service wanneer deze is geïmplementeerd.
+In ASP.NET Core kunt u deze benoemde verbindingsreeks (`MyDbConnection`) gebruiken met het standaardpatroon, zoals elke verbindingsreeks die wordt opgegeven in *appsettings.json* . In dit geval wordt `MyDbConnection` ook gedefinieerd in uw *appsettings.json* . Bij het uitvoeren in App Service heeft de in App Service gedefinieerde verbindingsreeks voorrang op de verbindingsreeks die wordt gedefinieerd in uw *appsettings.json* . De code gebruikt de waarde uit *appsettings.json* tijdens de lokale ontwikkeling, en dezelfde code gebruikt de waarde van App Service wanneer deze is geïmplementeerd.
 
 Zie [De app configureren om verbinding te maken met de productiedatabase](#configure-app-to-connect-to-production-database) als u wilt zien hoe in uw code naar de verbindingsreeks wordt verwezen.
 
@@ -385,7 +385,7 @@ dotnet ef database update
 
 Breng enkele wijzigingen aan de code aan zodat de eigenschap `Done` kan worden gebruikt. Om deze zelfstudie eenvoudig te houden, wijzigt u eerst de weergaven `Index` en `Create` om de eigenschap in actie te zien.
 
-Open _Controllers/TodosController.cs_.
+Open _Controllers/TodosController.cs_ .
 
 Zoek de methode `Create([Bind("ID,Description,CreatedDate")] Todo todo)` en voeg `Done` toe aan de lijst met eigenschappen in het attribuut `Bind`. Als u klaar bent, ziet uw methode `Create()` er uit als de onderstaande code:
 
@@ -393,7 +393,7 @@ Zoek de methode `Create([Bind("ID,Description,CreatedDate")] Todo todo)` en voeg
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
 ```
 
-Open _Views/Todos/Create.cshtml_.
+Open _Views/Todos/Create.cshtml_ .
 
 In de Razor-code zou u een `<div class="form-group">`-element voor `Description` moeten zien en vervolgens een ander element `<div class="form-group">` voor `CreatedDate`. Voeg direct na deze twee elementen een ander element `<div class="form-group">` voor `Done` toe:
 
@@ -407,7 +407,7 @@ In de Razor-code zou u een `<div class="form-group">`-element voor `Description`
 </div>
 ```
 
-Open _Views/Todos/Index.cshtml_.
+Open _Views/Todos/Index.cshtml_ .
 
 Zoek het lege element `<th></th>`. Vlak boven dit element voegt u de volgende Razor-code toe:
 
@@ -449,7 +449,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Nadat `git push` is voltooid, gaat u naar de App Service-app en probeert u een taakitem toe te voegen en selecteert u **Gereed**.
+Nadat `git push` is voltooid, gaat u naar de App Service-app en probeert u een taakitem toe te voegen en selecteert u **Gereed** .
 
 ![Azure-app na Code First Migration](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
@@ -461,7 +461,7 @@ Terwijl uw ASP.NET Core-app wordt uitgevoerd in Azure App Service, kunt u de con
 
 Het voorbeeldproject volgt al de instructies in [ASP.NET Core-logboekregistratie in Azure](/aspnet/core/fundamentals/logging#azure-app-service-provider) met twee configuratiewijzigingen:
 
-- Bevat een verwijzing naar `Microsoft.Extensions.Logging.AzureAppServices` in *DotNetCoreSqlDb.csproj*.
+- Bevat een verwijzing naar `Microsoft.Extensions.Logging.AzureAppServices` in *DotNetCoreSqlDb.csproj* .
 - Roept `loggerFactory.AddAzureWebAppDiagnostics()` in *Program.cs* aan.
 
 Om het [logboekniveau](/aspnet/core/fundamentals/logging#log-level) van ASP.NET Core in App Service te wijzigen van het standaardniveau `Error` in `Information`, gebruikt u de opdracht [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) in de Cloud Shell.
@@ -471,7 +471,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 ```
 
 > [!NOTE]
-> Het logboekniveau van het project is al ingesteld op `Information` in *appsettings.json*.
+> Het logboekniveau van het project is al ingesteld op `Information` in *appsettings.json* .
 > 
 
 Gebruik voor het starten van logboekstreaming de opdracht [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) in de Cloud Shell.

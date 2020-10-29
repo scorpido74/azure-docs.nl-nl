@@ -5,14 +5,14 @@ keywords: app service, azure app service, authN, authZ, beveiligen, beveiliging,
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/29/2020
-ms.custom: devx-track-csharp, seodec18
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: abda26e359becb137d4c0c9f2965ebfbb5ee047c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8620d6bc403882cb308405e8ffb4412917d0c6f1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982907"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743824"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Zelfstudie: Zelfstudie: Gebruikers eind-tot-eind verifiëren en autoriseren in Azure App Service
 
@@ -243,19 +243,19 @@ Zoek in **Resourcegroepen** uw resourcegroep en selecteer deze. Selecteer in **O
 
 Selecteer in het linkermenu van de back-end-app de optie **Verificatie/autorisatie** en schakel vervolgens App Service-verificatie in door **Aan** te selecteren.
 
-Selecteer **Te ondernemen actie wanneer de aanvraag niet is geverifieerd** de optie **Aanmelden met Azure Active Directory**.
+Selecteer **Te ondernemen actie wanneer de aanvraag niet is geverifieerd** de optie **Aanmelden met Azure Active Directory** .
 
-Selecteer onder **Azure Active Directory** de optie **Verificatieproviders**.
+Selecteer onder **Azure Active Directory** de optie **Verificatieproviders** .
 
 :::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="Schermopname van een REST API-voorbeeld van Azure App Service in een browservenster met daarin een takenlijst-app.":::
 
-Selecteer **Express** en accepteer vervolgens de standaardinstellingen om een nieuwe AD-app te maken. Selecteer vervolgens **OK**.
+Selecteer **Express** en accepteer vervolgens de standaardinstellingen om een nieuwe AD-app te maken. Selecteer vervolgens **OK** .
 
-Selecteer op de pagina **Verificatie/autorisatie** de optie **Opslaan**.
+Selecteer op de pagina **Verificatie/autorisatie** de optie **Opslaan** .
 
 Vernieuw de portalpagina als de melding met het bericht `Successfully saved the Auth Settings for <back-end-app-name> App` wordt weergegeven.
 
-Selecteer **Azure Active Directory** opnieuw, en selecteer vervolgens de **Azure AD-app**.
+Selecteer **Azure Active Directory** opnieuw, en selecteer vervolgens de **Azure AD-app** .
 
 Kopieer de **Client-id** van de Azure AD-toepassing in een kladblok. U hebt deze waarde later nog nodig.
 
@@ -267,7 +267,7 @@ Als u hier stopt, hebt u een zelfstandige app die al wordt beveiligd met verific
 
 Volg dezelfde stappen voor de front-end-app, maar sla de laatste stap over. U hebt de client-id niet nodig voor de front-end-app.
 
-Ga, als u wilt, naar `http://<front-end-app-name>.azurewebsites.net`. U wordt nu doorgestuurd naar een beveiligde aanmeldingspagina. Nadat u zich hebt aangemeld, *hebt u nog steeds geen toegang tot de gegevens van de back-end-app*, omdat voor de back-end-app nu Azure Active Directory-aanmelding vanuit de front-end-app is vereist. U moet drie dingen doen:
+Ga, als u wilt, naar `http://<front-end-app-name>.azurewebsites.net`. U wordt nu doorgestuurd naar een beveiligde aanmeldingspagina. Nadat u zich hebt aangemeld, *hebt u nog steeds geen toegang tot de gegevens van de back-end-app* , omdat voor de back-end-app nu Azure Active Directory-aanmelding vanuit de front-end-app is vereist. U moet drie dingen doen:
 
 - De front-end toegang geven tot de back-end
 - App Service configureren zodat een bruikbaar token wordt geretourneerd
@@ -280,15 +280,15 @@ Ga, als u wilt, naar `http://<front-end-app-name>.azurewebsites.net`. U wordt nu
 
 Nu u voor beide apps verificatie en autorisatie hebt ingeschakeld, worden beide door een AD-toepassing ondersteund. In deze stap geeft u de front-end-app namens de gebruiker machtigingen voor toegang tot de back-end-app. (Technisch gesproken geeft u de _AD-toepassing_ van de front-end-app namens de gebruiker machtigingen voor toegang tot de _AD-toepassing_ van de back-end-app.)
 
-Selecteer in het menu van de [Azure-portal](https://portal.azure.com) de optie **Azure Active Directory**, of zoek en selecteer *Azure Active Directory* op een willekeurige pagina.
+Selecteer in het menu van de [Azure-portal](https://portal.azure.com) de optie **Azure Active Directory** , of zoek en selecteer *Azure Active Directory* op een willekeurige pagina.
 
-Selecteer **App-registraties** > **Toepassingen in eigendom** > **Alle toepassingen in deze map weergeven**. Selecteer de naam van de front-end-app, en selecteer vervolgens **API-machtigingen**.
+Selecteer **App-registraties** > **Toepassingen in eigendom** > **Alle toepassingen in deze map weergeven** . Selecteer de naam van de front-end-app, en selecteer vervolgens **API-machtigingen** .
 
 :::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Schermopname van een REST API-voorbeeld van Azure App Service in een browservenster met daarin een takenlijst-app.":::
 
-Selecteer **Een machtiging toevoegen**, en selecteer vervolgens **API's die in mijn organisatie worden gebruikt** >  **\<back-end-app-name>** .
+Selecteer **Een machtiging toevoegen** , en selecteer vervolgens **API's die in mijn organisatie worden gebruikt** >  **\<back-end-app-name>** .
 
-Selecteer op de pagina **API-machtigingen aanvragen** voor de back-end-app de optie **Gedelegeerde machtigingen** en **user_impersonation**. Selecteer vervolgens **Machtigingen toevoegen**.
+Selecteer op de pagina **API-machtigingen aanvragen** voor de back-end-app de optie **Gedelegeerde machtigingen** en **user_impersonation** . Selecteer vervolgens **Machtigingen toevoegen** .
 
 :::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="Schermopname van een REST API-voorbeeld van Azure App Service in een browservenster met daarin een takenlijst-app.":::
 
@@ -302,9 +302,9 @@ De [Azure Resource Explorer](https://resources.azure.com) wordt nu geopend met d
 
 :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Schermopname van een REST API-voorbeeld van Azure App Service in een browservenster met daarin een takenlijst-app.":::
 
-Bekijk in de linkernavigatiebalk de gegevens voor **config** > **authsettings**.
+Bekijk in de linkernavigatiebalk de gegevens voor **config** > **authsettings** .
 
-Klik in de weergave **authsettings** op **Bewerken**. Stel `additionalLoginParams` in op de volgende JSON-tekenreeks met behulp van de client-id die u hebt gekopieerd. 
+Klik in de weergave **authsettings** op **Bewerken** . Stel `additionalLoginParams` in op de volgende JSON-tekenreeks met behulp van de client-id die u hebt gekopieerd. 
 
 ```json
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
@@ -350,7 +350,7 @@ git commit -m "add authorization header for server code"
 git push frontend master
 ```
 
-Meld u opnieuw aan bij `https://<front-end-app-name>.azurewebsites.net`. Klik op de pagina over de gebruiksovereenkomst voor gebruikersgegevens op **Accepteren**.
+Meld u opnieuw aan bij `https://<front-end-app-name>.azurewebsites.net`. Klik op de pagina over de gebruiksovereenkomst voor gebruikersgegevens op **Accepteren** .
 
 U moet nu net als eerder gegevens uit de back-end-app kunnen maken, lezen, bijwerken en verwijderen. Het enige verschil is dat beide apps nu worden beveiligd door App Service-verificatie en -autorisatie, waaronder de aanroepen tussen services.
 
@@ -386,7 +386,7 @@ Open _wwwroot/app/scripts/todoListSvc.js_ in de lokale opslagplaats en controlee
 
 ### <a name="add-access-token-to-api-calls"></a>Toegangstoken toevoegen aan API-aanroepen
 
-Voeg in _wwwroot/app/scripts/todoListSvc.js_, boven de lijst met API-aanroepen (boven de regel `getItems : function(){`), de volgende functie aan de lijst toe:
+Voeg in _wwwroot/app/scripts/todoListSvc.js_ , boven de lijst met API-aanroepen (boven de regel `getItems : function(){`), de volgende functie aan de lijst toe:
 
 ```javascript
 setAuth: function (token) {

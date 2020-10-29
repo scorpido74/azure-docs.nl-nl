@@ -5,14 +5,14 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.custom: mvc, cli-validate, seodec18, devx-track-js
+ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4fc79f8508f46f5003b99289d725b303feef78aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c204a07e3c5edff028342af1c88b15ebac0754b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312002"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743656"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Zelfstudie: Een app voor Node.js en MongoDB bouwen in Azure
 
@@ -186,7 +186,7 @@ Kopieer de waarde van `primaryMasterKey`. U hebt deze informatie nodig voor de v
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Configureer de verbindingsreeks in uw Node.js-toepassing
 
-Maak in de lokale MEAN.js-opslagplaats, in de map _config/env/_ , een bestand met de naam _lokale-productie.js_. _.gitignore_ is al geconfigureerd om dit bestand buiten de opslagplaats te houden. 
+Maak in de lokale MEAN.js-opslagplaats, in de map _config/env/_ , een bestand met de naam _lokale-productie.js_ . _.gitignore_ is al geconfigureerd om dit bestand buiten de opslagplaats te houden. 
 
 Kopieer er de volgende code naartoe. Vervang de twee tijdelijke aanduidingen *\<cosmosdb-name>* door de naam van de Cosmos DB-database en vervang de tijdelijke aanduiding *\<primary-master-key>* door de sleutel die u in de vorige stap hebt gekopieerd.
 
@@ -287,7 +287,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 In Node.js-code [opent u deze app-instelling](configure-language-nodejs.md#access-environment-variables) met `process.env.MONGODB_URI`, net zoals u een andere omgevingsvariabele zou openen. 
 
-In uw lokale MEAN.js-opslagplaats opent u _config/env/production.js_ (niet _config/env/local-production.js_), waarvoor een configuratie geldt die specifiek is voor de productieomgeving. De standaard-MEAN.js-app is al geconfigureerd om gebruik te maken van de omgevingsvariabele `MONGODB_URI` die u hebt gemaakt.
+In uw lokale MEAN.js-opslagplaats opent u _config/env/production.js_ (niet _config/env/local-production.js_ ), waarvoor een configuratie geldt die specifiek is voor de productieomgeving. De standaard-MEAN.js-app is al geconfigureerd om gebruik te maken van de omgevingsvariabele `MONGODB_URI` die u hebt gemaakt.
 
 ```javascript
 db: {
@@ -317,13 +317,13 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 </pre>
 
 Het implementatieproces voert [Gulp](https://gulpjs.com/) na `npm install` uit. In App Service worden tijdens de implementatie geen Gulp- of Grunt-taken uitgevoerd, dus deze voorbeeldopslagplaats bevat twee extra bestanden in de hoofdmap om deze in te schakelen: 
 
-- _.deployment_: dit bestand meldt App Service om `bash deploy.sh` uit te voeren als het aangepaste implementatiescript.
-- _deploy.sh_: het aangepaste implementatiescript. Als u het bestand bekijkt, ziet u dat `gulp prod` wordt uitgevoerd na `npm install` en `bower install`. 
+- _.deployment_ : dit bestand meldt App Service om `bash deploy.sh` uit te voeren als het aangepaste implementatiescript.
+- _deploy.sh_ : het aangepaste implementatiescript. Als u het bestand bekijkt, ziet u dat `gulp prod` wordt uitgevoerd na `npm install` en `bower install`. 
 
 U kunt deze aanpak gebruiken om een stap toe te voegen aan de op Git gebaseerde implementatie. Als u de Azure-app op enig moment opnieuw start, worden deze automatiseringstaken niet opnieuw uitgevoerd in App Service. Zie [Grunt/Bower/Gulp uitvoeren](configure-language-nodejs.md#run-gruntbowergulp) voor meer informatie.
 
@@ -376,7 +376,7 @@ Werk de rest van de `articles`-code bij om `comment` te gebruiken.
 
 U moet vijf bestanden wijzigen: de servercontroller en de vier clientweergaven. 
 
-Open _modules/articles/server/controllers/articles.server.controller.js_.
+Open _modules/articles/server/controllers/articles.server.controller.js_ .
 
 Voeg aan de `update`-functie een toewijzing voor `article.comment` toe. De volgende code toont de voltooide `update`-functie:
 
@@ -392,7 +392,7 @@ exports.update = function (req, res) {
 };
 ```
 
-Open _modules/articles/client/views/view-article.client.view.html_.
+Open _modules/articles/client/views/view-article.client.view.html_ .
 
 Voeg vlak boven de afsluitende `</section>`-tag de volgende regel toe om `comment` samen met de rest van de artikelgegevens weer te geven:
 
@@ -400,7 +400,7 @@ Voeg vlak boven de afsluitende `</section>`-tag de volgende regel toe om `commen
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
-Open _modules/articles/client/views/list-articles.client.view.html_.
+Open _modules/articles/client/views/list-articles.client.view.html_ .
 
 Voeg vlak boven de afsluitende `</a>`-tag de volgende regel toe om `comment` samen met de rest van de artikelgegevens weer te geven:
 
@@ -408,7 +408,7 @@ Voeg vlak boven de afsluitende `</a>`-tag de volgende regel toe om `comment` sam
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
-Open _modules/articles/client/views/admin/list-articles.client.view.html_.
+Open _modules/articles/client/views/admin/list-articles.client.view.html_ .
 
 Voeg binnen het `<div class="list-group">`-element en vlak boven de afsluitende `</a>`-tag de volgende regel toe om `comment` samen met de rest van de artikelgegevens weer te geven:
 
@@ -416,7 +416,7 @@ Voeg binnen het `<div class="list-group">`-element en vlak boven de afsluitende 
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
-Open _modules/articles/client/views/admin/form-article.client.view.html_.
+Open _modules/articles/client/views/admin/form-article.client.view.html_ .
 
 Zoek het `<div class="form-group">`-element met de verzendknop, dat er als volgt uitziet:
 

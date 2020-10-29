@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1031c34a44a253c7458ef78c6371b88014e882ed
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006429"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746479"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Zelfstudie: Een end-to-end gegevenspijplijn maken om verkoopinzichten in Azure HDInsight af te leiden
 
@@ -27,13 +27,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure CLI - ten minste versie 2.2.0. Raadpleeg [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI - ten minste versie 2.2.0. Raadpleeg [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
 * jq, een opdrachtregel-JSON-processor.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 * Een lid van de [Ingebouwde Azure-rol - eigenaar](../role-based-access-control/built-in-roles.md).
 
-* Als u PowerShell gebruikt om de Data Factory-pijplijn te activeren, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/) nodig.
+* Als u PowerShell gebruikt om de Data Factory-pijplijn te activeren, hebt u de [AZ-module](/powershell/azure/) nodig.
 
 * [Power BI Desktop](https://aka.ms/pbiSingleInstaller) om zakelijke inzichten te visualiseren aan het einde van deze zelfstudie.
 
@@ -93,7 +93,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    Als u niet zeker weet welke regio u moet opgeven, kunt u een lijst met ondersteunde regio's voor uw abonnement ophalen met de opdracht [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations).
+    Als u niet zeker weet welke regio u moet opgeven, kunt u een lijst met ondersteunde regio's voor uw abonnement ophalen met de opdracht [az account list-locations](/cli/azure/account#az-account-list-locations).
 
     Met deze opdracht worden de volgende resources geïmplementeerd:
 
@@ -214,7 +214,7 @@ Als u de pijplijn wilt activeren, kunt u het volgende doen:
 
     of
 
-* Open de data factory en selecteer **Auteur & controle**. Activeer de pijplijn `IngestAndTransform` vanuit de portal. Zie [Apache Hadoop-clusters op aanvraag maken in HDInsight met behulp van Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline) voor meer informatie over het activeren van pijplijnen via de portal.
+* Open de data factory en selecteer **Auteur & controle** . Activeer de pijplijn `IngestAndTransform` vanuit de portal. Zie [Apache Hadoop-clusters op aanvraag maken in HDInsight met behulp van Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline) voor meer informatie over het activeren van pijplijnen via de portal.
 
 Om te controleren of de pijplijn is uitgevoerd, kunt u een van de volgende stappen uitvoeren:
 
@@ -252,19 +252,19 @@ Zie [dit artikel over het gebruik van Jupyter Notebook](/azure/hdinsight/spark/a
 
 1. Open Power BI Desktop.
 
-1. Ga in het menu naar **Gegevens ophalen** > **Meer...**  > **Azure** > **HDInsight Interactive Query**.
+1. Ga in het menu naar **Gegevens ophalen** > **Meer...**  > **Azure** > **HDInsight Interactive Query** .
 
-1. Selecteer **Verbinden**.
+1. Selecteer **Verbinden** .
 
-1. In het dialoogvenster **HDInsight Interactive Query**:
+1. In het dialoogvenster **HDInsight Interactive Query** :
     1. Geef in het tekstvak **Server** de naam van uw LLAP-cluster op in de indeling van `https://LLAPCLUSTERNAME.azurehdinsight.net`.
     1. Voer in het tekstvak **database** `default` in.
-    1. Selecteer **OK**.
+    1. Selecteer **OK** .
 
-1. In het dialoogvenster **AzureHive**:
+1. In het dialoogvenster **AzureHive** :
     1. Voer in het tekstvak **Gebruikersnaam** `admin` in.
     1. Voer in het tekstvak **Wachtwoord** `Thisisapassword1`in.
-    1. Selecteer **Verbinden**.
+    1. Selecteer **Verbinden** .
 
 1. Selecteer in **Navigator** `sales`en/of `sales_raw` om een voorbeeld van de gegevens weer te geven. Nadat de gegevens zijn geladen, kunt u experimenteren met het dashboard dat u wilt maken. Zie de volgende koppelingen om aan de slag te gaan met Power BI-dashboards:
 
