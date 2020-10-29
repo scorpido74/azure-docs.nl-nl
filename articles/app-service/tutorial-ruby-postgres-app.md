@@ -4,13 +4,13 @@ description: Leer hoe u een Linux Ruby-app kunt laten werken in de Azure App Ser
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
-ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: c2baccec75c7b525c0837cebd9d828dff3a79543
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150170"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747139"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Een Ruby- en een Postgres-app maken in Azure App Service op Linux
 
@@ -125,7 +125,7 @@ In deze sectie maakt u een Azure Database for PostgreSQL-server en -database. In
 az extension add --name db-up
 ```
 
-Maak de Postgres-database in Azure met de opdracht [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up), zoals in het volgende voorbeeld wordt weergegeven. Vervang *\<postgresql-name>* door een *unieke* naam (het servereindpunt is *https://\<postgresql-name>.postgres.database.azure.com*). Geef voor *\<admin-username>* en *\<admin-password>* referenties op om een gebruiker met beheerdersrechten te maken voor deze Postgres-server.
+Maak de Postgres-database in Azure met de opdracht [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up), zoals in het volgende voorbeeld wordt weergegeven. Vervang *\<postgresql-name>* door een *unieke* naam (het servereindpunt is *https://\<postgresql-name>.postgres.database.azure.com* ). Geef voor *\<admin-username>* en *\<admin-password>* referenties op om een gebruiker met beheerdersrechten te maken voor deze Postgres-server.
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -157,7 +157,7 @@ In deze stap verbindt u de Ruby on Rails-toepassing met de Postgres-database die
 
 ### <a name="configure-the-database-connection"></a>Verbinding met de database configureren
 
-Open in de opslagplaats _config/database.yml_. Aan de onderkant van het bestand kunt u de productievariabelen vervangen door de volgende code. 
+Open in de opslagplaats _config/database.yml_ . Aan de onderkant van het bestand kunt u de productievariabelen vervangen door de volgende code. 
 
 ```txt
 production:
@@ -336,7 +336,7 @@ Genereer een nieuwe migratie die een Booleaanse kolom met de naam `Done` toevoeg
 rails generate migration AddDoneToTasks Done:boolean
 ```
 
-Met deze opdracht genereert u een nieuw migratiebestand in de map _db/migreren_.
+Met deze opdracht genereert u een nieuw migratiebestand in de map _db/migreren_ .
 
 
 Voer in de terminal Rais-databasemigraties uit om de wijziging in de lokale database door te voeren.
@@ -347,7 +347,7 @@ rake db:migrate
 
 ### <a name="update-application-logic"></a>Toepassingslogica bijwerken
 
-Open het bestand *app/controllers/tasks_controller.rb*. Zoek de volgende regel aan het einde van het bestand:
+Open het bestand *app/controllers/tasks_controller.rb* . Zoek de volgende regel aan het einde van het bestand:
 
 ```rb
 params.require(:task).permit(:Description)
@@ -361,7 +361,7 @@ params.require(:task).permit(:Description, :Done)
 
 ### <a name="update-the-views"></a>De weergaven bijwerken
 
-Open het bestand *app/views/tasks/_form.html.erb*, dit is het formulier Bewerken.
+Open het bestand *app/views/tasks/_form.html.erb* , dit is het formulier Bewerken.
 
 Zoek de regel `<%=f.error_span(:Description) %>` en voeg de volgende code direct eronder in:
 
@@ -372,7 +372,7 @@ Zoek de regel `<%=f.error_span(:Description) %>` en voeg de volgende code direct
 </div>
 ```
 
-Open het bestand *app/views/tasks/show.html.erb*, dit is de pagina met Weergaven van één enkel gegevensrecord. 
+Open het bestand *app/views/tasks/show.html.erb* , dit is de pagina met Weergaven van één enkel gegevensrecord. 
 
 Zoek de regel `<dd><%= @task.Description %></dd>` en voeg de volgende code direct eronder in:
 
@@ -381,7 +381,7 @@ Zoek de regel `<dd><%= @task.Description %></dd>` en voeg de volgende code direc
   <dd><%= check_box "task", "Done", {:checked => @task.Done, :disabled => true}%></dd>
 ```
 
-Open het bestand *app/views/tasks/index.html.erb*, dit is de Index-pagina voor alle records.
+Open het bestand *app/views/tasks/index.html.erb* , dit is de Index-pagina voor alle records.
 
 Zoek de regel `<th><%= model_class.human_attribute_name(:Description) %></th>` en voeg de volgende code direct eronder in:
 

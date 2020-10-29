@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 3cdb7796f3f8c877f130f47b971dc66c113c4d36
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 849f25f6fdd3fef2e1ebca7dae397d96e6849f10
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070109"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748862"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Zelfstudie: Key Vault-referenties gebruiken in een Java Spring-app
 
@@ -54,14 +54,14 @@ In deze zelfstudie leert u het volgende:
     ![Uitvoer nadat het maken van de Key Vault is voltooid](./media/quickstarts/search-services.png)
 1. Typ **Key Vault** in het zoekvak.
 1. Selecteer in de lijst met resultaten **Key Vaults** aan de linkerkant.
-1. Selecteer **Toevoegen** in **Key Vaults**.
+1. Selecteer **Toevoegen** in **Key Vaults** .
 1. Geef rechts in **Key Vault maken** de volgende gegevens op:
     * Selecteer **Abonnement** om een abonnement te kiezen.
     * Selecteer in **Resourcegroep** **Nieuwe maken** en voer een naam in voor de resourcegroep.
     * In **Key Vault-naam** is een unieke naam vereist. Voer voor deze zelfstudie **Contoso-vault2** in.
-    * Kies een locatie in de vervolgkeuzelijst **Regio**.
+    * Kies een locatie in de vervolgkeuzelijst **Regio** .
 1. Zorg ervoor dat de andere opties in **Key Vault maken** de standaardwaarden hebben.
-1. Selecteer **Maken**.
+1. Selecteer **Maken** .
 
 Vanaf nu is uw Azure-account als enige gemachtigd om bewerkingen op deze nieuwe Key Vault uit te voeren.
 
@@ -71,26 +71,26 @@ Vanaf nu is uw Azure-account als enige gemachtigd om bewerkingen op deze nieuwe 
 
 Als u een geheim wilt toevoegen aan de Key Vault, hoeft u maar een paar extra stappen uit te voeren. In dit geval voegt u een bericht toe dat u kunt gebruiken om het ophalen van Key Vault te testen. Het bericht wordt **Bericht** genoemd en u slaat er de waarde Hello from Key Vault in op.
 
-1. Selecteer vanuit de eigenschappenpagina's van de Key Vault **Geheimen**.
-1. Selecteer **Genereren/importeren**.
+1. Selecteer vanuit de eigenschappenpagina's van de Key Vault **Geheimen** .
+1. Selecteer **Genereren/importeren** .
 1. Voer in het deelvenster **Een geheim maken** een van de volgende waarden in:
-    * **Uploadopties**: Voer **Handmatig** in.
-    * **Naam**: **Bericht** invoeren.
-    * **Waarde**: Voer **Hello from Key Vault** in.
+    * **Uploadopties** : Voer **Handmatig** in.
+    * **Naam** : **Bericht** invoeren.
+    * **Waarde** : Voer **Hello from Key Vault** in.
 1. Zorg ervoor dat de andere eigenschappen van **Een geheim maken** de standaardwaarden hebben.
-1. Selecteer **Maken**.
+1. Selecteer **Maken** .
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een sleutelkluisverwijzing toevoegen aan App Configuration
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Alle resources** en selecteer vervolgens de instantie van het App Configuration-archief dat u in de quickstart hebt gemaakt.
 
-1. Selecteer **Configuratieverkenner**.
+1. Selecteer **Configuratieverkenner** .
 
 1. Selecteer **+ Maken** > **Sleutelkluisverwijzing** en geef de volgende waarden op:
-    * **Sleutel**: Selecteer **/application/config.keyvaultmessage**
-    * **Label**: Laat deze waarde leeg.
-    * **Abonnement**, **Resourcegroep** en **Sleutelkluis**: Voer de waarden in die overeenkomen met de waarden in de Key Vault die u in de vorige sectie hebt gemaakt.
-    * **Geheim**: Selecteer het geheim genaamd **Bericht** dat u in de vorige sectie hebt gemaakt.
+    * **Sleutel** : Selecteer **/application/config.keyvaultmessage**
+    * **Label** : Laat deze waarde leeg.
+    * **Abonnement** , **Resourcegroep** en **Sleutelkluis** : Voer de waarden in die overeenkomen met de waarden in de Key Vault die u in de vorige sectie hebt gemaakt.
+    * **Geheim** : Selecteer het geheim genaamd **Bericht** dat u in de vorige sectie hebt gemaakt.
 
 ## <a name="connect-to-key-vault"></a>Verbinding maken met Key Vault
 
@@ -129,7 +129,7 @@ Als u een geheim wilt toevoegen aan de Key Vault, hoeft u maar een paar extra st
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Maak de omgevingsvariabelen **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET** en **AZURE_TENANT_ID**. Gebruik de waarden voor de service-principal die in de vorige stap zijn weergegeven. Voer op de opdrachtregel de volgende opdrachten uit en start de opdrachtprompt opnieuw om de wijziging door te voeren:
+1. Maak de omgevingsvariabelen **AZURE_CLIENT_ID** , **AZURE_CLIENT_SECRET** en **AZURE_TENANT_ID** . Gebruik de waarden voor de service-principal die in de vorige stap zijn weergegeven. Voer op de opdrachtregel de volgende opdrachten uit en start de opdrachtprompt opnieuw om de wijziging door te voeren:
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"
@@ -159,16 +159,16 @@ Als u een geheim wilt toevoegen aan de Key Vault, hoeft u maar een paar extra st
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uw code bijwerken om een Key Vault-referentie te gebruiken
 
-1. Maak een omgevingsvariabele met de naam **APP_CONFIGURATION_ENDPOINT**. Stel de waarde ervan in op het eindpunt van uw App Configuration-opslag. U kunt het eindpunt vinden op de blade **Toegangssleutels** in Azure Portal. Start de opdrachtprompt opnieuw op om de wijziging door te voeren. 
+1. Maak een omgevingsvariabele met de naam **APP_CONFIGURATION_ENDPOINT** . Stel de waarde ervan in op het eindpunt van uw App Configuration-opslag. U kunt het eindpunt vinden op de blade **Toegangssleutels** in Azure Portal. Start de opdrachtprompt opnieuw op om de wijziging door te voeren. 
 
 
-1. Open *bootstrap.properties* in de map *resources*. Werk dit bestand bij om de waarde **APP_CONFIGURATION_ENDPOINT** te gebruiken. Verwijder alle verwijzingen naar een verbindingstekenreeks in dit bestand. 
+1. Open *bootstrap.properties* in de map *resources* . Werk dit bestand bij om de waarde **APP_CONFIGURATION_ENDPOINT** te gebruiken. Verwijder alle verwijzingen naar een verbindingstekenreeks in dit bestand. 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
     ```
 
-1. Open *MessageProperties.java*. Voeg een nieuwe variabele toe met de naam *keyVaultMessage*:
+1. Open *MessageProperties.java* . Voeg een nieuwe variabele toe met de naam *keyVaultMessage* :
 
     ```java
     private String keyVaultMessage;
@@ -182,7 +182,7 @@ Als u een geheim wilt toevoegen aan de Key Vault, hoeft u maar een paar extra st
     }
     ```
 
-1. Open *HelloController.java*. Werk de *getMessage*-methode bij om het bericht dat is opgehaald uit Key Vault toe te voegen.
+1. Open *HelloController.java* . Werk de *getMessage* -methode bij om het bericht dat is opgehaald uit Key Vault toe te voegen.
 
     ```java
     @GetMapping
@@ -220,7 +220,7 @@ Als u een geheim wilt toevoegen aan de Key Vault, hoeft u maar een paar extra st
     }
     ```
 
-1. Maak een nieuw bestand met de naam *AppConfiguration.java*. En voeg de onderstaande code toe.
+1. Maak een nieuw bestand met de naam *AppConfiguration.java* . En voeg de onderstaande code toe.
 
     ```java
     package com.example.demo;

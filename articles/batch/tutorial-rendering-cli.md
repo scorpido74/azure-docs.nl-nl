@@ -3,13 +3,13 @@ title: Een scène renderen in de cloud
 description: 'Zelfstudie: Een Autodesk 3ds Max-scène renderen met Arnold met behulp van de Batch-renderingservice en de Azure-opdrachtregelinterface'
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.custom: mvc
-ms.openlocfilehash: e78580cc2f95f14be53c0432df4eb4bd38450832
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 516f5a3f80f1252dbf63e3b254f0c7200de16e11
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82117128"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747056"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Zelfstudie: Een scène renderen met Azure Batch 
 
@@ -38,7 +38,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 Als u dat nog niet hebt gedaan, maakt u een resourcegroep, een Batch-account en een gekoppeld opslagaccount in uw abonnement. 
 
-Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus2*.
+Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus2* .
 
 ```azurecli-interactive 
 az group create \
@@ -55,7 +55,7 @@ az storage account create \
     --location eastus2 \
     --sku Standard_LRS
 ```
-Maak een Batch-account met behulp van de opdracht [az batch account create](/cli/azure/batch/account#az-batch-account-create). In het volgende voorbeeld wordt een Batch-account met de naam *mybatchaccount* gemaakt in *myResourceGroup*, en wordt het gemaakte opslagaccount gekoppeld.  
+Maak een Batch-account met behulp van de opdracht [az batch account create](/cli/azure/batch/account#az-batch-account-create). In het volgende voorbeeld wordt een Batch-account met de naam *mybatchaccount* gemaakt in *myResourceGroup* , en wordt het gemaakte opslagaccount gekoppeld.  
 
 ```azurecli-interactive 
 az batch account create \
@@ -276,7 +276,7 @@ Open *dragon.jpg* op uw computer. De gerenderde afbeelding ziet er ongeveer als 
 
 ## <a name="scale-the-pool"></a>De pool schalen
 
-U wijzigt u de pool om deze voor te bereiden op een grotere renderingtaak met meerdere frames. Batch biedt een aantal manieren om rekenresources te schalen, waaronder [automatisch schalen](batch-automatic-scaling.md) waarbij knoppunten worden toegevoegd of verwijderd wanneer de taak daarom vraagt. Voor dit eenvoudige voorbeeld gebruikt u de opdracht [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) om het aantal knooppunten met lage prioriteit in de pool te verhogen naar *6*:
+U wijzigt u de pool om deze voor te bereiden op een grotere renderingtaak met meerdere frames. Batch biedt een aantal manieren om rekenresources te schalen, waaronder [automatisch schalen](batch-automatic-scaling.md) waarbij knoppunten worden toegevoegd of verwijderd wanneer de taak daarom vraagt. Voor dit eenvoudige voorbeeld gebruikt u de opdracht [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) om het aantal knooppunten met lage prioriteit in de pool te verhogen naar *6* :
 
 ```azurecli-interactive
 az batch pool resize --pool-id myrenderpool --target-dedicated-nodes 0 --target-low-priority-nodes 6
@@ -286,7 +286,7 @@ Deze wijziging duurt enkele minuten. Tijdens dit proces stelt u de volgende take
 
 ## <a name="render-a-multiframe-scene"></a>Een scène met meerdere frames renderen
 
-Net als in het voorbeeld met één frame gebruikt u de opdracht [az batch task create](/cli/azure/batch/task#az-batch-task-create) om renderingtaken te maken in de taak genaamd *myrenderjob*. Hier geeft u de taakinstellingen op in een JSON-bestand genaamd *myrendertask_multi.json*. (U kunt het bestand downloaden van [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Elk van de zes taken geeft een Arnold-opdrachtregel op om één frame van de 3ds Max-scène *MotionBlur DragonFlying.max* te renderen.
+Net als in het voorbeeld met één frame gebruikt u de opdracht [az batch task create](/cli/azure/batch/task#az-batch-task-create) om renderingtaken te maken in de taak genaamd *myrenderjob* . Hier geeft u de taakinstellingen op in een JSON-bestand genaamd *myrendertask_multi.json* . (U kunt het bestand downloaden van [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Elk van de zes taken geeft een Arnold-opdrachtregel op om één frame van de 3ds Max-scène *MotionBlur DragonFlying.max* te renderen.
 
 Maak een bestand in uw huidige shell met de naam *myrendertask_multi.json* en kopieer en plak de inhoud uit het gedownloade bestand. Wijzig de elementen `blobSource` en `containerURL` in het JSON-bestand, zodat ze de naam van uw opslagaccount en uw SAS-token bevatten. Let erop dat u de instellingen voor elk van de zes taken wijzigt. Sla het bestand op en voer de volgende opdracht uit om de taken in de wachtrij te plaatsen:
 

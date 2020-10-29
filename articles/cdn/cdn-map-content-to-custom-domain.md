@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e880d257b8a8bd6eb287b88e11a1f6c3243fe9a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362092"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778601"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Zelfstudie: Een aangepast domein toevoegen aan uw Azure CDN-eindpunt
 Deze zelfstudie laat zien hoe u een aangepast domein toevoegt aan een Azure CDN-eindpunt (Content Delivery Network). Wanneer u een CDN-eindpunt gebruikt voor het leveren van inhoud, is een aangepast domein nodig als u wilt dat uw eigen domeinnaam zichtbaar is in de URL van uw CDN. Een zichtbare domeinnaam kan handig zijn voor uw klanten en nuttig zijn voor branding-doelen. 
@@ -38,9 +38,9 @@ In deze zelfstudie leert u het volgende:
 
 Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst een CDN-profiel en ten minste één CDN-eindpunt maken. Zie voor meer informatie [Snelstartgids: Een Azure CDN-profiel en een eindpunt maken](cdn-create-new-endpoint.md).
 
-Als u nog geen aangepast domein hebt, moet u er eerst een aanschaffen bij een domeinprovider. Zie bijvoorbeeld [Een aangepaste domeinnaam kopen](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
+Als u nog geen aangepast domein hebt, moet u er eerst een aanschaffen bij een domeinprovider. Zie bijvoorbeeld [Een aangepaste domeinnaam kopen](../app-service/manage-custom-dns-buy-domain.md).
 
-Als u van Azure gebruikmaakt voor het hosten van uw [DNS-domeinen](https://docs.microsoft.com/azure/dns/dns-overview), moet u het domeinnaam-systeem van de domeinprovider (DNS) naar een Azure DNS overdragen. Zie [Delegate a domain to Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) (Een domein aan Azure DNS overdragen) voor meer informatie. Als u van een domeinprovider gebruikmaakt voor het afhandelen van uw DNS-domein, gaat u verder met [Een DNS CNAME-record maken](#create-a-cname-dns-record).
+Als u van Azure gebruikmaakt voor het hosten van uw [DNS-domeinen](../dns/dns-overview.md), moet u het domeinnaam-systeem van de domeinprovider (DNS) naar een Azure DNS overdragen. Zie [Delegate a domain to Azure DNS](../dns/dns-delegate-domain-azure-dns.md) (Een domein aan Azure DNS overdragen) voor meer informatie. Als u van een domeinprovider gebruikmaakt voor het afhandelen van uw DNS-domein, gaat u verder met [Een DNS CNAME-record maken](#create-a-cname-dns-record).
 
 
 ## <a name="create-a-cname-dns-record"></a>Een CNAME DNS-record maken
@@ -50,7 +50,7 @@ Voordat u een aangepast domein met een Azure CDN-eindpunt gebruiken kunt, moet u
 Een aangepast domein en het subdomein kunnen worden slechts aan één eindpunt tegelijk worden gekoppeld. U kunt echter verschillende subdomeinen uit het aangepaste domein gebruiken voor andere Azure-service-eindpunten met behulp van meerdere CNAME-records. U kunt ook een aangepast domein met verschillende subdomeinen toewijzen aan hetzelfde CDN-eindpunt.
 
 > [!NOTE]
-> Als u Azure DNS als domeinprovider gebruikt, kunt u elk type aliasrecord voor aangepaste domeinen gebruiken. In dit scenario wordt het CNAME-recordtype gebruikt. Als u A- of AAAA-recordtypen gebruikt, volgt u de onderstaande stappen en vervangt u CNAME door het recordtype van uw keuze. Als u een aliasrecord gebruikt om een hoofddomein als een aangepast domein toe te voegen en u TLS wilt inschakelen, moet u handmatige validatie gebruiken zoals beschreven in [dit artikel](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint). Zie [Toppunt van een zone instellen op Azure CDN-eindpunten](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints) voor meer informatie.
+> Als u Azure DNS als domeinprovider gebruikt, kunt u elk type aliasrecord voor aangepaste domeinen gebruiken. In dit scenario wordt het CNAME-recordtype gebruikt. Als u A- of AAAA-recordtypen gebruikt, volgt u de onderstaande stappen en vervangt u CNAME door het recordtype van uw keuze. Als u een aliasrecord gebruikt om een hoofddomein als een aangepast domein toe te voegen en u TLS wilt inschakelen, moet u handmatige validatie gebruiken zoals beschreven in [dit artikel](./cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint). Zie [Toppunt van een zone instellen op Azure CDN-eindpunten](../dns/dns-alias.md#point-zone-apex-to-azure-cdn-endpoints) voor meer informatie.
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Tijdelijk cdnverify subdomein toewijzen
 
@@ -62,7 +62,7 @@ Om een CNAME-record te maken met het subdomein cdnverify:
 
 1. Meld u aan bij de website van de domeinprovider voor uw aangepaste domein.
 
-2. Zoek de pagina voor het beheren van DNS-records door de documentatie van de provider te raadplegen, of te zoeken naar gebieden van de website met het label **Domeinnaam**, **DNS**, of **Serverbeheernaam**. 
+2. Zoek de pagina voor het beheren van DNS-records door de documentatie van de provider te raadplegen, of te zoeken naar gebieden van de website met het label **Domeinnaam** , **DNS** , of **Serverbeheernaam** . 
 
 3. Maak een CNAME-record vermelding voor uw aangepaste domein en vul de velden in, zoals wordt weergegeven in de volgende tabel (veldnamen kunnen verschillen):
 
@@ -82,11 +82,11 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
 
 1. Meld u aan en selecteer het aangepaste domein dat u wilt gebruiken.
 
-2. Selecteer in de sectie Domeinen **Alle beheren**, selecteer daarna **DNS** | **Zones beheren**.
+2. Selecteer in de sectie Domeinen **Alle beheren** , selecteer daarna **DNS** | **Zones beheren** .
 
-3. Voer bij **Domeinnaam** uw aangepaste domein in en selecteer **Zoeken**.
+3. Voer bij **Domeinnaam** uw aangepaste domein in en selecteer **Zoeken** .
 
-4. Selecteer op de pagina **DNS-beheer****toevoegen**, selecteer daarna **CNAME** in de **Type**-lijst.
+4. Selecteer op de pagina **DNS-beheer****toevoegen** , selecteer daarna **CNAME** in de **Type** -lijst.
 
 5. Vul de volgende velden van het CNAME-item in:
 
@@ -100,7 +100,7 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
 
     - TTL: Laat *1 uur* geselecteerd.
 
-6. Selecteer **Opslaan**.
+6. Selecteer **Opslaan** .
  
     De CNAME-vermelding wordt toegevoegd aan de tabel DNS-records.
 
@@ -113,23 +113,23 @@ Nadat u uw aangepaste domein hebt geregistreerd, kunt u dit toevoegen aan uw CDN
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/) en blader naar het CDN-profiel met het eindpunt dat u wilt toewijzen aan een aangepast domein.
     
-2. Op de **CDN-profiel**pagina, selecteert u het CDN-eindpunt dat u wilt koppelen aan het aangepaste domein.
+2. Op de **CDN-profiel** pagina, selecteert u het CDN-eindpunt dat u wilt koppelen aan het aangepaste domein.
 
-   De **Eindpunt**-pagina wordt geopend.
+   De **Eindpunt** -pagina wordt geopend.
     
-3. Selecteer **Aangepast domein**. 
+3. Selecteer **Aangepast domein** . 
 
    ![Knop Aangepast CDN-domein](./media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png)
 
    De pagina **Een aangepast domein toevoegen** wordt geopend.
 
-4. Bij **Hostnaam van het eindpunt** wordt automatisch de naam ingevuld van de host die wordt gebruikt als het doeldomein van uw CNAME-record. Deze naam wordt afgeleid van de URL van uw CDN-eindpunt: *&lt;hostnaam van eindpunt&gt;*. azureedge.net. De naam kan niet worden gewijzigd.
+4. Bij **Hostnaam van het eindpunt** wordt automatisch de naam ingevuld van de host die wordt gebruikt als het doeldomein van uw CNAME-record. Deze naam wordt afgeleid van de URL van uw CDN-eindpunt: *&lt;hostnaam van eindpunt&gt;* . azureedge.net. De naam kan niet worden gewijzigd.
 
 5. Bij **Aangepaste hostnaam** voert u de naam van uw aangepaste domein in, inclusief het subdomein, om dit te gebruiken als het brondomein van uw CNAME-record. Bijvoorbeeld: www\.contoso.com of cdn.contoso.com. Gebruik niet de naam van het cdnverify-subdomein.
 
    ![Dialoog Aangepast CDN-domein](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
-6. Selecteer **Toevoegen**.
+6. Selecteer **Toevoegen** .
 
    Azure controleert of het CNAME-record bestaat dat u voor de domeinnaam hebt ingevoerd. Als de CNAME juist is, wordt uw aangepaste domein gevalideerd. 
 
@@ -156,7 +156,7 @@ Maken van een CNAME-record voor uw aangepaste domein:
 
 1. Meld u aan bij de website van de domeinprovider voor uw aangepaste domein.
 
-2. Zoek de pagina voor het beheren van DNS-records door de documentatie van de provider te raadplegen, of te zoeken naar gebieden van de website met het label **Domeinnaam**, **DNS**, of **Serverbeheernaam**. 
+2. Zoek de pagina voor het beheren van DNS-records door de documentatie van de provider te raadplegen, of te zoeken naar gebieden van de website met het label **Domeinnaam** , **DNS** , of **Serverbeheernaam** . 
 
 3. Maak een CNAME-record vermelding voor uw aangepaste domein en vul de velden in, zoals wordt weergegeven in de volgende tabel (veldnamen kunnen verschillen):
 
@@ -180,11 +180,11 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
 
 1. Meld u aan en selecteer het aangepaste domein dat u wilt gebruiken.
 
-2. Selecteer in de sectie Domeinen **Alle beheren**, selecteer daarna **DNS** | **Zones beheren**.
+2. Selecteer in de sectie Domeinen **Alle beheren** , selecteer daarna **DNS** | **Zones beheren** .
 
-3. Voer bij **Domeinnaam** uw aangepaste domein in en selecteer **Zoeken**.
+3. Voer bij **Domeinnaam** uw aangepaste domein in en selecteer **Zoeken** .
 
-4. Selecteer op de pagina **DNS-beheer****toevoegen**, selecteer daarna **CNAME** in de **Type**-lijst.
+4. Selecteer op de pagina **DNS-beheer****toevoegen** , selecteer daarna **CNAME** in de **Type** -lijst.
 
 5. Vul de volgende velden van de CNAME-vermelding in:
 
@@ -198,7 +198,7 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
 
     - TTL: Laat *1 uur* geselecteerd.
 
-6. Selecteer **Opslaan**.
+6. Selecteer **Opslaan** .
  
     De CNAME-vermelding wordt toegevoegd aan de tabel DNS-records.
 
@@ -215,7 +215,7 @@ In de voorgaande stappen hebt u een aangepast domein toegevoegd aan een CDN-eind
  
 1. Selecteer het eindpunt met het aangepaste domein dat u wilt verwijderen in uw CDN-profiel.
 
-2. Klik vanuit de **Eindpunt**-pagina onder Aangepaste domeinen met de rechtermuisknop op het aangepaste domein dat u wilt verwijderen en selecteer vervolgens **Verwijderen** in het contextmenu.  
+2. Klik vanuit de **Eindpunt** -pagina onder Aangepaste domeinen met de rechtermuisknop op het aangepaste domein dat u wilt verwijderen en selecteer vervolgens **Verwijderen** in het contextmenu.  
 
    Het aangepaste domein is ontkoppeld van het eindpunt.
 
@@ -233,5 +233,3 @@ Ga naar de volgende zelfstudie voor meer informatie over hoe u HTTPS configureer
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: HTTPS configureren op een aangepast Azure CDN-domein](cdn-custom-ssl.md)
-
-

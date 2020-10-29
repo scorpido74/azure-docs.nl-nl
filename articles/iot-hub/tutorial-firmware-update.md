@@ -14,18 +14,19 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: a1410b9e8287b34c8b40e841ff513de784e1730a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150558"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748537"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Zelfstudie: Een apparaatfirmware-updateproces implementeren
 
 Mogelijk moet u de firmware bijwerken op de apparaten die zijn aangesloten op uw IoT-hub. Bijvoorbeeld als u nieuwe functies aan de firmware wilt toevoegen of beveiligingspatches toepassen. In veel IoT-scenario's is het onpraktisch om apparaten fysiek te bezoeken en handmatig firmware-updates toe te passen. Deze zelfstudie laat zien hoe u het firmware-updateproces op afstand kunt starten en bewaken via een back-endtoepassing die is aangesloten op uw hub.
 
-Om het firmware-updateproces te maken en te controleren, maakt de back-endapplicatie in deze zelfstudie een _configuratie_ in uw IoT-hub. IoT Hub [automatisch apparaatbeheer](./iot-hub-automatic-device-management.md) gebruikt deze configuratie om een ​​set _gewenste apparaatdubbeleigenschappen_ bij te werken op al uw koelinstallaties. De gewenste eigenschappen specificeren de details van de vereiste firmware-update. Terwijl de koelinstallaties het firmware-updateproces uitvoeren, melden ze hun status aan de back-endtoepassing met behulp van _gerapporteerde apparaatdubbeleigenschappen_. De back-endtoepassing kan de configuratie gebruiken om de gerapporteerde eigenschappen te controleren die vanaf het apparaat zijn verzonden en om het firmware-updateproces tot de voltooiing te volgen:
+Om het firmware-updateproces te maken en te controleren, maakt de back-endapplicatie in deze zelfstudie een _configuratie_ in uw IoT-hub. IoT Hub [automatisch apparaatbeheer](./iot-hub-automatic-device-management.md) gebruikt deze configuratie om een ​​set _gewenste apparaatdubbeleigenschappen_ bij te werken op al uw koelinstallaties. De gewenste eigenschappen specificeren de details van de vereiste firmware-update. Terwijl de koelinstallaties het firmware-updateproces uitvoeren, melden ze hun status aan de back-endtoepassing met behulp van _gerapporteerde apparaatdubbeleigenschappen_ . De back-endtoepassing kan de configuratie gebruiken om de gerapporteerde eigenschappen te controleren die vanaf het apparaat zijn verzonden en om het firmware-updateproces tot de voltooiing te volgen:
 
 ![Firmware-updateproces](media/tutorial-firmware-update/Process.png)
 
@@ -81,7 +82,7 @@ az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
-Deze zelfstudie gebruikt een gesimuleerd apparaat genaamd **MyFirmwareUpdateDevice**. Het volgende script voegt dit apparaat toe aan uw apparaatidentiteitsregister, stelt een tagwaarde in en haalt de verbindingsreeks op:
+Deze zelfstudie gebruikt een gesimuleerd apparaat genaamd **MyFirmwareUpdateDevice** . Het volgende script voegt dit apparaat toe aan uw apparaatidentiteitsregister, stelt een tagwaarde in en haalt de verbindingsreeks op:
 
 ```azurecli-interactive
 # Set the name of your IoT hub
@@ -146,7 +147,7 @@ De gesimuleerde apparaattoepassing maakt een handler voor updates van de gewenst
 
 ## <a name="update-the-firmware"></a>De firmware bijwerken
 
-De update wordt uitgevoerd met de functie **initiateFirmwareUpdateFlow**. Deze functie gebruikt de functie **waterfall** om de fasen van het updateproces op volgorde uit te voeren. In dit voorbeeld heeft de firmware-update vier fasen. In de eerste fase wordt de installatiekopie gedownload, in de tweede fase wordt de installatiekopie gecontroleerd met behulp van een controlesom, in de derde fase wordt de installatiekopie toegepast en de laatste fase wordt het apparaat opnieuw gestart:
+De update wordt uitgevoerd met de functie **initiateFirmwareUpdateFlow** . Deze functie gebruikt de functie **waterfall** om de fasen van het updateproces op volgorde uit te voeren. In dit voorbeeld heeft de firmware-update vier fasen. In de eerste fase wordt de installatiekopie gedownload, in de tweede fase wordt de installatiekopie gecontroleerd met behulp van een controlesom, in de derde fase wordt de installatiekopie toegepast en de laatste fase wordt het apparaat opnieuw gestart:
 
 [!code-javascript[Firmware update flow](~/iot-samples-node/iot-hub/Tutorials/FirmwareUpdate/SimulatedDevice.js?name=firmwareupdateflow "Firmware update flow")]
 

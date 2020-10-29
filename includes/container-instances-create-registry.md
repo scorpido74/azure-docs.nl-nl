@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 08/13/2020
 ms.author: danlep
-ms.custom: include file
-ms.openlocfilehash: 2b1d9b7f9ff07a3e0c7745191decc3e82181553e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 173c9156f253e43111299b53287e97ab7b2c0aa5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708016"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746933"
 ---
 ## <a name="create-azure-container-registry"></a>Azure Container Registry maken
 
 Voordat u het containerregister maakt, hebt u een *resourcegroep* nodig om dit in te implementeren. Een resourcegroep is een logische verzameling waarin alle Azure-resources worden geïmplementeerd en beheerd.
 
-Een resourcegroep maken met de opdracht [az group create][az-group-create]. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt in de regio *eastus*:
+Een resourcegroep maken met de opdracht [az group create][az-group-create]. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt in de regio *eastus* :
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -31,7 +31,7 @@ Zodra u de resourcegroep hebt gemaakt, maakt u een Azure Container Registry met 
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
-Hier volgt een gedeeltelijke uitvoer voor een nieuw Azure-containerregister met de naam *mycontainerregistry082*:
+Hier volgt een gedeeltelijke uitvoer voor een nieuw Azure-containerregister met de naam *mycontainerregistry082* :
 
 ```output
 {

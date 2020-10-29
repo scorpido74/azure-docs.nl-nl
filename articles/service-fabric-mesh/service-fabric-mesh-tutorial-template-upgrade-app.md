@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: eea00fe80b71f97ea280a3a76de5012175bcd61c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 331830c50206d14f7894aa837b483656de4222f2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841982"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747850"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Zelfstudie: Een Service Fabric-toepassing upgraden die wordt uitgevoerd in Service Fabric Mesh
 
@@ -50,7 +50,7 @@ In deze zelfstudie wordt het voorbeeld To Do List gebruikt als voorbeeld. Dit vo
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-In de implementatiesjabloon voor de toepassingsresource heeft elke service een eigenschap *cpu* die kan worden gebruikt om de aangevraagde CPU-bronnen in te stellen. Een toepassing kan bestaan uit meerdere services, waarbij elke service een unieke *cpu*-instelling heeft, die samen worden geïmplementeerd en beheerd. Als u de CPU-bronnen van de web-front-endservice wilt uitbreiden, wijzigt u de waarde *cpue* in de implementatiesjabloon of het parameterbestand.  Vervolgens voert u een upgrade van de toepassing uit.
+In de implementatiesjabloon voor de toepassingsresource heeft elke service een eigenschap *cpu* die kan worden gebruikt om de aangevraagde CPU-bronnen in te stellen. Een toepassing kan bestaan uit meerdere services, waarbij elke service een unieke *cpu* -instelling heeft, die samen worden geïmplementeerd en beheerd. Als u de CPU-bronnen van de web-front-endservice wilt uitbreiden, wijzigt u de waarde *cpue* in de implementatiesjabloon of het parameterbestand.  Vervolgens voert u een upgrade van de toepassing uit.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Parameters van implementatiesjabloon wijzigen
 
@@ -80,7 +80,7 @@ De parameter *frontEndCpu* wordt gedeclareerd in de sectie *parameters* van het 
 }
 ```
 
-De eigenschap *codePackages->resources->requests->cpu* van de WebFrontEnd-service verwijst naar de parameter *frontEndCpu*:
+De eigenschap *codePackages->resources->requests->cpu* van de WebFrontEnd-service verwijst naar de parameter *frontEndCpu* :
 
 ```json
     "services": [

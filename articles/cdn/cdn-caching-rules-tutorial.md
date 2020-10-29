@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81254305"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779234"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Zelfstudie: regels voor Azure CDN-caching instellen
 
 > [!NOTE] 
-> Regels voorcaching zijn alleen beschikbaar voor de profielen **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai**. Voor **Azure CDN van Microsoft**-profielen moet u de [standaardregelengine](cdn-standard-rules-engine-reference.md) gebruiken. Voor **Azure CDN Premium van Verizon**-profielen moet u de [Verizon Premium-regelengine](cdn-rules-engine.md) gebruiken in de portal **Beheren** voor vergelijkbare functionaliteit.
+> Regels voorcaching zijn alleen beschikbaar voor de profielen **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** . Voor **Azure CDN van Microsoft** -profielen moet u de [standaardregelengine](cdn-standard-rules-engine-reference.md) gebruiken. Voor **Azure CDN Premium van Verizon** -profielen moet u de [Verizon Premium-regelengine](./cdn-verizon-premium-rules-engine.md) gebruiken in de portal **Beheren** voor vergelijkbare functionaliteit.
  
 
 In deze zelfstudie wordt beschreven hoe u regels voor Azure CDN-caching (Content Delivery Network) kunt gebruiken om het standaardgedrag van de cacheverlooptijd in te stellen of te wijzigen, zowel globaal als aangepast, zoals een URL-pad en bestandsextensie. Azure CDN biedt twee typen regels voor opslaan in cache:
@@ -48,7 +48,7 @@ Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst een CDN-pro
 
 1. Selecteer in [Azure Portal](https://portal.azure.com) een CDN-profiel. Selecteer vervolgens een eindpunt.
 
-2. Selecteer in het linkerdeelvenster onder Instellingen de optie **Regels voor opslaan in cache**.
+2. Selecteer in het linkerdeelvenster onder Instellingen de optie **Regels voor opslaan in cache** .
 
    ![Knop Regels voor CDN-caching](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
@@ -61,9 +61,9 @@ Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst een CDN-pro
 
 U maakt als volgt een globale regel voor opslaan in cache:
 
-1. Stel onder **Globale regels voor opslaan in cache** de optie **Cachinggedrag van querytekenreeks** in op **Querytekenreeks negeren**.
+1. Stel onder **Globale regels voor opslaan in cache** de optie **Cachinggedrag van querytekenreeks** in op **Querytekenreeks negeren** .
 
-2. Stel **Cachinggedrag** in op **Instellen bij ontbreken**.
+2. Stel **Cachinggedrag** in op **Instellen bij ontbreken** .
        
 3. Voer bij **Verloopduur voor cache** in het veld **Dagen** 10 in.
 
@@ -90,13 +90,13 @@ In de voorgaande stappen hebt u regels voor opslaan in cache gemaakt. Als u deze
  
 1. Selecteer een CDN-profiel. Selecteer vervolgens het eindpunt met de regels voor opslaan in cache die u wilt verwijderen.
 
-2. Selecteer in het linkerdeelvenster onder Instellingen de optie **Regels voor opslaan in cache**.
+2. Selecteer in het linkerdeelvenster onder Instellingen de optie **Regels voor opslaan in cache** .
 
-3. Stel onder **Globale regels voor opslaan in cache****Cachinggedrag** in op **Niet ingesteld**.
+3. Stel onder **Globale regels voor opslaan in cache****Cachinggedrag** in op **Niet ingesteld** .
  
 4. Selecteer onder **Aangepaste regels voor opslaan in cache** het selectievakje naast de regel die u wilt verwijderen.
 
-5. Selecteer **Verwijderen**.
+5. Selecteer **Verwijderen** .
 
 6. Selecteer **Opslaan** boven aan de pagina.
 
@@ -114,6 +114,3 @@ Ga door met het volgende artikel om te leren hoe u extra instellingen voor regel
 
 > [!div class="nextstepaction"]
 > [Cachinggedrag in Azure CDN beheren met regels voor opslaan in cache](cdn-caching-rules.md)
-
-
-

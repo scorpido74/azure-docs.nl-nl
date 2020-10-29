@@ -4,13 +4,13 @@ description: In deze zelfstudie over Azure Kubernetes Service (AKS) leert u hoe 
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: a9a8a73e2208f7efe01f43fa87e196ffd8c64f14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e700934a965f836456458cb33dc46125bef4ab72
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576299"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746997"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Zelfstudie: toepassingen schalen in AKS (Azure Kubernetes Service)
 
@@ -45,7 +45,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Als u het aantal pods in de implementatie van *azure-vote-front* handmatig wilt wijzigen, gebruikt u de opdracht [kubectl scale][kubectl-scale]. In het volgende voorbeeld wordt het aantal pods voor de front-end verhoogd naar *5*:
+Als u het aantal pods in de implementatie van *azure-vote-front* handmatig wilt wijzigen, gebruikt u de opdracht [kubectl scale][kubectl-scale]. In het volgende voorbeeld wordt het aantal pods voor de front-end verhoogd naar *5* :
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
@@ -74,7 +74,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> Als uw AKS-cluster kleiner is dan *1,10*, wordt de Metrics Server niet automatisch geïnstalleerd. De Metrics Server-installatiemanifesten zijn beschikbaar als een `components.yaml`-asset op Metric Server-releases, wat betekent dat u deze kunt installeren via een URL. Zie de sectie [Implementatie][metrics-server-github] van het Leesmij-bestand voor meer informatie over deze YAML-definities.
+> Als uw AKS-cluster kleiner is dan *1,10* , wordt de Metrics Server niet automatisch geïnstalleerd. De Metrics Server-installatiemanifesten zijn beschikbaar als een `components.yaml`-asset op Metric Server-releases, wat betekent dat u deze kunt installeren via een URL. Zie de sectie [Implementatie][metrics-server-github] van het Leesmij-bestand voor meer informatie over deze YAML-definities.
 > 
 > Installatievoorbeeld:
 > ```console

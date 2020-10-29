@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5b6fe2b2704f101a7775b7eb700375105b0a9eca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6061de0a330518baaa829a9a1c8a05f196d68dcb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81259881"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777840"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Zelfstudie: Toegang tot opslagblobs met een aangepast Azure CDN-domein via HTTPS
 
@@ -37,7 +37,7 @@ Wanneer u een CDN-eindpunt maakt in uw profiel, wordt de naam van het eindpunt, 
 Door het HTTPS-protocol in te schakelen voor uw aangepaste domein weet u zeker dat uw gegevens veilig worden afgeleverd op internet via TLS/SSL-versleuteling. Wanneer uw webbrowser is verbonden met een website via HTTPS, wordt het beveiligingscertificaat van de website gevalideerd en wordt er gecontroleerd of deze is uitgegeven door een legitieme certificeringsinstantie. Instructies voor het configureren van HTTPS voor uw aangepaste domein vindt u in deze zelfstudie: [HTTPS op een aangepast Azure CDN-domein configureren](cdn-custom-ssl.md).
 
 ## <a name="shared-access-signatures"></a>Shared Access Signatures
-Als het eindpunt voor uw blobopslag zo is geconfigureerd dat anonieme leestoegang niet is toegestaan, moet u in elke aanvraag naar het aangepaste domein een [SAS-token (Shared Access Signature)](cdn-sas-storage-support.md) opnemen. De standaardinstelling is dat eindpunten voor blobopslag anonieme leestoegang niet toestaan. Zie [Anonieme leestoegang tot containers en blobs beheren](../storage/blobs/storage-manage-access-to-resources.md) voor meer informatie over SAS.
+Als het eindpunt voor uw blobopslag zo is geconfigureerd dat anonieme leestoegang niet is toegestaan, moet u in elke aanvraag naar het aangepaste domein een [SAS-token (Shared Access Signature)](cdn-sas-storage-support.md) opnemen. De standaardinstelling is dat eindpunten voor blobopslag anonieme leestoegang niet toestaan. Zie [Anonieme leestoegang tot containers en blobs beheren](../storage/blobs/anonymous-read-access-configure.md) voor meer informatie over SAS.
 
 Azure CDN negeert eventuele beperkingen die zijn toegevoegd aan het SAS-token. Zo hebben alle SAS-tokens een verlooptijd. Maar omdat deze beperking wordt genegeerd, is inhoud nog steeds toegankelijk met een verlopen SAS, althans totdat de inhoud wordt verwijderd van de POP-servers (Point Of Presence) van het CDN. U kunt bepalen hoe lang gegevens worden opgeslagen in de cache van Azure CDN door de Cache-Control-header in te stellen. Zie [Vervaldatum van Azure Storage-blobs in Azure CDN beheren](cdn-manage-expiration-of-blob-content.md) voor meer informatie.
 
@@ -61,7 +61,3 @@ Als u bijvoorbeeld een opslagaccount in de Verenigde Staten hebt dat is ingestel
 
 ## <a name="next-steps"></a>Volgende stappen
 [Zelfstudie: Azure CDN-regels voor opslaan in cache instellen](cdn-caching-rules-tutorial.md)
-
-
-
-
