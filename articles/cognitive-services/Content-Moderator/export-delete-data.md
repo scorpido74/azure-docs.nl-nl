@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 81713bf8d424b9f272f6b1bccf3657810160d4cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f74fdc9cd30e1dfbd4df6c94842a9dccb435ef4
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73744788"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913650"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>Gebruikers gegevens exporteren of verwijderen in Content Moderator
 
-Content Moderator verzamelt gebruikers gegevens om de service te kunnen gebruiken, maar klanten hebben volledig beheer over het weer geven, exporteren en verwijderen van hun gegevens met behulp van het [hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.com/) en de [api's voor toezicht en controle](https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference).
+Content Moderator verzamelt gebruikers gegevens om de service te kunnen gebruiken, maar klanten hebben volledig beheer over het weer geven, exporteren en verwijderen van hun gegevens met behulp van het [hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.com/) en de [api's voor toezicht en controle](./api-reference.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -33,4 +33,3 @@ Zie de volgende tabel voor meer informatie over het exporteren en verwijderen va
 | Tags | N.v.t. | Gebruik het pictogram **verwijderen** dat beschikbaar is voor elke tag op de pagina instellingen van de gebruikers interface voor het controleren van tags. U kunt ook de knop **team verwijderen** gebruiken op de pagina instellingen van [gebruikers interface team controleren](https://contentmoderator.cognitive.microsoft.com/) . |
 | Beoordelingen | De API voor het [beoordelen van aanvragen](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) aanroepen | Gebruik de knop **team verwijderen** op de pagina instellingen van [gebruikers interface team bekijken](https://contentmoderator.cognitive.microsoft.com/) .
 | Gebruikers | N.v.t. | Gebruik het pictogram **verwijderen** dat beschikbaar is voor elke gebruiker op de pagina instellingen van [gebruikers interface team controleren](https://contentmoderator.cognitive.microsoft.com/) . U kunt ook de knop **team verwijderen** gebruiken op de pagina instellingen van [gebruikers interface team controleren](https://contentmoderator.cognitive.microsoft.com/) . |
-

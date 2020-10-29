@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f4e429d9c5eeee382d59a294a11204f674b1f546
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2d5a6949c5dbe1e4c3c668dcb9eae6e51e5806f7
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911508"
+ms.locfileid: "92926033"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
@@ -85,7 +85,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | tekenreeks |
@@ -216,12 +216,11 @@ Houd rekening met de volgende beperkingen/vereisten:
   - Deze moet op het moment van de implementatie bestaan 
   - Het Key Vault toegangs beleid moet worden ingesteld voor de virtuele machine-VMSS met behulp van een beheerde identiteit. Zie [verifiëren bij Key Vault](../../key-vault/general/authentication.md) en [een Key Vault toegangs beleid toewijzen](../../key-vault/general/assign-access-policy-cli.md).
 
-## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
-
 ### <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 * Is er een limiet voor het aantal observedCertificates dat u kunt instellen?
   Nee, Key Vault VM-extensie heeft geen limiet voor het aantal observedCertificates.
+
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
@@ -243,6 +242,14 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
 /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
+### <a name="using-symlink"></a>Symlink gebruiken
+
+Symbolische koppelingen of symlinks zijn in principe geavanceerde snelkoppelingen. Als u wilt voor komen dat de map wordt bewaakt en het nieuwste certificaat automatisch wordt opgehaald, kunt u deze symlink gebruiken `([VaultName].[CertificateName])` om de meest recente versie van certificaat op Linux te verkrijgen.
+
+### <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+* Is er een limiet voor het aantal observedCertificates dat u kunt instellen?
+  Nee, Key Vault VM-extensie heeft geen limiet voor het aantal observedCertificates.
 
 ### <a name="support"></a>Ondersteuning
 

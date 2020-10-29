@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: b576b5e15461f34468bd7c2d512ac7a636b73ac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5988cc7bdc34521bfa75e9f179f88bfbe881b882
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332726"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925642"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -27,7 +27,7 @@ Hier vindt u informatie over het maken van back-ups en het herstellen van virtue
 
 **Scenario** | **Een back-up maken** | **Agent** |**Herstellen**
 --- | --- | --- | ---
-Directe back-ups van virtuele Azure-machines  | Maak een back-up van de volledige VM.  | Er is geen extra agent nodig op de Azure-VM. Azure Backup installeert en gebruikt een uitbrei ding van de [Azure VM-agent](../virtual-machines/extensions/agent-windows.md) die wordt uitgevoerd op de VM. | Herstel als volgt:<br/><br/> - **Een basis-VM maken**. Dit is handig als de VM geen speciale configuratie heeft, zoals meerdere IP-adressen.<br/><br/> - **Herstel de VM-schijf**. Herstel de schijf. Koppel deze vervolgens aan een bestaande virtuele machine of maak een nieuwe virtuele machine op basis van de schijf met behulp van Power shell.<br/><br/> - **Vervang de VM-schijf**. Als er een virtuele machine bestaat en beheerde schijven (niet-versleuteld) worden gebruikt, kunt u een schijf herstellen en deze gebruiken om een bestaande schijf op de virtuele machine te vervangen.<br/><br/> - **Specifieke bestanden/mappen herstellen**. U kunt bestanden/mappen herstellen vanaf een virtuele machine in plaats van vanaf de hele VM.
+Directe back-ups van virtuele Azure-machines  | Maak een back-up van de volledige VM.  | Er is geen extra agent nodig op de Azure-VM. Azure Backup installeert en gebruikt een uitbrei ding van de [Azure VM-agent](../virtual-machines/extensions/agent-windows.md) die wordt uitgevoerd op de VM. | Herstel als volgt:<br/><br/> - **Een basis-VM maken** . Dit is handig als de VM geen speciale configuratie heeft, zoals meerdere IP-adressen.<br/><br/> - **Herstel de VM-schijf** . Herstel de schijf. Koppel deze vervolgens aan een bestaande virtuele machine of maak een nieuwe virtuele machine op basis van de schijf met behulp van Power shell.<br/><br/> - **Vervang de VM-schijf** . Als er een virtuele machine bestaat en beheerde schijven (niet-versleuteld) worden gebruikt, kunt u een schijf herstellen en deze gebruiken om een bestaande schijf op de virtuele machine te vervangen.<br/><br/> - **Specifieke bestanden/mappen herstellen** . U kunt bestanden/mappen herstellen vanaf een virtuele machine in plaats van vanaf de hele VM.
 Directe back-ups van virtuele Azure-machines (alleen Windows)  | Maak een back-up van specifieke bestanden/mappen/volume. | Installeer de [Azure Recovery Services-agent](backup-azure-file-folder-backup-faq.md).<br/><br/> U kunt de MARS-agent naast de back-upextensie voor de Azure VM-agent uitvoeren om een back-up te maken van de virtuele machine op het niveau van het bestand of de map. | Specifieke mappen/bestanden herstellen.
 Back-up van Azure VM maken op back-upserver  | Back-ups maken van bestanden/mappen/volumes; systeem status/bare metal bestanden; App-gegevens naar System Center DPM of naar Microsoft Azure Backup-Server (MABS).<br/><br/> DPM-MABS maakt vervolgens een back-up van de back-upkluis. | Installeer de DPM/MABS Protection-agent op de VM. De MARS-agent is geïnstalleerd op DPM-MABS.| Bestanden/mappen/volumes herstellen; systeem status/bare metal bestanden; App-gegevens.
 
@@ -88,7 +88,7 @@ Voor Azure VM Linux-back-ups ondersteunt Azure Backup de lijst met Linux- [distr
 **Instelling** | **Limieten**
 --- | ---
 Maximum aantal herstel punten per beveiligd exemplaar (computer/werk belasting) | 9999.
-Maximale verloop tijd voor een herstel punt | Geen limiet.
+Maximale verloop tijd voor een herstel punt | Geen limiet (99 jaar).
 Maximale back-upfrequentie naar kluis (Azure VM-extensie) | Eenmaal per dag.
 Maximale back-upfrequentie voor de kluis (MARS-agent) | Drie back-ups per dag.
 Maximale back-upfrequentie naar DPM/MABS | Om de 15 minuten voor SQL Server.<br/><br/> Eenmaal per uur voor andere werk belastingen.
@@ -130,7 +130,7 @@ Herstel de VM rechtstreeks in een beschikbaarheidsset | Voor Managed disks kunt 
 Back-ups van niet-beheerde Vm's herstellen na een upgrade naar een beheerde VM| Ondersteund.<br/><br/> U kunt schijven herstellen en vervolgens een beheerde virtuele machine maken.
 Herstel de VM naar een herstel punt voordat de virtuele machine is gemigreerd naar Managed disks | Ondersteund.<br/><br/> U kunt herstellen naar onbeheerde schijven (standaard), de herstelde schijven converteren naar beheerde schijven en een virtuele machine maken met de beheerde schijven.
 Een VM herstellen die is verwijderd. | Ondersteund.<br/><br/> U kunt de virtuele machine herstellen vanaf een herstel punt.
-Een domein controller (DC)-VM herstellen die deel uitmaakt van een configuratie met meerdere domein controllers via de portal | Ondersteund als u de schijf herstelt en een virtuele machine maakt met behulp van Power shell.
+Een VM van een domein controller herstellen  | Ondersteund. Zie [vm's van domein controllers herstellen](backup-azure-arm-restore-vms.md#restore-domain-controller-vms)voor meer informatie.
 VM herstellen in een ander virtueel netwerk |Ondersteund.<br/><br/> Het virtuele netwerk moet zich in hetzelfde abonnement en dezelfde regio bevinden.
 
 ## <a name="vm-compute-support"></a>Ondersteuning voor VM-berekening
@@ -160,12 +160,13 @@ Grootte van de gegevens schijf | De afzonderlijke schijf grootte kan Maxi maal 3
 Opslagtype | Standard-HDD, Standard-SSD Premium-SSD.
 Managed Disks | Ondersteund.
 Versleutelde schijven | Ondersteund.<br/><br/> Voor Azure-Vm's met Azure Disk Encryption kan een back-up worden gemaakt (met of zonder de Azure AD-app).<br/><br/> Versleutelde Vm's kunnen niet worden hersteld op het niveau van het bestand of de map. U moet de volledige VM herstellen.<br/><br/> U kunt versleuteling inschakelen voor virtuele machines die al worden beveiligd door Azure Backup.
-Schijven waarop Write Accelerator is ingeschakeld | Niet ondersteund.<br/><br/> Azure Backup worden de schijven die zijn ingeschakeld tijdens het maken van de back-up automatisch uitgesloten van Write Accelerator (WA). Omdat er geen back-up is gemaakt, kunt u deze schijven niet herstellen vanaf herstel punten van de virtuele machine. <br><br> **Belang rijke Opmerking**: virtuele machines met WA-schijven hebben Internet connectiviteit nodig voor een geslaagde back-up (zelfs als deze schijven zijn uitgesloten van de back-up).
+Schijven waarop Write Accelerator is ingeschakeld | Niet ondersteund.<br/><br/> Azure Backup worden de schijven die zijn ingeschakeld tijdens het maken van de back-up automatisch uitgesloten van Write Accelerator (WA). Omdat er geen back-up is gemaakt, kunt u deze schijven niet herstellen vanaf herstel punten van de virtuele machine. <br><br> **Belang rijke Opmerking** : virtuele machines met WA-schijven hebben Internet connectiviteit nodig voor een geslaagde back-up (zelfs als deze schijven zijn uitgesloten van de back-up).
 Back-up maken & ontdubbelde Vm's/schijven herstellen | Azure Backup biedt geen ondersteuning voor ontdubbeling. Raadpleeg dit [artikel](./backup-support-matrix.md#disk-deduplication-support) voor meer informatie <br/> <br/>  -Azure Backup wordt niet gedupliceerd over Vm's in de Recovery Services kluis <br/> <br/>  -Als er Vm's aanwezig zijn tijdens het herstellen, kunnen de bestanden niet worden hersteld omdat de kluis de indeling niet begrijpt. U kunt echter de volledige VM-herstel bewerking uitvoeren.
 Schijf toevoegen aan beveiligde VM | Ondersteund.
 Grootte van schijf op beveiligde virtuele machine wijzigen | Ondersteund.
 Gedeelde opslag| Het maken van back-ups van virtuele machines met Cluster Shared Volume (CSV) of Scale-Out Bestands server wordt niet ondersteund. CSV-schrijvers mislukken waarschijnlijk tijdens het maken van de back-up. Bij het terugzetten kunnen schijven met CSV-volumes mogelijk niet worden opgehaald.
 [Gedeelde schijven](../virtual-machines/disks-shared-enable.md) | Niet ondersteund.
+Ultra-SSD schijven | Niet ondersteund. Zie deze [beperkingen](selective-disk-backup-restore.md#limitations)voor meer informatie.
 
 ## <a name="vm-network-support"></a>VM-netwerk ondersteuning
 

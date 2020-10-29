@@ -2,14 +2,14 @@
 title: Zelfstudie - Docker gebruiken om groepen met meerdere containers te implementeren
 description: Gebruik Docker Compose om een toepassing met meerdere containers te bouwen en uit te voeren en vervolgens de toepassing in Azure Container Instances te brengen
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 10/28/2020
 ms.custom: ''
-ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708254"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913837"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Zelfstudie: Een groep met meerdere containers implementeren met behulp van Docker Compose 
 
@@ -35,9 +35,9 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure CLI**: de Azure CLI moet op uw lokale computer zijn geïnstalleerd. Versie 2.10.1 of hoger wordt aanbevolen. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+* **Azure CLI** : de Azure CLI moet op uw lokale computer zijn geïnstalleerd. Versie 2.10.1 of hoger wordt aanbevolen. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
-* **Docker Desktop**: u moet Docker Desktop versie 2.3.0.5 of hoger gebruiken. Deze versie is beschikbaar voor [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) of [macOS](https://desktop.docker.com/mac/edge/Docker.dmg). U kunt ook de [Docker ACI Integration CLI voor Linux](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux) installeren.
+* **Docker Desktop** : u moet Docker Desktop versie 2.3.0.5 of hoger gebruiken. Deze versie is beschikbaar voor [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) of [macOS](https://desktop.docker.com/mac/edge/Docker.dmg). U kunt ook de [Docker ACI Integration CLI voor Linux](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux) installeren.
 
 [!INCLUDE [container-instances-create-registry](../../includes/container-instances-create-registry.md)]
 
@@ -67,14 +67,16 @@ Open docker-compose.yaml in een teksteditor. Het bestand configureert de `azure-
 version: '3'
 services:
   azure-vote-back:
-    image: redis
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     container_name: azure-vote-back
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
     ports:
         - "6379:6379"
 
   azure-vote-front:
     build: ./azure-vote
-    image: azure-vote-front
+    image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
     container_name: azure-vote-front
     environment:
       REDIS: azure-vote-back
@@ -93,8 +95,10 @@ Het bijgewerkte bestand moet er ongeveer als volgt uitzien:
 version: '3'
 services:
   azure-vote-back:
-    image: redis
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     container_name: azure-vote-back
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
     ports:
         - "6379:6379"
 
@@ -128,7 +132,7 @@ $ docker images
 
 REPOSITORY                                TAG        IMAGE ID            CREATED             SIZE
 myregistry.azurecr.io/azure-vote-front    latest     9cc914e25834        40 seconds ago      944MB
-redis                                     latest     a1b99da73d05        7 days ago          104MB
+mcr.microsoft.com/oss/bitnami/redis       6.0.8      3a54a920bb6c        4 weeks ago          103MB
 tiangolo/uwsgi-nginx-flask                python3.6  788ca94b2313        9 months ago        9444MB
 ```
 
@@ -137,9 +141,9 @@ Voer de opdracht [docker ps](https://docs.docker.com/engine/reference/commandlin
 ```
 $ docker ps
 
-CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS                           NAMES
-82411933e8f9        myregistry.azurecr.io/azure-vote-front  "/entrypoint.sh /sta…"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:80->80/tcp   azure-vote-front
-b68fed4b66b6        redis                                   "docker-entrypoint.s…"   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
+CONTAINER ID        IMAGE                                      COMMAND                  CREATED             STATUS              PORTS                           NAMES
+82411933e8f9        myregistry.azurecr.io/azure-vote-front     "/entrypoint.sh /sta…"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:80->80/tcp   azure-vote-front
+b62b47a7d313        mcr.microsoft.com/oss/bitnami/redis:6.0.8  "/opt/bitnami/script…"   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
 ```
 
 Als u wilt zien hoe de toepassing wordt uitgevoerd, typt u `http://localhost:80` in een lokale browser. De voorbeeldtoepassing wordt dan geladen, zoals wordt weergegeven in het volgende voorbeeld:
@@ -205,9 +209,9 @@ docker ps
 Voorbeelduitvoer:
 
 ```
-CONTAINER ID                           IMAGE                                    COMMAND             STATUS              PORTS
-azurevotingappredis_azure-vote-back    redis                                                        Running             52.179.23.131:6379->6379/tcp
-azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                       Running             52.179.23.131:80->80/tcp
+CONTAINER ID                           IMAGE                                         COMMAND             STATUS              PORTS
+azurevotingappredis_azure-vote-back    mcr.microsoft.com/oss/bitnami/redis:6.0.8                         Running             52.179.23.131:6379->6379/tcp
+azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                            Running             52.179.23.131:80->80/tcp
 ```
 
 Als u de actieve toepassing in de cloud wilt zien, voert u het weergegeven IP-adres in een lokale webbrowser in. In dit voorbeeld voert u `52.179.23.131` in. De voorbeeldtoepassing wordt dan geladen, zoals wordt weergegeven in het volgende voorbeeld:

@@ -1,6 +1,6 @@
 ---
 title: Fortinet-gegevens koppelen aan Azure-Sentinel | Microsoft Docs
-description: Verbind uw Fortinet-apparaat met Azure Sentinel voor het weer geven van Dash boards, het maken van aangepaste waarschuwingen en het verbeteren van het onderzoek. 
+description: Verbind uw Fortinet-apparaat met Azure Sentinel voor het weer geven van Dash boards, het maken van aangepaste waarschuwingen en het verbeteren van het onderzoek.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60be22f439547d006f54e489833b63171e617e3e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511327"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913990"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Fortinet verbinden met Azure-Sentinel
 
@@ -38,19 +38,19 @@ Configureer Fortinet voor het door sturen van syslog-berichten in de CEF-indelin
 
     ```console
     config log syslogd setting
+    set status enable
     set format cef
     set port 514
     set server <ip_address_of_Receiver>
-    set status enable
     end
     ```
 
     - Vervang het IP **-adres** van de server door het IP-adres van de agent.
     - Stel de **syslog-poort** in op **514** of de poort die is ingesteld op de agent.
-    - Als u de CEF-indeling in vroege FortiOS-versies wilt inschakelen, moet u mogelijk de opdracht set **CSV Disable**uitvoeren.
+    - Als u de CEF-indeling in vroege FortiOS-versies wilt inschakelen, moet u mogelijk de opdracht set **CSV Disable** uitvoeren.
  
    > [!NOTE] 
-   > Ga naar de [document bibliotheek van Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)voor meer informatie. Selecteer uw versie en gebruik de naslag **handleiding** en het **logboek bericht**.
+   > Ga naar de [document bibliotheek van Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)voor meer informatie. Selecteer uw versie en gebruik de naslag **handleiding** en het **logboek bericht** .
 
 1. Als u het relevante schema in Azure Monitor Log Analytics voor de Fortinet-gebeurtenissen wilt gebruiken, zoekt u naar `CommonSecurityLog` .
 

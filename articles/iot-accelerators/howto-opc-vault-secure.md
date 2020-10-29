@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: e95edf21b7d6dce29b31220533269439fac120e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1b7564988c8a4d63a37b53d18ed3a7359e65d72
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281947"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926407"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>De OPC-kluis certificaat beheer service gebruiken
 
@@ -40,7 +40,7 @@ Als u dit nog niet hebt gedaan, maakt u het CA-certificaat van de certificaat ve
 > De rol schrijver is vereist voor het registreren van een toepassing.
 
 1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net` en meld u aan.
-2. Ga naar **Nieuw registreren**. Voor een toepassings registratie moet aan een gebruiker ten minste de rol van schrijver zijn toegewezen.
+2. Ga naar **Nieuw registreren** . Voor een toepassings registratie moet aan een gebruiker ten minste de rol van schrijver zijn toegewezen.
 2. Het invoer formulier volgt naam conventies in OPC UA. Zo wordt in de volgende scherm afbeelding de instellingen voor het voor beeld van het [OPC UA-referentie server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) in de OPC ua .NET Standard stack weer gegeven:
 
    ![Scherm afbeelding van registratie van UA-referentie server](media/howto-opc-vault-secure/reference-server-registration.png "Registratie van UA-referentie server")
@@ -53,7 +53,7 @@ Beveilig uw OPC UA-toepassing door een ondertekend certificaat uit te geven op b
 
 #### <a name="request-a-new-certificate-with-a-new-keypair"></a>Een nieuw certificaat aanvragen met een nieuw sleutel paar
 
-1. Ga naar **toepassingen**.
+1. Ga naar **toepassingen** .
 3. Selecteer een **nieuwe aanvraag** voor een vermelde toepassing.
 
    ![Scherm afbeelding van nieuw certificaat aanvragen](media/howto-opc-vault-secure/request-new-certificate.png "Nieuw certificaat aanvragen")
@@ -64,21 +64,21 @@ Beveilig uw OPC UA-toepassing door een ondertekend certificaat uit te geven op b
 
 4. Vul het formulier in met een onderwerp en de domein namen. Kies voor de persoonlijke sleutel PEM of PFX met wacht woord. Selecteer **Nieuw sleutel paar genereren** om de certificaat aanvraag te maken.
 
-   ![Scherm opname van Details van certificaat aanvraag weer geven](media/howto-opc-vault-secure/approve-reject.png "Certificaat goed keuren")
+   ![Scherm opname van het scherm Details van certificaat aanvraag weer geven en de knop Nieuw sleutel paar genereren.](media/howto-opc-vault-secure/approve-reject.png "Certificaat goed keuren")
 
 5. Voor goed keuring is een gebruiker met de rol goed keurder en met handtekening machtigingen in Azure Key Vault vereist. In de standaard werk stroom moeten de rollen fiatteur en aanvrager worden toegewezen aan verschillende gebruikers. Selecteer **goed keuren** of **afwijzen** om de daad werkelijke aanmaak van het sleutel paar en de ondertekening bewerking te starten of te annuleren. Het nieuwe sleutel paar wordt gemaakt en veilig opgeslagen in Azure Key Vault, totdat het is gedownload door de aanvrager van het certificaat. Het resulterende certificaat met de open bare sleutel is ondertekend door de CA. Het kan een paar seconden duren voordat deze bewerkingen zijn voltooid.
 
    ![Scherm opname van Details van certificaat aanvragen weer geven, met goedkeurings bericht onderaan](media/howto-opc-vault-secure/view-key-pair.png "Sleutel paar weer geven")
 
 7. De resulterende persoonlijke sleutel (PFX of PEM) en het certificaat (DER) kunnen hier worden gedownload in de indeling die is geselecteerd als binair bestand downloaden. Er is ook een met base64 gecodeerde versie beschikbaar, bijvoorbeeld om het certificaat te kopiëren en te plakken naar een opdracht regel of tekst invoer. 
-8. Nadat de persoonlijke sleutel is gedownload en veilig is opgeslagen, kunt u **persoonlijke sleutel verwijderen**selecteren. Het certificaat met de open bare sleutel blijft beschikbaar voor toekomstig gebruik.
+8. Nadat de persoonlijke sleutel is gedownload en veilig is opgeslagen, kunt u **persoonlijke sleutel verwijderen** selecteren. Het certificaat met de open bare sleutel blijft beschikbaar voor toekomstig gebruik.
 9. Als gevolg van het gebruik van een door een CA ondertekend certificaat, moeten het CA-certificaat en de certificaatintrekkingslijst (CRL) hier ook worden gedownload.
 
 Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL gekopieerd naar een `trusted` map, terwijl de open bare en persoonlijke sleutels van het toepassings certificaat worden toegepast op een `own` map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>Een nieuw certificaat aanvragen bij een CSR 
 
-1. Ga naar **toepassingen**.
+1. Ga naar **toepassingen** .
 3. Selecteer een **nieuwe aanvraag** voor een vermelde toepassing.
 
    ![Scherm afbeelding van nieuw certificaat aanvragen](media/howto-opc-vault-secure/request-new-certificate.png "Nieuw certificaat aanvragen")
@@ -87,16 +87,16 @@ Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet w
 
    ![Scherm opname van een nieuw certificaat genereren](media/howto-opc-vault-secure/generate-new-certificate.png "Nieuw certificaat genereren")
 
-4. Upload CSR door een lokaal bestand te selecteren of door een met base64 gecodeerde CSR in het formulier te plakken. Selecteer **Nieuw certificaat genereren**.
+4. Upload CSR door een lokaal bestand te selecteren of door een met base64 gecodeerde CSR in het formulier te plakken. Selecteer **Nieuw certificaat genereren** .
 
    ![Scherm opname van Details van certificaat aanvraag weer geven](media/howto-opc-vault-secure/approve-reject-csr.png "CSR goed keuren")
 
 5. Voor goed keuring is een gebruiker met de rol goed keurder en met handtekening machtigingen in Azure Key Vault vereist. Selecteer **goed keuren** of **afwijzen** om de werkelijke ondertekening bewerking te starten of te annuleren. Het resulterende certificaat met de open bare sleutel is ondertekend door de CA. Het kan een paar seconden duren voordat deze bewerking is voltooid.
 
-   ![Scherm opname van Details van certificaat aanvragen weer geven, met goedkeurings bericht onderaan](media/howto-opc-vault-secure/view-cert-csr.png "Certificaat weer geven")
+   ![Scherm opname van de details van de certificaat aanvraag weer geven en bevat een goedkeurings bericht onderaan.](media/howto-opc-vault-secure/view-cert-csr.png "Certificaat weer geven")
 
 6. Het resulterende certificaat (DER) kan hier worden gedownload als binair bestand. Er is ook een met base64 gecodeerde versie beschikbaar, bijvoorbeeld om het certificaat te kopiëren en te plakken naar een opdracht regel of tekst invoer. 
-10. Nadat het certificaat is gedownload en beveiligd is opgeslagen, kunt u **certificaat verwijderen**selecteren.
+10. Nadat het certificaat is gedownload en beveiligd is opgeslagen, kunt u **certificaat verwijderen** selecteren.
 11. Als gevolg van het gebruik van een door een CA ondertekend certificaat, moeten het CA-certificaat en de CRL ook hier worden gedownload.
 
 Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe certificaat moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL gekopieerd naar een `trusted` map, terwijl het toepassings certificaat wordt toegepast op een `own` map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.

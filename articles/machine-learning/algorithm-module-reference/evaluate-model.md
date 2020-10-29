@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 6dfee84c44643823a4ec76c32e750febc6646be5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9405eb01dbe2d7ea9d4a9e64bf7dd79ca356e9f5
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908050"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926985"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
@@ -34,13 +34,21 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
 
 
 ## <a name="how-to-use-evaluate-model"></a>Het gebruik van een evalueren model
-1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of de uitvoer van de gegevensset van het resultaat van de gegevens van het type [toewijzen aan clusters](./assign-data-to-clusters.md) aan de linkerkant invoer poort van het **Evalueer model**. 
+1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of de uitvoer van de gegevensset van het resultaat van de gegevens van het type [toewijzen aan clusters](./assign-data-to-clusters.md) aan de linkerkant invoer poort van het **Evalueer model** . 
     > [!NOTE] 
     > Als u modules als ' select columns in Dataset ' wilt gebruiken om een deel van een invoer gegevensset te selecteren, moet u ervoor zorgen dat de werkelijke Label kolom (gebruikt in de training), de kolom ' gescoorde kansen ' en de kolom ' gescoorde labels ' bestaan voor het berekenen van metrische gegevens zoals AUC, nauw keurigheid voor binaire classificatie/anomalie detectie.
     > Kolom werkelijk label, de kolom scoored labels bestaat voor het berekenen van metrische gegevens voor classificatie en regressie met meerdere klassen.
     > De kolom Assignments, columns DistancesToClusterCenter. X ' (X is massa middelpunt index, variërend van 0,..., aantal centroids-1) bevindt zich voor het berekenen van metrische gegevens voor clustering.
 
-2. Beschrijving Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of het resultaat van de gegevensset-uitvoer van de gegevens voor het tweede model aan de **juiste** invoer poort van het **Evalueer model**. U kunt de resultaten van twee verschillende modellen op dezelfde gegevens eenvoudig vergelijken. De twee invoer algoritmen moeten hetzelfde algoritme type zijn. U kunt ook scores van twee verschillende uitvoeringen vergelijken met dezelfde gegevens met verschillende para meters.
+    > [!IMPORTANT]
+    > + Als u de resultaten wilt evalueren, moet de uitvoer gegevensset specifieke namen van de Score kolom bevatten die voldoen aan de vereisten voor de module voor het evalueren van modellen.
+    > + De `Labels` kolom wordt als werkelijke labels beschouwd.
+    > + Voor de regressie taak moet de te evalueren gegevensset één kolom hebben met de naam `Regression Scored Labels` , die de gescoorde labels vertegenwoordigt.
+    > + Voor de binaire classificatie taak moet de te evalueren gegevensset twee kolommen hebben, met de naam `Binary Class Scored Labels` , `Binary Class Scored Probabilities` die de gescoorde labels en de waarschijnlijkheid vertegenwoordigen.
+    > + Voor een taak met meerdere classificaties moet de te evalueren gegevensset één kolom hebben met de naam `Multi Class Scored Labels` , die de gescoorde labels vertegenwoordigt.
+    > Als de uitvoer van de upstream-module deze kolommen niet bevat, moet u wijzigingen aanbrengen in overeenstemming met de bovenstaande vereisten.
+
+2. Beschrijving Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of het resultaat van de gegevensset-uitvoer van de gegevens voor het tweede model aan de **juiste** invoer poort van het **Evalueer model** . U kunt de resultaten van twee verschillende modellen op dezelfde gegevens eenvoudig vergelijken. De twee invoer algoritmen moeten hetzelfde algoritme type zijn. U kunt ook scores van twee verschillende uitvoeringen vergelijken met dezelfde gegevens met verschillende para meters.
 
     > [!NOTE]
     > Algoritme type verwijst naar ' Two-class classificatie ', ' multi-class classificatie ', ' regressie ', ' clustering ' onder ' Machine Learning-algoritmen '. 
@@ -49,14 +57,14 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
 
 ## <a name="results"></a>Resultaten
 
-Nadat u het **model evalueren**hebt uitgevoerd, selecteert u de module om het navigatie paneel voor het **model evalueren** te openen aan de rechter kant.  Kies vervolgens het tabblad **uitvoer en logboeken** en op dat tabblad bevat de sectie **gegevens uitvoer** meerdere pictogrammen. Het pictogram **visualiseren** bevat een pictogram van een staaf diagram en is een eerste manier om de resultaten weer te geven.
+Nadat u het **model evalueren** hebt uitgevoerd, selecteert u de module om het navigatie paneel voor het **model evalueren** te openen aan de rechter kant.  Kies vervolgens het tabblad **uitvoer en logboeken** en op dat tabblad bevat de sectie **gegevens uitvoer** meerdere pictogrammen. Het pictogram **visualiseren** bevat een pictogram van een staaf diagram en is een eerste manier om de resultaten weer te geven.
 
 Voor binaire classificatie kunt u, nadat u op het pictogram **visualiseren** hebt geklikt, de binaire Verwar ring visualiseren.
 Voor multi-classificatie kunt u het teken bestand met de Verwar ring matrix vinden op het tabblad **uitvoer en logboeken** , zoals hieronder:
 > [!div class="mx-imgBorder"]
 > ![Voor beeld van geüploade afbeelding](media/module/multi-class-confusion-matrix.png)
 
-Als u gegevens sets verbindt met zowel de invoer van een **Evalueer model**, bevatten de resultaten metrische gegevens voor beide sets of beide modellen.
+Als u gegevens sets verbindt met zowel de invoer van een **Evalueer model** , bevatten de resultaten metrische gegevens voor beide sets of beide modellen.
 Het model of de gegevens die aan de linker poort zijn gekoppeld, worden eerst in het rapport weer gegeven, gevolgd door de metrieken voor de gegevensset of het model dat is gekoppeld aan de juiste poort.  
 
 De volgende afbeelding vertegenwoordigt bijvoorbeeld een vergelijking van de resultaten van twee cluster modellen die zijn gebouwd op dezelfde gegevens, maar met verschillende para meters.  
@@ -67,7 +75,7 @@ Omdat dit een cluster model is, zijn de evaluatie resultaten anders dan wanneer 
 
 ## <a name="metrics"></a>Metrische gegevens
 
-In deze sectie worden de metrische gegevens die worden geretourneerd voor de specifieke typen modellen beschreven die worden ondersteund voor gebruik met het **Evaluate-model**:
+In deze sectie worden de metrische gegevens die worden geretourneerd voor de specifieke typen modellen beschreven die worden ondersteund voor gebruik met het **Evaluate-model** :
 
 + [classificatie modellen](#metrics-for-classification-models)
 + [regressie modellen](#metrics-for-regression-models)
@@ -105,7 +113,7 @@ De metrische gegevens die voor regressie modellen zijn geretourneerd, zijn ontwo
   
 
   
-- De **determinatie coëfficiënt**, vaak R<sup>2</sup>genoemd, vertegenwoordigt de voorspellende kracht van het model als een waarde tussen 0 en 1. Nul betekent dat het model wille keurig is (er wordt niets uitgelegd). 1 betekent dat er een perfecte aanpassing is. Wees echter voorzichtig bij het interpreteren van R<sup>2</sup> -waarden, omdat lage waarden volledig normaal kunnen zijn en hoge waarden kunnen worden verdacht.
+- De **determinatie coëfficiënt** , vaak R <sup>2</sup>genoemd, vertegenwoordigt de voorspellende kracht van het model als een waarde tussen 0 en 1. Nul betekent dat het model wille keurig is (er wordt niets uitgelegd). 1 betekent dat er een perfecte aanpassing is. Wees echter voorzichtig bij het interpreteren van R<sup>2</sup> -waarden, omdat lage waarden volledig normaal kunnen zijn en hoge waarden kunnen worden verdacht.
 
 ###  <a name="metrics-for-clustering-models"></a>Metrische gegevens voor cluster modellen
 
@@ -117,15 +125,15 @@ Omdat de cluster modellen in veel opzichten aanzienlijk verschillen van classifi
   
 De volgende metrische gegevens worden gerapporteerd voor het evalueren van cluster modellen.
     
--   De scores in de kolom, **gemiddelde afstand tot ander midden**, geven aan hoe dicht, op gemiddeld elk punt in het cluster naar de centroids van alle andere clusters gaat.   
+-   De scores in de kolom, **gemiddelde afstand tot ander midden** , geven aan hoe dicht, op gemiddeld elk punt in het cluster naar de centroids van alle andere clusters gaat.   
 
--   De scores in de kolom, **gemiddelde afstand tot cluster centrum**, vertegenwoordigen de dichtheid van alle punten in een cluster naar de massa middelpunt van dat cluster.  
+-   De scores in de kolom, **gemiddelde afstand tot cluster centrum** , vertegenwoordigen de dichtheid van alle punten in een cluster naar de massa middelpunt van dat cluster.  
   
 -   In de kolom **aantal punten** ziet u hoeveel gegevens punten zijn toegewezen aan elk cluster, samen met het totale aantal gegevens punten in een cluster.  
   
      Als het aantal gegevens punten dat aan clusters is toegewezen kleiner is dan het totale aantal beschik bare gegevens punten, betekent dit dat de gegevens punten niet aan een cluster kunnen worden toegewezen.  
   
--   De scores in de kolom, de **maximale afstand tot het cluster centrum**vertegenwoordigen het maximum van de afstand tussen de afzonderlijke punten en de massa middelpunt van het cluster van dat punt.  
+-   De scores in de kolom, de **maximale afstand tot het cluster centrum** vertegenwoordigen het maximum van de afstand tussen de afzonderlijke punten en de massa middelpunt van het cluster van dat punt.  
   
      Als dit aantal hoog is, kan dit betekenen dat het cluster veel wordt verspreid. U moet deze statistiek samen met de **gemiddelde afstand tot cluster centrum** door nemen om de verspreiding van het cluster te bepalen.   
 

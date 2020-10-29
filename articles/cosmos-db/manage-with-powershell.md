@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: c56f3b561dbced9f00bb2616f5709a51fa02fbcb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3b5cc1dd61b4f01e40c1cc812e93a448855ad92d
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481003"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926509"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Azure Cosmos DB core-API-resources (SQL) beheren met Power shell
 
-In de volgende hand leiding wordt beschreven hoe u Power shell gebruikt voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB core-API-resources, waaronder het Cosmos-account, de data base, de container en de door voer. Voor Power shell-cmdlets voor andere Api's Zie [Power shell-voor beelden voor Cassandra](powershell-samples-cassandra.md), [Power shell-voor beelden voor MongoDb API](powershell-samples-mongodb.md), [Power shell-voor beelden voor Gremlin](powershell-samples-gremlin.md), [Power shell-voor beelden voor tabel](powershell-samples-table.md)
+In de volgende hand leiding wordt beschreven hoe u Power shell gebruikt voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB core-API-resources, waaronder het Cosmos-account, de data base, de container en de door voer. Zie voor PowerShell-cmdlets voor andere API's [PowerShell Samples for Cassandra](powershell-samples-cassandra.md), [PowerShell Samples for MongoDB API](powershell-samples-mongodb.md), [PowerShell Samples for Gremlin](powershell-samples-gremlin.md), [PowerShell Samples for Table](powershell-samples-table.md)
 
 > [!NOTE]
 > De voorbeelden in dit artikel maken gebruik van beheer-cmdlets voor [AZ. CosmosDB](/powershell/module/az.cosmosdb). Zie de referentiepagina van [Az.CosmosDB](/powershell/module/az.cosmosdb) API voor de nieuwste wijzigingen.
@@ -78,7 +78,7 @@ New-AzCosmosDBAccount `
 * `$resourceGroupName` De Azure-resourcegroep waarin de Cosmos-account moet worden geïmplementeerd. Deze moet al bestaan.
 * `$locations` De regio's voor het database account, de regio met, `FailoverPriority 0` is de schrijf regio.
 * `$accountName` De naam voor het Azure Cosmos-account. Moet uniek zijn, met kleine letters, mag alleen alfanumerieke tekens en '-'-tekens bevatten en moet tussen 3 en 31 tekens lang zijn.
-* `$apiKind` Het type Cosmos-account dat moet worden gemaakt. Zie [API's in Cosmos DB](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis) voor meer informatie.
+* `$apiKind` Het type Cosmos-account dat moet worden gemaakt. Zie [API's in Cosmos DB](introduction.md#simplified-application-development) voor meer informatie.
 * `$consistencyPolicy`, `$maxStalenessInterval` en `$maxStalenessPrefix` Het standaardconsistentieniveau en de instellingen van het Azure Cosmos-account. Zie de [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md) voor meer informatie.
 
 Azure Cosmos-accounts kunnen worden geconfigureerd met IP-firewall, service-eindpunten voor virtueel netwerk- en privé-eindpunten. Zie [IP-firewall configureren](how-to-configure-firewall.md) voor meer informatie over het configureren van de IP-firewall voor Azure Cosmos DB. Zie [Toegang vanuit virtuele netwerken configureren](how-to-configure-vnet-service-endpoint.md) voor meer informatie over het inschakelen van service-eindpunten voor Azure Cosmos DB. Zie [Toegang vanuit privé-eindpunten configureren](how-to-configure-private-endpoints.md) voor meer informatie over het inschakelen van privé-eindpunten voor Azure Cosmos DB.

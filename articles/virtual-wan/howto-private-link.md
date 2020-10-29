@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
-ms.openlocfilehash: fa4828d8b2752168d5f66a4f80c00611f80f0176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306630"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913752"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Privé-koppeling in virtuele WAN gebruiken
 
@@ -72,7 +72,7 @@ $ sqlcmd -S wantest.database.windows.net -U $username -P $password -Q "$query"
 10.1.3.75
 ```
 
-Zoals u kunt zien, gebruiken we een speciale SQL-query die ons het bron-IP-adres geeft dat de SQL-Server van de client ziet. In dit geval ziet de server de client met zijn privé-IP ( `10.1.3.75` ), wat betekent dat het verkeer niet via het open bare Internet wordt getransporteerd, maar direct in het persoonlijke eind punt gaat.
+Zoals u kunt zien, gebruiken we een speciale SQL-query die ons het bron-IP-adres geeft dat de SQL-Server van de client ziet. In dit geval ziet de server de client met zijn privé-IP ( `10.1.3.75` ), wat betekent dat het verkeer rechtstreeks naar het persoonlijke eind punt gaat vanuit het VNet.
 
 Houd er rekening mee dat u de variabelen moet instellen `username` en `password` overeenkomen met de referenties die zijn gedefinieerd in de Azure SQL database om de voor beelden in deze hand leiding te laten werken.
 

@@ -3,16 +3,16 @@ title: Knoop punten en Pools in Azure Batch
 description: Meer informatie over reken knooppunten en Pools en hoe deze worden gebruikt in een Azure Batch werk stroom vanuit een ontwikkelings oogpunt.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371440"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913803"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoop punten en Pools in Azure Batch
 
-In een Azure Batch-werk stroom is een *reken knooppunt* (of een *knoop punt*) een virtuele machine die een deel van de werk belasting van uw toepassing verwerkt. Een *pool* is een verzameling van deze knoop punten waarop uw toepassing kan worden uitgevoerd. In dit artikel vindt u meer informatie over knoop punten en groepen, samen met overwegingen bij het maken en gebruiken van deze in een Azure Batch werk stroom.
+In een Azure Batch-werk stroom is een *reken knooppunt* (of een *knoop punt* ) een virtuele machine die een deel van de werk belasting van uw toepassing verwerkt. Een *pool* is een verzameling van deze knoop punten waarop uw toepassing kan worden uitgevoerd. In dit artikel vindt u meer informatie over knoop punten en groepen, samen met overwegingen bij het maken en gebruiken van deze in een Azure Batch werk stroom.
 
 ## <a name="nodes"></a>Knooppunten
 
@@ -25,7 +25,7 @@ Knooppunten kunnen elk uitvoerbaar bestand of script uitvoeren dat wordt onderst
 Alle rekenknooppunten in Batch omvatten ook:
 
 - Een standaard[mapstructuur](files-and-directories.md) en daaraan gekoppelde [omgevingsvariabelen](jobs-and-tasks.md) die beschikbaar zijn voor verwijzing door taken.
-- **Firewall**instellingen die zijn geconfigureerd om de toegang te beheren.
+- **Firewall** instellingen die zijn geconfigureerd om de toegang te beheren.
 - [Externe toegang](error-handling.md#connect-to-compute-nodes) tot zowel Windows-(Remote Desktop Protocol (RDP)) als Linux-knoop punten (Secure Shell (SSH)) (tenzij u [uw groep maakt met externe toegang uitgeschakeld](pool-endpoint-configuration.md)).
 
 Knoop punten kunnen standaard met elkaar communiceren, maar ze kunnen niet communiceren met virtuele machines die geen deel uitmaken van dezelfde groep. Als u knoop punten veilig met andere virtuele machines of met een on-premises netwerk wilt laten communiceren, kunt u de groep inrichten [in een subnet van een virtueel Azure-netwerk (VNet)](batch-virtual-network.md). Wanneer u dit doet, kunt u toegang krijgen tot uw knoop punten via open bare IP-adressen. Deze open bare IP-adressen worden gemaakt door batch en kunnen worden gewijzigd gedurende de levens duur van de groep. U kunt ook [een pool maken met een statisch openbaar IP-adres](create-pool-public-ip.md) dat u beheert. Dit zorgt ervoor dat ze niet onverwacht worden gewijzigd.
@@ -68,11 +68,11 @@ Er zijn twee soorten pool configuraties beschikbaar in batch.
 
 De **virtuele-machine configuratie** geeft aan dat de groep bestaat uit virtuele machines van Azure. Deze virtuele machines kunnen worden gemaakt met Linux- of Windows-installatiekopieën.
 
-Wanneer u een pool maakt op basis van de virtuele-machineconfiguratie, moet u niet alleen de grootte van de knooppunten opgeven en de bron van de installatiekopieën waarmee u ze hebt gemaakt, maar ook de **verwijzing naar de installatiekopie van de virtuele machine** en de Batch-**knooppuntagent-SKU** die op de knooppunten moet worden geïnstalleerd. Zie [Linux-rekenknooppunten in Azure Batch-pools inrichten](batch-linux-nodes.md) voor meer informatie over het opgeven van deze pooleigenschappen. U kunt desgewenst een of meer lege gegevensschijven koppelen aan pool-VM's die zijn gemaakt op basis van Marketplace-installatiekopieën of gegevensschijven opnemen in aangepaste installatiekopieën die worden gebruikt voor het maken van de virtuele machines. Wanneer u gegevens schijven inneemt, moet u de schijven koppelen en Format teren vanuit een VM om ze te gebruiken.
+De [batch-knooppunt agent](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) is een programma dat wordt uitgevoerd op elk knoop punt in de pool en biedt de opdracht-en besturings interface tussen het knoop punt en de batch-service. Er zijn verschillende implementaties van de knooppunt agent, ook wel Sku's genoemd, voor verschillende besturings systemen. Wanneer u een pool maakt op basis van de virtuele-machineconfiguratie, moet u niet alleen de grootte van de knooppunten opgeven en de bron van de installatiekopieën waarmee u ze hebt gemaakt, maar ook de **verwijzing naar de installatiekopie van de virtuele machine** en de Batch- **knooppuntagent-SKU** die op de knooppunten moet worden geïnstalleerd. Zie [Linux-rekenknooppunten in Azure Batch-pools inrichten](batch-linux-nodes.md) voor meer informatie over het opgeven van deze pooleigenschappen. U kunt desgewenst een of meer lege gegevensschijven koppelen aan pool-VM's die zijn gemaakt op basis van Marketplace-installatiekopieën of gegevensschijven opnemen in aangepaste installatiekopieën die worden gebruikt voor het maken van de virtuele machines. Wanneer u gegevens schijven inneemt, moet u de schijven koppelen en Format teren vanuit een VM om ze te gebruiken.
 
 ### <a name="cloud-services-configuration"></a>Cloud Services configuratie
 
-De **configuratie** van de Cloud Services geeft aan dat de groep bestaat uit Azure Cloud Services knoop punten. Cloud Services biedt *alleen*Windows-reken knooppunten.
+De **configuratie** van de Cloud Services geeft aan dat de groep bestaat uit Azure Cloud Services knoop punten. Cloud Services biedt *alleen* Windows-reken knooppunten.
 
 Beschikbare besturingssystemen voor Cloud Services-configuratiepools worden weergegeven in de [Azure-compatibiliteitsmatrix voor releases van gastbesturingssystemen en SDK’s](../cloud-services/cloud-services-guestos-update-matrix.md). Wanneer u een pool maakt die Cloud Services knoop punten bevat, moet u de grootte van het knoop punt en de bijbehorende *besturingssysteem familie* opgeven (dit bepaalt welke versies van .net worden geïnstalleerd met het besturings systeem). Cloud Services wordt sneller geïmplementeerd in azure dan virtuele machines waarop Windows wordt uitgevoerd. Als u pools met Windows-rekenknooppunten wilt, zult u merken dat Cloud Services prestatievoordelen biedt wat de implementatietijd betreft.
 
@@ -127,7 +127,7 @@ Een formule voor vergroten/verkleinen kan op de volgende metrische gegevens word
 
 - **Metrische gegevens voor tijd** zijn gebaseerd op statistieken die om de vijf minuten worden verzameld binnen het opgegeven aantal uren.
 - **Metrische gegevens voor resources** zijn gebaseerd op CPU-gebruik, bandbreedtegebruik, geheugengebruik en het aantal knooppunten.
-- **Metrische gegevens voor taken** zijn gebaseerd op de taakstatus, zoals *Actief* (in de wachtrij) *Wordt uitgevoerd* of *Voltooid*.
+- **Metrische gegevens voor taken** zijn gebaseerd op de taakstatus, zoals *Actief* (in de wachtrij) *Wordt uitgevoerd* of *Voltooid* .
 
 Wanneer met automatisch vergroten/verkleinen het aantal rekenknooppunten in een groep vermindert, moet u bedenken hoe taken moeten worden afgehandeld die worden uitgevoerd op het moment van de verkleining. Om dit te kunnen doen, biedt batch een optie voor het [*detoewijzen van knoop punten*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) die u in uw formules kunt gebruiken. U kunt bijvoorbeeld opgeven dat actieve taken worden gestopt en vervolgens opnieuw in de wachtrij worden geplaatst om te worden uitgevoerd op een ander knooppunt, of moeten worden voltooid voordat het knooppunt uit de pool wordt verwijderd. Houd er rekening mee dat bij het instellen van de toewijzing van het knoop punt de optie voor het ongedaan maken `taskcompletion` `retaineddata` van de grootte van de groep wordt ingesteld, totdat alle taken zijn voltooid of alle Bewaar perioden van de taak zijn verlopen.
 
@@ -142,7 +142,7 @@ De configuratieoptie [Maximumaantal taken per knooppunt](batch-parallel-node-tas
 
 Bij de standaardconfiguratie wordt er op een knooppunt één taak tegelijk uitgevoerd, maar er zijn scenario's waarin het nuttig is om op een knooppunt twee of meer taken tegelijk uit te voeren. Zie het [voorbeeldscenario](batch-parallel-node-tasks.md#example-scenario) in het artikel over [gelijktijdige knooppunttaken](batch-parallel-node-tasks.md) om te bekijken hoe u kunt profiteren van meerdere taken per knooppunt.
 
-U kunt ook een *opvul type*opgeven dat bepaalt of batch de taken gelijkmatig verspreid over alle knoop punten in een pool, of dat elk knoop punt met het maximum aantal taken wordt gebundeld voordat taken aan een ander knoop punt worden toegewezen.
+U kunt ook een *opvul type* opgeven dat bepaalt of batch de taken gelijkmatig verspreid over alle knoop punten in een pool, of dat elk knoop punt met het maximum aantal taken wordt gebundeld voordat taken aan een ander knoop punt worden toegewezen.
 
 ## <a name="communication-status"></a>Communicatie status
 

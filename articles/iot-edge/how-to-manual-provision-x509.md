@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: b1aa12bd73772b5d6332a36d749ec4d7d10d4026
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: abb3aa9ca7c9697fef1cf456964154249f0d69f3
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048182"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913973"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-x509-certificate-authentication"></a>Een Azure IoT Edge apparaat instellen met X. 509-certificaat verificatie
 
@@ -26,11 +26,11 @@ De stappen in dit artikel begeleiden u bij het proces hand matig inrichten, waar
 
 Voor hand matige inrichting hebt u twee opties voor het verifiëren van IoT Edge apparaten:
 
-* **Symmetrische sleutel**: wanneer u een nieuwe apparaat-id in IOT hub maakt, maakt de service twee sleutels. U plaatst een van de sleutels op het apparaat en geeft de sleutel aan IoT Hub bij het verifiëren.
+* **Symmetrische sleutel** : wanneer u een nieuwe apparaat-id in IOT hub maakt, maakt de service twee sleutels. U plaatst een van de sleutels op het apparaat en geeft de sleutel aan IoT Hub bij het verifiëren.
 
   Deze verificatie methode is sneller om aan de slag te gaan, maar niet zo veilig.
 
-* **X. 509 zelfondertekend**: u maakt twee X. 509-identiteits certificaten en plaatst deze op het apparaat. Wanneer u een nieuwe apparaat-id in IoT Hub maakt, geeft u de vinger afdrukken van beide certificaten. Wanneer het apparaat wordt geverifieerd bij IoT Hub, worden de bijbehorende certificaten weer gegeven en kan IoT Hub controleren of ze overeenkomen met de vinger afdrukken.
+* **X. 509 zelfondertekend** : u maakt twee X. 509-identiteits certificaten en plaatst deze op het apparaat. Wanneer u een nieuwe apparaat-id in IoT Hub maakt, geeft u de vinger afdrukken van beide certificaten. Wanneer het apparaat wordt geverifieerd bij IoT Hub, worden de bijbehorende certificaten weer gegeven en kan IoT Hub controleren of ze overeenkomen met de vinger afdrukken.
 
   Deze verificatie methode is veiliger en aanbevolen voor productie scenario's.
 
@@ -44,9 +44,24 @@ Voor hand matige inrichting met X. 509-certificaten is IoT Edge versie 1.0.10 of
 
 ## <a name="create-certificates-and-thumbprints"></a>Certificaten en vinger afdrukken maken
 
+Het certificaat van de apparaat-id is een Leaf-certificaat dat is verbonden via een vertrouwens keten van een certificaat aan het hoogste X. 509 Certificate Authority (CA)-certificaat. Voor het apparaat-ID-certificaat moet de algemene naam (CN) zijn ingesteld op de apparaat-ID die u wilt dat het apparaat in uw IoT-hub moet hebben.
 
+Certificaten voor apparaat-id's worden alleen gebruikt voor het inrichten van het IoT Edge apparaat en het verifiëren van het apparaat met Azure IoT Hub. Ze ondertekenen geen certificaten, in tegens telling tot de CA-certificaten die het IoT Edge apparaat aan modules of blad apparaten geeft voor verificatie. Zie [Azure IOT Edge details van certificaat gebruik](iot-edge-certs.md)voor meer informatie.
 
-<!-- TODO -->
+Nadat u het certificaat voor de apparaat-id hebt gemaakt, hebt u twee bestanden: een. CER-of. pem-bestand dat het open bare gedeelte van het certificaat bevat, en een. CER-of. pem-bestand met de persoonlijke sleutel van het certificaat.
+
+U hebt de volgende bestanden nodig voor hand matige inrichting met X. 509:
+
+* Twee sets certificaten voor apparaat-id's en certificaten voor persoonlijke sleutels. Er wordt één set certificaat/sleutel bestanden aan de IoT Edge-runtime gegeven.
+* Vinger afdrukken van certificaten voor apparaat-id's. Vingerafdruk waarden zijn 40-Hex-tekens voor SHA-1-hashes of 64-Hex-tekens voor SHA-256-hashes. Beide vinger afdrukken worden IoT Hub op het moment van de registratie van het apparaat.
+
+Als er geen certificaten beschikbaar zijn, kunt u [demo certificaten maken om IOT Edge apparaatfuncties te testen](how-to-create-test-certificates.md). Volg de instructies in dit artikel voor het instellen van scripts voor het maken van certificaten, het maken van een basis-CA-certificaat en het maken van twee IoT Edge certificaten voor apparaat-id's.
+
+Een van de manieren om de vinger afdruk op te halen uit een certificaat is met de volgende openssl-opdracht:
+
+```cmd
+openssl x509 -in <certificate filename>.pem -text -fingerprint
+```
 
 ## <a name="register-a-new-device"></a>Een nieuw apparaat registreren
 
@@ -54,7 +69,7 @@ Elk apparaat dat verbinding maakt met een IoT Hub heeft een apparaat-ID die word
 
 Voor X. 509-certificaat authenticatie wordt deze informatie verstrekt in de vorm van de *vinger afdrukken* die zijn gemaakt op basis van de identiteits certificaten van uw apparaat. Deze vinger afdrukken worden IoT Hub op het moment van de registratie van het apparaat, zodat de service het apparaat kan herkennen wanneer het verbinding maakt.
 
-U kunt verschillende hulpprogram ma's gebruiken om een nieuw IoT Edge apparaat te registreren in IoT Hub en de certificaat vingerafdrukken te uploaden. 
+U kunt verschillende hulpprogram ma's gebruiken om een nieuw IoT Edge apparaat te registreren in IoT Hub en de certificaat vingerafdrukken te uploaden.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -68,7 +83,7 @@ In uw IoT Hub in de Azure Portal worden IoT Edge apparaten afzonderlijk gemaakt 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en ga naar uw IoT Hub.
 
-1. Selecteer in het linkerdeel venster **IOT Edge** in het menu en selecteer vervolgens **een IOT edge apparaat toevoegen**.
+1. Selecteer in het linkerdeel venster **IOT Edge** in het menu en selecteer vervolgens **een IOT edge apparaat toevoegen** .
 
    ![Een IoT Edge apparaat toevoegen vanuit de Azure Portal](./media/how-to-manual-provision-symmetric-key/portal-add-iot-edge-device.png)
 
@@ -78,7 +93,7 @@ In uw IoT Hub in de Azure Portal worden IoT Edge apparaten afzonderlijk gemaakt 
    * Selecteer **X. 509 zelf ondertekend** als verificatie type.
    * Geef de primaire en secundaire vinger afdrukken voor identiteits certificaten op. Vingerafdruk waarden zijn 40-Hex-tekens voor SHA-1-hashes of 64-Hex-tekens voor SHA-256-hashes.
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
 ### <a name="view-iot-edge-devices-in-the-azure-portal"></a>IoT Edge apparaten weer geven in de Azure Portal
 
@@ -86,7 +101,7 @@ Alle apparaten met rand mogelijkheden die verbinding maken met uw IoT-hub, worde
 
 ![Alle IoT Edge apparaten in uw IoT-hub weer geven](./media/how-to-manual-provision-symmetric-key/portal-view-devices.png)
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ### <a name="prerequisites-for-the-azure-cli"></a>Vereisten voor de Azure CLI
 
@@ -121,7 +136,7 @@ Gebruik de opdracht [AZ IOT hub Device-Identity List](/cli/azure/ext/azure-iot/i
 
 Voeg de vlag toe `--edge-enabled` of geef `--ee` alleen IOT edge apparaten in uw IOT-hub op.
 
-Elk apparaat dat is geregistreerd als IoT Edge apparaat heeft de eigenschaps **mogelijkheden. iotEdge** ingesteld op **True**.
+Elk apparaat dat is geregistreerd als IoT Edge apparaat heeft de eigenschaps **mogelijkheden. iotEdge** ingesteld op **True** .
 
 --- 
 
@@ -160,10 +175,10 @@ Op een Linux-apparaat geeft u deze informatie op door een config. yaml-bestand t
 
 1. Werk de volgende velden bij:
 
-   * **iothub_hostname**: de hostnaam van de IOT-hub waarmee het apparaat verbinding maakt. Bijvoorbeeld `{IoT hub name}.azure-devices.net`.
-   * **device_id**: de id die u hebt ingevoerd tijdens het registreren van het apparaat.
-   * **identity_cert**: de URI naar een identiteits certificaat op het apparaat. Bijvoorbeeld `file:///path/identity_certificate.pem`.
-   * **identity_pk**: de URI naar het persoonlijke sleutel bestand voor het gegeven identiteits certificaat. Bijvoorbeeld `file:///path/identity_key.pem`.
+   * **iothub_hostname** : de hostnaam van de IOT-hub waarmee het apparaat verbinding maakt. Bijvoorbeeld `{IoT hub name}.azure-devices.net`.
+   * **device_id** : de id die u hebt ingevoerd tijdens het registreren van het apparaat.
+   * **identity_cert** : de URI naar een identiteits certificaat op het apparaat. Bijvoorbeeld `file:///path/identity_certificate.pem`.
+   * **identity_pk** : de URI naar het persoonlijke sleutel bestand voor het gegeven identiteits certificaat. Bijvoorbeeld `file:///path/identity_key.pem`.
 
 1. Sla het bestand op en sluit het.
 
@@ -202,10 +217,10 @@ Op een Linux-apparaat geeft u deze informatie op door een config. yaml-bestand t
 
 3. Geef de volgende informatie op wanneer u daarom wordt gevraagd:
 
-   * **IotHubHostName**: de hostnaam van de IOT-hub waarmee het apparaat verbinding maakt. Bijvoorbeeld `{IoT hub name}.azure-devices.net`.
-   * **DeviceID**: de id die u hebt ingevoerd tijdens het registreren van het apparaat.
-   * **X509IdentityCertificate**: absoluut pad naar een identiteits certificaat op het apparaat. Bijvoorbeeld `C:\path\identity_certificate.pem`.
-   * **X509IdentityPrivateKey**: het absolute pad naar het bestand met de persoonlijke sleutel voor het gegeven identiteits certificaat. Bijvoorbeeld `C:\path\identity_key.pem`.
+   * **IotHubHostName** : de hostnaam van de IOT-hub waarmee het apparaat verbinding maakt. Bijvoorbeeld `{IoT hub name}.azure-devices.net`.
+   * **DeviceID** : de id die u hebt ingevoerd tijdens het registreren van het apparaat.
+   * **X509IdentityCertificate** : absoluut pad naar een identiteits certificaat op het apparaat. Bijvoorbeeld `C:\path\identity_certificate.pem`.
+   * **X509IdentityPrivateKey** : het absolute pad naar het bestand met de persoonlijke sleutel voor het gegeven identiteits certificaat. Bijvoorbeeld `C:\path\identity_key.pem`.
 
 Wanneer u een apparaat hand matig inricht, kunt u extra para meters gebruiken om het proces te wijzigen, met inbegrip van:
 

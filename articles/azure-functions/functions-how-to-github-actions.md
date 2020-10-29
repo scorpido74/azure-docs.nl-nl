@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 2809fce890e1a7bcc47163c8a5d4c0210d6aa9d4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a2d5234b3c80456a98fde4547b9665ca1b0a83dd
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106124"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913542"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
 
@@ -19,31 +19,16 @@ Gebruik [github-acties](https://github.com/features/actions) om een werk stroom 
 
 In GitHub acties is een [werk stroom](https://help.github.com/articles/about-github-actions#workflow) een geautomatiseerd proces dat u in uw github-opslag plaats definieert. Dit proces vertelt u GitHub hoe u uw functions-app-project bouwt en implementeert op GitHub. 
 
-Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom. 
+Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en parameters die deel uitmaken van de werkstroom. 
 
 Voor een Azure Functions werk stroom heeft het bestand drie secties: 
 
 | Sectie | Taken |
 | ------- | ----- |
-| **Verificatie** | <ol><li>Down load een publicatie profiel of definieer een service-principal.</li><li>Maak een GitHub-geheim.</li></ol>|
-| **PE** | <ol><li>Stel de omgeving in.</li><li>Bouw de functie-app.</li></ol> |
-| **Implementeren** | <ol><li>Implementeer de functie-app.</li></ol>|
+| **Verificatie** | Down load een publicatie profiel.<br/>Maak een GitHub-geheim.|
+| **Ontwikkelen** | Stel de omgeving in.<br/>Bouw de functie-app.|
+| **Implementeren** | Implementeer de functie-app.|
 
-> [!NOTE]
-> U hoeft geen service-principal te maken als u het publicatie profiel voor verificatie wilt gebruiken.
-
-## <a name="downloading-and-using-a-publish-profile-as-deployment-credential-recommended"></a>Een publicatie profiel als implementatie referentie downloaden en gebruiken (aanbevolen)
-
-Het publicatie Profiel van uw functie-app downloaden:
-
-1. Selecteer de pagina **overzicht** van de functie-app en selecteer vervolgens **publicatie profiel ophalen**.
-
-   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Publicatie profiel downloaden":::
-
-1. Sla de inhoud van het bestand met publicatie-instellingen op en kopieer het.
-
-## <a name="create-a-service-principal-deprecated"></a>Een service-principal maken (afgeschaft)
-=======
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
@@ -51,60 +36,30 @@ Het publicatie Profiel van uw functie-app downloaden:
 - Een werk functie-app die wordt gehost op Azure met een GitHub-opslag plaats.   
     - [Snelstart: Een functie maken in Azure met behulp van Visual Studio Code](functions-create-first-function-vs-code.md)
 
+## <a name="generate-deployment-credentials"></a>Genereer implementatiereferenties
 
-## <a name="generate-deployment-credentials"></a>Implementatie referenties genereren
+De aanbevolen manier om te verifiëren met Azure Functions voor GitHub-acties is door gebruik te maken van een publicatie profiel. U kunt ook verifiëren met een service-principal. Zie [deze github-opslag plaats](https://github.com/Azure/functions-action)voor meer informatie. 
 
-De aanbevolen manier om te verifiëren met Azure Functions voor GitHub-acties is met een publicatie profiel. U kunt ook verifiëren met een Service-Principal, maar voor het proces zijn meer stappen vereist. 
+Nadat u de referentie voor het publicatie profiel hebt opgeslagen als een [github-geheim](https://docs.github.com/en/actions/reference/encrypted-secrets), gebruikt u dit geheim in uw werk stroom om te verifiëren met Azure. 
 
-## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
-= = = = = = = Sla de referentie of service-principal voor het publicatie profiel op als een [github-geheim](https://docs.github.com/en/actions/reference/encrypted-secrets) voor verificatie met Azure. U hebt toegang tot het geheim in uw werk stroom. 
-
-# <a name="publish-profile"></a>[Profiel publiceren](#tab/publish-profile)
+#### <a name="download-your-publish-profile"></a>Uw publicatie profiel downloaden
 
 Het publicatie Profiel van uw functie-app downloaden:
 
-1. Selecteer de pagina **overzicht** van de functie-app en selecteer vervolgens **publicatie profiel ophalen**.
+1. Selecteer de pagina **overzicht** van de functie-app en selecteer vervolgens **publicatie profiel ophalen** .
 
    :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Publicatie profiel downloaden":::
 
 1. Sla de inhoud van het bestand op en kopieer deze.
 
 
-# <a name="service-principal"></a>[Service-Principal](#tab/service-principal)
+### <a name="add-the-github-secret"></a>Het GitHub-geheim toevoegen
 
-U kunt een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met behulp van de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) voor [Azure cli](/cli/azure/). Voer deze opdracht uit met behulp van [Azure Cloud shell](https://shell.azure.com) in het Azure portal of door de knop **try it** te selecteren.
-
-```azurecli-interactive
-az ad sp create-for-rbac --name "<MY-APP-NAME>" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
-```
-
-In dit voor beeld vervangt u de tijdelijke aanduidingen in de resource door uw abonnements-ID, resource groep en naam van de functie-app. De uitvoer is de roltoewijzings referenties die toegang bieden tot uw functie-app. Kopieer dit JSON-object, dat u kunt gebruiken om te verifiëren vanuit GitHub. 
-
-```output 
-  {
-    "clientId": "<GUID>",
-    "clientSecret": "<GUID>",
-    "subscriptionId": "<GUID>",
-    "tenantId": "<GUID>",
-    (...)
-  }
-```
-
-> [!IMPORTANT]
-> Het is altijd een goed idee om minimale toegang te verlenen. Daarom is de scope in het vorige voor beeld beperkt tot de specifieke functie-app en niet de hele resource groep.
-
----
-
-## <a name="add-the-github-secret"></a>Het GitHub-geheim toevoegen
-
-1. Blader in [github](https://github.com)naar uw opslag plaats en selecteer **instellingen**  >  **geheimen**  >  **een nieuw geheim toevoegen**.
+1. Blader in [github](https://github.com)naar uw opslag plaats en selecteer **instellingen**  >  **geheimen**  >  **een nieuw geheim toevoegen** .
 
    :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Publicatie profiel downloaden":::
 
-1. Voeg een nieuw geheim toe.
-
-   * Als u de Service-Principal gebruikt die u hebt gemaakt met behulp van de Azure CLI, gebruikt u `AZURE_CREDENTIALS` voor de **naam**. Plak vervolgens de gekopieerde JSON-object uitvoer voor **waarde**en selecteer **geheim toevoegen**.
-   * Als u een publicatie profiel gebruikt, gebruikt u `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` voor de **naam**. Vervolgens gebruikt u de bestands inhoud van het publicatie profiel voor **waarde**en selecteert u **geheim toevoegen**.
+1. Voeg een nieuw geheim toe met `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` de **naam** , de inhoud van het publicatie profiel bestand voor **waarde** en selecteer **geheim toevoegen** .
 
 GitHub kan nu worden geverifieerd bij uw functie-app in Azure.
 
@@ -112,18 +67,10 @@ GitHub kan nu worden geverifieerd bij uw functie-app in Azure.
 
 Het instellen van de omgeving wordt uitgevoerd met een taalspecifiek installatie actie voor de publicatie.
 
-|**Taal**  |**Installatie actie**  |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**ASP.NET**     | `actions/setup-dotnet` |
-|**Java**     | `actions/setup-java` |
-|**JavaScript** | `actions/setup-node` |
-|**Python**     | `actions/setup-python` |
-
-
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-dotnet` actie voor het instellen van de omgeving:
+.NET (inclusief ASP.NET) gebruikt de `actions/setup-dotnet` actie.  
+In het volgende voor beeld ziet u het deel van de werk stroom waarmee de omgeving wordt ingesteld:
 
 ```yaml
     - name: Setup DotNet 2.2.402 Environment
@@ -134,7 +81,8 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt v
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de  `actions/setup-java` actie voor het instellen van de omgeving:
+Java maakt gebruik van de  `actions/setup-java` actie.  
+In het volgende voor beeld ziet u het deel van de werk stroom waarmee de omgeving wordt ingesteld:
 
 ```yaml
     - name: Setup Java 1.8.x
@@ -147,7 +95,8 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt v
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-node` actie voor het instellen van de omgeving:
+Java script (Node.js) gebruikt de `actions/setup-node` actie.  
+In het volgende voor beeld ziet u het deel van de werk stroom waarmee de omgeving wordt ingesteld:
 
 ```yaml
 
@@ -159,7 +108,8 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt v
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-python` actie voor het instellen van de omgeving:
+Python gebruikt de `actions/setup-python` actie.  
+In het volgende voor beeld ziet u het deel van de werk stroom waarmee de omgeving wordt ingesteld:
 
 ```yaml
     - name: Setup Python 3.7 Environment
@@ -245,11 +195,7 @@ Gebruik de `Azure/functions-action` actie om uw code te implementeren in een fun
 |_**sleuf naam**_ | Beschrijving De naam van de [implementatie sleuf](functions-deployment-slots.md) waarnaar u wilt implementeren. De sleuf moet al zijn gedefinieerd in uw functie-app. |
 |_**publicatie profiel**_ | Beschrijving De naam van het GitHub-geheim voor uw publicatie profiel. |
 
-
-### <a name="publish-profile-deploy"></a>Profiel implementeren publiceren
-
-In de volgende voor beelden wordt versie 1 van de `functions-action` en a gebruikt `publish profile` voor verificatie:
-
+In het volgende voor beeld wordt versie 1 van de `functions-action` en a gebruikt `publish profile` voor verificatie 
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -545,366 +491,6 @@ jobs:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
         package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-```
-
----
-
-### <a name="service-principal-deploy"></a>Service-Principal implementeren
-
-In het volgende voor beeld wordt versie 1 van de `functions-action` en a gebruikt `service principal` voor verificatie. De werk stroom stelt een Windows .NET-omgeving in. 
-
-# <a name="net"></a>[.NET](#tab/dotnet)
-
-Stel een .NET Linux-werk stroom in die gebruikmaakt van een service-principal.
-
-```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name  # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'    # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '2.2.402'              # set this to the dotnet version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: bash
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        dotnet build --configuration Release --output ./output
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-Stel een .NET Windows-werk stroom in die gebruikmaakt van een service-principal.
-
-```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name  # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'    # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '2.2.402'              # set this to the dotnet version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: windows-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: pwsh
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        dotnet build --configuration Release --output ./output
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Stel een Java Linux-werk stroom in die gebruikmaakt van een service-principal.
-
-```yaml
-name: Deploy Java project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name      # set this to your function app name on Azure
-  POM_XML_DIRECTORY: '.'                     # set this to the directory which contains pom.xml file
-  POM_FUNCTIONAPP_NAME: your-app-name        # set this to the function app name in your local development environment
-  JAVA_VERSION: '1.8.x'                      # set this to the dotnet version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-
-    - name: Setup Java Sdk ${{ env.JAVA_VERSION }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ env.JAVA_VERSION }}
-
-    - name: 'Restore Project Dependencies Using Mvn'
-      shell: bash
-      run: |
-        pushd './${{ env.POM_XML_DIRECTORY }}'
-        mvn clean package
-        mvn azure-functions:package
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }}'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-Stel een Java Windows-werk stroom in die gebruikmaakt van een service-principal.
-
-```yaml
-name: Deploy Java project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name      # set this to your function app name on Azure
-  POM_XML_DIRECTORY: '.'                     # set this to the directory which contains pom.xml file
-  POM_FUNCTIONAPP_NAME: your-app-name        # set this to the function app name in your local development environment
-  JAVA_VERSION: '1.8.x'                      # set this to the java version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: windows-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Java Sdk ${{ env.JAVA_VERSION }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ env.JAVA_VERSION }}
-
-    - name: 'Restore Project Dependencies Using Mvn'
-      shell: pwsh
-      run: |
-        pushd './${{ env.POM_XML_DIRECTORY }}'
-        mvn clean package
-        mvn azure-functions:package
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }}'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Stel een Node.JS Linux-werk stroom in die gebruikmaakt van een service-principal.
-
-```yaml
-name: Deploy Node.js project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name    # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '12.x'                     # set this to the node version to use (supports 8.x, 10.x, 12.x)
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Node ${{ env.NODE_VERSION }} Environment
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Npm'
-      shell: bash
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-     - name: logout
-        run: |
-          az logout
-```
-
-Stel een Node.JS Windows-werk stroom in die gebruikmaakt van een service-principal.
-
-```yaml
-name: Deploy Node.js project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name    # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '10.x'                     # set this to the node version to use (supports 8.x, 10.x, 12.x)
-
-jobs:
-  build-and-deploy:
-    runs-on: windows-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Node ${{ env.NODE_VERSION }} Environment
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Npm'
-      shell: pwsh
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-     - name: logout
-        run: |
-          az logout
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Stel een python Linux-werk stroom in die gebruikmaakt van een service-principal.
-
-```yaml
-name: Deploy Python project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'   # set this to the path to your web app project, defaults to the repository root
-  PYTHON_VERSION: '3.7'                 # set this to the python version to use (supports 3.6, 3.7, 3.8)
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Pip'
-      shell: bash
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt --target=".python_packages/lib/site-packages"
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-     - name: logout
-        run: |
-          az logout
 ```
 
 ---

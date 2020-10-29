@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/28/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 43a059354c70c792592ba46aa3d5b63677bda4eb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c17d660c75fdfd6f1eb429db3a8b55f3e3db1b2d
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488347"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925948"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Naslaginformatie over Azure Cosmos DB-bewakingsgegevens
 
@@ -27,7 +27,7 @@ De volgende tabel geeft een overzicht van de eigenschappen van resource Logboeke
 | --- | --- | --- |
 | **time** | **TimeGenerated** | De datum en tijd (UTC) waarop de bewerking plaatsvond. |
 | **resourceId** | **Resource** | Het Azure Cosmos DB account waarvoor logboeken zijn ingeschakeld.|
-| **category** | **Categorie** | Voor Azure Cosmos DB zijn **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption**, **ControlPlaneRequests** de beschik bare logboek typen. |
+| **category** | **Categorie** | Voor Azure Cosmos DB zijn **DataPlaneRequests** , **MongoRequests** , **QueryRuntimeStatistics** , **PartitionKeyStatistics** , **PartitionKeyRUConsumption** , **ControlPlaneRequests** de beschik bare logboek typen. |
 | **operationName** | **OperationName** | De naam van de bewerking. De naam van de bewerking kan,,,,,,,,,,, of worden uitgevoerd  `Create` `Update` `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` `JSQuery` `Head` `HeadFeed` `Upsert` .   |
 | **properties** | n.v.t. | De inhoud van dit veld wordt beschreven in de volgende rijen. |
 | **activityId** | **activityId_g** | De unieke GUID voor de geregistreerde bewerking. |
@@ -41,13 +41,15 @@ De volgende tabel geeft een overzicht van de eigenschappen van resource Logboeke
 | **hebben** | **duration_d** | De duur van de bewerking, in milliseconden. |
 | **requestLength** | **requestLength_s** | De lengte van de aanvraag, in bytes. |
 | **responseLength** | **responseLength_s** | De lengte van het antwoord, in bytes.|
+| **resourceTokenPermissionId** | **resourceTokenPermissionId_s** | Met deze eigenschap geeft u de machtigings-id van het bron token op die u hebt opgegeven. Zie voor meer informatie over machtigingen de [beveiligde toegang tot uw gegevens](./secure-access-to-data.md#permissions) artikel. |
+| **resourceTokenPermissionMode** | **resourceTokenPermissionMode_s** | Met deze eigenschap geeft u de machtigings modus aan die u hebt ingesteld bij het maken van het bron token. De machtigings modus kan waarden bevatten zoals "all" of "Read". Zie voor meer informatie over machtigingen de [beveiligde toegang tot uw gegevens](./secure-access-to-data.md#permissions) artikel. |
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Deze waarde is niet-leeg wanneer [bron tokens](./secure-access-to-data.md#resource-tokens) voor authenticatie worden gebruikt. De waarde verwijst naar de resource-ID van de gebruiker. |
 | **responseLength** | **responseLength_s** | De lengte van het antwoord, in bytes.|
 
 Zie [Azure monitor-logboeken categorieën en schema's](../azure-monitor/platform/resource-logs-schema.md)voor een lijst met alle Azure monitor logboek categorieën en koppelingen naar gekoppelde schema's. 
 
 ## <a name="metrics"></a>Metrische gegevens
-De volgende tabellen geven een lijst van de platform gegevens die zijn verzameld voor Azure CosmOS DB. Alle metrische gegevens worden opgeslagen in de naam ruimte **Cosmos DB standaard metrische gegevens**.
+De volgende tabellen geven een lijst van de platform gegevens die zijn verzameld voor Azure CosmOS DB. Alle metrische gegevens worden opgeslagen in de naam ruimte **Cosmos DB standaard metrische gegevens** .
 
 Zie [Azure monitor ondersteunde metrische gegevens](../azure-monitor/platform/metrics-supported.md)voor een lijst met alle Azure monitor metrische gegevens voor ondersteuning (inclusief Azure Cosmos DB). 
 

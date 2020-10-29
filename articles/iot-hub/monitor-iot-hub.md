@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 5e2f5e067f0a1d5c13179b3d6175b3aebf6a43fd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8f9c46487422deb4513768dff04f559af952f7b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548552"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926254"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub controleren
 
@@ -54,11 +54,14 @@ De metrische gegevens van het platform en het activiteiten logboek worden automa
 
 Bron logboeken worden pas verzameld en opgeslagen als u een diagnostische instelling hebt gemaakt en deze naar een of meer locaties wilt door sturen.
 
-Metrische gegevens en logboeken kunnen worden doorgestuurd naar een Log Analytics-werk ruimte, waar ze kunnen worden geanalyseerd met behulp van Azure Monitor-Logboeken. Azure Storage voor archivering en offline analyse. of een Event Hubs-eind punt waar ze kunnen worden gelezen door externe toepassingen, bijvoorbeeld SIEM-hulpprogram ma's van derden.
+Metrische gegevens en logboeken kunnen worden doorgestuurd naar verschillende locaties, waaronder:
+- De Azure Monitor logboeken worden opgeslagen via een gekoppelde Log Analytics-werk ruimte. Er kunnen met Log Analytics worden geanalyseerd.
+- Azure Storage voor archivering en offline analyse 
+- Een Event Hubs-eind punt waar ze kunnen worden gelezen door externe toepassingen, bijvoorbeeld SIEM-hulpprogram ma's van derden.
 
 In Azure Portal kunt u **Diagnostische instellingen** selecteren onder **bewaking** in het linkerdeel venster van uw IOT-hub, gevolgd door **Diagnostische instelling toevoegen** om Diagnostische instellingen te maken die zijn afgestemd op de logboeken en platform metrieken die door uw IOT-hub worden gegenereerd.
 
-In de volgende scherm afbeelding ziet u een diagnostische instelling voor het routeren van verbindings bewerkingen in resource logboeken en alle platform metrische gegevens naar een Log Analytics-werk ruimte.
+In de volgende scherm afbeelding ziet u een diagnostische instelling voor het routeren van de *verbindings bewerkingen* van het bron logboek en alle platform metrische gegevens naar een log Analytics-werk ruimte.
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Standaard metrische grafieken op de pagina overzicht van IoT hub.":::
 
@@ -86,7 +89,7 @@ Enkele IoT Hub metrische gegevens, zoals [routerings metrieken](monitor-iot-hub-
 
 ## <a name="analyzing-logs"></a>Logboeken analyseren
 
-Gegevens in Azure Monitor logboeken worden opgeslagen in tabellen waarin elke tabel een eigen set unieke eigenschappen heeft. Voor meer informatie over Azure Monitor-logboeken raadpleegt u [Azure monitor logs-overzicht](/azure/azure-monitor/platform/data-platform-logs) in de Azure monitor-documentatie. 
+Gegevens in Azure Monitor logboeken worden opgeslagen in tabellen waarin elke tabel een eigen set unieke eigenschappen heeft. De gegevens in deze tabellen zijn gekoppeld aan een Log Analytics-werk ruimte en kunnen worden opgevraagd in Log Analytics. Voor meer informatie over Azure Monitor-logboeken raadpleegt u [Azure monitor logs-overzicht](/azure/azure-monitor/platform/data-platform-logs) in de Azure monitor-documentatie. 
 
 Als u gegevens wilt omleiden naar Azure Monitor logboeken, moet u een diagnostische instelling maken om bron Logboeken of platform metrieken te verzenden naar een Log Analytics-werk ruimte. Zie [verzameling en route ring](#collection-and-routing)voor meer informatie.
 

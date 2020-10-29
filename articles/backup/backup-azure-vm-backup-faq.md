@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172831"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925574"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
@@ -76,6 +76,10 @@ Ja. U kunt de back-uptaak annuleren in een status van het maken van de **moment 
 Als u de resource groep die is gemaakt door de Azure Backup-Service vergrendelt, mislukken back-ups als er een maximum limiet van 18 herstel punten is.
 
 Verwijder de vergren deling en wis de herstel punt verzameling van die resource groep om de toekomstige back-ups te kunnen volt ooien. [Volg deze stappen](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) om de verzameling met herstel punten te verwijderen.
+
+### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>Ik heb een vergren deling op het niveau van de resource groep met alle resources die betrekking hebben op mijn virtuele machine. Werkt mijn back-up?
+
+Azure Backup maakt een afzonderlijke resource groep in de indeling `AzureBackupRG_<geo>_<number>` om ResourcePointCollections-objecten op te slaan. Omdat deze resource groep eigendom is van de service, kan het vergren delen van back-ups mislukken. Vergren delingen kunnen alleen worden toegepast op resource groepen die door klanten zijn gemaakt.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Ondersteunt Azure Backup standaard SSD-Managed disks?
 
@@ -145,7 +149,7 @@ Ja. Zelfs als u de virtuele machine verwijdert, kunt u naar het bijbehorende bac
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>Hoe kan ik een VM naar dezelfde beschikbaarheids sets herstellen?
 
-Voor virtuele Azure-machines met beheerde schijven wordt het herstellen naar de beschikbaarheids sets ingeschakeld door een optie in de sjabloon op te geven tijdens het herstellen als beheerde schijven. Deze sjabloon bevat de invoer parameter met de naam **beschikbaarheids sets**.
+Voor virtuele Azure-machines met beheerde schijven wordt het herstellen naar de beschikbaarheids sets ingeschakeld door een optie in de sjabloon op te geven tijdens het herstellen als beheerde schijven. Deze sjabloon bevat de invoer parameter met de naam **beschikbaarheids sets** .
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Hoe worden de prestaties sneller teruggezet?
 
@@ -181,7 +185,7 @@ Er wordt een back-up van de virtuele machine gemaakt met behulp van de instellin
 
    1. Zoek de locatie van de virtuele machine.
    2. Een resource groep zoeken met het volgende naamgevings patroon: `AzureBackupRG_<location of your VM>_1` . Bijvoorbeeld *AzureBackupRG_westus2_1*
-   3. Selecteer in het Azure Portal de optie **verborgen typen weer geven**.
+   3. Selecteer in het Azure Portal de optie **verborgen typen weer geven** .
    4. Zoek de resource met het type **micro soft. Compute/restorePointCollections** die het naamgevings patroon heeft `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
    6. Nadat de bewerking delete is voltooid, kunt u de virtuele machine verplaatsen.
@@ -199,7 +203,7 @@ Nadat u de VM naar een nieuwe resource groep hebt verplaatst, kunt u de virtuele
 
 De oude herstel punten van de VM kunnen zo nodig worden teruggezet. Als u deze back-upgegevens niet nodig hebt, kunt u stoppen met het beveiligen van uw oude VM met gegevens verwijderen.
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Geldt er een limiet voor het aantal Vm's dat kan worden gekoppeld aan hetzelfde back-upbeleid?
+### <a name="is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy"></a>Geldt er een limiet voor het aantal Vm's dat kan worden gekoppeld aan hetzelfde back-upbeleid?
 
 Ja, er is een limiet van 100 Vm's die kunnen worden gekoppeld aan hetzelfde back-upbeleid vanuit de portal. We raden u aan meer dan 100 Vm's te maken meerdere back-upbeleid met dezelfde planning of een ander schema.
 

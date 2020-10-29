@@ -2,19 +2,18 @@
 title: Het uitvoerings profiel gebruiken om query's te evalueren in Azure Cosmos DB Gremlin-API
 description: Meer informatie over het oplossen van uw Gremlin-query's met behulp van de stap uitvoerings profiel.
 services: cosmos-db
-author: jasonwhowell
-manager: kfile
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: jasonh
-ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.author: chrande
+ms.openlocfilehash: ff49889977bc4e5d9097d81ea7b05387900bedd4
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490591"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926373"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>De stap met het uitvoeringsprofiel gebruiken om de Gremlin-query's te evalueren
 
@@ -139,12 +138,12 @@ Hieronder ziet u een voor beeld van de uitvoer die wordt geretourneerd:
 ## <a name="execution-profile-response-objects"></a>Reactie objecten uitvoerings profiel
 
 Het antwoord van een executionProfile ()-functie levert een hiërarchie van JSON-objecten met de volgende structuur:
-  - **Gremlin-bewerkings object**: vertegenwoordigt de gehele Gremlin-bewerking die is uitgevoerd. Bevat de volgende eigenschappen.
+  - **Gremlin-bewerkings object** : vertegenwoordigt de gehele Gremlin-bewerking die is uitgevoerd. Bevat de volgende eigenschappen.
     - `gremlin`: De expliciete Gremlin-instructie die is uitgevoerd.
     - `totalTime`: De tijd, in milliseconden, die de uitvoering van de stap is gemaakt in. 
     - `metrics`: Een matrix die alle Cosmos DB runtime-Opera tors bevat die zijn uitgevoerd om te voldoen aan de query. Deze lijst wordt in volg orde van uitvoering gesorteerd.
     
-  - **Cosmos DB runtime-Opera tors**: vertegenwoordigt elk van de onderdelen van de hele Gremlin-bewerking. Deze lijst wordt in volg orde van uitvoering gesorteerd. Elk object bevat de volgende eigenschappen:
+  - **Cosmos DB runtime-Opera tors** : vertegenwoordigt elk van de onderdelen van de hele Gremlin-bewerking. Deze lijst wordt in volg orde van uitvoering gesorteerd. Elk object bevat de volgende eigenschappen:
     - `name`: Naam van de operator. Dit is het type fase dat is geëvalueerd en uitgevoerd. Meer informatie vindt u in de onderstaande tabel.
     - `time`: De hoeveelheid tijd, in milliseconden, dat een bepaalde operator heeft geduurd.
     - `annotations`: Bevat aanvullende informatie, specifiek voor de operator die is uitgevoerd.
@@ -177,7 +176,7 @@ Hier volgen enkele voor beelden van algemene optimalisaties die kunnen worden Sp
 
 ### <a name="blind-fan-out-query-patterns"></a>Blinde ventilatoren query patronen
 
-Stel dat de volgende uitvoerings profiel reactie van een **gepartitioneerde grafiek**:
+Stel dat de volgende uitvoerings profiel reactie van een **gepartitioneerde grafiek** :
 
 ```json
 [
@@ -220,7 +219,7 @@ Stel dat de volgende uitvoerings profiel reactie van een **gepartitioneerde graf
 
 De volgende conclusies kunnen worden gemaakt:
 - De query is een enkelvoudige ID-zoek opdracht, omdat de Gremlin-instructie het patroon volgt `g.V('id')` .
-- Beoordelings van de `time` metriek lijkt de latentie van deze query hoog te zijn, omdat het [meer is dan 10 MS voor één punt-Lees bewerking](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide).
+- Beoordelings van de `time` metriek lijkt de latentie van deze query hoog te zijn, omdat het [meer is dan 10 MS voor één punt-Lees bewerking](./introduction.md#guaranteed-speed-at-any-scale).
 - Als we het object bekijken `storeOps` , kunnen we zien dat de `fanoutFactor` is `5` . Dit betekent dat er [vijf partities](./partitioning-overview.md) zijn geopend door deze bewerking.
 
 Als gevolg van deze analyse kunnen we bepalen dat de eerste query toegang krijgt tot meer partities dan nodig is. Dit kan worden verholpen door de partitie sleutel in de query als een predikaat op te geven. Dit leidt tot minder latentie en minder kosten per query. Meer informatie over [Graph-partitionering](graph-partitioning.md). Een meer optimale query zou zijn `g.V('tt0093640').has('partitionKey', 't1001')` .

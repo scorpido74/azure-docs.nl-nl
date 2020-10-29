@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: e89a7d9bc71d48be1b7d7ea40246b2394c95e84b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543777"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926186"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Kies de optie juiste MySQL-server in azure
 
@@ -55,7 +55,7 @@ De belangrijkste verschillen tussen deze opties worden weergegeven in de volgend
 | Hoge beschikbaarheid | Ingebouwde HA in één beschikbaarheids zone| Ingebouwde HA binnen en tussen beschikbaarheids zones | Aangepast beheerd met clustering, replicatie, enzovoort.|
 | Zoneredundantie | Niet ondersteund | Ondersteund | Ondersteund|
 | Hybride scenario's | Ondersteund met [replicatie van inkomende gegevens](./concepts-data-in-replication.md)| Niet beschikbaar als preview-versie | Beheerd door eind gebruikers |
-| Leesreplica's | Ondersteund| Ondersteund | Beheerd door eind gebruikers |
+| Leesreplica's | Ondersteund (Maxi maal 5 replica's)| Ondersteund (Maxi maal 10 replica's)| Beheerd door eind gebruikers |
 | Backup | Geautomatiseerd met een retentie van 7-35 dagen | Geautomatiseerd met een retentie van 1-35 dagen | Beheerd door eind gebruikers |
 | Database bewerkingen bewaken | Ondersteund | Ondersteund | Beheerd door eind gebruikers |
 | Herstel na noodgeval | Ondersteund met geo-redundante back-upopslag en het lezen van replica's met kruis regio's | Niet ondersteund in preview-versie| Aangepast beheerd met replicatie technologieën |

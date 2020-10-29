@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: b4d5b3682114d44ceaadc73252f355e4cdc9cc66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 166234711ce00f0ed1f45c35ef661aa5b35f8a3c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548559"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926322"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Naslag informatie over Azure IoT Hub-gegevens bewaken
 
@@ -57,7 +57,7 @@ Voor de meeste metrische gegevens zijn alle aggregatie typen geldig. bij metrisc
 
 ### <a name="cloud-to-device-command-metrics"></a>Metrische gegevens van de opdracht Cloud naar apparaat
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |C2D-berichten verlopen (preview-versie)|C2DMessagesExpired|Aantal|Totaal|Aantal verlopen Cloud-naar-apparaat-berichten|Geen|
 |C2D-bericht leveringen voltooid|C2D. commands. OUTuitgang.<br>voltooid. geslaagd|Aantal|Totaal|Aantal bezorgingen van Cloud-naar-apparaat-berichten voltooid door het apparaat|Geen|
@@ -68,7 +68,7 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 
 ### <a name="cloud-to-device-direct-methods-metrics"></a>Metrische gegevens voor directe methoden van de Cloud naar een apparaat
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Mislukte directe aanroepen van methode|C2D. methods. failure|Aantal|Totaal|Het aantal mislukte direct-methode aanroepen.|Geen|
 |Aanvraag grootte van directe-methode aanroepen|C2D. methods. requestSize|Bytes|Average|Het aantal voltooide direct-methode aanvragen.|Geen|
@@ -79,7 +79,7 @@ Voor metrische gegevens met een **eenheids** waarde **van het totale aantal (** 
 
 ### <a name="cloud-to-device-twin-operations-metrics"></a>Metrische gegevens van de Cloud naar het apparaat dubbele bewerkingen
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Mislukte dubbele Lees bewerkingen van back-end|C2D. dubbele. Read. failure|Aantal|Totaal|Het aantal mislukte back-end-geïnitieerde dubbele Lees bewerkingen.|Geen|
 |Mislukte dubbele updates van back-end|C2D. dubbele. update. failure|Aantal|Totaal|Het aantal niet-geslaagde, door de back-end geïnitieerde dubbele updates.|Geen|
@@ -92,7 +92,7 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 
 ### <a name="configurations-metrics"></a>Metrische configuratie gegevens
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Metrische configuratie gegevens|configuraties|Aantal|Totaal|Het totale aantal ruwe verwerkingen dat is uitgevoerd voor apparaatconfiguratie en IoT Edge implementatie op een set doel apparaten. Dit omvat ook het aantal bewerkingen dat het apparaat dubbel of de module heeft gewijzigd vanwege deze configuraties.|Geen|
 
@@ -100,7 +100,7 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 
 ### <a name="daily-quota-metrics"></a>Metrische gegevens per dag quotum
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Totale hoeveelheid gegevens gebruik van apparaat|deviceDataUsage|Bytes|Totaal|Verzonden bytes van en naar apparaten die zijn verbonden met IotHub|Geen|
 |Totaal gebruik van apparaatgegevens (preview-versie)|deviceDataUsageV2|Bytes|Totaal|Verzonden bytes van en naar apparaten die zijn verbonden met IotHub|Geen|
@@ -110,7 +110,7 @@ Voor het *totale aantal gebruikte berichten* worden alleen de minimum-, maximum-
 
 ### <a name="device-metrics"></a>Metrische gegevens van apparaat
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Totaal aantal apparaten (afgeschaft)|apparaten. totalDevices|Aantal|Totaal|Aantal apparaten dat is geregistreerd bij uw IoT-hub|Geen|
 |Verbonden apparaten (afgeschaft) |apparaten. connectedDevices.<br>allProtocol|Aantal|Totaal|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
@@ -125,7 +125,7 @@ Voor het *totale aantal apparaten (preview)* en *verbonden apparaten (preview)* 
 
 ### <a name="device-telemetry-metrics"></a>Metrische gegevens over de telemetrie van apparaten
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Aantal beperkings fouten|D2C. telemetrie.<br>sendThrottle|Aantal|Totaal|Aantal beperkings fouten door doorvoer vertraging van apparaat|Geen|
 |Verzend pogingen voor telemetrie-berichten|D2C. telemetrie.<br>allProtocol|Aantal|Totaal|Aantal pogingen voor het verzenden van apparaat-naar-Cloud-telemetrie naar uw IoT hub|Geen|
@@ -135,7 +135,7 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 
 ### <a name="device-to-cloud-twin-operations-metrics"></a>Gegevens van het apparaat naar de Cloud voor dubbele bewerkingen
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Mislukte dubbele Lees bewerkingen van apparaten|D2C. dubbele. Read. failure|Aantal|Totaal|Het aantal apparaten dat niet kan worden gestart, dubbele Lees bewerkingen.|Geen|
 |Mislukte dubbele updates van apparaten|D2C. dubbele. update. failure|Aantal|Totaal|Het aantal apparaten dat door een apparaat is gestart en dubbele updates heeft uitgevoerd.|Geen|
@@ -148,7 +148,7 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 
 ### <a name="event-grid-metrics"></a>Metrische gegevens van gebeurtenis raster
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Event Grid leveringen (preview-versie)|EventGridDeliveries|Aantal|Totaal|Het aantal IoT Hub gebeurtenissen dat is gepubliceerd op Event Grid. Gebruik de dimensie resultaat voor het aantal geslaagde en mislukte aanvragen. De dimensie type-tekst geeft het soort gebeurtenis weer ( https://aka.ms/ioteventgrid) .|Resultaat,<br/>EventType<br>*Zie [metrische dimensies](#metric-dimensions)voor meer informatie* .|
 |Event Grid latentie (preview-versie)|EventGridLatency|Milliseconden|Average|De gemiddelde latentie (in milliseconden) vanaf het moment waarop de IOT hub-gebeurtenis werd gegenereerd toen de gebeurtenis werd gepubliceerd in Event Grid. Dit getal is een gemiddelde tussen alle gebeurtenis typen. Gebruik de dimensie type type om de latentie van een specifiek soort gebeurtenis weer te geven.|EventType<br>*Zie [metrische dimensies](#metric-dimensions)voor meer informatie* .|
@@ -157,7 +157,7 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 
 ### <a name="jobs-metrics"></a>Metrische gegevens van taken
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Voltooide taken|Jobs. voltooid|Aantal|Totaal|Het aantal voltooide taken.|Geen|
 |Mislukte aanroepen naar lijst taken|Jobs. listJobs. failure|Aantal|Totaal|Het aantal mislukte aanroepen naar lijst taken.|Geen|
@@ -176,7 +176,7 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 
 ### <a name="routing-metrics"></a>Routerings metrieken
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 | Bezorgings pogingen routeren (preview) |RoutingDeliveries | Aantal | Totaal |Dit is de metrische gegevens van de route ring. Gebruik de dimensies om de leverings status voor een bepaald eind punt of voor een specifieke routerings bron te identificeren.| Resultaat,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>EndpointName<br>*Zie [metrische dimensies](#metric-dimensions)voor meer informatie* . |
 | Grootte van bezorgings gegevens in bytes (preview-versie)|RoutingDataSizeInBytesDelivered| Bytes | Totaal |Het totale aantal bytes dat wordt gerouteerd door IoT Hub naar het aangepaste eind punt en het ingebouwde eind punt. Gebruik de dimensies om gegevens grootte te identificeren die naar een bepaald eind punt of voor een specifieke routerings bron worden doorgestuurd.| RoutingSource,<br>EndpointType<br>EndpointName<br>*Zie [metrische dimensies](#metric-dimensions)voor meer informatie* .|
@@ -203,7 +203,7 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 
 ### <a name="twin-query-metrics"></a>Dubbele metrische query gegevens
 
-|Weergave naam voor metrische gegevens|Gegevens|Eenheid|Aggregatietype|Description|Afmetingen|
+|Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Mislukte dubbele query's|twinQueries. failure|Aantal|Totaal|Het aantal mislukte dubbele query's.|Geen|
 |Geslaagde dubbele query's|twinQueries. geslaagd|Aantal|Totaal|Het aantal geslaagde dubbele query's.|Geen|
@@ -215,7 +215,7 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 
 Azure IoT Hub heeft de volgende dimensies die zijn gekoppeld aan een aantal metrische gegevens over de route ring en het gebeurtenis raster.
 
-|Dimensie naam | Description|
+|Dimensie naam | Beschrijving|
 |---|---|
 ||
 |**EndpointName**| De naam van het eind punt.|
@@ -559,7 +559,7 @@ IoT Hub registreert dit logboek wanneer een bericht met geldige traceer eigensch
 
 Hier `durationMs` wordt niet berekend wanneer de klok van het IOT hub mogelijk niet synchroon is met de klok van het apparaat en daarom kan de duur van de berekening misleidend zijn. U wordt aangeraden logica te schrijven met behulp van de tijds tempels in de `properties` sectie om pieken vast te leggen in latentie van apparaat naar Cloud.
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Geheel getal | De grootte van het apparaat-naar-Cloud bericht in bytes |
 | **deviceId** | Teken reeks van ASCII 7-bits alfanumerieke tekens | De identiteit van het apparaat |
@@ -593,7 +593,7 @@ IoT Hub registreert dit logboek wanneer een bericht met geldige traceer eigensch
 
 In de `properties` sectie bevat dit logboek extra informatie over berichten binnenkomend.
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Tekenreeks | Waar of onwaar, geeft aan of bericht routering is ingeschakeld in de IoT Hub |
 | **parentSpanId** | Tekenreeks | De [reeks-id](https://w3c.github.io/trace-context/#parent-id) van het bovenliggende bericht, die de D2C-bericht tracering in dit geval zou zijn |
@@ -625,7 +625,7 @@ IoT Hub registreert dit logboek wanneer [route ring](iot-hub-devguide-messages-d
 
 In de `properties` sectie bevat dit logboek extra informatie over berichten binnenkomend.
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | Tekenreeks | De naam van het eind punt van de route ring |
 | **endpointType** | Tekenreeks | Het type van het eind punt van de route ring |

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b66615bd5c577dd73faca77d3ea20468442f8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332386"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913514"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Voorbeeld: De functie Grootschalig gebruiken
 
@@ -232,7 +232,7 @@ Hier volgt een voorbeeld van een werkstroom:
 
 Als een relatief lange latentie aanvaardbaar is, is het niet nodig om de Train-bewerking te triggeren direct nadat u nieuwe gegevens hebt toegevoegd. De Train-bewerking kan ook worden gescheiden van de hoofdlogica en op regelmatige tijden worden geactiveerd. Deze strategie is geschikt voor dynamische scenario's met een acceptabele latentie. Deze kan worden toegepast op statische scenario's om de trainingsfrequentie te verlagen.
 
-Stel dat er een `TrainLargePersonGroup`-functie is die vergelijkbaar is met `TrainLargeFaceList`. Een typische implementatie van de zelfstandige training voor LargePersonGroup door het aanroepen van de klasse [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) in `System.Timers` is:
+Stel dat er een `TrainLargePersonGroup`-functie is die vergelijkbaar is met `TrainLargeFaceList`. Een typische implementatie van de zelfstandige training voor LargePersonGroup door het aanroepen van de klasse [`Timer`](/dotnet/api/system.timers.timer) in `System.Timers` is:
 
 ```csharp
 private static void Main()

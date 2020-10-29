@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717894"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913106"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Het voorbeeldhulpprogramma voor labelen implementeren
 
@@ -42,8 +42,8 @@ Voordat we aan de slag gaan, is het belang rijk te weten dat er twee manieren zi
 Volg deze stappen om een nieuwe resource te maken met behulp van de Azure Portal: 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/signin/index/).
-2. Selecteer **Een resource maken**. 
-3. Selecteer vervolgens **Web-app**. 
+2. Selecteer **Een resource maken** . 
+3. Selecteer vervolgens **Web-app** . 
 
    > [!div class="mx-imgBorder"]
    > ![Web-app selecteren](./media/quickstarts/formre-create-web-app.png)
@@ -95,14 +95,14 @@ Volg deze stappen om een nieuwe resource te maken met behulp van de Azure Portal
    > [!div class="mx-imgBorder"]
    > ![Docker configureren](./media/quickstarts/formre-configure-docker.png)
 
-7. Dat is alles. Selecteer vervolgens **bekijken + maken**en vervolgens **maken** om uw web-app te implementeren. Wanneer u klaar bent, hebt u toegang tot uw web-app op de URL die u in het **overzicht** voor uw resource hebt gekregen.
+7. Dat is alles. Selecteer vervolgens **bekijken + maken** en vervolgens **maken** om uw web-app te implementeren. Wanneer u klaar bent, hebt u toegang tot uw web-app op de URL die u in het **overzicht** voor uw resource hebt gekregen.
 
 > [!NOTE]
 > Wanneer u uw web-app maakt, kunt u ook autorisatie/verificatie configureren. Dit is niet nodig om aan de slag te gaan. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als alternatief voor het gebruik van de Azure Portal kunt u een resource maken met behulp van de Azure CLI. Voordat u doorgaat, moet u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)installeren. U kunt deze stap overs Laan als u al werkt met de Azure CLI. 
+Als alternatief voor het gebruik van de Azure Portal kunt u een resource maken met behulp van de Azure CLI. Voordat u doorgaat, moet u de [Azure cli](/cli/azure/install-azure-cli)installeren. U kunt deze stap overs Laan als u al werkt met de Azure CLI. 
 
 Er zijn enkele dingen die u moet weten over deze opdracht:
 
@@ -149,7 +149,7 @@ az container create \
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Verbinding maken met Azure AD voor autorisatie
 
-Het is raadzaam om uw web-app te verbinden met Azure Active Directory. Op deze manier kunnen alleen gebruikers met geldige referenties zich aanmelden en uw web-app gebruiken. Volg de instructies in [uw app service-app configureren](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) om verbinding te maken met Azure Active Directory.
+Het is raadzaam om uw web-app te verbinden met Azure Active Directory. Op deze manier kunnen alleen gebruikers met geldige referenties zich aanmelden en uw web-app gebruiken. Volg de instructies in [uw app service-app configureren](../../app-service/configure-authentication-provider-aad.md) om verbinding te maken met Azure Active Directory.
 
 ## <a name="open-source-on-github"></a>Open source op GitHub
 

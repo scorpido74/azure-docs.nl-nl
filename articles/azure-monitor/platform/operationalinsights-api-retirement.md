@@ -5,23 +5,23 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/02/2020
-ms.openlocfilehash: ad3287651716580aaf6ab8c5e819fd92a70e695d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 10/29/2020
+ms.openlocfilehash: 4075e27c3711cbc4c584005126b53f7c99942049
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144101"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926722"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API-versie buiten gebruik stellen
-Micro soft biedt een kennisgeving van ten minste twaalf maanden voor het buiten gebruik stellen van een API om de overgang naar een nieuwere/ondersteunde versie te versoepelen. We hebben een nieuwe versie (2020-08-01) uitgebracht voor de Api's van de **OperationalInsights** -resource provider en zullen eerdere API-versies op 31 oktober 2023 buiten gebruik stellen.
+Micro soft biedt een kennisgeving van ten minste twaalf maanden voor het buiten gebruik stellen van een API om de overgang naar een nieuwere/ondersteunde versie te versoepelen. We hebben een nieuwe versie (2020-08-01) uitgebracht voor **OperationalInsights** -resource provider-api's en zullen eerdere API-versies op 29 februari 2014 buiten gebruik stellen.
 
 We raden u aan om versie 2020-08-01 nu te gaan gebruiken om te profiteren van de voor delen van nieuwe functionaliteit, zoals een [toegewezen cluster](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters), door de [klant beheerde sleutels](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys), [persoonlijke koppeling](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security) en [gegevens export](https://docs.microsoft.com/azure/azure-monitor/platform/logs-data-export). Daarnaast worden nieuwe functies en functionaliteit en optimalisaties alleen toegevoegd aan de huidige API.
 
-Na 31 oktober 2023 worden eerdere Api's-versies van 2020-08-01 niet meer ondersteund in Azure Monitor. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanuit eerdere versies, nog steeds verwerkt door de Azure Monitor-service tot en met 31 oktober 2023.
+Na 29 februari 2014 biedt Azure Monitor geen ondersteuning meer voor eerdere versies van de Api's dan 2020-08-01. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanuit eerdere versies, nog steeds verwerkt door de Azure Monitor-service tot en met 29 februari 2014.
 
 ## <a name="migration-steps"></a>Migratiestappen
-Afhankelijk van de configuratie methode die u gebruikt, moet u de nieuwe versie bijwerken in **rest** -aanvragen en **Resource Manager-sjablonen**. Volg de onderstaande voor beelden om de API-versie bij te werken:
+Afhankelijk van de configuratie methode die u gebruikt, moet u de nieuwe versie bijwerken in **rest** -aanvragen en **Resource Manager-sjablonen** . Volg de onderstaande voor beelden om de API-versie bij te werken:
 
 1. REST API aanvragen gebruiken de API-versie in de URL van de aanvraag. Vervang die versie door de nieuwste versie (2020-08-01), zoals wordt weer gegeven in het volgende voor beeld.
 

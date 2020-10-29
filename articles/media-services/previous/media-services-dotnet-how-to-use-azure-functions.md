@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba5bca9b0d5907d9900741d0fe2c319f141f810b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262104"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913633"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Azure Functions ontwikkelen met Media Services
 
@@ -49,37 +49,37 @@ Wanneer u Media Services functies ontwikkelt, is het handig om omgevings variabe
 
 De functie die in dit artikel is gedefinieerd, veronderstelt dat u de volgende omgevings variabelen in de app-instellingen hebt:
 
-**AMSAADTenantDomain**: Azure AD-Tenant eindpunt. Zie [Dit](media-services-use-aad-auth-to-access-ams-api.md) artikel voor meer informatie over het maken van verbinding met de AMS-API.
+**AMSAADTenantDomain** : Azure AD-Tenant eindpunt. Zie [Dit](media-services-use-aad-auth-to-access-ams-api.md) artikel voor meer informatie over het maken van verbinding met de AMS-API.
 
-**AMSRESTAPIEndpoint**: een URI die het rest API-eind punt vertegenwoordigt. 
+**AMSRESTAPIEndpoint** : een URI die het rest API-eind punt vertegenwoordigt. 
 
-**AMSClientId**: client-id van Azure AD-toepassing.
+**AMSClientId** : client-id van Azure AD-toepassing.
 
-**AMSClientSecret**: client geheim van Azure AD-toepassing.
+**AMSClientSecret** : client geheim van Azure AD-toepassing.
 
-**StorageConnection**: opslag verbinding van het account dat is gekoppeld aan het Media Services-account. Deze waarde wordt gebruikt in de **function.jsvoor** het bestand file en **Run. CSX** (zie hieronder).
+**StorageConnection** : opslag verbinding van het account dat is gekoppeld aan het Media Services-account. Deze waarde wordt gebruikt in de **function.jsvoor** het bestand file en **Run. CSX** (zie hieronder).
 
 ## <a name="create-a-function"></a>Een functie maken
 
 Als uw functie-app is geïmplementeerd, kunt u deze vinden in **App Services** Azure functions.
 
-1. Selecteer de functie-app en klik op **nieuwe functie**.
+1. Selecteer de functie-app en klik op **nieuwe functie** .
 2. Kies de **C#** -taal en het scenario voor **gegevens verwerking** .
-3. Kies **sjabloon blobtrigger** -sjabloon. Deze functie wordt geactiveerd wanneer een BLOB wordt geüpload naar de **invoer** container. De naam van de **invoer** wordt in de volgende stap in het **pad**opgegeven.
+3. Kies **sjabloon blobtrigger** -sjabloon. Deze functie wordt geactiveerd wanneer een BLOB wordt geüpload naar de **invoer** container. De naam van de **invoer** wordt in de volgende stap in het **pad** opgegeven.
 
-    ![bestanden](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![Scherm afbeelding toont het dialoog venster een sjabloon kiezen met sjabloon blobtrigger geselecteerd.](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
-4. Wanneer u **sjabloon blobtrigger**selecteert, worden er nog meer besturings elementen op de pagina weer gegeven.
+4. Wanneer u **sjabloon blobtrigger** selecteert, worden er nog meer besturings elementen op de pagina weer gegeven.
 
-    ![bestanden](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![Scherm afbeelding toont het dialoog venster een naam voor de functie.](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Klik op **Maken**. 
+4. Klik op **Create** . 
 
 ## <a name="files"></a>Files
 
-Uw Azure-functie is gekoppeld aan code bestanden en andere bestanden die in deze sectie worden beschreven. Wanneer u de Azure Portal gebruikt om een functie te maken, **function.js** voor u gemaakt en **uitgevoerd. CSX** . U moet eenproject.jstoevoegen of uploaden ** voor** het bestand. In de rest van deze sectie vindt u een korte uitleg van elk bestand en worden de bijbehorende definities weer gegeven.
+Uw Azure-functie is gekoppeld aan code bestanden en andere bestanden die in deze sectie worden beschreven. Wanneer u de Azure Portal gebruikt om een functie te maken, **function.js** voor u gemaakt en **uitgevoerd. CSX** . U moet eenproject.jstoevoegen of uploaden **voor** het bestand. In de rest van deze sectie vindt u een korte uitleg van elk bestand en worden de bijbehorende definities weer gegeven.
 
-![bestanden](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![Scherm afbeelding toont de json-bestanden in uw project.](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
@@ -138,7 +138,7 @@ In het voor beeld dat in deze sectie is gedefinieerd, ziet u
 
 In het scenario voor een echt leven wilt u waarschijnlijk de voortgang van de taak bijhouden en vervolgens uw versleutelde Asset publiceren. Zie [Azure-Webhooks gebruiken voor het bewaken van Media Services taak meldingen](media-services-dotnet-check-job-progress-with-webhooks.md)voor meer informatie. Zie [Media Services Azure functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)voor meer voor beelden.  
 
-Vervang de inhoud van het bestaande run. CSX-bestand door de volgende code: wanneer u klaar bent met het definiëren van de functie, klikt u op **opslaan en uitvoeren**.
+Vervang de inhoud van het bestaande run. CSX-bestand door de volgende code: wanneer u klaar bent met het definiëren van de functie, klikt u op **opslaan en uitvoeren** .
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -336,8 +336,8 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 Als u uw functie wilt testen, moet u een MP4-bestand uploaden naar de **invoer** container van het opslag account dat u in de Connection String hebt opgegeven.  
 
 1. Selecteer het opslag account dat u hebt opgegeven in de omgevings variabele **StorageConnection** .
-2. Klik op **blobs**.
-3. Klik op **+ Container**. Geef de container **invoer**een naam.
+2. Klik op **blobs** .
+3. Klik op **+ Container** . Geef de container **invoer** een naam.
 4. Druk op **uploaden** en blader naar een. MP4-bestand dat u wilt uploaden.
 
 >[!NOTE]

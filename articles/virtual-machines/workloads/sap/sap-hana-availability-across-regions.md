@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3de5a449e90452307f3c9b02c725050df6fdd873
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70078856"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925676"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>Beschik baarheid van SAP HANA in azure-regio's
 
@@ -74,7 +74,7 @@ Mogelijke architectuur met replicatie met meerdere doelen zou er als volgt uitzi
 
 Als de organisatie vereisten heeft voor de gereedheid voor hoge Beschik baarheid in de tweede Azure-regio (DR), ziet de architectuur er als volgt uit:
 
-![Diagram van drie virtuele machines in twee regio's milti-doel](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![Diagram waarin een organisatie wordt weer gegeven met vereisten voor de gereedheid voor hoge Beschik baarheid in de tweede (DR) Azure-regio.](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
 Met behulp van logreplay als bewerkings modus levert deze configuratie een RPO = 0, met een lage RTO binnen de primaire regio. De configuratie biedt ook een goede RPO als er sprake is van een overgang naar de tweede regio. De RTO-tijden in de tweede regio zijn afhankelijk van het feit of gegevens vooraf worden geladen. Veel klanten gebruiken de virtuele machine in de secundaire regio om een test systeem uit te voeren. In dat geval kan de gegevens niet vooraf worden geladen.

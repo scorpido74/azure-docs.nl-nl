@@ -1,14 +1,14 @@
 ---
 title: Inzicht krijgen in de querytaal
 description: Hierin worden resource grafiek tabellen en de beschik bare Kusto-gegevens typen,-Opera tors en-functies die bruikbaar zijn met Azure resource Graph beschreven.
-ms.date: 09/30/2020
+ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: ef588bd3fd8afcf1f1139f97d5df2d48a14b4dd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c3ad55a0f1af623211852c02aabd37560c00bc6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578526"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926084"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
 
@@ -33,9 +33,10 @@ Resource grafiek biedt verschillende tabellen voor de gegevens die worden opgesl
 |AdvisorResources |Bevat resources met _betrekking_ tot `Microsoft.Advisor` . |
 |AlertsManagementResources |Bevat resources met _betrekking_ tot `Microsoft.AlertsManagement` . |
 |GuestConfigurationResources |Bevat resources met _betrekking_ tot `Microsoft.GuestConfiguration` . |
-|HealthResources |Bevat resources met _betrekking_ tot `Microsoft.ResourceHealth` . |
 |MaintenanceResources |Bevat resources met _betrekking_ tot `Microsoft.Maintenance` . |
+|PolicyResources |Bevat resources met _betrekking_ tot `Microsoft.PolicyInsights` . ( **Preview-versie** )|
 |SecurityResources |Bevat resources met _betrekking_ tot `Microsoft.Security` . |
+|ServiceHealthResources |Bevat resources met _betrekking_ tot `Microsoft.ResourceHealth` . |
 
 Zie [verwijzing: ondersteunde tabellen en resource typen](../reference/supported-tables-resources.md)voor een volledige lijst met resource typen.
 
@@ -44,7 +45,7 @@ Zie [verwijzing: ondersteunde tabellen en resource typen](../reference/supported
 
 Gebruik resource Graph Explorer in de portal om te ontdekken welke resource typen beschikbaar zijn in elke tabel. Als alternatief kunt u een query gebruiken `<tableName> | distinct type` om een lijst met resource typen op te halen. de gegeven resource grafiek tabel ondersteunt in uw omgeving.
 
-De volgende query bevat een eenvoudige `join` . In het query resultaat worden de kolommen samengebracht en dubbele kolom namen uit de gekoppelde tabel, _ResourceContainers_ in dit voor beeld, worden toegevoegd aan **1**. Als _ResourceContainers_ -tabel heeft typen voor beide abonnementen en resource groepen, kan een van beide typen worden gebruikt om lid te worden van de tabel Resource van _resources_ .
+De volgende query bevat een eenvoudige `join` . In het query resultaat worden de kolommen samengebracht en dubbele kolom namen uit de gekoppelde tabel, _ResourceContainers_ in dit voor beeld, worden toegevoegd aan **1** . Als _ResourceContainers_ -tabel heeft typen voor beide abonnementen en resource groepen, kan een van beide typen worden gebruikt om lid te worden van de tabel Resource van _resources_ .
 
 ```kusto
 Resources
@@ -52,7 +53,7 @@ Resources
 | limit 1
 ```
 
-Met de volgende query wordt een complexere gebruik van weer gegeven `join` . Met de query wordt de gekoppelde tabel beperkt tot abonnementsresources, en met `project` wordt alleen het oorspronkelijke veld _subscriptionId_ opgenomen en het veld _name_ met de naam gewijzigd in _SubName_. De naam van het veld wordt voor komen dat `join` het wordt toegevoegd als _NAME1_ omdat het veld al in _resources_bestaat. De oorspronkelijke tabel wordt gefilterd met `where` en het volgende `project` bevat kolommen uit beide tabellen. Het query resultaat is een enkele sleutel kluis met het type, de naam van de sleutel kluis en de naam van het abonnement dat in wordt weer gegeven.
+Met de volgende query wordt een complexere gebruik van weer gegeven `join` . Met de query wordt de gekoppelde tabel beperkt tot abonnementsresources, en met `project` wordt alleen het oorspronkelijke veld _subscriptionId_ opgenomen en het veld _name_ met de naam gewijzigd in _SubName_ . De naam van het veld wordt voor komen dat `join` het wordt toegevoegd als _NAME1_ omdat het veld al in _resources_ bestaat. De oorspronkelijke tabel wordt gefilterd met `where` en het volgende `project` bevat kolommen uit beide tabellen. Het query resultaat is een enkele sleutel kluis met het type, de naam van de sleutel kluis en de naam van het abonnement dat in wordt weer gegeven.
 
 ```kusto
 Resources
@@ -67,7 +68,7 @@ Resources
 
 ## <a name="extended-properties-preview"></a><a name="extended-properties"></a>Uitgebreide eigenschappen (preview-versie)
 
-Als _Preview_ -functie bevatten sommige resource typen in resource Graph aanvullende eigenschappen die betrekking hebben op het type dat kan worden opgevraagd naast de eigenschappen van Azure Resource Manager. Deze reeks waarden, ook wel _uitgebreide eigenschappen_genoemd, bestaat voor een ondersteund resource type in `properties.extended` . Gebruik de volgende query om te zien welke resource typen _uitgebreide eigenschappen_hebben:
+Als _Preview_ -functie bevatten sommige resource typen in resource Graph aanvullende eigenschappen die betrekking hebben op het type dat kan worden opgevraagd naast de eigenschappen van Azure Resource Manager. Deze reeks waarden, ook wel _uitgebreide eigenschappen_ genoemd, bestaat voor een ondersteund resource type in `properties.extended` . Gebruik de volgende query om te zien welke resource typen _uitgebreide eigenschappen_ hebben:
 
 ```kusto
 Resources
@@ -135,7 +136,7 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 |[samenvatten](/azure/kusto/query/summarizeoperator) |[Azure-resources tellen](../samples/starter.md#count-resources) |Alleen de eerste vereenvoudigde pagina |
 |[take](/azure/kusto/query/takeoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van `limit` . Werkt niet met [overs Laan](./work-with-data.md#skipping-records). |
 |[top](/azure/kusto/query/topoperator) |[De eerste vijf virtuele machines weergeven op naam en met hun type besturingssysteem](../samples/starter.md#show-sorted) | |
-|[Réunion](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combineren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel _toegestaan:_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _tabel kolom naam_. Maxi maal drie `union` zijden in één query. Het is niet toegestaan om de tabel met fuzzy op te lossen `union` . Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
+|[Réunion](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combineren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel _toegestaan:_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _tabel kolom naam_ . Maxi maal drie `union` zijden in één query. Het is niet toegestaan om de tabel met fuzzy op te lossen `union` . Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
 |[positie](/azure/kusto/query/whereoperator) |[Resources weergeven die opslag bevatten](../samples/starter.md#show-storage) | |
 
 ## <a name="query-scope"></a>Querybereik
@@ -143,7 +144,7 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 Het bereik van de abonnementen waaruit resources worden geretourneerd door een query is afhankelijk van de methode voor toegang tot de resource grafiek. Azure CLI en Azure PowerShell vullen de lijst met abonnementen die in de aanvraag moeten worden meegenomen op basis van de context van de geautoriseerde gebruiker. De lijst met abonnementen kan hand matig worden gedefinieerd voor elk met de **abonnementen** en **abonnements** parameters.
 In REST API en alle andere Sdk's moet de lijst met abonnementen waaruit resources moeten worden opgenomen, expliciet worden gedefinieerd als onderdeel van de aanvraag.
 
-Als **Preview**voegt rest API versie `2020-04-01-preview` een eigenschap toe om de query aan een [beheer groep](../../management-groups/overview.md)toe te voegen. Met deze preview-API wordt de abonnements eigenschap ook optioneel gemaakt. Als er geen beheer groep of abonnements lijst is gedefinieerd, is het query bereik alle resources, waaronder [Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) gedelegeerde resources, waartoe de geverifieerde gebruiker toegang heeft. De nieuwe `managementGroupId` eigenschap neemt de beheer groep-ID in, die verschilt van de naam van de beheer groep. Wanneer `managementGroupId` is opgegeven, worden resources van de eerste 5000-abonnementen in of onder de opgegeven beheer groep-hiërarchie opgenomen. `managementGroupId` kan niet worden gebruikt op hetzelfde moment als `subscriptions` .
+Als **Preview** voegt rest API versie `2020-04-01-preview` een eigenschap toe om de query aan een [beheer groep](../../management-groups/overview.md)toe te voegen. Met deze preview-API wordt de abonnements eigenschap ook optioneel gemaakt. Als er geen beheer groep of abonnements lijst is gedefinieerd, is het query bereik alle resources, waaronder [Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) gedelegeerde resources, waartoe de geverifieerde gebruiker toegang heeft. De nieuwe `managementGroupId` eigenschap neemt de beheer groep-ID in, die verschilt van de naam van de beheer groep. Wanneer `managementGroupId` is opgegeven, worden resources van de eerste 5000-abonnementen in of onder de opgegeven beheer groep-hiërarchie opgenomen. `managementGroupId` kan niet worden gebruikt op hetzelfde moment als `subscriptions` .
 
 Voor beeld: een query uitvoeren op alle resources binnen de hiërarchie van de beheer groep met de naam ' My-beheer groep ' met ID ' myMG '.
 
@@ -168,7 +169,7 @@ Sommige eigenschapnamen van eigenschappen, zoals die `.` van een or `$` , moeten
 
 - `.` -Laat de naam van de eigenschap als volgt teruglopen: `['propertyname.withaperiod']`
   
-  Voorbeeld query waarmee de eigenschap _odata. type_wordt geterugloopd:
+  Voorbeeld query waarmee de eigenschap _odata. type_ wordt geterugloopd:
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
@@ -178,7 +179,7 @@ Sommige eigenschapnamen van eigenschappen, zoals die `.` van een or `$` , moeten
 
   - **bash** - `\`
 
-    Voorbeeld query waarmee het eigenschaps _ \$ type_ wordt verescapet in bash:
+    Voorbeeld query waarmee het eigenschaps _\$ type_ wordt verescapet in bash:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
@@ -188,7 +189,7 @@ Sommige eigenschapnamen van eigenschappen, zoals die `.` van een or `$` , moeten
 
   - **Zo** - ``` ` ```
 
-    Voorbeeld query waarmee het eigenschaps _ \$ type_ in Power shell wordt geescapet:
+    Voorbeeld query waarmee het eigenschaps _\$ type_ in Power shell wordt geescapet:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type

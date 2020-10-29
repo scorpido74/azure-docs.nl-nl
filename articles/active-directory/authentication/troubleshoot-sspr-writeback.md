@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94b8d744c964b07c1ed6a4d7e8b89bca2258c1bc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9664518a7e8ec505a2823cdd5f17d6fa8a7db8b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963955"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925795"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Problemen met het terugschrijven van wacht woord opnieuw instellen in Azure Active Directory
 
@@ -51,10 +51,10 @@ Raadpleeg de [vereisten voor connectiviteit voor Azure AD Connect](../hybrid/how
 
 Als u verbindings problemen of andere tijdelijke problemen met de service wilt oplossen, voert u de volgende stappen uit om de Azure AD Connect Sync-service opnieuw te starten:
 
-1. Selecteer **Start**als beheerder op de server waarop Azure AD Connect wordt uitgevoerd.
-1. Voer *Services. msc* in het zoek veld in en selecteer **Enter**.
+1. Selecteer **Start** als beheerder op de server waarop Azure AD Connect wordt uitgevoerd.
+1. Voer *Services. msc* in het zoek veld in en selecteer **Enter** .
 1. Zoek naar de *Microsoft Azure AD Sync* -vermelding.
-1. Klik met de rechter muisknop op het item service, selecteer **opnieuw opstarten**en wacht totdat de bewerking is voltooid.
+1. Klik met de rechter muisknop op het item service, selecteer **opnieuw opstarten** en wacht totdat de bewerking is voltooid.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/service-restart.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
 
@@ -66,15 +66,15 @@ Als het probleem niet wordt opgelost door de Azure AD Connect Sync-service opnie
 
 Als u problemen wilt oplossen, voert u de volgende stappen uit om de functie voor het terugschrijven van wacht woorden uit te scha kelen en opnieuw in te scha kelen:
 
-1. Als beheerder op de server waarop Azure AD Connect wordt uitgevoerd, opent u de **wizard Azure AD Connect configuratie**.
-1. In **verbinding maken met Azure AD**voert u de referenties in van de globale beheerder van Azure AD.
-1. In **verbinding maken met AD DS**voert u uw lokale Active Directory Domain Services beheerders referenties in.
-1. Selecteer de knop **volgende** om **uw gebruikers uniek te identificeren**.
-1. Schakel in **optionele functies**het selectie vakje **wacht woord terugschrijven** uit.
+1. Als beheerder op de server waarop Azure AD Connect wordt uitgevoerd, opent u de **wizard Azure AD Connect configuratie** .
+1. In **verbinding maken met Azure AD** voert u de referenties in van de globale beheerder van Azure AD.
+1. In **verbinding maken met AD DS** voert u uw lokale Active Directory Domain Services beheerders referenties in.
+1. Selecteer de knop **volgende** om **uw gebruikers uniek te identificeren** .
+1. Schakel in **optionele functies** het selectie vakje **wacht woord terugschrijven** uit.
 1. Selecteer **volgende** in de resterende dialoog pagina's zonder dat u iets hoeft te wijzigen totdat u de pagina **gereed om te configureren** hebt.
-1. Controleer of de **pagina gereed voor configuratie** de optie voor het *terugschrijven van wacht woorden* als *uitgeschakeld*wordt weer gegeven. Selecteer de knop groen **configureren** om uw wijzigingen door te voeren.
-1. Als u **klaar bent**, wist u de optie **Nu synchroniseren** en selecteert u vervolgens **volt ooien** om de wizard te sluiten.
-1. Open de **wizard Azure AD Connect configuratie**opnieuw.
+1. Controleer of de **pagina gereed voor configuratie** de optie voor het *terugschrijven van wacht woorden* als *uitgeschakeld* wordt weer gegeven. Selecteer de knop groen **configureren** om uw wijzigingen door te voeren.
+1. Als u **klaar bent** , wist u de optie **Nu synchroniseren** en selecteert u vervolgens **volt ooien** om de wizard te sluiten.
+1. Open de **wizard Azure AD Connect configuratie** opnieuw.
 1. Herhaal stap 2-8, deze keer dat u de optie voor het *terugschrijven van wacht woorden* selecteert op de pagina **optionele functies** om de service opnieuw in te scha kelen.
 
 Met deze stappen wordt uw verbinding met Azure AD opnieuw tot stand gebracht en worden uw verbindings problemen opgelost.
@@ -101,8 +101,8 @@ Als het probleem niet wordt opgelost door de nieuwste versie van de Azure AD Con
 
 Azure AD Connect moet AD DS machtiging **wacht woord opnieuw instellen** zijn vereist om wacht woord terugschrijven uit te voeren. Als u wilt controleren of Azure AD Connect de vereiste machtiging heeft voor een bepaalde on-premises AD DS gebruikers account, gebruikt u de Windows-functie **effectief machtigingen** :
 
-1. Meld u aan bij de Azure AD Connect-server en start de **Synchronization Service Manager** door **Start**  >  **synchronisatie service**starten te selecteren.
-1. Selecteer op het tabblad **connectors** de on-premises **Active Directory Domain Services** -connector en selecteer vervolgens **Eigenschappen**.
+1. Meld u aan bij de Azure AD Connect-server en start de **Synchronization Service Manager** door **Start**  >  **synchronisatie service** starten te selecteren.
+1. Selecteer op het tabblad **connectors** de on-premises **Active Directory Domain Services** -connector en selecteer vervolgens **Eigenschappen** .
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
   
@@ -117,14 +117,14 @@ Azure AD Connect moet AD DS machtiging **wacht woord opnieuw instellen** zijn ve
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
   
-1. Zoek het AD DS gebruikers account dat u wilt controleren. Klik met de rechter muisknop op de account naam en selecteer **Eigenschappen**.  
-1. In het pop-upvenster gaat u naar het tabblad **beveiliging** en selecteert u **Geavanceerd**.  
+1. Zoek het AD DS gebruikers account dat u wilt controleren. Klik met de rechter muisknop op de account naam en selecteer **Eigenschappen** .  
+1. In het pop-upvenster gaat u naar het tabblad **beveiliging** en selecteert u **Geavanceerd** .  
 1. Ga in het pop-upvenster **Geavanceerde beveiligings instellingen voor beheerder** naar het tabblad **effectief toegang** .
-1. Kies **een gebruiker selecteren**, selecteer het AD DS account dat wordt gebruikt door Azure AD Connect en selecteer vervolgens **actieve toegang weer geven**.
+1. Kies **een gebruiker selecteren** , selecteer het AD DS account dat wordt gebruikt door Azure AD Connect en selecteer vervolgens **actieve toegang weer geven** .
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
   
-1. Schuif naar beneden en zoek naar **wacht woord opnieuw instellen**. Als de vermelding een vinkje heeft, is het AD DS-account gemachtigd om het wacht woord van de geselecteerde Active Directory gebruikers account opnieuw in te stellen.  
+1. Schuif naar beneden en zoek naar **wacht woord opnieuw instellen** . Als de vermelding een vinkje heeft, is het AD DS-account gemachtigd om het wacht woord van de geselecteerde Active Directory gebruikers account opnieuw in te stellen.  
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface" border="false":::
 
@@ -135,7 +135,7 @@ De volgende specifieke problemen kunnen zich voordoen bij het terugschrijven van
 | Fout | Oplossing |
 | --- | --- |
 | De service voor het opnieuw instellen van het wacht woord wordt niet on-premises gestart. Fout 6800 wordt weer gegeven in het toepassings gebeurtenis logboek van de Azure AD Connect computer. <br> <br> Na onboarding, federatieve, Pass-Through-verificatie of gebruikers met een wacht woord-hash-synchronisatie kunnen hun wacht woorden niet opnieuw instellen. | Wanneer het terugschrijven van wacht woorden is ingeschakeld, roept de synchronisatie-engine de terugschrijf bibliotheek aan om de configuratie (onboarding) uit te voeren door te communiceren met de Cloud service voor onboarding. Er zijn fouten opgetreden tijdens het voorbereiden of tijdens het starten van het eind punt van de Windows Communication Foundation (WCF) voor het terugschrijven van wacht woorden met fouten in het gebeurtenis logboek op uw Azure AD Connect computer. <br> <br> Bij het opnieuw opstarten van de Azure AD Sync-Service (ADSync), als write-back is geconfigureerd, wordt het WCF-eind punt gestart. Maar als het starten van het eind punt mislukt, registreren we gebeurtenis 6800 en laten we de synchronisatie service starten. De aanwezigheid van deze gebeurtenis betekent dat het eind punt voor het terugschrijven van het wacht woord niet kan worden gestart. Details van gebeurtenis logboeken voor deze gebeurtenis 6800, samen met de vermeldingen in het gebeurtenis logboek gegenereerd door het onderdeel PasswordResetService, geven aan waarom u het eind punt niet kunt starten. Controleer deze gebeurtenis logboek fouten en probeer de Azure AD Connect opnieuw te starten als het terugschrijven van wacht woorden nog niet werkt. Als het probleem zich blijft voordoen, probeert u het terugschrijven van wacht woorden uit te scha kelen en opnieuw in te scha kelen.
-| Wanneer een gebruiker probeert een wacht woord opnieuw in te stellen of een account wilt ontgrendelen waarvoor het terugschrijven van wacht woorden is ingeschakeld, mislukt de bewerking. <br> <br> Daarnaast ziet u een gebeurtenis in het gebeurtenis logboek van Azure AD Connect dat bevat: ' Synchronization engine heeft een fout verzonden HR = 800700CE, bericht = de bestands naam of-extensie is te lang ' nadat de ontgrendelings bewerking is uitgevoerd. | Zoek het Active Directory-account voor Azure AD Connect en stel het wacht woord opnieuw in, zodat het Maxi maal 256 tekens bevat. Open vervolgens de **synchronisatie service** vanuit het menu **Start** . Blader naar **connectors** en zoek de **Active Directory-Connector**. Selecteer deze en selecteer vervolgens **Eigenschappen**. Blader naar de pagina **referenties** en voer het nieuwe wacht woord in. Selecteer **OK** om de pagina te sluiten. |
+| Wanneer een gebruiker probeert een wacht woord opnieuw in te stellen of een account wilt ontgrendelen waarvoor het terugschrijven van wacht woorden is ingeschakeld, mislukt de bewerking. <br> <br> Daarnaast ziet u een gebeurtenis in het gebeurtenis logboek van Azure AD Connect dat bevat: ' Synchronization engine heeft een fout verzonden HR = 800700CE, bericht = de bestands naam of-extensie is te lang ' nadat de ontgrendelings bewerking is uitgevoerd. | Zoek het Active Directory-account voor Azure AD Connect en stel het wacht woord opnieuw in, zodat het Maxi maal 256 tekens bevat. Open vervolgens de **synchronisatie service** vanuit het menu **Start** . Blader naar **connectors** en zoek de **Active Directory-Connector** . Selecteer deze en selecteer vervolgens **Eigenschappen** . Blader naar de pagina **referenties** en voer het nieuwe wacht woord in. Selecteer **OK** om de pagina te sluiten. |
 | Bij de laatste stap van het Azure AD Connect-installatie proces ziet u een fout bericht dat aangeeft dat het terugschrijven van wacht woorden niet kan worden geconfigureerd. <br> <br> Het gebeurtenis logboek van Azure AD Connect toepassing bevat fout 32009 met de tekst ' fout bij het ophalen van auth-token '. | Deze fout treedt op in de volgende twee gevallen: <br><ul><li>U hebt een onjuist wacht woord opgegeven voor het globale beheerders account dat aan het begin van het Azure AD Connect installatie proces is opgegeven.</li><li>U hebt geprobeerd een federatieve gebruiker te gebruiken voor het account van de globale beheerder die aan het begin van het Azure AD Connect installatie proces is opgegeven.</li></ul> Als u dit probleem wilt verhelpen, moet u ervoor zorgen dat u geen federatief account gebruikt voor de globale beheerder die u aan het begin van het installatie proces hebt opgegeven en dat het opgegeven wacht woord juist is. |
 | Het gebeurtenis logboek van de Azure AD Connect-machine bevat fout 32002 die wordt gegenereerd door het uitvoeren van PasswordResetService. <br> <br> De fout leest: ' fout bij het maken van verbinding met ServiceBus. De token provider kan geen beveiligings token opgeven. " | Uw on-premises omgeving kan geen verbinding maken met het Azure Service Bus-eind punt in de Cloud. Deze fout wordt meestal veroorzaakt door een firewall regel die een uitgaande verbinding met een bepaalde poort of een webadres blokkeert. Zie [connectiviteits vereisten](../hybrid/how-to-connect-install-prerequisites.md) voor meer informatie. Nadat u deze regels hebt bijgewerkt, moet u de Azure AD Connect-server en het terugschrijven van het wacht woord opnieuw starten. |
 | Na enige tijd, federatieve, Pass-Through-verificatie of wacht woord-hash-gesynchroniseerde gebruikers kunnen hun wacht woorden niet opnieuw instellen. | In sommige zeldzame gevallen kan de service voor het terugschrijven van wacht woorden niet opnieuw worden opgestart wanneer Azure AD Connect opnieuw is opgestart. In dergelijke gevallen controleert u eerst of het terugschrijven van wacht woorden on-premises is ingeschakeld. U kunt controleren met behulp van de Azure AD Connect wizard of Power shell. Als de functie lijkt te zijn ingeschakeld, kunt u de functie opnieuw proberen in of uit te scha kelen. Als deze probleemoplossings stap niet werkt, probeert u een volledige installatie van Azure AD Connect en opnieuw te installeren. |
@@ -178,6 +178,7 @@ Een best practice bij het oplossen van problemen met wacht woord terugschrijven 
 | 31016| WriteBackServiceStopped| Deze gebeurtenis geeft aan dat de service voor het terugschrijven van wacht woorden is gestopt. Aanvragen voor wachtwoord beheer vanuit de Cloud zijn niet geslaagd.|
 | 31017| AuthTokenSuccess| Deze gebeurtenis geeft aan dat er een autorisatie token is opgehaald voor de globale beheerder die tijdens Azure AD Connect Setup is opgegeven om het offboarding-of onboarding-proces te starten.|
 | 31018| KeyPairCreationSuccess| Deze gebeurtenis geeft aan dat de wachtwoord versleutelings sleutel is gemaakt. Deze sleutel wordt gebruikt om wacht woorden uit de cloud te versleutelen die naar uw on-premises omgeving moeten worden verzonden.|
+| 31034| ServiceBusListenerError| Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het verbinding maken met de Service Bus-listener van uw Tenant. Als het fout bericht ' het externe certificaat is ongeldig ' bevat, controleert u of uw Azure AD Connect server beschikt over alle vereiste basis certificerings instanties, zoals beschreven in wijzigingen in het [Azure TLS-certificaat](../../security/fundamentals/tls-certificate-changes.md). |
 | 32000| UnknownError| Deze gebeurtenis geeft aan dat er een onbekende fout is opgetreden tijdens een wachtwoord beheer bewerking. Bekijk de uitzonderings tekst in de gebeurtenis voor meer informatie. Als u problemen ondervindt, kunt u proberen het terugschrijven van wacht woorden uit te scha kelen en opnieuw in te scha kelen. Als dit niet helpt, voegt u een kopie van uw gebeurtenis logboek toe, samen met de tracerings-ID die is opgegeven bij het openen van een ondersteunings aanvraag.|
 | 32001| ServiceError| Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het verbinding maken met de Cloud-service voor wachtwoord herstel. Deze fout treedt doorgaans op wanneer de on-premises service geen verbinding kan maken met de webservice voor het opnieuw instellen van het wacht woord.|
 | 32002| ServiceBusError| Deze gebeurtenis geeft aan dat er een fout is opgetreden bij het verbinding maken met het Service Bus exemplaar van uw Tenant. Dit kan gebeuren als u uitgaande verbindingen in uw on-premises omgeving blokkeert. Controleer de firewall om ervoor te zorgen dat u verbindingen toestaat via TCP 443 en naar https://ssprdedicatedsbprodncu.servicebus.windows.net , en probeer het opnieuw. Als u nog steeds problemen ondervindt, kunt u proberen om wacht woord terugschrijven uit te scha kelen en opnieuw in te scha kelen.|
@@ -212,22 +213,22 @@ Als u het antwoord op een probleem niet kunt vinden, zijn onze ondersteunings te
 
 Om u op de juiste wijze te helpen, vragen we u zoveel mogelijk details te verstrekken wanneer er een aanvraag wordt geopend. Deze informatie omvat het volgende:
 
-* **Algemene beschrijving van de fout**: wat is de fout? Wat was het probleem dat is opgemerkt? Hoe kan de fout worden verreproduceerd? Geef zo veel mogelijk details op.
-* **Pagina**: op welke pagina is u aangemeld toen u de fout hebt opgemerkt? Neem de URL op als u en een scherm opname van de pagina.
-* **Ondersteunings code**: wat is de ondersteunings code die werd gegenereerd toen de gebruiker de fout zagte?
+* **Algemene beschrijving van de fout** : wat is de fout? Wat was het probleem dat is opgemerkt? Hoe kan de fout worden verreproduceerd? Geef zo veel mogelijk details op.
+* **Pagina** : op welke pagina is u aangemeld toen u de fout hebt opgemerkt? Neem de URL op als u en een scherm opname van de pagina.
+* **Ondersteunings code** : wat is de ondersteunings code die werd gegenereerd toen de gebruiker de fout zagte?
    * U kunt deze code vinden door de fout te reproduceren en vervolgens de koppeling **ondersteunings code** te selecteren onder aan het scherm en de ondersteunings technicus de GUID te sturen die het resultaat is.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="De Azure AD Sync-service opnieuw starten met de gebruikers interface":::
 
   * Als u zich onder een pagina bevindt zonder een ondersteunings code, selecteert u F12 en zoekt u naar de SID en CID en verzendt u deze twee resultaten naar de ondersteunings technicus.
-* **Datum, tijd en tijd zone**: bevatten de exacte datum en tijd *met de tijd zone* waarin de fout is opgetreden.
-* **Gebruikers-id**: de gebruiker die de fout heeft gezien? Een voor beeld *is \@ contoso.com*van de gebruiker.
+* **Datum, tijd en tijd zone** : bevatten de exacte datum en tijd *met de tijd zone* waarin de fout is opgetreden.
+* **Gebruikers-id** : de gebruiker die de fout heeft gezien? Een voor beeld *is \@ contoso.com* van de gebruiker.
    * Is dit een federatieve gebruiker?
    * Is dit een Pass-Through-verificatie gebruiker?
    * Is dit een wacht woord-hash gesynchroniseerde gebruiker?
    * Is dit een alleen-Cloud gebruiker?
-* **Licentie verlening**: er is een Azure AD-licentie toegewezen aan de gebruiker?
-* **Logboek voor toepassings gebeurtenissen**: als u wacht woord terugschrijven gebruikt en de fout zich in uw on-premises infra structuur bevindt, moet u een gezipte kopie van het toepassings gebeurtenis logboek van de Azure AD Connect-server toevoegen.
+* **Licentie verlening** : er is een Azure AD-licentie toegewezen aan de gebruiker?
+* **Logboek voor toepassings gebeurtenissen** : als u wacht woord terugschrijven gebruikt en de fout zich in uw on-premises infra structuur bevindt, moet u een gezipte kopie van het toepassings gebeurtenis logboek van de Azure AD Connect-server toevoegen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

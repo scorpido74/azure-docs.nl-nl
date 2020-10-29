@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5095df51fe430990e200b7bc7c3ca03feb0799d5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20ae53805d25614e18f17a7d20acd884d31ab7d6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964278"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925710"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande Network Policy Server (NPS)-infra structuur integreren met Azure Multi-Factor Authentication
 
@@ -30,7 +30,7 @@ De NPS-uitbrei ding fungeert als een adapter tussen RADIUS-en Cloud-Azure Multi-
 Wanneer u de NPS-extensie voor Azure Multi-Factor Authentication gebruikt, bevat de verificatie stroom de volgende onderdelen:
 
 1. **NAS/VPN-server** ontvangt aanvragen van VPN-clients en converteert deze naar RADIUS-aanvragen naar NPS-servers.
-2. **NPS-server** maakt verbinding met Active Directory Domain Services (AD DS) voor het uitvoeren van de primaire verificatie voor de RADIUS-aanvragen en, wanneer de aanvraag is voltooid, door gegeven aan alle geïnstalleerde uitbrei dingen.  
+2. **NPS-server** maakt verbinding met Active Directory Domain Services (AD DS) voor het uitvoeren van de primaire verificatie voor de RADIUS-aanvragen en, wanneer de aanvraag is voltooid, door gegeven aan alle geïnstalleerde uitbrei dingen.  
 3. De **NPS-extensie** activeert een aanvraag voor Azure multi-factor Authentication voor de secundaire authenticatie. Zodra de uitbrei ding het antwoord ontvangt en de MFA-uitdaging is geslaagd, wordt de verificatie aanvraag voltooid door de NPS-server te voorzien van beveiligings tokens die een MFA-claim bevatten die is uitgegeven door Azure STS.
 4. **Azure MFA** communiceert met Azure Active Directory (Azure AD) om de details van de gebruiker op te halen en de secundaire verificatie uit te voeren met behulp van een verificatie methode die voor de gebruiker is geconfigureerd.
 
@@ -98,8 +98,8 @@ Iedereen die de NPS-extensie gebruikt, moet worden gesynchroniseerd met Azure AD
 Wanneer u de uitbrei ding installeert, hebt u de *Tenant-id* en de beheerders referenties nodig voor uw Azure AD-Tenant. Voer de volgende stappen uit om de Tenant-ID op te halen:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder van de Azure-Tenant.
-1. Zoek en selecteer de **Azure Active Directory**.
-1. Op de pagina **overzicht** wordt de *informatie* over de Tenant weer gegeven. Selecteer het pictogram **kopiëren** naast de *Tenant-id*, zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
+1. Zoek en selecteer de **Azure Active Directory** .
+1. Op de pagina **overzicht** wordt de *informatie* over de Tenant weer gegeven. Selecteer het pictogram **kopiëren** naast de *Tenant-id* , zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
 
    ![De Tenant-ID ophalen uit de Azure Portal](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
@@ -125,10 +125,10 @@ Voordat u de NPS-extensie installeert, moet u de omgeving voorbereiden om het ve
 
 De NPS-server maakt verbinding met Azure AD en verifieert de MFA-aanvragen. Kies één server voor deze rol. We raden u aan een server te kiezen die geen aanvragen van andere services verwerkt, omdat de NPS-extensie fouten genereert voor aanvragen die geen RADIUS zijn. De NPS-server moet worden ingesteld als de primaire en secundaire verificatie server voor uw omgeving. Er kunnen geen RADIUS-aanvragen naar een andere server worden geproxyeerd.
 
-1. Open **Serverbeheer**op uw server. Selecteer de **wizard functies en onderdelen toevoegen** in het menu *Quick* start.
-2. Kies voor uw installatie type installatie die op de **functie of het onderdeel is gebaseerd**.
+1. Open **Serverbeheer** op uw server. Selecteer de **wizard functies en onderdelen toevoegen** in het menu *Quick* start.
+2. Kies voor uw installatie type installatie die op de **functie of het onderdeel is gebaseerd** .
 3. Selecteer de server functie **Services voor netwerk beleid en-toegang** . Er wordt mogelijk een venster met de melding dat u aanvullende vereiste functies nodig hebt om deze functie uit te voeren.
-4. Ga door met de wizard totdat de pagina *bevestiging wordt bevestigd* . Wanneer u klaar bent, selecteert u **installeren**.
+4. Ga door met de wizard totdat de pagina *bevestiging wordt bevestigd* . Wanneer u klaar bent, selecteert u **installeren** .
 
 Het kan enkele minuten duren om de NPS-server functie te installeren. Wanneer u klaar bent, gaat u door met de volgende secties om deze server te configureren voor het afhandelen van binnenkomende RADIUS-aanvragen van de VPN-oplossing.
 
@@ -141,7 +141,7 @@ Afhankelijk van de VPN-oplossing die u gebruikt, verschillen de stappen voor het
 Deze stap is mogelijk al voltooid voor uw Tenant, maar het is een goed idee om te controleren of Azure AD Connect uw data bases onlangs hebt gesynchroniseerd.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als beheerder.
-2. **Azure Active Directory**selecteren  >  **Azure AD CONNECT**
+2. **Azure Active Directory** selecteren  >  **Azure AD CONNECT**
 3. Controleer of de synchronisatie status is **ingeschakeld** en of de laatste synchronisatie minder dan een uur geleden is.
 
 Zie [Azure AD Connect Sync: scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)als u een nieuwe ronding van de synchronisatie wilt starten.
@@ -150,16 +150,16 @@ Zie [Azure AD Connect Sync: scheduler](../hybrid/how-to-connect-sync-feature-sch
 
 Er zijn twee factoren die invloed hebben op de verificatie methoden die beschikbaar zijn met een implementatie van een NPS-extensie:
 
-1. De wachtwoord versleutelings algoritme die wordt gebruikt tussen de RADIUS-client (VPN, NetScaler server of andere) en de NPS-servers.
+* De wachtwoord versleutelings algoritme die wordt gebruikt tussen de RADIUS-client (VPN, NetScaler server of andere) en de NPS-servers.
    - **Pap** ondersteunt alle verificatie methoden van Azure multi-factor Authentication in de Cloud: telefoon oproep, een SMS-bericht, een mobiele app-melding, OATH-hardware-tokens en verificatie code voor mobiele apps.
    - Ondersteuning voor telefonische en **EAP** -telefoon **gesprekken en mobiele** app-meldingen.
 
-      > [!NOTE]
-      > Wanneer u de NPS-uitbrei ding implementeert, moet u deze factoren gebruiken om te evalueren welke methoden beschikbaar zijn voor uw gebruikers. Als uw RADIUS-client PAP ondersteunt, maar de client UX geen invoer velden heeft voor een verificatie code, zijn de meldingen voor telefoon gesprekken en mobiele apps de twee ondersteunde opties.
-      >
-      > Als uw VPN-client UX invoer velden ondersteunt en u het beleid voor netwerk toegang hebt geconfigureerd, kan de verificatie slagen. Geen van de RADIUS-kenmerken die in het netwerk beleid zijn geconfigureerd, wordt echter toegepast op het apparaat voor netwerk toegang, zoals de RRAS-server, noch de VPN-client. Als gevolg hiervan kan de VPN-client meer toegang hebben dan gewenst of beperkt tot geen toegang.
+    > [!NOTE]
+    > Wanneer u de NPS-uitbrei ding implementeert, moet u deze factoren gebruiken om te evalueren welke methoden beschikbaar zijn voor uw gebruikers. Als uw RADIUS-client PAP ondersteunt, maar de client UX geen invoer velden heeft voor een verificatie code, zijn de meldingen voor telefoon gesprekken en mobiele apps de twee ondersteunde opties.
+    >
+    > Ook is het mogelijk dat de verificatie slaagt, ongeacht het gebruikte verificatie Protocol (PAP, CHAP of EAP), als uw MFA-methode is gebaseerd op tekst (SMS, mobiele app verificatie code of OATH-hardware-token) en als de gebruiker een code of tekst moet invoeren in het invoer veld van de gebruikers interface van de VPN-client. *Maar* alle RADIUS-kenmerken die in het netwerk toegangs beleid zijn geconfigureerd, worden *niet* doorgestuurd naar de RADIUS-Cient (het netwerk toegangs apparaat, zoals de VPN-gateway). Als gevolg hiervan kan de VPN-client meer toegang hebben dan u wilt, of minder toegang of geen toegang.
 
-2. De invoer methoden die de client toepassing (VPN, NetScaler server of andere) kan verwerken. Heeft de VPN-client bijvoorbeeld een aantal manieren om de gebruiker toe te staan een verificatie code in te voeren in een tekst-of mobiele app?
+* De invoer methoden die de client toepassing (VPN, NetScaler server of andere) kan verwerken. Heeft de VPN-client bijvoorbeeld een aantal manieren om de gebruiker toe te staan een verificatie code in te voeren in een tekst-of mobiele app?
 
 U kunt [niet-ondersteunde verificatie methoden uitschakelen](howto-mfa-mfasettings.md#verification-methods) in Azure.
 
@@ -226,7 +226,7 @@ Als u de mogelijkheden voor taak verdeling of redundantie wilt bieden, herhaalt 
 1. Voer het Power shell-script uit dat is gemaakt door het installatie programma.
 
    > [!IMPORTANT]
-   > Voor klanten die gebruikmaken van de Clouds van Azure Government of Azure China 21Vianet, bewerkt u eerst de `Connect-MsolService` cmdlets in het *AzureMfaNpsExtnConfigSetup.ps1* script om de *AzureEnvironment* -para meters voor de vereiste Cloud op te neemt. Geef bijvoorbeeld *-AzureEnvironment USGovernment* of *-AzureEnvironment AzureChinaCloud*op.
+   > Voor klanten die gebruikmaken van de Clouds van Azure Government of Azure China 21Vianet, bewerkt u eerst de `Connect-MsolService` cmdlets in het *AzureMfaNpsExtnConfigSetup.ps1* script om de *AzureEnvironment* -para meters voor de vereiste Cloud op te neemt. Geef bijvoorbeeld *-AzureEnvironment USGovernment* of *-AzureEnvironment AzureChinaCloud* op.
    >
    > Zie [Connect-MsolService para meter Reference (](/powershell/module/msonline/connect-msolservice#parameters)Engelstalig) voor meer informatie.
 
@@ -241,7 +241,7 @@ Als u de mogelijkheden voor taak verdeling of redundantie wilt bieden, herhaalt 
 Als uw vorige computer certificaat is verlopen en er een nieuw certificaat is gegenereerd, moet u verlopen certificaten verwijderen. Verlopen certificaten kunnen leiden tot problemen met het starten van de NPS-extensie.
 
 > [!NOTE]
-> Als u uw eigen certificaten gebruikt in plaats van certificaten te genereren met het Power shell-script, moet u ervoor zorgen dat ze worden uitgelijnd op de NPS-naamgevings Conventie. De naam van het onderwerp moet **CN = \<TenantID\> , ou = micro soft NPS extension**zijn.
+> Als u uw eigen certificaten gebruikt in plaats van certificaten te genereren met het Power shell-script, moet u ervoor zorgen dat ze worden uitgelijnd op de NPS-naamgevings Conventie. De naam van het onderwerp moet **CN = \<TenantID\> , ou = micro soft NPS extension** zijn.
 
 ### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Aanvullende stappen voor Microsoft Azure Government of Azure China 21Vianet
 
@@ -301,15 +301,15 @@ Configureer RADIUS-clients waarvoor u MFA wilt vereisen voor het verzenden van a
 
 ### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>Voorbereiden voor gebruikers die niet zijn Inge schreven voor MFA
 
-Als u gebruikers hebt die niet zijn Inge schreven voor MFA, kunt u bepalen wat er gebeurt wanneer ze proberen te verifiëren. Als u dit gedrag wilt beheren, gebruikt u de instelling *REQUIRE_USER_MATCH* in het registerpad *HKLM\Software\Microsoft\AzureMFA*. Deze instelling heeft één configuratie optie:
+Als u gebruikers hebt die niet zijn Inge schreven voor MFA, kunt u bepalen wat er gebeurt wanneer ze proberen te verifiëren. Als u dit gedrag wilt beheren, gebruikt u de instelling *REQUIRE_USER_MATCH* in het registerpad *HKLM\Software\Microsoft\AzureMFA* . Deze instelling heeft één configuratie optie:
 
 | Sleutel | Waarde | Standaard |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | WAAR/ONWAAR | Niet ingesteld (gelijk aan TRUE) |
 
-Met deze instelling wordt bepaald wat er moet gebeuren wanneer een gebruiker niet is inge schreven voor MFA. Als de sleutel niet bestaat, niet is ingesteld of is ingesteld op *True*en de gebruiker niet is inge schreven, mislukt de extensie de MFA-Challenge.
+Met deze instelling wordt bepaald wat er moet gebeuren wanneer een gebruiker niet is inge schreven voor MFA. Als de sleutel niet bestaat, niet is ingesteld of is ingesteld op *True* en de gebruiker niet is inge schreven, mislukt de extensie de MFA-Challenge.
 
-Als de sleutel is ingesteld op *False* en de gebruiker niet is inge schreven, wordt de verificatie voortgezet zonder MFA uit te voeren. Als een gebruiker is inge schreven bij MFA, moeten ze worden geverifieerd met MFA, zelfs als *REQUIRE_USER_MATCH* is ingesteld op *False*.
+Als de sleutel is ingesteld op *False* en de gebruiker niet is inge schreven, wordt de verificatie voortgezet zonder MFA uit te voeren. Als een gebruiker is inge schreven bij MFA, moeten ze worden geverifieerd met MFA, zelfs als *REQUIRE_USER_MATCH* is ingesteld op *False* .
 
 U kunt ervoor kiezen om deze sleutel te maken en deze in te stellen op *Onwaar* wanneer uw gebruikers onboarding hebben en mogelijk nog niet zijn geregistreerd voor Azure multi-factor Authentication. Omdat het instellen van de sleutel echter toestaat dat gebruikers die niet zijn Inge schreven voor MFA zich kunnen aanmelden, moet u deze sleutel verwijderen voordat u naar de productie gaat.
 
@@ -323,7 +323,7 @@ Het volgende script is beschikbaar voor het uitvoeren van basis stappen voor de 
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Hoe kan ik controleren of het certificaat van de client is geïnstalleerd zoals verwacht?
 
-Zoek naar het zelfondertekende certificaat dat is gemaakt door het installatie programma in het certificaat archief en controleer of de persoonlijke sleutel machtigingen heeft die zijn verleend aan de *netwerk service*van de gebruiker. Het certificaat heeft de onderwerpnaam **CN \<tenantid\> , OE = micro soft NPS-extensie**
+Zoek naar het zelfondertekende certificaat dat is gemaakt door het installatie programma in het certificaat archief en controleer of de persoonlijke sleutel machtigingen heeft die zijn verleend aan de *netwerk service* van de gebruiker. Het certificaat heeft de onderwerpnaam **CN \<tenantid\> , OE = micro soft NPS-extensie**
 
 Zelfondertekende certificaten die door het script worden gegenereerd, `AzureMfaNpsExtnConfigSetup.ps1` hebben een geldigheids duur van twee jaar. Wanneer u controleert of het certificaat is geïnstalleerd, moet u ook controleren of het certificaat niet is verlopen.
 
@@ -339,7 +339,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 Met deze opdrachten worden alle certificaten afgedrukt die aan uw Tenant zijn gekoppeld met uw exemplaar van de NPS-extensie in uw Power shell-sessie. Zoek uw certificaat door uw client certificaat te exporteren als een met *Base-64 gecodeerd X. 509-bestand (. CER)* zonder de persoonlijke sleutel, en vergelijk dit met de lijst van Power shell.
 
-Met de volgende opdracht maakt u een bestand met de naam *npscertificate* in de hoofdmap van het station *C:* in format *. CER*.
+Met de volgende opdracht maakt u een bestand met de naam *npscertificate* in de hoofdmap van het station *C:* in format *. CER* .
 
 ```powershell
 import-module MSOnline

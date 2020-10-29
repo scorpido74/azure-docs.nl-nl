@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1157a18954c30e1f1d93aa33dbea6104491b5353
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7e019e7759e22e945bddee477a4cb77f17350b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396448"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913820"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption op een geïsoleerd netwerk
 
@@ -25,12 +25,12 @@ Azure Disk Encryption is afhankelijk van een aantal onderdelen, die meestal word
 
 Dit zijn de pakketten die nodig zijn voor elke distributie. Zie [ondersteunde vm's en besturings systemen](disk-encryption-overview.md#supported-vms-and-operating-systems)voor een volledige lijst met ondersteunde distributies-en volume typen.
 
-- **Ubuntu 14,04, 16,04, 18,04**: lsscsi, psmisc, op, cryptsetup-bin, python-parted, python-zes, procps
-- **CentOS 7,2-7,7**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencryption, pyparted, procps-aardgas, util-linux
-- **CentOS 6,8**: lsscsi, psmisc, lvm2, uuid, at, cryptsetup-reencrypte, pyparted, python-zes
-- **RedHat 7,2-7,7**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencryption, procps-aardgas, util-linux
-- **RedHat 6,8**: lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup opnieuw versleutelen
-- **openSUSE 42,3, SLES 12-SP4, 12-SP3**: lsscsi, cryptsetup
+- **Ubuntu 14,04, 16,04, 18,04** : lsscsi, psmisc, op, cryptsetup-bin, python-parted, python-zes, procps, grub-pc-bin
+- **CentOS 7,2-7,7** : lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencryption, pyparted, procps-aardgas, util-linux
+- **CentOS 6,8** : lsscsi, psmisc, lvm2, uuid, at, cryptsetup-reencrypte, pyparted, python-zes
+- **RedHat 7,2-7,7** : lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup, cryptsetup-reencryption, procps-aardgas, util-linux
+- **RedHat 6,8** : lsscsi, psmisc, lvm2, uuid, at, patch, cryptsetup opnieuw versleutelen
+- **openSUSE 42,3, SLES 12-SP4, 12-SP3** : lsscsi, cryptsetup
 
 Wanneer een proxy is vereist op Red Hat, moet u ervoor zorgen dat het abonnement-manager en yum correct zijn ingesteld. Zie problemen [oplossen met abonnement-manager en yum](https://access.redhat.com/solutions/189533)voor meer informatie.  
 

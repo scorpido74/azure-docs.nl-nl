@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9aae410d320713650704e175006a6593b30f52a7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 6d105528404c99f7273687fcdea6972b4212fcf1
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504153"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913684"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Zelfstudie: E-commerce-productafbeeldingen beheren met Azure Content Moderator
 
@@ -37,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een abonnementssleutel voor Content Moderator. Volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Content Moderator en een sleutel op te halen.
+- Een abonnementssleutel voor Content Moderator. Volg de instructies in [Een Cognitive Services-account maken](../cognitive-services-apis-create-account.md) om u te abonneren op Content Moderator en een sleutel op te halen.
 - Een abonnementssleutel voor Computer Vision (dezelfde instructies als hierboven).
 - Een versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/).
 - Een reeks afbeeldingen voor elk label dat door de Custom Vision-classificatie wordt gebruikt (in dit geval van speelgoed, pennen en vlaggen).
@@ -48,7 +48,7 @@ Zie de quickstart [Content Moderator proberen op internet](quick-start.md) om te
 
 ## <a name="create-custom-moderation-tags"></a>Aangepaste controletags maken
 
-Maak vervolgens aangepaste tags in het controlehulpprogramma (zie het artikel [Tags](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) als u hierbij hulp nodig hebt). In dit geval voegen we deze tags toe: **celebrity** , **USA** , **flag** , **toy** en **pen** . Niet alle tags hoeven categorieën te zijn die kunnen worden gedetecteerd in Computer Vision (zoals **celebrity** ). U kunt uw eigen aangepaste tags toevoegen, op voorwaarde dat u Custom Vision traint voor het detecteren van deze tags.
+Maak vervolgens aangepaste tags in het controlehulpprogramma (zie het artikel [Tags](./review-tool-user-guide/configure.md#tags) als u hierbij hulp nodig hebt). In dit geval voegen we deze tags toe: **celebrity** , **USA** , **flag** , **toy** en **pen** . Niet alle tags hoeven categorieën te zijn die kunnen worden gedetecteerd in Computer Vision (zoals **celebrity** ). U kunt uw eigen aangepaste tags toevoegen, op voorwaarde dat u Custom Vision traint voor het detecteren van deze tags.
 
 ![Aangepaste tags configureren](images/tutorial-ecommerce-tags2.PNG)
 
@@ -90,11 +90,11 @@ De volgende methode verwerkt een afbeeldings-URL en de gegevens van uw Computer 
 
 ## <a name="evaluatecustomvisiontags-method"></a>EvaluateComputerVisionTags-methode
 
-Bekijk nu de methode **EvaluateCustomVisionTags** , waarmee de daadwerkelijke producten worden geclassificeerd&mdash;in dit geval vlaggen, speelgoed en pennen. Volg de instructies in [Een classificatie bouwen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) om uw eigen aangepaste afbeeldingsclassificatie te bouwen en vlaggen, speelgoed en pennen (of wat u ook maar hebt gekozen als aangepaste tags) te detecteren in afbeeldingen. U kunt de afbeeldingen in de map **sample-images** van de [GitHub-opslagplaats](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) gebruiken om snel enkele categorieën in dit voorbeeld te trainen.
+Bekijk nu de methode **EvaluateCustomVisionTags** , waarmee de daadwerkelijke producten worden geclassificeerd&mdash;in dit geval vlaggen, speelgoed en pennen. Volg de instructies in [Een classificatie bouwen](../custom-vision-service/getting-started-build-a-classifier.md) om uw eigen aangepaste afbeeldingsclassificatie te bouwen en vlaggen, speelgoed en pennen (of wat u ook maar hebt gekozen als aangepaste tags) te detecteren in afbeeldingen. U kunt de afbeeldingen in de map **sample-images** van de [GitHub-opslagplaats](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) gebruiken om snel enkele categorieën in dit voorbeeld te trainen.
 
 ![Webpagina van Custom Vision met trainingsafbeeldingen van pennen, speelgoed en vlaggen](images/tutorial-ecommerce-custom-vision.PNG)
 
-Als u de classificatie hebt getraind, haalt u de sleutel en de eindpunt-URL van de voorspelling op en wijst u deze toe aan respectievelijk de velden `CustomVisionKey` en `CustomVisionUri`. Zie eventueel [De URL en voorspellingssleutel ophalen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) voor instructies. De methode gebruikt deze waarden om query's uit te voeren op de classificatie. Als de classificatie een of meer van de aangepaste tags vindt in de afbeelding, worden de bijbehorende waarden in de matrix **ReviewTags** ingesteld op **True** .
+Als u de classificatie hebt getraind, haalt u de sleutel en de eindpunt-URL van de voorspelling op en wijst u deze toe aan respectievelijk de velden `CustomVisionKey` en `CustomVisionUri`. Zie eventueel [De URL en voorspellingssleutel ophalen](../custom-vision-service/use-prediction-api.md#get-the-url-and-prediction-key) voor instructies. De methode gebruikt deze waarden om query's uit te voeren op de classificatie. Als de classificatie een of meer van de aangepaste tags vindt in de afbeelding, worden de bijbehorende waarden in de matrix **ReviewTags** ingesteld op **True** .
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

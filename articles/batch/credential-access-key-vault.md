@@ -2,18 +2,18 @@
 title: Key Vault veilig openen met Batch
 description: Meer informatie over hoe u via een programma toegang hebt tot uw referenties vanuit Key Vault met behulp van Azure Batch.
 ms.topic: how-to
-ms.date: 02/13/2020
+ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6938d0fcd2357efcf03053b0c9b2bde3954270b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71e647c05a84c70fe61a66458801bf7390dcb653
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079435"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913208"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Key Vault veilig openen met Batch
 
-In dit artikel leert u hoe u batch knooppunten instelt op veilige toegang tot referenties die zijn opgeslagen in Azure Key Vault. Het is niet mogelijk om uw beheerders referenties in Key Vault in te stellen en vervolgens de referenties voor het verkrijgen van een vaste code voor toegang tot Key Vault vanuit een script. De oplossing is het gebruik van een certificaat dat uw batch knooppunten toegang geeft tot Key Vault. Met een paar stappen kunnen we beveiligde sleutel opslag voor batch implementeren.
+In dit artikel leert u hoe u batch knooppunten instelt op veilige toegang tot referenties die zijn opgeslagen in [Azure Key Vault](../key-vault/general/overview.md). Het is niet mogelijk om uw beheerders referenties in Key Vault in te stellen en vervolgens de referenties voor het verkrijgen van een vaste code voor toegang tot Key Vault vanuit een script. De oplossing is het gebruik van een certificaat dat uw batch knooppunten toegang geeft tot Key Vault.
 
 Als u wilt verifiëren bij Azure Key Vault van een batch-knoop punt, hebt u het volgende nodig:
 
@@ -46,12 +46,7 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
-De toegang tot Key Vault wordt verleend aan een **gebruiker** of een **Service-Principal**. Als u toegang wilt krijgen tot Key Vault via een programma, gebruikt u een service-principal met het certificaat dat we de vorige stap hebben gemaakt.
-
-Zie [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md)voor meer informatie over Azure-service-principals.
-
-> [!NOTE]
-> De Service-Principal moet zich in dezelfde Azure AD-Tenant beKey Vault.
+De toegang tot Key Vault wordt verleend aan een **gebruiker** of een **Service-Principal** . Als u toegang wilt krijgen tot Key Vault via een programma, gebruikt u een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) met het certificaat dat u in de vorige stap hebt gemaakt. De Service-Principal moet zich in dezelfde Azure AD-Tenant beKey Vault.
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -68,11 +63,11 @@ $newADApplication = New-AzureRmADApplication -DisplayName "Batch Key Vault Acces
 $newAzureAdPrincipal = New-AzureRmADServicePrincipal -ApplicationId $newADApplication.ApplicationId
 ```
 
-De Url's voor de toepassing zijn niet belang rijk omdat we deze alleen gebruiken voor Key Vault toegang.
+De Url's voor de toepassing zijn niet belang rijk, omdat we deze alleen gebruiken voor Key Vault toegang.
 
 ## <a name="grant-rights-to-key-vault"></a>Rechten toekennen aan Key Vault
 
-De service-principal die in de vorige stap is gemaakt, heeft toestemming nodig om de geheimen op te halen uit Key Vault. Machtigingen kunnen worden verleend via de Azure Portal of met de Power shell-opdracht hieronder.
+De service-principal die in de vorige stap is gemaakt, heeft toestemming nodig om de geheimen op te halen uit Key Vault. Machtigingen kunnen worden verleend via de [Azure Portal](/key-vault/general/assign-access-policy-portal.md) of met de Power shell-opdracht hieronder.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -82,13 +77,13 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 Maak een batch-pool en ga naar het tabblad certificaat in de groep en wijs het certificaat toe dat u hebt gemaakt. Het certificaat bevindt zich nu op alle batch knooppunten.
 
-We moeten het certificaat vervolgens toewijzen aan het batch-account. Als u het certificaat aan het account toewijst, kunnen we het toewijzen aan de groepen en vervolgens aan de knoop punten. De eenvoudigste manier om dit te doen is door naar uw batch-account in de portal te gaan, naar **certificaten**te gaan en **toevoegen**te selecteren. Upload het `.pfx` bestand dat we hebben gegenereerd in het [certificaat ophalen](#obtain-a-certificate) en geef het wacht woord op. Zodra het certificaat is voltooid, wordt het toegevoegd aan de lijst en kunt u de vinger afdruk controleren.
+Wijs vervolgens het certificaat toe aan het batch-account. Door het certificaat toe te wijzen aan het account, kan de batch deze toewijzen aan de groepen en vervolgens aan de knoop punten. De eenvoudigste manier om dit te doen is door naar uw batch-account in de portal te gaan, naar **certificaten** te gaan en **toevoegen** te selecteren. Upload het `.pfx` bestand dat u eerder hebt gegenereerd en geef het wacht woord op. Zodra het certificaat is voltooid, wordt het toegevoegd aan de lijst en kunt u de vinger afdruk controleren.
 
 Wanneer u nu een batch-pool maakt, kunt u naar **certificaten** in de groep navigeren en het certificaat toewijzen dat u hebt gemaakt voor die groep. Wanneer u dit doet, moet u ervoor zorgen dat u **LocalMachine** selecteert voor de opslag locatie. Het certificaat wordt geladen op alle batch knooppunten in de groep.
 
 ## <a name="install-azure-powershell"></a>Azure PowerShell installeren
 
-Als u van plan bent om toegang te krijgen tot Key Vault met behulp van Power shell-scripts op uw knoop punten, moet de Azure PowerShell-bibliotheek zijn geïnstalleerd. Er zijn enkele manieren om dit te doen als op uw knoop punten Windows Management Framework (WMF) 5 is geïnstalleerd, kunt u de opdracht install-module gebruiken om deze te downloaden. Als u knoop punten gebruikt die geen WMF 5 hebben, kunt u deze eenvoudig installeren door het Azure PowerShell-bestand te bundelen `.msi` met uw batch-bestanden en vervolgens het installatie programma aan te roepen als eerste deel van het batch-opstart script. Zie dit voor beeld voor meer informatie:
+Als u van plan bent om toegang te krijgen tot Key Vault met behulp van Power shell-scripts op uw knoop punten, moet de Azure PowerShell-bibliotheek zijn geïnstalleerd. Als op uw knoop punten Windows Management Framework (WMF) 5 is geïnstalleerd, kunt u de opdracht install-module gebruiken om deze te downloaden. Als u gebruikmaakt van knoop punten die geen WMF 5 hebben, kunt u deze eenvoudig installeren door het Azure PowerShell-bestand te bundelen `.msi` met uw batch-bestanden en vervolgens het installatie programma aan te roepen als eerste deel van het batch-opstart script. Zie dit voor beeld voor meer informatie:
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh
@@ -99,7 +94,7 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>Key Vault openen
 
-Nu zijn alle instellingen voor toegang tot Key Vault in scripts die op batch knooppunten worden uitgevoerd. Als u toegang wilt krijgen tot Key Vault vanuit een script, hebt u uw script nodig om te verifiëren bij Azure AD met behulp van het certificaat. Als u dit wilt doen in Power shell, gebruikt u de volgende voorbeeld opdrachten. Geef de juiste GUID op voor de **vinger afdruk**, **App-ID** (de ID van uw service-principal) en **Tenant-id** (de Tenant waar uw Service-Principal zich bevindt).
+Nu bent u klaar om toegang te krijgen tot Key Vault in scripts die worden uitgevoerd op uw batch knooppunten. Als u toegang wilt krijgen tot Key Vault vanuit een script, hebt u uw script nodig om te verifiëren bij Azure AD met behulp van het certificaat. Als u dit wilt doen in Power shell, gebruikt u de volgende voorbeeld opdrachten. Geef de juiste GUID op voor de **vinger afdruk** , **App-ID** (de ID van uw service-principal) en **Tenant-id** (de Tenant waar uw Service-Principal zich bevindt).
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId
@@ -112,3 +107,9 @@ $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPas
 ```
 
 Dit zijn de referenties die u in uw script kunt gebruiken.
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Meer informatie over [Azure Key Vault](../key-vault/general/overview.md).
+- Bekijk de [Azure Security-basis lijn voor batch](security-baseline.md).
+- Meer informatie over batch-functies, zoals [het configureren van toegang tot reken knooppunten, het](pool-endpoint-configuration.md) [gebruik van Linux-reken knooppunten](batch-linux-nodes.md)en het [gebruik van privé-eind punten](private-connectivity.md).

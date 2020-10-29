@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7dd23f481409eb3498893c1c7f9c0fd8311b9af2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901603"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913531"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in azure Synapse Analytics (voorheen SQL Data Warehouse) kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -42,7 +42,7 @@ Voor kopieer activiteiten ondersteunt deze Azure Synapse Analytics-connector dez
 
 - Gegevens kopiëren met behulp van SQL-verificatie en Azure Active Directory (Azure AD) verificatie van het toepassings token met een service-principal of beheerde identiteiten voor Azure-resources.
 - Haal als bron gegevens op met behulp van een SQL-query of opgeslagen procedure. U kunt er ook voor kiezen om een parallelle kopie te kopiëren vanuit een Azure Synapse Analytics-bron, de [parallelle kopie van de Synapse Analytics](#parallel-copy-from-synapse-analytics) -sectie te bekijken voor meer informatie.
-- Laad gegevens met behulp van [poly base](#use-polybase-to-load-data-into-azure-synapse-analytics) of Copy- [instructie](#use-copy-statement) (preview) of bulksgewijze insert als sink. We raden u aan om een poly base-of COPY-instructie (preview) te geven voor betere Kopieer prestaties. De connector biedt ook ondersteuning voor het automatisch maken van een doel tabel als deze niet bestaat op basis van het bron schema.
+- Laad als Sink gegevens met behulp van [poly base](#use-polybase-to-load-data-into-azure-synapse-analytics) of [copy-instructie](#use-copy-statement) of bulksgewijze invoeging. U kunt het beste een poly base-of kopieer instructie voor betere Kopieer prestaties aanbevelen. De connector biedt ook ondersteuning voor het automatisch maken van een doel tabel als deze niet bestaat op basis van het bron schema.
 
 > [!IMPORTANT]
 > Als u gegevens kopieert met behulp van Azure Data Factory Integration Runtime, configureert u een [firewall regel op server niveau](../azure-sql/database/firewall-configure.md) zodat Azure-Services toegang hebben tot de [logische SQL-Server](../azure-sql/database/logical-servers.md).
@@ -51,7 +51,7 @@ Voor kopieer activiteiten ondersteunt deze Azure Synapse Analytics-connector dez
 ## <a name="get-started"></a>Aan de slag
 
 > [!TIP]
-> Gebruik poly Base om gegevens te laden in azure Synapse Analytics om de beste prestaties te krijgen. De sectie [poly Base gebruiken voor het laden van gegevens in azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) bevat details. Zie voor een overzicht met een use-case [1 TB in azure Synapse Analytics onder 15 minuten laden met Azure Data Factory](load-azure-sql-data-warehouse.md).
+> Als u de beste prestaties wilt, gebruikt u de instructie poly base of COPY om gegevens te laden in azure Synapse Analytics. Het [gebruik van poly Base om gegevens te laden in azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) en de [instructie copy te gebruiken voor het laden van gegevens in azure Synapse Analytics](#use-copy-statement) -secties bevatten details. Zie voor een overzicht met een use-case [1 TB in azure Synapse Analytics onder 15 minuten laden met Azure Data Factory](load-azure-sql-data-warehouse.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -478,7 +478,7 @@ Het gebruik van [poly base](/sql/relational-databases/polybase/polybase-guide) i
 - Als uw brongegevens archief en-indeling niet oorspronkelijk worden ondersteund door poly Base, gebruikt u in plaats daarvan de functie **[voor gefaseerde kopie door gebruik te maken van poly base](#staged-copy-by-using-polybase)** . De functie voor gefaseerd kopiëren biedt u ook een betere door voer. De gegevens worden automatisch geconverteerd naar een indeling die compatibel is met poly Base, de gegevens worden opgeslagen in Azure Blob Storage en vervolgens poly base aangeroepen om gegevens in azure Synapse Analytics te laden.
 
 > [!TIP]
-> Meer informatie over [Best practices voor het gebruik van poly base](#best-practices-for-using-polybase). Wanneer u poly base gebruikt met Azure Integration Runtime, zijn efficiënte gegevens integratie-eenheden (DIUs) altijd 2. Het afstemmen van de DIU heeft geen invloed op de prestaties, omdat het laden van gegevens uit de opslag wordt aangedreven door de Synapse-engine.
+> Meer informatie over [Best practices voor het gebruik van poly base](#best-practices-for-using-polybase). Wanneer u poly base gebruikt met Azure Integration Runtime, zijn efficiënte [gegevens integratie-eenheden (DIU)](copy-activity-performance-features.md#data-integration-units) voor directe of gefaseerde opslag-naar-Synapse altijd 2. Het afstemmen van de DIU heeft geen invloed op de prestaties, omdat het laden van gegevens uit de opslag wordt aangedreven door de Synapse-engine.
 
 De volgende poly base-instellingen worden ondersteund onder `polyBaseSettings` in de Kopieer activiteit:
 
@@ -507,7 +507,8 @@ Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data 
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Verificatie van account sleutels, beheerde identiteits verificatie |
 
     >[!IMPORTANT]
-    >Als uw Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken: Raadpleeg de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Meer informatie over de vereiste configuraties in Data Factory van een [Azure Blob-beheerde identiteits verificatie](connector-azure-blob-storage.md#managed-identity) en [Azure data Lake Storage Gen2 beheerde identiteits verificatie](connector-azure-data-lake-storage.md#managed-identity) sectie.
+    >- Wanneer u beheerde identiteits verificatie voor uw gekoppelde opslag service gebruikt, moet u de benodigde configuraties voor [Azure-Blob](connector-azure-blob-storage.md#managed-identity) en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+    >- Als uw Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken met ' vertrouwde micro soft-service toestaan ' die is ingeschakeld voor het opslag account, raadpleegt u de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 2. De **indeling van de bron gegevens** is van **Parquet** , **Orc** of **tekst met scheidings tekens** , met de volgende configuraties:
 
@@ -567,7 +568,8 @@ Als uw bron gegevens niet systeem eigen compatibel zijn met poly Base, kunt u he
 Als u deze functie wilt gebruiken, maakt u een [gekoppelde azure Blob Storage-service](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2 gekoppelde service](connector-azure-data-lake-storage.md#linked-service-properties) met **account sleutel of beheerde identiteits verificatie** die verwijst naar het Azure Storage-account als tijdelijke opslag.
 
 >[!IMPORTANT]
->Als uw staging-Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken. Zie de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)voor meerwaarde ring. Meer informatie over de vereiste configuraties in Data Factory van [Azure Blob-beheerde identiteits verificatie](connector-azure-blob-storage.md#managed-identity) en door [Azure data Lake Storage Gen2 beheerde identiteits verificatie](connector-azure-data-lake-storage.md#managed-identity).
+>- Wanneer u beheerde identiteits verificatie gebruikt voor uw gekoppelde staging-service, kunt u de benodigde configuraties voor [Azure-Blob](connector-azure-blob-storage.md#managed-identity) en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+>- Als uw staging-Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken met ' vertrouwde micro soft-service toestaan ' die is ingeschakeld voor het opslag account, raadpleegt u de [invloed van het gebruik van VNet-service-eind punten met Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
 
 ```json
 "activities":[
@@ -673,7 +675,7 @@ De Azure Synapse Analytics [copy-instructie](/sql/t-sql/statements/copy-into-tra
 >Er wordt momenteel alleen Data Factory ondersteund voor het kopiëren van een COPY-instructie met compatibele bronnen die hieronder worden beschreven.
 
 >[!TIP]
->Bij gebruik van de instructie COPY met Azure Integration Runtime, zijn DIUs (effectief Data Integration units) altijd 2. Het afstemmen van de DIU heeft geen invloed op de prestaties, omdat het laden van gegevens uit de opslag wordt aangedreven door de Synapse-engine.
+>Bij gebruik van de instructie COPY met Azure Integration Runtime, zijn [DIU (effectief Data Integration units)](copy-activity-performance-features.md#data-integration-units) altijd 2. Het afstemmen van de DIU heeft geen invloed op de prestaties, omdat het laden van gegevens uit de opslag wordt aangedreven door de Synapse-engine.
 
 De instructie COPY gebruiken ondersteunt de volgende configuratie:
 
@@ -687,7 +689,8 @@ De instructie COPY gebruiken ondersteunt de volgende configuratie:
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [Tekst met scheidings tekens](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | Account sleutel verificatie, Service-Principal-verificatie, beheerde identiteits verificatie |
 
     >[!IMPORTANT]
-    >Als uw Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken: Raadpleeg de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Meer informatie over de vereiste configuraties in Data Factory van een [Azure Blob-beheerde identiteits verificatie](connector-azure-blob-storage.md#managed-identity) en [Azure data Lake Storage Gen2 beheerde identiteits verificatie](connector-azure-data-lake-storage.md#managed-identity) sectie.
+    >- Wanneer u beheerde identiteits verificatie voor uw gekoppelde opslag service gebruikt, moet u de benodigde configuraties voor [Azure-Blob](connector-azure-blob-storage.md#managed-identity) en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+    >- Als uw Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken met ' vertrouwde micro soft-service toestaan ' die is ingeschakeld voor het opslag account, raadpleegt u de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 2. Indelings instellingen zijn met het volgende:
 
@@ -769,7 +772,10 @@ Instellingen die specifiek zijn voor Azure Synapse Analytics, zijn beschikbaar o
 
 **Invoer** Selecteer of u uw bron op een tabel (equivalent van) wilt aanwijzen ```Select * from <table-name>``` of voer een aangepaste SQL-query in.
 
-**Fase ring inschakelen** Het wordt nadrukkelijk aanbevolen om deze optie te gebruiken in productie werkbelastingen met Synapse DW-bronnen. Wanneer u een gegevens stroom activiteit met Synapase-bronnen vanuit een pijp lijn uitvoert, wordt u door ADF gevraagd naar een opslag account voor de faserings locatie en wordt deze gebruikt voor het laden van gegevens. Het is het snelste mechanisme voor het laden van gegevens uit Synapse DW.
+**Fase ring inschakelen** Het wordt nadrukkelijk aanbevolen om deze optie te gebruiken in productie werkbelastingen met Azure Synapse Analytics-bronnen. Wanneer u een [gegevens stroom activiteit](control-flow-execute-data-flow-activity.md) met Azure Synapse Analytics-bronnen vanuit een pijp lijn uitvoert, wordt u door ADF gevraagd om een opslag account voor de staging-locatie en wordt gebruikt voor het laden van gegevens. Het is het snelste mechanisme voor het laden van gegevens uit Azure Synapse Analytics.
+
+- Wanneer u beheerde identiteits verificatie voor uw gekoppelde opslag service gebruikt, moet u de benodigde configuraties voor [Azure-Blob](connector-azure-blob-storage.md#managed-identity) en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+- Als uw Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken met ' vertrouwde micro soft-service toestaan ' die is ingeschakeld voor het opslag account, raadpleegt u de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 **Query** : als u in het invoer veld query selecteert, voert u een SQL-query in voor uw bron. Deze instelling overschrijft elke tabel die u in de gegevensset hebt gekozen. **Order by** -componenten worden hier niet ondersteund, maar u kunt een volledige Select from-instructie instellen. U kunt ook door de gebruiker gedefinieerde tabel functies gebruiken. **Select * from udfGetData ()** is een UDF in SQL die een tabel retourneert. Met deze query wordt een bron tabel geproduceerd die u in uw gegevens stroom kunt gebruiken. Het gebruik van query's is ook een uitstekende manier om rijen te verminderen voor het testen of voor Zoek opdrachten.
 
@@ -798,7 +804,10 @@ Instellingen die specifiek zijn voor Azure Synapse Analytics, zijn beschikbaar o
 - Opnieuw maken: de tabel wordt verwijderd en opnieuw gemaakt. Vereist als er dynamisch een nieuwe tabel wordt gemaakt.
 - Afkappen: alle rijen uit de doel tabel worden verwijderd.
 
-**Fase ring inschakelen:** Hiermee wordt bepaald of [poly base](/sql/relational-databases/polybase/polybase-guide) moet worden gebruikt bij het schrijven naar Azure Synapse Analytics
+**Fase ring inschakelen:** Hiermee wordt bepaald of [poly base](/sql/relational-databases/polybase/polybase-guide) moet worden gebruikt bij het schrijven naar Azure Synapse Analytics. De staging-opslag wordt geconfigureerd in de [activiteit gegevens stroom uitvoeren](control-flow-execute-data-flow-activity.md). 
+
+- Wanneer u beheerde identiteits verificatie voor uw gekoppelde opslag service gebruikt, moet u de benodigde configuraties voor [Azure-Blob](connector-azure-blob-storage.md#managed-identity) en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+- Als uw Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken met ' vertrouwde micro soft-service toestaan ' die is ingeschakeld voor het opslag account, raadpleegt u de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 **Batch grootte** : bepaalt hoeveel rijen er worden geschreven in elke Bucket. Grotere batch grootten verbeteren de compressie en Optima Lise ring van het geheugen, maar er zijn geen uitzonde ringen in het geheugen bij het opslaan van gegevens.
 

@@ -2,13 +2,13 @@
 title: Aantal resources zonder limiet van 800
 description: Geeft een lijst van de Azure-resource typen die meer dan 800 exemplaren in een resource groep kunnen bevatten.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330754"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913497"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet beperkt zijn tot 800 exemplaren per resource groep
 
@@ -81,6 +81,7 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
+* Labs-informatie: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 * schema's
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Micro soft. EnterpriseKnowledgeGraph
@@ -173,6 +174,10 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 * workspaceCollections: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 
+## <a name="microsoftpowerbidedicated"></a>Micro soft. PowerBIDedicated
+
+* capaciteit: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
+
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 * naam ruimten
@@ -185,18 +190,21 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 * naam ruimten
 
-## <a name="microsoftservicefabricmesh"></a>Micro soft. ServiceFabricMesh
+## <a name="microsoftsingularity"></a>Micro soft. enkelvoud
 
-* toepassingen
-* containerGroups
-* gateways
-* netwerken
-* geheimen
-* volumes
+* accounts
+* accounts/accountQuotaPolicies
+* accounts/groupPolicies
+* accounts/taken
+* accounts/storageContainers
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * Storage accounts
+
+## <a name="microsoftsql"></a>Microsoft.Sql
+
+* servers/data bases
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 

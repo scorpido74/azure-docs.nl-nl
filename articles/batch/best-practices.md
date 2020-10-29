@@ -3,12 +3,12 @@ title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102775"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913225"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -20,7 +20,7 @@ In dit artikel wordt een verzameling aanbevolen procedures beschreven voor het e
 
 ### <a name="pool-configuration-and-naming"></a>Groeps configuratie en-naamgeving
 
-- **Pool toewijzings modus** Bij het maken van een batch-account kunt u kiezen uit twee pool toewijzings modi: **batch-service** of **gebruikers abonnement**. In de meeste gevallen moet u de standaard batch-service modus gebruiken, waarin Pools achter de schermen worden toegewezen in door batch beheerde abonnementen. In de alternatieve modus Gebruikersabonnement worden Batch-VM's en andere resources rechtstreeks in uw abonnement gemaakt wanneer er een groep wordt gemaakt. Abonnements accounts voor gebruikers worden voornamelijk gebruikt om een belang rijke, maar kleine subset van scenario's mogelijk te maken. Meer informatie over de modus gebruikers abonnement vindt u op [aanvullende configuratie voor de modus gebruikers abonnement](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+- **Pool toewijzings modus** Bij het maken van een batch-account kunt u kiezen uit twee pool toewijzings modi: **batch-service** of **gebruikers abonnement** . In de meeste gevallen moet u de standaard batch-service modus gebruiken, waarin Pools achter de schermen worden toegewezen in door batch beheerde abonnementen. In de alternatieve modus Gebruikersabonnement worden Batch-VM's en andere resources rechtstreeks in uw abonnement gemaakt wanneer er een groep wordt gemaakt. Abonnements accounts voor gebruikers worden voornamelijk gebruikt om een belang rijke, maar kleine subset van scenario's mogelijk te maken. Meer informatie over de modus gebruikers abonnement vindt u op [aanvullende configuratie voor de modus gebruikers abonnement](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
 - **Denk na over taak-en taak uitvoerings tijd bij het bepalen van de taak voor pool toewijzing.**
     Als u taken hebt die voornamelijk uit korte uitvoeringen bestaan, en het verwachte totale aantal taken klein is, zodat de totale verwachte uitvoerings tijd van de taak niet lang is, kunt u geen nieuwe groep voor elke taak toewijzen. De toewijzings tijd van de knoop punten vermindert de uitvoerings tijd van de taak.
@@ -41,7 +41,7 @@ In dit artikel wordt een verzameling aanbevolen procedures beschreven voor het e
 De levens duur van de groep kan variëren, afhankelijk van de toewijzings methode en opties die worden toegepast op de groeps configuratie. Pools kunnen op elk moment een wille keurige levens duur hebben en een verschillend aantal reken knooppunten in de pool. Het is uw verantwoordelijkheid om de reken knooppunten in de groep expliciet te beheren of door de functies van de service (automatisch schalen of autogroepen).
 
 - **Bewaar Pools nieuw.**
-    Wijzig de grootte van uw Pools in nul om de paar maanden om ervoor te zorgen dat u de nieuwste updates voor de knooppunt agent en oplossingen krijgt. Uw pool ontvangt geen updates voor de knooppunt agent, tenzij deze opnieuw worden gemaakt of het formaat van 0 reken knooppunten wordt gewijzigd. Voordat u de groep opnieuw maakt of het formaat ervan wijzigt, is het raadzaam om de logboeken van de-agent te downloaden voor fout opsporing, zoals beschreven in de sectie [knoop punten](#nodes) .
+    Wijzig de grootte van uw Pools in nul om de paar maanden om ervoor te zorgen dat u de [nieuwste updates voor de knooppunt agent en](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)oplossingen krijgt. Uw pool ontvangt geen updates voor de knooppunt agent, tenzij deze opnieuw worden gemaakt of het formaat van 0 reken knooppunten wordt gewijzigd. Voordat u de groep opnieuw maakt of het formaat ervan wijzigt, is het raadzaam om de logboeken van de-agent te downloaden voor fout opsporing, zoals beschreven in de sectie [knoop punten](#nodes) .
 
 - **Groep opnieuw maken** Het wordt afgeraden om uw Pools dagelijks te verwijderen en opnieuw te maken op een vergelijk bare opmerking. Maak in plaats daarvan een nieuwe pool, werk uw bestaande taken bij zodat deze naar de nieuwe groep wijzen. Wanneer alle taken zijn verplaatst naar de nieuwe groep, verwijdert u de oude groep.
 
@@ -67,7 +67,7 @@ Pools kunnen worden gemaakt met installatie kopieën van derden die naar Azure M
 
 ### <a name="azure-region-dependency"></a>Azure-regio afhankelijkheid
 
-Als u een tijd gevoelige of productie werk belasting hebt, is het raadzaam om niet afhankelijk te zijn van één Azure-regio. Soms zijn er problemen die invloed kunnen hebben op een hele regio. Als uw verwerking bijvoorbeeld op een specifiek tijdstip moet worden gestart, kunt u overwegen om de groep in uw primaire regio goed te schalen voor *de start tijd*. Als deze pool schaal mislukt, kunt u terugvallen om een pool omhoog te schalen in een back-upgebied (of regio's). Pools over meerdere accounts in verschillende regio's bieden een kant-en-klare back-up als er iets mis is met een andere groep. Zie [uw toepassing ontwerpen voor hoge Beschik baarheid](high-availability-disaster-recovery.md)voor meer informatie.
+Als u een tijd gevoelige of productie werk belasting hebt, is het raadzaam om niet afhankelijk te zijn van één Azure-regio. Soms zijn er problemen die invloed kunnen hebben op een hele regio. Als uw verwerking bijvoorbeeld op een specifiek tijdstip moet worden gestart, kunt u overwegen om de groep in uw primaire regio goed te schalen voor *de start tijd* . Als deze pool schaal mislukt, kunt u terugvallen om een pool omhoog te schalen in een back-upgebied (of regio's). Pools over meerdere accounts in verschillende regio's bieden een kant-en-klare back-up als er iets mis is met een andere groep. Zie [uw toepassing ontwerpen voor hoge Beschik baarheid](high-availability-disaster-recovery.md)voor meer informatie.
 
 ## <a name="jobs"></a>Taken
 

@@ -12,12 +12,12 @@ ms.date: 10/27/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a8e3b6cfce9bff76ec3989273cadadebb23d6d40
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795257"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913242"
 ---
 # <a name="switching-organizations-in-a-portal"></a>Organisaties overschakelen in een portal
 
@@ -32,9 +32,9 @@ De organisatie wisselaar is beschikbaar in de volgende portals:
 
 Scha kelen tussen organisaties is niet beschikbaar voor **mijn aanmeldingen** , **beveiligings gegevens** of **Mijn groepen** .
 
-## <a name="switch-organizations"></a>Organisaties overschakelen
+## <a name="switch-organizations"></a>Wisselen van organisatie
 
-U kunt als volgt overschakelen naar een andere organisatie. In dit voor beeld wordt gebruikgemaakt van de portal **Mijn account** , maar het pictogram voor de wisselaar en de plaatsing is ook vergelijkbaar met andere portals.
+U kunt als volgt overschakelen naar een andere organisatie. In dit voor beeld wordt de portal van **Mijn account** gebruikt, maar het pictogram voor de wisselaar en de plaatsing is ook vergelijkbaar met andere portals.
 
 1. Meld u aan bij uw werk-of school account en open vervolgens de pagina [Mijn account](https://myaccount.microsoft.com) .
 1. Selecteer de organisatie die :::image type="content" source="media/cross-tenant-switcher/switcher-icon.png" alt-text="het pictogram voor de centrale instelling voor organisatie"::: op het hoogste niveau van de pagina selecteert, naast uw account foto.

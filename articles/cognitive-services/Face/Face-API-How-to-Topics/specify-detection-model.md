@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3278a1522fe3967dd1de5551e90732e63b7666f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931553"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913480"
 ---
 # <a name="specify-a-face-detection-model"></a>Een model voor gezichtsdetectie opgeven
 
@@ -110,9 +110,9 @@ De beste manier om de prestaties van de- `detection_01` en-modellen te vergelijk
 
 In dit artikel hebt u geleerd hoe u het detectie model kunt opgeven voor gebruik met verschillende gezichts-Api's. Volg vervolgens een Snelstartgids om aan de slag te gaan met gezichts detectie.
 
-* [Gezichts-.NET-SDK](../Quickstarts/csharp-sdk.md)
-* [Gezichts python-SDK](../Quickstarts/python-sdk.md)
-* [Gezichts go-SDK](../Quickstarts/go-sdk.md)
+* [Gezichts-.NET-SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
+* [Gezichts python-SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)
+* [Gezichts go-SDK](../quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go)
 
 [Face - Detecteren]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

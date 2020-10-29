@@ -7,8 +7,6 @@
       href: overview.md
 - name: Snelstartgidsen
   items:
-    - name: De demosite verkennen
-      href: quickstarts/explore-demo.md
     - name: De webportal gebruiken
       href: quickstarts/web-portal.md
     - name: REST-API gebruiken
@@ -40,9 +38,9 @@
     - name: Metrics Advisor API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Naslaginformatie over Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: PowerShell-referentie
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: Resources
   items:
     - name: Opties voor ondersteuning en hulp

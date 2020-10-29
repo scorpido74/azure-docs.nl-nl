@@ -8,14 +8,14 @@ ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 10/28/2020
 ms.author: kumud
-ms.openlocfilehash: 791a248c8fb10bc4db483451971d452a359c8a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f49a340a004a4aef37bcae9e3ae1c2b02ae030b9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569244"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913077"
 ---
 # <a name="azure-networking-services-overview"></a>Overzicht van Azure-netwerkservices
 
@@ -27,29 +27,16 @@ De netwerk services in azure bieden diverse netwerk mogelijkheden die samen of a
 
 ## <a name="connectivity-services"></a><a name="connect"></a>Connectiviteitsservices
  
-In deze sectie worden de services beschreven die verbinding bieden tussen Azure-resources, connectiviteit van een on-premises netwerk met Azure-resources en vertakking naar vertakkings connectiviteit in azure-Virtual Network (VNet), Virtual WAN, ExpressRoute, VPN Gateway, virtueel netwerk NAT gateway, Azure DNS, Azure peering-service en Azure Bastion.
+In deze sectie worden de services beschreven die verbinding bieden tussen Azure-resources, connectiviteit van een on-premises netwerk met Azure-resources en vertakkings-naar-vertakkings connectiviteit in azure-Virtual Network (VNet), ExpressRoute, VPN Gateway, virtueel WAN, virtueel netwerk NAT gateway, Azure DNS, Azure peering-service en Azure Bastion.
 
-|Service|Waarom gebruiken?|Scenario's|
-|---|---|---|
-|[Virtueel netwerk](#vnet)|Hiermee kunnen Azure-bronnen veilig communiceren met elkaar, Internet en on-premises netwerken.| <p>[Netwerkverkeer filteren](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Netwerkverkeer routeren](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Netwerktoegang tot resources beperken](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Virtuele netwerken met elkaar verbinden](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
-|[ExpressRoute](#expressroute)|Breidt uw on-premises netwerken uit in de micro soft-Cloud via een persoonlijke verbinding die wordt vereenvoudigd door een connectiviteits provider.|<p>[Een ExpressRoute-circuit maken en wijzigen](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[Peering voor een ExpressRoute-circuit maken en wijzigen](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[Een VNet koppelen aan een ExpressRoute-circuit](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[Route filters configureren en beheren voor ExpressRoute-circuits](../expressroute/how-to-routefilter-portal.md)</p>|
-|[VPN Gateway](#vpngateway)|Versleuteld verkeer verzenden tussen een virtueel Azure-netwerk en een on-premises locatie via het open bare Internet.|<p>[Site-naar-site-verbindingen](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet-naar-VNet-verbindingen](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Punt-naar-site-verbindingen](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
-|[Virtual WAN](#virtualwan)|Optimaliseert en automatiseert de verbinding tussen filialen en Azure. Azure-regio's fungeren als hubs die u kunt gebruiken om uw filialen te koppelen aan.|<p>[Site-naar-site-verbindingen](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute-verbindingen](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
-|[Azure DNS](#dns)|Host DNS-domeinen die naam omzetting bieden met behulp van Microsoft Azure-infra structuur.|<p>[Uw domein hosten in Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[DNS-records voor een web-app maken](../dns/dns-web-sites-custom-domain.md)</p> <p>[Een alias record maken voor Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Een alias record maken voor openbaar IP-adres](../dns/tutorial-alias-pip.md)</p> <p>[Een alias record maken voor de zone bron record](../dns/tutorial-alias-rr.md)</p>|
-|[Azure Bastion](#bastion)|Configureer veilige en naadloze RDP/SSH-verbindingen met uw virtuele machines rechtstreeks in de Azure Portal via TLS. Wanneer u verbinding maakt via Azure Bastion, hebt u geen openbaar IP-adres nodig voor uw virtuele machines|<p>[Een Azure Bastion-host maken](../bastion/bastion-create-host-portal.md)</p><p>[Via SSH verbinding maken met een virtuele Linux-machine](../bastion/bastion-connect-vm-ssh.md)</p><p>[Verbinding maken met behulp van RDP met een Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
-|[NAT-gateway van virtueel netwerk](#nat)|Maak een NAT-gateway om uitgaande connectiviteit te bieden voor een virtuele machine.|<p>[Een NAT-gateway maken](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
-|[Azure Peering Service](#azurepeeringservice)|Samen werken met service providers voor optimale en betrouw bare route ring naar de micro soft-Cloud via het open bare netwerk.|<p>[Azure peering-service registreren](../peering-service/azure-portal.md)</p>|
-| [Azure Edge Zones](#edge-zones)| Implementeer Vm's, containers en andere services naar Edge-zones om te voldoen aan de vereisten voor een lage latentie en hoge door voer.| <p>[Edge-zones met transporteur](edge-zones-overview.md#carrier)<p> <p>[Zones met persoonlijke randen](edge-zones-overview.md#private-edge-zones)</p>|
-| [Azure-orbital](#orbital)| Communiceer met uw ruimte vaartuigen of satelliet constellations, downlink en uplinkgegevens, Verwerk uw gegevens in de Cloud, chaineer Services met Azure-Services in unieke scenario's en Genereer producten voor uw klanten.  | <p>[Wereld wijde communicatie](azure-orbital-overview.md#global-communication)</p>  <p>[Partner stations](azure-orbital-overview.md#digital-transformation)</p>|
-||||
 
 ### <a name="virtual-network"></a><a name="vnet"></a>Virtueel netwerk
 
 Azure Virtual Network (VNet) is de basisbouwsteen voor uw privénetwerk in Azure. U kunt een VNets gebruiken om het volgende te doen:
-- **Communiceren tussen Azure-resources**: u kunt vm's en verschillende andere typen Azure-resources implementeren in een virtueel netwerk, zoals Azure app service omgevingen, de Azure Kubernetes-service (AKS) en Azure virtual machine Scale sets. Zie [Integratie van virtuele netwerkservices](../virtual-network/virtual-network-for-azure-services.md) voor een volledige lijst met Azure-resources die u in een virtueel netwerk kunt implementeren.
-- **Communiceren tussen**elkaar: u kunt virtuele netwerken met elkaar verbinden, waardoor resources in beide virtuele netwerken met elkaar kunnen communiceren met behulp van peering op virtueel netwerk. De virtuele netwerken die u met elkaar verbindt, kunnen zich in dezelfde of verschillende Azure-regio's bevinden. Zie [peering van virtuele netwerken](../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
-- **Communiceren met Internet**: alle resources in een VNet kunnen standaard uitgaand verkeer naar Internet communiceren. U kunt binnenkomend communiceren met een resource door er een openbaar IP-adres of een openbare Load Balancer aan toe te wijzen. U kunt ook [open bare IP-adressen](../virtual-network/virtual-network-public-ip-address.md) of open bare [Load Balancer](../load-balancer/load-balancer-overview.md) gebruiken om uw uitgaande verbindingen te beheren.
-- **Communiceren met on-premises netwerken**: u kunt uw on-premises computers en netwerken verbinden met een virtueel netwerk met behulp van [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ExpressRoute](../expressroute/expressroute-introduction.md).
+- **Communiceren tussen Azure-resources** : u kunt vm's en verschillende andere typen Azure-resources implementeren in een virtueel netwerk, zoals Azure app service omgevingen, de Azure Kubernetes-service (AKS) en Azure virtual machine Scale sets. Zie [Integratie van virtuele netwerkservices](../virtual-network/virtual-network-for-azure-services.md) voor een volledige lijst met Azure-resources die u in een virtueel netwerk kunt implementeren.
+- **Communiceren tussen** elkaar: u kunt virtuele netwerken met elkaar verbinden, waardoor resources in beide virtuele netwerken met elkaar kunnen communiceren met behulp van peering op virtueel netwerk. De virtuele netwerken die u met elkaar verbindt, kunnen zich in dezelfde of verschillende Azure-regio's bevinden. Zie [peering van virtuele netwerken](../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
+- **Communiceren met Internet** : alle resources in een VNet kunnen standaard uitgaand verkeer naar Internet communiceren. U kunt binnenkomend communiceren met een resource door er een openbaar IP-adres of een openbare Load Balancer aan toe te wijzen. U kunt ook [open bare IP-adressen](../virtual-network/virtual-network-public-ip-address.md) of open bare [Load Balancer](../load-balancer/load-balancer-overview.md) gebruiken om uw uitgaande verbindingen te beheren.
+- **Communiceren met on-premises netwerken** : u kunt uw on-premises computers en netwerken verbinden met een virtueel netwerk met behulp van [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ExpressRoute](../expressroute/expressroute-introduction.md).
 
 Zie [Wat is Azure Virtual Network?](../virtual-network/virtual-networks-overview.md)voor meer informatie.
 
@@ -99,30 +86,18 @@ Azure Orbital is een volledig beheerd, op de cloud gebaseerd grondstation als ee
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Services voor toepassings beveiliging
 
-In deze sectie worden netwerk services in azure beschreven waarmee u uw netwerk bronnen kunt beveiligen. Beveilig uw toepassingen met een of meer combi natie van deze netwerk services in azure-private link, DDoS Protection, firewall, netwerk beveiligings groepen, Web Application firewall en Virtual Network-eind punten.
-
-|Service|Waarom gebruiken?|Scenario|
-|---|---|---|
-|[DDoS-beveiliging](#ddosprotection) |Hoge Beschik baarheid voor uw toepassingen met beveiliging tegen overtollige IP-verkeer|[Azure DDoS Protection beheren](../virtual-network/manage-ddos-protection.md)|
-|[Web Application Firewall](#waf)|<p>[Azure WAF met Application Gateway](../web-application-firewall/ag/ag-overview.md) biedt regionale beveiliging van entiteiten in open bare en privé-adres ruimte</p><p>[Azure WAF met de voor deur](../web-application-firewall/afds/afds-overview.md) biedt beveiliging aan de rand van het netwerk tot open bare eind punten.</p>|<p>[Bot-beveiligings regels configureren](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Aangepast antwoordcode configureren](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP-beperkings regels configureren](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[Regel voor frequentie limiet configureren](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
-|[Azure Firewall](#firewall)|Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledige stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte cloudschaalbaarheid.|<p>[Een Azure Firewall implementeren in een Vnet](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[-Een Azure Firewall implementeren in een hybride netwerk](../firewall/tutorial-hybrid-ps.md)</p> <p>[Inkomend verkeer filteren met Azure Firewall DNAT](../firewall/tutorial-firewall-dnat.md)</p>|
-|[Netwerkbeveiligingsgroepen](#nsg)|Volledig granulair gedistribueerd besturings element voor eind knooppunten op VM/subnet voor alle netwerk verkeer stromen|[Netwerkverkeer filteren met netwerkbeveiligingsgroepen](../virtual-network/tutorial-filter-network-traffic.md)|
-|[Service-eindpunten voor virtueel netwerk](#serviceendpoints)|Hiermee kunt u de netwerk toegang tot bepaalde Azure-service bronnen beperken tot een subnet van een virtueel netwerk|[Netwerktoegang tot PaaS-resources beperken](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
-[Private Link](#privatelink)|Hiermee hebt u toegang tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL Database) en Azure gehoste klanten services van de klant via een persoonlijk eind punt in uw virtuele netwerk.|<p>[Een privé-eindpunt maken](../private-link/create-private-endpoint-portal.md)</p><p>[Een Private Link-service maken](../private-link/create-private-link-service-portal.md)</p>|
-|||
+In deze sectie worden netwerk services in azure beschreven waarmee u uw netwerk bronnen kunt beveiligen. Beveilig uw toepassingen met een of meer combi natie van deze netwerk services in azure-DDoS Protection, persoonlijke koppeling, firewall, Web Application firewall, netwerk beveiligings groepen en Virtual Network Service-eind punten.
 
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS Protection 
 [Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) biedt tegen maatregelen tegen de meest geavanceerde DDoS bedreigingen. De service biedt verbeterde mogelijkheden voor DDoS-beperking voor uw toepassing en resources die zijn geïmplementeerd in uw virtuele netwerken. Klanten die Azure DDoS Protection gebruiken, hebben bovendien toegang tot DDoS snelle reactie ondersteuning om DDoS-experts te benaderen tijdens een actieve aanval.
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="Azure ExpressRoute":::
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall
+### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private Link
+Met [persoonlijke Azure-koppeling](../private-link/private-link-overview.md) kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL database) en Azure gehoste klanten-partner services via een persoonlijk eind punt in uw virtuele netwerk.
+Verkeer tussen uw virtuele netwerk en de service wordt via het Microsoft-backbonenetwerk verplaatst. U hoeft uw service niet langer bloot te stellen aan het openbare internet. U kunt een eigen Private Link-service maken in uw virtuele netwerk en deze aanbieden bij klanten.
 
-[Azure Web Application firewall](../web-application-firewall/overview.md) (WAF) biedt beveiliging voor uw webtoepassingen van veelvoorkomende webtoepassingen en zwakke plekken, zoals SQL-injectie en scripting op meerdere sites. Azure WAF voorziet in out-of-Box-beveiliging van OWASP Top 10 van beveiligings problemen via beheerde regels. Daarnaast kunnen klanten aangepaste regels configureren, die door de klant beheerde regels zijn om extra beveiliging te bieden op basis van het bron-IP-bereik, en om kenmerken zoals kopteksten, cookies, formulier gegevens velden of query reeks parameters op te geven.
-
-Klanten kunnen ervoor kiezen om [Azure WAF te implementeren met Application Gateway](../application-gateway/waf-overview.md) die regionale beveiliging biedt aan entiteiten in open bare en privé-adres ruimte. Klanten kunnen er ook voor kiezen om [Azure WAF te implementeren met de voor deur](../frontdoor/waf-overview.md) die beveiliging biedt aan de rand van het netwerk tot open bare eind punten.
-
-:::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/private-endpoint.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="azure-firewall"></a><a name="firewall"></a>Azure Firewall
 Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Met behulp van Azure Firewall kunt u toepassingen en beleids regels voor de toepassing en het netwerk op verschillende locaties en in virtuele netwerken centraal maken, afdwingen en registreren. Azure Firewall maakt gebruik van een statisch openbaar IP-adres voor uw virtuele-netwerkresources zodat externe firewalls verkeer dat afkomstig is van uw virtuele netwerk kunnen identificeren. 
@@ -131,40 +106,34 @@ Raadpleeg de [Azure firewall documentatie](../firewall/overview.md)voor meer inf
 
 :::image type="content" source="./media/networking-overview/firewall-threat.png" alt-text="Azure ExpressRoute":::
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Netwerk beveiligings groepen
-U kunt netwerkverkeer naar en van Azure-resources in een virtueel Azure-netwerk filteren met een netwerkbeveiligingsgroep. Zie [Security Overview](../virtual-network/security-overview.md)(Engelstalig) voor meer informatie.
+### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall
+[Azure Web Application firewall](../web-application-firewall/overview.md) (WAF) biedt beveiliging voor uw webtoepassingen van veelvoorkomende webtoepassingen en zwakke plekken, zoals SQL-injectie en scripting op meerdere sites. Azure WAF voorziet in out-of-Box-beveiliging van OWASP Top 10 van beveiligings problemen via beheerde regels. Daarnaast kunnen klanten aangepaste regels configureren, die door de klant beheerde regels zijn om extra beveiliging te bieden op basis van het bron-IP-bereik, en om kenmerken zoals kopteksten, cookies, formulier gegevens velden of query reeks parameters op te geven.
 
-### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Service-eind punten
+Klanten kunnen ervoor kiezen om [Azure WAF te implementeren met Application Gateway](../application-gateway/waf-overview.md) die regionale beveiliging biedt aan entiteiten in open bare en privé-adres ruimte. Klanten kunnen er ook voor kiezen om [Azure WAF te implementeren met de voor deur](../frontdoor/waf-overview.md) die beveiliging biedt aan de rand van het netwerk tot open bare eind punten.
+
+:::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Azure ExpressRoute":::
+
+### <a name="network-security-groups"></a><a name="nsg"></a>Netwerkbeveiligingsgroepen
+U kunt netwerkverkeer naar en van Azure-resources in een virtueel Azure-netwerk filteren met een netwerkbeveiligingsgroep. Zie [Netwerkbeveiligingsgroepen](../virtual-network/network-security-groups-overview.md) voor meer informatie.
+
+### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Service-eindpunten
 Met service-eindpunten van Virtual Network (VNet) kunt u de privé-adresruimte van uw virtuele netwerk en de identiteit van uw VNet uitbreiden naar Azure-services, via een directe verbinding. Met eindpunten kunt u uw kritieke Azure-serviceresources alleen beveiligen naar uw virtuele netwerken. Verkeer van uw VNet naar de Azure-service blijft altijd in het Microsoft Azure-backbonenetwerk. Zie [service-eind punten voor virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie.
 
 :::image type="content" source="./media/networking-overview/vnet-service-endpoints-overview.png" alt-text="Azure ExpressRoute":::
 
-### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private Link
-Met [persoonlijke Azure-koppeling](../private-link/private-link-overview.md) kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL database) en Azure gehoste klanten-partner services via een persoonlijk eind punt in uw virtuele netwerk.
-Verkeer tussen uw virtuele netwerk en de service wordt via het Microsoft-backbonenetwerk verplaatst. U hoeft uw service niet langer bloot te stellen aan het openbare internet. U kunt een eigen Private Link-service maken in uw virtuele netwerk en deze aanbieden bij klanten.
-
-:::image type="content" source="./media/networking-overview/private-endpoint.png" alt-text="Azure ExpressRoute":::
-
 ## <a name="application-delivery-services"></a><a name="deliver"></a>Services voor het leveren van toepassingen
 
 In deze sectie worden de netwerk services in azure beschreven waarmee u toepassingen Content Delivery Network, Azure front-deur service, Traffic Manager, Load Balancer en Application Gateway kunt leveren.
-
-|Service|Waarom gebruiken?|Scenario|
-|---|---|---|
-|[Content Delivery Network](#cdn)|Levert inhoud met hoge band breedte aan gebruikers. Cdn's slaat inhoud in de cache op rand servers op in POP-locaties (Point-of-Presence) die zich dicht bij eind gebruikers bevinden, om latentie te minimaliseren|<p>[CDN toevoegen aan een web-app](../cdn/cdn-add-to-web-app.md)</p> <p>[-Toegang tot opslag-blobs met behulp van een Azure CDN aangepast domein via HTTPS](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Een aangepast domein toevoegen aan uw Azure CDN-eindpunt](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[HTTPS op een aangepast domein van Azure CDN configureren](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
-|[Azure Front Door Service](#frontdoor)|Hiermee kunt u de wereld wijde route ring voor uw webverkeer definiëren, beheren en bewaken door te optimaliseren voor de beste prestaties en directe globale failover voor hoge Beschik baarheid.|<p>[Een aangepast domein toevoegen aan de Azure Front Door Service](../frontdoor/front-door-custom-domain.md)</p> <p>[HTTPS configureren in een aangepast Front Door-domein](../frontdoor/front-door-custom-domain-https.md)</p><p>[Beleid voor geofiltering Web Application firewall instellen](../frontdoor/front-door-tutorial-geo-filtering.md)|
-|[Traffic Manager](#trafficmanager)|Distribueert verkeer op basis van DNS naar Services in wereld wijde Azure-regio's, en biedt hoge Beschik baarheid en reactie snelheid|<p> [Verkeer routeren voor lage latentie](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[Verkeer routeren naar een prioriteitseindpunt](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [Verkeer beheren met gewogen eindpunten](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[Verkeer routeren op basis van de geografische locatie van het eind punt](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [Verkeer routeren op basis van het subnet van de gebruiker](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[Load Balancer](#loadbalancer)|Voorziet in regionale taak verdeling door verkeer te routeren tussen beschikbaarheids zones en in uw VNets. Voorziet in interne taak verdeling door verkeer tussen en tussen uw resources te routeren om uw regionale toepassing te bouwen.|<p> [Internetverkeer gelijkmatig verdelen over VM's](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Taak verdeling van verkeer tussen virtuele machines in een virtueel netwerk](../load-balancer/tutorial-load-balancer-standard-internal-portal.md)<p>[Poort verkeer door sturen naar een specifieke poort op specifieke Vm's](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Taak verdeling en uitgaande regels configureren](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
-|[Application Gateway](#applicationgateway)|Azure Application Gateway is een load balancer voor webverkeer waarmee u het verkeer naar uw webapps kunt beheren.|<p>[Webverkeer omleiden met Azure Application Gateway](../application-gateway/quick-create-portal.md)</p><p>[Zelfstudie: Een toepassingsgateway configureren met TLS-beëindiging met de Azure-portal](../application-gateway/create-ssl-portal.md)</p><p>[Een toepassingsgateway maken met een omleiding op basis van een URL-pad](../application-gateway/create-url-route-portal.md) </p>|
-|
 
 ### <a name="content-delivery-network"></a><a name="cdn"></a>Content Delivery Network
 Azure Content Delivery Network (CDN) biedt ontwikkelaars een globale oplossing voor het snel leveren van inhoud met hoge bandbreedte door de inhoud op strategische, fysieke knooppunten in de hele wereld in de cache op te slaan. Zie voor meer informatie over Azure CDN [Azure Content Delivery Network](../cdn/cdn-overview.md).
 
 :::image type="content" source="./media/networking-overview/cdn-overview.png" alt-text="Azure ExpressRoute":::
 
-### <a name="azure-front-door-service"></a><a name="frontdoor"></a>Azure front-deur service
+### <a name="azure-front-door-service"></a><a name="frontdoor"></a>Azure Front Door Service
 Met de Azure Front Door Service kunt u de internationale routering van uw webverkeer definiëren, beheren en bewaken door te optimaliseren voor de beste prestaties en directe wereldwijde failover voor hoge beschikbaarheid. Met Front Door kunt u uw internationale (multiregionale) klant- en bedrijfstoepassingen transformeren in robuuste, hoogwaardige, gepersonaliseerde moderne toepassingen, API’s en inhoud die een wereldwijd bereik hebben met Azure. Zie [Azure front-deur](../frontdoor/front-door-overview.md)voor meer informatie.
+
+:::image type="content" source="./media/networking-overview/front-door-visual-diagram.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="traffic-manager"></a><a name="trafficmanager"></a>Traffic Manager
 
@@ -191,26 +160,22 @@ Het volgende diagram toont op URL-pad gebaseerde route ring met Application Gate
 :::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="Azure ExpressRoute":::
 
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>Netwerk bewakings Services
-In deze sectie worden de netwerk services in azure beschreven die u helpen bij het bewaken van uw netwerk bronnen-Network Watcher, ExpressRoute monitor, Azure Monitor en Virtual Network tikken.
-
-|Service|Waarom gebruiken?|Scenario|
-|---|---|---|
-|[Network Watcher](#networkwatcher)|Helpt bij het bewaken en oplossen van verbindings problemen, helpt bij het vaststellen van problemen met VPN-, NSG-en route ring, het vastleggen van pakketten op uw virtuele machine, het automatiseren van diagnostische hulpprogram ma's voor activering met Azure Functions en Logic Apps|<p>[Probleem met VM-verkeersfilter vaststellen](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)</p><p>[VM-routeringsprobleem vaststellen](../network-watcher/diagnose-vm-network-routing-problem.md)</p><p>[De communicatie tussen Vm's controleren](../network-watcher/connection-monitor.md)</p><p>[Communicatieproblemen tussen netwerken vaststellen](../network-watcher/diagnose-communication-problem-between-networks.md)</p><p>[Netwerkverkeer van en naar een VM in een logboek vastleggen](../network-watcher/network-watcher-nsg-flow-logging-portal.md)</p>|
-|[Monitor voor ExpressRoute](#expressroutemonitor)|Biedt real-time bewaking van netwerk prestaties, Beschik baarheid en gebruik, helpt bij het automatisch detecteren van netwerk topologie, biedt snellere fout isolatie, detecteert tijdelijke netwerk problemen, helpt historische netwerk prestatie kenmerken te analyseren, ondersteunt meerdere abonnementen|<p>[Netwerkprestatiemeter configureren voor ExpressRoute](../expressroute/how-to-npm.md)</p><p>[Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute](../expressroute/expressroute-monitoring-metrics-alerts.md)</p>|
-|[Azure Monitor](#azuremonitor)|Helpt u inzicht te krijgen in de manier waarop uw toepassingen worden uitgevoerd en proactief problemen identificeren die van invloed zijn op deze en de resources waarvan ze afhankelijk zijn.|<p>[Metrische gegevens en waarschuwingen Traffic Manager](../traffic-manager/traffic-manager-metrics-alerts.md)</p><p>[Diagnostische gegevens van Azure monitor voor Standard Load Balancer](../load-balancer/load-balancer-standard-diagnostics.md)</p><p>[Azure Firewall-logboeken en metrische gegevens bewaken](../firewall/tutorial-diagnostics.md)</p><p>[Controle en logboekregistratie van Azure Web Application Firewall](../frontdoor/waf-front-door-monitor.md)</p>|
-|[Virtual Network Tik](#vnettap)|Biedt continue streaming van netwerk verkeer van de virtuele machine naar pakket verzamelaar, biedt oplossingen voor netwerk-en toepassings prestaties en hulpprogram ma's voor beveiligings analyse|[Een VNet-bron maken TAP](../virtual-network/tutorial-tap-virtual-network-cli.md)|
-|
+In deze sectie worden netwerk services in azure beschreven waarmee u uw netwerk bronnen Network Watcher, Azure Monitor voor netwerken, ExpressRoute monitor, Azure Monitor en Virtual Network TIKT kunt bewaken.
 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>Network Watcher
 Azure Network Watcher biedt hulpprogramma's voor het controleren, diagnosticeren en weergeven van metrische gegevens en het in- of uitschakelen van logboekregistratie voor resources in een virtueel Azure-netwerk. Zie [Wat is Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)voor meer informatie.
+
+### <a name="azure-monitor-for-networks-preview"></a>Preview-versie van Azure Monitor voor netwerken
+Azure Monitor voor netwerken biedt een uitgebreid overzicht van de status en metrische gegevens voor alle geïmplementeerde netwerk bronnen, zonder dat hiervoor configuratie is vereist. Het biedt ook toegang tot netwerk bewakings mogelijkheden, zoals [verbindings monitor](../network-watcher/connection-monitor-preview.md), [flow logboek registratie voor netwerk beveiligings groepen](../network-watcher/network-watcher-nsg-flow-logging-overview.md)en [Traffic Analytics](../network-watcher/traffic-analytics.md). Zie [Azure monitor voor netwerken preview](../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)voor meer informatie.
+
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>Monitor voor ExpressRoute
 Zie [ExpressRoute controle, metrische gegevens en waarschuwingen](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)voor meer informatie over het weer geven van metrische gegevens voor ExpressRoute-circuits, bron logboeken en-waarschuwingen.
 ### <a name="azure-monitor"></a><a name="azuremonitor"></a>Azure Monitor
 Met Azure Monitor worden de beschikbaarheid en prestaties van uw toepassing gemaximaliseerd, door een uitgebreide oplossing te bieden voor het verzamelen en analyseren van, en werken met telemetriegegevens vanuit uw cloudomgeving en on-premises omgeving. Het helpt u begrijpen hoe uw toepassingen presteren en stelt proactief problemen vast die betrekking hebben op de toepassingen en de resources waarvan ze afhankelijk zijn. Zie [Azure monitor Overview](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)voor meer informatie.
 ### <a name="virtual-network-tap"></a><a name="vnettap"></a>Virtual Network Tik
-Met het virtuele netwerk van Azure (Terminal Access Point) kunt u het netwerk verkeer van de virtuele machine continu streamen naar een netwerk pakket verzamelaar of een analyse programma. Het hulp programma Collector of Analytics wordt verschaft door een [virtuele netwerk apparaat](https://azure.microsoft.com/solutions/network-appliances/) -partner. 
+Met het virtuele netwerk van Azure (Terminal Access Point) kunt u het netwerk verkeer van de virtuele machine continu streamen naar een netwerk pakket verzamelaar of een analyse programma. Het hulp programma Collector of Analytics wordt verschaft door een [virtuele netwerk apparaat](https://azure.microsoft.com/solutions/network-appliances/) -partner.
 
-In de volgende afbeelding ziet u hoe virtuele netwerk tikken werkt. 
+In de volgende afbeelding ziet u hoe virtuele netwerk tikken werkt:
 
 :::image type="content" source="./media/networking-overview/virtual-network-tap-architecture.png" alt-text="Azure ExpressRoute":::
 
@@ -218,6 +183,6 @@ Zie [Wat is Virtual Network Tik](../virtual-network/virtual-network-tap-overview
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Maak uw eerste VNet en Verbind een aantal virtuele machines met de virtuele machine door de stappen in het artikel [Create Your First Virtual Network](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) uit te voeren.
-- Verbind uw computer met een VNet door de stappen in het [artikel een punt-naar-site-verbinding configureren](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)te volt ooien.
+- Maak uw eerste virtuele netwerk en Verbind een aantal Vm's hiervoor door de stappen in het artikel [uw eerste virtuele netwerk maken](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) te volt ooien.
+- Verbind uw computer met een virtueel netwerk door de stappen in het [artikel een punt-naar-site-verbinding configureren](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)te volt ooien.
 - Taak verdeling van Internet verkeer naar open bare servers door de stappen in het artikel [een Internet gerichte Load Balancer maken](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) uit te voeren.

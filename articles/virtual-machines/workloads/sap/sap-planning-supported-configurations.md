@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec29b6489712eeb67783aef03261a3606a390125
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88648986"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926611"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-workload in scenario's met virtuele Azure-machines
 Het ontwerpen van de architectuur van SAP NetWeaver, Business One `Hybris` of S/4HANA Systems in azure opent een groot aantal verschillende mogelijkheden voor verschillende architecturen en hulpprogram ma's die u kunt gebruiken om een schaal bare, efficiënte en Maxi maal beschik bare implementatie te verkrijgen. Afhankelijk van het gebruikte besturings systeem of DBMS, zijn er beperkingen. Daarnaast worden niet alle scenario's die on-premises worden ondersteund, op dezelfde manier ondersteund in Azure. In dit document wordt gebruikgemaakt van de ondersteunde configuraties voor niet-hoge Beschik baarheid en configuraties met hoge Beschik baarheid en architecturen met alleen Azure Vm's. Raadpleeg het artikel [ondersteunde scenario's voor Hana grote instanties](./hana-supported-scenario.md)voor scenario's die worden ondersteund met een [grote hoeveelheid Hana-exemplaren](./hana-overview-architecture.md). 
@@ -46,7 +46,7 @@ In dergelijke configuraties scheidt u de SAP-toepassingsobjectlaag en de DBMS-la
 
 De grafische weer gave ziet er als volgt uit:
 
-![Eenvoudige configuratie met twee lagen](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
+![Diagram waarin een eenvoudige configuratie met drie lagen wordt weer gegeven.](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
 
 Dit type configuratie wordt ondersteund op Windows, Red Hat, SUSE en Oracle Linux voor de DBMS-systemen van SQL Server, Oracle, Db2, SAP HANA, maxDB en SAP ASE voor productie-en niet-productie-cases. Dit is de standaard implementatie configuratie voor [grote Azure Hana-exemplaren](./hana-overview-architecture.md). Voor vereenvoudiging hebben we geen onderscheid gemaakt tussen SAP Central-Services en SAP-dialoog exemplaren in de SAP-toepassingslaag. In deze eenvoudige configuratie met drie lagen is er geen hoge Beschik baarheid voor SAP Central-Services.
 
@@ -83,7 +83,7 @@ In veel gevallen zijn er meerdere dialoogvenster exemplaren geïmplementeerd op 
 
 Bij een configuratie met 3 lagen, waar meerdere SAP-dialoog vensters worden uitgevoerd binnen virtuele machines van Azure, kan er als volgt uitzien:
 
-![Meerdere DBMS-instanties in één eenheid](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
+![Diagram waarin een configuratie met drie lagen wordt weer gegeven, waarbij meerdere SAP-dialoog exemplaren worden uitgevoerd in virtuele machines van Azure.](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
 
 Voor vereenvoudiging hebben we geen onderscheid gemaakt tussen SAP Central-Services en SAP-dialoog exemplaren in de SAP-toepassingslaag. In deze eenvoudige configuratie met drie lagen is er geen hoge Beschik baarheid voor SAP Central-Services. Voor productie systemen is het niet raadzaam SAP Central-Services onbeveiligd te laten. Zie verderop in dit document voor meer informatie over de zogenaamde multi-SID-configuraties rond SAP centraal-instanties en een hoge Beschik baarheid van dergelijke configuraties met meerdere SID'S.
 
@@ -208,7 +208,7 @@ De configuratie wordt beschreven in [hoge Beschik baarheid voor SAP NetWeaver op
 
 Een multi-SID-cluster met schematische voors telling van replicatie server ziet er als volgt uit:
 
-![Configuratie van DBMS en ASCS HA](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
+![Diagram waarin een multi-SID-cluster wordt weer gegeven met replicatie server in de wachtrij.](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
 
 
 ## <a name="sap-hana-scale-out-scenarios"></a>SAP HANA scale-out-scenario's
