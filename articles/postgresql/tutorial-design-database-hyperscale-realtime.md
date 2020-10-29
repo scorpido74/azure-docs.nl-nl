@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 41ac1cb856011d9730f7b49bbf85350f4dbccdbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bd06491b5488223b9a8eba50839a7fdf0cd61b6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895246"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478538"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Zelfstudie: Zelfstudie: een database met realtime analyses ontwerpen met behulp van Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -220,11 +220,11 @@ Tijdens de productie kunt u deze query's in een functie laten teruglopen en deze
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Als u deze resources in de toekomst niet nodig denkt te hebben, kunt u de servergroep verwijderen. Druk op de knop *verwijderen* op de pagina *Overzicht* voor uw servergroep. Wanneer u daarom op een pop-uppagina wordt gevraagd, bevestigt u de naam van de servergroep en klikt u op de laatste knop *Verwijderen*.
+In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Als u deze resources in de toekomst niet nodig denkt te hebben, kunt u de servergroep verwijderen. Druk op de knop *verwijderen* op de pagina *Overzicht* voor uw servergroep. Wanneer u daarom op een pop-uppagina wordt gevraagd, bevestigt u de naam van de servergroep en klikt u op de laatste knop *Verwijderen* .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u geleerd hoe u een Hyperscale (Citus)-servergroep inricht. U hebt psql gebruikt om hiermee verbinding te maken, u hebt een schema gemaakt en u hebt gegevens gedistribueerd. U hebt geleerd hoe u gegevens in onbewerkte vorm opvraagt, regelmatig de gegevens aggregeert, query's uitvoert op de geaggregeerde tabellen en oude gegevens laat verlopen.
 
-- Meer informatie over [knooppunttypen](https://aka.ms/hyperscale-concepts) voor servergroepen
+- Meer informatie over [knooppunttypen](./concepts-hyperscale-nodes.md) voor servergroepen
 - Bepaal de beste [begingrootte](howto-hyperscale-scaling.md#picking-initial-size) voor uw servergroep

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2939b3b3beac55b537c1dcf844f702a0ad73f06e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895257"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478606"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Zelfstudie: een database met meerdere tenants ontwerpen met behulp van Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -269,11 +269,11 @@ SELECT id
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Als u deze resources in de toekomst niet nodig denkt te hebben, kunt u de servergroep verwijderen. Druk op de knop *verwijderen* op de pagina *Overzicht* voor uw servergroep. Wanneer u daarom op een pop-uppagina wordt gevraagd, bevestigt u de naam van de servergroep en klikt u op de laatste knop *Verwijderen*.
+In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Als u deze resources in de toekomst niet nodig denkt te hebben, kunt u de servergroep verwijderen. Druk op de knop *verwijderen* op de pagina *Overzicht* voor uw servergroep. Wanneer u daarom op een pop-uppagina wordt gevraagd, bevestigt u de naam van de servergroep en klikt u op de laatste knop *Verwijderen* .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u geleerd hoe u een Hyperscale (Citus)-servergroep inricht. U hebt psql gebruikt om hiermee verbinding te maken, u hebt een schema gemaakt en u hebt gegevens gedistribueerd. U hebt geleerd om een query uit te voeren op gegevens zowel in als tussen tenants en om het schema per tenant aan te passen.
 
-- Meer informatie over [knooppunttypen](https://aka.ms/hyperscale-concepts) voor servergroepen
+- Meer informatie over [knooppunttypen](./concepts-hyperscale-nodes.md) voor servergroepen
 - Bepaal de beste [begingrootte](howto-hyperscale-scaling.md#picking-initial-size) voor uw servergroep

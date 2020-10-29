@@ -9,19 +9,19 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: d50f3015be4ce12d5980fde7d039d87ef06da164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e9df3343a89097b192c51d3b9f093805afe6b87
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330465"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477348"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Azure Table Storage of de Azure Cosmos DB Table-API van Java gebruiken
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Dit artikel laat zien hoe u tabellen maakt, uw gegevens opslaat en CRUD-bewerkingen op de gegevens uitvoert. Kies de Azure Table service of de Azure Cosmos DB Table-API. De voorbeelden zijn geschreven in Java en maken gebruik van de [Azure Storage SDK voor Java][Azure Storage SDK for Java]. De volgende scenario's worden behandeld: het **maken**, **in een lijst opnemen** en **verwijderen** van tabellen, alsmede het **invoegen**, **uitvoeren van query's**, **aanpassen** en **verwijderen** van entiteiten in een tabel. Zie de sectie [Volgende stappen](#next-steps) voor meer informatie over tabellen.
+Dit artikel laat zien hoe u tabellen maakt, uw gegevens opslaat en CRUD-bewerkingen op de gegevens uitvoert. Kies de Azure Table service of de Azure Cosmos DB Table-API. De voorbeelden zijn geschreven in Java en maken gebruik van de [Azure Storage SDK voor Java][Azure Storage SDK for Java]. De volgende scenario's worden behandeld: het **maken** , **in een lijst opnemen** en **verwijderen** van tabellen, alsmede het **invoegen** , **uitvoeren van query's** , **aanpassen** en **verwijderen** van entiteiten in een tabel. Zie de sectie [Volgende stappen](#next-steps) voor meer informatie over tabellen.
 
 > [!NOTE]
 > Er is een SDK beschikbaar voor ontwikkelaars die Azure Storage op Android-apparaten gebruiken. Raadpleeg de [Azure Storage SDK voor Android][Azure Storage SDK for Android] voor meer informatie.
@@ -62,7 +62,7 @@ U kunt verbinding maken met het Azure Storage-account of het Azure Cosmos DB Tab
 
 ### <a name="add-an-azure-storage-connection-string"></a>Een Azure-opslagverbindingstekenreeks toevoegen
 
-Een Azure-opslagclient gebruikt een opslagverbindingstekenreeks om eindpunten en referenties voor toegang tot gegevensbeheerservices op te slaan. Bij uitvoering in een clienttoepassing moet u de opslagverbindingstekenreeks opgeven in de volgende indeling, met de naam van uw opslagaccount en de primaire toegangssleutel voor het opslagaccount dat in [Azure Portal](https://portal.azure.com) wordt vermeld voor de waarden **AccountName** en **AccountKey**. 
+Een Azure-opslagclient gebruikt een opslagverbindingstekenreeks om eindpunten en referenties voor toegang tot gegevensbeheerservices op te slaan. Bij uitvoering in een clienttoepassing moet u de opslagverbindingstekenreeks opgeven in de volgende indeling, met de naam van uw opslagaccount en de primaire toegangssleutel voor het opslagaccount dat in [Azure Portal](https://portal.azure.com) wordt vermeld voor de waarden **AccountName** en **AccountKey** . 
 
 In dit voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks:
 
@@ -76,7 +76,7 @@ public static final String storageConnectionString =
 
 ### <a name="add-an-azure-cosmos-db-table-api-connection-string"></a>Een Azure Cosmos DB Table-API-verbindingstekenreeks toevoegen
 
-Een Azure Cosmos DB-account gebruikt een verbindingstekenreeks voor het opslaan van de tabeleindpunt en uw referenties. Bij uitvoering in een clienttoepassing moet u de Azure Cosmos DB-verbindingstekenreeks opgeven in de volgende indeling, met de naam van uw Azure Cosmos DB-account en de primaire toegangssleutel voor het account dat in [Azure Portal](https://portal.azure.com) wordt vermeld voor de waarden **AccountName** en **AccountKey**. 
+Een Azure Cosmos DB-account gebruikt een verbindingstekenreeks voor het opslaan van de tabeleindpunt en uw referenties. Bij uitvoering in een clienttoepassing moet u de Azure Cosmos DB-verbindingstekenreeks opgeven in de volgende indeling, met de naam van uw Azure Cosmos DB-account en de primaire toegangssleutel voor het account dat in [Azure Portal](https://portal.azure.com) wordt vermeld voor de waarden **AccountName** en **AccountKey** . 
 
 In dit voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de Azure Cosmos DB-verbindingstekenreeks:
 
@@ -88,7 +88,7 @@ public static final String storageConnectionString =
     "TableEndpoint=https://your_endpoint;" ;
 ```
 
-In een toepassing die wordt uitgevoerd binnen een rol in Azure kunt u deze tekenreeks opslaan in het serviceconfiguratiebestand *ServiceConfiguration.cscfg* en u kunt deze openen met behulp van een aanroep naar de **RoleEnvironment.getConfigurationSettings**-methode. Hier volgt een voorbeeld van het ophalen van de verbindingstekenreeks van een **Setting**-element met de naam *StorageConnectionString* in het serviceconfiguratiebestand:
+In een toepassing die wordt uitgevoerd binnen een rol in Azure kunt u deze tekenreeks opslaan in het serviceconfiguratiebestand *ServiceConfiguration.cscfg* en u kunt deze openen met behulp van een aanroep naar de **RoleEnvironment.getConfigurationSettings** -methode. Hier volgt een voorbeeld van het ophalen van de verbindingstekenreeks van een **Setting** -element met de naam *StorageConnectionString* in het serviceconfiguratiebestand:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -518,7 +518,7 @@ catch (Exception e)
 
 ## <a name="insert-or-replace-an-entity"></a>Een entiteit invoegen of vervangen
 
-Vaak zult u een entiteit aan een tabel willen toevoegen zonder te weten of deze entiteit al in de tabel bestaat. Met een bewerking voor invoegen of vervangen, kunt u één aanvraag maken waarmee de entiteit wordt ingevoegd als deze niet bestaat of wordt vervangen als er al een bestaat. Op basis van de vorige voorbeelden voegt u met de volgende code de entiteit voor ‘Walter Harp’ in of vervangt u met de code deze entiteit. Na het maken van een nieuwe entiteit roept u met deze code de methode **TableOperation.insertOrReplace** aan. Met deze code roept u vervolgens **execute** op het **CloudTable**-object aan met de tabel en de tabelbewerking voor invoegen of vervangen als parameters. Als u slechts een deel van een entiteit wilt bijwerken, kunt u de methode **TableOperation.insertOrMerge** gebruiken. Invoegen of vervangen wordt niet ondersteund in de emulator van de lokale opslag. Deze code wordt dus alleen uitgevoerd als u een account gebruikt in de tabelservice. U leest meer over invoegen of vervangen en invoegen of samenvoegen in het artikel [Azure Tables: Introductie tot upsert en queryprojectie][Azure Tables: Introductie tot upsert en queryprojectie].
+Vaak zult u een entiteit aan een tabel willen toevoegen zonder te weten of deze entiteit al in de tabel bestaat. Met een bewerking voor invoegen of vervangen, kunt u één aanvraag maken waarmee de entiteit wordt ingevoegd als deze niet bestaat of wordt vervangen als er al een bestaat. Op basis van de vorige voorbeelden voegt u met de volgende code de entiteit voor ‘Walter Harp’ in of vervangt u met de code deze entiteit. Na het maken van een nieuwe entiteit roept u met deze code de methode **TableOperation.insertOrReplace** aan. Met deze code roept u vervolgens **execute** op het **CloudTable** -object aan met de tabel en de tabelbewerking voor invoegen of vervangen als parameters. Als u slechts een deel van een entiteit wilt bijwerken, kunt u de methode **TableOperation.insertOrMerge** gebruiken. Invoegen of vervangen wordt niet ondersteund in de emulator van de lokale opslag. Deze code wordt dus alleen uitgevoerd als u een account gebruikt in de tabelservice. U leest meer over invoegen of vervangen en invoegen of samenvoegen in het artikel [Azure Tables: Introductie tot upsert en queryprojectie][Azure Tables: Introductie tot upsert en queryprojectie].
 
 ```java
 try
@@ -630,5 +630,5 @@ Voor meer informatie gaat u naar [Azure voor Java-ontwikkelaars](/java/azure).
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure Storage Client SDK-referentie]: https://azure.github.io/azure-storage-java/
-[Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
+[Azure Storage REST API]: /rest/api/storageservices/
 [Azure Storage Team Blog]: https://blogs.msdn.microsoft.com/windowsazurestorage/

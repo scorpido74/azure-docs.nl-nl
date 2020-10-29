@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 005473fa02dda2e5466ffbc5a32499006c41292c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb8d1cd2e3b481969059883919b9dc888955307e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322696"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478113"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Zelfstudie: Een Node.js-web-app bouwen met behulp van de JavaScript SDK voor het beheren van een SQL API-account in Azure Cosmos DB 
 
@@ -22,7 +22,7 @@ ms.locfileid: "91322696"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -103,11 +103,11 @@ Het bestand **package.json** is een van de bestanden die zijn gemaakt in de hoof
 U hebt nu de initiële setup en configuratie voltooid. U gaat nu code schrijven die voor de Todo-toepassing is vereist om met Azure Cosmos DB te kunnen communiceren.
 
 ### <a name="create-the-model"></a>Het model maken
-1. Maak in de hoofdmap van uw projectmap een nieuwe map met de naam **models**.  
+1. Maak in de hoofdmap van uw projectmap een nieuwe map met de naam **models** .  
 
-2. Maak in de map **models** een nieuw bestand met de naam **taskDao.js**. Dit bestand bevat code die vereist is voor het maken van de database en de container. Het definieert ook methoden om taken te lezen, bij te werken, te maken en te zoeken in Azure Cosmos DB. 
+2. Maak in de map **models** een nieuw bestand met de naam **taskDao.js** . Dit bestand bevat code die vereist is voor het maken van de database en de container. Het definieert ook methoden om taken te lezen, bij te werken, te maken en te zoeken in Azure Cosmos DB. 
 
-3. Kopieer de volgende code naar het bestand **taskDao.js**:
+3. Kopieer de volgende code naar het bestand **taskDao.js** :
 
    ```javascript
     // @ts-check
@@ -188,9 +188,9 @@ U hebt nu de initiële setup en configuratie voltooid. U gaat nu code schrijven 
 
 ### <a name="create-the-controller"></a>De controller maken
 
-1. Maak in de map **routes** van uw project een nieuw bestand met de naam **tasklist.js**.  
+1. Maak in de map **routes** van uw project een nieuw bestand met de naam **tasklist.js** .  
 
-2. Voeg de volgende code toe aan het bestand **tasklist.js**. Met deze code worden de CosmosClient- en async-modules geladen die worden gebruikt voor **tasklist.js**. Met deze code wordt ook de klasse **TaskList** gedefinieerd, die wordt doorgegeven als een exemplaar van het eerder gedefinieerde object **TaskDao**:
+2. Voeg de volgende code toe aan het bestand **tasklist.js** . Met deze code worden de CosmosClient- en async-modules geladen die worden gebruikt voor **tasklist.js** . Met deze code wordt ook de klasse **TaskList** gedefinieerd, die wordt doorgegeven als een exemplaar van het eerder gedefinieerde object **TaskDao** :
    
    ```javascript
     const TaskDao = require("../models/TaskDao");
@@ -249,9 +249,9 @@ U hebt nu de initiële setup en configuratie voltooid. U gaat nu code schrijven 
 
 ### <a name="add-configjs"></a>Config.js toevoegen
 
-1. Maak in de hoofdmap van uw projectmap een nieuw bestand met de naam **config.js**. 
+1. Maak in de hoofdmap van uw projectmap een nieuw bestand met de naam **config.js** . 
 
-2. Voeg de volgende code toe aan het bestand **config.js**. Met deze code definieert u configuratie-instellingen en waarden die voor de toepassing zijn vereist.
+2. Voeg de volgende code toe aan het bestand **config.js** . Met deze code definieert u configuratie-instellingen en waarden die voor de toepassing zijn vereist.
    
    ```javascript
    const config = {};
@@ -278,9 +278,9 @@ U hebt nu de initiële setup en configuratie voltooid. U gaat nu code schrijven 
 
 ### <a name="modify-appjs"></a>App.js wijzigen
 
-1. Ga naar de projectmap en open het bestand **app.js**. Dit bestand is gemaakt toen de Express-webtoepassing werd gemaakt.  
+1. Ga naar de projectmap en open het bestand **app.js** . Dit bestand is gemaakt toen de Express-webtoepassing werd gemaakt.  
 
-2. Voeg de volgende code toe aan het bestand **app.js**. Met deze code wordt gedefinieerd welk configuratiebestand moet worden gebruikt, en worden de waarden in een aantal variabelen geladen die u gaat gebruiken in de volgende secties. 
+2. Voeg de volgende code toe aan het bestand **app.js** . Met deze code wordt gedefinieerd welk configuratiebestand moet worden gebruikt, en worden de waarden in een aantal variabelen geladen die u gaat gebruiken in de volgende secties. 
    
    ```javascript
     const CosmosClient = require('@azure/cosmos').CosmosClient
@@ -361,7 +361,7 @@ U hebt nu de initiële setup en configuratie voltooid. U gaat nu code schrijven 
 
 Nu gaan we de gebruikersinterface bouwen zodat een gebruiker kan werken met de toepassing. De Express-toepassing die is gemaakt in de vorige secties, gebruikt **Jade** als de weergave-engine.
 
-1. Het bestand **layout.jade** in de map **views** wordt gebruikt als een algemeen sjabloon voor andere **.jade**-bestanden. In deze stap wordt het bestand aangepast voor het gebruik van Twitter Bootstrap. Dit is een werkset waarmee u een website kunt ontwerpen.  
+1. Het bestand **layout.jade** in de map **views** wordt gebruikt als een algemeen sjabloon voor andere **.jade** -bestanden. In deze stap wordt het bestand aangepast voor het gebruik van Twitter Bootstrap. Dit is een werkset waarmee u een website kunt ontwerpen.  
 
 2. Open het bestand **layout.jade** in de map **views** en vervang de inhoud door de volgende code:
 
@@ -381,9 +381,9 @@ Nu gaan we de gebruikersinterface bouwen zodat een gebruiker kan werken met de t
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    Door deze code weet de **Jade**-engine dat er bepaalde HTML-code voor onze toepassing moet worden weergegeven en wordt er een **blok** met de naam **content** gemaakt waar u lay-out kunt opgeven voor de inhoudspagina's. Sla het bestand **layout.jade** op en sluit het bestand.
+    Door deze code weet de **Jade** -engine dat er bepaalde HTML-code voor onze toepassing moet worden weergegeven en wordt er een **blok** met de naam **content** gemaakt waar u lay-out kunt opgeven voor de inhoudspagina's. Sla het bestand **layout.jade** op en sluit het bestand.
 
-3. Open nu het bestand **index.jade**, de weergave die door de toepassing wordt gebruikt, en vervang de inhoud van het bestand door de volgende code:
+3. Open nu het bestand **index.jade** , de weergave die door de toepassing wordt gebruikt, en vervang de inhoud van het bestand door de volgende code:
 
    ```html
    extends layout
@@ -444,13 +444,13 @@ Nu u de toepassing hebt gebouwd, kunt u deze lokaal uitvoeren met behulp van de 
     > [!TIP]
     > Als u een fout ontvangt over de inspringing in het layout.jade- of index.jade-bestand, moet u ervoor zorgen dat de eerste twee regels in beide bestanden links worden uitgelijnd, zonder spaties. Als er vóór de eerste twee regels spaties staan, verwijdert u deze, slaat u beide bestanden op en vernieuwt u het browservenster. 
 
-2. Gebruik de velden Item, Itemnaam en Categorie om een nieuwe taak in te voeren en selecteer vervolgens **Item toevoegen**. Hiermee maakt u in Azure Cosmos DB een document met deze eigenschappen. 
+2. Gebruik de velden Item, Itemnaam en Categorie om een nieuwe taak in te voeren en selecteer vervolgens **Item toevoegen** . Hiermee maakt u in Azure Cosmos DB een document met deze eigenschappen. 
 
 3. De pagina moet worden bijgewerkt met het nieuwe item in de takenlijst.
    
     :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Node.js leren - Schermopname van de toepassing Hello World in een browservenster":::
 
-4. Als u een taak wilt voltooien, schakelt u het selectievakje in de kolom Voltooid in en selecteert u vervolgens **Taken bijwerken**. Hiermee wordt het door u gemaakte document bijgewerkt en uit de weergave verwijderd.
+4. Als u een taak wilt voltooien, schakelt u het selectievakje in de kolom Voltooid in en selecteert u vervolgens **Taken bijwerken** . Hiermee wordt het door u gemaakte document bijgewerkt en uit de weergave verwijderd.
 
 5. Klik om de toepassing te stoppen op CTRL+C in het terminalvenster en selecteer vervolgens **y** om de batchtaak te beëindigen.
 
@@ -476,7 +476,7 @@ Als uw toepassing lokaal goed werkt, kunt u deze implementeren naar Azure met be
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de resourcegroep, het Azure Cosmos DB-account en alle gerelateerde resources verwijderen wanneer u de resources niet meer nodig hebt. Hiertoe selecteert u de resourcegroep die u hebt gebruikt voor het Azure Cosmos DB-account en selecteert u **Verwijderen**. Vervolgens bevestigt u de naam van de resourcegroep die u wilt verwijderen.
+U kunt de resourcegroep, het Azure Cosmos DB-account en alle gerelateerde resources verwijderen wanneer u de resources niet meer nodig hebt. Hiertoe selecteert u de resourcegroep die u hebt gebruikt voor het Azure Cosmos DB-account en selecteert u **Verwijderen** . Vervolgens bevestigt u de naam van de resourcegroep die u wilt verwijderen.
 
 ## <a name="next-steps"></a><a name="_Toc395637775"></a>Volgende stappen
 
@@ -487,4 +487,3 @@ U kunt de resourcegroep, het Azure Cosmos DB-account en alle gerelateerde resour
 [Node.js]: https://nodejs.org/
 [Git]: https://git-scm.com/
 [GitHub]: https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-todo-app
-

@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: ed3ea64bf76eafd965e13f4dab1911840ed8139a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50a34f2572e5e9feea0b5adc3e12f72451e5728b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282847"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477331"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Azure-tabelopslag en Azure Cosmos DB Table-API gebruiken met C++
 
@@ -78,7 +78,7 @@ In dit voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-Gebruik de naam van het Storage-account voor `<your_storage_account>`. Gebruik voor <your_storage_account_key> de toegangssleutel voor het Storage-account dat in [Azure Portal](https://portal.azure.com) wordt vermeld. Zie [Een opslagaccount maken](../storage/common/storage-create-storage-account.md) voor meer informatie over Storage-accounts en toegangssleutels.
+Gebruik de naam van het Storage-account voor `<your_storage_account>`. Gebruik voor <your_storage_account_key> de toegangssleutel voor het Storage-account dat in [Azure Portal](https://portal.azure.com) wordt vermeld. Zie [Een opslagaccount maken](../storage/common/storage-account-create.md) voor meer informatie over Storage-accounts en toegangssleutels.
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Een Azure Cosmos DB-verbindingstekenreeks instellen
 
@@ -138,7 +138,7 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>Een entiteit toevoegen aan een tabel
 
-Als u een entiteit wilt toevoegen aan een tabel, maakt u een nieuw object `table_entity` en geeft u dit door aan `table_operation::insert_entity`. Met de volgende code gebruikt u de voornaam van de klant als de rijsleutel en de achternaam als de partitiesleutel. De partitie- en rijsleutel van een entiteit vormen samen de unieke id van de entiteit in de tabel. Voor entiteiten met dezelfde partitiesleutel kunnen sneller query’s worden uitgevoerd dan voor entiteiten met verschillende partitiesleutels. Door verschillende partitiesleutels te gebruiken, kunt u een grotere schaalbaarheid van parallelle bewerkingen bewerkstelligen. Raadpleeg de [Controlelijst voor prestaties en schaalbaarheid van Microsoft Azure Storage](../storage/common/storage-performance-checklist.md) voor meer informatie.
+Als u een entiteit wilt toevoegen aan een tabel, maakt u een nieuw object `table_entity` en geeft u dit door aan `table_operation::insert_entity`. Met de volgende code gebruikt u de voornaam van de klant als de rijsleutel en de achternaam als de partitiesleutel. De partitie- en rijsleutel van een entiteit vormen samen de unieke id van de entiteit in de tabel. Voor entiteiten met dezelfde partitiesleutel kunnen sneller query’s worden uitgevoerd dan voor entiteiten met verschillende partitiesleutels. Door verschillende partitiesleutels te gebruiken, kunt u een grotere schaalbaarheid van parallelle bewerkingen bewerkstelligen. Raadpleeg de [Controlelijst voor prestaties en schaalbaarheid van Microsoft Azure Storage](../storage/blobs/storage-performance-checklist.md) voor meer informatie.
 
 Met de volgende code maakt u een nieuwe instantie van `table_entity`, met een aantal klantgegevens die kunnen worden opgeslagen. Vervolgens wordt met de code `table_operation::insert_entity` aangeroepen om een `table_operation`-object te maken om een entiteit in een tabel in te voegen. Vervolgens wordt de nieuwe tabelentiteit eraan gekoppeld. Ten slotte roept de code methode `execute` aan op het `cloud_table`-object. De nieuwe `table_operation` stuurt u een aanvraag naar de Table service om de nieuwe klantentiteit in te voegen in de tabel `people`.  
 
@@ -499,11 +499,11 @@ else
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Voor Visual Studio Community Edition: als er opbouwfouten voor uw project ontstaan vanwege de insluitbestanden *storage_account.h* en *table.h*, moet u de **/permissive-** -compileerschakelaar verwijderen:
+Voor Visual Studio Community Edition: als er opbouwfouten voor uw project ontstaan vanwege de insluitbestanden *storage_account.h* en *table.h* , moet u de **/permissive-** -compileerschakelaar verwijderen:
 
-1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Properties**.
-1. Vouw in het dialoogvenster **Eigenschappenpagina’s** de optie **Configuratie-eigenschappen** en vervolgens **C/C++** uit en selecteer **Taal**.
-1. Stel **Overeenstemmingsmodus** in op **Nee**.
+1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Properties** .
+1. Vouw in het dialoogvenster **Eigenschappenpagina’s** de optie **Configuratie-eigenschappen** en vervolgens **C/C++** uit en selecteer **Taal** .
+1. Stel **Overeenstemmingsmodus** in op **Nee** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

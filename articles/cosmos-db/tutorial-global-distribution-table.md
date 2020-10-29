@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2497a1fe5bfd3618246c9590685d08894e897f3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568666"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476515"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Wereldwijde distributie met Azure Cosmos DB instellen met behulp van de Table-API
 
@@ -28,7 +28,7 @@ Dit artikel behandelt de volgende taken:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Verbinding maken met een voorkeursregio met behulp van de Table-API
 
-Als u wilt profiteren van de [wereldwijde distributie](distribute-data-globally.md), moeten door clienttoepassingen de huidige locaties worden opgegeven waar de toepassing wordt uitgevoerd. Dit doet u door de eigenschap `CosmosExecutorConfiguration.CurrentRegion` in te stellen. De eigenschap `CurrentRegion` moet één locatie bevatten. Elk clientexemplaar kan een eigen regio opgeven voor leesbewerkingen met lage latentie. De regio krijgt de naam op basis van de [weergavenamen](https://msdn.microsoft.com/library/azure/gg441293.aspx), bijvoorbeeld US - west. 
+Als u wilt profiteren van de [wereldwijde distributie](distribute-data-globally.md), moeten door clienttoepassingen de huidige locaties worden opgegeven waar de toepassing wordt uitgevoerd. Dit doet u door de eigenschap `CosmosExecutorConfiguration.CurrentRegion` in te stellen. De eigenschap `CurrentRegion` moet één locatie bevatten. Elk clientexemplaar kan een eigen regio opgeven voor leesbewerkingen met lage latentie. De regio krijgt de naam op basis van de [weergavenamen](/previous-versions/azure/reference/gg441293(v=azure.100)), bijvoorbeeld US - west. 
 
 De Azure Cosmos DB Table-API SDK kiest automatisch het beste eindpunt om mee te communiceren op basis van de accountconfiguratie en de huidige regionale beschikbaarheid. De regio die het dichtst in de buurt is krijgt de prioriteit, zodat clients over de beste latentie beschikken. Nadat u de huidige eigenschap, `CurrentRegion`, hebt ingesteld, worden lees- en schrijfaanvragen als volgt omgeleid:
 
@@ -47,4 +47,3 @@ In deze zelfstudie hebt u het volgende gedaan:
 > [!div class="checklist"]
 > * Wereldwijde distributie configureren met behulp van Azure Portal
 > * Globale distributie met Azure Cosmos DB instellen met behulp van de Table-API’s
-

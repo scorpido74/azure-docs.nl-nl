@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 667d6a6726e6adfa84073c3bbd20ee4dc7c879cd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 66352cd298d83e6ce5b2616644d9c80e628c2d7c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282601"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481870"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-sql-api-database-and-container-using-azure-powershell"></a>Een resourcevergrendeling voor een Azure Cosmos SQL API-database en -container maken met behulp van Azure PowerShell
 
@@ -42,11 +42,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure-resource**| |
-| [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) | Hiermee maakt u een resourcevergrendeling. |
-| [Get-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcelock) | Hiermee wordt een resourcevergrendeling opgehaald of worden resourcevergrendelingen weergegeven. |
-| [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) | Hiermee wordt een resourcevergrendeling verwijderd. |
+| [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) | Hiermee maakt u een resourcevergrendeling. |
+| [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock) | Hiermee wordt een resourcevergrendeling opgehaald of worden resourcevergrendelingen weergegeven. |
+| [Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock) | Hiermee wordt een resourcevergrendeling verwijderd. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.

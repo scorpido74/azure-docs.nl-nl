@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5271dbc5e571fdc624c6861c8919e11950320507
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60e8c73c9f1da617851cc67fb2dbab7171f1cb0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850639"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Zelfstudie: Azure Active Directory-integratie met InstaVR Viewer
 
@@ -27,7 +27,7 @@ De integratie van InstaVR Viewer met Azure AD biedt u de volgende voordelen:
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij InstaVR Viewer (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -50,11 +50,11 @@ Voor het configureren van de integratie van InstaVR Viewer in Azure AD, moet u I
 
 **Voer de volgende stappen uit om InstaVR Viewer vanuit de galerie toe te voegen:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -62,22 +62,22 @@ Voor het configureren van de integratie van InstaVR Viewer in Azure AD, moet u I
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **InstaVR Viewer**, selecteer **InstaVR Viewer** in het resultatenvenster en klik vervolgens op **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **InstaVR Viewer** , selecteer **InstaVR Viewer** in het resultatenvenster en klik vervolgens op **Toevoegen** om de toepassing toe te voegen.
 
      ![InstaVR Viewer in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD-eenmalige aanmelding met InstaVR Viewer op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie configureert en test u Azure AD-eenmalige aanmelding met InstaVR Viewer op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in InstaVR Viewer tot stand is gebracht.
 
 Voor het configureren en testen van Azure AD-eenmalige aanmelding met InstaVR Viewer, moet u de volgende bouwstenen voltooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[InstaVR Viewer-eenmalige aanmelding configureren](#configure-instavr-viewer-single-sign-on)**: als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wil configureren.
+2. **[InstaVR Viewer-eenmalige aanmelding configureren](#configure-instavr-viewer-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wil configureren.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[InstaVR Viewer-testgebruiker maken](#create-instavr-viewer-test-user)**: als u een equivalent van Britta Simon in InstaVR Viewer wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[InstaVR Viewer-testgebruiker maken](#create-instavr-viewer-test-user)** : als u een equivalent van Britta Simon in InstaVR Viewer wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
@@ -86,7 +86,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor het configureren van Azure AD-eenmalige aanmelding met InstaVR Viewer voert u de volgende stappen uit:
 
-1. Selecteer in [Azure Portal](https://portal.azure.com/), op de pagina voor de integratie van de toepassing **InstaVR Viewer**, **Eenmalige aanmelding**.
+1. Selecteer in [Azure Portal](https://portal.azure.com/), op de pagina voor de integratie van de toepassing **InstaVR Viewer** , **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met InstaVR Viewer voert
 
 1. Open een nieuw browservenster en meld u aan als beheerder bij de InstaVR Viewer-site van uw bedrijf.
 
-2. Klik op het **gebruikerspictogram** en selecteer **Account**.
+2. Klik op het **gebruikerspictogram** en selecteer **Account** .
 
     ![Schermopname van uw InstaVR Viewer-site met een geselecteerde gebruiker.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
@@ -154,7 +154,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met InstaVR Viewer voert
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -166,20 +166,20 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie maakt u het mogelijk voor Britta Simon om eenmalige aanmelding voor Azure te gebruiken door haar toegangsrechten voor InstaVR Viewer te verlenen.
 
-1. Selecteer in Azure Portal **Bedrijfstoepassingen**, selecteer **Alle toepassingen** en selecteer vervolgens **InstaVR Viewer**.
+1. Selecteer in Azure Portal **Bedrijfstoepassingen** , selecteer **Alle toepassingen** en selecteer vervolgens **InstaVR Viewer** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -187,11 +187,11 @@ In deze sectie maakt u het mogelijk voor Britta Simon om eenmalige aanmelding vo
 
     ![De koppeling InstaVR Viewer in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -199,7 +199,7 @@ In deze sectie maakt u het mogelijk voor Britta Simon om eenmalige aanmelding vo
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-instavr-viewer-test-user"></a>InstaVR Viewer-testgebruiker maken
 
@@ -213,7 +213,7 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in InstaVR V
 
     ![Schermopname van de bedrijfssite van de InstaVR-viewer met Pakket selecteren en Pakket maken voor web geselecteerd.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
-3. Selecteer **Downloaden**.
+3. Selecteer **Downloaden** .
 
     ![Schermopname met het Download-pictogram geselecteerd.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
@@ -225,8 +225,8 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in InstaVR V
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

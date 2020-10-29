@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: d60fbf57847c26d03fab4eb98fd74607984369da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73f5dc6bdc976bd0166cfb1f2621f57f558f944c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707593"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478589"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>Zelfstudie: Een Azure Database for PostgreSQL-single server ontwerpen met behulp van PowerShell
 
@@ -32,7 +32,7 @@ Azure Database for PostgreSQL is een relationele databaseservice in de Microsoft
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell.
 
 > [!IMPORTANT]
 > Hoewel de PowerShell-module Az.PostgreSql in preview is, moet u deze afzonderlijk van de PowerShell-module Az installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
@@ -46,7 +46,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DBforPostgreSQL
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer een specifieke abonnementen-id met behulp van de cmdlet [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext).
+Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer een specifieke abonnementen-id met behulp van de cmdlet [set-AzContext](/powershell/module/az.accounts/set-azcontext).
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -54,9 +54,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een [Azure-resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) met de cmdlet [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
+Maak een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) met de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
 
-In het volgende voorbeeld wordt een resourcegroep met de naam **myresourcegroup** gemaakt in de regio **US – West**.
+In het volgende voorbeeld wordt een resourcegroep met de naam **myresourcegroup** gemaakt in de regio **US – West** .
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 Maak een Azure Database for PostgreSQL-server met de cmdlet `New-AzPostgreSqlServer`. Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
 
-In het volgende voorbeeld wordt een PostgreSQL-server gemaakt in de regio **US - west**. De server heeft de naam **mydemoserver** en bevindt zich in de resourcegroep **myresourcegroup**. De serverbeheerder kan zich aanmelden met **myadmin**. De server is een Gen 5-server in de prijscategorie Algemeen en beschikt over twee vCores. Daarnaast is geografisch redundante back-ups ingeschakeld. Noteer het wachtwoord dat in de eerste regel van het voorbeeld wordt gebruikt, aangezien dit het wachtwoord voor het beheerdersaccount van de PostgreSQL-server is.
+In het volgende voorbeeld wordt een PostgreSQL-server gemaakt in de regio **US - west** . De server heeft de naam **mydemoserver** en bevindt zich in de resourcegroep **myresourcegroup** . De serverbeheerder kan zich aanmelden met **myadmin** . De server is een Gen 5-server in de prijscategorie Algemeen en beschikt over twee vCores. Daarnaast is geografisch redundante back-ups ingeschakeld. Noteer het wachtwoord dat in de eerste regel van het voorbeeld wordt gebruikt, aangezien dit het wachtwoord voor het beheerdersaccount van de PostgreSQL-server is.
 
 > [!TIP]
 > Een servernaam wordt toegewezen aan een DNS-naam en moet wereldwijd uniek zijn in Azure.
@@ -82,7 +82,7 @@ De parameterwaarde voor de **SKU** volgt de conventie **prijscategorie\_compute-
 - `-Sku GP_Gen5_32` komt overeen met Algemeen gebruik, Gen 5 en 32 vCores.
 - `-Sku MO_Gen5_2` komt overeen met Geoptimaliseerd voor geheugen, Gen 5 en 2 vCores.
 
-Voor meer informatie over geldige **SKU**-waarden per regio en voor categorieën gaat u naar [Prijscategorieën voor Azure Database for PostgreSQL](./concepts-pricing-tiers.md).
+Voor meer informatie over geldige **SKU** -waarden per regio en voor categorieën gaat u naar [Prijscategorieën voor Azure Database for PostgreSQL](./concepts-pricing-tiers.md).
 
 Overweeg het gebruik van de prijscategorie Basic als lichte reken- en I/O-capaciteit voldoende is voor uw workload.
 
@@ -104,7 +104,7 @@ New-AzPostgreSqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup 
 
 ## <a name="get-the-connection-information"></a>De verbindingsgegevens ophalen
 
-Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsreferenties opgeven. Gebruik het volgende voorbeeld om de verbindingsgegevens te bepalen. Noteer de waarden voor **FullyQualifiedDomainName** en de **AdministratorLogin**.
+Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsreferenties opgeven. Gebruik het volgende voorbeeld om de verbindingsgegevens te bepalen. Noteer de waarden voor **FullyQualifiedDomainName** en de **AdministratorLogin** .
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
@@ -142,7 +142,7 @@ Als op uw clientcomputer PostgreSQL is geïnstalleerd, kunt u een lokale instant
    CREATE DATABASE mypgsqldb;
    ```
 
-1. Voer na de prompt de volgende opdracht uit om verbinding te maken met de zojuist gemaakte database **mypgsqldb**:
+1. Voer na de prompt de volgende opdracht uit om verbinding te maken met de zojuist gemaakte database **mypgsqldb** :
 
    ```sql
    \c mypgsqldb

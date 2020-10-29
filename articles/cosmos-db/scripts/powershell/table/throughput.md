@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 28fd3e493a327593027f520f881faadddf6c4c51
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 45007fc5fb1052382516b4a5c47c1813bdaf33de
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281904"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481649"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-table-for-azure-cosmos-db---table-api"></a>Doorvoerbewerkingen (RU/s) met PowerShell voor een tabel voor Azure Cosmos DB - Table-API
 
@@ -47,13 +47,13 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Hiermee vraagt u de doorvoerwaarde van de opgegeven Table API-tabel op. |
-| [Update-AzCosmosDBMongoDBCollectionThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqldatabasethroughput) | Hiermee werkt u de doorvoerwaarde van de Table API-tabel bij. |
-| [Invoke-AzCosmosDBTableThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbtablethroughputmigration) | Doorvoer migreren van een Table-API-tabel. |
+| [Get-AzCosmosDBTableThroughput](/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Hiermee vraagt u de doorvoerwaarde van de opgegeven Table API-tabel op. |
+| [Update-AzCosmosDBMongoDBCollectionThroughput](/powershell/module/az.cosmosdb/update-azcosmosdbsqldatabasethroughput) | Hiermee werkt u de doorvoerwaarde van de Table API-tabel bij. |
+| [Invoke-AzCosmosDBTableThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbtablethroughputmigration) | Doorvoer migreren van een Table-API-tabel. |
 |**Azure-resourcegroepen**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.

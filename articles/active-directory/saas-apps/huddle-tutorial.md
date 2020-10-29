@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cbc47820f4a9eeffc4e9fa3cf01290f7c35fd14
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 481b11305ff99661487b83c7588b184ef502d7ad
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826420"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Zelfstudie: Azure Active Directory-integratie met Huddle
 
@@ -27,7 +27,7 @@ De integratie van Huddle met Microsoft Azure Active Directory biedt de volgende 
 * U kunt inschakelen dat gebruikers automatisch met hun Microsoft Azure Active Directory-account worden aangemeld bij Huddle (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,11 +49,11 @@ Voor het configureren van de integratie van Huddle met Microsoft Azure Active Di
 
 **Voer de volgende stappen uit om Huddle toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Voor het configureren van de integratie van Huddle met Microsoft Azure Active Di
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Huddle**, selecteer **Huddle** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Huddle** , selecteer **Huddle** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![Huddle in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie gaat u eenmalige aanmelding van Microsoft Azure Active Directory met Huddle configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+In deze sectie gaat u eenmalige aanmelding van Microsoft Azure Active Directory met Huddle configureren en testen op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Microsoft Azure Active Directory-gebruiker en de daaraan gerelateerde gebruiker in Huddle tot stand is gebracht.
 
 Als u eenmalige aanmelding van Microsoft Azure Active Directory met Huddle wilt configureren, moet u de volgende bouwstenen voltooien:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit als u eenmalige aanmelding van Microsoft Azure Active Directory met Huddle wilt configureren:
 
-1. In de [Microsoft Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Huddle**.
+1. In de [Microsoft Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Huddle** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -111,7 +111,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Microsoft Azure Acti
     https://login.huddle.com
     ```
 
-    b. Typ een URL in het tekstvak **Antwoord-URL**:
+    b. Typ een URL in het tekstvak **Antwoord-URL** :
 
     ```http
     https://login.huddle.net/saml/browser-sso
@@ -239,13 +239,12 @@ To enable Azure AD users to log in to Huddle, they must be provisioned into Hudd
 
 In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-When you click the Huddle tile in the Access Panel, you should be automatically signed in to the Huddle for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Huddle tile in the Access Panel, you should be automatically signed in to the Huddle for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md).
 
 ## Additional Resources
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [What is Conditional Access in Azure Active Directory?](../conditional-access/overview.md)

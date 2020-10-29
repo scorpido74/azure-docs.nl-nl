@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: bd2b28b516f0043bb64e175bfa901557cdb78de4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b855f8d967e2812884f5be79652fcd33cd080ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334409"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476634"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Mongoose gebruiken om verbinding te maken met Cosmos DB
 
@@ -36,7 +36,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 * Voer de stappen in [deel 4](tutorial-develop-mongodb-nodejs-part4.md) uit voordat u met deze zelfstudie begint.
 
-* Voor deze zelfstudie moet u de Azure CLI lokaal uitvoeren. Azure CLI versie 2.0 of hoger moet geïnstalleerd zijn. Voer `az --version` uit om de versie te bekijken. Als u de Azure CLI moet installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Voor deze zelfstudie moet u de Azure CLI lokaal uitvoeren. Azure CLI versie 2.0 of hoger moet geïnstalleerd zijn. Voer `az --version` uit om de versie te bekijken. Als u de Azure CLI moet installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
 
 * In deze zelfstudie wordt u stapsgewijs begeleid bij het maken van de toepassing. Als u het voltooide project wilt downloaden, kunt u de voltooide app vinden in de [angular-cosmosdb-opslagplaats](https://github.com/Azure-Samples/angular-cosmosdb) op GitHub.
 
@@ -50,9 +50,9 @@ Mongoose is een ODM-bibliotheek (Object Data Modeling) voor MongoDB en Node.js. 
     npm i mongoose --save
     ```
 
-1. Maak in de map **server** een bestand met de naam **mongo.js**. U gaat de verbindingsgegevens van uw Azure Cosmos DB-account toevoegen aan dit bestand.
+1. Maak in de map **server** een bestand met de naam **mongo.js** . U gaat de verbindingsgegevens van uw Azure Cosmos DB-account toevoegen aan dit bestand.
 
-1. Kopieer de volgende code naar het bestand **mongo.js**. De code biedt de volgende functionaliteit:
+1. Kopieer de volgende code naar het bestand **mongo.js** . De code biedt de volgende functionaliteit:
 
    * Vereist Mongoose.
    * Overschrijft de Mongo-promise om de basis-promise te gebruiken die is ingebouwd in ES6/ES2015 en latere versies.
@@ -84,9 +84,9 @@ Mongoose is een ODM-bibliotheek (Object Data Modeling) voor MongoDB en Node.js. 
      };
      ```
     
-1. Maak in het deelvenster Explorer, onder **server**, een map met de naam **environment**. Maak in de map **environment** een bestand met de naam **environment.js**.
+1. Maak in het deelvenster Explorer, onder **server** , een map met de naam **environment** . Maak in de map **environment** een bestand met de naam **environment.js** .
 
-1. Uit het bestand mongo.js moeten we waarden overnemen voor de parameters `dbName`, `key` en `cosmosPort`. Kopieer de volgende code naar het bestand **environment.js**:
+1. Uit het bestand mongo.js moeten we waarden overnemen voor de parameters `dbName`, `key` en `cosmosPort`. Kopieer de volgende code naar het bestand **environment.js** :
 
     ```javascript
     // TODO: replace if yours are different
@@ -128,15 +128,15 @@ De toepassing beschikt nu over alle gegevens om verbinding te maken met Azure Co
 
 Vervolgens moet u het schema definiëren van de gegevens die moeten worden opgeslagen in Azure Cosmos DB. Dit doet u door een modelbestand te definiëren. Gebruik de volgende stappen om een _Hero-model_ te maken waarmee het schema van de gegevens wordt gedefinieerd:
 
-1. Maak in het deelvenster Explorer het bestand **hero.model.js** onder de map **server**.
+1. Maak in het deelvenster Explorer het bestand **hero.model.js** onder de map **server** .
 
-1. Kopieer de volgende code naar het bestand **hero.model.js**. De code biedt de volgende functionaliteit:
+1. Kopieer de volgende code naar het bestand **hero.model.js** . De code biedt de volgende functionaliteit:
 
    * Vereist Mongoose.
    * Maakt een nieuw schema met een id, een naam en een uitspraak.
    * Maakt een model aan de hand van het schema.
    * Exporteert het model. 
-   * Geeft de verzameling de naam **Heroes** (in plaats van **Heros**, wat de standaardnaam van de verzameling is op basis van de regels voor namen in meervoud in Mongoose).
+   * Geeft de verzameling de naam **Heroes** (in plaats van **Heros** , wat de standaardnaam van de verzameling is op basis van de regels voor namen in meervoud in Mongoose).
 
    ```javascript
    const mongoose = require('mongoose');
@@ -163,9 +163,9 @@ Vervolgens moet u het schema definiëren van de gegevens die moeten worden opges
 
 Als u het Hero-model hebt gemaakt, moet u een service definiëren voor het lezen van de gegevens, en voor het uitvoeren van bewerkingen voor opvragen, verwijderen en bijwerken. Gebruik de volgende stappen om een _Hero-service_ te maken die een query uitvoert op de gegevens vanuit Azure Cosmos DB:
 
-1. Maak in het deelvenster Explorer het bestand **hero.service.js** onder de map **server**.
+1. Maak in het deelvenster Explorer het bestand **hero.service.js** onder de map **server** .
 
-1. Kopieer de volgende code naar het bestand **hero.service.js**. De code biedt de volgende functionaliteit:
+1. Kopieer de volgende code naar het bestand **hero.service.js** . De code biedt de volgende functionaliteit:
 
    * Haalt het model op dat u hebt gemaakt.
    * Maakt verbinding met de database.
@@ -212,7 +212,7 @@ Vervolgens moet u routes instellen voor het afhandelen van de URL's voor get-, c
     });
     ```
 
-1. `require` de hero-service in het bestand **routes.js**:
+1. `require` de hero-service in het bestand **routes.js** :
 
     ```javascript
     const heroService = require('./hero.service'); 
@@ -224,7 +224,7 @@ Vervolgens moet u routes instellen voor het afhandelen van de URL's voor get-, c
     function getHeroes(req, res) {
     ```
 
-Laten we de bovenstaande code nog eens even bekijken. We hebben eerst het bestand index.js, waarmee de node-server wordt ingesteld. In het bestand worden uw routes ingesteld en gedefinieerd. Vervolgens communiceert het bestand routes.js met de hero-service. De service krijgt de opdracht functies op te halen, zoals **getHeroes**, en de aanvraag en respons door te geven. Het bestand hero.service.js haalt het model op en maakt verbinding met Mongo. Vervolgens wordt **getHeroes** uitgevoerd wanneer we deze functie aanroepen en wordt de respons 200 geretourneerd. 
+Laten we de bovenstaande code nog eens even bekijken. We hebben eerst het bestand index.js, waarmee de node-server wordt ingesteld. In het bestand worden uw routes ingesteld en gedefinieerd. Vervolgens communiceert het bestand routes.js met de hero-service. De service krijgt de opdracht functies op te halen, zoals **getHeroes** , en de aanvraag en respons door te geven. Het bestand hero.service.js haalt het model op en maakt verbinding met Mongo. Vervolgens wordt **getHeroes** uitgevoerd wanneer we deze functie aanroepen en wordt de respons 200 geretourneerd. 
 
 ## <a name="run-the-app"></a>De app uitvoeren
 
@@ -232,7 +232,7 @@ Voer nu de app uit door de volgende stappen te volgen:
 
 1. Sla alle wijzigingen op in Visual Studio Code. Selecteer de knop **Fouten opsporen** aan de linkerkant :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png":::, en selecteer vervolgens de knop **Foutopsporing starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png":::.
 
-1. Schakel nu over naar de browser. Open de **hulpprogramma's voor ontwikkelaars** en ga naar het tabblad **Network**. Ga naar `http://localhost:3000` en daar ziet u de toepassing.
+1. Schakel nu over naar de browser. Open de **hulpprogramma's voor ontwikkelaars** en ga naar het tabblad **Network** . Ga naar `http://localhost:3000` en daar ziet u de toepassing.
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png" alt-text="Nieuw Azure Cosmos DB-account in de Azure-portal":::
 
@@ -243,8 +243,8 @@ Er zijn nog geen hero's opgeslagen in de app. In het volgende deel van deze reek
 Wanneer u de resources niet meer nodig hebt, kunt u de resourcegroep, het Azure Cosmos DB-account en alle bijbehorende resources verwijderen. Gebruik de volgende stappen om de resourcegroep te verwijderen:
 
  1. Ga naar de resourcegroep waarin u het Azure Cosmos DB-account hebt gemaakt.
- 1. Selecteer **Resourcegroep verwijderen**.
- 1. Bevestig de naam van de resourcegroep die u wilt verwijderen en selecteer **Verwijderen**.
+ 1. Selecteer **Resourcegroep verwijderen** .
+ 1. Bevestig de naam van de resourcegroep die u wilt verwijderen en selecteer **Verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

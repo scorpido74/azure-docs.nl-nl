@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 47b3706d1fb46ab7e115d79c2f06f6264c8b423e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9001d9982a26875f814b635533bebd7579339fa5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666510"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476719"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Aan de slag met de Azure Cosmos DB Table-API en Azure Table Storage met behulp van de .NET-SDK
 
@@ -44,13 +44,13 @@ U hebt het volgende nodig voor dit voorbeeld:
 
 Maak in Visual Studio een nieuwe .NET-consoletoepassing. In de volgende stappen ziet u hoe u een consoletoepassing maakt in Visual Studio 2019. U kunt de Azure Cosmos DB Table-bibliotheek gebruiken in elk type .NET-toepassing, waaronder een Azure-cloudservice of -web-app en bureaubladtoepassingen en mobiele toepassingen. In deze gids gebruiken we een consoletoepassing voor de eenvoud.
 
-1. Selecteer **Bestand** > **Nieuw** > **Project**.
+1. Selecteer **Bestand** > **Nieuw** > **Project** .
 
-1. Kies **Console-app (.NET Core)** en selecteer **Volgende**.
+1. Kies **Console-app (.NET Core)** en selecteer **Volgende** .
 
-1. Typ in het veld **Projectnaam** een naam voor uw toepassing, zoals **CosmosTableSamples**. (U kunt desgewenst een andere naam opgeven.)
+1. Typ in het veld **Projectnaam** een naam voor uw toepassing, zoals **CosmosTableSamples** . (U kunt desgewenst een andere naam opgeven.)
 
-1. Selecteer **Maken**.
+1. Selecteer **Maken** .
 
 Alle codevoorbeelden in dit voorbeeld kunnen worden toegevoegd aan de methode Main() van het bestand **Program.cs** van de consoletoepassing.
 
@@ -58,7 +58,7 @@ Alle codevoorbeelden in dit voorbeeld kunnen worden toegevoegd aan de methode Ma
 
 Volg deze stappen voor het verkrijgen van het NuGet-pakket:
 
-1. Klik met de rechtermuisknop op het project in **Solution Explorer** en kies **NuGet-pakketten beheren**.
+1. Klik met de rechtermuisknop op het project in **Solution Explorer** en kies **NuGet-pakketten beheren** .
 
 1. Zoek online naar [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration), [`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json), [`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) en selecteer **Installeren** om de Microsoft Azure Cosmos DB Table-bibliotheek te installeren.
 
@@ -66,13 +66,13 @@ Volg deze stappen voor het verkrijgen van het NuGet-pakket:
 
 1. Navigeer in de [Azure-portal](https://portal.azure.com/) naar uw Azure Cosmos-account of het Table Storage-account. 
 
-1. Open het deelvenster **Verbindingsreeks** of **Toegangssleutels**. Gebruik de kopieerknop aan de rechterkant van het venster om de **PRIMARY CONNECTION STRING** te kopiëren.
+1. Open het deelvenster **Verbindingsreeks** of **Toegangssleutels** . Gebruik de kopieerknop aan de rechterkant van het venster om de **PRIMARY CONNECTION STRING** te kopiëren.
 
    :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="De PRIMARY CONNECTION STRING in het deelvenster Verbindingsreeks weergeven en kopiëren":::
    
-1. Om uw verbindingsreeks te configureren, klikt u in Visual Studio met de rechtermuisknop op uw project **CosmosTableSamples**.
+1. Om uw verbindingsreeks te configureren, klikt u in Visual Studio met de rechtermuisknop op uw project **CosmosTableSamples** .
 
-1. Selecteer **Toevoegen** en selecteer vervolgens **Nieuw item**. Maak een nieuw bestand **Settings.json** met **TypeScript JSON-configuratiebestand** als bestandstype. 
+1. Selecteer **Toevoegen** en selecteer vervolgens **Nieuw item** . Maak een nieuw bestand **Settings.json** met **TypeScript JSON-configuratiebestand** als bestandstype. 
 
 1. Vervang de code in het bestand Settings.json door de volgende code en wijs uw primaire verbindingsreeks toe:
 
@@ -82,7 +82,7 @@ Volg deze stappen voor het verkrijgen van het NuGet-pakket:
    }
    ```
 
-1. Klik met de rechtermuisknop op uw project **CosmosTableSamples**. Selecteer **Toevoegen**, **Nieuw item** en voeg een klasse genaamd **AppSettings.cs** toe.
+1. Klik met de rechtermuisknop op uw project **CosmosTableSamples** . Selecteer **Toevoegen** , **Nieuw item** en voeg een klasse genaamd **AppSettings.cs** toe.
 
 1. Voeg de volgende code toe aan het bestand AppSettings.cs. Dit bestand leest de verbindingsreeks uit het bestand Settings.json en wijst deze toe aan de configuratieparameter:
 
@@ -90,7 +90,7 @@ Volg deze stappen voor het verkrijgen van het NuGet-pakket:
 
 ## <a name="parse-and-validate-the-connection-details"></a>De verbindingsgegevens parseren en valideren
 
-1. Klik met de rechtermuisknop op uw project **CosmosTableSamples**. Selecteer **Toevoegen**, **Nieuw item** en voeg een klasse genaamd **Common.cs** toe. U zult code schrijven om de verbindingsgegevens te valideren en een tabel te maken in deze klasse.
+1. Klik met de rechtermuisknop op uw project **CosmosTableSamples** . Selecteer **Toevoegen** , **Nieuw item** en voeg een klasse genaamd **Common.cs** toe. U zult code schrijven om de verbindingsgegevens te valideren en een tabel te maken in deze klasse.
 
 1. Definieer een methode `CreateStorageAccountFromConnectionString`, zoals hieronder weergegeven. Met deze methode worden de verbindingsgegevens geparseerd en wordt gevalideerd dat de accountnaam en -sleutel die in het bestand Settings.json zijn opgegeven, geldig zijn.
 
@@ -98,7 +98,7 @@ Volg deze stappen voor het verkrijgen van het NuGet-pakket:
 
 ## <a name="create-a-table"></a>Een tabel maken 
 
-Met behulp van de [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient)-klasse kunt u tabellen en entiteiten ophalen die zijn opgeslagen in de Table Storage. Omdat we in het Cosmos DB Table-API-account geen tabellen hebben, voegen we de methode `CreateTableAsync` toe aan de klasse **Common.cs** om een tabel te maken:
+Met behulp van de [CloudTableClient](/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient)-klasse kunt u tabellen en entiteiten ophalen die zijn opgeslagen in de Table Storage. Omdat we in het Cosmos DB Table-API-account geen tabellen hebben, voegen we de methode `CreateTableAsync` toe aan de klasse **Common.cs** om een tabel te maken:
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
 
@@ -110,37 +110,37 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ## <a name="define-the-entity"></a>De entiteit definiëren 
 
-Entiteiten worden toegewezen aan C#-objecten met behulp van een aangepaste klasse die is afgeleid van [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity). Als u een entiteit wilt toevoegen aan een tabel, maakt u een klasse die de eigenschappen van uw entiteit definieert.
+Entiteiten worden toegewezen aan C#-objecten met behulp van een aangepaste klasse die is afgeleid van [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity). Als u een entiteit wilt toevoegen aan een tabel, maakt u een klasse die de eigenschappen van uw entiteit definieert.
 
-Klik met de rechtermuisknop op uw project **CosmosTableSamples**. Selecteer **Toevoegen**, **Nieuwe map** en noem de map **Model**. In de map Model voegt u een klasse genaamd **CustomerEntity.cs** toe en voegt u er de volgende code aan toe.
+Klik met de rechtermuisknop op uw project **CosmosTableSamples** . Selecteer **Toevoegen** , **Nieuwe map** en noem de map **Model** . In de map Model voegt u een klasse genaamd **CustomerEntity.cs** toe en voegt u er de volgende code aan toe.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
-Met deze code definieert u een entiteitsklasse die de voornaam van de klant als de rijsleutel en de achternaam als de partitiesleutel gebruikt. De entiteit wordt in de tabel op unieke wijze geïdentificeerd door diens partitie- en rijsleutel. Entiteiten met dezelfde partitiesleutel kunnen sneller worden opgevraagd dan entiteiten met verschillende partitiesleutels, maar het gebruik van verschillende partitiesleutels maakt een grotere schaalbaarheid van parallelle bewerkingen mogelijk. De entiteiten die u in tabellen wilt opslaan, moeten van een ondersteund type zijn. Ze moeten bijvoorbeeld zijn afgeleid van de [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity)-klasse. De entiteitseigenschappen die u in een tabel wilt opslaan, moeten openbare eigenschappen van het type zijn. Bovendien moeten ze zowel het ophalen als het instellen van waarden ondersteunen. Ook moet uw entiteitstype een parameterloze constructor bevatten.
+Met deze code definieert u een entiteitsklasse die de voornaam van de klant als de rijsleutel en de achternaam als de partitiesleutel gebruikt. De entiteit wordt in de tabel op unieke wijze geïdentificeerd door diens partitie- en rijsleutel. Entiteiten met dezelfde partitiesleutel kunnen sneller worden opgevraagd dan entiteiten met verschillende partitiesleutels, maar het gebruik van verschillende partitiesleutels maakt een grotere schaalbaarheid van parallelle bewerkingen mogelijk. De entiteiten die u in tabellen wilt opslaan, moeten van een ondersteund type zijn. Ze moeten bijvoorbeeld zijn afgeleid van de [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity)-klasse. De entiteitseigenschappen die u in een tabel wilt opslaan, moeten openbare eigenschappen van het type zijn. Bovendien moeten ze zowel het ophalen als het instellen van waarden ondersteunen. Ook moet uw entiteitstype een parameterloze constructor bevatten.
 
 ## <a name="insert-or-merge-an-entity"></a>Een entiteit invoegen of samenvoegen
 
-Met het volgende codevoorbeeld wordt een entiteitsobject gemaakt en aan de tabel toegevoegd. De methode InsertOrMerge in de klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) wordt gebruikt om een entiteit in te voegen of samen te voegen. De methode [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet&preserve-view=true) wordt aangeroepen om de bewerking uit te voeren. 
+Met het volgende codevoorbeeld wordt een entiteitsobject gemaakt en aan de tabel toegevoegd. De methode InsertOrMerge in de klasse [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) wordt gebruikt om een entiteit in te voegen of samen te voegen. De methode [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?preserve-view=true&view=azure-dotnet) wordt aangeroepen om de bewerking uit te voeren. 
 
-Klik met de rechtermuisknop op uw project **CosmosTableSamples**. Selecteer **Toevoegen**, **Nieuw item** en voeg een klasse genaamd **SamplesUtils.cs** toe. In deze klasse wordt alle code opgeslagen die vereist is om CRUD-bewerkingen op de entiteiten uit te voeren. 
+Klik met de rechtermuisknop op uw project **CosmosTableSamples** . Selecteer **Toevoegen** , **Nieuw item** en voeg een klasse genaamd **SamplesUtils.cs** toe. In deze klasse wordt alle code opgeslagen die vereist is om CRUD-bewerkingen op de entiteiten uit te voeren. 
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
 
 ## <a name="get-an-entity-from-a-partition"></a>Een entiteit uit een partitie ophalen
 
-U kunt een entiteit uit een partitie ophalen door de methode Retrieve onder de klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) te gebruiken. Met het volgende codevoorbeeld worden de rijsleutel van de partitiesleutel, het e-mailadres en het telefoonnummer van een klantentiteit opgehaald. Met dit voorbeeld worden ook de aanvraageenheden afgedrukt die zijn verbruikt om query’s uit te voeren voor de entiteit. Als u query’s wilt uitvoeren voor een entiteit, voegt u de volgende code toe aan het bestand **SamplesUtils.cs**:
+U kunt een entiteit uit een partitie ophalen door de methode Retrieve onder de klasse [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) te gebruiken. Met het volgende codevoorbeeld worden de rijsleutel van de partitiesleutel, het e-mailadres en het telefoonnummer van een klantentiteit opgehaald. Met dit voorbeeld worden ook de aanvraageenheden afgedrukt die zijn verbruikt om query’s uit te voeren voor de entiteit. Als u query’s wilt uitvoeren voor een entiteit, voegt u de volgende code toe aan het bestand **SamplesUtils.cs** :
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 
 ## <a name="delete-an-entity"></a>Een entiteit verwijderen
 
-U kunt een entiteit gemakkelijk verwijderen nadat u deze hebt opgehaald. Hiervoor gebruikt u hetzelfde patroon dat is getoond voor het bijwerken van een entiteit. Met de volgende code wordt een klantentiteit opgehaald en verwijderd. Als u een entiteit wilt verwijderen, voegt u de volgende code toe aan het bestand **SamplesUtils.cs**: 
+U kunt een entiteit gemakkelijk verwijderen nadat u deze hebt opgehaald. Hiervoor gebruikt u hetzelfde patroon dat is getoond voor het bijwerken van een entiteit. Met de volgende code wordt een klantentiteit opgehaald en verwijderd. Als u een entiteit wilt verwijderen, voegt u de volgende code toe aan het bestand **SamplesUtils.cs** : 
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>De CRUD-bewerkingen uitvoeren op voorbeeldgegevens
 
-Nadat u de methoden hebt gedefinieerd om een tabel te maken en entiteiten in te voegen of samen te voegen, voert u deze methoden uit op de voorbeeldgegevens. Hiertoe klikt u met de rechtermuisknop op uw project **CosmosTableSamples**. Selecteer **Toevoegen**, **Nieuw item**, voeg een klasse genaamd **BasicSamples.cs** toe en voeg de volgende code eraan toe. Met deze code wordt een tabel gemaakt en worden er entiteiten aan toegevoegd.
+Nadat u de methoden hebt gedefinieerd om een tabel te maken en entiteiten in te voegen of samen te voegen, voert u deze methoden uit op de voorbeeldgegevens. Hiertoe klikt u met de rechtermuisknop op uw project **CosmosTableSamples** . Selecteer **Toevoegen** , **Nieuw item** , voeg een klasse genaamd **BasicSamples.cs** toe en voeg de volgende code eraan toe. Met deze code wordt een tabel gemaakt en worden er entiteiten aan toegevoegd.
 
 Als u de entiteit en tabel aan het eind van het project niet wilt verwijderen, verwijdert u de opmerkingen van de methoden `await table.DeleteIfExistsAsync()` en `SamplesUtils.DeleteEntityAsync(table, customer)` uit de volgende code. U kunt het beste de opmerkingen van deze methoden verwijderen en de gegevens valideren voordat u de tabel verwijdert.
 
@@ -152,7 +152,7 @@ In deze zelfstudie hebt u code gebouwd om eenvoudige CRUD-bewerkingen uit te voe
 
 ## <a name="run-the-project"></a>Het project uitvoeren
 
-Ga naar uw project **CosmosTableSamples**. Open de klasse genaamd **Program.cs** en voeg de volgende code eraan toe om BasicSamples op te roepen wanneer het project wordt uitgevoerd.
+Ga naar uw project **CosmosTableSamples** . Open de klasse genaamd **Program.cs** en voeg de volgende code eraan toe om BasicSamples op te roepen wanneer het project wordt uitgevoerd.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Program.cs":::
 

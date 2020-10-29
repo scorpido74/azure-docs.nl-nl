@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
-ms.openlocfilehash: 6ce4354faec73f8fe42a936e677bee473796701d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ac175e2c1caa39bfe88a7c1a5f42318db343fb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318769"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477280"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Azure Table Storage of de Azure Cosmos DB Table-API van Node.js gebruiken
 
@@ -57,11 +57,11 @@ U hebt voor het gebruik van Azure Storage of Azure Cosmos DB de Azure Storage SD
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
    ```
 
-3. U kunt de **ls**-opdracht handmatig uitvoeren om te controleren of een **node_modules**-map is gemaakt. In deze map vindt u het **azure-storage**-pakket. Dit pakket bevat de bibliotheken die u nodig hebt om toegang te krijgen tot opslag.
+3. U kunt de **ls** -opdracht handmatig uitvoeren om te controleren of een **node_modules** -map is gemaakt. In deze map vindt u het **azure-storage** -pakket. Dit pakket bevat de bibliotheken die u nodig hebt om toegang te krijgen tot opslag.
 
 ### <a name="import-the-package"></a>Het pakket importeren
 
-Voeg de volgende code toe aan het begin van het **server.js**-bestand in uw toepassing:
+Voeg de volgende code toe aan het begin van het **server.js** -bestand in uw toepassing:
 
 ```javascript
 var azure = require('azure-storage');
@@ -137,7 +137,7 @@ Wanneer u een entiteit wilt toevoegen, moet u eerst een object maken dat uw enti
 * **PartitionKey** bepaalt de partitie waarop de entiteit is opgeslagen.
 * **RowKey** identificeert de entiteit in de partitie.
 
-**PartitionKey** en **RowKey** moet beide tekenreekswaarden zijn. Zie [Het gegevensmodel van de tabelservice](https://msdn.microsoft.com/library/azure/dd179338.aspx) voor meer informatie.
+**PartitionKey** en **RowKey** moet beide tekenreekswaarden zijn. Zie [Het gegevensmodel van de tabelservice](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) voor meer informatie.
 
 Hier volgt een voorbeeld van het definiëren van een entiteit. **dueDate** is gedefinieerd als een type van `Edm.DateTime`. Het specificeren van het type is optioneel en als dit niet wordt opgegeven, wordt het type afgeleid.
 
@@ -268,7 +268,7 @@ U kunt bewerkingen die zijn toegevoegd aan een batch, inspecteren door de `opera
 
 ## <a name="retrieve-an-entity-by-key"></a>Een entiteit ophalen op basis van sleutel
 
-Wanneer u een specifieke entiteit wilt retourneren op basis van de **PartitionKey** en **RowKey**, gebruikt u de **retrieveEntity**-methode.
+Wanneer u een specifieke entiteit wilt retourneren op basis van de **PartitionKey** en **RowKey** , gebruikt u de **retrieveEntity** -methode.
 
 ```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
@@ -282,14 +282,14 @@ Nadat u deze bewerking is voltooid, bevat `result` de entiteit.
 
 ## <a name="query-a-set-of-entities"></a>Een query uitvoeren voor een aantal entiteiten
 
-Wanneer u een query wilt uitvoeren op een tabel, gebruikt u het **TableQuery**-object om een query-expressie op te bouwen met de volgende componenten:
+Wanneer u een query wilt uitvoeren op een tabel, gebruikt u het **TableQuery** -object om een query-expressie op te bouwen met de volgende componenten:
 
-* **select**: de velden die moeten worden geretourneerd door de query.
-* **where**: de waar-component.
+* **select** : de velden die moeten worden geretourneerd door de query.
+* **where** : de waar-component.
 
-  * **and**: een `and` where-conditie.
-  * **or**: een `or` where-conditie.
-* **top**: het aantal op te halen items.
+  * **and** : een `and` where-conditie.
+  * **or** : een `or` where-conditie.
+* **top** : het aantal op te halen items.
 
 In het volgende voorbeeld wordt een query gemaakt waarmee de bovenste vijf items met een PartitionKey 'hometasks' worden geretourneerd.
 
@@ -299,7 +299,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-Omdat **select** niet wordt gebruikt, worden alle velden geretourneerd. Als u de query wilt uitvoeren op een tabel, gebruikt u **queryEntities**. In het volgende voorbeeld wordt deze query gebruikt om entiteiten te retourneren uit 'mytable'.
+Omdat **select** niet wordt gebruikt, worden alle velden geretourneerd. Als u de query wilt uitvoeren op een tabel, gebruikt u **queryEntities** . In het volgende voorbeeld wordt deze query gebruikt om entiteiten te retourneren uit 'mytable'.
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -309,12 +309,12 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-Als dit lukt, bevat `result.entries` een matrix van entiteiten die overeenkomen met de query. Als de query kan niet alle entiteiten kan retourneren, is `result.continuationToken` niet-*null* en kan worden gebruikt als de derde parameter van **queryEntities** om meer resultaten op te halen. Gebruik voor de eerste query *null* voor de derde parameter.
+Als dit lukt, bevat `result.entries` een matrix van entiteiten die overeenkomen met de query. Als de query kan niet alle entiteiten kan retourneren, is `result.continuationToken` niet- *null* en kan worden gebruikt als de derde parameter van **queryEntities** om meer resultaten op te halen. Gebruik voor de eerste query *null* voor de derde parameter.
 
 ### <a name="query-a-subset-of-entity-properties"></a>Een query uitvoeren op een subset van entiteitseigenschappen
 
 Met een query naar een tabel kunnen slechts enkele velden van een entiteit worden opgehaald.
-Dit verbruikt minder bandbreedte en kan de queryprestaties verbeteren, vooral bij grote entiteiten. Gebruik de **select**-component en geef de namen door van de velden die moeten worden geretourneerd. De volgende query retourneert bijvoorbeeld alleen de velden **description** en **dueDate**.
+Dit verbruikt minder bandbreedte en kan de queryprestaties verbeteren, vooral bij grote entiteiten. Gebruik de **select** -component en geef de namen door van de velden die moeten worden geretourneerd. De volgende query retourneert bijvoorbeeld alleen de velden **description** en **dueDate** .
 
 ```javascript
 var query = new azure.TableQuery()
@@ -325,7 +325,7 @@ var query = new azure.TableQuery()
 
 ## <a name="delete-an-entity"></a>Een entiteit verwijderen
 
-U kunt een entiteit verwijderen met behulp van zijn partities en rijsleutels. In dit voorbeeld bevat het **task1**-object de **RowKey**- en **PartitionKey**-waarden van de te verwijderen entiteit. Het object wordt doorgegeven aan de **deleteEntity**-methode.
+U kunt een entiteit verwijderen met behulp van zijn partities en rijsleutels. In dit voorbeeld bevat het **task1** -object de **RowKey** - en **PartitionKey** -waarden van de te verwijderen entiteit. Het object wordt doorgegeven aan de **deleteEntity** -methode.
 
 ```javascript
 var task = {
@@ -357,13 +357,13 @@ tableSvc.deleteTable('mytable', function(error, response){
 });
 ```
 
-Als u niet zeker weet of de tabel bestaat, gebruikt u **deleteTableIfExists**.
+Als u niet zeker weet of de tabel bestaat, gebruikt u **deleteTableIfExists** .
 
 ## <a name="use-continuation-tokens"></a>Vervolgtokens gebruiken
 
 Wanneer u query's uitvoert op tabellen en veel resultaten krijgt, let dan op de vervolgtokens. Mogelijk zijn er zonder dat u het weet grote hoeveelheden gegevens beschikbaar voor uw query als u in uw query geen rekening hebt gehouden met de aanwezigheid van vervolgtokens.
 
-Het **results**-object geretourneerd tijdens het uitvoeren van een query op entiteitensets, stelt een `continuationToken`-eigenschap in wanneer een dergelijk token aanwezig is. Vervolgens kunt u deze bij het uitvoeren van een query gebruiken om door te gaan in de partitie- en tabelentiteiten.
+Het **results** -object geretourneerd tijdens het uitvoeren van een query op entiteitensets, stelt een `continuationToken`-eigenschap in wanneer een dergelijk token aanwezig is. Vervolgens kunt u deze bij het uitvoeren van een query gebruiken om door te gaan in de partitie- en tabelentiteiten.
 
 Wanneer u een query uitvoert, kunt u een `continuationToken`-parameter opgeven tussen de queryobjectinstantie en de retouraanroepfunctie:
 
@@ -392,7 +392,7 @@ U kunt ook `top` ook in combinatie met `continuationToken` om de paginagrootte i
 
 Shared Access Signatures (SAS) zijn een veilige manier om op detailniveau toegang te bieden tot tabellen zonder dat u de naam of sleutels van uw opslagaccount hoeft te geven. SAS wordt vaak gebruikt voor beperkte toegang tot uw gegevens, bijvoorbeeld om een mobiele app toe te staan om een query uit te voeren op records.
 
-Een vertrouwde toepassing zoals een cloud-gebaseerde service genereert een SAS met de **generateSharedAccessSignature** van de **TableService**, en biedt dit aan een niet-vertrouwde of semi-vertrouwde toepassing aan, zoals een mobiele app. De SAS wordt gegenereerd op basis van beleid, waarin de begin- en einddatum wordt vermeld voor de geldigheid van de SAS, evenals het toegangsniveau verleend aan de SAS-houder.
+Een vertrouwde toepassing zoals een cloud-gebaseerde service genereert een SAS met de **generateSharedAccessSignature** van de **TableService** , en biedt dit aan een niet-vertrouwde of semi-vertrouwde toepassing aan, zoals een mobiele app. De SAS wordt gegenereerd op basis van beleid, waarin de begin- en einddatum wordt vermeld voor de geldigheid van de SAS, evenals het toegangsniveau verleend aan de SAS-houder.
 
 In het volgende voorbeeld wordt een nieuwe beleidsregel gegenereerd voor gedeelde toegang, die zorgt dat de SAS-houder een query ('r') kan uitvoeren op de tabel. Deze toegang verloopt 100 minuten na het tijdstip waarop de toegang is gemaakt.
 
@@ -455,7 +455,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-In het volgende voorbeeld wordt de huidige ACL voor de **hometasks**-tabel opgehaald en vervolgens het nieuwe beleid toegevoegd met behulp van **setTableAcl**. Deze aanpak biedt u de volgende mogelijkheid:
+In het volgende voorbeeld wordt de huidige ACL voor de **hometasks** -tabel opgehaald en vervolgens het nieuwe beleid toegevoegd met behulp van **setTableAcl** . Deze aanpak biedt u de volgende mogelijkheid:
 
 ```javascript
 var extend = require('extend');
@@ -483,6 +483,6 @@ Zie de volgende informatie bronnen voor meer informatie:
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is een gratis, zelfstandige app van Microsoft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux.
 * [Azure Storage SDK voor Node.js](https://github.com/Azure/azure-storage-node)-opslag op GitHub.
-* [Azure voor Node.js-ontwikkelaars](https://docs.microsoft.com/azure/developer/javascript/)
+* [Azure voor Node.js-ontwikkelaars](/azure/developer/javascript/)
 * [Een Node.js-web-app maken in Azure](../app-service/quickstart-nodejs.md)
 * [Een Node.js-toepassing bouwen en implementeren in een Azure Cloud Service](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (met Windows PowerShell)

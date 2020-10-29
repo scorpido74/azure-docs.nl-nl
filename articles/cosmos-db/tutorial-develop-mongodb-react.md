@@ -10,12 +10,12 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 83c4d7c0037a3f8bc1162993c8667df62e5d9123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06c309de5054887a64e61d61345190c776835709
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316168"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476583"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Een MongoDB-app maken met React en Azure Cosmos DB  
 
@@ -91,7 +91,7 @@ In deze video ziet u hoe u de app voltooit en de gebruikersinterface ten slotte 
 Als u deze app verder niet gaat gebruiken, kunt u met de volgende stappen alle resources verwijderen die met deze zelfstudies in Azure Portal zijn gemaakt. 
 
 1. Klik in het menu aan de linkerkant in Azure Portal op **Resourcegroepen** en klik vervolgens op de resource die u hebt gemaakt. 
-2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen**.
+2. Klik op de pagina van uw resourcegroep op **Verwijderen** , typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -107,5 +107,4 @@ In deze zelfstudie hebt u het volgende geleerd:
 U kunt doorgaan met de volgende zelfstudie om te leren hoe u MongoDB-gegevens in Azure Cosmos DB importeert.  
 
 > [!div class="nextstepaction"]
-> [MongoDB-gegevens importeren in Azure Cosmos DB](mongodb-migrate.md)
- 
+> [MongoDB-gegevens importeren in Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

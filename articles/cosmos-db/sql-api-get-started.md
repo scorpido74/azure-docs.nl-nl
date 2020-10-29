@@ -9,19 +9,19 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 587fe536e860f3039bfd3a2d2c1e3c76cb40e4d5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 804330d44d63aa70076a7387aacfbbd3b4f742c9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278464"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480986"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Zelfstudie: Een .NET-console-app bouwen om gegevens te beheren in het Azure Cosmos DB SQL-API-account
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [Java](sql-api-java-get-started.md)
-> * [Async Java](sql-api-async-java-get-started.md)
+> * [Java](./create-sql-api-java.md)
+> * [Async Java](./create-sql-api-java.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
@@ -61,14 +61,14 @@ Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt d
 
 ## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>Stap 2: uw Visual Studio-project instellen
 
-1. Open Visual Studio en selecteer **Een nieuw project maken**.
-1. Kies in het venster **Een nieuw project maken** **Console-app (.NET Framework)** voor C# en selecteer vervolgens **Volgende**.
-1. Geef uw project de naam *CosmosGettingStartedTutorial* en selecteer **Maken**.
+1. Open Visual Studio en selecteer **Een nieuw project maken** .
+1. Kies in het venster **Een nieuw project maken** **Console-app (.NET Framework)** voor C# en selecteer vervolgens **Volgende** .
+1. Geef uw project de naam *CosmosGettingStartedTutorial* en selecteer **Maken** .
 
     :::image type="content" source="./media/sql-api-get-started/configure-cosmos-getting-started-2019.png" alt-text="Uw project configureren":::
 
-1. Klik in **Solution Explorer** met de rechtermuisknop op uw nieuwe consoletoepassing. Deze bevindt zich onder uw Visual Studio-oplossing. Selecteer op **Manage NuGet Packages**.
-1. Selecteer **Bladeren** en zoek naar *Microsoft.Azure.Cosmos* in het **NuGet Package Manager**. Kies **Microsoft.Azure.Cosmos** en selecteer **Installeren**.
+1. Klik in **Solution Explorer** met de rechtermuisknop op uw nieuwe consoletoepassing. Deze bevindt zich onder uw Visual Studio-oplossing. Selecteer op **Manage NuGet Packages** .
+1. Selecteer **Bladeren** en zoek naar *Microsoft.Azure.Cosmos* in het **NuGet Package Manager** . Kies **Microsoft.Azure.Cosmos** en selecteer **Installeren** .
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="Uw project configureren":::
 
@@ -119,11 +119,11 @@ Goed gedaan. De configuratie is voltooid en u kunt nu aan de slag met het schrij
    > [!NOTE]
    > Als u bekend bent met de vorige versie van de .NET SDK, komen de termen *verzameling* en *document* u misschien bekend voor. Azure Cosmos DB biedt ondersteuning voor meerdere API-modellen. Daarom worden in versie 3.0 van de .NET SDK de generieke termen *container* en *item* gebruikt. Een *container* kan een verzameling, een graaf of een tabel zijn. Een *item* kan een document, rand/hoekpunt of rij zijn en is de inhoud binnen een container. Raadpleeg [Werken met databases, containers en items in Azure Cosmos DB](account-databases-containers-items.md) voor meer informatie.
 
-1. Open de [Azure Portal](https://portal.azure.com). Vind uw Azure Cosmos DB-account en selecteer vervolgens **Sleutels**.
+1. Open de [Azure Portal](https://portal.azure.com). Vind uw Azure Cosmos DB-account en selecteer vervolgens **Sleutels** .
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Uw project configureren":::
 
-1. Vervang `<your endpoint URL>` in *Program.cs*door de waarde van **URI**. Vervang `<your primary key>` door de waarde van de **HOOFDSLEUTEL**.
+1. Vervang `<your endpoint URL>` in *Program.cs* door de waarde van **URI** . Vervang `<your primary key>` door de waarde van de **HOOFDSLEUTEL** .
 
 1. Voeg onder de methode **Main** de nieuwe asynchrone taak met de naam **GetStartedDemoAsync** toe, waarmee de nieuwe `CosmosClient` wordt geïnstantieerd.
 
@@ -145,7 +145,7 @@ Goed gedaan. De configuratie is voltooid en u kunt nu aan de slag met het schrij
 
     We gebruiken **GetStartedDemoAsync** als het toegangspunt dat de methoden aanroept die gebruikmaken van Azure Cosmos DB-resources.
 
-1. Voeg de volgende code toe om de asynchrone taak **GetStartedDemoAsync** uit te voeren vanuit de methode **Main**. Uitzonderingen worden door de methode **Main** onderschept en naar de console geschreven.
+1. Voeg de volgende code toe om de asynchrone taak **GetStartedDemoAsync** uit te voeren vanuit de methode **Main** . Uitzonderingen worden door de methode **Main** onderschept en naar de console geschreven.
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
 
@@ -157,7 +157,7 @@ Gefeliciteerd! U hebt nu verbinding gemaakt met een Azure Cosmos DB-account.
 
 ## <a name="step-4-create-a-database"></a>Stap 4: Een database maken
 
-Een database is de logische container voor items die zijn gepartitioneerd in containers. De methode `CreateDatabaseIfNotExistsAsync` of `CreateDatabaseAsync` van de klasse [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient) kan een database maken.
+Een database is de logische container voor items die zijn gepartitioneerd in containers. De methode `CreateDatabaseIfNotExistsAsync` of `CreateDatabaseAsync` van de klasse [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient) kan een database maken.
 
 1. Kopieer en plak de methode `CreateDatabaseAsync` onder uw methode `GetStartedDemoAsync`.
 
@@ -317,12 +317,12 @@ Eerst maakt u de klasse `Family`, die aangeeft welke objecten worden opgeslagen 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
-1. Voeg in *Program.cs*de methode `AddItemsToContainerAsync` toe na uw methode `CreateContainerAsync`.
+1. Voeg in *Program.cs* de methode `AddItemsToContainerAsync` toe na uw methode `CreateContainerAsync`.
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
 
-    De code controleert de code of er niet al een item met dezelfde id bestaat. U voegt twee items in, één voor de *familie Andersen* en één voor de *familie Wakefield*.
+    De code controleert de code of er niet al een item met dezelfde id bestaat. U voegt twee items in, één voor de *familie Andersen* en één voor de *familie Wakefield* .
 
 1. Voeg een aanroep naar `AddItemsToContainerAsync` toe in de methode `GetStartedDemoAsync`.
 
@@ -345,7 +345,7 @@ Gefeliciteerd! U hebt twee Azure Cosmos-items gemaakt.
 
 ## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>Stap 7: Query's uitvoeren op Azure Cosmos DB-resources
 
-Azure Cosmos DB biedt ondersteuning voor uitgebreide query's voor de JSON-documenten die in elke container zijn opgeslagen. Zie [Aan de slag met SQL-query’s](sql-api-sql-query.md) voor meer informatie. In de volgende voorbeeldcode ziet u hoe u een query uitvoert voor de items die u in de vorige stap hebt ingevoegd.
+Azure Cosmos DB biedt ondersteuning voor uitgebreide query's voor de JSON-documenten die in elke container zijn opgeslagen. Zie [Aan de slag met SQL-query’s](./sql-query-getting-started.md) voor meer informatie. In de volgende voorbeeldcode ziet u hoe u een query uitvoert voor de items die u in de vorige stap hebt ingevoegd.
 
 1. Kopieer en plak de methode `QueryItemsAsync` achter uw methode `AddItemsToContainerAsync`.
 
@@ -489,7 +489,7 @@ Om de oplossing `GetStarted` te bouwen, zijn de volgende vereisten nodig:
 * Een [Azure Cosmos DB-account][cosmos-db-create-account].
 * De [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started)-oplossing die beschikbaar is via GitHub.
 
-Als u de verwijzingen naar de Azure Cosmos DB .NET-SDK in Visual Studio wilt herstellen, klikt u in **Solution Explorer** met de rechtermuisknop op de oplossing en selecteert u vervolgens **NuGet-pakketten herstellen**. Werk vervolgens in het bestand *App. config* de waarden `EndPointUri` en `PrimaryKey` bij zoals beschreven in [Stap 3: verbinding maken met een Azure Cosmos DB-account](#Connect).
+Als u de verwijzingen naar de Azure Cosmos DB .NET-SDK in Visual Studio wilt herstellen, klikt u in **Solution Explorer** met de rechtermuisknop op de oplossing en selecteert u vervolgens **NuGet-pakketten herstellen** . Werk vervolgens in het bestand *App. config* de waarden `EndPointUri` en `PrimaryKey` bij zoals beschreven in [Stap 3: verbinding maken met een Azure Cosmos DB-account](#Connect).
 
 Dat is alles, bouw nu de oplossing. Succes!
 
@@ -497,8 +497,8 @@ Dat is alles, bouw nu de oplossing. Succes!
 
 * Wilt u een complexere ASP.NET MVC-zelfstudie? Zie [Zelfstudie: een ASP.NET Core MVC-webtoepassing ontwikkelen met Azure Cosmos DB met behulp van de .NET SDK](sql-api-dotnet-application.md).
 * Wilt u de schaal en prestaties testen met Azure Cosmos DB? Raadpleeg [Performance and Scale Testing with Azure Cosmos DB (Prestaties en schaal testen met Azure Cosmos DB)](performance-testing.md).
-* Raadpleeg voor meer informatie over het bewaken van Azure Cosmos DB aanvragen, het gebruik en de opslag [Prestaties en metrische gegevens van de opslag in Azure Cosmos DB bewaken](monitor-accounts.md).
+* Raadpleeg voor meer informatie over het bewaken van Azure Cosmos DB aanvragen, het gebruik en de opslag [Prestaties en metrische gegevens van de opslag in Azure Cosmos DB bewaken](./monitor-cosmos-db.md).
 * Query's uitvoeren op onze voorbeeldgegevensset in de [Testomgeving voor query's](https://www.documentdb.com/sql/demo).
-* Zie [Welkom bij Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction) voor meer informatie over Azure Cosmos DB.
+* Zie [Welkom bij Azure Cosmos DB](./introduction.md) voor meer informatie over Azure Cosmos DB.
 
 [cosmos-db-create-account]: create-sql-api-java.md#create-a-database-account

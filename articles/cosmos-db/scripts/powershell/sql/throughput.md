@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: e55b93d3790efe01a796860bd3607f2fcc6ba5f6
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c5d01d34e0941974590845f7a54248e2972c2067
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281980"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481785"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>Doorvoerbewerkingen (RU/s) met PowerShell voor een database of container voor de Azure Cosmos DB Core (SQL) API
 
@@ -47,16 +47,16 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBSqlDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Hiermee vraagt u de doorvoer op die is ingericht voor een Azure Cosmos DB Core (SQL) API-database. |
-| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Hiermee vraagt u de doorvoer op die is ingericht voor een Azure Cosmos DB Core (SQL) API-container. |
-| [Update-AzCosmosDBSqlDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | Hiermee werkt u de doorvoerwaarde bij van een Azure Cosmos DB Core (SQL) API-database. |
-| [Update-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Hiermee werkt u de doorvoerwaarde bij van een Azure Cosmos DB Core (SQL) API-container. |
-| [Invoke-AzCosmosDBSqlDatabaseThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbsqldatabasethroughputmigration) | Hiermee migreert u de doorvoer van een Azure Cosmos DB Core (SQL) API-database. |
-| [Invoke-AzCosmosDBSqlContainerThroughputMigration](https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbsqlcontainerthroughputmigration) | Hiermee migreert u de doorvoer van een Azure Cosmos DB Core (SQL) API-container. |
+| [Get-AzCosmosDBSqlDatabaseThroughput](/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Hiermee vraagt u de doorvoer op die is ingericht voor een Azure Cosmos DB Core (SQL) API-database. |
+| [Get-AzCosmosDBSqlContainerThroughput](/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Hiermee vraagt u de doorvoer op die is ingericht voor een Azure Cosmos DB Core (SQL) API-container. |
+| [Update-AzCosmosDBSqlDatabaseThroughput](/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | Hiermee werkt u de doorvoerwaarde bij van een Azure Cosmos DB Core (SQL) API-database. |
+| [Update-AzCosmosDBSqlContainerThroughput](/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Hiermee werkt u de doorvoerwaarde bij van een Azure Cosmos DB Core (SQL) API-container. |
+| [Invoke-AzCosmosDBSqlDatabaseThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbsqldatabasethroughputmigration) | Hiermee migreert u de doorvoer van een Azure Cosmos DB Core (SQL) API-database. |
+| [Invoke-AzCosmosDBSqlContainerThroughputMigration](/powershell/module/az.cosmosdb/invoke-azcosmosdbsqlcontainerthroughputmigration) | Hiermee migreert u de doorvoer van een Azure Cosmos DB Core (SQL) API-container. |
 |**Azure-resourcegroepen**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.

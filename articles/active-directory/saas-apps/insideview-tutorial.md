@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 17c9672663cae4df7eacb72779e6caf6476e3d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550472"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Zelfstudie: Azure Active Directory-integratie met InsideView
 
@@ -27,7 +27,7 @@ Deze integratie biedt de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij InsideView (eenmalige aanmelding).
 * U kunt uw accounts vanaf één locatie beheren: de Azure-portal.
 
-Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -48,11 +48,11 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 Om de integratie van InsideView in Azure AD te configureren, moet u InsideView uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**:
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory** :
 
     ![Selecteer Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Bedrijfstoepassingen** > **Alle toepassingen**:
+2. Ga naar **Bedrijfstoepassingen** > **Alle toepassingen** :
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -60,7 +60,7 @@ Om de integratie van InsideView in Azure AD te configureren, moet u InsideView u
 
     ![Selecteer Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **InsideView** in het zoekvak. Selecteer **InsideView** in de zoekresultaten en selecteer vervolgens **Toevoegen**.
+4. Typ **InsideView** in het zoekvak. Selecteer **InsideView** in de zoekresultaten en selecteer vervolgens **Toevoegen** .
 
     ![Zoekresultaten](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer deze stappen uit om eenmalige aanmelding van Azure AD met InsideView te configureren:
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) naar de pagina van de integratie van InsideView en selecteer **Eenmalige aanmelding**:
+1. Ga in de [Azure-portal](https://portal.azure.com/) naar de pagina van de integratie van InsideView en selecteer **Eenmalige aanmelding** :
 
     ![Selecteer Eenmalige aanmelding](common/select-sso.png)
 
@@ -107,7 +107,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met InsideView te con
     > [!NOTE]
     > Deze waarde is een tijdelijke aanduiding. U moet u de werkelijke antwoord-URL gebruiken. Neem contact op met het [klantondersteuningsteam van InsideView](mailto:support@insideview.com) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in het dialoogvenster **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen**, in de sectie **SAML-handtekeningcertificaat**, selecteert u de koppeling **Downloaden** naast **Certificaat (Raw)** overeenkomstig uw behoeften, en slaat u het certificaat op uw computer op:
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekeningcertificaat** , selecteert u de koppeling **Downloaden** naast **Certificaat (Raw)** overeenkomstig uw behoeften, en slaat u het certificaat op uw computer op:
 
     ![De koppeling om het certificaat te downloaden](common/certificateraw.png)
 
@@ -115,21 +115,21 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met InsideView te con
 
     ![De configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-    1. **Aanmeldings-URL**.
+    1. **Aanmeldings-URL** .
 
-    1. **Azure AD-id**.
+    1. **Azure AD-id** .
 
-    1. **Afmeldings-URL**.
+    1. **Afmeldings-URL** .
 
 ### <a name="configure-insideview-single-sign-on"></a>Eenmalige aanmelding voor InsideView configureren
 
 1. Meld u in een nieuw browservenster als beheerder aan bij de bedrijfssite van InsideView.
 
-1. Selecteer bovenaan het venster de optie **Beheer**, **Instellingen voor eenmalige aanmelding** en selecteer **SAML toevoegen**.
+1. Selecteer bovenaan het venster de optie **Beheer** , **Instellingen voor eenmalige aanmelding** en selecteer **SAML toevoegen** .
    
    ![Instellingen voor SAML-eenmalige aanmelding](./media/insideview-tutorial/ic794135.png "Instellingen voor SAML-eenmalige aanmelding")
 
-1. Voer de volgende stappen uit in het gedeelte **Een nieuwe SAML toevoegen**.
+1. Voer de volgende stappen uit in het gedeelte **Een nieuwe SAML toevoegen** .
 
     ![Gedeelte Een nieuwe SAML toevoegen](./media/insideview-tutorial/ic794136.png "Gedeelte Een nieuwe SAML toevoegen")
 
@@ -137,7 +137,7 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met InsideView te con
 
     1. Plak in het val **SamlP/WS-Fed Unsolicited EndPoint** de waarde van de **Aanmeldings-URL** in die u vanuit de Azure-portal hebt gekopieerd.
 
-    1. Open het RAW-certificaat dat u hebt gedownload van de Azure-portal. Kopieer de inhoud van het certificaat naar het klembord en plak de inhoud in het vak **STS-certificaat**.
+    1. Open het RAW-certificaat dat u hebt gedownload van de Azure-portal. Kopieer de inhoud van het certificaat naar het klembord en plak de inhoud in het vak **STS-certificaat** .
 
     1. In het vak **Toewijzing Crm-gebruikers-id** voert u **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** in.
 
@@ -147,13 +147,13 @@ Voer deze stappen uit om eenmalige aanmelding van Azure AD met InsideView te con
 
     1. In het vak **Toewijzing Crm-achternaam** voert u **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** in.  
 
-    1. Selecteer **Opslaan**.
+    1. Selecteer **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**:
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** :
 
     ![Selecteer Alle gebruikers](common/users.png)
 
@@ -165,19 +165,19 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
     ![Dialoogvenster Gebruiker](common/user-properties.png)
 
-    1. Voer in het vak **Naam** **Britta Simon**in.
+    1. Voer in het vak **Naam** **Britta Simon** in.
   
     1. Voer in het vak **Naam** **Britta Simon@\<yourcompanydomain> in.\<extension>** . (Bijvoorbeeld: BrittaSimon@contoso.com.)
 
     1. Selecteer **Wachtwoord weergeven** en noteer de waarde die in het vak **Wachtwoord** wordt getoond.
 
-    1. Selecteer **Maken**.
+    1. Selecteer **Maken** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte geeft u Britta Simon toestemming om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot InsideView.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **InsideView**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **InsideView** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -185,19 +185,19 @@ In dit gedeelte geeft u Britta Simon toestemming om eenmalige aanmelding van Azu
 
     ![Lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het linkerdeelvenster **Gebruikers en groepen**:
+3. Selecteer in het linkerdeelvenster **Gebruikers en groepen** :
 
     ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
-4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Gebruiker toevoegen selecteren](common/add-assign-user.png)
 
 5. Selecteer **Britta Simon** in de gebruikerslijst van het dialoogvenster **Gebruikers en groepen** en klik vervolgens op de knop **Selecteren** onderaan het venster.
 
-6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onderaan het venster op de knop **Selecteren**.
+6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onderaan het venster op de knop **Selecteren** .
 
-7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
+7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen** .
 
 ### <a name="create-an-insideview-test-user"></a>Een InsideView-testgebruiker maken
 
@@ -212,12 +212,12 @@ Als u gebruikers of contactpersonen in InsideView wilt maken, neemt u contact op
 
 Nu moet u de configuratie voor eenmalige aanmelding van Azure AD testen met behulp van het toegangsvenster.
 
-Wanneer u in het toegangsvenster de tegel InsideView selecteert, zou u automatisch moeten worden aangemeld bij het exemplaar van InsideView waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Apps openen en gebruiken in de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster de tegel InsideView selecteert, zou u automatisch moeten worden aangemeld bij het exemplaar van InsideView waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Apps openen en gebruiken in de portal Mijn apps](../user-help/my-apps-portal-end-user-access.md) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](./tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
