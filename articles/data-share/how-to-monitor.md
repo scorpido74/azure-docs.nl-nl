@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 2a986afa1916d179834c516a26f76a2789f82452
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc400922115f348090677661cd1b30434be19b72
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511884"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910471"
 ---
 # <a name="monitor-azure-data-share"></a>Azure Data Share bewaken  
 
@@ -36,13 +36,13 @@ Er zijn drie statussen die uw uitnodiging kan bevinden:
 
 ## <a name="monitor-share-subscriptions"></a>Share abonnementen bewaken
 
-Bekijk de status van uw abonnementen voor delen door te navigeren naar verzonden shares->-abonnementen. Dit geeft u details over actieve abonnementen die door uw gegevens gebruikers zijn gemaakt nadat u uw uitnodiging hebt geaccepteerd. U kunt toekomstige updates voor uw gegevens verbruiker stoppen door het abonnement delen te selecteren en *intrekken*te selecteren. 
+Bekijk de status van uw abonnementen voor delen door te navigeren naar verzonden shares->-abonnementen. Dit geeft u details over actieve abonnementen die door uw gegevens gebruikers zijn gemaakt nadat u uw uitnodiging hebt geaccepteerd. U kunt toekomstige updates voor uw gegevens verbruiker stoppen door het abonnement delen te selecteren en *intrekken* te selecteren. 
 
 ## <a name="snapshot-history"></a>Momentopname geschiedenis 
 
 Op het tabblad **geschiedenis** van een share kunt u zien wanneer gegevens worden gekopieerd van gegevens provider naar het gegevens archief van de gegevens consument. U kunt de frequentie, duur en status van elke moment opname bewaken. 
 
-![Momentopname geschiedenis](./media/sent-shares.png "Momentopname geschiedenis") 
+![De scherm opname toont de verzonden shares in de Azure Portal.](./media/sent-shares.png "Momentopname geschiedenis") 
 
 U kunt meer informatie over de uitvoering van elke moment opname bekijken door te klikken op de begin datum van de uitvoering. Klik vervolgens op de status van elke gegevensset om de hoeveelheid overgedragen gegevens weer te geven, het aantal gekopieerde bestanden/records, de duur van de moment opname, het aantal gebruikte vCores en het fout bericht als er een is. 
 
@@ -50,9 +50,9 @@ Er worden Maxi maal 30 dagen aan de momentopname geschiedenis weer gegeven. Als 
 
 ## <a name="diagnostic-setting"></a>Diagnostische instelling
 
-U kunt de diagnostische instelling zo configureren dat logboek gegevens of-gebeurtenissen worden opgeslagen. Navigeer naar bewaking-> Diagnostische instellingen en selecteer **Diagnostische instelling toevoegen**. Selecteer de logboek gegevens of gebeurtenissen die u wilt, en waar u deze wilt opslaan of verzenden. 
+U kunt de diagnostische instelling zo configureren dat logboek gegevens of-gebeurtenissen worden opgeslagen. Navigeer naar bewaking-> Diagnostische instellingen en selecteer **Diagnostische instelling toevoegen** . Selecteer de logboek gegevens of gebeurtenissen die u wilt, en waar u deze wilt opslaan of verzenden. 
 
-![Momentopname geschiedenis](./media/diagnostic-settings.png "Diagnostische instellingen") 
+![Scherm afbeelding toont de pagina Diagnostische instellingen in de Azure Portal.](./media/diagnostic-settings.png "Diagnostische instellingen") 
 
 ## <a name="next-steps"></a>Volgende stappen 
 

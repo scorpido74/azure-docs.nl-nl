@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 71629ebf1397c00face500f0bfd9c8e92deacc5e
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5d27a09f0ff38ec7422636ef0933552aa310c387
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173019"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911763"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Een Service Fabric cluster beschrijven met cluster resource manager
 
@@ -47,9 +47,7 @@ In de Azure-omgeving gebruikt Service Fabric de fout domein gegevens die door de
 
 In de volgende afbeelding kleuren we alle entiteiten die bijdragen aan fout domeinen en een lijst van alle verschillende fout domeinen die het resultaat zijn. In dit voor beeld hebben we data centers (' DC '), racks (' R ') en Blades (' B '). Als elke blade meer dan één virtuele machine bevat, is er mogelijk nog een laag in de fout domein hiërarchie.
 
-<center>
 ![Knoop punten ingedeeld via fout domeinen][Image1]
-</center>
 
 Tijdens runtime beschouwt Service Fabric cluster resource manager de fout domeinen in het cluster en de indelingen van plannen. De stateful replica's of stateless instanties voor een service worden gedistribueerd zodat ze zich in afzonderlijke fout domeinen bevinden. Wanneer de service wordt gedistribueerd over fout domeinen, zorgt u ervoor dat de beschik baarheid van de service niet wordt aangetast wanneer een fout domein op een niveau van de hiërarchie mislukt.
 
@@ -62,13 +60,11 @@ Het is het beste als hetzelfde aantal knoop punten zich op elk niveau van diepte
 
 Hoe zien onevenwichtige domeinen eruit? In het volgende diagram ziet u twee verschillende cluster indelingen. In het eerste voor beeld worden de knoop punten gelijkmatig verdeeld over de fout domeinen. In het tweede voor beeld heeft één fout domein veel meer knoop punten dan de andere fout domeinen.
 
-<center>
 ![Twee verschillende cluster indelingen][Image2]
-</center>
 
 In azure wordt de keuze van het fout domein dat een knoop punt bevat, voor u beheerd. Maar afhankelijk van het aantal knoop punten dat u inricht, kunt u nog steeds eindigen met fout domeinen die meer knoop punten bevatten dan in andere.
 
-Stel dat u vijf fout domeinen in het cluster hebt, maar zeven knoop punten inricht voor een knooppunt type (**NodeType**). In dit geval eindigen de eerste twee fout domeinen uiteindelijk met meer knoop punten. Als u meer **NodeType** -exemplaren met slechts een paar exemplaren wilt implementeren, wordt het probleem erger. Daarom raden we aan dat het aantal knoop punten in elk knooppunt type een veelvoud is van het aantal fout domeinen.
+Stel dat u vijf fout domeinen in het cluster hebt, maar zeven knoop punten inricht voor een knooppunt type ( **NodeType** ). In dit geval eindigen de eerste twee fout domeinen uiteindelijk met meer knoop punten. Als u meer **NodeType** -exemplaren met slechts een paar exemplaren wilt implementeren, wordt het probleem erger. Daarom raden we aan dat het aantal knoop punten in elk knooppunt type een veelvoud is van het aantal fout domeinen.
 
 ## <a name="upgrade-domains"></a>Upgrade domeinen
 
@@ -78,9 +74,7 @@ Upgrade domeinen zijn veel zoals fout domeinen, maar met een aantal belang rijke
 
 In het volgende diagram ziet u drie upgrade domeinen die zijn gesegmenteerd over drie fout domeinen. Er wordt ook een mogelijke plaatsing weer gegeven voor drie verschillende replica's van een stateful service, waarbij elke oploopt in verschillende fout-en upgrade domeinen. Deze plaatsing maakt het mogelijk dat er een fout domein verloren gaat in het midden van een service-upgrade en nog steeds één exemplaar van de code en gegevens.  
 
-<center>
 ![Plaatsing met fout-en upgrade domeinen][Image3]
-</center>
 
 Er zijn voor-en nadelen voor een groot aantal upgrade domeinen. Meer upgrade domeinen betekenen dat elke stap van de upgrade nauw keuriger is en invloed heeft op een kleiner aantal knoop punten of services. Er moeten minder services tegelijk worden verplaatst, zodat er minder verloop in het systeem wordt geïntroduceerd. Dit is doorgaans de betrouw baarheid verbeterd, omdat het minder van de service wordt beïnvloed door een probleem dat tijdens de upgrade wordt geïntroduceerd. Meer upgrade domeinen betekenen ook dat u minder beschik bare buffer op andere knoop punten nodig hebt om de impact van de upgrade te kunnen afhandelen.
 
@@ -98,9 +92,7 @@ Er is geen echte limiet voor het totale aantal fout-of upgrade domeinen in een o
 * Eén upgrade domein per knoop punt (fysiek of virtueel OS-exemplaar)
 * Een ' striped ' of ' matrix ' model waarbij de fout domeinen en upgrade domeinen een matrix vormen met computers die meestal diagonaal omlaag worden uitgevoerd
 
-<center>
 ![Indelingen van fout-en upgrade domeinen][Image4]
-</center>
 
 Er is geen beste antwoord voor de indeling die u moet kiezen. Elk heeft voor-en nadelen. Het model 1FD: 1UD is bijvoorbeeld eenvoudig in te stellen. Het model van één upgrade domein per knooppunt model is het meest geschikt voor de doel nemers. Tijdens upgrades wordt elk knoop punt onafhankelijk bijgewerkt. Dit is vergelijkbaar met de manier waarop kleine sets van machines hand matig in het verleden zijn bijgewerkt.
 
@@ -127,7 +119,7 @@ Stel bijvoorbeeld dat we een cluster hebben met zes knoop punten, geconfigureerd
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
 
-Stel nu dat we een service maken met een **TargetReplicaSetSize** (of, voor een stateless service, **InstanceCount**)-waarde van vijf. Het land van de replica's op N1-N5. In feite wordt N6 nooit gebruikt, ongeacht het aantal services dat u hier maakt. Maar waarom? Laten we eens kijken naar het verschil tussen de huidige indeling en wat er zou gebeuren als N6 is gekozen.
+Stel nu dat we een service maken met een **TargetReplicaSetSize** (of, voor een stateless service, **InstanceCount** )-waarde van vijf. Het land van de replica's op N1-N5. In feite wordt N6 nooit gebruikt, ongeacht het aantal services dat u hier maakt. Maar waarom? Laten we eens kijken naar het verschil tussen de huidige indeling en wat er zou gebeuren als N6 is gekozen.
 
 Dit is de indeling die we hebben ontvangen en het totaal aantal replica's per fout-en upgrade domein:
 
@@ -187,7 +179,7 @@ Cluster resource manager ondersteunt een andere versie van de beperking voor fou
 > [!NOTE]
 > Voor een stateful service definiëren we *quorum verlies* in een situatie waarin een meerderheid van de partitie replica's tegelijk actief is. Als **TargetReplicaSetSize** bijvoorbeeld vijf is, vertegenwoordigt een set van elke drie replica's het quorum. En als **TargetReplicaSetSize** zes zijn, zijn er vier replica's nodig voor quorum. In beide gevallen kunnen niet meer dan twee replica's tegelijkertijd worden uitgevoerd als de partitie normaal gesp roken gewoon werkt.
 >
-> Voor een stateless service is er geen *quorum verlies*. Stateless services blijven normaal functioneren, zelfs als een meerderheid van de exemplaren tegelijkertijd actief is. Daarom zullen we zich richten op stateful Services in de rest van dit artikel.
+> Voor een stateless service is er geen *quorum verlies* . Stateless services blijven normaal functioneren, zelfs als een meerderheid van de exemplaren tegelijkertijd actief is. Daarom zullen we zich richten op stateful Services in de rest van dit artikel.
 >
 
 We gaan terug naar het vorige voor beeld. Met de ' quorum veilige ' versie van de beperking zijn alle drie de indelingen geldig. Zelfs als FD0 is mislukt in de tweede indeling of als UD1 in de derde indeling mislukt, zou de partitie nog steeds quorum hebben. (Een meerderheid van de replica's zou nog steeds actief zijn.) Met deze versie van de beperking kan N6 bijna altijd worden gebruikt.
@@ -357,21 +349,17 @@ Service Fabric verwacht dat in sommige gevallen bepaalde werk belastingen mogeli
 * Een werk belasting moet op specifieke hardware worden uitgevoerd om redenen voor prestaties, schalen of beveiligings isolatie.
 * Een werk belasting moet worden geïsoleerd van andere werk belastingen om redenen van beleid of bronnen verbruik.
 
-Service Fabric bevat Tags die u kunt Toep assen op knoop punten voor ondersteuning bij het gebruik van deze configuraties. Deze tags worden *knooppunt eigenschappen*genoemd. *Plaatsings beperkingen* zijn de instructies die zijn gekoppeld aan afzonderlijke services die u voor een of meer knooppunt eigenschappen selecteert. Plaatsings beperkingen bepalen waar services moeten worden uitgevoerd. De set met beperkingen is uitbreidbaar. Een combi natie van sleutel/waarde kan werken.
+Service Fabric bevat Tags die u kunt Toep assen op knoop punten voor ondersteuning bij het gebruik van deze configuraties. Deze tags worden *knooppunt eigenschappen* genoemd. *Plaatsings beperkingen* zijn de instructies die zijn gekoppeld aan afzonderlijke services die u voor een of meer knooppunt eigenschappen selecteert. Plaatsings beperkingen bepalen waar services moeten worden uitgevoerd. De set met beperkingen is uitbreidbaar. Een combi natie van sleutel/waarde kan werken.
 
-<center>
 ![Verschillende werk belastingen voor een cluster indeling][Image5]
-</center>
 
 ### <a name="built-in-node-properties"></a>Ingebouwde knooppunt eigenschappen
 
-Service Fabric definieert een aantal standaard knooppunt eigenschappen die automatisch kunnen worden gebruikt, zodat u ze niet hoeft te definiëren. De standaard eigenschappen die op elk knoop punt worden gedefinieerd, zijn **NodeType** en **knooppuntnaam**.
+Service Fabric definieert een aantal standaard knooppunt eigenschappen die automatisch kunnen worden gebruikt, zodat u ze niet hoeft te definiëren. De standaard eigenschappen die op elk knoop punt worden gedefinieerd, zijn **NodeType** en **knooppuntnaam** .
 
 U kunt bijvoorbeeld een plaatsings beperking schrijven als `"(NodeType == NodeType03)"` . **NodeType** is een veelgebruikte eigenschap. Het is nuttig omdat deze 1:1 overeenkomt met een type machine. Elk type computer komt overeen met een type werk belasting in een traditionele toepassing met n-tier.
 
-<center>
 ![Plaatsings beperkingen en knooppunt eigenschappen][Image6]
-</center>
 
 ## <a name="placement-constraints-and-node-property-syntax"></a>Plaatsings beperkingen en syntaxis van knooppunt eigenschappen
 
@@ -477,7 +465,7 @@ De eerste keer dat de computers niet overbelast zijn. Dit betekent dat machines 
 
 Ten tweede is er sprake van Balancing en optimalisatie, wat van essentieel belang is voor het efficiënt uitvoeren van services. Met rendabele of prestatie gevoelige service aanbiedingen kunnen bepaalde knoop punten niet worden warme wanneer anderen koud zijn. Hot knoop punten leiden tot bron conflicten en slechte prestaties. Koude knoop punten vertegenwoordigen verspilde resources en verhoogde kosten.
 
-Service Fabric geeft resources als *metrische gegevens*. Metrische gegevens zijn een logische of fysieke resource die u wilt beschrijven Service Fabric. Voor beelden van metrische gegevens zijn ' WorkQueueDepth ' of ' MemoryInMb '. Zie [resource governance](service-fabric-resource-governance.md)voor informatie over de fysieke resources die service Fabric kunnen bepalen op knoop punten. Zie [dit artikel](service-fabric-cluster-resource-manager-metrics.md)voor meer informatie over de standaard waarden die worden gebruikt door cluster resource manager en het configureren van aangepaste metrische gegevens.
+Service Fabric geeft resources als *metrische gegevens* . Metrische gegevens zijn een logische of fysieke resource die u wilt beschrijven Service Fabric. Voor beelden van metrische gegevens zijn ' WorkQueueDepth ' of ' MemoryInMb '. Zie [resource governance](service-fabric-resource-governance.md)voor informatie over de fysieke resources die service Fabric kunnen bepalen op knoop punten. Zie [dit artikel](service-fabric-cluster-resource-manager-metrics.md)voor meer informatie over de standaard waarden die worden gebruikt door cluster resource manager en het configureren van aangepaste metrische gegevens.
 
 Metrische gegevens verschillen van plaatsings beperkingen en eigenschappen van knoop punten. Knooppunt eigenschappen zijn statische descriptoren van de knoop punten zelf. Metrische gegevens beschrijven resources die knoop punten hebben en die services verbruiken wanneer ze op een knoop punt worden uitgevoerd. Een eigenschap van een knoop punt kan **HasSSD** zijn en kan worden ingesteld op True of false. De hoeveelheid beschik bare ruimte op die SSD en hoeveel er door Services wordt verbruikt, is een metrische waarde zoals ' DriveSpaceInMb '.
 
@@ -485,15 +473,13 @@ Net als bij plaatsings beperkingen en knooppunt eigenschappen Service Fabric clu
 
 ## <a name="capacity"></a>Capaciteit
 
-Als u alle resources hebt *uitgebalanceerd*, wordt service Fabric cluster resource manager er nog steeds voor zorgen dat er geen knoop punten meer zijn dan de capaciteit. Het beheer van capaciteits overschrijdingen is mogelijk tenzij het cluster te vol is of omdat de werk belasting groter is dan een wille keurig knoop punt. De capaciteit is een andere *beperking* die door cluster resource manager wordt gebruikt om te begrijpen welk deel van een resource een knoop punt heeft. De resterende capaciteit wordt ook bijgehouden voor het cluster als geheel.
+Als u alle resources hebt *uitgebalanceerd* , wordt service Fabric cluster resource manager er nog steeds voor zorgen dat er geen knoop punten meer zijn dan de capaciteit. Het beheer van capaciteits overschrijdingen is mogelijk tenzij het cluster te vol is of omdat de werk belasting groter is dan een wille keurig knoop punt. De capaciteit is een andere *beperking* die door cluster resource manager wordt gebruikt om te begrijpen welk deel van een resource een knoop punt heeft. De resterende capaciteit wordt ook bijgehouden voor het cluster als geheel.
 
 Zowel de capaciteit als het verbruik op service niveau worden uitgedrukt in metrieke waarden. De metriek kan bijvoorbeeld ' ClientConnections ' zijn en een knoop punt heeft mogelijk een capaciteit voor ' ClientConnections ' van 32.768. Andere knoop punten kunnen andere limieten hebben. Een service die op dat knoop punt wordt uitgevoerd, kan zeggen dat er op dit moment 32.256 van de metrische waarde ' ClientConnections ' wordt gebruikt.
 
 Tijdens runtime houdt cluster resource manager de resterende capaciteit in het cluster en op knoop punten bij. Voor het bijhouden van de capaciteit trekt cluster resource manager elk gebruik van de service af van de capaciteit van een knoop punt waar de service wordt uitgevoerd. Met deze informatie kan cluster bron beheer bepalen waar replica's moeten worden geplaatst of verplaatst, zodat de knoop punten de capaciteit niet overschrijden.
 
-<center>
 ![Cluster knooppunten en-capaciteit][Image7]
-</center>
 
 ```csharp
 StatefulServiceDescription serviceDescription = new StatefulServiceDescription();
@@ -580,7 +566,7 @@ De capaciteit voor overboeking kan ook worden opgegeven als oneindig. In dit gev
 
 Er kunnen op hetzelfde moment geen knooppunt buffer en overboekings capaciteit worden opgegeven voor een metriek.
 
-Hier volgt een voor beeld van het opgeven van de knooppunt buffer of het overboeken van de capaciteit in *ClusterManifest.xml*:
+Hier volgt een voor beeld van het opgeven van de knooppunt buffer of het overboeken van de capaciteit in *ClusterManifest.xml* :
 
 ```xml
 <Section Name="NodeBufferPercentage">

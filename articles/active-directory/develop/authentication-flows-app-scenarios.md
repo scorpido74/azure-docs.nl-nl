@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: ff92f66d4d7b96660fe83b79273f65ca50eb22f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 906adb5b9535ee66fd7bc4a22c5c30a86b561547
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89292891"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910250"
 ---
-# <a name="authentication-flows-and-application-scenarios"></a>Verificatie stromen en toepassings scenario's
+# <a name="authentication-flows-and-application-scenarios"></a>Verificatiestromen en app-scenario's
 
 Het micro soft Identity platform (v 2.0)-eind punt ondersteunt verificatie voor verschillende soorten architectuur van moderne toepassingen. Alle architecturen zijn gebaseerd op de industrie standaard protocollen [OAuth 2,0 en OpenID Connect Connect](active-directory-v2-protocols.md). Met behulp van de [verificatie bibliotheken voor het micro soft-identiteits platform](reference-v2-libraries.md)verifiëren toepassingen identiteiten en verkrijgen tokens voor toegang tot beveiligde api's.
 
@@ -42,8 +42,8 @@ In de volgende secties worden de categorieën toepassingen beschreven.
 
 Verificatie scenario's hebben twee activiteiten:
 
-- **Beveiligings tokens ophalen voor een beveiligde web-API**: we raden u aan door [micro soft ondersteunde client bibliotheken](reference-v2-libraries.md#microsoft-supported-client-libraries) te gebruiken voor het verkrijgen van tokens. In het bijzonder wordt de micro soft Authentication Library (MSAL)-familie aangeraden.
-- **Een web-API of web-app beveiligen**: een uitdaging voor het beveiligen van deze resources is het valideren van het beveiligings token. Op sommige platforms biedt micro soft [middleware-bibliotheken](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries).
+- **Beveiligings tokens ophalen voor een beveiligde web-API** : we raden u aan door [micro soft ondersteunde client bibliotheken](reference-v2-libraries.md#microsoft-supported-client-libraries) te gebruiken voor het verkrijgen van tokens. In het bijzonder wordt de micro soft Authentication Library (MSAL)-familie aangeraden.
+- **Een web-API of web-app beveiligen** : een uitdaging voor het beveiligen van deze resources is het valideren van het beveiligings token. Op sommige platforms biedt micro soft [middleware-bibliotheken](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries).
 
 ### <a name="with-users-or-without-users"></a>Met gebruikers of zonder gebruikers
 
@@ -59,14 +59,14 @@ Er zijn echter ook daemon-apps. In deze scenario's verkrijgen toepassingen token
 
 Beveiligings tokens kunnen worden verkregen door meerdere typen toepassingen. Deze toepassingen worden vaak onderverdeeld in de volgende drie categorieën. Elk wordt gebruikt met verschillende bibliotheken en objecten.
 
-- **Toepassingen met één pagina**: ook wel Spas genoemd, zijn dit web-apps waarin tokens worden verkregen door een Java script-of type script-app die in de browser wordt uitgevoerd. Veel moderne apps hebben een toepassing met één pagina aan de front-end die voornamelijk is geschreven in Java script. De toepassing maakt vaak gebruik van een kader zoals hoek, reageren of Vue. MSAL.js is de enige micro soft-verificatie bibliotheek die ondersteuning biedt voor toepassingen met één pagina.
+- **Toepassingen met één pagina** : ook wel Spas genoemd, zijn dit web-apps waarin tokens worden verkregen door een Java script-of type script-app die in de browser wordt uitgevoerd. Veel moderne apps hebben een toepassing met één pagina aan de front-end die voornamelijk is geschreven in Java script. De toepassing maakt vaak gebruik van een kader zoals hoek, reageren of Vue. MSAL.js is de enige micro soft-verificatie bibliotheek die ondersteuning biedt voor toepassingen met één pagina.
 
-- **Open bare client toepassingen**: apps in deze categorie, zoals de volgende typen, altijd aanmelden gebruikers:
+- **Open bare client toepassingen** : apps in deze categorie, zoals de volgende typen, altijd aanmelden gebruikers:
   - Bureau blad-apps die web-Api's aanroepen namens aangemelde gebruikers
   - Mobiele apps
   - Apps die worden uitgevoerd op apparaten die geen browser hebben, zoals toepassingen die op IoT worden uitgevoerd
   
-- **Vertrouwelijke client toepassingen**: apps in deze categorie zijn onder andere:
+- **Vertrouwelijke client toepassingen** : apps in deze categorie zijn onder andere:
   - Web-apps die een web-API aanroepen
   - Web-Api's die een web-API aanroepen
   - Daemon-apps, zelfs wanneer deze zijn geïmplementeerd als een console service, zoals een Linux-daemon of een Windows-service
@@ -217,7 +217,7 @@ Scenario's met betrekking tot het verkrijgen van tokens zijn ook toegewezen aan 
  </tr>
 
   <tr>
-   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that signs in users" src="media/scenarios/web-app.svg"></a></td>
+   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that calls web APIs" src="media/scenarios/web-app.svg"></a></td>
    <td><a href="scenario-web-app-call-api-overview.md">Web-app die web-API's aanroept</a></td>
    <td><a href="v2-oauth2-auth-code-flow.md">Autorisatiecode</a></td>
    <td>Werk-of school accounts, persoonlijke accounts en Azure AD B2C</td>
@@ -261,7 +261,7 @@ Scenario's met betrekking tot het verkrijgen van tokens zijn ook toegewezen aan 
   <tr>
    <td><a href="scenario-daemon-overview.md"><img alt="Daemon app that calls web APIs" src="media/scenarios/daemon-app.svg"></a></td>
    <td><a href="scenario-daemon-overview.md">Daemon-app die web-Api's aanroept</a></td>
-   <td><a href="v2-oauth2-client-creds-grant-flow.md">Clientreferenties</a></td>
+   <td><a href="v2-oauth2-client-creds-grant-flow.md">Client referenties</a></td>
    <td>Alleen app-machtigingen die geen gebruiker hebben en alleen worden gebruikt in azure AD-organisaties</td>
  </tr>
 

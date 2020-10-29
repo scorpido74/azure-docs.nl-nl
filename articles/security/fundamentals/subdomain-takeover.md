@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447377"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911389"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Dangling DNS-vermeldingen voor komen en de overname van subdomeinen voor komen
 
@@ -51,7 +51,7 @@ Een veelvoorkomend scenario voor een overname van subdomeinen:
 
     1. De bedreigings actor richt zich op een Azure-resource met dezelfde FQDN van de resource die u eerder hebt beheerd. In dit voor beeld `app-contogreat-dev-001.azurewebsites.net` .
 
-    1. Verkeer dat wordt verzonden naar het subdomein `myapp.contoso.com` , wordt nu doorgestuurd naar de bron van de schadelijke actor waar ze de inhoud beheren.
+    1. Verkeer dat wordt verzonden naar het subdomein `greatapp.contoso.com` , wordt nu doorgestuurd naar de bron van de schadelijke actor waar ze de inhoud beheren.
 
 
 
@@ -119,7 +119,7 @@ Als u een globale beheerder van de Tenant van uw organisatie bent, kunt u uw acc
 
 ### <a name="run-the-script"></a>Het script uitvoeren
 
-Meer informatie over het Power shell-script, **Get-DanglingDnsRecords.ps1**en downloaden van github: https://aka.ms/DanglingDNSDomains .
+Meer informatie over het Power shell-script, **Get-DanglingDnsRecords.ps1** en downloaden van github: https://aka.ms/DanglingDNSDomains .
 
 ## <a name="remediate-dangling-dns-entries"></a>Dangling DNS-vermeldingen herstellen 
 

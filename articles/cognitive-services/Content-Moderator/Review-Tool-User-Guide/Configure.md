@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8812fd1e6c1efb2aa44c77573bc4b8f1c099834d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84689840"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912018"
 ---
 # <a name="configure-the-review-tool"></a>Het beoordelingsprogramma configureren
 
@@ -35,7 +35,7 @@ In deze sectie wordt uitgelegd hoe u subteamsen maakt en snel Recensies toewijst
 
 ### <a name="create-a-subteam"></a>Een subteam maken
 
-Ga naar de sectie **subteams** en klik op **subteam toevoegen**. Voer de naam van uw subteam in het dialoog venster in en klik op **Opslaan**.
+Ga naar de sectie **subteams** en klik op **subteam toevoegen** . Voer de naam van uw subteam in het dialoog venster in en klik op **Opslaan** .
 
 ![Naam van subteam](images/1-Teams-2.PNG)
 
@@ -54,19 +54,19 @@ Klik op de knop **lid toevoegen** om leden van uw standaard team toe te wijzen a
 ### <a name="assign-reviews-to-subteams"></a>Beoordelingen toewijzen aan subteams
 
 Zodra u uw subteams en toegewezen leden hebt gemaakt, kunt u beginnen met het toewijzen van inhouds [beoordelingen](../review-api.md#reviews) aan die subteams. Dit doet u via het tabblad **controleren** van de site.
-Als u inhoud aan een subteam wilt toewijzen, klikt u op het beletsel teken in de rechter bovenhoek, selecteert **u verplaatsen naar**en selecteert u een subteam.
+Als u inhoud aan een subteam wilt toewijzen, klikt u op het beletsel teken in de rechter bovenhoek, selecteert **u verplaatsen naar** en selecteert u een subteam.
 
 ![Afbeeldings beoordeling aan subteam toewijzen](images/3-review-image-subteam-1.png)
 
 ### <a name="switch-between-subteams"></a>Scha kelen tussen subteams
 
-Als u lid bent van meer dan één subteam, kunt u scha kelen tussen deze subteams om te wijzigen welke inhouds Beoordelingen voor u worden weer gegeven. Op het tabblad **controleren** selecteert u de vervolg keuzelijst met de naam **standaard** en selecteert u **subteam kiezen**. U kunt de inhouds Beoordelingen voor verschillende subteams weer geven, maar alleen degenen waarvan u lid bent.
+Als u lid bent van meer dan één subteam, kunt u scha kelen tussen deze subteams om te wijzigen welke inhouds Beoordelingen voor u worden weer gegeven. Op het tabblad **controleren** selecteert u de vervolg keuzelijst met de naam **standaard** en selecteert u **subteam kiezen** . U kunt de inhouds Beoordelingen voor verschillende subteams weer geven, maar alleen degenen waarvan u lid bent.
 
 ![Scha kelen tussen subteams](images/3-review-image-subteam-2.png)
 
 ## <a name="tags"></a>Tags
 
-Op het tabblad **labels** kunt u naast de twee standaard markeringen &mdash; **isadult** (**a**) en **isracy** (**r**) aangepaste toezicht Tags definiëren. Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in beoordelingen naast de standaard tags. U kunt wijzigen welke tags worden weer gegeven in beoordelingen door de instellingen voor zicht baarheid van hun voor beeld te scha kelen.
+Op het tabblad **labels** kunt u naast de twee standaard markeringen &mdash; **isadult** ( **a** ) en **isracy** ( **r** ) aangepaste toezicht Tags definiëren. Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in beoordelingen naast de standaard tags. U kunt wijzigen welke tags worden weer gegeven in beoordelingen door de instellingen voor zicht baarheid van hun voor beeld te scha kelen.
 
 ![De weer gave Tags, inclusief de selectie vakjes ' is zichtbaar '](images/tags-4-disable.png)
 
@@ -74,9 +74,9 @@ Op het tabblad **labels** kunt u naast de twee standaard markeringen &mdash; **i
 
 Als u een nieuwe tag wilt maken, moet u een korte code, naam en beschrijving in de desbetreffende velden invoeren.
 
-- **Korte code**: Voer een code van twee letters in voor de tag. Voor beeld: **CB**
-- **Naam**: Voer een korte en beschrijvende label naam in in kleine letters zonder spaties. Voor beeld: **isbullying**.
-- **Beschrijving**: (optioneel) Voer een beschrijving in van het type inhoud dat door de tag wordt doel. Voor beeld: **afbeeldingen of instanties van Cyber Bullying**.
+- **Korte code** : Voer een code van twee letters in voor de tag. Voor beeld: **CB**
+- **Naam** : Voer een korte en beschrijvende label naam in in kleine letters zonder spaties. Voor beeld: **isbullying** .
+- **Beschrijving** : (optioneel) Voer een beschrijving in van het type inhoud dat door de tag wordt doel. Voor beeld: **afbeeldingen of instanties van Cyber Bullying** .
 
 Klik op **toevoegen** om een tag toe te voegen en klik op **Opslaan** wanneer u klaar bent met het maken van tags.
 
@@ -90,7 +90,7 @@ U kunt aangepaste tags verwijderen door het prullenbak pictogram naast hun verme
 
 Op het tabblad **connectors** kunt u uw connectors beheren. Dit zijn service-specifieke invoeg toepassingen die inhoud op verschillende manieren kunnen verwerken als onderdeel van [werk stromen](../review-api.md#workflows)voor inhoud.
 
-De standaard connector wanneer u een werk stroom maakt, is de Content Moderator-connector, waarmee inhoud als **volwassene** of **ongepaste**kan worden gemarkeerd, de woorden kunnen worden gevonden, enzovoort. U kunt echter andere connectors gebruiken die hier worden weer gegeven, mits u referenties voor hun respectieve services hebt (u moet bijvoorbeeld een [Face](https://docs.microsoft.com/azure/cognitive-services/face/overview) -abonnements sleutel ophalen).
+De standaard connector wanneer u een werk stroom maakt, is de Content Moderator-connector, waarmee inhoud als **volwassene** of **ongepaste** kan worden gemarkeerd, de woorden kunnen worden gevonden, enzovoort. U kunt echter andere connectors gebruiken die hier worden weer gegeven, mits u referenties voor hun respectieve services hebt (u moet bijvoorbeeld een [Face](../../face/overview.md) -abonnements sleutel ophalen).
 
 Het [hulp programma voor beoordeling](./human-in-the-loop.md) bevat de volgende connectors:
 
@@ -125,7 +125,7 @@ Als u een [Content moderator resource](https://ms.portal.azure.com/#create/Micro
 
 ![Content Moderator sleutels in de Azure Portal](images/credentials-azure-portal-keys.PNG)
 
-Ga op het tabblad controle **van het** [hulp programma](https://contentmoderator.cognitive.microsoft.com)naar het deel venster **werk stroom instellingen** , selecteer **bewerken**en plak uw sleutel in het veld **OCP-APIM-Subscription-Key** . Nu gebruiken werk stromen die de toezicht-Api's aanroepen, uw Azure-referentie.
+Ga op het tabblad controle **van het** [hulp programma](https://contentmoderator.cognitive.microsoft.com)naar het deel venster **werk stroom instellingen** , selecteer **bewerken** en plak uw sleutel in het veld **OCP-APIM-Subscription-Key** . Nu gebruiken werk stromen die de toezicht-Api's aanroepen, uw Azure-referentie.
 
 > [!NOTE]
 > De andere twee velden in het deel venster **werk stroom instellingen** zijn voor aangepaste termen en lijsten met installatie kopieën. Raadpleeg de hand leidingen voor [aangepaste voor waarden](../try-terms-list-api.md) of [aangepaste afbeeldingen](../try-image-list-api.md) voor meer informatie.

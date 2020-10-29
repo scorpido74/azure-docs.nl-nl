@@ -13,6 +13,7 @@
     - name: Een openbare load balancer maken - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Een openbare load balancer maken - ARM-sjabloon
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
     - name: Een interne load balancer maken - Portal
       href: quickstart-load-balancer-standard-internal-portal.md
@@ -21,6 +22,7 @@
     - name: Een interne load balancer maken - Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
     - name: Een interne load balancer maken - ARM-sjabloon
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: Zelfstudies
@@ -53,6 +55,8 @@
       items:
         - name: Statuscontroles
           href: load-balancer-custom-probe-overview.md
+        - name: Azure Monitor Insights voor Load Balancer
+          href: load-balancer-insights.md
         - name: Metrische en diagnostische gegevens voor een load balancer van het type Standard
           href: load-balancer-standard-diagnostics.md
         - name: Azure Monitor-logboeken voor Basic Azure Load Balancer

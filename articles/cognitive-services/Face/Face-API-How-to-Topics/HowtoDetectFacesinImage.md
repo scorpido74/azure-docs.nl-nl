@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 500099753ee4fe47f02e7f09d9732b71aa3bae36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7a740b1015bda80000f65180eda2c5e618670da
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856362"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911236"
 ---
 # <a name="get-face-detection-data"></a>Detectie gegevens van het gezicht ophalen
 
@@ -30,25 +30,25 @@ In deze hand leiding wordt uitgelegd hoe u:
 
 ## <a name="setup"></a>Instellen
 
-In deze hand leiding wordt ervan uitgegaan dat u al een [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -object met de naam hebt gemaakt `faceClient` met een face-abonnements sleutel en eind punt-URL. Hier kunt u de functie voor gezichts herkenning gebruiken door het aanroepen van [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), dat wordt gebruikt in deze hand leiding of [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Volg een van de Quick starts voor instructies over het instellen van deze functie.
+In deze hand leiding wordt ervan uitgegaan dat u al een [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -object met de naam hebt gemaakt `faceClient` met een face-abonnements sleutel en eind punt-URL. Hier kunt u de functie voor gezichts herkenning gebruiken door het aanroepen van [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), dat wordt gebruikt in deze hand leiding of [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Volg een van de Quick starts voor instructies over het instellen van deze functie.
 
 Deze hand leiding is gericht op de details van de detectie aanroep, zoals de argumenten die u kunt door geven en wat u met de geretourneerde gegevens kunt doen. U wordt aangeraden alleen een query uit te voeren voor de functies die u nodig hebt. Elke bewerking heeft meer tijd nodig om te volt ooien.
 
 ## <a name="get-basic-face-data"></a>Basis gegevens over het gezicht ophalen
 
-Roep de [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) -of [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) -methode aan waarbij de para meter _returnFaceId_ is ingesteld op **True**om gezichten te vinden en hun locaties op te halen in een installatie kopie. Dit is de standaardinstelling.
+Roep de [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) -of [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) -methode aan waarbij de para meter _returnFaceId_ is ingesteld op **True** om gezichten te vinden en hun locaties op te halen in een installatie kopie. Dit is de standaardinstelling.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic1":::
 
-U kunt de geretourneerde [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) -objecten opvragen voor hun unieke id's en een rechthoek die de pixel coördinaten van het gezicht geeft.
+U kunt de geretourneerde [DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) -objecten opvragen voor hun unieke id's en een rechthoek die de pixel coördinaten van het gezicht geeft.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic2":::
 
-Zie [FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet)voor informatie over het parseren van de locatie en afmetingen van het gezicht. Normaal gesp roken bevat deze rechthoek de ogen, Eyebrows, neus en mond. De bovenkant van Head, oren en Chin is niet noodzakelijkerwijs opgenomen. Als u de gezichts rechthoek wilt gebruiken om een volledige kop te bijsnijden of een mid-shot portret te krijgen, mogelijk voor een foto-ID-type afbeelding, kunt u de rechthoek in elke richting uitvouwen.
+Zie [FaceRectangle](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet)voor informatie over het parseren van de locatie en afmetingen van het gezicht. Normaal gesp roken bevat deze rechthoek de ogen, Eyebrows, neus en mond. De bovenkant van Head, oren en Chin is niet noodzakelijkerwijs opgenomen. Als u de gezichts rechthoek wilt gebruiken om een volledige kop te bijsnijden of een mid-shot portret te krijgen, mogelijk voor een foto-ID-type afbeelding, kunt u de rechthoek in elke richting uitvouwen.
 
 ## <a name="get-face-landmarks"></a>Gezichts bezienswaardigheden ophalen
 
-[Gezichts bezienswaardigheden](../concepts/face-detection.md#face-landmarks) zijn een verzameling gemakkelijk te vinden punten op een gezicht, zoals de pupilsen of de tip van de neus. Als u gegevens over het gezichts punt wilt ophalen, stelt u de para meter _detectionModel_ in op **detectionModel. Detection01** en de para meter _returnFaceLandmarks_ op **True**.
+[Gezichts bezienswaardigheden](../concepts/face-detection.md#face-landmarks) zijn een verzameling gemakkelijk te vinden punten op een gezicht, zoals de pupilsen of de tip van de neus. Als u gegevens over het gezichts punt wilt ophalen, stelt u de para meter _detectionModel_ in op **detectionModel. Detection01** en de para meter _returnFaceLandmarks_ op **True** .
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks1":::
 
@@ -66,7 +66,7 @@ Wanneer u de richting van het gezicht kent, kunt u het rechthoekige gezichts kad
 
 Naast gezichts rechthoeken en bezienswaardigheden, kunnen met de gezichts detectie-API verschillende conceptuele kenmerken van een gezicht worden geanalyseerd. Zie de sectie met de conceptuele [kenmerken](../concepts/face-detection.md#attributes) voor een volledige lijst.
 
-Als u face-kenmerken wilt analyseren, stelt u de para meter _detectionModel_ in op **detectionModel. Detection01** en de para meter _ReturnFaceAttributes_ in een lijst met [FaceAttributeType Enum](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -waarden.
+Als u face-kenmerken wilt analyseren, stelt u de para meter _detectionModel_ in op **detectionModel. Detection01** en de para meter _ReturnFaceAttributes_ in een lijst met [FaceAttributeType Enum](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -waarden.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes1":::
 
@@ -85,4 +85,4 @@ In deze hand leiding hebt u geleerd hoe u de verschillende functies van gezicht 
 ## <a name="related-topics"></a>Verwante onderwerpen
 
 - [Referentie documentatie (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [Referentie documentatie (.NET SDK)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [Referentie documentatie (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)

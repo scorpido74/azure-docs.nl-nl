@@ -118,10 +118,6 @@
           href: concepts-data-in-replication.md
         - name: Leesreplica's
           href: concepts-read-replicas.md
-    - name: Schakelen tussen regio's
-      items:
-        - name: Azure Portal
-          href: howto-move-regions-portal.md
 - name: Instructiegidsen
   items:
     - name: Een server beheren
@@ -240,6 +236,10 @@
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
+    - name: Schakelen tussen regio's
+      items:
+        - name: Azure Portal
+          href: howto-move-regions-portal.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

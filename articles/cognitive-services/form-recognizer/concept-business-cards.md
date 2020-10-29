@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82182c24f87a82df5ee040b7853588f74dda449f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334545"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909944"
 ---
 # <a name="business-card-concepts"></a>Concepten van visitekaartjes
 
@@ -385,7 +385,7 @@ De gegevens die zijn geëxtraheerd met de Business Card API kunnen worden gebrui
 * Houd de verkoop kansen bij.  
 * Haal contact gegevens in bulk op uit bestaande afbeeldingen van visite kaartjes. 
 
-De Business Card-API voorziet ook in de [verwerkings functie voor AIBuilder-bedrijfs kaarten](https://docs.microsoft.com/ai-builder/prebuilt-business-card).
+De Business Card-API voorziet ook in de [verwerkings functie voor AIBuilder-bedrijfs kaarten](/ai-builder/prebuilt-business-card).
 
 ## <a name="next-steps"></a>Volgende stappen
 

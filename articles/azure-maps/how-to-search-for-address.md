@@ -3,21 +3,22 @@ title: Zoeken naar een locatie met behulp van Azure Maps-Zoek Services
 description: Meer informatie over de Azure Maps Search-service. Zie hoe u deze set Api's gebruikt voor geocodering, geocodering terugdraaien, fuzzy Zoek opdrachten en omgekeerde Cross-Street Zoek opdrachten.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/21/2020
+ms.date: 10/05/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9628ecada2e427f6220ae2a5154cebb8e4958bd0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895695"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910981"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Zoeken naar een locatie met behulp van Azure Maps-Zoek Services
 
 De [Azure Maps Search service](/rest/api/maps/search) is een reeks rest api's die is ontworpen om ontwikkel aars te helpen bij het zoeken naar adressen, plaatsen en zakelijke vermeldingen op naam, categorie en andere geografische informatie. Naast het ondersteunen van traditionele geocodering kunnen services ook Geocode-adressen en Cross-Streets omkeren op basis van de breedte graad en lengte graad. De breedte-en lengte waarden die door de zoek opdracht worden geretourneerd, kunnen als para meters in andere Azure Maps services worden gebruikt, zoals [route](/rest/api/maps/route) en [weer](/rest/api/maps/weather) Services.
+
 
 In dit artikel leert u het volgende:
 
@@ -44,9 +45,7 @@ In dit voor beeld gebruiken we de Azure Maps [Zoek adres-API ophalen](/rest/api/
 
 2. Selecteer nogmaals **New** (Nieuw) om de aanvraag te maken. Selecteer **Request** (Aanvraag) in het venster **Create New** (Nieuwe maken). Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u in de vorige stap hebt gemaakt en selecteer **Save** (Opslaan).
 
-3. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. In deze aanvraag zoeken we naar een specifiek adres: `400 Braod St, Seattle, WA 98109` .
-
-    Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet lijken op de volgende URL:
+3. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. In deze aanvraag zoeken we naar een specifiek adres: `400 Braod St, Seattle, WA 98109` . Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel.
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
@@ -60,7 +59,7 @@ In dit voor beeld gebruiken we de Azure Maps [Zoek adres-API ophalen](/rest/api/
 
 6. Probeer vervolgens de `query` sleutel in te stellen `400 Broa` op.
 
-7. Klik op de knop **Verzenden** .  U kunt nu zien dat het antwoord reacties van meerdere landen bevat. Als u de resultaten voor uw gebruikers wilt geobias, voegt u altijd zoveel locatie gegevens toe aan de aanvraag.
+7. Klik op de knop **Verzenden** . U kunt nu zien dat het antwoord reacties van meerdere landen bevat. Als u de resultaten voor uw gebruikers wilt geobias, voegt u altijd zoveel locatie gegevens toe aan de aanvraag.
 
 ## <a name="using-fuzzy-search-api"></a>Fuzzy Search-API gebruiken
 
@@ -78,7 +77,7 @@ In dit voor beeld gebruiken we fuzzy Search om te zoeken naar de hele wereld voo
 
 1. Open de Postman-app, klik op **Nieuw** en selecteer **aanvraag** . Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u hebt gemaakt in de vorige sectie of maak een nieuwe, en selecteer vervolgens **Opslaan** .
 
-2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet lijken op de volgende URL:
+2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel.
 
     ```http
    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza

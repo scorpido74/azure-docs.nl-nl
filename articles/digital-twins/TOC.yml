@@ -23,8 +23,6 @@
   items:
     - name: Aangepaste modellen
       href: concepts-models.md
-    - name: In de industrie gangbare modellen converteren
-      href: concepts-convert-models.md
     - name: Digital twins en het tweelinggrafiek
       href: concepts-twins-graph.md
     - name: Querytaal
@@ -63,6 +61,8 @@
       items:
         - name: Aangepaste modellen beheren
           href: how-to-manage-model.md
+        - name: In de industrie gangbare modellen converteren
+          href: how-to-convert-models.md
         - name: Modellen parseren en valideren
           href: how-to-parse-models.md
         - name: Tags toevoegen
@@ -176,11 +176,15 @@
             - name: Java-SDK - bron
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
             - name: JavaScript-SDK - npm
-              href: 'https://www.npmjs.com/package/@azure/digital-twins/'
+              href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
             - name: JavaScript-SDK - verwijzing
               href: /javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest
+            - name: JavaScript-SDK - bron
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python-SDK - PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/'
+            - name: Python-SDK - bron
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
     - name: Digital Twins CLI
       items:
         - name: Naslaginformatie voor Digital Twins CLI

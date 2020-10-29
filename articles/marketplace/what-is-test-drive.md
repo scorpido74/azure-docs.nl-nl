@@ -7,66 +7,65 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f78aa110ed42e17db873b9593de62602aa4193f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121864"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911133"
 ---
 # <a name="what-is-a-test-drive"></a>Wat is een test drive?
 
-Een test drive is een fantastische manier om uw aanbieding te presen teren aan potentiële klanten door hen de mogelijkheid te geven om te *proberen voordat u koopt*, wat resulteert in een verhoogde conversie en generatie van uiterst gekwalificeerde leads. Een test drive het product tot leven brengt in een praktijk scenario voor de hele wereld, terwijl ook zeer gekwalificeerde leads worden gegenereerd.
+Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te geven om te proberen voordat u koopt, het genereren van uiterst gekwalificeerde leads en het resultaat van een verhoogde conversie. Een test drive uw product tot leven brengt in een praktijk scenario voor de implementatie. Klanten die uw product uitproberen, zien een duidelijke intentie om een soort gelijke oplossing te kopen. Gebruik dit voor uw voor deel door meer geavanceerde leads te volgen.
 
-Test stations zijn beheerde exemplaren die uw oplossing of toepassing op aanvraag implementeren voor klanten die deze aanvragen. Zodra een test drive-exemplaar is toegewezen, is het beschikbaar voor gebruik voor een bepaalde tijd en vervolgens verwijderd om ruimte te maken voor een andere klant.
-
-Als uitgever kunt u de test drive-instellingen beheren en configureren in partner centrum. De technische configuratie gegevens variëren, afhankelijk van het type aanbieding waarmee u werkt. Zie de koppeling onder [volgende stap](#next-step) aan het einde van dit onderwerp voor meer informatie.
-
-Potentiële klanten kunnen uw test drive op de commerciële Marketplace ontdekken. Ze bieden hun contact gegevens en gaan akkoord met de voor waarden en het privacybeleid van uw aanbieding en krijgen vervolgens toegang tot uw vooraf geconfigureerde omgeving om deze voor een bepaalde periode te proberen. Klanten ontvangen een praktijk gerichte, zelf-begeleide proef versie van de belangrijkste functies en voor delen van uw product en u ontvangt een waardevolle lead.
+Uw klanten profiteren ook van een test drive. Door hen in staat te stellen uw product eerst te proberen, vermindert u de wrijving van het aankoop proces. Daarnaast is test drive vooraf ingericht, d.w.z. klanten hoeven het product niet te downloaden, in te stellen of te configureren.
 
 ## <a name="how-does-it-work"></a>Hoe werkt het?
 
-Als uitgever kunt u de test drive-instellingen beheren en configureren binnen het partner centrum. Na de installatie wordt het een beheerd exemplaar dat op aanvraag wordt geïmplementeerd voor de klant die daarom vraagt. Zodra een test drive-exemplaar is toegewezen, is het beschikbaar voor gebruik voor een bepaalde tijd en vervolgens verwijderd om ruimte te maken voor een andere klant.
+Test stations zijn beheerde instanties die uw oplossing of toepassing op aanvraag starten voor klanten die het verzoek indienen. Zodra een test drive-exemplaar is toegewezen, is het beschikbaar voor gebruik door die klant voor een bepaalde periode. Nadat de periode is beëindigd, wordt deze verwijderd om ruimte te maken voor een andere klant.
+
+Als uitgever kunt u de test drive-instellingen beheren en configureren in partner centrum. De technische configuratie gegevens variëren afhankelijk van het type aanbieding. Zie de technische configuratie van het [test station](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)voor gedetailleerde richt lijnen.
+
+Potentiële klanten ontdekken uw test drive als een CTA in uw aanbieding op [AppSource](https://appsource.microsoft.com/en-US/). Ze bieden hun contact gegevens en gaan akkoord met de voor waarden en het privacybeleid van uw aanbieding. vervolgens krijgt u toegang tot uw vooraf geconfigureerde omgeving om deze te proberen voor een bepaalde periode. Klanten ontvangen een praktijk gerichte, zelf-begeleide proef versie van de belangrijkste functies en voor delen van uw product en u ontvangt een waardevolle lead.
 
 ## <a name="types-of-test-drives"></a>Typen test stations
 
 Er zijn verschillende test stations beschikbaar op de commerciële Marketplace voor Select-aanbiedingen, afhankelijk van het type product, scenario en Marketplace dat u hebt:
 
 - Azure Resource Manager
+    - Azure-toepassingen
+    - SaaS
+    - Virtual Machines
 - Gehoste test drive
-    - Dynamics 365 for Business Central
+    - Dynamics 365 voor bedrijven Central (momenteel niet ondersteund)
     - Dynamics 365 for Customer Engagement
     - Dynamics 365 for Operations
-- Logische apps
+- Logische app (alleen in ondersteunings modus)
 - Power BI
 
-Zie de koppeling onder [volgende stap](#next-step) aan het einde van dit onderwerp voor meer informatie over het configureren van een van deze test stations.
+Zie [technische configuratie van test station](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)voor meer informatie over het configureren van een van deze test stations. 
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager test drive
 
 Deze implementatie sjabloon bevat alle Azure-resources waaruit uw oplossing bestaat. Voor producten die in dit scenario passen, worden alleen Azure-resources gebruikt. De Azure Resource Manager test drive is beschikbaar voor de volgende aanbiedings typen: 
 
 - Azure-toepassingen
-- Dynamics 365 for Business Central
-- Dynamics 365 voor klant betrokkenheid & PowerApps
-- Dynamics 365 for Operations
 - SaaS
 - Virtuele machines
 
 >[!NOTE]
 >Dit is de enige test drive optie voor aanbiedingen van virtuele machines en Azure-toepassingen.
 
-### <a name="hosted-test-drive"></a>Gehoste test drive
+### <a name="hosted-test-drive-recommended"></a>Gehoste test drive (aanbevolen)
 
-Een gehoste test drive verwijdert de complexiteit van Setup door micro soft host te laten en de service te onderhouden die de test drive gebruikers inrichting, implementatie en het ongedaan maken van de inrichting uitvoert. Als u een aanbieding op Microsoft AppSource hebt, bouwt u uw test drive om verbinding te maken met een Dynamics AX/CRM-exemplaar of een andere resource dan Azure. Gebruik dit type voor AppSource-aanbiedingen om verbinding te maken met deze Dynamics 365-aanbiedingen:
+Een gehoste test drive verwijdert de complexiteit van Setup door micro soft host te laten en de service te onderhouden waarmee het inrichten van de test drive gebruiker wordt uitgevoerd en de inrichting ongedaan wordt gemaakt. Als u een aanbieding op Microsoft AppSource hebt, bouwt u uw test drive om verbinding te maken met een Dynamics AX/CRM-exemplaar. U kunt de volgende typen AppSource-aanbiedingen gebruiken:
 
-- Gebruik [Dynamics 365 voor bedrijven Central](partner-center-portal/create-new-operations-offer.md) voor een zakelijk centraal Enter prise resource plannings systeem zoals financiën, bewerkingen, toeleverings ketens en CRM.
 - Gebruik [Dynamics 365 voor klant betrokkenheid](partner-center-portal/create-new-customer-engagement-offer.md) voor een klant engagementsysteem, zoals verkoop, service, project service en veld service.
 - Gebruik [Dynamics 365 voor bewerkingen](partner-center-portal/create-new-operations-offer.md) voor een bedrijf voor de planning van Financiën en bedrijfs middelen zoals financiën, bewerkingen en productie, toeleverings keten.
 
 ### <a name="logic-app-test-drive"></a>test drive van logische app
 
-Dit type test drive wordt niet gehost door micro soft. Gebruik het om verbinding te maken met een Dynamics 365-aanbieding of een andere aangepaste resource.
+Dit type test drive wordt niet gehost door micro soft en gebruikt ARM-sjablonen (Azure Resource Manager) voor Dynamics AX/CRM-aanbiedings typen. U moet de ARM-sjabloon uitvoeren om de vereiste resources in uw Azure-abonnement te maken. Het test station van de logische app bevindt zich momenteel alleen in de ondersteunings modus en wordt niet aanbevolen door micro soft voor meer informatie over het configureren van een test schijf voor een logische app, Zie [technische configuratie testen](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
 
 ### <a name="power-bi-test-drive"></a>Power BI test drive
 
@@ -92,7 +91,7 @@ Als u een oplossing met een test drive-lead sluit, dient u deze te registreren b
 
 Aanvullende test drive resources:
 
-- [Technische best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Aanbevolen procedures testen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Overzicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; Controleer of de pop-upblokkering is uitgeschakeld)
 
 ## <a name="next-step"></a>Volgende stap

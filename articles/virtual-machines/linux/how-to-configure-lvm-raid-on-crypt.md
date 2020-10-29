@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: b65c37ab06092be63cbb2ad9fb5e23cdb8324e80
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c8ffe78e885eedd84c4cf6948954a7d3477a5cff
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476158"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911814"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>LVM en RAID op versleutelde apparaten configureren
 
@@ -287,7 +287,7 @@ In plaats van de naam van het apparaat te gebruiken, gebruikt u de/dev/mapper-pa
 
 ### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>LVM configureren boven op de versleutelde lagen
 #### <a name="create-the-physical-volumes"></a>De fysieke volumes maken
-Er wordt een waarschuwing weer gegeven waarin u wordt gevraagd of u de hand tekening van het bestands systeem OK wilt wissen. Ga door met het invoeren van **y**of gebruik **echo ' y '** zoals weer gegeven:
+Er wordt een waarschuwing weer gegeven waarin u wordt gevraagd of u de hand tekening van het bestands systeem OK wilt wissen. Ga door met het invoeren van **y** of gebruik **echo ' y '** zoals weer gegeven:
 
 ```bash
 echo "y" | pvcreate /dev/mapper/c49ff535-1df9-45ad-9dad-f0846509f052
@@ -298,7 +298,7 @@ echo "y" | pvcreate /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ![Verificatie dat een fysiek volume is gemaakt](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
 
 >[!NOTE] 
->De/dev/mapper/device-namen moeten worden vervangen door de werkelijke waarden op basis van de uitvoer van **lsblk**.
+>De/dev/mapper/device-namen moeten worden vervangen door de werkelijke waarden op basis van de uitvoer van **lsblk** .
 
 #### <a name="verify-the-information-for-physical-volumes"></a>Controleer de gegevens voor fysieke volumes
 ```bash
@@ -368,9 +368,9 @@ mount -a
 lsblk -fs
 df -h
 ```
-![Informatie voor gekoppelde bestands systemen](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![Scherm afbeelding toont een console venster met bestands systemen die zijn gekoppeld als data0 en bestand1.](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-Op deze variatie van **lsblk**worden de apparaten waarop de afhankelijkheden in omgekeerde volg orde worden weer gegeven. Met deze optie kunt u de apparaten die zijn gegroepeerd op het logische volume identificeren in plaats van de oorspronkelijke/dev/sd [disk]-apparaatnamen.
+Op deze variatie van **lsblk** worden de apparaten waarop de afhankelijkheden in omgekeerde volg orde worden weer gegeven. Met deze optie kunt u de apparaten die zijn gegroepeerd op het logische volume identificeren in plaats van de oorspronkelijke/dev/sd [disk]-apparaatnamen.
 
 Het is belang rijk om ervoor te zorgen dat de **niet-werkende** optie wordt toegevoegd aan de koppel punt opties van de LVM-volumes die boven op een apparaat zijn versleuteld via Azure Disk Encryption. Hiermee wordt voor komen dat het besturings systeem vastloopt tijdens het opstart proces (of in de onderhouds modus).
 
@@ -406,7 +406,7 @@ mdadm --create /dev/md10 \
 ![Informatie voor geconfigureerde RAID via de mdadm-opdracht](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
 
 >[!NOTE] 
->De/dev/mapper/device-namen moeten worden vervangen door de werkelijke waarden, op basis van de uitvoer van **lsblk**.
+>De/dev/mapper/device-namen moeten worden vervangen door de werkelijke waarden, op basis van de uitvoer van **lsblk** .
 
 ### <a name="checkmonitor-raid-creation"></a>RAID maken controleren/controleren
 ```bash
@@ -437,7 +437,7 @@ Controleer of het nieuwe bestands systeem is gekoppeld:
 lsblk -fs
 df -h
 ```
-![Informatie voor gekoppelde bestands systemen](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![Scherm afbeelding toont een console venster met een bestands systeem dat is gekoppeld als raiddata.](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
 Het is belang rijk om ervoor te zorgen dat de **niet-werkende** optie wordt toegevoegd aan de koppel punt opties van de RAID-volumes die boven op een apparaat zijn versleuteld via Azure Disk Encryption. Hiermee wordt voor komen dat het besturings systeem vastloopt tijdens het opstart proces (of in de onderhouds modus).
 

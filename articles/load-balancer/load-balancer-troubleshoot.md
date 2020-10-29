@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 22922972049ec78cc26f4d060fa1981d1f23a3ce
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314818"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912443"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
 
@@ -35,10 +35,10 @@ Wanneer de externe clients naar de back-end-Vm's via de load balancer gaan, word
 
 **Validatie en oplossing**
 
-Standaard ILBs zijn **standaard veilig**. Basis-ILBs die verbinding maken met Internet via een *verborgen* openbaar IP-adres. Dit is niet kunt voor productie werkbelastingen omdat het IP-adres niet statisch of vergrendeld is via Nsg's waarvan u de eigenaar bent. Als u onlangs van een Basic-ILB hebt overgezet naar een standaard-ILB, moet u een openbaar IP-adres maken via een [uitgaande alleen](egress-only.md) -configuratie die het IP-adres vergrendelt via nsg's. 
+Standaard ILBs zijn **standaard veilig** . Basis-ILBs die verbinding maken met Internet via een *verborgen* openbaar IP-adres. Dit is niet kunt voor productie werkbelastingen omdat het IP-adres niet statisch of vergrendeld is via Nsg's waarvan u de eigenaar bent. Als u onlangs van een Basic-ILB hebt overgezet naar een standaard-ILB, moet u een openbaar IP-adres maken via een [uitgaande alleen](egress-only.md) -configuratie die het IP-adres vergrendelt via nsg's. U kunt ook een [NAT-gateway](../virtual-network/nat-overview.md) op uw subnet gebruiken.
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Symptoom: Vm's achter de Load Balancer reageren niet op status controles
-Voor de back-endservers die deel uitmaken van de load balancerset, moeten ze de controle van de test door geven. Zie [informatie over Load Balancer probe](load-balancer-custom-probe-overview.md)(Engelstalig) voor meer informatie over status controles. 
+Voor de back-endservers die deel uitmaken van de load balancerset, moeten ze de controle van de test door geven. Zie [informatie over Load Balancer probe](load-balancer-custom-probe-overview.md)(Engelstalig) voor meer informatie over status controles. 
 
 De Load Balancer Vm's van de back-end-groep reageren mogelijk niet op de tests om een van de volgende redenen: 
 - Load Balancer VM van back-end is beschadigd 
@@ -58,12 +58,12 @@ Als de virtuele machine in orde is, maar niet op de test reageert, kan het zijn 
 **Validatie en oplossing**
 
 1. Meld u aan bij de back-end-VM. 
-2. Open een opdracht prompt en voer de volgende opdracht uit om te controleren of er een toepassing luistert op de test poort:   
+2. Open een opdracht prompt en voer de volgende opdracht uit om te controleren of er een toepassing luistert op de test poort:   
             netstat: een
-3. Als de poort status niet wordt weer gegeven als **luistert**, configureert u de juiste poort. 
-4. U kunt ook een andere poort selecteren, die wordt weer gegeven als **Luis teren**en Load Balancer configuratie dienovereenkomstig bijwerken.              
+3. Als de poort status niet wordt weer gegeven als **luistert** , configureert u de juiste poort. 
+4. U kunt ook een andere poort selecteren, die wordt weer gegeven als **Luis teren** en Load Balancer configuratie dienovereenkomstig bijwerken.              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Oorzaak 3: Firewall of een netwerk beveiligings groep blokkeert de poort op de load balancer Vm's van de back-end-groep  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Oorzaak 3: Firewall of een netwerk beveiligings groep blokkeert de poort op de load balancer Vm's van de back-end-groep  
 Als de firewall op de virtuele machine de test poort blokkeert, of een of meer netwerk beveiligings groepen die zijn geconfigureerd op het subnet of op de VM, is de test niet in staat om de poort te bereiken, kan de virtuele machine niet reageren op de status test.          
 
 **Validatie en oplossing**
@@ -71,7 +71,7 @@ Als de firewall op de virtuele machine de test poort blokkeert, of een of meer n
 * Als de firewall is ingeschakeld, controleert u of deze is geconfigureerd om de test poort toe te staan. Als dat niet het geval is, configureert u de firewall om verkeer toe te staan op de test poort en test u het opnieuw. 
 * Controleer in de lijst met netwerk beveiligings groepen of het binnenkomende of uitgaande verkeer op de test poort interferentie heeft. 
 * Controleer ook of een regel voor het **weigeren van alle** netwerk beveiligings groepen op de NIC van de virtuele machine of het subnet met een hogere prioriteit heeft dan de standaard regel waarmee lb-tests & verkeer worden toegestaan (netwerk beveiligings groepen moeten Load Balancer IP-adres van 168.63.129.16). 
-* Als een van deze regels het test verkeer blokkeert, verwijdert u de regels en configureert u deze opnieuw om het test verkeer toe te staan.  
+* Als een van deze regels het test verkeer blokkeert, verwijdert u de regels en configureert u deze opnieuw om het test verkeer toe te staan.  
 * Test of de VM nu heeft gereageerd op de status controles. 
 
 ### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Oorzaak 4: andere onjuiste configuratie in Load Balancer
@@ -93,7 +93,7 @@ Als alle voor gaande oorzaken correct worden gevalideerd en opgelost en de back-
 
 Als een virtuele machine in de back-end wordt weer gegeven als in orde en reageert op de status tests, maar nog steeds niet deelneemt aan de taak verdeling, of niet reageert op het gegevens verkeer, kan dit een van de volgende oorzaken hebben: 
 * Load Balancer VM van de back-end-pool luistert niet op de gegevens poort 
-* De netwerk beveiligings groep blokkeert de poort op de Load Balancer back-end-VM-groep  
+* De netwerk beveiligings groep blokkeert de poort op de Load Balancer back-end-VM-groep  
 * Toegang tot de Load Balancer vanaf dezelfde VM en NIC 
 * Toegang tot de internet-Load Balancer frontend van de deelnemende Load Balancer back-end-VM-groep 
 
@@ -103,11 +103,12 @@ Als een virtuele machine niet reageert op het gegevens verkeer, komt dit mogelij
 **Validatie en oplossing**
 
 1. Meld u aan bij de back-end-VM. 
-2. Open een opdracht prompt en voer de volgende opdracht uit om te controleren of er een toepassing luistert op de gegevens poort:   netstat-a 
+2. Open een opdracht prompt en voer de volgende opdracht uit om te controleren of er een toepassing luistert op de gegevens poort:  
+            netstat: een 
 3. Als de poort niet wordt vermeld met de status Luis TEREn, configureert u de juiste listener-poort 
 4. Als de poort is gemarkeerd als luistert, controleert u de doel toepassing op die poort voor mogelijke problemen.
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Oorzaak 2: de netwerk beveiligings groep blokkeert de poort op de Load Balancer back-end-VM-groep  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Oorzaak 2: de netwerk beveiligings groep blokkeert de poort op de Load Balancer back-end-VM-groep  
 
 Als een of meer netwerk beveiligings groepen die zijn geconfigureerd op het subnet of op de virtuele machine, de bron-IP of poort blokkeert, kan de virtuele machine niet reageren.
 
@@ -117,7 +118,7 @@ Voor de open bare load balancer wordt het IP-adres van de internetclients gebrui
 1. Controleer in de lijst met netwerk beveiligings groepen of:
     - het binnenkomende of uitgaande verkeer op de gegevens poort heeft storingen. 
     - een regel voor het **weigeren van alle** netwerk beveiligings groepen op de NIC van de virtuele machine of het subnet met een hogere prioriteit dan de standaard regel waarmee Load Balancer tests en verkeer wordt toegestaan (netwerk beveiligings groepen moeten Load Balancer IP-adres van de 168.63.129.16 toestaan, dat wil zeggen test poort)
-1. Als een van de regels het verkeer blokkeert, moet u deze regels verwijderen en opnieuw configureren om het gegevens verkeer toe te staan.  
+1. Als een van de regels het verkeer blokkeert, moet u deze regels verwijderen en opnieuw configureren om het gegevens verkeer toe te staan.  
 1. Test of de VM nu heeft gereageerd op de status controles.
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Oorzaak 3: toegang tot de Load Balancer vanaf dezelfde VM en netwerk interface 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e35dc35746f08f48150a738b927433065fc1c67
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89503989"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910267"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Een Apache HBase-cluster migreren naar een nieuwe versie
 
@@ -52,9 +52,9 @@ Voer de volgende stappen uit om uw Apache HBase-cluster in azure HDInsight bij t
 
 1. [Stel een nieuw doel-HDInsight-cluster](../hdinsight-hadoop-provision-linux-clusters.md) in met hetzelfde opslag account, maar met een andere container naam:
 
-    ![Hetzelfde opslag account gebruiken, maar een andere container maken](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+   ![Hetzelfde opslag account gebruiken, maar een andere container maken](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
-1. Maak uw bron HBase-cluster leeg, het cluster dat u wilt upgraden. HBase schrijft inkomende gegevens naar een in-Memory Store, een _geheugen opslag_genoemd. Nadat de geheugen opslag een bepaalde grootte heeft bereikt, wordt deze door HBase naar de schijf leeg gemaakt voor lange termijn opslag in het opslag account van het cluster. Wanneer u het oude cluster verwijdert, worden de memstores gerecycled, waardoor gegevens verloren kunnen gaan. Als u de geheugen opslag voor elke tabel hand matig wilt leegmaken, voert u het volgende script uit. De meest recente versie van dit script bevindt zich in de [github](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)van Azure.
+1. Maak uw bron HBase-cluster leeg, het cluster dat u wilt upgraden. HBase schrijft inkomende gegevens naar een in-Memory Store, een _geheugen opslag_ genoemd. Nadat de geheugen opslag een bepaalde grootte heeft bereikt, wordt deze door HBase naar de schijf leeg gemaakt voor lange termijn opslag in het opslag account van het cluster. Wanneer u het oude cluster verwijdert, worden de memstores gerecycled, waardoor gegevens verloren kunnen gaan. Als u de geheugen opslag voor elke tabel hand matig wilt leegmaken, voert u het volgende script uit. De meest recente versie van dit script bevindt zich in de [github](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)van Azure.
 
     ```bash
     #!/bin/bash
@@ -182,20 +182,50 @@ Voer de volgende stappen uit om uw Apache HBase-cluster in azure HDInsight bij t
 
     ![Schakel het selectie vakje onderhouds modus inschakelen voor HBase in en bevestig](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-1. Meld u aan bij Ambari op het nieuwe HDInsight-cluster. Wijzig de `fs.defaultFS` instelling HDFS zodat deze verwijst naar de container naam die door het oorspronkelijke cluster wordt gebruikt. Deze instelling bevindt zich onder **HDFS > configs > advanced > Advanced core-site**.
+1. Als u geen HBase-clusters gebruikt met de verbeterde functie voor schrijf bewerkingen, slaat u deze stap over. Het is alleen nodig voor HBase-clusters met verbeterde functie voor schrijf bewerkingen.
 
-    ![Klik in Ambari op Services > HDFS > configs > Advanced](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+   Back-up maken van de WAL dir onder HDFS door de volgende opdrachten uit te voeren vanuit een SSH-sessie op een van de Zookeeper-knoop punten of werk knooppunten van het oorspronkelijke cluster.
+   
+   ```bash
+   hdfs dfs -mkdir /hbase-wal-backup**
+   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
+   ```
+    
+1. Meld u aan bij Ambari op het nieuwe HDInsight-cluster. Wijzig de `fs.defaultFS` instelling HDFS zodat deze verwijst naar de container naam die door het oorspronkelijke cluster wordt gebruikt. Deze instelling bevindt zich onder **HDFS > configs > advanced > Advanced core-site** .
 
-    ![Wijzig in Ambari de naam van de container](./media/apache-hbase-migrate-new-version/change-container-name.png)
+   ![Klik in Ambari op Services > HDFS > configs > Advanced](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+
+   ![Wijzig in Ambari de naam van de container](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
 1. Als u geen HBase-clusters gebruikt met de verbeterde functie voor schrijf bewerkingen, slaat u deze stap over. Het is alleen nodig voor HBase-clusters met verbeterde functie voor schrijf bewerkingen.
 
    Wijzig het `hbase.rootdir` pad zodat dit verwijst naar de container van het oorspronkelijke cluster.
 
-    ![Wijzig in Ambari de container naam voor HBase rootdir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+   ![Wijzig in Ambari de container naam voor HBase rootdir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+1. Als u geen HBase-clusters gebruikt met de verbeterde functie voor schrijf bewerkingen, slaat u deze stap over. Het is alleen nodig voor HBase-clusters met verbeterde schrijf functies en alleen in gevallen waarin uw oorspronkelijke cluster een HBase-cluster was met verbeterde functie voor schrijf bewerkingen.
 
+   Reinig de Zookeeper-en WAL-FS-gegevens voor dit nieuwe cluster. Geef de volgende opdrachten op in een van de Zookeeper-knoop punten of worker-knoop punten:
+
+   ```bash
+   hbase zkcli
+   rmr /hbase-unsecure
+   quit
+
+   hdfs dfs -rm -r hdfs://mycluster/hbasewal**
+   ```
+
+1. Als u geen HBase-clusters gebruikt met de verbeterde functie voor schrijf bewerkingen, slaat u deze stap over. Het is alleen nodig voor HBase-clusters met verbeterde functie voor schrijf bewerkingen.
+   
+   Zet de WAL dir terug naar de HDFS van het nieuwe cluster vanuit een SSH-sessie op een van de Zookeeper-knoop punten of werk knooppunten van het nieuwe cluster.
+   
+   ```bash
+   hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
+   ```
+   
 1. Als u HDInsight 3,6 bijwerkt naar 4,0, volgt u de onderstaande stappen en gaat u verder met stap 10:
-    1. Start alle vereiste services in Ambari opnieuw door **Services**  >  **opnieuw starten vereist**te selecteren.
+
+    1. Start alle vereiste services in Ambari opnieuw door **Services**  >  **opnieuw starten vereist** te selecteren.
     1. Stop de HBase-service.
     1. SSH naar het Zookeeper-knoop punt en voer de [zkCli](https://github.com/go-zkcli/zkcli) -opdracht `rmr /hbase-unsecure` uit om de HBase root znode van Zookeeper te verwijderen.
     1. Start HBase opnieuw.

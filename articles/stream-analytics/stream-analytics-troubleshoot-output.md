@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c063fec3eac962d22ead12e0ca11f4b9fc155b5d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903184"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910148"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problemen met Azure Stream Analytics uitvoer oplossen
 
@@ -67,7 +67,7 @@ Tijdens de normale werking van een taak kan de uitvoer langer en langer duren. A
 * Hiermee wordt aangegeven of de upstream-bron wordt beperkt
 * Of de verwerkings logica in de query reken intensief is
 
-Als u de uitvoer details wilt zien, selecteert u de streaming-taak in de Azure Portal en selecteert u vervolgens **taak diagram**. Voor elke invoer is er een gebeurtenis metriek voor de achterstand per partitie. Als de metriek toeneemt, is het een indicatie dat de systeem bronnen beperkt zijn. De verhoging wordt mogelijk veroorzaakt door een beperking van de uitvoer-sink of een hoog CPU-gebruik. Zie voor meer informatie [fout opsporing op basis van gegevens met behulp van het taak diagram](stream-analytics-job-diagram-with-metrics.md).
+Als u de uitvoer details wilt zien, selecteert u de streaming-taak in de Azure Portal en selecteert u vervolgens **taak diagram** . Voor elke invoer is er een gebeurtenis metriek voor de achterstand per partitie. Als de metriek toeneemt, is het een indicatie dat de systeem bronnen beperkt zijn. De verhoging wordt mogelijk veroorzaakt door een beperking van de uitvoer-sink of een hoog CPU-gebruik. Zie voor meer informatie [fout opsporing op basis van gegevens met behulp van het taak diagram](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Waarschuwing voor sleutel schending bij Azure SQL Database uitvoer
 
@@ -81,7 +81,29 @@ Houd rekening met de volgende waarnemingen bij het configureren van IGNORE_DUP_K
 
 * U kunt geen IGNORE_DUP_KEY instellen voor een primaire sleutel of een unieke beperking die gebruikmaakt van ALTER INDEX. U moet de index verwijderen en opnieuw maken.  
 * U kunt IGNORE_DUP_KEY instellen met behulp van ALTER INDEX voor een unieke index. Dit exemplaar wijkt af van een primaire sleutel/unieke beperking en wordt gemaakt met behulp van een CREATE INDEX of INDEX-definitie.  
-* De optie IGNORE_DUP_KEY is niet van toepassing op column Store-indexen omdat u geen uniekheid kunt afdwingen.  
+* De optie IGNORE_DUP_KEY is niet van toepassing op column Store-indexen omdat u geen uniekheid kunt afdwingen.
+
+## <a name="sql-output-retry-logic"></a>Pogings logica voor SQL-uitvoer
+
+Wanneer een Stream Analytics taak met SQL-uitvoer de eerste batch gebeurtenissen ontvangt, worden de volgende stappen uitgevoerd:
+
+1. De taak probeert verbinding te maken met SQL.
+2. Met de taak wordt het schema van de doel tabel opgehaald.
+3. Met de taak worden kolom namen en-typen gecontroleerd op basis van het schema van de doel tabel.
+4. De taak bereidt een in-Memory-gegevens tabel voor op basis van de uitvoer records in de batch.
+5. Met de taak wordt de gegevens tabel naar SQL geschreven met behulp van de BulkCopy- [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver?view=dotnet-plat-ext-3.1).
+
+Tijdens deze stappen kan de SQL-uitvoer gebruikmaken van de volgende typen fouten:
+
+* Tijdelijke [fouten](/azure/azure-sql/database/troubleshoot-common-errors-issues#transient-fault-error-messages-40197-40613-and-others) die opnieuw worden geprobeerd met een exponentiële uitstel-strategie voor opnieuw proberen. De minimale interval voor opnieuw proberen is afhankelijk van de afzonderlijke fout code, maar de intervallen zijn meestal minder dan 60 seconden. De bovengrens kan Maxi maal vijf minuten zijn. 
+
+   [Aanmeldings fouten](/azure/azure-sql/database/troubleshoot-common-errors-issues#unable-to-log-in-to-the-server-errors-18456-40531) en [firewall problemen](/azure/azure-sql/database/troubleshoot-common-errors-issues#cannot-connect-to-server-due-to-firewall-issues) worden ten minste 5 minuten na de vorige poging opnieuw geprobeerd en er wordt opnieuw geprobeerd om het proces te volt ooien.
+
+* Gegevens fouten, zoals het casten van fouten en schendingen van schema beperkingen, worden afgehandeld met een uitvoer fout beleid. Deze fouten worden verwerkt door binaire gesplitste batches opnieuw te proberen totdat de afzonderlijke record die de fout veroorzaakt, wordt verwerkt door overs Laan of opnieuw te proberen. Er wordt altijd een schending van de primaire-sleutel beperking [afgehandeld](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output).
+
+* Niet-tijdelijke fouten kunnen zich voordoen als er problemen zijn met de SQL-service of interne code defecten. Als bijvoorbeeld fouten zoals (code 1132) Elastische pool de opslag limiet te achterhalen, wordt de fout niet opgelost door nieuwe pogingen. In deze scenario's ondervindt de Stream Analytics-taak een [afbraak](job-states.md).
+* `BulkCopy` time-outs kunnen zich voordoen tijdens `BulkCopy` stap 5. `BulkCopy` kan time-outs van bewerkingen af en toe optreden. De standaard minimale geconfigureerde time-out is vijf minuten en deze wordt verdubbeld wanneer deze opeenvolgend wordt bereikt.
+Zodra de time-out hoger is dan 15 minuten, wordt de maximum waarde voor de Batch grootte `BulkCopy` gereduceerd tot een halve waarde van 100 gebeurtenissen per batch.
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Kolom namen zijn kleine letters in Azure Stream Analytics (1,0)
 
