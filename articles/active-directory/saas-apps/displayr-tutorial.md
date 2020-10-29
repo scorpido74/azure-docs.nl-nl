@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: b91f24f9c1a2cedd4292d98fc66630c6b66d37b0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91775160"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454742"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Zelfstudie: Displayr integreren met Azure Active Directory
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Displayr integreert met Azure Active Directory 
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Displayr.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,15 +44,15 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 Voor het configureren van de integratie van Displayr in Azure Active Directory, moet u Displayr uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Displayr**.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Displayr** .
 1. Selecteer **Displayr** in de resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureer en test eenmalige aanmelding van Azure AD met Displayr met behulp van een testgebruiker met de naam **Britta Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Displayr.
+Configureer en test eenmalige aanmelding van Azure AD met Displayr met behulp van een testgebruiker met de naam **Britta Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Displayr.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Displayr te configureren en te testen:
 
@@ -67,8 +67,8 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Displayr te
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Displayr**, ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Displayr** , ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -92,7 +92,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Bovendien verwacht Displayr nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Voer in het gedeelte **Gebruikerskenmerken en -claims** in het dialoogvenster **Groepsclaims (preview)** de volgende stappen uit:
 
-    a. Klik op de **pen** naast **Groepen die zijn geretourneerd in claim**.
+    a. Klik op de **pen** naast **Groepen die zijn geretourneerd in claim** .
 
     ![Schermopname toont de sectie 'Gebruikerskenmerken en claims' waarin het pictogram 'Pen' naast 'Groepen die zijn geretourneerd in claim' is geselecteerd.](./media/displayr-tutorial/config04.png)
 
@@ -100,13 +100,13 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     b. Selecteer **Alle groepen** in de lijst met keuzerondjes.
 
-    c. Selecteer **Bronkenmerk** bij **Groep-ID**.
+    c. Selecteer **Bronkenmerk** bij **Groep-ID** .
 
-    d. Selecteer **De naam van de groepsclaim aanpassen**.
+    d. Selecteer **De naam van de groepsclaim aanpassen** .
 
-    e. Selecteer **Groepen verzenden als rolclaims**.
+    e. Selecteer **Groepen verzenden als rolclaims** .
 
-    f. Klik op **Opslaan**.
+    f. Klik op **Opslaan** .
 
 1. In de sectie **Displayr instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
@@ -124,7 +124,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 3. Als u Displayr handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich als beheerder aan bij de bedrijfssite van Displayr. Voer hierna de volgende stappen uit:
 
-4. Klik op **Settings** en ga naar **Account**.
+4. Klik op **Settings** en ga naar **Account** .
 
     ![Schermopname waarin het pictogram 'Instellingen' en 'Account' zijn geselecteerd.](./media/displayr-tutorial/config01.png)
 
@@ -138,47 +138,47 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     a. Schakel het selectievakje **Enable Single Sign On (SAML)** in.
 
-    b. Kopieer de werkelijke **id** uit de sectie **Standaard SAML-configuratie** van Azure AD en plak deze in het tekstvak **Issuer**.
+    b. Kopieer de werkelijke **id** uit de sectie **Standaard SAML-configuratie** van Azure AD en plak deze in het tekstvak **Issuer** .
 
     c. Plak in het tekstvak **Login URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
     d. Plak in het tekstvak **Logout URL** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
-    e. Open het certificaat (Base64) in Kladblok, kopieer de inhoud ervan en plak deze in het tekstvak **Certificate**.
+    e. Open het certificaat (Base64) in Kladblok, kopieer de inhoud ervan en plak deze in het tekstvak **Certificate** .
 
-    f. Geef desgewenst waarden op voor **Group mappings**.
+    f. Geef desgewenst waarden op voor **Group mappings** .
 
-    g. Klik op **Opslaan**.  
+    g. Klik op **Opslaan** .  
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`Britta Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Displayr.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Displayr** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-displayr-test-user"></a>Testgebruiker voor Displayr maken
 
@@ -188,11 +188,11 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Displayr, moete
 
 1. Meld u als beheerder aan bij Displayr.
 
-2. Klik op **Settings** en ga naar **Account**.
+2. Klik op **Settings** en ga naar **Account** .
 
     ![Schermopname waarin het pictogram 'Instellingen' en 'Account' zijn geselecteerd.](./media/displayr-tutorial/config01.png)
 
-3. Ga naar **Settings** in het bovenste menu en schuif naar beneden op de pagina tot de se **Users** en klik daar op **New User**.
+3. Ga naar **Settings** in het bovenste menu en schuif naar beneden op de pagina tot de se **Users** en klik daar op **New User** .
 
     ![Schermopname toont het tabblad 'Instellingen' waarin 'Gebruikers' is gemarkeerd en de knop 'Nieuwe gebruiker' is geselecteerd.](./media/displayr-tutorial/config07.png)
 
@@ -200,22 +200,22 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Displayr, moete
 
     ![Configuratie van Displayr](./media/displayr-tutorial/config06.png)
 
-    a. Voer in het tekstvak **Name** de naam van de gebruiker in, bijvoorbeeld **Brittasimon**.
+    a. Voer in het tekstvak **Name** de naam van de gebruiker in, bijvoorbeeld **Brittasimon** .
 
     b. Voer in het tekstvak **E-mail** het e-mailadres van de gebruiker in, zoals `Brittasimon@contoso.com`.
 
-    c. Selecteer de juiste waarde bij **Group membership**.
+    c. Selecteer de juiste waarde bij **Group membership** .
 
-    d. Klik op **Opslaan**.
+    d. Klik op **Opslaan** .
 
 ### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u de tegel Displayr selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij de instantie van Displayr waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel Displayr selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij de instantie van Displayr waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

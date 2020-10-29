@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: jeedes
-ms.openlocfilehash: bd15798e9b642f3abc617c0fa224c530d90b5dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0433c0fdc1584ce209eb0409b0e8f5cbfc2719ed
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555557"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454402"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Zelfstudie: Integratie van eenmalige aanmelding bij Azure Active Directory met EasySSO voor BitBucket
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u EasySSO voor BitBucket kunt integreren met Azur
 * Ervoor zorgen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij EasySSO voor BitBucket.
 * Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,23 +41,23 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * EasySSO voor BitBucket ondersteunt door SP en IDP geïnitieerde eenmalige aanmelding.
 * EasySSO voor BitBucket ondersteunt het Just-In-Time inrichten van gebruikers.
-* Nadat u EasySSO voor BitBucket hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Nadat u EasySSO voor BitBucket hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-easysso-for-bitbucket-from-the-gallery"></a>EasySSO voor BitBucket toevoegen vanuit de galerie
 
 Om de integratie van EasySSO voor BitBucket in Azure AD te configureren, moet u EasySSO voor BitBucket uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
-1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **EasySSO voor BitBucket**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** .
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **EasySSO voor BitBucket** .
 1. Selecteer **EasySSO voor BitBucket** in de resultaten en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bitbucket"></a>Eenmalige aanmelding van Azure AD configureren en testen voor EasySSO voor BitBucket
 
-Configureer en test eenmalige aanmelding van Azure AD met EasySSO voor BitBucket met behulp van een testgebruiker met de naam **B. Simon**. Eenmalige aanmelding werkt alleen als u een gekoppelde relatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in EasySSO voor BitBucket.
+Configureer en test eenmalige aanmelding van Azure AD met EasySSO voor BitBucket met behulp van een testgebruiker met de naam **B. Simon** . Eenmalige aanmelding werkt alleen als u een gekoppelde relatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in EasySSO voor BitBucket.
 
 Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met EasySSO voor BitBucket te configureren en te testen:
 
@@ -72,8 +72,8 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met EasySSO vo
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **EasySSO voor BitBucket** de sectie **Beheren**. Selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **EasySSO voor BitBucket** de sectie **Beheren** . Selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het potloodpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Schermopname van Eenmalige aanmelding instellen met SAML, met het potloodpictogram gemarkeerd](common/edit-urls.png)
@@ -105,9 +105,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
     | urn:oid:2.5.4.4 | user.surname |
     | urn:oid:2.5.4.42 | user.givenname |
     
-    Als uw Azure AD-gebruikers **sAMAccountName** hebben geconfigureerd, moet u **urn:oid:0.9.2342.19200300.100.1.1** aan het **sAMAccountName**-kenmerk toewijzen.
+    Als uw Azure AD-gebruikers **sAMAccountName** hebben geconfigureerd, moet u **urn:oid:0.9.2342.19200300.100.1.1** aan het **sAMAccountName** -kenmerk toewijzen.
     
-1. Op de pagina **Eenmalige aanmelding met SAML** instellen in de sectie **SAML-handtekeningcertificaat** selecteert u de downloadkoppelingen voor de optie **Certificaat (Base64)** of **Federation Metadata-XML**. Sla een van beide of beide op uw computer op. U hebt deze later nodig om BitBucket EasySSO te configureren.
+1. Op de pagina **Eenmalige aanmelding met SAML** instellen in de sectie **SAML-handtekeningcertificaat** selecteert u de downloadkoppelingen voor de optie **Certificaat (Base64)** of **Federation Metadata-XML** . Sla een van beide of beide op uw computer op. U hebt deze later nodig om BitBucket EasySSO te configureren.
 
     ![Schermopname van de sectie SAML-handtekeningcertificaat, met de downloadkoppelingen gemarkeerd](./media/easysso-for-bitbucket-tutorial/certificate.png)
     
@@ -117,46 +117,46 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B. Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
-   1. Voer `B.Simon` in bij **Naam**.  
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
+   1. Voer `B.Simon` in bij **Naam** .  
    1. Voer bij **Gebruikersnaam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer het wachtwoord.
-   1. Selecteer **Maken**.
+   1. Selecteer **Maken** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot EasySSO voor BitBucket.
 
-1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen** .
 1. Selecteer **EasySSO voor BitBucket** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![Het gedeelte Beheren, met Gebruikers en groepen gemarkeerd](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**. Selecteer **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** . Selecteer **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Schermopname van de pagina Gebruikers en groepen, met Gebruiker toevoegen gemarkeerd](common/add-assign-user.png)
 
 1. Selecteer in de lijst met gebruikers in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst **Gebruikers** en kies **Selecteren** onderaan het scherm.
 1. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens **Selecteren** onderaan het scherm.
-1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen** .
 
 ## <a name="configure-easysso-for-bitbucket-sso"></a>Eenmalige aanmelding bij EasySSO voor BitBucket configureren
 
-1. Meld u bij uw Atlassian BitBucket-exemplaar aan met beheerdersmachtigingen en ga naar de sectie **Beheer**. 
+1. Meld u bij uw Atlassian BitBucket-exemplaar aan met beheerdersmachtigingen en ga naar de sectie **Beheer** . 
 
     ![Schermopname van het BitBucket-exemplaar, met het tandwielpictogram gemarkeerd](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-1.png)
-1. Zoek en selecteer **EasySSO**.
+1. Zoek en selecteer **EasySSO** .
 
     ![Schermopname van de optie EasySSO](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-2.png)
 
-1. Selecteer **SAML**. U wordt naar de sectie SAML-configuratie geleid.
+1. Selecteer **SAML** . U wordt naar de sectie SAML-configuratie geleid.
 
     ![Schermopname van de beheerpagina EasySSO, met SAML gemarkeerd](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-3.png)
 
-1. Selecteer het tabblad **Certificaten**. Het volgende scherm wordt geopend:
+1. Selecteer het tabblad **Certificaten** . Het volgende scherm wordt geopend:
 
     ![Schermopname van het tabblad Certificaten, met diverse opties gemarkeerd](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-4.png)
 
@@ -166,11 +166,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     - Open het **Metagegevensbestand** voor app-federatie om de inhoud van het bestand in een eenvoudige teksteditor te bekijken. Kopieer het naar het klembord. Selecteer **Invoer** en plak de inhoud van het klembord in het tekstveld.
  
-    - Voer een volledig handmatige configuratie uit. Open het **certificaat (Base64)** voor app-federatie om de inhoud van het bestand in een eenvoudige teksteditor te bekijken. Kopieer het naar het klembord en plak het in het tekstveld **IdP-certificaat voor token-ondertekening**. Ga vervolgens naar het tabblad **Algemeen** en vul de velden **POST-binding-URL** en **Entiteits-id** met respectieve waarden voor **Aanmeldings-URL** en **Azure AD-id** die u eerder hebt opgeslagen.
+    - Voer een volledig handmatige configuratie uit. Open het **certificaat (Base64)** voor app-federatie om de inhoud van het bestand in een eenvoudige teksteditor te bekijken. Kopieer het naar het klembord en plak het in het tekstveld **IdP-certificaat voor token-ondertekening** . Ga vervolgens naar het tabblad **Algemeen** en vul de velden **POST-binding-URL** en **Entiteits-id** met respectieve waarden voor **Aanmeldings-URL** en **Azure AD-id** die u eerder hebt opgeslagen.
  
 1. Selecteer **Opslaan** onder aan de pagina. U ziet dat de inhoud van de metagegevens- of certificaatbestanden in de configuratievelden wordt geparseerd. De configuratie van EasySSO voor BitBucket is voltooid.
 
-1. Als u de configuratie wilt testen, gaat u naar het tabblad **Uiterlijk** en selecteert u **SAML-aanmeldingsknop**. Hiermee wordt een aparte knop op het BitBucket-aanmeldingsscherm ingeschakeld die specifiek is bedoeld om uw Azure AD SAML-integratie end-to-end te testen. U kunt deze knop ingeschakeld laten en ook de positie, kleur en vertaling voor productiemodus configureren.
+1. Als u de configuratie wilt testen, gaat u naar het tabblad **Uiterlijk** en selecteert u **SAML-aanmeldingsknop** . Hiermee wordt een aparte knop op het BitBucket-aanmeldingsscherm ingeschakeld die specifiek is bedoeld om uw Azure AD SAML-integratie end-to-end te testen. U kunt deze knop ingeschakeld laten en ook de positie, kleur en vertaling voor productiemodus configureren.
 
     ![Schermopname van het tabblad Uiterlijk, met SAML-aanmeldingsknop gemarkeerd](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-5.png)
     > [!NOTE]
@@ -190,7 +190,7 @@ Als u het automatisch inrichten van gebruikers echter niet wilt inschakelen wann
 
 In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel EasySSO voor BitBucket selecteert, wordt u automatisch aangemeld bij het exemplaar van BitBucket waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Aanmelden bij en het starten van apps vanuit de Mijn apps-portal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie.
+Wanneer u de tegel EasySSO voor BitBucket selecteert, wordt u automatisch aangemeld bij het exemplaar van BitBucket waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Aanmelden bij en het starten van apps vanuit de Mijn apps-portal](../user-help/my-apps-portal-end-user-access.md) voor meer informatie.
 
 ### <a name="sp-initiated-workflow"></a>Door SP geïnitieerde werkstroom
 
@@ -204,20 +204,20 @@ Mogelijk ziet u het volgende scherm nadat u bent omgeleid vanuit Azure AD:
 
 ![Schermopname van het EasySSO-scherm met de fout, met het referentienummer gemarkeerd](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-8.png)
 
-Als dat zo is, volgt u de [instructies op deze pagina](https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS) om toegang te krijgen tot het bestand **atlassian-bitbucket.log**. Details van de fout zijn beschikbaar via de verwijzings-id op de foutpagina van EasySSO.
+Als dat zo is, volgt u de [instructies op deze pagina](https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS) om toegang te krijgen tot het bestand **atlassian-bitbucket.log** . Details van de fout zijn beschikbaar via de verwijzings-id op de foutpagina van EasySSO.
 
 Als u problemen ondervindt, neemt u contact op met het [ondersteuningsteam van EasySSO](mailto:support@techtime.co.nz).
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](./tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [EasySSO voor BitBucket uitproberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [EasySSO voor BitBucket beveiligen met geavanceerde zichtbaarheid en beheeropties](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [EasySSO voor BitBucket beveiligen met geavanceerde zichtbaarheid en beheeropties](/cloud-app-security/proxy-intro-aad)

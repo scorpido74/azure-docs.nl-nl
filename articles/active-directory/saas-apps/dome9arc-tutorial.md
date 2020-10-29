@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0dee0b84b249446755d5124a8477e993e13e52b0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91775135"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454708"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Check Point CloudGuard Dome9 Arc
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Check Point CloudGuard Dome9 Arc kunt integrere
 * Gebruikers zich automatisch met hun Azure AD-account laten aanmelden bij Check Point CloudGuard Dome9 Arc.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,15 +49,15 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 Als u de integratie van Check Point CloudGuard Dome9 Arc in Azure AD wilt configureren, moet u Check Point CloudGuard Dome9 Arc vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
-1. Typ **Check Point CloudGuard Dome9 Arc** in het zoekvak in de sectie **Toevoegen vanuit de galerie**.
+1. Typ **Check Point CloudGuard Dome9 Arc** in het zoekvak in de sectie **Toevoegen vanuit de galerie** .
 1. Selecteer in het resultatenvenster **Check Point CloudGuard Dome9 Arc** en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-check-point-cloudguard-dome9-arc"></a>Eenmalige aanmelding voor Check Point CloudGuard Dome9 Arc in Azure AD configureren en testen
 
-Configureer en test eenmalige aanmelding van Azure AD met Check Point CloudGuard Dome9 Arc met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Check Point CloudGuard Dome9 Arc.
+Configureer en test eenmalige aanmelding van Azure AD met Check Point CloudGuard Dome9 Arc met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Check Point CloudGuard Dome9 Arc.
 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Check Point CloudGuard Dome9 Arc te configureren en te testen:
 
@@ -72,8 +72,8 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Check Point
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Check Point CloudGuard Dome9 Arc** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Check Point CloudGuard Dome9 Arc** de sectie **Beheren** en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
@@ -89,7 +89,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke antwoord-URL en aanmeldings-URL. U krijgt de waarde `<company name>` uit de sectie **Eenmalige aanmelding voor Check Point CloudGuard Dome9 Arc configureren**. Deze wordt verderop in de zelfstudie uitgelegd. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke antwoord-URL en aanmeldings-URL. U krijgt de waarde `<company name>` uit de sectie **Eenmalige aanmelding voor Check Point CloudGuard Dome9 Arc configureren** . Deze wordt verderop in de zelfstudie uitgelegd. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. De toepassing Check Point CloudGuard Dome9 Arc verwacht SAML-asserties in een specifieke indeling. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
@@ -102,7 +102,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
     | memberof | user.assignedroles |
 
     >[!NOTE]
-    >Klik [hier](https://docs.microsoft.com/azure/active-directory/saas-apps/apptio-tutorial) om te leren hoe u rollen maakt in Azure AD.
+    >Klik [hier](./apptio-tutorial.md) om te leren hoe u rollen maakt in Azure AD.
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
@@ -116,31 +116,31 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Check Point CloudGuard Dome9 Arc.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Check Point CloudGuard Dome9 Arc** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-check-point-cloudguard-dome9-arc-sso"></a>Eenmalige aanmelding voor Check Point CloudGuard Dome9 Arc configureren
 
@@ -148,17 +148,17 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
 
-2. Nadat u de extensie hebt toegevoegd aan de browser, wordt u doorgestuurd naar de toepassing Check Point CloudGuard Dome9 Arc als u klikt u op **Check Point CloudGuard Dome9 Arc instellen**. Geef hier de Administrator-referenties op om u aan te melden bij Check Point CloudGuard Dome9 Arc. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 6 geautomatiseerd.
+2. Nadat u de extensie hebt toegevoegd aan de browser, wordt u doorgestuurd naar de toepassing Check Point CloudGuard Dome9 Arc als u klikt u op **Check Point CloudGuard Dome9 Arc instellen** . Geef hier de Administrator-referenties op om u aan te melden bij Check Point CloudGuard Dome9 Arc. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 6 geautomatiseerd.
 
     ![Instelling configureren](common/setup-sso.png)
 
 3. Als u Check Point CloudGuard Dome9 Arc handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich als beheerder aan bij de bedrijfssite van Check Point CloudGuard Dome9 Arc. Voer hierna de volgende stappen uit:
 
-2. Klik op **Profile Settings** in de rechterbovenhoek en vervolgens op **Account Settings**. 
+2. Klik op **Profile Settings** in de rechterbovenhoek en vervolgens op **Account Settings** . 
 
     ![Schermopname met het menu "Profile Settings" met "Account Settings" geselecteerd.](./media/dome9arc-tutorial/configure1.png)
 
-3. Navigeer naar **SSO** en klik vervolgens op **ENABLE**.
+3. Navigeer naar **SSO** en klik vervolgens op **ENABLE** .
 
     ![Schermopname met het tabblad "S S O" en "Enable" geselecteerd.](./media/dome9arc-tutorial/configure2.png)
 
@@ -166,15 +166,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     ![Check Point CloudGuard Dome9 Arc configureren](./media/dome9arc-tutorial/configure3.png)
 
-    a. Voer in het tekstvak **Account ID** de bedrijfsnaam in. Deze waarde wordt gebruikt in de **Antwoord**- en **Aanmeld**-URL die wordt vermeld in de sectie **Basisconfiguratie SAML** van de Azure-portal.
+    a. Voer in het tekstvak **Account ID** de bedrijfsnaam in. Deze waarde wordt gebruikt in de **Antwoord** - en **Aanmeld** -URL die wordt vermeld in de sectie **Basisconfiguratie SAML** van de Azure-portal.
 
-    b. Plak in het tekstvak **Issuer** de waarde van **Azure AD-ID**, die u hebt gekopieerd uit de Azure-portal.
+    b. Plak in het tekstvak **Issuer** de waarde van **Azure AD-ID** , die u hebt gekopieerd uit de Azure-portal.
 
     c. Plak in het tekstvak **Idp endpoint url** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
-    d. Open in Kladblok het met Base64 gecodeerde certificaat dat u hebt gedownload, kopieer de inhoud ervan naar het Klembord en plak deze vervolgens in het tekstvak **X.509 certificate**.
+    d. Open in Kladblok het met Base64 gecodeerde certificaat dat u hebt gedownload, kopieer de inhoud ervan naar het Klembord en plak deze vervolgens in het tekstvak **X.509 certificate** .
 
-    e. Klik op **Opslaan**.
+    e. Klik op **Opslaan** .
 
 ### <a name="create-check-point-cloudguard-dome9-arc-test-user"></a>Testgebruiker voor Check Point CloudGuard Dome9 Arc maken
 
@@ -187,11 +187,11 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Check Point Clo
 
 1. Meld u bij de Check Point CloudGuard Dome9 Arc-site van uw bedrijf aan als beheerder.
 
-2. Klik op **Users & Roles** en vervolgens op **Users**.
+2. Klik op **Users & Roles** en vervolgens op **Users** .
 
     ![Schermopname met "Users & Roles" met de actie "Users" geselecteerd.](./media/dome9arc-tutorial/user1.png)
 
-3. Klik op **ADD USER**.
+3. Klik op **ADD USER** .
 
     ![Schermopname met "Users & Roles" met de knop "ADD USER" geselecteerd.](./media/dome9arc-tutorial/user2.png)
 
@@ -205,22 +205,22 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Check Point Clo
 
     c. Typ in het tekstvak **Last Name** de achternaam van de gebruiker, bijvoorbeeld Simon.
 
-    d. Zet **SSO User** op **On**.
+    d. Zet **SSO User** op **On** .
 
-    e. Klik op **MAKEN**.
+    e. Klik op **MAKEN** .
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Check Point CloudGuard Dome9 Arc klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Check Point CloudGuard Dome9 Arc waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Check Point CloudGuard Dome9 Arc klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Check Point CloudGuard Dome9 Arc waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Check Point CloudGuard Dome9 Arc proberen met Azure AD](https://aad.portal.azure.com/)

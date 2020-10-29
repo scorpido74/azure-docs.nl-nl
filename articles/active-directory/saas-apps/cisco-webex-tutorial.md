@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 1d53cfc874bca6529fdee821ce3173607d5f06b3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760934"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456051"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Zelfstudie: Eenmalige aanmelding (SSO) van Azure Active Directory integreren met Cisco Webex Meetings
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Cisco Webex Meetings kunt integreren met Azure 
 * Inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Cisco Webex Meetings.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,15 +51,15 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 Voor het configureren van de integratie van Cisco Webex Meetings in Azure AD moet u Cisco Webex Meetings vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Cisco Webex Meetings**.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Cisco Webex Meetings** .
 1. Selecteer **Cisco WebEx Meetings** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-webex-meetings"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Cisco Webex Meetings.
 
-Configureer en test eenmalige aanmelding van Azure AD met Cisco Webex Meetings met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Cisco Webex Meetings.
+Configureer en test eenmalige aanmelding van Azure AD met Cisco Webex Meetings met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Cisco Webex Meetings.
 
 Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met Cisco Webex Meetings te configureren en te testen:
 
@@ -74,18 +74,18 @@ Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met Cisco We
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Cisco Webex Meetings** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Cisco Webex Meetings** de sectie **Beheren** en selecteer **eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** kunt u de toepassing configureren in door **IDP** geïnitieerde modus door het **metagegevensbestand van de serviceprovider** als volgt te uploaden:
 
-    a. Klik op **Metagegevensbestand uploaden**.
+    a. Klik op **Metagegevensbestand uploaden** .
 
-    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden** .
 
-    c. Als het uploaden van het metagegevensbestand van de serviceprovider is geslaagd, worden de waarden voor de **id** en **Antwoord-URL** automatisch ingevuld in de sectie **Standaard SAML-configuratie**.
+    c. Als het uploaden van het metagegevensbestand van de serviceprovider is geslaagd, worden de waarden voor de **id** en **Antwoord-URL** automatisch ingevuld in de sectie **Standaard SAML-configuratie** .
 
     >[!Note]
-    >U ontvangt het metagegevensbestand van de serviceprovider in de sectie **Eenmalige aanmelding voor Cisco WebEx Meetings configureren**, die verderop in de zelfstudie wordt beschreven. 
+    >U ontvangt het metagegevensbestand van de serviceprovider in de sectie **Eenmalige aanmelding voor Cisco WebEx Meetings configureren** , die verderop in de zelfstudie wordt beschreven. 
 
 1. Als u de toepassing wilt configureren in door **SP** geïnitieerde modus, voert u de volgende stappen uit:  
 
@@ -95,7 +95,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
     
     b. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: ` https://<customername>.my.webex.com`
 
-5. In de toepassing Cisco Webex Meetings worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster Gebruikerskenmerken te openen.
+5. In de toepassing Cisco Webex Meetings worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
     ![image](common/edit-attribute.png)
 
@@ -114,11 +114,11 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     c. Laat **Naamruimte** leeg.
 
-    d. Selecteer Bron bij **Kenmerk**.
+    d. Selecteer Bron bij **Kenmerk** .
 
     e. Typ of selecteer in de lijst **Bronkenmerk** de kenmerkwaarde voor die rij in de vervolgkeuzelijst.
 
-    f. Klik op **Opslaan**.
+    f. Klik op **Opslaan** .
 
 4. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 
@@ -132,31 +132,31 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
     1. Voer in het veld **Naam**`B.Simon` in.  
     1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-    1. Klik op **Create**.
+    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+    1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Cisco Webex Meetings.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Cisco Webex Meetings** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-cisco-webex-meetings-sso"></a>Eenmalige aanmelding voor Cisco Webex Meetings configureren
 
@@ -170,7 +170,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     ![Schermopname met de pagina Webex Administration met de informatie die in deze stap wordt beschreven.](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
-    a. Selecteer **SAML 2.0** als **Federation-protocol**.
+    a. Selecteer **SAML 2.0** als **Federation-protocol** .
 
     b. Klik op de koppeling **Import SAML Metadata** (SAML-metagegevens importeren) en upload het metagegevensbestand dat u vanuit Azure Portal hebt gedownload.
 
@@ -181,29 +181,29 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     e. Selecteer **Auto Account Creation** (Automatisch account maken).
 
     >[!NOTE]
-    >Voor het inschakelen van **Just-in-Time**-gebruikersinrichting moet u het selectievakje **Auto Account Creation** inschakelen. Daarnaast moeten de SAML-tokenkenmerken worden doorgegeven in het SAML-antwoord.
+    >Voor het inschakelen van **Just-in-Time** -gebruikersinrichting moet u het selectievakje **Auto Account Creation** inschakelen. Daarnaast moeten de SAML-tokenkenmerken worden doorgegeven in het SAML-antwoord.
 
-    f. Klik op **Opslaan**.
+    f. Klik op **Opslaan** .
 
     >[!NOTE]
     >Deze configuratie is alleen voor de klanten die gebruikmaken van een Webex-gebruikers-id in e-mailindeling.
 
 ### <a name="create-cisco-webex-meetings-test-user"></a>Testgebruiker maken in Cisco Webex Meetings
 
-Het doel van deze sectie is het maken van een gebruiker met de naam B.Simon in Cisco Webex Meetings. Cisco Webex Meetings biedt ondersteuning voor **Just-In-Time**-inrichting; dit is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Cisco Webex Meetings, wordt er een nieuwe gemaakt wanneer u Cisco Webex Meetings opent.
+Het doel van deze sectie is het maken van een gebruiker met de naam B.Simon in Cisco Webex Meetings. Cisco Webex Meetings biedt ondersteuning voor **Just-In-Time** -inrichting; dit is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Cisco Webex Meetings, wordt er een nieuwe gemaakt wanneer u Cisco Webex Meetings opent.
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Cisco Webex Meetings in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Cisco Webex Meetings waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Cisco Webex Meetings in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Cisco Webex Meetings waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [ServiceNow uitproberen met Azure AD](https://aad.portal.azure.com)

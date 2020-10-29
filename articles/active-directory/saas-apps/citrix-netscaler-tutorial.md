@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8557c830aec2dd30de0a99a19d7950928d36e894
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544601"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456017"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Citrix NetScaler (Kerberos-verificatie)
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Citrix NetScaler integreert met Azure Active Di
 * Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij Citrix NetScaler.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,13 +41,13 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * **Door SP geïnitieerde** eenmalige aanmelding voor Citrix NetScaler
 
-* **Just-In-Time**-inrichting van gebruikers voor Citrix NetScaler
+* **Just-In-Time** -inrichting van gebruikers voor Citrix NetScaler
 
 * [Kerberos-verificatie voor Citrix NetScaler](#publish-the-web-server)
 
 * [Headergebaseerde verificatie voor Citrix NetScaler](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
-* Nadat u Citrix NetScaler hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Nadat u Citrix NetScaler hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>Citrix NetScaler toevoegen vanuit de galerie
 
@@ -57,17 +57,17 @@ Als u Citrix NetScaler wilt integreren met Azure AD, voegt u Citrix NetScaler ee
 
 1. Selecteer **Azure Active Directory** in het linkermenu.
 
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 
-1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** .
 
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Citrix NetScaler**.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Citrix NetScaler** .
 
 1. Selecteer **Citrix NetScaler** in de resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-citrix-netscaler"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Citrix NetScaler
 
-Configureer en test eenmalige aanmelding van Azure AD met Citrix NetScaler met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Citrix NetScaler.
+Configureer en test eenmalige aanmelding van Azure AD met Citrix NetScaler met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Citrix NetScaler.
 
 Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Citrix NetScaler te configureren en te testen:
 
@@ -87,9 +87,9 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Citrix Net
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen via de Azure-portal:
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Citrix NetScaler** naar **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Citrix NetScaler** naar **Beheren** en selecteer **Eenmalige aanmelding** .
 
-1. Selecteer in het deelvenster **Selecteer een methode voor eenmalige aanmelding** de optie **SAML**.
+1. Selecteer in het deelvenster **Selecteer een methode voor eenmalige aanmelding** de optie **SAML** .
 
 1. Selecteer in het deelvenster **Eenmalige aanmelding met SAML instellen** het penpictogram **Bewerken** voor **Standaard SAML-configuratie** om de instellingen te bewerken.
 
@@ -121,41 +121,41 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen via de Az
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer in het linkermenu van de Azure-portal achtereenvolgens **Azure Active Directory**, **Gebruikers** en **Alle gebruikers**.
+1. Selecteer in het linkermenu van de Azure-portal achtereenvolgens **Azure Active Directory** , **Gebruikers** en **Alle gebruikers** .
 
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
-1. Voer deze stappen uit in **Gebruikerseigenschappen**:
+1. Voer deze stappen uit in **Gebruikerseigenschappen** :
 
-   1. Voer `B.Simon` in bij **Naam**.  
+   1. Voer `B.Simon` in bij **Naam** .  
 
    1. Bij **Gebruikersnaam** voert u _username@companydomain.extension_ in. Bijvoorbeeld `B.Simon@contoso.com`.
 
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer of kopieer de waarde die in **Wachtwoord** wordt weergegeven.
 
-   1. Selecteer **Maken**.
+   1. Selecteer **Maken** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie stelt u B.Simon in staat gebruik te maken van eenmalige aanmelding van Azure door de gebruiker toegang te verlenen tot Citrix NetScaler.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 
 1. Selecteer **Citrix NetScaler** in de lijst met toepassingen.
 
-1. In het app-overzicht onder **Beheren** selecteert u **Gebruikers en groepen**.
+1. In het app-overzicht onder **Beheren** selecteert u **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**. Selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** . Selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. In het dialoogvenster **Gebruikers en groepen** selecteert u **B.Simon** in de lijst **Gebruikers**. Kies **Selecteren**.
+1. In het dialoogvenster **Gebruikers en groepen** selecteert u **B.Simon** in de lijst **Gebruikers** . Kies **Selecteren** .
 
-1. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de relevante rol voor de gebruiker in de lijst. Kies vervolgens **Selecteren**.
+1. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de relevante rol voor de gebruiker in de lijst. Kies vervolgens **Selecteren** .
 
-1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen** .
 
 ## <a name="configure-citrix-netscaler-sso"></a>Eenmalige aanmelding voor Citrix NetScaler configureren
 
@@ -169,9 +169,9 @@ Selecteer een koppeling voor stappen voor het soort verificatie dat u wilt confi
 
 Ga als volgt te werk om een virtuele server te maken:
 
-1. Selecteer **Verkeersbeheer** > **Taakverdeling** > **Services**.
+1. Selecteer **Verkeersbeheer** > **Taakverdeling** > **Services** .
     
-1. Selecteer **Toevoegen**.
+1. Selecteer **Toevoegen** .
 
     ![Citrix NetScaler-configuratie - Deelvenster Services](./media/citrix-netscaler-tutorial/web01.png)
 
@@ -186,9 +186,9 @@ Ga als volgt te werk om een virtuele server te maken:
 
 Ga als volgt te werk om de load balancer te configureren:
 
-1. Ga naar **Verkeersbeheer** > **Taakverdeling** > **Virtuele servers**.
+1. Ga naar **Verkeersbeheer** > **Taakverdeling** > **Virtuele servers** .
 
-1. Selecteer **Toevoegen**.
+1. Selecteer **Toevoegen** .
 
 1. Stel de volgende waarden in zoals beschreven in de volgende schermopname:
 
@@ -197,7 +197,7 @@ Ga als volgt te werk om de load balancer te configureren:
     * **IP-adres**
     * **Poort**
 
-1. Selecteer **OK**.
+1. Selecteer **OK** .
 
     ![Citrix NetScaler-configuratie - Deelvenster Basisinstellingen](./media/citrix-netscaler-tutorial/load01.png)
 
@@ -205,11 +205,11 @@ Ga als volgt te werk om de load balancer te configureren:
 
 Ga als volgt te werk om de load balancer aan de virtuele server te binden:
 
-1. Selecteer in het deelvenster **Services en servicegroepen** de optie **Geen servicebinding van taakverdelende virtuele server**.
+1. Selecteer in het deelvenster **Services en servicegroepen** de optie **Geen servicebinding van taakverdelende virtuele server** .
 
    ![Citrix NetScaler-configuratie - Deelvenster Servicebinding van taakverdelende virtuele server](./media/citrix-netscaler-tutorial/bind01.png)
 
-1. Verifieer de instellingen zoals weergegeven in de volgende schermopname, en selecteer vervolgens **Sluiten**.
+1. Verifieer de instellingen zoals weergegeven in de volgende schermopname, en selecteer vervolgens **Sluiten** .
 
    ![Citrix NetScaler-configuratie - De servicebinding voor de virtuele server verifiëren](./media/citrix-netscaler-tutorial/bind02.png)
 
@@ -217,11 +217,11 @@ Ga als volgt te werk om de load balancer aan de virtuele server te binden:
 
 Om deze service als TLS te publiceren, bindt u het servercertificaat en test u uw toepassing:
 
-1. Onder **Certificaat** selecteert u **Geen servercertificaat**.
+1. Onder **Certificaat** selecteert u **Geen servercertificaat** .
 
    ![Citrix NetScaler-configuratie - Deelvenster Servercertificaat](./media/citrix-netscaler-tutorial/bind03.png)
 
-1. Verifieer de instellingen zoals weergegeven in de volgende schermopname, en selecteer vervolgens **Sluiten**.
+1. Verifieer de instellingen zoals weergegeven in de volgende schermopname, en selecteer vervolgens **Sluiten** .
 
    ![Citrix NetScaler-configuratie - Het certificaat verifiëren](./media/citrix-netscaler-tutorial/bind04.png)
 
@@ -233,19 +233,19 @@ Voltooi de volgende secties om het Citrix ADC SAML-profiel te configureren.
 
 Ga als volgt te werk om een verificatiebeleid te maken:
 
-1. Ga naar **Beveiliging** > **AAA – Toepassingsverkeer** > **Beleidsregels** > **Verificatie** > **Verificatiebeleid**.
+1. Ga naar **Beveiliging** > **AAA – Toepassingsverkeer** > **Beleidsregels** > **Verificatie** > **Verificatiebeleid** .
 
-1. Selecteer **Toevoegen**.
+1. Selecteer **Toevoegen** .
 
 1. Typ of selecteer in het deelvenster **Verificatiebeleid maken** de volgende waarden:
 
-    * **Naam**: Voer een naam in voor uw verificatiebeleid.
-    * **Actie**: Voer **SAML** in en selecteer **Toevoegen**.
-    * **Expressie**:  Voer **true** in.     
+    * **Naam** : Voer een naam in voor uw verificatiebeleid.
+    * **Actie** : Voer **SAML** in en selecteer **Toevoegen** .
+    * **Expressie** :  Voer **true** in.     
     
     ![Citrix NetScaler-configuratie - Deelvenster Verificatiebeleid maken](./media/citrix-netscaler-tutorial/policy01.png)
 
-1. Selecteer **Maken**.
+1. Selecteer **Maken** .
 
 ### <a name="create-an-authentication-saml-server"></a>Een verificatie-SAML-server maken
 
@@ -253,7 +253,7 @@ Om een verificatie-SAML-server te maken, gaat u naar het deelvenster **Verificat
 
 1. Bij **Naam** voert u een naam in voor de verificatie-SAML-server.
 
-1. Doe het volgende onder **SAML-metagegevens exporteren**:
+1. Doe het volgende onder **SAML-metagegevens exporteren** :
 
    1. Schakel het selectievakje **Metagegevens importeren** in.
 
@@ -261,7 +261,7 @@ Om een verificatie-SAML-server te maken, gaat u naar het deelvenster **Verificat
     
 1. Bij **Naam van uitgever** voert u de relevante URL in.
 
-1. Selecteer **Maken**.
+1. Selecteer **Maken** .
 
 ![Citrix NetScaler-configuratie - Deelvenster Verificatie-SAML-server maken](./media/citrix-netscaler-tutorial/server01.png)
 
@@ -269,7 +269,7 @@ Om een verificatie-SAML-server te maken, gaat u naar het deelvenster **Verificat
 
 Ga als volgt te werk om een virtuele verificatieserver te maken:
 
-1.  Ga naar **Beveiliging** > **AAA – Toepassingsverkeer** > **Beleidsregels** > **Verificatie** > **Virtuele verificatieservers**.
+1.  Ga naar **Beveiliging** > **AAA – Toepassingsverkeer** > **Beleidsregels** > **Verificatie** > **Virtuele verificatieservers** .
 
 1.  Selecteer **Toevoegen** en voltooi de volgende stappen:
 
@@ -277,25 +277,25 @@ Ga als volgt te werk om een virtuele verificatieserver te maken:
 
     1. Schakel het selectievakje **Niet-adresseerbaar** in.
 
-    1. Bij **Protocol** selecteert u **SSL**.
+    1. Bij **Protocol** selecteert u **SSL** .
 
-    1. Selecteer **OK**.
+    1. Selecteer **OK** .
     
-1. Selecteer **Doorgaan**.
+1. Selecteer **Doorgaan** .
 
 ### <a name="configure-the-authentication-virtual-server-to-use-azure-ad"></a>De virtuele verificatieserver configureren om Azure AD te gebruiken
 
 Wijzig de twee secties voor de virtuele verificatieserver:
 
-1.  In het deelvenster **Geavanceerd verificatiebeleid** selecteert u **Geen verificatiebeleid**.
+1.  In het deelvenster **Geavanceerd verificatiebeleid** selecteert u **Geen verificatiebeleid** .
 
     ![Citrix NetScaler-configuratie - Deelvenster Geavanceerd verificatiebeleid](./media/citrix-netscaler-tutorial/virtual01.png)
 
-1. In het deelvenster **Beleidsbinding** selecteert u het verificatiebeleid en selecteert u vervolgens **Binden**.
+1. In het deelvenster **Beleidsbinding** selecteert u het verificatiebeleid en selecteert u vervolgens **Binden** .
 
     ![Citrix NetScaler-configuratie - Deelvenster Beleidsbinding](./media/citrix-netscaler-tutorial/virtual02.png)
 
-1. In het deelvenster **Formuliergebaseerde virtuele servers** selecteert u **Geen taakverdelende virtuele server**.
+1. In het deelvenster **Formuliergebaseerde virtuele servers** selecteert u **Geen taakverdelende virtuele server** .
 
     ![Citrix NetScaler-configuratie - Deelvenster Formuliergebaseerde virtuele servers](./media/citrix-netscaler-tutorial/virtual03.png)
 
@@ -303,12 +303,12 @@ Wijzig de twee secties voor de virtuele verificatieserver:
 
 1. Selecteer de taakverdelende virtuele server die u wilt beveiligen met Azure AD-verificatie.
 
-1. Selecteer **Binden**.
+1. Selecteer **Binden** .
 
     ![Citrix NetScaler-configuratie - Deelvenster Binding van taakverdelende virtuele server](./media/citrix-netscaler-tutorial/virtual04.png)
 
     > [!NOTE]
-    > Zorg ervoor dat u **Gereed** selecteert in het deelvenster **Configuratie van virtuele verificatieserver**.
+    > Zorg ervoor dat u **Gereed** selecteert in het deelvenster **Configuratie van virtuele verificatieserver** .
 
 1. Om uw wijzigingen te verifiëren, gaat u in een browser naar de toepassings-URL. U zou de aanmeldingspagina van uw tenant moeten zien in plaats van de niet-geverifieerde toegang die u eerder zou hebben gezien.
 
@@ -318,7 +318,7 @@ Wijzig de twee secties voor de virtuele verificatieserver:
 
 ### <a name="create-a-kerberos-delegation-account-for-citrix-adc"></a>Een Kerberos-delegatieaccount maken voor Citrix ADC
 
-1. Maak een gebruikersaccount (in dit voorbeeld gebruiken we _AppDelegation_).
+1. Maak een gebruikersaccount (in dit voorbeeld gebruiken we _AppDelegation_ ).
 
     ![Citrix NetScaler-configuratie - Deelvenster Eigenschappen](./media/citrix-netscaler-tutorial/kerberos01.png)
 
@@ -347,20 +347,20 @@ Het Citrix NetScaler AAA KCD-account configureren:
 
 1.  Selecteer **Toevoegen** en voer de volgende waarden in of selecteer deze:
 
-    * **Naam**: Voer een naam in voor het KCD-account.
+    * **Naam** : Voer een naam in voor het KCD-account.
 
-    * **Realm**: Voer het domein en de uitbreiding in hoofdletters in.
+    * **Realm** : Voer het domein en de uitbreiding in hoofdletters in.
 
-    * **SPN van de service**: `http/<host/fqdn>@<DOMAIN.COM>`.
+    * **SPN van de service** : `http/<host/fqdn>@<DOMAIN.COM>`.
     
         > [!NOTE]
         > `@DOMAIN.COM` is verplicht en moet in hoofdletters zijn. Bijvoorbeeld: `http/cweb2@IDENTT.WORK`.
 
-    * **Gedelegeerde gebruiker**: Voer de naam van de gedelegeerde gebruiker in.
+    * **Gedelegeerde gebruiker** : Voer de naam van de gedelegeerde gebruiker in.
 
     * Schakel het selectievakje **Wachtwoord voor gedelegeerde gebruiker** in, voer een wachtwoord in en bevestig dit.
 
-1. Selecteer **OK**.
+1. Selecteer **OK** .
  
     ![Citrix NetScaler-configuratie - Deelvenster KCD-account configureren](./media/citrix-netscaler-tutorial/kerberos03.png)
 
@@ -368,37 +368,37 @@ Het Citrix NetScaler AAA KCD-account configureren:
 
 Het Citrix-verkeersbeleid en -verkeersprofiel configureren:
 
-1.  Ga naar **Beveiliging** > **AAA – Toepassingsverkeer** > **Beleidsregels** > **Verkeersbeleid, Profielen en Formulier Verkeersbeleid SSO-profielen**.
+1.  Ga naar **Beveiliging** > **AAA – Toepassingsverkeer** > **Beleidsregels** > **Verkeersbeleid, Profielen en Formulier Verkeersbeleid SSO-profielen** .
 
-1.  Selecteer **Verkeersprofielen**.
+1.  Selecteer **Verkeersprofielen** .
 
-1.  Selecteer **Toevoegen**.
+1.  Selecteer **Toevoegen** .
 
 1.  Als u een verkeersprofiel wilt configureren, voert u de volgende waarden in of selecteert u deze.
 
-    * **Naam**: Voer een naam in voor het verkeersprofiel.
+    * **Naam** : Voer een naam in voor het verkeersprofiel.
 
-    * **Eenmalige aanmelding**: Selecteer **AAN**.
+    * **Eenmalige aanmelding** : Selecteer **AAN** .
 
-    * **KCD-account**: Selecteer het KCD-account dat u in de vorige sectie hebt gemaakt.
+    * **KCD-account** : Selecteer het KCD-account dat u in de vorige sectie hebt gemaakt.
 
-1. Selecteer **OK**.
+1. Selecteer **OK** .
 
     ![Citrix NetScaler-configuratie - Deelvenster Verkeersprofiel configureren](./media/citrix-netscaler-tutorial/kerberos04.png)
  
-1.  Selecteer **Verkeersbeleid**.
+1.  Selecteer **Verkeersbeleid** .
 
-1.  Selecteer **Toevoegen**.
+1.  Selecteer **Toevoegen** .
 
 1.  Als u verkeersbeleid wilt configureren, voert u de volgende waarden in of selecteert u deze.
 
-    * **Naam**: Voer een naam voor het verkeersbeleid in.
+    * **Naam** : Voer een naam voor het verkeersbeleid in.
 
-    * **Profiel**: Selecteer het verkeersprofiel dat u in de vorige sectie hebt gemaakt.
+    * **Profiel** : Selecteer het verkeersprofiel dat u in de vorige sectie hebt gemaakt.
 
-    * **Expressie**: Voer **true** in.
+    * **Expressie** : Voer **true** in.
 
-1. Selecteer **OK**.
+1. Selecteer **OK** .
 
     ![Citrix NetScaler-configuratie - Deelvenster Verkeersbeleid configureren](./media/citrix-netscaler-tutorial/kerberos05.png)
 
@@ -406,11 +406,11 @@ Het Citrix-verkeersbeleid en -verkeersprofiel configureren:
 
 Ga als volgt te werk om een verkeersbeleid te binden aan een virtuele server met behulp van de GUI:
 
-1. Ga naar **Verkeersbeheer** > **Taakverdeling** > **Virtuele servers**.
+1. Ga naar **Verkeersbeheer** > **Taakverdeling** > **Virtuele servers** .
 
-1. In de lijst met virtuele servers selecteert u de virtuele server waaraan u het herschrijfbeleid wilt binden, en vervolgens selecteert u **Openen**.
+1. In de lijst met virtuele servers selecteert u de virtuele server waaraan u het herschrijfbeleid wilt binden, en vervolgens selecteert u **Openen** .
 
-1. In het deelvenster **Taakverdelende virtuele server** onder **Geavanceerde instellingen** selecteert u **Beleidsregels**. Alle beleidsregels die voor uw NetScaler-exemplaar zijn geconfigureerd, worden in de lijst weergegeven.
+1. In het deelvenster **Taakverdelende virtuele server** onder **Geavanceerde instellingen** selecteert u **Beleidsregels** . Alle beleidsregels die voor uw NetScaler-exemplaar zijn geconfigureerd, worden in de lijst weergegeven.
  
     ![Citrix NetScaler-configuratie - Deelvenster Taakverdelende virtuele server](./media/citrix-netscaler-tutorial/kerberos06.png)
 
@@ -420,15 +420,15 @@ Ga als volgt te werk om een verkeersbeleid te binden aan een virtuele server met
  
     ![Citrix NetScaler-configuratie - Deelvenster Verkeersbeleidsbinding van taakverdelende virtuele server](./media/citrix-netscaler-tutorial/kerberos09.png)
 
-1. Doe het volgende in het dialoogvenster **Type kiezen**:
+1. Doe het volgende in het dialoogvenster **Type kiezen** :
 
-    1. Bij **Beleid kiezen** selecteert u **Verkeer**.
+    1. Bij **Beleid kiezen** selecteert u **Verkeer** .
 
-    1. Bij **Type kiezen** selecteert u **Aanvraag**.
+    1. Bij **Type kiezen** selecteert u **Aanvraag** .
 
     ![Citrix NetScaler-configuratie - Deelvenster Type kiezen](./media/citrix-netscaler-tutorial/kerberos08.png)
 
-1. Wanneer het beleid is gebonden, selecteert u **Gereed**.
+1. Wanneer het beleid is gebonden, selecteert u **Gereed** .
  
     ![Citrix NetScaler-configuratie - Deelvenster Beleidsregels](./media/citrix-netscaler-tutorial/kerberos10.png)
 
@@ -447,20 +447,20 @@ In deze sectie wordt een gebruiker met de naam B.Simon gemaakt in Citrix NetScal
 
 In deze sectie test u met behulp van het toegangsvenster de configuratie voor eenmalige aanmelding van Azure AD.
 
-Wanneer u in het toegangsvenster op de tegel Citrix NetScaler klikt, wordt u automatisch aangemeld bij de instantie van Citrix NetScaler waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Citrix NetScaler klikt, wordt u automatisch aangemeld bij de instantie van Citrix NetScaler waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Citrix NetScaler uitproberen met Azure AD](https://aad.portal.azure.com/)
 
 - [Eenmalige aanmelding voor Citrix NetScaler configureren voor headergebaseerde verificatie](header-citrix-netscaler-tutorial.md)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Citrix NetScaler beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Citrix NetScaler beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)
