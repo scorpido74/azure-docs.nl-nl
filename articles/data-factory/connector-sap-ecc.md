@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: 9088b36acead9f47e94949ee102d66a8aff2d226
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: 1f3ab61c6030c2871356f494db228711305e5466
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529599"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901588"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Gegevens van SAP ECC kopiëren met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -47,6 +47,13 @@ Deze SAP ECC-connector ondersteunt met name:
 
 - Kopiëren van gegevens met behulp van basis verificatie.
 
+Versie 7,0 of hoger verwijst naar SAP NetWeaver-versie in plaats van SAP ECC-versie. Bijvoorbeeld: SAP ECC 6,0 EHP 7 in het algemeen heeft NetWeaver versie >= 7,4. Als u twijfelt over uw omgeving, kunt u de volgende stappen uitvoeren om de versie van uw SAP-systeem te bevestigen:
+
+1. Gebruik de SAP-GUI om verbinding te maken met het SAP-systeem. 
+2. Ga naar de **systeem**  ->  **status** . 
+3. Controleer de versie van de SAP_BASIS, Controleer of deze gelijk is aan of groter is dan 701.  
+      ![SAP_BASIS controleren](./media/connector-sap-table/sap-basis.png)
+
 >[!TIP]
 >Als u gegevens wilt kopiëren van SAP ECC via een SAP-tabel of-weer gave, gebruikt u de [SAP-tabel](connector-sap-table.md) connector, die sneller en schaalbaar is.
 
@@ -54,9 +61,9 @@ Deze SAP ECC-connector ondersteunt met name:
 
 Als u deze SAP ECC-connector wilt gebruiken, moet u de SAP ECC-entiteiten via OData-services beschikbaar maken via de SAP-gateway. Met name:
 
-- **SAP-gateway instellen**. Voor servers met SAP NetWeaver-versies hoger dan 7,4, is SAP gateway al geïnstalleerd. Voor eerdere versies moet u de Inge sloten SAP-gateway of het SAP gateway-hub systeem installeren voordat u SAP ECC-gegevens via OData-Services weergeeft. Zie de [installatie handleiding](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm)voor het instellen van SAP gateway.
+- **SAP-gateway instellen** . Voor servers met SAP NetWeaver-versies hoger dan 7,4, is SAP gateway al geïnstalleerd. Voor eerdere versies moet u de Inge sloten SAP-gateway of het SAP gateway-hub systeem installeren voordat u SAP ECC-gegevens via OData-Services weergeeft. Zie de [installatie handleiding](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm)voor het instellen van SAP gateway.
 
-- **De SAP OData-service activeren en configureren**. U kunt de OData-service binnen enkele seconden activeren via TCODE SICF. U kunt ook configureren welke objecten moeten worden weer gegeven. Raadpleeg de [Stapsgewijze richt lijnen](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/)voor meer informatie.
+- **De SAP OData-service activeren en configureren** . U kunt de OData-service binnen enkele seconden activeren via TCODE SICF. U kunt ook configureren welke objecten moeten worden weer gegeven. Raadpleeg de [Stapsgewijze richt lijnen](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/)voor meer informatie.
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -72,11 +79,11 @@ De volgende eigenschappen worden ondersteund voor de SAP ECC-gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| `type` | De `type` eigenschap moet worden ingesteld op `SapEcc` . | Ja |
-| `url` | De URL van de SAP ECC OData-service. | Ja |
-| `username` | De gebruikers naam die wordt gebruikt om verbinding te maken met SAP ECC. | Nee |
-| `password` | Het Lees bare wacht woord dat wordt gebruikt om verbinding te maken met SAP ECC. | Nee |
-| `connectVia` | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u geen runtime opgeeft, wordt de standaard Azure Integration runtime gebruikt. | Nee |
+| `type` | De `type` eigenschap moet worden ingesteld op `SapEcc` . | Yes |
+| `url` | De URL van de SAP ECC OData-service. | Yes |
+| `username` | De gebruikers naam die wordt gebruikt om verbinding te maken met SAP ECC. | No |
+| `password` | Het Lees bare wacht woord dat wordt gebruikt om verbinding te maken met SAP ECC. | No |
+| `connectVia` | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u geen runtime opgeeft, wordt de standaard Azure Integration runtime gebruikt. | No |
 
 ### <a name="example"></a>Voorbeeld
 
@@ -111,7 +118,7 @@ De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| `path` | Pad van de SAP ECC OData-entiteit. | Ja |
+| `path` | Pad van de SAP ECC OData-entiteit. | Yes |
 
 ### <a name="example"></a>Voorbeeld
 
@@ -144,10 +151,10 @@ De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit `so
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| `type` | De `type` eigenschap van de sectie van de Kopieer activiteit `source` moet worden ingesteld op `SapEccSource` . | Ja |
-| `query` | De OData-query opties voor het filteren van de gegevens. Bijvoorbeeld:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>De SAP ECC-connector kopieert gegevens van de gecombineerde URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Zie [ODATA URL Components](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)(Engelstalig) voor meer informatie. | Nee |
-| `sapDataColumnDelimiter` | Het enkelvoudige teken dat wordt gebruikt als scheidings tekens dat wordt door gegeven aan SAP RFC om de uitvoer gegevens te splitsen. | Nee |
-| `httpRequestTimeout` | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. Als niet wordt opgegeven, is de standaard waarde **00:30:00** (30 minuten). | Nee |
+| `type` | De `type` eigenschap van de sectie van de Kopieer activiteit `source` moet worden ingesteld op `SapEccSource` . | Yes |
+| `query` | De OData-query opties voor het filteren van de gegevens. Bijvoorbeeld:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>De SAP ECC-connector kopieert gegevens van de gecombineerde URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Zie [ODATA URL Components](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)(Engelstalig) voor meer informatie. | No |
+| `sapDataColumnDelimiter` | Het enkelvoudige teken dat wordt gebruikt als scheidings tekens dat wordt door gegeven aan SAP RFC om de uitvoer gegevens te splitsen. | No |
+| `httpRequestTimeout` | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. Als niet wordt opgegeven, is de standaard waarde **00:30:00** (30 minuten). | No |
 
 ### <a name="example"></a>Voorbeeld
 

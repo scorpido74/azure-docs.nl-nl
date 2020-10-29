@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a0851e9d032d4d1bf9751d63061141839e95d510
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: edd79d08d18e95d27e557a26f0adc36868097bb3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491288"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900274"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -39,6 +39,9 @@ Beveiliging en privacy zijn een van de belangrijkste prioriteiten voor Azure-kla
 
 VS-Oost, VS-Oost 2, centraal VS, Zuid-Centraal VS, VS-West 2, Europa-west, Europa-noord, UK-zuid, Zuidoost-Azië en Australië-oost.
 
+### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Worden klant gegevens buiten de opgegeven regio opgeslagen?
+
+Azure lente Cloud is een regionale service. Alle klant gegevens in azure lente Cloud worden opgeslagen in meerdere regio's binnen hetzelfde geografische gebied van de opgegeven regio voor redundantie. Zie [Data locatie in azure](https://azure.microsoft.com/global-infrastructure/data-residency/)voor meer informatie over geo en regio.
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Wat zijn de bekende beperkingen van Azure lente-Cloud?
 
@@ -72,7 +75,7 @@ Azure lente-Cloud ondersteunt Java 8 en 11. Zie [Java runtime en versies van het
 
 Zoek metrische gegevens op het tabblad Overzicht van de app en het tabblad [Azure monitor](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) .
 
-Azure lente Cloud ondersteunt het exporteren van Lente-Cloud toepassings logboeken en-metrische gegevens naar Azure Storage, EventHub en [log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries). De tabel naam in Log Analytics is *AppPlatformLogsforSpring*. Zie [diagnostische services](diagnostic-services.md)voor meer informatie over het inschakelen van deze functie.
+Azure lente Cloud ondersteunt het exporteren van Lente-Cloud toepassings logboeken en-metrische gegevens naar Azure Storage, EventHub en [log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries). De tabel naam in Log Analytics is *AppPlatformLogsforSpring* . Zie [diagnostische services](diagnostic-services.md)voor meer informatie over het inschakelen van deze functie.
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Wordt gedistribueerde tracering door Azure lente Cloud ondersteund?
 

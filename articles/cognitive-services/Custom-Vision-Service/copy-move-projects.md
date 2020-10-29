@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 78ae0fc94e74755b481f80724ca26b34da99122c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c742240cc82035b2a9af16348eaa9f2a40a32fa3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758571"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900319"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Uw Custom Vision projecten kopiëren en verplaatsen
 
@@ -105,8 +105,9 @@ U ontvangt een `200/OK` antwoord met meta gegevens over het geëxporteerde proje
 Roep **[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** aan met behulp van uw doel-en eind punt, samen met het referentie token. U kunt het project ook een naam geven in het nieuwe account.
 
 ```curl
-curl -v -X POST "{endpoint}/customvision/v3.3/Training/projects/import?token={token}?name={name}"
--H "Training-key: {training key}"
+curl -v -G -X POST "{endpoint}/customvision/v3.3/Training/projects/import"
+--data-urlencode "token={token}" --data-urlencode "name={name}"
+-H "Training-key: {training key}" -H "Content-Length: 0"
 ```
 
 U ontvangt een `200/OK` antwoord met meta gegevens over uw zojuist geïmporteerde project.

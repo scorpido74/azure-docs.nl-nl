@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514381"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900300"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Zelf studie: globale relay-identiteits synchronisatie configureren voor automatische gebruikers inrichting
 
-In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel de globale relay-identiteits synchronisatie als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Wanneer deze is geconfigureerd, worden gebruikers en groepen automatisch door Azure AD ingericht en ongedaan gemaakt voor [globale relay-identiteits synchronisatie](https://portalalpha1.globalrelay.com/) met behulp van de Azure AD-inrichtings service. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md). 
+In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel de globale relay-identiteits synchronisatie als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Wanneer deze is geconfigureerd, worden gebruikers en groepen automatisch door Azure AD ingericht en ongedaan gemaakt voor globale relay-identiteits synchronisatie met behulp van de Azure AD-inrichtings service. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
@@ -67,23 +67,23 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor de synchronisatie van globale relay-identiteiten in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **globale relay-identiteits synchronisatie**.
+2. Selecteer in de lijst toepassingen de optie **globale relay-identiteits synchronisatie** .
 
     ![De koppeling globale relay-identiteits synchronisatie in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **Inrichten**.
+3. Selecteer het tabblad **Inrichten** .
 
     ![Tabblad Inrichting](common/provisioning.png)
 
-4. Stel de **Inrichtingsmodus** in op **Automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch** .
 
     ![Tabblad inrichten automatisch](common/provisioning-automatic.png)
 
-5. Geef in het gedeelte **beheerders referenties** de URL op van de globale relay-identiteits synchronisatie **Tenant**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de globale relay-identiteits synchronisatie. Als de verbinding mislukt, zorgt u ervoor dat uw globale relay-identiteits synchronisatie account beheerders machtigingen heeft en neemt u contact op met uw globale relay-vertegenwoordiger om het probleem op te lossen.
+5. Geef in het gedeelte **beheerders referenties** de URL op van de globale relay-identiteits synchronisatie **Tenant** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de globale relay-identiteits synchronisatie. Als de verbinding mislukt, zorgt u ervoor dat uw globale relay-identiteits synchronisatie account beheerders machtigingen heeft en neemt u contact op met uw globale relay-vertegenwoordiger om het probleem op te lossen.
 
     ![Autorisatie knop](media/global-relay-identity-sync-provisioning-tutorial/authorization.png)
 
@@ -91,9 +91,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
-7. Selecteer **Opslaan**.
+7. Selecteer **Opslaan** .
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met globale relay-identiteits synchronisatie**.
+8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met globale relay-identiteits synchronisatie** .
 
 9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar globale relay-identiteits synchronisatie in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in de globale relay-identiteits synchronisatie voor bijwerk bewerkingen. Als u ervoor kiest om het [overeenkomende doel kenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de API voor synchronisatie van globale relay-identiteiten het filteren van gebruikers op basis van dat kenmerk ondersteunt. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
@@ -103,7 +103,6 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |actief|Booleaans|
    |displayName|Tekenreeks|
    |title|Tekenreeks|
-   |emails[type eq "work"].value|Tekenreeks|
    |preferredLanguage|Tekenreeks|
    |name.givenName|Tekenreeks|
    |name.familyName|Tekenreeks|
@@ -150,7 +149,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: organisatie|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: deling|Tekenreeks|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Tekenreeks|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Naslaginformatie|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Referentie|
    |urn: IETF: params: scim: schemas: extensie: GlobalRelay: 2.0: gebruiker: proxyAddresses|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: GlobalRelay: 2.0: gebruiker: extensionAttribute1|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: GlobalRelay: 2.0: gebruiker: extensionAttribute2|Tekenreeks|
@@ -170,7 +169,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 
 
-10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met globale relay-identiteits synchronisatie**.
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met globale relay-identiteits synchronisatie** .
 
 11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Global relay-identiteits synchronisatie in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt voor het vergelijken van de groepen in de globale relay-identiteits synchronisatie voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
@@ -189,11 +188,11 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Inrichtingsbereik](common/provisioning-scope.png)
 
-15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan** .
 
     ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. De initiële cyclus duurt langer dan volgende cycli, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
+Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen** . De initiële cyclus duurt langer dan volgende cycli, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
 Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende resources om uw implementatie te bewaken:

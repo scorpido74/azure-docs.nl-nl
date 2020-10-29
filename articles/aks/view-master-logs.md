@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen en weer geven van de logboeken
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 1089cb4ea52efaa545478ced053a921728a894ef
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 82570606aee294aafe7da5ffaf581b11b6775073
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368448"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899942"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Logboeken van Kubernetes-hoofdknooppunten inschakelen en controleren in AKS (Azure Kubernetes Service)
 
@@ -25,21 +25,21 @@ Azure Monitor-logboeken bieden een query taal en analyse-engine die inzicht bied
 
 Azure Monitor-logboeken worden in de Azure Portal ingeschakeld en beheerd. Als u logboek verzameling voor de Kubernetes-hoofd onderdelen in uw AKS-cluster wilt inschakelen, opent u de Azure Portal in een webbrowser en voert u de volgende stappen uit:
 
-1. Selecteer de resource groep voor uw AKS-cluster, zoals *myResourceGroup*. Selecteer niet de resource groep die uw afzonderlijke AKS-cluster resources bevat, zoals *MC_myResourceGroup_myAKSCluster_eastus*.
-1. Klik aan de linkerkant op **Diagnostische instellingen**.
-1. Selecteer uw AKS-cluster, zoals *myAKSCluster*, en kies vervolgens **Diagnostische instelling toevoegen**.
-1. Voer een naam in, zoals *myAKSClusterLogs*, en selecteer vervolgens de optie om naar **log Analytics te verzenden**.
+1. Selecteer de resource groep voor uw AKS-cluster, zoals *myResourceGroup* . Selecteer niet de resource groep die uw afzonderlijke AKS-cluster resources bevat, zoals *MC_myResourceGroup_myAKSCluster_eastus* .
+1. Klik aan de linkerkant op **Diagnostische instellingen** .
+1. Selecteer uw AKS-cluster, zoals *myAKSCluster* , en kies vervolgens **Diagnostische instelling toevoegen** .
+1. Voer een naam in, zoals *myAKSClusterLogs* , en selecteer vervolgens de optie om naar **log Analytics te verzenden** .
 1. Selecteer een bestaande werk ruimte of maak een nieuwe. Als u een werk ruimte maakt, moet u een werkruimte naam, een resource groep en een locatie opgeven.
-1. Selecteer in de lijst met beschik bare Logboeken de logboeken die u wilt inschakelen. Voor dit voor beeld schakelt u de logboeken *uitvoeren-audit* en *uitvoeren-audit-admin* in. Veelvoorkomende logboeken zijn de *uitvoeren-apiserver*, *uitvoeren-Controller-Manager*en *uitvoeren scheduler*. U kunt de verzamelde logboeken retour neren en wijzigen als Log Analytics werk ruimten zijn ingeschakeld.
+1. Selecteer in de lijst met beschik bare Logboeken de logboeken die u wilt inschakelen. Voor dit voor beeld schakelt u de logboeken *uitvoeren-audit* en *uitvoeren-audit-admin* in. Veelvoorkomende logboeken zijn de *uitvoeren-apiserver* , *uitvoeren-Controller-Manager* en *uitvoeren scheduler* . U kunt de verzamelde logboeken retour neren en wijzigen als Log Analytics werk ruimten zijn ingeschakeld.
 1. Wanneer u klaar bent, selecteert u **Opslaan** om het verzamelen van de geselecteerde Logboeken in te scha kelen.
 
 ## <a name="log-categories"></a>Logboek Categorieën
 
 Naast de vermeldingen die door Kubernetes zijn geschreven, bevatten de audit logboeken van uw project ook vermeldingen van AKS.
 
-Audit logboeken worden vastgelegd in drie categorieën: *uitvoeren-audit*, *uitvoeren-audit-admin*en *Guard*.
+Audit logboeken worden vastgelegd in drie categorieën: *uitvoeren-audit* , *uitvoeren-audit-admin* en *Guard* .
 
-- De categorie *uitvoeren* bevat alle controle logboek gegevens voor elke controle gebeurtenis, zoals *Get*, *List*, *Create*, *Update*, *Delete*, *patch*en *post*.
+- De categorie *uitvoeren* bevat alle controle logboek gegevens voor elke controle gebeurtenis, zoals *Get* , *List* , *Create* , *Update* , *Delete* , *patch* en *post* .
 - De categorie *uitvoeren-audit-admin* is een subset van de *uitvoeren-audit* logboek categorie. *uitvoeren-audit-admin* vermindert het aantal logboeken aanzienlijk door het uitsluiten van de controle gebeurtenissen *ophalen* en *weer geven* uit het logboek.
 - De categorie *Guard* beheert Azure AD en Azure RBAC-controles. Voor beheerde Azure AD: token in, gegevens van de gebruiker. Voor Azure RBAC: toegangs beoordelingen in en uit.
 
@@ -55,7 +55,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -84,7 +84,7 @@ Het kan tot tien minuten duren voordat de diagnostische logboeken zijn ingeschak
 
 Ga in het Azure Portal naar uw AKS-cluster en selecteer **Logboeken** aan de linkerkant. Sluit het venster *voorbeeld query's* als dit wordt weer gegeven.
 
-Kies **Logboeken**aan de linkerkant. Als u de *uitvoeren-audit* logboeken wilt weer geven, voert u de volgende query in het tekstvak in:
+Kies **Logboeken** aan de linkerkant. Als u de *uitvoeren-audit* logboeken wilt weer geven, voert u de volgende query in het tekstvak in:
 
 ```
 AzureDiagnostics
@@ -109,7 +109,7 @@ AzureDiagnostics
 | project log_s
 ```
 
-In dit voor beeld toont de query alle Create-taken in *uitvoeren-audit-admin*. Er zijn waarschijnlijk veel resultaten geretourneerd. Als u de query wilt afsluiten om de logboeken te bekijken over de NGINX pod die in de vorige stap zijn gemaakt, voegt u een extra *where* -instructie toe om naar *NGINX* te zoeken, zoals wordt weer gegeven in de volgende voorbeeld query.
+In dit voor beeld toont de query alle Create-taken in *uitvoeren-audit-admin* . Er zijn waarschijnlijk veel resultaten geretourneerd. Als u de query wilt afsluiten om de logboeken te bekijken over de NGINX pod die in de vorige stap zijn gemaakt, voegt u een extra *where* -instructie toe om naar *NGINX* te zoeken, zoals wordt weer gegeven in de volgende voorbeeld query.
 
 ```
 AzureDiagnostics

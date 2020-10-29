@@ -4,18 +4,18 @@ description: Meer informatie over de basis onderdelen van het cluster en de work
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17203123ceb0c196bd8f9011e2962f5022e54698
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86251855"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901297"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)
 
 Wanneer toepassings ontwikkeling naar een op een container gebaseerde aanpak gaat, is het belang rijk om resources te organiseren en te beheren. Kubernetes is het toonaangevende platform dat de mogelijkheid biedt om een betrouw bare planning te bieden voor werk belastingen voor fout tolerante toepassingen. Azure Kubernetes service (AKS) is een beheerde Kubernetes-aanbieding waarmee de implementatie en het beheer van toepassingen op basis van containers worden vereenvoudigd.
 
-In dit artikel worden de belangrijkste onderdelen van de Kubernetes-infra structuur geïntroduceerd, zoals het *besturings vlak*, de *knoop punten*en de *knooppunt groepen*. Werkbelasting resources zoals *peulen*, *implementaties*en *sets* worden ook geïntroduceerd, samen met het groeperen van resources in *naam ruimten*.
+In dit artikel worden de belangrijkste onderdelen van de Kubernetes-infra structuur geïntroduceerd, zoals het *besturings vlak* , de *knoop punten* en de *knooppunt groepen* . Werkbelasting resources zoals *peulen* , *implementaties* en *sets* worden ook geïntroduceerd, samen met het groeperen van resources in *naam ruimten* .
 
 ## <a name="what-is-kubernetes"></a>Wat is Kubernetes?
 
@@ -57,7 +57,7 @@ Zie [Aanbevolen procedures voor cluster beveiliging en upgrades in AKS][operator
 
 ## <a name="nodes-and-node-pools"></a>Knoop punten en knooppunt groepen
 
-Als u uw toepassingen en ondersteunende services wilt uitvoeren, hebt u een Kubernetes- *knoop punt*nodig. Een AKS-cluster heeft een of meer knoop punten, een virtuele Azure-machine (VM) waarop de Kubernetes-knooppunt onderdelen en de container runtime worden uitgevoerd:
+Als u uw toepassingen en ondersteunende services wilt uitvoeren, hebt u een Kubernetes- *knoop punt* nodig. Een AKS-cluster heeft een of meer knoop punten, een virtuele Azure-machine (VM) waarop de Kubernetes-knooppunt onderdelen en de container runtime worden uitgevoerd:
 
 - De `kubelet` is de Kubernetes-agent die de Orchestration-aanvragen verwerkt vanuit het besturings vlak en de planning van het uitvoeren van de aangevraagde containers.
 - Virtuele netwerken worden verwerkt door de *uitvoeren-proxy* op elk knoop punt. De proxy routeert netwerk verkeer en beheert IP-adres sering voor services en peulen.
@@ -94,7 +94,7 @@ Als u de prestaties en functionaliteit van knoop punten wilt behouden, worden de
 
 - **Geheugen** : het geheugen dat door aks wordt gebruikt, omvat de som van twee waarden.
 
-1. De kubelet-daemon wordt geïnstalleerd op alle knoop punten van de Kubernetes-agent om het maken en beëindigen van containers te beheren. Deze daemon bevat standaard de volgende verwijderings regel: *Memory. available<750Mi*, wat betekent dat een knoop punt altijd ten minste 750 mi te allen tijde kan hebben.  Wanneer een host lager is dan de drempel waarde van het beschik bare geheugen, wordt een van de kubelet beëindigd om geheugen vrij te maken op de hostcomputer en te beveiligen. Deze actie wordt geactiveerd zodra het beschik bare geheugen groter is dan de drempel waarde voor 750Mi.
+1. De kubelet-daemon wordt geïnstalleerd op alle knoop punten van de Kubernetes-agent om het maken en beëindigen van containers te beheren. Deze daemon bevat standaard de volgende verwijderings regel: *Memory. available<750Mi* , wat betekent dat een knoop punt altijd ten minste 750 mi te allen tijde kan hebben.  Wanneer een host lager is dan de drempel waarde van het beschik bare geheugen, wordt een van de kubelet beëindigd om geheugen vrij te maken op de hostcomputer en te beveiligen. Deze actie wordt geactiveerd zodra het beschik bare geheugen groter is dan de drempel waarde voor 750Mi.
 
 2. De tweede waarde is een redegressieve hoeveelheid geheugen reserveringen om de kubelet-daemon goed te laten functioneren (uitvoeren-gereserveerd).
     - 25% van de eerste 4 GB geheugen
@@ -115,7 +115,7 @@ Zie [Best Practices for Basic scheduler-functies in AKS][operator-best-practices
 
 ### <a name="node-pools"></a>Knooppuntpools
 
-Knoop punten van dezelfde configuratie worden samen in *knooppunt groepen*gegroepeerd. Een Kubernetes-cluster bevat een of meer knooppunt groepen. Het eerste aantal knoop punten en grootte worden gedefinieerd wanneer u een AKS-cluster maakt, waarmee een *standaard knooppunt groep*wordt gemaakt. Deze standaard knooppunt groep in AKS bevat de onderliggende virtuele machines waarop de agent knooppunten worden uitgevoerd.
+Knoop punten van dezelfde configuratie worden samen in *knooppunt groepen* gegroepeerd. Een Kubernetes-cluster bevat een of meer knooppunt groepen. Het eerste aantal knoop punten en grootte worden gedefinieerd wanneer u een AKS-cluster maakt, waarmee een *standaard knooppunt groep* wordt gemaakt. Deze standaard knooppunt groep in AKS bevat de onderliggende virtuele machines waarop de agent knooppunten worden uitgevoerd.
 
 > [!NOTE]
 > Om ervoor te zorgen dat uw cluster betrouwbaar werkt, moet u ten minste twee knoop punten in de standaard knooppunt groep uitvoeren.
@@ -128,7 +128,7 @@ Zie [meerdere knooppunt groepen maken en beheren voor een cluster in AKS][use-mu
 
 In een AKS-cluster dat meerdere knooppunt groepen bevat, moet u mogelijk de Kubernetes-planner laten weten welke knooppunt groep voor een bepaalde resource moet worden gebruikt. Ingangs controllers mogen bijvoorbeeld niet worden uitgevoerd op Windows Server-knoop punten. Met knooppunt selecties kunt u verschillende para meters definiëren, zoals het besturings systeem van het knoop punt, om te bepalen waar een pod moet worden gepland.
 
-In het volgende eenvoudige voor beeld wordt een NGINX-exemplaar gepland op een Linux-knoop punt met behulp van de knooppunt kiezer *' Beta.kubernetes.io/OS ': Linux*:
+In het volgende eenvoudige voor beeld wordt een NGINX-exemplaar gepland op een Linux-knoop punt met behulp van de knooppunt kiezer *' Beta.kubernetes.io/OS ': Linux* :
 
 ```yaml
 kind: Pod
@@ -138,7 +138,7 @@ metadata:
 spec:
   containers:
     - name: myfrontend
-      image: nginx:1.15.12
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.12-alpine
   nodeSelector:
     "beta.kubernetes.io/os": linux
 ```
@@ -153,7 +153,7 @@ Wanneer u een pod maakt, kunt u *resource aanvragen* definiëren om een bepaalde
 
 Zie [Kubernetes peul][kubernetes-pods] en [Kubernetes pod Lifecycle][kubernetes-pod-lifecycle]voor meer informatie.
 
-Een Pod is een logische resource, maar de container (s) zijn waar de werk belasting van de toepassing wordt uitgevoerd. De meeste zijn doorgaans tijdelijke, wegwerp bronnen en individueel geplande een aantal van de hoge Beschik baarheid en redundantie functies die Kubernetes biedt. In plaats daarvan worden er peulen geïmplementeerd en beheerd door Kubernetes- *controllers*, zoals de implementatie controller.
+Een Pod is een logische resource, maar de container (s) zijn waar de werk belasting van de toepassing wordt uitgevoerd. De meeste zijn doorgaans tijdelijke, wegwerp bronnen en individueel geplande een aantal van de hoge Beschik baarheid en redundantie functies die Kubernetes biedt. In plaats daarvan worden er peulen geïmplementeerd en beheerd door Kubernetes- *controllers* , zoals de implementatie controller.
 
 ## <a name="deployments-and-yaml-manifests"></a>Implementaties en YAML-manifesten
 
@@ -184,7 +184,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.15.2
+        image: mcr.microsoft.com/oss/nginx/nginx:1.15.2-alpine
         ports:
         - containerPort: 80
         resources:
@@ -240,7 +240,7 @@ Zie [Kubernetes DaemonSets][kubernetes-daemonset]voor meer informatie.
 
 ## <a name="namespaces"></a>Naamruimten
 
-Kubernetes-resources, zoals peulen en implementaties, worden logisch gegroepeerd in een *naam ruimte*. Deze groeperingen bieden een manier om een AKS-cluster logisch te verdelen en de toegang te beperken tot het maken, weer geven of beheren van resources. U kunt bijvoorbeeld naam ruimten maken om bedrijfs groepen te scheiden. Gebruikers kunnen alleen communiceren met resources binnen hun toegewezen naam ruimten.
+Kubernetes-resources, zoals peulen en implementaties, worden logisch gegroepeerd in een *naam ruimte* . Deze groeperingen bieden een manier om een AKS-cluster logisch te verdelen en de toegang te beperken tot het maken, weer geven of beheren van resources. U kunt bijvoorbeeld naam ruimten maken om bedrijfs groepen te scheiden. Gebruikers kunnen alleen communiceren met resources binnen hun toegewezen naam ruimten.
 
 ![Kubernetes-naam ruimten om resources en toepassingen logisch te verdelen](media/concepts-clusters-workloads/namespaces.png)
 

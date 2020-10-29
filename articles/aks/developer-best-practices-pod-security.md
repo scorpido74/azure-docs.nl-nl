@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c7143b6d3479cf3083cfc730301c68dcf4eb705
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022272"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900819"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor pod-beveiliging in azure Kubernetes service (AKS)
 
@@ -29,13 +29,13 @@ U kunt ook de aanbevolen procedures voor [cluster beveiliging][best-practices-cl
 
 **Richt lijnen voor best practices** : als u wilt uitvoeren als een andere gebruiker of groep en de toegang tot de onderliggende knooppunt processen en-services wilt beperken, definieert u pod security context Settings. Wijs het minste vereiste aantal bevoegdheden toe.
 
-Als u wilt dat uw toepassingen correct worden uitgevoerd, moet het Peul worden uitgevoerd als een gedefinieerde gebruiker of groep en niet als *basis*. `securityContext`Met de for a Pod of container kunt u instellingen zoals *RunAsUser* of *fsGroup* definiëren om de juiste machtigingen aan te nemen. Wijs alleen de vereiste machtigingen van de gebruiker of groep toe en gebruik de beveiligings context niet als middel om aanvullende machtigingen te nemen. De instellingen voor *runAsUser*, bevoegdheids escalatie en andere Linux-capaciteiten zijn alleen beschikbaar op Linux-knoop punten en peulen.
+Als u wilt dat uw toepassingen correct worden uitgevoerd, moet het Peul worden uitgevoerd als een gedefinieerde gebruiker of groep en niet als *basis* . `securityContext`Met de for a Pod of container kunt u instellingen zoals *RunAsUser* of *fsGroup* definiëren om de juiste machtigingen aan te nemen. Wijs alleen de vereiste machtigingen van de gebruiker of groep toe en gebruik de beveiligings context niet als middel om aanvullende machtigingen te nemen. De instellingen voor *runAsUser* , bevoegdheids escalatie en andere Linux-capaciteiten zijn alleen beschikbaar op Linux-knoop punten en peulen.
 
 Wanneer u als niet-hoofd gebruiker wordt uitgevoerd, kunnen containers niet worden gebonden aan de geprivilegieerde poorten onder 1024. In dit scenario kan Kubernetes services worden gebruikt om het feit te verhullen dat een app wordt uitgevoerd op een bepaalde poort.
 
 Een pod-beveiligings context kan ook aanvullende mogelijkheden of machtigingen voor het verkrijgen van toegang tot processen en services definiëren. De volgende algemene beveiligings context definities kunnen worden ingesteld:
 
-* **allowPrivilegeEscalation** definieert of de pod de *root* -bevoegdheden kan aannemen. Ontwerp uw toepassingen zodat deze instelling altijd is ingesteld op *Onwaar*.
+* **allowPrivilegeEscalation** definieert of de pod de *root* -bevoegdheden kan aannemen. Ontwerp uw toepassingen zodat deze instelling altijd is ingesteld op *Onwaar* .
 * Met de **Linux-mogelijkheden** kan pod toegang krijgen tot onderliggende knooppunt processen. Wees voorzichtig met het toewijzen van deze mogelijkheden. Wijs het minste aantal benodigde bevoegdheden toe. Zie [Linux-mogelijkheden][linux-capabilities]voor meer informatie.
 * **Selinux labels** is een Linux-kernel-beveiligings module waarmee u toegangs beleid kunt definiëren voor services, processen en toegang tot het bestands systeem. Wijs opnieuw het minste aantal benodigde bevoegdheden toe. Zie [selinux-opties in Kubernetes][selinux-labels] voor meer informatie.
 
@@ -55,7 +55,7 @@ spec:
     fsGroup: 2000
   containers:
     - name: security-context-demo
-      image: nginx:1.15.5
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         runAsUser: 1000
         allowPrivilegeEscalation: false

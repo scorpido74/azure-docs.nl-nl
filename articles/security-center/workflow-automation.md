@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cbe6adc37025f0b727fa5f5d3ace46ed34afaa9e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a7341362183aee4a23556a164677bc320babdfec
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895219"
+ms.locfileid: "92900843"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Reacties op Security Center triggers automatiseren
 
@@ -66,7 +66,7 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
 1. In de nieuwe logische app kunt u kiezen uit ingebouwde, vooraf gedefinieerde sjablonen uit de beveiligings categorie. U kunt ook een aangepaste stroom van gebeurtenissen definiëren die moeten worden uitgevoerd wanneer dit proces wordt geactiveerd.
 
     > [!TIP]
-    > Soms worden para meters in een logische app in de connector opgenomen als onderdeel van een teken reeks en niet in hun eigen veld. Zie stap #14 van het [werken met para meters voor logische apps tijdens het bouwen van Azure Security Center werk stroom automatisering](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121)voor een EAN-voor beeld van het extra heren van para meters.
+    > Soms worden para meters in een logische app in de connector opgenomen als onderdeel van een teken reeks en niet in hun eigen veld. Zie stap #14 van het [werken met para meters voor logische apps tijdens het bouwen van Azure Security Center werk stroom automatisering](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121)voor een voor beeld van het extra heren van para meters.
 
     De ontwerp functie voor logische Apps ondersteunt deze Security Center-triggers:
 

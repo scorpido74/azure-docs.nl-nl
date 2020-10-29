@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: b903fda9a64233b4906941167ca7fd5819a0316b
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f5e774e9b7327d4b403f6a09187e97082a77aa78
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164479"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900336"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht Azure Monitor voor VM's inschakelen
 
@@ -59,13 +59,13 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
   - Europa - noord
   - Europa -west
 - India
-  - India - centraal
+  - Central India
 - Japan
   - Japan - oost
 - Verenigd Koninkrijk
   - Verenigd Koninkrijk Zuid
 - Verenigde Staten
-  - Central US
+  - VS - centraal
   - VS - oost
   - VS - oost 2
   - VS - noord-centraal
@@ -80,7 +80,7 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 >
 
 Als u geen Log Analytics-werk ruimte hebt, kunt u er een maken met behulp van een van de volgende resources:
-* [Azure-CLI](../learn/quick-create-workspace-cli.md)
+* [Azure CLI](../learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure-portal](../learn/quick-create-workspace.md)
 * [Azure Resource Manager](../samples/resource-manager-workspace.md)
@@ -107,11 +107,11 @@ Raadpleeg de volgende lijst met overwegingen voor Linux-ondersteuning van de afh
 ## <a name="supported-azure-arc-machines"></a>Ondersteunde Azure-Arc-machines
 Azure Monitor voor VM's is beschikbaar voor servers met Azure Arc ingeschakeld in regio's waar de Arc extension-service beschikbaar is. U moet versie 0,9 of hoger van de Arc-agent uitvoeren.
 
-| Verbonden bron | Ondersteund | Beschrijving |
+| Verbonden bron | Ondersteund | Description |
 |:--|:--|:--|
-| Windows-agents | Ja | Naast de [log Analytics-agent voor Windows](../platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](../platform/agents-overview.md#supported-operating-systems)voor meer informatie. |
-| Linux-agents | Ja | Naast de [log Analytics-agent voor Linux](../platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
-| Beheergroep System Center Operations Manager | Nee | |
+| Windows-agents | Yes | Naast de [log Analytics-agent voor Windows](../platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](../platform/agents-overview.md#supported-operating-systems)voor meer informatie. |
+| Linux-agents | Yes | Naast de [log Analytics-agent voor Linux](../platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Beheergroep System Center Operations Manager | No | |
 
 ## <a name="agents"></a>Agents
 Azure Monitor voor VM's moeten de volgende twee agents zijn geïnstalleerd op elke virtuele machine of schaalset voor virtuele machines die moet worden bewaakt. Het installeren van deze agents en het verbinden ervan met de werk ruimte is de enige vereiste voor het onboarden van de resource.
@@ -127,7 +127,7 @@ Hier volgen meerdere methoden voor het implementeren van deze agents.
 | Methode | Beschrijving |
 |:---|:---|
 | [Azure-portal](./vminsights-enable-portal.md) | Installeer beide agents op één virtuele machine, virtuele-machine schaalset of hybride virtuele machines die zijn verbonden met Azure Arc. |
-| [Resource Manager-sjablonen](vminsights-enable-powershell.md) | Installeer beide agents met behulp van een van de ondersteunde methoden om een resource manager-sjabloon te implementeren, waaronder CLI en Power shell. |
+| [Resource Manager-sjablonen](vminsights-enable-resource-manager.md) | Installeer beide agents met behulp van een van de ondersteunde methoden om een resource manager-sjabloon te implementeren, waaronder CLI en Power shell. |
 | [Azure Policy](./vminsights-enable-policy.md) | Wijs Azure Policy initiatief toe om automatisch de agents te installeren wanneer een virtuele machine of virtuele-machine schaalset wordt gemaakt. |
 | [Hand matige installatie](./vminsights-enable-hybrid.md) | Installeer de agents in het gast besturingssysteem op computers die buiten Azure worden gehost, inclusief in uw Data Center of andere Cloud omgevingen. |
 
@@ -137,7 +137,7 @@ Hier volgen meerdere methoden voor het implementeren van deze agents.
 ## <a name="management-packs"></a>Management packs
 Wanneer een Log Analytics-werk ruimte is geconfigureerd voor Azure Monitor voor VM's, worden twee Management Packs doorgestuurd naar alle Windows-computers die zijn verbonden met die werk ruimte. De Management Packs heten *micro soft. intelligence packs. ApplicationDependencyMonitor* en *micro soft. intelligence packs. VMInsights* en zijn geschreven naar *%ProgramFiles%\Microsoft monitoring Agent\Agent\Health service State\Management packs \* . 
 
-De gegevens bron die wordt gebruikt door de *ApplicationDependencyMonitor* -Management Pack is **% Program Files%\Microsoft monitoring Agent\Agent\Health service State\Resources \<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*. De gegevens bron die wordt gebruikt door de *VMInsights* -Management Pack is *% Program Files%\Microsoft monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID> \ Microsoft.VirtualMachineMonitoringModule.dll*.
+De gegevens bron die wordt gebruikt door de *ApplicationDependencyMonitor* -Management Pack is * *% Program Files%\Microsoft monitoring Agent\Agent\Health service State\Resources \<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll* . De gegevens bron die wordt gebruikt door de *VMInsights* -Management Pack is *% Program Files%\Microsoft monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID> \ Microsoft.VirtualMachineMonitoringModule.dll* .
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostische en gebruiks gegevens
 

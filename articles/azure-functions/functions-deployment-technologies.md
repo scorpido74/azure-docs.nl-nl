@@ -4,12 +4,12 @@ description: Meer informatie over de verschillende manieren waarop u code kunt i
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88641956"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900172"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -33,8 +33,8 @@ Hoewel de implementaties van specifieke functies gebruikmaken van de beste techn
 
 Azure Functions ondersteunt lokale ontwikkeling en hosting in Windows en Linux op meerdere platforms. Momenteel zijn er drie hosting plannen beschikbaar:
 
-+ [Verbruik](functions-scale.md#consumption-plan)
-+ [Premium](functions-scale.md#premium-plan)
++ [Meerverbruik](functions-scale.md#consumption-plan)
++ [Ultieme](functions-scale.md#premium-plan)
 + [Toegewezen (App Service)](functions-scale.md#app-service-plan)
 
 Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën zijn beschikbaar voor elk van de Azure Functions. In het volgende diagram ziet u welke implementatie technologieën worden ondersteund voor elke combi natie van besturings systeem en hosting plan:
@@ -128,7 +128,7 @@ U kunt een Linux-container installatie kopie implementeren die uw functie-app be
 
 >__Hoe gebruikt u dit:__ Maak een Linux-functie-app in het Premium-of dedicated-abonnement en geef op van welke container installatie kopie moet worden uitgevoerd. U kunt dit op twee manieren doen:
 >
->* Maak een Linux-functie-app in een Azure App Service plan in het Azure Portal. Voor **publiceren**selecteert u **docker-installatie kopie**en configureert u vervolgens de container. Geef de locatie op waar de installatie kopie wordt gehost.
+>* Maak een Linux-functie-app in een Azure App Service plan in het Azure Portal. Voor **publiceren** selecteert u **docker-installatie kopie** en configureert u vervolgens de container. Geef de locatie op waar de installatie kopie wordt gehost.
 >* Een Linux-functie-app maken in een App Service-abonnement met behulp van de Azure CLI. Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)voor meer informatie.
 >
 >Als u wilt implementeren in een bestaande app met behulp van een aangepaste container, gebruikt u de opdracht in [Azure functions core tools](functions-run-local.md) [`func deploy`](functions-run-local.md#publish) .
@@ -212,7 +212,7 @@ Als u meer controle over deze overgang wilt, moet u implementatie sleuven gebrui
 
 ## <a name="deployment-slots"></a>Implementatiesites
 
-Wanneer u de functie-app in azure implementeert, kunt u implementeren in een afzonderlijke implementatie site in plaats van rechtstreeks naar productie. Zie de documentatie over [Azure functions implementatie sleuven](../app-service/deploy-staging-slots.md) voor meer informatie over implementatie sites.
+Wanneer u de functie-app in azure implementeert, kunt u implementeren in een afzonderlijke implementatie site in plaats van rechtstreeks naar productie. Zie de documentatie over [Azure functions implementatie sleuven](functions-deployment-slots.md) voor meer informatie over implementatie sites.
 
 ## <a name="next-steps"></a>Volgende stappen
 

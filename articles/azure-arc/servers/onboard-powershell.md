@@ -1,14 +1,14 @@
 ---
 title: Hybride computers verbinden met Azure met behulp van Power shell
 description: In dit artikel leert u hoe u de Agent installeert en een machine verbindt met Azure met behulp van Azure Arc-servers met behulp van Power shell.
-ms.date: 10/27/2020
+ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb114ec3e279a7ea696d834af8eb7240cb892dc1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0755846ef02377edade98b69e478908a111ab247
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891938"
+ms.locfileid: "92901528"
 ---
 # <a name="connect-hybrid-machines-to-azure-using-powershell"></a>Hybride computers verbinden met Azure met behulp van Power shell
 
@@ -22,7 +22,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een computer met Azure PowerShell. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor instructies.
+- Een machine met Azure PowerShell. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor instructies.
 
 Voordat u Azure PowerShell gebruikt om VM-extensies te beheren op uw hybride server die wordt beheerd door servers met Arc-functionaliteit, moet u de `Az.ConnectedMachine` module installeren. Voer de volgende opdracht uit op de server met Arc-functionaliteit:
 
@@ -44,21 +44,21 @@ Wanneer de installatie is voltooid, wordt het volgende bericht weer gegeven:
 
     * Als u de verbonden machine-agent op de doel computer wilt installeren die rechtstreeks kan communiceren met Azure, voert u de volgende handelingen uit:
 
-    ```azurepowershell
-    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
-    ```
+        ```azurepowershell
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
+        ```
     
     * Voer de volgende stappen uit om de verbonden machine agent te installeren op de doel computer die communiceert via een proxy server:
-    
-    ```azurepowershell
-    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
-    ```
+        
+        ```azurepowershell
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
+        ```
 
 Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. Op Windows op *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log* en op Linux op */var/opt/azcmagent/log/himds.log* .
 
 ## <a name="install-and-connect-using-powershell-remoting"></a>Installeren en verbinding maken met behulp van externe communicatie met Power shell
 
-Voer de volgende stappen uit om de doel-Windows-Server of-computer te configureren met Azure Arc-servers. Externe toegang via Power shell moet zijn ingeschakeld op de externe computer. Gebruik de `Enable-PSRemoting` cmdlet om externe communicatie van Power shell in te scha kelen.
+Voer de volgende stappen uit om een of meer Windows-servers te configureren met Azure Arc-servers. Externe toegang via Power shell moet zijn ingeschakeld op de externe computer. Gebruik de `Enable-PSRemoting` cmdlet om externe communicatie van Power shell in te scha kelen.
 
 1. Open een Power shell-console als beheerder.
 
@@ -66,25 +66,32 @@ Voer de volgende stappen uit om de doel-Windows-Server of-computer te configurer
 
 3. Als u de verbonden machine-agent wilt installeren, gebruikt u `Connect-AzConnectedMachine` met de `-Name` `-ResourceGroupName` `-Location` para meters, en. Gebruik de `-SubscriptionId` para meter om het standaard abonnement te negeren als gevolg van de Azure-context die is gemaakt na het aanmelden.
 
-Voer de volgende opdracht uit om de verbonden machine agent te installeren op de doel computer die rechtstreeks kan communiceren met Azure:
+    * Voer de volgende opdracht uit om de verbonden machine agent te installeren op de doel computer die rechtstreeks kan communiceren met Azure:
+    
+        ```azurepowershell
+        $session = Connect-PSSession -ComputerName myMachineName
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        ```
+    
+    * Als u de verbonden machine agent op meerdere externe computers tegelijk wilt installeren, voegt u een lijst met namen van externe computers toe, gescheiden door een komma.
 
-```azurepowershell
-$session = Connect-PSSession -ComputerName myMachineName
-Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
-```
+        ```azurepowershell
+        $session = Connect-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        ```
 
-Het volgende voor beeld is de resultaten van de opdracht:
-
-```azurepowershell
-time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
-time="2020-08-07T13:13:25-07:00" level=info msg="Check network connectivity to all endpoints..."
-time="2020-08-07T13:13:29-07:00" level=info msg="All endpoints are available... continue onboarding"
-time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=f65bffc7-4734-483e-b3ca-3164bfa42941
-
-Name           Location OSName   Status     ProvisioningState
-----           -------- ------   ------     -----------------
-myMachineName  eastus   windows  Connected  Succeeded
-```
+    Het volgende voor beeld is de resultaten van de opdracht gericht op één computer:
+    
+    ```azurepowershell
+    time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
+    time="2020-08-07T13:13:25-07:00" level=info msg="Check network connectivity to all endpoints..."
+    time="2020-08-07T13:13:29-07:00" level=info msg="All endpoints are available... continue onboarding"
+    time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=f65bffc7-4734-483e-b3ca-3164bfa42941
+    
+    Name           Location OSName   Status     ProvisioningState
+    ----           -------- ------   ------     -----------------
+    myMachineName  eastus   windows  Connected  Succeeded
+    ```
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 

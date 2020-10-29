@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbbd5dbbc51cdb3b0d3c3783fa6ed72b76d26284
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986778"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900352"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor toepassings ontwikkelaars om resources te beheren in azure Kubernetes service (AKS)
 
@@ -27,7 +27,7 @@ In deze best practices vindt u informatie over het uitvoeren van uw cluster en w
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Pod-resource aanvragen en-limieten definiëren
 
-**Richt lijnen voor best practices** : Stel pod-aanvragen en limieten in voor alle peulen in uw yaml-manifesten. Als het AKS-cluster *resource quota*gebruikt, wordt uw implementatie mogelijk geweigerd als u deze waarden niet definieert.
+**Richt lijnen voor best practices** : Stel pod-aanvragen en limieten in voor alle peulen in uw yaml-manifesten. Als het AKS-cluster *resource quota* gebruikt, wordt uw implementatie mogelijk geweigerd als u deze waarden niet definieert.
 
 Een primaire methode voor het beheren van de reken bronnen binnen een AKS-cluster is het gebruik van pod-aanvragen en-limieten. Met deze aanvragen en limieten kan de Kubernetes scheduler weten welke reken resources een pod moet worden toegewezen.
 
@@ -60,7 +60,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m

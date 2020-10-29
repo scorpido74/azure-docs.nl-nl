@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 10/23/2020
+ms.date: 10/27/2020
 ms.custom: generated
-ms.openlocfilehash: ed5d7c3007cf8471da453db93be0ab716805908c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 60e9ec88fd07d8b04254c5d3917aab09d671f517
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742957"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900877"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde Azure-rollen
 
@@ -1156,7 +1156,7 @@ Hiermee beheert u Traffic Manager profielen, maar kunt u niet bepalen wie er toe
 }
 ```
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 
 
 ### <a name="avere-contributor"></a>AVERE-bijdrager
@@ -7336,7 +7336,7 @@ Met kunt u nieuwe Labs maken onder uw Azure Lab-accounts. [Meer informatie](../l
 }
 ```
 
-## <a name="monitor"></a>Controleren
+## <a name="monitor"></a>Monitor
 
 
 ### <a name="application-insights-component-contributor"></a>Inzender voor Application Insights onderdelen
@@ -9211,7 +9211,7 @@ Hiermee kunt u tags op entiteiten beheren zonder dat u toegang hebt tot de entit
 }
 ```
 
-## <a name="other"></a>Overige
+## <a name="other"></a>Anders
 
 
 ### <a name="azure-digital-twins-data-owner"></a>Azure Digital Apparaatdubbels-gegevens eigenaar
@@ -9225,12 +9225,12 @@ Volledige toegang voor Digital Apparaatdubbels data-vlak meer [informatie](../di
 > | **NotActions** |  |
 > | *geen* |  |
 > | **DataActions** |  |
-> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/eventroutes/* |  |
-> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/* |  |
-> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/commands/* |  |
-> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/relationships/* |  |
-> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/* |  |
-> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/query/* |  |
+> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/eventroutes/* | Gebeurtenis routes lezen, verwijderen, maken of bijwerken |
+> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/* | U kunt alle digitale dubbele items lezen, maken, bijwerken of verwijderen |
+> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/commands/* | Een wille keurige opdracht aanroepen op een digitale dubbele |
+> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/relationships/* | Een digitale dubbele relatie lezen, maken, bijwerken of verwijderen |
+> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/* | Een model lezen, maken, bijwerken of verwijderen |
+> | [Micro soft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/query/* | Een wille keurige Digital Apparaatdubbels-grafiek opvragen |
 > | **NotDataActions** |  |
 > | *geen* |  |
 

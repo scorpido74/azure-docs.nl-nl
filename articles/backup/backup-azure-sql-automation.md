@@ -4,12 +4,12 @@ description: Back-ups maken van SQL-data bases in azure-Vm's en deze herstellen 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 37e2336b262311ea00e833ad91fe5e8c5c1ddf1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b3b943a53c1da0f6f1e938b5b234dc82541b46d
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975178"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901671"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
@@ -56,10 +56,10 @@ Stel Power shell als volgt in:
 
     ![Lijst met Recovery Services-cmdlets](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-4. Meld u aan bij uw Azure-account met **Connect-AzAccount**.
+4. Meld u aan bij uw Azure-account met **Connect-AzAccount** .
 5. Op de webpagina die wordt weer gegeven, wordt u gevraagd uw account referenties in te voeren.
 
-    * U kunt ook uw account referenties als een para meter in de cmdlet **Connect-AzAccount** met **-Credential**toevoegen.
+    * U kunt ook uw account referenties als een para meter in de cmdlet **Connect-AzAccount** met **-Credential** toevoegen.
     * Als u een CSP-partner bent die werkt voor een Tenant, geeft u de klant op als Tenant met behulp van hun tenantID of Tenant primaire domein naam. Een voor beeld is **Connect-AzAccount-Tenant** fabrikam.com.
 
 6. Koppel het abonnement dat u wilt gebruiken met het account, omdat een account verschillende abonnementen kan hebben.
@@ -80,7 +80,7 @@ Stel Power shell als volgt in:
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. Controleer in de uitvoer van de opdracht of **RegistrationState** is gewijzigd in **geregistreerd**. Als dat niet het geval is, voert u de cmdlet **REGI ster-AzResourceProvider** opnieuw uit.
+9. Controleer in de uitvoer van de opdracht of **RegistrationState** is gewijzigd in **geregistreerd** . Als dat niet het geval is, voert u de cmdlet **REGI ster-AzResourceProvider** opnieuw uit.
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -103,7 +103,7 @@ De Recovery Services kluis is een resource manager-resource, dus u moet deze in 
 3. Geef het type redundantie op dat moet worden gebruikt voor de kluis opslag.
 
     * U kunt [lokaal redundante opslag](../storage/common/storage-redundancy.md#locally-redundant-storage), [geografisch redundante](../storage/common/storage-redundancy.md#geo-redundant-storage) opslag of [zone-redundante opslag](../storage/common/storage-redundancy.md#zone-redundant-storage) gebruiken.
-    * In het volgende voor beeld wordt de optie **-BackupStorageRedundancy** ingesteld voor de[set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd voor **testvault** ingesteld op **georedundant**.
+    * In het volgende voor beeld wordt de optie **-BackupStorageRedundancy** ingesteld voor de [set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd voor **testvault** ingesteld op **georedundant** .
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -137,7 +137,7 @@ Sla het kluis object op in een variabele en stel de kluis context in.
 * Voor veel Azure Backup-cmdlets is het Recovery Services kluis-object vereist als invoer, zodat het handig is om het kluis object op te slaan in een variabele.
 * De context van de kluis is het type gegevens dat in de kluis wordt beveiligd. Stel deze in met [set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext). Nadat de context is ingesteld, is deze van toepassing op alle volgende cmdlets.
 
-In het volgende voor beeld wordt de kluis context voor **testvault**ingesteld.
+In het volgende voor beeld wordt de kluis context voor **testvault** ingesteld.
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -172,7 +172,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > U moet de start tijd binnen 30 minuten meerdere keer opgeven. In het bovenstaande voor beeld kan de waarde alleen ' 01:00:00 ' of ' 02:30:00 ' zijn. De begin tijd mag niet ' 01:15:00 ' zijn.
 
-In het volgende voor beeld worden het plannings beleid en het Bewaar beleid opgeslagen in variabelen. Vervolgens worden deze variabelen gebruikt als para meters voor een nieuw beleid (**NewSQLPolicy**). **NewSQLPolicy** neemt dagelijks een volledige back-up, behoudt deze gedurende 180 dagen en maakt elke 2 uur een logboek back-up
+In het volgende voor beeld worden het plannings beleid en het Bewaar beleid opgeslagen in variabelen. Vervolgens worden deze variabelen gebruikt als para meters voor een nieuw beleid ( **NewSQLPolicy** ). **NewSQLPolicy** neemt dagelijks een volledige back-up, behoudt deze gedurende 180 dagen en maakt elke 2 uur een logboek back-up
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -310,7 +310,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 Als u de Data Base naar een bepaald tijdstip wilt herstellen, gebruikt u de Power shell-cmdlet [Get-AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) . De cmdlet retourneert een lijst met datums die de begin-en eind tijden van een niet-verbroken, doorlopende logboek keten voor dat SQL-back-upitem vertegenwoordigen. Het gewenste tijdstip moet binnen dit bereik liggen.
 
 ```powershell
-Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -VaultId $targetVault.ID
 ```
 
 De uitvoer ziet er ongeveer uit als in het volgende voor beeld.
@@ -499,7 +499,7 @@ Als de uitvoer verloren is gegaan of als u de relevante taak-ID wilt ophalen, [h
 
 ### <a name="change-policy-for-backup-items"></a>Beleid voor back-upitems wijzigen
 
-U kunt het beleid van het back-upitem wijzigen van *Policy1* in *Policy2*. Als u wilt scha kelen tussen beleids regels voor een back-upitem, haalt u het relevante beleid op en maakt u een back-up van het item. Gebruik de opdracht [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) met back-upitem als para meter.
+U kunt het beleid van het back-upitem wijzigen van *Policy1* in *Policy2* . Als u wilt scha kelen tussen beleids regels voor een back-upitem, haalt u het relevante beleid op en maakt u een back-up van het item. Gebruik de opdracht [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) met back-upitem als para meter.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
