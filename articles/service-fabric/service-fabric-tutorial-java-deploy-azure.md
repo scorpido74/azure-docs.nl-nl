@@ -3,13 +3,13 @@ title: Een Java-app implementeren in een Service Fabric-cluster in Azure
 description: In deze zelfstudie leert u hoe u een Java Service Fabric-toepassing implementeert in een Azure Service Fabric-cluster.
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 3e00e478e20fbd0bc4ff6ed17b330f0d16488be6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532055"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738903"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Java-toepassing implementeren in een Service Fabric-cluster in Azure
 
@@ -154,7 +154,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
     python3 eventhubssastoken.py 'testeventhubs' 'testeventhubs' 'sender' '[PRIMARY-KEY]'
     ```
 
-    Kopieer de waarde van het veld **sr** in de JSON die is geretourneerd. De veldwaarde **sr** is de SAS-token voor EventHubs. De volgende URL is een voorbeeld van het veld **sr**:
+    Kopieer de waarde van het veld **sr** in de JSON die is geretourneerd. De veldwaarde **sr** is de SAS-token voor EventHubs. De volgende URL is een voorbeeld van het veld **sr** :
 
     ```output
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
@@ -176,8 +176,8 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
     }
     ```
 
-13. Opens **sfdeploy.parameters.json**. Wijzig de volgende parameters en sla het bestand op.
-    - **clusterName**. Gebruik alleen kleine letters en cijfers.
+13. Opens **sfdeploy.parameters.json** . Wijzig de volgende parameters en sla het bestand op.
+    - **clusterName** . Gebruik alleen kleine letters en cijfers.
     - **adminUserName** (in een waarde anders dan leeg)
     - **adminPassword** (in een waarde anders dan leeg)
 
@@ -189,7 +189,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
 ## <a name="deploy-your-application-to-the-cluster"></a>De toepassing in het cluster implementeren
 
-1. Voordat u uw toepassing implementeert, moet u het volgende codefragment toevoegen aan het bestand *Voting/VotingApplication/ApplicationManifest.xml*. Het veld **X509FindValue** is de vingerafdruk die is geretourneerd uit stap 4 van de sectie **Een Service Fabric-cluster maken in Azure**. Dit codefragment is genest onder het veld **ApplicationManifest** (het hoofdveld).
+1. Voordat u uw toepassing implementeert, moet u het volgende codefragment toevoegen aan het bestand *Voting/VotingApplication/ApplicationManifest.xml* . Het veld **X509FindValue** is de vingerafdruk die is geretourneerd uit stap 4 van de sectie **Een Service Fabric-cluster maken in Azure** . Dit codefragment is genest onder het veld **ApplicationManifest** (het hoofdveld).
 
     ```xml
     <Certificates>

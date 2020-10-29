@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 89118f13bc009ce60d4fd1c82dfe7688bf1e551b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336697"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741277"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Zelfstudie: Azure Key Vault gebruiken met een virtuele machine in Python
 
@@ -66,7 +66,7 @@ Gebruik een van de volgende methoden om een VM met de naam **myVM** te maken:
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure-portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) |
 
-Als u een Linux-VM wilt maken met behulp van de Azure CLI, gebruikt u de opdracht [az vm create](/cli/azure/vm).  In het volgende voorbeeld wordt een gebruikersaccount met de naam *azureuser* toegevoegd. De parameter `--generate-ssh-keys` wordt gebruikt om automatisch een SSH-sleutel te genereren en deze te plaatsen in de standaardsleutellocatie ( *~/.ssh*). 
+Als u een Linux-VM wilt maken met behulp van de Azure CLI, gebruikt u de opdracht [az vm create](/cli/azure/vm).  In het volgende voorbeeld wordt een gebruikersaccount met de naam *azureuser* toegevoegd. De parameter `--generate-ssh-keys` wordt gebruikt om automatisch een SSH-sleutel te genereren en deze te plaatsen in de standaardsleutellocatie ( *~/.ssh* ). 
 
 ```azurecli-interactive
 az vm create \
@@ -129,7 +129,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>Het Python-voorbeeldscript maken en bewerken
 
-Maak op de virtuele machine een Python-bestand met de naam **sample.py**. Bewerk het bestand zodat het de volgende code bevat, waarbij u <your-unique-keyvault-name> vervangt door de naam van uw sleutelkluis:
+Maak op de virtuele machine een Python-bestand met de naam **sample.py** . Bewerk het bestand zodat het de volgende code bevat, waarbij u <your-unique-keyvault-name> vervangt door de naam van uw sleutelkluis:
 
 ```python
 from azure.keyvault.secrets import SecretClient

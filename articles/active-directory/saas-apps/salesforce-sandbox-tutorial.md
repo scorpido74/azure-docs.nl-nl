@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 277acbc84ab435ce1076c30a1e49f6ffdd2a0586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc27b1fea97471e9ca1991467902e666c1451605
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543707"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675541"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Salesforce Sandbox
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Salesforce Sandbox kunt integreren met Azure AD
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Salesforce Sandbox.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,23 +42,23 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * Salesforce Sandbox biedt ondersteuning voor met **SP en IDP** geïnitieerde eenmalige aanmelding
 * Salesforce Sandbox biedt ondersteuning voor het **Just-In-Time** inrichten van gebruikers
 * Salesforce Sandbox biedt ondersteuning voor het [**automatisch** inrichten van gebruikers](salesforce-sandbox-provisioning-tutorial.md)
-* Zodra u Salesforce Sandbox hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens in uw organisatie in realtime worden beveiligd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Zodra u Salesforce Sandbox hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens in uw organisatie in realtime worden beveiligd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-sandbox-from-the-gallery"></a>Salesforce Sandbox toevoegen vanuit de galerie
 
 Om de integratie van Salesforce Sandbox te configureren in Azure AD moet u Salesforce Sandbox vanuit de galerie toevoegen aan de lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
-1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory** .
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Salesforce Sandbox**.
+1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak: **Salesforce Sandbox** .
 1. Selecteer **Salesforce Sandbox** in het resultatenpaneel en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-salesforce-sandbox"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Salesforce Sandbox
 
-Configureer en test eenmalige aanmelding van Azure AD met Salesforce Sandbox met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Salesforce Sandbox.
+Configureer en test eenmalige aanmelding van Azure AD met Salesforce Sandbox met behulp van een testgebruiker met de naam **B.Simon** . Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Salesforce Sandbox.
 
 Als u eenmalige aanmelding van Azure AD wilt configureren en testen met Salesforce Sandbox, voert u de volgende procedures uit:
 
@@ -73,26 +73,26 @@ Als u eenmalige aanmelding van Azure AD wilt configureren en testen met Salesfor
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Salesforce Sandbox** naar de sectie **Beheren**, en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Salesforce Sandbox** naar de sectie **Beheren** , en selecteer **Eenmalige aanmelding** .
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding** .
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
 4. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u het **Service Provider-metagegevensbestand** hebt, en in de met **IDP** geïnitieerde modus wilt configureren:
 
-    a. Klik op **Metagegevensbestand uploaden**.
+    a. Klik op **Metagegevensbestand uploaden** .
 
     ![Metagegevensbestand uploaden](common/upload-metadata.png)
 
-    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden** .
 
     ![Metagegevensbestand kiezen](common/browse-upload-metadata.png)
 
     > [!NOTE]
     > U downloadt het Service Provider-metagegevensbestand in de Salesforce Sandbox-beheerportal, wat later in deze zelfstudie wordt uitgelegd.
 
-    c. Nadat het metagegevensbestand is geüpload, wordt de waarde voor **Antwoord-URL** automatisch ingevuld in het tekstvak **Antwoord-URL**.
+    c. Nadat het metagegevensbestand is geüpload, wordt de waarde voor **Antwoord-URL** automatisch ingevuld in het tekstvak **Antwoord-URL** .
 
     ![image](common/both-replyurl.png)
 
@@ -117,31 +117,31 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord** .
+   1. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Salesforce Sandbox.
 
-1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen** .
 1. Selecteer **Salesforce Sandbox** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen** .
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ## <a name="configure-salesforce-sandbox-sso"></a>Eenmalige aanmelding bij Salesforce Sandbox configureren
 
@@ -151,23 +151,23 @@ In deze sectie geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van 
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/configure1.png)
 
-3. Schuif in het linkernavigatiedeelvenster omlaag naar **INSTELLINGEN** en klik op **Id** om de bijbehorende sectie uit te vouwen. Klik vervolgens op **Instellingen voor eenmalige aanmelding**.
+3. Schuif in het linkernavigatiedeelvenster omlaag naar **INSTELLINGEN** en klik op **Id** om de bijbehorende sectie uit te vouwen. Klik vervolgens op **Instellingen voor eenmalige aanmelding** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
-4. Op de pagina **Instellingen voor eenmalige aanmelding** klikt u op de knop **Bewerken**.
+4. Op de pagina **Instellingen voor eenmalige aanmelding** klikt u op de knop **Bewerken** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/configure3.png)
 
-5. Selecteer **SAML ingeschakeld** en klik vervolgens op **Opslaan**.
+5. Selecteer **SAML ingeschakeld** en klik vervolgens op **Opslaan** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-6. Als u uw SAML-instellingen voor eenmalige aanmelding wilt configureren, klikt u op **Nieuw op basis van het bestand met metagegevens**.
+6. Als u uw SAML-instellingen voor eenmalige aanmelding wilt configureren, klikt u op **Nieuw op basis van het bestand met metagegevens** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-7. Klik op **Bestand kiezen** om het XML-bestand met metagegevens te uploaden dat u hebt gedownload uit Azure Portal. Klik dan op **Maken**.
+7. Klik op **Bestand kiezen** om het XML-bestand met metagegevens te uploaden dat u hebt gedownload uit Azure Portal. Klik dan op **Maken** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
@@ -185,7 +185,7 @@ In deze sectie geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van 
 
     b. U moet uw domein configureren en inschakelen in Salesforce Sandbox. De stappen hiervoor worden later in deze zelfstudie uitgelegd.
 
-    c. Klik in Azure Portal, in de sectie **Standaard SAML-configuratie**, op **Extra URL's instellen**, en voer de volgende stap uit:
+    c. Klik in Azure Portal, in de sectie **Standaard SAML-configuratie** , op **Extra URL's instellen** , en voer de volgende stap uit:
   
     ![Gegevens voor domein en URL's voor eenmalige aanmelding van Salesforce Sandbox](common/both-signonurl.png)
 
@@ -194,7 +194,7 @@ In deze sectie geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van 
     > [!NOTE]
     > Deze waarde moet worden gekopieerd in de Salesforce Sandbox-portal zodra u het domein hebt ingeschakeld.
 
-11. Klik in de sectie **SAML-handtekeningcertificaat** op **XML-bestand met federatieve metagegevens**, en sla het XML-bestand op de computer op.
+11. Klik in de sectie **SAML-handtekeningcertificaat** op **XML-bestand met federatieve metagegevens** , en sla het XML-bestand op de computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -204,27 +204,27 @@ In deze sectie geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van 
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/configure1.png)
 
-14. Schuif in het linkernavigatiedeelvenster omlaag naar **INSTELLINGEN** en klik op **Id** om de bijbehorende sectie uit te vouwen. Klik vervolgens op **Instellingen voor eenmalige aanmelding**.
+14. Schuif in het linkernavigatiedeelvenster omlaag naar **INSTELLINGEN** en klik op **Id** om de bijbehorende sectie uit te vouwen. Klik vervolgens op **Instellingen voor eenmalige aanmelding** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
-15. Op de pagina **Instellingen voor eenmalige aanmelding** klikt u op de knop **Bewerken**.
+15. Op de pagina **Instellingen voor eenmalige aanmelding** klikt u op de knop **Bewerken** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/configure3.png)
 
-16. Selecteer **SAML ingeschakeld** en klik vervolgens op **Opslaan**.
+16. Selecteer **SAML ingeschakeld** en klik vervolgens op **Opslaan** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-17. Als u uw SAML-instellingen voor eenmalige aanmelding wilt configureren, klikt u op **Nieuw op basis van het bestand met metagegevens**.
+17. Als u uw SAML-instellingen voor eenmalige aanmelding wilt configureren, klikt u op **Nieuw op basis van het bestand met metagegevens** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-18. Klik op **Bestand kiezen** om het XML-bestand met metagegevens te uploaden, en klik op **Maken**.
+18. Klik op **Bestand kiezen** om het XML-bestand met metagegevens te uploaden, en klik op **Maken** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-19. Op de pagina **SAML-instellingen voor eenmalige aanmelding** worden de velden automatisch ingevuld. Typ de naam van de configuratie (bijvoorbeeld: *SPSSOWAAD_Test*), in het tekstvak **Naam** en klik op Opslaan.
+19. Op de pagina **SAML-instellingen voor eenmalige aanmelding** worden de velden automatisch ingevuld. Typ de naam van de configuratie (bijvoorbeeld: *SPSSOWAAD_Test* ), in het tekstvak **Naam** en klik op Opslaan.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
@@ -233,15 +233,15 @@ In deze sectie geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van 
     > [!NOTE]
     > Voordat u het domein inschakelt, moet u hetzelfde maken in Salesforce Sandbox. Raadpleeg [Uw domeinnaam toevoegen](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US) voor meer informatie. Zodra het domein is gemaakt, controleert u of het juist is geconfigureerd.
 
-21. Klik in het linkernavigatiedeelvenster in Salesforce Sandbox op **Bedrijfsinstellingen** om de bijbehorende sectie uit te vouwen. Klik vervolgens op **Mijn domein**.
+21. Klik in het linkernavigatiedeelvenster in Salesforce Sandbox op **Bedrijfsinstellingen** om de bijbehorende sectie uit te vouwen. Klik vervolgens op **Mijn domein** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
 
-22. Klik in de sectie **Verificatieconfiguratie** op **Bewerken**.
+22. Klik in de sectie **Verificatieconfiguratie** op **Bewerken** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
-23. Selecteer in de sectie **Verificatieconfiguratie** als **Verificatieservice** de naam van de SAML-instelling voor eenmalige aanmelding die u hebt ingesteld tijdens de configuratie van eenmalige aanmelding in Salesforce Sandbox en klik op **Opslaan**.
+23. Selecteer in de sectie **Verificatieconfiguratie** als **Verificatieservice** de naam van de SAML-instelling voor eenmalige aanmelding die u hebt ingesteld tijdens de configuratie van eenmalige aanmelding in Salesforce Sandbox en klik op **Opslaan** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-sandbox-tutorial/configure2.png)
 
@@ -253,20 +253,20 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Salesforc
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Salesforce Sandbox klikt, wordt u automatisch aangemeld bij de instantie van Salesforce Sandbox waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Salesforce Sandbox klikt, wordt u automatisch aangemeld bij de instantie van Salesforce Sandbox waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Salesforce Sandbox uitproberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/protect-salesforce)
 
 - [Inrichten van gebruikers configureren](salesforce-sandbox-provisioning-tutorial.md)
 
-- [Salesforce Sandbox beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Salesforce Sandbox beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)

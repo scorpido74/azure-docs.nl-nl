@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 7964f96afc59464c28cabb9e1d5c7961fc765a3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 4a790c51cd0caa2c81275e7eafdd663f2f2f0116
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501769"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740206"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Zelfstudie: Een webserver op een virtuele Linux-machine in Azure beveiligen met TLS/SSL-certificaten die zijn opgeslagen in Key Vault
 Om webservers te beveiligen, kan een Transport Layer Security-certificaat (TLS), voorheen bekend als Secure Sockets Layer (SSL), worden gebruikt voor het versleutelen van internetverkeer. Deze TLS/SSL-certificaten kunnen worden opgeslagen in Azure Key Vault en beveiligde implementaties van certificaten aan virtuele Linux-machines (VM's) in Azure toestaan. In deze zelfstudie leert u het volgende:
@@ -42,7 +42,7 @@ In plaats van met een aangepaste VM-installatiekopie die standaard certificaten 
 
 
 ## <a name="create-an-azure-key-vault"></a>Een Azure Key Vault maken
-Voordat u een Key Vault en certificaten kunt maken, moet u eerst een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupSecureWeb* gemaakt op de locatie *VS Oost*:
+Voordat u een Key Vault en certificaten kunt maken, moet u eerst een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupSecureWeb* gemaakt op de locatie *VS Oost* :
 
 ```azurecli-interactive 
 az group create --name myResourceGroupSecureWeb --location eastus

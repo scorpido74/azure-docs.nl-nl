@@ -7,12 +7,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: ae2c1072b9490931609dd61f1cac2a47f1cffef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 254a9737b805aeeae2008923a8178cd971602132
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469946"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677758"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>Zelfstudie: Een Azure Red Hat OpenShift 4-cluster verwijderen
 
@@ -44,13 +44,13 @@ In de vorige zelfstudies zijn de volgende variabelen ingesteld.
 
 ```bash
 CLUSTER=yourclustername
-RESOURCE_GROUP=yourresourcegroup
+RESOURCEGROUP=yourresourcegroup
 ```
 
 Verwijder uw cluster met behulp van deze waarden:
 
 ```bash
-az aro delete --resource-group $RESOURCE_GROUP --name $CLUSTER
+az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
 ```
 
 U wordt vervolgens gevraagd om te bevestigen of u het cluster wilt verwijderen. Nadat u hebt bevestigd met `y`, duurt het enkele minuten om het cluster te verwijderen. Wanneer de opdracht is voltooid, wordt de hele resourcegroep en alle resources erin, inclusief het cluster, verwijderd.

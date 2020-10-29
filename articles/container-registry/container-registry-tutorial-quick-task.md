@@ -3,13 +3,13 @@ title: 'Zelfstudie: Snel een containerinstallatiekopie bouwen'
 description: In deze zelfstudie leert u hoe een Docker-containerinstallatiekopie in Azure bouwt met Azure Container Registry Tasks (ACR Tasks) en deze vervolgens implementeert naar Azure Container Instances.
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 43d2c277fe3297c7e5ee55046118add352853640
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259489"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739533"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Zelfstudie: Containerinstallatiekopieën bouwen in de cloud met Azure Container Registry-taken
 
@@ -203,7 +203,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Het argument `--role` in de voorgaande opdracht configureert de service-principal met de rol *acrpull*, die de principal alleen-push-toegang tot het register geeft. Als u zowel push-als pull-toegang wilt geven, wijzigt u het argument `--role` in *acrpush*.
+Het argument `--role` in de voorgaande opdracht configureert de service-principal met de rol *acrpull* , die de principal alleen-push-toegang tot het register geeft. Als u zowel push-als pull-toegang wilt geven, wijzigt u het argument `--role` in *acrpush* .
 
 Vervolgens slaat u de *appId* van de service-principal op in de kluis. Deze ID is de **gebruikersnaam** die u voor verificatie doorgeeft aan Azure Container Registry:
 

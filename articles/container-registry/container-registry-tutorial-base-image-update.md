@@ -3,13 +3,13 @@ title: 'Zelfstudie: build van installatiekopie activeren bij bijwerken van basis
 description: In deze zelfstudie leert u hoe u een Azure Container Registry-taak configureert om builds van containerinstallatiekopieën automatisch te activeren in de cloud wanneer een basisinstallatiekopie wordt bijgewerkt in hetzelfde register.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc, devx-track-js
-ms.openlocfilehash: 0b87f4ca138e0da76efd184e87f12bec32e3960e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: f6dfc5b6cfe3312f2b3b4663ab5211cc60309eb6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262243"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741112"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Zelfstudie: Builds van containerinstallatiekopieën automatiseren wanneer een basisinstallatiekopie wordt bijgewerkt in een Azure-containerregister 
 
@@ -201,7 +201,7 @@ da2       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T22:50:
 da1                       Linux       Succeeded  Manual        2018-09-17T22:29:59Z  00:00:57
 ```
 
-Als u de volgende optionele stap van de nieuw gebouwde container wilt uitvoeren om het bijgewerkte versienummer te zien, noteert u de **RUN ID**-waarde voor het bijwerken van de door de installatiekopie getriggerde build (in de vorige uitvoer is dit 'da8').
+Als u de volgende optionele stap van de nieuw gebouwde container wilt uitvoeren om het bijgewerkte versienummer te zien, noteert u de **RUN ID** -waarde voor het bijwerken van de door de installatiekopie getriggerde build (in de vorige uitvoer is dit 'da8').
 
 ### <a name="optional-run-newly-built-image"></a>Optioneel: Nieuw gebouwde installatiekopie uitvoeren
 
@@ -215,7 +215,7 @@ Ga naar http://localhost:8081 in uw browser. U ziet nu het bijgewerkte nummer va
 
 ![Schermafbeelding van de voorbeeldtoepassing die wordt weergegeven in de browser][base-update-02]
 
-U hebt uw **basis**installatiekopie bijgewerkt met een nieuw versienummer, maar de **toepassings**installatiekopie die als laatste is gebouwd, geeft nieuwe versie weer. ACR Tasks heeft uw wijziging van de basisinstallatiekopie herkend en heeft de toepassingsinstallatiekopie automatisch opnieuw opgebouwd.
+U hebt uw **basis** installatiekopie bijgewerkt met een nieuw versienummer, maar de **toepassings** installatiekopie die als laatste is gebouwd, geeft nieuwe versie weer. ACR Tasks heeft uw wijziging van de basisinstallatiekopie herkend en heeft de toepassingsinstallatiekopie automatisch opnieuw opgebouwd.
 
 Voer de volgende opdracht uit om de container te stoppen en te verwijderen:
 

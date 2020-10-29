@@ -1,20 +1,20 @@
 ---
 title: Beheeropties voor DoD Impact Level 4-blauwdrukvoorbeeld
 description: Beheeropties toewijzen voor het DoD Impact Level 4-blauwdrukvoorbeeld. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
-ms.date: 09/17/2020
+ms.date: 10/26/2020
 ms.topic: sample
-ms.openlocfilehash: 433e77775fdd28032db27c017fe370ab32074a95
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 376ddd68373026a93eaf08774cee0a1f8ce06bec
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929520"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675730"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Beheeropties toewijzen voor het DoD Impact Level 4-blauwdrukvoorbeeld
 
 Het volgende artikel bevat informatie over de manier waarop de Azure Blueprints Department of Defense Impact Level 4 (DoD IL4) blauwdrukvoorbeelden toewijst aan de beheeropties voor DoD Impact Level 4. Zie voor meer informatie over de beheeropties [DoD Cloud Computing Security Requirements Guide (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf). De Defense Information Systems Agency (DISA) is een instantie van het Amerikaanse ministerie van defensie dat verantwoordelijk is voor het ontwikkelen en onderhouden van de DoD Cloud Computing Security Requirements Guide (SRG). De SRG definieert de basisbeveiligingsvereisten voor cloudserviceproviders (CSP's) die als host dienen voor DoD-informatie, systemen en toepassingen, en voor het gebruik van cloudservices door DoD.  
 
-De volgende toewijzingen zijn voor de **DoD Impact Level 4**-beheeropties. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifieke beheeroptie te gaan. Veel van de toegewezen beheeropties worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md)-initiatief. Als u het complete initiatief wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities**. Zoek en selecteer vervolgens de **\[Preview\]: DoD Impact Level 4** ingebouwd beleidsinitiatief.
+De volgende toewijzingen zijn voor de **DoD Impact Level 4** -beheeropties. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifieke beheeroptie te gaan. Veel van de toegewezen beheeropties worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md)-initiatief. Als u het complete initiatief wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities** . Zoek en selecteer vervolgens de **\[Preview\]: DoD Impact Level 4** ingebouwd beleidsinitiatief.
 
 > [!IMPORTANT]
 > Elke beheeroptie hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md)-definities. Met deze beleidsregels kunt u de [compliance beoordelen](../../../policy/how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsregels zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de compliance standaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is compliance in Azure Policy slechts een gedeeltelijke weergave van uw algemene compliancestatus. De koppelingen tussen de beheeropties en Azure Policy definities voor dit blauwdrukvoorbeeld voor compliance kunnen na verloop van tijd veranderen. Als u de wijzigingsgeschiedenis wilt bekijken, raadpleegt u de [GitHub Commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md).
@@ -192,7 +192,7 @@ Adaptief toepassingsbeheer in Azure Security Center is een intelligente, geautom
 
 ## <a name="cp-7-alternate-processing-site"></a>CP-7 Alternate Processing Site
 
-Met Site Recovery worden workloads die worden uitgevoerd op virtuele machines gerepliceerd van een primaire site naar een secundaire locatie. Als er een storing optreedt op de primaire site, wordt een failover-overschakeling voor de workload uitgevoerd naar de secundaire locatie. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee virtuele machines worden gecontroleerd waarop geen noodherstel is geconfigureerd. Door deze indicator te bewaken, kunt u ervoor zorgen dat de noodzakelijke beheeropties voor onvoorziene gebeurtenissen zijn ingeschakeld.
+Met Azure Site Recovery worden workloads die worden uitgevoerd op virtuele machines gerepliceerd van een primaire site naar een secundaire locatie. Als er een storing optreedt op de primaire site, wordt een failover-overschakeling voor de workload uitgevoerd naar de secundaire locatie. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee virtuele machines worden gecontroleerd waarop geen noodherstel is geconfigureerd. Door deze indicator te bewaken, kunt u ervoor zorgen dat de noodzakelijke beheeropties voor onvoorziene gebeurtenissen zijn ingeschakeld.
 
 - Virtuele machines controleren waarop geen noodherstel is geconfigureerd
 

@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: c8d7b13f9e35a41a414a44c908997cfcc550af41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 2bc1878739c9ce23cb1448eee87d71575823a2f6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89011732"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740295"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Een virtuele Linux-machine bewaken in Azure
 
@@ -46,7 +46,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure
 
 ## <a name="create-vm"></a>VM maken
 
-Om diagnostische gegevens en metrische gegevens in actie te zien, hebt u een virtuele machine nodig. Maak eerst een resourcegroep met [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupMonitor* gemaakt op de locatie *VS Oost*.
+Om diagnostische gegevens en metrische gegevens in actie te zien, hebt u een virtuele machine nodig. Maak eerst een resourcegroep met [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupMonitor* gemaakt op de locatie *VS Oost* .
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
@@ -79,7 +79,7 @@ az storage account create \
   --location eastus
 ```
 
-Als u diagnostische gegevens over opstarten inschakelt, is de URI naar de opslagcontainer voor de blob nodig. Met de volgende opdracht wordt een query uitgevoerd op de opslagaccount om deze URI op te halen. De URI-waarde wordt opgeslagen in een variabele met de naam *bloburi*, die in de volgende stap wordt gebruikt.
+Als u diagnostische gegevens over opstarten inschakelt, is de URI naar de opslagcontainer voor de blob nodig. Met de volgende opdracht wordt een query uitgevoerd op de opslagaccount om deze URI op te halen. De URI-waarde wordt opgeslagen in een variabele met de naam *bloburi* , die in de volgende stap wordt gebruikt.
 
 ```azurecli-interactive
 bloburi=$(az storage account show --resource-group myResourceGroupMonitor --name $storageacct --query 'primaryEndpoints.blob' -o tsv)
@@ -118,8 +118,8 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 
 Een Linux-VM heeft een toegewezen host in Azure die met deze VM samenwerkt. Metrische gegevens worden automatisch verzameld voor de host, en kunnen als volgt worden weergegeven in Azure Portal:
 
-1. Selecteer in Azure Portal de optie **Resourcegroepen**, kies **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
-1. Als u wilt zien hoe de host-VM presteert, selecteert u **Metrische gegevens** in het VM-venster en kiest u vervolgens een van de metrische gegevens voor *[Host]* onder **Beschikbare metrische gegevens**.
+1. Selecteer in Azure Portal de optie **Resourcegroepen** , kies **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
+1. Als u wilt zien hoe de host-VM presteert, selecteert u **Metrische gegevens** in het VM-venster en kiest u vervolgens een van de metrische gegevens voor *[Host]* onder **Beschikbare metrische gegevens** .
 
     ![Metrische gegevens over de host weergeven](./media/tutorial-monitoring/monitor-host-metrics.png)
 
@@ -127,15 +127,15 @@ Een Linux-VM heeft een toegewezen host in Azure die met deze VM samenwerkt. Metr
 
 Ga als volgt te werk als u de bewaking van uw Azure-VM met Azure Monitor voor VM's wilt inschakelen:
 
-1. Klik in Azure Portal op **Resourcegroepen**, selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
+1. Klik in Azure Portal op **Resourcegroepen** , selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
 
-2. Selecteer op de VM-pagina, in de sectie **Bewaking**, de optie **Inzichten (preview)** .
+2. Selecteer op de VM-pagina, in de sectie **Bewaking** , de optie **Inzichten (preview)** .
 
-3. Selecteer op de pagina **Inzichten (preview)** de optie **Nu uitproberen**.
+3. Selecteer op de pagina **Inzichten (preview)** de optie **Nu uitproberen** .
 
     ![Azure Monitor voor VM's voor een VM inschakelen](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-4. Als u een bestaande Log Analytics-werkruimte in hetzelfde abonnement hebt, selecteert u deze in de vervolgkeuzelijst op de pagina **Onboarding van Azure Monitor Insights**.  
+4. Als u een bestaande Log Analytics-werkruimte in hetzelfde abonnement hebt, selecteert u deze in de vervolgkeuzelijst op de pagina **Onboarding van Azure Monitor Insights** .  
 
     De lijst selecteert vooraf de standaardwerkruimte en de locatie waar de VM in het abonnement is geïmplementeerd. 
 
@@ -150,11 +150,11 @@ Nadat u bewaking hebt ingeschakeld, moet u mogelijk enkele minuten wachten voord
 
 Azure Monitor voor VM's bevat een reeks prestatiegrafieken die gericht zijn op verschillende Key Performance Indicators (KPI's), waarmee u de prestaties van een virtuele machine kunt vaststellen. Voer de volgende stappen uit om toegang te krijgen vanaf uw VM.
 
-1. Klik in Azure Portal op **Resourcegroepen**, selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
+1. Klik in Azure Portal op **Resourcegroepen** , selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
 
-2. Selecteer op de VM-pagina, in de sectie **Bewaking**, de optie **Inzichten (preview)** .
+2. Selecteer op de VM-pagina, in de sectie **Bewaking** , de optie **Inzichten (preview)** .
 
-3. Selecteer het tabblad **Prestaties**.
+3. Selecteer het tabblad **Prestaties** .
 
 Deze pagina bevat niet alleen grafieken voor prestatiebelasting, maar ook een tabel die voor elke gedetecteerde logische schijf, de capaciteit, de belasting en het totale gemiddelde van elke meting laat zien.
 
@@ -164,9 +164,9 @@ U kunt waarschuwingen maken op basis van specifieke maatstaven voor prestaties. 
 
 In het volgende voorbeeld wordt een waarschuwing gemaakt voor het gemiddelde CPU-gebruik.
 
-1. Klik in Azure Portal op **Resourcegroepen**, selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
+1. Klik in Azure Portal op **Resourcegroepen** , selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
 
-2. Klik op de VM-blade op **Waarschuwingsregels** en klik vervolgens boven aan de waarschuwingenblade op **Waarschuwing voor metrische gegevens toevoegen**.
+2. Klik op de VM-blade op **Waarschuwingsregels** en klik vervolgens boven aan de waarschuwingenblade op **Waarschuwing voor metrische gegevens toevoegen** .
 
 3. Geef een **Naam** op voor de waarschuwing, zoals *myAlertRule*
 
@@ -174,7 +174,7 @@ In het volgende voorbeeld wordt een waarschuwing gemaakt voor het gemiddelde CPU
 
 5. Schakel desgewenst het selectievakje voor *E-mailadressen van eigenaren, bijdragers en lezers* in om een e-mailmelding te verzenden. Standaard wordt een melding in de portal weergegeven.
 
-6. Klik op de knop **OK**.
+6. Klik op de knop **OK** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,13 +8,13 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: amqp
-ms.openlocfilehash: 2245bd970e93595358e95465bcc815ddaf2ef821
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: amqp, devx-track-azurecli
+ms.openlocfilehash: b85984207742e0b8991ab65875dd22505b918185
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974546"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736743"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Zelfstudie: een IoT Edge-apparaat configureren
 
@@ -39,11 +39,11 @@ In dit gedeelte maken we de zelfondertekende certificaten met behulp van een Doc
 
 4. Open Visual Studio Code.
 
-5. Selecteer **File** > **Open Folder...** en kies **C:\\source\\IoTEdgeAndMlSample\\CreateCertificates**.
+5. Selecteer **File** > **Open Folder...** en kies **C:\\source\\IoTEdgeAndMlSample\\CreateCertificates** .
 
-6. Klik in het deelvenster Explorer met de rechtermuisknop op **dockerfile** en kies **Build Image**.
+6. Klik in het deelvenster Explorer met de rechtermuisknop op **dockerfile** en kies **Build Image** .
 
-7. Accepteer in het dialoogvenster de standaardwaarde voor de naam en het label van de installatiekopie: **createcertificates:latest**.
+7. Accepteer in het dialoogvenster de standaardwaarde voor de naam en het label van de installatiekopie: **createcertificates:latest** .
 
     ![Certificaten maken in Visual Studio Code](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
@@ -58,11 +58,11 @@ In dit gedeelte maken we de zelfondertekende certificaten met behulp van een Doc
     docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Docker vraagt om toegang tot het **c:\\** -station. Selecteer **Share it**.
+10. Docker vraagt om toegang tot het **c:\\** -station. Selecteer **Share it** .
 
 11. Voer uw referenties in wanneer hierom wordt gevraagd.
 
-12. Als de container is uitgevoerd, controleert u of de volgende bestanden aanwezig in **c:\\edgeCertificates**:
+12. Als de container is uitgevoerd, controleert u of de volgende bestanden aanwezig in **c:\\edgeCertificates** :
 
     * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
     * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
@@ -76,7 +76,7 @@ Om onze certificaten veilig op te slaan en ze toegankelijk te maken vanaf meerde
 
 1. Ga in [Azure Portal](https://portal.azure.com) naar uw Azure Machine Learning-werkruimte.
 
-2. Zoek op de pagina Overzicht van de werkruimte de naam van de **sleutelkluis**.
+2. Zoek op de pagina Overzicht van de werkruimte de naam van de **sleutelkluis** .
 
     ![Naam van sleutelkluis kopiëren](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
@@ -102,7 +102,7 @@ Voor deze zelfstudie maken we de nieuwe apparaat-id met behulp van Visual Studio
 
 2. Vouw in de Explorer van Visual Studio Code het frame **Azure IoT Hub** uit.
 
-3. Klik op het weglatingsteken en selecteer **Create IoT Edge Device**.
+3. Klik op het weglatingsteken en selecteer **Create IoT Edge Device** .
 
 4. Geef het apparaat een naam. Voor het gemak gebruiken we de naam **aaTurbofanEdgeDevice** zodat het apparaat bovenaan de lijst met apparaten komt te staan.
 
@@ -120,7 +120,7 @@ Als u de installatiekopie van de Marketplace in een scriptimplementatie wilt geb
 
 1. Meld u aan bij de Azure-portal.
 
-1. Selecteer **Alle services**.
+1. Selecteer **Alle services** .
 
 1. Typ **Marketplace** in het zoekvak en druk op Enter.
 
@@ -128,7 +128,7 @@ Als u de installatiekopie van de Marketplace in een scriptimplementatie wilt geb
 
 1. Selecteer de hyperlink **Aan de slag** om programmatisch te implementeren.
 
-1. Selecteer de knop **Inschakelen** en daarna de knop **Opslaan**.
+1. Selecteer de knop **Inschakelen** en daarna de knop **Opslaan** .
 
     ![Programmatische implementatie inschakelen voor VM](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
 
@@ -138,7 +138,7 @@ Als u de installatiekopie van de Marketplace in een scriptimplementatie wilt geb
 
 Voer vervolgens het script uit om de virtuele machine voor uw IoT Edge-apparaat te maken.
 
-1. Open een PowerShell-venster en ga naar de map **EdgeVM**.
+1. Open een PowerShell-venster en ga naar de map **EdgeVM** .
 
     ```powershell
     cd c:\source\IoTEdgeAndMlSample\EdgeVM
@@ -152,11 +152,11 @@ Voer vervolgens het script uit om de virtuele machine voor uw IoT Edge-apparaat 
 
 3. Geef waarden op voor elke parameter wanneer u hierom wordt gevraagd. Voor het abonnement, de resourcegroep en de locatie raden we aan om de waarden te gebruiken die u eerder hebt opgegeven voor de resources in deze zelfstudie.
 
-    * **Azure-abonnements-id**: u vindt de abonnements-id in Azure Portal.
-    * **Naam van resourcegroep**: een makkelijk te onthouden naam voor het groeperen van de resources voor deze zelfstudie.
-    * **Locatie**: kies een Azure-locatie waarin de virtuele machine wordt gemaakt, bijvoorbeeld west 2. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/) voor meer informatie.
-    * **AdminUsername**: de naam voor het beheerdersaccount dat u gebruikt om u aan te melden bij de virtuele machine.
-    * **AdminPassword**: het wachtwoord dat moet worden ingesteld voor de AdminUsername op de virtuele machine.
+    * **Azure-abonnements-id** : u vindt de abonnements-id in Azure Portal.
+    * **Naam van resourcegroep** : een makkelijk te onthouden naam voor het groeperen van de resources voor deze zelfstudie.
+    * **Locatie** : kies een Azure-locatie waarin de virtuele machine wordt gemaakt, bijvoorbeeld west 2. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/) voor meer informatie.
+    * **AdminUsername** : de naam voor het beheerdersaccount dat u gebruikt om u aan te melden bij de virtuele machine.
+    * **AdminPassword** : het wachtwoord dat moet worden ingesteld voor de AdminUsername op de virtuele machine.
 
 4. Als u wilt dat het script de VM kan instellen, moet u zich aanmelden bij Azure met de referenties die zijn gekoppeld aan het Azure-abonnement dat u gebruikt.
 
@@ -183,7 +183,7 @@ In de volgende gedeelten gaan we de virtuele Azure-machine configureren die we h
     ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
     ```
 
-2. Wanneer u wordt gevraagd om de authenticiteit van de host te valideren, typt u **yes** en drukt u op **Enter**.
+2. Wanneer u wordt gevraagd om de authenticiteit van de host te valideren, typt u **yes** en drukt u op **Enter** .
 
 3. Geef uw wachtwoord op als dit wordt gevraagd.
 
@@ -230,13 +230,13 @@ Verderop in de zelfstudie vindt u meer informatie over het leaf-apparaat. In dit
 
 De IoT Edge-runtime gebruikt het bestand `/etc/iotedge/config.yaml` om de configuratie persistent te maken. Er moeten drie gegevens worden bijgewerkt in dit bestand:
 
-* **Verbindingsreeks voor apparaat**: de verbindingsreeks van de identiteit van dit apparaat in IoT Hub
+* **Verbindingsreeks voor apparaat** : de verbindingsreeks van de identiteit van dit apparaat in IoT Hub
 * **Certificaten:** de certificaten die moeten worden gebruikt voor verbindingen met downstream apparaten
 * **Hostnaam:** de FQDN (Fully Qualified Domain Name) van het VM IoT Edge-apparaat.
 
 De installatiekopie *Azure IoT Edge on Ubuntu* die we hebben gebruikt om de IoT Edge-VM te maken, bevat een shell-script waarmee het bestand config.yaml wordt bijgewerkt met de verbindingsreeks.
 
-1. Klik in Visual Studio Code met de rechtermuisknop op het IoT Edge-apparaat en selecteer vervolgens **Copy Device Connection String**.
+1. Klik in Visual Studio Code met de rechtermuisknop op het IoT Edge-apparaat en selecteer vervolgens **Copy Device Connection String** .
 
     ![Verbindingsreeks kopiëren uit Visual Studio Code](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
 
@@ -267,7 +267,7 @@ Vervolgens gaan we de certificaten en de hostnaam bijwerken door het bestand con
 
     Als u met de rechtermuisknop klikt in nano, wordt de inhoud van het klembord op de huidige cursorpositie geplakt. Als u de tekenreeks wilt vervangen, gebruikt u de pijlen op het toetsenbord om naar de tekenreeks te gaan die u wilt vervangen. Verwijder de tekenreeks en klik met de rechtermuisknop om de inhoud van de buffer te plakken.
 
-3. Navigeer in Azure Portal naar uw nieuwe virtuele machine. Kopieer de DNS-naam (FQDN van de computer) uit het gedeelte **Overzicht**.
+3. Navigeer in Azure Portal naar uw nieuwe virtuele machine. Kopieer de DNS-naam (FQDN van de computer) uit het gedeelte **Overzicht** .
 
 4. Plak de FQDN in de sectie hostname van het bestand config.yml. Zorg ervoor dat de naam alleen uit kleine letters bestaat.
 

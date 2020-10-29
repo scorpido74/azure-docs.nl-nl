@@ -3,13 +3,13 @@ title: Zelfstudie - Geo-gerepliceerd register maken
 description: Een Azure-containerregister maken, geo-replicatie configureren, een Docker-installatiekopie voorbereiden en implementeren in het register. Deel één van een serie van drie.
 ms.topic: tutorial
 ms.date: 06/30/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 854b4eb35694f7498d0dc70567b19ccfdf7c8c82
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148391"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739483"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Zelfstudie: Een Azure-containerregister met geo-replicatie voorbereiden
 
@@ -44,22 +44,22 @@ Voor deze zelfstudie hebt u een Azure-containerregister in de Premium-servicelaa
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-Selecteer **Een resource maken** > **Containers** > **Azure Container Registry**.
+Selecteer **Een resource maken** > **Containers** > **Azure Container Registry** .
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Een containerregister maken met Azure Portal":::
 
-Configureer uw nieuwe register met de volgende instellingen. Op het tabblad **Basis**:
+Configureer uw nieuwe register met de volgende instellingen. Op het tabblad **Basis** :
 
-* **Registernaam**: Een registernaam maken die globaal uniek is binnen Azure en 5-50 alfanumerieke tekens bevat
-* **Resourcegroep**: **Nieuwe maken** > `myResourceGroup`
-* **Locatie**: `West US`
-* **SKU**: `Premium` (vereist voor de geo-replicatie)
+* **Registernaam** : Een registernaam maken die globaal uniek is binnen Azure en 5-50 alfanumerieke tekens bevat
+* **Resourcegroep** : **Nieuwe maken** > `myResourceGroup`
+* **Locatie** : `West US`
+* **SKU** : `Premium` (vereist voor de geo-replicatie)
 
 Selecteer **Beoordelen en maken** en **Maken** om het exemplaar van het register te maken.
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Een containerregister maken met Azure Portal":::
 
-In de rest van deze zelfstudie gebruiken we `<acrName>` als tijdelijke aanduiding voor de gekozen **containerregisternaam**.
+In de rest van deze zelfstudie gebruiken we `<acrName>` als tijdelijke aanduiding voor de gekozen **containerregisternaam** .
 
 > [!TIP]
 > Omdat Azure-containerregisters doorgaans lang meegaande resources zijn die op meerdere hosts van de container worden gebruikt, wordt u aangeraden het register in een eigen resourcegroep te maken. Als u registers met geo-replicatie en webhooks configureert, worden deze extra resources in dezelfde resourcegroep geplaatst.
@@ -68,7 +68,7 @@ In de rest van deze zelfstudie gebruiken we `<acrName>` als tijdelijke aanduidin
 
 Nu u een Premium-register hebt, kunt u geo-replicatie configureren. Uw web-app, die u in de volgende zelfstudie configureert voor uitvoering in twee regio's, kan vervolgens containerinstallatiekopieën uit het dichtstbijzijnde register pullen.
 
-Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Replicaties** onder **Services**:
+Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Replicaties** onder **Services** :
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Een containerregister maken met Azure Portal":::
 
@@ -76,7 +76,7 @@ Er wordt een kaart weergegeven met groene zeshoeken die Azure-regio's vertegenwo
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Een containerregister maken met Azure Portal":::
 
-Repliceer uw register naar de regio VS - oost door de groene zeshoek te selecteren. Selecteer vervolgens **Maken** onder **Replicatie maken**:
+Repliceer uw register naar de regio VS - oost door de groene zeshoek te selecteren. Selecteer vervolgens **Maken** onder **Replicatie maken** :
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Een containerregister maken met Azure Portal":::
 
@@ -89,7 +89,7 @@ Wanneer de replicatie is voltooid, geeft de portal *Gereed* weer voor beide regi
 
 In volgende zelfstudies implementeert u een containerinstallatiekopie vanuit het register rechtstreeks naar Web App for Containers. Als u deze mogelijkheid wilt inschakelen, moet u ook het [beheerdersaccount](container-registry-authentication.md#admin-account) van het register inschakelen.
 
-Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Toegangssleutels** onder **Instellingen**: Selecteer onder **Gebruiker met beheerdersrechten** de optie **Inschakelen**.
+Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Toegangssleutels** onder **Instellingen** : Selecteer onder **Gebruiker met beheerdersrechten** de optie **Inschakelen** .
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Een containerregister maken met Azure Portal":::
 
@@ -153,7 +153,7 @@ COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "AcrHelloworld.dll"]
 ```
 
-De toepassing in de *acr-helloworld*-installatiekopie probeert de regio te bepalen waaruit de container is geïmplementeerd door in DNS een query uit te voeren naar informatie over de aanmeldingsserver van het register. U moet de Fully Qualified Domain Name (FQDN) van de aanmeldingsserver van het register opgeven in de omgevingsvariabele `DOCKER_REGISTRY` in de Dockerfile.
+De toepassing in de *acr-helloworld* -installatiekopie probeert de regio te bepalen waaruit de container is geïmplementeerd door in DNS een query uit te voeren naar informatie over de aanmeldingsserver van het register. U moet de Fully Qualified Domain Name (FQDN) van de aanmeldingsserver van het register opgeven in de omgevingsvariabele `DOCKER_REGISTRY` in de Dockerfile.
 
 Haal eerst de aanmeldingsserver van het register op met de opdracht `az acr show`. Vervang `<acrName>` door de naam van het register dat u in de vorige stappen hebt gemaakt.
 
@@ -169,7 +169,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-Werk vervolgens de regel `ENV DOCKER_REGISTRY` bij met de FQDN van de aanmeldingsserver van uw register. In dit voorbeeld wordt de naam van het voorbeeldregister gebruikt, *uniqueregistryname*:
+Werk vervolgens de regel `ENV DOCKER_REGISTRY` bij met de FQDN van de aanmeldingsserver van uw register. In dit voorbeeld wordt de naam van het voorbeeldregister gebruikt, *uniqueregistryname* :
 
 ```Dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -212,7 +212,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 
 ## <a name="push-image-to-azure-container-registry"></a>Installatiekopie pushen naar Azure Container Registry
 
-Gebruik vervolgens de opdracht `docker push` om de *acr-helloworld*-installatiekopie naar het register te pushen. Vervang `<acrName>` door de naam van uw register.
+Gebruik vervolgens de opdracht `docker push` om de *acr-helloworld* -installatiekopie naar het register te pushen. Vervang `<acrName>` door de naam van uw register.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1

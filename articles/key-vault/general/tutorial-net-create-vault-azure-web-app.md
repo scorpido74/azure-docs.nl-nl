@@ -9,13 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: e537bb74655bce5c8438e22fb9b990b72eab73d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 77845a91ed2d185c0fe05e2f40e53b2edf3d1ca7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336680"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741399"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Zelfstudie: Een beheerde identiteit gebruiken om Key Vault te koppelen met een Azure-web-app met .NET
 
@@ -95,7 +95,7 @@ git commit -m "first commit"
 
 ### <a name="configure-a-deployment-user"></a>Een implementatiegebruiker configureren
 
-FTP en lokale Git kunnen worden geïmplementeerd in een Azure-web-app met behulp van een *implementatiegebruikers*. Zodra u deze implementatiegebruiker hebt gemaakt, kunt u deze voor al uw Azure-implementaties gebruiken. Uw gebruikersnaam en wachtwoord voor implementatie op accountniveau verschillen van de referenties voor uw Azure-abonnement. 
+FTP en lokale Git kunnen worden geïmplementeerd in een Azure-web-app met behulp van een *implementatiegebruikers* . Zodra u deze implementatiegebruiker hebt gemaakt, kunt u deze voor al uw Azure-implementaties gebruiken. Uw gebruikersnaam en wachtwoord voor implementatie op accountniveau verschillen van de referenties voor uw Azure-abonnement. 
 
 Als u de implementatiegebruiker wilt configureren, voert u de opdracht [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Kies een gebruikersnaam en wachtwoord die voldoen aan de volgende richtlijnen: 
 
@@ -112,7 +112,7 @@ Noteer uw gebruikersnaam en wachtwoord om te gebruiken bij het implementeren van
 
 ### <a name="create-an-app-service-plan"></a>Een App Service-plan maken
 
-Maak een App Service-plan met de Azure CLI-opdracht [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest). In het volgende voorbeeld wordt een App Service-plan gemaakt met de naam `myAppServicePlan` en de prijscategorie **Gratis**:
+Maak een App Service-plan met de Azure CLI-opdracht [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest). In het volgende voorbeeld wordt een App Service-plan gemaakt met de naam `myAppServicePlan` en de prijscategorie **Gratis** :
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE

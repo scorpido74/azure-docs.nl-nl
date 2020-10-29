@@ -4,13 +4,13 @@ description: Informatie over hoe u databaseverbindingen veiliger kunt maken met 
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.custom: devx-track-csharp, mvc, cli-validate
-ms.openlocfilehash: 19e1d71cd766a99a32e90e2f83dc717ba56b795f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
+ms.openlocfilehash: 633e3a6386b9e6098e167c7fdd542d98c16fae48
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984037"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737888"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
@@ -77,7 +77,7 @@ Zie [Een Azure Active Directory-beheerder inrichten voor uw server](../azure-sql
 ### <a name="windows-client"></a>Windows-client
 Visual Studio voor Windows is geïntegreerd met Azure AD-verificatie. Als u de ontwikkeling en foutopsporing in Visual Studio wilt inschakelen, voegt u uw Azure AD-gebruiker toe in Visual Studio door **Bestand** > **Accountinstellingen** te selecteren in het menu en op **Een account toevoegen** te klikken.
 
-Als u de Azure AD-gebruiker voor Azure-serviceverificatie wilt instellen, selecteert u **Hulpprogramma's** > **Opties** in het menu en selecteert u vervolgens **Azure-serviceverificatie** > **Accounts selecteren**. Selecteer de Azure AD-gebruiker die u hebt toegevoegd en klik op **OK**.
+Als u de Azure AD-gebruiker voor Azure-serviceverificatie wilt instellen, selecteert u **Hulpprogramma's** > **Opties** in het menu en selecteert u vervolgens **Azure-serviceverificatie** > **Accounts selecteren** . Selecteer de Azure AD-gebruiker die u hebt toegevoegd en klik op **OK** .
 
 U kunt nu uw app ontwikkelen en fouten opsporen met de SQL Database als back-end, met behulp van Azure AD-verificatie.
 
@@ -194,7 +194,7 @@ Hier is een voorbeeld van de uitvoer:
 ### <a name="grant-permissions-to-managed-identity"></a>Machtigingen toewijzen aan beheerde identiteit
 
 > [!NOTE]
-> Als u wilt, kunt u de identiteit toevoegen aan een [Azure AD-groep](../active-directory/fundamentals/active-directory-manage-groups.md) en vervolgens SQL Database toegang verlenen tot de Azure AD-groep in plaats van de identiteit. Bijvoorbeeld, met de volgende opdrachten wordt de beheerde identiteit uit de vorige stap toegevoegd aan een nieuwe groep met de naam _myAzureSQLDBAccessGroup_:
+> Als u wilt, kunt u de identiteit toevoegen aan een [Azure AD-groep](../active-directory/fundamentals/active-directory-manage-groups.md) en vervolgens SQL Database toegang verlenen tot de Azure AD-groep in plaats van de identiteit. Bijvoorbeeld, met de volgende opdrachten wordt de beheerde identiteit uit de vorige stap toegevoegd aan een nieuwe groep met de naam _myAzureSQLDBAccessGroup_ :
 > 
 > ```azurecli-interactive
 > groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
@@ -220,7 +220,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* is de naam van de beheerde identiteit in Azure AD. Als de identiteit is toegewezen aan het systeem, wordt de naam altijd hetzelfde als de naam van uw App Service-app. Als u machtigingen wilt verlenen voor een Azure AD-groep, gebruikt u in plaats daarvan de weergavenaam van de groep (bijvoorbeeld *myAzureSQLDBAccessGroup*).
+*\<identity-name>* is de naam van de beheerde identiteit in Azure AD. Als de identiteit is toegewezen aan het systeem, wordt de naam altijd hetzelfde als de naam van uw App Service-app. Als u machtigingen wilt verlenen voor een Azure AD-groep, gebruikt u in plaats daarvan de weergavenaam van de groep (bijvoorbeeld *myAzureSQLDBAccessGroup* ).
 
 Typ `EXIT` om terug te keren naar de Cloud Shell-prompt.
 
@@ -239,11 +239,11 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 U hoeft nu alleen nog maar uw wijzigingen naar Azure te publiceren.
 
-**Als u vanuit de [-zelfstudie werkt: Bouw een ASP.NET-app in Azure met SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)** , publiceer uw wijzigingen in Visual Studio. Klik in de **Solution Explorer** met de rechtermuisknop op uw project **DotNetAppSqlDb** en selecteer **Publiceren**.
+**Als u vanuit de [-zelfstudie werkt: Bouw een ASP.NET-app in Azure met SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)** , publiceer uw wijzigingen in Visual Studio. Klik in de **Solution Explorer** met de rechtermuisknop op uw project **DotNetAppSqlDb** en selecteer **Publiceren** .
 
 ![Publiceren vanuit Solution Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Klik op de publicatiepagina op **Publiceren**. 
+Klik op de publicatiepagina op **Publiceren** . 
 
 **Als u vanuit de [-zelfstudie werkt: Bouw een ASP.NET Core en SQL Database-app in Azure App Service](tutorial-dotnetcore-sqldb-app.md)** , publiceer uw wijzigingen met Git, met de volgende opdrachten:
 

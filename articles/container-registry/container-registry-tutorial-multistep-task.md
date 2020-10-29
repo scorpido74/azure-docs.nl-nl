@@ -3,13 +3,13 @@ title: 'Zelfstudie: ACR-taak met meerdere stappen'
 description: In deze zelfstudie leert u hoe u een Azure Container Registry-taak configureert om de werkstroom met meerdere stappen voor het maken, uitvoeren en pushen van containerinstallatiekopieën automatisch te activeren in de cloud wanneer u broncode naar een Git-opslagplaats doorvoert.
 ms.topic: tutorial
 ms.date: 05/09/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 6ba3b276c68885a0811ee445d965c486f158d193
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78402301"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739606"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Zelfstudie: Een containerwerkstroom met meerdere stappen in de cloud uitvoeren bij het doorvoeren van broncode
 
@@ -88,7 +88,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Deze taak geeft aan dat elke keer dat code wordt doorgevoerd naar de *master*-vertakking in de opslagplaats zoals is opgegeven door `--context`, ACR-taken dan de taak met meerdere stappen van de code in die vertakking uitvoert. De stappen worden gedefinieerd in het YAML-bestand dat is opgegeven door `--file` vanuit de hoofdmap van de opslagplaats. 
+Deze taak geeft aan dat elke keer dat code wordt doorgevoerd naar de *master* -vertakking in de opslagplaats zoals is opgegeven door `--context`, ACR-taken dan de taak met meerdere stappen van de code in die vertakking uitvoert. De stappen worden gedefinieerd in het YAML-bestand dat is opgegeven door `--file` vanuit de hoofdmap van de opslagplaats. 
 
 De uitvoer van een geslaagde [az acr task create][az-acr-task-create]-opdracht is vergelijkbaar met het volgende:
 
@@ -332,7 +332,7 @@ az acr task create \
 
 Als u installatiekopieën wilt pushen naar het register dat wordt aangeduid met de waarde van `regDate`, gebruikt u de opdracht [az acr task credential add][az-acr-task-credential-add] om aanmeldingsreferenties voor dat register toe te voegen aan de taak.
 
-Voor dit voorbeeld wordt u aangeraden een [service-principal](container-registry-auth-service-principal.md) te maken met toegang tot het register binnen het bereik van de rol *AcrPush*. Als u de service-principal wilt maken, raadpleegt u dit [Azure CLI-script](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh).
+Voor dit voorbeeld wordt u aangeraden een [service-principal](container-registry-auth-service-principal.md) te maken met toegang tot het register binnen het bereik van de rol *AcrPush* . Als u de service-principal wilt maken, raadpleegt u dit [Azure CLI-script](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh).
 
 Geef de toepassings-id en het wacht woord van de service-principal op in de volgende `az acr task credential add`-opdracht:
 
