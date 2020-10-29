@@ -8,12 +8,12 @@ author: georgewallace
 ms.author: gwallace
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3082f30f46a1e450a9ac42958163894c014de66d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737206"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928056"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Een persoonlijk Azure Red Hat open Shift 4-cluster maken
 
@@ -229,7 +229,7 @@ U kunt de URL van de clusterconsole vinden door de volgende opdracht uit te voer
 
 Start de console-URL in een browser en meld u aan met de referenties van `kubeadmin`.
 
-![Aanmeldingsscherm voor Azure Red Hat OpenShift](media/aro4-login.png)
+![Scherm opname van het aanmeldings scherm van Azure Red Hat open SHIFT.](media/aro4-login.png)
 
 ## <a name="install-the-openshift-cli"></a>De OpenShift CLI installeren
 

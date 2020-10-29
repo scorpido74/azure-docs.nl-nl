@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425378"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928090"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Beveiligingsscore in Azure Security Center
 
@@ -29,7 +29,7 @@ Azure Security Center heeft twee hoofd doelen:
 - om inzicht te krijgen in uw huidige beveiligings situatie
 - om u te helpen uw beveiliging efficiënt en effectief te verbeteren
 
-De centrale functie in Security Center waarmee u deze doelen kunt bereiken, is een **veilige Score**.
+De centrale functie in Security Center waarmee u deze doelen kunt bereiken, is een **veilige Score** .
 
 Security Center controleert uw resources, abonnementen en organisatie doorlopend op beveiligingsproblemen. Vervolgens worden alle bevindingen tot één enkele score samengevoegd, zodat u in een oogopslag uw huidige beveiligingssituatie kunt zien: hoe hoger de score, hoe lager het geïdentificeerde risiconiveau is.
 
@@ -39,7 +39,7 @@ De beveiligde score wordt weer gegeven op de Azure Portal pagina's als een perce
 
 Bekijk de pagina met aanbevelingen van Security Center voor de uitstaande acties die nodig zijn om uw score te verhogen om uw beveiliging te verbeteren. Elke aanbeveling bevat instructies om u te helpen bij het oplossen van het specifieke probleem.
 
-Aanbevelingen zijn onderverdeeld in **beveiligings controles**. Elk besturings element is een logische groep gerelateerde beveiligings aanbevelingen en weerspiegelt uw kwets bare aanvals oppervlakken. Uw score is alleen verbeterd wanneer u *alle* aanbevelingen voor één resource in een besturings element herstelt. Als u wilt zien hoe goed uw organisatie elke afzonderlijke kwets baarheid beveiligt, controleert u de scores voor elk beveiligings beheer.
+Aanbevelingen zijn onderverdeeld in **beveiligings controles** . Elk besturings element is een logische groep gerelateerde beveiligings aanbevelingen en weerspiegelt uw kwets bare aanvals oppervlakken. Uw score is alleen verbeterd wanneer u *alle* aanbevelingen voor één resource in een besturings element herstelt. Als u wilt zien hoe goed uw organisatie elke afzonderlijke kwets baarheid beveiligt, controleert u de scores voor elk beveiligings beheer.
 
 Zie [hoe uw beveiligde score wordt berekend](secure-score-security-controls.md#how-your-secure-score-is-calculated) hieronder voor meer informatie. 
 
@@ -88,7 +88,7 @@ Azure resource Graph biedt directe toegang tot resource gegevens in uw Cloud omg
 
 Om toegang te krijgen tot de beveiligde score voor meerdere abonnementen met ARG:
 
-1. Open in de Azure Portal **Azure resource Graph Explorer**.
+1. Open in de Azure Portal **Azure resource Graph Explorer** .
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Algemene beveiligde Score zoals weer gegeven in de portal" :::
 
@@ -112,7 +112,7 @@ Om toegang te krijgen tot de beveiligde score voor meerdere abonnementen met ARG
         | project SecureControl , unhealthy, currentscore, maxscore
         ```
 
-1. Selecteer **query uitvoeren**.
+1. Selecteer **query uitvoeren** .
 
 ## <a name="how-your-secure-score-is-calculated"></a>Hoe uw beveiligde score wordt berekend 
 
@@ -135,7 +135,7 @@ De maximum score voor dit besturings element, het Toep assen van systeem updates
 
 ### <a name="calculations---understanding-your-score"></a>Berekeningen: uitleg van uw Score
 
-|Gegevens|Formule en voor beeld|
+|Metrisch gegeven|Formule en voor beeld|
 |-|-|
 |**Huidige Score van beveiligings beheer**|<br>![Vergelijking voor het berekenen van de huidige Score van een beveiligings beheer](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Elk afzonderlijk beveiligings beheer draagt bij aan de beveiligings Score. Elke resource die wordt beïnvloed door een aanbeveling binnen het besturings element, draagt bij aan de huidige Score van het besturings element. De huidige score voor elk besturings element is een meting van de status van de resources *in* het besturings element.<br>![Knop info met de waarden die worden gebruikt bij het berekenen van de huidige Score van het beveiligings beheer](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>In dit voor beeld wordt de maximale Score van 6 gedeeld door 78, omdat dat de som is van de in orde zijnde en slechte resources.<br>6/78 = 0,0769<br>Als u wilt vermenigvuldigen met het aantal ongezonde resources (4), resulteert dit in de huidige Score:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Beveiligingsscore**<br>Enkel abonnement|<br>![Vergelijking voor het berekenen van de huidige beveiligde Score](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Een beveiligde Score van één abonnement waarbij alle besturings elementen zijn ingeschakeld](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>In dit voor beeld is er één abonnement met alle beveiligings controles beschikbaar (een potentiële maximum Score van 60 punten). De score toont 28 punten van een mogelijke 60 en de resterende 32 punten worden weer gegeven in de sectie ' potentiële Score verhogen ' van de beveiligings controles.<br>![Lijst met besturings elementen en de potentiële toename van de Score](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
@@ -162,6 +162,14 @@ Een andere manier om uw score te verbeteren en ervoor te zorgen dat uw gebruiker
 
 De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor elk besturings element ziet u het maximum aantal punten dat u aan uw beveiligde Score kunt toevoegen als u *alle* aanbevelingen die worden vermeld in het besturings element herstelt, voor *al* uw resources. 
 
+De set met beveiligings aanbevelingen die worden meegeleverd met Security Center is afgestemd op de beschik bare resources in de omgeving van elke organisatie. De aanbevelingen kunnen verder worden aangepast door [beleid uit te scha kelen](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations) en [specifieke bronnen uit te sluiten van een aanbeveling](exempt-resource.md). 
+ 
+We raden u aan elke organisatie de toegewezen Azure Policy-initiatieven zorgvuldig te controleren. 
+
+> [!TIP]
+> Zie [werken met beveiligings beleid](tutorial-security-policy.md)voor meer informatie over het controleren en bewerken van uw initiatieven. 
+
+Hoewel het standaard Security Initiative van Security Center is gebaseerd op de best practices en standaarden van de branche, zijn er scenario's waarin de hieronder vermelde ingebouwde aanbevelingen mogelijk niet volledig in uw organisatie passen. Daarom is het soms nood zakelijk om het standaard initiatief te corrigeren, zonder dat dit de veiligheid in gevaar heeft, zodat het wordt afgestemd op het eigen beleid van uw organisatie. industrie normen, regelgevings normen en benchmarks waarmee u moet voldoen.<br><br>
 <div class="foo">
 
 <style type="text/css"> . TG {Border-samen vouwen: samen vouwen; rand-afstand: 0;}. TG TD {Border-Color: zwart; rand stijl: effen; rand breedte: 1px; letter type-serie: Arial, Sans-Serif; letter type: 14px; overflow: verborgen; opvulling: 10px 5px; woord-onderbreking: normaal;}. TG th {Border-Color: Black; rand-Style: Solid; rand breedte: 1px; lettertype familie: Arial, Sans-Serif; letter type: 18px; letter type-Weight: normaal; overflow: verborgen; opvulling: 10px 5px; woord-onderbroken: Normal;}. tg. TG: cly1 {tekst uitlijning: links; verticaal uitlijnen: midden}. tg. TG-lboi {Border-Color: overnemen; tekst uitlijning: links; verticaal uitlijnen: Midden} </style>

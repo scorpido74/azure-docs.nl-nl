@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: eb70e7cfec4e6f3e7e55fa74bbdd6cee43493576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a55db6a9db8cc53da15ba6e818db7b78b72cefc9
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537878"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927733"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. Een VNet is een privé netwerk in de Cloud. Wanneer een Azure-cache voor redis-exemplaar is geconfigureerd met een VNet, is het niet openbaar adresseerbaar en is deze alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtuele netwerken kunt configureren voor een Premium Azure-cache voor een redis-exemplaar.
@@ -50,10 +50,10 @@ Virtual Network-ondersteuning (VNet) is geconfigureerd op de Blade **nieuwe Azur
 
 5. Op het tabblad **netwerken** selecteert u **virtuele netwerken** als verbindings methode. Als u een nieuw virtueel netwerk wilt gebruiken, maakt u het eerst door de stappen te volgen in [een virtueel netwerk maken met](../virtual-network/manage-virtual-network.md#create-a-virtual-network) behulp van de Azure portal of [een virtueel netwerk (klassiek) maken met behulp van de Azure Portal](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) en vervolgens terugkeren naar de **nieuwe Azure-cache voor redis** -Blade om uw Premium-cache te maken en te configureren.
 
-> [!IMPORTANT]
-> Wanneer u een Azure-cache voor redis implementeert voor een resource manager VNet, moet de cache zich in een toegewijd subnet bevinden dat geen andere resources bevat behalve Azure cache voor redis-exemplaren. Als er een poging wordt gedaan om een Azure-cache te implementeren voor redis naar een resource manager-VNet naar een subnet dat andere bronnen bevat, mislukt de implementatie.
-> 
-> 
+   > [!IMPORTANT]
+   > Wanneer u een Azure-cache voor redis implementeert voor een resource manager VNet, moet de cache zich in een toegewijd subnet bevinden dat geen andere resources bevat behalve Azure cache voor redis-exemplaren. Als er een poging wordt gedaan om een Azure-cache te implementeren voor redis naar een resource manager-VNet naar een subnet dat andere bronnen bevat, mislukt de implementatie.
+   > 
+   > 
 
    | Instelling      | Voorgestelde waarde  | Beschrijving |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -61,12 +61,12 @@ Virtual Network-ondersteuning (VNet) is geconfigureerd op de Blade **nieuwe Azur
    | **Subnet** | Vervolg keuzelijst en selecteer uw subnet. | Het adres bereik van het subnet moet de CIDR-notatie hebben (bijvoorbeeld 192.168.1.0/24). Het moet deel uitmaken van de adres ruimte van het virtuele netwerk. | 
    | **Statisch IP-adres** | Beschrijving Voer een statisch IP-adres in. | Als u geen statisch IP-adres opgeeft, wordt automatisch een IP-adressen gekozen. | 
 
-> [!IMPORTANT]
-> Azure reserveert een aantal IP-adressen binnen elk subnet en deze adressen kunnen niet worden gebruikt. Het eerste en laatste IP-adres van de subnetten zijn gereserveerd voor protocol conformiteit, samen met drie meer adressen die worden gebruikt voor Azure-Services. Zie [zijn er beperkingen voor het gebruik van IP-adressen in deze subnetten?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) voor meer informatie.
-> 
-> Naast de IP-adressen die worden gebruikt door de Azure VNET-infra structuur, maakt elk redis-exemplaar in het subnet gebruik van twee IP-adressen per Shard en één extra IP-adres voor de load balancer. Een niet-geclusterde cache wordt beschouwd als een Shard.
-> 
-> 
+   > [!IMPORTANT]
+   > Azure reserveert een aantal IP-adressen binnen elk subnet en deze adressen kunnen niet worden gebruikt. Het eerste en laatste IP-adres van de subnetten zijn gereserveerd voor protocol conformiteit, samen met drie meer adressen die worden gebruikt voor Azure-Services. Zie [zijn er beperkingen voor het gebruik van IP-adressen in deze subnetten?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) voor meer informatie.
+   > 
+   > Naast de IP-adressen die worden gebruikt door de Azure VNET-infra structuur, maakt elk redis-exemplaar in het subnet gebruik van twee IP-adressen per Shard en één extra IP-adres voor de load balancer. Een niet-geclusterde cache wordt beschouwd als een Shard.
+   > 
+   > 
 
 6. Selecteer het tabblad **Volgende: Geavanceerd** of klik op de knop **Volgende: Geavanceerd** onderaan de pagina.
 
@@ -131,7 +131,7 @@ Er zijn negen uitgaande poort vereisten. Uitgaande aanvragen in deze bereiken zi
 | Poort(en) | Richting | Transportprotocol | Doel | Lokaal IP-adres | Extern IP-adres |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Uitgaand |TCP |Afhankelijkheden van redis op Azure Storage/PKI (Internet) | (Redis-subnet) |* |
-| 443 | Uitgaand | TCP | Afhankelijkheid van redis op Azure Key Vault | (Redis-subnet) | AzureKeyVault <sup>1</sup> |
+| 443 | Uitgaand | TCP | Afhankelijkheid van redis op Azure Key Vault en Azure Monitor | (Redis-subnet) | AzureKeyVault, AzureMonitor <sup>1</sup> |
 | 53 |Uitgaand |TCP/UDP |Redis-afhankelijkheden op DNS (Internet/VNet) | (Redis-subnet) | 168.63.129.16 en 169.254.169.254 <sup>2</sup> en een aangepaste DNS-server voor het subnet <sup>3</sup> |
 | 8443 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
 | 10221-10231 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
@@ -140,7 +140,7 @@ Er zijn negen uitgaande poort vereisten. Uitgaande aanvragen in deze bereiken zi
 | 15000-15999 |Uitgaand |TCP |Interne communicatie voor redis en Geo-Replication | (Redis-subnet) |(Redis-subnet) (Geo-replica peer-subnet) |
 | 6379-6380 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 
-<sup>1</sup> u kunt de service label ' AzureKeyVault ' gebruiken met netwerk beveiligings groepen van Resource Manager.
+<sup>1</sup> u kunt de service tags ' AzureKeyVault ' en ' AzureMonitor ' gebruiken bij Resource Manager-netwerk beveiligings groepen.
 
 <sup>2</sup> deze IP-adressen die eigendom zijn van micro soft, worden gebruikt om de host-VM te adresseren die Azure DNS.
 
@@ -172,9 +172,9 @@ Er zijn acht vereisten voor het poort bereik voor inkomend verkeer. Inkomende aa
 Er zijn vereisten voor de netwerk verbinding voor Azure cache voor redis die in eerste instantie niet in een virtueel netwerk kunnen worden bereikt. Azure cache voor redis vereist dat alle volgende items goed werken wanneer ze binnen een virtueel netwerk worden gebruikt.
 
 * Uitgaande netwerk verbinding met Azure Storage eind punten wereld wijd. Dit geldt ook voor eind punten die zich in dezelfde regio bevinden als de Azure-cache voor redis-exemplaar, evenals opslag eindpunten die zich in **andere** Azure-regio's bevinden. Azure Storage-eind punten worden omgezet onder de volgende DNS-domeinen: *Table.core.Windows.net* , *blob.core.Windows.net* , *Queue.core.Windows.net* en *File.core.Windows.net* . 
-* Uitgaande netwerk verbinding met *OCSP.msocsp.com* , *mscrl.Microsoft.com* en *CRL.Microsoft.com* . Deze connectiviteit is vereist voor de ondersteuning van TLS/SSL-functionaliteit.
+* Uitgaande netwerk verbinding met *OCSP.Digicert.com* , *crl4.Digicert.com* , *OCSP.msocsp.com* , *mscrl.Microsoft.com* , *crl3.Digicert.com* , *cacerts.Digicert.com* , *oneocsp.Microsoft.com* en *CRL.Microsoft.com* . Deze connectiviteit is vereist voor de ondersteuning van TLS/SSL-functionaliteit.
 * De DNS-configuratie voor het virtuele netwerk moet geschikt zijn voor het oplossen van alle eind punten en domeinen die worden vermeld in de eerdere punten. Aan deze DNS-vereisten kan worden voldaan door ervoor te zorgen dat een geldige DNS-infra structuur is geconfigureerd en onderhouden voor het virtuele netwerk.
-* Uitgaande netwerk verbinding met de volgende Azure monitoring-eind punten die worden omgezet onder de volgende DNS-domeinen: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
+* Uitgaande netwerk verbinding met de volgende Azure Monitor-eind punten die worden omgezet onder de volgende DNS-domeinen: *shoebox2-Black.shoebox2.Metrics.nsatc.net* , *North-prod2.prod2.Metrics.nsatc.net* , *azglobal-Black.azglobal.Metrics.nsatc.net* , *shoebox2-Red.shoebox2.Metrics.nsatc.net* , *East-prod2.prod2.Metrics.nsatc.net* , *azglobal-Red.azglobal.Metrics.nsatc.net* .
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Hoe kan ik controleren of mijn cache werkt in een VNET?
 

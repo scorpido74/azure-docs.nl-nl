@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: a0349a3fe21bdc0b73252bce1207c9f3b53dc15f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143736"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927903"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Gegevens bronnen Azure Monitor werkmappen
 
@@ -77,7 +77,7 @@ Werkmappen bieden ondersteuning voor de Azure-resource status en combi neren met
 
 Als u een query besturings element wilt gebruiken deze gegevens bron, gebruikt u de vervolg keuzelijst **query type** om de Azure-status te kiezen en selecteert u de resources die u wilt instellen. Gebruik de vervolg keuzelijst status filters om een interessante subset van resource problemen voor uw analyse behoeften te selecteren.
 
-![Scherm afbeelding van waarschuwings query's](./media/workbooks-overview/resource-health.png)
+![Scherm afbeelding van een waarschuwings query waarin de status filter lijsten worden weer gegeven.](./media/workbooks-overview/resource-health.png)
 
 ## <a name="json"></a>JSON
 
@@ -100,7 +100,7 @@ Om ervoor te zorgen dat een query besturings element deze gegevens bron gebruikt
 
 Werkmappen ondersteunen het ophalen van gegevens uit een externe bron. Als uw gegevens zich buiten Azure bevinden, kunt u deze naar werkmappen brengen met behulp van dit gegevens bron type.
 
-Als u een query besturings element wilt maken met deze gegevens bron, gebruikt u de vervolg keuzelijst _gegevens bron_ om een _aangepast eind punt_te kiezen. Geef de juiste para meters `Http method` op, zoals,, `url` `headers` `url parameters` en/of `body` . Zorg ervoor dat uw gegevens bron [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) ondersteunt, anders mislukt de aanvraag.
+Als u een query besturings element wilt maken met deze gegevens bron, gebruikt u de vervolg keuzelijst _gegevens bron_ om een _aangepast eind punt_ te kiezen. Geef de juiste para meters `Http method` op, zoals,, `url` `headers` `url parameters` en/of `body` . Zorg ervoor dat uw gegevens bron [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) ondersteunt, anders mislukt de aanvraag.
 
 Om te voor komen dat u automatisch aanroepen naar niet-vertrouwde hosts maakt wanneer u sjablonen gebruikt, moet de gebruiker de gebruikte hosts markeren als vertrouwd. U kunt dit doen door te klikken op de knop _toevoegen als vertrouwd_ of door deze toe te voegen als een vertrouwde host in de werkmap instellingen. Deze instellingen worden opgeslagen in browsers die ondersteuning bieden voor IndexDb met Web Workers, meer informatie [hier](https://caniuse.com/#feat=indexeddb).
 

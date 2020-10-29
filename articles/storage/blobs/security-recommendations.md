@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: bd50a007b73438a5776cf6ecdb1074dc9980c537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 363281d064d4abe7475c034e6d6592d90af1f9b9
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713710"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927937"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Beveiligings aanbevelingen voor Blob Storage
 
@@ -27,23 +27,25 @@ Azure Security Center regel matig de beveiligings status van uw Azure-resources 
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Aanbeveling | Opmerkingen | Beveiligingscentrum |
+| Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
 | Het Azure Resource Manager-implementatie model gebruiken | Maak nieuwe opslag accounts met behulp van het Azure Resource Manager-implementatie model voor belang rijke verbeteringen in de beveiliging, waaronder superieure Azure-functies voor op rollen gebaseerd toegangs beheer (Azure RBAC) en controle, implementatie en beheer op basis van een resource manager, toegang tot beheerde identiteiten, toegang tot Azure Key Vault voor geheimen en verificatie en autorisatie op basis van Azure AD voor toegang tot Azure Storage gegevens en bronnen. Als dat mogelijk is, migreert u bestaande opslag accounts die gebruikmaken van het klassieke implementatie model om Azure Resource Manager te gebruiken. Zie [Azure Resource Manager Overview](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager. | - |
 | Azure Defender inschakelen voor al uw opslag accounts | Azure Defender voor Azure Storage biedt een extra beveiligingslaag die ongebruikelijke en mogelijk schadelijke pogingen detecteert om toegang te krijgen tot of misbruik te maken van opslag accounts. Beveiligings waarschuwingen worden in Azure Security Center geactiveerd wanneer afwijkingen in de activiteit optreden en ook via e-mail worden verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen. Zie [Azure Defender configureren voor Azure Storage](../common/azure-defender-storage-configure.md)voor meer informatie. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 | Zacht verwijderen inschakelen voor BLOB-gegevens | Met zacht verwijderen kunt u BLOB-gegevens herstellen nadat deze is verwijderd. Voor meer informatie over zacht verwijderen, Zie [voorlopig verwijderen voor Azure Storage-blobs](storage-blob-soft-delete.md). | - |
+| Vergrendel het opslag account om onbedoelde verwijdering te voor komen | Als beheerder moet u mogelijk een abonnement, resource groep of resource vergren delen om te voor komen dat andere gebruikers in uw organisatie met per ongeluk essentiële bronnen verwijderen of wijzigen. Zie [resources vergren delen om onverwachte wijzigingen te voor komen](/azure/azure-resource-manager/management/lock-resources).
 | Bedrijfs kritieke gegevens opslaan in onveranderbare blobs | Configureer juridische bewaringen en bewaar beleidsregels op basis van tijd voor het opslaan van BLOB-gegevens in een WORM (Write Once, Read Many). De opgeslagen immutably van blobs kunnen worden gelezen, maar kunnen niet worden gewijzigd of verwijderd voor de duur van de Bewaar periode. Zie voor meer informatie [bedrijfs kritieke BLOB-gegevens opslaan met onveranderlijke opslag](storage-blob-immutable-storage.md). | - |
 | Alleen SAS-tokens (Shared Access Signature) beperken tot HTTPS-verbindingen | HTTPS vereisen wanneer een client een SAS-token gebruikt voor toegang tot BLOB-gegevens helpt het risico op inbreuk te minimaliseren. Zie [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md)voor meer informatie. | - |
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer
 
-| Aanbeveling | Opmerkingen | Beveiligingscentrum |
+| Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
 | Azure Active Directory (Azure AD) gebruiken om toegang te verlenen tot BLOB-gegevens | Azure AD biedt een superieure beveiliging en gebruiks gemak over gedeelde sleutel voor het machtigen van aanvragen voor Blob-opslag. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie. | - |
 | Houd bij het toewijzen van machtigingen aan een Azure AD-beveiligings-principal met behulp van Azure RBAC de belangrijkste bevoegdheid. | Wanneer u een rol aan een gebruiker, groep of toepassing toewijst, moet u die beveiligings-principal alleen de machtigingen verlenen die nodig zijn om hun taken uit te voeren. Het beperken van de toegang tot bronnen voor komt zowel onbedoelde als kwaad aardige misbruik van uw gegevens. | - |
 | Een SAS voor gebruikers overdracht gebruiken om beperkte toegang tot BLOB-gegevens toe te kennen aan clients | Een SAS voor gebruikers overdracht wordt beveiligd met Azure Active Directory (Azure AD)-referenties en ook door de machtigingen die zijn opgegeven voor de SAS. Een SAS voor gebruikers overdracht is vergelijkbaar met een service-SA'S in termen van het bereik en de functie, maar biedt beveiligings voordelen ten opzichte van de service-SA'S. Zie [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie. | - |
 | De toegangs sleutels van uw account beveiligen met Azure Key Vault | Micro soft raadt u aan Azure AD te gebruiken om aanvragen voor Azure Storage te autoriseren. Als u echter gedeelde sleutel autorisatie moet gebruiken, kunt u uw account sleutels beveiligen met Azure Key Vault. U kunt de sleutels uit de sleutel kluis tijdens runtime ophalen in plaats van deze op te slaan in uw toepassing. Zie [Azure Key Vault Overview](../../key-vault/general/overview.md)voor meer informatie over Azure Key Vault. | - |
 | Uw account sleutels periodiek opnieuw genereren | Als u de account sleutels draait, vermindert u het risico dat uw gegevens worden blootgesteld aan kwaad aardige actors. | - |
+| Verificatie van gedeelde sleutel uitschakelen | Wanneer u de verificatie van een gedeelde sleutel voor een opslag account niet toestaat, wijst Azure Storage alle volgende aanvragen af bij dat account dat is geautoriseerd met de toegangs sleutels voor het account. Alleen beveiligde aanvragen die zijn gemachtigd met Azure AD, worden [gebruikt voor het voor komen van gedeelde sleutel autorisatie voor een Azure Storage-account](../common/shared-key-authorization-prevent.md). | - |
 | Houd bij het toewijzen van machtigingen aan een SAS de hoofd van de minimale bevoegdheid | Wanneer u een SAS maakt, geeft u alleen de machtigingen op die de client nodig heeft om zijn functie uit te voeren. Het beperken van de toegang tot bronnen voor komt zowel onbedoelde als kwaad aardige misbruik van uw gegevens. | - |
 | Er is een intrekkings plan aanwezig voor elke SAS die u verleent aan clients | Als een SAS is aangetast, wilt u die SA'S zo snel mogelijk intrekken. Als u een SA'S voor gebruikers overdracht wilt intrekken, trekt u de sleutel voor gebruikers overdracht in om alle hand tekeningen die zijn gekoppeld aan die sleutel, ongeldig te maken. Als u een service-SA'S wilt intrekken die aan een opgeslagen toegangs beleid is gekoppeld, kunt u het opgeslagen toegangs beleid verwijderen, de naam van het beleid wijzigen of de verloop tijd wijzigen in een tijd die in het verleden ligt. Zie [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md)voor meer informatie.  | - |
 | Als een service-SAS niet is gekoppeld aan een beleid voor opgeslagen toegang, stelt u de verloop tijd in op één uur of minder | Een service-SA'S die niet aan een opgeslagen toegangs beleid is gekoppeld, kunnen niet worden ingetrokken. Daarom wordt de verloop tijd beperkt zodat de SAS één uur geldig of minder wordt aanbevolen. | - |
@@ -51,7 +53,7 @@ Azure Security Center regel matig de beveiligings status van uw Azure-resources 
 
 ## <a name="networking"></a>Netwerken
 
-| Aanbeveling | Opmerkingen | Beveiligingscentrum |
+| Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
 | Configureer de mini maal vereiste versie van Transport Layer Security (TLS) voor een opslag account.  | Vereisen dat clients een veiligere versie van TLS gebruiken om aanvragen voor een Azure Storage account te maken door de minimale versie van TLS voor dat account te configureren. Zie voor meer informatie [Mini maal vereiste versie van Transport Layer Security (TLS) configureren voor een opslag account](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)| - |
 | Schakel de optie **veilige overdracht vereist** in al uw opslag accounts in | Wanneer u de optie **beveiligde overdracht vereist** inschakelt, moeten alle aanvragen voor het opslag account via beveiligde verbindingen plaatsvinden. Aanvragen die via HTTP worden verzonden, mislukken. Zie [veilige overdracht vereisen in azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
@@ -60,12 +62,14 @@ Azure Security Center regel matig de beveiligings status van uw Azure-resources 
 | Privé-eindpunten gebruiken | Een persoonlijk eind punt wijst een privé-IP-adres van uw Azure Virtual Network (VNet) toe aan het opslag account. Hiermee wordt al het verkeer tussen uw VNet en het opslag account beveiligd via een privé-koppeling. Zie voor meer informatie over privé-eind punten [persoonlijke verbinding maken met een opslag account met behulp van een persoonlijk Azure-eind punt](../../private-link/create-private-endpoint-storage-portal.md). | - |
 | VNet-service tags gebruiken | Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen. Zie [overzicht van Azure-service Tags](../../virtual-network/service-tags-overview.md)voor meer informatie over service tags die door Azure Storage worden ondersteund. Zie [toegang tot PaaS-resources beperken](../../virtual-network/tutorial-restrict-network-access-to-resources.md)voor een zelf studie waarin wordt getoond hoe u service tags kunt gebruiken om uitgaande netwerk regels te maken. | - |
 | Netwerk toegang tot specifieke netwerken beperken | Het beperken van netwerk toegang tot netwerken die als host fungeren voor clients die toegang vereisen, worden de bloot stelling van uw resources aan netwerk aanvallen beperkt. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
+| Netwerkrouternigsvoorkeur configureren | U kunt netwerk routering voor uw Azure Storage-account configureren om op te geven hoe netwerk verkeer via internet naar uw account wordt gerouteerd vanuit clients met behulp van het wereld wijde netwerk of Internet routering van micro soft. Zie [voor keuren netwerk routering configureren voor Azure Storage](../common/network-routing-preference.md). | - |
 
 ## <a name="loggingmonitoring"></a>Loggen/bewaken
 
-| Aanbeveling | Opmerkingen | Beveiligingscentrum |
+| Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
-| Bijhouden hoe aanvragen worden geautoriseerd | Schakel Azure Storage logboek registratie in om bij te houden hoe elke aanvraag voor Azure Storage is geautoriseerd. De logboeken geven aan of een aanvraag anoniem is gemaakt door gebruik te maken van een OAuth 2,0-token, met behulp van gedeelde sleutel of door gebruik te maken van een Shared Access Signature (SAS). Zie [Azure Storage Analytics-logboek registratie](../common/storage-analytics-logging.md)voor meer informatie. | - |
+| Bijhouden hoe aanvragen worden geautoriseerd | Schakel Azure Storage logboek registratie in om bij te houden hoe elke aanvraag voor Azure Storage is geautoriseerd. De logboeken geven aan of een aanvraag anoniem is gemaakt door gebruik te maken van een OAuth 2,0-token, met behulp van gedeelde sleutel of door gebruik te maken van een Shared Access Signature (SAS). Zie [Azure Blob Storage bewaken met Azure monitor](monitor-blob-storage.md) of [Azure Storage Analytics-logboek registratie met klassieke bewaking](../common/storage-analytics-logging.md)voor meer informatie. | - |
+| Waarschuwingen instellen in Azure Monitor | Met logboek waarschuwingen kunnen gebruikers een Log Analytics query gebruiken om resources te evalueren elke ingestelde frequentie, en een waarschuwing te activeren op basis van de resultaten, [waarschuwingen voor logboeken in azure monitor](/azure/azure-monitor/platform/alerts-unified-log)te bekijken. | - |
 
 ## <a name="next-steps"></a>Volgende stappen
 

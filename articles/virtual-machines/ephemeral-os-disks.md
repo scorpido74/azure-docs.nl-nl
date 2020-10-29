@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a79a030c4f57c3dabdd14c01aa2062cab7026cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611517"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927920"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Tijdelijke besturingssysteem schijven voor virtuele Azure-machines
 
@@ -42,7 +42,8 @@ Belangrijkste verschillen tussen permanente en tijdelijke besturingssysteem schi
 | **Status voor stoppen-toewijzing ongedaan gemaakt**      | Vm's en schaal sets instanties kunnen stoppen en opnieuw worden toegewezen en opnieuw worden gestart vanaf de status voor het ongedaan maken van de toewijzing | Vm's en instanties van schaal sets kunnen niet stoppen-toewijzing opheffen                                  |
 | **Ondersteuning van gespecialiseerde besturingssysteem schijf** | Ja                                                                                          | Nee                                                                                 |
 | **Grootte van besturingssysteem schijf**              | Ondersteund tijdens het maken van de virtuele machine en nadat de virtuele machine is onttoewijzing gestopt                                | Alleen ondersteund tijdens het maken van VM'S                                                  |
-| **Formaat wijzigen in een nieuwe VM-grootte**   | De schijf gegevens van het besturings systeem blijven behouden                                                                    | Gegevens op de besturingssysteem schijf worden verwijderd, het besturings systeem wordt opnieuw ingericht                                      |
+| **Formaat wijzigen in een nieuwe VM-grootte**   | De schijf gegevens van het besturings systeem blijven behouden                                                                    | Gegevens op de besturingssysteem schijf worden verwijderd, het besturings systeem wordt opnieuw ingericht       
+| **Plaatsing van wissel bestand**   | Voor Windows wordt het wissel bestand op de bron schijf opgeslagen                                              | Voor Windows wordt het wissel bestand op de besturingssysteem schijf opgeslagen   |
 
 ## <a name="size-requirements"></a>Grootte vereisten
 
@@ -87,13 +88,13 @@ Voor schaal sets gebruikt u dezelfde `--ephemeral-os-disk true` para meter voor 
 
 ## <a name="portal"></a>Portal   
 
-In de Azure Portal kunt u ervoor kiezen om tijdelijke schijven te gebruiken bij het implementeren van een VM door de sectie **Advanced** van het tabblad **schijven** te openen. Voor het **gebruik van kortstondige besturingssysteem schijf** selecteert u **Ja**.
+In de Azure Portal kunt u ervoor kiezen om tijdelijke schijven te gebruiken bij het implementeren van een VM door de sectie **Advanced** van het tabblad **schijven** te openen. Voor het **gebruik van kortstondige besturingssysteem schijf** selecteert u **Ja** .
 
 ![Scherm opname van het keuze rondje voor het kiezen van een kortstondige besturingssysteem schijf](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
 Als de optie voor het gebruik van een tijdelijke schijf grijs wordt weer gegeven, hebt u mogelijk een VM-grootte geselecteerd die geen cache grootte heeft die groter is dan de installatie kopie van het besturings systeem of die geen ondersteuning biedt voor Premium Storage. Ga terug naar de pagina met **basis informatie** en kies een andere VM-grootte.
 
-U kunt ook schaal sets maken met tijdelijke besturingssysteem schijven met behulp van de portal. Zorg ervoor dat u een VM-grootte met een groot voldoende cache grootte selecteert en selecteer **Ja**in de **tijdelijke besturingssysteem schijf gebruiken** .
+U kunt ook schaal sets maken met tijdelijke besturingssysteem schijven met behulp van de portal. Zorg ervoor dat u een VM-grootte met een groot voldoende cache grootte selecteert en selecteer **Ja** in de **tijdelijke besturingssysteem schijf gebruiken** .
 
 ![Scherm afbeelding met het keuze rondje voor het kiezen van een tijdelijke besturingssysteem schijf voor uw schaalset](./media/virtual-machines-common-ephemeral/scale-set.png)
 

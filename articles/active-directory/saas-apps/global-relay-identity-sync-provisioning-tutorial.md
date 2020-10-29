@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9445004170fb06a3d563982da51f89535464e328
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900300"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927988"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Zelf studie: globale relay-identiteits synchronisatie configureren voor automatische gebruikers inrichting
 
@@ -33,6 +33,10 @@ In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel d
 > * Gebruikers in globale relay-identiteits synchronisatie verwijderen wanneer ze niet meer toegang nodig hebben
 > * Gebruikers kenmerken gesynchroniseerd laten tussen Azure AD en globale relay-identiteits synchronisatie
 > * Inrichtings groepen en groepslid maatschappen in globale relay-identiteits synchronisatie
+
+
+> [!NOTE]
+> De connector voor de inrichting van globale relay-identiteits synchronisatie maakt gebruik van een SCIM-autorisatie methode die niet meer wordt ondersteund vanwege beveiligings problemen. Er worden inspanningen uitgevoerd met globale relay om over te scha kelen naar een veiligere autorisatie methode.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -149,7 +153,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: organisatie|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: deling|Tekenreeks|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Tekenreeks|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Referentie|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Naslaginformatie|
    |urn: IETF: params: scim: schemas: extensie: GlobalRelay: 2.0: gebruiker: proxyAddresses|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: GlobalRelay: 2.0: gebruiker: extensionAttribute1|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: GlobalRelay: 2.0: gebruiker: extensionAttribute2|Tekenreeks|

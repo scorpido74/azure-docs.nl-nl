@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c706ba6847334648fade1e8983e00433d3fa618
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dcabd01cfbda8cd892c82b391bf649b2b464d6fb
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978200"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927767"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Beschik baarheid van SAP HANA binnen een Azure-regio
 In dit artikel worden verschillende beschikbaarheids scenario's binnen één Azure-regio beschreven. Azure heeft veel regio's, verspreid over de hele wereld. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor de lijst met Azure-regio's. Voor de implementatie van SAP HANA op Vm's binnen één Azure-regio, biedt micro soft de implementatie van één virtuele machine met een HANA-exemplaar. Voor een verhoogde Beschik baarheid kunt u twee virtuele machines implementeren met twee HANA-instanties binnen een [Azure-beschikbaarheidsset](../../windows/tutorial-availability-sets.md) die gebruikmaakt van Hana-systeem replicatie voor Beschik baarheid. 
@@ -78,7 +78,7 @@ Een van de meest elementaire-instellingen is het gebruik van back-ups. Met name 
 
 De architectuur ziet er als volgt uit:
 
-![Diagram van twee virtuele machines met opslag replicatie](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![Diagram waarin de architectuur van twee virtuele machines met opslag replicatie wordt weer gegeven.](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
 Deze installatie is niet geschikt voor het bereiken van geweldige beoogde herstel punten (RPO) en RTO (Recovery Time objectief). RTO keer dat de volledige data base volledig moet worden hersteld met behulp van de gekopieerde back-ups. Deze installatie is echter handig voor het herstellen van onbedoelde gegevens verwijdering op de belangrijkste instanties. Met deze installatie kunt u op elk gewenst moment herstellen naar een bepaald tijdstip, de gegevens extra heren en de verwijderde gegevens importeren in uw hoofd instantie. Daarom kan het zinvol zijn om een methode voor het kopiëren van back-ups te gebruiken in combi natie met andere functionaliteit voor hoge Beschik baarheid. 
 

@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 506336ad80c1f30b937bc71724ca39cee24bb2fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dc6706d4ec9090c59d4dd668d2ae1dd3ce7d188a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968919"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928039"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Grootte van de B-serie bebreekbaar virtuele machines
 
-De virtuele machines uit de B-serie zijn ideaal voor werk belastingen die de volledige prestaties van de CPU niet continu nodig hebben, zoals webservers, het testen van concepten, kleine data bases en ontwikkel bouw omgevingen. Deze werk belastingen hebben doorgaans een burstieve prestatie vereisten. De B-serie biedt u de mogelijkheid om een VM-grootte aan te schaffen met de basislijn prestaties en het VM-exemplaar maakt tegoeden bij gebruik van minder dan de basis lijn. Wanneer de virtuele machine tegoed heeft gecumuleerd, kan de virtuele machine met Maxi maal 100% van de vCPU worden gebonden aan de basis lijn wanneer uw toepassing hogere CPU-prestaties vereist.
+De virtuele machines uit de B-serie zijn ideaal voor werk belastingen die de volledige prestaties van de CPU niet continu nodig hebben, zoals webservers, het testen van concepten, kleine data bases en ontwikkel bouw omgevingen. Deze werk belastingen hebben doorgaans een burstieve prestatie vereisten. De B-serie biedt u de mogelijkheid om een VM-grootte aan te schaffen met basislijn prestaties, waarmee tegoeden kunnen worden gemaakt wanneer deze minder dan de basis lijn gebruiken. Wanneer de virtuele machine tegoed heeft gecrediteerd, kan de virtuele machine met Maxi maal 100% van de vCPU worden gebonden aan de basis lijn wanneer uw toepassing hogere CPU-prestaties vereist.
 
 De B-serie is beschikbaar in de volgende VM-grootten:
 
@@ -93,25 +93,24 @@ Voor een D16s_v3 met 16 Vcpu's en 64 GiB geheugen is het uurtarief $0,936 per uu
 
 ## <a name="q--a"></a>Vragenronde
 
-### <a name="q-what-happens-if-the-credits-run-out"></a>V: wat gebeurt er als de tegoeden worden uitgevoerd?
-**A**: wanneer de tegoeden zijn uitgeput, keert de virtuele machine terug naar de basislijn prestaties.
+### <a name="q-what-happens-when-my-credits-run-out"></a>V: wat gebeurt er wanneer mijn tegoed is verlopen?
+**A** : wanneer de tegoeden zijn uitgeput, keert de virtuele machine terug naar de basislijn prestaties.
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>V: Hoe krijg ik 135% basislijn prestaties van een VM?
 
-**A**: de 135% wordt gedeeld met de 8 vCPU die de VM-grootte vormen. Als uw toepassing bijvoorbeeld 4 van de 8 kernen gebruikt die aan batch verwerking werken en elk van deze vier vCPUs wordt uitgevoerd met 30% gebruik, is de totale hoeveelheid VM-CPU-prestaties gelijk aan 120%.  Dit betekent dat uw virtuele machine de tegoed tijd zou bouwen op basis van de 15% Delta van de basislijn prestaties.  Maar dit betekent ook dat wanneer u een tegoed hebt dat op dezelfde virtuele machine 100% van alle 8 vCPU de maximale CPU-prestaties van 800% mag gebruiken.
-
+**A** : de 135% wordt gedeeld met de 8 vCPU die de VM-grootte vormen. Als uw toepassing bijvoorbeeld 4 van de 8 kernen gebruikt die aan batch verwerking werken en elk van deze vier vCPUs wordt uitgevoerd met 30% gebruik, is de totale hoeveelheid VM-CPU-prestaties gelijk aan 120%.  Dit betekent dat uw virtuele machine de tegoed tijd zou bouwen op basis van de 15% Delta van de basislijn prestaties.  Maar dit betekent ook dat wanneer u een tegoed hebt dat op dezelfde virtuele machine 100% van alle 8 vCPU de maximale CPU-prestaties van 800% mag gebruiken.
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>V: hoe kan ik mijn credit saldo en verbruik bewaken?
 
-**A**: we introduceren 2 nieuwe metrische gegevens in de komende weken, met de **krediet** metriek kunt u zien hoeveel tegoeden uw VM heeft gebankd en hoe de **ConsumedCredit** -metriek laat zien hoeveel CPU-tegoeden uw VM van de Bank heeft verbruikt.    U kunt deze metrische gegevens bekijken in het deel venster metrische gegevens in de portal of via een programma via de Azure Monitor-Api's.
+**A** : met de **krediet** metriek kunt u zien hoeveel tegoeden uw virtuele machine heeft gebankd en hoe de **ConsumedCredit** -metriek laat zien hoeveel CPU-tegoeden uw VM van de Bank heeft verbruikt.    U kunt deze metrische gegevens bekijken in het deel venster metrische gegevens in de portal of via een programma via de Azure Monitor-Api's.
 
 Voor meer informatie over het verkrijgen van toegang tot de metrische gegevens voor Azure, verwijzen we u naar het [overzicht van metrieken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>V: hoe worden tegoed verzameld en verbruikt?
 
-**A**: de accumulatie van de VM en de verbruiks tarieven zijn zodanig ingesteld dat een virtuele machine die op exact het basis prestatie niveau draait, geen netaccumulatie of het verbruik van bursting-tegoeden heeft.  Een virtuele machine heeft een netto toename van de verantwoording als deze wordt uitgevoerd onder het basis prestatie niveau en heeft een net-afname in het tegoed wanneer de virtuele machine de CPU meer dan het basis prestatie niveau gebruikt.
+**A** : de accumulatie van de VM en de verbruiks tarieven zijn zodanig ingesteld dat een virtuele machine die op exact het basis prestatie niveau draait, geen netaccumulatie of het verbruik van bursting-tegoeden heeft.  Een virtuele machine heeft een netto toename van de verantwoording als deze wordt uitgevoerd onder het basis prestatie niveau en heeft een net-afname in het tegoed wanneer de virtuele machine de CPU meer dan het basis prestatie niveau gebruikt.
 
-**Voor beeld**: Ik implementeer een virtuele machine met behulp van de B1ms-grootte voor mijn kleine tijd-en aanwezigheids Database toepassing. Met deze grootte kan mijn toepassing Maxi maal 20% van een vCPU gebruiken als mijn basis lijn. Dit is 0,2 tegoed per minuut die ik kan gebruiken of bank.
+**Voor beeld** : Ik implementeer een virtuele machine met behulp van de B1ms-grootte voor mijn kleine tijd-en aanwezigheids Database toepassing. Met deze grootte kan mijn toepassing Maxi maal 20% van een vCPU gebruiken als mijn basis lijn. Dit is 0,2 tegoed per minuut die ik kan gebruiken of bank.
 
 Mijn toepassing is aan het begin en einde van mijn werkdag, tussen 7:00-9:00 uur en 4:00-6:13:00. Gedurende de andere 20 uur van de dag is mijn toepassing meestal niet actief, maar alleen met 10% van de vCPU. Voor de niet-piek uren kan ik 0,2 tegoed per minuut verdienen, maar alleen 0. l tegoeden per minuut verbruiken, dus mijn VM zal Bank 0,1 x 60 = 6 tegoed per uur.  Voor de 20 uur dat ik buiten de piek ben, Bank 120 tegoed.  
 
@@ -121,7 +120,7 @@ Als ik de 120-tegoeden heb behaald en u de 96 tegoeden aftrekt die ik heb gebrui
 
 ### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>V: hoe kan ik tegoed berekenen dat wordt gecumuleerd en gebruikt?
 
-**A**: u kunt de volgende formule gebruiken:
+**A** : u kunt de volgende formule gebruiken:
 
 (Basis CPU-prestaties van de VM-CPU-gebruik)/100 = Credit Bank of gebruik per minuut
 
@@ -129,11 +128,11 @@ bijvoorbeeld: in het bovenstaande exemplaar is uw basis lijn 20%. Als u 10% van 
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>V: biedt de B-serie ondersteuning Premium Storage gegevens schijven?
 
-**A**: Ja, alle grootten van de B-serie ondersteunen Premium Storage gegevens schijven.
+**A** : Ja, alle grootten van de B-serie ondersteunen Premium Storage gegevens schijven.
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>V: Waarom is mijn resterende tegoed ingesteld op 0 na het opnieuw implementeren of stoppen/starten?
 
-**A** : wanneer een virtuele machine ' REDPLOYED ' is en de VM naar een ander knoop punt verplaatst, gaat het geaccumuleerde tegoed verloren. Als de virtuele machine is gestopt/gestart, maar blijft op hetzelfde knoop punt, behoudt de VM het geaccumuleerde tegoed. Wanneer de VM wordt vernieuwd op een knoop punt, ontvangt deze een eerste tegoed, voor Standard_B8ms deze 240 minuten is.
+**A** : wanneer een virtuele machine ' REDPLOYED ' is en de VM naar een ander knoop punt verplaatst, gaat het geaccumuleerde tegoed verloren. Als de virtuele machine is gestopt/gestart, maar blijft op hetzelfde knoop punt, behoudt de VM het geaccumuleerde tegoed. Wanneer de VM wordt vernieuwd op een knoop punt, ontvangt deze een eerste tegoed, voor Standard_B8ms deze 240 is.
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>V: wat gebeurt er als ik een niet-ondersteunde installatie kopie van het besturings systeem Implementeer op B1ls?
 
