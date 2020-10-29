@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 57445d1010e9775e3a1735fd64722c44db8e0a4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5bca193a54d63feb927070fe138464581665ac9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546580"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Zelfstudie: Azure Active Directory-integratie met TalentLMS
 
@@ -27,7 +27,7 @@ De integratie van TalentLMS met Azure AD heeft de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij TalentLMS (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,11 +49,11 @@ Als u de integratie van TalentLMS in Azure AD wilt configureren, moet u TalentLM
 
 **Ga als volgt te werk om TalentLMS vanuit de galerie toe te voegen:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Als u de integratie van TalentLMS in Azure AD wilt configureren, moet u TalentLM
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **TalentLMS**, selecteer **TalentLMS** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **TalentLMS** , selecteer **TalentLMS** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![TalentLMS in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In dit gedeelte gaat u eenmalige aanmelding van Azure AD met TalentLMS configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+In dit gedeelte gaat u eenmalige aanmelding van Azure AD met TalentLMS configureren en testen op basis van een testgebruiker met de naam **Britta Simon** .
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure Active Directory-gebruiker en de daaraan gerelateerde gebruiker in TalentLMS tot stand is gebracht.
 
 Als u eenmalige aanmelding van Azure AD wilt configureren en testen met TalentLMS, moet u de volgende procedures uitvoeren:
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configureren met TalentLMS:
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) naar de pagina met de integratie van de toepassing **TalentLMS** en selecteer **Eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/) naar de pagina met de integratie van de toepassing **TalentLMS** en selecteer **Eenmalige aanmelding** .
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -130,21 +130,21 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 1. Meld u in een ander browservenster als beheerder aan bij uw TalentLMS-bedrijfssite.
 
-1. Klik in de sectie **Account en instellingen** op het tabblad **Gebruikers**.
+1. Klik in de sectie **Account en instellingen** op het tabblad **Gebruikers** .
 
     ![Account en instellingen](./media/talentlms-tutorial/IC777296.png "Account en instellingen")
 
-1. Klik op **Eenmalige aanmelding**.
+1. Klik op **Eenmalige aanmelding** .
 
 1. Voer in de sectie Eenmalige aanmelding de volgende stappen uit:
 
     ![Single Sign-On](./media/talentlms-tutorial/IC777297.png "Eenmalige aanmelding")
 
-    a. Selecteer **SAML 2.0**in de lijst **Type SSO-integratie**.
+    a. Selecteer **SAML 2.0** in de lijst **Type SSO-integratie** .
 
-    b. Plak de waarde van **Azure Ad-id**, die u hebt gekopieerd uit de Azure-portal, in het tekstvak **Identity Provider (IDP)** .
+    b. Plak de waarde van **Azure Ad-id** , die u hebt gekopieerd uit de Azure-portal, in het tekstvak **Identity Provider (IDP)** .
 
-    c. Plak de waarde van de **Vingerafdruk** uit de Azure-portal in het tekstvak **Vingerafdrukcertificaat**.
+    c. Plak de waarde van de **Vingerafdruk** uit de Azure-portal in het tekstvak **Vingerafdrukcertificaat** .
 
     d.  Plak in het tekstvak **URL voor externe aanmelding** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
@@ -160,13 +160,13 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
     * Typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` in het tekstvak **E-mailadres**
 
-1. Klik op **Opslaan**.
+1. Klik op **Opslaan** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** .
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -178,19 +178,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Create** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot TalentLMS.
 
-1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **TalentLMS**.
+1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **TalentLMS** .
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -198,11 +198,11 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling TalentLMS in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen** .
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -210,7 +210,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen** .
 
 ### <a name="create-talentlms-test-user"></a>TalentLMS-testgebruiker maken
 
@@ -218,21 +218,21 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij TalentLMS, moeten z
 
 **Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Meld u aan bij uw **TalentLMS**-tenant.
+1. Meld u aan bij uw **TalentLMS** -tenant.
 
-1. Klik op **Gebruikers** en klik vervolgens op **Gebruiker toevoegen**.
+1. Klik op **Gebruikers** en klik vervolgens op **Gebruiker toevoegen** .
 
-1. Voer de volgende stappen uit in het dialoogvenster **Add a User**:
+1. Voer de volgende stappen uit in het dialoogvenster **Add a User** :
 
     ![Gebruiker toevoegen](./media/talentlms-tutorial/IC777299.png "Gebruiker toevoegen")  
 
-    a. Voer in het tekstvak **First name** de voornaam van de gebruiker in, zoals **Britta**.
+    a. Voer in het tekstvak **First name** de voornaam van de gebruiker in, zoals **Britta** .
 
-    b. Voer in het tekstvak **Last name** de achternaam van de gebruiker in, zoals **Simon**.
+    b. Voer in het tekstvak **Last name** de achternaam van de gebruiker in, zoals **Simon** .
  
     c. Typ in het tekstvak **Email-adres** het e-mailadres van de gebruiker, bijvoorbeeld `brittasimon\@contoso.com`.
 
-    d. Klik op **Add User**.
+    d. Klik op **Add User** .
 
 > [!NOTE]
 > U kunt ook alle andere hulpprogramma's voor het creëren van TalentLMS-gebruikersaccounts of API's van TalentLMS gebruiken om Azure AD-gebruikersaccounts in te richten.
@@ -241,13 +241,12 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij TalentLMS, moeten z
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel TalentLMS in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van TalentLMS waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel TalentLMS in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van TalentLMS waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

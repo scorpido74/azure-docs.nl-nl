@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: aaa9a78342cf64461d85d7542c7ed8a69186906b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f49b7a2b4acc42724616121186093b112867d2b5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275112"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487718"
 ---
 # <a name="azure-cosmos-db-sql-api-spring-data-azure-cosmos-db-v3-examples"></a>Azure Cosmos DB SQL API: Spring Data Azure Cosmos DB v3-voorbeelden
 
@@ -34,9 +34,9 @@ ms.locfileid: "92275112"
 > Spring Data Azure Cosmos DB ondersteunt alleen de SQL-API.
 >
 > Lees deze artikelen voor informatie over Spring Data op andere Azure Cosmos DB-API's:
-> * [Spring Data voor Apache Cassandra met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Spring Data MongoDB met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Spring Data Gremlin met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [Spring Data voor Apache Cassandra met Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Spring Data MongoDB met Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Spring Data Gremlin met Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 > [!IMPORTANT]  
@@ -59,7 +59,7 @@ U hebt het volgende nodig om deze voorbeeldtoepassing uit te voeren:
 * Java Development Kit 8
 * Spring Data Azure Cosmos DB v3
 
-U kunt eventueel Maven gebruiken om de recentste binaire Spring Data Azure Cosmos DB v3-bestanden op te halen voor gebruik in uw project. Maven voegt automatisch eventuele vereiste afhankelijkheden toe. Anders kunt u de afhankelijkheden die worden vermeld in het bestand **pom.xml**, rechtstreeks downloaden en toevoegen aan uw build-pad.
+U kunt eventueel Maven gebruiken om de recentste binaire Spring Data Azure Cosmos DB v3-bestanden op te halen voor gebruik in uw project. Maven voegt automatisch eventuele vereiste afhankelijkheden toe. Anders kunt u de afhankelijkheden die worden vermeld in het bestand **pom.xml** , rechtstreeks downloaden en toevoegen aan uw build-pad.
 
 ```bash
 <dependency>
@@ -115,7 +115,7 @@ Het bestand [samples](https://github.com/Azure-Samples/azure-spring-data-cosmos-
 | [Voer een query uit voor documenten](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java#L73-L77) | CosmosRepository.derivedQueryMethod |
 
 ## <a name="custom-query-examples"></a>Voorbeelden van aangepaste query's
-In het bestand [samples](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java) ziet u hoe u de volgende taken kunt uitvoeren met behulp van de SQL-querygrammatica. Zie [SQL-queryvoorbeelden voor Azure Cosmos DB](how-to-sql-query.md) voor meer informatie over de SQL-queryreferentie in Azure Cosmos DB voordat u de volgende voorbeelden uitvoert. 
+In het bestand [samples](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java) ziet u hoe u de volgende taken kunt uitvoeren met behulp van de SQL-querygrammatica. Zie [SQL-queryvoorbeelden voor Azure Cosmos DB](./sql-query-getting-started.md) voor meer informatie over de SQL-queryreferentie in Azure Cosmos DB voordat u de volgende voorbeelden uitvoert. 
 
 
 | Taak | API-verwijzing |
