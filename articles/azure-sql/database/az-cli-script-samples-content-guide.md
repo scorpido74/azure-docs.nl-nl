@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 893ea607b322c2f9b2d8a4e8b5b087e21c476d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f28d8f82796f54002312514b1a34e3dd8b666a3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497168"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675257"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-voorbeelden voor Azure SQL Database en beheerde SQL-exemplaren 
  
@@ -73,7 +73,7 @@ De volgende tabel bevat koppelingen naar Azure CLI-scriptvoorbeelden voor beheer
 | [Een failovergroep configureren voor een door SQL beheerd exemplaar](../../sql-database/scripts/sql-database-add-managed-instance-to-failover-group-cli.md) | Hiermee maakt u twee door SQL beheerde exemplaren, voegt ze toe aan een failovergroep, en test vervolgens failover van het primaire door SQL beheerde exemplaar naar het secundaire door SQL beheerde exemplaar. |
 |||
 
-Voor meer voorbeelden van door SQL beheerde exemplaren raadpleegt u [Maken](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/), [Bijwerken](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/), [Een database verplaatsen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) en [Werken met scripts](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
+Voor meer voorbeelden van door SQL beheerde exemplaren raadpleegt u [Maken](/archive/blogs/sqlserverstorageengine/create-azure-sql-managed-instance-using-azure-cli), [Bijwerken](/archive/blogs/sqlserverstorageengine/modify-azure-sql-database-managed-instance-using-azure-cli), [Een database verplaatsen](/archive/blogs/sqlserverstorageengine/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance) en [Werken met scripts](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
 
 Meer informatie over het [beheerde SQL-exemplaar van Azure CLI API](../managed-instance/api-references-create-manage-instance.md#azure-cli-create-and-configure-managed-instances).
 
