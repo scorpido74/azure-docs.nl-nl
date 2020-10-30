@@ -6,7 +6,7 @@
       href: Overview/overview.md
     - name: Nieuwe functies
       href: whats-new.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: Met de QnA Maker-portal
       items:
@@ -50,6 +50,8 @@
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
     - name: QnA Maker-app beheren
       href: How-To/manage-qna-maker-app.md
+    - name: Actief leren inschakelen
+      href: How-To/use-active-learning.md
     - name: Knowledge base beheren
       items:
         - name: Een knowledge base maken

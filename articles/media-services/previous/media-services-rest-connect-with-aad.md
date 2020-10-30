@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257140"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041995"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure Active Directory-verificatie gebruiken voor toegang tot de Media Services-API met REST
 
@@ -56,7 +56,7 @@ In deze zelfstudie leert u het volgende:
 - Bekijk de Access [Azure Media Services-API met het overzichts artikel van Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md) .
 - Installeer de [postman](https://www.getpostman.com/) rest-client voor het uitvoeren van de rest-api's die in dit artikel worden weer gegeven. 
 
-    In deze zelf studie gebruiken we **postman** , maar een rest hulp programma is geschikt. Enkele andere alternatieven: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
+    In deze zelf studie gebruiken we **postman** , maar een rest hulp programma is geschikt. Enkele andere alternatieven: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler** . 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>De verificatie gegevens ophalen van de Azure Portal
 
@@ -71,16 +71,16 @@ Als u toegang wilt krijgen tot Media Services-API, moet u de volgende gegevens p
 |Client-ID (toepassings-ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Client-ID van Azure AD-toepassing. De client-ID is vereist om het toegangs token op te halen. |
 |Clientgeheim|+ mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Azure AD-toepassings sleutels (client geheim). Het client geheim is vereist om het toegangs token op te halen.|
 
-### <a name="get-aad-auth-info-from-the-azure-portal"></a>AAD-verificatie gegevens ophalen van de Azure Portal
+### <a name="get-azure-active-directory-auth-info-from-the-azure-portal"></a>Azure Active Directory auth-gegevens ophalen van de Azure Portal
 
 Voer de volgende stappen uit om de informatie op te halen:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Navigeer naar uw AMS-exemplaar.
-3. Selecteer **API-toegang**.
-4. Klik op **verbinding maken met Azure Media Services API met Service-Principal**.
+3. Selecteer **API-toegang** .
+4. Klik op **verbinding maken met Azure Media Services API met Service-Principal** .
 
-    ![API-toegang](./media/connect-with-rest/connect-with-rest01.png)
+    ![Scherm afbeelding met de optie ' A P I Access ' die is geselecteerd in het menu ' Media Services ' en ' verbinding maken met Azure Media Services een P I met Service-Principal ' geselecteerd in het rechterdeel venster.](./media/connect-with-rest/connect-with-rest01.png)
 
 5. Selecteer een bestaande **Azure AD-toepassing** of maak een nieuwe, (zie hieronder).
 
@@ -89,12 +89,12 @@ Voer de volgende stappen uit om de informatie op te halen:
 
     Als u een nieuwe AD-App wilt maken, voert u de volgende stappen uit:
     
-   1. Druk op **nieuwe maken**.
+   1. Druk op **nieuwe maken** .
    2. Voer een naam in.
    3. Klik opnieuw op **nieuwe maken** .
-   4. Klik op **Opslaan**.
+   4. Klik op **Opslaan** .
 
-      ![API-toegang](./media/connect-with-rest/new-app.png)
+      ![Scherm opname waarin het dialoog venster ' nieuwe maken ' wordt weer gegeven, waarbij het tekstvak ' app maken ' is gemarkeerd en de knop ' opslaan ' is geselecteerd.](./media/connect-with-rest/new-app.png)
 
       De nieuwe app wordt op de pagina weer gegeven.
 
@@ -103,15 +103,15 @@ Voer de volgende stappen uit om de informatie op te halen:
    1. Selecteer de toepassing.
    2. Haal de **client-id** op in het venster aan de rechter kant. 
 
-      ![API-toegang](./media/connect-with-rest/existing-client-id.png)
+      ![Scherm afbeelding met de geselecteerde ' Azure A D-app ' en ' toepassings beheer ' geselecteerd en de ' client I D ' gemarkeerd in het rechterdeel venster.](./media/connect-with-rest/existing-client-id.png)
 
 7. De **sleutel** van de toepassing (client geheim) ophalen. 
 
-   1. Klik op de knop **toepassing beheren** (Let op dat de client-id-informatie onder **toepassings-id**is). 
-   2. Druk op de **toets**.
+   1. Klik op de knop **toepassing beheren** (Let op dat de client-id-informatie onder **toepassings-id** is). 
+   2. Druk op de **toets** .
     
-       ![API-toegang](./media/connect-with-rest/manage-app.png)
-   3. Genereer de app-sleutel (client geheim) door de **Beschrijving** in te vullen en te **verloopt** en op **Opslaan**te drukken.
+       ![Scherm opname waarin de knop toepassing beheren wordt weer gegeven, het deel venster ' toepassing I D ' is gemarkeerd en ' sleutels ' geselecteerd in het rechterdeel venster.](./media/connect-with-rest/manage-app.png)
+   3. Genereer de app-sleutel (client geheim) door de **Beschrijving** in te vullen en te **verloopt** en op **Opslaan** te drukken.
     
        Wanneer u op de knop **Opslaan** hebt geklikt, wordt de sleutel waarde weer gegeven. Kopieer de sleutel waarde voordat u de Blade verlaat.
 
@@ -124,18 +124,18 @@ U kunt waarden voor AD-verbindings parameters toevoegen aan uw web.config-of app
 
 ## <a name="get-the-access-token-using-postman"></a>Het toegangs Token ophalen met behulp van postman
 
-In deze sectie wordt beschreven hoe u **postman** gebruikt om een rest API uit te voeren waarmee een JWT Bearer-token (toegangs token) wordt geretourneerd. Als u Media Services REST API wilt aanroepen, moet u de header Authorization toevoegen aan de aanroepen en de waarde ' Bearer *your_access_token*' toevoegen aan elke aanroep (zoals weer gegeven in de volgende sectie van deze zelf studie). 
+In deze sectie wordt beschreven hoe u **postman** gebruikt om een rest API uit te voeren waarmee een JWT Bearer-token (toegangs token) wordt geretourneerd. Als u Media Services REST API wilt aanroepen, moet u de header Authorization toevoegen aan de aanroepen en de waarde ' Bearer *your_access_token* ' toevoegen aan elke aanroep (zoals weer gegeven in de volgende sectie van deze zelf studie). 
 
-1. Open **postman**.
-2. Selecteer **POST**.
-3. Voer de URL in die uw Tenant naam bevat met de volgende indeling: de naam van de Tenant moet eindigen op **. onmicrosoft.com** en de URL moet eindigen op **oauth2/token**: 
+1. Open **postman** .
+2. Selecteer **POST** .
+3. Voer de URL in die uw Tenant naam bevat met de volgende indeling: de naam van de Tenant moet eindigen op **. onmicrosoft.com** en de URL moet eindigen op **oauth2/token** : 
 
     `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
 4. Selecteer het tabblad **kopteksten** .
 5. Voer de gegevens van de **headers** in met behulp van het gegevens raster ' sleutel/waarde '. 
 
-    ![Gegevens raster](./media/connect-with-rest/headers-data-grid.png)
+    ![Scherm opname van het tabblad ' kopteksten ' en de actie voor bulk bewerking geselecteerd.](./media/connect-with-rest/headers-data-grid.png)
 
     U kunt ook op de koppeling **bulk bewerking** rechts van het venster postman klikken en de volgende code plakken.
 
@@ -158,21 +158,21 @@ In deze sectie wordt beschreven hoe u **postman** gebruikt om een rest API uit t
     resource:https://rest.media.azure.net
     ```
 
-8. Druk op **Verzenden**.
+8. Druk op **Verzenden** .
 
-    ![Token ophalen](./media/connect-with-rest/connect-with-rest04.png)
+    ![Scherm afbeelding met de tabbladen ' post ', ' kopteksten ' en ' hoofd tekst ' en ' access_token ' gemarkeerd en de knop ' verzenden ' gedetecteerd.](./media/connect-with-rest/connect-with-rest04.png)
 
 Het geretourneerde antwoord bevat het **toegangs token** dat u nodig hebt om toegang te krijgen tot alle AMS-api's.
 
 ## <a name="test-the-assets-api-using-the-access-token"></a>De **activa** -API testen met behulp van het toegangs token
 
-In deze sectie wordt beschreven hoe u **de Asset** -API opent met behulp van **postman**.
+In deze sectie wordt beschreven hoe u **de Asset** -API opent met behulp van **postman** .
 
-1. Open **postman**.
-2. Selecteer **GET**.
+1. Open **postman** .
+2. Selecteer **GET** .
 3. Plak het REST API-eind punt (bijvoorbeeld https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. Selecteer het tabblad **autorisatie** . 
-5. Selecteer een **Bearer-token**.
+5. Selecteer een **Bearer-token** .
 6. Plak het token dat in de vorige sectie is gemaakt.
 
     ![Token ophalen](./media/connect-with-rest/connect-with-rest05.png)
@@ -182,7 +182,7 @@ In deze sectie wordt beschreven hoe u **de Asset** -API opent met behulp van **p
 
    ![Authentication Header](./media/connect-with-rest/auth-header.png)
 
-7. Selecteer **kopteksten**.
+7. Selecteer **kopteksten** .
 5. Klik in het venster postman op koppeling **bulk bewerking** .
 6. Plak de volgende headers:
 
@@ -194,7 +194,7 @@ In deze sectie wordt beschreven hoe u **de Asset** -API opent met behulp van **p
     MaxDataServiceVersion:3.0
     ```
 
-7. Druk op **Verzenden**.
+7. Druk op **Verzenden** .
 
 Het geretourneerde antwoord bevat de assets in uw account.
 

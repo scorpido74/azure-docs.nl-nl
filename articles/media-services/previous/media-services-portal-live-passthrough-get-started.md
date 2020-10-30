@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 15b876104dfa1a35077a34aa178d650e2d68855e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 707c12cac6bbceee925c4710eff29482f687d47f
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266728"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040722"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Live streamen met on-premises encoders met behulp van Azure Portal
 
@@ -112,7 +112,7 @@ In deze secties ziet u hoe u de optie **Snelle invoer** gebruikt om een doorvoer
 Zie [Live streamen met on-premises coderingsprogramma's die multi-bitrate streams maken](media-services-live-streaming-with-onprem-encoders.md) voor meer informatie over doorvoerkanalen.
 
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Klik in het venster **Instellingen** op **Live streamen**. 
+2. Klik in het venster **Instellingen** op **Live streamen** . 
    
     ![Aan de slag](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
@@ -120,20 +120,20 @@ Zie [Live streamen met on-premises coderingsprogramma's die multi-bitrate stream
 3. Klik op **Snelle invoer** om een doorvoerkanaal te maken met het RTMP-opnameprotocol.
    
     Het venster **EEN NIEUW KANAAL MAKEN** wordt weergegeven.
-4. Geef het nieuwe kanaal een naam en klik op **Maken**. 
+4. Geef het nieuwe kanaal een naam en klik op **Maken** . 
    
     Hierop wordt een doorvoerkanaal gemaakt met het RTMP-opnameprotocol.
 
 ## <a name="create-events"></a>Gebeurtenissen maken
 1. Selecteer een kanaal waaraan u een gebeurtenis wilt toevoegen.
-2. Klik op de knop **Live gebeurtenis**.
+2. Klik op de knop **Live gebeurtenis** .
 
 ![Gebeurtenis](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
 ## <a name="get-ingest-urls"></a>URL’s voor opnemen ophalen
 Wanneer het kanaal is gemaakt, kunt u URL’s voor opnemen ophalen die u aan het live coderingsprogramma levert. Het coderingsprogramma gebruikt deze URL's voor het invoeren van een live stream.
 
-![Gemaakt](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
+![Scherm opname van de pagina live streamen met een geselecteerd kanaal en het kanaal venster wordt weer gegeven.](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>De gebeurtenis bekijken
 Als u een gebeurtenis wilt bekijken, klikt u op **Bekijken** in Azure Portal of kopieert u de streaming-URL en gebruikt u een speler van uw keuze. 
@@ -151,7 +151,7 @@ Zie [Live streamen met on-premises coderingsprogramma's die multi-bitrate stream
 ## <a name="view-archived-content"></a>Gearchiveerde inhoud weergeven
 Zelfs na het stoppen en verwijderen van de gebeurtenis kunnen gebruikers de gearchiveerde inhoud als video op aanvraag streamen, mits u de asset niet hebt verwijderd. Een asset kan niet worden verwijderd als deze wordt gebruikt door een gebeurtenis. U moet eerst de gebeurtenis verwijderen. 
 
-Voor het beheren van uw assets selecteert u **instelling** en klikt u op **assets**.
+Voor het beheren van uw assets selecteert u **instelling** en klikt u op **assets** .
 
 ![Assets](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

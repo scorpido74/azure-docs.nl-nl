@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b8fdabc3f4f33627936eead9dda57e67c7b0da8
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827905"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040501"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Veelgestelde vragen over identiteits beveiliging in Azure Active Directory
 
 ## <a name="dismiss-user-risk-known-issues"></a>Bekende problemen met gebruikers risico negeren
 
-**Gebruikers risico** voor klassieke identiteits beveiliging sluiten Hiermee wordt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging ingesteld op **Azure AD**.
+**Gebruikers risico** voor klassieke identiteits beveiliging sluiten Hiermee wordt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging ingesteld op **Azure AD** .
 
 **Gebruikers risico negeren** in identiteits beveiliging stelt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging in op **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
@@ -34,17 +34,23 @@ Query's op het veld **username** zijn hoofdletter gevoelig, terwijl query's op h
 
 **Als u datums weer geven** inschakelt, wordt de kolom **risico laatst bijgewerkt** verborgen. Als u de kolom wilt lezen, klikt u boven aan de Blade Risk ante gebruikers op **kolommen** .
 
-**Alle gebeurtenissen** in klassieke identiteits beveiliging sluiten Hiermee stelt u de status van de risico detecties in op **gesloten (opgelost)**.
+**Alle gebeurtenissen** in klassieke identiteits beveiliging sluiten Hiermee stelt u de status van de risico detecties in op **gesloten (opgelost)** .
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Risk ante aanmeldingen melden bekende problemen
 
-**Oplossen** met een risico detectie stelt de status in op **gebruikers die MFA door gegeven door beleid op basis van risico**.
+**Oplossen** met een risico detectie stelt de status in op **gebruikers die MFA door gegeven door beleid op basis van risico** .
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 ### <a name="why-is-a-user-is-at-risk"></a>Waarom is een gebruiker risico?
 
 Als u een Azure AD Identity Protection klant bent, gaat u naar de weer gave [Risk ante gebruikers](howto-identity-protection-investigate-risk.md#risky-users) en klikt u op een gebruiker met een risico. In de lade aan de onderkant worden in het tabblad risico geschiedenis alle gebeurtenissen weer gegeven die hebben geleid tot een wijziging in de gebruikers risico. Als u alle Risk ante aanmeldingen voor de gebruiker wilt weer geven, klikt u op Risk ante aanmeldingen van gebruiker. Als u alle risico detecties voor deze gebruiker wilt weer geven, klikt u op risico detectie gebruiker.
+
+## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Waarom is mijn aanmelding geblokkeerd, maar heeft de identiteits beveiliging geen risico detectie gegenereerd?
+Aanmeldingen kunnen om verschillende redenen worden geblokkeerd. Het is belang rijk te weten dat identiteits beveiliging alleen risico detecties genereert wanneer de juiste referenties worden gebruikt in de verificatie aanvraag. Als een gebruiker onjuiste referenties gebruikt, wordt deze niet gemarkeerd door identiteits beveiliging, omdat er geen risico is op referentie inbreuk, tenzij een ongeldige actor de juiste referenties gebruikt. Er zijn een aantal redenen waarom een gebruiker kan worden geblokkeerd bij het ondertekenen waarbij geen detectie van identiteits beveiliging wordt gegenereerd:
+* De **IP kan worden geblokkeerd** vanwege schadelijke activiteiten van het IP-adres. Het door de IP geblokkeerde bericht niet onderscheidt of de referenties juist zijn of niet. Als het IP-adres wordt geblokkeerd en de juiste referenties niet worden gebruikt, wordt er geen detectie van identiteits beveiliging gegenereerd
+* **[Slimme vergren deling](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** kan het account blok keren van aanmelden na meerdere mislukte pogingen
+* Een **beleid voor voorwaardelijke toegang** kan worden afgedwongen waarbij andere voor waarden dan risico niveau worden gebruikt voor het blok keren van een verificatie aanvraag
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Hoe kan ik een rapport met detecties van een specifiek type krijgen?
 
@@ -76,12 +82,12 @@ Alle risico detecties worden beschreven in het artikel [Wat is risico](concept-i
 
 **Aangetaste bevestiging** (bij aanmelding): informeert Azure AD Identity Protection dat de aanmelding niet is uitgevoerd door de eigenaar van de identiteit en duidt op een inbreuk.
 
-- Wanneer deze feedback wordt ontvangen, verplaatsen we de status van het aanmeld-en gebruikers risico naar een **hoge**mate van **aangetast** en risico niveau.
+- Wanneer deze feedback wordt ontvangen, verplaatsen we de status van het aanmeld-en gebruikers risico naar een **hoge** mate van **aangetast** en risico niveau.
 
 - Daarnaast bieden we de informatie aan onze machine learning systemen voor toekomstige verbeteringen in de risico beoordeling.
 
     > [!NOTE]
-    > Als de gebruiker al is doorgevoerd, klikt u niet op **geïnfecteerde bevestigen** omdat hiermee de aanmeld-en gebruikers risico status wordt verplaatst naar een **hoge**mate van **aangetast** en risico.
+    > Als de gebruiker al is doorgevoerd, klikt u niet op **geïnfecteerde bevestigen** omdat hiermee de aanmeld-en gebruikers risico status wordt verplaatst naar een **hoge** mate van **aangetast** en risico.
 
 **Bevestig veilig** (bij een aanmelding): informeert Azure AD Identity Protection dat de aanmelding is uitgevoerd door de eigenaar van de identiteit en geeft geen inbreuk op.
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: ea8881adf39a315df7746dbce14dedcbee18ccf6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ef861cdf394716a70d85e43ce9c60f46af2cc2e4
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521047"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040196"
 ---
 # <a name="unpivot-transformation-in-mapping-data-flow"></a>Draai tabel transformatie bij toewijzing van gegevens stroom
 
@@ -20,25 +20,25 @@ ms.locfileid: "92521047"
 
 Gebruik UNPIVOT in ADF-toewijzings gegevens stroom als een manier om een ongebruikelijke gegevensset in te scha kelen in een meer genormaliseerde versie door waarden uit meerdere kolommen in één record uit te breiden naar meerdere records met dezelfde waarden in één kolom.
 
-![Draai tabel transformatie](media/data-flow/unpivot1.png "Draai tabel opties 1")
+![Scherm afbeelding toont weer gave van draai tabel geselecteerd in het menu.](media/data-flow/unpivot1.png "Draai tabel opties 1")
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B1RR]
 
 ## <a name="ungroup-by"></a>Groep opheffen op
 
-![Draai tabel transformatie](media/data-flow/unpivot5.png "Draai tabel opties 2")
+![In de scherm afbeelding worden de instellingen van de draai tabel weer gegeven met het tabblad groep opheffen op geselecteerd.](media/data-flow/unpivot5.png "Draai tabel opties 2")
 
 Stel eerst de kolommen in waarop u de groepering wilt opheffen voor uw aggregatie van de draai tabel. Stel een of meer kolommen in voor het opheffen van de groep met het plus teken naast de kolom lijst.
 
 ## <a name="unpivot-key"></a>Depivot-sleutel
 
-![Draai tabel transformatie](media/data-flow/unpivot6.png "Draai tabel opties 3")
+![In de scherm afbeelding worden de instellingen van de draai tabel weer gegeven op het tabblad uitschakeling van de draai tabel.](media/data-flow/unpivot6.png "Draai tabel opties 3")
 
 De depivot-sleutel is de kolom die ADF van kolom naar rij wordt gedraaid. Standaard wordt elke unieke waarde in de gegevensset voor dit veld naar een rij gedraaid. U kunt eventueel ook de waarden opgeven uit de gegevensset die u wilt draaien naar rijgegevens.
 
 ## <a name="unpivoted-columns"></a>Niet-gedraaide kolommen
 
-![Draai tabel transformatie](media/data-flow//unpivot7.png "Draai tabel opties 4")
+![Scherm afbeelding toont de instellingen voor het weer geven van de draai tabel met het tabblad gegevens voorbeeld geselecteerd.](media/data-flow//unpivot7.png "Draai tabel opties 4")
 
 Kies ten slotte de kolom naam voor het opslaan van de waarden voor niet-gedraaide kolommen die worden omgezet in rijen.
 
@@ -50,7 +50,7 @@ Bijvoorbeeld: SumCost is de kolom naam die u hebt gekozen in het voor beeld dat 
 
 Als u de rang schikking van de kolom instelt op ' normaal ', worden alle nieuwe niet-gedraaide kolommen van één waarde gegroepeerd. Als u de rang schikking van de kolommen instelt op ' zijdelings ', worden nieuwe niet-gedraaide kolommen gegroepeerd die zijn gegenereerd op basis van een bestaande kolom.
 
-![Draai tabel transformatie](media/data-flow//unpivot7.png "Draai tabel opties 5")
+![Scherm afbeelding toont het resultaat van de trans formatie.](media/data-flow//unpivot7.png "Draai tabel opties 5")
 
 De laatste niet-gedraaide gegevens resultaatset bevat de kolom totalen die nu in afzonderlijke rijwaarden zijn weer gegeven.
 

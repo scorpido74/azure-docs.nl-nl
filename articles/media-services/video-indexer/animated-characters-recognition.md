@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1ac27f8fe0c6c608bfc261e9ac2d96651c94b341
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018879"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040080"
 ---
 # <a name="animated-character-detection-preview"></a>Detectie van geanimeerde tekens (preview)
 
@@ -75,11 +75,11 @@ Volg deze stappen om u te verbinden Custom Vision account te Video Indexer of he
     > [!NOTE]
     > Om alle sleutels te bieden die u nodig hebt om twee afzonderlijke resources te hebben in Custom Vision, één voor de training en één voor voor spellingen.
 1. Blader en meld u aan bij de [video indexer](https://vi.microsoft.com/).
-1. Klik op het vraag teken in de rechter bovenhoek van de pagina en kies API- **verwijzing**.
+1. Klik op het vraag teken in de rechter bovenhoek van de pagina en kies API- **verwijzing** .
 1. Zorg ervoor dat u bent geabonneerd op API Management door te klikken op het tabblad **producten** . Als u een API hebt verbonden, kunt u door gaan met de volgende stap, anders abonneren. 
-1. Op de ontwikkelaars Portal klikt u op de **volledige API-verwijzing** en bladert u naar **bewerkingen**.  
-1. Selecteer **verbinding maken Custom Vision account (preview)** en klik op **proberen**.
-1. Vul de vereiste velden en het toegangs token in en klik op **verzenden**. 
+1. Op de ontwikkelaars Portal klikt u op de **volledige API-verwijzing** en bladert u naar **bewerkingen** .  
+1. Selecteer **verbinding maken Custom Vision account (preview)** en klik op **proberen** .
+1. Vul de vereiste velden en het toegangs token in en klik op **verzenden** . 
 
     Ga naar de [ontwikkelaars Portal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)voor meer informatie over het verkrijgen van het video indexer toegangs token en Raadpleeg de [relevante documentatie](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
 1. Zodra de aanroep 200 OK reageert, is uw account verbonden.
@@ -96,9 +96,9 @@ Volg deze stappen om u te verbinden Custom Vision account te Video Indexer of he
 1. Ga naar de [Video Indexer](https://vi.microsoft.com/)-website en meld u aan.
 1. Klik op de knop aanpassing van inhouds model in de rechter bovenhoek van de pagina.
 
-    ![Aanpassing van het inhouds model](./media/animated-characters-recognition/content-model-customization.png)
+    ![Scherm opname van de pagina ' Video Indexer ' met de knop voor het aanpassen van het inhouds model geselecteerd in de rechter bovenhoek.](./media/animated-characters-recognition/content-model-customization.png)
 1. Ga naar het tabblad met **animatie tekens** in de sectie model aanpassing.
-1. Klik op **model toevoegen**.
+1. Klik op **model toevoegen** .
 1. Geef een naam op voor het model en klik op ENTER om de naam op te slaan.
 
 > [!NOTE]
@@ -108,8 +108,8 @@ Volg deze stappen om u te verbinden Custom Vision account te Video Indexer of he
 
 1. Klik op de knop **uploaden** in het bovenste menu.
 1. Kies een video die u wilt uploaden (vanuit een bestand of een URL).
-1. Klik op **Geavanceerde opties**.
-1. Onder **personen/animatie tekens** kiest u **animatie modellen**.
+1. Klik op **Geavanceerde opties** .
+1. Onder **personen/animatie tekens** kiest u **animatie modellen** .
 1. Als u één model hebt, wordt dit automatisch gekozen en als u meerdere modellen hebt, kunt u de gewenste optie kiezen in het vervolg keuzemenu.
 1. Klik op uploaden.
 1. Zodra de video is geïndexeerd, worden de gedetecteerde tekens in het gedeelte met **animatie tekens** in het deel venster **inzichten** weer geven.
@@ -129,7 +129,7 @@ Volg deze stappen om u te verbinden Custom Vision account te Video Indexer of he
 
         Open de pagina aanpassing en klik op het tabblad **tekst met animatie** en klik vervolgens op de knop **trainen** om uw model te trainen.
          
-        Als u een betaald account hebt, kunt u klikken op de koppeling **modellen beheren in Customer Vision** (zoals hieronder weer gegeven). Vervolgens wordt u doorgestuurd naar de pagina van het model in **Custom Vision**.
+        Als u een betaald account hebt, kunt u klikken op de koppeling **modellen beheren in Customer Vision** (zoals hieronder weer gegeven). Vervolgens wordt u doorgestuurd naar de pagina van het model in **Custom Vision** .
  
         ![Aanpassing van het inhouds model](./media/animated-characters-recognition/content-model-customization-tab.png)
 

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84752479"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040246"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Maximale grootte van de Web Application firewall-aanvraag en uitsluitings lijsten
 
@@ -38,11 +38,11 @@ U kunt een exacte overeenkomst voor de aanvraag header, hoofd tekst, cookie of q
 
 De volgende Opera tors worden ondersteund:
 
-- **Is gelijk aan**: deze operator wordt gebruikt voor een exacte overeenkomst. Als voor beeld voor het selecteren van een header met de naam **bearerToken**, gebruikt u de operator equals met de selector ingesteld als **bearerToken**.
-- **Begint met**: deze operator komt overeen met alle velden die beginnen met de opgegeven selector-waarde.
-- **Eindigt op**: deze operator komt overeen met alle aanvraag velden die eindigen op de opgegeven selector-waarde.
-- **Contains**: deze operator komt overeen met alle aanvraag velden die de opgegeven selector-waarde bevatten.
-- **Is gelijk aan**: deze operator komt overeen met alle aanvraag velden. * de waarde selector is.
+- **Is gelijk aan** : deze operator wordt gebruikt voor een exacte overeenkomst. Als voor beeld voor het selecteren van een header met de naam **bearerToken** , gebruikt u de operator equals met de selector ingesteld als **bearerToken** .
+- **Begint met** : deze operator komt overeen met alle velden die beginnen met de opgegeven selector-waarde.
+- **Eindigt op** : deze operator komt overeen met alle aanvraag velden die eindigen op de opgegeven selector-waarde.
+- **Contains** : deze operator komt overeen met alle aanvraag velden die de opgegeven selector-waarde bevatten.
+- **Is gelijk aan** : deze operator komt overeen met alle aanvraag velden. * de waarde selector is.
 
 In alle gevallen die overeenkomen, is hoofdletter gevoelig en reguliere expressies niet toegestaan als selecters.
 
@@ -81,7 +81,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Dus als de URL `http://www.contoso.com/?user%281%29=fdafdasfda` wordt door gegeven aan de WAF, wordt de teken reeks **fdafdasfda**niet geëvalueerd, maar wordt nog wel de parameter naam **gebruiker %281 %29**geëvalueerd. 
+Dus als de URL `http://www.contoso.com/?user%281%29=fdafdasfda` wordt door gegeven aan de WAF, wordt de teken reeks **fdafdasfda** niet geëvalueerd, maar wordt nog wel de parameter naam **gebruiker %281 %29** geëvalueerd. 
 
 ## <a name="waf-request-size-limits"></a>Limieten voor WAF-aanvraag grootte
 
@@ -89,7 +89,7 @@ Dus als de URL `http://www.contoso.com/?user%281%29=fdafdasfda` wordt door gegev
 
 Met Web Application firewall kunt u limieten voor aanvraag grootte configureren binnen lagere en bovengrens. De volgende twee limieten voor de grootte zijn beschikbaar:
 
-- Het veld maximale grootte van aanvraag hoofdtekst wordt opgegeven in kilo bytes en bepaalt de totale limiet voor aanvraag grootte, exclusief het uploaden van bestanden. Dit veld kan variëren van 1 tot Maxi maal 128 KB maximum waarde. De standaard waarde voor de grootte van de aanvraag hoofdtekst is 128 KB.
+- Het veld maximale grootte van aanvraag hoofdtekst wordt opgegeven in kilo bytes en bepaalt de totale limiet voor aanvraag grootte, exclusief het uploaden van bestanden. Dit veld heeft een minimum waarde van 1 KB en een maximum waarde van 128 KB. De standaard waarde voor de grootte van de aanvraag hoofdtekst is 128 KB.
 - Het veld upload limiet is opgegeven in MB en de Maxi maal toegestane grootte voor het uploaden van bestanden wordt bepaald. Dit veld kan een minimum waarde van 1 MB en de volgende maximum waarden hebben:
 
    - 100 MB voor v1-media met WAF-gateways

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 5fdec829ceeefce2426a5fd08b4245e66bd0a08c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016668"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040709"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Gezichten met Azure Media Analytics-Overzicht redigeren
 
@@ -30,7 +30,7 @@ ms.locfileid: "92016668"
 
 **Azure media Redactor** is een [Azure Media Analytics](./legacy-components.md) media processor (MP) dat schaal bare gezichts redactie in de Cloud biedt. Met gezichts redactie kunt u uw video aanpassen zodat u de gezichten van geselecteerde personen kunt vervagen. U kunt de gezichts redactie service gebruiken in de scenario's voor open bare veiligheid en nieuws media. Een paar minuten van beeld materiaal dat meerdere gezichten bevat, kan uren duren om hand matig te worden geredigeerd, maar bij deze service zijn slechts enkele eenvoudige stappen vereist voor het redactie proces van het gezicht. Zie [deze](https://azure.microsoft.com/blog/azure-media-redactor/) blog voor meer informatie.
 
-Zie het onderwerp [overzicht van gezichts redactie](media-services-face-redaction.md) voor meer informatie over **Azure media Redactor**.
+Zie het onderwerp [overzicht van gezichts redactie](media-services-face-redaction.md) voor meer informatie over **Azure media Redactor** .
 
 In dit onderwerp vindt u stapsgewijze instructies voor het uitvoeren van een volledige redactie werk stroom met behulp van Azure Media Services Explorer (AMSE) en Azure Media Redactor Visualer (open source-hulp programma).
 
@@ -47,7 +47,7 @@ De eenvoudigste manier om aan de slag te gaan met Redactor is het gebruik van he
 
     Voor het verkrijgen van de accountnaam en sleutelinformatie gaat u naar de [Azure Portal](https://portal.azure.com/) en selecteert u uw AMS-account. Selecteer vervolgens instellingen > sleutels. In het venster Sleutels beheren worden de accountnaam en de primaire en secundaire sleutel weergegeven. Kopieer de waarden van de accountnaam en de primaire sleutel.
 
-![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
+![Scherm afbeelding toont Microsoft Azure Media Services waar u de naam en sleutel van uw account kunt invoeren.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
 
 ### <a name="first-pass--analyze-mode"></a>Eerste fase – analyse modus
 
@@ -55,32 +55,32 @@ De eenvoudigste manier om aan de slag te gaan met Redactor is het gebruik van he
 1. Klik met de rechter muisknop en werk uw media bestand met Media Analytics – > Azure Media Redactor – > analyse modus. 
 
 
-![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
+![Scherm afbeelding toont een menu met een werkend item (s) met Azure Media Redactor.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
 
-![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
+![Scherm opname toont Azure Media Redactor met de eerste fase: de analyse modus is geselecteerd.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
 
 De uitvoer bevat een consistentie bestand met de locatie gegevens van het Opper vlak en een jpg van elk gedetecteerd gezicht. 
 
-![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
+![Scherm afbeelding toont de uitvoer van de analyse.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
 ### <a name="second-pass--redact-mode"></a>Tweede fase – redactie modus
 
 1. Upload uw oorspronkelijke video-activum naar de uitvoer van de eerste fase en stel deze in als een primaire Asset. 
 
-    ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
+    ![Scherm afbeelding toont de knoppen uploaden en instellen als primaire.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
 2. Beschrijving Upload een Dance_idlist.txt-bestand met een door een nieuwe regel gescheiden lijst met de Id's die u wilt redigeren. 
 
-    ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
+    ![Scherm afbeelding toont de optie voor het uploaden van het tekst bestand.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. Beschrijving Breng wijzigingen aan in het annotations.jsop bestand, zoals het verg Roten van de grenzen van het selectie kader. 
 4. Klik met de rechter muisknop op het uitvoer activum van de eerste stap, selecteer de Redactor en voer uit met de modus **redactie** . 
 
-    ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
+    ![Scherm opname toont Azure Media Redactor met de tweede fase: redactie modus geselecteerd.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
 5. Down load of deel de laatste geredigeerde uitvoer activa. 
 
-    ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![Scherm afbeelding toont de knop downloaden.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Hulp programma voor Azure Media Redactor visualiseren open source
 
@@ -94,12 +94,12 @@ Als u een ontwikkelaar bent die de gegevens van de JSON-aantekening probeert te 
 
 1.  Down load en bouw de volledige oplossing. 
 
-    ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
+    ![Scherm opname toont de bouw oplossing die u hebt geselecteerd in het menu.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  Down load FFMPEG van [hier](https://ffmpeg.org/download.html). Dit project is oorspronkelijk ontwikkeld met versie be1d324 (2016-10-04) met statische koppeling. 
 3.  Kopieer ffmpeg.exe en ffprobe.exe naar dezelfde uitvoermap als AzureMediaRedactor.exe. 
 
-    ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
+    ![Scherm afbeelding toont de inhoud van de map, waaronder ffmpeg en ffprobe.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
 4. Voer AzureMediaRedactor.exe uit. 
 
@@ -109,11 +109,11 @@ Als u een ontwikkelaar bent die de gegevens van de JSON-aantekening probeert te 
 2. Down load zowel het oorspronkelijke video bestand als de uitvoer van de taak redactie-analyseren. 
 3. Voer de toepassing visualer uit en kies de bovenstaande bestanden. 
 
-    ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
+    ![Scherm afbeelding toont Azure Media Redactor het uploaden van bestanden.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
 
 4. Bekijk een voor beeld van het bestand. Selecteer de gezichten die u wilt vervagen via de zijbalk aan de rechter kant. 
     
-    ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
+    ![Scherm afbeelding toont Azure Media Redactor waar u kunt bekijken en gezichten selecteert om te vervagen.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
 5.  Het onderste tekst veld wordt bijgewerkt met de face-Id's. Maak een bestand met de naam ' idlist.txt ' met deze Id's als een lijst met door een nieuwe regel gescheiden waarden. 
 

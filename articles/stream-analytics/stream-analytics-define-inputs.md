@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: fb5aca1739fbb4a77cbcb7eed6b9dce1b3ccc182
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 467b8506eb0cafc61731a69804c70b8080ab21c2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027581"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042446"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Gegevens streamen als invoer in Stream Analytics
 
@@ -21,6 +21,7 @@ Stream Analytics heeft eersteklas integratie met Azure-gegevens stromen als invo
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 
 
 Deze invoer resources kunnen in hetzelfde Azure-abonnement wonen als uw Stream Analytics-taak of een ander abonnement.
 
@@ -125,18 +126,18 @@ Wanneer u gegevens van streams van een IoT Hub gebruikt, hebt u toegang tot de v
 | **IoTHub. EnqueuedTime** | Het tijdstip waarop het bericht is ontvangen door de IoT Hub. |
 
 
-## <a name="stream-data-from-blob-storage"></a>Gegevens streamen uit Blob Storage
-Voor scenario's met grote hoeveel heden ongestructureerde gegevens die in de cloud worden opgeslagen, biedt Azure Blob-opslag een voordelige en schaal bare oplossing. Gegevens in Blob Storage worden meestal beschouwd als gegevens in rust; BLOB-gegevens kunnen echter worden verwerkt als een gegevens stroom door Stream Analytics. 
+## <a name="stream-data-from-blob-storage-or-data-lake-storage-gen2"></a>Gegevens uit Blob Storage of Data Lake Storage Gen2 streamen
+Voor scenario's met grote hoeveel heden ongestructureerde gegevens die in de cloud worden opgeslagen, biedt Azure Blob Storage of Azure Data Lake Storage Gen2 (ADLS Gen2) een voordelige en schaal bare oplossing. Gegevens in Blob Storage of ADLS Gen2 worden gewoonlijk als gegevens in rust beschouwd; deze gegevens kunnen echter worden verwerkt als een gegevens stroom door Stream Analytics. 
 
-Logboek verwerking is een algemeen gebruikt scenario voor het gebruik van Blob Storage-invoer met Stream Analytics. In dit scenario zijn telemetriegegevens van een systeem vastgelegd en moeten ze worden geparseerd en verwerkt om zinvolle gegevens op te halen.
+De verwerking van Logboeken is een algemeen gebruikt scenario voor het gebruik van dergelijke invoer met Stream Analytics. In dit scenario zijn telemetriegegevens van een systeem vastgelegd en moeten ze worden geparseerd en verwerkt om zinvolle gegevens op te halen.
 
-De standaardtime Stamp van Blob Storage-gebeurtenissen in Stream Analytics is de tijds tempel waarvan de BLOB voor het laatst is gewijzigd `BlobLastModifiedUtcTime` . Als een BLOB wordt geüpload naar een opslag account op 13:00 en de Azure Stream Analytics-taak is gestart met de optie *nu* op 13:01, wordt de BLOB niet opgehaald als gewijzigd tijd buiten de uitvoerings periode van de taak valt.
+De standaardtime Stamp van een Blob Storage-of ADLS Gen2 gebeurtenis in Stream Analytics is de tijds tempel die het laatst is gewijzigd `BlobLastModifiedUtcTime` . Als een BLOB wordt geüpload naar een opslag account op 13:00 en de Azure Stream Analytics-taak is gestart met de optie *nu* op 13:01, wordt deze niet opgehaald als gewijzigde tijd buiten de uitvoerings periode van de taak valt.
 
 Als een BLOB wordt geüpload naar een container voor opslag accounts op 13:00 en de Azure Stream Analytics-taak is gestart met *aangepaste tijd* op 13:00 of eerder, wordt de BLOB opgehaald als gewijzigd tijd binnen de taak uitvoerings periode valt.
 
 Als een Azure Stream Analytics taak *nu* wordt gestart op 13:00 en er een BLOB wordt geüpload naar de container van het opslag account op 13:01, wordt de blob door Azure stream Analytics opgehaald. De tijds tempel die is toegewezen aan elke blob is alleen gebaseerd op `BlobLastModifiedTime` . De map waartoe de BLOB zich bevindt, heeft geen relatie met de toegewezen tijds tempel. Als er bijvoorbeeld een BLOB *2019/10-01/00/b1.txt* is met een `BlobLastModifiedTime` van 2019-11-11, is de tijds tempel die is toegewezen aan deze BLOB 2019-11-11.
 
-Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) gebruiken. Een Stream Analytics taak haalt gegevens uit Azure Blob Storage-invoer elke seconde op als het blobbestand beschikbaar is. Als het blobbestand niet beschikbaar is, is er een exponentiële uitstel met een maximale tijds vertraging van 90 seconden.
+Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) gebruiken. Een Stream Analytics taak haalt gegevens op uit de Azure Blob-opslag of ADLS Gen2 invoer elke seconde als het blobbestand beschikbaar is. Als het blobbestand niet beschikbaar is, is er een exponentiële uitstel met een maximale tijds vertraging van 90 seconden.
 
 Voor invoer in CSV-indeling is een veldnamenrij vereist om velden voor de gegevensset te definiëren. alle velden in de veldnamenrij moeten uniek zijn.
 
@@ -152,10 +153,10 @@ In de volgende tabel wordt elke eigenschap in de **nieuwe invoer** pagina in de 
 | Eigenschap | Beschrijving |
 | --- | --- |
 | **Invoeralias** | Een beschrijvende naam die u in de query van de taak gebruikt om naar deze invoer te verwijzen. |
-| **Abonnement** | Kies het abonnement waarin de IoT Hub resource bestaat. | 
+| **Abonnement** | Kies het abonnement waarin de opslag resource zich bevindt. | 
 | **Opslagaccount** | De naam van het opslag account waarin de BLOB-bestanden zich bevinden. |
-| **Sleutel van het opslag account** | De geheime sleutel die is gekoppeld aan het opslag account. Deze optie wordt automatisch ingevuld tenzij u de optie selecteert om de Blob Storage-instellingen hand matig op te geven. |
-| **Container** | De container voor de BLOB-invoer. Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Azure Blob Storage-service, moet u een container voor die BLOB opgeven. U kunt bestaande container **gebruiken** kiezen of  **nieuwe maken** om een nieuwe container gemaakt te krijgen.|
+| **Sleutel van het opslag account** | De geheime sleutel die is gekoppeld aan het opslag account. Deze optie wordt automatisch ingevuld tenzij u de optie selecteert om de instellingen hand matig op te geven. |
+| **Container** | Containers bieden een logische groepering voor blobs. U kunt bestaande container **gebruiken** kiezen of  **nieuwe maken** om een nieuwe container gemaakt te krijgen.|
 | **Patroon van pad** (optioneel) | Het bestandspad dat wordt gebruikt om de blobs in de opgegeven container te vinden. Als u blobs wilt lezen uit de hoofdmap van de container, moet u geen patroon voor paden instellen. Binnen het pad kunt u een of meer exemplaren van de volgende drie variabelen opgeven: `{date}` , `{time}` , of `{partition}`<br/><br/>Voor beeld 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Voor beeld 2: `cluster1/logs/{date}`<br/><br/>Het `*` teken is geen toegestane waarde voor het voor voegsel van het pad. Alleen geldige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-tekens</a> zijn toegestaan. Neem geen container namen of bestands namen op. |
 | **Datum notatie** (optioneel) | Als u de datum variabele in het pad gebruikt, de datum notatie waarin de bestanden zijn geordend. Voorbeeld: `YYYY/MM/DD` <br/><br/> Wanneer BLOB-invoer `{date}` een of meer `{time}` paden heeft, worden de mappen in oplopende volg orde bekeken.|
 | **Tijd notatie** (optioneel) |  Als u de time-variabele in het pad gebruikt, de tijd notatie waarin de bestanden zijn ingedeeld. Momenteel is de enige ondersteunde waarde `HH` voor uren. |

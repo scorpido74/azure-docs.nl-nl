@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
-ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82691902"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041626"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Genormaliseerd database schema migreren van Azure SQL Database naar een gedenormaliseerde Azure CosmosDB-container
 
@@ -50,7 +50,7 @@ In de resulterende CosmosDB-container wordt de interne query in één document I
 
 2. Een gegevens stroom activiteit toevoegen
 
-3. Selecteer in de activiteit gegevens stroom de optie **nieuwe toewijzings gegevens stroom**.
+3. Selecteer in de activiteit gegevens stroom de optie **nieuwe toewijzings gegevens stroom** .
 
 4. Hieronder wordt deze gegevensstroom grafiek samen stellen
 
@@ -96,11 +96,11 @@ In de resulterende CosmosDB-container wordt de interne query in één document I
 
 19. In de instellingen voor wastafels, partitie sleutel naar ```\SalesOrderID``` en verzamelings actie om opnieuw te maken. Zorg ervoor dat het tabblad toewijzing er als volgt uitziet:
 
-![Sink-instellingen](media/data-flow/cosmosb7.png)
+![Scherm afbeelding toont het tabblad toewijzing.](media/data-flow/cosmosb7.png)
 
 20. Klik op voor beeld van gegevens om er zeker van te zijn dat deze 32 rijen zijn ingesteld om in te voegen als nieuwe documenten in de nieuwe container:
 
-![Sink-instellingen](media/data-flow/cosmosb8.png)
+![Scherm afbeelding toont het tabblad voor beeld van gegevens.](media/data-flow/cosmosb8.png)
 
 Als alles er goed uitziet, bent u nu klaar om een nieuwe pijp lijn te maken, voegt u deze gegevensstroom activiteit toe aan de pijp lijn en voert u deze uit. U kunt uitvoeren vanuit debug of een geactiveerde uitvoering. Na een paar minuten moet u in uw CosmosDB-Data Base een nieuwe, genormaliseerde container met orders genaamd ' orders ' hebben.
 

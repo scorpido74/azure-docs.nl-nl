@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28186a7dcced47a42b3249f1f74b13e969b41978
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970089"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041356"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>De Video Indexer editor gebruiken om projecten te maken
 
@@ -33,9 +33,9 @@ In dit artikel wordt beschreven hoe u een volledig nieuw project maakt en hoe u 
 
 1. Ga naar de [Video Indexer](https://www.videoindexer.ai/)-website en meld u aan.
 1. Selecteer het tabblad **projecten** . Als u eerder projecten hebt gemaakt, worden hier al uw andere projecten weer gegeven.
-1. Klik op **Nieuw project maken**.  
+1. Klik op **Nieuw project maken** .  
 
-    ![Nieuw project](./media/video-indexer-view-edit/new-project.png)
+    ![Scherm opname van de pagina ' Video Indexer ' op het tabblad projecten geselecteerd.](./media/video-indexer-view-edit/new-project.png)
 1. Geef uw project een naam door te klikken op het potlood pictogram. Vervang de tekst "naamloos project" door de naam van uw project en klik op de controle.
 
     ![Nieuw project](./media/video-indexer-view-edit/new-project3.png)
@@ -45,7 +45,7 @@ In dit artikel wordt beschreven hoe u een volledig nieuw project maakt en hoe u 
 > [!NOTE]
 > Op dit moment kunnen projecten alleen Video's bevatten die in dezelfde taal zijn geïndexeerd. Zodra u een video in de ene taal selecteert, kunt u de Video's in uw account in een andere taal toevoegen.
 
-1. Voeg Video's toe waarmee u in dit project wilt werken door **Video's toevoegen**te selecteren.
+1. Voeg Video's toe waarmee u in dit project wilt werken door **Video's toevoegen** te selecteren.
 
     U ziet alle Video's in uw account en een zoekvak dat "zoeken naar tekst, tref woorden of visuele inhoud" bevat. Zoeken naar Video's met een opgegeven persoon, label, merk, tref woord of voorval in Transcripten en OCR.
     
@@ -53,19 +53,19 @@ In dit artikel wordt beschreven hoe u een volledig nieuw project maakt en hoe u 
     
     ![Scherm afbeelding toont het zoeken naar Video's waarin GitHub met twee resultaten wordt vermeld.](./media/video-indexer-view-edit/github.png)
 
-    U kunt de resultaten verder filteren door **filter resultaten**te selecteren. U kunt filteren om Video's weer te geven die een bepaalde persoon bevatten of om op te geven dat u alleen video resultaten wilt zien die een in een bepaalde taal of een specifieke eigenaar hebben. <br/> U kunt ook het bereik van uw query opgeven. Als u bijvoorbeeld wilt zoeken in ' GitHub ' in de OCR, selecteert u **visuele tekst**.
+    U kunt de resultaten verder filteren door **filter resultaten** te selecteren. U kunt filteren om Video's weer te geven die een bepaalde persoon bevatten of om op te geven dat u alleen video resultaten wilt zien die een in een bepaalde taal of een specifieke eigenaar hebben. <br/> U kunt ook het bereik van uw query opgeven. Als u bijvoorbeeld wilt zoeken in ' GitHub ' in de OCR, selecteert u **visuele tekst** .
 
     ![Filter](./media/video-indexer-view-edit/visual-text.png)
 
     U kunt meerdere filters laag met uw query. Gebruik de **+** / **-** knoppen om filters toe te voegen/te verwijderen. Gebruik **Clear filters** om alle filters te verwijderen.
-1. Als u Video's wilt toevoegen, selecteert u deze en selecteert u vervolgens **toevoegen**.
+1. Als u Video's wilt toevoegen, selecteert u deze en selecteert u vervolgens **toevoegen** .
 1. U ziet nu alle Video's die u hebt gekozen. Dit zijn de Video's waaruit u clips gaat selecteren voor uw project.
 
-    U kunt de volg orde van de Video's wijzigen door te slepen en neer te zetten of door de menu knop lijst te selecteren en **omlaag** of omhoog te **gaan**. In het menu lijst kunt u ook de video uit dit project verwijderen. 
+    U kunt de volg orde van de Video's wijzigen door te slepen en neer te zetten of door de menu knop lijst te selecteren en **omlaag** of omhoog te **gaan** . In het menu lijst kunt u ook de video uit dit project verwijderen. 
 
     ![Scherm afbeelding toont Video Indexer met een context menu voor een van de Video's die u wilt verwijderen, het wissen van de selectie of het omlaag verplaatsen.](./media/video-indexer-view-edit/rearrange.png)
     
-    U hebt de mogelijkheid om op elk gewenst moment meer Video's toe te voegen aan dit project door **Video's toevoegen**te selecteren. U kunt ook meerdere exemplaren van dezelfde video toevoegen aan uw project. U kunt dit doen als u een clip van de ene video wilt weer geven en vervolgens een clip van een andere clip en vervolgens in de eerste video wilt maken. 
+    U hebt de mogelijkheid om op elk gewenst moment meer Video's toe te voegen aan dit project door **Video's toevoegen** te selecteren. U kunt ook meerdere exemplaren van dezelfde video toevoegen aan uw project. U kunt dit doen als u een clip van de ene video wilt weer geven en vervolgens een clip van een andere clip en vervolgens in de eerste video wilt maken. 
 
 ### <a name="select-clips-to-use-in-your-project"></a>Clips selecteren die u in uw project wilt gebruiken
 
@@ -75,7 +75,7 @@ Als u op de pijl-omlaag aan de rechter kant van elke video klikt, wordt de inzic
 
     ![Inzichten weergeven](./media/video-indexer-view-edit/insights.png)
 1. Als u query's voor specifieke clips wilt maken, gebruikt u het zoekvak ' zoeken in transcriptie, visuele tekst, personen en labels '.
-1. Voeg filters toe om details op te geven van de scènes die u zoekt door **filter opties**te selecteren.
+1. Voeg filters toe om details op te geven van de scènes die u zoekt door **filter opties** te selecteren.
 
     ![Filteropties](./media/video-indexer-view-edit/filter-options.png)
 
@@ -87,7 +87,7 @@ Als u op de pijl-omlaag aan de rechter kant van elke video klikt, wordt de inzic
 
 1. Voeg een clip aan het project toe door het segment te selecteren dat u wilt toevoegen. U kunt de selectie van deze clip opheffen door opnieuw op het segment te klikken.
     
-    U kunt alle segmenten van een video toevoegen door te klikken op de menu optie lijst naast de video en **selecteert u alle segmenten selecteren**. 
+    U kunt alle segmenten van een video toevoegen door te klikken op de menu optie lijst naast de video en **selecteert u alle segmenten selecteren** . 
 
     ![Alles toevoegen](./media/video-indexer-view-edit/add-all.png)
 
@@ -98,14 +98,14 @@ Als u op de pijl-omlaag aan de rechter kant van elke video klikt, wordt de inzic
 
 ![Scherm afbeelding toont Video Indexer met de preview-versie van een video aan de rechter kant van het venster.](./media/video-indexer-view-edit/preview.png)
 
-Vergeet niet om uw project op te slaan wanneer u wijzigingen aanbrengt door **project opslaan**te selecteren. 
+Vergeet niet om uw project op te slaan wanneer u wijzigingen aanbrengt door **project opslaan** te selecteren. 
 
 ### <a name="render-and-download-the-project"></a>Het project weer geven en downloaden
 
 > [!NOTE]
 > Voor Video Indexer betaalde accounts bevat de rendering van het project coderings kosten. Video Indexer proef accounts zijn beperkt tot vijf uur aan de weer gave.
 
-1. Wanneer u klaar bent, controleert u of uw project is opgeslagen. U kunt dit project nu weer geven. Selecteer **renderen en downloaden**. 
+1. Wanneer u klaar bent, controleert u of uw project is opgeslagen. U kunt dit project nu weer geven. Selecteer **renderen en downloaden** . 
 
     ![Scherm afbeelding toont Video Indexer met de optie om uw project weer te geven en te downloaden.](./media/video-indexer-view-edit/save.png)
 
@@ -117,7 +117,7 @@ Vergeet niet om uw project op te slaan wanneer u wijzigingen aanbrengt door **pr
 
 1. U kunt opgeslagen projecten openen via het tabblad **projecten** . 
 
-    Als u dit project selecteert, worden alle inzichten en de tijd lijn van dit project weer geven. Als u **video-editor**selecteert, kunt u door gaan met het maken van wijzigingen aan dit project. Bewerkingen zijn onder andere het toevoegen of verwijderen van Video's en clips of het wijzigen van de naam van het project.
+    Als u dit project selecteert, worden alle inzichten en de tijd lijn van dit project weer geven. Als u **video-editor** selecteert, kunt u door gaan met het maken van wijzigingen aan dit project. Bewerkingen zijn onder andere het toevoegen of verwijderen van Video's en clips of het wijzigen van de naam van het project.
 
     ![Video-editor](./media/video-indexer-view-edit/video-editor.png)
      
@@ -130,7 +130,7 @@ U kunt rechtstreeks een nieuw project maken op basis van een video in uw account
 
     Hiermee gaat u naar de pagina die u hebt gebruikt om een nieuw project te maken. In tegens telling tot het nieuwe project ziet u de getimede Insights-segmenten van de video, die u eerder hebt bewerkt.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Overzicht van Video Indexer](video-indexer-overview.md)
 

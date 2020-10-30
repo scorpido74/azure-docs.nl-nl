@@ -7,18 +7,18 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212149"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040935"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus uitvoer binding voor Azure Functions
 
 Gebruik Azure Service Bus uitvoer binding om berichten uit de wachtrij of het onderwerp te verzenden.
 
-Zie het [overzicht](functions-bindings-service-bus-output.md)voor meer informatie over de installatie-en configuratie details.
+Zie het [overzicht](functions-bindings-service-bus.md)voor meer informatie over de installatie-en configuratie details.
 
 ## <a name="example"></a>Voorbeeld
 
@@ -75,7 +75,7 @@ public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
 }
 ```
 
-Dit is de C#-script code waarmee meerdere berichten worden gemaakt:
+Dit is de C#-scriptcode voor het maken van meerdere berichten:
 
 ```cs
 public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<string> outputSbQueue)
@@ -175,7 +175,7 @@ Een definitie van een Service Bus binding wordt gedefinieerd in *function.jsop* 
 }
 ```
 
-In * _ \_ init_ \_ . py*kunt u een bericht naar de wachtrij schrijven door een waarde door te geven aan de- `set` methode.
+In *_\_ init_ \_ . py* kunt u een bericht naar de wachtrij schrijven door een waarde door te geven aan de- `set` methode.
 
 ```python
 import azure.functions as func
@@ -283,7 +283,7 @@ De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen di
 |function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' serviceBus '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal.|
-|**direction** | N.v.t. | Moet worden ingesteld op out. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal. |
+|**direction** | N.v.t. | Moet worden ingesteld op 'out'. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal. |
 |**name** | N.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. Ingesteld op ' $return ' om te verwijzen naar de retour waarde van de functie. |
 |**queueName**|**QueueName**|De naam van de wachtrij.  Stel deze waarde alleen in als u wachtrij berichten verzendt, niet voor een onderwerp.
 |**onderwerpnaam**|**Onderwerpnaam**|De naam van het onderwerp. Stel deze waarde alleen in als er onderwerp-berichten worden verzonden, niet voor een wachtrij.|
@@ -344,9 +344,9 @@ Gebruik de [Azure service bus SDK](../service-bus-messaging/index.yml) in plaats
 
 ---
 
-## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
+## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
 
-| Binding | Naslaginformatie |
+| Binding | Referentie |
 |---|---|
 | Service Bus | [Service Bus fout codes](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | Service Bus | [Service Bus limieten](../service-bus-messaging/service-bus-quotas.md) |

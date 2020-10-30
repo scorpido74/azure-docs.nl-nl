@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 922f4a2785a0b7260bcd0aae19c0172a2fa7a782
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bc5e98484560fcc15e0ea3e289069c84687f158c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284336"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040544"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Plannen maken voor een aanbieding van een virtuele machine
 
@@ -30,8 +30,8 @@ Nadat u uw plannen hebt gemaakt, selecteert u het tabblad Overzicht van het **pl
 
 De acties die beschikbaar zijn in het deel venster **plan overzicht** variëren, afhankelijk van de huidige status van uw abonnement.
 
-- Als de plan status een concept is, selecteert u **concept verwijderen**.
-- Als de status van het plan Live is gepubliceerd, selecteert u **stoppen verkoop plan beëindigen** of **persoonlijke doel groep synchroniseren**.
+- Als de plan status een concept is, selecteert u **concept verwijderen** .
+- Als de status van het plan Live is gepubliceerd, selecteert u **stoppen verkoop plan beëindigen** of **persoonlijke doel groep synchroniseren** .
 
 ## <a name="create-a-new-plan"></a>Een nieuw abonnement maken
 
@@ -40,11 +40,11 @@ Selecteer bovenaan **Nieuw abonnement maken** . Het dialoog venster **nieuw plan
 Maak in het vak **abonnement-id** een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in het webadres van het product. Gebruik alleen kleine letters en cijfers, streepjes of onderstrepings tekens en Maxi maal 50.
 
 > [!NOTE]
-> De plan-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+> De plan-ID kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
-Voer in het vak **naam van abonnement** een naam in voor dit abonnement. Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak een unieke naam waarmee duidelijk de verschillen tussen de plannen worden aangegeven. U kunt bijvoorbeeld **Windows Server** met *betalen per gebruik*-, *BYOL*-, *Geavanceerd*-en *Enter prise* -abonnementen invoeren.
+Voer in het vak **naam van abonnement** een naam in voor dit abonnement. Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak een unieke naam waarmee duidelijk de verschillen tussen de plannen worden aangegeven. U kunt bijvoorbeeld **Windows Server** met *betalen per gebruik* -, *BYOL* -, *Geavanceerd* -en *Enter prise* -abonnementen invoeren.
 
-Selecteer **Maken**.
+Selecteer **Maken** .
 
 ## <a name="plan-setup"></a>Installatie plannen
 
@@ -52,7 +52,7 @@ Stel de configuratie op hoog niveau in voor het type abonnement, geef op of er e
 
 ### <a name="reuse-a-technical-configuration"></a>Een technische configuratie opnieuw gebruiken
 
-Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek zijn, kunt u de **technische configuratie van een ander abonnement selecteren met dit abonnement**. Met deze optie kunt u een van de andere plannen van hetzelfde type voor deze aanbieding selecteren en kunt u de technische configuratie ervan opnieuw gebruiken.
+Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek zijn, kunt u de **technische configuratie van een ander abonnement selecteren met dit abonnement** . Met deze optie kunt u een van de andere plannen van hetzelfde type voor deze aanbieding selecteren en kunt u de technische configuratie ervan opnieuw gebruiken.
 
 > [!NOTE]
 > Wanneer u de technische configuratie van een ander abonnement opnieuw gebruikt, verdwijnt het hele tabblad **technische configuratie** uit dit abonnement. De technische configuratie details van het andere abonnement, inclusief eventuele updates die u in de toekomst maakt, worden ook voor dit abonnement gebruikt. Deze instelling kan niet worden gewijzigd nadat het plan is gepubliceerd.
@@ -114,13 +114,13 @@ Wanneer u een markt verwijdert, kunnen klanten van die markt die gebruikmaken va
 
 ### <a name="pricing"></a>Prijzen
 
-Selecteer voor het **licentie model**op **gebruik gebaseerd maandelijks gefactureerd plan** om de prijzen voor dit abonnement te configureren of selecteer **Bring your own License** zodat klanten dit plan met hun bestaande licentie kunnen gebruiken.
+Selecteer voor het **licentie model** op **gebruik gebaseerd maandelijks gefactureerd plan** om de prijzen voor dit abonnement te configureren of selecteer **Bring your own License** zodat klanten dit plan met hun bestaande licentie kunnen gebruiken.
 
 Voor een op gebruik gebaseerd maandelijks gefactureerd abonnement gebruikt u een van de volgende drie opties voor prijs invoer:
 
-- **Per kern**: prijs per kern in USD opgeven. Micro soft berekent de prijzen per kern grootte en converteert deze in lokale valuta's met behulp van de huidige wissel koers.
-- **Per kern grootte**: Geef prijzen per kern grootte op in USD. De prijzen worden door micro soft berekend en omgezet in lokale valuta's met behulp van de huidige wissel koers.
-- **Per markt en kern formaat**: Geef prijzen voor elke kern grootte op voor alle markten. U kunt de prijzen importeren vanuit een spread sheet.
+- **Per kern** : prijs per kern in USD opgeven. Micro soft berekent de prijzen per kern grootte en converteert deze in lokale valuta's met behulp van de huidige wissel koers.
+- **Per kern grootte** : Geef prijzen per kern grootte op in USD. De prijzen worden door micro soft berekend en omgezet in lokale valuta's met behulp van de huidige wissel koers.
+- **Per markt en kern formaat** : Geef prijzen voor elke kern grootte op voor alle markten. U kunt de prijzen importeren vanuit een spread sheet.
 
 > [!NOTE]
 > Sla de prijs wijzigingen op om de export van prijs gegevens in te scha kelen. Nadat een prijs voor een markt in uw abonnement is gepubliceerd, kunt u deze later niet meer wijzigen. Om ervoor te zorgen dat de prijzen goed zijn voordat u ze publiceert, exporteert u het werk blad prijzen en bekijkt u de prijzen op elke markt.
@@ -133,14 +133,14 @@ U kunt uw klanten een *gratis proef versie* van één maand of drie maanden of z
 
 U kunt elk plan ontwerpen dat zichtbaar is voor iedereen of alleen voor een vooraf geselecteerde doel groep. Lidmaatschappen in deze beperkte doel groep toewijzen met behulp van Azure-abonnement-Id's.
 
-**Openbaar**: uw abonnement kan worden gezien door iedereen.
+**Openbaar** : uw abonnement kan worden gezien door iedereen.
 
-**Persoonlijke doel groep**: Maak uw plan alleen zichtbaar voor een voorgeselecteerde doel groep. Nadat het is gepubliceerd als een persoonlijk abonnement, kunt u de doel groep bijwerken of wijzigen in openbaar. Nadat u een plan openbaar hebt gemaakt, moet het openbaar blijven. Het kan niet worden teruggezet naar een privé-abonnement.
+**Persoonlijke doel groep** : Maak uw plan alleen zichtbaar voor een voorgeselecteerde doel groep. Nadat het is gepubliceerd als een persoonlijk abonnement, kunt u de doel groep bijwerken of wijzigen in openbaar. Nadat u een plan openbaar hebt gemaakt, moet het openbaar blijven. Het kan niet worden teruggezet naar een privé-abonnement.
 
 > [!NOTE]
 > Een persoonlijke of beperkte doel groep wijkt af van de preview-doel groep die u hebt gedefinieerd in het **voorbeeld** venster. Een preview-doel groep heeft toegang tot uw aanbieding _voordat_ deze live naar Azure Marketplace wordt gepubliceerd. Hoewel de keuze van de privé doelgroep alleen van toepassing is op een specifiek abonnement, kan de preview-doel groep alle persoonlijke en open bare plannen voor validatie doeleinden bekijken.
 
-**Beperkte doel groep (Azure-abonnement-id's)**: wijs de doel groep toe die toegang heeft tot dit privé schema met behulp van Azure-abonnement-id's. Voeg eventueel een beschrijving toe van elk Azure-abonnements-ID dat u hebt toegewezen. U kunt Maxi maal 10 abonnements-Id's hand matig of Maxi maal 20.000 Id's toevoegen als u een CSV-werk blad importeert. Azure-abonnements-Id's worden weer gegeven als GUID'S en alle letters moeten kleine letters zijn.
+**Beperkte doel groep (Azure-abonnement-id's)** : wijs de doel groep toe die toegang heeft tot dit privé schema met behulp van Azure-abonnement-id's. Voeg eventueel een beschrijving toe van elk Azure-abonnements-ID dat u hebt toegewezen. U kunt Maxi maal 10 abonnements-Id's hand matig of Maxi maal 20.000 Id's toevoegen als u een CSV-werk blad importeert. Azure-abonnements-Id's worden weer gegeven als GUID'S en alle letters moeten kleine letters zijn.
 
 >[!Note]
 >Persoonlijke aanbiedingen worden niet ondersteund met Azure-abonnementen die zijn gemaakt via een wederverkoper van het Cloud Solution Provider-programma (CSP).
@@ -165,9 +165,9 @@ Geef de installatie kopieën en andere technische eigenschappen op die aan dit p
 
 Voer de volgende handelingen uit in het deel venster van het **besturings systeem** :
 
-- Voor **besturingssysteem familie**selecteert u het besturings systeem **Windows** of **Linux** .
-- Voor **release** of **leverancier**selecteert u de Windows-versie of Linux-leverancier.
-- Voer een beschrijvende naam voor het besturings systeem in voor de **beschrijvende naam**van het systeem. Deze naam is zichtbaar voor klanten.
+- Voor **besturingssysteem familie** selecteert u het besturings systeem **Windows** of **Linux** .
+- Voor **release** of **leverancier** selecteert u de Windows-versie of Linux-leverancier.
+- Voer een beschrijvende naam voor het besturings systeem in voor de **beschrijvende naam** van het systeem. Deze naam is zichtbaar voor klanten.
 
 ### <a name="recommended-vm-sizes"></a>Aanbevolen VM-grootten
 
@@ -179,24 +179,48 @@ Open open bare of particuliere poorten op een geïmplementeerde virtuele machine
 
 ### <a name="storage-option-for-deployment"></a>Opslag optie voor implementatie
 
-Selecteer bij **schijf implementatie optie**het type schijf implementatie dat door uw klanten kan worden gebruikt voor de virtuele machine. Micro soft raadt aan de implementatie alleen te beperken tot de **implementatie van Managed disks** .
+Selecteer bij **schijf implementatie optie** het type schijf implementatie dat door uw klanten kan worden gebruikt voor de virtuele machine. Micro soft raadt aan de implementatie alleen te beperken tot de **implementatie van Managed disks** .
 
 ### <a name="properties"></a>Eigenschappen
 
-Voor **ondersteuning van versneld netwerken**selecteert u of uw virtuele machine [versneld netwerken](https://go.microsoft.com/fwlink/?linkid=2124513)ondersteunt.
+Voor **ondersteuning van versneld netwerken** selecteert u of uw virtuele machine [versneld netwerken](https://go.microsoft.com/fwlink/?linkid=2124513)ondersteunt.
+
+### <a name="generations"></a>Items
+
+Het genereren van een virtuele machine definieert de virtuele hardware die wordt gebruikt. Op basis van de behoeften van uw klant kunt u een virtuele machine van de eerste generatie, een virtuele machine van de tweede generatie of beide publiceren.
+
+1. Wanneer u een nieuwe aanbieding maakt, selecteert u een **generatie type** en voert u de gevraagde afbeeldings gegevens in:
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details.png" alt-text="Een weer gave van de vervolg keuzelijst generatie.":::
+
+2. Selecteer **generatie toevoegen** om nog een generatie aan een plan toe te voegen:
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-add.png" alt-text="Een weer gave van de vervolg keuzelijst generatie.":::
+
+    Voer vervolgens de details van de generatie in:
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-details.png" alt-text="Een weer gave van de vervolg keuzelijst generatie.":::
+
+    De **generatie-id** die u kiest, is zichtbaar voor klanten op locaties zoals product-URL'S en arm-sjablonen (indien van toepassing). Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen; het kan niet worden gewijzigd nadat deze is gepubliceerd.
+
+3. Als u een bestaande virtuele machine wilt bijwerken die al een generatie 1 heeft gepubliceerd, bewerkt u de gegevens op de pagina **technische configuratie** :
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="Een weer gave van de vervolg keuzelijst generatie.":::
+
+Zie [ondersteuning voor virtuele machines van](../virtual-machines/generation-2.md)de tweede generatie op Azure voor meer informatie over de verschillen tussen de mogelijkheden van de eerste en tweede generatie.
 
 ### <a name="vm-images"></a>VM-installatiekopieën
 
 Geef een schijf versie en de SAS-URI (Shared Access Signature) voor de installatie kopieën van de virtuele machine op. Voeg Maxi maal 16 gegevens schijven toe voor elke VM-installatie kopie. Geef slechts één nieuwe versie van de installatie kopie op per abonnement in een opgegeven inzending. Nadat een installatie kopie is gepubliceerd, kunt u deze niet meer bewerken, maar wel verwijderen. Als u een versie verwijdert, kunnen zowel nieuwe als bestaande gebruikers een nieuw exemplaar van de verwijderde versie implementeren.
 
-- **Schijf versie**: de versie van de installatie kopie die u opgeeft.
-- **SAS-URI**: de locatie in uw Azure Storage-account waar u de virtuele harde schijf van het besturings systeem hebt opgeslagen. Zie voor meer informatie over het ophalen van een SAS-URI [de gedeelde toegangs handtekening-URI voor uw VM-installatie kopie ophalen](azure-vm-get-sas-uri.md).
+- **Schijf versie** : de versie van de installatie kopie die u opgeeft.
+- **SAS-URI** : de locatie in uw Azure Storage-account waar u de virtuele harde schijf van het besturings systeem hebt opgeslagen. Zie voor meer informatie over het ophalen van een SAS-URI [de gedeelde toegangs handtekening-URI voor uw VM-installatie kopie ophalen](azure-vm-get-sas-uri.md).
 - Installatie kopieën van de gegevens schijf zijn ook Uri's van gedeelde Access-hand tekeningen voor VHD die zijn opgeslagen in hun Azure-opslag accounts.
 - Voeg slechts één afbeelding per inzending toe aan een plan.
 
 Ongeacht welk besturings systeem u gebruikt, voegt u alleen het minimum aantal gegevens schijven toe dat voor de oplossing nodig is. Tijdens de implementatie kunnen klanten geen schijven verwijderen die deel uitmaken van een installatie kopie, maar ze mogen altijd schijven toevoegen tijdens of na de implementatie.
 
-Selecteer **concept opslaan** voordat u doorgaat en terug naar **overzicht**van het plan.
+Selecteer **concept opslaan** voordat u doorgaat en terug naar **overzicht** van het plan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277364"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040768"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-spuit voor Cloud Foundry systeem bewaking implementeren
 
@@ -61,13 +61,13 @@ U kunt de Log Analytics-werk ruimte hand matig of met behulp van een sjabloon ma
 1. Zoek in de Azure Portal de lijst met Services in de Azure Marketplace en selecteer vervolgens Log Analytics werk ruimten.
 2. Selecteer **Maken** en geef uw keuze aan voor de volgende items:
 
-   * **Log Analytics werk ruimte**: Typ een naam voor uw werk ruimte.
-   * **Abonnement**: als u meerdere abonnementen hebt, kiest u de optie die gelijk is aan uw CF-implementatie.
-   * **Resource groep**: u kunt een nieuwe resource groep maken of dezelfde gebruiken met uw CF-implementatie.
-   * **Locatie**: Voer de locatie in.
-   * **Prijs categorie**: Selecteer **OK** om te volt ooien.
+   * **Log Analytics werk ruimte** : Typ een naam voor uw werk ruimte.
+   * **Abonnement** : als u meerdere abonnementen hebt, kiest u de optie die gelijk is aan uw CF-implementatie.
+   * **Resource groep** : u kunt een nieuwe resource groep maken of dezelfde gebruiken met uw CF-implementatie.
+   * **Locatie** : Voer de locatie in.
+   * **Prijs categorie** : Selecteer **OK** om te volt ooien.
 
-Zie [aan de slag met Azure monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)voor meer informatie.
+Zie [aan de slag met Azure monitor-logboeken](../azure-monitor/overview.md)voor meer informatie.
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>De Log Analytics-werk ruimte maken via de bewakings sjabloon van Azure Market Place:
 
@@ -76,13 +76,13 @@ Zie [aan de slag met Azure monitor-logboeken](https://docs.microsoft.com/azure/l
 1. Typ ' Cloud Foundry ' in het venster zoeken, selecteer Cloud Foundry bewakings oplossing.
 1. De voor pagina met de Cloud Foundry monitoring-oplossings sjabloon is geladen, klikt u op maken om de Blade sjabloon te starten.
 1. Voer de vereiste para meters in:
-    * **Abonnement**: Selecteer een Azure-abonnement voor de log Analytics-werk ruimte, meestal hetzelfde als bij Cloud Foundry-implementatie.
-    * **Resource groep**: Selecteer een bestaande resource groep of maak een nieuwe voor de log Analytics-werk ruimte.
-    * **Locatie van de resource groep**: Selecteer de locatie van de resource groep.
-    * **OMS_Workspace_Name**: Voer de naam van een werk ruimte in als de werk ruimte niet bestaat, wordt er een nieuwe gemaakt.
-    * **OMS_Workspace_Region**: Selecteer de locatie voor de werk ruimte.
-    * **OMS_Workspace_Pricing_Tier**: selecteer de log Analytics WORKSPACE-SKU. Zie de [richt lijnen voor prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor naslag informatie.
-    * **Juridische voor waarden**: Klik op juridische voor waarden en klik vervolgens op maken om de juridische termijn te accepteren.
+    * **Abonnement** : Selecteer een Azure-abonnement voor de log Analytics-werk ruimte, meestal hetzelfde als bij Cloud Foundry-implementatie.
+    * **Resource groep** : Selecteer een bestaande resource groep of maak een nieuwe voor de log Analytics-werk ruimte.
+    * **Locatie van de resource groep** : Selecteer de locatie van de resource groep.
+    * **OMS_Workspace_Name** : Voer de naam van een werk ruimte in als de werk ruimte niet bestaat, wordt er een nieuwe gemaakt.
+    * **OMS_Workspace_Region** : Selecteer de locatie voor de werk ruimte.
+    * **OMS_Workspace_Pricing_Tier** : selecteer de log Analytics WORKSPACE-SKU. Zie de [richt lijnen voor prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor naslag informatie.
+    * **Juridische voor waarden** : Klik op juridische voor waarden en klik vervolgens op maken om de juridische termijn te accepteren.
 1. Nadat alle para meters zijn opgegeven, klikt u op maken om de sjabloon te implementeren. Wanneer de implementatie is voltooid, wordt de status weer gegeven op het tabblad melding.
 
 
@@ -183,15 +183,15 @@ Als u de werk ruimte Log Analytics hand matig hebt gemaakt, volgt u de onderstaa
 
 ### <a name="1-import-the-oms-view"></a>1. de OMS-weer gave importeren
 
-Blader vanuit de OMS-Portal naar **weer gave Designer**  >  **import**  >  **Browse**en selecteer een van de omsview-bestanden. Selecteer bijvoorbeeld *Cloud Foundry. omsview*en sla de weer gave op. Er wordt nu een tegel op de pagina **overzicht** weer gegeven. Selecteer deze optie om gevisualiseerde metrische gegevens weer te geven.
+Blader vanuit de OMS-Portal naar **weer gave Designer**  >  **import**  >  **Browse** en selecteer een van de omsview-bestanden. Selecteer bijvoorbeeld *Cloud Foundry. omsview* en sla de weer gave op. Er wordt nu een tegel op de pagina **overzicht** weer gegeven. Selecteer deze optie om gevisualiseerde metrische gegevens weer te geven.
 
-U kunt deze weer gaven aanpassen of nieuwe weer gaven maken met behulp van de **weer gave Designer**.
+U kunt deze weer gaven aanpassen of nieuwe weer gaven maken met behulp van de **weer gave Designer** .
 
 De *' Cloud Foundry. omsview '* is een preview-versie van de Cloud Foundry OMS-weergave sjabloon. Dit is een volledig geconfigureerde standaard sjabloon. Als u suggesties of feedback over de sjabloon hebt, verzendt u deze naar de [sectie probleem](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues).
 
 ### <a name="2-create-alert-rules"></a>2. waarschuwings regels maken
 
-U kunt [de waarschuwingen maken](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)en zo nodig de query's en drempel waarden aanpassen. De volgende waarschuwingen worden aanbevolen:
+U kunt [de waarschuwingen maken](../azure-monitor/platform/alerts-overview.md)en zo nodig de query's en drempel waarden aanpassen. De volgende waarschuwingen worden aanbevolen:
 
 | Zoekquery                                                                  | Waarschuwing genereren op basis van | Beschrijving                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |

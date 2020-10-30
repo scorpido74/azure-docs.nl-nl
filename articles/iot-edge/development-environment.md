@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 17531c6e38447fba7fe8761a963be39ecfc8f489
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044153"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041375"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Bereid uw ontwikkel-en test omgeving voor op IoT Edge
 
@@ -83,7 +83,7 @@ Alleen de IoT Edge runtime wordt ondersteund voor productie-implementaties, maar
 | Hulpprogramma | Ook wel bekend als | Ondersteunde platforms | Ideaal voor |
 | ---- | ------------- | ------------------- | --------- |
 | IoT EdgeHub dev tool  | iotedgehubdev | Windows, Linux, macOS | Een apparaat simuleren voor fout opsporing in modules. |
-| IoT Edge dev-container | micro soft-iotedgedev | Windows, Linux, macOS | Ontwikkelen zonder afhankelijkheden te installeren. |
+| IoT Edge dev-container | iotedgedev | Windows, Linux, macOS | Ontwikkelen zonder afhankelijkheden te installeren. |
 | IoT Edge runtime in een container | iotedgec | Windows, Linux, macOS, ARM | Testen op een apparaat dat de runtime mogelijk niet ondersteunt. |
 | IoT Edge-container | toolboc/Azure-IOT-Edge-Device-container | Windows, Linux, macOS, ARM | Testen van een scenario met veel IoT Edge apparaten op schaal. |
 
@@ -99,7 +99,7 @@ Zie [Azure IOT EdgeHub dev tool](https://pypi.org/project/iotedgehubdev/)voor me
 
 De Azure IoT Edge dev-container is een docker-container met alle afhankelijkheden die u nodig hebt om IoT Edge te ontwikkelen. Met deze container kunt u gemakkelijk aan de slag gaan met de taal die u wilt ontwikkelen in, waaronder C#, Python, Node.js en Java. U hoeft alleen maar een container engine te installeren, zoals docker of Moby, om de container naar uw ontwikkel machine te halen.
 
-Zie [Azure IOT Edge dev container](https://hub.docker.com/r/microsoft/iotedgedev/)(Engelstalig) voor meer informatie.
+Zie [Azure IOT Edge dev container](https://github.com/Azure/iotedgedev/wiki/quickstart-with-iot-edge-dev-container)(Engelstalig) voor meer informatie.
 
 ### <a name="iot-edge-runtime-in-a-container"></a>IoT Edge runtime in een container
 

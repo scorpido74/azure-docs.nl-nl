@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac84ce17f53145ffd85ffa31b6633d8b4b184962
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83683361"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042643"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Trans formatie koppelen in gegevens stroom toewijzen
 
@@ -59,7 +59,7 @@ Als u een volledig Cartesisch product expliciet wilt maken, gebruikt u de afgele
 
 1. Kies in de vervolg keuzelijst **juiste stream** de gegevens stroom waarmee u wilt samen voegen.
 1. Het **jointype** selecteren
-1. Kies welke sleutel kolommen u wilt vergelijken voor de voor waarde voor samen voegen. De gegevens stroom zoekt standaard naar gelijkheid tussen één kolom in elke stroom. Als u wilt vergelijken via een berekende waarde, houdt u de muis aanwijzer boven de vervolg keuzelijst kolom en selecteert u **berekende kolom**.
+1. Kies welke sleutel kolommen u wilt vergelijken voor de voor waarde voor samen voegen. De gegevens stroom zoekt standaard naar gelijkheid tussen één kolom in elke stroom. Als u wilt vergelijken via een berekende waarde, houdt u de muis aanwijzer boven de vervolg keuzelijst kolom en selecteert u **berekende kolom** .
 
 ![Trans formatie koppelen](media/data-flow/join.png "Koppelen")
 
@@ -75,13 +75,13 @@ In tegens telling tot merge-koppeling in hulpprogram ma's als SSIS is de koppeli
 
 ![Trans formatie optimaliseren](media/data-flow/joinoptimize.png "Deelname aan optimalisatie")
 
-In samen voegingen, zoek acties en bestaande trans formatie, als een of beide gegevens stromen in het geheugen van het worker-knoop punt passen, kunt u de prestaties optimaliseren door **broadcast**in te scha kelen. Standaard wordt door de Spark-Engine automatisch besloten of één zijde al dan niet moet worden uitgezonden. Selecteer **vast**om hand matig te kiezen welke zijde u wilt uitzenden.
+In samen voegingen, zoek acties en bestaande trans formatie, als een of beide gegevens stromen in het geheugen van het worker-knoop punt passen, kunt u de prestaties optimaliseren door **broadcast** in te scha kelen. Standaard wordt door de Spark-Engine automatisch besloten of één zijde al dan niet moet worden uitgezonden. Selecteer **vast** om hand matig te kiezen welke zijde u wilt uitzenden.
 
 Het is niet raadzaam om Broadcasting uit te scha kelen via de optie **uit** , tenzij uw samen voegingen worden uitgevoerd in time-outfouten.
 
 ## <a name="self-join"></a>Self-Join
 
-Als u een gegevens stroom met zichzelf wilt samen voegen, maakt u een alias voor een bestaande stroom met een SELECT trans formatie. Maak een nieuwe vertakking door te klikken op het plus pictogram naast een trans formatie en **nieuwe vertakking**te selecteren. Voeg een SELECT trans formatie toe om de oorspronkelijke stroom te aliassen. Voeg een koppelings transformatie toe en kies de oorspronkelijke stroom als de **linker stroom** en de Selecteer trans formatie als de **juiste stroom**.
+Als u een gegevens stroom met zichzelf wilt samen voegen, maakt u een alias voor een bestaande stroom met een SELECT trans formatie. Maak een nieuwe vertakking door te klikken op het plus pictogram naast een trans formatie en **nieuwe vertakking** te selecteren. Voeg een SELECT trans formatie toe om de oorspronkelijke stroom te aliassen. Voeg een koppelings transformatie toe en kies de oorspronkelijke stroom als de **linker stroom** en de Selecteer trans formatie als de **juiste stroom** .
 
 ![Self-deelname](media/data-flow/selfjoin.png "Self-deelname")
 
@@ -108,7 +108,7 @@ Het onderstaande voor beeld is een koppelings transformatie met de naam `JoinMat
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
-![Voor beeld van koppeling](media/data-flow/join-script1.png "Voor beeld van koppeling")
+![Scherm afbeelding toont de trans formatie met het tabblad Instellingen voor samen voegen geselecteerd en het join-type Inner.](media/data-flow/join-script1.png "Voor beeld van koppeling")
 
 Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
 
@@ -130,7 +130,7 @@ Het onderstaande voor beeld is een koppelings transformatie met de naam `Joining
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
-![Voor beeld van koppeling](media/data-flow/join-script2.png "Voor beeld van koppeling")
+![Scherm afbeelding toont de trans formatie met het tabblad Instellingen voor samen voegen geselecteerd en het jointype aangepast (kruis).](media/data-flow/join-script2.png "Voor beeld van koppeling")
 
 Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
 

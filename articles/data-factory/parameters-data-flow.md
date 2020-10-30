@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564c7cf6e9627db08d543b964ce476e71bfb473d
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82780369"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040754"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Toewijzingsgegevensstromen parameteriseren
 
@@ -28,7 +28,7 @@ Gebruik deze mogelijkheid om uw gegevens te stroom, flexibel en herbruikbaar te 
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Para meters maken in een toewijzings gegevens stroom
 
-Als u para meters wilt toevoegen aan uw gegevens stroom, klikt u op het lege deel van het canvas voor gegevens stromen om de algemene eigenschappen weer te geven. In het deel venster instellingen ziet u een tabblad met de naam **para meter**. Selecteer **Nieuw** om een nieuwe para meter te genereren. Voor elke para meter moet u een naam toewijzen, een type selecteren en optioneel een standaard waarde instellen.
+Als u para meters wilt toevoegen aan uw gegevens stroom, klikt u op het lege deel van het canvas voor gegevens stromen om de algemene eigenschappen weer te geven. In het deel venster instellingen ziet u een tabblad met de naam **para meter** . Selecteer **Nieuw** om een nieuwe para meter te genereren. Voor elke para meter moet u een naam toewijzen, een type selecteren en optioneel een standaard waarde instellen.
 
 ![Data flow-para meters maken](media/data-flow/create-params.png "Data flow-para meters maken")
 
@@ -36,11 +36,11 @@ Als u para meters wilt toevoegen aan uw gegevens stroom, klikt u op het lege dee
 
 In elke gegevens stroom expressie kan naar para meters worden verwezen. Para meters beginnen met $ en zijn onveranderbaar. De lijst met beschik bare para meters kunt u vinden in de opbouw functie voor expressies op het tabblad **para meters** .
 
-![Expressie voor de gegevens stroom parameter](media/data-flow/parameter-expression.png "Expressie voor de gegevens stroom parameter")
+![Scherm afbeelding toont de beschik bare para meters op het tabblad para meters.](media/data-flow/parameter-expression.png "Expressie voor de gegevens stroom parameter")
 
 U kunt snel extra para meters toevoegen door **nieuwe para meter** te selecteren en de naam en het type op te geven.
 
-![Expressie voor de gegevens stroom parameter](media/data-flow/new-parameter-expression.png "Expressie voor de gegevens stroom parameter")
+![Scherm afbeelding toont de para meters op het tabblad para meters met nieuwe para meters toegevoegd.](media/data-flow/new-parameter-expression.png "Expressie voor de gegevens stroom parameter")
 
 ## <a name="assign-parameter-values-from-a-pipeline"></a>Parameter waarden toewijzen vanuit een pijp lijn
 
@@ -48,13 +48,13 @@ Zodra u een gegevens stroom met para meters hebt gemaakt, kunt u deze uitvoeren 
 
 Bij het toewijzen van parameter waarden kunt u de taal van de [pijplijn expressie](control-flow-expression-language-functions.md) of de [Data flow-expressie taal](data-flow-expression-functions.md) gebruiken op basis van Spark-typen. Elke toewijzings gegevens stroom kan een combi natie van de para meters van de pijplijn-en data flow-expressie hebben.
 
-![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-assign.png "Een para meter voor een gegevens stroom instellen")
+![Scherm afbeelding toont het tabblad para meters met de data flow-expressie die is geselecteerd voor de waarde van myParam.](media/data-flow/parameter-assign.png "Een para meter voor een gegevens stroom instellen")
 
 ### <a name="pipeline-expression-parameters"></a>Para meters voor pijplijn expressie
 
-Met para meters voor de pijplijn expressie kunt u verwijzen naar systeem variabelen, functies, pijplijn parameters en variabelen die vergelijkbaar zijn met andere pijplijn activiteiten. Wanneer u op **pijplijn expressie**klikt, wordt een kantlijn navigatie geopend, zodat u een expressie kunt invoeren met de opbouw functie voor expressies.
+Met para meters voor de pijplijn expressie kunt u verwijzen naar systeem variabelen, functies, pijplijn parameters en variabelen die vergelijkbaar zijn met andere pijplijn activiteiten. Wanneer u op **pijplijn expressie** klikt, wordt een kantlijn navigatie geopend, zodat u een expressie kunt invoeren met de opbouw functie voor expressies.
 
-![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-pipeline.png "Een para meter voor een gegevens stroom instellen")
+![Scherm afbeelding toont het deel venster opbouw functie voor expressies.](media/data-flow/parameter-pipeline.png "Een para meter voor een gegevens stroom instellen")
 
 Wanneer ernaar wordt verwezen, worden de pijplijn parameters geëvalueerd en wordt de waarde ervan gebruikt in de taal van de gegevens stroom expressie. Het type pijplijn expressie hoeft niet overeen te komen met het parameter type van de gegevens stroom. 
 
@@ -62,7 +62,7 @@ Wanneer ernaar wordt verwezen, worden de pijplijn parameters geëvalueerd en wor
 
 Wanneer u een para meter voor een pijplijn expressie van het type teken reeks toewijst, worden standaard aanhalings tekens toegevoegd en wordt de waarde geëvalueerd als een literal. Als u de parameter waarde als een gegevensstroom expressie wilt lezen, schakelt u het selectie vakje expressie naast de para meter in.
 
-![Een para meter voor een gegevens stroom instellen](media/data-flow/string-parameter.png "Een para meter voor een gegevens stroom instellen")
+![Scherm afbeelding toont de weer gave-expressie voor het deel venster gegevens stroom die is geselecteerd voor een para meter.](media/data-flow/string-parameter.png "Een para meter voor een gegevens stroom instellen")
 
 Als de para meter data flow `stringParam` verwijst naar een pijplijn parameter met een waarde `upper(column1)` . 
 
@@ -73,7 +73,7 @@ Als de para meter data flow `stringParam` verwijst naar een pijplijn parameter m
 
 In de taal van de pipeline-expressie, systeem variabelen zoals `pipeline().TriggerTime` en functions, zoals `utcNow()` retour tempels als teken reeksen in de notatie jjjj-mm-dd \' T \' uu: mm: SS. SSSSSSZ'. Als u deze wilt converteren naar de gegevensstroom parameters van het type Time Stamp, gebruikt u interpolatie van teken reeksen om de gewenste tijds tempel in een functie op te genomen `toTimestamp()` . U kunt bijvoorbeeld gebruiken om de trigger tijd van de pijp lijn om te zetten in een para meter voor de gegevens stroom `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` . 
 
-![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-timestamp.png "Een para meter voor een gegevens stroom instellen")
+![Scherm afbeelding toont het tabblad para meters waar u een trigger tijd kunt invoeren.](media/data-flow/parameter-timestamp.png "Een para meter voor een gegevens stroom instellen")
 
 > [!NOTE]
 > Gegevens stromen kunnen Maxi maal drie milliseconde cijfers ondersteunen. De `left()` functie wordt gebruikt om extra cijfers uit te snijden.
@@ -82,15 +82,15 @@ In de taal van de pipeline-expressie, systeem variabelen zoals `pipeline().Trigg
 
 Stel dat u een integer-para meter hebt `intParam` die verwijst naar een pijplijn parameter van het type teken reeks, `@pipeline.parameters.pipelineParam` . 
 
-![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-pipeline-2.png "Een para meter voor een gegevens stroom instellen")
+![Scherm afbeelding toont het tabblad para meters met de para meters met de naam stringParam en intParam.](media/data-flow/parameter-pipeline-2.png "Een para meter voor een gegevens stroom instellen")
 
 `@pipeline.parameters.pipelineParam` wordt tijdens runtime een waarde van toegewezen `abs(1)` .
 
-![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-pipeline-4.png "Een para meter voor een gegevens stroom instellen")
+![Scherm afbeelding toont het tabblad para meters met de waarde a b s (1) geselecteerd.](media/data-flow/parameter-pipeline-4.png "Een para meter voor een gegevens stroom instellen")
 
 Wanneer `$intParam` wordt verwezen in een expressie, zoals een afgeleide kolom, wordt `abs(1)` return geëvalueerd `1` . 
 
-![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-pipeline-3.png "Een para meter voor een gegevens stroom instellen")
+![Scherm afbeelding toont de waarde columns.](media/data-flow/parameter-pipeline-3.png "Een para meter voor een gegevens stroom instellen")
 
 ### <a name="data-flow-expression-parameters"></a>Para meters voor de gegevens stroom expressie
 

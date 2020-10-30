@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a10340d4c2bd2811204af41fba5b32cbe9c4e905
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735063"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042121"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in AKS (Azure Kubernetes Service)
 
@@ -131,7 +131,7 @@ az aks get-versions --location eastus --output table
 
 ## <a name="aks-kubernetes-release-calendar"></a>Release kalender voor AKS-Kubernetes
 
-Zie [hier](https://en.wikipedia.org/wiki/Kubernetes#History)voor de eerdere release geschiedenis.
+Zie [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History)voor de eerdere release geschiedenis.
 
 |  K8s-versie | Upstream-release  | AKS preview  | AKS GA  | Einde van de levens duur |
 |--------------|-------------------|--------------|---------|-------------|
@@ -139,8 +139,10 @@ Zie [hier](https://en.wikipedia.org/wiki/Kubernetes#History)voor de eerdere rele
 | 1,17  | Dec-09-19  | Jan 2019   | Jul 2020  | 1,20 GA | 
 | 1,18  | Mrt-23-20  | Mei 2020   | Aug 2020  | 1,21 GA | 
 | 1,19  | Aug-04-20  | Sep 2020   | Nov 2020  | 1,22 GA | 
-| 1,20  | Dec-08-20  | Jan 2021   | Mrt 2021  | 1,23 GA | 
-\* Als gevolg van de vakantie seizoen AKS wordt de levens duur van 1,16 van november 2020 tot januari 2021 verlengd. [Hier](https://github.com/Azure/AKS/releases/tag/2020-10-12) vindt u meer informatie
+| 1,20  | Dec-08-20  | Jan 2021   | Mrt 2021  | 1,23 GA |
+
+\* Als gevolg van de feest dagen, AKS de levens duur van 1,16 van november 2020 tot januari 2021. [Meer informatie](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+
 
 ## <a name="faq"></a>Veelgestelde vragen
 

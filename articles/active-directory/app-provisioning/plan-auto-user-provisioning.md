@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363688"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041115"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -34,13 +34,13 @@ Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur en
 
 De belangrijkste voor delen van het inschakelen van automatische gebruikers inrichting zijn:
 
-* **Verhoogde productiviteit**. U kunt gebruikers identiteiten in SaaS-toepassingen beheren met één gebruikers inrichten-beheer interface. Deze interface heeft één set inrichtings beleidsregels.
+* **Verhoogde productiviteit** . U kunt gebruikers identiteiten in SaaS-toepassingen beheren met één gebruikers inrichten-beheer interface. Deze interface heeft één set inrichtings beleidsregels.
 
-* **Risico's beheren**. U kunt de beveiliging verhogen door wijzigingen te automatiseren op basis van de status van werk nemers of groepslid maatschappen waarmee rollen en/of toegang worden gedefinieerd.
+* **Risico's beheren** . U kunt de beveiliging verhogen door wijzigingen te automatiseren op basis van de status van werk nemers of groepslid maatschappen waarmee rollen en/of toegang worden gedefinieerd.
 
-* **Naleving en**beheer van adressen. Azure AD biedt ondersteuning voor systeem eigen controle logboeken voor elke aanvraag voor het inrichten van gebruikers. Aanvragen worden uitgevoerd in de bron-en doel systemen. Zo kunt u bijhouden wie toegang heeft tot toepassingen vanaf één scherm.
+* **Naleving en** beheer van adressen. Azure AD biedt ondersteuning voor systeem eigen controle logboeken voor elke aanvraag voor het inrichten van gebruikers. Aanvragen worden uitgevoerd in de bron-en doel systemen. Zo kunt u bijhouden wie toegang heeft tot toepassingen vanaf één scherm.
 
-* **Kosten verlagen**. Automatische gebruikers inrichting vermindert de kosten door inefficiëntie en menselijke fout te voor komen die zijn gekoppeld aan hand matige inrichting. Het vermindert de behoefte aan aangepaste, ontwikkelde oplossingen voor gebruikers inrichten, scripts en audit Logboeken.
+* **Kosten verlagen** . Automatische gebruikers inrichting vermindert de kosten door inefficiëntie en menselijke fout te voor komen die zijn gekoppeld aan hand matige inrichting. Het vermindert de behoefte aan aangepaste, ontwikkelde oplossingen voor gebruikers inrichten, scripts en audit Logboeken.
 
 ### <a name="licensing"></a>Licentieverlening
 
@@ -99,7 +99,7 @@ In dit voor beeld worden gebruikers en of groepen gemaakt in een HR-data base di
 
 In dit voor beeld vindt het maken van een gebruiker plaats in azure AD en de Azure AD-inrichtings service beheert automatische gebruikers inrichting voor de doel-en SaaS-toepassingen.
 
-![Afbeelding 2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Diagram waarin het proces voor het maken van een gebruiker/groep van een on-premises H R-toepassing wordt weer gegeven via de Azure A D-Provisioning Service naar het doel S a S-toepassingen.](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **Beschrijving van werk stroom:**
 

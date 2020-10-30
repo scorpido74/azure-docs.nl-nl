@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
-ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84187600"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040191"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Trans formatie opzoeken in toewijzings gegevens stroom
 
@@ -27,7 +27,7 @@ Een zoek transformatie is vergelijkbaar met een left outer join. Alle rijen van 
 
 ## <a name="configuration"></a>Configuratie
 
-![Zoek transformatie](media/data-flow/lookup1.png "Opzoeken")
+![Scherm afbeelding toont het tabblad Zoek instellingen met de labels die in de volgende tekst worden beschreven.](media/data-flow/lookup1.png "Opzoeken")
 
 **Primaire stroom:** De binnenkomende gegevens stroom. Deze stroom is gelijk aan de linkerkant van een samen voeging.
 
@@ -65,7 +65,7 @@ Gebruik een kleine set bekende gegevens bij het testen van de zoek transformatie
 
 ![Broadcast-koppeling](media/data-flow/broadcast.png "Broadcast-koppeling")
 
-In samen voegingen, zoek acties en bestaande trans formatie, als een of beide gegevens stromen in het geheugen van het worker-knoop punt passen, kunt u de prestaties optimaliseren door **broadcast**in te scha kelen. Standaard wordt door de Spark-Engine automatisch besloten of één zijde al dan niet moet worden uitgezonden. Selecteer **vast**om hand matig te kiezen welke zijde u wilt uitzenden.
+In samen voegingen, zoek acties en bestaande trans formatie, als een of beide gegevens stromen in het geheugen van het worker-knoop punt passen, kunt u de prestaties optimaliseren door **broadcast** in te scha kelen. Standaard wordt door de Spark-Engine automatisch besloten of één zijde al dan niet moet worden uitgezonden. Selecteer **vast** om hand matig te kiezen welke zijde u wilt uitzenden.
 
 Het is niet raadzaam om Broadcasting uit te scha kelen via de optie **uit** , tenzij uw samen voegingen worden uitgevoerd in time-outfouten.
 
@@ -85,7 +85,7 @@ Het is niet raadzaam om Broadcasting uit te scha kelen via de optie **uit** , te
 ```
 ### <a name="example"></a>Voorbeeld
 
-![Zoek transformatie](media/data-flow/lookup-dsl-example.png "Opzoeken")
+![Scherm afbeelding toont het tabblad Zoek instellingen voor de volgende code.](media/data-flow/lookup-dsl-example.png "Opzoeken")
 
 Het gegevens stroom script voor de bovenstaande opzoek configuratie bevindt zich in het onderstaande code fragment.
 

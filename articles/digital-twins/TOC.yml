@@ -45,12 +45,12 @@
           href: how-to-use-cli.md
         - name: Een exemplaar en verificatie instellen
           items:
-            - name: Scriptversie
-              href: how-to-set-up-instance-scripted.md
-            - name: CLI-versie
-              href: how-to-set-up-instance-cli.md
             - name: Portalversie
               href: how-to-set-up-instance-portal.md
+            - name: CLI-versie
+              href: how-to-set-up-instance-cli.md
+            - name: Scriptversie
+              href: how-to-set-up-instance-scripted.md
         - name: Verificatiecode voor app schrijven
           href: how-to-authenticate-client.md
         - name: Een app-registratie maken

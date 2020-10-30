@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: how-to
-ms.date: 03/16/2020
+ms.date: 10/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 136d0627e701104e9958d51b2e37256de5659f25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a084b2d0582f53d4372ba3332194629ad29a4ec
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87271413"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041864"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics op IoT Edge
  
@@ -24,10 +24,10 @@ Azure Stream Analytics op IoT Edge worden uitgevoerd binnen het [Azure IOT Edge]
 ## <a name="scenarios"></a>Scenario's
 ![Diagram van IoT Edge op hoog niveau](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Opdracht en controle met een lage latentie**: productie veiligheids systemen moeten bijvoorbeeld reageren op operationele gegevens met een extreem lage latentie. Met ASA op IoT Edge kunt u sensor gegevens in bijna realtime analyseren en opdrachten verlenen wanneer u afwijkingen detecteert om een computer te stoppen of waarschuwingen te activeren.
-*   **Beperkte connectiviteit met de Cloud**: essentiële systemen, zoals apparaten voor externe analyse, verbonden vaten of offshore-boren, moeten gegevens analyseren en reageren, zelfs wanneer de verbinding met de Cloud regel matig wordt uitgevoerd. Met ASA wordt uw streaming Logic onafhankelijk van de netwerk verbinding uitgevoerd en kunt u kiezen wat u naar de Cloud verzendt voor verdere verwerking of opslag.
-* **Beperkte band breedte**: de hoeveelheid gegevens die wordt geproduceerd door Jet-engines of verbonden auto's kan zo groot zijn dat gegevens moeten worden gefilterd of vooraf moeten worden verwerkt voordat deze naar de cloud worden verzonden. Met ASA kunt u de gegevens die naar de Cloud moeten worden verzonden, filteren of samen voegen.
-* **Naleving**: naleving van regelgeving kan vereisen dat sommige gegevens lokaal worden geanonimiseerd of worden geaggregeerd voordat ze naar de cloud worden verzonden.
+* **Opdracht en controle met een lage latentie** : productie veiligheids systemen moeten bijvoorbeeld reageren op operationele gegevens met een extreem lage latentie. Met ASA op IoT Edge kunt u sensor gegevens in bijna realtime analyseren en opdrachten verlenen wanneer u afwijkingen detecteert om een computer te stoppen of waarschuwingen te activeren.
+*   **Beperkte connectiviteit met de Cloud** : essentiële systemen, zoals apparaten voor externe analyse, verbonden vaten of offshore-boren, moeten gegevens analyseren en reageren, zelfs wanneer de verbinding met de Cloud regel matig wordt uitgevoerd. Met ASA wordt uw streaming Logic onafhankelijk van de netwerk verbinding uitgevoerd en kunt u kiezen wat u naar de Cloud verzendt voor verdere verwerking of opslag.
+* **Beperkte band breedte** : de hoeveelheid gegevens die wordt geproduceerd door Jet-engines of verbonden auto's kan zo groot zijn dat gegevens moeten worden gefilterd of vooraf moeten worden verwerkt voordat deze naar de cloud worden verzonden. Met ASA kunt u de gegevens die naar de Cloud moeten worden verzonden, filteren of samen voegen.
+* **Naleving** : naleving van regelgeving kan vereisen dat sommige gegevens lokaal worden geanonimiseerd of worden geaggregeerd voordat ze naar de cloud worden verzonden.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Edge-taken in Azure Stream Analytics
 ### <a name="what-is-an-edge-job"></a>Wat is een ' edge-taak '?
@@ -47,7 +47,7 @@ De stappen op hoog niveau worden in de volgende tabel beschreven. Meer informati
 | Stap | Notities |
 | --- | --- |
 | **Een opslagcontainer maken** | Opslag containers worden gebruikt voor het opslaan van uw taak definitie, waar ze toegankelijk zijn voor uw IoT-apparaten. <br>  U kunt elke bestaande opslag container opnieuw gebruiken. |
-| **Een ASA Edge-taak maken** | Maak een nieuwe taak, selecteer **Edge** als **hosting omgeving**. <br> Deze taken worden gemaakt/beheerd vanuit de Cloud en uitgevoerd op uw eigen IoT Edge apparaten. |
+| **Een ASA Edge-taak maken** | Maak een nieuwe taak, selecteer **Edge** als **hosting omgeving** . <br> Deze taken worden gemaakt/beheerd vanuit de Cloud en uitgevoerd op uw eigen IoT Edge apparaten. |
 | **Uw IoT Edge omgeving instellen op uw apparaat (s)** | Instructies voor [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) of [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).|
 | **ASA implementeren op uw IoT Edge apparaat (en)** | De taak definitie van ASA wordt geëxporteerd naar de opslag container die u eerder hebt gemaakt. |
 
@@ -60,8 +60,8 @@ U kunt [deze stapsgewijze zelf studie](https://docs.microsoft.com/azure/iot-edge
 Een opslag container is vereist om de gecompileerde query van ASA en de taak configuratie te exporteren. Het wordt gebruikt om de ASA docker-installatie kopie te configureren met uw specifieke query. 
 1. Volg [deze instructies](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) voor het maken van een opslag account vanuit het Azure Portal. U kunt alle standaard opties blijven gebruiken voor dit account met ASA.
 2. Maak een BLOB storage-container in het zojuist gemaakte opslag account:
-    1. Klik op **blobs**en vervolgens op **+ container**. 
-    2. Voer een naam in en behoud de container als **privé**.
+    1. Klik op **blobs** en vervolgens op **+ container** . 
+    2. Voer een naam in en behoud de container als **privé** .
 
 #### <a name="create-an-asa-edge-job"></a>Een ASA Edge-taak maken
 > [!Note]
@@ -73,16 +73,16 @@ Een opslag container is vereist om de gecompileerde query van ASA en de taak con
 
    ![Stream Analytics-taak maken aan rand](media/stream-analytics-edge/create-asa-edge-job.png)
 3. Taak definitie
-    1. **Geef een of meer invoer gegevens**op. Definieer een of meer invoer stromen voor uw taak.
+    1. **Geef een of meer invoer gegevens** op. Definieer een of meer invoer stromen voor uw taak.
     2. Referentie gegevens definiëren (optioneel).
-    3. **Geef een of meer uitvoer stroom**op. Definieer een of meer uitvoer stromen voor uw taak. 
-    4. **Query definiëren**. Definieer de ASA-query in de Cloud met behulp van de inline-editor. De compiler controleert automatisch de syntaxis ingeschakeld voor ASA-rand. U kunt ook uw query testen door voorbeeld gegevens te uploaden. 
+    3. **Geef een of meer uitvoer stroom** op. Definieer een of meer uitvoer stromen voor uw taak. 
+    4. **Query definiëren** . Definieer de ASA-query in de Cloud met behulp van de inline-editor. De compiler controleert automatisch de syntaxis ingeschakeld voor ASA-rand. U kunt ook uw query testen door voorbeeld gegevens te uploaden. 
 
 4. Stel de gegevens van de opslag container in het menu **IOT Edge instellingen** in.
 
 5. Optionele instellingen instellen
-    1. **Gebeurtenis volgorde**. U kunt out-of-order beleid configureren in de portal. Documentatie is [hier](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)beschikbaar.
-    2. **Land instelling**. Stel de internalization-indeling in.
+    1. **Gebeurtenis volgorde** . U kunt out-of-order beleid configureren in de portal. Documentatie is [hier](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)beschikbaar.
+    2. **Land instelling** . Stel de internalization-indeling in.
 
 
 
@@ -103,14 +103,14 @@ Deze stappen worden beschreven in de IoT Edge documentatie voor [Windows](https:
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>Implementatie-ASA op uw IoT Edge apparaat (en)
 ##### <a name="add-asa-to-your-deployment"></a>ASA toevoegen aan uw implementatie
 - Open in de Azure Portal IoT Hub, navigeer naar **IOT Edge** en klik op het apparaat dat u wilt instellen voor deze implementatie.
-- Selecteer **modules instellen**, selecteer **+ toevoegen** en kies **Azure stream Analytics module**.
+- Selecteer **modules instellen** , selecteer **+ toevoegen** en kies **Azure stream Analytics module** .
 - Selecteer het abonnement en de ASA Edge-taak die u hebt gemaakt. Klik op Opslaan.
 ![De ASA-module toevoegen in uw implementatie](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]
 > Tijdens deze stap maakt ASA een map met de naam ' EdgeJobs ' in de opslag container (als deze nog niet bestaat). Voor elke implementatie wordt een nieuwe submap gemaakt in de map ' EdgeJobs '.
-> Wanneer u uw taak op IoT Edge-apparaten implementeert, maakt ASA een Shared Access Signature (SAS) voor het definitie bestand van de taak. De SAS-sleutel wordt veilig verzonden naar de IoT Edge-apparaten met behulp van apparaat-twee. De verval datum van deze sleutel is drie jaar vanaf de dag waarop deze is gemaakt. Wanneer u een IoT Edge taak bijwerkt, worden de SA'S gewijzigd, maar de versie van de installatie kopie wordt niet gewijzigd. Nadat u de **Update**hebt uitgevoerd, volgt u de implementatie werk stroom en wordt er een update melding op het apparaat vastgelegd.
+> Wanneer u uw taak op IoT Edge-apparaten implementeert, maakt ASA een Shared Access Signature (SAS) voor het definitie bestand van de taak. De SAS-sleutel wordt veilig verzonden naar de IoT Edge-apparaten met behulp van apparaat-twee. De verval datum van deze sleutel is drie jaar vanaf de dag waarop deze is gemaakt. Wanneer u een IoT Edge taak bijwerkt, worden de SA'S gewijzigd, maar de versie van de installatie kopie wordt niet gewijzigd. Nadat u de **Update** hebt uitgevoerd, volgt u de implementatie werk stroom en wordt er een update melding op het apparaat vastgelegd.
 
 
 Zie [Deze pagina](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)voor meer informatie over IOT Edge implementaties.
@@ -132,13 +132,13 @@ Namen van de invoer en uitvoer die in de ASA-taak worden gemaakt, kunnen worden 
 }
 
 ```
-In dit voor beeld ziet u de routes voor het scenario dat wordt beschreven in de volgende afbeelding. Het bevat een Edge-taak met de naam '**ASA**', met een invoer met de naam '**Tempe ratuur**' en een uitvoer met de naam '**Alert**'.
+In dit voor beeld ziet u de routes voor het scenario dat wordt beschreven in de volgende afbeelding. Het bevat een Edge-taak met de naam ' **ASA** ', met een invoer met de naam ' **Tempe ratuur** ' en een uitvoer met de naam ' **Alert** '.
 ![Diagram voorbeeld van bericht routering](media/stream-analytics-edge/edge-message-routing-example.png)
 
 In dit voor beeld worden de volgende routes gedefinieerd:
-- Elk bericht van de **temp sensor** wordt naar de module met de naam ' **ASA** ' verzonden naar de invoer met de naam **Tempe ratuur**,
+- Elk bericht van de **temp sensor** wordt naar de module met de naam ' **ASA** ' verzonden naar de invoer met de naam **Tempe ratuur** ,
 - Alle uitvoer van de **ASA** -module worden verzonden naar de IOT hub die is gekoppeld aan dit apparaat ($upstream)
-- Alle uitvoer van de **ASA** -module worden verzonden naar het **controle** -eind punt van de **temp sensor**.
+- Alle uitvoer van de **ASA** -module worden verzonden naar het **controle** -eind punt van de **temp sensor** .
 
 
 ## <a name="technical-information"></a>Technische informatie
@@ -184,7 +184,7 @@ Een taak met referentie gegevens aan de rand maken:
 
 1. Maak een nieuwe invoer voor uw taak.
 
-2. Kies **referentie gegevens** als **bron type**.
+2. Kies **referentie gegevens** als **bron type** .
 
 3. Een bestand met referentie gegevens gereed is voor het apparaat. Plaats voor een Windows-container het bestand met referentie gegevens op de lokale schijf en deel het lokale station met de docker-container. Voor een Linux-container maakt u een docker-volume en vult u het gegevens bestand in op het volume.
 
@@ -206,23 +206,23 @@ Er zijn twee manieren om de referentie gegevens bij te werken:
 
 Deze versie-informatie is voor het laatst bijgewerkt op 2019-06-27:
 
-- Afbeelding: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
-   - basis installatie kopie: micro soft/DotNet: 2.1.6-runtime-Alpine 3.7
+- Afbeelding: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.9-linux-amd64`
+   - basis installatie kopie: mcr.microsoft.com/dotnet/core/runtime:2.1.13-alpine
    - onafhankelijk
       - architectuur: amd64
       - besturings systeem: Linux
-  
-- Afbeelding: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
-   - basis installatie kopie: micro soft/DotNet: 2.1.6-runtime-Bionic-arm32v7
+ 
+- Afbeelding: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.9-linux-arm32v7`
+   - basis installatie kopie: mcr.microsoft.com/dotnet/core/runtime:2.1.13-bionic-arm32v7
    - onafhankelijk
       - architectuur: arm
       - besturings systeem: Linux
-  
-- Afbeelding: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
-   - basis installatie kopie: micro soft/DotNet: 2.1.6-runtime-nano server-1809
+ 
+- Afbeelding: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.9-linux-arm64`
+   - basis installatie kopie: mcr.microsoft.com/dotnet/core/runtime:3.0-bionic-arm64v8
    - onafhankelijk
-      - architectuur: amd64
-      - besturings systeem: Windows
+      - architectuur: arm64
+      - besturings systeem: Linux
       
       
 ## <a name="get-help"></a>Hulp vragen

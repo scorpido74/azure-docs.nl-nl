@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704725"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042176"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -41,7 +41,7 @@ Zie [Toegang tot gegevens toewijzen](../cost-management-billing/costs/assign-acc
 
 ## <a name="estimate-costs"></a>Kosten schatten
 
-Gebruik de [prijs calculator van Azure](https://azure.microsoft.com/pricing/calculator/) om de kosten te schatten voordat u de resources in een Azure machine learning-account maakt. Selecteer aan de linkerkant **AI + machine learning**en selecteer vervolgens **Azure machine learning** om te beginnen.  
+Gebruik de [prijs calculator van Azure](https://azure.microsoft.com/pricing/calculator/) om de kosten te schatten voordat u de resources in een Azure machine learning-account maakt. Selecteer aan de linkerkant **AI + machine learning** en selecteer vervolgens **Azure machine learning** om te beginnen.  
 
 De volgende scherm afbeelding toont de kosten raming door gebruik te maken van de Calculator:
 
@@ -61,7 +61,9 @@ Als u resources met Azure Machine Learning gebruikt, worden er kosten in rekenin
 
 U kunt de kosten in grafieken en tabellen weer geven voor verschillende tijds intervallen. U kunt ook kosten weer geven op basis van budgetten en geraamde kosten. Door over te scha kelen op meer weer gaven, kunt u uitgaven trends identificeren en zien waar overuitgave mogelijk is gebeurd. Als u budgetten hebt gemaakt, raadpleegt u waar ze zijn overschreden.  
 
-Er wordt geen apart service gebied voor Machine Learning weer geven.  In plaats daarvan ziet u de verschillende resources die u hebt toegevoegd aan uw Machine Learning-werk ruimten.
+Er wordt geen apart service gebied voor Machine Learning weer geven.  In plaats daarvan ziet u de verschillende resources die u hebt toegevoegd aan uw Machine Learning-werk ruimten. 
+
+Houd er rekening mee dat de Machine Learning werk ruimte zelf geen directe kosten heeft, maar u wordt gefactureerd op beheerde reken resources. Als u labels aan de werk ruimten hebt toegevoegd, omdat er hiervoor geen directe kosten in zijn, wordt dit in het deel venster kosten analyse weer gegeven voor de werk ruimte. Voor nauw keurig kosten beheer via tags moet u de bijbehorende reken resources labelen.  
 
 ## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Azure Machine Learning Compute-Cluster (AmlCompute) gebruiken
 

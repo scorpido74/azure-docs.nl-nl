@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bffe69dd5b7d3cdfcba1df3420d494dcffc33f9a
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282194"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042666"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -68,13 +68,13 @@ De mogelijkheid om ACL-wijzigingen van de bovenliggende map toe te passen op ond
 
 ## <a name="azcopy"></a>AzCopy
 
-Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).Eerdere versies van AzCopy, zoals AzCopy v 8.1, worden niet ondersteund.
+Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Eerdere versies van AzCopy, zoals AzCopy v 8.1, worden niet ondersteund.
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure Opslagverkenner
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
-Gebruik alleen versies  `1.6.0`   of hoger.
+Gebruik alleen versies `1.6.0` of hoger.
 
 <a id="explorer-in-portal"></a>
 
@@ -84,7 +84,7 @@ Acl's worden nog niet ondersteund.
 
 <a id="third-party-apps"></a>
 
-## <a name="thirdpartyapplications"></a>Toepassingen van derden
+## <a name="third-party-applications"></a>Toepassingen van derden
 
 Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2 toepassingen die BLOB-Api's aanroepen, waarschijnlijk zullen werken.
 
@@ -92,38 +92,15 @@ Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven wer
 
 Als [anonieme lees toegang](storage-manage-access-to-resources.md) is verleend aan een container, hebben acl's geen invloed op die container of de bestanden in die container.
 
-### <a name="diagnostic-logs"></a>Diagnostische logboeken
+## <a name="diagnostic-logs"></a>Diagnostische logboeken
 
 De instelling voor Bewaar dagen wordt nog niet ondersteund, maar u kunt Logboeken hand matig verwijderen met behulp van een ondersteund hulp programma zoals Azure Storage Explorer, REST of een SDK.
 
-## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Problemen die specifiek zijn voor Premium-performance BlockBlobStorage-opslag accounts
+## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Levenscyclus beheer beleid met de Premium-laag voor Azure Data Lake Storage
 
-### <a name="diagnostic-logs"></a>Diagnostische logboeken
+Het is niet mogelijk om gegevens die zijn opgeslagen in de Premium-laag te verplaatsen tussen de lagen hot, cool en Archive. U kunt echter gegevens van de Premium-laag naar de warme Access-laag kopiëren in een ander account.
 
-Diagnostische logboeken kunnen nog niet worden ingeschakeld met behulp van de Azure Portal. U kunt deze inschakelen met behulp van Power shell. Bijvoorbeeld:
-
-```powershell
-#To login
-Connect-AzAccount
-
-#Set default block blob storage account.
-Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
-
-#Enable logging
-Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
-```
-
-### <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
-
-- Levenscyclus beheer beleid wordt alleen ondersteund voor v2-accounts voor algemeen gebruik. Ze worden nog niet ondersteund in Premium BlockBlobStorage-opslag accounts.
-- Gegevens kunnen niet worden verplaatst van de Premium-laag naar lagere lagen.
-
-
-### <a name="hdinsight-support"></a>HDInsight-ondersteuning
-
-Wanneer u een n HDInsight-cluster maakt, kunt u nog geen BlockBlobStorage-account selecteren waarop de functie voor hiërarchische naam ruimte is ingeschakeld. U kunt het account echter koppelen aan het cluster nadat u het hebt gemaakt.
-
-### <a name="dremio-support"></a>Dremio-ondersteuning
+## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>Dremio-ondersteuning met Premium-performance BlockBlobStorage-opslag accounts
 
 Dremio maakt nog geen verbinding met een BlockBlobStorage-account waarop de functie voor hiërarchische naam ruimte is ingeschakeld. 
 

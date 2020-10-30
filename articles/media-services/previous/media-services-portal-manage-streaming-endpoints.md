@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b7ea61a1f09a9340661f333e452f70c5ad8cf877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 496c5de8f9ead0773dfef7e65051344645ffa9de
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266643"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041969"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Streaming-eindpunten beheren met de Azure-portal
 
@@ -38,9 +38,9 @@ Zie [Dit](media-services-portal-scale-streaming-endpoints.md) artikel voor meer 
 Ga als volgt te werk om het beheren van streaming-eind punten voor uw account te starten.
 
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer in **Settings** de Blade instellingen **streaming-eind punten**.
+2. Selecteer in **Settings** de Blade instellingen **streaming-eind punten** .
    
-    ![Streaming-eindpunt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
+    ![Scherm opname van de pagina Media Services met ' streaming-eind punten ' die is geselecteerd op de Blade instellingen.](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
 > [!NOTE]
 > Er worden alleen kosten in rekening gebracht wanneer het streaming-eind punt wordt uitgevoerd.
@@ -59,7 +59,7 @@ Ga als volgt te werk om streaming-eind punt toe te voegen/te verwijderen met beh
 2. Als u een streaming-eind punt wilt verwijderen, drukt u op de knop **verwijderen** .      
 3. Klik op de knop **starten** om het streaming-eind punt te starten.
    
-    ![Streaming-eindpunt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
+    ![Scherm afbeelding met de geselecteerde actie eind punt en het deel venster Details van streaming-eind punt wordt weer gegeven.](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
 ## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>Het streaming-eind punt configureren
@@ -77,11 +77,11 @@ Zie [StreamingEndpoint](/rest/api/media/operations/streamingendpoint)voor meer i
 U kunt het streaming-eind punt configureren door het volgende te doen:
 
 1. Selecteer het streaming-eind punt dat u wilt configureren.
-2. Klik op **Instellingen**.
+2. Klik op **Instellingen** .
 
 Een korte beschrijving van de velden volgt.
 
-![Streaming-eindpunt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
+![Scherm afbeelding met de geselecteerde actie voor het streaming-eind punt.](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
 1. Maximum cache beleid: wordt gebruikt voor het configureren van de cache levensduur voor assets die via dit streaming-eind punt worden bediend. Als er geen waarde is ingesteld, wordt de standaard instelling gebruikt. De standaard waarden kunnen ook rechtstreeks in azure Storage worden gedefinieerd. Als Azure CDN is ingeschakeld voor het streaming-eind punt, moet u de waarde voor het cache beleid niet instellen op minder dan 600 seconden.  
 2. Toegestane IP-adressen: deze worden gebruikt om IP-adressen op te geven die verbinding mogen maken met het gepubliceerde streaming-eind punt. Als er geen IP-adressen zijn opgegeven, zou een IP-adres verbinding kunnen maken. IP-adressen kunnen worden opgegeven als één IP-adres (bijvoorbeeld 10.0.0.1), een IP-bereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-bereik met IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld ' 10.0.0.1 (255.255.255.0) ').
@@ -99,10 +99,10 @@ Als u het CDN later wilt uitschakelen/inschakelen, moet het streaming-eind punt 
 
 CDN-integratie is ingeschakeld in alle Azure-data centers, met uitzonde ring van China en federale overheids regio's.
 
-Als deze functie is ingeschakeld, worden de **Access Control**, * * aangepaste hostnaam en configuratie van **Akamai-handtekening verificatie** uitgeschakeld.
+Als deze functie is ingeschakeld, worden de **Access Control** , * * aangepaste hostnaam en configuratie van **Akamai-handtekening verificatie** uitgeschakeld.
  
 > [!IMPORTANT]
-> Azure Media Services integratie met Azure CDN is geïmplementeerd op **Azure CDN van Verizon** voor Standard streaming-eind punten. Premium streaming-eind punten kunnen worden geconfigureerd met alle **Azure CDN prijs categorieën en providers**. Zie [overzicht van CDN](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN-functies.
+> Azure Media Services integratie met Azure CDN is geïmplementeerd op **Azure CDN van Verizon** voor Standard streaming-eind punten. Premium streaming-eind punten kunnen worden geconfigureerd met alle **Azure CDN prijs categorieën en providers** . Zie [overzicht van CDN](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN-functies.
  
 ### <a name="additional-considerations"></a>Aanvullende overwegingen
 
