@@ -13,7 +13,8 @@
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: Probleem met VM-verkeersfilter vaststellen - Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
-    - name: NSG Flow-logboeken configureren met ARM-sjabloon
+    - name: NSG-stroomlogboeken configureren met een ARM-sjabloon
+      displayName: Resource Manager
       href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: Zelfstudies
   items:

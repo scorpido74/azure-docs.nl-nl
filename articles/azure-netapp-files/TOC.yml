@@ -11,7 +11,8 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Azure NetApp Files instellen en een NFS-volume maken
+    - name: Azure NetApp Files instellen en een NFS-volume maken - ARM-sjabloon
+      displayName: Resource Manager
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Concepten
   items:

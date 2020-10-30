@@ -6,6 +6,8 @@
       href: oracle-vm-solutions.md
     - name: Wat zijn oplossingen om Oracle WebLogic Server uit te voeren in Azure-VM's?
       href: oracle-weblogic.md
+    - name: Wat zijn oplossingen om Oracle WebLogic Server uit te voeren in Azure Kubernetes Service?
+      href: weblogic-aks.md
     - name: Oplossingen met OCI
       href: oracle-oci-overview.md
 - name: Snelstartgidsen

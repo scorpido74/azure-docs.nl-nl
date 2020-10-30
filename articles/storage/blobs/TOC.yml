@@ -679,6 +679,8 @@
           href: data-lake-storage-best-practices.md
         - name: Queryversnelling
           href: data-lake-storage-query-acceleration.md
+        - name: Premium laag voor Data Lake Storage
+          href: premium-tier-for-data-lake-storage.md
         - name: Architectuur
           items:
             - name: Stuurprogramma van het Azure Blob-bestandssysteem voor Hadoop
