@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 300c4bcdb948665b2cdf4ce0eb429499208660b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0e8540d9488e9cc3756eb09c69349ac90d20b83
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970745"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043378"
 ---
 # <a name="availability-alerts"></a>Beschikbaarheidswaarschuwingen
 
@@ -28,11 +28,11 @@ Waarschuwingen worden nu standaard automatisch ingeschakeld, maar om de waarschu
 
 1. Nadat de beschikbaarheids test is opgeslagen, klikt u op het tabblad Details op het weglatings teken van de test die u zojuist hebt gemaakt. Klik op waarschuwing bewerken.
 
-   ![Bewerken na opslaan](./media/availability-alerts/edit-alert.png)
+   ![Scherm afbeelding toont Bewerk waarschuwing geselecteerd in het menu.](./media/availability-alerts/edit-alert.png)
 
 2. Stel het gewenste Ernst niveau, de beschrijving van de regel en het belangrijkste in voor de actie groep met de meldings voorkeuren die u wilt gebruiken voor deze waarschuwings regel.
 
-   ![Bewerken na opslaan](./media/availability-alerts/set-action-group.png)
+   ![Scherm afbeelding toont de beheer pagina voor regels waar u de regel kunt bewerken.](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
 > Beschikbaarheids waarschuwingen die zijn gemaakt via deze ervaring zijn op basis van status. Dit betekent dat wanneer aan de waarschuwings criteria wordt voldaan, een enkele waarschuwing wordt gegenereerd wanneer de site als niet-beschikbaar wordt gedetecteerd. Als de site nog steeds niet actief is, wordt de volgende keer dat de waarschuwings criteria worden geëvalueerd, geen nieuwe waarschuwing gegenereerd. Als uw site gedurende een uur niet actief was en u een e-mail waarschuwing hebt ingesteld, zou u alleen een e-mail ontvangen wanneer de site is afgesloten en een daaropvolgende e-mail wanneer er een back-up van de site is gemaakt. U ontvangt geen doorlopende waarschuwingen die u eraan herinneren dat de site nog steeds niet beschikbaar is.

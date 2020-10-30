@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 879b9f965a5ee76131a65bf3151be5c6114cd20c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ba8ccf3534cbb4a93983f81095b4ef2c20d6498
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260880"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042786"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>De voortgang van de taak codering bewaken met de Azure Portal
 
@@ -32,9 +32,9 @@ ms.locfileid: "89260880"
 
 Wanneer u taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. 
 
-Als u de voortgang van de codering van de taak wilt controleren, klikt u op **Instellingen** (boven aan de pagina) en selecteert u vervolgens **Taken**.
+Als u de voortgang van de codering van de taak wilt controleren, klikt u op **Instellingen** (boven aan de pagina) en selecteert u vervolgens **Taken** .
 
-![Taken](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![Scherm opname van ' taken ' die zijn geselecteerd in het menu instellingen.](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 U kunt op de taak klikken om meer details weer te geven.
 

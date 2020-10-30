@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0e14bba7b2982dd12fcca0d7aedc864b2a65288f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1683977d5c8be965cb329611c5a7fd6602a1cd97
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259948"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043365"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Functions gebruiken om reken resources te beheren in azure Synapse Analytics SQL-groep
 
@@ -48,11 +48,11 @@ Nadat u de sjabloon hebt geïmplementeerd, moet u drie nieuwe resources vinden: 
 
    ![Functies die met sjabloon zijn geïmplementeerd](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Selecteer *DWScaleDownTrigger* of *DWScaleUpTrigger*, afhankelijk van of u de tijd voor omhoog of omlaag schalen wilt wijzigen. Selecteer integreren in de vervolg keuzelijst.
+2. Selecteer *DWScaleDownTrigger* of *DWScaleUpTrigger* , afhankelijk van of u de tijd voor omhoog of omlaag schalen wilt wijzigen. Selecteer integreren in de vervolg keuzelijst.
 
    ![Integreren als functie selecteren](./media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. De waarde die momenteel moeten worden weergegeven is *%ScaleDownTime%* of *%ScaleUpTime%*. Deze waarden geven aan dat de planning is gebaseerd op waarden die zijn gedefinieerd in de [Toepassingsinstellingen](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). U kunt deze waarde nu negeren en de planning wijzigen in uw voorkeurs tijd op basis van de volgende stappen.
+3. De waarde die momenteel moeten worden weergegeven is *%ScaleDownTime%* of *%ScaleUpTime%* . Deze waarden geven aan dat de planning is gebaseerd op waarden die zijn gedefinieerd in de [Toepassingsinstellingen](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). U kunt deze waarde nu negeren en de planning wijzigen in uw voorkeurs tijd op basis van de volgende stappen.
 
 4. Voeg in het plannings gebied het tijdstip toe waarop de CRON-expressie u wilt weer geven hoe vaak Azure Synapse Analytics moet worden geschaald.
 
@@ -70,7 +70,7 @@ Nadat u de sjabloon hebt geïmplementeerd, moet u drie nieuwe resources vinden: 
 
 1. Ga naar de functie-app-service. Als u de sjabloon met de standaardwaarden hebt geïmplementeerd, wordt *DWOperations* de naam van deze service. Als de functie-app is geopend, ziet u dat er vijf functies voor de functie-app-service zijn geïmplementeerd.
 
-2. Selecteer *DWScaleDownTrigger* of *DWScaleUpTrigger*, afhankelijk van of u de rekenwaarde voor omhoog of omlaag schalen wilt wijzigen. Na het selecteren van de functies, moet in het deelvenster het bestand *index.js* te zien zijn.
+2. Selecteer *DWScaleDownTrigger* of *DWScaleUpTrigger* , afhankelijk van of u de rekenwaarde voor omhoog of omlaag schalen wilt wijzigen. Na het selecteren van de functies, moet in het deelvenster het bestand *index.js* te zien zijn.
 
    ![Rekenniveau van functietrigger wijzigen](././media/manage-compute-with-azure-functions/index-js.png)
 
@@ -78,7 +78,7 @@ Nadat u de sjabloon hebt geïmplementeerd, moet u drie nieuwe resources vinden: 
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Onderbreken of Hervatten gebruiken in plaats van Schalen
 
-De functies die momenteel standaard zijn ingeschakeld zijn *DWScaleDownTrigger* en *DWScaleUpTrigger*. Als u in plaats daarvan de functies voor onderbreken en hervatten wilt gebruiken, kunt u *DWPauseTrigger* of *DWResumeTrigger* inschakelen.
+De functies die momenteel standaard zijn ingeschakeld zijn *DWScaleDownTrigger* en *DWScaleUpTrigger* . Als u in plaats daarvan de functies voor onderbreken en hervatten wilt gebruiken, kunt u *DWPauseTrigger* of *DWResumeTrigger* inschakelen.
 
 1. Ga naar het deelvenster Functies.
 
@@ -97,9 +97,9 @@ Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze
 
 1. Maak een nieuwe, lege functie. Selecteer de *+* knop in de buurt van de locatie waar u het deel venster functie sjabloon wilt weer geven.
 
-   ![Nieuwe functie maken](./media/manage-compute-with-azure-functions/create-new-function.png)
+   ![Scherm opname van het menu ' functie-apps ' met het pictogram ' plus ' naast ' functies ' geselecteerd.](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. Selecteer vanuit taal *Java script*en selecteer vervolgens *Timer trigger*.
+2. Selecteer vanuit taal *Java script* en selecteer vervolgens *Timer trigger* .
 
    ![Nieuwe functie maken](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 

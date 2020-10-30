@@ -6,13 +6,13 @@ ms.author: krishmam
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: b58a2b4cb5cd083f837eb598d4e5f330783181c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: f49ba8a907a65180061ef3973ae30b4438a945a2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279991"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043002"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Wat is invoer van Azure Stream Analytics?
 
@@ -22,7 +22,7 @@ Stream Analytics heeft eersteklas integratie met vier soorten resources als invo
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
-- [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) 
+- [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 
 
 Deze invoer resources kunnen in hetzelfde Azure-abonnement wonen als uw Stream Analytics-taak of vanuit een ander abonnement.
 
@@ -37,7 +37,7 @@ Een gegevens stroom is na verloop van tijd een niet-gebonden reeks gebeurtenisse
 Zie [gegevens streamen als invoer in stream Analytics](stream-analytics-define-inputs.md) voor meer informatie over het streamen van gegevens.
 
 ### <a name="reference-data-input"></a>Invoer van referentie gegevens
-Stream Analytics biedt ook ondersteuning voor invoer die bekend staat als *referentie gegevens*. Referentie gegevens zijn volledig statisch of veranderen langzaam. Het wordt doorgaans gebruikt om correlatie en lookups uit te voeren. U kunt bijvoorbeeld gegevens in de gegevens stroom invoer toevoegen aan gegevens in de referentie gegevens, net zoals u een SQL-koppeling uitvoert om statische waarden op te zoeken. Azure Blob-opslag, Azure Data Lake Storage Gen2 en Azure SQL Database worden momenteel ondersteund als invoer bronnen voor referentie gegevens. Referentie gegevens bron-blobs hebben een limiet van Maxi maal 300 MB, afhankelijk van de query complexiteit en toegewezen streaming-eenheden (Zie de sectie [grootte beperking](stream-analytics-use-reference-data.md#size-limitation) van de documentatie voor referentie gegevens voor meer informatie).
+Stream Analytics biedt ook ondersteuning voor invoer die bekend staat als *referentie gegevens* . Referentie gegevens zijn volledig statisch of veranderen langzaam. Het wordt doorgaans gebruikt om correlatie en lookups uit te voeren. U kunt bijvoorbeeld gegevens in de gegevens stroom invoer toevoegen aan gegevens in de referentie gegevens, net zoals u een SQL-koppeling uitvoert om statische waarden op te zoeken. Azure Blob-opslag, Azure Data Lake Storage Gen2 en Azure SQL Database worden momenteel ondersteund als invoer bronnen voor referentie gegevens. Referentie gegevens bron-blobs hebben een limiet van Maxi maal 300 MB, afhankelijk van de query complexiteit en toegewezen streaming-eenheden (Zie de sectie [grootte beperking](stream-analytics-use-reference-data.md#size-limitation) van de documentatie voor referentie gegevens voor meer informatie).
 
 Zie [referentie gegevens gebruiken voor zoek acties in stream Analytics](stream-analytics-use-reference-data.md) voor meer informatie over het invoeren van referentie gegevens.
 

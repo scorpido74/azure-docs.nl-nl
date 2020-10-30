@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745810"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043017"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Een AKS-cluster (Azure Kubernetes service) maken dat gebruikmaakt van beschikbaarheids zones
 
@@ -34,7 +34,7 @@ AKS-clusters kunnen momenteel worden gemaakt met beschikbaarheids zones in de vo
 * US - oost 2
 * VS - oost
 * Frankrijk - centraal
-* Japan - oost
+* Japan East
 * Europa - noord
 * Azië - zuidoost
 * Verenigd Koninkrijk Zuid
@@ -52,7 +52,7 @@ De volgende beperkingen zijn van toepassing wanneer u een AKS-cluster maakt met 
 
 Volumes die gebruikmaken van Azure Managed disks zijn momenteel geen zone-redundante bronnen. Volumes kunnen niet worden gekoppeld aan zones en moeten zich in dezelfde zone bevinden als een bepaald knoop punt dat als host fungeert voor de doel-pod.
 
-Als u stateful werk belastingen moet uitvoeren, gebruikt u de taints van de knooppunt groep en verdragen in pod-specificaties om pod planning in dezelfde zone als uw schijven te groeperen. U kunt ook op het netwerk gebaseerde opslag gebruiken, zoals Azure Files die kan worden gekoppeld aan een van de verschillende zones.
+Kubernetes is op de hoogte van Azure-beschikbaarheids zones sinds versie 1,12. U kunt een PersistentVolumeClaim-object dat verwijst naar een Azure Managed disk in een AKS-cluster met meerdere zones, implementeren om pod te [plannen](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones) die dit PVC claimen in de juiste beschikbaarheids zone.
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Overzicht van beschikbaarheids zones voor AKS-clusters
 
@@ -120,7 +120,20 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Wanneer u extra knoop punten aan een agent groep toevoegt, distribueert het Azure-platform automatisch de onderliggende virtuele machines over de opgegeven beschikbaarheids zones.
 
-Houd er rekening mee dat in nieuwere Kubernetes-versies (1.17.0 en hoger), `topology.kubernetes.io/zone` naast de afgeschaft, het nieuwere label wordt gebruikt `failure-domain.beta.kubernetes.io/zone` .
+Houd er rekening mee dat in nieuwere Kubernetes-versies (1.17.0 en hoger), `topology.kubernetes.io/zone` naast de afgeschaft, het nieuwere label wordt gebruikt `failure-domain.beta.kubernetes.io/zone` . U kunt hetzelfde resultaat bereiken als hierboven met door het volgende script uit te voeren:
+
+```console
+kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'
+```
+
+Hiermee krijgt u een beknoptere uitvoer:
+
+```console
+NAME                                REGION   ZONE
+aks-nodepool1-34917322-vmss000000   eastus   eastus-1
+aks-nodepool1-34917322-vmss000001   eastus   eastus-2
+aks-nodepool1-34917322-vmss000002   eastus   eastus-3
+```
 
 ## <a name="verify-pod-distribution-across-zones"></a>Pod-distributie in zones controleren
 

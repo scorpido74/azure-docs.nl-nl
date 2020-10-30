@@ -3,12 +3,12 @@ title: Een klant onboarden in Azure Lighthouse
 description: Meer informatie over hoe u een klant kunt opsturen naar Azure Lighthouse, zodat de resources toegankelijk zijn en kunnen worden beheerd via uw eigen Tenant met behulp van Azure delegated resource management.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: b5a6d60d10b2cee7f26ae405ed95b980f423b42e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d80fef21e4b7cf1705b67df3c8d08f91bac589bf
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426342"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042862"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Een klant onboarden in Azure Lighthouse
 
@@ -38,7 +38,7 @@ Als u deze ID-waarden al niet hebt, kunt u ze op een van de volgende manieren op
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Uw Tenant-ID kan worden gezien door de muis aanwijzer over de naam van uw account in de rechter bovenhoek van de Azure Portal te bewegen of door een **andere map**te selecteren. Als u uw Tenant-ID wilt selecteren en kopiëren, zoekt u in de portal naar ' Azure Active Directory ' en selecteert u vervolgens **Eigenschappen** en kopieert u de waarde die wordt weer gegeven in het veld **Directory-id** . Als u de ID van een abonnement in de Tenant van de klant wilt zoeken, zoekt u naar ' Abonnementen ' en selecteert u vervolgens de juiste abonnements-ID.
+Uw Tenant-ID kan worden gezien door de muis aanwijzer over de naam van uw account in de rechter bovenhoek van de Azure Portal te bewegen of door een **andere map** te selecteren. Als u uw Tenant-ID wilt selecteren en kopiëren, zoekt u in de portal naar ' Azure Active Directory ' en selecteert u vervolgens **Eigenschappen** en kopieert u de waarde die wordt weer gegeven in het veld **Directory-id** . Als u de ID van een abonnement in de Tenant van de klant wilt zoeken, zoekt u naar ' Abonnementen ' en selecteert u vervolgens de juiste abonnements-ID.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -66,10 +66,10 @@ Als service provider wilt u mogelijk meerdere taken uitvoeren voor één klant, 
 
 Om het beheer te vereenvoudigen, kunt u het beste Azure AD-gebruikers groepen gebruiken voor elke rol. Dit biedt u de flexibiliteit om afzonderlijke gebruikers toe te voegen aan of te verwijderen uit de groep die toegang heeft, zodat u het onboarding-proces niet hoeft te herhalen om gebruikers wijzigingen door te voeren. U kunt rollen toewijzen aan een service-principal die nuttig kan zijn voor automatiserings scenario's.
 
-Bij het definiëren van uw autorisatie moet u het principe van de minimale bevoegdheid volgen, zodat gebruikers alleen over de benodigde machtigingen beschikken om hun taak te volt ooien. Zie voor richt lijnen en informatie over ondersteunde rollen [tenants, gebruikers en rollen in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md).
-
 > [!IMPORTANT]
-> Als u machtigingen wilt toevoegen voor een Azure AD-groep, moet u het **groeps type** instellen op **beveiliging**. Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.
+> Als u machtigingen wilt toevoegen voor een Azure AD-groep, moet u het **groeps type** instellen op **beveiliging** . Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.
+
+Bij het definiëren van uw autorisatie moet u het principe van de minimale bevoegdheid volgen, zodat gebruikers alleen over de benodigde machtigingen beschikken om hun taak te volt ooien. Zie voor richt lijnen en informatie over ondersteunde rollen [tenants, gebruikers en rollen in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md).
 
 Als u autorisaties wilt definiëren, moet u de ID-waarden weten voor elke gebruiker, gebruikers groep of Service-Principal in de Tenant van de service provider waaraan u toegang wilt verlenen. U hebt ook de roldefinitie-ID nodig voor elke ingebouwde rol die u wilt toewijzen. Als u deze niet al hebt, kunt u deze ophalen door de onderstaande opdrachten uit te voeren in de Tenant van de service provider.
 
@@ -128,7 +128,7 @@ Voor het voorbereidings proces is een Azure Resource Manager-sjabloon vereist (o
 > [!IMPORTANT]
 > Voor het proces dat hier wordt beschreven, is een afzonderlijke implementatie vereist voor elk abonnement dat wordt voorbereid, zelfs als u abonnementen op de werk belasting van de klant onboarding hebt. Er zijn ook afzonderlijke implementaties vereist als u meerdere resource groepen binnen verschillende abonnementen in dezelfde Tenant van de klant wilt voorbereiden. Het voorbereiden van meerdere resource groepen binnen één abonnement kan echter worden uitgevoerd in één implementatie.
 >
-> Er zijn ook afzonderlijke implementaties vereist voor meerdere aanbiedingen die worden toegepast op hetzelfde abonnement (of resource groepen binnen een abonnement). Elke aanbieding die wordt toegepast, moet een andere **mspOfferName**gebruiken.
+> Er zijn ook afzonderlijke implementaties vereist voor meerdere aanbiedingen die worden toegepast op hetzelfde abonnement (of resource groepen binnen een abonnement). Elke aanbieding die wordt toegepast, moet een andere **mspOfferName** gebruiken.
 
 De sjabloon die u kiest, is afhankelijk van het feit of u een volledig abonnement, een resource groep of meerdere resource groepen in een abonnement hebt voor bereid. We bieden ook een sjabloon die kan worden gebruikt voor klanten die een beheerde service aanbieding hebben gekocht die u naar Azure Marketplace hebt gepubliceerd, als u uw abonnement (en) op deze manier wilt vrijgeven.
 
@@ -211,8 +211,8 @@ De implementatie kan worden uitgevoerd in de Azure Portal, met behulp van Power 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Selecteer in onze [github-opslag plaats](https://github.com/Azure/Azure-Lighthouse-samples/)de knop **implementeren in azure** die wordt weer gegeven naast de sjabloon die u wilt gebruiken. De sjabloon wordt in Azure Portal geopend.
-1. Voer uw waarden in voor de naam van het **MSP-aanbod**, de beschrijving van het **MSP-aanbod**, **beheerd door de Tenant-id**en **autorisaties**. Als u wilt, kunt u **para meters bewerken** selecteren om waarden in te voeren voor `mspOfferName` , `mspOfferDescription` , `managedbyTenantId` en `authorizations` rechtstreeks in het parameter bestand. Zorg ervoor dat u deze waarden bijwerkt in plaats van de standaard waarden van de sjabloon te gebruiken.
-1. Selecteer **controleren en maken**en selecteer vervolgens **maken**.
+1. Voer uw waarden in voor de naam van het **MSP-aanbod** , de beschrijving van het **MSP-aanbod** , **beheerd door de Tenant-id** en **autorisaties** . Als u wilt, kunt u **para meters bewerken** selecteren om waarden in te voeren voor `mspOfferName` , `mspOfferDescription` , `managedbyTenantId` en `authorizations` rechtstreeks in het parameter bestand. Zorg ervoor dat u deze waarden bijwerkt in plaats van de standaard waarden van de sjabloon te gebruiken.
+1. Selecteer **controleren en maken** en selecteer vervolgens **maken** .
 
 Na enkele minuten ziet u een melding dat de implementatie is voltooid.
 
@@ -265,7 +265,7 @@ Wanneer het abonnement van een klant is geslaagd voor Azure Lighthouse, kunnen g
 In de Tenant van de service provider:
 
 1. Navigeer naar de [pagina mijn klanten](view-manage-customers.md).
-2. Selecteer **Klanten**.
+2. Selecteer **Klanten** .
 3. Bevestig dat u de abonnement/abonnementen kunt zien met de naam van de aanbieding die u in de Resource Manager-sjabloon hebt opgenomen.
 
 > [!IMPORTANT]
@@ -274,7 +274,7 @@ In de Tenant van de service provider:
 In de Tenant van de klant:
 
 1. Navigeer naar de [pagina service providers](view-manage-service-providers.md).
-2. Selecteer **Aanbiedingen van serviceproviders**.
+2. Selecteer **Aanbiedingen van serviceproviders** .
 3. Bevestig dat u de abonnement/abonnementen kunt zien met de naam van de aanbieding die u in de Resource Manager-sjabloon hebt opgenomen.
 
 > [!NOTE]

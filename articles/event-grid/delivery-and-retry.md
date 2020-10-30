@@ -2,13 +2,13 @@
 title: Azure Event Grid levering en probeer het opnieuw
 description: Hierin wordt beschreven hoe Azure Event Grid gebeurtenissen levert en hoe er niet-bezorgde berichten worden verwerkt.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 924abaa1e5c12c4477bddf888541e7414b7bdbec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 483a868022d4ae8f7c564e51344dfbede4314232
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324090"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042958"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Bericht bezorging Event Grid en probeer het opnieuw
 
@@ -78,14 +78,16 @@ Als een eind punt uitvalt, worden de levering en het opnieuw proberen van gebeur
 Het functionele doel van een vertraagde levering is het beveiligen van beschadigde eind punten en het Event Grid systeem. Als er geen back-up wordt uitgevoerd en er wordt uitgegaan van de levering aan de beschadigde eind punten, kan het beleid voor opnieuw proberen van Event Grid en kunnen de volume mogelijkheden eenvoudig een systeem overbelasten.
 
 ## <a name="dead-letter-events"></a>Onbestelbare gebeurtenissen
-Wanneer Event Grid een gebeurtenis binnen een bepaalde periode niet kunt afleveren of nadat de gebeurtenis een bepaald aantal keer is geprobeerd, kan de gebeurtenis worden verzonden naar een opslag account. Dit proces wordt **onbestelbare berichten**genoemd. Event Grid onbestelbare berichten een gebeurtenis wanneer aan **een van de volgende** voor waarden wordt voldaan. 
+Wanneer Event Grid een gebeurtenis binnen een bepaalde periode niet kunt afleveren of nadat de gebeurtenis een bepaald aantal keer is geprobeerd, kan de gebeurtenis worden verzonden naar een opslag account. Dit proces wordt **onbestelbare berichten** genoemd. Event Grid onbestelbare berichten een gebeurtenis wanneer aan **een van de volgende** voor waarden wordt voldaan. 
 
-- De gebeurtenis wordt niet binnen de time-to-Live-periode bezorgd
-- Het aantal pogingen om de gebeurtenis te leveren overschrijdt de limiet
+- De gebeurtenis wordt niet binnen de **time-to-Live-** periode bezorgd. 
+- Het **aantal pogingen** om de gebeurtenis te leveren heeft de limiet overschreden.
 
 Als aan een van de voor waarden wordt voldaan, wordt de gebeurtenis verwijderd of onbestelbaar.  Standaard wordt door Event Grid geen onbestelbare berichten ingeschakeld. Als u deze functie wilt inschakelen, moet u een opslag account opgeven om niet-bezorgde gebeurtenissen te bewaren tijdens het maken van het gebeurtenis abonnement. U haalt gebeurtenissen uit dit opslag account op om leveringen op te lossen.
 
 Event Grid verzendt een gebeurtenis naar de locatie van de onbestelbare berichten wanneer deze alle nieuwe pogingen heeft geprobeerd uit te voeren. Als Event Grid een respons code van 400 (ongeldige aanvraag) of 413 (te grote aanvraag entiteit) ontvangt, wordt de gebeurtenis onmiddellijk naar het eind punt voor onbestelbare berichten verzonden. Met deze antwoord codes wordt aangegeven dat de levering van de gebeurtenis nooit slaagt.
+
+De time-to-Live-verval datum wordt alleen gecontroleerd bij de volgende geplande leverings poging. Dus als time-to-Live verloopt vóór de volgende geplande lever poging, wordt gebeurtenis verloop alleen gecontroleerd op het tijdstip van de volgende levering en vervolgens onbestelbare berichten. 
 
 Er is een vertraging van vijf minuten tussen de laatste poging om een gebeurtenis te leveren en wanneer deze wordt geleverd aan de locatie van de onbestelbare berichten. Deze vertraging is bedoeld om het aantal Blob Storage-bewerkingen te verminderen. Als de locatie voor onbestelbare berichten vier uur niet beschikbaar is, wordt de gebeurtenis verwijderd.
 

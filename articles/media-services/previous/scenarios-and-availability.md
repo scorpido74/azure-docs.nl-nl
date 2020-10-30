@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 58ecca6251e4c428ae5f834379e8b45059b0efc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014406"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042762"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
 
@@ -121,9 +121,9 @@ Als u live streamt, kunt u één van de volgende routes kiezen:
 
 ### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Werken met kanalen die een multi-bitrate livestream van on-premises encoders ontvangen (pass-through)
 
-Het volgende diagram toont de belangrijkste onderdelen van het AMS-platform die betrokken zijn bij de **passthrough**-werkstroom.
+Het volgende diagram toont de belangrijkste onderdelen van het AMS-platform die betrokken zijn bij de **passthrough** -werkstroom.
 
-![Live-werkstroom](./media/scenarios-and-availability/media-services-live-streaming-current.png)
+![Diagram met de belangrijkste onderdelen van het A M S-platform dat is betrokken bij de "Pass-Through"-werk stroom.](./media/scenarios-and-availability/media-services-live-streaming-current.png)
 
 Zie [Werken met kanalen die een multi-bitrate livestream van on-premises coderingsprogramma’s ontvangen](media-services-live-streaming-with-onprem-encoders.md) voor meer informatie.
 
@@ -149,11 +149,11 @@ Media Services ondersteunt de integratie met Azure CDN. Zie [Streaming-eindpunte
 
 AMS-klanten kunnen streaming-eindpunten, de mediaverwerking en de opslag in hun AMS-accounts schalen.
 
-* Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium-**streaming**-eindpunt kiezen. **Standard**-streaming-eindpunten zijn geschikt voor de meeste streaming-workloads. Deze hebben dezelfde kenmerken als **Premium**-streaming-eindpunten en de uitgaande bandbreedte wordt hiermee automatisch geschaald. 
+* Media Services-klanten kunnen een **Standard** -streaming-eindpunt of een Premium- **streaming** -eindpunt kiezen. **Standard** -streaming-eindpunten zijn geschikt voor de meeste streaming-workloads. Deze hebben dezelfde kenmerken als **Premium** -streaming-eindpunten en de uitgaande bandbreedte wordt hiermee automatisch geschaald. 
 
-    **Premium**-streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium**-streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het onderwerp [Streaming-eindpunten schalen](media-services-portal-scale-streaming-endpoints.md) voor meer informatie over het schalen van **Premium**-streaming-eindpunten.
+    **Premium** -streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium** -streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het onderwerp [Streaming-eindpunten schalen](media-services-portal-scale-streaming-endpoints.md) voor meer informatie over het schalen van **Premium** -streaming-eindpunten.
 
-* Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2** en **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**).
+* Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1** , **S2** en **S3** . Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1** ).
 
     Naast het opgeven van het type gereserveerde eenheid kunt u opgeven om uw account in te richten met **gereserveerde eenheden** (RUs). Op basis van het aantal ingerichte RU's wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account.
 
@@ -175,14 +175,14 @@ Gebruik [Azure-producten per regio](https://azure.microsoft.com/global-infrastru
 
 ### <a name="streaming-endpoints"></a>Streaming-eindpunten 
 
-Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium-**streaming**-eindpunt kiezen. Zie de sectie [Schalen](#scaling) voor meer informatie.
+Media Services-klanten kunnen een **Standard** -streaming-eindpunt of een Premium- **streaming** -eindpunt kiezen. Zie de sectie [Schalen](#scaling) voor meer informatie.
 
 #### <a name="availability"></a>Beschikbaarheid
 
 |Naam|Status|Datacenters
 |---|---|---|
-|Standard|Algemene beschikbaarheid|Alle|
-|Premium|Algemene beschikbaarheid|Alle|
+|Standard|Algemene beschikbaarheid|Alles|
+|Premium|Algemene beschikbaarheid|Alles|
 
 ### <a name="live-encoding"></a>Live Encoding
 
@@ -192,13 +192,13 @@ Beschikbaar in alle datacenters, behalve in: Duitsland, BR - zuid, India - west,
 
 ### <a name="encoding-media-processors"></a>Mediaprocessors coderen
 
-AMS biedt twee coderingsprogramma's die op basis van behoefte kunnen worden gebruikt: **Media Encoder Standard** en **Media Encoder Premium Workflow**. Zie [Overzicht en een vergelijking van Azure-mediacoderingsprogramma's die op basis van behoefte kunnen worden gebruikt](media-services-encode-asset.md) voor meer informatie. 
+AMS biedt twee coderingsprogramma's die op basis van behoefte kunnen worden gebruikt: **Media Encoder Standard** en **Media Encoder Premium Workflow** . Zie [Overzicht en een vergelijking van Azure-mediacoderingsprogramma's die op basis van behoefte kunnen worden gebruikt](media-services-encode-asset.md) voor meer informatie. 
 
 #### <a name="availability"></a>Beschikbaarheid
 
 |Naam van mediaprocessor|Status|Datacenters
 |---|---|---|
-|Media Encoder Standard|Algemene beschikbaarheid|Alle|
+|Media Encoder Standard|Algemene beschikbaarheid|Alles|
 |Media Encoder Premium Workflow|Algemene beschikbaarheid|Overal behalve China|
 
 ### <a name="analytics-media-processors"></a>Mediaprocessors voor analyse
@@ -212,12 +212,12 @@ Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarme
 
 |Naam van mediaprocessor|Status|Datacenters
 |---|---|---|
-|Azure Media Face Detector|Preview|Alle|
-|Azure Media Indexer|Algemene beschikbaarheid|Alle|
-|Azure Media Motion Detector|Preview|Alle|
-|Azure Media OCR|Preview|Alle|
-|Azure Media Redactor|Algemene beschikbaarheid|Alle|
-|Azure Media Video Thumbnails|Preview|Alle|
+|Azure Media Face Detector|Preview|Alles|
+|Azure Media Indexer|Algemene beschikbaarheid|Alles|
+|Azure Media Motion Detector|Preview|Alles|
+|Azure Media OCR|Preview|Alles|
+|Azure Media Redactor|Algemene beschikbaarheid|Alles|
+|Azure Media Video Thumbnails|Preview|Alles|
 
 ### <a name="protection"></a>Protection
 
@@ -227,10 +227,10 @@ Met Microsoft Azure Media Services kunt u uw media beveiligen vanaf het moment d
 
 |Versleuteling|Status|Datacenters|
 |---|---|---| 
-|Storage|Algemene beschikbaarheid|Alle|
-|AES-128-sleutels|Algemene beschikbaarheid|Alle|
-|FairPlay|Algemene beschikbaarheid|Alle|
-|PlayReady|Algemene beschikbaarheid|Alle|
+|Storage|Algemene beschikbaarheid|Alles|
+|AES-128-sleutels|Algemene beschikbaarheid|Alles|
+|FairPlay|Algemene beschikbaarheid|Alles|
+|PlayReady|Algemene beschikbaarheid|Alles|
 |Widevine|Algemene beschikbaarheid|Overal behalve in Duitsland, bij overheden en in China.
 
 ### <a name="reserved-units-rus"></a>Gereserveerde eenheden (RU's)
@@ -253,7 +253,7 @@ Zie de sectie [Schalen](#scaling) voor meer informatie.
 
 |RU-typenaam|Status|Datacenters
 |---|---|---|
-|S1|Algemene beschikbaarheid|Alle|
+|S1|Algemene beschikbaarheid|Alles|
 |S2|Algemene beschikbaarheid|Overal behalve in BR - zuid en India - west|
 |S3|Algemene beschikbaarheid|Overal behalve in India - west|
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6617c778c0b79a55058eafb40fd9b49b627819ea
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543148"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043267"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview-versie)
 
@@ -83,7 +83,7 @@ Als u een nieuwe rol met de naam `idbrokernode` met de volgende kenmerken aan he
         {
             "autoscale": null,
             "name": "idbrokernode",
-            "targetInstanceCount": 1,
+            "targetInstanceCount": 2,
             "hardwareProfile": {
                 "vmSize": "Standard_A2_V2"
             },
@@ -100,6 +100,9 @@ Als u een nieuwe rol met de naam `idbrokernode` met de volgende kenmerken aan he
 .
 .
 ```
+
+Als u een volledig voor beeld van een ARM-sjabloon wilt weer geven, raadpleegt u de sjabloon die u [hier](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)hebt gepubliceerd.
+
 
 ## <a name="tool-integration"></a>Integratie van hulp programma
 
@@ -132,6 +135,8 @@ Nadat u het OAuth-token hebt verkregen, gebruikt u het in de autorisatie-header 
 ```bash
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
+
+Voor het gebruik van Beeline en livy kunt u ook de voor beelden-codes volgen die [hier](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) worden weer gegeven om de client te configureren voor het gebruik van OAuth en verbinding maken met het cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 

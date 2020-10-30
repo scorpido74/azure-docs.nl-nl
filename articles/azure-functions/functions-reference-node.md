@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164819"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043109"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
 
@@ -107,13 +107,13 @@ In Java script worden [bindingen](functions-triggers-bindings.md) geconfigureerd
 
 ### <a name="inputs"></a>Invoerwaarden
 De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de invoer van de trigger en de andere is de extra invoer. Triggers en andere invoer bindingen (bindingen van `direction === "in"` ) kunnen op drie manieren worden gelezen door een functie:
- - **_[Aanbevolen]_ Als para meters die zijn door gegeven aan de functie.** Ze worden door gegeven aan de functie in dezelfde volg orde als waarin ze zijn gedefinieerd in *function.jsop*. De `name` eigenschap die is gedefinieerd in *function.js* in, hoeft niet overeen te komen met de naam van uw para meter, maar dit moet wel.
+ - **_[Aanbevolen]_ Als para meters die zijn door gegeven aan de functie.** Ze worden door gegeven aan de functie in dezelfde volg orde als waarin ze zijn gedefinieerd in *function.jsop* . De `name` eigenschap die is gedefinieerd in *function.js* in, hoeft niet overeen te komen met de naam van uw para meter, maar dit moet wel.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Als leden van het [`context.bindings`](#contextbindings-property) object.** Elk lid krijgt de naam van de eigenschap die is `name` gedefinieerd in *function.jsop*.
+ - **Als leden van het [`context.bindings`](#contextbindings-property) object.** Elk lid krijgt de naam van de eigenschap die is `name` gedefinieerd in *function.jsop* .
  
    ```javascript
    module.exports = async function(context) { 
@@ -133,12 +133,12 @@ De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de in
    };
    ```
 
-### <a name="outputs"></a>Uitvoerwaarden
+### <a name="outputs"></a>Uitvoer
 Uitvoer (bindingen van `direction === "out"` ) kan op een aantal manieren worden geschreven naar een functie. In alle gevallen komt de `name` eigenschap van de binding, zoals gedefinieerd in *function.js* , overeen met de naam van het object lid dat is geschreven in uw functie. 
 
 U kunt gegevens aan uitvoer bindingen op een van de volgende manieren toewijzen (deze methoden niet combi neren):
 
-- **_[Aanbevolen voor meerdere uitvoer]_ Een object retour neren.** Als u een functie van async/Promise retourneert, kunt u een object retour neren met de toegewezen uitvoer gegevens. In het onderstaande voor beeld zijn de uitvoer bindingen de naam ' httpResponse ' en ' queueOutput ' in *function.jsop*.
+- **_[Aanbevolen voor meerdere uitvoer]_ Een object retour neren.** Als u een functie van async/Promise retourneert, kunt u een object retour neren met de toegewezen uitvoer gegevens. In het onderstaande voor beeld zijn de uitvoer bindingen de naam ' httpResponse ' en ' queueOutput ' in *function.jsop* .
 
   ```javascript
   module.exports = async function(context) {
@@ -154,7 +154,7 @@ U kunt gegevens aan uitvoer bindingen op een van de volgende manieren toewijzen 
 
   Als u een synchrone functie gebruikt, kunt u dit object retour neren met [`context.done`](#contextdone-method) (Zie voor beeld).
 - **_[Aanbevolen voor één uitvoer]_ Een waarde rechtstreeks en met de naam van de $return binding wordt geretourneerd.** Dit werkt alleen voor async/Promise-functies. Zie voor beelden van [het exporteren van een async-functie](#exporting-an-async-function). 
-- **Waarden toewijzen aan `context.bindings` ** U kunt waarden rechtstreeks aan context. bindingen toewijzen.
+- **Waarden toewijzen aan `context.bindings`** U kunt waarden rechtstreeks aan context. bindingen toewijzen.
 
   ```javascript
   module.exports = async function(context) {
@@ -317,7 +317,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
 > [!NOTE]  
-> Gebruik niet `console.log` om tracerings uitvoer te schrijven. Omdat uitvoer van `console.log` wordt vastgelegd op het niveau van de functie-app, is deze niet gekoppeld aan een specifieke functie aanroep en wordt niet weer gegeven in de logboeken van een specifieke functie. Versie 1. x van de functions-runtime biedt ook geen ondersteuning `console.log` voor het gebruik van om naar de-console te schrijven.
+> Gebruik niet `console.log` voor het schrijven van tracerings uitvoer. Omdat uitvoer van `console.log` wordt vastgelegd op het niveau van de functie-app, is deze niet gekoppeld aan een specifieke functie aanroep en wordt niet weer gegeven in de logboeken van een specifieke functie. Versie 1. x van de functions-runtime biedt ook geen ondersteuning `console.log` voor het gebruik van om naar de-console te schrijven.
 
 ### <a name="trace-levels"></a>Tracerings niveaus
 
@@ -325,10 +325,10 @@ Naast het standaard niveau zijn de volgende logboek registratie methoden beschik
 
 | Methode                 | Beschrijving                                |
 | ---------------------- | ------------------------------------------ |
-| **fout (_bericht_)**   | Hiermee wordt een gebeurtenis op fout niveau naar de logboeken geschreven.   |
-| **Warning (_bericht_)**    | Hiermee wordt een gebeurtenis op waarschuwings niveau naar de logboeken geschreven. |
-| **info (_bericht_)**    | Schrijft naar logboek registratie op info niveau of lager.    |
-| **uitgebreid (_bericht_)** | Schrijft naar uitgebreide logboek registratie.           |
+| **fout ( _bericht_ )**   | Hiermee wordt een gebeurtenis op fout niveau naar de logboeken geschreven.   |
+| **Warning ( _bericht_ )**    | Hiermee wordt een gebeurtenis op waarschuwings niveau naar de logboeken geschreven. |
+| **info ( _bericht_ )**    | Schrijft naar logboek registratie op info niveau of lager.    |
+| **uitgebreid ( _bericht_ )** | Schrijft naar uitgebreide logboek registratie.           |
 
 In het volgende voor beeld wordt hetzelfde logboek op het tracerings niveau waarschuwing geschreven, in plaats van het info niveau:
 
@@ -358,7 +358,7 @@ Als u de drempel waarde wilt instellen voor alle traceringen die worden geschrev
 }  
 ```
 
-De waarden van **consoleLevel** komen overeen met de namen van de `context.log` methoden. Als u alle traceer logboek registratie wilt uitschakelen voor de-console, stelt u **consoleLevel** in op _uit_. Zie voor meer informatie de [ referentie overhost.jsop v1. x](functions-host-json-v1.md).
+De waarden van **consoleLevel** komen overeen met de namen van de `context.log` methoden. Als u alle traceer logboek registratie wilt uitschakelen voor de-console, stelt u **consoleLevel** in op _uit_ . Zie voor meer informatie de [ referentie overhost.jsop v1. x](functions-host-json-v1.md).
 
 ---
 
@@ -545,12 +545,12 @@ Er zijn twee manieren om pakketten te installeren op uw functie-app:
 ### <a name="using-kudu"></a>Kudu gebruiken
 1. Ga naar `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Klik op **debug console**-  >  **cmd**.
+2. Klik op **debug console** -  >  **cmd** .
 
 3. Ga naar `D:\home\site\wwwroot` en sleep uw package.jsnaar bestand naar de map **wwwroot** in het bovenste gedeelte van de pagina.  
     U kunt ook op andere manieren bestanden uploaden naar uw functie-app. Zie de [functie-app-bestanden bijwerken](functions-reference.md#fileupdate)voor meer informatie. 
 
-4. Nadat de package.jsin het bestand is geüpload, voert u de `npm install` opdracht uit in de **kudu-console voor externe uitvoering**.  
+4. Nadat de package.jsin het bestand is geüpload, voert u de `npm install` opdracht uit in de **kudu-console voor externe uitvoering** .  
     Met deze actie worden de pakketten gedownload die zijn aangegeven in de package.jsin het bestand en wordt de functie-app opnieuw gestart.
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
@@ -778,7 +778,7 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende bronnen voor meer informatie:
+Zie de volgende resources voor meer informatie:
 
 + [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 + [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)

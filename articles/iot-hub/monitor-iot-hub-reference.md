@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 166234711ce00f0ed1f45c35ef661aa5b35f8a3c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 8cace120dc823f42f2b2e01e4234ea8d5ace7a69
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926322"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042945"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Naslag informatie over Azure IoT Hub-gegevens bewaken
 
@@ -60,9 +60,9 @@ Voor de meeste metrische gegevens zijn alle aggregatie typen geldig. bij metrisc
 |Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |C2D-berichten verlopen (preview-versie)|C2DMessagesExpired|Aantal|Totaal|Aantal verlopen Cloud-naar-apparaat-berichten|Geen|
-|C2D-bericht leveringen voltooid|C2D. commands. OUTuitgang.<br>voltooid. geslaagd|Aantal|Totaal|Aantal bezorgingen van Cloud-naar-apparaat-berichten voltooid door het apparaat|Geen|
-|C2D-berichten zijn afgebroken|C2D. commands. OUTuitgang.<br>abandon. geslaagd|Aantal|Totaal|Aantal Cloud-naar-apparaat-berichten die zijn afgebroken door het apparaat|Geen|
-|Geweigerde C2D-berichten|C2D. commands. OUTuitgang.<br>afwijzen. geslaagd|Aantal|Totaal|Aantal Cloud-naar-apparaat-berichten dat door het apparaat is geweigerd|Geen|
+|C2D-bericht leveringen voltooid|C2D. commands. OUTuitgang. complete. geslaagd|Aantal|Totaal|Aantal bezorgingen van Cloud-naar-apparaat-berichten voltooid door het apparaat|Geen|
+|C2D-berichten zijn afgebroken|C2D. commands. uitgangs. Abandon. geslaagd|Aantal|Totaal|Aantal Cloud-naar-apparaat-berichten die zijn afgebroken door het apparaat|Geen|
+|Geweigerde C2D-berichten|C2D. commands. uitgangs. reject. geslaagd|Aantal|Totaal|Aantal Cloud-naar-apparaat-berichten dat door het apparaat is geweigerd|Geen|
 
 Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alleen totaal (Sum)-aggregatie geldig. De minimum-, maximum-en gemiddelde aggregaties retour neren altijd 1. Zie [ondersteunde aggregaties](#supported-aggregations)voor meer informatie.
 
@@ -113,7 +113,7 @@ Voor het *totale aantal gebruikte berichten* worden alleen de minimum-, maximum-
 |Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
 |Totaal aantal apparaten (afgeschaft)|apparaten. totalDevices|Aantal|Totaal|Aantal apparaten dat is geregistreerd bij uw IoT-hub|Geen|
-|Verbonden apparaten (afgeschaft) |apparaten. connectedDevices.<br>allProtocol|Aantal|Totaal|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
+|Verbonden apparaten (afgeschaft) |apparaten. connectedDevices. allProtocol|Aantal|Totaal|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
 |Totaal aantal apparaten (preview-versie)|totalDeviceCount|Aantal|Average|Aantal apparaten dat is geregistreerd bij uw IoT-hub|Geen|
 |Verbonden apparaten (preview-versie)|connectedDeviceCount|Aantal|Average|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
 
@@ -127,9 +127,9 @@ Voor het *totale aantal apparaten (preview)* en *verbonden apparaten (preview)* 
 
 |Weergave naam voor metrische gegevens|Metrisch gegeven|Eenheid|Aggregatietype|Beschrijving|Afmetingen|
 |---|---|---|---|---|---|
-|Aantal beperkings fouten|D2C. telemetrie.<br>sendThrottle|Aantal|Totaal|Aantal beperkings fouten door doorvoer vertraging van apparaat|Geen|
-|Verzend pogingen voor telemetrie-berichten|D2C. telemetrie.<br>allProtocol|Aantal|Totaal|Aantal pogingen voor het verzenden van apparaat-naar-Cloud-telemetrie naar uw IoT hub|Geen|
-|Verzonden telemetriegegevens|D2C. telemetrie.<br>voltooid|Aantal|Totaal|Aantal te verzenden apparaat-naar-Cloud-telemetrie-berichten naar uw IoT-hub|Geen|
+|Aantal beperkings fouten|D2C. telemetrie. ingress. sendThrottle|Aantal|Totaal|Aantal beperkings fouten door doorvoer vertraging van apparaat|Geen|
+|Verzend pogingen voor telemetrie-berichten|D2C. telemetrie. ingress. allProtocol|Aantal|Totaal|Aantal pogingen voor het verzenden van apparaat-naar-Cloud-telemetrie naar uw IoT hub|Geen|
+|Verzonden telemetriegegevens|D2C. telemetrie. ingress. geslaagd|Aantal|Totaal|Aantal te verzenden apparaat-naar-Cloud-telemetrie-berichten naar uw IoT-hub|Geen|
 
 Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alleen totaal (Sum)-aggregatie geldig. De minimum-, maximum-en gemiddelde aggregaties retour neren altijd 1. Zie [ondersteunde aggregaties](#supported-aggregations)voor meer informatie.
 
@@ -161,13 +161,13 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 |---|---|---|---|---|---|
 |Voltooide taken|Jobs. voltooid|Aantal|Totaal|Het aantal voltooide taken.|Geen|
 |Mislukte aanroepen naar lijst taken|Jobs. listJobs. failure|Aantal|Totaal|Het aantal mislukte aanroepen naar lijst taken.|Geen|
-|Kan geen aanroepen van methode aanroep taken uitvoeren|Jobs. createDirectMethodJob.<br>veroorzaakt|Aantal|Totaal|Het aantal van alle mislukte aanroepen van directe methode aanroep taken.|Geen|
-|Kan geen dubbele update taken uitvoeren|Jobs. createTwinUpdateJob.<br>veroorzaakt|Aantal|Totaal|Het aantal mislukte het maken van dubbele update taken.|Geen|
+|Kan geen aanroepen van methode aanroep taken uitvoeren|Jobs. createDirectMethodJob. failure|Aantal|Totaal|Het aantal van alle mislukte aanroepen van directe methode aanroep taken.|Geen|
+|Kan geen dubbele update taken uitvoeren|Jobs. createTwinUpdateJob. failure|Aantal|Totaal|Het aantal mislukte het maken van dubbele update taken.|Geen|
 |Mislukte taak annuleringen|Jobs. cancelJob. failure|Aantal|Totaal|Het aantal mislukte aanroepen om een taak te annuleren.|Geen|
 |Mislukte taak query's|Jobs. queryJobs. failure|Aantal|Totaal|Het aantal mislukte aanroepen naar query taken.|Geen|
 |Mislukte taken|Jobs. mislukt|Aantal|Totaal|Het aantal mislukte taken.|Geen|
 |Geslaagde aanroepen naar lijst taken|Jobs. listJobs. geslaagd|Aantal|Totaal|Het aantal geslaagde aanroepen naar lijst taken.|Geen|
-|Geslaagde creatie van methode aanroep taken|Jobs. createDirectMethodJob.<br>voltooid|Aantal|Totaal|Het aantal van alle geslaagde aanroepen van directe methode aanroep taken.|Geen|
+|Geslaagde creatie van methode aanroep taken|Jobs. createDirectMethodJob. geslaagd|Aantal|Totaal|Het aantal van alle geslaagde aanroepen van directe methode aanroep taken.|Geen|
 |Geslaagde creatie van dubbele update taken|Jobs. createTwinUpdateJob.<br>voltooid|Aantal|Totaal|Het aantal van alle geslaagde taken voor het maken van dubbele updates.|Geen|
 |Voltooide taak annuleringen|Jobs. cancelJob. geslaagd|Aantal|Totaal|Het aantal geslaagde aanroepen om een taak te annuleren.|Geen|
 |Geslaagde taak query's|Jobs. queryJobs. geslaagd|Aantal|Totaal|Het aantal geslaagde aanroepen naar query taken.|Geen|
@@ -181,23 +181,23 @@ Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alle
 | Bezorgings pogingen routeren (preview) |RoutingDeliveries | Aantal | Totaal |Dit is de metrische gegevens van de route ring. Gebruik de dimensies om de leverings status voor een bepaald eind punt of voor een specifieke routerings bron te identificeren.| Resultaat,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>EndpointName<br>*Zie [metrische dimensies](#metric-dimensions)voor meer informatie* . |
 | Grootte van bezorgings gegevens in bytes (preview-versie)|RoutingDataSizeInBytesDelivered| Bytes | Totaal |Het totale aantal bytes dat wordt gerouteerd door IoT Hub naar het aangepaste eind punt en het ingebouwde eind punt. Gebruik de dimensies om gegevens grootte te identificeren die naar een bepaald eind punt of voor een specifieke routerings bron worden doorgestuurd.| RoutingSource,<br>EndpointType<br>EndpointName<br>*Zie [metrische dimensies](#metric-dimensions)voor meer informatie* .|
 | Routerings latentie (preview-versie) |RoutingDeliveryLatency| Milliseconden | Average |Dit is de metrische gegevens van de bezorgings latentie van de route ring. Gebruik de dimensies om de latentie voor een bepaald eind punt of voor een specifieke routerings bron te identificeren.| RoutingSource,<br>EndpointType,<br>EndpointName<br>*Zie [metrische dimensies](#metric-dimensions)voor meer informatie* .|
-|Route ring: blobs die aan de opslag worden geleverd|D2C. endpoints. OUTuitgang.<br>opslag. blobs|Aantal|Totaal|Het aantal keren dat IoT Hub route ring blobs naar opslag eindpunten heeft geleverd.|Geen|
-|Route ring: gegevens worden geleverd aan de opslag|D2C. endpoints. OUTuitgang.<br>opslag. bytes|Bytes|Totaal|De hoeveelheid gegevens (bytes) IoT Hub route ring die aan de opslag eindpunten wordt geleverd.|Geen|
-|Route ring: bericht latentie voor Event hub|D2C. endpoints. latentie.<br>Event hubs|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen bericht binnenkomend naar IoT Hub en het bericht wordt binnengebracht in aangepaste eind punten van het type Event hub. Dit omvat geen berichten routes naar het ingebouwde eind punt (gebeurtenissen).|Geen|
-|Route ring: bericht latentie voor Service Bus wachtrij|D2C. endpoints. latentie.<br>serviceBusQueues|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in een Service Bus wachtrij-eind punt.|Geen|
-|Route ring: bericht latentie voor Service Bus onderwerp|D2C. endpoints. latentie.<br>serviceBusTopics|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in een eind punt van een Service Bus onderwerp.|Geen|
-|Route ring: bericht latentie voor berichten/gebeurtenissen|D2C. endpoints. latentie.<br>builtIn. Events|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in het ingebouwde eind punt (berichten/gebeurtenissen) en de terugval route.|Geen|
-|Route ring: bericht latentie voor opslag|D2C. endpoints. latentie.<br>opslag|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in een opslag eindpunt.|Geen|
-|Route ring: berichten worden bezorgd bij Event hub|D2C. endpoints. OUTuitgang.<br>Event hubs|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan aangepaste eind punten van het type Event hub. Dit omvat geen berichten routes naar het ingebouwde eind punt (gebeurtenissen).|Geen|
-|Route ring: berichten worden bezorgd bij Service Bus wachtrij|D2C. endpoints. OUTuitgang.<br>serviceBusQueues|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Service Bus-wachtrij-eind punten.|Geen|
-|Route ring: berichten die worden bezorgd bij Service Bus onderwerp|D2C. endpoints. OUTuitgang.<br>serviceBusTopics|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Service Bus onderwerp-eind punten.|Geen|
-|Route ring: berichten worden bezorgd bij terugval|D2C. telemetrie. OUTuitgang.<br>terugval|Aantal|Totaal|Het aantal keren dat de route ring van berichten IoT Hub verzonden naar het eind punt dat is gekoppeld aan de terugval route.|Geen|
-|Route ring: berichten worden bezorgd bij berichten/gebeurtenissen|D2C. endpoints. OUTuitgang.<br>builtIn. Events|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan het ingebouwde eind punt (berichten/gebeurtenissen) en terugval route.|Geen|
-|Route ring: berichten worden bezorgd bij de opslag|D2C. endpoints. OUTuitgang.<br>opslag|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan de opslag eindpunten.|Geen|
-|Route ring: telemetrie-berichten|D2C. telemetrie. OUTuitgang.<br>voltooid|Aantal|Totaal|Het aantal keren dat berichten zijn bezorgd bij alle eind punten met behulp van IoT Hub route ring. Als een bericht wordt doorgestuurd naar meerdere eind punten, wordt deze waarde met één verhoogd voor elke geslaagde levering. Als een bericht meerdere keren op hetzelfde eind punt wordt bezorgd, wordt deze waarde met één verhoogd voor elke geslaagde levering.|Geen|
-|Route ring: telemetrie-berichten verwijderd |D2C. telemetrie. OUTuitgang.<br>minder|Aantal|Totaal|Het aantal keren dat berichten zijn verwijderd door IoT Hub route ring vanwege Dead-eind punten. Deze waarde telt geen berichten die worden bezorgd als terugval route als berichten die worden verzonden, niet worden bezorgd.|Geen|
-|Route ring: telemetrie-berichten incompatibel|D2C. telemetrie. OUTuitgang.<br>Ongeldig|Aantal|Totaal|Het aantal keren dat IoT Hub route ring geen berichten kan leveren als gevolg van incompatibiliteit met het eind punt. Een bericht is niet compatibel met een eind punt wanneer IOT hub het bericht aan een eind punt probeert af te leveren en mislukt met een niet-tijdelijke fout. Ongeldige berichten worden niet opnieuw geprobeerd. Deze waarde omvat geen nieuwe pogingen.|Geen|
-|Route ring: telemetriegegevens van zwevende berichten |D2C. telemetrie. OUTuitgang.<br>zwevende|Aantal|Totaal|Het aantal keren dat berichten zijn verwijderd door IoT Hub route ring omdat deze niet overeenkomen met een routerings query wanneer terugval route is uitgeschakeld.|Geen|
+|Route ring: blobs die aan de opslag worden geleverd|D2C. endpoints. outwaar. storage. blobs|Aantal|Totaal|Het aantal keren dat IoT Hub route ring blobs naar opslag eindpunten heeft geleverd.|Geen|
+|Route ring: gegevens worden geleverd aan de opslag|D2C. endpoints. out. storage. bytes|Bytes|Totaal|De hoeveelheid gegevens (bytes) IoT Hub route ring die aan de opslag eindpunten wordt geleverd.|Geen|
+|Route ring: bericht latentie voor Event hub|D2C. endpoints. latentie. Event hubs|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen bericht binnenkomend naar IoT Hub en het bericht wordt binnengebracht in aangepaste eind punten van het type Event hub. Dit omvat geen berichten routes naar het ingebouwde eind punt (gebeurtenissen).|Geen|
+|Route ring: bericht latentie voor Service Bus wachtrij|D2C. endpoints. latentie. serviceBusQueues|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in een Service Bus wachtrij-eind punt.|Geen|
+|Route ring: bericht latentie voor Service Bus onderwerp|D2C. endpoints. latentie. serviceBusTopics|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in een eind punt van een Service Bus onderwerp.|Geen|
+|Route ring: bericht latentie voor berichten/gebeurtenissen|D2C. endpoints. latentie. builtIn. Events|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in het ingebouwde eind punt (berichten/gebeurtenissen) en de terugval route.|Geen|
+|Route ring: bericht latentie voor opslag|D2C. endpoints. latentie. opslag|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in een opslag eindpunt.|Geen|
+|Route ring: berichten worden bezorgd bij Event hub|D2C. endpoints. uitgangs. Event hubs|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan aangepaste eind punten van het type Event hub. Dit omvat geen berichten routes naar het ingebouwde eind punt (gebeurtenissen).|Geen|
+|Route ring: berichten worden bezorgd bij Service Bus wachtrij|D2C. endpoints. uitgangs. serviceBusQueues|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Service Bus-wachtrij-eind punten.|Geen|
+|Route ring: berichten die worden bezorgd bij Service Bus onderwerp|D2C. endpoints. uitgangs. serviceBusTopics|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Service Bus onderwerp-eind punten.|Geen|
+|Route ring: berichten worden bezorgd bij terugval|D2C. telemetrie.. fallback|Aantal|Totaal|Het aantal keren dat de route ring van berichten IoT Hub verzonden naar het eind punt dat is gekoppeld aan de terugval route.|Geen|
+|Route ring: berichten worden bezorgd bij berichten/gebeurtenissen|D2C. endpoints. uitgangs punt. builtIn. Events|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan het ingebouwde eind punt (berichten/gebeurtenissen) en terugval route.|Geen|
+|Route ring: berichten worden bezorgd bij de opslag|D2C. endpoints. outwaarde. Storage|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan de opslag eindpunten.|Geen|
+|Route ring: telemetrie-berichten|D2C. telemetrie. uitgangs. geslaagd|Aantal|Totaal|Het aantal keren dat berichten zijn bezorgd bij alle eind punten met behulp van IoT Hub route ring. Als een bericht wordt doorgestuurd naar meerdere eind punten, wordt deze waarde met één verhoogd voor elke geslaagde levering. Als een bericht meerdere keren op hetzelfde eind punt wordt bezorgd, wordt deze waarde met één verhoogd voor elke geslaagde levering.|Geen|
+|Route ring: telemetrie-berichten verwijderd |D2C. telemetrie. uitgangs. verwijderd|Aantal|Totaal|Het aantal keren dat berichten zijn verwijderd door IoT Hub route ring vanwege Dead-eind punten. Deze waarde telt geen berichten die worden bezorgd als terugval route als berichten die worden verzonden, niet worden bezorgd.|Geen|
+|Route ring: telemetrie-berichten incompatibel|D2C. telemetrie. uitgangs. ongeldig|Aantal|Totaal|Het aantal keren dat IoT Hub route ring geen berichten kan leveren als gevolg van incompatibiliteit met het eind punt. Een bericht is niet compatibel met een eind punt wanneer IOT hub het bericht aan een eind punt probeert af te leveren en mislukt met een niet-tijdelijke fout. Ongeldige berichten worden niet opnieuw geprobeerd. Deze waarde omvat geen nieuwe pogingen.|Geen|
+|Route ring: telemetriegegevens van zwevende berichten |D2C. telemetrie.. zwevend|Aantal|Totaal|Het aantal keren dat berichten zijn verwijderd door IoT Hub route ring omdat deze niet overeenkomen met een routerings query wanneer terugval route is uitgeschakeld.|Geen|
 
 Voor metrische gegevens met een **eenheids** waarde van het **aantal** , is alleen totaal (Sum)-aggregatie geldig. De minimum-, maximum-en gemiddelde aggregaties retour neren altijd 1. Zie [ondersteunde aggregaties](#supported-aggregations)voor meer informatie.
 

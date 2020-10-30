@@ -5,18 +5,18 @@ description: Een beschrijving van de beperkingen en beperkingen van de indeling 
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 08/07/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
-ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: marsma, lenalepa, manrath
+ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030307"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042902"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Omleidings-URI (antwoord-URL) beperkingen en beperkingen
 
@@ -24,7 +24,7 @@ Een omleidings-URI of antwoord-URL is de locatie waar de autorisatie server de g
 
  De volgende beperkingen zijn van toepassing op omleidings-URI's:
 
-* De omleidings-URI moet beginnen met het schema `https` .
+* De omleidings-URI moet beginnen met het schema `https` . Er zijn enkele [uitzonde ringen voor localhost](#localhost-exceptions) -omleidings-uri's.
 
 * De omleidings-URI is hoofdletter gevoelig. Het hoofdlettergebruik moet overeenkomen met het URL-pad van de actieve toepassing. Als uw toepassing bijvoorbeeld een deel van het pad bevat `.../abc/response-oidc` , moet u niet opgeven `.../ABC/response-oidc` in de omleidings-URI. Omdat de webbrowser paden als hoofdlettergevoelig behandelt, kunnen cookies die zijn gekoppeld aan `.../abc/response-oidc` worden uitgesloten als ze worden omgeleid naar de qua hoofdlettergebruik niet-overeenkomende URL `.../ABC/response-oidc`.
 
@@ -64,11 +64,10 @@ Uit het oogpunt van ontwikkeling betekent dit een aantal dingen:
 
 * Registreer niet meerdere omleidings-Uri's waarbij alleen de poort verschilt. Op de aanmeldings server wordt één wille keurig gekozen en wordt het gedrag gebruikt dat is gekoppeld aan die omleidings-URI (bijvoorbeeld of het een `web` -, `native` -,-of `spa` -type omleiding is).
 * Als u meerdere omleidings-Uri's op localhost wilt registreren om verschillende stromen tijdens de ontwikkeling te testen, moet u deze onderscheiden met de *padcomponent* van de URI. `http://127.0.0.1/MyWebApp`Komt bijvoorbeeld niet overeen `http://127.0.0.1/MyNativeApp` .
-* Per RFC-richt lijn moet u niet gebruiken `localhost` in de omleidings-URI. Gebruik in plaats daarvan het werkelijke loop back IP-adres, `127.0.0.1` . Hiermee wordt voor komen dat uw app wordt verbroken door onjuist geconfigureerde firewalls of de naam van netwerk interfaces.
+* Het IPv6-loop back-adres ( `[::1]` ) wordt momenteel niet ondersteund.
+* Als u wilt voor komen dat uw app wordt verbroken door onjuist geconfigureerde firewalls of de naam van netwerk interfaces is gewijzigd, gebruikt u het IP-adres van de letterlijke waarde `127.0.0.1` in de omleidings-URI in plaats van `localhost` .
 
-    Als u het `http` schema met het loop back-adres (127.0.0.1) in plaats van localhost wilt gebruiken, moet u het [toepassings manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute)bewerken. 
-
-    Het IPv6-loop back-adres ( `[::1]` ) wordt momenteel niet ondersteund.
+    Als u het `http` schema met het IP-adres van de letterlijke loop back-waarde wilt gebruiken `127.0.0.1` , moet u het kenmerk [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) momenteel wijzigen in het manifest van de [toepassing](reference-app-manifest.md).
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Beperkingen voor joker tekens in omleidings-Uri's
 
@@ -78,9 +77,9 @@ Uri's met Joker tekens worden momenteel niet ondersteund in app-registraties die
 
 Als u omleidings-Uri's wilt toevoegen met Joker tekens naar app-registraties waarmee werk-of school accounts worden ondertekend, moet u de manifest editor van de toepassing gebruiken in [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) in de Azure Portal. Hoewel het mogelijk is om een omleidings-URI met een Joker teken in te stellen met behulp van de manifest editor, raden wij u *ten zeerste* aan de [sectie 3.1.2 van RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) te voldoen en alleen absolute uri's te gebruiken.
 
-Als uw scenario meer omleidings-Uri's vereist dan de Maxi maal toegestane limiet, moet u rekening houden met de [volgende benadering](#use-a-state-parameter) in plaats van een omleidings-URI voor joker tekens.
+Als uw scenario meer omleidings-Uri's vereist dan de Maxi maal toegestane limiet, moet u rekening houden met de volgende [status parameter methode](#use-a-state-parameter) in plaats van een omleidings-URI voor joker tekens.
 
-### <a name="use-a-state-parameter"></a>Een para meter State gebruiken
+#### <a name="use-a-state-parameter"></a>Een para meter State gebruiken
 
 Als u meerdere subdomeinen hebt en uw scenario vereist dat, wanneer de verificatie is geslaagd, gebruikers omleiden naar dezelfde pagina als waar ze worden gestart, kan het handig zijn om een para meter State te gebruiken.
 
