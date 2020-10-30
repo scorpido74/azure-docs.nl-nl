@@ -5,32 +5,34 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24d146da7946176c92902698d0f52ae01baf79ee
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77133599"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061601"
 ---
-Open de Power shell-console met verhoogde bevoegdheden.
+Als u Power shell lokaal uitvoert, opent u de Power shell-console met verhoogde bevoegdheden en maakt u verbinding met uw Azure-account. Met de cmdlet *Connect-AzAccount* wordt u gevraagd referenties op te vragen. Na de verificatie worden uw account instellingen gedownload zodat ze beschikbaar zijn voor Azure PowerShell.
 
-Als u Azure PowerShell lokaal uitvoert, maakt u verbinding met uw Azure-account. Met de cmdlet *Connect-AzAccount* wordt u gevraagd referenties op te vragen. Na de verificatie worden uw account instellingen gedownload zodat ze beschikbaar zijn voor Azure PowerShell. Als u in plaats daarvan Azure Cloud Shell gebruikt, hoeft u *Connect-AzAccount*niet uit te voeren. Azure Cloud Shell maakt automatisch verbinding met uw Azure-account.
+Als u Azure Cloud Shell gebruikt in plaats van lokaal Power shell uit te voeren, zult u merken dat u geen *Connect-AzAccount* hoeft uit te voeren. Azure Cloud Shell maakt automatisch verbinding met uw Azure-account nadat u het selectie vakje **proberen** hebt geselecteerd.
 
-```azurepowershell
-Connect-AzAccount
-```
+1. Als u Power shell lokaal uitvoert, meldt u zich aan.
 
-Als u meer dan één abonnement hebt, kunt u een lijst met uw Azure-abonnementen ophalen.
+   ```azurepowershell
+   Connect-AzAccount
+   ```
 
-```azurepowershell-interactive
-Get-AzSubscription
-```
+1. Als u meer dan één abonnement hebt, haalt u een lijst met uw abonnementen op.
 
-Geef het abonnement op dat u wilt gebruiken.
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-```azurepowershell-interactive
-Select-AzSubscription -SubscriptionName "Name of subscription"
-```
+1. Geef het abonnement op dat u wilt gebruiken.
+
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName "Name of subscription"
+   ```

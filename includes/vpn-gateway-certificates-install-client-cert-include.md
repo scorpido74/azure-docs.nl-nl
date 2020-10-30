@@ -5,20 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0068bd151c3d7d243b05c326ec73a201f4131296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 393b29245141b2970e7c1a227d6e8b1b131c445c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175927"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061602"
 ---
 Als u een P2S-verbinding wilt maken vanaf een andere clientcomputer dan de computer die u gebruikt om de clientcertificaten te genereren, moet u een clientcertificaat installeren. Wanneer u een clientcertificaat installeert, hebt u het wachtwoord nodig dat is gemaakt tijdens het exporteren van het clientcertificaat.
 
-1. Zoek het *PFX*-bestand en kopieer het naar de clientcomputer. Dubbelklik op de clientcomputer op het *PFX*-bestand om het te installeren. Laat de waarde voor **Archieflocatie** staan op **Huidige gebruiker** en klik op **Volgende**.
-2. Laat de pagina **Te exporteren bestand** ongewijzigd. Klik op **Volgende**.
-3. Voer op de pagina **beveiliging met persoonlijke sleutel** het wacht woord in voor het certificaat of Controleer of de beveiligingsprincipal juist is en klik vervolgens op **volgende**.
-4. Laat op de pagina **Certificaatarchief** de standaardlocatie staan en klik op **Volgende**.
-5. Klik op **Voltooien**. Klik in het venster **Beveiligingswaarschuwing** voor de certificaatinstallatie op **Ja**. U kunt zonder problemen op Ja klikken omdat u zelf het certificaat hebt gegenereerd. Het certificaat wordt nu geïmporteerd.
+1. Zoek het *PFX* -bestand en kopieer het naar de clientcomputer. Dubbelklik op de clientcomputer op het *PFX* -bestand om het te installeren. Wijzig de **opslag locatie** als **huidige gebruiker** en selecteer **volgende** .
+1. Laat de pagina **Te exporteren bestand** ongewijzigd. Selecteer **Volgende** .
+1. Voer op de pagina **beveiliging met persoonlijke sleutel** het wacht woord in voor het certificaat of Controleer of de beveiligingsprincipal juist is en selecteer **volgende** .
+1. Accepteer op de pagina **certificaat archief** de standaard locatie en selecteer **volgende** .
+1. Selecteer **Finish** . Selecteer op de **beveiligings waarschuwing** voor de installatie van het certificaat de optie **Ja** . U kunt de optie Ja selecteren voor deze beveiligings waarschuwing omdat u het certificaat hebt gegenereerd.
+1. Het certificaat wordt nu geïmporteerd.

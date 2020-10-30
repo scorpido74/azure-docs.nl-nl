@@ -5,22 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/19/2020
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e85dc8c079205484db9b7b7c43a0086f69feb3be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8e3df77df53b887c4367e46b05d8a7ea4eed2f6
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80059932"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061599"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Een zelfondertekend basis certificaat maken
 
 Gebruik de cmdlet New-SelfSignedCertificate om een zelfondertekend basis certificaat te maken. Zie [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)voor meer informatie over para meters.
 
 1. Open op een computer met Windows 10 of Windows Server 2016 een Windows Power shell-console met verhoogde bevoegdheden. Deze voor beelden werken niet in de Azure Cloud Shell ' Probeer het '. U moet deze voor beelden lokaal uitvoeren.
-2. Gebruik het volgende voor beeld om het zelfondertekende basis certificaat te maken. In het volgende voor beeld wordt een zelfondertekend basis certificaat gemaakt met de naam ' P2SRootCert ', dat automatisch wordt geïnstalleerd in ' certificaten-huidige Gebruiker\persoonlijk\certificaten '. U kunt het certificaat weer geven door *certmgr. msc*te openen of *gebruikers certificaten te beheren*.
+1. Gebruik het volgende voor beeld om het zelfondertekende basis certificaat te maken. In het volgende voor beeld wordt een zelfondertekend basis certificaat gemaakt met de naam ' P2SRootCert ', dat automatisch wordt geïnstalleerd in ' certificaten-huidige Gebruiker\persoonlijk\certificaten '. U kunt het certificaat weer geven door *certmgr. msc* te openen of *gebruikers certificaten te beheren* .
+
+   Meld u aan met de `Connect-AzAccount` cmdlet. Voer vervolgens het volgende voor beeld uit met alle benodigde wijzigingen.
 
    ```powershell
    $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -28,7 +30,8 @@ Gebruik de cmdlet New-SelfSignedCertificate om een zelfondertekend basis certifi
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
- 3. Houd de Power shell-console geopend als u een client certificaat wilt maken nadat u dit basis certificaat hebt gemaakt.
+
+1. Verlaat de Power shell-console en ga door met de volgende stappen voor het genereren van client certificaten.
 
 ## <a name="generate-a-client-certificate"></a><a name="clientcert"></a>Een clientcertificaat genereren
 
@@ -61,7 +64,8 @@ Als u aanvullende client certificaten maakt of de Power shell-sessie die u hebt 
    ```powershell
    Get-ChildItem -Path "Cert:\CurrentUser\My"
    ```
-2. Zoek de onderwerpnaam in de lijst die wordt weer gegeven en kopieer de vinger afdruk die zich ernaast bevindt, naar een tekst bestand. In het volgende voor beeld zijn er twee certificaten. De CN-naam is de naam van het zelfondertekende basis certificaat van waaruit u een onderliggend certificaat wilt genereren. In dit geval ' P2SRootCert '.
+
+1. Zoek de onderwerpnaam in de lijst die wordt weer gegeven en kopieer de vinger afdruk die zich ernaast bevindt, naar een tekst bestand. In het volgende voor beeld zijn er twee certificaten. De CN-naam is de naam van het zelfondertekende basis certificaat van waaruit u een onderliggend certificaat wilt genereren. In dit geval ' P2SRootCert '.
 
    ```
    Thumbprint                                Subject
@@ -69,7 +73,8 @@ Als u aanvullende client certificaten maakt of de Power shell-sessie die u hebt 
    AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
    7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
    ```
-3. Declareer een variabele voor het basis certificaat met behulp van de vinger afdruk uit de vorige stap. Vervang de vinger afdruk door de vinger afdruk van het basis certificaat van waaruit u een onderliggend certificaat wilt genereren.
+
+1. Declareer een variabele voor het basis certificaat met behulp van de vinger afdruk uit de vorige stap. Vervang de vinger afdruk door de vinger afdruk van het basis certificaat van waaruit u een onderliggend certificaat wilt genereren.
 
    ```powershell
    $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
@@ -80,7 +85,8 @@ Als u aanvullende client certificaten maakt of de Power shell-sessie die u hebt 
    ```powershell
    $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
    ```
-4. Wijzig en voer het voor beeld uit om een client certificaat te genereren. Als u het volgende voor beeld uitvoert zonder het te wijzigen, is het resultaat een client certificaat met de naam ' P2SChildCert '. Als u het onderliggende certificaat iets anders wilt noemen, wijzigt u de CN-waarde. Wijzig de TextExtension niet wanneer u dit voor beeld uitvoert. Het client certificaat dat u genereert, wordt automatisch geïnstalleerd in ' certificaten-huidige Gebruiker\persoonlijk\certificaten ' op uw computer.
+
+1. Wijzig en voer het voor beeld uit om een client certificaat te genereren. Als u het volgende voor beeld uitvoert zonder het te wijzigen, is het resultaat een client certificaat met de naam ' P2SChildCert '. Als u het onderliggende certificaat iets anders wilt noemen, wijzigt u de CN-waarde. Wijzig de TextExtension niet wanneer u dit voor beeld uitvoert. Het client certificaat dat u genereert, wordt automatisch geïnstalleerd in ' certificaten-huidige Gebruiker\persoonlijk\certificaten ' op uw computer.
 
    ```powershell
    New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
