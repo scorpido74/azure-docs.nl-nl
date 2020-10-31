@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 24adbfe38a3d43a83307fb8726849f7c73def3f3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284299"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129274"
 ---
 ## <a name="generalize-the-image"></a>De installatie kopie generaliseren
 
@@ -20,7 +20,7 @@ Alle installatie kopieën in azure Marketplace moeten op een algemene manier opn
 
 ### <a name="for-windows"></a>Voor Windows
 
-Windows-besturingssysteem schijven worden gegeneraliseerd met het hulp programma [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) . Als u het besturings systeem later bijwerkt of opnieuw configureert, moet u Sysprep opnieuw uitvoeren.
+Windows-besturingssysteem schijven worden gegeneraliseerd met het hulp programma [Sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) . Als u het besturings systeem later bijwerkt of opnieuw configureert, moet u Sysprep opnieuw uitvoeren.
 
 > [!WARNING]
 > Nadat u Sysprep hebt uitgevoerd, schakelt u de virtuele machine uit totdat deze is geïmplementeerd, omdat updates mogelijk automatisch worden uitgevoerd. Als u dit afsluit, voor komt u dat latere updates exemplaren van specifieke wijzigingen aanbrengen in het besturings systeem of de geïnstalleerde services. Zie [stappen voor het generaliseren van een VHD](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)voor meer informatie over het uitvoeren van Sysprep.
@@ -40,14 +40,14 @@ Het volgende proces generaliseert een Linux-VM en implementeert deze opnieuw als
 
 ### <a name="take-a-snapshot-of-the-vm-disk"></a>Een moment opname van de VM-schijf maken
 
-1. Meld u aan bij de [Azure-portal](https://ms.portal.azure.com/).
-2. Selecteer **een resource maken**in de linkerbovenhoek, zoek naar en selecteer **moment opname**.
-3. Selecteer  **maken**op de Blade moment opname.
+1. Meld u aan bij [Azure Portal](https://ms.portal.azure.com/).
+2. Selecteer **een resource maken** in de linkerbovenhoek, zoek naar en selecteer **moment opname** .
+3. Selecteer  **maken** op de Blade moment opname.
 4. Voer een **naam** in voor de moment opname.
 5. Selecteer een bestaande resource groep of voer een naam in voor een nieuwe.
-6. Voor de **bron schijf**selecteert u de beheerde schijf voor de moment opname.
+6. Voor de **bron schijf** selecteert u de beheerde schijf voor de moment opname.
 7. Het **account type** selecteren dat moet worden gebruikt voor het opslaan van de moment opname. Gebruik **Standard-HDD** tenzij u het hebt opgeslagen op een high-upssd.
-8. Selecteer **Maken**.
+8. Selecteer **Maken** .
 
 #### <a name="extract-the-vhd"></a>De VHD extra heren
 

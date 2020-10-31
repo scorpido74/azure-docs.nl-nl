@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 34d64d70c657712bb44aa6331b53f014349a0dda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c28595458fea61f66b6930ce72fa0702e00aecd9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284320"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129303"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Een virtuele machine maken met behulp van een goedgekeurde basis
 
@@ -32,12 +32,12 @@ Selecteer een van de volgende Windows-of Linux-installatie kopieën als basis.
 
 ### <a name="linux"></a>Linux
 
-Azure biedt een scala aan goedgekeurde Linux-distributies. Zie voor een actuele lijst [Linux op distributies die zijn goedgekeurd door Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Azure biedt een scala aan goedgekeurde Linux-distributies. Zie voor een actuele lijst [Linux op distributies die zijn goedgekeurd door Azure](../virtual-machines/linux/endorsed-distros.md).
 
 ## <a name="create-vm-on-the-azure-portal"></a>Een VM maken op het Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://ms.portal.azure.com/).
-2. Selecteer **Virtuele machines**.
+1. Meld u aan bij [Azure Portal](https://ms.portal.azure.com/).
+2. Selecteer **Virtuele machines** .
 3. Selecteer **+ toevoegen** om het scherm **een virtuele machine maken** te openen.
 4. Selecteer de installatie kopie in de vervolg keuzelijst of selecteer **Bladeren alle open bare en persoonlijke installatie kopieën** om te zoeken of door alle beschik bare installatie kopieën van virtuele machines te bladeren.
 5. Als u een virtuele machine van **generatie 2** wilt maken, gaat u naar het tabblad **Geavanceerd** en selecteert u de optie **generatie 2** .
@@ -49,9 +49,9 @@ Azure biedt een scala aan goedgekeurde Linux-distributies. Zie voor een actuele 
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Selecteer gen 1 of gen 2.":::
 
 7. Geef de overige vereiste gegevens op om de virtuele machine te maken.
-8. Selecteer **beoordeling + maken** om uw keuzes te controleren. Wanneer het bericht **door gegeven validatie** wordt weer gegeven, selecteert u  **maken**.
+8. Selecteer **beoordeling + maken** om uw keuzes te controleren. Wanneer het bericht **door gegeven validatie** wordt weer gegeven, selecteert u  **maken** .
 
-Azure begint met het inrichten van de virtuele machine die u hebt opgegeven. Volg de voortgang van de taak door het tabblad **virtual machines** te selecteren in het menu links. Nadat deze is gemaakt, wordt de status van de virtuele machine gewijzigd in **actief**.
+Azure begint met het inrichten van de virtuele machine die u hebt opgegeven. Volg de voortgang van de taak door het tabblad **virtual machines** te selecteren in het menu links. Nadat deze is gemaakt, wordt de status van de virtuele machine gewijzigd in **actief** .
 
 
 ## <a name="configure-the-vm"></a>De virtuele machine configureren

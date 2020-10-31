@@ -7,26 +7,26 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187656"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127430"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Het NuGet-pakket voor de Azure Stream Analytics CI/CD gebruiken voor integratie en ontwikkeling 
 In dit artikel wordt beschreven hoe u het Azure Stream Analytics CI/CD NuGet-pakket gebruikt om een doorlopend integratie-en implementatie proces in te stellen.
 
-Gebruik versie 2.3.0000.0 of hoger van [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) om ondersteuning voor MSBuild te krijgen.
+Gebruik versie 2.3.0000.0 of hoger van [Stream Analytics tools for Visual Studio](./stream-analytics-quick-create-vs.md) om ondersteuning voor MSBuild te krijgen.
 
 Er is een NuGet-pakket beschikbaar: [micro soft. Azure. Stream Analytics. CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Het biedt de hulpprogram ma's voor MSBuild, lokaal uitvoeren en implementeren die ondersteuning bieden voor het doorlopende integratie-en implementatie proces van [Stream Analytics Visual Studio-projecten](stream-analytics-vs-tools.md). 
 > [!NOTE]
 > Het NuGet-pakket kan alleen worden gebruikt met de 2.3.0000.0 of de bovenstaande versie van Stream Analytics-Hulpprogram Ma's voor Visual Studio. Als u projecten hebt gemaakt in eerdere versies van Visual Studio-hulpprogram ma's, opent u deze met de 2.3.0000.0 of de bovenstaande versie en slaat u deze op. Daarna zijn de nieuwe mogelijkheden ingeschakeld. 
 
-Zie [Stream Analytics-hulpprogram ma's voor Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)voor meer informatie.
+Zie [Stream Analytics-hulpprogram ma's voor Visual Studio](./stream-analytics-quick-create-vs.md)voor meer informatie.
 
 ## <a name="msbuild"></a>MSBuild
-Net als de standaard Visual Studio MSBuild-ervaring om een project te bouwen, hebt u twee opties. U kunt met de rechter muisknop op het project klikken en vervolgens **Build**kiezen. U kunt **MSBuild** ook gebruiken in het NuGet-pakket vanaf de opdracht regel.
+Net als de standaard Visual Studio MSBuild-ervaring om een project te bouwen, hebt u twee opties. U kunt met de rechter muisknop op het project klikken en vervolgens **Build** kiezen. U kunt **MSBuild** ook gebruiken in het NuGet-pakket vanaf de opdracht regel.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
@@ -52,7 +52,7 @@ De standaard parameters in de parameters.jsin het bestand zijn afkomstig uit de 
       "value": null
     },
 ```
-Meer informatie over hoe u kunt [implementeren met een resource manager-sjabloon bestand en Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Meer informatie over het [gebruik van een object als een para meter in een resource manager-sjabloon](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Meer informatie over hoe u kunt [implementeren met een resource manager-sjabloon bestand en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). Meer informatie over het [gebruik van een object als een para meter in een resource manager-sjabloon](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 Als u beheerde identiteit voor Azure Data Lake Store gen1 als uitvoer Sink wilt gebruiken, moet u toegang geven tot de service-principal met behulp van Power shell voordat u implementeert in Azure. Meer informatie over het [implementeren van ADLS gen1 met beheerde identiteit met een resource manager-sjabloon](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
@@ -60,7 +60,7 @@ Als u beheerde identiteit voor Azure Data Lake Store gen1 als uitvoer Sink wilt 
 ## <a name="command-line-tool"></a>Opdracht regel programma
 
 ### <a name="build-the-project"></a>Het project bouwen
-Het NuGet-pakket heeft een opdracht regel programma met de naam **SA.exe**. Het ondersteunt project build en lokale tests op een wille keurige computer, die u kunt gebruiken in uw continue integratie en doorlopend leverings proces. 
+Het NuGet-pakket heeft een opdracht regel programma met de naam **SA.exe** . Het ondersteunt project build en lokale tests op een wille keurige computer, die u kunt gebruiken in uw continue integratie en doorlopend leverings proces. 
 
 De implementatie bestanden worden standaard in de huidige map geplaatst. U kunt het uitvoerpad opgeven met behulp van de volgende para meter-OutputPath:
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 78a81a2d392363ac45979fd28138f838653a2358
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d84e1508dec4d4a5802f7a2ac8c0e6ada5a8044c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380773"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128688"
 ---
 # <a name="how-to-add-technical-details-for-your-saas-offer"></a>Technische gegevens voor uw SaaS-aanbieding toevoegen
 
@@ -38,7 +38,7 @@ Op het tabblad **technische configuratie** definieert u de technische details di
 
 - **Azure Active Directory Tenant-id** (vereist): als u de Tenant-id voor uw Azure Active Directory Azure AD-App wilt vinden, gaat u naar de blade [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in azure Active Directory. Selecteer de app in de kolom **weergave naam** . Zoek vervolgens naar de **map (Tenant) ID** die wordt weer gegeven (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ).
 
-- **Azure Active Directory toepassings-id** (vereist): als u de [toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)wilt vinden, gaat u naar de blade [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in azure Active Directory. Selecteer de app in de kolom **weergave naam** . Zoek vervolgens naar het ID-nummer van de toepassing (client) in de lijst (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ).
+- **Azure Active Directory toepassings-id** (vereist): als u de [toepassings-id](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)wilt vinden, gaat u naar de blade [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in azure Active Directory. Selecteer de app in de kolom **weergave naam** . Zoek vervolgens naar het ID-nummer van de toepassing (client) in de lijst (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ).
 
 Selecteer **concept opslaan** voordat u doorgaat naar het volgende tabblad: plan overzicht.
 

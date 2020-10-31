@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fda153d4c48ced17d1a9ba5f060b435b161542e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612163"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127634"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Een Azure Stream Analytics-taak testen in de portal
 
@@ -29,7 +29,7 @@ Azure Stream Analytics haalt automatisch gebeurtenissen op uit uw streaming-invo
 
 3. Selecteer op de pagina Stream Analytics taak onder de kop **taak topologie** de optie **query** om het venster query-editor te openen. 
 
-4. Als u een voor beeld van een lijst met binnenkomende gebeurtenissen wilt zien, selecteert u het pictogram invoer met bestand en worden de voorbeeld gebeurtenissen automatisch weer gegeven in de **invoer voorbeeld**.
+4. Als u een voor beeld van een lijst met binnenkomende gebeurtenissen wilt zien, selecteert u het pictogram invoer met bestand en worden de voorbeeld gebeurtenissen automatisch weer gegeven in de **invoer voorbeeld** .
 
    a. Het type serialisatie voor uw gegevens wordt automatisch gedetecteerd als de JSON of CSV. U kunt dit ook hand matig wijzigen in JSON, CSV, AVRO door de optie in het vervolg keuzemenu te wijzigen.
     
@@ -37,23 +37,23 @@ Azure Stream Analytics haalt automatisch gebeurtenissen op uit uw streaming-invo
     
    c. Als uw weer gegeven gegevens niet actueel zijn, selecteert u **vernieuwen** om de meest recente gebeurtenissen te bekijken.
 
-   De volgende tabel bevat een voor beeld van gegevens in de **tabel indeling**:
+   De volgende tabel bevat een voor beeld van gegevens in de **tabel indeling** :
 
    ![Voorbeeld invoer in tabel indeling Azure Stream Analytics](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   De volgende tabel bevat een voor beeld van de gegevens in **RAW-indeling**:
+   De volgende tabel bevat een voor beeld van de gegevens in **RAW-indeling** :
 
    ![Voorbeeld invoer Azure Stream Analytics in RAW-indeling](./media/stream-analytics-test-query/asa-sample-raw.png)
 
-5. Als u uw query wilt testen met inkomende gegevens, selecteert u **query testen**. Resultaten worden weer gegeven op het tabblad **test resultaten** . U kunt ook **Download resultaten** selecteren om de resultaten te downloaden.
+5. Als u uw query wilt testen met inkomende gegevens, selecteert u **query testen** . Resultaten worden weer gegeven op het tabblad **test resultaten** . U kunt ook **Download resultaten** selecteren om de resultaten te downloaden.
 
    ![Voorbeeld query resultaten Azure Stream Analytics test](./media/stream-analytics-test-query/asa-test-query.png)
 
-6. Selecteer **tijds bereik selecteren**om uw query te testen op een specifiek tijds bereik van binnenkomende gebeurtenissen.
+6. Selecteer **tijds bereik selecteren** om uw query te testen op een specifiek tijds bereik van binnenkomende gebeurtenissen.
    
    ![Azure Stream Analytics tijds bereik voor binnenkomende voorbeeld gebeurtenissen](./media/stream-analytics-test-query/asa-select-time-range.png)
 
-7. Stel het tijds bereik in van de gebeurtenissen die u wilt gebruiken om uw query te testen en selecteer voor **beeld**. Binnen dat tijds bestek kunt u Maxi maal 1000 gebeurtenissen of 1 MB ophalen, afhankelijk van wat het eerste komt.
+7. Stel het tijds bereik in van de gebeurtenissen die u wilt gebruiken om uw query te testen en selecteer voor **beeld** . Binnen dat tijds bestek kunt u Maxi maal 1000 gebeurtenissen of 1 MB ophalen, afhankelijk van wat het eerste komt.
 
    ![Azure Stream Analytics het tijds bereik voor binnenkomende voorbeeld gebeurtenissen instellen](./media/stream-analytics-test-query/asa-set-time-range.png)
 
@@ -61,7 +61,7 @@ Azure Stream Analytics haalt automatisch gebeurtenissen op uit uw streaming-invo
 
    ![Test resultaten Azure Stream Analytics weer geven](./media/stream-analytics-test-query/asa-view-test-results.png)
 
-9. Selecteer **opnieuw instellen** om de voorbeeld lijst met binnenkomende gebeurtenissen weer te geven. Als u **opnieuw instellen**selecteert, gaat de selectie van het tijds bereik verloren. Selecteer **test query** om uw query te testen en Bekijk de resultaten op het tabblad **test resultaten** .
+9. Selecteer **opnieuw instellen** om de voorbeeld lijst met binnenkomende gebeurtenissen weer te geven. Als u **opnieuw instellen** selecteert, gaat de selectie van het tijds bereik verloren. Selecteer **test query** om uw query te testen en Bekijk de resultaten op het tabblad **test resultaten** .
 
 10. Wanneer u wijzigingen aanbrengt in uw query, selecteert u **query opslaan** om de nieuwe query logica te testen. Hierdoor kunt u de query iteratief wijzigen en opnieuw testen om te zien hoe de uitvoer verandert.
 
@@ -79,13 +79,13 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 
 4. Als u uw query wilt testen met een lokaal bestand, selecteert u **voorbeeld invoer uploaden** op het tabblad **invoer voorbeeld** . 
 
-   ![Voorbeeld bestand Azure Stream Analytics uploaden](./media/stream-analytics-test-query/asa-upload-sample-file.png)
+   ![Scherm afbeelding toont de invoer optie voor het uploaden van voor beelden.](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. Upload uw lokale bestand om de query te testen. U kunt alleen bestanden uploaden met de indelingen JSON, CSV of AVRO. Selecteer **OK**.
+5. Upload uw lokale bestand om de query te testen. U kunt alleen bestanden uploaden met de indelingen JSON, CSV of AVRO. Selecteer **OK** .
 
-   ![Voorbeeld bestand Azure Stream Analytics uploaden](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
+   ![Scherm afbeelding toont het dialoog venster voorbeeld gegevens uploaden, waarin u een bestand kunt selecteren.](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
-6. Zodra u het bestand uploadt, kunt u ook de bestands inhoud in het formulier zien als een tabel of in de RAW-indeling. Als u **opnieuw instellen**selecteert, worden de voorbeeld gegevens weer gegeven in de binnenkomende invoer gegevens die in de vorige sectie zijn beschreven. U kunt elk ander bestand uploaden om de query op elk gewenst moment te testen.
+6. Zodra u het bestand uploadt, kunt u ook de bestands inhoud in het formulier zien als een tabel of in de RAW-indeling. Als u **opnieuw instellen** selecteert, worden de voorbeeld gegevens weer gegeven in de binnenkomende invoer gegevens die in de vorige sectie zijn beschreven. U kunt elk ander bestand uploaden om de query op elk gewenst moment te testen.
 
 7. Selecteer **test query** om uw query te testen op het geüploade voorbeeld bestand.
 
@@ -113,9 +113,9 @@ In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal b
 5.  Machine learning wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Een IOT-oplossing bouwen met behulp van stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): deze zelf studie helpt u bij het bouwen van een end-to-end oplossing met een gegevens generator waarmee verkeer wordt gesimuleerd op een telefoon stand.
+* [Een IOT-oplossing bouwen met behulp van stream Analytics](./stream-analytics-build-an-iot-solution-using-stream-analytics.md): deze zelf studie helpt u bij het bouwen van een end-to-end oplossing met een gegevens generator waarmee verkeer wordt gesimuleerd op een telefoon stand.
 
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
 
 * [Query voorbeelden voor algemene Stream Analytics gebruiks patronen](stream-analytics-stream-analytics-query-patterns.md)
 

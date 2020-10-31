@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 2/27/2020
-ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.date: 10/30/2020
+ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484590"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128960"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Uw MySQL-database migreren naar Azure Database voor MySQL met behulp van dumpen en terugzetten
 
@@ -20,6 +20,8 @@ ms.locfileid: "92484590"
 In dit artikel worden twee algemene manieren uitgelegd voor het maken van back-ups en het herstellen van data bases in uw Azure Database for MySQL
 - Dump en herstel vanaf de opdracht regel (met behulp van mysqldump)
 - Dump en herstel met behulp van PHPMyAdmin
+
+U kunt ook de [hand leiding voor database migratie](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) raadplegen voor gedetailleerde informatie en voor beelden over het migreren van data bases naar Azure database for MySQL. Deze hand leiding bevat richt lijnen voor een geslaagde planning en uitvoering van een MySQL-migratie naar Azure.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
@@ -168,5 +170,5 @@ Voor bekende problemen, tips en trucs raden we u aan onze [techcommunity-blog](h
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Toepassingen verbinden met Azure database for MySQL](./howto-connection-string.md).
-- Zie de [hand leiding voor database migratie](https://aka.ms/datamigration)voor meer informatie over het migreren van data bases naar Azure database for MySQL.
+- Zie de [hand leiding voor database migratie](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)voor meer informatie over het migreren van data bases naar Azure database for MySQL.
 - Als u grote data bases wilt migreren met data base-grootten van meer dan 1 TBs, kunt u overwegen om gebruik te maken van de hulpprogram ma's van de Community zoals **mydumper/myloader** , die ondersteuning bieden voor parallel exporteren en importeren. Meer informatie [over het migreren van grote MySQL-data bases](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 467b8506eb0cafc61731a69804c70b8080ab21c2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 649abf6d07a95c7f20f6416f7d3155f8d115782b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042446"
+ms.locfileid: "93127566"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Gegevens streamen als invoer in Stream Analytics
 
@@ -38,7 +38,7 @@ U kunt de [Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studi
 
 Azure Event Hubs biedt een zeer schaal bare gebeurtenis investeerders voor het publiceren van een abonnement. Een Event Hub kan miljoenen gebeurtenissen per seconde verzamelen, zodat u de enorme hoeveel heden gegevens die worden geproduceerd door uw verbonden apparaten en toepassingen kunt verwerken en analyseren. Event Hubs en Stream Analytics bieden samen een end-to-end oplossing voor realtime analyses. Met Event Hubs kunt u in realtime gebeurtenissen in azure feeden en Stream Analytics-taken kunnen deze gebeurtenissen in realtime verwerken. U kunt bijvoorbeeld web klikken, lees acties op de sensor of online logboek gebeurtenissen verzenden naar Event Hubs. U kunt vervolgens Stream Analytics-taken maken om Event Hubs te gebruiken als de invoer gegevens stromen voor realtime filteren, aggregatie en correlatie.
 
-`EventEnqueuedUtcTime` is het tijds tempel van de aankomst van een gebeurtenis in een Event Hub en is het standaard tijds tempel van gebeurtenissen die afkomstig zijn van Event Hubs naar Stream Analytics. Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) gebruiken.
+`EventEnqueuedUtcTime` is het tijds tempel van de aankomst van een gebeurtenis in een Event Hub en is het standaard tijds tempel van gebeurtenissen die afkomstig zijn van Event Hubs naar Stream Analytics. Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) gebruiken.
 
 ### <a name="event-hubs-consumer-groups"></a>Consumenten groepen Event Hubs
 
@@ -56,7 +56,7 @@ In de volgende tabel wordt elke eigenschap in de **nieuwe invoer** pagina in het
 | **Event Hub-naam** | De naam van de Event Hub die moet worden gebruikt als invoer. |
 | **Naam van het Event Hub-beleid** | Het beleid voor gedeelde toegang dat toegang biedt tot de Event hub. Elk gedeeld toegangs beleid heeft een naam, machtigingen die u instelt en toegangs sleutels. Deze optie wordt automatisch ingevuld, tenzij u de optie selecteert om de Event hub-instellingen hand matig op te geven.|
 | **Event hub-consumenten groep** (aanbevolen) | Het is raadzaam om voor elke Stream Analytics taak een afzonderlijke consumenten groep te gebruiken. Met deze teken reeks wordt de Consumer groep geïdentificeerd die moet worden gebruikt om gegevens op te nemen van de Event Hub. Als er geen consumenten groep is opgegeven, gebruikt de Stream Analytics-taak de $Default Consumer groep.  |
-| **Partitiesleutel** | Dit is een optioneel veld dat alleen beschikbaar is als uw taak is geconfigureerd voor het gebruik van [compatibiliteits niveau](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 of hoger. Als uw invoer is gepartitioneerd door een eigenschap, kunt u hier de naam van deze eigenschap toevoegen. Dit wordt gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. Als deze taak gebruikmaakt van het compatibiliteits niveau 1,2 of hoger, wordt in dit veld standaard de waarde ' PartitionId ' gebruikt. |
+| **Partitiesleutel** | Dit is een optioneel veld dat alleen beschikbaar is als uw taak is geconfigureerd voor het gebruik van [compatibiliteits niveau](./stream-analytics-compatibility-level.md) 1,2 of hoger. Als uw invoer is gepartitioneerd door een eigenschap, kunt u hier de naam van deze eigenschap toevoegen. Dit wordt gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. Als deze taak gebruikmaakt van het compatibiliteits niveau 1,2 of hoger, wordt in dit veld standaard de waarde ' PartitionId ' gebruikt. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling wordt uitgelijnd met de specificatie en geen voorloop 0 voor decimale getallen bevat. |
 | **Codering** | UTF-8 is momenteel de enige coderings indeling die wordt ondersteund. |
 | **Gebeurteniscompressietype** | Het compressie type dat wordt gebruikt voor het lezen van de binnenkomende gegevens stroom, zoals geen (standaard), GZip of Deflate. |
@@ -80,14 +80,14 @@ FROM Input
 ```
 
 > [!NOTE]
-> Wanneer u Event hub gebruikt als een eind punt voor IoT Hub routes, hebt u toegang tot de IoT Hub meta gegevens met behulp van de [functie GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue).
+> Wanneer u Event hub gebruikt als een eind punt voor IoT Hub routes, hebt u toegang tot de IoT Hub meta gegevens met behulp van de [functie GetMetadataPropertyValue](/stream-analytics-query/getmetadatapropertyvalue).
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Gegevens streamen van IoT Hub
 
 Azure IoT Hub is een uiterst schaal bare publicatie event ingestor geoptimaliseerd voor IoT-scenario's.
 
-De standaardtime Stamp van gebeurtenissen die afkomstig zijn van een IoT Hub in Stream Analytics is het tijds tempel dat de gebeurtenis heeft ontvangen in de IoT Hub `EventEnqueuedUtcTime` . Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) gebruiken.
+De standaardtime Stamp van gebeurtenissen die afkomstig zijn van een IoT Hub in Stream Analytics is het tijds tempel dat de gebeurtenis heeft ontvangen in de IoT Hub `EventEnqueuedUtcTime` . Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) gebruiken.
 
 ### <a name="iot-hub-consumer-groups"></a>IOT hub-consumenten groepen
 
@@ -106,7 +106,7 @@ In de volgende tabel wordt elke eigenschap in de **nieuwe invoer** pagina in het
 | **Naam van gedeeld toegangsbeleid** | Het beleid voor gedeelde toegang dat toegang biedt tot de IoT Hub. Elk gedeeld toegangs beleid heeft een naam, machtigingen die u instelt en toegangs sleutels. |
 | **Sleutel voor gedeeld toegangs beleid** | De gedeelde toegangs sleutel die wordt gebruikt om toegang te verlenen tot de IoT Hub.  Deze optie wordt automatisch ingevuld tenzij u de optie selecteert om de IOT hub-instellingen hand matig op te geven. |
 | **Consumenten groep** | Het wordt ten zeerste aangeraden om voor elke Stream Analytics taak een andere consumenten groep te gebruiken. De Consumer groep wordt gebruikt om gegevens op te nemen van de IoT Hub. Stream Analytics gebruikt de $Default-Consumer groep tenzij u anders opgeeft.  |
-| **Partitiesleutel** | Dit is een optioneel veld dat alleen beschikbaar is als uw taak is geconfigureerd voor het gebruik van [compatibiliteits niveau](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 of hoger. Als uw invoer is gepartitioneerd door een eigenschap, kunt u hier de naam van deze eigenschap toevoegen. Dit wordt gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. Als deze taak gebruikmaakt van het compatibiliteits niveau 1,2 of hoger, wordt in dit veld standaard de waarde ' PartitionId ' gebruikt. |
+| **Partitiesleutel** | Dit is een optioneel veld dat alleen beschikbaar is als uw taak is geconfigureerd voor het gebruik van [compatibiliteits niveau](./stream-analytics-compatibility-level.md) 1,2 of hoger. Als uw invoer is gepartitioneerd door een eigenschap, kunt u hier de naam van deze eigenschap toevoegen. Dit wordt gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. Als deze taak gebruikmaakt van het compatibiliteits niveau 1,2 of hoger, wordt in dit veld standaard de waarde ' PartitionId ' gebruikt. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling wordt uitgelijnd met de specificatie en geen voorloop 0 voor decimale getallen bevat. |
 | **Codering** | UTF-8 is momenteel de enige coderings indeling die wordt ondersteund. |
 | **Gebeurteniscompressietype** | Het compressie type dat wordt gebruikt voor het lezen van de binnenkomende gegevens stroom, zoals geen (standaard), GZip of Deflate. |
@@ -137,7 +137,7 @@ Als een BLOB wordt geüpload naar een container voor opslag accounts op 13:00 en
 
 Als een Azure Stream Analytics taak *nu* wordt gestart op 13:00 en er een BLOB wordt geüpload naar de container van het opslag account op 13:01, wordt de blob door Azure stream Analytics opgehaald. De tijds tempel die is toegewezen aan elke blob is alleen gebaseerd op `BlobLastModifiedTime` . De map waartoe de BLOB zich bevindt, heeft geen relatie met de toegewezen tijds tempel. Als er bijvoorbeeld een BLOB *2019/10-01/00/b1.txt* is met een `BlobLastModifiedTime` van 2019-11-11, is de tijds tempel die is toegewezen aan deze BLOB 2019-11-11.
 
-Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) gebruiken. Een Stream Analytics taak haalt gegevens op uit de Azure Blob-opslag of ADLS Gen2 invoer elke seconde als het blobbestand beschikbaar is. Als het blobbestand niet beschikbaar is, is er een exponentiële uitstel met een maximale tijds vertraging van 90 seconden.
+Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](/stream-analytics-query/stream-analytics-query-language-reference) gebruiken. Een Stream Analytics taak haalt gegevens op uit de Azure Blob-opslag of ADLS Gen2 invoer elke seconde als het blobbestand beschikbaar is. Als het blobbestand niet beschikbaar is, is er een exponentiële uitstel met een maximale tijds vertraging van 90 seconden.
 
 Voor invoer in CSV-indeling is een veldnamenrij vereist om velden voor de gegevensset te definiëren. alle velden in de veldnamenrij moeten uniek zijn.
 
@@ -157,10 +157,10 @@ In de volgende tabel wordt elke eigenschap in de **nieuwe invoer** pagina in de 
 | **Opslagaccount** | De naam van het opslag account waarin de BLOB-bestanden zich bevinden. |
 | **Sleutel van het opslag account** | De geheime sleutel die is gekoppeld aan het opslag account. Deze optie wordt automatisch ingevuld tenzij u de optie selecteert om de instellingen hand matig op te geven. |
 | **Container** | Containers bieden een logische groepering voor blobs. U kunt bestaande container **gebruiken** kiezen of  **nieuwe maken** om een nieuwe container gemaakt te krijgen.|
-| **Patroon van pad** (optioneel) | Het bestandspad dat wordt gebruikt om de blobs in de opgegeven container te vinden. Als u blobs wilt lezen uit de hoofdmap van de container, moet u geen patroon voor paden instellen. Binnen het pad kunt u een of meer exemplaren van de volgende drie variabelen opgeven: `{date}` , `{time}` , of `{partition}`<br/><br/>Voor beeld 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Voor beeld 2: `cluster1/logs/{date}`<br/><br/>Het `*` teken is geen toegestane waarde voor het voor voegsel van het pad. Alleen geldige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-tekens</a> zijn toegestaan. Neem geen container namen of bestands namen op. |
+| **Patroon van pad** (optioneel) | Het bestandspad dat wordt gebruikt om de blobs in de opgegeven container te vinden. Als u blobs wilt lezen uit de hoofdmap van de container, moet u geen patroon voor paden instellen. Binnen het pad kunt u een of meer exemplaren van de volgende drie variabelen opgeven: `{date}` , `{time}` , of `{partition}`<br/><br/>Voor beeld 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Voor beeld 2: `cluster1/logs/{date}`<br/><br/>Het `*` teken is geen toegestane waarde voor het voor voegsel van het pad. Alleen geldige <a HREF="/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata">Azure Blob-tekens</a> zijn toegestaan. Neem geen container namen of bestands namen op. |
 | **Datum notatie** (optioneel) | Als u de datum variabele in het pad gebruikt, de datum notatie waarin de bestanden zijn geordend. Voorbeeld: `YYYY/MM/DD` <br/><br/> Wanneer BLOB-invoer `{date}` een of meer `{time}` paden heeft, worden de mappen in oplopende volg orde bekeken.|
 | **Tijd notatie** (optioneel) |  Als u de time-variabele in het pad gebruikt, de tijd notatie waarin de bestanden zijn ingedeeld. Momenteel is de enige ondersteunde waarde `HH` voor uren. |
-| **Partitiesleutel** | Dit is een optioneel veld dat alleen beschikbaar is als uw taak is geconfigureerd voor het gebruik van [compatibiliteits niveau](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 of hoger. Als uw invoer is gepartitioneerd door een eigenschap, kunt u hier de naam van deze eigenschap toevoegen. Dit wordt gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. Als deze taak gebruikmaakt van het compatibiliteits niveau 1,2 of hoger, wordt in dit veld standaard de waarde ' PartitionId ' gebruikt. |
+| **Partitiesleutel** | Dit is een optioneel veld dat alleen beschikbaar is als uw taak is geconfigureerd voor het gebruik van [compatibiliteits niveau](./stream-analytics-compatibility-level.md) 1,2 of hoger. Als uw invoer is gepartitioneerd door een eigenschap, kunt u hier de naam van deze eigenschap toevoegen. Dit wordt gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. Als deze taak gebruikmaakt van het compatibiliteits niveau 1,2 of hoger, wordt in dit veld standaard de waarde ' PartitionId ' gebruikt. |
 | **Aantal invoer partities** | Dit veld is alleen aanwezig als {Partition} aanwezig is in het pad patroon. De waarde van deze eigenschap is een geheel getal >= 1. Overal waar {Partition} wordt weer gegeven in pathPattern, wordt een getal tussen 0 en de waarde van dit veld-1 gebruikt. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling wordt uitgelijnd met de specificatie en geen voorloop 0 voor decimale getallen bevat. |
 | **Codering** | Voor CSV en JSON is UTF-8 momenteel de enige coderings indeling die wordt ondersteund. |
@@ -194,5 +194,5 @@ FROM Input
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

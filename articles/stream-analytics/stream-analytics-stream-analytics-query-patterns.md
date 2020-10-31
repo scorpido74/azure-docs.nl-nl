@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 84e3ced20b828087cd3f2b9e7534826debf1706a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0c5363cfec42ba78ee6c41a1970211518b74a71
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279974"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127532"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Algemene query patronen in Azure Stream Analytics
 
@@ -34,7 +34,7 @@ JSON en Avro kunnen complexe typen bevatten, zoals geneste objecten (records) of
 
 Meerdere **Select** -instructies kunnen worden gebruikt voor het uitvoeren van gegevens naar verschillende uitvoer-Sinks. Eén **Select** kan bijvoorbeeld een waarschuwing op basis van een drempel waarde uitvoeren terwijl een andere een gebeurtenis kan uitvoeren naar Blob Storage.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | Tijd |
 | --- | --- |
@@ -44,7 +44,7 @@ Meerdere **Select** -instructies kunnen worden gebruikt voor het uitvoeren van g
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Uitvoer ArchiveOutput**:
+**Uitvoer ArchiveOutput** :
 
 | Merk | Tijd |
 | --- | --- |
@@ -54,13 +54,13 @@ Meerdere **Select** -instructies kunnen worden gebruikt voor het uitvoeren van g
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Uitvoer AlertOutput**:
+**Uitvoer AlertOutput** :
 
 | Merk | Tijd | Aantal |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -85,11 +85,11 @@ HAVING
     [Count] >= 3
 ```
 
-De component **into** vertelt stream Analytics van welke uitvoer de gegevens moeten worden geschreven. De eerste **selectie** definieert een Pass Through-query waarmee gegevens worden ontvangen van de invoer en verzonden naar de uitvoer met de naam **ArchiveOutput**. Met de tweede query worden enkele eenvoudige aggregatie en filters uitgevoerd voordat de resultaten worden verzonden naar een downstream-waarschuwings systeem uitvoer met de naam **AlertOutput**.
+De component **into** vertelt stream Analytics van welke uitvoer de gegevens moeten worden geschreven. De eerste **selectie** definieert een Pass Through-query waarmee gegevens worden ontvangen van de invoer en verzonden naar de uitvoer met de naam **ArchiveOutput** . Met de tweede query worden enkele eenvoudige aggregatie en filters uitgevoerd voordat de resultaten worden verzonden naar een downstream-waarschuwings systeem uitvoer met de naam **AlertOutput** .
 
 Houd er rekening mee dat de **with** -component kan worden gebruikt om meerdere subquery blokken te definiëren. Deze optie biedt het voor deel van het openen van minder lezers aan de invoer bron.
 
-**Query**:
+**Query** :
 
 ```SQL
 WITH ReaderQuery AS (
@@ -119,21 +119,21 @@ Raadpleeg de [ **with** -component](/stream-analytics-query/with-azure-stream-an
 
 Een eenvoudige Pass Through-query kan worden gebruikt om de gegevens van de invoer stroom te kopiëren naar de uitvoer. Als er bijvoorbeeld een gegevens stroom met informatie over het realtime-Voer tuig moet worden opgeslagen in een SQL database voor brief analyse, wordt de taak door een eenvoudige Pass Through-query uitgevoerd.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | Tijd | Gewicht |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Merk | Tijd | Gewicht |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -144,7 +144,7 @@ FROM Input
 
 Een **Select** *-query projecten alle velden van een binnenkomende gebeurtenis en verzendt deze naar de uitvoer. **Op dezelfde manier kunt u** ook gebruiken om alleen de verplichte velden van de invoer te projecteren. Als in dit voor beeld het *merk* en de *tijd* van het Voer tuig de enige vereiste velden zijn die moeten worden opgeslagen, kunnen deze velden worden opgegeven in de **Select** -instructie.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | Tijd | Gewicht |
 | --- | --- | --- |
@@ -152,7 +152,7 @@ Een **Select** *-query projecten alle velden van een binnenkomende gebeurtenis e
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Merk | Tijd |
 | --- | --- |
@@ -160,7 +160,7 @@ Een **Select** *-query projecten alle velden van een binnenkomende gebeurtenis e
 | Make1 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:04.0000000 Z |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -173,7 +173,7 @@ FROM Input
 
 **Net** als bij en **niet zoals** kan worden gebruikt om te controleren of een veld overeenkomt met een bepaald patroon. U kunt bijvoorbeeld een filter maken om alleen de licentie platen te retour neren die beginnen met de letter ' A ' en eindigen met het cijfer 9.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | License_plate | Tijd |
 | --- | --- | --- |
@@ -181,14 +181,14 @@ FROM Input
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Merk | License_plate | Tijd |
 | --- | --- | --- |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -205,20 +205,20 @@ Gebruik de instructie **like** om de waarde van het **License_plate** veld te co
 
 De functie **lag** kan worden gebruikt om eerdere gebeurtenissen binnen een tijd venster te bekijken en te vergelijken met de huidige gebeurtenis. De huidige Car-versie kan bijvoorbeeld worden gegenereerd als deze afwijkt van de laatste auto die door de gratis is gemaakt.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | Tijd |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Merk | Tijd |
 | --- | --- |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -238,7 +238,7 @@ Raadpleeg voor meer informatie de [**vertraging**](/stream-analytics-query/lag-a
 
 Wanneer gebeurtenissen in realtime door het systeem worden verbruikt, is er geen functie waarmee kan worden bepaald of een gebeurtenis de laatste is voor het betreffende tijd venster. Hiervoor moet de invoer stroom worden gekoppeld met een andere, waarbij de tijd van een gebeurtenis de maximale tijd voor alle gebeurtenissen in dat venster is.
 
-**Invoer**:
+**Invoer** :
 
 | License_plate | Merk | Tijd |
 | --- | --- | --- |
@@ -250,14 +250,14 @@ Wanneer gebeurtenissen in realtime door het systeem worden verbruikt, is er geen
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | License_plate | Merk | Tijd |
 | --- | --- | --- |
 | VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Query**:
+**Query** :
 
 ```SQL
 WITH LastInWindow AS
@@ -283,7 +283,7 @@ FROM
 
 In de eerste stap van de query wordt de maximale tijds tempel in Windows van 10 minuten gevonden. Dit is het tijds tempel van de laatste gebeurtenis voor dat venster. De tweede stap neemt de resultaten van de eerste query samen met de oorspronkelijke stroom om de gebeurtenis te vinden die overeenkomt met de laatste tijds tempels in elk venster. 
 
-**DATEDIFF** is een datum-specifieke functie waarmee het tijds verschil tussen twee datum/tijd-velden wordt vergeleken en geretourneerd. Raadpleeg date- [functies](https://docs.microsoft.com/stream-analytics-query/date-and-time-functions-azure-stream-analytics)voor meer informatie.
+**DATEDIFF** is een datum-specifieke functie waarmee het tijds verschil tussen twee datum/tijd-velden wordt vergeleken en geretourneerd. Raadpleeg date- [functies](/stream-analytics-query/date-and-time-functions-azure-stream-analytics)voor meer informatie.
 
 Raadpleeg [**join**](/stream-analytics-query/join-azure-stream-analytics)voor meer informatie over het toevoegen van streams.
 
@@ -291,7 +291,7 @@ Raadpleeg [**join**](/stream-analytics-query/join-azure-stream-analytics)voor me
 
 Als u informatie wilt berekenen over een tijd venster, kunnen gegevens samen worden geaggregeerd. In dit voor beeld wordt een telling berekend over de laatste tien seconden van de tijd voor elke specifieke auto.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | Tijd | Gewicht |
 | --- | --- | --- |
@@ -299,14 +299,14 @@ Als u informatie wilt berekenen over een tijd venster, kunnen gegevens samen wor
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Merk | Count |
 | --- | --- |
 | Make1 | 2 |
 | Make2 | 1 |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -329,7 +329,7 @@ Raadpleeg [statistische functies](/stream-analytics-query/aggregate-functions-az
 
 Bij onregelmatig of ontbrekende gebeurtenissen kan een regel matige interval uitvoer worden gegenereerd op basis van een meer sparere gegevens invoer. Genereer bijvoorbeeld elke 5 seconden een gebeurtenis die het meest recent weer gegeven gegevens punt rapporteert.
 
-**Invoer**:
+**Invoer** :
 
 | Tijd | Waarde |
 | --- | --- |
@@ -340,7 +340,7 @@ Bij onregelmatig of ontbrekende gebeurtenissen kan een regel matige interval uit
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**Uitvoer (eerste 10 rijen)**:
+**Uitvoer (eerste 10 rijen)** :
 
 | Window_end | Last_event. Tegelijk | Last_event. Value |
 | --- | --- | --- |
@@ -355,7 +355,7 @@ Bij onregelmatig of ontbrekende gebeurtenissen kan een regel matige interval uit
 | 2014-01-01T14:01:40.000 Z |2014-01-01T14:01:35.000 Z |6 |
 | 2014-01-01T14:01:45.000 Z |2014-01-01T14:01:35.000 Z |6 |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -375,7 +375,7 @@ Raadpleeg het [venster verspringen](/stream-analytics-query/hopping-window-azure
 
 Het correleren van gebeurtenissen in dezelfde stroom kan worden uitgevoerd door eerdere gebeurtenissen te bekijken met behulp van de functie **lag** . Een uitvoer kan bijvoorbeeld elke keer worden gegenereerd wanneer twee opeenvolgende auto's van hetzelfde *merk* de afgelopen 90 seconden de gratis door lopen.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | License_plate | Tijd |
 | --- | --- | --- |
@@ -384,13 +384,13 @@ Het correleren van gebeurtenissen in dezelfde stroom kan worden uitgevoerd door 
 | Make2 |DEF-987 |2015-01-01T00:00:03.0000000 Z |
 | Make1 |GHI-345 |2015-01-01T00:00:04.0000000 Z |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Merk | Tijd | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
 | Make1 |2015-01-01T00:00:02.0000000 Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -413,20 +413,20 @@ Raadpleeg voor meer informatie de [vertraging](/stream-analytics-query/lag-azure
 
 De duur van een gebeurtenis kan worden berekend door te kijken naar de laatste start gebeurtenis zodra een eind gebeurtenis is ontvangen. Deze query kan handig zijn om te bepalen hoe lang een gebruiker op een pagina of een functie doorbrengt.
 
-**Invoer**:  
+**Invoer** :  
 
 | Gebruiker | Functie | Gebeurtenis | Tijd |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Starten |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |Beëindigen |2015-01-01T00:00:08.0000000 Z |
 
-**Uitvoer**:  
+**Uitvoer** :  
 
 | Gebruiker | Functie | Duur |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -447,7 +447,7 @@ De functie **last** kan worden gebruikt om de laatste gebeurtenis binnen een bep
 
 **Count** en **DISTINCT** kunnen worden gebruikt voor het tellen van het aantal unieke veld waarden dat binnen een tijd venster in de stroom wordt weer gegeven. U kunt een query maken om te berekenen *hoeveel unieke auto's* er worden door gegeven via de telefoon stand in een periode van twee seconden.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | Tijd |
 | --- | --- |
@@ -482,7 +482,7 @@ Raadpleeg voor meer informatie de functie [ **aantal** statistische functies](/s
 
 **IsFirst** kan worden gebruikt om de eerste gebeurtenis in een tijd venster op te halen. Bijvoorbeeld: het uitvoeren van de eerste informatie over de auto op elke periode van tien minuten.
 
-**Invoer**:
+**Invoer** :
 
 | License_plate | Merk | Tijd |
 | --- | --- | --- |
@@ -494,14 +494,14 @@ Raadpleeg voor meer informatie de functie [ **aantal** statistische functies](/s
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | License_plate | Merk | Tijd |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT 
@@ -516,7 +516,7 @@ WHERE
 
 **IsFirst** kan ook de gegevens partitioneren en de eerste gebeurtenis berekenen op elke specifieke *auto die* elke periode van tien minuten wordt gevonden.
 
-**Uitvoer**:
+**Uitvoer** :
 
 | License_plate | Merk | Tijd |
 | --- | --- | --- |
@@ -526,7 +526,7 @@ WHERE
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT 
@@ -545,7 +545,7 @@ Zie [**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics)voor me
 
 Wanneer er een bewerking wordt uitgevoerd, zoals het berekenen van de gemiddelden van gebeurtenissen in een bepaald tijd venster, moeten dubbele gebeurtenissen worden gefilterd. In het volgende voor beeld is de tweede gebeurtenis een duplicaat van de eerste.
 
-**Invoer**:  
+**Invoer** :  
 
 | DeviceId | Tijd | Kenmerk | Waarde |
 | --- | --- | --- | --- |
@@ -556,14 +556,14 @@ Wanneer er een bewerking wordt uitgevoerd, zoals het berekenen van de gemiddelde
 | 2 |2018-07-27T00:00:05.0000000 Z |Temperatuur |50 |
 | 1 |2018-07-27T00:00:10.0000000 Z |Temperatuur |100 |
 
-**Uitvoer**:  
+**Uitvoer** :  
 
 | AverageValue | DeviceId |
 | --- | --- |
 | 70 | 1 |
 |45 | 2 |
 
-**Query**:
+**Query** :
 
 ```SQL
 With Temp AS (
@@ -594,7 +594,7 @@ Zie [aantal (DISTINCT time)](/stream-analytics-query/count-azure-stream-analytic
 
 **Case** -instructies kunnen verschillende berekeningen bieden voor verschillende velden, op basis van een bepaald criterium. Wijs bijvoorbeeld Lane ' A ' toe aan auto's van *Make1* en Lane ' B ' naar een ander merk.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | Tijd |
 | --- | --- |
@@ -602,14 +602,14 @@ Zie [aantal (DISTINCT time)](/stream-analytics-query/count-azure-stream-analytic
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Merk |Dispatch_to_lane | Tijd |
 | --- | --- | --- |
 | Make1 |Één |2015-01-01T00:00:01.0000000 Z |
 | Make2 |B |2015-01-01T00:00:02.0000000 Z |
 
-**Oplossing**:
+**Oplossing** :
 
 ```SQL
 SELECT
@@ -631,20 +631,20 @@ Raadpleeg voor meer informatie Case- [expressie](/stream-analytics-query/case-az
 
 Gegevens kunnen in realtime worden omgezet met behulp van de **cast** -methode. Het auto gewicht kan bijvoorbeeld worden geconverteerd van het type **nvarchar (max)** naar het type **bigint** en worden gebruikt voor een numerieke berekening.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | Tijd | Gewicht |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Merk | Gewicht |
 | --- | --- |
 | Make1 |3000 |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -665,7 +665,7 @@ Voor meer informatie over [functies voor gegevens conversie](/stream-analytics-q
 
 De functie **lag** kan worden gebruikt om de duur van de voor waarde vast te stellen voor voor waarden die meerdere gebeurtenissen omvatten. Stel bijvoorbeeld dat een bug heeft geresulteerd in alle auto's met een onjuist gewicht (meer dan 20.000 ponden) en de duur van die fout moet worden berekend.
 
-**Invoer**:
+**Invoer** :
 
 | Merk | Tijd | Gewicht |
 | --- | --- | --- |
@@ -678,13 +678,13 @@ De functie **lag** kan worden gebruikt om de duur van de voor waarde vast te ste
 | Make1 |2015-01-01T00:00:07.0000000 Z |26000 |
 | Make2 |2015-01-01T00:00:08.0000000 Z |2000 |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Start_fault | End_fault |
 | --- | --- |
 | 2015-01-01T00:00:02.000 Z |2015-01-01T00:00:07.000 Z |
 
-**Query**:
+**Query** :
 
 ```SQL
 WITH SelectPreviousEvent AS
@@ -713,7 +713,7 @@ De End_fault is de huidige niet-fout gebeurtenis waarbij de vorige gebeurtenis i
 Gebeurtenissen kunnen te laat of in onjuiste volg orde arriveren als gevolg van de klok tussen de gebeurtenissen van de producent, de klok tussen partities of netwerk latentie.
 Zo is de klok voor *TollID* 2 vijf seconden achter *TollID* 1, en de klok van het apparaat voor *TollID* 3 is tien seconden achter *TollID* 1. Een berekening kan onafhankelijk voor elke gratis worden uitgevoerd, waarbij alleen de eigen klok gegevens worden beschouwd als een tijds tempel.
 
-**Invoer**:
+**Invoer** :
 
 | LicensePlate | Merk | Tijd | TollID |
 | --- | --- | --- | --- |
@@ -726,7 +726,7 @@ Zo is de klok voor *TollID* 2 vijf seconden achter *TollID* 1, en de klok van he
 | MDR 6128 |Make3 |2015-07-27T00:00:11.0000000 Z | 2 |
 | YZK 5704 |Make4 |2015-07-27T00:00:07.0000000 Z | 3 |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | TollID | Aantal |
 | --- | --- |
@@ -737,7 +737,7 @@ Zo is de klok voor *TollID* 2 vijf seconden achter *TollID* 1, en de klok van he
 | 2 | 1 |
 | 3 | 1 |
 
-**Query**:
+**Query** :
 
 ```SQL
 SELECT
@@ -758,7 +758,7 @@ Een sessie venster is een venster dat steeds groter wordt wanneer gebeurtenissen
 Dit venster is vooral handig bij het berekenen van gebruikers interactie gegevens. Een venster wordt gestart wanneer een gebruiker met het systeem begint en sluit wanneer er geen gebeurtenissen worden waargenomen, wat betekent dat de gebruiker is gestopt.
 Een gebruiker heeft bijvoorbeeld interactie met een webpagina waar het aantal klikken wordt geregistreerd, een sessie venster kan worden gebruikt om te bepalen hoe lang de gebruiker met de site communiceert.
 
-**Invoer**:
+**Invoer** :
 
 | User_id | Tijd | URL |
 | --- | --- | --- |
@@ -768,14 +768,14 @@ Een gebruiker heeft bijvoorbeeld interactie met een webpagina waar het aantal kl
 | 0 | 2017-01-26T00:01:10.0000000 Z | "www.example.com/d.html" |
 | 1 | 2017-01-26T00:01:15.0000000 Z | "www.example.com/e.html" |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | User_id | StartTime | EndTime | Duration_in_seconds |
 | --- | --- | --- | --- |
 | 0 | 2017-01-26T00:00:00.0000000 Z | 2017-01-26T00:01:10.0000000 Z | 70 |
 | 1 | 2017-01-26T00:00:55.0000000 Z | 2017-01-26T00:01:15.0000000 Z | 20 |
 
-**Query**:
+**Query** :
 
 ``` SQL
 SELECT
@@ -791,13 +791,13 @@ GROUP BY
 
 De **Select** projects de gegevens die relevant zijn voor de gebruikers interactie, samen met de duur van de interactie. Het groeperen van de gegevens op gebruiker en een **SessionWindow** die wordt gesloten als er binnen 1 minuut geen interactie plaatsvindt, met een maximale grootte van 60 minuten.
 
-Raadpleeg [Session-venster](/stream-analytics-query/session-window-azure-stream-analytics) voor meer informatie over **SessionWindow**.
+Raadpleeg [Session-venster](/stream-analytics-query/session-window-azure-stream-analytics) voor meer informatie over **SessionWindow** .
 
 ## <a name="language-extensibility-with-user-defined-function-in-javascript-and-c"></a>Taal uitbreid baarheid met door de gebruiker gedefinieerde functie in Java script en C #
 
 Azure Stream Analytics query taal kan worden uitgebreid met aangepaste functies die zijn geschreven in Java script of C#. Door de gebruiker gedefinieerde functies (UDF) zijn aangepaste/complexe berekeningen die niet eenvoudig kunnen worden weer gegeven met de **SQL** -taal. Deze Udf's kunnen eenmaal worden gedefinieerd en meerdere keren worden gebruikt in een query. Een UDF kan bijvoorbeeld worden gebruikt om een hexadecimale waarde *nvarchar (max)* te converteren naar een *bigint* -waarde.
 
-**Invoer**:
+**Invoer** :
 
 | Device_id | HexValue |
 | --- | --- |
@@ -805,7 +805,7 @@ Azure Stream Analytics query taal kan worden uitgebreid met aangepaste functies 
 | 2 | "11B" |
 | 3 | "121" |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Device_id | Decimaal |
 | --- | --- |
@@ -837,14 +837,14 @@ From
 
 De door de gebruiker gedefinieerde functie berekent de *bigint* -waarde van de HexValue bij elke gebeurtenis die wordt verbruikt.
 
-Raadpleeg [Java script](/azure/stream-analytics/stream-analytics-javascript-user-defined-functions) en [C#](/azure/stream-analytics/stream-analytics-edge-csharp-udf)voor meer informatie.
+Raadpleeg [Java script](./stream-analytics-javascript-user-defined-functions.md) en [C#](./stream-analytics-edge-csharp-udf.md)voor meer informatie.
 
 ## <a name="advanced-pattern-matching-with-match_recognize"></a>Geavanceerd patroon dat overeenkomt met MATCH_RECOGNIZE
 
 **MATCH_RECOGNIZE** is een geavanceerde patroon overeenkomst dat kan worden gebruikt voor het afstemmen van een reeks gebeurtenissen op een goed gedefinieerde reguliere-expressie patroon.
 Zo wordt een ATM tijdens real-time gecontroleerd op fouten tijdens de werking van de ATM als er twee opeenvolgende waarschuwings berichten zijn die de beheerder moet worden gewaarschuwd.
 
-**Invoer**:
+**Invoer** :
 
 | ATM_id | Operation_id | Return_Code | Tijd |
 | --- | --- | --- | --- |
@@ -855,7 +855,7 @@ Zo wordt een ATM tijdens real-time gecontroleerd op fouten tijdens de werking va
 | 1 | "Sleuf voor het openen van geld" | Waarschuwing | 2017-01-26T00:10:14.0000000 Z |
 | 1 | "Bank saldo afdrukken" | Waarschuwing | 2017-01-26T00:10:19.0000000 Z |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | ATM_id | First_Warning_Operation_id | Warning_Time |
 | --- | --- | --- |
@@ -881,7 +881,7 @@ MATCH_RECOGNIZE (
 
 Deze query komt overeen met ten minste twee opeenvolgende fout gebeurtenissen en genereert een waarschuwing wanneer aan de voor waarden wordt voldaan.
 Met het **patroon** wordt de reguliere expressie gedefinieerd die moet worden gebruikt voor het vergelijken, in dit geval een wille keurig aantal geslaagde bewerkingen, gevolgd door ten minste twee opeenvolgende fouten.
-Geslaagd en mislukt worden gedefinieerd met behulp van Return_Code waarde en wanneer aan de voor waarde wordt voldaan, worden de **metingen** geprojecteerd met *ATM_id*, de eerste waarschuwings bewerking en de eerste waarschuwings tijd.
+Geslaagd en mislukt worden gedefinieerd met behulp van Return_Code waarde en wanneer aan de voor waarde wordt voldaan, worden de **metingen** geprojecteerd met *ATM_id* , de eerste waarschuwings bewerking en de eerste waarschuwings tijd.
 
 Zie [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics)voor meer informatie.
 
@@ -892,7 +892,7 @@ Georuimtelijke gegevens kunnen in geojson-of WKT-indelingen worden opgenomen als
 Bijvoorbeeld een bedrijf dat is gespecialiseerd in productie machines voor het afdrukken van Pass ports, het leasen van hun machines aan overheden en consulates. De locatie van deze machines wordt sterk beheerd, om te voor komen dat het niet kan worden gebruikt voor het vervalsen van paspoorten. Elke machine is voorzien van een GPS-tracker en deze gegevens worden door gegeven aan een Azure Stream Analytics taak.
 De productie zou de locatie van deze machines moeten bijhouden en moeten worden gewaarschuwd als een van hen een bevoegd gebied verlaat, op deze manier kunnen ze Extern uitschakelen, waarschuwings instanties en de apparatuur ophalen.
 
-**Invoer**:
+**Invoer** :
 
 | Equipment_id | Equipment_current_location | Tijd |
 | --- | --- | --- |
@@ -901,13 +901,13 @@ De productie zou de locatie van deze machines moeten bijhouden en moeten worden 
 | 1 | "PUNT (-122.13308862313283 47.6406508603241)" | 2017-01-26T00:12:00.0000000 Z |
 | 1 | "PUNT (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 
-**Invoer van referentie gegevens**:
+**Invoer van referentie gegevens** :
 
 | Equipment_id | Equipment_lease_location |
 | --- | --- |
 | 1 | "VEELHOEK ((-122.13326028450979 47.6409833866794,-122.13261655434621 47.6409833866794,-122.13261655434621 47.64061471602751,-122.13326028450979 47.64061471602751,-122.13326028450979 47.6409833866794))" |
 
-**Uitvoer**:
+**Uitvoer** :
 
 | Equipment_id | Equipment_alert_location | Tijd |
 | --- | --- | --- |
@@ -932,11 +932,11 @@ Raadpleeg voor meer informatie de scenario's voor [geoomheining en georuimtelijk
 
 ## <a name="get-help"></a>Hulp vragen
 
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API-naslaggids voor Azure Stream Analytics Management](/rest/api/streamanalytics/)

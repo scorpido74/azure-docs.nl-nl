@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: e54f153738d232eaddff8b0fc499a763581ca726
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277444"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127873"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Meld u aan en start apps vanuit de portal mijn apps
 
@@ -30,7 +30,7 @@ U kunt uw werk-of school account gebruiken met de portal op het web van **mijn a
 Als u geen toegang hebt tot de portal **mijn apps** , neemt u contact op met de Help Desk van uw organisatie.
 
 > [!IMPORTANT]
-> Deze inhoud is bedoeld voor gebruikers van **Mijn apps**. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](../manage-apps/index.yml).
+> Deze inhoud is bedoeld voor gebruikers van **Mijn apps** . Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](../manage-apps/index.yml).
 
 ## <a name="supported-browsers"></a>Ondersteunde browsers
 
@@ -60,7 +60,7 @@ Als u toegang hebt tot de Cloud-apps van uw organisatie, kunt u deze bekijken vi
 
 ### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Down load en installeer de beveiligde aanmeldings extensie voor mijn apps
 
-Down load en installeer de **beveiligde aanmeldings extensie voor mijn apps**als u hierom wordt gevraagd. Met deze extensie kunt u uw desktop browser gebruiken voor het gebruik van eenmalige aanmelding met de Cloud-apps van uw organisatie. Beweeg de muis aanwijzer over een app in de portal **mijn apps** , selecteer **...** en selecteer vervolgens **uw toepassing beheren**.
+Down load en installeer de **beveiligde aanmeldings extensie voor mijn apps** als u hierom wordt gevraagd. Met deze extensie kunt u uw desktop browser gebruiken voor het gebruik van eenmalige aanmelding met de Cloud-apps van uw organisatie. Beweeg de muis aanwijzer over een app in de portal **mijn apps** , selecteer **...** en selecteer vervolgens **uw toepassing beheren** .
 
 Als uw organisatie al hebt ingesteld voor eenmalige aanmelding, wordt de extensie automatisch geïnstalleerd en kunt u deze sectie overs Laan.
 
@@ -77,9 +77,9 @@ Down load en installeer de uitbrei ding op basis van de browser die u gebruikt.
 
 - **Micro soft Edge** : Ga vanuit het Microsoft Store naar de functie [mijn apps beveiligde aanmeldings uitbreiding](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl) en selecteer vervolgens **ophalen** om de uitbrei ding voor de verouderde browser van micro soft Edge te verkrijgen.
 
-- **Google Chrome** : Ga vanuit de Chrome Web Store naar de functie [mijn apps beveiligde aanmelding](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) en selecteer vervolgens **toevoegen aan Chrome**.
+- **Google Chrome** : Ga vanuit de Chrome Web Store naar de functie [mijn apps beveiligde aanmelding](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) en selecteer vervolgens **toevoegen aan Chrome** .
 
-- **Mozilla Firefox** : Ga naar de pagina **add-** [upfuncties](https://addons.mozilla.org/firefox/addon/access-panel-extension/) van de Firefox en selecteer vervolgens **toevoegen aan Firefox**.
+- **Mozilla Firefox** : Ga naar de pagina **add-** [upfuncties](https://addons.mozilla.org/firefox/addon/access-panel-extension/) van de Firefox en selecteer vervolgens **toevoegen aan Firefox** .
 
 Er wordt aan de rechter kant van de **adres** balk een pictogram toegevoegd, zodat u zich kunt aanmelden en de uitbrei ding kunt aanpassen.
 
@@ -87,9 +87,9 @@ Er wordt aan de rechter kant van de **adres** balk een pictogram toegevoegd, zod
 
 U kunt kiezen hoeveel apps worden weer gegeven in het gedeelte **recent used** en bepalen of de interne url's van uw organisatie mogen worden omgeleid.
 
-1. Selecteer het pictogram uitbrei ding pictogram voor **beveiligde aanmeldings extensie van mijn apps** ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) rechts van de **adres** balk en selecteer **aanmelden om aan de slag te gaan**.
+1. Selecteer het pictogram uitbrei ding pictogram voor **beveiligde aanmeldings extensie van mijn apps** ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) rechts van de **adres** balk en selecteer **aanmelden om aan de slag te gaan** .
 
-1. Klik met de rechter muisknop op **de instellingen pictogram** ![ instellingen ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) en selecteer vervolgens **instellingen**.
+1. Klik met de rechter muisknop op **de instellingen pictogram** ![ instellingen ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) en selecteer vervolgens **instellingen** .
 
 1. Selecteer in het vak **instellingen** het aantal recente apps dat u wilt weer geven op de portal en geef aan of de interne url's van uw organisatie moeten worden omgeleid, zodat u ze op afstand kunt gebruiken.
 
@@ -113,11 +113,11 @@ Bekijk en gebruik de apps van uw organisatie vanuit de mobiele versie van de Edg
 
 Als uw beheerder u toestemming heeft gegeven, kunt u een nieuwe app toevoegen aan de pagina **apps** .
 
-1. Selecteer op de pagina **apps** de optie **self-service-apps toevoegen**.
+1. Selecteer op de pagina **apps** de optie **self-service-apps toevoegen** .
 
    ![Pagina apps toevoegen in de portal mijn apps op myapplications.microsoft.com](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
-1. Selecteer de app die u wilt toevoegen in de lijst met de apps en selecteer vervolgens **toevoegen**.
+1. Selecteer de app die u wilt toevoegen in de lijst met de apps en selecteer vervolgens **toevoegen** .
 
 1. De app wordt toegevoegd aan de lijst op de pagina **apps** .
 
@@ -151,7 +151,7 @@ Nadat u toegang hebt tot de portal van **mijn apps** , kunt u het volgende doen:
 
 Nadat u de pagina **apps** hebt ontvangen, kunt u het volgende doen:
 
-- [Uw profielgegevens bewerken](my-apps-portal-end-user-update-profile.md)
+- [Uw profielgegevens bewerken](./my-account-portal-settings.md)
 
 - [Gegevens over groepen weer geven en bijwerken](my-apps-portal-end-user-groups.md)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032381"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128994"
 ---
 # <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
 
@@ -49,14 +49,14 @@ In de volgende tabel ziet u de publicatie opties voor aanbiedings typen in Micro
 
 ## <a name="choose-a-listing-option"></a>Een optie voor een vermelding kiezen
 
-De beschik bare aanbiedings opties bieden een gedifferentieerde klant betrokkenheid, waarbij u toegang krijgt tot het delen van leads en [commerciële Marketplace-voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Let op de aanbiedings opties die overeenkomen met de publicatie optie:
+De beschik bare aanbiedings opties bieden een gedifferentieerde klant betrokkenheid, waarbij u toegang krijgt tot het delen van leads en [commerciële Marketplace-voor delen](./gtm-your-marketplace-benefits.md). Let op de aanbiedings opties die overeenkomen met de publicatie optie:
 
 | **Publicatie optie**    | **Beschrijving**  |
 | :------------------- | :-------------------|
 | **List** | Eenvoudige vermelding van uw toepassing of service waarmee een commerciële Marketplace-gebruiker u kan vragen verbinding te maken met de klant via de aanbiedings opties voor **contact opnemen** . |
-| **Proefversie** | Gebruik de commerciële Marketplace voor het verbeteren van de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing, waardoor potentiële gebruikers uw SaaS, IaaS of micro soft in-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanbiedings opties die worden gebruikt voor de optie voor het publiceren van de proef versie zijn een **gratis proef versie** of een **test station**. |
-| **BYOL (Bring Your Own License)** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De optie aanbieding is **nu downloaden**.
-| **Transact** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De optie aanbieding is **nu downloaden**.|
+| **Proefversie** | Gebruik de commerciële Marketplace voor het verbeteren van de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing, waardoor potentiële gebruikers uw SaaS, IaaS of micro soft in-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanbiedings opties die worden gebruikt voor de optie voor het publiceren van de proef versie zijn een **gratis proef versie** of een **test station** . |
+| **BYOL (Bring Your Own License)** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De optie aanbieding is **nu downloaden** .
+| **Transact** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De optie aanbieding is **nu downloaden** .|
 
 > [!Note]
 > Wanneer u de optie voor het publiceren van Transact gebruikt, is het belang rijk om inzicht te krijgen in de overwegingen met betrekking tot prijzen, facturering, facturering en betaling voordat u een aanbiedings type selecteert en uw aanbieding maakt. Raadpleeg het artikel [Commercial Marketplace Transact-mogelijkheden](./marketplace-commercial-transaction-capabilities-and-considerations.md)voor meer informatie.

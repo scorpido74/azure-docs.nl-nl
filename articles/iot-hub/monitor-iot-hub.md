@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 577ec9e01310787dacb45a03e1efae128cbab872
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078217"
+ms.locfileid: "93128876"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub controleren
 
@@ -23,7 +23,9 @@ De pagina **overzicht** in de Azure portal voor elke IOT-hub bevat grafieken die
 
 :::image type="content" source="media/monitor-iot-hub/overview-portal.png" alt-text="Standaard metrische grafieken op de pagina overzicht van IoT hub.":::
 
-Deze informatie is nuttig, maar geeft slechts een kleine hoeveelheid bewakings gegevens aan die beschikbaar zijn voor een IoT-hub. Sommige bewakings gegevens worden automatisch verzameld en beschikbaar voor analyse zodra u uw IoT-hub maakt. U kunt extra typen gegevens verzameling inschakelen met een bepaalde configuratie.
+Houd er rekening mee dat de waarde voor aantal berichten kan worden vertraagd met 1 minuut en dat, om redenen die met de IoT Hub service-infra structuur te maken, de waarde soms tussen hogere en lagere waarden kan worden gestuiterd bij het vernieuwen. Dit prestatie meter item mag alleen onjuist zijn voor de waarden die de laatste minuut hebben gegroeid.
+
+De informatie die wordt weer gegeven in het deel venster Overzicht is handig, maar bevat slechts een kleine hoeveelheid beschik bare bewakings gegevens voor een IoT-hub. Sommige bewakings gegevens worden automatisch verzameld en beschikbaar voor analyse zodra u uw IoT-hub maakt. U kunt extra typen gegevens verzameling inschakelen met een bepaalde configuratie.
 
 ## <a name="what-is-azure-monitor"></a>Wat is Azure Monitor?
 

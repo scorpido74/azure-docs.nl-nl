@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 837a57ee6ce836fb781f5bf5d5362d7c56cba31e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746203"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127821"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Integratie met Service-eind punten Application Gateway
 Er zijn drie variaties van App Service waarvoor een enigszins verschillende configuratie van de integratie met Azure-toepassing gateway is vereist. De variaties zijn onder andere gewone App Service, ook wel bekend als multi tenant, interne Load Balancer (ILB) App Service Environment (ASE) en externe ASE. In dit artikel wordt uitgelegd hoe u dit kunt configureren met App Service (multi tenant) en overwegingen over ILB en externe ASE kunt bespreken.
@@ -27,7 +27,7 @@ Er zijn drie variaties van App Service waarvoor een enigszins verschillende conf
 ## <a name="integration-with-app-service-multi-tenant"></a>Integratie met App Service (multi tenant)
 App Service (multi tenant) heeft een openbaar op Internet gericht eind punt. Met behulp van [service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md) kunt u alleen verkeer toestaan van een specifiek subnet binnen een Azure-Virtual Network en alle andere gegevens blok keren. In het volgende scenario gebruiken we deze functie om ervoor te zorgen dat een App Service-exemplaar alleen verkeer van een specifiek Application Gateway exemplaar kan ontvangen.
 
-![Integratie met App Service Application Gateway](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+![Diagram toont het Internet dat naar een Application Gateway in een Azure-Virtual Network wordt gestroomd en via een Firewall pictogram naar instanties van apps in App Service loopt.](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
 
 Er zijn twee delen voor deze configuratie naast het maken van de App Service en de Application Gateway. Het eerste deel is het inschakelen van service-eind punten in het subnet van de Virtual Network waar de Application Gateway wordt geïmplementeerd. Service-eind punten zorgen ervoor dat alle netwerk verkeer dat het subnet naar het App Service verlaat, wordt gelabeld met de specifieke subnet-ID. Het tweede deel is het instellen van een toegangs beperking van de specifieke Web-app om ervoor te zorgen dat alleen verkeer dat is gelabeld met deze specifieke subnet-ID is toegestaan. U kunt deze configureren met behulp van verschillende hulpprogram ma's, afhankelijk van de voor keur.
 
@@ -40,7 +40,7 @@ Met Azure Portal voert u vier stappen uit om de installatie in te richten en te 
 
 U hebt nu toegang tot de App Service via Application Gateway, maar als u de App Service rechtstreeks probeert te openen, ontvangt u een 403 HTTP-fout melding die aangeeft dat de website is gestopt.
 
-![Integratie met App Service Application Gateway](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+![Scherm afbeelding toont de tekst van de fout 403: deze web-app is gestopt.](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
 
 ## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager-sjabloon gebruiken
 In de [Resource Manager-implementatie sjabloon][template-app-gateway-app-service-complete] wordt een volledig scenario ingericht. Het scenario bestaat uit een App Service exemplaar dat is vergrendeld met Service-eind punten en toegangs beperking om alleen verkeer van Application Gateway te ontvangen. De sjabloon bevat veel slimme standaard waarden en unieke postfixes die zijn toegevoegd aan de resource namen om eenvoudig te zijn. Als u deze wilt overschrijven, moet u de opslag plaats klonen of de sjabloon downloaden en bewerken. 

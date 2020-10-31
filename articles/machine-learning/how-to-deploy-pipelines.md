@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de2b12bca10382d7e885626222fe463af27f9953
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302380"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128772"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>machine learning pijp lijnen publiceren en bijhouden
 
@@ -95,9 +95,148 @@ Het `json` argument voor de post-aanvraag moet voor de `ParameterAssignments` sl
 | `DataSetDefinitionValueAssignments` | Woorden lijst die wordt gebruikt voor het wijzigen van gegevens sets zonder opnieuw te trainen (Zie de onderstaande discussie) | 
 | `DataPathAssignments` | Woorden lijst die wordt gebruikt voor het wijzigen van datapaths zonder opnieuw te trainen (Zie de onderstaande discussie) | 
 
+### <a name="run-a-published-pipeline-using-c"></a>Een gepubliceerde pijp lijn uitvoeren met C # 
+
+De volgende code laat zien hoe u een pijp lijn asynchroon aanroept vanuit C#. Het deel code fragment bevat alleen de gespreks structuur en maakt geen deel uit van een micro soft-voor beeld. Er worden geen volledige klassen of fout afhandeling weer gegeven. 
+
+```csharp
+[DataContract]
+public class SubmitPipelineRunRequest
+{
+    [DataMember]
+    public string ExperimentName { get; set; }
+
+    [DataMember]
+    public string Description { get; set; }
+
+    [DataMember(IsRequired = false)]
+    public IDictionary<string, string> ParameterAssignments { get; set; }
+}
+
+// ... in its own class and method ... 
+const string RestEndpoint = "your-pipeline-endpoint";
+
+using (HttpClient client = new HttpClient())
+{
+    var submitPipelineRunRequest = new SubmitPipelineRunRequest()
+    {
+        ExperimentName = "YourExperimentName", 
+        Description = "Asynchronous C# REST api call", 
+        ParameterAssignments = new Dictionary<string, string>
+        {
+            {
+                // Replace with your pipeline parameter keys and values
+                "your-pipeline-parameter", "default-value"
+            }
+        }
+    };
+
+    string auth_key = "your-auth-key"; 
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", auth_key);
+
+    // submit the job
+    var requestPayload = JsonConvert.SerializeObject(submitPipelineRunRequest);
+    var httpContent = new StringContent(requestPayload, Encoding.UTF8, "application/json");
+    var submitResponse = await client.PostAsync(RestEndpoint, httpContent).ConfigureAwait(false);
+    if (!submitResponse.IsSuccessStatusCode)
+    {
+        await WriteFailedResponse(submitResponse); // ... method not shown ...
+        return;
+    }
+
+    var result = await submitResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+    var obj = JObject.Parse(result);
+    // ... use `obj` dictionary to access results
+}
+```
+
+### <a name="run-a-published-pipeline-using-java"></a>Een gepubliceerde pijp lijn uitvoeren met Java
+
+De volgende code toont een aanroep naar een pijp lijn waarvoor authenticatie is vereist (Zie [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md)). Als uw pijp lijn openbaar wordt geïmplementeerd, hebt u de aanroepen die produceren niet nodig `authKey` . In het deel code fragment wordt geen standaard Java-klasse en uitzonderings afhandeling weer gegeven. De code gebruikt `Optional.flatMap` voor het koppelen van functies die een lege waarde kunnen retour neren `Optional` . Het gebruik van `flatMap` verkortingen en verduidelijkt de code, maar houd er rekening mee dat `getRequestBody()` uitzonde ringen worden verslikken.
+
+```java
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.Optional;
+// JSON library
+import com.google.gson.Gson;
+
+String scoringUri = "scoring-endpoint";
+String tenantId = "your-tenant-id";
+String clientId = "your-client-id";
+String clientSecret = "your-client-secret";
+String resourceManagerUrl = "https://management.azure.com";
+String dataToBeScored = "{ \"ExperimentName\" : \"My_Pipeline\", \"ParameterAssignments\" : { \"pipeline_arg\" : \"20\" }}";
+
+HttpClient client = HttpClient.newBuilder().build();
+Gson gson = new Gson();
+
+HttpRequest tokenAuthenticationRequest = tokenAuthenticationRequest(tenantId, clientId, clientSecret, resourceManagerUrl);
+Optional<String> authBody = getRequestBody(client, tokenAuthenticationRequest);
+Optional<String> authKey = authBody.flatMap(body -> Optional.of(gson.fromJson(body, AuthenticationBody.class).access_token);;
+Optional<HttpRequest> scoringRequest = authKey.flatMap(key -> Optional.of(scoringRequest(key, scoringUri, dataToBeScored)));
+Optional<String> scoringResult = scoringRequest.flatMap(req -> getRequestBody(client, req));
+// ... etc (`scoringResult.orElse()`) ... 
+
+static HttpRequest tokenAuthenticationRequest(String tenantId, String clientId, String clientSecret, String resourceManagerUrl)
+{
+    String authUrl = String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId);
+    String clientIdParam = String.format("client_id=%s", clientId);
+    String resourceParam = String.format("resource=%s", resourceManagerUrl);
+    String clientSecretParam = String.format("client_secret=%s", clientSecret);
+
+    String bodyString = String.format("grant_type=client_credentials&%s&%s&%s", clientIdParam, resourceParam, clientSecretParam);
+
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(authUrl))
+        .POST(HttpRequest.BodyPublishers.ofString(bodyString))
+        .build();
+    return request;
+}
+
+static HttpRequest scoringRequest(String authKey, String scoringUri, String dataToBeScored)
+{
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(scoringUri))
+        .header("Authorization", String.format("Token %s", authKey))
+        .POST(HttpRequest.BodyPublishers.ofString(dataToBeScored))
+        .build();
+    return request;
+
+}
+
+static Optional<String> getRequestBody(HttpClient client, HttpRequest request) {
+    try {
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 200) {
+            System.out.println(String.format("Unexpected server response %d", response.statusCode()));
+            return Optional.empty();
+        }
+        return Optional.of(response.body());
+    }catch(Exception x)
+    {
+        System.out.println(x.toString());
+        return Optional.empty();
+    }
+}
+
+class AuthenticationBody {
+    String access_token;
+    String token_type;
+    int expires_in;
+    String scope;
+    String refresh_token;
+    String id_token;
+    
+    AuthenticationBody() {}
+}
+```
+
 ### <a name="changing-datasets-and-datapaths-without-retraining"></a>Gegevens sets en datapaths wijzigen zonder opnieuw te trainen
 
-Mogelijk wilt u de verschillende gegevens sets en datapaths trainen en dezichpen. U kunt bijvoorbeeld een kleinere, sparse gegevensset trainen, maar voor de volledige gegevensset afleiden. U schakelt gegevens sets door met de `DataSetDefinitionValueAssignments` sleutel in het argument van de aanvraag `json` . U schakelt datapaths door `DataPathAssignments` . De techniek voor beide is vergelijkbaar:
+Mogelijk wilt u de verschillende gegevens sets en datapaths trainen en dezichpen. U kunt bijvoorbeeld op een kleinere gegevensset trainen, maar de volledige gegevensset afleiden. U schakelt gegevens sets door met de `DataSetDefinitionValueAssignments` sleutel in het argument van de aanvraag `json` . U schakelt datapaths door `DataPathAssignments` . De techniek voor beide is vergelijkbaar:
 
 1. Maak een voor de gegevensset in het definitie script van de pijp lijn `PipelineParameter` . Maak een `DatasetConsumptionConfig` of `DataPath` op basis van `PipelineParameter` :
 
@@ -155,7 +294,7 @@ De notitie blokken voor het inzien van [gegevensset en PipelineParameter](https:
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Een versie-pipeline-eind punt maken
 
-U kunt een pijplijn eindpunt met meerdere gepubliceerde pijp lijnen achter het eind punt maken. Dit geeft u een vast REST-eind punt wanneer u uw ML-pijp lijnen herhaalt en bijwerkt.
+U kunt een pijplijn eindpunt met meerdere gepubliceerde pijp lijnen achter het eind punt maken. Deze techniek geeft u een vast REST-eind punt wanneer u uw ML-pijp lijnen herhaalt en bijwerkt.
 
 ```python
 from azureml.pipeline.core import PipelineEndpoint
@@ -201,9 +340,9 @@ U kunt ook een gepubliceerde pijp lijn uitvoeren vanuit de studio:
 
 1. [Uw werk ruimte weer geven](how-to-manage-workspace.md#view).
 
-1. Selecteer aan de linkerkant **eind punten**.
+1. Selecteer aan de linkerkant **eind punten** .
 
-1. Selecteer bovenaan de **pijp lijn-eind punten**.
+1. Selecteer bovenaan de **pijp lijn-eind punten** .
  ![lijst met machine learning gepubliceerde pijp lijnen](./media/how-to-create-your-first-pipeline/pipeline-endpoints.png)
 
 1. Selecteer een specifieke pijp lijn om uit te voeren, te gebruiken of Bekijk de resultaten van de vorige uitvoeringen van het pijplijn eindpunt.

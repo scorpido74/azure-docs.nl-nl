@@ -10,13 +10,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sashan
 ms.reviewer: ''
-ms.date: 07/29/2020
-ms.openlocfilehash: 7a80f6ef918ac42f43eee2ccc8acae09c5008129
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/30/2020
+ms.openlocfilehash: 53e62d790514bd3fb5bef93788fa78944db28c2c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748891"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127736"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Een transactioneel consistente kopie van een data base in Azure SQL Database kopiëren
 
@@ -29,7 +29,7 @@ Azure SQL Database biedt verschillende methoden voor het maken van een kopie van
 Een database kopie is een transactionele consistente moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gestart. U kunt dezelfde server of een andere server voor de kopie selecteren. U kunt er ook voor kiezen om de back-upredundantie, de servicelaag en de berekenings grootte van de bron database te bewaren, of om een andere back-upopslag en/of reken grootte binnen dezelfde of een andere servicelaag te gebruiken. Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. De aanmeldingen, gebruikers en machtigingen in de gekopieerde Data Base worden onafhankelijk van de bron database beheerd. De kopie wordt gemaakt met behulp van de geo-replicatie technologie. Zodra de replica-seeding is voltooid, wordt de geo-replicatiekoppeling automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de kopieerbewerking van de database. Zie [overzicht van actieve geo-replicatie](active-geo-replication-overview.md) voor meer informatie.
 
 > [!NOTE]
-> Azure SQL Database Configureer bare redundantie van back-upopslag is momenteel algemeen beschikbaar in de Azure-regio Zuidoost-Azië. Als de bron database in de preview-versie is gemaakt met lokaal redundante of zone redundante back-upopslag redundantie, wordt het kopiëren van de Data Base naar een server in een andere Azure-regio niet ondersteund. 
+> Azure SQL Database Configureer bare back-upopslag redundantie is momenteel beschikbaar in de open bare preview-versie van Brazilië-zuid en is algemeen alleen beschikbaar in de Azure-regio Zuidoost-Azië. Als de bron database in de preview-versie is gemaakt met lokaal redundante of zone redundante back-upopslag redundantie, wordt het kopiëren van de Data Base naar een server in een andere Azure-regio niet ondersteund. 
 
 ## <a name="logins-in-the-database-copy"></a>Aanmeldingen in de database kopie
 

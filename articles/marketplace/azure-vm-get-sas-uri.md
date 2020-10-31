@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 10/19/2020
-ms.openlocfilehash: b927e90c60110d6922649b75b6549528a2a9a40f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ead367568762d4b76de7164feb56b7a31cd53e0d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284275"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129113"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Een SAS-URI voor een VM-installatie kopie genereren
 
@@ -34,12 +34,12 @@ Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
 
 ### <a name="using-tool-1-azure-storage-explorer"></a>Hulp programma 1 gebruiken: Azure Storage Explorer
 
-1. Ga naar uw **opslag account**.
-1. Open **Storage Explorer**.
+1. Ga naar uw **opslag account** .
+1. Open **Storage Explorer** .
 
     :::image type="content" source="media/create-vm/storge-account-explorer.png" alt-text="Venster opslag account.":::
 
-3. Klik in de **container**met de rechter muisknop op het VHD-bestand en selecteer **hand tekening voor share toegang ophalen**.
+3. Klik in de **container** met de rechter muisknop op het VHD-bestand en selecteer **hand tekening voor share toegang ophalen** .
 4. Voer in het dialoog venster **Shared Access Signature** de volgende velden in:
 
     1. Begin tijd – machtigings begindatum voor toegang tot de virtuele harde schijf. Geef een datum op die één dag voor de huidige datum valt.
@@ -49,7 +49,7 @@ Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
 
     ![Het dialoog venster Shared Access Signature.](media/vm/create-sas-uri-storage-explorer.png)
 
-5. Selecteer **maken**om de bijbehorende SAS-URI voor deze VHD te maken.
+5. Selecteer **maken** om de bijbehorende SAS-URI voor deze VHD te maken.
 6. Kopieer de URI en sla deze op in een tekst bestand op een veilige locatie. Deze gegenereerde SAS-URI is voor toegang op container niveau. Als u deze specifiek wilt maken, bewerkt u het tekst bestand om de naam van de VHD toe te voegen.
 7. Plaats de naam van de VHD achter de vhd's-teken reeks in de SAS-URI (neem een slash op). De uiteindelijke SAS-URI moet er als volgt uitzien:
 
@@ -59,7 +59,7 @@ Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
 
 ### <a name="using-tool-2-azure-cli"></a>Hulp programma 2: Azure CLI gebruiken
 
-1. Down load en Installeer [Microsoft Azure LC](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)I. Er zijn versies beschikbaar voor Windows, macOS en verschillende distributies van Linux.
+1. Down load en Installeer [Microsoft Azure LC](/cli/azure/install-azure-cli)I. Er zijn versies beschikbaar voor Windows, macOS en verschillende distributies van Linux.
 2. Maak een Power shell-bestand (. ps1-bestands extensie), kopieer de volgende code en sla deze lokaal op.
 
     ```JSON
@@ -81,8 +81,8 @@ Er zijn twee algemene hulpprogram ma's voor het maken van een SAS-adres (URL):
 1. Sla de wijzigingen op.
 2. Gebruik een van de volgende methoden om dit script uit te voeren met beheerders bevoegdheden voor het maken van een SAS-connection string voor toegang op container niveau:
 
-    - Voer het script uit vanaf de-console. Klik in Windows met de rechter muisknop op het script en selecteer **als administrator uitvoeren**.
-    - Voer het script uit vanuit een Power shell-script editor, zoals [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise). In dit scherm wordt het maken van een SAS-connection string in deze editor weer gegeven:
+    - Voer het script uit vanaf de-console. Klik in Windows met de rechter muisknop op het script en selecteer **als administrator uitvoeren** .
+    - Voer het script uit vanuit een Power shell-script editor, zoals [Windows PowerShell ISE](/powershell/scripting/components/ise/introducing-the-windows-powershell-ise). In dit scherm wordt het maken van een SAS-connection string in deze editor weer gegeven:
 
     [![een SAS-connection string maken in de Power shell-editor](media/vm/create-sas-uri-power-shell-ise.png)](media/vm/create-sas-uri-power-shell-ise.png#lightbox)
 

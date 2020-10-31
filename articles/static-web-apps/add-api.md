@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e90c023fa74711246c2e6e69eb576695e86a457
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250144"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128501"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Een API toevoegen aan de preview-versie van statische Web Apps van Azure met Azure Functions
 
@@ -33,15 +33,15 @@ U kunt serverloze Api's toevoegen aan statische Azure-Web Apps via integratie me
 De volgende stappen laten zien hoe u een nieuwe opslag plaats maakt en de bestanden naar uw computer kloont.
 
 1. Zorg ervoor dat u bent aangemeld bij GitHub en ga naar https://github.com/staticwebdev/vanilla-basic/generate om een nieuwe opslag plaats te maken.
-1. Voer in het vak _naam van opslag plaats_ **mijn-vanille-API**in.
-1. Klik op **opslagplaats maken op basis van sjabloon**.
+1. Voer in het vak _naam van opslag plaats_ **mijn-vanille-API** in.
+1. Klik op **opslagplaats maken op basis van sjabloon** .
 
    :::image type="content" source="media/add-api/create-repository.png" alt-text="Een nieuwe opslag plaats maken op basis van vanille-Basic":::
 
 Wanneer het project is gemaakt, kopieert u de URL in uw browser naar de nieuwe opslag plaats. U gebruikt deze URL in Visual Studio code om de Git-opslag plaats te klonen.
 
 1. Druk op **F1** om de opdracht in het opdracht palet te openen.
-1. Plak de URL in de modus _git: Clone_ en druk op **Enter**.
+1. Plak de URL in de modus _git: Clone_ en druk op **Enter** .
 
    :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Een nieuwe opslag plaats maken op basis van vanille-Basic":::
 
@@ -51,7 +51,7 @@ Wanneer het project is gemaakt, kopieert u de URL in uw browser naar de nieuwe o
 
 Vervolgens maakt u een Azure Functions project als de API van de toepassing. 
 
-1. Maak in het _vanille-API-_ project een submap met de naam **API**.
+1. Maak in het _vanille-API-_ project een submap met de naam **API** .
 1. Druk op **F1** om het opdracht palet te openen
 1. Typ **Azure functions: nieuw project maken...**
 1. Druk op **Enter**
@@ -63,10 +63,10 @@ Vervolgens maakt u een Azure Functions project als de API van de toepassing.
 
 1. Geef de volgende informatie op bij de prompts:
 
-    - _Selecteer een taal_: **Java script** kiezen
-    - _Selecteer een sjabloon voor de eerste functie van uw project_: **http-trigger** kiezen
-    - _Geef een functie naam_op: Voer **GetMessage** in
-    - _Autorisatie niveau_: Kies **anoniem**, waarmee iedereen uw functie-eind punt kan aanroepen.
+    - _Selecteer een taal_ : **Java script** kiezen
+    - _Selecteer een sjabloon voor de eerste functie van uw project_ : **http-trigger** kiezen
+    - _Geef een functie naam_ op: Voer **GetMessage** in
+    - _Autorisatie niveau_ : Kies **anoniem** , waarmee iedereen uw functie-eind punt kan aanroepen.
         - Zie [autorisatie sleutels](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)voor meer informatie over autorisatie niveaus.
 
 Met Visual Studio code wordt een Azure Functions project gegenereerd met een door HTTP geactiveerde functie.
@@ -195,7 +195,7 @@ Bij implementatie naar Azure worden aanvragen voor de API automatisch doorgestuu
 
 1. Druk op **F5** om het API-project te starten.
 
-1. Druk op **F1** en kies **Live server: openen met live server**.
+1. Druk op **F1** en kies **Live server: openen met live server** .
 
     U ziet nu het API-bericht op de webpagina.
 
@@ -222,13 +222,13 @@ Gebruik Visual Studio code om uw wijzigingen door te voeren en te pushen naar de
 1. Klik op **Een resource maken**
 1. Zoeken naar **statische web-app**
 1. Klik op **statische web-app (preview-versie)**
-1. Klik op **Maken**.
+1. Klik op **Maken** .
 
 Voeg vervolgens de app-specifieke instellingen toe.
 
 1. Selecteer uw _Azure-abonnement_
 1. Een nieuwe _Resourcegroep_ selecteren of maken
-1. Geef de app de naam **My-vanille-API**.
+1. Geef de app de naam **My-vanille-API** .
 1. Selecteer de _regio_ die het dichtst bij u ligt
 1. Selecteer de **gratis** _SKU_
 1. Klik op de knop **Aanmelden bij GitHub** en verifieer u bij GitHub
@@ -239,10 +239,10 @@ Voeg vervolgens de app-specifieke instellingen toe.
 
 Voeg vervolgens de volgende details van de build toe.
 
-1. Voer **/** in voor de locatie van de _app_.
+1. Voer **/** in voor de locatie van de _app_ .
 1. Voer de **API** in het vak _API-locatie_ in.
-1. Wis de standaard waarde uit de locatie van het _app-artefact_en laat het vak leeg.
-1. Klik op **Controleren + maken**.
+1. Wis de standaard waarde uit de locatie van het _app-artefact_ en laat het vak leeg.
+1. Klik op **Controleren + maken** .
 1. Klik op de knop **Maken**
 
     Nadat u op de knop _maken_ hebt geklikt, voert Azure twee dingen uit. Eerst worden de onderliggende Cloud Services gemaakt ter ondersteuning van de app. Vervolgens begint een achtergrond proces met het bouwen en implementeren van de toepassing.
@@ -264,11 +264,11 @@ Als u deze toepassing niet wilt blijven gebruiken voor verder gebruik, kunt u de
 1. Ga naar [Azure Portal](https://portal.azure.com)
 1. Typ in de bovenste zoek balk **resource groepen**
 1. Klik op **resource groepen**
-1. Selecteer **myResourceGroup**.
+1. Selecteer **myResourceGroup** .
 1. Controleer op de pagina _myResourceGroup_ of de weergegeven resources de resources zijn die u wilt verwijderen.
 1. Selecteer **verwijderen**
 1. Typ **myResourceGroup** in het tekstvak
-1. Selecteer **Verwijderen**.
+1. Selecteer **Verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
