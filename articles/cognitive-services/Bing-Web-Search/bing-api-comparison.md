@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a982c150349ca31fdf93a38b38910c3572b14d2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74775537"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078761"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Wat zijn de Bing Zoeken-API's?
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Met de Bing Search-API's kunt u web-apps en -services maken die webpagina's, afbeeldingen, nieuws, locaties en nog veel meer vinden zonder advertenties. Door Zoek aanvragen te verzenden met behulp van de Bing Search REST-Api's of Sdk's, kunt u relevante informatie en inhoud voor zoeken op het web ophalen. In dit artikel vindt u meer informatie over de verschillende Bing zoeken-Api's en over hoe u cognitieve Zoek opdrachten kunt integreren in uw toepassingen en services. Prijzen en frequentie limieten kunnen per Api's verschillen.
 

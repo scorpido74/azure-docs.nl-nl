@@ -6,24 +6,30 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7f177a7801e18bcdb2c2d6ef737f0c790cf6b1d1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057753"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075786"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Toegang tot Azure Storage als een netwerkshare vanuit een container in App Service
+# <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Toegang Azure Storage (preview) als een netwerk share van een container in App Service
 
 ::: zone pivot="container-windows"
 
 In deze hand leiding wordt beschreven hoe u Azure Storage-bestanden als een netwerk share koppelt aan een Windows-container in App Service. Alleen [Azure files shares](../storage/files/storage-how-to-use-files-cli.md) en [Premium-bestands shares](../storage/files/storage-how-to-create-premium-fileshare.md) worden ondersteund. Voor delen zijn onder andere beveiligde inhoud, portabiliteit van inhoud, toegang tot meerdere apps en meerdere overdrachts methoden.
+
+> [!NOTE]
+>Azure Storage in App Service is **een preview-versie** en wordt **niet ondersteund** voor **productie scenario's** .
 
 ::: zone-end
 
 ::: zone pivot="container-linux"
 
 In deze hand leiding wordt uitgelegd hoe u Azure Storage kunt koppelen aan een Linux-container App Service. Voor delen zijn onder andere beveiligde inhoud, draag baarheid van inhoud, permanente opslag, toegang tot meerdere apps en meerdere overdrachts methoden.
+
+> [!NOTE]
+>Azure Storage in App Service is **in Preview** voor app service in Linux en Web App for containers. Het wordt **niet ondersteund** voor **productie scenario's** .
 
 ::: zone-end
 
@@ -53,7 +59,6 @@ In deze hand leiding wordt uitgelegd hoe u Azure Storage kunt koppelen aan een L
 
 ::: zone pivot="container-windows"
 
-- Azure Storage in App Service is **een preview-versie** en wordt **niet ondersteund** voor **productie scenario's**.
 - Azure Storage in App Service wordt momenteel **niet ondersteund** voor het nemen van uw eigen code scenario's (niet-container Windows-apps).
 - Azure Storage in App Service biedt **geen ondersteuning** voor het gebruik van de **opslag firewall** -configuratie vanwege beperkingen van de infra structuur.
 - Met Azure Storage met App Service kunt u **Maxi maal vijf** koppel punten per app opgeven.
@@ -63,7 +68,6 @@ In deze hand leiding wordt uitgelegd hoe u Azure Storage kunt koppelen aan een L
 
 ::: zone pivot="container-linux"
 
-- Azure Storage in App Service is **in Preview** voor app service in Linux en Web App for containers. Het wordt **niet ondersteund** voor **productie scenario's**.
 - Azure Storage in App Service ondersteunt het koppelen van **Azure files containers** (lezen/schrijven) en **Azure Blob-containers** (alleen-lezen)
 - Met Azure Storage in App Service kunt u **Maxi maal vijf** koppel punten per app opgeven.
 - Azure Storage die aan een app zijn gekoppeld, is niet toegankelijk via App Service FTP-en FTPs-eind punten. Gebruik [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).

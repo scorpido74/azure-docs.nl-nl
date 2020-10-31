@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad021b4d219353a6037988c164bb34cac6761682
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696708"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078625"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>De antwoorden filteren die het zoek antwoord bevat  
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Wanneer u een query op het web uitvoert, retourneert Bing alle relevante inhoud die wordt gevonden voor de zoek opdracht. Als de zoek query bijvoorbeeld ' zeil-en dinghies ' is, kan het antwoord de volgende antwoorden bevatten:
 
@@ -131,7 +136,7 @@ De resultaten kunnen webpagina's bevatten die buiten de opgegeven periode vallen
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>Het aantal antwoorden in het antwoord beperken
 
-Bing kan meerdere antwoord typen retour neren in het JSON-antwoord. Als u bijvoorbeeld query's gaat uitvoeren op *dinghies*, kan Bing retour neren `webpages` , `images` , `videos` en `relatedSearches` .
+Bing kan meerdere antwoord typen retour neren in het JSON-antwoord. Als u bijvoorbeeld query's gaat uitvoeren op *dinghies* , kan Bing retour neren `webpages` , `images` , `videos` en `relatedSearches` .
 
 ```json
 {

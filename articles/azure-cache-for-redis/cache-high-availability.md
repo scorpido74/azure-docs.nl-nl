@@ -4,27 +4,27 @@ description: Meer informatie over Azure cache voor redis-functies en-opties voor
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 10/28/2020
 ms.author: yegu
-ms.openlocfilehash: f0bb8fd2d0b0ac271a167ad5474a55646bdafc65
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e44aed1415f85bf4ea597eac6720207301946b97
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536790"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076908"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hoge Beschik baarheid voor Azure cache voor redis
 
 Azure cache voor redis heeft ingebouwde hoge Beschik baarheid. Het doel van de architectuur met hoge Beschik baarheid is ervoor te zorgen dat uw beheerde redis-exemplaar werkt, zelfs wanneer de onderliggende virtuele machines (Vm's) worden beïnvloed door geplande of ongeplande uitval. Het biedt veel meer percentages dan wat kan worden bereikt door redis op één virtuele machine te hosten.
 
-Azure cache voor redis implementeert hoge Beschik baarheid door gebruik te maken van meerdere Vm's, *knoop punten* genoemd, voor een cache. Deze knoop punten worden zo geconfigureerd dat gegevens replicatie en failover op gecoördineerde wijze plaatsvinden. Daarnaast worden er onderhouds bewerkingen, zoals redis-software patches, beheerd. Er zijn verschillende opties voor hoge Beschik baarheid beschikbaar in de lagen Standard en Premium:
+Azure cache voor redis implementeert hoge Beschik baarheid door gebruik te maken van meerdere Vm's, *knoop punten* genoemd, voor een cache. Deze knoop punten worden zo geconfigureerd dat gegevens replicatie en failover op gecoördineerde wijze plaatsvinden. Daarnaast worden er onderhouds bewerkingen, zoals redis-software patches, beheerd. Er zijn verschillende opties voor hoge Beschik baarheid beschikbaar in de lagen Standard, Premium en Enter prise:
 
-| Optie | Beschrijving | Beschikbaarheid | Standard | Premium |
-| ------------------- | ------- | ------- | :------: | :---: |
-| [Standaard replicatie](#standard-replication)| Configuratie met twee knoop punten gerepliceerd in één Data Center of beschikbaarheids zone (AZ), met automatische failover | 99,9% |✔|✔|
-| [Meerdere replica's](#multiple-replicas) | Gerepliceerde configuratie met meerdere knoop punten in een of meer AZs, met automatische failover | 99,95% (met zone redundantie) |-|✔|
-| [Zoneredundantie](#zone-redundancy) | Gerepliceerde configuratie met meerdere knoop punten op AZs, met automatische failover | 99,95% (met meerdere replica's) |-|✔|
-| [Geo-replicatie](#geo-replication) | Gekoppelde cache-instanties in twee regio's met door de gebruiker beheerde failover | 99,9% (voor een enkele regio) |-|✔|
+| Optie | Beschrijving | Beschikbaarheid | Standard | Premium | Enterprise |
+| ------------------- | ------- | ------- | :------: | :---: | :---: |
+| [Standaard replicatie](#standard-replication)| Configuratie met twee knoop punten gerepliceerd in één Data Center of beschikbaarheids zone (AZ), met automatische failover | 99,9% |✔|✔|-|
+| [Bedrijfs cluster](#enterprise-cluster) | Gekoppelde cache-instanties in twee regio's, met automatische failover | 99,9% |-|-|✔|
+| [Zoneredundantie](#zone-redundancy) | Gerepliceerde configuratie met meerdere knoop punten op AZs, met automatische failover | 99,95% (standaard replicatie), 99,99% (ondernemings cluster) |-|✔|✔|
+| [Geo-replicatie](#geo-replication) | Gekoppelde cache-instanties in twee regio's met door de gebruiker beheerde failover | 99,9% (voor een enkele regio) |-|✔|-|
 
 ## <a name="standard-replication"></a>Standaard replicatie
 
@@ -41,14 +41,23 @@ Als het primaire knoop punt in een redis-cache niet beschikbaar is, wordt de rep
 
 Een primair knoop punt kan buiten gebruik worden genomen als onderdeel van een geplande onderhouds activiteit, zoals de redis-software of de update van het besturings systeem. Het kan ook niet meer werken vanwege niet-geplande gebeurtenissen, zoals storingen in onderliggende hardware, software of netwerk. [Failover en Patching voor Azure cache voor redis](cache-failover.md) biedt een gedetailleerde uitleg over de typen redis-failovers. Een Azure-cache voor redis gaat tijdens de levens duur over veel failovers. De architectuur met hoge Beschik baarheid is zo ontworpen dat deze wijzigingen in een cache zo doorzichtig mogelijk worden gemaakt voor de clients.
 
-## <a name="multiple-replicas"></a>Meerdere replica's
+>[!NOTE]
+>Het volgende is beschikbaar als een preview-versie.
+>
+>
+
+Bovendien kunnen met Azure cache voor redis extra replica knooppunten worden toegevoegd aan de Premium-laag. Een [cache met meerdere replica's](cache-how-to-multi-replicas.md) kan worden geconfigureerd met Maxi maal drie replica knooppunten. Als u meer replica's hebt, wordt de tolerantie in het algemeen verbeterd vanwege de extra knoop punten die een back-up maken van de primaire. Zelfs met meer replica's kan een Azure-cache voor redis-exemplaar nog steeds ernstige gevolgen ondervinden van een storing in een Data Center of AZ-Wide. U kunt de beschik baarheid van de cache verhogen met behulp van meerdere replica's in combi natie met [zone redundantie](#zone-redundancy).
+
+## <a name="enterprise-cluster"></a>Bedrijfs cluster
 
 >[!NOTE]
 >Dit is beschikbaar als een preview-versie.
 >
 >
 
-Met Azure cache voor redis worden extra replica knooppunten in de Premium-laag toegestaan. Een [cache met meerdere replica's](cache-how-to-multi-replicas.md) kan worden geconfigureerd met Maxi maal drie replica knooppunten. Als u meer replica's hebt, wordt de tolerantie in het algemeen verbeterd vanwege de extra knoop punten die een back-up maken van de primaire. Zelfs met meer replica's kan een Azure-cache voor redis-exemplaar nog steeds ernstige gevolgen ondervinden van een storing in een Data Center of AZ-Wide. U kunt de beschik baarheid van de cache verhogen met behulp van meerdere replica's in combi natie met [zone redundantie](#zone-redundancy).
+Een cache in de Enter prise-laag wordt uitgevoerd op een redis-bedrijfs cluster. Hiervoor is een oneven aantal server knooppunten altijd vereist om een quorum te vormen. Deze bestaat standaard uit drie knoop punten, die allemaal worden gehost op een specifieke virtuele machine. Een ondernemings cache heeft twee *gegevens knooppunten* met dezelfde grootte en één kleiner *quorum knooppunt* . Een Enter prise Flash-cache heeft drie gegevens knooppunten met dezelfde grootte. Het bedrijfs cluster deelt redis gegevens intern op in partities. Elke partitie heeft een *primair* en ten minste één *replica* . Elk gegevens knooppunt bevat een of meer partities. Het ondernemings cluster zorgt ervoor dat de primaire en replica (s) van een wille keurige partitie nooit op hetzelfde gegevens knooppunt staan. Partities repliceren gegevens asynchroon van Primaries naar de bijbehorende replica's.
+
+Wanneer een gegevens knooppunt niet beschikbaar is of als er een netwerk splitsing plaatsvindt, wordt een failover uitgevoerd die lijkt op die in de [standaard replicatie](#standard-replication) wordt beschreven. Het ondernemings cluster maakt gebruik van een op quorum gebaseerd model om te bepalen welke knoop punten in een nieuw quorum zullen deel nemen. Ook worden de replica partities binnen deze knoop punten zo nodig naar Primaries gepromoot.
 
 ## <a name="zone-redundancy"></a>Zoneredundantie
 
@@ -57,7 +66,7 @@ Met Azure cache voor redis worden extra replica knooppunten in de Premium-laag t
 >
 >
 
-Azure cache voor redis ondersteunt zone redundante configuraties in de Premium-laag. Een [zone-redundante cache](cache-how-to-zone-redundancy.md) kan zijn knoop punten in verschillende [Azure-beschikbaarheidszones](../availability-zones/az-overview.md) in dezelfde regio plaatsen. Het elimineert Data Center of AZ-uitval als Single Point of Failure en verhoogt de algehele Beschik baarheid van uw cache.
+Azure cache voor redis ondersteunt zone redundante configuraties in de Premium-en Enter prise-lagen. Een [zone-redundante cache](cache-how-to-zone-redundancy.md) kan zijn knoop punten in verschillende [Azure-beschikbaarheidszones](../availability-zones/az-overview.md) in dezelfde regio plaatsen. Het elimineert Data Center of AZ-uitval als Single Point of Failure en verhoogt de algehele Beschik baarheid van uw cache.
 
 In het volgende diagram ziet u de zone redundante configuratie:
 

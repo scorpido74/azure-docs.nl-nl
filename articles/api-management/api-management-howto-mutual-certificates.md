@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 419de27ad87b113de62dacb0dc384702420afbd6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 980d3ca52016c65301ea72e4e669c4bafea4c053
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071112"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077180"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Back-endservices beveiligen met behulp van verificatie via clientcertificaten in Azure API Management
 
@@ -43,15 +43,15 @@ Volg de onderstaande stappen om een nieuw client certificaat te uploaden. Als u 
 
 1. Navigeer naar uw Azure API Management service-exemplaar in de Azure Portal.
 2. Selecteer **certificaten** in het menu.
-3. Klik op de knop **+ Toevoegen**.
-    ![Client certificaten toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+3. Klik op de knop **+ Toevoegen** .
+    ![Scherm afbeelding met de knop + toevoegen.](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Blader naar het certificaat en geef de ID en het wacht woord op.
-5. Klik op **Create**.
+5. Klik op **Create** .
 
 > [!NOTE]
 > Het certificaat moet de indeling **. pfx** hebben. Zelfondertekende certificaten zijn toegestaan.
 
-Zodra het certificaat is geüpload, wordt het weer gegeven in de **certificaten**.  Als u veel certificaten hebt, noteert u de vinger afdruk van het gewenste certificaat om [een API te configureren voor het gebruik van een client certificaat voor gateway verificatie][Configure an API to use a client certificate for gateway authentication].
+Zodra het certificaat is geüpload, wordt het weer gegeven in de **certificaten** .  Als u veel certificaten hebt, noteert u de vinger afdruk van het gewenste certificaat om [een API te configureren voor het gebruik van een client certificaat voor gateway verificatie][Configure an API to use a client certificate for gateway authentication].
 
 > [!NOTE]
 > Als u validatie van certificaat keten wilt uitschakelen wanneer u bijvoorbeeld een zelfondertekend certificaat gebruikt, volgt u de stappen die worden beschreven in dit Veelgestelde vragen [item](api-management-faq.md#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end).
@@ -73,9 +73,9 @@ Als het certificaat wordt gebruikt door een API, wordt er een waarschuwings sche
 
 2. Klik op het tabblad **ontwerp** op een potlood pictogram van de **back-end** -sectie.
 3. Wijzig de **Gateway referenties** in het **client certificaat** en selecteer uw certificaat in de vervolg keuzelijst.
-    ![Client certificaten inschakelen](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
+    ![Scherm afbeelding die laat zien waar u de gateway referenties wijzigt en uw certificaat selecteert.](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. Klik op **Opslaan**.
+4. Klik op **Opslaan** .
 
 > [!WARNING]
 > Deze wijziging is onmiddellijk van kracht en aanroepen naar bewerkingen van die API gebruiken het certificaat om te verifiëren op de back-endserver.

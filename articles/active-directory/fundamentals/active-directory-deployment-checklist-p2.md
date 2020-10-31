@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 10/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7aebe6fafea7cbbb0b37469a13262529b568e342
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371899"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077962"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Implementatiehandleiding voor Azure Active Directory-functies
 
@@ -33,9 +33,9 @@ Veel van de aanbevelingen in deze hand leiding kunnen worden geïmplementeerd me
 Meer informatie over licentie verlening vindt u op de volgende pagina's:
 
 * [Azure AD-licenties](https://azure.microsoft.com/pricing/details/active-directory/)
-* [Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
+* [Microsoft 365 Zakelijk](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
-* [Azure AD B2B-licentie richtlijnen](../external-identities/licensing-guidance.md)
+* [Prijzen voor externe Azure AD-identiteiten](../external-identities/external-identities-pricing.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>Fase 1: bouw een basis van beveiliging
 
@@ -70,7 +70,7 @@ We voegen vervolgens toe aan de basis die in fase 1 is vastgelegd door de gebrui
 | [Wacht woord terugschrijven implementeren](../authentication/tutorial-enable-sspr-writeback.md) | Toestaan dat wacht woorden worden gewijzigd in de cloud om terug te schrijven naar een on-premises Windows Server-Active Directory omgeving. | Azure AD Premium P1 |
 | [Azure AD Connect Health implementeren](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Schakel de bewaking in van de belangrijkste status statistieken voor uw Azure AD Connect servers, AD FS servers en domein controllers. | Azure AD Premium P1 |
 | [Licenties toewijzen aan gebruikers per groepslid maatschap in Azure Active Directory](../enterprise-users/licensing-groups-assign.md) | Bespaar tijd en moeite door licentie groepen te maken die functies in-of uitschakelen in plaats van per gebruiker in te stellen. | |
-| [Een plan maken voor toegang tot gast gebruikers](../external-identities/what-is-b2b.md) | Samen werken met gast gebruikers door hen aan te melden bij uw apps en services met hun eigen werk, school of sociale identiteiten. | [Azure AD B2B-licentie richtlijnen](../external-identities/licensing-guidance.md) |
+| [Een plan maken voor toegang tot gast gebruikers](../external-identities/what-is-b2b.md) | Samen werken met gast gebruikers door hen aan te melden bij uw apps en services met hun eigen werk, school of sociale identiteiten. | [Prijzen voor externe Azure AD-identiteiten](../external-identities/external-identities-pricing.md) |
 | [Bepaal de strategie voor het beheer van apparaten](../devices/overview.md) | Bepaal wat uw organisatie in staat is met betrekking tot apparaten. Registreren versus samen voegen, uw eigen apparaat en bedrijf meenemen. | |
 | [Windows hello voor bedrijven in uw organisatie implementeren](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Voor bereiding voor verificatie met een wacht woord met behulp van Windows hello | |
 | [Authenticatie methoden met een wacht woord implementeren voor uw gebruikers](../authentication/concept-authentication-passwordless.md) | Geef uw gebruikers handige verificatie methoden met een wacht woord | Azure AD Premium P1 |

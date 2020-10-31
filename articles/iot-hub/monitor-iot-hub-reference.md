@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 8cace120dc823f42f2b2e01e4234ea8d5ace7a69
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 03941c3abe833deb218844cc60e2f04556fccc22
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042945"
+ms.locfileid: "93078200"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Naslag informatie over Azure IoT Hub-gegevens bewaken
 
@@ -689,4 +689,4 @@ Zie de [Naslag informatie over Azure monitor logboek tabel](/azure/azure-monitor
 ## <a name="see-also"></a>Zie ook
 
 * Zie [azure IOT hub bewaken](monitor-iot-hub.md) voor een beschrijving van het controleren van Azure IOT hub.
-* Zie [Azure-resources bewaken met Azure monitor](/azure/azure-monitor/insights/monitor-azure-resources) voor meer informatie over het bewaken van Azure-resources.
+* Zie [Azure-resources bewaken met Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource) voor meer informatie over het bewaken van Azure-resources.

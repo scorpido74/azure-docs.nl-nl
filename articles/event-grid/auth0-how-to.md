@@ -3,12 +3,12 @@ title: Gebeurtenissen verzenden vanuit Auth0 naar Azure met Azure Event Grid
 description: Gebeurtenissen van Auth0 naar Azure-Services beëindigen met Azure Event Grid.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 6cd440075c6400b58c23f879b53da26abe4f9e75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a66a60cb926b933a6b0628a67506d0d52ab7a905
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103277"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077860"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>Azure Event Grid integreren met Auth0
 
@@ -90,5 +90,5 @@ Auth0-gebeurtenissen worden via een streaming-mechanisme aan Azure geleverd. Elk
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Auth0-partner onderwerp](auth0-overview.md)
-- [Overzicht van de onderwerpen over partners](partner-topics-overview.md)
+- [Overzicht van de onderwerpen over partners](partner-events-overview.md)
 - [Word een Event Grid partner](partner-onboarding-overview.md)

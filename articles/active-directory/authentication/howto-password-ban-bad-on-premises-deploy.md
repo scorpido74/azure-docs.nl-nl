@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3aee10c0682feeea7c74133f908452d1c5595f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 66df1bbe531c072ff5aa2bebe7b197201e6931a2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968596"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077724"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>On-premises Azure Active Directory wachtwoord beveiliging plannen en implementeren
 
@@ -125,7 +125,7 @@ De volgende vereisten zijn van toepassing op de Azure AD-proxy service voor wach
     * .NET 4,7 moet al zijn geïnstalleerd op een volledig bijgewerkte Windows-Server. Als dat nodig is, downloadt en voert u het installatie programma uit dat is gevonden op [het .NET Framework 4,7 offline-installatie programma voor Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Alle computers die de Azure AD-proxy service voor wachtwoord beveiliging hosten, moeten worden geconfigureerd om domein controllers de mogelijkheid te geven zich aan te melden bij de proxy service. Deze mogelijkheid wordt bepaald via de toewijzing van de bevoegdheid toegang tot deze computer vanaf het netwerk.
 * Alle computers die de Azure AD-proxy service voor wachtwoord beveiliging hosten, moeten zo worden geconfigureerd dat HTTP-verkeer van uitgaande TLS 1,2 is toegestaan.
-* Een *Algemeen beheerders* account voor het registreren van de Azure AD-service voor wachtwoord beveiliging, en het forest met Azure AD.
+* Een *globale beheerder* of *beveiligings beheerders* account voor het registreren van de Azure AD-service voor wachtwoord beveiliging proxy en het forest met Azure AD.
 * Netwerk toegang moet zijn ingeschakeld voor de set van poorten en Url's die zijn opgegeven in de [installatie procedures van de toepassings proxy omgeving](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Vereisten voor de Microsoft Azure AD verbinding maken met de agent updater
@@ -142,8 +142,8 @@ De Microsoft Azure AD connect agent Updater-service wordt naast de Azure AD-prox
 
 Er zijn twee vereiste installatie Programma's voor een on-premises Azure AD-implementatie voor wachtwoord beveiliging:
 
-* Azure AD-agent voor wachtwoord beveiliging DC (*AzureADPasswordProtectionDCAgentSetup.msi*)
-* Azure AD-wachtwoord beveiligings proxy (*AzureADPasswordProtectionProxySetup.exe*)
+* Azure AD-agent voor wachtwoord beveiliging DC ( *AzureADPasswordProtectionDCAgentSetup.msi* )
+* Azure AD-wachtwoord beveiligings proxy ( *AzureADPasswordProtectionProxySetup.exe* )
 
 Down load de installatie Programma's vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=57071).
 
@@ -155,9 +155,11 @@ In de volgende sectie installeert u de Azure AD-wachtwoord beveiliging DC-agente
 
 Kies een of meer servers om de Azure AD-proxy service voor wachtwoord beveiliging te hosten. De volgende overwegingen zijn van toepassing op de server (s):
 
-* Elke service kan alleen wachtwoord beleid bieden voor één forest. De hostmachine moet lid zijn van een domein in dat forest. De basis-en onderliggende domeinen worden beide ondersteund. U hebt een netwerk verbinding nodig tussen ten minste één domein controller in elk domein van het forest en de wachtwoord beveiligings computer.
+* Elke service kan alleen wachtwoord beleid bieden voor één forest. De hostmachine moet lid zijn van een domein in dat forest.
+* Het wordt ondersteund om de proxy van de service te installeren in de hoofdmap of in de onderliggende domeinen of een combi natie hiervan.
+* U hebt een netwerk verbinding nodig tussen ten minste één domein controller in elk domein van het forest en een proxy server voor wachtwoord beveiliging.
 * U kunt de Azure AD-proxy service voor wachtwoord beveiliging uitvoeren op een domein controller om te testen, maar die domein controller vereist vervolgens Internet verbinding. Deze connectiviteit kan een beveiligings probleem zijn. We raden u aan deze configuratie alleen te testen.
-* We raden ten minste twee Azure AD-proxy servers voor wachtwoord beveiliging aan voor redundantie, zoals vermeld in de vorige sectie over [overwegingen met betrekking tot hoge Beschik baarheid](#high-availability-considerations).
+* We raden ten minste twee Azure AD-wachtwoord beveiligings proxy servers per forest aan voor redundantie, zoals vermeld in de vorige sectie over [overwegingen met betrekking tot hoge Beschik baarheid](#high-availability-considerations).
 * Het wordt niet ondersteund om de Azure AD-proxy service voor wachtwoord beveiliging uit te voeren op een alleen-lezen domein controller.
 
 Voer de volgende stappen uit om de Azure AD-proxy service voor wachtwoord beveiliging te installeren:
@@ -191,11 +193,11 @@ Voer de volgende stappen uit om de Azure AD-proxy service voor wachtwoord beveil
     Get-Service AzureADPasswordProtectionProxy | fl
     ```
 
-    Het resultaat moet de **status** *wordt uitgevoerd*weer geven.
+    Het resultaat moet de **status** *wordt uitgevoerd* weer geven.
 
 1. De proxy service wordt uitgevoerd op de computer, maar heeft geen referenties om te communiceren met Azure AD. Registreer de Azure AD-proxy server voor wachtwoord beveiliging met Azure AD met behulp van de `Register-AzureADPasswordProtectionProxy` cmdlet.
 
-    Voor deze cmdlet zijn globale beheerders referenties voor uw Azure-Tenant vereist. U hebt ook on-premises Active Directory domein Administrator bevoegdheden nodig in het forest-hoofd domein. Deze cmdlet moet ook worden uitgevoerd met een account met lokale beheerders bevoegdheden:
+    Deze cmdlet vereist *globale beheerder* of *beveiligings beheerder* referenties voor uw Azure-Tenant. Deze cmdlet moet ook worden uitgevoerd met een account met lokale Administrator bevoegdheden.
 
     Wanneer deze opdracht eenmaal is uitgevoerd voor een Azure AD-proxy service voor wachtwoord beveiliging, worden er aanvullende aanroepen van de functie geslaagd, maar dit is niet nodig.
 
@@ -233,7 +235,7 @@ Voer de volgende stappen uit om de Azure AD-proxy service voor wachtwoord beveil
         >
         > U ziet misschien ook MFA vereist als registratie van Azure-apparaten (die wordt gebruikt onder de voor vallen van Azure AD-wachtwoord beveiliging), is geconfigureerd om wereld wijd MFA te vereisen. Als tijdelijke oplossing voor deze vereiste kunt u een ander account gebruiken dat MFA ondersteunt met een van de twee vorige verificatie modi, of u kunt ook tijdelijk de MFA-vereiste voor de Azure Device Registration versoepelen.
         >
-        > Als u deze wijziging wilt aanbrengen, zoekt en selecteert u **Azure Active Directory** in de Azure Portal en selecteert u vervolgens **apparaten > Apparaatinstellingen**. Set **vereisen multi-factor auth om apparaten toe te voegen** aan *Nee*. Zorg ervoor dat u deze instelling opnieuw configureert op *Ja* zodra de registratie is voltooid.
+        > Als u deze wijziging wilt aanbrengen, zoekt en selecteert u **Azure Active Directory** in de Azure Portal en selecteert u vervolgens **apparaten > Apparaatinstellingen** . Set **vereisen multi-factor auth om apparaten toe te voegen** aan *Nee* . Zorg ervoor dat u deze instelling opnieuw configureert op *Ja* zodra de registratie is voltooid.
         >
         > U wordt aangeraden MFA-vereisten alleen voor test doeleinden te gebruiken.
 
@@ -246,7 +248,9 @@ Voer de volgende stappen uit om de Azure AD-proxy service voor wachtwoord beveil
     > [!NOTE]
     > Als er meerdere Azure AD-proxy servers voor wachtwoord beveiliging zijn geïnstalleerd in uw omgeving, maakt het niet uit welke proxy server u gebruikt om het forest te registreren.
 
-    Voor de cmdlet zijn globale beheerders referenties voor uw Azure-Tenant vereist. U moet deze cmdlet ook uitvoeren met een account met lokale Administrator bevoegdheden. Er zijn ook on-premises Active Directory Enter prise-beheerders bevoegdheden vereist. Deze stap wordt eenmaal per forest uitgevoerd.
+    De cmdlet vereist ofwel *globale beheerder* of *beveiligings beheerder* referenties voor uw Azure-Tenant. Er zijn ook on-premises Active Directory Enter prise-beheerders bevoegdheden vereist. U moet deze cmdlet ook uitvoeren met een account met lokale Administrator bevoegdheden. Het Azure-account dat wordt gebruikt om het forest te registreren, kan afwijken van het on-premises Active Directory-account.
+    
+    Deze stap wordt eenmaal per forest uitgevoerd.
 
     De `Register-AzureADPasswordProtectionForest` cmdlet ondersteunt de volgende drie verificatie modi. De eerste twee modi ondersteunen Azure Multi-Factor Authentication, maar de derde modus niet.
 
@@ -282,7 +286,7 @@ Voer de volgende stappen uit om de Azure AD-proxy service voor wachtwoord beveil
         >
         > U ziet misschien ook MFA vereist als registratie van Azure-apparaten (die wordt gebruikt onder de voor vallen van Azure AD-wachtwoord beveiliging), is geconfigureerd om wereld wijd MFA te vereisen. Als tijdelijke oplossing voor deze vereiste kunt u een ander account gebruiken dat MFA ondersteunt met een van de twee vorige verificatie modi, of u kunt ook tijdelijk de MFA-vereiste voor de Azure Device Registration versoepelen.
         >
-        > Als u deze wijziging wilt aanbrengen, zoekt en selecteert u **Azure Active Directory** in de Azure Portal en selecteert u vervolgens **apparaten > Apparaatinstellingen**. Set **vereisen multi-factor auth om apparaten toe te voegen** aan *Nee*. Zorg ervoor dat u deze instelling opnieuw configureert op *Ja* zodra de registratie is voltooid.
+        > Als u deze wijziging wilt aanbrengen, zoekt en selecteert u **Azure Active Directory** in de Azure Portal en selecteert u vervolgens **apparaten > Apparaatinstellingen** . Set **vereisen multi-factor auth om apparaten toe te voegen** aan *Nee* . Zorg ervoor dat u deze instelling opnieuw configureert op *Ja* zodra de registratie is voltooid.
         >
         > U wordt aangeraden MFA-vereisten alleen voor test doeleinden te gebruiken.
 

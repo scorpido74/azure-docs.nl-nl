@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f24eb64a5418a9963fd58611314ccbc6b72ec4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 27075af51c8deb886a060c81927f30bb70b5f638
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968460"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077656"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Veelgestelde vragen over Azure AD-wachtwoord beveiliging
 
@@ -32,9 +32,9 @@ De huidige richt lijnen voor dit onderwerp van micro soft zijn te vinden op de v
 
 **V: is on-premises Azure AD-wachtwoord beveiliging ondersteund in niet-open bare Clouds?**
 
-Geen on-premises Azure AD-wachtwoord beveiliging wordt alleen ondersteund in de open bare Cloud. Er is geen datum aangekondigd voor Beschik baarheid van niet-open bare Clouds.
+On-premises Azure AD-wachtwoord beveiliging wordt ondersteund in de open bare Cloud en de Arlington-Cloud. Er is geen datum aangekondigd voor Beschik baarheid in andere Clouds.
 
-Met de Azure AD-Portal kunt u de configuratie van on-premises specifieke ' wachtwoord beveiliging voor Windows Server Active Directory ', zelfs in niet-open bare Clouds, wijzigen. dergelijke wijzigingen blijven behouden, maar worden anders nooit van kracht. Registratie van on-premises proxy agenten of-forests wordt niet ondersteund wanneer niet-open bare Cloud referenties worden gebruikt, en dergelijke registratie pogingen zullen altijd mislukken.
+Met de Azure AD-Portal kunt u de configuratie van on-premises specifieke ' wachtwoord beveiliging voor Windows Server Active Directory ' wijzigen, zelfs bij niet-ondersteunde Clouds. dergelijke wijzigingen blijven behouden, maar worden anders nooit van kracht. Registratie van on-premises proxy agenten of-forests wordt niet ondersteund in niet-ondersteunde Clouds en dergelijke registratie pogingen zullen altijd mislukken.
 
 **V: hoe kan ik de voor delen van Azure AD-wachtwoord beveiliging Toep assen op een subset van mijn on-premises gebruikers?**
 

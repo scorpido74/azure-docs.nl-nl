@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab9d544cc205d2971b2097110d8c36c5d85fa1fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144990"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077673"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Procedure: MFA vereisen voor toegang vanaf niet-vertrouwde netwerken met voorwaardelijke toegang   
 
@@ -54,11 +54,11 @@ In plaats van te bepalen welke locaties niet worden vertrouwd, kunt u het volgen
 
 - Een wille keurige locatie toevoegen 
 
-   ![Voorwaardelijke toegang](./media/untrusted-networks/02.png)
+   :::image type="content" source="./media/untrusted-networks/02.png" alt-text="Scherm opname van het deel venster met een D-locatie van Azure, waarvoor configureren is ingesteld op Ja, het tabblad includes en de optie alle locaties geselecteerd en gemarkeerd." border="false":::
 
 - Alle vertrouwde locaties uitsluiten 
 
-   ![Voorwaardelijke toegang](./media/untrusted-networks/01.png)
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Scherm opname van het deel venster met een D-locatie van Azure, waarvoor configureren is ingesteld op Ja, het tabblad includes en de optie alle locaties geselecteerd en gemarkeerd." border="false":::
 
 ## <a name="policy-deployment"></a>Implementatie van beleid
 

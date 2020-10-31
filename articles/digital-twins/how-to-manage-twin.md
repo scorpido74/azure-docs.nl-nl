@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 425ee90306de3961c64766f42bd28f668fc9396e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494780"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077945"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -35,14 +35,19 @@ Als u een digitale dubbele wilt maken, moet u het volgende opgeven:
 * De gewenste ID voor de digitale dubbele
 * Het [model](concepts-models.md) dat u wilt gebruiken
 
-U kunt desgewenst initiële waarden opgeven voor alle eigenschappen van de digitale twee. 
+U kunt desgewenst initiële waarden opgeven voor alle eigenschappen van de digitale twee. Eigenschappen worden beschouwd als optioneel en kunnen later worden ingesteld, maar **ze worden niet weer gegeven als onderdeel van een dubbele tot ze zijn ingesteld.**
 
-De waarden van het model en de oorspronkelijke eigenschap worden gegeven via de `initData` para meter, een JSON-teken reeks met de relevante gegevens. Ga verder naar de volgende sectie voor meer informatie over het structureren van dit object.
+>[!NOTE]
+>Hoewel twee eigenschappen niet hoeven te worden geïnitialiseerd, moeten [onderdelen](concepts-models.md#elements-of-a-model) op de dubbele **taak** worden ingesteld wanneer het dubbele is gemaakt. Ze kunnen lege objecten zijn, maar de onderdelen zelf moeten aanwezig zijn.
+
+Het model en alle initiële eigenschaps waarden worden gegeven via de `initData` para meter, een JSON-teken reeks met de relevante gegevens. Ga verder naar de volgende sectie voor meer informatie over het structureren van dit object.
 
 > [!TIP]
 > Na het maken of bijwerken van een dubbele, kan er een latentie van Maxi maal 10 seconden zijn voordat de wijzigingen in [query's](how-to-query-graph.md)worden weer gegeven. De `GetDigitalTwin` API ( [verderop in dit artikel](#get-data-for-a-digital-twin)) heeft deze vertraging niet, dus als u een direct antwoord nodig hebt, gebruikt u de API-aanroep in plaats van query's om de zojuist gemaakte apparaatdubbels te zien. 
 
 ### <a name="initialize-model-and-properties"></a>Model en eigenschappen initialiseren
+
+U kunt de eigenschappen van een twee initialiseren op het moment dat de dubbele wordt gemaakt. 
 
 De twee keer dat er een API wordt gemaakt, accepteert een object dat is geserialiseerd in een geldige JSON-beschrijving van de dubbele eigenschappen. Zie [*concepten: Digital apparaatdubbels en de dubbele grafiek*](concepts-twins-graph.md) voor een beschrijving van de JSON-indeling voor een dubbele. 
 
@@ -110,7 +115,7 @@ Alleen eigenschappen die ten minste eenmaal zijn ingesteld, worden geretourneerd
 
 Als u meerdere apparaatdubbels met één API-aanroep wilt ophalen, raadpleegt u de query-API-voor beelden in [*de instructies: Query's uitvoeren op de dubbele grafiek*](how-to-query-graph.md).
 
-Bekijk het volgende model (geschreven in [Digital Apparaatdubbels Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) dat een *maan*definieert:
+Bekijk het volgende model (geschreven in [Digital Apparaatdubbels Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) dat een *maan* definieert:
 
 ```json
 {
@@ -133,7 +138,7 @@ Bekijk het volgende model (geschreven in [Digital Apparaatdubbels Definition Lan
     ]
 }
 ```
-Het resultaat van het aanroepen van `object result = await client.GetDigitalTwinAsync("my-moon");` een *maan*-type van twee kan er als volgt uitzien:
+Het resultaat van het aanroepen van `object result = await client.GetDigitalTwinAsync("my-moon");` een *maan* -type van twee kan er als volgt uitzien:
 
 ```json
 {
@@ -276,8 +281,8 @@ Bekijk bijvoorbeeld het volgende document van de JSON-patch dat het meta gegeven
 Deze bewerking slaagt alleen als de digitale dubbele wijziging door de patch voldoet aan het nieuwe model. 
 
 Kijk eens naar het volgende voorbeeld:
-1. Stel dat een digitale twee maal een model van *foo_old*. *foo_old* definieert een vereiste eigenschaps *massa*.
-2. Het nieuwe model *foo_new* definieert een eigenschaps massa en voegt een nieuwe vereiste *temperatuur*van de eigenschap toe.
+1. Stel dat een digitale twee maal een model van *foo_old* . *foo_old* definieert een vereiste eigenschaps *massa* .
+2. Het nieuwe model *foo_new* definieert een eigenschaps massa en voegt een nieuwe vereiste *temperatuur* van de eigenschap toe.
 3. Na de patch moet de digitale twee eigenschappen een massa-en temperatuur eigenschap hebben. 
 
 Voor de patch voor deze situatie moet het model en de eigenschap Tempe ratuur van twee zaken worden bijgewerkt, zoals:

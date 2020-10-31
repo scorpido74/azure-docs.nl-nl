@@ -6,121 +6,105 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: cbadc3262ee6baa383d3b572c021beaa58993f3f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5d2902222dea3e84ebed04d80d7349167f83cae1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541227"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076016"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Een punt-naar-site-VPN-verbinding met een VNet configureren met behulp van systeem eigen Azure-certificaat verificatie: Power shell
 
-Dit artikel helpt u bij het veilig verbinden van afzonderlijke clients met Windows, Linux of Mac OS X naar een Azure-VNet. P2S-verbindingen zijn nuttig als u verbinding wilt maken met uw VNet vanaf een externe locatie, bijvoorbeeld als u ook thuis werkt of op een congres verbinding wilt maken. U kunt P2S ook in plaats van een site-naar-site-VPN gebruiken wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet. Punt-naar-site-verbindingen hebben geen VPN-apparaat of openbaar IP-adres nodig. P2S maakt de VPN-verbinding via SSTP (Secure Socket Tunneling Protocol) of IKEv2. Voor meer informatie over punt-naar-site-VPN leest u [About Point-to-Site VPN](point-to-site-about.md) (Over punt-naar-site-VPN).
+Dit artikel helpt u bij het veilig verbinden van afzonderlijke clients met Windows, Linux of Mac OS X naar een Azure-VNet. Punt-naar-site-VPN-verbindingen zijn nuttig wanneer u verbinding wilt maken met uw VNet vanaf een externe locatie, zoals wanneer u thuis of op een conferentie werkt. U kunt P2S ook in plaats van een site-naar-site-VPN gebruiken wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet. Voor Point-to-site-verbindingen is geen VPN-apparaat of een openbaar IP-adres vereist. P2S maakt de VPN-verbinding via SSTP (Secure Socket Tunneling Protocol) of IKEv2.
 
-![Diagram: een computer verbinden met een Azure VNet-punt-naar-site-verbinding](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
+:::image type="content" source="./media/vpn-gateway-how-to-point-to-site-rm-ps/point-to-site-diagram.png" alt-text="Verbinding maken tussen een computer en een Azure VNet-Point-to-site-verbindings diagram":::
+
+Zie [about Point-to-site VPN](point-to-site-about.md)(Engelstalig) voor meer informatie over punt-naar-site-VPN. Als u deze configuratie wilt maken met behulp van de Azure Portal, raadpleegt u [een punt-naar-site-VPN configureren met behulp van de Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
 ## <a name="architecture"></a>Architectuur
 
-Native punt-naar-site-verbindingen voor certificaatverificatie in Azure gebruiken de volgende items, die u in deze oefening configureert:
+Punt-naar-site systeem eigen Azure-certificaat authenticatie verbindingen gebruiken de volgende items, die u in deze oefening configureert:
 
 * Een RouteBased VPN-gateway.
 * De openbare sleutel (CER-bestand) voor een basiscertificaat dat is geüpload naar Azure. Nadat het certificaat is geüpload, wordt het beschouwd als een vertrouwd certificaat en wordt het gebruikt voor verificatie.
 * Een clientcertificaat dat is gegenereerd op basis van het basiscertificaat. Het clientcertificaat dat is geïnstalleerd op elke clientcomputer die met het VNet verbinding zal maken. Dit certificaat wordt gebruikt voor clientverificatie.
 * Een VPN-clientconfiguratie. De configuratiebestanden voor de VPN-client bevatten de gegevens die nodig zijn om de client te verbinden met het VNet. Met de bestanden wordt de bestaande VPN-client geconfigureerd die is ingebouwd in het besturingssysteem. Elke client die verbinding maakt, moet worden geconfigureerd met behulp van de instellingen in de configuratiebestanden.
 
-## <a name="before-you-begin"></a>Voordat u begint
+## <a name="prerequisites"></a>Vereisten
 
 Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) of [u aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
-
->[!NOTE]
-> De meeste stappen in dit artikel kunnen Azure Cloud Shell gebruiken. Als u de open bare sleutel van het basis certificaat echter wilt uploaden, moet u Power shell lokaal of op de Azure Portal gebruiken.
+>[!IMPORTANT]
+> Veel van de stappen in dit artikel kunnen gebruikmaken van de Azure Cloud Shell. U kunt Cloud Shell echter niet gebruiken om certificaten te genereren. Als u de open bare sleutel van het basis certificaat ook wilt uploaden, moet u Azure PowerShell lokaal of op de Azure Portal gebruiken.
 >
 
-### <a name="example-values"></a><a name="example"></a>Voorbeeldwaarden
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-U kunt de volgende voorbeeldwaarden gebruiken om een testomgeving te maken of ze raadplegen om meer inzicht te krijgen in de voorbeelden in dit artikel. De variabelen worden ingesteld in sectie [1](#declare) van dit artikel. U kunt de stappen gebruiken als een overzicht en de waarden ongewijzigd gebruiken, of u kunt ze wijzigen zodat ze overeenkomen met uw omgeving.
-
-* **Naam: VNet1**
-* **Adresruimte: 192.168.0.0/16** en **10.254.0.0/16**<br>In dit voorbeeld wordt meer dan één adresruimte gebruikt om te laten zien dat deze configuratie met meerdere adresruimten werkt. Meerdere adresruimten zijn echter niet vereist voor deze configuratie.
-* **Subnetnaam: FrontEnd**
-  * **Subnetadresbereik: 192.168.1.0/24**
-* **Subnetnaam: BackEnd**
-  * **Subnetadresbereik: 10.254.1.0/24**
-* **Subnetnaam: GatewaySubnet**<br>De naam van het subnet *GatewaySubnet* is verplicht voor een goede werking van de VPN-gateway.
-  * **Adresbereik GatewaySubnet: 192.168.200.0/24** 
-* **VPN-client adres groep: 172.16.201.0/24**<br>VPN-clients die verbinding maken met het VNet via deze punt-naar-site-verbinding, ontvangen een IP-adres van de VPN-clientadresgroep.
-* **Abonnement:** controleer of u het juiste abonnement hebt in het geval u er meer dan één hebt.
-* **Resourcegroep: TestRG**
-* **Locatie: VS-Oost**
-* **DNS-server: IP-adres** van de DNS-server die u wilt gebruiken voor naamomzetting. (optioneel)
-* **Gatewaynaam: Vnet1GW**
-* **Openbare IP-naam: VNet1GWPIP**
-* **VpnType: RouteBased** 
-
-## <a name="1-sign-in-and-set-variables"></a><a name="declare"></a>1. aanmelden en variabelen instellen
-
-In deze sectie meldt u zich aan en declareert u de waarden die voor deze configuratie worden gebruikt. De opgegeven waarden worden in de voorbeeldscripts gebruikt. Wijzig de waarden zodat ze overeenkomen met uw omgeving. U kunt ook de gedeclareerde waarden gebruiken en de stappen bij wijze van oefening doorlopen.
-
-### <a name="sign-in"></a>Aanmelden
+## <a name="1-sign-in"></a><a name="signin"></a>1. aanmelden
 
 [!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
-### <a name="declare-variables"></a>Variabelen declareren
+## <a name="2-declare-variables"></a><a name="declare"></a>2. Declareer variabelen
 
-Declareer de waarden die u wilt gebruiken. Gebruik het volgende voorbeeld, en vervang zo nodig de waarden door uw eigen waarden. Als u uw Power shell/Cloud Shell-sessie op een wille keurig moment tijdens de oefening sluit, kopieert en plakt u de waarden opnieuw om de variabelen opnieuw te declareren.
+We gebruiken variabelen voor dit artikel, zodat u gemakkelijk de waarden kunt wijzigen die op uw eigen omgeving moeten worden toegepast zonder dat u de voor beelden zelf hoeft te wijzigen. Declareer de waarden die u wilt gebruiken. U kunt het volgende voor beeld gebruiken om de waarden te vervangen wanneer dat nodig is. Als u uw Power shell/Cloud Shell-sessie op een wille keurig moment tijdens de oefening sluit, kopieert en plakt u de waarden opnieuw om de variabelen opnieuw te declareren.
 
-  ```azurepowershell-interactive
-  $VNetName  = "VNet1"
-  $FESubName = "FrontEnd"
-  $BESubName = "Backend"
-  $GWSubName = "GatewaySubnet"
-  $VNetPrefix1 = "192.168.0.0/16"
-  $VNetPrefix2 = "10.254.0.0/16"
-  $FESubPrefix = "192.168.1.0/24"
-  $BESubPrefix = "10.254.1.0/24"
-  $GWSubPrefix = "192.168.200.0/26"
-  $VPNClientAddressPool = "172.16.201.0/24"
-  $RG = "TestRG"
-  $Location = "East US"
-  $GWName = "VNet1GW"
-  $GWIPName = "VNet1GWPIP"
-  $GWIPconfName = "gwipconf"
-  ```
+```azurepowershell-interactive
+$VNetName  = "VNet1"
+$FESubName = "FrontEnd"
+$GWSubName = "GatewaySubnet"
+$VNetPrefix = "10.1.0.0/16"
+$FESubPrefix = "10.1.0.0/24"
+$GWSubPrefix = "10.1.255.0/27"
+$VPNClientAddressPool = "172.16.201.0/24"
+$RG = "TestRG1"
+$Location = "EastUS"
+$GWName = "VNet1GW"
+$GWIPName = "VNet1GWpip"
+$GWIPconfName = "gwipconf"
+$DNS = "10.2.1.4"
+```
 
-## <a name="2-configure-a-vnet"></a><a name="ConfigureVNet"></a>2. een VNet configureren
+## <a name="3-configure-a-vnet"></a><a name="ConfigureVNet"></a>3. een VNet configureren
 
 1. Maak een resourcegroep.
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG -Location $Location
    ```
-2. Maak de subnetconfiguraties voor het virtuele netwerk, noem deze *FrontEnd* , *BackEnd* en *GatewaySubnet* . Deze voorvoegsels moeten deel uitmaken van de VNet-adresruimte die u hebt opgegeven.
+
+1. Maak de subnet-configuraties voor het virtuele netwerk, noem deze *frontend* en *GatewaySubnet* . Deze voorvoegsels moeten deel uitmaken van de VNet-adresruimte die u hebt opgegeven.
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
-   $besub = New-AzVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
    $gwsub = New-AzVirtualNetworkSubnetConfig -Name $GWSubName -AddressPrefix $GWSubPrefix
    ```
-3. Maak het virtuele netwerk.
+
+1. Maak het virtuele netwerk.
 
    In dit voorbeeld is de serverparameter-DnsServer optioneel. Het opgeven van een waarde betekent niet dat er een nieuwe DNS-server wordt gemaakt. Het IP-adres van de DNS-server dat u opgeeft, moet het adres zijn van een DNS-server die de namen kan omzetten voor de resources waarmee u verbinding maakt vanuit uw VNet. In dit voorbeeld wordt een privé-IP-adres gebruikt, maar het is zeer onwaarschijnlijk dat dit het IP-adres van uw DNS-server is. Zorg ervoor dat u uw eigen waarden gebruikt. De waarde die u opgeeft, wordt gebruikt door de bronnen die u in het VNet implementeert, niet door de P2S-verbinding of de VPN-client.
 
    ```azurepowershell-interactive
-   New-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG -Location $Location -AddressPrefix $VNetPrefix1,$VNetPrefix2 -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
+       New-AzVirtualNetwork `
+      -ResourceGroupName $RG `
+      -Location $Location `
+      -Name $VNetName `
+      -AddressPrefix $VNetPrefix `
+      -Subnet $fesub, $gwsub `
+      -DnsServer $DNS
    ```
-4. Geef de variabelen op voor het virtuele netwerk dat u hebt gemaakt.
+
+1. Geef de variabelen op voor het virtuele netwerk dat u hebt gemaakt.
 
    ```azurepowershell-interactive
    $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
    $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
    ```
-5. Een VPN Gateway moet een openbaar IP-adres hebben. U vraagt eerst de resource van het IP-adres aan en verwijst hier vervolgens naar bij het maken van uw virtuele netwerkgateway. Het IP-adres wordt dynamisch aan de resource toegewezen wanneer de VPN Gateway wordt gemaakt. VPN Gateway ondersteunt momenteel alleen *dynamische* toewijzing van openbare IP-adressen. U kunt geen toewijzing van een statisch openbaar IP-adres aanvragen. Dit betekent echter niet dat het IP-adres verandert nadat het aan uw VPN-gateway is toegewezen. Het openbare IP-adres verandert alleen wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het verandert niet wanneer de grootte van uw VPN Gateway verandert, wanneer deze gateway opnieuw wordt ingesteld of wanneer andere interne onderhoudswerkzaamheden of upgrades worden uitgevoerd.
+
+1. Een VPN Gateway moet een openbaar IP-adres hebben. U vraagt eerst de resource van het IP-adres aan en verwijst hier vervolgens naar bij het maken van uw virtuele netwerkgateway. Het IP-adres wordt dynamisch aan de resource toegewezen wanneer de VPN Gateway wordt gemaakt. VPN Gateway ondersteunt momenteel alleen *dynamische* toewijzing van openbare IP-adressen. U kunt geen toewijzing van een statisch openbaar IP-adres aanvragen. Dit betekent echter niet dat het IP-adres verandert nadat het aan uw VPN-gateway is toegewezen. Het openbare IP-adres verandert alleen wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het verandert niet wanneer de grootte van uw VPN Gateway verandert, wanneer deze gateway opnieuw wordt ingesteld of wanneer andere interne onderhoudswerkzaamheden of upgrades worden uitgevoerd.
 
    Vraag een dynamisch toegewezen openbaar IP-adres aan.
 
@@ -129,46 +113,63 @@ Declareer de waarden die u wilt gebruiken. Gebruik het volgende voorbeeld, en ve
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="3-create-the-vpn-gateway"></a><a name="creategateway"></a>3. de VPN-gateway maken
+## <a name="4-create-the-vpn-gateway"></a><a name="creategateway"></a>4. de VPN-gateway maken
 
-Configureer en maak de virtuele netwerkgateway voor uw VNet.
+In deze stap configureert en maakt u de virtuele netwerk gateway voor uw VNet.
 
 * De -GatewayType moet **Vpn** zijn en het -VpnType moet **RouteBased** zijn.
 * -VpnClientProtocol wordt gebruikt om de soorten tunnels op te geven die u wilt inschakelen. De tunnel opties zijn **openvpn, SSTP** en **IKEv2** . U kunt ervoor kiezen om een van deze of een ondersteunde combi natie in te scha kelen. Als u meerdere typen wilt inschakelen, geeft u de namen op, gescheiden door een komma. OpenVPN en SSTP kunnen niet samen worden ingeschakeld. De strongSwan-client op Android en Linux en de systeemeigen IKEv2 VPN-client op iOS en OS x gebruiken alleen de IKEv2-tunnel om verbinding te maken. Windows-clients proberen eerst IKEv2. Als daarmee geen verbinding kan worden gemaakt, vallen ze terug op SSTP. U kunt de OpenVPN-client gebruiken om verbinding te maken met het tunnel type OpenVPN.
 * De SKU Basic van de virtuele netwerk gateway biedt geen ondersteuning voor IKEv2-, OpenVPN-of RADIUS-verificatie. Als u van plan bent Mac-clients verbinding te laten maken met uw virtuele netwerk, moet u de basis-SKU niet gebruiken.
 * Een VPN-gateway wordt binnen maximaal 45 minuten voltooid. De daadwerkelijke instelduur hangt af van de [gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md) die u selecteert. In dit voorbeeld wordt IKEv2 gebruikt.
 
-```azurepowershell-interactive
-New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
--Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
--VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
-```
+1. Configureer en maak de virtuele netwerkgateway voor uw VNet. Het duurt ongeveer 45 minuten voordat de gateway is gemaakt.
 
-## <a name="4-add-the-vpn-client-address-pool"></a><a name="addresspool"></a>4. de adres groep voor de VPN-client toevoegen
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
+   -Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
+   -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
+   ```
 
-Nadat de VPN-gateway is gemaakt, kunt u de VPN-clientadrespool toevoegen. De VPN-clientadrespool is het bereik vanwaaruit de VPN-clients een IP-adres ontvangen wanneer er verbinding wordt gemaakt. Gebruik een privé-IP-adresbereik dat niet overlapt met de on-premises locatie waarvanaf u verbinding maakt of met het VNet waarmee u verbinding wilt maken. In dit voorbeeld wordt de VPN-clientadrespool in stap 1 opgegeven als [variabele](#declare).
+1. Zodra de gateway is gemaakt, kunt u deze bekijken in het volgende voor beeld. Als u Power shell hebt gesloten of als er een time-out is opgetreden tijdens het maken van de gateway, kunt u [de variabelen opnieuw declareren](#declare) .
+
+   ```azurepowershell-interactive
+   Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroup $RG
+   ```
+
+## <a name="5-add-the-vpn-client-address-pool"></a><a name="addresspool"></a>5. de adres groep voor de VPN-client toevoegen
+
+Nadat de VPN-gateway is gemaakt, kunt u de VPN-clientadrespool toevoegen. De VPN-clientadrespool is het bereik vanwaaruit de VPN-clients een IP-adres ontvangen wanneer er verbinding wordt gemaakt. Gebruik een privé-IP-adresbereik dat niet overlapt met de on-premises locatie waarvanaf u verbinding maakt of met het VNet waarmee u verbinding wilt maken.
+
+In dit voor beeld wordt de adres groep van de VPN-client gedeclareerd als een [variabele](#declare) in een eerdere stap.
 
 ```azurepowershell-interactive
 $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
 ```
 
-## <a name="5-generate-certificates"></a><a name="Certificates"></a>5. certificaten genereren
+## <a name="6-generate-certificates"></a><a name="Certificates"></a>6. certificaten genereren
 
-Certificaten worden door Azure gebruikt om VPN-clients voor punt-naar-site-VPN's te verifiëren. U uploadt de informatie van de openbare sleutel over het basiscertificaat naar Azure. De openbare sleutel wordt dan beschouwd als 'vertrouwd'. Clientcertificaten moeten worden gegenereerd op basis van het vertrouwde basiscertificaat en geïnstalleerd op elke clientcomputer. Dit gebeurt in het certificaatarchief Certificates-Current user/Personal. Het certificaat wordt gebruikt om de client te verifiëren bij het maken van verbinding met het VNet. 
+>[!IMPORTANT]
+> U kunt geen certificaten genereren met behulp van Azure Cloud Shell. U moet een van de methoden gebruiken die in deze sectie worden beschreven. Als u Power shell wilt gebruiken, moet u deze lokaal installeren.
+>
+
+Certificaten worden door Azure gebruikt voor het verifiëren van VPN-clients voor punt-naar-site-Vpn's. U uploadt de informatie van de openbare sleutel over het basiscertificaat naar Azure. De openbare sleutel wordt dan beschouwd als 'vertrouwd'. Clientcertificaten moeten worden gegenereerd op basis van het vertrouwde basiscertificaat en geïnstalleerd op elke clientcomputer. Dit gebeurt in het certificaatarchief Certificates-Current user/Personal. Het certificaat wordt gebruikt om de client te verifiëren bij het maken van verbinding met het VNet. 
 
 Als u zelfondertekende certificaten gebruikt, moeten ze worden gemaakt met behulp van specifieke parameters. U kunt een zelfondertekend certificaat maken met behulp van de instructies voor [PowerShell en Windows 10](vpn-gateway-certificates-point-to-site.md). Als u niet beschikt over Windows 10, kunt u ook [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) gebruiken. Het is belangrijk dat u de stappen in de instructies opvolgt bij het maken van zelfondertekende basiscertificaten en clientcertificaten. Anders zijn de certificaten die u maakt, niet compatibel met P2S-verbindingen en treedt er een verbindingsfout op.
 
-### <a name="1-obtain-the-cer-file-for-the-root-certificate"></a><a name="cer"></a>1. het. cer-bestand voor het basis certificaat verkrijgen
+### <a name="root-certificate"></a><a name="cer"></a>Basis certificaat
 
-[!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-rootcert-include.md)]
+1. [!INCLUDE [Root certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
+1. Nadat u het basis certificaat hebt gemaakt, [exporteert](vpn-gateway-certificates-point-to-site.md#cer) u de gegevens van het open bare certificaat (niet de persoonlijke sleutel) als een base64-gecodeerd X. 509. cer-bestand.
 
-### <a name="2-generate-a-client-certificate"></a><a name="generate"></a>2. Genereer een client certificaat
+### <a name="client-certificate"></a><a name="generate"></a>Client certificaat
 
-[!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-clientcert-include.md)]
+1. [!INCLUDE [Generate a client certificate](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="6-upload-the-root-certificate-public-key-information"></a><a name="upload"></a>6. de gegevens van de open bare sleutel van het basis certificaat uploaden
+1. Nadat u het client certificaat hebt gemaakt, [exporteert](vpn-gateway-certificates-point-to-site.md#clientexport) u het. Het client certificaat wordt gedistribueerd naar de client computers die verbinding maken.
+
+## <a name="7-upload-the-root-certificate-public-key-information"></a><a name="upload"></a>7. de gegevens van de open bare sleutel van het basis certificaat uploaden
 
 Controleer of het maken van de VPN-gateway is voltooid. Als dat het geval is, uploadt u het CER-bestand (met de gegevens van de openbare sleutel) voor een vertrouwd basiscertificaat naar Azure. Nadat het CER-bestand is geüpload, kan Azure daarmee clients met een geïnstalleerd clientcertificaat (gemaakt op basis van het vertrouwde basiscertificaat) verifiëren. Indien nodig kunt u later aanvullende vertrouwde basiscertificaatbestanden uploaden (maximaal 20).
 
@@ -181,66 +182,70 @@ Controleer of het maken van de VPN-gateway is voltooid. Als dat het geval is, up
    ```azurepowershell
    $P2SRootCertName = "P2SRootCert.cer"
    ```
-2. Vervang het pad naar het bestand door uw eigen pad en voer vervolgens de cmdlets uit.
+
+1. Vervang het pad naar het bestand door uw eigen pad en voer vervolgens de cmdlets uit.
 
    ```azurepowershell
    $filePathForCert = "C:\cert\P2SRootCert.cer"
    $cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($filePathForCert)
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
-   $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. Upload de gegevens van de openbare sleutel naar Azure. Zodra de certificaat gegevens zijn geüpload, beschouwt Azure deze als een vertrouwd basis certificaat. Zorg ervoor dat u Power shell lokaal op uw computer uitvoert, of dat u in plaats daarvan de [Azure Portal stappen](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)kunt gebruiken. U kunt niet uploaden met behulp van Azure Cloud Shell.
+
+1. Upload de gegevens van de openbare sleutel naar Azure. Zodra de certificaat gegevens zijn geüpload, beschouwt Azure deze als een vertrouwd basis certificaat. Zorg ervoor dat u Power shell lokaal op uw computer uitvoert, of dat u in plaats daarvan de [Azure Portal stappen](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)kunt gebruiken. U kunt niet uploaden met behulp van Azure Cloud Shell.
 
    ```azurepowershell
-   Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64
+   Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG1" -PublicCertData $CertBase64
    ```
 
-## <a name="7-install-an-exported-client-certificate"></a><a name="clientcertificate"></a>7. een geëxporteerd client certificaat installeren
+## <a name="8-install-an-exported-client-certificate"></a><a name="clientcertificate"></a>8. een geëxporteerd client certificaat installeren
 
-Als u een P2S-verbinding wilt maken vanaf een andere clientcomputer dan de computer die u gebruikt om de clientcertificaten te genereren, moet u een clientcertificaat installeren. Wanneer u een clientcertificaat installeert, hebt u het wachtwoord nodig dat is gemaakt tijdens het exporteren van het clientcertificaat.
+De volgende stappen helpen u te installeren op een Windows-client. Zie [een client certificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md)voor aanvullende clients en meer informatie.
 
-Zorg ervoor dat het certificaat is geëxporteerd als een PFX-bestand, samen met de volledige certificaatketen (dit is de standaardinstelling). Anders zijn de gegevens van het basiscertificaat niet aanwezig op de clientcomputer en kan de client niet worden geverifieerd. 
+[!INCLUDE [Install on Windows](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
 
-Zie voor de installatiestappen [Install a client certificate](point-to-site-how-to-vpn-client-install-azure-cert.md) (Een clientcertificaat installeren).
+Zorg ervoor dat het certificaat is geëxporteerd als een PFX-bestand, samen met de volledige certificaatketen (dit is de standaardinstelling). Anders zijn de gegevens van het basiscertificaat niet aanwezig op de clientcomputer en kan de client niet worden geverifieerd.
 
-## <a name="8-configure-the-native-vpn-client"></a><a name="clientconfig"></a>8. de systeem eigen VPN-client configureren
+## <a name="9-configure-the-vpn-client"></a><a name="clientconfig"></a>9. de VPN-client configureren
 
-De configuratiebestanden van de VPN-clients bevatten de instellingen voor het configureren van apparaten om verbinding te maken met een VNet via een P2S-verbinding. Zie voor instructies voor het genereren en installeren van VPN-clientconfiguratiebestanden [Create and install VPN client configuration files for native Azure certificate authentication P2S configurations](point-to-site-vpn-client-configuration-azure-cert.md) (VPN-clientconfiguratiebestanden voor P2S-configuraties voor systeemeigen Azure-certificaatverificatie maken en installeren).
+In deze sectie configureert u de systeem eigen client voor de computer om verbinding te maken met de virtuele netwerk gateway. Als u bijvoorbeeld naar de VPN-instellingen op uw Windows-computer gaat, kunt u VPN-verbindingen toevoegen. Een punt-naar-site-verbinding vereist specifieke configuratie-instellingen. Deze stappen helpen u bij het maken van een pakket met de specifieke instellingen die de systeem eigen VPN-client nodig heeft om verbinding te kunnen maken met het virtuele netwerk via een punt-naar-site-verbinding.
 
-## <a name="9-connect-to-azure"></a><a name="connect"></a>9. Maak verbinding met Azure
+U kunt de volgende snelle voor beelden gebruiken om het client configuratie pakket te genereren en te installeren. Zie [VPN-client configuratie bestanden maken en installeren](point-to-site-vpn-client-configuration-azure-cert.md)voor meer informatie over de pakket inhoud en aanvullende instructies voor het genereren en installeren van VPN-client configuratie bestanden.
 
-### <a name="to-connect-from-a-windows-vpn-client"></a>Verbinding maken vanaf een Windows-VPN-client
+Als u uw variabelen opnieuw moet declareren, kunt u deze [hier](#declare)vinden.
 
->[!NOTE]
->U moet beheerdersrechten hebben op de Windows-clientcomputer waarmee u de verbinding tot stand brengt.
->
->
+### <a name="to-generate-configuration-files"></a>Configuratie bestanden genereren
 
-1. Als u met uw VNet wilt verbinden, gaat u op de clientcomputer naar de VPN-verbindingen en zoekt u de VPN-verbinding die u hebt gemaakt. Deze heeft dezelfde naam als het virtuele netwerk. Klik op **Verbinding maken** . Er verschijnt mogelijk een pop-upbericht dat verwijst naar het certificaat. Klik op **Doorgaan** om verhoogde bevoegdheden te gebruiken. 
-2. Klik op de pagina **Verbindingsstatus** op **Verbinden** om de verbinding te starten. Als het scherm **Certificaat selecteren** wordt geopend, controleert u of het weergegeven clientcertificaat het certificaat is dat u voor de verbinding wilt gebruiken. Als dat niet het geval is, gebruikt u de pijl-omlaag om het juiste certificaat te selecteren en klikt u op **OK** .
+```azurepowershell-interactive
+$profile=New-AzVpnClientConfiguration -ResourceGroupName $RG -Name $GWName -AuthenticationMethod "EapTls"
 
-   ![VPN-client maakt verbinding met Azure](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
-3. De verbinding is tot stand gebracht.
+$profile.VPNProfileSASUrl
+```
 
-   ![Verbinding tot stand gebracht](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png)
+### <a name="to-install-the-client-configuration-package"></a>Het client configuratie pakket installeren
 
-#### <a name="troubleshooting-windows-client-p2s-connections"></a>Problemen met P2S-verbindingen in Windows-clients oplossen
+[!INCLUDE [Windows instructions](../../includes/vpn-gateway-p2s-client-configuration-windows.md)]
 
-[!INCLUDE [client certificates](../../includes/vpn-gateway-certificates-verify-client-cert-include.md)]
+## <a name="10-connect-to-azure"></a><a name="connect"></a>10. verbinding maken met Azure
 
-### <a name="to-connect-from-a-mac-vpn-client"></a>Verbinding maken vanaf een Mac-VPN-client
+### <a name="windows-vpn-client"></a>Windows VPN-client
+
+[!INCLUDE [Connect from Windows client](../../includes/vpn-gateway-p2s-connect-windows-client.md)]
+
+[!INCLUDE [Client certificates](../../includes/vpn-gateway-certificates-verify-client-cert-include.md)]
+
+### <a name="mac-vpn-client"></a>Mac VPN-client
 
 Zoek in het dialoogvenster Netwerk het clientprofiel dat u wilt gebruiken en klik op **Verbinding maken** .
 Controleer de [installatie-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) voor gedetailleerde instructies. Als u problemen ondervindt bij het verbinding maken, controleert u of de gateway van het virtuele netwerk geen basis-SKU gebruikt. Basis-SKU wordt niet ondersteund voor Mac-clients.
 
   ![Mac-verbinding](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
-## <a name="to-verify-your-connection"></a><a name="verify"></a>De verbinding verifiëren
+## <a name="to-verify-a-connection"></a><a name="verify"></a>Een verbinding controleren
 
 Deze instructies zijn van toepassing op Windows-clients.
 
 1. Als u wilt controleren of uw VPN-verbinding actief is, opent u een opdrachtprompt met verhoogde bevoegdheid en voert u *ipconfig/all* in.
-2. Bekijk de resultaten. Het IP-adres dat u hebt ontvangen is een van de adressen binnen het adresbereik van de punt-naar-site-VPN-clientadresgroep die u hebt opgegeven in uw configuratie. De resultaten zijn vergelijkbaar met het volgende voorbeeld:
+2. Bekijk de resultaten. Het IP-adres dat u hebt ontvangen, is een van de adressen in de adres groep van de punt-naar-site-VPN-client die u hebt opgegeven in uw configuratie. De resultaten zijn vergelijkbaar met het volgende voorbeeld:
 
    ```
    PPP adapter VNet1:
@@ -249,7 +254,7 @@ Deze instructies zijn van toepassing op Windows-clients.
       Physical Address................:
       DHCP Enabled....................: No
       Autoconfiguration Enabled.......: Yes
-      IPv4 Address....................: 172.16.201.3(Preferred)
+      IPv4 Address....................: 172.16.201.13(Preferred)
       Subnet Mask.....................: 255.255.255.255
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
@@ -267,16 +272,11 @@ Deze instructies zijn van toepassing op Windows-clients.
 
 ## <a name="to-add-or-remove-a-root-certificate"></a><a name="addremovecert"></a>Een basiscertificaat toevoegen of verwijderen
 
-U kunt vertrouwde basiscertificaat toevoegen in en verwijderen uit Azure. Wanneer u een basiscertificaat verwijdert, kunnen clients met een certificaat dat is gegenereerd op basis van dat basiscertificaat niet worden geverifieerd, en kunnen ze dus geen verbinding maken. Als u wilt dat clients kunnen worden geverifieerd en verbinding kunnen maken, moet u een nieuw clientcertificaat installeren dat is gegenereerd op basis van een basiscertificaat dat wordt vertrouwd (is geüpload) in Azure.
+U kunt vertrouwde basiscertificaat toevoegen in en verwijderen uit Azure. Wanneer u een basiscertificaat verwijdert, kunnen clients met een certificaat dat is gegenereerd op basis van dat basiscertificaat niet worden geverifieerd, en kunnen ze dus geen verbinding maken. Als u wilt dat clients kunnen worden geverifieerd en verbinding kunnen maken, moet u een nieuw clientcertificaat installeren dat is gegenereerd op basis van een basiscertificaat dat wordt vertrouwd (is geüpload) in Azure. Voor deze stappen zijn Azure PowerShell-cmdlets die lokaal op uw computer zijn geïnstalleerd (niet Azure Cloud Shell) vereist. U kunt ook de Azure Portal gebruiken om basis certificaten toe te voegen.
 
-### <a name="to-add-a-trusted-root-certificate"></a><a name="addtrustedroot"></a>Een vertrouwd basiscertificaat toevoegen
+**Toevoegen:**
 
-U kunt maximaal 20 CER-basiscertificaatbestanden toevoegen aan Azure. Volg de volgende stappen om een basiscertificaat toe te voegen:
-
-#### <a name="method-1"></a><a name="certmethod1"></a>Methode 1
-
-
-Deze methode is de meest efficiënte manier om een basis certificaat te uploaden. Hiervoor moeten Azure PowerShell cmdlets lokaal op uw computer zijn geïnstalleerd (niet Azure Cloud Shell).
+U kunt maximaal 20 CER-basiscertificaatbestanden toevoegen aan Azure. De volgende stappen helpen u bij het toevoegen van een basis certificaat. 
 
 1. Bereid het CER-bestand voor dat u wilt uploaden:
 
@@ -284,55 +284,24 @@ Deze methode is de meest efficiënte manier om een basis certificaat te uploaden
    $filePathForCert = "C:\cert\P2SRootCert3.cer"
    $cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($filePathForCert)
    $CertBase64_3 = [system.convert]::ToBase64String($cert.RawData)
-   $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64_3
-   ```
-2. Upload het bestand. U kunt slechts één bestand tegelijk uploaden.
-
-   ```azurepowershell
-   Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64_3
    ```
 
-3. Controleren of het certificaatbestand is geüpload:
+1. Upload het bestand. U kunt slechts één bestand tegelijk uploaden.
 
    ```azurepowershell
-   Get-AzVpnClientRootCertificate -ResourceGroupName "TestRG" `
+   Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG1" -PublicCertData $CertBase64_3
+   ```
+
+1. Controleren of het certificaatbestand is geüpload:
+
+   ```azurepowershell
+   Get-AzVpnClientRootCertificate -ResourceGroupName "TestRG1" `
    -VirtualNetworkGatewayName "VNet1GW"
    ```
 
-#### <a name="method-2---azure-portal"></a><a name="certmethod2"></a>Methode 2-Azure Portal
+**Verwijderen:**
 
-Deze methode heeft meer stappen dan methode 1, maar levert hetzelfde resultaat. Gebruik deze methode als u de gegevens van het certificaat wilt weergeven. Hiervoor moeten Azure PowerShell cmdlets lokaal op uw computer zijn geïnstalleerd (niet Azure Cloud Shell).
-
-1. Maak en bereid het nieuwe basiscertificaat voor dat u aan Azure gaat toevoegen. Exporteer de openbare sleutel als een met Base-64 gecodeerd X.509-certificaat (.CER) en open het bestand met een teksteditor. Kopieer de waarden, zoals weergegeven in het volgende voorbeeld:
-
-   ![certificaat](./media/vpn-gateway-howto-point-to-site-rm-ps/copycert.png)
-
-   > [!NOTE]
-   > Zorg er bij het kopiëren van de certificaatgegevens voor dat u de tekst als één ononderbroken regel kopieert zonder regelterugloop of regelinvoer. Mogelijk moet u de weergave in de teksteditor wijzigen naar Symbool weergeven/Alle tekens weergeven om de regelterugloop en regelinvoer te zien.
-   >
-   >
-
-2. Geef de certificaatnaam en sleutelgegevens op als een variabele. Vervang de gegevens door uw eigen gegevens, zoals weergegeven in het volgende voorbeeld:
-
-   ```azurepowershell
-   $P2SRootCertName2 = "ARMP2SRootCert2.cer"
-   $MyP2SCertPubKeyBase64_2 = "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
-   ```
-3. Voeg het nieuwe basiscertificaat toe. U kunt slechts één certificaat tegelijk toevoegen.
-
-   ```azurepowershell
-   Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName2 -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $MyP2SCertPubKeyBase64_2
-   ```
-4. U kunt controleren of het nieuwe certificaat correct is toegevoegd met behulp van het volgende voorbeeld:
-
-   ```azurepowershell
-   Get-AzVpnClientRootCertificate -ResourceGroupName "TestRG" `
-   -VirtualNetworkGatewayName "VNet1GW"
-   ```
-
-### <a name="to-remove-a-root-certificate"></a><a name="removerootcert"></a>Een basiscertificaat verwijderen
-
-1. Declareer de variabelen.
+1. Declareer de variabelen. Wijzig de variabelen in het voor beeld zodat deze overeenkomen met het certificaat dat u wilt verwijderen.
 
    ```azurepowershell-interactive
    $GWName = "Name_of_virtual_network_gateway"
@@ -340,29 +309,33 @@ Deze methode heeft meer stappen dan methode 1, maar levert hetzelfde resultaat. 
    $P2SRootCertName2 = "ARMP2SRootCert2.cer"
    $MyP2SCertPubKeyBase64_2 = "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
    ```
-2. Verwijder het certificaat.
+
+1. Verwijder het certificaat.
 
    ```azurepowershell-interactive
    Remove-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName2 -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG -PublicCertData $MyP2SCertPubKeyBase64_2
    ```
-3. Gebruik het volgende voorbeeld om te controleren of het certificaat is verwijderd.
+
+1. Gebruik het volgende voorbeeld om te controleren of het certificaat is verwijderd.
 
    ```azurepowershell-interactive
-   Get-AzVpnClientRootCertificate -ResourceGroupName "TestRG" `
+   Get-AzVpnClientRootCertificate -ResourceGroupName "TestRG1" `
    -VirtualNetworkGatewayName "VNet1GW"
    ```
 
-## <a name="to-revoke-a-client-certificate"></a><a name="revoke"></a>Een clientcertificaat intrekken
+## <a name="to-revoke-or-reinstate-a-client-certificate"></a><a name="revoke"></a>Een client certificaat intrekken of herstellen
 
-U kunt clientcertificaten intrekken. Met de certificaatintrekkingslijst kunt u selectief punt-naar-site-verbinding weigeren op basis van afzonderlijke clientcertificaten. Dit is anders van het verwijderen van een vertrouwd basiscertificaat. Als u een vertrouwd .cer-basiscertificaat uit Azure verwijdert, wordt de toegang ingetrokken voor alle clientcertificaten die zijn gegenereerd/ondertekend door het ingetrokken basiscertificaat. Als u in plaats van een basiscertificaat een clientcertificaat intrekt, kunt u de certificaten die zijn gegenereerd op basis van het basiscertificaat, blijven gebruiken voor verificatie.
+U kunt clientcertificaten intrekken. Met de certificaatintrekkingslijst kunt u de punt-naar-site-connectiviteit selectief weigeren op basis van afzonderlijke client certificaten. Dit is anders van het verwijderen van een vertrouwd basiscertificaat. Als u een vertrouwd .cer-basiscertificaat uit Azure verwijdert, wordt de toegang ingetrokken voor alle clientcertificaten die zijn gegenereerd/ondertekend door het ingetrokken basiscertificaat. Als u in plaats van een basiscertificaat een clientcertificaat intrekt, kunt u de certificaten die zijn gegenereerd op basis van het basiscertificaat, blijven gebruiken voor verificatie.
 
 De algemene procedure is het basiscertificaat te gebruiken om de toegang te beheren op het team- of organisatieniveau, terwijl u ingetrokken clientcertificaten gebruikt voor nauwkeuriger toegangsbeheer bij afzonderlijke gebruikers.
 
-### <a name="revoke-a-client-certificate"></a><a name="revokeclientcert"></a>Een clientcertificaat intrekken
+**Intrekken:**
 
 1. Haal de vingerafdruk voor het clientcertificaat op. Zie [de vinger afdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695.aspx)voor meer informatie.
-2. Kopieer de gegevens naar een teksteditor en verwijder alle spaties, zodat u een doorlopende tekenreeks overhoudt. Deze reeks wordt in de volgende stap gedeclareerd als een variabele.
-3. Declareer de variabelen. Zorg ervoor dat u de vingerafdruk declareert die u in de vorige stap hebt opgehaald.
+
+1. Kopieer de gegevens naar een teksteditor en verwijder alle spaties, zodat u een doorlopende tekenreeks overhoudt. Deze reeks wordt in de volgende stap gedeclareerd als een variabele.
+
+1. Declareer de variabelen. Zorg ervoor dat u de vingerafdruk declareert die u in de vorige stap hebt opgehaald.
 
    ```azurepowershell-interactive
    $RevokedClientCert1 = "NameofCertificate"
@@ -370,21 +343,24 @@ De algemene procedure is het basiscertificaat te gebruiken om de toegang te behe
    $GWName = "Name_of_virtual_network_gateway"
    $RG = "Name_of_resource_group"
    ```
-4. Voeg de vingerafdruk toe aan de lijst met ingetrokken certificaten. U ziet Geslaagd als de vingerafdruk is toegevoegd.
+
+1. Voeg de vingerafdruk toe aan de lijst met ingetrokken certificaten. U ziet Geslaagd als de vingerafdruk is toegevoegd.
 
    ```azurepowershell-interactive
    Add-AzVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 `
    -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG `
    -Thumbprint $RevokedThumbprint1
    ```
-5. Controleer of de vingerafdruk is toegevoegd aan de certificaatintrekkingslijst.
+
+1. Controleer of de vingerafdruk is toegevoegd aan de certificaatintrekkingslijst.
 
    ```azurepowershell-interactive
    Get-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG
    ```
-6. Nadat de vingerafdruk is toegevoegd, kan het certificaat niet langer worden gebruikt om te verbinden. Clients die verbinding proberen te maken met het certificaat, ontvangen een bericht waarin wordt gemeld dat het certificaat niet meer geldig is.
 
-### <a name="to-reinstate-a-client-certificate"></a><a name="reinstateclientcert"></a>Een clientcertificaat opnieuw activeren
+1. Nadat de vingerafdruk is toegevoegd, kan het certificaat niet langer worden gebruikt om te verbinden. Clients die verbinding proberen te maken met het certificaat, ontvangen een bericht waarin wordt gemeld dat het certificaat niet meer geldig is.
+
+**Opnieuw invoeren:**
 
 U kunt een clientcertificaat opnieuw activeren door de vingerafdruk te verwijderen uit de lijst met ingetrokken clientcertificaten.
 
@@ -396,13 +372,15 @@ U kunt een clientcertificaat opnieuw activeren door de vingerafdruk te verwijder
    $GWName = "Name_of_virtual_network_gateway"
    $RG = "Name_of_resource_group"
    ```
-2. Verwijder de vingerafdruk van het certificaat uit de lijst met ingetrokken certificaten.
+
+1. Verwijder de vingerafdruk van het certificaat uit de lijst met ingetrokken certificaten.
 
    ```azurepowershell-interactive
    Remove-AzVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 `
    -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG -Thumbprint $RevokedThumbprint1
    ```
-3. Controleer of de vingerafdruk is verwijderd uit de lijst met ingetrokken vingerafdrukken.
+
+1. Controleer of de vingerafdruk is verwijderd uit de lijst met ingetrokken vingerafdrukken.
 
    ```azurepowershell-interactive
    Get-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG
@@ -410,9 +388,10 @@ U kunt een clientcertificaat opnieuw activeren door de vingerafdruk te verwijder
 
 ## <a name="point-to-site-faq"></a><a name="faq"></a>Veelgestelde vragen over punt-naar-site
 
-[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
+Zie de [VPN gateway punt-naar-site-Veelgestelde vragen](vpn-gateway-vpn-faq.md#P2S) voor meer informatie over punt-naar-site.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Wanneer de verbinding is voltooid, kunt u virtuele machines aan uw virtuele netwerken toevoegen. Zie [Virtuele machines](https://docs.microsoft.com/azure/) voor meer informatie. Zie [Azure and Linux VM Network Overview](../virtual-machines/linux/azure-vm-network-overview.md) (Overzicht van Azure- en Linux-VM-netwerken) voor meer informatie over netwerken en virtuele machines.
 
 Voor informatie over probleemoplossing voor P2S bekijkt u [Troubleshooting: Azure point-to-site connection problemens](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) (Problemen met punt-naar-site-verbindingen in Azure oplossen).

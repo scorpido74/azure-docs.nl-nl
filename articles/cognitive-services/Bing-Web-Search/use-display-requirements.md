@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93be72f2afcda90dde1b74c5ee317a7ad3350be1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60499882"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075684"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Vereisten voor gebruik en weergave van Bing Zoeken-API's
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Deze gebruiks-en weergave vereisten zijn van toepassing op elke implementatie van de inhoud en de bijbehorende informatie uit de volgende Bing Zoeken-API's, inclusief relaties, meta gegevens en andere signalen.
 
@@ -34,7 +39,7 @@ Deze gebruiks-en weergave vereisten zijn van toepassing op elke implementatie va
 ## <a name="definitions"></a>Definities
 
 
-|Termijn  |Beschrijving  |
+|Term  |Beschrijving  |
 |---------|---------|
 |Antwoord     | Een categorie met resultaten die in een antwoord wordt geretourneerd. Een reactie van de Bing Webzoekopdrachten-API kan bijvoorbeeld antwoorden bevatten in de categorieën resultaten van webpagina's, afbeelding, video, visueel element en nieuws. |
 |Antwoord     | Alle antwoorden en bijbehorende gegevens die zijn ontvangen als reactie op één aanroep van een zoek-API. |
@@ -99,7 +104,7 @@ Niet doen:
 ### <a name="notices-and-branding"></a>Kennisgevingen en huismerk 
 Uitvoeren
 
-- Neem prominent een functionele Hyper link op naar de [privacyverklaring van micro soft](https://go.microsoft.com/fwlink/?LinkId=521839), bijna elk punt in de gebruikers ervaring (UX) die een gebruiker de mogelijkheid biedt om een zoek opdracht in te voeren. Voorzie de Hyper Link van de **privacyverklaring van micro soft**.
+- Neem prominent een functionele Hyper link op naar de [privacyverklaring van micro soft](https://go.microsoft.com/fwlink/?LinkId=521839), bijna elk punt in de gebruikers ervaring (UX) die een gebruiker de mogelijkheid biedt om een zoek opdracht in te voeren. Voorzie de Hyper Link van de **privacyverklaring van micro soft** .
 
 - Geef een prominente Bing-huis stijl weer, in overeenstemming met de richt lijnen voor het gebruik van het [Bing-handels merk](https://go.microsoft.com/fwlink/?linkid=833278), waarbij een gebruiker de mogelijkheid biedt om een zoek opdracht in te voeren. Een dergelijke branding moet de gebruiker die micro soft in staat is om de Internet zoekmachine te controleren, een duidelijke status hebben.
 
@@ -134,7 +139,7 @@ U kunt een gebruiker in staat stellen om de resultaten te bewaren op een apparaa
 - De gebruiker in staat stellen om toegang te krijgen tot resultaten die eerder naar die gebruiker zijn geretourneerd op dat apparaat (bijvoorbeeld in het geval van een onderbreking van de service).
 - Voor het opslaan van resultaten die zijn geretourneerd voor uw proactieve query, is het aan te raden om de behoeften van de gebruiker op basis van de signalen van die gebruiker (bijvoorbeeld in het geval van een verwachte service onderbreking).
 
-#### <a name="server"></a>server
+#### <a name="server"></a>Server
 
 U kunt de resultaten voor één gebruiker veilig bewaren op een server die u beheert en alleen de behouden resultaten weer geven:
 

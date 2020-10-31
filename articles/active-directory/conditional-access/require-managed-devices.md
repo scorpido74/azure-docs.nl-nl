@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c650c2b828e2742df5dd92657003460bcda66a0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c11b58954eefda67f981d618b04ab2bd69fa6b43
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145118"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077758"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Procedure: beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -50,7 +50,7 @@ Met voorwaardelijke toegang van Azure AD kunt u deze vereiste aanpakken met éé
 
 In eenvoudige termen zijn beheerde apparaten apparaten die onder *een bepaald soort* organisatie beheer vallen. In azure AD is de vereiste voor een beheerd apparaat dat is geregistreerd bij Azure AD. Als u een apparaat registreert, wordt er een identiteit voor het apparaat in de vorm van een apparaatobject gemaakt. Dit object wordt door Azure gebruikt om status informatie over een apparaat bij te houden. Als Azure AD-beheerder kunt u dit object al gebruiken om de status van een apparaat in of uit te scha kelen.
   
-![Voor waarden op basis van apparaten](./media/require-managed-devices/32.png)
+:::image type="content" source="./media/require-managed-devices/32.png" alt-text="Scherm opname van het deel venster met apparaten in azure A D. in-en uitschakelen worden items gemarkeerd." border="false":::
 
 Als u een apparaat wilt ontvangen dat is geregistreerd bij Azure AD, hebt u drie opties: 
 
@@ -60,19 +60,19 @@ Als u een apparaat wilt ontvangen dat is geregistreerd bij Azure AD, hebt u drie
 
 Deze drie opties worden beschreven in het artikel [Wat is een apparaat-id?](../devices/overview.md)
 
-Om een beheerd apparaat te worden, moet een geregistreerd apparaat een **hybride Azure AD-apparaat** zijn of een **apparaat dat is gemarkeerd als compatibel**.  
+Om een beheerd apparaat te worden, moet een geregistreerd apparaat een **hybride Azure AD-apparaat** zijn of een **apparaat dat is gemarkeerd als compatibel** .  
 
-![Voor waarden op basis van apparaten](./media/require-managed-devices/47.png)
+:::image type="content" source="./media/require-managed-devices/47.png" alt-text="Scherm opname van het deel venster met apparaten in azure A D. in-en uitschakelen worden items gemarkeerd." border="false":::
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>Hybride Azure AD-aangesloten apparaten vereisen
 
 In het beleid voor voorwaardelijke toegang kunt u **vereisen dat Hybrid Azure AD is toegevoegd** aan een status die alleen toegankelijk is voor de geselecteerde Cloud-apps met behulp van een beheerd apparaat. 
 
-![Voor waarden op basis van apparaten](./media/require-managed-devices/10.png)
+:::image type="content" source="./media/require-managed-devices/10.png" alt-text="Scherm opname van het deel venster met apparaten in azure A D. in-en uitschakelen worden items gemarkeerd." border="false":::
 
 Deze instelling geldt alleen voor apparaten met Windows 10 of lager niveau, zoals Windows 7 of Windows 8, die zijn gekoppeld aan een on-premises AD. U kunt deze apparaten alleen registreren bij Azure AD met behulp van een hybride Azure AD-deelname, een [geautomatiseerd proces](../devices/hybrid-azuread-join-plan.md) voor het verkrijgen van een Windows 10-apparaat dat is geregistreerd. 
 
-![Voor waarden op basis van apparaten](./media/require-managed-devices/45.png)
+:::image type="content" source="./media/require-managed-devices/45.png" alt-text="Scherm opname van het deel venster met apparaten in azure A D. in-en uitschakelen worden items gemarkeerd." border="false":::
 
 Wat is een hybride Azure AD-apparaat dat is gekoppeld aan een beheerd apparaat?  Voor apparaten die zijn gekoppeld aan een on-premises AD, wordt ervan uitgegaan dat de controle over deze apparaten wordt afgedwongen met behulp van beheer oplossingen als **Configuration Manager** of **groeps beleid (GP)** om ze te beheren. Omdat er geen methode voor Azure AD is om te bepalen of een van deze methoden is toegepast op een apparaat, is het vereisen van een hybride Azure AD-apparaat dat is gekoppeld aan een relatief zwak mechanisme om een beheerd apparaat te vereisen. Het is aan u als beheerder om te beoordelen of de methoden die worden toegepast op uw on-premises apparaten die lid zijn van een domein krachtig genoeg zijn om een beheerd apparaat te vormen als een dergelijk apparaat ook een hybride Azure AD-apparaat is.
 
@@ -80,14 +80,14 @@ Wat is een hybride Azure AD-apparaat dat is gekoppeld aan een beheerd apparaat? 
 
 De optie om ervoor te zorgen dat *een apparaat moet worden gemarkeerd als compatibel* , is het sterkste formulier voor het aanvragen van een beheerd apparaat.
 
-![Voor waarden op basis van apparaten](./media/require-managed-devices/11.png)
+:::image type="content" source="./media/require-managed-devices/11.png" alt-text="Scherm opname van het deel venster met apparaten in azure A D. in-en uitschakelen worden items gemarkeerd." border="false":::
 
 Voor deze optie moet een apparaat zijn geregistreerd bij Azure AD en moet het ook worden gemarkeerd als compatibel door:
          
 - Intune
 - Een Mobile Device Management MDM-systeem (van derden) dat Windows 10-apparaten beheert via Azure AD-integratie. MDM-systemen van derden voor apparaten met een ander besturings systeem dan Windows 10 worden niet ondersteund.
  
-![Voor waarden op basis van apparaten](./media/require-managed-devices/46.png)
+:::image type="content" source="./media/require-managed-devices/46.png" alt-text="Scherm opname van het deel venster met apparaten in azure A D. in-en uitschakelen worden items gemarkeerd." border="false":::
 
 Voor een apparaat dat is gemarkeerd als compatibel, kunt u aannemen dat: 
 
@@ -103,19 +103,19 @@ In dit scenario heeft Contoso besloten dat alle mobiele toegang tot Microsoft 36
 Organisaties moeten de volgende stappen uitvoeren om het gebruik van een Inge schreven mobiel apparaat te vereisen.
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
-1. Selecteer **Nieuw beleid**.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang** .
+1. Selecteer **Nieuw beleid** .
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
-1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
-   1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Gereed**.
-1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **Office 365**.
-1. Onder **voor waarden**selecteert u **apparaat platforms**.
-   1. Stel **configureren** in op **Ja**.
-   1. Voeg **Android** en **IOS**toe.
-1. Selecteer onder **toegangs beheer**  >  **verlenen**de volgende opties:
+1. Onder **toewijzingen** selecteert u **gebruikers en groepen**
+   1. Onder **opnemen** selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
+   1. Selecteer **Gereed** .
+1. Onder **Cloud-apps of acties**  >  **Include** , selecteert u **Office 365** .
+1. Onder **voor waarden** selecteert u **apparaat platforms** .
+   1. Stel **configureren** in op **Ja** .
+   1. Voeg **Android** en **IOS** toe.
+1. Selecteer onder **toegangs beheer**  >  **verlenen** de volgende opties:
    - **Vereisen dat het apparaat moet worden gemarkeerd als compatibel**
-1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
+1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan** .
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 
 ### <a name="known-behavior"></a>Bekend gedrag
