@@ -4,12 +4,12 @@ description: Maak uw eerste Windows-containertoepassing in Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a9eda23268bc06029292c3c5f10502216e3658
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564301"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087057"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Uw eerste Service Fabric-containertoepassing maken in Windows
 
@@ -30,7 +30,7 @@ Er zijn geen wijzigingen in uw toepassing vereist om een bestaande toepassing in
 * Een ontwikkelcomputer waarop wordt uitgevoerd:
   * Visual Studio 2015 of Visual Studio 2019.
   * [Service Fabric SDK en hulpprogramma's](service-fabric-get-started.md).
-  *  Docker voor Windows. [Download Docker CE voor Windows (stabiel)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Nadat u Docker hebt geïnstalleerd en gestart, klikt u met de rechtermuisknop op het systeemvakpictogram en selecteert u **Overschakelen naar Windows-containers**. Deze stap is vereist voor het uitvoeren van Docker-installatiekopieën onder Windows.
+  *  Docker voor Windows. [Download Docker CE voor Windows (stabiel)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Nadat u Docker hebt geïnstalleerd en gestart, klikt u met de rechtermuisknop op het systeemvakpictogram en selecteert u **Overschakelen naar Windows-containers** . Deze stap is vereist voor het uitvoeren van Docker-installatiekopieën onder Windows.
 
 * Een Windows-cluster met drie of meer knoop punten die worden uitgevoerd op Windows Server met containers. 
 
@@ -38,8 +38,8 @@ Er zijn geen wijzigingen in uw toepassing vereist om een bestaande toepassing in
   
 Als u wilt bepalen welke versie van Windows Server u nodig hebt voor het cluster, voert u de `ver` opdracht uit vanaf een Windows-opdracht prompt op de ontwikkel computer:
 
-* Als de versie *x. x. 14323. x*bevat, selecteert u *Windowsserver 2016-Data Center-with-containers* voor het besturings systeem bij het [maken van een cluster](service-fabric-cluster-creation-via-portal.md).
-  * Als de versie *x. x. 16299. x*bevat, selecteert u *WindowsServerSemiAnnual Data Center-core-1709-with-containers* voor het besturings systeem bij het [maken van een cluster](service-fabric-cluster-creation-via-portal.md).
+* Als de versie *x. x. 14323. x* bevat, selecteert u *Windowsserver 2016-Data Center-with-containers* voor het besturings systeem bij het [maken van een cluster](service-fabric-cluster-creation-via-portal.md).
+  * Als de versie *x. x. 16299. x* bevat, selecteert u *WindowsServerSemiAnnual Data Center-core-1709-with-containers* voor het besturings systeem bij het [maken van een cluster](service-fabric-cluster-creation-via-portal.md).
 
 * Een register in Azure Container Registry - [Een containerregister maken](../container-registry/container-registry-get-started-portal.md) in uw Azure-abonnement.
 
@@ -85,7 +85,7 @@ CMD ["python", "app.py"]
 Lees het [Dockerfile-referentiemateriaal](https://docs.docker.com/engine/reference/builder/) voor meer informatie.
 
 ## <a name="create-a-basic-web-application"></a>Algemene webtoepassing maken
-Maak een Flask-webtoepassing die luistert op poort 80 en `Hello World!` retourneert. Maak in dezelfde map het bestand *requirements.txt*. Voeg het volgende toe en sla de wijzigingen op:
+Maak een Flask-webtoepassing die luistert op poort 80 en `Hello World!` retourneert. Maak in dezelfde map het bestand *requirements.txt* . Voeg het volgende toe en sla de wijzigingen op:
 ```
 Flask
 ```
@@ -190,11 +190,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>De beperkte service maken in Visual Studio
 De Service Fabric SDK en hulpprogramma's bieden een servicesjabloon waarmee u een containertoepassing kunt maken.
 
-1. Start Visual Studio. Selecteer **Bestand** > **Nieuw** > **Project**.
-2. Selecteer **Service Fabric-toepassing**, geef deze de naam MyFirstContainer en klik op **OK**.
-3. Selecteer **Container** in de lijst met **servicesjablonen**.
+1. Start Visual Studio. Selecteer **Bestand** > **Nieuw** > **Project** .
+2. Selecteer **Service Fabric-toepassing** , geef deze de naam MyFirstContainer en klik op **OK** .
+3. Selecteer **Container** in de lijst met **servicesjablonen** .
 4. Voer bij **Naam van installatiekopie** het volgende in: myregistry.azurecr.io/samples/helloworldapp. Dit is de installatiekopie die u naar uw containeropslagplaats hebt gepusht.
-5. Geef de service een naam en klik op **OK**.
+5. Geef de service een naam en klik op **OK** .
 
 ## <a name="configure-communication"></a>Communicatie configureren
 De containerservice heeft een eindpunt voor communicatie nodig. Voeg een `Endpoint`-element met het protocol, de poort en het type toe aan het bestand ServiceManifest.xml. In dit voorbeeld wordt een ingestelde poort 8081 gebruikt. Als er geen poort is opgegeven, wordt een willekeurige poort uit het poortbereik van de toepassing gekozen. 
@@ -286,7 +286,7 @@ Windows ondersteunt twee isolatiemodi voor containers: proces en Hyper-V. Met de
 
 Vanaf versie 6.1 integreert Service Fabric automatisch [Docker-STATUSCONTROLE](https://docs.docker.com/engine/reference/builder/#healthcheck)-gebeurtenissen in het systeemstatusrapport. Dit betekent dat als voor uw container **STATUSCONTROLE** is ingeschakeld, Service Fabric de status van de container rapporteert wanneer Docker aangeeft dat deze is gewijzigd. In [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) wordt de status **OK** weergegeven wanneer *health_status**healthy* is en **WAARSCHUWING** wanneer *health_status**unhealthy* is. 
 
-Vanaf de laatste vernieuwing van v 6.4 hebt u de optie om op te geven dat de status controle-evaluaties van docker moeten worden gerapporteerd als een fout. Als deze optie is ingeschakeld, wordt het status rapport **OK** weer gegeven *health_status* wanneer health_status *in orde* is en de **fout** wordt weer gegeven wanneer *health_status* een *slechte status*heeft.
+Vanaf de laatste vernieuwing van v 6.4 hebt u de optie om op te geven dat de status controle-evaluaties van docker moeten worden gerapporteerd als een fout. Als deze optie is ingeschakeld, wordt het status rapport **OK** weer gegeven *health_status* wanneer health_status *in orde* is en de **fout** wordt weer gegeven wanneer *health_status* een *slechte status* heeft.
 
 De **status controle** -instructie die verwijst naar de daad werkelijke controle die wordt uitgevoerd voor de controle van de container status, moet aanwezig zijn in de Dockerfile die wordt gebruikt tijdens het genereren van de container installatie kopie.
 
@@ -296,7 +296,7 @@ De **status controle** -instructie die verwijst naar de daad werkelijke controle
 
 ![HealthCheckUnhealthyDsp][5]
 
-U kunt het gedrag van de **STATUSCONTROLE** voor elke container configureren door **HealthConfig**-opties op te geven als onderdeel van **ContainerHostPolicies** in ApplicationManifest.
+U kunt het gedrag van de **STATUSCONTROLE** voor elke container configureren door **HealthConfig** -opties op te geven als onderdeel van **ContainerHostPolicies** in ApplicationManifest.
 
 ```xml
 <ServiceManifestImport>
@@ -310,20 +310,20 @@ U kunt het gedrag van de **STATUSCONTROLE** voor elke container configureren doo
     </Policies>
 </ServiceManifestImport>
 ```
-*IncludeDockerHealthStatusInSystemHealthReport* is standaard ingesteld op **True**, *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **False**en *TreatContainerUnhealthyStatusAsError* is ingesteld op **False**. 
+*IncludeDockerHealthStatusInSystemHealthReport* is standaard ingesteld op **True** , *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **False** en *TreatContainerUnhealthyStatusAsError* is ingesteld op **False** . 
 
-Als *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **true**, wordt een herhaaldelijk niet goed werkende container opnieuw opgestart (mogelijk op andere knooppunten).
+Als *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **true** , wordt een herhaaldelijk niet goed werkende container opnieuw opgestart (mogelijk op andere knooppunten).
 
-Als *TreatContainerUnhealthyStatusAsError* is ingesteld op **True**, worden **fouten** rapporten weer gegeven wanneer de *health_status* van de container *beschadigd*is.
+Als *TreatContainerUnhealthyStatusAsError* is ingesteld op **True** , worden **fouten** rapporten weer gegeven wanneer de *health_status* van de container *beschadigd* is.
 
-Als u de integratie van **STATUSCONTROLE** wilt uitschakelen voor de hele Service Fabric-cluster, moet u [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) instellen op **onwaar**.
+Als u de integratie van **STATUSCONTROLE** wilt uitschakelen voor de hele Service Fabric-cluster, moet u [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) instellen op **onwaar** .
 
 ## <a name="deploy-the-container-application"></a>De containertoepassing implementeren
 Sla al uw wijzigingen op en bouw de toepassing. Klik in Solution Explorer met de rechtermuisknop op **MyFirstContainer** en selecteer **Publish** om uw toepassing te publiceren.
 
 Voer bij **Verbindingseindpunt** het beheereindpunt voor het cluster in. Bijvoorbeeld `containercluster.westus2.cloudapp.azure.com:19000`. U vindt het eindpunt voor de clientverbinding op het tabblad Overzicht voor het cluster in [Azure Portal](https://portal.azure.com).
 
-Klik op **Publish**.
+Klik op **Publish** .
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) is een webhulpprogramma voor het inspecteren en beheren van toepassingen en knooppunten in een Service Fabric-cluster. Open een browser, ga naar `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` en volg de implementatie van de toepassing. De toepassing wordt geïmplementeerd, maar heeft een foutstatus totdat de installatiekopie is gedownload op de clusterknooppunten (wat enige tijd kan duren, afhankelijk van de grootte van de installatiekopie): ![Fout][1]
 
@@ -369,7 +369,7 @@ We raden u aan de volgende procedures uit te voeren om ervoor te zorgen dat cont
  
 ## <a name="specify-os-build-specific-container-images"></a>Containerinstallatiekopieën opgeven die specifiek zijn voor de build van het besturingssysteem 
 
-Windows Server-containers zijn mogelijk niet compatibel in verschillende versies van het besturings systeem. Windows Server-containers die zijn gemaakt met Windows Server 2016, werken bijvoorbeeld niet in Windows Server versie 1709 in de isolatie modus voor processen. Als cluster knooppunten worden bijgewerkt naar de nieuwste versie, kunnen container Services die zijn gemaakt met de eerdere versies van het besturings systeem, mislukken. Om dit te omzeilen met versie 6,1 van de runtime en nieuwer, biedt Service Fabric ondersteuning voor het opgeven van meerdere installatie kopieën van besturings systemen per container en het coderen van deze met de build-versies van het besturings systeem in het toepassings manifest. U kunt de build-versie van het besturings systeem verkrijgen door uit te voeren `winver` vanaf een Windows-opdracht prompt. Werk eerst per besturingssysteemversie de toepassingsmanifesten bij en geef het gebruik van specifieke installatiekopieën op, en werk daarna het besturingssysteem op de knooppunten bij. Het volgende fragment toont hoe u meerdere containerinstallatiekopieën opgeeft in het toepassingsmanifest **ApplicationManifest.xml**:
+Windows Server-containers zijn mogelijk niet compatibel in verschillende versies van het besturings systeem. Windows Server-containers die zijn gemaakt met Windows Server 2016, werken bijvoorbeeld niet in Windows Server versie 1709 in de isolatie modus voor processen. Als cluster knooppunten worden bijgewerkt naar de nieuwste versie, kunnen container Services die zijn gemaakt met de eerdere versies van het besturings systeem, mislukken. Om dit te omzeilen met versie 6,1 van de runtime en nieuwer, biedt Service Fabric ondersteuning voor het opgeven van meerdere installatie kopieën van besturings systemen per container en het coderen van deze met de build-versies van het besturings systeem in het toepassings manifest. U kunt de build-versie van het besturings systeem verkrijgen door uit te voeren `winver` vanaf een Windows-opdracht prompt. Werk eerst per besturingssysteemversie de toepassingsmanifesten bij en geef het gebruik van specifieke installatiekopieën op, en werk daarna het besturingssysteem op de knooppunten bij. Het volgende fragment toont hoe u meerdere containerinstallatiekopieën opgeeft in het toepassingsmanifest **ApplicationManifest.xml** :
 
 
 ```xml
@@ -534,7 +534,7 @@ U kunt het Service Fabric-cluster configureren voor het verwijderen van ongebrui
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }
@@ -568,7 +568,7 @@ De Service Fabric-runtime wijst 20 minuten toe om containerinstallatiekopieën t
 
 ## <a name="set-container-retention-policy"></a>Bewaarbeleid voor containers instellen
 
-Om gemakkelijker opstartfouten bij containers te analyseren, ondersteunt Service Fabric (versie 6.1 of hoger) het bewaren van containers die zijn gestopt of niet kunnen opstartten. Dit beleid kan worden ingesteld in het bestand **ApplicationManifest.xml**, zoals u in het volgende fragment ziet:
+Om gemakkelijker opstartfouten bij containers te analyseren, ondersteunt Service Fabric (versie 6.1 of hoger) het bewaren van containers die zijn gestopt of niet kunnen opstartten. Dit beleid kan worden ingesteld in het bestand **ApplicationManifest.xml** , zoals u in het volgende fragment ziet:
 
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
@@ -578,7 +578,7 @@ De instelling **ContainersRetentionCount** geeft aan hoeveel containers er moete
 
 ## <a name="start-the-docker-daemon-with-custom-arguments"></a>De Docker-daemon met aangepaste argumenten starten
 
-Met versie 6.2 of hoger van de Service Fabric-runtime kunt u de Docker-daemon met aangepaste argumenten starten. Wanneer er aangepaste argumenten zijn opgegeven, geeft Service Fabric geen andere argumenten aan de docker-engine door, behalve het argument `--pidfile`. Daarom moet `--pidfile` niet als een argument worden doorgegeven. Bovendien moet het argument de docker-daemon nog steeds laten luisteren op de standaard benoemde pipe voor Windows (of unix-domeinsocket voor Linux) zodat Service Fabric met de daemon kan communiceren. De aangepaste argumenten worden doorgegeven in het clustermanifest onder de sectie **Hosting** onder **ContainerServiceArguments**, zoals weergegeven in het volgende fragment: 
+Met versie 6.2 of hoger van de Service Fabric-runtime kunt u de Docker-daemon met aangepaste argumenten starten. Wanneer er aangepaste argumenten zijn opgegeven, geeft Service Fabric geen andere argumenten aan de docker-engine door, behalve het argument `--pidfile`. Daarom moet `--pidfile` niet als een argument worden doorgegeven. Bovendien moet het argument de docker-daemon nog steeds laten luisteren op de standaard benoemde pipe voor Windows (of unix-domeinsocket voor Linux) zodat Service Fabric met de daemon kan communiceren. De aangepaste argumenten worden doorgegeven in het clustermanifest onder de sectie **Hosting** onder **ContainerServiceArguments** , zoals weergegeven in het volgende fragment: 
  
 
 ```json

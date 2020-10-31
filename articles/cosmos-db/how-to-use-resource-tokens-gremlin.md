@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df25ab4b0f5593ab21336d002ad2f9f10795bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d851a28712beb80bf2a7aa196e471ef4f15074
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570555"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085731"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB-bron tokens gebruiken met de Gremlin-SDK
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 In dit artikel wordt uitgelegd hoe u [Azure Cosmos DB-bron tokens](secure-access-to-data.md) gebruikt om toegang te krijgen tot de Graph-data base via de GREMLIN-SDK.
 
@@ -100,7 +101,7 @@ Met één Gremlin-account kunt u een onbeperkt aantal tokens uitgeven. U kunt ec
 
 ## <a name="permission"></a>Machtiging
 
-Een veelvoorkomende fout die toepassingen tegen komen tijdens het gebruik van resource tokens is ' onvoldoende machtigingen in de autorisatie-header voor de bijbehorende aanvraag. Probeer het opnieuw met een andere autorisatie-header. Deze fout wordt geretourneerd wanneer een Gremlin-passage een rand of een hoek punt probeert te schrijven, maar het bron token alleen *Lees* machtigingen verleent. Inspecteer uw passage om te zien of het een van de volgende stappen bevat: *. addV ()*, *. addE ()*, *. drop ()* of *. eigenschap ()*.
+Een veelvoorkomende fout die toepassingen tegen komen tijdens het gebruik van resource tokens is ' onvoldoende machtigingen in de autorisatie-header voor de bijbehorende aanvraag. Probeer het opnieuw met een andere autorisatie-header. Deze fout wordt geretourneerd wanneer een Gremlin-passage een rand of een hoek punt probeert te schrijven, maar het bron token alleen *Lees* machtigingen verleent. Inspecteer uw passage om te zien of het een van de volgende stappen bevat: *. addV ()* , *. addE ()* , *. drop ()* of *. eigenschap ()* .
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Op rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](role-based-access-control.md) in azure Cosmos db

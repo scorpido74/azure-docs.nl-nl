@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ff8d726203c5ddfae63a74a7a364c6f2b9ca783e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342209"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085136"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>Veelgestelde vragen: vragen over virtuele machines
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Welke typen virtuele machines worden ondersteund?
 
-Bewaking en aanbevelingen zijn beschikbaar voor virtuele machines (Vm's) die zijn gemaakt met behulp van de [klassieke en Resource Manager-implementatie modellen](/azure/security-center/./azure-resource-manager/management/deployment-models).
+Bewaking en aanbevelingen zijn beschikbaar voor virtuele machines (Vm's) die zijn gemaakt met behulp van de [klassieke en Resource Manager-implementatie modellen](/azure/azure-resource-manager/management/deployment-models).
 
 Zie de [ondersteunde platforms in azure Security Center](security-center-os-coverage.md) voor een lijst met ondersteunde platforms.
 

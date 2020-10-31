@@ -10,20 +10,25 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 532bf806789476c1ec901c1e4ac8522451819625
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872065"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085119"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Zoeken naar entiteiten met de Bing Entiteiten-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 ## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Zoektermen voorstellen met de Bing Automatische suggestie-API
 
 Als u een zoekvak aanbiedt waarin de gebruiker een zoekterm invoert, kunt u de [Automatische suggestie-API voor Bing](../../bing-autosuggest/get-suggested-search-terms.md) gebruiken om de ervaring te verbeteren. De API retourneert voorgestelde queryreeksen op basis van gedeeltelijke zoektermen terwijl de gebruiker typt.
 
-Nadat de gebruiker de zoekterm heeft ingevoerd, past u URL-codering toe op de term voordat u de queryparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) instelt. Als de gebruiker bijvoorbeeld *Marcus Appel* invoert, stelt u `q` in op *Marcus+Appel* of *Marcus%20Appel*.
+Nadat de gebruiker de zoekterm heeft ingevoerd, past u URL-codering toe op de term voordat u de queryparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) instelt. Als de gebruiker bijvoorbeeld *Marcus Appel* invoert, stelt u `q` in op *Marcus+Appel* of *Marcus%20Appel* .
 
 Als de zoekterm een spelfout bevat, bevat het zoekresultaat het object [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext). In het object worden de oorspronkelijke spelling weergegeven en de gecorrigeerde spelling die Bing heeft gebruikt voor de zoekopdracht.
 
@@ -189,7 +194,7 @@ Plaatsen kunnen bijvoorbeeld restaurants, hotels of lokale bedrijven zijn. Het v
 > [!NOTE]
 > Entiteitantwoorden bieden ondersteuning voor meerdere markten, maar plaatsantwoorden bieden alleen ondersteuning voor Amerikaanse bedrijfslocaties. 
 
-Met lokale-entiteitsquery's zoals *restaurant in de buurt* moet de locatie van de gebruiker bekend zijn om nauwkeurige resultaten te kunnen bieden. Uw aanvragen moeten altijd de headers X-Search-Location en X-MSEdge-ClientIP bevatten om de locatie van de gebruiker op te geven. Als Bing van mening is dat het handig zou zijn de locatie van de gebruiker te weten, wordt het veld `askUserForLocation` van [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) ingesteld op **true**. 
+Met lokale-entiteitsquery's zoals *restaurant in de buurt* moet de locatie van de gebruiker bekend zijn om nauwkeurige resultaten te kunnen bieden. Uw aanvragen moeten altijd de headers X-Search-Location en X-MSEdge-ClientIP bevatten om de locatie van de gebruiker op te geven. Als Bing van mening is dat het handig zou zijn de locatie van de gebruiker te weten, wordt het veld `askUserForLocation` van [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) ingesteld op **true** . 
 
 ```json
 {

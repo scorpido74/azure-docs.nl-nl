@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7cf0f91a655901373b02a51004cf77eb25c8cf8e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486001"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085884"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Time to Live configureren in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In Azure Cosmos DB kunt u Time to Live (TTL) configureren op containerniveau, maar u kunt het ook overschrijven op een itemniveau nadat u het voor de container hebt ingesteld. U kunt TTL voor een container configureren via de Azure-portal of de taalspecifieke SDK's. Overschrijvingen van TTL op itemniveau kunnen worden geconfigureerd met behulp van de SDK's.
 
@@ -28,12 +29,12 @@ Gebruik de volgende stappen om Time to Live in te schakelen op een container zon
 
 2. Maak een nieuw Azure Cosmos DB-account of selecteer een bestaand account.
 
-3. Open het deelvenster **Data Explorer**.
+3. Open het deelvenster **Data Explorer** .
 
 4. Selecteer een bestaande container, vouw deze uit en wijzig de volgende waarden:
 
-   * Open het venster **Schaal en instellingen**.
-   * Onder **Instelling** zoekt u **Time to Live**.
+   * Open het venster **Schaal en instellingen** .
+   * Onder **Instelling** zoekt u **Time to Live** .
    * Selecteer **On (no default)** of **Aan** en stel een TTL-waarde in
    * Klik op **Opslaan** om de wijzigingen op te slaan.
 
@@ -212,16 +213,16 @@ Gebruik de volgende stappen om TTL op een item in te scha kelen:
 
 2. Maak een nieuw Azure Cosmos DB-account of selecteer een bestaand account.
 
-3. Open het deelvenster **Data Explorer**.
+3. Open het deelvenster **Data Explorer** .
 
 4. Selecteer een bestaande container, vouw deze uit en wijzig de volgende waarden:
 
-   * Open het venster **Schaal en instellingen**.
-   * Onder **Instelling** zoekt u **Time to Live**.
+   * Open het venster **Schaal en instellingen** .
+   * Onder **Instelling** zoekt u **Time to Live** .
    * Selecteer **aan (geen standaard instelling)** of selecteer aan en stel een TTL-waarde **in** . 
    * Klik op **Opslaan** om de wijzigingen op te slaan.
 
-5. Ga vervolgens naar het item waarvoor u de tijd wilt instellen op Live, voeg de `ttl` eigenschap toe en selecteer **bijwerken**. 
+5. Ga vervolgens naar het item waarvoor u de tijd wilt instellen op Live, voeg de `ttl` eigenschap toe en selecteer **bijwerken** . 
 
    ```json
    {

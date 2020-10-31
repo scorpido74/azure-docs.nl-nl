@@ -1,26 +1,22 @@
 ---
 title: Zone redundantie voor Azure cache inschakelen voor redis (preview-versie)
-description: Meer informatie over het instellen van zone redundantie voor uw Azure-cache voor de Premium-laag voor redis-instanties
+description: Meer informatie over het instellen van zone redundantie voor uw Premium en Azure-cache voor de bedrijfslaag voor redis-instanties
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 3f40c21fdd5144b325a8dd94eed2c9cbbe8c7877
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0cb7ee5b9fa02e726d03bf1ae9935c07ded6e4a6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537759"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088009"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Zone redundantie voor Azure cache inschakelen voor redis (preview-versie)
 In dit artikel leert u hoe u een zone-redundante Azure-cache-instantie configureert met behulp van de Azure Portal.
 
-Azure cache voor redis Standard-en Premium-lagen bieden ingebouwde redundantie door elke cache op twee specifieke virtuele machines (Vm's) te hosten. Hoewel deze Vm's zich in een afzonderlijke Azure-fout bevinden [en domeinen bijwerken](../virtual-machines/manage-availability.md) en Maxi maal beschikbaar zijn, zijn ze gevoelig voor storingen op het niveau van het Data Center. Azure cache voor redis biedt ook ondersteuning voor zone redundantie in de Premium-laag. Een zone-redundante cache wordt op Vm's verdeeld over meerdere [beschikbaarheids zones](../virtual-machines/manage-availability.md#use-availability-zones-to-protect-from-datacenter-level-failures). Het biedt meer flexibiliteit en meer Beschik baarheid.
-
-> [!IMPORTANT]
-> Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
-> 
+Azure cache voor redis Standard-, Premium-en Enter prise-lagen bieden ingebouwde redundantie door elke cache op twee specifieke virtuele machines (Vm's) te hosten. Hoewel deze Vm's zich in een afzonderlijke Azure-fout bevinden [en domeinen bijwerken](../virtual-machines/manage-availability.md) en Maxi maal beschikbaar zijn, zijn ze gevoelig voor storingen op het niveau van het Data Center. Azure cache voor redis biedt ook ondersteuning voor zone redundantie in de Premium-en bedrijfs lagen. Een zone-redundante cache wordt op Vm's verdeeld over meerdere [beschikbaarheids zones](../virtual-machines/manage-availability.md#use-availability-zones-to-protect-from-datacenter-level-failures). Het biedt meer flexibiliteit en meer Beschik baarheid.
 
 ## <a name="prerequisites"></a>Vereisten
 * Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
@@ -46,9 +42,9 @@ Voer de volgende stappen uit om een cache te maken:
     | **Resourcegroep** | Selecteer een resource groep of selecteer **nieuwe maken** en voer een nieuwe naam voor de resource groep in. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
     | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net* . | 
     | **Locatie** | Selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
-    | **Cache type** | Selecteer een cache voor de [Premium-laag](https://azure.microsoft.com/pricing/details/cache/) . |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
+    | **Cache type** | Selecteer een [Premium-of ENTER prise-laag](https://azure.microsoft.com/pricing/details/cache/) cache. |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
    
-1. Kies op de pagina **Geavanceerd** de optie **aantal replica's** .
+1. Kies op de pagina **Geavanceerd** voor een Premium-laag cache de optie **aantal replica's** .
    
     :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Selecteer Azure Cache voor Redis.":::
 
@@ -62,7 +58,7 @@ Voer de volgende stappen uit om een cache te maken:
     > Ondersteuning voor zone redundantie werkt momenteel alleen met niet-geclusterde en niet-Geo-gerepliceerde caches. Daarnaast biedt het geen ondersteuning voor persoonlijke koppelingen, schalen, gegevens persistentie of importeren/exporteren.
     >
 
-1. Klik op **Maken** . 
+1. Klik op **Create** . 
    
     Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
    

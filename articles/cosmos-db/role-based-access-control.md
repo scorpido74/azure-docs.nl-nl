@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: c9a29a34b25b6834c2c343bd568f3dd3548ceff3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9f0d42e2e3dfb7e11d3c74ad1280bb867a85e2f8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474934"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085459"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Op rollen gebaseerd toegangsbeheer in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB biedt ingebouwde op rollen gebaseerd toegangs beheer (RBAC) voor algemene beheer scenario's in Azure Cosmos DB. Een persoon die een profiel in Azure Active Directory heeft, kan deze Azure-rollen toewijzen aan gebruikers, groepen, service-principals of beheerde identiteiten voor het verlenen of weigeren van toegang tot resources en bewerkingen op Azure Cosmos DB-resources. Roltoewijzingen zijn alleen gericht op toegangs beheer, waaronder toegang tot Azure Cosmos-accounts, data bases, containers en aanbiedingen (door Voer).
 
@@ -21,7 +22,7 @@ Azure Cosmos DB biedt ingebouwde op rollen gebaseerd toegangs beheer (RBAC) voor
 
 Hier volgen de ingebouwde rollen die door Azure Cosmos DB worden ondersteund:
 
-|**Ingebouwde rol**  |**Deschription** (Beschrijving)  |
+|**Ingebouwde rol**  |**Beschrijving**  |
 |---------|---------|
 |[Inzender voor DocumentDB-accounts](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan Azure Cosmos DB accounts beheren.|
 |[Lezer van Cosmos DB-account](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan gegevens van Azure Cosmos DB-account lezen.|

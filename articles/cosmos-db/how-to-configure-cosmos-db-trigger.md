@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: 152454b3da0ff1efd33ac463aecec78155a8e6f7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c47d18726d9581b1b03aa2e676a71d6ca1bc1b7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490472"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086462"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>Logboek registratie en connectiviteit configureren met de Azure Functions trigger voor Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel worden geavanceerde configuratie opties beschreven die u kunt instellen wanneer u de Azure Functions trigger voor Cosmos DB gebruikt.
 
@@ -56,7 +57,7 @@ Er zijn twee verbindings modi: directe modus en gateway modus. Zie het artikel [
 
 ### <a name="changing-the-connection-mode-and-protocol"></a>De verbindings modus en het protocol wijzigen
 
-Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van het beleid voor client verbindingen: de **verbindings modus** en het **verbindings protocol**. U kunt de standaard verbindings modus en het protocol dat wordt gebruikt door de Azure Functions trigger voor Cosmos DB en alle [Azure Cosmos DB bindingen](../azure-functions/functions-bindings-cosmosdb-v2-output.md)) wijzigen. Als u de standaard instellingen wilt wijzigen, moet u het `host.json` bestand in uw Azure functions project of Azure functions app zoeken en de volgende [extra instelling](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)toevoegen:
+Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van het beleid voor client verbindingen: de **verbindings modus** en het **verbindings protocol** . U kunt de standaard verbindings modus en het protocol dat wordt gebruikt door de Azure Functions trigger voor Cosmos DB en alle [Azure Cosmos DB bindingen](../azure-functions/functions-bindings-cosmosdb-v2-output.md)) wijzigen. Als u de standaard instellingen wilt wijzigen, moet u het `host.json` bestand in uw Azure functions project of Azure functions app zoeken en de volgende [extra instelling](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)toevoegen:
 
 ```js
 {

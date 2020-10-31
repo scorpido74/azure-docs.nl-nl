@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: c86207af51ebd1a9442afe6fa609598ec917bf15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f19e009341ac0e9556cef36f8da6ef19cde0447f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570445"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087508"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distributie van globale gegevens met Azure Cosmos DB-onder de motorkap
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB is een Foundational service in azure, zodat deze wereld wijd wordt geïmplementeerd in alle Azure-regio's, inclusief de open bare, soevereine, ministerie van defensie (DoD) en overheids Clouds. Binnen een Data Center implementeren en beheren we de Azure Cosmos DB op enorme stem pels computers, elk met speciale lokale opslag. Binnen een Data Center wordt Azure Cosmos DB geïmplementeerd in verschillende clusters, waardoor er mogelijk meerdere hardware-generaties worden uitgevoerd. Computers in een cluster zijn doorgaans verdeeld over 10-20-fout domeinen voor hoge Beschik baarheid binnen een regio. In de volgende afbeelding ziet u de Cosmos DB globale distributie systeem topologie:
 
@@ -22,9 +23,9 @@ Azure Cosmos DB is een Foundational service in azure, zodat deze wereld wijd wor
 
 **Wereld wijde distributie in azure Cosmos DB is kant** -en-klare: U kunt op elk gewenst moment, met enkele klikken of programmatisch met één API-aanroep, de geografische regio's toevoegen of verwijderen die zijn gekoppeld aan uw Cosmos-data base. Een Cosmos-data base bestaat op zijn beurt uit een set Cosmos-containers. In Cosmos DB fungeren containers als logische eenheden van distributie en schaal baarheid. De verzamelingen, tabellen en grafieken die u maakt, zijn (intern) slechts Cosmos containers. Containers zijn volledig schema-neutraal en bieden een bereik voor een query. Gegevens in een Cosmos-container worden automatisch geïndexeerd bij opname. Met automatisch indexeren kunnen gebruikers de gegevens opvragen zonder dat er problemen zijn met schema-en index beheer, met name in een wereld wijd gedistribueerde configuratie.  
 
-- In een bepaalde regio worden gegevens in een container gedistribueerd met behulp van een partitie sleutel, die u opgeeft en die transparant wordt beheerd door de onderliggende fysieke partities (*lokale distributie*).  
+- In een bepaalde regio worden gegevens in een container gedistribueerd met behulp van een partitie sleutel, die u opgeeft en die transparant wordt beheerd door de onderliggende fysieke partities ( *lokale distributie* ).  
 
-- Elke fysieke partitie wordt ook gerepliceerd tussen geografische regio's (*globale distributie*). 
+- Elke fysieke partitie wordt ook gerepliceerd tussen geografische regio's ( *globale distributie* ). 
 
 Wanneer een app die Cosmos DB, elastisch de door Voer op een Cosmos-container schaalt of meer opslag gebruikt, Cosmos DB transparante bewerkingen voor partitie beheer (splitsen, klonen, verwijderen) in alle regio's transparant afhandelen. Afhankelijk van de schaal, distributie of fouten, blijft Cosmos DB één systeem kopie van de gegevens in de containers opgeven, die wereld wijd worden gedistribueerd over een wille keurig aantal regio's.  
 
@@ -32,13 +33,13 @@ Zoals in de volgende afbeelding wordt weer gegeven, worden de gegevens binnen ee
 
 :::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Systeem topologie" border="false":::
 
-Een fysieke partitie wordt geïmplementeerd met een groep replica's, een zogenaamde *replicaset*. Elke machine fungeert als host voor honderden replica's die overeenkomen met verschillende fysieke partities binnen een vaste set processen, zoals wordt weer gegeven in de bovenstaande afbeelding. Replica's die overeenkomen met de fysieke partities worden dynamisch geplaatst en gelijkmatig verdeeld over de computers binnen een cluster en data centers binnen een regio.  
+Een fysieke partitie wordt geïmplementeerd met een groep replica's, een zogenaamde *replicaset* . Elke machine fungeert als host voor honderden replica's die overeenkomen met verschillende fysieke partities binnen een vaste set processen, zoals wordt weer gegeven in de bovenstaande afbeelding. Replica's die overeenkomen met de fysieke partities worden dynamisch geplaatst en gelijkmatig verdeeld over de computers binnen een cluster en data centers binnen een regio.  
 
 Een replica maakt uniek deel uit van een Azure Cosmos DB-Tenant. Elke replica fungeert als host voor een exemplaar van de [Data base-engine](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)van Cosmos DB, waarmee de resources en de bijbehorende indexen worden beheerd. De Cosmos-data base-engine wordt uitgevoerd op een ARS-systeem (Atom-record-Sequence). De engine is neutraal met het concept van een schema, waardoor de grens tussen de waarden van de structuur en het exemplaar van records wordt vervaagd. Cosmos DB behaalt volledige schema AGNOSTICISM door automatisch alles te indexeren bij opname op een efficiënte manier, zodat gebruikers hun wereld wijd gedistribueerde gegevens kunnen doorzoeken zonder schema-of index beheer.
 
 De Cosmos-data base-engine bestaat uit onderdelen, zoals de implementatie van verschillende coördinatie primitieven, taal runtimes, de query processor en de opslag-en indexerings subsystemen die verantwoordelijk zijn voor transactionele opslag en het indexeren van gegevens. Om duurzaamheid en hoge Beschik baarheid te kunnen bieden, behoudt de data base-engine de gegevens en index op Ssd's en repliceert deze naar de data base engine-instanties binnen de respectievelijk replicaset (en). Grotere tenants komen overeen met een hogere schaal van door Voer en opslag en hebben een grotere of meer replica's of beide. Elk onderdeel van het systeem is volledig asynchroon: er zijn geen threads die ooit worden geblokkeerd, en elke thread heeft korte tijdige werkzaamheden zonder enige overbodige thread switches. De limiet voor de frequentie en de back-updruk wordt in de hele stack van de toegangs beheer koppeling naar alle I/O-paden. De Cosmos-data base-engine is ontworpen om gebruik te maken van nauw keurige gelijktijdigheid en om hoge door voer te bieden terwijl u binnen frugale hoeveel heden systeem bronnen werkt.
 
-De wereld wijde distributie van Cosmos DB is afhankelijk van twee belang rijke abstracties: *replica sets* en *partitie sets*. Een replicaset is een modulair galerie bouwer-blok voor coördinatie en een partitieset is een dynamische overlay van een of meer geografisch gedistribueerde fysieke partities. Om te begrijpen hoe globale distributie werkt, moeten we deze twee belang rijke abstracties begrijpen. 
+De wereld wijde distributie van Cosmos DB is afhankelijk van twee belang rijke abstracties: *replica sets* en *partitie sets* . Een replicaset is een modulair galerie bouwer-blok voor coördinatie en een partitieset is een dynamische overlay van een of meer geografisch gedistribueerde fysieke partities. Om te begrijpen hoe globale distributie werkt, moeten we deze twee belang rijke abstracties begrijpen. 
 
 ## <a name="replica-sets"></a>Replica sets
 
@@ -68,7 +69,7 @@ We hebben gebruikgemaakt van gecodeerde vector klokken (die de regio-ID en logis
 
 Voor de Cosmos-data bases die zijn geconfigureerd met meerdere schrijf regio's, biedt het systeem een aantal flexibele beleids regels voor het automatisch oplossen van conflicten voor de ontwikkel aars waaruit kan worden gekozen, waaronder: 
 
-- **Last-write-WINS (LWW)**, die standaard gebruikmaakt van een door het systeem gedefinieerde tijds tempel eigenschap (die is gebaseerd op het klok protocol voor tijd synchronisatie). Cosmos DB kunt u ook een aangepaste numerieke eigenschap opgeven die moet worden gebruikt voor het oplossen van conflicten.  
+- **Last-write-WINS (LWW)** , die standaard gebruikmaakt van een door het systeem gedefinieerde tijds tempel eigenschap (die is gebaseerd op het klok protocol voor tijd synchronisatie). Cosmos DB kunt u ook een aangepaste numerieke eigenschap opgeven die moet worden gebruikt voor het oplossen van conflicten.  
 - Door de **toepassing gedefinieerde (aangepast) beleid voor conflict oplossing** (uitgedrukt in samenvoeg procedures), dat is ontworpen voor het afstemmen van een door de toepassing gedefinieerde semantiek van conflicten. Deze procedures worden opgeroepen wanneer de Write-write-conflicten worden gedetecteerd onder de verantwoordelijkheid van een database transactie aan de server zijde. Het systeem biedt precies eenmaal garantie voor het uitvoeren van een samenvoeg procedure als onderdeel van het toezeggings protocol. Er zijn [verschillende voor beelden van conflict oplossing](how-to-manage-conflicts.md) beschikbaar waarmee u kunt spelen met.  
 
 ## <a name="consistency-models"></a>Consistentie modellen

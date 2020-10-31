@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 347da75d8e3f58d3875b02000d74533b36a9b18c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 63de1c970a118ddf24c52e7e14a0632a4eee7fba
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486103"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086292"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Standaard doorvoer (hand matig) door Voer voor een data base in Azure Cosmos DB-SQL-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel wordt uitgelegd hoe u de standaard doorvoer (hand matig) inricht voor een data base in Azure Cosmos DB SQL-API. U kunt de doorvoer inrichten voor één [container](how-to-provision-container-throughput.md) of inrichten voor een database en de doorvoer delen met de containers in de database. Zie het artikel [aanvragen voor het inrichten van de doorvoer snelheid voor containers en data bases](set-throughput.md) voor meer informatie over het gebruik van container niveau en door Voer op database niveau. U kunt doorvoer op databaseniveau inrichten met behulp van de Azure-portal of Azure Cosmos DB-SDK's.
 
@@ -26,12 +27,12 @@ Als u een andere API gebruikt, raadpleegt u [API voor MongoDb](how-to-provision-
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
-1. Open het deel venster **Data Explorer** en selecteer **nieuwe data base**. Geef de volgende gegevens op:
+1. Open het deel venster **Data Explorer** en selecteer **nieuwe data base** . Geef de volgende gegevens op:
 
    * Voer een database-id in.
    * Selecteer de optie **doorvoer database inrichten** .
    * Voer een doorvoer in, bijvoorbeeld 1000 RU's.
-   * Selecteer **OK**.
+   * Selecteer **OK** .
 
     :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Schermafbeelding van het dialoogvenster Nieuwe database":::
 

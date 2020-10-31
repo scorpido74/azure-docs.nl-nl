@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5a8351b8c74f9219cf14575cc326fa8049264ed7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4977a9ef8af75797f1e1989975688d7904f0c7b1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491118"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086445"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Een Azure Cosmos-account beheren
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel wordt beschreven hoe u verschillende taken in een Azure Cosmos-account kunt beheren met behulp van de Azure-portal, Azure PowerShell, Azure CLI en Azure Resource Manager-sjablonen.
 
@@ -147,13 +148,13 @@ Met de optie voor automatische failover kunnen Azure Cosmos DB een failover naar
 
 1. Open in uw Azure Cosmos-account het deel venster **gegevens globaal repliceren** .
 
-2. Selecteer bovenin het deelvenster de knop **Automatische failover**.
+2. Selecteer bovenin het deelvenster de knop **Automatische failover** .
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
-3. Controleer in het deelvenster **Automatische failover** of **Automatische failover inschakelen** is ingesteld op **AAN**. 
+3. Controleer in het deelvenster **Automatische failover** of **Automatische failover inschakelen** is ingesteld op **AAN** . 
 
-4. Selecteer **Opslaan**.
+4. Selecteer **Opslaan** .
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
@@ -176,15 +177,15 @@ Nadat een Cosmos-account is geconfigureerd voor automatische failover, kunnen de
 
 1. Open in uw Azure Cosmos-account het deel venster **gegevens globaal repliceren** .
 
-2. Selecteer bovenin het deelvenster de knop **Automatische failover**.
+2. Selecteer bovenin het deelvenster de knop **Automatische failover** .
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
-3. Controleer in het deelvenster **Automatische failover** of **Automatische failover inschakelen** is ingesteld op **AAN**.
+3. Controleer in het deelvenster **Automatische failover** of **Automatische failover inschakelen** is ingesteld op **AAN** .
 
 4. Als u de failoverprioriteit wilt wijzigen, sleept u de leesregio's met behulp van de drie puntjes aan de linkerkant van de rij, die worden weergegeven wanneer u de muisaanwijzer erboven houdt.
 
-5. Selecteer **Opslaan**.
+5. Selecteer **Opslaan** .
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
@@ -210,7 +211,7 @@ Het proces voor het uitvoeren van een hand matige failover omvat het wijzigen va
 
 1. Ga naar uw Azure Cosmos-account en open het **wereld wijde menu gegevens repliceren** .
 
-2. Selecteer bovenaan het menu de optie **Handmatige failover**.
+2. Selecteer bovenaan het menu de optie **Handmatige failover** .
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 

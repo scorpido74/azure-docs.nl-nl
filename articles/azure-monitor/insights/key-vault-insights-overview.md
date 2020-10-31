@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278614"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088094"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Bewaken van uw sleutel kluis service met Azure Monitor voor Key Vault
 Azure Monitor voor Key Vault biedt uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave te bieden van uw Key Vault-aanvragen, prestaties, fouten en latentie.
@@ -34,7 +34,7 @@ Voer de volgende stappen uit om het gebruik en de bewerkingen van uw sleutel klu
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/)
 
-2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie inzichten de optie **sleutel kluizen**.
+2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie inzichten de optie **sleutel kluizen** .
 
 ![Scherm afbeelding van overzichts ervaring met meerdere grafieken](./media/key-vaults-insights-overview/overview.png)
 
@@ -90,7 +90,7 @@ De werkmap bevat een uitsplitsing van de resultaten van alle belang rijke kluis 
 
 Met de operations-werkmap kunnen gebruikers dieper worden uitgebreid naar de volledige details van alle trans acties, die kunnen worden gefilterd op de resultaat status met behulp van de tegels op het hoogste niveau.
 
-![Scherm opname van de weer gave bewerkingen](./media/key-vaults-insights-overview/info.png)
+![Scherm opname van de werkmap met bewerkingen die volledige details van alle trans acties bevat.](./media/key-vaults-insights-overview/info.png)
 
 Gebruikers kunnen ook weer gaven bereiken op basis van specifieke transactie typen in de bovenste tabel, waarmee de lagere tabel dynamisch wordt bijgewerkt, waar gebruikers de volledige bewerkings details kunnen bekijken in een pop-upcontext venster.
 
@@ -126,7 +126,7 @@ Aanpassingen worden opgeslagen in een aangepaste werkmap om te voor komen dat de
 Door de volgende stappen uit te voeren, kunt u het overzicht van het abonnement op meerdere abonnementen en de sleutel kluis configureren of de werkmappen zodanig instellen dat er voor elke uitvoering een bepaald abonnement of een of meer sleutel kluis (s) wordt opgegeven:
 
 1. Selecteer **monitor** in de portal en selecteer vervolgens **sleutel kluizen** in het linkerdeel venster.
-2. Selecteer in de werk blad **overzicht** de optie **bewerken**in de opdracht balk.
+2. Selecteer in de werk blad **overzicht** de optie **bewerken** in de opdracht balk.
 3. Selecteer in de vervolg keuzelijst **abonnementen** een of meer abonnementen die door yo moeten worden gebruikt als standaard. Houd er rekening mee dat de werkmap ondersteuning biedt voor het selecteren van Maxi maal 10 abonnementen.
 4. Selecteer in de vervolg keuzelijst **sleutel kluizen** een of meer accounts die u wilt gebruiken als de standaard instelling. Houd er rekening mee dat de werkmap het selecteren van Maxi maal 200 opslag accounts ondersteunt.
 5. Selecteer **Opslaan als** in de opdracht balk om een kopie van de werkmap met uw aanpassingen op te slaan en klik vervolgens op **gereed bewerken** om terug te keren naar de Lees modus.

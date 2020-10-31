@@ -4,12 +4,12 @@ description: Installeer de runtime en SDK en maak een lokaal ontwikkelcluster in
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675278"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086887"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Uw ontwikkelomgeving voorbereiden in Linux
 > [!div class="op_single_selector"]
@@ -175,7 +175,7 @@ De Service Fabric-runtime die wordt geleverd met de installatie omvat de pakkett
 
 # <a name="container-based-local-cluster"></a>[Lokaal cluster op basis van containers](#tab/localclusteroneboxcontainer)
 
-Start een op een container gebaseerd [vak service Fabric cluster](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
+Start een op een container gebaseerd [service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) -cluster.
 
 1. Installeer Moby om docker-containers te kunnen implementeren.
     ```bash

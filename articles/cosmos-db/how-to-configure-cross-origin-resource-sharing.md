@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863c31ecac13337ea3f91d7a7ced49b0f7141e58
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85390870"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086411"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Configureren van cross-Origin-resource delen (CORS)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Cross-Origin Resource Sharing (CORS) is een HTTP-functie waarmee een webtoepassing die wordt uitgevoerd onder het ene domein toegang kan krijgen tot bronnen in een ander domein. Webbrowsers implementeren een beveiligings beperking die bekend staat als hetzelfde-Origin-beleid dat voor komt dat een webpagina Api's in een ander domein aanroept. CORS biedt echter een veilige manier om het domein van de oorsprong te laten aanroepen van Api's in een ander domein. De core-API (SQL) in Azure Cosmos DB ondersteunt nu het gebruik van CORS (cross-Origin Resource Sharing) door de header ' allowedOrigins ' te gebruiken. Nadat u de CORS-ondersteuning voor uw Azure Cosmos-account hebt ingeschakeld, worden alleen geverifieerde aanvragen geëvalueerd om te bepalen of ze zijn toegestaan volgens de regels die u hebt opgegeven.
 
@@ -28,7 +29,7 @@ Gebruik de volgende stappen om cross-Origin resource sharing in te scha kelen me
 
 1. Navigeer naar uw Azure Cosmos DB-account. Open de Blade **CORS** .
 
-2. Geef een door komma's gescheiden lijst van oorsprongen die cross-Origin-aanroepen naar uw Azure Cosmos DB-account kunnen maken. Bijvoorbeeld,, `https://www.mydomain.com` `https://mydomain.com` , `https://api.mydomain.com` . U kunt ook een Joker teken gebruiken \* om alle oorsprong toe te staan en **verzenden**te selecteren. 
+2. Geef een door komma's gescheiden lijst van oorsprongen die cross-Origin-aanroepen naar uw Azure Cosmos DB-account kunnen maken. Bijvoorbeeld,, `https://www.mydomain.com` `https://mydomain.com` , `https://api.mydomain.com` . U kunt ook een Joker teken gebruiken \* om alle oorsprong toe te staan en **verzenden** te selecteren. 
 
    > [!NOTE]
    > Op dit moment kunt u geen joker tekens gebruiken als onderdeel van de domein naam. Een voor beeld van een `https://*.mydomain.net` indeling wordt nog niet ondersteund. 

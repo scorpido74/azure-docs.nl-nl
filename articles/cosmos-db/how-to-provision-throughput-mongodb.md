@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 44a69581f0763972dd30a016bf0826b31657a3d4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 25eaa4a66fb4a73f976edbd30e6f82015ce84f6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283739"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086122"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-api-for-mongodb-resources"></a>Data Base, container of automatisch schalen door Voer in te richten op Azure Cosmos DB-API voor MongoDB-resources
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 In dit artikel wordt uitgelegd hoe u de door Voer inricht in Azure Cosmos DB-API voor MongoDB. U kunt standaard (hand matig) of door Voer voor automatisch schalen inrichten voor een container of een Data Base en deze delen tussen de containers in de-data base. U kunt de door Voer inrichten met Azure Portal, Azure CLI of Azure Cosmos DB Sdk's.
 
@@ -23,17 +24,17 @@ Als u een andere API gebruikt, raadpleegt u [SQL API](how-to-provision-container
 
 ## <a name="azure-portal"></a><a id="portal-mongodb"></a> Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account)of selecteer een bestaand Azure Cosmos-account.
 
-1. Open het deel venster **Data Explorer** en selecteer **nieuwe verzameling**. Geef de volgende gegevens op:
+1. Open het deel venster **Data Explorer** en selecteer **nieuwe verzameling** . Geef de volgende gegevens op:
 
    * Geef aan of u een nieuwe database maakt of een bestaande database gebruikt. Selecteer de optie **doorvoer database inrichten** als u de door voer wilt inrichten op database niveau.
    * Voer een verzamelings-id in.
    * Voer een waarde voor de partitiesleutel in (bijvoorbeeld `/ItemID`).
    * Voer een door Voer in die u wilt inrichten (bijvoorbeeld 1000 RUs).
-   * Selecteer **OK**.
+   * Selecteer **OK** .
 
     :::image type="content" source="./media/how-to-provision-throughput-mongodb/provision-database-throughput-portal-mongodb-api.png" alt-text="Scherm opname van Data Explorer bij het maken van een nieuwe verzameling met een doorvoer capaciteit op database niveau":::
 

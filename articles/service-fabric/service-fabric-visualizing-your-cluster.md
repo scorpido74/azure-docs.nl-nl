@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5627aa614a7e2819b6f3cc1401c8458552e57219
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357213"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085170"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisern van uw cluster met Service Fabric Explorer
 
@@ -69,7 +69,7 @@ Het cluster bevat twee substructuren: één voor toepassingen en een andere voor
 
 U kunt de weer gave toepassing gebruiken om te navigeren door de logische hiërarchie van Service Fabric: toepassingen, services, partities en replica's.
 
-In het onderstaande voor beeld bestaat de toepassing **MyApp** uit twee services: **MyStatefulService** en **webservice**. Aangezien **MyStatefulService** is stateful, bevat het een partitie met één primaire en twee secundaire replica's. WebSvcService is daarentegen stateless en bevat één exemplaar.
+In het onderstaande voor beeld bestaat de toepassing **MyApp** uit twee services: **MyStatefulService** en **webservice** . Aangezien **MyStatefulService** is stateful, bevat het een partitie met één primaire en twee secundaire replica's. WebSvcService is daarentegen stateless en bevat één exemplaar.
 
 ![Toepassings weergave Service Fabric Explorer][sfx-application-tree]
 
@@ -83,7 +83,7 @@ In de knooppuntweergave ziet u de fysieke indeling van het cluster. Voor elk kno
 ## <a name="actions"></a>Acties
 Service Fabric Explorer biedt een snelle manier om acties op knoop punten, toepassingen en services in uw cluster aan te roepen.
 
-Als u bijvoorbeeld een toepassings exemplaar wilt verwijderen, kiest u de toepassing in de structuur aan de linkerkant en kiest u vervolgens **acties**  >  **toepassing verwijderen**.
+Als u bijvoorbeeld een toepassings exemplaar wilt verwijderen, kiest u de toepassing in de structuur aan de linkerkant en kiest u vervolgens **acties**  >  **toepassing verwijderen** .
 
 ![Een toepassing in Service Fabric Explorer verwijderen][sfx-delete-application]
 
@@ -117,7 +117,7 @@ Event Store is een functie die wordt aangeboden door het platform dat Service Fa
 ## <a name="image-store-viewer"></a>Image Store viewer
 Viewer voor afbeeldings archief is een functie die wordt aangeboden als u gebruikmaakt van systeem eigen Image Store waarmee de huidige inhoud van de installatie kopie wordt weer gegeven en informatie over bestanden en mappen kan worden opgehaald, samen met het verwijderen van bestanden/mappen.
 
-![Cluster toewijzing Service Fabric Explorer][sfx-imagestore]
+![Scherm opname van de Image Store viewer.][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>Back-up en herstel
 Service Fabric Explorer biedt de mogelijkheid om een interface te [maken voor back-up en herstel](./service-fabric-reliable-services-backup-restore.md). Als u back-up-en herstel functies wilt zien in SFX, moet geavanceerde modus zijn ingeschakeld.

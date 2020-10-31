@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791576"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087023"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Troubleshoot replication latency in Azure Database for MySQL (Problemen vanwege replicavertraging oplossen in Azure Database for MySQL)
 
@@ -236,6 +236,9 @@ In Azure Database for MySQL is replicatie standaard geoptimaliseerd om te worden
 De binlog_group_commit_sync_delay para meter bepaalt hoeveel micro seconden het binaire logboek door voeren wacht voordat het binaire logboek bestand wordt gesynchroniseerd. Het voor deel van deze para meter is dat in plaats van onmiddellijk elke vastgelegde trans actie wordt toegepast, de bron server de binaire logboek updates bulksgewijs verzendt. Deze vertraging vermindert de i/o van de replica en helpt de prestaties te verbeteren. 
 
 Het kan handig zijn om de binlog_group_commit_sync_delay-para meter in te stellen op 1000. Controleer vervolgens de replicatie latentie. Stel deze para meter voorzichtig in en gebruik deze alleen voor werk belastingen met hoge gelijktijdigheid. 
+
+> [!IMPORTANT] 
+> In replica server wordt binlog_group_commit_sync_delay para meter aanbevolen als 0. Dit wordt aanbevolen omdat de replica server in tegens telling tot de bron server geen hoge gelijktijdigheid heeft en de waarde voor binlog_group_commit_sync_delay op de replica server onbedoeld kan leiden tot een verhoging van de replicatie vertraging.
 
 Bij een laag gelijktijdigheids werk belasting die veel Singleton-trans acties bevat, kan de binlog_group_commit_sync_delay-instelling de latentie verhogen. De latentie kan toenemen omdat de IO-thread wacht op bulk binaire logboek updates, zelfs als er slechts enkele trans acties worden doorgevoerd. 
 

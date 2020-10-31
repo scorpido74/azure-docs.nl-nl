@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4744b974cd20c15d8abf22f52b64b8d3dc5a7f55
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: db717394ba102fb646a4194d0be2722e17251f48
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743001"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087159"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MariaDB
 
@@ -103,7 +103,7 @@ Als u het basis certificaat niet bijwerkt vóór 15 februari 2021 (02/15/2021), 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. Wat is de impact van het gebruik van App Service met Azure Database for MariaDB?
 Voor Azure app Services, het maken van verbinding met Azure Database for MariaDB, kunnen we twee mogelijke scenario's hebben. Dit is afhankelijk van hoe u SSL met uw toepassing gebruikt.
 *   Dit nieuwe certificaat is toegevoegd aan App Service op platform niveau. Als u de SSL-certificaten gebruikt die zijn opgenomen in App Service platform in uw toepassing, is er geen actie vereist.
-*   Als u expliciet het pad naar het SSL-certificaat bestand in uw code opneemt, moet u het nieuwe certificaat downloaden en de code bijwerken om het nieuwe certificaat te gebruiken. Een goed voor beeld van dit scenario is wanneer u aangepaste containers in App Service gebruikt zoals gedeeld in de [app service documentatie](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)
+*   Als u expliciet het pad naar het SSL-certificaat bestand in uw code opneemt, moet u het nieuwe certificaat downloaden en de code bijwerken om het nieuwe certificaat te gebruiken. Een goed voor beeld van dit scenario is wanneer u aangepaste containers in App Service gebruikt zoals gedeeld in de [app service documentatie](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5. Wat is de impact van het gebruik van Azure Kubernetes Services (AKS) met Azure Database for MariaDB?
 Als u probeert verbinding te maken met de Azure Database for MariaDB met behulp van Azure Kubernetes Services (AKS), is dit vergelijkbaar met de toegang vanuit een specifieke host-omgeving van klanten. Raadpleeg de stappen [hier](../aks/ingress-own-tls.md).

@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87450335"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087822"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Automatische aanbevelingen voor Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Alle Cloud Services met inbegrip van Azure Cosmos DB frequente updates ontvangen met nieuwe functies, mogelijkheden en verbeteringen. Het is belang rijk om ervoor te zorgen dat uw toepassing de nieuwste prestatie-en beveiligings updates bijwerkt. De Azure Portal biedt aangepaste aanbevelingen waarmee u de prestaties van uw toepassing kunt maximaliseren. De Advisor-engine van Azure Cosmos DB analyseert voortdurend de gebruiks geschiedenis van uw Azure Cosmos DB resources en biedt aanbevelingen op basis van uw werkbelasting patronen. Deze aanbevelingen komen overeen met gebieden zoals partitioneren, indexeren, netwerk, beveiliging, enzovoort. Deze aangepaste aanbevelingen helpen u bij het verbeteren van de prestaties van uw toepassing.
 
@@ -26,7 +27,7 @@ U kunt op de volgende manieren aanbevelingen voor Azure Cosmos DB bekijken:
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="Aanbevelingen uit Azure Cosmos DB deel venster weer geven":::
 
-- U kunt ook de aanbevelingen vinden via [Azure Advisor](../advisor/advisor-overview.md) in gecategoriseerd door verschillende buckets, zoals kosten, beveiliging, betrouw baarheid, prestaties en bedrijfs kwaliteit. U kunt specifieke abonnementen selecteren en filteren op het resource type. Dit is **Azure Cosmos DB accounts**.  Wanneer u een specifieke aanbeveling selecteert, worden de acties weer gegeven die u kunt uitvoeren om uw werk belastingen te voors delen.
+- U kunt ook de aanbevelingen vinden via [Azure Advisor](../advisor/advisor-overview.md) in gecategoriseerd door verschillende buckets, zoals kosten, beveiliging, betrouw baarheid, prestaties en bedrijfs kwaliteit. U kunt specifieke abonnementen selecteren en filteren op het resource type. Dit is **Azure Cosmos DB accounts** .  Wanneer u een specifieke aanbeveling selecteert, worden de acties weer gegeven die u kunt uitvoeren om uw werk belastingen te voors delen.
 
    :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Aanbevelingen uit Azure Cosmos DB deel venster weer geven":::
 

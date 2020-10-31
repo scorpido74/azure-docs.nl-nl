@@ -8,14 +8,15 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3979e5e904eb54db9566eb014f7e455ebaceaff0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476702"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087176"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Query-problemen bij het gebruik van Azure Cosmos DB oplossen
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel wordt een algemene aanbevolen benadering besproken voor het oplossen van problemen met query's in Azure Cosmos DB. Hoewel u geen rekening moet houden met de stappen die in dit artikel worden beschreven, wordt een volledige bescherming tegen mogelijke query problemen opgenomen, maar hier zijn de meest voorkomende tips voor het verbeteren van de prestaties. Gebruik dit artikel als uitgangspunt voor het oplossen van problemen met trage of dure query's in de Azure Cosmos DB core-API (SQL). U kunt ook [diagnostische logboeken](cosmosdb-monitor-resource-logs.md) gebruiken om te bepalen welke query's langzaam zijn of welke query's aanzienlijke hoeveelheden doorvoer gebruiken. Als u de API van Azure Cosmos DB gebruikt voor MongoDB, Azure Cosmos DB gebruikt u [de API voor MongoDb voor het oplossen van query's](mongodb-troubleshoot-query.md) .
 
@@ -50,7 +51,7 @@ Wanneer u een query in Azure Cosmos DB optimaliseert, is de eerste stap altijd o
 
 Nadat u de metrische gegevens van de query hebt opgehaald, vergelijkt u het **opgehaalde aantal documenten** met het **aantal uitvoer documenten** voor uw query. Gebruik deze vergelijking om de relevante secties te identificeren die u in dit artikel kunt controleren.
 
-Het **opgehaalde document telt** het aantal documenten dat de query-engine nodig heeft om te laden. Het **uitvoer document telt** het aantal documenten dat nodig was voor de resultaten van de query. Als het **aantal opgehaalde documenten** aanzienlijk hoger is dan het **aantal uitvoer documenten**, was er ten minste één deel van de query die geen index kon gebruiken en dat nodig is om een scan uit te voeren.
+Het **opgehaalde document telt** het aantal documenten dat de query-engine nodig heeft om te laden. Het **uitvoer document telt** het aantal documenten dat nodig was voor de resultaten van de query. Als het **aantal opgehaalde documenten** aanzienlijk hoger is dan het **aantal uitvoer documenten** , was er ten minste één deel van de query die geen index kon gebruiken en dat nodig is om een scan uit te voeren.
 
 Raadpleeg de volgende secties om inzicht te krijgen in de relevante query optimalisaties voor uw scenario.
 
@@ -92,7 +93,7 @@ Raadpleeg de volgende secties om inzicht te krijgen in de relevante query optima
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Query's waarbij het aantal opgehaalde documenten groter is dan het aantal uitvoer documenten
 
- Het **opgehaalde document telt** het aantal documenten dat de query-engine nodig heeft om te laden. Het **uitvoer document telt** het aantal documenten dat door de query wordt geretourneerd. Als het **aantal opgehaalde documenten** aanzienlijk hoger is dan het **aantal uitvoer documenten**, was er ten minste één deel van de query die geen index kon gebruiken en dat nodig is om een scan uit te voeren.
+ Het **opgehaalde document telt** het aantal documenten dat de query-engine nodig heeft om te laden. Het **uitvoer document telt** het aantal documenten dat door de query wordt geretourneerd. Als het **aantal opgehaalde documenten** aanzienlijk hoger is dan het **aantal uitvoer documenten** , was er ten minste één deel van de query die geen index kon gebruiken en dat nodig is om een scan uit te voeren.
 
 Hier volgt een voor beeld van een scan query die niet volledig door de index is geleverd:
 
@@ -384,7 +385,7 @@ Stel dat er slechts één item in de matrix Tags overeenkomt met het filter en d
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Query's waarbij het aantal opgehaalde documenten gelijk is aan het aantal uitvoer documenten
 
-Als het **aantal opgehaalde documenten** ongeveer gelijk is aan het **aantal uitvoer documenten**, moet de query-engine veel onnodige documenten niet scannen. Voor veel query's, zoals die van het `TOP` tref woord, kan het aantal **opgehaalde documenten** groter zijn dan het **aantal uitvoer documenten** door 1. U hoeft hiervoor geen zorgen te maken.
+Als het **aantal opgehaalde documenten** ongeveer gelijk is aan het **aantal uitvoer documenten** , moet de query-engine veel onnodige documenten niet scannen. Voor veel query's, zoals die van het `TOP` tref woord, kan het aantal **opgehaalde documenten** groter zijn dan het **aantal uitvoer documenten** door 1. U hoeft hiervoor geen zorgen te maken.
 
 ### <a name="minimize-cross-partition-queries"></a>Kruis partitie query's minimaliseren
 

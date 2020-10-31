@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3c363552d1a196bed49e1ef3448a8216b7bcae2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276120"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086054"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Query’s uitvoeren op een Azure Cosmos-container
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel wordt uitgelegd hoe u query's kunt uitvoeren op containers (collecties, grafieken, tabellen) in Azure Cosmos DB. In het bijzonder wordt uitgelegd hoe in-Partition-en kruis partitie query's werken in Azure Cosmos DB.
 
@@ -57,9 +58,9 @@ De Cosmos DB-SDK's 1.9.0 en hoger bieden ondersteuning voor opties voor parallel
 
 U kunt parallelle queryuitvoering beheren door de volgende parameters af te stemmen:
 
-- **MaxConcurrency**: Hiermee stelt u het maximum aantal gelijktijdige netwerk verbindingen met de partitie van de container in. Als u deze eigenschap instelt op `-1` , wordt de mate van parallelle uitvoering beheerd door de SDK. Als de  `MaxConcurrency` instelling is ingesteld op `0` , is er één netwerk verbinding met de partities van de container.
+- **MaxConcurrency** : Hiermee stelt u het maximum aantal gelijktijdige netwerk verbindingen met de partitie van de container in. Als u deze eigenschap instelt op `-1` , wordt de mate van parallelle uitvoering beheerd door de SDK. Als de  `MaxConcurrency` instelling is ingesteld op `0` , is er één netwerk verbinding met de partities van de container.
 
-- **MaxBufferedItemCount**: hiermee wordt de latentie van de query ingewisseld voor het geheugengebruik aan de clientzijde. Als deze optie wordt weggelaten of ingesteld op -1, wordt het aantal items dat in de buffer opgeslagen tijdens parallelle query-uitvoering, beheerd door de SDK.
+- **MaxBufferedItemCount** : hiermee wordt de latentie van de query ingewisseld voor het geheugengebruik aan de clientzijde. Als deze optie wordt weggelaten of ingesteld op -1, wordt het aantal items dat in de buffer opgeslagen tijdens parallelle query-uitvoering, beheerd door de SDK.
 
 Dankzij de mogelijkheden van de Azure Cosmos DB om Kruis partitie query's te parallelliseren, wordt query latentie doorgaans goed geschaald als het systeem [fysieke partities](partitioning-overview.md#physical-partitions)toevoegt. De RU-kosten worden echter aanzienlijk verhoogd naarmate het totale aantal fysieke partities toeneemt.
 

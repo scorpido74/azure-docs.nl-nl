@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB resource model
+title: Azure Cosmos DB-resourcemodel
 description: In dit artikel wordt Azure Cosmos DB resource model beschreven, inclusief het Azure Cosmos-account, de data base, de container en de items. Het behandelt ook de hiërarchie van deze elementen in een Azure Cosmos-account.
 author: markjbrown
 ms.author: mjbrown
@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1178a5e2850279820925c9bd02554ec7d5adf9e6
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 23adbd289ae2be484f1aef86b2224097c6ba489c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283797"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087924"
 ---
-# <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB resource model
+# <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB-resourcemodel
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB is een volledig beheerd platform-as-a-Service (PaaS). Als u Azure Cosmos DB wilt gaan gebruiken, moet u in eerste instantie een Azure Cosmos-account maken in uw Azure-abonnement en data bases, containers, items daaronder. In dit artikel worden de Azure Cosmos DB resource model en verschillende entiteiten in de resource model hiërarchie beschreven.
 
@@ -63,16 +64,16 @@ Een Azure Cosmos-container is de eenheid van schaal baarheid voor ingerichte doo
 
 Wanneer u een container maakt, configureert u door Voer in een van de volgende modi:
 
-* **Toegewezen doorvoer modus voor ingerichte**: de door Voer die is ingericht voor een container is exclusief gereserveerd voor die container en wordt ondersteund door de sla's. Zie [het inrichten van de door Voer voor een container](how-to-provision-container-throughput.md)voor meer informatie.
+* **Toegewezen doorvoer modus voor ingerichte** : de door Voer die is ingericht voor een container is exclusief gereserveerd voor die container en wordt ondersteund door de sla's. Zie [het inrichten van de door Voer voor een container](how-to-provision-container-throughput.md)voor meer informatie.
 
-* **Gedeelde doorvoer modus**voor opslag: deze containers delen de ingerichte door Voer met de andere containers in dezelfde data base (met uitzonde ring van containers die zijn geconfigureerd met een toegewezen ingerichte door Voer). Met andere woorden, de ingerichte door Voer voor de data base wordt gedeeld door alle "gedeelde door Voer"-containers. Zie [de doorvoer snelheid inrichten voor een Data Base](how-to-provision-database-throughput.md)voor meer informatie.
+* **Gedeelde doorvoer modus** voor opslag: deze containers delen de ingerichte door Voer met de andere containers in dezelfde data base (met uitzonde ring van containers die zijn geconfigureerd met een toegewezen ingerichte door Voer). Met andere woorden, de ingerichte door Voer voor de data base wordt gedeeld door alle "gedeelde door Voer"-containers. Zie [de doorvoer snelheid inrichten voor een Data Base](how-to-provision-database-throughput.md)voor meer informatie.
 
 > [!NOTE]
 > U kunt gedeelde en toegewezen door Voer alleen configureren bij het maken van de data base en container. Als u wilt overschakelen van de modus voor toegewezen doorvoer naar de modus voor gedeelde doorvoer (of omgekeerd) nadat de container is gemaakt, moet u een nieuwe container maken en de gegevens naar de nieuwe container migreren. U kunt de gegevens migreren met behulp van de Azure Cosmos DB functie voor het wijzigen van de feed.
 
 Een Azure Cosmos-container kan flexibel worden geschaald, ongeacht of u containers maakt met behulp van toegewezen of gedeelde ingerichte doorvoer modi.
 
-Een container is een schema-neutraal container van items. Items in een container kunnen wille keurige schema's hebben. Een item dat een persoon vertegenwoordigt en een item dat een auto vertegenwoordigt, kan bijvoorbeeld in *dezelfde container*worden geplaatst. Standaard worden alle items die u toevoegt aan een container automatisch geïndexeerd zonder dat hiervoor expliciete index of schema beheer nodig is. U kunt het indexerings gedrag aanpassen door het [indexerings beleid](index-overview.md) op een container te configureren. 
+Een container is een schema-neutraal container van items. Items in een container kunnen wille keurige schema's hebben. Een item dat een persoon vertegenwoordigt en een item dat een auto vertegenwoordigt, kan bijvoorbeeld in *dezelfde container* worden geplaatst. Standaard worden alle items die u toevoegt aan een container automatisch geïndexeerd zonder dat hiervoor expliciete index of schema beheer nodig is. U kunt het indexerings gedrag aanpassen door het [indexerings beleid](index-overview.md) op een container te configureren. 
 
 U kunt [time to Live (TTL)](time-to-live.md) instellen voor geselecteerde items in een container of voor de hele container om deze items op een correcte manier van het systeem te verwijderen. Azure Cosmos DB worden automatisch de items verwijderd wanneer deze verlopen. Het zorgt er ook voor dat een query die in de container wordt uitgevoerd, niet de verlopen items binnen een vaste grens retourneert. Zie [Configure TTL in your container](how-to-time-to-live.md)voor meer informatie.
 
