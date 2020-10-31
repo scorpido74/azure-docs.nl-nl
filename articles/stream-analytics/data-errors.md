@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071996"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131374"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics gegevens fouten
 
@@ -168,7 +168,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 * Oorzaak: het verschil tussen de toepassings tijd en aankomst tijd is groter dan het tolerantie venster late aankomst.
 * Portal-melding meegeleverd: Nee
 * Niveau van bron logboek: informatie
-* Impact: latere invoer gebeurtenissen worden verwerkt op basis van de instelling andere gebeurtenissen afhandelen in de sectie gebeurtenis volgorde van de taak configuratie. Zie [time handling policies](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)(Engelstalig) voor meer informatie.
+* Impact: latere invoer gebeurtenissen worden verwerkt op basis van de instelling andere gebeurtenissen afhandelen in de sectie gebeurtenis volgorde van de taak configuratie. Zie [time handling policies](/stream-analytics-query/time-skew-policies-azure-stream-analytics)(Engelstalig) voor meer informatie.
 * Logboek Details
    * Tijd van de toepassing en aankomst tijd. 
    * De werkelijke Payload tot slechts enkele kilo bytes.
@@ -184,7 +184,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 * Oorzaak: het verschil tussen de tijd van de toepassing en de aankomst tijd is langer dan vijf minuten.
 * Portal-melding meegeleverd: Nee
 * Niveau van bron logboek: informatie
-* Impact: vroege invoer gebeurtenissen worden verwerkt op basis van de instelling andere gebeurtenissen afhandelen in de sectie gebeurtenis volgorde van de taak configuratie. Zie [time handling policies](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)(Engelstalig) voor meer informatie.
+* Impact: vroege invoer gebeurtenissen worden verwerkt op basis van de instelling andere gebeurtenissen afhandelen in de sectie gebeurtenis volgorde van de taak configuratie. Zie [time handling policies](/stream-analytics-query/time-skew-policies-azure-stream-analytics)(Engelstalig) voor meer informatie.
 * Logboek Details
    * Tijd van de toepassing en aankomst tijd. 
    * De werkelijke Payload tot slechts enkele kilo bytes.
@@ -200,7 +200,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 * Oorzaak: de gebeurtenis wordt in de juiste volg orde beschouwd volgens het venster voor de buiten-volg orde van tolerantie gedefinieerd.
 * Portal-melding meegeleverd: Nee
 * Niveau van bron logboek: informatie
-* Impact: aflopende gebeurtenissen worden verwerkt op basis van de instelling andere gebeurtenissen afhandelen in de sectie gebeurtenis volgorde van de taak configuratie. Zie [time handling policies](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)(Engelstalig) voor meer informatie.
+* Impact: aflopende gebeurtenissen worden verwerkt op basis van de instelling andere gebeurtenissen afhandelen in de sectie gebeurtenis volgorde van de taak configuratie. Zie [time handling policies](/stream-analytics-query/time-skew-policies-azure-stream-analytics)(Engelstalig) voor meer informatie.
 * Logboek Details
    * De werkelijke Payload tot slechts enkele kilo bytes.
 
@@ -221,7 +221,7 @@ Er zijn verschillende gegevens fouten die alleen kunnen worden gedetecteerd na h
 * Oorzaak: de vereiste kolom voor de uitvoer bestaat niet. Een kolom die is gedefinieerd als Azure Table PartitionKey does't bestaat bijvoorbeeld.
 * Portal melding meegeleverd: Ja
 * Niveau van bron logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, inclusief ontbrekende vereiste kolom worden verwerkt volgens de instelling voor het [uitvoer gegevens beleid](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Impact: alle conversie fouten van uitvoer gegevens, inclusief ontbrekende vereiste kolom worden verwerkt volgens de instelling voor het [uitvoer gegevens beleid](./stream-analytics-output-error-policy.md) .
 * Logboek Details
    * De naam van de kolom en de record-id of een deel van de record.
 
@@ -236,7 +236,7 @@ Er zijn verschillende gegevens fouten die alleen kunnen worden gedetecteerd na h
 * Oorzaak: de kolom waarde komt niet overeen met de uitvoer. De kolom naam is bijvoorbeeld geen geldige kolom van Azure Table.
 * Portal melding meegeleverd: Ja
 * Niveau van bron logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, inclusief de ongeldige kolom naam, worden verwerkt volgens de instelling voor het [uitvoer gegevens beleid](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Impact: alle conversie fouten van uitvoer gegevens, inclusief de ongeldige kolom naam, worden verwerkt volgens de instelling voor het [uitvoer gegevens beleid](./stream-analytics-output-error-policy.md) .
 * Logboek Details
    * De naam van de kolom en ofwel de record-id of het deel van de record.
 
@@ -251,7 +251,7 @@ Er zijn verschillende gegevens fouten die alleen kunnen worden gedetecteerd na h
 * Oorzaak: een kolom kan niet worden geconverteerd naar een geldig type in de uitvoer. De waarde van column is bijvoorbeeld incompatibel met beperkingen of het type dat in de SQL-tabel is gedefinieerd.
 * Portal melding meegeleverd: Ja
 * Niveau van bron logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, waaronder type conversie fout, worden verwerkt op basis van de [beleids instelling uitvoer gegevens](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Impact: alle conversie fouten van uitvoer gegevens, waaronder type conversie fout, worden verwerkt op basis van de [beleids instelling uitvoer gegevens](./stream-analytics-output-error-policy.md) .
 * Logboek Details
    * De naam van de kolom.
    * De record-id of een deel van de record.
@@ -267,7 +267,7 @@ Er zijn verschillende gegevens fouten die alleen kunnen worden gedetecteerd na h
 * Oorzaak: de waarde van het bericht is groter dan de ondersteunde uitvoer grootte. Een record is bijvoorbeeld groter dan 1 MB voor een event hub-uitvoer.
 * Portal melding meegeleverd: Ja
 * Niveau van bron logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, waaronder record overschrijding van de grootte, worden verwerkt volgens de [beleids instelling uitvoer gegevens](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Impact: alle conversie fouten van uitvoer gegevens, waaronder record overschrijding van de grootte, worden verwerkt volgens de [beleids instelling uitvoer gegevens](./stream-analytics-output-error-policy.md) .
 * Logboek Details
    * De record-id of een deel van de record.
 
@@ -282,7 +282,7 @@ Er zijn verschillende gegevens fouten die alleen kunnen worden gedetecteerd na h
 * Oorzaak: een record bevat al een kolom met dezelfde naam als een systeem kolom. Bijvoorbeeld CosmosDB uitvoer met een kolom met de naam ID wanneer de kolom ID een andere kolom is.
 * Portal melding meegeleverd: Ja
 * Niveau van bron logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, inclusief dubbele sleutels, worden verwerkt volgens de [beleids instelling uitvoer gegevens](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Impact: alle conversie fouten van uitvoer gegevens, inclusief dubbele sleutels, worden verwerkt volgens de [beleids instelling uitvoer gegevens](./stream-analytics-output-error-policy.md) .
 * Logboek Details
    * De naam van de kolom.
    * De record-id of een deel van de record.

@@ -5,12 +5,12 @@ description: Meer informatie over het installeren en configureren van een Basic 
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: b7a741a8193271fe8a297f7b2d13f6317b35f87c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9b51ee2767a9595f5732f558cfa25f5064944e49
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461478"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131187"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Een ingangs controller maken in azure Kubernetes service (AKS)
 
@@ -33,15 +33,15 @@ Voor dit artikel moet u ook de Azure CLI-versie 2.0.64 of hoger uitvoeren. Voer 
 
 ## <a name="create-an-ingress-controller"></a>Een ingangs controller maken
 
-Als u de ingangs controller wilt maken, gebruikt u helm om *nginx*te installeren. Voor toegevoegde redundantie worden er twee replica's van de NGINX-ingangscontrollers geïmplementeerd met de parameter `--set controller.replicaCount`. Om volledig te profiteren van het uitvoeren van replica's van de ingangs controller, moet u ervoor zorgen dat er meer dan één knoop punt in uw AKS-cluster is.
+Als u de ingangs controller wilt maken, gebruikt u helm om *nginx* te installeren. Voor toegevoegde redundantie worden er twee replica's van de NGINX-ingangscontrollers geïmplementeerd met de parameter `--set controller.replicaCount`. Om volledig te profiteren van het uitvoeren van replica's van de ingangs controller, moet u ervoor zorgen dat er meer dan één knoop punt in uw AKS-cluster is.
 
 De ingangscontroller moet ook worden gepland op een Linux-knooppunt. Windows Server-knooppunten mogen de ingangscontroller niet uitvoeren. Er wordt een knooppuntselector opgegeven met behulp van de parameter `--set nodeSelector` om de Kubernetes-planner te laten weten dat de NGINX-ingangscontroller moet worden uitgevoerd op een Linux-knooppunt.
 
 > [!TIP]
-> In het volgende voor beeld wordt een Kubernetes-naam ruimte gemaakt voor de ingangs resources met de naam *ingress-Basic*. Geef waar nodig een naam ruimte op voor uw eigen omgeving.
+> In het volgende voor beeld wordt een Kubernetes-naam ruimte gemaakt voor de ingangs resources met de naam *ingress-Basic* . Geef waar nodig een naam ruimte op voor uw eigen omgeving.
 
 > [!TIP]
-> Als u [IP-behoud van client bronnen][client-source-ip] wilt inschakelen voor aanvragen voor containers in uw cluster, voegt u toe `--set controller.service.externalTrafficPolicy=Local` aan de helm-installatie opdracht. Het bron-IP-adres van de client wordt opgeslagen in de aanvraag header onder *X-doorgestuurd-voor*. Bij gebruik van een ingangs controller waarvoor IP-behoud door client bronnen is ingeschakeld, werkt SSL Pass-Through niet.
+> Als u [IP-behoud van client bronnen][client-source-ip] wilt inschakelen voor aanvragen voor containers in uw cluster, voegt u toe `--set controller.service.externalTrafficPolicy=Local` aan de helm-installatie opdracht. Het bron-IP-adres van de client wordt opgeslagen in de aanvraag header onder *X-doorgestuurd-voor* . Bij gebruik van een ingangs controller waarvoor IP-behoud door client bronnen is ingeschakeld, werkt SSL Pass-Through niet.
 
 ```console
 # Create a namespace for your ingress resources
@@ -93,7 +93,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-one
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -131,7 +131,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-two
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -223,11 +223,11 @@ ingress.extensions/hello-world-ingress-static created
 
 ## <a name="test-the-ingress-controller"></a>De ingangs controller testen
 
-Als u de routes voor de ingangs controller wilt testen, bladert u naar de twee toepassingen. Open een webbrowser op het IP-adres van uw NGINX ingress-controller, zoals *EXTERNAL_IP*. De eerste demo toepassing wordt weer gegeven in de webbrowser, zoals wordt weer gegeven in het volgende voor beeld:
+Als u de routes voor de ingangs controller wilt testen, bladert u naar de twee toepassingen. Open een webbrowser op het IP-adres van uw NGINX ingress-controller, zoals *EXTERNAL_IP* . De eerste demo toepassing wordt weer gegeven in de webbrowser, zoals wordt weer gegeven in het volgende voor beeld:
 
 ![De eerste app die achter de ingangs controller wordt uitgevoerd](media/ingress-basic/app-one.png)
 
-Voeg nu het */Hello-World-Two* -pad toe aan het IP-adres, zoals *EXTERNAL_IP/Hello-World-Two*. De tweede demo toepassing met de aangepaste titel wordt weer gegeven:
+Voeg nu het */Hello-World-Two* -pad toe aan het IP-adres, zoals *EXTERNAL_IP/Hello-World-Two* . De tweede demo toepassing met de aangepaste titel wordt weer gegeven:
 
 ![Tweede app die achter de ingangs controller wordt uitgevoerd](media/ingress-basic/app-two.png)
 
@@ -245,7 +245,7 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>Resources afzonderlijk verwijderen
 
-U kunt ook een nauw keurigere benadering van de gemaakte afzonderlijke resources verwijderen. Vermeld de helm-releases met de `helm list` opdracht. Zoek naar grafieken met de naam *nginx-ingangs* en *AKS-HelloWorld*, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
+U kunt ook een nauw keurigere benadering van de gemaakte afzonderlijke resources verwijderen. Vermeld de helm-releases met de `helm list` opdracht. Zoek naar grafieken met de naam *nginx-ingangs* en *AKS-HelloWorld* , zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
 
 ```
 $ helm list --namespace ingress-basic

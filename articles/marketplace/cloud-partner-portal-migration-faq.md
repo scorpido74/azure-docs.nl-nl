@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 122de64e33778966d563cc8e94b46515e54769f7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8bedecd4a050c445af0ab0ae0250197369b9173b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331206"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131408"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Veelgestelde vragen over overgang van de Cloud Partner-portal naar het partner centrum
 
@@ -58,16 +58,16 @@ Dit zijn de verschillen in het uitbetalings rapport tussen de buiten gebruik ges
 
 | Cloud Partner-portal | Partnercentrum |
 | --- | --- |
-| **Koppeling**: https://cloudpartner.azure.com/ | **Koppeling**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory en https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigatie**: uitbetalings rapportage die is opgenomen in Insights-uitbetaling | **Navigatie**: uitbetalings rapportage die is opgenomen in het partner centrum-pictogram voor uitbetaling |
-| **Bereik**:<ul><li>Trans actie per regel item is zichtbaar voor de verzameling die wordt uitgevoerd, verzameld en betaald.</li><li>Rapportage: geeft alle regel items weer zodra de aankoop order is gemaakt, inclusief de verzameling die wordt uitgevoerd en de facturering wordt uitgevoerd, en de verzamelings status en regel items die nog niet kunnen worden betaald.</li></ul> | **Bereik**:<ul><li>De regel items worden weer gegeven nadat deze als in aanmerking komende winst worden beschouwd.</li><li>Klanten betalen eerst aan micro soft en vervolgens kunnen Isv's het rapport voor uitbetaling starten.</li><li>De verzameling wordt niet weer gegeven in het uitbetalings rapport en de facturering wordt momenteel uitgevoerd.</li></ul> |
-| **Trans actie niet gereed voor uitbetaling**: facturering wordt uitgevoerd | **Trans actie niet gereed voor uitbetaling**: volgende geschatte betaling: de status van de uitbetaling is in de niet-verwerkte staat. |
-| **Status van uitbetaling**: n.v.t. | **Uitbetalings status**:<ul><li>Niet verwerkt: het verdienen komt in aanmerking voor betaling.</li><li>Binnenkort: het verdienen wordt in de volgende maandelijkse uitbetaling naar de uitgever verzonden.</li><li>Verzonden: de betaling is naar uw bank verzonden.</li></ul> |
+| **Koppeling** : https://cloudpartner.azure.com/ | **Koppeling** : https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory en https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Navigatie** : uitbetalings rapportage die is opgenomen in Insights-uitbetaling | **Navigatie** : uitbetalings rapportage die is opgenomen in het partner centrum-pictogram voor uitbetaling |
+| **Bereik** :<ul><li>Trans actie per regel item is zichtbaar voor de verzameling die wordt uitgevoerd, verzameld en betaald.</li><li>Rapportage: geeft alle regel items weer zodra de aankoop order is gemaakt, inclusief de verzameling die wordt uitgevoerd en de facturering wordt uitgevoerd, en de verzamelings status en regel items die nog niet kunnen worden betaald.</li></ul> | **Bereik** :<ul><li>De regel items worden weer gegeven nadat deze als in aanmerking komende winst worden beschouwd.</li><li>Klanten betalen eerst aan micro soft en vervolgens kunnen Isv's het rapport voor uitbetaling starten.</li><li>De verzameling wordt niet weer gegeven in het uitbetalings rapport en de facturering wordt momenteel uitgevoerd.</li></ul> |
+| **Trans actie niet gereed voor uitbetaling** : facturering wordt uitgevoerd | **Trans actie niet gereed voor uitbetaling** : volgende geschatte betaling: de status van de uitbetaling is in de niet-verwerkte staat. |
+| **Status van uitbetaling** : n.v.t. | **Uitbetalings status** :<ul><li>Niet verwerkt: het verdienen komt in aanmerking voor betaling.</li><li>Binnenkort: het verdienen wordt in de volgende maandelijkse uitbetaling naar de uitgever verzonden.</li><li>Verzonden: de betaling is naar uw bank verzonden.</li></ul> |
 |||
 
 ## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>Hoe over aanbiedingen die ik in het Cloud Partner-portal gepubliceerd?
 
-De aanbiedingen zijn verplaatst naar het partner centrum en zijn toegankelijk voor u nadat u zich hebt aangemeld bij het partner centrum, met uitzonde ring van de door Dynamics NAV beheerde service en Cortana Intelligence aanbiedingen. Als uw aanbieding in de commerciële Marketplace Live was, blijft deze live en blijven uw klanten deze zonder onderbrekingen kunnen kopen en implementeren. Zie de volgende vraag, **welke aanbiedingen zijn verplaatst naar het partner centrum?**, voor meer informatie.
+De aanbiedingen zijn verplaatst naar het partner centrum en zijn toegankelijk voor u nadat u zich hebt aangemeld bij het partner centrum, met uitzonde ring van de door Dynamics NAV beheerde service en Cortana Intelligence aanbiedingen. Als uw aanbieding in de commerciële Marketplace Live was, blijft deze live en blijven uw klanten deze zonder onderbrekingen kunnen kopen en implementeren. Zie de volgende vraag, **welke aanbiedingen zijn verplaatst naar het partner centrum?** , voor meer informatie.
 
 ## <a name="what-offers-were-moved-to-partner-center"></a>Welke aanbiedingen zijn verplaatst naar het partner centrum?
 
@@ -88,14 +88,14 @@ Voor de aanbiedings typen die in Partner Center worden ondersteund, zijn alle aa
 | Container | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een Azure-container aanbieding](partner-center-portal/create-azure-container-offer.md). |
 | Adviesservice | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een advies service-aanbieding](partner-center-portal/create-consulting-service-offer.md). |
 | Beheerde service | Ja | Meld u aan bij Partner Center om nieuwe aanbiedingen te maken en aanbiedingen te beheren die zijn gemaakt in Cloud Partner-portal. Meer informatie over [het maken van een beheerde service aanbieding](partner-center-portal/create-new-managed-service-offer.md). |
-| Door Dynamics NAV beheerde service | Nee | Micro soft heeft Dynamics NAV managed service ontwikkeld in [dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/), zodat we de aanbiedingen van Dynamics NAV Managed Service Live kunnen ontvangen van AppSource. Deze aanbiedingen kunnen niet meer worden gedetecteerd door klanten en zijn niet verplaatst naar het partner centrum. Als u uw aanbiedingen beschikbaar wilt maken in AppSource, past u deze toe aan Dynamics 365 Business Central-aanbiedingen en verzendt u deze in [Partner Center](https://partner.microsoft.com/). Meer informatie over [het maken van een Dynamics 365 Business Central-aanbieding](partner-center-portal/create-new-business-central-offer.md). |
-| Cortana Intelligence | Nee | Micro soft heeft het overzicht van de product handleiding voor Cortana Intelligence ontwikkeld, zodat we Cortana Intelligence Live-aanbiedingen van AppSource niet meer vermelden. Deze aanbiedingen kunnen niet meer worden gedetecteerd door klanten en zijn niet verplaatst naar het partner centrum. Als u uw aanbiedingen beschikbaar wilt stellen in de commerciële Marketplace, kunt u uw aanbiedingen aanpassen aan SaaS-aanbiedingen (Software as a Service) en deze verzenden in het [partner centrum](https://partner.microsoft.com/). Meer informatie over de [controle lijst voor het maken van SaaS-aanbiedingen in partner centrum](partner-center-portal/offer-creation-checklist.md). |
+| Door Dynamics NAV beheerde service | Nee | Micro soft heeft Dynamics NAV managed service ontwikkeld in [dynamics 365 Business Central](/dynamics365/business-central/), zodat we de aanbiedingen van Dynamics NAV Managed Service Live kunnen ontvangen van AppSource. Deze aanbiedingen kunnen niet meer worden gedetecteerd door klanten en zijn niet verplaatst naar het partner centrum. Als u uw aanbiedingen beschikbaar wilt maken in AppSource, past u deze toe aan Dynamics 365 Business Central-aanbiedingen en verzendt u deze in [Partner Center](https://partner.microsoft.com/). Meer informatie over [het maken van een Dynamics 365 Business Central-aanbieding](partner-center-portal/create-new-business-central-offer.md). |
+| Cortana Intelligence | Nee | Micro soft heeft het overzicht van de product handleiding voor Cortana Intelligence ontwikkeld, zodat we Cortana Intelligence Live-aanbiedingen van AppSource niet meer vermelden. Deze aanbiedingen kunnen niet meer worden gedetecteerd door klanten en zijn niet verplaatst naar het partner centrum. Als u uw aanbiedingen beschikbaar wilt stellen in de commerciële Marketplace, kunt u uw aanbiedingen aanpassen aan SaaS-aanbiedingen (Software as a Service) en deze verzenden in het [partner centrum](https://partner.microsoft.com/). Meer informatie over de [controle lijst voor het maken van SaaS-aanbiedingen in partner centrum](./plan-saas-offer.md). |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Ik kan mijn Cloud Partner-portal aanbiedingen niet vinden in het partner centrum
 
 Wat u in het partner centrum ziet, is afhankelijk van de Program ma's die u hebt Inge schreven, de accounts waartoe u behoort en de gebruikers rollen en-machtigingen die u hebt toegewezen. Er zijn veel partner centrum-Program ma's beschikbaar en u bent mogelijk Inge schreven in meerdere Program ma's. Mogelijk hebt u ook toegang tot meerdere accounts met dezelfde gebruikers referenties.
 
-De aanbiedingen die u in Cloud Partner-portal hebt gemaakt, zijn beschikbaar in partner centrum onder het **Commercial Marketplace** -programma en onder het account dat is gebruikt om de aanbiedingen te maken. Volg de onderstaande stappen om ervoor te zorgen dat u het juiste programma en de juiste account bekijkt. Zie [uw partner Center-account beheren](https://docs.microsoft.com/partner-center/partner-center-account-setup)voor andere tips voor probleem oplossing.
+De aanbiedingen die u in Cloud Partner-portal hebt gemaakt, zijn beschikbaar in partner centrum onder het **Commercial Marketplace** -programma en onder het account dat is gebruikt om de aanbiedingen te maken. Volg de onderstaande stappen om ervoor te zorgen dat u het juiste programma en de juiste account bekijkt. Zie [uw partner Center-account beheren](/partner-center/partner-center-account-setup)voor andere tips voor probleem oplossing.
 
 ### <a name="access-the-right-program-in-partner-center"></a>Toegang tot het juiste programma in Partner Center
 
@@ -117,7 +117,7 @@ Als u deel uitmaakt van meerdere accounts, ziet u in Partner Center een knop voo
 
 ## <a name="how-do-i-create-new-offers"></a>Hoe kan ik nieuwe aanbiedingen maken?
 
-Open het Commercial Marketplace-programma in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) om nieuwe aanbiedingen te maken. Selecteer op de pagina overzicht **+ nieuwe aanbieding**.
+Open het Commercial Marketplace-programma in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) om nieuwe aanbiedingen te maken. Selecteer op de pagina overzicht **+ nieuwe aanbieding** .
 
 [![Scherm afbeelding toont het overzichts menu van het partner centrum.](media/cpp-pc-faq/new-offer.png "Toont het overzichts menu van het partner centrum")](media/cpp-pc-faq/new-offer.png#lightbox)
 
@@ -127,7 +127,7 @@ Als u zich niet kunt aanmelden bij uw account, kunt u hier een [ondersteunings t
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>Waar worden de instructies voor het gebruik van partner Center?
 
-Ga naar de [documentatie voor commerciële Marketplace](index.yml)en vouw vervolgens de **Portal voor commerciële Marketplace uit in het partner centrum**. Als u Help-artikelen voor het maken van aanbiedingen in partner centrum wilt bekijken, vouwt u **een nieuwe aanbieding maken**uit.
+Ga naar de [documentatie voor commerciële Marketplace](index.yml)en vouw vervolgens de **Portal voor commerciële Marketplace uit in het partner centrum** . Als u Help-artikelen voor het maken van aanbiedingen in partner centrum wilt bekijken, vouwt u **een nieuwe aanbieding maken** uit.
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>Wat zijn de verschillen in de publicaties en aanbiedings beheer?
 
@@ -135,7 +135,7 @@ Hier volgen enkele verschillen tussen de Cloud Partner-portal en het partner cen
 
 ### <a name="modular-publishing-capabilities"></a>Modulaire publicatie mogelijkheden
 
-Het partner centrum biedt een modulaire publicatie optie waarmee u de wijzigingen kunt selecteren die u wilt publiceren in plaats van alle updates altijd tegelijk te publiceren. In het volgende scherm ziet u bijvoorbeeld dat de gegevens die zijn geselecteerd om te worden gepubliceerd, de wijzigingen in **Eigenschappen** en  **aanbiedings vermelding**zijn. De wijzigingen die u in de voorbeeld pagina aanbrengt, worden niet gepubliceerd.
+Het partner centrum biedt een modulaire publicatie optie waarmee u de wijzigingen kunt selecteren die u wilt publiceren in plaats van alle updates altijd tegelijk te publiceren. In het volgende scherm ziet u bijvoorbeeld dat de gegevens die zijn geselecteerd om te worden gepubliceerd, de wijzigingen in **Eigenschappen** en  **aanbiedings vermelding** zijn. De wijzigingen die u in de voorbeeld pagina aanbrengt, worden niet gepubliceerd.
 
 [![Scherm afbeelding toont de pagina bekijken en publiceren van het partner centrum.](media/cpp-pc-faq/review-page.png "Toont de pagina voor het bekijken en publiceren van het partner centrum")](media/cpp-pc-faq/review-page.png#lightbox)
 
@@ -143,7 +143,7 @@ De updates die u niet publiceert, worden opgeslagen als concept. Ga door met de 
 
 ### <a name="enhanced-preview-options"></a>Verbeterde preview-opties
 
-Het partner centrum bevat een [vergelijkings functie](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers) met verbeterde filter opties. Dit biedt u de mogelijkheid om te vergelijken met de preview-versie en de live versies van de aanbieding.
+Het partner centrum bevat een [vergelijkings functie](partner-center-portal/update-existing-offer.md#compare-changes-to-your-offer) met verbeterde filter opties. Dit biedt u de mogelijkheid om te vergelijken met de preview-versie en de live versies van de aanbieding.
 
 [![Scherm afbeelding toont de functie vergelijken met partner centrum.](media/cpp-pc-faq/compare.png "Hiermee wordt de functie voor het vergelijken van partner Centers weer gegeven")](media/cpp-pc-faq/compare.png#lightbox)
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 61ced7eda78d3ce56d78dfd6cc54e0e92d376e68
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100674"
+ms.locfileid: "93131272"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>VM's verwijderen uit Wijzigingen bijhouden en inventaris
 
@@ -22,7 +22,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="to-remove-your-vms"></a>Uw Vm's verwijderen
 
-1. Start in de Azure Portal **Cloud shell** vanuit de bovenste navigatie van de Azure Portal. Als u niet bekend bent met Azure Cloud Shell, raadpleegt u [overzicht van Azure Cloud shell](/azure/cloud-shell/overview).
+1. Start in de Azure Portal **Cloud shell** vanuit de bovenste navigatie van de Azure Portal. Als u niet bekend bent met Azure Cloud Shell, raadpleegt u [overzicht van Azure Cloud shell](../../cloud-shell/overview.md).
 
 2. Gebruik de volgende opdracht om de UUID te identificeren van een computer die u wilt verwijderen uit het beheer.
 

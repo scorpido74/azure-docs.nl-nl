@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397416"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131425"
 ---
 # <a name="power-bi-app-creation-overview"></a>Overzicht van het maken van Power BI-apps
 
@@ -33,22 +33,22 @@ Voor delen van het publiceren naar de commerciële Marketplace:
 
 Dit zijn de stappen voor het publiceren van sleutels:
 
-1. Maak uw toepassing in Power BI. U ontvangt een koppeling voor het installeren van pakketten. Dit is de belangrijkste technische Asset voor de aanbieding. Verzend het test pakket naar pre-productie voordat u de aanbieding maakt in het partner centrum. Zie [Wat zijn Power bi-apps?](https://docs.microsoft.com/power-bi/service-template-apps-overview)voor meer informatie.
+1. Maak uw toepassing in Power BI. U ontvangt een koppeling voor het installeren van pakketten. Dit is de belangrijkste technische Asset voor de aanbieding. Verzend het test pakket naar pre-productie voordat u de aanbieding maakt in het partner centrum. Zie [Wat zijn Power bi-apps?](/power-bi/service-template-apps-overview)voor meer informatie.
 2. Voeg het marketing materiaal toe, zoals officiële naam, beschrijving en logo's.
 3. Neem de juridische en ondersteunende documenten van de aanbieding op, zoals gebruiks voorwaarden, privacybeleid, ondersteunings beleid en gebruikers hulp.
 4. De aanbieding maken: gebruik partner centrum om de details te bewerken, met inbegrip van de beschrijving van het aanbod, het marketing materiaal, de juridische informatie, de ondersteunings informatie en de specificaties van de Asset.
 5. Verzend het voor publicatie.
 6. Bewaak het proces in het partner centrum, waar het AppSource-voorbereidings team uw app test, valideert en certificeert.
 7. Nadat het is gecertificeerd, controleert u de app in de test omgeving en geeft u deze vrij. Hiermee wordt het weer geven op AppSource (het ' live ').
-8. In Power BI verzendt u het pakket naar de productie omgeving. Zie [de release van de Power bi-app beheren](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)voor meer informatie.
+8. In Power BI verzendt u het pakket naar de productie omgeving. Zie [de release van de Power bi-app beheren](/power-bi/service-template-apps-create#manage-the-template-app-release)voor meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Raadpleeg de onderstaande koppelingen voor sjablonen, tips en voor beelden.
 
-- [Een Power BI-app maken](https://docs.microsoft.com/power-bi/service-template-apps-create)
-- [Tips voor het ontwerpen van een Power BI-app](https://docs.microsoft.com/power-bi/service-template-apps-tips)
-- [Voorbeelden](https://docs.microsoft.com/power-bi/service-template-apps-samples)
+- [Een Power BI-app maken](/power-bi/service-template-apps-create)
+- [Tips voor het ontwerpen van een Power BI-app](/power-bi/service-template-apps-tips)
+- [Voorbeelden](/power-bi/service-template-apps-samples)
 
 ## <a name="requirements"></a>Vereisten
 
@@ -56,13 +56,13 @@ Uw Power BI-app-aanbieding moet voldoen aan de volgende technische en zakelijke 
 
 ### <a name="technical-requirements"></a>Technische vereisten
 
-Het belangrijkste technische activum dat u nodig hebt, is een [Power bi-app](https://go.microsoft.com/fwlink/?linkid=2028636). Dit is een verzameling primaire gegevens sets, rapporten of Dash boards. Het bevat ook optionele, gekoppelde services en Inge sloten gegevens sets, voorheen bekend als een [inhouds pakket](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Zie [Wat zijn Power bi-apps?](https://go.microsoft.com/fwlink/?linkid=2028636)voor meer informatie over het ontwikkelen van dit type app.
+Het belangrijkste technische activum dat u nodig hebt, is een [Power bi-app](/power-bi/connect-data/service-template-apps-overview). Dit is een verzameling primaire gegevens sets, rapporten of Dash boards. Het bevat ook optionele, gekoppelde services en Inge sloten gegevens sets, voorheen bekend als een [inhouds pakket](/power-bi/service-organizational-content-pack-introduction). Zie [Wat zijn Power bi-apps?](/power-bi/connect-data/service-template-apps-overview)voor meer informatie over het ontwikkelen van dit type app.
 
 #### <a name="get-an-installation-web-address"></a>Een webadres voor installatie ophalen
 
 U kunt alleen een Power BI-app bouwen binnen de [Power bi](https://powerbi.microsoft.com/) omgeving.
 
-1. Meld u aan met een [Power bi Pro-licentie](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro).
+1. Meld u aan met een [Power bi Pro-licentie](/power-bi/service-admin-purchasing-power-bi-pro).
 2. Uw app maken en testen in Power BI.
 3. Wanneer u het webadres voor de installatie van de app ontvangt, voegt u dit toe aan de pagina **technische configuratie** in partner centrum.
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/05/2020
-ms.openlocfilehash: dc6d083efd1d39d96f9df995fe5e7e4bcc95abff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/30/2020
+ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675303"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131357"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -50,7 +50,7 @@ Voor een SQL Database kan de redundantie van de back-upopslag worden geconfigure
 > Zone-redundante opslag is momenteel alleen beschikbaar in [bepaalde regio's](../../storage/common/storage-redundancy.md#zone-redundant-storage). 
 
 > [!NOTE]
-> Configureer bare back-upopslag redundantie voor Azure SQL Database is momenteel algemeen beschikbaar in de Azure-regio Zuidoost-Azië. Deze functie is nog niet beschikbaar voor de grootschalige-laag. 
+> Configureer bare opslag redundantie van back-ups voor Azure SQL Database is momenteel beschikbaar in de preview-versie van Brazilië-zuid en algemeen beschikbaar in de Azure-regio Zuid-Azië. Deze functie is nog niet beschikbaar voor de grootschalige-laag. 
 
 ### <a name="backup-usage"></a>Back-upgebruik
 
@@ -371,7 +371,7 @@ Zie [retentie van back-ups rest API](/rest/api/sql/backupshorttermretentionpolic
 ## <a name="configure-backup-storage-redundancy"></a>Opslag redundantie voor back-ups configureren
 
 > [!NOTE]
-> Configureer bare opslag redundantie voor back-ups voor SQL Managed instance kan alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen. De open bare preview van deze functie is momenteel alleen beschikbaar in de Azure-regio Zuidoost-Azië. SQL Database 
+> Configureer bare opslag redundantie voor back-ups voor SQL Managed instance kan alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen. Voor SQL Database is de open bare preview van deze functie momenteel beschikbaar in Brazilië-zuid en is deze algemeen beschikbaar in de Azure-regio Zuidoost-Azië. 
 
 Een opslag redundantie van een back-up van een beheerd exemplaar kan worden ingesteld tijdens het maken van een exemplaar. Voor een SQL Database kan deze worden ingesteld bij het maken van de data base of kan worden bijgewerkt voor een bestaande data base. De standaard waarde is geografisch redundante opslag (RA-GRS). Zie de [pagina met prijzen voor Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)(Engelstalig) voor verschillen in de prijs van een LRS (Local-redundante), zone-redundante (ZRS) en geo-redundante (RA-GRS)-back-upopslag.
 

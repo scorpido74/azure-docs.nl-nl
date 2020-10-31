@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a0b7a1c600fe81081fbfe8d33c3878f68e730888
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d8583a1fee96d0a6eb3300882b2b115f057cbeec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547352"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135923"
 ---
 Als u de [eindpunt status](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) in de rest API de status van de eind punten en de laatste bekende fout geeft om de reden voor het identificeren van een eind punt niet in orde is. De volgende tabel bevat de meest voorkomende fouten.
 
 |Laatst bekende fout|Beschrijving/wanneer deze plaatsvindt|Mogelijke beperking|
 |-----|-----|-----|
-|Wijk|Er is een tijdelijke fout opgetreden en IoT Hub voert de bewerking opnieuw uit.|Bekijk [route-resource logboeken](https://docs.microsoft.com/azure/iot-hub/monitor-service-reference#routes).|
-|InternalError|Er is een fout opgetreden tijdens het leveren van een bericht aan een eind punt.|Dit is een interne uitzonde ring, maar ook de [routes met bron logboeken](https://docs.microsoft.com/azure/iot-hub/monitor-service-reference#routes).|
+|Wijk|Er is een tijdelijke fout opgetreden en IoT Hub voert de bewerking opnieuw uit.|Bekijk [route-resource logboeken](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes).|
+|InternalError|Er is een fout opgetreden tijdens het leveren van een bericht aan een eind punt.|Dit is een interne uitzonde ring, maar ook de [routes met bron logboeken](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes).|
 |Niet geautoriseerd|IoT Hub is niet gemachtigd om berichten naar het opgegeven eind punt te verzenden.|Controleer of de connection string up-to-date is voor het eind punt. Als deze is gewijzigd, kunt u een update op uw IoT Hub. Als het eind punt beheerde identiteit gebruikt, controleert u of de IoT Hub principal de vereiste machtigingen voor het doel heeft.|
 |Beperkt|IoT Hub wordt beperkt tijdens het schrijven van berichten naar het eind punt.|Controleer de beperkings limieten voor het betreffende eind punt. Pas de configuraties voor het eind punt zodanig aan dat deze zo nodig worden geschaald.|
 |Time-out|Time-out van bewerking.|Voer de bewerking opnieuw uit.|

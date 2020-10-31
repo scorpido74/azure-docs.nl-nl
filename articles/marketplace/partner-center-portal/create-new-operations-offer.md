@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: a7a77cc18ddc1ab8664d49aa3c2ac049a683ed3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c28b4edab1e1033bf9ac7df6b1249b549bb4fe1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710631"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131510"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Een Dynamics 365 for Operations-aanbieding maken
 
@@ -26,8 +26,8 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Dynamics 365 voor bewerkingen**.
+2. Selecteer in het menu links de optie **commerciële Marketplace** -  >  **overzicht** .
+3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Dynamics 365 voor bewerkingen** .
 
     ![Illustreert het navigatie menu.](./media/new-offer-dynamics-365-operations.png)
 
@@ -36,14 +36,14 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 
 ## <a name="new-offer"></a>Nieuwe aanbieding
 
-Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
+Voer een **aanbiedings-id** in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
 - De aanbiedings-ID gecombineerd met de uitgevers-ID moet langer zijn dan 40 tekens.
 - Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar geen spaties. Als uw uitgevers-ID bijvoorbeeld testpublisherid is en u hier **test aanbieding-1** invoert, is het webadres van de aanbieding `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
-Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
+Voer een **alias** voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
 - Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
 
@@ -93,7 +93,7 @@ Op deze pagina kunt u de categorieën en industrieën definiëren die worden geb
 Selecteer categorieën en subcategorieën om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Zorg ervoor dat u beschrijft hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. Selecteer:
 
 - Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
-- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing** .
 
 Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md).
 
@@ -175,7 +175,7 @@ Voer de URL in voor het privacybeleid van uw organisatie. U bent verantwoordelij
 
 ### <a name="contacts"></a>Contactpersonen
 
-In deze sectie geeft u de naam, het e-mail adres en het telefoon nummer voor een **ondersteunings contact** en een **technische contact persoon**op. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verstrekt aan CSP-partners.
+In deze sectie geeft u de naam, het e-mail adres en het telefoon nummer voor een **ondersteunings contact** en een **technische contact persoon** op. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verstrekt aan CSP-partners.
 
 Geef in de sectie **ondersteunings contact op met** de **ondersteunings-URL** waar CSP-partners ondersteuning voor uw aanbieding kunnen vinden.
 
@@ -227,7 +227,7 @@ Op deze pagina vindt u opties voor waar en hoe u uw aanbieding beschikbaar kunt 
 
 In deze sectie kunt u de markten opgeven waarin uw aanbieding beschikbaar moet zijn. Als u dit wilt doen, selecteert u **markten bewerken** om het pop-upvenster **markt selectie** weer te geven.
 
-Standaard zijn er geen markten geselecteerd. Selecteer ten minste één markt om uw aanbieding te publiceren. Klik op  **Alles selecteren** om uw aanbieding beschikbaar te stellen op elke mogelijke markt of selecteer de specifieke markten die u wilt toevoegen. Wanneer u klaar bent, selecteert u **Opslaan**.
+Standaard zijn er geen markten geselecteerd. Selecteer ten minste één markt om uw aanbieding te publiceren. Klik op  **Alles selecteren** om uw aanbieding beschikbaar te stellen op elke mogelijke markt of selecteer de specifieke markten die u wilt toevoegen. Wanneer u klaar bent, selecteert u **Opslaan** .
 
 Uw selecties zijn hier alleen van toepassing op nieuwe verwervingen; Als iemand uw app al in een bepaalde markt heeft en u deze markt later verwijdert, kunnen de personen die de aanbieding al op die markt hebben, deze blijven gebruiken, maar kunnen er geen nieuwe klanten op deze markt worden aangeboden.
 
@@ -238,7 +238,7 @@ Houd er rekening mee dat zelfs als u alle markten selecteert, de lokale wetgevin
 
 ### <a name="preview-audience"></a>Voor beeld van doel groep
 
-Voordat u uw aanbieding naar de bredere Marketplace-aanbieding publiceert, moet u deze eerst beschikbaar maken voor een beperkte preview- **doel groep**. Voer hier een **Hide-toets** (wille keurige teken reeks met alleen kleine letters en/of cijfers) in. Leden van uw preview-doel groep kunnen deze verbergen sleutel als een token gebruiken om een voor beeld van uw aanbieding op Marketplace te bekijken.
+Voordat u uw aanbieding naar de bredere Marketplace-aanbieding publiceert, moet u deze eerst beschikbaar maken voor een beperkte preview- **doel groep** . Voer hier een **Hide-toets** (wille keurige teken reeks met alleen kleine letters en/of cijfers) in. Leden van uw preview-doel groep kunnen deze verbergen sleutel als een token gebruiken om een voor beeld van uw aanbieding op Marketplace te bekijken.
 
 Wanneer u klaar bent om uw aanbieding beschikbaar te maken en de preview-beperking te verwijderen, moet u de **sleutel verbergen** verwijderen en opnieuw publiceren.
 
@@ -254,8 +254,8 @@ Geef de oplossings-id (GUID) op voor uw oplossing.
 
 De oplossings-id zoeken:
 
-1. Selecteer in micro soft Dynamics Lifecycle Services (LCS) **oplossingen beheren**.
-2. Selecteer uw oplossing en zoek vervolgens naar de **oplossings-id** in het **pakket overzicht**. Als de id leeg is, selecteert u **bewerken** en publiceert u het pakket opnieuw. Probeer het vervolgens opnieuw.
+1. Selecteer in micro soft Dynamics Lifecycle Services (LCS) **oplossingen beheren** .
+2. Selecteer uw oplossing en zoek vervolgens naar de **oplossings-id** in het **pakket overzicht** . Als de id leeg is, selecteert u **bewerken** en publiceert u het pakket opnieuw. Probeer het vervolgens opnieuw.
 
 ### <a name="release-version"></a>Release versie
 
@@ -277,17 +277,17 @@ Op deze pagina kunt u aanvullende informatie over uw aanbieding opgeven zodat we
 
 ### <a name="validation-assets"></a>Validatie-assets
 
-Upload een [aanpassings analyse rapport (auto)](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) in deze sectie. Dit rapport wordt gegenereerd door het analyseren van uw aanpassings-en extensie modellen op basis van een vooraf gedefinieerde set best practice regels.
+Upload een [aanpassings analyse rapport (auto)](/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) in deze sectie. Dit rapport wordt gegenereerd door het analyseren van uw aanpassings-en extensie modellen op basis van een vooraf gedefinieerde set best practice regels.
 
 Dit bestand moet de indeling. xls of. xlsx hebben. Als u meer dan één rapport hebt, kunt u een zip-bestand uploaden dat alle rapporten bevat.
 
 ### <a name="does-solution-include-localizations"></a>Bevat de oplossing lokalisatie?
 
-Selecteer **Ja** als de oplossing gebruik kan maken van lokale standaarden en beleids regels (bijvoorbeeld als deze voldoen aan de verschillende salaris regels die worden vereist door verschillende landen/regio's). Anders selecteert u **Nee**.
+Selecteer **Ja** als de oplossing gebruik kan maken van lokale standaarden en beleids regels (bijvoorbeeld als deze voldoen aan de verschillende salaris regels die worden vereist door verschillende landen/regio's). Anders selecteert u **Nee** .
 
 ### <a name="does-solution-enable-translations"></a>Is het mogelijk om vertalingen in te scha kelen?
 
-Beantwoord **Ja** als de tekst in uw oplossing kan worden vertaald naar andere talen. Anders selecteert u **Nee**.
+Beantwoord **Ja** als de tekst in uw oplossing kan worden vertaald naar andere talen. Anders selecteert u **Nee** .
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
@@ -303,8 +303,8 @@ Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende 
     - **Niet gestart** : de sectie is niet gerakend en moet worden voltooid.
     - **Onvolledig** : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
     - **Voltooid** : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
-- Geef in de sectie **opmerkingen voor certificering** test instructies op voor het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app. Voor meer informatie over het testen van instructies en het volt ooien van een eerste publicatie raadpleegt u [AppSource Dynamics 365 Finance and Operations functionele Validation](https://docs.microsoft.com/azure/marketplace/dynamics-365-finance-operations-functional-validation).
-- Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding naar het publiek te publiceren.
+- Geef in de sectie **opmerkingen voor certificering** test instructies op voor het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app. Voor meer informatie over het testen van instructies en het volt ooien van een eerste publicatie raadpleegt u [AppSource Dynamics 365 Finance and Operations functionele Validation](../dynamics-365-finance-operations-functional-validation.md).
+- Verzend de aanbieding voor publicatie door **verzenden** te selecteren. We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding naar het publiek te publiceren.
 
 ## <a name="next-step"></a>Volgende stap
 

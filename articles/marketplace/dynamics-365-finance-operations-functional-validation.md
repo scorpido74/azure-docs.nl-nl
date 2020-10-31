@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651153"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131238"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 Finance and Operations functionele validatie
 
@@ -22,7 +22,7 @@ Voor het volt ooien van een eerste publicatie in het [partner centrum](https://p
 - Presenteer een scherm opnamen van de oplossings [levenscyclus Services](https://lcs.dynamics.com/) -omgeving (LCS).
 
 > [!NOTE]
-> Bij volgende hercertificerings publicaties is geen demonstratie vereist. Zie het [AppSource-beleids document](https://docs.microsoft.com/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops)voor meer informatie.
+> Bij volgende hercertificerings publicaties is geen demonstratie vereist. Zie het [AppSource-beleids document](/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops)voor meer informatie.
 
 ## <a name="how-to-validate"></a>Valideren
 
@@ -50,22 +50,22 @@ Als u een laatste beoordelings oproep wilt plannen, neemt u contact op [appsourc
 
 2. Neem de volgende scherm afbeeldingen van de [LCS](https://lcs.dynamics.com/) -omgeving op die overeenkomen met de aanbieding of oplossing die u wilt publiceren. Ze moeten duidelijk genoeg zijn voor het certificerings team om de tekst te lezen. Sla de scherm afbeeldingen op als JPG-bestanden. U kunt [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) toestemming geven voor uw LCS-omgeving, zodat we de installatie kunnen controleren in plaats van scherm afbeeldingen te bieden.
 
-    1. Ga naar **LCS**de  >  Project bibliotheek van LCS**Business Process Modeler**  >  **Project library**. Maak scherm opnamen van alle proces stappen. Voeg de **diagrammen** en de **gereviseerde** kolommen toe, zoals hier wordt weer gegeven:
+    1. Ga naar **LCS** de  >  Project bibliotheek van LCS **Business Process Modeler**  >  **Project library** . Maak scherm opnamen van alle proces stappen. Voeg de **diagrammen** en de **gereviseerde** kolommen toe, zoals hier wordt weer gegeven:
 
        :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="Hiermee wordt het venster Project bibliotheek weer gegeven.":::
 
-      2. Ga naar **LCS**het  >  **Solution Management**  >  **test pakket**voor de oplossing voor het beheer van LCS-oplossingen. Maak scherm opnamen met het overzicht en de inhoud van het pakket, zoals in deze voor beelden wordt weer gegeven:
+      2. Ga naar **LCS** het  >  **Solution Management**  >  **test pakket** voor de oplossing voor het beheer van LCS-oplossingen. Maak scherm opnamen met het overzicht en de inhoud van het pakket, zoals in deze voor beelden wordt weer gegeven:
 
     | Veld | Installatiekopie <img src="" width="400px">|
     | --- | --- |
     | Overzicht van pakket | [![Scherm opname van het venster pakket overzicht.](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Oplossings fiatteurs</li></ul> | [![Scherm overzicht van package](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | Pakket inhoud<ul><li>Modelleren</li><li>Software-implementeerbaar pakket</li></ul> | [![Scherm inhoud van pakket 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | Pakket inhoud<ul><li>Model</li><li>Software-implementeerbaar pakket</li></ul> | [![Scherm inhoud van pakket 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>GER-configuratie</li><li>Back-up van data base</li></ul><br>Artefacten zijn niet vereist in de sectie **Ger-configuratie** . | [![Scherm inhoud van pakket twee](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Power BI rapport model</li><li>BPM-artefact</li></ul><br>Artefacten zijn niet vereist in de sectie **Power bi** . | [![Scherm pakket inhoud drie](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>Gegevens pakket verwerken</li><li>Licentie overeenkomst en privacybeleid voor oplossingen</li></ul><br>De secties **Ger configuratie** en **Power bi rapport model** zijn optioneel voor financiering en operationele aanbiedingen. | [![Scherm inhoud van pakket vier](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |
 
-    Zie de [Gebruikers handleiding voor LCS](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide)voor meer informatie over elke sectie van de LCS-Portal.
+    Zie de [Gebruikers handleiding voor LCS](/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide)voor meer informatie over elke sectie van de LCS-Portal.
 
 3. Uploaden naar het partner centrum.
 
@@ -76,4 +76,4 @@ Als u een laatste beoordelings oproep wilt plannen, neemt u contact op [appsourc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het maken van een aanbieding: [een Dynamics 365 maken voor de aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
+Zie voor meer informatie over het maken van een aanbieding: [een Dynamics 365 maken voor de aanbieding](./partner-center-portal/create-new-operations-offer.md).

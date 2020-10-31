@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710648"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131493"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding maken
 
@@ -23,8 +23,8 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Power bi service-app**.
+2. Selecteer in het menu links de optie **commerciële Marketplace** -  >  **overzicht** .
+3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Power bi service-app** .
 
    ![Illustreert het navigatie menu.](./media/new-offer-power-bi-app.png)
 
@@ -36,16 +36,16 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 
 ## <a name="new-offer"></a>Nieuwe aanbieding
 
-Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
+Voer een **aanbiedings-id** in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
 - Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u hier bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
-Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
+Voer een **alias** voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
 - Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
-- De aanbiedings alias kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+- De aanbiedings alias kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
 Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
@@ -55,10 +55,10 @@ Op deze pagina ziet u een visuele weer gave van de stappen die nodig zijn om dez
 
 Het bevat koppelingen voor het uitvoeren van bewerkingen op deze aanbieding op basis van de selectie die u maakt. Bijvoorbeeld:
 
-- Als de aanbieding een concept is- [concept verwijderen](update-existing-offer.md#delete-a-draft-offer)
+- Als de aanbieding een concept is-concept verwijderen
 - Als de aanbieding Live is: [de aanbieding wordt niet meer verkocht](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- Als de aanbieding in Preview- [Live](publishing-status.md#publisher-approval) staat
-- Als u publicatie niet hebt voltooid, [Publicatie annuleren](update-existing-offer.md#cancel-publishing)
+- Als de aanbieding in Preview- [Live](../review-publish-offer.md#previewing-and-approving-your-offer) staat
+- Als u Publisher-afmelding niet hebt voltooid, kunt u het [Publiceren annuleren.](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Installatie van aanbieding
 
@@ -97,7 +97,7 @@ Op deze pagina kunt u de categorieën en industrieën definiëren die worden geb
 Selecteer categorieën en subcategorieën om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Zorg ervoor dat u beschrijft hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. Selecteer:
 
 - Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
-- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing** .
 
 Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md).
 
@@ -186,7 +186,7 @@ Voer het webadres in voor het privacybeleid van uw organisatie. U bent verantwoo
 
 ### <a name="contact-information"></a>Contactgegevens
 
-U moet de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon**. Deze informatie wordt niet weer gegeven aan klanten. Het is beschikbaar voor micro soft en kan worden meegeleverd met de Cloud Solution Provider (CSP)-partners.
+U moet de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon** . Deze informatie wordt niet weer gegeven aan klanten. Het is beschikbaar voor micro soft en kan worden meegeleverd met de Cloud Solution Provider (CSP)-partners.
 
 - Ondersteunings contact (vereist): voor algemene ondersteunings vragen.
 - Technische contact persoon (vereist): voor technische vragen en certificerings problemen.
@@ -234,7 +234,7 @@ Zie [Aanbevolen procedures](../gtm-offer-listing-best-practices.md)voor aanbiedi
 
 ## <a name="technical-configuration"></a>Technische configuratie
 
-Promoot uw app in Power BI service voor productie en bied de installatie koppeling van het Power BI app waarmee klanten uw app kunnen installeren. Zie [apps publiceren met Dash boards en rapporten in Power bi](https://docs.microsoft.com/power-bi/service-create-distribute-apps)voor meer informatie.
+Promoot uw app in Power BI service voor productie en bied de installatie koppeling van het Power BI app waarmee klanten uw app kunnen installeren. Zie [apps publiceren met Dash boards en rapporten in Power bi](/power-bi/service-create-distribute-apps)voor meer informatie.
 
 ## <a name="supplemental-content"></a>Aanvullende inhoud
 
@@ -248,7 +248,7 @@ Voeg desgewenst instructies (Maxi maal 3.000 tekens) toe om het micro soft-valid
 
 Nadat u alle vereiste gedeelten van de aanbieding hebt voltooid, kunt u uw aanbieding verzenden om deze te controleren en te publiceren.
 
-Selecteer in de rechter bovenhoek van de portal **controleren en publiceren**.
+Selecteer in de rechter bovenhoek van de portal **controleren en publiceren** .
 
 Op de pagina controleren kunt u het volgende doen:
 
@@ -258,6 +258,6 @@ Op de pagina controleren kunt u het volgende doen:
   - **Voltooid** : de sectie bevat alle vereiste gegevens en er zijn geen fouten. Alle onderdelen van de aanbieding moeten volledig zijn voordat u de aanbieding kunt indienen.
 - Geef test instructies op het certificerings team om te controleren of uw app correct is getest. Geef ook aanvullende notities op die handig zijn voor het leren van uw aanbieding.
 
-Selecteer **publiceren**om de aanbieding voor publicatie in te dienen.
+Selecteer **publiceren** om de aanbieding voor publicatie in te dienen.
 
-We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.
+We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live** .

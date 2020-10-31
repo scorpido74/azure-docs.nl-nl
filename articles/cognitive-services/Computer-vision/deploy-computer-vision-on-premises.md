@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: 9a8e0dde8b24c39180a584c26af725ab82ea0176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e77b5ea2bbd5bae79295a5680fa6e143efa5e99
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907101"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131527"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Computer Vision-container gebruiken met Kubernetes en helm
 
@@ -27,10 +27,10 @@ De volgende vereisten voordat u Computer Vision containers on-premises gebruikt:
 
 | Vereist | Doel |
 |----------|---------|
-| Azure-account | Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][free-azure-account] aan voordat u begint. |
+| Azure-account | Als u nog geen Azure-abonnement hebt, maakt u een [gratis account][free-azure-account] voordat u begint. |
 | Kubernetes CLI | De [KUBERNETES cli][kubernetes-cli] is vereist voor het beheren van de gedeelde referenties in het container register. Kubernetes is ook vereist voordat helm, de Kubernetes Package Manager. |
 | Helm CLI | Installeer de [helm cli][helm-install], die wordt gebruikt om een helm-grafiek (container Package Definition) te installeren. |
-| Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}**: een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina **overzicht**|
+| Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}** : een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina **overzicht**|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -46,56 +46,15 @@ De volgende vereisten voordat u Computer Vision containers on-premises gebruikt:
 
 Er wordt naar verwachting een beschik bare Kubernetes-cluster op de hostcomputer. Raadpleeg deze zelf studie over het [implementeren van een Kubernetes-cluster](../../aks/tutorial-kubernetes-deploy-cluster.md) voor een conceptuele uitleg over het implementeren van een Kubernetes-cluster op een hostcomputer. Meer informatie over implementaties vindt u in de [Kubernetes-documentatie](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker-referenties delen met het Kubernetes-cluster
-
-Als u het Kubernetes-cluster naar `docker pull` de geconfigureerde installatie kopieën in het `containerpreview.azurecr.io` container register wilt toestaan, moet u de docker-referenties naar het cluster overdragen. Voer de [`kubectl create`][kubectl-create] onderstaande opdracht uit om een *docker-REGI ster* te maken op basis van de referenties die zijn verschaft uit de toegangs vereisten voor container register.
-
-Voer de volgende opdracht uit vanaf de opdracht regel interface van Choice. Zorg ervoor dat u de `<username>` , `<password>` en vervangt door `<email-address>` de container register referenties.
-
-```console
-kubectl create secret docker-registry containerpreview \
-    --docker-server=containerpreview.azurecr.io \
-    --docker-username=<username> \
-    --docker-password=<password> \
-    --docker-email=<email-address>
-```
-
-> [!NOTE]
-> Als u al toegang hebt tot het `containerpreview.azurecr.io` container register, kunt u in plaats daarvan een Kubernetes-geheim maken met behulp van de generieke vlag. Bekijk de volgende opdracht die wordt uitgevoerd op basis van de JSON van de docker-configuratie.
-> ```console
->  kubectl create secret generic containerpreview \
->      --from-file=.dockerconfigjson=~/.docker/config.json \
->      --type=kubernetes.io/dockerconfigjson
-> ```
-
-De volgende uitvoer wordt naar de console afgedrukt wanneer het geheim is gemaakt.
-
-```console
-secret "containerpreview" created
-```
-
-Als u wilt controleren of het geheim is gemaakt, voert u [`kubectl get`][kubectl-get] uit met de `secrets` vlag.
-
-```console
-kubectl get secrets
-```
-
-Bij het uitvoeren van `kubectl get secrets` worden alle geconfigureerde geheimen afgedrukt.
-
-```console
-NAME                  TYPE                                  DATA      AGE
-containerpreview      kubernetes.io/dockerconfigjson        1         30s
-```
-
 ## <a name="configure-helm-chart-values-for-deployment"></a>Helm-grafiek waarden voor implementatie configureren
 
-Maak eerst een map met de naam *Read*. Plak vervolgens de volgende YAML-inhoud in een nieuw bestand met de naam `chart.yaml` :
+Maak eerst een map met de naam *Read* . Plak vervolgens de volgende YAML-inhoud in een nieuw bestand met de naam `chart.yaml` :
 
 ```yaml
 apiVersion: v2
 name: read
 version: 1.0.0
-description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+description: A Helm chart to deploy the Read OCR container to a Kubernetes cluster
 dependencies:
 - name: rabbitmq
   condition: read.image.args.rabbitmq.enabled
@@ -111,15 +70,13 @@ Als u de standaard waarden van de helm-grafiek wilt configureren, kopieert en pl
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
-
 read:
   enabled: true
   image:
     name: cognitive-services-read
-    registry:  containerpreview.azurecr.io/
-    repository: microsoft/cognitive-services-read
-    tag: latest
-    pullSecret: containerpreview # Or an existing secret
+    registry:  mcr.microsoft.com/
+    repository: azure-cognitive-services/vision/read
+    tag: 3.1-preview
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -227,15 +184,15 @@ De sjabloon specificeert een load balancer service en de implementatie van de co
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Het Kubernetes-pakket (helm-grafiek)
 
-Het *helm-diagram* bevat de configuratie van de docker-installatie kopie (n) die moet worden opgehaald uit het `containerpreview.azurecr.io` container register.
+Het *helm-diagram* bevat de configuratie van de docker-installatie kopie (n) die moet worden opgehaald uit het `mcr.microsoft.com` container register.
 
 > Een [helm-grafiek][helm-charts] is een verzameling bestanden waarin een gerelateerde set Kubernetes-resources wordt beschreven. Eén grafiek kan worden gebruikt om een eenvoudig te implementeren, zoals een memcached Pod, of iets complex, zoals een volledige web-app-stack met HTTP-servers, data bases, caches, enzovoort.
 
-De meegeleverde *helm-grafieken* halen de docker-installatie kopieën van de computer vision-service en de bijbehorende service uit het `containerpreview.azurecr.io` container register.
+De meegeleverde *helm-grafieken* halen de docker-installatie kopieën van de computer vision-service en de bijbehorende service uit het `mcr.microsoft.com` container register.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>De helm-grafiek op het Kubernetes-cluster installeren
 
-Als u de *helm-grafiek*wilt installeren, moet u de [`helm install`][helm-install-cmd] opdracht uitvoeren. Zorg ervoor dat u de installatie opdracht uitvoert vanuit de map die zich boven de `read` map bevindt.
+Als u de *helm-grafiek* wilt installeren, moet u de [`helm install`][helm-install-cmd] opdracht uitvoeren. Zorg ervoor dat u de installatie opdracht uitvoert vanuit de map die zich boven de `read` map bevindt.
 
 ```console
 helm install read ./read

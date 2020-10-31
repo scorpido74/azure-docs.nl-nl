@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: aa1cb6e9fdd504622b2f444d511a8dd0e5fc1ca8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277a3c1c53564d7c5dff6a87381680a7f41606de
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82608372"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131595"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Speech Service-containers gebruiken met Kubernetes en helm
 
@@ -27,11 +27,11 @@ De volgende vereisten voordat u een on-premises spraak container gebruikt:
 
 | Vereist | Doel |
 |----------|---------|
-| Azure-account | Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][free-azure-account] aan voordat u begint. |
+| Azure-account | Als u nog geen Azure-abonnement hebt, maakt u een [gratis account][free-azure-account] voordat u begint. |
 | Toegang Container Registry | Om ervoor te zorgen dat Kubernetes de docker-installatie kopieën in het cluster kan ophalen, moet u toegang hebben tot het container register. |
 | Kubernetes CLI | De [KUBERNETES cli][kubernetes-cli] is vereist voor het beheren van de gedeelde referenties in het container register. Kubernetes is ook vereist voordat helm, de Kubernetes Package Manager. |
 | Helm CLI | Installeer de [helm cli][helm-install], die wordt gebruikt om een helm-grafiek (container Package Definition) te installeren. |
-|Spraak resource |Als u deze containers wilt gebruiken, hebt u het volgende nodig:<br><br>Een _spraak_ -Azure-resource om de gekoppelde facturerings sleutel en de URI van het facturerings eindpunt op te halen. Beide waarden zijn beschikbaar op het **spraak** overzicht van de Azure Portal en de pagina sleutels en zijn vereist om de container te starten.<br><br>**{API_KEY}**: resource sleutel<br><br>**{ENDPOINT_URI}**: voor beeld van een eind punt-URI is: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Spraak resource |Als u deze containers wilt gebruiken, hebt u het volgende nodig:<br><br>Een _spraak_ -Azure-resource om de gekoppelde facturerings sleutel en de URI van het facturerings eindpunt op te halen. Beide waarden zijn beschikbaar op het **spraak** overzicht van de Azure Portal en de pagina sleutels en zijn vereist om de container te starten.<br><br>**{API_KEY}** : resource sleutel<br><br>**{ENDPOINT_URI}** : voor beeld van een eind punt-URI is: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>De aanbevolen configuratie van de hostcomputer
 
@@ -46,68 +46,26 @@ Raadpleeg de computer Details van de [Speech-Service container][speech-container
 
 Er wordt naar verwachting een beschik bare Kubernetes-cluster op de hostcomputer. Raadpleeg deze zelf studie over het [implementeren van een Kubernetes-cluster](../../aks/tutorial-kubernetes-deploy-cluster.md) voor een conceptuele uitleg over het implementeren van een Kubernetes-cluster op een hostcomputer.
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker-referenties delen met het Kubernetes-cluster
-
-Als u het Kubernetes-cluster naar `docker pull` de geconfigureerde installatie kopieën in het `containerpreview.azurecr.io` container register wilt toestaan, moet u de docker-referenties naar het cluster overdragen. Voer de [`kubectl create`][kubectl-create] onderstaande opdracht uit om een *docker-REGI ster* te maken op basis van de referenties die zijn verschaft uit de toegangs vereisten voor container register.
-
-Voer de volgende opdracht uit vanaf de opdracht regel interface van Choice. Zorg ervoor dat u de `<username>` , `<password>` en vervangt door `<email-address>` de container register referenties.
-
-```console
-kubectl create secret docker-registry mcr \
-    --docker-server=containerpreview.azurecr.io \
-    --docker-username=<username> \
-    --docker-password=<password> \
-    --docker-email=<email-address>
-```
-
-> [!NOTE]
-> Als u al toegang hebt tot het `containerpreview.azurecr.io` container register, kunt u in plaats daarvan een Kubernetes-geheim maken met behulp van de generieke vlag. Bekijk de volgende opdracht die wordt uitgevoerd op basis van de JSON van de docker-configuratie.
-> ```console
->  kubectl create secret generic mcr \
->      --from-file=.dockerconfigjson=~/.docker/config.json \
->      --type=kubernetes.io/dockerconfigjson
-> ```
-
-De volgende uitvoer wordt naar de console afgedrukt wanneer het geheim is gemaakt.
-
-```console
-secret "mcr" created
-```
-
-Als u wilt controleren of het geheim is gemaakt, voert u [`kubectl get`][kubectl-get] uit met de `secrets` vlag.
-
-```console
-kubectl get secrets
-```
-
-Bij het uitvoeren van `kubectl get secrets` worden alle geconfigureerde geheimen afgedrukt.
-
-```console
-NAME    TYPE                              DATA    AGE
-mcr     kubernetes.io/dockerconfigjson    1       30s
-```
-
 ## <a name="configure-helm-chart-values-for-deployment"></a>Helm-grafiek waarden voor implementatie configureren
 
-Ga naar de [micro soft helm hub][ms-helm-hub] voor alle openbaar beschik bare helm-grafieken die door micro soft worden aangeboden. Vanuit de micro soft helm Hub vindt u de **on-premises grafiek van Cognitive Services speech**. De **Cognitive Services spraak on-premises** is de grafiek die we installeren, maar we moeten eerst een `config-values.yaml` bestand met expliciete configuraties maken. Laten we beginnen door de micro soft-opslag plaats toe te voegen aan ons helm-exemplaar.
+Ga naar de [micro soft helm hub][ms-helm-hub] voor alle openbaar beschik bare helm-grafieken die door micro soft worden aangeboden. Vanuit de micro soft helm Hub vindt u de **on-premises grafiek van Cognitive Services speech** . De **Cognitive Services spraak on-premises** is de grafiek die we installeren, maar we moeten eerst een `config-values.yaml` bestand met expliciete configuraties maken. Laten we beginnen door de micro soft-opslag plaats toe te voegen aan ons helm-exemplaar.
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-Nu gaan we onze helm-grafiek waarden configureren. Kopieer en plak de volgende YAML in een bestand met de naam `config-values.yaml` . Zie [helm-grafieken aanpassen](#customize-helm-charts)voor meer informatie over het aanpassen van het **helm-diagram van Cognitive Services speech**. Vervang de `# {ENDPOINT_URI}` opmerkingen en door `# {API_KEY}` uw eigen waarden.
+Nu gaan we onze helm-grafiek waarden configureren. Kopieer en plak de volgende YAML in een bestand met de naam `config-values.yaml` . Zie [helm-grafieken aanpassen](#customize-helm-charts)voor meer informatie over het aanpassen van het **helm-diagram van Cognitive Services speech** . Vervang de `# {ENDPOINT_URI}` opmerkingen en door `# {API_KEY}` uw eigen waarden.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
-
 # speech-to-text configurations
 speechToText:
   enabled: true
   numberOfConcurrentRequest: 3
   optimizeForAudioFile: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-speech-to-text
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/speechservices/speech-to-text
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -122,8 +80,8 @@ textToSpeech:
   numberOfConcurrentRequest: 3
   optimizeForTurboMode: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-text-to-speech
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/speechservices/speech-to-text
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -138,11 +96,11 @@ textToSpeech:
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Het Kubernetes-pakket (helm-grafiek)
 
-Het *helm-diagram* bevat de configuratie van de docker-installatie kopie (n) die moet worden opgehaald uit het `containerpreview.azurecr.io` container register.
+Het *helm-diagram* bevat de configuratie van de docker-installatie kopie (n) die moet worden opgehaald uit het `mcr.microsoft.com` container register.
 
 > Een [helm-grafiek][helm-charts] is een verzameling bestanden waarin een gerelateerde set Kubernetes-resources wordt beschreven. Eén grafiek kan worden gebruikt om een eenvoudig te implementeren, zoals een memcached Pod, of iets complex, zoals een volledige web-app-stack met HTTP-servers, data bases, caches, enzovoort.
 
-De meegeleverde *helm-grafieken* halen de docker-installatie kopieën van de spraak service, zowel tekst-naar-spraak als de spraak-naar-tekst-services uit het `containerpreview.azurecr.io` container register.
+De meegeleverde *helm-grafieken* halen de docker-installatie kopieën van de spraak service, zowel tekst-naar-spraak als de spraak-naar-tekst-services uit het `mcr.microsoft.com` container register.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>De helm-grafiek op het Kubernetes-cluster installeren
 
@@ -231,7 +189,7 @@ horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-
 
 ### <a name="verify-helm-deployment-with-helm-tests"></a>Helm-implementatie met helm-tests controleren
 
-In de geïnstalleerde helm-grafieken worden *helm-tests*gedefinieerd, die als gebruiks gemak fungeren voor verificatie. Met deze tests wordt de service gereedheid gevalideerd. Voor het controleren van de services voor **spraak naar tekst** en **tekst naar spraak** , wordt de [helm-test][helm-test] opdracht uitgevoerd.
+In de geïnstalleerde helm-grafieken worden *helm-tests* gedefinieerd, die als gebruiks gemak fungeren voor verificatie. Met deze tests wordt de service gereedheid gevalideerd. Voor het controleren van de services voor **spraak naar tekst** en **tekst naar spraak** , wordt de [helm-test][helm-test] opdracht uitgevoerd.
 
 ```console
 helm test onprem-speech
@@ -249,7 +207,7 @@ RUNNING: text-to-speech-readiness-test
 PASSED: text-to-speech-readiness-test
 ```
 
-Als alternatief voor het uitvoeren van de *helm-tests*kunt u de *externe IP-* adressen en de bijbehorende poorten verzamelen van de `kubectl get all` opdracht. Open met het IP-adres en de poort een webbrowser en ga naar `http://<external-ip>:<port>:/swagger/index.html` om de API-Swagger-pagina ('s) weer te geven.
+Als alternatief voor het uitvoeren van de *helm-tests* kunt u de *externe IP-* adressen en de bijbehorende poorten verzamelen van de `kubectl get all` opdracht. Open met het IP-adres en de poort een webbrowser en ga naar `http://<external-ip>:<port>:/swagger/index.html` om de API-Swagger-pagina ('s) weer te geven.
 
 ## <a name="customize-helm-charts"></a>Helm-grafieken aanpassen
 
