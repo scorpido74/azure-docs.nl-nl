@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: dfd96e7c62d700ccec2ecd4b223668d7aca4f18f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475801"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072803"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 De Change feed-processor maakt deel uit van de [Azure Cosmos DB SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3). Het vereenvoudigt het proces van het lezen van de wijzigings feed en het distribueren van de gebeurtenis verwerking over meerdere gebruikers effectief.
 
@@ -30,7 +31,7 @@ Er zijn vier belangrijke onderdelen bij de implementatie van de wijzigingenfeedv
 
 1. **De leasecontainer:** De leasecontainer fungeert als een statusopslag en coördineert de wijzigingenfeed voor meerdere werkrollen. De leasecontainer kan worden opgeslagen in hetzelfde account als de bewaakte container of in een afzonderlijk account.
 
-1. **De host:** Een host is een toepassingsexemplaar dat de wijzigingenfeedverwerker gebruikt om naar wijzigingen te luisteren. Er kunnen meerdere exemplaren met dezelfde leaseconfiguratie parallel worden uitgevoerd, maar elk exemplaar moet een andere **naam hebben**.
+1. **De host:** Een host is een toepassingsexemplaar dat de wijzigingenfeedverwerker gebruikt om naar wijzigingen te luisteren. Er kunnen meerdere exemplaren met dezelfde leaseconfiguratie parallel worden uitgevoerd, maar elk exemplaar moet een andere **naam hebben** .
 
 1. **De gemachtigde:** De gemachtigde is de code die definieert wat u, de ontwikkelaar, wilt doen met elke batch met wijzigingen die door de wijzigingenfeedverwerker wordt verwerkt. 
 
@@ -61,8 +62,8 @@ De normale levenscyclus van een host-exemplaar is:
 
 1. Lees de wijzigings feed.
 1. Als er geen wijzigingen zijn, schakelt u de slaap stand in voor een vooraf gedefinieerde hoeveelheid tijd (aanpasbaar met `WithPollInterval` in de opbouw functie) en gaat u naar #1.
-1. Als er wijzigingen zijn, stuurt u deze naar de **gemachtigde**.
-1. Wanneer de gemachtigde de verwerking van de wijzigingen **heeft**voltooid, werkt u de lease Store bij met het meest recente verwerkte punt in de tijd en gaat u naar #1.
+1. Als er wijzigingen zijn, stuurt u deze naar de **gemachtigde** .
+1. Wanneer de gemachtigde de verwerking van de wijzigingen **heeft** voltooid, werkt u de lease Store bij met het meest recente verwerkte punt in de tijd en gaat u naar #1.
 
 ## <a name="error-handling"></a>Foutafhandeling
 
@@ -104,7 +105,7 @@ Wanneer een wijzigings verwerkings processor de eerste keer wordt gestart, wordt
 
 ### <a name="reading-from-a-previous-date-and-time"></a>Lezen van een vorige datum en tijd
 
-Het is mogelijk om de Change feed-processor te initialiseren om wijzigingen te lezen die beginnen op een **specifieke datum en tijd**, door een exemplaar van een `DateTime` te geven aan de `WithStartTime` uitbrei ding van de opbouw functie:
+Het is mogelijk om de Change feed-processor te initialiseren om wijzigingen te lezen die beginnen op een **specifieke datum en tijd** , door een exemplaar van een `DateTime` te geven aan de `WithStartTime` uitbrei ding van de opbouw functie:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -112,7 +113,7 @@ De Change feed-processor wordt geïnitialiseerd voor die specifieke datum en tij
 
 ### <a name="reading-from-the-beginning"></a>Lezen vanaf het begin
 
-In andere scenario's, zoals gegevens migraties of het analyseren van de volledige geschiedenis van een container, moeten we de wijzigings feed lezen vanaf **het begin van de levens duur van die container**. Hiervoor kunnen we gebruiken `WithStartTime` op de uitbrei ding van de opbouw functie, maar door geven `DateTime.MinValue.ToUniversalTime()` , waardoor de UTC-weer gave van de minimum `DateTime` waarde zou worden gegenereerd, zoals:
+In andere scenario's, zoals gegevens migraties of het analyseren van de volledige geschiedenis van een container, moeten we de wijzigings feed lezen vanaf **het begin van de levens duur van die container** . Hiervoor kunnen we gebruiken `WithStartTime` op de uitbrei ding van de opbouw functie, maar door geven `DateTime.MinValue.ToUniversalTime()` , waardoor de UTC-weer gave van de minimum `DateTime` waarde zou worden gegenereerd, zoals:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 

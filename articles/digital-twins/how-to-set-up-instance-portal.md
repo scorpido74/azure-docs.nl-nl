@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperfq
-ms.openlocfilehash: 2dc19432d2185b95376717c570cd3165ebc85075
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: da0eb80352409bbbbe29a80fe18a52f54540ae62
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027280"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93071484"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -36,7 +36,7 @@ In de portal begint u met het selecteren van _een resource maken_ in het menu St
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
-Zoek in het zoekvak naar *Azure Digital apparaatdubbels* en kies de **Azure Digital apparaatdubbels-service (preview)** in de resultaten. Selecteer de knop _maken_ om een nieuw exemplaar van de service te maken.
+Zoek in het zoekvak naar *Azure Digital apparaatdubbels* en kies de **Azure Digital apparaatdubbels** -service in de resultaten. Selecteer de knop _maken_ om een nieuw exemplaar van de service te maken.
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 

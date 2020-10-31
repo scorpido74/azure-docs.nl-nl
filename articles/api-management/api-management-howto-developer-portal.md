@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 30a6a73768db7b073258487435ddbe6c0daccf16
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317826"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074794"
 ---
 # <a name="overview-of-the-developer-portal"></a>Overzicht van de ontwikkelaars Portal
 
@@ -33,7 +33,7 @@ In dit artikel worden de verschillen beschreven tussen zelf-hostende en beheerde
 ## <a name="migration-from-the-legacy-portal"></a>Migratie van de verouderde Portal
 
 > [!IMPORTANT]
-> De verouderde ontwikkelaars Portal is nu afgeschaft en er worden alleen beveiligings updates ontvangen. U kunt deze blijven gebruiken, net zoals gebruikelijk, tot de buiten gebruiks telling in oktober 2023, wanneer deze wordt verwijderd uit alle API Management Services.
+> De verouderde ontwikkelaars Portal is nu afgeschaft en er worden alleen beveiligings updates ontvangen. U kunt deze zoals gebruikelijk blijven gebruiken tot de buitengebruikstelling in oktober 2023, wanneer de portal wordt verwijderd uit alle API Management Services.
 
 Migratie naar de nieuwe ontwikkelaars portal wordt beschreven in het [artikel speciale documentatie](developer-portal-deprecated-migration.md).
 
@@ -62,7 +62,7 @@ Wanneer u de preview-versie van de ontwikkelaars portal voor het eerst hebt gest
 
 Als u uw portal sterk hebt aangepast op basis van de preview-versie van de inhoud, kunt u deze gewoon blijven gebruiken en nieuwe widgets hand matig op de pagina's van de portal plaatsen. Anders is het raadzaam om de inhoud van uw portal te vervangen door de nieuwe standaard inhoud.
 
-Als u de inhoud in een beheerde Portal opnieuw wilt instellen, selecteert u **inhoud opnieuw instellen** in de sectie **bewerkingen** menu. Met deze bewerking wordt de inhoud van de portal verwijderd en worden nieuwe standaard inhoud ingericht. Alle aanpassingen en wijzigingen van de ontwikkelaars portal gaan verloren. **U kunt deze actie niet ongedaan maken**.
+Als u de inhoud in een beheerde Portal opnieuw wilt instellen, selecteert u **inhoud opnieuw instellen** in de sectie **bewerkingen** menu. Met deze bewerking wordt de inhoud van de portal verwijderd en worden nieuwe standaard inhoud ingericht. Alle aanpassingen en wijzigingen van de ontwikkelaars portal gaan verloren. **U kunt deze actie niet ongedaan maken** .
 
 ![Portal-inhoud opnieuw instellen](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -126,7 +126,7 @@ De interactieve console maakt een API aan de client zijde via de browser. Los he
 
 U kunt de status van het CORS-beleid controleren in het overzicht van de **Portal** van uw API Management-service in de Azure Portal. Een waarschuwing geeft aan dat het beleid ontbreekt of onjuist is geconfigureerd.
 
-![API Management ontwikkelaars Portal](media/api-management-howto-developer-portal/cors-azure-portal.png)
+![Scherm afbeelding die laat zien waar u de status van het CORS-beleid kunt controleren.](media/api-management-howto-developer-portal/cors-azure-portal.png)
 
 Pas het CORS-beleid automatisch toe door op de knop **CORS inschakelen** te klikken.
 

@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 9c266e42804a12403e446bf024e93fe879497570
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec6a9db63504958640137fcd0fcfc904eb01afa5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803259"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074726"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>De latentie aan de server zijde controleren voor bewerkingen in een Azure Cosmos DB container of-account
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Monitor voor Azure Cosmos DB biedt een weer gave van metrische gegevens voor het bewaken van uw account en het maken van Dash boards. De Azure Cosmos DB metrische gegevens worden standaard verzameld. voor deze functie hoeft u niets expliciet in te scha kelen of te configureren. De latentie aan de server zijde wordt gebruikt om de latentie aan de server zijde van een bewerking weer te geven. Azure Cosmos DB biedt een SLA van minder dan 10 MS voor Point-Lees-en schrijf bewerkingen met directe connectiviteit. Voor lees-en schrijf bewerkingen naar een punt worden de Sla's berekend zoals beschreven in het [Sla-document](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
 
@@ -29,11 +30,11 @@ U kunt het diagnostische logboek opzoeken om de grootte van de geretourneerde ge
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
+1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens** .
 
    :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
-1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
+1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement** en de **resource groep** . Voor het **bron type** selecteert u **Azure Cosmos DB accounts** , kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen** .
    
    :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
@@ -43,9 +44,9 @@ U kunt het diagnostische logboek opzoeken om de grootte van de geretourneerde ge
 
 ## <a name="filters-for-server-side-latency"></a>Filters voor latentie aan server zijde
 
-U kunt de metrische gegevens ook filteren en de grafieken ophalen die worden weer gegeven door een specifieke naam van de **verzameling**, **ConnectionMode**, **DATABASENAME**, **OperationType**, **Region**en **PublicAPIType**. 
+U kunt de metrische gegevens ook filteren en de grafieken ophalen die worden weer gegeven door een specifieke naam van de **verzameling** , **ConnectionMode** , **DATABASENAME** , **OperationType** , **Region** en **PublicAPIType** . 
 
-Als u de metrische gegevens wilt filteren, selecteert u **filter toevoegen** en kiest u de gewenste eigenschap, zoals **PublicAPIType** , en selecteert u de waarde **SQL**. Voeg nog een filter toe voor **OperationType**. In de grafiek wordt vervolgens de latentie aan de server zijde voor verschillende bewerkingen in de geselecteerde periode weer gegeven. De bewerkingen die zijn uitgevoerd via een opgeslagen procedure, worden niet geregistreerd, zodat ze niet beschikbaar zijn onder de metrische waarde voor OperationType.
+Als u de metrische gegevens wilt filteren, selecteert u **filter toevoegen** en kiest u de gewenste eigenschap, zoals **PublicAPIType** , en selecteert u de waarde **SQL** . Voeg nog een filter toe voor **OperationType** . In de grafiek wordt vervolgens de latentie aan de server zijde voor verschillende bewerkingen in de geselecteerde periode weer gegeven. De bewerkingen die zijn uitgevoerd via een opgeslagen procedure, worden niet geregistreerd, zodat ze niet beschikbaar zijn onder de metrische waarde voor OperationType.
 
 De metrische latentie gegevens aan de **server zijde** voor elke bewerking worden weer gegeven, zoals wordt weer gegeven in de volgende afbeelding:
 

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746405"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074247"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Gegevens beveiliging in Azure Stream Analytics 
 
@@ -73,6 +73,27 @@ Gebruik de volgende stappen om uw opslag account te configureren voor privé geg
 
    ![Instellingen voor het opslag account voor privé gegevens](./media/data-protection/storage-account-create.png)
 
+## <a name="private-data-assets-that-are-stored"></a>Privé gegevens assets die zijn opgeslagen
+
+Persoonlijke gegevens die door Stream Analytics moeten worden bewaard, worden opgeslagen in uw opslag account. Voor beelden van persoonlijke gegevens assets zijn: 
+
+* Query's die u hebt gemaakt en de bijbehorende configuraties  
+
+* Door de gebruiker gedefinieerde functies 
+
+* Controle punten die nodig zijn voor de Stream Analytics runtime
+
+* Moment opnamen van referentie gegevens 
+
+De verbindings Details van uw resources, die worden gebruikt door uw Stream Analytics-taak, worden ook opgeslagen. Versleutel uw opslag account om al uw gegevens te beveiligen. 
+
+U kunt meer te weten komen over de [nalevings aanbiedingen van micro soft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)om u te helpen te voldoen aan uw nalevings verplichtingen in een gereguleerde branche of omgeving. 
+
+## <a name="enables-data-residency"></a>Hiermee worden gegevens locatie 
+U kunt deze functie gebruiken om eventuele vereisten voor gegevens locatie af te dwingen door een opslag account dienovereenkomstig op te geven.
+
+## <a name="known-issues"></a>Bekende problemen
+Er is een bekend probleem waarbij een taak die door de klant beheerde sleutel wordt gebruikt, wordt uitgevoerd bij het gebruik van beheerde identiteit om te verifiëren bij invoer of uitvoer. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

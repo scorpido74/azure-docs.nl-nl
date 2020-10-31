@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 3f787840422e61d6f43081d991ffc3ef28da6976
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a25cd2c0a9205dc184640e95f122c770b29cf24a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486528"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073244"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Verificatie op basis van certificaten voor een Azure AD-identiteit om toegang te krijgen tot sleutels van een Azure Cosmos DB-account
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Met verificatie op basis van certificaten kan de clienttoepassing worden geverifieerd door Azure AD (Azure Active Directory) te gebruiken met een clientcertificaat. U kunt verificatie op basis van certificaten uitvoeren op een computer waarvoor u een id nodig hebt, zoals een on-premises computer of virtuele machine in Azure. Uw toepassing kan vervolgens Azure Cosmos DB sleutels lezen zonder de sleutels rechtstreeks in de toepassing te hebben. In dit artikel wordt beschreven hoe u een voor beeld van een Azure AD-toepassing maakt, hoe u deze configureert voor verificatie op basis van certificaten, zich aanmeldt bij Azure met de nieuwe toepassings-id en vervolgens de sleutels uit uw Azure Cosmos-account haalt. In dit artikel worden Azure PowerShell gebruikt voor het instellen van de identiteiten en biedt een C#-voor beeld-app waarmee sleutels worden geverifieerd en geopend vanuit uw Azure Cosmos-account.  
 
@@ -28,9 +29,9 @@ Met verificatie op basis van certificaten kan de clienttoepassing worden geverif
 
 In deze stap maakt u een voor beeld van een webtoepassing in uw Azure AD-account. Deze toepassing wordt later gebruikt voor het lezen van de sleutels uit uw Azure Cosmos DB-account. Gebruik de volgende stappen om een toepassing te registreren: 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en selecteer **nieuwe registratie**. 
+1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en selecteer **nieuwe registratie** . 
 
    :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Nieuwe toepassings registratie in Active Directory":::
 
@@ -44,7 +45,7 @@ In deze stap maakt u een voor beeld van een webtoepassing in uw Azure AD-account
 
 1. Selecteer **registreren** nadat u het formulier hebt ingevuld.
 
-1. Nadat de app is geregistreerd, noteert u de **toepassings-id** en de **object-id**. u gebruikt deze gegevens in de volgende stappen. 
+1. Nadat de app is geregistreerd, noteert u de **toepassings-id** en de **object-id** . u gebruikt deze gegevens in de volgende stappen. 
 
    :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Nieuwe toepassings registratie in Active Directory":::
 
@@ -103,7 +104,7 @@ De bovenstaande opdracht resulteert in de uitvoer die lijkt op de onderstaande s
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Uw Azure Cosmos-account configureren voor het gebruik van de nieuwe identiteit
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Ga naar uw Azure Cosmos-account en open de Blade **toegangs beheer (IAM)** .
 
@@ -119,13 +120,13 @@ U kunt de op certificaten gebaseerde referentie koppelen aan de client toepassin
 
 In de registratie van de Azure-app voor de client toepassing:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en open de voor beeld-app die u in de vorige stap hebt gemaakt. 
 
-1. Selecteer **certificaten & geheimen** en upload vervolgens het **certificaat**. Blader door het certificaat bestand dat u in de vorige stap hebt gemaakt om dit te uploaden.
+1. Selecteer **certificaten & geheimen** en upload vervolgens het **certificaat** . Blader door het certificaat bestand dat u in de vorige stap hebt gemaakt om dit te uploaden.
 
-1. Selecteer **Toevoegen**. Nadat het certificaat is geüpload, worden de vinger afdruk, de start datum en de verval waarden weer gegeven.
+1. Selecteer **Toevoegen** . Nadat het certificaat is geüpload, worden de vinger afdruk, de start datum en de verval waarden weer gegeven.
 
 ## <a name="access-the-keys-from-powershell"></a>Toegang tot de sleutels in Power shell
 

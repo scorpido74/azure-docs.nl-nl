@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a013e07ada0ba88b20598c23f706eb5ee71d49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83747352"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073060"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Naleving in Azure Cosmos DB 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB is beschikbaar in alle Azure-regio's. Micro soft maakt vijf afzonderlijke Azure-Cloud omgevingen beschikbaar voor klanten:
 
@@ -47,12 +48,12 @@ De certificaatdekking van Azure Cosmos DB wordt voortdurend uitgebreid. Op dit m
 | ISO 27701:2019| | | |
 | SOC 1, 2, 3 | | | |
 
-Zie [overzicht van](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) de pagina naleving voor Microsoft Azure voor meer informatie over elk van deze nalevings aanbiedingen en hoe deze voor delen.
+Zie voor meer informatie over elk van deze nalevings aanbiedingen en hoe u deze kunt profiteren [Microsoft Azure nalevings aanbod](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)bijlage A & B.
 
 De volgende tabel geeft een lijst van de certificeringen die worden ondersteund door Azure Cosmos DB in Azure Government:
 
 | **Algemeen toepasbaar** | **Amerikaanse overheid** | **Industrie specifiek** | 
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | CSA ster certificering | CJIS| HIPAA BAA | 
 | CSA STAR-Attestation| DoD SRG Level 2| HITRUST  | 
 | ISO 20000-1:2011 | DoD SRG level 4 | PCI DSS | 
@@ -68,8 +69,14 @@ De volgende tabel geeft een lijst van de certificeringen die worden ondersteund 
 
 Raadpleeg de volgende artikelen voor meer informatie over de nalevings certificeringen van Azure:
 
-* Zie voor meer informatie over de meest recente nalevings certificeringen voor Azure Cosmos DB het [overzicht van de naleving van Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).  
+* Als u de meest recente nalevings certificeringen voor Azure Cosmos DB wilt weten, raadpleegt u [Microsoft Azure compliance-aanbiedingen](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/), bijlage A & B.  
 
-* Zie [Azure Cosmos data base Security](database-security.md) -artikel voor een overzicht van Azure Cosmos DB beveiliging en de meest recente verbeteringen.
+* Zie [Azure Cosmos data base Security](database-security.md)(Engelstalig) voor een overzicht van Azure Cosmos DB beveiliging en de nieuwste verbeteringen.
+
+* Zie [Azure Cosmos DB Security Baseline](security-baseline.md)(Engelstalig) voor aanbevelingen voor het verbeteren van de beveiligings postuur van uw Azure Cosmos DB-implementatie. 
 
 * Zie de [Vertrouwenscentrum van Azure](https://azure.microsoft.com/support/trust-center/)voor meer informatie over micro soft-certificeringen.
+
+* Zie [Azure-Services op FedRAMP en DoD CC srg-controle bereik](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)voor FedRAMP-compatibiliteits informatie.
+
+* Zie voor de compatibiliteits informatie voor DoD [-naleving.](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide)

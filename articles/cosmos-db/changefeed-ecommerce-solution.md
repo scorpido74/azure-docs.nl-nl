@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 84a39ade902bd22d67e9b3a7d40b392bfd83dfd3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1206d67b6a9d3823220b1ce1b7bd5b4b45e672fe
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475912"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072702"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB Change feed gebruiken om real-time gegevens analyse te visualiseren
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 De Azure Cosmos DB wijzigings feed is een mechanisme voor het verkrijgen van een doorlopende en incrementele feed van records uit een Azure Cosmos-container wanneer die records worden gemaakt of gewijzigd. De ondersteuning voor feeds kan worden gewijzigd door naar de container te Luis teren. Als output verschijnt er vervolgens een gesorteerde lijst met gewijzigde documenten op volgorde van wijziging. Zie [werken met het artikel Change feed](change-feed.md) voor meer informatie over wijzigings invoer. 
 
@@ -72,7 +73,7 @@ Het volgende diagram geeft de gegevens stroom en onderdelen die bij de oplossing
 
 Maak de Azure-resources-Azure Cosmos DB,-opslag account, Event hub Stream Analytics vereist door de oplossing. U kunt deze resources implementeren via een Azure Resource Manager sjabloon. Gebruik de volgende stappen om deze bronnen te implementeren: 
 
-1. Stel het Windows Power shell-uitvoerings beleid in op **onbeperkt**. Als u dit wilt doen, opent u **Windows Power shell als beheerder** en voert u de volgende opdrachten uit:
+1. Stel het Windows Power shell-uitvoerings beleid in op **onbeperkt** . Als u dit wilt doen, opent u **Windows Power shell als beheerder** en voert u de volgende opdrachten uit:
 
    ```powershell
    Get-ExecutionPolicy
@@ -83,12 +84,12 @@ Maak de Azure-resources-Azure Cosmos DB,-opslag account, Event hub Stream Analyt
 
 3. Geef waarden op voor de cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, para meters zoals aangegeven in **parameters.jsin** het bestand. U moet de namen die u aan uw resources verstrekt, later gebruiken.  
 
-4. Ga vanuit **Windows Power shell**naar de map **Azure Resource Manager** en voer de volgende opdracht uit:
+4. Ga vanuit **Windows Power shell** naar de map **Azure Resource Manager** en voer de volgende opdracht uit:
 
    ```powershell
    .\deploy.ps1
    ```
-5. Voer desgevraagd uw Azure **-abonnements-id**in, **changefeedlab** voor de naam van de resource groep en **RUN1** voor de implementatie naam. Zodra de resources zijn geïmplementeerd, kan het tot tien minuten duren voordat deze is voltooid.
+5. Voer desgevraagd uw Azure **-abonnements-id** in, **changefeedlab** voor de naam van de resource groep en **RUN1** voor de implementatie naam. Zodra de resources zijn geïmplementeerd, kan het tot tien minuten duren voordat deze is voltooid.
 
 ## <a name="create-a-database-and-the-collection"></a>Een Data Base en de verzameling maken
 
@@ -98,21 +99,21 @@ U gaat nu een verzameling maken voor het opslaan van e-commerce-site gebeurtenis
 
 2. Selecteer in het deel venster **Data Explorer** de optie **nieuwe verzameling** en vul het formulier in met de volgende details:  
 
-   * Selecteer **nieuwe maken**in het veld **Data Base-id** en voer vervolgens **changefeedlabdatabase**in. Zorg ervoor dat het vakje **doorvoer database inrichten** niet is ingeschakeld.  
-   * Voer voor het veld **verzamelings** -id **changefeedlabcollection**in.  
-   * Voer **/item**in bij het veld **partitie sleutel** . Dit is hoofdletter gevoelig. Zorg er dus voor dat u deze correct invoert.  
-   * Voer **10000**in voor het veld **door Voer** .  
-   * Selecteer de knop **OK**.  
+   * Selecteer **nieuwe maken** in het veld **Data Base-id** en voer vervolgens **changefeedlabdatabase** in. Zorg ervoor dat het vakje **doorvoer database inrichten** niet is ingeschakeld.  
+   * Voer voor het veld **verzamelings** -id **changefeedlabcollection** in.  
+   * Voer **/item** in bij het veld **partitie sleutel** . Dit is hoofdletter gevoelig. Zorg er dus voor dat u deze correct invoert.  
+   * Voer **10000** in voor het veld **door Voer** .  
+   * Selecteer de knop **OK** .  
 
 3. Maak vervolgens een andere verzameling met de naam **leases** voor wijziging van de feed. De leases-verzameling coördineert de verwerking van de wijzigings feed voor meerdere werk nemers. Er wordt een afzonderlijke verzameling gebruikt voor het opslaan van leases met één lease per partitie.  
 
 4. Ga terug naar het **Data Explorer** venster en selecteer **nieuwe verzameling** en vul het formulier in met de volgende details:
 
-   * Selecteer in het veld **Data Base-id** de optie **bestaande gebruiken**en voer vervolgens **changefeedlabdatabase**in.  
-   * Voer **leases**in bij het veld **verzamelings-id** .  
-   * Selecteer **vast**bij **opslag capaciteit**.  
+   * Selecteer in het veld **Data Base-id** de optie **bestaande gebruiken** en voer vervolgens **changefeedlabdatabase** in.  
+   * Voer **leases** in bij het veld **verzamelings-id** .  
+   * Selecteer **vast** bij **opslag capaciteit** .  
    * Zorg ervoor dat het veld **door Voer** is ingesteld op de standaard waarde.  
-   * Selecteer de knop **OK**.
+   * Selecteer de knop **OK** .
 
 ## <a name="get-the-connection-string-and-keys"></a>De connection string en sleutels ophalen
 
@@ -120,7 +121,7 @@ U gaat nu een verzameling maken voor het opslaan van e-commerce-site gebeurtenis
 
 1. Ga naar [Azure Portal](https://portal.azure.com/) en zoek het **Azure Cosmos DB account** dat is gemaakt door de sjabloon implementatie.  
 
-2. Navigeer naar het deel venster **sleutels** , kopieer de primaire verbindings reeks en kopieer deze naar een Klad blok of een ander document waartoe u toegang hebt tot het hele Lab. U moet de label **Cosmos DB de verbindings reeks**. U moet de teken reeks later naar uw code kopiëren. u kunt dus een notitie maken en onthouden waar u deze opslaat.
+2. Navigeer naar het deel venster **sleutels** , kopieer de primaire verbindings reeks en kopieer deze naar een Klad blok of een ander document waartoe u toegang hebt tot het hele Lab. U moet de label **Cosmos DB de verbindings reeks** . U moet de teken reeks later naar uw code kopiëren. u kunt dus een notitie maken en onthouden waar u deze opslaat.
 
 ### <a name="get-the-storage-account-key-and-connection-string"></a>De sleutel voor het opslag account en het connection string ophalen
 
@@ -130,7 +131,7 @@ Met Azure Storage accounts kunnen gebruikers gegevens opslaan. In dit Lab gebrui
 
 2. Selecteer **toegangs sleutels** in het menu aan de linkerkant.  
 
-3. Kopieer de waarden onder **sleutel 1** naar een Klad blok of een ander document waarvan u toegang hebt tot het hele Lab. Voorzie de **sleutel** als de **opslag sleutel** en de **verbindings reeks** als **verbindings reeks voor opslag**. U moet deze teken reeksen later naar uw code kopiëren. u kunt dus een notitie maken en onthouden waar u ze opslaat.  
+3. Kopieer de waarden onder **sleutel 1** naar een Klad blok of een ander document waarvan u toegang hebt tot het hele Lab. Voorzie de **sleutel** als de **opslag sleutel** en de **verbindings reeks** als **verbindings reeks voor opslag** . U moet deze teken reeksen later naar uw code kopiëren. u kunt dus een notitie maken en onthouden waar u ze opslaat.  
 
 ### <a name="get-the-event-hub-namespace-connection-string"></a>De naam ruimte van de Event Hub ophalen connection string
 
@@ -140,7 +141,7 @@ Een Azure Event hub ontvangt de gegevens van de gebeurtenis, opslaat, verwerkt e
 
 2. Selecteer **beleid voor gedeelde toegang** in het menu aan de linkerkant.  
 
-3. selecteer **RootManageSharedAccessKey**. Kopieer de **verbindings reeks-primaire sleutel** naar een Klad blok of een ander document waarvan u toegang hebt tot het hele Lab. U moet de naam ruimte van de IT **Event Hub** Connection String labelen. U moet de teken reeks later naar uw code kopiëren. u kunt dus een notitie maken en onthouden waar u deze opslaat.
+3. selecteer **RootManageSharedAccessKey** . Kopieer de **verbindings reeks-primaire sleutel** naar een Klad blok of een ander document waarvan u toegang hebt tot het hele Lab. U moet de naam ruimte van de IT **Event Hub** Connection String labelen. U moet de teken reeks later naar uw code kopiëren. u kunt dus een notitie maken en onthouden waar u deze opslaat.
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>Azure function instellen om de wijzigings feed te lezen
 
@@ -148,15 +149,15 @@ Wanneer een nieuw document wordt gemaakt of een huidig document is gewijzigd in 
 
 1. Ga terug naar de opslag plaats die u hebt gekloond op het apparaat.  
 
-2. Klik met de rechter muisknop op het bestand met de naam **ChangeFeedLabSolution. SLN** en selecteer **openen met Visual Studio**.  
+2. Klik met de rechter muisknop op het bestand met de naam **ChangeFeedLabSolution. SLN** en selecteer **openen met Visual Studio** .  
 
 3. Ga in Visual Studio naar **local.settings.js** . Gebruik vervolgens de waarden die u eerder hebt vastgelegd om de lege velden in te vullen.  
 
-4. Navigeer naar **ChangeFeedProcessor.cs**. Voer de volgende acties uit in de para meters voor de functie **Run** :  
+4. Navigeer naar **ChangeFeedProcessor.cs** . Voer de volgende acties uit in de para meters voor de functie **Run** :  
 
    * Vervang de tekst van **uw verzamelings naam hier** door de naam van uw verzameling. Als u eerdere instructies hebt gevolgd, is de naam van uw verzameling changefeedlabcollection.  
-   * Vervang de naam van **uw leases-verzameling** door de naam van uw leases-verzameling. Als u eerdere instructies hebt gevolgd, is de naam van uw leases-verzameling **leases**.  
-   * Zorg ervoor dat boven aan Visual Studio het vak Startup-project aan de linkerkant van de groene pijl de tekst **ChangeFeedFunction**.  
+   * Vervang de naam van **uw leases-verzameling** door de naam van uw leases-verzameling. Als u eerdere instructies hebt gevolgd, is de naam van uw leases-verzameling **leases** .  
+   * Zorg ervoor dat boven aan Visual Studio het vak Startup-project aan de linkerkant van de groene pijl de tekst **ChangeFeedFunction** .  
    * Selecteer **Start**  boven aan de pagina om het programma uit te voeren  
    * U kunt controleren of de functie wordt uitgevoerd wanneer de console-App "job host is gestart" aangeeft.
 
@@ -174,11 +175,11 @@ Als u wilt zien hoe wijzigingen in de feed nieuwe acties op een e-commerce-site 
  
 4. Sla de wijzigingen op in alle bestanden die zijn bewerkt.  
 
-5. Zorg ervoor dat boven aan Visual Studio het vak Startup- **project** aan de linkerkant van de groene pijl de tekst **DataGenerator**. Selecteer vervolgens **beginnen** bovenaan de pagina om het programma uit te voeren.  
+5. Zorg ervoor dat boven aan Visual Studio het vak Startup- **project** aan de linkerkant van de groene pijl de tekst **DataGenerator** . Selecteer vervolgens **beginnen** bovenaan de pagina om het programma uit te voeren.  
  
 6. Wacht totdat het programma is uitgevoerd. Het sterretje betekent dat de gegevens beschikbaar zijn. Laat het programma actief. het is belang rijk dat er veel gegevens worden verzameld.  
 
-7. Als u naar [Azure Portal](https://portal.azure.com/) navigeert, vervolgens naar het Cosmos DB-account in de resource groep en vervolgens naar **Data Explorer**, ziet u de wille keurige gegevens die in uw **changefeedlabcollection** zijn geïmporteerd.
+7. Als u naar [Azure Portal](https://portal.azure.com/) navigeert, vervolgens naar het Cosmos DB-account in de resource groep en vervolgens naar **Data Explorer** , ziet u de wille keurige gegevens die in uw **changefeedlabcollection** zijn geïmporteerd.
  
    :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Project-visueel element":::
 
@@ -192,35 +193,35 @@ Azure Stream Analytics is een volledig beheerde Cloud service voor realtime-verw
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Project-visueel element":::
 
-3. Selecteer **+ stroom invoer toevoegen**. Selecteer vervolgens **Event hub** in de vervolg keuzelijst.  
+3. Selecteer **+ stroom invoer toevoegen** . Selecteer vervolgens **Event hub** in de vervolg keuzelijst.  
 
 4. Vul het nieuwe invoer formulier in met de volgende details:
 
-   * Voer in het veld **invoer** alias de **invoer**in.  
-   * Selecteer de optie **Event hub selecteren bij uw abonnementen**.  
+   * Voer in het veld **invoer** alias de **invoer** in.  
+   * Selecteer de optie **Event hub selecteren bij uw abonnementen** .  
    * Stel het veld **abonnement** in op uw abonnement.  
    * Voer in het veld **naam ruimte van de Event hub** de naam in van de Event hub-naam ruimte die u hebt gemaakt tijdens de prelab.  
    * Selecteer in het veld naam van de **Event hub** de optie voor het **gebruik van bestaande** en kies **gebeurtenis-hub1** in de vervolg keuzelijst.  
    * Zorg ervoor dat het veld naam van **beleids regel voor Event hub** is ingesteld op de standaard waarde.  
-   * De **serialisatie-indeling** van de gebeurtenis verlaten als **JSON**.  
-   * Zorg ervoor dat het **veld encoding** is ingesteld op **UTF-8**.  
-   * Vul het veld **compressie type voor gebeurtenis** in op **geen**.  
-   * Selecteer de knop **Opslaan**.
+   * De **serialisatie-indeling** van de gebeurtenis verlaten als **JSON** .  
+   * Zorg ervoor dat het **veld encoding** is ingesteld op **UTF-8** .  
+   * Vul het veld **compressie type voor gebeurtenis** in op **geen** .  
+   * Selecteer de knop **Opslaan** .
 
-5. Ga terug naar de pagina stream Analytics-taak en selecteer **uitvoer**.  
+5. Ga terug naar de pagina stream Analytics-taak en selecteer **uitvoer** .  
 
-6. Selecteer **+ Toevoegen**. Selecteer vervolgens **Power bi** in de vervolg keuzelijst.  
+6. Selecteer **+ Toevoegen** . Selecteer vervolgens **Power bi** in de vervolg keuzelijst.  
 
 7. Voer de volgende acties uit om een nieuwe Power BI uitvoer te maken om de gemiddelde prijs te visualiseren:
 
-   * Voer in het veld **uitvoer alias** **averagePriceOutput**in.  
-   * Zorg ervoor dat het veld **groeps werkruimte** is ingesteld om **verbinding te autoriseren om werk ruimten te laden**.  
-   * Typ **averagePrice**in het veld **naam van gegevensset** .  
-   * Voer in het veld **tabel naam** **averagePrice**in.  
+   * Voer in het veld **uitvoer alias** **averagePriceOutput** in.  
+   * Zorg ervoor dat het veld **groeps werkruimte** is ingesteld om **verbinding te autoriseren om werk ruimten te laden** .  
+   * Typ **averagePrice** in het veld **naam van gegevensset** .  
+   * Voer in het veld **tabel naam** **averagePrice** in.  
    * Selecteer de knop **autoriseren** en volg de instructies om de verbinding met Power bi te autoriseren.  
-   * Selecteer de knop **Opslaan**.  
+   * Selecteer de knop **Opslaan** .  
 
-8. Ga vervolgens terug naar **streamjob1** en selecteer **query bewerken**.
+8. Ga vervolgens terug naar **streamjob1** en selecteer **query bewerken** .
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Project-visueel element":::
  
@@ -247,11 +248,11 @@ Power BI is een pakket business analytics-hulpprogramma's waarmee u gegevens kun
 
 3. Selecteer **+ tegel toevoegen** in de rechter bovenhoek.  
 
-4. Selecteer **aangepaste streaminggegevens**en selecteer vervolgens de knop **volgende** .  
+4. Selecteer **aangepaste streaminggegevens** en selecteer vervolgens de knop **volgende** .  
  
-5. Selecteer **averagePrice** in **de gegevens sets**en selecteer vervolgens **volgende**.  
+5. Selecteer **averagePrice** in **de gegevens sets** en selecteer vervolgens **volgende** .  
 
-6. Kies in het veld **type visualisatie** de optie **gegroepeerd staaf diagram** in de vervolg keuzelijst. Voeg onder **as**actie toe. **Legenda** overs laan zonder iets toe te voegen. Voeg vervolgens in de volgende sectie de naam **Value**toe: **Gem**. Selecteer **volgende**, geef een titel op voor de grafiek en selecteer **Toep assen**. Er wordt nu een nieuwe grafiek op het dash board weer geven.  
+6. Kies in het veld **type visualisatie** de optie **gegroepeerd staaf diagram** in de vervolg keuzelijst. Voeg onder **as** actie toe. **Legenda** overs laan zonder iets toe te voegen. Voeg vervolgens in de volgende sectie de naam **Value** toe: **Gem** . Selecteer **volgende** , geef een titel op voor de grafiek en selecteer **Toep assen** . Er wordt nu een nieuwe grafiek op het dash board weer geven.  
 
 7. Als u nu meer metrische gegevens wilt visualiseren, kunt u teruggaan naar **streamjob1** en drie meer uitvoer maken met de volgende velden.
 
@@ -321,9 +322,9 @@ Power BI is een pakket business analytics-hulpprogramma's waarmee u gegevens kun
 
 U ziet nu hoe u het nieuwe hulp programma voor gegevens analyse kunt gebruiken om verbinding te maken met een echte e-commerce-site. Als u de e-commerce-site wilt maken, gebruikt u een Azure Cosmos-data base om de lijst met product categorieën (vrouwen, heren, unisex), de product catalogus en een lijst met veelgebruikte items op te slaan.
 
-1. Ga terug naar de [Azure Portal](https://portal.azure.com/), vervolgens naar uw **Cosmos DB account**en vervolgens naar **Data Explorer**.  
+1. Ga terug naar de [Azure Portal](https://portal.azure.com/), vervolgens naar uw **Cosmos DB account** en vervolgens naar **Data Explorer** .  
 
-   Voeg twee verzamelingen onder **changefeedlabdatabase**-  -  **producten** en- **Categorieën** met vaste opslag capaciteit toe.
+   Voeg twee verzamelingen onder **changefeedlabdatabase** -  -  **producten** en- **Categorieën** met vaste opslag capaciteit toe.
 
    Voeg een andere verzameling toe onder **changefeedlabdatabase** met de naam **topItems** en **/item** als de partitie sleutel.
 
@@ -331,7 +332,7 @@ U ziet nu hoe u het nieuwe hulp programma voor gegevens analyse kunt gebruiken o
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Project-visueel element":::
 
-3. Als u de **topItems** verzameling met de meest gekochte items wilt vullen, gaat u terug naar **streamjob1** en voegt u een nieuwe **uitvoer**toe. Selecteer **Cosmos DB**.
+3. Als u de **topItems** verzameling met de meest gekochte items wilt vullen, gaat u terug naar **streamjob1** en voegt u een nieuwe **uitvoer** toe. Selecteer **Cosmos DB** .
 
 4. Vul de vereiste velden in zoals hieronder wordt beschreven.
 
@@ -339,14 +340,14 @@ U ziet nu hoe u het nieuwe hulp programma voor gegevens analyse kunt gebruiken o
  
 5. Als u de optionele TOP 5-query in het vorige deel van het Lab hebt toegevoegd, gaat u verder met deel 5a. Als dat niet het geval is, gaat u verder met stap 5.
 
-   5a. Selecteer in **streamjob1**de optie **query bewerken** en plak de volgende query in de query-editor van Azure stream Analytics onder de top 5 query, maar boven de overige query's.
+   5a. Selecteer in **streamjob1** de optie **query bewerken** en plak de volgende query in de query-editor van Azure stream Analytics onder de top 5 query, maar boven de overige query's.
 
    ```sql
    SELECT arrayvalue.value.item AS Item, arrayvalue.value.price, arrayvalue.value.countEvents
    INTO topItems
    FROM arrayselect
    ```
-   5b. Selecteer in **streamjob1**de optie **query bewerken** en plak de volgende query in de query-editor van Azure stream Analytics boven alle andere query's.
+   5b. Selecteer in **streamjob1** de optie **query bewerken** en plak de volgende query in de query-editor van Azure stream Analytics boven alle andere query's.
 
    ```sql
    /*TOP 5*/
@@ -375,11 +376,11 @@ U ziet nu hoe u het nieuwe hulp programma voor gegevens analyse kunt gebruiken o
    FROM arrayselect
    ```
 
-6. Open **EcommerceWebApp. SLN** en navigeer naar het **Web.config** bestand in de **Solution Explorer**.  
+6. Open **EcommerceWebApp. SLN** en navigeer naar het **Web.config** bestand in de **Solution Explorer** .  
 
-7. Voeg binnen het `<appSettings>` blok de **URI** en **primaire sleutel** toe die u eerder hebt opgeslagen, waarbij **uw URI hier** en **uw primaire sleutel**worden vermeld. Voeg vervolgens de naam van uw **Data Base** en **verzamelings naam** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor hebt gekozen om een andere naam te noemen.)
+7. Voeg binnen het `<appSettings>` blok de **URI** en **primaire sleutel** toe die u eerder hebt opgeslagen, waarbij **uw URI hier** en **uw primaire sleutel** worden vermeld. Voeg vervolgens de naam van uw **Data Base** en **verzamelings naam** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor hebt gekozen om een andere naam te noemen.)
 
-   Vul de naam van uw **producten verzameling**, de **verzamelings naam**van de categorie en de **verzamelings naam van de bovenste items** in zoals aangegeven. (Deze namen moeten **producten, categorieën en topItems** zijn, tenzij u een andere naam hebt gekozen.)  
+   Vul de naam van uw **producten verzameling** , de **verzamelings naam** van de categorie en de **verzamelings naam van de bovenste items** in zoals aangegeven. (Deze namen moeten **producten, categorieën en topItems** zijn, tenzij u een andere naam hebt gekozen.)  
 
 8. Navigeer naar en open de **map Checkout** in **EcommerceWebApp. SLN.** Open vervolgens het **Web.config** -bestand in die map.  
 

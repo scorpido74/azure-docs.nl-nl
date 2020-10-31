@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962346"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074179"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over configuratie en beheer voor Web Apps in azure
 
@@ -60,23 +60,25 @@ Zie [app service beperkingen](../azure-resource-manager/management/move-limitati
 De tijd zone van de server instellen voor uw web-app:
 
 1. Ga in het Azure Portal, in uw App Service-abonnement, naar het menu **Toepassings instellingen** .
-2. Voeg onder **app-instellingen**deze instelling toe:
+2. Voeg onder **app-instellingen** deze instelling toe:
     * Sleutel = WEBSITE_TIME_ZONE
     * Waarde = *de tijd zone die u wilt*
-3. Selecteer **Opslaan**.
+3. Selecteer **Opslaan** .
 
-Zie de kolom tijd **zone** in het artikel [standaard tijd zones](/windows-hardware/manufacture/desktop/default-time-zones) voor geaccepteerde waarden voor de app-services die worden uitgevoerd in Windows. Voor de app-services die worden uitgevoerd op Linux, stelt u de naam van de [TZ-data base](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in als de waarde van de tijd zone. Hier volgt een voor beeld van de TZ-database naam: America/Adak.
+Zie de uitvoer van de Windows-opdracht voor de app-services die worden uitgevoerd in Windows `tzutil /L` . Gebruik de waarde van de tweede regel van elke vermelding. Bijvoorbeeld: "Tonga (standaard tijd)". Sommige van deze waarden worden ook weer gegeven in de kolom **tijd zone** in de [standaard tijd zones](/windows-hardware/manufacture/desktop/default-time-zones).
+
+Voor de app-services die worden uitgevoerd op Linux, stelt u een waarde in van de [IANA TZ-data base](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Bijvoorbeeld: "America/Adak".
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Waarom mislukken mijn doorlopende webtaken?
 
-Web-apps worden standaard uit het geheugen verwijderd als ze gedurende een bepaalde periode niet actief zijn. Hiermee kan het systeem bronnen besparen. In Basic-en Standard-abonnementen kunt u de instelling **altijd op** inschakelen om de web-app voortdurend te laden. Als uw web-app doorlopende webtaken uitvoert, moet u **altijd**inschakelen of de webjobs worden mogelijk niet betrouwbaar uitgevoerd. Zie [een voortdurend actieve Webtaak maken](webjobs-create.md#CreateContinuous)voor meer informatie.
+Web-apps worden standaard uit het geheugen verwijderd als ze gedurende een bepaalde periode niet actief zijn. Hiermee kan het systeem bronnen besparen. In Basic-en Standard-abonnementen kunt u de instelling **altijd op** inschakelen om de web-app voortdurend te laden. Als uw web-app doorlopende webtaken uitvoert, moet u **altijd** inschakelen of de webjobs worden mogelijk niet betrouwbaar uitgevoerd. Zie [een voortdurend actieve Webtaak maken](webjobs-create.md#CreateContinuous)voor meer informatie.
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Hoe kan ik het uitgaande IP-adres voor mijn web-app ophalen?
 
 U kunt als volgt de lijst met uitgaande IP-adressen voor uw web-app ophalen:
 
 1. Ga in de Azure Portal op de Blade van de web-app naar het menu **Eigenschappen** .
-2. Zoek naar **uitgaande IP-adressen**.
+2. Zoek naar **uitgaande IP-adressen** .
 
 De lijst met uitgaande IP-adressen wordt weer gegeven.
 
@@ -129,7 +131,7 @@ Webtaaks logboeken bekijken:
 2. Selecteer de Webtaak.
 3. Selecteer de knop **uitvoer in-/uitschakelen** .
 4. Selecteer de **Download** koppeling om het uitvoer bestand te downloaden.
-5. Selecteer **afzonderlijke aanroepen**voor afzonderlijke uitvoeringen.
+5. Selecteer **afzonderlijke aanroepen** voor afzonderlijke uitvoeringen.
 6. Selecteer de knop **uitvoer in-/uitschakelen** .
 7. Selecteer de download koppeling.
 
@@ -183,8 +185,8 @@ U hebt twee opties voor het vastleggen van een F12-tracering:
 ### <a name="f12-console-output"></a>F12-console-uitvoer
 
 1. Selecteer het tabblad **console** .
-2. Voor elk tabblad met meer dan nul items, selecteert u het tabblad (**fout**, **waarschuwing**of **informatie**). Als het tabblad niet is geselecteerd, is het pictogram van het tabblad grijs of zwart wanneer u de cursor uit het verplaatst.
-3. Klik met de rechter muisknop in het bericht gebied van het deel venster en selecteer vervolgens **Alles kopiëren**.
+2. Voor elk tabblad met meer dan nul items, selecteert u het tabblad ( **fout** , **waarschuwing** of **informatie** ). Als het tabblad niet is geselecteerd, is het pictogram van het tabblad grijs of zwart wanneer u de cursor uit het verplaatst.
+3. Klik met de rechter muisknop in het bericht gebied van het deel venster en selecteer vervolgens **Alles kopiëren** .
 4. Plak de gekopieerde tekst in een bestand en sla het bestand op.
 
 U kunt de [har-Viewer](http://www.softwareishard.com/har/viewer/)gebruiken om een har-bestand weer te geven.
@@ -282,7 +284,7 @@ Zie voor gedetailleerde documentatie voor verificatie en autorisatie in App Serv
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Hoe kan ik het standaard domein *. azurewebsites.net omleiden naar het aangepaste domein van mijn Azure-web-app?
 
-Wanneer u een nieuwe website maakt met behulp van Web Apps in azure, wordt een standaard *site naam*. azurewebsites.net domein aan uw site toegewezen. Als u een aangepaste hostnaam aan uw site toevoegt en niet wilt dat gebruikers toegang hebben tot uw standaard-azurewebsites.net-domein, kunt u de standaard-URL omleiden. Zie [het standaard domein omleiden naar uw aangepaste domein in azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/)voor meer informatie over het omleiden van alle verkeer van het standaard domein van uw website naar uw aangepaste domein.
+Wanneer u een nieuwe website maakt met behulp van Web Apps in azure, wordt een standaard *site naam* . azurewebsites.net domein aan uw site toegewezen. Als u een aangepaste hostnaam aan uw site toevoegt en niet wilt dat gebruikers toegang hebben tot uw standaard-azurewebsites.net-domein, kunt u de standaard-URL omleiden. Zie [het standaard domein omleiden naar uw aangepaste domein in azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/)voor meer informatie over het omleiden van alle verkeer van het standaard domein van uw website naar uw aangepaste domein.
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Hoe kan ik bepalen welke versie van .NET version in App Service is geïnstalleerd?
 

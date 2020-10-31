@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4616f6c567b0bba13fe04aed56fd5e4ddc293f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac08b5af0afbf43c7b13808fac06c40066e48b7a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008383"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074230"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Invoer in elke indeling lezen met aangepaste .net-deserialisatie
 
@@ -201,7 +201,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>Serialisatie-indeling voor REST-Api's
 
-Elke Stream Analytics invoer heeft een **serialisatie-indeling**. Zie de documentatie over [invoer rest API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) voor meer informatie over invoer opties.
+Elke Stream Analytics invoer heeft een **serialisatie-indeling** . Zie de documentatie over [invoer rest API](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) voor meer informatie over invoer opties.
 
 De volgende Java script-code is een voor beeld van de serialisatie-indeling voor .NET-deserialisatie bij gebruik van de REST API:
 

@@ -4,12 +4,12 @@ description: Stel webtests in Application Insights in. Ontvang een waarschuwing 
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56644a4eb2f91dcce3bc2ee557542da75408ca83
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986034"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075140"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Beschik baarheid van alle websites bewaken
 
@@ -37,7 +37,7 @@ Selecteer in de Azure Portal **een resource maken**  >  **Ontwikkelhulpprogramma
 
 De naam "URL-ping testen" is een bit van een misnomer. Deze test maakt geen gebruik van ICMP (Internet Control Message Protocol) om de beschik baarheid van uw site te controleren. In plaats daarvan wordt meer geavanceerde HTTP-aanvraag functionaliteit gebruikt om te controleren of een eind punt reageert. Het meet ook de prestaties die zijn gekoppeld aan het antwoord en voegt de mogelijkheid toe om aangepaste succes criteria in te stellen, gekoppeld aan meer geavanceerde functies zoals het parseren van afhankelijke aanvragen, en het toestaan van nieuwe pogingen.
 
-Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster Beschik baarheid en selecteert u **test maken**.
+Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster Beschik baarheid en selecteert u **test maken** .
 
 ![Vul in elk geval de URL van uw website in](./media/monitor-web-app-availability/availability-create-test-001.png)
 
@@ -47,14 +47,14 @@ Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster B
 |----|----|----|
 |**URL** |  De URL kan iedere webpagina zijn die u wilt testen, maar deze moet zichtbaar zijn vanaf het openbare internet. De URL kan een queryreeks bevatten. Zo kunt u bijvoorbeeld oefenen met uw database. Als de URL naar een omleiding is opgelost, kunnen we deze tot maximaal 10 omleidingen opvolgen.|
 |**Afhankelijke aanvragen parseren**| Test vraagt installatie kopieën, scripts, stijl bestanden en andere bestanden die deel uitmaken van de webpagina onder testen. De opgenomen reactietijd is inclusief de tijd die nodig is om deze bestanden op te halen. De test mislukt als een van deze resources niet kan worden gedownload binnen de time-out voor de volledige test. Als de optie niet is ingeschakeld, vraagt de test alleen het bestand op van de URL die u hebt opgegeven. Als u deze optie inschakelt, resulteert dit in een strikte controle. De test kan mislukken voor cases die mogelijk niet merkbaar zijn wanneer u de site hand matig bezoekt.
-|**Nieuwe pogingen inschakelen**|Wanneer de test mislukt, wordt deze na een korte interval opnieuw geprobeerd. Fouten worden pas gerapporteerd als er drie opeenvolgende pogingen mislukken. Daaropvolgende tests worden vervolgens met de gebruikelijke testfrequentie uitgevoerd. Volgende pogingen worden tijdelijk uitgesteld tot er weer een test slaagt. Deze regel wordt onafhankelijk toegepast op elke testlocatie. **We raden u aan deze optie te selecteren**. Gemiddeld verdwijnt ongeveer 80% van de fouten na het opnieuw proberen.|
+|**Nieuwe pogingen inschakelen**|Wanneer de test mislukt, wordt deze na een korte interval opnieuw geprobeerd. Fouten worden pas gerapporteerd als er drie opeenvolgende pogingen mislukken. Daaropvolgende tests worden vervolgens met de gebruikelijke testfrequentie uitgevoerd. Volgende pogingen worden tijdelijk uitgesteld tot er weer een test slaagt. Deze regel wordt onafhankelijk toegepast op elke testlocatie. **We raden u aan deze optie te selecteren** . Gemiddeld verdwijnt ongeveer 80% van de fouten na het opnieuw proberen.|
 |**Test frequentie**| Hiermee stelt u in hoe vaak de test wordt uitgevoerd vanaf elke test locatie. Met een standaardfrequentie van vijf minuten en vijf testlocaties wordt uw site gemiddeld per minuut getest.|
 |**Test locaties**| Zijn de locaties waar onze servers webaanvragen verzenden naar uw URL. Het **minimum aantal aanbevolen test locaties is vijf** om ervoor te zorgen dat u problemen in uw website kunt onderscheiden van netwerk problemen. U kunt maximaal 16 locaties selecteren.
 
-**Als uw URL niet zichtbaar is via het open bare Internet, kunt u ervoor kiezen om de firewall selectief te openen, zodat alleen de test transacties via worden toegestaan**. Raadpleeg de [hand leiding voor IP-adressen](./ip-addresses.md#availability-tests)voor meer informatie over de firewall uitzonderingen voor onze beschikbaarheids test agents.
+**Als uw URL niet zichtbaar is via het open bare Internet, kunt u ervoor kiezen om de firewall selectief te openen, zodat alleen de test transacties via worden toegestaan** . Raadpleeg de [hand leiding voor IP-adressen](./ip-addresses.md#availability-tests)voor meer informatie over de firewall uitzonderingen voor onze beschikbaarheids test agents.
 
 > [!NOTE]
-> We raden u ten zeerste aan te testen vanaf meerdere locaties met **Mini maal vijf locaties**. Dit is om te voor komen dat er valse waarschuwingen optreden die kunnen leiden tot tijdelijke problemen met een specifieke locatie. Daarnaast hebben we vastgesteld dat de optimale configuratie het **aantal test locaties moet hebben dat gelijk is aan de drempel waarde voor de waarschuwings locatie + 2**.
+> We raden u ten zeerste aan te testen vanaf meerdere locaties met **Mini maal vijf locaties** . Dit is om te voor komen dat er valse waarschuwingen optreden die kunnen leiden tot tijdelijke problemen met een specifieke locatie. Daarnaast hebben we vastgesteld dat de optimale configuratie het **aantal test locaties moet hebben dat gelijk is aan de drempel waarde voor de waarschuwings locatie + 2** .
 
 ### <a name="success-criteria"></a>Criteria voor geslaagde pogingen
 
@@ -69,8 +69,57 @@ Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster B
 |Instelling| Uitleg
 |----|----|----|
 |**Bijna realtime (preview-versie)** | We raden u aan bijna realtime waarschuwingen te gebruiken. Het configureren van dit type waarschuwing wordt uitgevoerd nadat de beschikbaarheids test is gemaakt.  |
-|**Klassieke** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
+|**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
 |**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is drempel waarde voor **waarschuwings locaties**  =  **aantal test locaties-2, met een minimum van vijf test locaties.**|
+
+### <a name="location-population-tags"></a>Locatie populatie Tags
+
+De volgende populatie Tags kunnen worden gebruikt voor het kenmerk geo-locatie bij het implementeren van een ping-test voor de beschik baarheids-URL met Azure Resource Manager.
+
+#### <a name="azure-gov"></a>Azure-gov
+
+| Weergavenaam   | Naam van populatie     |
+|----------------|---------------------|
+| USGov Virginia | USGov-VA-AZR        |
+| USGov Arizona  | USGov-PHX-AZR       |
+| USGov Texas    | USGov-TX-AZR        |
+| USDoD-Oost     | USGov-ddeast-AZR    |
+| USDoD-centraal  | USGov-ddcentral-AZR |
+
+#### <a name="us-sec"></a>Verenigde Staten (sec.)
+
+| Weergavenaam | Naam van populatie |
+|--------------|-----------------|
+| USSec-West   | ussec-West-AZR  |
+| USSec-Oost   | ussec-Oost-AZR  |
+
+#### <a name="us-nat"></a>VS NAT
+
+| Weergavenaam | Naam van populatie |
+|--------------|-----------------|
+| USNat-Oost   | usnat-Oost-AZR  |
+| USNat-West   | usnat-West-AZR  |
+
+#### <a name="azure"></a>Azure
+
+| Weergavenaam                           | Naam van populatie   |
+|----------------------------------------|-------------------|
+| Australië - oost                         | EMEA-au-Syd-Edge  |
+| Brazil South                           | latam-BR-Gru-Edge |
+| Central US                             | VS-FL-quote-Edge    |
+| Azië - oost                              | Apac-HK-hkn-AZR   |
+| VS - oost                                | US-VA-Ash-AZR     |
+| Frankrijk-zuid (voorheen Frankrijk-centraal) | EMEA-CH-ZRH-Edge  |
+| Frankrijk - centraal                         | EMEA-fr-pra-Edge  |
+| Japan East                             | Apac-JP-Kaw-Edge  |
+| Europa - noord                           | EMEA-GB-db3-AZR   |
+| VS - noord-centraal                       | US-Il-CH1-AZR     |
+| South Central US                       | VS-TX-SN1-AZR     |
+| Azië - zuidoost                         | Apac-SG-Sin-AZR   |
+| Verenigd Koninkrijk West                                | EMEA-se-waarschuwingsd-Edge  |
+| Europa -west                            | EMEA-nl-AMS-AZR   |
+| VS - west                                | US-CA-SJC-AZR     |
+| Verenigd Koninkrijk Zuid                               | EMEA-ru-MSA-Edge  |
 
 ## <a name="see-your-availability-test-results"></a>De resultaten van de beschikbaarheidstest bekijken
 

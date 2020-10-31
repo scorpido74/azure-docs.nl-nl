@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886845"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073516"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -41,16 +41,19 @@ Het deel van de *datum* dat met de para meter ' Number ' wordt gebruikt. Bijvoor
   
 |*Part*|Afkortingen|  
 |---|---|
-|**profieldag**|**dd**, **d**|  
-|**gevormd**|**WK**, **WW**|  
+|**day**|**dd** , **d**|  
+|**gevormd**|**WK** , **WW**| 
+|**maand**|**mm** , **m**|
+|**cijfers**|**QQ** , **q**|  
+|**jaareinde**|**JJ** , **yyyy**|  
 |**uur**|**hh**|  
-|**notulen**|**mi**, **n**|  
-|**seconde**|**SS**, **s**|  
+|**notulen**|**mi** , **n**|  
+|**seconde**|**SS** , **s**|  
 |**milliseconde**|**ms**|  
 
-*Telwoord*
+*getal*
 
-Het gehele getal dat de breedte van de Bucket in combi natie met het argument *date Part* bepaalt. Dit vertegenwoordigt de breedte van de data Part bevindt buckets van de oorspronkelijke tijd. **`This argument cannot be a negative integer value`**. 
+Het gehele getal dat de breedte van de Bucket in combi natie met het argument *date Part* bepaalt. Dit vertegenwoordigt de breedte van de data Part bevindt buckets van de oorspronkelijke tijd. **`This argument cannot be a negative integer value`** . 
 
 *vallen*
 
@@ -122,7 +125,7 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>Argument date Part
 
-**DAYOFYEAR**, **Day**en **Weekday** geven dezelfde waarde als resultaat. Elke *date Part* en de afkortingen retour neren dezelfde waarde.
+**DAYOFYEAR** , **Day** en **Weekday** geven dezelfde waarde als resultaat. Elke *date Part* en de afkortingen retour neren dezelfde waarde.
   
 ## <a name="number-argument"></a>Argument getal
 
@@ -197,7 +200,7 @@ In deze voor beelden worden verschillende typen expressies gebruikt als argument
   
 #### <a name="specifying-user-defined-variables-as-number-and-date"></a>Door de gebruiker gedefinieerde variabelen opgeven als numeriek en datum  
 
-In dit voor beeld worden door de gebruiker gedefinieerde variabelen opgegeven als argumenten voor het *getal* en de *datum*:
+In dit voor beeld worden door de gebruiker gedefinieerde variabelen opgegeven als argumenten voor het *getal* en de *datum* :
   
 ```sql
 DECLARE @days int = 365,
@@ -247,7 +250,7 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 
 #### <a name="specifying-scalar-system-function-as-date"></a>Scalaire systeem functie opgeven als datum
 
-In dit voor beeld wordt de `SYSDATETIME` *datum*opgegeven. De exacte waarde die wordt geretourneerd, is afhankelijk van de dag en tijd van de uitvoering van de instructie:
+In dit voor beeld wordt de `SYSDATETIME` *datum* opgegeven. De exacte waarde die wordt geretourneerd, is afhankelijk van de dag en tijd van de uitvoering van de instructie:
   
 ```sql
 SELECT Date_Bucket(wk, 10, SYSDATETIME());  
@@ -264,7 +267,7 @@ Dit is de resultatenset.
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>Scalaire subquery's en scalaire functies opgeven als getal en datum
 
-In dit voor beeld wordt gebruikgemaakt van scalaire subquery's, `MAX(OrderDate)` , als argumenten voor *getal* en *datum*. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` fungeert als een kunst matig argument voor de para meter Number om te laten zien hoe u een *Numeriek* argument kunt selecteren in een lijst met waarden.
+In dit voor beeld wordt gebruikgemaakt van scalaire subquery's, `MAX(OrderDate)` , als argumenten voor *getal* en *datum* . `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` fungeert als een kunst matig argument voor de para meter Number om te laten zien hoe u een *Numeriek* argument kunt selecteren in een lijst met waarden.
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
@@ -281,7 +284,7 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>Het opgeven van een statistische venster functie als getal
 
-In dit voor beeld wordt een statistische venster functie gebruikt als argument voor *getal*.
+In dit voor beeld wordt een statistische venster functie gebruikt als argument voor *getal* .
   
 ```sql
 Select 
@@ -303,6 +306,6 @@ declare @origin datetime2 = '2019-01-01 00:00:00'
 Select DATE_BUCKET(hh, 2, @date, @origin)
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [&#40;Transact-SQL-&#41;CASTen en converteren ](/sql/t-sql/functions/cast-and-convert-transact-sql/)

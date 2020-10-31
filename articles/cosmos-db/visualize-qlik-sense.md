@@ -7,14 +7,15 @@ ms.author: sngun
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccd9f10bcf8be5539528be1f513f7e7dd74549e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263344"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073686"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verbind Qlik Sense om uw gegevens te Azure Cosmos DB en te visualiseren
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 Qlik Sense is een hulp programma voor gegevens visualisatie waarmee gegevens uit verschillende bronnen worden gecombineerd in één weer gave. Qlik Sense indexeert elke mogelijke relatie in uw gegevens, zodat u direct inzicht kunt krijgen in de gegevens. U kunt Azure Cosmos DB gegevens visualiseren met behulp van Qlik Sense. In dit artikel worden de stappen beschreven die nodig zijn om Azure Cosmos DB te verbinden met Qlik Sense en uw gegevens te visualiseren. 
 
@@ -52,15 +53,15 @@ Voordat u de instructies in dit artikel volgt, moet u ervoor zorgen dat u de vol
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>Qlik Sense verbinden met Cosmos DB
 
-1. Open Qlik Sense en selecteer **nieuwe app maken**. Geef een naam op voor uw app en selecteer **maken**.
+1. Open Qlik Sense en selecteer **nieuwe app maken** . Geef een naam op voor uw app en selecteer **maken** .
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="Een nieuwe Qlik Sense-app maken":::
 
-2. Nadat de nieuwe app is gemaakt, selecteert u **app openen** en kiest u **gegevens toevoegen uit bestanden en andere bronnen**. 
+2. Nadat de nieuwe app is gemaakt, selecteert u **app openen** en kiest u **gegevens toevoegen uit bestanden en andere bronnen** . 
 
 3. Selecteer in de gegevens bronnen **ODBC** om het venster nieuwe verbinding instellen te openen. 
 
-4. Schakel over naar de **gebruikers-DSN** en kies de ODBC-verbinding die u eerder hebt gemaakt. Geef een naam op voor de verbinding en selecteer **maken**. 
+4. Schakel over naar de **gebruikers-DSN** en kies de ODBC-verbinding die u eerder hebt gemaakt. Geef een naam op voor de verbinding en selecteer **maken** . 
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Een nieuwe Qlik Sense-app maken":::
 

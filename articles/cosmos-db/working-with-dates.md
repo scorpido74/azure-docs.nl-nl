@@ -7,14 +7,15 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a876c5ba9c289f0edbbfdf8727e9957e7937b781
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c9df71763c610f9773949ef618de7840ae752d82
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476243"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073567"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Werken met datums in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB biedt flexibiliteit en uitgebreide indexeringen voor het schema via een systeem eigen [JSON](https://www.json.org) -gegevens model. Alle Azure Cosmos DB resources, inclusief data bases, containers, documenten en opgeslagen procedures, worden gemodelleerd en opgeslagen als JSON-documenten. Als vereiste voor een draag bare, JSON-(en Azure Cosmos DB) ondersteunt slechts een kleine set basis typen: teken reeks, getal, Booleaanse waarde, matrix, object en null. JSON is echter flexibel en stelt ontwikkel aars en frameworks in staat om complexere typen te maken met behulp van deze primitieven en ze als objecten of matrices samen te stellen.
 

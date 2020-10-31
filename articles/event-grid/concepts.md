@@ -2,13 +2,13 @@
 title: Azure Event Grid concepten
 description: Beschrijving van Azure Event Grid en de concepten ervan. Definieert verschillende belang rijke onderdelen van Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86116485"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075106"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Concepten in Azure Event Grid
 
@@ -37,11 +37,11 @@ Zie [gebeurtenis bronnen in azure Event grid](overview.md#event-sources)voor inf
 
 Het event grid-onderwerp bevat een eind punt waar gebeurtenissen door de bron worden verzonden. De uitgever maakt het onderwerp Event grid en bepaalt of een gebeurtenis bron één onderwerp of meer dan één onderwerp nodig heeft. Er wordt een onderwerp gebruikt voor een verzameling van gerelateerde gebeurtenissen. Voor het reageren op bepaalde typen gebeurtenissen bepalen abonnees welke onderwerpen moeten worden geabonneerd.
 
-Systeem onderwerpen zijn ingebouwde onderwerpen van Azure-Services, zoals Azure Storage, Azure Event Hubs en Azure Service Bus. U kunt systeem onderwerpen maken in uw Azure-abonnement en hierop abonneren. Zie [overzicht van systeem onderwerpen](system-topics.md)voor meer informatie. 
+**Systeem onderwerpen** zijn ingebouwde onderwerpen van Azure-Services, zoals Azure Storage, Azure Event Hubs en Azure service bus. U kunt systeem onderwerpen maken in uw Azure-abonnement en hierop abonneren. Zie [overzicht van systeem onderwerpen](system-topics.md)voor meer informatie. 
 
-Aangepaste onderwerpen zijn onderwerpen van toepassingen en derden. Wanneer u een aangepast onderwerp maakt of u er toegang toe krijgt, ziet u dat aangepaste onderwerp in uw abonnement. Zie [aangepaste onderwerpen](custom-topics.md)voor meer informatie.
+**Aangepaste onderwerpen** zijn toepassingen en onderwerpen van derden. Wanneer u een aangepast onderwerp maakt of u er toegang toe krijgt, ziet u dat aangepaste onderwerp in uw abonnement. Zie [aangepaste onderwerpen](custom-topics.md)voor meer informatie. Bij het ontwerpen van uw toepassing hebt u de flexibiliteit bij het bepalen van het aantal te maken onderwerpen. Voor grote oplossingen maakt u een aangepast onderwerp voor elke categorie gerelateerde gebeurtenissen. Neem bijvoorbeeld een toepassing die gebeurtenissen over het bewerken van gebruikersaccounts en het verwerken van orders verzendt. De kans is klein dat er gebeurtenis-handlers zijn die beide gebeurteniscategorieën kunnen verwerken. Maak daarom twee aangepaste onderwerpen en laat gebeurtenis-handlers zich abonneren op het onderwerp dat hen interesseert. Voor kleine oplossingen kunt u de voor keur geven aan het verzenden van alle gebeurtenissen naar één onderwerp. Gebeurtenis abonnees kunnen filteren op de gewenste gebeurtenis typen.
 
-Bij het ontwerpen van uw toepassing hebt u de flexibiliteit bij het bepalen van het aantal te maken onderwerpen. Voor grote oplossingen maakt u een aangepast onderwerp voor elke categorie gerelateerde gebeurtenissen. Neem bijvoorbeeld een toepassing die gebeurtenissen over het bewerken van gebruikersaccounts en het verwerken van orders verzendt. De kans is klein dat er gebeurtenis-handlers zijn die beide gebeurteniscategorieën kunnen verwerken. Maak daarom twee aangepaste onderwerpen en laat gebeurtenis-handlers zich abonneren op het onderwerp dat hen interesseert. Voor kleine oplossingen kunt u de voor keur geven aan het verzenden van alle gebeurtenissen naar één onderwerp. Gebeurtenis abonnees kunnen filteren op de gewenste gebeurtenis typen.
+Er is een ander type onderwerp: **partner onderwerp** . Met de functie voor [partner gebeurtenissen](partner-events-overview.md) kan een SaaS-provider van derden gebeurtenissen van zijn Services publiceren om ze beschikbaar te maken voor gebruikers die zich op die gebeurtenissen kunnen abonneren. De SaaS-provider geeft een onderwerp, een **partner onderwerp** , dat abonnees gebruiken om gebeurtenissen te consumeren. Het biedt ook een schoon pub-submodel door problemen en eigendom van resources die worden gebruikt door gebeurtenis uitgevers en abonnees, te scheiden.
 
 ## <a name="event-subscriptions"></a>Gebeurtenisabonnementen
 

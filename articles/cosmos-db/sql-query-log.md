@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 74d07076fb322214348d52fe65dbc98bdff3cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30e1f43e283707434adfa48b8754a7b0509b9eed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798258"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075344"
 ---
 # <a name="log-azure-cosmos-db"></a>LOGBOEK (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Retourneert de natuurlijke logaritme van de opgegeven numerieke expressie.  
   
 ## <a name="syntax"></a>Syntaxis
@@ -39,7 +41,7 @@ LOG (<numeric_expr> [, <base>])
   
   Standaard retourneert LOG () de natuurlijke logaritme. U kunt de basis van de logaritme met een andere waarde wijzigen met behulp van de optionele basis parameter.  
   
-  De natuurlijke logaritme is de logaritme van het grondtal **e**, waarbij **e** een Irrational-constante is die ongeveer gelijk is aan 2,718281828.  
+  De natuurlijke logaritme is de logaritme van het grondtal **e** , waarbij **e** een Irrational-constante is die ongeveer gelijk is aan 2,718281828.  
   
   De natuurlijke logaritme van de exponentiële waarde van een getal is het getal zelf: logboek (EXP (n)) = n. En de exponentiële waarde van de natuurlijke logaritme van een getal is het getal zelf: EXP (LOG (n)) = n.
 

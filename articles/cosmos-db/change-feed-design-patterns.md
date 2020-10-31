@@ -6,14 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: ebd1c4f71d71ca70f6d10763d538b1877b0c3539
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0c890d50bbfe498f9d90698394b2cc2d373c0d8b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489350"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072991"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Ontwerp patronen voor feeds wijzigen in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 De Azure Cosmos DB Change feed maakt efficiënte verwerking van grote gegevens sets mogelijk met een groot aantal schrijf bewerkingen. Change feed biedt ook een alternatief voor het uitvoeren van een query op een hele gegevensset om te bepalen wat er is gewijzigd. Dit document richt zich op veelvoorkomende ontwerp patronen voor veranderingen in de feed, ontwerp-en wijzigings beperkingen.
 

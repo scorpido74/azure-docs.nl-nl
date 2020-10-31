@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485100"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075398"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL-omzetting
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 De Azure Cosmos DB-query provider voert een beste toewijzing van een LINQ-query in een Cosmos DB SQL-query uit. Als u de SQL-query wilt ophalen die wordt vertaald van LINQ, gebruikt u de `ToString()` methode voor het gegenereerde `IQueryable` object. In de volgende beschrijving wordt uitgegaan van een basis kennis van [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries).
 
@@ -79,19 +80,19 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 De LINQ-provider die is opgenomen in de SQL .NET SDK ondersteunt de volgende Opera tors:
 
-- **Select**: projecties vertalen om te [selecteren](sql-query-select.md), inclusief object constructie.
-- **Waar**: filters vertalen naar [waar](sql-query-where.md)en ondersteunen de vertaling tussen `&&` , `||` en `!` naar de SQL-Opera tors
-- **SelectMany**: Hiermee staat u het ongedaan maken van matrices toe op de component voor [samen voegen](sql-query-join.md) . Gebruiken voor het koppelen of nesten van expressies voor het filteren op matrix elementen.
-- **OrderBy** en **OrderByDescending**: vertalen naar [order by](sql-query-order-by.md) met ASC of DESC.
-- De Opera tors **Count**, **Sum**, **min**, **Max**en **Average** voor [aggregatie](sql-query-aggregates.md), en hun async-equivalenten **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**en **AverageAsync**.
-- **CompareTo**: wordt omgezet naar bereikvergelijkingen. Wordt meestal gebruikt voor teken reeksen, omdat ze niet vergelijkbaar zijn in .NET.
-- **Overs Laan** en **uitvoeren**: vertaalt de [Offset en de limiet](sql-query-offset-limit.md) voor het beperken van de resultaten van een query en het uitvoeren van de paginering.
-- **Wiskundige functies**: ondersteunt de omzetting van .net,,,,,,,,,,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` en `Truncate` naar de equivalente [ingebouwde wiskundige functies](sql-query-mathematical-functions.md).
-- **Teken reeks functies**: ondersteunt de omzetting van .net,,,,,,,,,, en `Concat` `Contains` `Count` `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` naar de equivalente [ingebouwde teken reeks functies](sql-query-string-functions.md).
-- **Array functies**: ondersteunt de vertaling van .net `Concat` , `Contains` en `Count` naar de equivalente [ingebouwde matrix functies](sql-query-array-functions.md).
-- **Georuimtelijke extensie functies**: ondersteunt de vertaling van stub `Distance` -methoden,, `IsValid` `IsValidDetailed` en `Within` naar de equivalente [ingebouwde georuimtelijke functies](sql-query-geospatial-query.md).
-- Door de **gebruiker gedefinieerde functie-extensie functie**: ondersteunt de vertaling van de stub-methode `UserDefinedFunctionProvider.Invoke` naar de bijbehorende door de [gebruiker gedefinieerde functie](sql-query-udfs.md).
-- **Diversen**: ondersteunt de omzetting van `Coalesce` en voorwaardelijke [Opera tors](sql-query-operators.md). Kan vertalen `Contains` naar teken reeks, ARRAY_CONTAINS, of in, afhankelijk van de context.
+- **Select** : projecties vertalen om te [selecteren](sql-query-select.md), inclusief object constructie.
+- **Waar** : filters vertalen naar [waar](sql-query-where.md)en ondersteunen de vertaling tussen `&&` , `||` en `!` naar de SQL-Opera tors
+- **SelectMany** : Hiermee staat u het ongedaan maken van matrices toe op de component voor [samen voegen](sql-query-join.md) . Gebruiken voor het koppelen of nesten van expressies voor het filteren op matrix elementen.
+- **OrderBy** en **OrderByDescending** : vertalen naar [order by](sql-query-order-by.md) met ASC of DESC.
+- De Opera tors **Count** , **Sum** , **min** , **Max** en **Average** voor [aggregatie](sql-query-aggregates.md), en hun async-equivalenten **CountAsync** , **SumAsync** , **MinAsync** , **MaxAsync** en **AverageAsync** .
+- **CompareTo** : wordt omgezet naar bereikvergelijkingen. Wordt meestal gebruikt voor teken reeksen, omdat ze niet vergelijkbaar zijn in .NET.
+- **Overs Laan** en **uitvoeren** : vertaalt de [Offset en de limiet](sql-query-offset-limit.md) voor het beperken van de resultaten van een query en het uitvoeren van de paginering.
+- **Wiskundige functies** : ondersteunt de omzetting van .net,,,,,,,,,,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` en `Truncate` naar de equivalente [ingebouwde wiskundige functies](sql-query-mathematical-functions.md).
+- **Teken reeks functies** : ondersteunt de omzetting van .net,,,,,,,,,, en `Concat` `Contains` `Count` `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` naar de equivalente [ingebouwde teken reeks functies](sql-query-string-functions.md).
+- **Array functies** : ondersteunt de vertaling van .net `Concat` , `Contains` en `Count` naar de equivalente [ingebouwde matrix functies](sql-query-array-functions.md).
+- **Georuimtelijke extensie functies** : ondersteunt de vertaling van stub `Distance` -methoden,, `IsValid` `IsValidDetailed` en `Within` naar de equivalente [ingebouwde georuimtelijke functies](sql-query-geospatial-query.md).
+- Door de **gebruiker gedefinieerde functie-extensie functie** : ondersteunt de vertaling van de stub-methode `UserDefinedFunctionProvider.Invoke` naar de bijbehorende door de [gebruiker gedefinieerde functie](sql-query-udfs.md).
+- **Diversen** : ondersteunt de omzetting van `Coalesce` en voorwaardelijke [Opera tors](sql-query-operators.md). Kan vertalen `Contains` naar teken reeks, ARRAY_CONTAINS, of in, afhankelijk van de context.
 
 ## <a name="examples"></a>Voorbeelden
 

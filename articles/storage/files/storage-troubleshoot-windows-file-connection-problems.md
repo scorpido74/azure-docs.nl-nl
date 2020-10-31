@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715985"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075123"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Problemen met Azure Files oplossen in Windows (SMB)
 
-In dit artikel vindt u algemene problemen die betrekking hebben op Microsoft Azure-bestanden wanneer u verbinding maakt vanaf Windows-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. Naast de stappen voor probleem oplossing in dit artikel, kunt u ook [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)gebruiken   om ervoor te zorgen dat de Windows-client omgeving voldoet aan de vereisten. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd en helpt u bij het instellen van uw omgeving om optimaal gebruik te maken van de prestaties.
+In dit artikel vindt u algemene problemen die betrekking hebben op Microsoft Azure-bestanden wanneer u verbinding maakt vanaf Windows-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. Naast de stappen voor probleem oplossing in dit artikel, kunt u ook [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) gebruiken om ervoor te zorgen dat de Windows-client omgeving voldoet aan de vereisten. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd en helpt u bij het instellen van uw omgeving om optimaal gebruik te maken van de prestaties.
 
 > [!IMPORTANT]
 > De inhoud van dit artikel is alleen van toepassing op SMB-shares. Zie [problemen met Azure NFS-bestands shares oplossen](storage-troubleshooting-files-nfs.md)voor meer informatie over NFS-shares.
@@ -45,7 +45,7 @@ Als er regels voor het VNET (virtueel netwerk) of de firewall zijn geconfigureer
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
-Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
+Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken** . Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>Oorzaak 3: machtigingen op share niveau zijn onjuist bij het gebruik van verificatie op basis van identiteiten
 
@@ -167,7 +167,7 @@ Fout code: 403
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
-Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
+Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken** . Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Oorzaak 2: uw gebruikers account heeft geen toegang tot het opslag account
 
@@ -177,23 +177,82 @@ Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik o
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Kan een bestand of map in een Azure-bestandsshare niet verwijderen
-Wanneer u een bestand probeert te verwijderen, wordt mogelijk de volgende fout weer gegeven:
+Een van de belangrijkste doel stellingen van een bestands share is dat meerdere gebruikers en toepassingen gelijktijdig kunnen communiceren met bestanden en mappen in de share. Om u te helpen bij deze interactie bieden bestands shares verschillende manieren om toegang tot bestanden en mappen te verkrijgen.
 
-De opgegeven resource is gemarkeerd voor verwijdering door een SMB-client.
+Wanneer u een bestand opent vanuit een gekoppelde Azure-bestands share via SMB, vraagt uw toepassing/besturings systeem een bestands ingang aan. Dit is een verwijzing naar het bestand. Uw toepassing geeft onder andere de modus voor het delen van bestanden op wanneer er een bestands ingang wordt aangevraagd, waarmee het niveau wordt opgegeven van de toegang tot het bestand dat wordt afgedwongen door Azure Files: 
 
-### <a name="cause"></a>Oorzaak
-Dit probleem treedt doorgaans op als het bestand of de map een geopende ingang heeft. 
+- `None`: u hebt exclusieve toegang. 
+- `Read`: anderen kunnen het bestand lezen terwijl u het hebt geopend.
+- `Write`: anderen kunnen naar het bestand schrijven terwijl het is geopend. 
+- `ReadWrite`: een combi natie van de `Read` `Write` modus en delen.
+- `Delete`: anderen kunnen het bestand verwijderen terwijl het geopend is. 
 
-### <a name="solution"></a>Oplossing
+Het FileREST-protocol heeft weliswaar als stateless protocol geen concept van bestands ingangen, maar biedt een vergelijkbaar mechanisme om toegang te krijgen tot bestanden en mappen die het script, de toepassing of de service kunnen gebruiken: bestands leases. Wanneer een bestand wordt geleased, wordt het beschouwd als gelijkwaardig aan een bestands ingang met de modus voor het delen van bestanden van `None` . 
 
-Als de SMB-clients alle geopende ingangen hebben gesloten en het probleem blijft optreden, voert u de volgende handelingen uit:
+Hoewel bestands ingangen en leases een belang rijk doel hebben, kunnen er soms zwevende bestands ingangen en leases worden gebruikt. Als dit gebeurt, kan dit problemen veroorzaken bij het wijzigen of verwijderen van bestanden. Er kunnen fout berichten worden weer geven, zoals:
 
-- Gebruik de Power shell [-cmdlet Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) om open ingangen weer te geven.
+- Het proces kan het bestand niet openen omdat het door een ander proces wordt gebruikt.
+- De actie kan niet worden voltooid omdat het bestand is geopend in een ander programma.
+- Het document is vergrendeld voor bewerking door een andere gebruiker.
+- De opgegeven resource is gemarkeerd voor verwijdering door een SMB-client.
 
-- Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) om open ingangen te sluiten. 
+De oplossing voor dit probleem is afhankelijk van het feit of dit wordt veroorzaakt door een zwevende bestands ingang of lease. 
+
+### <a name="cause-1"></a>Oorzaak 1
+Een bestands ingang voor komt dat een bestand of map wordt gewijzigd of verwijderd. U kunt de Power shell [-cmdlet Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) gebruiken om open ingangen weer te geven. 
+
+Als alle SMB-clients hun open ingangen hebben gesloten op een bestand/map en het probleem blijft optreden, kunt u het sluiten van een bestands ingang afdwingen.
+
+### <a name="solution-1"></a>Oplossing 1
+Als u wilt afdwingen dat een bestands ingang wordt gesloten, gebruikt u de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) . 
 
 > [!Note]  
 > De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
+
+### <a name="cause-2"></a>Oorzaak 2
+Een bestands lease voor komt dat een bestand wordt gewijzigd of verwijderd. U kunt controleren of een bestand een bestands lease heeft met de volgende Power shell, vervangen `<resource-group>` ,, `<storage-account>` `<file-share>` en `<path-to-file>` met de juiste waarden voor uw omgeving:
+
+```PowerShell
+# Set variables 
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+$fileShareName = "<file-share>"
+$fileForLease = "<path-to-file>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName
+
+# Get reference to file
+$file = Get-AzStorageFile `
+        -Context $storageAccount.Context `
+        -ShareName $fileShareName `
+        -Path $fileForLease
+
+$fileClient = $file.ShareFileClient
+
+# Check if the file has a file lease
+$fileClient.GetProperties().Value
+```
+
+Als een bestand een lease heeft, moet het geretourneerde object de volgende eigenschappen bevatten:
+
+```Output
+LeaseDuration         : Infinite
+LeaseState            : Leased
+LeaseStatus           : Locked
+```
+
+### <a name="solution-2"></a>Oplossing 2
+Als u een lease uit een bestand wilt verwijderen, kunt u de lease vrijgeven of de lease verbreken. Voor het vrijgeven van de lease hebt u de LeaseId van de lease nodig die u instelt wanneer u de lease maakt. U hebt de LeaseId niet nodig om de lease te verstoren.
+
+In het volgende voor beeld ziet u hoe u de lease verbreekt voor het bestand dat is aangegeven in oorzaak 2 (dit voor beeld gaat door met de Power shell-variabelen van oorzaak 2):
+
+```PowerShell
+$leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($fileClient)
+$leaseClient.Break() | Out-Null
+```
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Bestanden worden langzaam gekopieerd van en naar Azure Files in Windows

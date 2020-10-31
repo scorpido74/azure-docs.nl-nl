@@ -8,14 +8,15 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7aace0b1ee6963aa220a60a11d02c370bf4d822a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2b74198f83ef972540038269d83048bfd1adda62
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476549"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073890"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Een CI/CD-pijplijn instellen met de build-taak van Azure Cosmos DB Emulator in Azure DevOps
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB Emulator biedt een lokale omgeving waarin de Azure Cosmos DB-service wordt geëmuleerd voor ontwikkelingsdoeleinden. Met behulp van de emulator kunt u uw toepassing lokaal ontwikkelen en testen, kosteloos en zonder een Azure-abonnement te maken. 
 
@@ -44,7 +45,7 @@ Nu de uitbrei ding is geïnstalleerd, meldt u zich aan bij uw Azure DevOps-organ
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
-2. Selecteer de gewenste **bron**, **teamproject**, **opslagplaats**, en de **standaardvertakking voor handmatige en geplande builds**. Nadat u vereiste opties hebt gekozen, selecteert u **Doorgaan**
+2. Selecteer de gewenste **bron** , **teamproject** , **opslagplaats** , en de **standaardvertakking voor handmatige en geplande builds** . Nadat u vereiste opties hebt gekozen, selecteert u **Doorgaan**
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
@@ -62,7 +63,7 @@ Start-CosmosDbEmulator
 
 ## <a name="add-the-task-to-a-build-pipeline"></a><a name="addEmulatorBuildTaskToBuildDefinition"></a>De taak toevoegen aan een build-pipeline
 
-1. Voordat u een taak toevoegt aan de build-pipeline, moet u een agenttaak toevoegen. Navigeer naar uw build-pipeline, selecteer **...** en kies **Een agenttaak toevoegen**.
+1. Voordat u een taak toevoegt aan de build-pipeline, moet u een agenttaak toevoegen. Navigeer naar uw build-pipeline, selecteer **...** en kies **Een agenttaak toevoegen** .
 
 1. Selecteer vervolgens het **+** pictogram naast de agent taak om de emulator-build-taak toe te voegen. Zoek naar **cosmos** in het zoekvak, selecteer **Azure Cosmos DB Emulator** en voeg deze toe aan de agent-taak. De build-taak start een container waarop al een exemplaar van de Cosmos DB-emulator wordt uitgevoerd. De Azure Cosmos DB Emulator-taak moet vóór alle andere taken worden geplaatst die ervan uitgaan dat de emulator wordt uitgevoerd.
 
@@ -92,9 +93,9 @@ Deze stap is optioneel en is alleen vereist als u de CI/CD-pijp lijn instelt met
 
 Nu gaan we onze tests configureren voor het gebruik van de emulator. De build-taak van de emulator exporteert een omgevingsvariabele, 'CosmosDbEmulator.Endpoint', waarnaar taken verderop in de build-pijplijn eventueel aanvragen kunnen versturen. 
 
-In deze zelfstudie gebruiken we de [taak VSTest](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) om moduletests uit te voeren die zijn geconfigureerd via een **.runsettings**-bestand. Raadpleeg de [documentatie](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017) voor meer informatie over het configureren van de moduletests. Het volledige voor beeld van een toepassings code dat u in dit document gebruikt, is beschikbaar op [github](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)
+In deze zelfstudie gebruiken we de [taak VSTest](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) om moduletests uit te voeren die zijn geconfigureerd via een **.runsettings** -bestand. Raadpleeg de [documentatie](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017) voor meer informatie over het configureren van de moduletests. Het volledige voor beeld van een toepassings code dat u in dit document gebruikt, is beschikbaar op [github](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)
 
-Hieronder ziet u een voorbeeld van een **.runsettings**-bestand met parameters die moeten worden doorgegeven aan de moduletests van een toepassing. De gebruikte variabele `authKey` is de [bekende sleutel](./local-emulator.md#authenticate-requests) voor de emulator. `authKey` is de sleutel die wordt verwacht door de build-taak en deze moet dan ook zijn gedefinieerd in uw **.runsettings**-bestand.
+Hieronder ziet u een voorbeeld van een **.runsettings** -bestand met parameters die moeten worden doorgegeven aan de moduletests van een toepassing. De gebruikte variabele `authKey` is de [bekende sleutel](./local-emulator.md#authenticate-requests) voor de emulator. `authKey` is de sleutel die wordt verwacht door de build-taak en deze moet dan ook zijn gedefinieerd in uw **.runsettings** -bestand.
 
 ```csharp
 <RunSettings>
@@ -157,13 +158,13 @@ namespace todo.Tests
 }
 ```
 
-Navigeer naar de uitvoeringsopties in de taak VSTest. Geef bij **Settings file** aan dat de tests worden geconfigureerd via een **.runsettings**-bestand. Voeg `-endpoint $(CosmosDbEmulator.Endpoint)` toe voor de optie **Override test run parameters**. Hiermee stelt u in dat de testtaak moet verwijzen naar het eindpunt van de build-taak van de emulator, en niet naar het eindpunt dat is gedefinieerd in het **.runsettings**-bestand.  
+Navigeer naar de uitvoeringsopties in de taak VSTest. Geef bij **Settings file** aan dat de tests worden geconfigureerd via een **.runsettings** -bestand. Voeg `-endpoint $(CosmosDbEmulator.Endpoint)` toe voor de optie **Override test run parameters** . Hiermee stelt u in dat de testtaak moet verwijzen naar het eindpunt van de build-taak van de emulator, en niet naar het eindpunt dat is gedefinieerd in het **.runsettings** -bestand.  
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 ## <a name="run-the-build"></a>De build uitvoeren
 
-Nu gaan we de build **Opslaan en in de wachtrij zetten**. 
+Nu gaan we de build **Opslaan en in de wachtrij zetten** . 
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
