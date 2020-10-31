@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 19e0d741d959eba704f26e7e8f7b5d311aa77775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e5522c162e08f0257bd6f20b058bf8bb858cff3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904856"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099343"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API's beveiligen met behulp van verificatie via clientcertificaten in API Management
 
@@ -93,9 +93,8 @@ In het volgende voor beeld ziet u hoe u de vinger afdruk van een client certific
 
 > [!TIP]
 > Probleem met het publiceren van het client certificaat dat in dit [artikel](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) wordt beschreven, kan zich op verschillende manieren manifesteren, zoals het blok keren van aanvragen, aanvragen met de `403 Forbidden` status code na een time-out `context.Request.Certificate` `null` . Dit probleem is doorgaans `POST` van invloed op en `PUT` aanvragen met een inhouds lengte van ongeveer 60KB of hoger.
-> Ga als volgt te werk om te voor komen dat dit probleem optreedt bij het inschakelen van de instelling ' onderhandelen over client certificaat ' voor gewenste hostnamen op de Blade ' aangepaste domeinen ', zoals hieronder wordt weer gegeven. Deze functie is niet beschikbaar in de laag verbruik.
+> Ga als volgt te werk om te voor komen dat dit probleem optreedt bij het inschakelen van de instelling onderhandelend client certificaat voor gewenste hostnamen op de Blade Custom Domains, zoals wordt weer gegeven in de eerste afbeelding van dit document. Deze functie is niet beschikbaar in de laag verbruik.
 
-![Onderhandelen over client certificaat](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

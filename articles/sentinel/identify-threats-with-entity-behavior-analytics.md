@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0486c9d2eb6c651b507f4b0a44f4a6fc2b018f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995508"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100657"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Geavanceerde bedreigingen met UEBA (User and entity Behavior Analytics) identificeren in azure Sentinel
 
@@ -64,11 +64,43 @@ Voor elke activiteit wordt gescoord met ' onderzoek prioriteits Score ', waarmee
 
 Bekijk hoe gedrags analyses in [Microsoft Cloud app Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) wordt gebruikt voor een voor beeld van hoe dit werkt.
 
+## <a name="entities-in-azure-sentinel"></a>Entiteiten in azure Sentinel
 
+### <a name="entity-identifiers"></a>Entiteit-id's
 
-## <a name="entity-pages"></a>Entiteits pagina's
+Wanneer waarschuwingen naar Azure Sentinel worden verzonden, bevatten ze gegevens elementen die door Azure Sentinel worden geïdentificeerd en geclassificeerd als entiteiten, zoals gebruikers accounts, hosts, IP-adressen en andere. Als de waarschuwing niet voldoende informatie over de entiteit bevat, kan dit een uitdaging zijn.
 
-Wanneer u een entiteit (momenteel beperkt tot gebruikers en hosts) tegen komt in een zoek opdracht, een waarschuwing of een onderzoek, kunt u de entiteit selecteren en naar een **entiteits pagina**gaan, een gegevens blad vol met nuttige informatie over die entiteit. De typen informatie die u op deze pagina vindt, bevatten elementaire feiten over de entiteit, een tijd lijn met belang rijke gebeurtenissen die betrekking hebben op deze entiteit en inzichten over het gedrag van de entiteit.
+Gebruikers accounts kunnen bijvoorbeeld op meer dan één manier worden geïdentificeerd: met behulp van de numerieke id (GUID) van een Azure AD-account of de UPN-waarde (User Principal Name), of een combi natie van de gebruikers naam en het NT-domein. Verschillende gegevens bronnen kunnen dezelfde gebruiker op verschillende manieren identificeren. Als dat mogelijk is, voegt Azure Sentinel deze id's samen tot één entiteit, zodat deze naar behoren kan worden geïdentificeerd.
+
+Het kan gebeuren dat een van de resource providers een waarschuwing maakt waarin een entiteit niet voldoende is geïdentificeerd, bijvoorbeeld een gebruikers naam zonder de domein naam context. In dat geval kan de gebruikers entiteit niet worden samengevoegd met andere exemplaren van hetzelfde gebruikers account, die als een afzonderlijke entiteit zouden worden geïdentificeerd en die twee entiteiten in plaats van Unified blijven.
+
+Als u het risico van dit probleem zo klein mogelijk wilt maken, moet u controleren of al uw waarschuwings providers de entiteiten op de juiste wijze identificeren in de door hen geproduceerde waarschuwingen. Daarnaast kan het synchroniseren van gebruikers account entiteiten met Azure Active Directory een andere map maken, waarmee gebruikers account entiteiten kunnen worden samengevoegd.
+
+De volgende typen entiteiten worden momenteel geïdentificeerd in azure Sentinel:
+
+- Gebruikers account (account)
+- Host
+- IP-adres (IP)
+- Malware
+- File
+- Proces
+- Cloud toepassing (CloudApplication)
+- Domein naam (DNS)
+- Azure-resource
+- Bestand (FileHash)
+- Registersleutel
+- Registerwaarde
+- Beveiligings groep
+- URL
+- IoT-apparaat
+- Postvak
+- E-mail cluster
+- E-mail bericht
+- E-mail verzenden
+
+### <a name="entity-pages"></a>Entiteits pagina's
+
+Wanneer u een entiteit (momenteel beperkt tot gebruikers en hosts) tegen komt in een zoek opdracht, een waarschuwing of een onderzoek, kunt u de entiteit selecteren en naar een **entiteits pagina** gaan, een gegevens blad vol met nuttige informatie over die entiteit. De typen informatie die u op deze pagina vindt, bevatten elementaire feiten over de entiteit, een tijd lijn met belang rijke gebeurtenissen die betrekking hebben op deze entiteit en inzichten over het gedrag van de entiteit.
  
 Entiteit pagina's bestaan uit drie delen:
 - Het deel venster aan de linkerkant bevat de identiteits gegevens van de entiteit, verzameld uit gegevens bronnen zoals Azure Active Directory, Azure Monitor, Azure Security Center en micro soft Defender.
@@ -83,11 +115,11 @@ Entiteit pagina's bestaan uit drie delen:
 
 De tijd lijn is een belang rijk onderdeel van de bijdrage van de entiteits pagina voor gedrags analyses in azure Sentinel. Er wordt een verhaal gepresenteerd over entiteits gebeurtenissen, zodat u inzicht krijgt in de activiteit van de entiteit binnen een specifiek tijds bestek.
 
-U kunt het **tijds bereik** kiezen tussen verschillende vooraf ingestelde opties (zoals de *afgelopen 24 uur*) of instellen op een wille keurig aangepast tijds bestek. Daarnaast kunt u filters instellen die de informatie in de tijd lijn beperken tot specifieke typen gebeurtenissen of waarschuwingen.
+U kunt het **tijds bereik** kiezen tussen verschillende vooraf ingestelde opties (zoals de *afgelopen 24 uur* ) of instellen op een wille keurig aangepast tijds bestek. Daarnaast kunt u filters instellen die de informatie in de tijd lijn beperken tot specifieke typen gebeurtenissen of waarschuwingen.
 
 De volgende typen items zijn opgenomen in de tijd lijn:
 
-- Waarschuwingen: alle waarschuwingen waarin de entiteit is gedefinieerd als een **toegewezen entiteit**. Als uw organisatie aangepaste waarschuwingen heeft gemaakt [met behulp van analyse regels](./tutorial-detect-threats-custom.md), moet u ervoor zorgen dat de entiteits toewijzing van de regels goed wordt uitgevoerd.
+- Waarschuwingen: alle waarschuwingen waarin de entiteit is gedefinieerd als een **toegewezen entiteit** . Als uw organisatie aangepaste waarschuwingen heeft gemaakt [met behulp van analyse regels](./tutorial-detect-threats-custom.md), moet u ervoor zorgen dat de entiteits toewijzing van de regels goed wordt uitgevoerd.
 
 - Blad wijzers: blad wijzers die de specifieke entiteit bevatten die op de pagina wordt weer gegeven.
 
@@ -164,7 +196,7 @@ U kunt de [Jupyter-notebook](https://github.com/Azure/Azure-Sentinel-Notebooks/t
 
 Met de machtigings analyse kunt u de mogelijke gevolgen bepalen van het compromissen van een organisatie-Asset door een aanvaller. Deze invloed wordt ook wel de ' versterking van de activa ' genoemd. Beveiligings analisten kunnen deze informatie gebruiken om de prioriteit van onderzoek en incidenten te bepalen.
 
-Azure Sentinel bepaalt de directe en transitieve toegangs rechten van een bepaalde gebruiker tot Azure-resources door de Azure-abonnementen te evalueren die de gebruiker rechtstreeks of via groepen of service-principals kan benaderen. Deze informatie, evenals de volledige lijst van het lidmaatschap van de Azure AD-beveiligings groep van de gebruiker, wordt vervolgens opgeslagen in de tabel **UserAccessAnalytics** . In de onderstaande scherm afbeelding ziet u een voor beeld van een rij in de tabel UserAccessAnalytics voor de gebruiker Alex Johnson. **Bron entiteit** is het account van de gebruiker of Service-Principal en de **doel entiteit** is de resource waartoe de bron entiteit toegang heeft. De waarden van **toegangs niveau** en **toegangs type** zijn afhankelijk van het toegangs beheer model van de doel entiteit. U kunt zien dat Alex toegang heeft tot het Azure-abonnement *Contoso Hotels-Tenant*. Het model voor het toegangs beheer van het abonnement is RBAC.   
+Azure Sentinel bepaalt de directe en transitieve toegangs rechten van een bepaalde gebruiker tot Azure-resources door de Azure-abonnementen te evalueren die de gebruiker rechtstreeks of via groepen of service-principals kan benaderen. Deze informatie, evenals de volledige lijst van het lidmaatschap van de Azure AD-beveiligings groep van de gebruiker, wordt vervolgens opgeslagen in de tabel **UserAccessAnalytics** . In de onderstaande scherm afbeelding ziet u een voor beeld van een rij in de tabel UserAccessAnalytics voor de gebruiker Alex Johnson. **Bron entiteit** is het account van de gebruiker of Service-Principal en de **doel entiteit** is de resource waartoe de bron entiteit toegang heeft. De waarden van **toegangs niveau** en **toegangs type** zijn afhankelijk van het toegangs beheer model van de doel entiteit. U kunt zien dat Alex toegang heeft tot het Azure-abonnement *Contoso Hotels-Tenant* . Het model voor het toegangs beheer van het abonnement is RBAC.   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Architectuur van entiteit gedrag analyse":::
 

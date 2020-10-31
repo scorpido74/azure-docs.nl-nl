@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 967e07e55599be0a614e0b6097ae4745f6c7081f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005862"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100079"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>De component FROM in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 De component FROM ( `FROM <from_specification>` ) is optioneel, tenzij de bron wordt gefilterd of later in de query wordt geprojecteerd. Een query zoals een `SELECT * FROM Families` inventarisatie van de gehele `Families` container. U kunt ook de speciale id-HOOFDMAP voor de container gebruiken in plaats van de container naam te gebruiken.
 

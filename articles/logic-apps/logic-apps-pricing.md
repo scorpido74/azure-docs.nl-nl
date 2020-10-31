@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 486930776b4b4b6d852102be723ac1047ebd5e0a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078159"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098481"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Prijs model voor Azure Logic Apps
 
@@ -85,13 +85,13 @@ Azure Logic Apps-connectors helpen uw logische app toegang te bieden tot apps, s
 
 Een trigger is altijd de eerste stap in de werk stroom van een logische app. Dit is een speciale actie waarmee een logisch app-exemplaar wordt gemaakt en uitgevoerd wanneer aan specifieke criteria wordt voldaan of een specifieke gebeurtenis plaatsvindt. Triggers handelen op verschillende manieren, wat van invloed is op hoe de logische app wordt gemeten. Hier volgen de verschillende soorten triggers die in Azure Logic Apps bestaan:
 
-* **Trigger voor terugkeer patroon**: u kunt deze algemene trigger gebruiken die niet specifiek is voor een service of systeem, om de werk stroom van de logische app te starten en een logische app-exemplaar te maken dat wordt uitgevoerd op basis van het terugkeer interval dat u in de trigger hebt ingesteld. U kunt bijvoorbeeld een terugkeer patroon trigger instellen die elke drie dagen of op een complexere planning wordt uitgevoerd.
+* **Trigger voor terugkeer patroon** : u kunt deze algemene trigger gebruiken die niet specifiek is voor een service of systeem, om de werk stroom van de logische app te starten en een logische app-exemplaar te maken dat wordt uitgevoerd op basis van het terugkeer interval dat u in de trigger hebt ingesteld. U kunt bijvoorbeeld een terugkeer patroon trigger instellen die elke drie dagen of op een complexere planning wordt uitgevoerd.
 
-* **Polling trigger**: u kunt deze meer gespecialiseerde terugkeer patroon trigger gebruiken die meestal is gekoppeld aan de beheerde connector voor een specifieke service of systeem, om te controleren of er gebeurtenissen of berichten zijn die voldoen aan de criteria voor het maken en uitvoeren van een logische app-exemplaar op basis van het terugkeer interval dat u in de trigger hebt ingesteld. Zelfs wanneer er geen exemplaar van een logische app wordt gemaakt, bijvoorbeeld wanneer triggers worden overgeslagen, metert de Logic Apps-service elke polling-aanvraag als een uitvoering. Als u het polling-interval wilt opgeven, stelt u de trigger in via de ontwerp functie voor logische apps.
+* **Polling trigger** : u kunt deze meer gespecialiseerde terugkeer patroon trigger gebruiken die meestal is gekoppeld aan de beheerde connector voor een specifieke service of systeem, om te controleren of er gebeurtenissen of berichten zijn die voldoen aan de criteria voor het maken en uitvoeren van een logische app-exemplaar op basis van het terugkeer interval dat u in de trigger hebt ingesteld. Zelfs wanneer er geen exemplaar van een logische app wordt gemaakt, bijvoorbeeld wanneer triggers worden overgeslagen, metert de Logic Apps-service elke polling-aanvraag als een uitvoering. Als u het polling-interval wilt opgeven, stelt u de trigger in via de ontwerp functie voor logische apps.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook-trigger**: in plaats van een polling trigger te gebruiken, kunt u een webhook-trigger gebruiken om te wachten tot de client een aanvraag verzendt naar de logische app op een specifieke eind punt-URL. Elke aanvraag die naar het eind punt van de webhook wordt verzonden, telt als een actie-uitvoering. De trigger Request en HTTP-webhook zijn bijvoorbeeld zowel generieke webhook-triggers. Sommige connectors voor services of systemen hebben ook webhook-triggers.
+* **Webhook-trigger** : in plaats van een polling trigger te gebruiken, kunt u een webhook-trigger gebruiken om te wachten tot de client een aanvraag verzendt naar de logische app op een specifieke eind punt-URL. Elke aanvraag die naar het eind punt van de webhook wordt verzonden, telt als een actie-uitvoering. De trigger Request en HTTP-webhook zijn bijvoorbeeld zowel generieke webhook-triggers. Sommige connectors voor services of systemen hebben ook webhook-triggers.
 
 <a name="actions"></a>
 
@@ -122,11 +122,11 @@ Als u een [ *Integration service Environment* (ISE)](../logic-apps/connect-virtu
 
 Als u wilt kiezen tussen een gratis, basis of standaard integratie account, raadpleegt u deze use-case-beschrijvingen:
 
-* **Gratis**: als u wilt proberen om verkennende scenario's, niet productie scenario's. Deze laag is alleen beschikbaar voor open bare regio's in azure, zoals vs-West of Zuidoost-Azië, maar niet voor [Azure China 21vianet](/azure/china/overview-operations) of [Azure Government](../azure-government/documentation-government-welcome.md).
+* **Gratis** : als u wilt proberen om verkennende scenario's, niet productie scenario's. Deze laag is alleen beschikbaar voor open bare regio's in azure, zoals vs-West of Zuidoost-Azië, maar niet voor [Azure China 21vianet](/azure/china/overview-operations) of [Azure Government](../azure-government/documentation-government-welcome.md).
 
-* **Basis**: voor wanneer u alleen bericht verwerking wilt of als een kleine zakelijke partner die een relatie heeft met een handels partner met een grotere bedrijfs entiteit
+* **Basis** : voor wanneer u alleen bericht verwerking wilt of als een kleine zakelijke partner die een relatie heeft met een handels partner met een grotere bedrijfs entiteit
 
-* **Standaard**: voor wanneer u COMPLEXere B2B-relaties hebt en een groter aantal entiteiten dat u moet beheren
+* **Standaard** : voor wanneer u COMPLEXere B2B-relaties hebt en een groter aantal entiteiten dat u moet beheren
 
 <a name="data-retention"></a>
 
@@ -137,6 +137,7 @@ Met uitzonde ring van Logic apps die worden uitgevoerd in een Integration servic
 Om u te helpen bij het bewaken van het opslag verbruik van uw logische app, kunt u het volgende doen:
 
 * Bekijk het aantal opslag eenheden in GB dat maandelijks door uw logische app wordt gebruikt.
+
 * Bekijk de grootten voor de invoer en uitvoer van een specifieke actie in de uitvoerings geschiedenis van de logische app.
 
 <a name="storage-consumption"></a>
@@ -145,11 +146,14 @@ Om u te helpen bij het bewaken van het opslag verbruik van uw logische app, kunt
 
 1. Zoek en open uw logische app in de Azure Portal.
 
-1. Selecteer in het menu van de logische app, onder **bewaking**, **metrische gegevens**.
+1. Selecteer in het menu van de logische app, onder **bewaking** , **metrische gegevens** .
 
-1. Selecteer in het rechterdeel venster onder **grafiek titel**in de lijst **metriek** het **facturerings gebruik voor uitvoeringen van opslag verbruik**.
+1. Selecteer in het rechterdeel venster onder **grafiek titel** in de lijst **metriek** het **facturerings gebruik voor uitvoeringen van opslag verbruik** .
 
    Met deze metriek krijgt u het aantal verbruiks eenheden voor opslag in GB per maand dat wordt gefactureerd.
+
+   > [!NOTE]
+   > Uitvoeringen die minder dan 500 MB in opslag verbruiken, worden mogelijk niet weer gegeven in de weer gave controle, maar worden nog steeds gefactureerd.
 
 <a name="input-output-sizes"></a>
 
@@ -157,15 +161,18 @@ Om u te helpen bij het bewaken van het opslag verbruik van uw logische app, kunt
 
 1. Zoek en open uw logische app in de Azure Portal.
 
-1. Selecteer **overzicht**in het menu van de logische app.
+1. Selecteer **overzicht** in het menu van de logische app.
 
-1. Selecteer in het rechterdeel venster onder **uitvoerings geschiedenis**de uitvoering met de invoer en uitvoer die u wilt controleren.
+1. Selecteer in het rechterdeel venster onder **uitvoerings geschiedenis** de uitvoering met de invoer en uitvoer die u wilt controleren.
 
-1. Kies onder **uitvoering van logische app**de optie **Details uitvoeren**.
+1. Kies onder **uitvoering van logische app** de optie **Details uitvoeren** .
 
 1. Selecteer de actie die u wilt weer geven in het detail venster van de **logische app-uitvoering** in de tabel acties, waarin de status en duur van elke actie worden vermeld.
 
-1. In het actie deel venster van de **logische app** vindt u de grootten voor de invoer van die actie en de uitvoer die respectievelijk worden weer gegeven onder de koppeling **invoer** en **uitvoer**.
+1. Zoek in het actie deel venster van de **logische app** de grootten voor de invoer en uitvoer van die actie. Zoek onder koppeling naar **invoer** en **uitvoer** de koppelingen naar deze invoer en uitvoer.
+
+   > [!NOTE]
+   > Voor lussen toont alleen de acties op het hoogste niveau de grootte van de invoer en uitvoer. Voor acties binnen geneste lussen tonen invoer en uitvoer een grootte van nul en geen koppelingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: Auth0-partner onderwerpen met Azure Event Grid
 description: Gebeurtenissen verzenden vanuit Auth0 naar Azure-Services met Azure Event Grid.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 411d8f8eb53e4bc3fa8c8dda04bdcf12c74db768
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340403111c094540ba7e66faf71ebf3cfe24fe7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103344"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101286"
 ---
 # <a name="auth0-partner-topics"></a>Auth0-partner onderwerpen
 ![Auth0-logo](./media/auth0-overview/auth0-logo.png)
@@ -43,7 +43,7 @@ Het combi neren van beveiligings bewaking en antwoord procedures voor incidenten
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de onderwerpen over partners](partner-topics-overview.md)
+- [Overzicht van de onderwerpen over partners](partner-events-overview.md)
 - [Het Auth0-partner onderwerp gebruiken](auth0-how-to.md)
 - [Documentatie voor Auth0](https://auth0.com/docs/azure-tutorial)
 - [Word een Event Grid partner](partner-onboarding-overview.md)

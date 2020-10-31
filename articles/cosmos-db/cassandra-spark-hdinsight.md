@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 4848bdceef084d587c839f2af93d1ff5a43c850b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cee5181bf3dda3f0fb609d5aa344697e989ae6c3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260567"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098889"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Toegang tot Azure Cosmos DB Cassandra-API vanuit Spark op GARENs met HDInsight
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 In dit artikel wordt beschreven hoe u Azure Cosmos DB Cassandra-API vanuit Spark op GARENs kunt openen met HDInsight-Spark vanuit Spark-shell. HDInsight is de Hortonworks Hadoop PaaS van micro soft op Azure die gebruikmaakt van object opslag voor HDFS, en komt in verschillende soorten voor, waaronder [Spark](../hdinsight/spark/apache-spark-overview.md).  De inhoud van dit document verwijst naar HDInsight-Spark en is van toepassing op alle Hadoop-distributies.  
 

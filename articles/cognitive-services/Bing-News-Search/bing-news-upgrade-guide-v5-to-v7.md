@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7999ed5296f2ff4e64b9edc0fb355f72b7d7a04e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564af32b724c8b4883cd27d01813e246e5fa4901
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316644"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100198"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Upgrade handleiding voor Nieuws zoeken-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de Bing Nieuws zoeken-API. Gebruik deze hand leiding om u te helpen bij het identificeren van de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
 
@@ -90,4 +95,4 @@ Geblokkeerd|InvalidRequest. blocked
 
 - Het veld is toegevoegd `sort` aan het [Nieuws](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) object. `sort`In het veld wordt de sorteer volgorde van de artikelen weer gegeven. De artikelen worden bijvoorbeeld gesorteerd op relevantie (standaard) of datum.
 
-- Het [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) -object is toegevoegd, waarmee een sorteer volgorde wordt gedefinieerd. Het `isSelected` veld geeft aan of het antwoord de sorteer volgorde heeft gebruikt. Als dit het **geval**is, wordt de sorteer volgorde gebruikt voor het antwoord. Als `isSelected` de waarde **False**is, kunt u de URL in het `url` veld gebruiken om een andere sorteer volgorde aan te vragen.
+- Het [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) -object is toegevoegd, waarmee een sorteer volgorde wordt gedefinieerd. Het `isSelected` veld geeft aan of het antwoord de sorteer volgorde heeft gebruikt. Als dit het **geval** is, wordt de sorteer volgorde gebruikt voor het antwoord. Als `isSelected` de waarde **False** is, kunt u de URL in het `url` veld gebruiken om een andere sorteer volgorde aan te vragen.

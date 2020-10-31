@@ -1,24 +1,24 @@
 ---
-title: De levens cyclus van Azure Storage beheren
-description: Meer informatie over het maken van levenscyclus beleids regels voor het overstappen van verouderde gegevens van dynamische naar coole en archief lagen.
+title: Kosten optimaliseren door Azure Blob Storage Access-lagen te automatiseren
+description: Maak automatische regels voor het verplaatsen van gegevens tussen de lagen hot, cool en Archive.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/15/2020
+ms.date: 10/29/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309802"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100066"
 ---
-# <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
+# <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Kosten optimaliseren door Azure Blob Storage Access-lagen te automatiseren
 
-Gegevens sets hebben een unieke levens cyclus. In de loop van de levens cyclus hebben mensen vaak toegang tot bepaalde gegevens. Maar de nood zaak van de toegang tot de gegevens valt aanzienlijk. Sommige gegevens blijven niet actief in de Cloud en worden zelden gebruikt wanneer deze zijn opgeslagen. Sommige gegevens verlopen dagen of maanden na het maken, terwijl andere gegevens sets actief worden gelezen en gewijzigd gedurende hun levens duur. Levenscyclus beheer van Azure Blob-opslag biedt een rijk, op regels gebaseerd beleid voor GPv2-en Blob Storage-accounts. Gebruik het beleid om uw gegevens over te zetten naar de juiste toegangs lagen of verloopt aan het einde van de levens cyclus van de gegevens.
+Gegevens sets hebben een unieke levens cyclus. In de loop van de levens cyclus hebben mensen vaak toegang tot bepaalde gegevens. Maar de nood zaak van de toegang tot de gegevens valt aanzienlijk. Sommige gegevens blijven niet actief in de Cloud en worden zelden gebruikt wanneer deze zijn opgeslagen. Sommige gegevens verlopen dagen of maanden na het maken, terwijl andere gegevens sets actief worden gelezen en gewijzigd gedurende hun levens duur. Azure Blob Storage levenscyclus beheer biedt een rijk, op regels gebaseerd beleid voor GPv2-en Blob Storage-accounts. Gebruik het beleid om uw gegevens over te zetten naar de juiste toegangs lagen of verloopt aan het einde van de levens cyclus van de gegevens.
 
 Met het levenscyclus beheer beleid kunt u:
 
@@ -31,6 +31,7 @@ Met het levenscyclus beheer beleid kunt u:
 Houd rekening met een scenario waarbij gegevens veelvuldig toegankelijk zijn tijdens de vroege fase van de levens cyclus, maar af en toe slechts af en toe na twee weken. Na de eerste maand wordt de gegevensset zelden geopend. In dit scenario is hot Storage het beste tijdens de eerste fasen. Cool Storage is het meest geschikt voor incidentele toegang. Archief opslag is de beste laag optie nadat de gegevens gedurende een maand zijn verouderd. Door opslag lagen aan te passen ten opzichte van de leeftijd van gegevens, kunt u de minst dure opslag opties voor uw behoeften ontwerpen. Voor deze overgang zijn levenscyclus beheer beleids regels beschikbaar om verouderde gegevens naar koele lagen te verplaatsen.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 >[!NOTE]
 >Als u gegevens nodig hebt om Lees baarheid te blijven, bijvoorbeeld wanneer deze worden gebruikt door StorSimple, moet u geen beleid instellen om blobs naar de laag van het archief te verplaatsen.
 
@@ -65,7 +66,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek en selecteer uw opslag account in de Azure Portal. 
 
@@ -73,7 +74,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 1. Selecteer het tabblad **lijst weergave** .
 
-1. Selecteer **een regel toevoegen** en geef uw regel een naam op het **detail** formulier. U kunt ook het **regel bereik**, het **type BLOB**en de **subtype** waarden van BLOB instellen. In het volgende voor beeld wordt het bereik ingesteld op het filteren van blobs. Dit zorgt ervoor dat het tabblad **filter sets** wordt toegevoegd.
+1. Selecteer **een regel toevoegen** en geef uw regel een naam op het **detail** formulier. U kunt ook het **regel bereik** , het **type BLOB** en de **subtype** waarden van BLOB instellen. In het volgende voor beeld wordt het bereik ingesteld op het filteren van blobs. Dit zorgt ervoor dat het tabblad **filter sets** wordt toegevoegd.
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Levenscyclus beheer een pagina met regel Details toevoegen in Azure Portal":::
 
@@ -99,7 +100,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 1. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek en selecteer uw opslag account in de Azure Portal.
 
@@ -136,7 +137,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
    }
    ```
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
 1. Zie de secties [beleid](#policy) en [regels](#rules) voor meer informatie over dit JSON-voor beeld.
 
@@ -246,10 +247,10 @@ Elke regel in het beleid heeft verschillende para meters:
 
 | Parameternaam | Parameter type | Opmerkingen | Vereist |
 |----------------|----------------|-------|----------|
-| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig. Het moet uniek zijn binnen een beleid. | True |
-| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | False | 
-| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle` . | True |
-| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | True |
+| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig. Het moet uniek zijn binnen een beleid. | Waar |
+| `enabled`      | Boolean-waarde | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | Niet waar | 
+| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle` . | Waar |
+| `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | Waar |
 
 ## <a name="rules"></a>Regels
 
@@ -321,7 +322,7 @@ Filters omvatten:
 | blobIndexMatch | Een matrix met woordenlijst waarden die bestaan uit BLOB-index Tags sleutel en waarden die moeten worden vergeleken. Elke regel kan Maxi maal 10 BLOB-index code voorwaarde definiëren. Als u bijvoorbeeld alle blobs wilt vergelijken met `Project = Contoso` onder `https://myaccount.blob.core.windows.net/` voor een regel, is de blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Als u blobIndexMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | Nee |
 
 > [!NOTE]
-> BLOB-index bevindt zich in de open bare preview en is beschikbaar in de regio's **Canada-centraal**, **Canada-Oost**, **Frankrijk-centraal**en **Frankrijk-Zuid** . Zie voor meer informatie over deze functie, samen met bekende problemen en beperkingen, [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
+> BLOB-index bevindt zich in de open bare preview en is beschikbaar in de regio's **Canada-centraal** , **Canada-Oost** , **Frankrijk-centraal** en **Frankrijk-Zuid** . Zie voor meer informatie over deze functie, samen met bekende problemen en beperkingen, [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Regel acties
 
@@ -329,7 +330,7 @@ Acties worden toegepast op de gefilterde blobs wanneer wordt voldaan aan de voor
 
 Levenscyclus beheer ondersteunt het trapsgewijs maken en verwijderen van blobs, eerdere BLOB-versies en BLOB-moment opnamen. Definieer ten minste één actie voor elke regel op basis-blobs, eerdere BLOB-versies of BLOB-moment opnamen.
 
-| Bewerking                      | Basis-BLOB                                  | Momentopname      | Versie
+| Actie                      | Basis-BLOB                                  | Momentopname      | Versie
 |-----------------------------|--------------------------------------------|---------------|---------------|
 | tierToCool                  | Ondersteund voor `blockBlob`                  | Ondersteund     | Ondersteund     |
 | enableAutoTierToHotFromCool | Ondersteund voor `blockBlob`                  | Niet ondersteund | Niet ondersteund |

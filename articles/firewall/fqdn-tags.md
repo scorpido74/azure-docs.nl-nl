@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed34bf755023ab866e95c51aca6d1bfb1dd7bf71
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610605"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099450"
 ---
 # <a name="fqdn-tags-overview"></a>Overzicht van FQDN-labels
 
@@ -30,7 +30,7 @@ In de volgende tabel ziet u de huidige FQDN-Tags die u kunt gebruiken. Micro sof
 
 |FQDN-label  |Beschrijving  |
 |---------|---------|
-|Windows Update     |Uitgaande toegang tot Microsoft Update toestaan, zoals beschreven in [een firewall configureren voor software-updates](https://technet.microsoft.com/library/bb693717.aspx).|
+|Windows Update     |Uitgaande toegang tot Microsoft Update toestaan, zoals beschreven in [een firewall configureren voor software-updates](https://docs.microsoft.com/mem/configmgr/sum/get-started/install-a-software-update-point).|
 |Windows Diagnostische gegevens|Uitgaande toegang tot alle [Windows diagnostische eind punten](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)toestaan.|
 |Microsoft Active Protection Service (kaarten)|Uitgaande toegang tot [kaarten](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)toestaan.|
 |App Service Environment (ASE)|Hiermee wordt uitgaande toegang tot ASE-platformverkeer toegestaan. Dit label geldt niet voor klantspecifieke opslag-en SQL-eind punten die zijn gemaakt door ASE. Deze moeten worden ingeschakeld via [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of hand matig worden toegevoegd.<br><br>Zie [een app service Environment vergren delen](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)voor meer informatie over het integreren van Azure Firewall met ASE.|
@@ -40,7 +40,7 @@ In de volgende tabel ziet u de huidige FQDN-Tags die u kunt gebruiken. Micro sof
 |Azure Kubernetes Service (AKS)|Hiermee staat u uitgaande toegang tot AKS toe. Zie [Azure firewall gebruiken om Azure Kubernetes service (AKS)-implementaties te beveiligen](protect-azure-kubernetes-service.md)voor meer informatie.|
 
 > [!NOTE]
-> Wanneer u de FQDN-tag in een toepassings regel selecteert, moet het veld Protocol: poort worden ingesteld op **https**.
+> Wanneer u de FQDN-tag in een toepassings regel selecteert, moet het veld Protocol: poort worden ingesteld op **https** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

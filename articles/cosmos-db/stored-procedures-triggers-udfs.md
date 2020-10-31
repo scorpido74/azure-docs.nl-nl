@@ -7,16 +7,17 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7dc81581846f8abdae81fa3552d9fa4645f32a05
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480221"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101303"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB biedt taalgeïntegreerde, transactionele uitvoering van Java script. Wanneer u de SQL-API gebruikt in Azure Cosmos DB, kunt u **opgeslagen procedures**, **Triggers**en door de **gebruiker gedefinieerde functies (Udf's)** schrijven in de Java script-taal. U kunt uw logica schrijven in JavaScript die wordt uitgevoerd binnen de database-engine. U kunt triggers, opgeslagen procedures en UDFs maken en uitvoeren met behulp van [Azure Portal](https://portal.azure.com/), de [geïntegreerde Java script language-query-API in azure Cosmos DB](javascript-query-api.md) of de client-SDK'S van de [Cosmos DB SQL API](how-to-use-stored-procedures-triggers-udfs.md).
+Azure Cosmos DB biedt taalgeïntegreerde, transactionele uitvoering van Java script. Wanneer u de SQL-API gebruikt in Azure Cosmos DB, kunt u **opgeslagen procedures** , **Triggers** en door de **gebruiker gedefinieerde functies (Udf's)** schrijven in de Java script-taal. U kunt uw logica schrijven in JavaScript die wordt uitgevoerd binnen de database-engine. U kunt triggers, opgeslagen procedures en UDFs maken en uitvoeren met behulp van [Azure Portal](https://portal.azure.com/), de [geïntegreerde Java script language-query-API in azure Cosmos DB](javascript-query-api.md) of de client-SDK'S van de [Cosmos DB SQL API](how-to-use-stored-procedures-triggers-udfs.md).
 
 ## <a name="benefits-of-using-server-side-programming"></a>Voor delen van het gebruik van programmering aan de server zijde
 
@@ -41,7 +42,7 @@ Door opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
 ## <a name="transactions"></a>Transacties
 
-Trans acties in een typische data base kunnen worden gedefinieerd als een reeks bewerkingen die worden uitgevoerd als één logische werk eenheid. Elke trans actie biedt **ACID-eigenschappen garanties**. ZUUR is een bekend acroniem dat staat voor: **een**tomicity, **C**onsistency, **I**solation en **D**urability. 
+Trans acties in een typische data base kunnen worden gedefinieerd als een reeks bewerkingen die worden uitgevoerd als één logische werk eenheid. Elke trans actie biedt **ACID-eigenschappen garanties** . ZUUR is een bekend acroniem dat staat voor: **een** tomicity, **C** onsistency, **I** solation en **D** urability. 
 
 * Atomiciteit garandeert dat alle bewerkingen die worden uitgevoerd binnen een trans actie, worden behandeld als één eenheid en dat allemaal zijn doorgevoerd of niet. 
 

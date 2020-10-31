@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367122"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098770"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Inleiding tot ingerichte door Voer in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Met Azure Cosmos DB kunt u een ingerichte door Voer instellen voor uw data bases en containers. Er zijn twee soorten ingerichte door Voer, standaard (hand matig) of automatisch schalen. Dit artikel geeft een overzicht van de manier waarop de ingerichte door Voer werkt. 
 
@@ -79,11 +80,11 @@ Als uw workloads het verwijderen en opnieuw maken van alle verzamelingen in een 
 U kunt de twee modellen combi neren. De door Voer voor de data base en de container inrichten is toegestaan. In het volgende voor beeld ziet u hoe u standaard (hand matige) ingerichte door Voer kunt inrichten voor een Azure Cosmos-data base en een container:
 
 * U kunt een Azure Cosmos-data base met de naam *Z* maken met de standaard (hand matig) ingerichte door Voer van *"K"* RUs. 
-* Maak vervolgens vijf containers met de naam *A*, *B*, *C*, *D*en *E* in de-data base. Zorg ervoor dat u bij het maken van container B een **specifieke door Voer inrichten voor deze container** optie inschakelt en expliciet *' P '* RUs van ingerichte door Voer voor deze container configureert. U kunt gedeelde en toegewezen door Voer alleen configureren bij het maken van de data base en container. 
+* Maak vervolgens vijf containers met de naam *A* , *B* , *C* , *D* en *E* in de-data base. Zorg ervoor dat u bij het maken van container B een **specifieke door Voer inrichten voor deze container** optie inschakelt en expliciet *' P '* RUs van ingerichte door Voer voor deze container configureert. U kunt gedeelde en toegewezen door Voer alleen configureren bij het maken van de data base en container. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Fysieke partitie die als host fungeert voor een of meer logische partities van een container":::
 
-* De *"K"* RUs-door Voer wordt gedeeld in de vier containers *A*, *C*, *D*en *E*. De exacte hoeveelheid door Voer die beschikbaar is voor *A*, *C*, *D*of *E* , varieert. Er zijn geen service overeenkomsten voor de door Voer van elke afzonderlijke container.
+* De *"K"* RUs-door Voer wordt gedeeld in de vier containers *A* , *C* , *D* en *E* . De exacte hoeveelheid door Voer die beschikbaar is voor *A* , *C* , *D* of *E* , varieert. Er zijn geen service overeenkomsten voor de door Voer van elke afzonderlijke container.
 * De container met de naam *B* is gegarandeerd dat de *"P"* RUs-door Voer altijd wordt opgehaald. Er wordt een back-up gemaakt van service overeenkomsten.
 
 > [!NOTE]
@@ -119,9 +120,9 @@ U kunt de ingerichte door Voer van een container of een Data Base schalen via de
 * [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) in de .NET SDK.
 * [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) op de Java-SDK.
 
-Als u **de ingerichte door Voer verkort**, kunt u dit doen tot het [minimum](#current-provisioned-throughput).
+Als u **de ingerichte door Voer verkort** , kunt u dit doen tot het [minimum](#current-provisioned-throughput).
 
-Als u **de ingerichte door Voer toeneemt**, wordt de bewerking meestal onmiddellijk uitgevoerd. Er zijn echter gevallen waarin de bewerking langer kan duren vanwege de systeem taken om de vereiste bronnen in te richten. In dit geval wordt een poging om de ingerichte door voer te wijzigen terwijl deze bewerking wordt uitgevoerd, een HTTP 423-antwoord met een fout bericht weer gegeven waarin wordt uitgelegd dat er nog een andere schaal bewerking wordt uitgevoerd.
+Als u **de ingerichte door Voer toeneemt** , wordt de bewerking meestal onmiddellijk uitgevoerd. Er zijn echter gevallen waarin de bewerking langer kan duren vanwege de systeem taken om de vereiste bronnen in te richten. In dit geval wordt een poging om de ingerichte door voer te wijzigen terwijl deze bewerking wordt uitgevoerd, een HTTP 423-antwoord met een fout bericht weer gegeven waarin wordt uitgelegd dat er nog een andere schaal bewerking wordt uitgevoerd.
 
 > [!NOTE]
 > Als u van plan bent een zeer grote opname werk belasting te maken die een grote toename van de ingerichte door Voer vereist, moet u er rekening mee houden dat de schaal bewerking geen SLA heeft en, zoals vermeld in de vorige alinea, het lang kan duren wanneer de toename groot is. U kunt het beste plannen voordat de werk belasting begint en de volgende methoden gebruiken om de voortgang te controleren.

@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0252af90a6afb5b2a59620afaa61702f208991e7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b9a9af2178cc6130393cd9e74cb5b6b1f79dbf88
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785252"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100368"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Wijzigingenfeed in Azure Cosmos DB lezen
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 U kunt met de Azure Cosmos DB wijzigings feed werken met een push model of een pull-model. Met een push-model werkt de wijzigings processor pushes naar een client met bedrijfs logica voor de verwerking van dit werk. De complexiteit van het controleren op werk en het opslaan van de status voor het laatst verwerkte werk wordt echter verwerkt in de processor voor wijzigings invoer.
 

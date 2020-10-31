@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: eb9e8caff81e86b7db732c970eee1e1a08be5241
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 302c5d6e8e523a11b8773f10bb6089e3bea09bdd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491101"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101558"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Een container maken in Azure Cosmos DB SQL-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel worden de verschillende manieren beschreven voor het maken van een container in Azure Cosmos DB SQL-API. U ziet hoe u een container maakt met behulp van de Azure Portal, Azure CLI, Power shell of ondersteunde Sdk's. In dit artikel ziet u hoe u een container maakt, de partitiesleutel opgeeft en doorvoer inricht.
 
@@ -30,13 +31,13 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand account.
 
-1. Open het deel venster **Data Explorer** en selecteer **nieuwe container**. Geef de volgende gegevens op:
+1. Open het deel venster **Data Explorer** en selecteer **nieuwe container** . Geef de volgende gegevens op:
 
    * Geef aan of u een nieuwe database maakt of een bestaande database gebruikt.
    * Voer een container-ID in.
    * Voer een partitiesleutel in.
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
-   * Selecteer **OK**.
+   * Selecteer **OK** .
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
 

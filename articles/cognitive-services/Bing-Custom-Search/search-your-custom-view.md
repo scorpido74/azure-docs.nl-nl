@@ -10,21 +10,26 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38191c55afb87151b238069a75a6c86acd8904df
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76983109"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100538"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Uw Bing Aangepaste zoekopdrachten-exemplaar aanroepen vanuit de portal
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Nadat u uw aangepaste zoek ervaring hebt geconfigureerd, kunt u deze testen vanuit de Bing Aangepaste zoekopdrachten [Portal](https://customsearch.ai). 
 
 ![een scherm afbeelding van de Bing Custom Search-Portal](media/portal-search-screen.png)
 ## <a name="create-a-search-query"></a>Een zoek query maken 
 
-Nadat u zich hebt aangemeld bij de Bing Aangepaste zoekopdrachten [Portal](https://customsearch.ai), selecteert u uw Zoek instantie en klikt u op het tabblad **productie** . Onder **eind punten**selecteert u een API-eind punt (bijvoorbeeld Web-API). Uw abonnement bepaalt welke eind punten worden weer gegeven.
+Nadat u zich hebt aangemeld bij de Bing Aangepaste zoekopdrachten [Portal](https://customsearch.ai), selecteert u uw Zoek instantie en klikt u op het tabblad **productie** . Onder **eind punten** selecteert u een API-eind punt (bijvoorbeeld Web-API). Uw abonnement bepaalt welke eind punten worden weer gegeven.
 
 Als u een zoek query wilt maken, voert u de parameter waarden voor uw eind punt in. Houd er rekening mee dat de para meters die in de portal worden weer gegeven, kunnen veranderen, afhankelijk van het eind punt dat u kiest. Zie de [aangepaste zoekopdrachten-API referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) voor meer informatie. Als u het abonnement wilt wijzigen dat door uw Zoek instantie wordt gebruikt, voegt u de juiste abonnements sleutel toe en werkt u de juiste markt-en/of taal parameters bij.
 

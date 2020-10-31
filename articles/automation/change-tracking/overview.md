@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670743"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100691"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
 
@@ -93,7 +93,7 @@ Voor het bijhouden van wijzigingen in bestanden op Windows en Linux maakt Wijzig
 
 ## <a name="tracking-file-content-changes"></a>Wijzigingen in bestands inhoud bijhouden
 
-Met Wijzigingen bijhouden en inventaris kunt u de inhoud van een Windows-of Linux-bestand weer geven. Voor elke wijziging in een bestand bevat Wijzigingen bijhouden en inventaris de inhoud van het bestand in een [Azure Storage-account](/storage/common/storage-account-create). Wanneer u een bestand volgt, kunt u de inhoud ervan weer geven vóór of na een wijziging. De bestands inhoud kan in line of naast elkaar worden weer gegeven.
+Met Wijzigingen bijhouden en inventaris kunt u de inhoud van een Windows-of Linux-bestand weer geven. Voor elke wijziging in een bestand bevat Wijzigingen bijhouden en inventaris de inhoud van het bestand in een [Azure Storage-account](/azure/storage/common/storage-account-create). Wanneer u een bestand volgt, kunt u de inhoud ervan weer geven vóór of na een wijziging. De bestands inhoud kan in line of naast elkaar worden weer gegeven.
 
 ![Wijzigingen in een bestand weer geven](./media/overview/view-file-changes.png)
 

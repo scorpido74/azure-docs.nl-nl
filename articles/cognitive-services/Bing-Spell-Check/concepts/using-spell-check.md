@@ -10,14 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: a17ed0f13e352fb185d20d9dc2d7bfffa74ac957
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ece9d191460323a917579c5a32cff429f52139fa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334766"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098226"
 ---
 # <a name="using-the-bing-spell-check-api"></a>De Bing Spellingcontrole-API gebruiken
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Gebruik dit artikel voor meer informatie over het gebruik van de Bing Spellingcontrole-API voor het uitvoeren van contextuele grammatica- en spellingcontrole. De meeste spellingcontroles zijn afhankelijk van regelsets op basis van een woordenlijst, maar de Bing-spellingcontrole maakt gebruik van machine learning en statistische automatische vertaling voor nauwkeurige en contextuele correcties. 
 

@@ -6,14 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757894"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098753"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB serverloze (preview-versie)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB server is momenteel beschikbaar als preview-versie. Deze preview-versie wordt zonder Service Level Agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -32,9 +33,9 @@ Wanneer u Azure Cosmos DB gebruikt, worden voor elke database bewerking de koste
 
 Azure Cosmos DB server het beste geschikt is voor scenario's waar u verwacht:
 
-- **Licht verkeer**: omdat de capaciteit van de inrichting in dergelijke situaties niet vereist is en het mogelijk is dat de kosten worden verboden
-- **Matige burstie**: omdat containers met serverloze maxi maal 5.000 aanvraag eenheden per seconde kunnen leveren
-- **Matige prestaties**: omdat containers van serverloze [specifieke prestatie kenmerken](#performance) hebben
+- **Licht verkeer** : omdat de capaciteit van de inrichting in dergelijke situaties niet vereist is en het mogelijk is dat de kosten worden verboden
+- **Matige burstie** : omdat containers met serverloze maxi maal 5.000 aanvraag eenheden per seconde kunnen leveren
+- **Matige prestaties** : omdat containers van serverloze [specifieke prestatie kenmerken](#performance) hebben
 
 Om deze redenen moet Azure Cosmos DB serverloos worden overwogen voor de volgende typen werk belasting:
 
@@ -81,9 +82,9 @@ U kunt dezelfde grafiek vinden wanneer u Azure Monitor gebruikt, zoals [hier](mo
 
 Serverloze resources geven specifieke prestatie kenmerken door die afwijken van de ingerichte doorvoer resources:
 
-- **Beschik baarheid**: nadat de serverloze aanbieding algemeen beschikbaar is, wordt de beschik baarheid van serverloze containers gedekt door een Service Level Agreement (Sla) van 99,9% wanneer Beschikbaarheidszones (zone redundantie) niet wordt gebruikt. De SLA is 99,99% wanneer Beschikbaarheidszones worden gebruikt.
-- **Latentie**: nadat de serverloze aanbieding algemeen beschikbaar is, wordt de latentie van serverloze containers gedekt door een serviceniveau doelstelling (SLO) van 10 milliseconden of minder voor punt-en 30 milliseconden of minder voor schrijf bewerkingen. Een lees bewerking voor een punt bestaat uit het ophalen van één item met de ID en partitie sleutel waarde.
-- **Burstie**: nadat de serverloze aanbieding algemeen beschikbaar is, wordt de burstie van serverloze containers gedekt door een serviceniveau doelstelling (SLO) van 95%. Dit betekent dat de maximale burstie ten minste 95% van de tijd kan worden bereikt.
+- **Beschik baarheid** : nadat de serverloze aanbieding algemeen beschikbaar is, wordt de beschik baarheid van serverloze containers gedekt door een Service Level Agreement (Sla) van 99,9% wanneer Beschikbaarheidszones (zone redundantie) niet wordt gebruikt. De SLA is 99,99% wanneer Beschikbaarheidszones worden gebruikt.
+- **Latentie** : nadat de serverloze aanbieding algemeen beschikbaar is, wordt de latentie van serverloze containers gedekt door een serviceniveau doelstelling (SLO) van 10 milliseconden of minder voor punt-en 30 milliseconden of minder voor schrijf bewerkingen. Een lees bewerking voor een punt bestaat uit het ophalen van één item met de ID en partitie sleutel waarde.
+- **Burstie** : nadat de serverloze aanbieding algemeen beschikbaar is, wordt de burstie van serverloze containers gedekt door een serviceniveau doelstelling (SLO) van 95%. Dit betekent dat de maximale burstie ten minste 95% van de tijd kan worden bereikt.
 
 > [!NOTE]
 > Als Azure-Preview wordt Azure Cosmos DB serverloos uitgesloten van service overeenkomsten (SLA). De prestatie-eigenschappen die hierboven worden vermeld, worden geleverd als een preview van wat deze aanbieding zal leveren wanneer algemeen beschikbaar is.

@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f8dccca1d1264492a4e7c8dab568e13eec9d2557
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426615"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100708"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
 
@@ -38,7 +38,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
   * Voor Azure SQL Database kunt u deze informatie vinden in de connection string.
   
-    Als u deze teken reeks bijvoorbeeld wilt zoeken in de Azure Portal, opent u de data base. Selecteer in het menu Data Base ofwel **verbindings reeksen** of **Eigenschappen**:
+    Als u deze teken reeks bijvoorbeeld wilt zoeken in de Azure Portal, opent u de data base. Selecteer in het menu Data Base ofwel **verbindings reeksen** of **Eigenschappen** :
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
@@ -72,7 +72,7 @@ Voor toegang tot een Azure SQL Managed instance zonder gebruik te maken van de o
 
 De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sql-action)toevoegt en u nog geen verbinding hebt gemaakt met uw data base, wordt u gevraagd om de volgende stappen uit te voeren:
 
-1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld in uw data base in Azure SQL database of Azure SQL Managed instance:
+1. Selecteer bij **verificatie type** de verificatie die vereist is en is ingeschakeld in uw data base in Azure SQL database of Azure SQL Managed instance:
 
    | Verificatie | Beschrijving |
    |----------------|-------------|
@@ -80,11 +80,11 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
    | [**SQL Server-verificatie**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw data base. <p>Raadpleeg de volgende onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
-   Dit voor beeld gaat verder met **Azure AD Integrated**:
+   Dit voor beeld gaat verder met **Azure AD Integrated** :
 
    ![Scherm afbeelding met het verbindings venster ' SQL Server ' met de geopende lijst ' verificatie type ' en ' Azure AD Integrated ' geselecteerd.](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
-1. Nadat u **Azure AD Integrated**hebt geselecteerd, selecteert u **Aanmelden**. Selecteer uw gebruikers referenties voor verificatie op basis van het feit of u Azure SQL Database of Azure SQL Managed instance gebruikt.
+1. Nadat u **Azure AD Integrated** hebt geselecteerd, selecteert u **Aanmelden** . Selecteer uw gebruikers referenties voor verificatie op basis van het feit of u Azure SQL Database of Azure SQL Managed instance gebruikt.
 
 1. Selecteer deze waarden voor uw Data Base:
 
@@ -116,7 +116,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    Anders wordt uw gegevens gateway bron niet weer gegeven in de lijst met **verbindings gateways** wanneer u de verbinding maakt.
 
-1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld op uw SQL Server:
+1. Selecteer bij **verificatie type** de verificatie die vereist is en is ingeschakeld op uw SQL Server:
 
    | Verificatie | Beschrijving |
    |----------------|-------------|
@@ -124,7 +124,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
    | [**SQL Server-verificatie**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw SQL Server. <p>Zie [SQL Server-verificatie](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)voor meer informatie. |
    |||
 
-   Dit voor beeld gaat door met **Windows-verificatie**:
+   Dit voor beeld gaat door met **Windows-verificatie** :
 
    ![Selecteer het verificatie type dat u wilt gebruiken](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
 
@@ -137,7 +137,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
    | **Gebruikersnaam** | Ja | Uw gebruikers naam voor de SQL-Server en-data base |
    | **Wachtwoord** | Ja | Uw wacht woord voor de SQL-Server en-data base |
    | **Abonnement** |  Ja, voor Windows-verificatie | Het Azure-abonnement voor de gegevens gateway resource die u eerder hebt gemaakt in azure |
-   | **Verbindings gateway** | Ja, voor Windows-verificatie | De naam voor de gegevens gateway resource die u eerder hebt gemaakt in azure <p><p>**Tip**: als uw gateway niet in de lijst wordt weer gegeven, controleert u of u [uw gateway](../logic-apps/logic-apps-gateway-connection.md)correct hebt ingesteld. |
+   | **Verbindings gateway** | Ja, voor Windows-verificatie | De naam voor de gegevens gateway resource die u eerder hebt gemaakt in azure <p><p>**Tip** : als uw gateway niet in de lijst wordt weer gegeven, controleert u of u [uw gateway](../logic-apps/logic-apps-gateway-connection.md)correct hebt ingesteld. |
    |||
 
    > [!TIP]
@@ -152,7 +152,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    ![SQL Server verbinding maken is voltooid](./media/connectors-create-api-sqlazure/sql-server-create-connection-complete.png)
 
-1. Wanneer u klaar bent, selecteert u **maken**.
+1. Wanneer u klaar bent, selecteert u **maken** .
 
 1. Ga nu verder met de stappen die u nog niet hebt voltooid in [een SQL-trigger toevoegen](#add-sql-trigger) of [een SQL-actie toevoegen](#add-sql-action).
 
@@ -188,11 +188,11 @@ In dit voor beeld wordt de logische app gestart met de [terugkeer patroon](../co
 
 1. Open in de [Azure Portal](https://portal.azure.com) of in Visual Studio uw logische app in de ontwerp functie voor logische apps. In dit voor beeld wordt de Azure Portal voortgezet.
 
-1. Selecteer **nieuwe stap**onder de trigger of actie waar u de SQL-actie wilt toevoegen.
+1. Selecteer **nieuwe stap** onder de trigger of actie waar u de SQL-actie wilt toevoegen.
 
    ![Een actie toevoegen aan uw logische app](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
-   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen** .
 
 1. Voer in het zoekvak onder **Kies een actie** `sql server` in. Selecteer in de lijst acties de gewenste SQL-actie. In dit voor beeld wordt de actie **rij ophalen** gebruikt, waarmee één record wordt opgehaald.
 
@@ -210,11 +210,13 @@ In dit voor beeld wordt de logische app gestart met de [terugkeer patroon](../co
 
    Met deze stap wordt uw logische app Live in azure automatisch ingeschakeld en gepubliceerd.
 
+<a name="handle-bulk-data"></a>
+
 ## <a name="handle-bulk-data"></a>Bulk gegevens verwerken
 
 Soms moet u met de resultaten sets zo groot zijn dat de connector niet alle resultaten tegelijk retourneert, of u wilt de controle over de grootte en de structuur voor uw resultaten sets beter te bepalen. Hier volgt een aantal manieren waarop u dergelijke grote resultaten sets kunt verwerken:
 
-* Schakel *paginering*in om de resultaten te beheren als kleinere sets. Zie voor meer informatie [bulk gegevens, records en items ophalen met behulp van paginering](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Zie [SQL-paginering voor bulk gegevens overdracht met Logic apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)voor meer informatie.
+* Schakel *paginering* in om de resultaten te beheren als kleinere sets. Zie voor meer informatie [bulk gegevens, records en items ophalen met behulp van paginering](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Zie [SQL-paginering voor bulk gegevens overdracht met Logic apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)voor meer informatie.
 
 * Maak een [*opgeslagen procedure*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) waarmee de resultaten op de gewenste manier worden georganiseerd. De SQL-connector biedt veel back-end-functies die u kunt gebruiken met Azure Logic Apps, zodat u gemakkelijker zakelijke taken kunt automatiseren die samen werken met SQL database tabellen.
 
@@ -223,7 +225,9 @@ Soms moet u met de resultaten sets zo groot zijn dat de connector niet alle resu
   Als u de resultaten op de gewenste manier wilt indelen, kunt u een opgeslagen procedure maken die wordt uitgevoerd in uw SQL-exemplaar en gebruikmaakt van de **Select-order by-** instructie. Met deze oplossing hebt u meer controle over de grootte en de structuur van uw resultaten. Uw logische app roept de opgeslagen procedure aan met behulp van de actie voor het uitvoeren van een **opgeslagen procedure** van de SQL Server-connector. Zie [SELECT-Order By-Component](/sql/t-sql/queries/select-order-by-clause-transact-sql)voor meer informatie.
 
   > [!NOTE]
-  > Met deze connector is het uitvoeren van een opgeslagen procedure beperkt tot een [time-outlimiet van minder dan 2 minuten](/connectors/sql/#known-issues-and-limitations). Sommige opgeslagen procedures kunnen langer duren dan deze limiet om te verwerken en volledig te volt ooien, waardoor een fout wordt gegenereerd `504 TIMEOUT` . In werkelijkheid worden een aantal langlopende processen voor dit doel expliciet gecodeerd als opgeslagen procedures. Als u deze procedures van Azure Logic Apps aanroept, kunnen er problemen ontstaan als gevolg van deze time-outlimiet. Hoewel de SQL-connector geen systeem eigen ondersteuning biedt voor een asynchrone modus, kunt u deze modus simuleren met behulp van een SQL-voltooiings trigger, een native SQL Pass Through-query, een status tabel en taken aan de server zijde met behulp van de [elastische Azure-taak agent](../azure-sql/database/elastic-jobs-overview.md).
+  > De SQL-connector heeft een time-outlimiet van een opgeslagen procedure die [korter is dan 2 minuten](/connectors/sql/#known-issues-and-limitations). Een aantal opgeslagen procedures kan langer duren dan deze limiet is bereikt, waardoor `504 Timeout` er een fout optreedt. U kunt dit probleem omzeilen door gebruik te maken van een SQL-voltooiings trigger, een native SQL Pass Through-query, een status tabel en taken aan de server zijde.
+  > 
+  > Voor deze taak kunt u de [Azure elastische taak agent](../azure-sql/database/elastic-jobs-overview.md) gebruiken voor [Azure SQL database](../azure-sql/database/sql-database-paas-overview.md). Voor [SQL Server on-premises](/sql/sql-server/sql-server-technical-documentation) en [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)kunt u de [SQL Server Agent](/sql/ssms/agent/sql-server-agent)gebruiken. Zie voor meer informatie [verwerken van langlopende opgeslagen procedure time-outs in de SQL-connector voor Azure Logic apps](../logic-apps/handle-long-running-stored-procedures-sql-connector.md).
 
 ### <a name="handle-dynamic-bulk-data"></a>Dynamische bulk gegevens verwerken
 
@@ -233,13 +237,13 @@ Wanneer u een opgeslagen procedure aanroept met behulp van de SQL Server-connect
 
 1. De uitvoer indeling weer geven door een test uitvoering uit te voeren. Kopieer uw voorbeeld uitvoer en sla deze op.
 
-1. Selecteer in de ontwerp functie, onder de actie waar u de opgeslagen procedure aanroept, de optie **nieuwe stap**.
+1. Selecteer in de ontwerp functie, onder de actie waar u de opgeslagen procedure aanroept, de optie **nieuwe stap** .
 
-1. Zoek onder **Kies een actie**de actie [**JSON parseren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) en selecteer deze.
+1. Zoek onder **Kies een actie** de actie [**JSON parseren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) en selecteer deze.
 
-1. Selecteer in de actie **JSON parseren** **voorbeeld lading gebruiken om schema te genereren**.
+1. Selecteer in de actie **JSON parseren** **voorbeeld lading gebruiken om schema te genereren** .
 
-1. Plak in het vak **een voor beeld van een JSON-nettolading invoeren of plakken** uw voorbeeld uitvoer en selecteer **gereed**.
+1. Plak in het vak **een voor beeld van een JSON-nettolading invoeren of plakken** uw voorbeeld uitvoer en selecteer **gereed** .
 
    > [!NOTE]
    > Als er een fout bericht wordt weer gegeven dat Logic Apps geen schema kan genereren, controleert u of de syntaxis van de voorbeeld uitvoer correct is ingedeeld. Als u het schema nog niet kunt genereren, voert u in het vak **schema** het schema hand matig in.

@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203191"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099025"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Een aangepaste container implementeren op App Service met behulp van GitHub-acties
 
@@ -24,8 +24,8 @@ Voor een Azure App Service container werk stroom heeft het bestand drie secties:
 
 |Sectie  |Taken  |
 |---------|---------|
-|**Verificatie** | 1. Haal een service-principal of een publicatie profiel op. <br /> 2. Maak een GitHub-geheim. |
-|**Build** | 1. Maak de omgeving. <br /> 2. bouw de container installatie kopie. |
+|**Verificatie** | 1. Haal een service-principal of een publicatie profiel op. <br /> 2. Maak een GitHub-opslagplaats. |
+|**Ontwikkelen** | 1. Maak de omgeving. <br /> 2. bouw de container installatie kopie. |
 |**Implementeren** | 1. Implementeer de container installatie kopie. |
 
 ## <a name="prerequisites"></a>Vereisten
@@ -35,7 +35,7 @@ Voor een Azure App Service container werk stroom heeft het bestand drie secties:
 - Een werk container register en Azure App Service-app voor containers. In dit voor beeld wordt Azure Container Registry gebruikt. 
     - [Meer informatie over het maken van een container Node.js toepassing met behulp van docker, het pushen van de container installatie kopie naar een REGI ster en het implementeren van de installatie kopie naar Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
 
-## <a name="generate-deployment-credentials"></a>Implementatie referenties genereren
+## <a name="generate-deployment-credentials"></a>Genereer implementatiereferenties
 
 De aanbevolen manier om te verifiëren met Azure-app Services voor GitHub-acties is met een publicatie profiel. U kunt ook verifiëren met een Service-Principal, maar voor het proces zijn meer stappen vereist. 
 
@@ -47,13 +47,16 @@ Een publicatie profiel is een referentie op app-niveau. Stel uw publicatie profi
 
 1. Ga naar de app-service in de Azure Portal. 
 
-1. Selecteer op de pagina **overzicht** de optie **publicatie profiel ophalen**.
+1. Selecteer op de pagina **overzicht** de optie **publicatie profiel ophalen** .
+
+    > [!NOTE]
+    > Vanaf 2020 oktober moeten voor Linux-web-apps de app-instelling `WEBSITE_WEBDEPLOY_USE_SCM` worden ingesteld op `true` **voordat het bestand wordt gedownload** . Deze vereiste wordt in de toekomst verwijderd.
 
 1. Sla het gedownloade bestand op. U gebruikt de inhoud van het bestand om een GitHub-geheim te maken.
 
-# <a name="service-principal"></a>[Service-Principal](#tab/service-principal)
+# <a name="service-principal"></a>[Service-principal](#tab/service-principal)
 
-U kunt een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in de [Azure cli](/cli/azure/). Voer deze opdracht uit met [Azure Cloud shell](https://shell.azure.com/) in het Azure portal of door de knop **try it** te selecteren.
+U kunt een [service-principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met de opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) in de [Azure CLI](/cli/azure/). Voer deze opdracht uit met [Azure Cloud Shell](https://shell.azure.com/) in de Azure Portal of door de knop **Uitproberen** te selecteren.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -80,11 +83,11 @@ Vervang in het voor beeld de tijdelijke aanduidingen door de abonnements-ID, naa
 
 ## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
 
-In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen**.
+In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen** .
 
 Plak de inhoud van de JSON-uitvoer als de waarde van de geheime variabele. Geef het geheim de naam zoals `AZURE_CREDENTIALS` .
 
-Wanneer u het werk stroom bestand later configureert, gebruikt u het geheim voor de invoer `creds` van de Azure-aanmeldings actie. Bijvoorbeeld:
+Wanneer u het werkstroombestand later configureert, gebruikt u het geheim voor de invoer `creds` van de Azure-aanmeldingsactie. Bijvoorbeeld:
 
 ```yaml
 - uses: azure/login@v1
@@ -96,7 +99,7 @@ Wanneer u het werk stroom bestand later configureert, gebruikt u het geheim voor
 
 # <a name="publish-profile"></a>[Profiel publiceren](#tab/publish-profile)
 
-In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen**.
+In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen** .
 
 Als u [referenties op app-niveau](#generate-deployment-credentials)wilt gebruiken, plakt u de inhoud van het gedownloade bestand met het publicatie profiel in het veld waarde van het geheim. Geef het geheim een naam `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
@@ -108,13 +111,13 @@ Wanneer u uw GitHub-werk stroom configureert, gebruikt u de `AZURE_WEBAPP_PUBLIS
     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 ```
 
-# <a name="service-principal"></a>[Service-Principal](#tab/service-principal)
+# <a name="service-principal"></a>[Service-principal](#tab/service-principal)
 
-In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen**.
+In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toe te voegen** .
 
 Als u [referenties op gebruikers niveau](#generate-deployment-credentials)wilt gebruiken, plakt u de volledige JSON-uitvoer van de Azure cli-opdracht in het veld waarde van het geheim. Geef het geheim de naam zoals `AZURE_CREDENTIALS` .
 
-Wanneer u het werk stroom bestand later configureert, gebruikt u het geheim voor de invoer `creds` van de Azure-aanmeldings actie. Bijvoorbeeld:
+Wanneer u het werkstroombestand later configureert, gebruikt u het geheim voor de invoer `creds` van de Azure-aanmeldingsactie. Bijvoorbeeld:
 
 ```yaml
 - uses: azure/login@v1
@@ -232,7 +235,7 @@ jobs:
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         images: 'mycontainer.azurecr.io/myapp:${{ github.sha }}'
 ```
-# <a name="service-principal"></a>[Service-Principal](#tab/service-principal)
+# <a name="service-principal"></a>[Service-principal](#tab/service-principal)
 
 ```yaml
 on: [push]

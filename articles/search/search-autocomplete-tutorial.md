@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 04123d06d22786c9dd2aa08c2dab1153f6d43375
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951397"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098447"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatisch aanvullen en suggesties aan client-apps toevoegen
 
-Search-as-u-type is een algemene techniek voor het verbeteren van de productiviteit van door de gebruiker geïnitieerde query's. In azure Cognitive Search wordt deze ervaring ondersteund via *automatisch aanvullen*, waardoor een term of woord groep is gebaseerd op gedeeltelijke invoer (het volt ooien van ' micro ' met ' micro soft '). Een ander formulier is *suggesties*: een korte lijst met overeenkomende documenten (waarbij Boek titels worden geretourneerd met een id zodat u een koppeling naar een detail pagina kunt maken). Automatisch aanvullen en suggesties worden voorgesteld op basis van een overeenkomst in de index. De service biedt geen query's die nul resultaten retour neren.
+Search-as-u-type is een algemene techniek voor het verbeteren van de productiviteit van door de gebruiker geïnitieerde query's. In azure Cognitive Search wordt deze ervaring ondersteund via *automatisch aanvullen* , waardoor een term of woord groep is gebaseerd op gedeeltelijke invoer (het volt ooien van ' micro ' met ' micro soft '). Een ander formulier is *suggesties* : een korte lijst met overeenkomende documenten (waarbij Boek titels worden geretourneerd met een id zodat u een koppeling naar een detail pagina kunt maken). Automatisch aanvullen en suggesties worden voorgesteld op basis van een overeenkomst in de index. De service biedt geen query's die nul resultaten retour neren.
 
 Als u deze ervaringen wilt implementeren in azure Cognitive Search, hebt u het volgende nodig:
 
@@ -131,7 +131,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 ### <a name="enable-highlighting"></a>Markeren inschakelen
 
-Met markeren wordt lettertype stijl toegepast op de tekens in het resultaat dat overeenkomt met de invoer. Als de gedeeltelijke invoer bijvoorbeeld ' micro ' is, wordt het resultaat weer gegeven als **micro**Soft, **micro**bereik, enzovoort. Markeren is gebaseerd op de para meters HighlightPreTag en HighlightPostTag, gedefinieerd inline met de functie Voorst Ellen.
+Met markeren wordt lettertype stijl toegepast op de tekens in het resultaat dat overeenkomt met de invoer. Als de gedeeltelijke invoer bijvoorbeeld ' micro ' is, wordt het resultaat weer gegeven als **micro** Soft, **micro** bereik, enzovoort. Markeren is gebaseerd op de para meters HighlightPreTag en HighlightPostTag, gedefinieerd inline met de functie Voorst Ellen.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
@@ -181,7 +181,7 @@ De functie Voorstellen maakt gebruik van twee parameters die bepalen of er bij h
 
 ## <a name="autocomplete"></a>Automatisch aanvullen
 
-Tot nu toe is de zoek UX-code gecentreerd op suggesties. In het volgende code blok wordt automatisch aanvullen weer gegeven met de functie voor automatisch aanvullen van de gebruikers interface van XDSoft jQuery, waarbij een aanvraag voor Azure Cognitive Search automatisch aanvullen wordt door gegeven. Net als bij de suggesties, in een C#-toepassing, code die gebruikers interactie ondersteunt, gaat u naar **index. cshtml**.
+Tot nu toe is de zoek UX-code gecentreerd op suggesties. In het volgende code blok wordt automatisch aanvullen weer gegeven met de functie voor automatisch aanvullen van de gebruikers interface van XDSoft jQuery, waarbij een aanvraag voor Azure Cognitive Search automatisch aanvullen wordt door gegeven. Net als bij de suggesties, in een C#-toepassing, code die gebruikers interactie ondersteunt, gaat u naar **index. cshtml** .
 
 ```javascript
 $(function () {
@@ -253,4 +253,4 @@ Volg deze koppelingen voor end-to-end instructies of code die zowel zoek-als-u-t
 
 + [Zelf studie: uw eerste app maken in C# (Les 3)](tutorial-csharp-type-ahead-and-suggestions.md)
 + [Voor beeld van C#-code: Azure-Search-DotNet-samples/Create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
-+ [C# en Java script met REST-aan-zij code voorbeeld](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
++ [C# en Java script met REST-aan-zij code voorbeeld](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

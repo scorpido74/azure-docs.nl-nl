@@ -7,14 +7,15 @@ ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da07dc76bdd9273b70f68ee1abcddfa04519fda
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79365505"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101031"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Functions trigger voor Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel worden veelvoorkomende problemen, tijdelijke oplossingen en diagnostische stappen behandeld wanneer u de [Azure functions trigger voor Cosmos DB](change-feed-functions.md)gebruikt.
 
@@ -31,7 +32,7 @@ In dit artikel wordt altijd verwezen naar Azure Functions v2 wanneer de runtime 
 
 De belangrijkste functionaliteit van het uitbreidings pakket is om ondersteuning te bieden voor de Azure Functions trigger en bindingen voor Cosmos DB. Het bevat ook de [Azure Cosmos db .NET SDK](sql-api-sdk-dotnet-core.md). Dit is handig als u via een programma wilt communiceren met Azure Cosmos DB zonder de trigger en bindingen te gebruiken.
 
-Als u de Azure Cosmos DB SDK wilt gebruiken, moet u ervoor zorgen dat u niet nog een NuGet-pakket verwijzing aan uw project toevoegt. In plaats daarvan **kunt u de SDK-referentie oplossen via het uitbreidings pakket van de Azure functions**. De Azure Cosmos DB SDK afzonderlijk van de trigger en bindingen gebruiken
+Als u de Azure Cosmos DB SDK wilt gebruiken, moet u ervoor zorgen dat u niet nog een NuGet-pakket verwijzing aan uw project toevoegt. In plaats daarvan **kunt u de SDK-referentie oplossen via het uitbreidings pakket van de Azure functions** . De Azure Cosmos DB SDK afzonderlijk van de trigger en bindingen gebruiken
 
 Als u hand matig uw eigen exemplaar van de [Azure Cosmos DB SDK-client](./sql-api-sdk-dotnet-core.md)maakt, moet u ook het patroon volgen van slechts één exemplaar van de client [met behulp van een singleton patroon benadering](../azure-functions/manage-connections.md#documentclient-code-example-c). Dit proces voor komt de potentiële socket problemen in uw bewerkingen.
 
@@ -43,7 +44,7 @@ De Azure-functie is mislukt met het fout bericht: de verzamelings naam van de br
 
 Dit betekent dat een of beide Azure Cosmos-containers die vereist zijn voor de trigger voor werk, niet bestaan of niet bereikbaar zijn voor de Azure-functie. **De fout zelf vertelt u welke Azure Cosmos-data base en-container de trigger is die** op basis van uw configuratie moet worden gezocht.
 
-1. Controleer het `ConnectionStringSetting` kenmerk en of dit **verwijst naar een instelling die voor komt in uw Azure functie-app**. De waarde van dit kenmerk mag niet de verbindings reeks zelf zijn, maar de naam van de configuratie-instelling.
+1. Controleer het `ConnectionStringSetting` kenmerk en of dit **verwijst naar een instelling die voor komt in uw Azure functie-app** . De waarde van dit kenmerk mag niet de verbindings reeks zelf zijn, maar de naam van de configuratie-instelling.
 2. Controleer of de `databaseName` en `collectionName` aanwezig zijn in uw Azure Cosmos-account. Als u automatische vervanging van waarden (met `%settingName%` patronen) gebruikt, moet u ervoor zorgen dat de naam van de instelling bestaat in uw Azure functie-app.
 3. Als u geen opgeeft `LeaseCollectionName/leaseCollectionName` , wordt de standaard waarde leases. Controleer of deze container bestaat. U kunt desgewenst het `CreateLeaseCollectionIfNotExists` kenmerk in de trigger instellen om `true` het automatisch te maken.
 4. Controleer de [firewall configuratie van uw Azure Cosmos-account](how-to-configure-firewall.md) om te zien of deze niet de Azure-functie blokkeert.
@@ -94,7 +95,7 @@ In dit scenario is het de beste manier om blokken toe te voegen `try/catch` in u
 > [!NOTE]
 > Standaard wordt er met de Azure Functions-trigger niet opnieuw een batch met wijzigingen geprobeerd als er een niet-afgehandelde uitzondering tijdens het uitvoeren van de code is opgetreden. Dit betekent dat de wijzigingen niet zijn doorgevoerd op de bestemming omdat u deze niet kunt verwerken.
 
-Als u merkt dat sommige wijzigingen niet door de trigger zijn ontvangen, is het meest voorkomende scenario dat er **een andere Azure-functie wordt uitgevoerd**. Het kan een andere Azure-functie zijn die is geïmplementeerd in azure of een Azure-functie die lokaal wordt uitgevoerd op de computer van een ontwikkelaar en die **exact dezelfde configuratie** heeft (dezelfde bewaakte en lease-containers). deze Azure-functie stelen een subset van de wijzigingen die u verwacht dat uw Azure-functie wordt verwerkt.
+Als u merkt dat sommige wijzigingen niet door de trigger zijn ontvangen, is het meest voorkomende scenario dat er **een andere Azure-functie wordt uitgevoerd** . Het kan een andere Azure-functie zijn die is geïmplementeerd in azure of een Azure-functie die lokaal wordt uitgevoerd op de computer van een ontwikkelaar en die **exact dezelfde configuratie** heeft (dezelfde bewaakte en lease-containers). deze Azure-functie stelen een subset van de wijzigingen die u verwacht dat uw Azure-functie wordt verwerkt.
 
 Daarnaast kunt u het scenario valideren als u weet hoeveel exemplaren van Azure functie-app u uitvoert. Als u uw leases-container inspecteert en het aantal lease-items binnen hebt geteld, moeten de afzonderlijke waarden van de `Owner` eigenschap in deze worden ingesteld op het aantal exemplaren van uw functie-app. Als er meer eigen aren zijn dan de instanties van de bekende Azure-functie-app, betekent dit dat deze extra eigen aren de wijzigingen ' stelen ' hebben.
 

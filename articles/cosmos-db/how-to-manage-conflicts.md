@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3edaf55c8acb4def4f074c0d8f96eb399d98b6ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7370642f5a325867c901d7ebd362e6dfa68e098f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491084"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101503"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Conflictoplossingsbeleid beheren in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Als er meerdere regio's worden geschreven, kunnen er conflicten optreden wanneer verschillende clients naar hetzelfde item schrijven. Als er een conflict optreedt, kunt u het conflict oplossen met behulp van een ander beleid voor conflict oplossing. In dit artikel wordt beschreven hoe u beleids regels voor conflict oplossing beheert.
 
@@ -134,10 +135,10 @@ Deze voorbeelden laten zien hoe u een container kunt instellen met aangepast con
 
 Opgeslagen procedures voor het oplossen van aangepaste conflicten moeten worden geïmplementeerd met behulp van de functie handtekening die hieronder wordt weer gegeven. De functie naam hoeft niet overeen te komen met de naam die wordt gebruikt bij het registreren van de opgeslagen procedure bij de container, maar dit vereenvoudigt de naam. Hier volgt een beschrijving van de para meters die voor deze opgeslagen procedure moeten worden geïmplementeerd.
 
-- **incomingItem**: het item dat wordt ingevoegd of bijgewerkt tijdens de door voering waardoor de conflicten worden gegenereerd. Is null voor Delete-bewerkingen.
-- **existingItem**: het momenteel doorgevoerde item. Deze waarde is niet-null in een update en Null voor een INSERT of DELETE.
-- **isTombstone**: Boolean die aangeeft of de incomingItem een conflict veroorzaakt met een eerder verwijderd item. Indien true, is existingItem ook null.
-- **conflictingItems**: de matrix van de doorgevoerde versie van alle items in de container die conflicteren met INCOMINGITEM op id of andere eigenschappen van een unieke index.
+- **incomingItem** : het item dat wordt ingevoegd of bijgewerkt tijdens de door voering waardoor de conflicten worden gegenereerd. Is null voor Delete-bewerkingen.
+- **existingItem** : het momenteel doorgevoerde item. Deze waarde is niet-null in een update en Null voor een INSERT of DELETE.
+- **isTombstone** : Boolean die aangeeft of de incomingItem een conflict veroorzaakt met een eerder verwijderd item. Indien true, is existingItem ook null.
+- **conflictingItems** : de matrix van de doorgevoerde versie van alle items in de container die conflicteren met INCOMINGITEM op id of andere eigenschappen van een unieke index.
 
 > [!IMPORTANT]
 > Net als bij elke opgeslagen procedure heeft een aangepaste procedure voor het oplossen van conflicten toegang tot alle gegevens met dezelfde partitie sleutel en kan een invoeg-, update-of verwijder bewerking worden uitgevoerd om conflicten op te lossen.

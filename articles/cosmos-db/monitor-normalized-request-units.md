@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc47f2f7a0f1586b197d14015fe2167293c806c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801474"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099331"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Genormaliseerde RU/s voor een Azure Cosmos-container of-account bewaken
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Monitor voor Azure Cosmos DB biedt een weer gave van metrische gegevens voor het bewaken van uw account en het maken van Dash boards. De Azure Cosmos DB metrische gegevens worden standaard verzameld. voor deze functie hoeft u niets expliciet in te scha kelen of te configureren.
 
@@ -23,7 +24,7 @@ De **genormaliseerde** metrische gegevens over het gebruik van ru worden gebruik
 
 Wanneer het genormaliseerde RU/s-verbruik 100% voor het opgegeven partitie sleutel bereik bereikt en als een client nog steeds aanvragen in dat tijd venster van 1 seconde in het desbetreffende partitie sleutel bereik ontvangt, wordt er een beperkte fout weer gegeven. De client moet de voorgestelde wacht tijd respecteren en de aanvraag opnieuw proberen. Met de SDK kunt u deze situatie eenvoudig afhandelen door vooraf geconfigureerde tijden opnieuw te proberen door op de juiste manier te wachten.  Het is niet nodig dat u de fout waarde voor het beperken van de RU-frequentie alleen ziet omdat de genormaliseerde RU 100% heeft bereikt. Dat komt doordat de genormaliseerde RU een enkele waarde is die het maximale gebruik voor alle partitie sleutel reeksen vertegenwoordigt, een partitie sleutel bereik mogelijk kan worden gebruikt, maar de andere partitie sleutel bereiken kunnen de aanvragen zonder problemen verwerken. Eén bewerking zoals een opgeslagen procedure die alle RU/s op een partitie sleutel bereik gebruikt, zal bijvoorbeeld leiden tot een korte piek in het genormaliseerde RU/s-verbruik. In dergelijke gevallen zijn er geen problemen met de onmiddellijke frequentie beperking als de aanvraag frequentie laag is of aanvragen worden gedaan voor andere partities op verschillende partitie sleutel bereiken. 
 
-Met de Azure Monitor metrische gegevens kunt u de bewerkingen per status code voor SQL API vinden met behulp van het **totale aantal aanvragen** . Later kunt u filteren op deze aanvragen met de status code 429 en deze vervolgens splitsen op **bewerkings type**.  
+Met de Azure Monitor metrische gegevens kunt u de bewerkingen per status code voor SQL API vinden met behulp van het **totale aantal aanvragen** . Later kunt u filteren op deze aanvragen met de status code 429 en deze vervolgens splitsen op **bewerkings type** .  
 
 Voor het vinden van de aanvragen die beperkt zijn, is de aanbevolen manier om deze informatie op te halen via Diagnostische logboeken.
 
@@ -37,11 +38,11 @@ Kortom, de **genormaliseerde** metrische gegevens over het gebruik van ru worden
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-2. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
+2. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens** .
 
    :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
-3. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
+3. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement** en de **resource groep** . Voor het **bron type** selecteert u **Azure Cosmos DB accounts** , kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen** .
 
    :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
@@ -53,7 +54,7 @@ Kortom, de **genormaliseerde** metrische gegevens over het gebruik van ru worden
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>Filters voor genormaliseerd verbruik van aanvraag eenheden
 
-U kunt ook de metrische gegevens en de grafiek die worden weer gegeven met een specifieke **verzamelingnaam**, **DATABASENAME**, **PartitionKeyRangeID**en **regio**filteren. Als u de metrische gegevens wilt filteren, selecteert u **filter toevoegen** en kiest u de gewenste eigenschap, zoals naam **verzameling** en bijbehorende waarde die u interesseert. In de grafiek worden vervolgens de genormaliseerde RU-verbruiks eenheden weer gegeven die zijn gebruikt voor de container voor de geselecteerde periode.  
+U kunt ook de metrische gegevens en de grafiek die worden weer gegeven met een specifieke **verzamelingnaam** , **DATABASENAME** , **PartitionKeyRangeID** en **regio** filteren. Als u de metrische gegevens wilt filteren, selecteert u **filter toevoegen** en kiest u de gewenste eigenschap, zoals naam **verzameling** en bijbehorende waarde die u interesseert. In de grafiek worden vervolgens de genormaliseerde RU-verbruiks eenheden weer gegeven die zijn gebruikt voor de container voor de geselecteerde periode.  
 
 U kunt metrische gegevens groeperen met behulp van de optie **splitsing Toep assen** .  
 

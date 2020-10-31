@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 92d15337f511f534c23ff97d274b344714812a5e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277981"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100249"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Meer informatie over het modelleren en partitioneren van gegevens in Azure Cosmos DB aan de hand van een praktijkvoorbeeld
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel worden verschillende Azure Cosmos DB concepten, zoals [gegevens modellering](modeling-data.md), [partitioneren](partitioning-overview.md)en [ingerichte door Voer](request-units.md) , gebouwd om te laten zien hoe u een praktijk oefening voor het ontwerpen van gegevens kunt beleven.
 
@@ -22,10 +23,10 @@ Als u meestal met relationele data bases werkt, hebt u waarschijnlijk gewoonten 
 
 ## <a name="the-scenario"></a>Het scenario
 
-Voor deze oefening gaan we het domein van een blog platform overwegen waar *gebruikers* *berichten*kunnen maken. Gebruikers *kunnen ook* *notities* toevoegen aan deze berichten.
+Voor deze oefening gaan we het domein van een blog platform overwegen waar *gebruikers* *berichten* kunnen maken. Gebruikers *kunnen ook* *notities* toevoegen aan deze berichten.
 
 > [!TIP]
-> Er zijn enkele woorden *cursief*gemarkeerd. deze woorden identificeren het soort ' dingen ' die ons model moet manipuleren.
+> Er zijn enkele woorden *cursief* gemarkeerd. deze woorden identificeren het soort ' dingen ' die ons model moet manipuleren.
 
 Meer vereisten aan onze specificatie toevoegen:
 
@@ -291,7 +292,7 @@ We wijzigen ook opmerkingen en soort gelijke items om de gebruikers naam toe te 
 
 Wat we willen doen, is dat elke keer dat we een opmerking of als soort toevoegen, we ook de `commentCount` of de `likeCount` in de bijbehorende post verhogen. Als `posts` de container is gepartitioneerd door `postId` , wordt het nieuwe item (opmerking of leuk) en het bijbehorende bericht in dezelfde logische partitie geplaatst. Als gevolg hiervan kunnen we een [opgeslagen procedure](stored-procedures-triggers-udfs.md) gebruiken om die bewerking uit te voeren.
 
-Wanneer u nu een opmerking maakt (**[C3]**) in plaats van een nieuw item toe te voegen aan de `posts` container, noemen we de volgende opgeslagen procedure in die container:
+Wanneer u nu een opmerking maakt ( **[C3]** ) in plaats van een nieuw item toe te voegen aan de `posts` container, noemen we de volgende opgeslagen procedure in die container:
 
 ```javascript
 function createComment(postId, comment) {
@@ -405,7 +406,7 @@ Precies dezelfde situatie wanneer u het leuk vindt.
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: controleren of alle aanvragen schaalbaar zijn
 
-Bekijk onze algemene prestatie verbeteringen, maar er zijn nog twee aanvragen die niet volledig zijn geoptimaliseerd: **[Q3]** en **[Q6]**. Dit zijn de aanvragen met betrekking tot query's die niet worden gefilterd op de partitie sleutel van de containers waarop ze zijn gericht.
+Bekijk onze algemene prestatie verbeteringen, maar er zijn nog twee aanvragen die niet volledig zijn geoptimaliseerd: **[Q3]** en **[Q6]** . Dit zijn de aanvragen met betrekking tot query's die niet worden gefilterd op de partitie sleutel van de containers waarop ze zijn gericht.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>K3 De berichten van een gebruiker in een korte vorm weer geven
 

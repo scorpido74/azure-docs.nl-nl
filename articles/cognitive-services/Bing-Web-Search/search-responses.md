@@ -11,14 +11,19 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cea88c2e20c9e96c5ad5504815886b2cc771e44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297787"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100555"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Webzoekopdrachten-API-antwoord structuur en-antwoord typen  
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) object geretourneerd in de hoofd tekst van het antwoord. Het object bevat een veld voor elk antwoord dat door Bing is bepaald en dat van belang is voor de query. Dit voor beeld illustreert een reactie object als Bing alle antwoorden heeft geretourneerd:
 
@@ -38,7 +43,7 @@ Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een [`SearchResponse
 }, ...
 ```
 
-Meestal retourneert Bing Web Search een subset van de antwoorden. Als de query term bijvoorbeeld *dinghies*is, kan de reactie het volgende omvatten `webPages` :, `images` en `rankingResponse` . Tenzij u [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) hebt gebruikt om webpagina's te filteren, bevat het antwoord altijd de `webpages` en `rankingResponse` antwoorden.
+Meestal retourneert Bing Web Search een subset van de antwoorden. Als de query term bijvoorbeeld *dinghies* is, kan de reactie het volgende omvatten `webPages` :, `images` en `rankingResponse` . Tenzij u [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) hebt gebruikt om webpagina's te filteren, bevat het antwoord altijd de `webpages` en `rankingResponse` antwoorden.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -296,7 +301,7 @@ Een wiskundige expressie kan de volgende symbolen bevatten:
 |-|Aftrekking|
 |/|Afdeling|
 |*|Vermenigvuldigen|
-|^|Voeding|
+|^|Stroom|
 |!|Faculteit|
 |.|Decimaal|
 |()|Rang groepering|
@@ -328,7 +333,7 @@ Wiskundige expressies die variabelen bevatten (bijvoorbeeld 4x + 6 = 18, waarbij
 
 ## <a name="timezone-answer"></a>Antwoord tijd zone
 
-Als de gebruiker een tijd-of datum query invoert, kan het antwoord een tijd [zone](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) antwoord bevatten. Dit antwoord biedt ondersteuning voor impliciete of expliciete query's. Een impliciete query, zoals *Wat is de tijd?*, retourneert de lokale tijd op basis van de locatie van de gebruiker. Een expliciete query, zoals de *tijd in Seattle?*, retourneert de lokale tijd voor Seattle, WA.
+Als de gebruiker een tijd-of datum query invoert, kan het antwoord een tijd [zone](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) antwoord bevatten. Dit antwoord biedt ondersteuning voor impliciete of expliciete query's. Een impliciete query, zoals *Wat is de tijd?* , retourneert de lokale tijd op basis van de locatie van de gebruiker. Een expliciete query, zoals de *tijd in Seattle?* , retourneert de lokale tijd voor Seattle, WA.
 
 Het `timeZone` antwoord bevat de naam van de locatie, de huidige UTC-datum en-tijd op de opgegeven locatie en de UTC-afwijking. Als de grens van de locatie zich binnen meerdere tijd zones bevindt, bevat het antwoord de huidige UTC-datum en-tijd van alle tijd zones binnen de grens. Omdat de provincie van Florida bijvoorbeeld binnen twee tijd zones valt, bevat het antwoord de lokale datum en tijd van beide tijd zones.  
 
@@ -419,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion-antwoord
 
-Als Bing bepaalt dat de gebruiker mogelijk is bedoeld om iets anders te zoeken, bevat het antwoord een [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) -object. Als de gebruiker bijvoorbeeld zoekt naar de *Carlos-pen*, kan Bing bepalen of de gebruiker die is bedoeld om te zoeken naar Carlos Pena in plaats daarvan (op basis van vroegere Zoek opdrachten door andere *Carlos-pen*). Hieronder ziet u een voor beeld van een spelling reactie.
+Als Bing bepaalt dat de gebruiker mogelijk is bedoeld om iets anders te zoeken, bevat het antwoord een [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) -object. Als de gebruiker bijvoorbeeld zoekt naar de *Carlos-pen* , kan Bing bepalen of de gebruiker die is bedoeld om te zoeken naar Carlos Pena in plaats daarvan (op basis van vroegere Zoek opdrachten door andere *Carlos-pen* ). Hieronder ziet u een voor beeld van een spelling reactie.
 
 ```json
 "spellSuggestions": {
@@ -480,6 +485,6 @@ Hieronder ziet u hoe Bing de spelling suggestie gebruikt.
 
 * Raadpleeg de documentatie over het [beperken van aanvragen](throttling-requests.md) .  
 
-## <a name="see-also"></a>Zie ook  
+## <a name="see-also"></a>Zie tevens  
 
 * [Bing Webzoekopdrachten-API referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

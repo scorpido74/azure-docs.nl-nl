@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86024074"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098464"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection: overzicht van de beveiliging
 
@@ -27,7 +27,7 @@ Het beveiligings overzicht is breed onderverdeeld in twee secties:
 - Trends, aan de linkerkant, bieden een risico lijn voor uw organisatie.
 - Naast tegels markeert u aan de rechter kant de belangrijkste problemen in uw organisatie en wordt voorgesteld hoe u snel actie kunt ondernemen.
 
-![Beveiligingsoverzicht](./media/concept-identity-protection-security-overview/01.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/01.png" alt-text="Scherm afbeelding van het Azure Portal Security-overzicht. Staaf diagrammen laten het aantal Risico's in de loop van de tijd zien. Tegels beschrijven informatie over gebruikers en aanmeldingen." border="false":::
   
 ## <a name="trends"></a>Trends
 
@@ -45,7 +45,7 @@ Dit diagram toont het aantal Risk ante aanmeldingen dat tijdens de gekozen tijds
 
 De tegel gebruikers met een hoog risico toont het nieuwste aantal gebruikers met een hoge kans op inbreuk op de identiteit. Deze moeten de hoogste prioriteit voor onderzoek zijn. Als u op de tegel ' gebruikers van hoog risico ' klikt, wordt een omleiding naar een gefilterde weer gave van het rapport Risk ante gebruikers weer gegeven met alleen gebruikers met een risico niveau hoog. Met dit rapport kunt u meer informatie vinden en deze gebruikers herstellen met een wacht woord opnieuw instellen.
 
-![Beveiligingsoverzicht](./media/concept-identity-protection-security-overview/02.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Scherm afbeelding van het Azure Portal Security-overzicht. Staaf diagrammen laten het aantal Risico's in de loop van de tijd zien. Tegels beschrijven informatie over gebruikers en aanmeldingen." border="false":::
 
 ### <a name="medium-risk-users"></a>Gebruikers met een gemiddeld risico
 De tegel gebruikers met een gemiddeld risico toont het nieuwste aantal gebruikers met een gemiddelde kans op inbreuk op de identiteit. Als u op de tegel ' gebruikers van middel grote risico ' klikt, wordt een gefilterde weer gave van het rapport Risk ante gebruikers omgeleid naar een gemiddeld risico niveau. Met dit rapport kunt u deze gebruikers verder onderzoeken en oplossen.

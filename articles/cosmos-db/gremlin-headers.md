@@ -7,14 +7,16 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00394e60ad1cf86bfd75a86a0b6630505c7d7356
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490574"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100385"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Gremlin server-antwoord headers Azure Cosmos DB
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 In dit artikel worden headers behandeld die de Cosmos DB Gremlin-server retourneert naar de aanroeper bij het uitvoeren van de aanvraag. Deze headers zijn handig voor het oplossen van problemen met de prestaties van aanvragen, het bouwen van een toepassing die zonder benodigde systeemaanpassingen kan worden geïntegreerd met de Cosmos DB-service en het vereenvoudigen van de klantondersteuning.
 
 Houd er rekening mee dat het afhankelijk maken van deze headers u de draag baarheid van uw toepassing beperkt tot andere Gremlin-implementaties. Als resultaat krijgt u een nauwere integratie met Cosmos DB Gremlin. Deze headers zijn geen TinkerPop-standaard.

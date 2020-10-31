@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 4251a9ec0766f6e1956e4885b58dc874e01b0960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad2b9bcbfdd4353c16d890d1857727b685a5e59
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253068"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098855"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Opgeslagen procedures en triggers schrijven in Azure Cosmos DB met de JavaScript-query-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In Azure Cosmos DB kunt u geoptimaliseerde query's uitvoeren door gebruik te maken van een gestroomlijnde JavaScript-interface zonder dat u SQL hoeft te kennen om opgeslagen procedures of triggers te kunnen schrijven. Zie het artikel [Werken met de geïntegreerde query-API voor JavaScript in Azure Cosmos DB](javascript-query-api.md) voor meer informatie over ondersteuning van de JavaScript-query-API in Azure Cosmos DB.
 

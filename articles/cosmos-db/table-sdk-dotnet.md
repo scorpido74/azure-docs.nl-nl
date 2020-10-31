@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bc984e330085430db10298380dfdc9767f1aa770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea5f3fca18e6a5781bf46112134ae4efc7159106
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261937"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101201"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Download-en release-opmerkingen
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
@@ -30,7 +31,7 @@ ms.locfileid: "91261937"
 |**SDK downloaden**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
 |**Snelstartgids**|[Azure Cosmos DB: een app bouwen met .NET en de Table-API](create-table-dotnet.md)|
 |**Zelfstudie**|[Azure Cosmos DB: ontwikkelen met de tabel-API in .NET](tutorial-develop-table-dotnet.md)|
-|**Huidig ondersteund Framework**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
+|**Huidig ondersteund framework**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
 > De .NET Framework SDK [Microsoft.Azure.CosmosDB.Table ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) bevindt zich in de onderhoudsmodus en wordt binnenkort beëindigd. Voer een upgrade uit naar de nieuwe .NET Standaard bibliotheek [Microsoft.Azure.Cosmos.table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) om door te gaan met de nieuwste functies die door de Table-API worden ondersteund.
@@ -85,7 +86,7 @@ De `Microsoft.Azure.CosmosDB.Table` bibliotheek is momenteel alleen beschikbaar 
 
 Het preview-pakket voor [WindowsAzure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) is afgeschaft. De SDK voor WindowsAzure. Storage-PremiumTable wordt op 15 november 2018 ingetrokken, op het moment dat de aanvragen voor de buiten gebruik gestelde SDK niet worden toegestaan.
 
-| Versie | Release datum | Buitengebruikstellingsdatum |
+| Versie | Releasedatum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
 | [omschreven](#2.1.2) |16 september 2019| |
 | [2.1.0](#2.1.0) |22 januari 2019|01 april 2020 |

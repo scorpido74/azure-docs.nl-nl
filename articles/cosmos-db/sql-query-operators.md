@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2f79e2ca751ce9c1016f32effeca532d6ffe7fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498834"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101235"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Opera tors in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel vindt u meer informatie over de verschillende Opera tors die door Azure Cosmos DB worden ondersteund.
 
@@ -21,11 +22,11 @@ In dit artikel vindt u meer informatie over de verschillende Opera tors die door
 
 In de volgende tabel ziet het resultaat van gelijkheidsvergelijkingen in de SQL-API voor elk paar JSON-typen.
 
-| **Op** | **Undefined** | **Null** | **Booleaans** | **Number** | **Tekenreeks** | **Object** | **Array** |
+| **Op** | **Undefined** | **Null** | **True** | **Number** | **Tekenreeks** | **Object** | **Array** |
 |---|---|---|---|---|---|---|---|
 | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Null** | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Booleaans** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
+| **True** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
 | **Number** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
 | **Tekenreeks** | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined |
 | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined |
@@ -55,7 +56,7 @@ Retourneert `true` Wanneer een van de voor waarden is `true` .
 | --- | --- | --- | --- |
 | **True** |Waar |Waar |Waar |
 | **False** |Waar |Niet waar |Undefined |
-| **Undefined** |True |Undefined |Undefined |
+| **Undefined** |Waar |Undefined |Undefined |
 
 **Operator EN**
 
@@ -65,7 +66,7 @@ Retourneert `true` wanneer beide expressies zijn `true` .
 | --- | --- | --- | --- |
 | **True** |Waar |Niet waar |Undefined |
 | **False** |False |False |False |
-| **Undefined** |Undefined |False |Undefined |
+| **Undefined** |Undefined |Niet waar |Undefined |
 
 **Operator NIET**
 
@@ -73,8 +74,8 @@ Keert de waarde van een booleaanse expressie om.
 
 |  | **NOT** |
 | --- | --- |
-| **True** |False |
-| **False** |True |
+| **True** |Niet waar |
+| **False** |Waar |
 | **Undefined** |Undefined |
 
 **Operator prioriteit**

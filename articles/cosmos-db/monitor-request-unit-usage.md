@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
-ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6f0f30d7437b6f8ecc1d915eb3d3195f2504fec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260743"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098243"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>De door Voer of het verbruik van aanvraag eenheden van een bewerking in Azure Cosmos DB controleren
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Monitor voor Azure Cosmos DB biedt een weer gave van metrische gegevens voor het bewaken van uw account en het maken van Dash boards. De Azure Cosmos DB metrische gegevens worden standaard verzameld. voor deze functie hoeft u niets expliciet in te scha kelen of te configureren. De metrische gegevens voor de **totale aanvraag eenheden** worden gebruikt om het gebruik van de aanvraag eenheden voor verschillende typen bewerkingen op te halen. U kunt later analyseren welke bewerkingen het meest worden gebruikt voor de door voer. Standaard worden de doorvoer gegevens geaggregeerd met een interval van één minuut. U kunt de aggregatie-eenheid echter wijzigen door de optie tijd granulatie te wijzigen.
 
@@ -34,13 +35,13 @@ Als u ziet dat bepaalde query's meer aanvraag eenheden nemen, kunt u acties uitv
 
 ## <a name="view-the-total-request-unit-usage-metric"></a>De metrische gegevens over het totale gebruik van de aanvraag eenheid weer geven
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
+1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens** .
 
    :::image type="content" source="./media/monitor-request-unit-usage/monitor-metrics-blade.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
-1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
+1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement** en de **resource groep** . Voor het **bron type** selecteert u **Azure Cosmos DB accounts** , kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen** .
 
    :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
@@ -50,7 +51,7 @@ Als u ziet dat bepaalde query's meer aanvraag eenheden nemen, kunt u acties uitv
 
 ## <a name="filters-for-request-unit-usage"></a>Filters voor het gebruik van de aanvraag eenheid
 
-U kunt de metrische gegevens ook filteren en de grafieken ophalen die worden weer gegeven met een specifieke naam van de **verzameling**, **database**naam, **OperationType**, **regio**, **status** **, enzovoort.** Met de opties **filter toevoegen** en **splitsing Toep assen** kunt u het gebruik van de aanvraag eenheid filteren en de metrische gegevens groeperen.
+U kunt de metrische gegevens ook filteren en de grafieken ophalen die worden weer gegeven met een specifieke naam van de **verzameling** , **database** naam, **OperationType** , **regio** , **status** **, enzovoort.** Met de opties **filter toevoegen** en **splitsing Toep assen** kunt u het gebruik van de aanvraag eenheid filteren en de metrische gegevens groeperen.
 
 Als u het gebruik van de aanvraag eenheid van elke bewerking wilt ophalen op basis van totaal (som) of gemiddeld, selecteert u **splitsing Toep assen** en kiest u **bewerkings type** en de filter waarde, zoals weer gegeven in de volgende afbeelding:
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74873417"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100861"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-query constanten  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Een constante, ook wel een letterlijke of scalaire waarde genoemd, is een symbool dat een specifieke gegevens waarde vertegenwoordigt. De notatie van een constante is afhankelijk van het gegevens type van de waarde die het vertegenwoordigt.  
   
@@ -23,13 +24,13 @@ ms.locfileid: "74873417"
 |-|-|  
 |**Undefined**|Enkele waarde: niet **gedefinieerd**|  
 |**Null**|Enkele waarde: **Null**|  
-|**Booleaans**|Waarden: **False**, **True**.|  
+|**True**|Waarden: **False** , **True** .|  
 |**Number**|Een drijvende-komma getal met dubbele precisie, IEEE 754-standaard.|  
 |**Tekenreeks**|Een reeks van nul of meer Unicode-tekens. Teken reeksen moeten tussen enkele of dubbele aanhalings tekens worden geplaatst.|  
-|**Array**|Een reeks van nul of meer elementen. Elk element kan een waarde van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
-|**Object**|Een niet-geordende set met nul of meer naam/waarde-paren. Naam is een Unicode-teken reeks, waarde kan van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
+|**Array**|Een reeks van nul of meer elementen. Elk element kan een waarde van elk scalair gegevens type zijn, behalve niet **gedefinieerd** .|  
+|**Object**|Een niet-geordende set met nul of meer naam/waarde-paren. Naam is een Unicode-teken reeks, waarde kan van elk scalair gegevens type zijn, behalve niet **gedefinieerd** .|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Syntaxis
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
 ```sql  
 <constant> ::=  
@@ -67,7 +68,7 @@ ms.locfileid: "74873417"
   
 * `<null_constant>; null`  
   
-  Vertegenwoordigt een **Null** -waarde van het type **Null**.  
+  Vertegenwoordigt een **Null** -waarde van het type **Null** .  
   
 * `<boolean_constant>`  
   
@@ -112,7 +113,7 @@ ms.locfileid: "74873417"
 |\b|Backspace|U + 0008|  
 |\f|formulier feed|U + 000C|  
 |\n|regel invoer|U + 000A|  
-|\r|regel terugloop|U + 000D|  
+|\r| regelterugloop|U + 000D|  
 |\|tabbesturingselement|U + 0009|  
 |\uXXXX|Een Unicode-teken dat is gedefinieerd door 4 hexadecimale cijfers.|U + XXXX|  
 

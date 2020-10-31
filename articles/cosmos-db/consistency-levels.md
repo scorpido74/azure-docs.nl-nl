@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547075"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100453"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Gedistribueerde data bases die afhankelijk zijn van replicatie voor hoge Beschik baarheid, lage latentie of beide, moeten een fundamentele verhouding tot stand brengen tussen de Lees consistentie, Beschik baarheid, latentie en door Voer, zoals gedefinieerd door de [PACLC theorema](https://en.wikipedia.org/wiki/PACELC_theorem). De linearizability van het sterke consistentie model is de Gold Standard van data Programmable. Er wordt echter een steile prijs van meer schrijf latenties toegevoegd als gevolg van gegevens die op grote afstanden moeten worden gerepliceerd en doorgevoerd. Sterke consistentie kan ook afwegen tegen een gereduceerde Beschik baarheid (tijdens fouten) omdat gegevens niet in elke regio kunnen worden gerepliceerd en doorgevoerd. Uiteindelijke consistentie biedt hogere Beschik baarheid en betere prestaties, maar zijn moeilijker te Program meren omdat gegevens mogelijk niet volledig consistent zijn in alle regio's.
 
@@ -21,7 +22,7 @@ De meeste in de handel Verkrijg bare, gedistribueerde NoSQL-data bases die tegen
 
 - *Sterk*
 - *Gebonden veroudering*
-- *Sessie*
+- *Beëindigen*
 - *Consistent voor voegsel*
 - *Uiteindelijke*
 
@@ -143,7 +144,7 @@ De exacte RTT-latentie is een functie van de snelheid van de afstand en de Azure
 |--|--|--|
 |**Sterk**|Lokale minderheid|Wereld wijde meerderheid|
 |**Gebonden veroudering**|Lokale minderheid|Lokale meerderheid|
-|**Sessie**|Enkele replica (met sessie token)|Lokale meerderheid|
+|**Beëindigen**|Enkele replica (met sessie token)|Lokale meerderheid|
 |**Consistent voor voegsel**|Enkele replica|Lokale meerderheid|
 |**Uiteindelijke**|Enkele replica|Lokale meerderheid|
 

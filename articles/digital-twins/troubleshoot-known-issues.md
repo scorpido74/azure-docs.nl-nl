@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 549e1808a3b449f7d29b968cde76ef29391880b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489010"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100610"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Bekende problemen in azure Digital Apparaatdubbels
 
@@ -32,7 +32,7 @@ U kunt dit oplossen door de opdracht opnieuw `az login` uit te voeren in Cloud s
 
 U kunt ook het deel venster Cloud Shell in de Azure Portal openen en de Cloud Shell werk van daaruit volt ooien:
 
-:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Weer gave van de Azure Portal met het pictogram Cloud Shell gemarkeerd en de Cloud Shell weer gegeven onder aan het portal venster":::
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Weergave van Azure Portal met het pictogram Cloud Shell gemarkeerd en Cloud Shell weergegeven onder aan het portalvenster" lightbox="media/includes/portal-cloud-shell.png":::
 
 Ten slotte is het mogelijk om [de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) op uw computer te installeren, zodat u Azure cli-opdrachten lokaal kunt uitvoeren. Dit probleem treedt niet op bij de lokale CLI.
 
@@ -66,9 +66,9 @@ Voor gebruikers die zijn aangemeld met een persoonlijk [Microsoft-account (MSA)]
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Probleem met interactieve browser verificatie
 
-Wanneer u verificatie code in uw Azure Digital Apparaatdubbels-toepassingen schrijft met versie **1.2.0** van de ** [Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -bibliotheek**, kunnen er problemen optreden met de [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) -methode.
+Wanneer u verificatie code in uw Azure Digital Apparaatdubbels-toepassingen schrijft met versie **1.2.0** van de **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -bibliotheek** , kunnen er problemen optreden met de [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) -methode.
 
-Dit is niet de meest recente versie van de bibliotheek. De meest recente versie is **1.2.2**.
+Dit is niet de meest recente versie van de bibliotheek. De meest recente versie is **1.2.2** .
 
 De betrokken methode wordt gebruikt in de volgende artikelen: 
 * [*Zelfstudie: Een client-app coderen*](tutorial-code.md)
@@ -83,7 +83,7 @@ Werk uw toepassingen bij om versie 1.2.2 te gebruiken om dit probleem op te loss
 
 ### <a name="possible-causes"></a>Mogelijke oorzaken
 
-Dit is gerelateerd aan een openstaand probleem met de meest recente versie van de `Azure.Identity` bibliotheek (versie **1.2.0**): er [*kan niet worden geverifieerd wanneer InteractiveBrowserCredential wordt gebruikt*](https://github.com/Azure/azure-sdk-for-net/issues/13940).
+Dit is gerelateerd aan een openstaand probleem met de meest recente versie van de `Azure.Identity` bibliotheek (versie **1.2.0** ): er [*kan niet worden geverifieerd wanneer InteractiveBrowserCredential wordt gebruikt*](https://github.com/Azure/azure-sdk-for-net/issues/13940).
 
 U ziet dit probleem als u versie **1.2.0** in uw Azure Digital apparaatdubbels-toepassing gebruikt, of als u de bibliotheek toevoegt aan uw project zonder een versie op te geven (zoals dat ook de nieuwste versie is).
 

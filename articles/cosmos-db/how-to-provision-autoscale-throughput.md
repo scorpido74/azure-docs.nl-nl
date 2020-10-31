@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 452259015cf78234aa6a96194342de20db9a3724
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 615ce7da3ec480b766ceaeb307c50f7cb759fd4a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740887"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100113"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Automatisch schalen door Voer in te richten op Data Base of container in Azure Cosmos DB-SQL-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel wordt uitgelegd hoe u de door Voer van automatisch schalen kunt inrichten voor een Data Base of container (verzameling, grafiek of tabel) in Azure Cosmos DB SQL-API. U kunt automatisch schalen inschakelen voor één container, of de door Voer van automatisch schalen inrichten voor een Data Base en deze delen met alle containers in de data base.
 

@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e14f13d0e9fba407a983fb182d25c77593e4d3c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710589"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098396"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Nieuws zoeken met de Bing Nieuws zoeken-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Met de Bing Afbeeldingen zoeken-API kunt u de cognitieve zoekmogelijkheden makkelijk in uw toepassingen integreren.
 
@@ -155,7 +160,7 @@ Host: api.cognitive.microsoft.com
 
 Laat de queryparameter [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) weg.
 
-De respons voor het ophalen van nieuwskoppen is hetzelfde als die voor het ophalen van het belangrijkste nieuws. Als het artikel een hoofdartikel is, heeft het veld `headline` de waarde **true**.
+De respons voor het ophalen van nieuwskoppen is hetzelfde als die voor het ophalen van het belangrijkste nieuws. Als het artikel een hoofdartikel is, heeft het veld `headline` de waarde **true** .
 
 De respons bevat standaard maximaal 12 hoofdartikelen. Als u dit aantal wilt wijzigen, geeft u de queryparameter [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) op. De respons bevat ook maximaal vier niet-hoofdartikelen per nieuwscategorie.
 

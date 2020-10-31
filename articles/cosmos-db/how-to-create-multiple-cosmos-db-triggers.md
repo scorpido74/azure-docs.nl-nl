@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be1cfc097da4f1f10bb775c9b20043096b9fb8b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 14c18d0cae335f96cc2d95c79bcf39bf85ef6a2b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279632"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101541"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Meerdere Azure Functions triggers maken voor Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel wordt beschreven hoe u meerdere Azure Functions-triggers zo kunt configureren dat Cosmos DB parallel werkt en onafhankelijk reageert op wijzigingen.
 
@@ -28,11 +29,11 @@ Wanneer u op gebeurtenissen gebaseerde serverloze stromen bouwt met behulp [van 
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Containers voor meerdere triggers optimaliseren
 
-Gezien de *vereisten* van de Azure functions trigger voor Cosmos DB hebben we een tweede container nodig om de status op te slaan, ook wel de *container leases*. Betekent dit dat u een afzonderlijke leases-container nodig hebt voor elke Azure-functie?
+Gezien de *vereisten* van de Azure functions trigger voor Cosmos DB hebben we een tweede container nodig om de status op te slaan, ook wel de *container leases* . Betekent dit dat u een afzonderlijke leases-container nodig hebt voor elke Azure-functie?
 
 Hier hebt u twee opties:
 
-* **Eén leases-container maken per functie**: deze aanpak kan worden omgezet in aanvullende kosten, tenzij u een [Data Base met gedeelde door Voer](./set-throughput.md#set-throughput-on-a-database)gebruikt. Houd er rekening mee dat de minimale door Voer op het container niveau 400 [aanvraag eenheden](./request-units.md)is, en in het geval van de container leases, wordt dit alleen gebruikt om de voortgang te controleren en de status te onderhouden.
+* **Eén leases-container maken per functie** : deze aanpak kan worden omgezet in aanvullende kosten, tenzij u een [Data Base met gedeelde door Voer](./set-throughput.md#set-throughput-on-a-database)gebruikt. Houd er rekening mee dat de minimale door Voer op het container niveau 400 [aanvraag eenheden](./request-units.md)is, en in het geval van de container leases, wordt dit alleen gebruikt om de voortgang te controleren en de status te onderhouden.
 * Beschikken over **één lease container en delen deze** voor al uw functies: met deze tweede optie wordt het gebruik van de ingerichte aanvraag eenheden in de container verbeterd, omdat het meerdere Azure functions mogelijk maakt om dezelfde ingerichte door voer te delen en te gebruiken.
 
 Het doel van dit artikel is om u te helpen bij het uitvoeren van de tweede optie.

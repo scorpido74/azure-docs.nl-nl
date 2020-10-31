@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8e751d210ab472d82e4abd613d37069a8c591f52
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013930"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100725"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Een Service-Principal toevoegen aan de rol Server beheerder 
 
@@ -33,14 +33,14 @@ Voordat u deze taak voltooit, moet u een Service-Principal hebben geregistreerd 
 U kunt Server beheerders configureren met behulp van SQL Server Management Studio (SSMS). Als u deze taak wilt volt ooien, moet u beschikken over [Server beheerders](analysis-services-server-admins.md) machtigingen voor de Azure-server. 
 
 1. Maak in SSMS verbinding met uw Azure als server.
-2. Klik in **Server eigenschappen**  >  **beveiliging**op **toevoegen**.
-3. In **een gebruiker of groep selecteren**zoekt u de geregistreerde app op naam, selecteert u en klikt u vervolgens op **toevoegen**.
+2. Klik in **Server eigenschappen**  >  **beveiliging** op **toevoegen** .
+3. In **een gebruiker of groep selecteren** zoekt u de geregistreerde app op naam, selecteert u en klikt u vervolgens op **toevoegen** .
 
     ![Zoeken naar Service-Principal-account](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. Controleer de account-ID van de Service-Principal en klik vervolgens op **OK**.
+4. Controleer de account-ID van de Service-Principal en klik vervolgens op **OK** .
     
-    ![Zoeken naar Service-Principal-account](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![Scherm afbeelding met de ID van de Service-Principal-account en wordt de knop OK gemarkeerd.](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>Een Resource Manager-sjabloon gebruiken
 

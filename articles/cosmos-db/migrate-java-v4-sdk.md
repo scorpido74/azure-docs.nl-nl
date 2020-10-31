@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb2553346881bc2e8de631988bd11642b85aa847
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327851"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099637"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Uw toepassing migreren om de Azure Cosmos DB Java SDK v4 te gebruiken
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]  
 > Raadpleeg voor meer informatie over deze SDK de Azure Cosmos DB Java SDK v4- [release opmerkingen](sql-api-sdk-java-v4.md), de [maven-opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4- [prestatie tips](performance-tips-java-sdk-v4-sql.md)en Azure Cosmos DB Java SDK v4 [Troubleshooting Guide (Engelstalig](troubleshoot-java-sdk-v4-sql.md)).
@@ -31,7 +32,7 @@ In dit artikel wordt uitgelegd hoe u een upgrade uitvoert van uw bestaande Java-
 
 De volgende tabel geeft een lijst van verschillende Azure Cosmos DB Java-Sdk's, de pakket naam en de release-informatie:
 
-| Java-SDK| Release datum | Gebundelde Api's   | Maven jar  | Naam Java-pakket  |API-verwijzing   | Releaseopmerkingen  |
+| Java-SDK| Releasedatum | Gebundelde Api's   | Maven jar  | Naam Java-pakket  |API-verwijzing   | Releaseopmerkingen  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Async 2. x. x  | Juni 2018    | Async (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release opmerkingen](sql-api-sdk-async-java.md) |
 | Synchronisatie 2. x. x     | Sept 2018    | Synchroniseren   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release opmerkingen](sql-api-sdk-java.md)  |
@@ -64,9 +65,9 @@ Hieronder vindt u een overzicht van de API-wijzigingen in Azure Cosmos DB Java S
 
   * **Java SDK 4,0** : alle klassen behoren tot de API Sync, tenzij de naam van de klasse wordt toegevoegd `Async` `Cosmos` .
 
-  * **Java SDK 3. x. x**: alle klassen behoren tot de ASYNC-API tenzij de naam van de klasse wordt toegevoegd `Async` `Cosmos` .
+  * **Java SDK 3. x. x** : alle klassen behoren tot de ASYNC-API tenzij de naam van de klasse wordt toegevoegd `Async` `Cosmos` .
 
-  * **Asynchrone Java SDK 2. x. x**: de namen van klassen zijn vergelijkbaar met het synchroniseren van Java SDK 2. x. x, maar de naam begint met *async*.
+  * **Asynchrone Java SDK 2. x. x** : de namen van klassen zijn vergelijkbaar met het synchroniseren van Java SDK 2. x. x, maar de naam begint met *async* .
 
 ### <a name="hierarchical-api-structure"></a>Hiërarchische API-structuur
 

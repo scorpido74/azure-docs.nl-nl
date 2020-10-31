@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee221acb9ff045716e3a8015b20b467ab6d0b10
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764975"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098549"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Een query uitvoeren op georuimtelijke gegevens met Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Dit artikel bevat informatie over het opvragen van georuimtelijke gegevens in Azure Cosmos DB met behulp van SQL en LINQ. Het opslaan en openen van georuimtelijke gegevens wordt momenteel alleen ondersteund door Azure Cosmos DB SQL-API-accounts. Azure Cosmos DB ondersteunt de volgende Open Geospatial Consortium (OGC) ingebouwde functies voor georuimtelijke query's. Zie voor meer informatie over de volledige set ingebouwde functies in de SQL-taal [query systeem functies in azure Cosmos DB](sql-query-system-functions.md).
 
