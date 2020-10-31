@@ -123,8 +123,6 @@
           href: platform/data-platform-metrics.md
         - name: Gegevens streamen naar Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: Inzichten
-      href: insights/insights-overview.md
     - name: Gegevensbeveiliging
       items:
         - name: Logboekgegevens
@@ -1062,7 +1060,7 @@
               href: insights/container-insights-optout-hybrid.md
         - name: Problemen oplossen
           href: insights/container-insights-troubleshoot.md
-    - name: Andere inzichten
+    - name: Inzichten
       items:
         - name: Azure Cache voor Redis (preview)
           href: insights/redis-cache-insights-overview.md
@@ -1079,61 +1077,61 @@
           href: insights/resource-group-insights.md
         - name: Problemen met inzichten oplossen
           href: insights/troubleshoot-workbooks.md
-    - name: Oplossingen
-      items:
-        - name: Overzicht
-          href: insights/solutions.md
-          displayName: 'Azure CLI, az monitor log-analytics'
-        - name: Doeloplossingen
-          href: insights/solution-targeting.md
-        - name: Beschikbare oplossingen
+        - name: Oplossingen
           items:
-            - name: AD-statusevaluatie
-              href: insights/ad-assessment.md
-            - name: AD-replicatiestatus
-              href: insights/ad-replication-status.md
-            - name: Oplossing voor capaciteit en prestaties
-              href: insights/capacity-performance.md
-            - name: Docker- en Windows-containers bewaken
-              href: insights/containers.md
-            - name: Netwerken
+            - name: Overzicht
+              href: insights/solutions.md
+              displayName: 'Azure CLI, az monitor log-analytics'
+            - name: Doeloplossingen
+              href: insights/solution-targeting.md
+            - name: Beschikbare oplossingen
               items:
-                - name: Networking Analytics
-                  href: insights/azure-networking-analytics.md
-                - name: DNS
-                  href: insights/dns-analytics.md
-                - name: Netwerkprestatiemeter
+                - name: AD-statusevaluatie
+                  href: insights/ad-assessment.md
+                - name: AD-replicatiestatus
+                  href: insights/ad-replication-status.md
+                - name: Oplossing voor capaciteit en prestaties
+                  href: insights/capacity-performance.md
+                - name: Docker- en Windows-containers bewaken
+                  href: insights/containers.md
+                - name: Netwerken
                   items:
-                    - name: Oplossingenoverzicht
-                      href: insights/network-performance-monitor.md
-                    - name: Prestatiemeter
-                      href: insights/network-performance-monitor-performance-monitor.md
-                    - name: Bewaking van serviceverbinding
-                      href: insights/network-performance-monitor-service-connectivity.md
-                    - name: ExpressRoute
-                      href: insights/network-performance-monitor-expressroute.md
-                    - name: Prijzen
-                      href: insights/network-performance-monitor-pricing-faq.md
-                    - name: Veelgestelde vragen
-                      href: insights/network-performance-monitor-faq.md
-            - name: Office 365
-              href: insights/solution-office-365.md
-            - name: Oplossing voor servicetoewijzing
-              href: insights/service-map.md
-            - name: Servicetoewijzing en Operations Manager
-              href: insights/service-map-scom.md
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
-            - name: Surface Hub
-              href: insights/surface-hubs.md
-            - name: Oplossing voor VMware-analyse
-              href: insights/vmware.md
-            - name: Oplossing voor bedradingsgegevens
-              href: insights/wire-data.md
-            - name: Waarschuwingenbeheeroplossing
-              href: platform/alert-management-solution.md
+                    - name: Networking Analytics
+                      href: insights/azure-networking-analytics.md
+                    - name: DNS
+                      href: insights/dns-analytics.md
+                    - name: Netwerkprestatiemeter
+                      items:
+                        - name: Oplossingenoverzicht
+                          href: insights/network-performance-monitor.md
+                        - name: Prestatiemeter
+                          href: insights/network-performance-monitor-performance-monitor.md
+                        - name: Bewaking van serviceverbinding
+                          href: insights/network-performance-monitor-service-connectivity.md
+                        - name: ExpressRoute
+                          href: insights/network-performance-monitor-expressroute.md
+                        - name: Prijzen
+                          href: insights/network-performance-monitor-pricing-faq.md
+                        - name: Veelgestelde vragen
+                          href: insights/network-performance-monitor-faq.md
+                - name: Office 365
+                  href: insights/solution-office-365.md
+                - name: Oplossing voor servicetoewijzing
+                  href: insights/service-map.md
+                - name: Servicetoewijzing en Operations Manager
+                  href: insights/service-map-scom.md
+                - name: Azure SQL
+                  href: insights/azure-sql.md
+                - name: SQL Server
+                  href: insights/sql-assessment.md
+                - name: Surface Hub
+                  href: insights/surface-hubs.md
+                - name: Oplossing voor VMware-analyse
+                  href: insights/vmware.md
+                - name: Oplossing voor bedradingsgegevens
+                  href: insights/wire-data.md
+                - name: Waarschuwingenbeheeroplossing
+                  href: platform/alert-management-solution.md
     - name: Werkmappen
       items:
         - name: Overzicht

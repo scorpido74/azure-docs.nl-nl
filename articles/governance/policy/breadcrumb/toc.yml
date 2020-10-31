@@ -18,3 +18,9 @@
         - name: Beleid
           tocHref: /azure/aks
           topicHref: /azure/governance/policy
+        - name: Beleid
+          tocHref: /azure/storage
+          topicHref: /azure/governance/policy
+        - name: Beleid
+          tocHref: /azure/web-application-firewall
+          topicHref: /azure/governance/policy

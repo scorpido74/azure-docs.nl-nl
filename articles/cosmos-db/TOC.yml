@@ -731,6 +731,10 @@
               items:
                 - name: Problemen met Java-SDK v4 oplossen
                   href: troubleshoot-java-sdk-v4-sql.md
+                - name: Problemen met time-out van aanvraag oplossen
+                  href: troubleshoot-request-timeout-java-sdk-v4-sql.md
+                - name: Probleem 'Service niet beschikbaar' oplossen
+                  href: troubleshoot-service-unavailable-java-sdk-v4-sql.md
                 - name: Problemen oplossen - Async Java SDK v2
                   href: troubleshoot-java-async-sdk.md
         - name: Feed wijzigen
@@ -877,8 +881,6 @@
         - name: Resource Manager-sjabloon
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
-        - name: Opmerkingen bij de release van de emulator
-          href: local-emulator-release-notes.md
         - name: Ingebouwde modules voor Azure Policy
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
@@ -1279,6 +1281,8 @@
               href: emulator-command-line-parameters.md
             - name: Problemen met de emulator oplossen
               href: troubleshoot-local-emulator.md
+            - name: Opmerkingen bij de release van de emulator
+              href: local-emulator-release-notes.md
             - name: Visual Studio Code-extensie
               href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
         - name: Een Azure DevOps-CI/CD-pijplijn instellen
