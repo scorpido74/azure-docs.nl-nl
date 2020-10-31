@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822997"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129776"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI uitvoer van Azure Stream Analytics
 
@@ -51,7 +51,7 @@ Power BI gebruikt het FIFO-Bewaar beleid (First-in, first-out). Gegevens worden 
 
 Azure Stream Analytics het gegevens model dynamisch bij runtime bijgewerkt als het uitvoer schema wordt gewijzigd. Kolom naam wijzigingen, kolom type wijzigingen en het toevoegen of verwijderen van kolommen worden allemaal bijgehouden.
 
-Deze tabel bevat informatie over de gegevens type conversies van [Stream Analytics gegevens typen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) Power BI naar de [EDM-typen (Entity Data Model)](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model), als een Power bi-gegevensset en-tabel niet bestaan.
+Deze tabel bevat informatie over de gegevens type conversies van [Stream Analytics gegevens typen](/stream-analytics-query/data-types-azure-stream-analytics) Power BI naar de [EDM-typen (Entity Data Model)](/dotnet/framework/data/adonet/entity-data-model), als een Power bi-gegevensset en-tabel niet bestaan.
 
 Van Stream Analytics | Power BI
 -----|-----
@@ -76,7 +76,7 @@ Datum/tijd | Tekenreeks | Tekenreeks |  Datum/tijd | Tekenreeks
 
 ## <a name="output-batch-size"></a>Grootte van uitvoer batch
 
-Zie [Power bi-limieten voor rest API](https://msdn.microsoft.com/library/dn950053.aspx)voor uitvoer Batch grootte.
+Zie [Power bi-limieten voor rest API](/power-bi/developer/automation/api-rest-api-limitations)voor uitvoer Batch grootte.
 
 ## <a name="next-steps"></a>Volgende stappen
 

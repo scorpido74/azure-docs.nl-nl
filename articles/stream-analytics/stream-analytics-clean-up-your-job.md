@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a771ac1a831bc7994f28ba15139b66be346af02
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 124d2cf4380153bd3ea68de9233f6a1b5eb6ba78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097750"
+ms.locfileid: "93130694"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Uw Azure Stream Analytics-taak stoppen of verwijderen
 
@@ -53,12 +53,12 @@ Wanneer u een taak stopt, wordt de inrichting van de resources ongedaan gemaakt 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u een taak wilt stoppen met behulp van Power shell, gebruikt u de cmdlet [Stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) . Als u een taak wilt verwijderen met behulp van Power shell, gebruikt u de cmdlet [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) .
+Als u een taak wilt stoppen met behulp van Power shell, gebruikt u de cmdlet [Stop-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) . Als u een taak wilt verwijderen met behulp van Power shell, gebruikt u de cmdlet [Remove-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) .
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Een taak stoppen of verwijderen met behulp van Azure SDK voor .NET
 
-Als u een taak wilt stoppen met behulp van Azure SDK voor .NET, gebruikt u de methode [StreamingJobsOperationsExtensions. BeginStop](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) . Een taak verwijderen met behulp van de Azure SDK voor .NET-, [StreamingJobsOperationsExtensions. BeginDelete](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) -methode.
+Als u een taak wilt stoppen met behulp van Azure SDK voor .NET, gebruikt u de methode [StreamingJobsOperationsExtensions. BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) . Een taak verwijderen met behulp van de Azure SDK voor .NET-, [StreamingJobsOperationsExtensions. BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) -methode.
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>Een taak stoppen of verwijderen met REST API
 
-Als u een taak wilt stoppen met behulp van REST API, raadpleegt u de methode [Stop](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) . Als u een taak wilt verwijderen met behulp van REST API, raadpleegt u de methode [Delete](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) .
+Als u een taak wilt stoppen met behulp van REST API, raadpleegt u de methode [Stop](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) . Als u een taak wilt verwijderen met behulp van REST API, raadpleegt u de methode [Delete](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) .

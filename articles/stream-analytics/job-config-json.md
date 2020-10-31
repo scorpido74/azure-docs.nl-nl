@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: f2dd759203655746601699f665436c78ee0758f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb1a1a0b9f3a5996af56ff2c4e2de91d78a6c260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885490"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129334"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>Azure Stream Analytics JobConfig.jsop velden
 
@@ -58,4 +58,4 @@ De volgende velden worden ondersteund in de *JobConfig.jsvoor* het bestand dat w
 * [Een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)
 * [Stream Analytics-query's lokaal testen met voorbeeldgegevens testen met behulp van Visual Studio Code](visual-studio-code-local-run.md)
 * [Stream Analytics query's lokaal testen op invoer van live streams met behulp van Visual Studio code](visual-studio-code-local-run-live-input.md) 
-* [Een Azure stream Analytics-taak implementeren met CI/cd NPM-pakket](setup-cicd-vs-code.md)
+* [Een Azure stream Analytics-taak implementeren met CI/cd NPM-pakket](./cicd-overview.md)

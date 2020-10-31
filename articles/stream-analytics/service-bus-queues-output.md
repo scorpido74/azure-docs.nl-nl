@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bba7da0343f234d8cc057ac4ecfa2a4f2e5b7242
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317774"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129878"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Service Bus uitvoer wachtrijen van Azure Stream Analytics
 
@@ -34,7 +34,7 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | Serialisatie-indeling voor gebeurtenissen |De serialisatie-indeling voor uitvoer gegevens. JSON, CSV en Avro worden ondersteund. |
 | Encoding |Voor CSV en JSON is UTF-8 de enige coderings indeling die op dit moment wordt ondersteund. |
 | Scheidingsteken |Alleen van toepassing op CSV-serialisatie. Stream Analytics ondersteunt een aantal gemeen schappelijke scheidings tekens voor het serialiseren van gegevens in CSV-indeling. Ondersteunde waarden zijn komma, punt komma, spatie, tab en verticale streep. |
-| Indeling |Alleen van toepassing op JSON-type. Met **regel scheiding** wordt opgegeven dat de uitvoer wordt opgemaakt door elk JSON-object gescheiden door een nieuwe regel. Als u **regel gescheiden**selecteert, wordt de JSON één object per keer gelezen. De gehele inhoud zelf zou geen geldige JSON kunnen zijn. **Matrix** geeft aan dat de uitvoer is ingedeeld als een matrix van JSON-objecten. |
+| Indeling |Alleen van toepassing op JSON-type. Met **regel scheiding** wordt opgegeven dat de uitvoer wordt opgemaakt door elk JSON-object gescheiden door een nieuwe regel. Als u **regel gescheiden** selecteert, wordt de JSON één object per keer gelezen. De gehele inhoud zelf zou geen geldige JSON kunnen zijn. **Matrix** geeft aan dat de uitvoer is ingedeeld als een matrix van JSON-objecten. |
 | Eigenschappen kolommen | Optioneel. Door komma's gescheiden kolommen die moeten worden toegevoegd als gebruikers eigenschappen van het uitgaande bericht in plaats van de payload. Meer informatie over deze functie vindt u in de sectie [aangepaste meta gegevens eigenschappen voor uitvoer](#custom-metadata-properties-for-output). |
 | Kolom systeem eigenschappen | Optioneel. Sleutel waarde-paren van systeem eigenschappen en bijbehorende kolom namen die aan het uitgaande bericht moeten worden toegevoegd in plaats van de payload.  |
 
@@ -70,9 +70,9 @@ De volgende afbeelding heeft de verwachte uitvoer bericht eigenschappen die in E
 
 ## <a name="system-properties"></a>Systeemeigenschappen
 
-U kunt query kolommen als [systeem eigenschappen](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) koppelen aan uw uitgaande service bus-wachtrij of onderwerp-berichten.
+U kunt query kolommen als [systeem eigenschappen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) koppelen aan uw uitgaande service bus-wachtrij of onderwerp-berichten.
 
-Deze kolommen worden niet in de payload gezet, maar de bijbehorende [systeem eigenschap](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) BrokeredMessage wordt gevuld met de query kolom waarden.
+Deze kolommen worden niet in de payload gezet, maar de bijbehorende [systeem eigenschap](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) BrokeredMessage wordt gevuld met de query kolom waarden.
 Deze systeem eigenschappen worden ondersteund `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Teken reeks waarden van deze kolommen worden geparseerd als overeenkomend type eigenschaps waarde van het systeem en eventuele fouten bij het parseren worden behandeld als gegevens fouten.

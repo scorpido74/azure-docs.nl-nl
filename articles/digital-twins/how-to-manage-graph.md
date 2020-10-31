@@ -7,21 +7,25 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b8dafd6d2347cf7cca4100f577476b8dfdf6c81
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 28551cb201ab964a21461d6b3f97ce439e446011
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495767"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130286"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
 
-De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins-graph.md) die uw hele omgeving weergeeft. Het dubbele diagram is gemaakt van individuele digitale apparaatdubbels die zijn verbonden via **relaties**. 
+De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins-graph.md) die uw hele omgeving weergeeft. Het dubbele diagram is gemaakt van individuele digitale apparaatdubbels die zijn verbonden via **relaties** . 
 
 Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance-portal.md) hebt en [verificatie](how-to-authenticate-client.md) code hebt ingesteld in uw client-app, kunt u de [**DigitalTwins-api's**](/rest/api/digital-twins/dataplane/twins) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
 Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [*How-to: Manage Digital apparaatdubbels*](how-to-manage-twin.md)(Engelstalig) als u wilt werken met afzonderlijke digitale apparaatdubbels.
 
+## <a name="prerequisites"></a>Vereisten
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+    
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>Relaties maken
@@ -33,11 +37,11 @@ Relaties worden gemaakt met behulp van de `CreateRelationship()` aanroep.
 Als u een relatie wilt maken, moet u het volgende opgeven:
 * De bron-dubbele ID ( `srcId` in het onderstaande code voorbeeld): de id van de dubbele locatie van de relatie.
 * De dubbele ID van het doel ( `targetId` in het onderstaande code voorbeeld): de id van de dubbele locatie van de relatie.
-* Een relatie naam ( `relName` in het onderstaande code voorbeeld): het algemene type relatie, zoals _contains_.
-* Een relatie-ID ( `relId` in het onderstaande code voorbeeld): de specifieke naam voor deze relatie, wat lijkt op _Relationship1_.
+* Een relatie naam ( `relName` in het onderstaande code voorbeeld): het algemene type relatie, zoals _contains_ .
+* Een relatie-ID ( `relId` in het onderstaande code voorbeeld): de specifieke naam voor deze relatie, wat lijkt op _Relationship1_ .
 
 De relatie-ID moet uniek zijn binnen de opgegeven bron. Het hoeft niet wereld wijd uniek te zijn.
-Voor de dubbele *Foo*moet elke specifieke relatie-id bijvoorbeeld uniek zijn. Een andere dubbele *balk* kan echter een uitgaande relatie hebben die overeenkomt met dezelfde id van een *Foo* -relatie.
+Voor de dubbele *Foo* moet elke specifieke relatie-id bijvoorbeeld uniek zijn. Een andere dubbele *balk* kan echter een uitgaande relatie hebben die overeenkomt met dezelfde id van een *Foo* -relatie.
 
 In het volgende code voorbeeld ziet u hoe u een relatie maakt in uw Azure Digital Apparaatdubbels-exemplaar.
 
@@ -81,9 +85,9 @@ Relaties kunnen worden geclassificeerd als een van de volgende:
 
 Er is geen beperking voor het aantal relaties dat u tussen twee apparaatdubbels kunt hebben: u kunt zo veel relaties tussen apparaatdubbels hebben als u wilt. 
 
-Dit betekent dat u verschillende typen relaties tussen twee apparaatdubbels tegelijk kunt uitdrukken. *Dubbele a* kan bijvoorbeeld zowel een *opgeslagen* relatie als een *vervaardigde* relatie met *dubbele B*hebben.
+Dit betekent dat u verschillende typen relaties tussen twee apparaatdubbels tegelijk kunt uitdrukken. *Dubbele a* kan bijvoorbeeld zowel een *opgeslagen* relatie als een *vervaardigde* relatie met *dubbele B* hebben.
 
-U kunt zelfs meerdere exemplaren van hetzelfde type relatie maken tussen dezelfde twee apparaatdubbels, indien gewenst. In dit voor beeld kunnen *dubbele a* twee verschillende *opgeslagen* relaties hebben met *dubbele B*, zolang de relaties verschillende relatie-id's hebben.
+U kunt zelfs meerdere exemplaren van hetzelfde type relatie maken tussen dezelfde twee apparaatdubbels, indien gewenst. In dit voor beeld kunnen *dubbele a* twee verschillende *opgeslagen* relaties hebben met *dubbele B* , zolang de relaties verschillende relatie-id's hebben.
 
 ## <a name="list-relationships"></a>Lijst met relaties
 
@@ -132,7 +136,7 @@ U kunt de opgehaalde relaties gebruiken om naar andere apparaatdubbels in uw gra
 
 ### <a name="find-incoming-relationships-to-a-digital-twin"></a>Inkomende relaties zoeken naar een digitaal, twee
 
-Azure Digital Apparaatdubbels heeft ook een API voor het vinden van alle _*binnenkomende**-relaties naar een bepaald dubbele. Dit is vaak handig voor omgekeerde navigatie of bij het verwijderen van een dubbele.
+Azure Digital Apparaatdubbels heeft ook een API voor het vinden van alle _ *binnenkomende* *-relaties naar een bepaald dubbele. Dit is vaak handig voor omgekeerde navigatie of bij het verwijderen van een dubbele.
 
 Het vorige code voorbeeld is gericht op het vinden van uitgaande relaties van een dubbele. Het volgende voor beeld is op dezelfde manier gestructureerd, maar detecteert *inkomende* relaties met de dubbele plaats.
 

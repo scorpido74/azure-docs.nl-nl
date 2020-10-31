@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: c7beddda0d344f6b7606f3e2d3624bee39009c66
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e5fd70cdde6be431f7bb1950a42ca43e81b34e36
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043498"
+ms.locfileid: "93130847"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Open bare inhoud beheren met Azure Container Registry
 
@@ -21,7 +21,7 @@ Dit artikel bevat een overzicht van de procedures en werk stromen voor het gebru
 
 Uw omgeving kan afhankelijkheden hebben op open bare inhoud zoals open bare container installatie kopieën, [helm-grafieken](https://helm.sh/), beleids regels voor [Open Policy Agent](https://www.openpolicyagent.org/) (opa) of andere artefacten. U kunt bijvoorbeeld [nginx](https://hub.docker.com/_/nginx) uitvoeren voor service Routering of `docker build FROM alpine` door installatie kopieën rechtstreeks vanuit docker hub of een ander openbaar REGI ster te halen. 
 
-Als er sprake is van een goede controle, kunnen afhankelijkheden van open bare register inhoud Risico's veroorzaken voor uw werk stromen voor het ontwikkelen en implementeren van uw afbeeldingen. Bewaar, indien mogelijk, lokale kopieën van open bare inhoud om de Risico's te verminderen. Zie voor meer informatie de [open container Initiative blog](https://opencontainers.org/posts/blog). 
+Als er sprake is van een goede controle, kunnen afhankelijkheden van open bare register inhoud Risico's veroorzaken voor uw werk stromen voor het ontwikkelen en implementeren van uw afbeeldingen. Bewaar, indien mogelijk, lokale kopieën van open bare inhoud om de Risico's te verminderen. Zie voor meer informatie de [open container Initiative blog](https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/). 
 
 ## <a name="authenticate-with-docker-hub"></a>Verifiëren met docker hub
 
@@ -33,8 +33,6 @@ Als eerste stap, als u momenteel open bare installatie kopieën uit docker hub a
 > Bij het schatten van het aantal pull-aanvragen moet u rekening houden met het gebruik van Cloud provider Services of achter een bedrijfs-NAT, maar meerdere gebruikers worden aan docker hub als een subset van IP-adressen gepresenteerd.  Door docker betaalde account authenticatie toe te voegen aan aanvragen naar docker hub, voor komt u mogelijke onderbrekingen van de service vanwege een beperking van de frequentie limiet.
 >
 > Zie [prijzen voor docker en abonnementen](https://www.docker.com/pricing) en de [docker-Service voorwaarden](https://www.docker.com/legal/docker-terms-service)voor meer informatie.
-
-
 
 Zie limiet voor de [Download frequentie](https://docs.docker.com/docker-hub/download-rate-limit/)voor verificatie voorbeelden en-scenario's.
 
@@ -72,7 +70,7 @@ Als u kopieën van open bare installatie kopieën wilt gaan beheren, kunt u een 
 
 Als een aanbevolen stap is het [importeren](container-registry-import-images.md) van basis installatie kopieën en andere open bare inhoud naar uw Azure container Registry. De opdracht [AZ ACR import](/cli/azure/acr#az_acr_import) in de Azure cli ondersteunt het importeren van afbeeldingen uit open bare registers, zoals docker hub en micro soft container Registry en uit andere persoonlijke container registers. 
 
-`az acr import` vereist geen lokale docker-installatie. U kunt dit uitvoeren met een lokale installatie van de Azure CLI of rechtstreeks in Azure Cloud Shell ondersteunen van elk type installatie kopieën, afbeeldingen met meerdere architecturen of OCI-artefacten zoals helm-grafieken.
+`az acr import` vereist geen lokale docker-installatie. U kunt dit uitvoeren met een lokale installatie van de Azure CLI of rechtstreeks in Azure Cloud Shell. Het ondersteunt installatie kopieën van elk type besturings systeem, afbeeldingen met meerdere architecturen of OCI-artefacten, zoals helm-grafieken.
 
 Voorbeeld:
 
@@ -82,7 +80,7 @@ az acr import \
   --source docker.io/library/hello-world:latest \
   --image hello-world:latest \
   --username <Docker Hub username> \
-  --password <Docker Hub password>
+  --password <Docker Hub token>
 ```
 
 Afhankelijk van de behoeften van uw organisatie, kunt u importeren naar een speciaal REGI ster of een opslag plaats in een gedeeld REGI ster.
@@ -93,7 +91,7 @@ Ontwikkel aars van toepassings installatie kopieën moeten ervoor zorgen dat hun
 
 Uitvouwen bij het importeren van afbeeldingen, een [Azure container Registry taak](container-registry-tasks-overview.md) instellen om builds van toepassings afbeeldingen te automatiseren wanneer basis installatie kopieën worden bijgewerkt. Een geautomatiseerde bouw taak kan zowel updates van de [basis installatie kopie](container-registry-tasks-base-images.md) als [bron code-updates](container-registry-tasks-overview.md#trigger-task-on-source-code-update)volgen.
 
-Zie [open bare inhoud gebruiken en onderhouden met Azure container Registry taken](https://github.com/SteveLasker/azure-docs/blob/consuming-public-content/articles/container-registry/container-registry-consuming-public-content.md)voor een gedetailleerd voor beeld. 
+Zie [open bare inhoud gebruiken en onderhouden met Azure container Registry taken](tasks-consume-public-content.md)voor een gedetailleerd voor beeld. 
 
 > [!NOTE]
 > Eén vooraf geconfigureerde taak kan elke toepassings installatie kopie die verwijst naar een afhankelijke basis installatie kopie automatisch opnieuw samen stellen. 
@@ -101,4 +99,5 @@ Zie [open bare inhoud gebruiken en onderhouden met Azure container Registry take
 ## <a name="next-steps"></a>Volgende stappen
  
 * Meer informatie over [ACR-taken](container-registry-tasks-overview.md) om container installatie kopieën in azure te bouwen, uit te voeren, te pushen en te patchen.
+* Zie [open bare inhoud gebruiken en onderhouden met Azure container Registry taken](tasks-consume-public-content.md) voor een geautomatiseerde beperking werk stroom om basis installatie kopieën bij te werken naar uw omgeving. 
 * Zie de [zelf studies voor ACR-taken](container-registry-tutorial-quick-task.md) voor meer voor beelden voor het automatiseren van installatie kopieën en updates.

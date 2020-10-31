@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 2808f0d3b99257d52b2d400424f256f980005863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bb5dccfc99a693ec89ed08ac31b77eb16442f73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88607199"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129963"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Persoonlijke aanbiedingen in micro soft Commercial Marketplace
 
@@ -30,18 +30,18 @@ Met persoonlijke aanbiedingen kunnen uitgevers profiteren van de schaal en werel
 
 Persoonlijke aanbiedingen zijn nu beschikbaar voor virtuele machines, Azure-toepassing (geïmplementeerd als oplossings sjablonen of beheerde toepassingen) en SaaS-apps bieden.
 
-<!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). Customers can be granted or revoked access to private offers in minutes.
+<!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](). Customers can be granted or revoked access to private offers in minutes.
 --->
 
 ## <a name="creating-private-offers-using-plans"></a>Persoonlijke aanbiedingen maken met abonnementen
 
-Voor *nieuwe of bestaande aanbiedingen met abonnementen*kunnen uitgevers eenvoudig nieuwe, persoonlijke variaties maken door nieuwe plannen (voorheen sku's) te maken en ze als privé te markeren. Elke aanbieding kan Maxi maal 45 privé-abonnementen hebben.
+Voor *nieuwe of bestaande aanbiedingen met abonnementen* kunnen uitgevers eenvoudig nieuwe, persoonlijke variaties maken door nieuwe plannen (voorheen sku's) te maken en ze als privé te markeren. Elke aanbieding kan Maxi maal 45 privé-abonnementen hebben.
 
-<!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
+<!--- [Private SKUs]() --->
 
 Privé plannen zijn onderdelen van een aanbieding en zijn alleen zichtbaar en tevens door de doel klanten. Privé plannen kunnen de basis installatie kopieën en/of de meta gegevens van de aanbieding die al zijn gepubliceerd voor een openbaar abonnement hergebruiken. Met deze optie kunnen uitgevers meerdere persoonlijke variaties van een open bare aanbieding maken zonder dat ze meerdere versies van dezelfde basis installatie kopie hoeven te publiceren en meta gegevens te bieden. Voor de aanbiedingen van de virtuele machine en Azure-toepassing geldt dat als een persoonlijk plan een basis installatie kopie deelt met een openbaar abonnement, alle wijzigingen in de basis installatie kopie van de aanbieding worden door gegeven aan alle open bare en persoonlijke plannen die gebruikmaken van die basis installatie kopie.
 
-Voor *nieuwe aanbiedingen die alleen persoonlijke abonnementen bevatten*, kunnen uitgevers hun aanbiedingen als elk ander aanbod maken en de abonnementen markeren als privé. De aanbiedingen die alleen privé abonnementen hebben, kunnen niet worden gedetecteerd of toegankelijk via micro soft Commercial Marketplace of de [Azure Portal](https://azure.microsoft.com/features/azure-portal/) door klanten die niet aan de aanbieding zijn gekoppeld.
+Voor *nieuwe aanbiedingen die alleen persoonlijke abonnementen bevatten* , kunnen uitgevers hun aanbiedingen als elk ander aanbod maken en de abonnementen markeren als privé. De aanbiedingen die alleen privé abonnementen hebben, kunnen niet worden gedetecteerd of toegankelijk via micro soft Commercial Marketplace of de [Azure Portal](https://azure.microsoft.com/features/azure-portal/) door klanten die niet aan de aanbieding zijn gekoppeld.
 
 >[!NOTE]
 >Een aanbieding die alleen persoonlijke plannen bevat, is niet zichtbaar in de open bare Azure Marketplace of AppSource.
@@ -69,5 +69,5 @@ Persoonlijke aanbiedingen worden ook weer gegeven in Zoek resultaten. U ziet gew
 <!---
 ## Next steps
 
-To start using private offers, follow the steps in the [Private SKUs and Plans](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) guide.
+To start using private offers, follow the steps in the [Private SKUs and Plans]() guide.
 --->

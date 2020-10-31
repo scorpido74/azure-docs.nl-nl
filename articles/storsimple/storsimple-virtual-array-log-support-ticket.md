@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507667"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130949"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>Gebruik de service StorSimple Apparaatbeheer om een Ondersteuningsaanvraag te registreren voor de virtuele StorSimple-matrix
 
@@ -33,27 +33,27 @@ Afhankelijk van uw [ondersteunings plan](https://azure.microsoft.com/support/pla
 
 #### <a name="to-log-a-new-request"></a>Een nieuwe aanvraag in een logboek registreren
 
-1. Ga naar uw StorSimple-apparaatbeheerservice. Ga in de Blade instellingen service overzicht naar **ondersteuning en probleem oplossing** en klik vervolgens op **nieuwe ondersteunings aanvraag**.
+1. Ga naar uw StorSimple-apparaatbeheerservice. Ga in de Blade instellingen service overzicht naar **ondersteuning en probleem oplossing** en klik vervolgens op **nieuwe ondersteunings aanvraag** .
    
-    ![Nieuwe ondersteuningsaanvraag](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
+    ![Scherm afbeelding toont het deel venster basis beginselen voor een nieuwe ondersteunings aanvraag.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. Ga als volgt te werk op de Blade **basis beginselen** :
 
-    1. Selecteer in de vervolg keuzelijst **probleem type** de optie **technisch**. 
+    1. Selecteer in de vervolg keuzelijst **probleem type** de optie **technisch** . 
     
-    2. Het huidige **abonnement**, **service** type en de **resource** (StorSimple Apparaatbeheer service) worden automatisch gekozen. 
+    2. Het huidige **abonnement** , **service** type en de **resource** (StorSimple Apparaatbeheer service) worden automatisch gekozen. 
 
     3. Geef een of meer apparaten op die zijn geregistreerd bij uw service en die problemen ondervinden.
 
     4. Kies een geschikt **ondersteunings plan** als er meerdere plannen aan uw abonnement zijn gekoppeld. U hebt een betaald ondersteunings abonnement nodig om technische ondersteuning mogelijk te maken.
 
-3. Kies in **stap 2**de **Ernst** en geef op of het probleem betrekking heeft op de matrix of de StorSimple-Apparaatbeheer service. Kies ook een **categorie** voor dit probleem en geef meer **informatie** over het probleem.
+3. Kies in **stap 2** de **Ernst** en geef op of het probleem betrekking heeft op de matrix of de StorSimple-Apparaatbeheer service. Kies ook een **categorie** voor dit probleem en geef meer **informatie** over het probleem.
    
-    ![Nieuwe ondersteuningsaanvraag](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
+    ![Scherm afbeelding toont het probleem venster waarin u het probleem type, de categorie en de Details voor uw ondersteunings aanvraag kunt invoeren.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. Geef in **stap 3**uw contact gegevens op. Microsoft Ondersteuning gebruikt deze informatie om u te bereiken voor meer informatie, diagnose en oplossing.
+4. Geef in **stap 3** uw contact gegevens op. Microsoft Ondersteuning gebruikt deze informatie om u te bereiken voor meer informatie, diagnose en oplossing.
    
-    ![Nieuwe ondersteuningsaanvraag](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
+    ![Scherm afbeelding toont het deel venster contact gegevens.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
 ## <a name="manage-a-support-request"></a>Een ondersteunings aanvraag beheren
 
@@ -61,7 +61,7 @@ Nadat u een ondersteuningsticket hebt gemaakt, kunt u de voortgang van het ticke
 
 #### <a name="to-manage-your-support-requests"></a>Uw ondersteunings aanvragen beheren
 
-Als u naar de pagina Help en ondersteuning wilt gaan, bladert u naar **> Help en ondersteuning**.
+Als u naar de pagina Help en ondersteuning wilt gaan, bladert u naar **> Help en ondersteuning** .
 
 ![Ondersteunings aanvragen beheren](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 

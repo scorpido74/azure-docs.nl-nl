@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 15bd917a16c250807d6848f7bc0ffbdba06b4019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0df92eadc4db132d567e708abe6e28e82642d6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329088"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129555"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC gebruiken voor Kubernetes-autorisatie (preview)
 
@@ -75,6 +75,7 @@ az extension update --name aks-preview
 - Tijdens de preview-periode kunt u machtigingen op *naam ruimte niveau* alleen toevoegen via de Azure cli.
 - Als u CRDs hebt en aangepaste roldefinities maakt, is de enige manier om CRDs vandaag te bieden `Microsoft.ContainerService/managedClusters/*/read` . AKS is bezig met het bieden van meer gedetailleerde machtigingen voor CRDs. Voor de resterende objecten kunt u de specifieke API-groepen gebruiken, bijvoorbeeld: `Microsoft.ContainerService/apps/deployments/read` .
 - Nieuwe roltoewijzingen kunnen tot 5min duren om door te geven en te worden bijgewerkt door de autorisatie server.
+- Vereist dat de Azure AD-Tenant die is geconfigureerd voor verificatie hetzelfde is als de Tenant voor het abonnement dat het AKS-cluster bevat. 
 
 ## <a name="create-a-new-cluster-using-azure-rbac-and-managed-azure-ad-integration"></a>Een nieuw cluster maken met Azure RBAC en beheerde Azure AD-integratie
 

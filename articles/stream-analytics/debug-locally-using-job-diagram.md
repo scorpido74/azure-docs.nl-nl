@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218252"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130983"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Fouten opsporen Azure Stream Analytics query's lokaal met behulp van taak diagram in Visual Studio
 
@@ -32,7 +32,7 @@ Gebruik deze [Quick](stream-analytics-quick-create-vs.md) start om te leren hoe 
 > [!NOTE]
 > Als u een taak exporteert naar een lokaal project en wilt testen op een live invoer stroom, moet u de referenties voor alle invoer opnieuw opgeven.  
 
-Kies de invoer-en uitvoer bron van de script editor en selecteer **lokaal uitvoeren**. Het taak diagram wordt aan de rechter kant weer gegeven.
+Kies de invoer-en uitvoer bron van de script editor en selecteer **lokaal uitvoeren** . Het taak diagram wordt aan de rechter kant weer gegeven.
 
 ### <a name="view-the-intermediate-result-set"></a>De tussenliggende resultatenset weer geven  
 
@@ -119,7 +119,7 @@ Andere metrieken op taak niveau worden weer gegeven in de pop up-console. Druk o
 
 * Power BI-en Azure Data Lake Storage Gen1-uitvoer-sinks worden niet ondersteund vanwege beperkingen van het verificatie model.
 
-* Alleen opties voor Cloud invoer hebben ondersteuning voor [tijd beleid](stream-analytics-out-of-order-and-late-events.md) , terwijl lokale invoer opties niet.
+* Alleen opties voor Cloud invoer hebben ondersteuning voor [tijd beleid](./stream-analytics-time-handling.md) , terwijl lokale invoer opties niet.
 
 ## <a name="next-steps"></a>Volgende stappen
 

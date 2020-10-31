@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548332"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130014"
 ---
 # <a name="register-a-saas-application"></a>Een SaaS-toepassing registreren
 
@@ -20,7 +20,7 @@ In dit artikel wordt uitgelegd hoe u een SaaS-toepassing registreert met behulp 
 
 Azure Marketplace biedt geen beperkingen voor de verificatie methode die door uw SaaS-service wordt gebruikt voor eind gebruikers. De onderstaande stroom is alleen vereist voor het verifiëren van de SaaS-service in azure Marketplace.
 
-Zie [Wat is verificatie](../../active-directory/develop/authentication-scenarios.md)? voor meer informatie over Azure AD (Active Directory).
+Zie [Wat is verificatie](../../active-directory/develop/authentication-vs-authorization.md)? voor meer informatie over Azure AD (Active Directory).
 
 ## <a name="register-an-azure-ad-secured-app"></a>Een Azure AD-beveiligde app registreren
 
@@ -28,22 +28,22 @@ Elke toepassing die de mogelijkheden van Azure Active Directory wil gebruiken, m
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Als uw account u toegang geeft tot meer dan één, klikt u in de rechter bovenhoek op uw account en stelt u uw portal sessie in op de gewenste Azure AD-Tenant.
-3. Klik in het navigatie deel venster aan de linkerkant op de **Azure Active Directory** -service, klik op **app-registraties**en klik vervolgens op **nieuwe toepassing registreren**.
+3. Klik in het navigatie deel venster aan de linkerkant op de **Azure Active Directory** -service, klik op **app-registraties** en klik vervolgens op **nieuwe toepassing registreren** .
 
     ![SaaS AD-App-registraties](./media/saas-offer-app-registration-v1.png)
 
 4. Voer op de pagina maken de registratie gegevens voor uw toepassing in \' :
-    -   **Naam**: Voer een beschrijvende naam voor de toepassing in
-    -   **Toepassings type**:  
+    -   **Naam** : Voer een beschrijvende naam voor de toepassing in
+    -   **Toepassings type** :  
         
-        Selecteer **Web-app/API** voor [client toepassingen](../../active-directory/develop/active-directory-dev-glossary.md#client-application)) en [resource/API-toepassingen](../../active-directory/develop/active-directory-dev-glossary.md#resource-server)die zijn geïnstalleerd op een beveiligde server. Deze instelling wordt gebruikt voor OAuth-vertrouwelijke [webclients](../../active-directory/develop/active-directory-dev-glossary.md#web-client)en open bare [gebruiker op agent-gebaseerde clients](../../active-directory/develop/active-directory-dev-glossary.md#user-agent-based-client)).
+        Selecteer **Web-app/API** voor [client toepassingen](../../active-directory/develop/developer-glossary.md#client-application)) en [resource/API-toepassingen](../../active-directory/develop/developer-glossary.md#resource-server)die zijn geïnstalleerd op een beveiligde server. Deze instelling wordt gebruikt voor OAuth-vertrouwelijke [webclients](../../active-directory/develop/developer-glossary.md#web-client)en open bare [gebruiker op agent-gebaseerde clients](../../active-directory/develop/developer-glossary.md#user-agent-based-client)).
         Dezelfde toepassing kan zowel een client als resource/API beschikbaar maken.
 
         Voor specifieke voor beelden van webtoepassingen raadpleegt u de Quick Start-setups die beschikbaar zijn in de sectie [aan de slag](../../active-directory/develop/quickstart-create-new-tenant.md) van de [hand leiding voor ontwikkel AARS van Azure AD](../../active-directory/develop/index.yml).
 
-5. Wanneer u klaar bent, klikt u op **registreren**.  Azure AD wijst een unieke *toepassings-id* toe aan uw nieuwe toepassing. U kunt het beste één app registreren die alleen toegang heeft tot de API, en als één Tenant.
+5. Wanneer u klaar bent, klikt u op **registreren** .  Azure AD wijst een unieke *toepassings-id* toe aan uw nieuwe toepassing. U kunt het beste één app registreren die alleen toegang heeft tot de API, en als één Tenant.
 
-6. Als u client geheim wilt maken, navigeert u naar de **pagina certificaten & geheimen** en klikt u op **+ Nieuw client geheim**.  Zorg ervoor dat u de geheime waarde kopieert om deze in uw code te gebruiken.
+6. Als u client geheim wilt maken, navigeert u naar de **pagina certificaten & geheimen** en klikt u op **+ Nieuw client geheim** .  Zorg ervoor dat u de geheime waarde kopieert om deze in uw code te gebruiken.
 
 De **Azure AD-App-ID** is gekoppeld aan uw uitgevers-id, dus zorg ervoor dat dezelfde *App-ID* wordt gebruikt in al uw aanbiedingen.
 
@@ -70,22 +70,22 @@ Plaatsen<br>
 
 |  Parameternaam    |  Vereist         |  Beschrijving |
 |  ---------------   |  ---------------  | ------------ |
-|  `tenantId`        |  True      |  De Tenant-ID van de geregistreerde AAD-toepassing. |
+|  `tenantId`        |  Waar      |  De Tenant-ID van de geregistreerde AAD-toepassing. |
 
 ##### <a name="request-header"></a>*Aanvraag header*
 
 |  Headernaam       |  Vereist         |  Beschrijving |
 |  ---------------   |  ---------------  | ------------ |
-|  `content-type`    |  True      |  Het inhouds type dat is gekoppeld aan de aanvraag. De standaardwaarde is `application/x-www-form-urlencoded`. |
+|  `content-type`    |  Waar      |  Het inhouds type dat is gekoppeld aan de aanvraag. De standaardwaarde is `application/x-www-form-urlencoded`. |
 
 ##### <a name="request-body"></a>*Aanvraagbody*
 
 |  Naam van eigenschap     |  Vereist         |  Beschrijving |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant_type`      |  True      |  Toekennings type. Gebruik `"client_credentials"`. |
-|  `client_id`       |  True      |  Client/App-ID die is gekoppeld aan de Azure AD-app. |
-|  `client_secret`   |  True      |  Geheim dat is gekoppeld aan de Azure AD-app. |
-|  `resource`        |  True      |  Doel resource waarvoor het token wordt aangevraagd. Gebruiken `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` omdat de SaaS-API van Marketplace altijd de doel resource in dit geval is. |
+|  `grant_type`      |  Waar      |  Toekennings type. Gebruik `"client_credentials"`. |
+|  `client_id`       |  Waar      |  Client/App-ID die is gekoppeld aan de Azure AD-app. |
+|  `client_secret`   |  Waar      |  Geheim dat is gekoppeld aan de Azure AD-app. |
+|  `resource`        |  Waar      |  Doel resource waarvoor het token wordt aangevraagd. Gebruiken `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` omdat de SaaS-API van Marketplace altijd de doel resource in dit geval is. |
 
 ##### <a name="response"></a>*Response*
 

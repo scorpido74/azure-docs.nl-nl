@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 10/10/2018
+ms.date: 10/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896463"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131017"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen
 
@@ -77,7 +77,7 @@ Voor informatie over het gebruik van MIM 2016 Service Pack 1 en de MIM-beheer ag
 
 Er is een Power shell-voorbeeld script beschikbaar dat u kunt gebruiken als uitgangs punt voor het maken van de gast gebruikers objecten in uw on-premises Active Directory.
 
-U kunt het script en het Leesmij-bestand downloaden uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=51495). Kies het **script en Leesmij om Azure AD B2B-gebruikers on-prem.zipbestand te halen** .
+U kunt het script en het Leesmij-bestand downloaden van [connectors voor Microsoft Identity Manager 2016 en Forefront Identity Manager 2010 R2](https://www.microsoft.com/download/details.aspx?id=51495). Kies in het Download pakket het **script en Leesmij om Azure AD B2B-gebruikers on-prem.zipbestand te halen** .
 
 Voordat u het script gebruikt, moet u de vereisten en belang rijke overwegingen in het bijbehorende Leesmij-bestand door nemen. Bovendien moet u weten dat het script alleen beschikbaar is gemaakt als voor beeld. Uw ontwikkel team of een partner moet het script aanpassen en controleren voordat u het uitvoert.
 

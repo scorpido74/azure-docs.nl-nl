@@ -7,22 +7,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87901688"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130660"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Beleid voor het best Ellen van gebeurtenissen voor Azure Stream Analytics configureren
 
-In dit artikel wordt beschreven hoe u een late aankomst en beleid voor onbestelbare gebeurtenissen in Azure Stream Analytics kunt instellen en gebruiken. Deze beleids regels worden alleen toegepast wanneer u de component [time stamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) gebruikt in uw query en ze worden alleen toegepast op Cloud-invoer bronnen.
+In dit artikel wordt beschreven hoe u een late aankomst en beleid voor onbestelbare gebeurtenissen in Azure Stream Analytics kunt instellen en gebruiken. Deze beleids regels worden alleen toegepast wanneer u de component [time stamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) gebruikt in uw query en ze worden alleen toegepast op Cloud-invoer bronnen.
 
 ## <a name="event-time-and-arrival-time"></a>Tijd van gebeurtenis en aankomst tijd
 
-Uw Stream Analytics-taak kan gebeurtenissen verwerken op basis van de tijd of *aankomst tijd*van de *gebeurtenis* . De tijd van de **gebeurtenis/toepassing** is de tijds tempel die aanwezig is in de gebeurtenis lading (wanneer de gebeurtenis is gegenereerd). **Aankomst tijd** is de tijds tempel waarop de gebeurtenis is ontvangen op de invoer bron (Event Hubs/IOT hub/Blob-opslag). 
+Uw Stream Analytics-taak kan gebeurtenissen verwerken op basis van de tijd of *aankomst tijd* van de *gebeurtenis* . De tijd van de **gebeurtenis/toepassing** is de tijds tempel die aanwezig is in de gebeurtenis lading (wanneer de gebeurtenis is gegenereerd). **Aankomst tijd** is de tijds tempel waarop de gebeurtenis is ontvangen op de invoer bron (Event Hubs/IOT hub/Blob-opslag). 
 
-Stream Analytics verwerkt gebeurtenissen standaard op *aankomst tijd*, maar u kunt ervoor kiezen gebeurtenissen op *gebeurtenis tijd* te verwerken door de component [time stamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) in uw query te gebruiken. Late aankomst en beleid voor out-of-volg orde zijn alleen van toepassing als u gebeurtenissen op gebeurtenis tijd verwerkt. Overweeg het gebruik van vereisten voor latentie en juistheid voor uw scenario bij het configureren van deze instellingen. 
+Stream Analytics verwerkt gebeurtenissen standaard op *aankomst tijd* , maar u kunt ervoor kiezen gebeurtenissen op *gebeurtenis tijd* te verwerken door de component [time stamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) in uw query te gebruiken. Late aankomst en beleid voor out-of-volg orde zijn alleen van toepassing als u gebeurtenissen op gebeurtenis tijd verwerkt. Overweeg het gebruik van vereisten voor latentie en juistheid voor uw scenario bij het configureren van deze instellingen. 
 
 ## <a name="what-is-late-arrival-policy"></a>What is late arrival policy? (Wat is beleid voor late aankomst?)
 
@@ -79,8 +79,8 @@ Dit bericht geeft aan dat ten minste één partitie in uw invoer leeg is en dat 
 ## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Waarom kan ik een vertraging van vijf seconden zien, zelfs wanneer mijn beleid voor late ontvangst is ingesteld op 0?
 Dit gebeurt wanneer er een invoer partitie is die nooit een invoer heeft ontvangen. U kunt de invoer metrieken per partitie controleren om dit gedrag te valideren. 
 
-Wanneer een partitie geen gegevens bevat voor meer dan de geconfigureerde drempel waarde voor de latere aankomst, wordt door stream Analytics een toepassings tempel voor de toepassing voor het onderwerp van de gebeurtenis volgorde beschreven. Hiervoor is een geschatte aankomst tijd vereist. Als de partitie nooit gegevens bevat, schat de stream Analytics de tijd van aankomst als *lokale time-5 seconden*. Vanwege deze partities zou nooit gegevens hadden kunnen een watermerk vertraging van vijf seconden worden weer gegeven.  
+Wanneer een partitie geen gegevens bevat voor meer dan de geconfigureerde drempel waarde voor de latere aankomst, wordt door stream Analytics een toepassings tempel voor de toepassing voor het onderwerp van de gebeurtenis volgorde beschreven. Hiervoor is een geschatte aankomst tijd vereist. Als de partitie nooit gegevens bevat, schat de stream Analytics de tijd van aankomst als *lokale time-5 seconden* . Vanwege deze partities zou nooit gegevens hadden kunnen een watermerk vertraging van vijf seconden worden weer gegeven.  
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Overwegingen over tijdsverwerking](stream-analytics-time-handling.md)
-* [Metrische gegevens die beschikbaar zijn in Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+* [Metrische gegevens die beschikbaar zijn in Stream Analytics](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics)

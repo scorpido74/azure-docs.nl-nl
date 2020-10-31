@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 6bd43f89ff6e341756c1706eb96d07510c6fb1a4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9ae770a21e93a0c8ab3827e91f15e163d7a875b4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428211"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130201"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -34,25 +34,25 @@ Voor het ontwerpen, bouwen en testen van Azure Application-aanbiedingen is techn
 
 Bekijk de volgende bronnen wanneer u uw Azure-toepassings aanbieding voorbereidt voor de commerciële Marketplace.
 
-* [Azure Resource Manager sjablonen begrijpen](../../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager sjablonen begrijpen](../../azure-resource-manager/templates/template-syntax.md)
 
 * Quickstarts:
 
     * [Azure-quickstart-sjablonen](https://azure.microsoft.com/documentation/templates/)
     * [Hand leiding voor best practices voor Azure-sjablonen](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
-    * [Toepassingsdefinitie publiceren](../../managed-applications/publish-service-catalog-app.md)
-    * [Servicecatalogus-app implementeren](../../managed-applications/deploy-service-catalog-quickstart.md)
+    * [Toepassingsdefinitie publiceren](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    * [Servicecatalogus-app implementeren](../../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
 
 * Zelfstudies:
 
-    * [Definitiebestanden maken](../../managed-applications/publish-service-catalog-app.md)
-    * [Marketplace-toepassing publiceren](../../managed-applications/publish-marketplace-app.md)
+    * [Definitiebestanden maken](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    * [Marketplace-toepassing publiceren]()
 
 * Voor beelden
 
-    * [Azure-CLI](../../managed-applications/cli-samples.md)
-    * [Azure PowerShell](../../managed-applications/powershell-samples.md)
-    * [Beheerde toepassingsoplossingen](../../managed-applications/sample-projects.md)
+    * [Azure CLI](../../azure-resource-manager/managed-applications/cli-samples.md)
+    * [Azure PowerShell](../../azure-resource-manager/managed-applications/powershell-samples.md)
+    * [Beheerde toepassingsoplossingen](../../azure-resource-manager/managed-applications/sample-projects.md)
 
 De video [buil ding Solution-sjablonen en beheerde toepassingen voor Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) bieden een uitgebreide inleiding tot het type Azure-toepassings aanbieding:
 
@@ -67,8 +67,8 @@ De video [buil ding Solution-sjablonen en beheerde toepassingen voor Azure Marke
 
 Kies een of beide van de volgende script omgevingen om uw Azure-toepassing te beheren:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
-* [Azure-CLI](https://docs.microsoft.com/cli/azure)
+* [Azure PowerShell](/powershell/azure/)
+* [Azure-CLI](/cli/azure)
 
 Het is raadzaam om de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
 
@@ -84,17 +84,17 @@ U kunt de beschik bare hulpprogram ma's bekijken op de pagina [Azure Ontwikkelhu
 
 Er zijn twee soorten Azure-toepassings abonnementen: oplossings sjablonen en beheerde toepassingen.
 
-* **Oplossings sjabloon** is een van de belangrijkste manieren om een oplossing op Marketplace te publiceren. Gebruik dit type abonnement als voor uw oplossing extra implementatie-en configuratie automatisering is vereist dan één virtuele machine (VM). Met een oplossings sjabloon kunt u het leveren van meer dan één resource automatiseren, met inbegrip van Vm's, netwerken en opslag resources om complexe IaaS-oplossingen te bieden.  Zie [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)voor meer informatie over het maken van oplossings sjablonen.
+* **Oplossings sjabloon** is een van de belangrijkste manieren om een oplossing op Marketplace te publiceren. Gebruik dit type abonnement als voor uw oplossing extra implementatie-en configuratie automatisering is vereist dan één virtuele machine (VM). Met een oplossings sjabloon kunt u het leveren van meer dan één resource automatiseren, met inbegrip van Vm's, netwerken en opslag resources om complexe IaaS-oplossingen te bieden.  Zie [Azure Resource Manager](../../azure-resource-manager/management/overview.md)voor meer informatie over het maken van oplossings sjablonen.
 
-* **Beheerde toepassing** is vergelijkbaar met oplossings sjablonen, met één belang rijk verschil. In een beheerde toepassing worden de resources geïmplementeerd vanuit een resourcegroep die wordt beheerd door de uitgever van de app. De resourcegroep is opgenomen in het abonnement van de consument, maar een identiteit in de tenant van de uitgever heeft toegang tot de resourcegroep. De uitgever bepaalt de kosten voor de voortdurende ondersteuning van de oplossing. Gebruik beheerde toepassingen om eenvoudig volledig beheerde, kant-en-klare toepassingen te bouwen en te leveren aan uw klanten.  Zie het overzicht van door [Azure beheerde toepassingen](../../managed-applications/overview.md)voor meer informatie over de voor-en andere typen beheerde toepassingen.
+* **Beheerde toepassing** is vergelijkbaar met oplossings sjablonen, met één belang rijk verschil. In een beheerde toepassing worden de resources geïmplementeerd vanuit een resourcegroep die wordt beheerd door de uitgever van de app. De resourcegroep is opgenomen in het abonnement van de consument, maar een identiteit in de tenant van de uitgever heeft toegang tot de resourcegroep. De uitgever bepaalt de kosten voor de voortdurende ondersteuning van de oplossing. Gebruik beheerde toepassingen om eenvoudig volledig beheerde, kant-en-klare toepassingen te bouwen en te leveren aan uw klanten.  Zie het overzicht van door [Azure beheerde toepassingen](../../azure-resource-manager/managed-applications/overview.md)voor meer informatie over de voor-en andere typen beheerde toepassingen.
 
 ## <a name="technical-requirements"></a>Technische vereisten
 
 Alle Azure-toepassingen bevatten ten minste twee bestanden in de hoofdmap van een `.zip` Archief:
 
-* Een resource manager-sjabloon bestand [ met de naammainTemplate.jsop](../../azure-resource-manager/resource-group-overview.md).  Met deze sjabloon worden de resources gedefinieerd die moeten worden geïmplementeerd in het Azure-abonnement van de klant. Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/resources/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
+* Een resource manager-sjabloon bestand [ met de naammainTemplate.jsop](../../azure-resource-manager/management/overview.md).  Met deze sjabloon worden de resources gedefinieerd die moeten worden geïmplementeerd in het Azure-abonnement van de klant. Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/resources/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
 
-* Een definitie van de gebruikers interface voor de Azure-toepassing voor het maken van toepassingen met de naam [createUiDefinition.jsop](../../managed-applications/create-uidefinition-overview.md).  In de gebruikersinterface geeft u elementen op waarmee consumenten parameterwaarden kunnen opgeven.
+* Een definitie van de gebruikers interface voor de Azure-toepassing voor het maken van toepassingen met de naam [createUiDefinition.jsop](../../azure-resource-manager/managed-applications/create-uidefinition-overview.md).  In de gebruikersinterface geeft u elementen op waarmee consumenten parameterwaarden kunnen opgeven.
 
 Alle nieuwe aanbiedingen van Azure Application moeten een [GUID voor gebruiks toewijzing](../azure-partner-customer-usage-attribution.md)van een Azure-partner bevatten. 
 
@@ -107,22 +107,22 @@ Zie voor meer informatie over publicatie vereisten voor elk toepassings plan [op
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
 
-1. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
+1. Selecteer in het menu links de optie **commerciële Marketplace** -  >  **overzicht** .
 
-1. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Azure-toepassing**.
+1. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Azure-toepassing** .
 
     ![Illustreert het navigatie menu.](./media/new-offer-azure-app.png)
 
-1. Voer op de pagina **nieuwe aanbieding** een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
+1. Voer op de pagina **nieuwe aanbieding** een **aanbiedings-id** in. Dit is een unieke id voor elke aanbieding in uw account.
 
      * Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
-     * Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-     * De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+     * Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+     * De aanbiedings-ID kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
-1. Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
+1. Voer een **alias** voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
      * Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
-     * De aanbiedings alias kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+     * De aanbiedings alias kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
 1. Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
@@ -136,7 +136,7 @@ Een test drive is een fantastische manier om uw aanbieding aan potentiële klant
 
 Als u een test drive voor een bepaalde periode wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in. Als u test drive uit uw aanbieding wilt verwijderen, schakelt u dit selectie vakje uit. Configureer de test drive omgeving in het gedeelte [technische configuratie van het test station](#test-drive-technical-configuration) verderop in dit onderwerp.
 
-Zie [Test uw aanbieding in de commerciële Marketplace](test-drive.md)voor meer informatie. U kunt ook lezen over [test drive best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) en de [overzicht van de test stations-PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) downloaden (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
+Zie [Test uw aanbieding in de commerciële Marketplace](../what-is-test-drive.md)voor meer informatie. U kunt ook lezen over [test drive best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) en de [overzicht van de test stations-PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) downloaden (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
 >[!Note]
 >Omdat alle Azure-toepassingen worden geïmplementeerd met behulp van een Azure Resource Manager sjabloon, is het enige type test drive dat beschikbaar is voor een Azure-toepassing een [Azure Resource Manager test drive](../azure-resource-manager-test-drive.md).
@@ -158,7 +158,7 @@ Op de pagina **Eigenschappen** definieert u de categorieën die worden gebruikt 
 Selecteer categorieën en subcategorieën om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Zorg ervoor dat u beschrijft hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. Selecteer:
 
 - Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
-- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing** .
 
 Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md).
 
@@ -232,11 +232,11 @@ Voer de URL in voor het privacybeleid van uw organisatie. U bent verantwoordelij
 
 ### <a name="useful-links"></a>Handige koppelingen
 
-Voeg koppelingen toe aan optionele aanvullende online documenten over uw oplossing door **+ een koppeling toe te voegen**.
+Voeg koppelingen toe aan optionele aanvullende online documenten over uw oplossing door **+ een koppeling toe te voegen** .
 
 ### <a name="contact-information"></a>Contactgegevens
 
-Geef de naam, het e-mail adres en het telefoon nummer van een contact persoon voor **ondersteunings contact**, **technisch contact**persoon en **CSP-programma op**. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verschaft aan CSP-partners. Voor sommige contact personen is mogelijk aanvullende informatie vereist.
+Geef de naam, het e-mail adres en het telefoon nummer van een contact persoon voor **ondersteunings contact** , **technisch contact** persoon en **CSP-programma op** . Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verschaft aan CSP-partners. Voor sommige contact personen is mogelijk aanvullende informatie vereist.
 
 ### <a name="marketplace-media"></a>Media voor Marketplace
 
@@ -304,8 +304,8 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 De technische configuratie definieert de Details (Tenant-ID en App-ID) die worden gebruikt voor het identificeren van uw service, waardoor er metings gebeurtenissen voor een beheerde toepassing worden gemaakt met behulp van de [Marketplace meter service-api's](./marketplace-metering-service-apis.md).  Geef de identiteit op die uw service gebruikt voor het verzenden van meter gebeurtenissen.
 
-* **Azure AD-Tenant-id** (vereist): in het Azure Portal moet u [een Azure Active Directory (AD)-app maken](../../active-directory/develop/howto-create-service-principal-portal.md) zodat de verbinding tussen de twee services achter een geverifieerde communicatie kan worden gevalideerd. Als u de [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)wilt vinden, gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen**. vervolgens zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
-* **Azure AD-App-ID** (vereist): u hebt ook uw [toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)en een verificatie sleutel nodig. Als u deze waarden wilt ophalen, gaat u naar uw Azure Active Directory en selecteert u **app-registraties**en vervolgens zoekt u naar het **toepassings-id-** nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). Ga naar **instellingen** en selecteer **sleutels**om de verificatie sleutel te vinden. U moet een beschrijving en een duur opgeven, en vervolgens een numerieke waarde.
+* **Azure AD-Tenant-id** (vereist): in het Azure Portal moet u [een Azure Active Directory (AD)-app maken](../../active-directory/develop/howto-create-service-principal-portal.md) zodat de verbinding tussen de twee services achter een geverifieerde communicatie kan worden gevalideerd. Als u de [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)wilt vinden, gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen** . vervolgens zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
+* **Azure AD-App-ID** (vereist): u hebt ook uw [toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)en een verificatie sleutel nodig. Als u deze waarden wilt ophalen, gaat u naar uw Azure Active Directory en selecteert u **app-registraties** en vervolgens zoekt u naar het **toepassings-id-** nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). Ga naar **instellingen** en selecteer **sleutels** om de verificatie sleutel te vinden. U moet een beschrijving en een duur opgeven, en vervolgens een numerieke waarde.
 
 >[!Note]
 >De Azure-toepassings-ID wordt gekoppeld aan uw uitgevers-ID en kan alleen opnieuw worden gebruikt binnen dit uitgevers account.
@@ -328,7 +328,7 @@ Nadat u hebt gemaakt, ziet u de namen van uw plannen, Id's, plan type, Beschik b
 
 ### <a name="create-new-plan"></a>Nieuw plan maken
 
-**_Plan-id_*_: Maak een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL.  Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. Deze ID kan niet worden gewijzigd nadat de maken is geselecteerd.
+**_Plan-id_* _: Maak een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL.  Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. Deze ID kan niet worden gewijzigd nadat de maken is geselecteerd.
 
 _*_Plan naam_*_ : klanten krijgen deze naam te zien wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld aanbiedings naam: Windows Server; abonnementen: Windows Server 2016, Windows Server 2019).
 
@@ -337,11 +337,11 @@ _*_Plan naam_*_ : klanten krijgen deze naam te zien wanneer ze bepalen welk abon
 Op dit tabblad kunt u de configuratie op hoog niveau voor het type abonnement instellen, ongeacht of de pakketten van een ander abonnement opnieuw worden gebruikt en op welke Clouds het plan beschikbaar moet zijn. Uw antwoorden op dit tabblad beïnvloeden welke velden worden weer gegeven op andere tabbladen voor hetzelfde abonnement.
 
 #### <a name="plan-type"></a>Plantype
-Selecteer het type abonnement voor uw aanbieding. Een _*oplossings sjabloon** plan wordt volledig door de klant beheerd. Met een **beheerd toepassings** abonnement kunnen uitgevers de toepassing namens de klant beheren. Zie [typen Azure-toepassings plannen](#types-of-azure-application-plans)voor meer informatie.
+Selecteer het type abonnement voor uw aanbieding. Een _ *oplossings sjabloon* * plan wordt volledig door de klant beheerd. Met een **beheerd toepassings** abonnement kunnen uitgevers de toepassing namens de klant beheren. Zie [typen Azure-toepassings plannen](#types-of-azure-application-plans)voor meer informatie.
 
 #### <a name="re-use-technical-configuration"></a>Technische configuratie opnieuw gebruiken
 
-Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek zijn, kunt u het abonnement selecteren om **pakketten van een ander abonnement**opnieuw te gebruiken.  Wanneer u deze optie selecteert, kunt u een van de andere plannen van hetzelfde type voor deze aanbieding selecteren om pakketten opnieuw te gebruiken.
+Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek zijn, kunt u het abonnement selecteren om **pakketten van een ander abonnement** opnieuw te gebruiken.  Wanneer u deze optie selecteert, kunt u een van de andere plannen van hetzelfde type voor deze aanbieding selecteren om pakketten opnieuw te gebruiken.
 
 >[!Note]
 >Wanneer u pakketten uit een ander abonnement opnieuw gebruikt, verdwijnt het hele tabblad technische configuratie van dit abonnement. De technische configuratie details van het andere abonnement, inclusief eventuele updates die u in de toekomst maakt, worden ook voor dit abonnement gebruikt.<br><br>Deze instelling kan niet worden gewijzigd nadat dit abonnement is gepubliceerd.
@@ -361,7 +361,7 @@ Voordat u naar [Azure Government](../../azure-government/documentation-governmen
 
 #### <a name="azure-government-certifications"></a>Azure Government-certificeringen
 
-Deze optie is alleen zichtbaar als u **Azure Government**hebt geselecteerd.
+Deze optie is alleen zichtbaar als u **Azure Government** hebt geselecteerd.
 
 Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS. Als u uw certificeringen voor deze Program ma's wilt controleren, kunt u Maxi maal 100 koppelingen opgeven. Deze kunnen links naar uw vermelding in het programma staan, of koppelingen naar beschrijvingen van uw naleving met hen op uw eigen websites. Deze koppelingen zijn alleen zichtbaar voor Azure Government klanten.
 
@@ -465,8 +465,8 @@ Op dit tabblad kunt u de concept versie van uw technische configuratie bewerken.
 
 Alle Azure Application plan-pakketten moeten deze twee bestanden in de hoofdmap van een `.zip` Archief bevatten:
 
-* Een resource manager-sjabloon bestand [ met de naammainTemplate.jsop](../../azure-resource-manager/resource-group-overview.md). Met deze sjabloon wordt de implementatie van resources in het Azure-abonnement van klanten geautomatiseerd.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/documentation/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
-* Een definitie van de gebruikers interface voor de Azure-toepassing voor het maken van toepassingen met de naam [createUiDefinition.jsop](../../azure-resource-manager/managed-application-createuidefinition-overview.md).
+* Een resource manager-sjabloon bestand [ met de naammainTemplate.jsop](../../azure-resource-manager/management/overview.md). Met deze sjabloon wordt de implementatie van resources in het Azure-abonnement van klanten geautomatiseerd.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/documentation/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
+* Een definitie van de gebruikers interface voor de Azure-toepassing voor het maken van toepassingen met de naam [createUiDefinition.jsop](../../azure-resource-manager/managed-applications/create-uidefinition-overview.md).
 
 De maximale bestands grootte die wordt ondersteund zijn:
 
@@ -486,7 +486,7 @@ Op het tabblad **eerder gepubliceerde pakketten** kunt u alle gepubliceerde vers
 
 #### <a name="enable-just-in-time-jit-access"></a>Just-in-time-toegang inschakelen
 
-Selecteer deze optie om just-in-time-toegang (JIT) in te scha kelen voor dit abonnement.  Met JIT-toegang kunt u verhoogde toegang tot de resources van een beheerde toepassing aanvragen voor het oplossen van problemen of onderhoud. U hebt altijd alleen-lezen toegang tot de resources, maar gedurende een bepaalde periode kunt u meer toegang hebben.  Zie [just-in-time-toegang inschakelen en aanvragen voor Azure Managed Applications](../../managed-applications/request-just-in-time-access.md)voor meer informatie.  Als u wilt dat gebruikers van uw beheerde toepassing uw account permanente toegang geven, laat u deze optie uitgeschakeld.
+Selecteer deze optie om just-in-time-toegang (JIT) in te scha kelen voor dit abonnement.  Met JIT-toegang kunt u verhoogde toegang tot de resources van een beheerde toepassing aanvragen voor het oplossen van problemen of onderhoud. U hebt altijd alleen-lezen toegang tot de resources, maar gedurende een bepaalde periode kunt u meer toegang hebben.  Zie [just-in-time-toegang inschakelen en aanvragen voor Azure Managed Applications](../../azure-resource-manager/managed-applications/request-just-in-time-access.md)voor meer informatie.  Als u wilt dat gebruikers van uw beheerde toepassing uw account permanente toegang geven, laat u deze optie uitgeschakeld.
 
 >[!Note]
 >Zorg ervoor dat u het bestand bijwerkt `createUiDefinition.json` om deze functie te kunnen ondersteunen.  
@@ -495,10 +495,10 @@ Selecteer deze optie om just-in-time-toegang (JIT) in te scha kelen voor dit abo
 
 Selecteer of u de **volledige** of **incrementele implementatie modus** wilt configureren wanneer u dit plan implementeert: 
 
-* In de **volledige modus**leidt een herimplementatie van de toepassing door de klant tot het verwijderen van resources in de beheerde resource groep als de resources niet zijn gedefinieerd in de `mainTemplate.json` . 
-* In de **incrementele modus**blijven bestaande resources ongewijzigd wanneer de toepassing opnieuw wordt geïmplementeerd.
+* In de **volledige modus** leidt een herimplementatie van de toepassing door de klant tot het verwijderen van resources in de beheerde resource groep als de resources niet zijn gedefinieerd in de `mainTemplate.json` . 
+* In de **incrementele modus** blijven bestaande resources ongewijzigd wanneer de toepassing opnieuw wordt geïmplementeerd.
 
-Zie [Azure Resource Manager-implementatie modi](../../azure-resource-manager/deployment-modes.md)voor meer informatie over de implementatie modi.
+Zie [Azure Resource Manager-implementatie modi](../../azure-resource-manager/templates/deployment-modes.md)voor meer informatie over de implementatie modi.
 
 #### <a name="notification-endpoint-url"></a>URL van meldings eindpunt
 
@@ -543,23 +543,23 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 ## <a name="test-drive"></a>Station testen
 
-Stel een demonstratie (test drive) in waarmee klanten uw aanbieding kunnen uitproberen voordat ze deze aanschaffen. Voor het maken van een demonstratie omgeving waarmee klanten uw aanbieding voor een bepaalde periode kunnen uitproberen, raadpleegt u [uw aanbieding in de commerciële Marketplace testen](test-drive.md).
+Stel een demonstratie (test drive) in waarmee klanten uw aanbieding kunnen uitproberen voordat ze deze aanschaffen. Voor het maken van een demonstratie omgeving waarmee klanten uw aanbieding voor een bepaalde periode kunnen uitproberen, raadpleegt u [uw aanbieding in de commerciële Marketplace testen](../what-is-test-drive.md).
 
 Als u een test drive wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in op het tabblad installatie van de [aanbieding](#test-drive) . Als u test drive uit uw aanbieding wilt verwijderen, schakelt u dit selectie vakje uit.
 
 ### <a name="test-drive-technical-configuration"></a>Technische configuratie van test drive
 
-- **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u **app-registraties**en zoekt u naar het id-nummer van de **toepassing** die wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u **app-registraties** en zoekt u naar het id-nummer van de **toepassing** die wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 
 #### <a name="deployment-subscription-details"></a>Details van implementatie abonnement
 
 Als u wilt dat het test station namens u kan worden geïmplementeerd, maakt en geeft u een afzonderlijk, uniek Azure-abonnement (niet vereist voor Power BI test stations).
 
-* **Azure-abonnements-id** (vereist voor Azure Resource Manager en Logic apps): Voer de abonnements-id in om toegang te verlenen tot uw Azure-account services voor rapportage en facturering van resource gebruik. Het is raadzaam om [een afzonderlijk Azure-abonnement te maken](../../billing/billing-create-subscription.md) dat u voor test stations kunt gebruiken als u er nog geen hebt. U kunt uw Azure-abonnements-ID vinden door u aan te melden bij de [Azure Portal](https://portal.azure.com/) en te navigeren naar het tabblad **abonnementen** van het menu aan de linkerkant. Als u het tabblad selecteert, wordt uw abonnements-ID weer gegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
-* **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL op:  [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+* **Azure-abonnements-id** (vereist voor Azure Resource Manager en Logic apps): Voer de abonnements-id in om toegang te verlenen tot uw Azure-account services voor rapportage en facturering van resource gebruik. Het is raadzaam om [een afzonderlijk Azure-abonnement te maken](../../cost-management-billing/manage/create-subscription.md) dat u voor test stations kunt gebruiken als u er nog geen hebt. U kunt uw Azure-abonnements-ID vinden door u aan te melden bij de [Azure Portal](https://portal.azure.com/) en te navigeren naar het tabblad **abonnementen** van het menu aan de linkerkant. Als u het tabblad selecteert, wordt uw abonnements-ID weer gegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
+* **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen** en zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL op:  [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Naam van Azure AD-Tenant** (vereist voor dynamische 365): Voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). in de rechter bovenhoek wordt de naam van de Tenant vermeld onder uw account naam.
-* **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links Navigator, selecteert u **app-registraties**en zoekt u naar het **toepassings-id** -nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
-* **Azure Active Directory toepassings client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het menu links het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert voordat u deze pagina verlaat.)
+* **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links Navigator, selecteert u **app-registraties** en zoekt u naar het **toepassings-id** -nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
+* **Azure Active Directory toepassings client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het menu links het tabblad **Azure Active Directory** , selecteer **app-registraties** en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen** , selecteer **Nieuw client geheim** , voer een beschrijving in, selecteer **nooit** onder **verlooptd** en kies vervolgens **toevoegen** . Zorg ervoor dat u de waarde kopieert voordat u deze pagina verlaat.)
 
 Selecteer **concept opslaan** voordat u doorgaat.
 

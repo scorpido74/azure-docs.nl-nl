@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337803"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130252"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problemen met Azure Stream Analytics query's oplossen
 
@@ -25,26 +25,26 @@ In dit artikel worden veelvoorkomende problemen met het ontwikkelen van Azure St
 
 1.  Controleer fouten door lokaal te testen:
 
-    - Selecteer op Azure Portal op het tabblad **query** de optie **testen**. Gebruik de gedownloade voorbeeld gegevens om [de query te testen](stream-analytics-test-query.md). Controleer eventuele fouten en probeer deze te corrigeren.   
+    - Selecteer op Azure Portal op het tabblad **query** de optie **testen** . Gebruik de gedownloade voorbeeld gegevens om [de query te testen](stream-analytics-test-query.md). Controleer eventuele fouten en probeer deze te corrigeren.   
     - U kunt [uw query ook lokaal testen](stream-analytics-live-data-local-testing.md) met Azure stream Analytics-hulpprogram Ma's voor Visual Studio of [Visual Studio code](visual-studio-code-local-run-live-input.md). 
 
 2.  [Debug-query's stap voor stap lokaal met behulp van taak diagram](debug-locally-using-job-diagram-vs-code.md) in azure stream Analytics-hulpprogram Ma's voor Visual Studio code. In het taak diagram wordt weer gegeven hoe gegevens stromen van invoer bronnen (Event hub, IoT Hub, enzovoort) via meerdere query stappen worden uitgevoerd en tot slot naar uitvoer-Sinks. Elke query stap wordt toegewezen aan een tijdelijke resultatenset die in het script is gedefinieerd met behulp van de instructie WITH. U kunt de gegevens in elke tussenliggende resultatenset weer geven, evenals de metrieken, om de bron van het probleem te vinden.
 
     ![Resultaat van voor beeld van taak diagram](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
-3.  Als u [**time stamp by**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)gebruikt, controleert u of de gebeurtenissen tijds tempels hebben die groter zijn dan de [begin tijd](stream-analytics-out-of-order-and-late-events.md)van de taak.
+3.  Als u [**time stamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics)gebruikt, controleert u of de gebeurtenissen tijds tempels hebben die groter zijn dan de [begin tijd](./stream-analytics-time-handling.md)van de taak.
 
 4.  Vermijd veelvoorkomende Valk uilen, zoals:
-    - Een [**where**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) -component in de query heeft alle gebeurtenissen gefilterd, waardoor er geen uitvoer kan worden gegenereerd.
-    - Een [**cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) -functie mislukt, waardoor de taak mislukt. Als u geen cast-fouten wilt voor komen, gebruikt u [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) in plaats daarvan.
+    - Een [**where**](/stream-analytics-query/where-azure-stream-analytics) -component in de query heeft alle gebeurtenissen gefilterd, waardoor er geen uitvoer kan worden gegenereerd.
+    - Een [**cast**](/stream-analytics-query/cast-azure-stream-analytics) -functie mislukt, waardoor de taak mislukt. Als u geen cast-fouten wilt voor komen, gebruikt u [**TRY_CAST**](/stream-analytics-query/try-cast-azure-stream-analytics) in plaats daarvan.
     - Wanneer u venster functies gebruikt, wacht u tot de volledige venster duur een uitvoer van de query ziet.
     - De tijds tempel voor gebeurtenissen gaat vooraf aan de begin tijd van de taak en gebeurtenissen worden verwijderd.
-    - De voor waarden voor [**samen voegen**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) komen niet overeen. Als er geen overeenkomsten zijn, is er geen uitvoer.
+    - De voor waarden voor [**samen voegen**](/stream-analytics-query/join-azure-stream-analytics) komen niet overeen. Als er geen overeenkomsten zijn, is er geen uitvoer.
 
-5.  Zorg ervoor dat het beleid voor het best Ellen van gebeurtenissen is geconfigureerd zoals verwacht. Ga naar **instellingen** en selecteer [**evenementen ordenen**](stream-analytics-out-of-order-and-late-events.md). Het beleid wordt *niet* toegepast wanneer u de knop **testen** gebruikt om de query te testen. Dit resultaat is een verschil tussen het testen van in-browser en het uitvoeren van de taak in de productie omgeving. 
+5.  Zorg ervoor dat het beleid voor het best Ellen van gebeurtenissen is geconfigureerd zoals verwacht. Ga naar **instellingen** en selecteer [**evenementen ordenen**](./stream-analytics-time-handling.md). Het beleid wordt *niet* toegepast wanneer u de knop **testen** gebruikt om de query te testen. Dit resultaat is een verschil tussen het testen van in-browser en het uitvoeren van de taak in de productie omgeving. 
 
 6. Fouten opsporen met behulp van activiteit en resource logboeken:
-    - Gebruik [activiteiten logboeken](../azure-resource-manager/resource-group-audit.md)en filter om fouten op te sporen en op te sporen.
+    - Gebruik [activiteiten logboeken](../azure-resource-manager/management/view-activity-logs.md)en filter om fouten op te sporen en op te sporen.
     - Gebruik [taak bron logboeken](stream-analytics-job-diagnostic-logs.md) om fouten te identificeren en op te sporen.
 
 ## <a name="resource-utilization-is-high"></a>Het resource gebruik is hoog
@@ -103,12 +103,12 @@ Deze keer worden de gegevens in de uitvoer opgemaakt en ingevuld zoals verwacht.
 
 ## <a name="get-help"></a>Hulp vragen
 
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API-naslaggids voor Azure Stream Analytics Management](/rest/api/streamanalytics/)

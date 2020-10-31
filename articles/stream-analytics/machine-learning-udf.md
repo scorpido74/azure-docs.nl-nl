@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249481"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130677"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integreren met Azure Machine Learning (preview-versie)
 
@@ -23,13 +23,13 @@ U kunt machine learning modellen implementeren als een door de gebruiker gedefin
 
 Voer de volgende stappen uit voordat u een machine learning model toevoegt als een functie voor uw Stream Analytics taak:
 
-1. Gebruik Azure Machine Learning om [uw model te implementeren als een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+1. Gebruik Azure Machine Learning om [uw model te implementeren als een webservice](../machine-learning/how-to-deploy-and-where.md).
 
 2. Uw score script moet [voorbeeld invoer en uitvoer](../machine-learning/how-to-deploy-and-where.md) bevatten die door Azure machine learning worden gebruikt om een schema specificatie te genereren. Stream Analytics gebruikt het schema om inzicht te krijgen in de functie handtekening van uw webservice. U kunt deze voor [beeld-Swagger-definitie](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) als referentie gebruiken om ervoor te zorgen dat u deze correct hebt ingesteld.
 
 3. Zorg ervoor dat uw webservice een JSON-geserialiseerde gegevens accepteert en retourneert.
 
-4. Implementeer uw model op de [Azure Kubernetes-service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) voor grootschalige productie-implementaties. Als de webservice niet in staat is om het aantal aanvragen af te handelen van uw taak, wordt de prestaties van uw Stream Analytics-taak verslechterd. Dit heeft gevolgen voor de latentie. Modellen die worden geïmplementeerd op Azure Container Instances worden alleen ondersteund wanneer u de Azure Portal gebruikt. Modellen die zijn gebouwd met behulp van [Azure machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) , worden nog niet ondersteund in stream Analytics.
+4. Implementeer uw model op de [Azure Kubernetes-service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) voor grootschalige productie-implementaties. Als de webservice niet in staat is om het aantal aanvragen af te handelen van uw taak, wordt de prestaties van uw Stream Analytics-taak verslechterd. Dit heeft gevolgen voor de latentie. Modellen die worden geïmplementeerd op Azure Container Instances worden alleen ondersteund wanneer u de Azure Portal gebruikt. Modellen die zijn gebouwd met behulp van [Azure machine learning Designer](../machine-learning/concept-designer.md) , worden nog niet ondersteund in stream Analytics.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Een machine learning model toevoegen aan uw taak
 
@@ -37,7 +37,7 @@ U kunt rechtstreeks vanuit de Azure Portal of Visual Studio code Azure Machine L
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Navigeer naar uw Stream Analytics-taak in de Azure Portal en selecteer **functies** onder **taak topologie**. Selecteer vervolgens **Azure machine learning-service** in de vervolg keuzelijst **+ toevoegen** .
+1. Navigeer naar uw Stream Analytics-taak in de Azure Portal en selecteer **functies** onder **taak topologie** . Selecteer vervolgens **Azure machine learning-service** in de vervolg keuzelijst **+ toevoegen** .
 
    ![Azure Machine Learning UDF toevoegen](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
@@ -47,7 +47,7 @@ U kunt rechtstreeks vanuit de Azure Portal of Visual Studio code Azure Machine L
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-1. Open uw Stream Analytics-project in Visual Studio code en klik met de rechter muisknop op de map **functions** . Kies vervolgens **functie toevoegen**. Selecteer **machine learning UDF** in de vervolg keuzelijst.
+1. Open uw Stream Analytics-project in Visual Studio code en klik met de rechter muisknop op de map **functions** . Kies vervolgens **functie toevoegen** . Selecteer **machine learning UDF** in de vervolg keuzelijst.
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="UDF toevoegen in VS code":::
 

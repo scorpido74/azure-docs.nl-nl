@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c30a9997fcc7ac10b1072d4f164c3e7bfa16f0b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709101"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130507"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Een Azure Container-aanbieding maken in Azure Marketplace
 
@@ -22,9 +22,9 @@ In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplac
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
 
-2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
+2. Selecteer in het menu links de optie **commerciële Marketplace** -  >  **overzicht** .
 
-3. Selecteer op de pagina overzicht **+ nieuwe**  >  **Azure-container**aanbod.
+3. Selecteer op de pagina overzicht **+ nieuwe**  >  **Azure-container** aanbod.
 
    ![Illustreert het navigatie menu.](./media/new-offer-azure-container.png)
 
@@ -33,16 +33,16 @@ In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplac
 
 ### <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
 
-Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
+Voer een **aanbiedings-id** in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
-Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
+Voer een **alias** voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
 - Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
-- Dit kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+- Dit kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
 Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
@@ -52,10 +52,10 @@ De **overzichts** pagina van de aanbieding bevat een visuele weer gave van de st
 
 Op deze pagina worden verschillende koppelingen weer gegeven op basis van de huidige status van de aanbieding. Bijvoorbeeld:
 
-- Als de aanbieding een concept is- [concept verwijderen](update-existing-offer.md#delete-a-draft-offer)
+- Als de aanbieding een concept is-concept verwijderen
 - Als de aanbieding Live is: [de aanbieding wordt niet meer verkocht](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- Als de aanbieding in Preview- [Live](publishing-status.md#publisher-approval) staat
-- Als u Publisher-afmelding niet hebt voltooid, kunt u het [Publiceren annuleren](update-existing-offer.md#cancel-publishing)
+- Als de aanbieding in Preview- [Live](../review-publish-offer.md#previewing-and-approving-your-offer) staat
+- Als u Publisher-afmelding niet hebt voltooid, kunt u het [Publiceren annuleren.](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Installatie van aanbieding
 
@@ -65,7 +65,7 @@ Volg deze stappen om uw aanbieding in te stellen.
 
 Wanneer u uw aanbieding naar de commerciële Marketplace met het partner centrum publiceert, kunt u deze verbinding laten maken met uw CRM-systeem (Customer Relationship Management). Zo kunt u contact gegevens van klanten ontvangen zodra iemand interesse in of gebruikt voor uw product.
 
-1. **Selecteer de doel locatie van de lead waarnaar we leads van klanten willen verzenden**. Het partner Centrum ondersteunt de volgende CRM-systemen:
+1. **Selecteer de doel locatie van de lead waarnaar we leads van klanten willen verzenden** . Het partner Centrum ondersteunt de volgende CRM-systemen:
 
    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) voor klant betrokkenheid
    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
@@ -96,7 +96,7 @@ Op deze pagina kunt u de categorieën definiëren die worden gebruikt voor het g
 Selecteer categorieën en subcategorieën om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Zorg ervoor dat u beschrijft hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. Selecteer:
 
 - Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
-- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing** .
 
 Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md). Containers worden altijd weer gegeven onder **containers** en vervolgens de categorie **container installatie kopieën** .
 
@@ -172,7 +172,7 @@ Bied aanvullende online documenten over uw aanbieding. U kunt Maxi maal 25 koppe
 
 ### <a name="contact-information"></a>Contactgegevens
 
-U moet de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon**. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft. Dit kan ook worden gegeven aan partners van de Cloud Solution Provider (CSP).
+U moet de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon** . Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft. Dit kan ook worden gegeven aan partners van de Cloud Solution Provider (CSP).
 
 - Ondersteunings contact (vereist): voor algemene ondersteunings vragen.
 - Technische contact persoon (vereist): voor technische vragen en certificerings problemen.
@@ -180,7 +180,7 @@ U moet de naam, het e-mail adres en het telefoon nummer opgeven voor een **onder
 
 Geef in de sectie **ondersteunings contact op met** de **ondersteunings website** waar partners ondersteuning voor uw aanbieding kunnen vinden op basis van het feit of de aanbieding beschikbaar is in wereld wijd Azure, Azure Government of beide.
 
-Geef in de sectie **contact persoon** van het CSP-programma de koppeling op (**CSP-programma marketing materiaal**) waarin CSP-partners marketing materiaal voor uw aanbieding kunnen vinden.
+Geef in de sectie **contact persoon** van het CSP-programma de koppeling op ( **CSP-programma marketing materiaal** ) waarin CSP-partners marketing materiaal voor uw aanbieding kunnen vinden.
 
 #### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
@@ -242,7 +242,7 @@ Hiermee worden Zoek resultaten weer gegeven in Azure Portal:
 Op het tabblad preview kunt u een beperkte preview- **doel groep** kiezen voor het valideren van uw aanbieding voordat u deze live publiceert.
 
 > [!IMPORTANT]
-> Nadat u uw aanbieding in **Preview**hebt bekeken, moet u **Live go** selecteren om uw aanbieding naar het publiek te publiceren.
+> Nadat u uw aanbieding in **Preview** hebt bekeken, moet u **Live go** selecteren om uw aanbieding naar het publiek te publiceren.
 
 Geef uw preview-doel groep op met behulp van de Azure-abonnements-ID-GUID'S, samen met een optionele beschrijving voor elk. Geen van deze velden kan worden gezien door klanten.
 
@@ -274,14 +274,14 @@ De acties die beschikbaar zijn in het plan overzicht variëren, afhankelijk van 
 
 ### <a name="create-new-plan"></a>Nieuw plan maken
 
-Selecteer **nieuw plan maken**. Het dialoog venster **nieuw plan** wordt weer gegeven.
+Selecteer **nieuw plan maken** . Het dialoog venster **nieuw plan** wordt weer gegeven.
 
 Maak in het vak **abonnement-id** een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in het webadres van het product. Gebruik alleen kleine letters en cijfers, streepjes of onderstrepings tekens en Maxi maal 50.
 
 > [!NOTE]
-> De plan-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+> De plan-ID kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
-Voer in het vak **naam van abonnement** een naam in voor dit abonnement. Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke naam voor elk abonnement. U kunt bijvoorbeeld een aanbiedings naam van **Windows Server** gebruiken met plannen **Windows Server 2016** en **Windows Server 2019**.
+Voer in het vak **naam van abonnement** een naam in voor dit abonnement. Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke naam voor elk abonnement. U kunt bijvoorbeeld een aanbiedings naam van **Windows Server** gebruiken met plannen **Windows Server 2016** en **Windows Server 2019** .
 
 ### <a name="plan-setup"></a>Installatie plannen
 
@@ -289,7 +289,7 @@ Op dit tabblad kunt u kiezen in welke Clouds het plan beschikbaar is. Uw antwoor
 
 #### <a name="azure-regions"></a>Azure-regio's
 
-Alle abonnementen voor Azure-container aanbiedingen worden automatisch beschikbaar gemaakt in **Azure Global**.  Uw abonnement kan door klanten worden gebruikt in alle wereld wijde Azure-regio's die gebruikmaken van de commerciële Marketplace. Zie [geografische Beschik baarheid en valuta ondersteuning](../marketplace-geo-availability-currencies.md)voor meer informatie.
+Alle abonnementen voor Azure-container aanbiedingen worden automatisch beschikbaar gemaakt in **Azure Global** .  Uw abonnement kan door klanten worden gebruikt in alle wereld wijde Azure-regio's die gebruikmaken van de commerciële Marketplace. Zie [geografische Beschik baarheid en valuta ondersteuning](../marketplace-geo-availability-currencies.md)voor meer informatie.
 
 Selecteer de optie [Azure Government](../../azure-government/documentation-government-welcome.md) om uw oplossing hier weer te geven. Dit is een community-Cloud met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-en lokale of tribale overheids instanties en partners die in aanmerking komen voor de overheid. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor deze Cloud community. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten). Voordat u naar Azure Government [publiceert](../../azure-government/documentation-government-manage-marketplace-partners.md) , moet u de oplossing in dat gebied testen en bevestigen, omdat de resultaten mogelijk verschillend zijn. Vraag een proef account aan [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/)om uw oplossing te maken en te testen.
 
@@ -298,7 +298,7 @@ Selecteer de optie [Azure Government](../../azure-government/documentation-gover
 
 #### <a name="azure-government-certifications"></a>Azure Government-certificeringen
 
-Deze optie kan alleen worden gezien als **Azure Government** is geselecteerd onder **Azure-regio's**.
+Deze optie kan alleen worden gezien als **Azure Government** is geselecteerd onder **Azure-regio's** .
 
 Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS.
 
@@ -365,11 +365,11 @@ Geef de volgende informatie op het tabblad Details van de **afbeeldings opslagpl
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
-**Wacht woord voor de Azure container Registry** : Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
+**Wacht woord voor de Azure container Registry** : Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
-**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. Neem de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de pagina [container Registry](https://azure.microsoft.com/services/container-registry/)  >  **opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in azure Portal](../../container-registry/container-registry-repositories.md)voor meer informatie.
+**De naam van de opslag plaats in de Azure container Registry** . Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. Neem de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de pagina [container Registry](https://azure.microsoft.com/services/container-registry/)  >  **opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in azure Portal](../../container-registry/container-registry-repositories.md)voor meer informatie.
 
 > [!NOTE]
 > Nadat de naam is ingesteld, kan deze niet meer worden gewijzigd. Gebruik een unieke naam voor elke aanbieding in uw account.
@@ -391,7 +391,7 @@ Alle manifest Tags (met uitzonde ring van de laatste tag) moeten beginnen met X.
 
 Nadat u alle vereiste delen van de aanbieding hebt voltooid, kunt u deze verzenden om te controleren en te publiceren.
 
-Selecteer in de rechter bovenhoek van de portal **controleren en** **publiceren**.
+Selecteer in de rechter bovenhoek van de portal **controleren en** **publiceren** .
 
 Op de pagina controleren kunt u het volgende doen:
 
@@ -401,11 +401,11 @@ Op de pagina controleren kunt u het volgende doen:
   - **Volledig** : bevat alle vereiste gegevens zonder fouten. Alle onderdelen van de aanbieding moeten volledig zijn voordat u de aanbieding kunt indienen.
 - Geef test instructies op het certificerings team om te controleren of uw aanbieding correct is getest. Geef ook aanvullende notities op die handig zijn voor het leren van uw aanbieding.
 
-Selecteer **publiceren**om de aanbieding voor publicatie in te dienen.
+Selecteer **publiceren** om de aanbieding voor publicatie in te dienen.
 
 We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren.
 
-Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.
+Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live** .
 
 ## <a name="next-step"></a>Volgende stap
 

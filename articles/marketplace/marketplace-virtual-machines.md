@@ -8,18 +8,18 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329029"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129589"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Een aanbieding voor een virtuele machine plannen
 
 In dit artikel worden de verschillende opties en vereisten beschreven voor het publiceren van een virtuele machine (VM)-aanbieding naar de commerciële Marketplace. VM-aanbiedingen zijn aanbiedingen die via Azure Marketplace kunnen worden geïmplementeerd en gefactureerd.
 
-Voordat u begint, [maakt u een commercieel Marketplace-account in partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) en zorgt u ervoor dat uw account is inge schreven in het commerciële Marketplace-programma.
+Voordat u begint, [maakt u een commercieel Marketplace-account in partner centrum](./partner-center-portal/create-account.md) en zorgt u ervoor dat uw account is inge schreven in het commerciële Marketplace-programma.
 
 ### <a name="technical-fundamentals"></a>Technische basis principes
 
@@ -70,7 +70,7 @@ U kunt uitnodigingen verzenden naar e-mail adressen van micro soft-accounts (MSA
 
 Voor VM-aanbiedingen is ten minste één abonnement vereist. Een plan definieert het bereik en de limieten van de oplossing en de bijbehorende prijzen. U kunt meerdere plannen maken voor uw aanbieding om uw klanten verschillende technische en licentie opties te geven, evenals gratis proef versies. Bekijk [plannen en prijzen voor commerciële Marketplace-aanbiedingen](plans-pricing.md) voor algemene richt lijnen voor abonnementen, waaronder prijs modellen, gratis proef versies en privé abonnementen. 
 
-Vm's zijn volledig geschikt voor Commerce, met behulp van betalen per gebruik of uw eigen licentie modellen (BYOL). Micro soft host de commerce trans actie en factureert uw klant namens u. U krijgt het voor deel van het gebruik van de voorkeurs betalings relatie tussen uw klant en micro soft, inclusief alle Enter prise-overeenkomsten. Zie voor meer informatie [commerciële Marketplace Transact-mogelijkheden](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations).
+Vm's zijn volledig geschikt voor Commerce, met behulp van betalen per gebruik of uw eigen licentie modellen (BYOL). Micro soft host de commerce trans actie en factureert uw klant namens u. U krijgt het voor deel van het gebruik van de voorkeurs betalings relatie tussen uw klant en micro soft, inclusief alle Enter prise-overeenkomsten. Zie voor meer informatie [commerciële Marketplace Transact-mogelijkheden](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 > [!NOTE]
 > De monetaire toezeg gingen die zijn gekoppeld aan een Enterprise Agreement kunnen worden gebruikt voor het Azure-gebruik van uw virtuele machine, maar niet op basis van uw software licentie kosten.
@@ -84,7 +84,7 @@ Dit zijn de beschik bare licentie opties voor VM-aanbiedingen:
 | Optie voor licentieverlening | Transactie proces |
 | --- | --- |
 | Gratis proefversie | Bied uw klanten een gratis proef versie van drie of zes maanden aan. |
-| Station testen | Met deze optie kunnen uw klanten Vm's evalueren zonder extra kosten. Ze hoeven geen bestaande Azure-klant te zijn om te kunnen samen werken met de proef ervaring. Zie [Wat is een test drive?](https://docs.microsoft.com/azure/marketplace/what-is-test-drive) voor meer informatie. |
+| Station testen | Met deze optie kunnen uw klanten Vm's evalueren zonder extra kosten. Ze hoeven geen bestaande Azure-klant te zijn om te kunnen samen werken met de proef ervaring. Zie [Wat is een test drive?](./what-is-test-drive.md) voor meer informatie. |
 | BYOL (Bring Your Own License) | Met de optie uw eigen licentie nemen kunnen uw klanten bestaande software licenties aan Azure bieden.\* |
 | Op basis van gebruik | Met deze optie kunt u uw klanten per uur betalen, ook wel betalen naar gebruik. |
 | Interactieve demo  | Geef uw klanten een begeleide ervaring met uw oplossing met behulp van een interactieve demonstratie. Het voor deel is dat u een proef ervaring kunt bieden zonder dat u een ingewikkelde configuratie van uw complexe oplossing hoeft te bieden. |
@@ -129,7 +129,7 @@ Als u kiest voor het gebruik van het standaard contract, hebt u de mogelijkheid 
 Wanneer u uw aanbieding in Partner Center maakt, wordt het tabblad **verkopen via csp's** weer geven. Met deze optie kunnen partners die deel uitmaken van het CSP-programma (Microsoft Cloud Solution Providers), de virtuele machine door verkopen als onderdeel van een gebundelde aanbieding. Alle BYOL-abonnementen (voor het maken van uw eigen licentie) worden automatisch aangemeld bij het programma. U kunt er ook voor kiezen om uw keuze te maken in uw niet-BYOL plannen. Zie het [Cloud Solution Provider-programma](cloud-solution-providers.md) voor meer informatie. 
 
 > [!NOTE]
-> De opt-in voor de Cloud Solution Provider (CSP)-partner kanaal is nu beschikbaar. Zie [**Cloud Solution Providers**](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)(Engelstalig) voor meer informatie over het marketing uw aanbod via micro soft CSP-partner kanalen.
+> De opt-in voor de Cloud Solution Provider (CSP)-partner kanaal is nu beschikbaar. Zie [**Cloud Solution Providers**](./cloud-solution-providers.md)(Engelstalig) voor meer informatie over het marketing uw aanbod via micro soft CSP-partner kanalen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,18 +1,18 @@
 ---
 title: De agent voor Azure Arc-servers beheren
 description: In dit artikel worden de verschillende beheer taken beschreven die u normaal gesp roken uitvoert tijdens de levens cyclus van de computer agent die verbonden is met Azure Arc ingeschakeld.
-ms.date: 10/21/2020
+ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371423"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130966"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>De verbonden machine agent beheren en onderhouden
 
-Na de eerste implementatie van de met Azure Arc ingeschakelde servers die zijn verbonden met de computer agent voor Windows of Linux, moet u de agent mogelijk opnieuw configureren, bijwerken of verwijderen van de computer als deze de pensionering in de levens cyclus heeft bereikt. U kunt deze routine onderhouds taken eenvoudig hand matig of via Automation beheren, waardoor zowel de operationele fout als de onkosten worden verminderd.
+Na de eerste implementatie van de met Azure Arc ingeschakelde servers die zijn verbonden met de computer agent voor Windows of Linux, moet u de agent mogelijk opnieuw configureren, bijwerken of verwijderen van de computer. U kunt deze routine onderhouds taken eenvoudig hand matig of via Automation beheren, waardoor zowel de operationele fout als de onkosten worden verminderd.
 
 ## <a name="before-uninstalling-agent"></a>Voordat de agent wordt verwijderd
 
@@ -38,7 +38,11 @@ Voor servers of machines die u niet meer wilt beheren met Azure Arc-servers, moe
 
 ## <a name="upgrading-agent"></a>Agent bijwerken
 
-De Azure Connected machine-agent voor Windows en Linux kan hand matig worden bijgewerkt naar de meest recente versie of automatisch afhankelijk van uw vereisten. In de volgende tabel worden de methoden beschreven die worden ondersteund om de upgrade van de agent uit te voeren.
+De agent van de Azure Connected machine wordt regel matig bijgewerkt om problemen met oplossingen, stabiliteits verbeteringen en nieuwe functionaliteit aan te pakken. [Azure Advisor](../../advisor/advisor-overview.md) identificeert resources die niet gebruikmaken van de nieuwste versie van de machine agent en raadt u aan om te upgraden naar de nieuwste versie. U ontvangt een melding wanneer u de met Arc ingeschakelde server selecteert door een banner op de pagina **overzicht** te presen teren of door toegang te krijgen tot Advisor via de Azure Portal.
+
+De Azure Connected machine-agent voor Windows en Linux kan hand matig worden bijgewerkt naar de meest recente versie of automatisch afhankelijk van uw vereisten.
+
+In de volgende tabel worden de methoden beschreven die worden ondersteund om de upgrade van de agent uit te voeren.
 
 | Besturingssysteem | Upgrademethode |
 |------------------|----------------|
@@ -163,7 +167,7 @@ Het hulp programma Azcmagent (Azcmagent.exe) wordt gebruikt voor het configurere
 U kunt hand matig **verbinding maken** en de verbinding **verbreken** terwijl u zich interactief aanmeldt, of automatiseren met dezelfde service-principal die u hebt gebruikt om meerdere agents uit te voeren of met een [toegangs token](../../active-directory/develop/access-tokens.md)van het micro soft Identity platform. Raadpleeg het volgende [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) om een service-principal te maken als u geen Service-Principal hebt gebruikt om de machine te registreren met servers die geschikt zijn voor Azure Arc.
 
 >[!NOTE]
->U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
+>U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent** uit te voeren.
 
 ### <a name="connect"></a>Verbinding maken
 
@@ -215,8 +219,8 @@ Met beide van de volgende methoden wordt de agent verwijderd, maar wordt de map 
 1. Ga als volgt te werk om de Windows-agent te verwijderen van de computer:
 
     a. Meld u bij de computer aan met een account met beheerders machtigingen.  
-    b. Selecteer in **het configuratie scherm**de optie **Program ma's en onderdelen**.  
-    c. In **Program ma's en onderdelen**selecteert u **Azure Connected machine agent**, selecteert u **verwijderen**en selecteert u vervolgens **Ja**.  
+    b. Selecteer in **het configuratie scherm** de optie **Program ma's en onderdelen** .  
+    c. In **Program ma's en onderdelen** selecteert u **Azure Connected machine agent** , selecteert u **verwijderen** en selecteert u vervolgens **Ja** .  
 
     >[!NOTE]
     > U kunt de wizard Setup van agent ook uitvoeren door te dubbel klikken op het **AzureConnectedMachineAgent.msi** Installer-pakket.
@@ -277,7 +281,7 @@ Als u van plan bent om het beheer van de machine met ondersteunende services in 
 
 1. Open Azure Arc enabled servers door naar de [Azure Portal](https://aka.ms/hybridmachineportal)te gaan.
 
-2. Selecteer de computer in de lijst, selecteer het beletsel teken (**...**) en selecteer vervolgens **verwijderen**.
+2. Selecteer de computer in de lijst, selecteer het beletsel teken ( **...** ) en selecteer vervolgens **verwijderen** .
 
 ## <a name="update-or-remove-proxy-settings"></a>Proxy-instellingen bijwerken of verwijderen
 

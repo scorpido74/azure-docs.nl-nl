@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226961"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130218"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Vereisten voor toegang tot de API voor Azure Active Directory rapportage
 
@@ -55,7 +55,7 @@ Als u toegang wilt krijgen tot de aanmeld rapporten voor een Tenant, moet een Az
 
 ## <a name="register-an-application"></a>Een toepassing registreren
 
-Registratie is vereist, zelfs als u de rapportage-API opent met behulp van een script. De registratie geeft u een **toepassings-id**die is vereist voor de autorisatie aanroepen en de code in staat stelt om tokens te ontvangen.
+Registratie is vereist, zelfs als u de rapportage-API opent met behulp van een script. De registratie geeft u een **toepassings-id** die is vereist voor de autorisatie aanroepen en de code in staat stelt om tokens te ontvangen.
 
 Als u uw Directory wilt configureren voor toegang tot de Azure AD Reporting-API, moet u zich aanmelden bij de [Azure Portal](https://portal.azure.com) met een Azure-beheerders account dat ook lid is van de rol **globale beheerder** in uw Azure AD-Tenant.
 
@@ -67,27 +67,27 @@ Als u uw Directory wilt configureren voor toegang tot de Azure AD Reporting-API,
 
 1. Selecteer **Azure Active Directory** in het navigatie deel venster links In het [Azure Portal](https://portal.azure.com).
    
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Scherm afbeelding toont Azure Active Directory geselecteerd in het menu Azure Portal.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Selecteer op de pagina **Azure Active Directory** **app-registraties**.
+2. Selecteer op de pagina **Azure Active Directory** **app-registraties** .
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
+    ![Scherm afbeelding toont App-registraties geselecteerd in het menu beheren.](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. Selecteer op de pagina **app-registraties** **nieuwe registratie**.
+3. Selecteer op de pagina **app-registraties** **nieuwe registratie** .
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/03.png)
+    ![Scherm opname toont nieuwe registratie geselecteerd.](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
 4. De pagina voor het **registreren van een toepassing** :
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/04.png)
+    ![Scherm afbeelding toont de pagina een toepassing registreren waar u de waarden in deze stap kunt invoeren.](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. Typ in het tekstvak **naam** `Reporting API application` .
 
-    b. Voor het **type ondersteunde accounts**selecteert u **alleen accounts in deze organisatie**.
+    b. Voor het **type ondersteunde accounts** selecteert u **alleen accounts in deze organisatie** .
 
     c. Typ in de **omleidings-URL** **webtekstvak selecteren** `https://localhost` .
 
-    d. Selecteer **Registreren**. 
+    d. Selecteer **Registreren** . 
 
 
 ## <a name="grant-permissions"></a>Machtigingen verlenen 
@@ -99,33 +99,32 @@ Afhankelijk van de API die u wilt gebruiken, moet u uw app de volgende machtigin
 | Windows Azure Active Directory | Mapgegevens lezen |
 | Microsoft Graph | Alle audit logboek gegevens lezen |
 
-
-![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/36.png)
+![Scherm afbeelding laat zien waar u een machtiging toevoegen kunt selecteren in het deel venster met een P I-machtigingen.](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
 In de volgende sectie worden de stappen voor beide Api's vermeld. Als u geen toegang tot een van de Api's wilt, kunt u de gerelateerde stappen overs Laan.
 
 **Uw toepassings machtigingen verlenen voor het gebruik van de Api's:**
 
 
-1. Selecteer **API-machtigingen** en **Voeg vervolgens een machtiging toe**. 
+1. Selecteer **API-machtigingen** en **Voeg vervolgens een machtiging toe** . 
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![Scherm afbeelding toont de pagina P I permissions waar u een machtiging toevoegen kunt selecteren.](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. Zoek op de **pagina API-machtigingen voor aanvragen**naar **verouderde API** **Azure Active Directory Graph**. 
+2. Zoek op de **pagina API-machtigingen voor aanvragen** naar **verouderde API** **Azure Active Directory Graph** . 
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/06.png)
+    ![Scherm afbeelding toont de pagina een P I-machtiging aanvragen waar u Azure Active Directory Graph kunt selecteren.](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. Selecteer op de pagina **vereiste machtigingen** de optie **toepassings machtigingen**, vouw **Directory** -selectie vakje Directory **. ReadAll**.  Selecteer **Machtigingen toevoegen**.
+3. Selecteer op de pagina **vereiste machtigingen** de optie **toepassings machtigingen** , vouw **Directory** -selectie vakje Directory **. ReadAll** .  Selecteer **Machtigingen toevoegen** .
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/07.png)
+    ![Scherm afbeelding toont de pagina een P I-machtiging aanvragen waar u toepassings machtigingen kunt selecteren.](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-4. Selecteer op de pagina **rapportage-API Application-API permissions** de optie **beheerder toestemming verlenen**. 
+4. Selecteer op de pagina **rapportage-API Application-API permissions** de optie **beheerder toestemming verlenen** . 
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/08.png)
+    ![In de scherm afbeelding ziet u de pagina een P i-toepassing rapporteren waarop u toestemming van de beheerder verlenen kunt selecteren.](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
 5. Opmerking: de **Microsoft Graph** wordt standaard toegevoegd tijdens de API-registratie.
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/15.png)
+    ![Scherm afbeelding toont de pagina P I permissions waar u een machtiging toevoegen kunt selecteren.](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
 ## <a name="gather-configuration-settings"></a>Configuratie-instellingen verzamelen 
 
@@ -143,11 +142,11 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
 
 1. Selecteer **Azure Active Directory** in [Azure Portal](https://portal.azure.com) in het navigatiepaneel aan de linkerkant.
    
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Scherm afbeelding toont Azure Active Directory geselecteerd in het menu Azure Portal.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Selecteer op de pagina **Azure Active Directory** **aangepaste domein namen**.
+2. Selecteer op de pagina **Azure Active Directory** **aangepaste domein namen** .
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
+    ![Scherm opname toont aangepaste domein namen die zijn geselecteerd uit Azure Active Directory.](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
 3. Kopieer uw domein naam uit de lijst met domeinen.
 
@@ -156,15 +155,15 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
 
 **De client-ID van uw toepassing ophalen:**
 
-1. Klik in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory**in het navigatie deel venster aan de linkerkant.
+1. Klik in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory** in het navigatie deel venster aan de linkerkant.
    
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Scherm afbeelding toont Azure Active Directory geselecteerd in het menu Azure Portal.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Selecteer uw toepassing op de pagina **app-registraties** .
 
-3. Ga op de pagina toepassing naar **toepassings-id** en selecteer **klikken om te kopiëren**.
+3. Ga op de pagina toepassing naar **toepassings-id** en selecteer **klikken om te kopiëren** .
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
+    ![Scherm afbeelding toont de pagina een P I-toepassing melden waar u de toepassing van de D kunt kopiëren.](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
 
 ### <a name="get-your-applications-client-secret"></a>Het client geheim van uw toepassing ophalen
@@ -172,23 +171,23 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
 
 **Het client geheim van uw toepassing ophalen:**
 
-1. Klik in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory**in het navigatie deel venster aan de linkerkant.
+1. Klik in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory** in het navigatie deel venster aan de linkerkant.
    
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Scherm afbeelding toont Azure Active Directory geselecteerd in het menu Azure Portal.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  Selecteer uw toepassing op de pagina **app-registraties** .
 
-3.  Selecteer **certificaten en geheimen** op de pagina **API-toepassing** , in de sectie **client geheimen** op **+ Nieuw client geheim**. 
+3.  Selecteer **certificaten en geheimen** op de pagina **API-toepassing** , in de sectie **client geheimen** op **+ Nieuw client geheim** . 
 
-    ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/12.png)
+    ![Scherm afbeelding toont de certificaten & geheimen pagina waar u een client geheim kunt toevoegen.](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
 5. Voeg op de pagina **een geheim van client toevoegen** toe:
 
     a. Typ in het tekstvak **Beschrijving** `Reporting API` .
 
-    b. Als **verlopen**, selecteert u **in 2 jaar**.
+    b. Als **verlopen** , selecteert u **in 2 jaar** .
 
-    c. Klik op **Opslaan**.
+    c. Klik op **Opslaan** .
 
     d. Kopieer de sleutelwaarde.
 
@@ -204,7 +203,7 @@ In deze sectie vindt u de algemene fout berichten die u kunt uitvoeren bij het o
 
 ### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Fout: kan geen Premium-licentie controle uitvoeren vanuit Microsoft Graph 
 
-Als u in dit fout bericht wordt weer gegeven terwijl u probeert toegang te krijgen tot aanmeldingen met behulp van Graph Explorer, kiest u **machtigingen voor wijzigen** onder uw account in het navigatie venster links en selecteert u **taken. readwrite** en **Directory. Read. all**. 
+Als u in dit fout bericht wordt weer gegeven terwijl u probeert toegang te krijgen tot aanmeldingen met behulp van Graph Explorer, kiest u **machtigingen voor wijzigen** onder uw account in het navigatie venster links en selecteert u **taken. readwrite** en **Directory. Read. all** . 
 
 ![Machtigingen voor gebruikers interface wijzigen](./media/troubleshoot-graph-api/modify-permissions.png)
 

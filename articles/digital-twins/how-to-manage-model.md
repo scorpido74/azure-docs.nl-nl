@@ -7,18 +7,22 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 399ae682028479f801b82b6273f7d1429cfa1b97
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: e50c2bb73f56017a047e6c657c866b61e5eaa465
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494848"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130376"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
 U kunt de [modellen](concepts-models.md) beheren die uw Azure Digital apparaatdubbels-exemplaar kent over het gebruik van de [**DigitalTwinModels-api's**](/rest/api/digital-twins/dataplane/models), de [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). 
 
 Beheer bewerkingen zijn onder andere uploaden, valideren, ophalen en verwijderen van modellen. 
+
+## <a name="prerequisites"></a>Vereisten
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ## <a name="create-models"></a>Modellen maken
 
@@ -61,7 +65,7 @@ De eerste stap bij de oplossing is het maken van modellen om aspecten van het zi
 > [!NOTE]
 > Dit is een voorbeeld hoofdtekst voor een JSON-bestand waarin een model is gedefinieerd en opgeslagen om te worden geüpload als onderdeel van een client project. De REST API roept daarentegen een matrix met model definities aan zoals de hierboven beschreven (die is toegewezen aan een `IEnumerable<string>` in de .NET SDK). Als u dit model direct wilt gebruiken in de REST API, plaatst u het tussen vier Kante haken.
 
-Dit model definieert een naam en een unieke ID voor de patiënt kamer en eigenschappen om het aantal bezoekers en de status van de hand te geven (deze tellers worden bijgewerkt op basis van bewegings sensoren en slimme zeep-dispensers en worden gebruikt om een eigenschap van het *handwash percentage* te berekenen). Het model definieert ook een relatie *hasDevices*, die wordt gebruikt voor het verbinden van een [digitale apparaatdubbels](concepts-twins-graph.md) op basis van dit *room* -model op de werkelijke apparaten.
+Dit model definieert een naam en een unieke ID voor de patiënt kamer en eigenschappen om het aantal bezoekers en de status van de hand te geven (deze tellers worden bijgewerkt op basis van bewegings sensoren en slimme zeep-dispensers en worden gebruikt om een eigenschap van het *handwash percentage* te berekenen). Het model definieert ook een relatie *hasDevices* , die wordt gebruikt voor het verbinden van een [digitale apparaatdubbels](concepts-twins-graph.md) op basis van dit *room* -model op de werkelijke apparaten.
 
 U kunt aan de slag met deze methode om modellen te definiëren voor de weers huizen, zones of het zieken huis zelf.
 
@@ -200,7 +204,7 @@ Wanneer u een nieuwe twee maakt, omdat de nieuwe model versie en de oude model v
 
 Dit betekent ook dat het uploaden van een nieuwe versie van een model niet automatisch invloed heeft op bestaande apparaatdubbels. De bestaande apparaatdubbels blijft gewoon instanties van de oude model versie.
 
-U kunt deze bestaande apparaatdubbels bijwerken naar de nieuwe versie van het model door deze te patchen, zoals wordt beschreven in het gedeelte [*een Digital*](how-to-manage-twin.md#update-a-digital-twins-model) - *navolgende model bijwerken van How-to: Manage Digital apparaatdubbels*. Binnen dezelfde patch moet u de **model-id** (naar de nieuwe versie) bijwerken en **alle velden die moeten worden gewijzigd op de dubbele waarde zodat deze overeenkomt met het nieuwe model**.
+U kunt deze bestaande apparaatdubbels bijwerken naar de nieuwe versie van het model door deze te patchen, zoals wordt beschreven in het gedeelte [*een Digital*](how-to-manage-twin.md#update-a-digital-twins-model) - *navolgende model bijwerken van How-to: Manage Digital apparaatdubbels* . Binnen dezelfde patch moet u de **model-id** (naar de nieuwe versie) bijwerken en **alle velden die moeten worden gewijzigd op de dubbele waarde zodat deze overeenkomt met het nieuwe model** .
 
 ### <a name="remove-models"></a>Modellen verwijderen
 

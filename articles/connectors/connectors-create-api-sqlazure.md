@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: f8dccca1d1264492a4e7c8dab568e13eec9d2557
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100708"
+ms.locfileid: "93130932"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
 
@@ -96,9 +96,14 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
    ||||
 
    > [!TIP]
-   > U kunt deze informatie vinden in de connection string van uw data base. Zoek en open bijvoorbeeld uw data base in de Azure Portal. Selecteer in het menu Data Base de optie **verbindings reeksen** of **Eigenschappen** waar u deze teken reeks kunt vinden:
+   > U hebt de volgende opties om uw data base en tabel gegevens op te geven:
+   > 
+   > * Deze informatie vindt u in de connection string van uw data base. Zoek en open bijvoorbeeld uw data base in de Azure Portal. Selecteer in het menu Data Base ofwel **verbindings reeksen** of **Eigenschappen** , waar u deze teken reeks kunt vinden:
    >
-   > `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >   `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >
+   > * Tabellen in systeem databases worden standaard gefilterd, zodat ze mogelijk niet automatisch worden weer gegeven wanneer u een systeem database selecteert. Als alternatief kunt u de tabel naam hand matig invoeren nadat u **aangepaste waarde invoeren** hebt geselecteerd in de lijst met data bases.
+   >
 
    In dit voor beeld ziet u hoe deze waarden eruit kunnen zien:
 

@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 9ea85449d3980f46e88eddc7e06e4a5384b8cea3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 3fbd9016bcbfa83574d894af7ca728b863f54344
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027547"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129317"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -33,34 +33,11 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com) met dit account.
 
 U moet ook de volgende items uitvoeren als onderdeel van de vereiste configuratie. In de rest van deze sectie wordt u stapsgewijs begeleid bij de volgende stappen:
 - Een Azure Digital Twins-instantie instellen
-- Client geheim voor registratie van apps ophalen
 - Voeg een digitale dubbele
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Een Azure Digital Twins-exemplaar instellen
 
-Als u een Azure Digital Apparaatdubbels-exemplaar wilt verbinden met Logic Apps in dit artikel, moet u de **Azure Digital apparaatdubbels-instantie** al hebben ingesteld. 
-
-**Stel eerst een Azure Digital Twins-instantie in** en de vereiste verificatie, zodat u ermee kunt werken. Volg hiervoor de instructies in [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md).
-* Nadat u uw Azure Digital Apparaatdubbels-exemplaar hebt ingesteld, hebt u de **_hostnaam_** van het exemplaar ( [zoek in de Azure Portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) nodig.
-
-Als u de connector wilt verifiëren, moet u ook een app- **registratie** instellen. Volg de instructies in [*Instructies: een app-registratie maken*](how-to-create-app-registration.md) om dit in te stellen. 
-* Zodra u een app hebt geregistreerd, hebt u de toepassings-ID van de registratie **_(client)-ID_** en de **_map (Tenant)_** nodig ( [Zoek in de Azure Portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
-
-### <a name="get-app-registration-client-secret"></a>Client geheim voor registratie van apps ophalen
-
-U moet ook een **_client geheim_** maken voor de registratie van uw Azure AD-app. Als u dit wilt doen, gaat u naar de pagina [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in het Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Selecteer in de lijst de registratie die u hebt gemaakt in de vorige sectie, zodat u de details ervan kunt openen. 
-
-Klik op *certificaten en geheimen* in het menu van de registratie en selecteer *+ Nieuw client geheim* .
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
-
-Voer de gewenste waarden in voor beschrijving en verloopt en klik op *toevoegen* .
-
-:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
-
-Controleer nu of het client geheim zichtbaar is op de pagina _certificaten & geheimen_ met velden _Expires_ en _waarde_ . Noteer de _waarde_ die u later wilt gebruiken (u kunt deze ook naar het klem bord kopiëren met het Kopieer pictogram)
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ### <a name="add-a-digital-twin"></a>Voeg een digitale dubbele
 
@@ -70,9 +47,29 @@ U kunt apparaatdubbels toevoegen met behulp van de [DigitalTwins-api's](/rest/ap
 
 U hebt de **_dubbele id_** nodig van een dubbele naam in uw exemplaar dat u hebt gemaakt.
 
+## <a name="set-up-app-registration"></a>App-registratie instellen
+
+[!INCLUDE [digital-twins-prereq-registration.md](../../includes/digital-twins-prereq-registration.md)]
+
+### <a name="get-app-registration-client-secret"></a>Client geheim voor registratie van apps ophalen
+
+U moet ook een **_client geheim_** maken voor de registratie van uw Azure AD-app. Als u dit wilt doen, gaat u naar de pagina [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in het Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Selecteer in de lijst de registratie die u hebt gemaakt in de vorige sectie, zodat u de details ervan kunt openen. 
+
+Klik op *certificaten en geheimen* in het menu van de registratie en selecteer *+ Nieuw client geheim* .
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
+
+Voer de gewenste waarden in voor *Beschrijving* en *verloopt* en klik op *toevoegen* .
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
+
+Controleer nu of het client geheim zichtbaar is op de pagina _certificaten & geheimen_ met velden _Expires_ en _waarde_ . Noteer de _waarde_ die u later wilt gebruiken (u kunt deze ook naar het klem bord kopiëren met het Kopieer pictogram)
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
+
 ## <a name="create-custom-logic-apps-connector"></a>Aangepaste Logic Apps-Connector maken
 
-In deze stap gaat u een [aangepaste Logic Apps-Connector](../logic-apps/custom-connector-overview.md) maken voor de Azure Digital Apparaatdubbels-api's. Nadat u dit hebt gedaan, kunt u Azure Digital Apparaatdubbels koppelen bij het maken van een logische app in de volgende sectie.
+U bent nu klaar om een [aangepaste Logic Apps-Connector](../logic-apps/custom-connector-overview.md) te maken voor de Azure Digital Apparaatdubbels-api's. Nadat u dit hebt gedaan, kunt u Azure Digital Apparaatdubbels koppelen bij het maken van een logische app in de volgende sectie.
 
 Ga naar de pagina [Logic apps aangepaste connector](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) in de Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Druk op *+ toevoegen* .
 

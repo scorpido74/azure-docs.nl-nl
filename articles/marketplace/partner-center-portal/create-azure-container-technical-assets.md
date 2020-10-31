@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/09/2020
-ms.openlocfilehash: 46102305e99c94fc71ad0934a2c0063fdcbeec4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40de52773d9f205e3133543f689c9d381776d8ee
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317787"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130422"
 ---
 # <a name="create-an-azure-container-offer"></a>Een Azure-container aanbieding maken
 
@@ -38,8 +38,8 @@ Naast uw oplossings domein moet uw technische team kennis hebben van de volgende
 
 Kies een of beide van de volgende script omgevingen om uw container installatie kopie te beheren:
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-3.7.0&viewFallbackFrom=azps-3.6.1)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+- [Azure PowerShell](/powershell/azure/?view=azps-3.7.0&viewFallbackFrom=azps-3.6.1)
+- [Azure CLI](/cli/azure/?view=azure-cli-latest).
 
 U wordt aangeraden deze hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
 

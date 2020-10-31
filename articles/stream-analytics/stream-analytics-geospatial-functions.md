@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e445f6d1dce8193109d6b5ad1742210458e74c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75426231"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130405"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Inleiding tot Stream Analytics georuimtelijke functies
 
@@ -26,7 +26,7 @@ Voor beelden van scenario's die kunnen profiteren van georuimtelijke functies zi
 * Geoomheining
 * Telefonisch volgen over sites
 
-Stream Analytics query taal heeft zeven ingebouwde georuimtelijke functies: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS**en **ST_WITHIN**.
+Stream Analytics query taal heeft zeven ingebouwde georuimtelijke functies: **CreateLineString** , **CreatePoint** , **CreatePolygon** , **ST_DISTANCE** , **ST_OVERLAPS** , **ST_INTERSECTS** en **ST_WITHIN** .
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -42,7 +42,7 @@ FROM input
 
 ### <a name="input-example"></a>Invoer voorbeeld  
   
-|breedte graad|lengte graad|  
+|breedtegraad|lengte graad|  
 |--------------|---------------|  
 |3,0|-10,2|  
 |-87,33|20,2321|  
@@ -53,7 +53,7 @@ FROM input
 
  {"type": "Lines Tring", "coördinaten": [[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5]]}
 
-Ga voor meer informatie naar de [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) -referentie.
+Ga voor meer informatie naar de [CreateLineString](/stream-analytics-query/createlinestring) -referentie.
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -69,7 +69,7 @@ FROM input
 
 ### <a name="input-example"></a>Invoer voorbeeld  
   
-|breedte graad|lengte graad|  
+|breedtegraad|lengte graad|  
 |--------------|---------------|  
 |3,0|-10,2|  
 |-87,33|20,2321|  
@@ -80,7 +80,7 @@ FROM input
   
  {"type": "punt", "coördinaten": [20,2321,-87,33]}  
 
-Ga voor meer informatie naar de [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) -referentie.
+Ga voor meer informatie naar de [CreatePoint](/stream-analytics-query/createpoint) -referentie.
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -96,7 +96,7 @@ FROM input
 
 ### <a name="input-example"></a>Invoer voorbeeld  
   
-|breedte graad|lengte graad|  
+|breedtegraad|lengte graad|  
 |--------------|---------------|  
 |3,0|-10,2|  
 |-87,33|20,2321|  
@@ -107,7 +107,7 @@ FROM input
  
  {"type": "veelhoek", "coördinaten": [[[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5], [20,2321,-87,33]]]}
 
-Ga voor meer informatie naar de [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) -referentie.
+Ga voor meer informatie naar de [CreatePolygon](/stream-analytics-query/createpolygon) -referentie.
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
@@ -121,7 +121,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-Ga voor meer informatie naar de [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) -referentie.
+Ga voor meer informatie naar de [ST_DISTANCE](/stream-analytics-query/st-distance) -referentie.
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
 De `ST_OVERLAPS` functie vergelijkt twee veelhoeken. Als de veelhoeken elkaar overlappen, retourneert de functie een 1. De functie retourneert 0 als de veelhoeken elkaar niet overlappen. 
@@ -142,7 +142,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-Ga voor meer informatie naar de [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) -referentie.
+Ga voor meer informatie naar de [ST_OVERLAPS](/stream-analytics-query/st-overlaps) -referentie.
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
 De `ST_INTERSECTS` functie vergelijkt twee Lines Tring. Als de Lines Tring Intersect, retourneert de functie 1. De functie retourneert 0 als de Lines Tring niet INTERSECT.
@@ -168,7 +168,7 @@ FROM input
   
  0  
 
-Ga voor meer informatie naar de [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) -referentie.
+Ga voor meer informatie naar de [ST_INTERSECTS](/stream-analytics-query/st-intersects) -referentie.
 
 ## <a name="st_within"></a>ST_WITHIN
 De `ST_WITHIN` functie bepaalt of een punt of veelhoek zich binnen een veelhoek bevindt. Als de veelhoek het punt of de veelhoek bevat, wordt de functie 1 geretourneerd. De functie retourneert 0 als het punt of de veelhoek zich niet in de gedeclareerde veelhoek bevindt.
@@ -194,12 +194,12 @@ FROM input
   
  1  
 
-Ga voor meer informatie naar de [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) -referentie.
+Ga voor meer informatie naar de [ST_WITHIN](/stream-analytics-query/st-within) -referentie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API-naslaggids voor Azure Stream Analytics Management](/rest/api/streamanalytics/)

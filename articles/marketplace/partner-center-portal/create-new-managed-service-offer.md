@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 34af52b32d9e31ad003c5e95e288f88b157a944a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d253bda69839c76aed0170f9a79a03b7d4bf1a79
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710614"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130103"
 ---
 # <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
@@ -23,8 +23,8 @@ U moet beschikken over een [Silver-of Gold-competentie voor het Cloud platform](
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuwe**  >  **beheerde service**voor aanbiedingen.
+2. Selecteer in het menu links de optie **commerciële Marketplace** -  >  **overzicht** .
+3. Selecteer op de pagina overzicht **+ nieuwe**  >  **beheerde service** voor aanbiedingen.
 
     ![Illustreert het navigatie menu.](./media/new-offer-managed-service.png)
 
@@ -33,16 +33,16 @@ U moet beschikken over een [Silver-of Gold-competentie voor het Cloud platform](
 
 ## <a name="new-offer"></a>Nieuwe aanbieding
 
-Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
+Voer een **aanbiedings-id** in. Dit is een unieke id voor elke aanbieding in uw account.
 
 * Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
-* Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-* De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+* Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+* De aanbiedings-ID kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
-Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
+Voer een **alias** voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
 * Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
-* De aanbiedings alias kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+* De aanbiedings alias kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
 Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
@@ -52,7 +52,7 @@ Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-Volgens het [certificerings beleid van beheerde services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)is een doel voor de **lead** vereist. Hiermee maakt u een record in uw CRM-systeem telkens wanneer een klant uw aanbieding implementeert.
+Volgens het [certificerings beleid van beheerde services](/legal/marketplace/certification-policies#700-managed-services)is een doel voor de **lead** vereist. Hiermee maakt u een record in uw CRM-systeem telkens wanneer een klant uw aanbieding implementeert.
 
 Zie [Lead Management Overview](./commercial-marketplace-get-customer-leads.md)voor meer informatie.
 
@@ -116,15 +116,15 @@ Voer de URL in van het privacybeleid van uw organisatie (gehost op uw site). U b
 
 ### <a name="useful-links"></a>Handige koppelingen
 
-Bied optionele aanvullende online documenten over uw oplossing. Voeg extra nuttige koppelingen toe door te klikken op **+ een koppeling toevoegen**.
+Bied optionele aanvullende online documenten over uw oplossing. Voeg extra nuttige koppelingen toe door te klikken op **+ een koppeling toevoegen** .
 
 ### <a name="contact-information"></a>Contactgegevens
 
-In deze sectie moet u de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon**. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verschaft aan CSP-partners.
+In deze sectie moet u de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon** . Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verschaft aan CSP-partners.
 
 ### <a name="support-urls"></a>Url's voor ondersteuning
 
-Als u ondersteuning hebt voor websites voor **Azure Global-klanten** en/of **Azure Government klanten**, kunt u hier de url's opgeven.
+Als u ondersteuning hebt voor websites voor **Azure Global-klanten** en/of **Azure Government klanten** , kunt u hier de url's opgeven.
 
 ### <a name="marketplace-images"></a>Marketplace-installatie kopieën
 
@@ -179,9 +179,9 @@ Elke aanbieding moet een of meer abonnementen hebben (voorheen Sku's genoemd). U
 
 U kunt Maxi maal 100 abonnementen maken voor elke aanbieding: Maxi maal 45 van deze kunnen privé zijn. Meer informatie over privé-abonnementen [vindt u in de micro soft Commercial Marketplace](../private-offers.md).
 
-Op de **overzichts** pagina van het abonnement selecteert u **+ nieuw plan maken**. Voer vervolgens een **plan-id** en een **plan naam**in. Beide waarden mogen alleen kleine letters, streepjes en onderstrepings tekens bevatten, met een maximum van 50 tekens. Deze waarden zijn mogelijk zichtbaar voor klanten en kunnen niet worden gewijzigd nadat u de aanbieding hebt gepubliceerd.
+Op de **overzichts** pagina van het abonnement selecteert u **+ nieuw plan maken** . Voer vervolgens een **plan-id** en een **plan naam** in. Beide waarden mogen alleen kleine letters, streepjes en onderstrepings tekens bevatten, met een maximum van 50 tekens. Deze waarden zijn mogelijk zichtbaar voor klanten en kunnen niet worden gewijzigd nadat u de aanbieding hebt gepubliceerd.
 
-Selecteer **maken** nadat u deze waarden hebt ingevoerd om verder te werken aan uw plan. Er zijn drie secties die moeten worden voltooid: **plan vermelding**, **prijzen en beschik baarheid**en **technische configuratie**.
+Selecteer **maken** nadat u deze waarden hebt ingevoerd om verder te werken aan uw plan. Er zijn drie secties die moeten worden voltooid: **plan vermelding** , **prijzen en beschik baarheid** en **technische configuratie** .
 
 ### <a name="plan-listing"></a>Aanbieding plannen
 
@@ -191,14 +191,14 @@ Voer vervolgens een **Beschrijving** in die een gedetailleerdere beschrijving va
 
 ### <a name="pricing-and-availability"></a>Prijzen en beschikbaarheid
 
-Op dit moment is er slechts één prijs model dat kan worden gebruikt voor een beheerde service aanbieding: **Bring your own License (BYOL)**. Dit betekent dat u uw klanten rechtstreeks factureert voor kosten met betrekking tot deze aanbieding, en micro soft brengt geen kosten in rekening.
+Op dit moment is er slechts één prijs model dat kan worden gebruikt voor een beheerde service aanbieding: **Bring your own License (BYOL)** . Dit betekent dat u uw klanten rechtstreeks factureert voor kosten met betrekking tot deze aanbieding, en micro soft brengt geen kosten in rekening.
 
 In de sectie **zicht baarheid van plan** kunt u aangeven of dit plan [privé](../../marketplace/private-offers.md)moet zijn. Als u het selectie vakje **Dit is een persoonlijk abonnement is** uitgeschakeld, is uw abonnement niet beperkt tot specifieke klanten (of een bepaald aantal klanten).
 
 > [!NOTE]
 > Privé plannen worden niet ondersteund met abonnementen die zijn gemaakt via een wederverkoper van het programma van de Cloud Solution Provider (CSP).
 
-Als u dit plan alleen beschikbaar wilt maken voor specifieke klanten, selecteert u **Ja**. Wanneer u dit doet, moet u de klanten identificeren door hun abonnement-Id's op te geven. Deze kunnen worden ingevoerd op één (voor Maxi maal 10 abonnementen) of door een CSV-bestand (voor Maxi maal 10.000 abonnementen over alle plannen) te uploaden. Zorg ervoor dat u hier uw eigen abonnementen opneemt, zodat u de aanbieding kunt testen en valideren.
+Als u dit plan alleen beschikbaar wilt maken voor specifieke klanten, selecteert u **Ja** . Wanneer u dit doet, moet u de klanten identificeren door hun abonnement-Id's op te geven. Deze kunnen worden ingevoerd op één (voor Maxi maal 10 abonnementen) of door een CSV-bestand (voor Maxi maal 10.000 abonnementen over alle plannen) te uploaden. Zorg ervoor dat u hier uw eigen abonnementen opneemt, zodat u de aanbieding kunt testen en valideren.
 
 > [!IMPORTANT]
 > Zodra een plan als openbaar is gepubliceerd, kunt u het niet wijzigen in persoonlijk. Gebruik een privé abonnement om te bepalen welke klanten uw aanbieding mogen accepteren en resources kunnen delegeren. Met een openbaar abonnement kunt u de beschik baarheid van bepaalde klanten of zelfs voor een bepaald aantal klanten niet beperken (hoewel u ervoor kiest om het abonnement niet volledig te verkopen). U kunt de [toegang tot een overdracht verwijderen](../../lighthouse/how-to/remove-delegation.md) nadat een klant alleen een aanbieding heeft geaccepteerd als u een **autorisatie** hebt opgenomen waarbij de **roldefinitie** is ingesteld op de functie voor het verwijderen van de [registratie toewijzing van beheerde services](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) tijdens het publiceren van de aanbieding. U kunt ook contact opnemen met de klant en vragen om [uw toegang te verwijderen](../../lighthouse/how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers).
@@ -216,9 +216,9 @@ Controleer de [tenants, rollen en gebruikers in azure Lighthouse-scenario's](../
 
 Geef eerst een **versie** op voor het manifest. Gebruik de indeling *n. n. n* (bijvoorbeeld 1.2.5).
 
-Voer vervolgens uw **Tenant-id**in. Dit is een GUID die is gekoppeld aan de Tenant-ID van de Azure Active Directory (Azure AD) van uw organisatie. dat wil zeggen, de Tenant beheren van waaruit u de resources van uw klanten wilt openen. Als u dit niet hebt, kunt u het vinden door over te grenzen van de account naam in de rechter bovenhoek van de Azure Portal of door te klikken op **overschakelen naar een andere map**.
+Voer vervolgens uw **Tenant-id** in. Dit is een GUID die is gekoppeld aan de Tenant-ID van de Azure Active Directory (Azure AD) van uw organisatie. dat wil zeggen, de Tenant beheren van waaruit u de resources van uw klanten wilt openen. Als u dit niet hebt, kunt u het vinden door over te grenzen van de account naam in de rechter bovenhoek van de Azure Portal of door te klikken op **overschakelen naar een andere map** .
 
-Als u een nieuwe versie van uw aanbieding publiceert en een bijgewerkt manifest moet maken, selecteert u **+ Nieuw manifest**. Zorg ervoor dat u het versie nummer van de vorige manifest versie verhoogt.
+Als u een nieuwe versie van uw aanbieding publiceert en een bijgewerkt manifest moet maken, selecteert u **+ Nieuw manifest** . Zorg ervoor dat u het versie nummer van de vorige manifest versie verhoogt.
 
 #### <a name="authorization"></a>Autorisatie
 
@@ -227,16 +227,16 @@ Autorisaties definiëren de entiteiten in uw Tenant beheren die toegang hebben t
 U kunt Maxi maal twintig autorisaties voor elk abonnement maken.
 
 > [!TIP]
-> In de meeste gevallen moet u rollen toewijzen aan een Azure AD-gebruikers groep of Service-Principal, in plaats van aan een reeks afzonderlijke gebruikers accounts. Hiermee kunt u toegang voor afzonderlijke gebruikers toevoegen of verwijderen zonder dat u het plan hoeft bij te werken en opnieuw te publiceren wanneer uw toegangs vereisten veranderen. Wanneer u rollen aan Azure AD-groepen toewijst, [moet u ervoor zorgen dat het **groeps type** **Security** en niet **Office 365**is](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Zie voor aanvullende aanbevelingen [tenants, rollen en gebruikers in azure Lighthouse-scenario's](../../lighthouse/concepts/tenants-users-roles.md).
+> In de meeste gevallen moet u rollen toewijzen aan een Azure AD-gebruikers groep of Service-Principal, in plaats van aan een reeks afzonderlijke gebruikers accounts. Hiermee kunt u toegang voor afzonderlijke gebruikers toevoegen of verwijderen zonder dat u het plan hoeft bij te werken en opnieuw te publiceren wanneer uw toegangs vereisten veranderen. Wanneer u rollen aan Azure AD-groepen toewijst, [moet u ervoor zorgen dat het **groeps type** **Security** en niet **Office 365** is](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Zie voor aanvullende aanbevelingen [tenants, rollen en gebruikers in azure Lighthouse-scenario's](../../lighthouse/concepts/tenants-users-roles.md).
 
-Voor elke **autorisatie**moet u het volgende opgeven. U kunt vervolgens en zo vaak als nodig **autorisaties toevoegen** om meer gebruikers en roldefinities toe te voegen.
+Voor elke **autorisatie** moet u het volgende opgeven. U kunt vervolgens en zo vaak als nodig **autorisaties toevoegen** om meer gebruikers en roldefinities toe te voegen.
 
-- **Azure AD-object-id**: de Azure ad-id van een gebruiker, gebruikers groep of toepassing waaraan bepaalde machtigingen worden toegekend (zoals gedefinieerd door de roldefinitie) voor de resources van uw klanten.
-- **Weergave naam van Azure AD-object**: een beschrijvende naam om de klant te helpen het doel van deze autorisatie te begrijpen. De klant krijgt deze naam te zien bij het delegeren van resources.
-- **Roldefinitie**: Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie voor beschrijvingen van deze rollen [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) en [functie ondersteuning voor Azure Lighthouse](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse).
+- **Azure AD-object-id** : de Azure ad-id van een gebruiker, gebruikers groep of toepassing waaraan bepaalde machtigingen worden toegekend (zoals gedefinieerd door de roldefinitie) voor de resources van uw klanten.
+- **Weergave naam van Azure AD-object** : een beschrijvende naam om de klant te helpen het doel van deze autorisatie te begrijpen. De klant krijgt deze naam te zien bij het delegeren van resources.
+- **Roldefinitie** : Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie voor beschrijvingen van deze rollen [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) en [functie ondersteuning voor Azure Lighthouse](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse).
   > [!NOTE]
   > Als toepasselijke nieuwe ingebouwde rollen worden toegevoegd aan Azure, worden ze hier beschikbaar, hoewel er enige vertraging kan optreden voordat ze worden weer gegeven.
-- **Toewijs bare rollen**: deze optie wordt alleen weer gegeven als u gebruikers toegangs beheerder hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze rollen toewijzen aan [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md), wat vereist is om [beleid te implementeren dat kan worden hersteld](../../lighthouse/how-to/deploy-policy-remediation.md). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker.
+- **Toewijs bare rollen** : deze optie wordt alleen weer gegeven als u gebruikers toegangs beheerder hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze rollen toewijzen aan [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md), wat vereist is om [beleid te implementeren dat kan worden hersteld](../../lighthouse/how-to/deploy-policy-remediation.md). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker.
 
 > [!TIP]
 > Om ervoor te zorgen dat u zo nodig de [toegang tot een overdracht kunt verwijderen](../../lighthouse/how-to/remove-delegation.md) , moet u een **autorisatie** toevoegen waarbij de **roldefinitie** is ingesteld op de rol van de [registratie toewijzing voor beheerde services verwijderen](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role). Als deze rol niet is toegewezen, kunnen gedelegeerde resources alleen worden verwijderd door een gebruiker in de Tenant van de klant.
@@ -258,7 +258,7 @@ Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende 
   - **Onvolledig** : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
   - **Voltooid** : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
 - Geef in de sectie **opmerkingen voor certificering** test instructies op voor het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
-- Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding te publiceren naar het open bare (of als u een privé-aanbieding naar de persoonlijke doel groep hebt).
+- Verzend de aanbieding voor publicatie door **verzenden** te selecteren. We sturen u een e-mail wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding te publiceren naar het open bare (of als u een privé-aanbieding naar de persoonlijke doel groep hebt).
 
 ### <a name="customer-experience-and-offer-management"></a>Gebruikers ervaring en aanbod beheer
 

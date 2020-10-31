@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5cff53ee9e742e93a6183eb5d506bf8f1a08deb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115098"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130184"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Verificatie- en autorisatiefoutcodes in Azure AD
 
@@ -156,7 +156,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS50136 | RedirectMsaSessionToApp: er is één MSA-sessie gedetecteerd. |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken-de sessie is ongeldig vanwege een ontbrekend extern vernieuwings token. |
 | AADSTS50140 | KmsiInterrupt-deze fout is opgetreden vanwege een ' Keep Sign signing '-interrupt wanneer de gebruiker zich aanmeldt. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) met correlatie-id, aanvraag-id en een foutcode voor meer informatie. |
-| AADSTS50143 | Sessie komt niet overeen. de sessie is ongeldig omdat de gebruikers Tenant niet overeenkomt met de domein Hint vanwege een andere bron.  [Open een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) met correlatie-id, aanvraag-id en fout code voor meer informatie. |
+| AADSTS50143 | Sessie komt niet overeen: sessie is ongeldig omdat de gebruikertenant niet overeenkomt met de domeinhint als gevolg van andere resource. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) met correlatie-id, aanvraag-id en een foutcode voor meer informatie. |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword: het Active Directory wacht woord van de gebruiker is verlopen. Genereer een nieuw wacht woord voor de gebruiker of laat de gebruiker het wacht woord opnieuw instellen met het hulp programma Self-service reset. |
 | AADSTS50146 | MissingCustomSigningKey-deze app moet worden geconfigureerd met een app-specifieke handtekening sleutel. De toepassing is niet met een dergelijke sleutel geconfigureerd, of de sleutel is verlopen of nog niet geldig. |
 | AADSTS50147 | MissingCodeChallenge-de grootte van de code vraag parameter is niet geldig. |
@@ -200,7 +200,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS70007 | UnsupportedResponseMode: de app heeft een niet-ondersteunde waarde geretourneerd `response_mode` bij het aanvragen van een token.  |
 | AADSTS70008 | ExpiredOrRevokedGrant-het vernieuwings token is verlopen vanwege inactiviteit. Het token is uitgegeven op XXX en is gedurende een bepaalde periode inactief. |
 | AADSTS70011 | InvalidScope-het bereik dat door de app is aangevraagd, is ongeldig. |
-| AADSTS70012 | MsaServerError: er is een server fout opgetreden tijdens het verifiëren van een MSA-gebruiker (Consumer). Probeer het opnieuw. Als het probleem blijft optreden, [opent u een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError: er is een server fout opgetreden tijdens het verifiëren van een MSA-gebruiker (Consumer). Probeer het opnieuw. Als dit probleem blijft bestaan, [opent u een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | Fout met AuthorizationPending-OAuth 2,0-apparaat stroom. Autorisatie is in behandeling. Het apparaat probeert de aanvraag opnieuw te pollen. |
 | AADSTS70018 | BadVerificationCode-ongeldige verificatie code omdat gebruikers de verkeerde gebruikers code hebben getypt voor de code stroom van het apparaat. Autorisatie is niet goedgekeurd. |
 | AADSTS70019 | CodeExpired-verificatie code verlopen. Laat de gebruiker de aanmelding opnieuw proberen. |
@@ -320,6 +320,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS1000000 | UserNotBoundError-voor de BIND-API moet de Azure AD-gebruiker ook worden geverifieerd met een externe IDP, die nog niet heeft plaatsgevonden. |
 | AADSTS1000002 | BindCompleteInterruptError: de binding is voltooid, maar de gebruiker moet hiervan op de hoogte zijn. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled-de toepassing is uitgeschakeld. |
+| AADSTS7000114| De toepassing appIdentifier mag geen toepassing namens-aanroepen maken.|
 | AADSTS7500529 | De waarde ' SAMLId-GUID ' is geen geldige SAML-ID: Azure AD gebruikt dit kenmerk om het kenmerk InResponseTo van het geretourneerde antwoord in te vullen. De ID mag niet beginnen met een getal, dus een algemene strategie is om een teken reeks als ' id ' te laten voorafgaan door naar de teken reeks representatie van een GUID. Id6c1c178c166d486687be4aaf5e482730 is bijvoorbeeld een geldige ID. |
 
 ## <a name="next-steps"></a>Volgende stappen

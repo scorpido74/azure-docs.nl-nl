@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/29/2020
 ms.author: aahi
-ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244292"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130558"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose gebruiken om meerdere containers te implementeren
 
@@ -35,24 +35,17 @@ Voor deze procedure zijn verschillende hulpprogram ma's vereist die moeten worde
   * **Computer Vision** resource alleen met de prijs categorie F0 of Standard.
   * Resource voor **formulier herkenning** met alleen F0 of Standard-prijs categorie.
   * **Cognitive Services** resource met de prijs categorie s0.
-
-## <a name="request-access-to-the-container-registry"></a>Toegang aanvragen tot het container register
-
-Vul het [aanvraag formulier voor de Cognitive Services spraak containers](https://aka.ms/speechcontainerspreview/)in en verzend het. 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+* Als u een voor beeld van een test voorbeeld container gebruikt, moet u het [formulier voor de online aanvraag](https://aka.ms/csgate/) invullen om het te gebruiken.
 
 ## <a name="docker-compose-file"></a>Docker-bestand opstellen
 
-Het YAML-bestand definieert alle services die moeten worden geïmplementeerd. Deze services zijn afhankelijk van ofwel een `DockerFile` of een bestaande container installatie kopie. In dit geval gebruiken we twee Preview-voor beelden. Kopieer en plak het volgende YAML-bestand en sla het op als *docker-Samenstel. yaml*. Geef de juiste **apikey**-, **facturerings**-en **waarden endpointuri** -waarden op in het bestand.
+Het YAML-bestand definieert alle services die moeten worden geïmplementeerd. Deze services zijn afhankelijk van ofwel een `DockerFile` of een bestaande container installatie kopie. In dit geval gebruiken we twee Preview-voor beelden. Kopieer en plak het volgende YAML-bestand en sla het op als *docker-Samenstel. yaml* . Geef de juiste **apikey** -, **facturerings** -en **waarden endpointuri** -waarden op in het bestand.
 
 ```yaml
 version: '3.7'
 services:
   forms:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
+    image: "mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout"
     environment:
        eula: accept
        billing: # < Your form recognizer billing URL >
@@ -70,7 +63,7 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
+    image: "mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview"
     environment:
       eula: accept
       apikey: # < Your computer vision API key >
@@ -98,8 +91,8 @@ docker-compose up
 De eerste keer dat docker de **docker-opstel** opdracht uitvoert met behulp van deze configuratie, worden de installatie kopieën opgehaald die zijn geconfigureerd onder het knoop punt **Services** , waarna ze worden gedownload en gekoppeld:
 
 ```console
-Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
-latest: Pulling from microsoft/cognitive-services-form-recognizer
+Pulling forms (mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout:)...
+latest: Pulling from azure-cognitive-services/form-recognizer/layout
 743f2d6c1f65: Pull complete
 72befba99561: Pull complete
 2a40b9192d02: Pull complete
@@ -113,8 +106,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
-latest: Pulling from microsoft/cognitive-services-read
+Pulling ocr (mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview:)...
+latest: Pulling from /azure-cognitive-services/vision/read:3.1-preview
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -166,8 +159,8 @@ Hier volgt een voor beeld van uitvoer:
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
-2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
+2ce533f88e80        mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout          latest
+4be104c126c5        mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview         latest
 ```
 
 ### <a name="test-containers"></a>Test containers

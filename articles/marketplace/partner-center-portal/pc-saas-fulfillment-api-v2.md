@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: c74535b8cf11ec4beb413654bdddedb5ba847eea
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 06a2a5bbe637cd2366dbdf218c0278cd683635df
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275541"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130031"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-fulfillment-Api's versie 2 in de commerciële Marketplace
 
@@ -28,7 +28,7 @@ De statussen van een SaaS-abonnement en de toepasselijke acties worden weer gege
 
 ![Levens cyclus van een SaaS-abonnement in Marketplace](./media/saas-subscription-lifecycle-api-v2.png)
 
-#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Gekocht maar nog niet geactiveerd (*PendingFulfillmentStart*)
+#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Gekocht maar nog niet geactiveerd ( *PendingFulfillmentStart* )
 
 Nadat een eind klant (of CSP) een SaaS-aanbieding heeft gekocht op Marketplace, moet de uitgever op de hoogte worden gesteld van de aankoop zodat een nieuw SaaS-account wordt gemaakt en geconfigureerd voor de eind klant aan de kant van de uitgever.
 
@@ -51,7 +51,7 @@ Op de landings pagina moet de klant zijn aangemeld bij het nieuwe of bestaande S
 De uitgever moet SSO-aanmelding implementeren om de gebruikers ervaring te bieden die micro soft voor deze stroom vereist.  Zorg ervoor dat u de Azure AD-toepassing met meerdere tenants gebruikt, zowel werk-als school accounts of persoonlijke micro soft-accounts wilt toestaan bij het configureren van de SSO.  Deze vereiste is alleen van toepassing op de landings pagina en voor gebruikers die worden omgeleid naar de SaaS-service wanneer ze al zijn aangemeld met micro soft-referenties. Het is niet van toepassing op alle aanmeldingen bij de SaaS-service.
 
 > [!NOTE]
->Als een SSO-aanmelding vereist dat een beheerder machtigingen voor een app toewijst, moet de beschrijving van de aanbieding in het partner centrum vermelden dat toegang op beheerders niveau is vereist. Dit is om te voldoen aan het [beleid voor commerciële Marketplace-certificering](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options).
+>Als een SSO-aanmelding vereist dat een beheerder machtigingen voor een app toewijst, moet de beschrijving van de aanbieding in het partner centrum vermelden dat toegang op beheerders niveau is vereist. Dit is om te voldoen aan het [beleid voor commerciële Marketplace-certificering](/legal/marketplace/certification-policies#10003-authentication-options).
 
 Zodra u bent aangemeld, moet de klant de SaaS-configuratie aan de kant van de uitgever volt ooien. De uitgever moet vervolgens de [API Activate](#activate-a-subscription) van het abonnement aanroepen om een signaal naar Marketplace te verzenden dat het inrichten van het SaaS-account is voltooid.
 Hiermee wordt de facturerings cyclus van de klant gestart. Als het activeren van de API-aanroep van het abonnement is mislukt, wordt de klant niet gefactureerd voor de aankoop.
@@ -106,9 +106,9 @@ De volg orde van de API-aanroepen voor het door de uitgever geïnitieerde update
 
 ![API-aanroepen voor een door de uitgever geïnitieerde update](./media/saas-update-status-api-v2-calls-publisher-side.png)
 
-#### <a name="suspended-suspended"></a>Onderbroken (*onderbroken*)
+#### <a name="suspended-suspended"></a>Onderbroken ( *onderbroken* )
 
-Deze status geeft aan dat de betaling van een klant voor de SaaS-service niet is ontvangen. De uitgever ontvangt een melding van deze wijziging in de status van SaaS-abonnementen door micro soft. De melding wordt uitgevoerd via een aanroep van webhook waarvoor de *actie* parameter is ingesteld op *opgeschort*.
+Deze status geeft aan dat de betaling van een klant voor de SaaS-service niet is ontvangen. De uitgever ontvangt een melding van deze wijziging in de status van SaaS-abonnementen door micro soft. De melding wordt uitgevoerd via een aanroep van webhook waarvoor de *actie* parameter is ingesteld op *opgeschort* .
 
 De uitgever kan wellicht geen wijzigingen aanbrengen in de SaaS-service aan de kant van de uitgever. We raden aan dat deze informatie door de uitgever beschikbaar wordt gesteld aan de opgeschorte klant en de toegang van klanten tot de SaaS-service blokkeert.  Er is een kans dat de betaling nooit wordt ontvangen.
 
@@ -119,7 +119,7 @@ Micro soft geeft de klant een respijt periode van 30 dagen voordat het abonnemen
 
 De status van het abonnement wordt gewijzigd in opgeschort op de micro soft-website voordat de uitgever actie onderneemt. Alleen actieve abonnementen kunnen worden opgeschort.
 
-#### <a name="reinstated-suspended"></a>Opnieuw ingesteld (*onderbroken*)
+#### <a name="reinstated-suspended"></a>Opnieuw ingesteld ( *onderbroken* )
 
 Het abonnement wordt opnieuw ingesteld.
 
@@ -135,7 +135,7 @@ Als de patch wordt verzonden met de status mislukt, wordt het herstel proces nie
 
 Alleen een opgeschort abonnement kan worden hersteld.  Terwijl een SaaS-abonnement wordt hersteld, blijft de status opgeschort.  Zodra deze bewerking is voltooid, wordt de status van het abonnement actief.
 
-#### <a name="renewed-subscribed"></a>Vernieuwd (*geabonneerd*)
+#### <a name="renewed-subscribed"></a>Vernieuwd ( *geabonneerd* )
 
 Aan het einde van de abonnements termijn (na een maand of een jaar) wordt het SaaS-abonnement automatisch vernieuwd door micro soft.  De standaard instelling voor automatisch vernieuwen is *waar* voor alle SaaS-abonnementen. Actieve SaaS-abonnementen worden nog steeds vernieuwd met gewone uitgebracht. Micro soft waarschuwt de uitgever niet wanneer een abonnement wordt vernieuwd. Een klant kan automatische verlenging voor een SaaS-abonnement uitschakelen via de M365-beheer portal of via Azure Portal.  In dit geval wordt het SaaS-abonnement automatisch geannuleerd aan het einde van de huidige facturerings periode.  Klanten kunnen het SaaS-abonnement ook op elk moment annuleren.
 
@@ -143,7 +143,7 @@ Alleen actieve abonnementen worden automatisch verlengd.  Abonnementen blijven a
 
 Als een automatische vernieuwing mislukt vanwege een probleem met de betaling, wordt het abonnement onderbroken.  Er wordt een melding van de uitgever weer gegeven.
 
-#### <a name="canceled-unsubscribed"></a>Geannuleerd (*afgemeld*) 
+#### <a name="canceled-unsubscribed"></a>Geannuleerd ( *afgemeld* ) 
 
 Abonnementen bereiken deze status als reactie op een expliciete klant-of CSP-actie door de annulering van een abonnement van de Publisher-site, het Azure Portal of het M365-beheer centrum.  Een abonnement kan ook impliciet worden geannuleerd als gevolg van een niet-betaalde contributie, na een opgeschorte status van 30 dagen.
 
@@ -178,7 +178,7 @@ Wanneer een klant wordt omgeleid naar de URL van de landings pagina van de partn
 
 Bij het aanroepen van Resolve API worden de abonnements gegevens en de status van SaaS-abonnementen in alle ondersteunde statussen geretourneerd.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Plaatsen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -256,7 +256,7 @@ Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact o
 
 Zodra het SaaS-account is geconfigureerd voor een eind klant, moet de uitgever de API voor het activeren van abonnementen aan micro soft zijde aanroepen.  De klant wordt niet gefactureerd tenzij deze API-aanroep is geslaagd.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Plaatsen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -683,7 +683,7 @@ Als een abonnement wordt geannuleerd binnen de volgende respijt perioden, wordt 
 
 De klant wordt gefactureerd als een abonnement wordt geannuleerd na de bovenstaande respijt periode.  Zodra de annulering is geslaagd, verliest de klant onmiddellijk de toegang tot het SaaS-abonnement aan micro soft.
 
-##### <a name="deletehttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verwijderd`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="deletehttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verwijderen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -788,9 +788,9 @@ Code: 500 interne server fout. Voer de API-aanroep opnieuw uit.  Neem contact op
 
 #### <a name="get-operation-status"></a>Bewerkings status ophalen
 
-Hiermee kan de uitgever de status van de opgegeven async-bewerking bijhouden:  **Afmelden**, **ChangePlan**of **ChangeQuantity**.
+Hiermee kan de uitgever de status van de opgegeven async-bewerking bijhouden:  **Afmelden** , **ChangePlan** of **ChangeQuantity** .
 
-De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wordt geretourneerd door de **bewerking-locatie**, in afwachting van de API-aanroep in behandeling of de `<id>` parameter waarde ontvangen in een webhook-aanroep.
+De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wordt geretourneerd door de **bewerking-locatie** , in afwachting van de API-aanroep in behandeling of de `<id>` parameter waarde ontvangen in een webhook-aanroep.
 
 ##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Toevoegen `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,7 +850,7 @@ Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact o
 
 Werk de status van een bewerking in behandeling bij om aan te geven dat het slagen of mislukken van de bewerking aan de kant van de uitgever is.
 
-De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wordt geretourneerd door de **bewerkings locatie**, in behandeling zijnde Operations API-aanroep of de `<id>` parameter waarde ontvangen in een webhook-aanroep.
+De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wordt geretourneerd door de **bewerkings locatie** , in behandeling zijnde Operations API-aanroep of de `<id>` parameter waarde ontvangen in een webhook-aanroep.
 
 ##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Verzenden `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -962,7 +962,7 @@ Wanneer de uitgever klaar is voor het end-to-end testen:
 
 Een aankoop stroom kan worden geactiveerd vanaf de Azure Portal-of Microsoft AppSource-sites, afhankelijk van waar de aanbieding wordt gepubliceerd.
 
-Acties voor het wijzigen van de *planning*, het wijzigen van de *hoeveelheid*en het *Afmelden* van het abonnement worden getest vanuit de uitgever.  Aan de kant van micro soft kan de *afmelding* worden geactiveerd vanuit zowel de Azure portal als het beheer centrum (de portal waar Microsoft AppSource aankopen worden beheerd).  *Hoeveelheid en plan wijzigen* kan alleen worden geactiveerd vanuit het beheer centrum.
+Acties voor het wijzigen van de *planning* , het wijzigen van de *hoeveelheid* en het *Afmelden* van het abonnement worden getest vanuit de uitgever.  Aan de kant van micro soft kan de *afmelding* worden geactiveerd vanuit zowel de Azure portal als het beheer centrum (de portal waar Microsoft AppSource aankopen worden beheerd).  *Hoeveelheid en plan wijzigen* kan alleen worden geactiveerd vanuit het beheer centrum.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 

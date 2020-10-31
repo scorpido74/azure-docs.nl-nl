@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 8b5c106c1464ec6d77305b1985cc8dbd51e2b4db
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c703dd4053cc27d469d83d344da910e8e5b23ddb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519474"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129895"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Beheerde identiteiten gebruiken om toegang te krijgen tot Azure SQL Database vanuit een Azure Stream Analytics-taak (preview-versie)
 
@@ -33,7 +33,7 @@ Eerst maakt u een beheerde identiteit voor uw Azure Stream Analytics-taak.
 
 1. Open de Azure Stream Analytics-taak in de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer in het navigatie menu links **beheerde identiteit** onder **configureren**. Schakel vervolgens het selectie vakje naast door **systeem toegewezen beheerde identiteit gebruiken** in en selecteer **Opslaan**.
+1. Selecteer in het navigatie menu links **beheerde identiteit** onder **configureren** . Schakel vervolgens het selectie vakje naast door **systeem toegewezen beheerde identiteit gebruiken** in en selecteer **Opslaan** .
 
    ![Door het systeem toegewezen beheerde identiteit selecteren](./media/sql-db-output-managed-identity/system-assigned-managed-identity.png)
 
@@ -44,7 +44,7 @@ Eerst maakt u een beheerde identiteit voor uw Azure Stream Analytics-taak.
 
    ![Object-ID weer gegeven als Principal-ID](./media/sql-db-output-managed-identity/principal-id.png)
 
-   De service-principal heeft dezelfde naam als de Stream Analytics taak. Als de naam van uw taak bijvoorbeeld *MyASAJob*is, is de naam van de Service-Principal ook *MyASAJob*.
+   De service-principal heeft dezelfde naam als de Stream Analytics taak. Als de naam van uw taak bijvoorbeeld *MyASAJob* is, is de naam van de Service-Principal ook *MyASAJob* .
 
 ## <a name="select-an-active-directory-admin"></a>Een Active Directory beheerder selecteren
 
@@ -52,15 +52,15 @@ Nadat u een beheerde identiteit hebt gemaakt, selecteert u een Active Directory 
 
 1. Navigeer naar uw Azure SQL Database-resource en selecteer de SQL Server waarvan de data base zich bevindt. U vindt de SQL Server naam naast *Server naam* op de pagina overzicht van resources. 
 
-1. Selecteer **Active Directory beheerder** onder **instellingen**. Selecteer vervolgens **beheerder instellen**. 
+1. Selecteer **Active Directory beheerder** onder **instellingen** . Selecteer vervolgens **beheerder instellen** . 
 
    ![Active Directory-beheer pagina](./media/sql-db-output-managed-identity/active-directory-admin-page.png)
  
-1. Zoek op de pagina Active Directory-beheer naar een gebruiker of groep om een beheerder voor de SQL Server te zijn en klik op **selecteren**.
+1. Zoek op de pagina Active Directory-beheer naar een gebruiker of groep om een beheerder voor de SQL Server te zijn en klik op **selecteren** .
 
    ![Active Directory beheerder toevoegen](./media/sql-db-output-managed-identity/add-admin.png)
 
-   Op de pagina Active Directory beheer worden alle leden en groepen van uw Active Directory weer gegeven. Gebruikers of groepen die grijs worden weer gegeven, kunnen niet worden geselecteerd, omdat ze niet worden ondersteund als Azure Active Directory-beheerders. Zie de lijst met ondersteunde beheerders in de sectie **Azure Active Directory functies en beperkingen**   van het [gebruik van Azure Active Directory authenticatie voor verificatie met SQL database of Azure Synapse](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). Azure RBAC (op rollen gebaseerd toegangs beheer) is alleen van toepassing op de portal en wordt niet door gegeven aan SQL Server. De geselecteerde gebruiker of groep is ook de gebruiker die de **Inge sloten database gebruiker** in de volgende sectie kan maken.
+   Op de pagina Active Directory beheer worden alle leden en groepen van uw Active Directory weer gegeven. Gebruikers of groepen die grijs worden weer gegeven, kunnen niet worden geselecteerd, omdat ze niet worden ondersteund als Azure Active Directory-beheerders. Zie de lijst met ondersteunde beheerders in de sectie **Azure Active Directory functies en beperkingen**   van het [gebruik van Azure Active Directory authenticatie voor verificatie met SQL database of Azure Synapse](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations). Azure RBAC (op rollen gebaseerd toegangs beheer) is alleen van toepassing op de portal en wordt niet door gegeven aan SQL Server. De geselecteerde gebruiker of groep is ook de gebruiker die de **Inge sloten database gebruiker** in de volgende sectie kan maken.
 
 1. Selecteer **Opslaan** op de pagina **beheer van Active Directory** . Het proces voor het wijzigen van de beheerder duurt enkele minuten.
 
@@ -76,7 +76,7 @@ Vervolgens maakt u een Inge sloten database gebruiker in uw SQL Database die is 
 
    De naam van de server `<SQL Server name>.database.windows.net` kan verschillen in verschillende regio's. Bijvoorbeeld, de regio China moet gebruiken `<SQL Server name>.database.chinacloudapi.cn` .
  
-   U kunt een specifieke SQL Database opgeven door te gaan naar **opties > verbindings eigenschappen > verbinding maken met data base**.  
+   U kunt een specifieke SQL Database opgeven door te gaan naar **opties > verbindings eigenschappen > verbinding maken met data base** .  
 
    ![Eigenschappen van SQL Server-verbinding](./media/sql-db-output-managed-identity/sql-server-connection-properties.png)
 
@@ -86,11 +86,11 @@ Vervolgens maakt u een Inge sloten database gebruiker in uw SQL Database die is 
 
    1. Als dit het geval is, gaat u naar uw SQL Server-Resource op de Azure Portal. Open de pagina **firewalls en virtuele netwerken** onder het gedeelte **beveiliging** . 
    1. Voeg een nieuwe regel toe met een regel naam.
-   1. Gebruik het IP-adres *uit* het venster **nieuwe firewall regel** voor het *begin-IP*.
-   1. Gebruik het *IP-adres in het* venster **nieuwe firewall regel** voor het *eind-IP*. 
+   1. Gebruik het IP-adres *uit* het venster **nieuwe firewall regel** voor het *begin-IP* .
+   1. Gebruik het *IP-adres in het* venster **nieuwe firewall regel** voor het *eind-IP* . 
    1. Selecteer **Opslaan** en probeer opnieuw verbinding te maken vanuit SQL Server Management Studio. 
 
-1. Nadat u verbinding hebt gemaakt, maakt u de Inge sloten database gebruiker. Met de volgende SQL-opdracht maakt u een Inge sloten database gebruiker die dezelfde naam heeft als uw Stream Analytics-taak. Zorg ervoor dat u de haken rond de *ASA_JOB_NAME*plaatst. Gebruik de volgende T-SQL-syntaxis en voer de query uit. 
+1. Nadat u verbinding hebt gemaakt, maakt u de Inge sloten database gebruiker. Met de volgende SQL-opdracht maakt u een Inge sloten database gebruiker die dezelfde naam heeft als uw Stream Analytics-taak. Zorg ervoor dat u de haken rond de *ASA_JOB_NAME* plaatst. Gebruik de volgende T-SQL-syntaxis en voer de query uit. 
 
    ```sql
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
@@ -110,7 +110,7 @@ Als u alleen machtigingen wilt verlenen voor een bepaalde tabel of object in de 
 GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME; 
 ```
 
-U kunt ook met de rechter muisknop op uw SQL database in SQL Server Management Studio klikken en **eigenschappen > machtigingen**selecteren. In het menu machtigingen ziet u de Stream Analytics-taak die u eerder hebt toegevoegd. u kunt ook hand matig machtigingen verlenen of weigeren zoals u dat wilt.
+U kunt ook met de rechter muisknop op uw SQL database in SQL Server Management Studio klikken en **eigenschappen > machtigingen** selecteren. In het menu machtigingen ziet u de Stream Analytics-taak die u eerder hebt toegevoegd. u kunt ook hand matig machtigingen verlenen of weigeren zoals u dat wilt.
 
 ## <a name="create-an-azure-sql-database-output"></a>Een Azure SQL Database uitvoer maken
 
@@ -118,11 +118,11 @@ Nu uw beheerde identiteit is geconfigureerd, kunt u de Azure SQL Database als ui
 
 Zorg ervoor dat u een tabel in uw SQL Database hebt gemaakt met het juiste uitvoer schema. De naam van deze tabel is een van de vereiste eigenschappen die moeten worden ingevuld wanneer u de SQL Database uitvoer toevoegt aan de Stream Analytics taak. Zorg er ook voor dat de taak de machtigingen **selecteren** en **Invoegen** heeft om de verbinding te testen en stream Analytics query's uit te voeren. Raadpleeg de sectie [machtigingen stream Analytics taak machtiging verlenen](#grant-stream-analytics-job-permissions) als u dit nog niet hebt gedaan. 
 
-1. Ga terug naar uw Stream Analytics-taak en navigeer naar de pagina **uitvoer** onder **taak topologie**. 
+1. Ga terug naar uw Stream Analytics-taak en navigeer naar de pagina **uitvoer** onder **taak topologie** . 
 
-1. Selecteer **> SQL database toevoegen**. Selecteer in het venster uitvoer eigenschappen van de SQL Database uitvoer Sink **beheerde identiteit** in de vervolg keuzelijst verificatie modus.
+1. Selecteer **> SQL database toevoegen** . Selecteer in het venster uitvoer eigenschappen van de SQL Database uitvoer Sink **beheerde identiteit** in de vervolg keuzelijst verificatie modus.
 
-1. Vul de rest van de eigenschappen in. Zie [Create a SQL database output with stream Analytics](sql-database-output.md)voor meer informatie over het maken van een SQL database-uitvoer. Wanneer u klaar bent, selecteert u **Opslaan**. 
+1. Vul de rest van de eigenschappen in. Zie [Create a SQL database output with stream Analytics](sql-database-output.md)voor meer informatie over het maken van een SQL database-uitvoer. Wanneer u klaar bent, selecteert u **Opslaan** . 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac08b5af0afbf43c7b13808fac06c40066e48b7a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 87f3e2014281580cc35f941ad62046dcb24539df
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074230"
+ms.locfileid: "93129402"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Invoer in elke indeling lezen met aangepaste .net-deserialisatie
 
@@ -201,7 +201,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>Serialisatie-indeling voor REST-Api's
 
-Elke Stream Analytics invoer heeft een **serialisatie-indeling** . Zie de documentatie over [invoer rest API](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) voor meer informatie over invoer opties.
+Elke Stream Analytics invoer heeft een **serialisatie-indeling** . Zie de documentatie over [invoer rest API](./stream-analytics-define-inputs.md) voor meer informatie over invoer opties.
 
 De volgende Java script-code is een voor beeld van de serialisatie-indeling voor .NET-deserialisatie bij gebruik van de REST API:
 
@@ -239,7 +239,7 @@ U kunt [ondersteuning aanvragen](https://aka.ms/ccodereqregion) voor extra regio
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Wanneer is deze functie beschikbaar in alle Azure-regio's?
 
-Deze functie is beschikbaar in [6 regio's](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support). Als u deze functionaliteit in een andere regio wilt gebruiken, kunt u [een aanvraag indienen](https://aka.ms/ccodereqregion). Ondersteuning voor alle Azure-regio's bevindt zich op het schema.
+Deze functie is beschikbaar in [6 regio's](#region-support). Als u deze functionaliteit in een andere regio wilt gebruiken, kunt u [een aanvraag indienen](https://aka.ms/ccodereqregion). Ondersteuning voor alle Azure-regio's bevindt zich op het schema.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Kan ik toegang krijgen tot MetadataPropertyValue van mijn invoer vergelijkbaar met de functie GetMetadataPropertyValue?
 

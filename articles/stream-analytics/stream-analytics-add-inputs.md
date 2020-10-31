@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 843e05a68a9fd9a72f14847a941d69c672094b66
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a9f48d95281971fc49a6a3fda93e4ee13ed8d753
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077010"
+ms.locfileid: "93130779"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Wat is invoer van Azure Stream Analytics?
 
@@ -26,7 +26,7 @@ Stream Analytics heeft eersteklas integratie met vier soorten resources als invo
 
 Deze invoer resources kunnen in hetzelfde Azure-abonnement wonen als uw Stream Analytics-taak of vanuit een ander abonnement.
 
-U kunt de [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input),  [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [rest API](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs)en [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) gebruiken voor het maken, bewerken en testen van stream Analytics taak invoer.
+U kunt de [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input),  [Azure POWERSHELL](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.net API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [rest API](./stream-analytics-define-inputs.md)en [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) gebruiken voor het maken, bewerken en testen van stream Analytics taak invoer.
 
 ## <a name="stream-and-reference-inputs"></a>Invoer van Stream en referentie
 Wanneer gegevens worden gepusht naar een gegevens bron, wordt deze door de Stream Analytics-taak verbruikt en in realtime verwerkt. Invoer wordt onderverdeeld in twee typen: gegevensstroominvoer en verwijzingsgegevensinvoer.

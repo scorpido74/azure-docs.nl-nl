@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196424"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129725"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referentie gegevens gebruiken voor Zoek opdrachten in Stream Analytics
 
-Referentie gegevens (ook wel een opzoek tabel genoemd) is een beperkte gegevensset die statisch of langzaam wordt gewijzigd in aard, die wordt gebruikt om een zoek actie uit te voeren of om uw gegevens stromen te verbeteren. In een IoT-scenario kunt u bijvoorbeeld meta gegevens over Sens oren opslaan (die niet vaak veranderen) in referentie gegevens en deze koppelen aan real time IoT-gegevensstreams. Azure Stream Analytics laadt referentie gegevens in het geheugen om stroom verwerking met lage latentie te garanderen. Voor het gebruik van referentie gegevens in uw Azure Stream Analytics-taak gebruikt u meestal een [koppeling voor verwijzings gegevens](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) in uw query. 
+Referentie gegevens (ook wel een opzoek tabel genoemd) is een beperkte gegevensset die statisch of langzaam wordt gewijzigd in aard, die wordt gebruikt om een zoek actie uit te voeren of om uw gegevens stromen te verbeteren. In een IoT-scenario kunt u bijvoorbeeld meta gegevens over Sens oren opslaan (die niet vaak veranderen) in referentie gegevens en deze koppelen aan real time IoT-gegevensstreams. Azure Stream Analytics laadt referentie gegevens in het geheugen om stroom verwerking met lage latentie te garanderen. Voor het gebruik van referentie gegevens in uw Azure Stream Analytics-taak gebruikt u meestal een [koppeling voor verwijzings gegevens](/stream-analytics-query/reference-data-join-azure-stream-analytics) in uw query. 
 
 ## <a name="example"></a>Voorbeeld  
 U kunt een real-time stream van gebeurtenissen die worden gegenereerd wanneer auto's een telefoon stand door geven. Het bewerkings hokje kan de product plaat in realtime vastleggen en samen voegen met een statische gegevensset met registratie gegevens voor het identificeren van de voor de verval periode van de licentie platen.  
@@ -37,7 +37,7 @@ Referentie gegevens worden gemodelleerd als een reeks blobs (gedefinieerd in de 
 
 ### <a name="configure-blob-reference-data"></a>BLOB-referentie gegevens configureren
 
-Als u uw referentie gegevens wilt configureren, moet u eerst een invoer maken van het type **referentie gegevens**. In de onderstaande tabel wordt elke eigenschap uitgelegd die u moet opgeven tijdens het maken van de referentie gegevens invoer met de beschrijving:
+Als u uw referentie gegevens wilt configureren, moet u eerst een invoer maken van het type **referentie gegevens** . In de onderstaande tabel wordt elke eigenschap uitgelegd die u moet opgeven tijdens het maken van de referentie gegevens invoer met de beschrijving:
 
 |**Eigenschaps naam**  |**Beschrijving**  |
 |---------|---------|
@@ -96,7 +96,7 @@ Met de optie Delta query Stream Analytics wordt de momentopname query in eerste 
 
 Als u uw SQL Database referentie gegevens wilt configureren, moet u eerst **referentie gegevens** invoer maken. In de onderstaande tabel wordt elke eigenschap uitgelegd die u moet opgeven tijdens het maken van de invoer van referentie gegevens met de beschrijving. Zie [referentie gegevens van een SQL database gebruiken voor een Azure stream Analytics taak](sql-reference-data.md)voor meer informatie.
 
-U kunt [Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als referentie gegevens invoer gebruiken. U moet een [openbaar eind punt configureren in het SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
+U kunt [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) als referentie gegevens invoer gebruiken. U moet een [openbaar eind punt configureren in het SQL Managed instance](../azure-sql/managed-instance/public-endpoint-configure.md) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
 
 |**Eigenschaps naam**|**Beschrijving**  |
 |---------|---------|
@@ -146,6 +146,6 @@ JOIN    refData2 ON refData2.Desc = Step1.Desc
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.get.started]: ./stream-analytics-real-time-fraud-detection.md
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ce256db907589ace7e77157397257732564fb6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006394"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130320"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
@@ -24,7 +24,7 @@ De uitgever of micro soft is verantwoordelijk voor het beheer van software licen
 
 ### <a name="contact-me-free-trial-and-byol-options"></a>Contact opnemen, gratis proef versie en BYOL-opties
 
-Uitgevers kunnen kiezen voor de _contact persoon_ en _gratis proef versie_, opties voor promotie-en gebruikers verwervings doeleinden. Voor sommige aanbiedings typen kunnen uitgevers kiezen voor de optie uw eigen licentie (BYOL) meenemen zodat klanten een abonnement op uw aanbieding kunnen kopen met een licentie die hij of zij rechtstreeks van u heeft gekocht. Met deze opties neemt micro soft niet rechtstreeks deel aan de software licentie transacties van de uitgever en zijn er geen transactie kosten in rekening gebracht. 
+Uitgevers kunnen kiezen voor de _contact persoon_ en _gratis proef versie_ , opties voor promotie-en gebruikers verwervings doeleinden. Voor sommige aanbiedings typen kunnen uitgevers kiezen voor de optie uw eigen licentie (BYOL) meenemen zodat klanten een abonnement op uw aanbieding kunnen kopen met een licentie die hij of zij rechtstreeks van u heeft gekocht. Met deze opties neemt micro soft niet rechtstreeks deel aan de software licentie transacties van de uitgever en zijn er geen transactie kosten in rekening gebracht. 
 
 Uitgevers zijn verantwoordelijk voor de ondersteuning van alle aspecten van de software licentie transacties. Dit omvat, maar is niet beperkt tot order, verwerking, meting, facturering, facturering, betaling en incasso. Met de optie contact opnemen met mij kunnen uitgevers 100% van de licentie kosten voor de uitgever van de software blijven ontvangen van de klant.
 
@@ -46,9 +46,9 @@ De optie voor het publiceren van Transact wordt momenteel ondersteund voor de vo
 
 ### <a name="billing-infrastructure-costs"></a>Kosten van facturerings infrastructuur
 
-Voor **virtuele machines** en **Azure-toepassingen**worden Azure-infrastructuur gebruiks kosten in rekening gebracht voor het Azure-abonnement van de klant. De kosten voor het gebruik van de infra structuur zijn geprijsd en worden afzonderlijk van de licentie kosten van de software provider weer gegeven op de factuur van de klant.
+Voor **virtuele machines** en **Azure-toepassingen** worden Azure-infrastructuur gebruiks kosten in rekening gebracht voor het Azure-abonnement van de klant. De kosten voor het gebruik van de infra structuur zijn geprijsd en worden afzonderlijk van de licentie kosten van de software provider weer gegeven op de factuur van de klant.
 
-Voor **SaaS-apps**moet u de uitgever de Azure-infrastructuur gebruiks kosten en software licentie kosten account als één kosten item.  Het wordt weer gegeven als een vast bedrag voor de klant. Het gebruik van de Azure-infra structuur wordt rechtstreeks beheerd en gefactureerd met de uitgever. De werkelijke gebruiks kosten voor de infra structuur zijn niet zichtbaar voor de klant. Uitgevers willen doorgaans de gebruiks kosten voor Azure-infra structuur bundelen in hun prijzen voor software licenties. Software licentie kosten worden niet gemeten of gebaseerd op het verbruik van de gebruiker.
+Voor **SaaS-apps** moet u de uitgever de Azure-infrastructuur gebruiks kosten en software licentie kosten account als één kosten item.  Het wordt weer gegeven als een vast bedrag voor de klant. Het gebruik van de Azure-infra structuur wordt rechtstreeks beheerd en gefactureerd met de uitgever. De werkelijke gebruiks kosten voor de infra structuur zijn niet zichtbaar voor de klant. Uitgevers willen doorgaans de gebruiks kosten voor Azure-infra structuur bundelen in hun prijzen voor software licenties. Software licentie kosten worden niet gemeten of gebaseerd op het verbruik van de gebruiker.
 
 ## <a name="pricing-models"></a>Prijsmodellen
 
@@ -107,7 +107,7 @@ In dit scenario $1,14 factureert micro soft per uur voor het gebruik van uw gepu
 |Micro soft bewaart 100% van de kosten voor Azure-gebruik | $0,14 per uur |
 ||
 
-**Neem uw eigen licentie mee (BYOL)**
+**Bring Your Own License (BYOL)**
 
 BYOL heeft de volgende kosten structuur:
 
@@ -197,7 +197,7 @@ De optie voor het publiceren van Transact is alleen beschikbaar voor gebruik met
 
 - **Azure-toepassing: oplossings sjabloon of beheerde app** : moet een of meer virtuele machines inrichten en de som van de prijzen van de virtuele machine ophalen. Voor beheerde apps in één abonnement kan een maandelijks abonnement met een vaste frequentie worden geselecteerd als het prijs model in plaats van de prijzen van de virtuele machine. In sommige gevallen worden gebruiks kosten voor Azure-infra structuur door gegeven aan de klant, onafhankelijk van software licentie kosten, maar op hetzelfde factuur overzicht. Als u echter een beheerde app-aanbieding voor ISV-infrastructuur kosten configureert, worden de Azure-resources gefactureerd aan de uitgever en ontvangt de klant een vast bedrag dat de kosten van infra structuur, software licenties en beheer Services omvat.
 
-- **SaaS-toepassing** : moet een multi tenant oplossing zijn, gebruik [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) voor verificatie en kan worden geïntegreerd met de [SaaS-fulfillment-api's](partner-center-portal/pc-saas-fulfillment-api-v2.md). Het gebruik van Azure-infra structuur wordt beheerd en rechtstreeks aan u (de partner) gefactureerd. u moet dus rekening doen met de gebruiks kosten voor Azure-infra structuur en software licentie kosten als één kosten item. Zie [een nieuwe SaaS-aanbieding maken in de commerciële Marketplace](partner-center-portal/create-new-saas-offer.md)voor gedetailleerde richt lijnen.
+- **SaaS-toepassing** : moet een multi tenant oplossing zijn, gebruik [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) voor verificatie en kan worden geïntegreerd met de [SaaS-fulfillment-api's](partner-center-portal/pc-saas-fulfillment-api-v2.md). Het gebruik van Azure-infra structuur wordt beheerd en rechtstreeks aan u (de partner) gefactureerd. u moet dus rekening doen met de gebruiks kosten voor Azure-infra structuur en software licentie kosten als één kosten item. Zie [een nieuwe SaaS-aanbieding maken in de commerciële Marketplace](./create-new-saas-offer.md)voor gedetailleerde richt lijnen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

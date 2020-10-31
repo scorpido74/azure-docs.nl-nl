@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: bc34d2044c3a91fe18e900b21d589dde855754d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71cbc09f21e21c325665809953f209615d835124
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91774575"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130150"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Een Dynamics 365 Business Central-aanbieding maken
 
@@ -23,8 +23,8 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
-3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Dynamics 365 Business Central**.
+2. Selecteer in het menu links de optie **commerciële Marketplace** -  >  **overzicht** .
+3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Dynamics 365 Business Central** .
 
     ![Illustreert het navigatie menu.](./media/new-offer-dynamics-365-business-central.png)
 
@@ -33,17 +33,17 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 
 ## <a name="new-offer"></a>Nieuwe aanbieding
 
-Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
+Voer een **aanbiedings-id** in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
 - De aanbiedings-ID gecombineerd met de uitgevers-ID moet langer zijn dan 40 tekens.
 - Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar geen spaties. Als uw uitgevers-ID bijvoorbeeld testpublisherid is en u hier **test aanbieding-1** invoert, is het webadres van de aanbieding `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
-Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
+Voer een **alias** voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
 - Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
-- De aanbiedings alias kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+- De aanbiedings alias kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
 Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
@@ -91,7 +91,7 @@ Op deze pagina kunt u de categorieën en industrieën definiëren die worden geb
 Selecteer categorieën en subcategorieën om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Zorg ervoor dat u beschrijft hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. Selecteer:
 
 - Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
-- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing** .
 
 Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md).
 
@@ -171,9 +171,9 @@ Voer de URL in voor het privacybeleid van uw organisatie. U bent verantwoordelij
 
 ### <a name="contact-information"></a>Contactgegevens
 
-In deze sectie moet u de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon**. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verschaft aan CSP-partners.
+In deze sectie moet u de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon** . Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft en kan worden verschaft aan CSP-partners.
 
-In het gedeelte **ondersteuning voor contact opnemen** moet u ook de **ondersteunings-URL** opgeven waar CSP-partners ondersteuning voor uw aanbieding kunnen vinden. De ondersteunings-URL mag niet hetzelfde zijn als de **Help-koppeling**.
+In het gedeelte **ondersteuning voor contact opnemen** moet u ook de **ondersteunings-URL** opgeven waar CSP-partners ondersteuning voor uw aanbieding kunnen vinden. De ondersteunings-URL mag niet hetzelfde zijn als de **Help-koppeling** .
 
 ### <a name="supporting-documents"></a>Ondersteunende documenten
 
@@ -215,7 +215,7 @@ Op deze pagina vindt u opties waar en hoe u uw aanbieding beschikbaar kunt stell
 
 ### <a name="markets"></a>Landen
 
-In deze sectie kunt u de markten opgeven waarin uw aanbieding beschikbaar moet zijn. Als u dit wilt doen, selecteert u **markten bewerken**om het pop-upvenster **markt selectie** weer te geven.
+In deze sectie kunt u de markten opgeven waarin uw aanbieding beschikbaar moet zijn. Als u dit wilt doen, selecteert u **markten bewerken** om het pop-upvenster **markt selectie** weer te geven.
 
 Selecteer ten minste één markt om uw aanbieding te publiceren. Kies **Alles selecteren** om uw aanbieding beschikbaar te stellen op elke mogelijke markt of selecteer de specifieke markten die u wilt toevoegen.
 
@@ -228,7 +228,7 @@ Houd er rekening mee dat zelfs als u alle markten, lokale wetten, beperkingen of
 
 ### <a name="preview-audience"></a>Voor beeld van doel groep
 
-Voordat u uw aanbieding naar de bredere Marketplace-aanbieding publiceert, moet u deze eerst beschikbaar maken voor een beperkte preview- **doel groep**. Voer hier een **Hide-toets** (wille keurige teken reeks met alleen kleine letters en/of cijfers) in. Leden van uw preview-doel groep kunnen deze verbergen sleutel als een token gebruiken om een voor beeld van uw aanbieding op Marketplace te bekijken.
+Voordat u uw aanbieding naar de bredere Marketplace-aanbieding publiceert, moet u deze eerst beschikbaar maken voor een beperkte preview- **doel groep** . Voer hier een **Hide-toets** (wille keurige teken reeks met alleen kleine letters en/of cijfers) in. Leden van uw preview-doel groep kunnen deze verbergen sleutel als een token gebruiken om een voor beeld van uw aanbieding op Marketplace te bekijken.
 
 Wanneer u klaar bent om uw aanbieding beschikbaar te maken en de preview-beperking te verwijderen, moet u de **sleutel verbergen** verwijderen en opnieuw publiceren.
 
@@ -242,8 +242,8 @@ Op deze pagina worden de technische details gedefinieerd die worden gebruikt om 
 
 Selecteer de optie die van toepassing is op uw aanbieding:
 
-* **Toevoegen aan** : een invoeg toepassings toepassing breidt de ervaring en de bestaande functionaliteit van Dynamics 365 Business Central uit. Zie [add-on apps](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps)voor meer informatie.
-* **Connect** : een Connect-app kan worden gebruikt in het scenario waarin een Point-to-point-verbinding tussen Dynamics 365 Business Central en een oplossing of service van derden tot stand moet worden gebracht. Zie [apps verbinden](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps)voor meer informatie.
+* **Toevoegen aan** : een invoeg toepassings toepassing breidt de ervaring en de bestaande functionaliteit van Dynamics 365 Business Central uit. Zie [add-on apps](/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps)voor meer informatie.
+* **Connect** : een Connect-app kan worden gebruikt in het scenario waarin een Point-to-point-verbinding tussen Dynamics 365 Business Central en een oplossing of service van derden tot stand moet worden gebracht. Zie [apps verbinden](/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps)voor meer informatie.
 
 ### <a name="file-upload"></a>Bestand uploaden
 
@@ -280,11 +280,11 @@ Op deze pagina kunt u aanvullende informatie over uw aanbieding opgeven zodat we
 
 ### <a name="target-release"></a>Doelrelease
 
-Geef aan welke release van micro soft Dynamics business Central uw oplossingen doelen: **Current**, **Next Major**of **Next minor**. Met deze informatie kunnen we uw oplossing op de juiste manier testen.
+Geef aan welke release van micro soft Dynamics business Central uw oplossingen doelen: **Current** , **Next Major** of **Next minor** . Met deze informatie kunnen we uw oplossing op de juiste manier testen.
 
 ### <a name="supported-editions"></a>Ondersteunde versies
 
-Als voor uw aanbieding de Premium-editie van micro soft Dynamics 365 Business Central is vereist, selecteert u alleen **Premium** . Als dat niet het geval is, selecteert u zowel **kernen** als **Premium**.
+Als voor uw aanbieding de Premium-editie van micro soft Dynamics 365 Business Central is vereist, selecteert u alleen **Premium** . Als dat niet het geval is, selecteert u zowel **kernen** als **Premium** .
 
 ### <a name="key-usage-scenario"></a>Scenario voor sleutel gebruik
 
@@ -311,7 +311,7 @@ Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende 
     - *Onvolledig* : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
     - *Voltooid* : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
 - Geef in de sectie **opmerkingen voor certificering** test instructies op voor het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
-- Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding naar het publiek te publiceren.
+- Verzend de aanbieding voor publicatie door **verzenden** te selecteren. We sturen u een e-mail wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding naar het publiek te publiceren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100691"
+ms.locfileid: "93130337"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
 
@@ -93,7 +93,7 @@ Voor het bijhouden van wijzigingen in bestanden op Windows en Linux maakt Wijzig
 
 ## <a name="tracking-file-content-changes"></a>Wijzigingen in bestands inhoud bijhouden
 
-Met Wijzigingen bijhouden en inventaris kunt u de inhoud van een Windows-of Linux-bestand weer geven. Voor elke wijziging in een bestand bevat Wijzigingen bijhouden en inventaris de inhoud van het bestand in een [Azure Storage-account](/azure/storage/common/storage-account-create). Wanneer u een bestand volgt, kunt u de inhoud ervan weer geven vóór of na een wijziging. De bestands inhoud kan in line of naast elkaar worden weer gegeven.
+Met Wijzigingen bijhouden en inventaris kunt u de inhoud van een Windows-of Linux-bestand weer geven. Voor elke wijziging in een bestand bevat Wijzigingen bijhouden en inventaris de inhoud van het bestand in een [Azure Storage-account](../../storage/common/storage-account-create.md). Wanneer u een bestand volgt, kunt u de inhoud ervan weer geven vóór of na een wijziging. De bestands inhoud kan in line of naast elkaar worden weer gegeven.
 
 ![Wijzigingen in een bestand weer geven](./media/overview/view-file-changes.png)
 
@@ -158,7 +158,7 @@ De volgende tabel bevat de limieten voor bijgehouden items per computer voor Wij
 |Services|250|
 |Daemons|250|
 
-Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40 MB per maand, afhankelijk van uw omgeving. Met de functie voor gebruik en geschatte kosten van de Log Analytics-werk ruimte kunt u de gegevens weer geven die zijn opgenomen door Wijzigingen bijhouden en inventaris in een gebruiks diagram. Gebruik deze gegevens weergave om uw gegevens gebruik te evalueren en te bepalen hoe deze van invloed is op uw factuur. Bekijk [inzicht in uw gebruik en geschatte kosten](/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
+Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40 MB per maand, afhankelijk van uw omgeving. Met de functie voor gebruik en geschatte kosten van de Log Analytics-werk ruimte kunt u de gegevens weer geven die zijn opgenomen door Wijzigingen bijhouden en inventaris in een gebruiks diagram. Gebruik deze gegevens weergave om uw gegevens gebruik te evalueren en te bepalen hoe deze van invloed is op uw factuur. Bekijk [inzicht in uw gebruik en geschatte kosten](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Micro soft-service gegevens
 

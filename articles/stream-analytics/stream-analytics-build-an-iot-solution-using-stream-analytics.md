@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87ec59d19fb442293fb7f14d110cf513015ec9f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044580"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130796"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Een IoT-oplossing bouwen met behulp van Stream Analytics
 
@@ -43,7 +43,7 @@ Deze oplossing werkt met twee gegevens stromen. Sens oren die zijn geïnstalleer
 ### <a name="entry-data-stream"></a>Gegevens stroom van vermelding
 De gegevens stroom van de vermelding bevat informatie over auto's wanneer deze niet-gratis stations binnenkomt. De gebeurtenissen voor het afsluiten van gegevens worden live gestreamd naar een event hub-wachtrij vanuit een web-app die is opgenomen in de voor beeld-app.
 
-| TollID | EntryTime | LicensePlate | Status | Merk | Modelleren | VehicleType | VehicleWeight | Gratis | Label |
+| TollID | EntryTime | LicensePlate | Staat | Merk | Model | VehicleType | VehicleWeight | Gratis | Label |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -59,9 +59,9 @@ Hier volgt een korte beschrijving van de kolommen:
 | TollID |De ID van het telefoon nummer waarmee een telefoon stand wordt aangeduid |
 | EntryTime |De datum en tijd van binnenkomst van het Voer tuig in UTC |
 | LicensePlate |Het nummer van de licentie plaat van het Voer tuig |
-| Status |Een status in Verenigde Staten |
+| Staat |Een status in Verenigde Staten |
 | Merk |De fabrikant van de auto |
-| Modelleren |Het model nummer van de auto |
+| Model |Het model nummer van de auto |
 | VehicleType |1 voor passagiers voertuigen of 2 voor commerciële Voer tuigen |
 | WeightType |Gewicht van het Voer tuig in tonnen; 0 voor reizigers voertuigen |
 | Gratis |De niet-gratis waarde in USD |
@@ -134,7 +134,7 @@ Er zijn verschillende bronnen die eenvoudig kunnen worden geïmplementeerd in ee
 
 9. Selecteer **aanschaffen** om de voorbeeld sjabloon te implementeren.
 
-10. Na enkele ogen blikken wordt er een melding weer gegeven om te bevestigen dat de **implementatie is geslaagd**.
+10. Na enkele ogen blikken wordt er een melding weer gegeven om te bevestigen dat de **implementatie is geslaagd** .
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Bekijk de Azure Stream Analytics TollApp-resources
 
@@ -163,7 +163,7 @@ Er zijn verschillende bronnen die eenvoudig kunnen worden geïmplementeerd in ee
 
    Als u de bedoeling van de query wilt parafraseren, moet u het aantal Voer tuigen dat in een telefoon stand wordt ingevoerd, tellen. Omdat een hokje op de weg een voortdurende stroom van Voer tuigen heeft, zijn de start gebeurtenissen vergelijkbaar met een stroom die nooit stopt. Als u de stroom wilt kwantificeren, moet u een periode definiëren om over te meten. Hoe gaat u verder met het verfijnen van de vraag, "hoeveel Voer tuigen om de drie minuten een telefoon nummer invoeren?" Dit wordt meestal het aantal tumblingvenstertriggers genoemd.
 
-   Zoals u kunt zien, maakt Azure Stream Analytics gebruik van een query taal die lijkt op SQL en voegt een paar uitbrei dingen toe om de tijd gerelateerde aspecten van de query op te geven.  Lees voor meer informatie over [time management](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) en [venster](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) constructies die in de query worden gebruikt.
+   Zoals u kunt zien, maakt Azure Stream Analytics gebruik van een query taal die lijkt op SQL en voegt een paar uitbrei dingen toe om de tijd gerelateerde aspecten van de query op te geven.  Lees voor meer informatie over [time management](/stream-analytics-query/time-management-azure-stream-analytics) en [venster](/stream-analytics-query/windowing-azure-stream-analytics) constructies die in de query worden gebruikt.
 
 3. Bekijk de invoer van de voorbeeld taak TollApp. Alleen de EntryStream-invoer wordt gebruikt in de huidige query.
    - **EntryStream** -invoer is een event hub-verbinding waarbij gegevens worden gequeued die elke keer dat een auto een tollbooth op de weg binnenkomt. In een web-app die deel uitmaakt van het voor beeld, worden de gebeurtenissen gemaakt en worden de gegevens in de wachtrij geplaatst in deze event hub. Houd er rekening mee dat deze invoer wordt opgevraagd in de component FROM van de streaming-query.
@@ -176,20 +176,20 @@ Er zijn verschillende bronnen die eenvoudig kunnen worden geïmplementeerd in ee
 ## <a name="start-the-tollapp-streaming-job"></a>De TollApp streaming-taak starten
 Volg deze stappen om de streaming-taak te starten:
 
-1. Selecteer op de pagina **overzicht** van de taak **Start**.
+1. Selecteer op de pagina **overzicht** van de taak **Start** .
 
-2. Selecteer **nu**in het deel venster **taak starten** .
+2. Selecteer **nu** in het deel venster **taak starten** .
 
 3. Nadat de taak is uitgevoerd, kunt u na enkele ogen blikken de **bewakings** grafiek bekijken op de pagina **overzicht** van de streaming-taak. In de grafiek moeten enkele duizenden invoer gebeurtenissen en tien tallen uitvoer gebeurtenissen worden weer gegeven.
 
 ## <a name="review-the-cosmosdb-output-data"></a>De CosmosDB-uitvoer gegevens controleren
 1. Zoek de resource groep die de TollApp-resources bevat.
 
-2. Selecteer het Azure Cosmos DB account met het naam patroon **tollapp \<random\> -Cosmos**.
+2. Selecteer het Azure Cosmos DB account met het naam patroon **tollapp \<random\> -Cosmos** .
 
 3. Selecteer de **Data Explorer** kop om de pagina Data Explorer te openen.
 
-4. Vouw de **tollAppDatabase**-  >  **tollAppCollection**-  >  **documenten**uit.
+4. Vouw de **tollAppDatabase** -  >  **tollAppCollection** -  >  **documenten** uit.
 
 5. In de lijst met id's worden verschillende documenten weer gegeven zodra de uitvoer beschikbaar is.
 
@@ -214,7 +214,7 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 ### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>De query syntaxis van de TollApp streaming-taak bijwerken:
 
-1. Selecteer op de pagina **overzicht** van de taak **stoppen**.
+1. Selecteer op de pagina **overzicht** van de taak **stoppen** .
 
 2. Wacht even totdat de melding is gestopt.
 
@@ -224,9 +224,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 5. Selecteer **Opslaan** om de query op te slaan. Bevestig **Ja** om de wijzigingen op te slaan.
 
-6. Selecteer op de pagina **overzicht** van de taak **Start**.
+6. Selecteer op de pagina **overzicht** van de taak **Start** .
 
-7. Selecteer **nu**in het deel venster **taak starten** .
+7. Selecteer **nu** in het deel venster **taak starten** .
 
 ### <a name="review-the-total-time-in-the-output"></a>De totale tijd in de uitvoer controleren
 Herhaal de stappen in de vorige sectie om de uitvoer gegevens van de CosmosDB van de streaming-taak te bekijken. Bekijk de nieuwste JSON-documenten.
@@ -299,11 +299,11 @@ De streaming-taak omhoog schalen naar meer streaming-eenheden:
 
 1. De huidige taak **stoppen** .
 
-2. Werk de query syntaxis op de ** query pagina< > ** en sla de wijzigingen op.
+2. Werk de query syntaxis op de **query pagina< >** en sla de wijzigingen op.
 
-3. Selecteer onder de kop CONFIGURe op de streaming-taak **schalen**.
+3. Selecteer onder de kop CONFIGURe op de streaming-taak **schalen** .
 
-4. Schuif de schuif regelaar voor **streaming-eenheden** van 1 tot en met 6. Streaming-eenheden definiëren de hoeveelheid reken kracht die de taak kan ontvangen. Selecteer **Opslaan**.
+4. Schuif de schuif regelaar voor **streaming-eenheden** van 1 tot en met 6. Streaming-eenheden definiëren de hoeveelheid reken kracht die de taak kan ontvangen. Selecteer **Opslaan** .
 
 5. **Start** de streaming-taak om de extra schaal te demonstreren. Azure Stream Analytics verdeelt werk over meer compute-resources en zorgt voor een betere door Voer, waarbij de hoeveelheid werk over resources wordt gepartitioneerd met behulp van de kolom die is opgegeven in de component PARTITION BY.
 
@@ -319,7 +319,7 @@ U hebt ook toegang tot **activiteiten logboeken** vanuit het gebied met taak das
 
 2. Zoek de resource groep die acht resources bevat die gerelateerd zijn aan de sjabloon TollApp.
 
-3. Selecteer **Resourcegroep verwijderen**. Typ de naam van de resource groep om de verwijdering te bevestigen.
+3. Selecteer **Resourcegroep verwijderen** . Typ de naam van de resource groep om de verwijdering te bevestigen.
 
 ## <a name="conclusion"></a>Conclusie
 Met deze oplossing hebt u de Azure Stream Analytics-service geïntroduceerd. Hier wordt uitgelegd hoe u invoer en uitvoer configureert voor de Stream Analytics taak. Met het scenario voor gratis gegevens hebben de oplossing gemeen schappelijke typen problemen die zich voordoen in de ruimte van gegevens in beweging en hoe deze kunnen worden opgelost met eenvoudige SQL-achtige query's in Azure Stream Analytics. De oplossing beschreven SQL-extensie constructies voor het werken met tijdelijke gegevens. U hebt geleerd hoe u gegevens stromen samenvoegt, hoe u de gegevens stroom verrijkt met statische referentie gegevens en hoe u een query uitbreidt om een hogere door voer te krijgen.

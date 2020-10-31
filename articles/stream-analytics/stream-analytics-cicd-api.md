@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 18817a426bacc1ddf144c1d64b611c55245cc21e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a7e56758a1a76933d6bb18883aa15ce33ce2e89e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097784"
+ms.locfileid: "93130915"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD voor Stream Analytics implementeren op IoT Edge met behulp van Api's
 
@@ -258,5 +258,5 @@ Na de configuratie van het implementatie manifest raadpleegt u [Azure IOT Edge-m
 ## <a name="next-steps"></a>Volgende stappen 
  
 * [Azure Stream Analytics op IoT Edge](stream-analytics-edge.md)
-* [Zelf studie voor IoT Edge van ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Zelf studie voor IoT Edge van ASA](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Stream Analytics Edge-taken ontwikkelen met behulp van Visual Studio Tools](stream-analytics-tools-for-visual-studio-edge-jobs.md)

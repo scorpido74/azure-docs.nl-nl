@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230616"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131051"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Activiteitenrapporten zoeken in de Azure-portal
 
@@ -149,7 +149,7 @@ U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **be
 
 Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Hoe komt dat? 
 
- ![Rapporten](./media/troubleshoot-missing-data-download/01.png)
+ ![Scherm afbeelding toont de knop downloaden in het activiteiten rapport.](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -165,7 +165,7 @@ U kunt gebruikmaken van [API's van Azure AD Reporting](concept-reporting-api.md)
 
 Ik heb enkele acties uitgevoerd in de Azure-portal en had verwacht de auditlogboeken voor deze acties te zien op de blade `Activity logs > Audit Logs`, maar ik kan ze niet vinden.
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/01.png)
+ ![Scherm afbeelding toont het activiteiten rapport.](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -186,7 +186,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik heb me onlangs aangemeld bij de Azure-portal en dan zou ik hier eigenlijk vermeldingen voor moeten zien in de logboeken op de blade `Activity logs > Sign-ins`, maar ik kan ze niet vinden.
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/02.png)
+ ![Scherm opname toont aanmeldingen voor Azure Active Directory.](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -207,7 +207,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/03.png)
+ ![Scherm afbeelding toont het datum menu.](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Oorzaak
 

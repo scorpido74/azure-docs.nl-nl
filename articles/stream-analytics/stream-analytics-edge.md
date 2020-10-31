@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7a084b2d0582f53d4372ba3332194629ad29a4ec
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: cba81b8415f0f9cf7253e674e90ae09718b94d54
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041864"
+ms.locfileid: "93130473"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics op IoT Edge
  
@@ -32,11 +32,11 @@ Azure Stream Analytics op IoT Edge worden uitgevoerd binnen het [Azure IOT Edge]
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Edge-taken in Azure Stream Analytics
 ### <a name="what-is-an-edge-job"></a>Wat is een ' edge-taak '?
 
-ASA Edge-taken worden uitgevoerd in containers die zijn geïmplementeerd op [Azure IOT edge apparaten](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works). Ze bestaan uit twee delen:
+ASA Edge-taken worden uitgevoerd in containers die zijn geïmplementeerd op [Azure IOT edge apparaten](../iot-edge/about-iot-edge.md). Ze bestaan uit twee delen:
 1.  Een Cloud onderdeel dat verantwoordelijk is voor de taak definitie: gebruikers definiëren de invoer, uitvoer, query en andere instellingen (op volg orde van gebeurtenissen, enzovoort) in de Cloud.
 2.  Een module die wordt uitgevoerd op uw IoT-apparaten. Deze bevat de ASA-engine en ontvangt de taak definitie van de Cloud. 
 
-ASA maakt gebruik van IoT Hub om Edge-taken op een of meer apparaten te implementeren. Meer informatie over [IOT Edge implementatie](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)vindt u hier.
+ASA maakt gebruik van IoT Hub om Edge-taken op een of meer apparaten te implementeren. Meer informatie over [IOT Edge implementatie](../iot-edge/module-deployment-monitoring.md)vindt u hier.
 
 ![Taak voor Azure Stream Analytics Edge](media/stream-analytics-edge/stream-analytics-edge-job.png)
 
@@ -44,28 +44,28 @@ ASA maakt gebruik van IoT Hub om Edge-taken op een of meer apparaten te implemen
 ### <a name="installation-instructions"></a>Installatie-instructies
 De stappen op hoog niveau worden in de volgende tabel beschreven. Meer informatie vindt u in de volgende secties.
 
-| Stap | Notities |
+| Stap | Opmerkingen |
 | --- | --- |
 | **Een opslagcontainer maken** | Opslag containers worden gebruikt voor het opslaan van uw taak definitie, waar ze toegankelijk zijn voor uw IoT-apparaten. <br>  U kunt elke bestaande opslag container opnieuw gebruiken. |
 | **Een ASA Edge-taak maken** | Maak een nieuwe taak, selecteer **Edge** als **hosting omgeving** . <br> Deze taken worden gemaakt/beheerd vanuit de Cloud en uitgevoerd op uw eigen IoT Edge apparaten. |
-| **Uw IoT Edge omgeving instellen op uw apparaat (s)** | Instructies voor [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) of [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).|
+| **Uw IoT Edge omgeving instellen op uw apparaat (s)** | Instructies voor [Windows](../iot-edge/quickstart.md) of [Linux](../iot-edge/quickstart-linux.md).|
 | **ASA implementeren op uw IoT Edge apparaat (en)** | De taak definitie van ASA wordt geëxporteerd naar de opslag container die u eerder hebt gemaakt. |
 
-U kunt [deze stapsgewijze zelf studie](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) volgen om uw eerste ASA-taak op IOT Edge te implementeren. De volgende video helpt u inzicht te krijgen in het proces om een Stream Analytics-taak uit te voeren op een IoT edge-apparaat:  
+U kunt [deze stapsgewijze zelf studie](../iot-edge/tutorial-deploy-stream-analytics.md) volgen om uw eerste ASA-taak op IOT Edge te implementeren. De volgende video helpt u inzicht te krijgen in het proces om een Stream Analytics-taak uit te voeren op een IoT edge-apparaat:  
 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T157/player]
 
 #### <a name="create-a-storage-container"></a>Een opslagcontainer maken
 Een opslag container is vereist om de gecompileerde query van ASA en de taak configuratie te exporteren. Het wordt gebruikt om de ASA docker-installatie kopie te configureren met uw specifieke query. 
-1. Volg [deze instructies](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) voor het maken van een opslag account vanuit het Azure Portal. U kunt alle standaard opties blijven gebruiken voor dit account met ASA.
+1. Volg [deze instructies](../storage/common/storage-account-create.md) voor het maken van een opslag account vanuit het Azure Portal. U kunt alle standaard opties blijven gebruiken voor dit account met ASA.
 2. Maak een BLOB storage-container in het zojuist gemaakte opslag account:
     1. Klik op **blobs** en vervolgens op **+ container** . 
     2. Voer een naam in en behoud de container als **privé** .
 
 #### <a name="create-an-asa-edge-job"></a>Een ASA Edge-taak maken
 > [!Note]
-> Deze zelf studie is gericht op het maken van ASA-taken met behulp van Azure Portal. U kunt ook [de Visual Studio-invoeg toepassing gebruiken om een ASA Edge-taak te maken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+> Deze zelf studie is gericht op het maken van ASA-taken met behulp van Azure Portal. U kunt ook [de Visual Studio-invoeg toepassing gebruiken om een ASA Edge-taak te maken](./stream-analytics-tools-for-visual-studio-edge-jobs.md)
 
 1. Maak in de Azure Portal een nieuwe ' Stream Analytics-taak '. [Direct link om hier een nieuwe ASA-taak te maken](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
 
@@ -81,7 +81,7 @@ Een opslag container is vereist om de gecompileerde query van ASA en de taak con
 4. Stel de gegevens van de opslag container in het menu **IOT Edge instellingen** in.
 
 5. Optionele instellingen instellen
-    1. **Gebeurtenis volgorde** . U kunt out-of-order beleid configureren in de portal. Documentatie is [hier](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)beschikbaar.
+    1. **Gebeurtenis volgorde** . U kunt out-of-order beleid configureren in de portal. Documentatie is [hier](/stream-analytics-query/time-skew-policies-azure-stream-analytics)beschikbaar.
     2. **Land instelling** . Stel de internalization-indeling in.
 
 
@@ -97,7 +97,7 @@ Hiervoor moet u de volgende stappen uitvoeren:
 - Installeer docker en IoT Edge runtime op uw edge-apparaten.
 - Stel uw apparaten in als **IOT edge apparaten** in IOT hub.
 
-Deze stappen worden beschreven in de IoT Edge documentatie voor [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) of [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).  
+Deze stappen worden beschreven in de IoT Edge documentatie voor [Windows](../iot-edge/quickstart.md) of [Linux](../iot-edge/quickstart-linux.md).  
 
 
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>Implementatie-ASA op uw IoT Edge apparaat (en)
@@ -113,11 +113,11 @@ Deze stappen worden beschreven in de IoT Edge documentatie voor [Windows](https:
 > Wanneer u uw taak op IoT Edge-apparaten implementeert, maakt ASA een Shared Access Signature (SAS) voor het definitie bestand van de taak. De SAS-sleutel wordt veilig verzonden naar de IoT Edge-apparaten met behulp van apparaat-twee. De verval datum van deze sleutel is drie jaar vanaf de dag waarop deze is gemaakt. Wanneer u een IoT Edge taak bijwerkt, worden de SA'S gewijzigd, maar de versie van de installatie kopie wordt niet gewijzigd. Nadat u de **Update** hebt uitgevoerd, volgt u de implementatie werk stroom en wordt er een update melding op het apparaat vastgelegd.
 
 
-Zie [Deze pagina](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)voor meer informatie over IOT Edge implementaties.
+Zie [Deze pagina](../iot-edge/module-deployment-monitoring.md)voor meer informatie over IOT Edge implementaties.
 
 
 ##### <a name="configure-routes"></a>Routes configureren
-IoT Edge biedt een manier om berichten op declaratieve wijze te routeren tussen modules en tussen modules en IoT Hub. De volledige syntaxis wordt [hier](https://docs.microsoft.com/azure/iot-edge/module-composition)beschreven.
+IoT Edge biedt een manier om berichten op declaratieve wijze te routeren tussen modules en tussen modules en IoT Hub. De volledige syntaxis wordt [hier](../iot-edge/module-composition.md)beschreven.
 Namen van de invoer en uitvoer die in de ASA-taak worden gemaakt, kunnen worden gebruikt als eind punten voor route ring.  
 
 ###### <a name="example"></a>Voorbeeld
@@ -145,7 +145,7 @@ In dit voor beeld worden de volgende routes gedefinieerd:
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Huidige beperkingen voor IoT Edge taken vergeleken met Cloud taken
 Het doel is om pariteit tussen IoT Edge taken en Cloud taken te hebben. De meeste functies van de SQL-query taal worden ondersteund, zodat dezelfde logica kan worden uitgevoerd in zowel de Cloud als IoT Edge.
 De volgende functies worden echter nog niet ondersteund voor Edge-taken:
-* Door de gebruiker gedefinieerde functies (UDF) in Java script. UDF is beschikbaar in [C# voor IOT Edge-taken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (preview-versie).
+* Door de gebruiker gedefinieerde functies (UDF) in Java script. UDF is beschikbaar in [C# voor IOT Edge-taken](./stream-analytics-edge-csharp-udf.md) (preview-versie).
 * Door de gebruiker gedefinieerde aggregaties (UDA).
 * Azure ML-functies.
 * Het gebruik van meer dan 14 statistische functies in één stap.
@@ -165,7 +165,7 @@ ASA on IoT Edge wordt beschikbaar gesteld als Windows-en Linux-installatie kopie
 
 ### <a name="input-and-output"></a>Invoer en uitvoer
 #### <a name="input-and-output-streams"></a>Invoer-en uitvoer stromen
-ASA Edge-taken kunnen invoer en uitvoer ophalen van andere modules die op IoT Edge apparaten worden uitgevoerd. Als u verbinding wilt maken vanuit en naar specifieke modules, kunt u de routerings configuratie instellen tijdens de implementatie. Meer informatie vindt u in [de documentatie van de IOT Edge-module compositie](https://docs.microsoft.com/azure/iot-edge/module-composition).
+ASA Edge-taken kunnen invoer en uitvoer ophalen van andere modules die op IoT Edge apparaten worden uitgevoerd. Als u verbinding wilt maken vanuit en naar specifieke modules, kunt u de routerings configuratie instellen tijdens de implementatie. Meer informatie vindt u in [de documentatie van de IOT Edge-module compositie](../iot-edge/module-composition.md).
 
 Voor zowel invoer als uitvoer worden CSV-en JSON-indelingen ondersteund.
 
@@ -176,7 +176,7 @@ Momenteel zijn de enige ondersteunde stroom invoer en uitvoer typen van de stroo
 
 
 ##### <a name="reference-data"></a>Referentie gegevens
-Referentie gegevens (ook wel een opzoek tabel genoemd) is een beperkte gegevensset die statisch of langzaam wordt gewijzigd. Deze wordt gebruikt om een zoek actie uit te voeren of om te correleren met uw gegevens stroom. Voor het gebruik van referentie gegevens in uw Azure Stream Analytics-taak gebruikt u meestal een [koppeling voor verwijzings gegevens](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) in uw query. Zie de [referentie gegevens gebruiken voor zoek acties in stream Analytics](stream-analytics-use-reference-data.md)voor meer informatie.
+Referentie gegevens (ook wel een opzoek tabel genoemd) is een beperkte gegevensset die statisch of langzaam wordt gewijzigd. Deze wordt gebruikt om een zoek actie uit te voeren of om te correleren met uw gegevens stroom. Voor het gebruik van referentie gegevens in uw Azure Stream Analytics-taak gebruikt u meestal een [koppeling voor verwijzings gegevens](/stream-analytics-query/reference-data-join-azure-stream-analytics) in uw query. Zie de [referentie gegevens gebruiken voor zoek acties in stream Analytics](stream-analytics-use-reference-data.md)voor meer informatie.
 
 Alleen lokale referentie gegevens worden ondersteund. Wanneer een taak wordt geïmplementeerd op IoT Edge apparaat, worden er referentie gegevens uit het door de gebruiker gedefinieerde bestandspad geladen.
 
@@ -226,13 +226,13 @@ Deze versie-informatie is voor het laatst bijgewerkt op 2019-06-27:
       
       
 ## <a name="get-help"></a>Hulp vragen
-Ga voor meer hulp naar de [pagina micro soft Q&een vraag voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Ga voor meer hulp naar de [pagina micro soft Q&een vraag voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over Azure IOT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
-* [Zelf studie voor IoT Edge van ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Stream Analytics Edge-taken ontwikkelen met behulp van Visual Studio Tools](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [Meer informatie over Azure IOT Edge](../iot-edge/about-iot-edge.md)
+* [Zelf studie voor IoT Edge van ASA](../iot-edge/tutorial-deploy-stream-analytics.md)
+* [Stream Analytics Edge-taken ontwikkelen met behulp van Visual Studio Tools](./stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [CI/CD voor Stream Analytics implementeren met behulp van Api's](stream-analytics-cicd-api.md)
 
 <!--Link references-->
@@ -240,5 +240,5 @@ Ga voor meer hulp naar de [pagina micro soft Q&een vraag voor Azure stream Analy
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

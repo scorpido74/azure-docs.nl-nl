@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 08/12/2020
-ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 10/27/2020
+ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976436"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129572"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Een aanbieding bekijken en publiceren naar de commerciële Marketplace
 
@@ -42,7 +42,7 @@ Wanneer u klaar bent om een aanbieding voor publicatie in te dienen, selecteert 
    - **Onvolledig** : in de pagina ontbreekt de vereiste informatie of fouten die moeten worden opgelost. U moet terug naar de pagina gaan en deze bijwerken.
    - **Voltooid** : de pagina is voltooid. Alle vereiste gegevens zijn opgegeven en er zijn geen fouten.
 
-Als een van de pagina's een andere status heeft dan **voltooid**, moet u het probleem op die pagina corrigeren en vervolgens terugkeren naar de pagina **controleren en publiceren** om te bevestigen dat de status nu als **voltooid**wordt weer gegeven. Voor sommige aanbiedings typen moet worden getest. Als dit het geval is, ziet u een **Opmerking voor het certificerings** veld waarin u test instructies moet geven aan het certificerings team en eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
+Als een van de pagina's een andere status heeft dan **voltooid** , moet u het probleem op die pagina corrigeren en vervolgens terugkeren naar de pagina **controleren en publiceren** om te bevestigen dat de status nu als **voltooid** wordt weer gegeven. Voor sommige aanbiedings typen moet worden getest. Als dit het geval is, ziet u een **Opmerking voor het certificerings** veld waarin u test instructies moet geven aan het certificerings team en eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
 
 Nadat alle pagina's zijn voltooid en u toepasselijke test notities hebt ingevoerd, selecteert u **publiceren** om de validatie-en publicatie processen te starten. De fasen en de algehele volg orde kunnen variëren, afhankelijk van het type aanbieding dat u publiceert. De volgende tabel bevat een mogelijke publicatie stroom. Elke fase wordt gedetailleerd beschreven in de volgende secties.
 
@@ -77,7 +77,7 @@ De eerste stap in het publicatie proces is een set automatische validaties. Elke
 
 ## <a name="certification-phase"></a>Certificerings fase
 
-Aanbiedingen die worden verzonden naar de commerciële Marketplace moeten gecertificeerd zijn voordat ze kunnen worden gepubliceerd. Aanbiedingen worden uitvoerig getest, sommige geautomatiseerd en anderen hand matig. Zie voor meer informatie het [beleid voor commerciële Marketplace-certificering](https://aka.ms/commercial-marketplace-certification-policies).
+Aanbiedingen die worden verzonden naar de commerciële Marketplace moeten gecertificeerd zijn voordat ze kunnen worden gepubliceerd. Aanbiedingen worden uitvoerig getest, sommige geautomatiseerd en anderen hand matig. Zie voor meer informatie het [beleid voor commerciële Marketplace-certificering](/legal/marketplace/certification-policies).
 
 ### <a name="types-of-validation-that-take-place-during-certification"></a>Typen validatie die worden uitgevoerd tijdens het certificerings proces
 
@@ -100,7 +100,7 @@ De gegevens die u hebt ingevoerd tijdens het maken van uw aanbieding, worden gec
 - Scherm afbeeldingen en Video's van kwaliteit
 - Een uitleg van de manier waarop de aanbieding gebruikmaakt van micro soft-platforms en-hulpprogram ma's.
 
-Meer informatie over de criteria voor de validatie van de inhoud vindt u in de [algemene aanbiedings beleidsregels](https://aka.ms/commercial-marketplace-certification-policies#100-general).
+Meer informatie over de criteria voor de validatie van de inhoud vindt u in de [algemene aanbiedings beleidsregels](/legal/marketplace/certification-policies#100-general).
 
 #### <a name="technical-validation"></a>Technische validatie
 
@@ -126,6 +126,19 @@ Tijdens het maken van de preview-fase maken we een versie van uw aanbieding die 
 > [!NOTE]
 > Gebruik de preview-doel groep niet om personen buiten uw organisatie inzicht te geven in een aanbieding. Gebruik in plaats daarvan de optie voor de privé-aanbieding. Uw aanbieding is op dit moment niet volledig getest en gevalideerd en is niet gereed voor externe distributie.
 
+## <a name="cancel-publishing"></a>Publicatie annuleren
+
+Een aanbieding annuleren met de status **publiceren in voortgang** :
+
+1. Selecteer de naam van de aanbieding om de **overzichts** pagina van de aanbieding te openen.
+1. Selecteer **Publiceren annuleren** in de rechter bovenhoek van de pagina.
+1. Bevestig dat u wilt stoppen met het publiceren van de aanbieding.
+
+Als u de aanbieding op een later tijdstip wilt publiceren, moet u eerst het publicatie proces starten.
+
+> [!NOTE]
+> U kunt voor komen dat een aanbieding alleen wordt gepubliceerd als de aanbieding nog niet is verzonden naar de stap van de uitgever. Nadat u **live-verbinding** maken hebt geselecteerd, hebt u geen optie om de publicatie langer te annuleren.
+
 ## <a name="publisher-sign-off-phase"></a>Aanmeldings fase van de uitgever
 
 Wanneer de aanbieding klaar is om te worden gecontroleerd en u bent afgemeld, sturen we u een e-mail om u te vragen uw aanbiedings voorbeeld te controleren en goed te keuren. U kunt ook de pagina **overzicht van aanbieding** in uw browser vernieuwen om te zien of uw aanbieding de afmeldings fase van de uitgever heeft bereikt. Als dat het geval is, is de knop **Live** en voor beeld-koppelingen beschikbaar.
@@ -143,7 +156,7 @@ Op de **overzichts** pagina van de aanbieding ziet u een voor beeld van koppelin
 
 Nadat u uw Preview hebt goedgekeurd, selecteert u **Live** om uw aanbieding Live naar de commerciële Marketplace te publiceren. 
 
-Als u wijzigingen wilt aanbrengen nadat u een voor beeld van de aanbieding hebt bekeken, kunt u uw publicatie aanvraag bewerken en opnieuw verzenden. Als uw aanbieding al Live is en beschikbaar is voor het publiek in de Marketplace, worden de updates die u aanbrengt pas Live wanneer u **Go*selecteert. Zie [een bestaande aanbieding bijwerken in de commerciële Marketplace](./partner-center-portal/update-existing-offer.md) voor meer informatie.
+Als u wijzigingen wilt aanbrengen nadat u een voor beeld van de aanbieding hebt bekeken, kunt u uw publicatie aanvraag bewerken en opnieuw verzenden. Als uw aanbieding al Live is en beschikbaar is voor het publiek in de Marketplace, worden de updates die u aanbrengt pas Live wanneer u * *Go* selecteert. Zie [een bestaande aanbieding bijwerken in de commerciële Marketplace](partner-center-portal/update-existing-offer.md) voor meer informatie.
 
 ## <a name="publish-phase"></a>Publicatie fase
 
@@ -178,24 +191,24 @@ De **geschiedenis** pagina in partner centrum toont de publicatie gebeurtenissen
 De geschiedenis van uw aanbieding bekijken:
 
 1.    Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2.    Selecteer in het navigatie menu aan de linkerkant de optie **commerciële Marketplace**-  >  **overzicht**.
+2.    Selecteer in het navigatie menu aan de linkerkant de optie **commerciële Marketplace** -  >  **overzicht** .
 3.    Selecteer uw aanbieding.
 4.    Selecteer het tabblad **geschiedenis** in het navigatie menu aan de linkerkant. Op de pagina vindt u informatie over de volgende gebeurtenissen, zoals van toepassing op uw aanbieding:
 
 |Gebeurtenis    |Beschrijving    |
 |---------|---------------|
-|Aanbieding gemaakt    |De aanbieding is gemaakt in het partner centrum. Een gebruiker heeft het aanbiedings type, aanbiedings-id en aanbiedings alias geselecteerd in **commercieel Marketplace**-  >  **overzicht**.    |
-|Gemaakt plan: *naam van abonnement*    |Een gebruiker heeft een nieuw plan gemaakt door de plan-ID en plan naam op te geven op het tabblad Overzicht van het **plan** .</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen*.    |
-|Verwijderd plan    |Een gebruiker heeft een concept abonnement verwijderd dat niet is gepubliceerd door **concept verwijderen** te selecteren op de **overzichts** pagina van het abonnement.</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen*.    |
-|Gestart plan stoppen verkoop: *plan naam*    |Een gebruiker heeft een plan voor stoppen en verkopen gestart door **stoppen** te selecteren op de **overzichts** pagina van het abonnement.</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen*.    |
-|Plan voor ongedaan maken stoppen verkoop: *plan naam*    |Een gebruiker heeft een plan voor stoppen en verkopen geannuleerd door de optie **ongedaan maken stoppen** te selecteren op de **overzichts** pagina van het abonnement.</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen*.    |
+|Aanbieding gemaakt    |De aanbieding is gemaakt in het partner centrum. Een gebruiker heeft het aanbiedings type, aanbiedings-id en aanbiedings alias geselecteerd in **commercieel Marketplace** -  >  **overzicht** .    |
+|Gemaakt plan: *naam van abonnement*    |Een gebruiker heeft een nieuw plan gemaakt door de plan-ID en plan naam op te geven op het tabblad Overzicht van het **plan** .</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen* .    |
+|Verwijderd plan    |Een gebruiker heeft een concept abonnement verwijderd dat niet is gepubliceerd door **concept verwijderen** te selecteren op de **overzichts** pagina van het abonnement.</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen* .    |
+|Gestart plan stoppen verkoop: *plan naam*    |Een gebruiker heeft een plan voor stoppen en verkopen gestart door **stoppen** te selecteren op de **overzichts** pagina van het abonnement.</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen* .    |
+|Plan voor ongedaan maken stoppen verkoop: *plan naam*    |Een gebruiker heeft een plan voor stoppen en verkopen geannuleerd door de optie **ongedaan maken stoppen** te selecteren op de **overzichts** pagina van het abonnement.</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen* .    |
 |Aangeboden aanbieding voor preview    |Een gebruiker heeft de aanbieding aangeboden als preview door **publiceren** te selecteren op de pagina **controleren en publiceren** .    |
-|Verzenden geïnitieerd om de preview-versie te annuleren    |Een gebruiker heeft gevraagd de aanbiedings publicatie te annuleren als preview door te klikken op **Publiceren annuleren** op de **overzichts** pagina van de aanbieding na de verzen ding naar de preview-versie.</br>*Deze gebeurtenis wordt weer gegeven als de annulerings aanvraag wordt verwerkt*.    |
-|De verzen ding is geannuleerd voor de preview-versie    |Een gebruiker heeft de aanbiedings publicatie geannuleerd als voor beeld door de selectie van de pagina **aanbieding** **Annuleren** te selecteren na de verzen ding naar de preview-versie.</br>*Deze gebeurtenis wordt weer gegeven nadat de annulerings aanvraag is verwerkt*.    |
+|Verzenden geïnitieerd om de preview-versie te annuleren    |Een gebruiker heeft gevraagd de aanbiedings publicatie te annuleren als preview door te klikken op **Publiceren annuleren** op de **overzichts** pagina van de aanbieding na de verzen ding naar de preview-versie.</br>*Deze gebeurtenis wordt weer gegeven als de annulerings aanvraag wordt verwerkt* .    |
+|De verzen ding is geannuleerd voor de preview-versie    |Een gebruiker heeft de aanbiedings publicatie geannuleerd als voor beeld door de selectie van de pagina **aanbieding** **Annuleren** te selecteren na de verzen ding naar de preview-versie.</br>*Deze gebeurtenis wordt weer gegeven nadat de annulerings aanvraag is verwerkt* .    |
 |Meld u aan om live te gaan    |Een gebruiker heeft de aanbieding op commerciële Marketplace gepubliceerd door **Live go** te selecteren op de **overzichts** pagina van de aanbieding.    |
-|Publicatie van publiceren op Marketplace is geïnitieerd    |Een gebruiker heeft de aanbiedings publicatie geannuleerd door na de afmelding **Annuleren** te selecteren op de pagina **overzicht van aanbieding** .</br>*Deze gebeurtenis wordt weer gegeven als de annulerings aanvraag wordt verwerkt*.    |
-|Het publiceren naar de commerciële Marketplace is geannuleerd    |Een gebruiker heeft de aanbiedings publicatie geannuleerd door na de afmelding **Annuleren** te selecteren op de pagina **overzicht van aanbieding** .</br>*Deze gebeurtenis wordt weer gegeven nadat de annulerings aanvraag is verwerkt*.    |
-|Persoonlijke doel groep synchroniseren    |Een gebruiker heeft de persoonlijke doel groep bijgewerkt en gesynchroniseerd door **persoonlijke doel groep** te selecteren op de pagina overzicht van het **abonnement** of de pagina **prijs & Beschik baarheid plannen** .</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die persoonlijke plannen ondersteunen*.    |
+|Publicatie van publiceren op Marketplace is geïnitieerd    |Een gebruiker heeft de aanbiedings publicatie geannuleerd door na de afmelding **Annuleren** te selecteren op de pagina **overzicht van aanbieding** .</br>*Deze gebeurtenis wordt weer gegeven als de annulerings aanvraag wordt verwerkt* .    |
+|Het publiceren naar de commerciële Marketplace is geannuleerd    |Een gebruiker heeft de aanbiedings publicatie geannuleerd door na de afmelding **Annuleren** te selecteren op de pagina **overzicht van aanbieding** .</br>*Deze gebeurtenis wordt weer gegeven nadat de annulerings aanvraag is verwerkt* .    |
+|Persoonlijke doel groep synchroniseren    |Een gebruiker heeft de persoonlijke doel groep bijgewerkt en gesynchroniseerd door **persoonlijke doel groep** te selecteren op de pagina overzicht van het **abonnement** of de pagina **prijs & Beschik baarheid plannen** .</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die persoonlijke plannen ondersteunen* .    |
 |Verkoop aanbieding stoppen    |Een gebruiker heeft de aanbieding niet meer verkocht door te klikken op **verkopen stoppen** op de **overzichts** pagina van de aanbieding.    |
 
 > [!NOTE]

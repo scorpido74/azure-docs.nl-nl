@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1ae5908fe3ab95dcd62da976988bd7ce107217e5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027374"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130898"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Referentie gegevens van een SQL Database gebruiken voor een Azure Stream Analytics taak
 
@@ -173,11 +173,11 @@ Wanneer u de Delta query gebruikt, worden [tijdelijke tabellen in Azure SQL data
    Houd er rekening mee dat Stream Analytics runtime de momentopname query regel matig kan uitvoeren naast de Delta query voor het opslaan van controle punten.
 
 ## <a name="test-your-query"></a>De query testen
-   Het is belang rijk om te controleren of uw query de verwachte gegevensset retourneert die de Stream Analytics taak als referentie gegevens zal gebruiken. Als u uw query wilt testen, gaat u naar invoer onder taak topologie in de portal. U kunt vervolgens voorbeeld gegevens selecteren op uw SQL Database referentie-invoer. Nadat het voor beeld beschikbaar is, kunt u het bestand downloaden en controleren of de gegevens die worden geretourneerd, naar verwachting worden weer gegeven. Als u uw ontwikkel-en test herhalingen wilt optimaliseren, kunt u het beste de [Stream Analytics-hulpprogram ma's voor Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)gebruiken. U kunt ook een ander hulp programma van uw voor keur gebruiken om ervoor te zorgen dat de query de juiste resultaten retourneert uit Azure SQL Database en deze vervolgens gebruikt in uw Stream Analytics-taak. 
+   Het is belang rijk om te controleren of uw query de verwachte gegevensset retourneert die de Stream Analytics taak als referentie gegevens zal gebruiken. Als u uw query wilt testen, gaat u naar invoer onder taak topologie in de portal. U kunt vervolgens voorbeeld gegevens selecteren op uw SQL Database referentie-invoer. Nadat het voor beeld beschikbaar is, kunt u het bestand downloaden en controleren of de gegevens die worden geretourneerd, naar verwachting worden weer gegeven. Als u uw ontwikkel-en test herhalingen wilt optimaliseren, kunt u het beste de [Stream Analytics-hulpprogram ma's voor Visual Studio](./stream-analytics-tools-for-visual-studio-install.md)gebruiken. U kunt ook een ander hulp programma van uw voor keur gebruiken om ervoor te zorgen dat de query de juiste resultaten retourneert uit Azure SQL Database en deze vervolgens gebruikt in uw Stream Analytics-taak. 
 
 ### <a name="test-your-query-with-visual-studio-code"></a>Uw query testen met Visual Studio code
 
-   Installeer [Azure stream Analytics tools](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) en [SQL Server (Mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) op Visual Studio code en stel uw ASA-project in. Zie [Quick Start: een Azure stream Analytics-taak maken in Visual Studio code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code) en de [zelf studie over de SQL Server (Mssql)-extensie](https://aka.ms/mssql-getting-started)voor meer informatie.
+   Installeer [Azure stream Analytics tools](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) en [SQL Server (Mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) op Visual Studio code en stel uw ASA-project in. Zie [Quick Start: een Azure stream Analytics-taak maken in Visual Studio code](./quick-create-visual-studio-code.md) en de [zelf studie over de SQL Server (Mssql)-extensie](/sql/tools/visual-studio-code/sql-server-develop-use-vscode)voor meer informatie.
 
 1. Configureer de invoer van SQL-referentie gegevens.
    

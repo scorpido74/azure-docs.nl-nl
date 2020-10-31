@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 4310bd94edd5ebe14eab40b6d19e2bacbdd1b03c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d5ddb508740cf5fec670d258926419512e3d549
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906213"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129827"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure SQL Database uitvoer van Azure Stream Analytics
 
 U kunt [Azure SQL database](https://azure.microsoft.com/services/sql-database/) gebruiken als uitvoer voor gegevens die relationeel zijn of voor toepassingen die afhankelijk zijn van inhoud die wordt gehost in een relationele data base. Azure Stream Analytics-taken worden geschreven naar een bestaande tabel in SQL Database. Het tabel schema moet exact overeenkomen met de velden en de bijbehorende typen in de uitvoer van uw taak. U kunt ook [Azure Synapse Analytics](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) opgeven als uitvoer via de optie SQL database uitvoer. Zie het artikel [Stream Analytics met Azure SQL database als uitvoer als](stream-analytics-sql-output-perf.md) u meer wilt weten over manieren om de schrijf doorvoer te verbeteren.
 
-U kunt ook [Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als uitvoer gebruiken. U moet een [openbaar eind punt configureren in het SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
+U kunt ook [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) als uitvoer gebruiken. U moet een [openbaar eind punt configureren in het SQL Managed instance](../azure-sql/managed-instance/public-endpoint-configure.md) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
 
 ## <a name="output-configuration"></a>Uitvoer configuratie
 
@@ -37,9 +37,9 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 
 Er zijn twee adapters die uitvoer van Azure Stream Analytics naar Azure Synapse Analytics (voorheen SQL Data Warehouse): SQL Database en Azure Synapse. Als een van de volgende voor waarden van toepassing is, kunt u het beste de Azure Synapse Analytics-adapter kiezen in plaats van de SQL Database adapter:
 
-* **Door Voer**: als de verwachte door Voer nu of in de toekomst groter is dan 10 MB per seconde, gebruikt u de Azure Synapse-uitvoer optie voor betere prestaties.
+* **Door Voer** : als de verwachte door Voer nu of in de toekomst groter is dan 10 MB per seconde, gebruikt u de Azure Synapse-uitvoer optie voor betere prestaties.
 
-* **Invoer partities**: als u acht of meer invoer partities hebt, gebruikt u de Azure Synapse-uitvoer optie voor beter uitschalen.
+* **Invoer partities** : als u acht of meer invoer partities hebt, gebruikt u de Azure Synapse-uitvoer optie voor beter uitschalen.
 
 ## <a name="partitioning"></a>Partitionering
 
@@ -47,7 +47,7 @@ Partitioneren moet zijn ingeschakeld en is gebaseerd op de component PARTITION B
 
 ## <a name="output-batch-size"></a>Grootte van uitvoer batch
 
-U kunt de maximale bericht grootte configureren met behulp van **maximum aantal batches**. De standaard waarde is 10.000 en de minimale standaard waarde is 100 rijen per afzonderlijke bulk invoer. Zie [Azure SQL-limieten](../sql-database/sql-database-resource-limits.md)voor meer informatie. Elke batch wordt in eerste instantie bulksgewijs ingevoegd met een maximum aantal batches. Batch is gesplitst in tweeën (totdat het minimale aantal batches is) op basis van Herhaal bare fouten van SQL.
+U kunt de maximale bericht grootte configureren met behulp van **maximum aantal batches** . De standaard waarde is 10.000 en de minimale standaard waarde is 100 rijen per afzonderlijke bulk invoer. Zie [Azure SQL-limieten](../azure-sql/database/resource-limits-logical-server.md)voor meer informatie. Elke batch wordt in eerste instantie bulksgewijs ingevoegd met een maximum aantal batches. Batch is gesplitst in tweeën (totdat het minimale aantal batches is) op basis van Herhaal bare fouten van SQL.
 
 ## <a name="next-steps"></a>Volgende stappen
 

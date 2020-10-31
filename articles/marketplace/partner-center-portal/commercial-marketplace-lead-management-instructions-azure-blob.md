@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
-ms.openlocfilehash: cd0b708ac3a1b16804430584dfcb01b3d2a4fae2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dea9c0eec275c6a0596636c8625e52b8978bb9a6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042375"
+ms.locfileid: "93130541"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure Blob-opslag gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -33,7 +33,7 @@ ms.locfileid: "93042375"
 3. Maak in de Azure Portal een opslag account met behulp van de volgende procedure.  
     1. Selecteer **+ een resource maken** in de menu balk links.  Het **nieuwe** deel venster (Blade) wordt aan de rechter kant weer gegeven.
     2. Selecteer **opslag** in het deel venster **Nieuw** .  Er wordt een **Aanbevolen** lijst aan de rechter kant weer gegeven.
-    3. Selecteer het **opslag account** om te beginnen met het maken van het account.  Volg de instructies in het artikel [een opslag account maken](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+    3. Selecteer het **opslag account** om te beginnen met het maken van het account.  Volg de instructies in het artikel [een opslag account maken](../../storage/common/storage-account-create.md?tabs=azure-portal).
 
     ![Stappen voor het maken van een Azure Storage-account](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "93042375"
 
 5. Selecteer in het deel venster opslag account de optie **toegangs sleutels** en kopieer de *verbindings reeks* waarde voor de sleutel. Sla deze waarde op als dit de waarde voor de *verbindings reeks voor het opslag account* is die u moet opgeven in de portal voor publiceren om leads voor uw Marketplace-aanbieding te ontvangen.
 
-     Een voor beeld van een verbinding Sting is:
+     Een voor beeld van een connection string is:
 
      ```sql
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
@@ -55,11 +55,11 @@ ms.locfileid: "93042375"
 
 6. Selecteer op de pagina opslag account de optie **blobs** .
 
-   ![Azure-opslag sleutel](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
+   ![Scherm afbeelding van de pagina Azure Storage-account met blobs geselecteerd](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
 7. Selecteer de knop **+ container** op de pagina blobs.
 
-8. Voer een **naam** in voor de nieuwe container. De containernaam mag alleen kleine letters bevatten, moet beginnen met een letter of cijfer en mag alleen letters, cijfers en het streepje (-) bevatten. Zie [Naamgeving van en verwijzen naar containers, blobs en metagegevens](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over de namen van containers en blobs.
+8. Voer een **naam** in voor de nieuwe container. De containernaam mag alleen kleine letters bevatten, moet beginnen met een letter of cijfer en mag alleen letters, cijfers en het streepje (-) bevatten. Zie [Naamgeving van en verwijzen naar containers, blobs en metagegevens](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over de namen van containers en blobs.
 
     Sla deze waarde op omdat dit de waarde voor de *container naam* is die u in de portal voor publiceren moet opgeven om leads voor uw Marketplace-aanbieding te ontvangen.
 
@@ -91,5 +91,3 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
     > [!NOTE]
     > U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.
-
-
