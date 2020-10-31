@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f44a8d82ea2588abad6855fd8eaf7aed34256d87
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fc285599176057c57621dc6bfefbe9188d3badd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370760"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096883"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Maak een realtime-dash board met behulp van Azure Cosmos DB en Power BI
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel worden de stappen beschreven die nodig zijn om een live weers-dash board te maken in Power BI met behulp van Azure Cosmos DB en Azure Analysis Services. In het Power BI-dash board worden grafieken weer gegeven om realtime informatie over de Tempe ratuur en neer slag in een regio weer te geven.
 
@@ -63,7 +64,7 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
    Afhankelijk van welke kolom en welk gegevens type aanwezig zijn in de bron-gegevensset, kunt u de velden Range Start en RangeEnd dienovereenkomstig wijzigen
 
    
-   |Eigenschap  |Gegevenstype  |Filteren  |
+   |Eigenschap  |Gegevenstype  |Filter  |
    |---------|---------|---------|
    |_ts     |   Numeriek      |  [_ts] > duration. TotalSeconds (Range Start-#datetime (1970, 1, 1, 0, 0, 0)) en [_ts] < duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0))       |
    |Datum (bijvoorbeeld:-2019-08-19)     |   Tekenreeks      | [Document. date] > DateTime. ToText (Range Start, "JJJJ-MM-DD") en [document. date] < DateTime. ToText (RangeEnd, "JJJJ-MM-DD")        |
@@ -74,7 +75,7 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Azure Cosmos DB - Power BI-connector":::
 
-   Negeer de waarschuwing die aangeeft dat *de M-query niet kan worden bevestigd om te worden gevouwen*. De Azure Cosmos DB-connector vouwt filter query's uit.
+   Negeer de waarschuwing die aangeeft dat *de M-query niet kan worden bevestigd om te worden gevouwen* . De Azure Cosmos DB-connector vouwt filter query's uit.
 
 1. **De gegevens laden en de rapporten genereren** -met behulp van de gegevens die u eerder hebt geladen, maakt u de grafieken om te rapporteren over de Tempe ratuur en neer slag.
 
@@ -105,7 +106,7 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Azure Cosmos DB - Power BI-connector":::
 
-   Maak verbinding met Azure Cosmos DB door de **account-URI**, de naam van de **Data Base**en de **container naam**op te geven. U kunt nu zien dat de gegevens uit de Azure Cosmos-container worden geïmporteerd in Power BI.
+   Maak verbinding met Azure Cosmos DB door de **account-URI** , de naam van de **Data Base** en de **container naam** op te geven. U kunt nu zien dat de gegevens uit de Azure Cosmos-container worden geïmporteerd in Power BI.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB - Power BI-connector":::
 
@@ -140,7 +141,7 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Azure Cosmos DB - Power BI-connector" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
    * **Historische** -  `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] <> "2019-07")`
 
-1. **Implementeer het model in Azure analyseserver** -Klik met de rechter muisknop op het Azure Analysis Services project en kies **implementeren**. Voeg de server naam toe in het eigenschappen venster van de **implementatie server** .
+1. **Implementeer het model in Azure analyseserver** -Klik met de rechter muisknop op het Azure Analysis Services project en kies **implementeren** . Voeg de server naam toe in het eigenschappen venster van de **implementatie server** .
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Cosmos DB - Power BI-connector":::
 

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37dc60fd14eb26ab4c8f5a867b97369a066b743b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f08efc8a10c50dcfcc6da884396dea88695dbb2a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362753"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096016"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -38,6 +38,19 @@ Azure AD ontvangt voortdurend verbeteringen. Om u op de hoogte te houden van de 
 Deze pagina wordt maandelijks bijgewerkt. Ga daarom regel matig opnieuw te werk. Als u op zoek bent naar items die ouder zijn dan zes maanden, kunt u deze vinden in [Archief voor wat er nieuw is in azure Active Directory](whats-new-archive.md).
 
 ---
+## <a name="october-2020"></a>Oktober 2020
+
+### <a name="azure-ad-on-premises-hybrid-agents-impacted-by-azure-tls-certificate-changes"></a>Azure AD on-premises hybride agents die invloed hebben op wijzigingen in azure TLS-certificaten
+
+**Type:** Plan voor wijziging  
+**Service categorie:** n.v.t.  
+**Product mogelijkheden:** Onafhankelijk
+
+Microsoft werkt Azure-services bij om TLS-certificaten te gebruiken van een andere set basis-CA's (certificeringsinstanties). Deze update wordt veroorzaakt door de huidige CA-certificaten die niet voldoen aan een van de vereisten voor de basis lijn van de CA/browser-forum. Deze wijziging is van invloed op Azure AD Hybrid-agents die zijn geïnstalleerd op locatie en die beveiligde omgevingen hebben met een vaste lijst basis certificaten en moeten worden bijgewerkt om de nieuwe certificaat verleners te vertrouwen.
+
+Deze wijziging leidt ertoe dat de service wordt onderbroken als u niet onmiddellijk actie onderneemt. Deze agents bevatten [toepassings proxy connectors](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AppProxy) voor externe toegang tot on-premises, [Passthrough-verificatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AzureADConnect) agenten waarmee uw gebruikers zich kunnen aanmelden bij toepassingen met dezelfde wacht woorden, en preview-agents [voor Cloud inrichting](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AzureADConnect) die AD naar Azure AD Sync uitvoeren. 
+
+Als u een omgeving met firewall regels hebt ingesteld zodat alleen uitgaande oproepen naar een specifieke CRL (certificaatintrekkingslijst) kunnen worden gedownload, moet u de volgende CRL-en OCSP-Url's toestaan. Zie  [wijzigingen in azure TLS-certificaten](../../security/fundamentals/tls-certificate-changes.md)voor meer informatie over de wijziging en de CRL-en OCSP-url's waarmee toegang kan worden ingeschakeld.
 
 ## <a name="september-2020"></a>September 2020
 
@@ -1223,9 +1236,9 @@ Zie beheer [eenheden beheren in azure Active Directory (preview)](../users-group
 
 **Product mogelijkheden:** Access Control
 
-**Printer beheerder**: gebruikers met deze rol kunnen printers registreren en alle aspecten van alle printer configuraties in de micro soft-oplossing voor universele afdrukken beheren, met inbegrip van de instellingen voor de universele afdruk connector. Ze kunnen toestemming geven voor alle gedelegeerde afdruk machtigings aanvragen. Printer beheerders hebben ook toegang tot het afdrukken van rapporten. 
+**Printer beheerder** : gebruikers met deze rol kunnen printers registreren en alle aspecten van alle printer configuraties in de micro soft-oplossing voor universele afdrukken beheren, met inbegrip van de instellingen voor de universele afdruk connector. Ze kunnen toestemming geven voor alle gedelegeerde afdruk machtigings aanvragen. Printer beheerders hebben ook toegang tot het afdrukken van rapporten. 
 
-**Printer technicus**: gebruikers met deze rol kunnen printers registreren en printer status beheren in de micro soft Universal Print-oplossing. Ze kunnen ook alle connector gegevens lezen. Belangrijkste taken een printer technicus kan geen gebruikers machtigingen voor printers instellen en printers delen. [Meer informatie.](../roles/permissions-reference.md#printer-administrator)
+**Printer technicus** : gebruikers met deze rol kunnen printers registreren en printer status beheren in de micro soft Universal Print-oplossing. Ze kunnen ook alle connector gegevens lezen. Belangrijkste taken een printer technicus kan geen gebruikers machtigingen voor printers instellen en printers delen. [Meer informatie.](../roles/permissions-reference.md#printer-administrator)
 
 ---
 

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c41ffcd552cddf981c2ed54d1d78c7cb2e8698c5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3bf039eb099a5735c3528c1ba5b9c440d7787c43
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440826"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097053"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
 
-In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgeving vertegenwoordigd door Azure **Digital apparaatdubbels**. Een digitale dubbele is een exemplaar van een van uw door uw eigen gedefinieerde [modellen](concepts-models.md). Het kan worden verbonden met andere digitale apparaatdubbels via **relaties** om een **dubbele grafiek**te vormen: deze dubbele grafiek is de weer gave van uw gehele omgeving.
+In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgeving vertegenwoordigd door Azure **Digital apparaatdubbels** . Een digitale dubbele is een exemplaar van een van uw door uw eigen gedefinieerde [modellen](concepts-models.md). Het kan worden verbonden met andere digitale apparaatdubbels via **relaties** om een **dubbele grafiek** te vormen: deze dubbele grafiek is de weer gave van uw gehele omgeving.
 
 > [!TIP]
 > ' Azure Digital Apparaatdubbels ' verwijst naar deze Azure-service als geheel. ' Digitale twee (en) ' of alleen ' dubbele (s) ' verwijzen naar afzonderlijke dubbele knoop punten in uw exemplaar van de service.
@@ -25,13 +25,13 @@ In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgevi
 
 Voordat u een digitale dubbele in uw Azure Digital Apparaatdubbels-exemplaar kunt maken, moet u een *model* hebben dat naar de service wordt geüpload. Een model beschrijft de set eigenschappen, telemetrie-berichten en relaties die een bepaalde dubbele kan hebben, onder andere. Zie [*concepten: Custom modelers*](concepts-models.md)(Engelstalig) voor informatie over de typen die in een model zijn gedefinieerd.
 
-Na het maken en uploaden van een model, kan uw client-app een exemplaar van het type maken. Dit is een digitale dubbele. Nadat u bijvoorbeeld een model van de *vloer*hebt gemaakt, kunt u een of meer digitale apparaatdubbels maken die gebruikmaken van dit type (zoals een *Floor*-type met dubbele naam *GroundFloor*, een andere met de naam *Floor2*, enzovoort). 
+Na het maken en uploaden van een model, kan uw client-app een exemplaar van het type maken. Dit is een digitale dubbele. Nadat u bijvoorbeeld een model van de *vloer* hebt gemaakt, kunt u een of meer digitale apparaatdubbels maken die gebruikmaken van dit type (zoals een *Floor* -type met dubbele naam *GroundFloor* , een andere met de naam *Floor2* , enzovoort). 
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>Relaties: een grafiek met digitale apparaatdubbels
 
 Apparaatdubbels zijn verbonden met een twee ledige grafiek met hun relaties. De relaties die een dubbele kan hebben, worden gedefinieerd als onderdeel van het model.  
 
-De model *Floor* kan bijvoorbeeld een *contains* -relatie definiëren die de apparaatdubbels van het type *room*bedoelt. Met deze definitie kunt u met Azure Digital Apparaatdubbels de relaties maken van elke *vloer* , in plaats van een wille keurige *kamer* , met inbegrip *van apparaatdubbels* die subtypen *bevatten.* 
+De model *Floor* kan bijvoorbeeld een *contains* -relatie definiëren die de apparaatdubbels van het type *room* bedoelt. Met deze definitie kunt u met Azure Digital Apparaatdubbels de relaties maken van elke *vloer* , in plaats van een wille keurige *kamer* , met inbegrip *van apparaatdubbels* die subtypen *bevatten.* 
 
 Het resultaat van dit proces is een set knoop punten (de Digital apparaatdubbels) die is verbonden via randen (hun relaties) in een grafiek.
 
@@ -43,17 +43,20 @@ In deze sectie ziet u hoe u digitale apparaatdubbels en relaties van een client 
 
 ### <a name="create-digital-twins"></a>Digitale tweelingen maken
 
-Hieronder vindt u een code fragment van de clientcode die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het instantiëren van een dubbele van het type *kamer*.
+Hieronder vindt u een code fragment van de clientcode die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het instantiëren van een dubbele van het type *kamer* .
 
-In de huidige preview van Azure Digital Apparaatdubbels moeten alle eigenschappen van een dubbele instantie worden geïnitialiseerd voordat de dubbele kan worden gemaakt. Dit doet u door een JSON-document te maken dat de nood zakelijke initialisatie waarden levert.
+U kunt de eigenschappen van een dubbele waarde initialiseren wanneer deze wordt gemaakt of later instellen. Als u een dubbele met geïnitialiseerde eigenschappen wilt maken, moet u een JSON-document maken dat de benodigde initialisatie waarden verschaft.
 
 [!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
 
-U kunt ook een helper-klasse met de naam gebruiken `BasicDigitalTwin` om eigenschaps velden in een ' twee ' object direct sneller op te slaan als alternatief voor het gebruik van een woorden lijst. Zie voor meer informatie over de Help-klasse en voor beelden van het gebruik van het artikel [*een digitale dubbele sectie maken*](how-to-manage-twin.md#create-a-digital-twin) van *How-to: Manage Digital apparaatdubbels*.
+U kunt ook een helper-klasse met de naam gebruiken `BasicDigitalTwin` om eigenschaps velden in een ' twee ' object direct sneller op te slaan als alternatief voor het gebruik van een woorden lijst. Zie voor meer informatie over de Help-klasse en voor beelden van het gebruik van het artikel [*een digitale dubbele sectie maken*](how-to-manage-twin.md#create-a-digital-twin) van *How-to: Manage Digital apparaatdubbels* .
+
+>[!NOTE]
+>Hoewel dubbele eigenschappen als optioneel worden beschouwd en dus niet hoeven te worden geïnitialiseerd, moeten [onderdelen](concepts-models.md#elements-of-a-model) op de dubbele **taak** worden ingesteld wanneer de dubbele eigenschap wordt gemaakt. Ze kunnen lege objecten zijn, maar de onderdelen zelf moeten aanwezig zijn.
 
 ### <a name="create-relationships"></a>Relaties maken
 
-Hier volgt een voor beeld van een client code die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het bouwen van een relatie tussen een van de twee *basis*typen, *GroundFloor* en een *kamer*type digitale dubbele naam *Cafe*.
+Hier volgt een voor beeld van een client code die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het bouwen van een relatie tussen een van de twee *basis* typen, *GroundFloor* en een *kamer* type digitale dubbele naam *Cafe* .
 
 ```csharp
 // Create Twins, using functions similar to the previous sample
@@ -85,7 +88,7 @@ Wanneer het wordt weer gegeven als een JSON-object, worden de volgende velden we
 | --- | --- |
 | `$dtId` | Een door de gebruiker gegeven teken reeks voor de ID van de digitale dubbele |
 | `$etag` | Standaard-HTTP-veld toegewezen door de webserver |
-| `$conformance` | Een enum met de status van de conformiteit van deze digitale twee richting *(conformiteit*, *non-conformiteit*, *onbekend*) |
+| `$conformance` | Een enum met de status van de conformiteit van deze digitale twee richting *(conformiteit* , *non-conformiteit* , *onbekend* ) |
 | `{propertyName}` | De waarde van een eigenschap in JSON ( `string` , Number type of object) |
 | `$relationships` | De URL van het pad naar de verzameling relationships. Dit veld is niet aanwezig als de digitale twee kanten geen uitgaande relatie randen hebben. |
 | `$metadata.$model` | Beschrijving De ID van de model interface die dit digitale dubbele |

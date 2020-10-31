@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475461"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097461"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Kosten voor ingerichte doorvoer optimaliseren in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Dankzij een ingericht doorvoer model biedt Azure Cosmos DB voorspel bare prestaties op elke schaal. Door de door Voer vooraf te leveren of in te richten, elimineert u het ' ruislijke neighbor-effect ' op uw prestaties. U geeft de exacte hoeveelheid door Voer die u nodig hebt en Azure Cosmos DB garandeert de geconfigureerde door Voer, ondersteund door SLA.
 
@@ -30,7 +31,7 @@ U kunt doorvoer inrichten in databases of containers, en elke strategie kan help
 
 Hier volgen enkele richt lijnen voor het kiezen van een ingerichte doorvoer strategie:
 
-**Overweeg de door Voer in te richten op een Azure Cosmos-data base (met een set containers) als**:
+**Overweeg de door Voer in te richten op een Azure Cosmos-data base (met een set containers) als** :
 
 1. U hebt een aantal dozijn Azure Cosmos-containers en u kunt door Voer voor een aantal of alle daarvan delen. 
 

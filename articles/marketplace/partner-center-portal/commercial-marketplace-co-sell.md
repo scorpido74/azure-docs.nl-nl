@@ -1,26 +1,26 @@
 ---
 title: Optie voor co-sell in Partner Center | Azure Marketplace
-description: De gegevens die u opgeeft op het tabblad verkopen van uw aanbieding, worden door micro soft Sales-teams gebruikt om meer te weten te komen over uw oplossing bij de evaluatie van de geschiktheid voor klanten behoeften.
+description: De gegevens die u opgeeft op het tabblad verkopen van uw aanbieding, worden door micro soft Sales-teams gebruikt om meer te weten te komen over uw aanbieding bij de evaluatie van de geschiktheid voor klant behoeften.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 10/19/2020
-ms.openlocfilehash: ec076567d06a8237db2a708a5276a358f64a8388
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 10/28/2020
+ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204908"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095595"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor collectieve verkoop in Partnercentrum
 
-Het is volledig optioneel om informatie op het tabblad samen verkopen op te geven. Het is vereist voor het vergemakkelijkt van de verkoop van Ready en de status van de voor bereidingen op de IP-mede verkoop. De gegevens die u verstrekt, worden door micro soft Sales teams gebruikt om meer te weten te komen over uw oplossing bij de evaluatie van de geschiktheid voor klanten behoeften. Het is niet rechtstreeks beschikbaar voor klanten. Zie voor meer informatie [verkopen via micro soft](https://partner.microsoft.com/membership/sell-with-microsoft).
+Het is volledig optioneel om informatie op het tabblad samen verkopen op te geven. Het is vereist om te kunnen profiteren van de voor bereidingen op de verkoop van gemotiveerd en de status van het co-sell-object. De gegevens die u verstrekt, worden door micro soft verkoop teams gebruikt om meer te weten te komen over uw aanbieding bij het evalueren van de geschiktheid voor klanten behoeften. Het is niet rechtstreeks beschikbaar voor klanten. Zie voor meer informatie [verkopen via micro soft](https://partner.microsoft.com/membership/sell-with-microsoft).
 
 De optie voor co-selling in Partner Center is momenteel beschikbaar voor sommige aanbiedings typen. Ondersteuning voor aanvullende aanbiedings typen wordt na verloop van tijd beschikbaar gesteld.
 
-| **Type aanbieding** | **Pagina voor co-sell beschikbaar in partner centrum** |
+| **Aanbiedings type** | **Pagina voor co-sell beschikbaar in partner centrum** |
 |    -----------------------    |    -----------------------------  |
 | Software as a Service (SaaS) |      Nu verkrijgbaar      |
 | Dynamics 365 voor klant betrokkenheid & PowerApps      |     Nu verkrijgbaar      |
@@ -36,7 +36,7 @@ De optie voor co-selling in Partner Center is momenteel beschikbaar voor sommige
 
 ## <a name="listing"></a>Vermelding
 
-Met de functie voor het samen verkopen van gegevens kunnen micro soft-verkoop teams uw oplossing in een breder publiek zetten. *(Alle velden zijn vereist.)*
+Met de functie voor het samen verkopen van gegevens kunnen micro soft verkoop teams uw aanbieding op de markt brengen voor een bredere doel groep. *(Alle velden zijn vereist.)*
 
 - Kies de micro soft-platforms waarop uw aanbieding is gebouwd, wordt uitgebreid of geïntegreerd met.
 - Selecteer de markt segmenten waarvoor uw aanbieding bestemd is.
@@ -67,13 +67,13 @@ U hebt de mogelijkheid om liquide documenten op te geven die micro soft gebruikt
 | **Documenten**    | **Beschrijving**  |
 | :------------------- | :-------------------|
 | *Klant one-pager (vereist)* | Voor de klant geschikte beschrijving van uw aanbieding. Micro soft verkoop teams kunnen deze informatie delen met klanten om te helpen bepalen of uw aanbieding goed kan worden aangepast en om ervoor te zorgen dat de klant klaar is. <br> <br> Gebruik een van de relevante sjablonen die beschikbaar zijn in Partner Center: <br> <ul> <li> Microsoft Azure sjabloon met één pager </li> <li> Micro soft Dynamics 365 1-pager sjabloon </li> <li> Micro soft 365 1-pager sjabloon </li> <li> Windows 10 1-pager sjabloon </li> </ul> |
-| *Presentatie van de klant (vereist)* | Schuif in het diamodel om uw oplossing te verkopen en de toegevoegde waarde. Nadat u hebt gecontroleerd of uw aanbieding klaar is voor de klant, delen micro soft verkoop teams de presentatie mogelijk met klanten om de waarde te geleeren die beide bedrijven meebrengen bij het implementeren van een gemeen schappelijke oplossing. De presentatie moet betrekking hebben op de werking van uw oplossing, hoe deze kan helpen klanten, welke branches de oplossing is voor en hoe deze worden vergeleken met concurrerende oplossingen. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center.|
-| *Casestudy van de klant* | Deze informatie toont een mogelijke klant hoe u en micro soft deze oplossing in eerdere gevallen hebben geïmplementeerd. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center. |
-| *Geverifieerde klant-WINS* | Specifieke voor beelden van klant successen nadat uw oplossing is geïmplementeerd. |
-| *Channel pitch-deck* | Een diapresentatie met informatie waarmee de wederverkopers van het kanaal kunnen leren om meer te weten te komen over uw oplossing en om de verkoop teams gereed te stellen om uw aanbieding te verkopen. Dit omvat doorgaans een lift, informatie over doel klanten, vragen om klanten, pratende punten en koppelingen naar Video's, documentatie en ondersteunings informatie te vragen. |
-| *Diagrammen voor referentie architectuur* | Een document waarin het model wordt weer gegeven dat staat voor het IP-adres dat is gemaakt door de partner, samen met de relatie met micro soft-Cloud Services, en hoe het kan voldoen aan de technische vereisten van het programma voor het Program meren van de IP. |
-| *Andere documenten* | U kunt eventueel Maxi maal vijf extra documenten of Video's uploaden om micro soft verkoop teams en-wederverkopers te helpen om meer te weten te komen over uw oplossing, organisatie en/of verschillen. |
-| *URL van externe verwijzing* | De koppeling naar de site van uw product, waar micro soft Sales teams en Channel wederverkopers meer informatie over uw oplossing hebben. |
+| *Presentatie van de klant (vereist)* | Diapresentatie om uw aanbieding te verkopen en de toegevoegde waarde. Nadat u hebt gecontroleerd of uw aanbieding klaar is voor de klant, delen micro soft verkoop teams de presentatie mogelijk met klanten om de waarde te geleeren die uw bedrijf en micro soft meebrengen bij het implementeren van een gemeen schappelijke oplossing. De presentatie moet betrekking hebben op de mogelijkheden van uw aanbieding, hoe deze klanten kunnen helpen, welke branches voor de aanbieding relevant zijn en hoe deze worden vergeleken met concurrerende oplossingen. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center.|
+| *Casestudy van de klant* | Deze informatie toont een mogelijke klant hoe u en micro soft uw aanbieding in eerdere gevallen succesvol heeft geïmplementeerd. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center. |
+| *Geverifieerde klant-WINS* | Specifieke voor beelden van klant successen nadat uw aanbieding is geïmplementeerd. |
+| *Channel pitch-deck* | Een diapresentatie met informatie waarmee de wederverkopers van het kanaal kunnen profiteren van meer informatie over uw aanbieding en hun verkoop teams kunnen helpen om deze te verkopen. De deck bevat normaal gesp roken een lift, informatie over doel klanten, vragen over het stellen van klanten, pratende punten en koppelingen naar Video's, documentatie en ondersteunings informatie. |
+| *Diagram van referentie architectuur* | Een diagram van het model waarin uw aanbieding en de relatie met micro soft-Cloud Services zijn afgestemd op de manier waarop deze voldoet aan de technische vereisten van het programma voor het verkopen van de IP. [Meer informatie over het diagram voor referentie architectuur.](#reference-architecture-diagram) |
+| *Andere documenten* | U kunt eventueel Maxi maal vijf extra documenten of Video's uploaden om micro soft verkoop teams en-wederverkopers te helpen om meer te weten te komen over uw aanbieding, organisatie en/of verschillen. |
+| *URL van externe verwijzing* | De koppeling naar de site van uw product, waar micro soft Sales teams en Channel wederverkopers meer informatie over uw aanbieding kunnen krijgen. |
 
 ## <a name="contacts"></a>Contactpersonen
 
@@ -83,23 +83,45 @@ U kunt uw contact personen opgeven door de CSV-sjabloon te downloaden van het pa
 
 U kunt ook uw bestaande lijst met contact personen van een aanbieding exporteren en vervolgens wijzigingen aanbrengen in dat bestand.
 
-* *Naam (vereist)*: de naam van de contact persoon.
-* *E-mail adres (vereist)*: het e-mail adres van de contact persoon.
-* *Taak titel (vereist)*: functie titel.
-* *Rol (vereist)*: gebruik een van de volgende rollen.
+* *Naam (vereist)* : de naam van de contact persoon.
+* *E-mail adres (vereist)* : het e-mail adres van de contact persoon.
+* *Taak titel (vereist)* : functie titel.
+* *Rol (vereist)* : gebruik een van de volgende rollen.
 
     | **Role**    | **Beschrijving**  |
     | :------------------- | :-------------------|
-    | *:::no-loc text="Partner marketing":::* | Deze rol is gericht op het marketing van uw oplossing en het samen werken met marketing activiteiten met micro soft verkoop teams en Channel-wederverkopers. Het belangrijkste contact punt voor marketing afspraken en aanbiedings inhoud, zoals product beschrijvingen, afbeeldingen en Video's. |
-    | *:::no-loc text="Partner sales":::* | Deze rol is gericht op het verkopen van uw oplossing en samen werking met verkopen met micro soft verkoop teams en Channel wederverkopers. Voor oplossingen voor co-verkoop geeft u ten minste één partner verkoop contactpersoon per regio op waarin u klaar wilt zijn voor samen verkopen. De contact persoon van dezelfde partner kan meerdere regio's omvatten. |
+    | *:::no-loc text="Partner marketing":::* | Deze rol is gericht op de marketing van uw aanbieding en het samen werken met marketing activiteiten met micro soft verkoop teams en Channel-wederverkopers. Het belangrijkste contact punt voor marketing afspraken en aanbiedings inhoud, zoals product beschrijvingen, afbeeldingen en Video's. |
+    | *:::no-loc text="Partner sales":::* | Deze rol is gericht op het verkopen van uw aanbieding en het samen werken met verkopen met micro soft verkoop teams en Channel-wederverkopers. Geef ten minste één partner verkoop contactpersoon per regio op waarin u wilt dat uw aanbieding meekoopt. De contact persoon van dezelfde partner kan meerdere regio's omvatten. |
     | *:::no-loc text="Partner technical sales":::* | Ondersteunt technische architectuur-en implementatie overwegingen tijdens de verkoop cyclus, de integratie na verkoop en implementaties. |
-    | *:::no-loc text="Partner customer success manager":::* | Biedt doorgaans ondersteuning voor klanten die na de implementatie profiteren, om hen te helpen het meeste uit uw oplossing te halen en de footprint binnen de organisatie van de klant te verg Roten. |
+    | *:::no-loc text="Partner customer success manager":::* | Biedt doorgaans ondersteuning voor klanten die na de implementatie profiteren, om hen te helpen het meest uit uw aanbieding te halen en de footprint binnen de organisatie van de klant te verg Roten. |
 
 * *Landen/regio's (vereist):*  Gebruik bij het invullen van de sjabloon de [land-/regiocodes van twee letters zoals vermeld](./commercial-marketplace-co-sell-countries.md). Als de contact persoon alle landen/regio's omvat, gebruikt u de drie letter code ' OOO '. Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee letter codes gescheiden door een komma in (Voer bijvoorbeeld ' US, CA, FR ' in de sjabloon in).
 
     De landen/regio's moeten overeenkomen met het rayon van elke contact persoon. Micro soft verkoop teams en Channel-wederverkopers gebruiken deze informatie voor het aanvragen van informatie of het samen werken aan verkoop binnen het specifieke land/de regio.
 
 * *Staten/provincies (optioneel):*  Gebruik bij het invullen van de sjabloon de XX-XX-indeling zoals vermeld in de [tabel provincies/provincies](./commercial-marketplace-co-sell-states.md).
+
+## <a name="reference-architecture-diagram"></a>Diagram van referentie architectuur
+
+### <a name="what-is-a-reference-architecture--diagram"></a>Wat is een referentie architectuur diagram
+Het referentie architectuur diagram is een model dat de infra structuur vertegenwoordigt waarvan uw aanbieding afhankelijk is, en hoe uw aanbieding gebruikmaakt van onze Cloud Services volgens de technische vereisten van het programma voor het Program meren van de IP. Het is niet ontworpen om de kwaliteit van de architectuur te beoordelen, maar de verschillende services te gebruiken.
+
+Het document kan worden gemaakt via meerdere hulpprogram ma's. Micro soft Visio wordt aangeraden, omdat het meerdere stencils bevat die Azure-architectuur modellen weer gegeven.
+
+Een handig uitgangs punt voor het bouwen van referentie architectuur diagrammen is het gebruik van de [Azure Architecture-modellen](https://docs.microsoft.com/azure/architecture/browse/).
+
+### <a name="typical-components-of-a-reference-architecture-diagram"></a>Typische onderdelen van een referentie architectuur diagram
+- Cloud Services die uw aanbieding hosten en ermee werken, waaronder het genereren van Azure-verbruik
+- Gegevens verbindingen, gegevens lagen, gegevens services die worden gebruikt door uw aanbieding
+- Cloud Services die worden gebruikt voor het beheren van de beveiliging, authenticatie, gebruikers van de aanbieding
+- Gebruikers interfaces en andere services die de aanbieding beschikbaar stellen aan eind gebruikers
+- Hybride en/of on-premises connectiviteit en integraties 
+
+### <a name="example-reference-architecture-diagram"></a>Voor beeld van een referentie architectuur diagram
+
+:::image type="content" source="media/co-sell-arch-diagram.png" alt-text="Deze afbeelding is een voor beeld van een architectuur diagram voor co-verkoop.":::
+
+(Het bovenstaande voor beeld referentie architectuur diagram is voor een verticale branche chatbot die kan worden geïntegreerd met intranet sites om te helpen bij het maken van prognose vraag scenario's via een Machine Learning algoritme met behulp van toeleverings keten en productie plannings gegevens van verschillende ERP-systemen. De bot is ontworpen om vragen te beantwoorden over wanneer een verkoper op mogelijke leverings datums voor een order kan door voeren.)
 
 ## <a name="next-steps"></a>Volgende stappen
 

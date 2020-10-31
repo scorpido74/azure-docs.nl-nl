@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: d9be654b014b00a9d906210f484c2620e688838d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 331b2ffde8d034ba94f5b1adcae5efa223f57594
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84169131"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095115"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Zoek query's naar de Bing Visual Search-API verzenden
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 In dit artikel worden de para meters en kenmerken van aanvragen beschreven die worden verzonden naar de Bing Visual Search-API, evenals het antwoord object. 
 
@@ -73,7 +78,7 @@ Aanvragen mogen alleen worden verzonden als HTTP POST-aanvragen.
 
 Hier volgen de queryparameters die in uw aanvraag moeten worden opgegeven. U moet mini maal de `mkt` query parameter toevoegen:
 
-| Name | Waarde | Type | Vereist |
+| Naam | Waarde | Type | Vereist |
 | --- | --- | --- | --- |
 | <a name="cc"></a>cc  | Een land code van twee tekens die aangeeft waar de resultaten vandaan komen.<br /><br /> Als u deze parameter instelt, moet u ook de [Accept-Language](#acceptlanguage)-header opgeven. Bing gebruikt de eerste ondersteunde taal die wordt gevonden in de lijst met talen en combineert de taal met de landcode die u opgeeft om de markt te bepalen waaruit de resultaten moeten worden geretourneerd. Als de talenlijst geen ondersteunde taal bevat, vindt Bing de dichtstbijzijnde taal en markt die de aanvraag ondersteunen. Of het kan een geaggregeerde of standaardmarkt voor de resultaten gebruiken in plaats van degene die is opgegeven.<br /><br /> Gebruik deze queryparameter en de parameter `Accept-Language` alleen als u meerdere talen opgeeft; anders moet u de queryparameters `mkt` en `setLang` gebruiken.<br /><br /> Deze parameter en de parameter [mkt](#mkt) sluiten elkaar uit&mdash;geef ze niet beide op. | Tekenreeks | Nee       |
 | <a name="mkt"></a>mkt   | De markt waaruit de resultaten afkomstig zijn. <br /><br /> **Opmerking:** U moet altijd de markt opgeven, indien bekend. Het specificeren van de markt helpt Bing de aanvraag te routeren en een passend en optimaal antwoord te geven.<br /><br /> Deze parameter en de parameter [cc](#cc) sluiten elkaar uit&mdash;geef ze niet beide op. | Tekenreeks | Ja      |
@@ -148,7 +153,7 @@ Als u een lokale installatie kopie uploadt, bevat het volgende code fragment de 
 Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 Content-Type: image/jpeg
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
 --boundary_1234-abcd--
 ```
@@ -175,7 +180,7 @@ Content-Disposition: form-data; name="image"; filename="image"
 Content-Type: image/jpeg
 
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
 --boundary_1234-abcd--
 ```

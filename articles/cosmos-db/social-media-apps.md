@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478147"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097325"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociaal met Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-De levens duur van een zeer onderling verbonden samenleving betekent dat u op een bepaald moment deel uitmaakt van een **sociaal netwerk**. U gebruikt sociale netwerken om in contact te blijven met vrienden, collega's, familie of soms om uw passie te delen met mensen met een gemeen schappelijke interesses.
+De levens duur van een zeer onderling verbonden samenleving betekent dat u op een bepaald moment deel uitmaakt van een **sociaal netwerk** . U gebruikt sociale netwerken om in contact te blijven met vrienden, collega's, familie of soms om uw passie te delen met mensen met een gemeen schappelijke interesses.
 
 Als engineers of ontwikkel aars hebt u mogelijk gevraagd hoe deze netwerken uw gegevens opslaan en verbinden. Het is ook mogelijk dat u hebt gewerkt om een nieuw sociaal netwerk te maken of te ontwikkelen voor een specifieke niche-markt. Wanneer de belang rijke vraag zich voordoet: hoe worden al deze gegevens opgeslagen?
 
@@ -238,9 +239,9 @@ Een andere beschik bare optie is het gebruik van [Azure Cognitive Services](http
 
 ## <a name="a-planet-scale-social-experience"></a>Een planeet met sociale ervaring
 
-Er is een laatste, maar niet minst belang rijk artikel dat moet worden geadresseerd: **schaal baarheid**. Wanneer u een architectuur ontwerpt, moet elk onderdeel zelf worden geschaald. U zult uiteindelijk meer gegevens moeten verwerken of u wilt een grotere geografische dekking hebben. Gelukkig is het uitvoeren van beide taken een kant-en- **klare ervaring** met Cosmos db.
+Er is een laatste, maar niet minst belang rijk artikel dat moet worden geadresseerd: **schaal baarheid** . Wanneer u een architectuur ontwerpt, moet elk onderdeel zelf worden geschaald. U zult uiteindelijk meer gegevens moeten verwerken of u wilt een grotere geografische dekking hebben. Gelukkig is het uitvoeren van beide taken een kant-en- **klare ervaring** met Cosmos db.
 
-Cosmos DB biedt ondersteuning voor dynamische partitionering met een out-of-the-box. Er worden automatisch partities gemaakt op basis van een bepaalde **partitie sleutel**, die wordt gedefinieerd als een kenmerk in uw documenten. Het definiëren van de juiste partitie sleutel moet tijdens de ontwerp fase worden uitgevoerd. Zie [partitioneren in azure Cosmos DB](partitioning-overview.md)voor meer informatie.
+Cosmos DB biedt ondersteuning voor dynamische partitionering met een out-of-the-box. Er worden automatisch partities gemaakt op basis van een bepaalde **partitie sleutel** , die wordt gedefinieerd als een kenmerk in uw documenten. Het definiëren van de juiste partitie sleutel moet tijdens de ontwerp fase worden uitgevoerd. Zie [partitioneren in azure Cosmos DB](partitioning-overview.md)voor meer informatie.
 
 Voor een sociale ervaring moet u de strategie voor partitioneren uitlijnen met de manier waarop u een query uitvoert en schrijft. (Lees bewerkingen binnen dezelfde partitie zijn bijvoorbeeld wenselijk en Vermijd ' HOTS Pots ' door schrijf bewerkingen op meerdere partities te spreiden.) Enkele opties zijn: partities op basis van een tijdelijke sleutel (dag/maand/week), per inhouds categorie, per geografische regio of per gebruiker. Het is allemaal echt afhankelijk van hoe u de gegevens opvraagt en hoe de gegevens in uw sociale ervaring worden weer gegeven.
 
@@ -252,7 +253,7 @@ Met tijd groeit u uiteindelijk in verkeer en neemt het Resource verbruik (gemete
 
 Wat gebeurt er als de dingen beter blijven? Stel dat gebruikers uit een andere regio, land of continenten uw platform zien en gaan gebruiken. Wat een geweldig!
 
-Maar wacht eens even! U hebt binnenkort de ervaring met uw platform niet optimaal. Ze zijn zo ver weg in uw operationele regio dat de latentie verschrikkelijke is. U wilt ze natuurlijk niet afsluiten. Als er alleen een eenvoudige manier is om **uw wereld wijde bereik uit te breiden**? Er is nog!
+Maar wacht eens even! U hebt binnenkort de ervaring met uw platform niet optimaal. Ze zijn zo ver weg in uw operationele regio dat de latentie verschrikkelijke is. U wilt ze natuurlijk niet afsluiten. Als er alleen een eenvoudige manier is om **uw wereld wijde bereik uit te breiden** ? Er is nog!
 
 Met Cosmos DB kunt u [uw gegevens wereld wijd](../cosmos-db/tutorial-global-distribution-sql-api.md) en transparant repliceren met een paar muis klikken en automatisch een selectie maken tussen de beschik bare regio's van uw [client code](../cosmos-db/tutorial-global-distribution-sql-api.md). Dit proces houdt ook in dat u [meerdere failover-regio's](high-availability.md)kunt hebben.
 

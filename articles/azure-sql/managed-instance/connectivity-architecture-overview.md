@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 88849e6b915128394546c01698ecee34d6206043
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5ebe0bcf1e491166c5fc61597904056307f9679c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461716"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098005"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Connectiviteitsarchitectuur van Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,14 +104,14 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 - **Subnet-overdracht:** Het subnet van het SQL-beheerde exemplaar moet worden gedelegeerd naar de `Microsoft.Sql/managedInstances` resource provider.
 - **Netwerk beveiligings groep (NSG):** Een NSG moet worden gekoppeld aan het subnet met SQL Managed instance. U kunt een NSG gebruiken voor het beheren van de toegang tot het gegevens eind punt van de SQL Managed instance door verkeer te filteren op poort 1433 en poorten 11000-11999 wanneer SQL Managed instance is geconfigureerd voor omleidings verbindingen. Met de service worden automatisch de huidige [regels](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) ingericht en bewaard die nodig zijn om een ononderbroken stroom van beheer verkeer toe te staan.
 - Door de **gebruiker gedefinieerde route tabel (UDR):** Een UDR-tabel moet worden gekoppeld aan het subnet met SQL Managed instance. U kunt vermeldingen toevoegen aan de routetabel om verkeer met on-premises privé-IP-bereiken als bestemming te routeren via de gateway van het virtuele netwerk of het virtuele netwerkapparaat (NVA). De service zal automatisch de huidige [vermeldingen](#user-defined-routes-with-service-aided-subnet-configuration) inrichten en handhaven die vereist zijn voor een niet-onderbroken stroom van beheerverkeer.
-- **Voldoende IP-adressen:** Het subnet van het SQL-beheerde exemplaar moet ten minste 16 IP-adressen hebben. Het aanbevolen minimumaantal is 32 IP-adressen. Zie [de grootte van het subnet voor SQL Managed instance bepalen](vnet-subnet-determine-size.md)voor meer informatie. U kunt beheerde exemplaren in [het bestaande netwerk](vnet-existing-add-subnet.md) implementeren nadat u deze hebt geconfigureerd om te voldoen aan [de netwerk vereisten voor SQL Managed instance](#network-requirements). Als dat niet mogelijk is, kunt u een [nieuw netwerk en subnet](virtual-network-subnet-create-arm-template.md) maken.
+- **Voldoende IP-adressen:** Het subnet van het SQL-beheerde exemplaar moet ten minste 32 IP-adressen hebben. Zie [de grootte van het subnet voor SQL Managed instance bepalen](vnet-subnet-determine-size.md)voor meer informatie. U kunt beheerde exemplaren in [het bestaande netwerk](vnet-existing-add-subnet.md) implementeren nadat u deze hebt geconfigureerd om te voldoen aan [de netwerk vereisten voor SQL Managed instance](#network-requirements). Als dat niet mogelijk is, kunt u een [nieuw netwerk en subnet](virtual-network-subnet-create-arm-template.md) maken.
 
 > [!IMPORTANT]
 > Wanneer u een beheerd exemplaar maakt, wordt een netwerk intentie beleid toegepast op het subnet om niet-compatibele wijzigingen in de netwerk installatie te voor komen. Nadat het laatste exemplaar van het subnet is verwijderd, wordt het netwerkintentiebeleid ook verwijderd.
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte regels voor binnenkomende beveiliging met configuratie van geaidede subnetten
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-SUBNET  |Toestaan |
@@ -121,7 +121,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte uitgaande beveiligings regels met een service-aided subnet-configuratie
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -301,20 +301,22 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 \* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm x. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
 
+\** Als het doel adres is voor een van de services van Azure, stuurt Azure het verkeer rechtstreeks naar de service via het backbone-netwerk van Azure, in plaats van het verkeer naar Internet te routeren. Verkeer tussen Azure-services loopt niet via internet, ongeacht de Azure-regio waarin het virtuele netwerk zich bevindt of in welke Azure-regio een instantie van de Azure-service is geïmplementeerd. Raadpleeg de UDR- [documentatie pagina](../../virtual-network/virtual-networks-udr-overview.md)voor meer informatie.
+
 Daarnaast kunt u vermeldingen aan de route tabel toevoegen om verkeer met on-premises privé-IP-adresbereiken als bestemming te routeren via de gateway van het virtuele netwerk of het virtuele netwerk apparaat (NVA).
 
 Als het virtuele netwerk een aangepaste DNS bevat, moet de aangepaste DNS-server open bare DNS-records kunnen omzetten. Voor het gebruik van aanvullende functies, zoals Azure AD-verificatie, moet u mogelijk aanvullende FQDN-kenmerken oplossen. Zie [een aangepaste DNS instellen](custom-dns-configure.md)voor meer informatie.
 
 ### <a name="networking-constraints"></a>Netwerk beperkingen
 
-**TLS 1,2 wordt afgedwongen voor uitgaande verbindingen**: In januari 2020 heeft micro soft TLS 1,2 afgedwongen voor verkeer binnen de service in alle Azure-Services. Voor Azure SQL Managed instance heeft dit tot gevolg dat TLS 1,2 wordt afgedwongen voor uitgaande verbindingen die worden gebruikt voor replicatie en gekoppelde server verbindingen met SQL Server. Als u versies van SQL Server ouder dan 2016 met SQL Managed instance gebruikt, moet u ervoor zorgen dat er [TLS 1,2-specifieke updates](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) zijn toegepast.
+**TLS 1,2 wordt afgedwongen voor uitgaande verbindingen** : In januari 2020 heeft micro soft TLS 1,2 afgedwongen voor verkeer binnen de service in alle Azure-Services. Voor Azure SQL Managed instance heeft dit tot gevolg dat TLS 1,2 wordt afgedwongen voor uitgaande verbindingen die worden gebruikt voor replicatie en gekoppelde server verbindingen met SQL Server. Als u versies van SQL Server ouder dan 2016 met SQL Managed instance gebruikt, moet u ervoor zorgen dat er [TLS 1,2-specifieke updates](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) zijn toegepast.
 
 De volgende functies van het virtuele netwerk worden momenteel niet ondersteund met SQL Managed instance:
 
-- **Micro soft-peering**: het inschakelen van [micro soft-peering](../../expressroute/expressroute-faqs.md#microsoft-peering) op ExpressRoute-circuits die rechtstreeks of buiten gebruik worden gepeerd met een virtueel netwerk waarbij het SQL Managed instance-exemplaar van invloed is op de verkeers stroom tussen onderdelen van een SQL Managed instance binnen het virtuele netwerk en de services waarvan deze afhankelijk is, waardoor Implementaties van SQL Managed instance naar virtueel netwerk waarop micro soft-peering al is ingeschakeld, zullen naar verwachting mislukken.
-- **Globale Virtual Network-peering**: de [peering van virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md) tussen Azure-regio's werkt niet voor door SQL beheerde instanties die worden geplaatst in subnetten die zijn gemaakt vóór 9/22/2020.
-- **AzurePlatformDNS**: het gebruik van [de AzurePlatformDNS-servicetag voor](../../virtual-network/service-tags-overview.md) het blok keren van de DNS-omzetting van het platform zou het SQL Managed instance niet beschikbaar laten. Hoewel SQL Managed instance de door de klant gedefinieerde DNS voor DNS-omzetting in de Engine ondersteunt, is er een afhankelijkheid van platform-DNS voor platform bewerkingen.
-- **NAT-gateway**: door [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) te gebruiken voor het beheren van uitgaande verbindingen met een specifiek openbaar IP-adres, wordt het door SQL beheerde exemplaar niet beschikbaar weer gegeven. De service SQL Managed instance is momenteel beperkt tot het gebruik van basis load balancer die geen samen werking van binnenkomende en uitgaande stromen biedt met Virtual Network NAT.
+- **Micro soft-peering** : het inschakelen van [micro soft-peering](../../expressroute/expressroute-faqs.md#microsoft-peering) op ExpressRoute-circuits die rechtstreeks of buiten gebruik worden gepeerd met een virtueel netwerk waarbij het SQL Managed instance-exemplaar van invloed is op de verkeers stroom tussen onderdelen van een SQL Managed instance binnen het virtuele netwerk en de services waarvan deze afhankelijk is, waardoor Implementaties van SQL Managed instance naar virtueel netwerk waarop micro soft-peering al is ingeschakeld, zullen naar verwachting mislukken.
+- **Globale Virtual Network-peering** : de [peering van virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md) tussen Azure-regio's werkt niet voor door SQL beheerde instanties die worden geplaatst in subnetten die zijn gemaakt vóór 9/22/2020.
+- **AzurePlatformDNS** : het gebruik van [de AzurePlatformDNS-servicetag voor](../../virtual-network/service-tags-overview.md) het blok keren van de DNS-omzetting van het platform zou het SQL Managed instance niet beschikbaar laten. Hoewel SQL Managed instance de door de klant gedefinieerde DNS voor DNS-omzetting in de Engine ondersteunt, is er een afhankelijkheid van platform-DNS voor platform bewerkingen.
+- **NAT-gateway** : door [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) te gebruiken voor het beheren van uitgaande verbindingen met een specifiek openbaar IP-adres, wordt het door SQL beheerde exemplaar niet beschikbaar weer gegeven. De service SQL Managed instance is momenteel beperkt tot het gebruik van basis load balancer die geen samen werking van binnenkomende en uitgaande stromen biedt met Virtual Network NAT.
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>Keur Netwerk vereisten zonder service-aided subnet-configuratie
 
@@ -331,7 +333,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-inbound-security-rules"></a>Verplichte regels voor binnenkomende beveiliging
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -339,7 +341,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-outbound-security-rules"></a>Verplichte uitgaande beveiligings regels
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |

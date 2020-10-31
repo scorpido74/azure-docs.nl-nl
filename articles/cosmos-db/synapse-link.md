@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: ae99f5fc1cd6f27c46f7a4444bc75b8c773b4f74
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d25cd7418ec34b8c4a4a53dba4892e85ed1a66d5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480000"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098073"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Wat is een Azure Synapse-koppeling voor Azure Cosmos DB (preview)?
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 > [!IMPORTANT]
 > De Azure Synapse-koppeling voor Azure Cosmos DB is momenteel beschikbaar als preview-versie. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -116,7 +117,7 @@ Synapse-koppeling wordt niet aanbevolen als u op zoek bent naar traditionele Dat
 
 ## <a name="limitations"></a>Beperkingen
 
-* De huidige koppeling van Azure Synapse voor Azure Cosmos DB wordt ondersteund voor SQL API en Azure Cosmos DB API voor MongoDB. Het wordt niet ondersteund voor Gremlin-API en Table-API. Ondersteuning voor Cassandra-API bevindt zich in een persoonlijke preview. Neem contact op met het team van de [Azure Synapse-koppeling](mailto:cosmosdbsynapselink@microsoft.com)voor meer informatie.  
+* Op dit moment wordt Azure Synapse Link voor Azure Cosmos DB ondersteund voor SQL API en Azure Cosmos DB voor MongoDB-API. Het wordt niet ondersteund voor Gremlin-API en Table-API. Ondersteuning voor Cassandra-API bevindt zich in een persoonlijke preview. Neem contact op met het team van de [Azure Synapse-koppeling](mailto:cosmosdbsynapselink@microsoft.com)voor meer informatie.  
 
 * Op dit moment kan de analytische opslag alleen worden ingeschakeld voor nieuwe containers. Als u een analytische archief wilt gebruiken voor bestaande containers, migreert u gegevens vanuit uw bestaande containers naar nieuwe containers met [Azure Cosmos DB-migratie hulpprogramma's](cosmosdb-migrationchoices.md). U kunt de Synapse-koppeling inschakelen voor nieuwe en bestaande Azure Cosmos DB accounts.
 

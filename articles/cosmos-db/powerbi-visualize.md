@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: a7e5443869efd7f37153b47e4d9c3eaa39f9c41d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c6da4eef15f8f0946e17e910fa39aee1f34fccf0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475274"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096373"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-gegevens visualiseren met behulp van de Power BI-connector 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [Power bi](https://powerbi.microsoft.com/) is een online service waar u Dash boards en rapporten kunt maken en delen. Power BI Desktop is een bewerkingstool voor rapporten, waarmee u gegevens uit verschillende gegevensbronnen kunt ophalen. Azure Cosmos DB is een van de gegevensbronnen die u kunt gebruiken met Power BI Desktop. U kunt Power BI Desktop met het Azure Cosmos DB-account verbinden door middel van de Azure Cosmos DB Power BI-connector.  Nadat u de Azure Cosmos DB-gegevens naar Power BI hebt geïmporteerd, kun u deze transformeren, rapporten maken en de rapporten publiceren naar Power BI.   
 
@@ -74,21 +75,21 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
 
 1. Voer Power BI Desktop uit.
 
-2. U kunt **gegevens ophalen**, **recente bronnen**weer geven of **andere rapporten** rechtstreeks vanuit het welkomst scherm openen. Selecteer de ' X ' in de rechter bovenhoek om het scherm te sluiten. De **rapport** weergave van Power bi Desktop wordt weer gegeven.
+2. U kunt **gegevens ophalen** , **recente bronnen** weer geven of **andere rapporten** rechtstreeks vanuit het welkomst scherm openen. Selecteer de ' X ' in de rechter bovenhoek om het scherm te sluiten. De **rapport** weergave van Power bi Desktop wordt weer gegeven.
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
-3. Selecteer het lint **Start** en klik vervolgens op **gegevens ophalen**.  Het venster **gegevens ophalen** wordt weer gegeven.
+3. Selecteer het lint **Start** en klik vervolgens op **gegevens ophalen** .  Het venster **gegevens ophalen** wordt weer gegeven.
 
-4. Klik op **Azure**, selecteer **Azure Cosmos DB (bèta)** en klik vervolgens op **verbinding maken**. 
+4. Klik op **Azure** , selecteer **Azure Cosmos DB (bèta)** en klik vervolgens op **verbinding maken** . 
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
-5. Klik op de pagina **voor beeld** van de connector op **door gaan**. Het venster **Azure Cosmos DB** wordt weer gegeven.
+5. Klik op de pagina **voor beeld** van de connector op **door gaan** . Het venster **Azure Cosmos DB** wordt weer gegeven.
 
-6. Geef de eind punt-URL op van het Azure Cosmos DB-account waaruit u de gegevens wilt ophalen, zoals hieronder wordt weer gegeven, en klik vervolgens op **OK**. Als u uw eigen account wilt gebruiken, kunt u de URL ophalen uit het vak URI op de Blade **sleutels** van de Azure Portal. U kunt desgewenst de naam van de data base opgeven, de naam van de verzameling of de Navigator gebruiken om de data base en verzameling te selecteren om te bepalen waar de gegevens vandaan komen.
+6. Geef de eind punt-URL op van het Azure Cosmos DB-account waaruit u de gegevens wilt ophalen, zoals hieronder wordt weer gegeven, en klik vervolgens op **OK** . Als u uw eigen account wilt gebruiken, kunt u de URL ophalen uit het vak URI op de Blade **sleutels** van de Azure Portal. U kunt desgewenst de naam van de data base opgeven, de naam van de verzameling of de Navigator gebruiken om de data base en verzameling te selecteren om te bepalen waar de gegevens vandaan komen.
    
-7. Als u voor de eerste keer verbinding maakt met dit eind punt, wordt u gevraagd om de account sleutel op te vragen. Voor uw eigen account haalt u de sleutel op uit het vak **primaire sleutel** op de Blade met **alleen-lezen sleutels** van de Azure Portal. Voer de juiste sleutel in en klik vervolgens op **verbinding maken**.
+7. Als u voor de eerste keer verbinding maakt met dit eind punt, wordt u gevraagd om de account sleutel op te vragen. Voor uw eigen account haalt u de sleutel op uit het vak **primaire sleutel** op de Blade met **alleen-lezen sleutels** van de Azure Portal. Voer de juiste sleutel in en klik vervolgens op **verbinding maken** .
    
    U wordt aangeraden de alleen-lezen sleutel te gebruiken bij het maken van rapporten. Dit voor komt onnodige bloot stelling van de primaire sleutel tot mogelijke beveiligings Risico's. De alleen-lezen sleutel is beschikbaar op de Blade **sleutels** van de Azure Portal. 
     
@@ -98,7 +99,7 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
 
 10. Selecteer nu een verzameling die de gegevens bevat die moeten worden opgehaald, selecteer **volcano1** (de naam van uw verzameling kan anders zijn).
     
-    In het voorbeeld venster ziet u een lijst met **record** items.  Een document wordt weer gegeven als een **record** type in Power bi. Op dezelfde manier is een genest JSON-blok in een document ook een **record**.
+    In het voorbeeld venster ziet u een lijst met **record** items.  Een document wordt weer gegeven als een **record** type in Power bi. Op dezelfde manier is een genest JSON-blok in een document ook een **record** .
     
     :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
@@ -109,7 +110,7 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
-1. Klik op de uitbreidings module aan de rechter kant van de kolomkop **document** .  Het context menu met een lijst met velden wordt weer gegeven.  Selecteer de velden die u nodig hebt voor het rapport, bijvoorbeeld Volcano naam, land, regio, locatie, uitbrei ding, type, status en eind afbreken. Schakel het selectie vakje **oorspronkelijke kolom naam gebruiken als voor voegsel** uit en klik vervolgens op **OK**.
+1. Klik op de uitbreidings module aan de rechter kant van de kolomkop **document** .  Het context menu met een lijst met velden wordt weer gegeven.  Selecteer de velden die u nodig hebt voor het rapport, bijvoorbeeld Volcano naam, land, regio, locatie, uitbrei ding, type, status en eind afbreken. Schakel het selectie vakje **oorspronkelijke kolom naam gebruiken als voor voegsel** uit en klik vervolgens op **OK** .
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
@@ -119,7 +120,7 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
 
 1. In ons voor beeld is de locatie-eigenschap een geojson-blok in een document.  Zoals u kunt zien, wordt de locatie weer gegeven als een **record** type in Power bi Desktop.  
 
-1. Klik op de uitbreidings module aan de rechter kant van de kolomkop document. locatie.  Het context menu met de velden type en coördinaten wordt weer gegeven.  Laten we het veld coördinaten selecteren, zorg ervoor dat de **oorspronkelijke kolom naam gebruiken als voor voegsel** niet is geselecteerd en klik op **OK**.
+1. Klik op de uitbreidings module aan de rechter kant van de kolomkop document. locatie.  Het context menu met de velden type en coördinaten wordt weer gegeven.  Laten we het veld coördinaten selecteren, zorg ervoor dat de **oorspronkelijke kolom naam gebruiken als voor voegsel** niet is geselecteerd en klik op **OK** .
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
@@ -129,11 +130,11 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
-1. Als u de coördinaten matrix wilt samen voegen, maakt u een **aangepaste kolom** met de naam LatLong.  Selecteer het lint **kolom toevoegen** en klik op **aangepaste kolom**.  Het venster **aangepaste kolom** wordt weer gegeven.
+1. Als u de coördinaten matrix wilt samen voegen, maakt u een **aangepaste kolom** met de naam LatLong.  Selecteer het lint **kolom toevoegen** en klik op **aangepaste kolom** .  Het venster **aangepaste kolom** wordt weer gegeven.
 
 1. Geef een naam op voor de nieuwe kolom, bijvoorbeeld LatLong.
 
-1. Geef vervolgens de aangepaste formule voor de nieuwe kolom op.  In ons voor beeld voegen we de breedte-en lengte waarden, gescheiden door een komma, toe, zoals hieronder wordt weer gegeven, met behulp van de volgende formule: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Klik op **OK**.
+1. Geef vervolgens de aangepaste formule voor de nieuwe kolom op.  In ons voor beeld voegen we de breedte-en lengte waarden, gescheiden door een komma, toe, zoals hieronder wordt weer gegeven, met behulp van de volgende formule: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Klik op **OK** .
    
    Raadpleeg voor meer informatie over Dax (Data Analysis expressions), waaronder DAX-functies, de [basis beginselen van Dax in Power bi Desktop](/power-bi/desktop-quickstart-learn-dax-basics).
    
@@ -182,7 +183,7 @@ Hieronder ziet u de basis stappen voor het maken van een eenvoudig interactief k
 Als u uw rapport wilt delen, moet u een account hebben in PowerBI.com.
 
 1. Klik in de Power BI Desktop op het lint **Start** .
-1. Klik op **Publish**.  U wordt gevraagd om de gebruikers naam en het wacht woord voor uw PowerBI.com-account in te voeren.
+1. Klik op **Publish** .  U wordt gevraagd om de gebruikers naam en het wacht woord voor uw PowerBI.com-account in te voeren.
 1. Zodra de referentie is geverifieerd, wordt het rapport gepubliceerd naar uw bestemming die u hebt geselecteerd.
 1. Klik op **PowerBITutorial. Pbix openen in Power bi** om uw rapport te bekijken en te delen op PowerBI.com.
    

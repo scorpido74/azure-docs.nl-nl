@@ -10,21 +10,26 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 5a08ee7f5ea3d5e8c393ea4c1a64c353e24777e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90b6619a5a0c3d59b09eeb5a5002d15cf0c21e19
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74072699"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095897"
 ---
 # <a name="share-your-custom-search-instance"></a>Uw aangepaste zoek exemplaar delen
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 U kunt het gezamenlijk bewerken en testen van uw exemplaar eenvoudig toestaan door het te delen met leden van uw team. U kunt uw exemplaar delen met iedereen die alleen hun e-mail adres gebruikt. Een exemplaar delen:
 
 - Aanmelden bij [aangepaste zoek opdracht](https://customsearch.ai)
 - Een aangepast Zoek exemplaar selecteren
 - Klik op het instellingen pictogram (wordt weer gegeven als tand wiel). 
-- Onder **uw exemplaar delen**voert u het e-mail adres in van de persoon met wie u uw exemplaar wilt delen en klikt u op **delen**. 
+- Onder **uw exemplaar delen** voert u het e-mail adres in van de persoon met wie u uw exemplaar wilt delen en klikt u op **delen** . 
 
 Nadat u het e-mail adres hebt toegevoegd, wordt het toegevoegd aan het exemplaar dat wordt **gedeeld met** de lijst. Herhaal dit proces voor elke persoon met wie u uw exemplaar wilt delen. 
 

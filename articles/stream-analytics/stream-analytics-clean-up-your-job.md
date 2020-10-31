@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f078ab217a5c4911fbd132338883504897db899f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a771ac1a831bc7994f28ba15139b66be346af02
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044597"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097750"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Uw Azure Stream Analytics-taak stoppen of verwijderen
 
@@ -61,4 +61,4 @@ Als u een taak wilt stoppen met behulp van Azure SDK voor .NET, gebruikt u de me
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>Een taak stoppen of verwijderen met REST API
 
-Als u een taak wilt stoppen met behulp van REST API, raadpleegt u de methode [Stop](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#stop) . Als u een taak wilt verwijderen met behulp van REST API, raadpleegt u de methode [Delete](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#delete) .
+Als u een taak wilt stoppen met behulp van REST API, raadpleegt u de methode [Stop](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) . Als u een taak wilt verwijderen met behulp van REST API, raadpleegt u de methode [Delete](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) .

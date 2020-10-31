@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6ddc428a1b2228c7e6e15093c12deb25ddd65c27
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b89c48b5040c198cb1b4a6ce383baed51dfac19e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281031"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097410"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Prestaties en schaal testen met Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Prestaties en schaal testen is een belang rijke stap bij het ontwikkelen van toepassingen. Voor veel toepassingen heeft de databaserol een grote invloed op de algehele prestaties en schaal baarheid. Daarom is het een essentieel onderdeel van prestatie testen. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) is een doel dat is gebaseerd op Elastic Scale en voorspel bare prestaties. Deze mogelijkheden maken het prima voor toepassingen die behoefte hebben aan een hoogwaardige database laag. 
 

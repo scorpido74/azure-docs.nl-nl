@@ -6,14 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 30f139c92fe426369c609dabd826a7bff1617e72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480068"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098039"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 Met Azure Synapse link voor Azure Cosmos DB maakt u een nauwe integratie tussen Azure Cosmos DB en Azure Synapse Analytics. Hierdoor kunnen klanten bijna realtime analyses uitvoeren via hun operationele gegevens met volledige prestatie isolatie van hun transactionele werk belastingen en zonder een ETL-pijp lijn. Dit artikel beantwoordt veelgestelde vragen over Synapse Link voor Azure Cosmos DB.
 
@@ -98,9 +99,9 @@ De gegevens in analytische opslag zijn gepartitioneerd op basis van de horizonta
 
 Op dit moment kunt u de gegevens items niet transformeren wanneer ze automatisch worden door gegeven vanuit het transactionele archief naar de analytische opslag. Als u scenario's hebt geblokkeerd door deze beperking, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
 
-### <a name="is-analytical-store-supported-by-terraform"></a>Wordt het analytische archief ondersteund door terraform?
+### <a name="is-analytical-store-supported-by-terraform"></a>Wordt analytische opslag ondersteund voor Terraform?
 
-Momenteel terraform biedt geen ondersteuning voor analytische-opslag containers. Raadpleeg [terraform github-problemen](https://github.com/hashicorp/terraform/issues) voor meer informatie.
+Momenteel biedt Terraform geen ondersteuning voor containers voor analytische opslag. Raadpleeg [Terraform GitHub-problemen](https://github.com/hashicorp/terraform/issues) voor meer informatie.
 
 ## <a name="analytical-time-to-live-ttl"></a>Analytische time to Live (TTL)
 

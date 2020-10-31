@@ -8,14 +8,15 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d8398dbded8753bac193f973026fb63d5f1fc6b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489248"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097716"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Geavanceerde bedreigingsbeveiliging voor Azure Cosmos DB (preview-versie)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Advanced Threat Protection voor Azure Cosmos DB biedt een extra beveiligingslaag die ongebruikelijke en mogelijk schadelijke pogingen detecteert om Azure Cosmos DB accounts te openen of misbruik te maken. Met deze beveiligingslaag kunt u bedreigingen aanpakken, zelfs zonder een beveiligings expert, en ze integreren met centrale beveiligings bewakings systemen.
 
@@ -32,9 +33,9 @@ Voor een volledige onderzoek van de beveiligings waarschuwingen, is het aanbevol
 
 Advanced Threat Protection voor Azure Cosmos DB detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases. De volgende waarschuwingen kunnen momenteel worden geactiveerd:
 
-- **Toegang vanaf ongebruikelijke locaties**: deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor een Azure Cosmos-account, waarbij iemand verbinding heeft gemaakt met het Azure Cosmos DB-eind punt vanaf een ongebruikelijke geografische locatie. In sommige gevallen detecteert de waarschuwing een rechtmatige actie, wat een nieuwe toepassing of onderhouds bewerking van de ontwikkelaar is. In andere gevallen detecteert de waarschuwing een schadelijke actie van een voormalige werk nemer, externe aanvaller, enzovoort.
+- **Toegang vanaf ongebruikelijke locaties** : deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor een Azure Cosmos-account, waarbij iemand verbinding heeft gemaakt met het Azure Cosmos DB-eind punt vanaf een ongebruikelijke geografische locatie. In sommige gevallen detecteert de waarschuwing een rechtmatige actie, wat een nieuwe toepassing of onderhouds bewerking van de ontwikkelaar is. In andere gevallen detecteert de waarschuwing een schadelijke actie van een voormalige werk nemer, externe aanvaller, enzovoort.
 
-- **Ongebruikelijke gegevens extractie**: deze waarschuwing wordt geactiveerd wanneer een client een ongebruikelijke hoeveelheid gegevens uit een Azure Cosmos DB-account uitpakt. Dit kan het symptoom zijn van sommige gegevens exfiltration die worden uitgevoerd om alle gegevens die zijn opgeslagen in het account over te dragen naar een extern gegevens archief.
+- **Ongebruikelijke gegevens extractie** : deze waarschuwing wordt geactiveerd wanneer een client een ongebruikelijke hoeveelheid gegevens uit een Azure Cosmos DB-account uitpakt. Dit kan het symptoom zijn van sommige gegevens exfiltration die worden uitgevoerd om alle gegevens die zijn opgeslagen in het account over te dragen naar een extern gegevens archief.
 
 
 
@@ -46,13 +47,13 @@ U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren con
 
 1. Start de Azure Portal op  [https://portal.azure.com](https://portal.azure.com/) .
 
-2. Selecteer vanuit het Azure Cosmos DB-account in het menu **instellingen** de optie **geavanceerde beveiliging**.
+2. Selecteer vanuit het Azure Cosmos DB-account in het menu **instellingen** de optie **geavanceerde beveiliging** .
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png" alt-text="ATP instellen":::
 
 3. Op de Blade **Geavanceerde beveiligings** configuratie:
 
-    * Klik op de optie **geavanceerde beveiliging tegen bedreigingen** om deze **in**te stellen op aan.
+    * Klik op de optie **geavanceerde beveiliging tegen bedreigingen** om deze **in** te stellen op aan.
     * Klik op **Opslaan** om het nieuwe of bijgewerkte Advanced Threat Protection-beleid op te slaan.   
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
@@ -83,17 +84,17 @@ Gebruik een Azure Policy om geavanceerde bedreigingen beveiliging in te scha kel
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="ATP instellen"::: 
 
-1. Klik op het beleid **geavanceerde beveiliging tegen bedreigingen implementeren voor CosmosDB** en klik vervolgens op **toewijzen**.
+1. Klik op het beleid **geavanceerde beveiliging tegen bedreigingen implementeren voor CosmosDB** en klik vervolgens op **toewijzen** .
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="ATP instellen":::
 
 
-1. Klik in het veld **bereik** op de drie puntjes, selecteer een Azure-abonnement of resource groep en klik vervolgens op **selecteren**.
+1. Klik in het veld **bereik** op de drie puntjes, selecteer een Azure-abonnement of resource groep en klik vervolgens op **selecteren** .
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="ATP instellen":::
 
 
-1. Voer de andere para meters in en klik op **toewijzen**.
+1. Voer de andere para meters in en klik op **toewijzen** .
 
 
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: ed11488f397704be782a092d6cdc6463449cc71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18817a426bacc1ddf144c1d64b611c55245cc21e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039072"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097784"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD voor Stream Analytics implementeren op IoT Edge met behulp van Api's
 
@@ -59,7 +59,7 @@ Als u Stream Analytics taak wilt maken, roept u de PUT-methode aan met behulp va
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
-Voor beeld van een opdracht met **krul**:
+Voor beeld van een opdracht met **krul** :
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
@@ -136,7 +136,7 @@ Voor beeld van een aanvraag tekst in JSON:
 } 
 ```
  
-Zie de [API-documentatie](/rest/api/streamanalytics/stream-analytics-job)voor meer informatie.  
+Zie de [API-documentatie](/rest/api/streamanalytics/)voor meer informatie.  
  
 ## <a name="publish-edge-package"></a>Edge-pakket publiceren 
  
@@ -148,7 +148,7 @@ Als u een Stream Analytics-taak op IoT Edge wilt publiceren, roept u de POST-met
 
 Deze asynchrone bewerking retourneert de status 202 totdat de taak is gepubliceerd. De header van de locatie reactie bevat de URI die wordt gebruikt om de status van het proces op te halen. Terwijl het proces wordt uitgevoerd, retourneert een aanroep naar de URI in de locatie header de status 202. Wanneer het proces is voltooid, retourneert de URI in de locatie header de status 200. 
 
-Voor beeld van een Edge-pakket publicatie gesprek met behulp van **krul**: 
+Voor beeld van een Edge-pakket publicatie gesprek met behulp van **krul** : 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
@@ -163,7 +163,7 @@ https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{
 ```
 Wacht één tot twee minuten voordat u de volgende opdracht uitvoert om een API-aanroep te maken met de URL die u hebt gevonden in het hoofd van het antwoord. Voer de opdracht opnieuw uit als u geen 200-antwoord ontvangt.
  
-Voor beeld van het maken van een API-aanroep met de geretourneerde URL met **krul**:
+Voor beeld van het maken van een API-aanroep met de geretourneerde URL met **krul** :
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 

@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f8bcadf25ac8e001657f2be012f99ddb507e672d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445176"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096730"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Naslag informatie over de opdracht regel en Power shell voor Azure Cosmos DB-emulator
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 De Azure Cosmos-emulator biedt een lokale omgeving die de Azure Cosmos DB-Service voor lokale ontwikkelings doeleinden emuleert. Nadat [de emulator is geïnstalleerd](local-emulator.md), kunt u de emulator beheren met opdracht regel-en Power shell-opdrachten. In dit artikel wordt beschreven hoe u de opdracht regel-en Power shell-opdrachten gebruikt om de emulator te starten en te stoppen, opties te configureren en andere bewerkingen uit te voeren. U moet de opdrachten uitvoeren vanaf de installatie locatie.
 
@@ -135,11 +136,11 @@ Als u probeert een container te maken nadat het huidige aantal partities is over
 
 Als u het aantal beschikbare containers voor Azure Cosmos Emulator wilt wijzigen, doet u het volgende:
 
-1. Verwijder alle lokale Azure Cosmos-emulator gegevens door met de rechter muisknop op het pictogram van de **Azure Cosmos DB emulator** op het systeemvak te klikken en vervolgens op **gegevens opnieuw instellen te klikken...**.
+1. Verwijder alle lokale Azure Cosmos-emulator gegevens door met de rechter muisknop op het pictogram van de **Azure Cosmos DB emulator** op het systeemvak te klikken en vervolgens op **gegevens opnieuw instellen te klikken...** .
 
 1. Verwijder alle emulator-gegevens in de map `%LOCALAPPDATA%\CosmosDBEmulator`.
 
-1. Sluit alle geopende exemplaren door met de rechtermuisknop te klikken op het pictogram van de **Azure Cosmos DB Emulator** in het systeemvak en vervolgens te klikken op **Afsluiten**. Het afsluiten van alle exemplaren kan een paar minuten duren.
+1. Sluit alle geopende exemplaren door met de rechtermuisknop te klikken op het pictogram van de **Azure Cosmos DB Emulator** in het systeemvak en vervolgens te klikken op **Afsluiten** . Het afsluiten van alle exemplaren kan een paar minuten duren.
 
 1. Installeer de nieuwste versie van [Azure Cosmos Emulator](https://aka.ms/cosmosdb-emulator).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adb221c12af436135b1e740fdef7c5c0a0a7f0cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254740"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096033"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management integreren met Azure Application Insights
 
@@ -32,39 +32,39 @@ Als u deze hand leiding wilt volgen, moet u een Azure API Management-exemplaar h
 
 Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar van de service maken.
 
-1. Open de **Azure Portal** en navigeer naar **Application Insights**.  
-    ![App Insights maken](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
-2. Klik op **+ Toevoegen**.  
+1. Open de **Azure Portal** en navigeer naar **Application Insights** .  
+    ![Scherm afbeelding die laat zien hoe u naar Application Insights navigeert.](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
+2. Klik op **+ Toevoegen** .  
     ![App Insights maken](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
-3. Vul het formulier in. Selecteer **Algemeen** als het **toepassings type**.
-4. Klik op **Maken**.
+3. Vul het formulier in. Selecteer **Algemeen** als het **toepassings type** .
+4. Klik op **Create** .
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Een verbinding maken tussen Azure-toepassing Insights-en Azure API Management service-exemplaar
 
-1. Navigeer naar uw **Azure API Management service-exemplaar** in de **Azure Portal**.
+1. Navigeer naar uw **Azure API Management service-exemplaar** in de **Azure Portal** .
 2. Selecteer **Application Insights** in het menu aan de linkerkant.
-3. Klik op **+ Toevoegen**.  
-    ![Logboek voor app Insights](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
+3. Klik op **+ Toevoegen** .  
+    ![Scherm afbeelding die laat zien waar een nieuwe verbinding moet worden toegevoegd.](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Selecteer het eerder gemaakte **Application Insights** -exemplaar en geef een korte beschrijving op.
-5. Klik op **Maken**.
+5. Klik op **Create** .
 6. U hebt zojuist een Azure-toepassing Insights-logboek registratie gemaakt met een instrumentatie sleutel. Deze wordt nu weer gegeven in de lijst.  
-    ![Logboek voor app Insights](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
+    ![Scherm afbeelding die laat zien waar de zojuist gemaakte Azure-toepassing Insights-logboeken met instrumentatie sleutel moeten worden weer gegeven.](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
 > Achter de scène wordt een [logger](/rest/api/apimanagement/2019-12-01/logger/createorupdate) -entiteit gemaakt in uw API Management-exemplaar met de instrumentatie sleutel van de Application Insights instantie.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Application Insights logboek registratie inschakelen voor uw API
 
-1. Navigeer naar uw **Azure API Management service-exemplaar** in de **Azure Portal**.
+1. Navigeer naar uw **Azure API Management service-exemplaar** in de **Azure Portal** .
 2. Selecteer **API's** in het menu aan de linkerkant.
-3. Klik op uw API, in dit geval **demo**van de API van de vergadering.
+3. Klik op uw API, in dit geval **demo** van de API van de vergadering.
 4. Ga naar het tabblad **instellingen** op de bovenste balk.
 5. Schuif omlaag naar de sectie **Diagnostische logboeken** .  
     ![Logboek voor app Insights](media/api-management-howto-app-insights/apim-app-insights-api-1.png)  
 6. Schakel het **selectie vakje in** .
 7. Selecteer de bijgevoegde logboek registratie in de vervolg keuzelijst **bestemming** .
 8. Invoer **100** als **steek proef (%)** en tik op het selectie vakje **altijd logboek fouten** .
-9. Klik op **Opslaan**.
+9. Klik op **Opslaan** .
 
 > [!WARNING]
 > Het overschrijven van de standaard waarde **0** in de **eerste bytes van het veld hoofd tekst** kan de prestaties van uw api's aanzienlijk verminderen.
@@ -97,8 +97,8 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 
 Azure-toepassing Insights ontvangt:
 
-+ Een telemetrie-item *aanvragen* voor elke inkomende aanvraag (front-*End-aanvraag*, *frontend-antwoord*)
-+ Telemetrie-item voor *afhankelijkheid* , voor elke aanvraag die wordt doorgestuurd naar een back-end-service (back-end-*aanvraag*, *back-end*)
++ Een telemetrie-item *aanvragen* voor elke inkomende aanvraag (front- *End-aanvraag* , *frontend-antwoord* )
++ Telemetrie-item voor *afhankelijkheid* , voor elke aanvraag die wordt doorgestuurd naar een back-end-service (back-end- *aanvraag* , *back-end* )
 + Telemetrie van *uitzonde ring* voor elke mislukte aanvraag.
 
 Een mislukte aanvraag is een aanvraag, die:

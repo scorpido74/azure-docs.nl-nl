@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0307fcee207f045c2808b3c66e9911623391d486
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905254"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095540"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Snelstartgids: Azure DDoS Protection Standard maken en configureren met behulp van Azure CLI
 
@@ -107,8 +107,6 @@ az network ddos-protection show \
 
 Controleer of de opdracht de juiste gegevens van uw DDoS-beveiligings plan retourneert.
 
-Testen door simulaties
-
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 U kunt uw resources voor de volgende zelf studie blijven gebruiken. Als u deze niet meer nodig hebt, verwijdert u de resource groep _MyResourceGroup_ . Wanneer u de resource groep verwijdert, verwijdert u ook het DDoS-beschermings plan en alle gerelateerde resources. 
@@ -136,4 +134,4 @@ Als u een DDoS-beschermings plan wilt verwijderen, moet u eerst alle virtuele ne
 Ga door naar de zelf studies voor meer informatie over het weer geven en configureren van telemetrie voor uw DDoS-beveiligings plan.
 
 > [!div class="nextstepaction"]
-> [Telemetrie van DDoS-beveiliging weer geven en configureren](telemetry-monitoring-alerting.md)
+> [DDoS-beschermingstelemetrie bekijken en configureren](telemetry-monitoring-alerting.md)

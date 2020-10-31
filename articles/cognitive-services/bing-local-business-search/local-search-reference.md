@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbd4f32e77dc8d386067987a0ab0436a7875c15e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84171460"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095387"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Naslag informatie Bing Local Business Search API V7
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 De lokale Business Search-API stuurt een zoek query naar Bing om resultaten te verkrijgen die restaurants, Hotels of andere lokale bedrijven bevatten. Voor plaatsen kan de query de naam van de lokale onderneming of een categorie opgeven (bijvoorbeeld restaurants dichtbij). Entiteitsresultaten zijn personen, plaatsen of dingen. Plaats in deze context zijn bedrijfs entiteiten, Staten, landen/regio's enz.  
 
@@ -71,7 +76,7 @@ Hieronder ziet u de kopteksten die een aanvraag en antwoord kan bevatten.
 De aanvraag kan de volgende query parameters bevatten. Zie de vereiste kolom voor de vereiste para meters. U moet de URL van de query parameters coderen.  
   
   
-|Name|Waarde|Type|Vereist|  
+|Naam|Waarde|Type|Vereist|  
 |----------|-----------|----------|--------------|
 |<a name="count"></a>aantal|Het aantal resultaten dat moet worden geretourneerd, te beginnen met de index die is opgegeven door de `offset` para meter.|Tekenreeks|Nee|   
 |<a name="localCategories"></a>localCategories|Lijst met opties waarmee zoek acties op bedrijfs categorie worden gedefinieerd.  Zie [lokale bedrijfs categorieën zoeken](local-categories.md)|Tekenreeks|Nee|  
@@ -108,7 +113,7 @@ Hiermee definieert u de fout die is opgetreden.
 ### <a name="errorresponse"></a>ErrorResponse  
 Het object op het hoogste niveau dat het antwoord bevat wanneer de aanvraag is mislukt.  
   
-|Name|Waarde|Type|  
+|Naam|Waarde|Type|  
 |----------|-----------|----------|  
 |_type|Type hint.|Tekenreeks|  
 |<a name="errors"></a>bufferoverschrijdingsfouten|Een lijst met fouten die de redenen beschrijven waarom de aanvraag is mislukt.|[Fout](#error)[]|  
@@ -118,7 +123,7 @@ Het object op het hoogste niveau dat het antwoord bevat wanneer de aanvraag is m
 ### <a name="license"></a>Licentie  
 Hiermee wordt de licentie gedefinieerd waarmee de tekst of foto kan worden gebruikt.  
   
-|Name|Waarde|Type|  
+|Naam|Waarde|Type|  
 |----------|-----------|----------|  
 |naam|De naam van de licentie.|Tekenreeks|  
 |url|De URL naar een website waar de gebruiker meer informatie over de licentie kan krijgen.<br /><br /> Gebruik de naam en URL om een Hyper link te maken.|Tekenreeks|  
@@ -127,7 +132,7 @@ Hiermee wordt de licentie gedefinieerd waarmee de tekst of foto kan worden gebru
 ### <a name="link"></a>Koppeling  
 Hiermee worden de onderdelen van een Hyper Link gedefinieerd.  
   
-|Name|Waarde|Type|  
+|Naam|Waarde|Type|  
 |----------|-----------|----------|  
 |_type|Type hint.|Tekenreeks|  
 |tekst|De weergave tekst.|Tekenreeks|  
@@ -141,7 +146,7 @@ Hiermee wordt een uitgever gedefinieerd.
   
 Houd er rekening mee dat een uitgever hun naam of hun website of beide kan opgeven.  
   
-|Name|Waarde|Type|  
+|Naam|Waarde|Type|  
 |----------|-----------|----------|  
 |naam|De naam van de uitgever.|Tekenreeks|  
 |url|De URL naar de website van de uitgever.<br /><br /> Houd er rekening mee dat de uitgever mogelijk geen website levert.|Tekenreeks|  
@@ -151,7 +156,7 @@ Houd er rekening mee dat een uitgever hun naam of hun website of beide kan opgev
 ### <a name="place"></a>Locatie  
 Definieert informatie over een lokale onderneming, zoals een restaurant of Hotel.  
   
-|Name|Waarde|Type|  
+|Naam|Waarde|Type|  
 |----------|-----------|----------|  
 |_type|Type hint, die kan worden ingesteld op een van de volgende opties:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurant</ul><li>|Tekenreeks|  
 |adres|Het post adres van de locatie waar de entiteit zich bevindt.|PostalAddress|  
@@ -167,29 +172,29 @@ Hiermee wordt de query context gedefinieerd die door Bing voor de aanvraag wordt
   
 |Element|Beschrijving|Type|  
 |-------------|-----------------|----------|  
-|adultIntent|Een Booleaanse waarde die aangeeft of de opgegeven query volwassen intentie heeft. De waarde is **True** als de query volwassen intentie heeft; anders **False**.|Booleaans|  
-|alterationOverrideQuery|De query teken reeks die moet worden gebruikt om Bing te dwingen de oorspronkelijke teken reeks te gebruiken. Als de query reeks bijvoorbeeld *Saling Downwind*is, is de query reeks opheffen *+ Saling Downwind*. Vergeet niet om de query teken reeks te coderen die resulteert in *% 2Bsaling + Downwind*.<br /><br /> Dit veld wordt alleen opgenomen als de oorspronkelijke query reeks een spel fout bevat.|Tekenreeks|  
+|adultIntent|Een Booleaanse waarde die aangeeft of de opgegeven query volwassen intentie heeft. De waarde is **True** als de query volwassen intentie heeft; anders **False** .|Boolean-waarde|  
+|alterationOverrideQuery|De query teken reeks die moet worden gebruikt om Bing te dwingen de oorspronkelijke teken reeks te gebruiken. Als de query reeks bijvoorbeeld *Saling Downwind* is, is de query reeks opheffen *+ Saling Downwind* . Vergeet niet om de query teken reeks te coderen die resulteert in *% 2Bsaling + Downwind* .<br /><br /> Dit veld wordt alleen opgenomen als de oorspronkelijke query reeks een spel fout bevat.|Tekenreeks|  
 |alteredQuery|De query teken reeks die door Bing wordt gebruikt om de query uit te voeren. Bing gebruikt de gewijzigde query reeks als de oorspronkelijke query reeks spel fouten bevat. Als de query reeks bijvoorbeeld is `saling downwind` , wordt de gewijzigde query reeks `sailing downwind` .<br /><br /> Dit veld wordt alleen opgenomen als de oorspronkelijke query reeks een spel fout bevat.|Tekenreeks|  
-|askUserForLocation|Een Booleaanse waarde die aangeeft of Bing de locatie van de gebruiker nodig heeft om nauw keurige resultaten te leveren. Als u de locatie van de gebruiker hebt opgegeven met behulp van de [x-MSEdge-client](#clientip) en [x-Search-locatie](#location) headers, kunt u dit veld negeren.<br /><br /> Voor locatie bewuste query's, zoals ' nu weer geven ' of ' restaurants vlakbij ' waarvoor de locatie van de gebruiker voor nauw keurige resultaten nodig is, wordt dit veld ingesteld op **True**.<br /><br /> Voor locatie bewuste query's die de locatie bevatten (bijvoorbeeld ' Seattle weer '), is dit veld ingesteld op **Onwaar**. Dit veld wordt ook ingesteld op **Onwaar** voor query's die geen locatie ondervinden, zoals ' best verkochte '.|Booleaans|  
+|askUserForLocation|Een Booleaanse waarde die aangeeft of Bing de locatie van de gebruiker nodig heeft om nauw keurige resultaten te leveren. Als u de locatie van de gebruiker hebt opgegeven met behulp van de [x-MSEdge-client](#clientip) en [x-Search-locatie](#location) headers, kunt u dit veld negeren.<br /><br /> Voor locatie bewuste query's, zoals ' nu weer geven ' of ' restaurants vlakbij ' waarvoor de locatie van de gebruiker voor nauw keurige resultaten nodig is, wordt dit veld ingesteld op **True** .<br /><br /> Voor locatie bewuste query's die de locatie bevatten (bijvoorbeeld ' Seattle weer '), is dit veld ingesteld op **Onwaar** . Dit veld wordt ook ingesteld op **Onwaar** voor query's die geen locatie ondervinden, zoals ' best verkochte '.|Boolean-waarde|  
 |originalQuery|De query reeks zoals opgegeven in de aanvraag.|Tekenreeks|  
 
 ### <a name="identifiable"></a>Persoonlijke
 
-|Name|Waarde|Type|  
+|Naam|Waarde|Type|  
 |-------------|-----------------|----------|
 |id|Een resource-id|Tekenreeks|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Hiermee wordt een groep met zoek resultaten gedefinieerd, zoals Mainline.
 
-|Name|Waarde|Type|  
+|Naam|Waarde|Type|  
 |-------------|-----------------|----------|
 |vermeldingen|Een lijst met zoek resultaten die in de groep moeten worden weer gegeven.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Hiermee wordt een item in de zoek resultaten gedefinieerd dat moet worden weer gegeven.
 
-|Name|Waarde|Type|  
+|Naam|Waarde|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Een op nul gebaseerde index van het item in het antwoord dat moet worden weer gegeven. Als het item dit veld niet bevat, geeft u alle items in het antwoord weer. U kunt bijvoorbeeld alle nieuws artikelen in het nieuws antwoord weer geven.|Geheel getal|
 |answerType|Het antwoord dat het item bevat dat moet worden weer gegeven. Bijvoorbeeld nieuws.<br /><br />Gebruik het type om het antwoord te vinden in het SearchResponse-object. Het type is de naam van een SearchResponse-veld.<br /><br /> Gebruik echter alleen het antwoord type als dit object het veld waarde bevat. anders negeert u deze.|Tekenreeks|
@@ -199,7 +204,7 @@ Hiermee wordt een item in de zoek resultaten gedefinieerd dat moet worden weer g
 ### <a name="rankingresponse"></a>RankingResponse  
 Definieert waar de inhoud van de pagina met zoek resultaten moet worden geplaatst en in welke volg orde.  
   
-|Name|Waarde|  
+|Naam|Waarde|  
 |----------|-----------|  
 |<a name="ranking-mainline"></a>mainline|De zoek resultaten worden weer gegeven in de Mainline.|  
 |<a name="ranking-pole"></a>pool|De zoek resultaten die de meest zicht bare behandeling moeten worden geboden (bijvoorbeeld weer gegeven boven de mainline en Sidebar).|  
@@ -210,7 +215,7 @@ Hiermee definieert u het object op het hoogste niveau dat het antwoord bevat wan
   
 Houd er rekening mee dat als de service een DOS-aanval (Denial of service) vermoedt, de aanvraag slaagt (HTTP-status code is 200 OK). de hoofd tekst van de reactie is echter leeg.  
   
-|Name|Waarde|Type|  
+|Naam|Waarde|Type|  
 |----------|-----------|----------|  
 |_type|Type hint, die is ingesteld op SearchResponse.|Tekenreeks|  
 |gelegenheden|Een lijst met entiteiten die relevant zijn voor de zoek query.|JSON-object|  
@@ -270,7 +275,7 @@ Hier volgen de mogelijke fout code en waarden voor de subfout code.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing retourneert InsufficientAuthorization wanneer de aanroeper geen machtigingen heeft voor toegang tot de resource. Dit kan gebeuren als de abonnements sleutel is uitgeschakeld of is verlopen. <br/><br/>Als de fout InsufficientAuthorization is, is de HTTP-status code 403.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Snelstartgids voor lokale zakelijke Zoek opdrachten](quickstarts/local-quickstart.md)
+- [Quickstart over Business Search](quickstarts/local-quickstart.md)
 - [Quickstart over Bing Local Business Search met Java](quickstarts/local-search-java-quickstart.md)
 - [Quick start voor lokaal bedrijfs Zoek knooppunt](quickstarts/local-search-node-quickstart.md)
 - [Quickstart over zoeken naar lokale bedrijven met Python](quickstarts/local-search-python-quickstart.md)

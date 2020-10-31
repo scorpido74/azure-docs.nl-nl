@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49cdb423e8fd2e70175d4ac71f6dcd07b459f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056513"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097733"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Compatibiliteits niveau voor Azure Stream Analytics taken
 
@@ -33,13 +33,13 @@ Wanneer u een nieuwe Stream Analytics taak maakt, is dit een best practice om de
 
 ## <a name="set-the-compatibility-level"></a>Het compatibiliteits niveau instellen
 
-U kunt het compatibiliteits niveau instellen voor een Stream Analytics taak in het Azure Portal of met behulp van de [aanroep taak maken rest API](/rest/api/streamanalytics/stream-analytics-job).
+U kunt het compatibiliteits niveau instellen voor een Stream Analytics taak in het Azure Portal of met behulp van de [aanroep taak maken rest API](/azure/stream-analytics/stream-analytics-quick-create-portal).
 
 Het compatibiliteits niveau van de taak in het Azure Portal bijwerken:
 
 1. Gebruik de [Azure Portal](https://portal.azure.com) om naar uw stream Analytics-taak te zoeken.
 2. **Stop** de taak voordat u het compatibiliteits niveau bijwerkt. Als uw taak wordt uitgevoerd, kunt u het compatibiliteits niveau niet bijwerken.
-3. Onder de kop **configureren** selecteert u **compatibiliteits niveau**.
+3. Onder de kop **configureren** selecteert u **compatibiliteits niveau** .
 4. Kies de gewenste waarde voor het compatibiliteits niveau.
 5. Selecteer onder aan de pagina **Opslaan** .
 
@@ -53,7 +53,7 @@ De volgende belang rijke wijzigingen worden geïntroduceerd in compatibiliteits 
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP Messa ging Protocol
 
-**1,2-niveau**: Azure stream Analytics gebruikt [AMQP-berichten Protocol (Advanced Message queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) om te schrijven naar service bus-wacht rijen en-onderwerpen. Met AMQP kunt u platform onafhankelijke, hybride toepassingen bouwen met behulp van een open standaard protocol.
+**1,2-niveau** : Azure stream Analytics gebruikt [AMQP-berichten Protocol (Advanced Message queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) om te schrijven naar service bus-wacht rijen en-onderwerpen. Met AMQP kunt u platform onafhankelijke, hybride toepassingen bouwen met behulp van een open standaard protocol.
 
 ### <a name="geospatial-functions"></a>Georuimtelijke functies
 
@@ -75,11 +75,11 @@ Zie [updates voor georuimtelijke functies in azure stream Analytics-Cloud en IOT
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Systeem eigen bulk-API-integratie met CosmosDB-uitvoer
 
-**Eerdere niveaus:** Het upsert-gedrag is *invoegen of samen voegen*.
+**Eerdere niveaus:** Het upsert-gedrag is *invoegen of samen voegen* .
 
 **niveau van 1,2:** Systeem eigen bulk-API-integratie met CosmosDB-uitvoer maximaliseert de door Voer en efficiënt afhandelen van bandbreedte aanvragen. Zie [de pagina Azure stream Analytics uitvoer naar Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)voor meer informatie.
 
-Het gedrag van de upsert wordt *ingevoegd of vervangen*.
+Het gedrag van de upsert wordt *ingevoegd of vervangen* .
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>Date time offset bij het schrijven naar SQL-uitvoer
 

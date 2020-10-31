@@ -7,14 +7,15 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0f286b5586a0d74afed0bb185179454bb1efff95
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282481"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097546"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migreren van Couch Base naar Azure Cosmos DB SQL-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB is een schaal bare, wereld wijd gedistribueerde, volledig beheerde data base. Het biedt gegarandeerde lage latentie toegang tot uw gegevens. Zie het artikel [overzicht](introduction.md) voor meer informatie over Azure Cosmos db. Dit artikel bevat instructies voor het migreren van Java-toepassingen die zijn verbonden met Couch Base naar een SQL-API-account in Azure Cosmos DB.
 
@@ -37,7 +38,7 @@ Hieronder ziet u de belangrijkste functies die in Azure Cosmos DB anders werken 
 
 * In Azure Cosmos DB is het niet vereist voor de hiërarchie op het hoogste niveau om de verzameling aan te duiden, omdat de naam van de verzameling al bestaat. Deze functie maakt de JSON-structuur veel eenvoudiger. Hier volgt een voor beeld waarin de verschillen in het gegevens model tussen Couch base en Azure Cosmos DB worden weer gegeven:
 
-   **Couch base**: document-id = "99FF4444"
+   **Couch base** : document-id = "99FF4444"
 
     ```json
     {
@@ -67,7 +68,7 @@ Hieronder ziet u de belangrijkste functies die in Azure Cosmos DB anders werken 
     }
    ```
 
-   **Azure Cosmos DB**: verwijst naar id in het document, zoals hieronder wordt weer gegeven
+   **Azure Cosmos DB** : verwijst naar id in het document, zoals hieronder wordt weer gegeven
 
     ```json
     {
@@ -311,7 +312,7 @@ Dit is een eenvoudig type werk belasting waarin u zoek acties kunt uitvoeren in 
 
 1. Overweeg '/ID ' als primaire sleutel. Dit zorgt ervoor dat u de opzoek bewerking rechtstreeks kunt uitvoeren in de specifieke partitie. Maak een verzameling en geef '/ID ' op als partitie sleutel.
 
-1. Schakel het indexeren volledig uit. Omdat u opzoek bewerkingen wilt uitvoeren, is er geen punt om de overhead van indexeren te belasten. Als u indexeren wilt uitschakelen, meldt u zich aan bij Azure Portal, ga naar Azure Cosmos DB account. Open de **Data Explorer**, selecteer uw **Data Base** en de **container**. Open het tabblad **schaal & instellingen** en selecteer het  **indexerings beleid**. Momenteel ziet het indexerings beleid er als volgt uit:
+1. Schakel het indexeren volledig uit. Omdat u opzoek bewerkingen wilt uitvoeren, is er geen punt om de overhead van indexeren te belasten. Als u indexeren wilt uitschakelen, meldt u zich aan bij Azure Portal, ga naar Azure Cosmos DB account. Open de **Data Explorer** , selecteer uw **Data Base** en de **container** . Open het tabblad **schaal & instellingen** en selecteer het  **indexerings beleid** . Momenteel ziet het indexerings beleid er als volgt uit:
     
    ```json
    {

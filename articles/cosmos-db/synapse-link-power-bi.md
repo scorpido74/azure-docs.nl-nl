@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 6e77746d21d63cf1460b9e460e470a3bd12ce656
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8599ebf1932d7c30622855cbf38af867d30b52b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480034"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098056"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Power BI en serverloze Synapse SQL-groep gebruiken om Azure Cosmos DB gegevens te analyseren met Synapse-koppeling (preview-versie) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
-In dit artikel leert u hoe u een SQL-groep zonder server kunt bouwen (die voorheen **SQL on-demand**-data base werd genoemd) en weer gaven via de Synapse-koppeling voor Azure Cosmos db. U voert een query uit op de Azure Cosmos-containers en bouwt vervolgens een model met Power BI over die weer gaven om die query weer te geven.
+In dit artikel leert u hoe u een SQL-groep zonder server kunt bouwen (die voorheen **SQL on-demand** -data base werd genoemd) en weer gaven via de Synapse-koppeling voor Azure Cosmos db. U voert een query uit op de Azure Cosmos-containers en bouwt vervolgens een model met Power BI over die weer gaven om die query weer te geven.
 
 In dit scenario gebruikt u dummy gegevens over de verkoop van Surface-producten in een Retail Store van partners. U gaat de omzet per winkel analyseren op basis van de nabijheid van grote gezinnen en de impact van de reclame voor een specifieke week. In dit artikel maakt u twee weer gaven met de naam **RetailSales** en **StoreDemographics** en een query ertussen. U kunt de voorbeeld product gegevens ophalen uit deze [github](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) opslag plaats.
 
@@ -31,21 +32,21 @@ Zorg ervoor dat u de volgende resources maakt voordat u begint:
 
 * Laad gegevens van producten in de Azure Cosmos-containers, zoals wordt beschreven in deze [batch gegevens opname](https://github.com/Azure-Samples/Synapse/blob/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) -notebook.
 
-* [Maak een Synapse-werk ruimte met de](../synapse-analytics/quickstart-create-workspace.md) naam **SynapseLinkBI**.
+* [Maak een Synapse-werk ruimte met de](../synapse-analytics/quickstart-create-workspace.md) naam **SynapseLinkBI** .
 
 * [Verbind de Azure Cosmos-data base met de Synapse-werk ruimte](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json).
 
 ## <a name="create-a-database-and-views"></a>Een Data Base en weer gaven maken
 
-Ga in de Synapse-werk ruimte naar het tabblad **ontwikkelen** , selecteer het **+** pictogram en selecteer **SQL-script**.
+Ga in de Synapse-werk ruimte naar het tabblad **ontwikkelen** , selecteer het **+** pictogram en selecteer **SQL-script** .
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Een SQL-script toevoegen aan de Synapse Analytics-werk ruimte":::
 
-Elke werk ruimte wordt geleverd met een serverloos SQL-eind punt. Nadat u een SQL-script hebt gemaakt, gaat u vanuit de werk balk aan de bovenkant verbinding maken met **SQL op aanvraag**.
+Elke werk ruimte wordt geleverd met een serverloos SQL-eind punt. Nadat u een SQL-script hebt gemaakt, gaat u vanuit de werk balk aan de bovenkant verbinding maken met **SQL op aanvraag** .
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Een SQL-script toevoegen aan de Synapse Analytics-werk ruimte":::
 
-Maak een nieuwe Data Base met de naam **RetailCosmosDB**en een SQL-weer gave over de containers die zijn ingeschakeld voor de Synapse-koppeling. De volgende opdracht laat zien hoe u een Data Base maakt:
+Maak een nieuwe Data Base met de naam **RetailCosmosDB** en een SQL-weer gave over de containers die zijn ingeschakeld voor de Synapse-koppeling. De volgende opdracht laat zien hoe u een Data Base maakt:
 
 ```sql
 -- Create database
@@ -109,15 +110,15 @@ Selecteer **uitvoeren** die de volgende tabel als resultaat geeft:
 
 Open vervolgens het Power BI bureau blad en maak verbinding met het serverloze SQL-eind punt met behulp van de volgende stappen:
 
-1. Open de Power BI Desktop-toepassing. Selecteer **gegevens ophalen** en selecteer **meer**.
+1. Open de Power BI Desktop-toepassing. Selecteer **gegevens ophalen** en selecteer **meer** .
 
 1. Kies **Azure Synapse Analytics (SQL DW)** in de lijst met verbindings opties.
 
-1. Voer de naam in van het SQL-eind punt waar de data base zich bevindt. Voer `SynapseLinkBI-ondemand.sql.azuresynapse.net` in het veld **Server** in. In dit voor beeld is  **SynapseLinkBI** de naam van de werk ruimte. Vervang deze als u een andere naam hebt opgegeven voor uw werk ruimte. Selecteer **direct query** voor de gegevens connectiviteits modus en klik vervolgens op **OK**.
+1. Voer de naam in van het SQL-eind punt waar de data base zich bevindt. Voer `SynapseLinkBI-ondemand.sql.azuresynapse.net` in het veld **Server** in. In dit voor beeld is  **SynapseLinkBI** de naam van de werk ruimte. Vervang deze als u een andere naam hebt opgegeven voor uw werk ruimte. Selecteer **direct query** voor de gegevens connectiviteits modus en klik vervolgens op **OK** .
 
 1. Selecteer de gewenste verificatie methode, zoals Azure AD.
 
-1. Selecteer de **RetailCosmosDB** -data base en de weer gaven **RetailSales**, **StoreDemographics** .
+1. Selecteer de **RetailCosmosDB** -data base en de weer gaven **RetailSales** , **StoreDemographics** .
 
 1. Selecteer **laden** om de twee weer gaven in de direct query-modus te laden.
 
@@ -129,7 +130,7 @@ Open vervolgens het Power BI bureau blad en maak verbinding met het serverloze S
 
 Ga nu naar het **rapport** venster en maak een rapport om het relatieve belang van de huishoud grootte te vergelijken met de gemiddelde omzet per opslag op basis van de verstrooide weer gave van omzet-en LargeHH-index:
 
-1. Selecteer een **spreidings diagram**.
+1. Selecteer een **spreidings diagram** .
 
 1. Sleep de **LargeHH** van de **StoreDemographics** -weer gave naar de X-as en zet deze neer.
 

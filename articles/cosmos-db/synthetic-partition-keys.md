@@ -6,16 +6,17 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: a50de7154bd768f5cc4c25062ec3ce05c0f37328
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6868859247fc430ee96581ae85fb7077af04999
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279854"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098022"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Een synthetische partitiesleutel maken
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Het is de best practice om een partitie sleutel te hebben met veel verschillende waarden, zoals honderden of duizend tallen. Het doel is om uw gegevens en werk belasting gelijkmatig te verdelen over de items die zijn gekoppeld aan deze partitie sleutel waarden. Als een dergelijke eigenschap niet in uw gegevens bestaat, kunt u een *synthetische partitie sleutel*maken. In dit document worden verschillende basis technieken voor het genereren van een synthetische partitie sleutel voor uw Cosmos-container beschreven.
+Het is de best practice om een partitie sleutel te hebben met veel verschillende waarden, zoals honderden of duizend tallen. Het doel is om uw gegevens en werk belasting gelijkmatig te verdelen over de items die zijn gekoppeld aan deze partitie sleutel waarden. Als een dergelijke eigenschap niet in uw gegevens bestaat, kunt u een *synthetische partitie sleutel* maken. In dit document worden verschillende basis technieken voor het genereren van een synthetische partitie sleutel voor uw Cosmos-container beschreven.
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>Meerdere eigenschappen van een item samen voegen
 

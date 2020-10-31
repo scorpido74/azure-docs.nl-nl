@@ -11,16 +11,16 @@ author: jhirono
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1d215c9564d89e5bd410e68839807f5c2c752356
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b16c8873a1778b907b288486c204d74ee31683cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828512"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097954"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Uw werk ruimte gebruiken met een aangepaste DNS-server
 
-Wanneer u Azure Machine Learning met een virtueel netwerk gebruikt, zijn er [verschillende manieren om DNS-naam omzetting te verwerken](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances). Standaard verwerkt Azure automatisch naam omzetting voor uw werk ruimte en persoonlijk eind punt. Wanneer u echter __uw eigen aangepaste DNS-server gebruikt__, moet u hand matig DNS-vermeldingen maken voor de werk ruimte.
+Wanneer u Azure Machine Learning met een virtueel netwerk gebruikt, zijn er [verschillende manieren om DNS-naam omzetting te verwerken](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances). Standaard verwerkt Azure automatisch naam omzetting voor uw werk ruimte en persoonlijk eind punt. Wanneer u echter __uw eigen aangepaste DNS-server gebruikt__ , moet u hand matig DNS-vermeldingen maken voor de werk ruimte.
 
 > [!IMPORTANT]
 > In dit artikel wordt alleen beschreven hoe u de Fully Qualified Domain Name (FQDN) en IP-adressen voor deze vermeldingen kunt vinden. Deze bevat geen informatie over het configureren van de DNS-records voor deze items. Raadpleeg de documentatie bij uw DNS-software voor informatie over het toevoegen van records.
@@ -46,14 +46,14 @@ De volgende lijst bevat de volledig gekwalificeerde domein namen (FQDN) die word
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
 * `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
-* Als u een reken instantie maakt, moet u ook een vermelding voor toevoegen `<instance-name>.<region>.instances.azureml.ms` .
+* Als u een compute-exemplaar maakt, moet u ook een vermelding voor met het privé `<instance-name>.<region>.instances.azureml.ms` -IP-eind punt van de werk ruimte toevoegen. Houd er rekening mee dat Compute instance alleen kan worden geopend vanuit het virtuele netwerk.
 
 Gebruik een van de volgende methoden om de interne IP-adressen voor de FQDN-namen in het VNet te vinden:
 
 > [!NOTE]
 > De volledig gekwalificeerde domein namen en IP-adressen verschillen op basis van uw configuratie. De GUID-waarde in de domein naam is bijvoorbeeld specifiek voor uw werk ruimte.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az network private-endpoint show --endpoint-name <endpoint> --resource-group <resource-group> --query 'customDnsConfigs[*].{FQDN: fqdn, IPAddress: ipAddresses[0]}' --output table
@@ -68,8 +68,8 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 # <a name="azure-portal"></a>[Azure-portal](#tab/azure-portal)
 
-1. Selecteer uw Azure Machine Learning- __werk ruimte__In de [Azure Portal](https://portal.azure.com).
-1. Selecteer in de sectie __instellingen__ de optie verbindingen met een __privé-eind punt__.
+1. Selecteer uw Azure Machine Learning- __werk ruimte__ In de [Azure Portal](https://portal.azure.com).
+1. Selecteer in de sectie __instellingen__ de optie verbindingen met een __privé-eind punt__ .
 1. Selecteer de koppeling in de kolom met het __persoonlijke eind punt__ die wordt weer gegeven.
 1. Onder aan de pagina vindt u een lijst met de FQDN-namen (Fully Qualified Domain names) en IP-adressen voor het persoonlijke eind punt van de werk ruimte.
 
@@ -92,7 +92,7 @@ De informatie die door alle methoden wordt geretourneerd, is hetzelfde. een lijs
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
-> * Als u een reken instantie hebt, gebruikt u `<instance-name>.<region>.instances.azureml.ms` , waarbij `<instance-name>` de naam van uw reken instantie is.
+> * Als u een reken instantie hebt, gebruikt u `<instance-name>.<region>.instances.azureml.ms` , waarbij `<instance-name>` de naam van uw reken instantie is. Gebruik een privé-IP-adres van het persoonlijke eind punt van de werk ruimte. Houd er rekening mee dat Compute instance alleen kan worden geopend vanuit het virtuele netwerk.
 >
 > Voor al deze IP-adressen gebruikt u hetzelfde adres als de `*.api.azureml.ms` vermeldingen die in de vorige stappen zijn geretourneerd.
 

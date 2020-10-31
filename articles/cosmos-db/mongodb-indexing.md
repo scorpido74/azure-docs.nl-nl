@@ -9,14 +9,15 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a1144560b8bd8638477828f1aeafcacbc8b77f1d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487378"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096475"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB-API voor MongoDB maakt gebruik van de belangrijkste mogelijkheden voor index beheer van Azure Cosmos DB. In dit artikel wordt uitgelegd hoe u indexen toevoegt met behulp van de API van Azure Cosmos DB voor MongoDB. U kunt ook een [overzicht van het indexeren in azure Cosmos DB](index-overview.md) lezen dat relevant is voor alle api's.
 
@@ -121,7 +122,7 @@ Met de volgende opdracht maakt u een Joker teken index voor alle eigenschappen i
 
 `db.coll.createIndex({"children.$**" : 1})`
 
-**In tegens telling tot in MongoDb kunnen Joker teken indexen meerdere velden in query-predikaten ondersteunen**. Er is geen verschil in de query prestaties als u één enkele Joker teken index gebruikt in plaats van een afzonderlijke index voor elke eigenschap te maken.
+**In tegens telling tot in MongoDb kunnen Joker teken indexen meerdere velden in query-predikaten ondersteunen** . Er is geen verschil in de query prestaties als u één enkele Joker teken index gebruikt in plaats van een afzonderlijke index voor elke eigenschap te maken.
 
 U kunt de volgende index typen maken met de syntaxis Joker teken:
 
@@ -147,7 +148,7 @@ Joker tekens bieden geen ondersteuning voor een van de volgende index typen of e
 - TTL
 - Uniek
 
-In **tegens telling tot in MongoDb**, in de API van Azure Cosmos DB voor MongoDb **kunt u geen** Joker teken indexen gebruiken voor:
+In **tegens telling tot in MongoDb** , in de API van Azure Cosmos DB voor MongoDb **kunt u geen** Joker teken indexen gebruiken voor:
 
 - Een Joker teken index maken die meerdere specifieke velden bevat
 

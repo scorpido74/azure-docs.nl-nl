@@ -6,14 +6,15 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 38129c920b422babfedf5d40bb362c7552f6f712
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8721c0eb728f568521e86baecb658dc9c869a7f6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951958"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097580"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Opties voor het migreren van uw on-premises of Cloud gegevens naar Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 U kunt gegevens uit verschillende gegevens bronnen laden naar Azure Cosmos DB. Omdat Azure Cosmos DB meerdere Api's ondersteunt, kunnen de doelen een van de bestaande Api's zijn. Hier volgen enkele scenario's waarin u gegevens migreert naar Azure Cosmos DB:
 
@@ -28,15 +29,15 @@ Voor het ondersteunen van migratie paden van de verschillende bronnen naar de ve
 
 De volgende factoren bepalen de keuze van het migratie programma:
 
-* **Online versus offline migratie**: veel hulpprogram ma's voor migratie bieden een pad voor het uitvoeren van een eenmalige migratie. Dit betekent dat de toepassingen die toegang hebben tot de Data Base een periode van downtime kunnen ondervinden. Sommige migratie oplossingen bieden een manier om een Livemigratie uit te voeren waarbij een replicatie pijplijn is ingesteld tussen de bron en het doel.
+* **Online versus offline migratie** : veel hulpprogram ma's voor migratie bieden een pad voor het uitvoeren van een eenmalige migratie. Dit betekent dat de toepassingen die toegang hebben tot de Data Base een periode van downtime kunnen ondervinden. Sommige migratie oplossingen bieden een manier om een Livemigratie uit te voeren waarbij een replicatie pijplijn is ingesteld tussen de bron en het doel.
 
-* **Gegevens bron**: de bestaande gegevens kunnen zich in verschillende gegevens bronnen bevinden, zoals Oracle DB2, Datastax Cassanda, Azure SQL database, PostgreSQL, enzovoort. De gegevens kunnen zich ook in een bestaand Azure Cosmos DB account bevinden en het doel van de migratie kan het gegevens model wijzigen of de gegevens in een container opnieuw partitioneren met een andere partitie sleutel.
+* **Gegevens bron** : de bestaande gegevens kunnen zich in verschillende gegevens bronnen bevinden, zoals Oracle DB2, Datastax Cassanda, Azure SQL database, PostgreSQL, enzovoort. De gegevens kunnen zich ook in een bestaand Azure Cosmos DB account bevinden en het doel van de migratie kan het gegevens model wijzigen of de gegevens in een container opnieuw partitioneren met een andere partitie sleutel.
 
-* **Azure Cosmos DB-API**: voor de SQL-api in azure Cosmos DB bestaan er diverse hulpprogram ma's die zijn ontwikkeld door het Azure Cosmos DB team en die ondersteuning bieden voor de verschillende migratie scenario's. Alle andere Api's hebben hun eigen gespecialiseerde set hulpprogram ma's die door de community zijn ontwikkeld en onderhouden. Omdat Azure Cosmos DB deze Api's ondersteunt op een niveau van een kabel protocol, moeten deze hulpprogram ma's werken zoals bij het migreren van gegevens naar Azure Cosmos DB. Het is echter mogelijk dat er aangepaste verwerking vereist is, omdat dit concept specifiek is voor Azure Cosmos DB.
+* **Azure Cosmos DB-API** : voor de SQL-api in azure Cosmos DB bestaan er diverse hulpprogram ma's die zijn ontwikkeld door het Azure Cosmos DB team en die ondersteuning bieden voor de verschillende migratie scenario's. Alle andere Api's hebben hun eigen gespecialiseerde set hulpprogram ma's die door de community zijn ontwikkeld en onderhouden. Omdat Azure Cosmos DB deze Api's ondersteunt op een niveau van een kabel protocol, moeten deze hulpprogram ma's werken zoals bij het migreren van gegevens naar Azure Cosmos DB. Het is echter mogelijk dat er aangepaste verwerking vereist is, omdat dit concept specifiek is voor Azure Cosmos DB.
 
-* **Grootte van gegevens**: de meeste migratie hulpprogramma's werken zeer goed voor kleinere gegevens sets. Wanneer de gegevensset meer dan honderd GB overschrijdt, zijn de opties voor migratie hulpprogramma's beperkt. 
+* **Grootte van gegevens** : de meeste migratie hulpprogramma's werken zeer goed voor kleinere gegevens sets. Wanneer de gegevensset meer dan honderd GB overschrijdt, zijn de opties voor migratie hulpprogramma's beperkt. 
 
-* **Verwachte migratie duur**: migraties kunnen worden geconfigureerd om te worden uitgevoerd met een traag, incrementeel tempo dat minder door Voer verbruikt of de volledige door Voer die is ingericht op de doel Azure Cosmos DB container verbruikt en de migratie in minder tijd kan volt ooien.
+* **Verwachte migratie duur** : migraties kunnen worden geconfigureerd om te worden uitgevoerd met een traag, incrementeel tempo dat minder door Voer verbruikt of de volledige door Voer die is ingericht op de doel Azure Cosmos DB container verbruikt en de migratie in minder tijd kan volt ooien.
 
 ## <a name="azure-cosmos-db-sql-api"></a>SQL-API voor Azure Cosmos DB
 

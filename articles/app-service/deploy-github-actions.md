@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 638dfc63b6a37bae3905703bbd5ecabaa94d2020
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6c768df964d46364a8ca501c078dbecaf1aaa21f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783076"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095557"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Implementeren naar App Service met behulp van GitHub-acties
 
@@ -74,6 +74,9 @@ Een publicatie profiel is een referentie op app-niveau. Stel uw publicatie profi
 1. Selecteer op de pagina **overzicht** de optie **publicatie profiel ophalen** .
 
 1. Sla het gedownloade bestand op. U gebruikt de inhoud van het bestand om een GitHub-geheim te maken.
+
+> [!NOTE]
+> Vanaf 2020 oktober moeten voor Linux-web-apps de app-instelling zijn `WEBSITE_WEBDEPLOY_USE_SCM` ingesteld op `true` **voordat het publicatie profiel** kan worden gedownload. Deze vereiste wordt in de toekomst verwijderd.
 
 # <a name="service-principal"></a>[Service-principal](#tab/userlevel)
 

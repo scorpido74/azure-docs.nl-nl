@@ -9,14 +9,15 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab24c317513382afdd452843bc09e845ca90452
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324549"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096492"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Een Node.js Mongoose-toepassing verbinden met Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 In deze zelf studie wordt gedemonstreerd hoe u het [Mongoose-Framework](https://mongoosejs.com/) kunt gebruiken bij het opslaan van gegevens in Cosmos db. We gebruiken de Azure Cosmos DB-API voor MongoDB voor deze walkthrough. Voor wie niet bekend is met Mongoose: dit is een framework voor objectmodellering voor MongoDB in Node.js en biedt een ongecompliceerde, op schema's gebaseerde oplossing voor het modelleren van uw toepassingsgegevens.
 
@@ -38,11 +39,11 @@ We gaan een Cosmos-account maken. Als u al een account hebt dat u wilt gebruiken
 
 ### <a name="create-a-database"></a>Een database maken 
 In deze toepassing behandelen we twee manieren om verzamelingen te maken in Azure Cosmos DB: 
-- **Elk object model opslaan in een afzonderlijke verzameling**: we raden [u aan een Data Base met een speciale door voer te maken](set-throughput.md#set-throughput-on-a-database). Met dit capaciteits model krijgt u een betere kosten besparing.
+- **Elk object model opslaan in een afzonderlijke verzameling** : we raden [u aan een Data Base met een speciale door voer te maken](set-throughput.md#set-throughput-on-a-database). Met dit capaciteits model krijgt u een betere kosten besparing.
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js zelf studie: scherm afbeelding van de Azure Portal, waarin wordt getoond hoe u een Data Base maakt in de Data Explorer voor een Azure Cosmos DB account, voor gebruik met de Mongoose-knooppunt module":::
 
-- **Alle object modellen opslaan in een enkele Cosmos DB verzameling**: als u liever alle modellen in één verzameling opslaat, kunt u gewoon een nieuwe data base maken zonder de optie door Voer inrichten te selecteren. Als u dit capaciteits model gebruikt, wordt elke verzameling gemaakt met een eigen doorvoer capaciteit voor elk object model.
+- **Alle object modellen opslaan in een enkele Cosmos DB verzameling** : als u liever alle modellen in één verzameling opslaat, kunt u gewoon een nieuwe data base maken zonder de optie door Voer inrichten te selecteren. Als u dit capaciteits model gebruikt, wordt elke verzameling gemaakt met een eigen doorvoer capaciteit voor elk object model.
 
 Nadat u de Data Base hebt gemaakt, gebruikt u de naam in de `COSMOSDB_DBNAME` omgevings variabele hieronder.
 

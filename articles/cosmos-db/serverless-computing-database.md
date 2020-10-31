@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 0167dc0b1cbf8cf3b95995645ef24548a05c4343
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5264fb44f8088ae8f942abf95bc8c0ef6d917413
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538643"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096135"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloze database Computing met Azure Cosmos DB en Azure Functions
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Serverloze computing is de mogelijkheid om te focussen op afzonderlijke stukjes logica die herhaalbaar en stateless zijn. Voor deze onderdelen is geen infrastructuur beheer vereist en worden bronnen alleen gebruikt voor de seconden of milliseconden waarvoor ze worden uitgevoerd. De kern van de serverloze computing bewegingen zijn functies die beschikbaar worden gesteld in het Azure-ecosysteem door [Azure functions](https://azure.microsoft.com/services/functions). Zie [serverloze op Azure](https://azure.microsoft.com/solutions/serverless/) -pagina voor meer informatie over andere serverloze uitvoerings omgevingen in Azure. 
 

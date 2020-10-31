@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: aecc64c5fa923bc29d34efd3969c2c12f30153c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 351a9742e9d839a8e217fdea35cad922acc3339f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320099"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095669"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Feedback over het verwerken van beoordeling voor Azure-toepassings aanbiedingen
 
@@ -39,11 +39,11 @@ Gebruik de volgende procedure om de problemen te bekijken die worden beschreven 
     [![Start pagina pull-aanvraag](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Klik op deze afbeelding om uit te breiden.*
 
-1. Beschrijving Selecteer aan de rechter kant van het venster in het sectie **beleid**het probleem bericht (in dit voor beeld: **beleids validatie mislukt**) om de details op laag niveau van het probleem te onderzoeken, inclusief de bijbehorende logboek bestanden. Fouten worden doorgaans weer gegeven aan de onderkant van de logboek bestanden.
+1. Beschrijving Selecteer aan de rechter kant van het venster in het sectie **beleid** het probleem bericht (in dit voor beeld: **beleids validatie mislukt** ) om de details op laag niveau van het probleem te onderzoeken, inclusief de bijbehorende logboek bestanden. Fouten worden doorgaans weer gegeven aan de onderkant van de logboek bestanden.
 
 1. Selecteer in het menu aan de linkerkant van de start pagina de optie **bestanden** om de lijst bestanden weer te geven waaruit de technische activa voor deze aanbieding bestaan. De micro soft-revisoren moeten opmerkingen hebben toegevoegd waarin de gedetecteerde kritieke problemen worden beschreven. In het volgende voor beeld zijn er twee problemen ontdekt.
 
-    [![Start pagina pull-aanvraag](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    [![Scherm afbeelding waarmee bestanden worden gemarkeerd en de twee problemen die zijn gedetecteerd.](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Klik op deze afbeelding om uit te breiden.*
 
 1. Selecteer elk knoop punt met opmerkingen in de linker boom om naar de opmerking in de context van de omringende code te navigeren. Corrigeer de bron code in het project van uw team om het probleem te verhelpen dat wordt beschreven in de opmerking.

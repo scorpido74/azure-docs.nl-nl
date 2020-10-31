@@ -9,14 +9,15 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: e86c48695c732b27f5032c1e3780cc24c8d3dc39
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3d21aadd8174bf933e55320c8596c57274140582
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482261"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096390"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Lees bewerkingen globaal distribueren met behulp van de API van Azure Cosmos DB voor MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 In dit artikel wordt beschreven hoe u met beAzure Cosmos DB hulp van de MongoDb-API voor MongoDB wereld wijd Lees bewerkingen kunt distribueren met de [voor keuren](https://docs.mongodb.com/manual/core/read-preference/) voor het lezen van instellingen
 
@@ -145,7 +146,7 @@ Naast de Lees modus voor keuren, kunt u met het MongoDB-protocol Tags gebruiken 
       }
 ```
 
-Daarom kan MongoClient de `region` tag samen met de regio naam gebruiken om Lees bewerkingen naar specifieke regio's te sturen. Voor Cosmos-accounts kunt u de namen van regio's vinden in Azure Portal aan de linkerkant onder **instellingen->replica gegevens wereld wijd**. Deze instelling is handig voor het bereiken van **Lees isolatie** -gevallen waarin client toepassing alleen lees bewerkingen naar een specifieke regio wil door sturen. Deze instelling is ideaal voor scenario's van het type niet-productie/analyse, die op de achtergrond worden uitgevoerd en geen essentiële services produceren.
+Daarom kan MongoClient de `region` tag samen met de regio naam gebruiken om Lees bewerkingen naar specifieke regio's te sturen. Voor Cosmos-accounts kunt u de namen van regio's vinden in Azure Portal aan de linkerkant onder **instellingen->replica gegevens wereld wijd** . Deze instelling is handig voor het bereiken van **Lees isolatie** -gevallen waarin client toepassing alleen lees bewerkingen naar een specifieke regio wil door sturen. Deze instelling is ideaal voor scenario's van het type niet-productie/analyse, die op de achtergrond worden uitgevoerd en geen essentiële services produceren.
 
 In het volgende code fragment van de voorbeeld toepassing ziet u hoe u de voor keur lezen configureert met tags in NodeJS:
 
@@ -167,7 +168,7 @@ In dit artikel hebt u geleerd hoe u wereld wijd Lees bewerkingen kunt distribuer
 Als u deze app niet verder wilt gebruiken, verwijdert u alle resources die in dit artikel zijn gemaakt in de Azure Portal door de volgende stappen uit te voeren:
 
 1. Klik in het menu aan de linkerkant in Azure Portal op **Resourcegroepen** en klik vervolgens op de resource die u hebt gemaakt. 
-2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen**.
+2. Klik op de pagina van uw resourcegroep op **Verwijderen** , typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

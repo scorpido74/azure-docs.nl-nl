@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 77e74a36d7b353d0713a7bf17f7a6341558f0739
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b2aab6579f9cc78e44454407f1f4ddeed605086b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484998"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096101"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Table-API in Azure Cosmos DB
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 De Azure Cosmos DB Table-API is beschikbaar in de [Azure Portal](https://portal.azure.com) eerst moet u zich aanmelden voor een Azure-abonnement. Nadat u zich hebt geregistreerd, kunt u een Azure Cosmos DB Table-API account toevoegen aan uw Azure-abonnement en vervolgens tabellen toevoegen aan uw account. U kunt de ondersteunde talen vinden en snel aan de slag met de [Inleiding tot Azure Cosmos DB Table-API](table-introduction.md).
 
@@ -195,7 +196,7 @@ Ja, Azure Cosmos DB Table-API biedt automatische indexering van alle kenmerken z
 
 Ja, u kunt het indexerings beleid wijzigen door de index definitie op te geven. U moet de instellingen op de juiste wijze coderen en escapepen.
 
-Voor de non-.NET Sdk's kan het indexerings beleid alleen worden ingesteld in de portal op **Data Explorer**, navigeer naar de specifieke tabel die u wilt wijzigen en ga vervolgens naar de **instellingen voor het schalen &**->indexerings beleid, breng de gewenste wijziging aan en **Sla**het bestand op.
+Voor de non-.NET Sdk's kan het indexerings beleid alleen worden ingesteld in de portal op **Data Explorer** , navigeer naar de specifieke tabel die u wilt wijzigen en ga vervolgens naar de **instellingen voor het schalen &** ->indexerings beleid, breng de gewenste wijziging aan en **Sla** het bestand op.
 
 De .NET-SDK kan worden verzonden in het app.config-bestand:
 

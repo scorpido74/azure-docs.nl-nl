@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 3aec6cf2fa515d71b93d84cf8c4fc901fc847162
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487429"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096747"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Een-op-weinig relationele gegevens migreren naar Azure Cosmos DB SQL-API-account
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Als u wilt migreren van een relationele data base naar Azure Cosmos DB SQL-API, kan het nodig zijn om wijzigingen aan te brengen in het gegevens model voor Optima Lise ring.
 
@@ -54,7 +55,7 @@ IDEA liter wilt u een Kopieer activiteit met één Azure Data Factory (ADF) gebr
 
 De huidige beperking kan op een van de volgende manieren worden omzeild:
 
-* **Gebruik Azure Data Factory met twee Kopieer activiteiten**: 
+* **Gebruik Azure Data Factory met twee Kopieer activiteiten** : 
   1. Gegevens in JSON-indeling ophalen van SQL naar een tekst bestand in een tussenliggende Blob-opslag locatie en 
   2. Laad gegevens uit het JSON-tekst bestand naar een container in Azure Cosmos DB.
 

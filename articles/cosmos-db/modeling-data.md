@@ -7,14 +7,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: ae0bf6836fd08e20d97f1cfd85627b25e31bf380
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0868b0d3e917b857d09c89e3a35d03872c42a23e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278418"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096645"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Gegevens modellering in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 U kunt zonder schema-Free data bases, zoals Azure Cosmos DB, het eenvoudig maken om ongestructureerde en semi-gestructureerde gegevens op te slaan en op te vragen, maar u kunt het beste even best Eden aan het gebruik van uw gegevens model om optimaal te profiteren van de prestaties en schaal baarheid en de laagste kosten.
 
@@ -35,7 +36,7 @@ Laten we eerst zien hoe we gegevens in een relationele data base kunnen model le
 
 :::image type="content" source="./media/sql-api-modeling-data/relational-data-model.png" alt-text="Relationeel database model" border="false":::
 
-Bij het werken met relationele data bases is de strategie het normaliseren van al uw gegevens. Het normaliseren van uw gegevens omvat meestal het nemen van een entiteit, zoals een persoon, en het opsplitsen daarvan in discrete onderdelen. In het bovenstaande voor beeld kan een persoon meerdere contact gegevens records hebben, evenals meerdere adres records. De contact gegevens kunnen verder worden opgesplitst door algemene velden, zoals een type, verder uit te pakken. Hetzelfde geldt voor het adres, elke record kan van het type *thuis* of *zakelijk*zijn.
+Bij het werken met relationele data bases is de strategie het normaliseren van al uw gegevens. Het normaliseren van uw gegevens omvat meestal het nemen van een entiteit, zoals een persoon, en het opsplitsen daarvan in discrete onderdelen. In het bovenstaande voor beeld kan een persoon meerdere contact gegevens records hebben, evenals meerdere adres records. De contact gegevens kunnen verder worden opgesplitst door algemene velden, zoals een type, verder uit te pakken. Hetzelfde geldt voor het adres, elke record kan van het type *thuis* of *zakelijk* zijn.
 
 De richt zich op de lokale locatie bij het normaliseren van gegevens is om te **voor komen dat er redundante gegevens worden opgeslagen** op elke record en om te verwijzen naar gegevens. In dit voor beeld, om een persoon te lezen met al hun contact gegevens en-adressen, moet u samen voegingen gebruiken om uw gegevens in runtime effectief te maken (of te denormaliseren).
 
@@ -85,9 +86,9 @@ In het algemeen gebruikt u Inge sloten gegevens modellen wanneer:
 
 * Er zijn **relaties** tussen entiteiten.
 * Er zijn **een-op-veel-** relaties tussen entiteiten.
-* Er zijn Inge sloten gegevens die niet **regel matig veranderen**.
-* Er zijn Inge sloten gegevens die niet worden uitgebreid **zonder gebonden**.
-* Er zijn Inge sloten gegevens die **vaak samen worden opgevraagd**.
+* Er zijn Inge sloten gegevens die niet **regel matig veranderen** .
+* Er zijn Inge sloten gegevens die niet worden uitgebreid **zonder gebonden** .
+* Er zijn Inge sloten gegevens die **vaak samen worden opgevraagd** .
 
 > [!NOTE]
 > Normaal gesp roken gegevens modellen bieden betere **Lees** prestaties.
@@ -116,7 +117,7 @@ Neem dit JSON-fragment op.
 }
 ```
 
-Dit kan zijn dat een post-entiteit met Inge sloten opmerkingen eruit zou zien als we een typische blog of CMS-systeem zouden model leren. Het probleem met dit voor beeld is dat de opmerkingen matrix niet is **gebonden**, wat inhoudt dat er geen (praktische) limiet is voor het aantal opmerkingen dat één post kan hebben. Dit kan een probleem zijn omdat de grootte van het item oneindig groot kan worden uitgebreid.
+Dit kan zijn dat een post-entiteit met Inge sloten opmerkingen eruit zou zien als we een typische blog of CMS-systeem zouden model leren. Het probleem met dit voor beeld is dat de opmerkingen matrix niet is **gebonden** , wat inhoudt dat er geen (praktische) limiet is voor het aantal opmerkingen dat één post kan hebben. Dit kan een probleem zijn omdat de grootte van het item oneindig groot kan worden uitgebreid.
 
 Naarmate de grootte van het item groeit, is de mogelijkheid om gegevens over de kabel te verzenden en om het item op de juiste schaal te lezen en bij te werken, van invloed.
 
@@ -241,8 +242,8 @@ In het algemeen gebruikt u genormaliseerde gegevens modellen als:
 
 * **Een-op-veel-** relaties vertegenwoordigen.
 * **Veel-op-veel** -relaties vertegenwoordigen.
-* Vaak gerelateerde gegevens **wijzigingen**.
-* Gegevens waarnaar wordt verwezen, kunnen **onbegrensd**zijn.
+* Vaak gerelateerde gegevens **wijzigingen** .
+* Gegevens waarnaar wordt verwezen, kunnen **onbegrensd** zijn.
 
 > [!NOTE]
 > Normaal gesp roken biedt doorgaans betere **Schrijf** prestaties.
@@ -402,7 +403,7 @@ Als de naam van de auteur is gewijzigd of als hij of zij de foto wil bijwerken, 
 
 In het voor beeld zijn er **vooraf berekende aggregaties-** waarden voor het besparen van de dure verwerking van een lees bewerking. In het voor beeld zijn enkele van de Inge sloten gegevens in het auteurs document gegevens die tijdens runtime worden berekend. Telkens wanneer een nieuw boek wordt gepubliceerd, wordt een boek document gemaakt **en** wordt het veld countOfBooks ingesteld op een berekende waarde op basis van het aantal boek documenten dat voor een bepaalde auteur bestaat. Deze Optima Lise ring is goed in Lees bare systemen waar we berekeningen kunnen uitvoeren bij schrijf bewerkingen om Lees bewerkingen te optimaliseren.
 
-De mogelijkheid om een model met vooraf berekende velden te maken, wordt mogelijk gemaakt omdat Azure Cosmos DB **meerdere document transacties**ondersteunt. Veel NoSQL-archieven kunnen geen trans acties uitvoeren voor documenten en daarom moeten ontwerp beslissingen worden genomen, zoals ' altijd insluiten alles ', als gevolg van deze beperking. Met Azure Cosmos DB kunt u triggers aan de server zijde of opgeslagen procedures gebruiken die boeken invoegen en auteurs bijwerken in een zure trans actie. Nu **hoeft u niet alles** in één document in te sluiten om er zeker van te zijn dat uw gegevens consistent blijven.
+De mogelijkheid om een model met vooraf berekende velden te maken, wordt mogelijk gemaakt omdat Azure Cosmos DB **meerdere document transacties** ondersteunt. Veel NoSQL-archieven kunnen geen trans acties uitvoeren voor documenten en daarom moeten ontwerp beslissingen worden genomen, zoals ' altijd insluiten alles ', als gevolg van deze beperking. Met Azure Cosmos DB kunt u triggers aan de server zijde of opgeslagen procedures gebruiken die boeken invoegen en auteurs bijwerken in een zure trans actie. Nu **hoeft u niet alles** in één document in te sluiten om er zeker van te zijn dat uw gegevens consistent blijven.
 
 ## <a name="distinguishing-between-different-document-types"></a>Onderscheiden van verschillende document typen
 

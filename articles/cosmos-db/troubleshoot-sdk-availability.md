@@ -8,14 +8,15 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319369"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097886"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>De beschik baarheid van Azure Cosmos-Sdk's in multiregionale omgevingen vaststellen en oplossen
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel wordt het gedrag van de nieuwste versie van Azure Cosmos Sdk's beschreven wanneer u een connectiviteits probleem met een bepaalde regio ziet of wanneer er een failover optreedt voor een regio.
 
@@ -34,7 +35,7 @@ Wanneer u de regionale voor keur instelt, zal de client verbinding maken met een
 | Enkele schrijf regio | Voorkeursregio | Primaire regio  |
 | Meerdere schrijf regio's | Voorkeursregio | Voorkeursregio  |
 
-Als u **geen voorkeurs regio instelt**, wordt de SDK-client standaard ingesteld op de primaire regio:
+Als u **geen voorkeurs regio instelt** , wordt de SDK-client standaard ingesteld op de primaire regio:
 
 |Accounttype |Leesbewerkingen |Schrijfbewerkingen |
 |------------------------|--|--|
@@ -46,7 +47,7 @@ Als u **geen voorkeurs regio instelt**, wordt de SDK-client standaard ingesteld 
 
 Onder normale omstandigheden zal de SDK-client verbinding maken met de voorkeurs regio (als een regionale voor keur is ingesteld) of aan de primaire regio (als er geen voor keur is ingesteld), en de bewerkingen worden beperkt tot die regio, tenzij een van de onderstaande scenario's zich voordoet.
 
-In dergelijke gevallen worden logboeken door de client met de Azure Cosmos SDK beschikbaar gemaakt en worden de gegevens voor nieuwe pogingen opgenomen als onderdeel van de **Diagnostische gegevens**van de bewerking:
+In dergelijke gevallen worden logboeken door de client met de Azure Cosmos SDK beschikbaar gemaakt en worden de gegevens voor nieuwe pogingen opgenomen als onderdeel van de **Diagnostische gegevens** van de bewerking:
 
 * De eigenschap *RequestDiagnosticsString* op antwoorden in de .NET v2-SDK.
 * De *Diagnostische* eigenschap voor antwoorden en uitzonde ringen in de .net v3 SDK.

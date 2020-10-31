@@ -7,18 +7,19 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 749e0f7c2d79c03be052869d7d1d9539976a09c5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a9545bcbb8fbb71143b91a764795986f519c2262
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489299"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097760"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Gegevens migreren naar Azure Cosmos DB Cassandra-API-account met behulp van Realtimeplatform
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 De Realtimeplatform-installatie kopie in de Azure Marketplace biedt continue realtime gegevens verplaatsing van data warehouses en data bases naar Azure. Tijdens het verplaatsen van de gegevens kunt u in-line denormalisatie, gegevens transformatie, realtime analyses en scenario's voor gegevens rapportage uitvoeren. Het is eenvoudig om aan de slag te gaan met Realtimeplatform om de Bedrijfs gegevens voortdurend te verplaatsen naar Azure Cosmos DB Cassandra-API. Azure biedt een Marketplace-aanbieding die het eenvoudig maakt om Realtimeplatform te implementeren en gegevens te migreren naar Azure Cosmos DB. 
 
-In dit artikel wordt beschreven hoe u Realtimeplatform kunt gebruiken om gegevens uit een **Oracle-data base** te migreren naar een **Azure Cosmos DB Cassandra-API-account**.
+In dit artikel wordt beschreven hoe u Realtimeplatform kunt gebruiken om gegevens uit een **Oracle-data base** te migreren naar een **Azure Cosmos DB Cassandra-API-account** .
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,13 +29,13 @@ In dit artikel wordt beschreven hoe u Realtimeplatform kunt gebruiken om gegeven
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>De Realtimeplatform Marketplace-oplossing implementeren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer **een resource maken** en zoek naar **realtimeplatform** in azure Marketplace. Selecteer de eerste optie en **Maak**deze.
+1. Selecteer **een resource maken** en zoek naar **realtimeplatform** in azure Marketplace. Selecteer de eerste optie en **Maak** deze.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
-1. Voer vervolgens de configuratie-eigenschappen van de Realtimeplatform-instantie in. De Realtimeplatform-omgeving wordt geïmplementeerd op een virtuele machine. Voer in het deel venster **basis beginselen** de **VM-gebruikers naam**, het **VM-wacht woord** in (dit wacht woord wordt gebruikt voor SSH naar de virtuele machine). Selecteer uw **abonnement**, **resource groep**en **locatie gegevens** waar u realtimeplatform wilt implementeren. Wanneer u klaar bent, selecteert u **OK**.
+1. Voer vervolgens de configuratie-eigenschappen van de Realtimeplatform-instantie in. De Realtimeplatform-omgeving wordt geïmplementeerd op een virtuele machine. Voer in het deel venster **basis beginselen** de **VM-gebruikers naam** , het **VM-wacht woord** in (dit wacht woord wordt gebruikt voor SSH naar de virtuele machine). Selecteer uw **abonnement** , **resource groep** en **locatie gegevens** waar u realtimeplatform wilt implementeren. Wanneer u klaar bent, selecteert u **OK** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
@@ -49,11 +50,11 @@ In dit artikel wordt beschreven hoe u Realtimeplatform kunt gebruiken om gegeven
 
    Nadat u het formulier hebt ingevuld, selecteert u **OK** om door te gaan.
 
-1. Configureer in het deel venster **realtimeplatform toegangs instellingen** het **open bare IP-adres** (Kies de standaard waarden), de **domein naam voor realtimeplatform**, het **beheerders wachtwoord** dat u wilt gebruiken om u aan te melden bij de realtimeplatform-gebruikers interface. Een VNET en subnet configureren (Kies de standaard waarden). Nadat u de details hebt ingevuld, selecteert u **OK** om door te gaan.
+1. Configureer in het deel venster **realtimeplatform toegangs instellingen** het **open bare IP-adres** (Kies de standaard waarden), de **domein naam voor realtimeplatform** , het **beheerders wachtwoord** dat u wilt gebruiken om u aan te melden bij de realtimeplatform-gebruikers interface. Een VNET en subnet configureren (Kies de standaard waarden). Nadat u de details hebt ingevuld, selecteert u **OK** om door te gaan.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
-1. De implementatie wordt door Azure gevalideerd en er wordt gecontroleerd of alles goed werkt. het duurt enkele minuten voordat de validatie is voltooid. Nadat de validatie is voltooid, selecteert u **OK**.
+1. De implementatie wordt door Azure gevalideerd en er wordt gecontroleerd of alles goed werkt. het duurt enkele minuten voordat de validatie is voltooid. Nadat de validatie is voltooid, selecteert u **OK** .
   
 1. Controleer ten slotte de gebruiks voorwaarden en selecteer **maken** om uw realtimeplatform-exemplaar te maken. 
 
@@ -69,7 +70,7 @@ In deze sectie configureert u de Azure Cosmos DB Cassandra-API account als doel 
 
 1. Een [Azure Cosmos DB Cassandra-API-account](create-cassandra-dotnet.md#create-a-database-account) maken met behulp van de Azure Portal.
 
-1. Ga naar het **Data Explorer** deel venster in uw Azure Cosmos-account. Selecteer **nieuwe tabel** om een nieuwe container te maken. Stel dat u *producten* migreert en gegevens van Oracle Data Base *rangschikt* naar Azure Cosmos db. Maak een nieuwe sleutel ruimte met de naam **StriimDemo** met een container orders. De container inrichten met **1000 RUs**(in dit voor beeld wordt 1000 RUs gebruikt, maar u moet de door Voer geschatte voor uw werk belasting gebruiken) en **/ORDER_ID** als primaire sleutel. Deze waarden variëren afhankelijk van de bron gegevens. 
+1. Ga naar het **Data Explorer** deel venster in uw Azure Cosmos-account. Selecteer **nieuwe tabel** om een nieuwe container te maken. Stel dat u *producten* migreert en gegevens van Oracle Data Base *rangschikt* naar Azure Cosmos db. Maak een nieuwe sleutel ruimte met de naam **StriimDemo** met een container orders. De container inrichten met **1000 RUs** (in dit voor beeld wordt 1000 RUs gebruikt, maar u moet de door Voer geschatte voor uw werk belasting gebruiken) en **/ORDER_ID** als primaire sleutel. Deze waarden variëren afhankelijk van de bron gegevens. 
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-cassandra-api-account.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
@@ -129,7 +130,7 @@ In deze sectie configureert u de Azure Cosmos DB Cassandra-API account als doel 
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
-1. U ontvangt nu de start pagina van Realtimeplatform. Er zijn drie verschillende deel Vensters: **Dash boards**, **apps**en **SourcePreview**. In het deel venster Dash boards kunt u gegevens in realtime verplaatsen en visualiseren. Het deel venster apps bevat uw gegevens pijplijnen voor streamen of gegevens stromen. Aan de rechter kant van de pagina is SourcePreview waar u een voor beeld van uw gegevens kunt bekijken voordat u deze verplaatst.
+1. U ontvangt nu de start pagina van Realtimeplatform. Er zijn drie verschillende deel Vensters: **Dash boards** , **apps** en **SourcePreview** . In het deel venster Dash boards kunt u gegevens in realtime verplaatsen en visualiseren. Het deel venster apps bevat uw gegevens pijplijnen voor streamen of gegevens stromen. Aan de rechter kant van de pagina is SourcePreview waar u een voor beeld van uw gegevens kunt bekijken voordat u deze verplaatst.
 
 1. Het deel venster **apps** selecteren. we richten zich nu op dit deel venster. Er zijn diverse voor beeld-apps die u kunt gebruiken om meer te weten te komen over Realtimeplatform, maar in dit artikel maakt u zelf een eigen sjabloon. Selecteer de knop **app toevoegen** in de rechter bovenhoek.
 
@@ -139,7 +140,7 @@ In deze sectie configureert u de Azure Cosmos DB Cassandra-API account als doel 
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-app-from-scratch.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
-1. Geef een beschrijvende naam op voor uw toepassing, iets zoals **oraToCosmosDB** en selecteer **Opslaan**.
+1. Geef een beschrijvende naam op voor uw toepassing, iets zoals **oraToCosmosDB** en selecteer **Opslaan** .
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-new-application.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
@@ -147,7 +148,7 @@ In deze sectie configureert u de Azure Cosmos DB Cassandra-API account als doel 
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/oracle-cdc-source.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
-1. Voer de bron configuratie-eigenschappen van uw Oracle-exemplaar in. De bron naam is slechts een naamgevings Conventie voor de Realtimeplatform-toepassing. u kunt een naam gebruiken zoals  **src_onPremOracle**. Geef ook andere gegevens op, zoals het adapter type, de verbindings-URL, de gebruikers naam, het wacht woord en de tabel naam. Selecteer **Opslaan** om door te gaan.
+1. Voer de bron configuratie-eigenschappen van uw Oracle-exemplaar in. De bron naam is slechts een naamgevings Conventie voor de Realtimeplatform-toepassing. u kunt een naam gebruiken zoals  **src_onPremOracle** . Geef ook andere gegevens op, zoals het adapter type, de verbindings-URL, de gebruikers naam, het wacht woord en de tabel naam. Selecteer **Opslaan** om door te gaan.
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-source-parameters.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
@@ -159,7 +160,7 @@ In deze sectie configureert u de Azure Cosmos DB Cassandra-API account als doel 
 
 1. Voer de configuratie-eigenschappen van uw doel Azure Cosmos DB exemplaar in en selecteer **Opslaan** om door te gaan. Hier volgen de belangrijkste para meters die u moet weten:
 
-   * **Adapter** : gebruik **DatabaseWriter**. Wanneer u naar Azure Cosmos DB Cassandra-API schrijft, is DatabaseWriter vereist. Het Cassandra-stuur programma 3.6.0 is gebundeld met Realtimeplatform. Als de DatabaseWriter groter is dan het aantal dat is ingericht in de Azure Cosmos-container, zal de toepassing vastlopen.
+   * **Adapter** : gebruik **DatabaseWriter** . Wanneer u naar Azure Cosmos DB Cassandra-API schrijft, is DatabaseWriter vereist. Het Cassandra-stuur programma 3.6.0 is gebundeld met Realtimeplatform. Als de DatabaseWriter groter is dan het aantal dat is ingericht in de Azure Cosmos-container, zal de toepassing vastlopen.
 
    * **Verbindings-URL** : geef uw Azure Cosmos DB JDBC-VERBINDINGS-URL op. De URL heeft de indeling     `jdbc:cassandra://<contactpoint>:10350/<databaseName>?SSL=true`
 
@@ -173,12 +174,12 @@ In deze sectie configureert u de Azure Cosmos DB Cassandra-API account als doel 
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters2.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
-1. Nu gaan we de Realtimeplatform-toepassing uitvoeren. Selecteer in de bovenste menu balk **gemaakt**en implementeer vervolgens de **app**. In het venster implementatie kunt u opgeven of u bepaalde onderdelen van uw toepassing wilt uitvoeren op specifieke delen van uw implementatie topologie. Omdat we in een eenvoudige implementatie topologie worden uitgevoerd via Azure, gebruiken we de standaard optie.
+1. Nu gaan we de Realtimeplatform-toepassing uitvoeren. Selecteer in de bovenste menu balk **gemaakt** en implementeer vervolgens de **app** . In het venster implementatie kunt u opgeven of u bepaalde onderdelen van uw toepassing wilt uitvoeren op specifieke delen van uw implementatie topologie. Omdat we in een eenvoudige implementatie topologie worden uitgevoerd via Azure, gebruiken we de standaard optie.
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/deploy-the-app.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 
 
-1. Nu gaan we een voor beeld van de stroom bekijken om gegevens te zien die via de Realtimeplatform zijn getransporteerd. Klik op het pictogram Wave en klik op het oogpictogram ernaast. Na de implementatie kunt u een voor beeld van de stroom bekijken om de gegevens stroom te bekijken. Selecteer het pictogram **Wave** en de **Eyeball** ernaast. Selecteer de **geïmplementeerde** knop in de bovenste menu balk en selecteer **app starten**.
+1. Nu gaan we een voor beeld van de stroom bekijken om gegevens te zien die via de Realtimeplatform zijn getransporteerd. Klik op het pictogram Wave en klik op het oogpictogram ernaast. Na de implementatie kunt u een voor beeld van de stroom bekijken om de gegevens stroom te bekijken. Selecteer het pictogram **Wave** en de **Eyeball** ernaast. Selecteer de **geïmplementeerde** knop in de bovenste menu balk en selecteer **app starten** .
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-the-app.png" alt-text="Realtimeplatform Marketplace-item zoeken":::
 

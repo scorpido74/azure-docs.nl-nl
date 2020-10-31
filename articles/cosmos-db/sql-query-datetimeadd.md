@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 0b2741a3d2b013ba7bd97038eb4ba4512f36af11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6177426ce62f3369092403c52344fa764bcf2e6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261825"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095846"
 ---
 # <a name="datetimeadd-azure-cosmos-db"></a>DateTimeAdd (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Retourneert een datum-teken reeks waarde die het resultaat is van het toevoegen van een opgegeven numerieke waarde (als een ondertekend geheel getal) aan een opgegeven DateTime-teken reeks  
   
@@ -31,7 +32,7 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 
 | DateTimePart | afkortingen        |
 | ------------ | -------------------- |
-| Jaar         | "Year", "yyyy", "JJ" |
+| Year         | "Year", "yyyy", "JJ" |
 | Maand        | "month", "mm", "m"   |
 | Dag          | "dag", "dd", "d"     |
 | Uur         | "uur", "uu"         |

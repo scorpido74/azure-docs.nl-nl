@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 9ddee5991efd5bde3bd139257ad154f02f5d0371
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071299"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095948"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Exemplaar van Azure API Management automatisch schalen  
 
@@ -66,7 +66,7 @@ Volg de onderstaande stappen om automatisch schalen te configureren voor een Azu
 
     ![Azure Monitor automatisch schalen inschakelen](media/api-management-howto-autoscale/03.png)
 
-6. Klik in de sectie **regels** op **+ een regel toevoegen**.
+6. Klik in de sectie **regels** op **+ een regel toevoegen** .
 
     ![Azure Monitor regel voor automatisch schalen toevoegen](media/api-management-howto-autoscale/04.png)
 
@@ -93,7 +93,7 @@ Volg de onderstaande stappen om automatisch schalen te configureren voor een Azu
 
     ![Azure Monitor scale-out-regel](media/api-management-howto-autoscale/05.png)
 
-9. Klik opnieuw op **+ een regel toevoegen**.
+9. Klik opnieuw op **+ een regel toevoegen** .
 
     Deze keer moet er een schaal in de regel worden gedefinieerd. Het zorgt ervoor dat resources niet worden verspild wanneer het gebruik van Api's afneemt.
 
@@ -125,9 +125,9 @@ Volg de onderstaande stappen om automatisch schalen te configureren voor een Azu
     > [!NOTE]
     > Voor Azure API Management geldt een limiet van eenheden waarmee een exemplaar kan worden uitgeschaald naar. De limiet is afhankelijk van een servicelaag.
 
-    ![Schaal Azure Monitor in regel](media/api-management-howto-autoscale/07.png)
+    ![Scherm opname van de plaats waar het maximum aantal Azure API Management-eenheden moet worden ingesteld.](media/api-management-howto-autoscale/07.png)
 
-13. Klik op **Opslaan**. Uw automatisch schalen is geconfigureerd.
+13. Klik op **Opslaan** . Uw automatisch schalen is geconfigureerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

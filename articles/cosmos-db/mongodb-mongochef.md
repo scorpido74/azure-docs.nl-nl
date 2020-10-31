@@ -8,14 +8,15 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 6c9ea401a4a62f617b5acf6f96c60532d929ff1c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a02aaadf8c774557eb182acf041b6f19337a0de8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167964"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096509"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Verbinding maken met een Azure Cosmos-account met Studio 3T gebruiken
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Als u verbinding wilt maken met de API van een Azure Cosmos DB voor MongoDB met Studio 3T gebruiken, moet u het volgende doen:
 
@@ -42,23 +43,23 @@ Gebruik de volgende stappen om uw Azure Cosmos-account toe te voegen aan de Stud
 5. Schakel in het venster **nieuwe verbinding** , op het tabblad **SSL** , het selectie vakje **SSL-protocol gebruiken om verbinding te maken** in en het keuze rondje **Server zelfondertekende SSL-certificaten accepteren** .
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Scherm afbeelding van de connection string pagina":::
-6. Klik op de knop **verbinding testen** om de verbindings gegevens te valideren, klik op **OK** om terug te keren naar het venster nieuwe verbinding en klik vervolgens op **Opslaan**.
+6. Klik op de knop **verbinding testen** om de verbindings gegevens te valideren, klik op **OK** om terug te keren naar het venster nieuwe verbinding en klik vervolgens op **Opslaan** .
 
     :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Scherm afbeelding van de connection string pagina":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Studio 3T gebruiken gebruiken om een Data Base, verzameling en documenten te maken
 Voer de volgende stappen uit om een Data Base, verzameling en documenten te maken met behulp van Studio 3T gebruiken:
 
-1. Markeer in **verbindings beheer**de verbinding en klik op **verbinding maken**.
+1. Markeer in **verbindings beheer** de verbinding en klik op **verbinding maken** .
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Scherm afbeelding van de connection string pagina":::
-2. Klik met de rechter muisknop op de host en kies **Data Base toevoegen**.  Geef een database naam op en klik op **OK**.
+2. Klik met de rechter muisknop op de host en kies **Data Base toevoegen** .  Geef een database naam op en klik op **OK** .
 
     :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Scherm afbeelding van de connection string pagina":::
-3. Klik met de rechter muisknop op de data base en kies **verzameling toevoegen**.  Geef een naam voor de verzameling op en klik op **maken**.
+3. Klik met de rechter muisknop op de data base en kies **verzameling toevoegen** .  Geef een naam voor de verzameling op en klik op **maken** .
 
     :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Scherm afbeelding van de connection string pagina":::
-4. Klik op het menu-item **verzameling** en klik vervolgens op **document toevoegen**.
+4. Klik op het menu-item **verzameling** en klik vervolgens op **document toevoegen** .
 
     :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Scherm afbeelding van de connection string pagina" },
         "isRegistered": false

@@ -8,29 +8,29 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95607b78ff80566b76b8e6aa20462957249015b4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708432"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097648"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Uitvoer van Azure Stream Analytics
 
 Een Azure Stream Analytics-taak bestaat uit een invoer, query en een uitvoer. Er zijn verschillende uitvoer typen waarnaar u getransformeerde gegevens kunt verzenden. In dit artikel vindt u een overzicht van de ondersteunde Stream Analytics uitvoer. Wanneer u uw Stream Analytics query ontwerpt, raadpleegt u de naam van de uitvoer met behulp van de [component into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). U kunt één uitvoer per taak of meerdere uitvoer per streaming taak gebruiken (als u deze nodig hebt) door meerdere INTO-componenten aan de query toe te voegen.
 
-Als u Stream Analytics taak uitvoer wilt maken, bewerken en testen, kunt u de [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [rest API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)en [Visual Studio](stream-analytics-quick-create-vs.md)gebruiken.
+Als u Stream Analytics taak uitvoer wilt maken, bewerken en testen, kunt u de [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [rest API](https://docs.microsoft.com/rest/api/streamanalytics/)en [Visual Studio](stream-analytics-quick-create-vs.md)gebruiken.
 
 Sommige typen uitvoer ondersteunen [partitionering](#partitioning)en [uitvoer batch formaten](#output-batch-size) zijn afhankelijk van de door voer te optimaliseren. De volgende tabel bevat de functies die worden ondersteund voor elk uitvoer type:
 
 | Uitvoertype | Partitionering | Beveiliging | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory gebruiker </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory-gebruiker </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|Ja, optioneel.|SQL-gebruikers authenticatie </br> MSI (preview-versie)|
 |[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Ja|SQL-gebruikers authenticatie|
 |[Blob-opslag en Azure Data Lake gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|MSI </br> Toegangssleutel|
 |[Azure Event Hubs](event-hubs-output.md)|Ja, de partitie sleutel kolom moet worden ingesteld in de uitvoer configuratie.|Toegangssleutel|
-|[Power BI](power-bi-output.md)|Nee|Azure Active Directory gebruiker </br> MSI|
+|[Power BI](power-bi-output.md)|Nee|Azure Active Directory-gebruiker </br> MSI|
 |[Azure Table storage](table-storage-output.md)|Ja|Accountsleutel|
 |[Azure Service Bus-wachtrijen](service-bus-queues-output.md)|Ja|Toegangssleutel|
 |[Azure Service Bus onderwerpen](service-bus-topics-output.md)|Ja|Toegangssleutel|
@@ -59,7 +59,7 @@ Wanneer u Azure Resource Manager-sjabloon implementatie of het REST API gebruikt
 
    Het aantal minimum rijen per batch. Voor Parquet maakt elke batch een nieuw bestand. De huidige standaard waarde is 2.000 rijen en het toegestane maximum is 10.000 rijen.
 
-Deze batch venster Eigenschappen worden alleen ondersteund door API versie **2017-04-01-preview**. Hieronder ziet u een voor beeld van de JSON-nettolading voor een REST API aanroep:
+Deze batch venster Eigenschappen worden alleen ondersteund door API versie **2017-04-01-preview** . Hieronder ziet u een voor beeld van de JSON-nettolading voor een REST API aanroep:
 
 ```json
 "type": "stream",

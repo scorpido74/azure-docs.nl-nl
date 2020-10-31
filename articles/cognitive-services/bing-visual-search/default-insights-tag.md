@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5df94f95ea486f069ece264b8d09de1d9fc8607
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512636"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095013"
 ---
 # <a name="default-insights-tag"></a>Standaard-Insights-tag
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 De standaard-Insights-tag is het label waarbij het `displayName` veld is ingesteld op een lege teken reeks. In het volgende voor beeld ziet u de mogelijke lijst met standaard inzichten (acties). De lijst met acties die het antwoord bevat, is afhankelijk van de afbeelding. Voor elke actie kan de lijst met eigenschappen per afbeelding verschillen, dus controleer of de eigenschap bestaat voordat u deze gebruikt.
 

@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9c7b08b92fad07cddbdb2783f2d68cdb9be034a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440804"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097070"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
 Azure Digital apparaatdubbels gebruikt **gebeurtenis routes** voor het verzenden van gegevens naar gebruikers buiten de service. 
 
-Tijdens de preview zijn er twee belang rijke situaties voor het verzenden van Azure Digital Apparaatdubbels-gegevens:
+Er zijn twee belang rijke gevallen voor het verzenden van Azure Digital Apparaatdubbels-gegevens:
 * Het verzenden van gegevens van een dubbele in de Azure Digital Apparaatdubbels-grafiek naar een andere. Als u bijvoorbeeld een eigenschap op één digitaal nadien wijzigt, wilt u wellicht een melding ontvangen en een andere digitale navolgende digitaal bijwerken.
-* Verzenden van gegevens naar downstream gegevens Services voor extra opslag of verwerking (ook wel bekend als *gegevens*uitvoer). Bijvoorbeeld
+* Verzenden van gegevens naar downstream gegevens Services voor extra opslag of verwerking (ook wel bekend als *gegevens* uitvoer). Bijvoorbeeld
   - Een zieken huis wil mogelijk Azure Digital Apparaatdubbels-gebeurtenis gegevens naar [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md)verzenden om de tijdreeks gegevens van handwashing gebeurtenissen voor bulk analyse vast te leggen.
   - Een bedrijf dat al gebruikmaakt van [Azure Maps](../azure-maps/about-azure-maps.md) kan gebruikmaken van Azure Digital apparaatdubbels om de oplossing te verbeteren. Ze kunnen snel een Azure-kaart inschakelen na het instellen van Azure Digital Apparaatdubbels, Azure-toewijzings entiteiten in azure Digital Apparaatdubbels als [digitale apparaatdubbels](concepts-twins-graph.md) in het dubbele diagram, of krachtige query's uitvoeren met behulp van hun Azure Maps en Azure Digital apparaatdubbels-gegevens samen.
 
@@ -38,7 +38,7 @@ Typische downstream doelen voor gebeurtenis routes zijn bronnen als TSI-, Azure 
 
 ### <a name="event-routes-for-internal-digital-twin-events"></a>Gebeurtenis routes voor interne digitale dubbele gebeurtenissen
 
-Tijdens de huidige preview-versie worden gebeurtenis routes ook gebruikt voor het afhandelen van gebeurtenissen in de dubbele grafiek en het verzenden van gegevens van digitale twee naar digitale twee. Dit wordt gedaan door gebeurtenis routes te verbinden via Event Grid naar reken resources, zoals [Azure functions](../azure-functions/functions-overview.md). Deze functies bepalen vervolgens hoe apparaatdubbels moeten worden ontvangen en reageren op gebeurtenissen. 
+Gebeurtenis routes worden ook gebruikt voor het afhandelen van gebeurtenissen in de twee grafieken en het verzenden van gegevens van digitale twee naar digitale twee. Dit wordt gedaan door gebeurtenis routes te verbinden via Event Grid naar reken resources, zoals [Azure functions](../azure-functions/functions-overview.md). Deze functies bepalen vervolgens hoe apparaatdubbels moeten worden ontvangen en reageren op gebeurtenissen. 
 
 Wanneer een compute-resource de dubbele grafiek wil wijzigen op basis van een gebeurtenis die hij via de gebeurtenis route heeft ontvangen, is het handig om te weten welke dubbele it in de loop van de tijd wil wijzigen. 
 
@@ -50,7 +50,7 @@ Zie [*How-to: een Azure-functie instellen voor het verwerken van gegevens*](how-
 
 ## <a name="create-an-endpoint"></a>Een eindpunt maken
 
-Ontwikkel aars moeten eerst eind punten definiëren om een gebeurtenis route te definiëren. Een **eind punt** is een bestemming buiten Azure Digital apparaatdubbels die een route verbinding ondersteunt. Ondersteunde bestemmingen in de huidige preview-versie zijn:
+Ontwikkel aars moeten eerst eind punten definiëren om een gebeurtenis route te definiëren. Een **eind punt** is een bestemming buiten Azure Digital apparaatdubbels die een route verbinding ondersteunt. Ondersteunde bestemmingen zijn onder andere:
 * Aangepaste onderwerpen Event Grid
 * Event Hub
 * Service Bus
@@ -73,7 +73,7 @@ De eindpunt-Api's die beschikbaar zijn in het besturings vlak zijn:
  
 Als u een gebeurtenis route wilt maken, kunt u de Azure Digital Apparaatdubbels [**Data-vlak-api's**](how-to-manage-routes-apis-cli.md#create-an-event-route), CLI- [**opdrachten**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)of de [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route)gebruiken. 
 
-Hier volgt een voor beeld van het maken van een gebeurtenis route binnen een client toepassing, met behulp van de `CreateEventRoute` [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview) aanroep: 
+Hier volgt een voor beeld van het maken van een gebeurtenis route binnen een client toepassing, met behulp van de `CreateEventRoute` [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) aanroep: 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");
@@ -94,7 +94,7 @@ Routes kunnen ook worden gemaakt met behulp van de [Azure Digital APPARAATDUBBEL
 
 ## <a name="dead-letter-events"></a>Onbestelbare gebeurtenissen
 
-Wanneer een eind punt een gebeurtenis binnen een bepaalde tijds periode niet kan leveren of nadat de gebeurtenis een bepaald aantal keren is geprobeerd, kan de gebeurtenis worden verzonden naar een opslag account. Dit proces wordt **onbestelbare berichten**genoemd. Azure Digital Apparaatdubbels stuurt een gebeurtenis onbestelbaar wanneer aan **een van de volgende** voor waarden wordt voldaan. 
+Wanneer een eind punt een gebeurtenis binnen een bepaalde tijds periode niet kan leveren of nadat de gebeurtenis een bepaald aantal keren is geprobeerd, kan de gebeurtenis worden verzonden naar een opslag account. Dit proces wordt **onbestelbare berichten** genoemd. Azure Digital Apparaatdubbels stuurt een gebeurtenis onbestelbaar wanneer aan **een van de volgende** voor waarden wordt voldaan. 
 
 * De gebeurtenis wordt niet binnen de time-to-Live-periode bezorgd
 * Het aantal pogingen om de gebeurtenis te leveren overschrijdt de limiet

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: e7c4842494c144f5cd64d46f53f7a99266064680
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3569ae130813eb0aaf14ec3d8d4e5cfac3e98c6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993640"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095644"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-beëindiging met Key Vault certificaten
 
@@ -49,6 +49,9 @@ Voor de integratie van Application Gateway met Key Vault is een configuratie pro
 
    Vervolgens importeert u een bestaand certificaat of maakt u een nieuwe in uw sleutel kluis. Het certificaat wordt gebruikt door toepassingen die via de toepassings gateway worden uitgevoerd. In deze stap kunt u ook een sleutel kluis geheim gebruiken dat is opgeslagen als een met een wacht woord kleiner, met base 64 gecodeerd PFX-bestand. We raden u aan om een certificaat type te gebruiken vanwege de mogelijkheid tot het vernieuwen van de sleutel die beschikbaar is voor de objecten van het type certificaat. Nadat u een certificaat of een geheim hebt gemaakt, definieert u het toegangs beleid in de sleutel kluis zodat de identiteit kan worden toegekend toegang tot het geheim *te krijgen.*
    
+   > [!IMPORTANT]
+   > Voor Application Gateway is momenteel Key Vault toegang tot alle netwerken toegestaan om de integratie te benutten. Key Vault-integratie wordt niet ondersteund wanneer Key Vault is ingesteld op alleen persoonlijke eind punten toestaan en netwerk toegang selecteren. Ondersteuning voor privé-en Select-netwerken vindt u in de Works-functie voor volledige integratie van Key Vault met Application Gateway. 
+
    > [!NOTE]
    > Als u de toepassings gateway via een ARM-sjabloon implementeert door gebruik te maken van de Azure CLI of Power shell of via een Azure-toepassing die is geïmplementeerd vanuit het Azure Portal, wordt het SSL-certificaat opgeslagen in de sleutel kluis als een base64-gecodeerd PFX-bestand. U moet de stappen in [Use Azure Key Vault volt ooien om de waarde van Secure para meter door te geven tijdens de implementatie](../azure-resource-manager/templates/key-vault-parameter.md). 
    >

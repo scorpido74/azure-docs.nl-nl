@@ -9,14 +9,15 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765fd3afc7fe688d3e6b0e3394e7dc8c39af69b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362041"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096849"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Een Java-toepassing maken die Azure Cosmos DB SQL API en de wijzigingenfeedverwerer gebruikt
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In deze handleiding wordt uitgelegd hoe u een eenvoudige Java-toepassing maakt die gebruikmaakt van de Azure Cosmos DB SQL API om documenten in een Azure Cosmos DB-container in te voegen, terwijl u een gerealiseerde weergave van de container behoudt met de wijzigingenfeed en de wijzigingenfeedverwerker. De Java-toepassing communiceert met de Azure Cosmos DB SQL API met behulp van Azure Cosmos DB Java SDK v4.
 
@@ -74,9 +75,9 @@ mvn clean package
 
     Ga vervolgens terug naar de Azure Portal-gegevensverkenner in uw browser. U ziet dat een database met de naam **GroceryStoreDatabase** is toegevoegd met drie lege containers: 
 
-    * **InventoryContainer**: de inventarisrecord voor ons supermarktvoorbeeld, gepartitioneerd op item ```id```, dat een UUID is.
-    * **InventoryContainer-pktype**: een gerealiseerde weergave van het inventarisrecord, geoptimaliseerd voor query's in item ```type```
-    * **InventoryContainer-leases**: een leasecontainer is altijd nodig voor een wijzigingenfeed. Deze houdt de leesvoortgang van de app bij in de wijzigingenfeed.
+    * **InventoryContainer** : de inventarisrecord voor ons supermarktvoorbeeld, gepartitioneerd op item ```id```, dat een UUID is.
+    * **InventoryContainer-pktype** : een gerealiseerde weergave van het inventarisrecord, geoptimaliseerd voor query's in item ```type```
+    * **InventoryContainer-leases** : een leasecontainer is altijd nodig voor een wijzigingenfeed. Deze houdt de leesvoortgang van de app bij in de wijzigingenfeed.
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Azure Cosmos DB-account":::
 
@@ -94,21 +95,21 @@ mvn clean package
 
     ```"SampleHost_1"``` is de naam van de werkrol Wijzigingenfeedverwerker. ```changeFeedProcessorInstance.start()``` is waarmee de Wijzigingenfeedverwerker wordt gestart.
 
-    Ga terug naar de Azure Portal-gegevensverkenner in uw browser. Klik op **items** in de container **InventoryContainer-leases** om de inhoud ervan te bekijken. U ziet dat de wijzigingenfeedverwerker de leasecontainer heeft gevuld, ofwel de verwerker heeft de werkrol ```SampleHost_1``` een lease gegeven op een aantal partities van de **InventoryContainer**.
+    Ga terug naar de Azure Portal-gegevensverkenner in uw browser. Klik op **items** in de container **InventoryContainer-leases** om de inhoud ervan te bekijken. U ziet dat de wijzigingenfeedverwerker de leasecontainer heeft gevuld, ofwel de verwerker heeft de werkrol ```SampleHost_1``` een lease gegeven op een aantal partities van de **InventoryContainer** .
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Azure Cosmos DB-account":::
 
-1. Druk in de terminal nogmaals op enter. Hiermee worden 10 documenten ingevoegd in **InventoryContainer**. Elke invoeging van documenten verschijnt in de wijzigingenfeed als JSON. De volgende callback-code verwerkt deze gebeurtenissen door de JSON-documenten te spiegelen in een gerealiseerde weergave:
+1. Druk in de terminal nogmaals op enter. Hiermee worden 10 documenten ingevoegd in **InventoryContainer** . Elke invoeging van documenten verschijnt in de wijzigingenfeed als JSON. De volgende callback-code verwerkt deze gebeurtenissen door de JSON-documenten te spiegelen in een gerealiseerde weergave:
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
     [!code-java[](~/azure-cosmos-java-sql-app-example/src/main/java/com/azure/cosmos/workedappexample/SampleGroceryStore.java?name=CFPCallback)]
 
-1. Laat de code 5-10 seconden lopen Ga vervolgens terug naar de Azure Portal-gegevensverkenner en navigeer naar **InventoryContainer > items**. U ziet dat de items worden ingevoegd in de inventariscontainer. Let op de partitiesleutel (```id```).
+1. Laat de code 5-10 seconden lopen Ga vervolgens terug naar de Azure Portal-gegevensverkenner en navigeer naar **InventoryContainer > items** . U ziet dat de items worden ingevoegd in de inventariscontainer. Let op de partitiesleutel (```id```).
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Azure Cosmos DB-account":::
 
-1. Navigeer nu in Data Explorer naar **InventoryContainer-pktype > items**. Dit is de gerealiseerde weergave. De items in deze container weergeven **InventoryContainer**, omdat ze programmatisch zijn ingevoegd door de wijzigingenfeed. Let op de partitiesleutel (```type```). Deze gerealiseerde weergave is geoptimaliseerd voor queryfilters in ```type```, dat in **InventoryContainer** inefficiënt zou zijn, omdat die is gepartitioneerd in ```id```.
+1. Navigeer nu in Data Explorer naar **InventoryContainer-pktype > items** . Dit is de gerealiseerde weergave. De items in deze container weergeven **InventoryContainer** , omdat ze programmatisch zijn ingevoegd door de wijzigingenfeed. Let op de partitiesleutel (```type```). Deze gerealiseerde weergave is geoptimaliseerd voor queryfilters in ```type```, dat in **InventoryContainer** inefficiënt zou zijn, omdat die is gepartitioneerd in ```id```.
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Azure Cosmos DB-account":::
 
