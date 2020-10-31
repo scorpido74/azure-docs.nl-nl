@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12c4b9f4a3757a3974e4aff7699d0265bfd7840
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488504"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124370"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Een Azure Stream Analytics taak schalen om de door voer te verhogen
 In dit artikel wordt beschreven hoe u een Stream Analytics query kunt afstemmen om de door Voer voor streaming Analytics-taken te verhogen. U kunt de volgende hand leiding gebruiken om uw taak te schalen om een hogere belasting te verwerken en te profiteren van meer systeem bronnen (zoals meer band breedte, meer CPU-bronnen, meer geheugen).
@@ -24,7 +24,7 @@ Als vereiste moet u mogelijk de volgende artikelen lezen:
 Als uw query volledig kan worden opgestart over alle invoer partities beschikt, kunt u de volgende stappen volgen:
 1.  Ontwerp uw query zodanig dat deze ongebruik maakt van een **partitie per** sleutel woord. Zie de sectie verlegen parallelle taken [op deze pagina voor](stream-analytics-parallelization.md)meer informatie.
 2.  Afhankelijk van de uitvoer typen die in uw query worden gebruikt, is het mogelijk dat een bepaalde uitvoer niet kan worden opgestart is of dat de verdere configuratie nog te maken heeft. Bijvoorbeeld, de Power bi-uitvoer is niet kan worden opgestart. Uitvoer wordt altijd samengevoegd voordat deze naar de uitvoer sink wordt verzonden. Blobs, Tables, ADLS, Service Bus en Azure function worden automatisch geparallelleerd. SQL en Azure Synapse Analytics-uitvoer hebben een optie voor parallel Lise ring. Voor de Event hub moet de configuratie van PartitionKey zijn ingesteld op overeenkomen met het veld **Partition by** (meestal PartitionId). Voor Event hub moet u ook extra aandacht best Eden aan het aantal partities voor alle invoer en alle uitvoer om te voor komen dat er kruisen tussen partities worden uitgevoerd. 
-3.  Voer uw query uit met **6 su** (dit is de volledige capaciteit van een knoop punt met één computer) om de maximale Haal bare door voer te meten. Als u **Group by**gebruikt, meet u hoeveel groepen (kardinaliteit) de taak kan verwerken. Algemene symptomen van de systeem resource limieten voor taak beheer zijn het volgende.
+3.  Voer uw query uit met **6 su** (dit is de volledige capaciteit van een knoop punt met één computer) om de maximale Haal bare door voer te meten. Als u **Group by** gebruikt, meet u hoeveel groepen (kardinaliteit) de taak kan verwerken. Algemene symptomen van de systeem resource limieten voor taak beheer zijn het volgende.
     - De metrische gegevens over het gebruik van% zijn meer dan 80%. Dit geeft aan dat het geheugen gebruik hoog is. De factoren die bijdragen aan de toename van deze metriek worden [hier](stream-analytics-streaming-unit-consumption.md)beschreven. 
     -   Uitvoer tempel ligt achter met betrekking tot de klok tijd van de wand. Afhankelijk van uw query logica, kan het uitvoer tijds tempel een logische offset hebben van de klok tijd van de wand. Ze moeten echter op ongeveer dezelfde snelheid worden uitgevoerd. Als het tijds tempel van de uitvoer verder en verder ligt, is het een indicatie dat het systeem overwerkt. Dit kan een resultaat zijn van de stroomafwaartse beperking van het uitvoer filter of een hoog CPU-gebruik. We bieden op dit moment geen CPU-gebruik, dus het kan lastig zijn om de twee te onderscheiden.
         - Als het probleem wordt veroorzaakt door limieten voor sinks, moet u mogelijk het aantal uitvoer partities (en ook de invoer partities om de taak volledig te kan worden opgestart) verg Roten of de hoeveelheid resources van de Sink verhogen (bijvoorbeeld aantal aanvraag eenheden voor CosmosDB).
@@ -42,7 +42,7 @@ Als uw query niet verlegen parallel is, kunt u de volgende stappen volgen.
 2.  Als u in de loop van de door Voer een verwachte belasting kunt krijgen, bent u klaar. U kunt er ook voor kiezen om de taak die wordt uitgevoerd op 3 SU en 1 SU te meten om het minimale aantal SU te bepalen dat geschikt is voor uw scenario.
 3.  Als de gewenste door Voer niet kan worden bereikt, probeert u de query in meerdere stappen indien mogelijk te verstoren, als deze nog niet meerdere stappen bevat, en u kunt Maxi maal 6 SU toewijzen voor elke stap in de query. Als u bijvoorbeeld drie stappen hebt, wijst u 18 SU toe in de optie schalen.
 4.  Wanneer een dergelijke taak wordt uitgevoerd, plaatst Stream Analytics elke stap op een eigen knoop punt met toegewezen 6 SU-resources. 
-5.  Als u nog steeds het laad doel hebt bereikt, kunt u proberen om de partitie te gebruiken **door** te beginnen bij de stappen in de invoer. Voor **Group by** -operator die niet op natuurlijke wijze kan worden gepartitioneerd, kunt u het lokale/globale aggregatie patroon gebruiken voor het uitvoeren van een gepartitioneerde **groep door** een niet-GEpartitioneerde **groep door**te volgen. Bijvoorbeeld, als u wilt tellen hoeveel auto's elke drie minuten elk uur duren, en het volume van de gegevens niet meer kan worden verwerkt door 6 SU.
+5.  Als u nog steeds het laad doel hebt bereikt, kunt u proberen om de partitie te gebruiken **door** te beginnen bij de stappen in de invoer. Voor **Group by** -operator die niet op natuurlijke wijze kan worden gepartitioneerd, kunt u het lokale/globale aggregatie patroon gebruiken voor het uitvoeren van een gepartitioneerde **groep door** een niet-GEpartitioneerde **groep door** te volgen. Bijvoorbeeld, als u wilt tellen hoeveel auto's elke drie minuten elk uur duren, en het volume van de gegevens niet meer kan worden verwerkt door 6 SU.
 
 Query:
 
@@ -78,13 +78,13 @@ Voor bepaalde ISV-use-cases, waarbij het rendabeler is om gegevens van meerdere 
 
 
 ## <a name="get-help"></a>Hulp vragen
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API-naslaggids voor Azure Stream Analytics Management](/rest/api/streamanalytics/)
 
 <!--Image references-->
 
@@ -97,10 +97,9 @@ Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Ana
 <!--Link references-->
 
 [microsoft.support]: https://support.microsoft.com
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
-
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

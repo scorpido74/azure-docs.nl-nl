@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 7b91cf3d49d88501fb908d157892ec3eb24bee6e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1c89887117c10ca77ec4c04b3adbe3e2d9923479
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283751"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126835"
 ---
 # <a name="virtual-machine-sas-failure-messages"></a>Fout berichten van SAS voor virtuele machines
 
@@ -29,7 +29,7 @@ Hieronder volgen enkele veelvoorkomende problemen bij het werken met hand tekeni
 | De para meters van de SAS-URI "St" en "SE" hebben geen volledige datum-tijd specificatie | `Failure: Copying Images. Not able to download blob due to incorrect SAS Uri.` | De **begin** -en **eind** datum parameters van de SAS-URI ( `st` en `se` subtekenreeksen) moeten de volledige datum-tijd notatie hebben, zoals `11-02-2017T00:00:00Z` . Verkorte versies zijn ongeldig (sommige opdrachten in azure CLI kunnen standaard verkorte waarden genereren). |
 |  |  |  |
 
-Zie [using Shared Access signatures (SAS) (Engelstalig)](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)voor meer informatie.
+Zie [using Shared Access signatures (SAS) (Engelstalig)](../storage/common/storage-sas-overview.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

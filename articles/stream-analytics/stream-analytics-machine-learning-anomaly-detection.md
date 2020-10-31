@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044376"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123707"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalie detectie in Azure Stream Analytics
 
@@ -42,7 +42,7 @@ Een afwijkings generator die [hier](https://aka.ms/asaanomalygenerator) beschikb
 
 ## <a name="spike-and-dip"></a>Piek en DIP
 
-Tijdelijke afwijkingen in een time series-gebeurtenis stroom worden aangeduid als pieken en spannings dips. Pieken en spannings dips kunnen worden bewaakt met behulp van de operator Machine Learning op basis [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+Tijdelijke afwijkingen in een time series-gebeurtenis stroom worden aangeduid als pieken en spannings dips. Pieken en spannings dips kunnen worden bewaakt met behulp van de operator Machine Learning op basis [AnomalyDetection_SpikeAndDip](/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 ).
 
 ![Voor beeld van Prikker en DIP-afwijkingen](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
@@ -74,7 +74,7 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Punt wijzigen
 
-Permanente afwijkingen in een time series-gebeurtenis stroom zijn wijzigingen in de distributie van waarden in de gebeurtenis stroom, zoals niveau wijzigingen en trends. In Stream Analytics worden dergelijke afwijkingen gedetecteerd met behulp van de operator Machine Learning op basis van [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) .
+Permanente afwijkingen in een time series-gebeurtenis stroom zijn wijzigingen in de distributie van waarden in de gebeurtenis stroom, zoals niveau wijzigingen en trends. In Stream Analytics worden dergelijke afwijkingen gedetecteerd met behulp van de operator Machine Learning op basis van [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) .
 
 Permanente wijzigingen die langer duren dan pieken en spannings dips en kunnen duiden op een onherstelbare gebeurtenis (sen). Permanente wijzigingen zijn doorgaans niet zichtbaar voor het blote oog, maar kunnen wel worden gedetecteerd met de operator **AnomalyDetection_ChangePoint** .
 
@@ -114,9 +114,9 @@ FROM AnomalyDetectionStep
 
 De prestaties van deze modellen zijn afhankelijk van de geschiedenis grootte, de duur van het venster, het laden van gebeurtenissen en of het gebruik van partitionering op functie niveau wordt gebruikt. In deze sectie worden deze configuraties beschreven en vindt u voor beelden voor het opvangen van de opname snelheid van 1K, 5K en 10K-gebeurtenissen per seconde.
 
-* **Geschiedenis formaat** : deze modellen voeren lineair uit met de **geschiedenis grootte**. Hoe langer het geschiedenis formaat, hoe langer het model is om een nieuwe gebeurtenis te beoordelen. Dit komt doordat de modellen de nieuwe gebeurtenis vergelijken met elk van de gebeurtenissen in de geschiedenis buffer.
+* **Geschiedenis formaat** : deze modellen voeren lineair uit met de **geschiedenis grootte** . Hoe langer het geschiedenis formaat, hoe langer het model is om een nieuwe gebeurtenis te beoordelen. Dit komt doordat de modellen de nieuwe gebeurtenis vergelijken met elk van de gebeurtenissen in de geschiedenis buffer.
 * **Duur** van het venster: de duur van het **venster** moet weer geven hoe lang het duurt om zoveel gebeurtenissen te ontvangen als aangegeven door de geschiedenis grootte. Zonder dat er veel gebeurtenissen in het venster zijn, worden in Azure Stream Analytics ontbrekende waarden toegerekend. Daarom is het CPU-verbruik een functie van de geschiedenis grootte.
-* **Gebeurtenis belasting** : hoe groter de **gebeurtenis belasting**, hoe meer werk wordt uitgevoerd door de modellen, waardoor het CPU-verbruik wordt beïnvloed. De taak kan worden uitgeschaald door deze ongeëvenaard parallel te maken, ervan uitgaande dat het zinvol is voor bedrijfs logica om meer invoer partities te gebruiken.
+* **Gebeurtenis belasting** : hoe groter de **gebeurtenis belasting** , hoe meer werk wordt uitgevoerd door de modellen, waardoor het CPU-verbruik wordt beïnvloed. De taak kan worden uitgeschaald door deze ongeëvenaard parallel te maken, ervan uitgaande dat het zinvol is voor bedrijfs logica om meer invoer partities te gebruiken.
 * Partitioneren op functie **niveau**  -  **Partitioneren op functie niveau** wordt uitgevoerd met behulp van ```PARTITION BY``` de functie aanroep van de afwijkings detectie. Dit type partitionering voegt een overhead toe, aangezien de status moet worden bijgehouden voor meerdere modellen tegelijk. Partitioneren op functie niveau wordt gebruikt in scenario's zoals het partitioneren op apparaatniveau.
 
 ### <a name="relationship"></a>Relatie
@@ -152,13 +152,12 @@ Voorbeeld code voor het uitvoeren van de niet-gepartitioneerde configuraties hie
 > Voor een nauw keuriger schatting past u de voor beelden aan uw scenario aan.
 
 ### <a name="identifying-bottlenecks"></a>Knel punten identificeren
-Gebruik het deel venster metrieken in uw Azure Stream Analytics-taak om knel punten in uw pijp lijn te identificeren. Bekijk **invoer-en uitvoer gebeurtenissen** voor door Voer en [' watermerk vertraging '](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) of achterstands **gebeurtenissen** om te zien of de taak de invoer snelheid bijhoudt. Voor metrische gegevens van Event hub zoekt u naar **vertraagde aanvragen** en past u de drempel waarden dienovereenkomstig aan. Bekijk voor Cosmos DB metrische gegevens het **maximum aantal gebruikte ru/s per partitie sleutel bereik** onder door Voer om ervoor te zorgen dat de partitie sleutel bereik op gelijke wijze worden verbruikt. Bewaak **logboek-io** en **CPU**voor Azure SQL DB.
+Gebruik het deel venster metrieken in uw Azure Stream Analytics-taak om knel punten in uw pijp lijn te identificeren. Bekijk **invoer-en uitvoer gebeurtenissen** voor door Voer en [' watermerk vertraging '](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) of achterstands **gebeurtenissen** om te zien of de taak de invoer snelheid bijhoudt. Voor metrische gegevens van Event hub zoekt u naar **vertraagde aanvragen** en past u de drempel waarden dienovereenkomstig aan. Bekijk voor Cosmos DB metrische gegevens het **maximum aantal gebruikte ru/s per partitie sleutel bereik** onder door Voer om ervoor te zorgen dat de partitie sleutel bereik op gelijke wijze worden verbruikt. Bewaak **logboek-io** en **CPU** voor Azure SQL DB.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API-naslaggids voor Azure Stream Analytics Management](/rest/api/streamanalytics/)

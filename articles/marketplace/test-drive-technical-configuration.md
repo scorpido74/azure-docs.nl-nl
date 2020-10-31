@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892618"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125679"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische configuratie van test drive
 
@@ -50,7 +50,7 @@ Dit type test drive wordt niet gehost door micro soft. Gebruik het om verbinding
 
 - **Test drive** (vereist): Voer de tijds duur in die het test station actief blijft, in aantal uren. De test drive wordt automatisch beëindigd nadat deze periode is verstreken.
 
-- **Naam van de Azure-resource groep** (vereist): Voer de naam van de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md#resource-groups)in waar uw logische app-test drive wordt opgeslagen.
+- **Naam van de Azure-resource groep** (vereist): Voer de naam van de [Azure-resource groep](../azure-resource-manager/management/overview.md#resource-groups)in waar uw logische app-test drive wordt opgeslagen.
 
 - **Naam van de Azure Logic-app** (vereist): Voer de naam in van de logische app die de test drive aan de gebruiker toewijst. Deze logische app moet worden opgeslagen in de bovenstaande Azure-resource groep.
 
@@ -60,7 +60,7 @@ Dit type test drive wordt niet gehost door micro soft. Gebruik het om verbinding
 
 Producten die een interactief Power BI visueel element willen demonstreren, kunnen een Inge sloten koppeling gebruiken om een aangepast dash board te delen als hun test drive, maar er is geen verdere technische configuratie vereist. U hoeft dit alleen te doen als u uw Inge sloten Power BI-URL uploadt.
 
-Zie [Wat zijn Power bi apps?](https://docs.microsoft.com/power-bi/service-template-apps-overview) voor meer informatie over het instellen van Power bi-apps.
+Zie [Wat zijn Power bi apps?](/power-bi/service-template-apps-overview) voor meer informatie over het instellen van Power bi-apps.
 
 ## <a name="deployment-subscription-details"></a>Details van implementatie abonnement
 

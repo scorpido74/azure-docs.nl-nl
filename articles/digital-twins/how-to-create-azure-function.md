@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c169f10ac0444f5bca67d76e8e8ebc0f0b145ee1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495924"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124239"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
 
@@ -30,17 +30,21 @@ Hier volgt een overzicht van de stappen die het bevat:
 4. De functie-app publiceren in azure
 5. [Beveiligings](concepts-security.md) toegang instellen voor de Azure function-app
 
+## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Voor waarde: Stel het Azure Digital Apparaatdubbels-exemplaar in
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
 ## <a name="create-an-azure-functions-app-in-visual-studio"></a>Een Azure Functions-app maken in Visual Studio
 
-Selecteer in Visual Studio 2019 _bestand > nieuw > project_ en zoek naar de _Azure functions_ sjabloon en selecteer _volgende_.
+Selecteer in Visual Studio 2019 _bestand > nieuw > project_ en zoek naar de _Azure functions_ sjabloon en selecteer _volgende_ .
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 
-Geef een naam op voor de functie-app en selecteer _maken_.
+Geef een naam op voor de functie-app en selecteer _maken_ .
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 
-Selecteer het type functie-app *Event grid trigger* en selecteer _maken_.
+Selecteer het type functie-app *Event grid trigger* en selecteer _maken_ .
 
 :::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 
@@ -155,14 +159,14 @@ namespace adtIngestFunctionSample
 
 ## <a name="publish-the-function-app-to-azure"></a>De functie-app publiceren in azure
 
-Als u de functie-app naar Azure wilt publiceren, selecteert u het functie project (niet de oplossing) in Solution Explorer en kiest u **publiceren**.
+Als u de functie-app naar Azure wilt publiceren, selecteert u het functie project (niet de oplossing) in Solution Explorer en kiest u **publiceren** .
 
 > [!IMPORTANT] 
 > Als u een Azure-functie publiceert, worden er extra kosten in rekening gebracht voor uw abonnement, onafhankelijk van Azure Digital Apparaatdubbels.
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 
-Selecteer **Azure** als publicatie doel en selecteer **volgende**.
+Selecteer **Azure** als publicatie doel en selecteer **volgende** .
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 
@@ -205,7 +209,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 Ten slotte kunt u de URL van uw Azure Digital Apparaatdubbels-exemplaar toegankelijk maken voor uw functie door een omgevings variabele in te stellen. Zie [*omgevings variabelen*](/sandbox/functions-recipes/environment-variables)voor meer informatie over het instellen van omgevings variabelen. 
 
 > [!TIP]
-> De URL van het Azure Digital Apparaatdubbels-exemplaar wordt gemaakt door *https://* toe te voegen aan het begin van de *hostnaam*van uw Azure Digital apparaatdubbels-exemplaar. Als u de hostnaam, samen met alle eigenschappen van uw exemplaar, wilt zien, kunt u uitvoeren `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
+> De URL van het Azure Digital Apparaatdubbels-exemplaar wordt gemaakt door *https://* toe te voegen aan het begin van de *hostnaam* van uw Azure Digital apparaatdubbels-exemplaar. Als u de hostnaam, samen met alle eigenschappen van uw exemplaar, wilt zien, kunt u uitvoeren `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
 
 ```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
@@ -219,7 +223,7 @@ Zoek in de [Azure Portal](https://portal.azure.com/)op de zoek balk naar _functi
 :::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 
 Selecteer in het venster functie-app _identiteit_ in de navigatie balk aan de linkerkant om beheerde identiteit in te scha kelen.
-Schakel onder _systeem toegewezen_ tabblad de _status_ in op aan en _Sla_ deze op. Er wordt een pop-up weer gegeven om door het _systeem toegewezen beheerde identiteit in te scha kelen_.
+Schakel onder _systeem toegewezen_ tabblad de _status_ in op aan en _Sla_ deze op. Er wordt een pop-up weer gegeven om door het _systeem toegewezen beheerde identiteit in te scha kelen_ .
 Selecteer de knop _Ja_ . 
 
 :::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
@@ -234,16 +238,16 @@ Noteer ook de **object-id** die wordt weer gegeven op de pagina _identiteit_ , z
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Toegangs rollen toewijzen met behulp van Azure Portal
 
-Selecteer de knop _Azure Role Assignments_ , waarmee de pagina met *Azure-roltoewijzingen* wordt geopend. Selecteer vervolgens _+ roltoewijzing toevoegen (preview)_.
+Selecteer de knop _Azure Role Assignments_ , waarmee de pagina met *Azure-roltoewijzingen* wordt geopend. Selecteer vervolgens _+ roltoewijzing toevoegen (preview)_ .
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 
 Selecteer op de pagina _roltoewijzing toevoegen (preview)_ die wordt geopend:
 
-* _Bereik_: resourcegroep
-* _Abonnement_: Selecteer uw Azure-abonnement
-* _Resource groep_: Selecteer de resource groep in de vervolg keuzelijst
-* _Rol_: Selecteer de _Azure Digital Apparaatdubbels-gegevens eigenaar_ uit de vervolg keuzelijst
+* _Bereik_ : resourcegroep
+* _Abonnement_ : Selecteer uw Azure-abonnement
+* _Resource groep_ : Selecteer de resource groep in de vervolg keuzelijst
+* _Rol_ : Selecteer de _Azure Digital Apparaatdubbels-gegevens eigenaar_ uit de vervolg keuzelijst
 
 Sla uw gegevens vervolgens op door te klikken op de knop _Opslaan_ .
 
@@ -255,7 +259,7 @@ U kunt de URL van uw Azure Digital Apparaatdubbels-exemplaar toegankelijk maken 
 
 U hebt ADT_INSTANCE_URL nodig om een toepassings instelling te maken.
 
-U kunt ADT_INSTANCE_URL ophalen door **_https://_** toe te voegen aan de hostnaam van uw exemplaar. In de Azure Portal kunt u de hostnaam van uw digitale apparaatdubbels-exemplaar vinden door te zoeken naar uw instantie in de zoek balk. Selecteer vervolgens _overzicht_ op de linkernavigatiebalk om de _hostnaam_weer te geven. Kopieer deze waarde om een toepassings instelling te maken.
+U kunt ADT_INSTANCE_URL ophalen door **_https://_** toe te voegen aan de hostnaam van uw exemplaar. In de Azure Portal kunt u de hostnaam van uw digitale apparaatdubbels-exemplaar vinden door te zoeken naar uw instantie in de zoek balk. Selecteer vervolgens _overzicht_ op de linkernavigatiebalk om de _hostnaam_ weer te geven. Kopieer deze waarde om een toepassings instelling te maken.
 
 :::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 

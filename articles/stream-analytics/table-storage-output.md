@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 3e5b747e55c8f246167bcf8bbde3542146e69706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea775ef472687485dbd2f30c4f60adc33c0eaa73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891961"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127345"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>Uitvoer van tabel opslag van Azure Stream Analytics
 
@@ -28,7 +28,7 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | Tabelnaam |De naam van de tabel. De tabel wordt gemaakt als deze nog niet bestaat. |
 | Partitiesleutel |De naam van de uitvoer kolom die de partitie sleutel bevat. De partitie sleutel is een unieke id voor de partitie in een tabel die het eerste deel vormt van de primaire sleutel van een entiteit. Dit is een teken reeks waarde die Maxi maal 1 KB groot kan zijn. |
 | Rij-sleutel |De naam van de uitvoer kolom die de rij sleutel bevat. De rij is een unieke id voor een entiteit binnen een partitie. Het vormt het tweede deel van de primaire sleutel van een entiteit. De rij is een teken reeks waarde die Maxi maal 1 KB groot kan zijn. |
-| Batchgrootte |Het aantal records voor een batch bewerking. De standaard waarde (100) is voldoende voor de meeste taken. Zie de [tabel batch bewerking spec](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation) voor meer informatie over het wijzigen van deze instelling. |
+| Batchgrootte |Het aantal records voor een batch bewerking. De standaard waarde (100) is voldoende voor de meeste taken. Zie de [tabel batch bewerking spec](/java/api/com.microsoft.azure.storage.table.tablebatchoperation) voor meer informatie over het wijzigen van deze instelling. |
 
 ## <a name="partitioning"></a>Partitionering
 

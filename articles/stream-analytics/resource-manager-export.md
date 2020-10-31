@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: c421c730321213a9adbf0a0043874a21ba26bb05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2afebe61c4b2998692c823e66d8fc73584ec1dc2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906233"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125645"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon voor een Azure Stream Analytics-taak exporteren
 
@@ -24,7 +24,7 @@ U kunt een Azure Stream Analytics taak opnieuw implementeren door de sjabloon Az
 
 Voordat u een sjabloon kunt exporteren, moet u eerst een bestaande Stream Analytics-taak openen in Visual Studio code. 
 
-Als u een taak wilt exporteren naar een lokaal project, zoekt u de taak die u wilt exporteren in de **Stream Analytics Verkenner** in de Azure Portal. Selecteer op de pagina **query** de optie **openen in Visual Studio**. Selecteer vervolgens **Visual Studio code**.
+Als u een taak wilt exporteren naar een lokaal project, zoekt u de taak die u wilt exporteren in de **Stream Analytics Verkenner** in de Azure Portal. Selecteer op de pagina **query** de optie **openen in Visual Studio** . Selecteer vervolgens **Visual Studio code** .
 
 ![Open Stream Analytics-taak in Visual Studio code](./media/resource-manager-export/open-job-vs-code.png)
 
@@ -58,9 +58,9 @@ Vervolgens voltooit u het Azure resource management-sjabloon parameter bestand.
 
 U bent klaar om uw Azure Stream Analytics-taak te implementeren met behulp van de Azure Resource Manager sjablonen die u hebt gegenereerd in de vorige sectie.
 
-Voer de volgende opdracht uit in een Power shell-venster. Zorg ervoor dat u de reaplce van *ResourceGroupName*, *TemplateFile*en *TemplateParameterFile* met de werkelijke naam van de resource groep en de volledige bestands paden naar het *JobTemplate.jsop* en *JobTemplate.parameters.jsop* bestanden in de **map Deploy** van uw werk ruimte.
+Voer de volgende opdracht uit in een Power shell-venster. Zorg ervoor dat u de reaplce van *ResourceGroupName* , *TemplateFile* en *TemplateParameterFile* met de werkelijke naam van de resource groep en de volledige bestands paden naar het *JobTemplate.jsop* en *JobTemplate.parameters.jsop* bestanden in de **map Deploy** van uw werk ruimte.
 
-Als Azure PowerShell niet is geconfigureerd, volgt u de stappen in de [module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+Als Azure PowerShell niet is geconfigureerd, volgt u de stappen in de [module Azure PowerShell installeren](/powershell/azure/install-Az-ps).
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -TemplateFile "<path to JobTemplate.json>" -TemplateParameterFile "<path to JobTemplate.parameters.json>"

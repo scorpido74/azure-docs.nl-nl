@@ -8,26 +8,26 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483623"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124914"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace
 
-Met de micro soft cloud-gebaseerde service voor identiteits-en toegangs beheer, [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) kunnen gebruikers zich aanmelden en kunnen ze toegang krijgen tot interne en externe resources. In de micro soft Commercial Marketplace biedt Azure AD transactable SaaS eenvoudiger en veiliger voor iedereen, inclusief uitgevers, kopers en gebruikers. Met Azure AD kunnen uitgevers het inrichten van gebruikers automatiseren met hun SaaS-apps (Software as a Service) en kunnen kopers zelf deze ingerichte gebruikers beheren. 
+Met de micro soft cloud-gebaseerde service voor identiteits-en toegangs beheer, [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) kunnen gebruikers zich aanmelden en kunnen ze toegang krijgen tot interne en externe resources. In de micro soft Commercial Marketplace biedt Azure AD transactable SaaS eenvoudiger en veiliger voor iedereen, inclusief uitgevers, kopers en gebruikers. Met Azure AD kunnen uitgevers het inrichten van gebruikers automatiseren met hun SaaS-apps (Software as a Service) en kunnen kopers zelf deze ingerichte gebruikers beheren. 
 
-Verder biedt [Azure AD eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SSO) beveiliging en gebruiks gemak wanneer gebruikers zich aanmelden bij apps in azure AD. Snellere betrokkenheid en geoptimaliseerde ervaringen betrouwt ook het vertrouwen van kopers en gebruikers van de eerste interactie met de SaaS-app van een uitgever. Dit geeft een positieve indruk bij het opbouwen van zicht baarheid en herhalingen.
+Verder biedt [Azure AD eenmalige aanmelding](../active-directory/manage-apps/what-is-single-sign-on.md) (SSO) beveiliging en gebruiks gemak wanneer gebruikers zich aanmelden bij apps in azure AD. Snellere betrokkenheid en geoptimaliseerde ervaringen betrouwt ook het vertrouwen van kopers en gebruikers van de eerste interactie met de SaaS-app van een uitgever. Dit geeft een positieve indruk bij het opbouwen van zicht baarheid en herhalingen.
 
-Door de instructies in dit artikel te volgen, kunt u uw SaaS-aanbieding in de commerciële Marketplace certificeren. Lees voor meer informatie over certificering het gedetailleerde [certificaat beleid voor commerciële Marketplace](https://aka.ms/commercial-marketplace-certification-policies#100-general), met inbegrip van degenen die [specifiek zijn voor SaaS](https://aka.ms/commercial-marketplace-certification-policies#1000-software-as-a-service-saas).
+Door de instructies in dit artikel te volgen, kunt u uw SaaS-aanbieding in de commerciële Marketplace certificeren. Lees voor meer informatie over certificering het gedetailleerde [certificaat beleid voor commerciële Marketplace](/legal/marketplace/certification-policies#100-general), met inbegrip van degenen die [specifiek zijn voor SaaS](/legal/marketplace/certification-policies#1000-software-as-a-service-saas).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Wanneer u [uw SaaS-aanbieding](./partner-center-portal/create-new-saas-offer.md) in het partner centrum maakt, kiest u uit een set specifieke aanbiedings opties die worden weer gegeven in de aanbieding. Uw keuze bepaalt hoe uw aanbieding wordt verwerkt in de commerciële Marketplace. Aanbiedingen die via micro soft worden verkocht, worden aanbiedingen genoemd. De klant wordt namens u in rekening gebracht voor alle transactable-aanbiedingen. Als u ervoor kiest om via micro soft te verkopen en u trans acties voor de Amerikaanse host hebt (de optie **Ja** ), hebt u gekozen voor het maken van een transactable-aanbieding en dit artikel is voor u bedoeld. We raden u aan deze volledig te lezen.
+Wanneer u [uw SaaS-aanbieding](./create-new-saas-offer.md) in het partner centrum maakt, kiest u uit een set specifieke aanbiedings opties die worden weer gegeven in de aanbieding. Uw keuze bepaalt hoe uw aanbieding wordt verwerkt in de commerciële Marketplace. Aanbiedingen die via micro soft worden verkocht, worden aanbiedingen genoemd. De klant wordt namens u in rekening gebracht voor alle transactable-aanbiedingen. Als u ervoor kiest om via micro soft te verkopen en u trans acties voor de Amerikaanse host hebt (de optie **Ja** ), hebt u gekozen voor het maken van een transactable-aanbieding en dit artikel is voor u bedoeld. We raden u aan deze volledig te lezen.
 
-Als u ervoor kiest om uw aanbieding alleen via de commerciële Marketplace en trans acties afzonderlijk te verwerken (de optie **Nee** ), hebt u drie opties voor de manier waarop potentiële klanten toegang krijgen tot uw aanbieding: nu downloaden (gratis), gratis proef versie en contact met mij opnemen. Als u **nu downloaden (gratis)** of **gratis proef versie**selecteert, is dit artikel niet voor u. In plaats daarvan raadpleegt [u de landings pagina voor uw gratis of proef SaaS-aanbieding bouwen in de commerciële Marketplace](./azure-ad-free-or-trial-landing-page.md) voor meer informatie. Als u **contact opnemen**selecteert, zijn er geen directe Publisher-verantwoordelijkheden. Ga door met het maken van uw aanbieding in het partner centrum.
+Als u ervoor kiest om uw aanbieding alleen via de commerciële Marketplace en trans acties afzonderlijk te verwerken (de optie **Nee** ), hebt u drie opties voor de manier waarop potentiële klanten toegang krijgen tot uw aanbieding: nu downloaden (gratis), gratis proef versie en contact met mij opnemen. Als u **nu downloaden (gratis)** of **gratis proef versie** selecteert, is dit artikel niet voor u. In plaats daarvan raadpleegt [u de landings pagina voor uw gratis of proef SaaS-aanbieding bouwen in de commerciële Marketplace](./azure-ad-free-or-trial-landing-page.md) voor meer informatie. Als u **contact opnemen** selecteert, zijn er geen directe Publisher-verantwoordelijkheden. Ga door met het maken van uw aanbieding in het partner centrum.
 
 ## <a name="how-azure-ad-works-with-the-commercial-marketplace-for-saas-offers"></a>Hoe Azure AD werkt met de commerciële Marketplace voor SaaS-aanbiedingen
 
@@ -35,7 +35,7 @@ Azure AD maakt naadloze aankoop, uitvoering en beheer van oplossingen voor comme
 
 Zoals wordt weer gegeven in afbeelding 1 en een koper uw aanbieding selecteert, gaan ze een keten van werk stromen met aankoop, abonnementen en gebruikers beheer. Binnen deze keten is de uitgever verantwoordelijk voor bepaalde vereisten, waarbij micro soft ondersteuning biedt op basis van belang rijke punten.
 
-***Afbeelding 1: Azure AD gebruiken voor SaaS-aanbiedingen in de commerciële Marketplace***
+**_Afbeelding 1: Azure AD gebruiken voor SaaS-aanbiedingen in de commerciële Marketplace_* _
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow.png" alt-text="Illustreert het aankoop beheer, abonnements beheer en de stappen voor het uitvoeren van een optioneel gebruikers beheer.":::
 
@@ -52,9 +52,9 @@ Deze tabel bevat details over de stappen voor het aankoop beheer proces.
 | Proces stap | Publisher-actie | Aanbevolen of vereist voor uitgevers |
 | ------------ | ------------- | ------------- |
 | 1. de koper meldt zich aan bij de commerciële Marketplace met hun Azure ID-identiteit en selecteert een SaaS-aanbieding. | Er is geen uitgever actie vereist. | Niet van toepassing |
-| 2. na de aankoop selecteert de koper **account configureren** in azure Marketplace of **nu configureren** in AppSource, waarmee de koper naar de landings pagina van de uitgever voor deze aanbieding wordt geleid. De koper moet zich kunnen aanmelden bij de SaaS-toepassing van de uitgever met Azure AD SSO en mag alleen worden gevraagd om minimale toestemming waarvoor Azure AD-beheerder geen goed keuring vereist. | Ontwerp een [landings pagina](azure-ad-transactable-saas-landing-page.md) voor de aanbieding zodat deze een gebruiker ontvangt met hun Azure AD-of Microsoft-account (MSA)-identiteit en de aanvullende inrichting of installatie die vereist is, vergemakkelijkt. | Vereist |
+| 2. na de aankoop selecteert de koper _ *account configureren* in azure Marketplace of **nu configureren** in AppSource, die de koper naar de landings pagina van de uitgever stuurt voor deze aanbieding. De koper moet zich kunnen aanmelden bij de SaaS-toepassing van de uitgever met Azure AD SSO en mag alleen worden gevraagd om minimale toestemming waarvoor Azure AD-beheerder geen goed keuring vereist. | Ontwerp een [landings pagina](azure-ad-transactable-saas-landing-page.md) voor de aanbieding zodat deze een gebruiker ontvangt met hun Azure AD-of Microsoft-account (MSA)-identiteit en de aanvullende inrichting of installatie die vereist is, vergemakkelijkt. | Vereist |
 | 3. de uitgever vraagt om details van de SaaS fulfillment API. | Met behulp van een [toegangs token](./partner-center-portal/pc-saas-registration.md) dat is gegenereerd op basis van de toepassings-id van de landings pagina [roept u het eind punt voor omzetten](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) op om details over de aankoop op te halen. | Vereist |
-| 4. via Azure AD en de Microsoft Graph-API verzamelt de uitgever de bedrijfs-en gebruikers gegevens die nodig zijn om de koper in te richten in de SaaS-toepassing van de uitgever.  | Het Azure AD-gebruikers token afbreken om naam en e-mail adres te vinden, of [de Microsoft Graph-API aanroepen](https://docs.microsoft.com/graph/use-the-api) en gedelegeerde machtigingen gebruiken om informatie op te [halen](https://docs.microsoft.com/graph/api/user-get) over de gebruiker die is aangemeld. | Vereist |
+| 4. via Azure AD en de Microsoft Graph-API verzamelt de uitgever de bedrijfs-en gebruikers gegevens die nodig zijn om de koper in te richten in de SaaS-toepassing van de uitgever.  | Het Azure AD-gebruikers token afbreken om naam en e-mail adres te vinden, of [de Microsoft Graph-API aanroepen](/graph/use-the-api) en gedelegeerde machtigingen gebruiken om informatie op te [halen](/graph/api/user-get) over de gebruiker die is aangemeld. | Vereist |
 ||||
 
 ## <a name="process-steps-for-subscription-management"></a>Proces stappen voor het beheer van abonnementen
@@ -82,8 +82,8 @@ Proces stappen 7 t/m 9 zijn optionele proces stappen voor gebruikers beheer. Ze 
 | Proces stap | Publisher-actie | Aanbevolen of vereist voor uitgevers |
 | ------------ | ------------- | ------------- |
 | 7. Azure AD-beheerders bij het bedrijf van de koper kunnen eventueel de toegang voor gebruikers en groepen beheren via Azure AD. | Er is geen actie van de uitgever vereist om deze in te scha kelen als Azure AD SSO is ingesteld voor gebruikers (stap 9). | Niet van toepassing |
-| 8. de Azure AD-inrichtings service communiceert wijzigingen tussen Azure AD en de SaaS-toepassing van de uitgever. | [Implementeer een scim-eind punt](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) voor het ontvangen van updates van Azure AD wanneer gebruikers worden toegevoegd en verwijderd. | Aanbevolen |
-| 9. nadat de app is gemachtigd en ingericht, kunnen gebruikers van het bedrijf van de koper Azure AD SSO gebruiken om zich aan te melden bij de SaaS-toepassing van de uitgever. | [Gebruik Azure AD SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) zodat gebruikers zich één keer kunnen aanmelden met een account voor de SaaS-toepassing van de uitgever. | Aanbevolen |
+| 8. de Azure AD-inrichtings service communiceert wijzigingen tussen Azure AD en de SaaS-toepassing van de uitgever. | [Implementeer een scim-eind punt](../active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md) voor het ontvangen van updates van Azure AD wanneer gebruikers worden toegevoegd en verwijderd. | Aanbevolen |
+| 9. nadat de app is gemachtigd en ingericht, kunnen gebruikers van het bedrijf van de koper Azure AD SSO gebruiken om zich aan te melden bij de SaaS-toepassing van de uitgever. | [Gebruik Azure AD SSO](../active-directory/manage-apps/what-is-single-sign-on.md) zodat gebruikers zich één keer kunnen aanmelden met een account voor de SaaS-toepassing van de uitgever. | Aanbevolen |
 ||||
 
 ## <a name="next-steps"></a>Volgende stappen

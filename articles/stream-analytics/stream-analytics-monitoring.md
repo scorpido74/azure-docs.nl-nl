@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0932104c55e705c76a8d2b086edf828caf60520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdddbce3e9eb0a5c933ace186607186265197dc4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044087"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123503"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Meer informatie over Stream Analytics taak bewaking en het bewaken van query's
 
@@ -39,17 +39,17 @@ Het venster wordt weer gegeven zoals hieronder weer gegeven:
 | Invoer gebeurtenis bytes      | De hoeveelheid gegevens die wordt ontvangen door de Stream Analytics taak, in bytes. Dit kan worden gebruikt om te valideren dat gebeurtenissen worden verzonden naar de invoer bron. |
 | Invoer gebeurtenissen           | Het aantal records dat uit de invoer gebeurtenissen is gedeserialiseerd. Dit aantal bevat geen binnenkomende gebeurtenissen die leiden tot fouten bij deserialisatie. Dezelfde gebeurtenissen kunnen door Stream Analytics meerdere keren worden opgenomen in scenario's zoals interne herstel bewerkingen en Self-join's. Daarom wordt aanbevolen geen invoer gebeurtenissen en metrische gegevens over uitvoer gebeurtenissen te verwachten als uw taak een eenvoudige ' Pass Through-query heeft. |
 | Invoer bronnen ontvangen       | Het aantal berichten dat is ontvangen door de taak. Voor Event hub is een bericht één Event Data. Voor blob is een bericht één blob. Houd er rekening mee dat invoer bronnen worden geteld vóór deserialisatie. Als er fouten zijn opgetreden bij de serialisatie, kunnen invoer bronnen groter zijn dan invoer gebeurtenissen. Anders kan het kleiner zijn dan of gelijk zijn aan invoer gebeurtenissen, omdat elk bericht meerdere gebeurtenissen kan bevatten. |
-| Late invoer gebeurtenissen      | Gebeurtenissen die later zijn aangekomen dan het geconfigureerde tolerantie venster voor late aankomst. Meer informatie over het [Azure stream Analytics van overwegingen voor gebeurtenis orders](stream-analytics-out-of-order-and-late-events.md) . |
+| Late invoer gebeurtenissen      | Gebeurtenissen die later zijn aangekomen dan het geconfigureerde tolerantie venster voor late aankomst. Meer informatie over het [Azure stream Analytics van overwegingen voor gebeurtenis orders](./stream-analytics-time-handling.md) . |
 | Out-of-order gebeurtenissen    | Het aantal gebeurtenissen dat in de juiste volg orde is ontvangen en dat is verwijderd of een aangepast tijds tempel heeft gegeven, op basis van het beleid voor het best Ellen van gebeurtenissen. Dit kan worden beïnvloed door de configuratie van de instelling voor het verouderde tolerantie venster. |
 | Uitvoer gebeurtenissen          | De hoeveelheid gegevens die door de Stream Analytics taak wordt verzonden naar het uitvoer doel, in aantal gebeurtenissen. |
 | Runtime-fouten         | Totaal aantal fouten met betrekking tot de verwerking van query's (zonder fouten gevonden tijdens het opnemen van gebeurtenissen of het uitvoeren van resultaten) |
 | % Gebruik       | Het gebruik van de streaming-eenheid (en) die zijn toegewezen aan een taak op het tabblad schaal van de taak. Als deze indicator 80% of hoger bereikt, is er een hoge waarschijnlijkheid dat de verwerking van gebeurtenissen kan worden vertraagd of gestopt. |
 | Watermerk vertraging       | De maximale vertraging voor het water merk over alle partities van alle uitvoer in de taak. |
 
-U kunt deze metrische gegevens gebruiken om [de prestaties van uw stream Analytics-taak te bewaken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor). 
+U kunt deze metrische gegevens gebruiken om [de prestaties van uw stream Analytics-taak te bewaken](./stream-analytics-set-up-alerts.md#scenarios-to-monitor). 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Bewaking aanpassen in de Azure Portal
-U kunt het type grafiek, de weer gegeven metrische gegevens en het tijds bereik in de instellingen van de grafiek wijzigen. Zie [How to Customize monitoring (bewaking aanpassen](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)) voor meer informatie.
+U kunt het type grafiek, de weer gegeven metrische gegevens en het tijds bereik in de instellingen van de grafiek wijzigen. Zie [How to Customize monitoring (bewaking aanpassen](../azure-monitor/platform/data-platform.md)) voor meer informatie.
 
   ![Tijd diagram van de query controle Stream Analytics](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
@@ -59,11 +59,11 @@ Een ander interessant gegevens punt voor het bewaken van uw taak is de tijd van 
 Dit is de tijd van de toepassing (dus de tijd die de tijds tempel van de gebeurtenis gegevens gebruikt) van de laatste uitvoer van uw taak.
 
 ## <a name="get-help"></a>Hulp vragen
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API-naslaggids voor Azure Stream Analytics Management](/rest/api/streamanalytics/)

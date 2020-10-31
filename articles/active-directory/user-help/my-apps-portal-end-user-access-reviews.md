@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: fbea4ef39b970f667c5dddec52f56a428d401f65
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277451"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124809"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Een toegangs beoordeling uitvoeren vanuit de portal mijn apps
 
@@ -28,7 +28,7 @@ Als u geen toegang hebt tot de portal **mijn apps** , neemt u contact op met de 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Deze inhoud is bedoeld voor gebruikers van **Mijn apps**. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](../manage-apps/index.yml).
+>Deze inhoud is bedoeld voor gebruikers van **Mijn apps** . Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](../manage-apps/index.yml).
 
 ## <a name="manage-access-reviews"></a>Toegangs beoordelingen beheren
 
@@ -62,11 +62,11 @@ Als uw beheerder u toestemming heeft gegeven om uw eigen toegangs beoordelingen 
 
 6. Selecteer **Ja** om uw toegang te beperken of **Nee** om uw toegang te verwijderen.
 
-    Als u **Ja**selecteert, moet u mogelijk een motivering opgeven in het vak **reden** .
+    Als u **Ja** selecteert, moet u mogelijk een motivering opgeven in het vak **reden** .
 
     ![Pagina toegangs controle, met daarin het vak reden met voorbeeld tekst](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. Selecteer **Indienen**.
+7. Selecteer **Indienen** .
 
     De toegangs beoordeling is voltooid en u keert terug naar de portal **mijn apps** .
 
@@ -76,5 +76,5 @@ Als uw beheerder u toestemming heeft gegeven om uw eigen toegangs beoordelingen 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Apps openen en gebruiken in de portal voor mijn apps](my-apps-portal-end-user-access.md)
-- [Uw profielgegevens bewerken](my-apps-portal-end-user-update-profile.md)
+- [Uw profielgegevens bewerken](./my-account-portal-settings.md)
 - [Gegevens over groepen weer geven en bijwerken](my-apps-portal-end-user-groups.md)

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 79d677caf0c57fb36d211333b28be0eaa6528948
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a151d4ce5a2f9860c3b7919496a2edd25cc58ede
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044121"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123622"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Stream Analytics-taken bewaken en beheren met Visual Studio
 
@@ -41,11 +41,9 @@ U kunt ook fouten bewaken door op het tabblad **fouten** te klikken.
 
 
 ## <a name="get-support"></a>Ondersteuning krijgen
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html). 
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html). 
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Een Azure Stream Analytics-taak maken met Visual Studio](stream-analytics-quick-create-vs.md)
-* [Azure Stream Analytics-hulpprogram ma's voor Visual Studio installeren](stream-analytics-tools-for-visual-studio-install.md) 
-
-
+* [Azure Stream Analytics-hulpprogram ma's voor Visual Studio installeren](stream-analytics-tools-for-visual-studio-install.md)

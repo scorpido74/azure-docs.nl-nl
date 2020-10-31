@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735611"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125135"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager test drive
 
 Gebruik dit type als u een aanbieding hebt op Azure Marketplace of AppSource, maar een test drive wilt bouwen met alleen Azure-resources. Een Azure Resource Manager ARM-sjabloon is een gecodeerde container van Azure-resources die u ontwerpt om uw oplossing het beste weer te geven. Test station neemt de aangestuurde ARM-sjabloon en implementeert alle resources die nodig zijn voor een resource groep. Dit is de enige test drive optie voor virtuele machines of aanbiedingen van Azure-apps.
 
-Als u niet bekend bent met wat een ARM-sjabloon is, lees dan [Wat is Azure Resource Manager?](../azure-resource-manager/resource-group-overview.md) en [inzicht krijgen in de structuur en syntaxis van arm-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md) om beter te begrijpen hoe u uw eigen sjablonen kunt bouwen en testen.
+Als u niet bekend bent met wat een ARM-sjabloon is, lees dan [Wat is Azure Resource Manager?](../azure-resource-manager/management/overview.md) en [inzicht krijgen in de structuur en syntaxis van arm-sjablonen](../azure-resource-manager/templates/template-syntax.md) om beter te begrijpen hoe u uw eigen sjablonen kunt bouwen en testen.
 
 Zie [Wat is een test drive?](what-is-test-drive.md) voor informatie over een **gehoste** of **logische app** test drive.
 
@@ -34,7 +34,7 @@ Een implementatie sjabloon bevat alle Azure-resources waaruit uw oplossing besta
 
   - **Koud** : dit type exemplaar vertegenwoordigt het totale aantal instanties dat mogelijk per regio kan worden geïmplementeerd. Voor koude instanties is het hele test station Resource Manager-sjabloon vereist om te implementeren wanneer een klant de test drive aanvraagt, zodat *koude* instanties veel langzamer worden geladen dan *Hot* instances. Het bedrag dat u alleen hoeft te betalen voor de duur van de test drive, wordt *niet* altijd uitgevoerd op uw Azure-abonnement, net als bij een *Hot* -instance.
 
-- **Azure Resource Manager-sjabloon testen** : Upload de. zip met uw Azure Resource Manager sjabloon. Meer informatie over het maken van een Azure Resource Manager sjabloon in het Quick Start-artikel [Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+- **Azure Resource Manager-sjabloon testen** : Upload de. zip met uw Azure Resource Manager sjabloon. Meer informatie over het maken van een Azure Resource Manager sjabloon in het Quick Start-artikel [Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
     > [!note]
     > Als u wilt publiceren, is het belang rijk om de opmaak van de ARM-sjabloon te valideren. Er zijn twee manieren om dit te doen (1) met behulp van een [online API-hulp programma](https://docs.microsoft.com/rest/api/resources/deployments/validate) of (2) met een [test implementatie](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).
@@ -240,7 +240,7 @@ En gebruik deze locatie voor elke resource voor een specifiek Lab-exemplaar:
 
 Zorg ervoor dat uw abonnement alle gewenste resources in elk van de geselecteerde regio's mag implementeren. Zorg er ook voor dat uw installatie kopieën voor virtuele machines beschikbaar zijn in alle regio's die u gaat inschakelen. anders werkt uw implementatie sjabloon niet voor bepaalde regio's.
 
-### <a name="outputs"></a>Outputs
+### <a name="outputs"></a>Uitvoerwaarden
 
 Normaal gesp roken kunt u met Resource Manager-sjablonen implementeren zonder dat er uitvoer wordt geproduceerd. Dit komt doordat u alle waarden kent die u gebruikt om sjabloon parameters te vullen en u kunt altijd hand matig eigenschappen van een resource controleren.
 

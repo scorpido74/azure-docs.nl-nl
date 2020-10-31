@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47afaea03e58cf6a24382727c6fc7193fde5abe4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044410"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123809"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Aanmeldings referenties voor invoer en uitvoer van een Stream Analytics-taak draaien
 
@@ -25,12 +25,12 @@ In deze sectie leert u hoe u de referenties voor Blob Storage, Event Hubs, SQL D
 
 ### <a name="blob-storagetable-storage"></a>Blob-opslag/-tabel opslag
 1. Meld u aan bij de Azure Portal > door het opslag account te bladeren dat u hebt gebruikt als invoer/uitvoer voor de Stream Analytics taak.    
-2. Open **toegangs sleutels**in de sectie instellingen. Kies een van de twee standaard sleutels (Key1, Key2) die niet worden gebruikt door uw taak en Genereer deze opnieuw:  
+2. Open **toegangs sleutels** in de sectie instellingen. Kies een van de twee standaard sleutels (Key1, Key2) die niet worden gebruikt door uw taak en Genereer deze opnieuw:  
    ![Sleutels voor het opslag account opnieuw genereren](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
 3. Kopieer de zojuist gegenereerde sleutel.    
 4. Blader in het Azure Portal door de Stream Analytics-taak > Selecteer **stoppen** en wacht totdat de taak is gestopt.    
 5. Zoek de invoer/uitvoer voor BLOB/TABLE-opslag waarvoor u de referenties wilt bijwerken.    
-6. Zoek het sleutel veld voor het **opslag account** en plak de zojuist gegenereerde sleutel > Klik op **Opslaan**.    
+6. Zoek het sleutel veld voor het **opslag account** en plak de zojuist gegenereerde sleutel > Klik op **Opslaan** .    
 7. Een verbindings test wordt automatisch gestart wanneer u de wijzigingen opslaat, maar u kunt deze bekijken op het tabblad meldingen. Er zijn twee meldingen: een komt overeen met het opslaan van de update en een andere overeenkomst voor het testen van de verbinding:  
    ![Meldingen na het bewerken van de sleutel](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. Ga door met [het starten van de taak in de sectie laatste keer gestopt](#start-your-job-from-the-last-stopped-time) .
@@ -38,12 +38,12 @@ In deze sectie leert u hoe u de referenties voor Blob Storage, Event Hubs, SQL D
 ### <a name="event-hubs"></a>Event Hubs
 
 1. Meld u aan bij de Azure Portal > door de Event hub te bladeren die u als invoer/uitvoer voor de Stream Analytics taak hebt gebruikt.    
-2. Open in de sectie instellingen de optie **beleid voor gedeelde toegang** en selecteer het vereiste toegangs beleid. Kies een van de **primaire** en **secundaire sleutel**die niet wordt gebruikt door uw taak en Genereer deze opnieuw:  
+2. Open in de sectie instellingen de optie **beleid voor gedeelde toegang** en selecteer het vereiste toegangs beleid. Kies een van de **primaire** en **secundaire sleutel** die niet wordt gebruikt door uw taak en Genereer deze opnieuw:  
    ![Sleutels opnieuw genereren voor Event Hubs](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. Kopieer de zojuist gegenereerde sleutel.    
 4. Blader in het Azure Portal door de Stream Analytics-taak > Selecteer **stoppen** en wacht totdat de taak is gestopt.    
 5. Zoek naar de Event hubs-invoer/uitvoer waarvoor u de referenties wilt bijwerken.    
-6. Zoek het sleutel veld van de **Event hub-beleid** en plak de zojuist gegenereerde sleutel > Klik op **Opslaan**.    
+6. Zoek het sleutel veld van de **Event hub-beleid** en plak de zojuist gegenereerde sleutel > Klik op **Opslaan** .    
 7. Een verbindings test wordt automatisch gestart wanneer u de wijzigingen opslaat, Controleer of deze is geslaagd.    
 8. Ga door met [het starten van de taak in de sectie laatste keer gestopt](#start-your-job-from-the-last-stopped-time) .
 
@@ -52,7 +52,7 @@ In deze sectie leert u hoe u de referenties voor Blob Storage, Event Hubs, SQL D
 U moet verbinding maken met SQL Database om de aanmeldings referenties van een bestaande gebruiker bij te werken. U kunt referenties bijwerken met behulp van Azure Portal of een hulp programma aan de client zijde, zoals SQL Server Management Studio. In deze sectie wordt het proces voor het bijwerken van referenties met behulp van Azure Portal beschreven.
 
 1. Meld u aan bij de Azure Portal > te bladeren door de SQL database die u als uitvoer voor de Stream Analytics-taak hebt gebruikt.    
-2. Van **Data Explorer**, aanmelden/verbinding maken met uw data base > verificatie type selecteren als **SQL server-verificatie** > Typ uw **aanmeldings** -en **wachtwoord** gegevens > Selecteer **OK**.  
+2. Van **Data Explorer** , aanmelden/verbinding maken met uw data base > verificatie type selecteren als **SQL server-verificatie** > Typ uw **aanmeldings** -en **wachtwoord** gegevens > Selecteer **OK** .  
    ![Referenties voor SQL Database opnieuw genereren](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. Wijzig op het tabblad query het wacht woord voor een van de gebruikers door de volgende query uit te voeren (Vervang door `<user_name>` uw gebruikers naam en `<new_password>` met het nieuwe wacht woord):  
@@ -77,12 +77,12 @@ U moet verbinding maken met SQL Database om de aanmeldings referenties van een b
 ## <a name="start-your-job-from-the-last-stopped-time"></a>Start uw taak vanaf de laatste keer dat deze is gestopt
 
 1. Ga naar het deel venster **overzicht** van de taak > Selecteer **starten** om de taak te starten.    
-2. Selecteer **wanneer de laatste keer** dat deze is gestopt > Klik op **Start**. Houd er rekening mee dat de optie bij laatst gestopt alleen wordt weer gegeven als u de taak eerder hebt uitgevoerd en een bepaalde uitvoer heeft gegenereerd. De taak wordt opnieuw gestart op basis van de tijd van de laatste uitvoer waarde.
+2. Selecteer **wanneer de laatste keer** dat deze is gestopt > Klik op **Start** . Houd er rekening mee dat de optie bij laatst gestopt alleen wordt weer gegeven als u de taak eerder hebt uitgevoerd en een bepaalde uitvoer heeft gegenereerd. De taak wordt opnieuw gestart op basis van de tijd van de laatste uitvoer waarde.
    ![De Stream Analytics-taak starten](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API-naslaggids voor Azure Stream Analytics Management](/rest/api/streamanalytics/)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026952"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126716"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
@@ -46,7 +46,7 @@ Zie de [micro soft Commercial Marketplace hub](https://aka.ms/commercialmarketpl
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Zijn er kosten verbonden aan de micro soft Commercial Marketplace?
 
-Nee, er zijn geen kosten voor het publiceren van aanbiedingen in onze commerciële Marketplace. We houden een klein percentage van de verkoop op als transactie kosten en investeren ze in het Marketplace-programma voor markt beloning, platform innovatie en commerciële Marketplace-bewerkingen. Deze transactie kosten worden gereduceerd voor [Azure IP gemotiveerd-](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) aanbiedingen en voor betaalde SaaS-aanbiedingen op AppSource die zijn gekoppeld aan een micro soft teams-app of ten minste twee Microsoft 365-invoeg toepassingen (Excel, Power Point, Word, Outlook en share point).
+Nee, er zijn geen kosten voor het publiceren van aanbiedingen in onze commerciële Marketplace. We houden een klein percentage van de verkoop op als transactie kosten en investeren ze in het Marketplace-programma voor markt beloning, platform innovatie en commerciële Marketplace-bewerkingen. Deze transactie kosten worden gereduceerd voor [Azure IP gemotiveerd-](./marketplace-co-sell.md) aanbiedingen en voor betaalde SaaS-aanbiedingen op AppSource die zijn gekoppeld aan een micro soft teams-app of ten minste twee Microsoft 365-invoeg toepassingen (Excel, Power Point, Word, Outlook en share point).
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Hoe kan ik u zich aanmelden voor een uitgever in de micro soft Commercial Marketplace?
 
@@ -106,7 +106,7 @@ Er zijn vier relevante rollen die van toepassing zijn op Partner Center-toegang.
 
 Azure Active Directory (Azure AD) *globale beheerders* machtigingen zijn nodig voor het maken van nieuwe gebruikers accounts of het uitnodigen van Gast accounts in de onderliggende map. Het partner centrum past Azure AD toe op het identiteits model en de Azure AD-instantie van een organisatie wordt vaak beheerd en beheerd door de IT-of beveiligings teams.
 
-Zie [gebruikers rollen en machtigingen toewijzen](https://docs.microsoft.com/partner-center/permissions-overview)voor meer informatie.
+Zie [gebruikers rollen en machtigingen toewijzen](/partner-center/permissions-overview)voor meer informatie.
 
 ### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>Hebben klanten een abonnement nodig voor Microsoft Azure Cloud Services?
 

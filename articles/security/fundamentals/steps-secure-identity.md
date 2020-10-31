@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43974258008e3813a368ab31891251db15060aff
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364113"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127056"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
@@ -145,7 +145,7 @@ Azure Active Directory heeft veel mogelijkheden die automatisch aanvallen onders
 
 Gebruikers risico duidt op de kans dat de identiteit van een gebruiker is aangetast en wordt berekend op basis van de [gebruikers risico detecties](../../active-directory/identity-protection/overview.md) die zijn gekoppeld aan de identiteit van een gebruiker. Een beleid voor gebruikers Risico's is een beleid voor voorwaardelijke toegang waarmee het risico niveau wordt geëvalueerd voor een specifieke gebruiker of groep. Op basis van laag, gemiddeld, hoog risico niveau kan een beleid worden geconfigureerd om de toegang te blok keren of om een beveiligd wachtwoord wijziging te vereisen met multi-factor Authentication. De aanbeveling van micro soft is om een veilige wachtwoord wijziging te vereisen voor gebruikers met een hoog risico.
 
-![Gebruikers voor wie wordt aangegeven dat ze risico lopen](./media/steps-secure-identity/azure-ad-sec-steps1.png)
+![Scherm afbeelding toont gebruikers die zijn gemarkeerd voor risico, waarbij een gebruiker is geselecteerd.](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>Beleid voor aanmeldings Risico's implementeren met behulp van Azure AD Identity Protection
 
@@ -175,7 +175,7 @@ Azure AD Identity Protection biedt twee belang rijke rapporten die u dagelijks m
 1. Met Risk ante aanmeldings rapporten worden aanmeldings activiteiten voor gebruikers gesurfacet die u moet onderzoeken; de rechtmatige eigenaar heeft de aanmelding mogelijk niet uitgevoerd.
 2. Risk ante gebruikers rapporten ondervinden gebruikers accounts die mogelijk zijn aangetast, zoals gelekte referenties of de gebruiker die zich heeft aangemeld vanaf verschillende locaties waardoor een reis gebeurtenis wordt veroorzaakt.
 
-![Gebruikers voor wie wordt aangegeven dat ze risico lopen](./media/steps-secure-identity/azure-ad-sec-steps3.png)
+![Scherm afbeelding toont het deel venster identiteits beveiliging van Azure A D met gebruikers en hun risico niveaus.](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Apps en toegestuurde machtigingen controleren
 

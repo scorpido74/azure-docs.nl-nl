@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 09/01/2020
+ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 167c2f091d4d8a7d7d5c32009b484125d7275796
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 91de9aff154dec1a61360477edebc90b7a13cf24
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282361"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125169"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -33,15 +33,18 @@ De toewijzing van klant gebruik ondersteunt drie implementatie opties:
 >- De toewijzing van klant gebruik is voor nieuwe implementaties en biedt geen ondersteuning voor het coderen van bestaande resources die al zijn geïmplementeerd.
 >
 >- De toewijzing van klant gebruik is vereist voor [Azure-toepassing](./partner-center-portal/create-new-azure-apps-offer.md) aanbiedingen die naar Azure Marketplace worden gepubliceerd.
+>
+>- Niet alle Azure-Services zijn compatibel met de gebruiks toewijzing van de klant. Azure Kubernetes Services (AKS) en VM Scale Sets hebben vandaag bekende problemen die een minder rapportage van het gebruik veroorzaken.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-guids"></a>GUID'S maken
 
-Een GUID is een unieke referentie-id met 32 hexadecimale cijfers. Als u GUID'S voor bijhouden wilt maken, moet u een GUID-generator gebruiken. Het Azure Storage team heeft een [GUID-Generator formulier](https://aka.ms/StoragePartners) gemaakt dat u een GUID van de juiste indeling stuurt en kan worden hergebruikt in de verschillende tracking systemen.
+Een GUID is een unieke referentie-id met 32 hexadecimale cijfers. Als u GUID'S wilt maken voor bijhouden, moet u een GUID-generator gebruiken, bijvoorbeeld via Power shell.
 
-> [!NOTE]
-> Het is raadzaam om de GUID- [Generator van Azure Storage](https://aka.ms/StoragePartners) te gebruiken om uw GUID te maken. Zie [Veelgestelde vragen](#faq)voor meer informatie.
+```powershell
+[guid]::NewGuid()]
+```
 
 We raden u aan om voor elk product een unieke GUID te maken voor elk aanbod en distributie kanaal. U kunt ervoor kiezen om een enkele GUID voor de meerdere distributie kanalen van het product te gebruiken als u niet wilt dat rapportage wordt gesplitst.
 
@@ -67,19 +70,19 @@ Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de
 
 1. Meld u aan als een [commerciële Marketplace-Uitgever](https://aka.ms/JoinMarketplace).
 
-   * Partners moeten [beschikken over een profiel in Partner Center](become-publisher.md). We raden u aan de aanbieding in azure Marketplace of AppSource te vermelden.
+   * Partners moeten [beschikken over een profiel in Partner Center](./partner-center-portal/create-account.md). We raden u aan de aanbieding in azure Marketplace of AppSource te vermelden.
    * Partners kunnen meerdere GUID'S registreren.
    * Partners kunnen GUID'S registreren voor niet-Marketplace-oplossings sjablonen en aanbiedingen.
 
-1. Selecteer in de rechter bovenhoek het tandwiel pictogram instellingen en selecteer vervolgens **instellingen voor ontwikkel aars**.
+1. Selecteer in de rechter bovenhoek het tandwiel pictogram instellingen en selecteer vervolgens **instellingen voor ontwikkel aars** .
 
-1. Selecteer op de **pagina account instellingen**de optie **Tracking GUID toevoegen.**
+1. Selecteer op de **pagina account instellingen** de optie **Tracking GUID toevoegen.**
 
 1. Voer in het vak **GUID** uw tracking-GUID in. Voer alleen de GUID in zonder het `pid-` voor voegsel. Typ in het vak **Beschrijving** de naam of beschrijving van uw aanbieding.
 
 1. Als u meer dan één GUID wilt registreren, selecteert u opnieuw **Tracking GUID toevoegen** . Er worden aanvullende vakken op de pagina weer gegeven.
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan** .
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sjablonen gebruiken
 Veel partner oplossingen worden geïmplementeerd met Azure Resource Manager sjablonen. Als u een resource manager-sjabloon hebt die beschikbaar is in azure Marketplace, op GitHub of als Snelstartgids, is het proces voor het wijzigen van uw sjabloon om de toewijzing van klant gebruik direct uit te scha kelen.
@@ -97,9 +100,9 @@ Als u een Globally Unique Identifier (GUID) wilt toevoegen, brengt u één wijzi
 
 1. Open de Resource Manager-sjabloon.
 
-1. Voeg een nieuwe resource van het type [micro soft. resources/Deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) toe in het hoofd sjabloon bestand. De resource moet zich in het **mainTemplate.jsop** of **azuredeploy.js** alleen in het bestand en niet in geneste of gekoppelde sjablonen.
+1. Voeg een nieuwe resource van het type [micro soft. resources/Deployments](/azure/templates/microsoft.resources/deployments) toe in het hoofd sjabloon bestand. De resource moet zich in het **mainTemplate.jsop** of **azuredeploy.js** alleen in het bestand en niet in geneste of gekoppelde sjablonen.
 
-1. Voer de GUID-waarde na het `pid-` voor voegsel in als de naam van de resource. Als de GUID bijvoorbeeld eb7927c8-dd66-43e1-b0cf-c346a422063 is, is de resource naam _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_.
+1. Voer de GUID-waarde na het `pid-` voor voegsel in als de naam van de resource. Als de GUID bijvoorbeeld eb7927c8-dd66-43e1-b0cf-c346a422063 is, is de resource naam _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_ .
 
 1. Controleer de sjabloon op eventuele fouten.
 
@@ -132,7 +135,7 @@ De resource moet worden toegevoegd aan de **mainTemplate.jsop** of **azuredeploy
 
 ## <a name="use-the-resource-manager-apis"></a>De Resource Manager-Api's gebruiken
 
-In sommige gevallen kunt u de voor keur geven aan aanroepen direct voor de Resource Manager REST-Api's om Azure-Services te implementeren. [Azure ondersteunt meerdere sdk's](https://docs.microsoft.com/azure/?pivot=sdkstools) om deze aanroepen mogelijk te maken. U kunt een van de Sdk's gebruiken of de REST-Api's rechtstreeks aanroepen om resources te implementeren.
+In sommige gevallen kunt u de voor keur geven aan aanroepen direct voor de Resource Manager REST-Api's om Azure-Services te implementeren. [Azure ondersteunt meerdere sdk's](../index.yml?pivot=sdkstools) om deze aanroepen mogelijk te maken. U kunt een van de Sdk's gebruiken of de REST-Api's rechtstreeks aanroepen om resources te implementeren.
 
 Als u een resource manager-sjabloon gebruikt, moet u uw oplossing labelen door de instructies te volgen die eerder zijn beschreven. Als u geen Resource Manager-sjabloon gebruikt en directe API-aanroepen maakt, kunt u nog steeds uw implementatie labelen om het gebruik van Azure-resources te koppelen.
 
@@ -156,7 +159,7 @@ Gebruik het **configuratie** kenmerk voor python. U kunt het kenmerk alleen toev
 
 #### <a name="example-the-net-sdk"></a>Voor beeld: de .NET SDK
 
-Zorg ervoor dat u de gebruikers agent instelt voor .NET. De bibliotheek [micro soft. Azure. Management. Fluent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) kan worden gebruikt om de gebruikers agent in te stellen met de volgende code (voor beeld in C#):
+Zorg ervoor dat u de gebruikers agent instelt voor .NET. De bibliotheek [micro soft. Azure. Management. Fluent](/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) kan worden gebruikt om de gebruikers agent in te stellen met de volgende code (voor beeld in C#):
 
 ```csharp
 
@@ -183,7 +186,7 @@ Wanneer u de Azure CLI gebruikt om uw GUID toe te voegen, stelt u de omgevings v
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-Zie [Azure SDK voor Go](https://docs.microsoft.com/azure/developer/go/)voor meer informatie.
+Zie [Azure SDK voor Go](/azure/developer/go/)voor meer informatie.
 
 ## <a name="use-terraform"></a>Terraform gebruiken
 

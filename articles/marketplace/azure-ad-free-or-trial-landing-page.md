@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
-ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfa5d77077b8827bed1cbd8c7a46a5dbf361f139
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488606"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125713"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Bouw de landings pagina voor uw gratis of proef SaaS-aanbieding in de commerciële Marketplace
 
@@ -43,23 +43,23 @@ In de volgende secties in dit artikel vindt u instructies voor het maken van een
 
 ## <a name="create-an-azure-ad-app-registration"></a>Een Azure AD-App-registratie maken
 
-De commerciële Marketplace is volledig geïntegreerd met Azure AD. Gebruikers ontvangen op de Marketplace die is geverifieerd met een [Azure ad-account of Microsoft-account (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Nadat u een gratis of gratis proef abonnement hebt gekocht via uw aanbieding met alleen een lijst, gaat de gebruiker van de commerciële Marketplace naar de URL van de landings pagina om het abonnement te activeren en te beheren in uw SaaS-toepassing. U moet ervoor zorgen dat de gebruiker zich bij uw toepassing aanmeldt met Azure AD SSO. (De URL van de landings pagina is opgegeven op de pagina [technische configuratie](plan-saas-offer.md#technical-information) van de aanbieding.
+De commerciële Marketplace is volledig geïntegreerd met Azure AD. Gebruikers ontvangen op de Marketplace die is geverifieerd met een [Azure ad-account of Microsoft-account (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology). Nadat u een gratis of gratis proef abonnement hebt gekocht via uw aanbieding met alleen een lijst, gaat de gebruiker van de commerciële Marketplace naar de URL van de landings pagina om het abonnement te activeren en te beheren in uw SaaS-toepassing. U moet ervoor zorgen dat de gebruiker zich bij uw toepassing aanmeldt met Azure AD SSO. (De URL van de landings pagina is opgegeven op de pagina [technische configuratie](plan-saas-offer.md#technical-information) van de aanbieding.
 
 De eerste stap bij het gebruik van de identiteit is ervoor te zorgen dat uw landings pagina is geregistreerd als een Azure AD-toepassing. Door de toepassing te registreren, kunt u Azure AD gebruiken voor het verifiëren van gebruikers en het aanvragen van toegang tot gebruikers resources. Het kan worden beschouwd als de definitie van de toepassing, zodat de service weet hoe tokens aan de app kunnen worden verstrekt op basis van de instellingen van de app.
 
 ### <a name="register-a-new-application-using-the-azure-portal"></a>Een nieuwe toepassing registreren via de Azure Portal
 
-Volg de instructies voor het [registreren van een nieuwe toepassing](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)om aan de slag te gaan. Als u wilt dat gebruikers van andere bedrijven de app kunnen bezoeken, moet u **accounts kiezen in elke organisatie Directory (een Azure AD-adres lijst, multi tenant) en persoonlijke micro soft-accounts (zoals Skype of Xbox)** wanneer u wordt gevraagd wie de toepassing mag gebruiken.
+Volg de instructies voor het [registreren van een nieuwe toepassing](../active-directory/develop/quickstart-register-app.md)om aan de slag te gaan. Als u wilt dat gebruikers van andere bedrijven de app kunnen bezoeken, moet u **accounts kiezen in elke organisatie Directory (een Azure AD-adres lijst, multi tenant) en persoonlijke micro soft-accounts (zoals Skype of Xbox)** wanneer u wordt gevraagd wie de toepassing mag gebruiken.
 
-Als u van plan bent om de Microsoft Graph-API te doorzoeken, [moet u uw nieuwe toepassing configureren voor toegang tot Web-api's](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Wanneer u de API-machtigingen voor deze toepassing selecteert, is de standaard instelling **gebruiker. Read** voldoende voor het verzamelen van basis informatie over de gebruiker om het voorbereidings proces soepel en automatisch uit te voeren. U kunt geen API-machtigingen aanvragen waaraan **beheerders toestemming**wordt gevraagd, omdat alle niet-beheerders gebruikers de landings pagina niet kunnen bezoeken.
+Als u van plan bent om de Microsoft Graph-API te doorzoeken, [moet u uw nieuwe toepassing configureren voor toegang tot Web-api's](../active-directory/develop/quickstart-configure-app-access-web-apis.md). Wanneer u de API-machtigingen voor deze toepassing selecteert, is de standaard instelling **gebruiker. Read** voldoende voor het verzamelen van basis informatie over de gebruiker om het voorbereidings proces soepel en automatisch uit te voeren. U kunt geen API-machtigingen aanvragen waaraan **beheerders toestemming** wordt gevraagd, omdat alle niet-beheerders gebruikers de landings pagina niet kunnen bezoeken.
 
-Als u verhoogde machtigingen nodig hebt als onderdeel van het voorbereidings-of inrichtings proces, kunt u overwegen om de functionaliteit voor [incrementele toestemming](https://aka.ms/incremental-consent) van Azure ad te gebruiken, zodat alle gebruikers die vanaf de Marketplace worden verzonden, in eerste instantie met de landings pagina kunnen communiceren.
+Als u verhoogde machtigingen nodig hebt als onderdeel van het voorbereidings-of inrichtings proces, kunt u overwegen om de functionaliteit voor [incrementele toestemming](../active-directory/azuread-dev/azure-ad-endpoint-comparison.md) van Azure ad te gebruiken, zodat alle gebruikers die vanaf de Marketplace worden verzonden, in eerste instantie met de landings pagina kunnen communiceren.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Een voor beeld van een code gebruiken als uitgangs punt
 
 Micro soft heeft verschillende voor beelden gegeven van apps die een eenvoudige website implementeren waarvoor Azure AD-aanmelding is ingeschakeld. Nadat uw toepassing is geregistreerd in azure AD, biedt de Blade **Quick** start een lijst met algemene toepassings typen en ontwikkelings Stacks (afbeelding 1). Kies het abonnement dat overeenkomt met uw omgeving en volg de instructies voor downloaden en instellen.
 
-***Afbeelding 1: de Blade Quick Start in de Azure Portal***
+**_Afbeelding 1: de Blade Quick Start in de Azure Portal_* _
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Illustreert de Blade Quick Start in de Azure Portal.":::
 
@@ -67,7 +67,7 @@ Nadat u de code hebt gedownload en uw ontwikkel omgeving hebt ingesteld, wijzigt
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Lees de informatie van claims die zijn gecodeerd in het ID-token
 
-Als onderdeel van de [OpenID Connect Connect](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) flow voegt Azure AD een [id-token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens) toe aan de aanvraag wanneer de gebruiker naar de landings pagina wordt verzonden. Dit token bevat meerdere basis informatie die nuttig kan zijn bij het activerings proces, met inbegrip van de informatie die in deze tabel wordt weer gegeven.
+Als onderdeel van de [OpenID Connect Connect](../active-directory/develop/v2-protocols-oidc.md) flow voegt Azure AD een [id-token](../active-directory/develop/id-tokens.md) toe aan de aanvraag wanneer de gebruiker naar de landings pagina wordt verzonden. Dit token bevat meerdere basis informatie die nuttig kan zijn bij het activerings proces, met inbegrip van de informatie die in deze tabel wordt weer gegeven.
 
 | Waarde | Beschrijving |
 | ------------ | ------------- |
@@ -82,7 +82,7 @@ Als onderdeel van de [OpenID Connect Connect](https://docs.microsoft.com/azure/a
 
 ## <a name="use-the-microsoft-graph-api"></a>De Microsoft Graph API gebruiken
 
-Het ID-token bevat basis informatie voor het identificeren van de gebruiker, maar uw activerings proces vereist mogelijk aanvullende details, zoals het bedrijf van de gebruiker, om het voorbereidings proces te volt ooien. Gebruik de [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api) om deze informatie aan te vragen om te voor komen dat de gebruiker deze gegevens opnieuw invoert. De standaard **gebruiker. Lees** machtigingen zijn standaard de volgende informatie:
+Het ID-token bevat basis informatie voor het identificeren van de gebruiker, maar uw activerings proces vereist mogelijk aanvullende details, zoals het bedrijf van de gebruiker, om het voorbereidings proces te volt ooien. Gebruik de [Microsoft Graph-API](/graph/use-the-api) om deze informatie aan te vragen om te voor komen dat de gebruiker deze gegevens opnieuw invoert. De standaard _ *gebruiker. Read* *-machtigingen bevatten de volgende informatie:
 
 | Waarde | Beschrijving |
 | ------------ | ------------- |
@@ -95,9 +95,9 @@ Het ID-token bevat basis informatie voor het identificeren van de gebruiker, maa
 | surname | De achternaam van de gebruiker. |
 |||
 
-Aanvullende eigenschappen, zoals de naam van het bedrijf van de gebruiker of de locatie van de gebruiker (land), kunnen worden geselecteerd voor opname in de aanvraag. Zie [Eigenschappen voor het resource type van de gebruiker](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties)voor meer informatie.
+Aanvullende eigenschappen, zoals de naam van het bedrijf van de gebruiker of de locatie van de gebruiker (land), kunnen worden geselecteerd voor opname in de aanvraag. Zie [Eigenschappen voor het resource type van de gebruiker](/graph/api/resources/user?view=graph-rest-1.0#properties)voor meer informatie.
 
-De meeste apps die zijn geregistreerd bij Azure AD, hebben gedelegeerde machtigingen voor het lezen van de gegevens van de gebruiker uit de Azure AD-Tenant van hun bedrijf. Elke aanvraag voor het Microsoft Graph van die informatie moet vergezeld gaan van een toegangs token als verificatie. Specifieke stappen voor het genereren van het toegangs token zijn afhankelijk van de technologie stack die u gebruikt, maar de voorbeeld code bevat een voor beeld. Zie [toegang namens een gebruiker verkrijgen](https://docs.microsoft.com/graph/auth-v2-user)voor meer informatie.
+De meeste apps die zijn geregistreerd bij Azure AD, hebben gedelegeerde machtigingen voor het lezen van de gegevens van de gebruiker uit de Azure AD-Tenant van hun bedrijf. Elke aanvraag voor het Microsoft Graph van die informatie moet vergezeld gaan van een toegangs token als verificatie. Specifieke stappen voor het genereren van het toegangs token zijn afhankelijk van de technologie stack die u gebruikt, maar de voorbeeld code bevat een voor beeld. Zie [toegang namens een gebruiker verkrijgen](/graph/auth-v2-user)voor meer informatie.
 
 > [!NOTE]
 > Accounts van de MSA-Tenant (met Tenant-ID `9188040d-6c67-4c5b-b112-36a304b66dad` ) retour neren niet meer informatie dan al is verzameld met het ID-token. U kunt deze aanroep overs laan voor de Graph API voor deze accounts.

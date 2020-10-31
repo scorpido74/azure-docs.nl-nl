@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 51f226443e6f21b6c333cacf6c88f0d00208f5f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75bf1e3d81b466098884a354826019aa94a94174
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484269"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126104"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Verkoop richtlijnen voor Azure Marketplace
 
@@ -31,7 +31,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | 7 | Video's | <ul><li>Er is geen video vereist, maar indien opgegeven, moet deze zonder fouten worden afgespeeld.</li><li>Indien dit niet het geval is, kan deze niet verwijzen naar leveranciers van de concurrent, *tenzij* er een migratie oplossing wordt gedemonstreerd. |<ul><li>In het ideale geval is de lengte 3 min. of meer.</li><li>De aanbieding van de oplossing is eenvoudig te begrijpen via video-inhoud.</li><li>Biedt een demo van oplossings mogelijkheden. |
 | 8 | Status weer geven (aanbiedings opties) | <ul><li>Moet worden aangeduid als een van de volgende typen: <ul><li>*Contact opnemen*</li><li>*Proef versie* / Nu proef versie *ophalen* / *Proef versie starten* / *Station testen*</li><li>*Nu kopen* / *Nu downloaden*</li></ul></ul> | De klant kan gemakkelijk begrijpen wat de volgende stappen zijn: <ol><li>Probeer de proef versie.</li><li>Nu kopen.</li><li>Neem contact op via e-mail adres of telefoon nummer om te bepalen of het concept (haalbaarheids test), de evaluatie of de informatie moet worden genoteerd.</li></ol> | 
 | 9 | Prijzen van oplossingen | Moet het tabblad met prijs stellingen voor de oplossing of details hebben en de prijzen moeten zich in de lokale valuta van de aanbieding van de partner oplossing bezoeken. | Er moeten meerdere facturerings opties beschikbaar zijn met prijs categorieën om klant opties te bieden. |
-| 10 | Meer informatie | Koppelingen onderaan (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en kunnen goed worden weer gegeven. |    Koppelingen naar specifieke items (bijvoorbeeld spec Pages op de partner site) en niet alleen de start pagina van de partner. | 
+| 10 | Lees meer | Koppelingen onderaan (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en kunnen goed worden weer gegeven. |    Koppelingen naar specifieke items (bijvoorbeeld spec Pages op de partner site) en niet alleen de start pagina van de partner. | 
 | 11 | Ondersteuning en Help voor oplossingen | Een koppeling maken naar ten minste één van de volgende: <ul><li>Telefoon nummers</li><li>E-mail ondersteuning</li><li>Chat-agents</li><li>Communautaire forums |<ul><li>Alle ondersteunings methoden worden weer gegeven.</li><li>Betaalde ondersteuning wordt gratis aangeboden tijdens de *proef* -of *test drive* -periode. |
 | 12 | Juridisch | Beleids regels of voor waarden zijn beschikbaar via een open bare URL. |  |
 |||
@@ -40,7 +40,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 
 | Nee. | Element van vermelding | Basis vereiste | Optimale vereisten | 
 |:--- |:--- |:--- |:--- |
-|  | Status weer geven (optie Aanbieding) | De koppeling moet leiden naar een *proef* ervaring met de klant. | Andere aanbiedings opties (bijvoorbeeld *Nu kopen*) zijn ook beschikbaar. | 
+|  | Status weer geven (optie Aanbieding) | De koppeling moet leiden naar een *proef* ervaring met de klant. | Andere aanbiedings opties (bijvoorbeeld *Nu kopen* ) zijn ook beschikbaar. | 
 |||
 
 ## <a name="saas-application-requirements"></a>SaaS-toepassings vereisten
@@ -48,7 +48,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | Nee. | Element van vermelding | Basis vereiste | Optimale vereisten | 
 |:--- |:--- |:--- |:--- |
 | 1 | Titel van aanbieding |<ul><li>Mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. De titel kan niet worden gewijzigd nadat deze is gepubliceerd.</li><li>Hierin wordt een beschrijving van de oplossing beschreven.</li><li>Komt overeen met de online promotie van de oplossing op de website van de partner. | Bevat tref woorden voor de sleutel. |
-| 2 | Technische informatie: Configuratie |<ul><li>Voor software as a Service (SaaS)-apps kiest u of u alleen uw app wilt vermelden of dat klanten uw app kunnen kopen via Azure.</li><li>Selecteer de gewenste tekst op de knop aanschaf van uw aanbieding: *gratis*, *gratis proef versie*of *Neem contact met mij*op.</li><li>Selecteer in het pop-upvenster slechts één toepasselijk product als uw app gebruikmaakt van de technologie: Cortana Intelligence, Power BI oplossings sjablonen of Power apps. |  |
+| 2 | Technische informatie: Configuratie |<ul><li>Voor software as a Service (SaaS)-apps kiest u of u alleen uw app wilt vermelden of dat klanten uw app kunnen kopen via Azure.</li><li>Selecteer de gewenste tekst op de knop aanschaf van uw aanbieding: *gratis* , *gratis proef versie* of *Neem contact met mij* op.</li><li>Selecteer in het pop-upvenster slechts één toepasselijk product als uw app gebruikmaakt van de technologie: Cortana Intelligence, Power BI oplossings sjablonen of Power apps. |  |
 | 3 | Station testen | Selecteer *Ja* of *Nee* | De klant kan gemakkelijk begrijpen wat de volgende stappen zijn: <ol><li>Probeer de proef versie.</li><li>Nu kopen.</li><li>Neem contact op via e-mail adres of telefoon nummer om de HAALBAARHEIDs-, evaluatie-of-informatie te rangschikken.</li></ol> |
 | 4 | Details van online winkel: overzicht van aanbieding | Wordt op de zoek pagina van de app weer gegeven en heeft een maximum van 100 tekens. | |
 | 5 | Details van online winkel: industrieën | Industries (max. 2): Selecteer de branches die uw app het beste is uitgelijnd en van toepassing is op. | |
@@ -78,20 +78,20 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | 2 | Beschrijving van aanbieding  |<ul><li>Zorg voor een correct gebruik van [product namen van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx).</li><li>Aanbiedingen die zijn gemarkeerd als *prijs: schatting* moeten een opmerking aan de bovenkant of de onderkant hebben om de variabiliteit te verklaren (reis naar client, aantal servers die worden gemigreerd, enzovoort).</li><li>Elk aanbiedings type heeft de volgende beschrijvings vereisten: <ul><li>Er zijn ten minste vier of vijf opsommings tekens nodig, met informatie over de onderwerpen die moeten worden behandeld.</li><li>Alle workshops hebben een agenda nodig.</li><li>Alle agenda's moeten per dag of per week worden opgesplitst, afhankelijk van de duur van de workshop.</li><li>Voor evaluatie, haalbaarheids test, niet-trainings workshops en implementatie aanbiedingen is een product vereist.</li><li>Trainings workshops hebben geen producten nodig, maar ze hebben een gedetailleerdere agenda nodig met onderwerpen die worden behandeld.</li></ul></ul> | <ul><li>Elk aanbod heeft een agenda en een klant.</li><li>De aanbieding bevat een alinea met context over het bedrijf dat de service in de bovenste sectie levert.</li><li>De aanbieding bevat een alinea over de waarde van de service zelf als een bovenste sectie. |
 | 3 | Indeling voor prijs verlaging  | Alle aanbiedingen moeten gebruikmaken van de indeling voor prijs verlaging zodat de aanbieding correct wordt weer gegeven wanneer deze naar HTML wordt geconverteerd.  |  |
 | 4 | Categorieën en industrieën | Categorieën zijn niet relevant. |  | 
-| 5 | Status weer geven (optie Aanbieding) | Automatisch vermeld als *contact persoon*. |  | 
+| 5 | Status weer geven (optie Aanbieding) | Automatisch vermeld als *contact persoon* . |  | 
 | 6 | Ondersteuning en Help voor oplossingen  | Ondersteuning en Help zijn niet vereist.  | | 
 | 7 | Het privacybeleid en de gebruiks voorwaarden zijn beschikbaar  |  Er zijn geen beleids regels of voor waarden vereist.  | | 
 | 8 | Service typen | Zorg ervoor dat het Service type overeenkomt met de titel. | |
 | 9 | Competenties | Moet competentie hebben in ten minste één van de volgende:<ul><li>Ontwikkeling van toepassingen</li><li>Integratie van toepassingen</li><li>Beheer van toepassings levenscyclus</li><li>Cloud platform<li>Data Analytics</li><li>Datacentrum</li><li>Gegevens platform</li><li>DevOps |
 | 10 | Producten | Azure-producten moeten zijn. | |
 | 11 | Land/regio | Zorg ervoor dat het land/de regio overeenkomt met de geselecteerde valuta. | |
-| 12 | Meer informatie  | <ul><li>Koppelingen aan de onderkant (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en worden correct weer gegeven.</li><li>Koppelingen moeten een beschrijvende naam hebben en worden niet weer gegeven als de bestands naam van een down load. | |
+| 12 | Lees meer  | <ul><li>Koppelingen aan de onderkant (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en worden correct weer gegeven.</li><li>Koppelingen moeten een beschrijvende naam hebben en worden niet weer gegeven als de bestands naam van een down load. | |
 ||||
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over de verschillende soorten aanbiedingen in azure Marketplace:
-  * [SaaS-apps](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)
-  * [Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers)
-  * [Adviesservices](https://docs.microsoft.com/azure/marketplace/consulting-services)
-* [Uw publicatieoptie bepalen](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+  * [SaaS-apps](./plan-saas-offer.md)
+  * [Containers](./marketplace-containers.md)
+  * [Adviesservices](./consulting-services.md)
+* [Uw publicatieoptie bepalen](./determine-your-listing-type.md)

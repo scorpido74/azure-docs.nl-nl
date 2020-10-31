@@ -8,22 +8,22 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89015591"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126852"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: analyse taken instellen en uitvoeren met behulp van de Azure Stream Analytics-API voor .NET
 Meer informatie over het instellen en uitvoeren van analyse taken met behulp van de Stream Analytics-API voor .NET met behulp van de Management .NET SDK. Stel een project in en maak invoer-en uitvoer bronnen, trans formaties en taken voor starten en stoppen. Voor uw analyse taken kunt u gegevens streamen vanuit Blob Storage of van een Event Hub.
 
-Zie de [documentatie van management Reference voor de stream Analytics-API voor .net](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+Zie de [documentatie van management Reference voor de stream Analytics-API voor .net](/previous-versions/azure/dn889315(v=azure.100)).
 
 Azure Stream Analytics is een volledig beheerde service met lage latentie, Maxi maal beschik bare, schaal bare, complexe gebeurtenis verwerking via streaming-gegevens in de Cloud. Met Stream Analytics kunnen klanten streaming-taken instellen om gegevens stromen te analyseren en ze in staat stellen om in realtime analyses te maken.  
 
 > [!NOTE]
-> We hebben de voorbeeld code in dit artikel bijgewerkt met Azure Stream Analytics management .NET SDK v2. x-versie. Zie [de Management .NET SDK v1. x gebruiken voor stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1)voor voorbeeld code met de SDK-versie van lagecy (1. x).
+> We hebben de voorbeeld code in dit artikel bijgewerkt met Azure Stream Analytics management .NET SDK v2. x-versie. Zie [de Management .NET SDK v1. x gebruiken voor stream Analytics]()voor voorbeeld code met de SDK-versie van lagecy (1. x).
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u aan dit artikel begint, moet u aan de volgende vereisten voldoen:
@@ -167,7 +167,7 @@ Met de volgende code wordt een Stream Analytics taak gemaakt onder de resource g
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Een Stream Analytics-invoer bron maken
-Met de volgende code wordt een Stream Analytics invoer bron gemaakt met het BLOB-invoer bron type en CSV-serialisatie. Gebruik **EventHubStreamInputDataSource** in plaats van **BlobStreamInputDataSource**om een event hub invoer bron te maken. Op dezelfde manier kunt u het type serialisatie van de invoer bron aanpassen.
+Met de volgende code wordt een Stream Analytics invoer bron gemaakt met het BLOB-invoer bron type en CSV-serialisatie. Gebruik **EventHubStreamInputDataSource** in plaats van **BlobStreamInputDataSource** om een event hub invoer bron te maken. Op dezelfde manier kunt u het type serialisatie van de invoer bron aanpassen.
 
    ```csharp
    // Create an input
@@ -285,7 +285,7 @@ Met de methode **verwijderen** worden de taak en de onderliggende subbronnen, in
    ```
 
 ## <a name="get-support"></a>Ondersteuning krijgen
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 U hebt de basis beginselen van het gebruik van een .NET SDK geleerd om analyse taken te maken en uit te voeren. Lees de volgende artikelen voor meer informatie:
@@ -293,9 +293,9 @@ U hebt de basis beginselen van het gebruik van een .NET SDK geleerd om analyse t
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Azure stream Analytics management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure stream Analytics management .NET SDK](/previous-versions/azure/dn889315(v=azure.100)).
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API-naslaggids voor Azure Stream Analytics Management](/rest/api/streamanalytics/)
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
@@ -305,17 +305,17 @@ U hebt de basis beginselen van het gebruik van een .NET SDK geleerd om analyse t
 
 <!--Link references-->
 [azure.blob.storage]: https://azure.microsoft.com/documentation/services/storage/
-[azure.blob.storage.use]: https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/
+[azure.blob.storage.use]: ../storage/blobs/storage-quickstart-blobs-dotnet.md
 
 [azure.event.hubs]: https://azure.microsoft.com/services/event-hubs/
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
 [stream.analytics.forum]: https://go.microsoft.com/fwlink/?LinkId=512151
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.developer.guide]: stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

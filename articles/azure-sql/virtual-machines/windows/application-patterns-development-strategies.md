@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 46adbfee24ab463acdc4687c0465bbf50527a329
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f681c6c453c9c0955092c4f1574a54ea2c9973f5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790641"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126648"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Toepassings patronen en ontwikkelings strategieën voor het SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -191,11 +191,11 @@ In het volgende diagram ziet u een on-premises scenario en de bijbehorende Cloud
 
 Zoals in het diagram wordt weer gegeven, distribueert Azure Load Balancer verkeer over meerdere virtuele machines en bepaalt ook met welke webserver of toepassings server verbinding moet worden gemaakt. Meerdere exemplaren van de web-en toepassings servers achter een load balancer zorgt voor een hoge Beschik baarheid van de presentatielaag en de zakelijke laag. Zie [Aanbevolen procedures voor toepassings patronen die SQL HADR vereisen](#best-practices-for-application-patterns-requiring-sql-hadr)voor meer informatie.
 
-![Toepassings patronen met Cloud Services](./media/application-patterns-development-strategies/IC728013.png)
+![Diagram bevat on-premises fysieke of virtuele machines die zijn verbonden met exemplaren van webrollen in een virtueel Azure-netwerk via Azure load balancer.](./media/application-patterns-development-strategies/IC728013.png)
 
 Een andere benadering voor het implementeren van dit toepassings patroon is het gebruik van een geconsolideerde webrol die de onderdelen van de presentatie tier en de bedrijfslaag bevat, zoals in het volgende diagram wordt weer gegeven. Dit toepassings patroon is handig voor toepassingen waarvoor een stateful ontwerp is vereist. Omdat Azure stateless Compute-knoop punten in web-en werk rollen heeft, raden we u aan een logica te implementeren om de sessie status op te slaan met behulp van een van de volgende technologieën: [Azure caching](https://azure.microsoft.com/documentation/services/azure-cache-for-redis/), [azure Table Storage](../../../cosmos-db/tutorial-develop-table-dotnet.md) of [Azure SQL database](../../database/sql-database-paas-overview.md).
 
-![Toepassings patronen met Cloud Services](./media/application-patterns-development-strategies/IC728014.png)
+![Diagram bevat on-premises fysieke of virtuele machines die zijn verbonden met geconsolideerde web-of worker-instanties in een virtueel Azure-netwerk.](./media/application-patterns-development-strategies/IC728014.png)
 
 ## <a name="pattern-with-azure-virtual-machines-azure-sql-database-and-azure-app-service-web-apps"></a>Patroon met Azure Virtual Machines, Azure SQL Database en Azure App Service (Web Apps)
 Het primaire doel van dit toepassings patroon is om te laten zien hoe u Azure Infrastructure as a service-onderdelen (IaaS) kunt combi neren met Azure Platform-as-a-service-onderdelen (PaaS) in uw oplossing. Dit patroon is gericht op Azure SQL Database voor relationele gegevens opslag. Het bevat geen SQL Server in een virtuele machine van Azure, die deel uitmaakt van de Azure-infra structuur als een service aanbieding.

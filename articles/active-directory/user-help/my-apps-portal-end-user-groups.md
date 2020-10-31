@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277494"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124149"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uw groeps gegevens bijwerken op de portal mijn apps
 
@@ -88,7 +88,7 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
     - **Groeps beleid.** Kies ofwel om iedereen toe te staan lid te worden van de groep of om alleen leden toe te voegen aan de eigenaar van de groep.
 
-3. Selecteer **Maken**.
+3. Selecteer **Maken** .
 
     De nieuwe groep wordt met u gemaakt als de eigenaar en deze wordt weer gegeven in uw **groep mijn eigen** lijst. Omdat u de eigenaar bent, wordt deze groep ook weer gegeven in de lijst **groepen die ik** bevindt.
 
@@ -96,27 +96,27 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
 Nadat u een groep hebt gemaakt, kunt u de details ervan bewerken, inclusief het bijwerken van de bestaande informatie.
 
-1. Selecteer de groep die u wilt bewerken op de pagina **groepen** en selecteer vervolgens **Details bewerken** op de pagina * &lt; group_name &gt; * .
+1. Selecteer de groep die u wilt bewerken op de pagina **groepen** en selecteer vervolgens **Details bewerken** op de pagina *&lt; group_name &gt;* .
 
     Het vak **Details bewerken** wordt weer gegeven en u kunt de informatie bijwerken die u hebt toegevoegd tijdens de eerste keer dat u de groep hebt gemaakt.
 
-2. Breng al uw wijzigingen aan en selecteer vervolgens **bijwerken**.
+2. Breng al uw wijzigingen aan en selecteer vervolgens **bijwerken** .
 
 ## <a name="add-or-remove-a-member"></a>Een lid toevoegen of verwijderen
 
 U kunt leden toevoegen aan of verwijderen uit elke groep waarvan u eigenaar bent.
 
-1. Selecteer de groep waaraan u leden wilt toevoegen en selecteer vervolgens **+** op de pagina * &lt; group_name &gt; * .
+1. Selecteer de groep waaraan u leden wilt toevoegen en selecteer vervolgens **+** op de pagina *&lt; group_name &gt;* .
 
     ![Een groepslid toevoegen met +-teken gemarkeerd](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
-2. Zoek naar het lid dat u wilt toevoegen, in het vak **leden toevoegen** en selecteer vervolgens **toevoegen**.
+2. Zoek naar het lid dat u wilt toevoegen, in het vak **leden toevoegen** en selecteer vervolgens **toevoegen** .
 
     ![Vak leden toevoegen, met nieuw lid dat moet worden toegevoegd](media/my-apps-portal/my-apps-portal-add-member-page.png)
 
     Er wordt een uitnodiging verzonden naar het nieuwe lid om aan de slag te gaan met de apps van de organisatie.
 
-3. Als u per ongeluk een lid hebt toegevoegd, of als een lid uw organisatie heeft verlaten, kunt u het lid verwijderen door **lid verwijderen** naast de naam van het lid op de pagina * &lt; group_name &gt; * te selecteren.
+3. Als u per ongeluk een lid hebt toegevoegd, of als een lid uw organisatie heeft verlaten, kunt u het lid verwijderen door **lid verwijderen** naast de naam van het lid op de pagina *&lt; group_name &gt;* te selecteren.
 
     ![Een lid verwijderen, waarbij de Verwijder koppeling is gemarkeerd](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -124,7 +124,7 @@ U kunt leden toevoegen aan of verwijderen uit elke groep waarvan u eigenaar bent
 
 Als uw organisatie dit toestaat, kunt u een Office 365-groep vernieuwen en de verval datum verlengen.
 
-1. Selecteer de Office 365-groep die u wilt verlengen en selecteer vervolgens **groep vernieuwen**.
+1. Selecteer de Office 365-groep die u wilt verlengen en selecteer vervolgens **groep vernieuwen** .
 
     ![Een Office 365-groep vernieuwen en de verval datum verlengen](media/my-apps-portal/my-apps-portal-renew-group-link.png)
 
@@ -136,7 +136,7 @@ Als uw organisatie dit toestaat, kunt u een Office 365-groep vernieuwen en de ve
 
 U kunt uw eigen groepen op elk gewenst moment verwijderen. Als u echter een groep per ongeluk verwijdert, moet u deze maken en opnieuw leden toevoegen.
 
-1. Selecteer de groep die u definitief wilt verwijderen en selecteer vervolgens **groep verwijderen** op de pagina * &lt; group_name &gt; * .
+1. Selecteer de groep die u definitief wilt verwijderen en selecteer vervolgens **groep verwijderen** op de pagina *&lt; group_name &gt;* .
 
     ![<pagina Group_name> met de koppeling groep verwijderen gemarkeerd](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
@@ -154,11 +154,11 @@ U kunt een bestaande groep toevoegen aan of laten staan op de pagina **groepen**
 
     ![De pagina lid worden van groepen, met de knop toevoegen aan groep gemarkeerd](media/my-apps-portal/my-apps-portal-join-group-link.png)
 
-2. Selecteer op de pagina **lid worden van groepen** de naam van de groep die u wilt toevoegen, Bekijk de details van de bijbehorende groep en selecteer als de groep beschikbaar is, de optie **lid worden van groep**.
+2. Selecteer op de pagina **lid worden van groepen** de naam van de groep die u wilt toevoegen, Bekijk de details van de bijbehorende groep en selecteer als de groep beschikbaar is, de optie **lid worden van groep** .
 
-    Als de groep de eigenaar van de groep nodig heeft om het lidmaatschap goed te keuren, wordt u gevraagd om een zakelijke reden op te geven voor de reden waarom u lid moet worden van de groep en vervolgens **aanvraag**te selecteren. Als voor de groep geen goed keuring is vereist, wordt u onmiddellijk toegevoegd als lid en de groep wordt weer gegeven in uw **groepen die ik in** de lijst bevindt.
+    Als de groep de eigenaar van de groep nodig heeft om het lidmaatschap goed te keuren, wordt u gevraagd om een zakelijke reden op te geven voor de reden waarom u lid moet worden van de groep en vervolgens **aanvraag** te selecteren. Als voor de groep geen goed keuring is vereist, wordt u onmiddellijk toegevoegd als lid en de groep wordt weer gegeven in uw **groepen die ik in** de lijst bevindt.
 
-3. Als u per ongeluk lid is van een groep of als u geen deel ervan hoeft te maken, kunt u de groeps naam selecteren op de pagina **join-groepen** en vervolgens **groep verlaten**selecteren.
+3. Als u per ongeluk lid is van een groep of als u geen deel ervan hoeft te maken, kunt u de groeps naam selecteren op de pagina **join-groepen** en vervolgens **groep verlaten** selecteren.
 
     ![Pagina lid worden van groepen, waarbij de knop groep verlaten is gemarkeerd](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
@@ -166,6 +166,6 @@ U kunt een bestaande groep toevoegen aan of laten staan op de pagina **groepen**
 
 - [Apps openen en gebruiken in de portal voor mijn apps](my-apps-portal-end-user-access.md).
 
-- [Wijzig de profiel gegevens](my-apps-portal-end-user-update-profile.md).
+- [Wijzig de profiel gegevens](./my-account-portal-settings.md).
 
 - [Voer uw eigen toegangs beoordelingen uit](my-apps-portal-end-user-access-reviews.md).

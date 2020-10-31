@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903820"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124166"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Fouten opsporen Azure Stream Analytics query's lokaal met behulp van taak diagram in Visual Studio code
 
@@ -31,7 +31,7 @@ Gebruik deze [Quick](quick-create-visual-studio-code.md) start om te leren hoe u
 
 Als u de query wilt testen met lokale invoer gegevens, volgt u deze [instructies](visual-studio-code-local-run.md). Als u met Live-invoer wilt testen, gaat u naar de volgende stap om [uw invoer te configureren](stream-analytics-add-inputs.md) . 
 
-Open het * \. asaql* -script bestand en selecteer **lokaal uitvoeren**. Selecteer vervolgens **lokale invoer gebruiken** of **Live-invoer gebruiken**. Het taak diagram wordt weer gegeven aan de rechter kant van het venster.
+Open het *\. asaql* -script bestand en selecteer **lokaal uitvoeren** . Selecteer vervolgens **lokale invoer gebruiken** of **Live-invoer gebruiken** . Het taak diagram wordt weer gegeven aan de rechter kant van het venster.
 
 ### <a name="view-the-output-and-intermediate-result-set"></a>De resultatenset van de uitvoer en de tussenliggende verzameling weer geven  
 
@@ -56,7 +56,7 @@ In deze sectie bekijkt u de metrische gegevens die beschikbaar zijn voor elk dee
    > [!div class="mx-imgBorder"]
    > ![Metrische gegevens van taak diagram](./media/debug-locally-using-job-diagram-vs-code/job-metrics.png)
 
-3. Selecteer de naam van de invoer gegevens bron in de vervolg keuzelijst om invoer metrieken te bekijken. De invoer bron in de onderstaande scherm afbeelding heet *aanhalings tekens*. Zie voor meer informatie over invoer metrieken [begrijpen stream Analytics taak bewaking en query's bewaken](stream-analytics-monitoring.md).
+3. Selecteer de naam van de invoer gegevens bron in de vervolg keuzelijst om invoer metrieken te bekijken. De invoer bron in de onderstaande scherm afbeelding heet *aanhalings tekens* . Zie voor meer informatie over invoer metrieken [begrijpen stream Analytics taak bewaking en query's bewaken](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
    > ![Invoer gegevens van het taak diagram](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
@@ -104,7 +104,7 @@ Selecteer **taak samenvatting** in de rechter bovenhoek van het taak diagram om 
 
 * Aangepaste C#-code en Azure Machine Learning-functies worden niet ondersteund. 
 
-* Alleen opties voor Cloud invoer hebben ondersteuning voor [tijd beleid](stream-analytics-out-of-order-and-late-events.md) , terwijl lokale invoer opties niet.
+* Alleen opties voor Cloud invoer hebben ondersteuning voor [tijd beleid](./stream-analytics-time-handling.md) , terwijl lokale invoer opties niet.
 
 ## <a name="next-steps"></a>Volgende stappen
 

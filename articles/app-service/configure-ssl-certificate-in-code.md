@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311815"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126036"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Een TLS/SSL-certificaat gebruiken in uw code in Azure App Service
 
@@ -31,7 +31,7 @@ Voor het volgen van deze instructiegids:
 
 Selecteer in het linkermenu in <a href="https://portal.azure.com" target="_blank">Azure Portal</a> de optie **App Services** >  **\<app-name>** .
 
-Selecteer in de linkernavigatiebalk van uw app instellingen voor **TLS/SSL**en selecteer vervolgens **certificaten voor persoonlijke sleutels (PFX)** of certificaten met een **open bare sleutel (. CER)**.
+Selecteer in de linkernavigatiebalk van uw app instellingen voor **TLS/SSL** en selecteer vervolgens **certificaten voor persoonlijke sleutels (PFX)** of certificaten met een **open bare sleutel (. CER)** .
 
 Zoek het certificaat dat u wilt gebruiken en kopieer de vinger afdruk.
 
@@ -49,10 +49,7 @@ Als u al uw certificaten toegankelijk wilt maken, stelt u de waarde in op `*` .
 
 ## <a name="load-certificate-in-windows-apps"></a>Certificaat in Windows-apps laden
 
-Met de `WEBSITE_LOAD_CERTIFICATES` app-instelling worden de opgegeven certificaten toegankelijk voor uw Windows-app die is gehost in het Windows-certificaat archief. de locatie is afhankelijk van de [prijs categorie](overview-hosting-plans.md):
-
-- **Geïsoleerde** laag-in [lokale Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). 
-- Alle andere lagen: in [huidige User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
+Met de `WEBSITE_LOAD_CERTIFICATES` app-instelling worden de opgegeven certificaten toegankelijk voor uw Windows-app die is gehost in het Windows-certificaat archief in de [huidige User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
 In C#-code opent u het certificaat via de vinger afdruk van het certificaat. Met de volgende code wordt een certificaat met de vinger afdruk geladen `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` .
 
@@ -151,7 +148,7 @@ De namen van de certificaat bestanden zijn de certificaat vingerafdrukken.
 > App service de certificaat paden in te voegen in Windows-containers als de volgende omgevings variabelen,, `WEBSITE_PRIVATE_CERTS_PATH` `WEBSITE_INTERMEDIATE_CERTS_PATH` `WEBSITE_PUBLIC_CERTS_PATH` en `WEBSITE_ROOT_CERTS_PATH` . Het is beter om te verwijzen naar het certificaatpad met de omgevings variabelen in plaats van hardcoding het pad naar het certificaat, in het geval dat de certificaat paden in de toekomst worden gewijzigd.
 >
 
-Daarnaast laden [Windows Server Core-containers](configure-custom-container.md#supported-parent-images) de certificaten automatisch in het certificaat archief in **LocalMachine\My**. Als u de certificaten wilt laden, volgt u hetzelfde patroon als [certificaat laden in Windows-apps](#load-certificate-in-windows-apps). Voor containers op basis van Windows Nano gebruikt u de hierboven vermelde bestands paden om [het certificaat rechtstreeks vanuit het bestand te laden](#load-certificate-from-file).
+Daarnaast laden [Windows Server Core-containers](configure-custom-container.md#supported-parent-images) de certificaten automatisch in het certificaat archief in **LocalMachine\My** . Als u de certificaten wilt laden, volgt u hetzelfde patroon als [certificaat laden in Windows-apps](#load-certificate-in-windows-apps). Voor containers op basis van Windows Nano gebruikt u de hierboven vermelde bestands paden om [het certificaat rechtstreeks vanuit het bestand te laden](#load-certificate-from-file).
 
 De volgende C#-code laat zien hoe u een openbaar certificaat in een Linux-app kunt laden.
 

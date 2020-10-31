@@ -5,16 +5,16 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19d70642a6c76239f62b2fd6f7e713430a7adfbb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043092"
+ms.locfileid: "93124965"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Een BlockBlobStorage-account maken
 
@@ -116,10 +116,7 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
 
 8. Kies het tabblad **Geavanceerd** .
 
-9. Als u uw opslag account voor gegevens analyse wilt optimaliseren, stelt u **hiërarchische naam ruimte** in op **ingeschakeld** . Als dat niet het geval is, moet u deze optie instellen op de standaard waarde. Wanneer u deze instelling inschakelt voor uw BlockBlobStorage-account, krijgt u de [Premium-laag voor data Lake Storage](premium-tier-for-data-lake-storage.md).  Zie [Inleiding tot Azure data Lake Storage Gen2](data-lake-storage-introduction.md)voor meer informatie over data Lake Storage.
-
-   > [!NOTE]
-   > De functie voor hiërarchische naam ruimte in een blok-Blob-opslag account bevindt zich in de open bare preview. Zie [regionale Beschik baarheid](premium-tier-for-data-lake-storage.md#regional-availability)voor meer informatie over regionale Beschik baarheid.
+9. Als u uw opslag account voor gegevens analyse wilt optimaliseren, stelt u **hiërarchische naam ruimte** in op **ingeschakeld** . Als dat niet het geval is, moet u deze optie op de standaard waarde instellen. Wanneer u deze instelling inschakelt voor uw BlockBlobStorage-account, krijgt u de [Premium-laag voor data Lake Storage](premium-tier-for-data-lake-storage.md).  Zie [Inleiding tot Azure data Lake Storage Gen2](data-lake-storage-introduction.md)voor meer informatie over data Lake Storage.
 
 8. Selecteer **controleren + maken** om de instellingen voor het opslag account te controleren.
 
@@ -162,9 +159,6 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
    ```
    Als u uw opslag account wilt optimaliseren voor gegevens analyse, voegt u toe `-EnableHierarchicalNamespace $True` aan de opdracht. Wanneer u deze instelling inschakelt voor uw BlockBlobStorage-account, krijgt u de [Premium-laag voor data Lake Storage](premium-tier-for-data-lake-storage.md).  Zie [Inleiding tot Azure data Lake Storage Gen2](data-lake-storage-introduction.md)voor meer informatie over data Lake Storage.
 
-   > [!NOTE]
-   > De functie voor hiërarchische naam ruimte in een blok-Blob-opslag account bevindt zich in de open bare preview. Zie [regionale Beschik baarheid](premium-tier-for-data-lake-storage.md#regional-availability)voor meer informatie over regionale Beschik baarheid.
-
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een account voor een blok-BLOB wilt maken met behulp van de Azure CLI, moet u eerst Azure CLI v installeren. 2.0.46 of een latere versie. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
@@ -195,10 +189,7 @@ Als u een account voor een blok-BLOB wilt maken met behulp van de Azure CLI, moe
    ```
 
    Als u uw opslag account wilt optimaliseren voor gegevens analyse, voegt u toe `--hierarchical-namespace true` aan de opdracht. Wanneer u deze instelling inschakelt voor uw BlockBlobStorage-account, krijgt u de [Premium-laag voor data Lake Storage](premium-tier-for-data-lake-storage.md).  Zie [Inleiding tot Azure data Lake Storage Gen2](data-lake-storage-introduction.md)voor meer informatie over data Lake Storage.
-   
-   > [!NOTE]
-   > De functie voor hiërarchische naam ruimte in een blok-Blob-opslag account bevindt zich in de open bare preview. Zie [regionale Beschik baarheid](premium-tier-for-data-lake-storage.md#regional-availability)voor meer informatie over regionale Beschik baarheid.
-   
+
 ---
 
 ## <a name="next-steps"></a>Volgende stappen

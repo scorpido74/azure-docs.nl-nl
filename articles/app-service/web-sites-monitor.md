@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c4e9a66e6bd6b94d8397429769d7718b3e9c555d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b201ebb5ad8ab9d98a76a29831fa12d6174e47cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148128"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125203"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Apps in Azure App Service bewaken
 [Azure app service](./overview.md) biedt ingebouwde functionaliteit voor het controleren van web apps, mobiele apps en api's in de [Azure Portal](https://portal.azure.com).
@@ -27,7 +27,7 @@ Voor apps die worden gehost in App Service gelden bepaalde beperkingen voor de r
 
 Als de app wordt gehost in een *gratis* of *gedeeld* abonnement, worden de limieten voor de resources die de app kan gebruiken door quota gedefinieerd.
 
-Als de app wordt gehost in een *Basic*-, *Standard*-of *Premium* -abonnement, worden de limieten voor de resources die ze kunnen gebruiken, ingesteld op de *grootte* (klein, gemiddeld, groot) en aantal *instanties* (1, 2, 3, enzovoort) van het app service plan.
+Als de app wordt gehost in een *Basic* -, *Standard* -of *Premium* -abonnement, worden de limieten voor de resources die ze kunnen gebruiken, ingesteld op de *grootte* (klein, gemiddeld, groot) en aantal *instanties* (1, 2, 3, enzovoort) van het app service plan.
 
 Quota voor gratis of gedeelde apps zijn:
 
@@ -39,13 +39,13 @@ Quota voor gratis of gedeelde apps zijn:
 | **Bandbreedte** | De totale hoeveelheid uitgaande band breedte die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
 | **Bestandssysteem** | De totale hoeveelheid toegestane opslag ruimte. |
 
-Het enige quotum dat van toepassing is op apps die worden gehost in *Basic*, *Standard*en *Premium* , is bestands systeem.
+Het enige quotum dat van toepassing is op apps die worden gehost in *Basic* , *Standard* en *Premium* , is bestands systeem.
 
 Zie [service limieten voor Azure-abonnementen](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)voor meer informatie over de specifieke quota's, limieten en functies die beschikbaar zijn voor de verschillende app service sku's.
 
 ### <a name="quota-enforcement"></a>Quota afdwingen
 
-Als een app de *CPU (kort)*, *CPU (dag)* of *bandbreedte* quotum overschrijdt, wordt de app gestopt totdat het quotum opnieuw wordt ingesteld. Gedurende deze periode resulteert alle inkomende aanvragen in een HTTP 403-fout.
+Als een app de *CPU (kort)* , *CPU (dag)* of *bandbreedte* quotum overschrijdt, wordt de app gestopt totdat het quotum opnieuw wordt ingesteld. Gedurende deze periode resulteert alle inkomende aanvragen in een HTTP 403-fout.
 
 ![403-fout bericht][http403]
 
@@ -87,6 +87,7 @@ De beschik bare metrische gegevens voor een app zijn:
 | **1 garbagecollection-verzamelingen** | Het aantal keren dat de generatie 1-objecten permanent zijn verzameld sinds het begin van het app-proces. Een hogere generatie GCs bevatten alle lagere GCs.|
 | **Opschoon verzamelingen van generatie 2** | Het aantal keren dat de generatie 2-objecten permanent zijn verzameld sinds het begin van het app-proces.|
 | **Aantal ingangen** | Het totale aantal ingangen dat momenteel door het app-proces is geopend.|
+| **Status van de status controle** | De gemiddelde integriteits status voor de instanties van de toepassing in het App Service plan.|
 | **Http-2xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 200, maar < 300. |
 | **HTTP-3xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 300, maar < 400. |
 | **HTTP 401** | Het aantal aanvragen dat resulteert in de HTTP 401-status code. |
@@ -113,7 +114,7 @@ De beschik bare metrische gegevens voor een app zijn:
 De beschik bare metrische gegevens voor een App Service plan zijn:
 
 > [!NOTE]
-> De metrische gegevens voor het App Service plan zijn alleen beschikbaar voor abonnementen in de lagen *Basic*, *Standard*en *Premium* .
+> De metrische gegevens voor het App Service plan zijn alleen beschikbaar voor abonnementen in de lagen *Basic* , *Standard* en *Premium* .
 > 
 
 | Gegevens | Beschrijving |
@@ -130,9 +131,9 @@ De beschik bare metrische gegevens voor een App Service plan zijn:
 
 Er zijn twee metrische gegevens die het CPU-gebruik weer spie gelen:
 
-**CPU-tijd**: handig voor apps die worden gehost in een gratis of gedeeld abonnement, omdat een van de quota's is gedefinieerd in CPU-minuten die door de app worden gebruikt.
+**CPU-tijd** : handig voor apps die worden gehost in een gratis of gedeeld abonnement, omdat een van de quota's is gedefinieerd in CPU-minuten die door de app worden gebruikt.
 
-**CPU-percentage**: handig voor apps die worden gehost in Basic-, Standard-en Premium-abonnementen, omdat ze kunnen worden uitgeschaald. CPU-percentage is een goede indicatie van het totale gebruik voor alle exemplaren.
+**CPU-percentage** : handig voor apps die worden gehost in Basic-, Standard-en Premium-abonnementen, omdat ze kunnen worden uitgeschaald. CPU-percentage is een goede indicatie van het totale gebruik voor alle exemplaren.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Granulatie van metrische gegevens en bewaar beleid
 Metrische gegevens voor een app-en app service-plan worden geregistreerd en geaggregeerd door de service en [bewaard volgens deze regels](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
@@ -142,7 +143,7 @@ Als u de status van de verschillende quota's en metrische gegevens wilt bekijken
 
 ![De grafiek quota's in het Azure Portal][quotas]
 
-Selecteer **instellingen**quota's om quota's te vinden  >  **Quotas**. In de grafiek kunt u het volgende controleren: 
+Selecteer **instellingen** quota's om quota's te vinden  >  **Quotas** . In de grafiek kunt u het volgende controleren: 
 1. De naam van het quotum.
 1. Het interval voor opnieuw instellen.
 1. De huidige limiet.

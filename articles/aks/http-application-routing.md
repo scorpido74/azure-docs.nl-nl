@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495145"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125866"
 ---
 # <a name="http-application-routing"></a>Routering van HTTP-toepassing
 
@@ -26,8 +26,8 @@ Wanneer de invoeg toepassing is ingeschakeld, wordt er een DNS-zone in uw abonne
 
 De invoeg toepassing implementeert twee onderdelen: een [Kubernetes ingress-controller][ingress] en een [externe DNS][external-dns] -controller.
 
-- **Ingangs controller**: de ingangs controller wordt blootgesteld aan Internet door gebruik te maken van een Kubernetes-service van het type Load Balancer. De ingangs controller controleert en implementeert [Kubernetes][ingress-resource]inkomend bronnen, waarmee routes naar toepassings eindpunten worden gemaakt.
-- **Externe DNS-controller**: controleert op Kubernetes inkomende resources en maakt DNS A-records in de cluster-specifieke DNS-zone.
+- **Ingangs controller** : de ingangs controller wordt blootgesteld aan Internet door gebruik te maken van een Kubernetes-service van het type Load Balancer. De ingangs controller controleert en implementeert [Kubernetes][ingress-resource]inkomend bronnen, waarmee routes naar toepassings eindpunten worden gemaakt.
+- **Externe DNS-controller** : controleert op Kubernetes inkomende resources en maakt DNS A-records in de cluster-specifieke DNS-zone.
 
 ## <a name="deploy-http-routing-cli"></a>HTTP-route ring implementeren: CLI
 
@@ -78,7 +78,7 @@ Als u Azure Cloud Shell gebruikt, is `kubectl` al geïnstalleerd. Als u het loka
 az aks install-cli
 ```
 
-Gebruik de opdracht [az aks get-credentials][] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. In het volgende voor beeld worden referenties opgehaald voor het AKS-cluster met de naam *MyAKSCluster* in de *MyResourceGroup*:
+Gebruik de opdracht [az aks get-credentials][] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. In het volgende voor beeld worden referenties opgehaald voor het AKS-cluster met de naam *MyAKSCluster* in de *MyResourceGroup* :
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
@@ -112,7 +112,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -173,7 +173,7 @@ De oplossing voor HTTP-route ring kan worden verwijderd met behulp van de Azure 
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
-Wanneer de invoeg toepassing voor het routeren van HTTP-toepassingen is uitgeschakeld, kunnen sommige Kubernetes-resources in het cluster blijven. Deze bronnen zijn onder andere *configMaps* en *geheimen*, en worden gemaakt in de *uitvoeren-systeem* naam ruimte. Als u een schoon cluster wilt behouden, kunt u deze resources verwijderen.
+Wanneer de invoeg toepassing voor het routeren van HTTP-toepassingen is uitgeschakeld, kunnen sommige Kubernetes-resources in het cluster blijven. Deze bronnen zijn onder andere *configMaps* en *geheimen* , en worden gemaakt in de *uitvoeren-systeem* naam ruimte. Als u een schoon cluster wilt behouden, kunt u deze resources verwijderen.
 
 Zoek naar *invoeg toepassingen-http-toepassings routerings* bronnen met behulp van de volgende [kubectl Get][kubectl-get] -opdrachten:
 

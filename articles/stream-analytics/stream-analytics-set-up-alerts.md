@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: 35fb02717f706f026862790b7d618036d764c7a8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 6353fe988b9b94c27ab777741bf63d3869579d9e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92914007"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124438"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Waarschuwingen instellen voor Azure Stream Analytics taken
 
@@ -58,7 +58,7 @@ In het volgende voor beeld ziet u hoe u waarschuwingen instelt voor wanneer de s
 
 De volgende waarschuwingen worden aanbevolen voor het bewaken van de prestaties van uw Stream Analytics-taak. Deze metrische gegevens moeten elke minuut worden geëvalueerd gedurende de laatste periode van vijf minuten.
 
-|Gegevens|Conditie|Tijd aggregatie|Drempelwaarde|Corrigerende maat regelen|
+|Metrisch gegeven|Conditie|Tijd aggregatie|Drempelwaarde|Corrigerende maat regelen|
 |-|-|-|-|-|
 |% Gebruik|Groter dan|Maximum|80|Er zijn meerdere factoren die het gebruik van SU% verhogen. U kunt schalen met query parallel Lise ring of het aantal streaming-eenheden verhogen. Zie [Query-parallellisatie gebruiken in Azure Stream Analytics](stream-analytics-parallelization.md) voor meer informatie.|
 |Runtime-fouten|Groter dan|Totaal|0|Bekijk de activiteiten of de logboeken van de resource en breng de gewenste wijzigingen aan in de invoer, query of uitvoer.|
@@ -68,5 +68,4 @@ De volgende waarschuwingen worden aanbevolen voor het bewaken van de prestaties 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)

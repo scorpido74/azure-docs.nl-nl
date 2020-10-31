@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 35aff26eac3dd456db55204b662cb9b8a6bb9f2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7c16e3b991bffd9c6bbcc4759a07b9e122ef5b72
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672976"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125339"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ Standaard is de redundantie opslag ruimte van de back-up van de secundaire data 
 > Het transactie logboek op de primaire waarde kan worden beperkt om redenen die niet te maken hebben met een lagere reken grootte op een secundaire. Dit type beperking kan optreden, zelfs als de secundaire computer dezelfde of een hogere reken grootte heeft dan de primaire. Zie [Trans Action log rate governance](resource-limits-logical-server.md#transaction-log-rate-governance)(Engelstalig) voor meer informatie, waaronder wacht typen voor verschillende soorten logboek frequentie beperking.
 
 > [!NOTE]
-> Azure SQL Database Configureer bare redundantie van back-upopslag is momenteel algemeen beschikbaar in de Azure-regio Zuidoost-Azië. Wanneer de bron database is gemaakt met lokaal redundante of zone redundante back-upopslag redundantie, wordt het maken van een secundaire data base in een andere Azure-regio niet ondersteund. 
+> Azure SQL Database Configureer bare back-upopslag redundantie is momenteel beschikbaar in de open bare preview-versie van Brazilië-zuid en is algemeen alleen beschikbaar in de Azure-regio Zuidoost-Azië. Wanneer de bron database is gemaakt met lokaal redundante of zone redundante back-upopslag redundantie, wordt het maken van een secundaire data base in een andere Azure-regio niet ondersteund. 
 
 Zie [Wat zijn SQL database service lagen](purchasing-models.md)voor meer informatie over de SQL database Compute sizes.
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e43a43d929d256bc2a12b6b243d9620c5bd1aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317698"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124761"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Door de gebruiker gedefinieerde Java script-functies Azure Stream Analytics
  
@@ -83,7 +83,7 @@ De functie alias is de UDA-id. Gebruik in Stream Analytics query altijd UDA-alia
 
 ### <a name="function-type"></a>Functie type
 
-Voor UDA moet het functie type **Java script-UDA**zijn.
+Voor UDA moet het functie type **Java script-UDA** zijn.
 
 ### <a name="output-type"></a>Uitvoertype
 
@@ -123,7 +123,7 @@ Hieronder vindt u een overzicht van het proces voor het maken van een UDA vanuit
 Nu gaan we een Java script-UDA maken onder een bestaande ASA-taak door de volgende stappen uit te voeren.
 
 1. Meld u aan bij Azure Portal en zoek de bestaande Stream Analytics taak.
-1. Klik vervolgens op de koppeling functies onder **taak topologie**.
+1. Klik vervolgens op de koppeling functies onder **taak topologie** .
 1. Klik op het pictogram **toevoegen** om een nieuwe functie toe te voegen.
 1. Selecteer in de nieuwe functie weergave **Java script UDA** als het functie type. vervolgens ziet u een standaard UDA-sjabloon in de editor.
 1. Vul "TWA" in als de UDA-alias en wijzig de functie-implementatie als volgt:
@@ -226,12 +226,12 @@ Maak een lokaal JSON-bestand met onderstaande inhoud, upload het bestand naar St
 
 ## <a name="get-help"></a>Hulp vragen
 
-Voor meer informatie kunt u onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Voor meer informatie kunt u onze [micro soft Q&een vraag pagina voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslag informatie voor de query taal Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Naslag informatie over Azure Stream Analytics beheer REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslag informatie voor de query taal Azure Stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Naslag informatie over Azure Stream Analytics beheer REST API](/rest/api/streamanalytics/)

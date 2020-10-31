@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 7/14/2020
-ms.openlocfilehash: 4c4455d62f32acb1cfebde8f5e4d97de5bda17c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345b9447daa9fcb5f97ec5d8d00bcf5ea76d958c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463544"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126733"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Gids voor onboarding bij Microsoft Business Applications ISV Connect-programma
 
@@ -25,7 +25,7 @@ Voltooi de volgende secties in dit artikel om u te registreren en te profiteren 
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Uw micro soft Partner Center-account instellen
 
-Voor het instellen en beheren van uw account voor het ISV Connect-programma voert u de stappen uit van het artikel: [een commercieel Marketplace-account maken in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Dit artikel bevat alle stappen voor het maken van een nieuw account en informatie over het toevoegen van nieuwe uitgevers aan het programma voor commerciële Marketplace.
+Voor het instellen en beheren van uw account voor het ISV Connect-programma voert u de stappen uit van het artikel: [een commercieel Marketplace-account maken in het partner centrum](./partner-center-portal/create-account.md). Dit artikel bevat alle stappen voor het maken van een nieuw account en informatie over het toevoegen van nieuwe uitgevers aan het programma voor commerciële Marketplace.
 
 > [!NOTE]
 > Voor deze stap is een *eigenaar* of *Manager* -rol vereist in het partner centrum.
@@ -38,10 +38,10 @@ Voor deelname aan dit programma moet u de [Business Applications addendum](https
 > Voor deze stap is een *eigenaar* of *Manager* -rol vereist in het partner centrum voor uw account om juridische overeenkomsten te ondertekenen.
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
-1. Selecteer **instellingen** (tandwiel pictogram) en selecteer **instellingen voor ontwikkel aars**.
-1. **Overeenkomsten**selecteren.
+1. Selecteer **instellingen** (tandwiel pictogram) en selecteer **instellingen voor ontwikkel aars** .
+1. **Overeenkomsten** selecteren.
 1. Selecteer de versie koppeling en Bekijk de overeenkomst.
-1. Selecteer **overeenkomst accepteren**om akkoord te gaan en de overeenkomst te accepteren.
+1. Selecteer **overeenkomst accepteren** om akkoord te gaan en de overeenkomst te accepteren.
 
 ## <a name="set-up-your-billing-information"></a>Uw facturerings gegevens instellen
 
@@ -51,8 +51,8 @@ Stel facturerings gegevens in voor het Business Applications ISV Connect-program
 > Voor deze stap is een *eigenaar* of *Manager* -rol vereist in het partner centrum voor uw account om de facturerings gegevens bij te werken.
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
-1. Selecteer **instellingen** (tandwiel pictogram) en selecteer **instellingen voor ontwikkel aars**.
-1. Selecteer onder **account** **facturerings profiel**.
+1. Selecteer **instellingen** (tandwiel pictogram) en selecteer **instellingen voor ontwikkel aars** .
+1. Selecteer onder **account** **facturerings profiel** .
 1. Controleer de primaire contact-en facturerings gegevens die zijn ingevuld in uw rechts persoon en breng alle benodigde updates.
 1. Geef indien van toepassing BTW-ID-ID-instellingen op.
 1. Sla uw wijzigingen op door op **Opslaan** te klikken.
@@ -66,11 +66,11 @@ Nadat u de bovenstaande stappen hebt uitgevoerd, zijn uw bestaande Dynamics 365 
 
 De laatste stap voor inschrijving in het Business Applications ISV Connect-programma is het publiceren en certificeren van uw bestaande toepassingen. Als u uw toepassing wilt publiceren en certificeren op AppSource, volgt u de juiste koppeling:
 
-- [Voor Dynamics 365 Customer engagement](https://docs.microsoft.com/powerapps/developer/common-data-service/publish-app-appsource) 
-- [Voor Dynamics 365 voor Financiën en bewerkingen](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+- [Voor Dynamics 365 Customer engagement](/powerapps/developer/common-data-service/publish-app-appsource) 
+- [Voor Dynamics 365 voor Financiën en bewerkingen](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> U moet uw apps elke 6 maanden opnieuw certificeren om ze op AppSource te blijven gebruiken. Zie beleid voor [commerciële Marketplace-certificerings](https://docs.microsoft.com/legal/marketplace/certification-policies)instanties voor Marketplace-beleids regels voor meer informatie.
+> U moet uw apps elke 6 maanden opnieuw certificeren om ze op AppSource te blijven gebruiken. Zie beleid voor [commerciële Marketplace-certificerings](/legal/marketplace/certification-policies)instanties voor Marketplace-beleids regels voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

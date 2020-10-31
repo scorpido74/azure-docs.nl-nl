@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 131cd9b1de82213d89ee07f30aed25544f6fcb18
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 88ec58ca9bcfa5c64036d3b65e77f3248e26357d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284387"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124948"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Veelgestelde vragen over VM in azure Marketplace
 
@@ -22,7 +22,7 @@ Deze veelgestelde vragen zijn van belang voor veelvoorkomende problemen die kunn
 
 Als u het Azure Resource Manager-implementatie model gebruikt, hebt u drie opties:
 
-- [Een op een route gebaseerde VPN-gateway maken met behulp van de Azure Portal](../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+- [Een op een route gebaseerde VPN-gateway maken met behulp van de Azure Portal](../vpn-gateway/tutorial-create-gateway-portal.md)
 - [Een op een route gebaseerde VPN-gateway maken met behulp van Azure PowerShell](../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
 - [Een op een route gebaseerde VPN-gateway maken met behulp van CLI](../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
@@ -32,7 +32,7 @@ Meer informatie vindt u op de [micro soft-server software ondersteuning voor Mic
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>Hoe kan ik in een virtuele machine de aangepaste script extensie in de opstart taak beheren?
 
-Zie [aangepaste script extensie voor Windows](/azure/virtual-machines/extensions/custom-script-windows)voor meer informatie over het gebruik van de aangepaste script extensie met behulp van de module Azure PowerShell, Azure Resource Manager sjablonen en stappen voor probleem oplossing op Windows-systemen.
+Zie [aangepaste script extensie voor Windows](../virtual-machines/extensions/custom-script-windows.md)voor meer informatie over het gebruik van de aangepaste script extensie met behulp van de module Azure PowerShell, Azure Resource Manager sjablonen en stappen voor probleem oplossing op Windows-systemen.
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Worden 32-bits toepassingen of services ondersteund in azure Marketplace?
 
@@ -40,7 +40,7 @@ Nee. De ondersteunde besturings systemen en standaard services voor virtuele Azu
 
 Raadpleeg deze artikelen voor meer informatie:
 
-- [Het uitvoeren van 32-bits toepassingen](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
+- [Het uitvoeren van 32-bits toepassingen](/windows/desktop/WinProg64/running-32-bit-applications)
 - [Ondersteuning voor 32-bits besturingssystemen in virtuele Azure-machines](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
 - [Ondersteuning van Microsoft-serversoftware voor virtuele Microsoft Azure-machines](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
@@ -52,4 +52,4 @@ Dit probleem wordt doorgaans weer gegeven als u een virtuele machine hebt gemaak
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Problemen met VM-certificering oplossen](azure-vm-create-certification-faq.md)
+- [Problemen oplossen met VM-certificering](azure-vm-create-certification-faq.md)

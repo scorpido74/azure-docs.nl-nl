@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790029"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124931"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Een beschikbaarheids groep voor werk groepen configureren 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,11 +62,11 @@ Voer de volgende stappen uit om het DNS-achtervoegsel te configureren:
 1. Selecteer **meer...** om het dialoog venster **DNS-achtervoegsel en NetBIOS-computer naam** te openen. 
 1. Typ de naam van het DNS-achtervoegsel onder **primair DNS-achtervoegsel van deze computer** , zoals `ag.wgcluster.example.com` en selecteer **OK** : 
 
-   ![DNS-achtervoegsel toevoegen](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![Scherm afbeelding toont het dialoog venster D N S en NetBIOS-computer naam waarin u de waarde kunt invoeren.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. Controleer of de **volledige computer naam** nu het DNS-achtervoegsel wordt weer gegeven en selecteer **OK** om uw wijzigingen op te slaan: 
 
-   ![DNS-achtervoegsel toevoegen](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![Scherm afbeelding laat zien waar de volledige computer naam wordt weer gegeven.](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. Start de server opnieuw op wanneer u hierom wordt gevraagd. 
 1. Herhaal deze stappen op alle andere knoop punten die moeten worden gebruikt voor de beschikbaarheids groep. 

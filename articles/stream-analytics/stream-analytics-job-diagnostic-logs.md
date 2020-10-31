@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
-ms.openlocfilehash: 18270a2f435428824714067749fc18ce2addc535
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913038"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124014"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Problemen met Azure Stream Analytics oplossen met behulp van resource logboeken
 
@@ -48,7 +48,7 @@ Activiteiten logboeken zijn standaard ingeschakeld en geven inzichten op hoog ni
 
    ![Samen vatting van Stream Analytics activiteiten logboek bewerking](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Schuif omlaag naar de sectie **Eigenschappen** van de JSON. Deze bevat details over de fout die de mislukte bewerking heeft veroorzaakt. In dit voor beeld is de fout veroorzaakt door een runtime-fout van de waarden van de afhankelijke Latitude. Het verschil in de gegevens die door een Stream Analytics taak worden verwerkt, veroorzaakt een gegevens fout. U vindt meer informatie over de verschillende [invoer-en uitvoer gegevens fouten en waarom deze optreden](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+4. Schuif omlaag naar de sectie **Eigenschappen** van de JSON. Deze bevat details over de fout die de mislukte bewerking heeft veroorzaakt. In dit voor beeld is de fout veroorzaakt door een runtime-fout van de waarden van de afhankelijke Latitude. Het verschil in de gegevens die door een Stream Analytics taak worden verwerkt, veroorzaakt een gegevens fout. U vindt meer informatie over de verschillende [invoer-en uitvoer gegevens fouten en waarom deze optreden](./data-errors.md).
 
    ![Details van JSON-fout](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -111,7 +111,7 @@ Uitvoerings logboeken bevatten informatie over gebeurtenissen die zijn opgetrede
 
 ### <a name="data-errors"></a>Gegevensfouten
 
-Er is een fout opgetreden tijdens het verwerken van de gegevens in deze logboek categorie. Deze logboeken worden meestal gemaakt tijdens de lees-, serialisatie-en schrijf bewerkingen van gegevens. Deze logboeken bevatten geen verbindings fouten. Connectiviteits fouten worden behandeld als algemene gebeurtenissen. Meer informatie over de oorzaak van verschillende [invoer-en uitvoer gegevens fouten](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+Er is een fout opgetreden tijdens het verwerken van de gegevens in deze logboek categorie. Deze logboeken worden meestal gemaakt tijdens de lees-, serialisatie-en schrijf bewerkingen van gegevens. Deze logboeken bevatten geen verbindings fouten. Connectiviteits fouten worden behandeld als algemene gebeurtenissen. Meer informatie over de oorzaak van verschillende [invoer-en uitvoer gegevens fouten](./data-errors.md).
 
 Naam | Beschrijving
 ------- | -------
@@ -143,5 +143,5 @@ Correlatie-id | GUID die de uitvoering van de taak op unieke wijze identificeert
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Stream Analytics gegevens fouten](https://docs.microsoft.com/azure/stream-analytics/data-errors)
-* [Naslag informatie voor de query taal Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics gegevens fouten](./data-errors.md)
+* [Naslag informatie voor de query taal Stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference)

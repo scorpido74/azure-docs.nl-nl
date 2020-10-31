@@ -4,12 +4,12 @@ description: Meer informatie over het integreren van Azure NetApp Files met de A
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 78119d3d7ff83ca237c1e668785439d943dcfd14
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900404"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126250"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integreren met de Azure Kubernetes-service
 
@@ -29,7 +29,6 @@ De volgende beperkingen zijn van toepassing wanneer u Azure NetApp Files gebruik
 
 * Azure NetApp Files is alleen beschikbaar [in de geselecteerde Azure-regio's][anf-regions].
 * Voordat u Azure NetApp Files kunt gebruiken, moet u toegang krijgen tot de Azure NetApp Files-service. Als u toegang wilt Toep assen, kunt u het [Waitlist-inzendings formulier Azure NetApp files][anf-waitlist]gebruiken. U hebt geen toegang tot de Azure NetApp Files-service totdat u het officiële bevestigings bericht van het Azure NetApp Files team ontvangt.
-* Uw Azure NetApp Files-service moet worden gemaakt in hetzelfde virtuele netwerk als uw AKS-cluster.
 * Na de eerste implementatie van een AKS-cluster wordt alleen statische inrichting van Azure NetApp Files ondersteund.
 * Als u dynamische inrichting met Azure NetApp Files wilt gebruiken, installeert en configureert u [NetApp Trident](https://netapp-trident.readthedocs.io/) -versie 19,07 of hoger.
 
