@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: f59c924caca86505e9f1e91bf58095b271475794
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb6a03cff3191f55b6869f6907aad6d29095d8b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75383716"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102255"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Query's verzenden naar de Bing Nieuws zoeken-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Met de Bing Nieuws zoeken-API kunt u zoeken naar relevante nieuwsitems op internet. Lees dit artikel voor meer informatie over het verzenden van zoekquery's naar de API.
 
@@ -284,7 +289,7 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Bing News Search?](../search-the-web.md) 
+* [Wat is Bing News Search?](../search-the-web.md). 
 * [Het belangrijkste nieuws van vandaag ophalen](search-for-news.md#get-todays-top-news)
 * [Nieuws ophalen per categorie](search-for-news.md#get-news-by-category)
 * [Trending nieuws ophalen](search-for-news.md#get-trending-news)

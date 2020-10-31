@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c7cc68c84cc9f137ba5b51206526ff96111fe9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74008270"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122738"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Het rapport gebruik en inzichten in de Azure Active Directory Portal
 
@@ -42,10 +42,10 @@ Voor toegang tot de gegevens in het rapport gebruik en inzichten hebt u het volg
 ## <a name="access-the-usage-and-insights-report"></a>Het rapport gebruik en inzichten openen
 
 1. Navigeer naar [Azure Portal](https://portal.azure.com).
-2. Selecteer de juiste map, selecteer **Azure Active Directory** en kies **bedrijfs toepassingen**.
+2. Selecteer de juiste map, selecteer **Azure Active Directory** en kies **bedrijfs toepassingen** .
 3. Selecteer in de sectie **activiteit** **gebruik & inzichten** om het rapport te openen. 
 
-![Rapport over gebruik en inzichten weergeven](./media/concept-usage-insights-report/main-menu.png)
+![Scherm opname toont het gebruik & inzichten die zijn geselecteerd in de sectie activiteit.](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>Het rapport gebruiken
@@ -58,7 +58,7 @@ U kunt ook de focus instellen voor een specifieke toepassing. Selecteer **aanmel
 
 Wanneer u een dag selecteert in de grafiek voor het gebruik van de toepassing, krijgt u een gedetailleerde lijst van de aanmeldings activiteiten voor de toepassing.  
 
-![Rapport over gebruik en inzichten weergeven](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![Scherm opname toont het gebruik & inzichten voor toepassings activiteit, waar u een bereik kunt selecteren en aanmeldings activiteiten voor verschillende apps weer geven.](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

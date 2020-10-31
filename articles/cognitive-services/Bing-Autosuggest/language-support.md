@@ -10,14 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6971dafc7e3157b3de62284b400ebdc6ddc19c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60547333"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101898"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Ondersteuning van talen en regio's voor de Automatische suggestie-API voor Bing
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Hieronder vindt u een lijst met de talen die door Automatische suggestie-API voor Bing worden ondersteund.
 
@@ -64,7 +69,7 @@ Hieronder vindt u een lijst met de talen die door Automatische suggestie-API voo
 | Zweeds     | `sv`          |
 | Turks     | `tr`          |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Documentatie pagina voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
 - [Product pagina van Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

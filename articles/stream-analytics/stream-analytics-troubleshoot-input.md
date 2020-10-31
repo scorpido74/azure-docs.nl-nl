@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 760c98ce9464e4d40f01256a973e07d9084c6dfe
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448880"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123282"
 ---
 # <a name="troubleshoot-input-connections"></a>Problemen met invoerverbindingen oplossen
 
@@ -25,13 +25,13 @@ In dit artikel worden veelvoorkomende problemen beschreven met Azure Stream Anal
 
 2.  Controleer de ingevoerde gegevens.
 
-    1. Gebruik de knop [**voorbeeld gegevens**](stream-analytics-sample-data-input.md) voor elke invoer. Down load de voorbeeld gegevens van de invoer.
+    1. Gebruik de knop [**voorbeeld gegevens**](./stream-analytics-test-query.md) voor elke invoer. Down load de voorbeeld gegevens van de invoer.
         
-    1. Inspecteer de voorbeeld gegevens om inzicht te krijgen in het schema en de [gegevens typen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Inspecteer de voorbeeld gegevens om inzicht te krijgen in het schema en de [gegevens typen](/stream-analytics-query/data-types-azure-stream-analytics).
     
     1. Controleer de [metrische gegevens van de Event hub](../event-hubs/event-hubs-metrics-azure-monitor.md) om er zeker van te zijn dat er gebeurtenissen worden verzonden. Metrische bericht waarden moeten groter zijn dan nul als Event Hubs berichten ontvangt.
 
-3.  Zorg ervoor dat u een tijds bereik hebt geselecteerd in de invoer voorbeeld. Kies **tijds bereik selecteren**en voer een voorbeeld duur in voordat u uw query test.
+3.  Zorg ervoor dat u een tijds bereik hebt geselecteerd in de invoer voorbeeld. Kies **tijds bereik selecteren** en voer een voorbeeld duur in voordat u uw query test.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Ongeldige invoergebeurtenissen veroorzaken deserialisatiefouten 
 
@@ -79,7 +79,7 @@ Voer de volgende stappen uit om een nieuwe consumenten groep toe te voegen in uw
 
 4. Selecteer de Event hub op naam.
 
-5. Selecteer op de pagina **Event hubs-exemplaar** , onder de kop **entiteiten** , **consumenten groepen**. Er wordt een gebruikers groep met de naam **$default** weer gegeven.
+5. Selecteer op de pagina **Event hubs-exemplaar** , onder de kop **entiteiten** , **consumenten groepen** . Er wordt een gebruikers groep met de naam **$default** weer gegeven.
 
 6. Selecteer **+ consumenten groep** om een nieuwe consumenten groep toe te voegen. 
 
@@ -163,16 +163,16 @@ SELECT foo FROM DataTwo
 
 ## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>De lezers per partitie overschrijden de IoT Hub limiet
 
-Stream Analytics-taken gebruiken het ingebouwde [Event hub-compatibele eind punt](../iot-hub/iot-hub-devguide-messages-read-builtin.md) van IOT hub om verbinding te maken en gebeurtenissen van IOT hub te lezen. Als uw Lees bewerking per partitie de limieten van IoT Hub overschrijdt, kunt u de [oplossingen voor Event hub](#readers-per-partition-exceeds-event-hubs-limit) gebruiken om deze op te lossen. U kunt een Consumer groep maken voor het ingebouwde eind punt via IoT Hub Portal-eindpunt sessie of via de [IOT hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup).
+Stream Analytics-taken gebruiken het ingebouwde [Event hub-compatibele eind punt](../iot-hub/iot-hub-devguide-messages-read-builtin.md) van IOT hub om verbinding te maken en gebeurtenissen van IOT hub te lezen. Als uw Lees bewerking per partitie de limieten van IoT Hub overschrijdt, kunt u de [oplossingen voor Event hub](#readers-per-partition-exceeds-event-hubs-limit) gebruiken om deze op te lossen. U kunt een Consumer groep maken voor het ingebouwde eind punt via IoT Hub Portal-eindpunt sessie of via de [IOT hub SDK](/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup).
 
 ## <a name="get-help"></a>Hulp vragen
 
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API-naslaggids voor Azure Stream Analytics Management](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslaggids voor Azure Stream Analytics Query](/stream-analytics-query/stream-analytics-query-language-reference)
+* [REST API-naslaggids voor Azure Stream Analytics Management](/rest/api/streamanalytics/)

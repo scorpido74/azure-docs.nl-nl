@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23074dcd7ee888d6d9d8bf288cf0fda66dc0ceec
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319763"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122840"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -58,13 +58,13 @@ Het rapport gebruikers aanmeldingen bevat antwoorden op de volgende vragen:
 * Hoeveel gebruikers hebben zich gedurende een week aangemeld?
 * Wat is de status van deze aanmeldingen?
 
-Selecteer in het menu [Azure Portal](https://portal.azure.com) **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
+Selecteer in het menu [Azure Portal](https://portal.azure.com) **Azure Active Directory** of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
 
 ![Selecteer Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-Onder **bewaking**selecteert u **aanmeldingen** om het [rapport aanmeldingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)te openen.
+Onder **bewaking** selecteert u **aanmeldingen** om het [rapport aanmeldingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)te openen.
 
-![Aanmeldings activiteit](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Aanmeldingsactiviteit")
+![Scherm afbeelding toont aanmeldingen die zijn geselecteerd in het menu bewaking.](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Aanmeldingsactiviteit")
 
 Het kan tot twee uur duren voordat sommige registratie records worden weer gegeven in de portal.
 
@@ -80,19 +80,19 @@ Een aanmeldingslogboek heeft een standaardlijstweergave die het volgende laat zi
 - De status van de risicodetectie
 - De status van de vereiste voor meervoudige verificatie (MFA)
 
-![Aanmeldings activiteit](./media/concept-sign-ins/sign-in-activity.png "Aanmeldingsactiviteit")
+![Scherm afbeelding toont de Office 365 share point online-aanmeldingen.](./media/concept-sign-ins/sign-in-activity.png "Aanmeldingsactiviteit")
 
 U kunt de lijstweergave aanpassen door te klikken op **Kolommen** op de werkbalk.
 
-![Aanmeldings activiteit](./media/concept-sign-ins/19.png "Aanmeldingsactiviteit")
+![Scherm afbeelding toont de optie kolommen op de pagina aanmeldingen.](./media/concept-sign-ins/19.png "Aanmeldingsactiviteit")
 
 Het dialoog venster **kolommen** biedt u toegang tot de selecteerbaar kenmerken. In een aanmeldings rapport kunt u geen velden hebben met meer dan één waarde voor een bepaalde aanmeldings aanvraag als kolom. Dit is bijvoorbeeld waar voor verificatie Details, gegevens van voorwaardelijke toegang en de netwerk locatie.   
 
-![Aanmeldings activiteit](./media/concept-sign-ins/columns.png "Aanmeldingsactiviteit")
+![Scherm afbeelding toont het dialoog venster kolommen waarin u kenmerken kunt selecteren.](./media/concept-sign-ins/columns.png "Aanmeldingsactiviteit")
 
 Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
-![Aanmeldings activiteit](./media/concept-sign-ins/basic-sign-in.png "Aanmeldingsactiviteit")
+![Scherm afbeelding toont een gedetailleerde informatie weergave.](./media/concept-sign-ins/basic-sign-in.png "Aanmeldingsactiviteit")
 
 > [!NOTE]
 > Klanten kunnen nu het beleid voor voorwaardelijke toegang oplossen via alle aanmeldings rapporten. Door op het tabblad **voorwaardelijke toegang** voor een aanmeldings record te klikken, kunnen klanten de status van de voorwaardelijke toegang controleren en de Details bekijken van de beleids regels die zijn toegepast op de aanmelding en het resultaat van elk beleid.
@@ -104,7 +104,7 @@ Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
 U moet eerst de gerapporteerde gegevens beperken tot een niveau dat geschikt is voor u. Ten tweede filtert u aanmeldings gegevens met een datum veld als standaard filter. Azure AD biedt u een breed scala aan extra filters die u kunt instellen:
 
-![Aanmeldings activiteit](./media/concept-sign-ins/04.png "Aanmeldingsactiviteit")
+![Scherm afbeelding toont de optie filters toevoegen.](./media/concept-sign-ins/04.png "Aanmeldingsactiviteit")
 
 **Aanvraag-id** : de id van de aanvraag die u vindt.
 
@@ -177,11 +177,11 @@ De **locatie** -de locatie van de verbinding vanaf:
 
 **Voorwaardelijke toegang** : de status van de toegepaste regels voor voorwaardelijke toegang
 
-- **Niet toegepast**: tijdens het aanmelden wordt er geen beleid toegepast op de gebruiker en de toepassing.
+- **Niet toegepast** : tijdens het aanmelden wordt er geen beleid toegepast op de gebruiker en de toepassing.
 
-- **Geslaagd**: een of meer beleids regels voor voorwaardelijke toegang die worden toegepast op de gebruiker en toepassing (maar niet noodzakelijkerwijs de andere voor waarden) tijdens het aanmelden. 
+- **Geslaagd** : een of meer beleids regels voor voorwaardelijke toegang die worden toegepast op de gebruiker en toepassing (maar niet noodzakelijkerwijs de andere voor waarden) tijdens het aanmelden. 
 
-- **Probleem**: bij de aanmelding is voldaan aan de gebruikers-en toepassings voorwaarde van ten minste één beleid voor voorwaardelijke toegang en granting Controls is niet voldaan of ingesteld om de toegang te blok keren.
+- **Probleem** : bij de aanmelding is voldaan aan de gebruikers-en toepassings voorwaarde van ten minste één beleid voor voorwaardelijke toegang en granting Controls is niet voldaan of ingesteld om de toegang te blok keren.
 
 
 
@@ -214,7 +214,7 @@ Azure AD en de Azure Portal bieden u extra toegangs punten voor het registreren 
 
 De aanmeldings grafiek van gebruikers op de overzichts pagina voor **identiteits beveiligings beveiliging** bevat wekelijkse aggregaties van aanmeldingen. De standaard waarde voor de tijds periode is 30 dagen.
 
-![Aanmeldings activiteit](./media/concept-sign-ins/06.png "Aanmeldingsactiviteit")
+![Scherm afbeelding toont een grafiek van aanmeldingen gedurende een maand.](./media/concept-sign-ins/06.png "Aanmeldingsactiviteit")
 
 Als u in de aanmeldingsgrafiek op een dag klikt, ziet u een overzicht van de aanmeldingsactiviteiten voor die dag.
 
@@ -244,7 +244,7 @@ Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 
 Op de pagina **Gebruikers** krijgt u een volledig overzicht van alle aanmeldingen van gebruikers door in de sectie **Activiteit** op **Aanmelden** te klikken.
 
-![Aanmeldings activiteit](./media/concept-sign-ins/08.png "Aanmeldingsactiviteit")
+![Scherm afbeelding toont de sectie activiteit waar u aanmeldingen kunt selecteren.](./media/concept-sign-ins/08.png "Aanmeldingsactiviteit")
 
 ## <a name="usage-of-managed-applications"></a>Het gebruik van beheerde toepassingen
 
@@ -254,13 +254,13 @@ Met een toepassingsgerichte weergave van uw aanmeldingsgegevens kunt u antwoord 
 * Wat zijn de belangrijkste drie toepassingen in uw organisatie?
 * Hoe wordt mijn nieuwste toepassing uitgevoerd?
 
-Het ingangs punt voor deze gegevens is de drie belangrijkste toepassingen in uw organisatie. De gegevens bevinden zich in het rapport van de afgelopen 30 dagen in het gedeelte **overzicht** onder **bedrijfs toepassingen**.
+Het ingangs punt voor deze gegevens is de drie belangrijkste toepassingen in uw organisatie. De gegevens bevinden zich in het rapport van de afgelopen 30 dagen in het gedeelte **overzicht** onder **bedrijfs toepassingen** .
 
-![Aanmeldings activiteit](./media/concept-sign-ins/10.png "Aanmeldingsactiviteit")
+![Scherm afbeelding laat zien waar u overzicht kunt selecteren.](./media/concept-sign-ins/10.png "Aanmeldingsactiviteit")
 
 De grafieken voor het gebruik van de app en wekelijkse aggregaties van aanmeldingen voor uw eerste drie toepassingen in een bepaalde periode. De standaard ingestelde periode is 30 dagen.
 
-![Aanmeldings activiteit](./media/concept-sign-ins/graph-chart.png "Aanmeldingsactiviteit")
+![Scherm afbeelding toont het app-gebruik gedurende een periode van één maand.](./media/concept-sign-ins/graph-chart.png "Aanmeldingsactiviteit")
 
 Als u wilt, kunt u de focus instellen op een specifieke toepassing.
 

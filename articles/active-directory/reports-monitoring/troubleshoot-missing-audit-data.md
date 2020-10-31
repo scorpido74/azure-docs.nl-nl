@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f48c26a65314e2f23513fba155f07db3805a516
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85608106"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123061"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Problemen met ontbrekende gegevens in de activiteitenlogboeken van Azure Active Directory oplossen 
 
@@ -32,7 +32,7 @@ ms.locfileid: "85608106"
 
 Ik heb enkele acties uitgevoerd in de Azure-portal en had verwacht de auditlogboeken voor deze acties te zien op de blade `Activity logs > Audit Logs`, maar ik kan ze niet vinden.
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/01.png)
+ ![De scherm opname bevat vermeldingen in het controle logboek.](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>Oorzaak
 
@@ -53,7 +53,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik heb me onlangs aangemeld bij de Azure-portal en dan zou ik hier eigenlijk vermeldingen voor moeten zien in de logboeken op de blade `Activity logs > Sign-ins`, maar ik kan ze niet vinden.
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/02.png)
+ ![Scherm opname toont aanmeldingen in het activiteiten logboek.](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Oorzaak
 
@@ -74,7 +74,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/03.png)
+ ![Scherm afbeelding toont het datum menu.](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Oorzaak
 

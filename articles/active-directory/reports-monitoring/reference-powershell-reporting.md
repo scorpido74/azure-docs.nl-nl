@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f3402864e2ba873ce63acb6cedcd3f2ea018f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231126"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123129"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-cmdlets voor rapportage
 
@@ -59,7 +59,7 @@ U krijgt toegang tot de audit logboeken met behulp van de cmdlet Get-AzureADAudi
 
 In de volgende afbeelding ziet u een voor beeld van deze opdracht. 
 
-![De knop gegevens overzicht](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![Scherm afbeelding toont het resultaat van de Get-Azure een D controle logboeken opdracht.](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
@@ -81,7 +81,7 @@ U krijgt toegang tot de aanmeld logboeken met behulp van de cmdlet Get-AzureADAu
 
 In de volgende afbeelding ziet u een voor beeld van deze opdracht. 
 
-![De knop gegevens overzicht](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![Scherm afbeelding toont het resultaat van de Get-Azure van de opdracht logboeken voor het controleren van een D-audit.](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 

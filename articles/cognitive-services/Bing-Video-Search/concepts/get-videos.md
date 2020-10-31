@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8074b2411a053c8b55457f9ace716481f6b107a5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79220301"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102221"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Video's zoeken met de Bing Video's zoeken-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Met de Bing Video's zoeken-API kunt u de cognitieve zoekmogelijkheden van Bing eenvoudig in uw toepassingen integreren. Hoewel de API hoofdzakelijk relevante video's zoekt en retourneert van internet, biedt de API ook verschillende functies voor het intelligent en gericht ophalen van video's op internet.
 
@@ -144,9 +149,9 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Query uitbreiden
 
-Als Bing de query kan uitbreiden om de oorspronkelijke zoekopdracht te beperken, bevat het object [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) het veld `queryExpansions`. Als de query bijvoorbeeld *Cleaning Gutters* was, zijn dit voorbeelden van uitgebreide query's: Gutter Cleaning **Tools**, Cleaning Gutters **From the Ground**, Gutter Cleaning **Machine** en **Easy** Gutter Cleaning.
+Als Bing de query kan uitbreiden om de oorspronkelijke zoekopdracht te beperken, bevat het object [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) het veld `queryExpansions`. Als de query bijvoorbeeld *Cleaning Gutters* was, zijn dit voorbeelden van uitgebreide query's: Gutter Cleaning **Tools** , Cleaning Gutters **From the Ground** , Gutter Cleaning **Machine** en **Easy** Gutter Cleaning.
 
-In het volgende voorbeeld ziet u de uitgebreide query's voor *Cleaning Gutters*.
+In het volgende voorbeeld ziet u de uitgebreide query's voor *Cleaning Gutters* .
 
 ```json
 {
@@ -175,9 +180,9 @@ Het veld `queryExpansions` bevat een lijst met [Query](https://docs.microsoft.co
 
 ## <a name="pivoting-the-query"></a>De query draaien
 
-Als Bing de oorspronkelijke zoekopdracht kan segmenteren, bevat het object [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) het veld `pivotSuggestions`. Als de oorspronkelijke query bijvoorbeeld *Cleaning Gutters* was, kan Bing de query segmenteren in *Cleaning* en *Gutters*.
+Als Bing de oorspronkelijke zoekopdracht kan segmenteren, bevat het object [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) het veld `pivotSuggestions`. Als de oorspronkelijke query bijvoorbeeld *Cleaning Gutters* was, kan Bing de query segmenteren in *Cleaning* en *Gutters* .
 
-In het volgende voorbeeld ziet u de draaisuggesties voor *Cleaning Gutters*.
+In het volgende voorbeeld ziet u de draaisuggesties voor *Cleaning Gutters* .
 
 ```json
 {

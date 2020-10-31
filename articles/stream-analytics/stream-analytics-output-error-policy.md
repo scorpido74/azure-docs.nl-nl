@@ -8,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 923e8d1ffc3e606c16226b4b2ccbdcfaf4d3e9f1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75431610"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123418"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure Stream Analytics uitvoer fout beleid
 In dit artikel worden de beleids regels voor fout afhandeling van uitvoer gegevens beschreven die kunnen worden geconfigureerd in Azure Stream Analytics.
 
-Beleids regels voor fout afhandeling van uitvoer gegevens zijn alleen van toepassing op gegevens conversie fouten die optreden wanneer de uitvoer gebeurtenis die door een Stream Analytics taak wordt geproduceerd, niet overeenkomt met het schema van de doel-sink. U kunt dit beleid configureren door **opnieuw** of **verwijderen**te kiezen. Selecteer in de Azure Portal, terwijl u in een Stream Analytics-taak, onder **configureren**, **fout beleid** om uw selectie te maken.
+Beleids regels voor fout afhandeling van uitvoer gegevens zijn alleen van toepassing op gegevens conversie fouten die optreden wanneer de uitvoer gebeurtenis die door een Stream Analytics taak wordt geproduceerd, niet overeenkomt met het schema van de doel-sink. U kunt dit beleid configureren door **opnieuw** of **verwijderen** te kiezen. Selecteer in de Azure Portal, terwijl u in een Stream Analytics-taak, onder **configureren** , **fout beleid** om uw selectie te maken.
 
 ![Locatie van Azure Stream Analytics voor uitvoer fout beleid](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
 
@@ -34,4 +34,4 @@ Alle tijdelijke fouten (bijvoorbeeld netwerk fouten) worden opnieuw geprobeerd, 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Gids voor probleem oplossing voor Azure Stream Analytics](stream-analytics-troubleshooting-guide.md)
+[Gids voor probleem oplossing voor Azure Stream Analytics](./stream-analytics-troubleshoot-query.md)

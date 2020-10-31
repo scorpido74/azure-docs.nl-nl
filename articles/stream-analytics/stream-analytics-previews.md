@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: 0020efea69fc684ff6ebebf286718aa2a720910e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4179b06759802025f97bd32a355b788c96c9eddb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900795"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123317"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Preview-functies Azure Stream Analytics
 
@@ -48,7 +48,7 @@ Visual Studio Tools for Azure Stream Analytics verbeteren de lokale test functie
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio code voor Azure Stream Analytics
 
-Azure Stream Analytics-taken kunnen worden gemaakt in Visual Studio code. Bekijk onze [zelf studie over de VS code](https://docs.microsoft.com/azure/stream-analytics/quick-create-visual-studio-code).
+Azure Stream Analytics-taken kunnen worden gemaakt in Visual Studio code. Bekijk onze [zelf studie over de VS code](./quick-create-visual-studio-code.md).
 
 ### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Lokale tests met Live-gegevens in Visual Studio code
 

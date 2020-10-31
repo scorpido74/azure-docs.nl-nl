@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: ec8f27d0376f7187fd36b3feba556dbced0946e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5057eb8c84e839f504060228986ea759c8bdc3d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935202"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123164"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>Continue integratie en implementatie (CI/CD) voor Azure Stream Analytics
 
@@ -27,7 +27,7 @@ Volg de stappen in deze hand leiding voor het maken van een CI/CD-pijp lijn voor
 
 1. Ontwikkel een Azure Stream Analytics-query.
 
-   Gebruik Azure Stream Analytics-hulpprogram ma's voor [Visual Studio code](quick-create-vs-code.md) of [Visual Studio](stream-analytics-quick-create-vs.md) om [query's lokaal te ontwikkelen en te testen](develop-locally.md). U kunt ook [een bestaande taak exporteren](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project) naar een lokaal project.
+   Gebruik Azure Stream Analytics-hulpprogram ma's voor [Visual Studio code](./quick-create-visual-studio-code.md) of [Visual Studio](stream-analytics-quick-create-vs.md) om [query's lokaal te ontwikkelen en te testen](develop-locally.md). U kunt ook [een bestaande taak exporteren](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project) naar een lokaal project.
 
 2. Uw Azure Stream Analytics-projecten door voeren in uw broncode beheersysteem, zoals een Git-opslag plaats.
 

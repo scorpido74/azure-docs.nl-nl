@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: c063fec3eac962d22ead12e0ca11f4b9fc155b5d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: bc630fc5ea9407c284e2e2e879c349a83302cd9f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910148"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122620"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problemen met Azure Stream Analytics uitvoer oplossen
 
@@ -71,7 +71,7 @@ Als u de uitvoer details wilt zien, selecteert u de streaming-taak in de Azure P
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Waarschuwing voor sleutel schending bij Azure SQL Database uitvoer
 
-Wanneer u een Azure SQL database als uitvoer naar een Stream Analytics taak configureert, voegt het bulksgewijs records in de doel tabel in. Over het algemeen Azure Stream Analytics een gegarandeerde [minimale levering](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) naar de uitvoer sink. U kunt nog steeds [precies één keer]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) aan een SQL-uitvoer voldoen wanneer voor een SQL-tabel een unieke beperking is gedefinieerd.
+Wanneer u een Azure SQL database als uitvoer naar een Stream Analytics taak configureert, voegt het bulksgewijs records in de doel tabel in. Over het algemeen Azure Stream Analytics een gegarandeerde [minimale levering](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) naar de uitvoer sink. U kunt nog steeds [precies één keer]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) aan een SQL-uitvoer voldoen wanneer voor een SQL-tabel een unieke beperking is gedefinieerd.
 
 Wanneer u unieke-sleutel beperkingen instelt voor de SQL-tabel, worden dubbele records door Azure Stream Analytics verwijderd. De gegevens worden in batches gesplitst en de batches worden recursief ingevoegd totdat er één dubbele record wordt gevonden. Het proces splitsen en invoegen negeert de duplicaten een voor een. Voor een streaming-taak met veel dubbele rijen is het proces inefficiënt en tijdrovend. Als er in uw activiteiten logboek voor het vorige uur meerdere sleutel schendingen worden weer gegeven, is het waarschijnlijk dat uw SQL-uitvoer de volledige taak vertraagt.
 
@@ -95,9 +95,9 @@ Wanneer een Stream Analytics taak met SQL-uitvoer de eerste batch gebeurtenissen
 
 Tijdens deze stappen kan de SQL-uitvoer gebruikmaken van de volgende typen fouten:
 
-* Tijdelijke [fouten](/azure/azure-sql/database/troubleshoot-common-errors-issues#transient-fault-error-messages-40197-40613-and-others) die opnieuw worden geprobeerd met een exponentiële uitstel-strategie voor opnieuw proberen. De minimale interval voor opnieuw proberen is afhankelijk van de afzonderlijke fout code, maar de intervallen zijn meestal minder dan 60 seconden. De bovengrens kan Maxi maal vijf minuten zijn. 
+* Tijdelijke [fouten](../azure-sql/database/troubleshoot-common-errors-issues.md#transient-fault-error-messages-40197-40613-and-others) die opnieuw worden geprobeerd met een exponentiële uitstel-strategie voor opnieuw proberen. De minimale interval voor opnieuw proberen is afhankelijk van de afzonderlijke fout code, maar de intervallen zijn meestal minder dan 60 seconden. De bovengrens kan Maxi maal vijf minuten zijn. 
 
-   [Aanmeldings fouten](/azure/azure-sql/database/troubleshoot-common-errors-issues#unable-to-log-in-to-the-server-errors-18456-40531) en [firewall problemen](/azure/azure-sql/database/troubleshoot-common-errors-issues#cannot-connect-to-server-due-to-firewall-issues) worden ten minste 5 minuten na de vorige poging opnieuw geprobeerd en er wordt opnieuw geprobeerd om het proces te volt ooien.
+   [Aanmeldings fouten](../azure-sql/database/troubleshoot-common-errors-issues.md#unable-to-log-in-to-the-server-errors-18456-40531) en [firewall problemen](../azure-sql/database/troubleshoot-common-errors-issues.md#cannot-connect-to-server-due-to-firewall-issues) worden ten minste 5 minuten na de vorige poging opnieuw geprobeerd en er wordt opnieuw geprobeerd om het proces te volt ooien.
 
 * Gegevens fouten, zoals het casten van fouten en schendingen van schema beperkingen, worden afgehandeld met een uitvoer fout beleid. Deze fouten worden verwerkt door binaire gesplitste batches opnieuw te proberen totdat de afzonderlijke record die de fout veroorzaakt, wordt verwerkt door overs Laan of opnieuw te proberen. Er wordt altijd een schending van de primaire-sleutel beperking [afgehandeld](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output).
 
@@ -107,16 +107,16 @@ Zodra de time-out hoger is dan 15 minuten, wordt de maximum waarde voor de Batch
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Kolom namen zijn kleine letters in Azure Stream Analytics (1,0)
 
-Wanneer u het oorspronkelijke compatibiliteits niveau (1,0) gebruikt, worden de namen van de kolommen Azure Stream Analytics gewijzigd in kleine letters. Dit gedrag is in latere compatibiliteits niveaus verholpen. Als u het probleem wilt behouden, gaat u naar compatibiliteits niveau 1,1 of hoger. Zie [compatibiliteits niveau voor stream Analytics taken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)voor meer informatie.
+Wanneer u het oorspronkelijke compatibiliteits niveau (1,0) gebruikt, worden de namen van de kolommen Azure Stream Analytics gewijzigd in kleine letters. Dit gedrag is in latere compatibiliteits niveaus verholpen. Als u het probleem wilt behouden, gaat u naar compatibiliteits niveau 1,1 of hoger. Zie [compatibiliteits niveau voor stream Analytics taken](./stream-analytics-compatibility-level.md)voor meer informatie.
 
 ## <a name="get-help"></a>Hulp vragen
 
-Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics-taken schalen](stream-analytics-scale-jobs.md)
-* [Naslag informatie voor de query taal Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Naslag informatie over Azure Stream Analytics beheer REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Naslag informatie voor de query taal Azure Stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Naslag informatie over Azure Stream Analytics beheer REST API](/rest/api/streamanalytics/)

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ff66c2cb355e2070cdf30444c52d1accacac8964
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ece181d06c7d3dbd00ba2f1262a3887ad966d088
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490438"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101660"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>Sessie-token indelingen converteren in .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel wordt uitgelegd hoe u de verschillende indelingen van sessie tokens kunt converteren om compatibiliteit tussen SDK-versies te garanderen.
 
@@ -26,7 +27,7 @@ In dit artikel wordt uitgelegd hoe u de verschillende indelingen van sessie toke
 
 ## <a name="session-token-formats"></a>Sessie token indelingen
 
-Er zijn twee notaties voor sessie tokens: **eenvoudig** en **Vector**.  Deze twee indelingen zijn niet uitwisselbaar. de indeling moet daarom worden geconverteerd wanneer aan de client toepassing met verschillende versies wordt door gegeven.
+Er zijn twee notaties voor sessie tokens: **eenvoudig** en **Vector** .  Deze twee indelingen zijn niet uitwisselbaar. de indeling moet daarom worden geconverteerd wanneer aan de client toepassing met verschillende versies wordt door gegeven.
 - De indeling van het **eenvoudige** sessie token wordt gebruikt door de .NET SDK V1 (Microsoft.Azure.DocumentDB-versie 1. x)
 - De indeling van het **Vector** sessie token wordt gebruikt door de .NET SDK V2 (Microsoft.Azure.DocumentDB-versie 2. x)
 

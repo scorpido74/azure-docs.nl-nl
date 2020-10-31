@@ -1,7 +1,7 @@
 ---
 title: Iteratieve ontwikkeling en fout opsporing in Azure Data Factory
 description: Meer informatie over het ontwikkelen en fouten opsporen Data Factory pijp lijnen iteratief in de ADF UX
-ms.date: 09/11/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -9,12 +9,12 @@ documentationcenter: ''
 ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: e4c66055184b2ef0113aa0e25c02ad8635feddb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1f81af715bc4b2248a24076f3b12a74d0ee73e3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031004"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102065"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratief ontwikkelen en fouten opsporen met Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,9 +25,9 @@ Bekijk de volgende video voor een inleiding en demonstratie van acht minuten voo
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
-## <a name="debugging-a-pipeline"></a>Fouten opsporen in een pijp lijn
+## <a name="debugging-a-pipeline"></a>Fouten opsporen in een pijplijn
 
-Wanneer u een ontwerpt met behulp van het pijp lijn-canvas, kunt u uw activiteiten testen met de functie voor **fout opsporing** . Wanneer u test uitvoeringen uitvoert, hoeft u uw wijzigingen niet te publiceren naar de data factory voordat u **debug**selecteert. Deze functie is handig in scenario's waarin u er zeker van wilt zijn dat de wijzigingen werken zoals verwacht voordat u de data factory werk stroom bijwerkt.
+Wanneer u een ontwerpt met behulp van het pijp lijn-canvas, kunt u uw activiteiten testen met de functie voor **fout opsporing** . Wanneer u test uitvoeringen uitvoert, hoeft u uw wijzigingen niet te publiceren naar de data factory voordat u **debug** selecteert. Deze functie is handig in scenario's waarin u er zeker van wilt zijn dat de wijzigingen werken zoals verwacht voordat u de data factory werk stroom bijwerkt.
 
 ![Mogelijkheid tot fouten opsporen op het pijplijn papier](media/iterative-development-debugging/iterative-development-1.png)
 
@@ -44,7 +44,7 @@ Wanneer een test uitvoering slaagt, voegt u meer activiteiten aan uw pijp lijn t
 
 ### <a name="setting-breakpoints"></a>Onderbrekings punten instellen
 
-Met Azure Data Factory kunt u fouten opsporen in een pijp lijn totdat u een bepaalde activiteit op het pijp lijn teken hebt bereikt. Plaats een onderbrekings punt op de activiteit tot u wilt testen en selecteer **fout opsporing**. Data Factory zorgt ervoor dat de test alleen wordt uitgevoerd tot de activiteit onderbrekings punt op het pijp lijn-canvas. Deze functie voor het *opsporen van fouten* is handig wanneer u niet de volledige pijp lijn wilt testen, maar alleen een subset van activiteiten in de pijp lijn.
+Met Azure Data Factory kunt u fouten opsporen in een pijp lijn totdat u een bepaalde activiteit op het pijp lijn teken hebt bereikt. Plaats een onderbrekings punt op de activiteit tot u wilt testen en selecteer **fout opsporing** . Data Factory zorgt ervoor dat de test alleen wordt uitgevoerd tot de activiteit onderbrekings punt op het pijp lijn-canvas. Deze functie voor het *opsporen van fouten* is handig wanneer u niet de volledige pijp lijn wilt testen, maar alleen een subset van activiteiten in de pijp lijn.
 
 ![Onderbrekings punten op het pijp lijn papier](media/iterative-development-debugging/iterative-development-3.png)
 
@@ -79,11 +79,14 @@ U kunt fouten bij het opsporen van actieve gegevens stromen in een fabriek contr
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>Fouten opsporen in een pijp lijn met een gegevens stroom activiteit
 
-Bij het uitvoeren van een debug-uitvoering met een gegevens stroom hebt u twee opties voor het gebruik van compute. U kunt een bestaand cluster voor fout opsporing gebruiken of een nieuw just-in-time-cluster maken voor uw gegevens stromen.
+Bij het uitvoeren van een pijp lijn voor fout opsporing met een gegevens stroom hebt u twee opties voor het gebruik van compute. U kunt een bestaand cluster voor fout opsporing gebruiken of een nieuw just-in-time-cluster maken voor uw gegevens stromen.
 
-Als u een bestaande foutopsporingssessie gebruikt, wordt de start tijd van de gegevens stroom aanzienlijk verminderd omdat het cluster al actief is, maar niet wordt aanbevolen voor complexe of parallelle werk belastingen, omdat het mogelijk mislukt wanneer meerdere taken tegelijk worden uitgevoerd. 
+Als u een bestaande foutopsporingssessie gebruikt, wordt de start tijd van de gegevens stroom aanzienlijk verminderd omdat het cluster al actief is, maar niet wordt aanbevolen voor complexe of parallelle werk belastingen, omdat het niet mogelijk is om meerdere taken tegelijk uit te voeren.
 
-Met de activity runtime wordt een nieuw cluster gemaakt op basis van de instellingen die zijn opgegeven in de Integration runtime van elke gegevens stroom activiteit. Hierdoor kan elke taak worden geïsoleerd en moet deze worden gebruikt voor complexe werk belastingen of prestatie testen.
+Met de activity runtime wordt een nieuw cluster gemaakt op basis van de instellingen die zijn opgegeven in de Integration runtime van elke gegevens stroom activiteit. Hierdoor kan elke taak worden geïsoleerd en moet deze worden gebruikt voor complexe werk belastingen of prestatie testen. U kunt ook de TTL beheren in de Azure IR zodat de cluster bronnen die voor fout opsporing worden gebruikt, nog steeds beschikbaar zijn voor die periode om extra taak aanvragen te kunnen uitvoeren.
+
+> [!NOTE]
+> Als u een pijp lijn hebt met gegevens stromen die parallel worden uitgevoerd, kiest u activiteit runtime gebruiken zodat Data Factory de Integration Runtime kunt gebruiken die u hebt geselecteerd in uw gegevens stroom activiteit. Hierdoor kunnen de gegevens stromen op meerdere clusters worden uitgevoerd en kan de parallelle gegevens stroom worden uitgevoerd.
 
 ![Een pijp lijn uitvoeren met een gegevensstroom](media/iterative-development-debugging/iterative-development-dataflow.png)
 
