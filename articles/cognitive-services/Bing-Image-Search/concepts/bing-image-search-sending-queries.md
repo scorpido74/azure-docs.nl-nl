@@ -11,14 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f697449fffe6c93d8e5082b210678d3f51c0c736
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67542743"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084407"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>Zoek query's voor afbeeldingen aanpassen en suggereren
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 In dit artikel leest u hoe u query's kunt aanpassen en zoek termen kunt suggereren om naar de Bing Afbeeldingen zoeken-API te verzenden.
 
@@ -28,9 +33,9 @@ Als uw app een zoekvak bevat waarin zoek termen worden ingevoerd, kunt u de [Aut
 
 ## <a name="pivot-the-query"></a>De query draaien
 
-Als Bing de oorspronkelijke Zoek query kan segmenteren, bevat het geretourneerde [afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) -object `pivotSuggestions` . Suggesties voor draai grafieken kunnen worden weer gegeven als optionele zoek termen voor de gebruiker. Als de oorspronkelijke query bijvoorbeeld *micro soft-Opper vlak*was, kan de query door Bing worden gesegmenteerd in *micro soft* en het *Opper vlak* en kunnen er voor elke draai grafiek suggesties worden gegeven. Deze suggesties kunnen worden weer gegeven als optionele query termen aan de gebruiker.
+Als Bing de oorspronkelijke Zoek query kan segmenteren, bevat het geretourneerde [afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) -object `pivotSuggestions` . Suggesties voor draai grafieken kunnen worden weer gegeven als optionele zoek termen voor de gebruiker. Als de oorspronkelijke query bijvoorbeeld *micro soft-Opper vlak* was, kan de query door Bing worden gesegmenteerd in *micro soft* en het *Opper vlak* en kunnen er voor elke draai grafiek suggesties worden gegeven. Deze suggesties kunnen worden weer gegeven als optionele query termen aan de gebruiker.
 
-In het volgende voor beeld ziet u de draai suggesties voor het *micro soft-Opper vlak*:  
+In het volgende voor beeld ziet u de draai suggesties voor het *micro soft-Opper vlak* :  
 
 ```json
 {
@@ -101,13 +106,13 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>De query uitvouwen
 
-Als Bing de query kan uitbreiden om de oorspronkelijke zoekopdracht te beperken, bevat het object [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) het veld `queryExpansions`. Als de query bijvoorbeeld *micro soft-Opper vlak*was, kunnen de uitgevouwen query's er als volgt uitzien:
-- Micro soft Surface **Pro 3**.
-- Micro soft Surface **RT**.
-- Micro soft Surface **Phone**.
-- Micro soft Surface **hub**.
+Als Bing de query kan uitbreiden om de oorspronkelijke zoekopdracht te beperken, bevat het object [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) het veld `queryExpansions`. Als de query bijvoorbeeld *micro soft-Opper vlak* was, kunnen de uitgevouwen query's er als volgt uitzien:
+- Micro soft Surface **Pro 3** .
+- Micro soft Surface **RT** .
+- Micro soft Surface **Phone** .
+- Micro soft Surface **hub** .
 
-In het volgende voorbeeld ziet u de uitgebreide query's voor *Microsoft Surface*.
+In het volgende voorbeeld ziet u de uitgebreide query's voor *Microsoft Surface* .
 
 ```json
 {

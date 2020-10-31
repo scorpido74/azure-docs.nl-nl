@@ -10,14 +10,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed48a46a01cee5a7a981d4e863f981010b44112
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74072632"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084252"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Eind punten voor de Bing Afbeeldingen zoeken-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 De **afbeeldingen zoeken-API**  bevat drie eind punten.  Eind punt 1 retourneert installatie kopieën van het web op basis van een query. Eind punt 2 retourneert [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse).  Eind punt 3 retourneert trend afbeeldingen.
 
@@ -51,7 +56,7 @@ Zie de naslag informatie over [Bing afbeeldingen zoeken-API V7](https://docs.mic
 Het antwoord op een aanvraag voor het zoeken naar een afbeelding bevat resultaten als JSON-objecten. Raadpleeg de [zelf studie](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app) en de [bron code](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source)voor voor beelden van het parseren van de resultaten.
 
 ## <a name="next-steps"></a>Volgende stappen
-De **Bing** api's ondersteunen zoek acties die resultaten retour neren op basis van hun type.Alle zoek eindpunten retour neren resultaten als JSON-antwoord objecten. Alle eind punten ondersteunen query's die een specifieke taal en/of locatie retour neren met de lengte graad, breedte graad en de zoek RADIUS.
+De **Bing** api's ondersteunen zoek acties die resultaten retour neren op basis van hun type. Alle zoek eindpunten retour neren resultaten als JSON-antwoord objecten.  Alle eind punten ondersteunen query's die een specifieke taal en/of locatie retour neren met de lengte graad, breedte graad en de zoek RADIUS.
 
 Zie de naslag pagina's voor elk type voor volledige informatie over de para meters die door elk eind punt worden ondersteund.
 Zie [afbeeldingen zoeken Quick Start (](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web)Engelstalig) voor voor beelden van basis aanvragen met behulp van de afbeelding zoeken-API.

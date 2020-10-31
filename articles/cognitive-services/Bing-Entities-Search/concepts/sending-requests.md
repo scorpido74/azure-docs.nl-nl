@@ -10,14 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: f68429a75ddb141c9e42babde3faa9f93fe949cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25750f690129439f0f614724a2bb62b596f322ea
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74072687"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084983"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Verzenden van zoekaanvragen naar de Bing Entiteiten zoeken-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 De Bing Entiteiten zoeken-API verzendt een zoekquery naar Bing en haalt resultaten op die zowel entiteiten als plaatsen bevatten. Plaatsresultaten kunnen restaurants, hotels of andere lokale bedrijven zijn. In het geval van plaatsen kan de query de naam van het lokale bedrijf opgeven of vragen om een lijst (bijvoorbeeld 'restaurants near me'). Entiteitsresultaten zijn personen, plaatsen of dingen. Plaats in deze context zijn toeristische attractions, Staten, landen/regio's enz.
 

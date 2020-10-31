@@ -11,14 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b414711f5589a141d59fbe2f14d0a8ae992f5acf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67542764"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084439"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Installatie kopieën van het web ophalen met de Bing Afbeeldingen zoeken-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Wanneer u de Bing Image Search REST API gebruikt, kunt u installatie kopieën ophalen van het web die aan uw zoek term zijn gerelateerd door de volgende GET-aanvraag te verzenden:
 
@@ -31,7 +36,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Gebruik de [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) -query parameter voor uw zoek term met URL-code ring. Als u bijvoorbeeld *zeil dinghies*invoert, stelt u `q` in op `sailing+dinghies` of `sailing%20dinghies` .
+Gebruik de [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) -query parameter voor uw zoek term met URL-code ring. Als u bijvoorbeeld *zeil dinghies* invoert, stelt u `q` in op `sailing+dinghies` of `sailing%20dinghies` .
 
 > [!IMPORTANT]
 > * Alle aanvragen moeten worden gemaakt van een server en niet van een client.
@@ -80,7 +85,7 @@ Het antwoord bericht van Bing bevat een antwoord op een [installatie kopie](http
 
 > [!NOTE]
 > * Afbeeldingen moeten worden weer gegeven in de volg orde die in het antwoord is opgenomen.
-> * Omdat URL-indelingen en-para meters kunnen worden gewijzigd zonder kennisgeving, gebruikt u alle Url's als-is. U mag geen afhankelijkheden maken voor de URL-indeling of para meters, tenzij anders wordt vermeld.
+> * Omdat URL-indelingen en -parameters zonder kennisgeving kunnen worden gewijzigd, moet u alle URL's in hun huidige vorm gebruiken. Tenzij anders wordt vermeld, is het beter geen afhankelijkheden van de URL-indeling of parameters te gebruiken.
 
 ```json
 {

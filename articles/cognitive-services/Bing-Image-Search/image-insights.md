@@ -11,14 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: f84c6329c2a4dd0a9ad9e81f3700c9e31de95a2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb5da2e3009ca1c50cac05d1bd1f4a8eb55d97d2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883433"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084286"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Image Insights ophalen met de Bing Afbeeldingen zoeken-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 > [!IMPORTANT]
 > In plaats van het/images/Details-eind punt te gebruiken om image Insights op te halen, moet u [Visual Search](../bing-visual-search/overview.md) gebruiken, omdat het uitgebreidere inzichten bevat.

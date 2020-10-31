@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0b19d7681925296936fee5823f7df32e131f8bb8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e5e5a057d6c88e0963ab674aa7dbf2d420ff21b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482652"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083917"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure Cosmos core (SQL) API-resources beheren met Azure CLI
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In de volgende handleiding worden veelvoorkomende opdrachten beschreven voor het automatiseren van het beheer van Azure Cosmos DB-accounts, -databases en -containers, met behulp van Azure CLI. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](/cli/azure/cosmosdb). U kunt ook meer voor beelden vinden in [Azure CLI-voor beelden voor Azure Cosmos DB](cli-samples.md), met inbegrip van het maken en beheren van Cosmos DB accounts, data bases en containers voor MongoDb, Gremlin, Cassandra en Table-API.
 
@@ -21,7 +22,7 @@ In de volgende handleiding worden veelvoorkomende opdrachten beschreven voor het
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.12.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-Voor Azure CLI-voor beelden voor andere Api's Zie [CLI-voor beelden voor Cassandra](cli-samples-cassandra.md), [CLI-voor beelden voor MongoDb API](cli-samples-mongodb.md), CLI-voor beelden voor [Gremlin](cli-samples-gremlin.md), [CLI-voor beelden voor tabel](cli-samples-table.md)
+Zie voor Azure CLI-voorbeelden voor andere API's [CLI-voorbeelden voor Cassandra](cli-samples-cassandra.md), [CLI-voorbeelden voor MongoDB API](cli-samples-mongodb.md), [CLI-voorbeelden voor Gremlin](cli-samples-gremlin.md), [CLI-voorbeelden voor Table](cli-samples-table.md)
 
 > [!IMPORTANT]
 > De naam van Azure Cosmos DB resources kan niet worden gewijzigd, omdat dit inbreuk maakt op de manier waarop Azure Resource Manager met resource-Uri's werkt.

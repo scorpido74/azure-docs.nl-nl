@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 87d73787998d1a49d7512723b212c26b7107513f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 515e6da43a115c092ba48fdfcd2457f0b0c60623
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559800"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082433"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>Ruimtelijke functies (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Cosmos DB biedt ondersteuning voor de volgende ingebouwde OGC-functies (Open Geospatial Consortium) voor georuimtelijke query's. 
 

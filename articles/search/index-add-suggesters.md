@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1ee42b5b5884b0ce3491282d256d4bea87f44e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537596"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083538"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Een suggestie maken om automatisch aanvullen en voorgestelde resultaten in een query in te scha kelen
 
-In azure Cognitive Search wordt ' Search-as-u-type ' ingeschakeld via een **suggestie voor suggesties** die is toegevoegd aan een [zoek index](search-what-is-an-index.md). Een voor stel biedt ondersteuning voor twee ervaring: *automatisch aanvullen*, waarmee een gedeeltelijke invoer voor een hele term query wordt voltooid en *suggesties* voor het door lopen van een bepaalde overeenkomst. Automatisch aanvullen produceert een query. Suggesties maken een overeenkomend document.
+In azure Cognitive Search wordt ' Search-as-u-type ' ingeschakeld via een **suggestie voor suggesties** die is toegevoegd aan een [zoek index](search-what-is-an-index.md). Een voor stel biedt ondersteuning voor twee ervaring: *automatisch aanvullen* , waarmee een gedeeltelijke invoer voor een hele term query wordt voltooid en *suggesties* voor het door lopen van een bepaalde overeenkomst. Automatisch aanvullen produceert een query. Suggesties maken een overeenkomend document.
 
 De volgende scherm afbeelding van [het maken van uw eerste app in C#](tutorial-csharp-type-ahead-and-suggestions.md) illustreert beide. Bij automatisch aanvullen wordt een mogelijke term verwacht, waarbij ' TW ' wordt voltooid met ' in '. Suggesties zijn de resultaten van een mini maal zoek opdracht, waarbij een veld zoals de naam van het hotel een overeenkomend Hotel Zoek document uit de index vertegenwoordigt. Voor suggesties kunt u elk veld dat beschrijvende informatie bevat, op elk gewenst Opper vlak weer gegeven.
 
@@ -52,7 +52,7 @@ Automatisch aanvullen heeft voor delen van een grotere groep velden waaruit kan 
 
 Suggesties, daarentegen, produceren betere resultaten wanneer uw veld keuze selectief is. Houd er rekening mee dat de suggestie een proxy voor een zoek document is, zodat u wilt dat velden die het beste een enkel resultaat vertegenwoordigen. Namen, titels of andere unieke velden die onderscheid maken tussen meerdere overeenkomsten, werken het beste. Als velden bestaan uit herhaalde waarden, bestaan de suggesties uit identieke resultaten en is een gebruiker niet op welke manier u hoeft te klikken.
 
-Als u wilt voldoen aan beide zoek functies, voegt u alle velden toe die u nodig hebt voor automatisch aanvullen, maar gebruikt u vervolgens **$Select**, **$Top**, **$filter**en **searchFields** om de resultaten voor suggesties te beheren.
+Als u wilt voldoen aan beide zoek functies, voegt u alle velden toe die u nodig hebt voor automatisch aanvullen, maar gebruikt u vervolgens **$Select** , **$Top** , **$filter** en **searchFields** om de resultaten voor suggesties te beheren.
 
 ### <a name="choose-analyzers"></a>Analyse functies kiezen
 
@@ -167,7 +167,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 + [Uw eerste app maken in C# (Les 3-zoek opdracht toevoegen aan het type)](tutorial-csharp-type-ahead-and-suggestions.md) toont een voor beeld van de constructie, aanbevolen query's, automatisch aanvullen en facet navigatie. Dit code voorbeeld wordt uitgevoerd op een sandbox Azure Cognitive Search-service en maakt gebruik van een vooraf geladen Hotels-index. u hoeft alleen op F5 te drukken om de toepassing uit te voeren. Er is geen abonnement of aanmelding vereist.
 
-+ [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) is een ouder voor beeld dat zowel C#-als Java-code bevat. Er wordt ook gedemonstreerd hoe u een suggestie maakt, suggesties voor query's, automatisch aanvullen en facet navigatie. Dit code voorbeeld maakt gebruik van de gehoste [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) -voorbeeld gegevens. 
++ [DotNetHowToAutocomplete](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) is een ouder voor beeld dat zowel C#-als Java-code bevat. Er wordt ook gedemonstreerd hoe u een suggestie maakt, suggesties voor query's, automatisch aanvullen en facet navigatie. Dit code voorbeeld maakt gebruik van de gehoste [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) -voorbeeld gegevens. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7651f84e14d6ea7dcb4e12d57e2bf494d5aeff1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825966"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083181"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Procedure: verouderde apparaten beheren in azure AD
 
@@ -55,11 +55,11 @@ Er zijn twee manieren om de waarde van de tijdstempel van activiteit te bepalen:
 
 - Via de kolom **Activiteit** op de [pagina Apparaten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) in de Azure-portal
 
-    ![Tijdstempel van activiteit](./media/manage-stale-devices/01.png)
+    :::image type="content" source="./media/manage-stale-devices/01.png" alt-text="Scherm opname van een pagina in de Azure Portal de naam, eigenaar en andere informatie op apparaten weer geven. In één kolom wordt de tijds tempel van de activiteit weer gegeven." border="false":::
 
 - De cmdlet [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice)
 
-    ![Tijdstempel van activiteit](./media/manage-stale-devices/02.png)
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="Scherm opname van een pagina in de Azure Portal de naam, eigenaar en andere informatie op apparaten weer geven. In één kolom wordt de tijds tempel van de activiteit weer gegeven." border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>Opschonen van verlopen apparaten plannen
 
@@ -97,7 +97,7 @@ Apparaten die zijn gekoppeld aan hybride Azure AD moeten het beleid volgen voor 
 
 Azure AD opschonen:
 
-- **Windows 10-apparaten**: schakel Windows 10-apparaten uit in uw on-premises AD of verwijder ze, en laat Azure AD Connect de gewijzigde apparaatstatus synchroniseren naar Azure AD.
+- **Windows 10-apparaten** : schakel Windows 10-apparaten uit in uw on-premises AD of verwijder ze, en laat Azure AD Connect de gewijzigde apparaatstatus synchroniseren naar Azure AD.
 - **Windows 7/8** : Schakel eerst Windows 7/8-apparaten in uw on-premises AD in of verwijder deze. U kunt Azure AD Connect niet gebruiken voor het uitschakelen of verwijderen van Windows 7/8-apparaten in Azure AD. In plaats daarvan moet u, wanneer u de wijziging in uw on-premises aanbrengt, u in azure AD uitschakelen of verwijderen.
 
 > [!NOTE]
@@ -176,7 +176,7 @@ Zie [Overzicht van apparaatbeheer](overview.md) voor meer informatie over de ver
 Verificatie waarbij een apparaat wordt gebruikt om te verifiëren bij Azure AD wordt geweigerd. Enkele typische voorbeelden:
 
 - **Hybride Azure AD-aangesloten apparaat** : gebruikers kunnen het apparaat mogelijk gebruiken om zich aan te melden bij hun on-premises domein. Ze hebben echter geen toegang tot Azure AD-resources, zoals Microsoft 365.
-- **Apparaat dat is gekoppeld aan Azure AD**: gebruikers kunnen het apparaat niet gebruiken om zich aan te melden. 
+- **Apparaat dat is gekoppeld aan Azure AD** : gebruikers kunnen het apparaat niet gebruiken om zich aan te melden. 
 - **Mobiele apparaten** : gebruiker heeft geen toegang tot Azure AD-resources zoals Microsoft 365. 
 
 ## <a name="next-steps"></a>Volgende stappen

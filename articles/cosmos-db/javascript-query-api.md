@@ -8,20 +8,21 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: f16498f0661ba918acd42b7964b649d0bbdf5841
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 116253e783595cf0e169c6a5774944dfd89f890e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495880"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082943"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Java script-query-API in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Naast het uitgeven van query's met behulp van de SQL-API in Azure Cosmos DB, biedt de [Cosmos DB SDK aan de server zijde](https://github.com/Azure/azure-cosmosdb-js-server/) een Java script-interface voor het uitvoeren van geoptimaliseerde query's in Cosmos DB opgeslagen procedures en triggers. U hoeft niet op de hoogte te zijn van de SQL-taal om deze Java script-interface te gebruiken. Met de Java script-query-API kunt u programmatisch query's maken door predikaten te gebruiken in volg orde van functie aanroepen, met een syntaxis die bekend is met de ECMAScript5's array-ingebouwde en populaire Java script-bibliotheken zoals Lodash. Query's worden door de Java Script-runtime geparseerd en efficiënt uitgevoerd met Azure Cosmos DB indices.
 
 ## <a name="supported-javascript-functions"></a>Ondersteunde Java script-functies
 
-| **Functie** | **Deschription** (Beschrijving) |
+| **Functie** | **Beschrijving** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|Start een geketende aanroep die moet worden beëindigd met de waarde ().|
 |`filter(predicateFunction [, options] [, callback])`|Hiermee wordt de invoer gefilterd met behulp van een predicaat functie die waar/onwaar retourneert om invoer documenten te filteren in/uit te voeren in de resulterende set. Deze functie gedraagt zich op dezelfde manier als een WHERE-component in SQL.|
@@ -52,7 +53,7 @@ De volgende tabel bevat verschillende SQL-query's en de bijbehorende java script
 > [!NOTE]
 > `__` (dubbele onderstreping) is een alias naar `getContext().getCollection()` bij gebruik van de JavaScript-query-API.
 
-|**SQL**|**Java script-query-API**|**Deschription** (Beschrijving)|
+|**SQL**|**Java script-query-API**|**Beschrijving**|
 |---|---|---|
 |UITGESCHAKELD<br>VAN documenten| __. map (function (doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;retour document;<br>});|De resultaten zijn in alle documenten (gepagineerd met vervolg token).|
 |SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. bericht als msg,<br>&nbsp;&nbsp;&nbsp;docs. acties <br>VAN documenten|__. map (function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;opvragen<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bericht: doc. bericht,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;acties: doc. acties<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projecteert de id, het bericht (met een alias als een bericht) en actie van alle documenten.|

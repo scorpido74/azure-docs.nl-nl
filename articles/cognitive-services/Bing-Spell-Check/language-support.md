@@ -10,14 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b4e4eb84cecf2f68c50f0a40630cc2e6f34554f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66390169"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084202"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Ondersteuning voor taal en regio voor Bing Spellingcontrole-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Deze talen worden ondersteund door de Bing Spellingcontrole-API (alleen in de `spell` modus).
 
@@ -66,7 +71,7 @@ Houd er rekening mee dat u kunt werken met een andere taal dan `en-US` de `mkt` 
 | Zweeds     | `sv`          |
 | Turks     | `tr`          |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Documentatiepagina van Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
 - [Productpagina van Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

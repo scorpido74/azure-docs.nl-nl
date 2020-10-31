@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 6837bbdb63caf0fb1ecb3f6e520d5f3623483b44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093307"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083232"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Meer informatie over veilige, door Azure beheerde werk stations
 
@@ -94,12 +94,15 @@ Essentieel voor een beveiligd werk station is een supply chain-oplossing waarbij
 
 Voor deze oplossing wordt de basis van de vertrouwens relatie geïmplementeerd met behulp van [micro soft auto pilot](/windows/deployment/windows-autopilot/windows-autopilot) -technologie met hardware die voldoet aan de moderne technische vereisten. Voor het beveiligen van een werk station kunt u met auto pilot gebruikmaken van door micro soft OEM geoptimaliseerde Windows 10-apparaten. Deze apparaten komen in een bekende goede staat van de fabrikant. In plaats van een mogelijk onveilig apparaat te, kan auto pilot een Windows-apparaat omzetten in een status die klaar is voor het bedrijf. Hiermee worden instellingen en beleid toegepast, worden apps geïnstalleerd en wordt zelfs de editie van Windows 10 gewijzigd. Auto Pilot kan bijvoorbeeld de Windows-installatie van een apparaat wijzigen van Windows 10 Pro in Windows 10 Enter prise, zodat deze geavanceerde functies kan gebruiken.
 
-![Niveaus van beveiligde werk stations](./media/concept-azure-managed-workstation/supplychain.png)
+:::image type="complex" source="./media/concept-azure-managed-workstation/supplychain.png" alt-text="Diagram waarin de levens cyclus van een beveiligd werk station wordt weer gegeven." border="false":::
+Aan de bovenkant van het diagram wordt de leverancier van het apparaat afgebeeld. Pijl punten van die leverancier naar een klant die het werk station heeft gekocht en aan een vracht wagen waaraan wordt voldaan en geleverd. Vanuit de vracht wagen wijst een pijl naar een afbeelding met het label implementeren die afbeeldingen een persoon die gebruikmaakt van een werk station. Een pijl met de naam self-service-ervaring breidt van die persoon naar een scherm dat klaar is voor bedrijven. Onder dat scherm worden pictogrammen met het label beheerd beveiligd weer gegeven. Een pijl met het label gebruik van constante status, beheer en behoud huidige punten van het scherm tot het pictogram einde van de levens duur en het pictogram voor het opnieuw instellen van het herstel. Een eind pijl loopt terug van het pictogram voor het oplossen van problemen naar het scherm gereed voor bedrijven.
+:::image-end:::
 
 ## <a name="device-roles-and-profiles"></a>Apparaatfuncties en-profielen
 
 Deze richt lijnen verwijzen naar verschillende beveiligings profielen en rollen die u kunnen helpen bij het maken van veiligere oplossingen voor gebruikers, ontwikkel aars en IT-personeel. Deze profielen sluiten bruikbaarheid en risico's voor algemene gebruikers die kunnen profiteren van een uitgebreid of veilig werk station. De instellingen die hier worden beschreven, zijn gebaseerd op de door de industrie aanvaarde standaarden. In deze richt lijnen wordt beschreven hoe u Windows 10 kunt beveiligen en de Risico's kunt verminderen die aan het apparaat of de gebruiker zijn gekoppeld. Om te profiteren van de moderne hardware-technologie en de basis van het vertrouwens apparaat, zullen we gebruikmaken van [Apparaatstatusverklaring](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643), dat is ingeschakeld vanaf het **High-Security** -profiel. Deze mogelijkheid is aanwezig om ervoor te zorgen dat de aanvallers niet permanent kunnen zijn tijdens het vroegtijdig opstarten van een apparaat. Dit doet u door beleid en technologie te gebruiken om beveiligings functies en-risico's te beheren.
-![Niveaus van beveiligde werk stations](./media/concept-azure-managed-workstation/seccon-levels.png)
+
+:::image type="content" source="./media/concept-azure-managed-workstation/seccon-levels.png" alt-text="Diagram waarin de levens cyclus van een beveiligd werk station wordt weer gegeven." border="false":::
 
 * **Basis beveiliging** : een beheerd, standaard werk station biedt een goed uitgangs punt voor het gebruik van de meeste thuis en kleine bedrijven. Deze apparaten worden geregistreerd in azure AD en beheerd met intune. Met dit profiel kunnen gebruikers toepassingen uitvoeren en bladeren door alle websites. Een anti-malware-oplossing zoals [micro soft Defender](https://www.microsoft.com/windows/comprehensive-security) moet zijn ingeschakeld.
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c40916d975b8acabaa7083cf57259291f09b40a9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870731"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082603"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Scalaire expressies in Azure Cosmos DB SQL-query's
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 De [component SELECT](sql-query-select.md) ondersteunt scalaire expressies. Een scalaire expressie is een combi natie van symbolen en Opera tors die kunnen worden geëvalueerd om één waarde te verkrijgen. Voor beelden van scalaire expressies zijn: constanten, eigenschaps verwijzingen, matrix element verwijzingen, alias verwijzingen of functie aanroepen. Scalaire expressies kunnen worden gecombineerd tot complexe expressies met behulp van Opera tors.
 
@@ -55,7 +56,7 @@ De [component SELECT](sql-query-select.md) ondersteunt scalaire expressies. Een 
 - `input_alias`  
   
    Vertegenwoordigt een waarde die is gedefinieerd door de component die is `input_alias` geïntroduceerd in `FROM` .  
-  Deze waarde is gegarandeerd niet- **gedefinieerd** .**ongedefinieerde** waarden in de invoer worden overgeslagen.  
+  Deze waarde is gegarandeerd niet- **gedefinieerd** . **ongedefinieerde** waarden in de invoer worden overgeslagen.  
   
 - `<scalar_expression>.property_name`  
   

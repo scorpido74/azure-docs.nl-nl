@@ -10,14 +10,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 19c5c5280b8ff4fb997366375b4300958d694d6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbed826757e397b036a6a54ae5ee8ac493c1cc25
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293656"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084514"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Veelgestelde vragen over de Bing Afbeeldingen zoeken-API
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Hier vindt u antwoorden op veelgestelde vragen over concepten, code en scenario's met betrekking tot de Bing Afbeeldingen zoeken-API voor Microsoft Cognitive Services op Azure.
 
@@ -66,6 +71,6 @@ Deze benadering beschermt ook uw API-sleutel tegen bloot stelling aan het publie
 
 Is uw vraag over een ontbrekend onderdeel of functionaliteit? Overweeg om het te vragen of te stemmen op onze [website voor gebruikers spraak](https://cognitive.uservoice.com/forums/555907-bing-search).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
  [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

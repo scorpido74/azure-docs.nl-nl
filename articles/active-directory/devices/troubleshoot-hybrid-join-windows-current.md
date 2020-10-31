@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433650"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083213"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen met hybride Azure Active Directory-gekoppelde apparaten oplossen
 
@@ -29,7 +29,7 @@ In dit artikel wordt ervan uitgegaan dat u [hybride Azure Active Directory gekop
 
 - Voorwaardelijke toegang op basis van het apparaat
 - [Zwervende instellingen voor ondernemingen](./enterprise-state-roaming-overview.md)
-- [Windows Hello voor Bedrijven](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
+- [Windows hello voor bedrijven](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 Dit document bevat richt lijnen voor probleem oplossing om mogelijke problemen op te lossen.
 
@@ -95,16 +95,16 @@ Controleer de volgende velden en zorg ervoor dat ze de verwachte waarden hebben:
 
 #### <a name="domainjoined--yes"></a>DomainJoined: Ja
 
-Dit veld geeft aan of het apparaat is gekoppeld aan een on-premises Active Directory of niet. Als de waarde **Nee**is, kan het apparaat geen hybride Azure AD-deelname uitvoeren.
+Dit veld geeft aan of het apparaat is gekoppeld aan een on-premises Active Directory of niet. Als de waarde **Nee** is, kan het apparaat geen hybride Azure AD-deelname uitvoeren.
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined: Nee
 
-Dit veld geeft aan of het apparaat is geregistreerd bij Azure AD als persoonlijk apparaat (gemarkeerd als *toegevoegd aan werk plek*). Deze waarde mag **niet** worden toegevoegd aan een computer die lid is van een domein en ook hybride Azure AD is toegevoegd. Als de waarde **Ja**is, is er een werk-of school account toegevoegd vóór het volt ooien van de deelname van de hybride Azure AD. In dit geval wordt het account genegeerd wanneer u Windows 10 versie 1607 of hoger gebruikt.
+Dit veld geeft aan of het apparaat is geregistreerd bij Azure AD als persoonlijk apparaat (gemarkeerd als *toegevoegd aan werk plek* ). Deze waarde mag **niet** worden toegevoegd aan een computer die lid is van een domein en ook hybride Azure AD is toegevoegd. Als de waarde **Ja** is, is er een werk-of school account toegevoegd vóór het volt ooien van de deelname van de hybride Azure AD. In dit geval wordt het account genegeerd wanneer u Windows 10 versie 1607 of hoger gebruikt.
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: Ja
 
 Dit veld geeft aan of het apparaat is gekoppeld. De waarde is **Ja** als het apparaat een gekoppeld Azure AD-apparaat of een hybride Azure AD-apparaat is.
-Als de waarde **Nee**is, is de koppeling naar Azure AD nog niet voltooid.
+Als de waarde **Nee** is, is de koppeling naar Azure AD nog niet voltooid.
 
 Ga verder met de volgende stappen voor meer informatie over het oplossen van problemen.
 
@@ -132,12 +132,12 @@ In het veld ' fout fase ' wordt de fase van de fout bij het samen voegen aangege
 
 Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fouten te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van**micro soft**  >  **Windows**-  >  **gebruikers apparaten**
+1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van **micro soft**  >  **Windows** -  >  **gebruikers apparaten**
 2. Zoek naar gebeurtenissen met de volgende eventIDs 304, 305, 307.
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/1.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/1.png" alt-text="Scherm opname van de logboeken. Er wordt een gebeurtenis met I D 304 geselecteerd en de bijbehorende informatie wordt weer gegeven, waarbij de fout code en fase zijn gemarkeerd." border="false":::
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/2.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="Scherm opname van de logboeken. Er wordt een gebeurtenis met I D 304 geselecteerd en de bijbehorende informatie wordt weer gegeven, waarbij de fout code en fase zijn gemarkeerd." border="false":::
 
 ### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>Stap 4: controleren op mogelijke oorzaken en oplossingen in de onderstaande lijsten
 
@@ -207,10 +207,10 @@ Zoek naar ' DRS Discovery test ' in de sectie ' Diagnostische gegevens ' van de 
 
 Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fouten te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van**micro soft**  >  **Windows**-  >  **gebruikers apparaten**
+1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van **micro soft**  >  **Windows** -  >  **gebruikers apparaten**
 2. Zoek naar gebeurtenissen met de volgende eventIDs 201
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/5.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="Scherm opname van de logboeken. Er wordt een gebeurtenis met I D 304 geselecteerd en de bijbehorende informatie wordt weer gegeven, waarbij de fout code en fase zijn gemarkeerd." border="false":::
 
 ###### <a name="network-errors"></a>Netwerk fouten
 
@@ -252,10 +252,10 @@ Redenen voor fout:
 
 Gebruik Logboeken Logboeken om de fout code, subfout code, fout code voor de server en het fout bericht van de server te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van**micro soft**  >  **Windows**-  >  **gebruikers apparaten**
+1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van **micro soft**  >  **Windows** -  >  **gebruikers apparaten**
 2. Zoek naar gebeurtenissen met de volgende gebeurtenis-305
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/3.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="Scherm opname van de logboeken. Er wordt een gebeurtenis met I D 304 geselecteerd en de bijbehorende informatie wordt weer gegeven, waarbij de fout code en fase zijn gemarkeerd." border="false":::
 
 ##### <a name="configuration-errors"></a>Configuratiefouten
 
@@ -327,10 +327,10 @@ Het veld registratie type geeft het type samen voeging aan dat wordt uitgevoerd.
 
 Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fouten te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van**micro soft**  >  **Windows**-  >  **gebruikers apparaten**
+1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van **micro soft**  >  **Windows** -  >  **gebruikers apparaten**
 2. Zoek naar gebeurtenissen met de volgende eventIDs 204
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/4.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="Scherm opname van de logboeken. Er wordt een gebeurtenis met I D 304 geselecteerd en de bijbehorende informatie wordt weer gegeven, waarbij de fout code en fase zijn gemarkeerd." border="false":::
 
 ##### <a name="http-errors-returned-from-drs-server"></a>HTTP-fouten geretourneerd door de DRS-server
 
@@ -389,12 +389,12 @@ Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fo
 
 Down load het bestand Auth.zip van [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. Pak de bestanden uit en wijzig de naam van de Inge sloten bestanden **start-auth.txt** en **stop-auth.txt** in **Start-auth. cmd** en **Stop-auth. cmd**.
-1. Voer **Start-auth. cmd**uit vanaf een opdracht prompt met verhoogde bevoegdheid.
+1. Pak de bestanden uit en wijzig de naam van de Inge sloten bestanden **start-auth.txt** en **stop-auth.txt** in **Start-auth. cmd** en **Stop-auth. cmd** .
+1. Voer **Start-auth. cmd** uit vanaf een opdracht prompt met verhoogde bevoegdheid.
 1. Gebruik een ander account om met de probleem gebruiker over te scha kelen naar een andere sessie.
 1. Reproduceer het probleem.
 1. Gebruik switch-account om terug te scha kelen naar de beheer sessie met de tracering.
-1. Voer **Stop-auth. cmd**uit vanaf een opdracht prompt met verhoogde bevoegdheid.
+1. Voer **Stop-auth. cmd** uit vanaf een opdracht prompt met verhoogde bevoegdheid.
 1. Zip en verzend de map **Authlogs** uit de map waarin de scripts zijn uitgevoerd.
 
 ## <a name="troubleshoot-post-join-issues"></a>Problemen met post-deelname oplossen
@@ -404,7 +404,7 @@ Down load het bestand Auth.zip van [https://github.com/CSS-Windows/WindowsDiag/t
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: Ja en AzureADPrt: Ja
 
 Deze velden geven aan of de gebruiker is geverifieerd bij Azure AD bij het aanmelden bij het apparaat.
-Als de waarden **Nee**zijn, kan dit worden veroorzaakt door:
+Als de waarden **Nee** zijn, kan dit worden veroorzaakt door:
 
 - Ongeldige opslag sleutel in de TPM die tijdens de registratie aan het apparaat is gekoppeld (Controleer de KeySignTest tijdens de uitvoering van de verhoogde bevoegdheid).
 - Alternatieve aanmeldings-ID

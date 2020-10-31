@@ -11,16 +11,21 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 862a7f6c31df7395fe225cf89ad83425e917394e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcfd711f0a38d5993447823c31cbf7f27226ad6b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84169981"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084337"
 ---
 # <a name="search-for-gif-images"></a>Zoeken naar GIF-afbeeldingen 
 
-Met de Bing Afbeeldingen zoeken-API kunt u ook op het hele web zoeken naar de meest relevante GIF-afbeeldingen.Ontwikkel aars kunnen aantrekkelijke gif's integreren in verschillende gespreks scenario's. 
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+
+Met de Bing Afbeeldingen zoeken-API kunt u ook op het hele web zoeken naar de meest relevante GIF-afbeeldingen.  Ontwikkel aars kunnen aantrekkelijke gif's integreren in verschillende gespreks scenario's. 
 
 De volgende URL is een query voor GIF-afbeeldingen met animatie.
 ```

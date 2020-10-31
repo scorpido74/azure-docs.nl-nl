@@ -10,14 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5fbecd9c2fd6e3a9f1be29598bad50da4b77bbb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68423912"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084609"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Classificatie gebruiken om de zoek resultaten van entiteiten weer te geven  
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Elk zoek antwoord van de entiteit bevat een [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) -antwoord dat aangeeft hoe zoek resultaten moeten worden weer gegeven die worden geretourneerd door de Bing entiteiten zoeken-API. De volg orde van de antwoord groepen resulteert in een stip-, Mainline-en Sidebar-inhoud. Het hengel resultaat is het belangrijkste of prominente resultaat en moet eerst worden weer gegeven. Als u de resterende resultaten niet weer geven in een traditionele Mainline-en Sidebar-indeling, moet u de mainline-inhoud beter zichtbaar maken dan de inhoud van de zijbalk. 
   

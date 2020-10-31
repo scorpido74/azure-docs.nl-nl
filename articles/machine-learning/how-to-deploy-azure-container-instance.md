@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: e64914118409332f6a1c08b6d5e1669685529d76
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: ff071373706759576f80426d61a27851bfc4e1b6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999169"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082161"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Een model implementeren op Azure Container Instances
 
@@ -60,7 +60,7 @@ Zie voor meer informatie [beveiligings problemen beveiligen met virtuele netwerk
 
 ## <a name="deploy-to-aci"></a>Implementeren naar ACI
 
-Als u een model wilt implementeren in Azure Container Instances, maakt u een __implementatie configuratie__ waarin de benodigde reken resources worden beschreven. Bijvoorbeeld het aantal kernen en het geheugen. U hebt ook een Afleidings __configuratie__nodig, waarmee de omgeving wordt beschreven die nodig is voor het hosten van het model en de webservice. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van de configuratie voor demijnen.
+Als u een model wilt implementeren in Azure Container Instances, maakt u een __implementatie configuratie__ waarin de benodigde reken resources worden beschreven. Bijvoorbeeld het aantal kernen en het geheugen. U hebt ook een Afleidings __configuratie__ nodig, waarmee de omgeving wordt beschreven die nodig is voor het hosten van het model en de webservice. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van de configuratie voor demijnen.
 
 > [!NOTE]
 > * ACI is alleen geschikt voor kleine modellen met een grootte van 1 GB. 
@@ -104,6 +104,8 @@ Zie [uw modellen implementeren met VS code](tutorial-train-deploy-image-classifi
 > [!IMPORTANT]
 > U hoeft geen ACI-container te maken om vooraf te testen. ACI-containers worden zo nodig gemaakt.
 
+> [!IMPORTANT]
+> We voegen de werk ruimte-id van de hash toe aan alle onderliggende ACI-resources die worden gemaakt. alle ACI-namen van dezelfde werk ruimte hebben hetzelfde achtervoegsel. De naam van de Azure Machine Learning-service is nog steeds dezelfde klant als ' service_name ' en alle gebruikers die zijn gericht op Azure Machine Learning SDK-Api's, hoeven niets te wijzigen. We geven geen garanties met betrekking tot de namen van de onderliggende resources die worden gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

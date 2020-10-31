@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f716af1d50eb8a24d8ab70f784cba31f65795cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c71c55adbf79af780169380269b5081322f94baf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165903"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083436"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Overwegingen voor het gebruik van Universeel Windows-platform met MSAL.NET
 Ontwikkel aars van toepassingen die gebruikmaken van Universeel Windows-platform (UWP) met MSAL.NET, moeten rekening houden met de concepten in dit artikel.
@@ -64,4 +64,4 @@ In de volgende voor beelden vindt u meer informatie.
 Voorbeeld | Platform | Beschrijving 
 |------ | -------- | -----------|
 |[Active-Directory-DotNet-native-UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Een UWP-client toepassing die gebruikmaakt van MSAL.NET. Er wordt gebruikgemaakt van Microsoft Graph voor een gebruiker die zich verifieert met behulp van een Azure AD 2,0-eind punt. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
-|[Active-Directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Een eenvoudige Xamarin Forms-app die laat zien hoe u MSAL kunt gebruiken om micro soft-persoonlijke accounts en Azure AD te verifiëren via het Azure AD 2,0-eind punt. Ook wordt uitgelegd hoe u toegang krijgt tot Microsoft Graph en hoe het resulterende token wordt weer gegeven. <br>![Topologie](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
+|[Active-Directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Een Xamarin Forms-app die laat zien hoe u MSAL kunt gebruiken om micro soft-persoonlijke accounts en Azure AD te verifiëren via het micro soft-identiteits platform. Ook wordt uitgelegd hoe u toegang krijgt tot Microsoft Graph en hoe het resulterende token wordt weer gegeven. <br>![Diagram waarin wordt getoond hoe u MSAL kunt gebruiken om micro soft-persoonlijke accounts en Azure AD te verifiëren via het micro soft-identiteits platform.](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

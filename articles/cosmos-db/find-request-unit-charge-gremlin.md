@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: ea9ab661fce1cd88bf1bdc065c2b26ccad73c30d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8393fb431c5148d3f4885135c90fe4d0b8970d52
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490710"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082008"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-gremlin-api"></a>De toeslag voor aanvraag eenheden zoeken voor bewerkingen die zijn uitgevoerd in Azure Cosmos DB Gremlin-API
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB ondersteunt veel Api's, zoals SQL, MongoDB, Cassandra, Gremlin en Table. Elke API heeft een eigen set database bewerkingen. Deze bewerkingen variëren van eenvoudig punt Lees-en schrijf bewerkingen naar complexe query's. Bij elke database bewerking worden systeem resources verbruikt op basis van de complexiteit van de bewerking.
 
@@ -33,7 +34,7 @@ Headers die door de Gremlin-API worden geretourneerd, worden toegewezen aan aang
 
 1. Ga naar het deel venster **Data Explorer** en selecteer vervolgens de container waaraan u wilt werken.
 
-1. Geef een geldige query op en selecteer vervolgens **Gremlin query uitvoeren**.
+1. Geef een geldige query op en selecteer vervolgens **Gremlin query uitvoeren** .
 
 1. Selecteer **query statistieken** om de werkelijke aanvraag kosten weer te geven voor de aanvraag die u hebt uitgevoerd.
 

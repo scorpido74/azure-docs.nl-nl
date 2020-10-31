@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: 2859f603dd168e4f93eb8f3cbc9c841de884e1ee
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d0ee7dc8890c228617eaeee8b1cdc72d2230458e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489231"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082960"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In Azure Cosmos DB heeft elke container een indexeringsbeleid dat bepaalt hoe de items van de container moeten worden geïndexeerd. Het standaard indexeringsbeleid voor nieuw gemaakte containers indexeert elke eigenschap van elk item en dwingt bereikindexen af voor elke tekenreeks of elk getal. Dit levert u hoge queryprestaties op zonder dat u van tevoren aan indexering en indexbeheer hoeft te denken.
 
-In sommige gevallen wilt u mogelijk dit automatische gedrag overschrijven, zodat het beter aansluit bij uw vereisten. U kunt het indexerings beleid van een container aanpassen door de *indexerings modus*in te stellen en *eigenschaps paden*op te nemen of uit te sluiten.
+In sommige gevallen wilt u mogelijk dit automatische gedrag overschrijven, zodat het beter aansluit bij uw vereisten. U kunt het indexerings beleid van een container aanpassen door de *indexerings modus* in te stellen en *eigenschaps paden* op te nemen of uit te sluiten.
 
 > [!NOTE]
 > De methode voor het bijwerken van het indexerings beleid dat in dit artikel wordt beschreven, is alleen van toepassing op de SQL-API (core) van Azure Cosmos DB. Meer informatie over indexering in [de API van Azure Cosmos DB voor MongoDb](mongodb-indexing.md)
@@ -26,8 +27,8 @@ In sommige gevallen wilt u mogelijk dit automatische gedrag overschrijven, zodat
 
 Azure Cosmos DB ondersteunt twee indexerings modi:
 
-- **Consistent**: de index wordt synchroon bijgewerkt wanneer u items maakt, bijwerkt of verwijdert. Dit betekent dat de consistentie van uw Lees query's de [consistentie is die voor het account is geconfigureerd](consistency-levels.md).
-- **Geen**: indexeren is uitgeschakeld op de container. Dit wordt meestal gebruikt wanneer een container wordt gebruikt als een pure sleutel waarde Store zonder dat hiervoor secundaire indexen nodig zijn. Het kan ook worden gebruikt om de prestaties van bulk bewerkingen te verbeteren. Nadat de bulk bewerkingen zijn voltooid, kan de index modus worden ingesteld op consistent en vervolgens worden bewaakt met behulp van de [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) totdat de bewerking is voltooid.
+- **Consistent** : de index wordt synchroon bijgewerkt wanneer u items maakt, bijwerkt of verwijdert. Dit betekent dat de consistentie van uw Lees query's de [consistentie is die voor het account is geconfigureerd](consistency-levels.md).
+- **Geen** : indexeren is uitgeschakeld op de container. Dit wordt meestal gebruikt wanneer een container wordt gebruikt als een pure sleutel waarde Store zonder dat hiervoor secundaire indexen nodig zijn. Het kan ook worden gebruikt om de prestaties van bulk bewerkingen te verbeteren. Nadat de bulk bewerkingen zijn voltooid, kan de index modus worden ingesteld op consistent en vervolgens worden bewaakt met behulp van de [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) totdat de bewerking is voltooid.
 
 > [!NOTE]
 > Azure Cosmos DB ondersteunt ook een vertraagde indexerings modus. Luie indexering voert updates op de index met een veel lager prioriteitsniveau uit als de engine geen andere taken uitvoert. Dit kan leiden tot **inconsistente of onvolledige** queryresultaten. Als u van plan bent om een query uit te voeren op een Cosmos-container, moet u geen luie indexering selecteren. In juni 2020 hebben we een wijziging aangebracht waarbij nieuwe containers niet langer kunnen worden ingesteld op de vertraagde indexerings modus. Als uw Azure Cosmos DB-account al ten minste één container met een luie index bevat, wordt dit account automatisch uitgesloten van de wijziging. U kunt ook een uitzonde ring aanvragen door contact op te nemen met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (behalve als u een Azure Cosmos-account gebruikt in de [serverloze](serverless.md) modus die geen ondersteuning biedt voor Lazy indexering).
@@ -77,7 +78,7 @@ Elk indexerings beleid moet het basispad bevatten `/*` als een opgenomen of uitg
 
 - De eigenschap System `_etag` wordt standaard uitgesloten van indexeren, tenzij de ETAG wordt toegevoegd aan het opgenomen pad voor indexering.
 
-- Als de indexerings modus is ingesteld op **consistent**, worden de systeem eigenschappen `id` `_ts` automatisch geïndexeerd.
+- Als de indexerings modus is ingesteld op **consistent** , worden de systeem eigenschappen `id` `_ts` automatisch geïndexeerd.
 
 Bij het opnemen en uitsluiten van paden kunnen de volgende kenmerken optreden:
 
@@ -103,9 +104,9 @@ Als uw opgenomen paden en uitgesloten paden een conflict veroorzaken, heeft het 
 
 Hier volgt een voorbeeld:
 
-**Opgenomen pad**: `/food/ingredients/nutrition/*`
+**Opgenomen pad** : `/food/ingredients/nutrition/*`
 
-**Uitgesloten pad**: `/food/ingredients/*`
+**Uitgesloten pad** : `/food/ingredients/*`
 
 In dit geval heeft het opgenomen pad voor rang op het uitgesloten pad, omdat dit nauw keuriger is. Op basis van deze paden worden alle gegevens in het `food/ingredients` pad, of genest binnen, uitgesloten van de index. De uitzonde ring hiervan zijn gegevens in het opgenomen pad: `/food/ingredients/nutrition/*` , dat wordt geïndexeerd.
 
