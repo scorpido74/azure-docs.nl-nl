@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 11a7b4876c773922d4b0ed28f7047912b738ee6a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047672"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091732"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problemen oplossen met Azure Digital Apparaatdubbels: logboek registratie van diagnostische gegevens
 
@@ -26,13 +26,13 @@ Hier vindt u informatie over het inschakelen van diagnostische instellingen voor
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw Azure Digital apparaatdubbels-exemplaar. U kunt het vinden door de naam ervan in de zoek balk van de portal te typen. 
 
-2. Selecteer **Diagnostische instellingen** in het menu en vervolgens **Diagnostische instelling toevoegen**.
+2. Selecteer **Diagnostische instellingen** in het menu en vervolgens **Diagnostische instelling toevoegen** .
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Scherm opname van de pagina met Diagnostische instellingen en de knop die u wilt toevoegen":::
 
 3. Vul op de onderstaande pagina de volgende waarden in:
-     * **Naam van de diagnostische instelling**: Geef de diagnostische instellingen een naam.
-     * **Categorie Details**: Kies welke bewerkingen u wilt bewaken en schakel de selectie vakjes in om diagnostische gegevens voor deze bewerkingen in te scha kelen. De bewerkingen waarvan de diagnostische instellingen kunnen rapporteren, zijn:
+     * **Naam van de diagnostische instelling** : Geef de diagnostische instellingen een naam.
+     * **Categorie Details** : Kies welke bewerkingen u wilt bewaken en schakel de selectie vakjes in om diagnostische gegevens voor deze bewerkingen in te scha kelen. De bewerkingen waarvan de diagnostische instellingen kunnen rapporteren, zijn:
         - DigitalTwinsOperation
         - EventRoutesOperation
         - ModelsOperation
@@ -40,7 +40,7 @@ Hier vindt u informatie over het inschakelen van diagnostische instellingen voor
         - AllMetrics
         
         Meer informatie over deze opties kunt u vinden in de sectie [*categorie gegevens*](#category-details) hieronder.
-     * **Doel Details**: Kies waar u de logboeken wilt verzenden. U kunt een combi natie van de drie opties selecteren:
+     * **Doel Details** : Kies waar u de logboeken wilt verzenden. U kunt een combi natie van de drie opties selecteren:
         - Verzenden naar Log Analytics
         - Archiveren naar een opslagaccount
         - Streamen naar een Event Hub
@@ -71,7 +71,7 @@ Elke logboek categorie bestaat uit bewerkingen van schrijven, lezen, verwijderen
 | Schrijven | PUT and PATCH |
 | Lezen | GET |
 | Verwijderen | DELETE |
-| Bewerking | POST |
+| Actie | POST |
 
 Hier volgt een uitgebreide lijst met de bewerkingen en bijbehorende [Azure Digital apparaatdubbels rest API-aanroepen](/rest/api/azure-digitaltwins/) die in elke categorie zijn geregistreerd. 
 
@@ -132,7 +132,7 @@ Hieronder ziet u voor beelden van JSON-instanties voor deze typen logboeken.
   "time": "2020-03-14T21:11:14.9918922Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/digitaltwins/write",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "DigitalTwinOperation",
   "resultType": "Success",
   "resultSignature": "200",
@@ -142,7 +142,7 @@ Hieronder ziet u voor beelden van JSON-instanties voor deze typen logboeken.
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-05-31-preview"
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
 }
 ```
 
@@ -153,7 +153,7 @@ Hieronder ziet u voor beelden van JSON-instanties voor deze typen logboeken.
   "time": "2020-10-29T21:12:24.2337302Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/models/write",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "ModelsOperation",
   "resultType": "Success",
   "resultSignature": "201",
@@ -163,7 +163,7 @@ Hieronder ziet u voor beelden van JSON-instanties voor deze typen logboeken.
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-05-31-preview",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
 }
 ```
 
@@ -174,7 +174,7 @@ Hieronder ziet u voor beelden van JSON-instanties voor deze typen logboeken.
   "time": "2020-12-04T21:11:44.1690031Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/query/action",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "QueryOperation",
   "resultType": "Success",
   "resultSignature": "200",
@@ -184,7 +184,7 @@ Hieronder ziet u voor beelden van JSON-instanties voor deze typen logboeken.
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-05-31-preview",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
 }
 ```
 

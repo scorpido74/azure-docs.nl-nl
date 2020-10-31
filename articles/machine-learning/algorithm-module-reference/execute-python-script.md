@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330360"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092990"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
@@ -37,7 +37,7 @@ Azure Machine Learning maakt gebruik van de Anaconda-distributie van python, met
 
 Zie de sectie [vooraf geïnstalleerde Python-pakketten](#preinstalled-python-packages)voor een volledige lijst.
 
-Als u pakketten wilt installeren die zich niet in de vooraf geïnstalleerde lijst bevinden (bijvoorbeeld *scikit-misc*), voegt u de volgende code toe aan het script: 
+Als u pakketten wilt installeren die zich niet in de vooraf geïnstalleerde lijst bevinden (bijvoorbeeld *scikit-misc* ), voegt u de volgende code toe aan het script: 
 
 ```python
 import os
@@ -110,17 +110,17 @@ De script module python uitvoeren bevat een voor beeld van python-code die u als
 
 1. Voeg de **script module python uitvoeren** toe aan de pijp lijn.
 
-2. Voeg gegevens sets toe aan **Dataset1** uit de ontwerp functie die u voor invoer wilt gebruiken en maak er verbinding mee. Verwijs naar deze gegevensset in uw python-script als **DataFrame1**.
+2. Voeg gegevens sets toe aan **Dataset1** uit de ontwerp functie die u voor invoer wilt gebruiken en maak er verbinding mee. Verwijs naar deze gegevensset in uw python-script als **DataFrame1** .
 
     Het gebruik van een gegevensset is optioneel. Gebruik deze functie als u gegevens wilt genereren met behulp van python of python-code wilt gebruiken om de gegevens rechtstreeks in de module te importeren.
 
-    Deze module biedt ondersteuning voor het toevoegen van een tweede gegevensset op **Dataset2**. Raadpleeg de tweede gegevensset in uw python-script als **DataFrame2**.
+    Deze module biedt ondersteuning voor het toevoegen van een tweede gegevensset op **Dataset2** . Raadpleeg de tweede gegevensset in uw python-script als **DataFrame2** .
 
     Gegevens sets die zijn opgeslagen in Azure Machine Learning worden automatisch geconverteerd naar Panda data-frames wanneer deze met deze module worden geladen.
 
     ![Python-invoer toewijzing uitvoeren](media/module/python-module.png)
 
-4. Als u nieuwe Python-pakketten of-code wilt toevoegen, verbindt u het zip-bestand dat deze aangepaste bronnen bevat, om de poort te **bundelen** . Als uw script groter is dan 16 KB, gebruikt u de **script bundel** poort om fouten te voor komen, zoals *commandline de limiet van 16597 tekens overschrijdt*. 
+4. Als u nieuwe Python-pakketten of-code wilt toevoegen, verbindt u het zip-bestand dat deze aangepaste bronnen bevat, om de poort te **bundelen** . Als uw script groter is dan 16 KB, gebruikt u de **script bundel** poort om fouten te voor komen, zoals *commandline de limiet van 16597 tekens overschrijdt* . 
 
     
     1. Het script en andere aangepaste resources bundelen naar een zip-bestand.
@@ -129,7 +129,10 @@ De script module python uitvoeren bevat een voor beeld van python-code die u als
     1. Verbind de module gegevensset met de **script bundel** poort van de **script module Execute R** .
     
     Elk bestand in het geüploade gezipte archief kan worden gebruikt tijdens de uitvoering van de pijp lijn. Als het archief een mapstructuur bevat, blijft de structuur behouden.
-    
+ 
+    > [!WARNING]
+    > Gebruik **app** **niet** als de naam van de map of uw script, omdat de **app** een gereserveerd woord is voor ingebouwde services. Maar u kunt ook andere naam ruimten gebruiken, zoals `app123` .
+   
     Hieronder ziet u een voor beeld van een script bundel, dat een python-script bestand en een txt-bestand bevat:
       
     > [!div class="mx-imgBorder"]
@@ -182,7 +185,7 @@ De script module python uitvoeren bevat een voor beeld van python-code die u als
     Er kunnen twee gegevens sets worden geretourneerd naar de ontwerper. dit moet een reeks van het type zijn `pandas.DataFrame` . U kunt andere uitvoer in uw Python-code maken en deze rechtstreeks naar Azure Storage schrijven.
 
     > [!WARNING]
-    > Het wordt **niet** aanbevolen om verbinding te maken met een Data Base of andere externe opslag in de **script module**voor het uitvoeren van python. U kunt de [module gegevens importeren](./import-data.md) en de [module gegevens exporteren](./export-data.md) gebruiken     
+    > Het wordt **niet** aanbevolen om verbinding te maken met een Data Base of andere externe opslag in de **script module** voor het uitvoeren van python. U kunt de [module gegevens importeren](./import-data.md) en de [module gegevens exporteren](./export-data.md) gebruiken     
 
 6. Verzend de pijp lijn.
 
@@ -194,9 +197,9 @@ De resultaten van alle berekeningen door de Inge sloten python-code moeten worde
 
 De module retourneert twee gegevens sets:  
   
-+ De **resultaten gegevensset 1**, zoals gedefinieerd door het eerste geretourneerde Panda-gegevens frame in een python-script.
++ De **resultaten gegevensset 1** , zoals gedefinieerd door het eerste geretourneerde Panda-gegevens frame in een python-script.
 
-+ **Resulterende gegevensset 2**, gedefinieerd door het tweede geretourneerde gegevens frame van Panda, in een python-script.
++ **Resulterende gegevensset 2** , gedefinieerd door het tweede geretourneerde gegevens frame van Panda, in een python-script.
 
 ## <a name="preinstalled-python-packages"></a>Vooraf geïnstalleerde Python-pakketten
 De vooraf geïnstalleerde pakketten zijn:

@@ -6,14 +6,15 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 5905471dad5cf4e2e8191894af52c503c23e9036
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277977"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092684"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Veelgestelde vragen over het automatisch schalen van ingerichte door Voer in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Met de ingerichte door Voer voor automatisch schalen beheert en schaalt Azure Cosmos DB de RU/s van uw data base of container, op basis van het gebruik. In dit artikel vindt u antwoorden op veelgestelde vragen over automatisch schalen.
 
@@ -108,9 +109,9 @@ Wanneer u een aanvraag verzendt om het maximum aantal RU/s te verhogen `Tmax` , 
 #### <a name="lowering-the-max-rus"></a>Het maximum aantal RU/s verlagen
 Wanneer u het maximum aantal RU/s verlaagt, kunt u de minimum waarde instellen op: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` , afgerond op de dichtstbijzijnde 1000 ru/s. 
 
-Voor beeld #1: Stel dat u een container voor automatisch schalen hebt met een maximum van RU/s 20.000 RU/s (schaalt tussen 2000-20.000 RU/s) en 50 GB aan opslag ruimte. De laagste, minimale waarde waarmee u het maximum aantal RU/s kunt instellen: MAX (4000, 20.000/10, **50 * 100**) = 5000 ru/s (schaalbaar tussen 500-5000 ru/s).
+Voor beeld #1: Stel dat u een container voor automatisch schalen hebt met een maximum van RU/s 20.000 RU/s (schaalt tussen 2000-20.000 RU/s) en 50 GB aan opslag ruimte. De laagste, minimale waarde waarmee u het maximum aantal RU/s kunt instellen: MAX (4000, 20.000/10, **50 * 100** ) = 5000 ru/s (schaalbaar tussen 500-5000 ru/s).
 
-Voor beeld #2: Stel dat u een container voor automatisch schalen hebt met Maxi maal RU/s 100.000 RU/s en 100 GB aan opslag ruimte. Nu kunt u Max. RU/s tot 150.000 RU/s schalen (schalen tussen 15.000-150.000 RU/s). De laagste, minimale waarde waarmee u het maximum aantal RU/s kunt instellen: MAX (4000, **150.000/10**, 100 * 100) = 15.000 ru/s (schalen tussen 1500-15.000 ru/s). 
+Voor beeld #2: Stel dat u een container voor automatisch schalen hebt met Maxi maal RU/s 100.000 RU/s en 100 GB aan opslag ruimte. Nu kunt u Max. RU/s tot 150.000 RU/s schalen (schalen tussen 15.000-150.000 RU/s). De laagste, minimale waarde waarmee u het maximum aantal RU/s kunt instellen: MAX (4000, **150.000/10** , 100 * 100) = 15.000 ru/s (schalen tussen 1500-15.000 ru/s). 
 
 Wanneer u het maximum aantal RU/s verlaagt, kunt u voor een gedeelde doorvoer database de minimum waarde instellen op: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))` , afgerond op de dichtstbijzijnde 1000 ru/s.  
 

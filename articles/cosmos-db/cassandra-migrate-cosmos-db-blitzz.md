@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 66314155a8de5036009b8e42bf84a8ae8860d0ea
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 25c171cf20d86244958dbeb4565760115d6d7075
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278948"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092412"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Gegevens migreren van Cassandra naar Azure Cosmos DB Cassandra-API-account met behulp van Blitzz
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Cassandra-API in Azure Cosmos DB is een uitstekende keuze voor zakelijke workloads die worden uitgevoerd op Apache Cassandra om verschillende redenen, zoals: 
 
@@ -96,7 +97,7 @@ In deze sectie worden de stappen beschreven die nodig zijn voor het instellen va
 
    Verminder de door Voer nadat de migratie is voltooid. Op basis van de hoeveelheid opgeslagen gegevens en RUs die is vereist voor elke bewerking, kunt u een schatting maken van de door Voer die is vereist na de gegevens migratie. Zie voor meer informatie over het maken van een schatting van het RUs-vereiste [door Voer inrichten voor containers en data bases](set-throughput.md) en [een schatting van ru/s met behulp van de artikelen van de Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md) .
 
-1. Haal het **contact punt, de poort, de gebruikers naam**en het **primaire wacht woord** van uw Azure Cosmos-account op in het deel venster **verbindings reeks** . U gebruikt deze waarden in het configuratie bestand.
+1. Haal het **contact punt, de poort, de gebruikers naam** en het **primaire wacht woord** van uw Azure Cosmos-account op in het deel venster **verbindings reeks** . U gebruikt deze waarden in het configuratie bestand.
 
 1. Stel in de CLI-Terminal de configuratie van de doel database in. Open het configuratie bestand met behulp **`vi conf/conn/cosmosdb.yml`** van de opdracht en voeg een door komma's gescheiden lijst toe met de URI, het poort nummer, de gebruikers naam, het wacht woord en andere vereiste para meters. In het volgende voor beeld ziet u de inhoud van het configuratie bestand:
 

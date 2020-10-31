@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb97f9ee822c808057139bd25b2e4f43c48a2e48
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ec4ec5b3ea522200562d05d1891f46e69c9e5ca8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490506"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092157"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>IP-firewall in Azure Cosmos DB configureren
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Voor het beveiligen van de gegevens die zijn opgeslagen in uw account, ondersteunt Azure Cosmos DB een op een geheim gebaseerd autorisatie model dat gebruikmaakt van een sterke HMAC (Hash-based Message Authentication Code). Daarnaast ondersteunt Azure Cosmos DB ondersteuning voor toegangs beheer op basis van IP-adressen voor binnenkomende firewalls. Dit model is vergelijkbaar met de firewall regels van een traditioneel database systeem en biedt een extra beveiligings niveau voor uw account. Met firewalls kunt u uw Azure Cosmos-account zodanig configureren dat dit alleen toegankelijk is vanuit een goedgekeurde set machines en/of Cloud Services. Voor toegang tot gegevens die zijn opgeslagen in uw Azure Cosmos-Data Base op basis van deze goedgekeurde sets van machines en services, moet de aanroeper nog steeds een geldig autorisatie token presen teren.
 
@@ -34,7 +35,7 @@ U kunt de gegevens die zijn opgeslagen in uw Azure Cosmos DB-account beveiligen 
 
 ## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Een IP-Firewall configureren met behulp van de Azure Portal
 
-Als u het beleid voor IP-toegangs beheer wilt instellen in de Azure Portal, gaat u naar de pagina Azure Cosmos DB account en selecteert u **firewall en virtuele netwerken** in het navigatie menu. Wijzig de optie **toegang vanaf waarde toestaan** voor **geselecteerde netwerken**en selecteer vervolgens **Opslaan**.
+Als u het beleid voor IP-toegangs beheer wilt instellen in de Azure Portal, gaat u naar de pagina Azure Cosmos DB account en selecteert u **firewall en virtuele netwerken** in het navigatie menu. Wijzig de optie **toegang vanaf waarde toestaan** voor **geselecteerde netwerken** en selecteer vervolgens **Opslaan** .
 
 :::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Scherm afbeelding die laat zien hoe u de pagina Firewall opent in de Azure Portal":::
 
@@ -47,7 +48,7 @@ Als IP-toegangs beheer is ingeschakeld, biedt de Azure Portal de mogelijkheid om
 
 Wanneer u een beleid voor IP-toegangs beheer programmatisch inschakelt, moet u het IP-adres voor de Azure Portal toevoegen aan de eigenschap **ipRangeFilter** om de toegang te behouden. De IP-adressen van de portal zijn:
 
-|Regio|IP-adres|
+|Regio|Het IP-adres|
 |------|----------|
 |Duitsland|51.4.229.218|
 |China|139.217.8.252|
@@ -75,7 +76,7 @@ Om de ontwikkeling te vereenvoudigen, helpt de Azure Portal u bij het identifice
 
 De portal detecteert automatisch het client-IP-adres. Dit kan het client-IP-adres van uw computer zijn of het IP-adres van uw netwerk gateway. Zorg ervoor dat u dit IP-adres verwijdert voordat u uw workloads in productie neemt.
 
-Als u uw huidige IP wilt toevoegen aan de lijst met IP-adressen, selecteert u **mijn huidige IP toevoegen**. Selecteer vervolgens **Opslaan**.
+Als u uw huidige IP wilt toevoegen aan de lijst met IP-adressen, selecteert u **mijn huidige IP toevoegen** . Selecteer vervolgens **Opslaan** .
 
 :::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Scherm afbeelding die laat zien hoe u de pagina Firewall opent in de Azure Portal":::
 

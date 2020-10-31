@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: d840fe5b6fde72149893a15ab9096d3880c1c8ea
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d4ae18b335453f3e1d3512951675afe10c804c8d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425670"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094418"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -25,6 +25,8 @@ Reken instanties maken het eenvoudig om aan de slag te gaan met Azure Machine Le
 Gebruik een reken instantie als uw volledig geconfigureerde en beheerde ontwikkel omgeving in de Cloud voor machine learning. Ze kunnen ook worden gebruikt als een reken doel voor training en demijnen voor ontwikkelings-en test doeleinden.  
 
 Gebruik een [Azure machine learning Compute-Cluster](how-to-create-attach-compute-cluster.md) met mogelijkheden voor schalen op meerdere knoop punten voor de training van productie-kwaliteits modellen. Gebruik [Azure Kubernetes service-cluster](how-to-deploy-azure-kubernetes-service.md)voor productie kwaliteit van het model.
+
+Zorg ervoor dat de communicatie tussen websockets niet is uitgeschakeld voor de Jupyter-functionaliteit van reken instanties. Zorg ervoor dat uw netwerk WebSocket-verbindingen toestaat naar *. instances.azureml.net en *. instances.azureml.ms.
 
 ## <a name="why-use-a-compute-instance"></a>Waarom een reken instantie gebruiken?
 
@@ -100,7 +102,7 @@ U kunt de `/tmp` Directory op het reken exemplaar voor uw tijdelijke gegevens ge
 
 ## <a name="managing-a-compute-instance"></a>Een reken instantie beheren
 
-Selecteer in uw werk ruimte in Azure Machine Learning Studio **Compute**en selecteer vervolgens **Compute instance** bovenin.
+Selecteer in uw werk ruimte in Azure Machine Learning Studio **Compute** en selecteer vervolgens **Compute instance** bovenin.
 
 ![Een reken instantie beheren](./media/concept-compute-instance/manage-compute-instance.png)
 
@@ -146,7 +148,7 @@ De toegewezen kernen per regio per VM-serie quota en het totale regionale quotum
 
 Als beheerder kunt u een compute-instantie maken namens een gegevens wetenschapper en de instantie hieraan toewijzen met:
 * [Azure Resource Manager sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Zie [identiteits object-Id's zoeken voor verificatie configuratie](../healthcare-apis/find-identity-object-ids.md)voor meer informatie over het vinden van de TenantID en ObjectID die nodig zijn in deze sjabloon.  U kunt deze waarden ook vinden in de Azure Active Directory Portal.
-* REST API
+* REST-API
 
 De gegevens wetenschapper u het reken exemplaar maakt voor heeft de volgende Azure RBAC-machtigingen nodig: 
 * *Micro soft. MachineLearningServices/werk ruimten/berekeningen/starten/actie*

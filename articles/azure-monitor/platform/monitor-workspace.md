@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 9a70dcbabea9bc55703a5e9875df05b534eb372a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 07d9ae0d7cdf8e823bb59cb376d40cdf846bb2cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674740"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092752"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>De status van de Log Analytics werk ruimte in Azure Monitor bewaken
 Als u de prestaties en beschik baarheid van uw Log Analytics-werk ruimte in Azure Monitor wilt behouden, moet u alle problemen die zich voordoen, proactief kunnen detecteren. In dit artikel wordt beschreven hoe u de status van uw Log Analytics-werk ruimte kunt controleren met behulp van gegevens in de [bewerkings](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tabel. Deze tabel is opgenomen in elke Log Analytics-werk ruimte en bevat fout-en waarschuwingen die zich in uw werk ruimte voordoen. U moet deze gegevens regel matig bekijken en waarschuwingen maken om proactief te worden gewaarschuwd wanneer er belang rijke incidenten in uw werk ruimte zijn.
@@ -60,15 +60,15 @@ Opname bewerkingen zijn problemen die zich hebben voorgedaan tijdens het opnemen
 | Metagegevensarchiefmethode. | Fout | Er is een configuratie fout gedetecteerd. | |
 | Gegevens verzamelen | Fout   | De gegevens zijn verwijderd omdat de aanvraag eerder is gemaakt dan het aantal ingestelde dagen. | [Gebruik en kosten beheren met Azure Monitor-logboeken](manage-cost-storage.md#alert-when-daily-cap-reached)
 | Gegevens verzamelen | Info    | De configuratie van de verzamelings machine is gedetecteerd.| |
-| Gegevens verzamelen | Info    | Het verzamelen van gegevens is gestart vanwege een nieuwe dag. | [Gebruik en kosten beheren met Azure Monitor-logboeken](/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| Gegevens verzamelen | Waarschuwing | Het verzamelen van gegevens is gestopt omdat de dagelijkse limiet is bereikt.| [Gebruik en kosten beheren met Azure Monitor-logboeken](/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Gegevens verzamelen | Info    | Het verzamelen van gegevens is gestart vanwege een nieuwe dag. | [Gebruik en kosten beheren met Azure Monitor-logboeken](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
+| Gegevens verzamelen | Waarschuwing | Het verzamelen van gegevens is gestopt omdat de dagelijkse limiet is bereikt.| [Gebruik en kosten beheren met Azure Monitor-logboeken](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
 | Gegevensverwerking | Fout   | Ongeldige JSON-indeling. | [Logboek gegevens naar Azure Monitor verzenden met de HTTP-gegevens verzamelaar-API (open bare preview)](data-collector-api.md#request-body) | 
 | Gegevensverwerking | Waarschuwing | Waarde is afgekapt tot de Maxi maal toegestane grootte. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Gegevensverwerking | Waarschuwing | Veld waarde is afgekapt omdat de maximale grootte is bereikt. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) | 
 | Opname frequentie | Info | De limiet voor opname frequentie is 70%. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Opname frequentie | Waarschuwing | De limiet voor opname snelheden die de limiet nadert. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Opname frequentie | Fout   | Frequentie limiet bereikt. | [Servicebeperkingen van Azure Monitor](../service-limits.md#log-analytics-workspaces) |
-| Opslag | Fout   | Kan geen toegang krijgen tot het opslag account omdat de gebruikte referenties ongeldig zijn.  |
+| Storage | Fout   | Kan geen toegang krijgen tot het opslag account omdat de gebruikte referenties ongeldig zijn.  |
 
 
 

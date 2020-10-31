@@ -10,14 +10,15 @@ ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 03ef816632b73f46acaf1efdf2ddec28459fc9b8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 89d21e4464cb3c7578b68d68009065ab7848ed19
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489333"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092531"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Gebruik de BulkExecutor-bibliotheek voor Java om bulkbewerkingen uit te voeren in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In deze zelf studie vindt u instructies voor het gebruik van de uitvoerige Java-bibliotheek van de Azure Cosmos DB om Azure Cosmos DB documenten te importeren en bij te werken. Zie [overzichts artikel bulk](bulk-executor-overview.md) -uitvoerder bibliotheek voor meer informatie over de bibliotheek voor bulk doorvoer In deze zelf studie bouwt u een Java-toepassing die wille keurige documenten genereert en deze worden bulksgewijs geïmporteerd in een Azure Cosmos-container. Na het importeren worden enkele eigenschappen van een document bulksgewijs bijgewerkt. 
 
@@ -106,7 +107,7 @@ De gekloonde opslag plaats bevat twee voor beelden van ' bulkimport ' en ' Bulku
 
    De importal-methode accepteert de volgende para meters:
  
-   |**Parameter**  |**Deschription** (Beschrijving)  |
+   |**Parameter**  |**Beschrijving**  |
    |---------|---------|
    |isUpsert    |   Een markering om upsert van de documenten in te scha kelen. Als er al een document met de opgegeven ID bestaat, wordt het bijgewerkt.  |
    |disableAutomaticIdGeneration     |   Een markering om het automatisch genereren van ID uit te scha kelen. Deze waarde is standaard ingesteld op True.   |
@@ -114,7 +115,7 @@ De gekloonde opslag plaats bevat twee voor beelden van ' bulkimport ' en ' Bulku
 
    **Definitie van antwoord object voor bulk import** Het resultaat van de API-aanroep voor Bulk Import bevat de volgende Get-methoden:
 
-   |**Parameter**  |**Deschription** (Beschrijving)  |
+   |**Parameter**  |**Beschrijving**  |
    |---------|---------|
    |int getNumberOfDocumentsImported ()  |   Het totale aantal documenten dat is geïmporteerd uit de documenten die zijn geleverd aan de API-aanroep voor bulk import.      |
    |dubbele getTotalRequestUnitsConsumed ()   |  Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk import.       |
@@ -172,13 +173,13 @@ U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In 
 
    De methode updateAll accepteert de volgende para meters:
 
-   |**Parameter** |**Deschription** (Beschrijving) |
+   |**Parameter** |**Beschrijving** |
    |---------|---------|
    |maxConcurrencyPerPartitionRange   |  De maximale graad van gelijktijdigheid per partitie sleutel bereik. De standaard waarde is 20.  |
  
    **Definitie van antwoord object voor bulk import** Het resultaat van de API-aanroep voor Bulk Import bevat de volgende Get-methoden:
 
-   |**Parameter** |**Deschription** (Beschrijving)  |
+   |**Parameter** |**Beschrijving**  |
    |---------|---------|
    |int getNumberOfDocumentsUpdated ()  |   Het totale aantal documenten dat is bijgewerkt van de documenten die zijn geleverd aan de API-aanroep voor bulksgewijs bijwerken.      |
    |dubbele getTotalRequestUnitsConsumed () |  Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk updates.       |

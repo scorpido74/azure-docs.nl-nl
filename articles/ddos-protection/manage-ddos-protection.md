@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 358fccec56f81ee41acc2898751b8848beaeb168
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905233"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094571"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Snelstartgids: Azure DDoS Protection standaard maken en configureren
 
@@ -63,7 +63,7 @@ In deze Quick Start maakt u een DDoS-beschermings plan en koppelt u het aan een 
     | Abonnement    | Selecteer uw abonnement.                                    |
     | Resourcegroep  | Selecteer **bestaande gebruiken** en selecteer vervolgens **MyResourceGroup** |
     | Locatie        | _VS-Oost_ invoeren                                                    |
-    | DDoS Protection standaard | Selecteer **Inschakelen** . Het plan dat u selecteert, kan zich in hetzelfde of een ander abonnement bevindt dan het virtuele netwerk, maar beide abonnementen moeten aan dezelfde Azure Active Directory-Tenant zijn gekoppeld.|
+    | DDoS Protection Standard | Selecteer **Inschakelen** . Het plan dat u selecteert, kan zich in hetzelfde of een ander abonnement bevindt dan het virtuele netwerk, maar beide abonnementen moeten aan dezelfde Azure Active Directory-Tenant zijn gekoppeld.|
 
 U kunt een virtueel netwerk niet verplaatsen naar een andere resource groep of een ander abonnement wanneer DDoS standaard is ingeschakeld voor het virtuele netwerk. Als u een virtueel netwerk wilt verplaatsen waarbij DDoS Standard is ingeschakeld, moet u eerst DDoS-standaard uitschakelen, het virtuele netwerk verplaatsen en vervolgens DDoS Standard inschakelen. Na de verplaatsing worden de automatisch afgestemde beleids drempels voor alle beveiligde open bare IP-adressen in het virtuele netwerk opnieuw ingesteld.
 
@@ -84,8 +84,6 @@ Controleer eerst de details van uw DDoS-beveiligings plan:
 3. Selecteer uw DDoS-beveiligings plan in de lijst.
 
 Het virtuele netwerk van _MyVnet_ moet worden weer gegeven. 
-
-Testen door simulaties
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -114,4 +112,4 @@ Als u een DDoS-beschermings plan wilt verwijderen, moet u eerst alle virtuele ne
 Ga door naar de zelf studies voor meer informatie over het weer geven en configureren van telemetrie voor uw DDoS-beveiligings plan.
 
 > [!div class="nextstepaction"]
-> [Telemetrie van DDoS-beveiliging weer geven en configureren](telemetry-monitoring-alerting.md)
+> [DDoS-beschermingstelemetrie bekijken en configureren](telemetry-monitoring-alerting.md)

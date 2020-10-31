@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d88d52f67274d14836520494580e9208ce4eecbe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 95396f28fd835091258bccbfdb0a0c0eafebea91
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283735"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93093551"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK-connectiviteits modi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen voor de prestaties, met name voor de waargenomen latentie aan de client zijde. Azure Cosmos DB biedt een eenvoudig open, REST-programmeer model via HTTPS-gateway modus. Daarnaast biedt het een efficiënt TCP-protocol, dat ook rust in het communicatie model en gebruikmaakt van TLS voor initiële verificatie en het versleutelen van verkeer, direct-modus genoemd.
 
@@ -34,7 +35,7 @@ De twee beschik bare connectiviteits modi zijn:
      
 :::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="De Azure Cosmos DB connectiviteits modi" border="false":::
 
-Deze connectiviteits modi hebben in wezen de voor waarde dat de route die het data-vlak vraagt, het document leest en schrijft van uw client computer naar partities in de Azure Cosmos DB back-end. De directe modus is de voorkeurs optie voor de beste prestaties. Hiermee kan uw client TCP-verbindingen rechtstreeks openen op partities in de Azure Cosmos DB back-end en *aanvragen verzenden*zonder tussen komst. Daarentegen wordt in de gateway modus aanvragen die door uw client worden ingediend, doorgestuurd naar een zogenaamde Gateway server in de Azure Cosmos DB front-end, die op zijn beurt uw aanvragen naar de juiste partitie (s) in de Azure Cosmos DB back-end uitschakelt.
+Deze connectiviteits modi hebben in wezen de voor waarde dat de route die het data-vlak vraagt, het document leest en schrijft van uw client computer naar partities in de Azure Cosmos DB back-end. De directe modus is de voorkeurs optie voor de beste prestaties. Hiermee kan uw client TCP-verbindingen rechtstreeks openen op partities in de Azure Cosmos DB back-end en *aanvragen verzenden* zonder tussen komst. Daarentegen wordt in de gateway modus aanvragen die door uw client worden ingediend, doorgestuurd naar een zogenaamde Gateway server in de Azure Cosmos DB front-end, die op zijn beurt uw aanvragen naar de juiste partitie (s) in de Azure Cosmos DB back-end uitschakelt.
 
 ## <a name="service-port-ranges"></a>Service poortbereiken
 

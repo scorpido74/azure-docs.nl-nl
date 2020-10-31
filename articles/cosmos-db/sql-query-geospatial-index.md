@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: 546b664c74980b3522fefed82c00eec414641eaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f250c15dbb30736e3e89a301fc236a848bd05da2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326623"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092055"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Georuimtelijke gegevens indexeren met Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 De data base-engine van Azure Cosmos DB is ontworpen om echt schema neutraal te zijn en biedt ondersteuning voor de eerste klasse voor JSON. De geoptimaliseerde data base-engine voor schrijven van Azure Cosmos DB heeft in systeem eigen inzicht in de ruimtelijke gegevens die in de geojson-standaard worden weer gegeven.
 
-In een kort gezegd wordt de geometrie geprojecteerd van Geodetic-coördinaten naar een 2D-vlak en vervolgens geleidelijk onderverdeeld in cellen met behulp van een **quadtree**. Deze cellen worden toegewezen aan 1D op basis van de locatie van de cel binnen een **Hilbert ruimte**die de lokale positie van punten behoudt. Wanneer locatie gegevens worden geïndexeerd, wordt er ook een proces met de naam **mozaïek patroon**genoemd, dat wil zeggen dat alle cellen die een locatie overlappen worden geïdentificeerd en opgeslagen als sleutels in de Azure Cosmos DB index. Op het moment dat de query is uitgevoerd, worden argumenten zoals punten en veelhoeken ook tessellated om de relevante celbereiken te extra heren. vervolgens wordt gebruikt om gegevens uit de index op te halen.
+In een kort gezegd wordt de geometrie geprojecteerd van Geodetic-coördinaten naar een 2D-vlak en vervolgens geleidelijk onderverdeeld in cellen met behulp van een **quadtree** . Deze cellen worden toegewezen aan 1D op basis van de locatie van de cel binnen een **Hilbert ruimte** die de lokale positie van punten behoudt. Wanneer locatie gegevens worden geïndexeerd, wordt er ook een proces met de naam **mozaïek patroon** genoemd, dat wil zeggen dat alle cellen die een locatie overlappen worden geïdentificeerd en opgeslagen als sleutels in de Azure Cosmos DB index. Op het moment dat de query is uitgevoerd, worden argumenten zoals punten en veelhoeken ook tessellated om de relevante celbereiken te extra heren. vervolgens wordt gebruikt om gegevens uit de index op te halen.
 
 Als u een indexerings beleid opgeeft dat ruimtelijke index voor/* (alle paden) bevat, worden alle gegevens die in de container zijn gevonden, geïndexeerd voor efficiënte ruimtelijke query's.
 
@@ -36,11 +37,11 @@ U kunt als volgt de **georuimtelijke configuratie** instellen in **Data Explorer
 
 :::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="Georuimtelijke configuratie instellen":::
 
-U kunt ook de `geospatialConfig` in de .NET SDK aanpassen om de **georuimtelijke configuratie**aan te passen:
+U kunt ook de `geospatialConfig` in de .NET SDK aanpassen om de **georuimtelijke configuratie** aan te passen:
 
 Als u niets opgeeft, `geospatialConfig` wordt de standaard waarde ingesteld op het gegevens type geografie. Wanneer u de wijzigt `geospatialConfig` , worden alle bestaande georuimtelijke gegevens in de container opnieuw geïndexeerd.
 
-Hier volgt een voor beeld van het wijzigen van het georuimtelijke gegevens type naar `geometry` door de eigenschap in te stellen `geospatialConfig` en een **boundingBox**toe te voegen:
+Hier volgt een voor beeld van het wijzigen van het georuimtelijke gegevens type naar `geometry` door de eigenschap in te stellen `geospatialConfig` en een **boundingBox** toe te voegen:
 
 ```csharp
     //Retrieve the container's details
@@ -111,10 +112,10 @@ Met het gegevens type **geometrie** , vergelijkbaar met het gegevens type geogra
 
 Het selectie kader bestaat uit de volgende eigenschappen:
 
-- **xmin**: de minimale geïndexeerde x-coördinaat
-- **ymin**: de minimale geïndexeerde y-coördinaat
-- **xmax**: het maximum aantal geïndexeerde x-coördinaten
-- **ymax**: het maximum aantal geïndexeerde y-coördinaten
+- **xmin** : de minimale geïndexeerde x-coördinaat
+- **ymin** : de minimale geïndexeerde y-coördinaat
+- **xmax** : het maximum aantal geïndexeerde x-coördinaten
+- **ymax** : het maximum aantal geïndexeerde y-coördinaten
 
 Een selectie kader is vereist omdat geometrische gegevens een vlieg tuig in beslag nemen dat oneindig kan zijn. Ruimtelijke indexen vereisen echter een eindige spatie. Voor het gegevens type **geografie** is de aarde de grens en hoeft u geen begrenzingsvak in te stellen.
 
@@ -159,7 +160,7 @@ Hier volgt een voor beeld van een indexerings beleid waarmee **geometrie** gegev
 Het bovenstaande indexerings beleid heeft een **boundingBox** van (-10, 10) voor x-coördinaten en (-20, 20) voor y-coördinaten. De container met het bovenstaande indexerings beleid indexeert alle punten, veelhoeken, multiveelhoeken en line strings toe die volledig binnen deze regio vallen.
 
 > [!NOTE]
-> Als u probeert een indexerings beleid met een **boundingBox** toe te voegen aan een container met `geography` gegevens type, zal dit mislukken. Wijzig de **geospatialConfig** van de container naar voordat u `geometry` een **boundingBox**toevoegt. U kunt gegevens toevoegen en de rest van uw indexerings beleid (zoals de paden en typen) wijzigen vóór of na het selecteren van het georuimtelijke gegevens type voor de container.
+> Als u probeert een indexerings beleid met een **boundingBox** toe te voegen aan een container met `geography` gegevens type, zal dit mislukken. Wijzig de **geospatialConfig** van de container naar voordat u `geometry` een **boundingBox** toevoegt. U kunt gegevens toevoegen en de rest van uw indexerings beleid (zoals de paden en typen) wijzigen vóór of na het selecteren van het georuimtelijke gegevens type voor de container.
 
 ## <a name="next-steps"></a>Volgende stappen
 

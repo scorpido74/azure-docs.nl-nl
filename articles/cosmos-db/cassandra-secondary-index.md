@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc9c7c2f06b9d39243b8593b20ddeb7ffa2f886c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80758025"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092361"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Secundaire indexering in Azure Cosmos DB Cassandra-API
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 De Cassandra-API in Azure Cosmos DB maakt gebruik van de onderliggende indexerings infrastructuur om de indexerings sterkte weer te geven die inherent is aan het platform. In tegens telling tot de core SQL-API, worden Cassandra-API in Azure Cosmos DB echter niet alle kenmerken standaard geïndexeerd. In plaats daarvan wordt secundaire indexering ondersteund om een index te maken voor bepaalde kenmerken, wat gedraagt zich op dezelfde manier als Apache Cassandra.  
 

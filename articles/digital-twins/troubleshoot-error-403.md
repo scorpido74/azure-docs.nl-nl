@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: d821d6dacc2620988c32e63439ec2e039819e0a5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: aeae1f1a99d1fa574df8202efd2405232855628b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495896"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091800"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Service aanvraag mislukt. Status: 403 (verboden)
 
@@ -25,7 +25,7 @@ Deze fout kan optreden bij veel typen service aanvragen waarvoor verificatie is 
 
 ### <a name="cause-1"></a>Oorzaak #1
 
-Deze fout geeft meestal aan dat uw op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor de service niet juist is ingesteld. Voor veel acties voor een Azure Digital Apparaatdubbels-exemplaar moet u de rol *Azure Digital apparaatdubbels-gegevens eigenaar* hebben **op het exemplaar dat u wilt beheren**. 
+Deze fout geeft meestal aan dat uw op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) voor de service niet juist is ingesteld. Voor veel acties voor een Azure Digital Apparaatdubbels-exemplaar moet u de rol *Azure Digital apparaatdubbels-gegevens eigenaar* hebben **op het exemplaar dat u wilt beheren** . 
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
@@ -52,7 +52,7 @@ Houd er rekening mee dat deze rol afwijkt van...
 
 #### <a name="fix-issues"></a>Problemen oplossen 
 
-Als u deze roltoewijzing niet hebt, moet iemand met een eigenaar van uw Azure- **abonnement** de volgende opdracht uitvoeren om uw Azure-gebruiker de rol *Azure Digital apparaatdubbels data owner* te geven op de **Azure Digital apparaatdubbels-instantie**. 
+Als u deze roltoewijzing niet hebt, moet iemand met een eigenaar van uw Azure- **abonnement** de volgende opdracht uitvoeren om uw Azure-gebruiker de rol *Azure Digital apparaatdubbels data owner* te geven op de **Azure Digital apparaatdubbels-instantie** . 
 
 Als u een eigenaar van het abonnement bent, kunt u deze opdracht zelf uitvoeren. Als dat niet het geval is, neemt u contact op met een eigenaar om deze opdracht namens u uit te voeren.
 
@@ -60,7 +60,7 @@ Als u een eigenaar van het abonnement bent, kunt u deze opdracht zelf uitvoeren.
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-Voor meer informatie over deze functie vereiste en het toewijzings proces, zie de [sectie *toegangs machtigingen van uw gebruiker instellen* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) voor *instructies: een exemplaar en authenticatie instellen (CLI of portal)*.
+Voor meer informatie over deze functie vereiste en het toewijzings proces, zie de [sectie *toegangs machtigingen van uw gebruiker instellen*](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) voor *instructies: een exemplaar en authenticatie instellen (CLI of portal)* .
 
 Als u deze roltoewijzing al hebt *en* u een Azure AD-App-registratie gebruikt om een client-app te verifiëren, kunt u door gaan met de volgende oplossing als deze oplossing het 403-probleem niet heeft opgelost.
 

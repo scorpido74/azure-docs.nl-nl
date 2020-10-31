@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 16110c8f48330d60d4d0b6a2affb870ffa5e349c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5252993c560b30836c65bf2d395173513993c307
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482669"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092395"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Feed wijzigen in de Azure Cosmos DB-API voor Cassandra
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 De ondersteuning voor het [wijzigen van feeds](change-feed.md) in de Azure Cosmos DB-API voor Cassandra is beschikbaar via de query predikaten in de Cassandra query language (CQL). Met behulp van deze predikaten kunt u een query uitvoeren op de feed-API voor wijzigingen. Toepassingen kunnen de wijzigingen die in een tabel zijn aangebracht, ophalen met behulp van de primaire sleutel (ook wel bekend als de partitie sleutel) als vereist in CQL. Vervolgens kunt u verdere acties uitvoeren op basis van de resultaten. Wijzigingen in de rijen in de tabel worden vastgelegd in de volg orde van de wijzigings tijd en de sorteer volgorde per partitie sleutel.
 

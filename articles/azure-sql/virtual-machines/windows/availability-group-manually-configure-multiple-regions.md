@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f6d5a9da238c520e2e0ec70ac312dd112aad2fe8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789978"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094452"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Een SQL Server AlwaysOn-beschikbaarheids groep configureren in verschillende Azure-regio's
 
@@ -31,7 +31,7 @@ Dit artikel is van toepassing op Azure Virtual Machines in de Resource Manager-m
 
 In de volgende afbeelding ziet u een algemene implementatie van een beschikbaarheids groep op virtuele machines van Azure:
 
-   ![Beschikbaarheidsgroep](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+   ![Diagram waarin de Azure-load balancer en de Beschikbaarheidsset met een ' Windows Server-failovercluster ' en ' AlwaysOn-beschikbaarheids groep ' worden weer gegeven.](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
 
 In deze implementatie bevinden alle virtuele machines zich in één Azure-regio. De replica's van de beschikbaarheids groep kunnen synchroon door voeren met automatische failover op SQL-1 en SQL-2. Als u deze architectuur wilt maken, raadpleegt u de [sjabloon of zelf studie voor de beschikbaarheids groep](availability-group-overview.md).
 
@@ -53,7 +53,7 @@ Wanneer replica's van beschikbaarheids groepen zich op virtuele Azure-machines i
 
 In het volgende diagram ziet u hoe de netwerken communiceren tussen data centers.
 
-   ![Beschikbaarheidsgroep](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   ![Diagram waarin de twee virtuele netwerken in verschillende Azure-regio's worden weer gegeven die communiceren met behulp van V P N gateways.](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >Met deze architectuur worden uitgaande gegevens kosten in rekening gebracht voor gegevens die tussen Azure-regio's worden gerepliceerd. Zie [prijzen van band breedte](https://azure.microsoft.com/pricing/details/bandwidth/).  
@@ -98,7 +98,7 @@ Voer de volgende stappen uit om een replica te maken in een extern Data Center:
 
    U kunt de IP-adres bron maken in Failoverclusterbeheer. Selecteer de naam van het cluster, klik met de rechter muisknop op de cluster naam onder **cluster kern resources** en selecteer **Eigenschappen** : 
 
-   ![Cluster eigenschappen](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   ![Scherm opname waarin de ' Failoverclusterbeheer ' wordt weer gegeven met een cluster naam, ' server naam ' en ' Eigenschappen ' geselecteerd.](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
    Selecteer in het dialoog venster **Eigenschappen** de optie **toevoegen** onder **IP-adres** en voeg vervolgens het IP-adres van de cluster naam toe uit de regio voor het externe netwerk. Selecteer **OK** in het dialoog venster **IP-adres** en selecteer vervolgens **OK** in het dialoog venster **cluster eigenschappen** om het nieuwe IP-adres op te slaan. 
 

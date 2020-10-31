@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743893"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092803"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Bewerkingen van Azure Cosmos DB Control-vlak controleren
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Besturings vlak in Azure Cosmos DB is een REST-service waarmee u een gevarieerde set bewerkingen kunt uitvoeren op het Azure Cosmos-account. Er wordt een openbaar resource model (bijvoorbeeld: data base, account) en verschillende bewerkingen voor de eind gebruikers weer gegeven om acties uit te voeren op het resource model. De bewerkingen van het besturings vlak bevatten wijzigingen in het Azure Cosmos-account of de container. Bijvoorbeeld: bewerkingen zoals het maken van een Azure Cosmos-account, het toevoegen van een regio, het bijwerken van de door Voer, de regionale failover, het toevoegen van een VNet enz. zijn een aantal van de beheer bewerkingen. In dit artikel wordt uitgelegd hoe u de bewerkingen voor het beheer vlak in Azure Cosmos DB kunt controleren. U kunt de bewerkingen voor het beheer vlak uitvoeren op Azure Cosmos-accounts met behulp van Azure CLI, Power shell of Azure Portal, terwijl u voor containers gebruikmaakt van Azure CLI of Power shell.
 
@@ -170,29 +171,29 @@ De eigenschap *Resourcedetails* bevat de gehele resource hoofdtekst als een aanv
 Hier volgen enkele voor beelden van het ophalen van Diagnostische logboeken voor bewerkingen in het besturings vlak:
 
 ```kusto
-AzureDiagnostics 
-| where Category startswith "ControlPlane"
+AzureDiagnostics 
+| where Category startswith "ControlPlane"
 | where OperationName contains "Update"
-| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
 | where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
-| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 Query voor het ophalen van de activityId en de aanroeper die de bewerking voor het verwijderen van de container hebben gestart:

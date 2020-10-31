@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 683c53c369f136ad4b917b93e9a92a71072d05e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41c5cc1a6032a0aee16f1922fc59349449c65b55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71349629"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091936"
 ---
 # <a name="power-azure-cosmos-db"></a>ENERGIE (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Retourneert de waarde van de opgegeven expressie naar de opgegeven macht.  
   
 ## <a name="syntax"></a>Syntaxis
@@ -29,7 +31,7 @@ POWER (<numeric_expr1>, <numeric_expr2>)
    Is een numerieke expressie.  
   
 *numeric_expr2*  
-   Is de macht waarmee *numeric_expr1*worden verhoogd.  
+   Is de macht waarmee *numeric_expr1* worden verhoogd.  
   
 ## <a name="return-types"></a>Retour typen
   

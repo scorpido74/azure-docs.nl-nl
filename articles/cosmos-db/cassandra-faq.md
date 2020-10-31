@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: e38096a0c5de266be6be6a58e09a251ce28a55df
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b467e191a8f009b85abb4866821dd64fc87ce657
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482601"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092378"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Cassandra-API in Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 In dit artikel worden de functionaliteits verschillen tussen Apache Cassandra en Cassandra-API in Azure Cosmos DB beschreven. Ook vindt u hier antwoorden op veelgestelde vragen over de Cassandra-API in Azure Cosmos DB.
 
@@ -133,7 +134,7 @@ Ja, TTL wordt ondersteund.
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>Hoe kan ik de infra structuur naast de door Voer controleren?
 
-Azure Cosmos DB is een platform service waarmee u de productiviteit kunt verhogen en geen zorgen hoeft te maken over het beheer en de bewaking van de infra structuur. U hoeft bijvoorbeeld niet eerder de knooppunt status, replica status, GC en OS-para meters te bewaken met verschillende hulpprogram ma's. U hoeft alleen maar een door voer te nemen die beschikbaar is in de metrische gegevens van de portal om te controleren of u een beperking krijgt en vervolgens de door voer te verg Roten of verkleinen. U kunt:
+Azure Cosmos DB is een platform service waarmee u de productiviteit kunt verhogen en geen zorgen hoeft te maken over het beheer en de bewaking van de infra structuur. U hoeft bijvoorbeeld niet eerder de knooppunt status, replica status, GC en OS-para meters te bewaken met verschillende hulpprogram ma's. U hoeft alleen maar een door voer te nemen die beschikbaar is in de metrische gegevens van de portal om te controleren of u een beperking krijgt en vervolgens de door voer te verg Roten of verkleinen. U kunt het volgende doen:
 
 - [Sla's](./monitor-cosmos-db.md) controleren
 - [Metrische gegevens](use-metrics.md) gebruiken
