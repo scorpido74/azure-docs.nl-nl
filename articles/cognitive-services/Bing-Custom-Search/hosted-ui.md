@@ -11,14 +11,19 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 4a63a54f5ad4d1bcccecb1d1a4892ef55c238b92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0033f4919e4e4e5e56e4057e00c393ae7be1ca44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319177"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090559"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Gehoste UI-ervaring configureren
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Bing Aangepaste zoekopdrachten biedt een gehoste gebruikers interface die u eenvoudig kunt integreren in uw webpagina's en webtoepassingen als een Java script-code fragment. Met de Bing Aangepaste zoekopdrachten Portal kunt u de opties voor indeling, kleur en zoeken van de gebruikers interface configureren.
 
@@ -32,7 +37,7 @@ Als u een gehoste gebruikers interface voor uw webtoepassingen wilt configureren
   
 2. Selecteer uw Bing Aangepaste zoekopdrachten-exemplaar.
 
-3. Klik op het tabblad **Hosted UI**.  
+3. Klik op het tabblad **Hosted UI** .  
   
 4. Selecteer een lay-out.
 
@@ -40,14 +45,14 @@ Als u een gehoste gebruikers interface voor uw webtoepassingen wilt configureren
     - Alleen resultaten: alleen Zoek resultaten weer geven, zonder zoekvak. Wanneer u deze indeling gebruikt, moet u de zoek query ( `&q=<query string>` ) opgeven. Voeg de query-para meter toe aan de aanvraag-URL in het Java script-fragment of de koppeling naar het HTML-eind punt.
     - Pop-over: bevat een zoekvak en de zoek resultaten worden weer gegeven in een schuif bare overlay.
 
-5. Selecteer een kleurenthema. U kunt de kleuren aanpassen aan uw toepassing door te klikken op **thema aanpassen**. Als u een kleur wilt wijzigen, voert u de RGB HEXADECIMALe waarde van de kleur (bijvoorbeeld `#366eb8` ) in of klikt u op de kleur voorbeeld.
+5. Selecteer een kleurenthema. U kunt de kleuren aanpassen aan uw toepassing door te klikken op **thema aanpassen** . Als u een kleur wilt wijzigen, voert u de RGB HEXADECIMALe waarde van de kleur (bijvoorbeeld `#366eb8` ) in of klikt u op de kleur voorbeeld.
 
    U kunt een voor beeld bekijken van uw wijzigingen aan de rechter kant van de portal. **Als u op opnieuw instellen** klikt, worden de standaard kleuren voor het geselecteerde thema hersteld.
 
    > [!NOTE]
    > Houd bij het kiezen van kleuren rekening met toegankelijkheid.
 
-6. Geef onder **aanvullende configuraties**waarden op die geschikt zijn voor uw app. Deze instellingen zijn optioneel. Zie het voorbeeld venster aan de rechter kant om het effect van het Toep assen of verwijderen van deze items te bekijken. Beschik bare configuratie opties zijn:  
+6. Geef onder **aanvullende configuraties** waarden op die geschikt zijn voor uw app. Deze instellingen zijn optioneel. Zie het voorbeeld venster aan de rechter kant om het effect van het Toep assen of verwijderen van deze items te bekijken. Beschik bare configuratie opties zijn:  
 
 7. Voer de sleutel voor het zoek abonnement in of kies er een in de vervolg keuzelijst. De vervolg keuzelijst wordt gevuld met sleutels uit de abonnementen van uw Azure-account. Zie [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
 
@@ -91,7 +96,7 @@ Ga naar **eind punten** onder het tabblad **productie** voor aanvullende informa
 
 ## <a name="configuration-options"></a>Configuratie-opties
 
-U kunt het gedrag van uw gehoste gebruikers interface configureren door te klikken op **aanvullende configuraties**en waarden op te geven. Deze instellingen zijn optioneel. Zie het voorbeeld venster aan de rechter kant om het effect van het Toep assen of verwijderen van deze items te bekijken. 
+U kunt het gedrag van uw gehoste gebruikers interface configureren door te klikken op **aanvullende configuraties** en waarden op te geven. Deze instellingen zijn optioneel. Zie het voorbeeld venster aan de rechter kant om het effect van het Toep assen of verwijderen van deze items te bekijken. 
 
 ### <a name="web-search-configurations"></a>Webzoekactie configuraties
 
@@ -100,7 +105,7 @@ U kunt het gedrag van uw gehoste gebruikers interface configureren door te klikk
 - Webresultaten per pagina: aantal resultaten webzoekopdrachten die tegelijk worden weer gegeven (de maximum waarde is 50 resultaten per pagina).
 - Bijschrift afbeelding: bepaalt of afbeeldingen worden weer gegeven met zoek resultaten.
 
-De volgende configuraties worden weer gegeven als u op **geavanceerde configuraties weer geven**klikt:
+De volgende configuraties worden weer gegeven als u op **geavanceerde configuraties weer geven** klikt:
 
 - Markeer woorden: Hiermee wordt bepaald of resultaten worden weer gegeven met zoek termen in vet.
 - Doel van de koppeling: bepaalt of de webpagina wordt geopend in een nieuw browser tabblad (leeg) of op hetzelfde browser tabblad (zelf) wanneer de gebruiker op een Zoek resultaat klikt.
@@ -110,7 +115,7 @@ De volgende configuraties worden weer gegeven als u op **geavanceerde configurat
 - Resultaten van de afbeelding ingeschakeld: Hiermee wordt bepaald of de zoek opdracht voor afbeeldingen wordt ingeschakeld (boven aan de pagina).
 - Afbeeldings resultaten per pagina: aantal Zoek resultaten van afbeeldingen die tegelijk worden weer gegeven (de maximum waarde is 150 resultaten per pagina).
 
-De volgende configuratie wordt weer gegeven als u op **geavanceerde configuraties weer geven**klikt.  
+De volgende configuratie wordt weer gegeven als u op **geavanceerde configuraties weer geven** klikt.  
   
 - Filters inschakelen: voegt filters toe die de gebruiker kan gebruiken om de installatie kopieën te filteren die door Bing worden geretourneerd. De gebruiker kan bijvoorbeeld de resultaten filteren voor alleen GIF-animaties.
 
@@ -119,7 +124,7 @@ De volgende configuratie wordt weer gegeven als u op **geavanceerde configuratie
 - Video resultaten ingeschakeld: Hiermee wordt bepaald of het zoeken naar Video's is ingeschakeld (op het tabblad Video's boven aan de pagina).
 - Video resultaten per pagina: aantal Zoek resultaten in de video die tegelijk worden weer gegeven (de maximum waarde is 150 resultaten per pagina).
 
-De volgende configuratie wordt weer gegeven als u op **geavanceerde configuraties weer geven**klikt.  
+De volgende configuratie wordt weer gegeven als u op **geavanceerde configuraties weer geven** klikt.  
   
 - Filters inschakelen: voegt filters toe die de gebruiker kan gebruiken voor het filteren van de Video's die door Bing worden geretourneerd. De gebruiker kan bijvoorbeeld de resultaten filteren voor Video's met een specifieke resolutie of Video's die in de afgelopen 24 uur zijn gedetecteerd.
 
@@ -128,9 +133,9 @@ De volgende configuratie wordt weer gegeven als u op **geavanceerde configuratie
 - Pagina titel: tekst die wordt weer gegeven in het titel gebied van de pagina met zoek resultaten (niet voor pop-over-indeling).
 - Werkbalk thema: bepaalt de achtergrond kleur van het titel gebied van de pagina met zoek resultaten.
 
-De volgende configuraties worden weer gegeven als u op **geavanceerde configuraties weer geven**klikt.  
+De volgende configuraties worden weer gegeven als u op **geavanceerde configuraties weer geven** klikt.  
 
-|Kolom1  |Kolom2  |
+|Kolom 1  |Kolom 2  |
 |---------|---------|
 |Tijdelijke aanduiding voor tekst in zoekvak   | Tekst die wordt weer gegeven in het zoekvak vóór invoer.        |
 |URL van titel koppeling    |Doel voor de koppeling titel.         |

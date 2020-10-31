@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c37224a3a455abcf3de62998cb65e1d66a1bb0f2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910709"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088876"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>CI/CD voor API Management met behulp van Azure Resource Manager-sjablonen
 
@@ -67,7 +67,8 @@ API-Ontwikkel aars bieden problemen bij het werken met Resource Manager-sjablone
 
 * API-uitgevers kunnen de pull-aanvraag valideren en er zeker van zijn dat de wijzigingen veilig en compatibel zijn. Ze kunnen bijvoorbeeld controleren of alleen HTTPS mag communiceren met de API. De meeste validaties kunnen worden geautomatiseerd als een stap in de CI/CD-pijp lijn.
 
-* Nadat de wijzigingen zijn goedgekeurd en samengevoegd, kunnen API-uitgevers ervoor kiezen deze op schema of op aanvraag te implementeren naar het productie-exemplaar. Ze kunnen de implementatie van de sjablonen automatiseren door gebruik te maken van [github-acties](https://github.com/Azure/apimanagement-devops-samples), [Azure-pijp lijnen](/devops/pipelines/), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md), de [Azure cli](../azure-resource-manager/templates/deploy-cli.md)of andere hulpprogram ma's.
+* Zodra de wijzigingen zijn goedgekeurd en samengevoegd, kunnen API-uitgevers ervoor kiezen deze op schema of op aanvraag te implementeren naar het productie-exemplaar. De implementatie van de sjablonen kan worden geautomatiseerd met behulp van [github-acties](https://github.com/Azure/apimanagement-devops-samples), [Azure-pijp lijnen](/azure/devops/pipelines), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md), [Azure cli](../azure-resource-manager/templates/deploy-cli.md)of andere hulpprogram ma's.
+
 
 Met deze methode kan een organisatie de implementatie van API-wijzigingen in API Management-exemplaren automatiseren en is het eenvoudig om wijzigingen van de ene omgeving naar de andere te promo veren. Omdat verschillende API-Ontwikkel teams op verschillende sets van API-sjablonen en-bestanden werken, wordt er geen interferentie tussen verschillende teams voor komen.
 

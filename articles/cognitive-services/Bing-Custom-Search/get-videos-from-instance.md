@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 222256036a59c7df302546bbf82648c4d524d43f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dbd9f609944fc63c186ca150d5b9921f3e86622
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68405088"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090576"
 ---
 # <a name="get-videos-from-your-custom-view"></a>Video's ophalen uit uw aangepaste weer gave
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Met de zoek functie voor aangepaste Video's in Bing kunt u uw aangepaste zoek ervaring met Video's verrijken. Bij aangepast zoeken, kunt u (net als bij webresultaten) zoeken naar video's in de lijst websites van uw exemplaar. U kunt de Video's ophalen met behulp van de zoek-API van Bing Custom Video's of via de gehoste UI-functie. Het gebruik van de gehoste UI-functie is eenvoudig te gebruiken en wordt aanbevolen om uw zoek opdracht in een korte volg orde uit te voeren. Zie [uw gehoste UI-ervaring configureren](hosted-ui.md)voor meer informatie over het configureren van uw gehoste gebruikers interface voor het toevoegen van Video's.
 

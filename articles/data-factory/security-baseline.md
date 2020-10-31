@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a917ade5da6938487076b983bd42ce9b27672c49
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 09c35ff8c045fa7d912324886fb31b02e606d2f8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637000"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089080"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-beveiligings basislijn voor Azure Data Factory
 
@@ -520,7 +520,7 @@ Als u uw Integration Runtime uitvoert in een virtuele Azure-machine (VM), wordt 
 
 **Verantwoordelijkheid** : klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -688,9 +688,9 @@ Als u uw Integration Runtime uitvoert op een virtuele machine (VM) van Azure, vo
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-* [Updatebeheer oplossing in azure](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Updatebeheer oplossing in azure](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Updates en patches voor uw Azure-VM's beheren](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Updates en patches voor uw Azure-VM's beheren](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 * [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
@@ -702,9 +702,9 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Richt lijnen** : als u uw Integration runtime uitvoert op een virtuele machine (VM) van Azure, kunt u een oplossing voor patch beheer van derden gebruiken. U kunt de Azure Updatebeheer-oplossing gebruiken om updates en patches voor uw virtuele machines te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Met hulpprogram ma's als System Center Updates Publisher (updates Publisher) kunt u aangepaste updates publiceren in Windows Server Update Services (WSUS). Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van Configuration Manager als update opslagplaats met software van derden.
 
-* [Updatebeheer oplossing in azure](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Updatebeheer oplossing in azure](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Updates en patches voor uw Azure-VM's beheren](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Updates en patches voor uw Azure-VM's beheren](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 **Azure Security Center bewaking** : momenteel niet beschikbaar
 

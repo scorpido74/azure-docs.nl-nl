@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: c66845a801b93db4ba718bc0aba5c39eabdd24b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 10f2158edc12e7242c65a2e8ba58a18d390d47c8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791967"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091307"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -133,7 +133,7 @@ MySQL ondersteunt twee typen trans acties: GTID trans acties (aangeduid met GTID
 
 De volgende server parameters zijn beschikbaar voor het configureren van GTID: 
 
-|**Server parameter**|**Beschrijving**|**Standaard waarde**|**Waarden**|
+|**Server parameter**|**Beschrijving**|**Standaardwaarde**|**Waarden**|
 |--|--|--|--|
 |`gtid_mode`|Hiermee wordt aangegeven of GTIDs worden gebruikt om trans acties te identificeren. Wijzigingen tussen modi kunnen slechts één stap per keer in oplopende volg orde worden uitgevoerd (bijvoorbeeld `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`: Zowel nieuwe als replicatie transacties moeten anoniem zijn <br> `OFF_PERMISSIVE`: Nieuwe trans acties zijn anoniem. Gerepliceerde trans acties kunnen anoniem of GTID-trans acties zijn. <br> `ON_PERMISSIVE`: Nieuwe trans acties zijn GTID trans acties. Gerepliceerde trans acties kunnen anoniem of GTID-trans acties zijn. <br> `ON`: Zowel nieuwe als gerepliceerde trans acties moeten GTID trans acties zijn.|
 |`enforce_gtid_consistency`|Dwingt consistentie van GTID af door alleen de instructies toe te staan die op transactionele veilige wijze kunnen worden geregistreerd. Deze waarde moet worden ingesteld op `ON` voordat u GTID-replicatie inschakelt. |`OFF`|`OFF`: Alle trans acties mogen GTID-consistentie schenden.  <br> `ON`: Geen enkele trans actie mag GTID-consistentie schenden. <br> `WARN`: Alle trans acties mogen GTID-consistentie schenden, maar er wordt een waarschuwing gegenereerd. | 
@@ -188,7 +188,7 @@ Gebruikers op de bron server worden gerepliceerd naar de Lees replica's. U kunt 
 Om problemen met de synchronisatie van gegevens en mogelijk verlies of beschadiging van gegevens te voorkomen, worden bepaalde serverparameters vergrendeld zodat ze niet kunnen worden bijgewerkt bij gebruik van replica's voor lezen.
 
 De volgende server parameters zijn vergrendeld op de bron-en replica servers:
-- [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
+- [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
 De [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) para meter is vergrendeld op de replica servers. 
@@ -205,7 +205,7 @@ GTID is standaard uitgeschakeld. Als GTID is ingeschakeld, kunt u deze niet meer
 
 Als GTID is ingeschakeld op een bron server, is voor nieuw gemaakte replica's ook GTID ingeschakeld en wordt GTID-replicatie gebruikt. Om replicatie consistent te blijven, kunt u niet bijwerken `gtid_mode` op de bron-of replica server (s).
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 
 - Het maken van een replica van een replica wordt niet ondersteund.
 - In-Memory tabellen kunnen ertoe leiden dat replica's niet meer synchroon zijn. Dit is een beperking van de MySQL-replicatie technologie. Meer informatie vindt u in de [referentie documentatie voor mysql](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .

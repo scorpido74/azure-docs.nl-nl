@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c40f1762ea7c87ea73ec20e47b0398e0d3e364b4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 69c8f9f01241100a81ddd1707dbd226e6bf56c2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677088"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089012"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-producten/-services verbinden met IT-servicebeheerconnector
 Dit artikel bevat informatie over het configureren van de verbinding tussen uw ITSM-product/-service en de IT Service Management-connector (ITSMC) in Log Analytics om uw werk items centraal te beheren. Zie [overzicht](./itsmc-overview.md)voor meer informatie over ITSMC.
@@ -36,7 +36,7 @@ De volgende secties bevatten informatie over het aansluiten van uw System Center
 
 Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 
-- ITSMC is geïnstalleerd. Meer informatie: [het toevoegen van de IT Service Management-connector-oplossing](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC is geïnstalleerd. Meer informatie: [het toevoegen van de IT Service Management-connector-oplossing](./itsmc-overview.md#add-it-service-management-connector).
 - De Service Manager-webtoepassing (Web-app) wordt geïmplementeerd en geconfigureerd. [Hier](#create-and-deploy-service-manager-web-app-service)vindt u informatie over de web-app.
 - Hybride verbinding is gemaakt en geconfigureerd. Meer informatie: [de hybride verbinding configureren](#configure-the-hybrid-connection).
 - Ondersteunde versies van Service Manager: 2012 R2 of 2016.
@@ -184,7 +184,7 @@ De volgende secties bevatten informatie over het aansluiten van uw ServiceNow-pr
 
 ### <a name="prerequisites"></a>Vereisten
 Zorg ervoor dat aan de volgende vereisten wordt voldaan:
-- ITSMC is geïnstalleerd. Meer informatie: [het toevoegen van de IT Service Management-connector-oplossing](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC is geïnstalleerd. Meer informatie: [het toevoegen van de IT Service Management-connector-oplossing](./itsmc-overview.md#add-it-service-management-connector).
 - ServiceNow ondersteunde versies: Orlando, New York, Madrid, Londen, Kingston, Jakarta, Istanboel, Helsinki, Genève.
 > [!NOTE]
 > ITSMC biedt alleen ondersteuning voor de officiële SaaS-aanbieding van de service. Persoonlijke implementaties van de service worden nu niet ondersteund. 
@@ -316,7 +316,7 @@ De volgende secties bevatten informatie over het aansluiten van uw Provance-prod
 Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 
 
-- ITSMC is geïnstalleerd. Meer informatie: [het toevoegen van de IT Service Management-connector-oplossing](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC is geïnstalleerd. Meer informatie: [het toevoegen van de IT Service Management-connector-oplossing](./itsmc-overview.md#add-it-service-management-connector).
 - De Provance-app moet worden geregistreerd met Azure AD-en client-ID beschikbaar worden gesteld. Zie [Active Directory-verificatie configureren](../../app-service/configure-authentication-provider-aad.md)voor gedetailleerde informatie.
 
 - Gebruikersrol: beheerder.
@@ -373,7 +373,7 @@ De volgende secties bevatten informatie over het aansluiten van uw Cher well-pro
 
 Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 
-- ITSMC is geïnstalleerd. Meer informatie: [het toevoegen van de IT Service Management-connector-oplossing](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC is geïnstalleerd. Meer informatie: [het toevoegen van de IT Service Management-connector-oplossing](./itsmc-overview.md#add-it-service-management-connector).
 - De client-ID is gegenereerd. Meer informatie: [client-id genereren voor Cher well](#generate-client-id-for-cherwell).
 - Gebruikersrol: beheerder.
 

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 1c45999dbb354e8c2d550be82cdf37a6694d2dbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825673"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091352"
 ---
 # <a name="encrypt-deployment-data"></a>Implementatiegegevens versleutelen
 
@@ -33,7 +33,7 @@ U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen 
 
 In de rest van het document worden de stappen beschreven die nodig zijn voor het versleutelen van uw ACI-implementatie gegevens met uw sleutel (door de klant beheerde sleutel). 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="encrypt-data-with-a-customer-managed-key"></a>Gegevens versleutelen met een door de klant beheerde sleutel
 
@@ -73,7 +73,7 @@ Gebruik de volgende richt lijnen voor de eigenschappen van uw sleutel kluis:
 
 ### <a name="generate-a-new-key"></a>Een nieuwe sleutel genereren 
 
-Als uw sleutel kluis is gemaakt, gaat u naar de resource in Azure Portal. Klik in het navigatie menu aan de linkerkant van de Blade resource onder instellingen op **sleutels**. Klik in de weer gave voor ' sleutels ' op genereren/importeren ' om een nieuwe sleutel te genereren. Gebruik een unieke naam voor deze sleutel en andere voor keuren op basis van uw vereisten. 
+Als uw sleutel kluis is gemaakt, gaat u naar de resource in Azure Portal. Klik in het navigatie menu aan de linkerkant van de Blade resource onder instellingen op **sleutels** . Klik in de weer gave voor ' sleutels ' op genereren/importeren ' om een nieuwe sleutel te genereren. Gebruik een unieke naam voor deze sleutel en andere voor keuren op basis van uw vereisten. 
 
 ![Een nieuwe sleutel genereren](./media/container-instances-encrypt-data/generate-key.png)
 
@@ -81,10 +81,10 @@ Als uw sleutel kluis is gemaakt, gaat u naar de resource in Azure Portal. Klik i
 
 Maak een nieuw toegangs beleid om de ACI-service toegang tot uw sleutel te geven.
 
-* Als uw sleutel is gegenereerd, klikt u op de Blade sleutel kluis resource onder instellingen op **toegangs beleid**.
-* Klik op **toegangs beleid toevoegen**op de pagina toegangs beleid voor uw sleutel kluis.
+* Als uw sleutel is gegenereerd, klikt u op de Blade sleutel kluis resource onder instellingen op **toegangs beleid** .
+* Klik op **toegangs beleid toevoegen** op de pagina toegangs beleid voor uw sleutel kluis.
 * Stel de *sleutel machtigingen* in om sleutel machtigingen voor **Get** en **Unwrap** op te geven ![](./media/container-instances-encrypt-data/set-key-permissions.png)
-* Selecteer voor *Select Principal*de **service Azure container instance**
+* Selecteer voor *Select Principal* de **service Azure container instance**
 * Klik onderaan op **toevoegen** 
 
 Het toegangs beleid wordt nu weer gegeven in het toegangs beleid van uw sleutel kluis.

@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b1a0382b6bb650b6761897f4a16f988e5ce00c1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482618"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088725"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos-emulator installeren en gebruiken voor lokale ontwikkeling en tests
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 De Azure Cosmos-emulator biedt een lokale omgeving die de Azure Cosmos DB-Service voor ontwikkelings doeleinden emuleert. Met de Azure Cosmos-emulator kunt u uw toepassing lokaal ontwikkelen en testen zonder een Azure-abonnement te maken of kosten te betalen. Wanneer u tevreden bent over hoe uw toepassing werkt in de Azure Cosmos-emulator, kunt u overschakelen naar het gebruik van een Azure Cosmos-account in de Cloud. In dit artikel wordt beschreven hoe u de emulator installeert en gebruikt in Windows-, Linux-, macOS-en Windows docker-omgevingen.
 
@@ -98,7 +99,7 @@ De Azure Cosmos-emulator wordt standaard op de lokale computer (localhost) uitge
 
 U kunt de Azure Cosmos-emulator uitvoeren op de Windows docker-container. Zie de [docker-hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) voor de docker pull-opdracht en [github](https://github.com/Azure/azure-cosmos-db-emulator-docker) voor `Dockerfile` meer informatie. De emulator werkt momenteel niet op docker voor Oracle Linux. Gebruik de volgende instructies om de emulator uit te voeren op docker voor Windows:
 
-1. Nadat u [docker voor Windows](https://www.docker.com/docker-windows) hebt geïnstalleerd, gaat u naar Windows-containers door met de rechter muisknop op het docker-pictogram op de werk balk te klikken en **Switch naar Windows-containers**te selecteren.
+1. Nadat u [docker voor Windows](https://www.docker.com/docker-windows) hebt geïnstalleerd, gaat u naar Windows-containers door met de rechter muisknop op het docker-pictogram op de werk balk te klikken en **Switch naar Windows-containers** te selecteren.
 
 1. Haal vervolgens de installatiekopie van de emulator op van Docker Hub met de volgende opdracht in uw favoriete shell.
 
@@ -293,7 +294,7 @@ Voer de volgende stappen uit als u werkt met een Mac:
 
 1. Open de lijst met certificaten en zoek het certificaat met de naam `localhost`.
 
-1. Open het contextmenu voor dat specifieke item, selecteer *Toon info* en selecteer bij *Vertrouw* > *Gebruik bij dit certificaat* de optie *Vertrouw altijd*. 
+1. Open het contextmenu voor dat specifieke item, selecteer *Toon info* en selecteer bij *Vertrouw* > *Gebruik bij dit certificaat* de optie *Vertrouw altijd* . 
 
    :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Selecteer de knop Start of druk op de Windows-toets, begin met het typen van de Azure Cosmos-emulator en selecteer de emulator in de lijst met toepassingen":::
   
@@ -328,7 +329,7 @@ Als u meerdere computers hebt met één netwerk en u de emulator op één comput
 
 U kunt de emulator uitvoeren op een lokaal netwerk. U maakt netwerktoegang mogelijk door de optie `/AllowNetworkAccess` op te geven op de [opdrachtregel](emulator-command-line-parameters.md). U moet hiervoor ook `/Key=key_string` of `/KeyFile=file_name` opgeven. U kunt `/GenKeyFile=file_name` gebruiken om vooraf een bestand met een willekeurige sleutel te genereren. Vervolgens kunt u die doorgeven aan `/KeyFile=file_name` of `/Key=contents_of_file`.
 
-Om netwerk toegang voor de eerste keer in te scha kelen, moet de gebruiker de emulator afsluiten en de gegevensdirectory *%LocalAppData%\CosmosDBEmulator*van de emulator verwijderen.
+Om netwerk toegang voor de eerste keer in te scha kelen, moet de gebruiker de emulator afsluiten en de gegevensdirectory *%LocalAppData%\CosmosDBEmulator* van de emulator verwijderen.
 
 ## <a name="authenticate-connections-when-using-emulator"></a><a id="authenticate-requests"></a>Verbindingen verifiëren bij het gebruik van een emulator
 
@@ -458,11 +459,11 @@ Start Emulator vanaf een beheerders [opdracht prompt](emulator-command-line-para
 
 Gebruik de volgende stappen om de emulator te verwijderen:
 
-1. Sluit alle geopende exemplaren van de lokale emulator af door met de rechter muisknop op het pictogram van de **Azure Cosmos-emulator** in het systeemvak te klikken en vervolgens **Afsluiten**te selecteren. Het afsluiten van alle exemplaren kan een paar minuten duren.
+1. Sluit alle geopende exemplaren van de lokale emulator af door met de rechter muisknop op het pictogram van de **Azure Cosmos-emulator** in het systeemvak te klikken en vervolgens **Afsluiten** te selecteren. Het afsluiten van alle exemplaren kan een paar minuten duren.
 
 1. Typ in het zoekvak van Windows **apps & functies** en selecteer **apps & onderdelen (systeem instellingen)** .
 
-1. Ga in de lijst met apps naar de **Azure Cosmos DB emulator**, Selecteer deze, klik op **verwijderen**en vervolgens op bevestigen en selecteer vervolgens **verwijderen** .
+1. Ga in de lijst met apps naar de **Azure Cosmos DB emulator** , Selecteer deze, klik op **verwijderen** en vervolgens op bevestigen en selecteer vervolgens **verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

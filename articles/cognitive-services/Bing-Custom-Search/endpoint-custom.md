@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7aa2b75a6f6e95bdeff4176ee2ad852de3d7169
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74072791"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090695"
 ---
 # <a name="custom-search"></a>Aangepast zoeken
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoekervaringen maken voor onderwerpen die u interesseren. Uw gebruikers zien dan zoekresultaten die zijn afgestemd op de inhoud die ze interessant vinden in plaats van dat ze door pagina's met zoekresultaten moeten bladeren die niet-relevante inhoud bevatten.
 
 ## <a name="custom-search-endpoint"></a>Aangepast Zoek eindpunt
@@ -58,7 +63,7 @@ https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/images/search
 Zie [uw aangepaste zoek ervaring configureren](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/define-your-custom-view)voor meer informatie over het configureren van een aangepast Zoek exemplaar.
 
 ## <a name="next-steps"></a>Volgende stappen
-De **Bing** api's ondersteunen zoek acties die resultaten retour neren op basis van hun type.Alle zoek eindpunten retour neren resultaten als JSON-antwoord objecten. Alle eind punten ondersteunen query's die een specifieke taal en/of locatie retour neren met de lengte graad, breedte graad en de zoek RADIUS.
+De **Bing** api's ondersteunen zoek acties die resultaten retour neren op basis van hun type. Alle zoek eindpunten retour neren resultaten als JSON-antwoord objecten.  Alle eind punten ondersteunen query's die een specifieke taal en/of locatie retour neren met de lengte graad, breedte graad en de zoek RADIUS.
 
 Zie de naslag pagina's voor elk type voor volledige informatie over de para meters die door elk eind punt worden ondersteund.
 Zie voor voor beelden van basis aanvragen met behulp van de Aangepaste zoekopdrachten-API [aangepaste zoek opdracht snel starten](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/)

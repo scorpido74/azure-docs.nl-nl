@@ -4,62 +4,31 @@ description: Meer informatie over het gebruik van proximity placement groups om 
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 10/19/2020
 author: jluk
-ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a96489495abe3bfbed3030b3e08ff121c5c7cddf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986709"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090794"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Minder latentie met proximity-plaatsings groepen (preview-versie)
+# <a name="reduce-latency-with-proximity-placement-groups"></a>Minder latentie met proximity-plaatsings groepen
 
 > [!Note]
 > Wanneer u proximity-plaatsings groepen gebruikt op AKS, is de co-locatie alleen van toepassing op de agent knooppunten. Knoop punt naar knoop punt en de bijbehorende gehoste Pod naar pod latentie is verbeterd. De co-locatie heeft geen invloed op de plaatsing van het besturings vlak van een cluster.
 
 Wanneer u uw toepassing in azure implementeert, wordt er netwerk latentie gemaakt door het verspreiden van virtuele machine-exemplaren (VM) in regio's of beschikbaarheids zones. Dit kan van invloed zijn op de algehele prestaties van uw toepassing. Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure Compute-resources zich fysiek dicht bij elkaar bevinden. Sommige toepassingen, zoals gaming, technische simulaties en hoge frequentie handel (HFT) vereisen een lage latentie en taken die snel kunnen worden voltooid. Voor scenario's met High Performance Computing (HPC) zoals deze kunt u overwegen om [proximity placement groups](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) te gebruiken voor de knooppunt groepen van uw cluster.
 
-## <a name="limitations"></a>Beperkingen
+## <a name="before-you-begin"></a>Voordat u begint
+
+Voor dit artikel moet u de Azure CLI-versie 2,14 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+
+### <a name="limitations"></a>Beperkingen
 
 * Een proximity-plaatsings groep kan worden toegewezen aan Maxi maal één beschikbaarheids zone.
 * Een knooppunt groep moet Virtual Machine Scale Sets gebruiken om een proximity-plaatsings groep te koppelen.
 * Een knooppunt groep kan alleen een proximity-plaatsings groep koppelen aan de groep van de nodegroep.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="before-you-begin"></a>Voordat u begint
-
-U moet de volgende resources hebben geïnstalleerd:
-
-- De 0.4.53-uitbrei ding AKS-preview
-
-### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>De preview-functie voor proximity-plaatsings groepen instellen
-
-> [!IMPORTANT]
-> Wanneer u proximity-plaatsings groepen gebruikt met AKS-knooppunt groepen, is de co-locatie alleen van toepassing op de agent knooppunten. Knoop punt naar knoop punt en de bijbehorende gehoste Pod naar pod latentie is verbeterd. De co-locatie heeft geen invloed op de plaatsing van het besturings vlak van een cluster.
-
-```azurecli-interactive
-# register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "ProximityPlacementGroupPreview"
-```
-
-Het kan enkele minuten duren voordat de registratie is uitgevoerd. Gebruik de onderstaande opdracht om te controleren of de functie is geregistreerd:
-
-```azurecli-interactive
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/ProximityPlacementGroupPreview')].{Name:name,State:properties.state}"
-```
-
-Tijdens de preview-versie hebt u de *AKS-preview cli-* extensie nodig om proximity-plaatsings groepen te gebruiken. Gebruik de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="node-pools-and-proximity-placement-groups"></a>Knooppunt groepen en proximity-plaatsings groepen
 

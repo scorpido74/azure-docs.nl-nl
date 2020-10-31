@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 380cd174e1e71ed4bd63e168503ced7888b5b34f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7dc00a59ccd7d82e86e1519b59ba4b8ca1e8fe16
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482380"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088536"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Resources van de Azure Cosmos DB Core (SQL) API beheren met Azure Resource Manager-sjablonen
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel leert u hoe u Azure Resource Manager sjablonen kunt gebruiken om uw Azure Cosmos DB accounts, data bases en containers te implementeren en beheren.
 

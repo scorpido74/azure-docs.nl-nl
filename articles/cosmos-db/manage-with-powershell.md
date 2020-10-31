@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 3b5cc1dd61b4f01e40c1cc812e93a448855ad92d
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 53a44ed15517cad157e43d8de465438537e15121
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926509"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088604"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Azure Cosmos DB core-API-resources (SQL) beheren met Power shell
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In de volgende hand leiding wordt beschreven hoe u Power shell gebruikt voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB core-API-resources, waaronder het Cosmos-account, de data base, de container en de door voer. Zie voor PowerShell-cmdlets voor andere API's [PowerShell Samples for Cassandra](powershell-samples-cassandra.md), [PowerShell Samples for MongoDB API](powershell-samples-mongodb.md), [PowerShell Samples for Gremlin](powershell-samples-gremlin.md), [PowerShell Samples for Table](powershell-samples-table.md)
 

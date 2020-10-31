@@ -8,14 +8,15 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 918033f736a28534cd36a4637b41d0a6b3b4cdc7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566615"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088570"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Door het systeem toegewezen beheerde identiteiten gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel gaat u een *robuuste neutraal-* oplossing voor het draaien van sleutels instellen om toegang te krijgen tot Azure Cosmos DB toetsen door [beheerde identiteiten](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)te gebruiken. In het voor beeld in dit artikel wordt gebruikgemaakt van Azure Functions, maar u kunt elke service gebruiken die beheerde identiteiten ondersteunt. 
 
@@ -33,7 +34,7 @@ In deze stap wijst u een door het systeem toegewezen beheerde identiteit toe aan
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
-1. Schakel op het tabblad **identiteit** de **status** van de systeem identiteit **in** en selecteer **Opslaan**. Het **identiteits** venster moet er als volgt uitzien:  
+1. Schakel op het tabblad **identiteit** de **status** van de systeem identiteit **in** en selecteer **Opslaan** . Het **identiteits** venster moet er als volgt uitzien:  
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
@@ -60,19 +61,19 @@ In dit scenario leest de functie-app de Tempe ratuur van het aquarium en schrijf
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
-1. Selecteer **+ Toevoegen** > **Roltoewijzing toevoegen**.
+1. Selecteer **+ Toevoegen** > **Roltoewijzing toevoegen** .
 
 1. Het deel venster **roltoewijzing toevoegen** wordt aan de rechter kant geopend:
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
-   * **Rol**: Selecteer **Inzender** voor het DocumentDB-account
-   * **Toegang toewijzen aan**: Selecteer onder de Subsectie door het **systeem toegewezen beheerde identiteit selecteren** de optie **functie-app**.
-   * **Selecteren**: het deel venster wordt gevuld met alle functie-apps in uw abonnement die een **beheerde systeem identiteit**hebben. In dit geval selecteert u de functie-app **FishTankTemperatureService** : 
+   * **Rol** : Selecteer **Inzender** voor het DocumentDB-account
+   * **Toegang toewijzen aan** : Selecteer onder de Subsectie door het **systeem toegewezen beheerde identiteit selecteren** de optie **functie-app** .
+   * **Selecteren** : het deel venster wordt gevuld met alle functie-apps in uw abonnement die een **beheerde systeem identiteit** hebben. In dit geval selecteert u de functie-app **FishTankTemperatureService** : 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
-1. Nadat u de functie-app hebt geselecteerd, selecteert u **Opslaan**.
+1. Nadat u de functie-app hebt geselecteerd, selecteert u **Opslaan** .
 
 ### <a name="assign-the-role-using-azure-cli"></a>De rol toewijzen met behulp van Azure CLI
 

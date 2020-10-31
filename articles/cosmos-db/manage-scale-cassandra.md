@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0d5aded62c9c3990a3fa102863f4850bbfda6702
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482516"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088673"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Een Azure Cosmos DB Cassandra-API account elastisch schalen
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Er zijn diverse opties voor het verkennen van de elastische aard van de Azure Cosmos DB-API voor Cassandra. Om te begrijpen hoe effectief kan worden geschaald in Azure Cosmos DB, is het belang rijk om te begrijpen hoe u de juiste hoeveelheid aanvraag eenheden (RU/s) inricht om rekening te houden met de prestatie vereisten in uw systeem. Zie het artikel [aanvraag eenheden](request-units.md) voor meer informatie over aanvraag eenheden. 
 
@@ -62,7 +63,7 @@ Het voor deel van deze benadering is dat u op dynamische wijze op schaal behoeft
 
 Naast standaard (hand matig) of programmatische manier om door Voer in te richten, kunt u ook Azure Cosmos-containers configureren in ingerichte door Voer voor automatisch schalen. Automatisch schalen wordt voor de behoeften van het gebruik binnen de opgegeven RU-bereiken en direct aangepast zonder dat er in rekening wordt gebracht over Sla's. Zie het artikel [Azure Cosmos-containers en-data bases maken in automatisch schalen](provision-throughput-autoscale.md) voor meer informatie.
 
-Het voor deel van deze benadering is dat het de eenvoudigste manier is om de schaal vereisten in uw systeem te beheren. Er worden geen beperkings beperkingen toegepast **binnen de geconfigureerde ru-bereiken**. Het nadeel is dat, als de schaal behoefte in uw systeem voorspelbaar is, de functie voor automatisch schalen een minder rendabele manier is om uw schaal behoeften te verwerken dan met behulp van het Bespoke-besturings vlak of het hierboven vermelde SDK-niveau.
+Het voor deel van deze benadering is dat het de eenvoudigste manier is om de schaal vereisten in uw systeem te beheren. Er worden geen beperkings beperkingen toegepast **binnen de geconfigureerde ru-bereiken** . Het nadeel is dat, als de schaal behoefte in uw systeem voorspelbaar is, de functie voor automatisch schalen een minder rendabele manier is om uw schaal behoeften te verwerken dan met behulp van het Bespoke-besturings vlak of het hierboven vermelde SDK-niveau.
 
 Als u de maximale door Voer (RUs) voor automatisch schalen wilt instellen of wijzigen met behulp van CQL, gebruikt u het volgende (Vervang de spatie/tabel naam dienovereenkomstig):
 

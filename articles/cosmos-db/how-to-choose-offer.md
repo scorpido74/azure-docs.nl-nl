@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: f7fd40c48f94b4337c5ec342499203f83763299b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d8a6471d53ad4b2428504f9c53cbec6bc1967c49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909927"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089635"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Kiezen tussen standaard (hand matig) en ingerichte door Voer voor automatisch schalen 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB ondersteunt twee typen of aanbiedingen van ingerichte door Voer: standaard (hand matig) en automatisch schalen. Beide doorvoer typen zijn geschikt voor essentiële workloads die hoge prestaties en schaal vereisen, en die worden ondersteund door dezelfde Azure Cosmos DB Sla's voor door Voer, Beschik baarheid, latentie en consistentie.
 
@@ -26,7 +27,7 @@ Wanneer u de ingerichte door Voer gebruikt, stelt u de door Voer in, gemeten in 
 
 In de volgende tabel ziet u een vergelijking op hoog niveau tussen standaard (hand matig) en automatisch schalen.
 
-|Description|Standaard (hand matig)|Automatisch schalen|
+|Beschrijving|Standaard (hand matig)|Automatisch schalen|
 |-------------|------|-------|
 |Geschikt voor|Workloads met constant of voorspelbaar verkeer|Werk belastingen met variabele of onvoorspelbaar verkeer. Zie [use cases of automatisch schalen](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Uitleg|U voorziet in een vaste hoeveelheid RU/s `T` die gedurende een bepaalde periode statisch is, tenzij u deze hand matig wijzigt. Elke seconde kunt u de `T` door Voer tot ru/s gebruiken. <br/><br/>Als u bijvoorbeeld standaard (hand matig) 400 RU/s instelt, blijft de door Voer op 400 RU/s.|U stelt het hoogste of maximum aantal RU/s `Tmax` in dat u niet meer wilt voor het systeem. Het systeem schaalt de door Voer `T` zo automatisch `0.1* Tmax <= T <= Tmax` . <br/><br/>Als u bijvoorbeeld automatisch schalen instelt voor het maximum aantal RU/s 4000 RU/s, wordt het systeem geschaald tussen 400-4000 RU/s.|

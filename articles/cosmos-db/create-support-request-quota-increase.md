@@ -6,14 +6,15 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.openlocfilehash: cd2bc3ec7e70049ee7e2c700731515a272e541dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7ec71220b75647e789508c760e50957b3b497fa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096834"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090032"
 ---
 # <a name="how-to-request-quota-increase-for-azure-cosmos-db-resources"></a>Quota verhoging aanvragen voor Azure Cosmos DB resources
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 De resources in Azure Cosmos DB hebben [standaard quota's/limieten](concepts-limits.md). Het is echter mogelijk dat er een geval is waarin uw werk belasting meer quota nodig heeft dan de standaard waarde. In dat geval moet u contact met het Azure Cosmos DB-team bereiken om een quotum toename aan te vragen. In dit artikel wordt uitgelegd hoe u een quotum verhoging voor Azure Cosmos DB resources kunt aanvragen. U leert ook hoe u een abonnement inschakelt voor toegang tot een regio.
 
@@ -23,12 +24,12 @@ Als u een quotum toename wilt aanvragen, moet u een nieuwe ondersteunings aanvra
 
 1. Meld u aan bij Azure Portal.
 
-1. Selecteer in het menu aan de linkerkant **Help en ondersteuning** en selecteer vervolgens **nieuwe ondersteunings aanvraag**.
+1. Selecteer in het menu aan de linkerkant **Help en ondersteuning** en selecteer vervolgens **nieuwe ondersteunings aanvraag** .
 
 1. Vul op het tabblad **basis beginselen** de volgende gegevens in:
 
    * Selecteer bij **Probleemtype** **Service- en abonnementslimieten (quota)**
-   * Selecteer bij **abonnement**het abonnement waarvoor u het quotum wilt verhogen.
+   * Selecteer bij **abonnement** het abonnement waarvoor u het quotum wilt verhogen.
    * Selecteer **Cosmos DB** bij **quotum type**
 
    :::image type="content" source="./media/create-support-request-quota-increase/create-quota-increase-request.png" alt-text="Een nieuwe Cosmos DB ondersteunings aanvraag voor een quotum verhoging maken":::
@@ -37,7 +38,7 @@ Als u een quotum toename wilt aanvragen, moet u een nieuwe ondersteunings aanvra
 
 1. Vul de volgende gegevens in dit formulier in:
 
-   * **Beschrijving**: Geef een korte beschrijving van uw aanvraag, zoals uw workload, waarom de standaard waarden niet voldoende zijn. Op basis van het resource type waarvoor u het quotum wilt verg Roten, is het verplicht om de volgende gegevens op te geven in het veld **Beschrijving** :
+   * **Beschrijving** : Geef een korte beschrijving van uw aanvraag, zoals uw workload, waarom de standaard waarden niet voldoende zijn. Op basis van het resource type waarvoor u het quotum wilt verg Roten, is het verplicht om de volgende gegevens op te geven in het veld **Beschrijving** :
 
      **Regio's aanvragen** Als uw aanvraag overeenkomt met het toevoegen van een regio aan de lijst met toegestane gegevens, moet u de volgende waarden opgeven:
 
@@ -55,15 +56,15 @@ Als u een quotum toename wilt aanvragen, moet u een nieuwe ondersteunings aanvra
        * Abonnements-id
        * Limiet voor nieuwe database accounts
 
-   * **Bestand uploaden**: Upload de diagnostische bestanden of andere bestanden die u relevant vindt voor het ondersteunings verzoek. Zie het artikel over [Azure-ondersteuning]( ../azure-portal/supportability/how-to-manage-azure-support-request.md#upload-files) voor meer informatie over de richt lijnen voor het uploaden van bestanden.
+   * **Bestand uploaden** : Upload de diagnostische bestanden of andere bestanden die u relevant vindt voor het ondersteunings verzoek. Zie het artikel over [Azure-ondersteuning]( ../azure-portal/supportability/how-to-manage-azure-support-request.md#upload-files) voor meer informatie over de richt lijnen voor het uploaden van bestanden.
 
-   * **Ernst**: Kies een van de beschik bare Ernst niveaus op basis van de bedrijfs impact.
+   * **Ernst** : Kies een van de beschik bare Ernst niveaus op basis van de bedrijfs impact.
 
-   * **Voorkeurs methode voor contact**: u kunt ervoor kiezen om contact op te nemen via **e-mail** of **telefonisch**.
+   * **Voorkeurs methode voor contact** : u kunt ervoor kiezen om contact op te nemen via **e-mail** of **telefonisch** .
 
 1. Vul de resterende gegevens in, zoals de beschik baarheid, de taal van de ondersteuning, de contact gegevens, het e-mail adres en het telefoon nummer van het formulier.
 
-1. Selecteer **volgende: controleren + maken**. Valideer de verstrekte informatie en selecteer **maken** om een ondersteunings aanvraag te maken.
+1. Selecteer **volgende: controleren + maken** . Valideer de verstrekte informatie en selecteer **maken** om een ondersteunings aanvraag te maken.
 
 Binnen 24 uur evalueert het Azure Cosmos DB-ondersteunings team uw aanvraag en gaat u terug naar u.
 

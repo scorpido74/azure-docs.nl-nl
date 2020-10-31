@@ -9,14 +9,15 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: d784e8bfb0841570f63d8433fa74059eb9e22758
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b69b3a3888b2d6e19b8eaa92ba9b2fedf0e15545
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487735"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091115"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
@@ -54,7 +55,7 @@ ms.locfileid: "92487735"
 **Nieuwe functies**
 - De mogelijkheid om de TTL voor de analytische opslag in te stellen bij het maken van een nieuwe container is toegevoegd.
 
-**Opgeloste fouten**
+**Oplossingen voor oplossingen**
 - Ondersteuning voor dicteer functies als invoer voor get_client-Api's.
 - Vaste python 2/3-compatibiliteit in query-iterators.
 - Fout in Hint voor vast type (probleem #12570).

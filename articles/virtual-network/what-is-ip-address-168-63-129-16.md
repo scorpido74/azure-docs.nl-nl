@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0f0bfa693086a3a097df219132d696a1d04e6f56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c1badf984fb150631c157f3fdc07856b60e965
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286033"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088894"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Wat is het IP-adres 168.63.129.16?
 
@@ -32,15 +32,20 @@ IP-adres 168.63.129.16 is een virtueel openbaar IP-adres dat wordt gebruikt om e
 - Hiermee kan de virtuele machine een dynamisch IP-adres verkrijgen van de DHCP-service in Azure.
 - Hiermee schakelt u heartbeat-berichten van de gast agent in voor de functie PaaS.
 
+> [!NOTE]
+> In een scenario met een niet-virtueel netwerk (klassiek) wordt een privé-IP-adres gebruikt in plaats van 168.63.129.16. Dit privé-IP-adres wordt dynamisch gedetecteerd via DHCP. Firewall regels die specifiek zijn voor 168.63.129.16, moeten zo nodig worden aangepast.
+
 ## <a name="scope-of-ip-address-1686312916"></a>Bereik van IP-adres 168.63.129.16
 
 Het open bare IP-adres 168.63.129.16 wordt gebruikt in alle regio's en alle nationale Clouds. Dit speciale open bare IP-adres is eigendom van micro soft en kan niet worden gewijzigd. U wordt aangeraden dit IP-adres toe te staan in een lokaal (in het VM-) firewall beleid (uitgaande richting). De communicatie tussen dit speciale IP-adres en de bronnen is veilig, omdat alleen het interne Azure-platform een bericht kan bron van dit IP-adres. Als dit adres wordt geblokkeerd, kan onverwacht gedrag optreden in verschillende scenario's. 168.63.129.16 is een [virtueel IP-adres van het host-knoop punt](../virtual-network/security-overview.md#azure-platform-considerations) en is niet onderhevig aan door de gebruiker gedefinieerde routes.
 
-- De VM-agent vereist uitgaande communicatie via de poorten 80, 443, 32526 met WireServer (168.63.129.16). Deze moeten worden geopend in de lokale firewall op de VM. De communicatie over deze poorten met 168.63.129.16 is niet van toepassing op de geconfigureerde netwerk beveiligings groepen.
-- 168.63.129.16 kunnen DNS-services leveren aan de virtuele machine. Als dit niet gewenst is, kan dit verkeer worden geblokkeerd in de lokale firewall op de VM. Standaard is DNS-communicatie niet van toepassing op de geconfigureerde netwerk beveiligings groepen, tenzij specifiek is gericht op het [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) -service label. Als u DNS-verkeer wilt blok keren naar Azure DNS via NSG, maakt u een regel voor uitgaande verbindingen om verkeer te weigeren aan [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags)en geeft u "*" op als "doel poort bereik" en "elk" als protocol.
-- Wanneer de virtuele machine deel uitmaakt van een load balancer back-end-groep, moet de [status test](../load-balancer/load-balancer-custom-probe-overview.md) communicatie worden toegestaan vanuit 168.63.129.16. De standaard configuratie van de netwerk beveiligings groep heeft een regel die deze communicatie mogelijk maakt. Deze regel maakt gebruik van het [AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) -service label. Als dit verkeer gewenst kan worden geblokkeerd door de netwerk beveiligings groep te configureren, resulteert dit echter in tests die mislukken.
+- De VM-agent vereist uitgaande communicatie via de poorten 80/TCP en 32526/TCP met WireServer (168.63.129.16). Deze moeten worden geopend in de lokale firewall op de VM. De communicatie over deze poorten met 168.63.129.16 is niet van toepassing op de geconfigureerde netwerk beveiligings groepen.
 
-In een scenario met een niet-virtueel netwerk (klassiek), wordt de status test gebrond op basis van een privé-IP-adres en 168.63.129.16 wordt niet gebruikt.
+- 168.63.129.16 kunnen DNS-services leveren aan de virtuele machine. Als dit niet gewenst is, kan uitgaand verkeer naar 168.63.129.16-poorten 53/UDP en 53/TCP worden geblokkeerd in de lokale firewall op de VM.
+
+  Standaard is DNS-communicatie niet van toepassing op de geconfigureerde netwerk beveiligings groepen, tenzij specifiek is gericht op het [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) -service label. Als u DNS-verkeer wilt blok keren naar Azure DNS via NSG, maakt u een regel voor uitgaande verbindingen om verkeer te weigeren aan [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags)en geeft u "*" op als "doel poort bereik" en "elk" als protocol.
+
+- Wanneer de virtuele machine deel uitmaakt van een load balancer back-end-groep, moet de [status test](../load-balancer/load-balancer-custom-probe-overview.md) communicatie worden toegestaan vanuit 168.63.129.16. De standaard configuratie van de netwerk beveiligings groep heeft een regel die deze communicatie mogelijk maakt. Deze regel maakt gebruik van het [AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) -service label. Als dit verkeer gewenst kan worden geblokkeerd door de netwerk beveiligings groep te configureren, resulteert dit echter in tests die mislukken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

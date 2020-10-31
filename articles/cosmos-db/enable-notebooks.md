@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 4c485bf6b9eb34e68e399c24e51286428f47586f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf8da4379a7770e44e86663c02cc7a57da9d3452
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261899"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089774"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Notebooks inschakelen voor Azure Cosmos DB accounts (preview-versie)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
 > Ingebouwde notitie blokken voor Azure Cosmos DB zijn momenteel beschikbaar in de volgende Azure-regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west en VS-West 2. Als u notebooks wilt gebruiken, [maakt u een nieuw account met notitie blokken](#enable-notebooks-in-a-new-cosmos-account) of [schakelt u notitie blokken in voor een bestaand account](#enable-notebooks-in-an-existing-cosmos-account) in een van deze regio's.
@@ -23,13 +24,13 @@ Met ingebouwde Jupyter-notebooks in Azure Cosmos DB kunt u uw gegevens van de Az
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Notitie blokken in een nieuw Cosmos-account inschakelen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Selecteer **Een resource maken** > **Databases** > **Azure Cosmos DB**.
-1. Selecteer op de pagina **Azure Cosmos DB account maken** de optie **notebooks**. 
+1. Selecteer **Een resource maken** > **Databases** > **Azure Cosmos DB** .
+1. Selecteer op de pagina **Azure Cosmos DB account maken** de optie **notebooks** . 
  
     :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Selecteer de optie notebooks in Azure Cosmos DB Blade maken":::
 
-1. Selecteer **Controleren + maken**. U kunt de optie **netwerk** en **Tags** overs Laan. 
-1. Controleer de accountinstellingen en selecteer vervolgens **Maken**. Het duurt een paar minuten om het account te maken. Wacht tot de portal-pagina **Uw implementatie is voltooid** weergeeft. 
+1. Selecteer **Controleren + maken** . U kunt de optie **netwerk** en **Tags** overs Laan. 
+1. Controleer de accountinstellingen en selecteer vervolgens **Maken** . Het duurt een paar minuten om het account te maken. Wacht tot de portal-pagina **Uw implementatie is voltooid** weergeeft. 
 
    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Selecteer de optie notebooks in Azure Cosmos DB Blade maken":::
 
@@ -46,7 +47,7 @@ Met ingebouwde Jupyter-notebooks in Azure Cosmos DB kunt u uw gegevens van de Az
 U kunt ook notebooks inschakelen op bestaande accounts. Deze stap hoeft slechts één keer per account te worden uitgevoerd.
 
 1. Ga naar het **Data Explorer** deel venster in uw Cosmos-account.
-1. Selecteer **notebooks inschakelen**.
+1. Selecteer **notebooks inschakelen** .
 
     :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="Selecteer de optie notebooks in Azure Cosmos DB Blade maken":::
 
@@ -57,7 +58,7 @@ U kunt ook notebooks inschakelen op bestaande accounts. Deze stap hoeft slechts 
 
 Als u wilt controleren of u notebooks kunt gebruiken, selecteert u een van de notitie blokken onder voorbeeld notitieblokken. Hiermee wordt een kopie van het notitie blok opgeslagen in uw werk ruimte en geopend.
 
-In dit voor beeld gebruiken we **GettingStarted. ipynb**. 
+In dit voor beeld gebruiken we **GettingStarted. ipynb** . 
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Selecteer de optie notebooks in Azure Cosmos DB Blade maken":::
 

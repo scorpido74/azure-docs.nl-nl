@@ -3,12 +3,12 @@ title: Zelf studie-een groep met meerdere containers implementeren-YAML
 description: In deze zelf studie leert u hoe u een container groep met meerdere containers in Azure Container Instances kunt implementeren met behulp van een YAML-bestand met de Azure CLI.
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: f6ba9152003c68192ddc0fdffa5652bc0b6daa86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f1f13d4fa7e32b76988cdf356d5d1bb0528f824
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88750915"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091290"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Zelf studie: een groep met meerdere containers implementeren met behulp van een YAML-bestand
 
@@ -29,15 +29,15 @@ In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige
 > [!NOTE]
 > Groepen met meerdere containers zijn momenteel beperkt tot Linux-containers.
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="configure-a-yaml-file"></a>Een YAML-bestand configureren
 
 Als u een groep met meerdere containers wilt implementeren met de opdracht [AZ container Create][az-container-create] in de Azure CLI, moet u de configuratie van de container groep opgeven in een yaml-bestand. Geef het YAML-bestand vervolgens als een para meter aan de opdracht door.
 
-Begin door de volgende YAML te kopiëren naar een nieuw bestand met de naam **Deploy-ACI. yaml**. In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
+Begin door de volgende YAML te kopiëren naar een nieuw bestand met de naam **Deploy-ACI. yaml** . In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
 
 ```
 code deploy-aci.yaml
@@ -115,7 +115,7 @@ az container show --resource-group myResourceGroup --name myContainerGroup --out
 
 Als u de actieve toepassing wilt bekijken, gaat u naar het IP-adres in uw browser. Het IP-adres is bijvoorbeeld `52.168.26.124` in deze voorbeeld uitvoer:
 
-```bash
+```console
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
 ----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus

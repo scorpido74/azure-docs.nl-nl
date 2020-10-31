@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c206c89bf8e9abae219ce863a8b08f4b0e7041c3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362007"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089913"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Cosmos DB en Azure App Service met een web-app implementeren vanuit GitHub met behulp van een Azure Resource Manager-sjabloon
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In deze zelf studie leert u hoe u een "No touch"-implementatie uitvoert van een webtoepassing die verbinding maakt met Azure Cosmos DB bij de eerste uitvoering zonder dat u verbindings gegevens van Azure Cosmos DB naar `appsettings.json` of naar de toepassings instellingen van Azure-app Services in de Azure Portal hoeft te knippen en plakken. Al deze acties worden uitgevoerd met behulp van een Azure Resource Manager sjabloon in één bewerking. In dit voor beeld implementeren we het [Azure Cosmos DB TODO](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) -voor beeld van een [Web-app-zelf studie](sql-api-dotnet-application.md).
 

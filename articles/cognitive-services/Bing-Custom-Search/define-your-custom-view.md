@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183202"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090814"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Uw Bing Aangepaste zoekopdrachten-ervaring configureren
+
+> [!WARNING]
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
 
 Met een aangepaste zoek opdracht kunt u de zoek ervaring zodanig aanpassen dat alleen inhoud wordt Inge sloten van websites waar uw gebruikers zich bevinden. In plaats van een zoek opdracht in het hele web uit te voeren, zoekt Bing alleen de segmenten van het web die u interesseren. Als u een aangepaste weergave van het web wilt maken, gebruikt u de [portal](https://customsearch.ai) van Bing Aangepaste zoekopdrachten.
 
@@ -82,9 +87,9 @@ Deze Api's zijn vergelijkbaar met de niet-aangepaste [Bing Image Search](../Bing
 
 U kunt uw zoek opdracht testen met behulp van het voorbeeld venster op de rechter kant van de portal om Zoek query's te verzenden en de resultaten weer te geven. 
 
-1. Selecteer onder het zoekvak **mijn exemplaar**. U kunt de resultaten van uw zoek ervaring vergelijken met Bing door **Bing**te selecteren. 
+1. Selecteer onder het zoekvak **mijn exemplaar** . U kunt de resultaten van uw zoek ervaring vergelijken met Bing door **Bing** te selecteren. 
 2. Selecteer een veilig zoek filter en welke markt u wilt zoeken (Zie [query parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
-3. Voer een query in en druk op ENTER of klik op het zoek pictogram om de resultaten van de huidige configuratie weer te geven. U kunt het Zoek type dat u hebt uitgevoerd, wijzigen door op **Web**, **afbeelding**of **video** te klikken om de bijbehorende resultaten te verkrijgen. 
+3. Voer een query in en druk op ENTER of klik op het zoek pictogram om de resultaten van de huidige configuratie weer te geven. U kunt het Zoek type dat u hebt uitgevoerd, wijzigen door op **Web** , **afbeelding** of **video** te klikken om de bijbehorende resultaten te verkrijgen. 
 
 <a name="adjustrank"></a>
 
@@ -120,7 +125,7 @@ U kunt op twee manieren een webpagina aan de bovenkant vastmaken:
 
 * Voer op het tabblad **vastgemaakt** de URL in van de webpagina die u aan de bovenkant wilt vastmaken en de bijbehorende query.
 
-* Voer in het deel venster **voor beeld** een zoek opdracht in en klik op zoeken. Zoek de webpagina die u wilt vastmaken voor uw query en klik op **vastmaken aan de bovenkant**. de webpagina en de query worden toegevoegd aan de lijst met **vastgemaakte** lijsten.
+* Voer in het deel venster **voor beeld** een zoek opdracht in en klik op zoeken. Zoek de webpagina die u wilt vastmaken voor uw query en klik op **vastmaken aan de bovenkant** . de webpagina en de query worden toegevoegd aan de lijst met **vastgemaakte** lijsten.
 
 ### <a name="specify-the-pins-match-condition"></a>De match-voor waarde voor de pincode opgeven
 

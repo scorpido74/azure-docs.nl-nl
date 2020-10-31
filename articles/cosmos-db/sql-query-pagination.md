@@ -6,14 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 08f8095670b48fcefccb0a9adf477b83ce2537d3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485032"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089233"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Paginering in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In Azure Cosmos DB kunnen query's meerdere pagina's met resultaten bevatten. In dit document worden de criteria uitgelegd die worden gebruikt door de query-engine van Azure Cosmos DB om te bepalen of query resultaten moeten worden gesplitst in meerdere pagina's. U kunt eventueel vervolg tokens gebruiken voor het beheren van query resultaten die meerdere pagina's omvatten.
 
@@ -45,12 +46,13 @@ Hier volgen enkele voor beelden van het verwerken van resultaten van query's met
 
 ## <a name="continuation-tokens"></a>Vervolg tokens
 
-In de .NET SDK en Java SDK kunt u optioneel vervolg tokens gebruiken als blad wijzer voor de voortgang van uw query. Azure Cosmos DB uitvoeringen van query's zijn stateless aan de server zijde en kunnen op elk gewenst moment worden hervat met behulp van het vervolg token. Vervolg tokens worden niet ondersteund in de SDK van Node.js SDK of python.
+In de .NET SDK en Java SDK kunt u optioneel vervolg tokens gebruiken als blad wijzer voor de voortgang van uw query. Azure Cosmos DB uitvoeringen van query's zijn stateless aan de server zijde en kunnen op elk gewenst moment worden hervat met behulp van het vervolg token. Vervolg tokens worden niet ondersteund in de Node.js SDK. Voor de python-SDK wordt de ondersteuning voor enkelvoudige partitie query's ondersteund en moet de PK worden opgegeven in het object Options, omdat het niet voldoende is om deze in de query zelf te laten staan.
 
 Hier volgen enkele voor beelden van het gebruik van vervolg tokens:
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
 - [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 Als de query een vervolg token retourneert, zijn er aanvullende query resultaten.
 
