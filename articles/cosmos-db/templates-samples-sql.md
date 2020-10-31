@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3247f35fec8615b9c5e277b7453c340caaf56ffd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7c060b20920ec17e5de0d10ec74b5619b1575ae2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284464"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079390"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Resource Manager-sjablonen voor Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In dit artikel worden alleen Azure Resource Manager sjabloon voorbeelden weer gegeven voor core-(SQL) API-accounts. U kunt ook voor beelden van sjablonen vinden voor [Cassandra](templates-samples-cassandra.md)-, [Gremlin](templates-samples-gremlin.md)-, [MongoDb](templates-samples-mongodb.md)-en [Table](templates-samples-table.md) -api's.
 

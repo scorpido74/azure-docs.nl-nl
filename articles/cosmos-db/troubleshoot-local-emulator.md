@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: af9122aaa0233fe5248f31ffe805e01a98831eae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf174d45f33c50ce93b45b19c6030cf42cb20983
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447431"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081447"
 ---
 # <a name="troubleshoot-issues-when-using-the-azure-cosmos-emulator"></a>Problemen oplossen bij het gebruik van de Azure Cosmos-emulator
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 De Azure Cosmos-emulator biedt een lokale omgeving die de Azure Cosmos DB-Service voor ontwikkelings doeleinden emuleert. Gebruik de tips in dit artikel voor hulp bij het oplossen van problemen die optreden bij het installeren of gebruiken van de Azure Cosmos-emulator. 
 
@@ -36,7 +37,7 @@ Als u een nieuwe versie van de emulator hebt geïnstalleerd en er fouten optrede
 
 * Als u het bericht **Service niet beschikbaar** krijgt, is het mogelijk dat de emulator de netwerkstack niet kan initialiseren. Controleer of de veilige Pulse-client of Juniper-netwerkclient is geïnstalleerd. De netwerkfilterstuurprogramma's van deze clients kunnen mogelijk de oorzaak zijn van het probleem. Doorgaans kan het probleem worden opgelost door stuurprogramma's voor netwerkfilters van derden te verwijderen. U kunt de emulator ook starten met/DisableRIO, waarmee de netwerkcommunicatie van de emulator wordt overgezet naar normale Winsock. 
 
-* Als u **de aanvraag ' verboden ' ontvangt, wordt het bericht ': ' verzonden met een verboden versleuteling in het Transit Protocol of de versleuteling. Controleer de mini maal toegestane protocol instelling voor SSL/TLS...** verbindings problemen. Dit kan worden veroorzaakt door algemene wijzigingen in het besturings systeem (bijvoorbeeld insider preview Build 20170) of de instellingen van de browser die TLS 1,3 als standaard inschakelen. Er kan een soort gelijke fout optreden wanneer u de SDK gebruikt om een aanvraag uit te voeren op de Cosmos-emulator, zoals **Microsoft.Azure.Documents.DocumentClientException: er wordt een aanvraag gemaakt met een verboden versleuteling in het Transit Protocol of de versleuteling. Controleer de mini maal toegestane protocol instelling voor SSL/TLS-accounts**. Dit werkt op dit moment zoals verwacht, omdat de Cosmos Emulator alleen het TLS 1.2-protocol accepteert en gebruikt. De aanbevolen oplossing is om de instellingen te wijzigen en standaard te bewerken in TLS 1,2. bijvoorbeeld: in IIS-beheer navigeert u naar "sites"-> "standaard websites" en zoekt u de site bindingen voor poort 8081 en bewerkt u deze om TLS 1,3 uit te scha kelen. Een vergelijkbare bewerking kan worden uitgevoerd voor de webbrowser via de opties in Instellingen.
+* Als u **de aanvraag ' verboden ' ontvangt, wordt het bericht ': ' verzonden met een verboden versleuteling in het Transit Protocol of de versleuteling. Controleer de mini maal toegestane protocol instelling voor SSL/TLS...** verbindings problemen. Dit kan worden veroorzaakt door algemene wijzigingen in het besturings systeem (bijvoorbeeld insider preview Build 20170) of de instellingen van de browser die TLS 1,3 als standaard inschakelen. Er kan een soort gelijke fout optreden wanneer u de SDK gebruikt om een aanvraag uit te voeren op de Cosmos-emulator, zoals **Microsoft.Azure.Documents.DocumentClientException: er wordt een aanvraag gemaakt met een verboden versleuteling in het Transit Protocol of de versleuteling. Controleer de mini maal toegestane protocol instelling voor SSL/TLS-accounts** . Dit werkt op dit moment zoals verwacht, omdat de Cosmos Emulator alleen het TLS 1.2-protocol accepteert en gebruikt. De aanbevolen oplossing is om de instellingen te wijzigen en standaard te bewerken in TLS 1,2. bijvoorbeeld: in IIS-beheer navigeert u naar "sites"-> "standaard websites" en zoekt u de site bindingen voor poort 8081 en bewerkt u deze om TLS 1,3 uit te scha kelen. Een vergelijkbare bewerking kan worden uitgevoerd voor de webbrowser via de opties in Instellingen.
 
 * Als de emulator wordt uitgevoerd en uw computer naar de slaapstand gaat of er besturingssysteemupdates worden uitgevoerd, wordt mogelijk het bericht **Service is momenteel niet beschikbaar** weergegeven. Stel de gegevens van de emulator opnieuw in door met de rechtermuisknop op het pictogram te klikken dat wordt weergegeven in het Windows-systeemvak. Selecteer vervolgens **Reset Data** (Gegevens opnieuw instellen).
 

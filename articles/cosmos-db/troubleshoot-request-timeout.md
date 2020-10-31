@@ -7,14 +7,16 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 76a1558534728613dcdedc78b64a0366f2bd643d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a18c4cf2f2bc1882a82afe0ba201f0d8b070924d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871068"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081362"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-timeout-exceptions"></a>Uitzonde ringen voor de time-out van Azure Cosmos DB aanvragen vaststellen en oplossen
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 Azure Cosmos DB heeft een time-out voor een HTTP 408-aanvraag geretourneerd.
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing

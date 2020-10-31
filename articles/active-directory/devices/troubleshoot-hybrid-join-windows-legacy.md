@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627369"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079016"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Problemen oplossen met hybride Azure Active Directory-gekoppelde, downlevel apparaten 
 
@@ -55,7 +55,7 @@ In dit artikel vindt u richt lijnen voor probleem oplossing voor het oplossen va
 
 Met deze opdracht wordt een dialoog venster weer gegeven met informatie over de status van de samen voeging.
 
-![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/01.png" alt-text="Scherm afbeelding van het dialoog venster Workplace Join voor Windows. Tekst met een e-mail adres geeft aan dat een bepaald apparaat aan een werk plek is gekoppeld." border="false":::
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Stap 2: de deelname status van de hybride Azure AD evalueren 
 
@@ -65,7 +65,7 @@ Als het apparaat niet aan hybride Azure AD is toegevoegd, kunt u proberen om hyb
 
 - Een onjuist geconfigureerde AD FS-of Azure AD-of netwerk problemen
 
-    ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="Scherm afbeelding van het dialoog venster Workplace Join voor Windows. Tekst met een e-mail adres geeft aan dat een bepaald apparaat aan een werk plek is gekoppeld." border="false":::
     
    - Autoworkplace.exe kan niet op de achtergrond worden geverifieerd met Azure AD of AD FS. Dit kan worden veroorzaakt door ontbrekende of onjuist geconfigureerde AD FS (voor federatieve domeinen) of ontbrekende of niet-geconfigureerde Azure AD-naadloze single Sign-On (voor beheerde domeinen) of netwerk problemen. 
    - Het kan zijn dat multi-factor Authentication (MFA) is ingeschakeld/geconfigureerd voor de gebruiker en WIAORMULTIAUTHN niet is geconfigureerd op de AD FS-server. 
@@ -76,7 +76,7 @@ Als het apparaat niet aan hybride Azure AD is toegevoegd, kunt u proberen om hyb
    - Uw organisatie maakt gebruik van de naadloze eenmalige aanmelding van Azure AD `https://autologon.microsoftazuread-sso.com` of is `https://aadg.windows.net.nsatc.net` niet aanwezig op de intranet instellingen van het apparaat, en het is niet **mogelijk om updates van de status balk via script in te** scha kelen voor de intranet zone.
 - U bent niet aangemeld als een domein gebruiker
 
-   ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="Scherm afbeelding van het dialoog venster Workplace Join voor Windows. Tekst met een e-mail adres geeft aan dat een bepaald apparaat aan een werk plek is gekoppeld." border="false":::
 
    Er zijn verschillende redenen waarom dit kan gebeuren:
 
@@ -84,11 +84,11 @@ Als het apparaat niet aan hybride Azure AD is toegevoegd, kunt u proberen om hyb
    - De client kan geen verbinding maken met een domein controller.    
 - Er is een quotum bereikt
 
-    ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="Scherm afbeelding van het dialoog venster Workplace Join voor Windows. Tekst met een e-mail adres geeft aan dat een bepaald apparaat aan een werk plek is gekoppeld." border="false":::
 
 - De service reageert niet 
 
-    ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="Scherm afbeelding van het dialoog venster Workplace Join voor Windows. Tekst met een e-mail adres geeft aan dat een bepaald apparaat aan een werk plek is gekoppeld." border="false":::
 
 U kunt de status informatie ook vinden in het gebeurtenis logboek onder: **toepassingen en services Log\Microsoft-Workplace toevoegen**
   
@@ -97,7 +97,7 @@ U kunt de status informatie ook vinden in het gebeurtenis logboek onder: **toepa
 - Uw computer is niet verbonden met het interne netwerk van uw organisatie of een VPN met een verbinding met uw on-premises AD-domein controller.
 - U bent aangemeld bij uw computer met een lokale computer account. 
 - Problemen met de service configuratie: 
-   - De AD FS-server is niet geconfigureerd voor de ondersteuning van **WIAORMULTIAUTHN**. 
+   - De AD FS-server is niet geconfigureerd voor de ondersteuning van **WIAORMULTIAUTHN** . 
    - Het forest van uw computer heeft geen object voor het service verbindings punt dat verwijst naar de naam van het geverifieerde domein in azure AD 
    - Of als uw domein wordt beheerd, is naadloze SSO niet geconfigureerd of werkt het niet.
    - Een gebruiker heeft de limiet van apparaten bereikt. 

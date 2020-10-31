@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0bbb0da0ce39aab9fba843dda99b45ea59881ce2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2fb8b24d5d44ced8f9e363008354acf5bc2fde40
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490540"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081872"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hoe biedt Azure Cosmos DB hoge Beschik baarheid?
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB biedt hoge Beschik baarheid op twee primaire manieren. Ten eerste Azure Cosmos DB repliceert gegevens over regio's die zijn geconfigureerd binnen een Cosmos-account. Ten tweede houdt Azure Cosmos DB 4 replica's van gegevens in een regio bij.
 
@@ -73,7 +74,7 @@ Voor zeldzame gevallen van regionale uitval zorgt Azure Cosmos DB ervoor dat uw 
 * Zodra de eerder beïnvloede schrijf regio herstelt, wordt deze automatisch beschikbaar als een lees regio. U kunt teruggaan naar de herstelde regio als de schrijf regio. U kunt de regio's wijzigen met behulp van [Power shell, Azure CLI of Azure Portal](how-to-manage-database-account.md#manual-failover). Er zijn **geen gegevens of beschik baarheids verlies** vóór, tijdens of nadat u de schrijf regio hebt overgeschakeld en uw toepassing Maxi maal beschikbaar is.
 
 > [!IMPORTANT]
-> Het wordt ten zeerste aangeraden om de Azure Cosmos-accounts te configureren die worden gebruikt voor productie werkbelastingen om **automatische failover mogelijk te maken**. Voor een hand matige failover is een verbinding tussen de secundaire en primaire schrijf regio vereist om een consistentie controle te volt ooien om ervoor te zorgen dat er geen gegevens verloren gaan tijdens de failover. Als de primaire regio niet beschikbaar is, kan deze consistentie controle niet worden voltooid en zal de hand matige failover mislukken, wat leidt tot verlies van schrijf Beschik baarheid voor de duur van de regionale storing.
+> Het wordt ten zeerste aangeraden om de Azure Cosmos-accounts te configureren die worden gebruikt voor productie werkbelastingen om **automatische failover mogelijk te maken** . Voor een hand matige failover is een verbinding tussen de secundaire en primaire schrijf regio vereist om een consistentie controle te volt ooien om ervoor te zorgen dat er geen gegevens verloren gaan tijdens de failover. Als de primaire regio niet beschikbaar is, kan deze consistentie controle niet worden voltooid en zal de hand matige failover mislukken, wat leidt tot verlies van schrijf Beschik baarheid voor de duur van de regionale storing.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Accounts met meerdere regio's met een regio voor één schrijf bewerking (Lees regio lezen)
 
@@ -89,7 +90,7 @@ Voor zeldzame gevallen van regionale uitval zorgt Azure Cosmos DB ervoor dat uw 
 
 * Latere leesbewerkingen worden omgeleid naar de herstelde regio zonder dat er wijzigingen in uw toepassingscode nodig zijn. Tijdens zowel de failover als het opnieuw deel nemen aan een eerder mislukte regio, worden Lees consistentie garanties door Azure Cosmos DB door lopen.
 
-* Zelfs in een zeldzame en vervelend-gebeurtenis wanneer de Azure-regio permanent is onherstelbare, is er geen gegevens verlies als uw Azure Cosmos-account met meerdere regio's is geconfigureerd met *sterke* consistentie. In het geval van een permanente onherstelbare-schrijf regio, een Azure Cosmos-account met meerdere regio's dat is geconfigureerd met consistentie van afhankelijkheid, is het venster voor mogelijk gegevens verlies beperkt tot het verouderde venster (*k* of *T*) waarbij K = 100000 updates en T = 5 minuten. Voor sessie, consistent voor voegsel en uiteindelijke consistentie niveaus geldt een maximum van 15 minuten voor het venster van het potentiële gegevens verlies. Zie voor meer informatie over RTO-en RPO-doelen voor Azure Cosmos DB [consistentie niveaus en gegevens duurzaamheid](./consistency-levels.md#rto)
+* Zelfs in een zeldzame en vervelend-gebeurtenis wanneer de Azure-regio permanent is onherstelbare, is er geen gegevens verlies als uw Azure Cosmos-account met meerdere regio's is geconfigureerd met *sterke* consistentie. In het geval van een permanente onherstelbare-schrijf regio, een Azure Cosmos-account met meerdere regio's dat is geconfigureerd met consistentie van afhankelijkheid, is het venster voor mogelijk gegevens verlies beperkt tot het verouderde venster ( *k* of *T* ) waarbij K = 100000 updates en T = 5 minuten. Voor sessie, consistent voor voegsel en uiteindelijke consistentie niveaus geldt een maximum van 15 minuten voor het venster van het potentiële gegevens verlies. Zie voor meer informatie over RTO-en RPO-doelen voor Azure Cosmos DB [consistentie niveaus en gegevens duurzaamheid](./consistency-levels.md#rto)
 
 ## <a name="availability-zone-support"></a>Ondersteuning voor beschikbaarheids zone
 
@@ -131,7 +132,7 @@ Beschikbaarheidszones kan worden ingeschakeld via:
 
 * [Azure-CLI](manage-with-cli.md#add-or-remove-regions)
 
-* [Azure Resource Manager-sjablonen](./manage-with-templates.md)
+* [Azure Resource Manager sjablonen](./manage-with-templates.md)
 
 ## <a name="building-highly-available-applications"></a>Maxi maal beschik bare toepassingen bouwen
 

@@ -6,14 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 0adb346a693beaa905438cfdc1249c1646c28811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88608779"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079335"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Kiezen tussen ingerichte door Voer en serverloos
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB is beschikbaar in twee verschillende capaciteits modi: [ingerichte door Voer](set-throughput.md) en [serverloos](serverless.md). U kunt exact dezelfde database bewerkingen uitvoeren in beide modi, maar de manier waarop deze bewerkingen worden gefactureerd, is een wortel verschil. In de volgende video worden de belangrijkste verschillen tussen deze modi beschreven en hoe deze worden aangepast aan verschillende soorten workloads:
 
@@ -42,20 +43,20 @@ Azure Cosmos DB is beschikbaar in twee verschillende capaciteits modi: [ingerich
 In sommige gevallen is het mogelijk niet duidelijk of ingerichte door Voer of serverloos moet worden gekozen voor een bepaalde werk belasting. Om u te helpen bij deze beslissing, kunt u het volgende schatten:
 
 - De vereisten voor de **burstie** van uw werk belasting, dat is de maximale hoeveelheid RUs die u in één seconde moet gebruiken
-- Uw totale **verwachte verbruik**, dat wil zeggen wat het totale aantal RUs is dat u gedurende een maand kunt gebruiken (dit kan worden geschat met behulp van de tabel die [hier](plan-manage-costs.md#estimating-serverless-costs)wordt weer gegeven).
+- Uw totale **verwachte verbruik** , dat wil zeggen wat het totale aantal RUs is dat u gedurende een maand kunt gebruiken (dit kan worden geschat met behulp van de tabel die [hier](plan-manage-costs.md#estimating-serverless-costs)wordt weer gegeven).
 
 Als uw werk belasting vereist dat er meer dan 5.000 RU per seconde is, moet de ingerichte door voer worden gekozen, omdat serverloze containers de bovenstaande limiet niet mogen overschrijden. Als dat niet het geval is, kunt u de kosten van beide modi vergelijken op basis van het verwachte verbruik.
 
-**Voor beeld 1**: een werk belasting gaat naar maxi maal 10.000 ru/s, en verbruikt een totaal van 20.000.000 RUs voor een maand.
+**Voor beeld 1** : een werk belasting gaat naar maxi maal 10.000 ru/s, en verbruikt een totaal van 20.000.000 RUs voor een maand.
 
 - Alleen de ingerichte doorvoer modus kan een door Voer van 10.000 RU/s leveren.
 
-**Voor beeld 2**: een werk belasting wordt naar verwachting van maxi maal 500 ru/s, en het totaal van 20.000.000 RUs voor een maand verbruikt.
+**Voor beeld 2** : een werk belasting wordt naar verwachting van maxi maal 500 ru/s, en het totaal van 20.000.000 RUs voor een maand verbruikt.
 
 - In de ingerichte doorvoer modus, zou u een container met 500 RU/s inrichten voor een maandelijkse prijs van: $0,008 * 5 * 730 = **$29,20**
 - In de serverloze modus betaalt u voor het verbruikte RUs: $0,25 * 20 = **$5,00**
 
-**Voor beeld 3**: een werk belasting gaat naar maxi maal 500 ru/s, en verbruikt een totaal van 250.000.000 RUs voor een maand.
+**Voor beeld 3** : een werk belasting gaat naar maxi maal 500 ru/s, en verbruikt een totaal van 250.000.000 RUs voor een maand.
 
 - In de ingerichte doorvoer modus, zou u een container met 500 RU/s inrichten voor een maandelijkse prijs van: $0,008 * 5 * 730 = **$29,20**
 - In de serverloze modus betaalt u voor het verbruikte RUs: $0,25 * 250 = **$62,50**

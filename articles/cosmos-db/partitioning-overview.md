@@ -6,20 +6,21 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 353abe5ac55e49e01f6a99f72307b8525a72fc00
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7c05ca6462d49d1d41791e5b93b7723ac681d448
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281124"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080829"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionering en horizontaal schalen in Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB maakt gebruik van partitionering om afzonderlijke containers in een Data Base te schalen om te voldoen aan de prestatie behoeften van uw toepassing. In partitioneren worden de items in een container onderverdeeld in afzonderlijke subsets met de naam *logische partities*. Logische partities worden gevormd op basis van de waarde van een *partitie sleutel* die is gekoppeld aan elk item in een container. Alle items in een logische partitie hebben dezelfde partitie sleutel waarde.
+Azure Cosmos DB maakt gebruik van partitionering om afzonderlijke containers in een Data Base te schalen om te voldoen aan de prestatie behoeften van uw toepassing. In partitioneren worden de items in een container onderverdeeld in afzonderlijke subsets met de naam *logische partities* . Logische partities worden gevormd op basis van de waarde van een *partitie sleutel* die is gekoppeld aan elk item in een container. Alle items in een logische partitie hebben dezelfde partitie sleutel waarde.
 
 Een container bevat bijvoorbeeld items. Elk item heeft een unieke waarde voor de `UserID` eigenschap. Als `UserID` fungeert als de partitie sleutel voor de items in de container en er 1.000 unieke `UserID` waarden zijn, worden er voor de container 1.000 logische partities gemaakt.
 
-Naast een partitie sleutel die de logische partitie van het item bepaalt, heeft elk item in een container een *item-id* (uniek binnen een logische partitie). Als de partitie sleutel en de *item-id* worden gecombineerd, wordt de *index*van het item gemaakt, waarmee het item op unieke wijze wordt geïdentificeerd. Het [kiezen van een partitie sleutel](#choose-partitionkey) is een belang rijke beslissing die invloed heeft op de prestaties van uw toepassing.
+Naast een partitie sleutel die de logische partitie van het item bepaalt, heeft elk item in een container een *item-id* (uniek binnen een logische partitie). Als de partitie sleutel en de *item-id* worden gecombineerd, wordt de *index* van het item gemaakt, waarmee het item op unieke wijze wordt geïdentificeerd. Het [kiezen van een partitie sleutel](#choose-partitionkey) is een belang rijke beslissing die invloed heeft op de prestaties van uw toepassing.
 
 In dit artikel wordt de relatie tussen logische en fysieke partities uitgelegd. Daarnaast worden de aanbevolen procedures voor het partitioneren beschreven en wordt een uitgebreide weer gave geboden op de manier waarop horizontale schaling werkt in Azure Cosmos DB. Het is niet nodig om deze interne gegevens te begrijpen om uw partitie sleutel te selecteren, maar we hebben deze gedekt, zodat u over de duidelijkheid beschikt over de werking van Azure Cosmos DB.
 
@@ -77,7 +78,7 @@ In de volgende afbeelding ziet u hoe logische partities worden toegewezen aan fy
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Een partitiesleutel kiezen
 
-Een partitie sleutel bestaat uit twee onderdelen: het pad van de **partitie sleutel** en de waarde van de **partitie sleutel**. U kunt bijvoorbeeld een item {"userId": "Andrew", "worksFor": "micro soft"} als u "userId" als de partitie sleutel kiest, de volgende twee partitie sleutel onderdelen zijn:
+Een partitie sleutel bestaat uit twee onderdelen: het pad van de **partitie sleutel** en de waarde van de **partitie sleutel** . U kunt bijvoorbeeld een item {"userId": "Andrew", "worksFor": "micro soft"} als u "userId" als de partitie sleutel kiest, de volgende twee partitie sleutel onderdelen zijn:
 
 * Het pad van de partitie sleutel (bijvoorbeeld: "/userId"). Het pad naar de partitie sleutel accepteert alfanumerieke tekens en een onderstrepings teken (_). U kunt geneste objecten ook gebruiken met behulp van de standaard notatie voor paden (/).
 
@@ -113,20 +114,20 @@ Als uw container kan worden uitgebreid naar meer dan een paar fysieke partities,
 
 ## <a name="using-item-id-as-the-partition-key"></a>Item-ID als de partitie sleutel gebruiken
 
-Als uw container een eigenschap heeft die een breed scala aan mogelijke waarden heeft, is het waarschijnlijk een goede keuze voor de partitie sleutel. Een mogelijk voor beeld van een dergelijke eigenschap is de *item-id*. Voor kleine alleen-lezen containers of schrijf bare containers van elke grootte is de *item-id* natuurlijk een fantastische keuze voor de partitie sleutel.
+Als uw container een eigenschap heeft die een breed scala aan mogelijke waarden heeft, is het waarschijnlijk een goede keuze voor de partitie sleutel. Een mogelijk voor beeld van een dergelijke eigenschap is de *item-id* . Voor kleine alleen-lezen containers of schrijf bare containers van elke grootte is de *item-id* natuurlijk een fantastische keuze voor de partitie sleutel.
 
-De *item-id* van de systeem eigenschap bevindt zich in elk item in de container. Mogelijk hebt u andere eigenschappen die een logische ID van uw item vertegenwoordigen. In veel gevallen zijn dit ook fantastische opties voor partitie sleutels om dezelfde redenen als de *item-id*.
+De *item-id* van de systeem eigenschap bevindt zich in elk item in de container. Mogelijk hebt u andere eigenschappen die een logische ID van uw item vertegenwoordigen. In veel gevallen zijn dit ook fantastische opties voor partitie sleutels om dezelfde redenen als de *item-id* .
 
 De *item-id* is een fantastische partitie sleutel keuze om de volgende redenen:
 
 * Er zijn een breed scala aan mogelijke waarden (één unieke *item-id* per item).
 * Omdat er een unieke *item-id* per item is, heeft de *item-id* een uitstekende taak op gelijkmatige verdeling van het gebruik van ru en gegevens opslag.
-* U kunt eenvoudig efficiënte punt Lees bewerkingen uitvoeren omdat u altijd de partitie sleutel van een item weet als u de bijbehorende *item-id*kent.
+* U kunt eenvoudig efficiënte punt Lees bewerkingen uitvoeren omdat u altijd de partitie sleutel van een item weet als u de bijbehorende *item-id* kent.
 
 Hieronder vindt u enkele aandachtspunten bij het selecteren van de *item-id* als de partitie sleutel:
 
-* Als de *item-id* de partitie sleutel is, wordt deze in de gehele container een unieke id. U kunt geen items met een dubbele *item-id*hebben.
-* Als u een lees-zware container hebt die een groot aantal [fysieke partities](partitioning-overview.md#physical-partitions)heeft, zijn query's efficiënter als ze een gelijkheids filter met de *item-id*hebben.
+* Als de *item-id* de partitie sleutel is, wordt deze in de gehele container een unieke id. U kunt geen items met een dubbele *item-id* hebben.
+* Als u een lees-zware container hebt die een groot aantal [fysieke partities](partitioning-overview.md#physical-partitions)heeft, zijn query's efficiënter als ze een gelijkheids filter met de *item-id* hebben.
 * Opgeslagen procedures of triggers kunnen niet over meerdere logische partities worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen

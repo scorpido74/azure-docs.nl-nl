@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/10/2019
 author: SnehaGunda
 ms.author: sngun
-ms.openlocfilehash: c03e4db30d590df21a8ceb3c483ece4b59e548d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61814082ebe9828a08da1e8786890b500c239082
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397314"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081838"
 ---
 # <a name="system-document-properties"></a>Eigenschappen van systeem document
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB heeft [systeem eigenschappen](/rest/api/cosmos-db/databases) , zoals ```_ts``` ,,, ```_self``` ```_attachments``` ```_rid``` en ```_etag``` op elk document. Daarnaast voegt de Gremlin-engine de ```inVPartition```- en ```outVPartition```-eigenschappen toe aan randen. Deze eigenschappen zijn standaard beschikbaar voor navigatie. Het is echter mogelijk om specifieke eigenschappen toe te voegen, of al deze, in Gremlin traversal.
 

@@ -1,14 +1,14 @@
 ---
 title: Koppel uw partner-ID om uw impact op gedelegeerde resources bij te houden
 description: Meer informatie over hoe u uw partner-ID kunt koppelen aan de klant die u beheert via Azure Lighthouse.
-ms.date: 10/13/2020
+ms.date: 10/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 95483cfabb7632182a7c23ae4963f2d38a2bd2c3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019903"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080274"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Koppel uw partner-ID om uw impact op gedelegeerde resources bij te houden 
 
@@ -22,7 +22,7 @@ Als u [klanten onboardt met behulp van Azure resource management-sjablonen](onbo
 
 Gebruik het volgende proces om uw partner-ID te koppelen (en het tegoed van de partner in te scha kelen, indien van toepassing) bij onboarding van klanten via Azure Resource Manager sjablonen (ARM-sjablonen). U moet weten wat uw [MPN-partner-id](/partner-center/partner-center-account-setup#locate-your-mpn-id) is om deze stappen uit te voeren. Zorg ervoor dat u de **bijbehorende MPN-id** gebruikt die op uw partnerprofiel wordt weergegeven.
 
-Ter vereenvoudiging raden we u aan om een Service-Principal-account in uw Tenant te maken, deze te koppelen aan de **gekoppelde MPN-id**en vervolgens toegang te verlenen aan elke klant met een [ingebouwde Azure-rol die in aanmerking komt voor PEC](/partner-center/azure-roles-perms-pec).
+Ter vereenvoudiging raden we u aan om een Service-Principal-account in uw Tenant te maken, deze te koppelen aan de **gekoppelde MPN-id** en vervolgens toegang te verlenen aan elke klant met een [ingebouwde Azure-rol die in aanmerking komt voor PEC](/partner-center/azure-roles-perms-pec).
 
 1. [Maak een Service-Principal-account](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) in uw Tenant beheren. Voor dit voor beeld gebruiken we het *Automation-account* van de naam provider voor deze service-principal.
 1. Gebruik het account van de Service-Principal [om een koppeling te maken naar de gekoppelde MPN-id](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) in uw Tenant voor beheer. U hoeft dit slechts één keer te doen.
@@ -42,7 +42,9 @@ Zodra het account is [gekoppeld aan de gekoppelde MPN-id](../../cost-management-
 
 U kunt [de PEC-Details in het Azure Portal bekijken](/partner-center/partner-earned-credit-explanation#azure-cost-management) en bevestigen welke kosten het voor deel van PEC hebben ontvangen. Houd er rekening mee dat de PEC alleen van toepassing is op CSP-klanten die de MCA hebben ondertekend en onder het Azure-abonnement vallen.
 
-Als u de bovenstaande stappen hebt gevolgd en de koppeling niet ziet, opent u een ondersteunings aanvraag in de Azure Portal.
+Als u de bovenstaande stappen hebt gevolgd en de verwachte koppeling niet ziet, opent u een ondersteunings aanvraag in de Azure Portal.
+
+U kunt ook de [SDK van partner Center](/partner-center/develop/get-invoice-unbilled-consumption-lineitems) gebruiken en filteren `rateOfPartnerEarnedCredit` om de PEC-verificatie voor een abonnement te automatiseren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

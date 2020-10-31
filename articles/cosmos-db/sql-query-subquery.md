@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16be1b91d007ca2dbc88405cfc55ff519f51ee41
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870561"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081533"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Voor beelden van SQL-subquery voor Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Een subquery is een query die is genest in een andere query. Een subquery wordt ook wel een binnenste query of binnenste selectie genoemd. De instructie die een subquery bevat, wordt meestal een buitenste query genoemd.
 
@@ -23,16 +24,16 @@ In dit artikel worden SQL-subquery's en de veelvoorkomende use cases in Azure Co
 
 Er zijn twee hoofd typen subquery's:
 
-* **Gecorreleerd**: een subquery die verwijst naar waarden van de buitenste query. De subquery wordt eenmaal geëvalueerd voor elke rij die de buitenste query processen uitvoert.
-* **Niet-correled**: een subquery die onafhankelijk is van de buitenste query. Het kan zelfstandig worden uitgevoerd, zonder dat hiervoor de buitenste query nodig is.
+* **Gecorreleerd** : een subquery die verwijst naar waarden van de buitenste query. De subquery wordt eenmaal geëvalueerd voor elke rij die de buitenste query processen uitvoert.
+* **Niet-correled** : een subquery die onafhankelijk is van de buitenste query. Het kan zelfstandig worden uitgevoerd, zonder dat hiervoor de buitenste query nodig is.
 
 > [!NOTE]
 > Azure Cosmos DB ondersteunt alleen gecorreleerde subquery's.
 
 Subquery's kunnen verder worden geclassificeerd op basis van het aantal rijen en kolommen dat ze retour neren. Er zijn drie typen:
-* **Tabel**: retourneert meerdere rijen en meerdere kolommen.
-* **Meerdere waarden**: retourneert meerdere rijen en één kolom.
-* **Scalair**: retourneert één rij en één kolom.
+* **Tabel** : retourneert meerdere rijen en meerdere kolommen.
+* **Meerdere waarden** : retourneert meerdere rijen en één kolom.
+* **Scalair** : retourneert één rij en één kolom.
 
 SQL-query's in Azure Cosmos DB retour neren altijd één kolom (een eenvoudige waarde of een complex document). Daarom zijn alleen multi-waarden en scalaire subquery's van toepassing op Azure Cosmos DB. U kunt een subquery met meerdere waarden alleen in de component FROM als een relationele expressie gebruiken. U kunt een scalaire subquery gebruiken als scalaire expressie in de component SELECT of WHERE, of als een relationele expressie in de component FROM.
 

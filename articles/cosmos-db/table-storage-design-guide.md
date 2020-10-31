@@ -8,14 +8,15 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 94aa699d8daab7e5e7ff4ae82e5d09ab1475c07e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477586"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080002"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Ontwerphandleiding voor Azure Table Storage-tabel: schaalbare en krachtige tabellen
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -123,7 +124,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 </table>
 
 
-Tot nu toe lijkt dit ontwerp op een tabel in een relationele data base. De belangrijkste verschillen zijn de verplichte kolommen en de mogelijkheid om meerdere entiteits typen op te slaan in dezelfde tabel. Daarnaast heeft elk van de door de gebruiker gedefinieerde eigenschappen, zoals voor **naam** of **leeftijd**, een gegevens type, zoals geheel getal of teken reeks, net als een kolom in een relationele data base. In tegens telling tot een relationele data base betekent het schema niet-minder aard van tabel opslag dat een eigenschap niet hetzelfde gegevens type hoeft te hebben voor elke entiteit. Als u complexe gegevens typen in één eigenschap wilt opslaan, moet u een serialisatie-indeling gebruiken, zoals JSON of XML. Zie voor meer informatie wat is de [Table Storage-gegevens model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
+Tot nu toe lijkt dit ontwerp op een tabel in een relationele data base. De belangrijkste verschillen zijn de verplichte kolommen en de mogelijkheid om meerdere entiteits typen op te slaan in dezelfde tabel. Daarnaast heeft elk van de door de gebruiker gedefinieerde eigenschappen, zoals voor **naam** of **leeftijd** , een gegevens type, zoals geheel getal of teken reeks, net als een kolom in een relationele data base. In tegens telling tot een relationele data base betekent het schema niet-minder aard van tabel opslag dat een eigenschap niet hetzelfde gegevens type hoeft te hebben voor elke entiteit. Als u complexe gegevens typen in één eigenschap wilt opslaan, moet u een serialisatie-indeling gebruiken, zoals JSON of XML. Zie voor meer informatie wat is de [Table Storage-gegevens model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 De keuze van `PartitionKey` en `RowKey` is fundamenteel voor een goed ontwerp van de tabel. Elke entiteit die is opgeslagen in een tabel moet een unieke combi natie van `PartitionKey` en hebben `RowKey` . Net als bij sleutels in een relationele-database `PartitionKey` tabel `RowKey` worden de waarden en geïndexeerd voor het maken van een geclusterde index die snelle zoek pogingen mogelijk maakt. In tabel opslag worden echter geen secundaire indexen gemaakt. Dit zijn dus de enige twee geïndexeerde eigenschappen (sommige van de patronen die verderop worden beschreven, laten zien hoe u deze zicht bare beperking kunt omzeilen).  
 
@@ -137,7 +138,7 @@ In tabel opslag, een afzonderlijk knoop punt Services, een of meer volledige par
 Zie [Microsoft Azure Storage: een Maxi maal beschik bare service voor Cloud opslag met sterke consistentie](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)voor meer informatie over de interne Details van tabel opslag, en met name hoe het beheert van partities.  
 
 ### <a name="entity-group-transactions"></a>Trans acties van entiteits groep
-In tabel opslag zijn EGTs (entity Group trans Actions) het enige ingebouwde mechanisme voor het uitvoeren van atomische updates op meerdere entiteiten. EGTs worden ook wel batch- *trans acties*genoemd. EGTs kan alleen worden uitgevoerd op entiteiten die zijn opgeslagen in dezelfde partitie (het delen van dezelfde partitie sleutel in een bepaalde tabel), dus wanneer u een Atomic-transactioneel gedrag voor meerdere entiteiten nodig hebt, moet u ervoor zorgen dat deze entiteiten zich in dezelfde partitie bevinden. Dit is vaak een reden om meerdere entiteits typen in dezelfde tabel (en partitie) te bewaren en niet meerdere tabellen te gebruiken voor verschillende entiteits typen. Eén EGT kan aan Maxi maal 100 entiteiten worden gebruikt.  Als u meerdere gelijktijdige EGTs voor verwerking verzendt, is het belang rijk om ervoor te zorgen dat deze EGTs niet worden uitgevoerd op entiteiten die gemeen schappelijk zijn voor EGTs. Anders wordt de verwerking van Risico's vertraagd.
+In tabel opslag zijn EGTs (entity Group trans Actions) het enige ingebouwde mechanisme voor het uitvoeren van atomische updates op meerdere entiteiten. EGTs worden ook wel batch- *trans acties* genoemd. EGTs kan alleen worden uitgevoerd op entiteiten die zijn opgeslagen in dezelfde partitie (het delen van dezelfde partitie sleutel in een bepaalde tabel), dus wanneer u een Atomic-transactioneel gedrag voor meerdere entiteiten nodig hebt, moet u ervoor zorgen dat deze entiteiten zich in dezelfde partitie bevinden. Dit is vaak een reden om meerdere entiteits typen in dezelfde tabel (en partitie) te bewaren en niet meerdere tabellen te gebruiken voor verschillende entiteits typen. Eén EGT kan aan Maxi maal 100 entiteiten worden gebruikt.  Als u meerdere gelijktijdige EGTs voor verwerking verzendt, is het belang rijk om ervoor te zorgen dat deze EGTs niet worden uitgevoerd op entiteiten die gemeen schappelijk zijn voor EGTs. Anders wordt de verwerking van Risico's vertraagd.
 
 Met EGTs kunt u ook een mogelijke trans actie in uw ontwerp introduceren. Door meer partities te gebruiken, wordt de schaal baarheid van uw toepassing verhoogd, omdat Azure meer mogelijkheden heeft voor taak verdelings aanvragen op verschillende knoop punten. Maar dit kan de mogelijkheid van uw toepassing om atomische trans acties uit te voeren, beperken en een sterke consistentie voor uw gegevens garanderen. Daarnaast zijn er specifieke schaalbaarheids doelen op het niveau van een partitie die de door Voer van trans acties die u voor één knoop punt kan verwachten, kunnen beperken.
 
@@ -205,12 +206,12 @@ In de volgende voor beelden wordt ervan uitgegaan dat er in tabel opslag werk ne
 Hier volgen enkele algemene richt lijnen voor het ontwerpen van Table-opslag query's. De filter syntaxis die in de volgende voor beelden wordt gebruikt, is afkomstig uit de tabel opslag REST API. Zie [query-entiteiten](/rest/api/storageservices/Query-Entities)voor meer informatie.  
 
 * Een *Point-query* is de meest efficiënte zoek opdracht en wordt aanbevolen voor Zoek opdrachten met hoge volumes of lookups waarvoor de laagste latentie is vereist. Een dergelijke query kan de indexen gebruiken om een afzonderlijke entiteit efficiënt te vinden door zowel de als-waarden op te geven `PartitionKey` `RowKey` . Bijvoorbeeld: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
-* Tweede beste is een *bereik query*. Het gebruikt de `PartitionKey` en filtert op een reeks `RowKey` waarden om meer dan één entiteit te retour neren. De `PartitionKey` waarde identificeert een specifieke partitie en de `RowKey` waarden identificeren een subset van de entiteiten in die partitie. Bijvoorbeeld: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
-* Derde beste is een *partitie scan*. Het gebruikt de `PartitionKey` -en-filters op een andere niet-sleutel eigenschap en kan meer dan één entiteit retour neren. De `PartitionKey` waarde identificeert een specifieke partitie en de eigenschapwaarden worden geselecteerd voor een subset van de entiteiten in die partitie. Bijvoorbeeld: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
+* Tweede beste is een *bereik query* . Het gebruikt de `PartitionKey` en filtert op een reeks `RowKey` waarden om meer dan één entiteit te retour neren. De `PartitionKey` waarde identificeert een specifieke partitie en de `RowKey` waarden identificeren een subset van de entiteiten in die partitie. Bijvoorbeeld: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
+* Derde beste is een *partitie scan* . Het gebruikt de `PartitionKey` -en-filters op een andere niet-sleutel eigenschap en kan meer dan één entiteit retour neren. De `PartitionKey` waarde identificeert een specifieke partitie en de eigenschapwaarden worden geselecteerd voor een subset van de entiteiten in die partitie. Bijvoorbeeld: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
 * Een *tabel scan* bevat niet de `PartitionKey` , en is inefficiënt omdat alle partities die de tabel vormen, worden doorzocht op overeenkomende entiteiten. Er wordt een tabel scan uitgevoerd, ongeacht of het filter gebruikmaakt van de `RowKey` . Bijvoorbeeld: `$filter=LastName eq 'Jones'`.  
 * Azure Table Storage-query's waarmee meerdere entiteiten worden geretourneerd, worden in `PartitionKey` en `RowKey` volg orde gesorteerd. Als u wilt voor komen dat de entiteiten in de client worden gebruikt, kiest u een `RowKey` die de meest voorkomende sorteer volgorde definieert. Query resultaten die door de Azure-Table-API in Azure Cosmos DB zijn geretourneerd, worden niet gesorteerd op partitie sleutel of rij-sleutel. Zie [verschillen tussen Table-API in azure Cosmos DB en Azure-tabel opslag](table-api-faq.md#table-api-vs-table-storage)voor een gedetailleerde lijst met functie verschillen.
 
-Het gebruik van een '**or**' om een filter op te geven op basis van `RowKey` waarden resulteert in een partitie scan en wordt niet behandeld als een bereik query. Vermijd daarom query's die gebruikmaken van filters, zoals: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
+Het gebruik van een ' **or** ' om een filter op te geven op basis van `RowKey` waarden resulteert in een partitie scan en wordt niet behandeld als een bereik query. Vermijd daarom query's die gebruikmaken van filters, zoals: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
 
 Zie voor voor beelden van code aan de client zijde die de Storage-client bibliotheek gebruikt voor het uitvoeren van efficiënte query's:  
 
@@ -252,7 +253,7 @@ Tabel opslag retourneert query resultaten die in oplopende volg orde zijn gesort
 > [!NOTE]
 > Query resultaten die door de Azure-Table-API in Azure Cosmos DB zijn geretourneerd, worden niet gesorteerd op partitie sleutel of rij-sleutel. Zie [verschillen tussen Table-API in azure Cosmos DB en Azure-tabel opslag](table-api-faq.md#table-api-vs-table-storage)voor een gedetailleerde lijst met functie verschillen.
 
-Sleutels in tabel opslag zijn teken reeks waarden. Om ervoor te zorgen dat numerieke waarden correct worden gesorteerd, moet u ze converteren naar een vaste lengte en ze met nullen aanvullen. Als de waarde van de werk nemer-ID die u gebruikt als het `RowKey` een geheel getal is, moet u bijvoorbeeld werk nemer-id **123** omzetten naar **00000123**. 
+Sleutels in tabel opslag zijn teken reeks waarden. Om ervoor te zorgen dat numerieke waarden correct worden gesorteerd, moet u ze converteren naar een vaste lengte en ze met nullen aanvullen. Als de waarde van de werk nemer-ID die u gebruikt als het `RowKey` een geheel getal is, moet u bijvoorbeeld werk nemer-id **123** omzetten naar **00000123** . 
 
 Veel toepassingen hebben vereisten voor het gebruik van gegevens die in verschillende orders zijn gesorteerd: bijvoorbeeld het sorteren van werk nemers op naam of het samen voegen van de datum. De volgende patronen in de sectie [tabel ontwerp patronen](#table-design-patterns) zijn een alternatief voor het sorteren van de sorteer volgorde voor uw entiteiten:  
 
@@ -494,7 +495,7 @@ De volgende twee filter criteria (één op te geven op basis van de werk nemer-I
 
 Als u een query uitvoert voor een bereik van werk nemers, kunt u een bereik opgeven, gesorteerd op werk nemer-ID-order of een bereik dat is gesorteerd in de e-mailadres volgorde. Zoek naar entiteiten met het juiste voor voegsel in de `RowKey` .  
 
-* Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een werk nemer-ID in het bereik **000100** tot **000199**, gesorteerd in de volg orde van de werk nemer-id, gebruikt u: $filter = (PartitionKey EQ ' empid_Sales ') en (RowKey ge 000100 ') en (RowKey Le ' 000199 ')  
+* Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een werk nemer-ID in het bereik **000100** tot **000199** , gesorteerd in de volg orde van de werk nemer-id, gebruikt u: $filter = (PartitionKey EQ ' empid_Sales ') en (RowKey ge 000100 ') en (RowKey Le ' 000199 ')  
 * Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een e-mail adres dat begint met ' a ', gesorteerd in de e-mailadres volgorde, gebruikt u: $filter = (PartitionKey EQ ' email_Sales ') en (RowKey ge ' a ') en (RowKey lt ' b ')  
 
 Houd er rekening mee dat de filter syntaxis die in de voor gaande voor beelden wordt gebruikt, afkomstig is uit de tabel opslag REST API. Zie [query-entiteiten](/rest/api/storageservices/Query-Entities)voor meer informatie.  
@@ -702,7 +703,7 @@ $filter = (PartitionKey EQ ' Sales ') en (RowKey ge ' empid_000123 ') en (RowKey
 #### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* U moet een geschikt scheidings teken gebruiken waarmee u de waarde eenvoudig kunt parseren `RowKey` : bijvoorbeeld **000123_2012**.  
+* U moet een geschikt scheidings teken gebruiken waarmee u de waarde eenvoudig kunt parseren `RowKey` : bijvoorbeeld **000123_2012** .  
 * U slaat deze entiteit ook op in dezelfde partitie als andere entiteiten die gerelateerde gegevens bevatten voor dezelfde werk nemer. Dit betekent dat u EGTs kunt gebruiken om sterke consistentie te hand haven.
 * U kunt overwegen hoe vaak u de gegevens wilt opvragen om te bepalen of dit patroon geschikt is. Als u bijvoorbeeld in een regel matig toegang hebt tot de gegevens van de controle en de belangrijkste gegevens van werk nemers, moet u deze ook als afzonderlijke entiteiten houden.  
 

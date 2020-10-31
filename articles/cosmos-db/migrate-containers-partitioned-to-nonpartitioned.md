@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 01e61abacac63d698456c3ab25826f9799d2837e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ffd1ff6d18769998dd3a168992566a376ea1cd27
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482278"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080070"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Niet-gepartitioneerde containers migreren naar gepartitioneerde containers
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB ondersteunt het maken van containers zonder een partitie sleutel. Op dit moment kunt u niet-gepartitioneerde containers maken met behulp van Azure CLI en Azure Cosmos DB Sdk's (.net, Java, NodeJs) die een versie hebben die kleiner is dan of gelijk is aan 2. x. U kunt geen niet-gepartitioneerde containers maken met behulp van de Azure Portal. Dergelijke niet-gepartitioneerde containers zijn echter niet elastisch en hebben een vaste opslag capaciteit van 20 GB en doorvoer limiet van 10.000 RU/s.
 

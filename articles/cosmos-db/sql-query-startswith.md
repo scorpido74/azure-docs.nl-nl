@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c64efb92de00291e6381e30af24e76df2b38aee0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1ef1a815469e7fb2dd10311b92a28b828772be7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83847111"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079900"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie begint met de tweede.  
   
@@ -30,7 +31,7 @@ STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
    Is een teken reeks expressie.
   
 *str_expr2*  
-   Is een teken reeks expressie die moet worden vergeleken met het begin van *str_expr1*.
+   Is een teken reeks expressie die moet worden vergeleken met het begin van *str_expr1* .
 
 *bool_expr* Optionele waarde voor het negeren van case. Als deze eigenschap is ingesteld op True, wordt in STARTSWITH een hoofdletter gevoelige zoek opdracht uitgevoerd. Indien niet opgegeven, is deze waarde false.
 

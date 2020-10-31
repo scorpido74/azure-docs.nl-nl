@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e907a3ec2e2521524cdf23e1403ae38a19275aa6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071316"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081056"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Capaciteit van een Azure API Management-exemplaar
 
@@ -42,7 +42,7 @@ Als u de stappen in dit artikel wilt volgen, hebt u het volgende nodig:
 
 ## <a name="what-is-capacity"></a>Wat is capaciteit?
 
-![Metrische capaciteitswaarde](./media/api-management-capacity/capacity-ingredients.png)
+![Diagram waarin de metrische gegevens van de capaciteit worden uitgelegd.](./media/api-management-capacity/capacity-ingredients.png)
 
 **Capaciteit** is een belasting indicator voor een API Management exemplaar. Het weerspiegelt het bronnen gebruik (CPU, geheugen) en de lengte van de netwerk wachtrij. Met het CPU-en geheugen gebruik worden bronnen verbruikt door:
 
@@ -52,7 +52,7 @@ Als u de stappen in dit artikel wilt volgen, hebt u het volgende nodig:
 
 Totale **capaciteit** is een gemiddelde van de eigen waarden van elke eenheid van een API Management-exemplaar.
 
-Hoewel de **capaciteits metriek** is ontworpen om problemen met uw API Management-exemplaar op te sporen, zijn er gevallen waarin problemen niet worden weer gegeven in wijzigingen in de **capaciteits metriek**.
+Hoewel de **capaciteits metriek** is ontworpen om problemen met uw API Management-exemplaar op te sporen, zijn er gevallen waarin problemen niet worden weer gegeven in wijzigingen in de **capaciteits metriek** .
 
 ## <a name="capacity-metric-behavior"></a>Gedrag van capaciteits metriek
 
@@ -78,7 +78,7 @@ De **metriek** voor weinig capaciteit betekent niet noodzakelijkerwijs dat uw AP
 ![Metrische capaciteitswaarde](./media/api-management-capacity/capacity-metric.png)  
 
 1. Navigeer naar uw APIM-instantie in de [Azure Portal](https://portal.azure.com/).
-2. Selecteer **Metrische gegevens**.
+2. Selecteer **Metrische gegevens** .
 3. Selecteer in de sectie paars de optie **capaciteits** metriek van beschik bare metrische gegevens en behoud de standaard **Gem** aggregatie.
 
     > [!TIP]
@@ -99,7 +99,7 @@ De **metriek** voor weinig capaciteit betekent niet noodzakelijkerwijs dat uw AP
 
 + Een lange termijn trend en gemiddeld te bekijken.
 + Het negeren van plotselinge pieken die waarschijnlijk niet zijn gerelateerd aan een toename van de belasting (Zie ' gedrag van capaciteits metriek ' voor uitleg).
-+ Het bijwerken of schalen van uw exemplaar, wanneer de waarde van de **capaciteit**groter is dan 60% of 70% gedurende een langere periode (bijvoorbeeld 30 minuten). Verschillende waarden kunnen beter werken voor uw service of scenario.
++ Het bijwerken of schalen van uw exemplaar, wanneer de waarde van de **capaciteit** groter is dan 60% of 70% gedurende een langere periode (bijvoorbeeld 30 minuten). Verschillende waarden kunnen beter werken voor uw service of scenario.
 
 >[!TIP]  
 > Als u uw verkeer vooraf kunt schatten, test u uw APIM-exemplaar op workloads die u verwacht. U kunt de belasting van de aanvraag op uw Tenant geleidelijk verhogen en controleren welke waarde de capaciteits metriek overeenkomt met uw piek belasting. Volg de stappen in de vorige sectie om Azure Portal te gebruiken om te begrijpen hoeveel capaciteit er op een bepaald moment wordt gebruikt.

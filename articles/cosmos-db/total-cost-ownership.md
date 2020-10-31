@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: a058e7a23c36dcaca16c3cce1be1ca826d472bc0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb06d101170685bea5ff231612e9ffbf8df467da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476991"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079288"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Totale eigendoms kosten (TCO) met Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB is ontworpen met verfijnde multitenancy en verfijnd resourcebeheer Vanwege dit ontwerp kost werken met Azure Cosmos DB aanzienlijk minder, waardoor gebruikers geld besparen. Momenteel biedt Azure Cosmos DB ondersteuning voor meer dan 280 workloads van klanten op één computer, waarbij de dichtheid voortdurend toeneemt, en voor duizenden workloads van klanten binnen een cluster. Het zorgt voor een taakverdeling van replica’s voor de workloads van klanten op verschillende computers in een cluster, en in verschillende clusters binnen een datacenter. Ga voor meer informatie naar [Azure Cosmos DB: de grens van wereld wijd gedistribueerde data bases te pushen](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Vanwege resource-governance, multitenancy en systeem eigen integratie met de rest van de Azure-infra structuur, is Azure Cosmos DB gemiddeld 4 tot 6 keer goed koper dan MongoDB, Cassandra of andere OSS-NoSQL die op IaaS worden uitgevoerd en Maxi maal 10 keer goed koper zijn dan de data base-engines die on-premises worden uitgevoerd. Zie het artikel over [de totale kosten van (niet) eigendom van een NoSQL data base-Cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 

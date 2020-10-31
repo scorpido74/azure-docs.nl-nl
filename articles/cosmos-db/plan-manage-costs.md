@@ -7,14 +7,15 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 278603887fe7d47b4be52b04f9f0864be1a1b75b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3a1bb36910b09d24c3328c8fc8ae94e1e3321642
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482244"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080699"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Kosten plannen en beheren voor Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 In dit artikel wordt beschreven hoe u de kosten voor Azure Cosmos DB kunt plannen en beheren:
 
@@ -45,7 +46,7 @@ In de volgende scherm afbeelding ziet u de schatting van de door Voer en de kost
 
 Als u van plan bent Azure Cosmos DB te gebruiken in de serverloze modus, moet u een schatting maken van het aantal [aanvraag eenheden](request-units.md) en GB aan opslag dat u per maand kunt gebruiken. U kunt de vereiste hoeveelheid aanvraag eenheden schatten door het aantal database bewerkingen te evalueren dat in een maand zou worden uitgegeven en de hoeveelheid te vermenigvuldigen met de bijbehorende RU-kosten. De volgende tabel geeft een overzicht van de geschatte RU-kosten voor veelvoorkomende database bewerkingen:
 
-| Bewerking | Geschatte kosten | Notities |
+| Bewerking | Geschatte kosten | Opmerkingen |
 | --- | --- | --- |
 | Een item maken | 5 RUs | Gemiddelde kosten voor een 1 KB-item met minder dan 5 eigenschappen om te indexeren |
 | Een item bijwerken | Tien aanvraageenheden | Gemiddelde kosten voor een 1 KB-item met minder dan 5 eigenschappen om te indexeren |
@@ -56,7 +57,7 @@ Als u van plan bent Azure Cosmos DB te gebruiken in de serverloze modus, moet u 
 > [!IMPORTANT] 
 > Let op de opmerkingen in de bovenstaande tabel. Voor een nauw keurigere schatting van de werkelijke kosten van uw bewerkingen kunt u de [Azure Cosmos-emulator](local-emulator.md) gebruiken om [de exacte ru-kosten van uw bewerkingen te meten](find-request-unit-charge.md). Hoewel de Azure Cosmos-emulator geen serverloos ondersteunt, wordt een standaard-RU-kosten voor database bewerkingen gerapporteerd en kan deze worden gebruikt voor deze schatting.
 
-Zodra u het totale aantal aanvraag eenheden en GB aan opslag ruimte hebt berekend dat u in de loop van een maand waarschijnlijk wilt gebruiken, wordt uw kosten raming door de volgende formule geretourneerd: **([aantal aanvraag eenheden]/1.000.000 * $0,25) + ([GB opslag ruimte] * $0,25)**.
+Zodra u het totale aantal aanvraag eenheden en GB aan opslag ruimte hebt berekend dat u in de loop van een maand waarschijnlijk wilt gebruiken, wordt uw kosten raming door de volgende formule geretourneerd: **([aantal aanvraag eenheden]/1.000.000 * $0,25) + ([GB opslag ruimte] * $0,25)** .
 
 > [!NOTE]
 > De kosten die in het vorige voor beeld worden weer gegeven, zijn alleen bedoeld voor demonstratie doeleinden. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente prijs informatie.
@@ -85,13 +86,13 @@ Als u resources met Azure Cosmos DB gebruikt, worden er kosten in rekening gebra
 
 Wanneer u kosten analyse gebruikt, kunt u de kosten voor de Azure Cosmos DB in grafieken en tabellen weer geven voor verschillende tijds intervallen. Enkele voor beelden zijn dag, actueel, voor gaande maand en jaar. U kunt ook kosten weer geven op basis van budgetten en geraamde kosten. Door over te scha kelen naar langere weer gaven kunt u uitgaven trends helpen identificeren en zien waar overuitgave mogelijk is gebeurd. Als u budgetten hebt gemaakt, kunt u ook eenvoudig zien waar ze zijn overschreden. Azure Cosmos DB kosten voor de kosten analyse weer geven:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-1. Open het venster **Cost Management en facturering** , selecteer **kosten beheer** in het menu en selecteer vervolgens **kosten analyse**. U kunt vervolgens het bereik voor een specifiek abonnement wijzigen in de vervolg keuzelijst **bereik** .
+1. Open het venster **Cost Management en facturering** , selecteer **kosten beheer** in het menu en selecteer vervolgens **kosten analyse** . U kunt vervolgens het bereik voor een specifiek abonnement wijzigen in de vervolg keuzelijst **bereik** .
 
 1. Kosten voor alle services worden standaard weer gegeven in de eerste cirkel diagram. Selecteer het gebied in de grafiek met het label Azure Cosmos DB.
 
-1. Als u de kosten voor één service, zoals Azure Cosmos DB, wilt beperken, selecteert u **filter toevoegen** en selecteert u vervolgens **service naam**. Kies vervolgens **Azure Cosmos DB** in de lijst. Hier volgt een voor beeld van de kosten voor alleen Azure Cosmos DB:
+1. Als u de kosten voor één service, zoals Azure Cosmos DB, wilt beperken, selecteert u **filter toevoegen** en selecteert u vervolgens **service naam** . Kies vervolgens **Azure Cosmos DB** in de lijst. Hier volgt een voor beeld van de kosten voor alleen Azure Cosmos DB:
  
    :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Kosten raming in Azure Cosmos DB capaciteits Calculator":::
 

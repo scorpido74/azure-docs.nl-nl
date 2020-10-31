@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 55a4e50e3a85eccb9517cf682b67268e633abecc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928090"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081226"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Beveiligingsscore in Azure Security Center
 
@@ -190,7 +190,7 @@ Hoewel het standaard Security Initiative van Security Center is gebaseerd op de 
     <td class="tg-lboi"; width=55%>- Beheer poorten van virtuele machines moeten worden beveiligd met Just-in-time-netwerk toegangs beheer<br>- Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep<br>- Beheer poorten moeten worden gesloten op uw virtuele machines</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Systeem updates Toep assen (maximum score 6)</p></strong>Systeem updates bieden organisaties de mogelijkheid om operationele efficiëntie te hand haven, beveiligings problemen te verminderen en een stabielere omgeving te bieden voor eind gebruikers. Als updates niet worden toegepast, worden niet-opgeloste beveiligings problemen en resultaten in omgevingen beschreven die vatbaar zijn voor aanvallen. Deze beveiligings problemen kunnen worden misbruikt en leiden tot gegevens verlies, gegevens exfiltration, Ransomware en misbruik van bronnen. Voor het implementeren van systeem updates kunt u de <a href="/azure/automation/automation-update-management">updatebeheer-oplossing gebruiken om patches en updates</a> voor uw virtuele machines te beheren. Update beheer is het proces van het beheren van de implementatie en het onderhoud van software releases.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Systeem updates Toep assen (maximum score 6)</p></strong>Systeem updates bieden organisaties de mogelijkheid om operationele efficiëntie te hand haven, beveiligings problemen te verminderen en een stabielere omgeving te bieden voor eind gebruikers. Als updates niet worden toegepast, worden niet-opgeloste beveiligings problemen en resultaten in omgevingen beschreven die vatbaar zijn voor aanvallen. Deze beveiligings problemen kunnen worden misbruikt en leiden tot gegevens verlies, gegevens exfiltration, Ransomware en misbruik van bronnen. Voor het implementeren van systeem updates kunt u de <a href="/azure/automation/update-management/overview">updatebeheer-oplossing gebruiken om patches en updates</a> voor uw virtuele machines te beheren. Update beheer is het proces van het beheren van de implementatie en het onderhoud van software releases.</td>
     <td class="tg-lboi"; width=55%>- Controle agent status problemen moeten worden opgelost op uw computers<br>- Bewakings agent moet worden geïnstalleerd op virtuele-machine schaal sets<br>- Bewakings agent moet op uw computers zijn geïnstalleerd<br>- De versie van het besturings systeem moet worden bijgewerkt voor uw Cloud service rollen<br>- Systeem updates op virtuele-machine schaal sets moeten worden geïnstalleerd<br>- Systeem updates moeten worden geïnstalleerd op uw computers<br>- Uw computers moeten opnieuw worden opgestart om systeem updates toe te passen<br>- Kubernetes Services moet worden bijgewerkt naar een niet-kwets bare Kubernetes-versie<br>- Bewakings agent moet worden geïnstalleerd op uw virtuele machines<br>- Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure Arc-machines (preview)<br>- Log Analytics agent moet worden geïnstalleerd op uw op Linux gebaseerde Azure-Arc-machines (preview)</td>
   </tr>
   <tr>
