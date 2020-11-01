@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d4c30029a71935cd3b8817be9010ff0fd11fa61a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 56a797864b70cb1be4a1bc5d4b79c44348d43dae
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077690"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93144423"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Acl's (toegangs beheer lijsten) recursief instellen voor Azure Data Lake Storage Gen2
 
@@ -969,8 +969,6 @@ def resume_set_acl_recursive(continuation_token):
 Als u wilt dat het proces wordt afgebroken door machtigings fouten, kunt u dit opgeven.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-Om ervoor te zorgen dat het proces wordt voltooid, geeft u een **AccessControlChangedOptions** -object door en stelt u de eigenschap **ContinueOnFailure** van dat object in op ``true`` .
 
 In dit voor beeld worden ACL-vermeldingen recursief ingesteld. Als met deze code een machtigings fout optreedt, wordt die fout geregistreerd en wordt de uitvoering voortgezet. In dit voor beeld worden de resultaten (inclusief het aantal fouten) naar de-console afgedrukt. 
 

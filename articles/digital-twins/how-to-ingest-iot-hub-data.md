@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1fa14c4341c449c32fd6a5f6b3274b057478c01c
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: d2606f793c7ab2e3ac29b1eb869e60a2c8e634ad
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495825"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145919"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetrie opnemen in azure Digital Apparaatdubbels
 
@@ -25,7 +25,7 @@ In dit document vindt u instructies voor het schrijven van een Azure-functie waa
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u verder gaat met dit voor beeld, moet u de volgende resources instellen als vereisten:
-* **Een IOT-hub**. Zie de sectie *een IOT hub maken* van [deze IOT hub Snelstartgids](../iot-hub/quickstart-send-telemetry-cli.md)voor instructies.
+* **Een IOT-hub** . Zie de sectie *een IOT hub maken* van [deze IOT hub Snelstartgids](../iot-hub/quickstart-send-telemetry-cli.md)voor instructies.
 * **Een Azure-functie** met de juiste machtigingen voor het aanroepen van uw digitale dubbele instantie. Zie [*How to: een Azure-functie instellen voor het verwerken van gegevens*](how-to-create-azure-function.md)voor instructies. 
 * **Een Azure Digital apparaatdubbels-exemplaar** dat telemetrie van uw apparaat ontvangt. Zie [*How to: een Azure Digital apparaatdubbels-exemplaar en-verificatie instellen*](./how-to-set-up-instance-portal.md)voor instructies.
 
@@ -62,13 +62,13 @@ Het model ziet er als volgt uit:
 }
 ```
 
-Als u **dit model wilt uploaden naar uw apparaatdubbels-exemplaar**, opent u de Azure CLI en voert u de volgende opdracht uit:
+Als u **dit model wilt uploaden naar uw apparaatdubbels-exemplaar** , opent u de Azure CLI en voert u de volgende opdracht uit:
 
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-Vervolgens moet u **een dubbele maken met behulp van dit model**. Gebruik de volgende opdracht om een dubbele en set 0,0 te maken als aanvankelijke temperatuur waarde.
+Vervolgens moet u **een dubbele maken met behulp van dit model** . Gebruik de volgende opdracht om een dubbele en set 0,0 te maken als aanvankelijke temperatuur waarde.
 
 ```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
@@ -117,9 +117,9 @@ In het volgende code voorbeeld wordt de ID en de waarde voor de Tempe ratuur geb
 
 ```csharp
 //Update twin using device temperature
-var uou = new UpdateOperationsUtility();
-uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+var updateTwinData = new JsonPatchDocument();
+updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
 ...
 ```
 
@@ -176,9 +176,9 @@ namespace IotHubtoTwins
                     log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
 
                     //Update twin using device temperature
-                    var uou = new UpdateOperationsUtility();
-                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                    var updateTwinData = new JsonPatchDocument();
+                    updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
                 }
             }
             catch (Exception e)
@@ -210,25 +210,25 @@ U kunt ook de status van het publicatie proces controleren in het [Azure Portal]
 ## <a name="connect-your-function-to-iot-hub"></a>Verbind uw functie met IoT Hub
 
 Stel een gebeurtenis bestemming in voor hub-gegevens.
-Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw IOT hub-exemplaar dat u hebt gemaakt in de sectie [*vereisten*](#prerequisites) . Maak onder **gebeurtenissen**een abonnement voor uw Azure-functie.
+Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw IOT hub-exemplaar dat u hebt gemaakt in de sectie [*vereisten*](#prerequisites) . Maak onder **gebeurtenissen** een abonnement voor uw Azure-functie.
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Een diagram waarin een stroom diagram wordt weer gegeven. In de grafiek verzendt een IoT Hub apparaat een temperatuur telemetrie via IoT Hub naar een Azure-functie, waarmee een temperatuur eigenschap wordt bijgewerkt op een dubbele in azure Digital Apparaatdubbels.":::
 
 Vul op de pagina **gebeurtenis abonnement maken** de velden als volgt in:
-  1. Geef bij **naam**het abonnement een naam zoals u wilt.
-  2. Kies _Event grid schema_onder **gebeurtenis schema**.
-  3. Kies onder **gebeurtenis typen**het selectie vakje _telemetrie van apparaat_ en Schakel andere gebeurtenis typen uit.
-  4. Selecteer onder **type eind punt**de optie _Azure function_.
+  1. Geef bij **naam** het abonnement een naam zoals u wilt.
+  2. Kies _Event grid schema_ onder **gebeurtenis schema** .
+  3. Kies onder **gebeurtenis typen** het selectie vakje _telemetrie van apparaat_ en Schakel andere gebeurtenis typen uit.
+  4. Selecteer onder **type eind punt** de optie _Azure function_ .
   5. Kies onder **eind punt** _de optie Selecteer een eindpunt_ koppeling om een eind punt te maken.
     
 :::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Een diagram waarin een stroom diagram wordt weer gegeven. In de grafiek verzendt een IoT Hub apparaat een temperatuur telemetrie via IoT Hub naar een Azure-functie, waarmee een temperatuur eigenschap wordt bijgewerkt op een dubbele in azure Digital Apparaatdubbels.":::
 
 Controleer de onderstaande gegevens op de pagina _Azure-functie selecteren_ die wordt geopend.
- 1. **Abonnement**: Uw Azure-abonnement
- 2. **Resource groep**: de resource groep
- 3. **Functie-app**: naam van uw functie-app
- 4. **Sleuf**: _productie_
- 5. **Functie**: Selecteer uw Azure-functie in de vervolg keuzelijst.
+ 1. **Abonnement** : Uw Azure-abonnement
+ 2. **Resource groep** : de resource groep
+ 3. **Functie-app** : naam van uw functie-app
+ 4. **Sleuf** : _productie_
+ 5. **Functie** : Selecteer uw Azure-functie in de vervolg keuzelijst.
 
 Sla uw gegevens op door de knop _selectie bevestigen_ te selecteren.            
       

@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e7d5d4b730ef1669bd9bb7d74e35924061f5580
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75551689"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146208"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Overzicht van cluster resource manager-architectuur
 De Service Fabric cluster resource manager is een centrale service die in het cluster wordt uitgevoerd. Het beheert de gewenste status van de services in het cluster, met name ten opzichte van het Resource verbruik en eventuele plaatsings regels. 
@@ -43,7 +43,7 @@ Laten we het volgende diagram eens bekijken:
 
 <center>
 
-![Resource Balancer-architectuur][Image1]
+![Diagram dat laat zien hoe thow de cluster resource Manager-service alle gegevens van de lokale agents samenvoegt en op basis van de huidige configuratie reageert.][Image1]
 </center>
 
 Tijdens runtime zijn er veel wijzigingen die zich kunnen voordoen. Stel bijvoorbeeld dat de hoeveelheid resources die door bepaalde services worden gebruikt, wordt gewijzigd, dat sommige services mislukken en dat bepaalde knoop punten aan het cluster worden toegevoegd en verlaat. Alle wijzigingen in een knoop punt worden geaggregeerd en regel matig verzonden naar de cluster resource Manager-service (1, 2) waar ze opnieuw worden geaggregeerd, geanalyseerd en opgeslagen. Elke paar seconden dat de service doorzoekt naar de wijzigingen en bepaalt of acties nodig zijn (3). Er kan bijvoorbeeld worden opgemerkt dat er sommige lege knoop punten aan het cluster zijn toegevoegd. Als gevolg hiervan wordt besloten sommige services naar deze knoop punten te verplaatsen. De cluster resource manager kan ook zien dat een bepaald knoop punt overbelast is, of dat bepaalde services zijn mislukt of verwijderd, waardoor er elders bronnen worden vrijgemaakt.

@@ -9,10 +9,10 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 48f33514510618abadf329a11a9ab71a020be0bd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92479557"
 ---
 1. Open de pagina voor uw virtuele netwerkgateway. U kunt naar de gateway gaan via **Naam van uw VNet -> Overzicht -> Verbonden apparaten -> Naam van uw gateway** , hoewel er ook nog andere manieren zijn om te navigeren.

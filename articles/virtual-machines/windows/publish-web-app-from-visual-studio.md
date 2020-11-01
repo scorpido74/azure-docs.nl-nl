@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "87088390"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Een ASP.NET-Web-app publiceren naar een Azure VM vanuit Visual Studio
@@ -33,11 +33,11 @@ In de volgende sectie wordt beschreven hoe u een bestaande ASP.NET-webtoepassing
 
 1. Open uw web-app-oplossing in Visual Studio 2019.
 2. Klik met de rechter muisknop op het project in Solution Explorer en kies **publiceren...**
-3. Gebruik de pijl aan de rechter kant van de pagina om door de publicatie opties te schuiven totdat u **Microsoft Azure virtual machines**hebt gevonden.  
+3. Gebruik de pijl aan de rechter kant van de pagina om door de publicatie opties te schuiven totdat u **Microsoft Azure virtual machines** hebt gevonden.  
 
    ![Pagina publiceren-pijl-rechts]
 
-4. Selecteer het **Microsoft Azure virtual machines** pictogram en selecteer **publiceren**.
+4. Selecteer het **Microsoft Azure virtual machines** pictogram en selecteer **publiceren** .
 
    ![Het pictogram pagina publiceren-Microsoft Azure virtuele machine]
 
@@ -87,7 +87,7 @@ Als u updates voor uw webtoepassing wilt publiceren, selecteert u de knop **publ
 
 ### <a name="modify-publish-profile-settings"></a>Instellingen van het publicatie profiel wijzigen
 
-Als u de instellingen voor het publicatie profiel wilt weer geven en wijzigen, selecteert u **instellingen...**.  
+Als u de instellingen voor het publicatie profiel wilt weer geven en wijzigen, selecteert u **instellingen...** .  
 
 ![Pagina publiceren-instellingen knop]
 

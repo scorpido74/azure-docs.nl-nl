@@ -1,18 +1,18 @@
 ---
-title: Apache Hive logboeken schijf ruimte invullen-Azure HDInsight
-description: De Apache Hive-logboeken vullen de schijf ruimte op de hoofd knooppunten in azure HDInsight.
+title: 'Problemen oplossen: Apache Hive logboeken schijf ruimte opvullen-Azure HDInsight'
+description: In dit artikel worden de stappen beschreven voor het oplossen van problemen wanneer Apache Hive Logboeken de schijf ruimte op de hoofd knooppunten in azure HDInsight invult.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 5554a66927fc70f22ec552b938ae62038a04acb9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64bf5714f5eb99df9929a47fef414a827ec680af
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533016"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145630"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Scenario: Apache Hive-logboeken worden de schijf ruimte op de hoofd knooppunten in azure HDInsight gevuld
 
@@ -20,13 +20,13 @@ In dit artikel worden de stappen beschreven voor het oplossen van problemen en m
 
 ## <a name="issue"></a>Probleem
 
-Op een Apache Hive-LLAP-cluster nemen ongewenste Logboeken de volledige schijf ruimte op de hoofd knooppunten in beslag. Als gevolg hiervan kunnen de volgende problemen worden weer gegeven.
+Op een Apache Hive-LLAP-cluster nemen ongewenste Logboeken de volledige schijf ruimte op de hoofd knooppunten in beslag. Dit probleem kan de volgende problemen veroorzaken:
 
-1. SSH-toegang mislukt omdat er geen ruimte meer is op het hoofd knooppunt.
-2. Ambari geeft *HTTP-fout: de 503-Service is niet beschikbaar* .
-3. HiveServer2 Interactive kan niet opnieuw worden opgestart.
+- SSH-toegang mislukt omdat er geen ruimte meer is op het hoofd knooppunt.
+- Ambari genereert een *HTTP-fout: de 503-Service is niet beschikbaar* .
+- HiveServer2 Interactive kan niet opnieuw worden opgestart.
 
-In de `ambari-agent` Logboeken ziet u het volgende wanneer het probleem optreedt.
+De `ambari-agent` Logboeken bevatten de volgende vermeldingen wanneer het probleem optreedt:
 ```
 ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
 ```
@@ -36,17 +36,17 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Oorzaak
 
-In geavanceerde configuraties van Hive-log4j wordt het huidige standaard schema voor verwijdering ingesteld op bestanden die ouder zijn dan 30 dagen, op basis van de datum van laatste wijziging.
+In geavanceerde configuraties van Hive-log4j is het huidige standaard verwijderings schema het verwijderen van bestanden die ouder zijn dan 30 dagen, op basis van de datum van de laatste wijziging.
 
 ## <a name="resolution"></a>Oplossing
 
-1. Ga naar samen vatting van Hive-onderdeel in de Ambari-Portal en klik op het `Configs` tabblad.
+1. Ga naar het onderdeel overzicht van Hive-onderdelen op de Ambari-Portal en selecteer het tabblad **configuratie** .
 
-2. Ga naar de `Advanced hive-log4j` sectie in geavanceerde instellingen.
+2. Ga naar de `Advanced hive-log4j` sectie in **Geavanceerde instellingen** .
 
-3. Stel `appender.RFA.strategy.action.condition.age` de para meter in op een leeftijd van uw keuze. Voor beeld 14 dagen: `appender.RFA.strategy.action.condition.age = 14D`
+3. Stel de `appender.RFA.strategy.action.condition.age` para meter in op een leeftijd van uw keuze. In dit voor beeld wordt de leeftijd ingesteld op 14 dagen: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. Als u geen gerelateerde instellingen ziet, moet u de volgende instellingen toevoegen.
+4. Als u geen gerelateerde instellingen ziet, voegt u deze instellingen toe:
     ```
     # automatically delete hive log
     appender.RFA.strategy.action.type = Delete
@@ -57,7 +57,7 @@ In geavanceerde configuraties van Hive-log4j wordt het huidige standaard schema 
     appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
     ```
 
-5. Stel `hive.root.logger` `INFO,RFA` als volgt in. De standaard instelling is DEBUG, waardoor logboeken erg groot worden.
+5. Instellen `hive.root.logger` op `INFO,RFA` , zoals wordt weer gegeven in het volgende voor beeld. De standaard instelling is `DEBUG` , waardoor de logboeken groot zijn.
 
     ```
     # Define some default values that can be overridden by system properties

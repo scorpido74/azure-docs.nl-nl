@@ -6,18 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 08/21/2020
-ms.custom: contperfq1
-ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.custom: contperfq1, contperfq2
+ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88755089"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145953"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>De Apache Beeline-client gebruiken met Apache Hive
 
-Meer informatie over het gebruik van [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) om Apache Hive-query's uit te voeren op HDInsight.
+In dit artikel wordt beschreven hoe u de opdracht regel [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) -client gebruikt om Apache Hive query's te maken en uit te voeren via een SSH-verbinding.
+
+## <a name="background"></a>Achtergrond
 
 Beeline is een Hive-client die is opgenomen op de hoofd knooppunten van uw HDInsight-cluster. Zie [verbinding maken met of installeer Apache Beeline](connect-install-beeline.md)om verbinding te maken met de Beeline-client die op uw HDInsight-cluster is geïnstalleerd of Beeline lokaal te installeren. Beeline maakt gebruik van JDBC om verbinding te maken met HiveServer2, een service die wordt gehost op uw HDInsight-cluster. U kunt Beeline ook gebruiken voor toegang tot de component op HDInsight op afstand via internet. De volgende voor beelden bieden de meest voorkomende verbindings reeksen die worden gebruikt om verbinding te maken met HDInsight vanuit Beeline.
 
@@ -27,9 +29,7 @@ Beeline is een Hive-client die is opgenomen op de hoofd knooppunten van uw HDIns
 
 * Let op het URI-schema voor de primaire opslag van uw cluster. Bijvoorbeeld  `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, is de URI `wasbs://` . Zie [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md)voor meer informatie.
 
-* Optie 1: een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Bij de meeste stappen in dit document wordt ervan uitgegaan dat u Beeline gebruikt vanuit een SSH-sessie naar het cluster.
-
-* Optie 2: een lokale Beeline-client.
+* Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Bij de meeste stappen in dit document wordt ervan uitgegaan dat u Beeline gebruikt vanuit een SSH-sessie naar het cluster. U kunt ook een lokale Beeline-client gebruiken, maar deze stappen zijn niet in dit artikel opgenomen.
 
 ## <a name="run-a-hive-query"></a>Een Hive-query uitvoeren
 
@@ -56,7 +56,7 @@ Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-ver
     show tables;
     ```
 
-    Op een nieuw cluster wordt slechts één tabel weer gegeven: **hivesampletable**.
+    Op een nieuw cluster wordt slechts één tabel weer gegeven: **hivesampletable** .
 
 4. Gebruik de volgende opdracht om het schema voor de hivesampletable weer te geven:
 
@@ -157,13 +157,13 @@ Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-ver
 
 Dit voor beeld is een voortzetting van het vorige voor beeld. Gebruik de volgende stappen om een bestand te maken en voer het vervolgens uit met Beeline.
 
-1. Gebruik de volgende opdracht om een bestand met de naam **query. HQL**te maken:
+1. Gebruik de volgende opdracht om een bestand met de naam **query. HQL** te maken:
 
     ```bash
     nano query.hql
     ```
 
-1. Gebruik de volgende tekst als de inhoud van het bestand. Met deze query maakt u een nieuwe interne tabel met de naam **errorLogs**:
+1. Gebruik de volgende tekst als de inhoud van het bestand. Met deze query maakt u een nieuwe interne tabel met de naam **errorLogs** :
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -181,7 +181,7 @@ Dit voor beeld is een voortzetting van het vorige voor beeld. Gebruik de volgend
     > [!NOTE]  
     > In tegens telling tot externe tabellen, verwijdert het verwijderen van een interne tabel ook de onderliggende gegevens.
 
-1. Als u het bestand wilt opslaan, gebruikt u **CTRL** + **X**en voert u vervolgens **Y**en tenslotte **Enter**.
+1. Als u het bestand wilt opslaan, gebruikt u **CTRL** + **X** en voert u vervolgens **Y** en tenslotte **Enter** .
 
 1. Gebruik het volgende om het bestand uit te voeren met beeline:
 
@@ -192,7 +192,7 @@ Dit voor beeld is een voortzetting van het vorige voor beeld. Gebruik de volgend
     > [!NOTE]  
     > De `-i` para meter start Beeline en voert de instructies in het `query.hql` bestand uit. Zodra de query is voltooid, ontvangt u de `jdbc:hive2://headnodehost:10001/>` prompt. U kunt ook een bestand uitvoeren met de `-f` para meter, waardoor Beeline wordt afgesloten nadat de query is voltooid.
 
-1. Als u wilt controleren of de **errorLogs** -tabel is gemaakt, gebruikt u de volgende instructie om alle rijen uit **errorLogs**te retour neren:
+1. Als u wilt controleren of de **errorLogs** -tabel is gemaakt, gebruikt u de volgende instructie om alle rijen uit **errorLogs** te retour neren:
 
     ```hiveql
     SELECT * from errorLogs;

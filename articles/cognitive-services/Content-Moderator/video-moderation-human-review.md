@@ -1,5 +1,5 @@
 ---
-title: Video toezicht met menselijke beoordeling-Content Moderator
+title: Video toezicht met het hulp programma beoordeling-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Gebruik machine-ondersteunde video toezicht en het beoordelings programma voor gepaste inhoud
 services: cognitive-services
@@ -8,97 +8,95 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 392cc06c6e0bce7ec2304da61033fc508d940bbb
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81404239"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143727"
 ---
-# <a name="video-moderation-with-human-review"></a>Video toezicht met menselijke beoordeling
+# <a name="video-moderation-with-the-review-tool"></a>Video toezicht met het hulp programma beoordeling
 
 Content Moderator gebruik de functie voor door de machine ondersteunde video-en [beoordelings hulpmiddelen](Review-Tool-User-Guide/human-in-the-loop.md) voor [gelaagde](video-moderation-api.md) Video's en geautomatiseerde transcripten voor volwassene (expliciete) en ongepaste (suggestief) om de beste resultaten voor uw bedrijf te krijgen.
 
-## <a name="video-trained-classifier-preview"></a>Video-getrainde classificatie (preview-versie)
+## <a name="view-videos-under-review"></a>Bekijk Video's onder beoordeling
 
-De door de machine ondersteunde video classificatie is behaald met afbeeldingen getrainde modellen of modellen die zijn getraind. In tegens telling tot video classificaties die zijn getraind, wordt de video classificatie voor volwassenen en ongepaste van micro soft getraind met Video's. Deze methode resulteert in een beter resultaat van kwaliteit.
+Selecteer op het dash board een van de controle wachtrijen in het inhouds type video. Hiermee wordt een controle gestart en wordt de pagina toezicht op video-inhoud geopend.
 
-## <a name="shot-detection"></a>Opname detectie
+> [!div class="mx-imgBorder"]
+> ![Gedetailleerde weer gave voor video toezicht in het hulp programma beoordeling](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
-Bij het uitvoeren van de classificatie Details helpt aanvullende video-informatie over meer flexibiliteit bij het analyseren van Video's. In plaats van alleen de frames uit te voeren, biedt de video moderator service van micro soft ook informatie over het niveau van de opname. U hebt nu de mogelijkheid om uw Video's op het niveau van de afbeelding en het frame niveau te analyseren.
+### <a name="review-count"></a>Aantal beoordelingen
 
-## <a name="key-frame-detection"></a>Belangrijkste frame detectie
+Gebruik de schuif regelaar in de rechter bovenhoek om het aantal beoordelingen in te stellen dat u op de pagina wilt weer geven.
 
-In plaats van frames met regel matige tussen pozen te laten uitvoeren, identificeert de video moderator-service alleen mogelijke voltooide (goede) frames. Met deze functie kunt u efficiënte frames genereren voor de analyse op frame niveau voor volwassenen en ongepaste.
+### <a name="view-type"></a>Weergave type
 
-De volgende extractie toont een gedeeltelijk antwoord met potentiële opnamen, keyframes en volwassene en ongepastee scores:
+U kunt de verschillende inhouds items weer geven als tegels of in een gedetailleerde weer gave. In de **detail** weergave kunt u belang rijke frames en andere informatie over de geselecteerde video bekijken. 
 
-```json
-"fragments":[  
-  {  
-    "start":0,
-    "duration":18000
-  },
-  {  
-    "start":18000,
-    "duration":3600,
-    "interval":3600,
-    "events":[  
-      [  
-        {  
-          "reviewRecommended":false,
-          "adultScore":0.00001,
-          "racyScore":0.03077,
-          "index":5,
-          "timestamp":18000,
-          "shotIndex":0
-        }
-      ]
-    ]
-  },
-  {  
-    "start":18386372,
-    "duration":119149,
-    "interval":119149,
-    "events":[  
-      [  
-        {  
-          "reviewRecommended":true,
-          "adultScore":0.00000,
-          "racyScore":0.91902,
-          "index":5085,
-          "timestamp":18386372,
-          "shotIndex":62
-        }
-      ]
-    ]
-```
+> [!NOTE]
+> In plaats van frames met regel matige tussen pozen te laten uitvoeren, identificeert de video moderator-service alleen mogelijke voltooide (goede) frames. Met deze functie kunt u efficiënte frames genereren voor de analyse op frame niveau voor volwassenen en ongepaste.
 
-## <a name="visualization-for-human-reviews"></a>Visualisatie voor mensen beoordelingen
+In de **tegel** weergave wordt elke video als één tegel weer gegeven. Selecteer de knop Uitvouwen boven een video frame om die video te verg Roten en de andere te verbergen.
 
-Voor meer gesmelte gevallen hebben bedrijven een menselijke beoordelings oplossing nodig voor het renderen van de video, de frames en de door de machine toegewezen tags. De menselijke moderators die Video's en frames bekijken, krijgen een volledig overzicht van de inzichten, wijzigingen aanbrengen en hun beslissingen verzenden.
+### <a name="content-obscuring-effects"></a>Inhoud-onduidelijke effecten
 
-![standaard weergave voor video revisie programma](images/video-review-default-view.png)
+Gebruik de wissel knop **Alles vervagen** en **zwart-wit** om deze Onzichtbaare effecten in te stellen. Ze zijn standaard ingeschakeld. In de weer gave **naast elkaar** kunt u de effecten voor elke video afzonderlijk in-of uitschakelen.
 
-## <a name="player-view-for-video-level-review"></a>Player-weer gave voor beoordeling op video niveau
+## <a name="check-video-details"></a>Video details controleren
 
-Binaire beslissingen op video niveau worden mogelijk gemaakt met een video speler-weer gave waarin potentiële volwassene en ongepaste-frames worden weer gegeven. De menselijke revisoren navigeren de video met verschillende snelheids opties om de scènes te onderzoeken. Ze bevestigen hun beslissingen door de tags in te scha kelen.
+In de **detail** weergave ziet u in het rechterdeel venster verschillende tabbladen met details over de video.
 
-![weer gave video revisie programma Player](images/video-review-player-view.PNG)
+* Selecteer het tabblad **notities** om aangepaste notities aan Video's toe te voegen.
+* Selecteer het tabblad **transcript** voor het weer geven van de video-transcripten &mdash; die de service automatisch een transcript van een spraak in de video uitpakt. Wanneer u een sectie met tekst selecteert, gaat de video speler naar het deel van de video.
+* Selecteer het tabblad **meta gegevens** om meta gegevens van video bestanden weer te geven.
+* Selecteer het tabblad **geschiedenis** om de geschiedenis van de beoordeling weer te geven, zoals wanneer deze is gemaakt en hoe deze is gewijzigd.
 
-## <a name="frames-view-for-detailed-reviews"></a>Frame weergave voor gedetailleerde Recensies
+> [!div class="mx-imgBorder"]
+> ![Knop voor bulk markeringen voor video toezicht](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
-Een gedetailleerde video beoordeling voor frame-voor-frame analyse wordt mogelijk gemaakt met een weer gave op basis van een frame. De menselijke revisoren beoordelen en selecteren een of meer frames en wisselen Tags in om hun beslissingen te bevestigen. Een optionele volgende stap is redactie van de aanstootgevende frames of inhoud.
+## <a name="apply-moderation-tags"></a>Moderator Tags Toep assen
 
-![frame weergave van video-revisie programma](images/video-review-frames-view-apply-tags.PNG)
+De belangrijkste taak van een video controle is het Toep assen of verwijderen van moderator Tags op Video's of delen van Video's.
 
-## <a name="transcript-moderation"></a>Transcriptie beoordelen
+### <a name="bulk-tagging"></a>Bulk tagging
 
-Video's hebben normaal gesp roken Voice-over die gematigd moeten worden gemoderator en aanstootgevende spraak. U gebruikt de Azure Media Indexer-service om spraak naar tekst te converteren en de beoordelings-API van Content Moderator te gebruiken om de transcriptie voor tekst toezicht in het beoordelings programma in te dienen.
+Met de werk balk **massa Tags** kunt u tags aan meerdere geselecteerde Video's tegelijk toevoegen. Selecteer een of meer Video's en selecteer vervolgens de tags die u wilt Toep assen en klik op **verzenden** . 
 
-![weer gave voor de transcriptie van video-revisie Programma's](images/video-review-transcript-view.png)
+> [!div class="mx-imgBorder"]
+> ![Knop voor bulk markeringen voor video toezicht](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+
+
+### <a name="key-frame-tagging"></a>Belangrijkste frame Tags
+
+U kunt ook moderator Tags toevoegen aan specifieke keyframes. Selecteer de frames in het tegel venster van het hoofd frame en selecteer vervolgens **keyframes +** om de gewenste tags toe te passen.
+
+> [!NOTE]
+> Als de service geen keyframes kan extra heren, worden **er geen frames** weer gegeven in het tegel deel venster van het hoofd frame en wordt de optie voor het selecteren van keyframes lichter gekleurd. In dit geval kunt u alleen Tags Toep assen op de video als geheel (met behulp van de **video Tags +** knop).
+
+> [!div class="mx-imgBorder"]
+> ![Gedetailleerde weer gave voor video toezicht in het hulp programma beoordeling](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+
+## <a name="put-a-review-on-hold"></a>Een beoordeling in de wacht zetten
+
+Met de knop **vasthouden** aan de onderkant van het deel venster video kunt u een beoordeling in de wacht stand plaatsen, zodat u deze kunt ophalen om deze later te volt ooien. U kunt dit doen voor een beoordeling waarvoor een raadpleging van een andere teamlid of manager is vereist die momenteel niet beschikbaar is. 
+
+U kunt de Video's in de wacht stand weer geven door te klikken op de knop **vasthouden** boven aan het scherm. Het deel venster vasthouden wordt aan de rechter kant weer gegeven. Hier kunt u meerdere beoordelingen in de wacht selecteren en deze weer vrijgeven in de wachtrij of de verloop tijd instellen. Na de vooraf geconfigureerde tijd worden beoordelingen in de wacht stand weer gegeven. Selecteer **Opslaan** om te beginnen met tellen vanaf de huidige geselecteerde verval tijd.
+
+> [!div class="mx-imgBorder"]
+> ![Gedetailleerde weer gave voor video toezicht in het hulp programma beoordeling](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+
+## <a name="submit-a-review"></a>Een beoordeling verzenden
+
+Nadat u uw tags hebt toegepast, selecteert u de knop **verzenden** onder in het deel venster video. Als u meerdere Video's hebt gelabeld, kunt u deze onder één beoordeling of als afzonderlijke beoordelingen verzenden.
+
+## <a name="limbo-state"></a>Limbo-status
+
+Nadat u een beoordeling hebt verzonden, wordt de video verplaatst naar de status **Limbo** , die u kunt bekijken door de knop **Limbo** boven aan het scherm te selecteren. Video's blijven in de Limbo-status voor een vooraf geconfigureerde hoeveelheid tijd (die u in het menu onderaan kunt wijzigen) of totdat ze opnieuw worden gecontroleerd of hand matig zijn verzonden.
+
+Zodra de Video's van Limbo verlopen, worden hun beoordelingen als voltooid gemarkeerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

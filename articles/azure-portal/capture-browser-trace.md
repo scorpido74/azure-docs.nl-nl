@@ -9,12 +9,12 @@ ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aac7357939ab2d14949c967630840ed6d267d251
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83714216"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145732"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Een browsertracering vastleggen om problemen op te lossen
 
@@ -30,39 +30,39 @@ Google Chrome en micro soft Edge (chroom) zijn beide gebaseerd op het [open-sour
 
 1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
 
-1. Druk op F12 of selecteer ![ scherm opname van browser instellingen pictogram ](media/capture-browser-trace/chromium-icon-settings.png)  >  **meer hulpprogram ma's**voor  >  **ontwikkel aars**.
+1. Druk op F12 of selecteer ![ een scherm opname die het pictogram browser instellingen weergeeft.](media/capture-browser-trace/chromium-icon-settings.png) > **Meer hulpprogram ma's**  >  **Ontwikkel hulpprogramma's** .
 
 1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
 
-    1. Selecteer het tabblad **netwerk** en selecteer vervolgens **logboek bewaren**.
+    1. Selecteer het tabblad **netwerk** en selecteer vervolgens **logboek bewaren** .
 
-          ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/chromium-network-preserve-log.png)
+          ![Scherm afbeelding die de optie logboek bewaren op het tabblad netwerk markeert.](media/capture-browser-trace/chromium-network-preserve-log.png)
 
-    1. Selecteer het tabblad **console** , selecteer **console-instellingen**en selecteer vervolgens **logboek bewaren**. Selecteer de **console-instellingen** opnieuw om het deel venster instellingen te sluiten.
+    1. Selecteer het tabblad **console** , selecteer **console-instellingen** en selecteer vervolgens **logboek bewaren** . Selecteer de **console-instellingen** opnieuw om het deel venster instellingen te sluiten.
 
-          ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/chromium-console-preserve-log.png)
+          ![Scherm afbeelding die de optie logboek bewaren op het tabblad console markeert.](media/capture-browser-trace/chromium-console-preserve-log.png)
 
-1. Selecteer het tabblad **netwerk** en selecteer vervolgens **opname van netwerk logboek stoppen** en **wissen**.
+1. Selecteer het tabblad **netwerk** en selecteer vervolgens **opname van netwerk logboek stoppen** en **wissen** .
 
     ![Scherm opname van het opnemen van het netwerk logboek stoppen en wissen](media/capture-browser-trace/chromium-stop-clear-session.png)
 
-1. Selecteer **netwerk logboek opnemen**en reproduceer vervolgens het probleem in de portal.
+1. Selecteer **netwerk logboek opnemen** en reproduceer vervolgens het probleem in de portal.
 
-    ![Scherm opname van de "profilerings sessie starten"](media/capture-browser-trace/chromium-start-session.png)
+    ![Scherm afbeelding die laat zien hoe het netwerk logboek moet worden vastgelegd.](media/capture-browser-trace/chromium-start-session.png)
 
     U ziet de uitvoer van de sessie, vergelijkbaar met de volgende afbeelding.
 
-    ![Scherm opname van resultaten van browser tracering](media/capture-browser-trace/chromium-browser-trace-results.png)
+    ![Scherm afbeelding waarin de sessie-uitvoer wordt weer gegeven.](media/capture-browser-trace/chromium-browser-trace-results.png)
 
-1. Nadat u het onverwachte gedrag van de portal hebt gereproduceerd, selecteert u **netwerk logboek opname stoppen**en selecteert u vervolgens **exporteren har** en slaat u het bestand op.
+1. Nadat u het onverwachte gedrag van de portal hebt gereproduceerd, selecteert u **netwerk logboek opname stoppen** en selecteert u vervolgens **exporteren har** en slaat u het bestand op.
 
-    ![Scherm afbeelding van "uitvoer HAR"](media/capture-browser-trace/chromium-network-export-har.png)
+    ![Scherm afbeelding die laat zien hoe u HAR exporteert op het tabblad netwerk.](media/capture-browser-trace/chromium-network-export-har.png)
 
 1. Stop stappen opnemen en sla de opname op.
 
 1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop op een van de berichten, selecteer **Opslaan als...** en sla de uitvoer van de console op in een tekst bestand.
 
-    ![Scherm opname van console-uitvoer](media/capture-browser-trace/chromium-console-select.png)
+    ![Scherm opname van het tabblad console en het bestand opslaan als... snelmenu's](media/capture-browser-trace/chromium-console-select.png)
 
 1. Pak het HAR-bestand, de console-uitvoer en de scherm opname in een gecomprimeerde indeling zoals. zip en share die met micro soft ondersteuning.
 
@@ -76,39 +76,39 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
 1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
 
-1. Druk op F12 of selecteer ![ scherm opname van browser instellingen pictogram ](media/capture-browser-trace/edge-icon-settings.png)  >  **meer hulpprogram ma's**voor  >  **ontwikkel aars**.
+1. Druk op F12 of selecteer ![ scherm opname van het pictogram browser instellingen.](media/capture-browser-trace/edge-icon-settings.png) > **Meer hulpprogram ma's**  >  **Ontwikkel hulpprogramma's** .
 
 1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
 
-    1. Selecteer het tabblad **netwerk** en schakel vervolgens de optie **vermeldingen wissen bij navigeren**uit.
+    1. Selecteer het tabblad **netwerk** en schakel vervolgens de optie **vermeldingen wissen bij navigeren** uit.
 
           ![Scherm opname van "vermeldingen wissen bij navigeren"](media/capture-browser-trace/edge-network-clear-entries.png)
 
-    1. Selecteer het tabblad **console** en selecteer vervolgens **logboek bewaren**.
+    1. Selecteer het tabblad **console** en selecteer vervolgens **logboek bewaren** .
 
           ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/edge-console-preserve-log.png)
 
-1. Selecteer het tabblad **netwerk** en selecteer vervolgens **profilerings sessie stoppen** en **sessie wissen**.
+1. Selecteer het tabblad **netwerk** en selecteer vervolgens **profilerings sessie stoppen** en **sessie wissen** .
 
     ![Scherm opname van de ' profilerings sessie stoppen ' en ' sessie wissen '](media/capture-browser-trace/edge-stop-clear-session.png)
 
-1. Selecteer de **profilerings sessie starten**en reproduceer vervolgens het probleem in de portal.
+1. Selecteer de **profilerings sessie starten** en reproduceer vervolgens het probleem in de portal.
 
     ![Scherm opname van de "profilerings sessie starten"](media/capture-browser-trace/edge-start-session.png)
 
     U ziet de uitvoer van de sessie, vergelijkbaar met de volgende afbeelding.
 
-    ![Scherm opname van resultaten van browser tracering](media/capture-browser-trace/edge-browser-trace-results.png)
+    ![Scherm opname van de uitvoer van de profilerings sessie.](media/capture-browser-trace/edge-browser-trace-results.png)
 
-1. Nadat u het onverwachte gedrag van de portal hebt gereproduceerd, selecteert u de optie **profilerings sessie stoppen**en selecteert u vervolgens **exporteren als har** en slaat u het bestand op.
+1. Nadat u het onverwachte gedrag van de portal hebt gereproduceerd, selecteert u de optie **profilerings sessie stoppen** en selecteert u vervolgens **exporteren als har** en slaat u het bestand op.
 
     ![Scherm afbeelding van "exporteren als HAR"](media/capture-browser-trace/edge-network-export-har.png)
 
 1. Stop stappen opnemen en sla de opname op.
 
-1. Ga terug naar het deel venster ontwikkel hulpprogramma's van de browser, selecteer het tabblad **console** en vouw het venster uit. Plaats de cursor aan het begin van de console-uitvoer en sleep en selecteer de volledige inhoud van de uitvoer. Klik met de rechter muisknop, selecteer **kopiëren**en sla de console-uitvoer op in een tekst bestand.
+1. Ga terug naar het deel venster ontwikkel hulpprogramma's van de browser, selecteer het tabblad **console** en vouw het venster uit. Plaats de cursor aan het begin van de console-uitvoer en sleep en selecteer de volledige inhoud van de uitvoer. Klik met de rechter muisknop, selecteer **kopiëren** en sla de console-uitvoer op in een tekst bestand.
 
-    ![Scherm opname van console-uitvoer](media/capture-browser-trace/edge-console-select.png)
+    ![Scherm afbeelding die de menu optie kopiëren markeert.](media/capture-browser-trace/edge-console-select.png)
 
 1. Pak het HAR-bestand, de console-uitvoer en de scherm opname in een gecomprimeerde indeling zoals. zip en share die met micro soft ondersteuning.
 
@@ -118,11 +118,11 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
 1. De hulpprogram ma's voor ontwikkel aars in Apple Safari inschakelen:
 
-    1. Selecteer **Safari**en selecteer vervolgens **voor keuren**.
+    1. Selecteer **Safari** en selecteer vervolgens **voor keuren** .
 
         ![Scherm opname van Safari-voor keuren](media/capture-browser-trace/safari-preferences.png)
 
-    1. Selecteer het tabblad **Geavanceerd** en selecteer vervolgens het **menu ontwikkelen weer geven in de menu balk**.
+    1. Selecteer het tabblad **Geavanceerd** en selecteer vervolgens het **menu ontwikkelen weer geven in de menu balk** .
 
         ![Scherm opname van geavanceerde voor keuren voor Safari](media/capture-browser-trace/safari-show-develop-menu.png)
 
@@ -132,27 +132,27 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
 1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
 
-1. Selecteer **ontwikkelen**en selecteer vervolgens **Web-Inspector weer geven**.
+1. Selecteer **ontwikkelen** en selecteer vervolgens **Web-Inspector weer geven** .
 
     ![Scherm opname van ' webinspector weer geven '](media/capture-browser-trace/safari-show-web-inspector.png)
 
 1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
 
-    1. Selecteer het tabblad **netwerk** en selecteer vervolgens **logboek bewaren**.
+    1. Selecteer het tabblad **netwerk** en selecteer vervolgens **logboek bewaren** .
 
-          ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/safari-network-preserve-log.png)
+          ![Scherm afbeelding waarin de optie logboek bewaren wordt weer gegeven.](media/capture-browser-trace/safari-network-preserve-log.png)
 
-    1. Selecteer het tabblad **console** en selecteer vervolgens **logboek bewaren**.
+    1. Selecteer het tabblad **console** en selecteer vervolgens **logboek bewaren** .
 
-          ![Scherm opname van ' logboek bewaren '](media/capture-browser-trace/safari-console-preserve-log.png)
+          ![Scherm opname van de weer gave logboek op het tabblad console.](media/capture-browser-trace/safari-console-preserve-log.png)
 
-1. Selecteer het tabblad **netwerk** en selecteer vervolgens **netwerk items wissen**.
+1. Selecteer het tabblad **netwerk** en selecteer vervolgens **netwerk items wissen** .
 
     ![Scherm opname van ' netwerk items wissen '](media/capture-browser-trace/safari-clear-session.png)
 
 1. Reproduceer het probleem in de portal. U ziet de uitvoer van de sessie, vergelijkbaar met de volgende afbeelding.
 
-    ![Scherm opname van resultaten van browser tracering](media/capture-browser-trace/safari-browser-trace-results.png)
+    ![Scherm opname waarin de uitvoer wordt weer gegeven nadat u het probleem hebt gereproduceerd.](media/capture-browser-trace/safari-browser-trace-results.png)
 
 1. Nadat u het onverwachte gedrag van de portal hebt gemaakt, selecteert u **exporteren** en slaat u het bestand op.
 
@@ -162,7 +162,7 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
 1. Ga terug naar het deel venster ontwikkel hulpprogramma's van de browser, selecteer het tabblad **console** en vouw het venster uit. Plaats de cursor aan het begin van de console-uitvoer en sleep en selecteer de volledige inhoud van de uitvoer. Gebruik opdracht-C om de uitvoer te kopiëren en op te slaan in een tekst bestand.
 
-    ![Scherm opname van console-uitvoer](media/capture-browser-trace/safari-console-select.png)
+    ![Scherm afbeelding waarmee u de uitvoer kunt bekijken en kopiëren.](media/capture-browser-trace/safari-console-select.png)
 
 1. Pak het HAR-bestand, de console-uitvoer en de scherm opname in een gecomprimeerde indeling zoals. zip en share die met micro soft ondersteuning.
 
@@ -176,19 +176,19 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
 1. Navigeer in de portal naar de stap vlak voordat het probleem zich voordoet.
 
-1. Druk op F12 of selecteer ![ scherm opname van browser instellingen pictogram ](media/capture-browser-trace/firefox-icon-settings.png)  >  **webontwikkelaar**  >  **Toggle hulp middelen**.
+1. Druk op F12 of selecteer ![ scherm opname van browser instellingen pictogram ](media/capture-browser-trace/firefox-icon-settings.png)  >  **webontwikkelaar**  >  **Toggle hulp middelen** .
 
 1. De browser houdt standaard alleen tracerings informatie bij voor de pagina die momenteel wordt geladen. Stel de volgende opties zodanig in dat de browser alle tracerings gegevens houdt, zelfs als uw reproduceren naar meer dan één pagina moet gaan:
 
-    1. Selecteer het tabblad **netwerk** en selecteer vervolgens **Logboeken persistent**maken.
+    1. Selecteer het tabblad **netwerk** en selecteer vervolgens **Logboeken persistent** maken.
 
-          ![Scherm opname van Logboeken voor persistentie](media/capture-browser-trace/firefox-network-persist-logs.png)
+          ![Scherm opname van de optie Logboeken persistent maken.](media/capture-browser-trace/firefox-network-persist-logs.png)
 
-    1. Selecteer het tabblad **console** , selecteer **console-instellingen**en selecteer **persistente logboeken**.
+    1. Selecteer het tabblad **console** , selecteer **console-instellingen** en selecteer **persistente logboeken** .
 
           ![Scherm opname van Logboeken voor persistentie](media/capture-browser-trace/firefox-console-persist-logs.png)
 
-1. Selecteer het tabblad **netwerk** en selecteer vervolgens **wissen**.
+1. Selecteer het tabblad **netwerk** en selecteer vervolgens **wissen** .
 
     ![Scherm opname van ' wissen '](media/capture-browser-trace/firefox-clear-session.png)
 
@@ -196,13 +196,13 @@ De volgende stappen laten zien hoe u de hulpprogram ma's voor ontwikkel aars in 
 
     ![Scherm opname van resultaten van browser tracering](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. Nadat u het onverwachte gedrag van de portal hebt gemaakt, selecteert u **har exporteren/importeren** en slaat u vervolgens **alles op als har**.
+1. Nadat u het onverwachte gedrag van de portal hebt gemaakt, selecteert u **har exporteren/importeren** en slaat u vervolgens **alles op als har** .
 
     ![Scherm afbeelding van "uitvoer HAR"](media/capture-browser-trace/firefox-network-export-har.png)
 
 1. Stop stappen voor het opnemen van de opname in Windows of het scherm op Mac en sla de opname op.
 
-1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop op een van de berichten, selecteer **zichtbaar bericht exporteren naar**en sla de uitvoer van de console op in een tekst bestand.
+1. Selecteer in het deel venster ontwikkel hulpprogramma's van de browser het tabblad **console** . Klik met de rechter muisknop op een van de berichten, selecteer **zichtbaar bericht exporteren naar** en sla de uitvoer van de console op in een tekst bestand.
 
     ![Scherm opname van console-uitvoer](media/capture-browser-trace/firefox-console-select.png)
 

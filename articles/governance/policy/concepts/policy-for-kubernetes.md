@@ -3,12 +3,12 @@ title: Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bd0dc08583b126b6260999ace14d8fc13c52c1f7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1e85d7af26e52ea38c09ec0c052b5c6a2787bb80
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676705"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146293"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Azure Policy voor Kubernetes-clusters
 
@@ -37,7 +37,7 @@ Als u Azure Policy met uw Kubernetes-cluster wilt inschakelen en gebruiken, voer
    - [AKS-engine](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
-   > Zie [probleem oplossing-Azure Policy-invoeg toepassing](../troubleshoot/general.md#add-on-installation-errors)voor veelvoorkomende problemen met de installatie.
+   > Zie [probleem oplossing-Azure Policy-invoeg toepassing](../troubleshoot/general.md#add-on-for-kubernetes-installation-errors)voor veelvoorkomende problemen met de installatie.
 
 1. [Inzicht in de Azure Policy taal voor Kubernetes](#policy-language)
 
@@ -405,7 +405,7 @@ Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp
 
    - **Uitgeschakeld** : dwing het beleid niet af op het cluster. Kubernetes-toegangs aanvragen met schendingen worden niet geweigerd. De resultaten van de nalevings beoordeling zijn nog steeds beschikbaar. Bij het implementeren van nieuwe beleids definities voor het uitvoeren van clusters, is de optie _uitgeschakeld_ handig voor het testen van de beleids definitie als toegangs aanvragen met schendingen niet worden geweigerd.
 
-1. Selecteer **Next** .
+1. Selecteer **Volgende** .
 
 1. **Parameter waarden** instellen
 

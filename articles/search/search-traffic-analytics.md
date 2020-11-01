@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91333729"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetriegegevens verzamelen voor analyse van het zoek verkeer
@@ -49,11 +49,11 @@ Zodra u een Application Insights resource hebt, kunt u de [instructies voor onde
 
 Een snelkoppeling die werkt voor sommige Visual Studio-project typen wordt weer gegeven in de volgende stappen. Hiermee maakt u een resource en registreert u uw app in slechts enkele klikken.
 
-1. Voor Visual Studio en ASP.NET Development opent u uw oplossing en selecteert u **project**  >  **toevoegen Application Insights Telemetry**.
+1. Voor Visual Studio en ASP.NET Development opent u uw oplossing en selecteert u **project**  >  **toevoegen Application Insights Telemetry** .
 
-1. Klik op **Aan de slag**.
+1. Klik op **Aan de slag** .
 
-1. Registreer uw app door een Microsoft-account, een Azure-abonnement en een Application Insights bron op te geven (een nieuwe resource is de standaard instelling). Klik op **Registreren**.
+1. Registreer uw app door een Microsoft-account, een Azure-abonnement en een Application Insights bron op te geven (een nieuwe resource is de standaard instelling). Klik op **Registreren** .
 
 Uw toepassing is op dit moment ingesteld voor toepassings bewaking, wat betekent dat alle pagina belasting wordt bijgehouden met standaard metrische gegevens. Zie [Application Insights telemetrie aan de server zijde inschakelen](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)voor meer informatie over de vorige stappen.
 
@@ -129,12 +129,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 Telkens wanneer een zoek opdracht wordt uitgegeven door een gebruiker, moet u zich als een zoek gebeurtenis aanmelden met het volgende schema voor een Application Insights aangepaste gebeurtenis. Vergeet alleen door gebruikers gegenereerde Zoek opdrachten te registreren.
 
-+ **SearchServiceName**: (teken reeks) zoek service naam
-+ **SearchId**: (GUID) de unieke id van de zoek query (komt in het zoek antwoord)
-+ **Indexnaam**: (teken reeks) zoek service index waarvoor een query moet worden uitgevoerd
-+ **QueryTerms**: (teken reeks) zoek termen die zijn ingevoerd door de gebruiker
-+ **ResultCount**: (int) aantal opgehaalde documenten (komt voor in het zoek antwoord)
-+ **ScoringProfile**: (teken reeks) naam van het gebruikte Score profiel, indien van toepassing
++ **SearchServiceName** : (teken reeks) zoek service naam
++ **SearchId** : (GUID) de unieke id van de zoek query (komt in het zoek antwoord)
++ **Indexnaam** : (teken reeks) zoek service index waarvoor een query moet worden uitgevoerd
++ **QueryTerms** : (teken reeks) zoek termen die zijn ingevoerd door de gebruiker
++ **ResultCount** : (int) aantal opgehaalde documenten (komt voor in het zoek antwoord)
++ **ScoringProfile** : (teken reeks) naam van het gebruikte Score profiel, indien van toepassing
 
 > [!NOTE]
 > Vraag het aantal door de gebruiker gegenereerde query's aan door $count = True toe te voegen aan uw zoek query. Zie [documenten zoeken (rest)](/rest/api/searchservice/search-documents#counttrue--false)voor meer informatie.
@@ -172,10 +172,10 @@ appInsights.trackEvent("Search", {
 
 Telkens wanneer een gebruiker op een document klikt, is dit een signaal dat moet worden vastgelegd voor de analyse van de zoek opdracht. Gebruik Application Insights aangepaste gebeurtenissen om deze gebeurtenissen te registreren met het volgende schema:
 
-+ **ServiceName**: (teken reeks) naam zoek service
-+ **SearchId**: (GUID) unieke id van de gerelateerde zoek query
-+ **Documenten**: (teken reeks) document-id
-+ **Position**: (int) positie van het document op de pagina met zoek resultaten
++ **ServiceName** : (teken reeks) naam zoek service
++ **SearchId** : (GUID) unieke id van de gerelateerde zoek query
++ **Documenten** : (teken reeks) document-id
++ **Position** : (int) positie van het document op de pagina met zoek resultaten
 
 > [!NOTE]
 > De positie verwijst naar de Cardinal-volg orde in uw toepassing. U kunt dit nummer instellen, zolang het altijd hetzelfde is, om een vergelijking mogelijk te maken.
@@ -209,19 +209,19 @@ appInsights.trackEvent("Click", {
 
 Nadat u uw app hebt geinstrumenteerd en hebt gecontroleerd of uw toepassing correct is verbonden met Application Insights, downloadt u een vooraf gedefinieerde rapport sjabloon om gegevens te analyseren in Power BI bureau blad. Het rapport bevat vooraf gedefinieerde grafieken en tabellen die nuttig zijn voor het analyseren van de aanvullende gegevens die zijn vastgelegd voor analyse van het zoek verkeer.
 
-1. Klik in het linkerdeel venster van het dash board van Azure Cognitive Search onder **instellingen**op **verkeer analyse zoeken**.
+1. Klik in het linkerdeel venster van het dash board van Azure Cognitive Search onder **instellingen** op **verkeer analyse zoeken** .
 
 1. Klik op de pagina **Traffic Analytics zoeken** in stap 3 op **Power BI Desktop ophalen** om Power bi te installeren.
 
    ![Power BI-rapporten ophalen](./media/search-traffic-analytics/get-use-power-bi.png "Power BI-rapporten ophalen")
 
-1. Klik op dezelfde pagina op **Power bi rapport downloaden**.
+1. Klik op dezelfde pagina op **Power bi rapport downloaden** .
 
 1. Het rapport wordt geopend in Power BI Desktop en u wordt gevraagd verbinding te maken met Application Insights en referenties op te geven. U kunt verbindings informatie vinden op de Azure Portal pagina's voor uw Application Insights resource. Geef voor referenties dezelfde gebruikers naam en hetzelfde wacht woord op die u gebruikt voor de aanmelding bij de portal.
 
    ![Verbinding maken met Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Verbinding maken met Application Insights")
 
-1. Klik op **laden**.
+1. Klik op **laden** .
 
 Het rapport bevat grafieken en tabellen waarmee u meer onderbouwde beslissingen kunt nemen om uw zoek prestaties en relevantie te verbeteren.
 

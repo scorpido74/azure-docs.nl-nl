@@ -1,6 +1,6 @@
 ---
 title: 'Verbinding maken met een VNet vanaf een computer-P2S VPN en systeem eigen Azure-certificaat verificatie: Power shell'
-description: Verbind Windows- en Mac OS X-clients veilig met een virtueel Azure-netwerk met behulp van P2S en zelfondertekende of door certificeringsinstanties uitgegeven certificaten. In dit artikel wordt PowerShell gebruikt.
+description: Verbind Windows-en macOS-clients veilig met een virtueel Azure-netwerk met behulp van P2S en zelfondertekende of door certificerings instanties uitgegeven certificaten. In dit artikel wordt PowerShell gebruikt.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,29 +8,22 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5d2902222dea3e84ebed04d80d7349167f83cae1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6df7aa919721576aad10d6a476be976ef81df7d
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076016"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145868"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Een punt-naar-site-VPN-verbinding met een VNet configureren met behulp van systeem eigen Azure-certificaat verificatie: Power shell
 
-Dit artikel helpt u bij het veilig verbinden van afzonderlijke clients met Windows, Linux of Mac OS X naar een Azure-VNet. Punt-naar-site-VPN-verbindingen zijn nuttig wanneer u verbinding wilt maken met uw VNet vanaf een externe locatie, zoals wanneer u thuis of op een conferentie werkt. U kunt P2S ook in plaats van een site-naar-site-VPN gebruiken wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet. Voor Point-to-site-verbindingen is geen VPN-apparaat of een openbaar IP-adres vereist. P2S maakt de VPN-verbinding via SSTP (Secure Socket Tunneling Protocol) of IKEv2.
+Dit artikel helpt u bij het veilig verbinden van afzonderlijke clients met Windows, Linux of macOS naar een Azure-VNet. Punt-naar-site-VPN-verbindingen zijn nuttig wanneer u verbinding wilt maken met uw VNet vanaf een externe locatie, zoals wanneer u thuis of op een conferentie werkt. U kunt P2S ook in plaats van een site-naar-site-VPN gebruiken wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet. Voor Point-to-site-verbindingen is geen VPN-apparaat of een openbaar IP-adres vereist. P2S maakt de VPN-verbinding via SSTP (Secure Socket Tunneling Protocol) of IKEv2.
 
 :::image type="content" source="./media/vpn-gateway-how-to-point-to-site-rm-ps/point-to-site-diagram.png" alt-text="Verbinding maken tussen een computer en een Azure VNet-Point-to-site-verbindings diagram":::
 
 Zie [about Point-to-site VPN](point-to-site-about.md)(Engelstalig) voor meer informatie over punt-naar-site-VPN. Als u deze configuratie wilt maken met behulp van de Azure Portal, raadpleegt u [een punt-naar-site-VPN configureren met behulp van de Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
-## <a name="architecture"></a>Architectuur
-
-Punt-naar-site systeem eigen Azure-certificaat authenticatie verbindingen gebruiken de volgende items, die u in deze oefening configureert:
-
-* Een RouteBased VPN-gateway.
-* De openbare sleutel (CER-bestand) voor een basiscertificaat dat is geüpload naar Azure. Nadat het certificaat is geüpload, wordt het beschouwd als een vertrouwd certificaat en wordt het gebruikt voor verificatie.
-* Een clientcertificaat dat is gegenereerd op basis van het basiscertificaat. Het clientcertificaat dat is geïnstalleerd op elke clientcomputer die met het VNet verbinding zal maken. Dit certificaat wordt gebruikt voor clientverificatie.
-* Een VPN-clientconfiguratie. De configuratiebestanden voor de VPN-client bevatten de gegevens die nodig zijn om de client te verbinden met het VNet. Met de bestanden wordt de bestaande VPN-client geconfigureerd die is ingebouwd in het besturingssysteem. Elke client die verbinding maakt, moet worden geconfigureerd met behulp van de instellingen in de configuratiebestanden.
+[!INCLUDE [P2S basic architecture](../../includes/vpn-gateway-p2s-architecture.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,7 +35,7 @@ Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt,
 > Veel van de stappen in dit artikel kunnen gebruikmaken van de Azure Cloud Shell. U kunt Cloud Shell echter niet gebruiken om certificaten te genereren. Als u de open bare sleutel van het basis certificaat ook wilt uploaden, moet u Azure PowerShell lokaal of op de Azure Portal gebruiken.
 >
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="1-sign-in"></a><a name="signin"></a>1. aanmelden
 

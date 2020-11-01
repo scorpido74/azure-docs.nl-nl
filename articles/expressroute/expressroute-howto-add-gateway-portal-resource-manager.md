@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91761781"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Zelfstudie: Een virtuele-netwerkgateway configureren voor ExpressRoute met behulp van de Azure-portal
@@ -64,7 +64,7 @@ U kunt een [video](https://azure.microsoft.com/documentation/videos/azure-expres
 
 ## <a name="create-the-virtual-network-gateway"></a>De gateway van het virtuele netwerk maken
 
-1. Klik in de portal aan de linkerkant op **Een resource maken** en typ 'virtuele netwerkgateway' in het zoekvak. Zoek **Virtuele netwerkgateway** in de zoekresultaten en selecteer de vermelding. Selecteer op de pagina **Virtuele netwerkgateway** de optie **Maken**.
+1. Klik in de portal aan de linkerkant op **Een resource maken** en typ 'virtuele netwerkgateway' in het zoekvak. Zoek **Virtuele netwerkgateway** in de zoekresultaten en selecteer de vermelding. Selecteer op de pagina **Virtuele netwerkgateway** de optie **Maken** .
 1. Voer op de pagina **Virtuele netwerkgateway maken** de volgende instellingen in of selecteer ze:
 
     | Instelling | Waarde |
@@ -75,8 +75,8 @@ U kunt een [video](https://azure.microsoft.com/documentation/videos/azure-expres
     | Regio | Wijzig het veld **Regio** om naar de locatie van het virtuele netwerk te verwijzen. Als de locatie niet verwijst naar de regio waarin het virtuele netwerk zich bevindt, wordt het virtuele netwerk niet weergegeven in de vervolgkeuzelijst Virtueel netwerk. |
     | Gatewaytype | Selecteer **ExpressRoute**|
     | SKU | Selecteer de gateway-SKU in de vervolgkeuzelijst. |
-    | Virtueel netwerk | Selecteer *TestVNet*. |
-    | Openbaar IP-adres | Selecteer **Nieuw maken**.|
+    | Virtueel netwerk | Selecteer *TestVNet* . |
+    | Openbaar IP-adres | Selecteer **Nieuw maken** .|
     | Naam openbaar IP-adres | Geef een naam op voor het openbare IP-adres. |
 
 1. Selecteer **Beoordelen en maken** en daarna **Maken** om de gateway te maken. De instellingen worden gevalideerd en de gateway wordt geïmplementeerd. Het maken van een gateway voor een virtueel netwerk kan tot 45 minuten duren.
@@ -85,7 +85,7 @@ U kunt een [video](https://azure.microsoft.com/documentation/videos/azure-expres
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de ExpressRoute-gateway niet meer nodig hebt, gaat u naar de gateway in de resourcegroep met het virtuele netwerk en selecteert u **Verwijderen**. Zorg ervoor dat de gateway geen verbindingen met een circuit heeft.
+Als u de ExpressRoute-gateway niet meer nodig hebt, gaat u naar de gateway in de resourcegroep met het virtuele netwerk en selecteert u **Verwijderen** . Zorg ervoor dat de gateway geen verbindingen met een circuit heeft.
 
 :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Het gatewaysubnet toevoegen":::
 

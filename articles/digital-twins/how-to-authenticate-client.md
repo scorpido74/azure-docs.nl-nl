@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f5ca063bcc784498dddf87f34f0f7974b95ecaf
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b929632318de41470412811885b9f1bd3054783a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027309"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145970"
 ---
 # <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
@@ -31,12 +31,14 @@ Als u wilt door gaan, hebt u een client-app-project nodig waarin u uw code schri
 ## <a name="common-authentication-methods-with-azureidentity"></a>Algemene verificatie methoden met Azure. Identity
 
 `Azure.Identity` is een client bibliotheek met verschillende methoden voor het verkrijgen van referenties die u kunt gebruiken om een Bearer-token op te halen en te verifiëren met uw SDK. Hoewel in dit artikel voor beelden in C# worden weer gegeven, kunt u deze bekijken `Azure.Identity` voor verschillende talen, waaronder...
+
 * [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
 * [Java](/java/api/overview/azure/identity-readme?preserve-view=true&view=azure-java-stable)
 * [JavaScript](/javascript/api/overview/azure/identity-readme?preserve-view=true&view=azure-node-latest)
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 Drie veelvoorkomende methoden voor het verkrijgen van referenties in `Azure.Identity` zijn:
+
 * [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) biedt een standaard `TokenCredential` verificatie stroom voor toepassingen die worden geïmplementeerd in azure, en is **de aanbevolen keuze voor lokale ontwikkeling** . Het kan ook worden ingeschakeld om de andere twee methoden te proberen die in dit artikel worden aanbevolen. Er wordt gewikkeld `ManagedIdentityCredential` en kan toegang krijgen tot `InteractiveBrowserCredential` een configuratie variabele.
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) werkt prima in gevallen waarin u [beheerde identiteiten (MSI)](../active-directory/managed-identities-azure-resources/overview.md)nodig hebt, en is een goede kandidaat voor het werken met Azure functions en het implementeren van Azure-Services.
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) is bedoeld voor interactieve toepassingen en kan worden gebruikt voor het maken van een geverifieerde SDK-client

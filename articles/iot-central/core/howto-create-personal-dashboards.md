@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f7dca7352a49e668231f64632371a445985e4de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68bb4e2ac525270004a698471cd44955cd25fefc
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83634552"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146106"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Meerdere Dash boards maken en beheren
 
@@ -38,11 +38,11 @@ Als u een **beheerder** van de toepassing bent, krijgt u de optie om een dash bo
 > [!div class="mx-imgBorder"]
 > ![Formulier Details van apparaat configureren met Details voor de Tempe ratuur](media/howto-create-personal-dashboards/device-details.png)
 
-U kunt bijvoorbeeld een **telemetrie** -tegel toevoegen voor de huidige Tempe ratuur van het apparaat. Hiervoor doet u het volgende:
+U kunt bijvoorbeeld een **telemetrie** -tegel toevoegen voor de huidige Tempe ratuur van het apparaat. Dit doet u als volgt:
 
 1. Een sjabloon voor een **apparaat** selecteren
 1. Selecteer een apparaat in **apparaten** voor het apparaat dat u wilt weer geven op een dashboard tegel. Vervolgens ziet u een lijst met de eigenschappen van het apparaat die kunnen worden gebruikt op de tegel.
-1. Als u de tegel op het dash board wilt maken, klikt u op **Tempe ratuur** en sleept u deze naar het dashboard gebied. U kunt ook op het selectie vakje naast **Tempe ratuur** klikken en vervolgens op **tegel toevoegen**klikken. Op de volgende scherm afbeelding ziet u hoe u een sjabloon en apparaat selecteert en vervolgens een temperatuur telemetrie-tegel op het dash board maakt.
+1. Als u de tegel op het dash board wilt maken, klikt u op **Tempe ratuur** en sleept u deze naar het dashboard gebied. U kunt ook op het selectie vakje naast **Tempe ratuur** klikken en vervolgens op **tegel toevoegen** klikken. Op de volgende scherm afbeelding ziet u hoe u een sjabloon en apparaat selecteert en vervolgens een temperatuur telemetrie-tegel op het dash board maakt.
 1. Selecteer in de linkerbovenhoek op **Opslaan** om uw wijzigingen in het dash board op te slaan.
 
 > [!div class="mx-imgBorder"]
@@ -51,7 +51,7 @@ U kunt bijvoorbeeld een **telemetrie** -tegel toevoegen voor de huidige Tempe ra
 Wanneer u nu uw persoonlijke dash board bekijkt, ziet u de nieuwe tegel met de instelling voor de **Tempe ratuur** van het apparaat:
 
 > [!div class="mx-imgBorder"]
-> ![Het tabblad dash board met Details voor de temperatuur tegel](media/howto-create-personal-dashboards/temperature-tile-complete.png)
+> ![Scherm opname van de nieuwe tegel met de instelling voor de Tempe ratuur van het apparaat.](media/howto-create-personal-dashboards/temperature-tile-complete.png)
 
 U kunt andere tegel typen in de bibliotheek verkennen om te ontdekken hoe u uw persoonlijke Dash boards verder moet aanpassen.
 
@@ -64,7 +64,7 @@ U kunt verschillende persoonlijke Dash boards hebben en hiertussen scha kelen of
 > [!div class="mx-imgBorder"]
 > ![Scha kelen tussen Dash boards](media/howto-create-personal-dashboards/switch-dashboards.png)
 
-U kunt uw persoonlijke Dash boards bewerken en alle Dash boards verwijderen die u niet meer nodig hebt. Als u een **beheerder**bent, kunt u ook Dash boards op toepassings niveau bewerken of verwijderen.
+U kunt uw persoonlijke Dash boards bewerken en alle Dash boards verwijderen die u niet meer nodig hebt. Als u een **beheerder** bent, kunt u ook Dash boards op toepassings niveau bewerken of verwijderen.
 
 > [!div class="mx-imgBorder"]
 > ![Dash boards verwijderen](media/howto-create-personal-dashboards/delete-dashboards.png)

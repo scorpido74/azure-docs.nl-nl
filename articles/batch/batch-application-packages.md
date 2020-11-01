@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91277696"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
@@ -33,7 +33,7 @@ Er gelden beperkingen voor het aantal toepassingen en toepassings pakketten in e
 
 ## <a name="understand-applications-and-application-packages"></a>Meer informatie over toepassingen en toepassings pakketten
 
-Binnen Azure Batch verwijst een *toepassing* naar een set binaire bestanden die automatisch kunnen worden gedownload naar de reken knooppunten in uw pool. Een toepassing bevat een of meer *toepassings pakketten*die verschillende versies van de toepassing vertegenwoordigen.
+Binnen Azure Batch verwijst een *toepassing* naar een set binaire bestanden die automatisch kunnen worden gedownload naar de reken knooppunten in uw pool. Een toepassing bevat een of meer *toepassings pakketten* die verschillende versies van de toepassing vertegenwoordigen.
 
 Elk *toepassings pakket* is een zip-bestand met de binaire bestanden van de toepassing en eventuele ondersteunende bestanden. Alleen de zip-indeling wordt ondersteund.
 
@@ -69,7 +69,7 @@ Als u nog geen opslag account hebt geconfigureerd, wordt in de Azure Portal een 
 Nadat u de twee accounts hebt gekoppeld, kan batch de pakketten die zijn opgeslagen in het gekoppelde opslag account automatisch implementeren in de reken knooppunten.
 
 > [!IMPORTANT]
-> U kunt geen toepassings pakketten gebruiken met Azure Storage accounts die zijn geconfigureerd met [firewall regels](../storage/common/storage-network-security.md)of waarvoor een **hiërarchische naam ruimte** is ingesteld op **ingeschakeld**.
+> U kunt geen toepassings pakketten gebruiken met Azure Storage accounts die zijn geconfigureerd met [firewall regels](../storage/common/storage-network-security.md)of waarvoor een **hiërarchische naam ruimte** is ingesteld op **ingeschakeld** .
 
 De batch-service gebruikt Azure Storage om uw toepassings pakketten op te slaan als blok-blobs. Er worden [kosten in rekening gebracht](https://azure.microsoft.com/pricing/details/storage/) voor de blok-BLOB-gegevens en de grootte van elk pakket kan niet groter zijn dan de maximale grootte van de blok-blob. Zie [Azure Storage schaalbaarheids-en prestatie doelen voor opslag accounts](../storage/blobs/scalability-targets.md)voor meer informatie. Als u de kosten tot een minimum wilt beperken, moet u rekening houden met de grootte en het aantal van uw toepassings pakketten, en regel matig afgeschafte pakketten verwijderen.
 
@@ -81,33 +81,33 @@ Als u de toepassingen wilt weer geven in uw batch-account, selecteert u **toepas
 
 Als u deze menu optie selecteert, wordt het venster **toepassingen** geopend. In dit venster wordt de ID weer gegeven van elke toepassing in uw account en de volgende eigenschappen:
 
-- **Pakketten**: het aantal versies dat is gekoppeld aan deze toepassing.
-- **Standaard versie**: indien van toepassing, de versie van de toepassing die wordt geïnstalleerd als er geen versie wordt opgegeven bij het implementeren van de toepassing.
-- **Updates toestaan**: Hiermee geeft u op of pakket updates en verwijderingen zijn toegestaan.
+- **Pakketten** : het aantal versies dat is gekoppeld aan deze toepassing.
+- **Standaard versie** : indien van toepassing, de versie van de toepassing die wordt geïnstalleerd als er geen versie wordt opgegeven bij het implementeren van de toepassing.
+- **Updates toestaan** : Hiermee geeft u op of pakket updates en verwijderingen zijn toegestaan.
 
-Als u de [bestands structuur](files-and-directories.md) van het toepassings pakket op een reken knooppunt wilt zien, gaat u naar uw batch-account in de Azure Portal. Selecteer **groepen**. Selecteer vervolgens de pool die het reken knooppunt bevat. Selecteer het reken knooppunt waarop het toepassings pakket is geïnstalleerd en open de map **toepassingen** .
+Als u de [bestands structuur](files-and-directories.md) van het toepassings pakket op een reken knooppunt wilt zien, gaat u naar uw batch-account in de Azure Portal. Selecteer **groepen** . Selecteer vervolgens de pool die het reken knooppunt bevat. Selecteer het reken knooppunt waarop het toepassings pakket is geïnstalleerd en open de map **toepassingen** .
 
 ### <a name="view-application-details"></a>Details van toepassing weer geven
 
 Als u de details van een toepassing wilt bekijken, selecteert u deze in het venster **toepassingen** . U kunt de volgende instellingen configureren voor uw toepassing.
 
-- **Updates toestaan**: geeft aan of toepassings pakketten kunnen worden [bijgewerkt of verwijderd](#update-or-delete-an-application-package). De standaard waarde is **Ja**. Indien ingesteld op **Nee**, kunnen bestaande toepassings pakketten niet worden bijgewerkt of verwijderd, maar nieuwe toepassings pakket versies kunnen nog steeds worden toegevoegd.
-- **Standaard versie**: het standaard toepassings pakket dat moet worden gebruikt wanneer de toepassing wordt geïmplementeerd, als er geen versie is opgegeven.
-- **Weergave naam**: een beschrijvende naam die door uw batch-oplossing kan worden gebruikt wanneer informatie over de toepassing wordt weer gegeven. Deze naam kan bijvoorbeeld worden gebruikt in de gebruikers interface van een service die u via batch aan uw klanten verstrekt.
+- **Updates toestaan** : geeft aan of toepassings pakketten kunnen worden [bijgewerkt of verwijderd](#update-or-delete-an-application-package). De standaard waarde is **Ja** . Indien ingesteld op **Nee** , kunnen bestaande toepassings pakketten niet worden bijgewerkt of verwijderd, maar nieuwe toepassings pakket versies kunnen nog steeds worden toegevoegd.
+- **Standaard versie** : het standaard toepassings pakket dat moet worden gebruikt wanneer de toepassing wordt geïmplementeerd, als er geen versie is opgegeven.
+- **Weergave naam** : een beschrijvende naam die door uw batch-oplossing kan worden gebruikt wanneer informatie over de toepassing wordt weer gegeven. Deze naam kan bijvoorbeeld worden gebruikt in de gebruikers interface van een service die u via batch aan uw klanten verstrekt.
 
 ### <a name="add-a-new-application"></a>Een nieuwe toepassing toevoegen
 
 Als u een nieuwe toepassing wilt maken, voegt u een toepassings pakket toe en geeft u een unieke toepassings-ID op.
 
-Selecteer in uw batch-account **toepassingen** en selecteer vervolgens **toevoegen**.
+Selecteer in uw batch-account **toepassingen** en selecteer vervolgens **toevoegen** .
 
 :::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Diagram van een weer gave op hoog niveau van toepassingen en toepassings pakketten.":::
 
 Voer de volgende informatie in:
 
-- **Toepassings-id**: de id van de nieuwe toepassing.
-- **Versie**: de versie van het toepassings pakket dat u uploadt.
-- **Toepassings pakket**: het. zip-bestand met de binaire bestanden van de toepassing en de ondersteunings dossiers die nodig zijn om de toepassing uit te voeren.
+- **Toepassings-id** : de id van de nieuwe toepassing.
+- **Versie** : de versie van het toepassings pakket dat u uploadt.
+- **Toepassings pakket** : het. zip-bestand met de binaire bestanden van de toepassing en de ondersteunings dossiers die nodig zijn om de toepassing uit te voeren.
 
 De **toepassings-id en-** **versie** die u invoert, moeten voldoen aan de volgende vereisten:
 
@@ -116,13 +116,13 @@ De **toepassings-id en-** **versie** die u invoert, moeten voldoen aan de volgen
 - Moet uniek zijn binnen het batch-account.
 - De Id's zijn hoofdletter gevoelig en zijn niet in gebruik.
 
-Wanneer u klaar bent, selecteert u **verzenden**. Nadat het zip-bestand is geüpload naar uw Azure Storage-account, wordt een melding weer gegeven in de portal. Afhankelijk van de grootte van het bestand dat u uploadt en de snelheid van uw netwerk verbinding, kan dit enige tijd duren.
+Wanneer u klaar bent, selecteert u **verzenden** . Nadat het zip-bestand is geüpload naar uw Azure Storage-account, wordt een melding weer gegeven in de portal. Afhankelijk van de grootte van het bestand dat u uploadt en de snelheid van uw netwerk verbinding, kan dit enige tijd duren.
 
 ### <a name="add-a-new-application-package"></a>Een nieuw toepassings pakket toevoegen
 
-Als u een toepassings pakket versie voor een bestaande toepassing wilt toevoegen, selecteert u de toepassing in de sectie **toepassingen** van uw batch-account en selecteert u vervolgens **toevoegen**.
+Als u een toepassings pakket versie voor een bestaande toepassing wilt toevoegen, selecteert u de toepassing in de sectie **toepassingen** van uw batch-account en selecteert u vervolgens **toevoegen** .
 
-Zoals u voor de nieuwe toepassing hebt gedaan, geeft u de **versie** op voor het nieuwe pakket, uploadt u uw zip-bestand in het veld **toepassings pakket** en selecteert u vervolgens **verzenden**.
+Zoals u voor de nieuwe toepassing hebt gedaan, geeft u de **versie** op voor het nieuwe pakket, uploadt u uw zip-bestand in het veld **toepassings pakket** en selecteert u vervolgens **verzenden** .
 
 ### <a name="update-or-delete-an-application-package"></a>Een toepassings pakket bijwerken of verwijderen
 
@@ -130,9 +130,9 @@ Als u een bestaand toepassings pakket wilt bijwerken of verwijderen, selecteert 
 
 :::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Diagram van een weer gave op hoog niveau van toepassingen en toepassings pakketten.":::
 
-Als u **bijwerken**selecteert, kunt u een nieuw zip-bestand uploaden. Hiermee wordt het vorige zip-bestand vervangen dat u hebt geüpload voor die versie.
+Als u **bijwerken** selecteert, kunt u een nieuw zip-bestand uploaden. Hiermee wordt het vorige zip-bestand vervangen dat u hebt geüpload voor die versie.
 
-Als u **verwijderen**selecteert, wordt u gevraagd om de verwijdering van die versie te bevestigen. Zodra u **OK**hebt geselecteerd, wordt het zip-bestand uit uw Azure Storage-account verwijderd. Als u de standaard versie van een toepassing verwijdert, wordt de **standaard versie** -instelling voor die toepassing verwijderd.
+Als u **verwijderen** selecteert, wordt u gevraagd om de verwijdering van die versie te bevestigen. Zodra u **OK** hebt geselecteerd, wordt het zip-bestand uit uw Azure Storage-account verwijderd. Als u de standaard versie van een toepassing verwijdert, wordt de **standaard versie** -instelling voor die toepassing verwijderd.
 
 ## <a name="install-applications-on-compute-nodes"></a>Toepassingen op reken knooppunten installeren
 
@@ -225,7 +225,7 @@ AZ_BATCH_APP_PACKAGE_blender_2_7
 
 Wanneer u een toepassings pakket uploadt, kunt u een standaard versie opgeven om te implementeren op uw reken knooppunten. Als u een standaard versie voor een toepassing hebt opgegeven, kunt u het versie achtervoegsel weglaten wanneer u verwijst naar de toepassing. U kunt de standaard versie van de toepassing opgeven in de Azure Portal, in het venster **toepassingen** , zoals wordt weer gegeven in [toepassingen uploaden en beheren](#upload-and-manage-applications).
 
-Als u bijvoorbeeld ' 2,7 ' hebt ingesteld als de standaard versie voor de toepassing *blender*en uw taken verwijzen naar de volgende omgevings variabele, wordt versie 2,7 van uw Windows-knoop punten uitgevoerd:
+Als u bijvoorbeeld ' 2,7 ' hebt ingesteld als de standaard versie voor de toepassing *blender* en uw taken verwijzen naar de volgende omgevings variabele, wordt versie 2,7 van uw Windows-knoop punten uitgevoerd:
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 

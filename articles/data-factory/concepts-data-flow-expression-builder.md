@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635368"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145702"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Expressies bouwen in gegevens stroom toewijzen
 
@@ -30,15 +30,15 @@ Er zijn meerdere toegangs punten voor het openen van de opbouw functie voor expr
 
 In sommige trans formaties als [filter](data-flow-filter.md)klikt u op een blauwe expressie tekstvak om de opbouw functie voor expressies te openen. 
 
-![Vak met blauwe expressie](media/data-flow/expressionbox.png "Opbouwfunctie voor expressies")
+![Vak met blauwe expressie](media/data-flow/expressionbox.png "Vak met blauwe expressie")
 
 Wanneer u verwijst naar kolommen in een matching-of Group-by-voor waarde, kan een expressie waarden uit kolommen ophalen. Selecteer **berekende kolom** om een expressie te maken.
 
-![Optie berekende kolom](media/data-flow/computedcolumn.png "Opbouwfunctie voor expressies")
+![Optie berekende kolom](media/data-flow/computedcolumn.png "Optie berekende kolom")
 
 In gevallen waarin een expressie of letterlijke waarde geldige invoer is, selecteert u **dynamische inhoud toevoegen** om een expressie te bouwen die resulteert in een letterlijke waarde.
 
-![Optie voor dynamische inhoud toevoegen](media/data-flow/add-dynamic-content.png "Opbouwfunctie voor expressies")
+![Optie voor dynamische inhoud toevoegen](media/data-flow/add-dynamic-content.png "Optie voor dynamische inhoud toevoegen")
 
 ## <a name="expression-elements"></a>Expressie-elementen
 
@@ -46,7 +46,7 @@ In het toewijzen van gegevens stromen kunnen expressies bestaan uit kolom waarde
 
 ![Expressie-elementen](media/data-flow/expression-elements.png "Expressie-elementen")
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Functies
 
 Het toewijzen van gegevens stromen heeft ingebouwde functies en Opera tors die kunnen worden gebruikt in expressies. Voor een lijst met beschik bare functies raadpleegt u de [referentie gegevens stroom taal toewijzen](data-flow-expression-functions.md).
 
@@ -72,6 +72,16 @@ Wanneer u kolom namen hebt die speciale tekens of spaties bevatten, plaatst u de
 ### <a name="parameters"></a>Parameters
 
 Para meters zijn waarden die tijdens runtime worden door gegeven aan een gegevens stroom vanuit een pijp lijn. Als u wilt verwijzen naar een para meter, klikt u op de para meter in de weer gave **expressie elementen** of verwijst u ernaar met een dollar teken voor de naam. Er wordt bijvoorbeeld naar een para meter met de naam parameter1 verwezen door `$parameter1` . Zie [parameterizing mapping data flows](parameters-data-flow.md)(Engelstalig) voor meer informatie.
+
+### <a name="cached-lookup"></a>Opzoek in cache
+
+Met een opzoek bewerking in cache kunt u een inline-lookup uitvoeren van de uitvoer van een sink in de cache. Er zijn twee functies beschikbaar voor gebruik op elke sink, `lookup()` en `outputs()` . De syntaxis om te verwijzen naar deze functies is `cacheSinkName#functionName()` . Zie [cache-sinks](data-flow-sink.md#cache-sink)voor meer informatie.
+
+`lookup()` neemt de overeenkomende kolommen in de huidige trans formatie als para meters en retourneert een complexe kolom die gelijk is aan de rij die overeenkomt met de sleutel kolommen in de cache-sink. De geretourneerde complexe kolom bevat een subkolom voor elke kolom die is toegewezen in de cache-sink. Als er bijvoorbeeld een fout code-Sink voor de cache `errorCodeCache` met een sleutel kolom is die overeenkomt met de code en een kolom met de naam `Message` . Aanroepen `errorCodeCache#lookup(errorCode).Message` zou het bericht retour neren dat overeenkomt met de door gegeven code. 
+
+`outputs()` accepteert geen para meters en retourneert de volledige cache-Sink als een matrix met complexe kolommen. Dit kan niet worden aangeroepen als sleutel kolommen worden opgegeven in de Sink en alleen worden gebruikt als de cache-Sink een klein aantal rijen bevat. Bij een veelvoorkomende use-case wordt de maximum waarde van een incrementele sleutel toegevoegd. Als een enkele geaggregeerde rij met een cache `CacheMaxKey` een kolom bevat `MaxKey` , kunt u verwijzen naar de eerste waarde door aan te roepen `CacheMaxKey#outputs()[1].MaxKey` .
+
+![Opzoek in cache](media/data-flow/cached-lookup-example.png "Opzoek in cache")
 
 ### <a name="locals"></a>Locals
 

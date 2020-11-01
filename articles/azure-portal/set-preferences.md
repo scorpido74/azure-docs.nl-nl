@@ -9,12 +9,12 @@ ms.date: 08/05/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 34750bcc2e9913b23daa3682d4fdea736f9c7a9a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367428"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145936"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure-portalinstellingen en -voorkeuren beheren
 
@@ -44,13 +44,13 @@ U kunt de pagina die standaard wordt geopend, wijzigen wanneer u zich aanmeldt b
 
 - **Start pagina** kan niet worden aangepast.  Het bevat snelkoppelingen naar populaire Azure-Services en geeft een lijst van de resources die u het laatst hebt gebruikt. We bieden u ook nuttige koppelingen naar resources zoals Microsoft Learn en het Azure-schema.
 
-- Dash boards kunnen worden aangepast om een werk ruimte te maken die alleen voor u is ontworpen. U kunt bijvoorbeeld een dash board maken dat is gericht op project, taak of rol. Als u **dash board**selecteert, gaat uw standaard weergave naar het meest recent gebruikte dash board. Zie [Dashboards maken en delen in de Azure Portal](azure-portal-dashboards.md) voor meer informatie.
+- Dash boards kunnen worden aangepast om een werk ruimte te maken die alleen voor u is ontworpen. U kunt bijvoorbeeld een dash board maken dat is gericht op project, taak of rol. Als u **dash board** selecteert, gaat uw standaard weergave naar het meest recent gebruikte dash board. Zie [Dashboards maken en delen in de Azure Portal](azure-portal-dashboards.md) voor meer informatie.
 
 ## <a name="choose-a-portal-menu-mode"></a>Kies een portal menu modus
 
 De standaard modus voor het menu Portal bepaalt hoeveel ruimte het menu van de portal op de pagina inneemt.
 
-![Scherm opname van Azure Portal instellingen met Thema's gemarkeerd](./media/set-preferences/menu-mode.png)
+![Scherm afbeelding die laat zien hoe u de standaard modus voor het menu van de portal kunt instellen.](./media/set-preferences/menu-mode.png)
 
 - Wanneer het menu van de portal in de **flyout** wordt weer gegeven, wordt het verborgen tot u het nodig hebt. Selecteer het menu-pictogram om het menu te openen of te sluiten.
 
@@ -68,7 +68,7 @@ U kunt ook een van de Thema's met een hoog contrast kiezen. Met de Thema's met h
 
 Meldingen zijn systeem berichten die betrekking hebben op uw huidige sessie. Ze bieden informatie zoals het huidige tegoed, wanneer de resources die u zojuist hebt gemaakt beschikbaar zijn of uw laatste actie bevestigen, bijvoorbeeld. Wanneer pop-upmeldingen zijn ingeschakeld, worden de berichten kort weer gegeven in de bovenste hoek van het scherm. 
 
-Schakel **pop-upmeldingen**in of uit om pop-upmeldingen in of uit te scha kelen.
+Schakel **pop-upmeldingen** in of uit om pop-upmeldingen in of uit te scha kelen.
 
 ![Scherm opname van Azure Portal instellingen met pop-upmeldingen gemarkeerd](./media/set-preferences/popup-notifications.png)
 
@@ -84,13 +84,13 @@ Met de instelling time-out voor inactiviteit kunt u resources beveiligen tegen o
 
 ### <a name="change-your-individual-timeout-setting-user"></a>De instelling voor de afzonderlijke time-out wijzigen (gebruiker)
 
-Selecteer de vervolg keuzelijst onder **aanmelden wanneer**deze niet actief is. Kies de duur waarna uw Azure Portal-sessie wordt afgemeld als u niet actief bent.
+Selecteer de vervolg keuzelijst onder **aanmelden wanneer** deze niet actief is. Kies de duur waarna uw Azure Portal-sessie wordt afgemeld als u niet actief bent.
 
 ![Scherm opname van Portal instellingen met inactieve time-outinstellingen gemarkeerd](./media/set-preferences/inactive-signout-user.png)
 
 De wijziging wordt automatisch opgeslagen. Als u inactief bent, wordt uw Azure Portal-sessie afgemeld na de periode die u hebt ingesteld.
 
-Als uw beheerder een time-outbeleid voor inactiviteit heeft ingeschakeld, kunt u nog steeds uw eigen waarde instellen, zolang deze minder is dan de instelling voor het niveau van de map. Selecteer **het beleid voor de time-out voor de Directory inactiviteit negeren**en stel vervolgens een tijds interval in.
+Als uw beheerder een time-outbeleid voor inactiviteit heeft ingeschakeld, kunt u nog steeds uw eigen waarde instellen, zolang deze minder is dan de instelling voor het niveau van de map. Selecteer **het beleid voor de time-out voor de Directory inactiviteit negeren** en stel vervolgens een tijds interval in.
 
 ![Scherm opname van Portal instellingen met onderdrukking van de beleids instelling voor de time-out voor inactiviteit gemarkeerd](./media/set-preferences/inactive-signout-override.png)
 
@@ -100,7 +100,7 @@ Beheerders in de [rol globale beheerder](../active-directory/roles/permissions-r
 
 Als u een globale beheerder bent en u een instelling voor een inactieve time-out wilt afdwingen voor alle gebruikers van de Azure Portal, voert u de volgende stappen uit:
 
-1. Selecteer de koppeling tekst **configureren time-out**mapniveau.
+1. Selecteer de koppeling tekst **configureren time-out** mapniveau.
 
     ![Scherm opname van de Portal instellingen met een koppeling tekst gemarkeerd](./media/set-preferences/settings-admin.png)
 
@@ -108,7 +108,7 @@ Als u een globale beheerder bent en u een instelling voor een inactieve time-out
 
 1. Voer vervolgens de **uren** en **minuten** in voor de maximale tijds duur dat een gebruiker inactief mag zijn voordat de sessie automatisch wordt afgemeld.
 
-1. Selecteer **Toepassen**.
+1. Selecteer **Toepassen** .
 
     ![Scherm afbeelding van de pagina voor het instellen van de time-out voor inactiviteit op Directory niveau](./media/set-preferences/configure.png)
 
@@ -118,7 +118,7 @@ Als u wilt controleren of het beleid voor time-out van inactiviteit juist is ing
 
 ## <a name="restore-default-settings"></a>Standaardinstellingen herstellen
 
-Als u wijzigingen hebt aangebracht in de Azure Portal instellingen en deze wilt negeren, selecteert u **standaard instellingen herstellen**. Wijzigingen die u in de Portal instellingen hebt aangebracht, gaan verloren. Deze optie is niet van invloed op aanpassingen van het dash board.
+Als u wijzigingen hebt aangebracht in de Azure Portal instellingen en deze wilt negeren, selecteert u **standaard instellingen herstellen** . Wijzigingen die u in de Portal instellingen hebt aangebracht, gaan verloren. Deze optie is niet van invloed op aanpassingen van het dash board.
 
 ![Scherm opname van het herstellen van standaard instellingen](./media/set-preferences/useful-links-restore-defaults.png)
 
@@ -132,7 +132,7 @@ Informatie over uw aangepaste instellingen wordt opgeslagen in Azure. U kunt de 
 
 Het is een goed idee om uw instellingen te exporteren en te controleren als u deze wilt verwijderen. Het opnieuw opbouwen van Dash boards of het opnieuw uitvoeren van instellingen kan tijdrovend zijn.
 
-Als u uw Portal instellingen wilt exporteren, selecteert u **alle instellingen exporteren**.
+Als u uw Portal instellingen wilt exporteren, selecteert u **alle instellingen exporteren** .
 
 ![Scherm opname van het exporteren van instellingen](./media/set-preferences/useful-links-export-settings.png)
 
@@ -150,7 +150,7 @@ Het is een goed idee om uw instellingen te exporteren en te controleren voordat 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-Als u uw Portal instellingen wilt verwijderen, selecteert u **alle instellingen en persoonlijke Dash boards verwijderen**.
+Als u uw Portal instellingen wilt verwijderen, selecteert u **alle instellingen en persoonlijke Dash boards verwijderen** .
 
 ![Scherm opname van het verwijderen van instellingen](./media/set-preferences/useful-links-delete-settings.png)
 

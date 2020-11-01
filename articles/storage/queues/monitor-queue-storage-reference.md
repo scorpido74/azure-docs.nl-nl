@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 6164617c66401811715007548de59ebbf5ff253b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ec82ec6613b6d2e68d01815d5669bfb169037e72
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787479"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146566"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Naslag informatie over bewakings gegevens van Azure Queue Storage
 
@@ -26,7 +26,7 @@ De volgende tabellen geven een lijst van de platform gegevens die zijn verzameld
 
 ### <a name="capacity-metrics"></a>Metrische gegevens over capaciteit
 
-Waarden voor capaciteits metrieken worden elk uur verzonden naar Azure Monitor. De waarden worden dagelijks vernieuwd. De tijdgranulariteit definieert het tijds interval waarvoor metrische waarden worden weer gegeven. De ondersteunde tijd korrels voor alle metrische gegevens over capaciteit zijn één uur (PT1H).
+Metrische waarden voor capaciteit worden dagelijks vernieuwd (Maxi maal 24 uur). De tijdgranulariteit definieert het tijds interval waarvoor metrische waarden worden weer gegeven. De ondersteunde tijd korrels voor alle metrische gegevens over capaciteit zijn één uur (PT1H).
 
 Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Monitor.
 
@@ -77,7 +77,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Storage bron L
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - Zie [Azure Queue-opslag bewaken](monitor-queue-storage.md) voor een beschrijving van de bewakings Azure Storage.
 - Zie [Azure-resources bewaken met Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md) voor meer informatie over het bewaken van Azure-resources.

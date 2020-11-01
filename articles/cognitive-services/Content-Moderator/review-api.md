@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 69a66c49d64ab9ba589050e1f20399f7f193b76e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912953"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143608"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Beoordelingen, werk stromen en taken voor content toezicht
 
@@ -23,9 +23,24 @@ Content Moderator combineert de door de machine ondersteunde toezicht met de mog
 
 ## <a name="reviews"></a>Beoordelingen
 
-Bij een beoordeling wordt inhoud geüpload naar het hulp programma beoordeling en wordt deze weer gegeven onder het tabblad **controleren** . Hier kunnen gebruikers de toegepaste labels wijzigen en hun eigen aangepaste labels Toep assen. Wanneer een gebruiker een beoordeling verzendt, worden de resultaten verzonden naar een opgegeven eind punt van de retour aanroep en wordt de inhoud verwijderd van de site.
+Bij een beoordeling wordt inhoud geüpload naar het hulp programma beoordeling. U kunt deze weer geven door te klikken op het inhouds type onder **controleren** op het dash board. Vanuit het scherm controleren kunt u de toegepaste labels wijzigen en uw eigen aangepaste labels Toep assen. Wanneer u een beoordeling verzendt, worden de resultaten verzonden naar een opgegeven eind punt van de retour aanroep en wordt de inhoud verwijderd van de site.
 
-![De website voor het controleren van het hulp programma open in een browser op het tabblad controleren](./Review-Tool-user-Guide/images/image-workflow-review.png)
+> [!div class="mx-imgBorder"]
+> ![Controle programma site met geselecteerd tabblad controleren](./Review-Tool-user-Guide/images/review-tab.png)
+
+### <a name="manage-reviews"></a>Beoordelingen beheren
+
+Ga in het dash board naar **beheer**  ->  **beoordelingen beheren** om het scherm beheer weer te geven. Hier kunt u een lijst met alle beoordelingen bekijken (in behandeling en voltooid).
+
+Met de **actie** knop met drie puntjes op elke beoordeling kunt u naar het controle scherm gaan of de geschiedenis van die beoordeling controleren.
+
+> [!div class="mx-imgBorder"]
+> ![Bekijk de website van het hulp programma op het scherm controleren](./Review-Tool-user-Guide/images/manage-reviews.png)
+
+Gebruik de **Zoek** werkbalk om de beoordelingen te sorteren op diverse categorieën, zoals beoordelings status, tags, inhouds type, subteams, toegewezen gebruikers en gemaakt/gewijzigd op.
+
+> [!div class="mx-imgBorder"]
+> ![Controle programma site met geselecteerd tabblad controleren](./Review-Tool-user-Guide/images/review-search.png)
 
 Raadpleeg de [hand leiding voor het beoordelings programma](./review-tool-user-guide/review-moderated-images.md) om te beginnen met het maken van recensies of raadpleeg de [rest API gids](./try-review-api-review.md) voor informatie over hoe u dit kunt doen.
 
@@ -35,11 +50,12 @@ Een werk stroom is een op de cloud gebaseerd gepersonaliseerd filter voor inhoud
 
 ### <a name="view-workflows"></a>Werk stromen weer geven
 
-Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen**  >  **werk stromen** .
+Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **beheer**  >  **werk stromen** .
 
-![Standaardwerk stroom](images/default-workflow-listed.PNG)
+> [!div class="mx-imgBorder"]
+> ![Standaardwerk stroom](images/default-workflow-list.png)
 
-Werk stromen kunnen volledig worden beschreven als JSON-teken reeksen, waardoor ze via een programma toegankelijk zijn. Als u de optie **bewerken** selecteert voor uw werk stroom en vervolgens het tabblad **JSON** selecteert, ziet u een JSON-expressie zoals het volgende:
+Werk stromen worden gedefinieerd als JSON-teken reeksen, waardoor ze via een programma toegankelijk zijn. Als u de optie **bewerken** selecteert voor uw werk stroom en vervolgens het tabblad **JSON** selecteert, ziet u een JSON-expressie zoals het volgende:
 
 ```json
 {

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f1c83a570e936759d674f40db201fb2f2cd0e5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318293"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146259"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Een uitvoering van een Machine Learning pijp lijn vanuit een logische app activeren
 
@@ -49,7 +49,7 @@ Als uw logische app is ingericht, gebruikt u deze stappen om een trigger voor uw
     > [!div class="mx-imgBorder"]
     > ![Lege sjabloon](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. Zoek in de ontwerp functie naar **BLOB**. Selecteer de trigger **Wanneer een BLOB wordt toegevoegd of gewijzigd (alleen eigenschappen)** en voeg deze trigger toe aan uw logische app.
+1. Zoek in de ontwerp functie naar **BLOB** . Selecteer de trigger **Wanneer een BLOB wordt toegevoegd of gewijzigd (alleen eigenschappen)** en voeg deze trigger toe aan uw logische app.
     > [!div class="mx-imgBorder"]
     > ![Trigger toevoegen](media/how-to-trigger-published-pipeline/add-trigger.png)
 
@@ -60,7 +60,7 @@ Als uw logische app is ingericht, gebruikt u deze stappen om een trigger voor uw
     > [!NOTE]
     > Met deze trigger wordt de geselecteerde container bewaakt, maar worden de submappen niet bewaakt.
 
-1. Een HTTP-actie toevoegen die wordt uitgevoerd wanneer een nieuwe of gewijzigde BLOB wordt gedetecteerd. Selecteer **+ nieuwe stap**, zoek naar en selecteer de http-actie.
+1. Een HTTP-actie toevoegen die wordt uitgevoerd wanneer een nieuwe of gewijzigde BLOB wordt gedetecteerd. Selecteer **+ nieuwe stap** , zoek naar en selecteer de http-actie.
 
   > [!div class="mx-imgBorder"]
   > ![HTTP-actie zoeken](media/how-to-trigger-published-pipeline/search-http.png)
@@ -94,6 +94,9 @@ Als uw logische app is ingericht, gebruikt u deze stappen om een trigger voor uw
     > ![HTTP-instellingen](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. Selecteer **Opslaan** en uw planning is nu gereed.
+
+> [!IMPORTANT]
+> Als u gebruikmaakt van op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot uw pijp lijn, [stelt u de machtigingen in voor uw pijplijn scenario (training of Score)](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service)
 
 ## <a name="next-steps"></a>Volgende stappen
 

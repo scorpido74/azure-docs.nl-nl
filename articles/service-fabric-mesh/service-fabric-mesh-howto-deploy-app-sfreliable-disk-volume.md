@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 1db412a3b83da905475749deea0432fbeae06e8f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 66d0d3ebf9d5866039bbbac3171513b37330be7a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742768"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146787"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Maxi maal beschik bare Service Fabric betrouw bare schijf op basis van schijven koppelen in een Service Fabric mesh-toepassing 
 De algemene methode voor het persistent maken van de status met container-apps is het gebruik van externe opslag, zoals Azure File Storage of Data Base, zoals Azure Cosmos DB. Dit resulteert in een aanzienlijke Lees-en schrijf latentie voor de externe opslag.
@@ -45,6 +45,11 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
+
+>[!NOTE]
+> Met ingang van 2 november 2020 worden [limieten voor down loads toegepast](https://docs.docker.com/docker-hub/download-rate-limit/) op anonieme en geverifieerde aanvragen voor docker-hub vanuit docker Free plan-accounts en worden afgedwongen op basis van het IP-adres. 
+> 
+> Deze sjabloon maakt gebruik van open bare installatie kopieën van docker hub. Houd er rekening mee dat u beperkt kunt zijn. Zie [verifiëren met docker hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)voor meer informatie.
 
 Met de volgende opdracht wordt een Linux-toepassing geïmplementeerd met behulp [ van decounter.sfreliablevolume.linux.jsop de sjabloon](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). Als u een Windows-toepassing wilt implementeren, gebruikt u de [counter.sfreliablevolume.windows.jsop sjabloon](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Houd er rekening mee dat grotere container installatie kopieën langer kunnen worden geïmplementeerd.
 

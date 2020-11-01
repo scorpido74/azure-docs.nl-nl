@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 6d6757af6619edd41709a4b8f06ef615cd35bf30
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b24a9dcb7a369708b1374f367186dc4d9a6ce475
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636575"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146872"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>De knop voor de insluitende lezer aanpassen
 
@@ -41,7 +41,7 @@ Gebruik het `data-button-style` kenmerk om de stijl van de knop in te stellen. D
 
 Hiermee wordt het volgende weer gegeven:
 
-![Pictogram knop](./media/button-icon.png)
+![Dit is de gerenderde tekst knop](./media/button-icon.png)
 
 ### <a name="text-button"></a>Knop tekst
 
@@ -51,7 +51,7 @@ Hiermee wordt het volgende weer gegeven:
 
 Hiermee wordt het volgende weer gegeven:
 
-![Pictogram knop](./media/button-text.png)
+![Dit is de gerenderde insluitende lezer-knop.](./media/button-text.png)
 
 ### <a name="icon-and-text-button"></a>Knop pictogram en tekst
 

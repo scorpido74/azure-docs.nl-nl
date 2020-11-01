@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: 54775d7e9923505c6e68a47feed6726b9cb84c47
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129929"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146174"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Publicatiehandleiding op type aanbieding
 
@@ -39,10 +39,8 @@ De volgende tabel bevat de typen commerciële Marketplace-aanbiedingen in het pa
 | [**Module IoT Edge**](iot-edge-module.md) | Azure IoT Edge modules zijn de kleinste reken eenheden die worden beheerd door IoT Edge en kunnen micro soft-Services (zoals Azure Stream Analytics), services van derden of uw eigen oplossing-specifieke code bevatten. |
 | [**Beheerde service**](partner-center-portal/create-new-managed-service-offer.md) | U kunt beheerde service aanbiedingen maken en door de klant gedelegeerde abonnementen of resource groepen beheren via [Azure Lighthouse](../lighthouse/overview.md).|
 | [**App Power bi** <br/> **Microsoft 365**](appsource-offer-publishing-guide.md) | U kunt AppSource-aanbiedingen publiceren die zijn gebaseerd op of uitgebreid Power BI en Microsoft 365.|
-| [**Software als een service**](plan-saas-offer.md) | Gebruik het type SaaS-aanbieding (Software as a Service) om uw klant in staat te stellen uw SaaS-gebaseerde technische oplossing als een abonnement te kopen. |
+| [**Software als een service**](plan-saas-offer.md) | Gebruik het type SaaS-aanbieding (Software as a Service) om uw klant in staat te stellen uw SaaS-gebaseerde technische oplossing als een abonnement te kopen. Zie voor meer informatie over de vereisten voor eenmalige aanmelding voor SaaS-aanbiedingen [Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace](azure-ad-saas.md). |
 
-
-Zie [**vereisten voor Azure AD**](enable-appsource-marketplace-using-azure-ad.md)voor meer informatie over de vereisten voor eenmalige aanmelding met aanbiedings opties en aanbiedings typen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0832c975ecb410b97a24c975f9fc0f4799120abd
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077487"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145511"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management-service gebruiken met een intern virtueel netwerk
 Met Azure Virtual Networks kunnen Azure API Management Api's beheren die niet toegankelijk zijn via internet. Er zijn een aantal VPN-technologieën beschikbaar om verbinding te maken. API Management kan in twee hoofd modi in een virtueel netwerk worden geïmplementeerd:
@@ -43,11 +43,11 @@ Met API Management in de interne modus kunt u de volgende scenario's uitvoeren:
 
 Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u het volgende nodig:
 
-+ **Een actief Azure-abonnement**.
++ **Een actief Azure-abonnement** .
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **Een Azure API Management-exemplaar**. Zie [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)voor meer informatie.
++ **Een Azure API Management-exemplaar** . Zie [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)voor meer informatie.
 + Wanneer een API Management-service in een virtueel netwerk wordt geïmplementeerd, wordt een [lijst met poorten](./api-management-using-with-vnet.md#required-ports) gebruikt en moet deze worden geopend. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>Een API Management in een intern virtueel netwerk maken
@@ -56,21 +56,23 @@ De API Management-service in een intern virtueel netwerk wordt gehost achter een
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Een virtuele netwerk verbinding inschakelen met behulp van de Azure Portal
 
 1. Blader naar uw Azure API Management-exemplaar in het [Azure Portal](https://portal.azure.com/).
-2. Selecteer **virtueel netwerk**.
+2. Selecteer **virtueel netwerk** .
 3. Configureer het API Management-exemplaar dat in het virtuele netwerk moet worden geïmplementeerd.
 
     ![Menu voor het instellen van een Azure-API Management in een intern virtueel netwerk][api-management-using-internal-vnet-menu]
 
-4. Selecteer **Opslaan**.
+4. Selecteer **Opslaan** .
 
 Nadat de implementatie is voltooid, ziet u het **persoonlijke** virtuele IP-adres en het **open bare** virtuele IP-adres van uw API Management-service op de Blade overzicht. Het **persoonlijke** virtuele IP-adres is een IP-adres met taak verdeling vanuit het API Management overgedragen subnet waarover `gateway` , `portal` `management` en `scm` eind punten toegankelijk zijn. Het **open bare** virtuele IP-adres wordt **alleen** gebruikt voor controle vlak verkeer naar `management` het eind punt via poort 3443 en kan worden vergrendeld op de [ApiManagement][ServiceTags] servicetag.
 
 ![API Management dash board met een intern virtueel netwerk geconfigureerd][api-management-internal-vnet-dashboard]
 
 > [!NOTE]
-> De test console die beschikbaar is in azure Portal, werkt niet voor **intern** geïmplementeerde Services, omdat de gateway-URL niet is geregistreerd op de open bare DNS-server. U moet in plaats daarvan de test console gebruiken die is opgenomen in de **ontwikkelaars Portal**.
+> De test console die beschikbaar is in azure Portal, werkt niet voor **intern** geïmplementeerde Services, omdat de gateway-URL niet is geregistreerd op de open bare DNS-server. U moet in plaats daarvan de test console gebruiken die is opgenomen in de **ontwikkelaars Portal** .
 
-### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>Een virtuele netwerk verbinding inschakelen met behulp van Power shell-cmdlets
+### <a name="deploy-api-management-into-virtual-network"></a><a name="deploy-apim-internal-vnet"> </a>API Management implementeren in Virtual Network
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326899"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145681"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Container bewakings oplossing in Azure Monitor
 
@@ -116,7 +116,7 @@ Raadpleeg de [docker-engine in Windows](/virtualization/windowscontainers/manage
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux-container-hosts installeren en configureren
 
-Nadat u docker hebt geïnstalleerd, gebruikt u de volgende instellingen voor de container-host om de agent te configureren voor gebruik met docker. Eerst hebt u de Log Analytics werk ruimte-ID en-sleutel nodig die u in de Azure Portal kunt vinden. Klik in uw werk ruimte op **Quick Start**  >  **computers** om uw **werk ruimte-id** en **primaire sleutel**weer te geven.  Kopieer en plak beide in uw favoriete editor.
+Nadat u docker hebt geïnstalleerd, gebruikt u de volgende instellingen voor de container-host om de agent te configureren voor gebruik met docker. Eerst hebt u de Log Analytics werk ruimte-ID en-sleutel nodig die u in de Azure Portal kunt vinden. Klik in uw werk ruimte op **Quick Start**  >  **computers** om uw **werk ruimte-id** en **primaire sleutel** weer te geven.  Kopieer en plak beide in uw favoriete editor.
 
 **Voor alle Linux-container hosts, met uitzonde ring van CoreOS:**
 
@@ -476,12 +476,12 @@ Voer de volgende stappen uit om helm te gebruiken om Log Analytics-agent te impl
  
     RESOURCES:
     ==> v1/Secret
-    NAME            TYPE    DATA  AGE
-    omsagent-msoms  Opaque  3     17m
+    NAME            TYPE    DATA  AGE
+    omsagent-msoms  Opaque  3     17m
  
     ==> v1beta1/DaemonSet
-    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
-    omsagent-msoms  3        3        3      3           3          <none>         17m
+    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
+    omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
    
     Ga voor meer informatie naar [container Solution helm Chart](https://aka.ms/omscontainerhelm).
@@ -513,11 +513,11 @@ Als u Windows-en Hyper-V-container bewaking wilt inschakelen, installeert u micr
 
 U kunt Windows-containers bewaken die worden uitgevoerd op Service Fabric. Alleen [virtuele machines die worden uitgevoerd in azure](../learn/quick-collect-azurevm.md) en [computers met Windows in uw on-premises omgeving](../platform/agent-windows.md) worden momenteel ondersteund voor service Fabric.
 
-U kunt controleren of de container monitoring-oplossing correct is ingesteld voor Windows. Zoek naar *ContainerManagement.xxx*om te controleren of de Management Pack correct is gedownload. De bestanden moeten zich in de map C:\Program Files\Microsoft monitoring Agent\Agent\Health service State\Management packs bevindt.
+U kunt controleren of de container monitoring-oplossing correct is ingesteld voor Windows. Zoek naar *ContainerManagement.xxx* om te controleren of de Management Pack correct is gedownload. De bestanden moeten zich in de map C:\Program Files\Microsoft monitoring Agent\Agent\Health service State\Management packs bevindt.
 
 ## <a name="solution-components"></a>Oplossingsonderdelen
 
-Ga vanuit het Azure Portal naar de *Oplossingengalerie* en voeg de **container bewakings oplossing**toe. Als u Windows-agents gebruikt, wordt de volgende management pack geïnstalleerd op elke computer met een agent wanneer u deze oplossing toevoegt. Er is geen configuratie of onderhoud vereist voor de management pack.
+Ga vanuit het Azure Portal naar de *Oplossingengalerie* en voeg de **container bewakings oplossing** toe. Als u Windows-agents gebruikt, wordt de volgende management pack geïnstalleerd op elke computer met een agent wanneer u deze oplossing toevoegt. Er is geen configuratie of onderhoud vereist voor de management pack.
 
 - *ContainerManagement.xxx* geïnstalleerd in C:\Program Files\Microsoft monitoring Agent\Agent\Health service State\Management packs
 
@@ -574,7 +574,7 @@ Klik op de tegel **containers** . Hier ziet u weer gaven die zijn ingedeeld op:
 
 Elk gebied van het dash board is een visuele representatie van een zoek opdracht die wordt uitgevoerd op verzamelde gegevens.
 
-![Dash board voor containers](./media/containers/containers-dash01.png)
+![Scherm opname van een dash board om de verzamelde gegevens weer te geven. ](./media/containers/containers-dash01.png)
 
 ![Dash board voor containers](./media/containers/containers-dash02.png)
 
@@ -599,9 +599,9 @@ Log Analytics een container als **mislukt** markeert als deze is afgesloten met 
 2. Log Analytics wordt geopend en de status van uw containers wordt weer gegeven, zoals in het volgende voor beeld.  
    ![status van containers](./media/containers/containers-log-search.png)
 3. Vouw de fout regel uit en klik op + om de criteria aan de query toe te voegen. Vervolgens voert u een opmerking uit op de regel samenvatten in de query.
-   ![mislukte containers](./media/containers/containers-state-failed-select.png)  
+   ![Scherm opname van de regel die moet worden weer gegeven als commentaar.](./media/containers/containers-state-failed-select.png)  
 1. Voer de query uit en vouw vervolgens een regel uit in de resultaten om de afbeeldings-ID weer te geven.  
-   ![mislukte containers](./media/containers/containers-state-failed.png)  
+   ![Scherm afbeelding die laat zien hoe de installatie kopie-ID wordt weer gegeven.](./media/containers/containers-state-failed.png)  
 1. Typ het volgende in de logboek query. `ContainerImageInventory | where ImageID == <ImageID>` om details weer te geven over de afbeelding, zoals afbeeldings grootte en aantal gestopte en mislukte installatie kopieën.  
    ![mislukte containers](./media/containers/containers-failed04.png)
 

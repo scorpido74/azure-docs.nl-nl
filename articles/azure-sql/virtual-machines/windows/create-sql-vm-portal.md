@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6658dcd54c7290bbbad0c24c1cc0debd5ead8b18
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789859"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146225"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>De Azure Portal gebruiken om een virtuele Windows-machine in te richten met SQL Server
 
@@ -32,7 +32,7 @@ Gebruik deze hand leiding om uw eigen SQL Server-VM te maken. Of gebruik deze al
 > [!TIP]
 > Als u vragen hebt over virtuele machines met SQL Server, raadpleegt u [Veelgestelde vragen](frequently-asked-questions-faq.md).
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> Installatie kopieën van de galerie met virtuele machines SQL Server
 
@@ -196,7 +196,7 @@ Zie voor meer informatie [Integratie van Azure Sleutelkluis configureren voor SQ
 
 Selecteer op het tabblad **SQL Server instellingen** onder **opslag configuratie** de optie **configuratie wijzigen** om de configuratie pagina prestaties geoptimaliseerd voor opslag te openen en de opslag vereisten op te geven.
 
-![Configuratie van SQL-VM-opslag](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
+![Scherm opname van de locatie waar u de opslag configuratie kunt wijzigen.](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
 
 Selecteer onder **Opslag geoptimaliseerd voor** een van de volgende opties:
 

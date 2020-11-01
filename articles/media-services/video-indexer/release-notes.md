@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505334"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145749"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Release opmerkingen bij Azure Media Services Video Indexer
 
@@ -29,6 +29,21 @@ Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u 
 * Bekende problemen
 * Opgeloste fouten
 * Afgeschafte functionaliteit
+
+## <a name="october-2020"></a>Oktober 2020
+
+### <a name="animated-character-identification-improvements"></a>Verbeteringen van animatie van teken-id's  
+
+Video Indexer ondersteunt detectie, groepering en herkenning van tekens in inhoud met animatie via integratie met Cognitive Services aangepaste visie. We hebben in de detectie-en teken herkenning een grote verbetering toegevoegd aan deze AI-algoritme, omdat inzicht in de nauw keurigheid en geïdentificeerde tekens aanzienlijk wordt verbeterd.
+
+### <a name="planned-video-indexer-website-authenticatication-changes"></a>Geplande Video Indexer website wijzigingen authenticatication
+
+Vanaf 1 januari 2021 kunt u zich niet meer registreren en u aanmelden bij de [video indexer](https://www.videoindexer.ai/) website (proef versie) met behulp van Facebook of LinkedIn.
+
+U kunt zich aanmelden en aanmelden met een van deze providers: Azure AD, micro soft en Google.
+
+> [!NOTE]
+> U wordt aangeraden uw inhoud te exporteren vóór 1 januari 2021, omdat accounts die zijn verbonden met LinkedIn en Facebook worden verwijderd en de inhoud niet langer toegankelijk is.
 
 ## <a name="august-2020"></a>Augustus 2020
 
@@ -123,11 +138,11 @@ In de komende weken wordt dit gewijzigd en wordt de URL van de [video indexer we
     * Door de URL te vervangen door een URL die verwijst naar de Video Indexer-widget-Api's (bijvoorbeeld de [widget Insights](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * De Video Indexer-website gebruiken om een nieuwe Inge sloten URL te genereren:
          
-         Druk op **Play** om naar de pagina van de video te gaan > Klik op de knop ** &lt; / &gt; insluiten** -> de URL naar uw toepassing kopiëren:
+         Druk op **Play** om naar de pagina van de video te gaan > Klik op de knop **&lt; / &gt; insluiten** -> de URL naar uw toepassing kopiëren:
    
     De regionale Url's worden niet ondersteund en worden in de komende weken geblokkeerd.
 
-## <a name="january-2020"></a>Januari 2020
+## <a name="january-2020"></a>januari 2020
  
 ### <a name="custom-language-support-for-additional-languages"></a>Aangepaste taal ondersteuning voor extra talen
 
@@ -145,7 +160,7 @@ Een nieuwe Video Indexer GitHub met verschillende projecten, aan de slag-hand le
 
 Video Indexer gecombineerde **authenticaties** en **bewerkingen** in één [video indexer OpenAPI-specificatie (Swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Ontwikkel aars kunnen de Api's vinden in [video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/).
 
-## <a name="december-2019"></a>December 2019
+## <a name="december-2019"></a>december 2019
 
 ### <a name="update-transcript-with-the-new-api"></a>Transcript bijwerken met de nieuwe API
 
@@ -181,7 +196,7 @@ Wanneer streaming-eind punt is uitgeschakeld, wordt in Video Indexer een beschri
 
 De status code 409 wordt nu geretourneerd door de [video opnieuw te indexeren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) en [video-index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) api's bij te werken voor het geval een video actief wordt geïndexeerd, om te voor komen dat de huidige herindex wijzigingen per ongeluk worden overschreven.
 
-## <a name="november-2019"></a>November 2019
+## <a name="november-2019"></a>november 2019
  
 * Ondersteuning voor Koreaanse aangepaste taal modellen
 

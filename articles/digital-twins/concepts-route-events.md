@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7b08b92fad07cddbdb2783f2d68cdb9be034a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 91ba36a0bffab6c66020bab41ace65659ed084f7
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097070"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146310"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
@@ -73,19 +73,19 @@ De eindpunt-Api's die beschikbaar zijn in het besturings vlak zijn:
  
 Als u een gebeurtenis route wilt maken, kunt u de Azure Digital Apparaatdubbels [**Data-vlak-api's**](how-to-manage-routes-apis-cli.md#create-an-event-route), CLI- [**opdrachten**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)of de [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route)gebruiken. 
 
-Hier volgt een voor beeld van het maken van een gebeurtenis route binnen een client toepassing, met behulp van de `CreateEventRoute` [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) aanroep: 
+Hier volgt een voor beeld van het maken van een gebeurtenis route binnen een client toepassing, met behulp van de `CreateOrReplaceEventRouteAsync` [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) aanroep: 
 
 ```csharp
-EventRoute er = new EventRoute("endpointName");
-er.Filter("true"); //Filter allows all messages
-await client.CreateEventRoute("routeName", er);
+string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
+var er = new DigitalTwinsEventRoute("endpointName", eventFilter);
+await client.CreateOrReplaceEventRouteAsync("routeName", er);
 ```
 
-1. Eerst wordt een- `EventRoute` object gemaakt en de constructor neemt de naam van een eind punt. Dit `endpointName` veld identificeert een eind punt, zoals een event hub, Event grid of service bus. Deze eind punten moeten in uw abonnement worden gemaakt en aan Azure Digital Apparaatdubbels gekoppeld met behulp van Control-Api's voordat u deze registratie oproep doet.
+1. Eerst wordt een- `DigitalTwinsEventRoute` object gemaakt en de constructor neemt de naam van een eind punt. Dit `endpointName` veld identificeert een eind punt, zoals een event hub, Event grid of service bus. Deze eind punten moeten in uw abonnement worden gemaakt en aan Azure Digital Apparaatdubbels gekoppeld met behulp van Control-Api's voordat u deze registratie oproep doet.
 
 2. Het gebeurtenis route object heeft ook een [**filter**](how-to-manage-routes-apis-cli.md#filter-events) veld dat kan worden gebruikt om de typen gebeurtenissen te beperken die volgen op deze route. Met een filter van `true` kunt u de route inschakelen zonder extra filters (een filter van `false` de route wordt uitgeschakeld). 
 
-3. Dit gebeurtenis route object wordt vervolgens door gegeven aan `CreateEventRoute` , samen met een naam voor de route.
+3. Dit gebeurtenis route object wordt vervolgens door gegeven aan `CreateOrReplaceEventRouteAsync` , samen met een naam voor de route.
 
 > [!TIP]
 > Alle SDK-functies zijn beschikbaar in synchrone en asynchrone versies.

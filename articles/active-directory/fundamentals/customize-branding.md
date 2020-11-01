@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "89565851"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Een huis stijl toevoegen aan de Azure Active Directory aanmeldings pagina van uw organisatie
@@ -37,7 +37,7 @@ Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruik
 ### <a name="to-customize-your-branding"></a>Uw huis stijl aanpassen
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory**, selecteer vervolgens **bedrijfs huisstijl**en selecteer vervolgens **configureren**.
+2. Selecteer **Azure Active Directory** , selecteer vervolgens **bedrijfs huisstijl** en selecteer vervolgens **configureren** .
 
     ![De pagina huis stijl contoso: de optie gemarkeerd configureren](media/customize-branding/company-branding-configure-button.png)
 
@@ -86,7 +86,7 @@ Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruik
     
         - **Vier Kante logo afbeelding, donker thema.** Hetzelfde als de bovenstaande logo afbeelding hierboven. Deze logo afbeelding neemt de plaats van de afbeelding met het vier Kante logo bij gebruik met een donkere achtergrond, zoals bij Windows 10 Azure AD-schermen toegevoegd tijdens de out-of-Box Experience (OOBE).  Als uw logo goed wordt weer gegeven op een witte, donkere blauwe en zwarte achtergrond, hoeft u deze afbeelding niet toe te voegen. 
         
-        - **De optie weer geven om aangemeld te blijven.** U kunt ervoor kiezen uw gebruikers aangemeld te blijven bij Azure AD voordat ze zich expliciet afmelden. Als u **Nee**kiest, wordt deze optie verborgen en moeten gebruikers zich aanmelden telkens wanneer de browser wordt gesloten en opnieuw wordt geopend.
+        - **De optie weer geven om aangemeld te blijven.** U kunt ervoor kiezen uw gebruikers aangemeld te blijven bij Azure AD voordat ze zich expliciet afmelden. Als u **Nee** kiest, wordt deze optie verborgen en moeten gebruikers zich aanmelden telkens wanneer de browser wordt gesloten en opnieuw wordt geopend.
 
             Deze mogelijkheid is alleen beschikbaar voor het standaard huisstijl object en niet voor een specifiek taal object. Zie [de prompt ' aangemeld blijven? ' configureren voor Azure AD-accounts](keep-me-signed-in.md) voor meer informatie over het configureren en oplossen van problemen met de optie om aangemeld te blijven.
         
@@ -94,7 +94,7 @@ Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruik
             >Of sommige functies van SharePoint Online en Office 2010 beschikbaar zijn, hangt ervan af of gebruikers ervoor kunnen kiezen aangemeld te blijven. Als u deze instelling op **Nee** instelt, krijgen uw gebruikers mogelijk extra en onverwachte prompts te zien om zich aan te melden.
    
 
-3. Wanneer u klaar bent met het toevoegen van uw huis stijl, selecteert u **Opslaan**.
+3. Wanneer u klaar bent met het toevoegen van uw huis stijl, selecteert u **Opslaan** .
 
     Als dit proces uw eerste aangepaste huisstijl configuratie maakt, wordt dit de standaard instelling voor uw Tenant. Als u aanvullende configuraties hebt, kunt u uw standaard configuratie kiezen.
     
@@ -107,13 +107,13 @@ Nadat u uw aangepaste huis stijl hebt gemaakt, kunt u teruggaan en alles wat u w
 ### <a name="to-edit-your-custom-branding"></a>Uw aangepaste huis stijl bewerken
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory**, selecteer vervolgens **bedrijfs huisstijl**en selecteer vervolgens **configureren**.
+2. Selecteer **Azure Active Directory** , selecteer vervolgens **bedrijfs huisstijl** en selecteer vervolgens **configureren** .
 
     ![Pagina huis stijl contoso, met de standaard configuratie weer gegeven](media/customize-branding/company-branding-default-config.png)
 
 3. Op de pagina **huis stijl van bedrijf configureren kunt u** informatie toevoegen, verwijderen of wijzigen, op basis van de beschrijvingen in de sectie [uw Azure AD-aanmeldings pagina aanpassen](#customize-your-azure-ad-sign-in-page) van dit artikel.
 
-4. Selecteer **Opslaan**.
+4. Selecteer **Opslaan** .
 
    Het kan een uur duren voordat de wijzigingen die u aan de huisstijl van de aanmeldingspagina hebt aangebracht, worden weergegeven.
 
@@ -124,13 +124,13 @@ U kunt de taal van de oorspronkelijke configuratie niet wijzigen in de standaard
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory**, selecteer vervolgens **bedrijfs huisstijl**en selecteer vervolgens **nieuwe taal**.
+2. Selecteer **Azure Active Directory** , selecteer vervolgens **bedrijfs huisstijl** en selecteer vervolgens **nieuwe taal** .
 
     ![Contoso-bedrijfs huisstijl pagina, met de optie nieuwe taal gemarkeerd](media/customize-branding/company-branding-new-language.png)
 
 3. Selecteer op de pagina **huis stijl van bedrijf configureren** uw taal (bijvoorbeeld Frans) en voeg vervolgens de vertaalde gegevens toe, op basis van de beschrijvingen in het gedeelte [uw Azure AD-aanmeldings pagina aanpassen](#customize-your-azure-ad-sign-in-page) van dit artikel.
 
-4. Selecteer **Opslaan**.
+4. Selecteer **Opslaan** .
 
     De **huismerk pagina van contoso:** Hiermee wordt de nieuwe Franse configuratie weer gegeven.
 

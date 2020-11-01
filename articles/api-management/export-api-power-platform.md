@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 05/01/2020
 ms.author: apimpm
-ms.openlocfilehash: 5814ff3909aa36ccfd9e14033f200fb4d3b8d32d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4d32dd63120a52fd7351977943574455e5cfad
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86252850"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146651"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>API's exporteren van Azure API Management naar Microsoft Power Platform 
 
@@ -35,12 +35,12 @@ In dit artikel worden de stappen beschreven voor het exporteren van API's van AP
 
 1. Navigeer naar uw API Management-service in de Azure-portal en selecteer **API's** in het menu.
 2. Klik op de drie puntjes naast de API die u wilt exporteren. 
-3. Selecteer **Exporteren**.
-4. Selecteer **Power Apps en Power Automate**.
+3. Selecteer **Exporteren** .
+4. Selecteer **Power Apps en Power Automate** .
 5. Kies een omgeving waarnaar u de API wilt exporteren. 
 6. Geef een weergavenaam op. Deze wordt gebruikt als de naam van de aangepaste connector.  
 7. Als de API wordt beveiligd door een OAuth 2.0-server, kunt u desgewenst aanvullende informatie opgeven, bijvoorbeeld `Client ID`, `Client secret`, `Authorization URL`, `Token URL` en `Refresh URL`.  
-8. Selecteer **Exporteren**. 
+8. Selecteer **Exporteren** . 
 
 Wanneer het exporteren is voltooid, gaat u naar uw Power Apps- of Power Automate-omgeving. De API wordt weergegeven als een aangepaste connector.
 

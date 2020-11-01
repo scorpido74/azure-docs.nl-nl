@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4962116b683d648f8f2d229b5113d2c8a01e15f8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0851838b89a9a2bdc54526ac40014f645f3d88a2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131000"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146583"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -29,10 +29,10 @@ Dit artikel richt zich op het beheren van digitale apparaatdubbels; Zie [*How-to
 
 ## <a name="create-a-digital-twin"></a>Een digitale dubbele
 
-Als u een dubbele wilt maken, gebruikt u de `CreateDigitalTwin()` methode op de service-client als volgt:
+Als u een dubbele wilt maken, gebruikt u de `CreateOrReplaceDigitalTwinAsync()` methode op de service-client als volgt:
 
 ```csharp
-await client.CreateDigitalTwinAsync("myTwinId", initData);
+await client.CreateOrReplaceDigitalTwinAsync("myTwinId", initData);
 ```
 
 Als u een digitale dubbele wilt maken, moet u het volgende opgeven:
@@ -55,10 +55,10 @@ U kunt de eigenschappen van een twee initialiseren op het moment dat de dubbele 
 
 De twee keer dat er een API wordt gemaakt, accepteert een object dat is geserialiseerd in een geldige JSON-beschrijving van de dubbele eigenschappen. Zie [*concepten: Digital apparaatdubbels en de dubbele grafiek*](concepts-twins-graph.md) voor een beschrijving van de JSON-indeling voor een dubbele. 
 
-Eerst kunt u een gegevens object maken om de dubbele en de bijbehorende eigenschaps gegevens weer te geven. Vervolgens kunt u gebruiken `JsonSerializer` om een geserialiseerde versie van dit object door te geven aan de API-aanroep voor de `initdata` para meter, zoals:
+U kunt eerst een gegevens object maken om de dubbele en de bijbehorende eigenschaps gegevens weer te geven, zoals:
 
 ```csharp
-await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(srcId, twin);
 ```
 U kunt een parameter object hand matig of via een beschik bare helper-klasse maken. Hier volgt een voor beeld van elk.
 
@@ -80,14 +80,14 @@ twin.Metadata.ModelId = "dtmi:example:Room;1";
 Dictionary<string, object> props = new Dictionary<string, object>();
 props.Add("Temperature", 25.0);
 props.Add("Humidity", 50.0);
-twin.CustomProperties = props;
+twin.Contents = props;
 
-client.CreateDigitalTwinAsync("myRoomId", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myRoomId", twin);
 Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` objecten worden geleverd met een `Id` veld. U kunt dit veld leeg laten, maar als u een ID-waarde toevoegt, moet deze overeenkomen met de ID-para meter die is door gegeven aan de `CreateDigitalTwin()` aanroep. Bijvoorbeeld:
+> `BasicDigitalTwin` objecten worden geleverd met een `Id` veld. U kunt dit veld leeg laten, maar als u een ID-waarde toevoegt, moet deze overeenkomen met de ID-para meter die is door gegeven aan de `CreateOrReplaceDigitalTwinAsync()` aanroep. Bijvoorbeeld:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -100,15 +100,14 @@ U kunt toegang krijgen tot de gegevens van een digitale dubbele manier door de m
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
-Deze aanroep retourneert twee gegevens als een JSON-teken reeks. Hier volgt een voor beeld van hoe u dit kunt gebruiken om dubbele details te bekijken:
+Deze aanroep retourneert dubbele gegevens als een sterk getypeerd object type, zoals `BasicDigitalTwin` . Hier volgt een voor beeld van hoe u dit kunt gebruiken om dubbele details te bekijken:
 
 ```csharp
-Response<string> res = client.GetDigitalTwin("myRoomId");
-twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.CustomProperties.Keys)
+foreach (string prop in twin.Contents.Keys)
 {
-  if (twin.CustomProperties.TryGetValue(prop, out object value))
+  if (twin.Contents.TryGetValue(prop, out object value))
   Console.WriteLine($"Property '{prop}': {value}");
 }
 ```
@@ -183,12 +182,11 @@ U kunt de geretourneerde JSON voor het dubbele parseren met behulp van een JSON-
 U kunt ook de klasse voor serialisatie helper gebruiken `BasicDigitalTwin` die deel uitmaakt van de SDK, waardoor de belangrijkste dubbele meta gegevens en eigenschappen in het vooraf geparseerde formulier worden geretourneerd. Hier volgt een voorbeeld:
 
 ```csharp
-Response<string> res = client.GetDigitalTwin(twin_Id);
-BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.CustomProperties.Keys)
+foreach (string prop in twin.Contents.Keys)
 {
-    if (twin.CustomProperties.TryGetValue(prop, out object value))
+    if (twin.Contents.TryGetValue(prop, out object value))
         Console.WriteLine($"Property '{prop}': {value}");
 }
 ```
@@ -224,30 +222,12 @@ Hier volgt een voor beeld van de JSON-patch code. Dit document vervangt de *mass
   }
 ]
 ```
-U kunt patches hand matig maken, of met behulp van een serialisatie helper-klasse in de [SDK](how-to-use-apis-sdks.md). Hier volgt een voor beeld van elk.
-
-#### <a name="create-patches-manually"></a>Hand matig patches maken
+U kunt patches maken met behulp `JsonPatchDocument` van een in de [SDK](how-to-use-apis-sdks.md). Hier volgt een voorbeeld.
 
 ```csharp
-List<object> twinData = new List<object>();
-twinData.Add(new Dictionary<string, object>() {
-    { "op", "add"},
-    { "path", "/Temperature"},
-    { "value", 25.0}
-});
-
-await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
-Console.WriteLine("Updated twin properties");
-FetchAndPrintTwin(twin_Id, client);
-}
-```
-
-#### <a name="create-patches-using-the-helper-class"></a>Patches maken met behulp van de helper-klasse
-
-```csharp
-UpdateOperationsUtility uou = new UpdateOperationsUtility();
-uou.AppendAddOp("/Temperature", 25.0);
-await client.UpdateDigitalTwinAsync(twin_Id, uou.Serialize());
+var updateTwinData = new JsonPatchDocument();
+updateTwinData.AppendAddOp("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
 ```
 
 ### <a name="update-properties-in-digital-twin-components"></a>Eigenschappen in digitale dubbele onderdelen bijwerken
@@ -346,11 +326,10 @@ public async Task FindAndDeleteOutgoingRelationshipsAsync(string dtId)
     try
     {
         // GetRelationshipsAsync will throw an error if a problem occurs
-        AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+        AsyncPageable<BasicRelationship> rels = client.GetRelationshipsAsync<BasicRelationship>(dtId);
 
-        await foreach (string relJson in relsJson)
+        await foreach (BasicRelationship rel in rels)
         {
-            var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
             await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
             Log.Ok($"Deleted relationship {rel.Id} from {dtId}");
         }
@@ -455,8 +434,8 @@ namespace minimal
             Dictionary<string, object> props = new Dictionary<string, object>();
             props.Add("Temperature", 35.0);
             props.Add("Humidity", 55.0);
-            twin.CustomProperties = props;
-            await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+            twin.Contents = props;
+            await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twin_Id, twin);
             Console.WriteLine("Twin created successfully");
             Console.WriteLine();
 
@@ -467,14 +446,9 @@ namespace minimal
             Console.WriteLine();
 
             //Update twin data
-            List<object> twinData = new List<object>();
-            twinData.Add(new Dictionary<string, object>() 
-            {
-                { "op", "add"},
-                { "path", "/Temperature"},
-                { "value", 25.0}
-            });
-            await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+            var updateTwinData = new JsonPatchDocument();
+            updateTwinData.AppendAdd("/Temperature", 25.0);
+            await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
             Console.WriteLine("Twin properties updated");
             Console.WriteLine();
 
@@ -491,12 +465,11 @@ namespace minimal
         private static BasicDigitalTwin FetchAndPrintTwin(string twin_Id, DigitalTwinsClient client)
         {
             BasicDigitalTwin twin;
-            Response<string> res = client.GetDigitalTwin(twin_Id);
-            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
             Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-            foreach (string prop in twin.CustomProperties.Keys)
+            foreach (string prop in twin.Contents.Keys)
             {
-                if (twin.CustomProperties.TryGetValue(prop, out object value))
+                if (twin.Contents.TryGetValue(prop, out object value))
                     Console.WriteLine($"Property '{prop}': {value}");
             }
 
@@ -524,11 +497,10 @@ namespace minimal
             try
             {
                 // GetRelationshipsAsync will throw an error if a problem occurs
-                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+                AsyncPageable<BasicRelationship> rels = client.GetRelationshipsAsync<BasicRelationship>(dtId);
 
-                await foreach (string relJson in relsJson)
+                await foreach (BasicRelationship rel in rels)
                 {
-                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
                     await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
                     Console.WriteLine($"Deleted relationship {rel.Id} from {dtId}");
                 }

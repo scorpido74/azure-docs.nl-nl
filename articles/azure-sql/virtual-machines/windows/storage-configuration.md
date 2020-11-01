@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: ebeee228d8c936732465359dfa264d822cbecb1e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3a4b7d68d7cd21ccb4b7eb8b97e0d331fb236e96
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793072"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146719"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Opslagconfiguratie voor SQL Server-VM's
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ In de volgende secties wordt beschreven hoe u opslag configureert voor nieuwe SQ
 
 Bij het inrichten van een Azure-VM met behulp van een SQL Server galerie-afbeelding, selecteert u **configuratie wijzigen** op het tabblad **SQL Server instellingen** om de configuratie pagina geoptimaliseerd voor prestaties te openen. U kunt de waarden standaard laten staan of het type schijf configuratie aanpassen dat het beste bij uw behoeften past, op basis van uw werk belasting. 
 
-![Configuratie van VM-opslag SQL Server tijdens het inrichten](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
+![Scherm opname van het tabblad SQL Server instellingen en de optie voor het wijzigen van de configuratie.](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 Selecteer het type werk belasting waarvoor u uw SQL Server wilt implementeren onder **opslag optimalisatie** . Met de optie **Algemeen** optimalisatie hebt u standaard één gegevens schijf met een maximale IOPS van 5000. u gebruikt hetzelfde station voor uw gegevens, het transactie logboek en de tempdb-opslag. Als u **transactionele verwerking** (OLTP) of **gegevens opslag** selecteert, wordt er een afzonderlijke schijf voor gegevens gemaakt, een afzonderlijke schijf voor het transactie logboek en lokale SSD gebruiken voor TempDB. Er zijn geen opslag verschillen tussen **transactionele verwerking** en **Data Warehousing** , maar de configuratie van de [Stripe en tracerings markeringen](#workload-optimization-settings)worden gewijzigd. Als u Premium Storage kiest, wordt de cache ingesteld op *ReadOnly* voor het gegevens station en *geen* voor het logboek station volgens [SQL Server aanbevolen procedures](performance-guidelines-best-practices.md)voor de VM-prestaties. 
 
@@ -103,7 +103,7 @@ Voor bestaande SQL Server Vm's kunt u enkele opslag instellingen wijzigen in de 
 
 Als u de opslag instellingen wilt wijzigen, selecteert u **configureren** onder **instellingen** . 
 
-![Opslag configureren voor bestaande SQL Server VM](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
+![Scherm afbeelding die de configuratie optie en de sectie opslag gebruik markeert.](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
 
 U kunt de schijf instellingen wijzigen voor de stations die zijn geconfigureerd tijdens het proces voor het maken van de SQL Server-VM. Als u **station uitbreiden** selecteert, wordt de pagina voor het wijzigen van de schijf geopend, zodat u het schijf type kunt wijzigen en extra schijven kunt toevoegen. 
 

@@ -8,19 +8,19 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970126"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145596"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Aangepaste Sdk's voor Azure Digital Apparaatdubbels maken met auto rest
 
 Op dit moment is het enige gepubliceerde gegevenslaag-Sdk's voor interactie met de Azure Digital Apparaatdubbels Api's voor .NET (C#), java script en Java. Meer informatie over deze Sdk's en de Api's in het algemeen vindt u in de [*instructies: gebruik de Azure Digital Apparaatdubbels api's en sdk's*](how-to-use-apis-sdks.md). Als u in een andere taal werkt, leert u in dit artikel hoe u uw eigen gegevenslaag SDK kunt genereren in de taal van uw keuze, met behulp van auto rest.
 
 >[!NOTE]
-> U kunt auto rest ook gebruiken om een Control vlak-SDK te genereren als u dat wilt. U doet dit door de stappen in dit artikel uit te voeren met behulp van het meest recente OpenAPI-bestand ( **Control plan Swagger** ) van de [Control vlak Swagger Folder]] ( https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) in plaats van het gegevens vlak One.
+> U kunt auto rest ook gebruiken om een Control vlak-SDK te genereren als u dat wilt. U doet dit door de stappen in dit artikel uit te voeren met behulp van het meest recente OpenAPI-bestand ( **Control plan Swagger** ) van de [Control vlak Swagger-map](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) in plaats van het gegevens vlak One.
 
 ## <a name="set-up-your-machine"></a>Uw machine instellen
 
@@ -47,7 +47,7 @@ Voer de volgende stappen uit om auto rest te gebruiken voor het Swagger-bestand 
 autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Als gevolg hiervan ziet u een nieuwe map met de naam *ADTApi* in uw werkmap. De gegenereerde SDK-bestanden hebben de naam ruimte *ADTApi*. U kunt die naam ruimte blijven gebruiken via de rest van de voor beelden van het gebruik in dit artikel.
+Als gevolg hiervan ziet u een nieuwe map met de naam *ADTApi* in uw werkmap. De gegenereerde SDK-bestanden hebben de naam ruimte *ADTApi* . U kunt die naam ruimte blijven gebruiken via de rest van de voor beelden van het gebruik in dit artikel.
 
 Auto rest ondersteunt een breed scala aan taal code generators.
 
@@ -64,7 +64,7 @@ Dit zijn de stappen:
 3. Klik in Solution Explorer met de rechter muisknop op het *ADTApi* -project van de gegenereerde oplossing en kies *> bestaand item toevoegen...*
 4. Zoek de map waar u de SDK hebt gegenereerd en selecteer de bestanden op het hoofd niveau
 5. Klik op OK
-6. Voeg een map toe aan het project (Klik met de rechter muisknop op het project in Solution Explorer en kies *> nieuwe map toevoegen*)
+6. Voeg een map toe aan het project (Klik met de rechter muisknop op het project in Solution Explorer en kies *> nieuwe map toevoegen* )
 7. De mappen *modellen* een naam
 8. Klik met de rechter muisknop op de map *modellen* in Solutions Explorer en selecteer *> bestaand item toevoegen...*
 9. Selecteer de bestanden in de map *modellen* van de gegenereerde SDK en druk op OK
@@ -73,7 +73,7 @@ Als u de SDK wilt bouwen, moet uw project over de volgende verwijzingen beschikk
 * `Microsoft.Rest.ClientRuntime`
 * `Microsoft.Rest.ClientRuntime.Azure`
 
-Als u deze wilt toevoegen, opent u *Hulpprogram ma's > NuGet Package Manager > NuGet-pakketten beheren voor oplossing...*.
+Als u deze wilt toevoegen, opent u *Hulpprogram ma's > NuGet Package Manager > NuGet-pakketten beheren voor oplossing...* .
 
 1. Controleer in het deel venster of het tabblad *Bladeren* is geselecteerd
 2. Zoek naar *micro soft. rest*
@@ -117,40 +117,25 @@ Auto rest genereert twee typen paginerings patronen voor de SDK:
 * Een voor alle Api's, met uitzonde ring van de query-API
 * Een voor de query-API
 
-In de niet-query paginerings patroon zijn er twee versies van elke aanroep:
-* Een versie om de eerste aanroep te maken (bijvoorbeeld `DigitalTwins.ListEdges()` )
-* Een versie om de volgende pagina's op te halen. Deze aanroepen hebben het achtervoegsel ' volgende ' (bijvoorbeeld `DigitalTwins.ListEdgesNext()` )
+In het paginerings patroon niet-query is dit een code fragment dat laat zien hoe u een lijst met uitgaande relaties kunt ophalen uit Azure Digital Apparaatdubbels:
 
-Hier volgt een code fragment waarin wordt getoond hoe u een lijst met uitgaande relaties van Azure Digital Apparaatdubbels ophaalt:
 ```csharp
-try
-{
-    // List to hold the results in
-    List<object> relList = new List<object>();
-    // Enumerate the IPage object returned to get the results
-    // ListAsync will throw if an error occurs
-    IPage<object> relPage = await client.DigitalTwins.ListEdgesAsync(id);
-    relList.AddRange(relPage);
-    // If there are more pages, the NextPageLink in the page is set
-    while (relPage.NextPageLink != null)
+ try 
+ {
+     // List the relationships.
+    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
+    Console.WriteLine($"Twin {srcId} is connected to:");
+    // Iterate through the relationships found.
+    int numberOfRelationships = 0;
+    await foreach (string rel in results)
     {
-        // Get more pages...
-        relPage = await client.DigitalTwins.ListEdgesNextAsync(relPage.NextPageLink);
-        relList.AddRange(relPage);
+         ++numberOfRelationships;
+         // Do something with each relationship found
+         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
     }
-    Console.WriteLine($"Found {relList.Count} relationships on {id}");
-    // Do something with each object found
-    // As relationships are custom types, they are JSON.Net types
-    foreach (JObject r in relList)
-    {
-        string relId = r.Value<string>("$edgeId");
-        string relName = r.Value<string>("$relationship");
-        Console.WriteLine($"Found relationship {relId} from {id}");
-    }
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error retrieving relationships on {id}: {e.Response.StatusCode}");
+    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
+} catch (RequestFailedException rex) {
+    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
 }
 ```
 

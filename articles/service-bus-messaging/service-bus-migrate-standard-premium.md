@@ -4,10 +4,10 @@ description: Gids voor het toestaan van de migratie van bestaande Azure Service 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "85340740"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Bestaande Azure Service Bus Standard-naam ruimten migreren naar de Premium-laag
@@ -21,11 +21,11 @@ In dit artikel wordt beschreven hoe u bestaande naam ruimten van de Standard-laa
 
 Enkele van de punten waarop moet worden genoteerd:
 
-- Deze migratie is bedoeld om te worden uitgevoerd, wat betekent dat bestaande Sender-en receiver-toepassingen **geen wijzigingen in code of configuratie nodig hebben**. De bestaande connection string wijst automatisch naar de nieuwe Premium-naam ruimte.
+- Deze migratie is bedoeld om te worden uitgevoerd, wat betekent dat bestaande Sender-en receiver-toepassingen **geen wijzigingen in code of configuratie nodig hebben** . De bestaande connection string wijst automatisch naar de nieuwe Premium-naam ruimte.
 - De **Premium** -naam ruimte mag **geen entiteiten** bevatten voordat de migratie slaagt.
 - Alle **entiteiten** in de standaard naam ruimte worden tijdens het migratie proces **gekopieerd** naar de Premium-naam ruimte.
 - Migratie ondersteunt **1.000 entiteiten per Messa ging-eenheid** op de Premium-laag. Als u wilt weten hoeveel Messa ging-eenheden u nodig hebt, begint u met het aantal entiteiten dat u hebt in uw huidige standaard naam ruimte.
-- U kunt niet rechtstreeks migreren van de **Basic-laag** naar de **Premium-laag**, maar dit kan ook indirect doen door de migratie eerst van Basic naar standaard en vervolgens van de standaard naar Premium in de volgende stap uit te voeren.
+- U kunt niet rechtstreeks migreren van de **Basic-laag** naar de **Premium-laag** , maar dit kan ook indirect doen door de migratie eerst van Basic naar standaard en vervolgens van de standaard naar Premium in de volgende stap uit te voeren.
 
 ## <a name="migration-steps"></a>Migratiestappen
 
@@ -89,14 +89,14 @@ Als u uw Service Bus Standard-naam ruimte wilt migreren naar Premium met behulp 
 
 Migratie met behulp van de Azure Portal heeft dezelfde logische stroom als migratie met behulp van de opdrachten. Volg deze stappen om met behulp van de Azure Portal te migreren.
 
-1. Selecteer **migreren naar Premium**in het **Navigatie** menu in het linkerdeel venster. Klik op de knop aan de **slag** om door te gaan naar de volgende pagina.
+1. Selecteer **migreren naar Premium** in het **Navigatie** menu in het linkerdeel venster. Klik op de knop aan de **slag** om door te gaan naar de volgende pagina.
     ![Migratie landings pagina][]
 
-1. Voltooi de **installatie**.
+1. Voltooi de **installatie** .
    ![Naam ruimte instellen][]
    1. Maak de Premium-naam ruimte en wijs deze toe om de bestaande standaard naam ruimte te migreren naar.
         ![Installatie naam ruimte-Premium-naam ruimte maken][]
-   1. Kies een **naam**voor de migratie van de post. U gebruikt deze naam om toegang te krijgen tot de standaard naam ruimte nadat de migratie is voltooid.
+   1. Kies een **naam** voor de migratie van de post. U gebruikt deze naam om toegang te krijgen tot de standaard naam ruimte nadat de migratie is voltooid.
         ![Installatie naam ruimte: de naam van de post migratie kiezen][]
    1. Selecteer **volgende** om door te gaan.
 1. Entiteiten synchroniseren tussen de Standard-en Premium-naam ruimten.
