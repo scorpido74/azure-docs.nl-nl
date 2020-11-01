@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e50c2bb73f56017a047e6c657c866b61e5eaa465
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5bcb6df1b03b0c1c835e198818813ad8d914c630
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130376"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147110"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
@@ -141,10 +141,9 @@ Bij het uploaden worden model bestanden gevalideerd door de service.
 U kunt modellen weer geven en ophalen die zijn opgeslagen in uw Azure Digital Apparaatdubbels-exemplaar. 
 
 Hier zijn uw opties voor het volgende:
-* Alle modellen ophalen
 * Eén model ophalen
-* Eén model met afhankelijkheden ophalen
-* Meta gegevens voor modellen ophalen
+* Alle modellen ophalen
+* Meta gegevens en afhankelijkheden voor modellen ophalen
 
 Hier volgen enkele voor beelden van aanroepen:
 
@@ -152,19 +151,16 @@ Hier volgen enkele voor beelden van aanroepen:
 // 'client' is a valid DigitalTwinsClient object
 
 // Get a single model, metadata and data
-ModelData md1 = client.GetModel(id);
+DigitalTwinsModelData md1 = client.GetModel(id);
 
 // Get a list of the metadata of all available models
-Pageable<ModelData> pmd2 = client.GetModels();
-
-// Get a list of metadata and full model definitions
-Pageable<ModelData> pmd3 = client.GetModels(null, true);
+Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
 
 // Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
+Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
 ```
 
-De API roept alle retour objecten op om modellen op te halen `ModelData` . `ModelData` bevat meta gegevens over het model dat is opgeslagen in het Azure Digital Apparaatdubbels-exemplaar, zoals de naam, de DTMI en de aanmaak datum van het model. Het `ModelData` object bevat ook optioneel het model zelf. Afhankelijk van de para meters kunt u de opgehaalde aanroepen gebruiken om alleen meta gegevens op te halen (wat handig is in scenario's waarin u een lijst met beschik bare hulpprogram ma's voor de gebruikers interface wilt weer geven) of het hele model.
+De API roept alle retour objecten op om modellen op te halen `DigitalTwinsModelData` . `DigitalTwinsModelData` bevat meta gegevens over het model dat is opgeslagen in het Azure Digital Apparaatdubbels-exemplaar, zoals de naam, de DTMI en de aanmaak datum van het model. Het `DigitalTwinsModelData` object bevat ook optioneel het model zelf. Afhankelijk van de para meters kunt u de opgehaalde aanroepen gebruiken om alleen meta gegevens op te halen (wat handig is in scenario's waarin u een lijst met beschik bare hulpprogram ma's voor de gebruikers interface wilt weer geven) of het hele model.
 
 De `RetrieveModelWithDependencies` aanroep retourneert niet alleen het aangevraagde model, maar ook alle modellen waarvan het aangevraagde model afhankelijk is.
 

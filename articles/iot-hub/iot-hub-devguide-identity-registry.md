@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3157eda4e2a21b0d153e7300db54f445fdb6878d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547755"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146923"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Inzicht in het identiteits register in uw IoT-hub
 
@@ -188,7 +188,7 @@ Hoofd tekst: deze sectie bevindt zich in JSON-indeling en vertegenwoordigt de du
 
 Apparaat-id's worden weer gegeven als JSON-documenten met de volgende eigenschappen:
 
-| Eigenschap | Opties | Description |
+| Eigenschap | Opties | Beschrijving |
 | --- | --- | --- |
 | deviceId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |vereist, alleen-lezen |Een met IoT-hub gegenereerde, hoofdletter gevoelige teken reeks tot 128 tekens lang. Deze waarde wordt gebruikt om apparaten met dezelfde **deviceId** te onderscheiden, wanneer ze zijn verwijderd en opnieuw gemaakt. |
@@ -200,7 +200,7 @@ Apparaat-id's worden weer gegeven als JSON-documenten met de volgende eigenschap
 | statusUpdateTime |alleen-lezen |Een tijdelijke indicator met de datum en tijd van de laatste status update. |
 | connectionState |alleen-lezen |Een veld dat de verbindings status aangeeft: **verbinding** of **verbroken** . Dit veld vertegenwoordigt de IoT Hub weer gave van de verbindings status van het apparaat. **Belang rijk** : dit veld mag alleen worden gebruikt voor het oplossen van problemen met de ontwikkeling en fout opsporing. De verbindings status wordt alleen bijgewerkt voor apparaten met behulp van MQTT of AMQP. Het is ook gebaseerd op protocol niveau pings (MQTT pings of AMQP pings) en kan Maxi maal vijf minuten duren. Om deze redenen kan er sprake zijn van valse positieven, zoals apparaten die zijn gerapporteerd als verbonden, maar die niet zijn verbonden. |
 | connectionStateUpdatedTime |alleen-lezen |Een tijdelijke indicator, met de datum en laatste keer dat de verbindings status is bijgewerkt. |
-| lastActivityTime |alleen-lezen |Een tijdelijke indicator, met de datum en laatste keer dat het apparaat is verbonden, ontvangen of een bericht heeft verzonden. |
+| lastActivityTime |alleen-lezen |Een tijdelijke indicator, met de datum en laatste keer dat het apparaat is verbonden, ontvangen of een bericht heeft verzonden. Deze eigenschap is uiteindelijk consistent, maar kan tot 5 tot 10 minuten worden uitgesteld. Daarom mag deze niet worden gebruikt in productie scenario's. |
 
 > [!NOTE]
 > De verbindings status kan alleen de IoT Hub weer gave van de status van de verbinding weer geven. Updates van deze status kunnen worden vertraagd, afhankelijk van de netwerk omstandigheden en configuraties.
@@ -212,7 +212,7 @@ Apparaat-id's worden weer gegeven als JSON-documenten met de volgende eigenschap
 
 Module-identiteiten worden weer gegeven als JSON-documenten met de volgende eigenschappen:
 
-| Eigenschap | Opties | Description |
+| Eigenschap | Opties | Beschrijving |
 | --- | --- | --- |
 | deviceId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

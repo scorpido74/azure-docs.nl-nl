@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 10/30/2020
+ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040191"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147263"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Trans formatie opzoeken in toewijzings gegevens stroom
 
@@ -68,6 +68,10 @@ Gebruik een kleine set bekende gegevens bij het testen van de zoek transformatie
 In samen voegingen, zoek acties en bestaande trans formatie, als een of beide gegevens stromen in het geheugen van het worker-knoop punt passen, kunt u de prestaties optimaliseren door **broadcast** in te scha kelen. Standaard wordt door de Spark-Engine automatisch besloten of één zijde al dan niet moet worden uitgezonden. Selecteer **vast** om hand matig te kiezen welke zijde u wilt uitzenden.
 
 Het is niet raadzaam om Broadcasting uit te scha kelen via de optie **uit** , tenzij uw samen voegingen worden uitgevoerd in time-outfouten.
+
+## <a name="cached-lookup"></a>Opzoek in cache
+
+Als u meerdere kleinere zoek acties uitvoert op dezelfde bron, is een gefilterde Sink en zoek actie mogelijk een betere use-case dan de lookup-trans formatie. Veelvoorkomende voor beelden waarbij een cache-Sink beter is, opzoeken een maximum waarde in een gegevens archief en overeenkomende fout codes aan een Data Base met fout berichten. Meer informatie vindt u in de [cache-sinks](data-flow-sink.md#cache-sink) en [Zoek acties in de cache](concepts-data-flow-expression-builder.md#cached-lookup).
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 

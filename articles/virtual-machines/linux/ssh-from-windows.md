@@ -4,28 +4,28 @@ description: Meer informatie over het genereren en gebruiken van SSH-sleutels va
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.date: 07/09/2020
+ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825562"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147144"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-sleutels gebruiken met Windows op Azure
 
 Dit artikel is van toepassing op Windows-gebruikers die SSH-sleutels ( *Secure Shell* ) willen [maken](#create-an-ssh-key-pair) en gebruiken voor [verbinding](#connect-to-your-vm) met virtuele Linux-machines (vm's) in Azure. U kunt ook [SSH-sleutels genereren en opslaan in de Azure Portal](../ssh-keys-portal.md) die u kunt gebruiken bij het maken van virtuele machines in de portal.
 
 
-Als u SSH-sleutels wilt gebruiken vanuit een Linux-of macOS-client, raadpleegt u [snel](mac-create-ssh-keys.md). Zie voor een meer gedetailleerd overzicht van SSH [gedetailleerde stappen: SSH-sleutels voor verificatie voor een Linux-vm in azure maken en beheren](create-ssh-keys-detailed.md).
+Als u SSH-sleutels wilt gebruiken vanuit een Linux-of macOS-client, raadpleegt u de [snelle stappen](mac-create-ssh-keys.md). Zie voor een meer gedetailleerd overzicht van SSH [gedetailleerde stappen: SSH-sleutels voor verificatie voor een Linux-vm in azure maken en beheren](create-ssh-keys-detailed.md).
 
 ## <a name="overview-of-ssh-and-keys"></a>Overzicht van SSH en sleutels
 
-[SSH](https://www.ssh.com/ssh/) is een versleuteld verbindings protocol waarmee beveiligde aanmeldingen via niet-beveiligde verbindingen worden toegestaan. SSH is het standaard verbindings protocol voor Linux-Vm's die worden gehost in Azure. Hoewel SSH zelf een versleutelde verbinding biedt, heeft het gebruik van wacht woorden met SSH de virtuele machine nog steeds kwetsbaar voor aanvallen met een zwakke kracht. Het is raadzaam om via SSH verbinding te maken met een virtuele machine met behulp van een openbaar-persoonlijk sleutel paar, ook wel *SSH-sleutels*genoemd. 
+[SSH](https://www.ssh.com/ssh/) is een versleuteld verbindings protocol waarmee beveiligde aanmeldingen via niet-beveiligde verbindingen worden toegestaan. SSH is het standaard verbindings protocol voor Linux-Vm's die worden gehost in Azure. Hoewel SSH zelf een versleutelde verbinding biedt, heeft het gebruik van wacht woorden met SSH de virtuele machine nog steeds kwetsbaar voor aanvallen met een zwakke kracht. Het is raadzaam om via SSH verbinding te maken met een virtuele machine met behulp van een openbaar-persoonlijk sleutel paar, ook wel *SSH-sleutels* genoemd. 
 
-Het paar open bare persoonlijke sleutels is net als de vergren deling van uw voor deur. De vergren deling wordt aan het **publiek**blootgesteld, iedereen met de juiste sleutel de deur kan openen. De sleutel is **privé**en alleen verleend aan personen die u vertrouwt omdat deze kunnen worden gebruikt om de deur te ontgrendelen. 
+Het paar open bare persoonlijke sleutels is net als de vergren deling van uw voor deur. De vergren deling wordt aan het **publiek** blootgesteld, iedereen met de juiste sleutel de deur kan openen. De sleutel is **privé** en alleen verleend aan personen die u vertrouwt omdat deze kunnen worden gebruikt om de deur te ontgrendelen. 
 
 - Wanneer u de virtuele machine maakt, wordt de *open bare sleutel* op uw virtuele Linux-machine geplaatst. 
 

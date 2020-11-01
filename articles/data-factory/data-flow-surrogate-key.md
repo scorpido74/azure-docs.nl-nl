@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/08/2020
-ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: d1f8993b1adc297b1bfadba114df76a66e59afa2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81606297"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147169"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Surrogaat sleutel transformatie bij toewijzing van gegevens stroom 
 
@@ -31,9 +31,9 @@ Gebruik de trans formatie van de surrogaat sleutel om een incrementele sleutel w
 
 ## <a name="increment-keys-from-existing-sources"></a>Sleutels van bestaande bronnen stapsgewijs verhogen
 
-Als u de volg orde wilt starten vanuit een waarde die voor komt in een bron, gebruikt u een afgeleide kolom transformatie na de trans formatie van de surrogaat sleutel om de twee waarden samen toe te voegen:
+Als u de volg orde wilt starten vanuit een waarde die voor komt in een bron, raden we u aan een cache-sink te gebruiken om deze waarde op te slaan en een afgeleide kolom transformatie te gebruiken om de twee waarden samen toe te voegen. Gebruik een zoek actie in cache om de uitvoer op te halen en toe te voegen aan de gegenereerde sleutel. Meer informatie vindt u in de [cache-sinks](data-flow-sink.md#cache-sink) en [Zoek acties in de cache](concepts-data-flow-expression-builder.md#cached-lookup).
 
-![SK toevoegen Max](media/data-flow/sk006.png "Aantal trans formatie van surrogaat sleutel maximum toevoegen")
+![Surrogaat sleutel zoeken](media/data-flow/cached-lookup-example.png "Surrogaat sleutel zoeken")
 
 ### <a name="increment-from-existing-maximum-value"></a>Toename van de bestaande maximum waarde
 
@@ -41,19 +41,18 @@ Als u de sleutel waarde met het vorige maximum wilt seeden, zijn er twee methode
 
 #### <a name="database-sources"></a>Database bronnen
 
-Gebruik een SQL-query optie om MAX () te selecteren in de bron. Bijvoorbeeld: `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+Gebruik een SQL-query optie om MAX () te selecteren in de bron. Bijvoorbeeld `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`.
 
-![Surrogaat sleutel query](media/data-flow/sk002.png "Query voor surrogaat sleutel transformatie")
+![Surrogaat sleutel query](media/data-flow/surrogate-key-max-database.png "Query voor surrogaat sleutel transformatie")
 
 #### <a name="file-sources"></a>Bestands bronnen
 
 Als uw vorige maximum waarde zich in een bestand bevindt, gebruikt u de `max()` functie in de cumulatieve trans formatie om de vorige maximum waarde op te halen:
 
-![Surrogaat sleutel bestand](media/data-flow/sk008.png "Surrogaat sleutel bestand")
+![Surrogaat sleutel bestand](media/data-flow/surrogate-key-max-file.png "Surrogaat sleutel bestand")
 
-In beide gevallen moet u uw inkomende nieuwe gegevens samen voegen met de bron die de vorige maximum waarde bevat.
+In beide gevallen moet u schrijven naar een cache-Sink en de waarde opzoeken. 
 
-![Surrogaat sleutel toevoegen](media/data-flow/sk004.png "Surrogaat sleutel toevoegen")
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 

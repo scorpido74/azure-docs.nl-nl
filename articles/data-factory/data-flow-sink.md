@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/27/2020
-ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.date: 10/30/2020
+ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891348"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147220"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Trans formatie sinken bij toewijzing van gegevens stroom
 
@@ -72,6 +72,23 @@ In de volgende video wordt een aantal verschillende Sink-opties voor door tekst 
 **Tempdb gebruiken:** Data Factory maakt standaard gebruik van een globale tijdelijke tabel om gegevens op te slaan als onderdeel van het laad proces. U kunt ook de optie ' TempDB gebruiken ' uitschakelen en in plaats daarvan vragen om Data Factory de tijdelijke Holding tabel op te slaan in een gebruikers database die zich in de Data Base bevindt die wordt gebruikt voor deze sink.
 
 ![TempDB](media/data-flow/tempdb.png "TempDB")
+
+## <a name="cache-sink"></a>Cache-Sink
+ 
+Een *cache-Sink* is wanneer een gegevens stroom gegevens schrijft naar de Spark-cache in plaats van een gegevens archief. Bij het toewijzen van gegevens stromen kunt u binnen dezelfde stroom meerdere keren naar deze gegevens verwijzen met behulp van een *cache zoekopdracht* . Dit is handig als u wilt verwijzen naar gegevens als onderdeel van een expressie, maar niet expliciet de kolommen wilt samen voegen. Veelvoorkomende voor beelden waarbij een cache-Sink kan helpen bij het opzoeken van een maximum waarde in een gegevens archief en het vinden van overeenkomende fout codes naar een Data Base met fout berichten. 
+
+Als u naar een cache-Sink wilt schrijven, voegt u een Sink-trans formatie toe en selecteert u **cache** als Sink-type. In tegens telling tot andere Sink-typen hoeft u geen gegevensset of gekoppelde service te selecteren omdat u niet naar een externe Store schrijft. 
+
+![Cache-Sink selecteren](media/data-flow/select-cache-sink.png "Cache-Sink selecteren")
+
+In de Sink-instellingen kunt u eventueel de sleutel kolommen van de cache-Sink opgeven. Deze worden gebruikt als overeenkomende voor waarden bij het gebruik `lookup()` van de functie in een cache zoekopdracht. Als u sleutel kolommen opgeeft, kunt u de functie niet gebruiken `outputs()` in een zoek opdracht in de cache. Zie [in cache opgeslagen lookups](concepts-data-flow-expression-builder.md#cached-lookup)voor meer informatie over de zoek syntaxis in de cache.
+
+![Filter sleutel kolommen voor cache](media/data-flow/cache-sink-key-columns.png "Filter sleutel kolommen voor cache")
+
+Als er bijvoorbeeld een kolom met één sleutel van `column1` in een cache-sink wordt aangeroepen `cacheExample` , wordt door de aanroep `cacheExample#lookup()` één para meter opgegeven voor de rij in de cache-sink die moet worden gevonden. De functie voert een enkele complexe kolom uit met subkolomen voor elke toegewezen kolom.
+
+> [!NOTE]
+> Een cache-Sink moet zich in een volledig onafhankelijke gegevens stroom bevinden op basis van een trans formatie die verwijst naar de cache met behulp van een zoek opdracht in de Een cache-Sink moet ook de eerste Sink hebben geschreven. 
 
 ## <a name="field-mapping"></a>Veldtoewijzing
 
