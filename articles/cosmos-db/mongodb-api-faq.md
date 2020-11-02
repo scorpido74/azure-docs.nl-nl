@@ -30,7 +30,7 @@ Zie [verbinding maken met uw Cosmos-data base met de API van Azure Cosmos DB voo
 
 Naast de algemene MongoDB-fout codes heeft de API van de Azure Cosmos DB voor MongoDB een eigen specifieke fout code:
 
-| Fout               | Code  | Beschrijving  | Oplossing  |
+| Fout               | Code  | Description  | Oplossing  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Het totale aantal verbruikte aanvraag eenheden is hoger dan de ingerichte aanvraag-eenheids snelheid voor de container en is beperkt. | U kunt de door Voer die is toegewezen aan een container of een set containers van de Azure Portal schalen of het opnieuw proberen. |
 | ExceededMemoryLimit | 16501 | Als multi tenant service heeft de bewerking de geheugen toewijzing van de client overschreden. | Verklein het bereik van de bewerking via meer beperkende query criteria of neem contact op met de ondersteuning van de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br> Voorbeeld: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
