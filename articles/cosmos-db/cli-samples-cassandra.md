@@ -1,6 +1,6 @@
 ---
-title: Voor beelden van Azure CLI voor Azure Cosmos DB Cassandra-API
-description: Voor beelden van Azure CLI voor Azure Cosmos DB Cassandra-API
+title: Voorbeelden van Azure CLI voor Azure Cosmos DB Cassandra-API
+description: Voorbeelden van Azure CLI voor Azure Cosmos DB Cassandra-API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,18 +8,19 @@ ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 574b7728bf39fa0fd91f24b3cf07b00a688b5147
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
-ms.translationtype: MT
+ms.openlocfilehash: 9de87341f57c42aa6a4fa39465c9311887056075
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277002"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074026"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Voorbeelden van Azure CLI voor Azure Cosmos DB Cassandra API
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 De volgende tabel bevat koppelingen naar Azure CLI-voorbeeldscripts voor Azure Cosmos DB. Gebruik de links aan de rechterkant om te navigeren naar voorbeelden voor specifieke API's. Algemene voorbeelden zijn hetzelfde voor alle API's. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](/cli/azure/cosmosdb). CLI-voorbeeldscripts voor Azure Cosmos DB kunt u ook vinden in de [opslagplaats van Azure Cosmos DB CLI in GitHub](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
-Voor deze voor beelden is Azure CLI versie 2.12.1 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren](/cli/azure/install-azure-cli).
+Voor deze voorbeelden hebt u Azure CLI versie 2.12.1 of hoger nodig. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren](/cli/azure/install-azure-cli).
 
 ## <a name="common-samples"></a>Algemene voorbeelden
 
@@ -28,7 +29,7 @@ Deze voorbeelden zijn van toepassing op alle API's van Azure Cosmos DB.
 |Taak | Beschrijving |
 |---|---|
 | [Regio's toevoegen of er een failover voor uitvoeren](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Een regio toevoegen, de failoverprioriteit wijzigen, een handmatige failover activeren.|
-| [Accountsleutels en verbindingsreeksen](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Accountsleutels en alleen-lezensleutels weergeven, sleutels opnieuw genereren en verbindingsreeksen weergeven.|
+| [Accountsleutels en verbindingsreeksen](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Accountsleutels en alleen-lezensleutels weergeven, sleutels opnieuw genereren en verbindingsreeksen weergeven.|
 | [Beveiligen met IP-firewall](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Een Cosmos-account maken met een geconfigureerde IP-firewall.|
 | [Nieuw account beveiligen met service-eindpunten](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Een Cosmos-account maken en beveiligen met service-eindpunten.|
 | [Bestaand account beveiligen met service-eind punten](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Een Cosmos-account bijwerken om het te beveiligen met service-eindpunten wanneer het subnet uiteindelijk is geconfigureerd.|
