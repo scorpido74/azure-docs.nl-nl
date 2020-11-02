@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92202410"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Ontwerpen voor herstel na nood gevallen met persoonlijke ExpressRoute-peering
 
 ExpressRoute is ontworpen voor hoge Beschik baarheid om de communicatie van particuliere netwerken naar micro soft-resources te verzorgen. Met andere woorden: er is geen Single Point of Failure in het pad ExpressRoute in het micro soft-netwerk. Zie [ontwerpen voor hoge Beschik baarheid met ExpressRoute][HA]voor overwegingen bij het ontwerpen van de beschik baarheid van een ExpressRoute-circuit.
 
-*Als er echter iets mis gaat*met Murphy--adage, kunt u in dit artikel zich richten op oplossingen die verder gaan dan storingen die kunnen worden opgelost met één ExpressRoute-circuit. Met andere woorden, in dit artikel, kunnen we in het kader van de netwerk architectuur controleren op het bouwen van robuuste back-end-netwerk connectiviteit voor herstel na nood gevallen met geo-redundante ExpressRoute-circuits.
+*Als er echter iets mis gaat* met Murphy--adage, kunt u in dit artikel zich richten op oplossingen die verder gaan dan storingen die kunnen worden opgelost met één ExpressRoute-circuit. Met andere woorden, in dit artikel, kunnen we in het kader van de netwerk architectuur controleren op het bouwen van robuuste back-end-netwerk connectiviteit voor herstel na nood gevallen met geo-redundante ExpressRoute-circuits.
 
 >[!NOTE]
 >De concepten die in dit artikel worden beschreven, zijn ook van toepassing wanneer een ExpressRoute-circuit wordt gemaakt onder een virtueel WAN of daarbuiten.

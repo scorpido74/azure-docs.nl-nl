@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92204636"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Connectiviteit ExpressRoute controleren
@@ -85,7 +85,7 @@ Open in de Azure Portal de Blade ExpressRoute circuit. In het gedeelte ![3][3] v
 
 In de ExpressRoute Essentials geeft de status van het *circuit* de status aan van het circuit aan de kant van micro soft. *Provider status* geeft aan of het circuit is *ingericht/niet is ingericht* op de kant van de service provider. 
 
-Voor een ExpressRoute-circuit moet de status van *het circuit* zijn *ingeschakeld* en moet de *status* van de provider worden *ingericht*.
+Voor een ExpressRoute-circuit moet de status van *het circuit* zijn *ingeschakeld* en moet de *status* van de provider worden *ingericht* .
 
 > [!NOTE]
 > Nadat u een ExpressRoute-circuit hebt geconfigureerd, neemt u contact op met [Microsoft ondersteuning][Support]als de status van het *circuit* niet is ingeschakeld. Als de status van de *provider* echter niet is ingericht, neemt u contact op met uw service provider.
@@ -165,7 +165,7 @@ In de Azure Portal, de status van een ExpressRoute-circuit peering kan worden ge
 In het vorige voor beeld, zoals aangegeven dat persoonlijke Azure-peering is ingericht, terwijl Azure open bare en micro soft-peerings niet zijn ingericht. Voor een geslaagde peering context zijn ook de primaire en secundaire Point-to-Point-subnetten opgenomen. De/30 subnetten worden gebruikt voor het IP-adres van de interface van de Msee's en CEs/PE-Msee's. Voor de peerings die zijn ingericht, wordt in de vermelding ook aangegeven wie de configuratie voor het laatst heeft gewijzigd. 
 
 > [!NOTE]
-> Als het inschakelen van een peering mislukt, controleert u of de primaire en secundaire subnetten overeenkomen met de configuratie van het gekoppelde CE/PE-MSEE. Controleer ook of de juiste *VlanId*, *AzureASN*en *PeerASN* worden gebruikt op msee's en of deze waarden worden toegewezen aan de velden die worden gebruikt op de gekoppelde CE/PE-MSEE. Als MD5-hashing is gekozen, moet de gedeelde sleutel gelijk zijn aan het MSEE-en PE-MSEE/CE-paar. De eerder geconfigureerde gedeelde sleutel wordt om veiligheids redenen niet weer gegeven. Als u een van deze configuraties wilt wijzigen op een MSEE-router, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].  
+> Als het inschakelen van een peering mislukt, controleert u of de primaire en secundaire subnetten overeenkomen met de configuratie van het gekoppelde CE/PE-MSEE. Controleer ook of de juiste *VlanId* , *AzureASN* en *PeerASN* worden gebruikt op msee's en of deze waarden worden toegewezen aan de velden die worden gebruikt op de gekoppelde CE/PE-MSEE. Als MD5-hashing is gekozen, moet de gedeelde sleutel gelijk zijn aan het MSEE-en PE-MSEE/CE-paar. De eerder geconfigureerde gedeelde sleutel wordt om veiligheids redenen niet weer gegeven. Als u een van deze configuraties wilt wijzigen op een MSEE-router, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].  
 >
 
 > [!NOTE]
@@ -228,7 +228,7 @@ At line:1 char:1
 ```
 
 > [!NOTE]
-> Als het inschakelen van een peering mislukt, controleert u of de primaire en secundaire subnetten overeenkomen met de configuratie van het gekoppelde CE/PE-MSEE. Controleer ook of de juiste *VlanId*, *AzureASN*en *PeerASN* worden gebruikt op msee's en of deze waarden worden toegewezen aan de velden die worden gebruikt op de gekoppelde CE/PE-MSEE. Als MD5-hashing is gekozen, moet de gedeelde sleutel gelijk zijn aan het MSEE-en PE-MSEE/CE-paar. De eerder geconfigureerde gedeelde sleutel wordt om veiligheids redenen niet weer gegeven. Als u een van deze configuraties wilt wijzigen op een MSEE-router, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].  
+> Als het inschakelen van een peering mislukt, controleert u of de primaire en secundaire subnetten overeenkomen met de configuratie van het gekoppelde CE/PE-MSEE. Controleer ook of de juiste *VlanId* , *AzureASN* en *PeerASN* worden gebruikt op msee's en of deze waarden worden toegewezen aan de velden die worden gebruikt op de gekoppelde CE/PE-MSEE. Als MD5-hashing is gekozen, moet de gedeelde sleutel gelijk zijn aan het MSEE-en PE-MSEE/CE-paar. De eerder geconfigureerde gedeelde sleutel wordt om veiligheids redenen niet weer gegeven. Als u een van deze configuraties wilt wijzigen op een MSEE-router, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].  
 >
 >
 
@@ -278,7 +278,7 @@ Path    : 123##
 ```
 
 > [!NOTE]
-> Als de status van een eBGP-peering tussen een MSEE en een CE/PE-MSEE actief of inactief is, controleert u of de subnetten van de primaire en de secundaire peer zijn toegewezen die overeenkomen met de configuratie van de gekoppelde CE/PE-MSEE. Controleer ook of de juiste *VlanId*, *AzureAsn*en *PeerAsn* worden gebruikt op msee's en of deze waarden worden toegewezen aan de velden die worden gebruikt op de gekoppelde PE-MSEE/CE. Als MD5-hashing is gekozen, moet de gedeelde sleutel hetzelfde zijn op het MSEE en het CE/PE-MSEE-paar. Als u een van deze configuraties wilt wijzigen op een MSEE-router, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].
+> Als de status van een eBGP-peering tussen een MSEE en een CE/PE-MSEE actief of inactief is, controleert u of de subnetten van de primaire en de secundaire peer zijn toegewezen die overeenkomen met de configuratie van de gekoppelde CE/PE-MSEE. Controleer ook of de juiste *VlanId* , *AzureAsn* en *PeerAsn* worden gebruikt op msee's en of deze waarden worden toegewezen aan de velden die worden gebruikt op de gekoppelde PE-MSEE/CE. Als MD5-hashing is gekozen, moet de gedeelde sleutel hetzelfde zijn op het MSEE en het CE/PE-MSEE-paar. Als u een van deze configuraties wilt wijzigen op een MSEE-router, raadpleegt u [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].
 >
 
 

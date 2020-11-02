@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92146304"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Beveiliging in Azure Data Lake Storage Gen1
@@ -99,7 +99,7 @@ Om te voldoen aan de voor Schriften, kan een organisatie een adequaat controle s
 
 Bekijk en selecteer de kolommen die u wilt registreren voor de controle sporen van account beheer. U kunt ook activiteiten logboeken exporteren naar Azure Storage.
 
-![Activiteitenlogboek](./media/data-lake-store-security-overview/activity-logs.png "Activiteitenlogboek")
+![Activiteiten logboek](./media/data-lake-store-security-overview/activity-logs.png "Activiteitenlogboek")
 
 Zie [activiteiten logboeken weer geven om acties op resources te controleren](../azure-resource-manager/management/view-activity-logs.md)voor meer informatie over het werken met activiteiten Logboeken.
 
@@ -117,7 +117,7 @@ Enter prise-klanten vragen een Cloud platform voor gegevens analyse dat veilig e
 
 Als u nieuwe functies in Data Lake Storage Gen1 wilt zien, stuurt u ons uw feedback in het [Data Lake Storage gen1 UserVoice-forum](https://feedback.azure.com/forums/327234-data-lake).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Aan de slag met Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
