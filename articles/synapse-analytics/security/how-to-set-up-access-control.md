@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341546"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186617"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie) 
 
@@ -51,8 +51,6 @@ Drie beveiligings groepen maken en invullen voor uw werk ruimte:
 - **WS1 \_ WSAdmins** : voor gebruikers die volledige controle over de werk ruimte moeten hebben
 - **WS1 \_ SparkAdmins** : voor gebruikers die volledige controle moeten hebben over de Spark-aspecten van de werk ruimte
 - **WS1 \_ SQLAdmins** : voor gebruikers die volledige controle over de SQL-aspecten van de werk ruimte moeten hebben
-- **WS1 \_ WSAdmins** toevoegen aan **WS1 \_ SQLAdmins**
-- **WS1 \_ WSAdmins** toevoegen aan **WS1 \_ SparkAdmins**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>STAP 2: uw Data Lake Storage Gen2-account voorbereiden
 
@@ -98,7 +96,7 @@ De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijne
 
 - Open de Azure Portal
 - Ga naar WS1
-- Selecteer onder **instellingen**de optie **SQL Active Directory-beheerder**
+- Selecteer onder **instellingen** de optie **SQL Active Directory-beheerder**
 - Selecteer **beheerder instellen** en kies WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintain-access-control"></a>STAP 6: toegangs beheer onderhouden
@@ -113,7 +111,7 @@ Hoewel u gebruikers hand matig aan Synapse-rollen kunt toewijzen, worden de item
 
 Gebruikers in elke rol moeten de volgende stappen uitvoeren:
 
-| Aantal | Stap | Werkruimtebeheerders | Spark-beheerders | SQL-Administrators |
+| Getal | Stap | Werkruimtebeheerders | Spark-beheerders | SQL-Administrators |
 | --- | --- | --- | --- | --- |
 | 1 | Een Parquet-bestand uploaden naar CNT1 | JA | JA | JA |
 | 2 | Het Parquet-bestand lezen met behulp van SQL op aanvraag | JA | NO | JA |

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: c797148bdc07481cb312739ef020e88963599374
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: ff7b9b0bfcdc0c06eae14ecfdccabf9e337d3649
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928749"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186672"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Wat zijn oplossingen voor het uitvoeren van Oracle WebLogic Server op de Azure Kubernetes-service?
 
@@ -30,6 +30,8 @@ WebLogic-Server clusters zijn volledig ingeschakeld om te worden uitgevoerd op K
 ## <a name="guidance-scripts-and-samples-for-wls-on-aks"></a>Richt lijnen, scripts en voor beelden voor WLS op AKS
 Naast het certificeren van WebLogic-Server op AKS, bieden Oracle en micro soft gezamenlijk gedetailleerde instructies, scripts en voor beelden voor het uitvoeren van WebLogic Server op AKS. De richt lijnen zijn opgenomen in de sectie voor beeld van de Azure Kubernetes-service van de [operator-documentatie](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/). De richt lijnen zijn bedoeld om productie WebLogic Server zo eenvoudig mogelijk te maken op AKS-implementaties. De richt lijnen gebruiken officiële WebLogic Server-docker-installatie kopieën van Oracle. Failover wordt bereikt via Azure Files die toegankelijk zijn via Kubernetes permanente volume claims. Azure load balancers worden ondersteund bij het inrichten met behulp van een Kubernetes-service van het type Load Balancer. De richt lijnen kunnen een hoge mate van configuratie en aanpassing bieden.
 
+:::image type="content" source="media/oracle-weblogic/wls-on-aks.gif" alt-text="U kunt de voorbeeld scripts gebruiken om WebLogic Server te implementeren op AKS":::
+
 In de richt lijnen wordt ervan uitgegaan dat u het domein buiten de docker-installatie kopie implementeert en gebruikmaakt van de standaard docker-installatie kopieën van Oracle. We voegen hulp toe voor het inschakelen van aangepaste installatie kopieën met uw domein in een docker-installatie kopie. Meer gebruiks vriendelijke en Azure service-integraties zijn mogelijk in de toekomst via Marketplace-aanbiedingen die Oracle WebLogic Server op Azure Virtual Machines-oplossingen spie gelen.
 
 _Deze oplossingen zijn uw eigen licentie_ . Er wordt ervan uitgegaan dat u de juiste licenties voor Oracle al hebt en een juiste licentie hebt voor het uitvoeren van aanbiedingen in Azure.
@@ -40,7 +42,7 @@ _Als u geïnteresseerd bent in het samen werken met uw migratie scenario's met h
 
 Met de oplossingen voor het uitvoeren van Oracle WebLogic Server op de Azure Kubernetes-service kunt u een breed scala aan implementatie architecturen die klaar zijn voor productie, met relatief gemak.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="Complexe WebLogic-Server implementaties zijn ingeschakeld op AKS":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="U kunt de voorbeeld scripts gebruiken om WebLogic Server te implementeren op AKS":::
 
 Meer informatie over de oplossingen biedt klanten de mogelijkheid om hun implementaties verder aan te passen. De configuratie van de implementatie van toepassingen wordt waarschijnlijk uitgebreid met de implementaties van andere Azure-resources. Klanten wordt aangeraden feedback te geven in de enquête over het verder verbeteren van de oplossingen.
 

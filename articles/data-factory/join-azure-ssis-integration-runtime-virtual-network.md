@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0e9c669f2994e896205762c5f3f4df1b5fe214ae
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637221"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186770"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS Integration Runtime samenvoegen met een virtueel netwerk
 
@@ -99,7 +99,7 @@ Stel uw virtuele netwerk in om aan deze vereisten te voldoen:
 
 - Zorg ervoor dat de resource groep van het virtuele netwerk (of de resource groep Public IP-adressen als u uw eigen open bare IP-adressen meebrengt) bepaalde Azure-netwerk resources kan maken en verwijderen. Zie [de resource groep instellen](#resource-group)voor meer informatie. 
 
-- Als u uw Azure-SSIS IR aanpast zoals beschreven in de [aangepaste installatie voor Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md), krijgen uw Azure-SSIS IR-knoop punten privé-IP-adressen van een vooraf gedefinieerd bereik van 172.16.0.0 tot 172.31.255.255. Zorg er dus voor dat de privé-IP-adresbereiken van uw virtuele of on-premises netwerken niet conflicteren met dit bereik.
+- Als u uw Azure-SSIS IR aanpast zoals beschreven in de [aangepaste installatie voor Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md), gebruiken we het interne proces voor het beheren van de knoop punten privé IP-adressen van een vooraf gedefinieerd bereik van 172.16.0.0 tot 172.31.255.255. Zorg er daarom voor dat de privé-IP-adresbereiken van uw virtuele of on-premises netwerken geen conflict veroorzaken met dit bereik.
 
 Dit diagram toont de vereiste verbindingen voor uw Azure-SSIS IR:
 
@@ -172,7 +172,7 @@ Als u een NSG wilt implementeren voor het subnet dat door uw Azure-SSIS IR wordt
 | Uitgaand | TCP | VirtualNetwork | * | Internet | 80 | Beschrijving De knoop punten van uw Azure-SSIS IR in het virtuele netwerk gebruiken deze poort om een certificaatintrekkingslijst van Internet te downloaden. Als u dit verkeer blokkeert, kan dit leiden tot prestatie downgrade bij het starten van IR en verliest u de mogelijkheid om de intrekkings lijst voor certificaten te controleren op het gebruik van certificaten. Als u de bestemming verder wilt beperken tot bepaalde FQDN-verwijzingen, raadpleegt u de sectie **Azure ExpressRoute of UDR gebruiken**|
 | Uitgaand | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | Beschrijving Deze regel is alleen vereist wanneer de knoop punten van uw Azure-SSIS IR in het virtuele netwerk toegang hebben tot een SSISDB die wordt gehost door uw server. Als uw server verbindings beleid is ingesteld op **proxy** in plaats van **omleiden** , is alleen poort 1433 vereist. <br/><br/> Deze uitgaande beveiligings regel is niet van toepassing op een SSISDB die wordt gehost door uw SQL Managed instance in het virtuele netwerk of SQL Database geconfigureerd met een persoonlijk eind punt. |
 | Uitgaand | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Beschrijving Deze regel is alleen vereist wanneer de knoop punten van uw Azure-SSIS IR in het virtuele netwerk toegang hebben tot een SSISDB die wordt gehost door uw SQL Managed instance in het virtuele netwerk of SQL Database geconfigureerd met een persoonlijk eind punt. Als uw server verbindings beleid is ingesteld op **proxy** in plaats van **omleiden** , is alleen poort 1433 vereist. |
-| Uitgaand | TCP | VirtualNetwork | * | Opslag | 445 | Beschrijving Deze regel is alleen vereist als u SSIS-pakket wilt uitvoeren dat is opgeslagen in Azure Files. |
+| Uitgaand | TCP | VirtualNetwork | * | Storage | 445 | Beschrijving Deze regel is alleen vereist als u SSIS-pakket wilt uitvoeren dat is opgeslagen in Azure Files. |
 ||||||||
 
 ### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Azure ExpressRoute of UDR gebruiken

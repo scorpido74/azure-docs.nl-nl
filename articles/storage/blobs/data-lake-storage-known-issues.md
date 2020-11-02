@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: bffe69dd5b7d3cdfcba1df3420d494dcffc33f9a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042666"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186583"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -41,7 +41,7 @@ BLOB-Api's en Data Lake Storage Gen2-Api's kunnen op dezelfde gegevens worden ge
 
 In deze sectie worden de problemen en beperkingen beschreven met het gebruik van BLOB-Api's en Data Lake Storage Gen2 Api's om op dezelfde gegevens te werken.
 
-* U kunt niet zowel API-als Data Lake Storage-Api's gebruiken om naar hetzelfde exemplaar van een bestand te schrijven. Als u naar een bestand schrijft met behulp van Data Lake Storage Gen2 Api's, zijn de blokken van dat bestand niet zichtbaar voor aanroepen naar de BLOB-API voor [blok keren ophalen](https://docs.microsoft.com/rest/api/storageservices/get-block-list) . De enige uitzonde ring hierop is wanneer u overschrijft. U kunt een bestand/BLOB overschrijven met behulp van de API.
+* U kunt geen blob-API en Data Lake Storage-Api's gebruiken om naar hetzelfde exemplaar van een bestand te schrijven. Als u naar een bestand schrijft met behulp van Data Lake Storage Gen2 Api's, zijn de blokken van dat bestand niet zichtbaar voor aanroepen naar de BLOB-API voor [blok keren ophalen](https://docs.microsoft.com/rest/api/storageservices/get-block-list) . De enige uitzonde ring hierop is wanneer u overschrijft. U kunt een bestand/BLOB overschrijven met behulp van de API.
 
 * Wanneer u de bewerking [lijst-blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruikt zonder een scheidings teken op te geven, bevatten de resultaten zowel directory's als blobs. Als u ervoor kiest om een scheidings teken te gebruiken, gebruikt u alleen een slash ( `/` ). Dit is het enige ondersteunde scheidings teken.
 
@@ -72,7 +72,7 @@ Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https:
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+## <a name="azure-storage-explorer"></a>Azure Opslagverkenner
 
 Gebruik alleen versies `1.6.0` of hoger.
 
