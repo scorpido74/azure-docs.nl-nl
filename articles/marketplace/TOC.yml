@@ -79,8 +79,6 @@
   items:
     - name: Publicatiehandleiding op type aanbieding
       href: publisher-guide-by-offer-type.md
-    - name: Verificatie met Azure AD inschakelen
-      href: enable-appsource-marketplace-using-azure-ad.md
     - name: Azure-toepassingsaanbiedingen
       items:
         - name: Een aanbieding voor een oplossingssjabloon plannen

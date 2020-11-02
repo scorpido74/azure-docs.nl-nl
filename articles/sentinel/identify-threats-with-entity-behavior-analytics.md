@@ -14,14 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: ad0486c9d2eb6c651b507f4b0a44f4a6fc2b018f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100657"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148351"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Geavanceerde bedreigingen met UEBA (User and entity Behavior Analytics) identificeren in azure Sentinel
+
+> [!IMPORTANT]
+>
+> - De functies UEBA en Entity pages zijn nu **algemeen beschikbaar** in de volgende Azure Sentinel-geografische gebieden en regio's:
+>    - Verenigde Staten Geografie
+>    - Regio Oost-West
+>    - Geografie van Australië
+>
+> - In alle andere geografische gebieden en regio's blijven deze functies gedurende de **open bare preview** -periode behouden en worden ze zonder Service Level Agreement aangeboden. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Wat is UEBA (User and entity Behavior Analytics)?
 

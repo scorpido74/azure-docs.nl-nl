@@ -3,12 +3,12 @@ title: Gids voor het instellen van een versneld Lab-account voor Azure Lab Servi
 description: Deze hand leiding helpt beheerders snel een Lab-account in te stellen voor gebruik op hun school.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c186560b27ebcb543a23785dc5fbc556614f64b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0855e59aced37e50c088cfe89ffeb3d0af9fcdca
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445420"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148276"
 ---
 # <a name="lab-account-setup-guide"></a>Installatie handleiding voor het lab-account
 
@@ -29,6 +29,10 @@ Als u snel aan de slag wilt gaan, maakt u één Lab-account en maakt u later ext
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Wie moet eigen aren zijn en mede werkers van het lab-account?
 
 Uw beheerders zijn doorgaans de eigen aren en mede werkers voor een Lab-account. Ze zijn verantwoordelijk voor het beheer van de beleids regels die van toepassing zijn op alle Labs in het lab-account. De persoon die het lab-account maakt, wordt automatisch een eigenaar. U kunt extra eigen aren en mede werkers toevoegen, doorgaans van de Azure Active Directory Azure AD-Tenant die aan uw abonnement is gekoppeld. Dit kan handig zijn bij het beheren van een Lab-account door de rol eigenaar of Inzender op het niveau van het lab-account toe te wijzen.
+
+[!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+
+Gebruikers met een Lab zien slechts één lijst van de virtuele machines waartoe ze toegang hebben via tenants in Azure Lab Services.
 
 ### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Wie kan Labs maken en beheren?
 

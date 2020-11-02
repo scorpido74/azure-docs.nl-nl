@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cefc6cc72ed8d74663464f4ac2d672369cd9d31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288661"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148249"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistieken in Synapse SQL
 
@@ -74,7 +74,7 @@ Om te voor komen dat de prestaties meetbaar zijn, moet u ervoor zorgen dat de st
 > [!NOTE]
 > Het maken van statistieken wordt geregistreerd in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) onder een andere gebruikers context.
 
-Wanneer er automatische statistieken worden gemaakt, worden de volgende notatie toegepast: _WA_Sys_<kolom-id van 8 cijfers in hex>_<tabel-ID van 8 cijfers in hexadecimale>. U kunt al gemaakte statistieken weer geven door de [DBCC-SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) opdracht uit te voeren:
+Wanneer er automatische statistieken worden gemaakt, worden de volgende notatie toegepast: _WA_Sys_ <kolom-id van 8 cijfers in hex>_<tabel-ID van 8 cijfers in hexadecimale>. U kunt al gemaakte statistieken weer geven door de [DBCC-SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) opdracht uit te voeren:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -245,7 +245,7 @@ Als u een statistieken object met meerdere kolommen wilt maken, gebruikt u de vo
 > [!NOTE]
 > Het histogram dat wordt gebruikt om het aantal rijen in het query resultaat te schatten, is alleen beschikbaar voor de eerste kolom die wordt vermeld in de definitie van het statistieken-object.
 
-In dit voor beeld is het histogram voor de *product \_ categorie*. Statistieken voor meerdere kolommen worden berekend voor *product \_ categorie* -en *product \_ sub_category*:
+In dit voor beeld is het histogram voor de *product \_ categorie* . Statistieken voor meerdere kolommen worden berekend voor *product \_ categorie* -en *product \_ sub_category* :
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -254,7 +254,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-Omdat er een correlatie bestaat tussen *product \_ categorie* en *product \_ \_ subcategorie*, kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
+Omdat er een correlatie bestaat tussen *product \_ categorie* en *product \_ \_ subcategorie* , kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Statistieken maken voor alle kolommen in een tabel
 
@@ -616,7 +616,7 @@ U kunt uw gegevens pijplijn uitbreiden om ervoor te zorgen dat de statistieken w
 De volgende richt lijnen zijn voor het bijwerken van uw statistieken:
 
 - Zorg ervoor dat er ten minste één statistieken object is bijgewerkt voor de gegevensset. Dit is de informatie over de grootte (aantal rijen en pagina-items) als onderdeel van de statistieken-update.
-- Focus op kolommen die deel uitmaken van de componenten samen voegen, groeperen op, ORDER BY en DISTINCT.
+- Focus op kolommen die deel uitmaken van de componenten WHERE, samen voegen, groeperen op, ORDER BY en DISTINCT.
 - De kolommen met een oplopende sleutel, zoals transactie datums, vaker bijwerken omdat deze waarden niet worden opgenomen in het statistieken histogram.
 - Werk kolommen met statische distributie minder vaak bij.
 
@@ -629,12 +629,12 @@ In de volgende voor beelden ziet u hoe u verschillende opties kunt gebruiken om 
 > [!NOTE]
 > U kunt op dit moment alleen statistieken voor één kolom maken.
 >
-> De naam van de procedure sp_create_file_statistics wordt gewijzigd in sp_create_openrowset_statistics. De rol van de open bare server heeft machtiging voor BULK bewerkingen beheren die is verleend terwijl de open bare databaserol uitvoer machtigingen heeft voor sp_create_file_statistics en sp_drop_file_statistics. Dit kan in de toekomst worden gewijzigd.
+> De volgende machtigingen zijn vereist om sp_create_openrowset_statistics en sp_drop_openrowset_statistics uit te voeren: BULK bewerkingen beheren of data base-BULK bewerkingen beheren.
 
 De volgende opgeslagen procedure wordt gebruikt om statistieken te maken:
 
 ```sql
-sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 Argumenten: [ @stmt =] N ' statement_text '-Hiermee geeft u een Transact-SQL-instructie op waarmee kolom waarden worden geretourneerd die moeten worden gebruikt voor statistieken. U kunt TABLESAMPLE gebruiken om voor beelden van gegevens op te geven die moeten worden gebruikt. Als TABLESAMPLE niet is opgegeven, wordt FULLSCAN gebruikt.
@@ -666,7 +666,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT year
+EXEC sys.sp_create_openrowset_statistics N'SELECT year
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv'',
         FORMAT = ''CSV'',
@@ -698,7 +698,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -712,18 +712,18 @@ FROM OPENROWSET(
 Als u statistieken wilt bijwerken, moet u statistieken verwijderen en maken. De volgende opgeslagen procedure wordt gebruikt om statistieken neer te zetten:
 
 ```sql
-sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 > [!NOTE]
-> De naam van de procedure sp_drop_file_statistics wordt gewijzigd in sp_drop_openrowset_statistics. De rol van de open bare server heeft machtiging voor BULK bewerkingen beheren die is verleend terwijl de open bare databaserol uitvoer machtigingen heeft voor sp_create_file_statistics en sp_drop_file_statistics. Dit kan in de toekomst worden gewijzigd.
+> De volgende machtigingen zijn vereist om sp_create_openrowset_statistics en sp_drop_openrowset_statistics uit te voeren: BULK bewerkingen beheren of data base-BULK bewerkingen beheren.
 
 Argumenten: [ @stmt =] N ' statement_text '-Hiermee geeft u de Transact-SQL-instructie op die wordt gebruikt wanneer de statistieken zijn gemaakt.
 
 Als u de statistieken voor de kolom Year in de gegevensset, die is gebaseerd op het population.csv bestand, wilt bijwerken, moet u statistieken verwijderen en maken:
 
 ```sql
-EXEC sys.sp_drop_file_statistics N'SELECT payment_type
+EXEC sys.sp_drop_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -743,7 +743,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''

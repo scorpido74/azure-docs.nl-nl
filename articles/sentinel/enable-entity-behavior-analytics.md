@@ -14,16 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 4587ab5e2cf36dce65cd02b167656c88cfde10a1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096951"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148232"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>UEBA (User and entity Behavior Analytics) inschakelen in azure Sentinel 
 
-
+> [!IMPORTANT]
+>
+> - De UEBA-functie is nu **algemeen beschikbaar** in de volgende Azure Sentinel-geografische gebieden en regio's:
+>    - Verenigde Staten Geografie
+>    - Regio Oost-West
+>    - Geografie van Australië
+>
+> - In alle andere geografische gebieden en regio's blijft deze functie voor de tijd in de **open bare preview** en wordt er zonder Service Level Agreement. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +48,7 @@ Om deze functie in of uit te scha kelen (deze vereisten zijn niet vereist voor h
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>De analyse van gebruikers-en entiteits gedrag inschakelen
 
-1. Selecteer in het navigatie menu van de Azure-Sentinel het **item entiteit gedrag (preview-versie)** .
+1. Selecteer **entiteit gedrag** in het navigatie menu van de Azure-Sentinel.
 
 1. Schakel onder de kop **deze in** **op aan.**
 
