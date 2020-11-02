@@ -37,11 +37,13 @@
           href: onboard-service-principal.md
         - name: Machines verbinden met Azure Arc met PowerShell DSC
           href: onboard-dsc.md
+        - name: Computers verbinden vanuit het Windows Admin Center
+          href: onboard-windows-admin-center.md
         - name: Machines verbinden met Azure Arc met PowerShell
           href: onboard-powershell.md
     - name: Beheren
       items:
-        - name: Extensies voor Azure-VM's
+        - name: VM-extensies
           items:
             - name: Overzicht
               href: manage-vm-extensions.md

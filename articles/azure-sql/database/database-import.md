@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 06/20/2019
-ms.openlocfilehash: 08aaec23b0edc0e797d26d4b51081f6daa5b5c19
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/29/2020
+ms.openlocfilehash: 30a511caec82ead406f0a80f107e4261a707bfdb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671225"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040176"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Een BACPAC-bestand importeren in een database in Azure SQL Database of Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,9 +62,11 @@ Als u een database wilt migreren naar een [Azure SQL Managed Instance](../manage
 
 ## <a name="using-sqlpackage"></a>SqlPackage gebruiken
 
-Voor het importeren van een SQL Server-database met behulp van het opdrachtregelprogramma [SqlPackage](/sql/tools/sqlpackage) raadpleegt u [importparameters en -eigenschappen](/sql/tools/sqlpackage#import-parameters-and-properties). [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data Tools voor Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) bevatten SqlPackage. U kunt de nieuwste [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) ook downloaden uit het Microsoft Downloadcentrum.
+Voor het importeren van een SQL Server-database met behulp van het opdrachtregelprogramma [SqlPackage](/sql/tools/sqlpackage) raadpleegt u [importparameters en -eigenschappen](/sql/tools/sqlpackage#import-parameters-and-properties). [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data Tools voor Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) bevatten SqlPackage. U kunt de nieuwste [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) ook downloaden uit het Microsoft Downloadcentrum. 
 
 Voor schaalbaarheid en prestaties wordt u aangeraden in de meeste productieomgevingen SqlPackage te gebruiken in plaats van Azure Portal. Ga voor een blogartikel van het SQL Server-klantadviesteam over migratie met behulp van `BACPAC`-bestanden naar [migreren van SQL Server naar Azure SQL Database met BACPAC-bestanden](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
+
+Het op DTU gebaseerde inrichtingsmodel ondersteunt de waarden voor geselecteerde databases met een maximale grootte voor elke laag. Bij het importeren van een database [moet u een van deze ondersteunde waarden gebruiken](/sql/t-sql/statements/create-database-transact-sql). 
 
 Met de volgende SqlPackage-opdracht wordt de **AdventureWorks2008R2** -database uit de lokale opslag in een logische SQL-server met de naam **mynewserver20170403** geïmporteerd. Er wordt een nieuwe database gemaakt met de naam **myMigratedDatabase** met een **Premium** -servicelaag en een **P6** Service Objective. Wijzig deze waarden in waarden die geschikt zijn voor uw omgeving.
 
@@ -94,7 +96,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!IMPORTANT]
 > De module PowerShell Azure Resource Manager (RM) wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.
 
-Gebruik de [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)-cmdlet om een aanvraag voor het importeren van een database naar Azure te verzenden. Afhankelijk van de grootte van de database kan het enige tijd duren voordat de importbewerking is voltooid.
+Gebruik de [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)-cmdlet om een aanvraag voor het importeren van een database naar Azure te verzenden. Afhankelijk van de grootte van de database kan het enige tijd duren voordat de importbewerking is voltooid. Het op DTU gebaseerde inrichtingsmodel ondersteunt de waarden voor geselecteerde databases met een maximale grootte voor elke laag. Bij het importeren van een database [moet u een van deze ondersteunde waarden gebruiken](/sql/t-sql/statements/create-database-transact-sql). 
 
 ```powershell
 $importRequest = New-AzSqlDatabaseImport -ResourceGroupName "<resourceGroupName>" `
@@ -124,9 +126,9 @@ while ($importStatus.Status -eq "InProgress") {
 $importStatus
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Gebruik de opdracht [az-sql-db-import](/cli/azure/sql/db#az-sql-db-import) om een aanvraag voor het importeren van een database te verzenden naar Azure. Afhankelijk van de grootte van de database kan het enige tijd duren voordat de importbewerking is voltooid.
+Gebruik de opdracht [az-sql-db-import](/cli/azure/sql/db#az-sql-db-import) om een aanvraag voor het importeren van een database te verzenden naar Azure. Afhankelijk van de grootte van de database kan het enige tijd duren voordat de importbewerking is voltooid. Het op DTU gebaseerde inrichtingsmodel ondersteunt de waarden voor geselecteerde databases met een maximale grootte voor elke laag. Bij het importeren van een database [moet u een van deze ondersteunde waarden gebruiken](/sql/t-sql/statements/create-database-transact-sql). 
 
 ```azurecli
 # get the storage account key

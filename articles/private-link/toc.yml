@@ -37,6 +37,8 @@
       items:
         - name: Verbinding maken met een SQL-server - portal
           href: tutorial-private-endpoint-sql-portal.md
+        - name: Verbinding maken met een SQL-server - PowerShell
+          href: tutorial-private-endpoint-sql-powershell.md
 - name: Concepten
   items:
     - name: Privé-eindpunt

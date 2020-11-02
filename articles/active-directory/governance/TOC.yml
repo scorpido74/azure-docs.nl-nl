@@ -9,6 +9,8 @@
       href: entitlement-management-overview.md
     - name: Wat zijn toegangsbeoordelingen?
       href: access-reviews-overview.md
+    - name: Wat is identiteitslevenscyclusbeheer?
+      href: what-is-identity-lifecycle-management.md
 - name: Zelfstudies
   expanded: true
   items:
@@ -23,6 +25,16 @@
           href: entitlement-management-delegate.md
         - name: Proces en e-mailberichten aanvragen
           href: entitlement-management-process.md
+    - name: Identiteitslevenscyclusbeheer
+      items:
+        - name: Wat is inrichting?
+          href: what-is-provisioning.md
+        - name: Wat is inrichting op basis van HR?
+          href: what-is-hr-driven-provisioning.md
+        - name: Wat is app-inrichting?
+          href: what-is-app-provisioning.md
+        - name: Wat is directory-inrichting?
+          href: what-is-inter-directory-provisioning.md
     - name: Toegangsbeoordelingen
       items:
         - name: Gastentoegang beheren met beoordelingen

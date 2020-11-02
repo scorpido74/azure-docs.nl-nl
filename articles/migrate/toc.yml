@@ -166,6 +166,8 @@
           href: scale-physical-assessment.md
         - name: Migratie van een groot aantal VM's automatiseren
           href: how-to-migrate-at-scale.md
+        - name: Informatie over automatiseren van VMware-migratie
+          href: how-to-automate-migration.md
         - name: Migratievoorbeelden (Contoso-reeks)
           href: contoso-migration-overview.md
 - name: Problemen oplossen

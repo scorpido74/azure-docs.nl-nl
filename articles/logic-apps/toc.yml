@@ -101,7 +101,7 @@
           href: logic-apps-batch-process-send-receive-messages.md
         - name: Berichten in volgorde verzenden - sequentiële verwerking
           href: send-related-messages-sequential-convoy.md
-        - name: JSON-definities maken
+        - name: Werkstroomdefinities in JSON ontwerpen
           href: logic-apps-author-definitions.md
         - name: Inhoudstypen verwerken
           href: logic-apps-content-type.md
@@ -109,6 +109,8 @@
           href: logic-apps-exception-handling.md
         - name: Grote berichten verwerken
           href: logic-apps-handle-large-messages.md
+        - name: Langdurige opgeslagen procedures voor SQL-connector verwerken
+          href: handle-long-running-stored-procedures-sql-connector.md
         - name: Beperkingsfouten of 429-fouten verwerken
           href: handle-throttling-problems-429-errors.md
         - name: Aangepaste connectors ontwikkelen

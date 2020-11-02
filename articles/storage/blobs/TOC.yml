@@ -179,7 +179,7 @@
               href: storage-blob-rehydration.md
             - name: Prestatielagen
               href: storage-blob-performance-tiers.md
-            - name: De levenscyclus van Azure Blob-opslag beheren
+            - name: Levenscyclus van toegangslagen automatiseren
               href: storage-lifecycle-management-concepts.md
         - name: Herstel na noodgevallen en failover
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -367,7 +367,7 @@
                       href: storage-blob-user-delegation-sas-create-cli.md
                     - name: .NET
                       href: storage-blob-user-delegation-sas-create-dotnet.md
-                - name: Een service-SAS maken (.NET)
+                - name: Een service-SAS maken
                   href: storage-blob-service-sas-create-dotnet.md
                 - name: Een account-SAS maken (.NET)
                   href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

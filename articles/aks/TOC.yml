@@ -142,7 +142,7 @@
           href: upgrade-cluster.md
         - name: SLA voor uptime gebruiken
           href: uptime-sla.md
-        - name: Nabijheidsplaatsingsgroepen gebruiken (preview)
+        - name: Nabijheidsplaatsingsgroepen gebruiken
           href: reduce-latency-ppg.md
         - name: De knooppuntkopie upgraden
           href: node-image-upgrade.md
@@ -166,7 +166,7 @@
           items:
             - name: Meerdere knooppuntgroepen gebruiken
               href: use-multiple-node-pools.md
-            - name: Spotknooppuntpools gebruiken (preview-versie)
+            - name: Spotknooppuntpools gebruiken
               href: spot-node-pool.md
             - name: Systeemknooppuntpools gebruiken
               href: use-system-pools.md

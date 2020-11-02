@@ -1,15 +1,17 @@
 - name: Overzicht
   href: overview.md
-- name: Red Hat-quickstarts
-  items: null
-- name: Quickstart - WildFly in CentOS
-  href: wildfly-on-centos.md
 - name: Red Hat Enterprise Linux-installatiekopieën (RHEL)
   items:
-    - name: Overzicht van Red Hat Enterprise Linux-installatiekopieën
+    - name: Overzicht RHEL-installatiekopieën
       href: redhat-images.md
-    - name: Lijst met Red Hat Enterprise Linux-installatiekopieën
+    - name: Lijst RHEL-installatiekopieën
       href: redhat-imagelist.md
+- name: Red Hat Java-snelstartgidsen
+  items:
+    - name: JBoss EAP + RHEL op VM/VMSS
+      href: jboss-eap-on-rhel.md
+    - name: WildFly + CentOS op VM
+      href: wildfly-on-centos.md
 - name: Update-infrastructuur voor Red Hat in Azure
   href: redhat-rhui.md
 - name: Aanbieding voor Red Hat Enterprise Linux BYOS-installatiekopieën

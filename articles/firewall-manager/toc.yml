@@ -28,6 +28,8 @@
       href: deployment-overview.md
     - name: Beveiligingspartnerproviders
       href: trusted-security-partners.md
+    - name: Hubs beveiligen met Check Point Cloudguard Connect
+      href: check-point-overview.md
     - name: IP-groepen
       href: ip-groups.md
     - name: Logica voor verwerking van regels
