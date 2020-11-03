@@ -1,17 +1,17 @@
 ---
 title: Infra structuur dubbele versleuteling-Azure Database for PostgreSQL
 description: Meer informatie over het gebruik van een infra structuur met dubbele versleuteling om een tweede laag versleuteling toe te voegen met een door service beheerde sleutels.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: d3a3582891ab3d3e4bfb53cbba0c0b2826cba56b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 03d52611c89012d1132b4a27820f7f47e6cdd512
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123351"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242021"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Dubbele versleuteling van Azure Database for PostgreSQL-infra structuur
 
@@ -63,7 +63,7 @@ Voor Azure Database for PostgreSQL heeft de ondersteuning voor infra structuur m
 
    * VS - oost
    * VS - zuid-centraal
-   * VS - west 2
+   * US - west 2
    
 * Deze functie wordt alleen ondersteund in regio's en servers, die ondersteuning bieden voor opslag tot Maxi maal 16 TB. Raadpleeg de [opslag documentatie](concepts-pricing-tiers.md#storage)voor de lijst met Azure-regio's die ondersteuning bieden voor opslag tot 16 TB.
 

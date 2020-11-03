@@ -3,12 +3,12 @@ title: CI/CD met Azure-pijp lijnen en-sjablonen
 description: Hierin wordt beschreven hoe u doorlopende integratie in azure-pijp lijnen configureert met behulp van Azure Resource Manager sjablonen. U ziet hoe u een Power shell-script gebruikt of bestanden kopieert naar een faserings locatie en vanaf daar implementeert.
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653397"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233811"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Resource Manager-sjablonen integreren met Azure-pijplijnen
 
@@ -16,17 +16,17 @@ U kunt Azure Resource Manager sjablonen (ARM-sjablonen) integreren met Azure-pij
 
 In dit artikel leert u twee meer manieren om sjablonen te implementeren met Azure-pijp lijnen. In dit artikel wordt beschreven hoe u:
 
-* **Voeg een taak toe die een Azure PowerShell script uitvoert**. Deze optie biedt het voor deel dat u binnen de levens cyclus van de ontwikkeling consistentie krijgt, omdat u hetzelfde script kunt gebruiken dat u hebt gebruikt bij het uitvoeren van lokale tests. Uw script implementeert de sjabloon, maar kan ook andere bewerkingen uitvoeren, zoals het ophalen van waarden die worden gebruikt als para meters.
+* **Voeg een taak toe die een Azure PowerShell script uitvoert** . Deze optie biedt het voor deel dat u binnen de levens cyclus van de ontwikkeling consistentie krijgt, omdat u hetzelfde script kunt gebruiken dat u hebt gebruikt bij het uitvoeren van lokale tests. Uw script implementeert de sjabloon, maar kan ook andere bewerkingen uitvoeren, zoals het ophalen van waarden die worden gebruikt als para meters.
 
    Visual Studio biedt het [Azure-resource groeps project](create-visual-studio-deployment-project.md) dat een Power shell-script bevat. Het script faseert artefacten van uw project naar een opslag account dat door Resource Manager kan worden geopend. Artefacten zijn items in uw project, zoals gekoppelde sjablonen, scripts en binaire bestanden voor toepassingen. Als u het script van het project wilt blijven gebruiken, gebruikt u de Power shell-script taak die in dit artikel wordt weer gegeven.
 
-* **Voeg taken toe om taken te kopiëren en te implementeren**. Deze optie biedt een handig alternatief voor het project script. U configureert twee taken in de pijp lijn. Met een taak worden de artefacten op een toegankelijke locatie faseert. De andere taak implementeert de sjabloon vanaf die locatie.
+* **Voeg taken toe om taken te kopiëren en te implementeren** . Deze optie biedt een handig alternatief voor het project script. U configureert twee taken in de pijp lijn. Met een taak worden de artefacten op een toegankelijke locatie faseert. De andere taak implementeert de sjabloon vanaf die locatie.
 
 ## <a name="prepare-your-project"></a>Uw project voorbereiden
 
 In dit artikel wordt ervan uitgegaan dat uw ARM-sjabloon en Azure DevOps-organisatie klaar zijn voor het maken van de pijp lijn. De volgende stappen laten zien hoe u ervoor kunt zorgen dat u klaar bent:
 
-* U hebt een Azure DevOps-organisatie. Als u er nog geen hebt, [maakt u er gratis een](/azure/devops/pipelines/get-started/pipelines-sign-up). Als uw team al een Azure DevOps-organisatie heeft, zorg er dan voor dat u een beheerder bent van het Azure DevOps-project dat u wilt gebruiken.
+* U hebt een Azure DevOps-organisatie. Als u dit niet hebt, [kunt u er gratis een maken](/azure/devops/pipelines/get-started/pipelines-sign-up). Als uw team al een Azure DevOps-organisatie heeft, zorg er dan voor dat u een beheerder bent van het Azure DevOps-project dat u wilt gebruiken.
 
 * U hebt een [service verbinding](/azure/devops/pipelines/library/connect-to-azure) met uw Azure-abonnement geconfigureerd. De taken in de pijp lijn worden uitgevoerd onder de identiteit van de Service-Principal. Zie [een DevOps-project maken](deployment-tutorial-pipeline.md#create-a-devops-project)voor de stappen voor het maken van de verbinding.
 
@@ -34,11 +34,11 @@ In dit artikel wordt ervan uitgegaan dat uw ARM-sjabloon en Azure DevOps-organis
 
 ## <a name="create-pipeline"></a>Pijplijn maken
 
-1. Als u nog geen pijp lijn hebt toegevoegd, moet u een nieuwe pijp lijn maken. Selecteer in uw Azure DevOps-organisatie **pijp lijnen** en **nieuwe pijp lijn**.
+1. Als u nog geen pijp lijn hebt toegevoegd, moet u een nieuwe pijp lijn maken. Selecteer in uw Azure DevOps-organisatie **pijp lijnen** en **nieuwe pijp lijn** .
 
    ![Nieuwe pijp lijn toevoegen](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. Geef op waar de code wordt opgeslagen. In de volgende afbeelding ziet u hoe u **Azure opslag plaatsen Git**selecteert.
+1. Geef op waar de code wordt opgeslagen. In de volgende afbeelding ziet u hoe u **Azure opslag plaatsen Git** selecteert.
 
    ![Code bron selecteren](./media/add-template-to-azure-pipelines/select-source.png)
 
@@ -46,13 +46,13 @@ In dit artikel wordt ervan uitgegaan dat uw ARM-sjabloon en Azure DevOps-organis
 
    ![Opslag plaats selecteren](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. Selecteer het type pijp lijn dat u wilt maken. U kunt een **starter pijp lijn**selecteren.
+1. Selecteer het type pijp lijn dat u wilt maken. U kunt een **starter pijp lijn** selecteren.
 
    ![Pijp lijn selecteren](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
 U kunt een Azure PowerShell-taak of het kopieer bestand toevoegen en taken implementeren.
 
-## <a name="azure-powershell-task"></a>Azure PowerShell taak
+## <a name="azure-powershell-task"></a>Azure PowerShell-taak
 
 In deze sectie wordt uitgelegd hoe u doorlopende implementatie kunt configureren met één taak die het Power shell-script in uw project uitvoert. Zie [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) of [Deploy-AzureResourceGroup.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzureResourceGroup.ps1)als u een Power shell-script nodig hebt dat een sjabloon implementeert.
 
@@ -70,7 +70,7 @@ steps:
   inputs:
     azureSubscription: 'script-connection'
     ScriptType: 'FilePath'
-    ScriptPath: './Deploy-Template.ps1'
+    ScriptPath: './Deploy-AzTemplate.ps1'
     ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
     azurePowerShellVersion: 'LatestVersion'
 ```
@@ -101,7 +101,7 @@ ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-Wanneer u **Opslaan**selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
+Wanneer u **Opslaan** selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
 
 ![Resultaten weergeven](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -226,7 +226,7 @@ steps:
     deploymentName: 'deploy1'
 ```
 
-Wanneer u **Opslaan**selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
+Wanneer u **Opslaan** selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
 
 ## <a name="next-steps"></a>Volgende stappen
 

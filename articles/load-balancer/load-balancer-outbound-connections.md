@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 422f8106ac52c85f0680d54e420d0f1b4d326910
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 185bb47677e978a3098f39024995da6399f90658
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017689"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241766"
 ---
 # <a name="outbound-proxy-azure-load-balancer"></a>Azure Load Balancer van uitgaande proxy
 
 Een Azure-load balancer kan worden gebruikt als een proxy voor uitgaande Internet verbinding. De load balancer biedt de uitgaande verbinding voor de back-end-exemplaren. 
 
-Deze configuratie maakt gebruik van **bron Network Address Translation (SNAT)**. SNAT schrijft het IP-adres van de back-end naar het open bare IP-adres van uw load balancer. 
+Deze configuratie maakt gebruik van **bron Network Address Translation (SNAT)** . SNAT schrijft het IP-adres van de back-end naar het open bare IP-adres van uw load balancer. 
 
 SNAT maakt **IP-maskering** van het back-end-exemplaar mogelijk. Hierdoor wordt voor komen dat externe bronnen een direct adres hebben voor de back-end-exemplaren. 
 
@@ -42,9 +42,9 @@ Als een poort wordt gebruikt voor binnenkomende verbindingen, heeft deze een **l
 
 Als u een uitgaande verbinding wilt maken, moet u een **tijdelijke poort** gebruiken om de bestemming aan te bieden met een poort waarop u een afzonderlijke verkeers stroom wilt communiceren en onderhouden. 
 
-Elk IP-adres heeft 65.535 poorten. De eerste 1024-poorten zijn gereserveerd als **systeem poorten**. Elke poort kan worden gebruikt voor binnenkomende of uitgaande verbindingen voor TCP en UDP. 
+Elk IP-adres heeft 65.535 poorten. De eerste 1024-poorten zijn gereserveerd als **systeem poorten** . Elke poort kan worden gebruikt voor binnenkomende of uitgaande verbindingen voor TCP en UDP. 
 
-Van de resterende poorten biedt Azure 64.000 voor gebruik als **tijdelijke poorten**. Wanneer een IP-adres wordt toegevoegd als een front-end-IP-configuratie, kunnen deze tijdelijke poorten worden gebruikt voor SNAT.
+Van de resterende poorten biedt Azure 64.000 voor gebruik als **tijdelijke poorten** . Wanneer een IP-adres wordt toegevoegd als een front-end-IP-configuratie, kunnen deze tijdelijke poorten worden gebruikt voor SNAT.
 
 Via uitgaande regels kunnen deze SNAT-poorten worden gedistribueerd naar back-end-exemplaren zodat ze de open bare IP ('s) van de load balancer voor uitgaande verbindingen delen.
 
@@ -52,7 +52,7 @@ Netwerken op de host voor elk back-end-exemplaar doen SNAT naar pakketten die de
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Poorten uitgeputen
 
-Elke verbinding met hetzelfde doel-IP-adres en deze doel poort maakt gebruik van een SNAT-poort. Deze verbinding houdt een afzonderlijke **verkeers stroom** bij van het back-end-exemplaar of de **client** naar een **Server**. Dit proces geeft de server een afzonderlijke poort waarop verkeer kan worden geadresseerd. Zonder dit proces is de client computer niet op de hoogte van welke stroom een pakket deel uitmaakt.
+Elke verbinding met hetzelfde doel-IP-adres en deze doel poort maakt gebruik van een SNAT-poort. Deze verbinding houdt een afzonderlijke **verkeers stroom** bij van het back-end-exemplaar of de **client** naar een **Server** . Dit proces geeft de server een afzonderlijke poort waarop verkeer kan worden geadresseerd. Zonder dit proces is de client computer niet op de hoogte van welke stroom een pakket deel uitmaakt.
 
 Stel dat u meerdere browsers gaat https://www.microsoft.com :
 
@@ -84,7 +84,7 @@ In de volgende <a name="snatporttable"></a> tabel ziet u de SNAT-poort voortoewi
 
 | Pool grootte (VM-exemplaren) | Vooraf toegewezen SNAT-poorten per IP-configuratie |
 | --- | --- |
-| 1-50 | 1.024 |
+| 1-50 | 1\.024 |
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
@@ -92,7 +92,7 @@ In de volgende <a name="snatporttable"></a> tabel ziet u de SNAT-poort voortoewi
 | 801-1000 | 32 | 
 
 >[!NOTE]
-> Als u een back-end-groep hebt met een maximale grootte van 6, kan elke instantie 64000/10 = 6.400 poorten bevatten als u een expliciete uitgaande regel definieert. Volgens de bovenstaande tabel is er slechts 1.024 als u automatische toewijzing kiest.
+> Als u een back-end-groep hebt met een maximale grootte van 10, kan elke instantie 64000/10 = 6.400 poorten bevatten als u een expliciete uitgaande regel definieert. Volgens de bovenstaande tabel is er slechts 1.024 als u automatische toewijzing kiest.
 
 ## <a name="outbound-rules-and-virtual-network-nat"></a><a name="outboundrules"></a> Uitgaande regels en Virtual Network NAT
 

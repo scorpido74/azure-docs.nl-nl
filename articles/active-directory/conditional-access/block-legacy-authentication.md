@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c3107be1c36f1c15a1bcb27c5e0dcf851cfb946
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145531"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233794"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Procedure: verouderde verificatie naar Azure AD blok keren met voorwaardelijke toegang   
 
@@ -60,7 +60,7 @@ In deze sectie wordt uitgelegd hoe u een beleid voor voorwaardelijke toegang con
 
 De volgende opties worden beschouwd als verouderde verificatie protocollen
 
-- Geverifieerde SMTP: wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.
+- Geverifieerde SMTP: wordt gebruikt door POP-en IMAP-clients voor het verzenden van e-mail berichten.
 - Automatische detectie: wordt door Outlook-en EAS-clients gebruikt om post vakken in Exchange Online te vinden en er verbinding mee te maken.
 - Exchange ActiveSync (EAS): wordt gebruikt om verbinding te maken met post vakken in Exchange Online.
 - Exchange Online Power shell: wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.
@@ -80,8 +80,8 @@ Zie voor meer informatie over deze verificatie protocollen en-services [aanmeldi
 
 Voordat u verouderde verificatie in uw Directory kunt blok keren, moet u eerst begrijpen of uw gebruikers apps hebben die gebruikmaken van verouderde verificatie en hoe dit van invloed is op uw algemene Directory. Aanmeld logboeken van Azure AD kunnen worden gebruikt om te begrijpen of u gebruikmaakt van verouderde verificatie.
 
-1. Navigeer naar het **Azure Portal**  >  **Azure Active Directory**  >  **-Azure Active Directory aanmeldingen**.
-1. Voeg de kolom client toepassing toe als deze niet wordt weer gegeven door te klikken op de client-app **Columns**  >  **Client App**.
+1. Navigeer naar het **Azure Portal**  >  **Azure Active Directory**  >  **-Azure Active Directory aanmeldingen** .
+1. Voeg de kolom client toepassing toe als deze niet wordt weer gegeven door te klikken op de client-app **Columns**  >  **Client App** .
 1. **Filters toevoegen**  >  **Client-App** > alle verouderde verificatie protocollen selecteren. Selecteer buiten het dialoog venster filteren om uw selecties toe te passen en sluit het dialoog venster.
 
 Bij filteren worden alleen de aanmeldings pogingen weer gegeven die zijn gemaakt door verouderde verificatie protocollen. Als u op elke afzonderlijke aanmeldings poging klikt, wordt er meer informatie weer gegeven. In het veld **client-app** onder het tabblad **basis informatie** wordt aangegeven welk verouderde verificatie protocol is gebruikt.
@@ -97,7 +97,7 @@ Er zijn twee manieren om het beleid voor voorwaardelijke toegang te gebruiken om
  
 ### <a name="directly-blocking-legacy-authentication"></a>Verouderde verificatie rechtstreeks blok keren
 
-De eenvoudigste manier om verouderde verificatie voor uw hele organisatie te blok keren, is door een beleid voor voorwaardelijke toegang te configureren dat specifiek van toepassing is op verouderde authenticatie clients en de toegang blokkeert. Wanneer u gebruikers en toepassingen aan het beleid toewijst, moet u ervoor zorgen dat u gebruikers en service accounts uitsluit die nog moeten worden aangemeld met verouderde verificatie. Configureer de client-apps voor waarde door **Exchange ActiveSync-clients** en **andere clients**te selecteren. Als u de toegang voor deze client-Apps wilt blok keren, configureert u de toegangs elementen om de toegang te blok keren.
+De eenvoudigste manier om verouderde verificatie voor uw hele organisatie te blok keren, is door een beleid voor voorwaardelijke toegang te configureren dat specifiek van toepassing is op verouderde authenticatie clients en de toegang blokkeert. Wanneer u gebruikers en toepassingen aan het beleid toewijst, moet u ervoor zorgen dat u gebruikers en service accounts uitsluit die nog moeten worden aangemeld met verouderde verificatie. Configureer de client-apps voor waarde door **Exchange ActiveSync-clients** en **andere clients** te selecteren. Als u de toegang voor deze client-Apps wilt blok keren, configureert u de toegangs elementen om de toegang te blok keren.
 
 ![Voor waarde voor client-apps geconfigureerd om verouderde auth te blok keren](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 

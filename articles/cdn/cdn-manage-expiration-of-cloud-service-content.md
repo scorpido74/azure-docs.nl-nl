@@ -15,12 +15,12 @@ ms.custom: devx-track-csharp
 ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
-ms.openlocfilehash: fefa19e8dfee295d34231d36df079b80d1e82768
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778588"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240967"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Verlooptijd van webinhoud in Azure CDN beheren
 > [!div class="op_single_selector"]
@@ -73,9 +73,9 @@ De voorkeurs methode voor het instellen van de koptekst van een webserver `Cache
 
 1. Maak onder **regels voor aangepaste caching** twee match-voor waarden:
 
-     a. Voor de eerste match-voor waarde stelt u de voor **waarde match** in op **Path** en voert u in `/webfolder1/*` voor de **waarde match** . Stel **caching-gedrag** in op **overschrijven** en voer 4 in het vak **uren** in.
+     a. Voor de eerste match-voor waarde stelt u de voor **waarde match** in op **Path** en voert u in `/webfolder1/*` voor de **waarde match** . Stel **caching-gedrag** in op **overschrijven** en voer 4 in het vak **dagen** in.
 
-     b. Voor de tweede voor waarde match stelt u de voor waarde **match** in op **Path** en voert u in `/webfolder1/file1.txt` voor de **waarde match** . Stel **caching-gedrag** in op **overschrijven** en voer 2 in het vak **uren** in.
+     b. Voor de tweede voor waarde match stelt u de voor waarde **match** in op **Path** en voert u in `/webfolder1/file1.txt` voor de **waarde match** . Stel **caching-gedrag** in op **overschrijven** en voer 2 in het vak **dagen** in.
 
     ![Voor beeld van regels voor aangepaste CDN-caching](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 

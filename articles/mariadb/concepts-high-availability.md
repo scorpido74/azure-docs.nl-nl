@@ -1,17 +1,17 @@
 ---
 title: Hoge Beschik baarheid-Azure Database for MariaDB
 description: In dit artikel vindt u informatie over hoge Beschik baarheid in Azure Database for MariaDB
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: bea32b3b60c9013ea223513c95629092b9ab231b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dcb1ac7ce4b468374993c11578bce553f766a42
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203322"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241341"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>Hoge Beschik baarheid in Azure Database for MariaDB
 De Azure Database for MariaDB-service biedt een gegarandeerd hoog niveau van Beschik baarheid met de SLA (financieel ondersteunde service level agreement) van [99,99%](https://azure.microsoft.com/support/legal/sla/MariaDB) uptime. Azure Database for MariaDB biedt een hoge Beschik baarheid tijdens geplande gebeurtenissen, zoals de initated van de gebruiker en ook wanneer niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten, optreden. Azure Database for MariaDB kan snel van de meeste kritieke omstandigheden worden hersteld, waardoor er bijna geen toepassings tijd meer is bij het gebruik van deze service.
@@ -24,7 +24,7 @@ Azure Database for MariaDB is geschikt voor het uitvoeren van essentiële data b
 | ------------ | ----------- |
 | <b>MariaDB-database server | Azure Database for MariaDB biedt beveiliging, isolatie, bron beveiligingen en de mogelijkheid om snel opnieuw op te starten voor database servers. Deze mogelijkheden vergemakkelijken bewerkingen zoals schalen en database server herstel na een onderbreking in enkele seconden. <br/> Gegevens wijzigingen in de database server worden meestal uitgevoerd in de context van een database transactie. Alle database wijzigingen worden synchroon vastgelegd in de vorm van write-Ahead Logboeken (ib_log) op Azure Storage, die is gekoppeld aan de database server. Tijdens het database [controlepunt](https://mariadb.com/kb/innodb-redo-log/#checkpoints) proces worden gegevens pagina's van het database server geheugen ook naar de opslag leeg gemaakt. |
 | <b>Externe opslag | Alle fysieke gegevens bestanden en logboek bestanden van MariaDB worden opgeslagen op Azure Storage, die is ontworpen voor het opslaan van drie kopieën van gegevens binnen een regio om gegevens redundantie, Beschik baarheid en betrouw baarheid te garanderen. De opslaglaag is ook onafhankelijk van de database server. Dit kan binnen een paar seconden worden losgekoppeld van een mislukte database server en opnieuw worden gekoppeld aan een nieuwe database server. Azure Storage doorlopend monitors voor eventuele opslag fouten. Als een blok beschadiging wordt gedetecteerd, wordt dit automatisch opgelost door een nieuwe opslag kopie te instantiëren. |
-| <b>#B0 | De gateway fungeert als een database proxy, stuurt alle client verbindingen naar de database server. |
+| <b>Gateway | De gateway fungeert als een database proxy, stuurt alle client verbindingen naar de database server. |
 
 ## <a name="planned-downtime-mitigation"></a>Geplande downtime van uitval tijd
 Azure Database for MariaDB is ontworpen om hoge Beschik baarheid te bieden tijdens geplande downtime. 

@@ -1,17 +1,17 @@
 ---
 title: Open bare toegang tot het netwerk weigeren-Azure Portal-Azure Database for MariaDB
 description: Meer informatie over het configureren van toegang tot open bare netwerken met behulp van Azure Portal voor uw Azure Database for MariaDB
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: f33dbfa0b96d7f6d85443005ff7e8b1a780c75a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3117ebfd258c72bb97432871c2ea74d30c52f669
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104381"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242187"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Open bare netwerk toegang in Azure Database for MariaDB weigeren met Azure Portal
 
@@ -29,7 +29,7 @@ Voer de volgende stappen uit om de MariaDB-server in te stellen voor toegang tot
 
 1. Selecteer in de [Azure Portal](https://portal.azure.com/)uw bestaande Azure database for MariaDB-server.
 
-1. Klik op de pagina MariaDB-server onder **instellingen**op **verbindings beveiliging** om de pagina verbindings beveiliging configureren te openen.
+1. Klik op de pagina MariaDB-server onder **instellingen** op **verbindings beveiliging** om de pagina verbindings beveiliging configureren te openen.
 
 1. Selecteer in open bare netwerk toegang weigeren de optie **Ja** om open bare toegang voor uw MariaDB-server in te scha kelen.
 

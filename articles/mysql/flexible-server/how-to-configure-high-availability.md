@@ -1,18 +1,18 @@
 ---
 title: Zone redundante hoge Beschik baarheid beheren-Azure Portal-Azure Database for MySQL flexibele server
 description: In dit artikel wordt beschreven hoe u via de Azure Portal zone redundante hoge Beschik baarheid kunt in-of uitschakelen in Azure Database for MySQL flexibele server.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 09cd7428519cbf84c785efa16b61b9507a3c0b94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936659"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241732"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Zone redundante hoge Beschik baarheid beheren in Azure Database for MySQL flexibele server (preview-versie)
 
@@ -32,18 +32,18 @@ Deze pagina bevat richt lijnen voor het in-of uitschakelen van hoge Beschik baar
 
 Deze sectie bevat specifieke informatie over HA-gerelateerde velden. U kunt deze stappen volgen om hoge Beschik baarheid te implementeren tijdens het maken van uw flexibele server.
 
-1.  Kies in het [Azure Portal](https://portal.azure.com/)flexibele server en klik op **maken**.  Zie How-to-documentatie voor het maken van een server voor meer informatie over het invullen van details zoals **abonnement**, **resource groep**, **Server naam**, **regio**en andere velden.
+1.  Kies in het [Azure Portal](https://portal.azure.com/)flexibele server en klik op **maken** .  Zie How-to-documentatie voor het maken van een server voor meer informatie over het invullen van details zoals **abonnement** , **resource groep** , **Server naam** , **regio** en andere velden.
 
 2.  Klik op het selectie vakje voor de **zone redundant hoge Beschik baarheid** in de optie Beschik baarheid.
 
-3.  Als u de standaard Compute en opslag wilt wijzigen, klikt u op  **server configureren**.
+3.  Als u de standaard Compute en opslag wilt wijzigen, klikt u op  **server configureren** .
 
 4.  Als de optie hoge Beschik baarheid is ingeschakeld, is de Burstable-laag niet beschikbaar om te kiezen. U kunt kiezen voor **algemeen gebruik** of op **geheugen geoptimaliseerde** reken lagen.
 
     > [!IMPORTANT]
-    > We ondersteunen alleen zoneloze hoge Beschik baarheid voor de prijs categorie voor ***algemeen gebruik*** en ***geoptimaliseerd voor geheugen*** .
+    > We bieden alleen ondersteuning voor zone redundante hoge Beschik baarheid voor de prijs categorie voor *_algemeen gebruik_* en _*_geoptimaliseerd voor geheugen_*_ .
 
-5.  Selecteer de **reken grootte** voor uw keuze in de vervolg keuzelijst.
+5.  Selecteer in de vervolg keuzelijst de _ *reken grootte* * voor uw keuze.
 
 6.  Selecteer **opslag grootte** in GiB met behulp van de schuif balk en selecteer de **Bewaar periode voor back-ups** tussen 7 dagen en 35 dagen.   
 
@@ -51,11 +51,11 @@ Deze sectie bevat specifieke informatie over HA-gerelateerde velden. U kunt deze
 
 Volg deze stappen om maximale Beschik baarheid uit te scha kelen voor uw flexibele server die al is geconfigureerd met zone redundantie.
 
-1.  Selecteer uw bestaande Azure Database for MySQL flexibele server in de [Azure Portal](https://portal.azure.com/).
+1.  Selecteer uw bestaande Azure Database for MySQL flexibele server in de [Azure Portal](https://portal.azure.com/).
 
-2.  Klik op de pagina flexibele server op het voor paneel op **hoge Beschik baarheid** om de pagina hoge Beschik baarheid te openen.
+2.  Klik op de pagina flexibele server op het voor paneel op **hoge Beschik baarheid** om de pagina hoge Beschik baarheid te openen.
 
-3.  Klik op het selectie vakje **redundante maximale Beschik baarheid van zone** om de optie uit te scha kelen en klik op **Opslaan**   om de wijziging op te slaan.
+3.  Klik op het selectie vakje **redundante maximale Beschik baarheid van zone** om de optie uit te scha kelen en klik op **Opslaan** om de wijziging op te slaan.
 
 4.  Er wordt een bevestigings venster weer gegeven waarin u het uitschakelen van HA kunt bevestigen.
 
@@ -66,4 +66,4 @@ Volg deze stappen om maximale Beschik baarheid uit te scha kelen voor uw flexibe
 ## <a name="next-steps"></a>Volgende stappen
 
 -   Meer informatie over [bedrijfs continuïteit](./concepts-business-continuity.md)
--   Meer informatie over [zone redundante hoge Beschik baarheid](./concepts-high-availability.md)
+-   Meer informatie over [zone redundante hoge Beschik baarheid](./concepts-high-availability.md)

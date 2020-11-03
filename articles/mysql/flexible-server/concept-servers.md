@@ -1,17 +1,17 @@
 ---
 title: Server concepten-Azure Database for MySQL flexibele server
 description: In dit onderwerp vindt u overwegingen en richt lijnen voor het werken met Azure Database for MySQL flexibele server
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 7217817e9add6214c2da8362a2769cad0c2cf330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936164"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240746"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Server concepten in Azure Database for MySQL flexibele server (preview-versie)
 
@@ -59,6 +59,6 @@ U kunt Azure Database for MySQL flexibele server beheren door gebruik te maken v
 
 ## <a name="next-steps"></a>Volgende stappen
 
--   Meer informatie over het maken van een [Server](./quickstart-create-server-portal.md)
+-   Meer informatie over het maken van een [Server](./quickstart-create-server-portal.md)
 -   Meer informatie over [controle en waarschuwingen](./how-to-alert-on-metric.md)
 

@@ -1,17 +1,17 @@
 ---
 title: Overzicht van bedrijfs continuïteit-Azure Database for MySQL flexibele server
 description: Meer informatie over de concepten van bedrijfs continuïteit met Azure Database for MySQL flexibele server
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 833031a787f8571a8f8aea8e536410d4abcca298
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c29e952e22aaccf31c10de8f6e16d240b4660a23
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546412"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240712"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Overzicht van bedrijfs continuïteit met Azure Database for MySQL-flexibele server (preview-versie)
 

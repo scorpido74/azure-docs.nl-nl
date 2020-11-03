@@ -1,17 +1,17 @@
 ---
 title: Infra structuur dubbele versleuteling-Azure Portal-Azure Database for MySQL
 description: Meer informatie over het instellen en beheren van een infra structuur met dubbele versleuteling voor uw Azure Database for MySQL.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: eafad5edf9dcac5745986d09060baf7e4278762d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903982"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241749"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Infra structuur dubbele versleuteling voor Azure Database for MySQL
 
@@ -27,7 +27,7 @@ Volg deze stappen voor het maken van een Azure Database for MySQL server met dub
 
 1. Selecteer in de linkerbovenhoek van de portal **Een resource maken** (+).
 
-2. Selecteer **Databases** > **Azure Database voor MySQL**. U kunt ook **MySQL** in het zoekvak typen om de service te vinden.
+2. Selecteer **Databases** > **Azure Database voor MySQL** . U kunt ook **MySQL** in het zoekvak typen om de service te vinden.
 
    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="De optie Azure Database for MySQL":::
 
@@ -52,7 +52,7 @@ In dit voor beeld wordt een resource groep `myresourcegroup` met de naam op de `
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
-In het volgende voorbeeld wordt een MySQL 5.7-server in VS - west gemaakt met de naam `mydemoserver` in uw resourcegroep `myresourcegroup` met aanmeldgegevens van de serverbeheerder `myadmin`. Dit is een **Gen 4-server voor ** **Algemeen gebruik** met **twee vCores**. Er is ook een infra structuur met dubbele versleuteling ingeschakeld voor de server die is gemaakt. Vervang het `<server_admin_password>` door uw eigen waarde.
+In het volgende voorbeeld wordt een MySQL 5.7-server in VS - west gemaakt met de naam `mydemoserver` in uw resourcegroep `myresourcegroup` met aanmeldgegevens van de serverbeheerder `myadmin`. Dit is een **Gen 4-server voor** **Algemeen gebruik** met **twee vCores** . Er is ook een infra structuur met dubbele versleuteling ingeschakeld voor de server die is gemaakt. Vervang het `<server_admin_password>` door uw eigen waarde.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7 --infrastructure-encryption <Enabled/Disabled>

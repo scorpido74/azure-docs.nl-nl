@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: c768f6564884ade5d27199a64843437f5ce725f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a594d06fa84bb6e5ef502b02e1bec8244062ccb
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019152"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233964"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Certificaten exporteren uit Azure Key Vault
 
@@ -33,8 +33,8 @@ Wanneer er een Key Vault-certificaat wordt gemaakt, worden er ook een adresseerb
 
 Nadat een Key Vault-certificaat is gemaakt, kan het worden opgehaald uit het adresseerbare geheim met de privésleutel. Haal het certificaat op in PFX- of PEM-indeling.
 
-- **Exporteerbaar**: Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel exporteerbaar is.
-- **Niet-exporteerbaar**: Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel niet-exporteerbaar is. In dit geval maakt de persoonlijke sleutel geen deel uit van de waarde wanneer deze wordt opgehaald als geheim.
+- **Exporteerbaar** : Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel exporteerbaar is.
+- **Niet-exporteerbaar** : Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel niet-exporteerbaar is. In dit geval maakt de persoonlijke sleutel geen deel uit van de waarde wanneer deze wordt opgehaald als geheim.
 
 Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) genoemd) Exporteren is alleen toegestaan met RSA, EC. HSM-sleutels zouden niet exporteerbaar zijn.
 
@@ -79,34 +79,42 @@ Zie [parameterdefinities](https://docs.microsoft.com/cli/azure/keyvault/secret?v
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Gebruik deze opdracht in Azure PowerShell om het certificaat de naam **TestCert01** te geven vanuit de sleutelkluis met de naam **ContosoKV01**. Voer de volgende opdracht uit om het certificaat als PFX-bestand te downloaden. Met deze opdrachten krijgt u toegang tot **SecretId** en kunt u de inhoud opslaan als een PFX-bestand.
+Gebruik deze opdracht in Azure PowerShell om het certificaat de naam **TestCert01** te geven vanuit de sleutelkluis met de naam **ContosoKV01** . Voer de volgende opdracht uit om het certificaat als PFX-bestand te downloaden. Met deze opdrachten krijgt u toegang tot **SecretId** en kunt u de inhoud opslaan als een PFX-bestand.
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-$kvSecret = Get-AzKeyVaultSecret -VaultName "ContosoKV01" -Name $Cert.Name
-$kvSecretBytes = [System.Convert]::FromBase64String($kvSecret.SecretValueText)
-$certCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
-$certCollection.Import($kvSecretBytes,$null,[System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
-$password = '******'
-$protectedCertificateBytes = $certCollection.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $password)
-$pfxPath = [Environment]::GetFolderPath("Desktop") + "\MyCert.pfx"
-[System.IO.File]::WriteAllBytes($pfxPath, $protectedCertificateBytes)
+$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secretValueText = '';
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+$secretByte = [Convert]::FromBase64String($secretValueText)
+$x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
+$x509Cert.Import($secretByte, "", "Exportable,PersistKeySet")
+$type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx
+$pfxFileByte = $x509Cert.Export($type, $password)
+
+# Write to a file
+[System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
 ```
 
 Met deze opdracht wordt de hele keten met certificaten met een persoonlijke sleutel geëxporteerd. Het certificaat is beveiligd met een wachtwoord.
-Zie [Get-AzKeyVaultCertificate - Voorbeeld 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)voor meer informatie over de **Get-AzKeyVaultCertificate**-opdracht en para meters.
+Zie [Get-AzKeyVaultCertificate - Voorbeeld 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)voor meer informatie over de **Get-AzKeyVaultCertificate** -opdracht en para meters.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Wanneer u op de Azure Portal een certificaat op de blade **Certificaat** maakt/importeert, ontvangt u een melding dat het certificaat is gemaakt. Selecteer het certificaat en de huidige versie om de optie om te downloaden te zien.
 
-Als u het certificaat wilt downloaden, selecteert u **Downloaden in CER-indeling** of **Downloaden in PFX/PEM-indeling**.
+Als u het certificaat wilt downloaden, selecteert u **Downloaden in CER-indeling** of **Downloaden in PFX/PEM-indeling** .
 
 ![Certificaat downloaden](../media/certificates/quick-create-portal/current-version-shown.png)
 
 **Azure App Service-certificaten exporteren**
 
-Azure App Service-certificaten zijn een handige manier om SSL-certificaten aan te schaffen. U kunt deze toewijzen aan Azure-apps vanuit de portal. U kunt deze certificaten ook exporteren vanuit de portal als PFX-bestanden zodat ze elders gebruikt kunnen worden. Na het importeren bevinden de App Service-certificaten zich onder **geheimen**.
+Azure App Service-certificaten zijn een handige manier om SSL-certificaten aan te schaffen. U kunt deze toewijzen aan Azure-apps vanuit de portal. U kunt deze certificaten ook exporteren vanuit de portal als PFX-bestanden zodat ze elders gebruikt kunnen worden. Na het importeren bevinden de App Service-certificaten zich onder **geheimen** .
 
 Zie de stappen voor het [exporteren van Azure App Service-certificaten](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx) voor meer informatie.
 

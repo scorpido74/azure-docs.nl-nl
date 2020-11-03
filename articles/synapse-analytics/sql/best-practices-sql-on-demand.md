@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de3e3503d63cf6dcaa98adc318d86df7700458d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476271"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241868"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL on-demand (preview) in azure Synapse Analytics
 
@@ -60,17 +60,17 @@ De gegevens typen die u in uw query gebruikt, zijn van invloed op de prestaties.
 
 - Gebruik de kleinste gegevens grootte die geschikt is voor de grootste mogelijke waarde.
   - Als de Maxi maal toegestane teken waarde 30 tekens lang is, gebruikt u een teken gegevens type van lengte 30.
-  - Gebruik **char** of **NCHAR**als alle waarden van een teken kolom een vaste grootte hebben. Gebruik anders **varchar** of **nvarchar**.
-  - Als de maximum waarde voor de kolom integer 500 is, gebruikt u **smallint** omdat het het kleinste gegevens type is dat deze waarde kan bevatten. In [dit artikel](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15)vindt u bereiken met een geheel getal.
-- Gebruik, indien mogelijk, **varchar** en **char** in plaats van **nvarchar** en **NCHAR**.
+  - Gebruik **char** of **NCHAR** als alle waarden van een teken kolom een vaste grootte hebben. Gebruik anders **varchar** of **nvarchar** .
+  - Als de maximum waarde voor de kolom integer 500 is, gebruikt u **smallint** omdat het het kleinste gegevens type is dat deze waarde kan bevatten. In [dit artikel](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15&preserve-view=true)vindt u bereiken met een geheel getal.
+- Gebruik, indien mogelijk, **varchar** en **char** in plaats van **nvarchar** en **NCHAR** .
 - Gebruik, indien mogelijk, gegevens typen op basis van een geheel getal. SORTEREN, samen voegen en groeperen op bewerkingen zijn sneller voltooid op gehele getallen dan bij teken gegevens.
 - Als u schema-deferrometalie gebruikt, [controleert u de instelde gegevens typen](#check-inferred-data-types).
 
 ## <a name="check-inferred-data-types"></a>Instelde gegevens typen controleren
 
-Met [schema-deinterferentie](query-parquet-files.md#automatic-schema-inference) kunt u snel query's schrijven en gegevens verkennen zonder dat u de bestands schema's kent. De kosten voor dit gemak zijn dat uitgestelde gegevens typen groter zijn dan de werkelijke gegevens typen. Dit gebeurt wanneer er onvoldoende gegevens aanwezig zijn in de bron bestanden om ervoor te zorgen dat het juiste gegevens type wordt gebruikt. Parquet-bestanden bevatten bijvoorbeeld geen meta gegevens over de maximale teken kolom lengte. SQL op aanvraag leidt er toe als varchar (8000).
+Met [schema-deinterferentie](query-parquet-files.md#automatic-schema-inference) kunt u snel query's schrijven en gegevens verkennen zonder dat u de bestands schema's kent. De kosten voor dit gemak zijn dat uitgestelde gegevens typen groter kunnen zijn dan de werkelijke gegevens typen. Dit gebeurt wanneer er onvoldoende gegevens aanwezig zijn in de bron bestanden om ervoor te zorgen dat het juiste gegevens type wordt gebruikt. Parquet-bestanden bevatten bijvoorbeeld geen meta gegevens over de maximale teken kolom lengte. SQL op aanvraag leidt er toe als varchar (8000).
 
-U kunt [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15) gebruiken om de resulterende gegevens typen van uw query te controleren.
+U kunt [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15&preserve-view=true) gebruiken om de resulterende gegevens typen van uw query te controleren.
 
 In het volgende voor beeld ziet u hoe u de verstelde gegevens typen kunt optimaliseren. Deze procedure wordt gebruikt om de uitgestelde gegevens typen weer te geven: 
 ```sql  
@@ -86,7 +86,7 @@ EXEC sp_describe_first_result_set N'
 
 Dit is de resultatenset:
 
-|is_hidden|column_ordinal|naam|system_type_name|max_length|
+|is_hidden|column_ordinal|name|system_type_name|max_length|
 |----------------|---------------------|----------|--------------------|-------------------||
 |0|1|vendor_id|varchar (8000)|8000|
 |0|2|pickup_datetime|DATETIME2 (7)|8|

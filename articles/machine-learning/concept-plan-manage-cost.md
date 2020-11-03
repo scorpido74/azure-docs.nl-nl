@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f73643baa92956280d67d0d931459af3a80925ee
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042176"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233745"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -96,7 +96,7 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 AmlCompute wordt geleverd met een [quotum configuratie (of limiet)](how-to-manage-quotas.md#azure-machine-learning-compute). Dit quotum is van de VM-serie (bijvoorbeeld dv2-serie, NCv3-serie) en varieert per regio voor elk abonnement. Abonnementen beginnen met kleine standaard waarden om aan de slag te gaan, maar u kunt deze instelling gebruiken om te bepalen hoeveel Amlcompute resources beschikbaar zijn in uw abonnement. 
 
-Configureer ook het [quotum van het werkruimte niveau per VM-serie](how-to-manage-quotas.md#workspace-level-quota)voor elke werk ruimte in een abonnement. Als u dit doet, kunt u meer nauw keurigere controle over de kosten die elke werk ruimte mogelijk maakt en bepaalde VM-families beperken. 
+Configureer ook het [quotum van het werkruimte niveau per VM-serie](how-to-manage-quotas.md#workspace-level-quotas)voor elke werk ruimte in een abonnement. Als u dit doet, kunt u meer nauw keurigere controle over de kosten die elke werk ruimte mogelijk maakt en bepaalde VM-families beperken. 
 
 Als u quota's op het niveau van de werk ruimte wilt instellen, begint u in de [Azure Portal](https://portal.azure.com).  Selecteer een werk ruimte in uw abonnement en selecteer **gebruik en quota's** in het linkerdeel venster. Selecteer vervolgens het tabblad **Quota's configureren** om de quota's weer te geven. U hebt bevoegdheden nodig voor het abonnements bereik om het quotum in te stellen, omdat het een instelling is die van invloed is op meerdere werk ruimten.
 

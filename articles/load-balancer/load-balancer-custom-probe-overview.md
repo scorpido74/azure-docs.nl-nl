@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82763842e6145b3883c46bcb9ddb45b7836c3cf2
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051352"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241817"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
@@ -92,7 +92,7 @@ De beschik bare protocollen zijn afhankelijk van de gebruikte Load Balancer SKU:
 
 || TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
-| **Standard-SKU** |    &#9989; |   &#9989; |   &#9989; |
+| **Standaard-SKU** |    &#9989; |   &#9989; |   &#9989; |
 | **Basis-SKU** |   &#9989; |   &#9989; | &#10060; |
 
 ### <a name="tcp-probe"></a><a name="tcpprobe"></a> TCP-test

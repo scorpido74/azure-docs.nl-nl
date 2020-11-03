@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e586e9acc9510dc1aaae511fa51e5a0c3255bd8f
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 4c2900ed5ebe0df3ed827acc1a16caff3beaf4d4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026493"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241086"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Een Azure Digital Apparaatdubbels-exemplaar verplaatsen naar een andere Azure-regio
 
@@ -80,9 +80,8 @@ Ga hier naar het voor beeld: [Azure Digital apparaatdubbels (ADT) Explorer](/sam
 
 Stel vervolgens de machtigingen voor ADT Explorer in en configureer deze. Volg hiervoor de instructies in de sectie [*Azure Digital apparaatdubbels en ADT Explorer instellen*](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer) van de Snelstartgids voor Azure Digital apparaatdubbels. In deze sectie wordt u begeleid bij de volgende stappen:
 1. Een Azure Digital Apparaatdubbels-exemplaar instellen (u kunt dit onderdeel overs Laan omdat u al een exemplaar hebt)
-2. Een **Azure AD-App-registratie** instellen om toegang te bieden tot uw exemplaar
-3. Machtigingen instellen om ADT Explorer uit te voeren op uw computer
-4. Voer ADT Explorer uit en configureer deze om verbinding te maken met uw exemplaar. U gebruikt de **hostnaam** van uw oorspronkelijke Azure Digital apparaatdubbels-exemplaar dat u verplaatst, en de **client-ID** en **Tenant-id** van de app-registratie.
+2. Lokale Azure-Referenties instellen om toegang te bieden tot uw exemplaar
+3. Voer ADT Explorer uit en configureer deze om verbinding te maken met uw exemplaar. U gebruikt de **hostnaam** van uw oorspronkelijke Azure Digital apparaatdubbels-exemplaar dat u wilt verplaatsen.
 
 U moet nu de voorbeeld toepassing ADT Explorer in een browser op uw computer laten worden uitgevoerd. Het voor beeld moet worden verbonden met uw oorspronkelijke Azure Digital Apparaatdubbels-exemplaar.
 
@@ -137,7 +136,7 @@ Op dit moment is ADT Explorer verbonden met uw oorspronkelijke Azure Digital App
 
 :::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/how-to-move-regions/sign-in.png":::
 
-U kunt dezelfde app-registratie opnieuw gebruiken, dus u hoeft alleen de *ADT-URL* te vervangen om uw nieuwe instantie weer te geven. Wijzig deze waarde in dat de *https://{New Instance hostname}* wordt gelezen.
+Vervang de *ADT-URL* zodat deze overeenkomt met uw nieuwe instantie. Wijzig deze waarde in dat de *https://{New Instance hostname}* wordt gelezen.
 
 Druk op *verbinding maken* . U wordt mogelijk gevraagd om u opnieuw aan te melden met uw Azure-referenties en/of deze toepassing toestemming te geven voor uw exemplaar.
 
@@ -210,6 +209,7 @@ De exacte resources die u nodig hebt om te bewerken, zijn afhankelijk van uw sce
 * Azure Maps
 * Device Provisioning Service (DPS)
 * Persoonlijke of bedrijfs-apps buiten Azure, zoals de **client-app** die in de zelf studie is gemaakt [*: Codeer een client-app*](tutorial-code.md)die verbinding maakt met het exemplaar en Azure Digital apparaatdubbels-api's aanroept
+* Azure AD-App-registraties **hoeven niet** opnieuw te worden gemaakt. Als u een app- [registratie](how-to-create-app-registration.md) gebruikt om verbinding te maken met de Azure Digital apparaatdubbels api's, kunt u dezelfde app-registratie met uw nieuwe exemplaar gebruiken.
 
 Nadat deze stap is voltooid, moet het nieuwe exemplaar in de doel regio een kopie van het oorspronkelijke exemplaar zijn.
 

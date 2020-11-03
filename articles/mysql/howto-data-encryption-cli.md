@@ -1,18 +1,18 @@
 ---
 title: Gegevens versleuteling-Azure CLI-Azure Database for MySQL
 description: Meer informatie over het instellen en beheren van gegevens versleuteling voor uw Azure Database for MySQL met behulp van de Azure CLI.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799816"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242089"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Gegevens versleuteling voor Azure Database for MySQL met behulp van de Azure CLI
 
@@ -50,7 +50,7 @@ Meer informatie over het gebruik van de Azure CLI voor het instellen en beheren 
 * De sleutel moet de volgende kenmerken hebben om te kunnen worden gebruikt als een door de klant beheerde sleutel:
   * Geen verval datum
   * Niet uitgeschakeld
-  * **Get**-, **wrap**-en **Unwrap** -bewerkingen uitvoeren
+  * **Get** -, **wrap** -en **Unwrap** -bewerkingen uitvoeren
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>De juiste machtigingen voor sleutel bewerkingen instellen
 
@@ -68,7 +68,7 @@ Meer informatie over het gebruik van de Azure CLI voor het instellen en beheren 
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. Stel de **sleutel machtigingen** (**Get**, **wrap**, **dewrap**) in voor de **Principal**. Dit is de naam van de mysql-server.
+2. Stel de **sleutel machtigingen** ( **Get** , **wrap** , **dewrap** ) in voor de **Principal** . Dit is de naam van de mysql-server.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>

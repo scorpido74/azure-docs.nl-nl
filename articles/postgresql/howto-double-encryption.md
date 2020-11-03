@@ -1,17 +1,17 @@
 ---
 title: Infra structuur dubbele versleuteling-Azure Portal-Azure Database for PostgreSQL
 description: Meer informatie over het instellen en beheren van een infra structuur met dubbele versleuteling voor uw Azure Database for PostgreSQL.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 362c051cf1dd7e97430bd6afaf4821a9c960b71d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea486b534ac3e703849ddb3922d7c3a428dd076b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901544"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242225"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Infra structuur dubbele versleuteling voor Azure Database for PostgreSQL
 
@@ -27,7 +27,7 @@ Volg deze stappen voor het maken van een Azure Database for MySQL server met dub
 
 1. Selecteer in de linkerbovenhoek van de portal **Een resource maken** (+).
 
-2. Selecteer **Databases** > **Azure Database for PostgreSQL**. U kunt ook PostgreSQL in het zoekvak typen om de service te vinden. De implementatie optie voor **één server** is ingeschakeld.
+2. Selecteer **Databases** > **Azure Database for PostgreSQL** . U kunt ook PostgreSQL in het zoekvak typen om de service te vinden. De implementatie optie voor **één server** is ingeschakeld.
 
    :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
@@ -52,7 +52,7 @@ In dit voor beeld wordt een resource groep `myresourcegroup` met de naam op de `
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
-In het volgende voor beeld wordt een PostgreSQL 11-server in West US gemaakt met de naam `mydemoserver` in uw resource groep met de aanmelding van de `myresourcegroup` Server beheerder `myadmin` . Dit is een **Gen 4-server voor ** **Algemeen gebruik** met **twee vCores**. Er is ook een infra structuur met dubbele versleuteling ingeschakeld voor de server die is gemaakt. Vervang het `<server_admin_password>` door uw eigen waarde.
+In het volgende voor beeld wordt een PostgreSQL 11-server in West US gemaakt met de naam `mydemoserver` in uw resource groep met de aanmelding van de `myresourcegroup` Server beheerder `myadmin` . Dit is een **Gen 4-server voor** **Algemeen gebruik** met **twee vCores** . Er is ook een infra structuur met dubbele versleuteling ingeschakeld voor de server die is gemaakt. Vervang het `<server_admin_password>` door uw eigen waarde.
 
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 11 --infrastructure-encryption >Enabled/Disabled>

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: aaafd3833c63458f8403dfeb3620d76f631315b5
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899182"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233880"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -111,7 +111,7 @@ Toepassingen en systemen die ondersteuning bieden voor aanpassing van de lijst m
 - SuccessFactors Active Directory/SuccessFactors naar Azure Active Directory
 - Azure Active Directory ([standaard kenmerken van Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)
 - Apps die ondersteuning bieden voor [SCIM 2,0](https://tools.ietf.org/html/rfc7643), waarbij kenmerken die zijn gedefinieerd in het [kern schema](https://tools.ietf.org/html/rfc7643) , moeten worden toegevoegd
-- Voor Azure Active Directory write-back naar workday of SuccessFactors, wordt het ondersteund voor het bijwerken van relevante meta gegevens voor ondersteunde kenmerken (XPATH en JSONPath), maar wordt het niet ondersteund om nieuwe workday-of SuccessFactors-kenmerken toe te voegen dan die in het standaard schema zijn opgenomen.
+- Voor Azure Active Directory write-back naar workday of SuccessFactors, wordt het ondersteund om relevante meta gegevens bij te werken voor ondersteunde kenmerken (XPATH en JSONPath), maar wordt niet ondersteund voor het toevoegen van nieuwe workday-of SuccessFactors-kenmerken dan die zijn opgenomen in het standaard schema
 
 
 > [!NOTE]

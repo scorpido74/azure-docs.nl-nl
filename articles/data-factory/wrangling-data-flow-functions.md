@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3ee7761d43710e0833eb8002851e286ce5449983
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636116"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233947"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformatie functies in wrangling-gegevens stroom
 
@@ -25,7 +25,7 @@ Met Wrangling data flow in Azure Data Factory kunt u met code gratis flexibele g
 
 Momenteel niet alle Power Query M-functies worden ondersteund voor gegevens wrangling ondanks dat deze beschikbaar zijn tijdens het ontwerpen. Tijdens het maken van uw wrangling-gegevens stromen wordt u met het volgende fout bericht gevraagd als een functie niet wordt ondersteund:
 
-`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
 
 Hieronder vindt u een lijst met ondersteunde functies van Power Query M.
 
@@ -76,7 +76,7 @@ Met de volgende functies worden kolommen toegevoegd of omgezet: [Table. AddColum
 
 Gebruik [Table. Group](/powerquery-m/table-group) om waarden samen te voegen.
 * Moet worden gebruikt met een statistische functie
-* Ondersteunde aggregatie functies:   [tabel. RowCount](/powerquery-m/table-rowcount),   [lijst. Sum](/powerquery-m/list-sum),   [lijst. Count](/powerquery-m/list-count),   [List. Average](/powerquery-m/list-average),   [List. min](/powerquery-m/list-min),   [List. Max](/powerquery-m/list-max),   [List. StandardDeviation](/powerquery-m/list-standarddeviation),   [List. First](/powerquery-m/list-first),   [List. last](/powerquery-m/list-last)
+* Ondersteunde aggregatie functies:   [lijst. som](/powerquery-m/list-sum),   [lijst. aantal](/powerquery-m/list-count),   [lijst. Gem](/powerquery-m/list-average),   [lijst. min](/powerquery-m/list-min),   [lijst. Max](/powerquery-m/list-max),   [List. StandardDeviation](/powerquery-m/list-standarddeviation),   [List. First](/powerquery-m/list-first), List.   [last](/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Sorteren
 
@@ -96,7 +96,7 @@ Hoog behoud en verwijderen, bereik (overeenkomende M-functies, alleen ondersteun
 | Table.NestedJoin | Als u een koppeling uitvoert, treedt er een validatie fout op. De kolommen moeten worden uitgevouwen om te kunnen werken. |
 | Table.Distinct | Verwijder dubbele rijen worden niet ondersteund. |
 | Table.RemoveLastN | Onderste rijen verwijderen wordt niet ondersteund. |
-| Table.RowCount | Niet ondersteund, maar kan worden bereikt met een kolom toevoegen met alle cellen leeg (kolom voor waarde kan worden gebruikt) en vervolgens groeperen op die kolom gebruiken. Table. Group wordt ondersteund. | 
+| Table.RowCount | Niet ondersteund, maar kan worden bereikt door een aangepaste kolom met de waarde 1 toe te voegen en deze kolom vervolgens samen te voegen met List. sum. Table. Group wordt ondersteund. | 
 | Fout afhandeling op rijniveau | Fout afhandeling op rijniveau wordt momenteel niet ondersteund. Als u bijvoorbeeld niet-numerieke waarden uit een kolom wilt filteren, kunt u de tekst kolom omzetten in een getal. Elke cel die niet kan worden getransformeerd, heeft een fout status en moet worden gefilterd. Dit scenario is niet mogelijk in wrangling-gegevens stroom. |
 | Table.Transpose | Niet ondersteund |
 | Table.Pivot | Niet ondersteund |

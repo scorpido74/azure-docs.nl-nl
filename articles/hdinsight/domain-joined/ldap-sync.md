@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0779ac261fbb4ee91bf63021bb0cc685a371c2b2
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77463217"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234066"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>LDAP-synchronisatie in zwerver en Apache Ambari in azure HDInsight
 
@@ -20,16 +20,19 @@ HDInsight-clusters (ESP-Enterprise Security Package) gebruiken zwerver voor auto
 
 ## <a name="general-guidelines"></a>Algemene richtlijnen
 
-* Implementeer altijd clusters met groepen.
-* In plaats van groeps filters in Ambari en zwerver te wijzigen, kunt u deze allemaal beheren in azure AD en geneste groepen gebruiken om de vereiste gebruikers mee te nemen.
-* Zodra een gebruiker is gesynchroniseerd, wordt deze niet verwijderd, zelfs niet als de gebruiker geen deel uitmaakt van de groepen.
-* Als u de LDAP-filters rechtstreeks wilt wijzigen, moet u eerst de gebruikers interface gebruiken, aangezien deze een aantal validaties bevat.
+* Implementeer altijd clusters met een of meer groepen.
+* Als u meer groepen in het cluster wilt gebruiken, controleert u of het zinvol is om de groepslid maatschappen in Azure Active Directory (Azure AD) bij te werken.
+* Als u de cluster groepen wilt wijzigen, kunt u de synchronisatie filters wijzigen met behulp van Ambari.
+* Alle wijzigingen in het groepslid maatschap in azure AD worden in de volgende synchronisaties weer gegeven in het cluster. De wijzigingen moeten eerst worden gesynchroniseerd met Azure AD Domain Services (Azure AD DS) en vervolgens naar de clusters.
+* HDInsight-clusters gebruiken Samba/winbind om de groepslid maatschappen op de cluster knooppunten te projecteren.
+* Groeps leden worden transitief (alle subgroepen en hun leden) gesynchroniseerd met zowel Ambari als zwerver. 
 
 ## <a name="users-are-synced-separately"></a>Gebruikers worden afzonderlijk gesynchroniseerd
 
-Ambari en zwerver delen de gebruikers database niet omdat ze twee verschillende doel einden hebben. Als een gebruiker de Ambari-gebruikers interface moet gebruiken, moet de gebruiker worden gesynchroniseerd met Ambari. Als de gebruiker niet is gesynchroniseerd met Ambari, wordt deze door Ambari UI/API geweigerd, maar andere onderdelen van het systeem werken (deze worden beschermd door zwerver of Resource Manager en niet Ambari). Als u de gebruiker wilt toevoegen in een zwerver-beleid, synchroniseert u de gebruiker vervolgens naar zwerver.
-
-Wanneer een beveiligd cluster wordt geïmplementeerd, worden groeps leden in transitief (alle subgroepen en hun leden) gesynchroniseerd naar zowel Ambari als zwerver. 
+ * Ambari en zwerver delen de gebruikers database niet omdat ze twee verschillende doel einden hebben. 
+   * Als een gebruiker de Ambari-gebruikers interface moet gebruiken, moet de gebruiker worden gesynchroniseerd met Ambari. 
+   * Als de gebruiker niet is gesynchroniseerd met Ambari, wordt deze door de Ambari-gebruikers interface/-API geweigerd, maar andere onderdelen van het systeem werken (deze worden beschermd door zwerver of Resource Manager, en niet door Ambari).
+   * Als u gebruikers of groepen wilt toevoegen in zwerver-beleid, moeten de principals in zwerver expliciet worden gesynchroniseerd.
 
 ## <a name="ambari-user-sync-and-configuration"></a>Gebruikers synchronisatie en-configuratie Ambari
 
@@ -37,28 +40,20 @@ Vanuit de hoofd knooppunten wordt een cron-taak, `/opt/startup_scripts/start_amb
 
 De logboeken moeten zijn in `/var/log/ambari-server/ambari-server.log` . Zie [Configure Ambari Logging Level](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html)(Engelstalig) voor meer informatie.
 
-In Data Lake clusters wordt de hook voor het maken van de gebruiker post gebruikt voor het maken van de basis mappen voor de gesynchroniseerde gebruikers en ze zijn ingesteld als eigen aren van de basis mappen. Als de gebruiker niet correct is gesynchroniseerd met Ambari, kan de gebruiker storingen in de toegang tot tijdelijke bestanden en andere tijdelijke mappen oplossen.
-
-### <a name="update-groups-to-be-synced-to-ambari"></a>Update groepen die moeten worden gesynchroniseerd met Ambari
-
-Als u de lidmaatschappen van groepen in azure AD niet kunt beheren, hebt u twee opties:
-
-* Voer een eenmalige synchronisatie uit, zoals wordt beschreven om [LDAP-gebruikers en-groepen te synchroniseren](https://docs.cloudera.com/HDPDocuments/HDP3/latest/ambari-authentication-ldap-ad/content/authe_ldapad_synchronizing_ldap_users_and_groups.html). Wanneer het groepslid maatschap wordt gewijzigd, moet u deze synchronisatie opnieuw uitvoeren.
-
-* Schrijf een cron-taak en roep de [Ambari-API regel matig](https://community.cloudera.com/t5/Support-Questions/How-do-I-automate-the-Ambari-LDAP-sync/m-p/96634) aan met de nieuwe groepen.
+In Data Lake clusters wordt de hook voor het maken van de gebruiker post gebruikt voor het maken van de basis mappen voor de gesynchroniseerde gebruikers en ze zijn ingesteld als eigen aren van de basis mappen. Als de gebruiker niet correct is gesynchroniseerd met Ambari, kan de gebruiker storingen in actieve taken ondervinden, omdat de basismap mogelijk niet correct is ingesteld.
 
 ## <a name="ranger-user-sync-and-configuration"></a>Zwerver-gebruikers synchronisatie en-configuratie
 
-Zwerver heeft een ingebouwde synchronisatie-engine die elk uur wordt uitgevoerd om de gebruikers te synchroniseren. De gebruikers database wordt niet gedeeld met Ambari. HDInsight configureert het zoek filter om de gebruiker met beheerders rechten, de watchdog-gebruiker en de leden van de groep die is opgegeven tijdens het maken van het cluster te synchroniseren. De groeps leden worden transitief gesynchroniseerd:
+Zwerver heeft een ingebouwde synchronisatie-engine die elk uur wordt uitgevoerd om gebruikers te synchroniseren. De gebruikers database wordt niet gedeeld met Ambari. HDInsight configureert het zoek filter om de gebruiker met beheerders rechten, de watchdog-gebruiker en de leden van de groep die is opgegeven tijdens het maken van het cluster te synchroniseren. De groeps leden worden transitief gesynchroniseerd:
 
-* Incrementele synchronisatie uitschakelen.
-* Synchronisatie toewijzing van gebruikers groep inschakelen.
-* Geef het zoek filter op waarmee de leden van de transitieve groep moeten worden toegevoegd.
-* Synchroniseer sAMAccountName voor gebruikers en naam kenmerk voor groepen.
+1. Incrementele synchronisatie uitschakelen.
+1. Schakel de synchronisatie toewijzing van de gebruikers groep in.
+1. Geef het zoek filter op waarmee de leden van de transitieve groep moeten worden toegevoegd.
+1. Synchroniseer het sAMAccountName-kenmerk voor gebruikers en het naam kenmerk voor groepen.
 
 ### <a name="group-or-incremental-sync"></a>Groep of incrementele synchronisatie
 
-Zwerver ondersteunt een optie voor groeps synchronisatie, maar dit werkt als een snij punt met gebruikers filter. Geen samen voeging tussen groepslid maatschappen en gebruikers filter. Een typisch gebruiks voorbeeld voor een groeps synchronisatie filter in zwerver is-groeps filter: (DN = clusteradmingroup), gebruikers filter: (city = Seattle).
+Zwerver ondersteunt een optie voor groeps synchronisatie, maar dit werkt als een snij punt met gebruikers filter, niet als een samen voeging tussen groepslid maatschappen en gebruikers filter. Een typisch gebruiks voorbeeld voor een groeps synchronisatie filter in zwerver is-groeps filter: (DN = clusteradmingroup), gebruikers filter: (city = Seattle).
 
 Incrementele synchronisatie werkt alleen voor gebruikers die al zijn gesynchroniseerd (de eerste keer). Met incrementeel worden nieuwe gebruikers die zijn toegevoegd aan de groepen, niet gesynchroniseerd na de initiële synchronisatie.
 
@@ -73,8 +68,12 @@ Zwerver-gebruikers synchronisatie kan worden uitgevoerd op een van de hoofd knoo
 1. Meld u aan bij Ambari.
 1. Ga naar de configuratie sectie zwerver.
 1. Ga naar de sectie Geavanceerde **usersync-log4j** .
-1. Wijzig de `log4j.rootLogger` waarde in op `DEBUG` niveau (na wijziging moet er als volgt uitzien `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
+1. Wijzig het `log4j.rootLogger` `DEBUG` niveau in. (Nadat u deze hebt gewijzigd, moet deze er als volgt uitzien `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
 1. Sla de configuratie op en start zwerver opnieuw op.
+
+## <a name="known-issues-with-ranger-user-sync"></a>Bekende problemen met de gebruikers synchronisatie van zwerver
+* Als de groeps naam Unicode-tekens bevat, mislukt de synchronisatie van Zwerver dat object. Als een gebruiker tot een groep behoort die internationale tekens heeft, synchroniseert zwerver gedeeltelijk groepslid maatschap
+* De gebruikers naam (sAMAccountName) en de groeps naam (naam) moeten Maxi maal 20 tekens lang zijn. Als de groeps naam langer is, wordt de gebruiker behandeld alsof deze geen deel uitmaakt van de groep, bij het berekenen van de machtigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5d74b17bdd9c264a983bfdd2e374001dd4a0e2c0
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074954"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242106"
 ---
 # <a name="azure-app-configuration-faq"></a>Veelgestelde vragen over Azure-app configuratie
 
@@ -86,16 +86,16 @@ Beide app-configuratie lagen bieden kern functionaliteit, waaronder configuratie
 
 Hier volgen enkele aandachtspunten voor het kiezen van een laag.
 
-- **Resources per abonnement**: een resource bestaat uit één configuratie opslag. Elk abonnement is beperkt tot één configuratie archief in de gratis laag. Abonnementen kunnen een onbeperkt aantal configuratie archieven hebben in de laag standaard.
-- **Opslag per resource**: in de gratis laag is een configuratie archief beperkt tot 10 MB aan opslag ruimte. In de laag standaard kan elk configuratie archief Maxi maal 1 GB aan opslag ruimte gebruiken.
-- **Sleutel geschiedenis**: in app-configuratie wordt een geschiedenis opgeslagen van alle wijzigingen die zijn aangebracht in sleutels. In de laag gratis wordt deze geschiedenis gedurende zeven dagen opgeslagen. In de laag standaard wordt deze geschiedenis 30 dagen opgeslagen.
-- **Aanvragen per dag**: de gratis laag winkels zijn beperkt tot 1.000 aanvragen per dag. Zodra een Store 1.000 aanvragen heeft bereikt, wordt de HTTP-status code 429 voor alle aanvragen tot middernacht UTC geretourneerd.
+- **Resources per abonnement** : een resource bestaat uit één configuratie opslag. Elk abonnement is beperkt tot één configuratie archief in de gratis laag. Abonnementen kunnen een onbeperkt aantal configuratie archieven hebben in de laag standaard.
+- **Opslag per resource** : in de gratis laag is een configuratie archief beperkt tot 10 MB aan opslag ruimte. In de laag standaard kan elk configuratie archief Maxi maal 1 GB aan opslag ruimte gebruiken.
+- **Revisie geschiedenis** : app-configuratie slaat een geschiedenis op van alle wijzigingen die zijn aangebracht in sleutels. In de laag gratis wordt deze geschiedenis gedurende zeven dagen opgeslagen. In de laag standaard wordt deze geschiedenis 30 dagen opgeslagen.
+- **Quota voor aanvragen** : de gratis laag winkels zijn beperkt tot 1.000 aanvragen per dag. Wanneer een Store 1.000 aanvragen heeft bereikt, wordt de HTTP-status code 429 voor alle aanvragen tot middernacht UTC geretourneerd.
 
-    Voor de Standard-laag archieven worden de eerste 200.000 aanvragen per dag opgenomen in de dagelijkse kosten. Bijkomende aanvragen worden gefactureerd als overschrijding.
+    De Standard-laag archieven zijn beperkt tot 20.000 aanvragen per uur. Wanneer het quotum is uitgeput, wordt de HTTP-status code 429 geretourneerd voor alle aanvragen tot het eind van het uur.
 
-- **Service overeenkomst**: de laag Standard heeft een SLA van 99,9% Beschik baarheid. De laag gratis heeft geen SLA.
-- **Beveiligings functies**: beide lagen bevatten basis beveiligings functionaliteit, inclusief versleuteling met door micro soft beheerde sleutels, verificatie via HMAC of Azure Active Directory, ondersteuning voor Azure RBAC en beheerde identiteit. De laag standaard biedt meer geavanceerde beveiligings functies, waaronder ondersteuning voor persoonlijke koppelingen en versleuteling met door de klant beheerde sleutels.
-- **Kosten**: voor de Standard-laag worden dagelijks gebruiks kosten in rekening gebracht. Er is ook een overschrijding-vergoeding voor aanvragen die na de dagelijkse toewijzing zijn. Er zijn geen kosten verbonden aan het gebruik van een gratis laag opslag.
+- **Service overeenkomst** : de laag Standard heeft een SLA van 99,9% Beschik baarheid. De laag gratis heeft geen SLA.
+- **Beveiligings functies** : beide lagen bevatten basis beveiligings functionaliteit, inclusief versleuteling met door micro soft beheerde sleutels, verificatie via HMAC of Azure Active Directory, ondersteuning voor Azure RBAC, beheerde identiteit en service tags. De laag standaard biedt meer geavanceerde beveiligings functies, waaronder ondersteuning voor persoonlijke koppelingen en versleuteling met door de klant beheerde sleutels.
+- **Kosten** : voor de Standard-laag worden dagelijks gebruiks kosten in rekening gebracht. De eerste 200.000 aanvragen worden elke dag opgenomen in de dagelijkse kosten. Er is ook een overschrijding-vergoeding voor aanvragen die na de dagelijkse toewijzing zijn. Er zijn geen kosten verbonden aan het gebruik van een gratis laag opslag.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Kan ik een archief van de gratis laag upgraden naar de laag standaard? Kan ik een archief van de Standard-laag naar de gratis laag downgradeen?
 
@@ -111,7 +111,7 @@ Wanneer de limiet van een Store is bereikt, wordt de HTTP-status code 429 gereto
 
 Als uw toepassing regel matig HTTP-status code 429 reacties ondervindt, kunt u deze het beste opnieuw ontwerpen om het aantal aanvragen te verminderen. Zie [aanvragen beperken tot app-configuratie](./howto-best-practices.md#reduce-requests-made-to-app-configuration) voor meer informatie.
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Mijn toepassing ontvangt HTTP-status code 429-reacties. Hoe kan dat?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Mijn toepassing ontvangt HTTP-status code 429-reacties. Waarom?
 
 In deze gevallen ontvangt u een HTTP-status code van 429:
 

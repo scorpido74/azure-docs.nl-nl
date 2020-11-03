@@ -1,17 +1,17 @@
 ---
 title: De validatie van de Azure Database for PostgreSQL gegevens versleuteling controleren
 description: Meer informatie over het valideren van de versleuteling van de Azure Database for PostgreSQL gegevens versleuteling met behulp van de door de klant beheerde sleutel.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: 0a1b8eaee0a483fb4ce09a33d3c7ca9fe6f980e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ec27cc4f28151214ca97ffb5113607d6b60ee36
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90884346"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240576"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Gegevens versleuteling valideren voor Azure Database for PostgreSQL
 
@@ -25,14 +25,14 @@ Dit artikel helpt u bij het valideren of gegevens versleuteling met door de klan
 
     * Ga in het Azure Portal naar de **Azure Key Vault**  ->  **sleutels**
     * Selecteer de sleutel die wordt gebruikt voor Server versleuteling.
-    * Stel de status van de sleutel **ingeschakeld** in op **Nee**.
+    * Stel de status van de sleutel **ingeschakeld** in op **Nee** .
   
-       Na enige tijd (**~ 15 min**) moet de Azure database for postgresql-server **status** niet **toegankelijk**zijn. Bij een I/O-bewerking op de server wordt gecontroleerd of de server inderdaad is versleuteld met de sleutel klanten en de sleutel momenteel niet geldig is.
+       Na enige tijd ( **~ 15 min** ) moet de Azure database for postgresql-server **status** niet **toegankelijk** zijn. Bij een I/O-bewerking op de server wordt gecontroleerd of de server inderdaad is versleuteld met de sleutel klanten en de sleutel momenteel niet geldig is.
     
         Als u de server **beschikbaar** wilt maken, kunt u de sleutel opnieuw valideren. 
     
-    * Stel de status van de sleutel in de Key Vault in op **Ja**.
-    * Selecteer op de server **gegevens versleuteling**de optie **sleutel opnieuw valideren**.
+    * Stel de status van de sleutel in de Key Vault in op **Ja** .
+    * Selecteer op de server **gegevens versleuteling** de optie **sleutel opnieuw valideren** .
     * Nadat de hervalidatie van de sleutel is geslaagd, wordt de server **status** gewijzigd in **beschikbaar**
 
 2. Als u op het Azure Portal kunt controleren of de versleutelings sleutel is ingesteld, worden de gegevens versleuteld met behulp van de sleutel klanten die worden gebruikt in de Azure Portal.

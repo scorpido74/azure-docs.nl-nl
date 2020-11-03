@@ -1,17 +1,17 @@
 ---
 title: Restore-Azure Portal-Azure Database for MySQL-flexibele server
 description: In dit artikel wordt beschreven hoe u herstel bewerkingen kunt uitvoeren in Azure Database for MySQL via de Azure Portal.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 1c81ddad8a11cbad361ff84caf6f7200a0c010d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 062d53fcb122ebacd004d7dca5e11f5a883354cd
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935052"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241953"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Herstel naar een bepaald tijdstip van een Azure Database for MySQL-flexibele server (preview-versie)
 
@@ -31,24 +31,24 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 
 Volg deze stappen om uw flexibele server te herstellen met een eerste bestaande back-up.
 
-1.  Kies in het [Azure Portal](https://portal.azure.com/)de flexibele server waarvan u de back-up wilt terugzetten.
+1.  Kies in het [Azure Portal](https://portal.azure.com/)de flexibele server waarvan u de back-up wilt terugzetten.
 
 2.  Klik op **overzicht** in het linkerdeel venster.
 
-3.  Klik op de pagina overzicht op **herstellen**.
+3.  Klik op de pagina overzicht op **herstellen** .
 
     Plaatsaanduidingstekst
 
 4.  Herstellen pagina wordt weer gegeven met een optie om te kiezen tussen het **meest recente herstel punt** en het aangepaste herstel punt.
 
-5.  Selecteer het **meest recente herstel punt**.
+5.  Selecteer het **meest recente herstel punt** .
 
 
 6.  Geef een nieuwe server naam op in het veld **herstellen naar nieuwe server** .
 
     :::image type="content" source="./media/concept-backup-restore/restore-blade-latest.png" alt-text="Vroegste herstel tijd":::
 
-8.  Klik op **OK**.
+8.  Klik op **OK** .
 
 9.  Er wordt een melding weer gegeven dat de herstel bewerking is gestart.
 
@@ -56,15 +56,15 @@ Volg deze stappen om uw flexibele server te herstellen met een eerste bestaande 
 
 Volg deze stappen om uw flexibele server te herstellen met een eerste bestaande back-up.
 
-1.  Kies in het [Azure Portal](https://portal.azure.com/)de flexibele server waarvan u de back-up wilt terugzetten.
+1.  Kies in het [Azure Portal](https://portal.azure.com/)de flexibele server waarvan u de back-up wilt terugzetten.
 
-2.  Klik op de pagina overzicht op **herstellen**.
+2.  Klik op de pagina overzicht op **herstellen** .
 
     Plaatsaanduidingstekst
 
 3.  Herstellen pagina wordt weer gegeven met een optie om te kiezen tussen het oudste herstel punt en het aangepaste herstel punt.
 
-4.  Kies **aangepast herstel punt**.
+4.  Kies **aangepast herstel punt** .
 
 5.  Selecteer datum en tijd.
 
@@ -74,7 +74,7 @@ Volg deze stappen om uw flexibele server te herstellen met een eerste bestaande 
    
     :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="Vroegste herstel tijd":::
  
-7.  Klik op **OK**.
+7.  Klik op **OK** .
 
 8.  Er wordt een melding weer gegeven dat de herstel bewerking is gestart.
 

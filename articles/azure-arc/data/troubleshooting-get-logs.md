@@ -1,6 +1,6 @@
 ---
-title: Logboeken ophalen voor het oplossen van problemen met Azure Arc enabled data controller
-description: Service logboeken ophalen voor het oplossen van problemen met Azure Arc enabled data controller.
+title: Logboeken ophalen voor het oplossen van problemen met Azure Arc ingeschakelde gegevens Services
+description: Informatie over het ophalen van logboek bestanden van een gegevens controller voor het oplossen van problemen met Azure Arc ingeschakelde gegevens Services.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320206"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234037"
 ---
-# <a name="get-azure-arc-enabled-data-services-logs"></a>Logboeken van Azure Arc ingeschakelde data services ophalen
+# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>Logboeken ophalen voor het oplossen van problemen met Azure Arc ingeschakelde gegevens Services
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -24,12 +24,12 @@ ms.locfileid: "92320206"
 
 Voordat u doorgaat, hebt u het volgende nodig:
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [Installatie-instructies](./install-client-tools.md).
-* Een beheerders account om u aan te melden bij de Azure Arc enabled Data Services-controller.
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. Zie [client hulpprogramma's voor het implementeren en beheren van Azure Arc Data Services installeren](./install-client-tools.md)voor meer informatie.
+* Een beheerders account om u aan te melden bij de gegevens controller voor Azure Arc ingeschakeld.
 
-## <a name="get-azure-arc-enabled-data-services-logs"></a>Logboeken van Azure Arc ingeschakelde data services ophalen
+## <a name="get-log-files"></a>Logboek bestanden ophalen
 
-U kunt de logboeken van Azure Arc enabled Data Services voor alle doel einden of specifieken ophalen voor het oplossen van problemen. U kunt dit doen met behulp van standaard Kubernetes-hulpprogram ma's, zoals de `kubectl logs` opdracht of in dit artikel [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , waarmee u het hulp programma gebruikt, waardoor het eenvoudiger wordt om alle logboeken tegelijk op te halen.
+U kunt Service logboeken over alle verschillende of specifieke doel einden ophalen voor het oplossen van problemen. Een manier is om standaard Kubernetes-hulpprogram ma's zoals de `kubectl logs` opdracht te gebruiken. In dit artikel gebruikt u het [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] hulp programma, waardoor het eenvoudiger is om alle logboeken tegelijk op te halen.
 
 1. Meld u aan bij de gegevens controller met een Administrator-account.
 
@@ -53,27 +53,27 @@ De gegevens controller maakt de logboek bestanden in de huidige werkmap in een s
 
 ## <a name="options"></a>Opties
 
-`azdata arc dc debug copy-logs` biedt de volgende opties voor het beheren van de uitvoer.
+De `azdata arc dc debug copy-logs` opdracht biedt de volgende opties voor het beheren van de uitvoer:
 
 * Uitvoer de logboek bestanden naar een andere map met behulp van de `--target-folder` para meter.
 * Comprimeer de bestanden door de para meter te weglaten `--skip-compress` .
-* Activeer en voeg geheugen dumps toe door de te weglaten `--exclude-dumps` . Deze methode wordt niet aanbevolen, tenzij Microsoft Ondersteuning de geheugen dumps heeft aangevraagd. Voor het maken van een geheugen dump moet de gegevens controller instelling worden `allowDumps` ingesteld op `true` het moment dat de gegevens controller wordt gemaakt.
+* Activeer en voeg geheugen dumps toe door te weglaten `--exclude-dumps` . Deze methode wordt niet aanbevolen, tenzij Microsoft Ondersteuning de geheugen dumps heeft aangevraagd. Voor het ophalen van een geheugen dump moet de gegevens controller instelling worden `allowDumps` ingesteld op `true` wanneer de gegevens controller wordt gemaakt.
 * Filter voor het verzamelen van Logboeken voor alleen een specifieke pod ( `--pod` ) of container ( `--container` ) op naam.
-* Filter voor het verzamelen van Logboeken voor een specifieke aangepaste resource door de `--resource-kind` para meter en te geven `--resource-name` . De `resource-kind` parameter waarde moet een van de aangepaste resource definitie namen zijn, die kan worden opgehaald met de opdracht `kubectl get customresourcedefinition` .
+* Filter voor het verzamelen van Logboeken voor een specifieke aangepaste resource door de `--resource-kind` `--resource-name` para meters en te geven. De `resource-kind` parameter waarde moet een van de aangepaste resource definitie namen zijn. U kunt deze namen ophalen met behulp van de opdracht `kubectl get customresourcedefinition` .
 
-Met deze para meters kunt u de `<parameters>` in het volgende voor beeld vervangen. 
+Met deze para meters kunt u de `<parameters>` in het volgende voor beeld vervangen: 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
 ```
 
-Bijvoorbeeld
+Bijvoorbeeld:
 
 ```console
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-Voor beeld van maphiërarchie. De maphiërarchie is ingedeeld op pod name, then container en then by Directory-hiërarchie in de container.
+De volgende maphiërarchie is een voor beeld. Het is ingedeeld op pod name, then container en vervolgens op Directory-hiërarchie in de container.
 
 ```output
 <export directory>

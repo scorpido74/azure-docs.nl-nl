@@ -1,17 +1,17 @@
 ---
 title: Vooruitbetalen voor reken kracht met gereserveerde capaciteit-Azure Database for MySQL
 description: Vooruitbetalen voor Azure Database for MySQL Compute-resources met gereserveerde capaciteit
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 27cd1c9085771bd9ac2b18c37b73235d7f18ad5a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 33c2617a22945ecb11586bc282e7f9f61b6e49ca
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538082"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240899"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure Database for MySQL Compute-resources met gereserveerde capaciteit
 
@@ -55,7 +55,7 @@ In de volgende tabel worden de vereiste velden beschreven.
 | Regio | De Azure-regio die wordt gedekt door de Azure Database for MySQL gereserveerde capaciteits reservering.
 | Implementatie type | Het resource type Azure Database for MySQL waarvoor u de reserve ring wilt kopen.
 | Prestatie niveau | De servicelaag voor de Azure Database for MySQL-servers.
-| Termijn | Één jaar
+| Term | Één jaar
 | Aantal | De hoeveelheid reken resources die worden aangeschaft in de Azure Database for MySQL gereserveerde capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld werkt met of plant om een Azure Database for MySQL servers uit te voeren met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, zou u de hoeveelheid instellen op 16 om het voor deel van alle servers te maximaliseren.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
