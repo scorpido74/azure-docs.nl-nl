@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c169f10ac0444f5bca67d76e8e8ebc0f0b145ee1
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5352a95b865851be937af7b9f19268afd23148db
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124239"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280039"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
 
@@ -36,25 +36,25 @@ Hier volgt een overzicht van de stappen die het bevat:
 
 ## <a name="create-an-azure-functions-app-in-visual-studio"></a>Een Azure Functions-app maken in Visual Studio
 
-Selecteer in Visual Studio 2019 _bestand > nieuw > project_ en zoek naar de _Azure functions_ sjabloon en selecteer _volgende_ .
+Selecteer in Visual Studio 2019 _bestand > nieuw > project_ en zoek naar de _Azure functions_ sjabloon en selecteer _volgende_.
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 
-Geef een naam op voor de functie-app en selecteer _maken_ .
+Geef een naam op voor de functie-app en selecteer _maken_.
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: nieuw project configureren":::
 
-Selecteer het type functie-app *Event grid trigger* en selecteer _maken_ .
+Selecteer het type functie-app *Event grid trigger* en selecteer _maken_.
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: dialoog venster activering van Azure function-project":::
 
 Als uw functie-app is gemaakt, heeft uw Visual Studio automatisch een code voorbeeld in het **Function.cs** -bestand in de projectmap. Deze korte Azure-functie wordt gebruikt om gebeurtenissen te registreren.
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: Project venster met voorbeeld code":::
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Een Azure-functie schrijven met een Event Grid trigger
 
-U kunt een Azure-functie schrijven door de SDK toe te voegen aan uw functie-app. De functie-app communiceert met Azure Digital Apparaatdubbels met behulp van de [Azure Digital APPARAATDUBBELS SDK voor .net (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). 
+U kunt een Azure-functie schrijven door de SDK toe te voegen aan uw functie-app. De functie-app communiceert met Azure Digital Apparaatdubbels met behulp van de [Azure Digital APPARAATDUBBELS SDK voor .net (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
 
 Als u de SDK wilt gebruiken, moet u de volgende pakketten in uw project toevoegen. U kunt de pakketten installeren met behulp van Visual Studio NuGet package manager of de pakketten toevoegen met behulp van het `dotnet` opdracht regel programma. Kies een van de volgende methoden: 
 
@@ -159,24 +159,24 @@ namespace adtIngestFunctionSample
 
 ## <a name="publish-the-function-app-to-azure"></a>De functie-app publiceren in azure
 
-Als u de functie-app naar Azure wilt publiceren, selecteert u het functie project (niet de oplossing) in Solution Explorer en kiest u **publiceren** .
+Als u de functie-app naar Azure wilt publiceren, selecteert u het functie project (niet de oplossing) in Solution Explorer en kiest u **publiceren**.
 
 > [!IMPORTANT] 
 > Als u een Azure-functie publiceert, worden er extra kosten in rekening gebracht voor uw abonnement, onafhankelijk van Azure Digital Apparaatdubbels.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: Azure-functie publiceren ":::
 
-Selecteer **Azure** als publicatie doel en selecteer **volgende** .
+Selecteer **Azure** als publicatie doel en selecteer **volgende**.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: Azure function-dialoog venster publiceren, selecteer Azure ":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: functie dialoog venster publiceren, selecteer Azure functie-app (Windows) of (Linux) op basis van uw computer":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: functie dialoog venster publiceren, een nieuwe Azure-functie maken":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: functie dialoog venster publiceren, vult u de velden in en selecteert u maken":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: functie dialoog venster publiceren, de functie-app in de lijst selecteren en volt ooien":::
 
 Voer op de volgende pagina de gewenste naam in voor de nieuwe functie-app, een resource groep en andere gegevens.
 Als u wilt dat uw functions-app toegang kan krijgen tot Azure Digital Apparaatdubbels, moet deze een door een systeem beheerde identiteit hebben en gemachtigd zijn om toegang te krijgen tot uw Azure Digital Apparaatdubbels-exemplaar.
@@ -220,27 +220,27 @@ Met een door het systeem toegewezen beheerde identiteit kunnen Azure-bronnen wor
 
 Zoek in de [Azure Portal](https://portal.azure.com/)op de zoek balk naar _functie-app_ met de naam van de functie-app die u eerder hebt gemaakt. Selecteer de *functie-app* in de lijst. 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure Portal: zoek functie-app":::
 
 Selecteer in het venster functie-app _identiteit_ in de navigatie balk aan de linkerkant om beheerde identiteit in te scha kelen.
-Schakel onder _systeem toegewezen_ tabblad de _status_ in op aan en _Sla_ deze op. Er wordt een pop-up weer gegeven om door het _systeem toegewezen beheerde identiteit in te scha kelen_ .
+Schakel onder _systeem toegewezen_ tabblad de _status_ in op aan en _Sla_ deze op. Er wordt een pop-up weer gegeven om door het _systeem toegewezen beheerde identiteit in te scha kelen_.
 Selecteer de knop _Ja_ . 
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure Portal: door systeem beheerde identiteit inschakelen":::
 
 U kunt in de meldingen controleren dat de functie is geregistreerd bij Azure Active Directory.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure Portal: meldingen":::
 
 Noteer ook de **object-id** die wordt weer gegeven op de pagina _identiteit_ , zoals deze wordt gebruikt in de volgende sectie.
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="De object-ID kopiëren die u in de toekomst wilt gebruiken":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Toegangs rollen toewijzen met behulp van Azure Portal
 
-Selecteer de knop _Azure Role Assignments_ , waarmee de pagina met *Azure-roltoewijzingen* wordt geopend. Selecteer vervolgens _+ roltoewijzing toevoegen (preview)_ .
+Selecteer de knop _Azure Role Assignments_ , waarmee de pagina met *Azure-roltoewijzingen* wordt geopend. Selecteer vervolgens _+ roltoewijzing toevoegen (preview)_.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure Portal: roltoewijzing toevoegen":::
 
 Selecteer op de pagina _roltoewijzing toevoegen (preview)_ die wordt geopend:
 
@@ -251,7 +251,7 @@ Selecteer op de pagina _roltoewijzing toevoegen (preview)_ die wordt geopend:
 
 Sla uw gegevens vervolgens op door te klikken op de knop _Opslaan_ .
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure Portal: roltoewijzing toevoegen (preview) ":::
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Toepassings instellingen configureren met behulp van Azure Portal
 
@@ -261,7 +261,7 @@ U hebt ADT_INSTANCE_URL nodig om een toepassings instelling te maken.
 
 U kunt ADT_INSTANCE_URL ophalen door **_https://_** toe te voegen aan de hostnaam van uw exemplaar. In de Azure Portal kunt u de hostnaam van uw digitale apparaatdubbels-exemplaar vinden door te zoeken naar uw instantie in de zoek balk. Selecteer vervolgens _overzicht_ op de linkernavigatiebalk om de _hostnaam_ weer te geven. Kopieer deze waarde om een toepassings instelling te maken.
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure Portal: overzicht-> de hostnaam kopiëren voor gebruik in het veld _Value_.":::
 
 U kunt nu een toepassings instelling maken aan de hand van de volgende stappen:
 
@@ -269,9 +269,9 @@ U kunt nu een toepassings instelling maken aan de hand van de volgende stappen:
 * Selecteer _configuratie_ op de navigatie balk aan de linkerkant om een nieuwe toepassings instelling te maken
 * Selecteer op het tabblad _Toepassings instellingen_ _+ nieuwe toepassings instelling_
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: zoeken naar een bestaande Azure-functie":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure Portal: toepassings instellingen configureren":::
 
 In het venster dat wordt geopend, gebruikt u de waarde die u eerder hebt gekopieerd om een toepassings instelling te maken. \
 _Naam_  : ADT_SERVICE_URL \
@@ -279,19 +279,19 @@ _Waarde_ : https://{Your-Azure-Digital-apparaatdubbels-hostname}
 
 Selecteer _OK_ om een toepassings instelling te maken.
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure Portal: toepassings instellingen toevoegen.":::
 
 U kunt de toepassings instellingen weer geven onder het veld _naam_ in de naam van de toepassing. Sla de toepassings instellingen vervolgens op door de knop _Opslaan_ te selecteren.
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure Portal: de toepassing weer geven die is gemaakt en de toepassing opnieuw starten":::
 
 Voor wijzigingen in de toepassings instellingen moet de toepassing opnieuw worden gestart. Selecteer _door gaan_ om de toepassing opnieuw op te starten.
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure Portal: toepassings instellingen opslaan":::
 
 U kunt zien dat de toepassings instellingen worden bijgewerkt door het pictogram _meldingen_ te selecteren. Als uw toepassings instelling niet is gemaakt, kunt u opnieuw proberen een toepassings instelling toe te voegen door het bovenstaande proces te volgen.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure Portal: meldingen voor het bijwerken van toepassings instellingen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

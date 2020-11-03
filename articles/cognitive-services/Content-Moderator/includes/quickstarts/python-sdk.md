@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: bea422514b109f446ee30633b0074730f9b89af0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 64a9143e7a425b35e37f23b233c91b8e7bb70169
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332554"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755559"
 ---
 Ga aan de slag met de Azure Content Moderator-clientbibliotheek voor Python. Volg deze stappen om het PiPy-pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. 
 
@@ -24,11 +24,11 @@ Content Moderator is een AI-service waarmee u inhoud kunt afhandelen die mogelij
 
 Gebruik de Content Moderator-clientbibliotheek voor Python om het volgende te doen:
 
-* [Tekst modereren](#moderate-text)
-* [Aangepaste begrippenlijst gebruiken](#use-a-custom-terms-list)
-* [Afbeeldingen modereren](#moderate-images)
-* [Een aangepaste afbeeldingslijst gebruiken](#use-a-custom-image-list)
-* [Een beoordeling maken](#create-a-review)
+* Tekst modereren
+* Aangepaste termenlijst gebruiken
+* Afbeeldingen modereren
+* Een aangepaste afbeeldingslijst gebruiken
+* Een beoordeling maken
 
 [Referentiedocumentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [Package (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
@@ -36,35 +36,38 @@ Gebruik de Content Moderator-clientbibliotheek voor Python om het volgende te do
 
 * Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
+* Zodra u een Azure-abonnement hebt, kunt u <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title="Een Content Moderator-resource maken"  target="_blank">een Content Moderator-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met Content Moderator. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
-## <a name="create-a-content-moderator-resource"></a>Een Content Moderator-resource maken
 
-Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Content Moderator met behulp van de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
+## <a name="setting-up"></a>Instellen
 
-* Uw resource bekijken in de [Azure-portal](https://portal.azure.com/)
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-Nadat u een sleutel hebt verkregen van uw resource, gaat u [omgevingsvariabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en de eindpunt-URL, respectievelijk `CONTENT_MODERATOR_SUBSCRIPTION_KEY` en `CONTENT_MODERATOR_ENDPOINT` genaamd.
- 
-## <a name="create-a-new-python-script"></a>Een nieuw Python-script maken
+Nadat u Python hebt geïnstalleerd, kunt u de Content Moderator-clientbibliotheek installeren met de volgende opdracht:
+
+```console
+pip install --upgrade azure-cognitiveservices-vision-contentmoderator
+```
+
+### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
 
 Maak een nieuw Python-script en open het in uw favoriete editor of IDE. Voeg bovenaan het bestand de volgende `import`-instructies toe.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-Maak vervolgens variabelen voor de eindpuntlocatie en sleutel van uw resource als omgevingsvariabelen. 
+> [!TIP]
+> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py), waar de codevoorbeelden uit deze quickstart zich bevinden.
+
+Maak vervolgens variabelen voor de eindpuntlocatie en sleutel van uw resource.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
-> [!NOTE]
-> Als u de omgevingsvariabelen hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabelen.
-
-## <a name="install-the-client-library"></a>De clientbibliotheek installeren
-
-U kunt de Content Moderator-clientbibliotheek installeren met de volgende opdracht:
-
-```console
-pip install --upgrade azure-cognitiveservices-vision-contentmoderator
-```
+> [!IMPORTANT]
+> Ga naar Azure Portal. Als de Content Moderator-resource die u in de sectie **Vereisten** hebt gemaakt, is geïmplementeerd, klikt u op de knop **Naar de resource gaan** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
+>
+> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Bijvoorbeeld [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 ## <a name="object-model"></a>Objectmodel
 
@@ -89,9 +92,6 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Con
 * [Een beoordeling maken](#create-a-review)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
-
-> [!NOTE]
-> In deze quickstart wordt ervan uitgegaan dat u [omgevingsvariabelen hebt gemaakt](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) voor uw Content Moderator-sleutel en -eindpunt.
 
 Instantieer een client met uw eindpunt en sleutel. Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python)-object met uw sleutel en gebruik het met uw eindpunt om een [ContentModeratorClient-](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)-object te maken.
 

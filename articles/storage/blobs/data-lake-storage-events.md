@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8df4de01750de92222bfa9021b66828927804e85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b4b86656e7b1b4dfd8b69cbc8386f5b6ff6a8c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005476"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674940"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Zelfstudie: Het Data Lake Capture-patroon implementeren om een Databricks Delta-tabel bij te werken
 
@@ -120,13 +120,13 @@ Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.n
 
 ### <a name="create-a-notebook"></a>Een notebook maken
 
-1. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
+1. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer in de **Werkruimte** -vervolgkeuzelijst, **Notitieblok** > **maken**.
 
     ![Notebook maken in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Notitieblok maken in Databricks")
 
 2. Voer in het dialoogvenster **Notitieblok maken** een naam voor het notitieblok in. Selecteer **Python** als taal en selecteer vervolgens het Apache Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Notebook maken in Databricks](./media/data-lake-storage-events/new-databricks-notebook.png "Notitieblok maken in Databricks")
+    ![Schermopname met het dialoogvenster Notebook maken en waar u Python als taal moet selecteren.](./media/data-lake-storage-events/new-databricks-notebook.png "Notitieblok maken in Databricks")
 
     Selecteer **Maken**.
 
@@ -268,7 +268,7 @@ Maak een Azure-functie waarmee de taak wordt uitgevoerd.
 
 5. Klik op de pagina **Overzicht** van de functie-app op **Configuratie**.
 
-   ![De functie-app configureren](./media/data-lake-storage-events/configure-function-app.png "De functie-app configureren")
+   ![Schermopname waarin de optie Configuratie onder Geconfigureerde functies is gemarkeerd.](./media/data-lake-storage-events/configure-function-app.png "De functie-app configureren")
 
 6. Kies op de pagina **Toepassingsinstellingen** de knop **Nieuwe toepassingsinstelling** om elke instelling toe te voegen.
 
@@ -293,7 +293,7 @@ Maak een Azure-functie waarmee de taak wordt uitgevoerd.
 
 9. Geef in het deelvenster **Nieuwe functie** de functie de naam **UpsertOrder** en klik vervolgens op de knop **Maken**.
 
-10. Vervang de inhoud van het codebestand door deze code en klik vervolgens op de knop **Opslaan**:
+10. Vervang de inhoud van het codebestand door deze code en klik vervolgens op de knop **Opslaan** :
 
     ```cs
     using "Microsoft.Azure.EventGrid"
@@ -345,7 +345,7 @@ In deze sectie maakt u een Event Grid-abonnement dat de Azure-functie aanroept w
 
 1. Klik op de pagina van de functiecode op de knop **Event Grid-abonnement toevoegen**.
 
-   ![Nieuw gebeurtenisabonnement](./media/data-lake-storage-events/new-event-subscription.png "Nieuw gebeurtenisabonnement")
+   ![Schermopname waarin de knop Event Grid-abonnement toevoegen is gemarkeerd.](./media/data-lake-storage-events/new-event-subscription.png "Nieuw gebeurtenisabonnement")
 
 2. Geef het abonnement een naam op de pagina **Gebeurtenisabonnement maken** en gebruik vervolgens de velden op de pagina om uw opslagaccount te selecteren.
 

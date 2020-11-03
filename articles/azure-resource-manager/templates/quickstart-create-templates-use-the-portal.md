@@ -5,12 +5,12 @@ author: mumian
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: ff6c459f2f4178bee6b6b564e177c097d72592a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c132d8337ccb46824b32ab4a6bcfc73bf5d0818b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85557295"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890391"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Quickstart: ARM-sjablonen maken en implementeren met behulp van Azure Portal
 
@@ -64,7 +64,7 @@ Veel ervaren sjabloonontwikkelaars gebruiken deze methode om sjablonen te genere
 1. Open het gedownloade zip-bestand en sla **templat.json** op uw computer op. In het volgende gedeelte gebruikt u een implementatiehulpprogramma voor sjablonen om de sjabloon te bewerken.
 1. Selecteer het tabblad **Parameter** om de waarden te bekijken die u voor de parameters hebt opgegeven. Schrijf deze waarden op. U hebt ze in het volgende gedeelte (bij het implementeren van de sjabloon) weer nodig.
 
-    ![Een sjabloon genereren via de portal](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
+    ![Schermopname van het tabblad Parameter met de waarden die u hebt opgegeven.](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
     Met behulp van zowel het sjabloon- als het parameterbestand kunt u een resource maken: in deze zelfstudie een Azure-opslagaccount.
 
@@ -87,8 +87,8 @@ Azure vereist dat elke Azure-service een unieke naam heeft. De implementatie mis
 
     ![Azure Resource Manager-sjablonen](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-   - Verwijder de parameter **storageAccountName**, zoals in de vorige schermopname wordt weergegeven.
-   - Voeg een variabele toe met de naam **storageAccountName**, zoals in de vorige schermopname wordt weergegeven:
+   - Verwijder de parameter **storageAccountName** , zoals in de vorige schermopname wordt weergegeven.
+   - Voeg een variabele toe met de naam **storageAccountName** , zoals in de vorige schermopname wordt weergegeven:
 
        ```json
        "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"

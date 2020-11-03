@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 744ef58b54dc3718c4693ce2aad69024e2d6e2fe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: da9ff2ab1ce90b7b27d52c68dc27eb646fe62513
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321840"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886529"
 ---
 <a name="HOLTop"></a>
 
@@ -27,26 +27,10 @@ ms.locfileid: "89321840"
 * Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
     * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
-* [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel- en eindpunt-URL, met respectievelijk de namen `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
 
-> [!NOTE]
-> U kunt de [volledige broncode voor de voorbeelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) die hieronder worden weergegeven, en voorbeelden van elke functie die beschikbaar is via [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python), downloaden.
 
 ## <a name="setting-up"></a>Instellen
  
-### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
-
-Maak bijvoorbeeld een nieuw Python-script&mdash;*quickstart-file.py*. Open vervolgens het bestand in uw voorkeurseditor of IDE en importeer de volgende bibliotheken.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
-
-Maak dan variabelen voor het Azure-eindpunt en de Azure-sleutel voor uw resource.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_vars)]
-
-> [!NOTE]
-> Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele.
-
 ### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
 U kunt de clientbibliotheek installeren met:
@@ -54,6 +38,25 @@ U kunt de clientbibliotheek installeren met:
 ```console
 pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
+
+### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
+
+Maak bijvoorbeeld een nieuw Python-bestand&mdash;*quickstart-file.py*. Open vervolgens het bestand in uw voorkeurseditor of IDE en importeer de volgende bibliotheken.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
+
+> [!TIP]
+> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py), waar de codevoorbeelden uit deze quickstart zich bevinden.
+
+Maak dan variabelen voor het Azure-eindpunt en de Azure-sleutel voor uw resource.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_vars)]
+
+> [!IMPORTANT]
+> Ga naar Azure Portal. Als de Computer Vision-resource die u in de sectie **Vereisten** hebt gemaakt, succesvol is geïmplementeerd, klikt u op de knop **Ga naar resource** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
+>
+> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Bijvoorbeeld [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+
 
 ## <a name="object-model"></a>Objectmodel
 
@@ -63,7 +66,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 |---|---|
 |[ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Met deze klasse worden alle afbeeldingsbewerkingen, zoals het analyseren van afbeeldingen, detecteren van tekst en genereren van miniaturen, direct afgehandeld.|
 | [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Deze klasse is nodig voor alle Computer Vision-functionaliteit. U instantieert deze klasse met uw abonnementsgegevens en gebruikt deze om instanties van andere klassen te maken. Deze implementeert **ComputerVisionClientOperationsMixin**.|
-|[VisualFeatureTypes](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-python)| Deze opsomming definieert de verschillende typen afbeeldingsanalyse die kunnen worden uitgevoerd in een standaard analysebewerking. U geeft een set **VisualFeatureTypes**-waarden op, afhankelijk van uw behoeften. |
+|[VisualFeatureTypes](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-python)| Deze opsomming definieert de verschillende typen afbeeldingsanalyse die kunnen worden uitgevoerd in een standaard analysebewerking. U geeft een set **VisualFeatureTypes** -waarden op, afhankelijk van uw behoeften. |
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -75,18 +78,18 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Com
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-> [!NOTE]
-> In deze quickstart wordt ervan uitgegaan dat u [een omgevingsvariabele hebt gemaakt](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) voor uw Computer Vision-sleutel, met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY`.
-
 Instantieer een client met uw eindpunt en sleutel. Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python)-object met uw sleutel en gebruik het met uw eindpunt om een [ComputerVisionClient-](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python)-object te maken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
 ## <a name="analyze-an-image"></a>Een afbeelding analyseren
 
-Sla een verwijzing op naar de URL van een afbeelding die u wilt analyseren.
+Gebruik uw clientobject om de visuele kenmerken van een externe afbeelding te analyseren. Sla eerst een verwijzing op naar de URL van een afbeelding die u wilt analyseren.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_remoteimage)]
+
+> [!TIP]
+> U kunt ook een lokale afbeelding analyseren. Zie de [ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)-methoden, bijvoorbeeld **analyze_image_in_stream**. Of bekijk de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) voor scenario's met betrekking tot lokale afbeeldingen.
 
 ### <a name="get-image-description"></a>Beschrijving van afbeelding ophalen
 
@@ -110,7 +113,7 @@ Met de volgende code wordt de set met gedetecteerde tags in de afbeelding opgeha
 
 Met de volgende code worden algemene objecten in de afbeelding gedetecteerd en worden deze in de console afgedrukt. Zie [Objectdetectie](../../concept-object-detection.md) voor meer informatie.
 
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]        
 
 ### <a name="detect-brands"></a>Merken detecteren
 
@@ -164,9 +167,12 @@ Gebruik eerst de volgende code om de methode **read** aan te roepen voor de gege
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 
+> [!TIP]
+> U kunt ook tekst lezen uit een lokale afbeelding. Zie de [ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)-methoden, bijvoorbeeld **read_in_stream**. Of bekijk de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) voor scenario's met betrekking tot lokale afbeeldingen.
+
 ### <a name="get-read-results"></a>Leesresultaten ophalen
 
-Vervolgens haalt u de bewerkings-id op die wordt geretourneerd vanaf de **read**-aanroep en gebruikt u deze om de service te doorzoeken op de resultaten van de bewerking. Met de volgende code wordt de bewerking gecontroleerd met een interval van één seconde totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde tekstgegevens afgedrukt naar de console.
+Vervolgens haalt u de bewerkings-id op die wordt geretourneerd vanaf de **read** -aanroep en gebruikt u deze om de service te doorzoeken op de resultaten van de bewerking. Met de volgende code wordt de bewerking gecontroleerd met een interval van één seconde totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde tekstgegevens afgedrukt naar de console.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
@@ -196,3 +202,4 @@ In deze quickstart hebt u geleerd hoe u de Computer Vision-bibliotheek voor Pyth
 
 * [Wat is Computer Vision?](../../overview.md)
 * De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).
+           

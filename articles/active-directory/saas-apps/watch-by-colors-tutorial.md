@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 79fd6c5212b2ad956259f2cfbfb36ec3e7e92844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fae276049ec3ff6c4bf96be38ff0d2a952731a15
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523795"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636779"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Watch by Colors
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Watch by Colors kunt integreren met Azure Activ
 * Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Watch by Colors.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -69,7 +69,7 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Watch by Co
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/), op de integratiepagina van de toepassing **Watch by Colors**, de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Zoek in de [Azure Portal](https://portal.azure.com/), op de integratiepagina van de toepassing **Watch by Colors** , de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
@@ -89,9 +89,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -129,11 +129,11 @@ In deze sectie stelt u in dat B.Simon eenmalige aanmelding van Azure kan gebruik
 
 4. Klik in de rechterbovenhoek van de pagina op **Profile** > **Account Settings** > **SSO (Single Sign On)** .
 
-    ![Configuratie van Watch by Colors](./media/watch-by-colors-tutorial/config01.png)
+    ![Schermopname met de pagina Account Settings, waarop SSO is uitgeschakeld.](./media/watch-by-colors-tutorial/config01.png)
 
 5. Voer op de pagina **SSO (Single Sign On)** de volgende stappen uit:
 
-    ![Configuratie van Watch by Colors](./media/watch-by-colors-tutorial/config02.png)
+    ![Schermopname van het tabblad SAML Setup, waar u SAML kunt inschakelen.](./media/watch-by-colors-tutorial/config02.png)
 
     a. Zet **Enable SAML** op **ON**.
 
@@ -153,11 +153,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Watch by Colors, mo
 
 1. Klik in de rechterbovenhoek van de pagina op **Profile** > **Users** > **Add User**.
 
-    ![Configuratie van Watch by Colors](./media/watch-by-colors-tutorial/config03.png)
+    ![Schermopname met de pagina Users.](./media/watch-by-colors-tutorial/config03.png)
 
 1. Voer op de pagina **User Details** de volgende stappen uit:
 
-    ![Configuratie van Watch by Colors](./media/watch-by-colors-tutorial/config04.png)
+    ![Schermopname van User Details, waar u de beschreven waarden kunt invoeren.](./media/watch-by-colors-tutorial/config04.png)
 
     a. Typ in het tekstvak **First Name** de voornaam van de gebruiker, zoals **B**.
 
@@ -175,15 +175,14 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Watch by Colors, mo
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Watch by Colors klikt, wordt u automatisch aangemeld bij het exemplaar van Watch by Colors waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Watch by Colors klikt, wordt u automatisch aangemeld bij het exemplaar van Watch by Colors waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Watch by Colors met Azure AD uitproberen](https://aad.portal.azure.com/)
-

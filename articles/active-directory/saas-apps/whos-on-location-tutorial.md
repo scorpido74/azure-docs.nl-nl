@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ba9fe6b727ec3f2f5ec8133901fb1aea287fbcd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e5134da9083e97b3977b05d601c2cfba25f5d4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523113"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636677"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosonlocation"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met WhosOnLocation
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u WhosOnLocation integreert met Azure Active Dire
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij WhosOnLocation.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +41,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * WhosOnLocation biedt ondersteuning voor met **SP** geïnitieerde eenmalige aanmelding
 
-* Zodra u WhosOnLocation hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u WhosOnLocation hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-whosonlocation-from-the-gallery"></a>WhosOnLocation toevoegen uit de galerie
 
@@ -101,9 +101,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -133,15 +133,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Klik op **Hulpprogramma's** -> **Account**.
 
-    ![WhosOnLocation-configuratie](./media/WhosOnLocation-tutorial/config1.png)
+    ![Schermopname waarin Account in geselecteerd in het menu Tools op de WhosOnLocation-site.](./media/WhosOnLocation-tutorial/config1.png)
 
 3. Selecteer in de navigator aan de linkerkant **Werknemerstoegang**.
 
-    ![WhosOnLocation-configuratie](./media/WhosOnLocation-tutorial/config2.png)
+    ![Schermopname waarin Employee Access is geselecteerd in Account Profile.](./media/WhosOnLocation-tutorial/config2.png)
 
 4. Voer de volgende stappen uit op de volgende pagina.
 
-    ![WhosOnLocation-configuratie](./media/WhosOnLocation-tutorial/config3.png)
+    ![Schermopname met het tabblad Employess Access, waar u gebruikersgegevens kunt invoeren.](./media/WhosOnLocation-tutorial/config3.png)
 
     a. Verander **Eenmalige aanmelding met SAML** in **Ja**.
 
@@ -155,25 +155,24 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ### <a name="create-whosonlocation-test-user"></a>WhosOnLocation-testgebruiker maken
 
-In deze sectie gaat u in WhosOnLocation een gebruiker maken met de naam B.Simon. Werk met het  [Ondersteuningsteam van WhosOnLocation](mailto:support@whosonlocation.com) om de gebruikers toe te voegen in het WhosOnLocation-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie gaat u in WhosOnLocation een gebruiker maken met de naam B.Simon. Werk samen met het [ondersteuningsteam van WhosOnLocation](mailto:support@whosonlocation.com) om de gebruikers toe te voegen aan het WhosOnLocation-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel WhosOnLocation klikt, wordt u automatisch aangemeld bij de instantie van WhosOnLocation waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel WhosOnLocation klikt, wordt u automatisch aangemeld bij de instantie van WhosOnLocation waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Probeer WhosOnLocation met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [WhosOnLocation beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [WhosOnLocation beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)

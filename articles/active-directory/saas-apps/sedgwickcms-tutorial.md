@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: a93e683e98b1772e9c33a1a2923b0ac807c29e3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccda5c050c9f8af711637ea45090b6647c6c3488
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543207"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Zelfstudie: Azure Active Directory-integratie met Sedgwick CMS
 
@@ -27,7 +27,7 @@ De integratie van Sedgwick CMS met Azure Active Directory biedt de volgende voor
 * U kunt inschakelen dat gebruikers automatisch met hun Azure Active Directory-accounts worden aangemeld bij Sedgwick CMS (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Voor het configureren van de integratie van Sedgwick CMS met Azure Active Direct
 
 **Als u Sedgwick CMS wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -61,7 +61,7 @@ Voor het configureren van de integratie van Sedgwick CMS met Azure Active Direct
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Sedgwick CMS**, selecteer **Sedgwick CMS** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Sedgwick CMS** , selecteer **Sedgwick CMS** in het resultaatvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![Sedgwick CMS in de lijst met resultaten](common/search-new-app.png)
 
@@ -136,7 +136,7 @@ Als u eenmalige aanmelding aan de zijde van **Sedgwick CMS** wilt configureren, 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -148,7 +148,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -172,7 +172,7 @@ In deze sectie zorgt u ervoor dat Britta Simon eenmalige aanmelding met Azure ka
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -184,18 +184,18 @@ In deze sectie zorgt u ervoor dat Britta Simon eenmalige aanmelding met Azure ka
 
 ### <a name="create-sedgwick-cms-test-user"></a>Sedgwick CMS-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam Britta Simon in Sedgwick CMS. Werk met [Sedgwick CMS-ondersteuningsteam](https://www.sedgwick.com/help) om de gebruikers toe te voegen in het Sedgwick CMS-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Britta Simon in Sedgwick CMS. Neem contact op met het [ondersteuningsteam van Sedgwick CMS](https://www.sedgwick.com/help) om de gebruikers toe te voegen in het Sedgwick CMS-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Sedgwick CMS klikt, wordt u automatisch aangemeld bij de instantie van Sedgwick CMS waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Sedgwick CMS klikt, wordt u automatisch aangemeld bij de instantie van Sedgwick CMS waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

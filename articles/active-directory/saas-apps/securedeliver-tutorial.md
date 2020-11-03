@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a6e27da8f8e5e06e1a37744a078c55a06fe0916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02ed110cee4c1657089156cf3f78ccbf1f96b756
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543241"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673226"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Zelfstudie: Azure Active Directory-integratie met SECURE DELIVER
 
@@ -27,7 +27,7 @@ De integratie van SECURE DELIVER met Azure AD biedt de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij SECURE DELIVER (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Voor het configureren van de integratie van SECURE DELIVER met Azure AD moet u S
 
 **Als u SECURE DELIVER vanuit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -130,7 +130,7 @@ Als u eenmalige aanmelding aan de zijde van **SECURE DELIVER** wilt configureren
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -142,7 +142,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -154,7 +154,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot SECURE DELIVER.
 
-1. Selecteer in Azure Portal **Bedrijfstoepassingen**, selecteer **Alle toepassingen** en selecteer vervolgens **SECURE DELIVER**.
+1. Selecteer in Azure Portal **Bedrijfstoepassingen** , selecteer **Alle toepassingen** en selecteer vervolgens **SECURE DELIVER**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -166,7 +166,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -178,19 +178,18 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 ### <a name="create-secure-deliver-test-user"></a>Testgebruiker voor SECURE DELIVER maken
 
-In deze sectie maakt u een gebruiker met de naam Britta Simon in SECURE DELIVER. Werk samen met het  [SECURE DELIVER-ondersteuningsteam](mailto:iw-sd-support@fujifilm.com) om de gebruikers in het SECURE DELIVER-platform toe te voegen. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Britta Simon in SECURE DELIVER. Neem contact op met het [ondersteuningsteam van SECURE DELIVER](mailto:iw-sd-support@fujifilm.com) om de gebruikers toe te voegen in het SECURE DELIVER-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel SECURE DELIVER klikt, wordt u automatisch aangemeld bij de instantie van SECURE DELIVER waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel SECURE DELIVER klikt, wordt u automatisch aangemeld bij de instantie van SECURE DELIVER waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

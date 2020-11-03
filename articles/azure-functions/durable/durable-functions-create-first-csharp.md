@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88055459"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890272"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Uw eerste Durable Function maken in C\#
 
@@ -21,7 +21,7 @@ ms.locfileid: "88055459"
 
 In dit artikel leert u hoe u Visual Studio Code kunt gebruiken om lokaal een duurzame Hallo wereld-functie te maken en te testen.  Met deze functie organiseert en koppelt u aanroepen naar andere functies. Vervolgens publiceert u de functiecode op Azure. Deze hulpprogramma's zijn beschikbaar als onderdeel van de VS Code [Azure Functions-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
 
-![Duurzame functie uitvoeren in Azure](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
+![Schermopname van een Visual Studio-venster met een duurzame functie.](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -86,7 +86,7 @@ In de volgende stappen wordt een sjabloon gebruikt om de code van de Durable Fun
     | Een resourcegroep selecteren | *unieke naam* | Naam van de resourcegroep die moet worden gemaakt |
     | Selecteer een locatie | *regio* | Kies een regio bij u in de buurt |
 
-Een klasse die de nieuwe functies bevat, wordt aan het project toegevoegd. VS Code voegt ook de verbindingstekenreeks van het opslagaccount toe aan *local.settings.json* en een verwijzing aan het [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet-pakket naar het *.csproj*-projectbestand.
+Een klasse die de nieuwe functies bevat, wordt aan het project toegevoegd. VS Code voegt ook de verbindingstekenreeks van het opslagaccount toe aan *local.settings.json* en een verwijzing aan het [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet-pakket naar het *.csproj* -projectbestand.
 
 Open het nieuwe bestand *HelloOrchestration.cs* om de inhoud weer te geven. Deze Durable Function is een eenvoudig voorbeeld van het koppelen van functies met behulp van de volgende methoden:  
 
@@ -165,7 +165,7 @@ U hebt Visual Studio Code gebruikt om een Durable Function-app in C# te maken en
 
 In dit artikel leert u hoe u Visual Studio 2019 kunt gebruiken om lokaal een duurzame Hallo wereld-functie te maken en te testen.  Met deze functie organiseert en koppelt u aanroepen naar andere functies. Vervolgens publiceert u de functiecode op Azure. Deze hulpprogramma's zijn beschikbaar als onderdeel van de Azure-ontwikkelworkload in Visual Studio 2019.
 
-![Duurzame functie uitvoeren in Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![Schermopname van een Visual Studio 2019-venster met een duurzame functie.](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -183,7 +183,7 @@ De Azure Functions-sjabloon maakt een project dat kan worden gepubliceerd in een
 
 1. Selecteer **Nieuw** > **Project** in het menu **Bestand** in Visual Studio.
 
-1. Zoek in het dialoogvenster **Een nieuw project maken** naar `functions`, kies de **Azure Functions**-sjabloon en selecteer **Volgende**. 
+1. Zoek in het dialoogvenster **Een nieuw project maken** naar `functions`, kies de **Azure Functions** -sjabloon en selecteer **Volgende**. 
 
     ![Het dialoogvenster Nieuw project om een functie in Visual Studio te maken](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
@@ -237,7 +237,7 @@ Met Azure Functions Core-hulpprogramma's kunt u een Azure Functions-project uitv
 
 3. Plak de URL van de HTTP-aanvraag in de adresbalk van uw browser en voer de aanvraag uit. Hieronder ziet u de reactie op de lokale GET-aanvraag die door de functie wordt geretourneerd, weergegeven in de browser:
 
-    ![De reactie van de lokale host van de functie in de browser](./media/durable-functions-create-first-csharp/functions-vs-status.png)
+    ![Schermopname met een browservenster met statusQueryGetUri gemarkeerd.](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 
     De reactie is het eerste resultaat van de HTTP-functie waarmee wordt aangegeven dat de orchestrator is gestart.  Dit is nog niet het eindresultaat van de orchestrator.  De reactie bevat enkele nuttige URL's.  Maar eerst gaan we de status van de orchestrator opvragen.
 

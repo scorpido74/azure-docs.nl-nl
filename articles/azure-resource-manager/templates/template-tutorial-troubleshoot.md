@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119341"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891802"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Zelfstudie: Problemen met ARM-sjabloonimplementatie oplossen
 
@@ -44,14 +44,14 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 Open een sjabloon met de naam [Een standaardopslagaccount maken](https://azure.microsoft.com/resources/templates/101-storage-account-create/) vanuit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/) en stel twee sjabloonproblemen in.
 
 1. Selecteer in Visual Studio Code **Bestand**>**Bestand openen**.
-2. Plak de volgende URL in **Bestandsnaam**:
+2. Plak de volgende URL in **Bestandsnaam** :
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
 3. Selecteer **Openen** om het bestand te openen.
-4. Wijzig de **apiVersion**-regel in de volgende regel:
+4. Wijzig de **apiVersion** -regel in de volgende regel:
 
     ```json
     "apiVersion1": "2018-07-02",
@@ -96,14 +96,14 @@ De implementatiefout kunt u vinden in de Microsoft Azure-portal met behulp van d
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Open de resourcegroep door **Resourcegroepen** en vervolgens de naam van de resourcegroep te selecteren. U ziet **1 mislukt** onder **Implementatie**.
 
-    ![Zelfstudie over het oplossen van problemen met Resource Manager](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+    ![Schermopname met de mislukte implementatie gemarkeerd.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
 3. Selecteer **Foutdetails**.
 
-    ![Zelfstudie over het oplossen van problemen met Resource Manager](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![Schermopname met de koppeling Foutdetails gemarkeerd.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
     Het foutbericht is hetzelfde als het foutbericht dat eerder werd weergegeven:
 
-    ![Zelfstudie over het oplossen van problemen met Resource Manager](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![Schermopname met de foutdetails.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
 U kunt de fout ook in de activiteitenlogboeken vinden:
 

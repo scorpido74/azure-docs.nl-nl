@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 06b56566108bb482109d02d8d4f9db66dc2a6995
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9e0bdbc9cc197deb5028848731f031ff19d5ebf7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755857"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897788"
 ---
 > [!IMPORTANT]
 > De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentieopslag voor de eenvoud.
@@ -26,7 +26,7 @@ ms.locfileid: "92755857"
 * Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
 * De [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) of de huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 * Een Azure Storage-blob die een set trainingsgegevens bevat. Zie [Een set met trainingsgegevens voor een aangepast model bouwen](../../build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken (downloaden en extraheren van *sample_data.zip* ).
-* Wanneer u een Azure-abonnement hebt, kunt u <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Een Form Recognizer-resource maken"  target="_blank">een Form Recognizer-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource** .
+* Wanneer u een Azure-abonnement hebt, kunt u <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Een Form Recognizer-resource maken"  target="_blank">een Form Recognizer-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
     * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Form Recognizer API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
@@ -38,11 +38,11 @@ Maak met behulp van Visual Studio een nieuwe .NET Core-toepassing.
 
 ### <a name="install-the-client-library"></a>De clientbibliotheek installeren 
 
-Nadat u een nieuw project hebt gemaakt, installeert u de clientbibliotheek door in **Solution Explorer** met de rechtermuisknop op de projectoplossing te klikken en **NuGet-pakketten beheren** te selecteren. Selecteer in de package manager die wordt geopend de optie **Bladeren** , schakel **Prerelease opnemen** in en zoek naar `Azure.AI.FormRecognizer`. Selecteer versie `3.0.0` en vervolgens **Installeren** . 
+Nadat u een nieuw project hebt gemaakt, installeert u de clientbibliotheek door in **Solution Explorer** met de rechtermuisknop op de projectoplossing te klikken en **NuGet-pakketten beheren** te selecteren. Selecteer in de package manager die wordt geopend de optie **Bladeren** , schakel **Prerelease opnemen** in en zoek naar `Azure.AI.FormRecognizer`. Selecteer versie `3.0.0` en vervolgens **Installeren**. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `formrecognizer-quickstart`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *program.cs* . 
+Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `formrecognizer-quickstart`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *program.cs*. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -83,13 +83,16 @@ Open vanuit de projectmap het bestand *Program.cs* in uw favoriete editor of IDE
 Maak in de klasse **Programma** van de toepassing variabelen voor de sleutel en het eindpunt van uw resource.
 
 > [!IMPORTANT]
-> Ga naar Azure Portal. Als de Form Recognizer-resource die u in de sectie **Vereisten** hebt gemaakt, succesvol is geïmplementeerd, klikt u op de knop **Ga naar resource** onder **Volgende stappen** . U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer** . 
+> Ga naar Azure Portal. Als de Form Recognizer-resource die u in de sectie **Vereisten** hebt gemaakt, succesvol is geïmplementeerd, klikt u op de knop **Ga naar resource** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
 >
 > Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_creds)]
 
 Voeg in de **Hoofd** methode van de toepassing een aanroep toe aan de asynchrone taak die in deze quickstart wordt gebruikt. U gaat deze later implementeren.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
+
 
 ## <a name="object-model"></a>Objectmodel 
 
@@ -134,7 +137,7 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de cli
 Maak onder **Hoofd** een nieuwe methode met de naam `AuthenticateClient`. U zult deze in andere taken gebruiken om uw aanvragen bij de Form Recognizer-service te verifiëren. Deze methode maakt gebruik van een `AzureKeyCredential`-object, zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken.
 
 > [!IMPORTANT]
-> Haal uw sleutel en eindpunt op vanuit de Azure-portal. Als de Form Recognizer-resource die u in de sectie **Vereisten** hebt gemaakt, succesvol is geïmplementeerd, klikt u op de knop **Ga naar resource** onder **Volgende stappen** . U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer** . 
+> Haal uw sleutel en eindpunt op vanuit de Azure-portal. Als de Form Recognizer-resource die u in de sectie **Vereisten** hebt gemaakt, succesvol is geïmplementeerd, klikt u op de knop **Ga naar resource** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
 >
 > Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Bijvoorbeeld [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
@@ -143,16 +146,11 @@ Maak onder **Hoofd** een nieuwe methode met de naam `AuthenticateClient`. U zult
 
 ## <a name="get-assets-for-testing"></a>Assets voor testen ophalen 
 
-De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) en [voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
-
 U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens. Voeg deze toe aan de hoofdmap van uw **Programma** -klasse.
 
-* Als u de SAS-URL voor de trainingsgegevens van uw aangepaste model wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen** . Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken** . Kopieer vervolgens de waarde in de sectie **URL** . Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
+* Als u de SAS-URL voor de trainingsgegevens van uw aangepaste model wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
 * Gebruik vervolgens de bovenstaande stappen om de SAS-URL van een afzonderlijk document in Blob Storage op te halen.
 * Sla tot slot de URL op van de afbeelding van het voorbeeldontvangstbewijs dat is opgenomen in de onderstaande voorbeelden (ook beschikbaar op [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms). 
-
-> [!NOTE]
-> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
 
@@ -161,9 +159,12 @@ U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegeve
 
 U kunt Form Recognizer gebruiken om tabellen, regels en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen. De geretourneerde waarde is een verzameling **FormPage** -objecten: één voor elke pagina in het ingediende document. 
 
-Als u de inhoud van een bestand op een bepaalde URI wilt herkennen, gebruikt u de methode `StartRecognizeContentFromUri`.
+Als u de inhoud van een bestand op een bepaalde URL wilt herkennen, gebruikt u de methode `StartRecognizeContentFromUri`.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
+
+> [!TIP]
+> U kunt ook inhoud ophalen uit een lokaal bestand. Zie de [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet)-methoden, bijvoorbeeld **StartRecognizeContent**. Of bekijk de voorbeeldcode op [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) voor scenario's met betrekking tot lokale afbeeldingen.
 
 Met de rest van deze taak worden de inhoudsgegevens afgedrukt naar de console.
 
@@ -208,10 +209,12 @@ Table 0 has 2 rows and 6 columns.
 
 In deze sectie wordt beschreven hoe u algemene velden in Amerikaanse ontvangstbewijzen kunt herkennen en uitpakken met behulp van een vooraf getraind ontvangstmodel.
 
-Om ontvangstbewijzen te herkennen vanuit een URI, gebruikt u de methode `StartRecognizeReceiptsFromUri`. 
+Om ontvangstbewijzen te herkennen vanuit een URL, gebruikt u de methode `StartRecognizeReceiptsFromUri`. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
+> [!TIP]
+> U kunt ook lokale afbeeldingen van ontvangstbewijzen herkennen. Zie de [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet)-methoden, bijvoorbeeld **StartRecognizeReceipts**. Of bekijk de voorbeeldcode op [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) voor scenario's met betrekking tot lokale afbeeldingen.
 
 De geretourneerde waarde is een verzameling `RecognizedReceipt`-objecten: één voor elke pagina in het ingediende document. Met de volgende code wordt het ontvangstbewijs op de opgegeven URI verwerkt en worden de belangrijkste velden en waarden op de console weergegeven.
 
@@ -401,12 +404,14 @@ In deze sectie ziet u hoe u belangrijke/waardevolle informatie en andere inhoud 
 > [!IMPORTANT]
 > Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de id ervan kunt doorgeven aan onderstaande methode.
 
-U gebruikt de methode `StartRecognizeCustomFormsFromUri`. De geretourneerde waarde is een verzameling `RecognizedForm`-objecten: één voor elke pagina in het ingediende document. 
-
+U gebruikt de methode `StartRecognizeCustomFormsFromUri`. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
-Met de volgende code worden de resultaten van de analyse op de console weergegeven. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheidsscore.
+> [!TIP]
+> U kunt ook een lokaal bestand analyseren. Zie de [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet)-methoden, bijvoorbeeld **StartRecognizeCustomForms**. Of bekijk de voorbeeldcode op [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) voor scenario's met betrekking tot lokale afbeeldingen.
+
+De geretourneerde waarde is een verzameling `RecognizedForm`-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden de resultaten van de analyse op de console weergegeven. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheidsscore.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
 

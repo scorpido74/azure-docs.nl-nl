@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119307"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896987"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Zelfstudie: Voorwaarden gebruiken in ARM-sjablonen
 
@@ -55,7 +55,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 Snelstartsjablonen voor Azure is een opslagplaats voor ARM-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren).
 
 1. Selecteer in Visual Studio Code **Bestand**>**Bestand openen**.
-1. Plak de volgende URL in **Bestandsnaam**:
+1. Plak de volgende URL in **Bestandsnaam** :
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
@@ -88,7 +88,7 @@ Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
 1. Vervang de drie **variables('storageAccountName')** overal in de sjabloon door **parameters('storageAccountName')** .
 1. Verwijder de volgende variabeledefinitie:
 
-    ![Diagram: voorwaarden gebruiken in Resource Manager-sjablonen](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![Schermopname waarin de variabeledefinities die u moet verwijderen, zijn gemarkeerd.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 1. Voeg de volgende twee parameters toe aan het begin van de parametersectie:
 
@@ -121,7 +121,7 @@ Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
 
     De bijgewerkte definitie van het opslagaccount ziet er als volgt uit:
 
-    ![Voorwaarde gebruiken in Resource Manager](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+    ![Schermopname van de bijgewerkte definitie van het opslagaccount.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
 1. Werk de eigenschap **storageUri** van de resourcedefinitie van de virtuele machine bij met de volgende waarde:
 
     ```json
@@ -140,7 +140,7 @@ Hier volgt de procedure waarmee de wijzigingen kunnen worden aangebracht:
 
     ![Bestand uploaden in Cloud Shell in de Azure-portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Selecteer **Upload/download files** en selecteer **Uploaden**. Zie de vorige schermafbeelding. Selecteer het bestand dat u in de vorige sectie hebt opgeslagen. Na het uploaden van het bestand kunt u de **ls**-opdracht en de **cat**-opdracht uitvoeren om te controleren of het bestand is geüpload.
+1. Selecteer **Upload/download files** en selecteer **Uploaden**. Zie de vorige schermafbeelding. Selecteer het bestand dat u in de vorige sectie hebt opgeslagen. Na het uploaden van het bestand kunt u de **ls** -opdracht en de **cat** -opdracht uitvoeren om te controleren of het bestand is geüpload.
 
 1. Gebruik het volgende PowerShell-script om de sjabloon te implementeren.
 

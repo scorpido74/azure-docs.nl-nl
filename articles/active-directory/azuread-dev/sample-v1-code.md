@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 484a44a7a9840409e3f5770c743e5cd62e0cef66
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116203"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910301"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Codevoorbeelden voor Azure Active Directory (v1.0-eindpunt)
 
@@ -53,8 +53,8 @@ De volgende voorbeelden illustreren webtoepassingen waarmee gebruikers worden aa
 
  Platform | Meldt alleen gebruikers aan | Roept Microsoft Graph aan | Roept een andere ASP.NET- of ASP.NET Core 2.0-web-API aan
  -------- | ------------------- | --------------------- | -------------------------
-![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(Microsoft Azure AD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (Microsoft Azure AD Graph) |
+![In deze afbeelding ziet u het ASP.NET Core-logo](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(Microsoft Azure AD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
+![In deze afbeelding ziet u het ASP.NET Framework-logo](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (Microsoft Azure AD Graph) |
 ![In deze afbeelding ziet u het Python-logo](media/sample-v2-code/logo-python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
 ![In deze afbeelding ziet u het Java-logo](media/sample-v2-code/logo-java.png)  | | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
 ![In deze afbeelding ziet u het PHP-logo](media/sample-v2-code/logo-php.png) | | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
@@ -65,7 +65,7 @@ De volgende voorbeelden laten zien hoe u op rollen gebaseerd toegangsbeheer (RBA
 
 Platform | Voorbeeld |
  -------- | ------------------- |
-![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Een .NET 4.5 MVC-web-app die gebruikmaakt van Azure AD-**rollen** voor autorisatie
+![In deze afbeelding ziet u het ASP.NET Framework-logo](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Een .NET 4.5 MVC-web-app die gebruikmaakt van Azure AD- **rollen** voor autorisatie
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Openbare bureaublad- en mobiele clienttoepassingen die Microsoft Graph of een web-API aanroepen
 
@@ -92,9 +92,9 @@ In de volgende voorbeelden ziet u bureaublad- of webtoepassingen die Microsoft G
 
 Clienttoepassing | Platform | Stroom/Toekenning | Roept een ASP.NET- of ASP.NET Core 2.0-web-API aan
 ------------------ | -------- | ---------- | -------------------- 
-Daemon-app (console)          | ![In deze afbeelding ziet u het .NET-logo](media/sample-v2-code/logo-netframework.png) | Clientreferenties met app-geheim of app-certificaat | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
-Daemon-app (console)         | ![In deze afbeelding ziet u het .NET-logo](media/sample-v2-code/logo-netcore.png) | Clientreferenties met certificaat| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
-ASP.NET-web-app  | ![In deze afbeelding ziet u het .NET-logo](media/sample-v2-code/logo-netframework.png) | Clientreferenties | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
+Daemon-app (console)          | ![In deze afbeelding ziet u het .NET Framework-logo](media/sample-v2-code/logo-netframework.png) | Clientreferenties met app-geheim of app-certificaat | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
+Daemon-app (console)         | ![In deze afbeelding ziet u het .NET Core-logo](media/sample-v2-code/logo-netcore.png) | Clientreferenties met certificaat| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
+ASP.NET-web-app  | ![In deze afbeelding ziet u het .NET Framework-logo](media/sample-v2-code/logo-netframework.png) | Clientreferenties | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
 
 ## <a name="web-apis"></a>Web-API's
 
@@ -102,7 +102,7 @@ ASP.NET-web-app  | ![In deze afbeelding ziet u het .NET-logo](media/sample-v2-co
 
 In het volgende voorbeeld ziet u hoe u een Node.js-web-API beveiligt met Azure AD.
 
-In de vorige secties van dit artikel vindt u ook andere voorbeelden van een clienttoepassing die een ASP.NET- of ASP.NET Core-**web-API** **aanroept**. Deze voorbeelden worden niet opnieuw vermeld in deze sectie, maar u vindt ze in de laatste kolom van de boven- of onderstaande tabellen
+In de vorige secties van dit artikel vindt u ook andere voorbeelden van een clienttoepassing die een ASP.NET- of ASP.NET Core- **web-API** **aanroept**. Deze voorbeelden worden niet opnieuw vermeld in deze sectie, maar u vindt ze in de laatste kolom van de boven- of onderstaande tabellen
 
 | Platform | Voorbeeld |
 |--------|-------------------|
@@ -114,7 +114,7 @@ In de volgende voorbeelden ziet u een web-API die een andere web-API aanroept. H
 
 | Platform |  Roept Microsoft Graph aan | Roept een andere ASP.NET- of ASP.NET Core 2.0-web-API aan |
 | -------- |  --------------------- | ------------------------- |
-| ![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
+| ![In deze afbeelding ziet u het ASP.NET Framework-logo](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
 
 ## <a name="other-microsoft-graph-samples"></a>Overige Microsoft Graph-voorbeelden
 

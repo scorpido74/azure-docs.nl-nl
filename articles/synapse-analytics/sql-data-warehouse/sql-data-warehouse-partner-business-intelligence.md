@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a21cee6806c4200a73b35afba73cf04d7ca60308
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939181"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280020"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>business intelligence partners van Azure Synapse Analytics
 
@@ -35,6 +35,7 @@ Als u uw data warehouse-oplossing wilt maken, kunt u kiezen uit verschillende so
 | ![LogiAnalytics](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_logo.png) |**Logi-analyse**<br>Samen met Logi Analytics kan uw organisatie de grootste en meest uiteenlopende gegevens sets wereld wijd verzamelen, analyseren en direct uitvoeren. |[Product pagina](https://www.logianalytics.com/)<br>|
 | ![Looker](./media/sql-data-warehouse-partner-business-intelligence/looker_logo.png) |**Zoeker BI**<br>Met Beschik baarheid krijgt iedereen in uw bedrijf de mogelijkheid om de gegevens te verkennen en te begrijpen die uw bedrijf bestuurt. Het is ook mogelijk dat de gegevens analist een flexibele en herbruikbare modelleer laag krijgt om die gegevens te beheren en te behandelen.  Bedrijven hebben fundamenteel hun cultuur getransformeerd met behulp van de zoeker als katalysator.|[Product pagina](https://looker.com/partners/microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20)<br> |
 | ![Microstrategie](./media/sql-data-warehouse-partner-business-intelligence/microstrategy_logo.png) |**Microstrategie**<br>Het microstrategie-platform biedt een volledige set business intelligence-en analyse mogelijkheden waarmee organisaties de waarde van hun bedrijfs gegevens kunnen ophalen. De krachtige analytische engine van micro strategie, een uitgebreid sluit, een verscheidenheid aan gegevens connectors en een open architectuur, zorgt ervoor dat u alles hebt wat u nodig hebt om de toegang tot de analyse over elk team uit te breiden.|[Product pagina](https://www.microstrategy.com/us/product/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microstrategy.microstrategy_enterprise_platform_vm)<br> |
+| ![Modus analyse](./media/sql-data-warehouse-partner-business-intelligence/mode-logo.png) |**Modus**<br>Modus is een moderne analyse-en BI-oplossing die teams helpt bij het nemen van beslissingen, waardoor er onverwacht een optimale gegevens analyse kan worden uitgevoerd. Gegevens teams kunnen sneller worden verplaatst via een voor keur werk stroom die SQL-, Python-, R-en Visual-analyses combineert, terwijl belanghebbenden samen werken en gegevens op hun eigen manier verkennen en delen. Met gegevens die meer toegankelijk zijn voor iedereen, verkort u de afstand van vragen tot antwoorden en helpt u bedrijven sneller betere beslissingen te nemen.|[Product pagina](https://mode.com/)<br> |
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Vind inzicht in de detectie van schijven met de app voor gegevens visualisatie die door iedereen kan worden gebruikt. Met Qlik Sense kunnen iedereen in uw organisatie eenvoudig flexibele, interactieve visualisaties maken en zinvolle beslissingen nemen. |[Product pagina](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense is een full-stack software voor bedrijfs informatie die wordt geleverd met hulp middelen die een bedrijf nodig heeft om gegevens te analyseren en visualiseren: een hoogwaardige analytische data base, de mogelijkheid om meerdere bronnen, gegevens extractie (ETL) en gegevens visualisatie op Internet toe te voegen. Begin met het analyseren en visualiseren van grote gegevens sets met SiSense BI en Analytics vandaag. |[Product pagina](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Met de self-service-analyse van tableau kunnen gebruikers hun gegevens bekijken en begrijpen, in veel soorten gegevens van platte bestanden tot data bases. Tableau heeft een native, geoptimaliseerde connector voor Synapse SQL-groep die zowel live data als in-Memory analyse ondersteunt. |[Product pagina](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|

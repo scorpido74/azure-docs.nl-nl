@@ -6,15 +6,15 @@ author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql
-ms.date: 3/19/2020
+ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f85731a7f3ffef0adf35812ee8da4e0bbd89124f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 806831ac5e965afcd076066f4baa498297a43a3e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87036570"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740531"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>Quickstart: Een Synapse SQL-pool maken met behulp van Synapse Studio
 
@@ -37,27 +37,33 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/)
 ## <a name="navigate-to-the-synapse-workspace"></a>Navigeer naar de Synapse-werkruimte
 
 1. Navigeer naar de Synapse-werkruimte waar de SQL-pool wordt gemaakt door de servicenaam (of de resourcenaam) rechtstreeks in de zoekbalk te typen.
-![Azure-portal-zoekbalk waarin Synapse-werkruimten zijn ingevoerd.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
+
+    ![Azure-portal-zoekbalk waarin Synapse-werkruimten zijn ingevoerd.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
 1. Typ in de lijst met werkruimten de naam (of een deel van de naam) van de werkruimte die u wilt openen. In dit voorbeeld gebruiken we een werkruimte met de naam **contosoanalytics**.
-![Lijst met gefilterde Synapse-werkruimten, zodat de werkruimten met de naam contoso worden weergegeven.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
+
+    ![Lijst met gefilterde Synapse-werkruimten, zodat de werkruimten met de naam contoso worden weergegeven.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 ## <a name="launch-synapse-studio"></a>Synapse Studio starten
 
 1. Selecteer in het werkruimteoverzicht **Synapse Studio starten** om de locatie te openen waar de SQL-pool wordt gemaakt. Typ de servicenaam of resourcenaam rechtstreeks in de zoekbalk.
-![Azure-portal-Synapse-werkruimteoverzicht met Synapse Studio starten gemarkeerd.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
+
+    ![Azure-portal-Synapse-werkruimteoverzicht met Synapse Studio starten gemarkeerd.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 
 ## <a name="create-a-sql-pool-in-synapse-studio"></a>Een SQL-pool maken met behulp van Synapse Studio
 
 1. Ga op de startpagina van Synapse Studio naar de **Beheerhub** in de linkernavigatiebalk door het pictogram **Beheren** te selecteren.
-![Startpagina van Synapse Studio met het gedeelte Beheerhub gemarkeerd.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-21.png)
+
+    ![Startpagina van Synapse Studio met het gedeelte Beheerhub gemarkeerd.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-21.png)
 
 1. Ga in de Beheerhub naar het gedeelte **SQL-pools** voor een overzicht van de huidige lijst met SQL-pools die beschikbaar zijn in de werkruimte.
-![Synapse Studio-beheerhub met navigatie door SQL-pools geselecteerd](media/quickstart-create-sql-pool/create-sql-pool-studio-22.png)
+
+    ![Synapse Studio-beheerhub met navigatie door SQL-pools geselecteerd](media/quickstart-create-sql-pool/create-sql-pool-studio-22.png)
 
 1. Selecteer opdracht **en Nieuw**. De wizard Nieuwe SQL-pool maken wordt weergegeven. 
-![Lijst in Synapse Studio-beheerhub met SQL-pools.](media/quickstart-create-sql-pool/create-sql-pool-studio-23.png)
 
-1. Voer de volgende gegevens in op het tabblad **Basisinformatie**:
+    ![Lijst in Synapse Studio-beheerhub met SQL-pools.](media/quickstart-create-sql-pool/create-sql-pool-studio-23.png)
+
+1. Voer de volgende gegevens in op het tabblad **Basisinformatie** :
 
     | Instelling | Voorgestelde waarde | Beschrijving |
     | :------ | :-------------- | :---------- |
@@ -69,17 +75,20 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/)
     > Er gelden specifieke beperkingen voor de namen die SQL-pools kunnen gebruiken. Namen mogen geen speciale tekens bevatten, mogen niet langer zijn dan 15 tekens, mogen geen gereserveerde woorden bevatten en moeten uniek zijn in de werkruimte.
 
 4. Selecteer op het volgende tabblad **Extra instellingen** **Geen** om de SQL-pool zonder gegevens in te richten. Behoud de geselecteerde standaardsortering.
-![Stroom voor het maken van SQL-pool - tabblad Aanvullende instellingen.](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
 
-1. We voegen nu geen tags toe. Selecteer daarom  **Volgende: Beoordelen en maken**.
+    ![Stroom voor het maken van SQL-pool - tabblad Aanvullende instellingen.](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
+
+1. We voegen nu geen tags toe. Selecteer daarom vervolgens **Beoordelen en maken**.
 
 1. Controleer op het tabblad **Beoordelen en maken** of de gegevens juist zijn en zijn gebaseerd op wat eerder is ingevoerd. Druk daarna op **Maken**. 
-![Stroom voor het maken van SQL-pool - tabblad Instellingen controleren.](media/quickstart-create-sql-pool/create-sql-pool-studio-26.png)
+
+    ![Stroom voor het maken van SQL-pool - tabblad Instellingen controleren.](media/quickstart-create-sql-pool/create-sql-pool-studio-26.png)
 
 1. Op dit punt wordt de stroom voor de resource-inrichting gestart.
 
 1. Als u nadat het inrichten is voltooid weer naar de werkruimte gaat, wordt hier een nieuwe vermelding voor de zojuist gemaakte SQL-pool weergegeven.
- ![Stroom voor het maken van SQL-pool - resource-inrichting.](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
+
+    ![Stroom voor het maken van SQL-pool - resource-inrichting.](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
 
 1. Als de SQL-pool is eenmaal gemaakt, is deze beschikbaar in de werkruimte voor het laden van gegevens, het verwerken van stromen, het lezen vanuit de lake, enzovoort.
 
@@ -92,10 +101,11 @@ Volg de onderstaande stappen om de SQL-pool uit de werkruimte te verwijderen met
 Ga als volgt te werk om de SQL-pool te verwijderen:
 
 1. Navigeer naar de SQL-pools in de Beheerhub in Synapse Studio.
-1. Selecteer de ellips in de SQL-pool die u wilt verwijderen (in dit geval **contosoedw**) om de opdrachten voor de SQL-pool weer te geven: ![Lijst met SQL-pools, waarbij de zojuist gemaakte groep is geselecteerd.](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
+1. Selecteer de ellips in de SQL-pool die u wilt verwijderen (in dit geval **contosoedw** ) om de opdrachten voor de SQL-pool weer te geven:
+
+    ![Lijst met SQL-pools, waarbij de zojuist gemaakte groep is geselecteerd.](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
 1. Druk op **Verwijderen**.
 1. Bevestig dat u de werkruimte wilt verwijderen en selecteer de knop **Verwijderen**.
- ![Bevestigingsvenster voor het verwijderen van de geselecteerde SQL-pool.](media/quickstart-create-sql-pool/create-sql-pool-studio-29.png)
 1. Wanneer het proces is voltooid, wordt de SQL-pool niet meer weergegeven in de werkruimteresources.
 
 ## <a name="next-steps"></a>Volgende stappen 

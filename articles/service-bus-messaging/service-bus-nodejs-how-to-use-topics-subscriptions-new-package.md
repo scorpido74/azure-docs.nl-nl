@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 4a1bb3346d50825dcab799477794cb138ac2de91
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 72120f6937c65ca6f7a94d34122e41ae3b4a4ef5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326283"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746437"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Quickstart: Service Bus-onderwerpen en-abonnementen gebruiken met Node.js en het pakket azure/service-bus
 In deze zelfstudie leert u hoe u een Node.js-programma kunt schrijven om berichten te versturen naar een Service Bus-onderwerp en berichten te ontvangen van een Service Bus-abonnement met behulp van het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-pakket. Dit pakket maakt gebruik van het snellere [AMQP 1.0-protocol](service-bus-amqp-overview.md), terwijl het oudere [Azure-sb](https://www.npmjs.com/package/azure-sb)-pakket gebruik maakte van [Service Bus REST runtime-API's](/rest/api/servicebus/service-bus-runtime-rest). De voorbeelden zijn geschreven in Javascript.

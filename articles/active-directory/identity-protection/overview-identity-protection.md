@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996536"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783178"
 ---
 # <a name="what-is-identity-protection"></a>Wat is Identity Protection?
 
@@ -39,9 +39,9 @@ In zijn [blogpost van oktober 2018](https://techcommunity.microsoft.com/t5/Azure
 >
 > Vorig jaar op Ignite sprak ik over de drie meest voorkomende aanvallen op onze identiteitssystemen. Dit zijn recente cijfers voor deze aanvallen
 >   
->   - **Herhaalde schendingen**: 4,6 miljard aanvallen gedetecteerd in mei 2018
->   - **Wachtwoordspray**: 350.000 in april 2018
->   - **Phishing**: het is moeilijk om een precies aantal te geven, maar we hebben 23 miljoen risicogebeurtenissen gedetecteerd in maart 2018, waarvan er veel met phishing te maken hebben
+>   - **Herhaalde schendingen** : 4,6 miljard aanvallen gedetecteerd in mei 2018
+>   - **Wachtwoordspray** : 350.000 in april 2018
+>   - **Phishing** : het is moeilijk om een precies aantal te geven, maar we hebben 23 miljoen risicogebeurtenissen gedetecteerd in maart 2018, waarvan er veel met phishing te maken hebben
 
 ## <a name="risk-detection-and-remediation"></a>Risicodetectie en -herstel
 
@@ -107,9 +107,9 @@ Beheerders met voorwaardelijke toegang kunnen ook beleidsregels maken met aanmel
 | Risicobeleid | Beleid voor gebruikersrisico's (via Identity Protection)  | Nee | Nee |Ja | 
 | Risicobeleid | Beleid voor aanmeldingsrisico's (via Identity Protection of voorwaardelijke toegang)  | Nee |  Nee |Ja |
 | Beveiligingsrapporten | Overzicht |  Nee | Nee |Ja |
-| Beveiligingsrapporten | Riskante gebruikers  | Beperkte informatie | Beperkte informatie | Volledige toegang|
-| Beveiligingsrapporten | Riskante aanmeldingen  | Beperkte informatie | Beperkte informatie | Volledige toegang|
-| Beveiligingsrapporten | Risicodetectie   | No | Beperkte informatie| Volledige toegang|
+| Beveiligingsrapporten | Riskante gebruikers  | Beperkte informatie. Alleen gebruikers met een gemiddeld en hoog risico worden weergegeven. Geen detailslade of risicogeschiedenis. | Beperkte informatie. Alleen gebruikers met een gemiddeld en hoog risico worden weergegeven. Geen detailslade of risicogeschiedenis. | Volledige toegang|
+| Beveiligingsrapporten | Riskante aanmeldingen  | Beperkte informatie. Er wordt geen risicodetail of risiconiveau weergegeven. | Beperkte informatie. Er wordt geen risicodetail of risiconiveau weergegeven. | Volledige toegang|
+| Beveiligingsrapporten | Risicodetectie   | Nee | Beperkte informatie. Geen detailslade.| Volledige toegang|
 | Meldingen | Waarschuwingen bij gebruikers die risico lopen  | Nee | Nee |Ja |
 | Meldingen | Wekelijkse samenvatting| Nee | Nee | Ja | 
 | | MFA-registratiebeleid | Nee | Nee | Ja |

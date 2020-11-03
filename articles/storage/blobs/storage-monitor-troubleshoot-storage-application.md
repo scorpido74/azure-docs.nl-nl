@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83652155"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676791"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Een toepassing voor cloudopslag bewaken en problemen oplossen
 
@@ -37,13 +37,13 @@ Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="turn-on-logging-and-metrics"></a>Logboekregistratie en metrische gegevens inschakelen
 
-Selecteer in het menu links **Resourcegroepen**, selecteer **myResourceGroup** en selecteer vervolgens uw opslagaccount in de lijst met resources.
+Selecteer in het menu links **Resourcegroepen** , selecteer **myResourceGroup** en selecteer vervolgens uw opslagaccount in de lijst met resources.
 
 Stel onder **Diagnostische instellingen (klassiek)** **Status** in op **Aan**. Zorg ervoor dat alle opties onder **Blob-eigenschappen** zijn ingeschakeld.
 
 Na het voltooien klikt u op **Opslaan**.
 
-![Het deelvenster Diagnostische gegevens](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
+![Schermopname waarin de sectie is gemarkeerd die de configuratie-instellingen bevat voor het inschakelen van logboekregistratie en metrische gegevens.](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>Waarschuwingen inschakelen
 
@@ -97,7 +97,7 @@ Selecteer in het dialoogvenster **Bestandsselector** de optie **+ Azure-verbindi
 
 Nadat u verbonden bent, vouwt u de containers in de structuurweergave van de opslag uit om de blobs in de logboeken te kunnen zien. Selecteer het meest recente logboek en klik op **OK**.
 
-![Microsoft Message Analyzer - dialoogvenster Azure-opslagverbinding toevoegen](media/storage-monitor-troubleshoot-storage-application/figure4.png)
+![Schermopname van Microsoft Message Analyzer, waarin het geselecteerde logboekbestand is geselecteerd.](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
 In het dialoogvenster **Nieuwe sessie** klikt u op **Start** om het logboek weer te geven.
 

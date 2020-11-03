@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: be3de838e340400da09ad261d82328f6793aed2e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq2
+ms.openlocfilehash: 05b93fd02ec229306d4e3e150b1e8baab072b597
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297722"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671992"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Contactgegevens voor een Azure-factureringsaccount wijzigen
 
@@ -23,15 +23,15 @@ Dit artikel helpt u bij het bijwerken van de contactgegevens voor een *factureri
 
 Als u de gegevens van uw Azure Active Directory-gebruikersprofiel wilt bijwerken, kan alleen een gebruikersbeheerder de wijzigingen aanbrengen. Neem contact op met de gebruikersbeheerder als u zelf niet de gebruikersbeheerdersrol hebt. Zie [Profielgegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-users-profile-azure-portal.md) voor meer informatie over het wijzigen van het profiel van een gebruiker.
 
-*Verkoopadres*: het verkoopadres is het adres en de contactinformatie van de organisatie of de persoon die verantwoordelijk is voor een factureringsaccount. Dit wordt weergegeven op alle facturen die gegenereerd worden voor het factureringsaccount.
+*Verkoopadres* : het verkoopadres is het adres en de contactinformatie van de organisatie of de persoon die verantwoordelijk is voor een factureringsaccount. Dit wordt weergegeven op alle facturen die gegenereerd worden voor het factureringsaccount.
 
-*Factureringsadres*: het factureringsadres is het adres en de contactinformatie van de organisatie of de persoon die verantwoordelijk is voor facturen die gegenereerd worden voor een factureringsaccount. Een factureringsaccount voor een Microsoft Online Subscription-programma (MOSP) heeft één factureringsadres dat wordt weergegeven op alle facturen die gegenereerd worden voor de rekening. Een factureringsaccount voor een Microsoft-klantovereenkomst (MCA) heeft een factureringsadres voor elk factureringsprofiel. Dit wordt weergegeven op facturen die gegenereerd worden voor dat factureringsprofiel.
+*Factureringsadres* : het factureringsadres is het adres en de contactinformatie van de organisatie of de persoon die verantwoordelijk is voor facturen die gegenereerd worden voor een factureringsaccount. Een factureringsaccount voor een Microsoft Online Subscription-programma (MOSP) heeft één factureringsadres dat wordt weergegeven op alle facturen die gegenereerd worden voor de rekening. Een factureringsaccount voor een Microsoft-klantovereenkomst (MCA) heeft een factureringsadres voor elk factureringsprofiel. Dit wordt weergegeven op facturen die gegenereerd worden voor dat factureringsprofiel.
 
-*E-mailadres voor service- en marketinge-mails*: u kunt een e-mailadres opgeven dat verschilt van datgene waarmee u zich aanmeldt om belangrijke meldingen omtrent facturering, service en aanbevelingen over uw Azure-account te ontvangen. Servicemeldingen, bijvoorbeeld over urgente beveiligingsproblemen, prijsveranderingen of wijzigingen in door uw account gebruikte services die fouten veroorzaken, worden altijd naar uw aanmeldingsadres verzonden.
+*E-mailadres voor service- en marketinge-mails* : u kunt een e-mailadres opgeven dat verschilt van datgene waarmee u zich aanmeldt om belangrijke meldingen omtrent facturering, service en aanbevelingen over uw Azure-account te ontvangen. Servicemeldingen, bijvoorbeeld over urgente beveiligingsproblemen, prijsveranderingen of wijzigingen in door uw account gebruikte services die fouten veroorzaken, worden altijd naar uw aanmeldingsadres verzonden.
 
 ## <a name="update-an-mosp-billing-account-address"></a>Een MOSP-factureringsadres bijwerken
 
-1. Meld u aan bij het [Azure-portal](https://portal.azure.com/) met het e-mailadres dat de beheerdersmachtigingen voor het account heeft.
+1. Meld u aan bij het Azure-portal met het e-mailadres dat de beheerdersmachtigingen voor het account heeft.
 1. Zoek naar **Kostenbeheer en facturering**.  
     ![Schermopname die laat zien waar u kunt zoeken naar kostenbeheer en facturering in Azure Portal](./media/change-azure-account-profile/search-cmb.png)
 1. Selecteer **Eigenschappen** aan de linkerkant.  
@@ -41,7 +41,7 @@ Als u de gegevens van uw Azure Active Directory-gebruikersprofiel wilt bijwerken
 
 ## <a name="update-an-mca-billing-account-sold-to-address"></a>Een verkoopadres van een MCA-factureringsaccount bijwerken
 
-1. Meld u aan bij het [Azure-portal](https://portal.azure.com/) met het e-mailadres dat geregistreerd staat als eigenaar of bijdrager voor de factureringsaccount voor een Microsoft-klantovereenkomst.
+1. Meld u aan bij het Azure-portal met het e-mailadres dat geregistreerd staat als eigenaar of bijdrager voor de factureringsaccount voor een Microsoft-klantovereenkomst.
 1. Zoek naar **Kostenbeheer en facturering**.  
     ![Schermopname die laat zien waar u kunt zoeken in Azure Portal](./media/change-azure-account-profile/search-cmb.png)
 1. Selecteer **Eigenschappen** aan de linkerkant en selecteer vervolgens **Verkocht-aan bijwerken**.  
@@ -54,7 +54,7 @@ Als u de gegevens van uw Azure Active Directory-gebruikersprofiel wilt bijwerken
 
 ## <a name="update-an-mca-billing-account-address"></a>Een MCA-factureringsadres bijwerken
 
-1. Meld u aan bij het [Azure-portal](https://portal.azure.com/) met het e-mailadres dat geregistreerd staat als eigenaar of bijdrager voor de factureringsaccount of factureringsprofiel voor een MCA.
+1. Meld u aan bij het Azure-portal met het e-mailadres dat geregistreerd staat als eigenaar of bijdrager voor de factureringsaccount of factureringsprofiel voor een MCA.
 1. Zoek naar **Kostenbeheer en facturering**.  
 1. Selecteer aan de linkerkant de optie **Factureringsprofielen**.
 1. Selecteer een factureringsprofiel om het factureringsadres bij te werken.  
@@ -67,7 +67,7 @@ Als u de gegevens van uw Azure Active Directory-gebruikersprofiel wilt bijwerken
 
 ## <a name="service-and-marketing-emails"></a>E-mail voor service en marketing
 
-U wordt gevraagd om uw e-mailadres om de 90 dagen te controleren of bij te werken in de [Azure-portal](https://portal.azure.com). Microsoft stuurt e-mails naar dit e-mailadres met informatie over het Azure-account voor:
+U wordt gevraagd om uw e-mailadres om de 90 dagen te controleren of bij te werken in de Azure-portal. Microsoft stuurt e-mails naar dit e-mailadres met informatie over het Azure-account voor:
 
 - Servicemeldingen
 - Beveiligingswaarschuwingen
@@ -84,9 +84,9 @@ Voer het e-mail adres in waarop u communicatie over uw account wilt ontvangen. D
 
 U kunt uw e-mailadres voor contactpersonen wijzigen met behulp van een van de volgende methoden. Als u het e-mailadres van uw contactpersoon bijwerkt, wordt het e-mailadres waarmee u zich aanmeldt niet automatisch mee bijgewerkt.
 
-1. Als u een accountbeheerder bent voor een MOSP-account, volg dan de instructies in [Het adres van een MOSP-factureringsaccount bijwerken](#update-an-mosp-billing-account-address) en selecteer **Contactgegevens bijwerken**in de laatste stap. Voer vervolgens het nieuwe e-mailadres in.
+1. Als u een accountbeheerder bent voor een MOSP-account, volg dan de instructies in [Het adres van een MOSP-factureringsaccount bijwerken](#update-an-mosp-billing-account-address) en selecteer **Contactgegevens bijwerken** in de laatste stap. Voer vervolgens het nieuwe e-mailadres in.
 1. Ga naar het gedeelte [Contactgegevens](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) in het Azure-portal en voer het nieuwe e-mailadres in. 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) het pictogram met uw initialen of afbeelding. Selecteer vervolgens het contextmenu ( **...** ). Selecteer vervolgens **Mijn contactgegevens** uit het menu en voer het nieuwe e-mailadres in.
+1. Selecteer in de Azure-portal het pictogram met uw initialen of afbeelding. Selecteer vervolgens het contextmenu ( **...** ). Selecteer vervolgens **Mijn contactgegevens** uit het menu en voer het nieuwe e-mailadres in.
 
 ![Voorbeeld van het bijwerken van een e-mailadres in Azure](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -102,7 +102,7 @@ Wanneer u zich afmeldt voor marketingberichten, ontvangt u nog steeds servicemel
 
 ## <a name="update-the-email-address-that-you-sign-in-with"></a>Het e-mailadres waarmee u zich aanmeldt bijwerken
 
-U kunt het e-mailadres dat u gebruikt om uw account te openen niet bijwerken. Als u een factureringsaccount hebt voor een MOSP, dan kunt u zich aanmelden voor een ander account met het nieuwe e-mailadres en de eigendom van uw abonnementen overzetten op het nieuwe account. Voor een MCA-factureringsaccount [kunt u het nieuwe e-mailadres machtigingen gegeven voor uw account](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+U kunt het e-mailadres dat u gebruikt om uw account te openen niet bijwerken. Als u een factureringsaccount hebt voor een MOSP, dan kunt u zich aanmelden voor een ander account met het nieuwe e-mailadres en de eigendom van uw abonnementen overzetten op het nieuwe account. Voor een MCA-factureringsaccount kunt u het nieuwe e-mailadres machtigingen gegeven voor uw account.
 
 ## <a name="update-your-credit-card"></a>Uw creditcard bijwerken
 
@@ -114,8 +114,8 @@ Het land of de regio wijzigen voor een bestaand account wordt niet ondersteund. 
 
 ## <a name="change-the-subscription-name"></a>De naam van het abonnement wijzigen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com), selecteer **Abonnement** in het linkerdeelvenster en selecteer vervolgens het abonnement waarvan u de naam wilt wijzigen.
-1. Selecteer **Overzicht**en selecteer vervolgens **Naam wijzigen** in de opdrachtbalk.  
+1. Meld u aan bij Azure Portal, selecteer **Abonnement** in het linkerdeelvenster en selecteer vervolgens het abonnement waarvan u de naam wilt wijzigen.
+1. Selecteer **Overzicht** en selecteer vervolgens **Naam wijzigen** in de opdrachtbalk.  
     ![Voorbeeld van het wijzigen van de naam van een Azure-abonnement](./media/change-azure-account-profile/rename-sub.png)
 1. Selecteer **Opslaan** nadat u de naam hebt gewijzigd.
 

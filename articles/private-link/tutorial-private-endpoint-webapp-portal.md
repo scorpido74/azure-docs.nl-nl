@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
-ms.openlocfilehash: 6d4d9fd901337b9c05c7d7d7f271974273e9fe37
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 502c48a92f5b41c4434d03139335a0ce05fa451f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170069"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896970"
 ---
 # <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>Zelfstudie: Verbinding maken met een web-app met behulp van een privé-eindpunt in Azure
 
@@ -54,10 +54,10 @@ De Bastion-host wordt gebruikt om veilig verbinding te maken met de virtuele mac
     |------------------|-----------------------------------------------------------------|
     | **Projectgegevens**  |                                                                 |
     | Abonnement     | Selecteer uw Azure-abonnement                                  |
-    | Resourcegroep   | Selecteer **myResourceGroup** . |
+    | Resourcegroep   | Selecteer **myResourceGroup**. |
     | **Exemplaardetails** |                                                                 |
     | Naam             | Voer **myVNet** in                                    |
-    | Regio           | Selecteer **VS - oost** |
+    | Regio           | Selecteer **Europa - west** |
 
 3. Selecteer het tabblad **IP-adressen** of klik op de knop **Volgende: IP-adressen** onderaan de pagina.
 
@@ -67,7 +67,7 @@ De Bastion-host wordt gebruikt om veilig verbinding te maken met de virtuele mac
     |--------------------|----------------------------|
     | IPv4-adresruimte | Voer **10.1.0.0/16** in |
 
-5. Onder **Subnetnaam** selecteert u het woord **standaard** .
+5. Onder **Subnetnaam** selecteert u het woord **standaard**.
 
 6. Voer in **Subnet bewerken** deze gegevens in:
 
@@ -76,22 +76,22 @@ De Bastion-host wordt gebruikt om veilig verbinding te maken met de virtuele mac
     | Subnetnaam | Open **mySubnet** |
     | Subnetadresbereik | Voer **10.1.0.0/24** in |
 
-7. Selecteer **Opslaan** .
+7. Selecteer **Opslaan**.
 
-8. Selecteer het tabblad **Beveiliging** .
+8. Selecteer het tabblad **Beveiliging**.
 
-9. Selecteer onder **BastionHost** de optie **Inschakelen** . Voer deze gegevens in:
+9. Selecteer onder **BastionHost** de optie **Inschakelen**. Voer deze gegevens in:
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
     | Bastion-naam | Voer **myBastionHost** in |
     | AzureBastionSubnet-adresruimte | Voer **10.1.1.0/24** in |
-    | Openbaar IP-adres | Selecteer **Nieuw maken** . </br> Voer bij **Naam** de naam **myBastionIP** in. </br> Selecteer **OK** . |
+    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **Naam** de naam **myBastionIP** in. </br> Selecteer **OK**. |
 
 
-8. Selecteer het tabblad **Controleren + maken** of klik op de knop **Controleren + maken** .
+8. Selecteer het tabblad **Controleren + maken** of klik op de knop **Controleren + maken**.
 
-9. Selecteer **Maken** .
+9. Selecteer **Maken**.
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
@@ -106,10 +106,10 @@ In deze sectie maakt u een virtuele machine die wordt gebruikt om het persoonlij
     |-----------------------|----------------------------------|
     | **Projectgegevens** |  |
     | Abonnement | Selecteer uw Azure-abonnement |
-    | Resourcegroep | Selecteer **myResourceGroup** . |
+    | Resourcegroep | Selecteer **myResourceGroup**. |
     | **Exemplaardetails** |  |
     | Naam van de virtuele machine | Open **myVM** |
-    | Region | Selecteer **VS - oost** |
+    | Region | Selecteer **Europa - west** |
     | Beschikbaarheidsopties | Selecteer **Geen infrastructuurredundantie vereist** |
     | Installatiekopie | Selecteer **Windows Server 2019 Datacenter - Gen1** |
     | Azure Spot-exemplaar | Selecteer **Nee** |
@@ -119,7 +119,7 @@ In deze sectie maakt u een virtuele machine die wordt gebruikt om het persoonlij
     | Wachtwoord | Voer een wachtwoord in |
     | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in |
 
-3. Selecteer het tabblad **Netwerken** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken** .
+3. Selecteer het tabblad **Netwerken** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken**.
   
 4. Op het tabblad Netwerken selecteert u of voert u het volgende in:
 
@@ -128,13 +128,13 @@ In deze sectie maakt u een virtuele machine die wordt gebruikt om het persoonlij
     | **Netwerkinterface** |  |
     | Virtueel netwerk | **myVNet** |
     | Subnet | **mySubnet** |
-    | Openbare IP | Selecteer **Geen** . |
+    | Openbare IP | Selecteer **Geen**. |
     | NIC-netwerkbeveiligingsgroep | **Basic**|
-    | Openbare poorten voor inkomend verkeer | Selecteer **Geen** . |
+    | Openbare poorten voor inkomend verkeer | Selecteer **Geen**. |
    
-5. Selecteer **Controleren + maken** . 
+5. Selecteer **Controleren + maken**. 
   
-6. Controleer de instellingen en selecteer vervolgens **Maken** .
+6. Controleer de instellingen en selecteer vervolgens **Maken**.
 
 ## <a name="create-web-app"></a>Een web-app maken
 
@@ -148,20 +148,20 @@ In deze sectie maakt u een web-app.
     |-----------------------|----------------------------------|
     | **Projectgegevens** |  |
     | Abonnement | Selecteer uw Azure-abonnement |
-    | Resourcegroep | Selecteer **myResourceGroup** . |
+    | Resourcegroep | Selecteer **myResourceGroup**. |
     | **Exemplaardetails** |  |
     | Naam | Voer **mywebapp** in. Als de naam niet beschikbaar is, voert u een unieke naam in. |
-    | Publiceren | Selecteer **Code** . |
+    | Publiceren | Selecteer **Code**. |
     | Runtimestack | Selecteer **.NET Core 3.1 (LTS)** . |
-    | Besturingssysteem | Selecteer **Windows** . |
-    | Regio | Selecteer **VS - oost** |
+    | Besturingssysteem | Selecteer **Windows**. |
+    | Regio | Selecteer **Europa - west** |
     | **App Service Plan** |  |
-    | Windows-plan (VS - oost) | Selecteer **Nieuw maken** . </br> Voer **myServicePlan** in bij **Naam** . |
-    | SKU en grootte | Selecteer **Formaat wijzigen** . </br> Selecteer **P2V2** in het scherm **Specificatie kiezen** . </br> Selecteer **Toepassen** . |
+    | Windows Plan (Europa - west) | Selecteer **Nieuw maken**. </br> Voer **myServicePlan** in bij **Naam**. |
+    | SKU en grootte | Selecteer **Formaat wijzigen**. </br> Selecteer **P2V2** in het scherm **Specificatie kiezen**. </br> Selecteer **Toepassen**. |
    
-3. Selecteer **Controleren + maken** .
+3. Selecteer **Controleren + maken**.
 
-4. Selecteer **Maken** .
+4. Selecteer **Maken**.
 
     :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/create-web-app.png" alt-text="Tabblad Basisbeginselen van Web-app maken in Azure Portal." border="true":::
 
@@ -169,11 +169,11 @@ In deze sectie maakt u een web-app.
 
 1. Selecteer in het menu aan de linkerkant de opties **Alle resources** > **mywebapp** , of de naam die u hebt gekozen tijdens het maken.
 
-2. Selecteer in het overzicht van de web-app de opties **Instellingen** > **Netwerken** .
+2. Selecteer in het overzicht van de web-app de opties **Instellingen** > **Netwerken**.
 
-3. Selecteer in **Netwerken** de optie **Uw privé-eindpuntverbindingen configureren** .
+3. Selecteer in **Netwerken** de optie **Uw privé-eindpuntverbindingen configureren**.
 
-4. Selecteer **+ Toevoegen** op het scherm **Privé-eindpuntverbindingen** .
+4. Selecteer **+ Toevoegen** op het scherm **Privé-eindpuntverbindingen**.
 
 5. Typ of selecteer in het scherm **Privé-eindpunt toevoegen** de volgende informatie:
 
@@ -181,11 +181,11 @@ In deze sectie maakt u een web-app.
     | ------- | ----- |
     | Naam | Voer **mywebappendpoint** in. |
     | Abonnement | Selecteer uw abonnement. |
-    | Virtueel netwerk | Selecteer **myVNet** . |
-    | Subnet | Selecteer **mySubnet** . |
-    | Integreren met privé-DNS-zone | Selecteer **Ja** . |
+    | Virtueel netwerk | Selecteer **myVNet**. |
+    | Subnet | Selecteer **mySubnet**. |
+    | Integreren met privé-DNS-zone | Selecteer **Ja**. |
 
-6. Selecteer **OK** .
+6. Selecteer **OK**.
     
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Privé-eindpuntconnectiviteit testen
@@ -194,13 +194,13 @@ In deze sectie gebruikt u de virtuele machine die u in de vorige stap hebt gemaa
 
 1. Selecteer **Resourcegroepen** in het linkernavigatievenster.
 
-2. Selecteer **myResourceGroup** .
+2. Selecteer **myResourceGroup**.
 
-3. Selecteer **myVM** .
+3. Selecteer **myVM**.
 
-4. Selecteer op de overzichtspagina voor **myVM** de optie **Verbinding maken** en daarna **Bastion** .
+4. Selecteer op de overzichtspagina voor **myVM** de optie **Verbinding maken** en daarna **Bastion**.
 
-5. Selecteer de blauwe knop **Bastion gebruiken** .
+5. Selecteer de blauwe knop **Bastion gebruiken**.
 
 6. Voer de gebruikersnaam en het wachtwoord in die u hebt ingevoerd bij het maken van de virtuele machine.
 
@@ -220,21 +220,21 @@ In deze sectie gebruikt u de virtuele machine die u in de vorige stap hebt gemaa
 
     Het privé-IP-adres **10.1.0.5** geretourneerd voor de naam van de web-app.  Dit adres bevindt zich in het subnet van het virtuele netwerk dat u eerder hebt gemaakt.
 
-9. Open een webbrowser op de lokale computer en voer de externe URL van uw web-app in, **https://\<webapp-name>.azurewebsites.net** .
+9. Open een webbrowser op de lokale computer en voer de externe URL van uw web-app in, **https://\<webapp-name>.azurewebsites.net**.
 
 10. Controleer of u een **403** -pagina ontvangt. Deze pagina geeft aan dat de web-app niet extern toegankelijk is.
 
-    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-ext-403.png" alt-text="Tabblad Basisbeginselen van Web-app maken in Azure Portal." border="true":::
+    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-ext-403.png" alt-text="403-pagina voor het externe adres van de web-app." border="true":::
 
-11. Open Internet Explorer in de bastionverbinding met **myVM** .
+11. Open Internet Explorer in de bastionverbinding met **myVM**.
 
-12. Voer de URL van de web-app in: **https://\<webapp-name>.azurewebsites.net** .
+12. Voer de URL van de web-app in: **https://\<webapp-name>.azurewebsites.net**.
 
 13. Controleer of de standaardpagina van de web-app wordt weergegeven.
 
-    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-default-page.png" alt-text="Tabblad Basisbeginselen van Web-app maken in Azure Portal." border="true":::
+    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-default-page.png" alt-text="Standaardpagina van web-app." border="true":::
 
-18. Verbreek de verbinding met **myVM** .
+18. Verbreek de verbinding met **myVM**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -242,13 +242,13 @@ Als u deze toepassing verder niet gaat gebruiken, verwijder dan het virtueel net
 
 1. Selecteer **Resourcegroepen** in het linkermenu.
 
-2. Selecteer **myResourceGroup** .
+2. Selecteer **myResourceGroup**.
 
-3. Selecteer **Resourcegroep verwijderen** .
+3. Selecteer **Resourcegroep verwijderen**.
 
 4. In **TYPE THE RESOURCE GROUP** voert u **myResourceGroup** in.
 
-5. Selecteer **Verwijderen** .
+5. Selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

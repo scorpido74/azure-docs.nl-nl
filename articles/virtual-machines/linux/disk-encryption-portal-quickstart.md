@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 2a5588940d4efacc08d89b72bde4433d725a4994
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 13e6077ee9bd24cdfc9a7c1f405199989546680f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978404"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896018"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Quickstart: Een virtuele machine maken en versleutelen met Azure Portal
 
@@ -42,9 +42,9 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
     >
     > Om verwarring te voorkomen, raden we aan het tabblad *Schijven* helemaal over te slaan tijdens deze zelfstudie.
 
-1. Selecteer het tabblad 'Beheer' en controleer of u een Diagnostics-opslagaccount hebt. Als u geen opslagaccounts hebt, selecteert u *Nieuw maken*, geeft u het nieuwe account de naam *myStorageAccount* en selecteert u 'OK'
+1. Selecteer het tabblad 'Beheer' en controleer of u een Diagnostics-opslagaccount hebt. Als u geen opslagaccounts hebt, selecteert u *Nieuw maken* , geeft u het nieuwe account de naam *myStorageAccount* en selecteert u 'OK'
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="Scherm voor het maken van Linux-VM's":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="Scherm Resourcegroep maken":::
 
 1. Klik op 'Beoordelen en maken'.
 1. Op de pagina **Een virtuele machine maken** ziet u de details van de virtuele machine die u gaat maken. Wanneer u klaar bent, selecteert u **Maken**.
@@ -58,19 +58,19 @@ Het duurt een paar minuten voor uw virtuele machine is geïmplementeerd. Wanneer
 1. Selecteer op de bovenste balk **Extra instellingen**.
 1. Onder **Versleutelingsinstellingen** > **Te versleutelen schijven** selecteert u **Besturingssysteem en gegevensschijven**.
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="Scherm voor het maken van Linux-VM's":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="Schermopname waarin besturingssysteem- en gegevensschijven zijn gemarkeerd.":::
 
 1. Kies **Selecteer een sleutelkluis en sleutel voor versleuteling** onder **Versleutelingsinstellingen**.
 1. Selecteer op het scherm **Sleutel selecteren in Azure Key Vault** de optie **Nieuwe maken**.
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="Scherm voor het maken van Linux-VM's":::
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="Schermopname waarin de optie Nieuwe maken is gemarkeerd.":::
 
 1. Selecteer **Klik om een sleutel te selecteren** links van **Sleutelkluis en sleutel**.
 1. Selecteer op het scherm **Sleutel selecteren in Azure Key Vault** onder het veld **Sleutelkluis** de optie **Nieuwe maken**.
 1. Zorg er op het scherm **Sleutelkluis maken** voor dat de resourcegroep *myResourceGroup* is en geef een naam op voor de sleutelkluis.  Elke sleutelkluis in Azure moet een unieke naam hebben.
 1. Schakel op het tabblad **Toegangsbeleid** het selectievakje **Azure Disk Encryption voor volumeversleuteling** in.
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="Scherm voor het maken van Linux-VM's":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="selectie van schijven en versleuteling":::
 
 1. Selecteer **Controleren + maken**.  
 1. Selecteer **Maken** nadat de sleutelkluis is gevalideerd. Hierdoor komt u terug op het scherm **Sleutel selecteren in Azure Key Vault**.

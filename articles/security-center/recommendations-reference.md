@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 09de05325ed6c85954b4661a30113562bb98ea86
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: edee1948780b827eed5047c6c9c919b66eb619d0
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370488"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900220"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Aanbevelingen voor beveiliging: een naslaggids
 
@@ -38,7 +38,7 @@ Uw beveiligingsscore is gebaseerd op het aantal Security Center-aanbevelingen da
 |----|----|----|----|----|
 |**Aanbevelingen voor Adaptieve netwerkbeveiliging moeten worden toegepast op virtuele machines die op internet zijn gericht**|De communicatiepatronen van het internetverkeer van de onderstaande virtuele machines zijn geanalyseerd met Azure Security Center en er is vastgesteld dat de bestaande regels in de gekoppelde NSG's te veel machtigingen hebben. Dit kan leiden tot een groter aantal mogelijkheden voor inbraak.<br>Dit gebeurt meestal wanneer dit IP-adres niet regelmatig communiceert met deze resource. Het IP-adres is ook als kwaadwillend gemarkeerd door de bedreigingsinformatiebronnen van Security Center.<br>(Gerelateerd beleid: Aanbevelingen voor Adaptieve netwerkbeveiliging moeten worden toegepast op virtuele machines die op internet zijn gericht)|Hoog|N|Virtuele machine|
 |**Alle internetverkeer moet worden gerouteerd via uw geïmplementeerde Azure Firewall**|Azure Security Center heeft vastgesteld dat sommige van uw subnetten niet zijn beveiligd met een firewall van de volgende generatie. Bescherm uw subnetten tegen mogelijke bedreigingen door de toegang tot de subnetten te beperken met Azure Firewall of een ondersteunde firewall van de volgende generatie<br>(Gerelateerd beleid: [Preview] Al het internetverkeer moet worden gerouteerd via uw geïmplementeerde Azure Firewall)|Hoog|N|Subnet|
-|**Alle netwerkpoorten moeten worden beperkt voor de netwerkbeveiligingsgroep die is gekoppeld aan uw VM**|De netwerkbeveiligingsgroepen van uw op internet gerichte VM's beschermen door de toegang tot uw bestaande regels voor toestaan te beperken.<br>Deze aanbeveling wordt geactiveerd wanneer een willekeurige poort wordt geopend voor *alle* bronnen (met uitzondering van poorten 22, 3389, 5985, 5986, 80 en 1443).<br>(Gerelateerd beleid: Toegang via een eindpunt gericht op internet moet worden beperkt)|Hoog|N|Virtuele machine|
+|**Alle netwerkpoorten moeten worden beperkt in netwerkbeveiligingsgroepen die zijn gekoppeld aan uw virtuele machine**|De netwerkbeveiligingsgroepen van uw op internet gerichte VM's beschermen door de toegang tot uw bestaande regels voor toestaan te beperken.<br>Deze aanbeveling wordt geactiveerd wanneer een willekeurige poort wordt geopend voor *alle* bronnen (met uitzondering van poorten 22, 3389, 5985, 5986, 80 en 1443).<br>(Gerelateerd beleid: Alle netwerkpoorten moeten worden beperkt in netwerkbeveiligingsgroepen die zijn gekoppeld aan uw virtuele machine)|Hoog|N|Virtuele machine|
 |**De DDoS Protection-standaard moet zijn ingeschakeld**|Virtuele netwerken met toepassingen met openbare IP-adressen beveiligen door de DDoS Protection Service-standaard in te schakelen. DDoS Protection maakt het beperken van netwerk- en protocolaanvallen mogelijk.<br>(Gerelateerd beleid: De DDoS Protection-standaard moet zijn ingeschakeld)|Hoog|N|Virtueel netwerk|
 |**Function-app mag alleen toegankelijk zijn via HTTPS**|"Exclusieve HTTPS-toegang" inschakelen voor functie-apps. Door HTTPS te gebruiken, weet u zeker dat server-/serviceverificatie wordt uitgevoerd en dat uw gegevens tijdens de overdracht zijn beschermd tegen aanvallen die meeluisteren in de netwerklaag.<br>(Gerelateerd beleid: Functie-app mag alleen toegankelijk zijn via HTTPS)|Normaal|**J**|Function App|
 |**Op internet gerichte virtuele machines moeten worden beveiligd met netwerkbeveiligingsgroepen**|Netwerkbeveiligingsgroepen inschakelen om netwerktoegang van uw virtuele machines te beheren.<br>(Gerelateerd beleid: Op internet gerichte virtuele machines moeten worden beveiligd met netwerkbeveiligingsgroepen)|Hoog/gemiddeld|N|Virtuele machine|

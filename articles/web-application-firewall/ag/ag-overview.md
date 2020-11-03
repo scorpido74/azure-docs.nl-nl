@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 050252718e4796ff20d57be3fdeac98f0cf04fdf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267020"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785218"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Wat is Azure Web Application Firewall voor Azure Application Gateway?
 
@@ -74,6 +74,7 @@ In deze sectie worden de belangrijkste voordelen beschreven die WAF in Applicati
 - Stel aangepaste regels op om te voldoen aan de specifieke behoeften van uw toepassingen.
 - Pas geografische filters toe op verkeer om bepaalde landen/regio's al dan niet toegang te geven tot uw toepassingen. (preview)
 - Beveilig uw toepassingen tegen bots met de regelset voor beperking voor bots. (preview)
+- Controleer de JSON- en XML-code in de hoofdtekst van de aanvraag
 
 ## <a name="waf-policy-and-rules"></a>WAF-beleid en -regels
 
@@ -121,8 +122,8 @@ Als bot-beveiliging is ingeschakeld, worden inkomende aanvragen die overeenkomen
 
 In Application Gateway WAF kunnen de volgende twee modi worden geconfigureerd:
 
-* **Detectiemodus**: Hiermee worden alle waarschuwingen voor bedreigingen gecontroleerd en vastgelegd. U kunt het vastleggen van diagnostische gegevens inschakelen voor Application Gateway via de sectie **Diagnostische gegevens**. U moet er ook voor zorgen dat het WAF-logboek is geselecteerd en ingeschakeld. In de detectiemodus worden binnenkomende verzoeken niet geblokkeerd door Web Application Firewall.
-* **Preventiemodus**: Blokkeert indringers en aanvallen die door de regels zijn gedetecteerd. De aanvaller krijgt een uitzondering '403 onbevoegde toegang' en de verbinding wordt verbroken. In de preventiemodus worden dergelijke aanvallen vastgelegd in de WAF-logboeken.
+* **Detectiemodus** : Hiermee worden alle waarschuwingen voor bedreigingen gecontroleerd en vastgelegd. U kunt het vastleggen van diagnostische gegevens inschakelen voor Application Gateway via de sectie **Diagnostische gegevens**. U moet er ook voor zorgen dat het WAF-logboek is geselecteerd en ingeschakeld. In de detectiemodus worden binnenkomende verzoeken niet geblokkeerd door Web Application Firewall.
+* **Preventiemodus** : Blokkeert indringers en aanvallen die door de regels zijn gedetecteerd. De aanvaller krijgt een uitzondering '403 onbevoegde toegang' en de verbinding wordt verbroken. In de preventiemodus worden dergelijke aanvallen vastgelegd in de WAF-logboeken.
 
 > [!NOTE]
 > Het is raadzaam om een nieuw geïmplementeerde WAF gedurende korte tijd in de detectiemodus uit te voeren in een productieomgeving. U hebt dan de mogelijkheid om [firewall-logboeken](../../application-gateway/application-gateway-diagnostics.md#firewall-log) te verzamelen, aan de hand waarvan u eventuele uitzonderingen of [aangepaste regels](./custom-waf-rules-overview.md) kunt aanpassen voordat u verdergaat in de preventiemodus. Hierdoor kan het volume onverwacht geblokkeerd verkeer worden verminderd.
@@ -131,9 +132,9 @@ In Application Gateway WAF kunnen de volgende twee modi worden geconfigureerd:
 
 OWASP heeft twee modi om te bepalen of verkeer moet worden geblokkeerd: traditionele modus en Anomaliescore.
 
-In de traditionele modus wordt verkeer dat voldoet aan een regel, als onafhankelijk beschouwd van andere regels waaraan wordt voldaan. Deze modus is eenvoudig te begrijpen. Maar het ontbreken van informatie over het aantal regels dat voldoet aan een specifieke aanvraag is een beperking. Daarom is de modus Anomaliescore geïntroduceerd. Dit is de standaard waarde voor OWASP 3.*x*.
+In de traditionele modus wordt verkeer dat voldoet aan een regel, als onafhankelijk beschouwd van andere regels waaraan wordt voldaan. Deze modus is eenvoudig te begrijpen. Maar het ontbreken van informatie over het aantal regels dat voldoet aan een specifieke aanvraag is een beperking. Daarom is de modus Anomaliescore geïntroduceerd. Dit is de standaard waarde voor OWASP 3. *x*.
 
-In de modus Anomaliescore wordt verkeer dat voldoet aan een regel niet onmiddellijk geblokkeerd wanneer de firewall in de preventiemodus staat. Regels hebben een bepaalde ernst: *Kritiek*, *Fout*, *Waarschuwing* of *Kennisgeving*. Deze ernst is van invloed op een numerieke waarde voor de aanvraag, die de anomalie- of afwijkingsscore wordt genoemd. Een regel met de ernst *Waarschuwing* draagt bijvoorbeeld 3 bij aan de score. Eén overeenkomst met een *kritieke* regel betekent dat de score wordt verhoogd met 5.
+In de modus Anomaliescore wordt verkeer dat voldoet aan een regel niet onmiddellijk geblokkeerd wanneer de firewall in de preventiemodus staat. Regels hebben een bepaalde ernst: *Kritiek* , *Fout* , *Waarschuwing* of *Kennisgeving*. Deze ernst is van invloed op een numerieke waarde voor de aanvraag, die de anomalie- of afwijkingsscore wordt genoemd. Een regel met de ernst *Waarschuwing* draagt bijvoorbeeld 3 bij aan de score. Eén overeenkomst met een *kritieke* regel betekent dat de score wordt verhoogd met 5.
 
 |Severity  |Waarde  |
 |---------|---------|
@@ -142,7 +143,7 @@ In de modus Anomaliescore wordt verkeer dat voldoet aan een regel niet onmiddell
 |Waarschuwing      |3|
 |Kennisgeving       |2|
 
-Als de anomaliescore een drempel van 5 heeft bereikt, wordt het verkeer geblokkeerd. Dus één overeenkomst met een regel van de ernst *Kritiek* is voldoende voor de Application Gateway WAF om een aanvraag te blokkeren, zelfs in de preventiemodus. Maar bij één overeenkomst met een regel met het ernstniveau *Waarschuwing*, wordt de score alleen met 3 verhoogd, wat niet voldoende is om het verkeer te blokkeren.
+Als de anomaliescore een drempel van 5 heeft bereikt, wordt het verkeer geblokkeerd. Dus één overeenkomst met een regel van de ernst *Kritiek* is voldoende voor de Application Gateway WAF om een aanvraag te blokkeren, zelfs in de preventiemodus. Maar bij één overeenkomst met een regel met het ernstniveau *Waarschuwing* , wordt de score alleen met 3 verhoogd, wat niet voldoende is om het verkeer te blokkeren.
 
 > [!NOTE]
 > Het bericht dat wordt vastgelegd wanneer verkeer voldoet aan een WAF-regel bevat de actiewaarde 'Geblokkeerd'. Het verkeer wordt echter alleen daadwerkelijk geblokkeerd bij een anomaliescore van 5 of hoger.  

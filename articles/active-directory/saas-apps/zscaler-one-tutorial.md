@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 8bac5d208cacc03b97c915cac174577fc673712e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d55e02bd981a220fee55a0abd540206a2701850a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545890"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Zelfstudie: Integratie van Azure Active Directory met Zscaler One
 
@@ -27,7 +27,7 @@ De integratie van Zscaler One met Azure AD heeft de volgende voordelen:
 * U kunt ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij Zscaler One (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -43,7 +43,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Zscaler One ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-* Zscaler One ondersteunt **Just-In-Time**-inrichting van gebruikers
+* Zscaler One ondersteunt **Just-In-Time** -inrichting van gebruikers
 
 ## <a name="adding-zscaler-one-from-the-gallery"></a>Zscaler One toevoegen vanuit de galerie
 
@@ -51,7 +51,7 @@ Om de integratie van Zscaler One in Azure AD te configureren, moet u Zscaler One
 
 **Voer de volgende stappen uit om Zscaler One toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -63,7 +63,7 @@ Om de integratie van Zscaler One in Azure AD te configureren, moet u Zscaler One
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Zscaler One**, selecteer **Zscaler One** in het resultatenvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Zscaler One** , selecteer **Zscaler One** in het resultatenvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![Zscaler One in de lijst met resultaten](common/search-new-app.png)
 
@@ -110,7 +110,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Zscaler On
 
 5. In Zscaler One worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname die Gebruikerskenmerken toont met het pictogram Bewerken geselecteerd.](common/edit-attribute.png)
 
 6. Bovendien worden in de Zscaler One-toepassing nog enkele kenmerken verwacht die als SAML-antwoord moeten worden doorgegeven. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
     
@@ -120,9 +120,9 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Zscaler On
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname die Gebruikersclaims toont met de optie om een nieuwe claim toe te voegen.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Schermopname die het dialoogvenster Gebruikersclaims beheren toont, waarin u de beschreven waarden kunt invoeren.](common/new-attribute-details.png)
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 
@@ -135,7 +135,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Zscaler On
     f. Klik op **Opslaan**.
 
     > [!NOTE]
-    > Klik [hier](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) als u wilt weten hoe u rollen in Azure AD moet configureren
+    > Klik [hier](../develop/active-directory-enterprise-app-role-management.md) als u wilt weten hoe u rollen in Azure AD moet configureren
 
 7. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -165,7 +165,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Zscaler On
 
 4. Ga naar **Beheer > Verificatie > Verificatie-instellingen** en voer de volgende stappen uit:
    
-    ![Beheer](./media/zscaler-one-tutorial/ic800206.png "Beheer")
+    ![Schermopname van de Zscaler One-site met stappen als beschreven.](./media/zscaler-one-tutorial/ic800206.png "Beheer")
 
     a. Kies onder Verificatietype de optie **SAML**.
 
@@ -193,7 +193,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Zscaler On
 
 6. Voer in het dialoogvenster **Configure User Authentication** de volgende stappen uit:
 
-    ![Beheer](./media/zscaler-one-tutorial/ic800207.png)
+    ![Schermopname van het dialoogvenster Configure User Authentication, waarin Activate is geselecteerd.](./media/zscaler-one-tutorial/ic800207.png)
 
     a. Beweeg de muisaanwijzer boven het menu **Activering** linksonder.
 
@@ -234,7 +234,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Zscaler On
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -246,7 +246,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -258,7 +258,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Zscaler One.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Zscaler One**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **Zscaler One**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -270,21 +270,21 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
 5. Selecteer in het dialoogvenster **Gebruikers en groepen****Britta Simon** in de lijst en klik op de knop **Selecteren** onder aan het scherm.
 
-    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_users.png)
+    ![Schermopname met het dialoogvenster Gebruikers en groepen, waarin u een gebruiker kunt selecteren.](./media/zscaler-one-tutorial/tutorial_zscalerone_users.png)
 
 6. In het dialoogvenster **Rol selecteren** kiest u de desbetreffende gebruikersrol in de lijst en klikt u vervolgens op de knop **Selecteren** onder aan het scherm.
 
-    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_roles.png)
+    ![Schermopname met het dialoogvenster Rol selecteren, waarin u een gebruikersrol kunt selecteren.](./media/zscaler-one-tutorial/tutorial_zscalerone_roles.png)
 
 7. Selecteer in het dialoogvenster **Toewijzing toevoegen** de knop **Toewijzen**.
 
-    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_assign.png)
+    ![Schermopname met het dialoogvenster Toewijzing toevoegen, waarin u Toewijzen kunt selecteren.](./media/zscaler-one-tutorial/tutorial_zscalerone_assign.png)
 
 ### <a name="create-zscaler-one-test-user"></a>Testgebruiker voor Zscaler One maken
 
@@ -297,13 +297,12 @@ In deze sectie wordt er een gebruiker met de naam Britta Simon gemaakt in Zscale
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Zscaler One klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Zscaler One waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Zscaler One klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Zscaler One waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

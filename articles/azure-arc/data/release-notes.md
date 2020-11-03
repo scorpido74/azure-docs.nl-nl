@@ -7,20 +7,58 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 09/22/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3c20bbd3ab02cd1eccd00e2d36c14eebf2f63205
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e7312ffd4d55f0403359f8aad2d0a8433a716f77
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92360298"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280375"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Release opmerkingen-Azure Arc ingeschakelde Data Services (preview-versie)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="september-2020"></a>September, 2020
+## <a name="october-2020"></a>Oktober 2020 
+
+### <a name="breaking-changes"></a>Wijzigingen die fouten veroorzaken
+
+In deze release worden de volgende belang rijke wijzigingen geïntroduceerd: 
+
+* De PostgreSQL-bestanden voor de aangepaste resource definitie (CRD) vervangen de naam van de term `shards` `workers` . Deze term ( `workers` ) komt overeen met de naam van de opdracht regel parameter.
+
+* `azdata arc postgres server delete` Hiermee wordt om bevestiging gevraagd voordat een post gres-exemplaar wordt verwijderd.  Gebruik `--force` om de prompt te overs Laan.
+
+### <a name="additional-changes"></a>Aanvullende wijzigingen
+
+* Er is een nieuwe optionele para meter toegevoegd met de `azdata arc postgres server create` naam `--volume-claim mounts` . De waarde is een door komma's gescheiden lijst met volume claim koppelingen. Een volume claim koppeling is een paar volume type en PVC-naam. Het volume type voor nu is alleen toegestaan `backup` .  In PostgreSQL, wanneer het volume type is `backup` , wordt het PVC gekoppeld aan `/mnt/db-backups` .  Hierdoor kunnen back-ups tussen post gres-instanties worden gedeeld, zodat de back-up van één post gres-exemplaar in een andere kan worden hersteld.
+
+* Een nieuwe korte naam voor aangepaste resource definities voor PostgresSQL: 
+
+  * `pg11` 
+
+  * `pg12`
+
+* Telemetrie uploaden door de gebruiker te voorzien van:
+
+   * Aantal punten dat naar Azure is geüpload
+
+     of 
+
+   * Als er geen gegevens zijn geladen in azure, wordt u gevraagd om het opnieuw te proberen.
+
+* `azdata arc dc debug copy-logs` Lees nu ook uit `/var/opt/controller/log` map en verzamelt post gres-Logboeken.
+
+*   Een werk indicator weer geven tijdens het maken en herstellen van de back-up.
+
+* `azdata arc postrgres backup list` bevat nu informatie over de grootte van de back-up.
+
+* De eigenschap admin name van SQL Managed instance is toegevoegd aan de rechter kolom van de Blade overzicht in het Azure Portal.
+
+
+
+## <a name="september-2020"></a>September 2020
 
 Data Services van Azure-Arc is beschikbaar voor open bare preview. Met Arc enabled Data Services kunt u overal gegevens Services beheren.
 
@@ -29,16 +67,24 @@ Data Services van Azure-Arc is beschikbaar voor open bare preview. Met Arc enabl
 
 Zie [Wat zijn Azure Arc-gegevens Services?](overview.md) voor instructies.
 
-### <a name="known-issues"></a>Bekende problemen
+## <a name="known-limitations-and-issues"></a>Bekende beperkingen en problemen
 
-De volgende problemen zijn van toepassing op deze release:
+- Namen van door SQL beheerde exemplaren mogen niet langer zijn dan 13 tekens
+- Geen in-place upgrade voor de Azure Arc-gegevens controller of-data base-exemplaren.
+- Arc-containerinstallatiekopieën met Data Services worden niet ondertekend.  Mogelijk moet u uw Kubernetes-knooppunten configureren zodat niet-ondertekende containerinstallatiekopieën kunnen worden opgehaald.  Als u bijvoorbeeld docker als container runtime gebruikt, kunt u de omgevings variabele DOCKER_CONTENT_TRUST = 0 instellen en opnieuw starten.  Andere container-runtimes hebben vergelijkbare opties zoals in [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration).
+- Kan geen door Azure Arc ingeschakelde SQL Managed instances of PostgreSQL grootschalige Server-groepen maken van de Azure Portal.
+- Als u nu gebruikmaakt van NFS, moet u `allowRunAsRoot` `true` in uw implementatie profiel bestand instellen voordat u de Azure Arc-gegevens controller maakt.
+- Alleen SQL-en PostgreSQL-aanmeldings verificatie.  Er wordt geen ondersteuning geboden voor Azure Active Directory of Active Directory.
+- Voor het maken van een gegevens controller voor open Shift zijn beperkte beveiligings beperkingen vereist.  Zie documentatie voor details.
+- Het schalen van het aantal PostgresSQL grootschalige-worker _-knoop punten_ wordt niet ondersteund.
+- Als u Azure Kubernetes service Engine (AKS-Engine) op Azure Stack hub met Azure Arc data controller-en data base-instanties gebruikt, wordt het upgraden naar een nieuwere versie van Kubernetes niet ondersteund. Verwijder de Azure Arc-gegevens controller en alle data base-exemplaren voordat u het Kubernetes-cluster bijwerkt.
+- Preview biedt geen ondersteuning voor Backup/Restore voor post gres versie 11-engine. Het ondersteunt alleen Backup/Restore voor post gres versie 12.
+- Azure Kubernetes service (AKS), clusters die [meerdere beschikbaarheids zones](../../aks/availability-zones.md) omvatten, worden momenteel niet ondersteund voor Azure Arc-gegevens Services. Als u dit probleem wilt voor komen, moet u, wanneer u het AKS-cluster maakt in Azure Portal, als u een regio selecteert waar zones beschikbaar zijn, alle zones verwijderen uit het selectie besturings element. Zie de volgende afbeelding:
 
-* De **postgresql grootschalige-Server groep wordt verwijderd**: als u de configuratie van de Server groep of het exemplaar hebt gewijzigd, wacht u totdat de bewerking is voltooid voordat u een postgresql grootschalige-Server groep verwijdert.
-
-* ** `azdata notebook run` kan mislukken**: als u dit probleem wilt afronden, voert u `azdata notebook run` uit in een virtuele python-omgeving. Dit probleem kan ook worden veroorzaakt door een mislukte poging om een SQL Managed instance of een PostgreSQL grootschalige-Server groep te maken met behulp van de wizard Azure Data Studio implementatie. In dit geval kunt u het notitie blok openen en op de knop **alles uitvoeren** boven aan het notitie blok klikken.
+   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Schakel de selectie vakjes voor elke zone uit om geen op te geven.":::
 
 ## <a name="next-steps"></a>Volgende stappen
-
+  
 > **Wilt u gewoon iets uitproberen?**  
 > Ga snel aan de slag met [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) op Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) of in een Azure-VM.
 
@@ -49,21 +95,3 @@ De volgende problemen zijn van toepassing op deze release:
 [Maak een Azure SQL Managed Instance op Azure Arc](create-sql-managed-instance.md) (hiervoor moet u eerst een Azure Arc-gegevenscontroller maken)
 
 [Maak een Azure Database for PostgreSQL Hyperscale-servergroep op Azure Arc](create-postgresql-hyperscale-server-group.md) (eerst moet een Azure Arc-gegevenscontroller gemaakt worden)
-
-## <a name="known-limitations-and-issues"></a>Bekende beperkingen en problemen
-
-- Namen van door SQL beheerde exemplaren mogen niet langer zijn dan 13 tekens
-- Geen in-place upgrade voor de Azure Arc-gegevens controller of-data base-exemplaren.
-- Arc-containerinstallatiekopieën met Data Services worden niet ondertekend.  Mogelijk moet u uw Kubernetes-knooppunten configureren zodat niet-ondertekende containerinstallatiekopieën kunnen worden opgehaald.  Als u bijvoorbeeld docker als container runtime gebruikt, kunt u de omgevings variabele DOCKER_CONTENT_TRUST = 0 instellen en opnieuw starten.  Andere container-runtimes hebben vergelijkbare opties zoals in [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration).
-- Kan geen door Azure Arc ingeschakelde SQL Managed instances of PostgreSQL grootschalige Server-groepen maken van de Azure Portal.
-- Als u nu gebruikmaakt van NFS, moet u allowRunAsRoot instellen op True in het implementatie profiel bestand voordat u de Azure Arc-gegevens controller maakt.
-- Alleen SQL-en PostgreSQL-aanmeldings verificatie.  Er wordt geen ondersteuning geboden voor Azure Active Directory of Active Directory.
-- Voor het maken van een gegevens controller voor open Shift zijn beperkte beveiligings beperkingen vereist.  Zie documentatie voor details.
-- Het schalen van het aantal post gres grootschalige-worker _-knoop punten_ wordt niet ondersteund.
-- Als u Azure Kubernetes service Engine (AKS-Engine) op Azure Stack hub met Azure Arc data controller-en data base-instanties gebruikt, wordt het upgraden naar een nieuwere versie van Kubernetes niet ondersteund. Verwijder de Azure Arc-gegevens controller en alle data base-exemplaren voordat u het Kubernetes-cluster bijwerkt.
-- Preview biedt geen ondersteuning voor Backup/Restore voor post gres versie 11-engine. Het ondersteunt alleen Backup/Restore voor post gres versie 12.
-- Azure Kubernetes service (AKS), clusters die [meerdere beschikbaarheids zones](../../aks/availability-zones.md) omvatten, worden momenteel niet ondersteund voor Azure Arc-gegevens Services. Als u dit probleem wilt voor komen, moet u, wanneer u het AKS-cluster maakt in Azure Portal, als u een regio selecteert waar zones beschikbaar zijn, alle zones verwijderen uit het selectie besturings element. Zie de volgende afbeelding:
-
-   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Schakel de selectie vakjes voor elke zone uit om geen op te geven.":::
-
-  

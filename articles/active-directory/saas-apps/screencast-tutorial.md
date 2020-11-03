@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
-ms.openlocfilehash: e56684c30d243e0b7848355234fef896ccd220ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b0c42046df716c8ae65046e5f3314817da0a17e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543292"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893774"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Screencast-O-Matic
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Screencast-O-Matic integreert met Azure Active 
 * U kunt instellen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Screencast-O-Matic.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Screencast-O-Matic ondersteunt door **SP** geïnitieerde eenmalige aanmelding
-* Screencast-O-Matic biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
+* Screencast-O-Matic biedt ondersteuning voor **Just-In-Time** -inrichting van gebruikers
 
 ## <a name="adding-screencast-o-matic-from-the-gallery"></a>Screencast-O-Matic toevoegen uit de galerie
 
@@ -70,7 +70,7 @@ Als u eenmalige aanmelding van Azure AD wilt configureren en testen met Screenca
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Screencast-O-Matic**, ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Screencast-O-Matic** , ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
@@ -95,9 +95,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -137,15 +137,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     ![Het abonnement](./media/screencast-tutorial/tutorial_screencast_sub.png)
 
-1. Klik onder **Toegangspagina** op **Instellen**.
+1. Klik onder de sectie **Access page** op **Setup**.
 
-    ![De toegang](./media/screencast-tutorial/tutorial_screencast_setup.png)
+    ![Schermopname van de sectie Access Page waarin de knop Setup is geselecteerd.](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
 1. Voer op de pagina **Toegangspagina instellen** de volgende stappen uit:
 
-1. Typ in het gedeelte **Toegangs-URL** de naam van uw instantie in het opgegeven tekstvak.
+1. Typ in de sectie **Access URL** de naam van uw instantie in het opgegeven tekstvak.
 
-    ![De toegang](./media/screencast-tutorial/tutorial_screencast_access.png)
+    ![Schermopname met de sectie Access URL, waarin het tekstvak voor de naam van de instantie is gemarkeerd.](./media/screencast-tutorial/tutorial_screencast_access.png)
 
 1. Selecteer **Domeingebruiker vereisen** onder **SAML-gebruikersbeperking (optioneel)** .
 
@@ -163,14 +163,14 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Screencas
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Screencast-O-Matic in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Screencast-O-Matic waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Screencast-O-Matic in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Screencast-O-Matic waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Probeer Screencast-O-Matic met Azure AD](https://aad.portal.azure.com/)

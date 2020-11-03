@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 10/21/2020
+ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367717"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675045"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Zelfstudie: Azure AD-gebruikers maken met behulp van Azure AD-toepassingen
 
@@ -44,7 +44,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="assign-an-identity-to-the-azure-sql-logical-server"></a>Wijs een identiteit toe aan de logische Azure SQL-server.
 
-1. Maak verbinding met de Azure Active Directory. U hebt uw Tenant-id nodig. Deze vindt u door in de [Azure-portal](https://portal.azure.com) naar uw **Azure Active Directory**-resource te gaan. In het deelvenster **Overzicht** ziet u de **Tenant-id**. Voer de volgende PowerShell-opdracht uit:
+1. Maak verbinding met de Azure Active Directory. U hebt uw Tenant-id nodig. Deze vindt u door in de [Azure-portal](https://portal.azure.com) naar uw **Azure Active Directory** -resource te gaan. In het deelvenster **Overzicht** ziet u de **Tenant-id**. Voer de volgende PowerShell-opdracht uit:
 
     - Vervang `<TenantId>` door de **Tenant-id**.
 
@@ -62,12 +62,12 @@ In deze zelfstudie leert u het volgende:
     Set-AzSqlServer -ResourceGroupName <resource group> -ServerName <server name> -AssignIdentity
     ```
 
-    Zie de opdracht [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) voor meer informatie.
+    Zie de opdracht [Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) voor meer informatie.
 
     > [!IMPORTANT]
     > Als een Azure AD-identiteit is ingesteld voor de logische Azure SQL-server, moet de machtiging [**Adreslijstlezers**](../../active-directory/roles/permissions-reference.md#directory-readers) zijn verleend aan de identiteit. We doorlopen deze stap in de volgende sectie. **Sla deze stap niet over** aangezien Azure AD-verificatie dan niet meer werkt.
 
-    - Als u in het verleden de opdracht [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) met de parameter `AssignIdentity` hebt gebruikt om een nieuwe SQL-server te maken, moet u de opdracht [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) later uitvoeren als een afzonderlijke opdracht om deze eigenschap in te schakelen in Azure Fabric.
+    - Als u in het verleden de opdracht [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) met de parameter `AssignIdentity` hebt gebruikt om een nieuwe SQL-server te maken, moet u de opdracht [Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) later uitvoeren als een afzonderlijke opdracht om deze eigenschap in te schakelen in Azure Fabric.
 
 1. Controleer of het toewijzen van de server-id is geslaagd. Voer de volgende PowerShell-opdracht uit:
 
@@ -82,7 +82,7 @@ In deze zelfstudie leert u het volgende:
 
 1. U kunt de identiteit ook controleren door naar de [Azure-portal](https://portal.azure.com) te gaan.
 
-    - Ga onder de **Azure Active Directory**-resource naar **Bedrijfstoepassingen**. Typ de naam van de logische SQL-server. U ziet nu dat er een **object-id** is gekoppeld aan de resource.
+    - Ga onder de **Azure Active Directory** -resource naar **Bedrijfstoepassingen**. Typ de naam van de logische SQL-server. U ziet nu dat er een **object-id** is gekoppeld aan de resource.
     
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/enterprise-applications-object-id.png" alt-text="object-id":::
 
@@ -163,20 +163,30 @@ Raadpleeg [Azure AD-beheerder inrichten (SQL Managed Instance)](authentication-a
 
     Zorg ervoor dat u zowel de **Toepassingsmachtigingen** als de **Gedelegeerde machtigingen** toevoegt.
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="object-id":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="Schermopname van de pagina App-registraties voor Azure Active Directory. Een app met de weergavenaam AppSP is gemarkeerd.":::
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="object-id":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="api-permissions":::
 
 2. U moet ook een clientgeheim maken om u aan te melden. Volg deze handleiding om [een certificaat te uploaden of een geheim te maken voor aanmelden](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options).
 
-3. Leg de volgende informatie uit de toepassingsregistratie vast. Deze vindt u in het deelvenster **Overzicht**:
+3. Leg de volgende informatie uit de toepassingsregistratie vast. Deze vindt u in het deelvenster **Overzicht** :
     - **Toepassings-id**
-    - **Tenant-id**: dit is dezelfde id als eerder
+    - **Tenant-id** : dit is dezelfde id als eerder
 
-In deze zelfstudie wordt gebruikgemaakt van *AppSP* als de hoofd-service-principal en *myapp* als de tweede service-principal-gebruiker die met *AppSP* wordt gemaakt in Azure SQL. U moet twee toepassingen maken, *AppSP* en *myapp*.
+In deze zelfstudie wordt gebruikgemaakt van *AppSP* als de hoofd-service-principal en *myapp* als de tweede service-principal-gebruiker die met *AppSP* wordt gemaakt in Azure SQL. U moet twee toepassingen maken: *AppSP* en *myapp*.
 
 Voor meer informatie over het maken van een Azure AD-toepassing, raadpleegt u het artikel [Uitleg: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../../active-directory/develop/howto-create-service-principal-portal.md).
 
+### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Benodigde machtigingen voor het instellen of instellen ongedaan maken van de Azure AD-beheerder
+
+Er is een extra API-machtiging nodig om de service-principal een Azure AD-beheerder voor Azure SQL te laten instellen of de instelling ongedaan te laten maken. De Application API-machtiging [Directory.Read.All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) moet worden toegevoegd aan uw toepassing in Azure AD.
+
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Directory.Reader.All-machtigingen in Azure AD":::
+
+De service-principal heeft ook de rol [**Inzender voor SQL Server**](../../role-based-access-control/built-in-roles.md#sql-server-contributor) voor SQL Database nodig, of de rol [**Inzender voor beheerd SQL-exemplaar**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) voor SQL Managed Instance.
+
+> [!NOTE]
+> Hoewel Azure AD Graph API wordt afgeschaft, is de machtiging **Directory.Reader.All** nog steeds van toepassing op deze zelfstudie. De Microsoft Graph API is niet van toepassing op deze zelfstudie.
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>De service-principal-gebruiker maken in Azure SQL Database
 
@@ -196,7 +206,7 @@ Zodra een service-principal is gemaakt in Azure AD, maakt u de gebruiker in SQL 
     GO
     ```
 
-    Zie [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) voor meer informatie
+    Zie [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) voor meer informatie
 
     U kunt ook de machtiging `ALTER ANY USER` verlenen in plaats van de rol `db_owner` toe te wijzen. Dit stelt de service-principal in staat om andere Azure AD-gebruikers toe te voegen.
 
@@ -301,5 +311,5 @@ Zodra een service-principal is gemaakt in Azure AD, maakt u de gebruiker in SQL 
 - [Beheerde identiteiten gebruiken voor App Service en Azure Functions](../../app-service/overview-managed-identity.md)
 - [Verificatie via Azure AD-service-principal bij SQL DB - codevoorbeeld](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Toepassings- en service-principal-objecten in Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md)
-- [Een Azure-service-principal maken met Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Een Azure-service-principal maken met Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)
 - [Rol Directory Readers in Azure Active Directory voor Azure SQL](authentication-aad-directory-readers-role.md)

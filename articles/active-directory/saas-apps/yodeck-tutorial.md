@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 8eed884ed9d957ede4ae9fc192ae5a8e501b652e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68e961336d7e86f9983fea49044137894ab0f985
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546233"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Zelfstudie: Azure Active Directory-integratie met Yodeck
 
@@ -27,7 +27,7 @@ De integratie van Yodeck met Azure AD biedt de volgende voordelen:
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Yodeck (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Om de integratie van Yodeck in Azure AD te configureren, moet u Yodeck vanuit de
 
 **Voer de volgende stappen uit om Yodeck toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -105,7 +105,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![image](common/both-preintegrated-signon.png)
+    ![Schermopnamen met Standaard SAML-configuratie, met de koppeling voor het uploaden van een bestand met metagegevens.](common/both-preintegrated-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL: `https://app.yodeck.com/login`
 
@@ -117,7 +117,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 1. Als u de configuratie in Yodeck wilt automatiseren, moet u de **browserextensie voor veilig aanmelden bij mijn apps** installeren door te klikken op **De extensie installeren**.
 
-    ![image](./media/target-process-tutorial/install_extension.png)
+    ![Schermopname met de knop Install the extension.](./media/target-process-tutorial/install_extension.png)
 
 1. Als u op **Yodeck instellen** klikt nadat u de extensie aan de browser hebt toegevoegd, wordt u doorgestuurd naar de Yodeck-toepassing. Geef hier de beheerdersreferenties op om u aan te melden bij Yodeck. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 5 geautomatiseerd.
 
@@ -129,11 +129,11 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 1. Klik op de optie **Gebruikersinstellingen** in de rechter bovenhoek van de pagina en selecteer **Accountinstellingen**.
 
-    ![Yodeck-configuratie](./media/yodeck-tutorial/configure1.png)
+    ![Schermopname met Account Settings geselecteerd voor de gebruiker.](./media/yodeck-tutorial/configure1.png)
 
 1. Selecteer **SAML** en voer de volgende stappen uit:
 
-    ![Yodeck-configuratie](./media/yodeck-tutorial/configure2.png)
+    ![Schermopname van het tabblad SAML, waar u deze stappen kunt uitvoeren.](./media/yodeck-tutorial/configure2.png)
 
     a. Selecteer **Importeren van URL**.
 
@@ -147,7 +147,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -159,7 +159,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -183,7 +183,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -203,15 +203,15 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Yodeck, moeten ze w
 
 2. Klik op de optie **Gebruikersinstellingen** in de rechter bovenhoek van de pagina en selecteer **Gebruikers**.
 
-    ![Werknemer toevoegen](./media/yodeck-tutorial/user1.png)
+    ![Schermopname waarin Users voor de gebruiker is geselecteerd.](./media/yodeck-tutorial/user1.png)
 
 3. Klik op **+ gebruiker** om het tabblad **Gebruikersdetails** te openen.
 
-    ![Werknemer toevoegen](./media/yodeck-tutorial/user2.png)
+    ![Schermopname van de knop Users.](./media/yodeck-tutorial/user2.png)
 
 4. Voer in het dialoogvenster **User Details** de volgende stappen uit:
 
-    ![Werknemer toevoegen](./media/yodeck-tutorial/user3.png)
+    ![Schermopname van het tabblad User Details, waar u deze stappen kunt uitvoeren.](./media/yodeck-tutorial/user3.png)
 
     a. Typ in het tekstvak **First Name** de voornaam van de gebruiker, bijvoorbeeld **Britta**.
 
@@ -227,13 +227,12 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Yodeck, moeten ze w
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Yodeck in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Yodeck waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Yodeck in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Yodeck waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 63b93db314701d281f3f4fff195671f43cdb9dbc
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340883"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900401"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Extra bedreigingsbeveiliging in Azure Security Center
 Naast de ingebouwde [Azure Defender-beveiligingsmethoden](azure-defender.md) biedt Azure Security Center de volgende mogelijkheden voor bedreigingsbeveiliging.
@@ -32,7 +32,6 @@ Analyse van de Security Center-netwerklaag is gebaseerd op voorbeelden van [IPFI
 Sommige netwerkconfiguraties kunnen voorkomen dat Security Center waarschuwingen over verdachte netwerkactiviteit genereert. Security Center genereert netwerkwaarschuwingen als de volgende voorwaarden van toepassing zijn:
 - Uw virtuele machine heeft een openbaar IP-adres (of bevindt zich op een load balancer met een openbaar IP-adres).
 - Het uitgaande netwerkverkeer van uw virtuele machine wordt niet geblokkeerd door een externe ID-oplossing.
-- Uw virtuele machine is toegewezen aan hetzelfde IP-adres voor het hele uur waarin de verdachte communicatie heeft plaatsgevonden. Dit geldt ook voor virtuele machines die gemaakt zijn als onderdeel van een beheerde service (zoals AKS of Databricks).
 
 Zie de [Referentietabel met waarschuwingen](alerts-reference.md#alerts-azurenetlayer) voor een lijst met waarschuwingen voor de Azure-netwerklaag.
 
@@ -101,4 +100,4 @@ Raadpleeg de volgende artikelen voor meer informatie over de beveiligingswaarsch
 * [Referentietabel voor alle Azure Security Center-waarschuwingen](alerts-reference.md)
 * [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-overview.md)
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Beveiligingswaarschuwingen en aanbevelingen exporteren (preview-versie)](continuous-export.md)
+* [Security Center-gegevens continu exporteren](continuous-export.md)

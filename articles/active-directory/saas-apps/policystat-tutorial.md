@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 212bd1bc0b15ad985fc8037e99876d78132b2c22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547933"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893013"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Zelfstudie: Azure Active Directory-integratie met PolicyStat
 
@@ -27,7 +27,7 @@ De integratie van PolicyStat met Azure AD heeft de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij PolicyStat (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -46,7 +46,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * PolicyStat biedt ondersteuning voor met **SP** geïnitieerde eenmalige aanmelding
 
-* PolicyStat biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
+* PolicyStat biedt ondersteuning voor **Just-In-Time** -inrichting van gebruikers
 
 ## <a name="adding-policystat-from-the-gallery"></a>PolicyStat toevoegen vanuit de galerie
 
@@ -54,7 +54,7 @@ Voor het configureren van de integratie van PolicyStat in Azure AD moet u Policy
 
 **Voer de volgende stappen uit om PolicyStat toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -118,7 +118,7 @@ Voor het configureren van eenmalige aanmelding met Azure Active Directory bij Po
 
 5. In de PolicyStat-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met het dialoogvenster Gebruikerskenmerken waarin het pictogram Bewerken is geselecteerd.](common/edit-attribute.png)
 
 6. Bovendien verwacht de PolicyStat-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
 
@@ -128,9 +128,9 @@ Voor het configureren van eenmalige aanmelding met Azure Active Directory bij Po
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
     
-    ![image](common/new-save-attribute.png)
+    ![Schermopname met de sectie 'Gebruikersclaims' met de acties 'Nieuwe claim toevoegen' en 'Opslaan' gemarkeerd.](common/new-save-attribute.png)
 
-    ![image](./media/policystat-tutorial/attribute01.png)
+    ![Schermopname met het dialoogvenster Gebruikersclaims beheren, waarin de tekstvakken Naam, Transformatie en Parameter zijn gemarkeerd en de knop Opslaan is geselecteerd.](./media/policystat-tutorial/attribute01.png)
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 
@@ -162,15 +162,15 @@ Voor het configureren van eenmalige aanmelding met Azure Active Directory bij Po
    
     ![Menu Beheerder](./media/policystat-tutorial/ic808633.png "Menu Beheerder"):
 
-3. Klik op **Uw IDP-metagegevens**en voer vervolgens de volgende stappen uit in de sectie **Uw IDP-metagegevens**:
+3. Klik op **Uw IDP-metagegevens** en voer vervolgens de volgende stappen uit in de sectie **Uw IDP-metagegevens** :
    
-    ![Eenmalige aanmelding configureren](./media/policystat-tutorial/ic808636.png "Eenmalige aanmelding configureren")
+    ![Schermopname waarin de actie Your IDP Metadata is geselecteerd.](./media/policystat-tutorial/ic808636.png "Eenmalige aanmelding configureren")
    
     a. Open uw gedownloade metagegevensbestand, kopieer de inhoud en plak deze vervolgens in het tekstvak **Uw Identity Provider-metagegevens**.
 
     b. Klik op **Wijzigingen opslaan**.
 
-4. Klik op **Kenmerken configureren**en voer vervolgens de volgende stappen uit in de sectie **Kenmerken configureren**:
+4. Klik op **Kenmerken configureren** en voer vervolgens de volgende stappen uit in de sectie **Kenmerken configureren** :
    
     a. In het tekstvak **Kenmerk gebruikersnaam** typt u **uid**.
 
@@ -203,7 +203,7 @@ In dit gedeelte gaat u uw eigen account toestemming geven voor gebruik van eenma
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -224,12 +224,12 @@ In dit gedeelte maakt u in PolicyStat een gebruiker met de naam Britta Simon. Po
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel PolicyStat in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van PolicyStat waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel PolicyStat in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van PolicyStat waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

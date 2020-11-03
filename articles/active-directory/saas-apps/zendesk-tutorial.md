@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4973a5f1311de23cf54e401a52fb083f497687a3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815003"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894471"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Zendesk
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Zendesk kunt integreren met Azure Active Direct
 * Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld Zendesk.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +41,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Zendesk ondersteunt door **SP** geïnitieerde eenmalige aanmelding (SSO)
 * Zendesk ondersteunt het [**geautomatiseerd** inrichten van gebruikers](zendesk-provisioning-tutorial.md)
-* Zodra u Zendesk hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u Zendesk hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-zendesk-from-the-gallery"></a>Zendesk toevoegen vanuit de galerie
 
@@ -90,7 +90,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In de Zendesk-toepassing wordt verwacht dat de SAML-asserties een specifieke indeling hebben. Er zijn geen verplichte SAML-kenmerken, maar u kunt kenmerken desgewenst beheren vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname die Gebruikerskenmerken toont met het pictogram Bewerken geselecteerd.](common/edit-attribute.png)
 
     > [!NOTE]
     > U gebruikt extensiekenmerken om attributen toe te voegen die niet standaard in Azure AD zitten. Klik op [Gebruikerskenmerken die kunnen worden ingesteld in SAML](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-) om de volledige lijst van SAML-kenmerken op te halen die in **Zendesk** worden geaccepteerd.
@@ -111,9 +111,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -141,7 +141,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Als u de configuratie in **Zendesk** wilt automatiseren, moet u de **Mijn apps-browserextensie voor veilig aanmelden** installeren door op **De extensie installeren** te klikken.
 
-    ![image](./media/target-process-tutorial/install_extension.png)
+    ![Schermopname met de knop Install the extension.](./media/target-process-tutorial/install_extension.png)
 
 1. Als u op **Zendesk instellen** klikt nadat u de extensie aan de browser hebt toegevoegd, wordt u doorgestuurd naar de Zendesk-toepassing. Geef hier de Administrator-referenties op om u aan te melden bij Zendesk. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3 t/m 6 geautomatiseerd.
 
@@ -151,13 +151,13 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in het **Zendesk Admin Center** op **Beveiligingsinstellingen** in het tabblad **Beveiliging**.
 
-    ![Beveiliging](./media/zendesk-tutorial/settings.png "Beveiliging")
+    ![Schermopname van Zendesk Admin Center, waarin Security settings is geselecteerd.](./media/zendesk-tutorial/settings.png "Beveiliging")
 
 1. Ga naar de pagina **Eenmalige aanmelding** en klik op **Bewerken** in de **SAML**.
 
-    ![Beveiliging](./media/zendesk-tutorial/saml-sso.png "Beveiliging")
+    ![Schermopname van de pagina Single sign-on, waarop Edit is geselecteerd.](./media/zendesk-tutorial/saml-sso.png "Beveiliging")
 
-1. Voer deze stappen uit op de **Eenmalige aanmelding**-pagina.
+1. Voer deze stappen uit op de **Eenmalige aanmelding** -pagina.
 
     ![Eenmalige aanmelding](./media/zendesk-tutorial/saml-configuration.png "Eenmalige aanmelding")
 
@@ -177,20 +177,20 @@ Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Zendesk in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Zendesk waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Zendesk in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Zendesk waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Zendesk proberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Zendesk beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Zendesk beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)
 
 - [Inrichten van gebruikers configureren](zendesk-provisioning-tutorial.md)

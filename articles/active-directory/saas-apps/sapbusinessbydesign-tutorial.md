@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 6959b7e819ad906f04a18661d6bd4aa2d82f8984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d04601cb11e57f50c82680077793aef1b816bfa
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543353"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Zelfstudie: Azure Active Directory-integratie met SAP Business ByDesign
 
@@ -27,7 +27,7 @@ De integratie van SAP Business ByDesign met Azure AD biedt de volgende voordelen
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij SAP Business ByDesign (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Voor het configureren van de integratie van SAP Business ByDesign met Azure AD m
 
 **Ga als volgt te werk om SAP Business ByDesign vanuit de galerie toe te voegen:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -110,11 +110,11 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SAP Business ByDesig
 
 5. Voor de SAP Business ByDesign-toepassing worden de SAML-asserties in een bepaalde indeling verwacht. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met het dialoogvenster 'Gebruikerskenmerken' met de knop 'Bewerken' geselecteerd.](common/edit-attribute.png)
 
 6. Klik op het pictogram **Bewerken** om de **waarde van Naam-ID** te bewerken.
 
-    ![image](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
+    ![Schermopname van de pagina Gebruikerskenmerken en claims, waarop het pictogram Bewerken is geselecteerd.](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
 
 7. Voer in de sectie **Gebruikersclaims beheren** de volgende stappen uit: ![afbeelding](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
 
@@ -148,7 +148,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SAP Business ByDesig
 
 3. Klik op **Nieuwe ID-provider** en selecteer het XML-bestand voor metagegevens dat u hebt gedownload vanuit Azure Portal. Door het importeren van de metagegevens worden automatisch het vereiste handtekeningcertificaat en versleutelingscertificaat geüpload.
 
-    ![Eenmalige aanmelding configureren](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![Schermopname van de pagina Configure Single Sign-On, waarop het tabblad Identity Provider en de actie New Identity Provider zijn geselecteerd.](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
 4. Selecteer **Assertion Consumer Service URL opnemen** als u de **Assertion Consumer Service URL** in de SAML-aanvraag wilt opnemen.
 
@@ -158,7 +158,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SAP Business ByDesig
 
 7. Klik op het tabblad **Mijn systeem**.
 
-    ![Eenmalige aanmelding configureren](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    ![Schermopname van de pagina Configure Single Sign-On, waarop het tabblad My System is geselecteerd.](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
 8. Plak in het tekstvak **Azure AD-aanmeldings-URL** de waarde van de **aanmeldings-URL** die u uit de Azure Portal hebt gekopieerd.
 
@@ -187,7 +187,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met SAP Business ByDesig
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -199,7 +199,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -211,7 +211,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azure gebruik kan maken door haar toegang te verlenen tot SAP Business ByDesign.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **SAP Business ByDesign**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **SAP Business ByDesign**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -223,7 +223,7 @@ In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azur
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -244,12 +244,12 @@ In deze sectie maakt u een gebruiker met de naam Britta Simon in SAP Business By
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel SAP Business ByDesign klikt in het toegangsvenster, wordt u automatisch aangemeld bij het exemplaar van SAP Business ByDesign waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel SAP Business ByDesign klikt in het toegangsvenster, wordt u automatisch aangemeld bij het exemplaar van SAP Business ByDesign waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

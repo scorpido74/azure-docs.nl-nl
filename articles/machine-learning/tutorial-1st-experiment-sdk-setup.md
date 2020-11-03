@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df8e4c2728bd7487520164553d26dfd42e38b647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841839"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913293"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Zelfstudie: Aan de slag met de Azure Machine Learning in Jupyter Notebooks
 
@@ -34,7 +34,9 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 
 Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. De klasse bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service.
 
-U maakt een werkruimte via de Azure-portal, een webconsole om uw Azure-resources te beheren.
+Ga verder naar [Een notebook-map klonen](#clone) als u al een Azure Machine Learning-werkruimte hebt.  
+
+Er zijn verschillende manieren om een [werkruimte te maken](how-to-manage-workspace.md).  In deze zelfstudie maakt u een werkruimte via Azure Portal, een webconsole om uw Azure-resources te beheren.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -49,7 +51,7 @@ Azure Machine Learning bevat een cloudnotebook-server in uw werkruimte voor een 
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
-### <a name="clone-a-notebook-folder"></a>Een notebook-map klonen
+### <a name="clone-a-notebook-folder"></a><a name="clone"></a> Een notebook-map klonen
 
 U voltooit de volgende instellingen voor het experiment en voert stappen uit in Azure Machine Learning-studio. Deze geconsolideerde interface bevat machine learning-hulpprogramma's voor het uitvoeren van datawetenschap-scenario's voor datawetenschappers van alle vaardigheidsniveaus.
 
@@ -76,11 +78,11 @@ U voltooit de volgende instellingen voor het experiment en voert stappen uit in 
 1. Open de map **Zelfstudies** die naar uw sectie **Gebruikersbestanden** is gekloond.
 
     > [!IMPORTANT]
-    > U kunt notebooks bekijken in de map **Voorbeelden**, maar u kunt een notebook niet uitvoeren vandaaruit. Als u een notebook wilt uitvoeren, moet u de gekloonde versie van het notebook in de sectie **Gebruikersbestanden** openen.
+    > U kunt notebooks bekijken in de map **Voorbeelden** , maar u kunt een notebook niet uitvoeren vandaaruit. Als u een notebook wilt uitvoeren, moet u de gekloonde versie van het notebook in de sectie **Gebruikersbestanden** openen.
     
 1. Selecteer het bestand **tutorial-1st-experiment-sdk-train.ipynb** in de map **tutorials/image-classification-mnist-data**.
 
-    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Schermopname van de map zelfstudies voor Klonen.":::
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Schermopname van de map Open zelfstudies.":::
 
 1. Selecteer in de bovenste balk een rekenproces om te gebruiken voor het uitvoeren van het notebook. Deze virtuele machines (VM's) zijn vooraf geconfigureerd met [alles wat u nodig hebt om Azure Machine Learning uit te voeren](concept-compute-instance.md#contents).
 

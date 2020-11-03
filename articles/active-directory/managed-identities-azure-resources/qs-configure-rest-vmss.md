@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2b776ba64d96d092ad51ad2888b891e19e8b521
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c79942aad2ce450bc22aa0a0cfc32e67a667bd48
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90968875"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895950"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met behulp van REST API-aanroepen
 
@@ -33,21 +33,24 @@ In dit artikel leert u om met behulp van CURL het Azure Resource Manager REST-ei
 - De door het systeem toegewezen beheerde identiteit inschakelen en uitschakelen op een virtuele-machineschaalset van Azure
 - Een door de gebruiker toegewezen beheerde identiteit toevoegen aan en verwijderen uit een virtuele-machineschaalset van Azure
 
+Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
+
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de sectie [Overzicht](overview.md). **Let op dat u nagaat wat het [verschil is tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#managed-identity-types)** .
-- Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
+- Zie [Wat zijn beheerde identiteiten voor Azure-resources?](overview.md) als u niet bekend met beheerde identiteiten voor Azure-resources. Zie [Beheerde identiteitstypen](overview.md#managed-identity-types) voor meer informatie over door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteitstypen.
+
 - Voor het uitvoeren van de beheerbewerkingen in dit artikel zijn voor uw account de volgende Azure-roltoewijzingen nodig:
 
-    > [!NOTE]
-    > Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-map.
+  - [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) voor het maken van een virtuele-machineschaalset en het inschakelen en verwijderen van een door het systeem en/of de gebruiker toegewezen beheerde identiteit op/uit een virtuele-machineschaalset.
 
-    - [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) voor het maken van een virtuele-machineschaalset en het inschakelen en verwijderen van een door het systeem en/of de gebruiker toegewezen beheerde identiteit op/uit een virtuele-machineschaalset.
-    - De rol van [inzender voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) voor het maken van een door de gebruiker toegewezen beheerde identiteit.
-    - De rol van [operator voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-operator) voor het toewijzen/verwijderen van een door de gebruiker toegewezen identiteit aan/uit een virtuele-machine schaalset.
-- U kunt alle opdrachten in dit artikel in de cloud of lokaal uitvoeren:
-    - Gebruik de [Azure Cloud Shell](../../cloud-shell/overview.md) om uit te voeren in de cloud.
-    - Als u lokaal wilt uitvoeren, installeer dan [curl](https://curl.haxx.se/download.html) en de [Azure CLI](/cli/azure/install-azure-cli). Meld u daarna aan bij Azure via [az login](/cli/azure/reference-index#az-login) met een account dat gekoppeld is aan het Azure-abonnement waarvoor u de door het systeem of door de gebruiker toegewezen beheerde identiteiten wilt beheren.
+  - De rol van [inzender voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) voor het maken van een door de gebruiker toegewezen beheerde identiteit.
+
+  - De rol van [operator voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-operator) voor het toewijzen/verwijderen van een door de gebruiker toegewezen identiteit aan/uit een virtuele-machine schaalset.
+
+  > [!NOTE]
+  > Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-map.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 
@@ -63,7 +66,7 @@ Als u een virtuele-machineschaalset wilt maken waarvoor een door het systeem toe
    az group create --name myResourceGroup --location westus
    ```
 
-2. Maak een [netwerkinterface](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) voor uw virtuele-machineschaalset:
+2. Maak een [netwerkinterface](/cli/azure/network/nic#az-network-nic-create) voor uw virtuele-machineschaalset:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -75,7 +78,7 @@ Als u een virtuele-machineschaalset wilt maken waarvoor een door het systeem toe
    az account get-access-token
    ``` 
 
-4. Maak een virtuele-machineschaalset door met behulp van CURL het Azure Resource Manager REST-eindpunt aan te roepen. In het volgende voorbeeld wordt een virtuele-machineschaalset gemaakt met de naam *myVMSS* in de resourcegroep *myResourceGroup* met een door het systeem toegewezen beheerde identiteit, zoals aangegeven in de aanvraagbody met de waarde `"identity":{"type":"SystemAssigned"}`. Vervang `<ACCESS TOKEN>` door de waarde die u in de vorige stap hebt ontvangen toen u een Bearer-toegangstoken en de `<SUBSCRIPTION ID>`-waarde hebt aangevraagd die van toepassing zijn voor uw omgeving.
+4. Maak in Azure Cloud Shell een virtuele-machineschaalset door met behulp van CURL het Azure Resource Manager REST-eindpunt aan te roepen. In het volgende voorbeeld wordt een virtuele-machineschaalset gemaakt met de naam *myVMSS* in de resourcegroep *myResourceGroup* met een door het systeem toegewezen beheerde identiteit, zoals aangegeven in de aanvraagbody met de waarde `"identity":{"type":"SystemAssigned"}`. Vervang `<ACCESS TOKEN>` door de waarde die u in de vorige stap hebt ontvangen toen u een Bearer-toegangstoken en de `<SUBSCRIPTION ID>`-waarde hebt aangevraagd die van toepassing zijn voor uw omgeving.
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -322,7 +325,7 @@ In deze sectie leert u hoe u een door de gebruiker toegewezen beheerde identitei
    az account get-access-token
    ```
 
-2. Maak een [netwerkinterface](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) voor uw virtuele-machineschaalset:
+2. Maak een [netwerkinterface](/cli/azure/network/nic#az-network-nic-create) voor uw virtuele-machineschaalset:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic

@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5eb392fdfc1ffdb6d7cfee64734cca32c9abcd33
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019372"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913276"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Zelfstudie: Een machine learning-model maken met R (preview)
 
@@ -45,7 +45,7 @@ Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. P
 
 Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. De klasse bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service. 
 
-U maakt een werkruimte via de Azure-portal, een webconsole om uw Azure-resources te beheren. 
+Er zijn verschillende manieren om een [werkruimte te maken](how-to-manage-workspace.md). In deze zelfstudie maakt u een werkruimte via Azure Portal, een webconsole om uw Azure-resources te beheren. 
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -305,7 +305,7 @@ model <- register_model(ws,
 ### <a name="define-the-inference-dependencies"></a>De afleidingsafhankelijkheden definiëren
 Als u een webservice voor uw model wilt maken, moet u eerst een scorescript (`entry_script`) maken. Dit is een R-script dat variabele waarden (in JSON-indeling) accepteert als invoer en dat een voorspelling van uw model uitvoert. Gebruik voor deze zelfstudie het meegeleverde scorebestand `accident_predict.R`. Het scorescript moet een methode `init()` bevatten waarmee uw model wordt geladen en een functie wordt geretourneerd die het model gebruikt om een voorspelling te geven op basis van de invoergegevens. Raadpleeg de [documentatie](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details) voor meer informatie.
 
-Definieer vervolgens een Azure ML-**omgeving** voor de pakketafhankelijkheden van uw script. Met een omgeving geeft u R-pakketten (van CRAN of ergens anders) op die nodig zijn om uw script uit te voeren. U kunt ook de waarden van omgevingsvariabelen opgeven waarnaar het script kan verwijzen om het gedrag te wijzigen. Azure ML bouwt standaard dezelfde standaard Docker-installatiekopie die met de estimator is gebruikt voor trainingsdoeleinden. Aangezien voor de zelfstudie geen speciale vereisten gelden, kunt u een omgeving maken zonder speciale kenmerken.
+Definieer vervolgens een Azure ML- **omgeving** voor de pakketafhankelijkheden van uw script. Met een omgeving geeft u R-pakketten (van CRAN of ergens anders) op die nodig zijn om uw script uit te voeren. U kunt ook de waarden van omgevingsvariabelen opgeven waarnaar het script kan verwijzen om het gedrag te wijzigen. Azure ML bouwt standaard dezelfde standaard Docker-installatiekopie die met de estimator is gebruikt voor trainingsdoeleinden. Aangezien voor de zelfstudie geen speciale vereisten gelden, kunt u een omgeving maken zonder speciale kenmerken.
 
 ```R
 r_env <- r_environment(name = "basic_env")
@@ -398,4 +398,4 @@ U kunt de resourcegroep ook bewaren en slechts één werkruimte verwijderen. Bek
 
 * Nu u uw eerste experiment van Azure Machine Learning in R hebt voltooid, wilt u vast meer weten over de [Azure Machine Learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/index.html).
 
-* Lees meer over Azure Machine Learning met R in de voorbeelden in de andere *vignettes*-mappen.
+* Lees meer over Azure Machine Learning met R in de voorbeelden in de andere *vignettes* -mappen.

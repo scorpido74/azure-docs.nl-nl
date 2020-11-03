@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 5948f7adedfa430d7d0dac570910f662846464c6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 67902073b1484835d23566c91cbfae6f1d80d249
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790862"
+ms.locfileid: "92900466"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Zelfstudie: Replicatie tussen twee beheerde instanties configureren
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 >
 > - Configureer een beheerd exemplaar als een uitgever en distributor van replicaties.
-> - Een beheerd exemplaar configureren als een distributeur van replicaties.
+> - Een beheerd exemplaar configureren als een abonnee van replicaties.
 
 ![Repliceren tussen twee beheerde exemplaren](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 

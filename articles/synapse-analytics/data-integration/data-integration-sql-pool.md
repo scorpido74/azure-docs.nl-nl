@@ -6,15 +6,15 @@ author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02efaf3f0382a7af63717e777036637de2bbec25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f8834a69101682abaaa7eac8ec9cafe8ef3d9e
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033197"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279364"
 ---
 # <a name="ingest-data-into-a-sql-pool"></a>Gegevens opnemen in een SQL-groep
 
@@ -22,17 +22,17 @@ In dit artikel leert u hoe u gegevens opneemt vanuit een Azure Data Lake gen 2-o
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**: als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
-* **Azure-opslag account**: u Azure data Lake Storage gen 2 gebruiken als een *brongegevens* opslag. Als u geen opslag account hebt, raadpleegt u [een Azure Storage-account maken](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om er een te maken.
-* **Azure Synapse Analytics**: u gebruikt een SQL-groep als *sink* -gegevens archief. Als u geen exemplaar van Azure Synapse Analytics hebt, raadpleegt u [een SQL-groep maken](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om er een te maken.
+* **Azure-abonnement** : als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+* **Azure-opslag account** : u Azure data Lake Storage gen 2 gebruiken als een *brongegevens* opslag. Als u geen opslag account hebt, raadpleegt u [een Azure Storage-account maken](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om er een te maken.
+* **Azure Synapse Analytics** : u gebruikt een SQL-groep als *sink* -gegevens archief. Als u geen exemplaar van Azure Synapse Analytics hebt, raadpleegt u [een SQL-groep maken](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om er een te maken.
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
 In azure Synapse Analytics is een gekoppelde service waar u de verbindings gegevens voor andere services definieert. In deze sectie voegt u een Azure Synapse Analytics-en Azure Data Lake Storage Gen2 gekoppelde service toe.
 
 1. Open Azure Synapse Analytics UX en ga naar het tabblad **beheren** .
-1. Onder **externe verbindingen**selecteert u **gekoppelde services**.
-1. Selecteer **Nieuw**om een gekoppelde service toe te voegen.
+1. Onder **externe verbindingen** selecteert u **gekoppelde services**.
+1. Selecteer **Nieuw** om een gekoppelde service toe te voegen.
 1. Selecteer de tegel Azure Data Lake Storage Gen2 in de lijst en selecteer **door gaan**.
 1. Voer uw verificatie referenties in. Account sleutel, Service-Principal en beheerde identiteit worden momenteel ondersteunde verificatie typen. Selecteer verbinding testen om te controleren of uw referenties correct zijn. Selecteer **Maken** nadat dit is voltooid.
 1. Herhaal stap 3-5, maar in plaats van Azure Data Lake Storage Gen2, selecteert u de tegel Azure Synapse Analytics en voert u de bijbehorende verbindings referenties in. Voor Azure Synapse Analytics worden de SQL-verificatie, de beheerde identiteit en de Service-Principal momenteel ondersteund.
@@ -41,7 +41,7 @@ In azure Synapse Analytics is een gekoppelde service waar u de verbindings gegev
 
 Een pijp lijn bevat de logische stroom voor het uitvoeren van een reeks activiteiten. In deze sectie maakt u een pijp lijn met een Kopieer activiteit waarmee gegevens uit ADLS Gen2 worden opgenomen in een SQL-groep.
 
-1. Ga naar het tabblad **Orchestration** . Selecteer op het plus-pictogram naast de kop pijp lijnen en selecteer **pijp lijn**.
+1. Ga naar het tabblad **integreren** . Selecteer op het plus-pictogram naast de kop pijp lijnen en selecteer **pijp lijn**.
 1. Sleep onder **verplaatsen en transformeren** in het deel venster activiteiten de gegevens naar het pijp lijn papier **kopiëren** .
 1. Selecteer op de Kopieer activiteit en ga naar het tabblad **bron** . Selecteer **Nieuw** om een nieuwe bron-gegevensset te maken.
 1. Selecteer Azure Data Lake Storage Gen2 als uw gegevens archief en selecteer door gaan.

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0851838b89a9a2bdc54526ac40014f645f3d88a2
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f8eae6381a438f6820f525a4d66cb5dc388eefb0
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146583"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280386"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
-Entiteiten in uw omgeving worden vertegenwoordigd door [Digital apparaatdubbels](concepts-twins-graph.md). Het beheren van uw digitale apparaatdubbels kan het maken, wijzigen en verwijderen omvatten. Als u deze bewerkingen wilt uitvoeren, kunt u de [**DigitalTwins-api's**](/rest/api/digital-twins/dataplane/twins), de [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
+Entiteiten in uw omgeving worden vertegenwoordigd door [Digital apparaatdubbels](concepts-twins-graph.md). Het beheren van uw digitale apparaatdubbels kan het maken, wijzigen en verwijderen omvatten. Als u deze bewerkingen wilt uitvoeren, kunt u de [**DigitalTwins-api's**](/rest/api/digital-twins/dataplane/twins), de [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
 Dit artikel richt zich op het beheren van digitale apparaatdubbels; Zie [*How-to: manage the dubbele Graph with relationships*](how-to-manage-graph.md)als u wilt werken met relaties en de [dubbele grafiek](concepts-twins-graph.md) als geheel.
 
@@ -265,7 +265,7 @@ Bekijk bijvoorbeeld het volgende document van de JSON-patch dat het meta gegeven
 Deze bewerking slaagt alleen als de digitale dubbele wijziging door de patch voldoet aan het nieuwe model. 
 
 Kijk eens naar het volgende voorbeeld:
-1. Stel dat een digitale twee maal een model van *foo_old* . *foo_old* definieert een vereiste eigenschaps *massa* .
+1. Stel dat een digitale twee maal een model van *foo_old*. *foo_old* definieert een vereiste eigenschaps *massa*.
 2. Het nieuwe model *foo_new* definieert een eigenschaps massa en voegt een nieuwe vereiste *temperatuur* van de eigenschap toe.
 3. Na de patch moet de digitale twee eigenschappen een massa-en temperatuur eigenschap hebben. 
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: cff67e99d40b092341e89c96a9f1e037d8572248
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 68c10ba5581ffe404e8e3c1ac8ce92832cfcd6c4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690626"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896426"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>Quickstart: Vanuit Azure Key Vault een geheim instellen en ophalen met behulp van een ARM-sjabloon
 
@@ -82,15 +82,15 @@ In [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/
 
     Gebruik de standaardwaarde om de sleutelkluis en een geheim te maken, tenzij er iets anders is aangegeven.
 
-    * **Abonnement**: selecteer een Azure-abonnement.
-    * **Resourcegroep**: selecteer **Nieuwe maken**, geef een unieke naam op voor de resourcegroep en klik op **OK**.
-    * **Locatie**: selecteer een locatie. Bijvoorbeeld **VS - centraal**.
-    * **Key Vault-naam**: voer een naam in voor de sleutelkluis; deze moet wereldwijd uniek zijn binnen de naamruimte .vault.azure.net. U hebt de naam in de volgende sectie nodig wanneer u de implementatie valideert.
-    * **Tenant-id**: met de sjabloonfunctie wordt uw tenant-id automatisch opgehaald. Wijzig de standaardwaarde niet.
-    * **AD-gebruikers-id**: voer de gebruikersobject-id voor Azure AD in die u hebt opgehaald bij [Vereisten](#prerequisites).
-    * **Geheime naam**: voer een naam in voor het geheim dat u opslaat in de sleutelkluis. Bijvoorbeeld **adminpassword**.
-    * **Geheime waarde**: voer de geheime waarde in. Als u een wachtwoord opslaat, wordt u aangeraden het gegenereerde wachtwoord te gebruiken dat u hebt gemaakt in Vereisten.
-    * **Ik ga akkoord met de bovenstaande voorwaarden**: Selecteren.
+    * **Abonnement** : selecteer een Azure-abonnement.
+    * **Resourcegroep** : selecteer **Nieuwe maken** , geef een unieke naam op voor de resourcegroep en klik op **OK**.
+    * **Locatie** : selecteer een locatie. Bijvoorbeeld **VS - centraal**.
+    * **Key Vault-naam** : voer een naam in voor de sleutelkluis; deze moet wereldwijd uniek zijn binnen de naamruimte .vault.azure.net. U hebt de naam in de volgende sectie nodig wanneer u de implementatie valideert.
+    * **Tenant-id** : met de sjabloonfunctie wordt uw tenant-id automatisch opgehaald. Wijzig de standaardwaarde niet.
+    * **AD-gebruikers-id** : voer de gebruikersobject-id voor Azure AD in die u hebt opgehaald bij [Vereisten](#prerequisites).
+    * **Geheime naam** : voer een naam in voor het geheim dat u opslaat in de sleutelkluis. Bijvoorbeeld **adminpassword**.
+    * **Geheime waarde** : voer de geheime waarde in. Als u een wachtwoord opslaat, wordt u aangeraden het gegenereerde wachtwoord te gebruiken dat u hebt gemaakt in Vereisten.
+    * **Ik ga akkoord met de bovenstaande voorwaarden** : Selecteren.
 3. Selecteer **Aankoop**. Nadat de sleutelkluis is geïmplementeerd, ontvangt u een melding:
 
     ![ARM-sjabloon, Key Vault-integratie, melding over portalimplementatie](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
@@ -124,7 +124,7 @@ De uitvoer ziet er ongeveer als volgt uit:
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
-![ARM-sjabloon, Key Vault-integratie, validatie-uitvoer van de portal implementeren](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
+![Schermopname van de validatie-uitvoer van de portal implementeren in CLI.](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

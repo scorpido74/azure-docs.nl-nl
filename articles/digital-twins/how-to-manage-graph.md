@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 62deca7ed1c34bbefed7fb76224db6ec8ab12dae
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 947a0c9a0af3c38d6c4d6f66da691d62530a69e7
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147127"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279502"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
 
-De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins-graph.md) die uw hele omgeving weergeeft. Het dubbele diagram is gemaakt van individuele digitale apparaatdubbels die zijn verbonden via **relaties** . 
+De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins-graph.md) die uw hele omgeving weergeeft. Het dubbele diagram is gemaakt van individuele digitale apparaatdubbels die zijn verbonden via **relaties**. 
 
-Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance-portal.md) hebt en [verificatie](how-to-authenticate-client.md) code hebt ingesteld in uw client-app, kunt u de [**DigitalTwins-api's**](/rest/api/digital-twins/dataplane/twins) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
+Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance-portal.md) hebt en [verificatie](how-to-authenticate-client.md) code hebt ingesteld in uw client-app, kunt u de [**DigitalTwins-api's**](/rest/api/digital-twins/dataplane/twins) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
 Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [*How-to: Manage Digital apparaatdubbels*](how-to-manage-twin.md)(Engelstalig) als u wilt werken met afzonderlijke digitale apparaatdubbels.
 
@@ -37,8 +37,8 @@ Relaties worden gemaakt met behulp van de `CreateRelationship()` aanroep.
 Als u een relatie wilt maken, moet u het volgende opgeven:
 * De bron-dubbele ID ( `srcId` in het onderstaande code voorbeeld): de id van de dubbele locatie van de relatie.
 * De dubbele ID van het doel ( `targetId` in het onderstaande code voorbeeld): de id van de dubbele locatie van de relatie.
-* Een relatie naam ( `relName` in het onderstaande code voorbeeld): het algemene type relatie, zoals _contains_ .
-* Een relatie-ID ( `relId` in het onderstaande code voorbeeld): de specifieke naam voor deze relatie, wat lijkt op _Relationship1_ .
+* Een relatie naam ( `relName` in het onderstaande code voorbeeld): het algemene type relatie, zoals _contains_.
+* Een relatie-ID ( `relId` in het onderstaande code voorbeeld): de specifieke naam voor deze relatie, wat lijkt op _Relationship1_.
 
 De relatie-ID moet uniek zijn binnen de opgegeven bron. Het hoeft niet wereld wijd uniek te zijn.
 Voor de dubbele *Foo* moet elke specifieke relatie-id bijvoorbeeld uniek zijn. Een andere dubbele *balk* kan echter een uitgaande relatie hebben die overeenkomt met dezelfde id van een *Foo* -relatie.

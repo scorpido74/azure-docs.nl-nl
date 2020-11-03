@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92358995"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787156"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Zelfstudie: Beveiligingswaarschuwingen sorteren, onderzoeken en erop reageren
 Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met behulp van geavanceerde analysen en bedreigingsinformatie, om u te waarschuwen voor mogelijk schadelijke activiteiten in uw cloudresources. U kunt ook waarschuwingen van andere beveiligingsproducten en -services integreren in Security Center. Wanneer een waarschuwing wordt gegeven, moet snel actie worden ondernomen om het mogelijke beveiligingsprobleem te onderzoeken en tegen te gaan. 
@@ -49,7 +49,7 @@ Gebruik deze pagina om de actieve beveiligingswaarschuwingen in uw omgeving te b
 Ken bij het sorteren van beveiligingswaarschuwingen prioriteiten toe aan waarschuwingen op basis van de ernst van de waarschuwing door waarschuwingen met een hogere ernst eerst te behandelen. Lees meer informatie over de ernst van waarschuwingen in [Hoe worden waarschuwingen geclassificeerd?](security-center-alerts-overview.md#how-are-alerts-classified).
 
 > [!TIP]
-> U kunt Azure Security Center verbinden met de populairste SIEM-oplossingen, waaronder Azure Sentinel, en de waarschuwingen van een hulpprogramma naar keuze gebruiken. Meer informatie vindt u in [Waarschuwingen naar een SIEM exporteren](continuous-export.md).
+> U kunt Azure Security Center verbinden met de populairste SIEM-oplossingen, waaronder Azure Sentinel, en de waarschuwingen van een hulpprogramma naar keuze gebruiken. Zie voor meer informatie [Waarschuwingen streamen naar een SIEM-, SOAR- of IT Service Management-oplossing](export-to-siem.md).
 
 
 ## <a name="investigate-a-security-alert"></a>Een beveiligingswaarschuwing onderzoeken
@@ -60,7 +60,7 @@ Wanneer u hebt besloten welke waarschuwing eerst moet worden onderzocht:
 1. Selecteer op de overzichtspagina van de waarschuwing de resource die u als eerste wilt onderzoeken.
 1. Begin met uw onderzoek vanuit het linkerdeelvenster, waarin informatie op hoog niveau over de beveiligingswaarschuwing wordt weergegeven.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Het linkerdeelvenster van de detailpagina voor de waarschuwing; de informatie op hoog niveau wordt gemarkeerd":::
 
     In dit deelvenster wordt het volgende weergegeven:
     - Ernst van waarschuwing, status en tijd van activiteit
@@ -80,24 +80,24 @@ Nadat u een waarschuwing hebt onderzocht en de omvang ervan hebt begrepen, kunt 
 
 1.  Open het tabblad **Actie ondernemen** om de aanbevolen reacties te bekijken.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Het tabblad Actie ondernemen voor beveiligingswaarschuwingen" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  Raadpleeg de sectie **De bedreiging oplossen** voor de handmatige onderzoeksstappen die nodig zijn om het probleem te verhelpen.
 1.  Om uw resources te beveiligen en toekomstige aanvallen van dit type te voorkomen, moet u de beveiligingsaanbevelingen in de sectie **Toekomstige aanvallen voorkomen** volgen.
 1.  Gebruik de sectie **Geautomatiseerd antwoord activeren** als u een logische app met automatische reactie stappen wilt activeren.
-1.  Als de gedetecteerde activiteit *niet* schadelijk is, kunt u toekomstige waarschuwingen van dit type onderdrukken met behulp van de sectie **Vergelijkbare waarschuwingen onderdrukken** .
+1.  Als de gedetecteerde activiteit *niet* schadelijk is, kunt u toekomstige waarschuwingen van dit type onderdrukken met behulp van de sectie **Vergelijkbare waarschuwingen onderdrukken**.
 
-1.  Als u het onderzoek in de waarschuwing hebt voltooid en op de juiste manier hebt gereageerd, wijzigt u de status in **Genegeerd** .
+1.  Als u het onderzoek in de waarschuwing hebt voltooid en op de juiste manier hebt gereageerd, wijzigt u de status in **Genegeerd**.
 
-    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen":::
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="De status van een waarschuwing instellen":::
 
     Hiermee verwijdert u de waarschuwing uit de hoofdlijst met waarschuwingen. U kunt het filter op de pagina met waarschuwingen gebruiken om alle waarschuwingen met de status **Genegeerd** weer te geven.
 
 1.  Stuur vooral feedback over de waarschuwing naar Microsoft:
-    1. De waarschuwing markeren als **Nuttig** of **Niet nuttig** .
+    1. De waarschuwing markeren als **Nuttig** of **Niet nuttig**.
     1. Selecteer een reden en voeg een opmerking toe.
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Feedback aan Microsoft geven over het nut van een waarschuwing":::
 
     > [!TIP]
     > We bekijken uw feedback om onze algoritmen te verbeteren en betere beveiligingswaarschuwingen te bieden.
@@ -108,11 +108,11 @@ Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze
 
 Als u niet van plan bent om door te gaan of als u een van deze functies wilt uitschakelen:
 
-1. Ga terug naar het hoofdmenu van Security Center en selecteer **Prijzen en instellingen** .
+1. Ga terug naar het hoofdmenu van Security Center en selecteer **Prijzen en instellingen**.
 1. Selecteer het betreffende abonnement.
 1. Selecteer **Azure Defender uit** om te downgraden.
-1. Als u automatische inrichting wilt uitschakelen, opent u de pagina **Gegevensverzameling** en stelt u **Automatische inrichting** in op **Uit** .
-4. Selecteer **Opslaan** .
+1. Als u automatische inrichting wilt uitschakelen, opent u de pagina **Gegevensverzameling** en stelt u **Automatische inrichting** in op **Uit**.
+4. Selecteer **Opslaan**.
 
 >[!NOTE]
 > Wanneer u automatische inrichting uitschakelt, wordt de Log Analytics-agent niet verwijderd van virtuele Azure-machines waarop de agent al staat. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89e24d9ff76184c36aee5c14f15f9713b30f6f1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e047f11cc243ab1a36a8c61dd1b229d9e115115
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87906872"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892482"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Zelfstudie: PowerShell gebruiken voor het bulksgewijs uitnodigen van gebruikers van Azure AD B2B-samenwerking
 
@@ -116,7 +116,7 @@ foreach ($email in $invitations)
 
 Dit script stuurt een uitnodiging naar de e-mailadressen in het bestand Invitations.csv. De uitvoer ziet er ongeveer als volgt uit voor elke gebruiker:
 
-![PowerShell-uitvoer wordt weergegeven in afwachting van acceptatie van de gebruiker](media/tutorial-bulk-invite/B2BBulkImport.png)
+![Schermopname van PowerShell-uitvoer in afwachtring van acceptatie van de gebruiker.](media/tutorial-bulk-invite/B2BBulkImport.png)
 
 ## <a name="verify-users-exist-in-the-directory"></a>Controleer of de gebruikers bestaan in de map
 
@@ -126,7 +126,7 @@ Controleer of de uitgenodigde gebruikers zijn toegevoegd aan Microsoft Azure AD 
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-U moet nu de uitgenodigde gebruikers zien met een user principal name (UPN) in de indeling *e-mailadres*#EXT#\@*domein*. Bijvoorbeeld *Istokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, waarbij contoso.onmicrosoft.com staat voor de organisatie waaruit u de uitnodigingen hebt verzonden.
+U moet nu de uitgenodigde gebruikers zien met een user principal name (UPN) in de indeling *e-mailadres* #EXT#\@*domein*. Bijvoorbeeld *Istokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com* , waarbij contoso.onmicrosoft.com staat voor de organisatie waaruit u de uitnodigingen hebt verzonden.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf37fcd236f1483580d007d1432284116f728ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a1366e60b21eb7a073f7f3e758cd53298d6946b2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90969043"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897242"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met Azure CLI
 
@@ -32,22 +32,24 @@ In dit artikel leert u hoe u de volgende beheerde identiteiten uitvoert voor bew
 - De door het systeem toegewezen beheerde identiteit inschakelen en uitschakelen op een virtuele-machineschaalset van Azure
 - Een door de gebruiker toegewezen beheerde identiteit toevoegen aan en verwijderen uit een virtuele-machineschaalset van Azure
 
+Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de sectie [Overzicht](overview.md). **Let op dat u nagaat wat het [verschil is tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#managed-identity-types)** .
-- Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
+- Zie [Wat zijn beheerde identiteiten voor Azure-resources?](overview.md) als u niet bekend met beheerde identiteiten voor Azure-resources. Zie [Beheerde identiteitstypen](overview.md#managed-identity-types) voor meer informatie over door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteitstypen.
+
 - Voor het uitvoeren van de beheerbewerkingen in dit artikel zijn voor uw account de volgende toewijzingen van op rollen gebaseerd toegangsbeheer van Azure nodig:
 
-    > [!NOTE]
-    > Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-map.
+  - [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) voor het maken van een virtuele-machineschaalset en het inschakelen en verwijderen van een door het systeem en/of de gebruiker toegewezen beheerde identiteit op/uit een virtuele-machineschaalset.
 
-    - [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) voor het maken van een virtuele-machineschaalset en het inschakelen en verwijderen van een door het systeem en/of de gebruiker toegewezen beheerde identiteit op/uit een virtuele-machineschaalset.
-    - De rol van [inzender voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) voor het maken van een door de gebruiker toegewezen beheerde identiteit.
-    - De rol van [operator voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-operator) voor het toewijzen/verwijderen van een door de gebruiker toegewezen beheerde identiteit aan/uit een virtuele-machine schaalset.
-- Als u de voorbeeldscripts wilt uitvoeren, hebt u twee opties:
-    - Gebruik de [Azure Cloud Shell](../../cloud-shell/overview.md), die u kunt openen met behulp van de knop **Probeer het nu** in de rechterbovenhoek van Code::Blocks.
-    - Voer scripts lokaal uit door de nieuwste versie van de [Azure CLI](/cli/azure/install-azure-cli) te installeren en u vervolgens aan te melden bij Azure met [az login](/cli/azure/reference-index#az-login). Gebruik een account dat is gekoppeld aan het Azure-abonnement waarin u resources wilt maken.
+  - De rol van [inzender voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) voor het maken van een door de gebruiker toegewezen beheerde identiteit.
+
+  - De rol van [operator voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-operator) voor het toewijzen/verwijderen van een door de gebruiker toegewezen beheerde identiteit aan/uit een virtuele-machine schaalset.
+
+  > [!NOTE]
+  > Er zijn geen aanvullende roltoewijzingen vereist voor de Azure AD-map.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 

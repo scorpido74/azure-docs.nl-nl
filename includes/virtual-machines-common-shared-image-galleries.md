@@ -1,18 +1,17 @@
 ---
 title: bestand opnemen
-description: bestand opnemen
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116815"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897752"
 ---
 Shared Image Gallery is een service waarmee u structuur en organisatie kunt bouwen rond uw installatiekopieën. Galerieën met gedeelde installatiekopieën bieden:
 
@@ -46,7 +45,7 @@ De functie Shared Image Gallery heeft meerdere resourcetypen:
 
 Definities van installatiekopieën vormen een logische groepering voor versies van een installatiekopie. De definitie van de installatiekopie bevat informatie over waarom de installatiekopie is gemaakt, voor welk besturingssysteem de kopie wordt gebruikt en andere informatie over het gebruik ervan. Een definitie van een installatiekopie lijkt op een plan met alle details voor het maken van een specifieke installatiekopie. U implementeert geen VM op basis van een definitie van een installatiekopie, maar van versies van installatiekopieën die zijn gemaakt op basis van de definitie.
 
-Er zijn drie parameters voor elke definitie van de installatiekopie. Deze worden gecombineerd gebruikt: **Uitgever**, **Aanbieding** en **SKU**. Deze worden gebruikt om een specifieke definitie van een installatiekopie te vinden. Er zijn versies van installatiekopieën die een of twee parameters gemeenschappelijk hebben, maar niet alle drie.  Hier ziet u drie voorbeelden van definities van installatiekopieën en de bijbehorende waarden:
+Er zijn drie parameters voor elke definitie van de installatiekopie. Deze worden gecombineerd gebruikt: **Uitgever** , **Aanbieding** en **SKU**. Deze worden gebruikt om een specifieke definitie van een installatiekopie te vinden. Er zijn versies van installatiekopieën die een of twee parameters gemeenschappelijk hebben, maar niet alle drie.  Hier ziet u drie voorbeelden van definities van installatiekopieën en de bijbehorende waarden:
 
 |Definitie van installatiekopie|Uitgever|Aanbieding|Sku|
 |---|---|---|---|
@@ -116,7 +115,7 @@ Zie [Resourcegebruik controleren op basis van limieten](https://docs.microsoft.c
 ## <a name="scaling"></a>Schalen
 Met Shared Image Gallery kunt u het aantal replica's van de installatiekopieën opgeven dat in Azure moet worden bewaard. Dit komt van pas bij implementatiescenario's met meerdere VM's omdat de VM-implementaties over verschillende replica's kunnen worden gespreid. Hierdoor wordt de kans kleiner dat het maken van exemplaren wordt beperkt als gevolg van het overbelasten van één replica.
 
-Met Shared Image Gallery kunt u nu maximaal 1000 VM-exemplaren implementeren in een virtuele-machineschaalset (vanaf 600 met beheerde installatiekopieën). Replica's van installatiekopieën verbeteren de prestaties van de implementatie, de betrouwbaarheid en de consistentie.  U kunt in elke doelregio een verschillend aantal replica's instellen, op basis van de schaalbehoeften voor de regio. Aangezien elke replica een kopie met gegevens van uw installatiekopie is, kunt u hiermee uw implementaties lineair schalen met elke extra replica. Twee installatiekopieën of regio's zijn uiteraard niet aan ekaar gelijk. Hieronder ziet u de algemene richtlijnen voor het gebruik van replica's in een regio:
+Met Shared Image Gallery kunt u nu maximaal 1000 VM-exemplaren implementeren in een virtuele-machineschaalset (vanaf 600 met beheerde installatiekopieën). Replica's van installatiekopieën verbeteren de prestaties van de implementatie, de betrouwbaarheid en de consistentie.   U kunt in elke doelregio een verschillend aantal replica's instellen, op basis van de schaalbehoeften voor de regio. Aangezien elke replica een kopie met gegevens van uw installatiekopie is, kunt u hiermee uw implementaties lineair schalen met elke extra replica. Twee installatiekopieën of regio's zijn uiteraard niet aan ekaar gelijk. Hieronder ziet u de algemene richtlijnen voor het gebruik van replica's in een regio:
 
 - Voor implementaties van een non-virtuele-machineschaalset (VMSS): voor elke twintig VM's die u gelijktijdig maakt, wordt u aangeraden aan één replica te bewaren. Als u in een regio bijvoorbeeld gelijktijdig 120 VM's maakt met behulp van dezelfde installatiekopie, wordt u aangeraden minstens zes replica's van uw installatiekopie te bewaren. 
 - Voor implementaties van een virtuele-machineschaalset (VMSS): voor elke implementatie van een schaalset met maximaal 600 exemplaren, wordt u aangeraden ten minste één replica te bewaren. Als u in één regio bijvoorbeeld gelijktijdig vijf VM's - elk met 600 VM-exemplaren - maakt met behulp van dezelfde installatiekopie, wordt u aangeraden minstens vijf replica's van uw installatiekopie te bewaren. 
@@ -155,8 +154,11 @@ Installatiekopieën kunnen ook op schaal worden gedeeld, ook via tenants met beh
 
 ## <a name="billing"></a>Billing
 Er worden geen extra kosten in rekening gebracht voor het gebruik van de service Shared Image Gallery. Er worden kosten in rekening gebracht voor de volgende resources:
-- Opslagkosten voor het opslaan van de versies van de gedeelde installatiekopieën. De kosten zijn afhankelijk van het aantal replica's van de versie van de installatiekopie en het aantal regio's waarnaar de versie wordt gerepliceerd. Als u bijvoorbeeld twee installatiekopieën hebt en beide worden gerepliceerd naar drie regio's, worden er zes beheerde schijven in rekening gebracht op basis van de grootte. Zie [Prijzen van Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/) voor meer informatie.
-- Kosten van uitgaand netwerkverkeer voor replicatie van de eerste versie van de installatiekopie van de bronregio naar de gerepliceerde regio's. Navolgende replica's worden binnen de regio verwerkt, zodat er geen extra kosten in rekening worden gebracht. 
+-   Opslagkosten voor het opslaan van elke replica. De opslagkosten worden in rekening gebracht volgens een momentopname en worden gebaseerd op de bezette grootte van de versie van de installatiekopie, het aantal replica's van de versie van de installatiekopie en het aantal regio's waarnaar de versie wordt gerepliceerd. 
+-   Kosten van uitgaand netwerkverkeer voor replicatie van de eerste versie van de installatiekopie van de bronregio naar de gerepliceerde regio's. Navolgende replica's worden binnen de regio verwerkt, zodat er geen extra kosten in rekening worden gebracht. 
+
+Stel dat u een installatiekopie hebt van een 127GB-besturingssysteemschijf, die maar 10 GB aan opslag beslaat, en één lege gegevensschijf van 32 GB. De bezette grootte van elke installatiekopie zou 10 GB zijn. De installatiekopie wordt gerepliceerd naar drie regio's en elke regio heeft twee replica's. Er zijn zes volledige momentopnamen die elk 10 GB gebruiken. De opslagkosten voor elke momentopname worden in rekening gebracht op basis van de bezette grootte van 10 GB. U betaalt netwerkkosten voor uitgaand verkeer voor de eerste replica die naar de twee extra regio's wordt gekopieerd. Raadpleeg de [prijsinformatie voor Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/) voor meer informatie over de prijzen van momentopnamen in elke regio. Raadpleeg de [prijsinformatie voor bandbreedte](https://azure.microsoft.com/pricing/details/bandwidth/) voor meer informatie over uitgaand netwerkverkeer.
+
 
 ## <a name="updating-resources"></a>Bijwerken van resources
 

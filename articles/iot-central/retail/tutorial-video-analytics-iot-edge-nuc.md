@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: c41a6679009f1467c5bcd04d9629ef9256238e00
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127042"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748645"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Zelfstudie: Een IoT Edge-exemplaar voor videoanalyse maken (Intel NUC)
 
@@ -117,7 +117,7 @@ Als u IoT Edge wilt configureren om uw IoT Central-toepassing te registreren en 
 
 1. Vervang `{scope_id}` door de **Id-bereik** die u hebt genoteerd in het bestand *scratchpad.txt* in de vorige zelfstudie.
 
-1. Vervang `{registration_id}` door *lva-gateway-001*, het apparaat dat u in de vorige zelfstudie hebt gemaakt.
+1. Vervang `{registration_id}` door *lva-gateway-001* , het apparaat dat u in de vorige zelfstudie hebt gemaakt.
 
 1. Vervang `{symmetric_key}` door de **primaire sleutel** voor het apparaat **lva-gateway-001** dat u hebt genoteerd in het bestand *scratchpad.txt* in de vorige zelfstudie.
 
@@ -140,7 +140,7 @@ Als u IoT Edge wilt configureren om uw IoT Central-toepassing te registreren en 
 
 Als de IoT Edge-modules niet goed worden gestart, raadpleegt u [Problemen met uw IoT Edge-apparaat oplossen](../../iot-edge/troubleshoot.md).
 
-## <a name="collect-the-rstp-stream-from-your-camera"></a>De RSTP-stroom van uw camera verzamelen
+## <a name="collect-the-rtsp-stream-from-your-camera"></a>De RTSP-stroom van uw camera verzamelen
 
 Identificeer de URL's van de RTSP-stroom voor de camera's die zijn verbonden met uw IoT Edge-apparaat, bijvoorbeeld:
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f1a6a99285e54338b0020aad63fef2944ce3469d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: e0fc50647e926ea919f70b888f3efc303713fe1e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088666"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631186"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Zelfstudie: Azure Spring Cloud implementeren in een virtueel Azure-netwerk (VNet-injectie)
 
@@ -35,14 +35,14 @@ az provider register --namespace Microsoft.AppPlatform
 ## <a name="virtual-network-requirements"></a>Vereisten voor het virtuele netwerk
 Het virtuele netwerk waarnaar u het Azure Spring Cloud-service-exemplaar implementeert, moet voldoen aan de volgende vereisten:
 
-* **Locatie**: Het virtuele netwerk moet zich op dezelfde locatie bevinden als het Azure Spring Cloud-service-exemplaar.
-* **Abonnement**: Het virtuele netwerk moet zich in hetzelfde abonnement bevinden als het Azure Spring Cloud-service-exemplaar.
-* **Subnetten**: Het virtuele netwerk moet twee subnetten bevatten die zijn toegewezen aan een Azure Spring Cloud-service-exemplaar: 
+* **Locatie** : Het virtuele netwerk moet zich op dezelfde locatie bevinden als het Azure Spring Cloud-service-exemplaar.
+* **Abonnement** : Het virtuele netwerk moet zich in hetzelfde abonnement bevinden als het Azure Spring Cloud-service-exemplaar.
+* **Subnetten** : Het virtuele netwerk moet twee subnetten bevatten die zijn toegewezen aan een Azure Spring Cloud-service-exemplaar: 
     * Een voor de runtime van de service
     * Een voor uw Spring Boot-microservicetoepassingen. 
     * Er is een een-op-een-relatie tussen deze subnetten en een Azure Spring Cloud-service-exemplaar. U moet een nieuw subnet gebruiken voor elk service-exemplaar dat u implementeert en elk subnet kan slechts één service-exemplaar bevatten.
-* **Adresruimte**: Eén CIDR-blok maximaal /28 voor het subnet van de serviceruntime en een ander CIDR-blok maximaal /24 voor het subnet van de Spring Boot-microservicetoepassingen.
-* **Routeringstabel**: Aan de subnetten mag geen bestaande routeringstabel zijn gekoppeld.
+* **Adresruimte** : Eén CIDR-blok maximaal /28 voor het subnet van de serviceruntime en een ander CIDR-blok maximaal /24 voor het subnet van de Spring Boot-microservicetoepassingen.
+* **Routeringstabel** : Aan de subnetten mag geen bestaande routeringstabel zijn gekoppeld.
 
 In de volgende procedures wordt de installatie van het virtuele netwerk voor het Azure Spring Cloud-exemplaar beschreven.
 
@@ -66,7 +66,7 @@ Sla stap 1, 2 en 3 over als u al een virtueel netwerk hebt voor het hosten van h
 
 1. Selecteer **Subnet toevoegen** en typ vervolgens *service-runtime-subnet* bij **Subnetnaam** en 10.1.0.0/24 bij **Subnetadresbereik**. Klik vervolgens op **Toevoegen**.
 
-1. Selecteer nogmaals **Subnet toevoegen** en typ vervolgens *apps-subnet* bij **Subnetnaam** en 10.1.1.0/24 bij **Subnetadresbereik**.  Klik op **Add**.
+1. Selecteer opnieuw **Subnet toevoegen** en voer de **subnetnaam** en het **subnetadresbereik** in, bijvoorbeeld *apps-subnet* en 10.1.1.0/24 .  Klik op **Add**.
 
 1. Klik op **Controleren + maken**. Laat de overige standaardinstellingen ongewijzigd en klik op **Maken**.
 
@@ -135,11 +135,11 @@ az role assignment create \
 
 Na de implementatie worden er twee extra resourcegroepen in uw abonnement gemaakt om de netwerkresources voor het Azure Spring Cloud-service-exemplaar te hosten.  Ga naar **Start** en selecteer **Resourcegroepen** in het bovenste menu om de volgende nieuwe resourcegroepen te vinden.
 
-De resourcegroep met de naam *azure-spring-cloud-service-runtime_{naam van service-exemplaar}_{regio van service-exemplaar}* bevat netwerkresources voor de serviceruntime van het service-exemplaar.
+De resourcegroep met de naam *ap-svc-rt_{naam service-exemplaar}_{regio service-exemplaar}* bevat netwerkresources voor de serviceruntime van het service-exemplaar.
 
   ![Serviceruntime](./media/spring-cloud-v-net-injection/service-runtime-resource-group.png)
 
-De resourcegroep met de naam *azure-spring-cloud-service-runtime_{naam van service-exemplaar}_{regio van service-exemplaar}* bevat netwerkresources voor uw Spring Boot-microservicetoepassingen van het service-exemplaar.
+De resourcegroep met de naam *ap-app_{naam service-exemplaar}_{regio service-exemplaar}* bevat netwerkresources voor uw Spring Boot-microservicetoepassingen van het service-exemplaar.
 
   ![Resourcegroep voor apps](./media/spring-cloud-v-net-injection/apps-resource-group.png)
 

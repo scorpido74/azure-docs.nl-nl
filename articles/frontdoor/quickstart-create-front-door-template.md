@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.custom: subject-armqs
-ms.openlocfilehash: e7c3f2f50d9ac1fb1731f70f7b442ab4a2e44425
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 223006193219afe4179f3161d5e60e6439207b22
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088921"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896052"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>Quickstart: Front Door maken op basis van een ARM-sjabloon
 
@@ -40,7 +40,7 @@ Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van A
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-front-door-create-basic).
 
-In deze quickstart maakt u een Front Door-configuratie met één back-end en één standaardpad dat overeenkomt met '/*'. 
+In deze quickstart maakt u een Front Door-configuratie met één back-end en één standaardpad dat overeenkomt met `/*`.
 
 :::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
 
@@ -50,7 +50,7 @@ Er is één Azure-resource gedefinieerd in de sjabloon:
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Selecteer **Proberen** in het volgende codeblok om Azure Cloud Shell te openen en volg de instructies om u aan te melden bij Azure. 
+1. Selecteer **Proberen** in het volgende codeblok om Azure Cloud Shell te openen en volg de instructies om u aan te melden bij Azure.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -73,7 +73,7 @@ Er is één Azure-resource gedefinieerd in de sjabloon:
 
 1. Voer de waarden in.
 
-    Met de sjabloonimplementatie wordt een front door met één back-end gemaakt. In dit voorbeeld wordt *<span>microsoft.</span>com* gebruikt als **backendAddress**.
+    Met de sjabloonimplementatie wordt een front door met één back-end gemaakt. In dit voorbeeld wordt `microsoft.com` gebruikt als **backendAddress**.
 
     De naam van de resourcegroep is de naam van het project, maar met **rg** eraan toegevoegd.
 
@@ -96,7 +96,7 @@ Azure PowerShell wordt gebruikt om de sjabloon te implementeren. Naast Azure Pow
 
 1. Selecteer de front door die u eerder hebt gemaakt en klik op de link **Frontend-host**. Er wordt een webbrowser geopend waarin u wordt omgeleid naar de back-end-FQDN die u tijdens het maken hebt gedefinieerd.
 
-    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Uitvoer van PowerShell-implementatie van Resource Manager-sjabloon van Front Door":::
+    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Overzicht van Front Door-portal":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -110,8 +110,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u het volgende gemaakt:
-* Front Door
+In deze quickstart hebt u front door gemaakt.
 
 Ga verder naar de zelfstudies over Front Door voor informatie over het toevoegen van een aangepast domein aan uw Front Door.
 

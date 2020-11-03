@@ -7,15 +7,14 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 4e9ea34317951ecd9d3b6649ce42ffcf2f476d03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6fff19498e9ca70991d3190165df70a48136f502
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149232"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631135"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Inleiding tot Azure App Service Environments #
- 
 ## <a name="overview"></a>Overzicht ##
 
 Azure App Service Environment is een functie van Azure App Service die een volledig geïsoleerde en toegewezen omgeving biedt waarin App Service-apps veilig en op grote schaal kunnen worden uitgevoerd. In deze omgeving kunt u het volgende hosten:
@@ -32,7 +31,7 @@ AS-omgevingen (App Service-omgevingen) zijn geschikt voor werkbelastingen van to
 * Isolatie en beveiligde netwerktoegang.
 * Hoog geheugengebruik.
 
-Klanten kunnen meerdere AS-omgevingen maken, binnen één Azure-regio of in meerdere Azure-regio's. Door deze flexibiliteit zijn AS-omgevingen ideaal voor het horizontaal schalen van staatloze toepassingslagen ter ondersteuning van hoge RPS-werkbelastingen.
+Klanten kunnen meerdere AS-omgevingen maken, binnen één Azure-regio of in meerdere Azure-regio's. Door deze flexibiliteit zijn AS-omgevingen ideaal voor het horizontaal schalen van staatloze toepassingslagen ter ondersteuning van werkbelastingen met een hoog aantal aanvragen per seconde (RPS).
 
 Azure App Service-omgevingen hosten apps van slechts één klant en doen dit in een van hun VNets. Klanten hebben meer controle over binnenkomend en uitgaand netwerkverkeer voor de toepassing. Er kunnen via VPN’s zeer snelle, beveiligde verbindingen tot stand worden gebracht tussen toepassingen en on-premises bedrijfsresources.
 

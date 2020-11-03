@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2
-ms.openlocfilehash: d27c65938d10f9061961ebb585327bc77d8b2859
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d66c5001d94d0c2d28ae3c55b468fbaf45871c98
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092457"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280358"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Resultaten van automatische machine learning experimenten evalueren
 
@@ -159,7 +159,7 @@ U kunt de lift van het model dat automatisch is gebouwd met Azure Machine Learni
 
 ### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
 
-Een hogere Lift kromme is het hogere model boven de basis lijn. Dit geeft aan dat het model beter presteert. 
+Een beter model voor het uitvoeren van modellen heeft een lift curve die hoger is in de grafiek en verder van de basis lijn. 
 
 #### <a name="example-1-a-classification-model-that-performs-poorly-compared-to-a-random-selection-model"></a>Voor beeld 1: een classificatie model dat slecht presteert ten opzichte van een wille keurig selectie model
 ![Een classificatie model dat erger is dan een wille keurig selectie model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
@@ -234,12 +234,12 @@ Voor speld versus waar ziet u de relatie tussen een voorspelde waarde en de bijb
 Na elke uitvoering ziet u een voorspelde versus ware grafiek voor elk regressie model. Ter bescherming van de privacy van gegevens zijn waarden binning samen en de grootte van elke bin wordt weer gegeven als een staaf diagram in het onderste gedeelte van het grafiek gebied. U kunt het voorspellende model vergelijken met het lichtere scha kering van de fout marges, vergeleken met de ideale waarde van waar het model moet zijn.
 
 ### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
-Deze grafiek kan worden gebruikt om de prestaties van een model te meten als dichter bij de y = x-lijn de voorspelde waarden zijn, hoe beter de nauw keurigheid van een voorspellend model is.
+Deze grafiek kan worden gebruikt om de prestaties van een model te meten als dichter bij de y = x-lijn de voorspelde waarden, de betere prestaties van een voorspellend model.
 
-#### <a name="example-1-a-classification-model-with-low-accuracy"></a>Voor beeld 1: een classificatie model met lage nauw keurigheid
+#### <a name="example-1-a-regression-model-with-low-performance"></a>Voor beeld 1: een regressie model met lage prestaties
 ![Een regressie model met lage nauw keurigheid in voor spellingen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-#### <a name="example-2-a-regression-model-with-high-accuracy"></a>Voor beeld 2: een regressie model met hoge nauw keurigheid 
+#### <a name="example-2-a-regression-model-with-high-performance"></a>Voor beeld 2: een regressie model met hoge prestaties
 ![Een regressie model met hoge nauw keurigheid in de voor spellingen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
 
 <a name="histo"></a> 
@@ -254,7 +254,7 @@ Als u een fout marge met een lage afwijking wilt weer geven, moet het histogram 
 #### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Voor beeld 1: een regressie model met afwijking van fouten
 ![SA-regressie model met afwijking van fouten](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-#### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Voor beeld 2: een regressie model met meer gelijkmatige verdeling van fouten
+#### <a name="example-2-a-regression-model-with-a-more-even-distribution-of-errors"></a>Voor beeld 2: een regressie model met een meer gelijkmatige verdeling van fouten
 ![Een regressie model met een meer gelijkmatige verdeling van fouten](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
 <a name="explain-model"></a>

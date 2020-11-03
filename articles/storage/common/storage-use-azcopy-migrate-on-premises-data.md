@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 154a7b17fc09c55e83b65eef8d479904c36e87eb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716097"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791185"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Zelfstudie: On-premises gegevens naar de cloudopslag migreren met AzCopy
 
@@ -33,7 +33,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 Om deze zelfstudie te volgen, dient u de nieuwste versie van AzCopy te downloaden. Raadpleeg [Aan de slag met AzCopy](storage-use-azcopy-v10.md).
 
-Als u Windows gebruikt, hebt u [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) nodig omdat deze opdracht in deze zelfstudie wordt gebruikt om een taak te plannen. Linux-gebruikers maken in plaats hiervan gebruik van de opdracht crontab.
+Als u Windows gebruikt, hebt u [Schtasks](/windows/win32/taskschd/schtasks) nodig omdat deze opdracht in deze zelfstudie wordt gebruikt om een taak te plannen. Linux-gebruikers maken in plaats hiervan gebruik van de opdracht crontab.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -46,7 +46,7 @@ Volg deze stappen voor het maken van een container:
 1. Selecteer de knop **Opslagaccounts** op de hoofdpagina en selecteer de opslagaccount die u hebt gemaakt.
 2. Selecteer **Blobs** onder **Services** en selecteer vervolgens **Container**.
 
-   ![Een container maken](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
+   ![Schermopname van het maken van een container](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
 Containernamen moeten beginnen met een letter of cijfer. Ze mogen alleen letters, cijfers en het koppelteken (-) bevatten. Zie [Naming and referencing containers, blobs, and metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Containers, blobs en metagegevens een naam geven en hiernaar verwijzen) voor meer regels voor de naamgeving van blobs en containers.
 
@@ -62,7 +62,7 @@ Plaats het AzCopy-bestand op een willekeurige locatie op de computer. Voeg de lo
 
 ## <a name="authenticate-with-azure-ad"></a>Verifiëren met Azure AD
 
-Wijs eerst de rol [Inzender voor Storage BLOB-gegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) toe aan uw identiteit. Zie [Use the Azure portal to assign an Azure role for access to blob and queue data](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal) (De Azure-portal gebruiken om een Azure-rol toe te wijzen voor toegang tot blob- en wachtrijgegevens).
+Wijs eerst de rol [Inzender voor Storage BLOB-gegevens](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) toe aan uw identiteit. Zie [Use the Azure portal to assign an Azure role for access to blob and queue data](./storage-auth-aad-rbac-portal.md) (De Azure-portal gebruiken om een Azure-rol toe te wijzen voor toegang tot blob- en wachtrijgegevens).
 
 Typ de volgende opdracht bij een opdrachtprompt en druk vervolgens op ENTER.
 
@@ -72,13 +72,13 @@ azcopy login
 
 Met deze opdracht worden een verificatiecode en de URL van een website geretourneerd. Open de website, geef de code op en kies vervolgens de knop **Volgende**.
 
-![Een container maken](media/storage-use-azcopy-v10/azcopy-login.png)
+![Schermopname met de aanmeldingsprompt](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Er wordt een aanmeldingsvenster weergegeven. Meld u in dat venster aan bij uw Azure-account met behulp van de referenties van uw Azure-account. Nadat u bent aangemeld, kunt u het browservenster sluiten en AzCopy gebruiken.
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Upload de inhoud van een map in Blob-opslag
 
-U kunt AzCopy gebruiken om alle bestanden in een map te uploaden naar Blob-opslag in [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) of [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux). Als u alle blobs in een map wilt uploaden, voert u de volgende AzCopy-opdracht uit:
+U kunt AzCopy gebruiken om alle bestanden in een map te uploaden naar Blob-opslag in [Windows](./storage-use-azcopy-v10.md) of [Linux](./storage-use-azcopy-v10.md). Als u alle blobs in een map wilt uploaden, voert u de volgende AzCopy-opdracht uit:
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -135,7 +135,7 @@ azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycont
 
 ---
 
-In deze zelfstudie wordt [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) gebruikt om een geplande taak in Windows te maken. De opdracht [Crontab](http://crontab.org/) wordt gebruikt voor het maken van een Cron-taak in Linux.
+In deze zelfstudie wordt [Schtasks](/windows/win32/taskschd/schtasks) gebruikt om een geplande taak in Windows te maken. De opdracht [Crontab](http://crontab.org/) wordt gebruikt voor het maken van een Cron-taak in Linux.
 
  Met **Schtasks** kan een beheerder geplande taken op een lokale of externe computer maken, verwijderen, opvragen, wijzigen, uitvoeren en beëindigen. Met **Cron** kunnen Linux- en Unix-gebruikers op een opgegeven datum en tijd opdrachten of scripts uitvoeren met behulp van [Cron-expressies](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
@@ -166,7 +166,7 @@ De opdracht gebruikt:
 - De parameter `/TN` om de naam van de taak op te geven.
 - De parameter `/TR` om het pad naar het bestand `script.bat` op te geven.
 
-Zie [Schtasks](https://technet.microsoft.com/library/cc772785(v=ws.10).aspx#BKMK_minutes) voor meer informatie over het maken van een geplande taak in Windows.
+Zie [Schtasks](/previous-versions/orphan-topics/ws.10/cc772785(v=ws.10)#BKMK_minutes) voor meer informatie over het maken van een geplande taak in Windows.
 
 ---
 
@@ -176,7 +176,7 @@ Als u wilt valideren of de geplande taak/Cron-taak correct wordt uitgevoerd, maa
 
 Voor meer informatie over manieren om on-premises gegevens te verplaatsen naar Azure Storage en vice versa, volgt u deze koppeling:
 
-* [Gegevens verplaatsen naar en uit Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
+* [Gegevens verplaatsen naar en uit Azure Storage](./storage-choose-data-transfer-solution.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).  
 
 Zie een van de volgende artikelen voor meer informatie over AzCopy:
 

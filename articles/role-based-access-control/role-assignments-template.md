@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2020
+ms.date: 11/02/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 400f0b1b55136f133c9ad01fd0ba4b5dbc5e6bcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d65b2db9c69d006476ae1d08a1af3e60efe48930
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612741"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280565"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-roltoewijzingen toevoegen met behulp van Azure Resource Manager sjablonen
 
@@ -305,7 +305,9 @@ Hieronder ziet u een voor beeld van de toewijzing van de rol Inzender aan een ge
 
 ### <a name="new-service-principal"></a>Nieuwe Service-Principal
 
-Als u een nieuwe Service-Principal maakt en een rol onmiddellijk probeert toe te wijzen aan die Service-Principal, kan die roltoewijzing in sommige gevallen mislukken. Als u bijvoorbeeld een nieuwe beheerde identiteit maakt en vervolgens probeert een rol toe te wijzen aan die Service-Principal in hetzelfde Azure Resource Manager sjabloon, kan de roltoewijzing mislukken. De oorzaak van deze fout is waarschijnlijk een replicatie vertraging. De service-principal wordt gemaakt in één regio. de roltoewijzing kan echter plaatsvinden in een andere regio waarvoor de Service-Principal nog niet is gerepliceerd. Als u dit scenario wilt aanpakken, moet u de `principalType` eigenschap instellen op `ServicePrincipal` bij het maken van de roltoewijzing.
+Als u een nieuwe Service-Principal maakt en een rol onmiddellijk probeert toe te wijzen aan die Service-Principal, kan die roltoewijzing in sommige gevallen mislukken. Als u bijvoorbeeld een nieuwe beheerde identiteit maakt en vervolgens probeert een rol toe te wijzen aan die Service-Principal in hetzelfde Azure Resource Manager sjabloon, kan de roltoewijzing mislukken. De oorzaak van deze fout is waarschijnlijk een replicatie vertraging. De service-principal wordt gemaakt in één regio. de roltoewijzing kan echter plaatsvinden in een andere regio waarvoor de Service-Principal nog niet is gerepliceerd.
+
+Als u dit scenario wilt aanpakken, moet u de `principalType` eigenschap instellen op `ServicePrincipal` bij het maken van de roltoewijzing. U moet ook de `apiVersion` toewijzing van de roltoewijzing instellen op `2018-09-01-preview` of hoger.
 
 In de volgende sjabloon ziet u:
 

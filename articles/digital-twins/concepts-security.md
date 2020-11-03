@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503314"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279888"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Apparaatdubbels beveiligen
 
@@ -24,13 +24,13 @@ Azure Digital Apparaatdubbels biedt ook ondersteuning voor versleuteling van geg
 
 Azure RBAC wordt geleverd aan Azure Digital Apparaatdubbels via integratie met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
 
-U kunt Azure RBAC gebruiken om machtigingen toe te kennen aan een *beveiligingsprincipal*, die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt geverifieerd door Azure AD en ontvangt een OAuth 2,0-token als resultaat. Dit token kan worden gebruikt voor het autoriseren van een toegangs aanvraag aan een Azure Digital Apparaatdubbels-exemplaar.
+U kunt Azure RBAC gebruiken om machtigingen toe te kennen aan een *beveiligingsprincipal* , die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt geverifieerd door Azure AD en ontvangt een OAuth 2,0-token als resultaat. Dit token kan worden gebruikt voor het autoriseren van een toegangs aanvraag aan een Azure Digital Apparaatdubbels-exemplaar.
 
 ### <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 
 In azure AD is Access een proces dat uit twee stappen bestaat. Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot Azure Digital Apparaatdubbels, moet de aanvraag worden *geverifieerd* en *geautoriseerd*. 
 
-1. Eerst wordt de identiteit van de beveiligingsprincipal *geverifieerd*en wordt een OAuth 2,0-token geretourneerd.
+1. Eerst wordt de identiteit van de beveiligingsprincipal *geverifieerd* en wordt een OAuth 2,0-token geretourneerd.
 2. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag voor de Azure Digital Apparaatdubbels-service om toegang tot de opgegeven bron te *autoriseren* .
 
 Voor de verificatie stap moet elke toepassings aanvraag een OAuth 2,0-toegangs token tijdens runtime bevatten. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een [Azure functions](../azure-functions/functions-overview.md) -app, kan deze een **beheerde identiteit** gebruiken om toegang te krijgen tot de resources. Meer informatie over beheerde identiteiten vindt u in de volgende sectie.
@@ -56,7 +56,7 @@ Azure biedt **twee ingebouwde rollen van Azure** voor het verlenen van toegang t
 
 >[!NOTE]
 > De namen van deze rollen zijn onlangs gewijzigd ten opzichte van hun eerdere namen in de preview-versie:
-> * De *Azure Digital apparaatdubbels-gegevens eigenaar* was voorheen *Azure Digital apparaatdubbels-eigenaar (preview-versie)*.
+> * *Azure Digital Twins-gegevenseigenaar* was voorheen *Azure Digital Twins-eigenaar (preview)* .
 > * *Azure Digital Apparaatdubbels data Reader* was voorheen *Azure Digital Apparaatdubbels Reader (preview)*.
 
 U kunt rollen op twee manieren toewijzen:
@@ -72,7 +72,7 @@ Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [*begrij
 Wanneer u verwijst naar rollen in geautomatiseerde scenario's, is het raadzaam om deze te laten verwijzen door hun **id's** in plaats van hun namen. De namen kunnen veranderen tussen releases, maar de Id's worden niet weer geven, waardoor ze een stabielere referentie hebben in Automation.
 
 > [!TIP]
-> Als u rollen hebt assiging met een cmdlet, zoals `New-AzRoleAssignment` ([verwijzing](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)), kunt u de `-RoleDefinitionId` para meter gebruiken in plaats van een `-RoleDefinitionName` id door te geven in plaats van een naam voor de rol.
+> Als u rollen hebt assiging met een cmdlet, zoals `New-AzRoleAssignment` ([verwijzing](/powershell/module/az.resources/new-azroleassignment)), kunt u de `-RoleDefinitionId` para meter gebruiken in plaats van een `-RoleDefinitionName` id door te geven in plaats van een naam voor de rol.
 
 ### <a name="permission-scopes"></a>Machtigingsbereiken
 
@@ -88,6 +88,32 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Azure Di
 ### <a name="troubleshooting-permissions"></a>Machtigingen voor probleem oplossing
 
 Als een gebruiker probeert een actie uit te voeren die niet is toegestaan door hun rol, wordt mogelijk een fout bericht weer gegeven bij het lezen van de service aanvraag `403 (Forbidden)` . Zie [*probleem oplossing: Azure Digital apparaatdubbels-aanvraag is mislukt met status: 403 (verboden)*](troubleshoot-error-403.md)voor meer informatie en stappen voor probleem oplossing.
+
+## <a name="service-tags"></a>Servicetags
+
+Een **servicetag** vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag en werkt de servicetag automatisch bij met gewijzigde adressen, zodat de complexiteit van regel matige updates voor netwerk beveiligings regels wordt geminimaliseerd. Zie voor meer informatie over service tags  [*virtuele netwerk Tags*](../virtual-network/service-tags-overview.md). 
+
+U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/network-security-groups-overview.md#security-rules)   of [Azure firewall](../firewall/service-tags.md)door service tags te gebruiken in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de servicetag (in dit geval **AzureDigitalTwins** ) op te geven in het juiste *bron* -   of *doel*   veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. 
+
+Hieronder vindt u de details van de **AzureDigitalTwins** -servicetag.
+
+| Label | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| --- | --- | --- | --- | --- |
+| AzureDigitalTwins | Azure Digital Twins<br>Opmerking: deze tag of de IP-adressen waarop deze tag wordt toegepast, kunnen worden gebruikt om de toegang te beperken tot eind punten die zijn geconfigureerd voor [gebeurtenis routes](concepts-route-events.md). | Inkomend | Nee | Ja |
+
+### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Service tags gebruiken voor het openen van gebeurtenis route-eind punten 
+
+Hier volgen de stappen voor het openen van [gebeurtenis route](concepts-route-events.md) -eind punten met behulp van service tags met Azure Digital apparaatdubbels.
+
+1. Down load eerst de verwijzing naar het JSON-bestand met de IP-bereiken en service tags van Azure: [*Azure IP-bereiken en service Tags*](https://www.microsoft.com/download/details.aspx?id=56519). 
+
+2. Zoek naar IP-adresbereiken ' AzureDigitalTwins ' in het JSON-bestand.  
+
+3. Raadpleeg de documentatie van de externe resource die is verbonden met het eind punt (bijvoorbeeld de [Event grid](../event-grid/overview.md), [Event hub](../event-hubs/event-hubs-about.md), [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)of [Azure Storage](../storage/blobs/storage-blobs-overview.md) voor [onbestelbare gebeurtenissen](concepts-route-events.md#dead-letter-events)) om te zien hoe u IP-filters voor die bron kunt instellen.
+
+4. Stel IP-filters in op de externe bron (nen) met behulp van het IP-bereik uit *stap 2*.  
+
+5. Werk de IP-bereiken zo nodig regel matig bij. De bereiken kunnen na verloop van tijd veranderen, dus het is een goed idee om deze regel matig te controleren en te vernieuwen wanneer dat nodig is. De frequentie van deze updates kan verschillen, maar het is een goed idee om ze eenmaal per week te controleren.
 
 ## <a name="encryption-of-data-at-rest"></a>Versleuteling van data-at-rest
 

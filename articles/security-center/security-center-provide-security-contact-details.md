@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: ac50b17826f9f3d06d01d3cce9704094fddf1b1d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 6b54f02b39e233dcf35f0d18682ca102883d76c3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945614"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791865"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>E-mailmeldingen voor beveiligingswaarschuwingen configureren 
 
@@ -26,8 +26,8 @@ Beveiligingswaarschuwingen moeten de juiste personen in uw organisatie bereiken.
 
 Als u uw eigen voorkeuren voor e-mailmeldingen wilt definiëren, kunt u die kiezen op de instellingspagina **E-mailmeldingen** van Azure Security Center:
 
-- ***Wie* moet worden gewaarschuwd**: e-mailberichten kunnen worden verzonden naar geselecteerde personen of naar iedereen met een specifieke Azure-rol voor een abonnement. 
-- ***Waarover* moeten ze worden gewaarschuwd**: wijzig de ernstniveaus van meldingen die door Security Center moeten worden verzonden.
+- **_Wie_ moet worden gewaarschuwd** : e-mailberichten kunnen worden verzonden naar geselecteerde personen of naar iedereen met een specifieke Azure-rol voor een abonnement. 
+- **_Waarover_ moeten ze worden gewaarschuwd** : wijzig de ernstniveaus van meldingen die door Security Center moeten worden verzonden.
 
 Security Center beperkt het aantal uitgaande e-mails om te voorkomen dat waarschuwingen niet meer serieus worden genomen. Security Center verzendt voor elk abonnement:
 
@@ -62,9 +62,10 @@ U kunt e-mailmeldingen verzenden naar individuele personen of naar alle gebruike
 1. Als u de contactgegevens voor beveiliging wilt toepassen op uw abonnement, selecteert u **Opslaan**.
 
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
+
 Zie de volgende pagina's voor meer informatie over beveiligingswaarschuwingen:
 
 - [Beveiligingswaarschuwingen: een referentiegids](alerts-reference.md): meer informatie over de beveiligingswaarschuwingen die u kunt zien in de module Threat Protection van Azure Security Center
 - [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md): meer informatie over hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren
-- [Werkstroomautomatisering](workflow-automation.md): automatiseren van reacties op waarschuwingen met aangepaste meldingslogica
+- [Antwoorden op Security Center-triggers automatiseren](workflow-automation.md)--Automatisering gebruiken om te reageren op Security Center-triggers met aangepaste meldingslogica

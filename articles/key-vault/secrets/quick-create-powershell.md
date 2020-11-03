@@ -7,15 +7,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6ef7b17efc1f18009edffbacb2578f94fcf40b1c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 1b70a8330f6350ef66244ae03e89f685162df5c7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743026"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786323"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Quickstart: Een geheim uit Azure Key Vault instellen en ophalen met PowerShell
 
@@ -25,10 +25,10 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om PowerShell lokaal te installeren en gebruiken, is versie 1.0.0 of hoger van de Azure PowerShell-module vereist voor deze zelfstudie. Typ `$PSVersionTable.PSVersion` om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Login-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest om PowerShell lokaal te installeren en gebruiken, is versie 5.0.0 of hoger van de Azure PowerShell-module vereist voor deze zelfstudie. Typ `$PSVersionTable.PSVersion` om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ```azurepowershell-interactive
-Login-AzAccount
+Connect-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
@@ -55,8 +55,8 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 De uitvoer van deze cmdlet toont eigenschappen van de nieuw gemaakte sleutelkluis. Let op de onderstaande twee eigenschappen:
 
-* **Kluisnaam**: in het voorbeeld is dat **Contoso-Vault2**. U gebruikt deze naam voor andere Sleutelkluis-cmdlets.
-* **Kluis-URI**: in dit voorbeeld is dat https://Contoso-Vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
+* **Kluisnaam** : in het voorbeeld is dat **Contoso-Vault2**. U gebruikt deze naam voor andere Sleutelkluis-cmdlets.
+* **Kluis-URI** : in dit voorbeeld is dat https://Contoso-Vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
 
 Nadat de kluis is gemaakt, is uw Azure-account het enige account dat iets met deze nieuwe kluis mag doen.
 
@@ -77,7 +77,7 @@ Converteer eerst de waarde van **hVFkk965BuUv** naar een beveiligde tekenreeks d
 $secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
 ```
 
-Typ vervolgens de onderstaande PowerShell-opdrachten om een geheim te maken in Key Vault met de naam **ExamplePassword** en de waarde **hVFkk965BuUv**:
+Typ vervolgens de onderstaande PowerShell-opdrachten om een geheim te maken in Key Vault met de naam **ExamplePassword** en de waarde **hVFkk965BuUv** :
 
 ```azurepowershell-interactive
 $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePassword' -SecretValue $secretvalue
@@ -86,7 +86,7 @@ $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePasswor
 Als u de waarde in het geheim als tekst zonder opmaak wilt weergeven:
 
 ```azurepowershell-interactive
-(Get-AzKeyVaultSecret -vaultName "Contoso-Vault2" -name "ExamplePassword").SecretValueText
+(Get-AzKeyVaultSecret -VaultName "Contoso-Vault2" -Name "ExamplePassword").SecretValue | ConvertFrom-SecureString -AsPlainText
 ```
 
 U hebt nu een sleutelkluis gemaakt, een geheim opgeslagen en dat vervolgens opgehaald.
@@ -106,5 +106,5 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 In deze quickstart hebt u een sleutelkluis gemaakt en daar een geheim in opgeslagen. Voor meer informatie over Key Vault en hoe u Key Vault integreert met uw toepassingen gaat u verder naar de artikelen hieronder.
 
 - Lees een [Overzicht van Azure Key Vault](../general/overview.md)
-- Zie de referentie voor de [Azure PowerShell Key Vault-cmdlets](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
+- Zie de referentie voor de [Azure PowerShell Key Vault-cmdlets](/powershell/module/az.keyvault/#key_vault)
 - Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)

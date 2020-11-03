@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dd7c5da84d6330e0214404f55aad9487c71b0a29
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201342"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792426"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Zelfstudie: Coderen met de Azure Digital Twins-API's
 
-Het is gebruikelijk dat ontwikkelaars die met Azure Digital Twins werken, een clienttoepassing schrijven voor interactie met hun exemplaar van de Azure Digital Twins-service. Deze zelfstudie voor ontwikkelaars biedt een inleiding op het programmeren van de Azure Digital Twins-service, met behulp van de [Azure IoT Digital Twins-clientbibliotheek voor .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). U wordt stap voor stap begeleid bij het schrijven van een C# console-client-app, vanaf het begin.
+Het is gebruikelijk dat ontwikkelaars die met Azure Digital Twins werken, een clienttoepassing schrijven voor interactie met hun exemplaar van de Azure Digital Twins-service. Deze zelfstudie voor ontwikkelaars biedt een inleiding op het programmeren van de Azure Digital Twins-service, met behulp van de [Azure Digital Twins-SDK voor .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). U wordt stap voor stap begeleid bij het schrijven van een C# console-client-app, vanaf het begin.
 
 > [!div class="checklist"]
 > * Project instellen
@@ -35,6 +35,8 @@ U gaat als volgt aan de slag:
 
 [!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
 
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
 ## <a name="set-up-project"></a>Project instellen
 
 Wanneer u klaar bent om met uw Azure Digital Twins-exemplaar, moet u het client-app-project instellen. 
@@ -43,7 +45,7 @@ Open een opdrachtprompt of een ander consolevenster op uw computer en maak een l
 
 Navigeer naar de nieuwe map.
 
-Maak een leeg .NET-console-app-project in de projectmap. Voer in het opdrachtvenster de volgende opdracht uit om een minimaal C#-project voor de console te maken:
+**Maak een leeg .NET-console-app-project** in de projectmap. In het opdrachtvenster kunt u de volgende opdracht uitvoeren om een minimaal C#-project voor de console te maken:
 
 ```cmd/sh
 dotnet new console
@@ -51,16 +53,11 @@ dotnet new console
 
 Hiermee maakt u een aantal bestanden in uw map, met daarin de naam *Program.cs* waarin u de meeste code schrijft.
 
-Voeg vervolgens twee vereiste afhankelijkheden toe voor het werken met Azure Digital Twins:
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
-```
-
-De eerste afhankelijkheid is de [Azure IoT Digital-clientbibliotheek voor .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). De tweede afhankelijkheid biedt hulpprogramma's voor de verificatie bij Azure.
-
 Houd het opdrachtvenster geopend, omdat u het in de zelfstudie blijft gebruiken.
+
+Vervolgens voegt u **twee afhankelijkheden toe aan uw project** die nodig zijn om te werken met Azure Digital Twins. U kunt de onderstaande links gebruiken om naar de pakketten op NuGet te navigeren, waar u de consoleopdrachten (inclusief voor .NET CLI) kunt vinden om de meest recente versie van elk aan uw project toe te voegen.
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Dit is het pakket voor de [Azure Digital Twins SDK voor .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). 
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). Deze bibliotheek biedt hulpprogramma's voor de verificatie bij Azure.
 
 ## <a name="get-started-with-project-code"></a>Aan de slag met projectcode
 
@@ -117,9 +114,6 @@ Console.WriteLine($"Service client created – ready to go");
 
 Sla het bestand op. 
 
->[!NOTE]
-> In dit voorbeeld wordt een `DefaultAzureCredential` voor verificatie gebruikt. Zie de documentatie voor de [Microsoft Identity platform-verificatiebibliotheken](../active-directory/develop/reference-v2-libraries.md) of het artikel van Azure Digital Twins over [verificatie van clienttoepassingen](how-to-authenticate-client.md) voor informatie over andere typen referenties.
-
 Voer in het opdrachtvenster de code uit met de volgende opdracht: 
 
 ```cmd/sh
@@ -132,11 +126,11 @@ Hiermee herstelt u de afhankelijkheden bij de eerste uitvoering en voert u het p
 
 ### <a name="upload-a-model"></a>Een model uploaden
 
-Azure Digital Twins heeft geen intrinsieke domeinwoordenlijst. De typen elementen in uw omgeving die u kunt vertegenwoordigen in Azure Digital Twins, worden door u gedefinieerd met behulp van **Modellen** . [Modellen](concepts-models.md) lijken op klassen in objectgeoriënteerde programmeertalen. Ze bieden door de gebruiker gedefinieerde sjablonen die [digitale tweelingen](concepts-twins-graph.md) later kunnen volgen en instantiëren. Ze worden geschreven in een JSON-achtige taal met de naam **Digital Twins Definition Language (DTDL)** .
+Azure Digital Twins heeft geen intrinsieke domeinwoordenlijst. De typen elementen in uw omgeving die u kunt vertegenwoordigen in Azure Digital Twins, worden door u gedefinieerd met behulp van **Modellen**. [Modellen](concepts-models.md) lijken op klassen in objectgeoriënteerde programmeertalen. Ze bieden door de gebruiker gedefinieerde sjablonen die [digitale tweelingen](concepts-twins-graph.md) later kunnen volgen en instantiëren. Ze worden geschreven in een JSON-achtige taal met de naam **Digital Twins Definition Language (DTDL)** .
 
 De eerste stap bij het maken van een Azure Digital Twins-oplossing is het definiëren van ten minste een model in een DTDL-bestand.
 
-Maak in de map waar u het project hebt gemaakt een nieuw *.json* -bestand met de naam *SampleModel.json* . Plak in de volgende hoofdtekst van het bestand: 
+Maak in de map waar u het project hebt gemaakt een nieuw *.json* -bestand met de naam *SampleModel.json*. Plak in de volgende hoofdtekst van het bestand: 
 
 ```json
 {
@@ -159,7 +153,7 @@ Maak in de map waar u het project hebt gemaakt een nieuw *.json* -bestand met de
 ```
 
 > [!TIP]
-> Als u Visual Studio voor deze zelfstudie gebruikt, wilt u mogelijk het zojuist gemaakte JSON-bestand selecteren en de eigenschap *Kopiëren naar uitvoermap* instellen in de Eigenschappencontrole naar te *Kopiëren als nieuwer* of *Altijd kopiëren* . Hierdoor kan Visual Studio het JSON-bestand met het standaardpad vinden wanneer u het programma uitvoert met **F5** tijdens de rest van de zelfstudie.
+> Als u Visual Studio voor deze zelfstudie gebruikt, wilt u mogelijk het zojuist gemaakte JSON-bestand selecteren en de eigenschap *Kopiëren naar uitvoermap* instellen in de Eigenschappencontrole naar te *Kopiëren als nieuwer* of *Altijd kopiëren*. Hierdoor kan Visual Studio het JSON-bestand met het standaardpad vinden wanneer u het programma uitvoert met **F5** tijdens de rest van de zelfstudie.
 
 > [!TIP] 
 > Er is een taalagnostisch [DTDL-validatorvoorbeeld](/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-parse-models.md).
@@ -264,14 +258,20 @@ Vanaf dit punt verstuurt de zelfstudie alle aanroepen naar servicemethoden in tr
 
 ### <a name="create-digital-twins"></a>Digitale tweelingen maken
 
-Nu u een model naar Azure Digital Twins hebt geüpload, kunt u deze modeldefinitie gebruiken voor het maken van **digitale tweelingen** . [Digitale tweelingen](concepts-twins-graph.md) zijn exemplaren van een model en vertegenwoordigen de entiteiten in uw bedrijfsomgeving: dingen als sensoren op een boerderij, ruimten in een gebouw, of lichten in een auto. In deze sectie wordt een aantal digitale tweelingen gemaakt op basis van het model dat u eerder hebt geüpload.
+Nu u een model naar Azure Digital Twins hebt geüpload, kunt u deze modeldefinitie gebruiken voor het maken van **digitale tweelingen**. [Digitale tweelingen](concepts-twins-graph.md) zijn exemplaren van een model en vertegenwoordigen de entiteiten in uw bedrijfsomgeving: dingen als sensoren op een boerderij, ruimten in een gebouw, of lichten in een auto. In deze sectie wordt een aantal digitale tweelingen gemaakt op basis van het model dat u eerder hebt geüpload.
 
-Voeg bovenaan een nieuwe `using`-instructie toe, omdat u de ingebouwde .NET JSON-serializer nodig hebt in `System.Text.Json`:
+Voeg deze nieuwe `using`-instructies aan de bovenkant toe, omdat dit codevoorbeeld gebruikmaakt van de ingebouwde .NET JSON serializer in `System.Text.Json`en de `Serialization`-naamruimte van de [Azure Digital Twins SDK voor .NET ( C# )](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) [LINK GEWIJZIGD VOOR PREVIEW]:
 
 ```csharp
 using System.Text.Json;
 using Azure.DigitalTwins.Core.Serialization;
 ```
+
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` is niet vereist voor het werken met digitale dubbels en relaties. Het is een optionele naamruimte waarmee u gegevens in de juiste indeling kunt ophalen. Enkele alternatieven voor het gebruik ervan zijn:
+>* Tekenreeksen samenvoegen om een JSON-object te maken
+>* Een JSON-parser als `System.Text.Json` gebruiken om dynamisch een JSON-object te bouwen
+>* Uw aangepaste typen in C# modelleren, ze instantiëren en naar tekenreeksen serialiseren
 
 Voeg vervolgens de volgende code toe aan het einde van de `Main` methode om drie digitale tweelingen te maken en initialiseren op basis van dit model.
 
@@ -299,19 +299,9 @@ U ziet dat er geen fout wordt gegenereerd wanneer de tweelingen de tweede keer w
 
 ### <a name="create-relationships"></a>Relaties maken
 
-Vervolgens kunt u **relaties** maken tussen deze gemaakte tweelingen, om ze te verbinden in een **tweelinggrafiek** . [Tweelinggrafieken](concepts-twins-graph.md) worden gebruikt om uw gehele omgeving voor te stellen.
+Vervolgens kunt u **relaties** maken tussen deze gemaakte tweelingen, om ze te verbinden in een **tweelinggrafiek**. [Tweelinggrafieken](concepts-twins-graph.md) worden gebruikt om uw gehele omgeving voor te stellen.
 
-Dit codevoorbeeld maakt gebruik van de `Azure.DigitalTwins.Core.Serialization`-naamruimte bij het maken van relaties. U hebt dit eerder aan het project toegevoegd met deze `using`-instructie:
-
-```csharp
-using Azure.DigitalTwins.Core.Serialization;
-```
-
->[!NOTE]
->`Azure.DigitalTwins.Core.Serialization` is niet vereist voor het werken met digitale dubbels en relaties. Het is een optionele naamruimte waarmee u gegevens in de juiste indeling kunt ophalen. Enkele alternatieven voor het gebruik ervan zijn:
->* Tekenreeksen samenvoegen om een JSON-object te maken
->* Een JSON-parser als `System.Text.Json` gebruiken om dynamisch een JSON-object te bouwen
->* Uw aangepaste typen in C# modelleren, ze instantiëren en naar tekenreeksen serialiseren
+Dit codevoorbeeld maakt gebruik van de `Azure.DigitalTwins.Core.Serialization`-naamruimte bij het maken van relaties. U hebt dit eerder aan het project toegevoegd in de sectie [*Digitale dubbels maken*](#create-digital-twins).
 
 Voeg een nieuwe statische methode toe aan de klasse `Program`, onder de methode `Main`:
 

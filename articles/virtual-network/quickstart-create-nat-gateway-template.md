@@ -1,7 +1,7 @@
 ---
 title: 'Een NAT-gateway maken: Resource Manager-sjabloon'
 titleSuffix: Azure Virtual Network NAT
-description: In deze quickstart leest u hoe u een NAT-gateway kunt maken met de Azure Resource Manager-sjabloon.
+description: In deze quickstart leest u hoe u een NAT-gateway kunt maken met de ARM-sjabloon (Azure Resource Manager-sjabloon).
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,72 +13,64 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/09/2020
+ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 24577fd110ce944e12750a7380192d1a2d3cb4cd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 95856db9288e5860dfab47dce506d1e7d6de1ffc
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736975"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913327"
 ---
-# <a name="create-a-nat-gateway---resource-manager-template"></a>Een NAT-gateway maken: Resource Manager-sjabloon
+# <a name="quickstart-create-a-nat-gateway---arm-template"></a>Quickstart: NAT-gateway maken - ARM-sjabloon
 
-Ga aan de slag met Virtual Network NAT met behulp van een Azure Resource Manager-sjabloon.  Met deze sjabloon implementeert u een virtueel netwerk, een NAT-gatewayresource en een virtuele Ubuntu-machine. De virtuele Ubuntu-machine wordt geïmplementeerd op een subnet dat is gekoppeld aan de NAT-gatewayresource.
+Aan de slag met Virtual Network NAT met behulp van een ARM-sjabloon (Azure Resource Manager-sjabloon). Met deze sjabloon implementeert u een virtueel netwerk, een NAT-gatewayresource en een virtuele Ubuntu-machine. De virtuele Ubuntu-machine wordt geïmplementeerd op een subnet dat is gekoppeld aan de NAT-gatewayresource.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Vereisten
+
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="create-a-nat-gateway-and-supporting-resources"></a>Een NAT-gateway en ondersteunende resources maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-Deze sjabloon is geconfigureerd voor het maken van een 
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm).
 
-* Virtueel netwerk 
+Deze sjabloon is geconfigureerd voor het maken van een:
+
+* Virtueel netwerk
 * NAT-gatewayresource
 * Virtuele Ubuntu-machine
 
 De virtuele Ubuntu-machine wordt geïmplementeerd op een subnet dat is gekoppeld aan de NAT-gatewayresource.
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json)
-
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="1-335" highlight="256-282":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json":::
 
 Er worden negen Azure-resources gedefinieerd in de sjabloon:
 
-**Microsoft.Network**
+* **[Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)** : Hiermee maakt u een netwerkbeveiligingsgroep.
+* **[Microsoft.Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : Hiermee maakt u een beveiligingsregel.
+* **[Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)** : Hiermee maakt u een openbaar IP-adres.
+* **[Microsoft.Network/publicIPPrefixes](/azure/templates/microsoft.network/publicipprefixes)** : Hiermee maakt u een openbaar IP-voorvoegsel.
+* **[Microsoft.Compute/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)** : Hiermee maakt u een virtuele machine.
+* **[Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)** : Hiermee maakt u een virtueel netwerk.
+* **[Microsoft.Network/natGateways](/azure/templates/microsoft.network/natgateways)** : Hiermee maakt u een NAT-gatewayresource.
+* **[Microsoft.Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)** : Hiermee maakt u een virtueel subnet.
+* **[Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)** : Hiermee maakt u een netwerkinterface.
 
-* **[Microsoft.Network/natGateways](https://docs.microsoft.com/azure/templates/microsoft.network/natgateways)** : Hiermee maakt u een NAT-gatewayresource.
-
-* **[Microsoft.Network/networkSecurityGroups](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)** : Hiermee maakt u een netwerkbeveiligingsgroep.
-
-    * **[Microsoft.Network/networkSecurityGroups/securityRules](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : Hiermee maakt u een beveiligingsregel.
-
-* **[Microsoft.Network/publicIPAddresses](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)** : Hiermee maakt u een openbaar IP-adres.
-
-* **[Microsoft.Network/publicIPPrefixes](https://docs.microsoft.com/azure/templates/microsoft.network/publicipprefixes)** : Hiermee maakt u een openbaar IP-voorvoegsel.
-
-* **[Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)** : Hiermee maakt u een virtueel netwerk.
-
-    * **[Microsoft.Network/virtualNetworks/subnets](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)** : Hiermee maakt u een virtueel subnet.
-
-* **[Microsoft.Network/networkInterfaces](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)** : Hiermee maakt u een netwerkinterface.
-
-**Microsoft.Compute**
-
-* **[Microsoft.Compute/virtualMachines](https://docs.microsoft.com/azure/templates/Microsoft.Compute/virtualMachines)** : Hiermee maakt u een virtuele machine.
-
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 **Azure-CLI**
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
 resourceGroupName="myResourceGroupNAT"
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json" 
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json"
 
 az group create \
 --name $resourceGroupName \
@@ -109,11 +101,11 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Selecteer **Resourcegroepen** in het linkerdeelvenster.
+1. Selecteer **Resourcegroepen** in het linkerdeelvenster.
 
-3. Selecteer de resourcegroep die u in de vorige sectie hebt gemaakt. De standaardnaam van de resourcegroep is **myResourceGroupNAT**
+1. Selecteer de resourcegroep die u in de vorige sectie hebt gemaakt. De standaardnaam van de resourcegroep is **myResourceGroupNAT**
 
-4. Controleer of de volgende resources zijn gemaakt in de resourcegroep:
+1. Controleer of de volgende resources zijn gemaakt in de resourcegroep:
 
     ![Resourcegroep van Virtual Network NAT](./media/quick-create-template/nat-gateway-template-rg.png)
 
@@ -123,22 +115,22 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken om de resourcegroep en alle gerelateerde resources daarin te verwijderen wanneer u ze niet meer nodig hebt.
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete \
     --name myResourceGroupNAT
 ```
 
 **Azure PowerShell**
 
-U kunt de opdracht [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) gebruiken om de resourcegroep en alle gerelateerde resources daarin te verwijderen wanneer u ze niet meer nodig hebt.
+U kunt de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resourcegroep en alle gerelateerde resources daarin te verwijderen wanneer u ze niet meer nodig hebt.
 
-```azurepowershell-interactive 
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
 **Azure-portal**
 
-U kunt de resourcegroep, de NAT-gateway en alle gerelateerde resources verwijderen als u deze niet meer nodig hebt. Selecteer de resourcegroep **myResourceGroupNAT** met de NAT-gateway en selecteer vervolgens **Verwijderen** .
+U kunt de resourcegroep, de NAT-gateway en alle gerelateerde resources verwijderen als u deze niet meer nodig hebt. Selecteer de resourcegroep **myResourceGroupNAT** met de NAT-gateway en selecteer vervolgens **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -148,7 +140,7 @@ In deze quickstart hebt u het volgende gemaakt:
 * Virtueel netwerk
 * Virtuele Ubuntu-machine
 
-De virtuele machine wordt geïmplementeerd op een virtueel netwerk dat is gekoppeld aan de NAT-gateway. 
+De virtuele machine wordt geïmplementeerd op een virtueel netwerk dat is gekoppeld aan de NAT-gateway.
 
 Als u meer wilt weten over Virtual Network NAT en Azure Resource Manager vindt u meer informatie in de onderstaande artikelen.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83681816"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629303"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Zelfstudie: Werken met de Producer- en Consumer-API's van Apache Kafka
 
@@ -34,7 +34,7 @@ Meer informatie over de [Producer-API](https://kafka.apache.org/documentation/#p
 ## <a name="prerequisites"></a>Vereisten
 
 * Apache Kafka-cluster in HDInsight. Zie [Aan de slag met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor informatie over het maken van een cluster.
-* [JDK-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks) of een equivalent, zoals OpenJDK.
+* [JDK-versie 8 (Java Developer Kit)](/azure/developer/java/fundamentals/java-jdk-long-term-support) of een equivalent, zoals OpenJDK.
 * [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
 * Een SSH-client, zoals Putty. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -217,9 +217,9 @@ Records worden in Kafka opgeslagen in de volgorde waarin deze worden ontvangen b
 
 ## <a name="common-issues-faced"></a>Veelvoorkomende problemen
 
-1. **Het maken van een onderwerp mislukt** Als voor uw cluster Enterprise Security Pack is ingeschakeld, gebruikt u de [vooraf ontwikkelde JAR-bestanden voor Producer en Consumer](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Het JAR-bestand met ESP kan worden gemaakt op basis van de code in de [`DomainJoined-Producer-Consumer`-submap](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer). Houd er rekening mee dat de eigenschappen van Producer en Consumer een extra eigenschap `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` voor clusters met ESP hebben.
+1. **Het maken van een onderwerp mislukt** Als voor uw cluster Enterprise Security Pack is ingeschakeld, gebruikt u de [vooraf ontwikkelde JAR-bestanden voor Producer en Consumer](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Het JAR-bestand met ESP kan worden gemaakt op basis van de code in de [`DomainJoined-Producer-Consumer`-submap](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer). De eigenschappen van Producer en Consumer hebben een extra eigenschap `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` voor clusters met ESP.
 
-2. **Er is een probleem met clusters met ESP** Als er een fout optreedt in de Produce- en Consume-bewerkingen en u een cluster met ESP gebruikt, controleert u of de gebruiker `kafka` aanwezig is in alle Ranger-beleidsregels. Als deze niet aanwezig is, voegt u deze toe aan alle Ranger-beleidsregels.
+2. **Fout in clusters met ESP** : Als er een fout optreedt in de Produce- en Consume-bewerkingen en u een cluster met ESP gebruikt, controleert u of gebruiker `kafka` aanwezig is in alle Ranger-beleidsregels. Als deze niet aanwezig is, voegt u deze toe aan alle Ranger-beleidsregels.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

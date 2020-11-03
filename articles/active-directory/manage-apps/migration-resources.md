@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 327e59d3fee6f23d2635b846e9fb5ab422e0139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49dff0e4ac41670800073c02c5a507eb433c326
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87429023"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280443"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Bronnen voor het migreren van toepassingen naar Azure Active Directory
 
@@ -26,6 +26,7 @@ Bronnen die u helpen bij het migreren van de toegang tot en verificatie van toep
 |:-----------|:-------------|
 |[Uw apps migreren naar Azure AD](https://aka.ms/migrateapps/whitepaper) | Dit technisch document bevat de voor delen van migratie en beschrijft het plannen van migratie in vier duidelijk beschreven fasen: detectie, classificatie, migratie en doorlopend beheer. U wordt begeleid bij het bepalen van het proces en het verbreken van het project in gemakkelijk te gebruiken onderdelen. In het hele document vindt u koppelingen naar belang rijke bronnen die u op weg helpen. |
 |[Oplossings handleiding: apps migreren van Active Directory Federation Services (AD FS) naar Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | In deze hand leiding vindt u een overzicht van de vier fasen van het plannen en uitvoeren van een toepassings migratie project dat wordt beschreven op een hoger niveau in het White Paper over de migratie. In deze hand leiding leert u hoe u deze fasen toepast op het specifieke doel van het verplaatsen van een toepassing vanuit Azure Directory Federated Services (AD FS) naar Azure AD.|
+|[Zelf studie voor ontwikkel aars: AD FS naar Azure AD-toepassings migratie Playbook voor ontwikkel aars](https://aka.ms/adfsplaybook) | Met deze set ASP.NET-code voorbeelden en bijbehorende zelf studies kunt u leren hoe u uw toepassingen die zijn geïntegreerd met Active Directory Federation Services (AD FS), veilig en veilig kunt migreren naar Azure Active Directory (Azure AD). Deze zelf studie is gericht op ontwikkel aars die niet alleen meer willen weten over het configureren van apps op zowel AD FS als Azure AD, maar ook op de hoogte zijn en dat de code basis in dit proces moet worden gewijzigd.|
 | [Hulp programma: Active Directory Federation Services-gereedheids script voor migratie](https://aka.ms/migrateapps/adfstools) | Dit is een script dat u kunt uitvoeren op uw AD FS-server (on-premises Active Directory Federation Services) om de gereedheid van apps te bepalen voor migratie naar Azure AD.|
 | [Implementatie plan: migreren van AD FS naar wacht woord-hash-synchronisatie](https://aka.ms/ADFSTOPHSDPDownload) | Hashes van wacht woorden van gebruikers worden gesynchroniseerd van on-premises Active Directory naar Azure AD. Hierdoor kan Azure AD gebruikers verifiëren zonder interactie met de on-premises Active Directory.| 
 | [Implementatie plan: migratie van AD FS naar Pass Through-verificatie](https://aka.ms/ADFSTOPTADPDownload)|Met Azure AD Pass-Through-verificatie kunnen gebruikers zich aanmelden bij zowel lokale als Cloud toepassingen met hetzelfde wacht woord. Deze functie biedt uw gebruikers een betere ervaring omdat ze een minder wacht woord hebben om te onthouden. Het vermindert ook de IT-helpdesk kosten omdat gebruikers minder waarschijnlijk moeten blijven weten hoe ze zich kunnen aanmelden wanneer ze slechts één wacht woord hoeven te onthouden. Als iemand zich aanmeldt bij Azure AD, worden met deze functie de wachtwoorden rechtstreeks gecontroleerd tegen de on-premises Active Directory.|

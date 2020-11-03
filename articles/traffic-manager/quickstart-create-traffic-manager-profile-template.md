@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
-ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299147"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676005"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Quickstart: Traffic Manager-profiel maken met een ARM-sjabloon
 
@@ -43,7 +43,7 @@ Zie [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Selecteer **Proberen** in het volgende codeblok om Azure Cloud Shell te openen en volg de instructies om u aan te melden bij Azure. 
+1. Selecteer **Proberen** in het volgende codeblok om Azure Cloud Shell te openen en volg de instructies om u aan te melden bij Azure.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,7 +66,7 @@ Zie [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/
 
 1. Voer de waarden in.
 
-    De sjabloonimplementatie maakt een profiel met twee externe eindpunten. **Endpoint1** gebruikt een doeleindpunt van *w<span>ww.microsoft</span>.com* met als locatie **Noord-Europa**. **Endpoint2** gebruikt een doeleindpunt van *d<span>ocs.microsoft</span>.com* met als locatie **VS - zuid-centraal**. 
+    De sjabloonimplementatie maakt een profiel met twee externe eindpunten. **Endpoint1** gebruikt een doeleindpunt van `www.microsoft.com` met locatie in **Noord-Europa**. **Endpoint2** gebruikt een doeleindpunt van `docs.microsoft.com` met locatie in **VS - zuid-centraal**.
 
     De naam van de resourcegroep is de naam van het project, maar met **rg** eraan toegevoegd.
 
@@ -87,21 +87,23 @@ Azure PowerShell wordt gebruikt om de sjabloon te implementeren. Naast Azure Pow
     Get-AzTrafficManagerProfile -Name ExternalEndpointExample -ResourceGroupName $resourceGroupName | Select RelativeDnsName
     ```
 
-    Kopieer de waarde **RelativeDnsName**. De DNS-naam van uw Traffic Manager-profiel is *<* relativednsname *>.trafficmanager.net*. 
+    Kopieer de waarde **RelativeDnsName**. De DNS-naam van uw Traffic Manager-profiel is `<relativednsname>.trafficmanager.net`.
 
-1. Voer de volgende opdracht uit vanuit een lokale PowerShell door de **{relativeDNSname}** -variabele te vervangen door *<* relativednsname *>.trafficmanager.net*.
+1. Voer de volgende opdracht uit vanuit een lokale PowerShell door de variabele **{relativeDNSname}** te vervangen door `<relativednsname>.trafficmanager.net`.
 
     ```powershell
     Resolve-DnsName -Name {relativeDNSname} | Select-Object NameHost | Select -First 1
     ```
-    U moet een NameHost van *w<span>ww.microsoft</span>.com* of *d<span>ocs. microsoft</span>.com* gebruiken, afhankelijk van de regio die dichterbij ligt.
 
-1. Als u wilt controleren of u het andere eindpunt kunt oplossen, moet u het eindpunt uitschakelen voor het doel dat u in de laatste stap hebt gekregen. Vervang de **{endpointName}** met **endpoint1** of **endpoint2** om het doel voor *w<span>ww.microsoft</span>.com* of *d<span>ocs. microsoft</span>.com* uit te schakelen.
+    U moet een NameHost van `www.microsoft.com` of `docs.microsoft.com` gebruiken, afhankelijk van welke regio dichterbij is.
+
+1. Als u wilt controleren of u het andere eindpunt kunt oplossen, moet u het eindpunt uitschakelen voor het doel dat u in de laatste stap hebt gekregen. Vervang de variabele **{endpointName}** door **endpoint1** of **endpoint2** om het doel voor respectievelijk `www.microsoft.com` of `docs.microsoft.com` uit te schakelen.
 
     ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name {endpointName} -Type ExternalEndpoints -ProfileName ExternalEndpointExample -ResourceGroupName $resourceGroupName -Force
     ```
-1. Voer de opdracht van stap 2 opnieuw uit in een lokale PowerShell. Nu moet u de andere NameHost voor het andere eindpunt ophalen. 
+
+1. Voer de opdracht van stap 2 opnieuw uit in een lokale PowerShell. Nu moet u de andere NameHost voor het andere eindpunt ophalen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -115,8 +117,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u het volgende gemaakt:
-* Traffic Manager-profiel
+In deze quickstart hebt u een Traffic Manager-profiel gemaakt.
 
 Voor meer informatie over het routeren van verkeer gaat u door naar de zelfstudies voor Traffic Manager.
 

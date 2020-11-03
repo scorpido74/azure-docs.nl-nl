@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a9e2298b6707304df96a2e954015459534abfa9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e10ca98e0c9257187288d02483ed81915a7b321d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546064"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894716"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Zelfstudie: Azure Active Directory-integratie met Ziflow
 
@@ -27,7 +27,7 @@ De integratie van Ziflow met Azure AD biedt de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Ziflow (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Voor het configureren van de integratie van Zoom in Azure AD moet u Ziflow uit d
 
 **Voer de volgende stappen uit om Ziflow toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor het configureren van Azure AD eenmalige aanmelding met Ziflow, moet u de volgende stappen uitvoeren:
 
-1. In [Azure Portal](https://portal.azure.com/) selecteert u op de integratiepagina van de **Ziflow**-toepassing de optie **Eenmalige aanmelding**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u op de integratiepagina van de **Ziflow** -toepassing de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -152,7 +152,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Ziflow, moet u de vo
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -164,7 +164,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -188,7 +188,7 @@ In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige 
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -212,11 +212,11 @@ Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:
 
 3. Klik op **Toevoegen** en op **Gebruiker toevoegen**.
 
-    ![Ziflow-configuratie voor toevoegen van gebruiker](./media/ziflow-tutorial/tutorial_ziflow_add.png)
+    ![Schermopname met de optie Gebruiker toevoegen geselecteerd.](./media/ziflow-tutorial/tutorial_ziflow_add.png)
 
 4. Voer in de pop-up **Een gebruiker toevoegen** de volgende stappen uit:
 
-    ![Ziflow-configuratie voor toevoegen van gebruiker](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
+    ![Schermopname van het dialoogvenster Een gebruiker toevoegen, waar u de beschreven waarden kunt invoeren.](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
     a. Voer in het tekstvak **E-mail** het e-mailadres van de gebruiker in, zoals brittasimon@contoso.com.
 
@@ -235,13 +235,12 @@ Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Ziflow in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Ziflow waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Ziflow in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Ziflow waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

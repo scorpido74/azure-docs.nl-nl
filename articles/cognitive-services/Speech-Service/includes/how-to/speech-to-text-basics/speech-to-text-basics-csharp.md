@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbca2cba2738da6733f6221db5d67a3b79675528
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 74420f1a83792437a2779c9745fc52c22c5121d4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376831"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886524"
 ---
 Een van de belangrijkste functies van de Speech-service is de mogelijkheid om menselijke spraak te herkennen en te transcriberen (ook wel spraak-naar-tekst genoemd). In deze quickstart leert u meer over het gebruik van de Speech-SDK in uw apps en producten om spraak-naar-tekst-conversie van hoge kwaliteit uit te voeren.
 
@@ -24,7 +24,9 @@ In dit artikel wordt ervan uitgegaan dat u een Azure-account en een abonnement o
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
-Voordat u iets kunt doen, moet u de Speech SDK installeren. Gebruik de volgende instructies, afhankelijk van uw platform:
+Als u enkel de pakketnaam nodig hebt om aan de slag te gaan, voer dan `Install-Package Microsoft.CognitiveServices.Speech` uit in de NuGet-console.
+
+Zie de volgende links voor platformspecifieke installatie-instructies:
 
 * <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet&pivots=programming-language-csharp" target="_blank">.NET Framework <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 * <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnetcore&pivots=programming-language-csharp" target="_blank">.NET Core <span class="docon docon-navigate-external x-hidden-focus"></span></a>
@@ -34,74 +36,145 @@ Voordat u iets kunt doen, moet u de Speech SDK installeren. Gebruik de volgende 
 
 ## <a name="create-a-speech-configuration"></a>Een spraakconfiguratie maken
 
-Als u de Speech-service wilt aanroepen met behulp van de Speech SDK, moet u een [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eindpunt, de host of het autorisatietoken.
+Als u de Speech-service wilt aanroepen met behulp van de Speech SDK, moet u een [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eindpunt, de host of het autorisatietoken. Maak een [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) met behulp van uw sleutel en regio. Zie de pagina [regio-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
 
-> [!NOTE]
-> Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
+```csharp
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
 
-Er zijn een paar manieren waarop u een [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) kunt initialiseren:
+class Program 
+{
+    async static Task Main(string[] args)
+    {
+        var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    }
+}
+```
 
-* Met een abonnement: geef een sleutel en de bijbehorende regio door.
+Er zijn een paar andere manieren waarop u een [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) kunt initialiseren:
+
 * Met een eindpunt: geef een Speech-service-eindpunt door. Een sleutel of autorisatietoken is optioneel.
 * Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
 * Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken hoe een [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) wordt gemaakt met behulp van een sleutel en regio. Zie de pagina [regio-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
+> [!NOTE]
+> Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
+
+## <a name="recognize-from-microphone"></a>Herkennen vanaf de microfoon
+
+Als u spraak wilt herkennen met de microfoon van uw apparaat, maakt u een `AudioConfig` aan met behulp van `FromDefaultMicrophoneInput()`. Initialiseer vervolgens een [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet), waarbij uw `audioConfig` en `speechConfig` worden doorgegeven.
 
 ```csharp
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-```
-
-## <a name="initialize-a-recognizer"></a>Een herkenner initialiseren
-
-Nadat u een [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) hebt gemaakt, is de volgende stap het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet). Wanneer u een [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) initialiseert, geeft u uw `speechConfig` door. Dit zorgt voor de referenties die de spraakservice nodig heeft om uw aanvraag te valideren.
-
-```csharp
-using var recognizer = new SpeechRecognizer(speechConfig);
-```
-
-## <a name="recognize-from-microphone-or-file"></a>Herkennen van de microfoon of het bestand
-
-Als u het audio-invoerapparaat wilt opgeven, moet u een [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) maken en deze doorgeven als een parameter bij het initialiseren van uw [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet).
-
-Als u spraak wilt herkennen met behulp van de microfoon van het apparaat, maakt u een `AudioConfig` met behulp van `FromDefaultMicrophoneInput()` en geeft u de audioconfiguratie door om uw `SpeechRecognizer`-object aan te maken.
-
-```csharp
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
-using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+class Program 
+{
+    async static Task FromMic(SpeechConfig speechConfig)
+    {
+        using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+        using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+        Console.WriteLine("Speak into your microphone.");
+        var result = await recognizer.RecognizeOnceAsync();
+        Console.WriteLine($"RECOGNIZED: Text={result.Text}");
+    }
+
+    async static Task Main(string[] args)
+    {
+        var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        await FromMic(speechConfig);
+    }
+}
 ```
 
-> [!TIP]
-> [Meer informatie over het ophalen van de apparaat-id voor het audio-invoerapparaat](../../../how-to-select-audio-input-devices.md).
+Als u een *specifiek* audio-invoerapparaat wilt gebruiken, moet u de apparaat-id opgeven in de `AudioConfig`. Meer informatie over [het ophalen van de apparaat-id](../../../how-to-select-audio-input-devices.md) voor het audio-invoerapparaat.
 
-Als u spraak wilt herkennen vanuit een audiobestand in plaats van een microfoon, moet u nog steeds een `AudioConfig` aanmaken. Wanneer u echter de [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) maakt in plaats van `FromDefaultMicrophoneInput()` aan te roepen, roept u `FromWavFileInput()` aan en geeft u de parameter `filename` door.
+## <a name="recognize-from-file"></a>Herkennen vanuit bestand
+
+Als u spraak wilt herkennen vanuit een audiobestand in plaats van een microfoon, moet u nog steeds een `AudioConfig` aanmaken. Wanneer u echter de [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) maakt in plaats van `FromDefaultMicrophoneInput()` aan te roepen, roept u `FromWavFileInput()` aan en geeft u het bestandspad door.
 
 ```csharp
-using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");
-using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+
+class Program 
+{
+    async static Task FromFile(SpeechConfig speechConfig)
+    {
+        using var audioConfig = AudioConfig.FromWavFileInput("PathToFile.wav");
+        using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+        var result = await recognizer.RecognizeOnceAsync();
+        Console.WriteLine($"RECOGNIZED: Text={result.Text}");
+    }
+
+    async static Task Main(string[] args)
+    {
+        var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        await FromFile(speechConfig);
+    }
+}
 ```
 
-## <a name="recognize-speech"></a>Spraak herkennen
+## <a name="recognize-from-in-memory-stream"></a>Herkennen vanuit de gegevensstroom in het geheugen
 
-De [Recognizer-klasse](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) voor de Speech SDK voor C# maakt een aantal methoden beschikbaar die u voor spraakherkenning kunt gebruiken.
+In veel gevallen is het waarschijnlijk dat uw audiogegevens afkomstig zijn uit de blob-opslag of dat deze al in het geheugen aanwezig zijn als `byte[]` of een vergelijkbare onbewerkte gegevensstructuur. In het volgende voorbeeld wordt een [`PushAudioInputStream`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.pushaudioinputstream?view=azure-dotnet) gebruikt om spraak te herkennen, wat in feite een abstracte geheugenstroom is. De voorbeeldcode doet het volgende:
 
-* Eenmalige herkenning (asynchroon): voert herkenning uit in een niet-blokkerende (asynchrone) modus. Hiermee wordt één uiting herkend. Het einde van één uiting wordt bepaald door te luisteren naar stilte aan het einde of tot een maximum van 15 seconden audio is verwerkt.
-* Continue herkenning (asynchroon): initieert asynchroon een continue herkenningsbewerking. De gebruiker meldt zich aan bij gebeurtenissen en handelt verschillende toepassingsstatussen af. Als u asynchrone continue herkenning wilt stoppen, roept u [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet) aan.
-
-> [!NOTE]
-> Meer informatie over het [kiezen van een spraakherkenningsmodus](../../../how-to-choose-recognition-mode.md).
-
-### <a name="single-shot-recognition"></a>Eenmalige herkenning
-
-Hier volgt een voor beeld van asynchrone eenmalige herkenning met [`RecognizeOnceAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet):
+* Schrijft onbewerkte audiogegevens (PCM) naar de `PushAudioInputStream` met behulp van de `Write()`-functie, waarmee een `byte[]` wordt geaccepteerd.
+* Hiermee leest u een `.wav`-bestand met behulp van een `FileReader` voor demonstratiedoeleinden, maar als u al audiogegevens in een `byte[]` hebt, kunt u direct doorgaan om de inhoud naar de invoerstroom te schrijven.
+* De standaardindeling is 16-bits, 16khz mono PCM. Als u de indeling wilt aanpassen, kunt u een [`AudioStreamFormat`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audiostreamformat?view=azure-dotnet)-object doorgeven aan `CreatePushStream()` met behulp van de statische functie `AudioStreamFormat.GetWaveFormatPCM(sampleRate, (byte)bitRate, (byte)channels)`.
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync();
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+
+class Program 
+{
+    async static Task FromStream(SpeechConfig speechConfig)
+    {
+        var reader = new BinaryReader(File.OpenRead("PathToFile.wav"));
+        using var audioInputStream = AudioInputStream.CreatePushStream();
+        using var audioConfig = AudioConfig.FromStreamInput(audioInputStream);
+        using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+        byte[] readBytes;
+        do
+        {
+            readBytes = reader.ReadBytes(1024);
+            audioInputStream.Write(readBytes, readBytes.Length);
+        } while (readBytes.Length > 0);
+
+        var result = await recognizer.RecognizeOnceAsync();
+        Console.WriteLine($"RECOGNIZED: Text={result.Text}");
+    }
+
+    async static Task Main(string[] args)
+    {
+        var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        await FromStream(speechConfig);
+    }
+}
 ```
 
-U moet code schrijven om het resultaat af te handelen. In dit voorbeeld wordt de [`result.Reason`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.recognitionresult.reason?view=azure-dotnet) geëvalueerd:
+Als u een push-stream gebruikt als invoer, wordt ervan uitgegaan dat de audiogegevens een onbewerkte PCM zijn, zoals het overslaan van headers.
+De API werkt in bepaalde gevallen nog steeds als de header niet is overgeslagen, maar voor de beste resultaten kunt u het implementeren van logica voor het lezen van de headers overwegen, zodat de `byte[]` begint bij het *starten van de audiogegevens*.
+
+## <a name="error-handling"></a>Foutafhandeling
+
+In de vorige voorbeelden wordt de herkende tekst gewoon opgehaald uit `result.text`, maar om fouten en andere antwoorden af te handelen, moet u code schrijven om het resultaat te verwerken. Met de volgende code wordt de [`result.Reason`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.recognitionresult.reason?view=azure-dotnet&preserve-view=true)-eigenschap geëvalueerd en:
 
 * Het herkenningsresultaat afdrukken: `ResultReason.RecognizedSpeech`
 * Als er geen herkenningsovereenkomst wordt gevonden, wordt de gebruiker hiervan op de hoogte gesteld: `ResultReason.NoMatch`
@@ -112,7 +185,6 @@ switch (result.Reason)
 {
     case ResultReason.RecognizedSpeech:
         Console.WriteLine($"RECOGNIZED: Text={result.Text}");
-        Console.WriteLine($"    Intent not recognized.");
         break;
     case ResultReason.NoMatch:
         Console.WriteLine($"NOMATCH: Speech could not be recognized.");
@@ -131,28 +203,31 @@ switch (result.Reason)
 }
 ```
 
-### <a name="continuous-recognition"></a>Continue herkenning
+## <a name="continuous-recognition"></a>Continue herkenning
 
-Continue herkenning is wat ingewikkelder dan eenmalige herkenning. U moet zich abonneren op de gebeurtenissen `Recognizing`, `Recognized`en `Canceled` om de herkenningsresultaten op te halen. Als u de herkenning wilt stoppen, moet u [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet)aanroepen. Hier volgt een voorbeeld van hoe doorlopende herkenning wordt uitgevoerd op een audio-invoerbestand.
+In de vorige voorbeelden wordt een eenmalige herkenning gebruikt, die één uiting herkent. Het einde van één uiting wordt bepaald door te luisteren naar stilte aan het einde of tot een maximum van 15 seconden audio is verwerkt.
 
-Laten we beginnen met het definiëren van de invoer en het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet):
+Continue herkenning wordt daarentegen gebruikt wanneer u wilt **bepalen** wanneer het herkennen moet stoppen. U moet zich abonneren op de gebeurtenissen `Recognizing`, `Recognized`en `Canceled` om de herkenningsresultaten op te halen. Als u de herkenning wilt stoppen, moet u [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet&preserve-view=true)aanroepen. Hier volgt een voorbeeld van hoe doorlopende herkenning wordt uitgevoerd op een audio-invoerbestand.
+
+Begin met het definiëren van de invoer en het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet&preserve-view=true):
 
 ```csharp
 using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");
 using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
-Vervolgens maken we een variabele voor het beheren van de status van spraakherkenning. Eerst declareren we een `TaskCompletionSource<int>` na de vorige declaraties.
+
+Maak vervolgens een `TaskCompletionSource<int>` om de status van spraakherkenning te beheren.
 
 ```csharp
 var stopRecognition = new TaskCompletionSource<int>();
 ```
 
-We nemen een abonnement op de gebeurtenissen die vanuit de [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) worden verzonden.
+Abonneer u vervolgens op de gebeurtenissen die vanuit de [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) worden verzonden.
 
-* [`Recognizing`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizing?view=azure-dotnet): Signaal voor gebeurtenissen met tussenliggende herkenningsresultaten.
-* [`Recognized`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognized?view=azure-dotnet): Signaal voor gebeurtenissen met definitieve herkenningsresultaten (wat een geslaagde herkenningspoging aangeeft).
-* [`SessionStopped`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.recognizer.sessionstopped?view=azure-dotnet): Signaal voor gebeurtenissen die het einde van een herkenningssessie (bewerking) aangeven.
-* [`Canceled`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.canceled?view=azure-dotnet): Signaal voor gebeurtenissen met een geannuleerde herkenningsresultaten (waarmee een herkenningspoging wordt aangegeven die is geannuleerd als gevolg van een rechtstreekse annuleringsaanvraag of van een transport- of protocolfout).
+* [`Recognizing`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizing?view=azure-dotnet&preserve-view=true): Signaal voor gebeurtenissen met tussenliggende herkenningsresultaten.
+* [`Recognized`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognized?view=azure-dotnet&preserve-view=true): Signaal voor gebeurtenissen met definitieve herkenningsresultaten (wat een geslaagde herkenningspoging aangeeft).
+* [`SessionStopped`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.recognizer.sessionstopped?view=azure-dotnet&preserve-view=true): Signaal voor gebeurtenissen die het einde van een herkenningssessie (bewerking) aangeven.
+* [`Canceled`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.canceled?view=azure-dotnet&preserve-view=true): Signaal voor gebeurtenissen met een geannuleerde herkenningsresultaten (waarmee een herkenningspoging wordt aangegeven die is geannuleerd als gevolg van een rechtstreekse annuleringsaanvraag of van een transport- of protocolfout).
 
 ```csharp
 recognizer.Recognizing += (s, e) =>
@@ -193,24 +268,23 @@ recognizer.SessionStopped += (s, e) =>
 };
 ```
 
-Nu alles is ingesteld, kunnen we [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet) aanroepen.
+Als alles is ingesteld, roept u `StartContinuousRecognitionAsync` aan om te beginnen met herkenning.
 
 ```csharp
-// Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
 await recognizer.StartContinuousRecognitionAsync();
 
 // Waits for completion. Use Task.WaitAny to keep the task rooted.
 Task.WaitAny(new[] { stopRecognition.Task });
 
-// Stops recognition.
-await recognizer.StopContinuousRecognitionAsync();
+// make the following call at some point to stop recognition.
+// await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ### <a name="dictation-mode"></a>Dicteermodus
 
 Bij het gebruik van continue herkenning kunt u dicteerverwerking inschakelen met behulp van de bijbehorende functie 'dicteren inschakelen'. In deze modus interpreteert de spraakconfiguratie-instantie woordbeschrijvingen van zinselementen zoals interpunctie. Bijvoorbeeld: de uiting 'Woon je hier in de stad vraagteken' wordt geïnterpreteerd als de tekst 'Woon je hier in de stad?'.
 
-Als u de dicteermodus wilt inschakelen, gebruikt u de [`EnableDictation`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet)-methode op uw [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+Als u de dicteermodus wilt inschakelen, gebruikt u de [`EnableDictation`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet&preserve-view=true)-methode op uw [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true).
 
 ```csharp
 speechConfig.EnableDictation();
@@ -218,13 +292,13 @@ speechConfig.EnableDictation();
 
 ## <a name="change-source-language"></a>Brontaal wijzigen
 
-Een veelvoorkomende taak voor spraakherkenning is het opgeven van de invoer- (of bron)taal. Laten we eens kijken hoe u de invoertaal wijzigt in Italiaans. Zoek uw [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) in uw code en voeg deze regel daar direct onder toe.
+Een veelvoorkomende taak voor spraakherkenning is het opgeven van de invoer- (of bron)taal. Laten we eens kijken hoe u de invoertaal wijzigt in Italiaans. Zoek uw [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) in uw code en voeg deze regel daar direct onder toe.
 
 ```csharp
 speechConfig.SpeechRecognitionLanguage = "it-IT";
 ```
 
-De eigenschap [`SpeechRecognitionLanguage`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet) verwacht een indelingstekenreeks voor taal-landinstellingen. U kunt in de lijst met ondersteunde [Landinstellingen en talen](../../../language-support.md) een willekeurige waarde opgeven in de kolom **Landinstelling**.
+De eigenschap [`SpeechRecognitionLanguage`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet&preserve-view=true) verwacht een indelingstekenreeks voor taal-landinstellingen. U kunt in de lijst met ondersteunde [Landinstellingen en talen](../../../language-support.md) een willekeurige waarde opgeven in de kolom **Landinstelling**.
 
 ## <a name="improve-recognition-accuracy"></a>Nauwkeurigheid van de herkenning verbeteren
 
@@ -233,9 +307,9 @@ Er zijn een aantal manieren om de nauwkeurigheid van de herkenning te verbeteren
 > [!IMPORTANT]
 > De frasenlijstfunctie is alleen beschikbaar in het Engels.
 
-Als u een frasenlijst wilt gebruiken, maakt u eerst een [`PhraseListGrammar`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-dotnet)-object, en voegt u vervolgens specifieke woorden en frasen toe met [`AddPhrase`](https://docs.microsoft.com//dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-dotnet).
+Als u een frasenlijst wilt gebruiken, maakt u eerst een [`PhraseListGrammar`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-dotnet&preserve-view=true)-object, en voegt u vervolgens specifieke woorden en frasen toe met [`AddPhrase`](https://docs.microsoft.com//dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-dotnet&preserve-view=true).
 
-Wijzigingen in [`PhraseListGrammar`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-dotnet) worden van kracht bij de volgende herkenning of na het opnieuw verbinden met de spraakservice.
+Wijzigingen in [`PhraseListGrammar`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-dotnet&preserve-view=true) worden van kracht bij de volgende herkenning of na het opnieuw verbinden met de spraakservice.
 
 ```csharp
 var phraseList = PhraseListGrammar.FromRecognizer(recognizer);

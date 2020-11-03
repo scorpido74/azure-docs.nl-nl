@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 36c15907c0f45befacf35389652f6d91c0ab1958
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341240"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787904"
 ---
 # <a name="planning-and-operations-guide"></a>Handleiding voor planning en bewerking
 Deze gids is bedoeld voor IT-specialisten, IT-architecten, gegevensbeveiligingsanalisten en cloudbeheerders die willen gaan werken met Azure Security Center.
@@ -71,8 +71,8 @@ Met Security Center kunnen deze personen voldoen aan deze verschillende verantwo
 
 Security Center maakt gebruik van [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md), dat [ingebouwde rollen](../role-based-access-control/built-in-roles.md) biedt die kunnen worden toegewezen aan gebruikers, groepen en services in Azure. Wanneer gebruikers Security Center openen, zien ze alleen informatie met betrekking tot resources waartoe ze toegang hebben. Dit betekent dat aan de gebruiker de rol van de eigenaar, bijdrager of lezer is toegewezen voor het abonnement of de resourcegroep waartoe een resource behoort. Naast deze rollen zijn er twee specifieke Security Center-rollen:
 
-- **Beveiligingslezer**: een gebruiker die deel uitmaakt van deze rol kan alleen configuraties van Security Center bekijken, en kan dus onder andere aanbevelingen, waarschuwingen, beleid en statusinformatie bekijken, maar kan geen wijzigingen aanbrengen.
-- **Beveiligingsbeheerder**: dezelfde machtigingen als de rol Beveiligingslezer, maar kan ook het beveiligingsbeleid bijwerken, en aanbevelingen en waarschuwingen verwijderen.
+- **Beveiligingslezer** : een gebruiker die deel uitmaakt van deze rol kan alleen configuraties van Security Center bekijken, en kan dus onder andere aanbevelingen, waarschuwingen, beleid en statusinformatie bekijken, maar kan geen wijzigingen aanbrengen.
+- **Beveiligingsbeheerder** : dezelfde machtigingen als de rol Beveiligingslezer, maar kan ook het beveiligingsbeleid bijwerken, en aanbevelingen en waarschuwingen verwijderen.
 
 De hierboven beschreven Security Center-rollen hebben geen toegang tot andere servicegebieden van Azure, zoals Storage, Web & Mobile of Internet of Things.
 
@@ -207,9 +207,9 @@ Hoewel dit artikel niet de bedoeling heeft om u te helpen uw eigen plan voor het
 
 U kunt waarschuwingen van Security Center gebruiken tijdens de volgende fasen:
 
-* **Detecteren**: een verdachte activiteit in een of meer resources identificeren.
-* **Beoordelen**: de eerste beoordeling uitvoeren voor meer informatie over de verdachte activiteiten.
-* **Diagnose uitvoeren**: de herstelstappen gebruiken voor het uitvoeren van de technische procedure om het probleem op te lossen.
+* **Detecteren** : een verdachte activiteit in een of meer resources identificeren.
+* **Beoordelen** : de eerste beoordeling uitvoeren voor meer informatie over de verdachte activiteiten.
+* **Diagnose uitvoeren** : de herstelstappen gebruiken voor het uitvoeren van de technische procedure om het probleem op te lossen.
 
 Elke beveiligingswaarschuwing bevat informatie die kan worden gebruikt om beter te begrijpen wat de aard van de aanval is en om mogelijke oplossingen voor te stellen. Sommige waarschuwingen bevatten ook koppelingen naar meer informatie of naar andere informatiebronnen binnen Azure. U kunt de weergegeven informatie gebruiken voor verder onderzoek en om te beginnen met risicobeperking. Bovendien kunt u zoeken in beveiligingsgegevens die zijn opgeslagen in uw werkruimte.
 
@@ -219,7 +219,7 @@ Het volgende voorbeeld betreft een verdachte RDP-activiteit die op dat moment pl
 
 Deze pagina bevat informatie over het tijdstip waarop de aanval plaatsvond, de hostnaam van de bron, de VM die het doelwit was en aanbevolen maatregelen. Onder bepaalde omstandigheden kunnen de brongegevens van de aanval leeg zijn. Lees [Missing Source Information in Azure Security Center Alerts](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts) voor meer informatie over dit type gedrag.
 
-Wanneer u het geïnfecteerde systeem hebt geïdentificeerd, kunt u een [Workflowautomatisering ](workflow-automation.md) uitvoeren die eerder is gemaakt. Dit is een verzameling procedures die na activering door een waarschuwing vanuit Security Center kunnen worden uitgevoerd.
+Wanneer u het geïnfecteerde systeem hebt geïdentificeerd, kunt u een [workflowautomatisering ](workflow-automation.md) uitvoeren die eerder is gemaakt. Dit is een verzameling procedures die na activering door een waarschuwing vanuit Security Center kunnen worden uitgevoerd.
 
 In de video [Reageren op incidenten met Azure Security Center en Microsoft Operations Management Suite](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) ziet u enkele demonstraties die laten zien hoe Security Center kan worden gebruikt in elk van deze fasen.
 

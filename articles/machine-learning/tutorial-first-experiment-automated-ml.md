@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: ebc3899c98a09b64443b129dde52cb597fac9eff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3fd4dcfa4c01c39e4e6cab4915de807c3d19ae6
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976651"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913854"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Zelfstudie: Een classificatiemodel maken met geautomatiseerde ML in Azure Machine Learning
 
@@ -44,7 +44,7 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert:
 
 Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. De klasse bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service. 
 
-Maak een werkruimte via de Azure-portal, een webconsole om uw Azure-resources te beheren.
+Er zijn verschillende manieren om een [werkruimte te maken](how-to-manage-workspace.md). In deze zelfstudie maakt u een werkruimte via Azure Portal, een webconsole om uw Azure-resources te beheren.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 

@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperfq
-ms.openlocfilehash: da0eb80352409bbbbe29a80fe18a52f54540ae62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: contperfq2
+ms.openlocfilehash: bd8fec0ae5b6ece1626049953b1f4afd3a581d97
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93071484"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280584"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -38,7 +38,7 @@ In de portal begint u met het selecteren van _een resource maken_ in het menu St
 
 Zoek in het zoekvak naar *Azure Digital apparaatdubbels* en kies de **Azure Digital apparaatdubbels** -service in de resultaten. Selecteer de knop _maken_ om een nieuw exemplaar van de service te maken.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="' Maken ' selecteren op de pagina van de Azure Digital Apparaatdubbels-service":::
 
 Vul op de pagina de volgende *resource maken* de waarden in die hieronder zijn opgegeven:
 * **Abonnement** : het Azure-abonnement dat u gebruikt
@@ -46,15 +46,15 @@ Vul op de pagina de volgende *resource maken* de waarden in die hieronder zijn o
 * **Locatie** : een Azure Digital apparaatdubbels-regio voor de implementatie. Ga voor meer informatie over regionale ondersteuning naar [*Azure-producten die beschikbaar zijn per regio (Azure Digital apparaatdubbels)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
 * **Resource naam** : een naam voor uw Azure Digital apparaatdubbels-exemplaar. De naam van het nieuwe exemplaar moet uniek zijn binnen de regio voor uw abonnement (wat betekent dat als uw abonnement een ander Azure Digital Apparaatdubbels-exemplaar heeft in de regio die al gebruikmaakt van de naam die u kiest, wordt u gevraagd een andere naam te kiezen).
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="De beschreven waarden invullen om een Azure Digital Apparaatdubbels-resource te maken":::
 
-Wanneer u klaar bent, selecteert u _controleren + maken_ . Hiermee gaat u naar een overzichts pagina waar u de exemplaar gegevens kunt bekijken die u hebt ingevoerd en op _maken_ hebt geklikt. 
+Wanneer u klaar bent, selecteert u _controleren + maken_. Hiermee gaat u naar een overzichts pagina waar u de exemplaar gegevens kunt bekijken die u hebt ingevoerd en op _maken_ hebt geklikt. 
 
 ### <a name="verify-success-and-collect-important-values"></a>Geslaagde pogingen controleren en belang rijke waarden verzamelen
 
 Nadat u het *maken* hebt gepusht, kunt u de status van de implementatie van uw exemplaar bekijken in uw Azure-meldingen via de portal pictogram balk. De melding geeft aan wanneer de implementatie is voltooid en u kunt de knop _Ga naar resource_ selecteren om uw gemaakte exemplaar weer te geven.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Weer gave van meldingen van Azure met een geslaagde implementatie en het markeren van de knop ' go to resource '":::
 
 Als de implementatie mislukt, wordt de melding ook aangegeven waarom. Bekijk het advies van het fout bericht en probeer het exemplaar opnieuw te maken.
 
@@ -63,7 +63,7 @@ Als de implementatie mislukt, wordt de melding ook aangegeven waarom. Bekijk het
 
 Noteer de *naam* , de *resource groep* en de *hostnaam* op de pagina *overzicht* van het exemplaar. Dit zijn alle belang rijke waarden die u mogelijk nodig hebt om te werken met uw Azure Digital Apparaatdubbels-exemplaar. Als andere gebruikers op het exemplaar worden geprogrammeerd, moet u deze waarden met hen delen.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Markeren van de belang rijke waarden van de overzichts pagina van het exemplaar":::
 
 U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan. Vervolgens geeft u de juiste Azure-gebruikers machtigingen om deze te beheren.
 
@@ -71,9 +71,9 @@ U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan. Vervolge
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Open eerst de pagina voor uw Azure Digital Apparaatdubbels-exemplaar in het Azure Portal. Selecteer in het menu van de instantie *toegangs beheer (IAM)* . Selecteer de knop  *toevoegen* onder *een roltoewijzing toevoegen* .
+Open eerst de pagina voor uw Azure Digital Apparaatdubbels-exemplaar in het Azure Portal. Selecteer in het menu van de instantie *toegangs beheer (IAM)*. Selecteer de knop  *toevoegen* onder *een roltoewijzing toevoegen*.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Selecteren om een roltoewijzing toe te voegen op de pagina toegangs beheer (IAM)":::
 
 Vul de waarden in op de volgende pagina *roltoewijzing toevoegen* (moet worden voltooid door een gebruiker met [voldoende machtigingen](#prerequisites-permission-requirements) in het Azure-abonnement):
 * **Rol** : Selecteer de *Azure Digital Apparaatdubbels-gegevens eigenaar* in het vervolg keuzemenu
@@ -82,7 +82,7 @@ Vul de waarden in op de volgende pagina *roltoewijzing toevoegen* (moet worden v
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="De vermelde velden invullen in het dialoog venster functie toewijzing toevoegen":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -92,9 +92,9 @@ Wanneer u klaar bent met het invoeren van de details, klikt u op de knop *Opslaa
 
 ### <a name="verify-success"></a>Controleren geslaagd
 
-U kunt de roltoewijzing weer geven die u hebt ingesteld onder *toegangs beheer (IAM) > roltoewijzingen* . De gebruiker moet in de lijst worden weer gegeven met een rol van de eigenaar van de *Azure Digital apparaatdubbels-gegevens* . 
+U kunt de roltoewijzing weer geven die u hebt ingesteld onder *toegangs beheer (IAM) > roltoewijzingen*. De gebruiker moet in de lijst worden weer gegeven met een rol van de eigenaar van de *Azure Digital apparaatdubbels-gegevens*. 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Weer gave van de roltoewijzingen voor een Azure Digital Apparaatdubbels-exemplaar in Azure Portal":::
 
 U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan, en u hebt machtigingen toegewezen om het te beheren.
 

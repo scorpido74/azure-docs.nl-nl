@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/04/2020
+ms.date: 10/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86276108"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755526"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Welke regio's zijn beschikbaar?
 
@@ -45,6 +45,10 @@ Zowel RDP als SSH is een op gebruik gebaseerde protocol. Intensief gebruik van s
 
 Momenteel wordt alleen het kopiëren en plakken van tekst ondersteund. Functies zoals het kopiëren van bestanden worden niet ondersteund. U kunt uw feedback over nieuwe functies delen op de pagina [Feedback over Azure Bastion](https://feedback.azure.com/forums/217313-networking?category_id=367303).
 
+### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>Werkt Bastion-versterking samen met AADJ-extensies die aan de virtuele machine zijn gekoppeld?
+
+Deze functie werkt niet met AADJ machines die aan de virtuele machine zijn gekoppeld met behulp van Azure AD-gebruikers. Zie [Virtuele Windows Azure-machines en Azure AD](../articles/active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#requirements) voor meer informatie.
+
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Welke browsers worden ondersteund?
 
 Gebruik Microsoft Edge of Google Chrome in Windows. Voor Apple Mac gebruikt u Google Chrome. Microsoft Edge Chromium wordt ook ondersteund voor zowel Windows als Mac.
@@ -66,7 +70,7 @@ De volgende rollen zijn vereist om verbinding te maken:
 Zie de pagina [prijzen](https://aka.ms/BastionHostPricing) voor meer informatie.
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Is voor Azure Bastion een RDS CAL vereist voor administratieve doeleinden op VM's die door Azure worden gehost?
-Nee, voor toegang tot VM's met Windows Server door Azure Bastion is geen [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) vereist wanneer dit uitsluitend voor administratieve doeleinden is.
+Nee, voor toegang tot VM's met Windows Server door Azure Bastion is geen [RDS CAL](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) vereist wanneer dit uitsluitend voor administratieve doeleinden is.
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Welke toetsenbordindelingen worden ondersteund tijdens de externe sessie met Bastion?
 

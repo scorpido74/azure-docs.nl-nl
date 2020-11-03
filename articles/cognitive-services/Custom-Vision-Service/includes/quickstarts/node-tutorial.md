@@ -2,27 +2,56 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 09/15/2020
+ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 90927109a78d387ed3a535128e98ae7910c222dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7d876a8960bd18e990a5c964c699089b3973b4cd
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91321051"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755581"
 ---
 Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custom Vision-clientbibliotheek voor Node.js om een afbeeldingsclassificatiemodel te maken. U maakt een project, voegt tags toe, traint het project en gebruikt de voorspellingseindpunt-URL van het project om het programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen beeldherkennings-app te maken.
 
 > [!NOTE]
 > Als u een classificatiemodel wilt bouwen en trainen _zonder_ code te schrijven, raadpleegt u de [handleiding voor browsers](../../getting-started-build-a-classifier.md).
 
+Gebruik de Custom Vision-clientbibliotheek voor .NET voor het volgende:
+
+* Een nieuw project maken in de Custom Vision-service
+* Label aan het project toevoegen
+* Afbeeldingen uploaden en labelen
+* Het project trainen
+* De huidige herhaling publiceren
+* Voorspellingseindpunt testen
+
+Referentiedocumentatie [(training)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(voorspelling)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Bibliotheekbroncode [(training)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(voorspelling)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Pakket (npm) [(training)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(voorspelling)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [Voorbeelden](https://docs.microsoft.com/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
+
 ## <a name="prerequisites"></a>Vereisten
 
-- [Node.js 8](https://www.nodejs.org/en/download/) of hoger geïnstalleerd.
-- [npm](https://www.npmjs.com/) geïnstalleerd.
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* De huidige versie van [Node.js](https://nodejs.org/)
+* Zodra u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision"  title="een Custom Vision-resource maken"  target="_blank"> maakt u een Custom Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om een trainings- en voorspellingsresource te maken en uw sleutels en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met Custom Vision. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
-## <a name="install-the-custom-vision-client-library"></a>De Custom Vision-clientbibliotheek installeren
+## <a name="setting-up"></a>Instellen
+
+### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
+
+Maak in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe map voor de app, en navigeer naar deze map. 
+
+```console
+mkdir myapp && cd myapp
+```
+
+Voer de opdracht `npm init` uit om een knooppunttoepassing te maken met een `package.json`-bestand. 
+
+```console
+npm init
+```
+
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
 Als u een beeldanalyse-app wilt schrijven met Custom Vision voor Node.js, hebt u de Custom Vision NPM-pakketten nodig. Voer de volgende opdracht uit in PowerShell om ze te installeren:
 
@@ -31,125 +60,113 @@ npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
+Het `package.json`-bestand van uw app wordt bijgewerkt met de afhankelijkheden.
 
-[!INCLUDE [node-get-images](../../includes/node-get-images.md)]
+Maak een bestand met de naam `index.js` en importeer de volgende bibliotheken:
 
-## <a name="add-the-code"></a>Code toevoegen
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_imports)]
 
-Maak een nieuw bestand met de naam *sample.js* in uw projectmap.
 
-## <a name="create-the-custom-vision-project"></a>Het Custom Vision-project maken
+> [!TIP]
+> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js), waar de codevoorbeelden uit deze quickstart zich bevinden.
 
-Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in, en stel de padwaarde sampleDataRoot in op het pad naar uw afbeeldingenmap. Zorg ervoor dat de waarde endPoint overeenkomt met de trainings- en voorspellingseindpunten die u hebt gemaakt op [Customvision.ai](https://www.customvision.ai/). Let op: het verschil tussen het maken van een objectdetectie- en afbeeldingsclassificatieproject is het domein dat is opgegeven in de aanroep **createProject**.
+Maak variabelen voor het Azure-eindpunt en de Azure-sleutels voor uw resource. 
 
-```javascript
-const util = require('util');
-const fs = require('fs');
-const TrainingApi = require("@azure/cognitiveservices-customvision-training");
-const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
-const msRest = require("@azure/ms-rest-js");
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_creds)]
 
-const setTimeoutPromise = util.promisify(setTimeout);
+> [!IMPORTANT]
+> Ga naar Azure Portal. Als de [productnaam]-resource die u in de sectie **Vereisten** hebt gemaakt, is geïmplementeerd, klikt u op de knop **Naar de resource gaan** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
+>
+> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
 
-const trainingKey = "<your training key>";
-const predictionKey = "<your prediction key>";
-const predictionResourceId = "<your prediction resource id>";
-const sampleDataRoot = "<path to image files>";
+Voeg ook velden toe voor de projectnaam en een time-outparameter voor asynchrone aanroepen.
 
-const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_vars)]
 
-const publishIterationName = "classifyModel";
 
-const credentials = new msRest.ApiKeyCredentials({ inHeader: { "Training-key": trainingKey } });
-const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
+## <a name="object-model"></a>Objectmodel
 
-(async () => {
-    console.log("Creating project...");
-    const sampleProject = await trainer.createProject("Sample Project");
-```
+|Naam|Beschrijving|
+|---|---|
+|[TrainingAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | Deze klasse behandelt het maken, trainen en publiceren van uw modellen. |
+|[PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| Deze klasse verwerkt de query op uw modellen voor voorspellingen met betrekking tot de classificatie van afbeeldingen.|
+|[Voorspelling](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| Deze interface definieert één voorspelling van één afbeelding. De klasse bevat eigenschappen voor de id en de naam van het object en een betrouwbaarheidsscore.|
 
-## <a name="create-tags-in-the-project"></a>Labels maken in het project
+## <a name="code-examples"></a>Codevoorbeelden
 
-Voeg de volgende code toe aan het eind van *sample.js* om classificatielabels voor uw project te maken:
+Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Custom Vision-clientbibliotheek voor JavaScript:
 
-```javascript
-    const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
-    const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
-```
+* [De client verifiëren](#authenticate-the-client)
+* [Een nieuw project maken in de Custom Vision-service](#create-a-new-custom-vision-project)
+* [Label aan het project toevoegen](#add-tags-to-the-project)
+* [Afbeeldingen uploaden en labelen](#upload-and-tag-images)
+* [Het project trainen](#train-the-project)
+* [De huidige herhaling publiceren](#publish-the-current-iteration)
+* [Voorspellingseindpunt testen](#test-the-prediction-endpoint)
+
+## <a name="authenticate-the-client"></a>De client verifiëren
+
+Instantieer clientobjecten met uw eindpunt en sleutel. Maak een **ApiKeyCredentials** -object met uw sleutel en gebruik het met uw eindpunt om een [TrainingAPIClient-](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) en [PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)-object te maken.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_auth)]
+
+
+## <a name="create-a-new-custom-vision-project"></a>Een nieuw project maken in de Custom Vision-service
+
+Start een nieuwe functie die al uw Custom Vision-functieaanroepen omvat. Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code toe.
+
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_create)]
+
+
+## <a name="add-tags-to-the-project"></a>Label aan het project toevoegen
+
+Voeg de volgende code toe aan uw functie om classificatielabels voor uw project te maken:
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_tags)]
+
 
 ## <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en labelen
 
-Als u de voorbeeldafbeeldingen aan het project wilt toevoegen, voegt u de volgende code in nadat u de tag hebt gemaakt. Met deze code wordt elke afbeelding met de bijbehorende tag geüpload. U kunt maximaal 64 afbeeldingen uploaden in één batch.
+Download eerst de voorbeeldafbeeldingen voor dit project. Sla de inhoud van de [map Voorbeeldafbeeldingen](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) op uw lokale apparaat op.
 
-> [!NOTE]
-> U moet *sampleDataRoot* wijzigen in het pad naar de afbeeldingen, gebaseerd op waar u het project Cognitive Services Node.js-SDK-voorbeelden eerder hebt gedownload.
+Als u de voorbeeldafbeeldingen aan het project wilt toevoegen, voegt u de volgende code in nadat u de tag hebt gemaakt. Met deze code wordt elke afbeelding met de bijbehorende tag geüpload.
 
-```javascript
-    console.log("Adding images...");
-    let fileUploadPromises = [];
-    
-    const hemlockDir = `${sampleDataRoot}/Hemlock`;
-    const hemlockFiles = fs.readdirSync(hemlockDir);
-    hemlockFiles.forEach(file => {
-        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${hemlockDir}/${file}`), { tagIds: [hemlockTag.id] }));
-    });
-    
-    const cherryDir = `${sampleDataRoot}/Japanese Cherry`;
-    const japaneseCherryFiles = fs.readdirSync(cherryDir);
-    japaneseCherryFiles.forEach(file => {
-        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${cherryDir}/${file}`), { tagIds: [cherryTag.id] }));
-    });
-    
-    await Promise.all(fileUploadPromises);
-```
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_upload)]
 
-## <a name="train-and-publish-the-classifier"></a>De classificatie trainen en publiceren
+> [!IMPORTANT]
+> U moet het pad naar de afbeeldingen (`sampleDataRoot`) wijzigen, gebaseerd op waar u de opslagplaats Cognitive Services Python-SDK-voorbeelden hebt gedownload.
 
-Met deze code wordt de eerste iteratie van het voorspellingsmodel gemaakt en vervolgens wordt die iteratie gepubliceerd naar het voorspellingseindpunt. De naam die is opgegeven voor de gepubliceerde iteratie, kan worden gebruikt voor het verzenden van voorspellingsaanvragen. Er is pas na publicatie een iteratie beschikbaar in het voorspellingseindpunt.
+## <a name="train-the-project"></a>Het project trainen
 
-```javascript
-    console.log("Training...");
-    let trainingIteration = await trainer.trainProject(sampleProject.id);
-    
-    // Wait for training to complete
-    console.log("Training started...");
-    while (trainingIteration.status == "Training") {
-        console.log("Training status: " + trainingIteration.status);
-        await setTimeoutPromise(1000, null);
-        trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
-    }
-    console.log("Training status: " + trainingIteration.status);
-    
-    // Publish the iteration to the end point
-    await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
-```
+Met deze code wordt de eerste iteratie van het voorspellingsmodel gemaakt. 
 
-## <a name="use-the-prediction-endpoint"></a>Voorspellingseindpunt gebruiken
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_train)]
 
-Als u een afbeelding naar het voorspellingseindpunt wilt verzenden en de voorspelling wilt ophalen, voegt u de volgende code toe aan het einde van het bestand:
+## <a name="publish-the-current-iteration"></a>De huidige herhaling publiceren
 
-```javascript
-    const predictor_credentials = new msRest.ApiKeyCredentials({ inHeader: { "Prediction-key": predictionKey } });
-    const predictor = new PredictionApi.PredictionAPIClient(predictor_credentials, endPoint);
-    const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_image.jpg`);
+Met deze code wordt de getrainde iteratie gepubliceerd naar het voorspellingseindpunt. De naam die is opgegeven voor de gepubliceerde iteratie, kan worden gebruikt voor het verzenden van voorspellingsaanvragen. Er is pas na publicatie een iteratie beschikbaar in het voorspellingseindpunt.
 
-    const results = await predictor.classifyImage(sampleProject.id, publishIterationName, testFile);
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_publish)]
 
-    // Step 6. Show results
-    console.log("Results:");
-    results.predictions.forEach(predictedResult => {
-        console.log(`\t ${predictedResult.tagName}: ${(predictedResult.probability * 100.0).toFixed(2)}%`);
-    });
-})()
-```
+
+## <a name="test-the-prediction-endpoint"></a>Voorspellingseindpunt testen
+
+Als u een afbeelding naar het voorspellingseindpunt wilt verzenden en de voorspelling wilt ophalen, voegt u de volgende code toe aan uw functie. 
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_test)]
+
+Sluit vervolgens uw Custom Vision-functie en roep deze aan.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_function_close)]
+
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer *sample.js* uit.
+Voer de toepassing uit met de opdracht `node` in uw quickstart-bestand.
 
-```shell
-node sample.js
+```console
+node index.js
 ```
 
 Als het goed is, is de uitvoer van de toepassing vergelijkbaar met de volgende tekst:
@@ -168,7 +185,7 @@ Results:
          Japanese Cherry: 0.01%
 ```
 
-U kunt vervolgens controleren of de testafbeelding (in **<base_image_url>/Images/Test/**) juist is getagd. U kunt altijd teruggaan naar de [Custom Vision-website](https://customvision.ai) en de huidige status bekijken van het nieuwe project dat u hebt gemaakt.
+U kunt vervolgens controleren of de testafbeelding (in **<sampleDataRoot>/Test/** ) correct is gelabeld. U kunt altijd teruggaan naar de [Custom Vision-website](https://customvision.ai) en de huidige status bekijken van het nieuwe project dat u hebt gemaakt.
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
@@ -179,6 +196,7 @@ U hebt nu gezien hoe elke stap van het objectdetectieproces in code kan worden u
 > [!div class="nextstepaction"]
 > [Een model testen en opnieuw trainen](../../test-your-model.md)
 
-* [Wat is Custom Vision?](../../overview.md)
+* Wat is Custom Vision?
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js)
 * [SDK-referentiedocumentatie (training)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
 * [SDK-referentiedocumentatie (voorspelling)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

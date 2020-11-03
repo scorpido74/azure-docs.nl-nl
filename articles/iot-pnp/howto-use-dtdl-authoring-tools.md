@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 59ea0258d6262f652e9ac563bbda5ec89c4c5819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d1ae4da07e159c24970c065d1c39e22b89a29a
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579956"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280205"
 ---
 # <a name="install-and-use-the-dtdl-authoring-tools"></a>De DTDL-hulpprogram ma's voor ontwerpen installeren en gebruiken
 
@@ -36,9 +36,9 @@ Wanneer u de uitbrei ding hebt geïnstalleerd, kunt u deze gebruiken om u te hel
 
 - Gebruik IntelliSense en automatisch aanvullen wanneer u DTDL-modellen bewerkt:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="Model validatie in VS code":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="IntelliSense gebruiken voor DTDL-modellen in VS code":::
 
-- Maak een nieuwe DTDL-interface. Met de volgende opdracht wordt een JSON-bestand met een nieuwe interface gemaakt. De interface bevat voor beelden van telemetrie, eigenschappen en opdracht definities.
+- Maak een nieuwe DTDL-interface. Met de opdracht **DTDL: Create interface** wordt een JSON-bestand met een nieuwe interface gemaakt. De interface bevat voor beelden van telemetrie, eigenschappen en opdracht definities.
 
 ## <a name="install-and-use-the-visual-studio-extension"></a>De Visual Studio-extensie installeren en gebruiken
 
@@ -53,11 +53,11 @@ Wanneer u de uitbrei ding hebt geïnstalleerd, kunt u deze gebruiken om u te hel
 
 - De uitbrei ding biedt syntaxis validatie in DTDL-model bestanden, waarbij fouten worden gemarkeerd, zoals op de volgende scherm afbeelding wordt weer gegeven:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="Model validatie in VS code":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="Model validatie in Visual Studio":::
 
 - Gebruik IntelliSense en automatisch aanvullen wanneer u DTDL-modellen bewerkt:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="Model validatie in VS code":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="IntelliSense gebruiken voor DTDL-modellen in Visual Studio":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

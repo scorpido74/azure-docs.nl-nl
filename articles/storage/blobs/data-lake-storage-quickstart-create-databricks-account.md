@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 482d703689ca6cfc34dd5d78574ae52e4def2b1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 908bf21d2fe101731b11e3a8ad783f17728c8ed3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86109770"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677328"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Quickstart: Gegevens analyseren met Databricks
 
@@ -84,9 +84,9 @@ In deze sectie maakt u een notitieblok in de Azure Databricks-werkruimte en voer
 
 1. Ga in [Azure Portal](https://portal.azure.com) naar de Azure Databricks-werkruimte die u hebt gemaakt en selecteer **Werkruimte starten**.
 
-2. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
+2. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer in de **Werkruimte** -vervolgkeuzelijst, **Notitieblok** > **maken**.
 
-    ![Notebook maken in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Notitieblok maken in Databricks")
+    ![Schermopname waarin wordt getoond hoe een notebook in Databricks wordt gemaakt en waarin de menuoptie Maken > Notebook is gemarkeerd.](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Notitieblok maken in Databricks")
 
 3. Voer in het dialoogvenster **Notitieblok maken** een naam voor het notitieblok in. Selecteer **Scala** als taal en selecteer het Spark-cluster dat u eerder hebt gemaakt.
 
@@ -162,7 +162,7 @@ Voer de volgende taken uit om een Spark SQL-taak op de gegevens uit te voeren.
 
     ![Voorbeeld van JSON-gegevens](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "Voorbeeld van JSON-gegevens")
 
-    Naast andere gegevens wordt in de voorbeeldgegevens ook het geslacht van de doelgroep van een radiokanaal vastgelegd (kolomnaam **geslacht**) en of het om een gratis dan wel betaald abonnement gaat (kolomnaam **niveau**).
+    Naast andere gegevens wordt in de voorbeeldgegevens ook het geslacht van de doelgroep van een radiokanaal vastgelegd (kolomnaam **geslacht** ) en of het om een gratis dan wel betaald abonnement gaat (kolomnaam **niveau** ).
 
 4. U gaat nu een visuele weergave van deze gegevens maken om voor elk geslacht te zien kunnen hoeveel gebruikers een gratis account hebben en hoeveel een betaald. Klik onder in de tabel met uitvoer op het pictogram voor het **staafdiagram** en klik vervolgens op **Tekenopties**.
 
@@ -170,7 +170,7 @@ Voer de volgende taken uit om een Spark SQL-taak op de gegevens uit te voeren.
 
 5. In **Tekening aanpassen** sleept en zet u de waarden neer zoals in de schermafbeelding wordt weergegeven.
 
-    ![Staafdiagram aanpassen](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Staafdiagram aanpassen")
+    ![Schermopname van het scherm Grafiek aanpassen en de waarden die u kunt slepen en neerzetten.](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Staafdiagram aanpassen")
 
     - Stel **Sleutels** in op **geslacht**.
     - Stel **Reeksgroeperingen** in op **niveau**.

@@ -7,17 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ba3eae9b48650a549c3bb91bdf5e9a76cfbbe3b7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5ff9c95e51f63de77ca20dee965718687daae5f4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963038"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897711"
 ---
 > [!IMPORTANT]
-> * De Form Recognizer SDK richt zich momenteel op versie 2.0 van de Form Recognizer-service.
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentieopslag voor de eenvoud. Zie de referentiedocumentatie hieronder. 
 
 [Referentiedocumentatie](https://docs.microsoft.com/python/api/azure-ai-formrecognizer) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [Package (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
@@ -25,11 +24,36 @@ ms.locfileid: "91963038"
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
-* Een Azure Storage-blob die een set trainingsgegevens bevat. Zie [Een set met trainingsgegevens voor een aangepast model bouwen](../../build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken (downloaden en extraheren van *sample_data.zip*).
-* [Python 2.7, of 3.5 of hoger](https://www.python.org/)
+* [Python 3.x](https://www.python.org/)
+* Een Azure Storage-blob die een set trainingsgegevens bevat. Zie [Een set met trainingsgegevens voor een aangepast model bouwen](../../build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken (downloaden en extraheren van *sample_data.zip* ).
 * Wanneer u een Azure-abonnement hebt, kunt u <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Een Form Recognizer-resource maken"  target="_blank">een Form Recognizer-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
     * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Form Recognizer API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+
+## <a name="setting-up"></a>Instellen
+
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
+
+Nadat u Python hebt geïnstalleerd, kunt u de meest recente versie van de Form Recognizer-clientbibliotheek installeren met:
+
+```console
+pip install azure-ai-formrecognizer
+```
+
+### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
+
+Maak een nieuwe Python-toepassing in uw favoriete editor of IDE. Importeer vervolgens de volgende bibliotheken.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_imports)]
+
+> [!TIP]
+> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py), waar de codevoorbeelden uit deze quickstart zich bevinden.
+
+
+Maak variabelen voor het Azure-eindpunt en de Azure-sleutel voor uw resource. 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_creds)]
+
 
 ## <a name="object-model"></a>Objectmodel 
 
@@ -53,35 +77,6 @@ Met Form Recognizer kunt u twee verschillende clienttypen maken. De eerste, `for
 > [!NOTE]
 > Modellen kunnen ook worden getraind met een grafische gebruikersinterface zoals het [Hulpprogramma voor labelen van Form Recognizer](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
 
-## <a name="setting-up"></a>Instellen
-
-### <a name="install-the-client-library"></a>De clientbibliotheek installeren
-
-Nadat u Python hebt geïnstalleerd, kunt u de meest recente versie van de Form Recognizer-clientbibliotheek installeren met:
-
-```console
-pip install azure-ai-formrecognizer
-```
-
-### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
-
-Maak een nieuwe Python-toepassing in uw favoriete editor of IDE. Importeer vervolgens de volgende bibliotheken. Houd er rekening mee dat de bibliotheken worden geïmporteerd die nodig zijn voor training en formulierherkenning.
-
-```python
-import os
-from azure.core.exceptions import ResourceNotFoundError
-from azure.ai.formrecognizer import FormRecognizerClient
-from azure.ai.formrecognizer import FormTrainingClient
-from azure.core.credentials import AzureKeyCredential
-```
-
-Maak variabelen voor het Azure-eindpunt en de Azure-sleutel voor uw resource. 
-
-```python
-endpoint = "<paste-your-form-recognizer-endpoint-here>"
-key = "<paste-your-form-recognizer-key-here>"
-```
-
 ## <a name="code-examples"></a>Codevoorbeelden
 
 Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de clientbibliotheek van Form Recognizer voor Python:
@@ -96,43 +91,30 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de cli
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Hier gaat u twee clientobjecten verifiëren met behulp van de abonnementsvariabelen die u hierboven hebt gedefinieerd. U gebruikt een `AzureKeyCredential`-object, zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken.
+Hier gaat u twee clientobjecten verifiëren met behulp van de abonnementsvariabelen die u hierboven hebt gedefinieerd. U gebruikt een **AzureKeyCredential** -object, zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken.
 
-```python
-form_recognizer_client = FormRecognizerClient(endpoint, AzureKeyCredential(key))
-form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_auth)]
+
 
 ## <a name="get-assets-for-testing"></a>Assets voor testen ophalen
 
-De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/python/api/azure-ai-formrecognizer) en [voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
-
-U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens.
+U moet verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens.
 * Als u de SAS-URL voor de trainingsgegevens van uw aangepaste model wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
 * Gebruik het voorbeeldformulier en de ontvangstbewijsafbeeldingen die zijn opgenomen in de onderstaande voorbeelden. Ze zijn ook beschikbaar op [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms). U kunt tevens de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. 
 
 > [!NOTE]
-> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/python/api/azure-ai-formrecognizer).
+> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/python/api/azure-ai-formrecognizer) en [voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
 ## <a name="recognize-form-content"></a>Formulierinhoud herkennen
 
 U kunt Form Recognizer gebruiken om tabellen, regels en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen.
 
-Als u de inhoud van een bestand op een bepaalde URL wilt herkennen, gebruikt u de methode `begin_recognize_content`. De geretourneerde waarde is een verzameling `FormPage`-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden deze objecten doorlopen en worden de uitgepakte sleutel-/waardeparen en tabelgegevens afgedrukt.
+Als u de inhoud van een bestand op een bepaalde URL wilt herkennen, gebruikt u de methode `begin_recognize_content_from_url`. De geretourneerde waarde is een verzameling `FormPage`-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden deze objecten doorlopen en worden de uitgepakte sleutel-/waardeparen en tabelgegevens afgedrukt.
 
-```Python
-formUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
-poller = form_recognizer_client.begin_recognize_content_from_url(formUrl)
-page = poller.result()
-
-table = page[0].tables[0] # page 1, table 1
-print("Table found on page {}:".format(table.page_number))
-for cell in table.cells:
-    print("Cell text: {}".format(cell.text))
-    print("Location: {}".format(cell.bounding_box))
-    print("Confidence score: {}\n".format(cell.confidence))
-```
+> [!TIP]
+> U kunt ook inhoud ophalen uit lokale afbeeldingen. Zie de [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python)-methoden, bijvoorbeeld `begin_recognize_content`. Of bekijk de voorbeeldcode op [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) voor scenario's met betrekking tot lokale afbeeldingen.
 
 ### <a name="output"></a>Uitvoer
 
@@ -162,23 +144,10 @@ Confidence score: 1.0
 
 In deze sectie wordt beschreven hoe u algemene velden in Amerikaanse ontvangstbewijzen kunt herkennen en uitpakken met behulp van een vooraf getraind ontvangstmodel. Om ontvangstbewijzen te herkennen vanuit een URL, gebruikt u de methode `begin_recognize_receipts_from_url`. 
 
-```python
-receiptUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/receipt/contoso-receipt.png"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
-poller = form_recognizer_client.begin_recognize_receipts_from_url(receiptUrl)
-result = poller.result()
-
-for receipt in result:
-    for name, field in receipt.fields.items():
-        if name == "Items":
-            print("Receipt Items:")
-            for idx, items in enumerate(field.value):
-                print("...Item #{}".format(idx + 1))
-                for item_name, item in items.value.items():
-                    print("......{}: {} has confidence {}".format(item_name, item.value, item.confidence))
-        else:
-            print("{}: {} has confidence {}".format(name, field.value, field.confidence))
-```
+> [!TIP]
+> U kunt ook lokale afbeeldingen van ontvangstbewijzen herkennen. Zie de [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python)-methoden, bijvoorbeeld `begin_recognize_receipts`. Of bekijk de voorbeeldcode op [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) voor scenario's met betrekking tot lokale afbeeldingen.
 
 ### <a name="output"></a>Uitvoer
 
@@ -215,40 +184,8 @@ Train aangepaste modellen om alle velden en waarden te herkennen die in uw aange
 
 De volgende code gebruikt de training-client met de `begin_training`-functie om een model op een bepaalde set documenten te trainen. Het geretourneerde `CustomFormModel`-object bevat informatie over de formuliertypen die het model kan herkennen en de velden die het uit elk formuliertype kan uitpakken. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
-```python
-# To train a model you need an Azure Storage account.
-# Use the SAS URL to access your training files.
-trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_train)]
 
-poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=False)
-model = poller.result()
-
-print("Model ID: {}".format(model.model_id))
-print("Status: {}".format(model.status))
-print("Training started on: {}".format(model.training_started_on))
-print("Training completed on: {}".format(model.training_completed_on))
-
-print("\nRecognized fields:")
-for submodel in model.submodels:
-    print(
-        "The submodel with form type '{}' has recognized the following fields: {}".format(
-            submodel.form_type,
-            ", ".join(
-                [
-                    field.label if field.label else name
-                    for name, field in submodel.fields.items()
-                ]
-            ),
-        )
-    )
-
-# Training result information
-for doc in model.training_documents:
-    print("Document name: {}".format(doc.name))
-    print("Document status: {}".format(doc.status))
-    print("Document page count: {}".format(doc.page_count))
-    print("Document errors: {}".format(doc.errors))
-```
 
 ### <a name="output"></a>Uitvoer
 
@@ -291,40 +228,7 @@ U kunt aangepaste modellen ook trainen door de trainingsdocumenten handmatig te 
 > [!IMPORTANT]
 > Als u met labels wilt trainen, moet uw Blob Storage-container naast de trainingsdocumenten ook speciale bestanden met labelinformatie (`\<filename\>.pdf.labels.json`) bevatten. Het [hulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md) beschikt over een gebruikersinterface die u kan helpen bij het maken van deze labelbestanden. Zodra u deze hebt, kunt u de functie `begin_training` aanroepen met de parameter *use_training_labels* ingesteld op `true`.
 
-```python
-# To train a model you need an Azure Storage account.
-# Use the SAS URL to access your training files.
-trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
-
-poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=True)
-model = poller.result()
-
-print("Model ID: {}".format(model.model_id))
-print("Status: {}".format(model.status))
-print("Training started on: {}".format(model.training_started_on))
-print("Training completed on: {}".format(model.training_completed_on))
-
-print("\nRecognized fields:")
-for submodel in model.submodels:
-    print(
-        "The submodel with form type '{}' has recognized the following fields: {}".format(
-            submodel.form_type,
-            ", ".join(
-                [
-                    field.label if field.label else name
-                    for name, field in submodel.fields.items()
-                ]
-            ),
-        )
-    )
-
-# Training result information
-for doc in model.training_documents:
-    print("Document name: {}".format(doc.name))
-    print("Document status: {}".format(doc.status))
-    print("Document page count: {}".format(doc.page_count))
-    print("Document errors: {}".format(doc.errors))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_trainlabels)]
 
 ### <a name="output"></a>Uitvoer
 
@@ -370,24 +274,11 @@ In deze sectie ziet u hoe u belangrijke/waardevolle informatie en andere inhoud 
 
 U gebruikt de methode `begin_recognize_custom_forms_from_url`. De geretourneerde waarde is een verzameling `RecognizedForm`-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden de resultaten van de analyse op de console weergegeven. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheidsscore.
 
-```python
-# Model ID from when you trained your model.
-model_id = "<your custom model id>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
-poller = form_recognizer_client.begin_recognize_custom_forms_from_url(
-    model_id=model_id, form_url=formUrl)
-result = poller.result()
+> [!TIP]
+> U kunt ook lokale afbeeldingen analyseren. Zie de [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python)-methoden, bijvoorbeeld `begin_recognize_custom_forms`. Of bekijk de voorbeeldcode op [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) voor scenario's met betrekking tot lokale afbeeldingen.
 
-for recognized_form in result:
-    print("Form type: {}".format(recognized_form.form_type))
-    for name, field in recognized_form.fields.items():
-        print("Field '{}' has label '{}' with value '{}' and a confidence score of {}".format(
-            name,
-            field.label_data.text if field.label_data else name,
-            field.value,
-            field.confidence
-        ))
-```
 
 ### <a name="output"></a>Uitvoer
 
@@ -420,12 +311,8 @@ In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn op
 
 In het volgende codeblok wordt het aantal modellen gecontroleerd dat u in uw Form Recognizer-account hebt opgeslagen en wordt dit aantal vergeleken met de limiet voor het account.
 
-```python
-account_properties = form_training_client.get_account_properties()
-print("Our account has {} custom models, and we can have at most {} custom models".format(
-    account_properties.custom_model_count, account_properties.custom_model_limit
-))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_count)]
+
 
 ### <a name="output"></a>Uitvoer
 
@@ -437,18 +324,8 @@ Our account has 5 custom models, and we can have at most 5000 custom models
 
 In het volgende codeblok worden de huidige modellen in uw account vermeld en worden de details ervan in de console weergegeven. Er wordt ook een verwijzing naar het eerste model opgeslagen.
 
-```python
-# Next, we get a paged list of all of our custom models
-custom_models = form_training_client.list_custom_models()
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_list)]
 
-print("We have models with the following ids:")
-
-# Let's pull out the first model
-first_model = next(custom_models)
-print(first_model.model_id)
-for model in custom_models:
-    print(model.model_id)
-```
 
 ### <a name="output"></a>Uitvoer
 
@@ -467,15 +344,8 @@ c6309148-6b64-4fef-aea0-d39521452699
 
 Het volgende codeblok maakt gebruik van de model-id die is opgeslagen in de vorige sectie en gebruikt deze om details over het model op te halen.
 
-```python
-model_id = "<model_id from the Train a Model sample>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_getmodel)]
 
-custom_model = form_training_client.get_custom_model(model_id=model_id)
-print("Model ID: {}".format(custom_model.model_id))
-print("Status: {}".format(custom_model.status))
-print("Training started on: {}".format(custom_model.training_started_on))
-print("Training completed on: {}".format(custom_model.training_completed_on))
-```
 
 ### <a name="output"></a>Uitvoer
 
@@ -492,18 +362,12 @@ Training completed on: 2020-08-20 23:20:57+00:00
 
 U kunt een model ook uit uw account verwijderen door naar de id te verwijzen. Met deze code wordt het model verwijderd dat in de vorige sectie is gebruikt.
 
-```python
-form_training_client.delete_model(model_id=custom_model.model_id)
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_delete)]
 
-try:
-    form_training_client.get_custom_model(model_id=custom_model.model_id)
-except ResourceNotFoundError:
-    print("Successfully deleted model with id {}".format(custom_model.model_id))
-```
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-U kunt met deze opdracht de toepassing op elk gewenst moment uitvoeren met een willekeurig aantal functies die u in deze quickstart hebt gezien:
+Voer de toepassing uit met de opdracht `python` in uw quickstart-bestand.
 
 ```console
 python quickstart-file.py
@@ -522,38 +386,18 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 
 De Form Recognizer-clientbibliotheek genereert uitzonderingen die zijn gedefinieerd in [Azure Core](https://aka.ms/azsdk-python-azure-core).
 
-## <a name="logging"></a>Logboekregistratie
+### <a name="logging"></a>Logboekregistratie
 
 Deze bibliotheek maakt gebruik van de [standaardbibliotheek voor logboekregistratie](https://docs.python.org/3/library/logging.html) voor logboekregistratie. Basisinformatie over HTTP-sessies (URL's, headers, enzovoort) wordt vastgelegd op INFO-niveau.
 
 Gedetailleerde logboekregistratie op DEBUG-niveau met aanvraag/antwoord-body's en niet-geredigeerde headers, kan worden ingeschakeld op een client met het sleutelwoordargument `logging_enable`:
 
-```python
-import sys
-import logging
-from azure.ai.formrecognizer import FormRecognizerClient
-from azure.core.credentials import AzureKeyCredential
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_logging)]
 
-# Create a logger for the 'azure' SDK
-logger = logging.getLogger('azure')
-logger.setLevel(logging.DEBUG)
-
-# Configure a console output
-handler = logging.StreamHandler(stream=sys.stdout)
-logger.addHandler(handler)
-
-endpoint = "https://<my-custom-subdomain>.cognitiveservices.azure.com/"
-credential = AzureKeyCredential("<api_key>")
-
-# This client will log detailed information about its HTTP sessions, at DEBUG level
-form_recognizer_client = FormRecognizerClient(endpoint, credential, logging_enable=True)
-```
 
 Op dezelfde manier kan `logging_enable` logboekregistratie voor één bewerking inschakelen, zelfs wanneer dit niet is ingeschakeld voor de client:
 
-```python
-poller = form_recognizer_client.begin_recognize_receipts(receipt, logging_enable=True)
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_example)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -562,6 +406,5 @@ In deze quickstart hebt u de clientbibliotheek van Form Recognizer voor Python g
 > [!div class="nextstepaction"]
 > [Een set met trainingsgegevens samenstellen](../../build-training-data-set.md)
 
-## <a name="see-also"></a>Zie ook
-
 * [Wat is Form Recognizer?](../../overview.md)
+* De voorbeeldcode uit deze gids is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py).

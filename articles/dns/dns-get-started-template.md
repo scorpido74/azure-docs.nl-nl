@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 09/8/2020
 ms.author: duau
 ms.custom: subject-armqs
-ms.openlocfilehash: 986258631d47989e5be5e738da86f844283ce706
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 24460167e2279e7d3001d0bc16d050beb5b55289
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093817"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790998"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Een Azure DNS-zone en -record maken met behulp van een ARM-sjabloon
 
-In deze quickstart wordt beschreven hoe u een Azure Resource Manager-sjabloon (ARM) gebruikt om een Azure DNS-zone met een A-record erin te maken.
+In deze quickstart wordt beschreven hoe u een ARM-sjabloon (Azure Resource Manager-sjabloon) gebruikt om een Azure DNS-zone met een `A`-record erin te maken.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,20 +34,20 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-azure-dns-new-zone).
 
-In deze quickstart maakt u een unieke DNS-zone aan met het achtervoegsel *<span>azurequickstart.</span>org*. Een *A*-record die verwijst naar twee IP-adressen, wordt ook in de zone geplaatst.
+In deze quickstart maakt u een unieke DNS-zone aan met het achtervoegsel `azurequickstart.org`. Een `A`-record die naar twee IP-adressen verwijst, wordt ook in de zone geplaatst.
 
 :::code language="json" source="~/quickstart-templates/101-azure-dns-new-zone/azuredeploy.json":::
 
 Er zijn twee Azure-resources gedefinieerd in de sjabloon:
 
-* [**Microsoft.Network/dnsZones**](/azure/templates/microsoft.network/dnsZones)
-* [**Microsoft.Network/dnsZones/A**](/azure/templates/microsoft.network/dnsZones/A) (gebruikt voor het maken van een record in de zone)
+- [**Microsoft.Network/dnsZones**](/azure/templates/microsoft.network/dnsZones)
+- [**Microsoft.Network/dnsZones/A**](/azure/templates/microsoft.network/dnsZones/A): wordt gebruikt om een `A`-record in de zone te maken.
 
 Zie [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular) als u meer sjablonen wilt vinden die gerelateerd zijn aan Azure Traffic Manager.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Selecteer **Proberen** in het volgende codeblok om Azure Cloud Shell te openen en volg de instructies om u aan te melden bij Azure. 
+1. Selecteer **Proberen** in het volgende codeblok om Azure Cloud Shell te openen en volg de instructies om u aan te melden bij Azure.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -70,7 +70,7 @@ Zie [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/
 
 1. Voer de waarden in.
 
-    De implementatie van het sjabloon maakt een zone aan met een record die verwijst naar twee IP-adressen. De naam van de resourcegroep is de naam van het project, maar met **rg** eraan toegevoegd.
+    Met de sjabloonimplementatie wordt een zone gemaakt met één `A`-record dat naar twee IP-adressen verwijst. De naam van de resourcegroep is de naam van het project, maar met **rg** eraan toegevoegd.
 
     Het implementeren van de sjabloon duurt een paar seconden. Wanneer voltooid is de uitvoer vergelijkbaar met:
 
@@ -88,31 +88,31 @@ Azure PowerShell wordt gebruikt om de sjabloon te implementeren. Naast Azure Pow
 
 1. De resourcegroep moet de volgende resources bevatten die hier worden weergegeven:
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Uitvoer van Azure DNS-zone Resource Manager-sjabloon PowerShell-implementatie":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Resourcegroep voor de implementatie van DNS-zones":::
 
-1. Selecteer de DNS-zone met het achtervoegsel **<span>azurequickstart.</span>org** om te controleren of de zone correct is aangemaakt met een **A**-record die verwijst naar de waarde van **1.2.3.4** en **1.2.3.5-**.
+1. Selecteer de DNS-zone met het achtervoegsel `azurequickstart.org` om te controleren of de zone correct is gemaakt met een `A`-record die verwijst naar de waarden `1.2.3.4` en `1.2.3.5`.
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Uitvoer van Azure DNS-zone Resource Manager-sjabloon PowerShell-implementatie":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Implementatie van DNS-zone":::
 
 1. Kopieer een van de naamservernamen uit de vorige stap.
 
 1. Open een opdrachtprompt en voer de volgende opdracht uit:
 
-   ```
+   ```cmd
    nslookup www.<dns zone name> <name server name>
    ```
 
    Bijvoorbeeld:
 
-   ```
+   ```cmd
    nslookup www.2lwynbseszpam.azurequickstart.org ns1-09.azure-dns.com.
    ```
 
    Er verschijnt een scherm dat er ongeveer als volgt uitziet:
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Uitvoer van Azure DNS-zone Resource Manager-sjabloon PowerShell-implementatie":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="DNS-zone nslookup":::
 
-De hostnaam **www<span>.2lwynbseszpam.azurequickstart.</span>org** wordt omgezet in **1.2.3.4** en **1.2.3.5**, net zoals u dat hebt geconfigureerd. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
+De hostnaam `www.2lwynbseszpam.azurequickstart.org` wordt omgezet in `1.2.3.4` en `1.2.3.5`, precies zoals u het hebt geconfigureerd. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -127,10 +127,11 @@ Remove-AzResourceGroup -Name <your resource group name>
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze quickstart hebt u het volgende gemaakt:
-* DNS-zone
-* A-record
 
-Nu u uw eerste DNS-zone en -record hebt gemaakt met behulp van de Azure Resource Manager-sjabloon, kunt u records voor een web-app maken in een aangepast domein.
+- DNS-zone
+- `A`-record
+
+Nu u uw eerste DNS-zone en -record hebt gemaakt met behulp van een ARM-sjabloon, kunt u records voor een web-app maken in een aangepast domein.
 
 > [!div class="nextstepaction"]
 > [DNS-records voor een web-app in een aangepast domein maken](./dns-web-sites-custom-domain.md)

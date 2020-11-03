@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 9e24a652bb4e577ff9b604b6b4f5284883723ee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c5f0103908ea150cbe6eb373e25f7d741127f5
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906718"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913259"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Zelfstudie: Een labelproject maken voor een afbeeldingsclassificatie met meerdere klassen 
 
@@ -42,7 +42,7 @@ In deze zelfstudie gebruikt u afbeeldingen van katten en honden.  Omdat elke afb
 
 Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. De klasse bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service.
 
-U maakt een werkruimte via Azure Portal, een webconsole om uw Azure-resources te beheren.
+Er zijn verschillende manieren om een [werkruimte te maken](how-to-manage-workspace.md). In deze zelfstudie maakt u een werkruimte via Azure Portal, een webconsole om uw Azure-resources te beheren.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -67,7 +67,7 @@ Azure Machine Learning gegevensarchieven worden gebruikt voor het opslaan van ve
     Veld|Beschrijving 
     ---|---
     Naam van gegevensarchief | Geef een naam op voor het gegevensarchief.  Hier gebruiken we **labeling_tutorial**.
-    Type gegevensarchief | Selecteer het type opslag.  Hier gebruiken we **Azure Blob Storage**, de voorkeursopslag voor afbeeldingen.
+    Type gegevensarchief | Selecteer het type opslag.  Hier gebruiken we **Azure Blob Storage** , de voorkeursopslag voor afbeeldingen.
     Methode voor account selecteren | Selecteer **Handmatig invoeren**.
     URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     Verificatietype | Selecteer **SAS-token**.
@@ -87,7 +87,7 @@ Nu u toegang hebt tot de gegevens die u wilt voorzien van een label, maakt u het
 
 ### <a name="project-details"></a>Projectgegevens
 
-1. Gebruik de volgende invoer voor het formulier **Projectgegevens**:
+1. Gebruik de volgende invoer voor het formulier **Projectgegevens** :
 
     Veld|Beschrijving 
     ---|---
@@ -100,7 +100,7 @@ Nu u toegang hebt tot de gegevens die u wilt voorzien van een label, maakt u het
 
 1.   Selecteer op het formulier **Een gegevensset selecteren of maken** de tweede keuze, **Een gegevensset maken** en selecteer vervolgens de koppeling **Vanuit gegevensarchief**.
 
-1. Gebruik de volgende invoer voor het formulier **Gegevensset maken vanuit gegevensarchief**:
+1. Gebruik de volgende invoer voor het formulier **Gegevensset maken vanuit gegevensarchief** :
 
     1. Voeg op het formulier **Basisgegevens** een naam toe. Hier gebruiken we **images-for-tutorial**.  Voeg desgewenst een beschrijving toe.  Selecteer vervolgens **Volgende**.
     1. Op het formulier **Selectie gegevensarchief** gebruikt u de vervolgkeuzelijst om uw **Eerder gemaakte gegevensarchief** te selecteren, bijvoorbeeld **tutorial_images (Azure Blob Storage)**
@@ -118,7 +118,7 @@ Selecteer **Volgende** om door te gaan.
 
 ### <a name="label-classes"></a>Labelklassen
 
-1. Typ in het formulier **Labelklassen** de naam van een label en selecteer vervolgens **+ Label toevoegen** om het volgende label te typen.  Voor dit project zijn de labels **Kat**, **Hond**en **Onzeker**.
+1. Typ in het formulier **Labelklassen** de naam van een label en selecteer vervolgens **+ Label toevoegen** om het volgende label te typen.  Voor dit project zijn de labels **Kat** , **Hond** en **Onzeker**.
 
 1. Selecteer **Volgende** wanneer u alle labels hebt toegevoegd.
 

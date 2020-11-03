@@ -3,13 +3,13 @@ title: 'Zelfstudie: een VM herstellen met Azure CLI'
 description: Leer hoe u een schijf kunt herstellen en een herstel-VM maken in Azure met Backup and Recovery Services.
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: 861c911e84c9de02467d443751902e71d2504422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 2d8ce7ab6d5a3ab244d0292ffe52847f18ea8795
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324979"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746754"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Een VM herstellen met Azure CLI
 
@@ -74,7 +74,7 @@ Als de VM waarvan een back-up is gemaakt, beheerde schijven bevat, en als het de
         --sku Standard_LRS
     ```
 
-2. Herstel de schijf vanaf uw herstelpunt met [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks). Vervang *mystorageaccount* door de naam van het opslagaccount dat u met de vorige opdracht hebt gemaakt. Vervang *myRecoveryPointName* door de naam van het herstelpunt dat u hebt verkregen met de uitvoer van de vorige opdracht [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list). ***Geef ook een doelresourcegroep op waarin de beheerde schijven worden hersteld***.
+2. Herstel de schijf vanaf uw herstelpunt met [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks). Vervang *mystorageaccount* door de naam van het opslagaccount dat u met de vorige opdracht hebt gemaakt. Vervang *myRecoveryPointName* door de naam van het herstelpunt dat u hebt verkregen met de uitvoer van de vorige opdracht [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list). ***Geef ook de doelresourcegroep op waarin de beheerde schijven worden hersteld** _.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,7 +88,7 @@ Als de VM waarvan een back-up is gemaakt, beheerde schijven bevat, en als het de
     ```
 
     > [!WARNING]
-    > Als **target-resource-group** niet is opgegeven, worden de beheerde schijven als niet-beheerde schijven hersteld in het opgegeven opslagaccount. Dit heeft aanzienlijke gevolgen voor de hersteltijd, omdat de tijd die nodig is om de schijven te herstellen, alleen afhankelijk is van het opgegeven opslagaccount. U kunt alleen profiteren van direct herstellen wanneer de parameter target-resource-group is opgegeven. Als het de bedoeling is dat beheerde schijven worden hersteld als niet-beheerd, geeft u de parameter **target-resource-group** niet op, en geeft u in plaats hiervan de parameter **restore-as-unmanaged-disk** op, zoals hieronder wordt weergegeven. Deze parameter is beschikbaar vanaf Az-versie 3.4.0.
+    > Als _ *target-resource-group* * niet is opgegeven, worden de beheerde schijven als niet-beheerde schijven hersteld in het opgegeven opslagaccount. Dit heeft aanzienlijke gevolgen voor de hersteltijd, omdat de tijd die nodig is om de schijven te herstellen, alleen afhankelijk is van het opgegeven opslagaccount. U kunt alleen profiteren van direct herstellen wanneer de parameter target-resource-group is opgegeven. Als het de bedoeling is dat beheerde schijven worden hersteld als niet-beheerd, geeft u de parameter **target-resource-group** niet op, en geeft u in plaats hiervan de parameter **restore-as-unmanaged-disk** op, zoals hieronder wordt weergegeven. Deze parameter is beschikbaar vanaf Az-versie 3.4.0.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -154,7 +154,7 @@ az backup job list \
     --output table
 ```
 
-De uitvoer is vergelijkbaar met het volgende voorbeeld, waarin u kunt zien dat de hersteltaak wordt uitgevoerd (*InProgress*):
+De uitvoer is vergelijkbaar met het volgende voorbeeld, waarin u kunt zien dat de hersteltaak wordt uitgevoerd ( *InProgress* ):
 
 ```output
 Name      Operation        Status      Item Name    Start Time UTC       Duration

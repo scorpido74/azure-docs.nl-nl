@@ -11,14 +11,17 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 14ae5f01e23a7922f508c4a2674e1a3f29e354b8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f8b4256f33a143c711a23a3564c2a46c69e0783b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166060"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675760"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Kennismaken met Azure Machine Learning door middel van Jupyter-notebooks
+
+> [!NOTE] 
+> Een door de community gestuurde opslagplaats met voorbeelden vindt u op https://github.com/Azure/azureml-examples.
 
 De [voorbeeldopslagplaats van Azure Machine Learning Notebooks](https://github.com/azure/machinelearningnotebooks) bevat de nieuwste Azure Machine Learning Python SDK-voorbeelden. Deze Juypter-notebooks zijn ontworpen om u te helpen de SDK te leren kennen en als modellen te gebruiken voor uw eigen machine learning-projecten.
 
@@ -29,7 +32,7 @@ In dit artikel wordt beschreven hoe u toegang kunt krijgen tot de opslagplaats v
 - [Data Science Virtual Machine](#dsvm)
 
 > [!NOTE]
-> Zodra u de opslagplaats hebt gekloond, vindt u zelfstudienotebooks in de map **tutorials** en functiespecifieke notebooks in de map **how-to-use-azureml** .
+> Zodra u de opslagplaats hebt gekloond, vindt u zelfstudienotebooks in de map **tutorials** en functiespecifieke notebooks in de map **how-to-use-azureml**.
 
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Voorbeelden van Azure Machine Learning-rekenprocessen ophalen

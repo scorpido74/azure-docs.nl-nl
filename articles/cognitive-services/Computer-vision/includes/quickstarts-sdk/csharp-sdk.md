@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6315ca68c8e58c3ba04e616967c233c81fda9b19
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d48d0cbac4e0e8b366170d979be3bbc5dd3064ca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92038649"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886532"
 ---
 <a name="HOLTop"></a>
 
@@ -39,7 +39,7 @@ Maak met behulp van Visual Studio een nieuwe .NET Core-toepassing.
 
 ### <a name="install-the-client-library"></a>De clientbibliotheek installeren 
 
-Nadat u een nieuw project hebt gemaakt, installeert u de clientbibliotheek door met de rechtermuisknop op de projectoplossing te klikken in **Solution Explorer** en **NuGet-pakketten beheren** te selecteren. Selecteer in de package manager die wordt geopend de optie **Bladeren**, schakel **Prerelease opnemen** in en zoek naar `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`. Selecteer versie `6.0.0-preview.1` en vervolgens **Installeren**. 
+Nadat u een nieuw project hebt gemaakt, installeert u de clientbibliotheek door in **Solution Explorer** met de rechtermuisknop op de projectoplossing te klikken en **NuGet-pakketten beheren** te selecteren. Selecteer in de package manager die wordt geopend de optie **Bladeren** , schakel **Prerelease opnemen** in en zoek naar `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`. Selecteer versie `6.0.0-preview.1` en vervolgens **Installeren**. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -91,7 +91,7 @@ Maak in de klasse **Programma** van de toepassing variabelen voor het Azure-eind
 >
 > Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
 
-Voeg in de `Main`-methode van de toepassing aanroepen toe voor de methoden die in deze quickstart worden gebruikt. U gaat deze later maken.
+Voeg in de methode `Main` van de toepassing aanroepen toe voor de methoden die in deze quickstart worden gebruikt. U gaat deze later maken.
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_client)]
@@ -133,6 +133,8 @@ Instantieer in een nieuwe methode een client met uw eindpunt en sleutel. Maak ee
 
 Met de volgende code wordt een methode, `AnalyzeImageUrl`, gedefinieerd waarmee via het clientobject een externe afbeelding wordt geanalyseerd en de resultaten worden afgedrukt. Met de methode wordt een tekstbeschrijving, categorisatie, een lijst met tags, gedetecteerde gezichten, markeringen vanwege inhoud voor volwassenen, hoofdkleuren en afbeeldingstype geretourneerd.
 
+> [!TIP]
+> U kunt ook een lokale afbeelding analyseren. Zie de [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)-methoden, zoals **AnalyzeImageInStreamAsync**. Of zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) voor scenario's met betrekking tot lokale afbeeldingen.
 
 ### <a name="set-up-test-image"></a>Testafbeelding instellen
 
@@ -140,16 +142,13 @@ Sla in uw klasse **Programma** een verwijzing op naar de URL van de afbeelding d
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_url)]
 
-> [!NOTE]
-> U kunt ook een lokale afbeelding analyseren. Zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) voor scenario's met betrekking tot lokale afbeeldingen.
-
 ### <a name="specify-visual-features"></a>Visuele kenmerken opgeven
 
 Definieer uw nieuwe methode voor het analyseren van afbeeldingen. Voeg de onderstaande code toe, waarmee u vervolgens visuele kenmerken opgeeft die u wilt extraheren in uw analyse. Zie de opsomming **[VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** voor een volledige lijst.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
-Voeg een van de volgende codeblokken in uw **AnalyzeImageUrl**-methode in om de functies ervan te implementeren. Vergeet niet om aan het einde een afsluitend haakje toe te voegen.
+Voeg een van de volgende codeblokken in uw **AnalyzeImageUrl** -methode in om de functies ervan te implementeren. Vergeet niet om aan het einde een afsluitend haakje toe te voegen.
 
 ```csharp
 }
@@ -157,7 +156,7 @@ Voeg een van de volgende codeblokken in uw **AnalyzeImageUrl**-methode in om de 
 
 ### <a name="analyze"></a>Analyseren
 
-Met de **AnalyzeImageAsync**-methode wordt een **ImageAnalysis**-object geretourneerd dat alle geëxtraheerde informatie bevat.
+Met de **AnalyzeImageAsync** -methode wordt een **ImageAnalysis** -object geretourneerd dat alle geëxtraheerde informatie bevat.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_call)]
 
@@ -233,15 +232,14 @@ Met de volgende code wordt informatie over het type afbeelding afgedrukt&mdash;,
 
 Computer Vision kan zichtbare tekst in een afbeelding lezen en deze converteren naar een tekenstroom. Zie voor meer informatie over tekstherkenning het conceptuele document [Optical Character Recognition (OCR)](../../concept-recognizing-text.md#read-api). De code in deze sectie maakt gebruik van de nieuwste [release van de Computer Vision-SDK voor Read 3.0](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1) en definieert een methode, `BatchReadFileUrl`, die gebruikmaakt van het clientobject om tekst in de afbeelding te detecteren en extraheren.
 
+> [!TIP]
+> U kunt ook tekst extraheren uit een lokale afbeelding. Zie de [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)-methoden, zoals **ReadInStreamAsync**. Of zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) voor scenario's met betrekking tot lokale afbeeldingen.
 
 ### <a name="set-up-test-image"></a>Testafbeelding instellen
 
 Sla in uw klasse **Programma** een verwijzing op naar de URL van de afbeelding waaruit u tekst wilt extraheren. Dit codefragment bevat voorbeeldafbeeldingen van gedrukte en handgeschreven tekst.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readtext_url)]
-
-> [!NOTE]
-> U kunt ook tekst extraheren uit een lokale afbeelding. Zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) voor scenario's met betrekking tot lokale afbeeldingen.
 
 ### <a name="call-the-read-api"></a>De Read-API aanroepen
 
@@ -251,7 +249,7 @@ Definieer de nieuwe methode voor het lezen van tekst. Voeg de onderstaande code 
 
 ### <a name="get-read-results"></a>Leesresultaten ophalen
 
-Vervolgens haalt u de bewerkings-id op die wordt geretourneerd vanaf de **ReadAsync**-aanroep en gebruikt u deze om de service te doorzoeken op de resultaten van de bewerking. Met de volgende code wordt de bewerking gecontroleerd totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde tekstgegevens afgedrukt naar de console.
+Vervolgens haalt u de bewerkings-id op die wordt geretourneerd vanaf de **ReadAsync** -aanroep en gebruikt u deze om de service te doorzoeken op de resultaten van de bewerking. Met de volgende code wordt de bewerking gecontroleerd totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde tekstgegevens afgedrukt naar de console.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_response)]
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 5fe8697327203a84f91b42e8742db75150b6cb19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88541444"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Zelfstudie: Integratie van Azure Active Directory met Work.com
 
@@ -27,7 +27,7 @@ De integratie van Work.com met Azure AD biedt de volgende voordelen:
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Work.com (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Voor het configureren van de integratie van Work.com met Azure AD moet u Work.co
 
 **Voer de volgende stappen uit als u Work.com vanuit de galerie wilt toevoegen:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -129,13 +129,13 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Work.com moet u de v
 
 2. Ga naar **Installatie**.
    
-    ![Installatie](./media/work-com-tutorial/ic794108.png "Instellen")
+    ![Schermopname met Setup geselecteerd in het gebruikersmenu.](./media/work-com-tutorial/ic794108.png "Instellen")
 
 3. Klik op **Domeinbeheer** in de sectie **Beheren** in het navigatievenster aan de linkerzijde om de verwante sectie uit te vouwen en klik vervolgens op **Mijn domein** om de pagina **Mijn domein** te openen. 
    
-    ![Mijn domein](./media/work-com-tutorial/ic767825.png "Mijn domein")
+    ![Schermopname met My Domain geselecteerd voor Domain Management in het deelvenster Administer.](./media/work-com-tutorial/ic767825.png "Mijn domein")
 
-4. Om te controleren dat uw domein correct is ingesteld, moet u ervoor zorgen dat het '**Stap 4 geïmplementeerd voor gebruikers**' is en uw '**Mijn domeininstellingen**' controleren.
+4. Om te controleren dat uw domein correct is ingesteld, moet u ervoor zorgen dat het ' **Stap 4 geïmplementeerd voor gebruikers** ' is en uw ' **Mijn domeininstellingen** ' controleren.
    
     ![Domein geïmplementeerd voor gebruiker](./media/work-com-tutorial/ic784377.png "Domein geïmplementeerd voor gebruiker")
 
@@ -143,7 +143,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Work.com moet u de v
 
 6. Ga naar **Installatie**.
     
-    ![Installatie](./media/work-com-tutorial/ic794108.png "Instellen")
+    ![Schermopname met Setup geselecteerd in het gebruikersmenu.](./media/work-com-tutorial/ic794108.png "Instellen")
 
 7. Vouw het menu **Beveiligingsbeheer** uit en klik vervolgens op **Instellingen voor eenmalige aanmelding**.
     
@@ -157,7 +157,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Work.com moet u de v
     
     b. Klik op **Nieuw**.
 
-9. Voer de volgende stappen uit in het gedeelte **Instellingen voor op SAML gebaseerde eenmalige aanmelding**:
+9. Voer de volgende stappen uit in het gedeelte **Instellingen voor op SAML gebaseerde eenmalige aanmelding** :
     
     ![Instellingen voor op SAML gebaseerde eenmalige aanmelding](./media/work-com-tutorial/ic794114.png "Instellingen voor op SAML gebaseerde eenmalige aanmelding")
     
@@ -186,21 +186,21 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Work.com moet u de v
 
 10. Klik in het navigatievenster aan de linkerzijde in uw klassiek Work.com-portaal op **Domeinbeheer** om de verwante sectie uit te vouwen, en klik vervolgens op **Mijn domein** om de pagina **Mijn domein** te openen. 
     
-    ![Mijn domein](./media/work-com-tutorial/ic794115.png "Mijn domein")
+    ![Schermopname met My Domain geselecteerd in Domain Management.](./media/work-com-tutorial/ic794115.png "Mijn domein")
 
 11. Klik in de sectie **Huisstijl van aanmeldingspagina** op de pagina **Mijn domein** op **Bewerken**.
     
-    ![Huisstijl van aanmeldingspagina](./media/work-com-tutorial/ic767826.png "Huisstijl van aanmeldingspagina")
+    ![Schermopname met de sectie Login Page Branding, waar u Edit kunt selecteren.](./media/work-com-tutorial/ic767826.png "Huisstijl van aanmeldingspagina")
 
 12. In de sectie **Verificatieservice** op de pagina **Huisstijl van aanmeldingspagina** wordt de naam van uw **SAML SSO-instellingen** weergegeven. Selecteer dit en klik vervolgens op **Opslaan**.
     
-    ![Huisstijl van aanmeldingspagina](./media/work-com-tutorial/ic784366.png "Huisstijl van aanmeldingspagina")
+    ![Schermopname met Login Page Branding, waar u de naam van de instelling kunt selecteren, namelijk P P E.](./media/work-com-tutorial/ic784366.png "Huisstijl van aanmeldingspagina")
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -212,7 +212,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -236,7 +236,7 @@ In dit gedeelte hebt u Britta Simon in staat gesteld gebruik te maken van eenmal
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -256,7 +256,7 @@ Voordat Azure Active Directory-gebruikers zich kunnen aanmelden, moeten ze worde
 
 2. Ga naar **Installatie**.
    
-    ![Installatie](./media/work-com-tutorial/IC794108.png "Instellen")
+    ![Schermopname met Setup geselecteerd in het gebruikersmenu.](./media/work-com-tutorial/ic794108.png "Instellen")
 
 3. Ga naar **Gebruikers beheren \> Gebruikers**.
    
@@ -278,11 +278,11 @@ Voordat Azure Active Directory-gebruikers zich kunnen aanmelden, moeten ze worde
     
     d. Typ in het tekstvak **Email** het **e-mailadres** van de gebruiker Brittasimon@contoso.com.
     
-    e. Typ een gebruikersnaam van een gebruiker in het tekstvak **Gebruikersnaam**, bijvoorbeeld Brittasimon@contoso.com.
+    e. Typ een gebruikersnaam van een gebruiker in het tekstvak **Gebruikersnaam** , bijvoorbeeld Brittasimon@contoso.com.
     
     f. Typ in het tekstvak **Bijnaam** een **bijnaam** van de gebruiker **Simon**.
     
-    g. Selecteer **Rol**, **Gebruikerslicentie** en **Profiel**.
+    g. Selecteer **Rol** , **Gebruikerslicentie** en **Profiel**.
     
     h. Klik op **Opslaan**.  
       
@@ -294,13 +294,12 @@ Voordat Azure Active Directory-gebruikers zich kunnen aanmelden, moeten ze worde
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Work.com klikt, wordt u als het goed is automatisch aangemeld bij de instantie van Work.com waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Work.com klikt, wordt u als het goed is automatisch aangemeld bij de instantie van Work.com waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

@@ -12,12 +12,12 @@ ms.date: 10/21/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e4327d8426a5dc1668993efd418c3f21624d407d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 49bba8054065123d7409f26b61d1dfc2580ef720
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327651"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636048"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Codevoorbeelden voor Microsoft identity platform (v2.0-eindpunt)
 
@@ -41,10 +41,12 @@ In deze voorbeelden ziet u hoe u een toepassing met één pagina (SPA) schrijft 
 | ![In deze afbeelding ziet u het JavaScript-logo](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA roept Microsoft Graph aan |[javascript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![In deze afbeelding ziet u het JavaScript-logo](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA roept Microsoft Graph aan met behulp van een verificatiecodestroom met PKCE |[javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
 | ![In deze afbeelding ziet u het JavaScript-logo](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA roept B2C aan |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![In deze afbeelding ziet u het Angular-logo](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA roept Microsoft Graph aan  | [active-directory-javascript-singlepageapp-angular](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
+| ![In deze afbeelding ziet u het JavaScript-logo](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA roept B2C aan met behulp van een verificatiecodestroom met PKCE |[b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) |
+| ![In deze afbeelding ziet u het Angular-logo](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA roept Microsoft Graph aan  | [active-directory-javascript-singlepageapp-angular](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
 | ![In deze afbeelding ziet u het Angular-logo](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA roept aangepaste web-API aan | [ms-identity-javascript-angular-spa-aspnetcore-webapi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
 | ![In deze afbeelding ziet u het Angular-logo](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA roept B2C aan |[active-directory-b2c-javascript-angular-spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
 | ![In deze afbeelding ziet u het React-logo](media/sample-v2-code/logo_react.png) [React (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA roept aangepaste web-API aan, die op zijn beurt Microsoft Graph aanroept  | [ms-identity-javascript-react-spa-dotnetcore-webapi-obo](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
+| ![In deze afbeelding ziet u het JavaScript-logo](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA roept de aangepaste web-API aan, die op zijn beurt Microsoft Graph aanroept  | [ms-identity-javascript-tutorial-chapter4-obo](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/4-1-call-api-graph) |
 | ![In deze afbeelding ziet u het Angular-logo](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA roept aangepaste web-API met app-rollen en beveiligingsgroepen aan |[ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
 
 ## <a name="web-applications"></a>Webtoepassingen
@@ -61,7 +63,7 @@ De volgende voorbeelden illustreren webtoepassingen waarmee gebruikers worden aa
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Openbare client-apps voor bureaublad en mobiel
 
-De volgende voorbeelden tonen openbare clienttoepassingen (bureaublad- of mobiele toepassingen) die de Microsoft Graph-API aanroepen, of uw eigen web-API namens een gebruiker. Met uitzondering van het voorbeeld *Bureaublad (console) met WAM*, maken al deze clienttoepassingen gebruik van Microsoft Authentication Library (MSAL).
+De volgende voorbeelden tonen openbare clienttoepassingen (bureaublad- of mobiele toepassingen) die de Microsoft Graph-API aanroepen, of uw eigen web-API namens een gebruiker. Met uitzondering van het voorbeeld *Bureaublad (console) met WAM* , maken al deze clienttoepassingen gebruik van Microsoft Authentication Library (MSAL).
 
 | Clienttoepassing | Platform | Stroom/toekenning | Roept Microsoft Graph aan | Roept een ASP.NET Core-web-API aan |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
@@ -101,7 +103,7 @@ In het volgende voorbeeld ziet u een openbare clienttoepassing die wordt uitgevo
 
 ## <a name="multi-tenant-saas-applications"></a>SaaS-toepassingen voor meerdere tenants
 
-De volgende voorbeelden laten zien hoe u uw toepassing kunt configureren om aanmeldingen te accepteren van een Azure Active Directory-tenant (Azure AD). Als u uw toepassing wilt configureren voor *meerdere tenants*, kunt u een SaaS-toepassing (**Software as a Service**) aan een groot aantal organisaties aanbieden, zodat gebruikers zich kunnen aanmelden bij uw toepassing als zij toestemming hebben gegeven om hun account te gebruiken.
+De volgende voorbeelden laten zien hoe u uw toepassing kunt configureren om aanmeldingen te accepteren van een Azure Active Directory-tenant (Azure AD). Als u uw toepassing wilt configureren voor *meerdere tenants* , kunt u een SaaS-toepassing ( **Software as a Service** ) aan een groot aantal organisaties aanbieden, zodat gebruikers zich kunnen aanmelden bij uw toepassing als zij toestemming hebben gegeven om hun account te gebruiken.
 
 | Platform | Beschrijving | Koppeling |
 | -------- | --------------------- | -------- |
@@ -129,8 +131,8 @@ De volgende voorbeelden laten zien hoe u een Azure Function met HttpTrigger kunt
 | Platform | Voorbeeld |
 | -------- | ------------------- |
 | ![In deze afbeelding ziet u het ASP.NET Core-logo](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | ASP.NET Core-web-API (service) Azure Function van [dotnet-native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
-| ![In deze afbeelding ziet u het Node.js-logo](media/sample-v2-code/logo_nodejs.png)</p>Node.js | Web-API (service) van [NodeJS en passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
 | ![In deze afbeelding ziet u het Python-logo](media/sample-v2-code/logo_python.png)</p>Python | Web-API (service) van [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) |
+| ![In deze afbeelding ziet u het Node.js-logo](media/sample-v2-code/logo_nodejs.png)</p>Node.js | Web-API (service) van [Node.js en passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
 | ![In deze afbeelding ziet u het Node.js-logo](media/sample-v2-code/logo_nodejs.png)</p>Node.js | Web API (service) van [NodeJS en passport-azure-ad met namens](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
 
 ## <a name="other-microsoft-graph-samples"></a>Overige Microsoft Graph-voorbeelden

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590452"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927835"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Problemen met de Azure Toegewezen HSM-service oplossen
 
@@ -71,7 +71,7 @@ Wanneer een bepaalde stempel of regio vol raakt - wanneer bijna alle beschikbare
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Hoe kan ik HSM’s zien wanneer ze zijn ingericht?
 De Toegewezen HSM-service is op een whitelist geplaatst. Dit wil zeggen dat de service wordt beschouwd als een Verborgen type in de Azure-portal. Als u de HSM-resources wilt bekijken, moet u het selectievakje Verborgen typen weergeven inschakelen, zoals hieronder wordt weergegeven. De NIC-resource volgt altijd de HSM en is een goede plek om het IP-adres van de HSM te achterhalen vóórdat u SSH gaat gebruiken om verbinding te maken.
 
-![Delegatie van subnet](./media/troubleshoot/hsm-provisioned.png)
+![Schermopname waarin het selectievakje Verborgen typen weergeven is gemarkeerd](./media/troubleshoot/hsm-provisioned.png)
 
 ## <a name="networking-resources"></a>Netwerkresources
 
@@ -85,7 +85,7 @@ Toegewezen HSM maakt gebruik van ExpressRoute Gateway als een ´tunnel´ voor co
 
 Bij de voorbeeldsjablonen die zijn opgegeven voor Toegewezen HSM, wordt ervan uitgegaan dat het IP-adres voor een HSM automatisch afkomstig is uit een opgegeven subnetbereik. U kunt een expliciet IP-adres voor de HSM opgeven via een kenmerk NetworkInterfaces in de ARM-sjabloon. 
 
-![Delegatie van subnet](./media/troubleshoot/private-ip-address.png)
+![Schermopname van de voorbeeldsjabloon voor Toegewezen HSM.](./media/troubleshoot/private-ip-address.png)
 
 ## <a name="hsm-initialization"></a>HSM-initialisatie
 

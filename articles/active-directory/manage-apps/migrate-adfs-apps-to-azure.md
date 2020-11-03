@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22b0ba97a0f3eddda9a0e0d4f5e5392d12f21eef
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: a07130e55339ed689b65b48e6fd83e65f36d155e
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026085"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280542"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Toepassings verificatie van Active Directory Federation Services naar Azure Active Directory verplaatsen
 
@@ -39,7 +39,7 @@ Veel organisaties hebben SaaS-apps (Software as a Service) of een aangepaste LOB
 
 ![Toepassingen die rechtstreeks on-premises zijn verbonden](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
-**Om de beveiliging van toepassingen te verbeteren, is het doel om één set toegangs beheer en-beleid te hebben in uw on-premises en Cloud omgevingen** .
+**Om de beveiliging van toepassingen te verbeteren, is het doel om één set toegangs beheer en-beleid te hebben in uw on-premises en Cloud omgevingen**.
 
 ![Toepassingen die zijn verbonden via Azure AD](media/migrate-adfs-apps-to-azure/app-integration-after-migration1.png)
 
@@ -203,8 +203,8 @@ De volgende tabel beschrijft een aantal van de meest voorkomende toewijzing van 
 | **App-URL voor afmelden** <p>Dit is de URL waarnaar de aanvragen ' afmeldings opschonen ' worden verzonden wanneer een gebruiker zich afmeldt vanuit een app. De IdP verzendt de aanvraag voor het afmelden van de gebruiker van alle andere apps ook.| Selecteer het tabblad **eind punten**| Basis-SAML-configuratie openen vanuit op SAML gebaseerde aanmelding| N.v.t. |
 | **App-id** <p>Dit is de app-id uit het perspectief van de IdP. De waarde van de aanmeldings-URL wordt vaak gebruikt voor de id (maar niet altijd).  Soms roept de app de entiteit-ID aan.| Het tabblad **id's** selecteren|Basis-SAML-configuratie openen vanuit op SAML gebaseerde aanmelding| Wordt toegewezen aan het element **doel groep** in het SAML-token. |
 | **Federatieve metagegevens van app** <p>Dit is de locatie van de federatieve meta gegevens van de app. De IdP gebruikt deze om bepaalde configuratie-instellingen automatisch bij te werken, zoals eindpunten of versleutelingscertificaten.| Selecteer het tabblad **controle**| N.v.t. Azure AD biedt geen ondersteuning voor het rechtstreeks gebruiken van Application Federation-meta gegevens. U kunt de federatieve meta gegevens hand matig importeren.| N.v.t. |
-| **Gebruikers-id/naam-ID** <p>Kenmerk dat wordt gebruikt om voor de app op unieke wijze de gebruikers-id aan te geven vanuit Azure AD of AD FS.  Dit kenmerk is doorgaans de UPN of het e-mail adres van de gebruiker.| Claim regels. In de meeste gevallen geeft de claim regel een claim uit met een type dat eindigt op de NameIdentifier.| U kunt de id vinden onder de header **gebruikers kenmerken en claims** . De UPN wordt standaard gebruikt| Wordt toegewezen aan het **NameID** -element in het SAML-token. |
-| **Andere claims** <p>Voor beelden van andere claim gegevens die vaak van de IdP naar de app worden verzonden, zijn voor naam, achternaam, e-mail adres en groepslid maatschap.| In AD FS kunt u deze gegevens vinden als andere claimregels op de Relying Party.| U kunt de id vinden onder de header **gebruikers kenmerken & claims** . Selecteer **Beeld** en bewerk alle andere gebruikerskenmerken.| N.v.t. |
+| **Gebruikers-id/naam-ID** <p>Kenmerk dat wordt gebruikt om voor de app op unieke wijze de gebruikers-id aan te geven vanuit Azure AD of AD FS.  Dit kenmerk is doorgaans de UPN of het e-mail adres van de gebruiker.| Claim regels. In de meeste gevallen geeft de claim regel een claim uit met een type dat eindigt op de NameIdentifier.| U kunt de id vinden onder de header **gebruikers kenmerken en claims**. De UPN wordt standaard gebruikt| Wordt toegewezen aan het **NameID** -element in het SAML-token. |
+| **Andere claims** <p>Voor beelden van andere claim gegevens die vaak van de IdP naar de app worden verzonden, zijn voor naam, achternaam, e-mail adres en groepslid maatschap.| In AD FS kunt u deze gegevens vinden als andere claimregels op de Relying Party.| U kunt de id vinden onder de header **gebruikers kenmerken & claims**. Selecteer **Beeld** en bewerk alle andere gebruikerskenmerken.| N.v.t. |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>IdP-instellingen (kaart-id-provider)
@@ -238,9 +238,9 @@ SaaS-apps moeten weten waar verificatie aanvragen moeten worden verzonden en hoe
 | - | - | - |
 | **URL voor IdP-aanmelding** <p>Aanmeldings-URL van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid voor aanmelding).| De aanmeldings-URL van AD FS is de naam van het AD FS Federation-service gevolgd door '/adfs/ls/. ' <p>Bijvoorbeeld: `https://fs.contoso.com/adfs/ls/`| Vervang {Tenant-id} door uw Tenant-ID. <p> Voor apps die gebruikmaken van het SAML-P-protocol: [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>Voor apps die gebruikmaken van het WS-Federation-Protocol: [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
 | **IdP-afmeldings-URL**<p>De afmeldings-URL van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid wanneer ze zich afmelden bij de app).| De afmeldings-URL is hetzelfde als de aanmeldings-URL of de URL waaraan ' wa = wsignout 1.0 ' is toegevoegd. Bijvoorbeeld: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| Vervang {Tenant-id} door uw Tenant-ID.<p>Voor apps die gebruikmaken van het SAML-P-protocol:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> Voor apps die gebruikmaken van het WS-Federation-Protocol: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
-| **Certificaat voor token-ondertekening**<p>De IdP maakt gebruik van de persoonlijke sleutel van het certificaat voor het ondertekenen van uitgegeven tokens. Er wordt gecontroleerd of het token afkomstig is van de dezelfde IdP die de app is geconfigureerd om te vertrouwen.| U vindt het AD FS-certificaat voor token-ondertekening in AD FS-beheer onder **Certificaten** .| Zoek het in de Azure Portal in de eigenschappen voor **eenmalige aanmelding** van de toepassing onder het **SAML-handtekening certificaat** voor koptekst. Daar kunt u het certificaat downloaden om het te uploaden naar de app.  <p>Als de toepassing meer dan één certificaat heeft, kunt u alle certificaten vinden in het XML-bestand met federatieve meta gegevens. |
-| **ID/"verlener"**<p>De id van de IdP vanuit het perspectief van de app (ook wel de ' uitgevers-ID ' genoemd).<p>In het SAML-token wordt de waarde weer gegeven als het element van de verlener.| De id voor AD FS is doorgaans de Federation service-id in AD FS beheer onder **service > Federation service-eigenschappen bewerken** . Bijvoorbeeld: `http://fs.contoso.com/adfs/services/trust`| Vervang {Tenant-id} door uw Tenant-ID.<p>https: \/ /STS.Windows.net/{Tenant-id}/ |
-| **IdP federatieve meta gegevens**<p>Locatie van de openbaar beschik bare federatieve meta gegevens van de IdP. (Sommige apps gebruiken federatiemetagegevens als alternatief voor het afzonderlijk door de beheerder configureren van URL's, id en tokenhandtekeningcertificaat.)| Zoek de URL van de AD FS federatieve meta gegevens in AD FS beheer onder **Service >-eind punten > meta gegevens > type: federatieve meta gegevens** . Bijvoorbeeld: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| De overeenkomstige waarde voor Azure AD volgt het patroon [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Vervang {Tenant domainname} door de naam van uw Tenant in de notatie ' contoso.onmicrosoft.com '.   <p>Zie voor meer informatie [Federatiemetagegevens](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
+| **Certificaat voor token-ondertekening**<p>De IdP maakt gebruik van de persoonlijke sleutel van het certificaat voor het ondertekenen van uitgegeven tokens. Er wordt gecontroleerd of het token afkomstig is van de dezelfde IdP die de app is geconfigureerd om te vertrouwen.| U vindt het AD FS-certificaat voor token-ondertekening in AD FS-beheer onder **Certificaten**.| Zoek het in de Azure Portal in de eigenschappen voor **eenmalige aanmelding** van de toepassing onder het **SAML-handtekening certificaat** voor koptekst. Daar kunt u het certificaat downloaden om het te uploaden naar de app.  <p>Als de toepassing meer dan één certificaat heeft, kunt u alle certificaten vinden in het XML-bestand met federatieve meta gegevens. |
+| **ID/"verlener"**<p>De id van de IdP vanuit het perspectief van de app (ook wel de ' uitgevers-ID ' genoemd).<p>In het SAML-token wordt de waarde weer gegeven als het element van de verlener.| De id voor AD FS is doorgaans de Federation service-id in AD FS beheer onder **service > Federation service-eigenschappen bewerken**. Bijvoorbeeld: `http://fs.contoso.com/adfs/services/trust`| Vervang {Tenant-id} door uw Tenant-ID.<p>https: \/ /STS.Windows.net/{Tenant-id}/ |
+| **IdP federatieve meta gegevens**<p>Locatie van de openbaar beschik bare federatieve meta gegevens van de IdP. (Sommige apps gebruiken federatiemetagegevens als alternatief voor het afzonderlijk door de beheerder configureren van URL's, id en tokenhandtekeningcertificaat.)| Zoek de URL van de AD FS federatieve meta gegevens in AD FS beheer onder **Service >-eind punten > meta gegevens > type: federatieve meta gegevens**. Bijvoorbeeld: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| De overeenkomstige waarde voor Azure AD volgt het patroon [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Vervang {Tenant domainname} door de naam van uw Tenant in de notatie ' contoso.onmicrosoft.com '.   <p>Zie voor meer informatie [Federatiemetagegevens](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>AD FS beveiligings beleid vertegenwoordigen in azure AD
@@ -322,7 +322,7 @@ MFA-regels opgeven voor een gebruiker of een groep in azure AD:
 
 1. Maak een [Nieuw beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
 
-2. Selecteer **Toewijzingen** . Voeg de gebruiker (s) of groep (en) toe waarvoor u MFA wilt afdwingen.
+2. Selecteer **Toewijzingen**. Voeg de gebruiker (s) of groep (en) toe waarvoor u MFA wilt afdwingen.
 
 3. Configureer de opties voor **toegangs beheer** , zoals hieronder wordt weer gegeven:
 
@@ -335,7 +335,7 @@ MFA-regels opgeven voor niet-geregistreerde apparaten in azure AD:
 
 1. Maak een [Nieuw beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
 
-2. De **toewijzingen** instellen voor **alle gebruikers** .
+2. De **toewijzingen** instellen voor **alle gebruikers**.
 
 3. Configureer de opties voor **toegangs beheer** , zoals hieronder wordt weer gegeven:
 
@@ -350,7 +350,7 @@ MFA-regels opgeven op basis van de locatie van een gebruiker in azure AD:
 
 1. Maak een [Nieuw beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
 
-1. De **toewijzingen** instellen voor **alle gebruikers** .
+1. De **toewijzingen** instellen voor **alle gebruikers**.
 
 1. [Benoemde locaties in azure AD configureren](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) anders Federatie binnen uw bedrijfs netwerk wordt vertrouwd.
 
@@ -456,7 +456,7 @@ Afhankelijk van hoe u uw app configureert, controleert u of SSO goed werkt.
 | - | - |
 | OAuth/OpenID Connect Connect| Selecteer **bedrijfs toepassingen > machtigingen** en zorg ervoor dat u hebt ingestemd op de toepassing die in uw organisatie moet worden gebruikt in de gebruikers instellingen voor uw app.
 ‎ |
-| Op SAML gebaseerde SSO| U kunt de knop [SAML-instellingen testen](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) vinden onder **eenmalige aanmelding** .
+| Op SAML gebaseerde SSO| U kunt de knop [SAML-instellingen testen](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) vinden onder **eenmalige aanmelding**.
 ‎ |
 | Password-Based SSO| Down load en installeer de [MyApps Secure Sign](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [in extension](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction). Deze uitbrei ding helpt u bij het starten van de Cloud-apps van uw organisatie waarvoor u een SSO-proces moet gebruiken.
 ‎ |
@@ -489,5 +489,8 @@ Zodra de implementatie is voltooid, kunt u communicatie verzenden die de gebruik
 Communicatie met externe gebruikers: deze groep gebruikers is doorgaans de meest kritieke impact in het geval van problemen. Dit geldt met name als uw beveiligings postuur een andere set regels voor voorwaardelijke toegang of risico profielen voor externe partners bepaalt. Zorg ervoor dat externe partners op de hoogte zijn van het migratie schema voor de Cloud en een periode hebben waarin ze worden aangemoedigd om deel te nemen aan een pilot implementatie waarmee alle stromen die uniek zijn voor externe samen werking, worden getest. Ten slotte moet u ervoor zorgen dat ze toegang hebben tot de Help Desk in het geval van problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 [Migratie van toepassings verificatie naar Azure AD](https://aka.ms/migrateapps/whitepaper) lezen<p>
 [Voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) en [MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) instellen
+
+Probeer een stapsgewijs code voorbeeld:[AD FS naar Azure AD-toepassings migratie Playbook voor ontwikkel aars](https://aka.ms/adfsplaybook)

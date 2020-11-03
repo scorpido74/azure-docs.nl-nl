@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b929632318de41470412811885b9f1bd3054783a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: bf7b829d70af27850affe619d47ed4a4f5ec1bea
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145970"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279914"
 ---
 # <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
@@ -20,7 +20,7 @@ Nadat u [een Azure Digital apparaatdubbels-exemplaar en-verificatie hebt ingeste
 
 Azure Digital Apparaatdubbels voert verificatie uit met behulp van [Azure AD-beveiligings tokens op basis van OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims). Als u uw SDK wilt verifiëren, moet u een Bearer-token met de juiste machtigingen voor Azure Digital Apparaatdubbels verkrijgen en dit samen met uw API-aanroepen door geven. 
 
-In dit artikel wordt beschreven hoe u referenties kunt verkrijgen met behulp van de `Azure.Identity` client bibliotheek. Hoewel in dit artikel code voorbeelden in C# worden weer gegeven, zoals wat u schrijft voor [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true), kunt u een versie van gebruiken, `Azure.Identity` ongeacht de SDK die u gebruikt (voor meer informatie over de sdk's die beschikbaar zijn voor Azure Digital apparaatdubbels raadpleegt u [*Hoe: de Azure Digital Apparaatdubbels-api's en sdk's gebruiken*](how-to-use-apis-sdks.md)).
+In dit artikel wordt beschreven hoe u referenties kunt verkrijgen met behulp van de `Azure.Identity` client bibliotheek. Hoewel in dit artikel code voorbeelden in C# worden weer gegeven, zoals wat u schrijft voor [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), kunt u een versie van gebruiken, `Azure.Identity` ongeacht de SDK die u gebruikt (voor meer informatie over de sdk's die beschikbaar zijn voor Azure Digital apparaatdubbels raadpleegt u [*Hoe: de Azure Digital Apparaatdubbels-api's en sdk's gebruiken*](how-to-use-apis-sdks.md)).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,7 +39,7 @@ Als u wilt door gaan, hebt u een client-app-project nodig waarin u uw code schri
 
 Drie veelvoorkomende methoden voor het verkrijgen van referenties in `Azure.Identity` zijn:
 
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) biedt een standaard `TokenCredential` verificatie stroom voor toepassingen die worden geïmplementeerd in azure, en is **de aanbevolen keuze voor lokale ontwikkeling** . Het kan ook worden ingeschakeld om de andere twee methoden te proberen die in dit artikel worden aanbevolen. Er wordt gewikkeld `ManagedIdentityCredential` en kan toegang krijgen tot `InteractiveBrowserCredential` een configuratie variabele.
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) biedt een standaard `TokenCredential` verificatie stroom voor toepassingen die worden geïmplementeerd in azure, en is **de aanbevolen keuze voor lokale ontwikkeling**. Het kan ook worden ingeschakeld om de andere twee methoden te proberen die in dit artikel worden aanbevolen. Er wordt gewikkeld `ManagedIdentityCredential` en kan toegang krijgen tot `InteractiveBrowserCredential` een configuratie variabele.
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) werkt prima in gevallen waarin u [beheerde identiteiten (MSI)](../active-directory/managed-identities-azure-resources/overview.md)nodig hebt, en is een goede kandidaat voor het werken met Azure functions en het implementeren van Azure-Services.
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) is bedoeld voor interactieve toepassingen en kan worden gebruikt voor het maken van een geverifieerde SDK-client
 
@@ -62,7 +62,7 @@ Voeg vervolgens code toe om referenties te verkrijgen met een van de methoden in
 
 ### <a name="defaultazurecredential-method"></a>Methode DefaultAzureCredential
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) biedt een standaard `TokenCredential` verificatie stroom voor toepassingen die worden geïmplementeerd in azure, en is **de aanbevolen keuze voor lokale ontwikkeling** .
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) biedt een standaard `TokenCredential` verificatie stroom voor toepassingen die worden geïmplementeerd in azure, en is **de aanbevolen keuze voor lokale ontwikkeling**.
 
 Als u de standaard Azure-referenties wilt gebruiken, hebt u de URL van het Azure Digital Apparaatdubbels-exemplaar ([instructies om te vinden](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) nodig.
 

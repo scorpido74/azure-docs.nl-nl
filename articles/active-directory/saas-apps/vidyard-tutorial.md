@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 2c6b88e9c59fa7195e77275ad193975924df137f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4176c92d48b67b9f9207f22ebd8939b5ec1437ee
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532104"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Zelfstudie: Azure Active Directory-integratie met Vidyard
 
@@ -27,7 +27,7 @@ De integratie van Vidyard met Azure Active Directory biedt u de volgende voordel
 * U kunt inschakelen dat gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij Vidyard (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -51,7 +51,7 @@ Voor het configureren van de integratie van Vidyard in Azure Active Directory mo
 
 **Als u Vidyard uit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -87,7 +87,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Om eenmalige aanmelding van Azure Active Directory met Vidyard te configureren, moet u de volgende stappen uitvoeren:
 
-1. Selecteer in de [Microsoft Azure-portal](https://portal.azure.com/), op de pagina voor de integratie van de toepassing **Vidyard**, de optie **Eenmalige aanmelding**.
+1. Selecteer in de [Microsoft Azure-portal](https://portal.azure.com/), op de pagina voor de integratie van de toepassing **Vidyard** , de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -101,7 +101,7 @@ Om eenmalige aanmelding van Azure Active Directory met Vidyard te configureren, 
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens voor eenmalige aanmelding bij het Vidyard-domein en -URL's](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://secure.vidyard.com/sso/saml/<unique id>/metadata`
 
@@ -109,7 +109,7 @@ Om eenmalige aanmelding van Azure Active Directory met Vidyard te configureren, 
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens voor eenmalige aanmelding bij het Vidyard-domein en -URL's](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://secure.vidyard.com/sso/saml/<unique id>/login`
 
@@ -136,15 +136,15 @@ Om eenmalige aanmelding van Azure Active Directory met Vidyard te configureren, 
 
 2. Selecteer in het Vidyard-dashboard **Groep** > **Beveiliging**
 
-    ![Vidyard-configuratie](./media/vidyard-tutorial/configure1.png)
+    ![Schermopname waarin Security is geselecteerd in Group op de Vidyard Software-site.](./media/vidyard-tutorial/configure1.png)
 
 3. Klik op het tabblad **Nieuw profiel**.
 
-    ![Vidyard-configuratie](./media/vidyard-tutorial/configure2.png)
+    ![Schermopname van de knop New Profile.](./media/vidyard-tutorial/configure2.png)
 
 4. Voer in het gedeelte **SAML-configuratie** de volgende stappen uit:
 
-    ![Vidyard-configuratie](./media/vidyard-tutorial/configure3.png)
+    ![Schermopname met de sectie SAML Configuration, waar u de beschreven waarden kunt invoeren.](./media/vidyard-tutorial/configure3.png)
 
     a. Voer een algemene profielnaam in het tekstvak **Profielnaam** in.
 
@@ -162,18 +162,18 @@ Om eenmalige aanmelding van Azure Active Directory met Vidyard te configureren, 
 
 5. Selecteer op het tabblad Eenmalige aanmelding **Toewijzen** naast een bestaand profiel
 
-    ![Vidyard-configuratie](./media/vidyard-tutorial/configure4.png)
+    ![Schermopname met de knop Assign voor het Azure AD SSO-profiel.](./media/vidyard-tutorial/configure4.png)
 
     > [!NOTE]
     > Zodra u een SSO-profiel hebt gemaakt, wijst u het toe aan een of meer groepen waarvoor gebruikers toegang nodig hebben via Azure. Als de gebruiker niet bestaat in de groep waaraan deze is toegewezen, wordt door Vidyard automatisch een gebruikersaccount gemaakt en wordt in realtime een rol toegewezen.
 
 6. Selecteer uw organisatiegroep, die zichtbaar is in de **Groepen die beschikbaar zijn voor toewijzing**.
 
-    ![Vidyard-configuratie](./media/vidyard-tutorial/configure5.png)
+    ![Schermopname met de sectie Assign SAML Configuration to Organizations, waar u uw groep kunt selecteren.](./media/vidyard-tutorial/configure5.png)
 
 7. U kunt de toegewezen groepen zien onder de **Momenteel toegewezen groepen**. Selecteer een rol voor de groep conform uw organisatie en klik op **Bevestigen**.
 
-    ![Vidyard-configuratie](./media/vidyard-tutorial/configure6.png)
+    ![Schermopname met de sectie Assign SAML Configuration to Organizations, waar u een rol kunt selecteren.](./media/vidyard-tutorial/configure6.png)
 
     > [!NOTE]
     > Raadpleeg dit [document](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard) voor meer informatie.
@@ -182,7 +182,7 @@ Om eenmalige aanmelding van Azure Active Directory met Vidyard te configureren, 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -194,7 +194,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -206,7 +206,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Vidyard.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Vidyard**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **Vidyard**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -218,7 +218,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -239,13 +239,12 @@ In dit gedeelte wordt een gebruiker met de naam Britta Simon gemaakt in Vidyard.
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Vidyard klikt, wordt u automatisch aangemeld bij het exemplaar van Vidyard waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Vidyard klikt, wordt u automatisch aangemeld bij het exemplaar van Vidyard waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

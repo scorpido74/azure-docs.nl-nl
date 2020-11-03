@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 91ba36a0bffab6c66020bab41ace65659ed084f7
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d085d59dc1dbe09c014dcaf5aa239805824354f0
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146310"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279961"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
@@ -73,7 +73,7 @@ De eindpunt-Api's die beschikbaar zijn in het besturings vlak zijn:
  
 Als u een gebeurtenis route wilt maken, kunt u de Azure Digital Apparaatdubbels [**Data-vlak-api's**](how-to-manage-routes-apis-cli.md#create-an-event-route), CLI- [**opdrachten**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)of de [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route)gebruiken. 
 
-Hier volgt een voor beeld van het maken van een gebeurtenis route binnen een client toepassing, met behulp van de `CreateOrReplaceEventRouteAsync` [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) aanroep: 
+Hier volgt een voor beeld van het maken van een gebeurtenis route binnen een client toepassing, met behulp van de `CreateOrReplaceEventRouteAsync` [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) aanroep: 
 
 ```csharp
 string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";

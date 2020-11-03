@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f8ad2558c664d1a8b577f01b707200d416d5348a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6da2aa645549920cce2f5c0cfe8a32c98dc04708
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078898"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746140"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Zelfstudie: Functievlaggen gebruiken in een ASP.NET Core-app
 
@@ -39,7 +39,7 @@ In deze zelfstudie leert u het volgende:
 
 Voeg een verwijzing naar de NuGet-pakketten `Microsoft.FeatureManagement.AspNetCore` en `Microsoft.FeatureManagement` toe om gebruik te maken van de .NET Core-functiebeheerder.
     
-De .NET Core-functiebeheerder `IFeatureManager` krijgt functievlaggen van het systeemeigen configuratiesysteem van het framework. Als gevolg hiervan kunt u de functievlaggen van uw toepassing definiëren met behulp van een configuratiebron die .NET Core ondersteunt, met inbegrip van het lokale *appsettings.json*-bestand of omgevingsvariabelen. `IFeatureManager` maakt gebruik van .NET Core-afhankelijkheidsinjectie. U kunt de functiebeheerservices registreren met behulp van standaard conventies:
+De .NET Core-functiebeheerder `IFeatureManager` krijgt functievlaggen van het systeemeigen configuratiesysteem van het framework. Als gevolg hiervan kunt u de functievlaggen van uw toepassing definiëren met behulp van een configuratiebron die .NET Core ondersteunt, met inbegrip van het lokale *appsettings.json* -bestand of omgevingsvariabelen. `IFeatureManager` maakt gebruik van .NET Core-afhankelijkheidsinjectie. U kunt de functiebeheerservices registreren met behulp van standaard conventies:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -107,7 +107,7 @@ De eenvoudigste manier om uw .NET Core-toepassing te verbinden met App Configura
               .UseStartup<Startup>();
    ```
 
-2. Open *Startup.cs* en werk de methode `Configure` bij om middleware toe te voegen, zodat de waarden van de functievlaggen periodiek kunnen worden vernieuwd terwijl de ASP.NET Core-web-app aanvragen blijft ontvangen.
+2. Open *Startup.cs* en werk de `Configure`-methode bij om de ingebouwde middleware met de naam `UseAzureAppConfiguration` toe te voegen. Met deze middleware kunnen de waarden van de functievlaggen periodiek worden vernieuwd terwijl de ASP.NET Core-web-app aanvragen blijft ontvangen.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)

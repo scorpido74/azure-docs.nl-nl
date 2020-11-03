@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 9536670f8529da3a4251596b2c9642e50445fc0e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 319d7d1b96bd71a83592cf560cd5e30b011cf247
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989683"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678228"
 ---
 Aan de slag met de clientbibliotheek van Custom Vision voor .NET. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor het bouwen van een objectdetectiemodel uit te proberen. U maakt een project, voegt tags toe, traint het project op voorbeeldafbeeldingen en gebruikt de voorspellingseindpunt-URL van het project om het programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen beeldherkennings-app te maken.
 
@@ -21,6 +21,7 @@ Gebruik de Custom Vision-clientbibliotheek voor .NET voor het volgende:
 * Label aan het project toevoegen
 * Afbeeldingen uploaden en labelen
 * Het project trainen
+* De huidige herhaling publiceren
 * Voorspellingseindpunt testen
 
 [Referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet) | Bibliotheekbroncode [(training)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(voorspelling)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Pakket (NuGet) [(training)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(voorspelling)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/) | [Voorbeelden](https://docs.microsoft.com/samples/browse/?products=azure&term=vision&terms=vision)
@@ -43,7 +44,7 @@ Maak met behulp van Visual Studio een nieuwe .NET Core-toepassing.
 
 ### <a name="install-the-client-library"></a>De clientbibliotheek installeren 
 
-Nadat u een nieuw project hebt gemaakt, installeert u de clientbibliotheek door in **Solution Explorer** met de rechtermuisknop op de projectoplossing te klikken en **NuGet-pakketten beheren** te selecteren. Selecteer in de pakketbeheerder die wordt geopend de optie **Bladeren**, schakel **Prerelease opnemen** in en zoek naar `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` en `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction`. Selecteer de nieuwste versie en vervolgens **Installeren**. 
+Nadat u een nieuw project hebt gemaakt, installeert u de clientbibliotheek door in **Solution Explorer** met de rechtermuisknop op de projectoplossing te klikken en **NuGet-pakketten beheren** te selecteren. Selecteer in de pakketbeheerder die wordt geopend de optie **Bladeren** , schakel **Prerelease opnemen** in en zoek naar `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` en `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction`. Selecteer de nieuwste versie en vervolgens **Installeren**. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -81,13 +82,13 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 ---
 
 > [!TIP]
-> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs), waar de codevoorbeelden uit deze quickstart zich bevinden.
+> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs), waar de codevoorbeelden uit deze quickstart zich bevinden.
 
 Open vanuit de projectmap het bestand *program.cs* en voeg de volgende `using`-instructies toe:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_imports)]
 
-Maak in de **Hoofd**methode van de toepassing variabelen voor de sleutel en het eindpunt van uw resource.
+Maak in de **Hoofd** methode van de toepassing variabelen voor de sleutel en het eindpunt van uw resource.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_creds)]
 
@@ -128,7 +129,7 @@ In een nieuwe methode instantieert u trainings- en voorspellingsclients met behu
 
 ## <a name="create-a-new-custom-vision-project"></a>Een nieuw project maken in de Custom Vision-service
 
-Met het volgende deel van de code maakt u een objectdetectieproject. Het project wordt weergegeven op de [Custom Vision-website](https://customvision.ai/). Raadpleeg de methode [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) om andere opties op te geven wanneer u uw project maakt (uitgelegd in de webportalgids [Een detector maken](../../get-started-build-detector.md)).  
+Met behulp van de volgende methode maakt u een objectdetectieproject. Het project wordt weergegeven op de [Custom Vision-website](https://customvision.ai/). Raadpleeg de methode [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) om andere opties op te geven wanneer u uw project maakt (uitgelegd in de webportalgids [Een detector maken](../../get-started-build-detector.md)).  
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_create)]
 
@@ -153,7 +154,7 @@ Vervolgens wordt deze kaart met koppelingen gebruikt om elke voorbeeldafbeelding
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_upload)]
 
-U hebt nu alle voor beelden van afbeeldingen geüpload en elke afbeelding (**Fork** of **schaar**) voorzien van een gekoppelde pixel rechthoek.
+U hebt nu alle voor beelden van afbeeldingen geüpload en elke afbeelding ( **Fork** of **schaar** ) voorzien van een gekoppelde pixel rechthoek.
 
 ## <a name="train-the-project"></a>Het project trainen
 
@@ -175,7 +176,7 @@ Met deze methode wordt de huidige iteratie van het model beschikbaar voor het ui
 
 ## <a name="test-the-prediction-endpoint"></a>Voorspellingseindpunt testen
 
-In dit deel van het script wordt de testafbeelding geladen, wordt een query op het eindpunt van het model uitgevoerd en worden de gegevens van de voorspelling op de console weergegeven.
+In deze methode wordt de testafbeelding geladen, wordt een query op het eindpunt van het model uitgevoerd en worden de gegevens van de voorspelling op de console weergegeven.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_prediction)]
 
@@ -207,7 +208,7 @@ Making a prediction:
         scissors: 1.2% [ 0.112389535, 0.119195729, 0.658031344, 0.7023591 ]
 ```
 
-Vervolgens kunt u controleren of de testafbeelding (gevonden in **Images/Test/**) op de juiste wijze wordt gelabeld en of de detectieregio juist is. Druk nu op een willekeurige toets om de toepassing af te sluiten.
+Vervolgens kunt u controleren of de testafbeelding (gevonden in **Images/Test/** ) op de juiste wijze wordt gelabeld en of de detectieregio juist is. Druk nu op een willekeurige toets om de toepassing af te sluiten.
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
@@ -219,4 +220,5 @@ U hebt nu elke stap van het objectdetectieproces in code uitgevoerd. Met dit voo
 > [Een model testen en opnieuw trainen](../../test-your-model.md)
 
 * Wat is Custom Vision?
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs)
 * [SDK-naslagdocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet)

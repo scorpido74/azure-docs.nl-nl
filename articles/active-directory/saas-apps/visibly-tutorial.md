@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 1a1e2716d3f2328ebd64bbb5b6b70036ac991b56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de41e1ef021ea3da2b3a5bef4268469aab448a21
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88531919"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637935"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visibly"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Visibly
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Visibly kunt integreren met Azure Active Direct
 * Ervoor zorgen dat uw gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Visibly.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +41,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Visibly ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-* Zodra u Visibly hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u Visibly hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-visibly-from-the-gallery"></a>Visibly toevoegen vanuit de galerie
 
@@ -110,9 +110,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -142,19 +142,19 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Ga naar de optie **Settings** in het navigatiemenu.
 
-    ![Configuratie](./media/visibly-tutorial/settings.png)
+    ![Schermopname met de optie Instellingen geselecteerd.](./media/visibly-tutorial/settings.png)
 
 1. Klik op **Integrations** binnen Settings.
 
-    ![Configuratie](./media/visibly-tutorial/integrations.png)
+    ![Schermopname met Integrations geselecteerd in het menu Settings.](./media/visibly-tutorial/integrations.png)
 
 1. Selecteer **SSO** onder **Integrations**.
 
-    ![Configuratie](./media/visibly-tutorial/sso.png)
+    ![Schermopname met SSO geselecteerd in Integrations.](./media/visibly-tutorial/sso.png)
 
 1. Voer de volgende stappen uit op de volgende pagina.
 
-    ![Configuratie](./media/visibly-tutorial/configuration.png)
+    ![Schermopname van de pagina SSO Integration, waar u de beschreven waarden kunt invoeren.](./media/visibly-tutorial/configuration.png)
 
     a. Plak in het tekstvak **Entity ID** de waarde van de **entiteit-id** die u uit de Azure-portal hebt gekopieerd.
 
@@ -174,16 +174,16 @@ In deze sectie wordt een gebruiker met de naam B.Simon gemaakt in Visibly. Visib
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Visibly klikt, wordt u automatisch aangemeld bij het exemplaar van Visibly waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Visibly klikt, wordt u automatisch aangemeld bij het exemplaar van Visibly waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Visibly uitproberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

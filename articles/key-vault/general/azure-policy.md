@@ -7,12 +7,12 @@ ms.date: 10/15/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6c1ccbfc221970980d5d0b15e82f9f8483c48bce
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043762"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927750"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault integreren met Azure Policy
 
@@ -29,9 +29,9 @@ Enkele voorbeeldscenario's:
 
 ## <a name="types-of-policy-effects-and-guidance"></a>Soorten beleidseffecten en -richtlijnen
 
-**Audit**: Wanneer het effect van een beleid is ingesteld op 'audit', resulteert het beleid niet in wijzigingen die fouten veroorzaken. Er wordt dan alleen een waarschuwing gegeven voor onderdelen zoals certificaten die niet voldoen aan de beleidsdefinities binnen een opgegeven bereik. Deze onderdelen worden dan als 'Niet compatibel' gemarkeerd in het dashboard voor beleidsnaleving. 'Audit' is de standaardinstelling als er geen beleidseffect is geselecteerd.
+**Audit** : Wanneer het effect van een beleid is ingesteld op 'audit', resulteert het beleid niet in wijzigingen die fouten veroorzaken. Er wordt dan alleen een waarschuwing gegeven voor onderdelen zoals certificaten die niet voldoen aan de beleidsdefinities binnen een opgegeven bereik. Deze onderdelen worden dan als 'Niet compatibel' gemarkeerd in het dashboard voor beleidsnaleving. 'Audit' is de standaardinstelling als er geen beleidseffect is geselecteerd.
 
-**Deny**: Wanneer het effect van een beleid is ingesteld op 'deny', blokkeert het beleid het maken van nieuwe onderdelen zoals certificaten, evenals het maken van nieuwe versies van bestaande onderdelen die niet voldoen aan de beleidsdefinitie. Dit effect heeft geen invloed op bestaande niet-compatibele resources in een sleutelkluis. De 'audit'-mogelijkheden blijven van kracht.
+**Deny** : Wanneer het effect van een beleid is ingesteld op 'deny', blokkeert het beleid het maken van nieuwe onderdelen zoals certificaten, evenals het maken van nieuwe versies van bestaande onderdelen die niet voldoen aan de beleidsdefinitie. Dit effect heeft geen invloed op bestaande niet-compatibele resources in een sleutelkluis. De 'audit'-mogelijkheden blijven van kracht.
 
 ## <a name="available-built-in-policy-definitions"></a>Beschikbare 'ingebouwde' beleidsdefinities
 
@@ -91,9 +91,9 @@ Uw service kan worden onderbroken als een certificaat dat niet op de juiste mani
 
 Als u er zeker van wilt zijn dat uw sleutels niet langer actief zijn dan een opgegeven aantal dagen, kunt u dit beleid gebruiken om te controleren hoe lang uw sleutel actief is geweest.
 
-**Als voor uw sleutel een activeringsdatum is ingesteld**, wordt met dit beleid het aantal dagen berekend dat is verstreken van de **activeringsdatum** van de sleutel tot de huidige datum. Als het aantal dagen de drempelwaarde overschrijdt die u hebt ingesteld, wordt de sleutel gemarkeerd als niet-compatibel met het beleid.
+**Als voor uw sleutel een activeringsdatum is ingesteld** , wordt met dit beleid het aantal dagen berekend dat is verstreken van de **activeringsdatum** van de sleutel tot de huidige datum. Als het aantal dagen de drempelwaarde overschrijdt die u hebt ingesteld, wordt de sleutel gemarkeerd als niet-compatibel met het beleid.
 
-**Als voor uw sleutel geen activeringsdatum is ingesteld**, wordt met dit beleid het aantal dagen berekend dat is verstreken van de **productiedatum** van de sleutel tot de huidige datum. Als het aantal dagen de drempelwaarde overschrijdt die u hebt ingesteld, wordt de sleutel gemarkeerd als niet-compatibel met het beleid.
+**Als voor uw sleutel geen activeringsdatum is ingesteld** , wordt met dit beleid het aantal dagen berekend dat is verstreken van de **productiedatum** van de sleutel tot de huidige datum. Als het aantal dagen de drempelwaarde overschrijdt die u hebt ingesteld, wordt de sleutel gemarkeerd als niet-compatibel met het beleid.
 
 ### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>Sleutels moeten het opgegeven cryptografische type RSA of EC hebben (preview)
 
@@ -139,9 +139,9 @@ Beheer de nalevingsvereisten van uw organisatie door de maximale tijdsduur (in d
 
 Als u er zeker van wilt zijn dat uw geheimen niet langer actief zijn dan een opgegeven aantal dagen, kunt u dit beleid gebruiken om te controleren hoe lang uw geheim actief is geweest.
 
-**Als voor uw geheim een activeringsdatum is ingesteld**, wordt met dit beleid het aantal dagen berekend dat is verstreken van de **activeringsdatum** van het geheim tot de huidige datum. Als het aantal dagen de drempelwaarde overschrijdt die u hebt ingesteld, wordt het geheim gemarkeerd als niet-compatibel met het beleid.
+**Als voor uw geheim een activeringsdatum is ingesteld** , wordt met dit beleid het aantal dagen berekend dat is verstreken van de **activeringsdatum** van het geheim tot de huidige datum. Als het aantal dagen de drempelwaarde overschrijdt die u hebt ingesteld, wordt het geheim gemarkeerd als niet-compatibel met het beleid.
 
-**Als voor uw geheim geen activeringsdatum is ingesteld**, wordt met dit beleid het aantal dagen berekend dat is verstreken van de **productiedatum** van het geheim tot de huidige datum. Als het aantal dagen de drempelwaarde overschrijdt die u hebt ingesteld, wordt het geheim gemarkeerd als niet-compatibel met het beleid.
+**Als voor uw geheim geen activeringsdatum is ingesteld** , wordt met dit beleid het aantal dagen berekend dat is verstreken van de **productiedatum** van het geheim tot de huidige datum. Als het aantal dagen de drempelwaarde overschrijdt die u hebt ingesteld, wordt het geheim gemarkeerd als niet-compatibel met het beleid.
 
 ### <a name="secrets-should-have-content-type-set-preview"></a>Voor geheimen moet het inhoudstype zijn ingesteld (preview)
 
@@ -177,49 +177,49 @@ U beheert een sleutelkluis met 100 certificaten die wordt gebruikt door meerdere
 1. Meld u aan bij Azure Portal. 
 1. Zoek 'beleid' in de zoek balk en selecteer **Beleid**.
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img1.png)
+    ![Schermopname met de zoekbalk.](../media/policy-img1.png)
 
 1. Selecteer **Definities** in het venster Beleid.
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img2.png)
+    ![Schermopname waarop de optie Definities is gemarkeerd.](../media/policy-img2.png)
 
 1. Schakel in de vervolgkeuzelijst Categorie het selectievakje **Alles selecteren** uit en selecteer **Key Vault**. 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img3.png)
+    ![Schermopname van het filter Categorie en de geselecteerde categorie Key Vault.](../media/policy-img3.png)
 
 1. U ziet nu alle beleidsregels die in openbare preview beschikbaar zijn voor Azure Key Vault. Zorg ervoor dat u de sectie met richtlijnen voor beleidsregels hierboven hebt gelezen en begrepen en selecteer een beleid dat u wilt toewijzen.  
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img4.png)
+    ![Schermopname van de beleidsregels die beschikbaar zijn als openbare preview-versie.](../media/policy-img4.png)
 
 ### <a name="assign-a-policy-to-a-scope"></a>Een beleid toewijzen 
 
 1. Selecteer een beleid dat u wilt toepassen, in dit voorbeeld **Geldigheidsduur van certificaat beheren**. Klik linksboven op de knop Toewijzen.
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img5.png)
+    ![Schermopname van het beleid Geldigheidsduur van certificaat beheren.](../media/policy-img5.png)
   
 1. Selecteer het abonnement waarop u het beleid wilt toepassen. U kunt ervoor kiezen om het bereik te beperken tot één resourcegroep binnen een abonnement. Als u het beleid wilt toepassen op het hele abonnement en bepaalde resourcegroepen wilt uitsluiten, kunt u ook een uitsluitingslijst configureren. Stel Beleidsafdwinging in op **Ingeschakeld** als u wilt dat het effect van het beleid (audit of deny) wordt toegepast. Selecteer **Uitgeschakeld** om het effect (audit of deny) uit te schakelen. 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img6.png)
+    ![Schermopname die laat zien waar u ervoor kunt kiezen om het bereik te beperken tot één resourcegroep binnen een abonnement.](../media/policy-img6.png)
 
 1. Klik boven aan het scherm op het tabblad Parameters om de maximale geldigheidsduur op te geven in maanden. Selecteer **audit** of **deny** voor het effect van het beleid volgens de richtlijnen in de bovenstaande secties. Selecteer ten slotte de knop Beoordelen en maken. 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img7.png)
+    ![Schermopname met het tabblad Parameters, waar u de gewenste maximale geldigheidsduur kunt opgeven in maanden.](../media/policy-img7.png)
 
 ### <a name="view-compliance-results"></a>Nalevingsresultaten weergeven
 
 1. Ga terug naar de blade Beleid en selecteer het tabblad Naleving. Klik op de beleidstoewijzing waarvoor u de nalevingsresultaten wilt bekijken.
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img8.png)
+    ![Schermopname van het tabblad Naleving, waar u de beleidstoewijzing kunt selecteren waarvoor u nalevingsresultaten wilt weergeven.](../media/policy-img8.png)
 
 1. Op deze pagina kunt u de resultaten filteren op compatibele of niet-compatibele kluizen. Hier kunt u een lijst weergeven met niet-compatibele sleutelkluizen binnen het bereik van de beleidstoewijzing. Een kluis wordt als niet-compatibel beschouwd als een van de onderdelen (certificaten) in de kluis niet compatibel is. U kunt een specifieke kluis selecteren om de afzonderlijke niet-compatibele onderdelen (certificaten) weer te geven. 
 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img9.png)
+    ![Schermopname van een lijst met niet-compatibele sleutelkluizen binnen het bereik van de beleidstoewijzing.](../media/policy-img9.png)
 
 1. Bekijk de namen van de onderdelen in een kluis die niet-compatibel zijn.
 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img10.png)
+    ![Schermopname die laat zien waar u de namen kunt bekijken van de onderdelen in een kluis die niet-compatibel zijn.](../media/policy-img10.png)
 
 1. Als u wilt controleren of gebruikers niet de mogelijkheid hebben om resources te maken in de sleutelkluis, klikt u op het tabblad **Onderdeelgebeurtenissen (preview)** om een samenvatting te bekijken van geweigerde certificaatbewerkingen met de aanvrager en tijdstempels van aanvragen. 
 

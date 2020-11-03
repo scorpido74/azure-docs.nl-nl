@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: c3026ac25d8da0e21c72ffa2d36f90e44a691aea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55370e7f279283e97f9baf736f22794e1d08e09d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330499"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911797"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Een Cosmos-account maken
 
@@ -35,7 +35,7 @@ Deel 4 van de zelfstudie bouwt voort op [deel 3](tutorial-develop-mongodb-nodejs
 
 Voltooi de stappen in [deel 3](tutorial-develop-mongodb-nodejs-part3.md) van de zelfstudie voordat u aan dit deel begint. 
 
-In dit gedeelte van de zelfstudie kunt u ofwel de Azure Cloud Shell gebruiken (in uw webbrowser) of de lokaal geïnstalleerde [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+In dit gedeelte van de zelfstudie kunt u ofwel de Azure Cloud Shell gebruiken (in uw webbrowser) of de lokaal geïnstalleerde [Azure CLI](/cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -64,11 +64,11 @@ Zodra het Azure Cosmos DB-account is gemaakt:
 1. Klik op het Azure Cosmos DB-logo :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png"::: in de linkerbalk. Hier ziet u alle Azure Cosmos DB's die u hebt.
 1. Klik op het Azure Cosmos DB-account dat u zojuist hebt gemaakt, selecteer het tabblad **Overzicht** en scrol omlaag naar de kaart waarop de database zich bevindt. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Nieuw Azure Cosmos DB-account in de Azure-portal":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Schermopname met het overzicht van een Azure Cosmos DB-account.":::
 
 4. Scrol omlaag op de navigatiebalk aan de linkerkant en klik op het tabblad **Gegevens globaal repliceren**. Er wordt een kaart weergegeven waarop u de verschillende gebieden ziet waarin u kunt repliceren. U kunt bijvoorbeeld klikken op Australië - zuidoost of Australië - oost en uw gegevens repliceren naar Australië. Meer informatie over globale replicatie vindt u in [Gegevens globaal distribueren met Azure Cosmos DB](distribute-data-globally.md). Voorlopig behouden we dit exemplaar. Wanneer we willen repliceren, weten we hoe dit moet.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Nieuw Azure Cosmos DB-account in de Azure-portal":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Schermopname van een Azure Cosmos DB-account, met Gegevens globaal repliceren geselecteerd.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

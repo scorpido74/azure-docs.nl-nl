@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322292"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893978"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Voorbeelden van Resource Manager-sjablonen voor metrische waarschuwingsregels in Azure Monitor
 
@@ -707,15 +707,15 @@ De volgende beperkingen gelden bij het gebruik van dimensies in een waarschuwing
 ## <a name="multiple-dimensions-static-threshold"></a>Meerdere dimensies, statische drempelwaarde
 Eén waarschuwingsregel kan meerdere metrische tijdreeksen tegelijk controleren, waardoor er minder waarschuwingsregels beheerd moeten worden. Het volgende voorbeeld maakt een statische metrische waarschuwingsregel voor dimensionale metrische gegevens.
 
-In dit voorbeeld controleert de waarschuwingsregel de dimensiewaardecombinaties van de dimensies **ResponsType** en **ApiName** voor de meetwaarde **Transactions**:
-1. **ResponsType**: het gebruik van het jokerteken "\*" betekent dat er voor elke waarde van de dimensie **ResponseType**, inclusief toekomstige waarden, een andere tijdreeks individueel gecontroleerd wordt.
-2. **ApiName**: er wordt een andere tijdreeks gecontroleerd alleen voor de dimensiewaarden **GetBlob** en **PutBlob**.
+In dit voorbeeld controleert de waarschuwingsregel de dimensiewaardecombinaties van de dimensies **ResponsType** en **ApiName** voor de meetwaarde **Transactions** :
+1. **ResponsType** : het gebruik van het jokerteken "\*" betekent dat er voor elke waarde van de dimensie **ResponseType** , inclusief toekomstige waarden, een andere tijdreeks individueel gecontroleerd wordt.
+2. **ApiName** : er wordt een andere tijdreeks gecontroleerd alleen voor de dimensiewaarden **GetBlob** en **PutBlob**.
 
 Enkele mogelijke tijdreeksen die gecontroleerd worden door deze waarschuwingsregel zijn bijvoorbeeld:
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *PutBlob*
 
 ### <a name="template-file"></a>Sjabloonbestand
 
@@ -898,15 +898,15 @@ Enkele mogelijke tijdreeksen die gecontroleerd worden door deze waarschuwingsreg
 Eén waarschuwingsregel voor dynamische drempelwaarden kan aangepaste drempelwaarden maken voor honderden metrische tijdreeksen (zelfs verschillende typen) tegelijkertijd, waardoor er minder waarschuwingsregels beheerd moeten worden. Het volgende voorbeeld maakt een waarschuwingsregel voor dynamische drempelwaarden met dimensionale metrische gegevens.
 
 
-In dit voorbeeld controleert de waarschuwingsregel de dimensiewaardecombinaties van de dimensies **ResponsType** en **ApiName** voor de meetwaarde **Transactions**:
-1. **ResponsType**: voor elke waarde van de dimensie **ResponseType**, inclusief toekomstige waarden, wordt een andere tijdreeks individueel bewaakt.
-2. **ApiName**: er wordt een andere tijdreeks gecontroleerd alleen voor de dimensiewaarden **GetBlob** en **PutBlob**.
+In dit voorbeeld controleert de waarschuwingsregel de dimensiewaardecombinaties van de dimensies **ResponsType** en **ApiName** voor de meetwaarde **Transactions** :
+1. **ResponsType** : voor elke waarde van de dimensie **ResponseType** , inclusief toekomstige waarden, wordt een andere tijdreeks individueel bewaakt.
+2. **ApiName** : er wordt een andere tijdreeks gecontroleerd alleen voor de dimensiewaarden **GetBlob** en **PutBlob**.
 
 Enkele mogelijke tijdreeksen die gecontroleerd worden door deze waarschuwingsregel zijn bijvoorbeeld:
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *PutBlob*
 
 >[!NOTE]
 > Meerdere criteria worden momenteel niet ondersteund voor metrische waarschuwingsregels die dynamische drempelwaarden gebruiken.
@@ -3132,7 +3132,7 @@ Dit voorbeeld maakt een metrische waarschuwingsregel voor een dynamische drempel
 > [!NOTE]
 > `&amp`; is de HTML-entiteitsverwijzing voor &. URL-parameters worden nog steeds gescheiden door één &, maar als u de URL vermeldt in HTML moet u deze coderen. Als er dus een '&' staat in uw parameterwaarde voor pingURL dan moet u "`&amp`;" gebruiken als escapeteken.
 
-### <a name="parameter-file"></a>Parameterbestand
+### <a name="template-file"></a>Sjabloonbestand
 
 ```json
 {
@@ -3234,8 +3234,6 @@ Dit voorbeeld maakt een metrische waarschuwingsregel voor een dynamische drempel
 }
 ```
 
-
-
 ### <a name="parameter-file"></a>Parameterbestand
 
 ```json
@@ -3254,12 +3252,53 @@ Dit voorbeeld maakt een metrische waarschuwingsregel voor een dynamische drempel
         },
         "location": {
             "value": "Replace with the location of your Application Insights resource"
-        }
+        },
+        "pingText": {
+            "defaultValue": "Optional parameter that allows you to perform a content-match for the presence of a specific string within the content returned from a pingURL response",
+            "type": "String"
+        },
     }
 }
 ```
 
+Aanvullende configuratie van de `pingText`-parameter voor de inhoudsovereenkomst wordt beheerd in het gedeelte `Configuration/Webtest` van het sjabloonbestand. Met name de sectie hieronder:
 
+```xml
+<RuleParameter Name=\"FindText\" Value=\"',parameters('pingText'), '\" />
+<RuleParameter Name=\"IgnoreCase\" Value=\"False\" />
+<RuleParameter Name=\"UseRegularExpression\" Value=\"False\" /> 
+<RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />
+```
+### <a name="test-locations"></a>Testlocaties
+
+|Id                  | Region           |
+|:-------------------|:-----------------|
+| `emea-nl-ams-azr`  | Europa -west      |
+| `us-ca-sjc-azr`    | VS - west          |
+| `emea-ru-msa-edge` | Verenigd Koninkrijk Zuid         |
+| `emea-se-sto-edge` | Verenigd Koninkrijk West          |
+| `apac-sg-sin-azr`  | Azië - zuidoost   |
+| `us-tx-sn1-azr`    | VS - zuid-centraal |
+| `us-il-ch1-azr`    | VS - noord-centraal |
+| `emea-gb-db3-azr`  | Europa - noord     |
+| `apac-jp-kaw-edge` | Japan - oost       |
+| `emea-fr-pra-edge` | Frankrijk - centraal   |
+| `emea-ch-zrh-edge` | Frankrijk - zuid     |
+| `us-va-ash-azr`    | VS - oost          |
+| `apac-hk-hkn-azr`  | Azië - oost        |
+| `us-fl-mia-edge`   | VS - centraal       |
+| `latam-br-gru-edge`| Brazilië - zuid      |
+| `emea-au-syd-edge` | Australië - oost   |
+
+### <a name="us-government-test-locations"></a>Testlocatie van de Amerikaanse overheid
+
+|Id                    | Region           |
+|----------------------|------------------|
+| `usgov-va-azr`       | `USGov Virginia` |
+| `usgov-phx-azr`      | `USGov Arizona`  |
+| `usgov-tx-azr`       | `USGov Texas`    |
+| `usgov-ddeast-azr`   | `USDoD East`     |
+| `usgov-ddcentral-azr`| `USDoD Central`  |
 
 ## <a name="next-steps"></a>Volgende stappen
 

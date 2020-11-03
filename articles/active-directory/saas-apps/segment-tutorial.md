@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 1fa8f6f0382312951905476ad6fee06e180c6f35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543139"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893825"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Segment
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Segment integreert met Azure Active Directory (
 * Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij Segment.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,9 +40,9 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Segment biedt ondersteuning voor met **SP en IDP** geïnitieerde eenmalige aanmelding
-* Segment biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
+* Segment biedt ondersteuning voor **Just-In-Time** -inrichting van gebruikers
 
-* Zodra u Segment hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u Segment hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-segment-from-the-gallery"></a>Segment toevoegen uit de galerie
 
@@ -73,7 +73,7 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Segment te 
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Segment**, ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Segment** , ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
@@ -104,9 +104,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -136,19 +136,19 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Instellingenpictogram** en scrol omlaag naar **VERIFICATIE** en klik op **Verbindingen**.
 
-    ![Segmentconfiguratie](./media/segment-tutorial/segment1.PNG)
+    ![Schermopname met het pictogram Settings geselecteerd en Connections geselecteerd in het menu Authentication.](./media/segment-tutorial/segment1.PNG)
 
 1. Klik op **Een nieuwe verbinding toevoegen**.
 
-    ![Segmentconfiguratie](./media/segment-tutorial/segment2.PNG)
+    ![Schermopname van de sectie Connections met de knop Add new Connection geselecteerd.](./media/segment-tutorial/segment2.PNG)
 
 1. Selecteer **SAML 2.0** als een verbinding om te configureren en klik op de knop **Verbinding selecteren**.
 
-    ![Segmentconfiguratie](./media/segment-tutorial/segment3.PNG)
+    ![Schermopname van de sectie Choose a Connection, waarin SAML 2.0 en de knop Select Connection geselecteerd.](./media/segment-tutorial/segment3.PNG)
 
 1. Voer op de volgende pagina de volgende stappen uit:
 
-    ![Segmentconfiguratie](./media/segment-tutorial/segment4.PNG)
+    ![Schermopname van de pagina Configure Identity Provider, waarin de tekstvakken Single Sign-On URL en Audience URL zijn gemarkeerd en de knop Next is geselecteerd.](./media/segment-tutorial/segment4.PNG)
 
     a. Kopieer de waarde van **URL voor enkele aanmelding** en plak deze in het vak **Antwoord-URL** in het dialoogvenster **Standaard SAML-configuratie** in de Azure-portal.
 
@@ -172,19 +172,18 @@ In deze sectie wordt een gebruiker met de naam B.Simon gemaakt in Segment. Segme
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Segment in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Segment waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Segment in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Segment waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Probeer Segment met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Segment beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Segment beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)

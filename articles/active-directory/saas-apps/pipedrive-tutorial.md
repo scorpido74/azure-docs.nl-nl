@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: b3b2032d8cefe881e59fe339786877c4f03c9305
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f85cb97406e8b6cbb4811268696fc36f47ec3adb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553781"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896545"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Pipedrive
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Pipedrive integreert met Azure AD (Azure Active
 * Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Pipedrive.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Pipedrive biedt ondersteuning voor met **SP en IDP** geïnitieerde eenmalige aanmelding
-* Zodra u eenmalige aanmelding voor Pipedrive hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u eenmalige aanmelding voor Pipedrive hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 
 ## <a name="adding-pipedrive-from-the-gallery"></a>Pipedrive toevoegen uit de galerie
@@ -112,9 +112,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -144,15 +144,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Gebruikersprofiel** en selecteer **Instellingen**.
 
-    ![Pipedrive-configuratie](./media/pipedrive-tutorial/configure1.png)
+    ![Schermopname met Settings geselecteerd in het menu Profile.](./media/pipedrive-tutorial/configure1.png)
 
 1. Blader omlaag naar beveiligingscentrum en selecteer **Eenmalige aanmelding**.
 
-    ![Pipedrive-configuratie](./media/pipedrive-tutorial/configure2.png)
+    ![Schermopname met Single sign-on geselecteerd in Security Center.](./media/pipedrive-tutorial/configure2.png)
 
 1. In het gedeelte **SAML-configuratie voor Pipedrive** voert u de volgende stappen uit:
 
-    ![Pipedrive-configuratie](./media/pipedrive-tutorial/configure3.png)
+    ![Schermopname van de sectie SAML configuration for Pipedrive, met alle tekstvakken gemarkeerd.](./media/pipedrive-tutorial/configure3.png)
 
     a. Plak in het tekstvak **Verlener** de waarde van **App-URL voor federatieve metagegevens** die u uit Azure Portal hebt gekopieerd.
 
@@ -168,11 +168,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Blader omlaag naar bedrijf en selecteer **gebruikers beheren**.
 
-    ![Pipedrive-configuratie](./media/pipedrive-tutorial/user1.png)
+    ![Schermopname met Manage users geselecteerd in het menu Company.](./media/pipedrive-tutorial/user1.png)
 
 1. Klik op **Gebruikers toevoegen**.
     
-    ![Pipedrive-configuratie](./media/pipedrive-tutorial/user2.png)
+    ![Schermopname van de pagina Manage users, met de knop Add users aan de rechterkant geselecteerd.](./media/pipedrive-tutorial/user2.png)
 
 1. Voer in de sectie **Gebruikers beheren** de volgende stappen uit:
 
@@ -190,16 +190,16 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Pipedrive in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Pipedrive waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Pipedrive in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Pipedrive waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Pipedrive met Azure AD proberen](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

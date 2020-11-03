@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 9e64d76e29ba98181aac12e1e3167351a9c1aa95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eac2ed58608ac5814e1f907b863a2977df830d4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523996"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636711"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Wdesk
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Wdesk integreert met Azure Active Directory (Az
 * Instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld Wdesk.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Wdesk ondersteunt door **SP** en **IDP** geïnitieerde eenmalige aanmelding
-* Zodra u Wdesk hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Zodra u Wdesk hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-wdesk-from-the-gallery"></a>Wdesk toevoegen vanuit de galerie
 
@@ -87,7 +87,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Wdesk moet u de volg
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Wdesk](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
@@ -95,7 +95,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Wdesk moet u de volg
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Wdesk](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
@@ -120,7 +120,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Wdesk moet u de volg
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -132,7 +132,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -156,7 +156,7 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -170,25 +170,25 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
 1. Meld u in een ander browservenster als een beveiligingsbeheerder aan bij Wdesk.
 
-2. Klik linksonder op **Admin** en kies **Account Admin**:
+2. Klik linksonder op **Admin** en kies **Account Admin** :
  
-     ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![Schermopname waarin Account Admin is geselecteerd in het menu Admin.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. Navigeer in Wdesk-beheer naar **Security** en **SAML** > **SAML Settings**:
+3. Navigeer in Wdesk-beheer naar **Security** en **SAML** > **SAML Settings** :
 
-    ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
+    ![Schermopname waarin SAML-instellingen is geselecteerd op het tabblad SAML.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
 1. Schakel onder **SAML User ID Settings** de optie **SAML User ID is Wdesk Username** in.
 
-    ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/wdesk-username.png)
+    ![Schermopname waarin SAML User ID Settings wordt weergegeven, waarin SAML User ID is Wdesk Username kan worden geselecteerd.](./media/wdesk-tutorial/wdesk-username.png)
 
 4. Schakel onder **General Settings** de optie **Enable SAML Single Sign On** in:
 
-    ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
+    ![Schermopname waarin SAML-instellingen bewerken wordt weergegeven, waar u Enable SAML Single Sign On kunt selecteren.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
 
 5. Voer onder **Service Provider Details** de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
+    ![Schermopname waarin Service Provider Details wordt weergegeven, waar u de beschreven waarden kunt invoeren.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
       a. Kopieer de **aanmeldings-URL** en plak deze in het tekstvak **aanmeldings-URL** in Azure Portal.
    
@@ -200,11 +200,11 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
 6. Klik op **Configure IdP Settings** om het dialoogvenster **Edit IdP Settings** te openen. Klik op **Choose File** om het bestand **Metadata.xml** te zoeken dat u vanuit Azure Portal hebt opgeslagen en upload het.
     
-    ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
+    ![Schermopname waarin Edit IdP Settings wordt weergegeven, waar u metagegevens kunt uploaden.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
 7. Klik op **Save changes** (Wijzigingen opslaan).
 
-    ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
+    ![Schermopname waarin de knop Wijzigingen opslaan wordt weergegeven.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
 ### <a name="create-wdesk-test-user"></a>Testgebruiker maken voor Wdesk
 
@@ -216,21 +216,21 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Wdesk, moeten ze wo
 
 2. Navigeer naar **Admin** > **Account Admin**.
 
-     ![Eenmalige aanmelding configureren](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![Schermopname waarin Account Admin is geselecteerd in het menu Admin.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
 3. Klik onder **People** op **Members**.
 
 4. Klik nu op **Add Member** om het dialoogvenster **Add Member** te openen. 
    
-    ![Een Azure AD-testgebruiker maken](./media/wdesk-tutorial/createuser1.png)  
+    ![Schermopname waarin het tabblad Member wordt weergegeven, waar u Add Member kunt selecteren.](./media/wdesk-tutorial/createuser1.png)  
 
 5. Voer in het tekstvak **Gebruikers** de gebruikersnaam van de gebruiker in, zoals b.simon@contoso.com en klik op de knop **Continue**.
 
-    ![Een Azure AD-testgebruiker maken](./media/wdesk-tutorial/createuser3.png)
+    ![Schermopname waarin het dialoogvenster Add Member wordt weergegeven, waar u een gebruiker kunt invoeren.](./media/wdesk-tutorial/createuser3.png)
 
 6.  Voer de details in zoals hieronder wordt weergegeven:
   
-    ![Een Azure AD-testgebruiker maken](./media/wdesk-tutorial/createuser4.png)
+    ![Schermopname waarin het dialoogvenster Add Member wordt weergegeven, waar u algemene informatie voor een gebruiker kunt invoeren.](./media/wdesk-tutorial/createuser4.png)
  
     a. Voer in het tekstvak **E-mail** het e-mailadres van de gebruiker in, zoals b.simon@contoso.com.
 
@@ -240,20 +240,20 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Wdesk, moeten ze wo
 
 7. Klik op de knop **Save Member**.  
 
-    ![Een Azure AD-testgebruiker maken](./media/wdesk-tutorial/createuser5.png)
+    ![Schermopname waarin Welkomstmail verzenden met de knop Save member wordt weergegeven.](./media/wdesk-tutorial/createuser5.png)
 
 ### <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Wdesk in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Wdesk waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Wdesk in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Wdesk waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

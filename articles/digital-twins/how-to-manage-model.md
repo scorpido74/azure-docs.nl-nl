@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5bcb6df1b03b0c1c835e198818813ad8d914c630
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147110"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279422"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
-U kunt de [modellen](concepts-models.md) beheren die uw Azure Digital apparaatdubbels-exemplaar kent over het gebruik van de [**DigitalTwinModels-api's**](/rest/api/digital-twins/dataplane/models), de [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). 
+U kunt de [modellen](concepts-models.md) beheren die uw Azure Digital apparaatdubbels-exemplaar kent over het gebruik van de [**DigitalTwinModels-api's**](/rest/api/digital-twins/dataplane/models), de [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). 
 
 Beheer bewerkingen zijn onder andere uploaden, valideren, ophalen en verwijderen van modellen. 
 
@@ -200,7 +200,7 @@ Wanneer u een nieuwe twee maakt, omdat de nieuwe model versie en de oude model v
 
 Dit betekent ook dat het uploaden van een nieuwe versie van een model niet automatisch invloed heeft op bestaande apparaatdubbels. De bestaande apparaatdubbels blijft gewoon instanties van de oude model versie.
 
-U kunt deze bestaande apparaatdubbels bijwerken naar de nieuwe versie van het model door deze te patchen, zoals wordt beschreven in het gedeelte [*een Digital*](how-to-manage-twin.md#update-a-digital-twins-model) - *navolgende model bijwerken van How-to: Manage Digital apparaatdubbels* . Binnen dezelfde patch moet u de **model-id** (naar de nieuwe versie) bijwerken en **alle velden die moeten worden gewijzigd op de dubbele waarde zodat deze overeenkomt met het nieuwe model** .
+U kunt deze bestaande apparaatdubbels bijwerken naar de nieuwe versie van het model door deze te patchen, zoals wordt beschreven in het gedeelte [*een Digital*](how-to-manage-twin.md#update-a-digital-twins-model) - *navolgende model bijwerken van How-to: Manage Digital apparaatdubbels*. Binnen dezelfde patch moet u de **model-id** (naar de nieuwe versie) bijwerken en **alle velden die moeten worden gewijzigd op de dubbele waarde zodat deze overeenkomt met het nieuwe model**.
 
 ### <a name="remove-models"></a>Modellen verwijderen
 

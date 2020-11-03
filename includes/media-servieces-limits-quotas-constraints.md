@@ -1,39 +1,39 @@
 ---
-author: Juliako
+author: IngridAtMicrosoft
 ms.service: media-services
 ms.topic: include
-ms.date: 03/31/2020
-ms.author: juliako
-ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.author: inhenkel
+ms.openlocfilehash: 84aa07ef282dd7100043f7e9bfcc97cb3b3673a5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997738"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755646"
 ---
 > [!NOTE]
 > Open een ndersteuningsticket voor resources die niet zijn opgelost om te vragen om een toename van de quota. Maak geen extra Azure Media Services-accounts in een poging om de limieten te verhogen.
 
 ### <a name="account-limits"></a>Accountlimieten
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
-| Media Services-accounts in één abonnement | 25 (vast) |
+| Resource | Standaardlimiet |
+| --- | --- |
+| Media Services-accounts in één abonnement | 100 (vast) |
 
 ### <a name="asset-limits"></a>Assetlimieten
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
+| Resource | Standaardlimiet |
+| --- | --- |
 | Assets per Media Services-account | 1.000.000|
 
 ### <a name="storage-media-limits"></a>Opslaglimieten (media)
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
+| Resource | Standaardlimiet |
+| --- | --- |
 | Bestandsgrootte| In sommige scenario's is er een limiet voor de maximale bestandsgrootte die wordt ondersteund voor verwerking in Media Services. <sup>(1)</sup> |
 | Opslagaccounts | 100<sup>(2)</sup> (opgelost) |
 
-<sup>1</sup> De maximale grootte die wordt ondersteund voor één blob is momenteel 5 TB in Azure Blob Storage. Aanvullende limieten zijn van toepassing in Media Services op basis van VM-grootten die worden gebruikt door de service. De groottelimieten zijn van toepassing op de bestanden die u upload en ook de bestanden die worden gegenereerd als resultaat van Media Services-verwerking (coderen of analyseren). Als uw bronbestand groter is dan 260 GB, mislukt uw taak waarschijnlijk. 
+<sup>1</sup> De maximale grootte die wordt ondersteund voor één blob is momenteel 5 TB in Azure Blob Storage. Aanvullende limieten zijn van toepassing in Media Services op basis van VM-grootten die worden gebruikt door de service. De groottelimieten zijn van toepassing op de bestanden die u upload en ook de bestanden die worden gegenereerd als resultaat van Media Services-verwerking (coderen of analyseren). Als uw bronbestand groter is dan 260 GB, mislukt uw taak waarschijnlijk.
 
 De volgende tablel laat de limieten zijn van de gereserveerde media-eenheden S1, S2 en S3. Als uw bronbestand groter is dan de limieten die zijn gedefinieerd in de tabel, mislukt de coderingstaak waarschijnlijk. As u 4K-resolutiebronnen van een lange duur codeert, moet u gereserveerde media-eenheden van S3 gebruiken om de benodigde prestaties te halen. Als u 4k-inhoud heeft die groter is dan het limiet van 260 GB voor gereserveerde media-eenheden in S3, opent u een ondersteuningsticket.
 
@@ -47,8 +47,8 @@ De volgende tablel laat de limieten zijn van de gereserveerde media-eenheden S1,
 
 ### <a name="jobs-encoding--analyzing-limits"></a>Limieten voor taken (codering en analyse)
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
+| Resource | Standaardlimiet |
+| --- | --- |
 | Taken per Media Services-account | 500.000 <sup>(3)</sup> (vast)|
 | Taakinvoer per taak | 50 (vast)|
 | Taakuitvoer per taak | 20 (vast) |
@@ -62,8 +62,8 @@ Elke taakrecord in uw account die ouder is dan negentig dagen wordt automatisch 
 
 ### <a name="live-streaming-limits"></a>Limieten voor live streamen
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
+| Resource | Standaardlimiet |
+| --- | --- |
 | Livegebeurtenissen <sup>(4)</sup> per Media Services-account |5|
 | Live-uitvoer per livegebeurtenis |3 <sup>(5)</sup> |
 | Maximale duur van live-uitvoer | [Grootte van het DVR-venster](../articles/media-services/latest/live-event-cloud-dvr.md) |
@@ -74,9 +74,9 @@ Elke taakrecord in uw account die ouder is dan negentig dagen wordt automatisch 
 
 ### <a name="packaging--delivery-limits"></a>Verpakkings- en leveringslimieten
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
-| Streaming-eindpunten (gestopt of actief) per Media Services-account|2 (vast)|
+| Resource | Standaardlimiet |
+| --- | --- |
+| Streaming-eindpunten (gestopt of actief) per Media Services-account| 2 |
 | Dynamisch-manifestfilters|100|
 | Beleid voor streaming | 100 <sup>(6)</sup> |
 | Unieke streaming-locators die aan één asset tegelijk zijn gekoppeld | 100<sup>(7)</sup> (vast) |
@@ -87,9 +87,9 @@ Elke taakrecord in uw account die ouder is dan negentig dagen wordt automatisch 
 
 ### <a name="protection-limits"></a>Beschermingslimieten
 
-| Resource | Standaardlimiet | 
-| --- | --- | 
-| Opties per inhoudssleutelbeleid |30 | 
+| Resource | Standaardlimiet |
+| --- | --- |
+| Opties per inhoudssleutelbeleid | 30 |
 | Licenties per maand voor elk van de DRM-typen voor de sleutelleveringsservice van Media Services per account|1.000.000|
 
 ### <a name="support-ticket"></a>Ondersteuningsticket

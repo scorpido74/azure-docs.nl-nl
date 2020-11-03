@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124582"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677424"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Aan de slag met het hero-voorbeeld van groeps-chat
 
@@ -25,16 +25,18 @@ ms.locfileid: "92124582"
 > links to our Hero Sample repo need to be updated when the sample is publicly available.
 ---->
 
+> [!IMPORTANT]
+> [Dit voorbeeld is beschikbaar op GitHub.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+
+
 Het **hero-voorbeeld van groeps-chat** laat zien hoe de webclientbibliotheek van de Communication Services-chat kan worden gebruikt voor het bouwen van een groepsgesprekservaring.
 
 In deze quickstart over hero-voorbeelden komt u te weten hoe het voorbeeld werkt voordat u het op uw lokale computer gaat uitvoeren. Vervolgens gaat u het voorbeeld in Azure implementeren met behulp van uw eigen Azure Communication Services-resources.
 
-> [!IMPORTANT]
-> [Het voorbeeld downloaden uit GitHub](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 ## <a name="overview"></a>Overzicht
 
-Het voorbeeld heeft zowel een toepassing aan de clientzijde als een toepassing aan de serverzijde. De **toepassing** aan de clientzijde is een React/Redux-webtoepassing die gebruikmaakt van het Fluent UI-framework van Microsoft. Met deze toepassing worden aanvragen verzonden naar een ASP.NET Core-**toepassing aan de serverzijde** zodat de toepassing aan de clientzijde kan worden verbonden met Azure. 
+Het voorbeeld heeft zowel een toepassing aan de clientzijde als een toepassing aan de serverzijde. De **toepassing** aan de clientzijde is een React/Redux-webtoepassing die gebruikmaakt van het Fluent UI-framework van Microsoft. Met deze toepassing worden aanvragen verzonden naar een ASP.NET Core- **toepassing aan de serverzijde** zodat de toepassing aan de clientzijde kan worden verbonden met Azure. 
 
 Het voorbeeld ziet er als volgt uit:
 
@@ -42,17 +44,17 @@ Het voorbeeld ziet er als volgt uit:
 
 Wanneer u op de knop 'Chat starten' klikt, wordt er met de webtoepassing een token voor gebruikerstoegang opgehaald bij de toepassing aan de serverzijde. Dit token wordt vervolgens gebruikt om de client-app te verbinden met Azure Communication Services. Zodra het token is opgehaald, wordt u gevraagd om uw weergavenaam en emoji op te geven die tijdens chatsessies waaraan u deelneemt, worden weergeven. 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="Schermopname van de landingspagina van de voorbeeldtoepassing.":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="Schermopname van het venster van de toepassing vóór de chatsessie.":::
 
 Zodra u uw weergavenaam en emoji hebt geconfigureerd, kunt u deelnemen aan de chatsessie. Nu ziet u het hoofdcanvas van de chatruimte waarin zich het belangrijkste van een chatsessie afspeelt.
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="Schermopname van de landingspagina van de voorbeeldtoepassing.":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="Schermopname van het hoofdscherm van de voorbeeldtoepassing.":::
 
 Onderdelen van het belangrijkste chatscherm:
 
-- **Belangrijkste chatgebied**: Dit is het belangrijkste gebied van een chatsessie, waarin gebruikers berichten kunnen verzenden en ontvangen. Als u berichten wilt verzenden, kunt u daarvoor het invoergebied gebruiken en op Enter drukken (of de verzendknop gebruiken). Ontvangen chatberichten worden gecategoriseerd op afzender met behulp van de juiste naam en emoji. U ziet twee typen meldingen in het chatgebied: 1) Typmeldingen die laten zien dat een gebruiker typt, en 2) meldingen met betrekking tot het verzenden en lezen van berichten.
-- **Header**: Hier ziet de gebruiker de titel van de chatthread en de besturingselementen voor het schakelen tussen zijbalken voor deelnemers en instellingen, evenals een knop om de chatsessie af te sluiten.
-- **Zijbalk**: Hier worden gegevens over de deelnemers en de instellingen weergegeven wanneer u de besturingselementen in de header gebruikt om heen en weer te schakelen. De zijbalk met de deelnemers bevat een lijst met de deelnemers aan de chatsessie en een koppeling om deelnemers uit te nodigen voor de chatsessie. Via de zijbalk voor de instellingen kunt u de titel van de chatthread configureren. 
+- **Belangrijkste chatgebied** : Dit is het belangrijkste gebied van een chatsessie, waarin gebruikers berichten kunnen verzenden en ontvangen. Als u berichten wilt verzenden, kunt u daarvoor het invoergebied gebruiken en op Enter drukken (of de verzendknop gebruiken). Ontvangen chatberichten worden gecategoriseerd op afzender met behulp van de juiste naam en emoji. U ziet twee typen meldingen in het chatgebied: 1) Typmeldingen die laten zien dat een gebruiker typt, en 2) meldingen met betrekking tot het verzenden en lezen van berichten.
+- **Header** : Hier ziet de gebruiker de titel van de chatthread en de besturingselementen voor het schakelen tussen zijbalken voor deelnemers en instellingen, evenals een knop om de chatsessie af te sluiten.
+- **Zijbalk** : Hier worden gegevens over de deelnemers en de instellingen weergegeven wanneer u de besturingselementen in de header gebruikt om heen en weer te schakelen. De zijbalk met de deelnemers bevat een lijst met de deelnemers aan de chatsessie en een koppeling om deelnemers uit te nodigen voor de chatsessie. Via de zijbalk voor de instellingen kunt u de titel van de chatthread configureren. 
 
 Hieronder vindt u meer informatie over de vereisten en stappen voor het instellen van het voorbeeld.
 
@@ -75,7 +77,7 @@ U kunt het voorbeeld lokaal testen door meerdere browsersessies te openen met de
 ## <a name="before-running-the-sample-for-the-first-time"></a>Voordat u het voorbeeld voor de eerste keer uitvoert
 
 1. Open een instantie van PowerShell, Windows Terminal, de opdrachtprompt of een vergelijkbare service en ga naar de map waarnaar u het voorbeeld wilt klonen.
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
 3. Haal de `Connection String` op uit Azure Portal. Zie [Een Azure Communications-resource maken](../quickstarts/create-communication-resource.md) voor meer informatie over verbindingsreeksen
 4. Nadat u de `Connection String`hebt opgehaald, voegt u de verbindingsreeks toe aan het bestand **Chat/appsettings.json** dat zich in de map Chat bevindt. Voer in de variabele uw verbindingsreeks in: `ResourceConnectionString`.
 

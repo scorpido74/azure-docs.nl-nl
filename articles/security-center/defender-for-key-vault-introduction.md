@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91a0ea19f53d1da7631154cb71f96e495cc93857
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449088"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788992"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Inleiding tot Azure Defender voor Key Vault
 
@@ -55,5 +55,5 @@ In dit artikel bent u meer te weten gekomen over Azure Defender voor Key Vault.
 Raadpleeg de volgende artikelen voor gerelateerd materiaal: 
 
 - [Key Vault-beveiligingswaarschuwingen](alerts-reference.md#alerts-azurekv)--Het Key Vault-gedeelte van de referentietabel voor alle Azure Security Center-waarschuwingen
-- [Waarschuwingen naar een SIEM exporteren](continuous-export.md)
+- [Security Center-gegevens continu exporteren](continuous-export.md)
 - [Waarschuwingen van Azure Defender onderdrukken](alerts-suppression-rules.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f729828627fdb0be18f220d34227aac756ed4e13
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296818"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Zelfstudie: Azure Active Directory-integratie met XaitPorter
 
@@ -27,7 +27,7 @@ Als u XaitPorter integreert met Azure AD biedt u dit de volgende voordelen:
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij XaitPorter (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Als u de integratie van XaitPorter wilt configureren in Azure AD, dient u XaitPo
 
 **Als u XaitPorter wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -85,7 +85,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configureren met XaitPorter:
 
-1. In [Azure Portal](https://portal.azure.com/) selecteert u op de integratiepagina van de **XaitPorter**-toepassing de optie **Eenmalige aanmelding**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u op de integratiepagina van de **XaitPorter** -toepassing de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -128,15 +128,15 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 4. Klik op **Beheerder**.
 
-    ![Eenmalige aanmelding configureren](./media/xaitporter-tutorial/user1.png)
+    ![Schermopname met de XaitPorter-site, waarop Admin is geselecteerd.](./media/xaitporter-tutorial/user1.png)
 
 5. Selecteer **Eenmalige aanmelding beheren** uit de vervolgkeuzelijst **Systeeminstallatie**.
 
-    ![Eenmalige aanmelding configureren](./media/xaitporter-tutorial/user2.png)
+    ![Schermopname met Manage Single Sign-On geselecteerd in System Setup.](./media/xaitporter-tutorial/user2.png)
 
 6. Voer in het gedeelte **EENMALIGE AANMELDING BEHEREN** de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/xaitporter-tutorial/user3.png)
+    ![Schermopname van de sectie MANAGE SINGLE SIGN-ON, waar u deze stappen kunt uitvoeren.](./media/xaitporter-tutorial/user3.png)
 
     a. Selecteer **Verificatie voor eenmalige aanmelding inschakelen**.
 
@@ -150,7 +150,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -162,7 +162,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -186,7 +186,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -204,12 +204,12 @@ In deze sectie maakt u een gebruiker met de naam Britta Simon in XaitPorter. Wer
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel XaitPorter klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van XaitPorter waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel XaitPorter klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van XaitPorter waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

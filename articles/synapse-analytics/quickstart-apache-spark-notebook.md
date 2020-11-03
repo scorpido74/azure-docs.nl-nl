@@ -8,13 +8,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
-ms.date: 04/15/2020
-ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/16/2020
+ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91651714"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742524"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Quickstart: Een Apache Spark-pool maken in Azure Synapse Analytics met behulp van webhulpprogramma's
 
@@ -42,9 +42,10 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 Een notebook is een interactieve omgeving die verschillende programmeertalen ondersteunt. Via de notebook kunt u interactie hebben met uw gegevens, code combineren met markdown en tekst, en eenvoudige visualisaties uitvoeren.
 
 1. Ga naar de weergave in de Azure-portal van de Azure Synapse-werkruimte die u wilt gebruiken en selecteer **Synapse Studio starten**.
-2. Zodra Synapse Studio is gestart, selecteert u **Ontwikkelen**. Beweeg vervolgens de muisaanwijzer over de vermelding **Notebooks**. Selecteer het beletselteken ( **...** ).
-3. Selecteer **Nieuwe notebook**. Er wordt een nieuwe notebook gemaakt en deze wordt geopend onder een automatisch gegenereerde naam.
-  ![Nieuwe notebook](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Nieuwe notebook")
+2. Zodra Synapse Studio is gestart, selecteert u **Ontwikkelen**. Selecteer vervolgens het pictogram **+** om een nieuwe resource toe te voegen.
+3. Selecteer van daaruit **Notebook**. Er wordt een nieuwe notebook gemaakt en deze wordt geopend onder een automatisch gegenereerde naam.
+ 
+     ![Nieuwe notebook](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Nieuwe notebook")
 
 4. Geef in het venster **Eigenschappen** een naam op voor de notebook.
 5. Klik op de werkbalk op **Publiceren**.
@@ -64,11 +65,11 @@ Een notebook is een interactieve omgeving die verschillende programmeertalen ond
    - Selecteer het blauwe afspeelpictogram links van de cel.
    - Selecteer de knop **Alles uitvoeren** op de werkbalk.
 
-   ![DataFrame-object maken](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Uitvoer van de Spark-taak")
+       ![DataFrame-object maken](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png)
 
 10. Als de instantie van de Apache Spark-pool nog niet wordt uitgevoerd, wordt deze automatisch gestart. U ziet de status van de instantie van de Apache Spark-pool onder de cel die u uitvoert, evenals in het statuspaneel onderaan de notebook. Afhankelijk van de grootte van de pool, duurt het starten 2-5 minuten. Als de uitvoering van de code is voltooid, ziet u onder de cel hoe lang het uitvoeren van de code heeft geduurd. In de uitvoercel ziet u de uitvoer.
 
-    ![Uitvoer van het uitvoeren van een cel](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Uitvoer van de Spark-taak")
+    ![Uitvoer van het uitvoeren van een cel](./media/quickstart-apache-spark-notebook/run-cell-with-output.png)
 
 11. De gegevens bevinden zich nu in een DataFrame, van waaruit u de gegevens op allerlei manieren kunt gebruiken. U hebt de gegevens in verschillende indelingen nodig voor de rest van deze quickstart.
 12. Voer de onderstaande code in een andere cel in en voer deze uit om een Spark-tabel, een CSV-bestand en een Parquet-bestand te maken met kopieën van de gegevens:

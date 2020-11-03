@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c99d1359c1d354e7464d473c6d859afde51577a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 021497fa7766b7eecfa935d4186ecc98edef8d61
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523340"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633685"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met WhosOffice
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u WhosOffice integreert met Azure Active Director
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij WhosOffice.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * WhosOffice biedt ondersteuning voor met **SP en IDP** geïnitieerde eenmalige aanmelding
-* Zodra u WhosOffice hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u WhosOffice hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 > [!NOTE]
 > De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
@@ -103,9 +103,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -135,19 +135,19 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Settings** en selecteer **Company**.
 
-    ![Configuratie van WhosOffice](./media/whosoffice-tutorial/configuration1.png)
+    ![Schermopname waarin Company in Settings is geselecteerd.](./media/whosoffice-tutorial/configuration1.png)
 
 1. Klik op **Apps / Integrations**.
 
-    ![Configuratie van WhosOffice](./media/whosoffice-tutorial/configuration2.png)
+    ![Schermopname waarin Apps / Integrations is geselecteerd in Company settings.](./media/whosoffice-tutorial/configuration2.png)
 
 1. Selecteer **Microsoft Azure** in de vervolgkeuzelijst Provider en klik op **Activate Login Provider**.
 
-    ![Configuratie van WhosOffice](./media/whosoffice-tutorial/configuration3.png)
+    ![Schermopname waarin Activate Login Provider is geselecteerd voor Microsoft Azure.](./media/whosoffice-tutorial/configuration3.png)
 
 1. Upload het bestand met federatieve metagegevens dat u uit de Azure-portal hebt gedownload door te klikken op **Upload**.
     
-    ![Configuratie van WhosOffice](./media/whosoffice-tutorial/configuration4.png)
+    ![Schermopname met de optie Upload voor een metagegevensbestand.](./media/whosoffice-tutorial/configuration4.png)
 
 ### <a name="create-whosoffice-test-user"></a>Testgebruiker maken voor WhosOffice
 
@@ -155,30 +155,30 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Settings** en selecteer **Users**.
 
-    ![Configuratie van WhosOffice](./media/whosoffice-tutorial/user1.png)
+    ![Schermopname waarin Users is geselecteerd in het menu Settings.](./media/whosoffice-tutorial/user1.png)
 
 1. Selecteer **Create new User**.
 
-    ![Configuratie van WhosOffice](./media/whosoffice-tutorial/user2.png)
+    ![Schermopname met Create new user geselecteerd.](./media/whosoffice-tutorial/user2.png)
 
 1. Geef de benodigde gegevens van de gebruiker op volgens de vereisten van uw organisatie.
 
-    ![Configuratie van WhosOffice](./media/whosoffice-tutorial/user3.png)
+    ![Schermopname van het nieuwe dialoogvenster User, waar u gebruikersgegevens kunt invoeren.](./media/whosoffice-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel WhosOffice klikt, zou u automatisch moeten worden aangemeld bij de instantie van WhosOffice waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel WhosOffice klikt, zou u automatisch moeten worden aangemeld bij de instantie van WhosOffice waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [WhosOffice uitproberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

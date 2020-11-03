@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d0e677377037203a6a67150d985efb30e09af86e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e415e0979e7f45531093993b0524a1bb556d339b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321837"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886531"
 ---
 <a name="HOLTop"></a>
 
@@ -43,9 +43,9 @@ cd my-app
 
 Uw werkruimte bevat drie mappen:
 
-* **src**: deze map bevat broncode en pakketten. Alle met de opdracht `go get` geïnstalleerde pakketten komen terecht in deze map.
-* **pkg**: deze map bevat de gecompileerde Go-pakketobjecten. Deze bestanden hebben allemaal een `.a`-extensie.
-* **bin**: deze map bevat de binaire uitvoerbare bestanden die worden gemaakt wanneer u `go install` uitvoert.
+* **src** : deze map bevat broncode en pakketten. Alle met de opdracht `go get` geïnstalleerde pakketten komen terecht in deze map.
+* **pkg** : deze map bevat de gecompileerde Go-pakketobjecten. Deze bestanden hebben allemaal een `.a`-extensie.
+* **bin** : deze map bevat de binaire uitvoerbare bestanden die worden gemaakt wanneer u `go install` uitvoert.
 
 > [!TIP]
 > Zie de [documentatie over de taal Go](https://golang.org/doc/code.html#Workspaces) voor meer informatie over de structuur van een Go-werkruimte. Deze handleiding bevat informatie om `$GOPATH` en `$GOROOT` in te stellen.
@@ -90,7 +90,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 |Naam|Beschrijving|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Deze klasse is nodig voor alle functionaliteit van Computer Vision, zoals het analyseren van afbeeldingen en het lezen van tekst. U instantieert deze klasse met uw abonnementsgegevens en gebruikt deze om de meeste afbeeldingsbewerkingen uit te voeren.|
-|[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Dit type bevat de resultaten van een **AnalyzeImage**-functieaanroep. Er zijn soortgelijke typen voor elk van de categorie-specifieke functies.|
+|[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Dit type bevat de resultaten van een **AnalyzeImage** -functieaanroep. Er zijn soortgelijke typen voor elk van de categorie-specifieke functies.|
 |[ReadOperationResult](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ReadOperationResult)| Dit type bevat de resultaten van een batch-leesbewerking. |
 |[VisualFeatureTypes](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#VisualFeatureTypes)| Dit type definieert de verschillende soorten afbeeldingsanalyse die kunnen worden uitgevoerd in een standaard analysebewerking. U geeft een set VisualFeatureTypes-waarden op, afhankelijk van uw behoeften. |
 
@@ -121,8 +121,8 @@ Sla eerst een verwijzing op naar de URL van de afbeelding die u wilt analyseren.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze_url)]
 
-> [!NOTE]
-> U kunt ook een lokale afbeelding analyseren. Zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) voor scenario's met betrekking tot lokale afbeeldingen.
+> [!TIP]
+> U kunt ook een lokale afbeelding analyseren. Zie de [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient)-methoden, zoals **DescribeImageInStream**. Of zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) voor scenario's met betrekking tot lokale afbeeldingen.
 
 ### <a name="specify-visual-features"></a>Visuele kenmerken opgeven
 
@@ -210,8 +210,8 @@ Voeg de voorbeeldafbeelding en functieaanroep toe aan uw `main`-functie.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_readinmain)]
 
-> [!NOTE]
-> U kunt ook tekst extraheren uit een lokale afbeelding. Zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) voor scenario's met betrekking tot lokale afbeeldingen.
+> [!TIP]
+> U kunt ook tekst extraheren uit een lokale afbeelding. Zie de [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient)-methoden, zoals **BatchReadFileInStream**. Of zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) voor scenario's met betrekking tot lokale afbeeldingen.
 
 ### <a name="call-the-read-api"></a>De Read-API aanroepen
 
@@ -221,7 +221,7 @@ Definieer de nieuwe functie voor het lezen van tekst, `RecognizeTextReadAPIRemot
 
 ### <a name="get-read-results"></a>Leesresultaten ophalen
 
-Vervolgens haalt u de bewerkings-id op die wordt geretourneerd door de **BatchReadFile**-aanroep en gebruikt u deze met de methode **GetReadOperationResult** om de service te doorzoeken op de resultaten van de bewerking. Met de volgende code wordt de bewerking gecontroleerd met een interval van één seconde totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde tekstgegevens afgedrukt naar de console.
+Vervolgens haalt u de bewerkings-id op die wordt geretourneerd door de **BatchReadFile** -aanroep en gebruikt u deze met de methode **GetReadOperationResult** om de service te doorzoeken op de resultaten van de bewerking. Met de volgende code wordt de bewerking gecontroleerd met een interval van één seconde totdat de resultaten worden geretourneerd. Vervolgens worden de geëxtraheerde tekstgegevens afgedrukt naar de console.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_response)]
 

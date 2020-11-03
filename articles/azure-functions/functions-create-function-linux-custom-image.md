@@ -3,14 +3,14 @@ title: Een functie van Azure Functions maken in Linux met een aangepaste install
 description: Informatie over het maken van Azure Functions uitgevoerd op een aangepaste installatiekopie van Linux.
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
+ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 846599414c0bca95a3f41e127dc01e06d0fd43f9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758979"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747106"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met een aangepaste container
 
@@ -95,7 +95,10 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-De parameter `-DjavaVersion` laat de Functions-runtime weten welke versie van Java moet worden gebruikt. Gebruik `-DjavaVersion=11` als u wilt dat uw functies worden uitgevoerd in Java 11. Deze bevindt zich in de preview-fase. Wanneer u `-DjavaVersion` niet opgeeft, wordt Maven standaard ingesteld op Java 8. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie.
+De parameter `-DjavaVersion` laat de Functions-runtime weten welke versie van Java moet worden gebruikt. Gebruik `-DjavaVersion=11` als u uw functies wilt uitvoeren in Java 11. Wanneer u `-DjavaVersion` niet opgeeft, wordt Maven standaard ingesteld op Java 8. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie.
+
+> [!IMPORTANT]
+> De omgevingsvariabele `JAVA_HOME` moet zijn ingesteld op de installatielocatie van de juiste versie van de JDK om dit artikel te kunnen voltooien.
 
 U wordt door Maven gevraagd om de waarden die nodig zijn om het project op het moment van implementatie te kunnen genereren.   
 Geef de volgende waarden op als daarom wordt gevraagd:
@@ -109,7 +112,7 @@ Geef de volgende waarden op als daarom wordt gevraagd:
 
 Typ `Y` of druk op Enter om te bevestigen.
 
-Maven maakt de projectbestanden in een nieuwe map met de naam van _artifactId_; in dit voorbeeld is dat `fabrikam-functions`. 
+Maven maakt de projectbestanden in een nieuwe map met de naam van _artifactId_ ; in dit voorbeeld is dat `fabrikam-functions`. 
 ::: zone-end
 Met de optie `--docker` wordt een `Dockerfile` voor het project gegenereerd. Hiermee wordt een geschikte aangepaste container gedefinieerd voor gebruik met Azure Functions en de geselecteerde runtime.
 
@@ -347,7 +350,7 @@ Als de installatiekopie is geïmplementeerd in de functie-app in Azure, kunt u d
     1. De uitvoer van de opdracht is de functiesleutel. De volledige functie-URL wordt dan `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`, waarbij `<app_name>`, `<function_name>`en `<key>` moeten worden vervangen door uw specifieke waarden.
     
         > [!NOTE]
-        > De sleutel die hier wordt opgehaald, is de *host*-sleutel die werkt voor alle functies in de functie-app. Met de methode die wordt weergegeven voor de portal wordt de sleutel voor slechts één functie opgehaald.
+        > De sleutel die hier wordt opgehaald, is de *host* -sleutel die werkt voor alle functies in de functie-app. Met de methode die wordt weergegeven voor de portal wordt de sleutel voor slechts één functie opgehaald.
 
     ---
 
@@ -372,7 +375,7 @@ U kunt instellen dat Azure Functions uw implementatie van een installatiekopie a
 
 1. Kopieer de webhook-URL van de implementatie naar het klembord.
 
-1. Open [Docker Hub](https://hub.docker.com/), meld u aan en selecteer **Repositories** op de navigatiebalk. Zoek en selecteer de installatiekopie, selecteer het tabblad **Webhooks**, geef een waarde op voor **Webhook name**, plak uw URL in **Webhook URL** en selecteer ten slotte **Maken**:
+1. Open [Docker Hub](https://hub.docker.com/), meld u aan en selecteer **Repositories** op de navigatiebalk. Zoek en selecteer de installatiekopie, selecteer het tabblad **Webhooks** , geef een waarde op voor **Webhook name** , plak uw URL in **Webhook URL** en selecteer ten slotte **Maken** :
 
     ![De webhook toevoegen aan de opslagplaats van Docker Hub](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -438,7 +441,7 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
 
 ## <a name="write-to-an-azure-storage-queue"></a>Wegschrijven naar Azure Storage-wachtrij
 
-Met Azure Functions kunt u uw functies verbinden met andere Azure-services en -resources zonder dat u uw eigen integratiecode hoeft te schrijven. Deze zogenaamde *bindingen*, die zowel invoer als uitvoer vertegenwoordigen, worden gedeclareerd binnen de functiedefinitie. Gegevens van bindingen worden als parameters doorgegeven aan de functie. Een *trigger* is een speciaal type invoerbinding. Hoewel een functie slechts één trigger heeft, kan deze meerdere invoer- en uitvoerbindingen hebben. Zie [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md) (Concepten van Azure Functions-triggers en -bindingen) voor meer informatie.
+Met Azure Functions kunt u uw functies verbinden met andere Azure-services en -resources zonder dat u uw eigen integratiecode hoeft te schrijven. Deze zogenaamde *bindingen* , die zowel invoer als uitvoer vertegenwoordigen, worden gedeclareerd binnen de functiedefinitie. Gegevens van bindingen worden als parameters doorgegeven aan de functie. Een *trigger* is een speciaal type invoerbinding. Hoewel een functie slechts één trigger heeft, kan deze meerdere invoer- en uitvoerbindingen hebben. Zie [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md) (Concepten van Azure Functions-triggers en -bindingen) voor meer informatie.
 
 In dit gedeelte wordt beschreven hoe u uw functie integreert met een Azure Storage-wachtrij. De uitvoerbinding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in de wachtrij.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 85dfa6b57171ce68c3d962bac27016434d587080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81523a1c11b6a3da4e7d1db5d8249921ad5047ff
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532634"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635861"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-velpic-saml"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Velpic SAML
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Velpic SAML integreert met Azure Active Directo
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Velpic SAML.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -69,7 +69,7 @@ Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met Velpic S
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in [Azure-portal](https://portal.azure.com/), op de integratiepagina van de toepassing **Velpic SAML**, de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Zoek in [Azure-portal](https://portal.azure.com/), op de integratiepagina van de toepassing **Velpic SAML** , de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
@@ -96,9 +96,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -136,23 +136,23 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 4. Klik op het tabblad **Beheren** en ga naar de sectie **Integratie** waar u op de knop **Invoegtoepassingen** moet klikken om een nieuwe invoegtoepassing voor aanmelding te maken.
 
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_1.png)
+    ![Schermopname van de pagina Integration, waar Plugins kunt selecteren.](./media/velpicsaml-tutorial/velpic_1.png)
 
 5. Klik op de knop **'Invoegtoepassing toevoegen'** .
     
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_2.png)
+    ![Schermopname waarin de knop Add Plugin is geselecteerd.](./media/velpicsaml-tutorial/velpic_2.png)
 
 6. Klik op de tegel **SAML** op de pagina Invoegtoepassing toevoegen.
     
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_3.png)
+    ![Schermopname waarin SAML is geselecteerd op de pagina Add Plugin.](./media/velpicsaml-tutorial/velpic_3.png)
 
 7. Voer de naam van de nieuwe SAML-invoegtoepassing in en klik op de knop **'Toevoegen'** .
 
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_4.png)
+    ![Schermopname met het dialoogvenster Add new SAML plugin, waarin Azure AD is ingevoerd.](./media/velpicsaml-tutorial/velpic_4.png)
 
 8. Voer de details als volgt in:
 
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_5.png)
+    ![Schermopname van de pagina Azure AD, waar u de beschreven waarden kunt invoeren.](./media/velpicsaml-tutorial/velpic_5.png)
 
     a. Voer in het tekstvak **Naam** de naam van de SAML-invoegtoepassing in.
 
@@ -198,17 +198,16 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 1. Wanneer u in het toegangsvenster op de tegel Velpic SAML klikt, wordt de aanmeldingspagina van Velpic SAML weergegeven. U ziet de knop **'Aanmelden met Azure AD'** op de aanmeldingspagina.
 
-    ![Invoegtoepassing](./media/velpicsaml-tutorial/velpic_6.png)
+    ![Schermopname van Learning Portal met Log In With Azure AD geselecteerd.](./media/velpicsaml-tutorial/velpic_6.png)
 
 1. Klik op de knop **'Aanmelden met Azure AD'** om u aan te melden bij Velpic met uw Azure AD-account.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Velpic SAML met Azure AD uitproberen](https://aad.portal.azure.com/)
-

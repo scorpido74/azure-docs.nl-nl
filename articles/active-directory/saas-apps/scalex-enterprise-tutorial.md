@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: c7033886d55e381445d99035115654332491441c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547849"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895053"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met ScaleX Enterprise
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u ScaleX Enterprise integreert met Azure Active D
 * Ervoor zorgen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij ScaleX Enterprise.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -105,9 +105,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -148,11 +148,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     > [!NOTE]
     > Contoso is slechts een voorbeeld. Hier staat de werkelijke naam van uw bedrijf.
 
-    ![Eenmalige aanmelding configureren](./media/scalex-enterprise-tutorial/Test_Admin.png)
+    ![Schermopname waarin een fictieve bedrijfsnaam in het menu rechtsboven is geselecteerd.](./media/scalex-enterprise-tutorial/Test_Admin.png)
 
 1. Selecteer **Integrations** in het bovenste menu en selecteer **Single Sign-On**.
 
-    ![Eenmalige aanmelding configureren](./media/scalex-enterprise-tutorial/admin_sso.png) 
+    ![Schermopname met Integrations geselecteerd en Single Sign-On geselecteerd in de vervolgkeuzelijst.](./media/scalex-enterprise-tutorial/admin_sso.png) 
 
 1. Vul het formulier als volgt in:
 
@@ -160,9 +160,9 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     a. Selecteer **Create any user who can authenticate with SSO**.
 
-    b. **Service Provider saml**: plak hier de waarde ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent***
+    b. **Service Provider saml** : Plak hier de waarde * *_urn:oasis:names:tc:SAML:2.0:nameid-format:persistent_* _
 
-    c. **Name of Identity Provider email field in ACS response**: plak hier de waarde `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. _*Name of Identity Provider email field in ACS response**: plak hier de waarde `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. **Identity Provider EntityDescriptor Entity ID:** plak hier de waarde van **Azure AD-id** die u uit de Azure-portal hebt gekopieerd.
 
@@ -182,14 +182,14 @@ Om Azure AD-gebruikers in staat te stellen zich aan te melden bij ScaleX Enterpr
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel ScaleX Enterprise klikt, wordt u automatisch aangemeld bij de instantie van ScaleX Enterprise waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel ScaleX Enterprise klikt, wordt u automatisch aangemeld bij de instantie van ScaleX Enterprise waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [ScaleX Enterprise uitproberen met Azure AD](https://aad.portal.azure.com/)

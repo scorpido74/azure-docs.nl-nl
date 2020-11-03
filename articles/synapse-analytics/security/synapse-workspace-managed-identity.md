@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3c2b2ce5bd9af60d6d1fd4ac066681ee8473521
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4100640fd619d9d971ac1c7083eedef8e2125fc3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249447"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738248"
 ---
 # <a name="azure-synapse-workspace-managed-identity-preview"></a>Beheerde identiteit voor Azure Synapse-werkruimte (preview)
 
@@ -32,7 +32,7 @@ Er wordt een door het systeem toegewezen beheerde identiteit gemaakt voor uw Azu
 >[!NOTE]
 >Deze beheerde identiteit van de werkruimte wordt aangeduid als beheerde identiteit in de rest van dit document.
 
-Azure Synapse gebruikt de beheerde identiteit om pijplijnen te organiseren. De levenscyclus van beheerde identiteiten is rechtstreeks gekoppeld aan de Azure Synapse-werkruimte. Als u de Azure Synapse-werkruimte verwijdert, wordt de beheerde identiteit ook opgeschoond.
+Azure Synapse gebruikt de beheerde identiteit om pijplijnen te integreren. De levenscyclus van beheerde identiteiten is rechtstreeks gekoppeld aan de Azure Synapse-werkruimte. Als u de Azure Synapse-werkruimte verwijdert, wordt de beheerde identiteit ook opgeschoond.
 
 De beheerde identiteit van de werkruimte heeft machtigingen nodig om bewerkingen uit te voeren in de pijplijnen. U kunt de object-id of de naam van uw Azure Synapse-werkruimte gebruiken om naar de beheerde identiteit te zoeken wanneer u machtigingen verleent.
 

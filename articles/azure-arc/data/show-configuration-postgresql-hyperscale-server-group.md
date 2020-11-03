@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 716759fd6542cd473c236992ac88b69bfe5d0a66
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148026"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279398"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>De configuratie van een PostgreSQL grootschalige-Server groep met Arc-functionaliteit weer geven
 
@@ -210,7 +210,7 @@ Spec:
       Name:  citus
       Name:  pg_stat_statements
   Scale:
-    Shards:  2
+    Workers:  2
   Scheduling:
     Default:
       Resources:
@@ -236,20 +236,50 @@ Status:
 Events:               <none>
 ```
 
+>[!NOTE]
+>Vóór de release van oktober 2020 `Workers` was `Shards` het vorige voor beeld. Zie [release opmerkingen-Azure Arc enabled Data Services (preview)](release-notes.md) voor meer informatie.
+
 Laten we een aantal specifieke aandachtspunten aanroepen in de beschrijving van de `servergroup` hierboven weer gegeven. Wat is er aan deze server groep door ons te vertellen?
 
 - Het is van versie 12 van post gres: 
-   > Type         `postgresql-12`
+   > ```json
+   > Kind:         `postgresql-12`
+   > ```
 - Het is gemaakt in de maand augustus 2020:
-   > Tijds tempel maken:  `2020-08-31T21:01:07Z`
+   > ```json
+   > Creation Timestamp:  `2020-08-31T21:01:07Z`
+   > ```
 - Er zijn twee post gres-extensies gemaakt in deze server groep: `citus` en `pg_stat_statements`
-   > Engine: extensies: naam:  `citus` naam:  `pg_stat_statements`
+   > ```json
+   > Engine:
+   >    Extensions:
+   >      Name:  `citus`
+   >      Name:  `pg_stat_statements`
+   > ```
 - Er worden twee worker-knoop punten gebruikt
-   > Schalen: Shards:  `2`
+   > ```json
+   > Scale:
+   >    Workers:  `2`
+   > ```
 - Het is gegarandeerd dat er 1 CPU/vCore en 512 MB RAM per knoop punt worden gebruikt. Er worden meer dan vier CPU-vCores en 1024 MB geheugen gebruikt:
-   > Planning: standaard: resources: limieten: CPU: 4 geheugen: 1024Mi-aanvragen: CPU: 1 geheugen: 512Mi
+   > ```json
+   > Scheduling:
+   >    Default: 
+   >      Resources:
+   >        Limits:
+   >          Cpu:     4
+   >          Memory:  1024Mi
+   >        Requests:
+   >          Cpu:     1
+   >          Memory:  512Mi
+   > ```
  - Het is beschikbaar voor query's en heeft geen probleem. Alle knoop punten zijn actief:
-   > Status:... Gereed: 3/3-status: gereed
+   > ```json
+   > Status:
+   >  ...
+   >  Ready Pods:         3/3
+   >  State:              Ready
+   > ```
 
 **Met azdata:**
 
@@ -292,7 +322,7 @@ Retourneert de onderstaande uitvoer in een indeling en inhoud die veel lijkt op 
       ]
     },
     "scale": {
-      "shards": 2
+      "workers": 2
     },
     "scheduling": {
       "default": {

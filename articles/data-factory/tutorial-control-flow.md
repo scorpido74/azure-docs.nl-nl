@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a6fc68ddcb86c7ba768f59519cfb4273d381fab
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983411"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637697"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
 
@@ -40,7 +40,7 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert:
 > * Een pijplijnuitvoering starten
 > * De uitvoering van de pijplijn en van de activiteit controleren
 
-In deze zelfstudie wordt .NET SDK gebruikt. U kunt andere methoden gebruiken voor interactie met Azure Data Factory. Zie [Quickstarts van 5 minuten](/azure/data-factory/quickstart-create-data-factory-portal) voor Data Factory-quickstarts.
+In deze zelfstudie wordt .NET SDK gebruikt. U kunt andere methoden gebruiken voor interactie met Azure Data Factory. Zie [Quickstarts van 5 minuten](./quickstart-create-data-factory-portal.md) voor Data Factory-quickstarts.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
@@ -148,7 +148,7 @@ Een C# .NET-consoletoepassing maken:
 
 ### <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Een methode `CreateOrUpdateDataFactory` toevoegen aan uw bestand *Program.cs*:
+1. Een methode `CreateOrUpdateDataFactory` toevoegen aan uw bestand *Program.cs* :
 
    ```csharp
    static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
@@ -181,7 +181,7 @@ Een C# .NET-consoletoepassing maken:
 
 ## <a name="create-an-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maken
 
-1. Een methode `StorageLinkedServiceDefinition` toevoegen aan uw bestand *Program.cs*:
+1. Een methode `StorageLinkedServiceDefinition` toevoegen aan uw bestand *Program.cs* :
 
    ```csharp
    static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
@@ -213,7 +213,7 @@ In dit gedeelte maakt u twee gegevenssets: één voor de bron en de andere voor 
 
 Voeg een methode toe waarmee een *Azure Blob-gegevensset* wordt gemaakt. Zie [Eigenschappen van een Azure Blob-gegevensset](connector-azure-blob-storage.md#dataset-properties) voor meer informatie over ondersteunde eigenschappen en details.
 
-Een methode `SourceBlobDatasetDefinition` toevoegen aan uw bestand *Program.cs*:
+Een methode `SourceBlobDatasetDefinition` toevoegen aan uw bestand *Program.cs* :
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -240,7 +240,7 @@ Let op het gebruik van parameters voor *FolderPath*. `sourceBlobContainer` is de
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Een gegevensset maken voor de sinkgegevens in Azure Blob
 
-1. Een methode `SourceBlobDatasetDefinition` toevoegen aan uw bestand *Program.cs*:
+1. Een methode `SourceBlobDatasetDefinition` toevoegen aan uw bestand *Program.cs* :
 
    ```csharp
    static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -610,7 +610,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -753,7 +753,7 @@ Press any key to exit...
 U hebt de volgende taken uitgevoerd in deze zelfstudie:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken
+> _ Een data factory maken
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken

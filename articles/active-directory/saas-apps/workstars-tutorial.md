@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 9786d0d84a1069e8bbee067b583e51d836ebfdd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f53072b106bedb8e49ba7f3728f39137f848a58
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88526444"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Zelfstudie: Integratie van Azure Active Directory met Workstars
 
@@ -27,7 +27,7 @@ De integratie van Workstars met Azure AD biedt de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Workstars (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Om de integratie van Workstars te configureren in Azure AD, moet u Workstars uit
 
 **Voer de volgende stappen uit om Workstars toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -61,7 +61,7 @@ Om de integratie van Workstars te configureren in Azure AD, moet u Workstars uit
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Workstars**, selecteer **Workstars** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Workstars** , selecteer **Workstars** in het resultatenvenster en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
      ![Workstars in de resultatenlijst](common/search-new-app.png)
 
@@ -128,13 +128,13 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 2. Klik in de hoofdwerkbalk op **Settings**.
 
-    ![Instellingen van Workstars](./media/workstars-tutorial/tutorial_workstars_sett.png)
+    ![Schermopname van de knop Settings.](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
 3. Ga naar **Sign On** > **Settings**.
 
     ![Aanmelding in Workstars](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
-    ![Instellingen van Workstars](./media/workstars-tutorial/tutorial_workstars_settings.png)
+    ![Schermopname van de sectie voor eenmalige aanmelding waar u Settings kunt selecteren.](./media/workstars-tutorial/tutorial_workstars_settings.png)
 
 4. Voer op de pagina **Single Sign On (SAML) - Settings** de volgende stappen uit:
     
@@ -142,13 +142,13 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
     a. Typ **Office 365** in **Identity Provider Name**.
 
-    b. Plak de waarde van **Azure AD-id**, die u hebt gekopieerd vanuit Azure Portal, in het tekstvak **Identity Provider Entity ID**.
+    b. Plak de waarde van **Azure AD-id** , die u hebt gekopieerd vanuit Azure Portal, in het tekstvak **Identity Provider Entity ID**.
 
     c. Kopieer de inhoud van het gedownloade certificaatbestand in Kladblok naar het klembord en plak deze in het tekstvak **x509 Certificate**. 
 
     d. Plak in het tekstvak **SAML SSO URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
     
-    e. Plak in het tekstvak **Remote Logout URL** de waarde van **Afmeldings-URL**, die u hebt gekopieerd uit Azure Portal. 
+    e. Plak in het tekstvak **Remote Logout URL** de waarde van **Afmeldings-URL** , die u hebt gekopieerd uit Azure Portal. 
 
     f. Selecteer **Name ID** in **Email (Default)** .
 
@@ -158,7 +158,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -170,7 +170,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
@@ -194,7 +194,7 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -212,13 +212,12 @@ In deze sectie maakt u een gebruiker met de naam Britta Simon in Workstars. Neem
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Workstars klikt, wordt u automatisch aangemeld bij het exemplaar van Workstars waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Workstars klikt, wordt u automatisch aangemeld bij het exemplaar van Workstars waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

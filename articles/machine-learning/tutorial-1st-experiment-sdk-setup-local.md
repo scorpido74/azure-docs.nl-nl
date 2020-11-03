@@ -11,21 +11,16 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c0fe3c3808709de732bec8ce0599d380094405e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e01721b4b414455b47a394087192696e1ecb025
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368478"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892731"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Zelfstudie: Aan de slag met Azure Machine Learning in uw ontwikkelomgeving (deel 1 van 4)
 
-In deze *vierdelige zelfstudiereeks* leert u de grondbeginselen van Azure Machine Learning en kunt u op taken gebaseerde Python machine learning-taken uitvoeren op het Azure-cloudplatform. Hierbij gaat het onder andere om de volgende taken:
-
-1. Een werkruimte en uw lokale machine learning-ontwikkelomgeving instellen.
-2. Code uitvoeren in de cloud met behulp van de Azure Machine Learning-SDK voor Python.
-3. De Python-omgeving beheren die u gebruikt voor modeltraining.
-4. Gegevens uploaden naar Azure en die gegevens gebruiken in de training.
+In deze *vierdelige zelfstudiereeks* leert u de grondbeginselen van Azure Machine Learning en kunt u op taken gebaseerde Python machine learning-taken uitvoeren op het Azure-cloudplatform. 
 
 In deel 1 van deze zelfstudiereeks doet u het volgende:
 
@@ -36,20 +31,22 @@ In deel 1 van deze zelfstudiereeks doet u het volgende:
 > * Uw lokale ontwikkelomgeving configureren.
 > * Een rekencluster instellen.
 
->[!NOTE]
-> Deze zelfstudiereeks is gericht op de Azure Machine Learning-concepten die zijn afgestemd op *op taken gebaseerde* machine learning-taken van Python die rekenintensief zijn en/of reproduceerbaarheid vereisen. Als uw machine learning-taken niet in dit profiel passen, gebruikt u de functionaliteit [Jupyter of RStudio op een Azure Machine Learning-rekeninstantie](tutorial-1st-experiment-sdk-setup.md) om naar Azure Machine Learning over te stappen.
+> [!NOTE]
+> Deze zelfstudiereeks is gericht op de Azure Machine Learning-concepten die zijn afgestemd op *op taken gebaseerde* machine learning-taken van Python die rekenintensief zijn en/of reproduceerbaarheid vereisen. Als u meer geïnteresseerd bent in een verkennende werkstroom, kunt u in plaats daarvan [Jupyter of RStudio gebruiken op een Azure Machine Learning-rekenproces](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer [Azure Machine Learning](https://aka.ms/AMLFree) uit.
 - Vertrouwd met Python en [Machine Learning-concepten](concept-azure-machine-learning-architecture.md). Bijvoorbeeld omgevingen, training, scoren, enzovoort.
-- Een lokale ontwikkelomgeving: een laptop met Python geïnstalleerd en uw favoriete IDE (bijvoorbeeld Visual Studio Code, PyCharm of Jupyter).
+- Lokale ontwikkelomgeving, zoals Visual Studio Code, Jupyter of PyCharm.
+- Python (versie 3.5 tot 3.7).
+
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>De Azure Machine Learning-SDK installeren
 
 In deze zelfstudie maken we gebruik van de Azure Machine Learning-SDK voor Python.
 
-U kunt de hulpprogramma's die u het beste kent, gebruiken (bijvoorbeeld Conda en pip) om een omgeving in te stellen om in deze zelfstudie te gebruiken. Installeer de Azure Machine Learning-SDK voor Python via pip in de omgeving:
+U kunt de hulpprogramma's die u het beste kent gebruiken (bijvoorbeeld Conda en pip) om een Python-omgeving in te stellen om in deze zelfstudie te gebruiken. Installeer de Azure Machine Learning-SDK voor Python in uw Python-omgeving via pip:
 
 ```bash
 pip install azureml-sdk
@@ -79,7 +76,7 @@ Voeg in de map op het hoogste niveau `tutorial` een nieuw Python-bestand toe met
 U kunt de code uitvoeren in een interactieve sessie of als een Python-bestand.
 
 >[!NOTE]
-> Wanneer u een lokale ontwikkelomgeving (zoals een laptop) gebruikt, wordt u gevraagd om u te verifiëren bij uw werkruimte met behulp van een *apparaatcode* de eerste keer dat u de volgende code uitvoert. Volg de instructies op het scherm.
+> Wanneer u een lokale ontwikkelomgeving (bijvoorbeeld uw computer) gebruikt, wordt u de eerste keer dat u de volgende code uitvoert gevraagd om u te verifiëren bij uw werkruimte met behulp van een *apparaatcode*. Volg de instructies op het scherm.
 
 ```python
 # tutorial/01-create-workspace.py
@@ -102,7 +99,11 @@ cd <path/to/tutorial>
 python ./01-create-workspace.py
 ```
 
-Nadat u het voorgaande codefragment hebt uitgevoerd, ziet uw mapstructuur er als volgt uit:
+> [!TIP]
+> Als er bij het uitvoeren van deze code een foutmelding optreedt dat u geen toegang hebt tot het abonnement, gaat u naar [Een werkruimte maken](how-to-manage-workspace.md?tab=python#create-multi-tenant) voor informatie over verificatieopties.
+
+
+Nadat u *01-create-workspace.py* hebt uitgevoerd, ziet uw mapstructuur er als volgt uit:
 
 ```markdown
 tutorial
@@ -139,8 +140,7 @@ try:
     print('Found existing cluster, use it.')
 except ComputeTargetException:
     compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                            max_nodes=4, 
-                                                            idle_seconds_before_scaledown=2400)
+                                                           idle_seconds_before_scaledown=2400)
     cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
 
 cpu_cluster.wait_for_completion(show_output=True)
@@ -174,7 +174,13 @@ In deze installatiezelfstudie hebt u het volgende gedaan:
 - De lokale ontwikkelomgeving instellen.
 - Een Azure Machine Learning-rekencluster gemaakt.
 
-In de volgende zelfstudie gaat u een script verzenden naar het Azure Machine Learning-rekencluster.
+In de andere delen van deze zelfstudie leert u het volgende:
+
+* Deel 2. Code uitvoeren in de cloud met behulp van de Azure Machine Learning-SDK voor Python.
+* Deel 3. De Python-omgeving beheren die u gebruikt voor modeltraining.
+* Deel 4. Gegevens uploaden naar Azure en die gegevens gebruiken in de training.
+
+Ga verder met de volgende zelfstudie om een script te verzenden naar het Azure Machine Learning-rekencluster.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Een Python-script voor 'Hallo wereld' uitvoeren Python-script in Azure](tutorial-1st-experiment-hello-world.md)
