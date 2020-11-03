@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d5370343ac83d75df94e7291d26c87ce0c419d0e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327413"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289541"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault integreren met DigiCert-certificeringsinstantie
 
@@ -23,7 +23,7 @@ Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inric
 
 Gebruikers van Azure Key Vault kunnen DigiCert-certificaten rechtstreeks genereren vanuit hun Key Vault. Key Vault zorgt voor end-to-end levenscyclusbeheer van certificaten voor de certificaten die zijn uitgegeven door DigiCert via de vertrouwde amenwerking van Key Vault met de DigiCert-certificeringsinstantie.
 
-Zie [Azure Key Vault-certificaten](/azure/key-vault/certificates/about-certificates) voor algemene informatie over certificaten.
+Zie [Azure Key Vault-certificaten](./about-certificates.md) voor algemene informatie over certificaten.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -51,9 +51,9 @@ Nadat u de bovenstaande gegevens van het DigiCert CertCentral-account hebt verza
 ### <a name="azure-portal"></a>Azure Portal
 
 1.  Als u de DigiCert-certificeringsinstantie wilt toevoegen, gaat u naar de sleutelkluis waaraan u DigiCert wilt toevoegen. 
-2.  Selecteer op de eigenschappenpagina's van de sleutelkluis **Certificaten** .
-3.  Selecteer het tabblad **Certificerings instanties** . ![certificeringsinstanties selecteren](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
-4.  Selecteer de optie **Toevoegen** .
+2.  Selecteer op de eigenschappenpagina's van de sleutelkluis **Certificaten**.
+3.  Selecteer het tabblad **Certificerings instanties**. ![certificeringsinstanties selecteren](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
+4.  Selecteer de optie **Toevoegen**.
  ![certificeringsinstanties toevoegen](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  Kies in het scherm **Een certificeringsinstantie maken** de volgende waarden:
     -   **Naam** : Voeg een herkenbare naam van een certificaatverlener toe. Voorbeeld van DigicertCA
@@ -61,7 +61,7 @@ Nadat u de bovenstaande gegevens van het DigiCert CertCentral-account hebt verza
     -   **Account-id** : Voer de id van uw DigiCert CertCentral-account in
     -   **Accountwachtwoord** : Voer de API-sleutel in die u hebt gegenereerd in uw DigiCert CertCentral-account
     -   **Organisatie-id** : Voer OrgID in, opgehaald uit het DigiCert CertCentral-account 
-    -   Klik op **Create** .
+    -   Klik op **Create**.
    
 6.  U ziet dat DigicertCA nu is toegevoegd in de lijst met certificeringsinstanties.
 

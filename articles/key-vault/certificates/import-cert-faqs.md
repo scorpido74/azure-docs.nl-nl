@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7d34b61e584b63c517b6c0f8af4cb4adcc7fefe
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651845"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289508"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Veelgestelde vragen over het importeren van Azure Key Vault certificaten
 
@@ -25,7 +25,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over het importeren van
 
 ### <a name="how-can-i-import-a-certificate-in-azure-key-vault"></a>Hoe kan ik een certificaat in Azure Key Vault importeren?
 
-Voor een certificaat import bewerking accepteert Azure Key Vault twee certificaat bestands indelingen: PEM en PFX. Hoewel er PEM-bestanden zijn met alleen het open bare deel, Key Vault vereist en accepteert alleen een PEM-of PFX-bestand met een persoonlijke sleutel. Zie [een certificaat importeren in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-import-certificate#import-a-certificate-to-key-vault)voor meer informatie.
+Voor een certificaat import bewerking accepteert Azure Key Vault twee certificaat bestands indelingen: PEM en PFX. Hoewel er PEM-bestanden zijn met alleen het open bare deel, Key Vault vereist en accepteert alleen een PEM-of PFX-bestand met een persoonlijke sleutel. Zie [een certificaat importeren in Key Vault](./tutorial-import-certificate.md#import-a-certificate-to-key-vault)voor meer informatie.
 
 ### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>Waarom kan ik het wacht woord dat is gekoppeld niet zien nadat ik een met een wacht woord beveiligd certificaat heb geïmporteerd naar Key Vault en het vervolgens kan downloaden?
     
@@ -35,7 +35,7 @@ Nadat een certificaat is geïmporteerd en beveiligd in Key Vault, wordt het bijb
 
 Wanneer u een certificaat importeert, moet u ervoor zorgen dat de sleutel is opgenomen in het bestand. Als u een persoonlijke sleutel afzonderlijk in een andere indeling hebt opgeslagen, moet u de sleutel combi neren met het certificaat. Sommige certificerings instanties bieden certificaten in andere indelingen. Daarom moet u, voordat u het certificaat importeert, ervoor zorgen dat het de PEM-of PFX-bestands indeling is en dat de sleutel gebruikmaakt van Rivest-Shamir – Adleman (RSA) of een ECC-code ring (elliptisch-Curve Cryptography). 
 
-Zie [certificaat vereisten](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) en [vereisten voor certificaat sleutels](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection)voor meer informatie.
+Zie [certificaat vereisten](./certificate-scenarios.md#formats-of-import-we-support) en [vereisten voor certificaat sleutels](../keys/about-keys.md)voor meer informatie.
 
 ###  <a name="can-i-import-a-certificate-by-using-an-arm-template"></a>Kan ik een certificaat importeren met behulp van een ARM-sjabloon?
 
@@ -43,20 +43,20 @@ Nee, het is niet mogelijk om certificaat bewerkingen uit te voeren met behulp va
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Wanneer ik een certificaat Importeer via de Azure Portal, krijg ik de fout ' er is iets fout gegaan '. Hoe kan ik verder onderzoeken?
     
-Als u een meer beschrijvende fout wilt weer geven, importeert u het certificaat bestand met behulp van [de Azure cli](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) of [Power shell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
+Als u een meer beschrijvende fout wilt weer geven, importeert u het certificaat bestand met behulp van [de Azure cli](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) of [Power shell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Hoe kan ik ' fout type: toegang geweigerd of gebruiker is niet gemachtigd om certificaat te importeren ' oplossen '?
     
-Voor de import bewerking moet u de gebruikers machtigingen verlenen om het certificaat te importeren onder het toegangs beleid. Als u dit wilt doen, gaat u naar de sleutel kluis **, selecteert u toegangs beleid**toegangs  >  **beleid toevoegen**  >  **Selecteer certificaat machtigingen**  >  **Principal**, zoek naar de gebruiker en voeg het e-mail adres van de gebruiker toe. 
+Voor de import bewerking moet u de gebruikers machtigingen verlenen om het certificaat te importeren onder het toegangs beleid. Als u dit wilt doen, gaat u naar de sleutel kluis **, selecteert u toegangs beleid** toegangs  >  **beleid toevoegen**  >  **Selecteer certificaat machtigingen**  >  **Principal** , zoek naar de gebruiker en voeg het e-mail adres van de gebruiker toe. 
 
-Zie [over Azure Key Vault certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control)voor meer informatie over toegangs beleid voor certificaten.
+Zie [over Azure Key Vault certificaten](./about-certificates.md#certificate-access-control)voor meer informatie over toegangs beleid voor certificaten.
 
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>Hoe kan ik ' fout type: conflict bij het maken van een certificaat ' oplossen '?
     
-Elke certificaat naam moet uniek zijn. Een certificaat met dezelfde naam kan in een tijdelijke status worden verwijderd. Daarnaast op basis van de [samen stelling van een certificaat](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)wordt, wanneer er een nieuw certificaat wordt gemaakt, een adresseerbaar geheim gemaakt met dezelfde naam, dus als de sleutel kluis een andere sleutel of een geheim bevat met dezelfde naam als het certificaat dat u probeert op te geven voor uw certificaat, mislukt het maken van de certificaten en moet u de sleutel of het geheim verwijderen of een andere naam voor het certificaat gebruiken 
+Elke certificaat naam moet uniek zijn. Een certificaat met dezelfde naam kan in een tijdelijke status worden verwijderd. Daarnaast op basis van de [samen stelling van een certificaat](./about-certificates.md#composition-of-a-certificate)wordt, wanneer er een nieuw certificaat wordt gemaakt, een adresseerbaar geheim gemaakt met dezelfde naam, dus als de sleutel kluis een andere sleutel of een geheim bevat met dezelfde naam als het certificaat dat u probeert op te geven voor uw certificaat, mislukt het maken van de certificaten en moet u de sleutel of het geheim verwijderen of een andere naam voor het certificaat gebruiken 
 
-Zie voor meer informatie een [Verwijderde certificaat bewerking ophalen](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
+Zie voor meer informatie een [Verwijderde certificaat bewerking ophalen](/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
 
 ### <a name="why-am-i-getting-error-type-char-length-is-too-long"></a>Waarom krijg ik ' fout type: lengte van tekens is te lang '?
 Deze fout kan een van de volgende twee oorzaken hebben:    
@@ -83,4 +83,4 @@ Als u het certificaat hebt geïmporteerd, moet u het kunnen bevestigen door naar
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Key Vault certificaten](/azure/key-vault/certificates/about-certificates)
+- [Azure Key Vault certificaten](./about-certificates.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e22400016eae0642c4e25fcfd4fcaaaab22a27a8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8faf9c913ea9bab2feaf698efeb6fd5b3ca63179
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280582"
+ms.locfileid: "93289631"
 ---
 # <a name="speech-service-release-notes"></a>Release opmerkingen bij de spraak service
 
@@ -24,21 +24,13 @@ ms.locfileid: "93280582"
 
 **Opmerking** : de spraak-SDK in Windows is afhankelijk van de gedeelde micro soft Visual C++ Redistributable voor visual studio 2015, 2017 en 2019. Down load deze [hier](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
 
-**Speech CLI (ook wel SPX genoemd)**<br>
-SPX is de opdracht regel interface voor het gebruik van de service Azure speech zonder code te schrijven. Down load [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)de nieuwste versie.
-- `spx csr dataset upload --kind audio|language|acoustic` -gegevens sets maken op basis van lokale gegevens, niet alleen vanuit Url's.
-- `spx csr evaluation create|status|list|update|delete` -nieuwe modellen vergelijken met waarheid van de basis lijn/andere modellen.
-- `spx * list` : biedt ondersteuning voor niet-wissel bare ervaring (vereist niet--top X--Skip X).
-- `spx * --http header A=B` -ondersteunt aangepaste headers (toegevoegd voor Office voor aangepaste verificatie). 
-- `spx help` : verbeterde tekst en tekst kleur code (blauw).
-
 **Nieuwe functies**
 - **Linux** : er is ondersteuning toegevoegd voor Debian 10 en Ubuntu 20,04 LTS.
 - **Python/objectief-C** : er is ondersteuning toegevoegd voor de `KeywordRecognizer` API. [Hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics)wordt de documentatie weer gegeven.
 - **C++/Java/C #** : er is ondersteuning toegevoegd om een `HttpHeader` sleutel/waarde in te stellen via `ServicePropertyChannel::HttpHeader` .
 - **Java script** : er is ondersteuning toegevoegd voor de `ConversationTranscriber` API. Lees [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript)de documentatie. 
-- **C++/c #** : nieuwe `AudioDataStream FromFile` methode toegevoegd (om te lezen. WAV-bestanden) [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audiodatastream) en [hier (C#)](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream.fromfile).
+- **C++/c #** : nieuwe `AudioDataStream FromWavFileInput` methode toegevoegd (om te lezen. WAV-bestanden) [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) en [hier (C#)](
+https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
 -  **C++/c #/Java/python/Objective-C/Swift** : er is een `stopSpeakingAsync()` methode toegevoegd om de tekst-naar-spraak-synthese te stoppen. Lees de referentie documentatie [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), [hier (C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)), hier ( [Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), [hier (python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python), en [hier (objectief-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
 - **C#, C++, Java** : een `FromDialogServiceConnector()` functie toegevoegd aan de `Connection` klasse die kan worden gebruikt voor het bewaken van verbindings-en verbreken van gebeurtenissen voor `DialogServiceConnector` . Lees de referentie documentatie [hier (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection), en [hier (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable).
 <!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
@@ -72,6 +64,16 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 
 **COVID-19-verkorte tests:** Omdat we in de afgelopen paar weken op afstand werken, kunnen we zoveel hand matige verificatie tests uitvoeren als we normaal gesp roken doen. We hebben geen wijzigingen aangebracht die denken dat we niets hebben gepaard en onze geautomatiseerde tests zijn allemaal geslaagd. In het onwaarschijnlijke geval dat we iets hebben gemist, laat het ons weten op [github](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
 Blijf op de hoogte.
+
+## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>Speech CLI (ook wel SPX genoemd): 2020-oktober release
+SPX is de opdracht regel interface voor het gebruik van de service Azure speech zonder code te schrijven. Down load [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)de nieuwste versie. <br>
+
+**Nieuwe functies**
+- `spx csr dataset upload --kind audio|language|acoustic` -gegevens sets maken op basis van lokale gegevens, niet alleen vanuit Url's.
+- `spx csr evaluation create|status|list|update|delete` -nieuwe modellen vergelijken met waarheid van de basis lijn/andere modellen.
+- `spx * list` : biedt ondersteuning voor niet-wissel bare ervaring (vereist niet--top X--Skip X).
+- `spx * --http header A=B` -ondersteunt aangepaste headers (toegevoegd voor Office voor aangepaste verificatie). 
+- `spx help` : verbeterde tekst en tekst kleur code (blauw).
 
 
 ## <a name="text-to-speech-2020-august-release"></a>Tekst-naar-spraak 2020-augustus-release

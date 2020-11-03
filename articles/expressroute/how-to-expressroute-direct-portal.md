@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: dac9df23209fa93b8060ad80d58fd66f7a356ecd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56638f14565f76b0a2fc252b81dba3dae9e53dd8
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651476"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289443"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Direct ExpressRoute maken met behulp van de Azure Portal
 
@@ -24,15 +24,15 @@ Met ExpressRoute direct kunt u rechtstreeks verbinding maken met het wereld wijd
 Controleer of de resource provider **micro soft. Network** is geregistreerd voor uw abonnement. Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider.
 
 1. U hebt toegang tot uw abonnements instellingen zoals beschreven in [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md).
-1. In uw abonnement, voor **resource providers**, controleert u of de provider **micro soft. Network** een **geregistreerde** status bevat. Als de resource provider micro soft. Network niet aanwezig is in de lijst met geregistreerde providers, voegt u deze toe.
+1. In uw abonnement, voor **resource providers** , controleert u of de provider **micro soft. Network** een **geregistreerde** status bevat. Als de resource provider micro soft. Network niet aanwezig is in de lijst met geregistreerde providers, voegt u deze toe.
 
 ## <a name="create-expressroute-direct"></a><a name="create-erdir"></a>ExpressRoute direct maken
 
 1. Selecteer in het menu [Azure Portal](https://portal.azure.com) of op de **Start** pagina de optie **een resource maken**.
 
-1. Typ **ExpressRoute direct**in het veld ***Marketplace doorzoeken*** op de pagina **Nieuw** en selecteer vervolgens **Enter** om naar de zoek resultaten te gaan.
+1. Op de **nieuwe** pagina, in het **veld _Marketplace _ zoeken_ , typt u *_* ExpressRoute direct** en selecteert u vervolgens **Enter** om naar de zoek resultaten te gaan.
 
-1. Selecteer **ExpressRoute direct**in de resultaten.
+1. Selecteer **ExpressRoute direct** in de resultaten.
 
 1. Selecteer op de pagina **ExpressRoute direct** de optie **maken** om de pagina **ExpressRoute direct maken** te openen.
 
@@ -40,18 +40,18 @@ Controleer of de resource provider **micro soft. Network** is geregistreerd voor
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/basics.png" alt-text="Pagina Basisinformatie":::
 
-    * **Abonnement**: het Azure-abonnement dat u wilt gebruiken voor het maken van een nieuwe ExpressRoute direct. De ExpressRoute direct resource-en ExpressRoute-circuits moeten zich in hetzelfde abonnement benemen.
-    * **Resource groep**: de Azure-resource groep waarin de nieuwe ExpressRoute direct-resource wordt gemaakt. Als u geen bestaande resource groep hebt, kunt u een nieuwe maken.
-    * **Regio**: de open bare Azure-regio waarin de resource wordt gemaakt.
-    * **Naam**: de naam van de nieuwe ExpressRoute direct-resource.
+    * **Abonnement** : het Azure-abonnement dat u wilt gebruiken voor het maken van een nieuwe ExpressRoute direct. De ExpressRoute direct resource-en ExpressRoute-circuits moeten zich in hetzelfde abonnement benemen.
+    * **Resource groep** : de Azure-resource groep waarin de nieuwe ExpressRoute direct-resource wordt gemaakt. Als u geen bestaande resourcegroep hebt, kunt u een nieuwe maken.
+    * **Regio** : De openbare Azure-regio waarin de resource wordt gemaakt.
+    * **Naam** : de naam van de nieuwe ExpressRoute direct-resource.
 
 1. Vul vervolgens de velden op de pagina **configuratie** in.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Pagina Basisinformatie":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Scherm opname van de pagina ' Create ExpressRoute direct ' op het tabblad ' configuratie ' is geselecteerd.":::
 
-    * **Locatie van peering**: de peering-locatie waar u verbinding maakt met de ExpressRoute direct-resource. Bekijk [ExpressRoute-locaties](expressroute-locations-providers.md)voor meer informatie over peering locaties.
-   * **Band breedte**: de band breedte van het poort paar dat u wilt reserveren. ExpressRoute direct ondersteunt de bandbreedte opties van 10 GB en 100 GB. Als uw gewenste band breedte niet beschikbaar is op de opgegeven peering-locatie, [opent u een ondersteunings aanvraag in de Azure Portal](https://aka.ms/azsupt).
-   * **Inkapseling**: ExpressRoute direct ondersteunt zowel QinQ-als Dot1Q-inkapseling.
+    * **Locatie van peering** : de peering-locatie waar u verbinding maakt met de ExpressRoute direct-resource. Bekijk [ExpressRoute-locaties](expressroute-locations-providers.md)voor meer informatie over peering locaties.
+   * **Band breedte** : de band breedte van het poort paar dat u wilt reserveren. ExpressRoute direct ondersteunt de bandbreedte opties van 10 GB en 100 GB. Als uw gewenste band breedte niet beschikbaar is op de opgegeven peering-locatie, [opent u een ondersteunings aanvraag in de Azure Portal](https://aka.ms/azsupt).
+   * **Inkapseling** : ExpressRoute direct ondersteunt zowel QinQ-als Dot1Q-inkapseling.
      * Als QinQ is geselecteerd, wordt elk ExpressRoute-circuit dynamisch toegewezen aan een S-tag en is deze uniek in de directe resource van ExpressRoute.
      *  Elk C-tag op het circuit moet uniek zijn op het circuit, maar niet via de ExpressRoute direct.
      * Als Dot1Q-inkapseling is geselecteerd, moet u de uniekheid van de C-tag (VLAN) beheren voor de volledige ExpressRoute direct-resource.
@@ -61,13 +61,13 @@ Controleer of de resource provider **micro soft. Network** is geregistreerd voor
 
 1. Geef een wille keurige resource label op en selecteer vervolgens **controleren + maken** om de ExpressRoute direct-resource-instellingen te valideren.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Pagina Basisinformatie":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Scherm afbeelding waarin de pagina ' ExpressRoute maken ' wordt weer gegeven op het tabblad ' controleren + maken ' is geselecteerd.":::
 
-1. Selecteer **Maken**. Er wordt een bericht weer gegeven met de melding dat uw implementatie zich bevindt. De status wordt op deze pagina weer gegeven wanneer de resources zijn gemaakt. 
+1. Selecteer **Maken**. Er wordt een bericht weergegeven met de melding dat uw implementatie aan de gang is. De status wordt op deze pagina weergegeven terwijl de resources worden gemaakt. 
 
 ## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>De autorisatie brief (LOA) genereren
 
-Het genereren van de autorisatie brief is op dit moment niet beschikbaar in de portal. Gebruik **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** of **[Azure cli](expressroute-howto-expressroute-direct-cli.md#authorization)** om de autorisatie brief te verkrijgen.
+Het genereren van de autorisatie brief is op dit moment niet beschikbaar in de portal. Gebruik **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** om de autorisatie brief te verkrijgen.
 
 ## <a name="change-admin-state-of-links"></a><a name="state"></a>De beheer status van koppelingen wijzigen
 
@@ -75,11 +75,11 @@ Dit proces moet worden gebruikt om een laag 1-test uit te voeren, zodat elke Kru
 
 1. Selecteer op de pagina **overzicht** van directe bronnen voor ExpressRoute in het gedeelte **koppelingen** de optie **link1**.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="Pagina Basisinformatie" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="Koppeling 1" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
 
-1. Schakel de instelling voor **beheer status** in op **ingeschakeld**en selecteer vervolgens **Opslaan**.
+1. Schakel de instelling voor **beheer status** in op **ingeschakeld** en selecteer vervolgens **Opslaan**.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="Pagina Basisinformatie":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="Beheer status":::
 
     >[!IMPORTANT]
     >De facturering begint wanneer de status van de beheerder op een van beide koppelingen is ingeschakeld.
@@ -99,19 +99,19 @@ Standaard kunt u 10 circuits maken in het abonnement waarin de ExpressRoute dire
 
 Met de volgende stappen kunt u een ExpressRoute-circuit maken op basis van de ExpressRoute direct-werk stroom. In plaats daarvan kunt u ook een circuit maken met behulp van de normale circuit werk stroom, hoewel er geen voor deel is van het gebruik van de standaardwerk stroom stappen voor deze configuratie. Zie [een ExpressRoute-circuit maken en wijzigen](expressroute-howto-circuit-portal-resource-manager.md).
 
-1. Selecteer in de sectie directe **instellingen** van ExpressRoute **circuits**en selecteer vervolgens **+ toevoegen**. 
+1. Selecteer in de sectie directe **instellingen** van ExpressRoute **circuits** en selecteer vervolgens **+ toevoegen**. 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Pagina Basisinformatie" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Scherm afbeelding toont de instellingen voor ExpressRoute waarvoor circuits zijn geselecteerd en die zijn gemarkeerd." lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. Configureer de instellingen op de pagina **configuratie** .
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Pagina Basisinformatie":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Configuratie pagina-ExpressRoute direct":::
 
 1. Geef een wille keurige bron code op, selecteer **controleren + maken** om de waarden te valideren voordat u de resource maakt.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Pagina Basisinformatie":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Controleren en maken-ExpressRoute direct":::
 
-1. Selecteer **Maken**. Er wordt een bericht weer gegeven met de melding dat uw implementatie zich bevindt. De status wordt op deze pagina weer gegeven wanneer de resources zijn gemaakt. 
+1. Selecteer **Maken**. Er wordt een bericht weergegeven met de melding dat uw implementatie aan de gang is. De status wordt op deze pagina weergegeven terwijl de resources worden gemaakt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

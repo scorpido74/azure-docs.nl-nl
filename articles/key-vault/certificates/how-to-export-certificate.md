@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 8a594d06fa84bb6e5ef502b02e1bec8244062ccb
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e7ea3ef16b60e53450436bda66ce3dde091c81c2
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233964"
+ms.locfileid: "93289558"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Certificaten exporteren uit Azure Key Vault
 
@@ -23,11 +23,11 @@ Meer informatie over het exporteren van certificaten uit Azure Key Vault. U kunt
 
 ## <a name="about-azure-key-vault-certificates"></a>Informatie over Azure Key Vault-certificaten
 
-Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inrichten, beheren en implementeren. Er wordt ook beveiligde communicatie voor toepassingen ingeschakeld. Raadpleeg [Azure Key Vault-certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) voor meer informatie.
+Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inrichten, beheren en implementeren. Er wordt ook beveiligde communicatie voor toepassingen ingeschakeld. Raadpleeg [Azure Key Vault-certificaten](./about-certificates.md) voor meer informatie.
 
 ### <a name="composition-of-a-certificate"></a>Samenstelling van een certificaat
 
-Wanneer er een Key Vault-certificaat wordt gemaakt, worden er ook een adresseerbare *sleutel* en een *geheim* gemaakt met dezelfde naam. Met de Key Vault-sleutel kunnen sleutelbewerkingen worden uitgevoerd. Met het Key Vault-geheim kan zowel de certificaatwaarde als het geheim worden opgehaald. Een Key Vault-certificaat bevat ook openbare metagegevens voor x509-certificaten. Ga naar [Samenstelling van een certificaat](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) voor meer informatie.
+Wanneer er een Key Vault-certificaat wordt gemaakt, worden er ook een adresseerbare *sleutel* en een *geheim* gemaakt met dezelfde naam. Met de Key Vault-sleutel kunnen sleutelbewerkingen worden uitgevoerd. Met het Key Vault-geheim kan zowel de certificaatwaarde als het geheim worden opgehaald. Een Key Vault-certificaat bevat ook openbare metagegevens voor x509-certificaten. Ga naar [Samenstelling van een certificaat](./about-certificates.md#composition-of-a-certificate) voor meer informatie.
 
 ### <a name="exportable-and-non-exportable-keys"></a>Exporteerbare en niet-exporteerbare sleutels
 
@@ -36,9 +36,9 @@ Nadat een Key Vault-certificaat is gemaakt, kan het worden opgehaald uit het adr
 - **Exporteerbaar** : Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel exporteerbaar is.
 - **Niet-exporteerbaar** : Het beleid dat wordt gebruikt voor het maken van het certificaat geeft aan dat de sleutel niet-exporteerbaar is. In dit geval maakt de persoonlijke sleutel geen deel uit van de waarde wanneer deze wordt opgehaald als geheim.
 
-Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) genoemd) Exporteren is alleen toegestaan met RSA, EC. HSM-sleutels zouden niet exporteerbaar zijn.
+Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) genoemd) Exporteren is alleen toegestaan met RSA, EC. HSM-sleutels zouden niet exporteerbaar zijn.
 
-Raadpleeg [Over Azure Key Vault-certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key) voor meer informatie.
+Raadpleeg [Over Azure Key Vault-certificaten](./about-certificates.md#exportable-or-non-exportable-key) voor meer informatie.
 
 ## <a name="export-stored-certificates"></a>Opgeslagen certificaten exporteren
 
@@ -61,7 +61,7 @@ az keyvault certificate download --file
                                  [--version]
 ```
 
-Bekijk [voorbeelden en parameterdefinities](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download) voor meer informatie.
+Bekijk [voorbeelden en parameterdefinities](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download) voor meer informatie.
 
 Downloaden als certificaat betekent dat het openbare gedeelte wordt opgehaald. Als u zowel de privésleutel als de openbare metagegevens wilt hebben, kunt u deze downloaden als geheim.
 
@@ -75,11 +75,11 @@ az keyvault secret download -–file {nameofcert.pfx}
                             [--version]
 ```
 
-Zie [parameterdefinities](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download) voor meer informatie.
+Zie [parameterdefinities](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download) voor meer informatie.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Gebruik deze opdracht in Azure PowerShell om het certificaat de naam **TestCert01** te geven vanuit de sleutelkluis met de naam **ContosoKV01** . Voer de volgende opdracht uit om het certificaat als PFX-bestand te downloaden. Met deze opdrachten krijgt u toegang tot **SecretId** en kunt u de inhoud opslaan als een PFX-bestand.
+Gebruik deze opdracht in Azure PowerShell om het certificaat de naam **TestCert01** te geven vanuit de sleutelkluis met de naam **ContosoKV01**. Voer de volgende opdracht uit om het certificaat als PFX-bestand te downloaden. Met deze opdrachten krijgt u toegang tot **SecretId** en kunt u de inhoud opslaan als een PFX-bestand.
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
@@ -102,23 +102,23 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 ```
 
 Met deze opdracht wordt de hele keten met certificaten met een persoonlijke sleutel geëxporteerd. Het certificaat is beveiligd met een wachtwoord.
-Zie [Get-AzKeyVaultCertificate - Voorbeeld 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)voor meer informatie over de **Get-AzKeyVaultCertificate** -opdracht en para meters.
+Zie [Get-AzKeyVaultCertificate - Voorbeeld 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)voor meer informatie over de **Get-AzKeyVaultCertificate** -opdracht en para meters.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Wanneer u op de Azure Portal een certificaat op de blade **Certificaat** maakt/importeert, ontvangt u een melding dat het certificaat is gemaakt. Selecteer het certificaat en de huidige versie om de optie om te downloaden te zien.
 
-Als u het certificaat wilt downloaden, selecteert u **Downloaden in CER-indeling** of **Downloaden in PFX/PEM-indeling** .
+Als u het certificaat wilt downloaden, selecteert u **Downloaden in CER-indeling** of **Downloaden in PFX/PEM-indeling**.
 
 ![Certificaat downloaden](../media/certificates/quick-create-portal/current-version-shown.png)
 
 **Azure App Service-certificaten exporteren**
 
-Azure App Service-certificaten zijn een handige manier om SSL-certificaten aan te schaffen. U kunt deze toewijzen aan Azure-apps vanuit de portal. U kunt deze certificaten ook exporteren vanuit de portal als PFX-bestanden zodat ze elders gebruikt kunnen worden. Na het importeren bevinden de App Service-certificaten zich onder **geheimen** .
+Azure App Service-certificaten zijn een handige manier om SSL-certificaten aan te schaffen. U kunt deze toewijzen aan Azure-apps vanuit de portal. U kunt deze certificaten ook exporteren vanuit de portal als PFX-bestanden zodat ze elders gebruikt kunnen worden. Na het importeren bevinden de App Service-certificaten zich onder **geheimen**.
 
 Zie de stappen voor het [exporteren van Azure App Service-certificaten](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx) voor meer informatie.
 
 ---
 
 ## <a name="read-more"></a>Meer informatie
-* [Verschillende typen certificaatbestanden en -definities](https://docs.microsoft.com/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)
+* [Verschillende typen certificaatbestanden en -definities](/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)

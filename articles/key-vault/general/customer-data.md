@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7155e1517ba5ff203f11ee834af3c0d1dd1fa065
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983243"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289475"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault klant gegevens functies
 
@@ -56,10 +56,10 @@ Azure Key Vault Diagnostische logboeken die persoonlijke gegevens bevatten, kunn
 
 - [Azure Key Vault: overzicht van voorlopig verwijderen](soft-delete-cli.md)
 
-- [Sleutel bewerkingen Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/key-operations)
+- [Sleutel bewerkingen Azure Key Vault](/rest/api/keyvault/key-operations)
 
-- [Azure Key Vaulte geheime bewerkingen](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Azure Key Vaulte geheime bewerkingen](/rest/api/keyvault/secret-operations)
 
-- [Certificaten en beleids regels Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Certificaten en beleids regels Azure Key Vault](/rest/api/keyvault/certificates-and-policies)
 
-- [Bewerkingen voor opslag accounts Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Bewerkingen voor opslag accounts Azure Key Vault](/rest/api/keyvault/storage-account-key-operations)

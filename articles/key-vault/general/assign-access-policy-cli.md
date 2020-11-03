@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 32a323e8cc56a8c45b18737bb55ebe19d4be27c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59ba81944ecdf4f2b6322f4298e61df33f5b1da8
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89381052"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289187"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>Een Key Vault toegangs beleid toewijzen
 
@@ -29,7 +29,7 @@ Voor meer informatie over het maken van groepen in Azure Active Directory met be
 
 1. Als u Azure CLI-opdrachten lokaal wilt uitvoeren, installeert u de [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest).
  
-    Als u opdrachten rechtstreeks in de Cloud wilt uitvoeren, gebruikt u de [Azure Cloud shell](/azure/cloud-shell/overview).
+    Als u opdrachten rechtstreeks in de Cloud wilt uitvoeren, gebruikt u de [Azure Cloud shell](../../cloud-shell/overview.md).
 
 1. Alleen lokale CLI: Meld u aan bij Azure met `az login` :
 

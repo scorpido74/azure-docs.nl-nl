@@ -7,18 +7,18 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370539"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289223"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender gebruiken voor container registers om uw installatie kopieën te scannen op beveiligings problemen
 
 Op deze pagina wordt uitgelegd hoe u de ingebouwde beveiligings scanner gebruikt om de container installatie kopieën te scannen die zijn opgeslagen in uw op Azure Resource Manager gebaseerde Azure Container Registry.
 
-Als **Azure Defender voor container registers** is ingeschakeld, wordt de installatie kopie die u naar het REGI ster pusht onmiddellijk gescand. Daarnaast wordt elke afbeelding die in de afgelopen 30 dagen is opgehaald, ook gescand. 
+Wanneer **Azure Defender voor containerregisters** is ingeschakeld, wordt elke installatiekopie die u naar het register pusht, onmiddellijk gescand. Daarnaast wordt elke afbeelding die in de afgelopen 30 dagen is opgehaald, ook gescand. 
 
 Wanneer de scanner beveiligings Security Center problemen meldt, Security Center de bevindingen en gerelateerde informatie als aanbevelingen. Daarnaast bevatten de bevindingen gerelateerde informatie zoals herbemiddelings tappen, relevante CVEs, CVSS-scores en meer. U kunt de geïdentificeerde beveiligings problemen weer geven voor een of meer abonnementen of voor een specifiek REGI ster.
 
@@ -31,7 +31,7 @@ Wanneer de scanner beveiligings Security Center problemen meldt, Security Center
 |Ondersteunde registers en installatie kopieën:|Linux-installatie kopieën in ACR-registers die toegankelijk zijn via het open bare Internet en toegang tot de shell|
 |Niet-ondersteunde registers en installatie kopieën:|Windows-installatie kopieën<br>Persoonlijke registers<br>Registers met toegang beperkt tot een firewall, een service-eind punt of een persoonlijk eind punt, zoals een persoonlijke Azure-koppeling<br>Afbeeldingen met een minimale installatie, zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen of ' Distroless-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem|
 |Vereiste rollen en machtigingen:|Rol van **beveiligings lezer** en [Azure container Registry lezer](../container-registry/container-registry-roles.md)|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
+|Clouds:|![Ja ](./media/icons/yes-icon.png) commerciële Clouds<br>![Ja ](./media/icons/yes-icon.png) US gov alleen de functie scan op push wordt momenteel ondersteund. Meer informatie in [Wanneer worden afbeeldingen gescand?](defender-for-container-registries-introduction.md#when-are-images-scanned)<br>![Geen ](./media/icons/no-icon.png) China gov, andere gov|
 |||
 
 
@@ -139,7 +139,7 @@ U kunt een van de volgende criteria gebruiken:
 
 Een regel maken:
 
-1. Selecteer op de detail pagina met aanbevelingen voor **beveiligings problemen in azure container Registry installatie kopieën moet worden hersteld**de optie **regel uitschakelen**.
+1. Selecteer op de detail pagina met aanbevelingen voor **beveiligings problemen in azure container Registry installatie kopieën moet worden hersteld** de optie **regel uitschakelen**.
 1. Selecteer het relevante bereik.
 1. Definieer uw criteria.
 1. Selecteer **regel Toep assen**.
@@ -149,7 +149,7 @@ Een regel maken:
 1. Een regel weer geven, overschrijven of verwijderen: 
     1. Selecteer **regel uitschakelen**.
     1. In de lijst bereik worden abonnementen met actieve regels weer gegeven als **regel toegepast**.
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Een regel voor het uitschakelen van VA-bevindingen in het REGI ster maken":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Een bestaande regel wijzigen of verwijderen":::
     1. Als u de regel wilt weer geven of verwijderen, selecteert u het menu met weglatings tekens (...).
 
 

@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cd4f2198721e0d92abe22b1b6d95dceda2dc874d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789179"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289243"
 ---
-# <a name="continuously-export-security-center-data"></a>Security Center gegevens doorlopend exporteren
+# <a name="continuously-export-security-center-data"></a>Security Center-gegevens continu exporteren
 
 Azure Security Center genereert gedetailleerde beveiligings waarschuwingen en aanbevelingen. U kunt deze weer geven in de portal of via programmatische hulpprogram ma's. Mogelijk moet u ook enkele of al deze gegevens exporteren voor het bijhouden met andere controle hulpprogramma's in uw omgeving. 
 
@@ -41,7 +41,7 @@ In dit artikel wordt beschreven hoe u doorlopend exporteren naar Log Analytics w
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
 |Prijzen:|Gratis|
 |Vereiste rollen en machtigingen:|<ul><li>**Beveiligings beheerder** of- **eigenaar** voor de resource groep</li><li>Schrijf machtigingen voor de doel resource</li><li>Als u het Azure Policy beleid ' DeployIfNotExist ' gebruikt dat hieronder wordt beschreven, hebt u ook machtigingen nodig voor het toewijzen van beleid</li></ul>|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Ja](./media/icons/yes-icon.png) China gov (naar Event hub), andere gov|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) US Gov, andere gov<br>![Ja](./media/icons/yes-icon.png) Gov China (naar Event hub)|
 |||
 
 
@@ -52,15 +52,15 @@ In dit artikel wordt beschreven hoe u doorlopend exporteren naar Log Analytics w
 
 U kunt continue export configureren vanaf de Security Center pagina's in Azure Portal, via het Security Center REST API of op schaal met behulp van de meegeleverde Azure Policy sjablonen. Selecteer het juiste tabblad hieronder voor meer informatie.
 
-### <a name="use-the-azure-portal"></a>[**De Azure-portal gebruiken**](#tab/azure-portal)
+### <a name="use-the-azure-portal"></a>[**Azure Portal gebruiken**](#tab/azure-portal)
 
 ### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Continue export configureren vanaf de Security Center pagina's in Azure Portal
 
 De onderstaande stappen zijn nodig om een doorlopende export naar Log Analytics werk ruimte of Azure Event Hubs in te stellen.
 
-1. Selecteer op de zijbalk van Security Center de **& instellingen voor prijzen** .
+1. Selecteer op de zijbalk van Security Center de **& instellingen voor prijzen**.
 1. Selecteer het specifieke abonnement waarvoor u de gegevens export wilt configureren.
-1. Selecteer in de zijbalk van de pagina instellingen voor dat abonnement **doorlopend exporteren** .
+1. Selecteer in de zijbalk van de pagina instellingen voor dat abonnement **doorlopend exporteren**.
     [ ![ Export opties in azure Security Center](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) hier ziet u de export opties. Er is een tabblad voor elk beschik bare export doel. 
 1. Selecteer het gegevens type dat u wilt exporteren en kies uit de filters voor elk type (bijvoorbeeld alleen waarschuwingen met hoge Ernst exporteren).
 1. Als uw selectie een van deze vier aanbevelingen bevat, kunt u desgewenst de evaluaties van beveiligings problemen samen voegen:
@@ -74,9 +74,9 @@ De onderstaande stappen zijn nodig om een doorlopende export naar Log Analytics 
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export" :::
 
 1. Kies in het gebied export doel de locatie waar u de gegevens wilt opslaan. Gegevens kunnen worden opgeslagen in een doel voor een ander abonnement (bijvoorbeeld op een centraal Event hub-exemplaar of een centrale Log Analytics-werk ruimte).
-1. Selecteer **Opslaan** .
+1. Selecteer **Opslaan**.
 
-### <a name="use-the-rest-api"></a>[**De REST API gebruiken**](#tab/rest-api)
+### <a name="use-the-rest-api"></a>[**REST-API gebruiken**](#tab/rest-api)
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>Continue export configureren met behulp van de REST API
 
@@ -124,11 +124,11 @@ Als u uw continue export configuraties in uw organisatie wilt implementeren, geb
     > [!TIP]
     > U kunt deze ook vinden door te zoeken naar Azure Policy:
     > 1. Open Azure Policy.
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Toegang tot Azure Policy":::
     > 2. Selecteer in het menu Azure Policy **definities** en zoek ze op naam. 
 
-1. Selecteer op de pagina relevante Azure Policy **toewijzen** .
-    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export":::
+1. Selecteer op de pagina relevante Azure Policy **toewijzen**.
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="De Azure Policy toewijzen":::
 
 1. Open elk tabblad en stel de para meters naar wens in:
     1. Stel op het tabblad **basis beginselen** het bereik voor het beleid in. Als u gecentraliseerd beheer wilt gebruiken, wijst u het beleid toe aan de beheer groep met de abonnementen die continue export configuratie zullen gebruiken. 
@@ -137,9 +137,9 @@ Als u uw continue export configuraties in uw organisatie wilt implementeren, geb
         > Elke para meter heeft een knop info met uitleg over de beschik bare opties.
         >
         > Het tabblad para meters van Azure Policy (1) biedt toegang tot vergelijk bare configuratie opties als de pagina doorlopend exporteren van Security Center (2).
-        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
+        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="De para meters vergelijken in doorlopend exporteren met Azure Policy" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. Als u deze toewijzing wilt Toep assen op bestaande abonnementen, opent u het tabblad **herstel** en selecteert u de optie voor het maken van een herstel taak.
-1. Controleer de pagina samen vatting en selecteer **maken** .
+1. Controleer de pagina samen vatting en selecteer **maken**.
 
 --- 
 
@@ -154,7 +154,7 @@ Beveiligings waarschuwingen en aanbevelingen worden respectievelijk opgeslagen i
 De naam van de Log Analytics oplossing die deze tabellen bevat, is afhankelijk van of u Azure Defender hebt ingeschakeld: Security (Beveiliging en audit) of SecurityCenterFree. 
 
 > [!TIP]
-> Als u de gegevens in de doel werkruimte wilt zien, moet u een van deze oplossingen inschakelen **beveiliging en audit** of **SecurityCenterFree** .
+> Als u de gegevens in de doel werkruimte wilt zien, moet u een van deze oplossingen inschakelen **beveiliging en audit** of **SecurityCenterFree**.
 
 ![De * SecurityAlert *-tabel in Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
 
@@ -169,7 +169,7 @@ Azure Monitor biedt een uniforme waarschuwings ervaring voor verschillende Azure
 
 Als u waarschuwingen en aanbevelingen van Security Center in Azure Monitor wilt weer geven, configureert u een waarschuwings regel op basis van Log Analytics query's (logboek waarschuwing):
 
-1. Selecteer op de pagina **waarschuwingen** van Azure monitor **nieuwe waarschuwings regel** .
+1. Selecteer op de pagina **waarschuwingen** van Azure monitor **nieuwe waarschuwings regel**.
 
     ![Pagina waarschuwingen van Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
@@ -177,7 +177,7 @@ Als u waarschuwingen en aanbevelingen van Security Center in Azure Monitor wilt 
 
     * Selecteer voor **resource** de log Analytics werk ruimte waarnaar u beveiligings waarschuwingen en aanbevelingen hebt geëxporteerd.
 
-    * Selecteer **Condition** voor voor waarde **aangepaste logboek zoekopdracht** . Configureer op de pagina die wordt weer gegeven, de query, de lookback periode en de frequentie periode. In de zoek query kunt u *SecurityAlert* of *SecurityRecommendation* typen om een query uit te voeren op de gegevens typen die Security Center doorlopend exporteren naar wanneer u de functie continue export naar log Analytics inschakelt. 
+    * Selecteer **Condition** voor voor waarde **aangepaste logboek zoekopdracht**. Configureer op de pagina die wordt weer gegeven, de query, de lookback periode en de frequentie periode. In de zoek query kunt u *SecurityAlert* of *SecurityRecommendation* typen om een query uit te voeren op de gegevens typen die Security Center doorlopend exporteren naar wanneer u de functie continue export naar log Analytics inschakelt. 
     
     * U kunt desgewenst de [actie groep](../azure-monitor/platform/action-groups.md) configureren die u wilt activeren. Actie groepen kunnen e-mail verzenden, ITSM tickets, webhooks en meer activeren.
     ![Waarschuwings regel Azure Monitor](./media/continuous-export/azure-monitor-alert-rule.png)

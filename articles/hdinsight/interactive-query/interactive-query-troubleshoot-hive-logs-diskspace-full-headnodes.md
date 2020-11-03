@@ -7,12 +7,12 @@ author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 64bf5714f5eb99df9929a47fef414a827ec680af
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 107ec012bf2ff76ee1cbe4c5f8252566a5a16127
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145630"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288930"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Scenario: Apache Hive-logboeken worden de schijf ruimte op de hoofd knooppunten in azure HDInsight gevuld
 
@@ -23,7 +23,7 @@ In dit artikel worden de stappen beschreven voor het oplossen van problemen en m
 Op een Apache Hive-LLAP-cluster nemen ongewenste Logboeken de volledige schijf ruimte op de hoofd knooppunten in beslag. Dit probleem kan de volgende problemen veroorzaken:
 
 - SSH-toegang mislukt omdat er geen ruimte meer is op het hoofd knooppunt.
-- Ambari genereert een *HTTP-fout: de 503-Service is niet beschikbaar* .
+- Ambari genereert een *HTTP-fout: de 503-Service is niet beschikbaar*.
 - HiveServer2 Interactive kan niet opnieuw worden opgestart.
 
 De `ambari-agent` Logboeken bevatten de volgende vermeldingen wanneer het probleem optreedt:
@@ -42,7 +42,7 @@ In geavanceerde configuraties van Hive-log4j is het huidige standaard verwijderi
 
 1. Ga naar het onderdeel overzicht van Hive-onderdelen op de Ambari-Portal en selecteer het tabblad **configuratie** .
 
-2. Ga naar de `Advanced hive-log4j` sectie in **Geavanceerde instellingen** .
+2. Ga naar de `Advanced hive-log4j` sectie in **Geavanceerde instellingen**.
 
 3. Stel de `appender.RFA.strategy.action.condition.age` para meter in op een leeftijd van uw keuze. In dit voor beeld wordt de leeftijd ingesteld op 14 dagen: `appender.RFA.strategy.action.condition.age = 14D`
 
@@ -71,10 +71,4 @@ In geavanceerde configuraties van Hive-log4j is het huidige standaard verwijderi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
-
-* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
-
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
-
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](../../azure-portal/supportability/how-to-create-azure-support-request.md). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

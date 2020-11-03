@@ -3,14 +3,14 @@ title: Wijzigingen bijhouden en inventaris in Azure Automation beheren
 description: In dit artikel leest u hoe u Wijzigingen bijhouden en inventaris kunt gebruiken om wijzigingen in de software en micro soft-Services in uw omgeving bij te houden.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 11/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: a599bb6f07683540f5b12c6a69d6565161f89a4f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209850"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288734"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris beheren
 
@@ -45,7 +45,7 @@ Gebruik de volgende stappen om bestands tracering op Windows-computers te config
 
 5. Selecteer **Instellingen bewerken** (het tandwiel symbool).
 
-6. Selecteer op de pagina werkruimte configuratie de optie **Windows-bestanden**en klik vervolgens op **toevoegen** om een nieuw bestand toe te voegen om bij te houden.
+6. Selecteer op de pagina werkruimte configuratie de optie **Windows-bestanden** en klik vervolgens op **toevoegen** om een nieuw bestand toe te voegen om bij te houden.
 
 7. Voer in het deel venster Windows-bestand voor Wijzigingen bijhouden toevoegen de informatie in voor het bestand of de map die u wilt bijhouden en klik op **Opslaan**. In de volgende tabel worden de eigenschappen gedefinieerd die u kunt gebruiken voor de informatie.
 
@@ -59,6 +59,13 @@ Gebruik de volgende stappen om bestands tracering op Windows-computers te config
     |Recursie     | Waar als recursie wordt gebruikt bij het zoeken naar het item dat moet worden bijgehouden, en ONWAAR anders onwaar.        |    
     |Bestands inhoud uploaden | True voor het uploaden van bestands inhoud op bijgehouden wijzigingen en ONWAAR, anders onwaar.|
 
+    Als u van plan bent om de bewaking van bestanden en mappen met behulp van joker tekens te configureren, moet u rekening houden met het volgende:
+
+    - Joker tekens zijn vereist voor het bijhouden van meerdere bestanden.
+    - Joker tekens kunnen alleen worden gebruikt in het laatste segment van een pad, zoals *C:\folder\file* of */etc/*. conf *
+    - Als een omgevings variabele een pad bevat dat niet geldig is, wordt de validatie uitgevoerd, maar het pad mislukt wanneer de inventarisatie wordt uitgevoerd.
+    - Bij het instellen van het pad vermijdt u algemene paden zoals *c:*. * *. Dit leidt ertoe dat er te veel mappen worden gepasseerd.
+
 8. Zorg ervoor dat u waar opgeeft voor het **uploaden van bestands inhoud**. Met deze instelling schakelt u het bijhouden van bestands inhoud in voor het opgegeven bestandspad.
 
 ### <a name="configure-file-tracking-on-linux"></a>Bestands tracering configureren in Linux
@@ -67,7 +74,7 @@ Gebruik de volgende stappen om bestands tracering op Linux-computers te configur
 
 1. Selecteer **Instellingen bewerken** (het tandwiel symbool).
 
-2. Selecteer op de pagina werkruimte configuratie de optie **Linux-bestanden**en selecteer vervolgens **+ toevoegen** om een nieuw bestand toe te voegen om bij te houden.
+2. Selecteer op de pagina werkruimte configuratie de optie **Linux-bestanden** en selecteer vervolgens **+ toevoegen** om een nieuw bestand toe te voegen om bij te houden.
 
 3. Voer op de pagina **Linux-bestand voor wijzigingen bijhouden toevoegen** de informatie in voor het bestand of de map die u wilt bijhouden en selecteer vervolgens **Opslaan**. In de volgende tabel worden de eigenschappen gedefinieerd die u kunt gebruiken voor de informatie.
 
@@ -112,7 +119,7 @@ Voer de volgende stappen uit om het bijhouden van wijzigingen in de bestands inh
 
    ![Opslag account instellen](./media/manage-change-tracking/storage-account.png)
 
-6. In Wijzigingen bijhouden en inventaris worden Uri's van het opslag account en de Shared Access Signature (SAS) weer gegeven wanneer het bijhouden van bestands inhoud wordt ingeschakeld. De hand tekeningen verlopen na 365 dagen en u kunt ze opnieuw maken door **opnieuw genereren**te selecteren.
+6. In Wijzigingen bijhouden en inventaris worden Uri's van het opslag account en de Shared Access Signature (SAS) weer gegeven wanneer het bijhouden van bestands inhoud wordt ingeschakeld. De hand tekeningen verlopen na 365 dagen en u kunt ze opnieuw maken door **opnieuw genereren** te selecteren.
 
    ![Lijst met account sleutels](./media/manage-change-tracking/account-keys.png)
 
@@ -138,7 +145,7 @@ Gebruik de volgende stappen om het bijhouden van register sleutels op Windows-co
 
 3. Selecteer **+ toevoegen** om een nieuwe register sleutel aan de tracering toe te voegen.
 
-4. Voer op de pagina **Windows-REGI ster toevoegen voor wijzigingen bijhouden** de gegevens in voor de sleutel die u wilt bijhouden en selecteer vervolgens **Opslaan**. In de volgende tabel worden de eigenschappen gedefinieerd die u kunt gebruiken voor de informatie.
+4. Voer op de pagina **Windows-REGI ster toevoegen voor wijzigingen bijhouden** de gegevens in voor de sleutel die u wilt bijhouden en selecteer vervolgens **Opslaan**. In de volgende tabel worden de eigenschappen gedefinieerd die u kunt gebruiken voor de informatie. Wanneer u een registerpad opgeeft, moet dit een sleutel zijn en geen waarde.
 
     |Eigenschap  |Beschrijving  |
     |---------|---------|

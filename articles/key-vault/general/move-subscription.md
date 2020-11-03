@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: c92671028f851a456b3222100e33958c9e26466a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0cd4cad74257dbf83ec8d30405eacca341a8d31
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785320"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289517"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Een Azure Key Vault verplaatsen naar een ander abonnement
 
@@ -100,9 +100,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 Nu uw kluis is gekoppeld aan de juiste tenant-ID en de oude toegangsbeleidsregels zijn verwijderd, kunt u nieuwe toegangsbeleidsregels instellen met de Azure PowerShell-cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) of de Azure CLI-opdracht [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy).
 
-Als u een beheerde identiteit voor Azure-resources gebruikt, moet u deze ook bijwerken naar de nieuwe Azure Active Directory-Tenant. Voor meer informatie over beheerde identiteiten, [overzicht van beheerde identiteiten](/azure/active-directory/managed-identities-azure-resources/overview).
+Als u een beheerde identiteit voor Azure-resources gebruikt, moet u deze ook bijwerken naar de nieuwe Azure Active Directory-Tenant. Voor meer informatie over beheerde identiteiten, [overzicht van beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md).
 
 Als u beheerde identiteit gebruikt, moet u ook de identiteit bijwerken omdat de oude identiteit niet meer in de juiste Azure Active Directory Tenant voor komt. Raadpleeg de volgende documenten voor informatie over het oplossen van dit probleem. 
 
-* [MSI bijwerken](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
-* [Abonnement overdragen naar nieuwe map](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
+* [MSI bijwerken](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
+* [Abonnement overdragen naar nieuwe map](../../role-based-access-control/transfer-subscription.md)

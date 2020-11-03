@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1052ad06400eb70fe41617421b54978bddd9e50
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cd0a2b44fd54eb716b5e1b8f9eabc923ccd7977f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441365"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285848"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker
 
@@ -59,7 +59,7 @@ Voor gast gebruikers met de status 2 is de **bron** een **micro soft-account**.
 
 ![Status 2 gast gebruiker na inwisseling van aanbieding](media/user-properties/after-redemption-state2.png)
 
-Voor gast gebruikers met de status 3 en status 4 is de eigenschap **Source** ingesteld op **Azure Active Directory** of **Windows Server Active Directory**, zoals wordt beschreven in de volgende sectie.
+Voor gast gebruikers met de status 3 en status 4 is de eigenschap **Source** ingesteld op **Azure Active Directory** of **Windows Server Active Directory** , zoals wordt beschreven in de volgende sectie.
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Belangrijkste eigenschappen van de Azure AD B2B-samenwerkings gebruiker
 ### <a name="usertype"></a>UserType
@@ -70,6 +70,8 @@ Met deze eigenschap wordt de relatie van de gebruiker met de pacht van de host a
 
   > [!NOTE]
   > De User type heeft geen relatie met de manier waarop de gebruiker zich aanmeldt, de Directory-rol van de gebruiker, enzovoort. Met deze eigenschap wordt de relatie van de gebruiker met de organisatie van de host aangegeven en kan de organisatie beleid afdwingen dat afhankelijk is van deze eigenschap.
+
+Voor details over prijzen raadpleegt u [Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory).
 
 ### <a name="source"></a>Bron
 Deze eigenschap geeft aan hoe de gebruiker zich aanmeldt.

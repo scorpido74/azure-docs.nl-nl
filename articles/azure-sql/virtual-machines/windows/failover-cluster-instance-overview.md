@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1b8dae471729b42b1c302c6c45033ddc808c7b43
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792477"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289297"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Exemplaren van failoverclusters met SQL Server op virtuele Azure-machines (VM's).
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -149,7 +149,7 @@ Raadpleeg [HADR-verbindingen routeren naar SQL Server in Azure-VM's](hadr-cluste
 Houd rekening met de volgende beperkingen voor exemplaren van failoverclusters met SQL Server op virtuele Azure-machines. 
 
 ### <a name="lightweight-resource-provider"></a>Lichtgewicht resourceprovider   
-Op dit moment worden exemplaren van failoverclusters met SQL Server op virtuele Azure-machines alleen ondersteund met de [beheermodus Lichtgewicht](sql-vm-resource-provider-register.md#management-modes) van de [SQL Server IaaS Agent-extensie](sql-server-iaas-agent-extension-automate-management.md). Als u wilt overschakelen van de volledige extensiemodus naar lichtgewicht, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende VM's en registreert u deze vervolgens in de lichtgewicht modus bij de resourceprovider van de SQL-VM. Wanneer u de resource van de **virtuele SQL-machine** verwijdert met behulp van de Azure-portal, schakelt u het selectievakje naast de juiste virtuele machine uit. 
+Op dit moment worden exemplaren van failoverclusters met SQL Server op virtuele Azure-machines alleen ondersteund met de [beheermodus Lichtgewicht](sql-server-iaas-agent-extension-automate-management.md#management-modes) van de [SQL Server IaaS Agent-extensie](sql-server-iaas-agent-extension-automate-management.md). Als u wilt overschakelen van de volledige extensiemodus naar lichtgewicht, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende VM's en registreert u deze vervolgens in de lichtgewicht modus bij de resourceprovider van de SQL-VM. Wanneer u de resource van de **virtuele SQL-machine** verwijdert met behulp van de Azure-portal, schakelt u het selectievakje naast de juiste virtuele machine uit. 
 
 De volledige extensie ondersteunt functies zoals automatische back-ups en patches, en geavanceerd portalbeheer. Deze functies werken niet voor VM's met SQL Server nadat de agent opnieuw is geïnstalleerd in de modus voor lichtgewicht beheer.
 

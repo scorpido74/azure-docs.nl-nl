@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 1ab5ae7bf9f1d13458e3bbeeec564fe642eb3303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588725"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289160"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Toegang tot Azure Key Vault achter een firewall
 
@@ -43,7 +43,7 @@ Key vault-clienttoepassingen moet toegang hebben tot Azure Active Directory-eind
 | Gebruiker of service-principal gebruikt een werk- of schoolaccount met Microsoft Azure Active Directory (bijvoorbeeld user@contoso.com) |**Wereldwijd:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure van de Amerikaanse overheid:**<br> login.microsoftonline.us:443<br><br>**Azure Duitsland:**<br> login.microsoftonline.de:443 |
 | Gebruiker of service-principal gebruikt een werk- of schoolaccount, plus Active Directory Federation Services (AD FS) of andere federatief eindpunt (bijvoorbeeld user@contoso.com) |Alle eindpunten voor een werk- of schoolaccount, plus AD FS- of andere federatieve eindpunten |
 
-Er zijn andere, mogelijk complexe scenario's. Raadpleeg [Azure Active Directory-verificatiestroom](../../active-directory/develop/authentication-scenarios.md), [Toepassingen integreren met Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) en [Active Directory-verificatieprotocollen](https://msdn.microsoft.com/library/azure/dn151124.aspx) voor meer informatie.  
+Er zijn andere, mogelijk complexe scenario's. Raadpleeg [Azure Active Directory-verificatiestroom](../../active-directory/develop/authentication-vs-authorization.md), [Toepassingen integreren met Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) en [Active Directory-verificatieprotocollen](/previous-versions/azure/dn151124(v=azure.100)) voor meer informatie.  
 
 ## <a name="key-vault-management"></a>Key Vault-beheer
 
@@ -56,7 +56,7 @@ Voor Key Vault-beheer (CRUD en toegangsbeleid instellen), moet de clienttoepassi
 
 ## <a name="key-vault-operations"></a>Key Vault-bewerkingen
 
-Voor alle beheer- en cryptografiebewerkingen van het key vault-object (sleutels en geheimen) moet de key vault-client toegang hebben tot het eindpunt van de key vault. Het DNS-achtervoegsel van het eindpunt verschilt afhankelijk van de locatie van de key vault. Het eindpunt van de key vault heeft de indeling *kluisnaam*.*regiospecifiek-dns-achtervoegsel*, zoals beschreven in de onderstaande tabel.  
+Voor alle beheer- en cryptografiebewerkingen van het key vault-object (sleutels en geheimen) moet de key vault-client toegang hebben tot het eindpunt van de key vault. Het DNS-achtervoegsel van het eindpunt verschilt afhankelijk van de locatie van de key vault. Het eindpunt van de key vault heeft de indeling *kluisnaam*. *regiospecifiek-dns-achtervoegsel* , zoals beschreven in de onderstaande tabel.  
 
 | Type bewerking | Eindpunt:poort |
 | --- | --- |
@@ -74,4 +74,4 @@ Authentication and Identity (Azure Active Directory) is een wereldwijde service 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u vragen hebt over Key Vault, ga dan naar de [Microsoft-pagina met vragen en antwoorden voor Azure Key Vault](https://docs.microsoft.com/answers/topics/azure-key-vault.html).
+Als u vragen hebt over Key Vault, ga dan naar de [Microsoft-pagina met vragen en antwoorden voor Azure Key Vault](/answers/topics/azure-key-vault.html).

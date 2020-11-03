@@ -1,5 +1,5 @@
 ---
-title: Problemen met de configuratie van particuliere koppelingen diagnosticeren op Azure Key Vault
+title: Configuratieproblemen met Private Links diagnosticeren in Azure Key Vault
 description: Veelvoorkomende problemen met persoonlijke koppelingen oplossen met Key Vault en dieper in de configuratie
 author: msfcolombo
 ms.author: fcolombo
@@ -7,14 +7,14 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998399"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289364"
 ---
-# <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Problemen met de configuratie van particuliere koppelingen diagnosticeren op Azure Key Vault
+# <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Configuratieproblemen met Private Links diagnosticeren in Azure Key Vault
 
 ## <a name="introduction"></a>Inleiding
 
@@ -56,7 +56,7 @@ Als de toepassing, het script of de portal wordt uitgevoerd op een wille keurig 
 
 Deze hand leiding is niet van toepassing op oplossingen die door micro soft worden beheerd, waarbij de sleutel kluis wordt gebruikt door een Azure-product dat onafhankelijk van de klant Virtual Network bestaat. Voor beelden van dergelijke scenario's zijn Azure Storage of Azure SQL geconfigureerd voor versleuteling in rust, Azure Event hub versleutelt gegevens met door de klant opgegeven sleutels, Azure Data Factory toegang tot service referenties die zijn opgeslagen in sleutel kluis, Azure-pijp lijnen die geheimen ophalen uit de sleutel kluis en andere vergelijk bare scenario's. In deze gevallen *moet u controleren of het product sleutel kluizen ondersteunt waarvoor de firewall is ingeschakeld*. Deze ondersteuning wordt doorgaans uitgevoerd met de functie voor [vertrouwde services](overview-vnet-service-endpoints.md#trusted-services) van Key Vault firewall. Veel producten zijn echter om verschillende redenen niet opgenomen in de lijst met vertrouwde services. In dat geval bereikt u de productspecifieke ondersteuning.
 
-Een klein aantal Azure-producten ondersteunt het concept van *vnet-injectie*. In eenvoudige termen voegt het product een netwerk apparaat toe aan de klant Virtual Network, zodat het aanvragen kan verzenden alsof het is geïmplementeerd voor de Virtual Network. Een voor beeld hiervan is [Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Met producten zoals dit kunt u aanvragen indienen bij de sleutel kluis met behulp van de persoonlijke koppelingen. deze hand leiding voor probleem oplossing kan helpen.
+Een klein aantal Azure-producten ondersteunt het concept van *vnet-injectie*. In eenvoudige termen voegt het product een netwerk apparaat toe aan de klant Virtual Network, zodat het aanvragen kan verzenden alsof het is geïmplementeerd voor de Virtual Network. Een voor beeld hiervan is [Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Met producten zoals dit kunt u aanvragen indienen bij de sleutel kluis met behulp van de persoonlijke koppelingen. deze hand leiding voor probleem oplossing kan helpen.
 
 ## <a name="2-confirm-that-the-connection-is-approved-and-succeeded"></a>2. Controleer of de verbinding is goedgekeurd en is voltooid
 
@@ -65,7 +65,7 @@ In de volgende stappen wordt gecontroleerd of de verbinding van het particuliere
 1. Open de Azure Portal en open uw sleutel kluis resource.
 2. Selecteer in het menu links de optie **netwerken**.
 3. Klik op het tabblad **verbindingen met privé-eind punten** . Hiermee worden alle privé-eindpunt verbindingen en hun respectieve statussen weer gegeven. Als er geen verbindingen zijn of als de verbinding voor uw Virtual Network ontbreekt, moet u een nieuw persoonlijk eind punt maken. Dit wordt later besproken.
-4. Ga nog steeds in verbindingen met een **privé-eind punt**naar het account dat u wilt onderzoeken en controleer of ' verbindings status ' is **goedgekeurd** en de inrichtings status is **geslaagd**.
+4. Ga nog steeds in verbindingen met een **privé-eind punt** naar het account dat u wilt onderzoeken en controleer of ' verbindings status ' is **goedgekeurd** en de inrichtings status is **geslaagd**.
     - Als de verbinding de status in behandeling heeft, kunt u deze mogelijk gewoon goed keuren.
     - Als de verbinding ' geweigerd ', ' failed ', ' error ', ' disconnected ' of een andere status is, is het helemaal niet effectief. u moet een nieuwe persoonlijke eindpunt resource maken.
 
@@ -124,7 +124,7 @@ U moet de omzetting van hostnamen diagnosticeren en voor dat u het precieze pers
 3. Klik op het tabblad **verbindingen met privé-eind punten** . Hiermee worden alle privé-eindpunt verbindingen en hun respectieve statussen weer gegeven.
 4. Zoek het account dat u wilt onderzoeken en controleer of ' verbindings status ' is **goedgekeurd** en de inrichtings status is **geslaagd**. Als u dit niet ziet, gaat u terug naar de vorige secties van dit document.
 5. Wanneer u het juiste item vindt, klikt u op de koppeling in de kolom **persoonlijk eind punt** . Hiermee wordt de persoonlijke eindpunt resource geopend.
-6. Op de pagina overzicht wordt een sectie met de naam **aangepaste DNS-instellingen**weer gegeven. Controleer of er slechts één vermelding is die overeenkomt met de sleutel kluis hostnaam. In deze vermelding wordt het privé IP-adres van de sleutel kluis weer gegeven.
+6. Op de pagina overzicht wordt een sectie met de naam **aangepaste DNS-instellingen** weer gegeven. Controleer of er slechts één vermelding is die overeenkomt met de sleutel kluis hostnaam. In deze vermelding wordt het privé IP-adres van de sleutel kluis weer gegeven.
 7. U kunt ook op de koppeling op de **netwerk interface** klikken en controleren of het privé-IP-adres hetzelfde is als in de vorige stap. De netwerk interface is een virtueel apparaat dat sleutel kluis vertegenwoordigt.
 
 Het IP-adres is de naam die door Vm's en andere apparaten die worden *uitgevoerd in dezelfde Virtual Network* wordt gebruikt om verbinding te maken met de sleutel kluis. Noteer het IP-adres of blijf het browser tabblad geopend en blijf het niet aanraken terwijl u verder onderzoek doet.
@@ -229,7 +229,7 @@ Uw Azure-abonnement moet een [privé-DNS zone](../../dns/private-dns-privatednsz
 
     privatelink.vaultcore.azure.net
 
-U kunt controleren of deze resource aanwezig is door naar de pagina abonnement in de portal te gaan en ' resources ' te selecteren in het menu aan de linkerkant. De resource naam moet zijn `privatelink.vaultcore.azure.net` en het resource type moet **privé-DNS zone**zijn.
+U kunt controleren of deze resource aanwezig is door naar de pagina abonnement in de portal te gaan en ' resources ' te selecteren in het menu aan de linkerkant. De resource naam moet zijn `privatelink.vaultcore.azure.net` en het resource type moet **privé-DNS zone** zijn.
 
 Normaal gesp roken wordt deze resource automatisch gemaakt wanneer u een persoonlijk eind punt maakt met behulp van een gemeen schappelijke procedure. Er zijn echter gevallen waarin deze resource niet automatisch wordt gemaakt en u deze hand matig moet doen. Mogelijk is deze resource ook per ongeluk verwijderd.
 
@@ -278,7 +278,7 @@ Zoals u kunt zien, is de naam omzetting onder uw beheer. De motivering van dit o
 
 ### <a name="query-the-healthstatus-endpoint-of-the-key-vault"></a>Een query uitvoeren `/healthstatus` op het eind punt van de sleutel kluis
 
-Uw sleutel kluis biedt het `/healthstatus` eind punt dat kan worden gebruikt voor diagnostische gegevens. De antwoord headers bevatten het IP-adres van de oorsprong, zoals wordt gezien door de sleutel kluis service. U kunt dat eind punt aanroepen met de volgende opdracht (**Vergeet niet uw sleutel kluis hostnaam te gebruiken**):
+Uw sleutel kluis biedt het `/healthstatus` eind punt dat kan worden gebruikt voor diagnostische gegevens. De antwoord headers bevatten het IP-adres van de oorsprong, zoals wordt gezien door de sleutel kluis service. U kunt dat eind punt aanroepen met de volgende opdracht ( **Vergeet niet uw sleutel kluis hostnaam te gebruiken** ):
 
 Windows (Power shell):
 

@@ -2,13 +2,13 @@
 title: Azure Event Hubs-uitzonde ringen (verouderd)
 description: Dit artikel bevat een lijst met uitzonde ringen en voorgestelde acties van Azure Event Hubs Messa ging.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/02/2020
+ms.openlocfilehash: adaf7242530727a1f77a9662110a43341e57e80a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318480"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289335"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Uitzonde ringen voor Event Hubs berichten-.NET (verouderd)
 In deze sectie vindt u de .NET-uitzonde ringen die worden gegenereerd door .NET Framework-Api's. 
@@ -70,7 +70,7 @@ De volgende tabel bevat een lijst met uitzonderings typen van berichten, en de o
 | [Micro soft. ServiceBus. Messa ging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Micro soft. Azure. Event hubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | De entiteit die aan de bewerking is gekoppeld, bestaat niet of is verwijderd. | Controleer of de entiteit bestaat. | Opnieuw proberen wordt niet geholpen. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | De client kan geen verbinding maken met Event hub. |Controleer of de opgegeven hostnaam juist is en of de host bereikbaar is. | Opnieuw proberen kan helpen als er onregelmatige verbindings problemen zijn. |
 | [Micro soft. ServiceBus. Messa ging ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Micro soft. Azure. Event hubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | De aanvraag kan op dit moment niet door de service worden verwerkt. | De client kan gedurende een bepaalde tijd wachten en vervolgens de bewerking opnieuw uitvoeren. <br /> Zie [ServerBusyException](#serverbusyexception). | Client kan na een bepaald interval opnieuw proberen. Als een nieuwe poging resulteert in een andere uitzonde ring, controleert u het gedrag voor opnieuw proberen van deze uitzonde ring. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Generieke Messa ging-uitzonde ring die kan worden gegenereerd in de volgende gevallen: er wordt geprobeerd een [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) te maken met een naam of pad dat tot een ander type entiteit behoort (bijvoorbeeld een onderwerp). Er is een poging gedaan om een bericht te verzenden dat groter is dan 1 MB. Er is een fout opgetreden op de server of service tijdens het verwerken van de aanvraag. Zie het uitzonderings bericht voor meer informatie. Deze uitzonde ring is doorgaans een tijdelijke uitzonde ring. | Controleer de code en zorg ervoor dat alleen serialiseerbare objecten worden gebruikt voor de hoofd tekst van het bericht (of een aangepaste serialisatiefunctie te gebruiken). Raadpleeg de documentatie voor de ondersteunde typen waarden van de eigenschappen en gebruik alleen ondersteunde typen. Controleer de eigenschap [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) . Als dit het **geval**is, kunt u de bewerking opnieuw proberen. | Het gedrag voor opnieuw proberen is niet gedefinieerd en kan mogelijk niet worden geholpen. |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Generieke Messa ging-uitzonde ring die kan worden gegenereerd in de volgende gevallen: er wordt geprobeerd een [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) te maken met een naam of pad dat tot een ander type entiteit behoort (bijvoorbeeld een onderwerp). Er is een poging gedaan om een bericht te verzenden dat groter is dan 1 MB. Er is een fout opgetreden op de server of service tijdens het verwerken van de aanvraag. Zie het uitzonderings bericht voor meer informatie. Deze uitzonde ring is doorgaans een tijdelijke uitzonde ring. | Controleer de code en zorg ervoor dat alleen serialiseerbare objecten worden gebruikt voor de hoofd tekst van het bericht (of een aangepaste serialisatiefunctie te gebruiken). Raadpleeg de documentatie voor de ondersteunde typen waarden van de eigenschappen en gebruik alleen ondersteunde typen. Controleer de eigenschap [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) . Als dit het **geval** is, kunt u de bewerking opnieuw proberen. | Het gedrag voor opnieuw proberen is niet gedefinieerd en kan mogelijk niet worden geholpen. |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | Poging een entiteit te maken met een naam die al wordt gebruikt door een andere entiteit in die service naam ruimte. | Verwijder de bestaande entiteit of kies een andere naam voor de entiteit die u wilt maken. | Opnieuw proberen wordt niet geholpen. |
 | [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | De bericht entiteit heeft de Maxi maal toegestane grootte bereikt. Deze uitzonde ring kan zich voordoen als het maximum aantal ontvangers (5) al is geopend op een groeps niveau per gebruiker. | Maak ruimte in de entiteit door berichten van de entiteit of de bijbehorende subwachtrijen te ontvangen. <br /> Zie [QuotaExceededException](#quotaexceededexception) | Opnieuw proberen kan helpen als er in de tussen tijd berichten zijn verwijderd. |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | Aanvraag voor een runtime-bewerking op een uitgeschakelde entiteit. |Activeer de entiteit. | Opnieuw proberen kan helpen als de entiteit is geactiveerd in de tussentijds. |
@@ -107,17 +107,29 @@ Deze fout kan een van de volgende twee oorzaken hebben:
 
 - De belasting wordt niet gelijkmatig verdeeld over alle partities op het Event Hub en de ene partitie is afhankelijk van de limiet van de lokale doorvoer eenheid.
     
-    **Oplossing**: als u de strategie voor partitie distributie wijzigt of als u probeert [EventHubClient. send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) te gebruiken, kan dit helpen.
+    **Oplossing** : als u de strategie voor partitie distributie wijzigt of als u probeert [EventHubClient. send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) te gebruiken, kan dit helpen.
 
 - De Event Hubs naam ruimte heeft onvoldoende doorvoer eenheden (u kunt het scherm **metrische gegevens** controleren in het venster Event hubs naam ruimte in de [Azure Portal](https://portal.azure.com) om te bevestigen). In de portal wordt een samengevoegde (1 minuut) informatie weer gegeven, maar we meten de door Voer in realtime, zodat het slechts een schatting is.
 
-    **Oplossing**: het verhogen van de doorvoer eenheden van de naam ruimte kan helpen. U kunt deze bewerking uitvoeren op de portal, in het venster **schalen** van het scherm Event hubs naam ruimte. U kunt ook [automatisch verg Roten](event-hubs-auto-inflate.md)gebruiken.
+    **Oplossing** : het verhogen van de doorvoer eenheden van de naam ruimte kan helpen. 
+
+    U kunt doorvoer eenheden configureren op de pagina **Scale** of **overzicht** van de pagina **Event Hubs naam ruimte** in de Azure Portal. U kunt ook [automatisch verg Roten](event-hubs-auto-inflate.md)gebruiken, dat automatisch wordt geschaald door het aantal doorvoer eenheden te verhogen om te voldoen aan de behoeften van het gebruik.
+
+    Doorvoer eenheden (TUs) zijn van toepassing op alle Event hubs in een Event Hubs naam ruimte. Dit betekent dat u TUs op het niveau van de naam ruimte koopt en dat wordt gedeeld tussen de Event hubs onder die naam ruimte. Elke di geeft de naam ruimte aan de volgende mogelijkheden:
+
+    - Maxi maal 1 MB per seconde aan ingangs gebeurtenissen (gebeurtenissen die worden verzonden naar een Event Hub), maar niet meer dan 1000 ingangs gebeurtenissen, beheer bewerkingen of besturings-API-aanroepen per seconde.
+    - Maxi maal 2 MB per seconde voor afwijkings gebeurtenissen (gebeurtenissen die worden verbruikt van een Event Hub), maar niet meer dan 4096 uitwijkings gebeurtenissen.
+    - Maxi maal 84 GB gebeurtenis opslag (voldoende voor de standaard Bewaar periode van 24 uur).
+    
+    Ga op de pagina **overzicht** naar de sectie **metrische gegevens weer geven** en schakel over naar het tabblad **door Voer** . Selecteer de grafiek om deze te openen in een groter venster met intervallen van 1 minuut op de x-as. Bekijk de piek waarden en deel ze met 60 om binnenkomende bytes/seconde of uitgaande bytes per seconde te verkrijgen. Gebruik een soort gelijke benadering om het aantal aanvragen per seconde op piek tijden te berekenen op het tabblad **aanvragen** . 
+
+    Als u waarden ziet die hoger zijn dan het aantal TUs * limieten (1 MB per seconde voor ingangen of 1000 aanvragen voor binnenkomend/seconde, 2 MB per seconde voor uitgaand verkeer), verg root u het aantal TUs met behulp van de **schaal** (in de menu balk links van een naam ruimte) om event hubs een hogere waarde hand matig te schalen of om de Event hubs functie voor [automatisch](event-hubs-auto-inflate.md) Houd er rekening mee dat automatisch verg Roten kan Maxi maal 20 TUS verhogen. Dien een [ondersteunings aanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)in om het te verheffen naar precies 40 TUs.
 
 ### <a name="error-code-50001"></a>Fout code 50001
 
 Deze fout moet zelden optreden. Het gebeurt wanneer de container code voor uw naam ruimte op de CPU laag is, niet meer dan een paar seconden voordat de Event Hubs load balancer begint.
 
-**Oplossing**: beperken van aanroepen naar de methode GetRuntimeInformation. Azure Event Hubs ondersteunt Maxi maal 50 oproepen per seconde voor de GetRuntimeInfo per seconde. Er wordt een uitzonde ring weer gegeven die vergelijkbaar is met de volgende wanneer de limiet is bereikt:
+**Oplossing** : beperken van aanroepen naar de methode GetRuntimeInformation. Azure Event Hubs ondersteunt Maxi maal 50 oproepen per seconde voor de GetRuntimeInfo per seconde. Er wordt een uitzonde ring weer gegeven die vergelijkbaar is met de volgende wanneer de limiet is bereikt:
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.

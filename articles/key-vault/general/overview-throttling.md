@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa33bb062abf748031b27df46d42e8f13aabfc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819970"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289673"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Richtlijnen voor beperkingen in Azure Key Vault
 
@@ -30,7 +30,7 @@ Key Vault was oorspronkelijk ontworpen om te worden gebruikt om uw geheimen op t
 
 Key Vault oorspronkelijk is gemaakt met de limieten die zijn opgegeven in [Azure Key Vault service limieten](service-limits.md).  Als u uw Key Vault wilt maximaliseren door middel van tarieven, zijn hier enkele aanbevolen richt lijnen/aanbevolen procedures voor het maximaliseren van uw door Voer:
 1. Zorg ervoor dat u de beperking hebt ingesteld.  De client moet voldoen aan het beleid voor exponentiële back-ups voor 429 en ervoor zorgen dat u nieuwe pogingen doet volgens onderstaande instructies.
-1. Deel uw Key Vault verkeer onder meerdere kluizen en verschillende regio's.   Gebruik een afzonderlijke kluis voor elk domein voor beveiliging/Beschik baarheid.   Als u vijf apps hebt, elk in twee regio's, raden we 10 kluizen aan met elk geheim dat uniek is voor de app en regio.  Een limiet voor het hele abonnement voor alle transactie typen is vijf keer de limiet voor de individuele sleutel kluis. HSM-andere trans acties per abonnement zijn bijvoorbeeld beperkt tot 5.000 trans acties in tien seconden per abonnement. Overweeg het opslaan van het geheim binnen uw service of app om ook de RPS rechtstreeks te verminderen naar sleutel kluis en/of op Burst gebaseerd verkeer te verwerken.  U kunt het verkeer ook verdelen over verschillende regio's om latentie te minimaliseren en een ander abonnement/kluis gebruiken.  Verzend niet meer dan de limiet van het abonnement voor de Key Vault-service in één Azure-regio.
+1. Deel uw Key Vault verkeer onder meerdere kluizen en verschillende regio's.   Gebruik een afzonderlijke kluis voor elk domein voor beveiliging/Beschik baarheid.   Als u vijf apps hebt, elk in twee regio's, raden we 10 kluizen aan met elk geheim dat uniek is voor de app en regio.  Een limiet voor het hele abonnement voor alle transactie typen is vijf keer de limiet voor de individuele sleutel kluis. Andere HSM-transacties per abonnement zijn bijvoorbeeld beperkt tot 5000 transacties binnen tien seconden per abonnement. Overweeg het opslaan van het geheim binnen uw service of app om ook de RPS rechtstreeks te verminderen naar sleutel kluis en/of op Burst gebaseerd verkeer te verwerken.  U kunt het verkeer ook verdelen over verschillende regio's om latentie te minimaliseren en een ander abonnement/kluis gebruiken.  Verzend niet meer dan de limiet van het abonnement voor de Key Vault-service in één Azure-regio.
 1. Cache de geheimen die u ophaalt uit Azure Key Vault in het geheugen en gebruik waar mogelijk van geheugen.  Het opnieuw lezen van Azure Key Vault alleen wanneer de kopie in de cache niet meer werkt (bijvoorbeeld omdat deze is gedraaid bij de bron). 
 1. Key Vault is ontworpen voor uw eigen service geheimen.   Als u de geheimen van uw klanten opslaat (met name voor scenario's met hoge doorvoer opslag), kunt u overwegen om de sleutels in een Data Base of opslag account met versleuteling te plaatsen en alleen de hoofd sleutel in Azure Key Vault op te slaan.
 1. Het versleutelen, verpakken en controleren van open bare-sleutel bewerkingen kunnen worden uitgevoerd zonder toegang tot Key Vault, wat niet alleen het risico op beperking vermindert, maar ook de betrouw baarheid verbetert (zolang u het open bare-sleutel materiaal op de juiste wijze in de cache opslaat).
@@ -47,8 +47,8 @@ Als u merkt dat het bovenstaande nog niet aan uw behoeften voldoet, vult u de on
 
 Als aanvullende capaciteit is goedgekeurd, let dan op het volgende als resultaat van de capaciteits toename:
 1. Wijzigingen in het gegevens consistentie model. Zodra een kluis in de lijst met extra doorvoer capaciteit is toegestaan, wordt de Key Vault service gegevens consistentie garantie gewijzigd (nood zakelijk om te voldoen aan de RPS van een hoger volume omdat de onderliggende Azure Storage service niet kan worden uitgevoerd).  In een kort gezegd:
-  1. **Zonder vermelding toestaan**: de Key Vault-service geeft de resultaten van een schrijf bewerking weer (bijvoorbeeld Geheimset, CreateKey) direct in volgende aanroepen (bijvoorbeeld SecretGet).
-  1. **Met vermelding toestaan**: de Key Vault-service geeft de resultaten van een schrijf bewerking weer (bijvoorbeeld Geheimset, CreateKey) binnen 60 seconden in volgende aanroepen (bijvoorbeeld SecretGet).
+  1. **Zonder vermelding toestaan** : de Key Vault-service geeft de resultaten van een schrijf bewerking weer (bijvoorbeeld Geheimset, CreateKey) direct in volgende aanroepen (bijvoorbeeld SecretGet).
+  1. **Met vermelding toestaan** : de Key Vault-service geeft de resultaten van een schrijf bewerking weer (bijvoorbeeld Geheimset, CreateKey) binnen 60 seconden in volgende aanroepen (bijvoorbeeld SecretGet).
 1. Client code moet voldoen aan het beleid voor uitstel van 429 nieuwe pogingen. De client code die de Key Vault-service aanroept, mag niet direct Key Vault aanvragen opnieuw proberen wanneer de 429-respons code wordt ontvangen.  De Azure Key Vault beperkings richtlijnen die hier worden gepubliceerd, wordt aanbevolen exponentiële uitstel toe te passen wanneer u een 429 HTTP-respons code ontvangt.
 
 Neem contact met ons op als u een geldige zakelijke case hebt voor hogere beperkings limieten.
@@ -98,5 +98,4 @@ Op dit moment moet u geen HTTP 429-antwoord codes ophalen.
 
 ## <a name="see-also"></a>Zie ook
 
-Zie [beperkings patroon](https://docs.microsoft.com/azure/architecture/patterns/throttling)voor een dieper richting van het beperken van de Microsoft Cloud.
-
+Zie [beperkings patroon](/azure/architecture/patterns/throttling)voor een dieper richting van het beperken van de Microsoft Cloud.

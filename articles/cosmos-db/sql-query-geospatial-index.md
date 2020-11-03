@@ -4,30 +4,28 @@ description: Ruimtelijke gegevens indexeren met Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/03/2020
+ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: f250c15dbb30736e3e89a301fc236a848bd05da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 347617fb13041a8fb31c28f259aaf761baae2e53
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092055"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286309"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Georuimtelijke gegevens indexeren met Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 De data base-engine van Azure Cosmos DB is ontworpen om echt schema neutraal te zijn en biedt ondersteuning voor de eerste klasse voor JSON. De geoptimaliseerde data base-engine voor schrijven van Azure Cosmos DB heeft in systeem eigen inzicht in de ruimtelijke gegevens die in de geojson-standaard worden weer gegeven.
 
-In een kort gezegd wordt de geometrie geprojecteerd van Geodetic-coördinaten naar een 2D-vlak en vervolgens geleidelijk onderverdeeld in cellen met behulp van een **quadtree** . Deze cellen worden toegewezen aan 1D op basis van de locatie van de cel binnen een **Hilbert ruimte** die de lokale positie van punten behoudt. Wanneer locatie gegevens worden geïndexeerd, wordt er ook een proces met de naam **mozaïek patroon** genoemd, dat wil zeggen dat alle cellen die een locatie overlappen worden geïdentificeerd en opgeslagen als sleutels in de Azure Cosmos DB index. Op het moment dat de query is uitgevoerd, worden argumenten zoals punten en veelhoeken ook tessellated om de relevante celbereiken te extra heren. vervolgens wordt gebruikt om gegevens uit de index op te halen.
+In een kort gezegd wordt de geometrie geprojecteerd van Geodetic-coördinaten naar een 2D-vlak en vervolgens geleidelijk onderverdeeld in cellen met behulp van een **quadtree**. Deze cellen worden toegewezen aan 1D op basis van de locatie van de cel binnen een **Hilbert ruimte** die de lokale positie van punten behoudt. Wanneer locatie gegevens worden geïndexeerd, wordt er ook een proces met de naam **mozaïek patroon** genoemd, dat wil zeggen dat alle cellen die een locatie overlappen worden geïdentificeerd en opgeslagen als sleutels in de Azure Cosmos DB index. Op het moment dat de query is uitgevoerd, worden argumenten zoals punten en veelhoeken ook tessellated om de relevante celbereiken te extra heren. vervolgens wordt gebruikt om gegevens uit de index op te halen.
 
-Als u een indexerings beleid opgeeft dat ruimtelijke index voor/* (alle paden) bevat, worden alle gegevens die in de container zijn gevonden, geïndexeerd voor efficiënte ruimtelijke query's.
+Als u een indexerings beleid opgeeft dat een ruimtelijke index voor `/*` (alle paden) bevat, worden alle gegevens die in de container zijn gevonden, geïndexeerd voor efficiënte ruimtelijke query's.
 
 > [!NOTE]
-> Azure Cosmos DB ondersteunt het indexeren van punten, line strings toe, veelhoeken en multiveelhoeken
->
->
+> Azure Cosmos DB ondersteunt het indexeren van punten, line strings toe, veelhoeken en multiveelhoeken. Als u een van deze typen indexeert, worden alle andere typen automatisch geïndexeerd. Met andere woorden, als u veelhoeken indexeert, zullen we ook punten, line strings toe en multiveelhoeken indexeren. Het indexeren van een nieuw ruimtelijk type heeft geen invloed op de Write RU-kosten of index grootte, tenzij u geldige geojson-gegevens van dat type hebt.
 
-## <a name="modifying-geospatial-data-type"></a>Georuimtelijk gegevens type wijzigen
+## <a name="modifying-geospatial-configuration"></a>Georuimtelijke configuratie wijzigen
 
 In uw container geeft de **georuimtelijke configuratie** aan hoe de ruimtelijke gegevens worden geïndexeerd. Geef één **georuimtelijke configuratie** per container op: Geografie of geometrie.
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 6091ccbb64ec880224e861e1b8ee2bd39363385c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 9a01dabbd0a3e9d76caaead544be655b9505030d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342379"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289208"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Beheerpoorten beveiligen met just-in-time-toegang
 
@@ -80,7 +80,7 @@ Vanuit Security Center kunt u de JIT-VM-toegang inschakelen en configureren.
     - 5985-WinRM 
     - 5986-WinRM
 
-    Selecteer **Opslaan**om de standaard instellingen te accepteren.
+    Selecteer **Opslaan** om de standaard instellingen te accepteren.
 
 1. De JIT-opties aanpassen:
 
@@ -89,9 +89,9 @@ Vanuit Security Center kunt u de JIT-VM-toegang inschakelen en configureren.
 
     Voor elke poort (aangepast en standaard) wordt in het deel venster **poort configuratie toevoegen** de volgende opties geboden:
 
-    - **Protocol**-het protocol dat is toegestaan op deze poort wanneer een aanvraag wordt goedgekeurd
-    - **Toegestane bron-ip's**-de IP-bereiken die op deze poort zijn toegestaan wanneer een aanvraag wordt goedgekeurd
-    - **Maximale aanvraag tijd**: de maximale tijd van het venster voor het openen van een specifieke poort
+    - **Protocol** -het protocol dat is toegestaan op deze poort wanneer een aanvraag wordt goedgekeurd
+    - **Toegestane bron-ip's** -de IP-bereiken die op deze poort zijn toegestaan wanneer een aanvraag wordt goedgekeurd
+    - **Maximale aanvraag tijd** : de maximale tijd van het venster voor het openen van een specifieke poort
 
      1. Stel de poort beveiliging in op uw behoeften.
 
@@ -113,7 +113,7 @@ De bestaande JIT-regels voor een virtuele machine bewerken:
 
     ![Een JIT-VM-toegangs configuratie in Azure Security Center bewerken](./media/security-center-just-in-time/jit-policy-edit-security-center.png)
 
-1. Onder **JIT VM-toegangs configuratie**kunt u de bestaande instellingen van een reeds beveiligde poort bewerken of een nieuwe aangepaste poort toevoegen.
+1. Onder **JIT VM-toegangs configuratie** kunt u de bestaande instellingen van een reeds beveiligde poort bewerken of een nieuwe aangepaste poort toevoegen.
 
 1. Wanneer u klaar bent met het bewerken van de poorten, selecteert u **Opslaan**.
  
@@ -130,13 +130,13 @@ U kunt JIT inschakelen op een virtuele machine op de pagina's van de virtuele Az
 > [!TIP]
 > Als een virtuele machine al just-in-time is ingeschakeld en u naar de configuratie pagina gaat, ziet u dat just-in-time is ingeschakeld en kunt u de koppeling gebruiken om de just-in-time-VM-toegangs pagina in Security Center te openen, en de instellingen te bekijken en te wijzigen.
 
-1. Zoek in het [Azure Portal](https://ms.portal.azure.com)naar **virtuele machines**en selecteer deze. 
+1. Zoek in het [Azure Portal](https://ms.portal.azure.com)naar **virtuele machines** en selecteer deze. 
 
 1. Selecteer de virtuele machine die u met JIT wilt beveiligen.
 
 1. Selecteer in het menu **configuratie**.
 
-1. Onder **just-in-time-toegang**selecteert u **just-in-time inschakelen**. 
+1. Onder **just-in-time-toegang** selecteert u **just-in-time inschakelen**. 
 
     Dit maakt just-in-time-toegang voor de virtuele machine mogelijk met de volgende standaard instellingen:
 
@@ -157,7 +157,7 @@ U kunt JIT inschakelen op een virtuele machine op de pagina's van de virtuele Az
 
         ![Een JIT-VM-toegangs configuratie in Azure Security Center bewerken](./media/security-center-just-in-time/jit-policy-edit-security-center.png)
 
-    1. Onder **JIT VM-toegangs configuratie**kunt u de bestaande instellingen van een reeds beveiligde poort bewerken of een nieuwe aangepaste poort toevoegen.
+    1. Onder **JIT VM-toegangs configuratie** kunt u de bestaande instellingen van een reeds beveiligde poort bewerken of een nieuwe aangepaste poort toevoegen.
 
     1. Wanneer u klaar bent met het bewerken van de poorten, selecteert u **Opslaan**.
 
@@ -184,13 +184,13 @@ Met de volgende Power shell-opdrachten maakt u deze JIT-configuratie:
         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
              number=22;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"},
              @{
              number=3389;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"})})
     ```
 
@@ -241,7 +241,7 @@ Elk van deze opties wordt in een afzonderlijk tabblad hieronder uitgelegd.
 
 Wanneer een virtuele machine is ingeschakeld, moet u toegang aanvragen om er verbinding mee te maken. U kunt toegang tot een van de ondersteunde manieren aanvragen, ongeacht hoe u JIT hebt ingeschakeld.
 
-:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="JIT-VM-toegang configureren in Azure Security Center":::
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="JIT-toegang aanvragen via Security Center":::
 
 1. Selecteer op de **just-in-time-pagina voor toegang tot de VM** het tabblad **geconfigureerd** .
 
@@ -253,7 +253,7 @@ Wanneer een virtuele machine is ingeschakeld, moet u toegang aanvragen om er ver
 
 1. Selecteer **toegang aanvragen**. Het venster **toegang tot aanvragen** wordt geopend.
 
-1. Configureer onder **toegang aanvragen**voor elke virtuele machine de poorten die u wilt openen en de bron-IP-adressen waarop de poort is geopend en het tijd venster waarvoor de poort wordt geopend. Het is alleen mogelijk om toegang aan te vragen bij de geconfigureerde poorten. Elke poort heeft een Maxi maal toegestane tijd die is afgeleid van de JIT-configuratie die u hebt gemaakt.
+1. Configureer onder **toegang aanvragen** voor elke virtuele machine de poorten die u wilt openen en de bron-IP-adressen waarop de poort is geopend en het tijd venster waarvoor de poort wordt geopend. Het is alleen mogelijk om toegang aan te vragen bij de geconfigureerde poorten. Elke poort heeft een Maxi maal toegestane tijd die is afgeleid van de JIT-configuratie die u hebt gemaakt.
 
 1. Selecteer **poorten openen**.
 

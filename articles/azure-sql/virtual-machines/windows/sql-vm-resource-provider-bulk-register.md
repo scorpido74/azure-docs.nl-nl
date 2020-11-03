@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6900d0fdf656fa8309b18971691bb35587f7f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761257"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286080"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Meerdere virtuele SQL-machines registreren in azure met de resource provider van de SQL-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In dit artikel wordt beschreven hoe u uw SQL Server virtuele machines (Vm's) in bulk in azure registreert met de resource provider van de SQL-VM met behulp van de `Register-SqlVMs` Power shell-cmdlet.
+In dit artikel wordt beschreven hoe u uw SQL Server virtuele machines (Vm's) in bulk in azure registreert met de resource provider van de SQL-VM met behulp van de `Register-SqlVMs` Power shell-cmdlet. Bij het registreren met de resource provider van de SQL-VM wordt de [SQL IaaS agent-extensie](sql-server-iaas-agent-extension-automate-management.md)geïnstalleerd.
 
 In dit artikel leert u SQL Server Vm's in bulk te registreren. U kunt ook [alle SQL Server vm's automatisch](sql-vm-resource-provider-automatic-registration.md) of [afzonderlijke SQL Server vm's](sql-vm-resource-provider-register.md)registreren. 
 
@@ -33,14 +33,14 @@ De `Register-SqlVMs` cmdlet kan worden gebruikt voor het registreren van alle vi
 
 Het registratie proces heeft geen risico, heeft geen uitval tijd en wordt niet opnieuw opgestart SQL Server of de virtuele machine. 
 
-Zie [SQL VM resource provider](sql-vm-resource-provider-register.md)voor meer informatie over de resource provider. 
+Zie [SQL VM resource provider](sql-vm-resource-provider-register.md)voor meer informatie. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u uw SQL Server-VM wilt registreren bij de resource provider, hebt u het volgende nodig: 
 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/) dat is [geregistreerd bij de resource provider](sql-vm-resource-provider-register.md#register-subscription-with-rp) en geen geregistreerde SQL Server virtuele machines bevat. 
-- De client referenties die worden gebruikt om de virtuele machines te registreren, bestaan in een van de volgende Azure-rollen: Inzender, **Inzender**of **eigenaar**van de **virtuele machine**. 
+- De client referenties die worden gebruikt om de virtuele machines te registreren, bestaan in een van de volgende Azure-rollen: Inzender, **Inzender** of **eigenaar** van de **virtuele machine**. 
 - De nieuwste versie van [AZ Power shell](/powershell/azure/new-azureps-module-az). 
 - De meest recente versie van [AZ. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
 
@@ -227,7 +227,7 @@ Fouten worden vastgelegd in het logboek bestand met de naam `VMsNotRegisteredDue
 
 Wanneer u SQL Server Vm's registreert bij de resource provider met behulp van het meegeleverde script, moet u rekening houden met het volgende:
 
-- Registratie bij de resource provider vereist een gast agent die wordt uitgevoerd op de SQL Server VM. Installatie kopieën van Windows Server 2008 hebben geen gast agent, zodat deze virtuele machines mislukken en hand matig moeten worden geregistreerd met de [beheer modus](sql-vm-resource-provider-register.md#management-modes)voor niet-agents.
+- Registratie bij de resource provider vereist een gast agent die wordt uitgevoerd op de SQL Server VM. Installatie kopieën van Windows Server 2008 hebben geen gast agent, zodat deze virtuele machines mislukken en hand matig moeten worden geregistreerd met de [beheer modus](sql-server-iaas-agent-extension-automate-management.md#management-modes)voor niet-agents.
 - Er is een nieuwe logica ingebouwd om transparante fouten te verholpen. Als de virtuele machine is geregistreerd, is het een snelle bewerking. Als de registratie echter mislukt, wordt elke virtuele machine opnieuw geprobeerd.  Als zodanig is het belang rijk dat u veel tijd hebt om het registratie proces te volt ooien, maar de vereiste voor de werkelijke hoeveelheid tijd is afhankelijk van het type en het aantal fouten. 
 
 ## <a name="full-script"></a>Volledige script

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 92cce0751a400e17f9975d7ae3d10e6612017823
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8bac53cd08629e8b0a9cb91e596856c0ae6b5a2f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533628"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289120"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Geen toegang tot Data Lake-opslag bestanden in azure HDInsight
 
@@ -32,7 +32,7 @@ De gebruiker heeft mogelijk machtigingen voor de Service-Principal (SP) ingetrok
 
 ### <a name="resolution"></a>Oplossing
 
-1. Controleer of de SP ' x ' machtigingen heeft om langs het pad te bladeren. Zie [machtigingen](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)voor meer informatie. Voor beeld van een DFS-opdracht om de toegang tot bestanden/mappen in Data Lake-opslag account te controleren:
+1. Controleer of de SP ' x ' machtigingen heeft om langs het pad te bladeren. Zie [machtigingen](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)voor meer informatie. Voorbeeld `dfs` opdracht voor het controleren van de toegang tot bestanden/mappen in data Lake Storage-account:
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -54,13 +54,13 @@ Token Refresh failed - Received invalid http response: 500
 
 Het certificaat dat is gegeven voor toegang tot de Service-Principal is mogelijk verlopen.
 
-1. SSH in hoofd knooppunt. Controleer de toegang tot het opslag account met behulp van de volgende DFS-opdracht:
+1. SSH in hoofd knooppunt. Controleer de toegang tot het opslag account met behulp van de volgende `dfs` opdracht:
 
     ```
     hdfs dfs -ls /
     ```
 
-1. Controleer of het fout bericht er ongeveer als volgt uitziet:
+1. Controleer of het fout bericht overeenkomt met de volgende uitvoer:
 
     ```
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
@@ -161,16 +161,10 @@ Invoke-AzureRmResourceAction `
 
 ```
 
-Als u een bestaand certificaat wilt toewijzen, moet u een certificaat maken, het pfx-bestand en het wacht woord gereed hebben. Koppel het certificaat aan de service-principal waarmee het cluster is gemaakt en die de AppId gereed heeft.
+Als u een bestaand certificaat wilt toewijzen, moet u een certificaat maken, het pfx-bestand en het wacht woord gereed hebben. Koppel het certificaat aan de service-principal waarmee het cluster is gemaakt, met behulp van de AppId Ready.
 
 Voer de Power shell-opdracht uit nadat u de para meters hebt vervangen door de werkelijke waarden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
-
-* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
-
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
-
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](../../azure-portal/supportability/how-to-create-azure-support-request.md)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

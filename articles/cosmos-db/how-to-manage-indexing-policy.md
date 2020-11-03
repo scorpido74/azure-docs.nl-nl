@@ -4,15 +4,15 @@ description: Meer informatie over het beheren van indexerings beleid, het opneme
 author: timsander1
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 96ae4162c78f66b75d8c1ef2a8cec16995a5f016
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 335eac64bd5dff5b466fd97f5b2e093f2f56ee79
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075701"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289936"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB beheren
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ Hier volgen enkele voor beelden van beleids regels voor indexering die worden we
     }
 ```
 
-Dit indexerings beleid is gelijk aan het onderstaande dat hand matig wordt ingesteld ```kind``` , ```dataType``` , en ```precision``` op de standaard waarden. Deze eigenschappen zijn niet langer nodig om expliciet in te stellen en u kunt ze volledig uit het indexerings beleid weglaten (zoals wordt weer gegeven in het bovenstaande voor beeld).
+Dit indexerings beleid is gelijk aan het onderstaande dat hand matig wordt ingesteld ```kind``` , ```dataType``` , en ```precision``` op de standaard waarden. Deze eigenschappen zijn niet langer nodig om expliciet in te stellen en u moet ze volledig uit het indexerings beleid weglaten (zoals wordt weer gegeven in het bovenstaande voor beeld).
 
 ```json
     {
@@ -101,7 +101,7 @@ Dit indexerings beleid is gelijk aan het onderstaande dat hand matig wordt inges
     }
 ```
 
-Dit indexerings beleid is gelijk aan het onderstaande dat hand matig wordt ingesteld ```kind``` , ```dataType``` , en ```precision``` op de standaard waarden. Deze eigenschappen zijn niet langer nodig om expliciet in te stellen en u kunt ze volledig uit het indexerings beleid weglaten (zoals wordt weer gegeven in het bovenstaande voor beeld).
+Dit indexerings beleid is gelijk aan het onderstaande dat hand matig wordt ingesteld ```kind``` , ```dataType``` , en ```precision``` op de standaard waarden. Deze eigenschappen zijn niet langer nodig om expliciet in te stellen en u moet ze volledig uit het indexerings beleid weglaten (zoals wordt weer gegeven in het bovenstaande voor beeld).
 
 ```json
     {
@@ -143,7 +143,7 @@ Dit indexerings beleid is gelijk aan het onderstaande dat hand matig wordt inges
 ```
 
 > [!NOTE]
-> U wordt aangeraden een **opt-out-** indexerings beleid te gebruiken om Azure Cosmos DB proactief een nieuwe eigenschap te indexeren die kan worden toegevoegd aan uw model.
+> U wordt aangeraden een **opt-out-** indexerings beleid te gebruiken om Azure Cosmos DB proactief een nieuwe eigenschap te indexeren die kan worden toegevoegd aan uw gegevens model.
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Alleen een ruimtelijke index gebruiken voor een specifiek pad naar een eigenschap
 
@@ -177,7 +177,7 @@ Dit indexerings beleid is gelijk aan het onderstaande dat hand matig wordt inges
 
 ## <a name="composite-indexing-policy-examples"></a>Voor beelden van samengesteld indexerings beleid
 
-Naast het opnemen of uitsluiten van paden voor afzonderlijke eigenschappen, kunt u ook een samengestelde index opgeven. Als u een query wilt uitvoeren met een- `ORDER BY` component voor meerdere eigenschappen, is een [samengestelde index](index-policy.md#composite-indexes) voor die eigenschappen vereist. Daarnaast hebben samengestelde indexen een prestatie voordelen voor query's met een filter en een component ORDER BY op verschillende eigenschappen.
+Naast het opnemen of uitsluiten van paden voor afzonderlijke eigenschappen, kunt u ook een samengestelde index opgeven. Als u een query wilt uitvoeren met een- `ORDER BY` component voor meerdere eigenschappen, is een [samengestelde index](index-policy.md#composite-indexes) voor die eigenschappen vereist. Daarnaast hebben samengestelde indexen het voor deel van de prestaties voor query's met meerdere filters of met een filter en een component ORDER BY.
 
 > [!NOTE]
 > Samengestelde paden hebben een impliciete `/?` , omdat alleen de scalaire waarde op dat pad is geïndexeerd. Het `/*` Joker teken wordt niet ondersteund in samengestelde paden. U moet `/?` geen op te geven of `/*` in een samengesteld pad.
@@ -314,7 +314,7 @@ Het is optioneel om de volg orde op te geven. Als u niets opgeeft, wordt de volg
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Alle paden uitsluiten, maar indexeren actief houden
 
-Dit beleid kan worden gebruikt in situaties waarin de [TTL-functie (time-to-Live)](time-to-live.md) actief is, maar geen secundaire index vereist is (om Azure Cosmos DB als zuivere sleutel waarde-archief te gebruiken).
+Dit beleid kan worden gebruikt in situaties waarin de [TTL-functie (time-to-Live)](time-to-live.md) actief is, maar geen aanvullende indexen nodig zijn (om Azure Cosmos DB te gebruiken als zuivere sleutel waarde-archief).
 
 ```json
     {
@@ -350,17 +350,17 @@ Met een [indexerings beleid-update](index-policy.md#modifying-the-indexing-polic
 > [!NOTE]
 > Wanneer u het indexerings beleid bijwerkt, wordt de schrijf bewerking naar Azure Cosmos DB onderbroken. Meer informatie over het [indexeren van trans formaties](index-policy.md#modifying-the-indexing-policy)
 
-## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 Azure Cosmos-containers slaan hun indexerings beleid op als een JSON-document waarmee u de Azure Portal rechtstreeks kunt bewerken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Maak een nieuw Azure Cosmos DB-account of selecteer een bestaand account.
 
 1. Open het deel venster **Data Explorer** en selecteer de container waaraan u wilt werken.
 
-1. Klik op **schaal & instellingen** .
+1. Klik op **schaal & instellingen**.
 
 1. Het JSON-document van het indexerings beleid wijzigen (Zie de [volgende](#indexing-policy-examples)voor beelden)
 
@@ -368,7 +368,7 @@ Azure Cosmos-containers slaan hun indexerings beleid op als een JSON-document wa
 
 :::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Indexeren beheren met behulp van de Azure-portal":::
 
-## <a name="use-the-azure-cli"></a>De Azure CLI gebruiken
+## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
 Als u een container met een aangepast indexerings beleid wilt maken, [maakt u een container met een aangepast index beleid met behulp van CLI](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
 

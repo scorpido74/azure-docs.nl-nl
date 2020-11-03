@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce96eb5e91ccc4cb9f69711f9e6fd8fd59ce65bc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669944"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286206"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Tenant beperkingen gebruiken om de toegang tot SaaS-Cloud toepassingen te beheren
 
@@ -29,11 +29,11 @@ Met Tenant beperkingen kunnen organisaties de lijst met tenants opgeven waartoe 
 
 Dit artikel richt zich op de Tenant beperkingen voor Microsoft 365, maar de functie zou moeten werken met elke SaaS-Cloud-app die moderne verificatie protocollen met Azure AD gebruikt voor eenmalige aanmelding. Als u SaaS-apps gebruikt met een andere Azure AD-Tenant van de Tenant die wordt gebruikt door Microsoft 365, moet u ervoor zorgen dat alle vereiste tenants zijn toegestaan. Zie de [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)voor meer informatie over SaaS-Cloud-apps.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Hoe werkt het?
 
 De algemene oplossing bestaat uit de volgende onderdelen:
 
-1. **Azure AD** : als de `Restrict-Access-To-Tenants: <permitted tenant list>` is aanwezig, worden door Azure AD alleen beveiligings tokens uitgegeven voor de toegestane tenants.
+1. **Azure AD** : als de `Restrict-Access-To-Tenants: <permitted tenant list>` header aanwezig is, verleent Azure AD alleen beveiligings tokens voor de toegestane tenants.
 
 2. **On-premises proxy server-infra structuur** : deze infra structuur is een proxy-apparaat dat kan Transport Layer Security (TLS)-inspectie. U moet de proxy configureren om de header met de lijst met toegestane tenants in te voegen in verkeer dat is bestemd voor Azure AD.
 
@@ -63,11 +63,11 @@ De volgende configuratie is vereist om Tenant beperkingen via uw proxy-infra str
 
 - Clients moeten de certificaat keten vertrouwen die door de proxy voor TLS-communicatie wordt weer gegeven. Als er bijvoorbeeld certificaten van een interne [open bare-sleutel infrastructuur (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) worden gebruikt, moet het interne certificaat van de basis certificerings instantie worden vertrouwd.
 
-- Deze functie is opgenomen in Microsoft 365-abonnementen, maar als u Tenant beperkingen wilt gebruiken om de toegang tot andere SaaS-apps te beheren, zijn Azure AD Premium 1 licenties vereist.
+- Azure AD Premium 1 licenties zijn vereist voor het gebruik van Tenant beperkingen. 
 
-#### <a name="configuration"></a>Configuratie
+#### <a name="configuration"></a>Configuration
 
-Plaats voor elke inkomende aanvraag voor login.microsoftonline.com, login.microsoft.com en login.windows.net twee HTTP-headers: *beperken tot tenants* en *beperkende toegang-context* .
+Plaats voor elke inkomende aanvraag voor login.microsoftonline.com, login.microsoft.com en login.windows.net twee HTTP-headers: *beperken tot tenants* en *beperkende toegang-context*.
 
 > [!NOTE]
 > Wanneer u SSL-interceptie en header-injectie configureert, moet u ervoor zorgen dat verkeer https://device.login.microsoftonline.com wordt uitgesloten. Deze URL wordt gebruikt voor het verifiëren van apparaten en het uitvoeren van TLS-inchecken en-inspectie kan de verificatie van client certificaten belemmeren, wat kan leiden tot problemen met apparaatregistratie en voorwaardelijke toegang op basis van een apparaat.
@@ -81,7 +81,7 @@ De headers moeten de volgende elementen bevatten:
 - Voor *Restrict-Access-context* gebruikt u een waarde van één map-id en declareert u welke Tenant de Tenant beperkingen instellen. Als u bijvoorbeeld Contoso wilt declareren als de Tenant die het beleid voor Tenant beperkingen instelt, ziet het naam/waarde-paar er als volgt uit: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` .  U **moet** uw eigen directory-id in deze plaats gebruiken.
 
 > [!TIP]
-> U kunt uw directory-ID vinden in de [Azure Active Directory Portal](https://aad.portal.azure.com/). Meld u aan als beheerder, selecteer **Azure Active Directory** en selecteer vervolgens **Eigenschappen** . 
+> U kunt uw directory-ID vinden in de [Azure Active Directory Portal](https://aad.portal.azure.com/). Meld u aan als beheerder, selecteer **Azure Active Directory** en selecteer vervolgens **Eigenschappen**. 
 >
 > Als u wilt controleren of een directory-ID of domein naam naar dezelfde Tenant verwijst, gebruikt u die ID of het domein in plaats van <tenant> in deze URL: `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` .  Als de resultaten met het domein en de ID hetzelfde zijn, verwijzen ze naar dezelfde Tenant. 
 
@@ -108,7 +108,7 @@ Hoewel de configuratie van Tenant beperkingen wordt uitgevoerd op de bedrijfs pr
 
 2. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. De pagina overzicht van Azure Active Directory wordt weer gegeven.
 
-3. Selecteer op de pagina overzicht de optie **Tenant beperkingen** .
+3. Selecteer op de pagina overzicht de optie **Tenant beperkingen**.
 
 De beheerder voor de Tenant die is opgegeven als de beperkte-toegangs context Tenant kan dit rapport gebruiken om te zien of aanmeldingen zijn geblokkeerd vanwege het beleid voor Tenant beperkingen, met inbegrip van de identiteit die wordt gebruikt en de doel directory-ID. Aanmeldingen worden opgenomen als de Tenant instelling die de beperking heeft, ofwel de Tenant van de gebruiker of de resource Tenant voor de aanmelding is.
 
