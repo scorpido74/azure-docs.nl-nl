@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: e214607b82a44fb1b6859a3c73d58907fbb279d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad025d2278d6c9ab360ddbdc250e8db4b4eec665
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710733"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495747"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -111,10 +111,10 @@ Zie [Volgende stappen](#next-steps) om aan de slag te gaan met Azure Machine Lea
 
 Azure Machine Learning werkt met andere services op het Azure-platform en kan ook worden geïntegreerd met opensource-tools zoals Git en MLFlow.
 
-+ Rekendoelen zoals __Azure Kubernetes Service__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__ en __Azure HDInsight__. Zie [Wat zijn rekendoelen?](concept-compute-target.md) voor meer informatie over rekendoelen.
++ Rekendoelen zoals __Azure Kubernetes Service__ , __Azure Container Instances__ , __Azure Databricks__ , __Azure Data Lake Analytics__ en __Azure HDInsight__. Zie [Wat zijn rekendoelen?](concept-compute-target.md) voor meer informatie over rekendoelen.
 + __Azure Event Grid__. Zie [Consume Azure Machine Learning events](concept-event-grid-integration.md) (Azure Machine Learning-gebeurtenissen gebruiken) voor meer informatie.
 + __Azure Monitor__. Zie [Monitoring Azure Machine Learning](monitor-azure-machine-learning.md) (Azure Machine Learning bewaken) voor meer informatie.
-+ Gegevensarchieven zoals __Azure Storage-accounts__, __Azure Data Lake Storage__, __Azure SQL Database__, __Azure Database for PostgreSQL__ en __Azure Open Datasets__. Zie [Access data in Azure storage services](how-to-access-data.md) (Toegang tot gegevens in Azure-opslagservices) en [Gegevenssets maken met Azure Open Datasets](how-to-create-register-datasets.md) voor meer informatie.
++ Gegevensarchieven zoals __Azure Storage-accounts__ , __Azure Data Lake Storage__ , __Azure SQL Database__ , __Azure Database for PostgreSQL__ en __Azure Open Datasets__. Zie [Access data in Azure storage services](how-to-access-data.md) (Toegang tot gegevens in Azure-opslagservices) en [Gegevenssets maken met Azure Open Datasets](how-to-create-register-datasets.md) voor meer informatie.
 + __Virtuele netwerken van Azure__. Zie [Overzicht van isolatie van virtueel netwerk en privacy](how-to-network-security-overview.md).
 + __Azure Pipelines__. Zie [Machine Learning-modellen trainen en implementeren](/azure/devops/pipelines/targets/azure-machine-learning) voor meer informatie.
 + __Logboeken van Git-opslagplaats__. Zie [Git-integratie](concept-train-model-git-integration.md) voor meer informatie.
@@ -128,7 +128,8 @@ Uw Azure Storage-account, rekendoelen en andere resources kunnen veilig worden g
 ## <a name="next-steps"></a>Volgende stappen
 
 - Maak uw eerste experiment met de methode van uw voorkeur:
-  + [Python-notebooks gebruiken voor het trainen en implementeren van ML-modellen](tutorial-1st-experiment-sdk-setup.md)
+- + [Aan de slag gaan in uw eigen ontwikkelomgeving](tutorial-1st-experiment-sdk-setup-local.md)
+  + [Jupyter-notebooks gebruiken op een rekeninstantie om ML-modellen te trainen en te implementeren](tutorial-1st-experiment-sdk-setup.md)
   + [R Markdown gebruiken voor het trainen en implementeren van ML-modellen](tutorial-1st-r-experiment.md) 
   + [Geautomatiseerde machine learning gebruiken voor het trainen en implementeren van ML-modellen](tutorial-first-experiment-automated-ml.md) 
   + [Slepen en neerzetten van de ontwerpfunctie gebruiken voor trainen en implementeren](tutorial-designer-automobile-price-train-score.md) 

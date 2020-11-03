@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: cavoeg
-ms.openlocfilehash: f3b3430ef7669022e532166848cb16d6aa66efe8
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: cabacd5204f4a9ac5c17c7bd66924482b5bf688a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220785"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339285"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Quickstart: De Azure-API voor FHIR implementeren met de Azure-portal
 
@@ -37,13 +37,13 @@ U kunt de Azure-API voor FHIR vinden door ‘FHIR’ in het zoekvak te typen:
 
 Selecteer **Maken** om een nieuw ‘Azure-API voor FHIR’-account te maken:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Zoek naar Healthcare API’s":::
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Maak een ‘Azure-API voor FHIR’-account":::
 
 ## <a name="enter-account-details"></a>Voer accountgegevens in
 
-Selecteer een bestaande resourcegroep of maak een nieuwe, kies een naam voor het account en klik tot slot op **Controleren en maken**:
+Selecteer een bestaande resourcegroep of maak een nieuwe, kies een naam voor het account en klik tot slot op **Controleren en maken** :
 
-:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Zoek naar Healthcare API’s":::
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Nieuwe Healthcare API-gegevens":::
 
 Bevestig de aanmaak en wacht tot de FHIR-API is geïmplementeerd.
 
@@ -51,7 +51,7 @@ Bevestig de aanmaak en wacht tot de FHIR-API is geïmplementeerd.
 
 U kunt klikken op **Volgende: Aanvullende instellingen** om de verificatie-instellingen weer te geven. De standaardconfiguratie voor de Azure API voor FHIR is om [Azure RBAC te gebruiken voor het toewijzen van gegevensvlakrollen](configure-azure-rbac.md). In deze modus wordt de Autoriteit voor de FHIR-service ingesteld op de Azure Active Directory-tenant van het abonnement:
 
-:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Zoek naar Healthcare API’s":::
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Instellingen Standaardverificatie":::
 
 Het invoerveld voor toegestane object-id's wordt grijs weergegeven, aangezien we in dit geval Azure RBAC gebruiken voor het configureren van roltoewijzingen.
 
@@ -67,7 +67,10 @@ Wanneer u de resourcegroep niet meer nodig hebt, kunt u de resourcegroep, de Azu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u de Azure-API voor FHIR geïmplementeerd in uw abonnement. Als u aanvullende instellingen wilt configureren in uw Azure-API voor FHIR, gaat u verder met de instructiegids Aanvullende instellingen.
+In deze quickstart hebt u de Azure-API voor FHIR geïmplementeerd in uw abonnement. Als u aanvullende instellingen wilt configureren in uw Azure-API voor FHIR, gaat u verder met de instructiegids Aanvullende instellingen. Als u klaar bent om te beginnen met het gebruik van Azure API for FHIR, leest u de informatie over het registreren van toepassingen.
 
 >[!div class="nextstepaction"]
 >[Aanvullende instellingen in de Azure-API voor FHIR](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[Overzicht toepassingen registreren](fhir-app-registration.md)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 9db530c1bdff6521c945ae0c2373bb9d32b8a476
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0dfb5a68149f4745d17581dcefed6aedcf394106
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047774"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487701"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Quickstart: Een openbare load balancer maken voor het uitvoeren van de taakverdeling voor VM's met behulp van Azure PowerShell
 
@@ -44,12 +44,12 @@ Een Azure-resourcegroep is een logische container waarin Azure-resources worden 
 
 Maak een resourcegroep met [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
 
-* Met de naam **myResourceGroupLB**.
+* Met de naam **CreatePubLBQS-rg**.
 * Op de locatie **eastus**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'MyResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 
 New-AzResourceGroup -Name $rg -Location $loc
@@ -68,15 +68,16 @@ Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres n
 Gebruik [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) om:
 
 * Een standaard zoneredundant openbaar IP-adres met de naam **myPublicIP** te maken.
-* In **myResourceGroupLB**.
+* In **CreatePubLBQS-rg**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'MyResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $pubIP = 'myPublicIP'
 $sku = 'Standard'
 $all = 'static'
+
 
 $publicIp = 
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku
@@ -86,14 +87,15 @@ Als u een zonegebonden openbaar IP-adres in zone 1 wilt maken, voert u de volgen
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'MyResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $pubIP = 'myPublicIP'
 $sku = 'Standard'
 $all = 'static'
 
+
 $publicIp = 
-New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku -zone 1
+New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku -Zone 1
 ```
 
 ## <a name="create-standard-load-balancer"></a>Een standaard load balancer maken
@@ -115,7 +117,7 @@ Maak een front-end-IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell
 ```azurepowershell-interactive
 ## Variables for the commands ##
 $fe = 'myFrontEnd'
-$rg = 'MyResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $pubIP = 'myPublicIP'
 
@@ -181,17 +183,21 @@ Maak een load balancer-regel met [Add-AzLoadBalancerRuleConfig](/powershell/modu
 * Verzendt netwerkverkeer volgens taakverdeling naar de back-endadresgroep **myBackEndPool** via **poort 80**. 
 * Gebruikt statustest **myHealthProbe**.
 * Protocol: **TCP**.
+* Time-out voor inactiviteit: **15 minuten**.
+* Schakel TCP opnieuw instellen in.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbr = 'myHTTPRule'
 $pro = 'tcp'
 $port = '80'
+$idl = '15'
+
 
 ## $feip and $bePool are the variables from previous steps. ##
 
 $rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT
+New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT -IdleTimeoutInMinutes $idl -EnableTcpReset
 ```
 
 ### <a name="create-load-balancer-resource"></a>Resource voor load balancer maken
@@ -200,12 +206,12 @@ Maak een openbare load balancer met [New-AzLoadBalancer](/powershell/module/az.n
 
 * Met de naam **myLoadBalancer**
 * In **eastus**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $sku = 'Standard'
 
@@ -224,14 +230,14 @@ Voordat u VM's implementeert en uw load balancer test, moet u de ondersteunende 
 Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
 * Met de naam **myVNet**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Subnet met de naam **myBackendSubnet**.
 * Virtueel netwerk **10.0.0.0/16**.
 * Subnet **10.0.0.0/24**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
 $spfx = '10.0.0.0/24'
@@ -287,13 +293,13 @@ New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Proto
 Maak een netwerkbeveiligingsgroep met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup):
 
 * Met de naam **myNSG**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Op locatie **eastus**.
 * Met beveiligingsregels die in de vorige stappen zijn gemaakt en zijn opgeslagen in een variabele.
 
 ```azurepowershell
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $nmn = 'myNSG'
 
@@ -309,7 +315,7 @@ Maak drie netwerkinterfaces met [New-AzNetworkInterface](/powershell/module/az.n
 #### <a name="vm-1"></a>VM 1
 
 * Met de naam **myNicVM1**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Op locatie **eastus**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
@@ -318,7 +324,7 @@ Maak drie netwerkinterfaces met [New-AzNetworkInterface](/powershell/module/az.n
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
@@ -345,7 +351,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 #### <a name="vm-2"></a>VM 2
 
 * Met de naam **myNicVM2**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Op locatie **eastus**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
@@ -354,7 +360,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
@@ -381,7 +387,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 #### <a name="vm-3"></a>VM 3
 
 * Met de naam **myNicVM3**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Op locatie **eastus**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
@@ -390,7 +396,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $nic3 = 'myNicVM3'
 $vnt = 'myVNet'
@@ -433,7 +439,7 @@ Maak de virtuele machines met:
 #### <a name="vm1"></a>VM1
 
 * Met de naam **myVM1**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 * In **Zone 1**.
@@ -441,7 +447,7 @@ Maak de virtuele machines met:
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $vm = 'myVM1'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -464,7 +470,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 #### <a name="vm2"></a>VM2
 
 * Met de naam **myVM2**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM2**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 * In **Zone 2**.
@@ -472,7 +478,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $vm = 'myVM2'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -494,7 +500,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 #### <a name="vm3"></a>VM3
 
 * Met de naam **myVM3**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM3**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 * In **Zone 3**.
@@ -502,7 +508,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $vm = 'myVM3'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -531,11 +537,11 @@ Zie [Uitgaande verbindingen in Azure](load-balancer-outbound-connections.md) voo
 Gebruik [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) om:
 
 * Een standaard zoneredundant openbaar IP-adres met de naam **myPublicIPOutbound** maken.
-* In **myResourceGroupLB**.
+* In **CreatePubLBQS-rg**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'MyResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $pubIP = 'myPublicIPOutbound'
 $sku = 'Standard'
@@ -549,7 +555,7 @@ Als u een zonegebonden openbaar IP-adres in zone 1 wilt maken, voert u de volgen
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'MyResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $pubIP = 'myPublicIPOutbound'
 $sku = 'Standard'
@@ -586,7 +592,7 @@ Pas de pool en het front-end-IP-adres toe op de load balancer met [Set-AzLoadBal
 ## Variables for the command ##
 $ben = 'myBackEndPoolOutbound'
 $lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 
 ## Get the load balancer configuration and create the outbound backend address pool##
 Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerBackendAddressPoolConfig -Name $ben | Set-AzLoadBalancer
@@ -603,12 +609,12 @@ Pas de regel toe op de load balancer met [Set-AzLoadBalancer](/powershell/module
 * Protocol: **Alle**.
 * Time-out voor inactiviteit: **15**.
 * **10.000** uitgaande poorten.
-* Gekoppeld aan back-endpool **myBackEndPoolOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* Gekoppeld aan back-endgroep **myBackEndPoolOutbound**.
+* In resourcegroep **CreatePubLBQS-rg**.
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $lbn = 'myLoadBalancer'
 $brn = 'myOutboundRule'
 $pro = 'All'
@@ -630,13 +636,13 @@ Voeg de netwerkinterfaces van de virtuele machines toe aan de uitgaande pool van
 
 #### <a name="vm1"></a>VM1
 * In back-endadresgroep **myBackEndPoolOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM1** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $lbn = 'myLoadBalancer'
 $bep = 'myBackEndPoolOutbound'
 $nic1 = 'myNicVM1'
@@ -656,13 +662,13 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPool
 
 #### <a name="vm2"></a>VM2
 * In back-endadresgroep **myBackEndPoolOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM2** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $lbn = 'myLoadBalancer'
 $bep = 'myBackEndPoolOutbound'
 $nic2 = 'myNicVM2'
@@ -682,13 +688,13 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPool
 
 #### <a name="vm3"></a>VM3
 * In back-endadresgroep **myBackEndPoolOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM3** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $lbn = 'myLoadBalancer'
 $bep = 'myBackEndPoolOutbound'
 $nic3 = 'myNicVM3'
@@ -719,11 +725,11 @@ Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres n
 Gebruik [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) om:
 
 * Een standaard zoneredundant openbaar IP-adres met de naam **myPublicIP** te maken.
-* In **myResourceGroupLB**.
+* In **CreatePubLBQS-rg**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'MyResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $pubIP = 'myPublicIP'
 $sku = 'Basic'
@@ -752,7 +758,7 @@ Maak een front-end-IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell
 ```azurepowershell-interactive
 ## Variables for the commands ##
 $fe = 'myFrontEnd'
-$rg = 'MyResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $pubIP = 'myPublicIP'
 
@@ -818,7 +824,7 @@ Maak een load balancer-regel met [Add-AzLoadBalancerRuleConfig](/powershell/modu
 * Verzendt netwerkverkeer volgens taakverdeling naar de back-endadresgroep **myBackEndPool** via **poort 80**. 
 * Gebruikt statustest **myHealthProbe**.
 * Protocol: **TCP**.
-* Schakel SNAT (Source Network Address Translation) voor uitgaand verkeer in met behulp van het front-end-IP-adres.
+* Time-out voor inactiviteit: **15 minuten**.
 
 
 ```azurepowershell-interactive
@@ -826,11 +832,12 @@ Maak een load balancer-regel met [Add-AzLoadBalancerRuleConfig](/powershell/modu
 $lbr = 'myHTTPRule'
 $pro = 'tcp'
 $port = '80'
+$idl = '15'
 
 ## $feip and $bePool are the variables from previous steps. ##
 
 $rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool
+New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -IdleTimeoutInMinutes $idl
 ```
 
 ### <a name="create-load-balancer-resource"></a>Resource voor load balancer maken
@@ -839,12 +846,12 @@ Maak een openbare load balancer met [New-AzLoadBalancer](/powershell/module/az.n
 
 * Met de naam **myLoadBalancer**
 * In **eastus**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $sku = 'Basic'
 
@@ -863,14 +870,14 @@ Voordat u VM's implementeert en uw load balancer test, moet u de ondersteunende 
 Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
 * Met de naam **myVNet**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Subnet met de naam **myBackendSubnet**.
 * Virtueel netwerk **10.0.0.0/16**.
 * Subnet **10.0.0.0/24**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
 $spfx = '10.0.0.0/24'
@@ -926,13 +933,13 @@ New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Proto
 Maak een netwerkbeveiligingsgroep met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup):
 
 * Met de naam **myNSG**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Op locatie **eastus**.
 * Met beveiligingsregels die in de vorige stappen zijn gemaakt en zijn opgeslagen in een variabele.
 
 ```azurepowershell
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $nmn = 'myNSG'
 
@@ -948,7 +955,7 @@ Maak drie netwerkinterfaces met [New-AzNetworkInterface](/powershell/module/az.n
 #### <a name="vm-1"></a>VM 1
 
 * Met de naam **myNicVM1**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Op locatie **eastus**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
@@ -957,7 +964,7 @@ Maak drie netwerkinterfaces met [New-AzNetworkInterface](/powershell/module/az.n
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
@@ -984,7 +991,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 #### <a name="vm-2"></a>VM 2
 
 * Met de naam **myNicVM2**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Op locatie **eastus**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
@@ -993,7 +1000,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
@@ -1020,7 +1027,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 #### <a name="vm-3"></a>VM 3
 
 * Met de naam **myNicVM3**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Op locatie **eastus**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
@@ -1029,7 +1036,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $loc = 'eastus'
 $nic3 = 'myNicVM3'
 $vnt = 'myVNet'
@@ -1058,12 +1065,12 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -LoadBa
 Gebruik [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) om een beschikbaarheidsset voor de virtuele machines te maken:
 
 * Met de naam **myAvSet**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Op de locatie **eastus**.
 
 ```azurepowershell-interactive
 ## Variables used for the command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $avs = 'myAvSet'
 $loc = 'eastus'
 
@@ -1090,7 +1097,7 @@ Maak de virtuele machines met:
 #### <a name="vm1"></a>VM1
 
 * Met de naam **myVM1**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 * Op de locatie **eastus**.
@@ -1098,7 +1105,7 @@ Maak de virtuele machines met:
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $vm = 'myVM1'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -1121,7 +1128,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 #### <a name="vm2"></a>VM2
 
 * Met de naam **myVM2**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM2**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 * Op de locatie **eastus**.
@@ -1129,7 +1136,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $vm = 'myVM2'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -1151,7 +1158,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 #### <a name="vm3"></a>VM3
 
 * Met de naam **myVM3**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM3**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 * Op de locatie **eastus**.
@@ -1159,7 +1166,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $vm = 'myVM3'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -1184,7 +1191,7 @@ Het duurt enkele minuten voordat de drie VM's zijn gemaakt en geconfigureerd.
 
 ## <a name="install-iis"></a>IIS installeren
 
-Gebruik [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest) om de aangepaste scriptextensie te installeren. 
+Gebruik [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) om de aangepaste scriptextensie te installeren. 
 
 De extensie voert PowerShell Add-WindowsFeature Web-Server uit om de IIS-webserver te installeren en werkt vervolgens de pagina Default.htm bij om de hostnaam van de VM weer te geven:
 
@@ -1192,7 +1199,7 @@ De extensie voert PowerShell Add-WindowsFeature Web-Server uit om de IIS-webserv
 
 ```azurepowershell-interactive
 ## Variables for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $enm = 'IIS'
 $vmn = 'myVM1'
 $loc = 'eastus'
@@ -1207,7 +1214,7 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 
 ```azurepowershell-interactive
 ## Variables for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $enm = 'IIS'
 $vmn = 'myVM2'
 $loc = 'eastus'
@@ -1222,7 +1229,7 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 
 ```azurepowershell-interactive
 ## Variables for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 $enm = 'IIS'
 $vmn = 'myVM3'
 $loc = 'eastus'
@@ -1235,11 +1242,11 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 
 ## <a name="test-the-load-balancer"></a>Load balancer testen
 
-Gebruik [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest) om het openbare IP-adres van de load balancer op te halen:
+Gebruik [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) om het openbare IP-adres van de load balancer op te halen:
 
 ```azurepowershell-interactive
   ## Variables for command. ##
-  $rg = 'myResourceGroupLB'
+  $rg = 'CreatePubLBQS-rg'
   $ipn = 'myPublicIP'
     
   Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ipn | select IpAddress
@@ -1257,7 +1264,7 @@ U kunt de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remo
 
 ```azurepowershell-interactive
 ## Variable for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreatePubLBQS-rg'
 
 Remove-AzResourceGroup -Name $rg
 ```

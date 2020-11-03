@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cd1be43bd8984df8fef690e595ec99f4b112c3c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c875c89d5b565e95fccaceebdccad82da75b238e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533636"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521914"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Zelfstudie: Integratie van een eenmalige aanmelding (SSO) van Azure Active Directory met Sugar CRM
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Sugar CRM integreert met Azure Active Directory
 * Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-accounts worden aangemeld bij Sugar CRM.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -72,7 +72,7 @@ Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met Sugar CR
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in de [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Sugar CRM**, zoek de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Ga in de [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Sugar CRM** , zoek de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
@@ -106,9 +106,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -142,11 +142,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in de sectie **Beheer** op **Wachtwoordbeheer**.
 
-    ![Beheer](./media/sugarcrm-tutorial/ic795889.png "Beheer")
+    ![Schermopname met de sectie Administration, waar u Password Management kunt selecteren.](./media/sugarcrm-tutorial/ic795889.png "Beheer")
 
 1. Selecteer **SAML-verificatie inschakelen**.
 
-    ![Beheer](./media/sugarcrm-tutorial/ic795890.png "Beheer")
+    ![Schermopname met de optie om SAML Authentication te selecteren.](./media/sugarcrm-tutorial/ic795890.png "Beheer")
 
 1. Voer in het gedeelte **SAML-verificatie** de volgende stappen uit:
 
@@ -166,7 +166,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Sugar CRM, moeten z
 
 **Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Meld u aan bij uw **Sugar CRM**-bedrijfssite als beheerder.
+1. Meld u aan bij uw **Sugar CRM** -bedrijfssite als beheerder.
 
 1. Ga naar **Beheerder**.
 
@@ -174,7 +174,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Sugar CRM, moeten z
 
 1. Klik in de sectie **Beheer** op **Gebruikersbeheer**.
 
-    ![Beheer](./media/sugarcrm-tutorial/ic795893.png "Beheer")
+    ![Schermopname met de sectie Administration, waar u User Management kunt selecteren.](./media/sugarcrm-tutorial/ic795893.png "Beheer")
 
 1. Ga naar **Gebruikers \> Nieuwe gebruiker maken**.
 
@@ -182,15 +182,15 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Sugar CRM, moeten z
 
 1. In het tabblad **Gebruikersprofiel** voert u de volgende stappen uit:
 
-    ![Nieuwe gebruiker](./media/sugarcrm-tutorial/ic795895.png "Nieuwe gebruiker")
+    ![Schermopname van de sectie User Profile, waar u de beschreven waarden kunt invoeren.](./media/sugarcrm-tutorial/ic795895.png "Nieuwe gebruiker")
 
-    * Typ de **gebruikersnaam**, **achternaam** en **e-mailadres** van een geldig Azure Active Directory-gebruiker die u wilt inrichten in de desbetreffende tekstvakken.
+    * Typ de **gebruikersnaam** , **achternaam** en **e-mailadres** van een geldig Azure Active Directory-gebruiker die u wilt inrichten in de desbetreffende tekstvakken.
   
 1. Selecteer **Actief** als **Status**.
 
 1. Voer op het tabblad Wachtwoord de volgende stappen uit:
 
-    ![Nieuwe gebruiker](./media/sugarcrm-tutorial/ic795896.png "Nieuwe gebruiker")
+    ![Schermopname van het tabblad Password, waar u de beschreven waarden kunt invoeren.](./media/sugarcrm-tutorial/ic795896.png "Nieuwe gebruiker")
 
     a. Typ het wachtwoord in het bijbehorende tekstvak.
 
@@ -203,15 +203,14 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Sugar CRM, moeten z
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Sugar CRM klikt, wordt u automatisch aangemeld bij de instantie van Sugar CRM waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Sugar CRM klikt, wordt u automatisch aangemeld bij de instantie van Sugar CRM waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Sugar CRM uitproberen met Azure AD](https://aad.portal.azure.com/)
-

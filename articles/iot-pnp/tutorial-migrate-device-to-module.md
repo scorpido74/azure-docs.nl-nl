@@ -1,5 +1,5 @@
 ---
-title: Een algemeen IoT Plug en Play-apparaat verbinden met een algemene module | Microsoft Docs
+title: Een IoT Plug en Play-apparaat verbinden met een algemene module | Microsoft Docs
 description: Gebruik van voorbeeldcode van een C# IoT Plug en play-apparaat in een algemene module.
 author: ericmitt
 ms.author: ericmitt
@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 671809b9cdbe72c8f3091b0056897c2342a38b1f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d425152f83821e1d157065370bd02e2d990ec876
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089159"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426930"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Zelfstudie: Een IoT Plug en Play-apparaat verbinden (C#)
 
@@ -35,11 +35,11 @@ Gebruik de Azure IoT-verkenner om een nieuw apparaat met de naam **my-module-dev
 
 Voeg een module met de naam **my-module** toe aan het apparaat **my-module-device** :
 
-1. Ga in de Azure IoT-verkenner naar het apparaat **my-module-device** .
+1. Ga in de Azure IoT-verkenner naar het apparaat **my-module-device**.
 
-1. Selecteer **Module-id** en selecteer vervolgens **+ Toevoegen** .
+1. Selecteer **Module-id** en selecteer vervolgens **+ Toevoegen**.
 
-1. Voer **my-module** in als de naam van de module-id en selecteer **Opslaan** .
+1. Voer **my-module** in als de naam van de module-id en selecteer **Opslaan**.
 
 1. Selecteer **my-module** in de lijst met module-id's. Kopieer vervolgens de primaire verbindingsreeks. U gebruikt deze verbindingsreeks van de module later in deze zelfstudie.
 
@@ -96,7 +96,7 @@ U kunt als volgt het voorbeeldproject openen en voorbereiden:
 
 1. Open het projectbestand *azure-iot-sdk-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* in Visual Studio 2019.
 
-1. Ga in Visual Studio naar **Project > Thermostaateigenschappen > Fouten opsporen** . Voeg vervolgens de volgende omgevingsvariabelen toe aan het project:
+1. Ga in Visual Studio naar **Project > Thermostaateigenschappen > Fouten opsporen**. Voeg vervolgens de volgende omgevingsvariabelen toe aan het project:
 
     | Naam | Waarde |
     | ---- | ----- |
@@ -169,9 +169,9 @@ Als u de code uitvoert en vervolgens de Azure IoT-verkenner gebruikt om de bijge
 
 Met de service-SDK's kunt u de model-id van verbonden IoT Plug en Play-apparaten en -modules ophalen. U kunt met de service-SDK's schrijfbare eigenschappen instellen en opdrachten aanroepen:
 
-1. Open in een andere Visual Studio-instantie het project *azure-iot-sdk-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* .
+1. Open in een andere Visual Studio-instantie het project *azure-iot-sdk-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj*.
 
-1. Ga in Visual Studio naar **Project > Thermostaateigenschappen > Fouten opsporen** . Voeg vervolgens de volgende omgevingsvariabelen toe aan het project:
+1. Ga in Visual Studio naar **Project > Thermostaateigenschappen > Fouten opsporen**. Voeg vervolgens de volgende omgevingsvariabelen toe aan het project:
 
     | Naam | Waarde |
     | ---- | ----- |

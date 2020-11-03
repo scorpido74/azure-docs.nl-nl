@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/17/2020
+ms.date: 10/22/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c8ead035b9ac47325b2237ebd4d248f09d2d22f5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f7d9389eb0a0118f2c1be8375531f58b6bed94b6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047740"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488092"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Quickstart: Een openbare load balancer maken om taken van VM's te verdelen via Azure Portal
 
@@ -47,12 +47,12 @@ Wanneer u een openbare load balancer maakt, maakt u een nieuw openbaar IP-adres 
 
 1. Selecteer linksboven in het scherm de optie **Een resource maken** > **Netwerken** > **Load balancer**.
 
-2. Typ of selecteer de volgende informatie op het tabblad **Basisbeginselen** van de pagina **Load balancer maken**: 
+2. Typ of selecteer de volgende informatie op het tabblad **Basisbeginselen** van de pagina **Load balancer maken** : 
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Abonnement               | Selecteer uw abonnement.    |    
-    | Resourcegroep         | Selecteer **Nieuwe maken** en voer **myResourceGroupLB** in het tekstvak in.|
+    | Resourcegroep         | Selecteer **Nieuwe maken** en voer **CreatePubLBQS-rg** in het tekstvak in.|
     | Naam                   | Voer **myLoadBalancer** in                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
     | Type          | Selecteer **Openbaar**.                                        |
@@ -138,7 +138,9 @@ In deze sectie maakt u een load balancer-regel:
     | Back-endpoort | Voer **80** in. |
     | Back-end-pool | Selecteer **myBackendPool**.|
     | Statustest | Selecteer **myHealthProbe**. |
-    | Impliciete uitgaande regels maken | Selecteer **Nee**.
+    | Time-out voor inactiviteit (minuten) | Verplaats de schuifregelaar naar **15** minuten. |
+    | Opnieuw instellen van TCP | Selecteer **Ingeschakeld**. |
+    | Uitgaande SNAT (Source Network Address Translation) | Selecteer **(Aanbevolen) Uitgaande regels gebruiken om leden van de back-endgroep toegang te geven tot internet**. |
 
 4. Laat de overige standaardwaarden staan en selecteer **OK**.
 
@@ -156,13 +158,13 @@ In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
 1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtueel netwerk** of zoek naar **Virtueel netwerk** in het zoekvak.
 
-2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen**:
+2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen** :
 
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Projectgegevens**  |                                                                 |
     | Abonnement     | Selecteer uw Azure-abonnement                                  |
-    | Resourcegroep   | Selecteer **myResourceGroupLB** |
+    | Resourcegroep   | Selecteer **CreatePubLBQS-rg** |
     | **Exemplaardetails** |                                                                 |
     | Naam             | Voer **myVNet** in                                    |
     | Regio           | Selecteer **Europa - west** |
@@ -203,19 +205,19 @@ In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
-In deze sectie maakt u drie VM's (**myVM1**, **myVM2** en **myVM3**) in drie verschillende zones (**Zone 1**, **Zone 2** en **Zone 3**). 
+In deze sectie maakt u drie VM's ( **myVM1** , **myVM2** en **myVM3** ) in drie verschillende zones ( **Zone 1** , **Zone 2** en **Zone 3** ). 
 
 Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder is gemaakt.
 
 1. Selecteer in de linkerbovenhoek van de portal de optie **Een resource maken** > **Compute** > **Virtuele machine**. 
    
-2. In **Een virtuele machine maken** typt of selecteert u de waarden op het tabblad **Basisinformatie**:
+2. In **Een virtuele machine maken** typt of selecteert u de waarden op het tabblad **Basisinformatie** :
 
     | Instelling | Waarde                                          |
     |-----------------------|----------------------------------|
     | **Projectgegevens** |  |
     | Abonnement | Selecteer uw Azure-abonnement |
-    | Resourcegroep | Selecteer **myResourceGroupLB** |
+    | Resourcegroep | Selecteer **CreatePubLBQS-rg** |
     | **Exemplaardetails** |  |
     | Naam van de virtuele machine | Voer **myVM1** in |
     | Regio | Selecteer **Europa - west** |
@@ -263,7 +265,7 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
   
 8. Controleer de instellingen en selecteer vervolgens **Maken**.
 
-9. Volg de stappen 1 tot en met 8 om twee extra VM's te maken met de volgende waarden en alle andere instellingen hetzelfde als **myVM1**:
+9. Volg de stappen 1 tot en met 8 om twee extra VM's te maken met de volgende waarden en alle andere instellingen hetzelfde als **myVM1** :
 
     | Instelling | VM 2| VM 3|
     | ------- | ----- |---|
@@ -309,7 +311,7 @@ Zie [Uitgaande verbindingen in Azure](load-balancer-outbound-connections.md) voo
 
 5. Selecteer bij **Virtuele machines** de optie **+ Toevoegen**.
 
-6. Schakel de selectievakjes naast **myVM1**, **myVM2**en **myVM3** in. 
+6. Schakel de selectievakjes naast **myVM1** , **myVM2** en **myVM3** in. 
 
 7. Selecteer **Toevoegen**.
 
@@ -326,12 +328,12 @@ Wanneer u een openbare load balancer maakt, maakt u een nieuw openbaar IP-adres 
 
 1. Selecteer linksboven in het scherm de optie **Een resource maken** > **Netwerken** > **Load balancer**.
 
-2. Typ of selecteer de volgende informatie op het tabblad **Basisbeginselen** van de pagina **Load balancer maken**: 
+2. Typ of selecteer de volgende informatie op het tabblad **Basisbeginselen** van de pagina **Load balancer maken** : 
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Abonnement               | Selecteer uw abonnement.    |    
-    | Resourcegroep         | Selecteer **Nieuwe maken** en typ **myResourceGroupLB** in het tekstvak.|
+    | Resourcegroep         | Selecteer **Nieuwe maken** en typ **CreatePubLBQS-rg** in het tekstvak.|
     | Naam                   | Voer **myLoadBalancer** in                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
     | Type          | Selecteer **Openbaar**.                                        |
@@ -345,7 +347,7 @@ Wanneer u een openbare load balancer maakt, maakt u een nieuw openbaar IP-adres 
 
 4. Selecteer in het deelvenster **Beoordelen en maken** de optie **Maken**.   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Een standaardversie van een load balancer maken" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Een Basic load balancer maken" border="true":::
 
 ## <a name="create-load-balancer-resources"></a>Resources voor load balancer maken
 
@@ -362,13 +364,13 @@ In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
 1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtueel netwerk** of zoek naar **Virtueel netwerk** in het zoekvak.
 
-2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen**:
+2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen** :
 
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Projectgegevens**  |                                                                 |
     | Abonnement     | Selecteer uw Azure-abonnement                                  |
-    | Resourcegroep   | Selecteer **myResourceGroupLB** |
+    | Resourcegroep   | Selecteer **CreatePubLBQS-rg** |
     | **Exemplaardetails** |                                                                 |
     | Naam             | Voer **myVNet** in                                    |
     | Regio           | Selecteer **Europa - west** |
@@ -474,6 +476,7 @@ In deze sectie maakt u een load balancer-regel:
     | Back-endpoort | Voer **80** in. |
     | Back-end-pool | Selecteer **myBackendPool**.|
     | Statustest | Selecteer **myHealthProbe**. |
+    | Time-out voor inactiviteit (minuten) | Verplaats de schuifregelaar naar **15** minuten. |
  
 4. Laat de overige standaardwaarden staan en selecteer **OK**.
 
@@ -487,7 +490,7 @@ In deze sectie doet u het volgende:
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
-In deze sectie maakt u drie VM's(**myVM1**, **myVM2** en **myVM3**) met een basic openbaar IP-adres.  
+In deze sectie maakt u drie VM's( **myVM1** , **myVM2** en **myVM3** ) met een basic openbaar IP-adres.  
 
 De drie VM's worden toegevoegd aan een beschikbaarheidsset met de naam **myAvailabilitySet**.
 
@@ -495,13 +498,13 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
 
 1. Selecteer in de linkerbovenhoek van de portal de optie **Een resource maken** > **Compute** > **Virtuele machine**. 
    
-2. In **Een virtuele machine maken** typt of selecteert u de waarden op het tabblad **Basisinformatie**:
+2. In **Een virtuele machine maken** typt of selecteert u de waarden op het tabblad **Basisinformatie** :
 
     | Instelling | Waarde                                          |
     |-----------------------|----------------------------------|
     | **Projectgegevens** |  |
     | Abonnement | Selecteer uw Azure-abonnement |
-    | Resourcegroep | Selecteer **myResourceGroupLB** |
+    | Resourcegroep | Selecteer **CreatePubLBQS-rg** |
     | **Exemplaardetails** |  |
     | Naam van de virtuele machine | Voer **myVM1** in |
     | Regio | Selecteer **Europa - west** |
@@ -543,7 +546,7 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
   
 8. Controleer de instellingen en selecteer vervolgens **Maken**.
 
-9. Volg de stappen 1 tot en met 8 om twee extra VM's te maken met de volgende waarden en alle andere instellingen hetzelfde als **myVM1**:
+9. Volg de stappen 1 tot en met 8 om twee extra VM's te maken met de volgende waarden en alle andere instellingen hetzelfde als **myVM1** :
 
     | Instelling | VM 2| VM 3|
     | ------- | ----- |---|
@@ -563,7 +566,7 @@ De virtuele machines die in de vorige stappen zijn gemaakt, moeten worden toegev
 
 4. Selecteer in het gedeelte **Virtuele machines** de optie **+ Toevoegen**.
 
-5. Schakel de selectievakjes naast **myVM1**, **myVM2** en **myVM3** in.
+5. Schakel de selectievakjes naast **myVM1** , **myVM2** en **myVM3** in.
 
 6. Selecteer **Toevoegen**.
 
@@ -573,7 +576,7 @@ De virtuele machines die in de vorige stappen zijn gemaakt, moeten worden toegev
 
 ## <a name="install-iis"></a>IIS installeren
 
-1. Selecteer in het linkermenu **Alle services**, selecteer vervolgens **Alle resources** en selecteer daarna in de lijst met resources **myVM1**, die zich in de resourcegroep **myResourceGroupLB** bevindt.
+1. Selecteer in het linkermenu **Alle services** , selecteer vervolgens **Alle resources** en selecteer daarna in de lijst met resources **myVM1** , die zich in de resourcegroep **CreateStdLBQS-rg** bevindt.
 
 2. Selecteer op de pagina **Overzicht** de optie **Verbinding maken** en daarna **Bastion**.
 
@@ -616,7 +619,7 @@ U kunt de standaardpagina van de IIS-webserver van elke virtuele machine aanpass
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder de resourcegroep, de load balancer en alle gerelateerde resources, wanneer u deze niet meer nodig hebt. Als u dit wilt doen, selecteert u de resourcegroep **myResourceGroupLB** die de resources bevat en selecteert u **Verwijderen**.
+Verwijder de resourcegroep, de load balancer en alle gerelateerde resources, wanneer u deze niet meer nodig hebt. Als u dit wilt doen, selecteert u de resourcegroep **CreatePubLBQS-rg** die de resources bevat en selecteert u **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -626,6 +629,6 @@ In deze snelstart, gaat u het volgende doen:
 * U hebt drie VM's aan de load balancer gekoppeld.
 * U hebt de verkeersregel en statustest van de load balancer geconfigureerd en vervolgens de load balancer getest. 
 
-Als u meer informatie wilt over Azure Load Balancer, gaat u naar
+Als u meer informatie wilt over Azure Load Balancer, gaat u naar:
 > [!div class="nextstepaction"]
 > [Wat is Azure Load Balancer?](load-balancer-overview.md)

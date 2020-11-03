@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6aa56eeab59dee3f080895d5f15285a2b2d41591
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 91edbbda43365b17b8276572804ba788dbee9f13
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088768"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426723"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ gebruiken om Azure Spring Cloud-toepassingen te implementeren
 
@@ -25,10 +25,10 @@ Voordat u dit voorbeeld kunt uitvoeren, kunt u de [eenvoudige quickstart](spring
 ## <a name="prerequisites"></a>Vereisten
 * [JDK 8 Azul Zulu](/java/azure/jdk/java-jdk-install?preserve-view=true&view=azure-java-stable)
 * [Maven 3.5.0+](https://maven.apache.org/download.cgi)
-* [IntelliJ IDEA, Community/Ultimate Edition, versie 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
+* [IntelliJ IDEA, Community/Ultimate Edition, versie 2020.1/2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>De invoegtoepassing installeren
-U kunt de Azure-toolkit voor IntelliJ IDEA 3.35.0 toevoegen vanuit de IntelliJ-gebruikersinterface voor **invoegtoepassingen**.
+U kunt de Azure-toolkit voor IntelliJ IDEA 3.43.0 toevoegen vanuit de IntelliJ-gebruikersinterface voor **invoegtoepassingen**.
 
 1. Start IntelliJ.  Als u eerder een project hebt geopend, sluit u het project om het welkomstdialoogvenster weer te geven. Selecteer **Configureren** vanuit de links rechtsonder en klik vervolgens op **Invoegtoepassingen** om het dialoogvenster voor de configuratie van invoegtoepassingen te openen en selecteer **Invoegtoepassingen vanaf schijf installeren**.
 

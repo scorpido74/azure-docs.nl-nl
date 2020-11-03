@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: ee5f70f40103a92ff26cfcabc6adf9e2b825b59b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c388bd22ba20dd681997064496a90a81dabb292f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074835"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426719"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integreren met Kubernetes-implementatie met Helm
 
@@ -57,10 +57,10 @@ In deze zelfstudie wordt ervan uitgegaan dat u basisbegrip hebt van het beheren 
 3. Selecteer **Configuratieverkenner**.
 
 4. Selecteer **+ Maken** > **Sleutelkluisverwijzing** en geef de volgende waarden op:
-    - **Sleutel**: Selecteer **secrets.password**.
-    - **Label**: Laat deze waarde leeg.
-    - **Abonnement**, **Resourcegroep** en **Sleutelkluis**: Voer de waarden in die overeenkomen met de waarden in de sleutelkluis die u in de vorige stap hebt gemaakt.
-    - **Geheim**: Selecteer het geheim genaamd **Wachtwoord** dat u in de vorige sectie hebt gemaakt.
+    - **Sleutel** : Selecteer **secrets.password**.
+    - **Label** : Laat deze waarde leeg.
+    - **Abonnement** , **Resourcegroep** en **Sleutelkluis** : Voer de waarden in die overeenkomen met de waarden in de sleutelkluis die u in de vorige stap hebt gemaakt.
+    - **Geheim** : Selecteer het geheim genaamd **Wachtwoord** dat u in de vorige sectie hebt gemaakt.
 
 ## <a name="create-helm-chart"></a>Helm-grafiek maken ##
 Maak eerst een Helm-voorbeeldgrafiek met de volgende opdracht
@@ -96,7 +96,7 @@ env:
     value: {{ .Values.settings.message }}
 ``` 
 
-Na de update moet het volledige *deployment.yaml*-bestand eruitzien zoals hieronder.
+Na de update moet het volledige *deployment.yaml* -bestand eruitzien zoals hieronder.
 
 ```yaml
 apiVersion: apps/v1beta2
@@ -157,7 +157,7 @@ spec:
     {{- end }}
 ```
 
-Als u gevoelige gegevens als Kubernetes-geheimen wilt opslaan, voegt u een *secrets.yaml*-bestand toe onder de map met sjablonen.
+Als u gevoelige gegevens als Kubernetes-geheimen wilt opslaan, voegt u een *secrets.yaml* -bestand toe onder de map met sjablonen.
 
 > [!TIP]
 > Meer informatie over het gebruiken van [Kubernetes-geheimen](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets).
@@ -182,7 +182,7 @@ settings:
 ```
 
 ## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>Configuratie uit App Configuration doorgeven aan Helm-installatie ##
-Download de configuratie uit App Configuration eerst naar een *myConfig.yaml*-bestand. Gebruik een sleutelfilter om alleen de sleutels te downloaden die met **settings.** beginnen. Als het sleutelfilter in uw geval niet voldoende is om sleutels uit te sluiten van sleutelkluisverwijzingen, kunt u het argument **--skip-keyvault** gebruiken om ze uit te sluiten. 
+Download de configuratie uit App Configuration eerst naar een *myConfig.yaml* -bestand. Gebruik een sleutelfilter om alleen de sleutels te downloaden die met **settings.** beginnen. Als het sleutelfilter in uw geval niet voldoende is om sleutels uit te sluiten van sleutelkluisverwijzingen, kunt u het argument **--skip-keyvault** gebruiken om ze uit te sluiten. 
 
 > [!TIP]
 > Meer informatie over de [exportopdracht](/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export). 
@@ -229,9 +229,9 @@ Verifieer dat configuraties en geheimen succesvol zijn ingesteld door het [Kuber
 
 ![Quickstart voor het lokaal starten van een app](./media/kubernetes-dashboard-env-variables.png)
 
-Eén geheim, **password**, dat als sleutelkluisverwijzing in App Configuration is opgeslagen, is ook toegevoegd aan Kubernetes-geheimen. 
+Eén geheim, **password** , dat als sleutelkluisverwijzing in App Configuration is opgeslagen, is ook toegevoegd aan Kubernetes-geheimen. 
 
-![Quickstart voor het lokaal starten van een app](./media/kubernetes-dashboard-secrets.png)
+![Schermopname met het wachtwoord gemarkeerd in de sectie Data.](./media/kubernetes-dashboard-secrets.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 7e68e93e8a103ccf92c949df779d929ac4095d92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268822"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428376"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Zelfstudie: Pushmeldingen verzenden naar Android-apparaten met Firebase SDK versie 0.6
 
@@ -56,9 +56,9 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
 ## <a name="create-an-android-studio-project"></a>Een Android Studio-project maken
 
 1. Start Android Studio.
-2. Selecteer **File**, wijs naar **New** en selecteer **New Project**. 
+2. Selecteer **File** , wijs naar **New** en selecteer **New Project**. 
 2. Selecteer **Empty Activity** op de pagina **Choose your project** en selecteer **Next**. 
-3. Voer de volgende stappen uit op de pagina **Configure your project**: 
+3. Voer de volgende stappen uit op de pagina **Configure your project** : 
     1. Voer een naam in voor de toepassing.
     2. Geef een locatie om voor het opslaan van de projectbestanden. 
     3. Selecteer **Finish**. 
@@ -88,7 +88,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. U hebt oo
 
 ### <a name="add-google-play-services-to-the-project"></a>Google Play-services aan het project toevoegen
 
-1. Selecteer in Android Studio in het menu de optie **Hulpprogramma’s**, en selecteer vervolgens **SDK Manager**. 
+1. Selecteer in Android Studio in het menu de optie **Hulpprogramma’s** , en selecteer vervolgens **SDK Manager**. 
 2. Selecteer de doelversie van de Android SDK die wordt gebruikt in het project. Selecteer vervolgens **Pakketdetails weergeven**. 
 
     ![Android SDK Manager - doelversie selecteren](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
@@ -171,12 +171,12 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. U hebt oo
 
 ### <a name="add-code"></a>Code toevoegen
 
-1. Vouw in de Project-weergave **app** > **src** > **main** > **java** uit. Klik met de rechtermuisknop op de pakketmap onder **java**, selecteer **Nieuw** en selecteer vervolgens **Java-klasse**. Voer **NotificationSettings** in voor de naam en selecteer vervolgens **OK**.
+1. Vouw in de Project-weergave **app** > **src** > **main** > **java** uit. Klik met de rechtermuisknop op de pakketmap onder **java** , selecteer **Nieuw** en selecteer vervolgens **Java-klasse**. Voer **NotificationSettings** in voor de naam en selecteer vervolgens **OK**.
 
     Zorg ervoor dat u de volgende drie tijdelijke aanduidingen in de volgende code bijwerkt voor de klasse `NotificationSettings`:
 
-   * **HubListenConnectionString**: De verbindingsreeks **DefaultListenAccessSignature** voor de hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** in uw hub in de [Azure-portal].
-   * **HubName**: Gebruik de naam van uw hub die wordt weergegeven op de hubpagina in de [Azure-portal].
+   * **HubListenConnectionString** : De verbindingsreeks **DefaultListenAccessSignature** voor de hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** in uw hub in de [Azure-portal].
+   * **HubName** : Gebruik de naam van uw hub die wordt weergegeven op de hubpagina in de [Azure-portal].
 
      `NotificationSettings`-code:
 
@@ -411,7 +411,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. U hebt oo
     android:id="@+id/text_hello"
     ```
 
-    ![Azure Notification Hubs - Verzenden testen](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
+    ![Schermopname met android:id="@+id/text_hello" id toegepast op het TextView-besturingselement.](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
 10. Vervolgens gaat u een subklasse toevoegen voor de ontvanger die u hebt gedefinieerd in AndroidManifest.xml. Voeg een andere nieuwe klasse toe aan uw project met de naam `FirebaseService`.
 

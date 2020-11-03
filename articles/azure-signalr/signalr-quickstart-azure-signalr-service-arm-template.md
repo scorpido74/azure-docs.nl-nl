@@ -1,28 +1,28 @@
 ---
 title: 'Quickstart: Een Azure SignalR-service maken - ARM-sjabloon'
-description: In deze quickstart leert u hoe u een Azure SignalR-service maakt met een Azure Resource Manager-sjabloon.
+description: In deze quickstart leert u hoe u een Azure SignalR-service maakt met een Azure Resource Manager-sjabloon (ARM-sjabloon).
 author: mgblythe
 ms.service: signalr
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/02/2020
-ms.openlocfilehash: 04d0a98863dded93216f5fc669b8148f710f5f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f38bd6ed91788343c028ec5834ba28f4bad3ba43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858825"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487820"
 ---
-# <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Quickstart: Een Azure SignalR-service implementeren met een ARM-sjabloon
+# <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Quickstart: een Azure SignalR-service implementeren met behulp van een ARM-sjabloon
 
-In deze quickstart wordt beschreven hoe u een ARM-sjabloon (Azure Resource Manager) gebruikt om een Azure SignalR-service te maken. U kunt de Azure SignalR-service implementeren via de Azure-portal, PowerShell of CLI.
+In deze quickstart wordt beschreven hoe u een ARM-sjabloon (Azure Resource Manager) gebruikt om een Azure SignalR-service te maken. U kunt de Azure SignalR-service implementeren via Azure Portal, PowerShell of de CLI.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend zodra u zich hebt aangemeld.
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Knop voor het implementeren van Azure SignalR Service in Azure met behulp van een ARM-sjabloon in de Azure-portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Knop voor het implementeren van Azure SignalR Service in Azure met behulp van een ARM-sjabloon in Azure Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -58,26 +58,26 @@ Het sjabloon definieert één Azure-resource:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Selecteer de volgende koppeling om de Azure SignalR-service te implementeren met behulp van de ARM-sjabloon in de Azure-portal:
+Selecteer de volgende koppeling om Azure SignalR Service te implementeren met behulp van de ARM-sjabloon in Azure Portal:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Knop voor het implementeren van Azure SignalR Service in Azure met behulp van een ARM-sjabloon in de Azure-portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Knop voor het implementeren van Azure SignalR Service in Azure met behulp van de ARM-sjabloon in Azure Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
 
-Op de pagina **Een Azure SignalR-service implementeren**:
+Op de pagina **Een Azure SignalR-service implementeren** :
 
 1. Wijzig desgewenst **Abonnement** van de standaardinstelling in een ander abonnement.
 
-2. Selecteer voor **Resourcegroep** de optie **Nieuwe maken**, voer een naam in voor de nieuwe resourcegroep en selecteer **OK**.
+2. Selecteer voor **Resourcegroep** de optie **Nieuwe maken** , voer een naam in voor de nieuwe resourcegroep en selecteer **OK**.
 
 3. Als u een nieuwe resourcegroep hebt gemaakt, selecteert u een **Regio** voor de resourcegroep.
 
-4. Voer desgewenst een nieuwe **naam** en de **locatie** in (zoals **eastus2**) van de Azure SignalR-service. Als u geen naam opgeeft, wordt deze automatisch gegenereerd. De locatie voor de Azure SignalR-service kan hetzelfde zijn als of anders zijn dan de regio van de resourcegroep. Als u geen locatie opgeeft, wordt deze ingesteld op de regio van de resourcegroep.
+4. Voer desgewenst een nieuwe **naam** en de **locatie** in (zoals **eastus2** ) van de Azure SignalR-service. Als u geen naam opgeeft, wordt deze automatisch gegenereerd. De locatie voor de Azure SignalR-service kan verschillen van de regio van de resourcegroep. Als u geen locatie opgeeft, wordt deze ingesteld op de regio van de resourcegroep.
 
-5. Kies de **prijscategorie** (**Free_F1** of **Standard_S1**), voer de **capaciteit** (het aantal SignalR-eenheden) in en kies de **servicemodus** **Standaard** (hiervoor is een centrale server vereist), **Serverloos** (er wordt geen serververbinding toegestaan) of **Klassiek** (alleen routeren naar de centrale server als de hub is verbonden met de server). Schakel **Connectiviteitslogboeken** of **Messaging-logboeken** in.
+5. Kies de **prijscategorie** ( **Free_F1** of **Standard_S1** ), voer de **capaciteit** (het aantal SignalR-eenheden) in en kies de **servicemodus** **Standaard** (hiervoor is een centrale server vereist), **Serverloos** (er wordt geen serververbinding toegestaan) of **Klassiek** (alleen routeren naar de centrale server als de hub is verbonden met de server). Schakel **Connectiviteitslogboeken** of **Messaging-logboeken** in.
 
     > [!NOTE]
     > De capaciteit van de prijscategorie **Free_F1** is beperkt tot 1 eenheid.
 
-    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Knop voor het implementeren van Azure SignalR Service in Azure met behulp van een ARM-sjabloon in de Azure-portal.":::
+    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Schermopname van de ARM-sjabloon voor het maken van een Azure SignalR-service in Azure Portal.":::
 
 6. Selecteer **Controleren + maken**.
 
@@ -92,15 +92,15 @@ Gebruik de volgende code om de Azure SignalR-service te implementeren met behulp
 
 * De naam en regio van de nieuwe Azure SignalR-service
 * De naam en regio van een nieuwe resourcegroep
-* De Azure-prijscategorie (**Free_F1** of **Standard_S1**)
+* De Azure-prijscategorie ( **Free_F1** of **Standard_S1** )
 * De capaciteit van de SignalR-eenheid (1, 2, 5, 10, 20, 50 of 100)
   > [!NOTE]
   > De capaciteit van de prijscategorie **Free_F1** is beperkt tot 1 eenheid.
 * De servicemodus: **Standaard** (een centrale server is vereist), **Serverloos** (verbinding met de server is niet toegestaan) of **Klassiek** (alleen routeren naar een centrale server als de hub is verbonden met de server)
-* Of logboeken voor connectiviteit of berichten moeten worden ingeschakeld (**waar** of **niet waar**)
+* Of logboeken voor connectiviteit of berichten moeten worden ingeschakeld ( **waar** of **niet waar** )
 
 ```azurepowershell-interactive
-$serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR service"
+$serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
 $serviceLocation = Read-Host -Prompt "Enter an Azure region (for example, westus2) for the service"
 $resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group to contain the service"
 $resourceGroupRegion = Read-Host -Prompt "Enter an Azure region (for example, centralus) for the resource group"
@@ -124,7 +124,7 @@ $paramObjHashTable = @{
     enableMessagingLogs = $enableMessageLogs
 }
 
-Write-Verbose "Run New-AzResourceGroupDeployment to create an Azure SignalR service using an ARM template" -Verbose
+Write-Verbose "Run New-AzResourceGroupDeployment to create an Azure SignalR Service using an ARM template" -Verbose
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
     -TemplateParameterObject $paramObjHashTable `
     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-signalr/azuredeploy.json
@@ -137,15 +137,15 @@ Gebruik de volgende code om de Azure SignalR-service te implementeren met behulp
 
 * De naam en regio van de nieuwe Azure SignalR-service
 * De naam en regio van een nieuwe resourcegroep
-* De Azure-prijscategorie (**Free_F1** of **Standard_S1**)
+* De Azure-prijscategorie ( **Free_F1** of **Standard_S1** )
 * De capaciteit van de SignalR-eenheid (1, 2, 5, 10, 20, 50 of 100)
     > [!NOTE]
     > De capaciteit van de prijscategorie **Free_F1** is beperkt tot 1 eenheid.
 * De servicemodus: **Standaard** (een centrale server is vereist), **Serverloos** (verbinding met de server is niet toegestaan) of **Klassiek** (alleen routeren naar een centrale server als de hub is verbonden met de server)
-* Of logboeken voor connectiviteit of berichten moeten worden ingeschakeld (**waar** of **niet waar**)
+* Of logboeken voor connectiviteit of berichten moeten worden ingeschakeld ( **waar** of **niet waar** )
 
 ```azurecli-interactive
-read -p "Enter a name for the new Azure SignalR service: " serviceName &&
+read -p "Enter a name for the new Azure SignalR Service: " serviceName &&
 read -p "Enter an Azure region (for example, westus2) for the service: " serviceLocation &&
 read -p "Enter a name for the new resource group to contain the service: " resourceGroupName &&
 read -p "Enter an Azure region (for example, centralus) for the resource group: " resourceGroupRegion &&
@@ -157,7 +157,7 @@ read -p "Specify whether to enable messaging logs (true or false): " enableMessa
 params='name='$serviceName' location='$serviceLocation' pricingTier='$priceTier' capacity='$unitCapacity' serviceMode='$servicingMode' enableConnectivityLogs='$enableConnectionLogs' enableMessagingLogs='$enableMessageLogs &&
 echo "CREATE RESOURCE GROUP:  az group create --name $resourceGroupName --location $resourceGroupRegion" &&
 az group create --name $resourceGroupName --location $resourceGroupRegion &&
-echo "RUN az deployment group create, which creates an Azure SignalR service using an ARM template" &&
+echo "RUN az deployment group create, which creates an Azure SignalR Service using an ARM template" &&
 az deployment group create --resource-group $resourceGroupName --parameters $params --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-signalr/azuredeploy.json &&
 read -p "Press [ENTER] to continue: "
 ```
@@ -182,7 +182,7 @@ Volg deze stappen om een overzicht van uw nieuwe Azure SignalR-service te bekijk
 Voer de volgende interactieve code uit om details te bekijken van uw Azure SignalR-service. U moet de naam van de nieuwe server en de resourcegroep opgeven.
 
 ```azurepowershell-interactive
-$serviceName = Read-Host -Prompt "Enter the name of your Azure SignalR service"
+$serviceName = Read-Host -Prompt "Enter the name of your Azure SignalR Service"
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
 Write-Verbose "Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $serviceName" -Verbose
 Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $serviceName
@@ -194,7 +194,7 @@ Read-Host "Press [ENTER] to continue"
 Voer de volgende interactieve code uit om details te bekijken van uw Azure SignalR-service. U moet de naam van de nieuwe server en de resourcegroep opgeven.
 
 ```azurecli-interactive
-read -p "Enter the name of your Azure SignalR service: " serviceName &&
+read -p "Enter the name of your Azure SignalR Service: " serviceName &&
 read -p "Enter the resource group name: " resourceGroupName &&
 echo "SHOW SERVICE DETAILS:  az signalr show --resource-group $resourceGroupName --name $serviceName" &&
 az signalr show --resource-group $resourceGroupName --name $serviceName &&

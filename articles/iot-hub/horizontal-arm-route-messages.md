@@ -1,6 +1,6 @@
 ---
-title: ARM-sjabloon gebruiken voor het publiceren van IoT Hub, opslagaccount, routeringsberichten
-description: ARM-sjabloon gebruiken voor het publiceren van IoT Hub, opslagaccount, routeringsberichten
+title: ARM-sjabloon gebruiken voor het publiceren van Azure IoT Hub, opslagaccount, routeringsberichten
+description: ARM-sjabloon gebruiken voor het publiceren van Azure IoT Hub, opslagaccount, routeringsberichten
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,18 +8,22 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 7c53d720aef029d79d95cacd558c3bf9d35b4af6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1b9c576ce03d808fe6a4d0cac5196dfcd1b73eab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148914"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545477"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Quickstart: Een Azure IoT Hub en een opslagaccount implementeren met een ARM-sjabloon
 
-In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een IoT Hub te maken voor het doorsturen van berichten naar Azure Storage, en een opslagaccount voor het opslaan van berichten. Nadat u handmatig een virtueel IoT-apparaat aan de hub hebt toegevoegd om de berichten te verzenden, configureert u de verbindingsgegevens in een toepassing met de naam  *arm-read-write*, om berichten van het apparaat naar de hub te verzenden. De hub is zo geconfigureerd dat de berichten die naar de hub worden verzonden, automatisch worden doorgestuurd naar het opslagaccount. Aan het einde van deze quickstart kunt u het opslagaccount openen en de verzonden berichten bekijken.
+In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een IoT Hub te maken voor het doorsturen van berichten naar Azure Storage, en een opslagaccount voor het opslaan van berichten. Nadat u handmatig een virtueel IoT-apparaat aan de hub hebt toegevoegd om de berichten te verzenden, configureert u de verbindingsgegevens in een toepassing met de naam  *arm-read-write* , om berichten van het apparaat naar de hub te verzenden. De hub is zo geconfigureerd dat de berichten die naar de hub worden verzonden, automatisch worden doorgestuurd naar het opslagaccount. Aan het einde van deze quickstart kunt u het opslagaccount openen en de verzonden berichten bekijken.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,9 +35,10 @@ De sjabloon die in deze quickstart wordt gebruikt, wordt `101-iothub-auto-route-
 
 :::code language="json" source="~/quickstart-templates/101-iothub-auto-route-messages/azuredeploy.json":::
 
-Er worden twee Azure-resources gedefinieerd in de sjabloon: 
-* [Microsoft.Devices/Iothubs](/azure/templates/microsoft.devices/iothubs)
-* [Microsoft.Storage/](/azure/templates/microsoft.storage/allversions)
+Er worden twee Azure-resources gedefinieerd in de sjabloon:
+
+- [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+- [Microsoft.Devices/IotHubs](/azure/templates/microsoft.devices/iothubs)
 
 ## <a name="deploy-the-template-and-run-the-sample-app"></a>De sjabloon implementeren en de voorbeeld-app uitvoeren
 
@@ -48,7 +53,7 @@ In deze sectie vindt u de stappen om de sjabloon te implementeren, een virtueel 
 
 1. Download de [IoT C#-voorbeelden](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/) en pak ze uit.
 
-1. Open een opdrachtvenster en ga naar de map waarin u de IoT C#-voorbeelden hebt uitgepakt. Zoek de map met het bestand arm-read-write.csproj. In dit opdrachtvenster maakt u de omgevingsvariabelen. Meld u aan bij de [Azure Portal](https://portal.azure.com ) om de sleutels op te halen. Selecteer **Resourcegroepen** en selecteer vervolgens de resourcegroep die u voor deze quickstart hebt gemaakt.
+1. Open een opdrachtvenster en ga naar de map waarin u de IoT C#-voorbeelden hebt uitgepakt. Zoek de map met het bestand arm-read-write.csproj. In dit opdrachtvenster maakt u de omgevingsvariabelen. Meld u aan bij [Azure Portal](https://portal.azure.com) om de sleutels op te halen. Selecteer **Resourcegroepen** en selecteer vervolgens de resourcegroep die u voor deze quickstart hebt gemaakt.
 
    ![De resourcegroep selecteren](./media/horizontal-arm-route-messages/01-select-resource-group.png)
 
@@ -56,12 +61,12 @@ In deze sectie vindt u de stappen om de sjabloon te implementeren, een virtueel 
 
    ![Resources in de resourcegroep weergeven](./media/horizontal-arm-route-messages/02-view-resources-in-group.png)
 
-1. U hebt de **naam van de hub** nodig. Selecteer de hub in de lijst met resources. Kopieer de naam van de hub bovenin de IoT Hub-sectie naar het klembord van Windows. 
- 
+1. U hebt de **naam van de hub** nodig. Selecteer de hub in de lijst met resources. Kopieer de naam van de hub bovenin de IoT Hub-sectie naar het klembord van Windows.
+
    ![De hubnaam kopiëren](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
 
     Vervang hiermee de naam van de hub in deze opdracht waar deze voorkomt en voer deze opdracht uit in het opdrachtvenster:
-   
+
     ```cmd
     SET IOT_HUB_URI=<hub name goes here>.azure-devices-net;
     ```
@@ -72,11 +77,11 @@ In deze sectie vindt u de stappen om de sjabloon te implementeren, een virtueel 
    SET IOT_HUB_URI=ContosoTestHubdlxlud5h.azure-devices-net;
    ```
 
-1. De volgende omgevingsvariabele is de IoT-apparaatcode. Voeg een nieuw apparaat aan de hub toe door **IOT-apparaten** te selecteren in het menu IoT Hub voor de hub. 
+1. De volgende omgevingsvariabele is de IoT-apparaatcode. Voeg een nieuw apparaat aan de hub toe door **IOT-apparaten** te selecteren in het menu IoT Hub voor de hub.
 
    ![IoT-apparaten selecteren](./media/horizontal-arm-route-messages/04-select-iot-devices.png)
 
-1. Selecteer aan de rechterkant van het scherm **+ NIEUW** om een nieuw apparaat toe te voegen. 
+1. Selecteer aan de rechterkant van het scherm **+ NIEUW** om een nieuw apparaat toe te voegen.
 
    Vul de naam van het nieuwe apparaat in. In deze quickstart wordt een naam gebruikt die begint met **Contoso-Test-Device**. Sla het apparaat op en open dat scherm opnieuw om de apparaatsleutel op te halen. (De sleutel wordt voor u gegenereerd wanneer u het deelvenster sluit.) Selecteer de primaire of secundaire sleutel en kopieer deze naar het Windows-klembord. Stel in het opdrachtvenster de opdracht in die u wilt uitvoeren en druk op **Enter**. De opdracht moet er als volgt uitzien, maar met de sleutel van het apparaat erin geplakt:
 
@@ -84,10 +89,10 @@ In deze sectie vindt u de stappen om de sjabloon te implementeren, een virtueel 
    SET IOT_DEVICE_KEY=<device-key-goes-here>
    ```
 
-1. De laatste omgevingsvariabele is de **Apparaat-id**. Stel in het opdrachtvenster de opdracht in en voer deze uit. 
-   
+1. De laatste omgevingsvariabele is de **Apparaat-id**. Stel in het opdrachtvenster de opdracht in en voer deze uit.
+
    ```cms
-   SET IOT_DEVICE_ID=<device-id-goes-here> 
+   SET IOT_DEVICE_ID=<device-id-goes-here>
    ```
 
    Deze ziet er als volgt uit:
@@ -100,13 +105,13 @@ In deze sectie vindt u de stappen om de sjabloon te implementeren, een virtueel 
 
    ![Omgevingsvariabelen weergeven](./media/horizontal-arm-route-messages/06-environment-variables.png)
 
-Nu de omgevingsvariabelen zijn ingesteld, voert u de toepassing uit vanuit hetzelfde opdrachtvenster. Omdat u hetzelfde venster gebruikt, zijn de variabelen toegankelijk in het geheugen wanneer u de toepassing uitvoert.
+    Nu de omgevingsvariabelen zijn ingesteld, voert u de toepassing uit vanuit hetzelfde opdrachtvenster. Omdat u hetzelfde venster gebruikt, zijn de variabelen toegankelijk in het geheugen wanneer u de toepassing uitvoert.
 
 1. Als u de toepassing wilt uitvoeren, typt u de volgende opdracht in het opdrachtvenster en drukt u op **Enter**.
 
     `dotnet run arm-read-write`
 
-   De toepassing genereert en toont berichten op de console wanneer elk bericht wordt verzonden naar de IoT-hub. De hub is in de ARM-sjabloon geconfigureerd voor automatische routering. Berichten die de tekst 'level = storage' bevatten, worden automatisch doorgestuurd naar het opslagaccount. Laat de app 10 tot 15 minuten werken en druk dan één of twee keer op **Enter** totdat deze stopt.
+   De toepassing genereert en toont berichten op de console wanneer elk bericht wordt verzonden naar de IoT-hub. De hub is in de ARM-sjabloon geconfigureerd voor automatische routering. Berichten die de tekst `level = storage` bevatten, worden automatisch doorgestuurd naar het opslagaccount. Laat de app 10 tot 15 minuten werken en druk dan één of twee keer op **Enter** totdat deze stopt.
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
@@ -116,7 +121,7 @@ Nu de omgevingsvariabelen zijn ingesteld, voert u de toepassing uit vanuit hetze
 
    ![De opslagaccountbestanden bekijken](./media/horizontal-arm-route-messages/07-see-storage.png)
 
-1. Selecteer een van de bestanden en selecteer **Downloaden**. Download het bestand naar een locatie die u later kunt vinden. Het bestand krijgt een numerieke naam, bijvoorbeeld 47. Voeg '.txt ' toe aan het einde en dubbelklik op het bestand om het te openen.
+1. Selecteer een van de bestanden en selecteer **Downloaden**. Download het bestand naar een locatie die u later kunt vinden. Het bestand krijgt een numerieke naam, bijvoorbeeld 47. Voeg _.txt_ toe aan het einde en dubbelklik op het bestand om het te openen.
 
 1. Wanneer u het bestand opent, heeft elke rij betrekking op een ander bericht. De hoofdtekst van elk bericht is ook versleuteld. Dit is nodig om query's uit te voeren op basis van de hoofdtekst van het bericht.
 

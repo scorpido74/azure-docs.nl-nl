@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 235010cbcdde326cf17643cec81f3b6fcb1eea59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3225aa9eaff5c3cd0acca99261935feb9774810f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548766"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Zelfstudie: Azure Active Directory-integratie met RolePoint
 
@@ -27,7 +27,7 @@ Deze integratie biedt de volgende voordelen:
 * U kunt de gebruikers in staat stellen om zich automatisch te laten aanmelden bij RolePoint (eenmalige aanmelding) met hun Azure AD-account.
 * U kunt uw accounts vanaf één locatie beheren: de Azure-portal.
 
-Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -48,11 +48,11 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 Voor het instellen van de integratie van RolePoint met Azure AD moet u RolePoint vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**:
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory** :
 
     ![Selecteer Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Bedrijfstoepassingen** > **Alle toepassingen**:
+2. Ga naar **Bedrijfstoepassingen** > **Alle toepassingen** :
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -84,7 +84,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Als u eenmalige aanmelding van Azure AD met RolePoint wilt configureren, voert u de volgende stappen uit:
 
-1. Selecteer in [Azure Portal](https://portal.azure.com/) op de pagina voor toepassingsintegratie voor RolePoint **Eenmalige aanmelding**:
+1. Selecteer in [Azure Portal](https://portal.azure.com/) op de pagina voor toepassingsintegratie voor RolePoint **Eenmalige aanmelding** :
 
     ![Eenmalige aanmelding selecteren](common/select-sso.png)
 
@@ -111,7 +111,7 @@ Als u eenmalige aanmelding van Azure AD met RolePoint wilt configureren, voert u
     > [!NOTE]
     > Deze waarden zijn tijdelijke aanduidingen. Hiervoor moet u de werkelijke aanmeldings-URL en id gebruiken. Het wordt aanbevolen om een unieke tekenreekswaarde in de id te gebruiken. Neem contact op met het [ondersteuningsteam van RolePoint](mailto:info@rolepoint.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in het dialoogvenster **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Selecteer op de pagina **Eenmalige aanmelding met SAML instellen**, in de sectie **SAML-handtekeningcertificaat**, de koppeling **Downloaden** naast **XML-bestand met federatieve metagegevens** overeenkomstig uw behoeften, en sla het bestand op uw computer op.
+5. Selecteer op de pagina **Eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekeningcertificaat** , de koppeling **Downloaden** naast **XML-bestand met federatieve metagegevens** overeenkomstig uw behoeften, en sla het bestand op uw computer op.
 
     ![De koppeling om het certificaat te downloaden](common/metadataxml.png)
 
@@ -134,7 +134,7 @@ Als u eenmalige aanmelding aan RolePoint-zijde wilt instellen, moet u samenwerke
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**:
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers** :
 
     ![Selecteer Alle gebruikers](common/users.png)
 
@@ -146,7 +146,7 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
     ![Dialoogvenster Gebruiker](common/user-properties.png)
 
-    1. Voer in het vak **Naam** **Britta Simon**in.
+    1. Voer in het vak **Naam** **Britta Simon** in.
   
     1. Voer in het vak **Naam** **Britta Simon@\<yourcompanydomain> in.\<extension>** . (Bijvoorbeeld: BrittaSimon@contoso.com.)
 
@@ -158,7 +158,7 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
 In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure te gebruiken door haar toegang te verlenen tot RolePoint.
 
-1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **RolePoint**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **RolePoint**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -166,7 +166,7 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
     ![Lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het linkerdeelvenster **Gebruikers en groepen**:
+3. Selecteer in het linkerdeelvenster **Gebruikers en groepen** :
 
     ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
@@ -182,18 +182,18 @@ In deze sectie stelt u Britta Simon in staat om eenmalige aanmelding van Azure t
 
 ### <a name="create-a-rolepoint-test-user"></a>Een RolePoint-testgebruiker maken
 
-Vervolgens moet u een gebruiker met de naam Britta Simon maken in RolePoint. Werk samen met het  [RolePoint-ondersteuningsteam](mailto:info@rolepoint.com) om gebruikers toe te voegen aan RolePoint. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+Vervolgens moet u een gebruiker met de naam Britta Simon maken in RolePoint. Neem contact op met het [ondersteuningsteam van RolePoint](mailto:info@rolepoint.com) om gebruikers toe te voegen aan RolePoint. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 Nu moet u de configuratie voor eenmalige aanmelding van Azure AD testen met behulp van het toegangsvenster.
 
-Wanneer u de RolePoint-tegel selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij de RolePoint--instantie, waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Apps openen en gebruiken in de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie over het toegangsvenster.
+Wanneer u de RolePoint-tegel selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij de RolePoint--instantie, waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Apps openen en gebruiken in de portal Mijn apps](../user-help/my-apps-portal-end-user-access.md) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](./tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58da5c73ea2674bbbd1536a163e163aa0ff31d96
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597673"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521285"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Zelfstudie: Een Azure Time Series Insights Gen2-omgeving instellen
 
@@ -38,7 +38,7 @@ Neem een [gratis Azure-abonnement](https://azure.microsoft.com/free/) als u nog 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* U moet minimaal de rol **Inzender** hebben voor het Azure-abonnement. Lees [Manage access by using role-based access control and the Azure portal](../role-based-access-control/role-assignments-portal.md) (Toegang beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal) voor meer informatie.
+* U moet minimaal de rol **Inzender** hebben voor het Azure-abonnement. Lees [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure Portal](../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 ## <a name="create-a-device-simulation"></a>Een apparaatsimulatie maken
 
@@ -91,8 +91,8 @@ In deze sectie wordt beschreven hoe u een Azure Time Series Insights Gen2-omgevi
     | **Resourcegroep** | Selecteer een bestaande resourcegroep voor de Azure Time Series Insights Gen2-omgevingsresource of maak een nieuwe. Een resourcegroep is een container voor Azure-resources. Het is een best practice om dezelfde resourcegroep te gebruiken als voor de andere IoT-resources die door de apparaatsimulator worden gemaakt. |
     | **Locatie** | Selecteer een datacentrumregio voor uw Azure Time Series Insights Gen2-omgeving. Om extra latentie te voorkomen, kunt u het beste uw Azure Time Series Insights Gen2-omgeving maken in dezelfde regio als uw IoT-hub die door de apparaatsimulator is gemaakt. |
     | **Laag** |  Selecteer **Gen2(L1)** . Dit is de SKU voor het Azure Time Series Insights Gen2-product. |
-    | **Eigenschapsnaam van tijdreeks-id** | Voer een naam in van een eigenschap die waarden bevat waarmee uw tijdreeks-exemplaren uniek worden geïdentificeerd. De waarde die u invoert in het vak **Eigenschapsnaam** als tijdsreeks-id kan later niet worden gewijzigd. Voor deze zelfstudie gebruiken we ***iothub-connection-device-id***. Lees [Best practices voor het kiezen van een tijdreeks-id](./time-series-insights-update-how-to-id.md) voor meer informatie over de Time Series-id, waaronder een samengestelde tijdsreeks-id. |
-    | **Naam van opslagaccount** | Voer een wereldwijd unieke naam voor een nieuw opslagaccount in.|
+    | **Eigenschapsnaam van tijdreeks-id** | Voer een naam in van een eigenschap die waarden bevat waarmee uw tijdreeks-exemplaren uniek worden geïdentificeerd. De waarde die u invoert in het vak **Eigenschapsnaam** als tijdsreeks-id kan later niet worden gewijzigd. Voor deze zelfstudie gebruiken we * *_iothub-connection-device-id_* _. Lees [Best practices voor het kiezen van een tijdreeks-id](./time-series-insights-update-how-to-id.md) voor meer informatie over de Time Series-id, waaronder een samengestelde tijdsreeks-id. |
+    | _ *Naam van opslagaccount** | Voer een wereldwijd unieke naam voor een nieuw opslagaccount in.|
     | **Opslagaccounttype** | Selecteer de opslagtype voor een nieuw opslagaccount. We raden StorageV2 aan|
     | **Replicatie van opslagaccount** | Selecteer de opslagtype voor een nieuw opslagaccount. Op basis van uw locatieselectie kunt u kiezen uit LRS, GRS en ZRS. Voor deze zelfstudie kunt u LRS selecteren|
     | **Hiërarchische naamruimte** |Deze optie kan worden geselecteerd wanneer u het opslagtype selecteert dat StorageV2 moet worden. Dit is standaard uitgeschakeld. Voor deze zelfstudie kunt u de standaardinstelling *uitgeschakeld* laten|
@@ -116,7 +116,7 @@ In deze sectie wordt beschreven hoe u een Azure Time Series Insights Gen2-omgevi
    | **Abonnement** | Selecteer het abonnement dat u hebt gebruikt voor de apparaatsimulator. |
    | **Naam van de IoT Hub** | Selecteer de naam van de IoT-hub die u hebt gebruikt voor de apparaatsimulator. |
    | **IoT Hub-toegangsbeleid** | Selecteer **iothubowner**. |
-   | **IoT Hub-consumentengroep** | Selecteer **Nieuw**, voer een unieke naam in en selecteer vervolgens **+ Toevoegen**. De consumentengroep moet een unieke waarde zijn in Azure Time Series Insights Gen2. |
+   | **IoT Hub-consumentengroep** | Selecteer **Nieuw** , voer een unieke naam in en selecteer vervolgens **+ Toevoegen**. De consumentengroep moet een unieke waarde zijn in Azure Time Series Insights Gen2. |
    | **Timestamp-eigenschap** | Deze waarde wordt gebruikt om de eigenschap **Timestamp** te identificeren in uw binnenkomende telemetriegegevens. Laat dit vak leeg voor deze zelfstudie. In deze simulator wordt de binnenkomende timestamp van IoT Hub gebruikt waarop Azure Time Series Insights Gen2 standaard is ingesteld. |
 
 1. Selecteer **Controleren + maken**.
@@ -137,7 +137,7 @@ In deze sectie wordt beschreven hoe u een Azure Time Series Insights Gen2-omgevi
 
       [![Selecteer en bekijk uw omgeving.](media/v2-update-provision/verify-tsi-resource-in-group.png)](media/v2-update-provision/verify-tsi-resource-in-group.png#lightbox)
 
-   1. Selecteer op de pagina Azure Time Series Insights Gen2 de optie **Beleid voor gegevenstoegang**:
+   1. Selecteer op de pagina Azure Time Series Insights Gen2 de optie **Beleid voor gegevenstoegang** :
 
       [![Controleer het beleid voor gegevenstoegang.](media/v2-update-provision/tsi-data-access-panel.png)](media/v2-update-provision/tsi-data-access-panel.png#lightbox)
 
@@ -166,7 +166,7 @@ Nu u uw Azure Time Series Insights Gen2-omgeving hebt geïmplementeerd, begint u
         | **Naam** | Voer een unieke naam voor een simulator in. |
         | **Beschrijving** | Voer een definitie in. |
         | **Simulatieduur** | Stel de simulatieduur in op **Voor onbepaalde tijd uitvoeren**. |
-        | **Apparaatmodel** | Klik op + **Een apparaattype toevoegen** <br />**Naam**: Voer **Lift** in. <br />**Aantal**: Voer **3** in. <br /> Behoud de overige standaardwaarden |
+        | **Apparaatmodel** | Klik op + **Een apparaattype toevoegen** <br />**Naam** : Voer **Lift** in. <br />**Aantal** : Voer **3** in. <br /> Behoud de overige standaardwaarden |
         | **Doel-IoT-hub** | Stel **Vooraf ingerichte IoT-hub gebruiken** in. |
 
         [![Parameters configureren en starten.](media/v2-update-provision/tsi-launch-solution-accelerator.png)](media/v2-update-provision/tsi-launch-solution-accelerator.png#lightbox)
@@ -237,7 +237,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
         | Parameter | Bewerking |
         | --- | --- |
-        | **Naam** | Voer **Gem. trillingen**in. |
+        | **Naam** | Voer **Gem. trillingen** in. |
         | **Soort** | Selecteer **Numeriek** |
         | **Waarde** | Selecteer uit de voorinstellingen: Selecteer **trillingen (dubbel)** . <br /> Opmerking: Het kan een paar minuten duren voordat **Waarde** wordt ingevuld nadat Azure Time Series Insights Gen2 gebeurtenissen begint te ontvangen.|
         | **Aggregatiebewerking** | Vouw **Geavanceerde opties** uit. <br /> Selecteer **GEMIDDELDE**. |
@@ -246,7 +246,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
         | Parameter | Bewerking |
         | --- | --- |
-        | **Naam** | Voer **Etage**in. |
+        | **Naam** | Voer **Etage** in. |
         | **Soort** | Selecteer **Categorisch** |
         | **Waarde** | Selecteer uit de voorinstellingen: Selecteer **Etage (dubbel)** . <br /> Opmerking: Het kan een paar minuten duren voordat **Waarde** wordt ingevuld nadat Azure Time Series Insights Gen2 gebeurtenissen begint te ontvangen.|
         | **Categorieën** | <span style="text-decoration: underline">Label </span>  - <span style="text-decoration: underline">Waarden</span> <br /> Onderste: 1,2,3,4 <br /> Middelste: 5,6,7,8,9 <br /> Bovenste: 10,11,12,13,14,15 |
@@ -327,7 +327,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
 1. Onder **Pacific Science Center** selecteert u het tijdreeksexemplaar **Lift 2** en selecteert u vervolgens **Gemiddelde temperatuur weergeven**.
 
-1. Selecteer voor hetzelfde exemplaar, **Lift 2**, de optie **Etage weergeven**.
+1. Selecteer voor hetzelfde exemplaar, **Lift 2** , de optie **Etage weergeven**.
 
     Met uw categorische variabele kunt u bepalen hoeveel tijd de lift op de bovenste, onderste en middelste etages was.
 

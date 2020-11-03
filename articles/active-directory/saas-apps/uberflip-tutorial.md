@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533126"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Zelfstudie: Azure Active Directory-integratie met Uberflip
 
@@ -28,7 +28,7 @@ Uberflip integreren met Azure AD biedt u de volgende voordelen:
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Uberflip (eenmalige aanmelding).
 * U kunt uw accounts vanaf één locatie beheren, de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding van Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding van Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -86,7 +86,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voor het configureren van eenmalige aanmelding bij Azure AD met Uberflip voert u de volgende stappen uit:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de **Uberflip**-toepassing de optie **Eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de **Uberflip** -toepassing de optie **Eenmalige aanmelding**.
 
     ![De optie voor eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -96,9 +96,9 @@ Voor het configureren van eenmalige aanmelding bij Azure AD met Uberflip voert u
 
 1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** de optie **Bewerken** (potloodpictogram) om het dialoogvenster **Standaard SAML-configuratie** te openen.
 
-   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
+   ![Schermopname van de Basic SAML-configuratie, waar u een antwoord-URL kunt invoeren.](common/edit-urls.png)
 
-1. Voer een van de volgende stappen uit in het deelvenster **Standaard SAML-configuratie**, afhankelijk van de SSO-modus die u wilt configureren:
+1. Voer een van de volgende stappen uit in het deelvenster **Standaard SAML-configuratie** , afhankelijk van de SSO-modus die u wilt configureren:
 
    * Als u de toepassing in de door IDP geïnitieerde modus wilt configureren, voert u in het vak **Antwoord-URL (URL voor Assertion Consumer Service)** een URL in die voldoet aan het volgende patroon:
 
@@ -113,13 +113,13 @@ Voor het configureren van eenmalige aanmelding bij Azure AD met Uberflip voert u
 
      `https://app.uberflip.com/users/login`
 
-     ![Informatie over eenmalige aanmelding bij Uberflip-domeinen en -URL's](common/both-signonurl.png)
+     ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/both-signonurl.png)
 
 1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAM** in de sectie **SAML-handtekeningcertificaat** de optie **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden van de beschikbare opties en op te slaan op uw computer.
 
    ![De optie voor het downloaden van het XML-bestand met federatieve metagegevens](common/metadataxml.png)
 
-1. Kopieer de URL('s) die u nodig hebt in het deelvenster **Uberflip instellen**:
+1. Kopieer de URL('s) die u nodig hebt in het deelvenster **Uberflip instellen** :
 
    * **Aanmeldings-URL**
    * **Azure AD-id**
@@ -192,12 +192,12 @@ Er is nu een gebruiker met de naam B. Simon gemaakt in Uberflip. U hoeft niets t
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding met Azure AD met behulp van de portal Mijn apps.
 
-Wanneer u **Uberflip** selecteert in de portal Mijn apps, moet u automatisch worden aangemeld bij het Uberflip-abonnement waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Inleiding tot de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie over de portal Mijn apps.
+Wanneer u **Uberflip** selecteert in de portal Mijn apps, moet u automatisch worden aangemeld bij het Uberflip-abonnement waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Inleiding tot de portal Mijn apps](../user-help/my-apps-portal-end-user-access.md) voor meer informatie over de portal Mijn apps.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](./tutorial-list.md)
 
-* [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-* [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

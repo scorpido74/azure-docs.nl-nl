@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad6a4d075ea861068ad0c929d92cd2f12efa6121
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88539722"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Zelfstudie: Azure Active Directory-integratie met Signagelive
 
@@ -27,7 +27,7 @@ Integratie van Signagelive met Azure AD biedt u de volgende voordelen:
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Signagelive (eenmalige aanmelding).
 * U kunt uw accounts vanaf één locatie beheren, de Azure-portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD. Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD. Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -129,7 +129,7 @@ Als u eenmalige aanmelding aan de Signagelive-zijde wilt configureren, verzend u
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -177,19 +177,18 @@ In deze sectie geeft u Britta Simon toestemming voor gebruik van eenmalige aanme
 
 ### <a name="create-a-signagelive-test-user"></a>Een Signagelive-testgebruiker maken
 
-In deze sectie maakt u een gebruiker in Signagelive met de naam Britta Simon. Werk samen met het  [Signagelive-ondersteuningsteam](mailto:support@signagelive.com) om gebruikers toe te voegen op het Signagelive-platform. U moet gebruikers maken en activeren voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker in Signagelive met de naam Britta Simon. Neem contact op met het [ondersteuningsteam van Signagelive](mailto:support@signagelive.com) om de gebruikers toe te voegen in het Signagelive-platform. U moet gebruikers maken en activeren voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding met Azure AD met behulp van de portal MyApps.
 
-Wanneer u de tegel **Signagelive** selecteert in de MyApps-Portal, moet u automatisch worden aangemeld. Zie [Wat is de MyApps-portal?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie over de MyApps-Portal.
+Wanneer u de tegel **Signagelive** selecteert in de MyApps-Portal, moet u automatisch worden aangemeld. Zie [Wat is de MyApps-portal?](../user-help/my-apps-portal-end-user-access.md) voor meer informatie over de MyApps-Portal.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

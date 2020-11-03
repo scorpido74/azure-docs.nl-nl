@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5ae5948c8baf1573393c73026c84d0f62e8693e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74084391"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480102"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Zelfstudie: Een Azure Resource Manager-sjabloon gebruiken om IoT Hub-berichtroutering te configureren
 
@@ -46,49 +46,49 @@ In de volgende sectie worden de gebruikte parameters uitgelegd.
 
 De meeste van deze parameters hebben standaardwaarden. De taken die eindigen op **_in** worden samengevoegd met *randomValue* om ze globaal uniek te maken. 
 
-**randomValue**: Deze waarde wordt gegenereerd op basis van de huidige datum/tijd wanneer u de sjabloon implementeert. Dit veld bevindt zich niet in het parameterbestand, omdat dit in de sjabloon zelf wordt gegenereerd.
+**randomValue** : Deze waarde wordt gegenereerd op basis van de huidige datum/tijd wanneer u de sjabloon implementeert. Dit veld bevindt zich niet in het parameterbestand, omdat dit in de sjabloon zelf wordt gegenereerd.
 
-**subscriptionId**: Dit veld wordt voor u ingesteld op het abonnement waarin u de sjabloon implementeert. Dit veld bevindt zich niet in het parameterbestand omdat het voor u is ingesteld.
+**subscriptionId** : Dit veld wordt voor u ingesteld op het abonnement waarin u de sjabloon implementeert. Dit veld bevindt zich niet in het parameterbestand omdat het voor u is ingesteld.
 
-**IoTHubName_in**: Dit veld is de basis IoT Hub-naam, die wordt samengevoegd met de randomValue die wereldwijd uniek moet zijn.
+**IoTHubName_in** : Dit veld is de basis IoT Hub-naam, die wordt samengevoegd met de randomValue die wereldwijd uniek moet zijn.
 
-**location**: Dit veld is de Azure-regio waarin u implementeert, zoals "westus".
+**location** : Dit veld is de Azure-regio waarin u implementeert, zoals "westus".
 
-**consumer_group**: Dit veld is de gebruikersgroep die is ingesteld voor berichten die afkomstig zijn van het eindpunt van de routering. Het wordt gebruikt voor het filteren van resultaten in Azure Stream Analytics. Zo is de hele stroom waar u alles krijgt, of als u gegevens hebt ontvangen via consumer_group ingesteld op **Contoso**, kunt u een Azure Stream Analytics-stroom (en Power BI-rapport) instellen om alleen die vermeldingen weer te geven. Dit veld wordt gebruikt in deel 2 van deze zelfstudie.
+**consumer_group** : Dit veld is de gebruikersgroep die is ingesteld voor berichten die afkomstig zijn van het eindpunt van de routering. Het wordt gebruikt voor het filteren van resultaten in Azure Stream Analytics. Zo is de hele stroom waar u alles krijgt, of als u gegevens hebt ontvangen via consumer_group ingesteld op **Contoso** , kunt u een Azure Stream Analytics-stroom (en Power BI-rapport) instellen om alleen die vermeldingen weer te geven. Dit veld wordt gebruikt in deel 2 van deze zelfstudie.
 
-**sku_name**: Dit veld is de schaal voor de IoT Hub. Deze waarde moet S1 of hoger zijn. Een gratis laag werkt niet voor deze zelfstudie omdat er geen meerdere eindpunten zijn toegestaan.
+**sku_name** : Dit veld is de schaal voor de IoT Hub. Deze waarde moet S1 of hoger zijn. Een gratis laag werkt niet voor deze zelfstudie omdat er geen meerdere eindpunten zijn toegestaan.
 
-**sku_units**: Dit veld komt samen met de **sku_name** en is het aantal IoT Hub-eenheden dat kan worden gebruikt.
+**sku_units** : Dit veld komt samen met de **sku_name** en is het aantal IoT Hub-eenheden dat kan worden gebruikt.
 
-**d2c_partitions**: Dit veld is het aantal partities dat wordt gebruikt voor de gebeurtenisstroom.
+**d2c_partitions** : Dit veld is het aantal partities dat wordt gebruikt voor de gebeurtenisstroom.
 
-**storageAccountName_in**: Dit veld is de naam van het opslagaccount dat moet worden gemaakt. Berichten worden doorgestuurd naar een container in het opslagaccount. Dit veld wordt samengevoegd met de randomValue om het globaal uniek te maken.
+**storageAccountName_in** : Dit veld is de naam van het opslagaccount dat moet worden gemaakt. Berichten worden doorgestuurd naar een container in het opslagaccount. Dit veld wordt samengevoegd met de randomValue om het globaal uniek te maken.
 
-**storageContainerName**: Dit veld is de naam van de container waarin de berichten worden opgeslagen die naar het opslagaccount worden doorgestuurd.
+**storageContainerName** : Dit veld is de naam van de container waarin de berichten worden opgeslagen die naar het opslagaccount worden doorgestuurd.
 
-**storage_endpoint**: Dit veld is de naam voor het eindpunt van het opslagaccount dat wordt gebruikt door de berichtroutering.
+**storage_endpoint** : Dit veld is de naam voor het eindpunt van het opslagaccount dat wordt gebruikt door de berichtroutering.
 
-**service_bus_namespace_in**: Dit veld is de naam van de Service Bus-naamruimte die moet worden gemaakt. Deze waarde wordt samengevoegd met de randomValue om deze wereldwijd uniek te maken.
+**service_bus_namespace_in** : Dit veld is de naam van de Service Bus-naamruimte die moet worden gemaakt. Deze waarde wordt samengevoegd met de randomValue om deze wereldwijd uniek te maken.
 
-**service_bus_queue_in**: Dit veld is de naam van de Service Bus-wachtrij die wordt gebruikt voor de routering van berichten. Deze waarde wordt samengevoegd met de randomValue om deze wereldwijd uniek te maken.
+**service_bus_queue_in** : Dit veld is de naam van de Service Bus-wachtrij die wordt gebruikt voor de routering van berichten. Deze waarde wordt samengevoegd met de randomValue om deze wereldwijd uniek te maken.
 
-**AuthRules_sb_queue**: Dit veld bevat de autorisatieregels voor de service bus-wachtrij, die wordt gebruikt om de verbindingsreeks voor de wachtrij op te halen.
+**AuthRules_sb_queue** : Dit veld bevat de autorisatieregels voor de service bus-wachtrij, die wordt gebruikt om de verbindingsreeks voor de wachtrij op te halen.
 
 ### <a name="variables"></a>Variabelen
 
 Deze waarden worden gebruikt in de sjabloon en worden meestal afgeleid van parameters.
 
-**queueAuthorizationRuleResourceId**: Dit veld is het ResourceId voor de autorisatieregel voor de Service Bus-wachtrij. ResourceId wordt weer gebruikt om de verbindingsreeks voor de wachtrij op te halen.
+**queueAuthorizationRuleResourceId** : Dit veld is het ResourceId voor de autorisatieregel voor de Service Bus-wachtrij. ResourceId wordt weer gebruikt om de verbindingsreeks voor de wachtrij op te halen.
 
-**iotHubName**: Dit veld is de naam van de IoT Hub nadat randomValue is samengevoegd. 
+**iotHubName** : Dit veld is de naam van de IoT Hub nadat randomValue is samengevoegd. 
 
-**storageAccountName**: Dit veld is de naam van het opslagaccount nadat randomValue is samengevoegd. 
+**storageAccountName** : Dit veld is de naam van het opslagaccount nadat randomValue is samengevoegd. 
 
-**service_bus_namespace**: Dit veld is de naamruimte nadat randomValue is samengevoegd.
+**service_bus_namespace** : Dit veld is de naamruimte nadat randomValue is samengevoegd.
 
-**service_bus_queue**: Dit veld is de Service Bus-wachtrij nadat randomValue is samengevoegd.
+**service_bus_queue** : Dit veld is de Service Bus-wachtrij nadat randomValue is samengevoegd.
 
-**sbVersion**: De te gebruiken Service Bus-API-versie van de sjabloon. In dit geval is dat "2017-04-01".
+**sbVersion** : De te gebruiken Service Bus-API-versie van de sjabloon. In dit geval is dat "2017-04-01".
 
 ### <a name="resources-storage-account-and-container"></a>Resources: Opslagaccount en -container
 
@@ -358,7 +358,7 @@ Als u de sjabloon wilt implementeren in Azure, uploadt u de sjabloon en het para
 
 Als u de bestanden wilt uploaden, selecteert u het pictogram **Uploaden/downloaden van bestanden** in de menubalk en kiest u vervolgens Uploaden.
 
-![Cloud Shell menubalk met gemarkeerde upload- en downloadbestanden](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
+![Schermopname waarin het pictogram Bestanden uploaden/downloaden is gemarkeerd.](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
 Gebruik de Verkenner die u wilt gebruiken om de bestanden op uw lokale schijf te zoeken en te selecteren, en kies vervolgens **Openen**.
 

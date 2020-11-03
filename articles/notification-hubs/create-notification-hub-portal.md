@@ -11,12 +11,12 @@ ms.date: 08/04/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 981e23a2b021cc0eb8085aa943830f87352aee69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 141812e83653b458a2562bf73b70117c39bf7be0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87828520"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426566"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Quickstart: Een Azure notification hub maken met behulp van de Azure-portal
 
@@ -52,10 +52,10 @@ In deze sectie maakt u een notification hub in een bestaande naamruimte.
       ![Implementatiemelding](./media/create-notification-hub-portal/deployment-notification.png)
 7. Vernieuw de webpagina **Notification Hub-naamruimten** om de nieuwe hub weer te geven in de lijst.
 
-      ![Azure Portal - Meldingen -> Naar de resource gaan](./media/create-notification-hub-portal/new-hub-in-list.png)
+      ![Schermopname met de webpagina Notification Hub-naamruimten met de nieuwe hub in de lijst.](./media/create-notification-hub-portal/new-hub-in-list.png)
 8. Selecteer uw **notification hub** om de startpagina van uw notification hub weer te geven.
 
-      ![Azure Portal - Meldingen -> Naar de resource gaan](./media/create-notification-hub-portal/hub-home-page.png)
+      ![Schermopname van de startpagina voor uw meldingshub.](./media/create-notification-hub-portal/hub-home-page.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

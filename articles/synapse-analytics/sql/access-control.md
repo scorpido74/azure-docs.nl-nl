@@ -9,19 +9,19 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289477"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503280"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Toegang tot werkruimten, gegevens en pijplijnen beheren
 
 Meer informatie over toegangsbeheer voor werkruimten, gegevens en pijplijnen in een Azure Synapse Analytics-werkruimte (preview).
 
 > [!NOTE]
-> Voor GA is RBAC beter ontwikkeld door de introductie van Synapse-specifieke Azure-rollen
+> Voor GA is Azure RBAC beter ontwikkeld door de introductie van Synapse-specifieke Azure-rollen
 
 ## <a name="access-control-for-workspace"></a>Toegangsbeheer voor werkruimte
 
@@ -144,7 +144,7 @@ Volg de stappen in dit voorbeeld als u een gebruiker toegang wilt verlenen tot *
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="sql-pools"></a>SQL-pools
@@ -166,8 +166,8 @@ Volg deze stappen als u een gebruiker toegang wilt verlenen tot een **individuel
     ```
 
 > [!IMPORTANT]
-> *db_datareader* en *db_datawriter* kunnen worden gebruikt voor lees- en schrijfmachtigingen als het verlenen van *db_owner*-toestemming niet wenselijk is.
-> Een Spark-gebruiker heeft de *db_owner*-machtiging nodig om rechtstreeks vanuit Spark naar/vanuit een SQL-pool te lezen en te schrijven.
+> *db_datareader* en *db_datawriter* kunnen worden gebruikt voor lees- en schrijfmachtigingen als het verlenen van *db_owner* -toestemming niet wenselijk is.
+> Een Spark-gebruiker heeft de *db_owner* -machtiging nodig om rechtstreeks vanuit Spark naar/vanuit een SQL-pool te lezen en te schrijven.
 
 Wanneer de gebruikers zijn gemaakt, controleert u of SQL op aanvraag een query kan uitvoeren voor het opslagaccount.
 

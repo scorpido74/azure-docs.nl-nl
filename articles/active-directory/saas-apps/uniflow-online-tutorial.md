@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bcda410e678e44916a4128d7ef097883e148ed79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc1317ffce7c958f092ad01feff473e123581439
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551857"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521761"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met uniFLOW Online
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u uniFLOW Online integreert met Azure Active Dire
 * Stel uw gebruikers in staat om zich online aan te melden bij uniFLOW met hun Azure AD-accounts.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -68,7 +68,7 @@ Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met uniFLOW 
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in de [Azure-portal](https://portal.azure.com/), op de integratiepagina voor de **uniFLOW Online**-toepassing, naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Ga in de [Azure-portal](https://portal.azure.com/), op de integratiepagina voor de **uniFLOW Online** -toepassing, naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
@@ -117,9 +117,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -152,20 +152,19 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 1. Selecteer het tabblad **Gebruikers** in het linkernavigatievenster.
 
-    ![uniFLOW Online-configuratie](./media/uniflow-online-tutorial/configure1.png)
+    ![Schermopname met User geselecteerd op de uniflow online-site.](./media/uniflow-online-tutorial/configure1.png)
 
 1. Klik op **Id-providers**.
 
-    ![uniFLOW Online-configuratie](./media/uniflow-online-tutorial/configure2.png)
+    ![Schermopname met Identity Providers geselecteerd.](./media/uniflow-online-tutorial/configure2.png)
 
 1. Klik op **Id-provider toevoegen**.
 
-    ![uniFLOW Online-configuratie](./media/uniflow-online-tutorial/configure3.png)
+    ![Schermopname met Add identity provider geselecteerd.](./media/uniflow-online-tutorial/configure3.png)
 
 1. Voer in de sectie **IDENTITY PROVIDER TOEVOEGEN** de volgende stappen uit:
 
-
-    ![uniFLOW Online-configuratie](./media/uniflow-online-tutorial/configure4.png)
+    ![Schermopname met de sectie ADD IDENTITY PROVIDER, waar u de beschreven waarden kunt invoeren.](./media/uniflow-online-tutorial/configure4.png)
 
     a. Voer de weergavenaam in, bijv.: *AzureAD SSO*.
 
@@ -177,7 +176,7 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 1. Voer op het tabblad **Algemeen** de volgende stappen uit:
 
-    ![uniFLOW Online-configuratie](./media/uniflow-online-tutorial/configure5.png)
+    ![Schermopname van de pagina General, waar u de beschreven waarden kunt invoeren.](./media/uniflow-online-tutorial/configure5.png)
 
     a. Voer de weergavenaam in, bijv.: *AzureAD SSO*.
 
@@ -201,10 +200,10 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Probeer uniFLOW Online met Azure AD](https://aad.portal.azure.com/)

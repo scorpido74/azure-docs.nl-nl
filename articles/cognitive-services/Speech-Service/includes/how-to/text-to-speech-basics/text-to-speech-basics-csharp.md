@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e2631332be1ea2a9e63755ea53897ba0d7813ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fa1571721653b9a3829a91bb5659f0b8216e0037
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332437"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470631"
 ---
 In deze quickstart maakt u kennis met algemene ontwerppatronen voor het uitvoeren van een spraak-naar-tekstsynthese met behulp van de Speech-SDK. Eerst voert u een basisconfiguratie en -synthese uit en gaat u verder met geavanceerdere voorbeelden voor aangepaste toepassingsontwikkeling zoals:
 
@@ -64,7 +64,7 @@ Er zijn een paar manieren waarop u een [`SpeechConfig`](https://docs.microsoft.c
 * Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
 * Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-In dit voorbeeld maakt u een [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) met behulp van een abonnementssleutel en regio. Zie de pagina [regio-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden. U schrijft ook wat eenvoudige standaardcode voor gebruik in de rest van dit artikel. U gaat de code voor verschillende aanpassingen wijzigen.
+In dit voorbeeld maakt u een [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) met behulp van een abonnementssleutel en regio. U kunt deze referenties ophalen door de stappen te volgen in [De Speech-service gratis uitproberen](../../../overview.md#try-the-speech-service-for-free). U schrijft ook wat eenvoudige standaardcode voor gebruik in de rest van dit artikel. U gaat de code voor verschillende aanpassingen wijzigen.
 
 ```csharp
 public class Program 
@@ -198,7 +198,7 @@ Maak eerst een nieuw XML-bestand voor de SSML-configuratie in de hoofdmap van he
 Vervolgens moet u de aanvraag voor spraaksynthese wijzigen om te verwijzen naar uw XML-bestand. De aanvraag is doorgaans hetzelfde, maar in plaats van de functie `SpeakTextAsync()` gebruikt u `SpeakSsmlAsync()`. Deze functie verwacht een XML-tekenreeks, dus u moet uw SSML-configuratie eerst laden als een tekenreeks met behulp van `File.ReadAllText()`. Hier is het resultaatobject precies hetzelfde als in de vorige voorbeelden.
 
 > [!NOTE]
-> Als u Visual Studio gebruikt, wordt uw XML-bestand waarschijnlijk niet standaard door uw build-configuratie gevonden. Als u dit wilt oplossen, klikt u met de rechter muisknop op het XML-bestand en selecteert u **eigenschappen**. Wijzig **Build-actie** naar *Inhoud*en wijzig **Kopiëren naar uitvoermap** naar *Altijd kopiëren*.
+> Als u Visual Studio gebruikt, wordt uw XML-bestand waarschijnlijk niet standaard door uw build-configuratie gevonden. Als u dit wilt oplossen, klikt u met de rechter muisknop op het XML-bestand en selecteert u **eigenschappen**. Wijzig **Build-actie** naar *Inhoud* en wijzig **Kopiëren naar uitvoermap** naar *Altijd kopiëren*.
 
 ```csharp
 public static async Task SynthesizeAudioAsync() 
@@ -233,7 +233,7 @@ Neurale stemmen zijn spraaksynthesealgoritmen die worden aangestuurd door Deep N
 Als u wilt overschakelen naar een neurale stem, wijzigt u de `name` in een van de [opties voor neurale stemmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices). Voeg vervolgens een XML-naamruimte voor `mstts` toe en verpak uw tekst in de `<mstts:express-as>`-tag. Gebruik parameter `style` om de spreekstijl aan te passen. In dit voorbeeld wordt `cheerful` gebruikt, maar u kunt deze aanpassen naar `customerservice` of `chat` om het verschil in spreekstijl te horen.
 
 > [!IMPORTANT]
-> Neurale stemmen worden **alleen** ondersteund voor spraakbronnen die zijn gemaakt in de regio's *US - oost*, *Azië - zuidoost* en *Europa - west*.
+> Neurale stemmen worden **alleen** ondersteund voor spraakbronnen die zijn gemaakt in de regio's *US - oost* , *Azië - zuidoost* en *Europa - west*.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

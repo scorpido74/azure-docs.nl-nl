@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cfb6a7ba10c388cadb19268ee1431fe523a0cfa4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e6cbf840fa27755fa43eb2a81e752415562ce41f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126323"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461138"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Aan de slag met het hero-voorbeeld voor groepsgesprekken
 
@@ -25,16 +25,16 @@ ms.locfileid: "92126323"
 > Add links to our Hero Sample repo when the sample is publicly available.
 ---->
 
+> [!IMPORTANT]
+> [Dit voorbeeld is beschikbaar op GitHub.](https://github.com/Azure-Samples/communication-services-web-calling-hero)
+
 Het **hero-voorbeeld van groepsgesprekken** laat zien hoe de webclientbibliotheek van Communication Services-aanroepen kan worden gebruikt voor het bouwen van een groepsgesprekservaring.
 
 In deze quickstart over hero-voorbeelden komt u te weten hoe het voorbeeld werkt voordat u het op uw lokale computer gaat uitvoeren. Vervolgens gaat u het voorbeeld in Azure implementeren met behulp van uw eigen Azure Communication Services-resources.
 
-> [!IMPORTANT]
-> [Het voorbeeld downloaden uit GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero)
-
 ## <a name="overview"></a>Overzicht
 
-Het voorbeeld heeft zowel een toepassing aan de clientzijde als een toepassing aan de serverzijde. De **toepassing aan de clientzijde** is een React/Redux-webtoepassing die gebruikmaakt van het Fluent UI-framework van Microsoft. Met deze toepassing worden aanvragen verzonden naar een ASP.NET Core-**toepassing aan de serverzijde** waarmee de toepassing aan de clientzijde kan worden verbonden met Azure. 
+Het voorbeeld heeft zowel een toepassing aan de clientzijde als een toepassing aan de serverzijde. De **toepassing aan de clientzijde** is een React/Redux-webtoepassing die gebruikmaakt van het Fluent UI-framework van Microsoft. Met deze toepassing worden aanvragen verzonden naar een ASP.NET Core- **toepassing aan de serverzijde** waarmee de toepassing aan de clientzijde kan worden verbonden met Azure. 
 
 Het voorbeeld ziet er als volgt uit:
 
@@ -42,17 +42,17 @@ Het voorbeeld ziet er als volgt uit:
 
 Wanneer de knop Een gesprek starten kiest, wordt door de webtoepassing een toegangstoken voor gebruikers opgehaald bij de toepassing op de server. Vervolgens wordt dit token gebruikt om de client-app met Azure Communication Services te verbinden. Zodra het token is opgehaald, wordt u gevraagd om de camera en de microfoon die u wilt gebruiken, op te geven. Met behulp van de wisselknoppen kunt u uw apparaten in-/uitschakelen:
 
-:::image type="content" source="./media/calling/pre-call.png" alt-text="Schermopname van de landingspagina van de voorbeeldtoepassing.":::
+:::image type="content" source="./media/calling/pre-call.png" alt-text="Schermopname van het scherm voorafgaand aan het gesprek van de voorbeeldtoepassing.":::
 
 Zodra u uw weergavenaam en apparaten hebt geconfigureerd, kunt u deelnemen aan de gesprekssessie. Nu wordt het hoofdcanvas van het gesprek weergegeven. Dit is de locatie van de basisgesprekservaring.
 
-:::image type="content" source="./media/calling/main-app.png" alt-text="Schermopname van de landingspagina van de voorbeeldtoepassing.":::
+:::image type="content" source="./media/calling/main-app.png" alt-text="Schermopname van het hoofdscherm van de voorbeeldtoepassing.":::
 
 Onderdelen van het hoofdgespreksscherm:
 
-1. **Mediagalerie**: Het hoofdgebied waarin de deelnemers worden weergegeven. Als deelnemers hun camera hebben ingeschakeld, wordt hier hun videofeed weergegeven. Elke deelnemer beschikt over een afzonderlijke tegel waarop hun weergavenaam en videostream (indien beschikbaar) worden weergegeven
-2. **Header**: Dit is het deel met de primaire besturingselementen voor het gesprek waarmee u tussen de instellingen en de zijbalk met deelnemers kunt wisselen, beeld en geluid kunt in- en uitschakelen, het scherm kunt delen en het gesprek kunt verlaten.
-3. **Zijbalk**: Hier worden informatie over de deelnemers en de instellingen weergegeven wanneer u tussen de besturingselementen in de header wisselt. U kunt het onderdeel verwijderen door op X te klikken in de rechterbovenhoek. In de zijbalk met deelnemers ziet u een lijst met alle deelnemers en een koppeling om meer gebruikers voor het gesprek uit te nodigen. In de zijbalk met instellingen kunt u de microfoon- en camera-instellingen configureren.
+1. **Mediagalerie** : Het hoofdgebied waarin de deelnemers worden weergegeven. Als deelnemers hun camera hebben ingeschakeld, wordt hier hun videofeed weergegeven. Elke deelnemer beschikt over een afzonderlijke tegel waarop hun weergavenaam en videostream (indien beschikbaar) worden weergegeven
+2. **Header** : Dit is het deel met de primaire besturingselementen voor het gesprek waarmee u tussen de instellingen en de zijbalk met deelnemers kunt wisselen, beeld en geluid kunt in- en uitschakelen, het scherm kunt delen en het gesprek kunt verlaten.
+3. **Zijbalk** : Hier worden informatie over de deelnemers en de instellingen weergegeven wanneer u tussen de besturingselementen in de header wisselt. U kunt het onderdeel verwijderen door op X te klikken in de rechterbovenhoek. In de zijbalk met deelnemers ziet u een lijst met alle deelnemers en een koppeling om meer gebruikers voor het gesprek uit te nodigen. In de zijbalk met instellingen kunt u de microfoon- en camera-instellingen configureren.
 
 Hieronder vindt u meer informatie over de vereisten en stappen voor het instellen van het voorbeeld.
 
@@ -108,7 +108,6 @@ Als u een Communication Services-abonnement wilt opschonen en verwijderen, kunt 
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - Vertrouwd raken met [het gebruik van de clientbibliotheek voor aanroepen](../quickstarts/voice-video-calling/calling-client-samples.md)
-- Meer informatie over de [mogelijkheden van de clientbibliotheek voor aanroepen](../quickstarts/voice-video-calling/calling-client-samples.md)
 - Meer informatie over [de werking van aanroepen](../concepts/voice-video-calling/about-call-types.md)
 
 ## <a name="additional-reading"></a>Meer artikelen

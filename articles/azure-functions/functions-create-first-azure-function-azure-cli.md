@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b299f0bb13bb25fbc192f3d117be11ca1ce26586
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89145549"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519670"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Quickstart: Een functie in Azure maken die reageert op HTTP-aanvragen
 
@@ -82,7 +82,11 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-Voer in een lege map de volgende opdracht uit om het Functions-project te genereren op basis van een [Maven-archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html). Gebruik `-DjavaVersion=11` als u uw functies wilt uitvoeren in Java 11. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie. 
+Voer in een lege map de volgende opdracht uit om het Functions-project te genereren op basis van een [Maven-archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html). 
+
+> [!IMPORTANT]
+> + Gebruik `-DjavaVersion=11` als u uw functies wilt uitvoeren in Java 11. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie. 
+> + De omgevingsvariabele `JAVA_HOME` moet zijn ingesteld op de installatielocatie van de juiste versie van de JDK om dit artikel te kunnen voltooien.
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
@@ -110,7 +114,7 @@ Geef de volgende waarden op als daarom wordt gevraagd:
 
 Typ `Y` of druk op Enter om te bevestigen.
 
-Maven maakt de projectbestanden in een nieuwe map met de naam van _artifactId_; in dit voorbeeld is dat `fabrikam-functions`. 
+Maven maakt de projectbestanden in een nieuwe map met de naam van _artifactId_ ; in dit voorbeeld is dat `fabrikam-functions`. 
 
 ::: zone-end  
 Navigeer naar de projectmap:
@@ -136,7 +140,7 @@ Desgewenst kunt u doorgaan naar [De functie lokaal uitvoeren](#run-the-function-
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-*HttpExample.cs* bevat een `Run`-methode waarmee aanvraaggegevens worden ontvangen in de `req`-variabele. Dit is een [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) die is gedecoreerd met **HttpTriggerAttribute**, waarmee het gedrag van de trigger wordt gedefinieerd. 
+*HttpExample.cs* bevat een `Run`-methode waarmee aanvraaggegevens worden ontvangen in de `req`-variabele. Dit is een [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) die is gedecoreerd met **HttpTriggerAttribute** , waarmee het gedrag van de trigger wordt gedefinieerd. 
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
@@ -159,8 +163,6 @@ Instellingen voor de Azure-resources die zijn gemaakt voor het hosten van uw app
 
 U kunt deze instellingen wijzigen om te bepalen hoe resources worden gemaakt in Azure, zoals door `runtime.os` van `windows` te wijzigen in `linux` vóór de eerste implementatie. Zie de [Configuratiedetails](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)voor een volledige lijst met instellingen die worden ondersteund door de Maven-invoegtoepassing.
 
-Als u uw functie-app op Java 11 in plaats van Java 8 wilt uitvoeren, moet u het bestand pom.xml handmatig bijwerken met Java 11-waarden. Zie [Java-versies](functions-reference-java.md#java-versions) voor meer informatie. Bij uitvoering op Java 11 moet u zorgen voor het volgende:  
-
 #### <a name="functiontestjava"></a>FunctionTest.java
 
 Het archetype genereert ook een moduletest voor uw functie. Wanneer u de functie wijzigt om bindingen of nieuwe functies aan het project toe te voegen, moet u ook de tests in het bestand *FunctionTest.java* wijzigen.
@@ -172,7 +174,7 @@ Het archetype genereert ook een moduletest voor uw functie. Wanneer u de functie
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` zoals gedefinieerd in *function.json*. `req` is een instantie van de [azure.functions.HttpRequest-klasse](/python/api/azure-functions/azure.functions.httprequest). Het retourobject, gedefinieerd als `$return` in *function.json*, is een instantie van [azure.functions.HttpResponse-klasse](/python/api/azure-functions/azure.functions.httpresponse). Zie [Azure Functions HTTP-triggers en -bindingen](./functions-bindings-http-webhook.md?tabs=python) voor meer informatie.
+Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` zoals gedefinieerd in *function.json*. `req` is een instantie van de [azure.functions.HttpRequest-klasse](/python/api/azure-functions/azure.functions.httprequest). Het retourobject, gedefinieerd als `$return` in *function.json* , is een instantie van [azure.functions.HttpResponse-klasse](/python/api/azure-functions/azure.functions.httpresponse). Zie [Azure Functions HTTP-triggers en -bindingen](./functions-bindings-http-webhook.md?tabs=python) voor meer informatie.
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
@@ -182,7 +184,7 @@ Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req`
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd als `$return` in *function.json*, is de reactie. Zie [Azure Functions HTTP-triggers en -bindingen](./functions-bindings-http-webhook.md?tabs=javascript) voor meer informatie.
+Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd als `$return` in *function.json* , is de reactie. Zie [Azure Functions HTTP-triggers en -bindingen](./functions-bindings-http-webhook.md?tabs=javascript) voor meer informatie.
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
@@ -192,7 +194,7 @@ Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req`
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` van het type **HttpRequest** zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd als `$return` in *function.json*, is de reactie. 
+Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` van het type **HttpRequest** zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd als `$return` in *function.json* , is de reactie. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
@@ -202,7 +204,7 @@ Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req`
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-Voor een HTTP-trigger ontvangt de functie aanvraaggegevens die worden verzonden naar de parameter `$Request` zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd als `Response` in *function.json*, wordt doorgestuurd naar de cmdlet `Push-OutputBinding` als reactie. 
+Voor een HTTP-trigger ontvangt de functie aanvraaggegevens die worden verzonden naar de parameter `$Request` zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd als `Response` in *function.json* , wordt doorgestuurd naar de cmdlet `Push-OutputBinding` als reactie. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
@@ -370,7 +372,7 @@ Hiermee maakt u de volgende resources in Azure:
 + Resourcegroep. Met de naam _java-functions-group_.
 + Opslagaccount. Vereist door Funtions. De naam wordt willekeurig gegenereerd op basis van de vereisten van het opslagaccount.
 + Hostingabonnement. Serverloze hosting voor uw functie-app in de regio _westus_. De naam is _java-functions-app-service-plan_.
-+ Functie-app. Een functie-app is de implementatie- en uitvoeringseenheid voor uw functies. De naam wordt willekeurig gegenereerd op basis van uw _artifactId_,waaraan een willekeurig gegenereerd nummer wordt toegevoegd. 
++ Functie-app. Een functie-app is de implementatie- en uitvoeringseenheid voor uw functies. De naam wordt willekeurig gegenereerd op basis van uw _artifactId_ ,waaraan een willekeurig gegenereerd nummer wordt toegevoegd. 
 
 De implementatie verpakt de projectbestanden en implementeert deze in de nieuwe functie-app met behulp van [zip implementation](functions-deployment-technologies.md#zip-deploy). De code wordt uitgevoerd vanuit het implementatiepakket in Azure.
 ::: zone-end

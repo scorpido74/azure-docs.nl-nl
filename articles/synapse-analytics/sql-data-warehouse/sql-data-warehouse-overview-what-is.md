@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 27311270c1383a54192d072d0e152c7cf1a58225
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ce4efe0250ea1b85e2e2d77b7ee69bdf3dbcab26
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85200950"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480392"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Wat is Azure Synapse Analytics (formerly SQL DW)?
 
-> [!NOTE] 
+> [!NOTE]
 >Verken de [documentatie over Azure Synapse (preview van werkruimten)](../overview-what-is.md).
 >
 
@@ -40,7 +40,7 @@ Synapse SQL-pool verwijst naar de functies voor datawarehousing voor onderneming
 
 SQL-pool vertegenwoordigt een verzameling analytische resources die worden ingericht bij het gebruik van Synapse SQL. De grootte van de SQL-pool wordt bepaald door DWU’s (datawarehousingeenheden).
 
-Importeer big data met eenvoudige [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-query's en gebruik vervolgens de kracht van MPP om analyses met hoge prestaties uit te voeren. Door te integreren en analyseren wordt Synapse SQL-pool de centrale bron voor waarop uw bedrijf kan rekenen voor het verkrijgen van snellere en meer robuuste inzichten.  
+Importeer big data met eenvoudige [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-query's en gebruik vervolgens de kracht van de gedistribueerde-queryengine om analyses met hoge prestaties uit te voeren. Terwijl u de gegevens integreert en analyseert, wordt Synapse SQL de centrale bron voor waarop uw bedrijf kan rekenen voor het verkrijgen van snellere en meer robuuste inzichten. 
 
 ## <a name="key-component-of-a-big-data-solution"></a>Belangrijk onderdeel van een big data-oplossing
 

@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9780a2adb60c690abda6880157252aaa0c562f18
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d06d1b0553161523708f4bb142f1c715a77eb2dd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171778"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461104"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Quickstart: Een Synapse-werkruimte maken
 In deze quickstart wordt stapsgewijs beschreven hoe u een Azure Synapse-werkruimte maakt met Azure Portal.
@@ -23,13 +23,8 @@ In deze quickstart wordt stapsgewijs beschreven hoe u een Azure Synapse-werkruim
 
 1. Open de [Azure-portal](https://portal.azure.com) en zoek bovenin naar **Synapse**.
 1. Selecteer in de zoekresultaten onder **Services** de optie **Azure Synapse Analytics (voorbeeld van werkruimten)** .
-1. Selecteer **Toevoegen** om een werkruimte te maken met behulp van deze instellingen:
-
-    |Tabblad|Instelling | Voorgestelde waarde | Beschrijving |
-    |---|---|---|---|
-    |Basisbeginselen|**Werkruimtenaam**|U kunt deze werkruimte elke gewenste naam geven.| In dit document gebruiken we **myworkspace**.|
-    |Basisbeginselen|**Regio**|Maak deze gelijk aan de regio van het opslagaccount.|
-
+1. Selecteer **Toevoegen** om een werkruimte te maken.
+1. Geef op het tabblad **Basisinformatie** een unieke naam voor de werkruimte op. In dit document gebruiken we **myworkspace**
 1. U hebt een ADLSGEN2-account nodig om een werkruimte te maken. Het meest eenvoudige is om een nieuw account te maken. Als u een bestaand account opnieuw wilt gebruiken, moet u een aantal extra configuratiestappen uitvoeren. 
 1. OPTIE 1 Een nieuw ADLSGEN2-account maken 
     1. Klik bij **Data Lake Storage Gen 2 selecteren** op **Nieuwe maken** en noem dit **contosolake**.

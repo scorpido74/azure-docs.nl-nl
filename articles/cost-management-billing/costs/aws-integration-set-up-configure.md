@@ -3,17 +3,17 @@ title: AWS-integratie met Azure Cost Management instellen
 description: Dit artikel begeleidt u bij het instellen en configureren van AWS voor de integratie van kosten- en gebruiksrapporten met Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/23/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 8bf3df25d4702b4a0cc6361f20ad08e618e7d62b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e900d63ba7e521cbf7e63d8580d22b08726d1ef6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266070"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517341"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS-integratie van kosten- en gebruiksrapporten instellen en configureren
 
@@ -39,14 +39,12 @@ Gebruik de pagina **Kosten- & gebruiksrapporten** van de console Facturering en 
 6. Voor **Instellingen voor het vernieuwen van gegevens** selecteert u of u wilt dat het AWS-rapport voor kosten en gebruik wordt vernieuwd als AWS restituties, tegoeden of ondersteuningskosten op uw rekening toepast nadat uw factuur is voltooid. Wanneer een rapport wordt vernieuwd, wordt een nieuw rapport geüpload naar Amazon S3. U wordt aangeraden de instelling geselecteerd te laten.
 7. Selecteer **Next**.
 8. Kies **Configureren** voor **S3-bucket**.
-9. Als u het dialoogvenster S3-bucket configureren wilt openen, voert u een van de volgende handelingen uit:
-    1. Selecteer een bestaande bucket in de vervolgkeuzelijst en kies **Volgende**.
-    2. Voer de naam van een bucket in en de regio waar u een nieuwe bucket wilt maken en kies **Volgende**.
-10.    Selecteer **Ik heb bevestigd dat dit beleid juist is**en klik vervolgens op **Opslaan**.
-11.    (Optioneel) Voer voor het voorvoegsel van het rapportpad, het padvoorvoegsel naar het rapport in dat u wilt toevoegen aan de naam van het rapport.
+9. In het dialoogvenster Configure S3 Bucket voert u de naam van een bucket in en de regio waar u een nieuwe bucket wilt maken en kiest u **Next**.
+10. Selecteer **Ik heb bevestigd dat dit beleid juist is** en klik vervolgens op **Opslaan**.
+11. (Optioneel) Voer voor het voorvoegsel van het rapportpad, het padvoorvoegsel naar het rapport in dat u wilt toevoegen aan de naam van het rapport.
 Als u geen voorvoegsel opgeeft, is het standaard voorvoegsel de naam die u voor het rapport hebt opgegeven. Het datumbereik heeft de `/report-name/date-range/`-indeling.
-12. Voor **Tijdseenheid**kiest u **Elk uur**.
-13.    Voor **Rapportversie**kiest u of u wilt dat elke versie van het rapport de vorige versie overschrijft of dat u aanvullende nieuwe rapporten wilt.
+12. Voor **Tijdseenheid** kiest u **Elk uur**.
+13. Voor **Rapportversie** kiest u of u wilt dat elke versie van het rapport de vorige versie overschrijft of dat u aanvullende nieuwe rapporten wilt.
 14. Voor **Gegevensintegratie voor** is geen selectie vereist.
 15. Selecteer **GZIP** voor **compressie**.
 16. Selecteer **Next**.
@@ -91,9 +89,9 @@ Machtiging voor uw S3-bucket en -objecten configureren:
 4. Selecteer **Toegangsniveau** > **Lezen** > **GetObject**. Met deze actie kunnen factureringsbestanden worden gedownload.
 5. Selecteer **Resources**.
 6. Selecteer **Bucket – ARN toevoegen**.
-7. Voer in **Bucketnaam**de bucket in die wordt gebruikt voor het opslaan van de CUR-bestanden.
+7. Voer in **Bucketnaam** de bucket in die wordt gebruikt voor het opslaan van de CUR-bestanden.
 8. Selecteer **Object – ARN toevoegen**.
-9. Voer in **Bucketnaam**de bucket in die wordt gebruikt voor het opslaan van de CUR-bestanden.
+9. Voer in **Bucketnaam** de bucket in die wordt gebruikt voor het opslaan van de CUR-bestanden.
 10. Selecteer in **Objectnaam** **Alle**.
 11. Selecteer **Aanvullende machtigingen toevoegen**.
 
@@ -163,7 +161,7 @@ Gebruik de volgende informatie om een AWS-connector te maken en te beginnen met 
 1. Voor **Role ARN** voert u de waarde in die u hebt gebruikt bij het instellen van de functie in AWS.
 1. Voor **Externe id** voert u de waarde in die u hebt gebruikt bij het instellen van de rol in AWS.
 1. Voer voor **Rapportnaam** de naam in die u hebt gemaakt in AWS.
-1. Selecteer **Volgende**, en selecteer vervolgens **Maken**.
+1. Selecteer **Volgende** , en selecteer vervolgens **Maken**.
 
 Het kan enkele uren duren voordat de nieuwe AWS-scopes, het geconsolideerde AWS-account, de gekoppelde AWS-accounts en de bijbehorende kostengegevens worden weergegeven.
 
@@ -182,7 +180,7 @@ Het toewijzen van connectormachtigingen aan gebruikers nadat detectie plaatsvind
 
 ## <a name="manage-aws-connectors"></a>AWS-connectors beheren
 
-Wanneer u een connector selecteert op de pagina **Connectors voor AWS**, kunt u het volgende doen:
+Wanneer u een connector selecteert op de pagina **Connectors voor AWS** , kunt u het volgende doen:
 
 - Selecteer **Ga naar de factureringsrekening** om informatie weer te geven voor het geconsolideerde AWS-account.
 - Selecteer **Toegangsbeheer** om de roltoewijzing voor de connector te beheren.

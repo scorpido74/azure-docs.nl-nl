@@ -9,12 +9,12 @@ ms.author: mlearned
 description: In dit artikel vindt u een overzicht van Kubernetes met Azure Arc.
 keywords: Kubernetes, Arc, Azure, containers
 ms.custom: references_regions
-ms.openlocfilehash: 601fcb096bf2bfeb1a6120015690c9aff4b6177b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 7e48ebf98f12e79cb154fb50d8e6dbdfaea1cd95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216076"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371304"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Wat is Kubernetes met Azure Arc Preview?
 
@@ -37,6 +37,7 @@ De functies van Kubernetes met Azure Arc zijn door het Arc-team getest op de vol
 * Canonical Charmed Kubernetes 1.18
 * AKS-engine
 * AKS-engine op Azure Stack Hub
+* AKS op Azure Stack HCI
 * Cluster API Provider Azure
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's 

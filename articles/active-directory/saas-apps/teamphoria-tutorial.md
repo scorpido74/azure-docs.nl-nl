@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 30971c9c5280bfba37f46aaab0aaf2c2506502c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8cf58f49cba1bcc77c96a0da2061a037bb62bf2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542340"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504740"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Teamphoria
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Teamphoria integreert met Azure Active Director
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Teamphoria.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -94,9 +94,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -134,23 +134,23 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 4. Ga naar de optie **BEHEERDERSINSTELLINGEN** op de linkerwerkbalk en klik op het tabblad Configureren op **EENMALIGE AANMELDING** om het SSO-configuratievenster te openen.
 
-    ![Eenmalige aanmelding configureren](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Schermopname toont BEHEERINSTELLINGEN. Hier kunt u EENMALIGE AANMELDING selecteren.](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 5. Klik rechtsboven op de optie **NIEUWE ID-PROVIDER TOEVOEGEN** om het formulier te openen voor het toevoegen van de SSO-instellingen.
 
-    ![Eenmalige aanmelding configureren](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Schermopname waarin wordt getoond waar u NIEUWE ID-PROVIDER TOEVOEGEN kunt selecteren.](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 6. Voer de details in de velden in, zoals hieronder wordt beschreven.
 
-    ![Eenmalige aanmelding configureren](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Schermopname van de pagina waarin u de beschreven waarden kunt invoeren.](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **WEERGAVENAAM**: Voer op de pagina Beheer de weergavenaam van de invoegtoepassing in.
+    a. **WEERGAVENAAM** : Voer op de pagina Beheer de weergavenaam van de invoegtoepassing in.
 
-    b. **KNOPNAAM**: De naam van het tabblad dat wordt weergegeven op de aanmeldingspagina voor aanmelding via eenmalige aanmelding.
+    b. **KNOPNAAM** : De naam van het tabblad dat wordt weergegeven op de aanmeldingspagina voor aanmelding via eenmalige aanmelding.
 
-    c. **CERTIFICAAT**: Open het certificaat dat u eerder hebt gedownload van de Azure-portal, in Kladblok, kopieer de inhoud en plak dit hier in het vak.
+    c. **CERTIFICAAT** : Open het certificaat dat u eerder hebt gedownload van de Azure-portal, in Kladblok, kopieer de inhoud en plak dit hier in het vak.
 
-    d. **INGANGSPUNT**: Plak de **aanmeldings-URL** die u eerder uit de Azure-portal hebt gekopieerd.
+    d. **INGANGSPUNT** : Plak de **aanmeldings-URL** die u eerder uit de Azure-portal hebt gekopieerd.
 
     e. Schakel de optie **in** en klik op **OPSLAAN**.
 
@@ -168,11 +168,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Teamphoria, moeten 
 
 1. Klik op de optie **HANDMATIG UITNODIGEN**.
 
-    ![Invite People](./media/teamphoria-tutorial/admin_manage_add_users.png)
+    ![Schermopname met de optie HANDMATIG UITNODIGEN.](./media/teamphoria-tutorial/admin_manage_add_users.png)
 
 1. Voer op deze pagina de volgende actie uit.
 
-    ![Invite People](./media/teamphoria-tutorial/manual_user_invite.png)
+    ![Schermopname met de pagina HANDMATIG GEBRUIKERS UITNODIGEN, waar u de naam en het e-mailadres kunt invoeren.](./media/teamphoria-tutorial/manual_user_invite.png)
 
     a. Voer in het tekstvak **E-MAILADRES** het **e-mailadres** van de gebruiker in, bijvoorbeeld B.Simon.
 
@@ -186,15 +186,14 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Teamphoria, moeten 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Teamphoria klikt, wordt u automatisch aangemeld bij de instantie van Teamphoria waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Teamphoria klikt, wordt u automatisch aangemeld bij de instantie van Teamphoria waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Teamphoria uitproberen met Azure AD](https://aad.portal.azure.com/)
-

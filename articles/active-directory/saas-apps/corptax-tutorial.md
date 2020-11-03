@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 056cc023c63ae2cc90f6fcc6ef1222ec8e33cab5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfb18281ad558832e4b06d1c0d24654d351ed01d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542697"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455184"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-corptax"></a>Zelfstudie: Azure Active Directory-integratie met Corptax
 
@@ -27,7 +27,7 @@ De integratie van Corptax met Azure AD heeft de volgende voordelen:
 * U kunt uw gebruikers zich automatisch laten aanmelden bij Corptax (eenmalige aanmelding) met hun Azure AD-account.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Voor het configureren van de integratie van Corptax in Azure AD moet u Corptax v
 
 **Voer de volgende stappen uit om Corptax toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select_azuread.png)
 
@@ -109,13 +109,13 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding bij Corptax te con
 
 ### <a name="configure-corptax-single-sign-on"></a>Eenmalige aanmelding voor Corptax configureren
 
-Als u eenmalige aanmelding wilt configureren aan de kant van **Corptax**, moet u het gedownloade **XML-bestand met federatieve metagegevens** verzenden naar het [ondersteuningsteam van Corptax](https://connect.corptax.com/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de kant van **Corptax** , moet u het gedownloade **XML-bestand met federatieve metagegevens** verzenden naar het [ondersteuningsteam van Corptax](https://connect.corptax.com/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -152,7 +152,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven eenmalige aanmelding van A
 
     ![De koppeling Gebruikers en groepen](common/users_groups_blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add_assign_user.png)
 
@@ -164,7 +164,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven eenmalige aanmelding van A
 
 ### <a name="create-corptax-test-user"></a>Een testgebruiker maken in Corptax
 
-In dit gedeelte maakt u in Corptax een gebruiker met de naam Britta Simon. Werk samen met [ondersteuningsteam van Corptax](https://connect.corptax.com/) om de gebruikers toe te voegen in het Corptax-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In dit gedeelte maakt u in Corptax een gebruiker met de naam Britta Simon. Neem contact op met het [ondersteuningsteam van Corptax](https://connect.corptax.com/) om de gebruikers toe te voegen in het Corptax-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
@@ -173,12 +173,12 @@ Wanneer u op de tegel Corptax in het toegangsvenster klikt, zou u moeten worden 
 
 ![image](media/corptax-tutorial/corptaxlogin.png)
 
-Typ in het tekstvak **Omgeving** de juiste omgeving. U zou automatisch moeten worden aangemeld bij de instantie van Corptax waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Typ in het tekstvak **Omgeving** de juiste omgeving. U zou automatisch moeten worden aangemeld bij de instantie van Corptax waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

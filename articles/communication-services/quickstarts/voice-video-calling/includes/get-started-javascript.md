@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: b66ee8117e5326a8ed8c1a1ad973fb13e942e0c7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 652566efda4d4f274dc5700d35bcf45c1ebfb9e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761964"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92347304"
 ---
 In deze snelstart leert u hoe u de clientbibliotheek voor oproepen van Azure Communication Services voor JavaScript.
 
@@ -32,7 +32,7 @@ Open uw terminal of opdrachtvenster, maak een nieuwe map voor uw app en navigeer
 mkdir calling-quickstart && cd calling-quickstart
 ```
 
-Voer `npm init -y` uit om een **package.json**-bestand te maken met de standaardinstellingen.
+Voer `npm init -y` uit om een **package.json** -bestand te maken met de standaardinstellingen.
 
 ```console
 npm init -y
@@ -47,17 +47,25 @@ npm install @azure/communication-common --save
 npm install @azure/communication-calling --save
 ```
 
-De optie `--save` geeft de bibliotheek weer als afhankelijkheid in het **package.json**-bestand.
+De volgende versies van webpack worden aanbevolen voor deze quickstart:
+
+```console
+"webpack": "^4.42.0",
+"webpack-cli": "^3.3.11",
+"webpack-dev-server": "^3.10.3"
+```
+
+De optie `--save` geeft de bibliotheek weer als afhankelijkheid in het **package.json** -bestand.
 
 ### <a name="set-up-the-app-framework"></a>Het app-framework instellen
 
-In deze snelstart wordt webpack gebruikt om de toepassingsassets te bundelen. Voer de volgende opdracht uit om de webpack-, webpack-CLI- en webpack-dev-server npm-pakketten te installeren en deze weer te geven als ontwikkelingsafhankelijkheden in uw **package.json**:
+In deze snelstart wordt webpack gebruikt om de toepassingsassets te bundelen. Voer de volgende opdracht uit om de webpack-, webpack-CLI- en webpack-dev-server npm-pakketten te installeren en deze weer te geven als ontwikkelingsafhankelijkheden in uw **package.json** :
 
 ```console
 npm install webpack webpack-cli webpack-dev-server --save-dev
 ```
 
-Maak een **index. html**-bestand in de hoofdmap van uw project. Dit bestand wordt gebruikt voor het configureren van een basisindeling waarmee de gebruiker een oproep naar een Azure Communications-bot kan plaatsen.
+Maak een **index. html** -bestand in de hoofdmap van uw project. Dit bestand wordt gebruikt voor het configureren van een basisindeling waarmee de gebruiker een oproep naar een Azure Communications-bot kan plaatsen.
 
 Dit is de code:
 
@@ -97,16 +105,15 @@ import { CallClient, CallAgent } from "@azure/communication-calling";
 import { AzureCommunicationUserCredential } from '@azure/communication-common';
 
 let call;
+let callAgent;
 const calleeInput = document.getElementById("callee-id-input");
 const callButton = document.getElementById("call-button");
 const hangUpButton = document.getElementById("hang-up-button");
-
-// quickstart code goes here
 ```
 
 ## <a name="object-model"></a>Objectmodel
 
-De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor oproepen:
+De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor aanroepen:
 
 | Naam                             | Beschrijving                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -117,15 +124,16 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-U moet `<USER_ACCESS_TOKEN>` vervangen door een geldig gebruikerstoegangstoken voor uw bron. Raadpleeg de documentatie inzake [Token voor gebruikerstoegang](../../access-tokens.md) als u nog geen token hebt. Met behulp van de `CallClient`initialiseert u een `CallAgent`-instantie met een `CommunicationUserCredential` waarmee we oproepen kunnen doen en ontvangen. Voeg de volgende code toe aan **client.js**:
+U moet `<USER_ACCESS_TOKEN>` vervangen door een geldig gebruikerstoegangstoken voor uw bron. Raadpleeg de documentatie inzake [Token voor gebruikerstoegang](../../access-tokens.md) als u nog geen token hebt. Met behulp van de `CallClient`initialiseert u een `CallAgent`-instantie met een `CommunicationUserCredential` waarmee we oproepen kunnen doen en ontvangen. Voeg de volgende code toe aan **client.js** :
 
 ```javascript
-const callClient = new CallClient();
-const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
-let callAgent;
-
-callAgent = await callClient.createCallAgent(tokenCredential);
-callButton.disabled = false;
+async function init() {
+    const callClient = new CallClient();
+    const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
+    callAgent = await callClient.createCallAgent(tokenCredential);
+    callButton.disabled = false;
+}
+init();
 ```
 
 ## <a name="start-a-call"></a>Een oproep starten

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c8e22373f4550b0c65f6ea5c0b62815e32dcbb58
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4e50f6b2770f9f787c92e7a9c66f72cdbb252a94
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105121"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519687"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Quickstart: Een functie maken in Azure met behulp van Visual Studio Code
 
@@ -65,7 +65,7 @@ Voordat u aan de slag kunt gaan, moet u beschikken over de volgende vereisten:
 - Zowel [.NET Core 3.1](https://www.microsoft.com/net/download) als [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 ::: zone-end
 ::: zone pivot="programming-language-java"
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), versie 8.
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), versie 8 of 11.
 
 - [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
 ::: zone-end
@@ -101,50 +101,50 @@ In deze sectie gebruikt u Visual Studio Code om een lokaal Azure Functions-proje
 1. Geef de volgende informatie op bij de prompts:
 
     ::: zone pivot="programming-language-csharp"
-    - **Selecteer een taal voor uw functieproject**: Kies `C#`.
+    - **Selecteer een taal voor uw functieproject** : Kies `C#`.
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
-    - **Selecteer een taal voor uw functieproject**: Kies `JavaScript`.
+    - **Selecteer een taal voor uw functieproject** : Kies `JavaScript`.
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
-    - **Selecteer een taal voor uw functieproject**: Kies `TypeScript`.
+    - **Selecteer een taal voor uw functieproject** : Kies `TypeScript`.
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    - **Selecteer een taal voor uw functieproject**: Kies `PowerShell`.
+    - **Selecteer een taal voor uw functieproject** : Kies `PowerShell`.
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    - **Selecteer een taal voor uw functieproject**: Kies `Python`.
+    - **Selecteer een taal voor uw functieproject** : Kies `Python`.
 
-    - **Selecteer een Python-alias voor het maken van een virtuele omgeving**: Kies de locatie van de Python-interpreter. Als de locatie niet wordt weergegeven, typt u het volledige pad naar uw binaire Python-bestand.
+    - **Selecteer een Python-alias voor het maken van een virtuele omgeving** : Kies de locatie van de Python-interpreter. Als de locatie niet wordt weergegeven, typt u het volledige pad naar uw binaire Python-bestand.
     ::: zone-end
 
     ::: zone pivot="programming-language-java"
-    - **Selecteer een taal voor uw functieproject**: Kies `Java`.
+    - **Selecteer een taal voor uw functieproject** : Kies `Java`.
 
-    - **Een versie van Java selecteren**: Kies `Java 8` of `Java 11 (preview)`, waarmee uw functies in Azure worden uitgevoerd. Kies een Java-versie die u lokaal hebt geverifieerd.
+    - **Een versie van Java selecteren** : Kies `Java 8` of `Java 11`, waarmee uw functies in Azure worden uitgevoerd. Kies een Java-versie die u lokaal hebt geverifieerd.
 
-    - **Geef een groeps-id op**: Kies `com.function`.
+    - **Geef een groeps-id op** : Kies `com.function`.
 
-    - **Geef een artefact-id op**: Kies `myFunction`.
+    - **Geef een artefact-id op** : Kies `myFunction`.
 
-    - **Geef een versie op**: Kies `1.0-SNAPSHOT`.
+    - **Geef een versie op** : Kies `1.0-SNAPSHOT`.
 
-    - **Geef een pakketnaam op**: Kies `com.function`.
+    - **Geef een pakketnaam op** : Kies `com.function`.
 
-    - **Geef een app-naam op**: Kies `myFunction-12345`.
+    - **Geef een app-naam op** : Kies `myFunction-12345`.
     ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    - **Selecteer een sjabloon voor de eerste functie van uw project**: Kies `HTTP trigger`.
+    - **Selecteer een sjabloon voor de eerste functie van uw project** : Kies `HTTP trigger`.
   
-    - **Geef een functienaam op**: Typ `HttpExample`.
+    - **Geef een functienaam op** : Typ `HttpExample`.
     ::: zone-end
     ::: zone pivot="programming-language-csharp"
-    - **Geef een naamruimte op**: Typ `My.Functions`.
+    - **Geef een naamruimte op** : Typ `My.Functions`.
     ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    - **Autorisatieniveau**: Kies `Anonymous`, waarmee iedereen uw functie-eindpunt kan aanroepen. Zie [Autorisatiesleutels](functions-bindings-http-webhook-trigger.md#authorization-keys) voor meer informatie over autorisatieniveau.
+    - **Autorisatieniveau** : Kies `Anonymous`, waarmee iedereen uw functie-eindpunt kan aanroepen. Zie [Autorisatiesleutels](functions-bindings-http-webhook-trigger.md#authorization-keys) voor meer informatie over autorisatieniveau.
     ::: zone-end
-    - **Selecteer hoe u uw project wilt openen**: Kies `Add to workspace`.
+    - **Selecteer hoe u uw project wilt openen** : Kies `Add to workspace`.
 
 1. Met behulp van deze informatie wordt met Visual Studio Code een Azure Functions-project gegenereerd met een HTTP-trigger. U kunt de lokale projectbestanden weergeven in de Explorer. Zie [Gegenereerde projectbestanden](functions-develop-vs-code.md#generated-project-files) voor meer informatie over bestanden die worden gemaakt. 
 

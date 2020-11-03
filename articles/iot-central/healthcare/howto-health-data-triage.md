@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 5175575bcd968ab9d9bb9db7e284eb332bc7f675
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127077"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542417"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Zelfstudie: Een Power BI-providerdashboard bouwen
 
@@ -164,18 +164,18 @@ De volgende stap bestaat uit het parseren van de gegevens die afkomstig zijn van
     >[!div class="mx-imgBorder"] 
     >![Besturingselement Splitsen](media/split-by-interface.png)
 
-8. Voeg voor de case **Smart Vitals Patch** de actie **JSON parseren** toe. Kies voor de inhoud **Eigenschappen**, afkomstig van de Event Hub. Kopieer en plak de voorbeelden van de nettoladingen voor de bovenstaande Smart Vitals Patch om het schema te genereren.
+8. Voeg voor de case **Smart Vitals Patch** de actie **JSON parseren** toe. Kies voor de inhoud **Eigenschappen** , afkomstig van de Event Hub. Kopieer en plak de voorbeelden van de nettoladingen voor de bovenstaande Smart Vitals Patch om het schema te genereren.
 
 9. Voeg de actie **Variabele instellen** toe en werk de variabele **Hoofdtekst** bij met de **hoofdtekst** van de geparseerde JSON in stap 7.
 
-10. Voeg het besturingselement **Voorwaarde** toe als de volgende actie en stel de voorwaarde in op **Hoofdtekst**, **bevat**, **HeartRate**. Dit zorgt ervoor dat u over de juiste set gegevens beschikt, afkomstig van de Smart Vitals Patch, voordat u de Power BI-gegevensset invult. Stappen 7 - 9 zien er als volgt uit:
+10. Voeg het besturingselement **Voorwaarde** toe als de volgende actie en stel de voorwaarde in op **Hoofdtekst** , **bevat** , **HeartRate**. Dit zorgt ervoor dat u over de juiste set gegevens beschikt, afkomstig van de Smart Vitals Patch, voordat u de Power BI-gegevensset invult. Stappen 7 - 9 zien er als volgt uit:
 
     >[!div class="mx-imgBorder"] 
     >![Toevoegvoorwaarde in Smart Vitals](media/smart-vitals-pbi.png)
 
 11. Voor de case **Waar** van de voorwaarde, voegt u een actie toe waarmee de Power BI-functionaliteit **Rijen toevoegen aan een gegevensset** wordt aangeroepen. U moet zich hiervoor aanmelden bij Power BI. De case **Onwaar** kan opnieuw gebruikmaken van het besturingselement **Beëindigen**.
 
-12. Kies de juiste **werkruimte**, **gegevensset**en **tabel**. Wijs de parameters die u hebt opgegeven bij het maken van uw streaminggegevensset in Power BI, toe aan de geparseerde JSON-waarden die van de Event Hub afkomstig zijn. De ingevulde acties moeten er als volgt uitzien:
+12. Kies de juiste **werkruimte** , **gegevensset** en **tabel**. Wijs de parameters die u hebt opgegeven bij het maken van uw streaminggegevensset in Power BI, toe aan de geparseerde JSON-waarden die van de Event Hub afkomstig zijn. De ingevulde acties moeten er als volgt uitzien:
 
     >[!div class="mx-imgBorder"] 
     >![Rijen toevoegen aan Power BI](media/add-rows-yesenia.png)
@@ -183,7 +183,7 @@ De volgende stap bestaat uit het parseren van de gegevens die afkomstig zijn van
 13. Voor de case Schakelen van de **Smart Knee Brace** voegt u de actie **JSON parseren** toe om de inhoud te parseren, soortgelijk als in stap 7. Voeg vervolgens **Rijen toevoegen aan een gegevensset** toe om de gegevensset van Enver Jobse bij te werken in Power BI.
 
     >[!div class="mx-imgBorder"] 
-    >![Toevoegvoorwaarde in Smart Vitals](media/knee-brace-pbi.png)
+    >![Schermopname van het toevoegen van rijen aan een gegevensset.](media/knee-brace-pbi.png)
 
 14. Druk op **Opslaan** en voer vervolgens uw logische app uit.
 

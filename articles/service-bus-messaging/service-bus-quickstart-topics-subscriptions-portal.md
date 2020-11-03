@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: d3dc63106e1ca5d9db2b14392ca1fb97e3a68289
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9085ccd272c6634e4be518872cb7e279da6b803c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88191536"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425403"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>De Azure-portal gebruiken om een Service Bus-onderwerp en abonnementen te maken voor het onderwerp
 In deze quickstart gebruikt u de Azure-portal om een Service Bus-onderwerp te maken en vervolgens abonnementen op dat onderwerp te maken. 
@@ -32,7 +32,11 @@ Met Service Bus-onderwerpen en -abonnementen kunt u opschalen naar het verwerken
 > U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel voor meer informatie over het verzenden van berichten naar een onderwerp en het ontvangen van die berichten via een abonnement: selecteer de programmeertaal in de inhoudsopgave. 
+In dit artikel hebt u een Service Bus-naamruimte, een onderwerp in de naamruimte en drie abonnementen voor het onderwerp. Zie een van de volgende quickstarts in de sectie **Publiceren van en abonneren op berichten** voor meer informatie over het publiceren van berichten naar het onderwerp en het abonneren op berichten vanuit een abonnement. 
 
-> [!div class="nextstepaction"]
-> [Publiceren en abonneren op berichten](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Java](service-bus-java-how-to-use-topics-subscriptions.md)
+- [JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
+- [Python](service-bus-python-how-to-use-topics-subscriptions.md)
+- [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
+- [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)

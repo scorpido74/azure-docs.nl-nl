@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0999cbcb53edad8c496dc2f6dbd27471c93f3e4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc83da2836d414ee3fadd23288475a6829018aa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532730"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521778"
 ---
 # <a name="tutorial-integrate-ungerboeck-software-with-azure-active-directory"></a>Zelfstudie: Ungerboeck Software integreren met Azure Active Directory
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Ungerboeck Software kunt integreren met Azure A
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Ungerboeck Software.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -67,7 +67,7 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Ungerboeck 
 
 Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Ungerboeck Software**, ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Ga in [Azure Portal](https://portal.azure.com/) naar de integratiepagina van de toepassing **Ungerboeck Software** , ga naar de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
@@ -79,13 +79,13 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     1. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon:
     
-    *  **Voor de productieomgeving**:
+    *  **Voor de productieomgeving** :
 
        - `https://<SUBDOMAIN>.ungerboeck.com/prod`
        - `https://<SUBDOMAIN>.ungerboeck.net/prod`
        - `https://<SUBDOMAIN>.ungerboeck.io/prod`
 
-   * **Voor de testomgeving**:
+   * **Voor de testomgeving** :
 
      - `https://<SUBDOMAIN>.ungerboeck.com/test`
      - `https://<SUBDOMAIN>.ungerboeck.net/test`
@@ -114,15 +114,15 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 ### <a name="configure-ungerboeck-software-sso"></a>Eenmalige aanmelding voor Ungerboeck Software configureren
 
-Als u eenmalige aanmelding aan de **Ungerboeck Software**-zijde wilt configureren, moet u de **vingerafdrukwaarde** en de correcte uit Azure Portal gekopieerde URL's verzenden naar het [ondersteuningsteam voor Ungerboeck Software](mailto:Rhonda.Jannings@ungerboeck.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de **Ungerboeck Software** -zijde wilt configureren, moet u de **vingerafdrukwaarde** en de correcte uit Azure Portal gekopieerde URL's verzenden naar het [ondersteuningsteam voor Ungerboeck Software](mailto:Rhonda.Jannings@ungerboeck.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -148,16 +148,16 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ### <a name="create-ungerboeck-software-test-user"></a>Een Ungerboeck Software-testgebruiker maken
 
-In deze sectie maakt u in Ungerboeck Software een gebruiker met de naam B.Simon. Werk met het  [ondersteuningsteam van Ungerboeck Software](mailto:Rhonda.Jannings@ungerboeck.com) om de gebruikers toe te voegen in het Ungerboeck Software-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u in Ungerboeck Software een gebruiker met de naam B.Simon. Neem contact op met het [ondersteuningsteam van Ungerboeck Software](mailto:Rhonda.Jannings@ungerboeck.com) om de gebruikers toe te voegen in het Ungerboeck Software-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u in het toegangsvenster op de tegel Ungerboeck Software klikt, wordt u automatisch aangemeld bij Ungerboeck Software waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Ungerboeck Software klikt, wordt u automatisch aangemeld bij Ungerboeck Software waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

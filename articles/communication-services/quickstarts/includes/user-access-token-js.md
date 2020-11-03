@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: marobert
-ms.openlocfilehash: 77b1e9ab245f668ab81741451a5e032f37bc3625
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 22cfe369561eab1ca334c7ff2450162dfae3e761
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944591"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92347332"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ Open uw terminal of opdrachtvenster, maak een nieuwe map voor uw app en navigeer
 mkdir user-tokens-quickstart && cd user-tokens-quickstart
 ```
 
-Voer `npm init -y` uit om een **package.json**-bestand te maken met de standaardinstellingen.
+Voer `npm init -y` uit om een **package.json** -bestand te maken met de standaardinstellingen.
 
 ```console
 npm init -y
@@ -49,7 +49,7 @@ npm install @azure/communication-administration --save
 
 ```
 
-De optie `--save` geeft de bibliotheek weer als afhankelijkheid in het **package.json**-bestand.
+De optie `--save` geeft de bibliotheek weer als afhankelijkheid in het **package.json** -bestand.
 
 ## <a name="set-up-the-app-framework"></a>Het app-framework instellen
 
@@ -125,6 +125,15 @@ In sommige gevallen moet u de tokens voor gebruikerstoegang wellicht intrekken, 
 ```javascript  
 await identityClient.revokeTokens(userResponse);
 console.log(`\nSuccessfully revoked all tokens for user with Id: ${userResponse.communicationUserId}`);
+```
+
+## <a name="refresh-user-access-tokens"></a>Tokens voor gebruikerstoegang vernieuwen
+
+Als u een token wilt vernieuwen, gebruikt u het `CommunicationUser`-object om het opnieuw uit te geven:
+
+```javascript  
+let userResponse = new CommunicationUser(existingUserId);
+let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
 ```
 
 ## <a name="delete-a-user"></a>Een gebruiker verwijderen

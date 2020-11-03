@@ -6,18 +6,22 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 10/22/2020
 ms.author: banders
-ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132360"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460679"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Overdracht van Azure-abonnementen tussen abonnees en CSP's
 
 Dit artikel bevat de algemene stappen voor het overdragen van Azure-abonnementen van en naar CSP-partners (Cloud Solution Provider) en hun klanten. Deze informatie is bedoeld om de Azure-abonnee te helpen bij het coördineren met een partner. Informatie die Microsoft-partners gebruiken voor het overdrachtsproces wordt beschreven in [Learn how to transfer a customer's Azure subscriptions to another partner](/partner-center/switch-azure-subscriptions-to-a-different-partner) (Azure-abonnementen van een klant overdragen aan een andere partner).
+
+Voordat u een aanvraag voor een overdracht begint, moet u eventuele kosten- en factureringsgegevens downloaden of exporteren die u wilt blijven gebruiken. Facturerings- en gebruiksgegevens worden niet overgedragen met het abonnement. Zie [Geëxporteerde gegevens maken en beheren](../costs/tutorial-export-acm-data.md) voor meer informatie over het exporteren van gegevens over kostenbeheer. Zie [Uw Azure-factuurgegevens en dagelijkse gebruiksgegevens downloaden of weergeven](download-azure-invoice-daily-usage-date.md) voor meer informatie over het downloaden van uw factuur- en gebruiksgegevens.
+
+Als u bestaande reserveringen hebt, worden ze niet meer toegepast nadat u een abonnement hebt overgedragen. Zorg ervoor dat u [alle reserveringen annuleert en terugbetaalt](../reservations/exchange-and-refund-azure-reservations.md) voordat u een abonnement overdraagt.
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>EA-abonnementen overdragen naar een CSP-partner
 

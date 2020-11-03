@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 47cca5019277b2f4d0025ccb6743589a21dfaafa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149199"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480119"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Zelfstudie: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een IoT-hub
 
@@ -138,7 +138,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 2. Zoek de sectie **Bewaking** in de IoT Hub-blade. Klik op **Diagnostische instellingen**. 
 
-   ![Schermafbeelding van het gedeelte Diagnostische instellingen van de IoT Hub-blade.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
+   ![Schermopname waarin Diagnostische instellingen in de sectie Bewaking is gemarkeerd.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
 3. Zorg ervoor dat het abonnement en de resourcegroep correct zijn. Schakel onder **Resourcetype** het selectievakje **Alles selecteren** uit, zoek **IoT Hub** op en schakel het in. (Het vinkje naast *Alles selecteren* verschijnt weer; negeer dit gewoon.) Selecteer onder **Resource** de naam van de hub. Uw scherm moet lijken op deze afbeelding: 
@@ -151,7 +151,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
    ![Schermafbeelding van het instellen van de diagnostische gegevens om te worden gearchiveerd naar een opslagaccount.](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
 
-    Klik op **Configureren** om naar het scherm **Een opslagaccount selecteren** te gaan, selecteer het juiste account (*contosostoragemon*) en klik op **OK** om terug te gaan naar het deelvenster Diagnostische instellingen. 
+    Klik op **Configureren** om naar het scherm **Een opslagaccount selecteren** te gaan, selecteer het juiste account ( *contosostoragemon* ) en klik op **OK** om terug te gaan naar het deelvenster Diagnostische instellingen. 
 
    ![Schermafbeelding van het instellen van de diagnostische-gegevenslogboeken om te worden gearchiveerd naar een opslagaccount.](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
 
@@ -169,7 +169,7 @@ Stel nu wat metrische gegevens in om naar te kijken wanneer berichten naar hub w
 
 1. Klik in het deelvenster met instellingen voor de IoT-hub op de optie **Metrische gegevens** in de sectie **Bewaking**.
 
-2. Klik bovenaan het scherm op **Afgelopen 24 uur (automatisch)** . Selecteer in de vervolgkeuzelijst die wordt weergegeven **Afgelopen 4 uur** in bij **Tijdsbereik**, en stel **Tijdgranulatie** in op **1 minuut**, lokale tijd. Klik op **Toepassen** om deze instellingen op te slaan. 
+2. Klik bovenaan het scherm op **Afgelopen 24 uur (automatisch)** . Selecteer in de vervolgkeuzelijst die wordt weergegeven **Afgelopen 4 uur** in bij **Tijdsbereik** , en stel **Tijdgranulatie** in op **1 minuut** , lokale tijd. Klik op **Toepassen** om deze instellingen op te slaan. 
 
    ![Schermafbeelding van de tijdinstellingen voor de metrische gegevens.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
 
@@ -178,11 +178,11 @@ Stel nu wat metrische gegevens in om naar te kijken wanneer berichten naar hub w
    ![Schermafbeelding van het toevoegen van een metrische waarde voor verzonden telemetrieberichten.](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
 
 
-4. Klik nu op **Metrische waarde toevoegen** om nog een metrische waarde toe te voegen aan de grafiek. Selecteer uw resourcegroep (**ContosoTestHub**). Selecteer onder **Metrische waarde**, selecteer **Totaal aantal gebruikte berichten**. Selecteer **Gem** bij **Aggregatie**. 
+4. Klik nu op **Metrische waarde toevoegen** om nog een metrische waarde toe te voegen aan de grafiek. Selecteer uw resourcegroep ( **ContosoTestHub** ). Selecteer onder **Metrische waarde** , selecteer **Totaal aantal gebruikte berichten**. Selecteer **Gem** bij **Aggregatie**. 
 
-   Nu wordt op uw scherm de geminimaliseerde waarde weergegeven voor *Verzonden telemetrieberichten*, plus de nieuwe metrische waarde voor *Totaal aantal gebruikte berichten*.
+   Nu wordt op uw scherm de geminimaliseerde waarde weergegeven voor *Verzonden telemetrieberichten* , plus de nieuwe metrische waarde voor *Totaal aantal gebruikte berichten*.
 
-   ![Schermafbeelding van het toevoegen van een metrische waarde voor verzonden telemetrieberichten.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+   ![Schermopname met de knop Vastmaken aan dashboard gemarkeerd.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
 
    Klik op **Vastmaken aan dashboard**. Hierdoor wordt de waarde vastgemaakt aan het dashboard van uw Azure-portal, zodat u er opnieuw toegang tot hebt. Als u de waarde niet vastmaakt aan het dashboard, blijven uw instellingen niet behouden.
 
@@ -202,27 +202,27 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](../
 
     Vul de velden in: 
 
-    **Abonnement**: Laat dit veld ingesteld op uw huidige abonnement.
+    **Abonnement** : Laat dit veld ingesteld op uw huidige abonnement.
 
-    **Bron**: Stel dit veld in op *Metrische gegevens*.
+    **Bron** : Stel dit veld in op *Metrische gegevens*.
 
-    **Resourcegroep**: Stel dit veld in op uw huidige resourcegroep, *ContosoResources*. 
+    **Resourcegroep** : Stel dit veld in op uw huidige resourcegroep, *ContosoResources*. 
 
-    **Resourcetype**: Stel dit veld in op IoT Hub. 
+    **Resourcetype** : Stel dit veld in op IoT Hub. 
 
-    **Resource**: Selecteer uw IoT-hub, *ContosoTestHub*.
+    **Resource** : Selecteer uw IoT-hub, *ContosoTestHub*.
 
 3. Klik op **Waarschuwing voor metrische gegevens toevoegen (klassiek)** om een nieuwe waarschuwing in te stellen.
 
     Vul de velden in:
 
-    **Naam**: Geef een naam op voor de waarschuwingsregel, zoals *telemetrieberichten*.
+    **Naam** : Geef een naam op voor de waarschuwingsregel, zoals *telemetrieberichten*.
 
-    **Beschrijving**: Geef een beschrijving op voor de waarschuwing, zoals *waarschuwen wanneer er 1000 telemetrieberichten zijn verzonden*. 
+    **Beschrijving** : Geef een beschrijving op voor de waarschuwing, zoals *waarschuwen wanneer er 1000 telemetrieberichten zijn verzonden*. 
 
-    **Bron**: Stel dit in op *Metrische gegevens*.
+    **Bron** : Stel dit in op *Metrische gegevens*.
 
-    **Abonnement**, **Resourcegroep** en **Resource** moeten worden ingesteld op de waarden die u hebt geselecteerd in het scherm **Klassieke waarschuwingen weergeven**. 
+    **Abonnement** , **Resourcegroep** en **Resource** moeten worden ingesteld op de waarden die u hebt geselecteerd in het scherm **Klassieke waarschuwingen weergeven**. 
 
     Stel **Metrische gegevens** in op *Verzonden telemetrieberichten*.
 
@@ -230,13 +230,13 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](../
 
 4. Stel na de grafiek de volgende velden in:
 
-   **Voorwaarde**: Stel in op *Groter dan*.
+   **Voorwaarde** : Stel in op *Groter dan*.
 
-   **Drempel**: Stel in op 1000.
+   **Drempel** : Stel in op 1000.
 
-   **Periode**: Stel in op *In de afgelopen 5 minuten*.
+   **Periode** : Stel in op *In de afgelopen 5 minuten*.
 
-   **Ontvangers van e-mailmeldingen**: Voeg hier uw e-mailadres toe. 
+   **Ontvangers van e-mailmeldingen** : Voeg hier uw e-mailadres toe. 
 
    ![Schermafbeelding van de onderste helft van het waarschuwingenscherm.](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
@@ -246,25 +246,25 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](../
 
    Klik in het scherm **Klassieke waarschuwingen weergeven** op **Waarschuwing voor metrische gegevens toevoegen (klassiek)** en vul vervolgens in het deelvenster **Regel toevoegen** deze velden in.
 
-   **Naam**: Geef een naam op voor de waarschuwingsregel, zoals *aantal gebruikte berichten*.
+   **Naam** : Geef een naam op voor de waarschuwingsregel, zoals *aantal gebruikte berichten*.
 
-   **Beschrijving**: Geef een beschrijving op voor de waarschuwing, zoals *waarschuwen wanneer het quotum bijna op is*.
+   **Beschrijving** : Geef een beschrijving op voor de waarschuwing, zoals *waarschuwen wanneer het quotum bijna op is*.
 
-   **Bron**: Stel dit veld in op *Metrische gegevens*.
+   **Bron** : Stel dit veld in op *Metrische gegevens*.
 
-    **Abonnement**, **Resourcegroep** en **Resource** moeten worden ingesteld op de waarden die u hebt geselecteerd in het scherm **Klassieke waarschuwingen weergeven**. 
+    **Abonnement** , **Resourcegroep** en **Resource** moeten worden ingesteld op de waarden die u hebt geselecteerd in het scherm **Klassieke waarschuwingen weergeven**. 
 
     Stel **Metrische waarde** in op *Totaal aantal gebruikte berichten*.
 
 6. Vul onder de grafiek de volgende velden in:
 
-   **Voorwaarde**: Stel in op *Groter dan*.
+   **Voorwaarde** : Stel in op *Groter dan*.
 
-   **Drempel**: Stel in op 1000.
+   **Drempel** : Stel in op 1000.
 
-   **Periode**: Stel dit veld in op *In de afgelopen 5 minuten*. 
+   **Periode** : Stel dit veld in op *In de afgelopen 5 minuten*. 
 
-   **Ontvangers van e-mailmeldingen**: Voeg hier uw e-mailadres toe. 
+   **Ontvangers van e-mailmeldingen** : Voeg hier uw e-mailadres toe. 
 
    Klik op **OK** om de regel op te slaan. 
 
@@ -304,7 +304,7 @@ Voer de consoletoepassing uit. Wacht enkele minuten (10–15). U kunt de bericht
 
 ### <a name="see-the-metrics-in-the-portal"></a>De metrische gegevens bekijken in de portal
 
-Open uw metrische gegevens vanuit het Dashboard. Wijzig de tijdwaarden in *Afgelopen 30 minuten*, met een tijdgranulatie van *1 minuut*. De verzonden telemetrieberichten en het totale aantal gebruikte berichten worden weergegeven in de grafiek, met de meest recente cijfers onderaan de grafiek.
+Open uw metrische gegevens vanuit het Dashboard. Wijzig de tijdwaarden in *Afgelopen 30 minuten* , met een tijdgranulatie van *1 minuut*. De verzonden telemetrieberichten en het totale aantal gebruikte berichten worden weergegeven in de grafiek, met de meest recente cijfers onderaan de grafiek.
 
    ![Schermafbeelding van de metrische gegevens.](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 06104964c06b0853498a7de272a62d2913b10be6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2328bd51712089f706c8491007f9f51eba52337
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88518608"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508074"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Zelfstudie: Azure Active Directory-integratie met My Award Points Top Sub/Top Team
 
@@ -27,7 +27,7 @@ De integratie van My Award Points Top Sub/Top Team met Azure AD heeft de volgend
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij My Award Points Top Sub/Top Team (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -49,7 +49,7 @@ Als u de integratie van My Award Points Top Sub/Top Team met Azure AD wilt confi
 
 **Voer de volgende stappen uit om My Award Points Top Sub/Top Team toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -73,10 +73,10 @@ Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt t
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met My Award Points Top Sub/Top Team te configureren en te testen:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **Eenmalige aanmelding bij My Award Points Top Sub/Top Team configureren**: als u de instellingen voor eenmalige aanmelding voor de toepassing wilt configureren.
+2. **Eenmalige aanmelding bij My Award Points Top Sub/Top Team configureren** : als u de instellingen voor eenmalige aanmelding voor de toepassing wilt configureren.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **My Award Points Top Sub/Top Team-testgebruiker maken**: als u een tegenhanger van Britta Simon wilt maken in My Award Points Top Sub/Top Team die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **My Award Points Top Sub/Top Team-testgebruiker maken** : als u een tegenhanger van Britta Simon wilt maken in My Award Points Top Sub/Top Team die is gekoppeld aan de Azure AD-weergave van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
@@ -125,13 +125,13 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure AD bij My Award P
 
 ### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>Eenmalige aanmelding bij My Award Points Top Sub/Top Team configureren
 
-Als u eenmalige aanmelding wilt configureren in **My Award Points Top Sub/Top Team**, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de juiste gekopieerde URL's vanuit de Azure-portal verzenden naar [het ondersteuningsteam van My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren in **My Award Points Top Sub/Top Team** , moet u het gedownloade **XML-bestand met federatieve metagegevens** en de juiste gekopieerde URL's vanuit de Azure-portal verzenden naar [het ondersteuningsteam van My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -143,7 +143,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
@@ -156,7 +156,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 In deze sectie stelt u in dat Britta Simon eenmalige aanmelding van Azure kan gebruiken door haar toegang te geven tot My Award Points Top Sub/Top Team.
 
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **My Award Points Top Sub/Top Team**.
+1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **My Award Points Top Sub/Top Team**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -168,7 +168,7 @@ In deze sectie stelt u in dat Britta Simon eenmalige aanmelding van Azure kan ge
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -180,18 +180,18 @@ In deze sectie stelt u in dat Britta Simon eenmalige aanmelding van Azure kan ge
 
 ### <a name="create-my-award-points-top-subtop-team-test-user"></a>Een testgebruiker voor My Award Points Top Sub/Top Team maken
 
-In deze sectie maakt u een gebruiker met de naam Britta Simon in My Award Points Top Sub/Top Team. Werk samen met het  [ondersteuningsteam van My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com) om de gebruikers toe te voegen aan het My Award Points Top Sub/Top Team-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Britta Simon in My Award Points Top Sub/Top Team. Neem contact op met het [ondersteuningsteam van My Award Points Top Sub/Top Team](mailto:myawardpoints@biworldwide.com) om de gebruikers toe te voegen in het My Award Points Top Sub/Top Team-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel My Award Points Top Sub/Top Team klikt, wordt u automatisch aangemeld bij het My Award Points Top Sub/Top Team-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel My Award Points Top Sub/Top Team klikt, wordt u automatisch aangemeld bij het My Award Points Top Sub/Top Team-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

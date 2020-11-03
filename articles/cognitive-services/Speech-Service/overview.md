@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: b15a034a73882287e70afcbcaa9c72ee931c9f78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 09641fb66d2f68054d23abbf8ee9f4324e19832f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630199"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521506"
 ---
 # <a name="what-is-the-speech-service"></a>Wat is de Speech-service?
 
 De spraakservice combineert spraak-naar-tekst, tekst-naar-spraak en spraakomzetting in één Azure-abonnement. U kunt spraak eenvoudig inschakelen voor uw toepassingen, hulpprogramma's en apparaten met de [Speech CLI](spx-overview.md), [Speech SDK](speech-sdk-reference.md), [Speech Devices SDK](https://aka.ms/sdsdk-quickstart), [Speech Studio](https://speech.microsoft.com/) of [REST API's](rest-apis.md).
 
 > [!IMPORTANT]
-> De spraakservice heeft de Bing Speech API en Translator Speech vervangen. Zie _Handleidingen > Migratie_ voor migratie-instructies.
+> De spraakservice heeft de Bing Speech API en Translator Speech vervangen. Zie de sectie _Migratie_ voor migratie-instructies.
 
 De volgende onderdelen maken deel uit van de spraakservice. Gebruik de koppelingen in deze tabel voor meer informatie over veelvoorkomende gebruikssituaties voor elke functie of blader door de API-naslaginformatie.
 
@@ -81,7 +81,21 @@ Ga als volgt te werk om een spraakserviceresource (prijscategorie gratis of beta
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
 -->
-Het kan even duren voordat u uw nieuwe spraakresource is geïmplementeerd. Zodra de implementatie is voltooid, selecteert u **Ga naar resource** en selecteert u in het navigatievenster links **Sleutels** om uw abonnementssleutels voor de spraakservice weer te geven. Elk abonnement heeft twee sleutels. U kunt beide sleutels gebruiken in uw toepassing. Als u snel een sleutel naar de code-editor of een andere locatie wilt kopiëren/plakken, selecteert u de kopieerknop naast elke sleutel en schakelt u over naar Windows om de inhoud van het klembord op de gewenste locatie te plakken.
+Het kan even duren voordat u uw nieuwe spraakresource is geïmplementeerd. 
+
+### <a name="find-keys-and-region"></a>Sleutels en regio zoeken
+
+Voer de volgende stappen uit om de sleutels en regio van een voltooide implementatie te vinden:
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met behulp van uw Microsoft-account.
+
+2. Selecteer **Alle resources** en selecteer de naam van uw Cognitive Services-resource.
+
+3. Selecteer in het linker deelvenster onder **RESOURCEBEHEER** de optie **Sleutels en Eindpunt**.
+
+Elk abonnement heeft twee sleutels. U kunt beide sleutels gebruiken in uw toepassing. Als u een sleutel naar de code-editor of een andere locatie wilt kopiëren/plakken, selecteert u de kopieerknop naast elke sleutel en schakelt u over naar Windows om de inhoud van het klembord op de gewenste locatie te plakken.
+
+Kopieer bovendien de `LOCATION`-waarde, uw regio-ID (bijvoorbeeld `westus`, `westeurope`) voor SDK-aanroepen.
 
 > [!IMPORTANT]
 > Deze abonnementssleutels worden gebruikt om toegang te krijgen tot de API van Cognitive Services. Deel uw sleutels niet. Sla ze veilig op, bijvoorbeeld met behulp van Azure Key Vault. We raden u ook aan om deze sleutels regelmatig opnieuw te genereren. Er is slechts één sleutel nodig om een API-aanroep te maken. Wanneer u de eerste sleutel opnieuw genereert, kunt u de tweede sleutel gebruiken voor verdere toegang tot de service.

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 9/29/2020
-ms.openlocfilehash: 70f2cf183a9bd93b6066516cb68e99ee21cdc1ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c082c797c75ba912bafead15d24ea3941cfc25e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569632"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534189"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Quickstart: Een Azure Database for MySQL Flexible Server maken met behulp van de Azure Portal
 
@@ -28,36 +28,36 @@ Open uw webbrowser en ga naar [Azure Portal](https://portal.azure.com/). Voer uw
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server"></a>Een Azure Database for MySQL Flexible Server maken
 
-U maakt een flexibele server met een gedefinieerde set [reken- en opslagresources](./concepts-compute-storage.md). De server wordt gemaakt binnen een [Azure-resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/management/overview).
+U maakt een flexibele server met een gedefinieerde set [reken- en opslagresources](./concepts-compute-storage.md). De server wordt gemaakt binnen een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md).
 
 Volg deze stappen om een flexibele server te maken:
 
-1. Selecteer in de linkerbovenhoek van de portal **Een resource maken** (+).
+1. Zoek via het zoekvak in de portal op Azure Database for MySQL om de service te vinden. 
+    
+    > :::image type="content" source="./media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="Zoeken op Azure Database for MySQL":::
 
-2. Selecteer **Databases** > **Azure Database voor MySQL**. U kunt ook **MySQL** in het zoekvak typen om de service te vinden.
+2. Selecteer **Toevoegen**. 
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/navigate-to-mysql.png" alt-text="De optie Azure Database for MySQL":::
-
-3. Selecteer **Flexibele server** als implementatieoptie.
+3. Op de pagina Implementatieoptie selecteren selecteert u **Flexibele server** als implementatieoptie.
      
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="De optie Azure Database for MySQL":::    
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Implementatieoptie kiezen":::    
 
 4. Vul het formulier **Basisbeginselen** in met de volgende gegevens: 
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="De optie Azure Database for MySQL"::: 
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Formulier voor het maken van een server"::: 
                                     
     |**Instelling**|**Voorgestelde waarde**|**Beschrijving**|
     |---|---|---|
     Abonnement|De naam van uw abonnement|Het Azure-abonnement dat u wilt gebruiken voor uw server. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wilt worden gefactureerd voor de resource.|
     Resourcegroep|*myresourcegroup*| Een nieuwe resourcegroepnaam of een bestaande naam uit uw abonnement.|
     Servernaam |*mydemoserver*|Een unieke naam die uw flexibele server identificeert. De domeinnaam *mysql.database.azure.com* wordt toegevoegd aan de naam van de server die u opgeeft. De server mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. Hij moet ten minste 3 en mag maximaal 63 tekens bevatten.|
-    Gebruikersnaam van beheerder |*mydemouser*| Uw eigen aanmeldingsaccount dat moet worden gebruikt om verbinding te maken met de server. De aanmeldingsnaam van de beheerder mag niet **azure_superuser**, **admin**, **administrator**, **root**, **guest**of **public** zijn.|
+    Gebruikersnaam van beheerder |*mydemouser*| Uw eigen aanmeldingsaccount dat moet worden gebruikt om verbinding te maken met de server. De aanmeldingsnaam van de beheerder mag niet **azure_superuser** , **admin** , **administrator** , **root** , **guest** of **public** zijn.|
     Wachtwoord |Uw wachtwoord| Een nieuw wachtwoord voor het beheerdersaccount voor de server. Dit wachtwoord moet tussen 8 en 128 tekens bevatten. Uw wachtwoord moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofdletters, Nederlandse kleine letters, cijfers (0 tot en met 9) en niet-alfanumerieke tekens (!, $, #, %, enzovoort).|
     Regio|De regio het dichtst bij uw gebruikers| De locatie die zich het dichtst bij uw gebruikers bevindt.|
     Versie|5.7| Primaire MySQL-versie.|
-    Berekening en opslag | **Burstable**, **Standard_B1ms**, **10 GiB**, **7 dagen** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Server configureren**. *Burstable*, *Standard_B1ms*, *10 GiB* en *7 dagen* zijn de standaardwaarden voor **Rekenlaag**, **Rekengrootte**, **Opslag** en **Bewaartermijn voor back-up**. U kunt deze schuifregelaars laten zoals ze zijn of ze aanpassen. Als u deze berekening en opslagselectie wilt opslaan, selecteert u **Opslaan** om door te gaan met configuraties. In de onderstaande schermafbeelding ziet u de opties voor berekenen en opslaan.|
+    Berekening en opslag | **Burstable** , **Standard_B1ms** , **10 GiB** , **7 dagen** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Server configureren**. *Burstable* , *Standard_B1ms* , *10 GiB* en *7 dagen* zijn de standaardwaarden voor **Rekenlaag** , **Rekengrootte** , **Opslag** en **Bewaartermijn voor back-up**. U kunt deze schuifregelaars laten zoals ze zijn of ze aanpassen. Als u deze berekening en opslagselectie wilt opslaan, selecteert u **Opslaan** om door te gaan met configuraties. In de onderstaande schermafbeelding ziet u de opties voor berekenen en opslaan.|
     
-    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="De optie Azure Database for MySQL":::
+    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Berekening en opslag":::
 
 5. Netwerkopties configureren
 
@@ -66,7 +66,7 @@ Volg deze stappen om een flexibele server te maken:
     > [!NOTE]
     > De verbindingsmethode kan niet worden gewijzigd na het maken van de server. Als u bijvoorbeeld *Openbare toegang (toegestane IP-adressen)* hebt geselecteerd tijdens het maken, kunt u na het maken niet wijzigen naar *Persoonlijke toegang (VNet-integratie)* . U kunt het beste een server met persoonlijke toegang maken om veilig toegang te krijgen tot uw server met behulp van VNet-integratie. Meer informatie over persoonlijke toegang vindt u in het [artikel over concepten](./concepts-networking.md).
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="De optie Azure Database for MySQL":::  
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Netwerk configureren":::  
 
 6. Selecteer **Beoordelen + maken** om uw flexibele serverconfiguratie te controleren.
 
@@ -74,7 +74,7 @@ Volg deze stappen om een flexibele server te maken:
 
 8. Selecteer **Meldingen** op de werkbalk (pictogram van een klok) om het implementatieproces te bewaken. Na de implementatie kunt u **Vastmaken aan dashboard** selecteren. Hiermee maakt u een tegel voor deze flexibele server op uw dashboard in de Azure Portal als snelkoppeling naar de **overzichtspagina** van de server. Als u **Naar de resource gaan** selecteert, wordt de **overzichtspagina** van de server weergegeven.
 
-Standaard worden de volgende databases gemaakt voor de server: **information_schema**, **mysql**, **performance_schema** en **sys**.
+Standaard worden de volgende databases gemaakt voor de server: **information_schema** , **mysql** , **performance_schema** en **sys**.
 
 > [!NOTE]
 > Controleer of uw netwerk uitgaand verkeer toestaat via poort 3306, die wordt gebruikt door Azure Database for MySQL Flexible Server om connectiviteitsproblemen te vermijden.  
@@ -103,7 +103,7 @@ U hebt een Azure Database for MySQL Flexible Server in een resourcegroep gemaakt
 Om uw server te verwijderen, klikt u op de knop **Verwijderen** op de pagina **Overzicht** van uw server, zoals hieronder weergegeven:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="De optie Azure Database for MySQL":::
+> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Uw resources verwijderen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

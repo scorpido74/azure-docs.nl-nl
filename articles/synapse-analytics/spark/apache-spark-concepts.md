@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb5c7e082dc4a35183190f5d2d6a4b305b907f4f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260135"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480476"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Basisconcepten van Apache Spark in Azure Synapse Analytics
 
@@ -60,7 +60,40 @@ Wanneer u een tweede taak indient en er capaciteit in de pool is, heeft de besta
 - Een andere gebruiker, U2, verzendt een taak, J3, die gebruikmaakt van 10 knooppunten. Een nieuw Spark-exemplaar, SI2, wordt gemaakt om de taak te verwerken.
 - U verzendt nu een andere taak, J2, die 10 knooppunten gebruikt. Omdat er nog capaciteit in de pool en het exemplaar is, wordt J2 verwerkt door SI1.
 
+## <a name="quotas-and-resource-constraints-in-apache-spark-for-azure-synapse"></a>Quota en resourcebeperkingen in Apache Spark voor Azure Synapse
+
+### <a name="workspace-level"></a>Niveau van de werkruimte
+
+Elke Azure Synapse-werkruimte wordt geleverd met een standaardquotum van vCores die kunnen worden gebruikt voor Apache Spark. Het quotum wordt opgesplitst in het gebruikersquotum en het gegevensstroomquotum, zodat geen van beide gebruikspatronen alle vCores in de werkruimte gebruikt. Het quotum verschilt, afhankelijk van het type abonnement, maar is gelijk verdeeld tussen de gebruikers en de gegevensstroom. Als u echter meer vCores aanvraagt dan nog in de werkruimte staan, krijgt u de volgende foutmelding:
+
+```console
+Failed to start session: [User] MAXIMUM_WORKSPACE_CAPACITY_EXCEEDED
+Your Spark job requested 480 vcores.
+However, the workspace only has xxx vcores available out of quota of yyy vcores.
+Try reducing the numbers of vcores requested or increasing your vcore quota. Click here for more information - https://go.microsoft.com/fwlink/?linkid=213499
+```
+
+De koppeling in het bericht verwijst naar dit artikel.
+
+In het volgende artikel wordt beschreven hoe u een toename van het vCore-quotum van de werkruimte aanvraagt.
+
+- Selecteer 'Azure Synapse Analytics' als het servicetype.
+- Selecteer in het venster Quotumgegevens de optie Apache Spark (vCore) per werkruimte
+
+[Een capaciteitstoename aanvragen via Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests#request-a-standard-quota-increase-from-help--support)
+
+### <a name="spark-pool-level"></a>Niveau van Spark-pool
+
+Wanneer u een Spark-pool definieert, definieert u een quotum per gebruiker voor die pool. Als u meerdere notebooks of taken uitvoert of een mix van de twee, is het mogelijk dat u het poolquotum opmaakt. Als dit het geval is, wordt er een foutbericht zoals het volgende gegenereerd
+
+```console
+Failed to start session: Your Spark job requested xx vcores.
+However, the pool is consuming yy vcores out of available zz vcores.Try ending the running job(s) in the pool, reducing the numbers of vcores requested, increasing the pool maximum size or using another pool
+```
+
+Om dit probleem op te lossen, moet u uw gebruik van de poolresources verminderen voordat u een nieuwe resource-aanvraag indient door een notebook of een taak uit te voeren.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Documentatie voor Apache Spark](https://spark.apache.org/docs/2.4.4/)
+- [Documentatie voor Apache Spark](https://spark.apache.org/docs/2.4.5/)

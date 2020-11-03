@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: bdd3f543c948ac2825b836fdbedd4c0f0d713b2c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: affefb302d602e9069a903fa5f6a0fbae78992b9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208223"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516950"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Quickstart: Aan de slag met Azure Sentinel
 
@@ -54,7 +54,7 @@ De hoofdtekst van de overzichtspagina geeft in een oogopslag inzicht in de bevei
 
 Ingebouwde werkmappen bieden geïntegreerde gegevens uit uw verbonden gegevensbronnen om u de kans te geven in te zoomen op de gebeurtenissen die in deze services zijn gegenereerd. De ingebouwde werkmappen hebben betrekking op Azure AD, gebeurtenissen voor Azure-activiteiten en on-premises, wat gegevens kunnen zijn van Windows-gebeurtenissen van servers, uit Microsoft-bronnen, uit bronnen van derden, waaronder logboeken van firewallverkeer, Office 365 en onveilige protocollen op basis van Windows-gebeurtenissen. De werkmappen zijn gebaseerd op Azure Monitor-werkmappen, zodat u bij het ontwerpen van uw eigen werkmap de beschikking hebt over verbeterde mogelijkheden voor aanpassing en flexibiliteit. Zie [Werkmappen](../azure-monitor/platform/workbooks-overview.md) voor meer informatie.
 
-1. Selecteer onder **Instellingen** de optie **Werkmappen** . Onder **Geïnstalleerd** worden alle geïnstalleerde werkmappen weergegeven. Onder **Alle** ziet u de complete galerie met ingebouwde werkmappen die beschikbaar zijn voor installatie. 
+1. Selecteer onder **Instellingen** de optie **Werkmappen**. Onder **Geïnstalleerd** worden alle geïnstalleerde werkmappen weergegeven. Onder **Alle** ziet u de complete galerie met ingebouwde werkmappen die beschikbaar zijn voor installatie. 
 2. Zoek naar een specifieke werkmap om de hele lijst te zien met beschrijvingen van de mappen. 
 3. Als we ervan uitgaan dat u Azure AD gebruikt, raden we u aan om ten minste de volgende werkmappen te installeren om aan de slag te gaan met Azure Sentinel:
    - **Azure AD** : Gebruik een van de volgende werkmappen, of beide:
@@ -79,11 +79,11 @@ Als u een nieuwe tegel wilt toevoegen, kunt u deze toevoegen aan een bestaande w
 ## <a name="create-new-workbooks"></a>Nieuwe werkmappen maken
 U kunt een volledig nieuwe werkmap maken of een ingebouwde werkmap gebruiken als basis voor de nieuwe werkmap.
 
-1. Als u een volledig nieuwe werkmap wilt maken, selecteert u **Werkmappen** en vervolgens **+ Nieuwe werkmap** .
-2. Selecteer het abonnement waarin u de werkmap wilt maken en geef de map een beschrijvende naam. Elke werkmap is net als alle andere elementen een Azure-resource, en u kunt er rollen (RBAC) aan toewijzen om te bepalen wie toegang heeft. 
-3. Als u wilt dat de werkmap kan worden gekozen om er visualisaties aan vast te maken, moet u de map delen. Klik hiervoor op **Delen** en vervolgens op **Gebruikers beheren** . 
+1. Als u een volledig nieuwe werkmap wilt maken, selecteert u **Werkmappen** en vervolgens **+ Nieuwe werkmap**.
+2. Selecteer het abonnement waarin u de werkmap wilt maken en geef de map een beschrijvende naam. Elke werkmap is net als alle andere elementen een Azure-resource, en u kunt er rollen (Azure RBAC) aan toewijzen om te bepalen wie toegang heeft. 
+3. Als u wilt dat de werkmap kan worden gekozen om er visualisaties aan vast te maken, moet u de map delen. Klik hiervoor op **Delen** en vervolgens op **Gebruikers beheren**. 
  
-1. Gebruik de opties **Toegang controleren** en **Roltoewijzingen** zoals u dat zou doen voor andere Azure-resources. Zie [Azure-werkmappen delen met behulp van RBAC](../azure-portal/azure-portal-dashboard-share-access.md) voor meer informatie.
+1. Gebruik de opties **Toegang controleren** en **Roltoewijzingen** zoals u dat zou doen voor andere Azure-resources. Zie [Azure-werkmappen delen met behulp van Azure RBAC](../azure-portal/azure-portal-dashboard-share-access.md) voor meer informatie.
 
 
 ## <a name="new-workbook-examples"></a>Voorbeelden van nieuwe werkmappen
@@ -119,7 +119,7 @@ Genereer detecties voor de [gegevensbronnen die u hebt verbonden met Azure Senti
 
 Wanneer u een nieuwe detectie maakt, kunt u gebruikmaken van de ingebouwde detecties die zijn gemaakt door beveiligingsonderzoekers van Microsoft en die zijn afgestemd op de gegevensbronnen waarmee u bent verbonden.
 
-Als u alle vooraf gedefinieerde detecties wilt weergeven, gaat u naar **Analyse** en vervolgens naar **Regelsjablonen** . Dit tabblad bevat alle ingebouwde regels van Azure Sentinel.
+Als u alle vooraf gedefinieerde detecties wilt weergeven, gaat u naar **Analyse** en vervolgens naar **Regelsjablonen**. Dit tabblad bevat alle ingebouwde regels van Azure Sentinel.
 
    ![Ingebouwde detecties gebruiken om bedreigingen te vinden met Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 

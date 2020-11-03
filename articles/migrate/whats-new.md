@@ -4,12 +4,12 @@ description: Meer informatie over nieuwe en recente updates in de Azure Migrate-
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: b03f3a7e10aa42f3393ecc22cb74f4e565587032
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ed2347d2d322e272b4fb7f4dfd697f3499419124
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314581"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545171"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Nieuwe functies in Azure Migrate
 
@@ -22,6 +22,7 @@ ms.locfileid: "92314581"
 - Afhankelijkheidsanalyse (zonder agent) kan nu gelijktijdig worden uitgevoerd op 1000 VM's.
 - Afhankelijkheidsanalyse (zonder agent) kan nu worden ingeschakeld of uitgeschakeld op schaal met behulp van PowerShell-scripts. [Meer informatie.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - Visualiseer netwerkverbindingen in Power BI met behulp van de gegevens die worden verzameld met behulp van afhankelijkheidsanalyse (zonder agent) [meer informatie.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- Migratie van virtuele VMware-machines met een grootte van maximaal 32 TB voor de gegevensschijf wordt nu ondersteund met behulp van de Azure Migrate: agentloze VMware-migratiemethode voor servermigratie. 
 
 ## <a name="update-august-2020"></a>Update (augustus 2020)
 
@@ -64,8 +65,8 @@ Er is nu installatie op basis van een script beschikbaar voor het instellen van 
 
 Er zijn een aantal nieuwe functies toegevoegd aan Azure Migrate:
 
-- **Evaluatie van fysieke servers** . Evaluatie van on-premises fysieke servers wordt nu ondersteund, naast de fysieke servermigratie die al wordt ondersteund.
-- **Evaluatie op basis van import** . Evaluatie van computers die gebruikmaken van metagegevens en prestatiegegevens die worden geleverd in een CSV-bestand, wordt nu ondersteund.
+- **Evaluatie van fysieke servers**. Evaluatie van on-premises fysieke servers wordt nu ondersteund, naast de fysieke servermigratie die al wordt ondersteund.
+- **Evaluatie op basis van import**. Evaluatie van computers die gebruikmaken van metagegevens en prestatiegegevens die worden geleverd in een CSV-bestand, wordt nu ondersteund.
 - **Toepassingsdetectie** : Azure Migrate ondersteunt nu de detectie op toepassingsniveau van apps, rollen en functies met behulp van het Azure Migrate-apparaat. Dit wordt momenteel alleen ondersteund voor VMware-VM's en is beperkt tot detectie (evaluatie wordt momenteel niet ondersteund). [Meer informatie](how-to-discover-applications.md)
 - **Visualisatie van afhankelijkheden zonder agent** : U hoeft niet meer expliciet agents te installeren voor visualisatie van afhankelijkheden. Zowel zonder agent als met agent wordt nu ondersteund.
 - **Virtueel bureaublad** : Gebruik ISV-hulpprogramma's om on-premises VDI (Virtual Desktop Infrastructure) te evalueren en te migreren naar Windows Virtual Desktop in Azure.
@@ -96,7 +97,7 @@ De huidige versie van Azure Migrate (uitgebracht in juli 2019) biedt een aantal 
 
 ## <a name="azure-migrate-previous-version"></a>Vorige versie van Azure Migrate
 
-Als u de vorige versie van Azure Migrate gebruikt (alleen evaluatie van on-premises VMware-VM's werd ondersteund), kunt u nu beter de huidige versie gaan gebruiken. In de vorige versie kunt u geen nieuwe Azure Migrate-projecten meer maken of nieuwe detecties uitvoeren. U houdt toegang tot bestaande projecten. Ga hiertoe in Azure Portal naar **Alle services** en zoek naar **Azure Migrate** . De Azure Migrate-meldingen bevatten een koppeling voor toegang tot oude Azure Migrate-projecten.
+Als u de vorige versie van Azure Migrate gebruikt (alleen evaluatie van on-premises VMware-VM's werd ondersteund), kunt u nu beter de huidige versie gaan gebruiken. In de vorige versie kunt u geen nieuwe Azure Migrate-projecten meer maken of nieuwe detecties uitvoeren. U houdt toegang tot bestaande projecten. Ga hiertoe in Azure Portal naar **Alle services** en zoek naar **Azure Migrate**. De Azure Migrate-meldingen bevatten een koppeling voor toegang tot oude Azure Migrate-projecten.
 
 
 

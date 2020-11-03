@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d85e6bbaf85ebb84d3664d90e3d645f61b2cb60a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817356"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445508"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Zelfstudie: Eenmalige aanmelding (SSO) configureren tussen Azure Active Directory en F5
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u F5 integreert met Azure Active Directory (Azure
 * Uw gebruikers zich met hun Azure AD-account automatisch laten aanmelden bij F5.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met eenmalige aanmelding in Azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met eenmalige aanmelding in Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -168,9 +168,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -293,7 +293,7 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
  
     ![Schermopname van de pagina Application Services met Template Selection.](./media/headerf5-tutorial/configure18.png)
 
-1. We gaan in dit geval onze HeaderApp2 extern publiceren als HTTPS, **hoe moet het BIG-IP-systeem SSL-verkeer afhandelen**? We geven **Terminate SSL from Client, Plaintext to servers (SSL Offload)** op. Geef uw certificaat en sleutel op onder **Which SSL certificate do you want to use?** en **Which SSL private key do you want to use?** . Geef het IP-adres van de virtuele server op onder **What IP Address do you want to use for the Virtual Server?** . 
+1. We gaan in dit geval onze HeaderApp2 extern publiceren als HTTPS, **hoe moet het BIG-IP-systeem SSL-verkeer afhandelen** ? We geven **Terminate SSL from Client, Plaintext to servers (SSL Offload)** op. Geef uw certificaat en sleutel op onder **Which SSL certificate do you want to use?** en **Which SSL private key do you want to use?** . Geef het IP-adres van de virtuele server op onder **What IP Address do you want to use for the Virtual Server?** . 
 
     * **Andere details opgeven**
 
@@ -337,7 +337,7 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
 ### <a name="create-idp-connector"></a>IdP-connector maken
 
-1. Klik op de knop **Bind/Unbind IdP Connectors**, selecteer **Create New IdP Connector** en maak een keuze bij de optie **Metadata**. Voer vervolgens de volgende stappen uit:
+1. Klik op de knop **Bind/Unbind IdP Connectors** , selecteer **Create New IdP Connector** en maak een keuze bij de optie **Metadata**. Voer vervolgens de volgende stappen uit:
  
     ![Schermopname van het dialoogvenster Edit SAML I d Ps that use this S P met Create New I d P Connector geselecteerd.](./media/headerf5-tutorial/configure29.png)
 
@@ -351,13 +351,13 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
     d. Configureer F5BIG-IP om alle aanvragen naar Azure AD te verzenden.
 
-    e. Klik op **Add New Row**, kies **AzureIDP** (zoals gemaakt in de vorige stappen) 
+    e. Klik op **Add New Row** , kies **AzureIDP** (zoals gemaakt in de vorige stappen) 
 
     f. **Matching Source   =  %{session.server.landinguri}** 
 
-    g. **Matching Value     = /** *
+    g. **Matching Value     = /** _
 
-    h. Klik op **Update**
+    h. Klik op _ *update**
 
     i. Klik op **OK**
 
@@ -445,25 +445,24 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
  
 ### <a name="create-f5-test-user"></a>Een F5-testgebruiker maken
 
-In dit gedeelte maakt u in F5 een gebruiker met de naam B.Simon. Werk samen met het  [ondersteuningsteam van F5 Client](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om de gebruikers toe te voegen in het F5-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
+In dit gedeelte maakt u in F5 een gebruiker met de naam B.Simon. Neem contact op met het [ondersteuningsteam van F5 Client](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om de gebruikers toe te voegen in het F5-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel F5 in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van F5 waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel F5 in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van F5 waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [F5 proberen met Azure AD](https://aad.portal.azure.com/)
 
 - [Eenmalige aanmelding bij F5 configureren voor een Kerberos-toepassing](kerbf5-tutorial.md)
 
 - [Eenmalige aanmelding bij F5 configureren voor geavanceerde Kerberos-toepassing](advance-kerbf5-tutorial.md)
-

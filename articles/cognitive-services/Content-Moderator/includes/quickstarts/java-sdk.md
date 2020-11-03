@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: include
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 1e32cd924c8e0f713ebe7cedfca0466a1e07c3bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 304807214958a9893560b176e96f6bfcf79877ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332552"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548273"
 ---
 Ga aan de slag met de Azure Content Moderator-clientbibliotheek voor Java. Voer deze stappen uit om het Maven-pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. 
 
@@ -24,38 +24,37 @@ Content Moderator is een AI-service waarmee u inhoud kunt afhandelen die mogelij
 
 Gebruik de Content Moderator-clientbibliotheek voor Java om:
 
-* Afbeeldingen modereren op inhoud voor volwassenen of racistische inhoud, tekst of menselijke gezichten.
+* Afbeeldingen modereren
+* Tekst modereren
 
-[Referentiedocumentatie](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [Artefact (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [Voorbeelden](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
+[Referentiedocumentatie](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator) |[Artefact (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [Voorbeelden](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
 * De huidige versie van de [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Het [hulpprogramma Gradle](https://gradle.org/install/) of een andere afhankelijkheidsbeheerder.
+* Zodra u een Azure-abonnement hebt, kunt u <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title="Een Content Moderator-resource maken"  target="_blank">een Content Moderator-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met Content Moderator. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
-## <a name="create-a-content-moderator-resource"></a>Een Content Moderator-resource maken
+## <a name="setting-up"></a>Instellen
 
-Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Content Moderator met behulp van de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
-
-* Uw resource weergeven in [Azure Portal](https://portal.azure.com/).
-
-Nadat u een sleutel van uw resource hebt opgehaald, [maakt u een omgevingsvariabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel met de naam `AZURE_CONTENTMODERATOR_KEY`.
-
-## <a name="create-a-new-gradle-project"></a>Een nieuw Gradle-project maken
+### <a name="create-a-new-gradle-project"></a>Een nieuw Gradle-project maken
 
 Maak in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe map voor de app, en navigeer naar deze map. 
 
 ```console
 mkdir myapp && cd myapp
 ```
-Voer `gradle init` uit. Met deze opdracht maakt u essentiële buildbestanden voor Gradle, inclusief *build.gradle.kts*, dat tijdens runtime wordt gebruikt om de toepassing te maken en te configureren. Voer de volgende opdracht uit vanuit uw werkmap:
+
+Voer de opdracht `gradle init` uit vanuit uw werkmap. Met deze opdracht maakt u essentiële buildbestanden voor Gradle, inclusief *build.gradle.kts* , dat tijdens runtime wordt gebruikt om de toepassing te maken en te configureren.
 
 ```console
 gradle init --type basic
 ```
 
-Wanneer u wordt gevraagd om een buildscript-DSL te kiezen, selecteert u **Kotlin**.
+Wanneer u wordt gevraagd om een **DSL** te kiezen, selecteert u **Kotlin**.
 
 ## <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
@@ -81,15 +80,35 @@ dependencies{
 }
 ```
 
-Voer de volgende opdracht uit vanuit uw werkmap om een projectbronmap te maken.
+### <a name="create-a-java-file"></a>Een Java-bestand maken
+
+
+Voer de volgende opdracht uit vanuit uw werkmap om een projectbronmap te maken:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Maak vervolgens een bestand met de naam *ContentModeratorQuickstart.java* in de nieuwe map. Open het bestand in uw voorkeurseditor of IDE en importeer de volgende bibliotheken bovenaan:
+Ga naar de nieuwe map en maak een bestand met de naam *ContentModeratorQuickstart.java*. Open het bestand in uw voorkeurseditor of IDE en voeg de volgende `import`-instructies toe:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
+
+> [!TIP]
+> Wilt u het codebestand voor de quickstart in één keer weergeven? Die is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java), waar de codevoorbeelden uit deze quickstart zich bevinden.
+
+Maak in de klasse **ContentModeratorQuickstart** van de toepassing variabelen voor de sleutel en het eindpunt van uw resource.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_creds)]
+
+> [!IMPORTANT]
+> Ga naar Azure Portal. Als de [productnaam]-resource die u in de sectie **Vereisten** hebt gemaakt, is geïmplementeerd, klikt u op de knop **Naar de resource gaan** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
+>
+> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
+
+Voeg in de **hoofdmethode** van de toepassing aanroepen toe voor de methoden die in deze quickstart worden gebruikt. U definieert deze later.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_maincalls)]
+
 
 ## <a name="object-model"></a>Objectmodel
 
@@ -109,41 +128,29 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Con
 
 * [De client verifiëren](#authenticate-the-client)
 * [Afbeeldingen modereren](#moderate-images)
+* [Tekst modereren](#moderate-text)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-> [!NOTE]
-> In deze stap wordt ervan uitgegaan dat u [een omgevingsvariabele hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw Content Moderator-sleutel, met de naam `AZURE_CONTENTMODERATOR_KEY`.
-
-Maak in de `main`-methode van de toepassing een [ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)-object met behulp van de eindpuntwaarde van uw abonnement en de omgevingsvariabele voor de abonnementssleutel. 
-
-> [!NOTE]
-> Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele.
+Maak in de `main`-methode van de toepassing een [ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)-object met behulp van de eindpuntwaarde van uw abonnement en de abonnementssleutel.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
 ## <a name="moderate-images"></a>Afbeeldingen modereren
 
-### <a name="get-sample-images"></a>Voorbeeldafbeeldingen ophalen
+### <a name="set-up-sample-image"></a>Voorbeeldafbeelding instellen
 
-Maak in de map **src/main/** van uw project een map **Resources** en navigeer ernaar. Maak vervolgens een nieuw tekstbestand *ImageFiles.txt*. In dit bestand voegt u de URL's van te analyseren afbeeldingen toe, met&mdash;één URL per regel. U kunt de volgende voorbeeldafbeeldingen gebruiken:
+Maak in een nieuwe methode een **[BodyModelModel](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel?view=azure-java-stable)** -object met een opgegeven URL-tekenreeks die naar een afbeelding verwijst.
 
-```
-https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
-https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
-```
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod)]
+
 
 ### <a name="define-helper-class"></a>Helperklasse definiëren
 
-Voeg vervolgens in uw *ContentModeratorQuickstart.java*-bestand de volgende klassedefinitie toe aan de klasse **ContentModeratorQuickstart**. Deze binnenste klasse wordt later gebruikt in het proces voor afbeeldingsmoderatie.
+Voeg vervolgens in uw *ContentModeratorQuickstart.java* -bestand de volgende klassedefinitie toe aan de klasse **ContentModeratorQuickstart**. Deze binnenste klasse wordt gebruikt in het proces voor afbeeldingsmoderatie.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
-### <a name="iterate-through-images"></a>Afbeeldingen doorlopen
-
-Voeg daarna de volgende code aan het einde van de `main`-methode toe. U kunt deze ook toevoegen aan een afzonderlijke methode die wordt aangeroepen vanuit `main`. Met deze code wordt stapsgewijs elke regel van het bestand _ImageFiles. txt_ doorlopen.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
 ### <a name="analyze-content"></a>Inhoud analyseren
 Met deze coderegel wordt de afbeelding op de opgegeven URL op inhoud voor volwassenen of racistische inhoud gecontroleerd. Zie de conceptuele handleiding voor afbeeldingsmoderatie voor informatie over deze voorwaarden.
@@ -173,6 +180,31 @@ Voeg na de `while`-lus de volgende code toe, waarmee de resultaten worden afgedr
 Sluit de `try`-instructie en voeg een `catch`-instructie toe om de methode uit te voeren.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
+
+## <a name="moderate-text"></a>Tekst modereren
+
+### <a name="set-up-sample-text"></a>Voorbeeldtekst instellen
+
+Definieer bovenaan de **ContentModeratorQuickstart** -klasse een verwijzing naar een lokaal tekstbestand. Voeg een .txt-bestand toe aan uw projectmap en voer de tekst in die u wilt analyseren.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>Tekst analyseren
+
+Maak een nieuwe methode die het .txt-bestand leest en de **screenText** -methode op elke regel aanroept.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>Resultaten van tekstbeheer afdrukken
+
+Voeg de volgende code toe om de beheerresultaten naar een. JSON-bestand in de projectmap af te drukken.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+Sluit de `try`- en `catch`-instructie om de methode uit te voeren.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 

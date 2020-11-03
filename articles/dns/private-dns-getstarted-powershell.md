@@ -1,18 +1,18 @@
 ---
 title: 'Quickstart: een privé-DNS-zone in Azure maken met behulp van Azure PowerShell'
-description: In dit artikel maakt en test u een DNS-privézone en -record in Azure DNS. Dit is een stapsgewijze handleiding voor het maken en beheren van uw eerste privé-DNS-zone en -record met behulp van Azure PowerShell.
+description: In deze quickstart krijgt u informatie over het maken en beheren van uw eerste privé-DNS-zone en -record met behulp van Azure PowerShell.
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: fd795c9e251a7c4c0c8cbea5ce6c48cec3535484
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ee6dde6b34cccd415f9bf2052f65dcbe940715c1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311761"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424386"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Snelstart: een privé- Azure DNS-zone maken met behulp van Azure PowerShell
 
@@ -42,7 +42,7 @@ New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 
 Een DNS-zone wordt gemaakt met de cmdlet `New-AzPrivateDnsZone`.
 
-In het volgende voorbeeld wordt een virtueel netwerk gemaakt met de naam **myAzureVNet**. Vervolgens wordt een DNS-zone met de naam **private.contoso.com** gemaakt in de resourcegroep **MyAzureResourceGroup**, wordt de DNS-zone gekoppeld aan het virtuele netwerk **MyAzureVnet** en wordt automatische registratie ingeschakeld.
+In het volgende voorbeeld wordt een virtueel netwerk gemaakt met de naam **myAzureVNet**. Vervolgens wordt een DNS-zone met de naam **private.contoso.com** gemaakt in de resourcegroep **MyAzureResourceGroup** , wordt de DNS-zone gekoppeld aan het virtuele netwerk **MyAzureVnet** en wordt automatische registratie ingeschakeld.
 
 ```azurepowershell
 Install-Module -Name Az.PrivateDns -force
@@ -167,7 +167,7 @@ Herhaal voor myVM02.
    PS C:\>
    ```
 
-2. Ping nu de **db**-naam die u eerder hebt gemaakt:
+2. Ping nu de **db** -naam die u eerder hebt gemaakt:
 
    ```
    ping db.private.contoso.com

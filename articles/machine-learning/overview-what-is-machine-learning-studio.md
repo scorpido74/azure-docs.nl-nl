@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667432"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495988"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>What is Azure Machine Learning-studio?
 
@@ -98,7 +98,9 @@ De volgende tabel bevat een overzicht van enkele van de belangrijkste verschille
 ## <a name="next-steps"></a>Volgende stappen
 
 Ga naar de [studio](https://ml.azure.com)of leer meer over de verschillende ontwerpopties met deze zelfstudies:  
-  + [Python-notebooks gebruiken voor het trainen en implementeren van modellen](tutorial-1st-experiment-sdk-setup.md)
+
+- + [Aan de slag gaan in uw eigen ontwikkelomgeving](tutorial-1st-experiment-sdk-setup-local.md)
+  + [Jupyter-notebooks gebruiken in een rekenproces om modellen te trainen en te implementeren](tutorial-1st-experiment-sdk-setup.md)
   + [Geautomatiseerde machine learning gebruiken voor het trainen en implementeren van modellen](tutorial-first-experiment-automated-ml.md)  
   + [De ontwerpfunctie gebruiken om modellen te trainen en implementeren](tutorial-designer-automobile-price-train-score.md)
 

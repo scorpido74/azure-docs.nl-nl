@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, translator-service, tekst vertalen, tekst transliteren, taaldetectie
-ms.openlocfilehash: e5b0bc17e8df1d82fb23a098f857be4fea13b982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ca86ce1dc015c8d7ee3bc83a6d7e3279a146f195
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318837"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517035"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Quickstart: Aan de slag met Translator
 
@@ -123,7 +123,7 @@ Wanneer u de Translator-service via REST aanroept, moet u ervoor zorgen dat de v
 
 ## <a name="keys-and-endpoints"></a>Sleutels en eindpunten
 
-De voorbeelden op deze pagina gebruiken voor het gemak in code vastgelegde sleutels en eindpunten. Vergeet niet **de sleutel uit uw code te verwijderen wanneer u klaar bent**, en **maak deze sleutel nooit openbaar**. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
+De voorbeelden op deze pagina gebruiken voor het gemak in code vastgelegde sleutels en eindpunten. Vergeet niet **de sleutel uit uw code te verwijderen wanneer u klaar bent** , en **maak deze sleutel nooit openbaar**. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
 
 ## <a name="translate-text"></a>Tekst vertalen 
 
@@ -2440,6 +2440,12 @@ Na een geslaagde aanroep ziet u het volgende antwoord. Zie [Opzoeken in woordenl
     }
 ]
 ```
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+### <a name="java-users"></a>Java-gebruikers
+
+Als u verbindingsproblemen ondervindt, is uw SSL-certificaat mogelijk verlopen. U kunt dit probleem oplossen door de [DigiCertGlobalRootG2.crt](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) te installeren in uw privé-archief. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

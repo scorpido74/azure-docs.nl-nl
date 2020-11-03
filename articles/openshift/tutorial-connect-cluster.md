@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 132a9b7ad3eef17f4ca27fb76a0c05f94c82fd37
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469113"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428280"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Zelfstudie: Verbinding maken met een Azure Red Hat OpenShift 4-cluster
 
@@ -63,7 +63,7 @@ Start de console-URL in een browser en meld u aan met de referenties van `kubead
 
 Zodra u bent aangemeld bij de OpenShift-webconsole, klikt u op **?** in de rechterbovenhoek en klikt u vervolgens op **Opdrachtregel hulpprogrammarogramma's**. Download de versie die geschikt is voor uw computer.
 
-![Aanmeldingsscherm voor Azure Red Hat OpenShift](media/aro4-download-cli.png)
+![Schermopname van de optie Opdrachtregelprogramma's in de lijst wanneer u het ? selecteert pictogram.](media/aro4-download-cli.png)
 
 U kunt ook de meest recente versie van de CLI die geschikt is voor uw computer downloaden van <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/>.
 

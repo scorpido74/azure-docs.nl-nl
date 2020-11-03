@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 51a827b0bc80d7eec5b480d3e5efc49e5e1cc974
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 95e244f956940f9d75df50243714f0fb8f8d0654
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318260"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424156"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar Xamarin.Android-apps met behulp van Notification Hubs
 
@@ -72,7 +72,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
 > De stappen die in deze zelfstudie worden beschreven, zijn voor Visual Studio 2017. 
 
 1. Open in Visual Studio het menu **File** en selecteer **New** en vervolgens **Project**. Voer in het venster **Nieuw project** de volgende stappen uit:
-    1. Vouw **Geïnstalleerd**uit, vervolgens **Visual C#** en klik dan op **Android**.
+    1. Vouw **Geïnstalleerd** uit, vervolgens **Visual C#** en klik dan op **Android**.
     2. Selecteer **Android-app (Xamarin)** uit de lijst.
     3. Voer een **naam** in voor het project.
     4. Selecteer een **locatie** voor het project.
@@ -81,7 +81,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
         ![Het dialoogvenster Nieuw project](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
 2. Selecteer in het dialoogvenster **Nieuwe Android-app** de optie **Lege app** en dan **OK**.
 
-    ![Het dialoogvenster Nieuw project](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+    ![Schermopname waarin de sjabloon Lege app is gemarkeerd.](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 3. Vouw in het venster **Solution Explorer** het item **Properties** uit en klik op **AndroidManifest.xml**. Wijzig de naam van het pakket zodat deze overeenkomt met de pakketnaam die u hebt ingevoerd tijdens het toevoegen van Firebase Cloud Messaging aan uw project in Google Firebase Console.
 
     ![Pakketnaam in GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
@@ -91,7 +91,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     1. Selecteer **Ja** in het berichtvenster om door te gaan met het wijzigen van het doelframework.
 1. Voeg de vereiste NuGet-pakketten toe aan het project door de volgende stappen uit te voeren:
     1. Klik met de rechtermuisknop op het project en selecteer **Manage NuGet Packages...** .
-    1. Ga naar het tabblad **Geïnstalleerd**, selecteer **Xamarin.Android.Support.Design** en selecteer **Update** in het rechterdeelvenster om het pakket bij te werken naar de meest recente versie.
+    1. Ga naar het tabblad **Geïnstalleerd** , selecteer **Xamarin.Android.Support.Design** en selecteer **Update** in het rechterdeelvenster om het pakket bij te werken naar de meest recente versie.
     1. Ga naar het tabblad **Bladeren**. Zoek naar **Xamarin.GooglePlayServices.Base**. Selecteer **Xamarin.GooglePlayServices.Base** in de lijst met resultaten. Selecteer vervolgens **Install**.
 
         ![Google Play Services NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
@@ -135,9 +135,9 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
 
 3. Verzamel de volgende informatie voor uw Android-app en Notification Hub:
 
-   * **Verbindingsreeks voor luisteren**: Kies op het dashboard in de [Azure-portal] de optie **Verbindingsreeksen weergeven**. Kopieer de verbindingsreeks `DefaultListenSharedAccessSignature` voor deze waarde.
-   * **Hubnaam**: Naam van uw hub in de [Azure-portal]. Bijvoorbeeld *mynotificationhub2*.
-4. Klik in het venster **Solution Explorer** met de rechtermuisknop op uw **project**, selecteer **Add** en vervolgens **Class**.
+   * **Verbindingsreeks voor luisteren** : Kies op het dashboard in de [Azure-portal] de optie **Verbindingsreeksen weergeven**. Kopieer de verbindingsreeks `DefaultListenSharedAccessSignature` voor deze waarde.
+   * **Hubnaam** : Naam van uw hub in de [Azure-portal]. Bijvoorbeeld *mynotificationhub2*.
+4. Klik in het venster **Solution Explorer** met de rechtermuisknop op uw **project** , selecteer **Add** en vervolgens **Class**.
 5. Maak een klasse `Constants.cs` voor uw Xamarin-project en definieer de volgende constantewaarden in de klasse. Vervang de tijdelijke aanduidingen door de waarden.
 
     ```csharp

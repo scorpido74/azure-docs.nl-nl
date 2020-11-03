@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
+ms.date: 10/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 63cdb27663cb1a2d8de1a97a2f352b05ff57a3f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d175ac75ce76836d012cdd04d4dbd7d81ffda584
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489881"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460696"
 ---
-# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Zelfstudie: HSM's implementeren in een bestaand virtueel netwerk met behulp van CLI
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Zelfstudie: HSM's implementeren in een bestaand virtueel netwerk met behulp van Azure CLI
 
 Azure Toegewezen HSM biedt een fysiek apparaat voor gebruik door één klant, met volledige beheer en verantwoordelijkheid voor volledig beheer. Door het gebruik van fysieke apparaten moet de apparaattoewijzing worden beheerd in Microsoft om ervoor te zorgen dat de capaciteit effectief wordt beheerd. Dit betekent dat de Toegewezen HSM-service in een Azure-abonnement niet gewoon zichtbaar is voor de inrichting van resources. Elke Azure-klant die toegang nodig heeft tot de Toegewezen HSM-service, moet eerst contact opnemen met de beheerder van zijn Microsoft-account om registratie aan te vragen voor de Toegewezen HSM-service. Pas wanneer dit proces is voltooid, is inrichting mogelijk. 
 
@@ -38,7 +38,7 @@ Deze zelfstudie richt zich op twee HSM's en de vereiste ExpressRoute-gateway (zi
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Toegewezen HSM is momenteel niet beschikbaar in de Azure-portal. Alle interactie met de service verloopt via de opdrachtregel of met behulp van PowerShell. In deze zelfstudie wordt gebruikgemaakt van de CLI (opdrachtregelinterface) in Azure Cloud Shell. Volg de instructies om aan de slag te gaan als u niet bekend bent met Azure CLI: [Aan de slag met de Azure CLI 2.0](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+Azure Toegewezen HSM is momenteel niet beschikbaar in de Azure-portal. Alle interactie met de service verloopt via de opdrachtregel of met behulp van PowerShell. In deze zelfstudie wordt gebruikgemaakt van de CLI (opdrachtregelinterface) in Azure Cloud Shell. Volg de instructies om aan de slag te gaan als u niet bekend bent met Azure CLI: [Aan de slag met de Azure CLI 2.0](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 Veronderstellingen:
 
@@ -51,11 +51,11 @@ In alle onderstaande instructies wordt ervan uitgegaan dat u al naar de Azure-po
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Een toegewezen HSM inrichten
 
-Het inrichten van HSM's en deze integreren in een bestaand virtueel netwerk via ExpressRoute Gateway wordt gevalideerd met behulp van SSH. Deze validatie zorgt voor bereikbaarheid en basisbeschikbaarheid van het HSM-apparaat bij verdere configuratieactiviteiten. Voor de volgende opdrachten wordt een Azure Resource Manager-sjabloon gebruikt om de HSM-resources en bijbehorende netwerkresources te maken.
+Het inrichten van HSM's en deze integreren in een bestaand virtueel netwerk via ExpressRoute Gateway wordt gevalideerd met behulp van SSH. Deze validatie zorgt voor bereikbaarheid en basisbeschikbaarheid van het HSM-apparaat bij verdere configuratieactiviteiten.
 
 ### <a name="validating-feature-registration"></a>Functieregistratie valideren
 
-Zoals hierboven is uitgelegd, vereist elke inrichtingsactiviteit dat de Toegewezen HSM-service voor uw abonnement wordt geregistreerd. Om deze te valideren, voert u de volgende opdracht uit in de cloudshell van de Azure-portal.
+Zoals hierboven is uitgelegd, vereist elke inrichtingsactiviteit dat de Toegewezen HSM-service voor uw abonnement wordt geregistreerd. Om deze te valideren, voert u de volgende opdracht uit in de Cloud Shell van Azure Portal.
 
 ```azurecli
 az feature show \
@@ -69,69 +69,14 @@ De opdrachten moeten de status 'Geregistreerd' retourneren (zoals hieronder word
 
 ### <a name="creating-hsm-resources"></a>HSM-resources maken
 
-Er wordt een HSM ingericht in het virtuele netwerk van een klant. Daarom zijn een virtueel netwerk en een subnet vereist. Een afhankelijkheid voor de HSM om communicatie tussen het virtuele netwerk en een fysiek apparaat mogelijk te maken, is een ExpressRoute-gateway. En tot slot hebt u een virtuele machine nodig om met behulp van de Gemalto-clientsoftware toegang te krijgen tot het HSM-apparaat. Deze resources zijn voor het gebruiksgemak verzameld in een sjabloonbestand met bijbehorend parameterbestand. Neem rechtstreeks als HSMrequest@Microsoft.com contact op met Microsoft voor de bestanden.
-
-Wanneer u de bestanden hebt, moet u het parameterbestand bewerken om uw voorkeursnamen voor resources in te voegen. Bewerk regels met 'waarde': ''.
-
-- `namingInfix` Voorvoegsel voor namen van HSM-resources
-- `ExistingVirtualNetworkName` Naam van het virtuele netwerk dat voor de HSM's wordt gebruikt
-- `DedicatedHsmResourceName1` Naam van de HSM-resource in datacenter stempel 1
-- `DedicatedHsmResourceName2` Naam van de HSM-resource in datacenter stempel 2
-- `hsmSubnetRange` IP-adresbereik van subnet voor HSM's
-- `ERSubnetRange` IP-adresbereik van subnet voor VNET-gateway
-
-Hier volgt een voorbeeld van deze wijzigingen:
-
-```json
-{
-"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "namingInfix": {
-      "value": "MyHSM"
-    },
-    "ExistingVirtualNetworkName": {
-      "value": "MyHSM-vnet"
-    },
-    "DedicatedHsmResourceName1": {
-      "value": "HSM1"
-    },
-    "DedicatedHsmResourceName2": {
-      "value": "HSM2"
-    },
-    "hsmSubnetRange": {
-      "value": "10.0.2.0/24"
-    },
-    "ERSubnetRange": {
-      "value": "10.0.255.0/26"
-    },
-  }
-}
-```
-
-Met het gekoppelde Azure Resource Manager-sjabloonbestand worden 6 resources gemaakt met deze informatie:
-
-- Een subnet voor de HSM's in het opgegeven VNET
-- Een subnet voor de gateway van het virtuele netwerk
-- Een virtuele-netwerkgateway die het VNET verbindt met de HSM-apparaten
-- Een openbaar IP-adres voor de gateway
-- Een HSM in stempel 1
-- Een HSM in stempel 2
-
-Wanneer de parameterwaarden zijn ingesteld, moeten de bestanden worden geüpload naar de bestandsshare van de cloudshell in de Azure-portal voor gebruik. Klik rechtsboven in de Azure-portal op het symbool van de cloudshell '\>\_' om het onderste gedeelte van het scherm te wijzigen in een opdrachtomgeving. De opties hiervoor zijn BASH en PowerShell, en u moet BASH selecteren als dat nog niet is gebeurd.
-
-De opdrachtshell heeft een optie Uploaden/Downloaden op de werkbalk. Selecteer deze om de sjabloon en parameterbestanden te uploaden naar de bestandsshare:
-
-![bestandsshare](media/tutorial-deploy-hsm-cli/file-share.png)
-
-Wanneer de bestanden zijn geüpload, bent u klaar om resources te maken. Voordat u nieuwe HSM-resources maakt, controleert u eerst of de volgende vereiste resources aanwezig zijn. U moet een virtueel netwerk hebben met subnetbereiken voor compute, HSM's en gateway. De volgende opdrachten zijn een voorbeeld van hoe een dergelijk virtueel netwerk wordt gemaakt.
+Voordat u HSM-resources gaat maken, hebt u enkele vereiste resources nodig. U moet een virtueel netwerk hebben met subnetbereiken voor compute, HSM's en gateway. De volgende opdrachten zijn een voorbeeld van hoe een dergelijk virtueel netwerk wordt gemaakt.
 
 ```azurecli
 az network vnet create \
   --name myHSM-vnet \
   --resource-group myRG \
-  --address-prefix 10.2.0.0/16
-  --subnet-name compute
+  --address-prefix 10.2.0.0/16 \
+  --subnet-name compute \
   --subnet-prefix 10.2.0.0/24
 ```
 
@@ -155,22 +100,47 @@ az network vnet subnet create \
 >[!NOTE]
 >De belangrijkste configuratie die u voor het virtuele netwerk moet onthouden, is dat het subnet voor het HSM-apparaat delegaties moet hebben die zijn ingesteld op 'Microsoft.HardwareSecurityModules/dedicatedHSMs'.  De HSM-inrichting werkt alleen als deze optie is ingesteld.
 
-Wanneer aan alle vereisten is voldaan, voert u de volgende opdracht uit om de Azure Resource Manager-sjabloon te gebruiken om te zorgen dat de waarden worden bijgewerkt met uw unieke namen (in ieder geval de naam van de resourcegroep):
+Nadat u uw netwerk hebt geconfigureerd, gebruikt u deze Azure CLI-opdrachten om uw HSM's in te richten.
+
+1. Gebruik de opdracht [az dedicated-hsm create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) om de eerste HSM in te richten. De HSM heet hsm1. Vervang uw abonnement:
+
+   ```azurecli
+   az dedicated-hsm create --location westus --name hsm1 --resource-group myRG --network-profile-network-interfaces \
+        /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/MyHSM-vnet/subnets/MyHSM-vnet
+   ```
+
+   Het duurt gewoonlijk maximaal 25 tot 30 minuten totdat deze implementatie is voltooid, waarvan het grootste gedeelte wordt gebruikt voor de HSM-apparaten.
+
+1. Als u een huidige HSM wilt bekijken, voert u de opdracht [az dedicated-hsm show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) uit:
+
+   ```azurecli
+   az dedicated-hsm show --resource group myRG --name hsm1
+   ```
+
+1. Richt de tweede HSM in met behulp van deze opdracht:
+
+   ```azurecli
+   az dedicated-hsm create --location westus --name hsm2 --resource-group myRG --network-profile-network-interfaces \
+        /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/MyHSM-vnet/subnets/MyHSM-vnet
+   ```
+
+1. Voer de opdracht [az dedicated-hsm list](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) uit om gegevens van uw huidige HSM's weer te geven:
+
+   ```azurecli
+   az dedicated-hsm list --resource-group myRG
+   ```
+
+Er zijn een aantal andere opdrachten die nuttig kunnen zijn. U kunt de opdracht [az dedicated-hsm update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) gebruiken om een HSM bij te werken:
 
 ```azurecli
-az group deployment create \
-   --resource-group myRG  \
-   --template-file ./Deploy-2HSM-toVNET-Template.json \
-   --parameters ./Deploy-2HSM-toVNET-Params.json \
-   --name HSMdeploy \
-   --verbose
+az dedicated-hsm update --resource-group myRG –name hsm1
 ```
 
-Het duurt gewoonlijk maximaal 25 tot 30 minuten totdat deze implementatie is voltooid, waarvan het grootste gedeelte wordt gebruikt voor de HSM-apparaten
+Als u een HSM wilt verwijderen, gebruikt u de opdracht [az dedicated-hsm delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete):
 
-![inrichtingsstatus](media/tutorial-deploy-hsm-cli/progress-status.png)
-
-Wanneer de implementatie is geslaagd, wordt er "provisioningState": "Succeeded" weergegeven. U kunt verbinding maken met de bestaande virtuele machine en SSH gebruiken om de beschikbaarheid van het HSM-apparaat te verzekeren.
+```azurecli
+az dedicated-hsm delete --resource-group myRG –name hsm1
+```
 
 ## <a name="verifying-the-deployment"></a>De implementatie controleren
 
@@ -184,7 +154,49 @@ az resource show \
    --ids /subscriptions/$subid/resourceGroups/myRG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSM2
 ```
 
-![uitvoer van inrichting](media/tutorial-deploy-hsm-cli/progress-status2.png)
+De uitvoer ziet er ongeveer als volgt uit:
+
+```json
+{
+    "id": n/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/HSM-RG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSMl",
+    "identity": null,
+    "kind": null,
+    "location": "westus",
+    "managedBy": null,
+    "name": "HSM1",
+    "plan": null,
+    "properties": {
+        "networkProfile": {
+            "networkInterfaces": [
+            {
+            "id": n/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/HSM-RG/providers/Microsoft.Network/networkInterfaces/HSMl_HSMnic", "privatelpAddress": "10.0.2.5",
+            "resourceGroup": "HSM-RG"
+            }
+            L
+            "subnet": {
+                "id": n/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/HSM-RG/providers/Microsoft.Network/virtualNetworks/demo-vnet/subnets/hsmsubnet", "resourceGroup": "HSM-RG"
+            }
+        },
+        "provisioningState": "Succeeded",
+        "stampld": "stampl",
+        "statusMessage": "The Dedicated HSM device is provisioned successfully and ready to use."
+    },
+    "resourceGroup": "HSM-RG",
+    "sku": {
+        "capacity": null,
+        "family": null,
+        "model": null,
+        "name": "SafeNet Luna Network HSM A790",
+        "size": null,
+        "tier": null
+    },
+    "tags": {
+        "Environment": "prod",
+        "resourceType": "Hsm"
+    },
+    "type": "Microsoft.HardwareSecurityModules/dedicatedHSMs"
+}
+```
 
 Nu kunt u ook de resources zien met behulp van de [Azure Resource Explorer](https://resources.azure.com/).   In de Explorer vouwt u aan de linkerkant 'Abonnementen' uit. Vouw achtereenvolgens uw specifieke abonnement voor Toegewezen HSM, 'Resourcegroepen' en de gebruikte resourcegroep uit. Selecteer tot slot het item 'Resources'.
 
@@ -219,7 +231,7 @@ Wanneer u met behulp van SSH bent verbonden met de HSM, voert u de volgende opdr
 
 De uitvoer ziet eruit zoals weergegeven in de onderstaande afbeelding:
 
-![lijst met onderdelen](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
+![Schermopname van de uitvoer in het PowerShell-venster.](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
 Op dit moment hebt u alle resources toegewezen voor een implementatie van twee HSM's met hoge beschikbaarheid en hebt u de toegang en operationele status gevalideerd. Voor verdere configuratie of tests is meer werk met het HSM-apparaat zelf vereist. Hiervoor volgt u de instructies in hoofdstuk 7 van de beheerdershandleiding van Gemalto Luna Network HSM 7 om de HSM te initialiseren en partities te maken. Alle documentatie en software kunnen rechtstreeks via Gemalto worden gedownload zodra u bent geregistreerd in de Gemalto Customer Support Portal en een klant-id hebt. Download versie 7.2 van de clientsoftware om alle vereiste onderdelen op te halen.
 
@@ -230,21 +242,19 @@ Als u klaar bent met het HSM-apparaat, kan het als resource worden verwijderd en
 > [!NOTE]
 > Als u problemen hebt met de configuratie van een Gemalto-apparaat, neemt u contact op met [Gemalto-klantondersteuning](https://safenet.gemalto.com/technical-support/).
 
-
 Als u klaar bent met alle resources in deze resourcegroep, kunt u ze allemaal verwijderen door de volgende opdracht uit te voeren:
 
 ```azurecli
-az group deployment delete \
+az group delete \
    --resource-group myRG \
    --name HSMdeploy \
    --verbose
-
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Nadat u de stappen in deze zelfstudie hebt voltooid, zijn de Toegewezen HSM-resources ingericht, beschikt u over een virtueel netwerk met de benodigde HSM's, en kunnen andere netwerkonderdelen communiceren met de HSM.  Nu kunt u deze implementatie aanvullen met meer resources als dit nodig is voor de implementatiearchitectuur waaraan u de voorkeur geeft. Zie de Concepts-documenten voor meer informatie over het plannen van een implementatie.
-Een ontwerp met twee HSM's in een primaire regio voor beschikbaarheid op rekniveau, en twee HSM's in een secundaire regio voor regionale beschikbaarheid wordt aanbevolen. Het sjabloonbestand dat in deze zelfstudie wordt gebruikt, kan eenvoudig worden gebruikt als basis voor een implementatie met twee HSM's, maar de parameters ervan moeten worden gewijzigd om te voldoen aan uw vereisten.
+Een ontwerp met twee HSM's in een primaire regio voor beschikbaarheid op rekniveau, en twee HSM's in een secundaire regio voor regionale beschikbaarheid wordt aanbevolen. 
 
 * [Hoge beschikbaarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)

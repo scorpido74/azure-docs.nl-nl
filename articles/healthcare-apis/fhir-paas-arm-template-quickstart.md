@@ -1,6 +1,6 @@
 ---
 title: 'Snelstart: Azure API for FHIR implementeren met behulp van een ARM-sjabloon'
-description: In deze snelstart leert u hoe u Azure API for Fast Healthcare Interoperability Resources (FHIR®) kunt implementeren, met behulp van een Azure Resource Manager-sjabloon.
+description: In deze snelstart leert u hoe u Azure API for Fast Healthcare Interoperability Resources (FHIR®) kunt implementeren, met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon).
 author: mgblythe
 ms.service: healthcare-apis
 ms.subservice: fhir
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/06/2020
-ms.openlocfilehash: e9b2ec017ca985c1de739ee74c4d0732f39bdc1d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772733"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521438"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Snelstart: Een ARM-sjabloon gebruiken om Azure API for FHIR te implementeren
 
@@ -69,19 +69,19 @@ Replace the line above with the following line once https://docs.microsoft.com/a
 
 Selecteer de volgende koppeling om de Azure for FHIR te implementeren met behulp van de ARM-sjabloon in Azure Portal:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeer in Azure een Azure API for FHIR-service met een ARM-sjabloon in de Azure Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeer in Azure een Azure API for FHIR-service met de ARM-sjabloon in de Azure Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
 
-Op de pagina **Azure API for FHIR implementeren**:
+Op de pagina **Azure API for FHIR implementeren** :
 
 1. Indien gewenst, wijzigt u het **Abonnement** van de standaardinstelling naar een ander abonnement.
 
-2. Selecteer voor **Resourcegroep** de optie **Nieuwe maken**, voer een naam in voor de nieuwe resourcegroep en selecteer **OK**.
+2. Selecteer voor **Resourcegroep** de optie **Nieuwe maken** , voer een naam in voor de nieuwe resourcegroep en selecteer **OK**.
 
 3. Als u een nieuwe resourcegroep hebt gemaakt, selecteert u een **Regio** voor de resourcegroep.
 
 4. Voer een nieuwe **Servicenaam** in en kies de **Locatie** van de Azure API for FHIR. De locatie kan hetzelfde zijn als of anders zijn dan de regio van de resourcegroep.
 
-    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Implementeer in Azure een Azure API for FHIR-service met een ARM-sjabloon in de Azure Portal.":::
+    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="De Azure API for FHIR implementeren met behulp van de ARM-sjabloon in de Azure Portal.":::
 
 5. Selecteer **Controleren + maken**.
 
@@ -224,9 +224,14 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
+Zie de [zelfstudie voor het maken en implementeren van uw eerste ARM-sjabloon](../azure-resource-manager/templates/template-tutorial-create-first-template.md) voor een stapsgewijze zelfstudie die u door het proces van het maken van een ARM-sjabloon leidt
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een ARM-sjabloon leidt:
+In deze quickstart hebt u de Azure-API voor FHIR geïmplementeerd in uw abonnement. Als u aanvullende instellingen wilt configureren in uw Azure-API voor FHIR, gaat u verder met de instructiegids Aanvullende instellingen. Als u klaar bent om te beginnen met het gebruik van Azure API for FHIR, leest u de informatie over het registreren van toepassingen.
 
-> [!div class="nextstepaction"]
-> [Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+>[!div class="nextstepaction"]
+>[Aanvullende instellingen in de Azure-API voor FHIR](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[Overzicht toepassingen registreren](fhir-app-registration.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 75e75a2fe8c81ae928617149018ac2afaab07faa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cee037b7f92dd55bb8fba264e164087a1cf8983b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545145"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460271"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---mobile"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met In Case of Crisis - Mobile
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u In Case of Crisis - Mobile integreert met Azure
 * Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij In Case of Crisis - Mobile.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -78,13 +78,13 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de sectie  **SAML-basisconfiguratie**  is de toepassing vooraf geconfigureerd in de  **IDP** -geïnitieerde modus en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop  **Opslaan**  te klikken.
+1. In de sectie **SAML-basisconfiguratie** is de toepassing vooraf geconfigureerd in de door **IDP** gestarte modus en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop **Opslaan** te klikken.
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Raw)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificateraw.png)
 
-1. Ga naar de sectie **Beheren** aan de linkerkant van de pagina, klik op het tabblad **Eigenschappen**, kopieer de waarde voor **URL van gebruikerstoegang** en sla deze op uw computer op.
+1. Ga naar de sectie **Beheren** aan de linkerkant van de pagina, klik op het tabblad **Eigenschappen** , kopieer de waarde voor **URL van gebruikerstoegang** en sla deze op uw computer op.
 
     ![Eigenschappen voor eenmalige aanmelding](./media/in-case-of-crisis-mobile-tutorial/properties.png)
 
@@ -92,9 +92,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -120,25 +120,24 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ## <a name="configure-in-case-of-crisis---mobile-sso"></a>Eenmalige aanmelding configureren in In Case of Crisis - Mobile
 
-Als u eenmalige aanmelding wilt configureren in **In Case of Crisis - Mobile**, moet u het gedownloade **Certificaat (Raw)** en de correcte uit Azure Portal gekopieerde URL voor gebruikerstoegang verzenden naar het **ondersteuningsteam van [In Case of Crisis - Mobile](https://www.rockdovesolutions.com/features/enterprise-ready)** . Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren in **In Case of Crisis - Mobile** , moet u het gedownloade **Certificaat (Raw)** en de correcte uit Azure Portal gekopieerde URL voor gebruikerstoegang verzenden naar het **ondersteuningsteam van [In Case of Crisis - Mobile](https://www.rockdovesolutions.com/features/enterprise-ready)** . Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-in-case-of-crisis---mobile-test-user"></a>Testgebruiker maken voor In Case of Crisis - Mobile
 
-In deze sectie maakt u een gebruiker met de naam Britta Simon in In Case of Crisis - Mobile. Werk samen met  [het ondersteuningsteam van In Case of Crisis - Mobile](https://www.rockdovesolutions.com/features/enterprise-ready) om de gebruikers toe te voegen aan het platform van In Case of Crisis - Mobile. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Britta Simon in In Case of Crisis - Mobile. Neem contact op met het [ondersteuningsteam van In Case of Crisis - Mobile](https://www.rockdovesolutions.com/features/enterprise-ready) om de gebruikers toe te voegen in het platform van In Case of Crisis - Mobile. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel In Case of Crisis - Mobile klikt, wordt u automatisch aangemeld bij de instantie van In Case of Crisis - Mobile waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel In Case of Crisis - Mobile klikt, wordt u automatisch aangemeld bij de instantie van In Case of Crisis - Mobile waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [In Case of Crisis - Mobile uitproberen met Azure AD](https://aad.portal.azure.com/)
-

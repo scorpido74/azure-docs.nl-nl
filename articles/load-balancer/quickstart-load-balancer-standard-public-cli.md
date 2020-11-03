@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2020
+ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: d78b67cbd811ae0f3b7cea8aec119d05464c124a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 454dc3ddd03be319c23df67231ea2ab08b95c52b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047791"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544916"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Een openbare load balancer maken om taken van VM's te verdelen met behulp van Azure CLI
 
@@ -42,12 +42,12 @@ Een Azure-resourcegroep is een logische container waarin Azure-resources worden 
 
 Maak een resourcegroep maken met [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create):
 
-* Genaamd **myResourceGroupLB**. 
+* met de naam **CreatePubLBQS-rg**. 
 * Op de locatie **VS - Oost**.
 
 ```azurecli-interactive
   az group create \
-    --name myResourceGroupLB \
+    --name CreatePubLBQS-rg \
     --location eastus
 ```
 ---
@@ -69,12 +69,12 @@ Maak een Virtual Network met [az network vnet create](https://docs.microsoft.com
 * Adresvoorvoegsel van **10.1.0.0/16**.
 * Subnet met de naam **myBackendSubnet**.
 * Subnetvoorvoegsel van **10.1.0.0/24**.
-* In de resourcegroep **myResourceGroupLB**.
+* In de **CreatePubLBQS-rg** -resourcegroep.
 * Locatie **VS - Oost**.
 
 ```azurecli-interactive
   az network vnet create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --location eastus \
     --name myVNet \
     --address-prefixes 10.1.0.0/16 \
@@ -89,11 +89,11 @@ Voor Standard Load Balancer moeten de VM's in het back-endadres netwerkinterface
 Maak een netwerkbeveiligingsgroep met [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create):
 
 * Met de naam **myNSG**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 
 ```azurecli-interactive
   az network nsg create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNSG
 ```
 
@@ -103,7 +103,7 @@ Maak een netwerkbeveiligingsgroepregel met behulp van [az network nsg rule creat
 
 * Met de naam **myNSGRuleHTTP**.
 * In de netwerkbeveiligingsgroep die u in de vorige stap hebt gemaakt, **myNSG**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Protocol **(*)** .
 * Richting **Inkomend**.
 * Bron **(*)** .
@@ -114,7 +114,7 @@ Maak een netwerkbeveiligingsgroepregel met behulp van [az network nsg rule creat
 
 ```azurecli-interactive
   az network nsg rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
     --protocol '*' \
@@ -134,7 +134,7 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 #### <a name="vm1"></a>VM1
 
 * Met de naam **myNicVM1**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
@@ -142,7 +142,7 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 ```azurecli-interactive
 
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -151,13 +151,13 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 #### <a name="vm2"></a>VM2
 
 * Met de naam **myNicVM2**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM2 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
@@ -166,14 +166,14 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 #### <a name="vm3"></a>VM3
 
 * Met de naam **myNicVM3**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM3 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
@@ -240,7 +240,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 #### <a name="vm1"></a>VM1
 * Met de naam **myVM1**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM1**.
 * VM-installatiekopie **UbuntuLTS**.
 * Configuratiebestand **cloud-init.txt** dat u in de bovenstaande stap heeft gemaakt.
@@ -248,7 +248,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM1 \
     --nics myNicVM1 \
     --image UbuntuLTS \
@@ -260,7 +260,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 ```
 #### <a name="vm2"></a>VM2
 * Met de naam **myVM2**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM2**.
 * VM-installatiekopie **UbuntuLTS**.
 * Configuratiebestand **cloud-init.txt** dat u in de bovenstaande stap heeft gemaakt.
@@ -268,7 +268,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM2 \
     --nics myNicVM2 \
     --image UbuntuLTS \
@@ -280,7 +280,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 #### <a name="vm3"></a>VM3
 * Met de naam **myVM3**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM3**.
 * VM-installatiekopie **UbuntuLTS**.
 * Configuratiebestand **cloud-init.txt** dat u in de bovenstaande stap heeft gemaakt.
@@ -288,7 +288,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 ```azurecli-interactive
    az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM3 \
     --nics myNicVM3 \
     --image UbuntuLTS \
@@ -306,11 +306,11 @@ Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres n
 Gebruik [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) om:
 
 * Maak een standaard zoneredundant openbaar IP-adres met de naam **myPublicIP**.
-* In **myResourceGroupLB**.
+* In **CreatePubLBQS-rg**.
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --sku Standard
 ```
@@ -319,7 +319,7 @@ Als u een zonegebonden redundant openbaar IP-adres in Zone 1 wilt maken:
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --sku Standard \
     --zone 1
@@ -345,7 +345,7 @@ Maak een openbare load balancer met [az network lb create](https://docs.microsof
 
 ```azurecli-interactive
   az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myLoadBalancer \
     --sku Standard \
     --public-ip-address myPublicIP \
@@ -368,7 +368,7 @@ Gebruik een statustest met [az network lb probe create](https://docs.microsoft.c
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
@@ -390,11 +390,13 @@ Gebruik [az network lb rule create](https://docs.microsoft.com/cli/azure/network
 * Verzendt netwerkverkeer volgens taakverdeling naar de back-endadresgroep **myBackEndPool** via **poort 80**. 
 * Gebruikt statustest **myHealthProbe**.
 * Protocol: **TCP**.
-* Schakel SNAT (Source Network Address Translation) voor uitgaand verkeer in met behulp van het front-end-IP-adres.
+* Time-out voor inactiviteit: **15 minuten**.
+* Schakel TCP opnieuw instellen in.
+
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
@@ -403,7 +405,10 @@ Gebruik [az network lb rule create](https://docs.microsoft.com/cli/azure/network
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe \
-    --disable-outbound-snat true 
+    --disable-outbound-snat true \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
+
 ```
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Virtuele machines toevoegen aan back-endpool van load balancer
 
@@ -411,7 +416,7 @@ Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config 
 
 #### <a name="vm1"></a>VM1
 * In back-endadrespool **myBackEndPool**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM1** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
@@ -420,13 +425,13 @@ Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config 
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * In back-endadrespool **myBackEndPool**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM2** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
@@ -435,13 +440,13 @@ Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config 
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm3"></a>VM3
 * In back-endadrespool **myBackEndPool**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM3** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
@@ -450,7 +455,7 @@ Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config 
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM3 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
@@ -470,11 +475,11 @@ Zie [Uitgaande NAT schalen met meerdere IP-adressen](https://docs.microsoft.com/
 #### <a name="public-ip"></a>Openbare IP
 
 * Met de naam **myPublicIPOutbound**.
-* In **myResourceGroupLB**.
+* In **CreatePubLBQS-rg**.
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPOutbound \
     --sku Standard
 ```
@@ -483,7 +488,7 @@ Als u een zonegebonden redundant openbaar IP-adres in Zone 1 wilt maken:
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPOutbound \
     --sku Standard \
     --zone 1
@@ -491,12 +496,12 @@ Als u een zonegebonden redundant openbaar IP-adres in Zone 1 wilt maken:
 #### <a name="public-ip-prefix"></a>Voorvoegsel voor het openbare IP-adres
 
 * Met de naam **myPublicIPPrefixOutbound**.
-* In **myResourceGroupLB**.
+* In **CreatePubLBQS-rg**.
 * Voorvoegsellengte van **28**.
 
 ```azurecli-interactive
   az network public-ip prefix create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPPrefixOutbound \
     --length 28
 ```
@@ -504,7 +509,7 @@ Als u een zonegebonden redundant openbaar IP-voorvoegsel in Zone 1 wilt maken:
 
 ```azurecli-interactive
   az network public-ip prefix create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPPrefixOutbound \
     --length 28 \
     --zone 1
@@ -519,13 +524,13 @@ Selecteer de opdrachten voor het openbare IP-adres of het openbare IP-voorvoegse
 #### <a name="public-ip"></a>Openbare IP
 
 * Met de naam **myFrontEndOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan openbaar IP-adres **myPublicIPOutbound**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
 ```azurecli-interactive
   az network lb frontend-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myFrontEndOutbound \
     --lb-name myLoadBalancer \
     --public-ip-address myPublicIPOutbound 
@@ -534,13 +539,13 @@ Selecteer de opdrachten voor het openbare IP-adres of het openbare IP-voorvoegse
 #### <a name="public-ip-prefix"></a>Voorvoegsel voor het openbare IP-adres
 
 * Met de naam **myFrontEndOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan het openbare IP-voorvoegsel **myPublicIPPrefixOutbound**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
 ```azurecli-interactive
   az network lb frontend-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myFrontEndOutbound \
     --lb-name myLoadBalancer \
     --public-ip-prefix myPublicIPPrefixOutbound 
@@ -551,12 +556,12 @@ Selecteer de opdrachten voor het openbare IP-adres of het openbare IP-voorvoegse
 Maak een nieuwe uitgaande groep met [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create):
 
 * Met de naam **myBackEndPoolOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
 ```azurecli-interactive
   az network lb address-pool create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myBackendPoolOutbound
 ```
@@ -565,7 +570,7 @@ Maak een nieuwe uitgaande groep met [az network lb address-pool create](https://
 Maak een nieuwe uitgaande regel voor de uitgaande back-endgroep met [az network lb outbound-rule create](https://docs.microsoft.com/cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-create):
 
 * Met de naam **myOutboundRule**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan load balancer **myLoadBalancer**
 * Gekoppeld aan front-end **myFrontEndOutbound**.
 * Protocol: **Alle**.
@@ -575,7 +580,7 @@ Maak een nieuwe uitgaande regel voor de uitgaande back-endgroep met [az network 
 
 ```azurecli-interactive
   az network lb outbound-rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myOutboundRule \
     --frontend-ip-configs myFrontEndOutbound \
@@ -591,7 +596,7 @@ Voeg de virtuele machines aan de uitgaande groep toe met [az network nic ip-conf
 
 #### <a name="vm1"></a>VM1
 * In back-endadresgroep **myBackEndPoolOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM1** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
@@ -600,13 +605,13 @@ Voeg de virtuele machines aan de uitgaande groep toe met [az network nic ip-conf
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * In back-endadresgroep **myBackEndPoolOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM2** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
@@ -615,13 +620,13 @@ Voeg de virtuele machines aan de uitgaande groep toe met [az network nic ip-conf
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm3"></a>VM3
 * In back-endadresgroep **myBackEndPoolOutbound**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM3** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
@@ -630,7 +635,7 @@ Voeg de virtuele machines aan de uitgaande groep toe met [az network nic ip-conf
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM3 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
@@ -651,12 +656,12 @@ Maak een Virtual Network met [az network vnet create](https://docs.microsoft.com
 * Adresvoorvoegsel van **10.1.0.0/16**.
 * Subnet met de naam **myBackendSubnet**.
 * Subnetvoorvoegsel van **10.1.0.0/24**.
-* In de resourcegroep **myResourceGroupLB**.
+* In de **CreatePubLBQS-rg** -resourcegroep.
 * Locatie **VS - Oost**.
 
 ```azurecli-interactive
   az network vnet create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --location eastus \
     --name myVNet \
     --address-prefixes 10.1.0.0/16 \
@@ -671,11 +676,11 @@ Voor Standard Load Balancer moeten de VM's in het back-endadres netwerkinterface
 Maak een netwerkbeveiligingsgroep met [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create):
 
 * Met de naam **myNSG**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 
 ```azurecli-interactive
   az network nsg create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNSG
 ```
 
@@ -685,7 +690,7 @@ Maak een netwerkbeveiligingsgroepregel met behulp van [az network nsg rule creat
 
 * Met de naam **myNSGRuleHTTP**.
 * In de netwerkbeveiligingsgroep die u in de vorige stap hebt gemaakt, **myNSG**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Protocol **(*)** .
 * Richting **Inkomend**.
 * Bron **(*)** .
@@ -696,7 +701,7 @@ Maak een netwerkbeveiligingsgroepregel met behulp van [az network nsg rule creat
 
 ```azurecli-interactive
   az network nsg rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
     --protocol '*' \
@@ -716,7 +721,7 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 #### <a name="vm1"></a>VM1
 
 * Met de naam **myNicVM1**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
@@ -724,7 +729,7 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 ```azurecli-interactive
 
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -733,14 +738,14 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 #### <a name="vm2"></a>VM2
 
 * Met de naam **myNicVM2**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM2 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -749,14 +754,14 @@ Maak drie netwerkinterfaces met de opdracht [az network nic create](https://docs
 #### <a name="vm3"></a>VM3
 
 * Met de naam **myNicVM3**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * In virtueel netwerk **myVnet**.
 * In subnet **myBackendSubnet**.
 * In netwerkbeveiligingsgroep **myNSG**.
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM3 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -826,13 +831,13 @@ runcmd:
 Maak de beschikbaarheidsset met behulp van [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create):
 
 * Met de naam **myAvSet**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Locatie **VS - Oost**.
 
 ```azurecli-interactive
   az vm availability-set create \
     --name myAvSet \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --location eastus 
     
 ```
@@ -843,7 +848,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 #### <a name="vm1"></a>VM1
 * Met de naam **myVM1**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM1**.
 * VM-installatiekopie **UbuntuLTS**.
 * Configuratiebestand **cloud-init.txt** dat u in de bovenstaande stap heeft gemaakt.
@@ -851,7 +856,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM1 \
     --nics myNicVM1 \
     --image UbuntuLTS \
@@ -862,7 +867,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 ```
 #### <a name="vm2"></a>VM2
 * Met de naam **myVM2**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM2**.
 * VM-installatiekopie **UbuntuLTS**.
 * Configuratiebestand **cloud-init.txt** dat u in de bovenstaande stap heeft gemaakt.
@@ -870,7 +875,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM2 \
     --nics myNicVM2 \
     --image UbuntuLTS \
@@ -882,7 +887,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 #### <a name="vm3"></a>VM3
 * Met de naam **myVM3**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM3**.
 * VM-installatiekopie **UbuntuLTS**.
 * Configuratiebestand **cloud-init.txt** dat u in de bovenstaande stap heeft gemaakt.
@@ -890,7 +895,7 @@ Maak de virtuele machines met [az vm create](https://docs.microsoft.com/cli/azur
 
 ```azurecli-interactive
    az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM3 \
     --nics myNicVM3 \
     --image UbuntuLTS \
@@ -909,11 +914,11 @@ Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres n
 Gebruik [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) om:
 
 * Maak een standaard zoneredundant openbaar IP-adres met de naam **myPublicIP**.
-* In **myResourceGroupLB**.
+* In **CreatePubLBQS-rg**.
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --sku Basic
 ```
@@ -938,7 +943,7 @@ Maak een openbare load balancer met [az network lb create](https://docs.microsof
 
 ```azurecli-interactive
   az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myLoadBalancer \
     --sku Basic \
     --public-ip-address myPublicIP \
@@ -961,7 +966,7 @@ Gebruik een statustest met [az network lb probe create](https://docs.microsoft.c
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
@@ -983,10 +988,11 @@ Gebruik [az network lb rule create](https://docs.microsoft.com/cli/azure/network
 * Verzendt netwerkverkeer volgens taakverdeling naar de back-endadresgroep **myBackEndPool** via **poort 80**. 
 * Gebruikt statustest **myHealthProbe**.
 * Protocol: **TCP**.
+* Time-out voor inactiviteit: **15 minuten**.
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
@@ -994,7 +1000,8 @@ Gebruik [az network lb rule create](https://docs.microsoft.com/cli/azure/network
     --backend-port 80 \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe
+    --probe-name myHealthProbe \
+    --idle-timeout 15
 ```
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Virtuele machines toevoegen aan back-endpool van load balancer
@@ -1004,7 +1011,7 @@ Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config 
 
 #### <a name="vm1"></a>VM1
 * In back-endadrespool **myBackEndPool**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM1** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
@@ -1013,13 +1020,13 @@ Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config 
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * In back-endadrespool **myBackEndPool**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM2** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
@@ -1028,13 +1035,13 @@ Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config 
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm3"></a>VM3
 * In back-endadrespool **myBackEndPool**.
-* In resourcegroep **myResourceGroupLB**.
+* In resourcegroep **CreatePubLBQS-rg**.
 * Gekoppeld aan de netwerkinterface **myNicVM3** en **ipconfig1**.
 * Gekoppeld aan load balancer **myLoadBalancer**.
 
@@ -1043,7 +1050,7 @@ Voeg de virtuele machines aan de back-endpool toe met [az network nic ip-config 
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM3 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 ---
@@ -1056,7 +1063,7 @@ Kopieer het openbare IP-adres en plak het in de adresbalk van de browser.
 
 ```azurecli-interactive
   az network public-ip show \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
@@ -1069,7 +1076,7 @@ Gebruik de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group
 
 ```azurecli-interactive
   az group delete \
-    --name myResourceGroupLB
+    --name CreatePubLBQS-rg
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

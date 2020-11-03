@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: e171ce1ab7d2b9d4a78399ee639945bde16b71ca
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 63fdee6036580df42f7f965244b5f888c1ec082d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019406"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540751"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Zelfstudie: Een Django-web-app implementeren met PostgreSQL in Azure App Service
 
@@ -138,7 +138,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 ```
 
 - Vervang *\<postgres-server-name>* door een naam die overal in Azure uniek is (het servereindpunt wordt `https://<postgres-server-name>.postgres.database.azure.com`). Het is handig om een combinatie van uw bedrijfsnaam en een andere unieke waarde te gebruiken.
-- Geef voor *\<admin-username>* en *\<admin-password>* referenties op om een gebruiker met beheerdersrechten te maken voor deze Postgres-server.
+- Geef voor *\<admin-username>* en *\<admin-password>* referenties op om een gebruiker met beheerdersrechten te maken voor deze Postgres-server. Gebruik het `$`-teken niet in de gebruikersnaam of het wachtwoord. Later maakt u omgevingsvariabelen met deze waarden, waarbij het `$`-teken een speciale betekenis heeft in de Linux-container die wordt gebruikt om Python-apps uit te voeren.
 - De [prijscategorie](../postgresql/concepts-pricing-tiers.md) B_Gen5_1 (Basic, Gen5, 1 kern) die hier wordt gebruikt, is de voordeligste. Laat voor productiedatabases het argument `--sku-name` weg om de prijscategorie GP_Gen5_2 (Algemeen gebruik, Gen 5, 2 kernen) te gebruiken.
 
 Deze opdracht voert de volgende acties uit, dit kan enkele minuten duren:
@@ -153,7 +153,7 @@ Deze opdracht voert de volgende acties uit, dit kan enkele minuten duren:
 
 U kunt alle stappen afzonderlijk uitvoeren met `az postgres`- en `psql`-opdrachten, maar `az postgres up` combineert alle stappen.
 
-Wanneer de opdracht voltooid is, wordt een JSON-object uitgevoerd dat verschillende verbindingsreeksen voor de database bevat, samen met de URL van de server, een gegenereerde gebruikersnaam (zoals 'joyfulKoala@msdocs-djangodb-12345') en een GUID-wachtwoord. Kopieer de gebruikersnaam en het wachtwoord naar een tijdelijk bestand, u heeft deze verderop in deze zelfstudie nodig.
+Wanneer de opdracht voltooid is, wordt een JSON-object uitgevoerd dat verschillende verbindingsreeksen voor de database bevat, samen met de URL van de server, een gegenereerde gebruikersnaam (zoals 'joyfulKoala@msdocs-djangodb-12345') en een GUID-wachtwoord. Kopieer de korte gebruikersnaam (voor de @) en het wachtwoord naar een tijdelijk bestand. U hebt deze verderop in deze zelfstudie nodig.
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
@@ -212,7 +212,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 ```
 
 - Vervang *\<postgres-server-name>* door de naam die u eerder hebt gebruikt met de opdracht `az postgres up`. De code in *azuresite/production.py* voegt automatisch `.postgres.database.azure.com` toe om de volledige Postgres-server-URL te maken.
-- Vervang *\<username>* en *\<password>* door de beheerdersreferenties die u hebt gebruikt in combinatie met de eerdere `az postgres up`-opdracht of die `az postgres up` voor u heeft gegenereerd. De code in *azuresite/production.py* bouwt automatisch de volledige Postgres-gebruikersnaam op van `DBUSER` en `DBHOST`.
+- Vervang *\<username>* en *\<password>* door de beheerdersreferenties die u hebt gebruikt in combinatie met de eerdere `az postgres up`-opdracht of die `az postgres up` voor u heeft gegenereerd. De code in *azuresite/production.py* bouwt automatisch de volledige Postgres-gebruikersnaam op van `DBUSER` en `DBHOST`. Dus neem het gedeelte `@server` niet op. (Zoals eerder opgemerkt, moet u het `$`-teken in geen van beide waarden gebruiken omdat het een speciale betekenis heeft voor Linux-omgevingsvariabelen.)
 - De resourcegroep en de namen van de app worden opgehaald uit de cachewaarden in het bestand *.azure/config*.
 
 In uw Python-code opent u deze instellingen als omgevingsvariabelen met instructies zoals `os.environ.get('DJANGO_ENV')`. Zie [Omgevingsvariabelen openen](configure-language-python.md#access-environment-variables) voor meer informatie.
@@ -235,7 +235,7 @@ Django-databasemigraties zorgen ervoor dat het schema in de PostgreSQL van de Az
 
     Als u geen verbinding kunt maken met de SSH-sessie, kan de app zelf niet worden gestart. [Raadpleeg de diagnostische logboeken](#stream-diagnostic-logs) voor meer informatie. Als u de benodigde app-instellingen in de vorige sectie bijvoorbeeld niet hebt gemaakt, wordt in de logboeken `KeyError: 'DBNAME'` aangegeven.
 
-1. Voer in de SSH-sessie de volgende opdrachten uit (u kunt opdrachten plakken met **CTRL**+**Shift**+**V**):
+1. Voer in de SSH-sessie de volgende opdrachten uit (u kunt opdrachten plakken met **CTRL**+**Shift**+**V** ):
 
     ```bash
     # Change to the folder where the app code is deployed
@@ -277,7 +277,7 @@ Django-databasemigraties zorgen ervoor dat het schema in de PostgreSQL van de Az
 [Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DjangoCLITutorialHelp)
 
 > [!NOTE]
-> In App Service wordt een Django-project gedetecteerd door in elke submap naar een *wsgi.py*-bestand te zoeken dat standaard wordt gemaakt met `manage.py startproject`. Wanneer App Service dat bestand heeft gevonden, wordt de Django web-app geladen. Zie [Ingebouwde Python-installatiekopie configureren](configure-language-python.md) voor meer informatie.
+> In App Service wordt een Django-project gedetecteerd door in elke submap naar een *wsgi.py* -bestand te zoeken dat standaard wordt gemaakt met `manage.py startproject`. Wanneer App Service dat bestand heeft gevonden, wordt de Django web-app geladen. Zie [Ingebouwde Python-installatiekopie configureren](configure-language-python.md) voor meer informatie.
 
 ## <a name="make-code-changes-and-redeploy"></a>Wijzigingen aanbrengen in code en opnieuw implementeren
 
@@ -374,7 +374,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Voer de ontwikkelingsserver opnieuw uit met `python manage.py runserver` en test de app op *http:\//localhost: 8000/admin*:
+Voer de ontwikkelingsserver opnieuw uit met `python manage.py runserver` en test de app op *http:\//localhost: 8000/admin* :
 
 Stop de Django-webserver opnieuw met **CTRL**+**C**.
 

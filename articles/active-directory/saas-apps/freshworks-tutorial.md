@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.openlocfilehash: c953297d4e66f737250451b9a5f42ce7f45dd2e4
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 40b8ff2fa32ae64b1857da4b7e4ef0cb997e4285
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821252"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92450625"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Freshworks
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Freshworks integreert met Azure Active Director
 * Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Freshworks.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -91,9 +91,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Om de  **Handtekeningopties**  aan te passen aan uw vereisten, klikt u op de knop  **Bewerken**  om het dialoogvenster  **SAML-handtekeningcertificaat**  te openen.
+1. Om de **Handtekeningopties** aan te passen aan uw vereisten, klikt u op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
-     ![image](common/edit-certificate.png)
+     ![image](common/edit-certificate.png)
 
      ![Schermopname met het dialoogvenster "S A M L-handtekeningcertificaat" met de knop "Bewerken" geselecteerd.](./media/freshworks-tutorial/response.png)
 
@@ -109,9 +109,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -139,7 +139,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Open een nieuw webbrowservenster en meld u als beheerder bij uw bedrijfssite van Freshworks aan en voer de volgende stappen uit:
 
-2. Klik aan de linkerkant van het menu op het  **beveiligingspictogram**  en schakel vervolgens de optie **Eenmalige aanmelding** in en selecteer **Eenmalige aanmelding op basis van SAML** onder **Verificatiemethoden**.
+2. Klik aan de linkerkant van het menu op het **beveiligingspictogram** en schakel vervolgens de optie **Eenmalige aanmelding** in en selecteer onder **Verificatiemethoden** de optie **Eenmalige aanmelding op basis van SAML**.
 
     ![Schermopname met de sectie "Beveiliging - Verificatiemethoden" met de optie "Eenmalige aanmelding" ingeschakeld en "Eenmalige aanmelding op basis van S A M L" geselecteerd.](./media/freshworks-tutorial/configure01.png)
 
@@ -159,21 +159,20 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ### <a name="create-freshworks-test-user"></a>Freshworks-testgebruiker maken
 
-In dit gedeelte maakt u in Freshworks een gebruiker met de naam B.Simon. Werk samen met het  [klantondersteuningsteam van Freshworks](mailto:support@freshworks.com) om de gebruikers toe te voegen aan het Freshworks-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
+In dit gedeelte maakt u in Freshworks een gebruiker met de naam B.Simon. Werk samen met het [Freshworks-klantondersteuningsteam](mailto:support@freshworks.com) om de gebruikers aan het Freshworks-platform toe te voegen. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Freshworks klikt, wordt u automatisch aangemeld bij de instantie van Freshworks waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Freshworks klikt, wordt u automatisch aangemeld bij de instantie van Freshworks waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Freshworks gebruiken met Azure AD](https://aad.portal.azure.com/)
-

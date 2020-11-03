@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 9343d3fa82302711311d8db3672713fa80fab1f7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122170"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341903"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Quickstart: Een Azure Kubernetes Service-cluster (AKS) implementeren met behulp van Azure CLI met vertrouwelijke rekenknooppunten (preview)
 
@@ -27,11 +27,11 @@ In deze quickstart leert u hoe u een Azure Kubernetes service-cluster (AKS) kunt
 ### <a name="deployment-pre-requisites"></a>Vereisten voor implementatie
 
 1. U moet een actief Azure-abonnement hebben. Als u geen Azure-abonnement hebt, kunt u een [gratis account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint
-1. U moet de Azure CLI-versie 2.0.64 of hoger hebben geïnstalleerd en geconfigureerd op uw implementatiemachine (Voer  `az --version` uit om de versie te achterhalen). Als u Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)
+1. De Azure CLI-versie 2.0.64 of hoger moet zijn geïnstalleerd en geconfigureerd op uw implementatiemachine (voer `az --version` uit om de versie te achterhalen). Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli).
 1. [AKS-preview-extensie](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) minimale versie 0.4.62 
-1. U hebt minimaal zes DCSv2-kernen voor gebruik beschikbaar in uw abonnement. Standaard is het quotum van de VM-kernen voor vertrouwelijke machines 8 kernen per Azure-abonnement. Als u van plan bent een cluster in te richten waarvoor meer dan 8 kerngeheugens zijn vereist, volgt u [deze](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) instructies om een quotumverhogingsticket te genereren
+1. U hebt minimaal zes **DC<x>s-v2** -kernen voor gebruik beschikbaar in uw abonnement. Standaard is het quotum van de VM-kernen voor vertrouwelijke machines 8 kernen per Azure-abonnement. Als u van plan bent een cluster in te richten waarvoor meer dan 8 kerngeheugens zijn vereist, volgt u [deze](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) instructies om een quotumverhogingsticket te genereren
 
-### <a name="confidential-computing-node-features"></a>Kenmerken van vertrouwelijke knooppunten
+### <a name="confidential-computing-node-features-dcxs-v2"></a>Kenmerken van vertrouwelijke rekenknooppunten (DC<x>s-v2)
 
 1. Linux-werkknooppunten bieden alleen ondersteuning voor Linux-containers
 1. Virtuele machines van Ubuntu Generatie 2 18.04
@@ -94,14 +94,14 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --aks-custom-headers usegen2vm=true
 ```
-Met de bovenstaande opdracht richt u een nieuw AKS-cluster in met DCSv2-knooppuntpools en installeert u automatisch twee daemon-sets - ([SGX Device Plugin](confidential-nodes-aks-overview.md#sgx-plugin) & [SGX Quote Helper](confidential-nodes-aks-overview.md#sgx-quote))
+Met de bovenstaande opdracht richt u een nieuw AKS-cluster in met **DC<x>s-v2** -knooppuntpools en installeert u automatisch twee daemon-sets - ([SGX Device Plugin](confidential-nodes-aks-overview.md#sgx-plugin) & [SGX Quote Helper](confidential-nodes-aks-overview.md#sgx-quote))
 
 Haal de referenties voor uw AKS-cluster op met de opdracht 'az aks get-credentials':
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
-Controleer of de knooppunten correct zijn gemaakt en of de SGX-gerelateerde daemon-sets worden uitgevoerd op DCSv2-knooppuntpools met behulp van de opdracht 'kubectl get pods & nodes', zoals hieronder wordt weergegeven:
+Controleer of de knooppunten correct zijn gemaakt en of de SGX-gerelateerde daemon-sets worden uitgevoerd op **DC<x>s-v2** -knooppuntpools met behulp van de opdracht 'kubectl get pods & nodes', zoals hieronder wordt weergegeven:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -130,9 +130,12 @@ Laten we eerst de vertrouwelijke AKS-invoegtoepassingen op het bestaande cluster
 ```azurecli-interactive
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
-Voeg nu een DCSv2-knooppuntpool toe aan het cluster
-
-```azurecli-interactive
+Voeg nu een **DC<x>s-v2** -knooppuntpool aan het cluster toe
+    
+> [!NOTE]
+> Als u de vertrouwelijke rekenfunctie wilt gebruiken, moet uw bestaande AKS-cluster beschikken over ten minste één **DC<x>s-v2**  knooppuntpool op basis van een VM SKU. Meer informatie over DCsv2 VMs SKU's voor vertrouwelijk rekenen vindt u hier: [beschikbare SKU's en ondersteunde regio's](virtual-machine-solutions.md).
+    
+  ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2 --aks-custom-headers usegen2vm=true
 
 output node pool added

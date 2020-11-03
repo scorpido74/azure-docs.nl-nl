@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f4874a16e12c5c9e7e5a0fd9858d3e42f2bb1cd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b59a764510b93daf358e00a4d75bcefd31d2980f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821279"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460223"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Zelfstudie: Azure Active Directory-integratie met Infogix Data3Sixty Govern
 
@@ -27,7 +27,7 @@ De integratie van Infogix Data3Sixty Govern met Azure AD heeft de volgende voord
 * U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Infogix Data3Sixty Govern (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -42,7 +42,7 @@ U hebt het volgende nodig om Azure AD-integratie met Infogix Data3Sixty Govern t
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Infogix Data3Sixty ondersteunt eenmalige aanmelding via **SP en IDP**
-* Infogix Data3Sixty Govern biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
+* Infogix Data3Sixty Govern biedt ondersteuning voor **Just-In-Time** -inrichting van gebruikers
 
 ## <a name="adding-infogix-data3sixty-govern-from-the-gallery"></a>Infogix Data3Sixty toevoegen vanuit de galerie
 
@@ -50,7 +50,7 @@ Als u de integratie van Infogix Data3Sixty Govern in Azure AD wilt configureren,
 
 **Voer de volgende stappen uit om Infogix Data3Sixty Govern toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -62,7 +62,7 @@ Als u de integratie van Infogix Data3Sixty Govern in Azure AD wilt configureren,
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Infogix Data3Sixty Govern**, selecteer **Infogix Data3Sixty Govern** in het venster met resultaten en klik op **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Infogix Data3Sixty Govern** , selecteer **Infogix Data3Sixty Govern** in het venster met resultaten en klik op **Toevoegen** om de toepassing toe te voegen.
 
      ![Infogix Data3Sixty Govern in de lijst met resultaten](common/search-new-app.png)
 
@@ -161,13 +161,13 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met Infogix D
 
 ### <a name="configure-infogix-data3sixty-govern-single-sign-on"></a>Eenmalige aanmelding configureren voor Infogix Data3Sixty Govern
 
-Als u eenmalige aanmelding wilt configureren in **Infogix Data3Sixty Govern**, moet u het gedownloade **Certificaat (Raw)** en de correcte, uit de Azure-portal gekopieerde URL's verzenden naar het [Infogix Data3Sixty Govern-ondersteuningsteam](mailto:data3sixtysupport@infogix.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren in **Infogix Data3Sixty Govern** , moet u het gedownloade **Certificaat (Raw)** en de correcte, uit de Azure-portal gekopieerde URL's verzenden naar het [Infogix Data3Sixty Govern-ondersteuningsteam](mailto:data3sixtysupport@infogix.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
@@ -179,7 +179,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
     b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
@@ -192,7 +192,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 In deze sectie stelt u in dat Britta Simon eenmalige aanmelding van Azure kan gebruiken door haar toegang te geven tot Infogix Data3Sixty Govern.
 
-1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Infogix Data3Sixty Govern**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen** , **Alle toepassingen** en **Infogix Data3Sixty Govern**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -204,7 +204,7 @@ In deze sectie stelt u in dat Britta Simon eenmalige aanmelding van Azure kan ge
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+4. Klik op de knop **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
@@ -219,19 +219,18 @@ In deze sectie stelt u in dat Britta Simon eenmalige aanmelding van Azure kan ge
 In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Infogix Data3Sixty Govern. Infogix Data3Sixty Govern biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker bestaat in Infogix Data3Sixty Govern, wordt er een nieuwe gemaakt na verificatie.
 
 > [!Note]
-> Neem contact op met het  [ondersteuningsteam van Infogix Data3Sixty Govern](mailto:data3sixtysupport@infogix.com) als u handmatig een gebruiker wilt maken.
+> Neem contact op met het [ondersteuningsteam van Infogix Data3Sixty Govern](mailto:data3sixtysupport@infogix.com) als u handmatig een gebruiker moet maken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de Infogix Data3Sixty Govern-tegel klikt, wordt u automatisch aangemeld bij het Infogix Data3Sixty Govern-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de Infogix Data3Sixty Govern-tegel klikt, wordt u automatisch aangemeld bij het Infogix Data3Sixty Govern-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

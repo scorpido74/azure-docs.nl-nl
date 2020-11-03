@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: e969520e226999bc2b104fb4f757619832eaa165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ddceb2808874e531cfda81e5a9ce74be3a4fab4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944354"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517073"
 ---
 ## <a name="configure-your-local-environment"></a>Uw lokale omgeving configureren
 
@@ -42,11 +42,7 @@ Voordat u begint, moet u het volgende hebben:
 + De [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Java Developer Kit](https://aka.ms/azure-jdks), versie 8 
-
-    > [!IMPORTANT]
-    > + Functions-ondersteuning voor Java 11 is momenteel in preview, en het Maven-archetype maakt standaard een Java 8-implementatie. Als u uw functie-app in plaats daarvan op Java 11 wilt uitvoeren, moet u het bestand pom.xml handmatig bijwerken met Java 11-waarden. Zie [Java-versies](../articles/azure-functions/functions-reference-java.md#java-versions) voor meer informatie. 
-    > + De omgevingsvariabele `JAVA_HOME` moet zijn ingesteld op de installatielocatie van de juiste versie van de JDK om deze quickstart te kunnen voltooien.
++ [Java Developer Kit](https://aka.ms/azure-jdks), versie 8 of 11. 
 
 + [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
 

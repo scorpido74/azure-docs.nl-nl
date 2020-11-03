@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 355e300ec9f3671cf29ccc763e211a9bb3806f64
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289018"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474781"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET gebruiken met SQL on demand (preview)
 
@@ -127,7 +127,7 @@ Het argument unstructured_data_path is een pad naar de gegevens in de vorm van e
  Een pad binnen de opslag dat verwijst naar de map of het bestand dat u wilt lezen. Als het pad naar een container of map verwijst, worden alle bestanden in die specifieke container of map gelezen. Bestanden in submappen worden uitgesloten. 
 
  U kunt jokertekens gebruiken om meerdere bestanden of mappen op te geven. Het gebruik van meerdere, niet-opeenvolgende jokertekens is toegestaan.
-Hieronder ziet u een voorbeeld waarmee alle *CSV-* bestanden worden gelezen die beginnen met *population* uit alle mappen die beginnen met */csv/population*:  
+Hieronder ziet u een voorbeeld waarmee alle *CSV-* bestanden worden gelezen die beginnen met *population* uit alle mappen die beginnen met */csv/population* :  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Als u opgeeft dat unstructured_data_path een map is, haalt een SQL on demand-query bestanden uit die map op. 
@@ -192,9 +192,9 @@ Het teken op dat wordt gebruikt als het aanhalingsteken in het CSV-bestand. Als 
 
 DATA_COMPRESSION = 'methode_voor_gegevenscompressie'
 
-De compressiemethode. De volgende compressiemethode wordt ondersteund:
+De compressiemethode. Wordt alleen ondersteund in PARSER_VERSION='1.0'. De volgende compressiemethode wordt ondersteund:
 
-- org.apache.hadoop.io.compress.GzipCodec
+- GZIP
 
 PARSER_VERSION = 'versie_van_parser'
 

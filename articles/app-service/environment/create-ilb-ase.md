@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: baf528e1b4ab7e323b69574729669d09692741cc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148160"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503518"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Een App Service-omgeving voor een interne load balancer maken en gebruiken 
 
@@ -96,7 +96,7 @@ Het maken van een app in een ILB AS-omgeving werkt hetzelfde als het maken van e
 
 ### <a name="web-jobs-functions-and-the-ilb-ase"></a>WebJobs, Functions en de ILB AS-omgeving 
 
-Een ILB AS-omgeving biedt ondersteuning voor zowel Functions als WebJobs. Als u echter met deze wilt werken via de portal, hebt u netwerktoegang tot de SCM-site nodig.  Dit betekent dat de host van de browser zich in het virtuele netwerk moet bevinden of ermee moet zijn verbonden. Als uw ILB-AS-omgeving een domeinnaam heeft die niet eindigt op *appserviceenvironment.net*, moet u uw browser vragen het HTTPS-certificaat te vertrouwen dat wordt gebruikt door uw SCM-site.
+Een ILB AS-omgeving biedt ondersteuning voor zowel Functions als WebJobs. Als u echter met deze wilt werken via de portal, hebt u netwerktoegang tot de SCM-site nodig.  Dit betekent dat de host van de browser zich in het virtuele netwerk moet bevinden of ermee moet zijn verbonden. Als uw ILB-AS-omgeving een domeinnaam heeft die niet eindigt op *appserviceenvironment.net* , moet u uw browser vragen het HTTPS-certificaat te vertrouwen dat wordt gebruikt door uw SCM-site.
 
 ## <a name="dns-configuration"></a>DNS-configuratie 
 
@@ -104,32 +104,32 @@ Wanneer u een externe ASE gebruikt, worden apps die in uw ASE zijn gemaakt, gere
 
 DNS configureren in uw eigen DNS-server met uw ILB-ASE:
 
-1. maak een zone voor <ASE name>.appserviceenvironment.net
+1. Maak een zone voor &lt;ASE name&gt;. appserviceenvironment.net
 2. Maak in die zone een A-record die * verwijst naar het IP-adres van de ILB
 3. Maak in die zone een A-record die @ verwijst naar het IP-adres van de ILB
-4. maak een zone in <ASE name>.appserviceenvironment.net met de naam SCM
+4. Maak een zone in &lt;ASE name&gt;. appserviceenvironment.net met de naam SCM
 5. Maak in die SCM-zone een A-record die * verwijst naar het IP-adres van de ILB
 
 DNS configureren in Azure DNS particuliere zones:
 
-1. Maak een Azure DNS privézone met de naam <ASE name>. appserviceenvironment.net
+1. Maak een Azure DNS privézone met de naam &lt;ASE-naam&gt;.appserviceenvironment.net
 2. Maak in die zone een A-record die * verwijst naar het IP-adres van de ILB
 3. Maak in die zone een A-record die @ verwijst naar het IP-adres van de ILB
 4. Maak in die zone een A-record die *.scm verwijst naar het IP-adres van de ILB
 
-De DNS-instellingen voor uw ASE-standaard domeinachtervoegsel beperken u niet dat uw apps toegankelijk zijn voor die namen. U kunt een aangepaste domeinnaam instellen zonder validatie voor uw apps in een ILB-ASE. Als u vervolgens een zone met de naam contoso.net wilt maken, kunt u dit doen en deze naar het IP-adres van de ILB wijzen. De aangepaste domein naam werkt voor app-aanvragen, maar niet voor de SCM-site. De SCM-site is alleen beschikbaar op <appname>.scm.<asename>.appserviceenvironment.net.
+De DNS-instellingen voor uw ASE-standaard domeinachtervoegsel beperken u niet dat uw apps toegankelijk zijn voor die namen. U kunt een aangepaste domeinnaam instellen zonder validatie voor uw apps in een ILB-ASE. Als u vervolgens een zone met de naam contoso.net wilt maken, kunt u dit doen en deze naar het IP-adres van de ILB wijzen. De aangepaste domein naam werkt voor app-aanvragen, maar niet voor de SCM-site. De SCM-site is alleen beschikbaar op &lt;app-naam&gt;.scm.&lt;ASE-naam&gt;.appserviceenvironment.net.
 
-De zone met de naam .<asename>.appserviceenvironment.net is wereldwijd uniek. Voor 2019 konden klanten het achtervoegsel van het domein van de ILB ASE opgeven. Als u. contoso.com wilde gebruiken voor het domeinachtervoegsel, kon u dit doen en dat zou de SCM-site kunnen bevatten. Er waren problemen met dat model, waaronder; het beheren van het standaard SSL-certificaat, het ontbreken van eenmalige aanmelding met de SCM-site en de vereiste om een wildcard certificaat te gebruiken. Het upgradeproces van het ILB ASE-standaard certificaat was tevens verstoord en veroorzaakte het opnieuw opstarten van de toepassing. Om deze problemen op te lossen, is het ILB ASE-gedrag gewijzigd om een domeinachtervoegsel te gebruiken op basis van de naam van de ASE en met een achtervoegsel dat eigendom is van Microsoft. De wijziging van het ILB ASE-gedrag heeft alleen invloed op ILB ASE's gemaakt na mei 2019. Bestaande ILB ASE's as moeten nog steeds het standaard certificaat van de ASE en de bijbehorende DNS-configuratie beheren.
+De zone met de naam &lt;ASE-naam&gt;.appserviceenvironment.net is wereldwijd uniek. Voor 2019 konden klanten het achtervoegsel van het domein van de ILB ASE opgeven. Als u. contoso.com wilde gebruiken voor het domeinachtervoegsel, kon u dit doen en dat zou de SCM-site kunnen bevatten. Er waren problemen met dat model, waaronder; het beheren van het standaard SSL-certificaat, het ontbreken van eenmalige aanmelding met de SCM-site en de vereiste om een wildcard certificaat te gebruiken. Het upgradeproces van het ILB ASE-standaard certificaat was tevens verstoord en veroorzaakte het opnieuw opstarten van de toepassing. Om deze problemen op te lossen, is het ILB ASE-gedrag gewijzigd om een domeinachtervoegsel te gebruiken op basis van de naam van de ASE en met een achtervoegsel dat eigendom is van Microsoft. De wijziging van het ILB ASE-gedrag heeft alleen invloed op ILB ASE's gemaakt na mei 2019. Bestaande ILB ASE's as moeten nog steeds het standaard certificaat van de ASE en de bijbehorende DNS-configuratie beheren.
 
 ## <a name="publish-with-an-ilb-ase"></a>Publiceren met een ILB AS-omgeving
 
 Elke app die wordt gemaakt, heeft twee eindpunten. In een ILB ASE-omgeving hebt u *&lt;app-naam&gt;.&lt;Domein voor ILB AS-omgeving&gt;* en *&lt;app-naam&gt;.scm.&lt;Domein voor ILB AS-omgeving&gt;* . 
 
-De SCM-sitenaam leidt naar de Kudu-console, genaamd de **Geavanceerde portal**, binnen Azure Portal. Met behulp van de Kudu-console kunt u omgevingsvariabelen bekijken, de schijf verkennen, een console gebruiken, en nog veel meer. Zie [Kudu-console voor Azure App Service][Kudu] voor meer informatie. 
+De SCM-sitenaam leidt naar de Kudu-console, genaamd de **Geavanceerde portal** , binnen Azure Portal. Met behulp van de Kudu-console kunt u omgevingsvariabelen bekijken, de schijf verkennen, een console gebruiken, en nog veel meer. Zie [Kudu-console voor Azure App Service][Kudu] voor meer informatie. 
 
 Op internet gebaseerde CI-systemen, zoals GitHub en Azure DevOps, werken nog steeds met een ILB AS-omgeving, als de buildagent toegankelijk is via internet en zich op hetzelfde netwerk bevindt als de ILB AS-omgeving. Als de buildagent dus, in het geval van Azure DevOps, is gemaakt in hetzelfde VNET als de ILB AS-omgeving (verschillende subnetten vormen geen probleem), kan met deze agent code worden opgehaald uit Azure DevOps-git en worden geïmplementeerd in de ILB AS-omgeving. Als u niet zelf een buildagent wilt maken, moet u een CI-systeem met een pull-model gebruiken, zoals Dropbox.
 
-De publicatie-eindpunten voor apps in een ILB AS-omgeving maken gebruik van het domein waarmee de ILB AS-omgeving is gemaakt. Dit domein wordt weergegeven in het publicatieprofiel van de app en in de portalblade van de app (**Overzicht** > **Essentials** en ook **Eigenschappen**). Als u een ILB-AS-omgeving met het domeinachtervoegsel *&lt;ASE name&gt;. appserviceenvironment.net*en een app met de naam *mytest* hebt, gebruikt u *mytest.&lt;ASE name&gt;. appserviceenvironment.net* voor FTP en *mytest.scm.contoso.net* voor webimplementatie.
+De publicatie-eindpunten voor apps in een ILB AS-omgeving maken gebruik van het domein waarmee de ILB AS-omgeving is gemaakt. Dit domein wordt weergegeven in het publicatieprofiel van de app en in de portalblade van de app ( **Overzicht** > **Essentials** en ook **Eigenschappen** ). Als u een ILB-AS-omgeving met het domeinachtervoegsel *&lt;ASE name&gt;. appserviceenvironment.net* en een app met de naam *mytest* hebt, gebruikt u *mytest.&lt;ASE name&gt;. appserviceenvironment.net* voor FTP en *mytest.scm.contoso.net* voor webimplementatie.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Een ILB AS-omgeving configureren met een WAF-apparaat ##
 

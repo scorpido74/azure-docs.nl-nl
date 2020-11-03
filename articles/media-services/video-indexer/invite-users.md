@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4023f8584e7b901a19906235d98982abbbfbaaf8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79499756"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364134"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Snelstart: Gebruikers uitnodigen voor Video Indexer
 
@@ -27,10 +27,9 @@ Als u wilt samenwerken met uw collega’s, kunt u hen uitnodigen voor uw Video I
 ## <a name="invite-new-users"></a>Nieuwe gebruikers uitnodigen
 
 1. Registreer u op de [Video Indexer](https://www.videoindexer.ai/)-website. Zorg ervoor dat u bent verbonden met een beheerdersaccount.
-1. Klik op de knop **Anderen uitnodigen** in het bovenste menu:
+1. Als u de beheerder bent, ziet u in de rechterbovenhoek de knop **Account delen**. Klik op de knop om gebruikers uit te nodigen. 
 
-   ![Nieuwe gebruikers uitnodigen](./media/invite-users/invite-users.png)
-
+   ![Nieuwe gebruikers uitnodigen](./media/invite-users/share-account.png)
 1. Voeg de e-mailadressen toe van de personen die u wilt toevoegen aan uw Video Indexer-account:
 
     ![Gebruikers uitnodigen voor dit account](./media/invite-users/invite-to-account.png)
@@ -45,7 +44,7 @@ Als u wilt samenwerken met uw collega’s, kunt u hen uitnodigen voor uw Video I
 
 ## <a name="removing-existing-users"></a>Bestaande gebruikers verwijderen
 
-Als u gebruikers wilt verwijderen die toegang hebben tot uw account, kunt u klikken op het **X**-teken naast de naam:
+Als u gebruikers wilt verwijderen die toegang hebben tot uw account, kunt u klikken op het **X** -teken naast de naam:
 
 ![Gebruikers verwijderen](./media/invite-users/remove-users.png)
 

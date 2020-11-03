@@ -4,16 +4,16 @@ description: In deze quickstart implementeren we een Spring Cloud-toepassing in 
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/18/2020
+ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2ec79c9c1fc3b461037b2005da7198f81cbbab34
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: a060528d3140203541f6a13064659651c7a4f67d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170354"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488947"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Quickstart: Uw eerste Azure Spring Cloud-toepassing implementeren
 
@@ -96,7 +96,7 @@ Maak in Visual Studio een ASP.NET Core-webtoepassing met de naam ‘hello-world�
    cd hello-world
    ```
 
-1. Bewerk het *appSettings.json* -bestand om de volgende instellingen toe te voegen:
+1. Bewerk het bestand *appSettings.json* om de volgende instellingen toe te voegen:
 
    ```json
    "spring": {
@@ -206,17 +206,17 @@ Met de volgende procedure maakt u een exemplaar van Azure Spring Cloud met behul
 
 1. Open [Azure Portal](https://ms.portal.azure.com/). 
 
-1. Zoek in het bovenste zoekvak naar *Azure Spring Cloud* .
+1. Zoek in het bovenste zoekvak naar *Azure Spring Cloud*.
 
 1. Selecteer *Azure Spring Cloud* in de resultaten.
 
    ![ASC-pictogram: starten](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-1. Klik op + Toevoegen op de pagina **Azure Spring Cloud** .
+1. Klik op + Toevoegen op de pagina **Azure Spring Cloud**.
 
    ![ASC-pictogram: toevoegen](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-1. Vul het formulier in op de Azure Spring Cloud-pagina **Maken** .  Houd rekening met de volgende richtlijnen:
+1. Vul het formulier in op de Azure Spring Cloud-pagina **Maken**.  Houd rekening met de volgende richtlijnen:
 
    * **Abonnement** : Selecteer het abonnement waarvoor u voor deze resource gefactureerd wilt worden.
    * **Resourcegroep** : Maak een nieuwe resourcegroep. De naam die u hier invoert, wordt in latere stappen gebruikt als **\<resource group name\>** .
@@ -225,7 +225,7 @@ Met de volgende procedure maakt u een exemplaar van Azure Spring Cloud met behul
 
    ![ASC-portal starten](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Selecteer **Controleren en maken** .
+6. Selecteer **Controleren en maken**.
 
 ## <a name="build-and-deploy-the-app"></a>De app compileren en implementeren
 
@@ -239,7 +239,7 @@ Met de volgende procedure wordt het project gebouwd en geïmplementeerd dat u ee
    dotnet publish -c release -o ./publish
    ```
 
-1. Maak een app in uw Azure Spring Cloud-exemplaar met een openbaar eindpunt eraan toegewezen. Gebruik dezelfde toepassingsnaam ‘hello-world’ die u hebt opgegeven in *appsettings.json* .
+1. Maak een app in uw Azure Spring Cloud-exemplaar met een openbaar eindpunt eraan toegewezen. Gebruik dezelfde toepassingsnaam ‘hello-world’ die u hebt opgegeven in *appsettings.json*.
 
    ```console
    az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public
@@ -345,9 +345,9 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 ## <a name="generate-a-spring-cloud-project"></a>Een Spring Cloud-project genereren
 
-Begin met [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin) om een voorbeeldproject te genereren met aanbevolen afhankelijkheden voor Azure Spring Cloud. In de volgende afbeelding ziet u de Initializr-configuratie voor dit voorbeeldproject.
+Begin met [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) om een voorbeeldproject te genereren met aanbevolen afhankelijkheden voor Azure Spring Cloud. In de volgende afbeelding ziet u de Initializr-configuratie voor dit voorbeeldproject.
 ```url
-https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
 
   ![Initializr-pagina](media/spring-cloud-quickstart-java/initializr-page.png)
@@ -376,7 +376,7 @@ Met de volgende procedure maakt u een exemplaar van Azure Spring Cloud met behul
 
 1. Open [Azure Portal](https://ms.portal.azure.com/) op een nieuw tabblad. 
 
-2. Zoek in het bovenste zoekvak naar *Azure Spring Cloud* .
+2. Zoek in het bovenste zoekvak naar *Azure Spring Cloud*.
 
 3. Selecteer *Azure Spring Cloud* in de resultaten.
 
@@ -386,7 +386,7 @@ Met de volgende procedure maakt u een exemplaar van Azure Spring Cloud met behul
 
     ![ASC-pictogram: toevoegen](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-5. Vul het formulier in op de Azure Spring Cloud-pagina **Maken** .  Houd rekening met de volgende richtlijnen:
+5. Vul het formulier in op de Azure Spring Cloud-pagina **Maken**.  Houd rekening met de volgende richtlijnen:
     - **Abonnement** : Selecteer het abonnement waarvoor u voor deze resource gefactureerd wilt worden.
     - **Resourcegroep** : Het is een best practice om nieuwe resourcegroepen te maken voor nieuwe resources. Dit wordt in latere stappen gebruikt als **\<resource group name\>** .
     - **Servicedetails/naam** : Geef de **\<service instance name\>** op.  De naam moet tussen de 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreekstreepjes bevatten.  Het eerste teken van de servicenaam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
@@ -394,7 +394,7 @@ Met de volgende procedure maakt u een exemplaar van Azure Spring Cloud met behul
 
     ![ASC-portal starten](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Klik op **Controleren en maken** .
+6. Klik op **Controleren en maken**.
 
 ## <a name="build-and-deploy-the-app"></a>De app compileren en implementeren
     
@@ -441,17 +441,17 @@ In de volgende procedure wordt gebruikgemaakt van de IntelliJ-invoegtoepassing v
 ### <a name="deploy-the-app"></a>De app implementeren
 Als u wilt implementeren in Azure, moet u zich aanmelden met uw Azure-account en uw abonnement kiezen.  Zie [Installatie en aanmelding](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) voor meer informatie over aanmelden.
 
-1. Klik met de rechtermuisknop op uw project in de projectverkenner van IntelliJ en selecteer **Azure** -> **Implementeren in Azure Spring Cloud** .
+1. Klik met de rechtermuisknop op uw project in de projectverkenner van IntelliJ en selecteer **Azure** -> **Implementeren in Azure Spring Cloud**.
 
     [ ![Implementeren in Azure 1](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png) ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
 
-1. Accepteer de naam voor de app in het veld **Naam** . **Naam** verwijst naar de configuratie, niet naar de naam van de app. Gebruikers hoeven deze doorgaans niet te wijzigen.
-1. Selecteer in het tekstvak **Artefact** de optie *hellospring-0.0.1-SNAPSHOT.jar* .
-1. Controleer uw abonnement in het tekstvak **Abonnement** .
+1. Accepteer de naam voor de app in het veld **Naam**. **Naam** verwijst naar de configuratie, niet naar de naam van de app. Gebruikers hoeven deze doorgaans niet te wijzigen.
+1. Selecteer in het tekstvak **Artefact** de optie *hellospring-0.0.1-SNAPSHOT.jar*.
+1. Controleer uw abonnement in het tekstvak **Abonnement**.
 1. Selecteer in het tekstvak **Spring Cloud** het exemplaar van Azure Spring Cloud dat u hebt gemaakt in [Azure Spring Cloud-exemplaar inrichten](./spring-cloud-quickstart-provision-service-instance.md).
-1. Stel **Openbaar eindpunt** in op *Inschakelen* .
+1. Stel **Openbaar eindpunt** in op *Inschakelen*.
 1. Selecteer in het tekstvak **App:** de optie **App maken...** .
-1. Voer *hellospring* in en klik vervolgens op **OK** .
+1. Voer *hellospring* in en klik vervolgens op **OK**.
 
     [ ![Implementeren in Azure OK](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png) ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
@@ -481,7 +481,7 @@ Logboeken worden weergegeven in de resultaten:
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
-1. Selecteer **Azure Explorer**  en **Spring Cloud** .
+1. Selecteer **Azure Explorer**  en **Spring Cloud**.
 1. Klik met de rechtermuisknop op de app die wordt uitgevoerd.
 1. Selecteer **Streaminglogboeken** in de vervolgkeuzelijst.
 1. Selecteer het exemplaar.

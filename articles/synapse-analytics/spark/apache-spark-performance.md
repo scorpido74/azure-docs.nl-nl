@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: f8eb87909ffdf9ce15108d78bed425bf6c142262
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb64fb3c9e25e629a0bcb36fe60fd5ae2d7fc906
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249464"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368601"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Apache Spark-taken optimaliseren in Azure Synapse Analytics (preview)
 
@@ -52,7 +52,7 @@ Eerdere Spark-versies gebruiken RDD’s voor gegevensabstractie. In Spark 1.3 en
 
 Spark biedt ondersteuning voor veel indelingen, zoals csv, json, xml, parquet, orc en avro. Spark kan worden uitgebreid om ondersteuning te bieden voor veel meer indelingen met externe gegevensbronnen. Raadpleeg [Apache Spark-pakketten](https://spark-packages.org) voor meer informatie.
 
-De beste indeling voor prestaties is parquet met *snappy-compressie*. Dit is de standaardinstelling in Spark 2.x. Met parquet worden gegevens opgeslagen in de kolomindeling. Parquet is bovendien zeer geoptimaliseerd in Spark. Daarnaast kan de *snappy-compressie* resulteren in grotere bestanden dan bijvoorbeeld gzip-compressie. Vanwege de splitsbare aard van deze bestanden, kunnen ze sneller worden gedecomprimeerd]
+De beste indeling voor prestaties is parquet met *snappy-compressie*. Dit is de standaardinstelling in Spark 2.x. Met parquet worden gegevens opgeslagen in de kolomindeling. Parquet is bovendien zeer geoptimaliseerd in Spark. Daarnaast kan de *snappy-compressie* resulteren in grotere bestanden dan bijvoorbeeld gzip-compressie. Vanwege de splitsbare aard van deze bestanden, kunnen ze sneller worden gedecomprimeerd.
 
 ## <a name="use-the-cache"></a>De cache gebruiken
 
@@ -103,7 +103,7 @@ U kunt partitionering en bucketing gelijktijdig gebruiken.
 
 ## <a name="optimize-joins-and-shuffles"></a>Joins en shuffles optimaliseren
 
-Als er sprake is van langzame taken voor een join of shuffle, wordt dit waarschijnlijk veroorzaakt door *gegevensverschil*, wat asymmetrie is in uw taakgegevens. Een toewijzingstaak kan bijvoorbeeld 20 seconden duren, maar het duurt uren om een taak uit te voeren waarvan de gegevens zijn gekoppeld (join) of in een willekeurige volgorde geplaatst (shuffle). Als u gegevensverschil wilt oplossen, moet u salt toevoegen aan de hele sleutel, of een *geïsoleerde salt* gebruiken voor slechts enkele sleutelsubsets. Als u een geïsoleerde salt gebruikt, moet u verder filteren om uw sleutelsubset waaraan salt is toegevoegd, te isoleren in toewijzings-joins. Een andere optie is om eerst een bucketkolom en een samenvoeging vooraf te introduceren in buckets.
+Als er sprake is van langzame taken voor een join of shuffle, wordt dit waarschijnlijk veroorzaakt door *gegevensverschil* , wat asymmetrie is in uw taakgegevens. Een toewijzingstaak kan bijvoorbeeld 20 seconden duren, maar het duurt uren om een taak uit te voeren waarvan de gegevens zijn gekoppeld (join) of in een willekeurige volgorde geplaatst (shuffle). Als u gegevensverschil wilt oplossen, moet u salt toevoegen aan de hele sleutel, of een *geïsoleerde salt* gebruiken voor slechts enkele sleutelsubsets. Als u een geïsoleerde salt gebruikt, moet u verder filteren om uw sleutelsubset waaraan salt is toegevoegd, te isoleren in toewijzings-joins. Een andere optie is om eerst een bucketkolom en een samenvoeging vooraf te introduceren in buckets.
 
 Een andere factor die langzame joins veroorzaakt, kan het jointype zijn. Spark maakt standaard gebruik van het jointype `SortMerge`. Dit jointype is het meest geschikt voor grote gegevenssets, maar zorgt wel voor hoge rekenkosten, omdat eerst de linker- en rechterzijden van gegevens moeten worden geordend voordat u ze samenvoegt.
 
@@ -178,6 +178,6 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Apache Spark afstemmen](https://spark.apache.org/docs/latest/tuning.html)
+- [Apache Spark afstemmen](https://spark.apache.org/docs/2.4.5/tuning.html)
 - [Uw Apache Spark-taken effectief afstemmen zodat ze werken](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 - [Kryo-serialisatie](https://github.com/EsotericSoftware/kryo)

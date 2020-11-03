@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: cb0d9ff1074ba1a309cf4f5a8cad12f34335e435
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2db80cdba778d868d90d5278005791257acb0ed3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989445"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548063"
 ---
 Ga aan de slag met de Azure Content Moderator-clientbibliotheek voor .NET. Voer deze stappen uit om het NuGet-pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. 
 
@@ -34,7 +34,7 @@ Gebruik de Content Moderator-clientbibliotheek voor .NET om:
 
 * Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
 * De [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) of de huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
-* Zodra u een Azure-abonnement hebt, kunt u <a href="https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account"  title="Een [productnaam]-resource maken"  target="_blank">een Content Moderator-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
+* Zodra u een Azure-abonnement hebt, kunt u <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title="Een Content Moderator-resource maken"  target="_blank">een Content Moderator-resource maken <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
     * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met Content Moderator. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
@@ -48,7 +48,7 @@ Maak met behulp van Visual Studio een nieuwe .NET Core-toepassing.
 
 ### <a name="install-the-client-library"></a>De clientbibliotheek installeren 
 
-Nadat u een nieuw project hebt gemaakt, installeert u de clientbibliotheek door in **Solution Explorer** met de rechtermuisknop op de projectoplossing te klikken en **NuGet-pakketten beheren** te selecteren. Selecteer in de package manager die wordt geopend de optie **Bladeren**, schakel **Prerelease opnemen** in en zoek naar `Microsoft.Azure.CognitiveServices.ContentModerator`. Selecteer versie `2.0.0` en vervolgens **Installeren**. 
+Nadat u een nieuw project hebt gemaakt, installeert u de clientbibliotheek door in **Solution Explorer** met de rechtermuisknop op de projectoplossing te klikken en **NuGet-pakketten beheren** te selecteren. Selecteer in de package manager die wordt geopend de optie **Bladeren** , schakel **Prerelease opnemen** in en zoek naar `Microsoft.Azure.CognitiveServices.ContentModerator`. Selecteer versie `2.0.0` en vervolgens **Installeren**. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -140,11 +140,11 @@ Instantieer in een nieuwe methode clientobjecten met uw eindpunt en sleutel.
 
 ## <a name="moderate-text"></a>Tekst modereren
 
-In de volgende code wordt een Content Moderator-client gebruikt om een stuk tekst te analyseren en de resultaten af te drukken naar de console. Definieer in- en uitvoerbestanden in de hoofdsectie van uw **Program**-klasse:
+In de volgende code wordt een Content Moderator-client gebruikt om een stuk tekst te analyseren en de resultaten af te drukken naar de console. Definieer in- en uitvoerbestanden in de hoofdsectie van uw **Program** -klasse:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_text_vars)]
 
-Voeg vervolgens een *TextFile.txt*-bestand toe aan de hoofdmap van uw project. Voeg uw eigen tekst toe aan dit bestand, of gebruik de volgende voorbeeldtekst:
+Voeg vervolgens een *TextFile.txt* -bestand toe aan de hoofdmap van uw project. Voeg uw eigen tekst toe aan dit bestand, of gebruik de volgende voorbeeldtekst:
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
@@ -152,7 +152,7 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
 
-Definieer vervolgens de tekstmoderatiemethode ergens in uw **Program**-klasse:
+Definieer vervolgens de tekstmoderatiemethode ergens in uw **Program** -klasse:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod)]
 
@@ -165,11 +165,11 @@ In de volgende code wordt een Content Moderator-client samen met een [ImageModer
 
 ### <a name="get-sample-images"></a>Voorbeeldafbeeldingen ophalen
 
-Definieer uw in- en uitvoerbestanden in de hoofdmap van de klasse **Programma**:
+Definieer uw in- en uitvoerbestanden in de hoofdmap van de klasse **Programma** :
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
-Maak vervolgens het invoerbestand, *ImageFiles.txt*, in de hoofdmap van uw project. In dit bestand voegt u de URL's van te analyseren afbeeldingen toe, met&mdash;één URL per regel. U kunt de volgende voorbeeldafbeeldingen gebruiken:
+Maak vervolgens het invoerbestand, *ImageFiles.txt* , in de hoofdmap van uw project. In dit bestand voegt u de URL's van te analyseren afbeeldingen toe, met&mdash;één URL per regel. U kunt de volgende voorbeeldafbeeldingen gebruiken:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -178,13 +178,13 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="define-helper-class"></a>Helperklasse definiëren
 
-Voeg de volgende klassedefinitie toe in de **Program**-klasse. Deze binnenklasse handelt afbeeldingsmoderatieresultaten af.
+Voeg de volgende klassedefinitie toe in de **Program** -klasse. Deze binnenklasse handelt afbeeldingsmoderatieresultaten af.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_dataclass)]
 
 ### <a name="define-the-image-moderation-method"></a>De methode voor het modereren van afbeeldingen definiëren
 
-De volgende methode doorloopt de afbeeldings-URL's in een tekstbestand, maakt een **EvaluationData**-instantie en analyseert de afbeelding op inhoud voor volwassenen, tekst en menselijke gezichten. Vervolgens wordt de **EvaluationData** instantie toegevoegd aan een lijst en wordt de volledige lijst met geretourneerde gegevens naar de console geschreven.
+De volgende methode doorloopt de afbeeldings-URL's in een tekstbestand, maakt een **EvaluationData** -instantie en analyseert de afbeelding op inhoud voor volwassenen, tekst en menselijke gezichten. Vervolgens wordt de **EvaluationData** instantie toegevoegd aan een lijst en wordt de volledige lijst met geretourneerde gegevens naar de console geschreven.
 
 #### <a name="iterate-through-images"></a>Afbeeldingen doorlopen
 
@@ -208,19 +208,19 @@ De methode in deze sectie gebruikt de [Reviews](https://docs.microsoft.com/dotne
 
 ### <a name="get-sample-images"></a>Voorbeeldafbeeldingen ophalen
 
-Declareer de volgende matrix in de hoofdsectie van uw **Program**-klasse. Deze variabele verwijst naar een voorbeeldafbeelding die moet worden gebruikt om de beoordeling te maken.
+Declareer de volgende matrix in de hoofdsectie van uw **Program** -klasse. Deze variabele verwijst naar een voorbeeldafbeelding die moet worden gebruikt om de beoordeling te maken.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_urls)]
 
 ### <a name="get-review-credentials"></a>Beoordelingsreferentie ophalen
 
-Meld u aan bij het [beoordelingsprogramma](https://contentmoderator.cognitive.microsoft.com) en haal uw teamnaam op. Wijs deze toe aan de juiste variabele in de **Program**-klasse. U kunt desgewenst een callback-eindpunt instellen om updates te ontvangen over de activiteit van de beoordeling.
+Meld u aan bij het [beoordelingsprogramma](https://contentmoderator.cognitive.microsoft.com) en haal uw teamnaam op. Wijs deze toe aan de juiste variabele in de **Program** -klasse. U kunt desgewenst een callback-eindpunt instellen om updates te ontvangen over de activiteit van de beoordeling.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_vars)]
 
 ### <a name="define-helper-class"></a>Helperklasse definiëren
 
-Voeg de volgende klassedefinitie toe in uw **Program**-klasse. Deze klasse wordt gebruikt om één beoordelingsinstantie te vertegenwoordigen die naar het beoordelingsprogramma wordt verzonden.
+Voeg de volgende klassedefinitie toe in uw **Program** -klasse. Deze klasse wordt gebruikt om één beoordelingsinstantie te vertegenwoordigen die naar het beoordelingsprogramma wordt verzonden.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_item)]
 
@@ -232,7 +232,7 @@ Voeg de volgende methode toe aan de klasse **Program**. Deze methode schrijft de
 
 ### <a name="define-the-review-creation-method"></a>De methode voor het maken van beoordelingen definiëren
 
-Nu bent u klaar om de methode te definiëren waarmee het maken van beoordelingen en het opvragen ervan wordt afgehandeld. Voeg een nieuwe methode toe, **CreateReviews**, definieer de volgende lokale variabelen.
+Nu bent u klaar om de methode te definiëren waarmee het maken van beoordelingen en het opvragen ervan wordt afgehandeld. Voeg een nieuwe methode toe, **CreateReviews** , definieer de volgende lokale variabelen.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_fields)]
 

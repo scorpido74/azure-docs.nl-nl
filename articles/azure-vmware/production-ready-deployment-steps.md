@@ -3,18 +3,18 @@ title: De implementatie van Azure VMware Solution plannen
 description: In dit artikel vindt u een overzicht van de implementatiewerkstroom voor Azure VMware Solution.  Het uiteindelijke resultaat is een omgeving die gereed is om virtuele machines te maken en te migreren.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7914176174a38fef2336fc52eae7501780057452
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147991"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517358"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>De implementatie van Azure VMware Solution plannen
 
-In dit artikel laten we u het planningsproces zien om gegevens die gebruikt worden tijdens de implementatie te identificeren en te verzamelen. Zorg dat u bij het plannen van uw implementatie alle verzamelde informatie documenteert om er tijdens de implementatie snel naar te kunnen verwijzen.
+In dit artikel wordt het planningsproces getoond om gegevens die gebruikt worden tijdens de implementatie te identificeren en te verzamelen. Zorg dat u bij het plannen van uw implementatie alle verzamelde informatie documenteert om er tijdens de implementatie snel naar te kunnen verwijzen.
 
-De processen van deze snelstart resulteren in een omgeving die gereed is om virtuele machines te maken en te migreren. 
+De processen van deze quickstart zorgen voor een omgeving die gereed is om virtuele machines (VM's) te maken en te migreren. 
 
 >[!IMPORTANT]
 >Voordat u uw Azure VMware Solution-resource maakt, is het raadzaam het artikel [Een Azure VMware Solution-resouce inschakelen](enable-azure-vmware-solution.md) voor het inienen van een ondersteuningsticket om uw knooppunten te laten toewijzen. Zodra het ondersteuningsteam uw aanvraag heeft ontvangen, duurt het maximaal vijf werkdagen om uw aanvraag te bevestigen en uw knooppunten toe te wijzen. Als u een bestaande privécloud van Azure VMware Solution hebt en u meer knooppunten wilt toewijzen, dan volgt u hetzelfde proces. 
@@ -73,13 +73,13 @@ Zie de [Controlelijst voor netwerkplanning](tutorial-network-checklist.md#routin
 
 Identificeer een IP-segment om uw eerste netwerk (NSX-segment) in uw privécloud te maken.  U moet met andere woorden een netwerksegment maken op Azure VMware Solution, zodat u virtuele machines kunt implementeren in Azure VMware Solution.   
 
-Zelfs als u alleen van plan bent om L2-netwerken uit te breiden, maakt u een netwerksegment dat van pas zal komen om de omgeving te valideren.
+Zelfs als u alleen van plan bent om L2-netwerken uit te breiden, maakt u een netwerksegment waarmee de omgeving kan worden gevalideerd.
 
 Houd er rekening mee dat alle gemaakte IP-segmenten uniek moeten zijn binnen uw configuratie in Azure en on-premises.  
 
 **Voorbeeld:** 10.0.4.0/24
 
-:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identificeren - IP-adressegment" border="false":::     
+:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identificeren - IP-adressegment voor workloads van virtuele machines" border="false":::     
 
 ## <a name="optional-extend-networks"></a>(Optioneel) Netwerken uitbreiden
 
@@ -92,11 +92,11 @@ Denk hierbij aan het volgende:
 
 ## <a name="expressroute-global-reach-peering-network"></a>ExpressRoute Global Reach-peeringnetwerk
 
-Een adresblok van een `/29` CIDR-netwerk identificeren, zoals vereist voor ExpressRoute Global Reach-peering. Houd er rekening mee dat alle gemaakte IP-segmenten uniek moeten zijn binnen uw configuratie in Azure VMware Solution en on-premises. De IP-adressen in dit segment worden gebruikt aan elk uiteinde van de ExpressRoute Global Reach-verbinding om het Azure VMware Solution ExpressRoute-circuit te verbinden met het on-premises ExpressRoute-circuit. 
+Identificeer een adresblok van een `/29` CIDR-netwerk, zoals vereist voor ExpressRoute Global Reach-peering. Houd er rekening mee dat alle gemaakte IP-segmenten uniek moeten zijn binnen uw configuratie in Azure VMware Solution en on-premises. De IP-adressen in dit segment worden gebruikt aan elk uiteinde van de ExpressRoute Global Reach-verbinding om het Azure VMware Solution ExpressRoute-circuit te verbinden met het on-premises ExpressRoute-circuit. 
 
 **Voorbeeld:** 10.1.0.0/29
 
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Identificeren - IP-adressegment" border="false":::
+:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Identificeren - ExpressRoute Global Reach-peeringnetwerk" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure Virtual Network om Azure VMware Solution toe te voegen
 
@@ -119,7 +119,7 @@ In beide gevallen kunt u documenteren wat u in deze stap wilt doen.
 >[!NOTE]
 >Dit virtueel netwerk is zichtbaar voor uw on-premises omgeving en Azure VMware Solution. Zorg er dus voor dat het IP-segment dat u in dit virtueel netwerk gebruikt en subnetten niet overlappen.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identificeren - IP-adressegment" border="false":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identiteit - Azure Virtual Network om Azure VMware Solution toe te voegen" border="false":::
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX-netwerksegmenten
 
@@ -128,7 +128,7 @@ VMware HCX is een technologie die deel uitmaakt van Azure VMware Solution. De vo
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u de benodigde informatie hebt verzameld en gedocumenteerd, gaat u verder naar het volgende onderdeel om uw Azure VMware Solution-privécloud te maken.
+Nu u de benodigde informatie hebt verzameld en gedocumenteerd, gaat u verder naar de volgende sectie om uw Azure VMware Solution-privécloud te maken.
 
 > [!div class="nextstepaction"]
 > [Azure VMware Solution implementeren](deploy-azure-vmware-solution.md)

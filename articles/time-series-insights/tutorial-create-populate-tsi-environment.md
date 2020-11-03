@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6037ece7f4cbe0edc9cf44bded3ee34815f76a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d504cbe9c2ac9046a34187d4a5576385b1f73bbe
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620202"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518106"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Zelfstudie: Een Azure Time Series Insights Gen1-omgeving maken
 
@@ -36,7 +36,7 @@ Deze zelfstudie begeleidt u bij het maken van een Azure Time Series Insights-omg
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Uw Azure-aanmeldingsaccount moet ook lid zijn van de rol **Eigenaar** van het abonnement. Lees [Manage access by using role-based access control and the Azure portal](../role-based-access-control/role-assignments-portal.md) (Toegang beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal) voor meer informatie.
+* Uw Azure-aanmeldingsaccount moet ook lid zijn van de rol **Eigenaar** van het abonnement. Lees [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure Portal](../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 ## <a name="review-video"></a>Video bekijken
 
@@ -184,9 +184,9 @@ In deze zelfstudie worden verschillende werkende Azure-services gemaakt om de Az
 
 In het menu aan de linkerkant van de Azure-portal doet u het volgende:
 
-1. Selecteer het pictogram **Resourcegroepen**. Selecteer vervolgens de resourcegroep die u hebt gemaakt voor de Azure Time Series Insights-omgeving. Selecteer bovenaan de pagina **Resourcegroep verwijderen**, voer de naam van de resourcegroep in en selecteer **Verwijderen**.
+1. Selecteer het pictogram **Resourcegroepen**. Selecteer vervolgens de resourcegroep die u hebt gemaakt voor de Azure Time Series Insights-omgeving. Selecteer bovenaan de pagina **Resourcegroep verwijderen** , voer de naam van de resourcegroep in en selecteer **Verwijderen**.
 
-1. Selecteer het pictogram **Resourcegroepen**. Selecteer vervolgens de resourcegroep die is gemaakt met de oplossingsverbetering voor apparaatsimulatie. Selecteer bovenaan de pagina **Resourcegroep verwijderen**, voer de naam van de resourcegroep in en selecteer **Verwijderen**.
+1. Selecteer het pictogram **Resourcegroepen**. Selecteer vervolgens de resourcegroep die is gemaakt met de oplossingsverbetering voor apparaatsimulatie. Selecteer bovenaan de pagina **Resourcegroep verwijderen** , voer de naam van de resourcegroep in en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

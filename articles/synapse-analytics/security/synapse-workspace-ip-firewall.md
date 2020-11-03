@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2bac9645fa66cd33c7cda79f16628c1104e27d7d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87503919"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480544"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>IP-firewallregels voor Azure Synapse Analytics (preview-versie)
 
@@ -27,7 +27,7 @@ IP-firewallregels verlenen of blokkeren toegang tot uw Synapse-werkruimte op bas
 
 Er zijn twee manieren om IP-firewallregels toe te voegen aan een Synapse-werkruimte. Als u een IP-firewall wilt toevoegen aan uw werkruimte, selecteert u **Beveiliging en netwerk** en selecteert u **Verbindingen vanaf alle IP-adressen toestaan** tijdens het maken van de werkruimte.
 
-![IP-configuratie van Synapse-werkruimte in de Azure-portal.](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
+![Schermopname waarin de knop Beveiliging en netwerken is gemarkeerd.](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
 
 ![IP-configuratie van Synapse-werkruimte in de Azure-portal.](./media/synpase-workspace-ip-firewall/ip-firewall-2.png)
 

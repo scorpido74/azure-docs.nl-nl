@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.openlocfilehash: f681dd2931300ec00fd6388b4636015c87f38170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525068"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92509961"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met SiteIntel
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u SiteIntel integreert met Azure Active Directory
 * Ervoor zorgen dat uw gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij SiteIntel.
 * Uw accounts op een centrale locatie beheren, namelijk de Azure-portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding van Azure Active Directory?) voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding van Azure Active Directory?) voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * SiteIntel ondersteunt door SP geïnitieerde en door IdP geïnitieerde SSO.
-* Zodra u SiteIntel hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u SiteIntel hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-siteintel-from-the-gallery"></a>SiteIntel toevoegen vanuit de galerie
 
@@ -50,8 +50,8 @@ Als u de integratie van SiteIntel met Azure AD wilt configureren, moet u SiteInt
 1. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **SiteIntel**in het vak **Toevoegen uit de galerie**.
-1. Selecteer in de lijst met resultaten **SiteIntel**en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
+1. Typ **SiteIntel** in het vak **Toevoegen uit de galerie**.
+1. Selecteer in de lijst met resultaten **SiteIntel** en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-siteintel"></a>Eenmalige aanmelding van Azure AD configureren en testen voor SiteIntel
 
@@ -81,7 +81,7 @@ Ga als volgt te werk om eenmalige aanmelding van Azure AD in te schakelen in de 
 
    ![Schermopname van het deelvenster Eenmalige aanmelding instellen met SAML](common/edit-urls.png)
 
-1. Als u de toepassing in de door de IDP geïnitieerde modus wilt configureren, voert u de volgende stappen uit in de sectie **Standaard SAML-configuratie**:
+1. Als u de toepassing in de door de IDP geïnitieerde modus wilt configureren, voert u de volgende stappen uit in de sectie **Standaard SAML-configuratie** :
 
     a. In het tekstvak **Id** typt u een URL met de volgende indeling: `urn:amazon:cognito:sp:<REGION>_<USERPOOLID>`
 
@@ -106,7 +106,7 @@ In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-po
 
 1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Ga als volgt te werk in het eigenschappenvenster van de**gebruiker**:
+1. Ga als volgt te werk in het eigenschappenvenster van de **gebruiker** :
 
    a. Voer in het vak **Naam** de naam **B.Simon** in.  
 
@@ -140,19 +140,19 @@ Als u eenmalige aanmelding wilt configureren in SiteIntel, verzendt u de URL die
 
 ### <a name="create-a-siteintel-test-user"></a>Een SiteIntel-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam *B.Simon* in SiteIntel. Werk samen met het  [ondersteuningsteam van SiteIntel](mailto:support@intalytics.com) om de gebruikers toe te voegen op het SiteIntel-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam *B.Simon* in SiteIntel. Neem contact op met het [ondersteuningsteam van SiteIntel](mailto:support@intalytics.com) om de gebruikers toe te voegen in het SiteIntel-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel **SiteIntel** selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij het exemplaar van SiteIntel toegangsvenster waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel **SiteIntel** selecteert in het toegangsvenster, zou u automatisch moeten worden aangemeld bij het exemplaar van SiteIntel toegangsvenster waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Single sign-on to applications in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Eenmalige aanmelding bij toepassingen met Azure Active Directory)
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
+- [Single sign-on to applications in Azure Active Directory](../manage-apps/what-is-single-sign-on.md) (Eenmalige aanmelding bij toepassingen met Azure Active Directory)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 - [SiteIntel uitproberen met Azure AD](https://aad.portal.azure.com/)
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [SiteIntel beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [SiteIntel beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)

@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: 0fe9d59e97ebbc9aba17fea14aed43756300d56e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 8b87d9d487257504a438cf13a5b94e3ca4f9233d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90528586"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426371"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Een Python-apparaat inrichten met symmetrische sleutels
 
-In deze quickstart leert u hoe u een Windows-ontwikkelcomputer kunt inrichten als een apparaat op een IoT-hub met Python. Dit apparaat maakt gebruik van een symmetrische sleutel voor verificatie met een Device Provisioning Service-exemplaar om te kunnen worden toegewezen aan een IoT-hub. Het geverifieerde apparaat wordt herkend door DPS op basis van een afzonderlijke inschrijving en toegewezen aan een IoT-hub. Voorbeeldcode van de [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) wordt gebruikt om het apparaat in te richten. 
+In deze quickstart leert u hoe u een Windows-ontwikkelcomputer kunt inrichten als een apparaat op een IoT-hub met Python. Dit apparaat maakt gebruik van een symmetrische sleutel en een afzonderlijke inschrijving voor verificatie met een Device Provisioning Service-exemplaar om te kunnen worden toegewezen aan een IoT-hub. Voorbeeldcode van de [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) wordt gebruikt om het apparaat in te richten. 
 
 Hoewel dit artikel laat zien hoe u een inrichting maakt met een afzonderlijke inschrijving, kunt u dezelfde procedures ook gebruiken voor inschrijvingsgroepen. Er zijn enkele verschillen bij het gebruik van inschrijvingsgroepen. U moet bijvoorbeeld een afgeleide apparaatsleutel gebruiken met een unieke registratie-ID voor het apparaat. Hoewel inschrijvingsgroepen met symmetrische sleutel niet tot oudere apparaten beperkt zijn, biedt [Oudere apparaten inrichten door middel van attestation met een symmetrische sleutel](how-to-legacy-device-symm-key.md) een voorbeeld van een inschrijvingsgroep. Zie [Groepsinschrijvingen voor attestation met behulp van een symmetrische sleutel](concepts-symmetric-key-attestation.md#group-enrollments) voor meer informatie.
 
@@ -42,19 +42,19 @@ Dit artikel is gericht op een Windows-gebaseerd werkstation. U kunt de procedure
 
 ## <a name="prepare-the-python-sdk-environment"></a>De python-SDK-omgeving voorbereiden 
 
-1. Zorg ervoor dat Git op de computer is geïnstalleerd en is toegevoegd aan de omgevingsvariabelen die voor het opdrachtvenster toegankelijk zijn. Zie [Software Freedom Conservancy's Git client tools](https://git-scm.com/download/) (Git-clienthulpprogramma's van Software Freedom Conservancy) om de nieuwste versie van `git`-hulpprogramma's te installeren, waaronder **Git Bash**, de opdrachtregel-app die u kunt gebruiken voor interactie met de lokale Git-opslagplaats. 
+1. Zorg ervoor dat Git op de computer is geïnstalleerd en is toegevoegd aan de omgevingsvariabelen die voor het opdrachtvenster toegankelijk zijn. Zie [Software Freedom Conservancy's Git client tools](https://git-scm.com/download/) (Git-clienthulpprogramma's van Software Freedom Conservancy) om de nieuwste versie van `git`-hulpprogramma's te installeren, waaronder **Git Bash** , de opdrachtregel-app die u kunt gebruiken voor interactie met de lokale Git-opslagplaats. 
 
 2. Open een opdrachtprompt. Kloon de GitHub-opslagplaats voor de Azure IoT python SDK:
     
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-python.git --recursive
     ```
-3. Ga naar de `azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios`-directory waarin het voorbeeldbestand, _provision_symmetric_key. py_, zich bevindt.
+3. Ga naar de `azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios`-directory waarin het voorbeeldbestand, _provision_symmetric_key. py_ , zich bevindt.
    
    ```console
    cd azure-iot-sdk-python\azure-iot-device\samples\async-hub-scenarios
    ```
-4. Installeer de _azure-iot-device_-bibliotheek door de volgende opdracht uit te voeren.
+4. Installeer de _azure-iot-device_ -bibliotheek door de volgende opdracht uit te voeren.
 
     ```console
     pip install azure-iot-device
@@ -71,9 +71,9 @@ Dit artikel is gericht op een Windows-gebaseerd werkstation. U kunt de procedure
 
    - **Mechanisme:** selecteer **Symmetrische sleutel** als *mechanisme* voor identiteitscontrole.
 
-   - **Automatisch sleutels genereren**: schakel dit selectievakje in.
+   - **Automatisch sleutels genereren** : schakel dit selectievakje in.
 
-   - **Registratie-ID**: voer een registratie-ID voor het identificeren van de inschrijving. Gebruik alleen kleine alfanumerieke tekens en streepjes ('-'). Bijvoorbeeld **symm-key-python-device-008**.
+   - **Registratie-ID** : voer een registratie-ID voor het identificeren van de inschrijving. Gebruik alleen kleine alfanumerieke tekens en streepjes ('-'). Bijvoorbeeld **symm-key-python-device-008**.
 
    - **IoT Hub apparaat-ID:** voer een apparaat-ID in. Bijvoorbeeld **python-device-008**.
 

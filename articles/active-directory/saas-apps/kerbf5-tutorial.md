@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: fe0f2b0efa3f089398493cf30012e34097e065ec
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944274"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met F5
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u F5 integreert met Azure Active Directory (Azure
 * Uw gebruikers zich met hun Azure AD-account automatisch laten aanmelden bij F5.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -168,9 +168,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory** , selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
@@ -285,7 +285,7 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
 
 4. Typ in het veld **Domain Name** de naam van het Windows-domein.
 
-5. Selecteer een van de volgende opties voor de instelling **Server Connection**:
+5. Selecteer een van de volgende opties voor de instelling **Server Connection** :
 
    * Selecteer **Use Pool** om hoge beschikbaarheid in te stellen voor de AAA-server.
 
@@ -360,18 +360,18 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
 
      ![Schermopname van het venster 'Edit SAML IdPs that use this SP' (SAML IdP's bewerken die deze SP gebruiken) met de knop 'Add New Row' (Nieuwe rij toevoegen) geselecteerd.](./media/kerbf5-tutorial/configure28.png)
 
-1. Voor het configureren van eenmalige aanmelding met Kerberos navigeert u naar **Access > Single Sign-on > Kerberos**, vult u de gegevens in en klikt u op **Finished**.
+1. Voor het configureren van eenmalige aanmelding met Kerberos navigeert u naar **Access > Single Sign-on > Kerberos** , vult u de gegevens in en klikt u op **Finished**.
 
     >[!Note]
     > U moet het Kerberos-delegatieaccount maken en opgeven. Verwijzen naar KCD-sectie (verwijzen naar bijlage voor referenties voor variabelen)
 
-    * **Username Source**: session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **Username Source** : session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
 
-    * **User Realm Source**: session.logon.last.domain
+    * **User Realm Source** : session.logon.last.domain
 
         ![Schermopname van de pagina Single Sign-On - Properties met de tekstvakken Username Source en User Realm Source geselecteerd.](./media/kerbf5-tutorial/configure29.png)
 
-1. Voor het configureren van het toegangsprofiel navigeert u naar **Access > Profile/Policies > Access Profile (per session policies)** , klikt u op **Create**, vult u de volgende informatie in en klikt u op **Finished**.
+1. Voor het configureren van het toegangsprofiel navigeert u naar **Access > Profile/Policies > Access Profile (per session policies)** , klikt u op **Create** , vult u de volgende informatie in en klikt u op **Finished**.
 
     * Naam: KerbApp200
     * Profile Type: Alle
@@ -414,7 +414,7 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
     * **mcget {session.logon.last.username}**
     * **mcget {session.logon.last.password**
 
-1. Voor het toevoegen van een nieuw knooppunt navigeert u naar **Local Traffic > Nodes > Node List, klikt u op Create**, voert u de volgende gegevens in en klikt u op **Finished**.
+1. Voor het toevoegen van een nieuw knooppunt navigeert u naar **Local Traffic > Nodes > Node List, klikt u op Create** , voert u de volgende gegevens in en klikt u op **Finished**.
 
     * Naam: KerbApp200
     * Beschrijving: KerbApp200
@@ -422,7 +422,7 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
 
         ![Schermopname van de pagina New Node met de tekstvakken Name, Description en Address gemarkeerd en de knop Finished geselecteerd.](./media/kerbf5-tutorial/configure39.png)
 
-1. Voor het maken van een nieuwe pool navigeert u naar **Local Traffic > Pools > Pool List, klikt u op Create**, voert u de volgende gegevens in en klikt u op **Finished**.
+1. Voor het maken van een nieuwe pool navigeert u naar **Local Traffic > Pools > Pool List, klikt u op Create** , voert u de volgende gegevens in en klikt u op **Finished**.
 
     * Naam: KerbApp200-Pool
     * Beschrijving: KerbApp200-Pool
@@ -472,25 +472,24 @@ U configureert een Active Directory AAA-server in Access Policy Manager (APM) om
 
 ### <a name="create-f5-test-user"></a>Een F5-testgebruiker maken
 
-In dit gedeelte maakt u in F5 een gebruiker met de naam B.Simon. Werk samen met het  [ondersteuningsteam van F5 Client](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om de gebruikers toe te voegen in het F5-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
+In dit gedeelte maakt u in F5 een gebruiker met de naam B.Simon. Neem contact op met het [ondersteuningsteam van F5 Client](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om de gebruikers toe te voegen in het F5-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel F5 in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van F5 waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel F5 in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van F5 waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](./tutorial-list.md) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [F5 proberen met Azure AD](https://aad.portal.azure.com/)
 
 - [Eenmalige aanmelding bij F5 configureren voor op een header gebaseerde toepassing](headerf5-tutorial.md)
 
 - [Eenmalige aanmelding bij F5 configureren voor geavanceerde Kerberos-toepassing](advance-kerbf5-tutorial.md)
-

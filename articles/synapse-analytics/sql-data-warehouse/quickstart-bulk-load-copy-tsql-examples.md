@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569473"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503263"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Gegevens veilig laden met Synapse SQL
 
@@ -97,7 +97,7 @@ Beheerde identiteitsverificatie is vereist wanneer uw opslagaccount is gekoppeld
     > [!IMPORTANT]
     > Geef de Azure-rol Eigenaar, Inzender of Lezer van **Storage** **Blob-gegevens** op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer. 
 
-    ![RBAC-machtiging verlenen om te laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Azure RBAC-machtiging verlenen om te laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 4. U kunt nu de instructie COPY uitvoeren om een "Beheerde identiteit" op te geven:
 
@@ -118,7 +118,7 @@ Beheerde identiteitsverificatie is vereist wanneer uw opslagaccount is gekoppeld
     > [!IMPORTANT]
     > Geef de Azure-rol Eigenaar, Inzender of Lezer van **Storage** **Blob-gegevens** op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer.
 
-    ![RBAC-machtiging verlenen om te laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Azure RBAC-machtiging verlenen om te laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. Configureer Azure AD-verificatie door middel van de volgende [documentatie](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server). 
 
