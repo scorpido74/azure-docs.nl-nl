@@ -1,17 +1,17 @@
 ---
 title: Open bare toegang tot het netwerk weigeren-Azure Portal-Azure Database for PostgreSQL-één server
 description: Meer informatie over het configureren van toegang tot open bare netwerken met behulp van Azure Portal voor uw Azure Database for PostgreSQL enkele server
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 1dfc8d473d0cfe663569d2508404bf190f2da841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd777fe42dc8fa3ec4643fa9607f5ca8b7aac795
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901585"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240321"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Open bare netwerk toegang tot Azure Database for PostgreSQL één server weigeren met Azure Portal
 
@@ -29,9 +29,9 @@ Volg deze stappen voor het instellen van PostgreSQL single server toegang tot op
 
 1. Selecteer uw bestaande Azure Database for PostgreSQL enkele server in de [Azure Portal](https://portal.azure.com/).
 
-1. Klik op de pagina PostgreSQL Eén server onder **instellingen**op **verbindings beveiliging** om de pagina verbindings beveiliging configureren te openen.
+1. Klik op de pagina PostgreSQL Eén server onder **instellingen** op **verbindings beveiliging** om de pagina verbindings beveiliging configureren te openen.
 
-1. Selecteer in **open bare netwerk toegang weigeren**de optie **Ja** om open bare toegang voor uw postgresql één server in te scha kelen.
+1. Selecteer in **open bare netwerk toegang weigeren** de optie **Ja** om open bare toegang voor uw postgresql één server in te scha kelen.
 
     :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access.PNG" alt-text="Azure Database for PostgreSQL afzonderlijke server netwerk toegang weigeren":::
 
@@ -39,7 +39,7 @@ Volg deze stappen voor het instellen van PostgreSQL single server toegang tot op
 
 1. Bij een melding wordt bevestigd dat de instelling verbindings beveiliging is ingeschakeld.
 
-    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="Azure Database for PostgreSQL afzonderlijke server netwerk toegang weigeren":::
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="Azure Database for PostgreSQL één server netwerk toegang is geweigerd":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

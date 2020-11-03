@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: f44641dae7d8449f6dad1eb6ce34971d3e60433e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a8c0dee3a27fe1fe47b50cad1242fb59866261c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960153"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135910"
 ---
 > [!IMPORTANT]
-> Azure Dev Spaces is afgeschaft en wordt op 31 oktober 2023 buiten gebruik gesteld. U kunt [Bridge migreren naar Kubernetes](../articles/dev-spaces/migrate-to-bridge-to-kubernetes.md).
+> Azure Dev Spaces wordt buiten gebruik gesteld en werkt niet meer vanaf 31 oktober 2023. U kunt [Bridge migreren naar Kubernetes](../articles/dev-spaces/migrate-to-bridge-to-kubernetes.md).

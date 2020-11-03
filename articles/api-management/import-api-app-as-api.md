@@ -1,6 +1,6 @@
 ---
 title: Een logische app als API importeren met Azure Portal | Microsoft Docs
-description: Deze zelfstudie laat u zien hoe u API Management (APIM) moet gebruiken om handmatig logische app als API te importeren.
+description: In dit artikel leert u hoe u API Management (APIM) moet gebruiken om handmatig logische app als API te importeren.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 007598046ae64b390d44e61438b69bd26024b1c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41209233ec59f578db4ff7fd344bb96aefeb975e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626884"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146770"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Een API-app importeren als API
 

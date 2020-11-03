@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558632"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145817"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Inleiding tot Azure Defender voor containerregisters
 
@@ -32,6 +32,12 @@ Security Center filtert en classificeert de resultaten van de scanner. Wanneer e
 
 Door alleen een melding te geven als er problemen zijn, vermindert Security Center het potentieel voor ongewenste informatieve waarschuwingen.
 
+
+> [!TIP]
+> Zie voor meer informatie over beveiligingsfuncties voor containers van Security Center:
+>
+> - [Azure Security Center en containerbeveiliging](container-security.md)
+> - [Inleiding tot Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)
 
 ## <a name="when-are-images-scanned"></a>Wanneer worden installatiekopieën gescand?
 
@@ -81,10 +87,5 @@ Ja. Als u een organisatorische behoefte hebt om een resultaat te negeren in plaa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over beveiligingsfuncties voor containers van Security Center:
-
-- [Azure Security Center en containerbeveiliging](container-security.md)
-
-- [Inleiding tot Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)
-
-
+> [!div class="nextstepaction"]
+> [Uw installatiekopieën scannen op kwetsbaarheden](defender-for-container-registries-usage.md)
