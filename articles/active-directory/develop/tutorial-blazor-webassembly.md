@@ -35,10 +35,10 @@ In deze zelfstudie leert u het volgende:
 
 Elke app die gebruikmaakt van Azure Active Directory (Azure AD) voor verificatie moet geregistreerd zijn bij Azure AD. Volg de instructies in [Een toepassing registreren](quickstart-register-app.md) met de volgende specificaties:
 
-- Bij **Ondersteunde accounttypen** selecteert u **Enkel accounts in deze organisatieadreslijst** .
+- Bij **Ondersteunde accounttypen** selecteert u **Enkel accounts in deze organisatieadreslijst**.
 - Kies in de vervolgkeuzelijst **Omleidings-URI** voor **Web** en voer `https://localhost:5001/authentication/login-callback` in. De standaardpoort voor een app die wordt uitgevoerd op Kestrel is 5001. Als de app beschikbaar is op een andere poort, geeft u dat poortnummer op in plaats van `5001`.
 
-Selecteer onder **Verificatie** > **Impliciete toekenning** de selectievakjes voor **Toegangstokens** en **id-tokens** en selecteer de knop **Opslaan** .
+Selecteer onder **Verificatie** > **Impliciete toekenning** de selectievakjes voor **Toegangstokens** en **id-tokens** en selecteer de knop **Opslaan**.
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>De app maken met behulp van de .NET Core CLI
 
@@ -83,10 +83,10 @@ Nu gaat u de registratie en code van de app bijwerken om de e-mailberichten van 
 Voeg eerst de `Mail.Read` API-machtiging toe aan de app-registratie, zodat in Azure AD duidelijk is dat via de app toegang gaat worden aangevraagd tot de e-mail van de bijbehorende gebruikers.
 
 1. Selecteer uw app onder **App-registraties** in het Azure-portaal.
-1. Selecteer onder **Beheren** de optie **API-machtigingen** .
-1. Selecteer **Een machtiging toevoegen** > **Microsoft Graph** .
-1. Selecteer **Gedelegeerde machtigingen** , zoek en selecteer vervolgens de machtiging **Mail.Read** .
-1. Selecteer **Machtigingen toevoegen** .
+1. Selecteer onder **Beheren** de optie **API-machtigingen**.
+1. Selecteer **Een machtiging toevoegen** > **Microsoft Graph**.
+1. Selecteer **Gedelegeerde machtigingen** , zoek en selecteer vervolgens de machtiging **Mail.Read**.
+1. Selecteer **Machtigingen toevoegen**.
 
 Voeg vervolgens het volgende toe aan het *.csproj* -bestand van uw project in de **ItemGroup** netstandard2.1. Hierdoor kunt u in de volgende stap de aangepaste HttpClient maken.
 
