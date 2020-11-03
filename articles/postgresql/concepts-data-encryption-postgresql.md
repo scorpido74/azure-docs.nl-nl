@@ -1,17 +1,17 @@
 ---
 title: Gegevens versleuteling met door de klant beheerde sleutel-Azure Database for PostgreSQL-één server
 description: Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel, kunt u Bring Your Own Key (BYOK) voor gegevens bescherming in rust. Daarnaast kunnen organisaties hiermee een scheiding van taken implementeren bij het beheer van sleutels en gegevens.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c07f59ae183c2d4ac920c6b3773fc6d177622ad2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 078b0fe63cf89f2736a8707ad561c798c4818317
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490183"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242412"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
@@ -35,9 +35,9 @@ Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database f
 
 ## <a name="terminology-and-description"></a>Terminologie en beschrijving
 
-**Gegevens versleutelings sleutel (dek)**: een symmetrische AES256-sleutel die wordt gebruikt om een partitie of gegevens blok te versleutelen. Het versleutelen van elk gegevens blok met een andere sleutel maakt crypto-analyse aanvallen lastiger. Toegang tot DEKs is vereist voor de resource provider of het toepassings exemplaar dat een specifiek blok versleutelt en ontsleutelt. Wanneer u een DEK vervangt door een nieuwe sleutel, moeten alleen de gegevens in het bijbehorende blok opnieuw worden versleuteld met de nieuwe sleutel.
+**Gegevens versleutelings sleutel (dek)** : een symmetrische AES256-sleutel die wordt gebruikt om een partitie of gegevens blok te versleutelen. Het versleutelen van elk gegevens blok met een andere sleutel maakt crypto-analyse aanvallen lastiger. Toegang tot DEKs is vereist voor de resource provider of het toepassings exemplaar dat een specifiek blok versleutelt en ontsleutelt. Wanneer u een DEK vervangt door een nieuwe sleutel, moeten alleen de gegevens in het bijbehorende blok opnieuw worden versleuteld met de nieuwe sleutel.
 
-Sleutel versleutelings **sleutel (KEK)**: een versleutelings sleutel die wordt gebruikt om de DEKs te versleutelen. Een KEK die nooit verlaat Key Vault laat de DEKs zelf versleutelen en beheren. De entiteit die toegang heeft tot de KEK, kan afwijken van de entiteit waarvoor de DEK is vereist. Omdat de KEK is vereist voor het ontsleutelen van de DEKs, is de KEK een specifiek punt waarmee DEKs effectief kan worden verwijderd door het verwijderen van de KEK.
+Sleutel versleutelings **sleutel (KEK)** : een versleutelings sleutel die wordt gebruikt om de DEKs te versleutelen. Een KEK die nooit verlaat Key Vault laat de DEKs zelf versleutelen en beheren. De entiteit die toegang heeft tot de KEK, kan afwijken van de entiteit waarvoor de DEK is vereist. Omdat de KEK is vereist voor het ontsleutelen van de DEKs, is de KEK een specifiek punt waarmee DEKs effectief kan worden verwijderd door het verwijderen van de KEK.
 
 De DEKs, versleuteld met de KEKs, worden afzonderlijk opgeslagen. Alleen een entiteit met toegang tot de KEK kan deze DEKs ontsleutelen. Zie [beveiliging in versleuteling op rest](../security/fundamentals/encryption-atrest.md)voor meer informatie.
 
@@ -47,9 +47,9 @@ De DEKs, versleuteld met de KEKs, worden afzonderlijk opgeslagen. Alleen een ent
 
 Voor een PostgreSQL-server voor het gebruik van door de klant beheerde sleutels die zijn opgeslagen in Key Vault voor het versleutelen van de DEK, geeft een Key Vault-beheerder de volgende toegangs rechten voor de server:
 
-* **ophalen**: voor het ophalen van het open bare onderdeel en de eigenschappen van de sleutel in de sleutel kluis.
-* **wrapKey**: de dek kan worden versleuteld. De versleutelde DEK wordt opgeslagen in de Azure Database for PostgreSQL.
-* **sleutel uitpakken**: de dek kan worden ontsleuteld. Azure Database for PostgreSQL moet de ontsleutelde DEK hebben om de gegevens te versleutelen/ontsleutelen
+* **ophalen** : voor het ophalen van het open bare onderdeel en de eigenschappen van de sleutel in de sleutel kluis.
+* **wrapKey** : de dek kan worden versleuteld. De versleutelde DEK wordt opgeslagen in de Azure Database for PostgreSQL.
+* **sleutel uitpakken** : de dek kan worden ontsleuteld. Azure Database for PostgreSQL moet de ontsleutelde DEK hebben om de gegevens te versleutelen/ontsleutelen
 
 De sleutel kluis beheerder kan [logboek registratie van Key Vault controle gebeurtenissen ook inschakelen](../azure-monitor/insights/key-vault-insights-overview.md), zodat ze later kunnen worden gecontroleerd.
 
@@ -79,7 +79,7 @@ Wanneer u gegevens versleuteling gebruikt door gebruik te maken van een door de 
 * Zorg ervoor dat Key Vault en Azure Database for PostgreSQL enkele server zich in dezelfde regio bevinden, zodat u een snellere toegang hebt tot DEK-terugloop en de bewerking voor het uitpakken.
 * Vergrendel de Azure-sleutel kluis alleen op **privé-eind punten en geselecteerde netwerken** en sta alleen *vertrouwde micro soft* -Services toe om de bronnen te beveiligen.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Diagram waarin een overzicht van Bring Your Own Key wordt weer gegeven":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Trusted-service-with-Azure":::
 
 Hier vindt u aanbevelingen voor het configureren van een door de klant beheerde sleutel:
 
@@ -93,9 +93,9 @@ Wanneer u gegevens versleuteling configureert met een door de klant beheerde sle
 
 * Als we een herstel punt maken op het moment dat de server op uw Azure Database for PostgreSQL één server wordt gemaakt, waarvoor gegevens versleuteling is ingeschakeld, heeft de nieuwe server de status niet *toegankelijk* . U kunt de status van de server via [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) of [cli](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)oplossen.
 * Als we een lees replica maken voor uw Azure Database for PostgreSQL één server waarvoor gegevens versleuteling is ingeschakeld, heeft de replica server de status niet *toegankelijk* . U kunt de status van de server via [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) of [cli](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)oplossen.
-* Als u de sleutel kluis verwijdert, is de Azure Database for PostgreSQL enkele server niet in staat om toegang te krijgen tot de code en wordt deze verplaatst naar een niet- *toegankelijke* status. Herstel de [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) en valideer de gegevens versleuteling om de server *beschikbaar*te maken.
-* Als we de sleutel verwijderen uit de hoofd kluis, heeft de Azure Database for PostgreSQL enkele server geen toegang tot de sleutel en wordt deze verplaatst naar een niet- *toegankelijke* status. Herstel de [sleutel](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) en valideer de gegevens versleuteling om de server *beschikbaar*te maken.
-* Als de sleutel die is opgeslagen in de Azure-hoofd kluis verloopt, wordt de sleutel ongeldig en wordt de Azure Database for PostgreSQL enkele server overgezet naar de status *unaccessible* . Breid de verval datum van de sleutel uit met [cli](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) en valideer vervolgens de gegevens versleuteling om de server *beschikbaar*te maken.
+* Als u de sleutel kluis verwijdert, is de Azure Database for PostgreSQL enkele server niet in staat om toegang te krijgen tot de code en wordt deze verplaatst naar een niet- *toegankelijke* status. Herstel de [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) en valideer de gegevens versleuteling om de server *beschikbaar* te maken.
+* Als we de sleutel verwijderen uit de hoofd kluis, heeft de Azure Database for PostgreSQL enkele server geen toegang tot de sleutel en wordt deze verplaatst naar een niet- *toegankelijke* status. Herstel de [sleutel](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) en valideer de gegevens versleuteling om de server *beschikbaar* te maken.
+* Als de sleutel die is opgeslagen in de Azure-hoofd kluis verloopt, wordt de sleutel ongeldig en wordt de Azure Database for PostgreSQL enkele server overgezet naar de status *unaccessible* . Breid de verval datum van de sleutel uit met [cli](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) en valideer vervolgens de gegevens versleuteling om de server *beschikbaar* te maken.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Het intrekken van onbedoelde sleutel toegang van Key Vault
 

@@ -1,17 +1,17 @@
 ---
 title: Persoonlijke koppeling-Azure Portal-Azure Database for PostgreSQL-één server
 description: Meer informatie over het configureren van een persoonlijke koppeling voor Azure Database for PostgreSQL-één server van Azure Portal
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 4da1c1e142c5d70bea342fd9513061710228e61d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 98d3beef72d314f93f6a2bc580b1dd5de5735f23
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489928"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242463"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Een persoonlijke koppeling maken en beheren voor Azure Database for PostgreSQL-één server met behulp van portal
 
@@ -32,18 +32,18 @@ In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 In deze sectie maakt u een virtueel netwerk en het subnet om de VM te hosten die wordt gebruikt om op een veilige manier toegang te krijgen tot uw Private Link-resource.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource**  >  **netwerk**  >  **virtueel netwerk**maken.
+1. Selecteer in de linkerbovenhoek van het scherm **een resource**  >  **netwerk**  >  **virtueel netwerk** maken.
 2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Voer *MyVirtualNetwork*in. |
-    | Adresruimte | Voer *10.1.0.0/16*in. |
+    | Naam | Voer *MyVirtualNetwork* in. |
+    | Adresruimte | Voer *10.1.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement.|
-    | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
+    | Resourcegroep | Selecteer **Nieuwe maken** , voer *myResourceGroup* in en selecteer vervolgens **OK**. |
     | Locatie | Selecteer **Europa - west**.|
-    | Subnet - Naam | Voer *mySubnet*in. |
-    | Subnet - adresbereik | Voer *10.1.0.0/24*in. |
+    | Subnet - Naam | Voer *mySubnet* in. |
+    | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
     |||
 3. Laat voor de rest de standaardwaarden staan en selecteer **Maken**.
 
@@ -103,7 +103,7 @@ In deze sectie maakt u een virtueel netwerk en het subnet om de VM te hosten die
 
 In deze sectie maakt u een Azure Database for PostgreSQL-server in Azure. 
 
-1. Selecteer in de linkerbovenhoek van het scherm in de Azure Portal **een resource**  >  **databases**maken  >  **Azure database for PostgreSQL**.
+1. Selecteer in de linkerbovenhoek van het scherm in de Azure Portal **een resource**  >  **databases** maken  >  **Azure database for PostgreSQL**.
 
 1. Selecteer in **Azure database for PostgreSQL implementatie optie** **één server** en geef deze informatie op:
 
@@ -135,7 +135,7 @@ In deze sectie maakt u een PostgreSQL-server en voegt u hieraan een persoonlijk 
 
     :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Overzicht van persoonlijke koppelingen":::
 
-1. Voer in **een persoonlijk eind punt maken-basis beginselen**de volgende gegevens in of Selecteer deze:
+1. Voer in **een persoonlijk eind punt maken-basis beginselen** de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -158,7 +158,7 @@ In deze sectie maakt u een PostgreSQL-server en voegt u hieraan een persoonlijk 
     |Stel subresource in |*PostgresqlServer* selecteren|
     |||
 7. Selecteer **Volgende: Configuratie**.
-8. Voer in **een persoonlijk eind punt maken-configuratie**de volgende gegevens in of Selecteer deze:
+8. Voer in **een persoonlijk eind punt maken-configuratie** de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -176,7 +176,7 @@ In deze sectie maakt u een PostgreSQL-server en voegt u hieraan een persoonlijk 
 1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure. 
 2. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**. 
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="Overzicht van persoonlijke koppelingen":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="Privé koppeling gemaakt":::
 
     > [!NOTE] 
     > De FQDN in de DNS-instelling van de klant wordt niet omgezet naar het geconfigureerde particuliere IP-adres. U moet een DNS-zone voor de geconfigureerde FQDN instellen, zoals [hier](../dns/dns-operations-recordsets-portal.md)wordt weer gegeven.
@@ -190,9 +190,9 @@ Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP* -bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
-1. Open het *downloaded.rdp*-bestand.
+1. Open het *downloaded.rdp* -bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
@@ -224,7 +224,7 @@ Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet
 
 3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15) gebruikt om de bewerking uit te voeren.
 
-4. In **nieuwe verbinding**voert u de volgende gegevens in of selecteert u deze:
+4. In **nieuwe verbinding** voert u de volgende gegevens in of selecteert u deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -246,7 +246,7 @@ Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet
 ## <a name="clean-up-resources"></a>Resources opschonen
 Wanneer u klaar bent met het persoonlijke eind punt, de PostgreSQL-server en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat:
 
-1. Voer *myResourceGroup* in het **zoekvak** boven aan de portal in en selecteer *myResourceGroup*   in de zoek resultaten.
+1. Voer *myResourceGroup* in het **zoekvak** boven aan de portal in en selecteer  *myResourceGroup*   in de zoek resultaten.
 2. Selecteer **Resourcegroep verwijderen**.
 3. Voer myResourceGroup in bij **Typ de naam van de resource groep** en selecteer **verwijderen**.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e00ecd6048239683951a2d1e60d3bcb0eb5aa68
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288304"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242429"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op Parquet-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
@@ -155,43 +155,7 @@ ORDER BY
 
 ## <a name="type-mapping"></a>Type toewijzing
 
-Parquet-bestanden bevatten type beschrijvingen voor elke kolom. In de volgende tabel wordt beschreven hoe Parquet types worden toegewezen aan systeem eigen SQL-typen.
-
-| Type Parquet | Parquet logische type (annotatie) | SQL-gegevenstype |
-| --- | --- | --- |
-| True | | bit |
-| BINARY/BYTE_ARRAY | | varbinary |
-| DUBBELKLIK | | float |
-| FLOAT | | werkelijk |
-| INT32 | | int |
-| INT64 | | bigint |
-| INT96 | |datetime2 |
-| FIXED_LEN_BYTE_ARRAY | |binair |
-| WAARDE |UTF8 |varchar \* (UTF8-sortering) |
-| WAARDE |TEKENREEKSEXPRESSIE |varchar \* (UTF8-sortering) |
-| WAARDE |VASTE|varchar \* (UTF8-sortering) |
-| WAARDE |MEE |uniqueidentifier |
-| WAARDE |KOMMA |decimal |
-| WAARDE |JSON |varchar (max) \* (UTF8-sortering) |
-| WAARDE |BSON |varbinary (max) |
-| FIXED_LEN_BYTE_ARRAY |KOMMA |decimal |
-| BYTE_ARRAY |BEREIK |varchar (max), geserialiseerd in gestandaardiseerde indeling |
-| INT32 |INT (8, True) |smallint |
-| INT32 |INT (16, True) |smallint |
-| INT32 |INT (32, True) |int |
-| INT32 |INT (8, false) |tinyint |
-| INT32 |INT (16, false) |int |
-| INT32 |INT (32, false) |bigint |
-| INT32 |DATE |datum |
-| INT32 |KOMMA |decimal |
-| INT32 |TIJD (MILLIS)|tijd |
-| INT64 |INT (64, True) |bigint |
-| INT64 |INT (64, false) |decimaal (20, 0) |
-| INT64 |KOMMA |decimal |
-| INT64 |TIJD (MICRON/NANOS) |tijd |
-|INT64 |TIJDS TEMPEL (MILLIS/MICRON/NANOS) |datetime2 |
-|[Complex type](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |ORDERVERZAMELLIJST |varchar (max), geserialiseerd in JSON |
-|[Complex type](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|DIAGRAM|varchar (max), geserialiseerd in JSON |
+Voor het Parquet-type toewijzing aan het type toewijzing van SQL Native type is [toegewezen voor Parquet](develop-openrowset.md#type-mapping-for-parquet).
 
 ## <a name="next-steps"></a>Volgende stappen
 

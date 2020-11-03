@@ -1,17 +1,17 @@
 ---
 title: Infra structuur dubbele versleuteling-Azure Database for MySQL
 description: Meer informatie over het gebruik van een infra structuur met dubbele versleuteling om een tweede laag versleuteling toe te voegen met een door de service beheerde sleutels.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 24ec674c35a4e218c105febf6471ae8427f3c1c3
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 233dcbeee0bccc714e3b4fe93e7c8b19aa9f2df0
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125727"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242446"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Dubbele versleuteling van Azure Database for MySQL-infra structuur
 
@@ -63,7 +63,7 @@ Voor Azure Database for MySQL heeft de ondersteuning voor infra structuur met du
 
    * VS - oost
    * VS - zuid-centraal
-   * VS - west 2
+   * US - west 2
    
 * * Deze functie wordt alleen ondersteund in regio's en servers, die ondersteuning bieden voor opslag tot Maxi maal 16 TB. Raadpleeg de [opslag documentatie](concepts-pricing-tiers.md#storage)voor de lijst met Azure-regio's die ondersteuning bieden voor opslag tot 16 TB.
 

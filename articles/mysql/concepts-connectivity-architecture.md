@@ -1,17 +1,17 @@
 ---
 title: Connectiviteits architectuur-Azure Database for MySQL
 description: Beschrijft de connectiviteits architectuur voor uw Azure Database for MySQL-server.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 73178a9707d35fe7337210b11e76504794bc93ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d3842675cf4b36dfaa95ed6041bf8c6f0978a53
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896387"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242871"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Connectiviteits architectuur in Azure Database for MySQL
 In dit artikel wordt uitgelegd wat de Azure Database for MySQL connectiviteits architectuur is en hoe het verkeer wordt omgeleid naar uw Azure Database for MySQL exemplaar van clients, zowel binnen als buiten Azure.
@@ -42,7 +42,7 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | China - noord 2 | 40.73.50.0     |
 | Azië - oost | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | VS - oost | 40.121.158.30, 191.238.6.43, 40.71.8.203, 40.71.83.113 |
-| VS - oost 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
+| US - oost 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Frankrijk - centraal | 40.79.137.0, 40.79.129.1  |
 | Frankrijk - zuid | 40.79.177.0     |
 | Duitsland - centraal | 51.4.144.100     |
@@ -72,7 +72,7 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 
 ## <a name="connection-redirection"></a>Verbindings omleiding
 
-Azure Database for MySQL ondersteunt een extra verbindings beleid, **omleiding**, waarmee de netwerk latentie tussen client toepassingen en MySQL-servers kan worden gereduceerd. Als deze functie is ingesteld, wordt na de eerste TCP-sessie naar de Azure Database for MySQL-server het back-end-adres van het knoop punt dat als host fungeert voor de MySQL-server naar de client geretourneerd. Daarna stroomt alle volgende pakketten rechtstreeks naar de server, zodat de gateway wordt omzeild. Als pakketten rechtstreeks naar de server stromen, hebben latentie en door Voer betere prestaties.
+Azure Database for MySQL ondersteunt een extra verbindings beleid, **omleiding** , waarmee de netwerk latentie tussen client toepassingen en MySQL-servers kan worden gereduceerd. Als deze functie is ingesteld, wordt na de eerste TCP-sessie naar de Azure Database for MySQL-server het back-end-adres van het knoop punt dat als host fungeert voor de MySQL-server naar de client geretourneerd. Daarna stroomt alle volgende pakketten rechtstreeks naar de server, zodat de gateway wordt omzeild. Als pakketten rechtstreeks naar de server stromen, hebben latentie en door Voer betere prestaties.
 
 Deze functie wordt ondersteund in Azure Database for MySQL-servers met Engine versies 5,6, 5,7 en 8,0.
 

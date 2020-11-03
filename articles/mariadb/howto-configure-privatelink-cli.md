@@ -1,18 +1,18 @@
 ---
 title: Persoonlijke koppeling-Azure CLI-Azure Database for MariaDB
 description: Meer informatie over het configureren van een persoonlijke koppeling voor Azure Database for MariaDB van Azure CLI
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb3ed4e41125131538957addce5bf935b897b581
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c7f95b2009521b054958be48e444a129b0a59ed3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537215"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242888"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Een persoonlijke koppeling voor Azure Database for MariaDB maken en beheren met CLI
 
@@ -135,9 +135,9 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
 
 1. Voer in de zoekbalk van de portal *myVm* in.
 
-1. Selecteer de knop **Verbinding maken** . Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
+1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden** . In Azure wordt een *RDP* -bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP* -bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
 1. Open het *downloaded.rdp* -bestand.
 
@@ -148,15 +148,15 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
         > [!NOTE]
         > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
 
-1. Selecteer **OK** .
+1. Selecteer **OK**.
 
-1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan** .
+1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan**.
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>De MariaDB-server privé openen vanuit de VM
 
-1. Open Power shell in de Extern bureaublad van *myVM* .
+1. Open Power shell in de Extern bureaublad van *myVM*.
 
 2. Voer  `nslookup mydemoserver.privatelink.mariadb.database.azure.com` in. 
 
@@ -181,7 +181,7 @@ Maak als volgt verbinding met de VM *myVm* van Internet:
     | Wachtwoord | Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de MariaDB-server. |
     ||
 
-5. Selecteer **verbinding testen** of **OK** .
+5. Selecteer **verbinding testen** of **OK**.
 
 6. Eventueel Bladeren door data bases in het menu links en informatie uit de MariaDB-data base maken of er query's op uitvoeren
 
