@@ -7,32 +7,33 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 09/23/2020
+ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 607060851a8afa48b9570dfcb17732279a3629ee
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737845"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286669"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Opgeslagen procedures in Synapse SQL gebruiken
 
-Tips voor het implementeren van opgeslagen procedures in Synapse SQL pool voor het ontwikkelen van oplossingen.
+Met Synapse SQL provisioned en serverloze groepen kunt u complexe gegevens verwerkings logica plaatsen in opgeslagen SQL-procedures. Opgeslagen procedures zijn een uitstekende manier om uw SQL-code te integreren en de gegevens op te slaan in het Data Warehouse. Met opgeslagen procedures kunnen ontwikkel aars hun oplossingen modularize door de code in te kapselen in beheer bare eenheden en meer herbruikbaarheid van code te vergemakkelijken. Elke opgeslagen procedure kan ook para meters accepteren om ze nog flexibeler te maken.
+In dit artikel vindt u enkele tips voor het implementeren van opgeslagen procedures in Synapse SQL pool voor het ontwikkelen van oplossingen.
 
 ## <a name="what-to-expect"></a>Wat u kunt verwachten
 
-Synapse SQL ondersteunt veel van de T-SQL-functies die worden gebruikt in SQL Server. Belang rijker is dat er specifieke functies zijn die u kunt gebruiken om de prestaties van uw oplossing te optimaliseren.
+Synapse SQL ondersteunt veel van de T-SQL-functies die worden gebruikt in SQL Server. Belang rijker is dat er specifieke functies zijn die u kunt gebruiken om de prestaties van uw oplossing te optimaliseren. In dit artikel vindt u informatie over de functies die u in opgeslagen procedures kunt plaatsen.
 
 > [!NOTE]
-> In de hoofd tekst van de procedure kunt u alleen de functies gebruiken die worden ondersteund in Synapse SQL surface area. Lees [dit artikel](overview-features.md) om objecten te identificeren, een instructie die kan worden gebruikt in opgeslagen procedures. In de voor beelden in deze artikelen worden generieke functies gebruikt die zowel in serverloze als ingerichte surface area beschikbaar zijn.
+> In de hoofd tekst van de procedure kunt u alleen de functies gebruiken die worden ondersteund in Synapse SQL surface area. Lees [dit artikel](overview-features.md) om objecten te identificeren, een instructie die kan worden gebruikt in opgeslagen procedures. In de voor beelden in deze artikelen worden generieke functies gebruikt die zowel in serverloze als ingerichte surface area beschikbaar zijn. Raadpleeg het einde van dit artikel voor meer [beperkingen in de ingerichte en serverloze Synapse SQL-groepen](#limitations) .
 
 Voor het behoud van de schaal en prestaties van de SQL-groep zijn er ook enkele functies en functionaliteit die gedrags verschillen hebben en andere die niet worden ondersteund.
 
 ## <a name="stored-procedures-in-synapse-sql"></a>Opgeslagen procedures in Synapse SQL
 
-Opgeslagen procedures zijn een uitstekende manier om uw SQL-code te integreren en de gegevens op te slaan in het Data Warehouse. Met opgeslagen procedures kunnen ontwikkel aars hun oplossingen modularizeen door de code te integreren in beheer bare eenheden, waardoor de code gemakkelijker te gebruiken is. Elke opgeslagen procedure kan ook para meters accepteren om ze nog flexibeler te maken. In het volgende voor beeld ziet u de procedures waarmee externe objecten worden verwijderd als deze bestaan in de Data Base:
+In het volgende voor beeld ziet u de procedures waarmee externe objecten worden verwijderd als deze bestaan in de Data Base:
 
 ```sql
 CREATE PROCEDURE drop_external_table_if_exists @name SYSNAME
@@ -184,23 +185,26 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXESCHATTIGE
 
-Met Synapse SQL kunt u de resultatenset van een opgeslagen procedure niet gebruiken met een instructie INSERT. Er is een alternatieve benadering die u kunt gebruiken. Zie het artikel over [tijdelijke tabellen](develop-tables-temporary.md) voor de ingerichte Synapse SQL-groep voor een voor beeld.
+De ingerichte Synapse-SQL-groep staat niet toe dat u de resultatenset van een opgeslagen procedure gebruikt met een instructie INSERT. Er is een alternatieve benadering die u kunt gebruiken. Zie het artikel over [tijdelijke tabellen](develop-tables-temporary.md) voor de ingerichte Synapse SQL-groep voor een voor beeld.
 
 ## <a name="limitations"></a>Beperkingen
 
 Er zijn een aantal aspecten van opgeslagen Transact-SQL-procedures die niet zijn geïmplementeerd in Synapse SQL, zoals:
 
-* tijdelijke opgeslagen procedures
-* genummerde opgeslagen procedures
-* uitgebreide opgeslagen procedures
-* Opgeslagen CLR-procedures
-* versleutelings optie
-* replicatie optie
-* tabelwaardeparameter
-* alleen-lezen-para meters
-* standaard parameters (in de ingerichte pool)
-* uitvoerings contexten
-* instructie return
+| Functie/optie | Ingericht | Serverloos |
+| --- | --- |
+| Tijdelijke opgeslagen procedures | Nee | Ja |
+| Genummerde opgeslagen procedures | Nee | Nee |
+| Uitgebreide opgeslagen procedures | Nee | Nee |
+| Opgeslagen CLR-procedures | Nee | Nee |
+| Versleutelings optie | Nee | Ja |
+| Replicatie-optie | Nee | Nee |
+| Tabelwaardeparameters | Nee | Nee |
+| Alleen-lezen-para meters | Nee | Nee |
+| Standaard parameters | Nee | Ja |
+| Uitvoerings contexten | Nee | Nee |
+| Instructie return | Nee | Ja |
+| INVOEGEN IN.. EXEC | Nee | Ja |
 
 ## <a name="next-steps"></a>Volgende stappen
 

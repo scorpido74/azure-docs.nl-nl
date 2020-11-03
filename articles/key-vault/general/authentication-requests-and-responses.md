@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f223a55e4a1e4db4ac7057065d67ae64fa0f2c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983257"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288470"
 ---
 # <a name="authentication-requests-and-responses"></a>Verificatie, vragen en antwoorden
 
@@ -39,7 +39,7 @@ Hier vindt u de URL-achtervoegsels die worden gebruikt voor toegang tot elk type
 
 Azure Key Vault ondersteunt aanvragen en antwoorden in JSON-indeling. Aanvragen voor de Azure Key Vault worden omgeleid naar een geldige Azure Key Vault URL met behulp van HTTPS met enkele URL-para meters en JSON-gecodeerde aanvraag-en antwoord teksten.
 
-In dit onderwerp worden de Details voor de Azure Key Vault-service beschreven. Zie voor algemene informatie over het gebruik van Azure REST-interfaces, met inbegrip van verificatie/autorisatie en het verkrijgen van een toegangs token, [referentie voor Azure rest API](https://docs.microsoft.com/rest/api/azure).
+In dit onderwerp worden de Details voor de Azure Key Vault-service beschreven. Zie voor algemene informatie over het gebruik van Azure REST-interfaces, met inbegrip van verificatie/autorisatie en het verkrijgen van een toegangs token, [referentie voor Azure rest API](/rest/api/azure).
 
 ## <a name="request-url"></a>Aanvraag-URL  
  Voor sleutel beheer bewerkingen worden HTTP POST gebruikt voor het verwijderen, ophalen, PATCHen, plaatsen en HTTP POST-en cryptografische bewerkingen voor bestaande sleutel objecten. Clients die geen specifieke HTTP-woorden kunnen ondersteunen, kunnen ook HTTP POST gebruiken met de X-HTTP-REQUEST-header om de gewenste term op te geven. aanvragen waarvoor normaal gesp roken geen hoofd tekst vereist is, moeten een lege hoofd tekst bevatten wanneer u HTTP POST gebruikt, bijvoorbeeld door POST te gebruiken in plaats van verwijderen.  
@@ -111,7 +111,7 @@ In dit onderwerp worden de Details voor de Azure Key Vault-service beschreven. Z
 ## <a name="authentication"></a>Verificatie  
  Alle aanvragen voor Azure Key Vault moeten worden geverifieerd. Azure Key Vault ondersteunt Azure Active Directory toegangs tokens die kunnen worden verkregen met behulp van OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
  
- Zie [uw client toepassing registreren bij Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)voor meer informatie over het registreren van uw toepassing en het verifiëren van het gebruik van Azure Key Vault.
+ Zie [uw client toepassing registreren bij Azure AD](/rest/api/azure/index#register-your-client-application-with-azure-ad)voor meer informatie over het registreren van uw toepassing en het verifiëren van het gebruik van Azure Key Vault.
  
  Toegangs tokens moeten naar de service worden verzonden met de HTTP-autorisatie-header:  
 
@@ -133,5 +133,4 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   autorisatie: het adres van de OAuth2-autorisatie service dat kan worden gebruikt om een toegangs token voor de aanvraag te verkrijgen.  
 
--   resource: de naam van de resource ( `https://vault.azure.net` ) die in de autorisatie aanvraag moet worden gebruikt.  
-
+-   resource: de naam van de resource ( `https://vault.azure.net` ) die in de autorisatie aanvraag moet worden gebruikt.

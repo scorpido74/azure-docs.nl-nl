@@ -11,30 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b1c0ef42454b085c5d4dbcdc14162b2c829c6a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074811"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288361"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Veelgestelde vragen over identiteits beveiliging in Azure Active Directory
 
 ## <a name="dismiss-user-risk-known-issues"></a>Bekende problemen met gebruikers risico negeren
 
-**Gebruikers risico** voor klassieke identiteits beveiliging sluiten Hiermee wordt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging ingesteld op **Azure AD** .
+**Gebruikers risico** voor klassieke identiteits beveiliging sluiten Hiermee wordt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging ingesteld op **Azure AD**.
 
 **Gebruikers risico negeren** in identiteits beveiliging stelt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging in op **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
 Er is een huidige bekend probleem waardoor er een latentie in de stroom van de gebruikers risico is ontstaan. Als u een ' gebruikers risico beleid ' hebt, wordt dit beleid niet meer toegepast op genegeerde gebruikers binnen enkele minuten na het klikken op risico van gebruikers. Er zijn echter bekende vertragingen met de UX waarmee de ' risico status ' van genegeerde gebruikers wordt vernieuwd. Als tijdelijke oplossing kunt u de pagina op het niveau van de browser vernieuwen om de nieuwste gebruiker ' risico status ' te zien.
-
-## <a name="risky-users-report-known-issues"></a>Risk ante gebruikers rapporteren bekende problemen
-
-Query's op het veld **username** zijn hoofdletter gevoelig, terwijl query's op het **naam** veld neutraal zijn.
-
-**Als u datums weer geven** inschakelt, wordt de kolom **risico laatst bijgewerkt** verborgen. Als u de kolom wilt lezen, klikt u boven aan de Blade Risk ante gebruikers op **kolommen** .
-
-**Alle gebeurtenissen** in klassieke identiteits beveiliging sluiten Hiermee stelt u de status van de risico detecties in op **gesloten (opgelost)** .
 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen

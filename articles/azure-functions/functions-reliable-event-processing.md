@@ -3,14 +3,14 @@ title: Azure Functions betrouw bare gebeurtenis verwerking
 description: Voor komen dat Event hub-berichten in Azure Functions ontbreken
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506023"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287228"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions betrouw bare gebeurtenis verwerking
 
@@ -50,7 +50,7 @@ Azure Functions gebruikt Event hub-gebeurtenissen tijdens het uitvoeren van de v
 
 Dit gedrag toont enkele belang rijke punten:
 
-- *Onverwerkte uitzonde ringen kunnen ertoe leiden dat berichten verloren gaan.* Uitvoeringen die leiden tot een uitzonde ring, blijven de wijzers volgen.
+- *Onverwerkte uitzonde ringen kunnen ertoe leiden dat berichten verloren gaan.* Uitvoeringen die leiden tot een uitzonde ring, blijven de wijzers volgen.  Als u een [beleid voor opnieuw proberen](./functions-bindings-error-pages.md#retry-policies) instelt, wordt de voortgang van de aanwijzer vertraagd totdat het volledige beleid voor opnieuw proberen is geëvalueerd.
 - *Functions garanderen mini maal eenmalige levering.* Uw code en afhankelijke systemen moeten mogelijk worden [verwerkt om het feit dat hetzelfde bericht twee keer kan worden ontvangen](./functions-idempotent.md).
 
 ## <a name="handling-exceptions"></a>Afhandeling van uitzonderingen
@@ -59,9 +59,9 @@ Als algemene regel moet elke functie een [try/catch-blok](./functions-bindings-e
 
 ### <a name="retry-mechanisms-and-policies"></a>Mechanismen en beleids regels voor opnieuw proberen
 
-Sommige uitzonde ringen zijn tijdelijk van aard en worden niet opnieuw weer gegeven wanneer een bewerking later opnieuw wordt geprobeerd. Daarom is de eerste stap altijd om de bewerking opnieuw uit te voeren. U kunt de regels voor het opnieuw proberen van de verwerking zelf schrijven, maar ze zijn zo gebruikelijke dat er een aantal hulpprogram ma's beschikbaar is. Met deze bibliotheken kunt u een krachtig beleid voor opnieuw proberen te definiëren. Dit kan ook helpen bij het behouden van de verwerkings volgorde.
+Sommige uitzonde ringen zijn tijdelijk van aard en worden niet opnieuw weer gegeven wanneer een bewerking later opnieuw wordt geprobeerd. Daarom is de eerste stap altijd om de bewerking opnieuw uit te voeren.  U kunt gebruikmaken van het [beleid voor opnieuw proberen](./functions-bindings-error-pages.md#retry-policies) van de functie-app of de logica voor het opnieuw proberen van de functie in de uitvoering van
 
-Door bibliotheken voor fout afhandeling te maken met uw functies kunt u het basis beleid voor opnieuw proberen te definiëren. U kunt bijvoorbeeld een beleid implementeren dat volgt op een werk stroom die wordt geïllustreerd door de volgende regels:
+Door het gedrag van fout afhandeling in uw functies te introduceren, kunt u het basis beleid voor opnieuw proberen te definiëren. U kunt bijvoorbeeld een beleid implementeren dat volgt op een werk stroom die wordt geïllustreerd door de volgende regels:
 
 - Probeer een bericht drie keer in te voegen (mogelijk met een vertraging tussen nieuwe pogingen).
 - Als het uiteindelijke resultaat van alle nieuwe pogingen een fout is, voegt u een bericht toe aan een wachtrij, zodat de verwerking kan door gaan op de stroom.
@@ -69,10 +69,6 @@ Door bibliotheken voor fout afhandeling te maken met uw functies kunt u het basi
 
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) is een voor beeld van een bibliotheek met tolerantie en tijdelijke afhandeling voor C#-toepassingen.
-
-Wanneer u aan de slag gaat met vooraf gewerkte C#-klassen Bibliotheken, kunt u met [uitzonderings filters](/dotnet/csharp/language-reference/keywords/try-catch) code uitvoeren wanneer er een onverwerkte uitzonde ring optreedt.
-
-Voor beelden die laten zien hoe u uitzonderings filters kunt gebruiken, zijn beschikbaar in de [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) -opslag plaats.
 
 ## <a name="non-exception-errors"></a>Niet-uitzonderings fouten
 
@@ -127,7 +123,7 @@ Wanneer u deze methode gebruikt, gaan er geen berichten verloren, worden alle be
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende bronnen voor meer informatie:
+Zie de volgende resources voor meer informatie:
 
 - [Fout afhandeling Azure Functions](./functions-bindings-error-pages.md)
 - [Formaat van geüploade afbeeldingen automatisch wijzigen met Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)

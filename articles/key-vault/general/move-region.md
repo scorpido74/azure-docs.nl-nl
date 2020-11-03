@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another region.
-ms.openlocfilehash: 7d58cd26b6e4ca77da98f8c2f82dbdb481ccbb50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54a1894c88d12cfac1a2d8062425de9549c4292e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585749"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285198"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>Een Azure-sleutel kluis verplaatsen tussen regio's
 
@@ -35,7 +35,7 @@ Houd rekening met de volgende concepten voordat u begint:
 
 ## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>Optie 1: de back-up-en herstel opdrachten van de sleutel kluis gebruiken
 
-U kunt met behulp van de back-upopdracht back-ups maken van elk afzonderlijk geheim, dezelfde sleutel en elk certificaat in uw kluis. Uw geheimen worden gedownload als een versleutelde blob. U kunt de BLOB vervolgens herstellen in de nieuwe sleutel kluis. Zie [Azure Key Vault-opdrachten](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault)voor een lijst met opdrachten.
+U kunt met behulp van de back-upopdracht back-ups maken van elk afzonderlijk geheim, dezelfde sleutel en elk certificaat in uw kluis. Uw geheimen worden gedownload als een versleutelde blob. U kunt de BLOB vervolgens herstellen in de nieuwe sleutel kluis. Zie [Azure Key Vault-opdrachten](/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault)voor een lijst met opdrachten.
 
 Het gebruik van de opdrachten backup en Restore heeft twee beperkingen:
 

@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124218"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286886"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Aan de slag gaan met Key Vault-certificaten
 De volgende scenario's schetsen verschillende van de primaire gebruiks mogelijkheden van de certificaat beheer service van Key Vault, met inbegrip van de extra stappen voor het maken van uw eerste certificaat in uw sleutel kluis.
@@ -37,7 +37,7 @@ Certificaten bestaan uit drie gerelateerde resources die aan elkaar zijn gekoppe
 
 **Stap 1** -providers van certificerings instanties  
 -   Als IT-beheerder, PKI-beheerder of iedereen die accounts beheert met Ca's, voor een bepaald bedrijf (bijvoorbeeld Contoso) is een vereiste voor het gebruik van Key Vault-certificaten.  
-    De volgende Ca's zijn de huidige partner providers met Key Vault. Klik [hier](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers) voor meer informatie   
+    De volgende Ca's zijn de huidige partner providers met Key Vault. Klik [hier](./create-certificate.md#partnered-ca-providers) voor meer informatie   
     -   DigiCert-Key Vault biedt OV TLS/SSL-certificaten met DigiCert.  
     -   GlobalSign-Key Vault biedt OV TLS/SSL-certificaten met GlobalSign.  
 
@@ -50,7 +50,7 @@ Certificaten bestaan uit drie gerelateerde resources die aan elkaar zijn gekoppe
     -   Provider  
     -   Referenties: referenties van het CA-account. Elke CA heeft zijn eigen specifieke gegevens.  
 
-    Zie voor meer informatie over het maken van accounts met CA-providers het gerelateerde bericht op het [Key Vault blog](https://aka.ms/kvcertsblog).  
+    Zie voor meer informatie over het maken van accounts met CA-providers het gerelateerde bericht op het [Key Vault blog](/archive/blogs/kv/manage-certificates-via-azure-key-vault).  
 
 **Stap 3,1** : Stel [certificaat contactpersonen](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) in voor meldingen. Dit is de contact persoon voor de Key Vault gebruiker. Key Vault dwingt deze stap niet af.  
 
@@ -82,7 +82,7 @@ Opmerking: dit proces, tot en met stap 3,1, is een eenmalige-bewerking.
       -   Als gevolg van de vertraging om te maken, kan een annulerings bewerking worden gestart. Het annuleren kan al dan niet effectief zijn.  
 
 ### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Beleid voor netwerk beveiliging en-toegang gekoppeld aan geïntegreerde CA
-Key Vault service verzendt aanvragen naar CA (uitgaand verkeer). Daarom is het volledig compatibel met sleutel kluizen die zijn ingeschakeld voor de firewall. De Key Vault deelt geen toegangs beleid met de certificerings instantie. De CA moet zo worden geconfigureerd dat het ondertekenen van aanvragen onafhankelijk wordt geaccepteerd. [Hand leiding voor het integreren van vertrouwde CA](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+Key Vault service verzendt aanvragen naar CA (uitgaand verkeer). Daarom is het volledig compatibel met sleutel kluizen die zijn ingeschakeld voor de firewall. De Key Vault deelt geen toegangs beleid met de certificerings instantie. De CA moet zo worden geconfigureerd dat het ondertekenen van aanvragen onafhankelijk wordt geaccepteerd. [Hand leiding voor het integreren van vertrouwde CA](./how-to-integrate-certificate-authority.md)
 
 ## <a name="import-a-certificate"></a>Certificaat importeren  
  Als alternatief: een certificaat kan worden geïmporteerd in Key Vault-PFX of PEM.  

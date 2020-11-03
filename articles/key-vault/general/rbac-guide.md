@@ -9,25 +9,25 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f3775e73ce8f152fe39bc8170bbeba054f856630
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015152"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286598"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Toegang tot Key Vault sleutels, certificaten en geheimen bieden met behulp van een toegangs beheer op basis van rollen (preview) van Azure
 
 > [!NOTE]
 > Key Vault resource provider ondersteunt twee resource typen: **kluizen** en **beheerde hsm's**. Toegangs beheer dat in dit artikel wordt beschreven, is alleen van toepassing op **kluizen**. Zie [Managed HSM Access Control](../managed-hsm/access-control.md)(Engelstalig) voor meer informatie over toegangs beheer voor beheerde HSM.
 
-Toegangs beheer op basis van rollen (Azure RBAC) van Azure is een autorisatie systeem dat is gebaseerd op [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) dat een nauw keurig toegangs beheer van Azure-resources biedt.
+Toegangs beheer op basis van rollen (Azure RBAC) van Azure is een autorisatie systeem dat is gebaseerd op [Azure Resource Manager](../../azure-resource-manager/management/overview.md) dat een nauw keurig toegangs beheer van Azure-resources biedt.
 
 Met Azure RBAC kunnen gebruikers sleutel-, geheimen-en certificaat machtigingen beheren. Het biedt één plek om alle machtigingen voor alle sleutel kluizen te beheren. 
 
 Het Azure RBAC-model biedt de mogelijkheid om machtigingen in te stellen op verschillende Scope niveaus: beheer groep, abonnement, resource groep of afzonderlijke resources.  Azure RBAC voor sleutel kluis biedt ook de mogelijkheid om afzonderlijke machtigingen te hebben voor afzonderlijke sleutels, geheimen en certificaten
 
-Zie voor meer informatie [Azure Role-based Access Control (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Zie voor meer informatie [Azure Role-based Access Control (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ## <a name="best-practices-for-individual-keys-secrets-and-certificates"></a>Aanbevolen procedures voor afzonderlijke sleutels, geheimen en certificaten
 
@@ -59,7 +59,7 @@ Meer informatie over de richt lijnen voor Azure Key Vault beheer vindt u in:
 | Key Vaulte geheimen-auditeur (preview-versie)| Acties uitvoeren op de geheimen van een sleutel kluis, met uitzonde ring van machtigingen beheren. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 | Key Vault geheimen gebruiker (preview-versie)| Geheime inhoud lezen. Werkt alleen voor sleutel kluizen die gebruikmaken van het machtigings model ' Azure op rollen gebaseerd toegangs beheer '. | 4633458b-17de-408a-b874-0445c86b69e6 |
 
-Zie [ingebouwde rollen van Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor meer informatie over de definities van ingebouwde rollen van Azure.
+Zie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md)voor meer informatie over de definities van ingebouwde rollen van Azure.
 
 ## <a name="using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault"></a>Azure RBAC-geheim, sleutel en certificaat machtigingen gebruiken met Key Vault
 
@@ -70,7 +70,7 @@ Het nieuwe Azure RBAC-machtigings model voor sleutel kluis biedt een alternatief
 Als u roltoewijzingen wilt toevoegen, hebt u het volgende nodig:
 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-- Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) of [Eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
+- Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator) of [Eigenaar](../../role-based-access-control/built-in-roles.md#owner)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Azure RBAC-machtigingen inschakelen voor Key Vault
 
@@ -194,7 +194,7 @@ Nieuw geheim maken (geheimen \> + genereren/importeren) moet de volgende fout we
 
 ### <a name="creating-custom-roles"></a>Aangepaste rollen maken 
 
-[opdracht AZ Role definition Create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create)
+[opdracht AZ Role definition Create](/cli/azure/role/definition#az-role-definition-create)
 
 **(CLI bash-script)</br>**
 ```azurecli
@@ -216,7 +216,7 @@ az role definition create --role-definition '{ \
 
 Zie voor meer informatie over het maken van aangepaste rollen:
 
-[Aangepaste Azure-rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+[Aangepaste Azure-rollen](../../role-based-access-control/custom-roles.md)
 
 ## <a name="known-limits-and-performance"></a>Bekende limieten en prestaties
 
@@ -224,7 +224,7 @@ Zie voor meer informatie over het maken van aangepaste rollen:
 
 -   Latentie van roltoewijzingen: bij huidige verwachte prestaties duurt het Maxi maal tien minuten (600 seconden) nadat roltoewijzingen zijn gewijzigd voor het Toep assen van de rol
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 
-- [Overzicht van Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Zelf studie voor aangepaste rollen](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)
+- [Overzicht van Azure RBAC](../../role-based-access-control/overview.md)
+- [Zelf studie voor aangepaste rollen](../../role-based-access-control/tutorial-custom-role-cli.md)

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 155837802bd19ec1bb4e41484e229e1f5daef658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125249"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285243"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Problemen met het toegangsbeleid voor Azure Key Vault oplossen
 
@@ -20,11 +20,11 @@ ms.locfileid: "92125249"
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Hoe kan ik vaststellen hoe en wanneer sleutelkluizen worden geopend?
 
-Nadat u een of meer sleutelkluizen hebt gemaakt, wilt u wellicht controleren hoe en wanneer uw sleutelkluizen toegankelijk zijn en voor wie. U kunt dit controleren door logboekregistratie in te schakelen voor Azure Key Vault. [Lees meer](https://docs.microsoft.com/azure/key-vault/general/logging) voor stapsgewijze instructies om logboekregistratie in te schakelen.
+Nadat u een of meer sleutelkluizen hebt gemaakt, wilt u wellicht controleren hoe en wanneer uw sleutelkluizen toegankelijk zijn en voor wie. U kunt dit controleren door logboekregistratie in te schakelen voor Azure Key Vault. [Lees meer](./logging.md) voor stapsgewijze instructies om logboekregistratie in te schakelen.
 
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>Hoe kan ik de beschikbaarheid van de kluis, servicelatentieperioden of andere metrische gegevens voor de sleutelkluis bewaken?
 
-Wanneer u begint met het schalen van uw service, neemt het aantal aanvragen toe dat naar uw sleutelkluis wordt verzonden. Dergelijke vraag kan de latentie van uw aanvragen verhogen en er in uitzonderlijke gevallen voor zorgen dat uw aanvragen worden beperkt, waardoor de prestaties van uw service worden beïnvloed. U kunt de metrische gegevens van de prestaties van de sleutelkluis controleren en waarschuwingen ontvangen voor specifieke drempelwaarden. [Lees meer](https://docs.microsoft.com/azure/key-vault/general/alert) voor een stapsgewijze handleiding voor het configureren van bewaking.
+Wanneer u begint met het schalen van uw service, neemt het aantal aanvragen toe dat naar uw sleutelkluis wordt verzonden. Dergelijke vraag kan de latentie van uw aanvragen verhogen en er in uitzonderlijke gevallen voor zorgen dat uw aanvragen worden beperkt, waardoor de prestaties van uw service worden beïnvloed. U kunt de metrische gegevens van de prestaties van de sleutelkluis controleren en waarschuwingen ontvangen voor specifieke drempelwaarden. [Lees meer](./alert.md) voor een stapsgewijze handleiding voor het configureren van bewaking.
 
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Ik kan het toegangsbeleid niet wijzigen, hoe kan dit worden ingeschakeld?
 De gebruiker moet voldoende AAD-machtigingen hebben om het toegangsbeleid te wijzigen. In dit geval moet de gebruiker een hogere Inzender-rol hebben.
@@ -53,7 +53,7 @@ De toepassing moet ook ten minste één IAM-rol (Identiteits- en toegangsbeheer)
 
 Op dit moment wordt elk toegangsbeleid in Key Vault verwijderd en vervangen door het toegangsbeleid in de ARM-sjabloon als u Key Vault opnieuw implementeert. Er is geen incrementele optie voor Key Vault-toegangsbeleid. Als u het toegangsbeleid in Key Vault wilt behouden, moet u het bestaande toegangsbeleid lezen in Key Vault en de ARM-sjabloon vullen met dit beleid om eventuele toegangsstoringen te voorkomen.
 
-Een andere optie die u kan helpen bij dit scenario, is het gebruik van RBAC-rollen als alternatief voor toegangsbeleid. Met RBAC kunt u de sleutelkluis opnieuw implementeren zonder het beleid opnieuw op te geven. [Hier](https://docs.microsoft.com/azure/key-vault/general/rbac-guide) kunt u meer lezen over deze oplossing.
+Een andere optie die u kan helpen bij dit scenario, is het gebruik van RBAC-rollen als alternatief voor toegangsbeleid. Met RBAC kunt u de sleutelkluis opnieuw implementeren zonder het beleid opnieuw op te geven. [Hier](./rbac-guide.md) kunt u meer lezen over deze oplossing.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Aanbevolen stappen voor probleemoplossing voor de volgende fouttypen
 

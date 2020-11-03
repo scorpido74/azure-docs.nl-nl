@@ -11,14 +11,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 20f0d6a9d87caa8e95e7f9fa0b29ff45ed1195c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a6b453b11c892b5d81c41cac9451b07be69aa4d3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735472"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285928"
 ---
-# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning omgeving voor het afwijzen van interferentie beveiligen met virtuele netwerken
+# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning-deductieomgeving beveiligen met virtuele netwerken
 
 In dit artikel leert u hoe u in Azure Machine Learning kunt beveiligen met behulp van een virtueel netwerk.
 
@@ -138,7 +138,7 @@ Nadat u het persoonlijke AKS-cluster hebt gemaakt, [koppelt u het cluster aan he
 
 AKS-implementaties gebruiken standaard een [open bare Load Balancer](../aks/load-balancer-standard.md). In deze sectie leert u hoe u AKS kunt configureren voor het gebruik van een interne load balancer. Een intern (of privé) load balancer wordt gebruikt wanneer alleen privé Ip's zijn toegestaan als frontend. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk
 
-Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor het gebruik van een _interne Load Balancer_ . 
+Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor het gebruik van een _interne Load Balancer_. 
 
 #### <a name="network-contributor-role"></a>Rol netwerk bijdrager
 
@@ -211,11 +211,14 @@ except:
     aks_target.wait_for_completion(show_output = True)
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
+
+> [!IMPORTANT]
+> Met behulp van de CLI kunt u alleen een AKS-cluster maken met een interne load balancer. Er is geen AZ ml-opdracht voor het bijwerken van een bestaand cluster om een interne load balancer te gebruiken.
 
 Zie voor meer informatie de referentie [AZ ml computetarget Create AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) .
 
@@ -260,6 +263,9 @@ Als u ACI wilt gebruiken in een virtueel netwerk naar uw werk ruimte, gebruikt u
 
 2. Implementeer het model met behulp van [AciWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true), gebruik de `vnet_name` `subnet_name` para meters en. Stel deze para meters in op de naam van het virtuele netwerk en het subnet waar u delegering hebt ingeschakeld.
 
+## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>Uitgaande connectiviteit vanuit het virtuele netwerk beperken
+
+Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u de uitgaande toegang van uw virtuele netwerk wilt beperken, moet u toegang tot Azure Container Registry toestaan. Zorg er bijvoorbeeld voor dat uw netwerk beveiligings groepen (NSG) een regel bevat waarmee toegang tot het service label __AzureContainerRegistry. Region__ name waarbij {regionnaam} de naam is van een Azure-regio.
 
 ## <a name="next-steps"></a>Volgende stappen
 

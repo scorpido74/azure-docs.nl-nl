@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: dd9b84c379f368e4cb4bcf1b5122e394456cd9e8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c78899bff39f37c63c7db0eeb12690ab2a90cac4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789757"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285369"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Een FCI maken met gedeelde Azure-schijven (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -151,12 +151,12 @@ Valideer het cluster in de gebruikers interface of met behulp van Power shell.
 
 Als u het cluster wilt valideren met behulp van de gebruikers interface, gaat u als volgt te werk op een van de virtuele machines:
 
-1. Klik onder **Serverbeheer** op **extra** en selecteer vervolgens **Failoverclusterbeheer** .
-1. Selecteer onder **Failoverclusterbeheer** **actie** en selecteer vervolgens **configuratie valideren** .
-1. Selecteer **Next** .
+1. Klik onder **Serverbeheer** op **extra** en selecteer vervolgens **Failoverclusterbeheer**.
+1. Selecteer onder **Failoverclusterbeheer** **actie** en selecteer vervolgens **configuratie valideren**.
+1. Selecteer **Next**.
 1. Voer onder **servers of een cluster selecteren** de namen van beide virtuele machines in.
-1. Onder **test opties** selecteert u **alleen geselecteerde tests uitvoeren** . 
-1. Selecteer **Next** .
+1. Onder **test opties** selecteert u **alleen geselecteerde tests uitvoeren**. 
+1. Selecteer **Next**.
 1. Selecteer onder **selectie testen** alle tests *behalve* **opslag**
 
 ## <a name="test-cluster-failover"></a>Cluster-Failover testen
@@ -175,11 +175,11 @@ Nadat u het failovercluster en alle cluster onderdelen, inclusief opslag, hebt g
 
 1. Zoek het installatie medium. Als de virtuele machine een van de installatie kopieën van Azure Marketplace gebruikt, bevindt de media zich op `C:\SQLServer_<version number>_Full` . 
 
-1. Selecteer **Setup** .
+1. Selecteer **Setup**.
 
-1. In **SQL Server Installation Center** selecteert u **installatie** .
+1. In **SQL Server Installation Center** selecteert u **installatie**.
 
-1. Selecteer **nieuwe SQL Server failover-cluster installatie** . Volg de instructies in de wizard om de SQL Server FCI te installeren.
+1. Selecteer **nieuwe SQL Server failover-cluster installatie**. Volg de instructies in de wizard om de SQL Server FCI te installeren.
 
 De FCI-gegevens directory's moeten op de gedeelde Azure-schijven staan. 
 
@@ -187,9 +187,9 @@ De FCI-gegevens directory's moeten op de gedeelde Azure-schijven staan.
 
 1. Nadat de FCI op het eerste knoop punt is geïnstalleerd, maakt u verbinding met het tweede knoop punt met behulp van RDP.
 
-1. Open het **SQL Server-installatie centrum** en selecteer vervolgens **installatie** .
+1. Open het **SQL Server-installatie centrum** en selecteer vervolgens **installatie**.
 
-1. Selecteer **knoop punt toevoegen aan een SQL Server-failovercluster** . Volg de instructies in de wizard om SQL Server te installeren en de server toe te voegen aan de FCI.
+1. Selecteer **knoop punt toevoegen aan een SQL Server-failovercluster**. Volg de instructies in de wizard om SQL Server te installeren en de server toe te voegen aan de FCI.
 
    >[!NOTE]
    >Als u een installatie kopie van een Azure Marketplace-galerie hebt gebruikt die SQL Server bevat, zijn er SQL Server-hulpprogram ma's in de installatie kopie opgenomen. Als u een van deze installatie kopieën niet hebt gebruikt, installeert u de SQL Server-hulpprogram ma's afzonderlijk. Zie [down load SQL Server Management Studio (SSMS) (Engelstalig)](/sql/ssms/download-sql-server-management-studio-ssms)voor meer informatie.
@@ -217,7 +217,7 @@ Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire kno
 
 ## <a name="limitations"></a>Beperkingen
 
-- Alleen registreren met de resource provider van de SQL-VM in de [Lightweight-beheer modus](sql-vm-resource-provider-register.md#management-modes) wordt ondersteund.
+- Alleen registreren met de resource provider van de SQL-VM in de [Lightweight-beheer modus](sql-server-iaas-agent-extension-automate-management.md#management-modes) wordt ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 

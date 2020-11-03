@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282319"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285145"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Een Azure-sleutel kluis en een beleid voor kluis toegang maken met behulp van een resource manager-sjabloon
 
@@ -84,7 +84,7 @@ In de volgende sjabloon ziet u een eenvoudige manier om een sleutel kluis te mak
 
 ```
 
-Zie voor meer informatie over Key Vault-sjabloon instellingen [Key Vault arm-sjabloon verwijzing](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults).
+Zie voor meer informatie over Key Vault-sjabloon instellingen [Key Vault arm-sjabloon verwijzing](/azure/templates/microsoft.keyvault/vaults).
 
 > [!IMPORTANT]
 > Als een sjabloon opnieuw wordt geïmplementeerd, worden alle bestaande toegangs beleid in de sleutel kluis genegeerd. U wordt aangeraden de `accessPolicies` eigenschap met een bestaand toegangs beleid in te vullen om te voor komen dat de toegang tot de sleutel kluis verloren gaat. 
@@ -160,7 +160,7 @@ U kunt toegangs beleid implementeren voor een bestaande sleutel kluis zonder dat
 }
 
 ```
-Zie voor meer informatie over Key Vault-sjabloon instellingen [Key Vault arm-sjabloon verwijzing](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies).
+Zie voor meer informatie over Key Vault-sjabloon instellingen [Key Vault arm-sjabloon verwijzing](/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
 ## <a name="more-key-vault-resource-manager-templates"></a>Meer Key Vault Resource Manager-sjablonen
 
@@ -168,13 +168,13 @@ Er zijn andere Resource Manager-sjablonen beschikbaar voor Key Vault objecten:
 
 | Geheimen | Sleutels | Certificaten |
 |--|--|--|
-|<ul><li>[Snelstartgids](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[Verwijzing](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|N.v.t.|N.v.t.|
+|<ul><li>[Snelstartgids](../secrets/quick-create-template.md)<li>[Verwijzing](/azure/templates/microsoft.keyvault/vaults/secrets)|N.v.t.|N.v.t.|
 
-U kunt hier meer Key Vault sjablonen vinden: [Key Vault Resource Manager-referentie](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions).
+U kunt hier meer Key Vault sjablonen vinden: [Key Vault Resource Manager-referentie](/azure/templates/microsoft.keyvault/allversions).
 
 ## <a name="deploy-the-templates"></a>De sjablonen implementeren
 
-U kunt de Azure Portal gebruiken om de voor gaande sjablonen te implementeren met behulp van de optie **uw eigen sjabloon bouwen in editor** , zoals hier wordt beschreven: [resources implementeren vanuit een aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template).
+U kunt de Azure Portal gebruiken om de voor gaande sjablonen te implementeren met behulp van de optie **uw eigen sjabloon bouwen in editor** , zoals hier wordt beschreven: [resources implementeren vanuit een aangepaste sjabloon](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 U kunt de voor gaande sjablonen ook opslaan in bestanden en deze opdrachten gebruiken:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) en [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
 
@@ -219,4 +219,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Veilige toegang tot een sleutelkluis](secure-your-key-vault.md)
 - [Verifiëren bij een sleutel kluis](authentication.md)
-- [Ontwikkelaars handleiding Azure Key Vault](developers-guide.md)
+- [Gids voor Azure Key Vault-ontwikkelaars](developers-guide.md)

@@ -1,26 +1,21 @@
 ---
-title: De toegang van een gebruiker tot een toepassing verwijderen | Microsoft Docs
-description: Meer informatie over het verwijderen van de toegang van een gebruiker tot een toepassing
+title: De toegang van een gebruiker tot een toepassing in Azure Active Directory verwijderen
+description: Meer informatie over het verwijderen van de toegang van een gebruiker tot een toepassing in Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 10/17/2018
+ms.date: 11/02/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8544c35d77dfc32ece9b21a602f301ab15c22439
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763156"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288320"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>De toegang van een gebruiker tot een toepassing verwijderen
 
@@ -36,29 +31,13 @@ Als u alle aanmeldingen van gebruikers voor een toepassing wilt uitschakelen, vo
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Ik wil een toepassing volledig verwijderen
 
-Voer de volgende instructies uit om **een toepassing te verwijderen**:
-
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
-
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
-
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
-
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-
-   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
-
-6. Selecteer de toepassing die u wilt verwijderen.
-
-7. Zodra de toepassing is geladen, klikt u op pictogram **verwijderen** in het **overzichts** venster van de bovenste toepassing.
+De [Quick Start Series op toepassings beheer](delete-application-portal.md) bevat richt lijnen voor het verwijderen van een toepassing uit uw Azure Active Directory-Tenant.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Ik wil alle toekomstige bewerkingen voor gebruikers toestemming voor elke toepassing uitschakelen
 
 Door de toestemming van de gebruiker voor uw hele map uit te scha kelen, voor komt u dat eind gebruikers aan elke toepassing worden doorgestuurd. Beheerders kunnen namens de gebruiker nog steeds toestemming geven. Meer informatie over de toestemming van de toepassing en waarom u dit mogelijk niet wilt doen, kunt u lezen [over de toestemming van gebruikers en beheerders](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent). Zie ook [machtigingen en toestemming](../develop/v2-permissions-and-consent.md).
 
-Volg de volgende instructies om **alle toekomstige bewerkingen van de gebruikers toestemming in uw hele directory uit te scha kelen**:
+Volg de volgende instructies om **alle toekomstige bewerkingen van de gebruikers toestemming in uw hele directory uit te scha kelen** :
 
 1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 

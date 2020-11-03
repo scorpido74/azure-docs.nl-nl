@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c55c87cd8ab1b2cd1dbaf2c877eb341744d822ef
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440515"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287465"
 ---
 # <a name="azure-key-vault-backup"></a>Back-up voor Azure Key Vault
 
@@ -25,9 +25,9 @@ In dit document leest u hoe u een back-up maakt van geheimen, sleutels en certif
 
 Azure Key Vault biedt automatisch functies om de beschikbaarheid van gegevens te garanderen en gegevensverlies te voorkomen. Maak alleen back-ups van geheimen als dit vanuit bedrijfsoogpunt noodzakelijk is. Het maken van een back-up van geheimen in uw sleutelkluis kan operationele uitdagingen met zich meebrengen, zoals het onderhouden van meerdere logboeken, machtigingen en back-ups wanneer geheimen verlopen of roteren.
 
-Key Vault onderhoudt de beschikbaarheid in noodscenario's en voert automatisch failoververzoeken uit naar een gekoppelde regio zonder dat tussenkomst van een gebruiker nodig is. Zie [Beschikbaarheid en redundantie in Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance) voor meer informatie.
+Key Vault onderhoudt de beschikbaarheid in noodscenario's en voert automatisch failoververzoeken uit naar een gekoppelde regio zonder dat tussenkomst van een gebruiker nodig is. Zie [Beschikbaarheid en redundantie in Azure Key Vault](./disaster-recovery-guidance.md) voor meer informatie.
 
-Als u uw geheimen wilt beveiligen tegen onbedoelde of opzettelijke verwijdering, moet u de beveiligingsfuncties voor voorlopig verwijderen en opschonen voor uw sleutelkluis configureren. Zie [Azure Key Vault: overzicht van voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) voor meer informatie.
+Als u uw geheimen wilt beveiligen tegen onbedoelde of opzettelijke verwijdering, moet u de beveiligingsfuncties voor voorlopig verwijderen en opschonen voor uw sleutelkluis configureren. Zie [Azure Key Vault: overzicht van voorlopig verwijderen](./soft-delete-overview.md) voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -67,11 +67,11 @@ Volg de stappen in deze sectie voor het maken en herstellen van back-ups van obj
     ![Schermopname waarin wordt aangegeven waar de instellingen voor sleutels en een object in een sleutelkluis moeten worden geselecteerd.](../media/backup-1.png)
 
 4. Selecteer het object.
-5. Selecteer **Back-up downloaden** .
+5. Selecteer **Back-up downloaden**.
 
     ![Schermopname waarin wordt aangegeven waar u de knop Back-up downloaden selecteert in een sleutelkluis.](../media/backup-2.png)
     
-6. Selecteer **Download** .
+6. Selecteer **Download**.
 
     ![Schermopname waarin wordt aangegeven waar u de knop Downloaden selecteert in een sleutelkluis.](../media/backup-3.png)
     
@@ -82,12 +82,12 @@ Volg de stappen in deze sectie voor het maken en herstellen van back-ups van obj
 1. Ga naar Azure Portal.
 2. Selecteer uw sleutelkluis.
 3. Ga naar het type object (geheim, sleutel of certificaat) dat u wilt herstellen.
-4. Selecteer **Back-up terugzetten** .
+4. Selecteer **Back-up terugzetten**.
 
     ![Schermopname waarin wordt aangegeven waar u de knop Back-up terugzetten selecteert in een sleutelkluis.](../media/backup-4.png)
     
 5. Ga naar de locatie waar u de versleutelde blob hebt opgeslagen.
-6. Selecteer **OK** .
+6. Selecteer **OK**.
 
 ## <a name="back-up-and-restore-from-the-azure-cli"></a>Back-ups maken en herstellen met de Azure CLI
 
@@ -123,4 +123,4 @@ az keyvault secret restore --file {File Path} --vault-name {Key Vault Name} --su
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Schakel [logboekregistratie en -controle](https://docs.microsoft.com/azure/key-vault/general/logging) in voor Key Vault.
+Schakel [logboekregistratie en -controle](./logging.md) in voor Key Vault.

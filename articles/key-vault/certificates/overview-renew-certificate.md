@@ -10,16 +10,16 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 2477bab244b8864fa9c82b52d5577d42fa47a7e0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124148"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287692"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault-certificaten verlengen
 
-Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inrichten, beheren en implementeren en beveiligde communicatie voor toepassingen mogelijk maken. Zie [Azure Key Vault-certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) voor meer informatie over certificaten.
+Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inrichten, beheren en implementeren en beveiligde communicatie voor toepassingen mogelijk maken. Zie [Azure Key Vault-certificaten](./about-certificates.md) voor meer informatie over certificaten.
 
 Door gebruik te maken van kortlevende certificaten of door de frequentie van de rotatie van certificaten te verhogen, kunt u toegang tot uw toepassingen door onbevoegde gebruikers voorkomen.
 
@@ -29,9 +29,9 @@ In dit artikel wordt beschreven hoe u Azure Key Vault-certificaten kunt verlenge
 Als u een melding wilt ontvangen over levensgebeurtenissen van een certificaat, moet u een contactpersoon voor dit certificaat toevoegen. Certificaatcontactpersonen bevatten contactgegevens om meldingen te verzenden die worden geactiveerd door de levensduurgebeurtenissen van het certificaat. De contactpersoongegevens worden gedeeld door alle certificaten in de sleutelkluis. Alle opgegeven contactpersonen krijgen een melding bij een gebeurtenis met betrekking tot een certificaat in de sleutelkluis.
 
 ### <a name="steps-to-set-certificate-notifications"></a>Stappen voor het instellen van certificaatmeldingen:
-Voeg eerst een contactpersoon voor het certificaat toe aan uw sleutelkluis. U kunt toevoegen met behulp van de Azure-portal of PowerShell-cmdlet [`Add-AzureKeyVaultCertificateContact`](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0).
+Voeg eerst een contactpersoon voor het certificaat toe aan uw sleutelkluis. U kunt toevoegen met behulp van de Azure-portal of PowerShell-cmdlet [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0).
 
-Stel vervolgens het tijdstip in wanneer u wilt worden gewaarschuwd over het verlopen van het certificaat. Zie [Automatisch roteren van certificaatconfiguratie in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) voor informatie over het configureren van de levenscycluskenmerken van het certificaat.
+Stel vervolgens het tijdstip in wanneer u wilt worden gewaarschuwd over het verlopen van het certificaat. Zie [Automatisch roteren van certificaatconfiguratie in Key Vault](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate) voor informatie over het configureren van de levenscycluskenmerken van het certificaat.
 
 Als het beleid van een certificaat is ingesteld op automatisch verlengen, wordt er een melding verzonden bij de volgende gebeurtenissen.
 
@@ -46,7 +46,7 @@ Key Vault kent drie categorieën certificaten:
 -   Zelfondertekende certificaten
 
 ## <a name="renew-an-integrated-ca-certificate"></a>Een geïntegreerd CA-certificaat verlengen 
-Azure Key Vault verwerkt het end-to-end-onderhoud van certificaten die worden uitgegeven door de vertrouwde Microsoft-certificeringsinstanties DigiCert en GlobalSign. Meer informatie over het [integreren van een vertrouwde CA met Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority).
+Azure Key Vault verwerkt het end-to-end-onderhoud van certificaten die worden uitgegeven door de vertrouwde Microsoft-certificeringsinstanties DigiCert en GlobalSign. Meer informatie over het [integreren van een vertrouwde CA met Key Vault](./how-to-integrate-certificate-authority.md).
 
 ## <a name="renew-a-nonintegrated-ca-certificate"></a>Een niet-geïntegreerd CA-certificaat verlengen 
 U kunt met behulp van Azure Key Vault certificaten importeren vanuit elke CA, een voordeel waarmee u met verschillende Azure-resources kunt integreren en de implementatie eenvoudig kunt maken. Als u zich zorgen maakt dat u de vervaldatum van uw certificaat niet meer weet of, erger, dat u hebt ontdekt dat een certificaat al is verlopen, kunt u met behulp van uw sleutelkluis up-to-date blijven. Voor niet-geïntegreerde CA-certificaten kunt u met de sleutelkluis e-mailmeldingen instellen bij bijna verlopen certificaten. Dergelijke meldingen kunnen ook voor meerdere gebruikers worden ingesteld.
@@ -70,7 +70,7 @@ Zie [een CSR maken en samenvoegen in Key Vault]( https://docs.microsoft.com/azur
 
 ## <a name="renew-a-self-signed-certificate"></a>Een zelfondertekend certificaat verlengen
 
-Azure Key Vault verwerkt ook het automatisch verlengen van zelfondertekende certificaten. Zie [Automatisch roteren van certificaatconfiguratie in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) voor meer informatie over het wijzigen van het uitgiftebeleid en het bijwerken van de levenscycluskenmerken van een certificaat.
+Azure Key Vault verwerkt ook het automatisch verlengen van zelfondertekende certificaten. Zie [Automatisch roteren van certificaatconfiguratie in Key Vault](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate) voor meer informatie over het wijzigen van het uitgiftebeleid en het bijwerken van de levenscycluskenmerken van een certificaat.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 Als het uitgegeven certificaat in Azure Portal de status *uitgeschakeld* heeft, gaat u naar **Certificaatbewerking** om het foutbericht voor dat certificaat te bekijken.

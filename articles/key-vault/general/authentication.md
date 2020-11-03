@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3ec831bada19aa8d3872440ba628ac06bc64f749
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3fdc9a9f99b239f68022067a5aedbc7e6e0d12a4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099416"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287502"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Verifiëren bij Azure Key Vault
 
@@ -20,7 +20,7 @@ Met Azure Key Vault kunt u geheimen opslaan en de distributie ervan beheren in e
 
 ## <a name="app-identity-and-security-principals"></a>App-id's en beveiligingsprincipals
 
-Verificatie met Key Vault werkt in combinatie met [Azure AD (Active Directory)](/azure/active-directory/fundamentals/active-directory-whatis), dat verantwoordelijk is voor het verifiëren van de identiteit van elke opgegeven **beveiligingsprincipal** .
+Verificatie met Key Vault werkt in combinatie met [Azure AD (Active Directory)](../../active-directory/fundamentals/active-directory-whatis.md), dat verantwoordelijk is voor het verifiëren van de identiteit van elke opgegeven **beveiligingsprincipal**.
 
 Een beveiligingsprincipal is een object dat een gebruiker, groep, service of toepassing vertegenwoordigt die toegang tot Azure-resources aanvraagt. Azure wijst een unieke **object-id** toe aan elke beveiligingsprincipal.
 
@@ -36,9 +36,9 @@ Er zijn twee manieren om voor toepassingen een service-principal te verkrijgen:
 
     Met een beheerde identiteit wordt in Azure de service-principal van de toepassing intern beheerd en wordt de toepassing automatisch geverifieerd bij andere Azure-services. Beheerde identiteiten zijn beschikbaar voor toepassingen die zijn geïmplementeerd in diverse services.
 
-    Zie [Overzicht van beheerde identiteiten](/azure/active-directory/managed-identities-azure-resources/overview) voor meer informatie. Zie ook [Azure-services die ondersteuning bieden voor beheerde identiteiten](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities), met hierin koppelingen naar artikelen waarin wordt beschreven hoe u een beheerde identiteit kunt inschakelen voor specifieke services (zoals App Service, Azure Functions, Virtual Machines, enzovoort).
+    Zie [Overzicht van beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie. Zie ook [Azure-services die ondersteuning bieden voor beheerde identiteiten](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), met hierin koppelingen naar artikelen waarin wordt beschreven hoe u een beheerde identiteit kunt inschakelen voor specifieke services (zoals App Service, Azure Functions, Virtual Machines, enzovoort).
 
-* Als u geen beheerde identiteit kunt gebruiken, kunt u in plaats hiervan de toepassing **registreren** bij uw Azure AD-tenant, zoals beschreven in [Quickstart: Een toepassing registreren bij het Azure-identiteitsplatform](/azure/active-directory/develop/quickstart-register-app). Bij de registratie wordt ook een tweede toepassingsobject gemaakt waarmee de app wordt geïdentificeerd bij alle tenants.
+* Als u geen beheerde identiteit kunt gebruiken, kunt u in plaats hiervan de toepassing **registreren** bij uw Azure AD-tenant, zoals beschreven in [Quickstart: Een toepassing registreren bij het Azure-identiteitsplatform](../../active-directory/develop/quickstart-register-app.md). Bij de registratie wordt ook een tweede toepassingsobject gemaakt waarmee de app wordt geïdentificeerd bij alle tenants.
 
 ## <a name="authorize-a-security-principal-to-access-key-vault"></a>Een beveiligingsprincipal machtigen voor toegang tot Key Vault
 
@@ -56,13 +56,13 @@ Key Vault werkt met twee afzonderlijke machtigingsniveaus:
  
     Raadpleeg de volgende artikelen als u rollen wilt toewijzen en beheren:
 
-    - [Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-    - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-    - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+    - [Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+    - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+    - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
-    Key Vault biedt momenteel alleen ondersteuning voor de rol [Inzender](/azure/role-based-access-control/built-in-roles#key-vault-contributor), waarmee beheerbewerkingen in Key Vault-resources zijn toegestaan. Een aantal andere rollen is momenteel beschikbaar als preview-versie. U kunt ook aangepaste rollen maken, zoals beschreven in [Aangepaste Azure-rollen](/azure/role-based-access-control/custom-roles).
+    Key Vault biedt momenteel alleen ondersteuning voor de rol [Inzender](../../role-based-access-control/built-in-roles.md#key-vault-contributor), waarmee beheerbewerkingen in Key Vault-resources zijn toegestaan. Een aantal andere rollen is momenteel beschikbaar als preview-versie. U kunt ook aangepaste rollen maken, zoals beschreven in [Aangepaste Azure-rollen](../../role-based-access-control/custom-roles.md).
 
-    Raadpleeg [Wat is Azure RBAC (op rollen gebaseerd toegangsbeheer)?](/azure/role-based-access-control/overview) voor algemene informatie over rollen.
+    Raadpleeg [Wat is Azure RBAC (op rollen gebaseerd toegangsbeheer)?](../../role-based-access-control/overview.md) voor algemene informatie over rollen.
 
 
 > [!IMPORTANT]
@@ -72,7 +72,7 @@ Key Vault werkt met twee afzonderlijke machtigingsniveaus:
 
 In Key Vault is toegang tot resources via openbare IP-adressen standaard toegestaan. Voor een betere beveiliging kunt u de toegang ook beperken tot specifieke IP-bereiken, service-eindpunten, virtuele netwerken of privé-eindpunten.
 
-Zie [Toegang tot Azure Key Vault achter een firewall](/azure/key-vault/general/access-behind-firewall) voor meer informatie.
+Zie [Toegang tot Azure Key Vault achter een firewall](./access-behind-firewall.md) voor meer informatie.
 
 
 ## <a name="the-key-vault-authentication-flow"></a>De Key Vault-verificatiestroom
@@ -80,7 +80,7 @@ Zie [Toegang tot Azure Key Vault achter een firewall](/azure/key-vault/general/a
 1. Een service-principal doet een aanvraag voor verificatie bij Azure AD, bijvoorbeeld:
     * Een gebruiker meldt zich bij de Azure-portal aan met een gebruikersnaam en wachtwoord.
     * Een toepassing roept een Azure REST API aan, waarbij een client-id en -geheim, of een clientcertificaat worden opgegeven.
-    * Een Azure-resource, zoals een virtuele machine met een beheerde identiteit, neemt contact op met het REST-eindpunt van de [Azure IMDS (Instance Metadata Service)](/azure/virtual-machines/windows/instance-metadata-service) om een toegangstoken op te halen.
+    * Een Azure-resource, zoals een virtuele machine met een beheerde identiteit, neemt contact op met het REST-eindpunt van de [Azure IMDS (Instance Metadata Service)](../../virtual-machines/windows/instance-metadata-service.md) om een toegangstoken op te halen.
 
 1. Als verificatie bij Azure AD slaagt, wordt een OAuth-token verleend aan de service-principal.
 
@@ -89,7 +89,7 @@ Zie [Toegang tot Azure Key Vault achter een firewall](/azure/key-vault/general/a
 1. De Key Vault-firewall controleert de volgende criteria. Als aan een van de criteria wordt voldaan, is de aanroep toegestaan. Anders wordt de aanroep geblokkeerd, en wordt gemeld dat het antwoord verboden is.
 
     * De firewall wordt uitgeschakeld en het openbare eindpunt van Key Vault is bereikbaar via openbaar internet.
-    * De aanroeper is een [in Key Vault vertrouwde service](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services), zodat de firewall kan worden omzeild.
+    * De aanroeper is een [in Key Vault vertrouwde service](./overview-vnet-service-endpoints.md#trusted-services), zodat de firewall kan worden omzeild.
     * Het IP-adres, virtuele netwerk of service-eindpunt van de aanroeper wordt vermeld in de firewall.
     * De aanroeper kan Key Vault bereiken via een geconfigureerde Private Link-verbinding.    
 
@@ -109,20 +109,20 @@ De volgende tabel bevat koppelingen naar verschillende artikelen waarin wordt ui
 
 | Key Vault-geheimen | Key Vault-sleutels | Key Vault-certificaten |
 |  --- | --- | --- |
-| [Python](/azure/key-vault/secrets/quick-create-python) | [Python](/azure/key-vault/keys/quick-create-python) | [Python](/azure/key-vault/certificates/quick-create-python) | 
-| [.NET (SDK v4)](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [Python](../secrets/quick-create-python.md) | [Python](../keys/quick-create-python.md) | [Python](../certificates/quick-create-python.md) | 
+| [.NET (SDK v4)](../secrets/quick-create-net.md) | -- | -- |
 | [.NET (SDK v3)](https://dotnet.microsoft.com/download/dotnet-core/3.0) | -- | -- |
-| [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
-| [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
+| [Java](../secrets/quick-create-java.md) | -- | -- |
+| [JavaScript](../secrets/quick-create-node.md) | -- | -- | 
 | | | |
-| [Azure-portal](/azure/key-vault/secrets/quick-create-portal) | [Azure-portal](/azure/key-vault/keys/quick-create-portal) | [Azure-portal](/azure/key-vault/certificates/quick-create-portal) |
-| [Azure-CLI](/azure/key-vault/secrets/quick-create-cli) | [Azure-CLI](/azure/key-vault/keys/quick-create-cli) | [Azure-CLI](/azure/key-vault/certificates/quick-create-cli) |
-| [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
-| [ARM-sjabloon](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [Azure-portal](../secrets/quick-create-portal.md) | [Azure-portal](../keys/quick-create-portal.md) | [Azure-portal](../certificates/quick-create-portal.md) |
+| [Azure-CLI](../secrets/quick-create-cli.md) | [Azure-CLI](../keys/quick-create-cli.md) | [Azure-CLI](../certificates/quick-create-cli.md) |
+| [Azure PowerShell](../secrets/quick-create-powershell.md) | [Azure PowerShell](../keys/quick-create-powershell.md) | [Azure PowerShell](../certificates/quick-create-powershell.md) |
+| [ARM-sjabloon](../secrets/quick-create-net.md) | -- | -- |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Problemen met Key Vault-toegangsbeleid oplossen](troubleshooting-access-issues.md)
 - [REST API-foutcodes in Key Vault](rest-error-codes.md)
 - [Gids voor Key Vault-ontwikkelaars](developers-guide.md)
-- [Wat is Azure RBAC (toegangsbeheer op basis van rollen)?](/azure/role-based-access-control/overview)
+- [Wat is Azure RBAC (toegangsbeheer op basis van rollen)?](../../role-based-access-control/overview.md)

@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen bij
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074410"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286764"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -154,10 +154,10 @@ Volg de *voordat u begint* met de stappen in het juiste document om een AKS-clus
 Naam beperkingen worden geïmplementeerd door zowel het Azure-platform als de AKS. Als een resource naam of-para meter een van deze beperkingen uitbreekt, wordt er een fout bericht weer gegeven waarin u wordt gevraagd een andere invoer op te geven. De volgende algemene richt lijnen zijn van toepassing:
 
 * Cluster namen moeten 1-63 tekens lang zijn. De enige toegestane tekens zijn letters, cijfers, streepjes en onderstrepings teken. Het eerste en laatste teken moeten een letter of cijfer zijn.
-* De naam van het AKS-knoop punt/*MC_* resource groep combineert de naam van de resource groep en de resource naam. De automatisch gegenereerde syntaxis van `MC_resourceGroupName_resourceName_AzureRegion` mag niet langer zijn dan 80 tekens. Als dat nodig is, vermindert u de lengte van de naam van de resource groep of de AKS-cluster naam. U kunt ook [de naam van de resource groep voor het knoop punt aanpassen](cluster-configuration.md#custom-resource-group-name)
+* De naam van het AKS-knoop punt/ *MC_* resource groep combineert de naam van de resource groep en de resource naam. De automatisch gegenereerde syntaxis van `MC_resourceGroupName_resourceName_AzureRegion` mag niet langer zijn dan 80 tekens. Als dat nodig is, vermindert u de lengte van de naam van de resource groep of de AKS-cluster naam. U kunt ook [de naam van de resource groep voor het knoop punt aanpassen](cluster-configuration.md#custom-resource-group-name)
 * De *dnsPrefix* moet beginnen en eindigen met alfanumerieke waarden en moet tussen de 1-54 tekens lang zijn. Geldige tekens zijn alfanumerieke waarden en afbreek streepjes (-). De *dnsPrefix* mag geen speciale tekens bevatten, zoals een punt (.).
 * Namen van AKS-knooppunt groepen moeten allemaal kleine letters zijn en 1-11 tekens bevatten voor Linux-knooppunt Pools en 1-6 tekens voor Windows-knooppunt groepen. De naam moet beginnen met een letter en de enige toegestane tekens zijn letters en cijfers.
-* De *Administrator-gebruikers naam*, waarmee de gebruikers naam van de beheerder voor Linux-knoop punten wordt ingesteld, moet beginnen met een letter, mag alleen letters, cijfers, afbreek streepjes en onderstrepings tekens bevatten en een maximale lengte van 64 karakters hebben.
+* De *Administrator-gebruikers naam* , waarmee de gebruikers naam van de beheerder voor Linux-knoop punten wordt ingesteld, moet beginnen met een letter, mag alleen letters, cijfers, afbreek streepjes en onderstrepings tekens bevatten en een maximale lengte van 64 karakters hebben.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Ik ontvang fouten bij het maken, bijwerken, schalen, verwijderen of upgraden van een cluster. deze bewerking is niet toegestaan omdat er een andere bewerking wordt uitgevoerd.
 
@@ -167,7 +167,7 @@ Cluster bewerkingen zijn beperkt wanneer er nog een eerdere bewerking wordt uitg
 
 Op basis van de uitvoer van de cluster status:
 
-* Als het cluster zich in een andere inrichtings status bevindt dan *geslaagd* of *mislukt*, wacht u totdat de bewerking (*bijwerken/bijwerken/maken/schalen/verwijderen/migreren*) is voltooid. Wanneer de vorige bewerking is voltooid, voert u de laatste cluster bewerking opnieuw uit.
+* Als het cluster zich in een andere inrichtings status bevindt dan *geslaagd* of *mislukt* , wacht u totdat de bewerking ( *bijwerken/bijwerken/maken/schalen/verwijderen/migreren* ) is voltooid. Wanneer de vorige bewerking is voltooid, voert u de laatste cluster bewerking opnieuw uit.
 
 * Als de upgrade van het cluster is mislukt, volgt u de stappen [die worden beschreven waarbij ik fouten ontvang dat mijn cluster de status Mislukt heeft en dat de upgrade of schaal aanpassing pas werkt als het probleem is opgelost](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
@@ -198,7 +198,7 @@ Bij het beperken van uitgaand verkeer van een AKS-cluster zijn er [vereiste en o
 
 Controleer of de instellingen niet conflicteren met een van de vereiste of optionele aanbevolen uitgaande poorten/netwerk regels en FQDN/toepassings regels.
 
-## <a name="im-receiving-429---too-many-requests-errors"></a>Ik ontvang berichten over "429-te veel aanvragen" 
+## <a name="im-receiving-429---too-many-requests-errors"></a>Ik ontvang berichten over "429-te veel aanvragen"
 
 Wanneer een kubernetes-cluster op Azure (AKS of Nee) een regel matig omhoog/omlaag schaalt of gebruikmaakt van de cluster autoscaler (CA), kunnen deze bewerkingen leiden tot een groot aantal HTTP-aanroepen waardoor het toegewezen abonnements quotum wordt overschreden. De fouten zien er als volgt uit
 
@@ -213,6 +213,12 @@ De heropdracht van het technische team van AKS is om ervoor te zorgen dat u vers
 Deze beperkings fouten worden op abonnements niveau gemeten, maar kunnen ook worden uitgevoerd als:
 - Er zijn toepassingen van derden die GET-aanvragen maken (bijvoorbeeld toepassingen bewaken, enzovoort...). De aanbeveling is de frequentie van deze aanroepen te verlagen.
 - Er zijn veel AKS-clusters/nodepools in de VMSS. De gebruikelijke aanbeveling is dat er minder dan 20-30 clusters in een bepaald abonnement zijn.
+
+## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>De inrichtings status van mijn cluster is gewijzigd van gereed in mislukt met of zonder dat er een bewerking wordt uitgevoerd. Wat moet ik doen?
+
+Als de inrichtings status van uw cluster wordt gewijzigd van *gereed* in *mislukt* met of zonder dat u bewerkingen uitvoert, maar de toepassingen op uw cluster blijven worden uitgevoerd, kan dit probleem automatisch worden opgelost door de service en kunnen uw toepassingen niet worden beïnvloed.
+
+Als de inrichtings status van uw cluster *niet* actief blijft of als de toepassingen op uw cluster niet meer werken, [dient u een ondersteunings aanvraag](https://azure.microsoft.com/support/options/#submit)in.
 
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Problemen met Azure Storage en AKS oplossen
@@ -359,7 +365,7 @@ Aanbevolen instellingen:
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 en hoger | 0777 |
 
-Koppelings opties kunnen worden opgegeven voor het object Storage-klasse. In het volgende voor beeld wordt *0777*ingesteld:
+Koppelings opties kunnen worden opgegeven voor het object Storage-klasse. In het volgende voor beeld wordt *0777* ingesteld:
 
 ```yaml
 kind: StorageClass
@@ -382,7 +388,7 @@ parameters:
 Enkele aanvullende nuttige *mountOptions* -instellingen:
 
 * *mfsymlinks* zorgt ervoor dat Azure files mount (CIFS) symbolische koppelingen ondersteunt
-* met *nobrl* wordt voor komen dat aanvragen voor het vergren delen van bytes naar de server worden verzonden. Deze instelling is nood zakelijk voor bepaalde toepassingen die worden onderbroken met de CIFS-stijl vergren delingen van een verplicht byte bereik. De meeste CIFS-servers bieden nog geen ondersteuning voor het aanvragen van advies-byte bereik vergrendelingen. Als u *nobrl*niet gebruikt, kunnen toepassingen die worden onderbroken met de CIFS-stijl die verplicht byte bereik zijn, fout berichten veroorzaken die vergelijkbaar zijn met:
+* met *nobrl* wordt voor komen dat aanvragen voor het vergren delen van bytes naar de server worden verzonden. Deze instelling is nood zakelijk voor bepaalde toepassingen die worden onderbroken met de CIFS-stijl vergren delingen van een verplicht byte bereik. De meeste CIFS-servers bieden nog geen ondersteuning voor het aanvragen van advies-byte bereik vergrendelingen. Als u *nobrl* niet gebruikt, kunnen toepassingen die worden onderbroken met de CIFS-stijl die verplicht byte bereik zijn, fout berichten veroorzaken die vergelijkbaar zijn met:
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -415,7 +421,7 @@ Als u *toegang toestaan vanuit geselecteerd netwerk* wilt inschakelen voor een o
 persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
 ```
 
-Deze fout wordt veroorzaakt door het feit dat de Kubernetes *persistentvolume-controller* niet op het netwerk is gekozen wanneer de instelling *toegang vanaf het geselecteerde netwerk toestaan*is ingesteld.
+Deze fout wordt veroorzaakt door het feit dat de Kubernetes *persistentvolume-controller* niet op het netwerk is gekozen wanneer de instelling *toegang vanaf het geselecteerde netwerk toestaan* is ingesteld.
 
 U kunt het probleem oplossen met behulp van [statische inrichting met Azure files](azure-files-volume.md).
 
@@ -470,11 +476,8 @@ Deze fout wordt veroorzaakt door een upstream voor de race van het cluster voor 
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Een trage schijf bijlage duurt 10 tot 15 minuten en er wordt een fout bericht weer gegeven
 
-Bij Kubernetes-versies **ouder dan 1.15.0**, wordt er mogelijk een fout bericht weer gegeven, zoals **fout WaitForAttach kan geen LUN vinden voor de schijf**.  De tijdelijke oplossing voor dit probleem is om ongeveer 15 minuten te wachten en probeer het opnieuw.
+Bij Kubernetes-versies **ouder dan 1.15.0** , wordt er mogelijk een fout bericht weer gegeven, zoals **fout WaitForAttach kan geen LUN vinden voor de schijf**.  De tijdelijke oplossing voor dit probleem is om ongeveer 15 minuten te wachten en probeer het opnieuw.
 
-<!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
-[cluster-autoscaler]: cluster-autoscaler.md
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Waarom worden upgrades naar Kubernetes 1,16 mislukt wanneer u knooppunt labels gebruikt met een kubernetes.io-voor voegsel
 
@@ -487,3 +490,9 @@ Als gevolg hiervan kunt u het volgende doen:
 3. De oudere nodepool verwijderen
 
 AKS onderzoekt de mogelijkheid om actieve labels op een nodepool te mutate om deze oplossing te verbeteren.
+
+
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

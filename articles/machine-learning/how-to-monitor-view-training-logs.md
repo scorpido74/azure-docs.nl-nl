@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: aa4b55cb0700a47d9235a1d526ef1b1678d6db8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11e4b79bf76a4612728992f7c16000d840b9c639
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333814"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285948"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>MILLILITERs logboeken en-metrische gegevens bewaken en weer geven
 
@@ -93,7 +93,7 @@ RunDetails(run).show()
 
 ## <a name="show-output-upon-completion"></a>Uitvoer weer geven na voltooiing
 
-Wanneer u **ScriptRunConfig**gebruikt, kunt u gebruiken ```run.wait_for_completion(show_output = True)``` om weer te geven wanneer de model training is voltooid. De ```show_output``` vlag geeft u uitgebreide uitvoer. Zie de sectie ScriptRunConfig voor meer informatie over het [inschakelen van logboek registratie](how-to-track-experiments.md#scriptrun-logs).
+Wanneer u **ScriptRunConfig** gebruikt, kunt u gebruiken ```run.wait_for_completion(show_output = True)``` om weer te geven wanneer de model training is voltooid. De ```show_output``` vlag geeft u uitgebreide uitvoer. Zie de sectie ScriptRunConfig voor meer informatie over het [inschakelen van logboek registratie](how-to-track-experiments.md#scriptrun-logs).
 
 <a id="queryrunmetrics"></a>
 ## <a name="query-run-metrics"></a>Metrische gegevens van query uitvoeren
@@ -105,7 +105,9 @@ U kunt de metrische gegevens van een getraind model weer geven met behulp van ``
 
 In de [Azure machine learning Studio](https://ml.azure.com)kunt u voltooide records voor uitvoeren bekijken, inclusief vastgelegde metrische gegevens.
 
-Ga naar het tabblad **experimenten** en selecteer uw experiment. In het dash board voor experimenteel uitvoeren kunt u bijgehouden metrische gegevens en logboeken voor elke uitvoering bekijken. 
+Navigeer naar het tabblad **experimenten** . Als u al uw uitvoeringen in uw werk ruimte in verschillende experimenten wilt weer geven, selecteert u het tabblad **alle uitvoeringen** . U kunt inzoomen op uitvoeringen voor specifieke experimenten door het experiment filter toe te passen op de bovenste menu balk. 
+
+Selecteer in de weer gave individueel experiment het tabblad **alle experimenten** . In het dash board voor experimenteel uitvoeren kunt u bijgehouden metrische gegevens en logboeken voor elke uitvoering bekijken. 
 
 Inzoomen op een specifieke uitvoering om de bijbehorende uitvoer of logboeken weer te geven, of down load de moment opname van het experiment zodat u de map experiment met anderen kunt delen.
 

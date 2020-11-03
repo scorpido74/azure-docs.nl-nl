@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c8d2304017a8fccd83c9c64559b8c5edf48481b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604334"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286225"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Basisprincipes van Key Vault-verificatie
 
@@ -24,8 +24,8 @@ Als beheerder kunt u nauw keurig bepalen welke gebruikers en toepassingen toegan
 
 In dit document wordt ervan uitgegaan dat u bekend bent met de volgende concepten. Als u niet bekend bent met een van deze concepten, volgt u de Help-koppelingen voordat u doorgaat.
 
-* [Koppeling](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) Azure Active Directory
-* [Koppeling](https://docs.microsoft.com/azure/key-vault/general/authentication#app-identity-and-security-principals) voor beveiligings-principals
+* [Koppeling](../../active-directory/fundamentals/active-directory-whatis.md) Azure Active Directory
+* [Koppeling](./authentication.md#app-identity-and-security-principals) voor beveiligings-principals
 
 ## <a name="key-vault-configuration-steps-summary"></a>Samen vatting van Key Vault configuratie stappen
 
@@ -42,8 +42,8 @@ Wanneer een gebruiker of toepassing een aanvraag indient voor de sleutel kluis, 
 Volg de onderstaande documentatie koppelingen om inzicht te krijgen in het registreren van een gebruiker of toepassing in Azure Active Directory.
 **Zorg ervoor dat u een wacht woord voor de gebruikers registratie en een client geheim of referentie voor het client certificaat voor toepassingen maakt.**
 
-* Een gebruiker registreren bij Azure Active Directory [koppeling](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)
-* Een toepassing registreren in Azure Active Directory [koppeling](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
+* Een gebruiker registreren bij Azure Active Directory [koppeling](../../active-directory/fundamentals/add-users-azure-active-directory.md)
+* Een toepassing registreren in Azure Active Directory [koppeling](../../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>Uw beveiligingsprincipal een rol in Azure Active Directory toewijzen
 
@@ -57,8 +57,8 @@ In de context van sleutel kluis bepalen deze roltoewijzingen het toegangs niveau
 >[!NOTE]
 > Wanneer u een roltoewijzing toewijst aan een gebruiker op het Azure Active Directory Tenant niveau, wordt deze set machtigingen trickle tot alle abonnementen, resource groepen en resources binnen het bereik van de toewijzing. Als u de principal van de minimale bevoegdheid wilt volgen, kunt u deze roltoewijzing op een nauw keuriger bereik maken. U kunt bijvoorbeeld een gebruiker een rol van lezer toewijzen op het abonnements niveau en een rol van eigenaar voor een enkele sleutel kluis. Ga naar de instellingen voor Identity Access Management (IAM) van een abonnement, een resource groep of een sleutel kluis om een roltoewijzing te maken op een nauw keuriger bereik.
 
-* Voor meer informatie over Azure Active Directory rollen [koppeling](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
-* Meer informatie over [koppeling](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) van roltoewijzingen toewijzen of verwijderen
+* Voor meer informatie over Azure Active Directory rollen [koppeling](../../role-based-access-control/built-in-roles.md)
+* Meer informatie over [koppeling](../../role-based-access-control/role-assignments-portal.md) van roltoewijzingen toewijzen of verwijderen
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Een sleutel kluis toegangs beleid configureren voor uw beveiligings-principal
 
@@ -121,8 +121,8 @@ Key Vault roltoewijzingen zijn een set van ingebouwde rollen toewijzingen van Az
 
 Raadpleeg de volgende documenten voor meer informatie over Key Vault RBAC:
 
-* RBAC- [koppeling](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac) Azure Key Vault
-* [Koppeling](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview) van Azure Key Vault RBAC-rollen (preview-versie)
+* RBAC- [koppeling](./secure-your-key-vault.md#management-plane-and-azure-rbac) Azure Key Vault
+* [Koppeling](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) van Azure Key Vault RBAC-rollen (preview-versie)
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault firewall configureren
 
@@ -132,9 +132,9 @@ Als u de sleutel kluis firewall wilt inschakelen, klikt u op het tabblad netwerk
 
 * Voeg IPv4-adressen toe aan de lijst met toegestane firewalls voor de sleutel kluis. Deze optie werkt het beste voor toepassingen met een statisch IP-adres.
 
-* Voeg een virtueel netwerk toe aan de firewall voor de sleutel kluis. Deze optie werkt het beste bij Azure-resources met dynamische IP-adressen, zoals Virtual Machines. U kunt Azure-resources toevoegen aan een virtueel netwerk en het virtuele netwerk toevoegen aan de lijst met toegestane firewalls voor de sleutel kluis. Deze optie maakt gebruik van een service-eind punt dat een privé-IP-adres in het virtuele netwerk is. Dit biedt een extra beveiligingslaag, zodat er geen verkeer tussen de sleutel kluis en het virtuele netwerk wordt gerouteerd via het open bare Internet. Raadpleeg de volgende documentatie voor meer informatie over service-eind punten. [gekoppeld](https://docs.microsoft.com/azure/key-vault/general/network-security)
+* Voeg een virtueel netwerk toe aan de firewall voor de sleutel kluis. Deze optie werkt het beste bij Azure-resources met dynamische IP-adressen, zoals Virtual Machines. U kunt Azure-resources toevoegen aan een virtueel netwerk en het virtuele netwerk toevoegen aan de lijst met toegestane firewalls voor de sleutel kluis. Deze optie maakt gebruik van een service-eind punt dat een privé-IP-adres in het virtuele netwerk is. Dit biedt een extra beveiligingslaag, zodat er geen verkeer tussen de sleutel kluis en het virtuele netwerk wordt gerouteerd via het open bare Internet. Raadpleeg de volgende documentatie voor meer informatie over service-eind punten. [gekoppeld](./network-security.md)
 
-* Een persoonlijke koppelings verbinding toevoegen aan de sleutel kluis. Met deze optie wordt het virtuele netwerk rechtstreeks verbonden met een bepaald exemplaar van sleutel kluis, waardoor uw sleutel kluis in het virtuele netwerk effectief wordt. Zie de volgende [koppeling](https://docs.microsoft.com/azure/key-vault/general/private-link-service) voor meer informatie over het configureren van een particuliere endpoint-verbinding met sleutel kluis.
+* Een persoonlijke koppelings verbinding toevoegen aan de sleutel kluis. Met deze optie wordt het virtuele netwerk rechtstreeks verbonden met een bepaald exemplaar van sleutel kluis, waardoor uw sleutel kluis in het virtuele netwerk effectief wordt. Zie de volgende [koppeling](./private-link-service.md) voor meer informatie over het configureren van een particuliere endpoint-verbinding met sleutel kluis.
 
 ## <a name="test-your-service-principals-ability-to-access-key-vault"></a>Test de mogelijkheid van de Service-Principal om toegang te krijgen tot de sleutel kluis
 
@@ -142,11 +142,11 @@ Zodra u alle bovenstaande stappen hebt gevolgd, kunt u geheimen van uw sleutel k
 
 ### <a name="authentication-process-for-users-examples"></a>Verificatie proces voor gebruikers (voor beelden)
 
-* Gebruikers kunnen zich aanmelden bij de Azure Portal om sleutel kluis te gebruiken. [Quick start voor Key Vault Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+* Gebruikers kunnen zich aanmelden bij de Azure Portal om sleutel kluis te gebruiken. [Quick start voor Key Vault Portal](./quick-create-portal.md)
 
-* Gebruiker kan Azure CLI gebruiken voor het gebruik van sleutel kluis. [Snelstartgids voor Key Vault Azure CLI](https://docs.microsoft.com/azure/key-vault/general/quick-create-cli)
+* Gebruiker kan Azure CLI gebruiken voor het gebruik van sleutel kluis. [Snelstartgids voor Key Vault Azure CLI](./quick-create-cli.md)
 
-* Gebruiker kan Azure PowerShell gebruiken om sleutel kluis te gebruiken. [Key Vault Azure PowerShell Snelstartgids](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)
+* Gebruiker kan Azure PowerShell gebruiken om sleutel kluis te gebruiken. [Key Vault Azure PowerShell Snelstartgids](./quick-create-powershell.md)
 
 ### <a name="azure-active-directory-authentication-process-for-applications-or-services-examples"></a>Verificatie proces Azure Active Directory voor toepassingen of services (voor beelden)
 
@@ -156,7 +156,7 @@ Zodra u alle bovenstaande stappen hebt gevolgd, kunt u geheimen van uw sleutel k
 
 * Een Azure-resource gebruikt MSI-verificatie om een Azure Active Directory-token op te halen. 
 
-* Meer informatie over MSI-verificatie [koppeling](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* Meer informatie over MSI-verificatie [koppeling](../../active-directory/managed-identities-azure-resources/overview.md)
 
 ### <a name="authentication-process-for-application-python-example"></a>Verificatie proces voor toepassingen (python-voor beeld)
 
@@ -196,4 +196,4 @@ if __name__ == "__main__":
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg het volgende document voor meer informatie over de sleutel kluis verificatie. [Key Vault-verificatie](https://docs.microsoft.com/azure/key-vault/general/authentication)
+Raadpleeg het volgende document voor meer informatie over de sleutel kluis verificatie. [Key Vault-verificatie](./authentication.md)

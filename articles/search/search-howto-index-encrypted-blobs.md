@@ -8,22 +8,21 @@ ms.author: chalton
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/02/2020
+ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791984"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286341"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Versleutelde blobs indexeren met Blob-Indexeer functies en vaardig heden in azure Cognitive Search
 
-In dit artikel wordt beschreven hoe u [Azure Cognitive Search](search-what-is-azure-search.md) gebruikt voor het indexeren van documenten die eerder zijn versleuteld in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) met behulp van [Azure Key Vault](../key-vault/general/overview.md). Normaal gesp roken kan een Indexeer functie geen inhoud extra heren van versleutelde bestanden omdat deze geen toegang heeft tot de versleutelings sleutel. Door gebruik te maken van de aangepaste [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) -vaardigheid, gevolgd door de [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md), kunt u echter beheerde toegang bieden tot de sleutel om de bestanden te ontsleutelen en vervolgens de inhoud ervan uit te pakken. Hiermee ontgrendelt u de mogelijkheid om deze documenten te indexeren zonder dat u zich zorgen hoeft te maken dat uw gegevens niet-versleuteld worden opgeslagen in rust.
+In dit artikel wordt beschreven hoe u [Azure Cognitive Search](search-what-is-azure-search.md) gebruikt voor het indexeren van documenten die eerder zijn versleuteld in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) met behulp van [Azure Key Vault](../key-vault/general/overview.md). Normaal gesp roken kan een Indexeer functie geen inhoud extra heren van versleutelde bestanden omdat deze geen toegang heeft tot de versleutelings sleutel. Door gebruik te maken van de aangepaste [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) -vaardigheid, gevolgd door de [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md), kunt u echter beheerde toegang bieden tot de sleutel om de bestanden te ontsleutelen en vervolgens de inhoud ervan uit te pakken. Hiermee ontgrendelt u de mogelijkheid om deze documenten te indexeren zonder de versleutelings status van uw opgeslagen documenten in gevaar te brengen.
 
-In deze hand leiding wordt gebruikgemaakt van Postman en de zoek-REST-Api's om de volgende taken uit te voeren:
+Als u begint met het eerder versleutelde hele documenten (ongestructureerde tekst) zoals PDF, HTML, DOCX en PPTX in Azure Blob-opslag, gebruikt deze hand leiding postman en de zoek REST-Api's om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
-> * Begin met hele documenten (ongestructureerde tekst) zoals PDF, HTML, DOCX en PPTX in Azure Blob-opslag die is versleuteld met Azure Key Vault.
 > * Een pijp lijn definiëren waarmee de documenten worden ontsleuteld en er tekst uit wordt opgehaald.
 > * Definieer een index om de uitvoer op te slaan.
 > * Voer de pijp lijn uit om de index te maken en te laden.
@@ -36,13 +35,10 @@ Als u geen abonnement op Azure hebt, opent u een [gratis account](https://azure.
 In dit voor beeld wordt ervan uitgegaan dat u uw bestanden al naar Azure Blob Storage hebt geüpload en deze in het proces hebt versleuteld. Als u hulp nodig hebt bij het ophalen van uw bestanden die in eerste instantie zijn geüpload en versleuteld, raadpleegt u [deze zelf studie](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) voor informatie over hoe u dit doet.
 
 + [Azure Storage](https://azure.microsoft.com/services/storage/)
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) in hetzelfde abonnement als Azure Cognitive Search. De sleutel kluis moet de beveiliging **voorlopig verwijderen** en **leegmaken** hebben ingeschakeld.
++ [Azure-Cognitive Search](search-create-service-portal.md) op een [factureer bare laag](search-sku-tier.md#tiers) (Basic of hoger, in een wille keurige regio)
 + [Azure-functie](https://azure.microsoft.com/services/functions/)
 + [Postman bureaublad-app](https://www.getpostman.com/)
-+ [Maak](search-create-service-portal.md) of [vind een bestaande zoekservice](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
-
-> [!Note]
-> U kunt de gratis service voor deze hand leiding gebruiken. Een gratis zoek service beperkt u tot drie indexen, drie Indexeer functies, drie gegevens bronnen en drie vaardig heden. In deze hand leiding wordt een van beide gemaakt. Voordat u aan de slag gaat, zorg ervoor dat uw service voldoende ruimte heeft voor de nieuwe resources.
 
 ## <a name="1---create-services-and-collect-credentials"></a>1-services maken en referenties verzamelen
 
@@ -68,9 +64,9 @@ In de DecryptBlobFile-vaardigheid wordt de URL en het SAS-token voor elke BLOB a
      
        ![Toegangs beleid voor sleutel kluis toevoegen](media/indexing-encrypted-blob-files/keyvault-access-policies.jpg "Toegangs beleid voor de sleutel kluis")
 
-    1. Onder **configureren vanaf sjabloon** selecteert u **Azure data Lake Storage of Azure Storage** .
+    1. Onder **configureren vanaf sjabloon** selecteert u **Azure data Lake Storage of Azure Storage**.
 
-    1. Selecteer voor de principal het Azure-functie-exemplaar dat u hebt geïmplementeerd. U kunt ernaar zoeken met het resource-voor voegsel dat is gebruikt om het te maken in stap 2, dat een standaard voorvoegsel waarde heeft van **psdbf-function-app** .
+    1. Selecteer voor de principal het Azure-functie-exemplaar dat u hebt geïmplementeerd. U kunt ernaar zoeken met het resource-voor voegsel dat is gebruikt om het te maken in stap 2, dat een standaard voorvoegsel waarde heeft van **psdbf-function-app**.
 
     1. Selecteer niets voor de optie voor de geautoriseerde toepassing.
      
@@ -121,10 +117,10 @@ Postman installeren en instellen.
 1. Download de [broncode van de Postman-verzameling](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json).
 1. Selecteer **Bestand** > **Importeren** om de broncode te importeren in Postman.
 1. Selecteer het tabblad **Verzamelingen** en selecteer vervolgens de knop met het beletselteken **...** .
-1. Selecteer **Bewerken** . 
+1. Selecteer **Bewerken**. 
    
    ![Postman-app met navigatie](media/indexing-encrypted-blob-files/postman-edit-menu.jpg "Ga naar het menu Bewerken in Postman")
-1. Selecteer in het dialoogvenster **Bewerken** het tabblad **Variabelen** . 
+1. Selecteer in het dialoogvenster **Bewerken** het tabblad **Variabelen**. 
 
 U kunt op het tabblad **Variabelen** waarden toevoegen die Postman steeds verwisselt wanneer een specifieke variabele wordt aangetroffen binnen dubbele accolades. Postman vervangt bijvoorbeeld het symbool `{{admin-key}}` door de huidige waarde die u hebt ingesteld voor `admin-key`. Postman vervangt de URL's, kopteksten, de hoofdtekst van de aanvraag, enzovoort. 
 
@@ -137,15 +133,15 @@ Als u de waarde voor wilt ophalen `admin-key` , gebruikt u de Azure Cognitive Se
 |-------------|-----------------|
 | `admin-key` | Op de pagina **Sleutels** van de Azure Cognitive Search-service.  |
 | `search-service-name` | De naam van de Azure Cognitive Search-service. De URL is `https://{{search-service-name}}.search.windows.net`. | 
-| `storage-connection-string` | Selecteer in het opslagaccount op het tabblad **Toegangssleutels** de **key1** >  **-verbindingstekenreeks** . | 
+| `storage-connection-string` | Selecteer in het opslagaccount op het tabblad **Toegangssleutels** de **key1** >  **-verbindingstekenreeks**. | 
 | `storage-container-name` | De naam van de BLOB-container met de versleutelde bestanden die moeten worden geïndexeerd. | 
 | `function-uri` |  In de Azure-functie onder **Essentials** op de hoofd pagina. | 
 | `function-code` | Klik in de functie Azure, door te navigeren naar **app-sleutels** , op om de **standaard** sleutel weer te geven en de waarde te kopiëren. | 
-| `api-version` | Laat deze staan op **2020-06-30** . |
+| `api-version` | Laat deze staan op **2020-06-30**. |
 | `datasource-name` | Als **versleutelde blobs-DS** laten. | 
 | `index-name` | **Versleuteld-blobs-idx** laten staan. | 
 | `skillset-name` | **Versleuteld-blobs-SS** laten staan. | 
-| `indexer-name` | Zorg ervoor dat **versleutelde blobs-IXR** . | 
+| `indexer-name` | Zorg ervoor dat **versleutelde blobs-IXR**. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>De verzameling aanvragen weergeven in Postman
 

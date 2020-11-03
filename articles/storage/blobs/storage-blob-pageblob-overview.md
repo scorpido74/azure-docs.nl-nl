@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091012"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288333"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Overzicht van Azure-pagina-blobs
 
@@ -24,6 +24,10 @@ Azure Storage biedt drie typen Blob Storage: blok-blobs, toevoeg-blobs en pagina
 Pagina-blobs zijn een verzameling van 512-byte pagina's, die de mogelijkheid bieden om wille keurig bereik van bytes te lezen/schrijven. Pagina-blobs zijn daarom ideaal voor het opslaan van op index gebaseerde en sparse gegevens structuren zoals besturings systeem-en gegevens schijven voor Virtual Machines en data bases. Azure SQL DB maakt bijvoorbeeld gebruik van pagina-blobs als de onderliggende permanente opslag voor de data bases. Daarnaast worden pagina-blobs ook vaak gebruikt voor bestanden met Range-Based-updates.  
 
 De belangrijkste functies van Azure page-blobs zijn de REST interface, de duurzaamheid van de onderliggende opslag en de naadloze migratie mogelijkheden naar Azure. Deze functies worden gedetailleerd beschreven in de volgende sectie. Daarnaast worden Azure page-blobs momenteel ondersteund op twee soorten opslag: Premium Storage en standaard opslag. Premium Storage is speciaal ontworpen voor werk belastingen die consistente hoge prestaties en lage latentie nodig hebben om Premium-pagina-blobs te maken die ideaal zijn voor opslag scenario's met hoge prestaties. Standaard opslag accounts zijn rendabeler voor het uitvoeren van latentie gevoelige werk belastingen.
+
+## <a name="restrictions"></a>Beperkingen
+
+Pagina-blobs kunnen alleen de laag **Hot** Access gebruiken, ze kunnen geen **koele** of **Archief** lagen gebruiken. Zie [toegangs lagen voor Azure Blob Storage-hot, cool en Archive](storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen.
 
 ## <a name="sample-use-cases"></a>Voorbeelden van toepassingsscenario’s
 
@@ -59,7 +63,7 @@ Eerst moet u een verwijzing naar een container ophalen. Als u een pagina-BLOB wi
 
 # <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
 
-Als u een pagina-BLOB wilt maken, maakt u eerst een **CloudBlobClient** -object met de basis-URI voor toegang tot de Blob-opslag voor uw opslag account (*pbaccount* in afbeelding 1) samen met het object **StorageCredentialsAccountAndKey** , zoals wordt weer gegeven in het volgende voor beeld. In het voor beeld wordt vervolgens een verwijzing naar een **CloudBlobContainer** -object gemaakt en vervolgens de container (*testvhds*) gemaakt als deze nog niet bestaat. Maak vervolgens met behulp van het object **CloudBlobContainer** een verwijzing naar een **CloudPageBlob** -object door de naam van de pagina-BLOB (OS4. VHD) op te geven die u wilt openen. Als u de pagina-BLOB wilt maken, roept u [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)aan en geeft u de maximale grootte voor de BLOB op die moet worden gemaakt. De *blobSize* moet een meervoud van 512 bytes zijn.
+Als u een pagina-BLOB wilt maken, maakt u eerst een **CloudBlobClient** -object met de basis-URI voor toegang tot de Blob-opslag voor uw opslag account ( *pbaccount* in afbeelding 1) samen met het object **StorageCredentialsAccountAndKey** , zoals wordt weer gegeven in het volgende voor beeld. In het voor beeld wordt vervolgens een verwijzing naar een **CloudBlobContainer** -object gemaakt en vervolgens de container ( *testvhds* ) gemaakt als deze nog niet bestaat. Maak vervolgens met behulp van het object **CloudBlobContainer** een verwijzing naar een **CloudPageBlob** -object door de naam van de pagina-BLOB (OS4. VHD) op te geven die u wilt openen. Als u de pagina-BLOB wilt maken, roept u [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)aan en geeft u de maximale grootte voor de BLOB op die moet worden gemaakt. De *blobSize* moet een meervoud van 512 bytes zijn.
 
 ```csharp
 using Microsoft.Azure;

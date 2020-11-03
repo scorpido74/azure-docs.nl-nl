@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744804"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285647"
 ---
-# <a name="how-to-enable-key-vault-logging"></a>Key Vault logboek registratie inschakelen
+# <a name="how-to-enable-key-vault-logging"></a>Key Vault-logboekregistratie inschakelen
 
 Nadat u een of meer sleutelkluizen hebt gemaakt, wilt u wellicht controleren hoe en wanneer uw sleutelkluizen toegankelijk zijn en voor wie. Zie [Key Vault logboek registratie](logging.md)voor volledige informatie over de functie.
 
@@ -64,7 +64,7 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 Hoewel u een bestaand opslag account voor uw logboeken kunt gebruiken, maken we een nieuw opslag account dat is toegewezen aan Key Vault Logboeken. 
 
-En om het ons nog gemakkelijker te maken, gebruiken we de resourcegroep die de sleutelkluis bevat. In de [Snelstartgids van Azure cli](quick-create-cli.md) en [Azure PowerShell Quick](quick-create-powershell.md)start is deze resource groep de naam **myResourceGroup**en is de locatie *Oost*-out. Vervang deze waarden door uw eigen waarde, zoals van toepassing. 
+En om het ons nog gemakkelijker te maken, gebruiken we de resourcegroep die de sleutelkluis bevat. In de [Snelstartgids van Azure cli](quick-create-cli.md) en [Azure PowerShell Quick](quick-create-powershell.md)start is deze resource groep de naam **myResourceGroup** en is de locatie *Oost* -out. Vervang deze waarden door uw eigen waarde, zoals van toepassing. 
 
 U moet ook een naam voor het opslag account opgeven. Namen van opslag accounts moeten uniek zijn, tussen 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten.  Tot slot wordt er een opslag account van de SKU ' Standard_LRS ' gemaakt.
 
@@ -147,7 +147,7 @@ Wat wordt er vastgelegd:
   * Het maken, wijzigen of verwijderen van die sleutels of geheimen.
   * Het ondertekenen, verifiëren, versleutelen, ontsleutelen, verpakken en uitpakken van sleutels, het ophalen van geheimen en het vermelden van sleutels en geheimen (en hun versies).
 * Niet-geverifieerde aanvragen die in een 401-respons resulteren. Voorbeelden daarvan zijn aanvragen die geen Bearer-token hebben, die ongeldig of verlopen zijn, of die een ongeldig token hebben.  
-* Meldingsgebeurtenissen van Event Grid voor bijna verlopen, verlopen en toegangsbeleid van kluis gewijzigd (gebeurtenis voor nieuwe versie wordt niet vastgelegd). Gebeurtenissen worden vastgelegd ongeacht of er een gebeurtenisabonnement is gemaakt voor de sleutelkluis. Zie [Azure Event Grid-gebeurtenisschema voor Key Vault](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault) voor meer informatie.
+* Meldingsgebeurtenissen van Event Grid voor bijna verlopen, verlopen en toegangsbeleid van kluis gewijzigd (gebeurtenis voor nieuwe versie wordt niet vastgelegd). Gebeurtenissen worden vastgelegd ongeacht of er een gebeurtenisabonnement is gemaakt voor de sleutelkluis. Zie [Azure Event Grid-gebeurtenisschema voor Key Vault](../../event-grid/event-schema-key-vault.md) voor meer informatie.
 
 ## <a name="access-your-logs"></a>Toegang tot uw logboeken
 

@@ -1,18 +1,18 @@
 ---
-title: Richt lijnen voor het afhandelen van Azure Functions
-description: Meer informatie over het afhandelen van fouten in Azure Functions met koppelingen naar specifieke bindings fouten.
+title: Azure Functions fout afhandeling en richt lijnen voor opnieuw proberen
+description: Meer informatie over het afhandelen van fouten en het opnieuw proberen van gebeurtenissen in Azure Functions met koppelingen naar specifieke bindings fouten.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: 0617d55f7c67c788b1e898d963f7d509cef72d49
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: e52babd5b0612b4590f1422a941b25ba30c3f169
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096841"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284447"
 ---
-# <a name="azure-functions-error-handling"></a>Fout afhandeling Azure Functions
+# <a name="azure-functions-error-handling-and-retries"></a>Fout afhandeling en nieuwe pogingen Azure Functions
 
 Het afhandelen van fouten in Azure Functions is belang rijk om te voor komen dat gegevens verloren gaan, gemiste gebeurtenissen en de status van uw toepassing te controleren.
 
@@ -20,7 +20,7 @@ In dit artikel worden algemene strategieën beschreven voor het afhandelen van f
 
 ## <a name="handling-errors"></a>Afhandeling van fouten
 
-[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
+[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-retries.md)]
 
 ## <a name="binding-error-codes"></a>Bindings fout codes
 

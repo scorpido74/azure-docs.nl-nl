@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2781ef69ce85e82dab45a9f890ef5e6862949d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087980"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284494"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Logic Apps gebruiken om een e-mail te ontvangen over statuswijzigingen van sleutelkluisgeheimen
 
@@ -28,7 +28,7 @@ Zie [Key Vault bewaken met Azure Event Grid](event-grid-overview.md) voor een ov
 - Een e-mailaccount van een e-mailprovider die door Azure Logic Apps wordt ondersteund (bijvoorbeeld Office 365 Outlook). Dit e-mailaccount wordt gebruikt voor het verzenden van de gebeurtenismeldingen. Zie [Overzicht van connectors](/connectors) voor een volledige lijst met ondersteunde Logic App-connectors.
 - Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 - Een sleutelkluis in uw Azure-abonnement. U kunt snel een nieuwe sleutelkluis maken aan de hand van de stappen in [Een geheim instellen en ophalen van Azure Key Vault met Azure CLI](../secrets/quick-create-cli.md)
-- Geregistreerde Event Grid als resourceprovider. Zie de [Registraties van resourceproviders](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)
+- Geregistreerde Event Grid als resourceprovider. Zie de [Registraties van resourceproviders](../../azure-resource-manager/management/resource-providers-and-types.md)
 
 ## <a name="create-a-logic-app-via-event-grid"></a>Een logische app maken via Event Grid
 
@@ -45,7 +45,7 @@ Volg de volgende stappen als u een Azure Event Grid-abonnement wilt maken:
  
     ![Logic App Designer - verbinding](../media/eventgrid-logicappdesigner1.png)
 
-1. Ga als volgt te werk op het scherm **Wanneer een resourcegebeurtenis zich voordoet**:
+1. Ga als volgt te werk op het scherm **Wanneer een resourcegebeurtenis zich voordoet** :
     - Laat **Abonnement** en **Resourcenaam** op de standaardwaarde staan.
     - Selecteer **Microsoft.KeyVault.vaults** voor het **Resourcetype**.
     - Selecteer **Microsoft.KeyVault.SecretNewVersionCreated** voor **Gebeurtenistype-item - 1**.
@@ -60,7 +60,7 @@ Volg de volgende stappen als u een Azure Event Grid-abonnement wilt maken:
 
 1. Stel de e-mailsjabloon samen:
     - **Aan:** Voer het e-mailadres in waarop u de e-mailmeldingen wilt ontvangen. Voor deze zelfstudie gebruikt u een e-mailaccount dat u kunt gebruiken voor het testen.
-    - **Onderwerp** en **Hoofdtekst**: typ hier het onderwerp en de tekst voor uw e-mail. Selecteer de JSON-eigenschappen van het selector-hulpprogramma om dynamische inhoud op basis van gebeurtenisgegevens toe te voegen. U kunt de gegevens van de gebeurtenis ophalen met `@{triggerBody()?['Data']}`.
+    - **Onderwerp** en **Hoofdtekst** : typ hier het onderwerp en de tekst voor uw e-mail. Selecteer de JSON-eigenschappen van het selector-hulpprogramma om dynamische inhoud op basis van gebeurtenisgegevens toe te voegen. U kunt de gegevens van de gebeurtenis ophalen met `@{triggerBody()?['Data']}`.
 
     Uw e-mailsjabloon ziet er nu misschien uit als in dit voorbeeld.
 

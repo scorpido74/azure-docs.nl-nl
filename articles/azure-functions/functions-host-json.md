@@ -3,12 +3,12 @@ title: host.jsbij verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor de Azure Functions host.jsin het bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167645"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284514"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referentie naar host.json voor Azure Functions 2.x en hoger 
 
@@ -116,6 +116,11 @@ In het volgende voor beeld *host.js* bestand voor versie 2. x + zijn alle mogeli
     },
     "managedDependency": {
         "enabled": true
+    },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -349,6 +354,28 @@ Managed dependency is een functie die momenteel alleen wordt ondersteund met Pow
 ## <a name="queues"></a>Bestel
 
 Configuratie-instellingen vindt u in de [opslag wachtrij Triggers en bindingen](functions-bindings-storage-queue-output.md#host-json).  
+
+## <a name="retry"></a>retry
+
+Hiermee bepaalt u de beleids opties voor [opnieuw proberen](./functions-bindings-error-pages.md#retry-policies) voor alle uitvoeringen in de app.
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|Eigenschap  |Standaard | Beschrijving |
+|---------|---------|---------| 
+|Pele|null|Vereist. De strategie voor opnieuw proberen die moet worden gebruikt. Geldige waarden zijn `fixedDelay` of `exponentialBackoff` .|
+|maxRetryCount|null|Vereist. Het maximum aantal nieuwe pogingen dat per functie-uitvoering is toegestaan. `-1` betekent dat u voor onbepaalde tijd opnieuw kunt proberen.|
+|delayInterval|null|De vertraging die wordt gebruikt tussen nieuwe pogingen met een `fixedDelay` strategie.|
+|minimumInterval|null|De minimale vertraging voor nieuwe pogingen bij het gebruik van de `exponentialBackoff` strategie.|
+|maximumInterval|null|De maximale vertraging voor nieuwe pogingen bij het gebruik van de `exponentialBackoff` strategie.| 
 
 ## <a name="sendgrid"></a>sendGrid
 

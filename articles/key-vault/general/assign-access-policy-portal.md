@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d16d14ff51cb9a7e71193d93c6755a8e4cb93ed0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89481406"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287700"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Een Key Vault toegangs beleid toewijzen met behulp van de Azure Portal
 
@@ -23,21 +23,21 @@ Een Key Vault toegangs beleid bepaalt of een bepaalde service-principal, namelij
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-Zie [een basis groep maken en leden toevoegen](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) voor meer informatie over het maken van groepen in azure Active Directory via de Azure Portal.
+Zie [een basis groep maken en leden toevoegen](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie over het maken van groepen in azure Active Directory via de Azure Portal.
 
 ## <a name="assign-an-access-policy"></a>Een toegangsbeleid toewijzen
 
 1.  Ga in het [Azure Portal](https://portal.azure.com)naar de Key Vault resource. 
 
-1.  Selecteer onder **instellingen** **toegangs beleid**en selecteer vervolgens **toegangs beleid toevoegen**:
+1.  Selecteer onder **instellingen** **toegangs beleid** en selecteer vervolgens **toegangs beleid toevoegen** :
 
     ![Selecteer toegangs beleid, selecteren functie toewijzing toevoegen](../media/authentication/assign-policy-portal-01.png)
 
-1.  Selecteer de gewenste machtigingen onder **certificaat machtigingen**, **sleutel machtigingen**en **geheime machtigingen**. U kunt ook een sjabloon selecteren die algemene combi Naties van machtigingen bevat:
+1.  Selecteer de gewenste machtigingen onder **certificaat machtigingen** , **sleutel machtigingen** en **geheime machtigingen**. U kunt ook een sjabloon selecteren die algemene combi Naties van machtigingen bevat:
 
     ![Machtigingen voor toegangs beleid opgeven](../media/authentication/assign-policy-portal-02.png)
 
-1. Kies onder **Principal selecteren**de koppeling **geen geselecteerd** om het deel venster voor de selectie van **principals** te openen. Voer de naam van de app of Service-Principal in het zoek veld in, selecteer het gewenste resultaat en kies vervolgens **selecteren**.
+1. Kies onder **Principal selecteren** de koppeling **geen geselecteerd** om het deel venster voor de selectie van **principals** te openen. Voer de naam van de app of Service-Principal in het zoek veld in, selecteer het gewenste resultaat en kies vervolgens **selecteren**.
 
     ![De service-principal voor het toegangs beleid selecteren](../media/authentication/assign-policy-portal-03.png)
 
@@ -47,7 +47,7 @@ Zie [een basis groep maken en leden toevoegen](/azure/active-directory/fundament
 
     ![Het toegangs beleid toevoegen aan de Service-Principal toegewezen](../media/authentication/assign-policy-portal-04.png)
 
-1. Ga terug naar de pagina **toegangs beleid** , Controleer of uw toegangs beleid wordt weer gegeven onder **huidige toegangs beleid**en selecteer vervolgens **Opslaan**. Toegangs beleid wordt pas toegepast wanneer u ze opslaat.
+1. Ga terug naar de pagina **toegangs beleid** , Controleer of uw toegangs beleid wordt weer gegeven onder **huidige toegangs beleid** en selecteer vervolgens **Opslaan**. Toegangs beleid wordt pas toegepast wanneer u ze opslaat.
 
     ![De wijzigingen in het toegangs beleid opslaan](../media/authentication/assign-policy-portal-05.png)
 
