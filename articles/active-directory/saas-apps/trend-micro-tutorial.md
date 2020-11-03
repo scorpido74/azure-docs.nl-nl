@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551889"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514534"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Zelfstudie: Integratie van eenmalige aanmelding tussen Azure Active Directory en Trend Micro Web Security (TMWS)
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u hoe u Trend Micro Web Security (TMWS) kunt integreren
 * U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij TMWS.
 * Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ Om aan de slag te gaan, hebt u het volgende nodig:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * TMWS ondersteunt door SP geïnitieerde eenmalige aanmelding.
-* Zodra u TMWS hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. Voor informatie over het afdwingen van sessiebeheer met behulp van Microsoft Cloud App Security, raadpleegt u [App-beheer voor voorwaardelijke toegang onboarden en implementeren voor elke app](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Zodra u TMWS hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. Voor informatie over het afdwingen van sessiebeheer met behulp van Microsoft Cloud App Security, raadpleegt u [App-beheer voor voorwaardelijke toegang onboarden en implementeren voor elke app](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-tmws-from-the-gallery"></a>TMWS toevoegen uit de galerie
 
@@ -114,9 +114,9 @@ In dit gedeelte gaat u een testgebruiker met de naam B.Simon maken in de Azure-p
 
 1. Selecteer in de Azure-portal aan de linkerkant **Azure Active Directory**. Selecteer **Gebruikers** en daarna **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker** :
    1. Voer in het vak **Naam** `B.Simon`in.  
-   1. Voer in het vak **Gebruikersnaam** ***gebruikersnaam *@* bedrijfsdomein *.* extensie*** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het vak **Gebruikersnaam** * *_gebruikersnaam_@* bedrijfsdomein *.* extensie*** in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Selecteer **Maken**.
 
@@ -126,7 +126,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Selecteer in de Azure-portal **Bedrijfstoepassingen** en selecteer **Alle toepassingen**.
 1. Selecteer **Trend Micro Web Security (TMWS)** in de lijst met toepassingen.
-1. Ga op de overzichtspagina van de app naar de sectie **Beheren** en selecteer **Gebruikers en groepen**:
+1. Ga op de overzichtspagina van de app naar de sectie **Beheren** en selecteer **Gebruikers en groepen** :
 
    ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
@@ -142,7 +142,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 
-1. Selecteer **App-registraties**onder **Beheren** en selecteer vervolgens uw nieuwe ondernemingstoepassing onder **Alle toepassingen**.
+1. Selecteer **App-registraties** onder **Beheren** en selecteer vervolgens uw nieuwe ondernemingstoepassing onder **Alle toepassingen**.
 
 1. Selecteer onder **Beheren** de optie **Certificaten en geheimen**.
 
@@ -186,7 +186,7 @@ Voltooi deze stappen om eenmalige aanmelding bij TMWS te configureren aan de kan
     > [!NOTE]
     > Gebruikers die niet zijn gesynchroniseerd vanuit Azure AD kunnen alleen worden geverifieerd via bekende TMWS-gateways of de toegewezen poort voor uw organisatie.
 
-1. Voer de volgende stappen uit op de pagina **Id-providerinstellingen**:
+1. Voer de volgende stappen uit op de pagina **Id-providerinstellingen** :
 
     a. Typ in het vak **Service-URL** de waarde voor **Aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
@@ -194,7 +194,7 @@ Voltooi deze stappen om eenmalige aanmelding bij TMWS te configureren aan de kan
 
     c. Ga naar het vak **Openbaar SSL-certificaat** en gebruik het **Certificaat (Base64)** dat u vanuit Azure Portal hebt gedownload.
 
-1. Voer de volgende stappen uit op de pagina **Synchronisatie-instellingen**:
+1. Voer de volgende stappen uit op de pagina **Synchronisatie-instellingen** :
 
     a. Voer in het vak **Tenant** de **Map-id (tenant) in** of de waarde voor de **Aangepaste domeinnaam** vanuit Azure Portal.
 
@@ -224,21 +224,20 @@ Nadat u de Azure AD-service hebt geconfigureerd en Azure AD hebt opgegeven als d
 
 1. Ga naar een website. TMWS leidt u naar de TMWS-portal.
 
-1. Geef een Active Directory-account (indeling: *domein*\\*sAMAccountName* of *sAMAccountName*@*domein*), e-mailadres of UPN op en selecteer vervolgens **Aanmelden**. TMWS stuurt u naar het aanmeldingsvenster van Azure AD.
+1. Geef een Active Directory-account (indeling: *domein*\\*sAMAccountName* of *sAMAccountName*@*domein* ), e-mailadres of UPN op en selecteer vervolgens **Aanmelden**. TMWS stuurt u naar het aanmeldingsvenster van Azure AD.
 
 1. Voer in het aanmeldingsvenster van Azure AD uw Azure AD-accountreferenties in. U bent nu aangemeld bij TMWS.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Zelfstudies over het integreren van SaaS-apps met Azure Active Directory](./tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)
 
 - [Trend Micro Web Security met Azure AD proberen](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Trend Micro Web Security beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Trend Micro Web Security beveiligen met geavanceerde zichtbaarheid en besturingselementen](/cloud-app-security/proxy-intro-aad)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: edee1948780b827eed5047c6c9c919b66eb619d0
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 553f83151289adf6f0f4420d106af7ae37047bda
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900220"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148317"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Aanbevelingen voor beveiliging: een naslaggids
 
@@ -217,6 +217,5 @@ Uw beveiligingsscore is gebaseerd op het aantal Security Center-aanbevelingen da
 ## <a name="next-steps"></a>Volgende stappen
 Zie het volgende voor meer informatie over aanbevelingen:
 
-* [De Microsoft Learn-module over het analyseren van de aanbevelingen die zijn gedaan door Security Center](/learn/modules/identify-threats-with-azure-security-center/)
 * [Aanbevelingen voor beveiliging in Azure Security Center](security-center-recommendations.md)
 * [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)

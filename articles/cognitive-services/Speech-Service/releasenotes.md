@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eb285f7ef536ac19d0ea7328a4428f33a47cd368
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e22400016eae0642c4e25fcfd4fcaaaab22a27a8
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129623"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280582"
 ---
 # <a name="speech-service-release-notes"></a>Release opmerkingen bij de spraak service
 
@@ -41,7 +41,7 @@ SPX is de opdracht regel interface voor het gebruik van de service Azure speech 
 https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream.fromfile).
 -  **C++/c #/Java/python/Objective-C/Swift** : er is een `stopSpeakingAsync()` methode toegevoegd om de tekst-naar-spraak-synthese te stoppen. Lees de referentie documentatie [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), [hier (C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)), hier ( [Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), [hier (python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python), en [hier (objectief-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
 - **C#, C++, Java** : een `FromDialogServiceConnector()` functie toegevoegd aan de `Connection` klasse die kan worden gebruikt voor het bewaken van verbindings-en verbreken van gebeurtenissen voor `DialogServiceConnector` . Lees de referentie documentatie [hier (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection), en [hier (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable).
-- **C++/c #/Java/python/Objective-C/Swift** : er is ondersteuning toegevoegd voor de beoordeling van de uitspraak, waarmee de uitspraak van een stem wordt geëvalueerd en feedback wordt gegeven over de nauw keurigheid en fluency van gesp roken audio. Lees de documentatie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment).
+<!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
 
 **Oplossingen voor oplossingen**
 - **Alle** : vaste 1,13-regressie in `SetServiceProperty` waar waarden met bepaalde speciale tekens worden genegeerd.
@@ -64,7 +64,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 **Voorbeelden**
 - **ObjectiveC** : voor beeld voor trefwoord herkenning is [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples)toegevoegd.
 - **C#/JavaScript** : Quick Start [(hier)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) en [hier (Java script)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription)toevoegen.
-- **C++/c #/Java/python/Swift/ObjectiveC** : er is een voor beeld toegevoegd voor de [uitspraak beoordeling](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples)
+<!-- - **C++/C#/Java/Python/Swift/ObjectiveC**: Added sample for pronunciation assessment [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) -->
 - **Xamarin** : Quick Start [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin)de meest recente Visual Studio-sjabloon bijgewerkt.
 
 **Bekend probleem**
@@ -78,9 +78,9 @@ Blijf op de hoogte.
 
 ### <a name="new-features"></a>Nieuwe functies
 
-* **NEURAL TTS: nieuwe spreek stijl voor `en-US` Aria-stem** . AriaNeural kan klinken als een nieuws-Caster bij het lezen van nieuws. De stijl ' Newscast-formeel ' klinkt meer ernstig, terwijl de stijl ' Newscast-inform ' meer besoepelder en informeel is. Zie [de gesp roken stijlen gebruiken in SSML](speech-synthesis-markup.md).
+* **NEURAL TTS: nieuwe spreek stijl voor `en-US` Aria-stem**. AriaNeural kan klinken als een nieuws-Caster bij het lezen van nieuws. De stijl ' Newscast-formeel ' klinkt meer ernstig, terwijl de stijl ' Newscast-inform ' meer besoepelder en informeel is. Zie [de gesp roken stijlen gebruiken in SSML](speech-synthesis-markup.md).
 
-* **Aangepaste spraak: er wordt een nieuwe functie uitgebracht om de kwaliteit van de trainings gegevens automatisch te controleren** . Wanneer u uw gegevens uploadt, onderzoekt het systeem diverse aspecten van uw audio-en transcript gegevens, en worden automatisch problemen opgelost of gefilterd om de kwaliteit van het spraak model te verbeteren. Dit heeft betrekking op het volume van uw audio, het geluids niveau, de nauw keurigheid van de uitspraak van spraak, de uitlijning van spraak met de genormaliseerde tekst, stilte in de audio, naast de audio-en script indeling. 
+* **Aangepaste spraak: er wordt een nieuwe functie uitgebracht om de kwaliteit van de trainings gegevens automatisch te controleren**. Wanneer u uw gegevens uploadt, onderzoekt het systeem diverse aspecten van uw audio-en transcript gegevens, en worden automatisch problemen opgelost of gefilterd om de kwaliteit van het spraak model te verbeteren. Dit heeft betrekking op het volume van uw audio, het geluids niveau, de nauw keurigheid van de uitspraak van spraak, de uitlijning van spraak met de genormaliseerde tekst, stilte in de audio, naast de audio-en script indeling. 
 
 * **Audio-inhoud maken: een aantal nieuwe functies om krachtigere mogelijkheden voor spraak afstemming en audio beheer mogelijk te** maken.
 
@@ -92,7 +92,7 @@ Blijf op de hoogte.
 
     * SSML-documentatie: gekoppeld aan SSML-document om u te helpen bij het controleren van de regels voor het gebruik van alle afstemmings functies.
 
-* **De Voice List-API is bijgewerkt met een gebruiks vriendelijke weergave naam en de spraak stijlen die voor Neural stemmen worden ondersteund** .
+* **De Voice List-API is bijgewerkt met een gebruiks vriendelijke weergave naam en de spraak stijlen die voor Neural stemmen worden ondersteund**.
 
 ### <a name="general-tts-voice-quality-improvements"></a>Algemene verbeteringen voor spraak kwaliteit van TTS
 

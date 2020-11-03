@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 002c718466b9e13d2f92fbea6dd055eb13d4d3a7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331682"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789111"
 ---
 # <a name="introduction-to-azure-defender"></a>Inleiding tot Azure Defender
 
@@ -65,7 +65,7 @@ Implementeer [Azure Arc](https://azure.microsoft.com/services/azure-arc/) en sch
 
 Wanneer Azure Defender een bedreiging detecteert in een gedeelte van uw omgeving, wordt een waarschuwing gegenereerd. Deze waarschuwingen bevatten details over de relevante bronnen, voorgestelde stappen voor herstel en soms ook de optie om een logische app te activeren.
 
-U kunt een waarschuwing altijd exporteren, ongeacht of deze is gegenereerd door Security Center of door Security Center is ontvangen van een geïntegreerd beveiligingsproduct. Als u waarschuwingen wilt exporteren naar Azure Sentinel, een extern SIEM of een ander extern hulpprogramma, volgt u de instructies in [Waarschuwingen naar een SIEM exporteren](continuous-export.md).
+U kunt een waarschuwing altijd exporteren, ongeacht of deze is gegenereerd door Security Center of door Security Center is ontvangen van een geïntegreerd beveiligingsproduct. Als u waarschuwingen wilt exporteren naar Azure Sentinel, een extern SIEM of een ander extern hulpprogramma, volgt u de instructies in [Waarschuwingen streamen naar een SIEM-, SOAR- of IT Service Management-oplossing](export-to-siem.md).
 
 > [!NOTE]
 > Hoe snel een waarschuwing wordt weergegeven, hangt af van de bron van de waarschuwing. Waarschuwingen waarvoor analyse van netwerkverkeer is vereist, worden bijvoorbeeld later weergegeven dan waarschuwingen met betrekking tot verdachte processen op virtuele machines.
