@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc405c56538ab305d6e0b8a22c1095458cb1264e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344235"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309888"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Resources delen en ontdekken in de Azure AI Gallery
 
-**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
@@ -48,12 +48,12 @@ U kunt zelfs een belang rijke resource delen met vrienden of collega's met behul
 
 Wanneer u zich aanmeldt, wordt u lid van de galerie-community. Zo kunt u bronnen downloaden of uw eigen galerie-items bijdragen zodat anderen kunnen profiteren van de oplossingen die u hebt gedetecteerd.
 
-U kunt **experimenten**, **aangepaste modules** downloaden om te gebruiken bij het ontwikkelen van uw eigen analyse oplossingen.
-U kunt **experimenten**, **zelf studies**en **verzamelingen** bijdragen aan de galerie.
+U kunt **experimenten** , **aangepaste modules** downloaden om te gebruiken bij het ontwikkelen van uw eigen analyse oplossingen.
+U kunt **experimenten** , **zelf studies** en **verzamelingen** bijdragen aan de galerie.
 
 ## <a name="download-experiments-modules"></a>Experimenten, modules downloaden
 
-U kunt **experimenten**, **aangepaste modules** downloaden in uw eigen machine learning Studio (klassieke) werk ruimte om te gebruiken bij het ontwikkelen van uw eigen oplossingen.
+U kunt **experimenten** , **aangepaste modules** downloaden in uw eigen machine learning Studio (klassieke) werk ruimte om te gebruiken bij het ontwikkelen van uw eigen oplossingen.
 
 Een resource downloaden vanuit de AI-galerie:
 
@@ -65,7 +65,7 @@ Een resource downloaden vanuit de AI-galerie:
 Een resource downloaden vanuit Studio (klassiek):
 
 1. Selecteer in Studio (klassiek) de optie **Nieuw**.
-1. Selecteer **module**, **experiment**of **notebook**.
+1. Selecteer **module** , **experiment** of **notebook**.
 1. Blader of zoek naar een galerie resource.
 1. Plaats de muis op de resource en selecteer vervolgens **openen in Studio**.
     ![Galerie met open Gallerys openen in Machine Learning Studio (klassiek)](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
@@ -75,7 +75,7 @@ Zodra de resource zich in uw werk ruimte bevindt, kunt u deze aanpassen en gebru
 Een geïmporteerde aangepaste module gebruiken:
 
 1. Maak een experiment of open een bestaand experiment.
-1. Als u de lijst met aangepaste modules in uw werk ruimte wilt uitvouwen, selecteert u **aangepast**in het palet module. Het module palet bevindt zich links van het canvas van het experiment.
+1. Als u de lijst met aangepaste modules in uw werk ruimte wilt uitvouwen, selecteert u **aangepast** in het palet module. Het module palet bevindt zich links van het canvas van het experiment.
 1. Selecteer de module die u hebt geïmporteerd en sleep deze naar uw experiment.
 
 ## <a name="contribute-experiments"></a>Contribute-experimenten
@@ -108,10 +108,10 @@ En u kunt zich aanmelden met een discussie hulpprogramma zoals Disqus om melding
 
 1. Kies op de pagina **selectie van afbeeldingen** een miniatuur afbeelding voor uw experiment. De miniatuur afbeelding wordt weer gegeven aan de bovenkant van de pagina Details van experiment en op de tegel experiment. Andere gebruikers zien de miniatuur afbeelding wanneer ze door de galerie bladeren. U kunt een installatie kopie van uw computer uploaden of een Stock installatie kopie selecteren in de galerie.
 
-1. Kies op de pagina **instellingen** onder **zicht baarheid**of u uw inhoud openbaar (**openbaar**) wilt publiceren of alleen toegankelijk wilt maken voor personen die een koppeling naar de pagina hebben (niet**vermeld**).
+1. Kies op de pagina **instellingen** onder **zicht baarheid** of u uw inhoud openbaar ( **openbaar** ) wilt publiceren of alleen toegankelijk wilt maken voor personen die een koppeling naar de pagina hebben (niet **vermeld** ).
 
    > [!TIP]
-   > Als u er zeker van wilt zijn dat uw documentatie correct wordt weer gegeven voordat u deze openbaar vrijgeeft, kunt u het experiment eerst als niet- **weer**gegeven publiceren. Later kunt u de zichtbaarheids instelling wijzigen in **openbaar** op de pagina met details van het experiment. Houd er rekening mee dat nadat u een experiment hebt ingesteld op **openbaar** , dit later niet meer kan worden gewijzigd in niet **weer geven**.
+   > Als u er zeker van wilt zijn dat uw documentatie correct wordt weer gegeven voordat u deze openbaar vrijgeeft, kunt u het experiment eerst als niet- **weer** gegeven publiceren. Later kunt u de zichtbaarheids instelling wijzigen in **openbaar** op de pagina met details van het experiment. Houd er rekening mee dat nadat u een experiment hebt ingesteld op **openbaar** , dit later niet meer kan worden gewijzigd in niet **weer geven**.
 
 1. Schakel het selectie vakje **OK** in om het experiment naar de galerie te publiceren.
 
@@ -125,13 +125,13 @@ U kunt de volgende gegevens voor uw experiment rechtstreeks in de galerie wijzig
 * Samen vatting of beschrijving
 * Tags
 * Installatiekopie
-* Zichtbaarheids instelling (**openbaar** of niet in **lijst**)
+* Zichtbaarheids instelling ( **openbaar** of niet in **lijst** )
 
 U kunt ook het experiment uit de galerie verwijderen.
 
 U kunt deze wijzigingen aanbrengen of het experiment verwijderen via de pagina Details van experiment of van uw profiel pagina in de galerie.
 
-* Selecteer op de pagina experiment Details de optie **bewerken**om de details van uw experiment te wijzigen. De pagina Details wordt in de bewerkings modus geactiveerd. Als u wijzigingen wilt aanbrengen, selecteert u **bewerken** naast de naam, samen vatting of tags van het experiment. Wanneer u klaar bent met het maken van wijzigingen, selecteert u **gereed**. Als u de zichtbaarheids instellingen voor het experiment (**openbaar** of niet- **weer geven**) wilt wijzigen, of als u het experiment uit de galerie wilt verwijderen, selecteert u het pictogram **instellingen** .
+* Selecteer op de pagina experiment Details de optie **bewerken** om de details van uw experiment te wijzigen. De pagina Details wordt in de bewerkings modus geactiveerd. Als u wijzigingen wilt aanbrengen, selecteert u **bewerken** naast de naam, samen vatting of tags van het experiment. Wanneer u klaar bent met het maken van wijzigingen, selecteert u **gereed**. Als u de zichtbaarheids instellingen voor het experiment ( **openbaar** of niet- **weer geven** ) wilt wijzigen, of als u het experiment uit de galerie wilt verwijderen, selecteert u het pictogram **instellingen** .
 
 * Selecteer op de pagina Profiel de pijl-omlaag voor het experiment en selecteer vervolgens **bewerken**. Hiermee gaat u naar de pagina Details voor uw experiment in de bewerkings modus. Wanneer u klaar bent met het maken van wijzigingen, selecteert u **gereed**. Als u het experiment uit de galerie wilt verwijderen, selecteert u **verwijderen**.
 
@@ -156,10 +156,10 @@ U kunt anderen helpen bij het schrijven van een **zelf studie** in de galerie me
 
 1. Selecteer op de pagina **selectie van afbeeldingen** een afbeelding die bij uw bijdrage wordt weer gegeven. U kunt uw eigen afbeeldings bestand uploaden of een Stock installatie kopie selecteren. Kies een installatie kopie waarmee gebruikers de inhoud en het doel van uw bijdrage kunnen identificeren. Klik op **Volgende**.
 
-1. Selecteer op de pagina **instellingen** voor **zicht baarheid**of uw bijdrage **openbaar** is (iedereen kan deze weer geven **) of niet weer geven** (alleen personen met een directe koppeling kunnen deze bekijken).
+1. Selecteer op de pagina **instellingen** voor **zicht baarheid** of uw bijdrage **openbaar** is (iedereen kan deze weer geven **) of niet weer geven** (alleen personen met een directe koppeling kunnen deze bekijken).
 
    > [!TIP]
-   > Als u er zeker van wilt zijn dat uw documentatie correct wordt weer gegeven voordat u deze openbaar vrijgeeft, kunt u het experiment eerst als niet- **weer**gegeven publiceren. Later kunt u de zichtbaarheids instelling wijzigen in **openbaar** op de pagina met details van het experiment. Houd er rekening mee dat nadat u een experiment hebt ingesteld op **openbaar** , dit later niet meer kan worden gewijzigd in niet **weer geven**.
+   > Als u er zeker van wilt zijn dat uw documentatie correct wordt weer gegeven voordat u deze openbaar vrijgeeft, kunt u het experiment eerst als niet- **weer** gegeven publiceren. Later kunt u de zichtbaarheids instelling wijzigen in **openbaar** op de pagina met details van het experiment. Houd er rekening mee dat nadat u een experiment hebt ingesteld op **openbaar** , dit later niet meer kan worden gewijzigd in niet **weer geven**.
 
 1. Selecteer **Maken**.
 
@@ -169,11 +169,11 @@ Uw bijdrage is nu in Azure AI Gallery. Uw bijdragen worden weer gegeven op uw ac
 
 U kunt op twee manieren items toevoegen aan uw verzameling:
 
-* Open de verzameling, selecteer **bewerken**en selecteer vervolgens **item toevoegen**. U kunt items toevoegen die u aan de galerie hebt bijgedragen of u kunt in de galerie zoeken naar items die u wilt toevoegen. Nadat u de items hebt geselecteerd die u wilt toevoegen, klikt u op **toevoegen**.
+* Open de verzameling, selecteer **bewerken** en selecteer vervolgens **item toevoegen**. U kunt items toevoegen die u aan de galerie hebt bijgedragen of u kunt in de galerie zoeken naar items die u wilt toevoegen. Nadat u de items hebt geselecteerd die u wilt toevoegen, klikt u op **toevoegen**.
 
 * Als u een item vindt dat u wilt toevoegen terwijl u de galerie bekijkt, opent u het item en selecteert u **toevoegen aan verzameling**. Selecteer de verzameling waaraan u het item wilt toevoegen.
 
-U kunt de items in uw verzameling bewerken door **bewerken**te selecteren.
+U kunt de items in uw verzameling bewerken door **bewerken** te selecteren.
 
 * U kunt de samen vatting, beschrijving of labels voor uw verzameling wijzigen.
 * U kunt de volg orde van de items in de verzameling wijzigen door de pijlen naast een item te gebruiken.

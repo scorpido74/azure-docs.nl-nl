@@ -1,6 +1,6 @@
 ---
-title: Parquet geneste typen doorzoeken met behulp van SQL op aanvraag (preview)
-description: In dit artikel leert u hoe u een query kunt uitvoeren op geneste Parquet-typen met behulp van SQL on-demand (preview).
+title: Een query uitvoeren op geneste Parquet-typen met serverloze SQL-pool (preview-versie)
+description: In dit artikel leert u hoe u een query kunt uitvoeren op geneste Parquet-typen met behulp van serverloze SQL-pool (preview).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3463e4dfc423a3f12ce7a42cb0def36574bcb2d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288253"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312002"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op geneste typen in Parquet-en JSON-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Geneste typen in Parquet-en JSON-bestanden zoeken met behulp van serverloze SQL-pool (preview) in azure Synapse Analytics
 
-In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics. Met de query worden geneste Parquet-typen gelezen.
+In dit artikel leert u hoe u een query schrijft met behulp van serverloze SQL-pool (preview) in azure Synapse Analytics. Met de query worden geneste Parquet-typen gelezen.
 Geneste typen zijn complexe structuren die objecten of matrices vertegenwoordigen. Geneste typen kunnen worden opgeslagen in: 
 - [Parquet](query-parquet-files.md), waar u meerdere complexe kolommen kunt hebben die matrices en objecten bevatten.
 - Hiërarchische [json-bestanden](query-json-files.md), waar u een complex JSON-document als één kolom kunt lezen.
 - Azure Cosmos DB verzamelingen (momenteel in de open bare preview-fase), waarbij elk document complexe geneste eigenschappen kan bevatten.
 
-Azure Synapse SQL on-demand formatteert alle geneste typen als JSON-objecten en matrices. U kunt [complexe objecten dus extra heren of wijzigen met behulp van JSON-functies](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) of JSON- [gegevens parseren met behulp van de openjson-functie](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+Met serverloze SQL-pool worden alle geneste typen als JSON-objecten en-matrices opgemaakt. U kunt [complexe objecten dus extra heren of wijzigen met behulp van JSON-functies](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) of JSON- [gegevens parseren met behulp van de openjson-functie](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Hier volgt een voor beeld van een query waarmee scalaire en object waarden worden geëxtraheerd uit het JSON [-bestand COVID-19 open Research dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) dat geneste objecten bevat: 
 

@@ -1,6 +1,6 @@
 ---
-title: Query's uitvoeren op mappen en meerdere bestanden met behulp van SQL on-demand (preview)
-description: SQL on-demand (preview) ondersteunt het lezen van meerdere bestanden/mappen met behulp van joker tekens, die vergelijkbaar zijn met de joker tekens die in Windows-besturings systeem worden gebruikt.
+title: Zoek mappen en meerdere bestanden met behulp van een serverloze SQL-groep (preview-versie)
+description: Serverloze SQL-groep (preview) ondersteunt het lezen van meerdere bestanden/mappen met behulp van joker tekens, die vergelijkbaar zijn met de joker tekens die in Windows-besturings systeem worden gebruikt.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54ef116878dee2ed1c351fac3dacdf359abbe574
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71ed590440a8c7e37a071b4eadfc09977ef91d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288338"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310826"
 ---
 # <a name="query-folders-and-multiple-files"></a>Query uitvoeren op mappen en meerdere bestanden  
 
-In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics.
+In dit artikel leert u hoe u een query schrijft met behulp van serverloze SQL-pool (preview) in azure Synapse Analytics.
 
-SQL on-demand ondersteunt het lezen van meerdere bestanden/mappen met behulp van joker tekens, die vergelijkbaar zijn met de joker tekens die in Windows-besturings systeem worden gebruikt. Er is echter meer flexibiliteit aanwezig omdat meerdere joker tekens zijn toegestaan.
+Een serverloze SQL-groep ondersteunt het lezen van meerdere bestanden/mappen met behulp van joker tekens, die vergelijkbaar zijn met de joker tekens die in Windows-besturings systeem worden gebruikt. Er is echter meer flexibiliteit aanwezig omdat meerdere joker tekens zijn toegestaan.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -138,7 +138,7 @@ ORDER BY
 Het is mogelijk om bestanden uit meerdere mappen te lezen met behulp van een Joker teken. Met de volgende query worden alle bestanden gelezen van alle mappen in de *CSV* -map die namen hebben die beginnen met *t* en eindigen met *i*.
 
 > [!NOTE]
-> Let op het bestaan van de/aan het einde van het pad in de onderstaande query. Hiermee wordt een map aangeduid. Als de/wordt wegge laten, wordt in de query het doel bestand met de naam * &ast; i* weer te richten.
+> Let op het bestaan van de/aan het einde van het pad in de onderstaande query. Hiermee wordt een map aangeduid. Als de/wordt wegge laten, wordt in de query het doel bestand met de naam *&ast; i* weer te richten.
 
 ```sql
 SELECT
@@ -186,7 +186,7 @@ Omdat u slechts één map hebt die voldoet aan de criteria, is het resultaat van
 U kunt meerdere joker tekens gebruiken op verschillende padvariabelen. U kunt bijvoorbeeld een eerdere query verrijken om bestanden met alleen 2017 gegevens te lezen, van alle mappen met een naam die begint met *t* en eindigt met *i*.
 
 > [!NOTE]
-> Let op het bestaan van de/aan het einde van het pad in de onderstaande query. Hiermee wordt een map aangeduid. Als de/wordt wegge laten, wordt in de query het doel bestand met de naam * &ast; i* weer te richten.
+> Let op het bestaan van de/aan het einde van het pad in de onderstaande query. Hiermee wordt een map aangeduid. Als de/wordt wegge laten, wordt in de query het doel bestand met de naam *&ast; i* weer te richten.
 > Er is een maximum limiet van 10 joker tekens per query.
 
 ```sql

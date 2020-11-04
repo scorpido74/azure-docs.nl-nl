@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea791e4fc1031c0a5c041119c409f8623ce7aee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee915346a93a600ea352be42dc14e0464525c025
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260373"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312255"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Verbinding maken met uw Azure Synapse-werk ruimte met behulp van persoonlijke koppelingen (preview-versie)
 
@@ -23,11 +23,14 @@ In dit artikel leert u hoe u een persoonlijk eind punt maakt in de Azure Synapse
 
 Als u dit nog niet hebt gedaan, registreert u de netwerk resource provider. Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider. Kies *Microsoft.Network* in de lijst met resourceproviders tijdens het [registreren](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types). Als de netwerk resource provider al is geregistreerd, gaat u verder met stap 2.
 
-
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>Stap 2: Open de Azure Synapse-werk ruimte in Azure Portal
 
-Selecteer **particuliere endpoint-verbinding** onder **beveiliging** en selecteer vervolgens **+ persoonlijk eind punt**.
+Selecteer **particuliere endpoint-verbinding** onder **beveiliging**. 
 ![Open de Azure Synapse-werk ruimte in Azure Portal](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1.png)
+
+Selecteer in het volgende scherm **+ persoonlijk eind punt**.
+
+![Privé-eind punt openen in Azure Portal](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1a.png)
 
 ## <a name="step-3-select-your-subscription-and-region-details"></a>Stap 3: Selecteer uw abonnement en de regio Details
 

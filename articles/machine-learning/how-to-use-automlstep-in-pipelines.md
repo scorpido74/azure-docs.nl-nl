@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b6c6d15b553e8b19fff2c464dfb856550f7bcbf0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 9cde7fe32d1b7b13c5f95bf3d99497926f68c88e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494922"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311190"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatische ML gebruiken in een Azure Machine Learning pijp lijn in python
 
@@ -41,9 +41,9 @@ De voorkeurs manier _om gegevens naar_ een ml-pijp lijn te verplaatsen, is met `
 
 
 > [!TIP]
-> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klassen  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) en [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Deze klassen zijn [experimentele](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental) preview-functies en kunnen op elk gewenst moment worden gewijzigd.
+> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klassen  [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) en [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) .  Deze klassen zijn [experimentele](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) preview-functies en kunnen op elk gewenst moment worden gewijzigd.
 
-De `AutoMLStep` is geconfigureerd via een- `AutoMLConfig` object. `AutoMLConfig` is een flexibele klasse, zoals beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings). 
+De `AutoMLStep` is geconfigureerd via een- `AutoMLConfig` object. `AutoMLConfig` is een flexibele klasse, zoals beschreven in [automatische ml experimenten configureren in python](./how-to-configure-auto-train.md#configure-your-experiment-settings). 
 
 Een `Pipeline` uitvoering in een `Experiment` . De pijp lijn `Run` heeft voor elke stap een onderliggend element `StepRun` . De uitvoer van de automatische ML `StepRun` zijn de metrische gegevens over de training en het hoogste model.
 
@@ -106,7 +106,7 @@ compute_target = ws.compute_targets[compute_name]
 
 De tussenliggende gegevens tussen de gegevens voorbereiding en de automatische ML stap kunnen worden opgeslagen in de standaard gegevens opslag van de werk ruimte, zodat we niet meer `get_default_datastore()` op het object hoeven te bellen `Workspace` . 
 
-Daarna controleert de code of het AML-reken doel `'cpu-cluster'` al bestaat. Als dat niet het geval is, geeft u op dat er een klein, op CPU gebaseerd reken doel moet worden uitgevoerd. Als u van plan bent om de uitgebreide leer functies van de ML te gebruiken (bijvoorbeeld tekst parametrisatie met DNN-ondersteuning), kiest u een compute met krachtige GPU-ondersteuning, zoals wordt beschreven in [grootten voor GPU geoptimaliseerde virtuele machines](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu). 
+Daarna controleert de code of het AML-reken doel `'cpu-cluster'` al bestaat. Als dat niet het geval is, geeft u op dat er een klein, op CPU gebaseerd reken doel moet worden uitgevoerd. Als u van plan bent om de uitgebreide leer functies van de ML te gebruiken (bijvoorbeeld tekst parametrisatie met DNN-ondersteuning), kiest u een compute met krachtige GPU-ondersteuning, zoals wordt beschreven in [grootten voor GPU geoptimaliseerde virtuele machines](../virtual-machines/sizes-gpu.md). 
 
 De code blokken totdat het doel is ingericht en vervolgens een aantal details van het zojuist gemaakte Compute-doel afdrukt. Ten slotte wordt het benoemde Compute-doel opgehaald uit de werk ruimte en toegewezen aan `compute_target` . 
 
@@ -137,7 +137,7 @@ else:
         pin_sdk_version=False)
 ```
 
-De bovenstaande code bevat twee opties voor het afhandelen van afhankelijkheden. Zoals weer gegeven, `USE_CURATED_ENV = True` is de configuratie gebaseerd op een gecuratore omgeving. Met de geprebakedeerde omgevingen is de gemeen schappelijke onderlinge Interdependent-tape wisselaars en kunnen ze aanzienlijk sneller online worden gebracht. In de [micro soft-container Registry](https://hub.docker.com/publishers/microsoftowner)hebben geconstrueerde omgevingen vooraf ingebouwde docker-installatie kopieën. Het pad dat u hebt gemaakt `USE_CURATED_ENV` , `False` wordt weer gegeven met het patroon voor het expliciet instellen van afhankelijkheden. In dat scenario wordt een nieuwe aangepaste docker-installatie kopie gemaakt en geregistreerd in een Azure Container Registry binnen de resource groep (Zie [Inleiding tot privé-docker-container registers in azure](https://docs.microsoft.com/azure/container-registry/container-registry-intro)). Het maken en registreren van deze installatie kopie kan enkele minuten duren. 
+De bovenstaande code bevat twee opties voor het afhandelen van afhankelijkheden. Zoals weer gegeven, `USE_CURATED_ENV = True` is de configuratie gebaseerd op een gecuratore omgeving. Met de geprebakedeerde omgevingen is de gemeen schappelijke onderlinge Interdependent-tape wisselaars en kunnen ze aanzienlijk sneller online worden gebracht. In de [micro soft-container Registry](https://hub.docker.com/publishers/microsoftowner)hebben geconstrueerde omgevingen vooraf ingebouwde docker-installatie kopieën. Het pad dat u hebt gemaakt `USE_CURATED_ENV` , `False` wordt weer gegeven met het patroon voor het expliciet instellen van afhankelijkheden. In dat scenario wordt een nieuwe aangepaste docker-installatie kopie gemaakt en geregistreerd in een Azure Container Registry binnen de resource groep (Zie [Inleiding tot privé-docker-container registers in azure](../container-registry/container-registry-intro.md)). Het maken en registreren van deze installatie kopie kan enkele minuten duren. 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>Gegevens voorbereiden voor automatische machine learning
 
@@ -251,11 +251,11 @@ dataprep_step = PythonScriptStep(
 Het `prepped_data_path` object is van het type `PipelineOutputFileDataset` . U ziet dat deze zowel in de als-argumenten is opgegeven `arguments` `outputs` . Als u de vorige stap bekijkt, ziet u dat in de code voor gegevens voorbereiding de waarde van het argument `'--output_path'` het bestandspad is waarnaar het Parquet-bestand is geschreven. 
 
 > [!TIP]
-> Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . `OutputFileDatasetConfig`Zie [een pijp lijn met twee stappen maken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)voor een code voorbeeld met behulp van de-klasse.
+> Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . `OutputFileDatasetConfig`Zie [een pijp lijn met twee stappen maken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)voor een code voorbeeld met behulp van de-klasse.
 
 ## <a name="train-with-automlstep"></a>Trainen met AutoMLStep
 
-Het configureren van een automatische ML-pijplijn stap wordt uitgevoerd met de- `AutoMLConfig` klasse. Deze flexibele klasse wordt beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train). Gegevens invoer en-uitvoer zijn de enige aspecten van de configuratie die speciale aandacht vereisen in een ML-pijp lijn. De invoer en uitvoer voor `AutoMLConfig` in pijp lijnen worden hieronder uitvoerig besproken. Behalve gegevens is een voor deel van ML-pijp lijnen de mogelijkheid om verschillende reken doelen te gebruiken voor verschillende stappen. U kunt ervoor kiezen om een krachtiger te gebruiken `ComputeTarget` voor het geautomatiseerde ml proces. Dit is net zo eenvoudig als het toewijzen van een krachtiger `RunConfiguration` aan de `AutoMLConfig` para meter van het object `run_configuration` .
+Het configureren van een automatische ML-pijplijn stap wordt uitgevoerd met de- `AutoMLConfig` klasse. Deze flexibele klasse wordt beschreven in [automatische ml experimenten configureren in python](./how-to-configure-auto-train.md). Gegevens invoer en-uitvoer zijn de enige aspecten van de configuratie die speciale aandacht vereisen in een ML-pijp lijn. De invoer en uitvoer voor `AutoMLConfig` in pijp lijnen worden hieronder uitvoerig besproken. Behalve gegevens is een voor deel van ML-pijp lijnen de mogelijkheid om verschillende reken doelen te gebruiken voor verschillende stappen. U kunt ervoor kiezen om een krachtiger te gebruiken `ComputeTarget` voor het geautomatiseerde ml proces. Dit is net zo eenvoudig als het toewijzen van een krachtiger `RunConfiguration` aan de `AutoMLConfig` para meter van het object `run_configuration` .
 
 ### <a name="send-data-to-automlstep"></a>Gegevens verzenden naar `AutoMLStep`
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 Met het bovenstaande code fragment maakt u een hoge uitvoering van `PipelineOutputTabularDataset` de `PipelineOutputFileDataset` uitvoer van de stap voor het voorbereiden van gegevens.
 
 > [!TIP]
-> De open bare preview-klasse, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) , bevat de methode [read_delimited_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) waarmee een `OutputFileDatasetConfig` in een wordt omgezet in een [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) for-verbruik in AutoML-uitvoeringen.
+> De open bare preview-klasse, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) , bevat de methode [read_delimited_files ()](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) waarmee een `OutputFileDatasetConfig` in een wordt omgezet in een [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) for-verbruik in AutoML-uitvoeringen.
 
 Een andere optie is `Dataset` het gebruik van objecten die zijn geregistreerd in de werk ruimte:
 
@@ -315,7 +315,7 @@ Met het bovenstaande fragment maakt u de twee `PipelineData` objecten voor de me
 
 ### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>De geautomatiseerde pijp lijn-stap voor ML configureren en maken
 
-Zodra de invoer en uitvoer zijn gedefinieerd, is het tijd om de en toe te voegen `AutoMLConfig` `AutoMLStep` . De details van de configuratie zijn afhankelijk van uw taak, zoals beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train). Voor de taak Titanic overlevings classificatie ziet u in het volgende code fragment een eenvoudige configuratie.
+Zodra de invoer en uitvoer zijn gedefinieerd, is het tijd om de en toe te voegen `AutoMLConfig` `AutoMLStep` . De details van de configuratie zijn afhankelijk van uw taak, zoals beschreven in [automatische ml experimenten configureren in python](./how-to-configure-auto-train.md). Voor de taak Titanic overlevings classificatie ziet u in het volgende code fragment een eenvoudige configuratie.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -353,7 +353,7 @@ De `automl_settings` woorden lijst wordt door gegeven aan de `AutoMLConfig` cons
 - `task` is ingesteld op `classification` voor dit voor beeld. Andere geldige waarden zijn `regression` en `forecasting`
 - `path` en `debug_log` Beschrijf het pad naar het project en een lokaal bestand waarnaar fout opsporingsgegevens worden geschreven 
 - `compute_target` is de eerder gedefinieerde `compute_target` die in dit voor beeld een goedkope, op CPU gebaseerde machine is. Als u de uitgebreide leer faciliteiten van AutoML gebruikt, wilt u het Compute-doel wijzigen in op GPU gebaseerd
-- `featurization` is ingesteld op `auto` . Meer informatie vindt u in de sectie [gegevens parametrisatie](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) van het document voor automatische configuratie van ml 
+- `featurization` is ingesteld op `auto` . Meer informatie vindt u in de sectie [gegevens parametrisatie](./how-to-configure-auto-train.md#data-featurization) van het document voor automatische configuratie van ml 
 - `label_column_name` Hiermee wordt aangegeven in welke kolom u wilt voors pellen 
 - `training_data` wordt ingesteld op de `PipelineOutputTabularDataset` objecten die zijn gemaakt op basis van de uitvoer van de stap voor het voorbereiden van gegevens. 
 
@@ -525,4 +525,4 @@ Ten slotte worden de werkelijke metrische gegevens en het model gedownload naar 
 - Voer deze Jupyter-notebook uit met een [volledig voor beeld van geautomatiseerd ml in een pijp lijn](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) die regressie tarieven gebruikt om te voors pellen
 - [Automatische ML experimenten maken zonder code te schrijven](how-to-use-automated-ml-for-ml-models.md)
 - Verken verschillende [Jupyter-notebooks die automatische milliliters tonen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
-- Meer informatie over het integreren van uw pijp lijn in [end-to-end MLOps](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) of het onderzoeken van de [MLOps github-opslag plaats](https://github.com/Microsoft/MLOpspython) 
+- Meer informatie over het integreren van uw pijp lijn in [end-to-end MLOps](./concept-model-management-and-deployment.md#automate-the-ml-lifecycle) of het onderzoeken van de [MLOps github-opslag plaats](https://github.com/Microsoft/MLOpspython)

@@ -1,6 +1,6 @@
 ---
 title: Query's uitvoeren op Azure Cosmos DB gegevens met behulp van serverloze SQL-groep in azure Synapse-koppeling (preview-versie)
-description: In dit artikel leert u hoe u Azure Cosmos DB query's kunt uitvoeren met behulp van SQL op aanvraag in azure Synapse link (preview).
+description: In dit artikel leert u hoe u Azure Cosmos DB query's kunt uitvoeren met behulp van een serverloze SQL-groep in azure Synapse link (preview).
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b1af6fa5b0ccb95476c4ae169481e4aaa15f4f9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737840"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310307"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met serverloze SQL-groep in azure Synapse-koppeling (preview-versie)
 
 Met een Synapse serverloze SQL-pool kunt u gegevens in uw Azure Cosmos DB containers [die in bijna](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) realtime zijn ingeschakeld, analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
 
-Voor het uitvoeren van query's in Azure Cosmos DB wordt de volledige [selectie](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) Surface Area ondersteund via de [OpenRowSet](develop-openrowset.md) -functie, inclusief het meren deel van [SQL-functies en-Opera tors](overview-features.md). U kunt ook resultaten van de query opslaan die gegevens uit Azure Cosmos DB leest, samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met de [optie externe tabel maken als selecteren](develop-tables-cetas.md#cetas-in-sql-on-demand). U kunt momenteel geen serverloze SQL-groeps query resultaten opslaan in Azure Cosmos DB met behulp van [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
+Voor het uitvoeren van query's in Azure Cosmos DB wordt de volledige [selectie](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) Surface Area ondersteund via de [OpenRowSet](develop-openrowset.md) -functie, inclusief het meren deel van [SQL-functies en-Opera tors](overview-features.md). U kunt ook resultaten van de query opslaan die gegevens uit Azure Cosmos DB leest, samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met de [optie externe tabel maken als selecteren](develop-tables-cetas.md#cetas-in-serverless-sql-pool). U kunt momenteel geen serverloze SQL-groeps query resultaten opslaan in Azure Cosmos DB met behulp van CETAS. 
 
 In dit artikel leert u hoe u een query kunt schrijven met een serverloze SQL-groep waarmee gegevens worden opgevraagd van Azure Cosmos DB containers die Synapse-koppeling zijn ingeschakeld. In [deze](./tutorial-data-analyst.md) zelf studie vindt u meer informatie over het bouwen van SERVERloze SQL-pool weergaven over Azure Cosmos DB containers en het verbinden ervan met Power bi modellen. 
 
@@ -358,6 +358,6 @@ U kunt suggesties en problemen melden op de [pagina met feedback over Azure Syna
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-- [Power BI en serverloze Synapse SQL-pool gebruiken met Azure Synapse-koppeling](../../cosmos-db/synapse-link-power-bi.md)
-- [Weer gaven maken en gebruiken in SQL op aanvraag](create-use-views.md) 
-- [Zelf studie over het bouwen van on-demand weer gaven van SQL over Azure Cosmos DB en verbinding maken met Power BI modellen via DirectQuery](./tutorial-data-analyst.md)
+- [Power BI en serverloze SQL-groep met Azure Synapse-koppeling gebruiken](../../cosmos-db/synapse-link-power-bi.md)
+- [Weer gaven maken en gebruiken in een serverloze SQL-groep](create-use-views.md) 
+- [Zelf studie over het bouwen van serverloze SQL-pool weergaven over Azure Cosmos DB en verbinding maken met Power BI modellen via DirectQuery](./tutorial-data-analyst.md)

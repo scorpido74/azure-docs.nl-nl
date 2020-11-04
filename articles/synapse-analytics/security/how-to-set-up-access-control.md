@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186617"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312038"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie) 
 
@@ -92,7 +92,7 @@ De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijne
   - Als de toewijzing niet wordt weer geven, wijst u deze toe.
   - Het MSI-bestand heeft dezelfde naam als de werk ruimte. In dit geval is dit &quot; WS1 &quot; .
 
-## <a name="step-5-configure-admin-access-for-sql-pools"></a>STAP 5: beheerders toegang voor SQL-groepen configureren
+## <a name="step-5-configure-admin-access-for-synapse-sql"></a>STAP 5: beheerders toegang voor Synapse SQL configureren
 
 - Open de Azure Portal
 - Ga naar WS1
@@ -114,11 +114,11 @@ Gebruikers in elke rol moeten de volgende stappen uitvoeren:
 | Getal | Stap | Werkruimtebeheerders | Spark-beheerders | SQL-Administrators |
 | --- | --- | --- | --- | --- |
 | 1 | Een Parquet-bestand uploaden naar CNT1 | JA | JA | JA |
-| 2 | Het Parquet-bestand lezen met behulp van SQL op aanvraag | JA | NO | JA |
-| 3 | Een Spark-groep maken | JA [1] | JA [1] | NO  |
+| 2 | Het Parquet-bestand lezen met een serverloze SQL-groep | JA | NO | JA |
+| 3 | Een serverloze Apache Spark-groep maken | JA [1] | JA [1] | NO  |
 | 4 | Hiermee wordt het Parquet-bestand met een notitie blok gelezen | JA | JA | NO |
 | 5 | Een pijp lijn maken op basis van het notitie blok en de pijp lijn activeren om nu uit te voeren | JA | NO | NO |
-| 6 | Een SQL-groep maken en een SQL-script uitvoeren, zoals &quot; Select 1&quot; | JA [1] | NO | JA [1] |
+| 6 | Maak een toegewezen SQL-groep en voer een SQL-script uit, zoals &quot; Select 1&quot; | JA [1] | NO | JA [1] |
 
 > [!NOTE]
 > [1] om SQL-of Spark-groepen te maken, moet de gebruiker ten minste Inzender rollen hebben in de werk ruimte Synapse.
@@ -148,8 +148,8 @@ Synapse Studio werkt anders op basis van gebruikers rollen. Sommige items kunnen
 | Data hub/Zie gekoppelde ADLS Gen2 accounts en containers | JA [1] | JA [1] | JA [1] |
 | Data hub/Zie data bases | JA | JA | JA |
 | Data hub/Zie objecten in data bases | JA | JA | JA |
-| Data hub/toegang tot gegevens in data bases van SQL-groep | JA   | NO   | JA   |
-| Data hub/toegang tot gegevens in SQL on-demand data bases | JA [2]  | NO  | JA [2]  |
+| Data hub/toegang tot gegevens in Synapse SQL-data bases | JA   | NO   | JA   |
+| Data hub/toegang tot gegevens in data bases van SQL-groep zonder server | JA [2]  | NO  | JA [2]  |
 | Data hub/toegang tot gegevens in Spark-data bases | JA [2] | JA [2] | JA [2] |
 | De ontwikkelen hub gebruiken | JA | JA | JA |
 | Hub/SQL-scripts ontwikkelen | JA | NO | JA |
@@ -159,7 +159,7 @@ Synapse Studio werkt anders op basis van gebruikers rollen. Sommige items kunnen
 | De Orchestration-hub gebruiken | JA | JA | JA |
 | Hub en pijp lijnen gebruiken | JA | NO | NO |
 | De hub beheren gebruiken | JA | JA | JA |
-| Hub/SQL-groepen beheren | JA | NO | JA |
+| Hub/Synapse SQL beheren | JA | NO | JA |
 | Hub/Spark-groepen beheren | JA | JA | NO |
 | Hub/Triggers beheren | JA | NO | NO |
 | Hub/gekoppelde services beheren | JA | JA | JA |

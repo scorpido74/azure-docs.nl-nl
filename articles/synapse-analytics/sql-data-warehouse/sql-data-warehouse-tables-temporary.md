@@ -1,6 +1,6 @@
 ---
 title: Tijdelijke tabellen
-description: Essentiële richt lijnen voor het gebruik van tijdelijke tabellen in de Synapse SQL-pool, waarbij de principes van tijdelijke tabellen op sessie niveau worden gemarkeerd.
+description: Essentiële richt lijnen voor het gebruik van tijdelijke tabellen in een toegewezen SQL-groep, waarbij de principes van tijdelijke tabellen op sessie niveau worden gemarkeerd.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,30 +10,32 @@ ms.subservice: sql-dw
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 61cc351470c0446b58d83d2d7f9c998d959c3649
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 077782099d6d61982052dc1690d545e58e928d8c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85414399"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310685"
 ---
-# <a name="temporary-tables-in-synapse-sql-pool"></a>Tijdelijke tabellen in Synapse SQL-pool
+# <a name="temporary-tables-in-dedicated-sql-pool"></a>Tijdelijke tabellen in de toegewezen SQL-groep
+
 Dit artikel bevat essentiële richt lijnen voor het gebruik van tijdelijke tabellen en markeert de principes van tijdelijke tabellen op sessie niveau. 
 
 Met behulp van de informatie in dit artikel kunt u uw code modularize, waardoor zowel het hergebruik als het gemak van onderhoud wordt verbeterd.
 
 ## <a name="what-are-temporary-tables"></a>Wat zijn tijdelijke tabellen?
-Tijdelijke tabellen zijn handig bij het verwerken van gegevens, met name tijdens trans formatie waarbij de tussenliggende resultaten tijdelijk zijn. In de SQL-groep bestaan er tijdelijke tabellen op sessie niveau.  
+
+Tijdelijke tabellen zijn handig bij het verwerken van gegevens, met name tijdens trans formatie waarbij de tussenliggende resultaten tijdelijk zijn. In de toegewezen SQL-groep bestaan er tijdelijke tabellen op sessie niveau.  
 
 Tijdelijke tabellen zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt en die automatisch worden verwijderd wanneer deze sessie wordt afgemeld.  
 
 Tijdelijke tabellen bieden een prestatie voordelen omdat hun resultaten naar een lokale locatie worden geschreven in plaats van externe opslag.
 
-Tijdelijke tabellen zijn handig bij het verwerken van gegevens, met name tijdens trans formatie waarbij de tussenliggende resultaten tijdelijk zijn. Met SQL-groep bestaan er tijdelijke tabellen op sessie niveau.  Ze zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt. Als zodanig worden ze automatisch verwijderd wanneer deze sessie wordt afgemeld. 
+Tijdelijke tabellen zijn handig bij het verwerken van gegevens, met name tijdens trans formatie waarbij de tussenliggende resultaten tijdelijk zijn. Met een toegewezen SQL-groep bestaan er tijdelijke tabellen op sessie niveau.  Ze zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt. Als zodanig worden ze automatisch verwijderd wanneer deze sessie wordt afgemeld. 
 
-## <a name="temporary-tables-in-sql-pool"></a>Tijdelijke tabellen in SQL-groep
+## <a name="temporary-tables-in-dedicated-sql-pool"></a>Tijdelijke tabellen in de toegewezen SQL-groep
 
-In de resource van de SQL-groep bieden tijdelijke tabellen een voor deel van prestaties omdat hun resultaten naar een lokale locatie worden geschreven in plaats van externe opslag.
+In de resource van de exclusieve SQL-groep bieden tijdelijke tabellen een prestatie voordeel omdat hun resultaten naar een lokale locatie worden geschreven in plaats van externe opslag.
 
 ### <a name="create-a-temporary-table"></a>Een tijdelijke tabel maken
 
@@ -205,7 +207,7 @@ Met deze opgeslagen procedure wordt een bestaande #stats_ddl verbroken om ervoor
 
 Omdat er zich echter geen `DROP TABLE` aan het einde van de opgeslagen procedure bevindt en de opgeslagen procedure is voltooid, blijft de tabel gemaakt, zodat deze buiten de opgeslagen procedure kan worden gelezen.  
 
-In SQL-groep, in tegens telling tot andere SQL Server-data bases, is het mogelijk om de tijdelijke tabel te gebruiken buiten de procedure waarmee deze is gemaakt.  Tijdelijke tabellen van SQL-groep kunnen **overal** in de sessie worden gebruikt. Deze functie kan leiden tot meer modulaire en beheersbaarere code, zoals in het volgende voor beeld:
+In een toegewezen SQL-groep, in tegens telling tot andere SQL Server-data bases, is het mogelijk om de tijdelijke tabel te gebruiken buiten de procedure waarmee deze wordt gemaakt.  Exclusieve tijdelijke SQL-groeps tabellen kunnen **overal** in de sessie worden gebruikt. Deze functie kan leiden tot meer modulaire en beheersbaarere code, zoals in het volgende voor beeld:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -227,11 +229,11 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>Tijdelijke tabel beperkingen
-De SQL-groep kent een aantal beperkingen bij het implementeren van tijdelijke tabellen.  Momenteel worden alleen tijdelijke tabellen met sessie bereik ondersteund.  Globale tijdelijke tabellen worden niet ondersteund.  
+De toegewezen SQL-groep kent een aantal beperkingen bij het implementeren van tijdelijke tabellen.  Momenteel worden alleen tijdelijke tabellen met sessie bereik ondersteund.  Globale tijdelijke tabellen worden niet ondersteund.  
 
 Ook kunnen geen weer gaven worden gemaakt voor tijdelijke tabellen.  Tijdelijke tabellen kunnen alleen worden gemaakt met hash-of round robin distributie.  De replicatie van de tijdelijke tabel wordt niet ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het ontwikkelen van tabellen de [tabellen ontwerpen met behulp van het artikel Synapse SQL-resources](sql-data-warehouse-tables-overview.md) .
+Zie voor meer informatie over het ontwikkelen van tabellen het artikel [tabellen ontwerpen met een toegewezen SQL-groep](sql-data-warehouse-tables-overview.md) .
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5098d87d63d4002c4f219c5d2703ec1375599e00
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5f772bd996b126a4cd7182a2ce088c2d3edc8e7d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289451"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312017"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Een mini maal vereiste versie van Transport Layer Security (TLS) afdwingen voor aanvragen van een opslag account
 
@@ -89,7 +89,7 @@ Wanneer u zeker weet dat verkeer van clients met oudere versies van TLS mini maa
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>De minimale TLS-versie configureren voor een opslag account
 
-Als u de minimale TLS-versie voor een opslag account wilt configureren, stelt u de **MinimumTlsVersion** -versie voor het account in. Deze eigenschap is beschikbaar voor alle opslag accounts die zijn gemaakt met het Azure Resource Manager-implementatie model in de open bare Azure-Cloud of in Azure Government Clouds. Zie [overzicht van opslag accounts](storage-account-overview.md)voor meer informatie over het Azure Resource Manager-implementatie model.
+Als u de minimale TLS-versie voor een opslag account wilt configureren, stelt u de **MinimumTlsVersion** -versie voor het account in. Deze eigenschap is beschikbaar voor alle opslag accounts die zijn gemaakt met het Azure Resource Manager-implementatie model. Zie [overzicht van opslag accounts](storage-account-overview.md)voor meer informatie over het Azure Resource Manager-implementatie model.
 
 De eigenschap **MinimumTlsVersion** is niet standaard ingesteld en retourneert geen waarde voordat u deze expliciet hebt ingesteld.  Als de waarde van de eigenschap **Null** is, worden aanvragen die zijn verzonden met TLS-versie 1,0 of hoger door het opslag account toegestaan.
 

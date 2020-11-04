@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Synapse SQL en query's uitvoeren met Visual Studio en SSDT
-description: Gebruik Visual Studio voor het opvragen van een SQL-pool met behulp van Azure Synapse Analytics.
+description: Gebruik Visual Studio om een specifieke SQL-pool op te vragen met behulp van Azure Synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,15 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089240"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311074"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Verbinding maken met Synapse SQL met Visual Studio en SSDT
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
@@ -26,21 +27,22 @@ ms.locfileid: "87089240"
 > 
 > 
 
-Gebruik Visual Studio voor het opvragen van een SQL-pool met behulp van Azure Synapse Analytics. Deze methode maakt gebruik van de uitbrei ding SQL Server Data Tools (SSDT) in Visual Studio 2019. 
+Gebruik Visual Studio om een specifieke SQL-pool op te vragen met behulp van Azure Synapse Analytics. Deze methode maakt gebruik van de uitbrei ding SQL Server Data Tools (SSDT) in Visual Studio 2019. 
 
 > [!NOTE]
-> SQL on-demand (preview) wordt niet ondersteund door SSDT.
+> Een serverloze SQL-groep (preview) wordt niet ondersteund door SSDT.
 
 ## <a name="prerequisites"></a>Vereisten
+
 Als u deze zelf studie wilt gebruiken, moet u beschikken over de volgende onderdelen:
 
-* Een bestaande SQL-groep. Als u er nog geen hebt, raadpleegt u [een SQL-groep maken](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om dit vereiste te volt ooien.
+* Een bestaande exclusieve SQL-groep. Als u er nog geen hebt, raadpleegt u [een toegewezen SQL-groep maken](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om dit vereiste te volt ooien.
 * SSDT voor Visual Studio. Als u Visual Studio hebt, beschikt u waarschijnlijk al over dit onderdeel. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met de SQL-groep](connect-overview.md)om deze server naam te vinden.
+* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met een toegewezen SQL-groep](connect-overview.md)om deze server naam te vinden.
 
-## <a name="1-connect-to-sql-pool"></a>1. Maak verbinding met de SQL-groep
+## <a name="1-connect-to-a-dedicated-sql-pool"></a>1. Maak verbinding met een toegewezen SQL-groep
 1. Open Visual Studio 2019.
-2. Open de SQL Server-objectverkenner door **weer gave**  >  **SQL Server-objectverkenner**te selecteren.
+2. Open de SQL Server-objectverkenner door **weer gave**  >  **SQL Server-objectverkenner** te selecteren.
    
     ![SQL Server-objectverkenner](./media/get-started-visual-studio/open-ssdt.png)
 3. Klik op het pictogram **SQL Server toevoegen**.
@@ -50,9 +52,9 @@ Als u deze zelf studie wilt gebruiken, moet u beschikken over de volgende onderd
    
     ![Verbinding maken met server](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **Servernaam**: Voer de eerder vastgestelde **servernaam** in.
-   * **Verificatie**: Selecteer **SQL Server verificatie** of **Active Directory geïntegreerde verificatie**:
-   * **Gebruikersnaam** en **Wachtwoord**: Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
+   * **Servernaam** : Voer de eerder vastgestelde **servernaam** in.
+   * **Verificatie** : Selecteer **SQL Server verificatie** of **Active Directory geïntegreerde verificatie** :
+   * **Gebruikersnaam** en **Wachtwoord** : Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
    * Klik op **Verbinden**.
 5. U kunt de Azure SQL-server uitvouwen als u deze wilt verkennen. U kunt de databases weergeven die aan de server zijn gekoppeld. Vouw AdventureWorksDW uit als u de tabellen in de voorbeelddatabase wilt zien.
    
@@ -79,5 +81,5 @@ Nu er een verbinding tot stand is gebracht met uw data base, schrijft u een quer
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u weet hoe u verbinding maakt en een query uitvoert, kunt u proberen [de gegevens te visualiseren met Power BI](get-started-power-bi-professional.md).
-Zie [verifiëren bij SQL-groep](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)om uw omgeving te configureren voor Azure Active Directory-verificatie.
+Zie [verifiëren voor exclusieve SQL-groep](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)om uw omgeving te configureren voor Azure Active Directory-verificatie.
  

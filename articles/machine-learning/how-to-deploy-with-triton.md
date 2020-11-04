@@ -1,7 +1,7 @@
 ---
 title: Model met hoge prestaties voor het uitvoeren van Triton (preview-versie)
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het implementeren van een model met Triton in-Server voor inkomen in Azure Machine Learning
+description: Meer informatie over het implementeren van uw model met de NVIDIA Triton in-Server voor in-beinterferentie in Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3a3600c4065d331ca1cfc129cd55dd56add21424
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: afa1d958e054a769ea0f19b82afdf55a94c3d0cf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92428338"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309716"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Hoge prestaties met een Triton-inrichtings server (preview-versie) 
 
@@ -24,7 +24,7 @@ Meer informatie over het gebruik van de [NVIDIA Triton-server](https://developer
 
 Een van de manieren om een model te implementeren, is als een webservice. Bijvoorbeeld een implementatie naar Azure Kubernetes service of Azure Container Instances. Azure Machine Learning maakt standaard gebruik van een single-threaded, *Algemeen* webframework voor web service-implementaties.
 
-Triton is een raam werk dat is *geoptimaliseerd voor*demijnen. Het biedt een beter gebruik van Gpu's en een rendabelere interferentie. Aan de server zijde worden inkomende aanvragen in batches verzonden en worden deze batches ingediend voor een afleiding. Met batch verwerking kunt u beter GPU-bronnen gebruiken. Dit is een belang rijk onderdeel van de prestaties van Triton.
+Triton is een raam werk dat is *geoptimaliseerd voor* demijnen. Het biedt een beter gebruik van Gpu's en een rendabelere interferentie. Aan de server zijde worden inkomende aanvragen in batches verzonden en worden deze batches ingediend voor een afleiding. Met batch verwerking kunt u beter GPU-bronnen gebruiken. Dit is een belang rijk onderdeel van de prestaties van Triton.
 
 > [!IMPORTANT]
 > Het gebruik van Triton voor implementatie vanuit Azure Machine Learning is momenteel beschikbaar als __Preview-versie__. De functionaliteit van de preview-versie wordt mogelijk niet gedekt door de klant ondersteuning. Voor meer informatie raadpleegt [u de aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
@@ -36,7 +36,7 @@ Triton is een raam werk dat is *geoptimaliseerd voor*demijnen. Het biedt een bet
 
 * Een **Azure-abonnement**. Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 * Vertrouwd met [het implementeren van een model](how-to-deploy-and-where.md) met Azure machine learning.
-* De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) **of** de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -en [machine learning-extensie](reference-azure-machine-learning-cli.md).
+* De [Azure machine learning SDK voor python](/python/api/overview/azure/ml/?view=azure-ml-py) **of** de [Azure cli](/cli/azure/?view=azure-cli-latest) -en [machine learning-extensie](reference-azure-machine-learning-cli.md).
 * Een werkende installatie van docker voor lokale tests. Zie [Orientation en Setup](https://docs.docker.com/get-started/) in de docker-documentatie voor meer informatie over het installeren en valideren van docker.
 
 ## <a name="architectural-overview"></a>Architectuuroverzicht
@@ -47,7 +47,7 @@ Voordat u Triton voor uw eigen model probeert te gebruiken, is het belang rijk o
 
 * Meerdere [Gunicorn](https://gunicorn.org/) -werk rollen worden gestart om inkomende aanvragen gelijktijdig te verwerken.
 * Deze werk nemers verwerken de pre-verwerking, het model aanroepen en naverwerking. 
-* Voor aanvragen voor deaanvraaging wordt de __Score-URI__gebruikt. Bijvoorbeeld `https://myserevice.azureml.net/score`.
+* Voor aanvragen voor deaanvraaging wordt de __Score-URI__ gebruikt. Bijvoorbeeld `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normaal, niet-Triton, implementatie architectuur diagram":::
 
@@ -58,7 +58,7 @@ Voordat u Triton voor uw eigen model probeert te gebruiken, is het belang rijk o
 * Triton verwerkt aanvragen in batches om het GPU-gebruik te maximaliseren.
 * De client gebruikt de __Score__ ring-URI voor het maken van aanvragen. Bijvoorbeeld `https://myserevice.azureml.net/score`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Normaal, niet-Triton, implementatie architectuur diagram":::
+:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Inferenceconfig-implementatie met Triton":::
 
 De werk stroom voor het gebruik van Triton voor uw model implementatie is:
 
@@ -178,7 +178,7 @@ az ml model register --model-path='triton' \
 
 ## <a name="add-pre-and-post-processing"></a>Voorafgaand aan en na de verwerking toevoegen
 
-Nadat u hebt gecontroleerd of de webservice werkt, kunt u vooraf en post code toevoegen door een _invoer script_te definiëren. Dit bestand heeft de naam `score.py` . Zie [een vermeldings script definiëren](how-to-deploy-and-where.md#define-an-entry-script)voor meer informatie over invoer scripts.
+Nadat u hebt gecontroleerd of de webservice werkt, kunt u vooraf en post code toevoegen door een _invoer script_ te definiëren. Dit bestand heeft de naam `score.py` . Zie [een vermeldings script definiëren](how-to-deploy-and-where.md#define-an-entry-script)voor meer informatie over invoer scripts.
 
 De twee belangrijkste stappen zijn het initialiseren van een Triton HTTP-client in uw `init()` methode en voor het aanroepen van die client in uw `run()` functie.
 
@@ -228,7 +228,7 @@ Met een Afleidings configuratie kunt u een invoer script en het Azure Machine Le
 > [!IMPORTANT]
 > U moet de met de curator gevoerde `AzureML-Triton` [omgeving](./resource-curated-environments.md)opgeven.
 >
-> Het code voorbeeld van python wordt gekloond `AzureML-Triton` in een andere omgeving met de naam `My-Triton` . De Azure CLI-code gebruikt ook deze omgeving. Zie de referentie [environment. Clone ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#clone-new-name-) voor meer informatie over het klonen van een omgeving.
+> Het code voorbeeld van python wordt gekloond `AzureML-Triton` in een andere omgeving met de naam `My-Triton` . De Azure CLI-code gebruikt ook deze omgeving. Zie de referentie [environment. Clone ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) voor meer informatie over het klonen van een omgeving.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -283,7 +283,7 @@ az ml model deploy -n triton-densenet-onnx \
 
 ---
 
-Nadat de implementatie is voltooid, wordt de Score-URI weer gegeven. Voor deze lokale implementatie is het `http://localhost:6789/score` . Als u in de Cloud implementeert, kunt u de opdracht [AZ ml service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI gebruiken om de Score-URI op te halen.
+Nadat de implementatie is voltooid, wordt de Score-URI weer gegeven. Voor deze lokale implementatie is het `http://localhost:6789/score` . Als u in de Cloud implementeert, kunt u de opdracht [AZ ml service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI gebruiken om de Score-URI op te halen.
 
 Zie [een model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)voor meer informatie over het maken van een client die inactiviteits aanvragen verzendt naar de Score-URI.
 

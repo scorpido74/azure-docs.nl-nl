@@ -11,29 +11,29 @@ author: jhirono
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b16c8873a1778b907b288486c204d74ee31683cb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 168dc342eaf61a9ede632fb429311f6f5c1d4be4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097954"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311559"
 ---
-# <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Uw werk ruimte gebruiken met een aangepaste DNS-server
+# <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Werkruimte gebruiken met een aangepaste DNS-server
 
-Wanneer u Azure Machine Learning met een virtueel netwerk gebruikt, zijn er [verschillende manieren om DNS-naam omzetting te verwerken](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances). Standaard verwerkt Azure automatisch naam omzetting voor uw werk ruimte en persoonlijk eind punt. Wanneer u echter __uw eigen aangepaste DNS-server gebruikt__ , moet u hand matig DNS-vermeldingen maken voor de werk ruimte.
+Wanneer u Azure Machine Learning met een virtueel netwerk gebruikt, zijn er [verschillende manieren om DNS-naam omzetting te verwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Standaard verwerkt Azure automatisch naam omzetting voor uw werk ruimte en persoonlijk eind punt. Wanneer u echter __uw eigen aangepaste DNS-server gebruikt__ , moet u hand matig DNS-vermeldingen maken voor de werk ruimte.
 
 > [!IMPORTANT]
 > In dit artikel wordt alleen beschreven hoe u de Fully Qualified Domain Name (FQDN) en IP-adressen voor deze vermeldingen kunt vinden. Deze bevat geen informatie over het configureren van de DNS-records voor deze items. Raadpleeg de documentatie bij uw DNS-software voor informatie over het toevoegen van records.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-Virtual Network die gebruikmaakt van [uw eigen DNS-server](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server).
+- Een Azure-Virtual Network die gebruikmaakt van [uw eigen DNS-server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
 - Een Azure Machine Learning-werk ruimte met een persoonlijk eind punt. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
-- Vertrouwd met het gebruik van [netwerk isolatie tijdens de training & deinterferentie](how-to-enable-virtual-network.md).
+- Vertrouwd met het gebruik van [netwerk isolatie tijdens de training & deinterferentie](./how-to-network-security-overview.md).
 
-- Optioneel, [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) of [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Optioneel, [Azure cli](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="find-the-ip-addresses"></a>De IP-adressen zoeken
 
@@ -53,7 +53,7 @@ Gebruik een van de volgende methoden om de interne IP-adressen voor de FQDN-name
 > [!NOTE]
 > De volledig gekwalificeerde domein namen en IP-adressen verschillen op basis van uw configuratie. De GUID-waarde in de domein naam is bijvoorbeeld specifiek voor uw werk ruimte.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az network private-endpoint show --endpoint-name <endpoint> --resource-group <resource-group> --query 'customDnsConfigs[*].{FQDN: fqdn, IPAddress: ipAddresses[0]}' --output table
@@ -69,7 +69,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 # <a name="azure-portal"></a>[Azure-portal](#tab/azure-portal)
 
 1. Selecteer uw Azure Machine Learning- __werk ruimte__ In de [Azure Portal](https://portal.azure.com).
-1. Selecteer in de sectie __instellingen__ de optie verbindingen met een __privé-eind punt__ .
+1. Selecteer in de sectie __instellingen__ de optie verbindingen met een __privé-eind punt__.
 1. Selecteer de koppeling in de kolom met het __persoonlijke eind punt__ die wordt weer gegeven.
 1. Onder aan de pagina vindt u een lijst met de FQDN-namen (Fully Qualified Domain names) en IP-adressen voor het persoonlijke eind punt van de werk ruimte.
 

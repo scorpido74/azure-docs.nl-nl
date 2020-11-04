@@ -1,6 +1,6 @@
 ---
-title: Een query uitvoeren op JSON-bestanden met behulp van SQL op aanvraag (preview)
-description: In deze sectie wordt uitgelegd hoe u JSON-bestanden kunt lezen met behulp van SQL op aanvraag in azure Synapse Analytics.
+title: Een query uitvoeren op JSON-bestanden met serverloze SQL-groep (preview-versie)
+description: In deze sectie wordt uitgelegd hoe u JSON-bestanden kunt lezen met serverloze SQL-pool in azure Synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86ed3f005788627166c65b30398279f04388546c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dbad07401d77a15cd860a8ae492560c5fced819
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930846"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310611"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op JSON-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
+# <a name="query-json-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Gegevens in JSON-bestanden opvragen met serverloze SQL-pool (preview) in azure Synapse Analytics
 
-In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics. Het doel van de query is het lezen van JSON-bestanden met [OPENrowset](develop-openrowset.md). 
+In dit artikel leert u hoe u een query schrijft met behulp van serverloze SQL-pool (preview) in azure Synapse Analytics. Het doel van de query is het lezen van JSON-bestanden met [OPENrowset](develop-openrowset.md). 
 - Standaard JSON-bestanden waarin meerdere JSON-documenten worden opgeslagen als een JSON-matrix.
 - Door line gescheiden JSON-bestanden, waarbij JSON-documenten worden gescheiden met een nieuwe-regel teken. Algemene uitbrei dingen voor deze typen bestanden zijn `jsonl` , `ldjson` en `ndjson` .
 

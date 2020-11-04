@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708251"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311597"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Gebruik het vertolkings pakket om ML-modellen & voor spellingen in python uit te leggen (preview)
 
@@ -354,7 +354,7 @@ Volg een van deze paden om toegang te krijgen tot het visualisatie dashboard in 
    [![Prioriteit van lokale functie van visualisatie dashboard in AzureML Studio in experimenten](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * Deel venster **modellen**
-  1. Als u uw oorspronkelijke model hebt geregistreerd door de stappen in [modellen implementeren met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)te volgen, kunt u **modellen** selecteren in het linkerdeel venster om de app weer te geven.
+  1. Als u uw oorspronkelijke model hebt geregistreerd door de stappen in [modellen implementeren met Azure machine learning](./how-to-deploy-and-where.md)te volgen, kunt u **modellen** selecteren in het linkerdeel venster om de app weer te geven.
   1. Selecteer een model en klik vervolgens op het tabblad **uitleg** om het visualisatie dashboard te bekijken.
 
 ## <a name="interpretability-at-inference-time"></a>Interpreteer tijd
@@ -419,7 +419,7 @@ U kunt de uitleger samen met het oorspronkelijke model implementeren en deze geb
 
 1. Implementeer de installatie kopie op een reken doel door de volgende stappen uit te voeren:
 
-   1. Als dat nodig is, registreert u uw oorspronkelijke Voorspellings model door de stappen te volgen in [modellen implementeren met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+   1. Als dat nodig is, registreert u uw oorspronkelijke Voorspellings model door de stappen te volgen in [modellen implementeren met Azure machine learning](./how-to-deploy-and-where.md).
 
    1. Een score bestand maken.
 
@@ -553,4 +553,3 @@ U kunt de uitleger samen met het oorspronkelijke model implementeren en deze geb
 [Meer informatie over het vertolken van modellen](how-to-machine-learning-interpretability.md)
 
 [Azure Machine Learning voor beeld van interpretaties van voor beelden bekijken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
-

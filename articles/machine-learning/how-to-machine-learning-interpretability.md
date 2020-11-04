@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98e18abb8ba06ea632ee9c63c1a726879e825d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322356"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311511"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpreteer van modellen in Azure Machine Learning (preview-versie)
 
@@ -39,7 +39,7 @@ Het inschakelen van de mogelijkheid om een machine learning model uit te leggen,
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretiteit met Azure Machine Learning
 
-De interpretatieve klassen worden beschikbaar gesteld via het volgende SDK-pakket: (informatie over het [installeren van SDK-pakketten voor Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
+De interpretatieve klassen worden beschikbaar gesteld via het volgende SDK-pakket: (informatie over het [installeren van SDK-pakketten voor Azure machine learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py))
 
 * `azureml.interpret`, bevat functionaliteiten die door micro soft worden ondersteund.
 
@@ -66,8 +66,8 @@ Meer informatie over ondersteunde technieken voor interpretatie, ondersteunde ma
 |--|--|--------------------|
 |Uitleg over de SHAP-structuur| De boom uitleg van de [Shap](https://github.com/slundberg/shap), die gericht is op een polynomiale, snelle Shap waarde schattings algoritme die specifiek is voor **bomen en ensembles van structuren**.|Model-specifiek|
 |Uitgebreide uitleg van SHAP| Op basis van de uitleg van SHAP is diepe uitleg een uiterst snelle benaderings algoritme voor SHAP-waarden in diepe leer modellen die zijn gebaseerd op een verbinding met DeepLIFT beschreven in het [Shap NIPS-papier](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **Tensor flow** -modellen en **Keras** -modellen met behulp van de tensor flow-backend worden ondersteund (er is ook voorlopige ondersteuning voor PyTorch) '.|Model-specifiek|
-|SHAP lineaire uitleg| De lineaire uitleg van SHAP berekent SHAP-waarden voor een **lineair model**, eventueel administratief voor correlaties tussen functies.|Model-specifiek|
-|SHAP-kernel-uitleg| De kernel-uitleg van SHAP maakt gebruik van een speciaal gewogen lokale lineaire regressie om SHAP-waarden voor **elk model**te schatten.|Model-neutraal|
+|SHAP lineaire uitleg| De lineaire uitleg van SHAP berekent SHAP-waarden voor een **lineair model** , eventueel administratief voor correlaties tussen functies.|Model-specifiek|
+|SHAP-kernel-uitleg| De kernel-uitleg van SHAP maakt gebruik van een speciaal gewogen lokale lineaire regressie om SHAP-waarden voor **elk model** te schatten.|Model-neutraal|
 |Nabooter (globaal surrogaat)| Nabooter is gebaseerd op het idee van [globale surrogaat modellen](https://christophm.github.io/interpretable-ml-book/global.html) met training om blackbox modellen te simuleren. Een globaal surrogaat model is een intrinsiek interpretable model dat is getraind om de voor spellingen van **een zwart box-model** zo nauw keurig mogelijk te benaderen. Gegevens wetenschappers kunnen het surrogaat model interpreteren om conclusies over het zwarte box-model te tekenen. U kunt een van de volgende verwerkte modellen gebruiken als surrogaat model: LightGBM (LGBMExplainableModel), lineaire regressie (LinearExplainableModel), stochastische Gradient Daal verklarend model (SGDExplainableModel) en beslissings structuur (DecisionTreeExplainableModel).|Model-neutraal|
 |Beschrijving van de permutatie functie (PFI)| Het belang van de permutatie functie is een techniek die wordt gebruikt om classificatie-en regressie modellen te verklaren die zijn geïnspireerd op [het breiman van een wille keurige bossen](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (zie sectie 10). Op hoog niveau kan de manier waarop het werkt, worden uitgevoerd door in wille keurige volg orde de gegevens per functie op te nemen voor de hele gegevensset en te berekenen hoeveel de prestatie metriek van de interesses is gewijzigd. Hoe groter de verandering, des te belang rijker deze functie is. PFI kan het algemene gedrag van **elk onderliggend model** uitleggen, maar verklaart geen afzonderlijke voor spellingen. |Model-neutraal|
 

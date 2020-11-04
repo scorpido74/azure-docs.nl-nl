@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090294"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312686"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Gegevens wetenschappen code testen op Azure met het team data Science process en Azure DevOps Services
 Dit artikel bevat voorlopige richt lijnen voor het testen van code in een Data Science-werk stroom. Dergelijke tests bieden gegevens wetenschappers een systematische en efficiënte manier om de kwaliteit en het verwachte resultaat van hun code te controleren. We gebruiken een team data Science process (TDSP)- [project dat gebruikmaakt van de gegevensset van de ICB volwassene voor volwassenen](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) die eerder is gepubliceerd om te laten zien hoe code tests kunnen worden uitgevoerd. 
@@ -26,7 +26,7 @@ Dit artikel bevat voorlopige richt lijnen voor het testen van code in een Data S
 
 * Gegevensvoorbereiding
 * Kwaliteits onderzoek van gegevens
-* Modellen maken
+* Modelleren
 * Modelimplementatie 
 
 In dit artikel wordt de term ' eenheid testen ' vervangen door ' code testen '. Er wordt gerefereerd aan het testen als de functies die helpen te beoordelen of de code voor een bepaalde stap van een levens cyclus van een data technologie de resultaten levert zoals verwacht. De persoon die de test schrijft, definieert wat er wordt verwacht, afhankelijk van het resultaat van de functie, bijvoorbeeld gegevens kwaliteit controleren of model leren.
@@ -89,7 +89,7 @@ Gebruik de volgende stappen voor het instellen en uitvoeren van code testen en e
 
       ![Code voor het controleren van voorspellings waarden](./media/code-test/check_prediction_values.PNG)
 
-1. Plaats alle test functies samen in een python-script met de naam **test_funcs. py**:
+1. Plaats alle test functies samen in een python-script met de naam **test_funcs. py** :
 
     ![Python-script voor test functies](./media/code-test/create_file_test_func.PNG)
 
@@ -112,7 +112,7 @@ Gebruik de volgende stappen voor het instellen en uitvoeren van code testen en e
 
 1. Automatische build en test instellen in azure DevOps:
 
-    a. Selecteer in de project opslagplaats **Build en release**en selecteer vervolgens **+ Nieuw** om een nieuw bouw proces te maken.
+    a. Selecteer in de project opslagplaats **Build en release** en selecteer vervolgens **+ Nieuw** om een nieuw bouw proces te maken.
 
     ![Selecties voor het starten van een nieuwe bouw proces](./media/code-test/create_new_build.PNG)
 
@@ -124,7 +124,7 @@ Gebruik de volgende stappen voor het instellen en uitvoeren van code testen en e
 
     ![Lijst met sjablonen en de knop ' leeg proces '](./media/code-test/start_empty_process_template.PNG)
 
-    d. Noem de build en selecteer de agent. U kunt hier de standaard optie kiezen als u een DSVM wilt gebruiken om het bouw proces te volt ooien. Zie [Build and release agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)(Engelstalig) voor meer informatie over het instellen van agents.
+    d. Noem de build en selecteer de agent. U kunt hier de standaard optie kiezen als u een DSVM wilt gebruiken om het bouw proces te volt ooien. Zie [Build and release agents](/azure/devops/pipelines/agents/agents?view=vsts)(Engelstalig) voor meer informatie over het instellen van agents.
     
     ![Selecties voor Build en agent](./media/code-test/select_agent.PNG)
 
@@ -134,7 +134,7 @@ Gebruik de volgende stappen voor het instellen en uitvoeren van code testen en e
 
     f. Vul in de Power shell-Details de vereiste gegevens in, zoals de naam en de versie van Power shell. Kies in- **line script** als het type. 
     
-    In het vak onder **inline-script**kunt u **python test1.py**typen. Zorg ervoor dat de omgevings variabele juist is ingesteld voor python. Als u een andere versie of een andere kernel van python nodig hebt, kunt u het pad expliciet opgeven, zoals wordt weer gegeven in de afbeelding: 
+    In het vak onder **inline-script** kunt u **python test1.py** typen. Zorg ervoor dat de omgevings variabele juist is ingesteld voor python. Als u een andere versie of een andere kernel van python nodig hebt, kunt u het pad expliciet opgeven, zoals wordt weer gegeven in de afbeelding: 
     
     ![Power shell-Details](./media/code-test/powershell_scripts.PNG)
 
@@ -154,8 +154,8 @@ Als waarschuwingen correct zijn ingesteld, ontvangt u een melding in het e-mail 
 * Raadpleeg de [opslag plaats](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) voor de uitkering van icb's voor concrete voor beelden van eenheids tests voor data Science-scenario's.
 * Volg de voor gaande overzichten en voor beelden van het scenario van de ICB-baten prognose in uw eigen data Science-projecten.
 
-## <a name="references"></a>Referenties
-* [Team Data Science Process](https://aka.ms/tdsp)
+## <a name="references"></a>Verwijzingen
+* [Team Data Science Process](./index.yml)
 * [Hulpprogram Ma's voor het testen van Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps-test bronnen](https://www.visualstudio.com/team-services/)
 * [Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

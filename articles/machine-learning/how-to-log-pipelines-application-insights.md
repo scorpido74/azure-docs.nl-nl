@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897500"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309665"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>machine learning pijplijn logboek bestanden verzamelen in Application Insights voor waarschuwingen en fout opsporing
 
@@ -38,7 +38,7 @@ Als u uw logboeken eenmaal hebt uitgevoerd, wordt er een overzicht van uitzonde 
 
 Deze sectie is een inleiding die specifiek is voor het gebruik van opentellingen vanuit een Azure Machine Learning pijp lijn. Zie voor een gedetailleerde zelf studie [Opentellingen Azure monitor-Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-Voeg een PythonScriptStep toe aan uw Azure ML-pijp lijn. Configureer uw [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) met de afhankelijkheid van opentellingen-ext-Azure. Configureer de `APPLICATIONINSIGHTS_CONNECTION_STRING` omgevings variabele.
+Voeg een PythonScriptStep toe aan uw Azure ML-pijp lijn. Configureer uw [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) met de afhankelijkheid van opentellingen-ext-Azure. Configureer de `APPLICATIONINSIGHTS_CONNECTION_STRING` omgevings variabele.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -153,7 +153,7 @@ In het resultaat van Application Insights worden het logboek bericht en het nive
 
 ### <a name="additional-helpful-queries"></a>Aanvullende nuttige query's
 
-In enkele van de onderstaande query's wordt gebruikgemaakt van ' customDimensions. level '. Deze ernst niveaus komen overeen met het niveau waarmee het python-logboek oorspronkelijk is verzonden. Zie [Azure monitor-logboek query's](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)voor meer informatie over query's.
+In enkele van de onderstaande query's wordt gebruikgemaakt van ' customDimensions. level '. Deze ernst niveaus komen overeen met het niveau waarmee het python-logboek oorspronkelijk is verzonden. Zie [Azure monitor-logboek query's](/azure/data-explorer/kusto/query/)voor meer informatie over query's.
 
 | Gebruiksvoorbeeld                                                               | Query’s uitvoeren                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -166,4 +166,4 @@ In enkele van de onderstaande query's wordt gebruikgemaakt van ' customDimension
 
 Zodra u Logboeken in uw Application Insights-exemplaar hebt, kunnen ze worden gebruikt om [Azure monitor-waarschuwingen](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) in te stellen op basis van query resultaten.
 
-U kunt ook resultaten van query's toevoegen aan een [Azure-dash board](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query) voor meer inzichten.
+U kunt ook resultaten van query's toevoegen aan een [Azure-dash board](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query) voor meer inzichten.

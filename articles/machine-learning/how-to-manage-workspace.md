@@ -10,23 +10,23 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab3f3765a0e988c7e93cca5782b47b3f2d32aef4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897157"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312554"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-werk ruimten maken en beheren 
 
-In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk ruimten**](concept-workspace.md) voor [Azure machine learning](overview-what-is-azure-ml.md), met behulp van de Azure portal of de [SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)
+In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk ruimten**](concept-workspace.md) voor [Azure machine learning](overview-what-is-azure-ml.md), met behulp van de Azure portal of de [SDK voor python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)
 
 Als uw behoeften veranderen of vereisten voor automatisering verhogen, kunt u ook werk ruimten maken en verwijderen [met behulp van de CLI](reference-azure-machine-learning-cli.md)of [via de VS code-extensie](tutorial-setup-vscode-extension.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
-* Als u de python-SDK gebruikt, [installeert u de SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+* Als u de python-SDK gebruikt, [installeert u de SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
@@ -46,7 +46,7 @@ Als uw behoeften veranderen of vereisten voor automatisering verhogen, kunt u oo
     ```
     Stel `create_resource_group` deze waarde in op ONWAAR als u een bestaande Azure-resource groep hebt die u wilt gebruiken voor de werk ruimte.
 
-* <a name="create-multi-tenant"></a>**Meerdere tenants.**  Als u meerdere accounts hebt, voegt u de Tenant-ID toe van de Azure Active Directory die u wilt gebruiken.  Zoek uw Tenant-ID uit de [Azure Portal](https://portal.azure.com) onder **Azure Active Directory, externe identiteiten** .
+* <a name="create-multi-tenant"></a>**Meerdere tenants.**  Als u meerdere accounts hebt, voegt u de Tenant-ID toe van de Azure Active Directory die u wilt gebruiken.  Zoek uw Tenant-ID uit de [Azure Portal](https://portal.azure.com) onder **Azure Active Directory, externe identiteiten**.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -62,7 +62,7 @@ Als uw behoeften veranderen of vereisten voor automatisering verhogen, kunt u oo
                 )
     ```
 
-* **[Soevereine Cloud](reference-machine-learning-cloud-parity.md)** . U hebt extra code nodig om u te verifiëren bij Azure als u in een soevereine Cloud werkt.
+* **[Soevereine Cloud](reference-machine-learning-cloud-parity.md)**. U hebt extra code nodig om u te verifiëren bij Azure als u in een soevereine Cloud werkt.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -78,7 +78,7 @@ Als uw behoeften veranderen of vereisten voor automatisering verhogen, kunt u oo
                 )
     ```
 
-* **Gebruik bestaande Azure-resources** .  U kunt ook een werk ruimte maken die gebruikmaakt van bestaande Azure-resources met de Azure-Resource-ID-indeling. Zoek de specifieke Azure-resource-Id's in de Azure Portal of met de SDK. In dit voor beeld wordt ervan uitgegaan dat de resource groep, het opslag account, de sleutel kluis, app Insights en container Registry al bestaan.
+* **Gebruik bestaande Azure-resources**.  U kunt ook een werk ruimte maken die gebruikmaakt van bestaande Azure-resources met de Azure-Resource-ID-indeling. Zoek de specifieke Azure-resource-Id's in de Azure Portal of met de SDK. In dit voor beeld wordt ervan uitgegaan dat de resource groep, het opslag account, de sleutel kluis, app Insights en container Registry al bestaan.
 
    ```python
    import os
@@ -105,7 +105,7 @@ Als uw behoeften veranderen of vereisten voor automatisering verhogen, kunt u oo
                              exist_ok=False)
    ```
 
-Zie Naslag informatie over de [werk ruimte-SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true).
+Zie Naslag informatie over de [werk ruimte-SDK](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py).
 
 Als u problemen ondervindt bij het openen van uw abonnement, raadpleegt u [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md), evenals de [verificatie in azure machine learning](https://aka.ms/aml-notebook-auth) notebook.
 
@@ -113,13 +113,13 @@ Als u problemen ondervindt bij het openen van uw abonnement, raadpleegt u [verif
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met behulp van de referenties van uw Azure-abonnement. 
 
-1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken** .
+1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken**.
 
       ![Een nieuwe resource maken](./media/how-to-manage-workspace/create-workspace.gif)
 
 1. Gebruik de zoekbalk om **Machine Learning** te vinden.
 
-1. Selecteer **Machine Learning** .
+1. Selecteer **Machine Learning**.
 
 1. Selecteer **Maken** in het deelvenster **Machine Learning** om te beginnen.
 
@@ -127,16 +127,16 @@ Als u problemen ondervindt bij het openen van uw abonnement, raadpleegt u [verif
 
    Veld|Beschrijving 
    ---|---
-   Werkruimtenaam |Voer een unieke naam in die uw werkruimte aanduidt. In dit voorbeeld gebruiken we **docs-ws** . Namen moeten uniek zijn binnen de resourcegroep. Gebruik een naam die gemakkelijk te onthouden is en te onderscheiden is van door anderen gemaakte werkruimten. De naam van de werk ruimte is niet hoofdletter gevoelig.
+   Werkruimtenaam |Voer een unieke naam in die uw werkruimte aanduidt. In dit voorbeeld gebruiken we **docs-ws**. Namen moeten uniek zijn binnen de resourcegroep. Gebruik een naam die gemakkelijk te onthouden is en te onderscheiden is van door anderen gemaakte werkruimten. De naam van de werk ruimte is niet hoofdletter gevoelig.
    Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
-   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resourcegroep bevat gerelateerde resources voor een Azure-oplossing. In dit voorbeeld gebruiken we **docs-aml** . U hebt de rol *Inzender* of *eigenaar* nodig voor het gebruik van een bestaande resource groep.  Zie [toegang tot een Azure machine learning-werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over toegang.
+   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resourcegroep bevat gerelateerde resources voor een Azure-oplossing. In dit voorbeeld gebruiken we **docs-aml**. U hebt de rol *Inzender* of *eigenaar* nodig voor het gebruik van een bestaande resource groep.  Zie [toegang tot een Azure machine learning-werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over toegang.
    Region | Selecteer de Azure-regio die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
 
     ![Uw werk ruimte configureren](./media/how-to-manage-workspace/create-workspace-form.png)
 
-1. Wanneer u klaar bent met het configureren van de werk ruimte, selecteert u **controleren + maken** . Gebruik eventueel de secties [netwerken](#networking) en [Geavanceerd](#advanced) om meer instellingen te configureren voor de werk ruimte.
+1. Wanneer u klaar bent met het configureren van de werk ruimte, selecteert u **controleren + maken**. Gebruik eventueel de secties [netwerken](#networking) en [Geavanceerd](#advanced) om meer instellingen te configureren voor de werk ruimte.
 
-1. Controleer de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Wanneer u tevreden bent met de instellingen, selecteert u **maken** .
+1. Controleer de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Wanneer u tevreden bent met de instellingen, selecteert u **maken**.
 
    > [!Warning] 
    > Het kan enkele minuten duren om uw werkruimte in de cloud te maken.
@@ -155,7 +155,7 @@ Als u problemen ondervindt bij het openen van uw abonnement, raadpleegt u [verif
 
 # <a name="python"></a>[Python](#tab/python)
 
-De Azure Machine Learning python SDK biedt de klasse [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py&preserve-view=true) , die kan worden gebruikt met de [werk ruimte. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) om een werk ruimte met een persoonlijk eind punt te maken. Voor deze klasse is een bestaand virtueel netwerk vereist.
+De Azure Machine Learning python SDK biedt de klasse [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py) , die kan worden gebruikt met de [werk ruimte. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) om een werk ruimte met een persoonlijk eind punt te maken. Voor deze klasse is een bestaand virtueel netwerk vereist.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -165,7 +165,7 @@ De Azure Machine Learning python SDK biedt de klasse [PrivateEndpointConfig](htt
 
 1. Stel op het formulier __persoonlijk eind punt maken__ de locatie, naam en het virtuele netwerk in op gebruik. Als u het eind punt met een Privé-DNS zone wilt gebruiken, selecteert u __integreren met privé-DNS-zone__ en selecteert u de zone in het veld __privé-DNS zone__ . Selecteer __OK__ om het eind punt te maken.   
 
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Persoonlijke eindpunt selectie":::   
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Persoonlijk eind punt maken":::   
 
 1. Wanneer u klaar bent met het configureren van het netwerk, kunt u __controleren + maken__ selecteren of door gaan naar de optionele __Geavanceerde__ configuratie.
 
@@ -180,14 +180,14 @@ De Azure Machine Learning python SDK biedt de klasse [PrivateEndpointConfig](htt
 Wanneer u een persoonlijk eind punt maakt, wordt er een nieuwe Privé-DNS zone gemaakt met de naam __privatelink.API.azureml.MS__ . Dit bevat een koppeling naar het virtuele netwerk. Als u meerdere werk ruimten met persoonlijke eind punten in dezelfde resource groep maakt, kan alleen het virtuele netwerk voor het eerste persoonlijke eind punt worden toegevoegd aan de DNS-zone. Gebruik de volgende stappen om vermeldingen toe te voegen voor de virtuele netwerken die worden gebruikt door de extra werk ruimten/persoonlijke eind punten:
 
 1. Selecteer in de [Azure Portal](https://portal.azure.com)de resource groep die de werk ruimte bevat. Selecteer vervolgens de Privé-DNS zone resource met de naam __privatelink.API.azureml.MS__
-2. Selecteer in de __instellingen__ __virtuele netwerk koppelingen__ .
-3. Selecteer __Toevoegen__ . Geef op de pagina __virtuele netwerk koppeling toevoegen__ een unieke naam op voor de __koppeling__ en selecteer vervolgens het __virtuele netwerk__ dat u wilt toevoegen. Selecteer __OK__ om de netwerk koppeling toe te voegen.
+2. Selecteer in de __instellingen__ __virtuele netwerk koppelingen__.
+3. Selecteer __Toevoegen__. Geef op de pagina __virtuele netwerk koppeling toevoegen__ een unieke naam op voor de __koppeling__ en selecteer vervolgens het __virtuele netwerk__ dat u wilt toevoegen. Selecteer __OK__ om de netwerk koppeling toe te voegen.
 
-Zie voor meer informatie [Azure private endpoint DNS-configuratie](/azure/private-link/private-endpoint-dns).
+Zie voor meer informatie [Azure private endpoint DNS-configuratie](../private-link/private-endpoint-dns.md).
 
 ### <a name="vulnerability-scanning"></a>Scannen op beveiligingsproblemen
 
-Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor verschillende hybride cloudworkloads. U moet Azure Security Center toestaan om uw resources te scannen en de aanbevelingen te volgen. Zie  [Azure container Registry Image scanning door Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) en [Azure Kubernetes Services-integratie met Security Center](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)voor meer.
+Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor verschillende hybride cloudworkloads. U moet Azure Security Center toestaan om uw resources te scannen en de aanbevelingen te volgen. Zie  [Azure container Registry Image scanning door Security Center](../security-center/defender-for-container-registries-introduction.md) en [Azure Kubernetes Services-integratie met Security Center](../security-center/defender-for-kubernetes-introduction.md)voor meer.
 
 ### <a name="advanced"></a>Geavanceerd
 
@@ -210,7 +210,7 @@ Gebruik de volgende stappen om uw eigen sleutel op te geven:
 > Voordat u deze stappen volgt, moet u eerst de volgende acties uitvoeren:   
 >
 > 1. Machtig de __machine learning-app__ (in identiteits-en toegangs beheer) met Inzender machtigingen voor uw abonnement.  
-> 1. Volg de stappen in door de [klant beheerde sleutels configureren](/azure/cosmos-db/how-to-setup-cmk) voor:
+> 1. Volg de stappen in door de [klant beheerde sleutels configureren](../cosmos-db/how-to-setup-cmk.md) voor:
 >     * De Azure Cosmos DB provider registreren
 >     * Een Azure Key Vault maken en configureren
 >     * Een sleutel genereren
@@ -238,13 +238,13 @@ from azureml.core import Workspace
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Selecteer door de __klant beheerde sleutels__ en selecteer vervolgens __klikken om een sleutel te selecteren__ .
+1. Selecteer door de __klant beheerde sleutels__ en selecteer vervolgens __klikken om een sleutel te selecteren__.
 
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Persoonlijke eindpunt selectie":::
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Door klant beheerde sleutels":::
 
 1. Selecteer in het formulier __sleutel selecteren van Azure Key Vault__ een bestaande Azure Key Vault, een sleutel die deze bevat en de versie van de sleutel. Deze sleutel wordt gebruikt voor het versleutelen van de gegevens die zijn opgeslagen in Azure Cosmos DB. Gebruik tot slot de knop __selecteren__ om deze sleutel te gebruiken.
 
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Persoonlijke eindpunt selectie":::
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Selecteer de sleutel":::
 
 ---
 
@@ -280,7 +280,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-* <a name="connect-multi-tenant"></a>**Meerdere tenants.**  Als u meerdere accounts hebt, voegt u de Tenant-ID toe van de Azure Active Directory die u wilt gebruiken.  Zoek uw Tenant-ID uit de [Azure Portal](https://portal.azure.com) onder **Azure Active Directory, externe identiteiten** .
+* <a name="connect-multi-tenant"></a>**Meerdere tenants.**  Als u meerdere accounts hebt, voegt u de Tenant-ID toe van de Azure Active Directory die u wilt gebruiken.  Zoek uw Tenant-ID uit de [Azure Portal](https://portal.azure.com) onder **Azure Active Directory, externe identiteiten**.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -290,7 +290,7 @@ ws = Workspace.from_config()
     ws = Workspace.from_config(auth=interactive_auth)
     ```
 
-* **[Soevereine Cloud](reference-machine-learning-cloud-parity.md)** . U hebt extra code nodig om u te verifiëren bij Azure als u in een soevereine Cloud werkt.
+* **[Soevereine Cloud](reference-machine-learning-cloud-parity.md)**. U hebt extra code nodig om u te verifiëren bij Azure als u in een soevereine Cloud werkt.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -322,7 +322,7 @@ Workspace.list('<subscription-id>')
 
 1. Typ **machine learning** in het bovenste zoek veld.  
 
-1. Selecteer **Machine Learning** .
+1. Selecteer **Machine Learning**.
 
    ![Zoeken naar Azure Machine Learning-werk ruimte](./media/how-to-manage-workspace/find-workspaces.png)
 
@@ -351,7 +351,7 @@ De standaard actie is niet om resources te verwijderen die zijn gekoppeld aan de
 
 Selecteer in de [Azure Portal](https://portal.azure.com/) **verwijderen**  boven aan de werk ruimte die u wilt verwijderen.
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Persoonlijke eindpunt selectie":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Werk ruimte verwijderen":::
 
 ---
 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 69eefce50cefe9f54ed931c96ccbe94b2057cae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb87afcc6edc02d241dca763aff9ecdd594e4711
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310077"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-invoeg toepassing voor Azure Machine Learning Studio (klassieke) webservices
 
-**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Excel maakt het eenvoudig om webservices rechtstreeks aan te roepen zonder dat u code hoeft te schrijven.
@@ -36,9 +36,9 @@ Excel maakt het eenvoudig om webservices rechtstreeks aan te roepen zonder dat u
 2. Kies de webservice door erop te klikken: ' Titanic Survivor Prediction (voor beeld van Excel-invoeg toepassing) [score] ' in dit voor beeld.
    
     ![Webservice selecteren](./media/excel-add-in-for-web-services/image1.png)
-3. Hiermee gaat u naar de sectie voor **speld** .  Deze werkmap bevat al voorbeeld gegevens, maar voor een lege werkmap kunt u een cel in Excel selecteren en op **voorbeeld gegevens gebruiken**klikken.
+3. Hiermee gaat u naar de sectie voor **speld** .  Deze werkmap bevat al voorbeeld gegevens, maar voor een lege werkmap kunt u een cel in Excel selecteren en op **voorbeeld gegevens gebruiken** klikken.
 4. Selecteer de gegevens met kopteksten en klik op het pictogram invoer gegevens bereik.  Zorg ervoor dat het selectie vakje mijn gegevens bevat kopteksten is ingeschakeld.
-5. Onder **uitvoer**voert u het nummer in van de cel waar de uitvoer moet worden opgegeven, bijvoorbeeld "H1".
+5. Onder **uitvoer** voert u het nummer in van de cel waar de uitvoer moet worden opgegeven, bijvoorbeeld "H1".
 6. Klik op voor **spel**. Als u het selectie vakje ' automatisch voors pellen ' inschakelt, wordt een wijziging in de geselecteerde gebieden (de waarden die zijn opgegeven als invoer) geactiveerd en wordt er een update van de uitvoer cellen uitgevoerd zonder dat u op de knop voor het voors pellen hoeft te drukken.
    
     ![Sectie voors pellen](./media/excel-add-in-for-web-services/image1.png)
@@ -65,7 +65,7 @@ Down load de API-sleutel voor uw webservice. Wanneer u deze actie uitvoert, is a
 
 **Een nieuwe webservice gebruiken**
 
-1. Klik in het [Azure machine learning Web Services](https://services.azureml.net) -Portal op **webservices**en selecteer vervolgens uw webservice. 
+1. Klik in het [Azure machine learning Web Services](https://services.azureml.net) -Portal op **webservices** en selecteer vervolgens uw webservice. 
 2. Klik op **verbruik**.
 3. Zoek naar de sectie **basis informatie over verbruik** . Kopieer de **primaire sleutel** en sla de **aanvraag-antwoord-** URL op.
 
@@ -79,7 +79,7 @@ Down load de API-sleutel voor uw webservice. Wanneer u deze actie uitvoert, is a
     ![Ga naar de selectie van de webservice](./media/excel-add-in-for-web-services/image3.png)
 5. Klik op **Add Web Service**.
 6. Plak de URL in het tekstvak Excel-invoeg toepassing met de naam **URL**.
-7. Plak de API/Primary-sleutel in de label- **API-sleutel**van het tekstvak.
+7. Plak de API/Primary-sleutel in de label- **API-sleutel** van het tekstvak.
 8. Klik op **Add**.
    
     ![URL en API-sleutel voor een klassieke webservice.](./media/excel-add-in-for-web-services/image6.png)
@@ -88,4 +88,4 @@ Down load de API-sleutel voor uw webservice. Wanneer u deze actie uitvoert, is a
 ## <a name="sharing-your-workbook"></a>Uw werkmap delen
 Als u de werkmap opslaat, wordt de API/Primary-sleutel voor de webservices die u hebt toegevoegd, ook opgeslagen. Dit betekent dat u de werkmap alleen moet delen met personen die u vertrouwt.
 
-Stel alle vragen in de volgende sectie met opmerkingen of op ons [forum](https://docs.microsoft.com/answers/topics/azure-machine-learning.html).
+Stel alle vragen in de volgende sectie met opmerkingen of op ons [forum](/answers/topics/azure-machine-learning.html).

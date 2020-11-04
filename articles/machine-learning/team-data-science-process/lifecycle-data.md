@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7770e929e51ee51b09060e4247c5f92b27d1035
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195068"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311875"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Gegevens verwerving en uitleg van het team data Science process
 
@@ -67,8 +67,8 @@ In deze fase ontwikkelt u een oplossings architectuur van de gegevens pijplijn. 
 Hieronder vindt u de producten in deze fase:
 
    * [Rapport gegevens kwaliteit](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): dit rapport bevat gegevens overzichten, de relaties tussen de verschillende kenmerken en doelen, de classificatie van variabelen en meer. Het hulp programma voor het [idee](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) dat is opgegeven als onderdeel van TDSP kan dit rapport snel genereren voor elke tabellaire gegevensset, zoals een CSV-bestand of een relationele tabel. 
-   * **Oplossings architectuur**: de oplossings architectuur kan een diagram of beschrijving van uw gegevens pijplijn zijn die u gebruikt om scores of voor spellingen uit te voeren op nieuwe gegevens nadat u een model hebt gemaakt. Het bevat ook de pijp lijn voor het opnieuw trainen van uw model op basis van nieuwe gegevens. Sla het document op in de [projectmap](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) wanneer u de TDSP-sjabloon voor de directory structuur gebruikt.
-   * **Beslissing van het controle punt**: voordat u begint met het bouwen van het ontwerp van de functie en het model, kunt u het project opnieuw evalueren om te bepalen of de verwachte waarde voldoende is om door te gaan. U kunt bijvoorbeeld klaar zijn om door te gaan, meer gegevens te verzamelen of het project te verlaten omdat de gegevens niet bestaan om de vraag te beantwoorden.
+   * **Oplossings architectuur** : de oplossings architectuur kan een diagram of beschrijving van uw gegevens pijplijn zijn die u gebruikt om scores of voor spellingen uit te voeren op nieuwe gegevens nadat u een model hebt gemaakt. Het bevat ook de pijp lijn voor het opnieuw trainen van uw model op basis van nieuwe gegevens. Sla het document op in de [projectmap](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) wanneer u de TDSP-sjabloon voor de directory structuur gebruikt.
+   * **Beslissing van het controle punt** : voordat u begint met het bouwen van het ontwerp van de functie en het model, kunt u het project opnieuw evalueren om te bepalen of de verwachte waarde voldoende is om door te gaan. U kunt bijvoorbeeld klaar zijn om door te gaan, meer gegevens te verzamelen of het project te verlaten omdat de gegevens niet bestaan om de vraag te beantwoorden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -82,4 +82,4 @@ Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
 We bieden volledige instructies voor het demonstreren van alle stappen in het proces voor specifieke scenario's. Het artikel [voorbeeld](walkthroughs.md) scenario's bevat een lijst met de scenario's met koppelingen en miniaturen. In de scenario's wordt uitgelegd hoe u Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn kunt combi neren om een intelligente toepassing te maken. 
 
-Zie [de TDSP gebruiken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.
+Zie [de TDSP gebruiken met Azure machine learning]()voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.

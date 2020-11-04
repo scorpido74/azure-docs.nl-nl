@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: a62f8aee0bd0a0d2b7009a48e9d5f00ea3c5155f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1bf5dd070ac12878c608f744ff450395de84c48
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883221"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310038"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>Webservices-invoer en-webservice-uitvoer modules
 
@@ -26,7 +26,7 @@ De web service-invoer module geeft aan waar de gebruikers gegevens de pijp lijn 
 
 ## <a name="how-to-use-web-service-input-and-output"></a>De invoer en uitvoer van webservices gebruiken
 
-Wanneer u [een real-time pijp lijn](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#create-a-real-time-inference-pipeline) van uw trainings pijplijn maakt, worden de webservices-invoer en de webservice-uitvoer modules automatisch toegevoegd om aan te geven waar de gebruikers gegevens de pijp lijn binnenkomen en waar gegevens worden geretourneerd. 
+Wanneer u [een real-time pijp lijn](../tutorial-designer-automobile-price-deploy.md#create-a-real-time-inference-pipeline) van uw trainings pijplijn maakt, worden de webservices-invoer en de webservice-uitvoer modules automatisch toegevoegd om aan te geven waar de gebruikers gegevens de pijp lijn binnenkomen en waar gegevens worden geretourneerd. 
 
 > [!NOTE]
 > Het automatisch genereren van een real-time pipeline-pijp lijn is een op regels gebaseerd proces voor de beste werk belasting. Er is geen garantie voor de juistheid. 
@@ -48,6 +48,6 @@ Nadat u de pijp lijn hebt verzonden en de uitvoering is voltooid, kunt u het rea
 >  Voer in het voor gaande voor beeld **hand matig gegevens** in voor de webservice-invoer en is nodig voor het implementeren van het real-time-eind punt. Over het algemeen moet u altijd een module of gegevensset verbinden met de poort waarop de **webservice-invoer** is verbonden om het gegevens schema op te geven.
    
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [het implementeren van het real-time-eind punt](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint).
+Meer informatie over [het implementeren van het real-time-eind punt](../tutorial-designer-automobile-price-deploy.md#deploy-the-real-time-endpoint).
 
 Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

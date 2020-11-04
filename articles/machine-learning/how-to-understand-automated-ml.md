@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2
-ms.openlocfilehash: d66c5001d94d0c2d28ae3c55b468fbaf45871c98
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280358"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311483"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Resultaten van automatische machine learning experimenten evalueren
 
@@ -41,7 +41,7 @@ AutoML biedt bijvoorbeeld verschillende grafieken voor classificatie-en regressi
 
 Nadat uw geautomatiseerde machine learning-experiment is voltooid, kunt u een overzicht van de uitvoeringen vinden in uw machine learning-werk ruimte via de [Azure machine learning Studio](overview-what-is-machine-learning-studio.md). 
 
-Voor SDK-experimenten ziet u dezelfde resultaten tijdens het uitvoeren wanneer u de `RunDetails` [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)gebruikt.
+Voor SDK-experimenten ziet u dezelfde resultaten tijdens het uitvoeren wanneer u de `RunDetails` [Jupyter-widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)gebruikt.
 
 In de volgende stappen en animatie ziet u hoe u de uitvoerings geschiedenis en de metrische gegevens over prestaties en grafieken van een specifiek model in Studio kunt weer geven.
 

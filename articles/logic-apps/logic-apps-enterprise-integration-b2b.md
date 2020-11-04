@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/02/2020
+ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542373"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310464"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-berichten ontvangen en bevestigen met behulp van Azure Logic Apps en Enterprise Integration Pack
 
@@ -39,7 +39,7 @@ In dit artikel wordt beschreven hoe u een logische app maakt waarmee een HTTP-aa
 
 * Ten minste twee [handels partners](../logic-apps/logic-apps-enterprise-integration-partners.md) die u al hebt gedefinieerd in uw integratie account samen met [AS2-en X12-overeenkomsten](logic-apps-enterprise-integration-agreements.md) voor deze partners.
 
-## <a name="add-request-trigger"></a>Aanvraag trigger toevoegen
+## <a name="add-the-request-trigger"></a>De aanvraag trigger toevoegen
 
 In dit voor beeld wordt de Logic app designer in de Azure Portal gebruikt, maar u kunt vergelijk bare stappen volgen voor de ontwerp functie voor logische apps in Visual Studio.
 
@@ -53,13 +53,13 @@ In dit voor beeld wordt de Logic app designer in de Azure Portal gebruikt, maar 
 
    ![Laat het JSON-schema van de aanvraag tekst leeg](./media/logic-apps-enterprise-integration-b2b/receive-trigger-message-body-json-schema.png)
 
-1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
+1. Selecteer **Opslaan** op de werkbalk van de ontwerper wanneer u klaar bent.
 
    Met deze stap wordt de **http post-URL** gegenereerd voor het verzenden van de aanvraag die de logische app activeert. Als u deze URL wilt kopiëren, selecteert u het Kopieer pictogram naast de URL.
 
    ![URL gegenereerd voor trigger voor aanvragen om oproepen te ontvangen](./media/logic-apps-enterprise-integration-b2b/generated-url-request-trigger.png)
 
-## <a name="add-as2-decode-action"></a>Decoderings actie AS2 toevoegen
+## <a name="add-the-as2-decode-action"></a>De AS2-decoderings actie toevoegen
 
 Voeg nu de B2B-acties toe die u wilt gebruiken. In dit voor beeld worden AS2-en X12-acties gebruikt.
 
@@ -67,17 +67,17 @@ Voeg nu de B2B-acties toe die u wilt gebruiken. In dit voor beeld worden AS2-en 
 
    ![Nog een stap toevoegen aan de werk stroom van uw logische app](./media/logic-apps-enterprise-integration-b2b/add-new-action-under-trigger.png)
 
-1. Onder **Kies een actie**, typt u in het zoekvak `as2 decode` en selecteert u **AS2 decode (v2)**.
+1. Onder **Kies een actie** , typt u in het zoekvak `as2 decode` en selecteert u **AS2 decode (v2)**.
 
    ![Zoek en selecteer ' AS2 decode (v2) '](./media/logic-apps-enterprise-integration-b2b/add-as2-decode-action.png)
 
 1. Voer voor het **bericht om de eigenschap te decoderen** de invoer in die door de AS2-actie moet worden gedecodeerd. Dit is de `body` inhoud die wordt ontvangen door de HTTP-aanvraag trigger. U kunt deze inhoud op verschillende manieren opgeven als invoer, hetzij uit de lijst met dynamische inhoud hetzij als een expressie:
 
-   * Als u wilt selecteren uit een lijst met de beschik bare trigger uitvoer, klikt u in het vak **bericht om te decoderen** . Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u onder **Wanneer een HTTP-aanvraag wordt ontvangen**de waarde van de eigenschap **Body** , bijvoorbeeld:
+   * Als u wilt selecteren uit een lijst met de beschik bare trigger uitvoer, klikt u in het vak **bericht om te decoderen** . Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u onder **Wanneer een HTTP-aanvraag wordt ontvangen** de waarde van de eigenschap **Body** , bijvoorbeeld:
 
      ![Selecteer de waarde body van de trigger](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-   * Als u een expressie wilt invoeren die naar de uitvoer van de trigger verwijst `body` , klikt u in het vak **bericht om te decoderen** . Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u **expressie**. Voer in de expressie-editor hier de expressie in en selecteer **OK**:
+   * Als u een expressie wilt invoeren die naar de uitvoer van de trigger verwijst `body` , klikt u in het vak **bericht om te decoderen** . Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u **expressie**. Voer in de expressie-editor hier de expressie in en selecteer **OK** :
 
      `triggerOutputs()['body']`
 
@@ -91,21 +91,29 @@ Voeg nu de B2B-acties toe die u wilt gebruiken. In dit voor beeld worden AS2-en 
 
 1. Voer voor de eigenschap **bericht koppen** eventuele headers in die vereist zijn voor de AS2-actie, die worden beschreven door de `headers` inhoud die wordt ontvangen door de HTTP-aanvraag trigger.
 
-   `headers`Klik in het vak **bericht headers** om een expressie in te voeren die naar de uitvoer van de trigger verwijst. Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u **expressie**. Voer in de expressie-editor hier de expressie in en selecteer **OK**:
+   1. Als u een expressie wilt invoeren die naar de uitvoer van de trigger verwijst `headers` , selecteert u **bericht headers naar tekst modus scha kelen**.
 
-   `triggerOutputs()['Headers']`
+      ![Scherm afbeelding met de optie "bericht koppen naar tekst modus" geselecteerd.](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
 
-   Als u deze expressie wilt ophalen om als dit token op te lossen, schakelt u tussen de ontwerp-en code weergave, bijvoorbeeld:
+   1. Klik in het vak **bericht headers** . Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u **expressie**. Voer in de expressie-editor hier de expressie in en selecteer **OK** :
 
-   ![Uitvoer van verwijderde headers van trigger](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
+      `triggerOutputs()['Headers']`
+
+      In de AS2-decoderings actie wordt de expressie nu weer gegeven als een token:
+
+      ![Scherm afbeelding met het @triggerOutputs token ' () [' headers '] ' in het vak ' bericht headers '.](./media/logic-apps-enterprise-integration-b2b/as2-decode-message-header-expression.png)
+
+   1. Om het expressie token op te halen dat moet worden omgezet in het token **headers** , schakelt u tussen de ontwerp functie en de code weergave. Na deze stap ziet de decoderings actie AS2 er als volgt uit:
+
+      ![Uitvoer van verwijderde headers van trigger](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
 
 ## <a name="add-response-action-for-message-receipt-notification"></a>Reactie actie voor melding van bericht ontvangst toevoegen
 
 Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een antwoord retour neren dat een AS2 (MDN) bevat met behulp van de **reactie** actie. Als u deze actie onmiddellijk na de **AS2-Decoderings** actie toevoegt, moet de logische app de verwerking niet voortzetten als deze actie mislukt.
 
-1. Selecteer **nieuwe stap**onder de actie **AS2 decoderen** .
+1. Selecteer **nieuwe stap** onder de actie **AS2 decoderen** .
 
-1. Onder **Kies een actie**selecteert u in het zoekvak **ingebouwde**. Typ `condition` in het zoekvak. Selecteer in de lijst **Acties** de optie **Voorwaarde**.
+1. Onder **Kies een actie** selecteert u in het zoekvak **ingebouwde**. Typ `condition` in het zoekvak. Selecteer in de lijst **Acties** de optie **Voorwaarde**.
 
    ![De actie ' voor waarde ' toevoegen](./media/logic-apps-enterprise-integration-b2b/add-condition-action.png)
 
@@ -123,7 +131,7 @@ Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een an
 
 1. Geef nu de antwoorden op om te retour neren of de **AS2-Decoderings** actie slaagt of niet.
 
-   1. Selecteer **een actie toevoegen** **voor het geval** dat de **AS2-decoderings** actie slaagt. Onder **Kies een actie**, typt u in het zoekvak `response` en selecteert u **antwoord**.
+   1. Selecteer **een actie toevoegen** **voor het geval** dat de **AS2-decoderings** actie slaagt. Onder **Kies een actie** , typt u in het zoekvak `response` en selecteert u **antwoord**.
 
       ![Zoek en selecteer de actie ' reactie '](./media/logic-apps-enterprise-integration-b2b/select-http-response-action.png)
 
@@ -141,15 +149,15 @@ Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een an
 
       ![Omgezette expressie voor toegang tot AS2 MDN](./media/logic-apps-enterprise-integration-b2b/response-action-success-resolved-expression.png)
 
-   1. Als de **AS2-Decoderings** actie mislukt, selecteert u in de shape **indien onwaar** **een actie toevoegen**. Onder **Kies een actie**, typt u in het zoekvak `response` en selecteert u **antwoord**. Stel de **reactie** actie in om de gewenste status en fout te retour neren.
+   1. Als de **AS2-Decoderings** actie mislukt, selecteert u in de shape **indien onwaar** **een actie toevoegen**. Onder **Kies een actie** , typt u in het zoekvak `response` en selecteert u **antwoord**. Stel de **reactie** actie in om de gewenste status en fout te retour neren.
 
 1. Sla uw logische app op.
 
 ## <a name="add-decode-x12-message-action"></a>Actie X12-bericht decoderen toevoegen
 
-1. Voeg nu de actie **X12-bericht decoderen** toe. Selecteer **een actie toevoegen**onder de actie **reactie** .
+1. Voeg nu de actie **X12-bericht decoderen** toe. Selecteer **een actie toevoegen** onder de actie **reactie** .
 
-1. Onder **Kies een actie**, typt u in het zoekvak `x12 decode` en selecteert u **X12-bericht decoderen**.
+1. Onder **Kies een actie** , typt u in het zoekvak `x12 decode` en selecteert u **X12-bericht decoderen**.
 
    ![Zoek en selecteer de actie X12-bericht decoderen](./media/logic-apps-enterprise-integration-b2b/add-x12-decode-action.png)
 

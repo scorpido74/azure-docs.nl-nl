@@ -1,32 +1,32 @@
 ---
-title: Problemen met docker-implementatie oplossen
+title: Problemen met de implementatie van web-service oplossen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het omzeilen, oplossen en oplossen van problemen met veelvoorkomende docker-implementatie fouten met de Azure Kubernetes-service en Azure Container Instances het gebruik van Azure Machine Learning.
+description: Meer informatie over het omzeilen, oplossen en oplossen van problemen met veelvoorkomende docker-implementatie fouten met Azure Kubernetes service en Azure Container Instances.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: clauren42
-ms.author: clauren
+author: gvashishtha
+ms.author: gopalv
 ms.reviewer: jmartens
-ms.date: 08/06/2020
+ms.date: 11/02/2020
 ms.topic: troubleshooting
 ms.custom: contperfq4, devx-track-python, deploy
-ms.openlocfilehash: 259b5c789d2323dbc797116cf0d09045811a6873
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: dfbfea22738e6aeb0df31ad941b2ff10e53795a4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073339"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311286"
 ---
-# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problemen met docker-implementatie van modellen met Azure Kubernetes service en Azure Container Instances 
+# <a name="troubleshoot-model-deployment"></a>Problemen met model implementatie oplossen
 
 Meer informatie over het oplossen van problemen en het oplossen van algemene docker-implementatie fouten met Azure Container Instances (ACI) en Azure Kubernetes service (AKS) met behulp van Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een **Azure-abonnement**. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
-* De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
-* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* De [Azure machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* De [Azure cli](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 * De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
 * Om lokaal fouten op te sporen, moet u een werkende docker-installatie op uw lokale systeem hebben.
 
@@ -34,66 +34,48 @@ Meer informatie over het oplossen van problemen en het oplossen van algemene doc
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Stappen voor docker-implementatie van machine learning modellen
 
-Bij het implementeren van een model in Azure Machine Learning gebruikt u de API [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) en een [omgevings](how-to-use-environments.md) object. De service maakt een basis docker-installatie kopie tijdens de implementatie fase en koppelt de vereiste modellen in één aanroep. De basis taken voor implementatie zijn:
+Wanneer u een model implementeert naar een niet-lokale Compute in Azure Machine Learning, gebeurt het volgende:
 
-1. Registreer het model in het werkruimte model register.
+1. De Dockerfile die u hebt opgegeven in uw omgevings object in uw InferenceConfig wordt naar de Cloud verzonden, samen met de inhoud van de bronmap
+1. Als een eerder gemaakte installatie kopie niet beschikbaar is in het container register, wordt een nieuwe docker-installatie kopie in de Cloud gebouwd en opgeslagen in de standaard container register van uw werk ruimte.
+1. De docker-installatie kopie van het container register wordt gedownload naar uw reken doel.
+1. De standaard-Blob-opslag van uw werk ruimte is gekoppeld aan het berekenings doel, zodat u toegang krijgt tot geregistreerde modellen
+1. De webserver wordt geïnitialiseerd door het uitvoeren van de functie van de invoer script `init()`
+1. Wanneer het geïmplementeerde model een aanvraag ontvangt, wordt `run()` die aanvraag door uw functie verwerkt
 
-2. Configuratie voor in-of afleiding definiëren:
-    1. Maak een [omgevings](how-to-use-environments.md) object. Dit object kan gebruikmaken van de afhankelijkheden in een yaml-bestand van een omgeving, een van onze gewerkte omgevingen.
-    2. Maak een Afleidings configuratie (InferenceConfig-object) op basis van de omgeving en het Score script.
+Het belangrijkste verschil bij het gebruik van een lokale implementatie is dat de container installatie kopie is gebaseerd op uw lokale machine. Daarom moet u docker hebben geïnstalleerd voor een lokale implementatie.
 
-3. Implementeer het model op de Azure container instance-service (ACI) of naar de Azure Kubernetes-service (AKS).
+Inzicht in deze stappen op hoog niveau helpt u te begrijpen waar fouten zich voordoen.
 
-Meer informatie over dit proces vindt u in de [ModelBeheer](concept-model-management-and-deployment.md) -inleiding.
+## <a name="get-deployment-logs"></a>Implementatie logboeken ophalen
 
-## <a name="before-you-begin"></a>Voordat u begint
+De eerste stap in fouten bij fout opsporing is het ophalen van de implementatie Logboeken. Volg eerst de [instructies hier](how-to-deploy-and-where.md#connect-to-your-workspace) om verbinding te maken met uw werk ruimte.
 
-Als u een probleem ondervindt, moet u eerst de implementatie taak (eerder beschreven) opsplitsen in afzonderlijke stappen om het probleem te isoleren.
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
-Wanneer u [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) met een [omgevings](how-to-use-environments.md) object als invoer parameter gebruikt, kan uw code worden onderverdeeld in drie belang rijke stappen:
+Ga als volgt te werk om de logboeken van een geïmplementeerde webservice op te halen:
 
-1. Registreer het model. Hier volgt een voor beeld van code:
+```bash
+az ml service get-logs --verbose --workspace-name <my workspace name> --name <service name>
+```
 
-    ```python
-    from azureml.core.model import Model
-
-
-    # register a model out of a run record
-    model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
-
-    # or, you can register a file or a folder of files as a model
-    model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
-    ```
-
-2. Configuratie voor het afstellen van een afleiding definiëren voor implementatie:
-
-    ```python
-    from azureml.core.model import InferenceConfig
-    from azureml.core.environment import Environment
+# <a name="python"></a>[Python](#tab/python)
 
 
-    # create inference configuration based on the requirements defined in the YAML
-    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
-    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-    ```
+Ervan uitgaande dat u een object van `azureml.core.Workspace` het type met de naam hebt `ws` , kunt u het volgende doen:
 
-3. Implementeer het model met behulp van de in de vorige stap gemaakte configuratie voor inactiviteit:
+```python
+print(ws.webservices)
 
-    ```python
-    from azureml.core.webservice import AciWebservice
+# Choose the webservice you are interested in
 
+from azureml.core import Webservice
 
-    # deploy the model
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
-    aci_service = Model.deploy(workspace=ws,
-                           name='my-service',
-                           models=[model],
-                           inference_config=inference_config,
-                           deployment_config=aci_config)
-    aci_service.wait_for_deployment(show_output=True)
-    ```
+service = Webservice(ws, '<insert name of webservice>')
+print(service.get_logs())
+```
 
-Door het thee-implementatie proces te verbreken in afzonderlijke taken, is het gemakkelijker om een aantal van de meest voorkomende fouten te identificeren.
+---
 
 ## <a name="debug-locally"></a>Lokaal fouten opsporen
 
@@ -161,7 +143,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > Het script wordt opnieuw geladen vanaf de locatie die is opgegeven door het `InferenceConfig` object dat door de service wordt gebruikt.
 
-Als u het model, Conda afhankelijkheden of implementatie configuratie wilt wijzigen, gebruikt u [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate--args-). In het volgende voor beeld wordt het model bijgewerkt dat door de service wordt gebruikt:
+Als u het model, Conda afhankelijkheden of implementatie configuratie wilt wijzigen, gebruikt u [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-). In het volgende voor beeld wordt het model bijgewerkt dat door de service wordt gebruikt:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -169,7 +151,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>De service verwijderen
 
-Als u de service wilt verwijderen, gebruikt u [Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--).
+Als u de service wilt verwijderen, gebruikt u [Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--).
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Het docker-logboek controleren
 
@@ -187,7 +169,7 @@ U kunt de fout aanpakken door de waarde van in te verhogen `memory_gb``deploymen
  
 ## <a name="container-cannot-be-scheduled"></a>Kan de container niet plannen
 
-Wanneer een service wordt geïmplementeerd in een Azure Kubernetes-service Compute target, probeert Azure Machine Learning de service te plannen met de aangevraagde hoeveelheid resources. Als er na vijf minuten geen knoop punten beschikbaar zijn in het cluster met de juiste hoeveelheid resources, mislukt de implementatie. Het fout bericht is `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . U kunt deze fout oplossen door meer knoop punten toe te voegen, de SKU van uw knoop punten te wijzigen of de resource vereisten van uw service te wijzigen. 
+Wanneer een service wordt geïmplementeerd in een Azure Kubernetes Service-rekendoel, wordt getracht de service te plannen met de aangevraagde hoeveelheid resources. Als er na vijf minuten geen knoop punten beschikbaar zijn in het cluster met de juiste hoeveelheid resources, mislukt de implementatie. Het fout bericht is `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . U kunt deze fout oplossen door meer knoop punten toe te voegen, de SKU van uw knoop punten te wijzigen of de resource vereisten van uw service te wijzigen. 
 
 In het fout bericht wordt doorgaans aangegeven welke resource u meer nodig hebt, bijvoorbeeld als er een fout bericht wordt weer gegeven dat aangeeft dat `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` de service gpu's vereist en er drie knoop punten in het cluster zijn die geen beschik bare gpu's hebben. U kunt dit probleem verhelpen door meer knoop punten toe te voegen als u een GPU-SKU gebruikt, waarbij u overschakelt naar een SKU waarvoor GPU is ingeschakeld als u uw omgeving niet wilt wijzigen en geen Gpu's nodig hebt.  
 
@@ -199,7 +181,7 @@ Gebruik de informatie in de sectie [het docker-logbestand controleren](#dockerlo
 
 ## <a name="function-fails-get_model_path"></a>De functie is mislukt: get_model_path ()
 
-Vaak wordt de functie `init()` [model.get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) van de functie in het Score script aangeroepen om een model bestand of een map met model bestanden in de container te vinden. Als het model bestand of de map niet kan worden gevonden, mislukt de functie. De eenvoudigste manier om deze fout op te lossen is door de onderstaande python-code uit te voeren in de container shell:
+Vaak wordt de functie `init()` [model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) van de functie in het Score script aangeroepen om een model bestand of een map met model bestanden in de container te vinden. Als het modelbestand of de map niet wordt gevonden, mislukt de functie. De eenvoudigste manier om deze fout op te lossen is door de onderstaande python-code uit te voeren in de container shell:
 
 ```python
 from azureml.core.model import Model
@@ -229,17 +211,17 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Opmerking**: het retour neren van fout berichten uit de `run(input_data)` aanroep moet alleen worden uitgevoerd voor het doel van de fout opsporing. Uit veiligheids overwegingen moet u geen fout berichten op deze manier retour neren in een productie omgeving.
+**Opmerking** : het retour neren van fout berichten uit de `run(input_data)` aanroep moet alleen worden uitgevoerd voor het doel van de fout opsporing. Uit veiligheids overwegingen moet u geen fout berichten op deze manier retour neren in een productie omgeving.
 
-## <a name="http-status-code-502"></a>HTTP-status code 502
+## <a name="http-status-code-502"></a>HTTP-statuscode 502
 
 Een 502-status code geeft aan dat de service een uitzonde ring heeft veroorzaakt of is vastgelopen in de `run()` methode van het score.py-bestand. Gebruik de informatie in dit artikel om fouten in het bestand op te sporen.
 
-## <a name="http-status-code-503"></a>HTTP-status code 503
+## <a name="http-status-code-503"></a>HTTP-statuscode 503
 
 Azure Kubernetes service-implementaties ondersteunen automatisch schalen, zodat er replica's kunnen worden toegevoegd ter ondersteuning van extra belasting. De automatische schaal functie is ontworpen voor het afhandelen van **geleidelijke** wijzigingen in de belasting. Als u grote pieken in aanvragen per seconde ontvangt, ontvangen clients mogelijk een HTTP-status code van 503. Hoewel de automatisch schalen snel reageert, duurt het AKS een aanzienlijke hoeveelheid tijd om extra containers te maken.
 
-Beslissingen voor omhoog/omlaag schalen is gebaseerd op het gebruik van de huidige container replica's. Het huidige gebruik is het aantal replica's dat bezig is met het verwerken van een aanvraag, gedeeld door het totale aantal huidige replica's. Als dit aantal groter is dan `autoscale_target_utilization` , worden er meer replica's gemaakt. Als deze lager is, worden de replica's gereduceerd. Beslissingen voor het toevoegen van replica's zijn nu en snel (rond 1 seconde). Beslissingen voor het verwijderen van replica's zijn conservatief (ongeveer 1 minuut). Het doel gebruik voor automatisch schalen is standaard ingesteld op **70%**, wat betekent dat de service pieken kan verwerken in aanvragen per seconde (RPS) van **Maxi maal 30%**.
+Beslissingen voor omhoog/omlaag schalen is gebaseerd op het gebruik van de huidige container replica's. Het huidige gebruik is het aantal replica's dat bezig is met het verwerken van een aanvraag, gedeeld door het totale aantal huidige replica's. Als dit aantal groter is dan `autoscale_target_utilization` , worden er meer replica's gemaakt. Als deze lager is, worden de replica's gereduceerd. Beslissingen voor het toevoegen van replica's zijn nu en snel (rond 1 seconde). Beslissingen voor het verwijderen van replica's zijn conservatief (ongeveer 1 minuut). Het doel gebruik voor automatisch schalen is standaard ingesteld op **70%** , wat betekent dat de service pieken kan verwerken in aanvragen per seconde (RPS) van **Maxi maal 30%**.
 
 Er zijn twee dingen die u kunnen helpen bij het voor komen van 503-status codes:
 
@@ -277,9 +259,9 @@ Er zijn twee dingen die u kunnen helpen bij het voor komen van 503-status codes:
     > [!NOTE]
     > Als er pieken van aanvragen worden ontvangen die groter zijn dan de nieuwe minimum replica's kunnen worden verwerkt, kunt u 503s opnieuw ontvangen. Als het verkeer naar uw service toeneemt, is het mogelijk dat u de minimum replica's moet verg Roten.
 
-`autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` Zie de naslag gids voor [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true) voor meer informatie over het instellen, en voor.
+`autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` Zie de naslag gids voor [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) voor meer informatie over het instellen, en voor.
 
-## <a name="http-status-code-504"></a>HTTP-status code 504
+## <a name="http-status-code-504"></a>HTTP-statuscode 504
 
 Een 504-status code geeft aan dat er een time-out is opgetreden voor de aanvraag. De standaard time-out is 1 minuut.
 
@@ -287,11 +269,11 @@ U kunt de time-out verhogen of proberen de service te versnellen door de score.p
 
 ## <a name="advanced-debugging"></a>Geavanceerde fout opsporing
 
-Mogelijk moet u interactief fouten opsporen in de python-code die in uw model implementatie is opgenomen. Als het script voor de vermelding bijvoorbeeld mislukt en de reden niet kan worden bepaald door aanvullende logboek registratie. Door Visual Studio code en de debugpy te gebruiken, kunt u koppelen aan de code die wordt uitgevoerd in de docker-container.
+Mogelijk moet u interactief fouten opsporen in de Python-code die in uw modelimplementatie is opgenomen. Als het script voor de vermelding bijvoorbeeld mislukt en de reden niet kan worden bepaald door aanvullende logboek registratie. Door Visual Studio code en de debugpy te gebruiken, kunt u koppelen aan de code die wordt uitgevoerd in de docker-container.
 
 Ga voor meer informatie naar de [richt lijnen voor interactieve fout opsporing in VS code](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments).
 
-## <a name="model-deployment-user-forum"></a>[Gebruikers forum voor model implementatie](https://docs.microsoft.com/answers/topics/azure-machine-learning-inference.html)
+## <a name="model-deployment-user-forum"></a>[Gebruikers forum voor model implementatie](/answers/topics/azure-machine-learning-inference.html)
 
 ## <a name="next-steps"></a>Volgende stappen
 

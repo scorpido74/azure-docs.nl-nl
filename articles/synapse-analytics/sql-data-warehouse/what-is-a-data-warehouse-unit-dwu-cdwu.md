@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b0df359a25810f09d530b5f0cca9cabbd485c795
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfcd9c6430deea948804ba8c1d37e404b1897c5f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311879"
 ---
 # <a name="data-warehouse-units-dwus"></a>Data Warehouse-eenheden (Dwu's)
 
@@ -24,7 +24,7 @@ Aanbevelingen voor het kiezen van het ideale aantal Data Warehouse Units (DWU's)
 
 ## <a name="what-are-data-warehouse-units"></a>Wat zijn Data Warehouse Units?
 
-Een [Synapse SQL-pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische resources worden gedefinieerd als een combinatie van CPU, geheugen en IO.
+Een [Synapse SQL-pool](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische resources worden gedefinieerd als een combinatie van CPU, geheugen en IO.
 
 Deze drie resources worden gebundeld in rekenschaaleenheden, ook wel Data Warehouse Units (DWU's) genoemd. Een DWU vertegenwoordigt een abstracte, genormaliseerde meting van rekenresources en prestaties.
 
@@ -34,8 +34,8 @@ Voor betere prestaties kunt u het aantal DWU's verhogen. Voor mindere prestaties
 
 De prestaties van DWU's zijn gebaseerd op de metrische gegevens van de workload van deze datawarehouses:
 
-- Hoe snel een standaard SQL-groeps query een groot aantal rijen kan scannen en vervolgens een complexe aggregatie kan uitvoeren. Dit is een I/O-bewerking waarbij de CPU intensief wordt belast.
-- Hoe snel de SQL-groep gegevens kan opnemen uit Azure Storage blobs of Azure Data Lake. Dit is een netwerkbewerking waarbij de CPU intensief wordt belast.
+- Hoe snel een standaard exclusieve SQL-groeps query een groot aantal rijen kan scannen en vervolgens een complexe aggregatie kan uitvoeren. Dit is een I/O-bewerking waarbij de CPU intensief wordt belast.
+- Hoe snel de toegewezen SQL-groep gegevens uit Azure Storage blobs of Azure Data Lake kan opnemen. Dit is een netwerkbewerking waarbij de CPU intensief wordt belast.
 - Hoe snel de [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-opdracht een tabel kan kopiëren. Deze bewerking omvat het lezen van gegevens uit de opslag, het verdelen van de gegevens over de knooppunten van het systeem en het weer terugschrijven van de gegevens naar de opslag. Dit is een bewerking waarbij de CPU, de IO en het netwerk intensief worden belast.
 
 DWU's verhogen:
@@ -48,12 +48,12 @@ DWU's verhogen:
 
 De Service Level Objective (SLO) is de schaalbaarheidsinstelling waarmee de kosten en het prestatieniveau van uw datawarehouse worden bepaald. De serviceniveaus voor Gen2 worden gemeten in compute Data Warehouse Units (cDWU), bijvoorbeeld DW2000c. Gen1-serviceniveaus worden gemeten in DWU's, bijvoorbeeld DW2000.
 
-De serviceniveau doelstelling (SLO) is de schaal baarheid-instelling waarmee de kosten en het prestatie niveau van uw SQL-groep worden bepaald. De serviceniveaus voor SQL-pool Gen2 worden gemeten in Data Warehouse Units (DWU), bijvoorbeeld DW2000c.
+De serviceniveau doelstelling (SLO) is de schaal baarheid-instelling waarmee de kosten en het prestatie niveau van uw toegewezen SQL-groep worden bepaald. De service niveaus voor Gen2 toegewezen SQL-pool worden gemeten in data warehouse units (DWU), bijvoorbeeld DW2000c.
 
 > [!NOTE]
 > In Azure Synapse Analytics Gen2 zijn onlangs extra schaalmogelijkheden toegevoegd ter ondersteuning van rekenlagen van 100 cDWU. Bestaande datawarehouses met Gen1 waarvoor de lagere rekenlagen zijn vereist, kunnen nu kosteloos worden bijgewerkt naar Gen2 in de regio's die momenteel beschikbaar zijn.  Als uw regio nog niet wordt ondersteund, kunt u nog steeds een upgrade uitvoeren naar een ondersteunde regio. Zie [Upgrade naar Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
 
-In T-SQL bepaalt de instelling SERVICE_OBJECTIVE het serviceniveau en de prestatielaag voor uw SQL-pool.
+In T-SQL bepaalt de SERVICE_OBJECTIVE instelling het service niveau en de prestatie-laag voor uw toegewezen SQL-groep.
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -88,7 +88,7 @@ Stappen voor het vinden van de beste DWU voor uw workload:
 2. Bewaak de prestaties van uw toepassing tijdens het testen van gegevens die in het systeem worden geladen, waarbij u het aantal geselecteerde DWU's vergelijkt met de prestaties die u ziet.
 3. Identificeer eventuele aanvullende vereisten voor periodieke perioden met piekactiviteit. Workloads die aanzienlijke pieken en dalen in activiteiten tonen, moeten mogelijk regelmatig worden geschaald.
 
-SQL-pool is een scale-outsysteem waarmee u grote hoeveelheden reken- en querygegevens kunt inrichten.
+Een toegewezen SQL-groep is een scale-out systeem waarmee u grote hoeveel heden berekenings-en query gegevens kunt inrichten.
 
 Als u de echte mogelijkheden voor schalen wilt zien, met name bij grotere DWU's, kunt u het beste de gegevensset schalen terwijl u schaalt om ervoor te zorgen dat u voldoende invoer hebt voor de CPU's. Voor schaaltests kunt u het beste minimaal 1 TB gebruiken.
 
@@ -98,7 +98,7 @@ Als u de echte mogelijkheden voor schalen wilt zien, met name bij grotere DWU's,
 
 ## <a name="permissions"></a>Machtigingen
 
-Voor het wijzigen van de DWU's zijn de machtigingen vereist die worden beschreven in [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Voor het wijzigen van de DWU's zijn de machtigingen vereist die worden beschreven in [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Ingebouwde Azure-rollen, zoals Inzender voor SQL-databases en Inzender voor SQL Server, kunnen DWU-instellingen wijzigen.
 
@@ -150,7 +150,7 @@ Met T-SQL kunt u de huidige DWU-instellingen weergeven, de instellingen wijzigen
 De DWU's wijzigen:
 
 1. Maak verbinding met de hoofddatabase die aan uw server is gekoppeld.
-2. Gebruik de TSQL-instructie [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). In het volgende voorbeeld wordt de serviceniveaudoelstelling ingesteld op DW1000c voor de database MijnSQLDW.
+2. Gebruik de TSQL-instructie [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). In het volgende voorbeeld wordt de serviceniveaudoelstelling ingesteld op DW1000c voor de database MijnSQLDW.
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -204,7 +204,7 @@ FROM      sys.databases
     ;
     ```
 
-Deze DMV retourneert informatie over verschillende beheerbewerkingen in uw SQL-groep, zoals de bewerking en de status van de bewerking, die IN_PROGRESS of COMPLETED is.
+Deze DMV retourneert informatie over verschillende beheer bewerkingen op uw toegewezen SQL-groep, zoals de bewerking en de status van de bewerking, die IN_PROGRESS of voltooid is.
 
 ## <a name="the-scaling-workflow"></a>De werkstroom voor schalen
 

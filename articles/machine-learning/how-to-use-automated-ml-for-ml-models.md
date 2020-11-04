@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 47df04a0195c4cfcc4e40db5bf21387a284f682c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad84d3d3fd58edc6f7967c6f50440dcc90625617
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362245"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311274"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 
@@ -56,7 +56,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 1. Selecteer een gegevensset uit uw opslag container of maak een nieuwe gegevensset. Gegevens sets kunnen worden gemaakt op basis van lokale bestanden, Web-url's, gegevens opslag of Azure open gegevens sets. Meer informatie over het maken van een [gegevensset](how-to-create-register-datasets.md).  
 
     >[!Important]
-    > Vereisten voor trainings gegevens:
+    > Vereisten voor trainingsgegevens:
     >* Gegevens moeten in tabel vorm zijn.
     >* De waarde die u wilt voors pellen (doel kolom), moet aanwezig zijn in de gegevens.
 
@@ -64,7 +64,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     1. Geef in het formulier **basis informatie** uw gegevensset een unieke naam en geef een optionele beschrijving op. 
 
-    1. Selecteer **volgende** om het **formulier gegevens opslag en bestand selecteren**te openen. Op dit formulier selecteert u waar u uw gegevensset wilt uploaden. de standaard opslag container die automatisch wordt gemaakt met uw werk ruimte, of kies een opslag container die u wilt gebruiken voor het experiment. 
+    1. Selecteer **volgende** om het **formulier gegevens opslag en bestand selecteren** te openen. Op dit formulier selecteert u waar u uw gegevensset wilt uploaden. de standaard opslag container die automatisch wordt gemaakt met uw werk ruimte, of kies een opslag container die u wilt gebruiken voor het experiment. 
     
         1. Als uw gegevens zich achter een virtueel netwerk bevinden, moet u de functie voor **het overs Laan** van de validatie inschakelen om ervoor te zorgen dat de werk ruimte toegang heeft tot uw gegevens. Zie [Azure machine learning Studio gebruiken in een virtueel netwerk van Azure](how-to-enable-studio-virtual-network.md)voor meer informatie. 
     
@@ -117,7 +117,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
 1. Selecteer op het **taak type en het instellingen** formulier het taak type: classificatie, regressie of prognose. Zie [ondersteunde taak typen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) voor meer informatie.
 
-    1. Voor **classificatie**kunt u ook diep gaande lessen inschakelen.
+    1. Voor **classificatie** kunt u ook diep gaande lessen inschakelen.
     
         Als grondige kennis is ingeschakeld, is validatie beperkt tot _train_validation splitsen_. Meer [informatie over validatie opties](how-to-configure-cross-validation-data-splits.md).
 
@@ -126,9 +126,9 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     
         1. Uitgebreide training inschakelen.
     
-        1. Selecteer een *tijd kolom*: deze kolom bevat de tijd gegevens die moeten worden gebruikt.
+        1. Selecteer een *tijd kolom* : deze kolom bevat de tijd gegevens die moeten worden gebruikt.
 
-        1. *Prognose horizon*selecteren: Geef aan hoeveel tijds eenheden (minuten/uren/dagen/weken/maanden/jaar) het model op de toekomst kan voors pellen. Verder is het model vereist om in de toekomst te voors pellen, hoe minder nauw keurig wordt. Meer [informatie over prognoses en prognoses horizon](how-to-auto-train-forecast.md).
+        1. *Prognose horizon* selecteren: Geef aan hoeveel tijds eenheden (minuten/uren/dagen/weken/maanden/jaar) het model op de toekomst kan voors pellen. Verder is het model vereist om in de toekomst te voors pellen, hoe minder nauw keurig wordt. Meer [informatie over prognoses en prognoses horizon](how-to-auto-train-forecast.md).
 
 1. Beschrijving Aanvullende configuratie-instellingen weer geven: extra instellingen die u kunt gebruiken om de trainings taak beter te beheren. Anders worden de standaardinstellingen toegepast op basis van de selectie en gegevens van het experiment. 
 
@@ -136,10 +136,10 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     ------|------
     Primaire metrische gegevens| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#primary-metric).
     Uitleg geven over het beste model | Selecteer deze optie om in of uit te scha kelen om uitleg voor het aanbevolen model weer te geven. <br> Deze functionaliteit is momenteel niet beschikbaar voor [bepaalde prognose algoritmen](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
-    Geblokkeerd algoritme| Selecteer de algoritmen die u wilt uitsluiten van de trainings taak. <br><br> Het toestaan van algoritmen is alleen beschikbaar voor [SDK-experimenten](how-to-configure-auto-train.md#supported-models). <br> Zie de [ondersteunde modellen voor elk taak type](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true).
-    Criterium voor afsluiten| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak gestopt. <br> *Tijd van trainings taak (uren)*: hoe lang het mogelijk is om de trainings taak uit te voeren. <br> *Drempel waarde voor metrische Score*: minimale metrische score voor alle pijp lijnen. Dit zorgt ervoor dat als u een gedefinieerde doel metriek hebt die u wilt bereiken, u niet meer tijd op de trainings taak brengt dan nodig is.
+    Geblokkeerd algoritme| Selecteer de algoritmen die u wilt uitsluiten van de trainings taak. <br><br> Het toestaan van algoritmen is alleen beschikbaar voor [SDK-experimenten](how-to-configure-auto-train.md#supported-models). <br> Zie de [ondersteunde modellen voor elk taak type](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?preserve-view=true&view=azure-ml-py).
+    Criterium voor afsluiten| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak gestopt. <br> *Tijd van trainings taak (uren)* : hoe lang het mogelijk is om de trainings taak uit te voeren. <br> *Drempel waarde voor metrische Score* : minimale metrische score voor alle pijp lijnen. Dit zorgt ervoor dat als u een gedefinieerde doel metriek hebt die u wilt bereiken, u niet meer tijd op de trainings taak brengt dan nodig is.
     Validatie| Selecteer een van de opties voor kruis validatie die u wilt gebruiken in de trainings taak. <br> Meer [informatie over Kruis validatie](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Prognoses bieden alleen ondersteuning voor kruis validatie met k-vouwen.
-    Gelijktijdigheid| Maximum aantal *gelijktijdige herhalingen*: Maxi maal toegestane pijp lijnen (iteraties) om in de trainings taak te testen. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties.
+    Gelijktijdigheid| Maximum aantal *gelijktijdige herhalingen* : Maxi maal toegestane pijp lijnen (iteraties) om in de trainings taak te testen. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties.
 
 1. Beschrijving Parametrisatie-instellingen weer geven: als u ervoor kiest **automatische parametrisatie** in te scha kelen in het formulier **aanvullende configuratie-instellingen** , worden de standaard parametrisatie-technieken toegepast. In de **instellingen van de weer gave-parametrisatie** kunt u deze standaard waarden wijzigen en dienovereenkomstig aanpassen. Meer informatie over het [aanpassen van featurizations](#customize-featurization). 
 
@@ -151,7 +151,7 @@ In het formulier **parametrisatie** kunt u automatische parametrisatie in-en uit
 
 De volgende tabel bevat een overzicht van de aanpassingen die momenteel beschikbaar zijn via Studio. 
 
-Kolom| Aanpassen
+Kolom| Aanpassing
 ---|---
 Inbegrepen | Hiermee geeft u op welke kolommen moeten worden toegevoegd voor de training.
 Onderdeel type| Wijzig het waardetype voor de geselecteerde kolom.
@@ -163,7 +163,7 @@ Toegerekend met| Selecteer welke waarde er ontbrekende waarden moeten worden toe
 
 Selecteer **volt ooien** om uw experiment uit te voeren. Het voorbereiden van het experiment kan tot 10 minuten duren. Trainingstaken kunnen nog 2-3 minuten meer kosten voordat het uitvoeren van elke pijplijn is voltooid.
 
-### <a name="view-experiment-details"></a>Details van experiment weer geven
+### <a name="view-experiment-details"></a>Experimentgegevens bekijken
 
 Het scherm **detail uitvoeren** wordt geopend op het tabblad **Details** . In dit scherm ziet u een overzicht van de uitvoering van het experiment, met inbegrip van een status balk bovenaan naast het uitvoerings nummer. 
 
@@ -217,6 +217,6 @@ U hebt nu een operationele webservice om voorspellingen te genereren. U kunt de 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het gebruik van een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
+* [Meer informatie over het gebruik van een webservice](./how-to-consume-web-service.md).
 * Krijg [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
 * Meer [informatie over automatische machine learning](concept-automated-ml.md) en Azure machine learning.

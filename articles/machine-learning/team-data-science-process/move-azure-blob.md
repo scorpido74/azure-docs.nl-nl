@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc58651bcb3b266b981fb953fd7341427d47fb2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5148084fa22266b1352046c7d8737b9804c5f4d0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76717587"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311848"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Gegevens verplaatsen van en naar Azure Blob-opslag
 
@@ -27,14 +27,14 @@ Voor het proces van de team data Science moeten gegevens worden opgenomen of gel
 In de volgende artikelen wordt beschreven hoe u gegevens kunt verplaatsen van en naar Azure Blob-opslag met behulp van verschillende technologieën.
 
 * [Azure Storage-Verkenner](move-data-to-azure-blob-using-azure-storage-explorer.md)
-* [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
-* [Python](move-data-to-azure-blob-using-python.md)
+* [AzCopy](../../storage/common/storage-use-azcopy-v10.md)
+* [Python](../../storage/blobs/storage-quickstart-blobs-python.md)
 * [SSIS](move-data-to-azure-blob-using-ssis.md)
 
 Welke methode het beste voor u is, is afhankelijk van uw scenario. De [scenario's voor geavanceerde analyses in azure machine learning](plan-sample-scenarios.md) -artikel helpen u bij het bepalen van de bronnen die u nodig hebt voor diverse data Science-werk stromen die worden gebruikt in het geavanceerde analyse proces.
 
 > [!NOTE]
-> Raadpleeg Azure Blob- [basis beginselen](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) en [Azure Blob service](https://msdn.microsoft.com/library/azure/dd179376.aspx)voor een volledige inleiding tot Azure Blob-opslag.
+> Raadpleeg Azure Blob- [basis beginselen](../../storage/blobs/storage-quickstart-blobs-dotnet.md) en [Azure Blob service](/rest/api/storageservices/Blob-Service-Concepts)voor een volledige inleiding tot Azure Blob-opslag.
 > 
 > 
 
@@ -53,5 +53,4 @@ Zie [voorspellende pijp lijnen maken met Azure Data Factory en Azure machine lea
 In dit artikel wordt ervan uitgegaan dat u een Azure-abonnement, een opslag account en de bijbehorende opslag sleutel voor dat account hebt. Voordat u gegevens kunt uploaden/downloaden, moet u de account naam en de account sleutel van Azure Storage kennen.
 
 * Zie [een gratis proef versie van één maand](https://azure.microsoft.com/pricing/free-trial/)voor meer informatie over het instellen van een Azure-abonnement.
-* Zie [over Azure Storage-accounts](../../storage/common/storage-create-storage-account.md)voor instructies over het maken van een opslag account en voor het ophalen van account-en sleutel gegevens.
-
+* Zie [over Azure Storage-accounts](../../storage/common/storage-account-create.md)voor instructies over het maken van een opslag account en voor het ophalen van account-en sleutel gegevens.

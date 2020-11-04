@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 525293c7ae3d0af49f6deaa0ce9d3cb037d9ba38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68bd42b6e9f1498db294b57d0ea1ffdac5245be8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907706"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309982"
 ---
 # <a name="two-class-logistic-regression-module"></a>Module logistiek regressie Two-Class
 
@@ -40,13 +40,13 @@ De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of 
   
 2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
+    -   **Eén para meter** : als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
 
-    -   **Parameter bereik**: als u niet zeker weet wat de beste para meters zijn, kunt u de optimale para meters vinden met behulp van de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) . U geeft een aantal waarden op, en de trainer herhaalt meerdere combi Naties van de instellingen om de combi natie van waarden te bepalen die het beste resultaat oplevert.
+    -   **Parameter bereik** : als u niet zeker weet wat de beste para meters zijn, kunt u de optimale para meters vinden met behulp van de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) . U geeft een aantal waarden op, en de trainer herhaalt meerdere combi Naties van de instellingen om de combi natie van waarden te bepalen die het beste resultaat oplevert.
   
-3.  Geef bij **optimalisatie tolerantie**een drempel waarde op die moet worden gebruikt bij het optimaliseren van het model. Als de verbetering tussen herhalingen onder de opgegeven drempel waarde valt, wordt het algoritme gezien als geconvergeerd op een oplossing en stopt de training.  
+3.  Geef bij **optimalisatie tolerantie** een drempel waarde op die moet worden gebruikt bij het optimaliseren van het model. Als de verbetering tussen herhalingen onder de opgegeven drempel waarde valt, wordt het algoritme gezien als geconvergeerd op een oplossing en stopt de training.  
   
-4.  Typ voor **L1 regularisatie Weight** en **L2 regularisatie Weight**een waarde om te gebruiken voor de regularisatie-para meters L1 en L2. Een andere waarde dan nul wordt aanbevolen voor beide.  
+4.  Typ voor **L1 regularisatie Weight** en **L2 regularisatie Weight** een waarde om te gebruiken voor de regularisatie-para meters L1 en L2. Een andere waarde dan nul wordt aanbevolen voor beide.  
      *Regularisatie* is een methode voor het voor komen van overmontage door het bestraffen van modellen met extreme coëfficiënt waarden. Regularisatie werkt door de sanctie toe te voegen die is gekoppeld aan coëfficiënt waarden voor de fout van de hypo these. Een nauw keurig model met extreme coëfficiënt waarden zou dus meer worden bestraft, maar een minder nauw keurig model met meer conservatieve waarden zou minder worden bestraft.  
   
      L1 en L2-regularisatie hebben verschillende effecten en worden gebruikt.  
@@ -58,24 +58,24 @@ De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of 
      Dit algoritme ondersteunt een lineaire combi natie van L1-en L2-regularisatie-waarden: dat wil zeggen, als <code>x = L1</code> en en <code>y = L2</code> vervolgens <code>ax + by = c</code> de lineaire lijn van de regularisatie-voor waarden definieert.  
   
     > [!NOTE]
-    >  Wilt u meer informatie over L1 en L2-regularisatie? In het volgende artikel wordt uitgelegd hoe L1 en L2 regularisatie verschillend zijn en hoe deze van invloed zijn op model fitting, met code voorbeelden voor logistiek-regressie en Neural-netwerk modellen:  [L1 en L2 regularisatie voor machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Wilt u meer informatie over L1 en L2-regularisatie? In het volgende artikel wordt uitgelegd hoe L1 en L2 regularisatie verschillend zijn en hoe deze van invloed zijn op model fitting, met code voorbeelden voor logistiek-regressie en Neural-netwerk modellen:  [L1 en L2 regularisatie voor machine learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)  
     >
     > Er zijn verschillende lineaire combi Naties van L1-en L2-termen ontwikkeld voor logistieke regressie modellen: bijvoorbeeld [elastische net regularisatie](https://wikipedia.org/wiki/Elastic_net_regularization). U wordt aangeraden om te verwijzen naar deze combi Naties om een lineaire combi natie te definiëren die effectief is in uw model.
       
-5.  Geef voor de **geheugen grootte voor l-BFGS**de hoeveelheid geheugen op die moet worden gebruikt voor de optimalisatie van *l-BFGS* .  
+5.  Geef voor de **geheugen grootte voor l-BFGS** de hoeveelheid geheugen op die moet worden gebruikt voor de optimalisatie van *l-BFGS* .  
   
      L-BFGS staat voor ' Limited Memory Broyden-Fletcher-Goldfarb-Shanno '. Het is een optimalisatie algoritme dat populair is voor de schatting van de para meters. Met deze para meter wordt het aantal vroegere posities en verlopen aangegeven dat moet worden opgeslagen voor de berekening van de volgende stap.  
   
      Deze optimalisatie parameter beperkt de hoeveelheid geheugen die wordt gebruikt voor het berekenen van de volgende stap en richting. Wanneer u minder geheugen opgeeft, is de training sneller, maar minder nauw keurig.  
   
-6.  Voor **wille keurig getal zaad**typt u een geheel getal. Het definiëren van een Seed-waarde is belang rijk als u wilt dat de resultaten reproduceerbaar zijn op meerdere uitvoeringen van dezelfde pijp lijn.  
+6.  Voor **wille keurig getal zaad** typt u een geheel getal. Het definiëren van een Seed-waarde is belang rijk als u wilt dat de resultaten reproduceerbaar zijn op meerdere uitvoeringen van dezelfde pijp lijn.  
   
   
 8. Voeg een gegevensset met een label toe aan de pijp lijn en Train het model:
 
-    + Als u de **modus trainer maken** instelt op **één para meter**, verbindt u een gecodeerde gegevensset en de module [Train model](train-model.md) .  
+    + Als u de **modus trainer maken** instelt op **één para meter** , verbindt u een gecodeerde gegevensset en de module [Train model](train-model.md) .  
   
-    + Als u de **modus trainer maken** instelt op het **parameter bereik**, verbindt u een gecodeerde gegevensset en traint u het model met behulp van [Hyper parameters model](tune-model-hyperparameters.md).  
+    + Als u de **modus trainer maken** instelt op het **parameter bereik** , verbindt u een gecodeerde gegevensset en traint u het model met behulp van [Hyper parameters model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 
@@ -97,4 +97,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

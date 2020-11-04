@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440447"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311030"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Beheerde identiteiten gebruiken met Azure Machine Learning (preview-versie)
 
-Met [beheerde identiteiten](/azure/active-directory/managed-identities-azure-resources/overview) kunt u uw werk ruimte configureren met de *Mini maal vereiste machtigingen voor toegang tot bronnen*. 
+Met [beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md) kunt u uw werk ruimte configureren met de *Mini maal vereiste machtigingen voor toegang tot bronnen*. 
 
 Wanneer u Azure Machine Learning werk ruimte op een betrouw bare manier configureert, is het belang rijk om ervoor te zorgen dat verschillende services die zijn gekoppeld aan de werk ruimte, het juiste toegangs niveau hebben. Tijdens machine learning werk stroom moet de werk ruimte bijvoorbeeld toegang hebben tot Azure Container Registry (ACR) voor docker-installatie kopieën en opslag accounts voor trainings gegevens. 
 
@@ -37,9 +37,9 @@ In dit artikel leert u hoe u beheerde identiteiten kunt gebruiken voor het volge
 
 - Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 - De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md)
-- De [Azure machine learning python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-- Als u rollen wilt toewijzen, moet de aanmelding voor uw Azure-abonnement de rol [Managed Identity-operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) hebben, of een andere rol die de vereiste acties verleent (zoals __eigenaar__).
-- U moet bekend zijn met het maken en werken met [beheerde identiteiten](/azure/active-directory/managed-identities-azure-resources/overview).
+- De [Azure machine learning python-SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py).
+- Als u rollen wilt toewijzen, moet de aanmelding voor uw Azure-abonnement de rol [Managed Identity-operator](../role-based-access-control/built-in-roles.md#managed-identity-operator) hebben, of een andere rol die de vereiste acties verleent (zoals __eigenaar__ ).
+- U moet bekend zijn met het maken en werken met [beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="configure-managed-identities"></a>Beheerde identiteiten configureren
 
@@ -56,10 +56,10 @@ Wanneer u de werk ruimte maakt, kunt u uw eigen ACR met beheerders rechten uitsc
 
 Als ACR admin-gebruiker niet wordt toegestaan door het abonnements beleid, moet u eerst ACR maken zonder beheerder en deze vervolgens koppelen aan de werk ruimte. Als u al een bestaande ACR hebt met een gebruiker die door de beheerder is uitgeschakeld, kunt u deze koppelen aan de werk ruimte.
 
-[ACR maken op basis van Azure cli](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) zonder een ```--admin-enabled``` argument in te stellen, of op basis van Azure Portal zonder beheer gebruiker in te scha kelen. Wanneer u vervolgens Azure Machine Learning werk ruimte maakt, geeft u de Azure-Resource-ID van de ACR op. In het volgende voor beeld ziet u hoe u een nieuwe Azure ML-werk ruimte maakt die gebruikmaakt van een bestaand ACR:
+[ACR maken op basis van Azure cli](../container-registry/container-registry-get-started-azure-cli.md) zonder een ```--admin-enabled``` argument in te stellen, of op basis van Azure Portal zonder beheer gebruiker in te scha kelen. Wanneer u vervolgens Azure Machine Learning werk ruimte maakt, geeft u de Azure-Resource-ID van de ACR op. In het volgende voor beeld ziet u hoe u een nieuwe Azure ML-werk ruimte maakt die gebruikmaakt van een bestaand ACR:
 
 > [!TIP]
-> Als u de waarde voor de `--container-registry` para meter wilt ophalen, gebruikt u de opdracht [AZ ACR show](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az_acr_show) om informatie weer te geven voor uw ACR. Het `id` veld bevat de resource-id voor uw ACR.
+> Als u de waarde voor de `--container-registry` para meter wilt ophalen, gebruikt u de opdracht [AZ ACR show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) om informatie weer te geven voor uw ACR. Het `id` veld bevat de resource-id voor uw ACR.
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -106,7 +106,7 @@ Om toegang te krijgen tot de ACR van de werk ruimte, maakt u machine learning Co
 
 # <a name="python"></a>[Python](#tab/python)
 
-Wanneer u een reken cluster maakt met de [AmlComputeProvisioningConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py), gebruikt `identity_type` u de para meter om het type beheerde identiteit in te stellen.
+Wanneer u een reken cluster maakt met de [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py), gebruikt `identity_type` u de para meter om het type beheerde identiteit in te stellen.
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -190,7 +190,7 @@ In dit scenario bouwt Azure Machine Learning service de training of de detrainin
 
         De resource-ID van de UAI is de Azure-Resource-ID van de door de gebruiker toegewezen identiteit in de indeling `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` .
 
-1. Geef de externe ACR en de client-ID op van de door de __gebruiker toegewezen beheerde identiteit__ in werkruimte verbindingen met behulp van [Workspace.set_connection methode](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-):
+1. Geef de externe ACR en de client-ID op van de door de __gebruiker toegewezen beheerde identiteit__ in werkruimte verbindingen met behulp van [Workspace.set_connection methode](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-):
 
     ```python
     workspace.set_connection(
@@ -210,7 +210,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-Desgewenst kunt u de URL van de beheerde identiteits bron en de client-ID opgeven in de omgevings definitie zelf met behulp van [RegistryIdentity](https://docs.microsoft.com/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py). Als u de register identiteit expliciet gebruikt, worden alle eerder opgegeven werkruimte verbindingen overschreven:
+Desgewenst kunt u de URL van de beheerde identiteits bron en de client-ID opgeven in de omgevings definitie zelf met behulp van [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py). Als u de register identiteit expliciet gebruikt, worden alle eerder opgegeven werkruimte verbindingen overschreven:
 
 ```python
 from azureml.core.container_registry import RegistryIdentity

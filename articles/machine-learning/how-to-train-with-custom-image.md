@@ -1,7 +1,7 @@
 ---
 title: Een model trainen met behulp van een aangepaste docker-installatie kopie
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het trainen van modellen met aangepaste docker-installatie kopieën in Azure Machine Learning.
+description: Meer informatie over het gebruik van uw eigen docker-installatie kopieën of van micro soft, voor het trainen van modellen in Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6ce0885cce1861b27d6230c3807350831603684b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 23b59c80c8e44cf6473a2de9be9807eaf8a756c6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329114"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310544"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Een model trainen met behulp van een aangepaste docker-installatie kopie
 
@@ -32,8 +32,8 @@ Voer de code uit in een van de volgende omgevingen:
   * Zoek in het Azure machine learning- [voor beeld-opslag plaats](https://github.com/Azure/azureml-examples)een voltooid notitie blok door naar de fastai-map **notebooks**  >  **fastai**  >  **-resnet34. ipynb** te gaan. 
 * Uw eigen Jupyter Notebook-server:
   * Maak een [configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
-  * Installeer de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
-  * Een [Azure container Registry](/azure/container-registry) of een ander docker-REGI ster maken dat op internet beschikbaar is.
+  * Installeer de [Azure machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). 
+  * Een [Azure container Registry](../container-registry/index.yml) of een ander docker-REGI ster maken dat op internet beschikbaar is.
 
 ## <a name="set-up-a-training-experiment"></a>Een trainings experiment instellen
 
@@ -41,7 +41,7 @@ In deze sectie kunt u uw trainings experiment instellen door een werk ruimte te 
 
 ### <a name="initialize-a-workspace"></a>Een werk ruimte initialiseren
 
-De [Azure machine learning werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) object te maken.
+De [Azure machine learning werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) object te maken.
 
 Maak een `Workspace` object op basis van de config.jsvoor het bestand dat u hebt gemaakt als een [vereiste](#prerequisites).
 
@@ -163,7 +163,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure Machine Learning trainings scripts worden uitgevoerd door de hele bronmap te kopiëren. Als u gevoelige gegevens hebt die u niet wilt uploaden, gebruikt u een [. ignore-bestand](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) of neemt u het niet op in de bron directory. In plaats daarvan kunt u toegang krijgen tot uw gegevens met behulp van een gegevens [opslag](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true).
+> Azure Machine Learning trainings scripts worden uitgevoerd door de hele bronmap te kopiëren. Als u gevoelige gegevens hebt die u niet wilt uploaden, gebruikt u een [. ignore-bestand](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) of neemt u het niet op in de bron directory. In plaats daarvan kunt u toegang krijgen tot uw gegevens met behulp van een gegevens [opslag](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py).
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u een model getraind met behulp van een aangepaste docker-installatie kopie. Raadpleeg de volgende artikelen voor meer informatie over Azure Machine Learning:
