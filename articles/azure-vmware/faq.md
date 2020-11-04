@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 68eee2d55e3c22b502d17a91f4ba4509c292c31c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a1ca50e1e1374b5e819c9355be1a48e2b7c3e536
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288677"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349083"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -59,13 +59,7 @@ Updates die in de service zelf zijn aangebracht, volgen het standaard proces voo
 
 Met de nieuwe Azure VMware-oplossing beschikt micro soft en VMware over een direct partnerschap voor de Cloud provider. De nieuwe oplossing is volledig ontworpen, gebouwd en ondersteund door micro soft en goedgekeurd door VMware. In architectuur zijn de oplossingen consistent, met de VMware-technologie stack die wordt uitgevoerd op een specifieke Azure-infra structuur.
 
-#### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Worden Red Hat-oplossingen ondersteund op de Azure VMware-oplossing?
 
-Micro soft en Red Hat delen een geïntegreerd ondersteunings team dat een uniform contact punt biedt voor Red Hat-ecosystemen die worden uitgevoerd op het Azure-platform.  Net als andere Azure-platform services die met Red Hat Enterprise Linux werken, valt de Azure VMware-oplossing onder de Cloud toegang en het geïntegreerde ondersteunings paraplu, en wordt Red Hat Enterprise Linux ondersteund voor het uitvoeren van een Azure VMware-oplossing in Azure.
-
-#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Is VMware HCX Enter prise Edition beschikbaar, en zo ja, hoeveel kost het?
-
-VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview* -functie/-service. Hoewel VMware HCX EE voor de Azure VMware-oplossing in preview is, is het een gratis functie/service en onderhevig aan de voor waarden van de preview-versie van de service. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U kunt de service uitschakelen of u afmelden.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Kunnen Vm's van Azure VMware-oplossingen worden beheerd door VMRC?
 Ja, op voor waarde dat het systeem waarop het is geïnstalleerd, toegang kan krijgen tot de privécloud en de open bare DNS gebruikt om ESXi-hostnamen op te lossen.
@@ -236,6 +230,14 @@ Micro soft biedt ondersteuning voor de Azure VMware-oplossing. U kunt een [onder
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Welke accounts heb ik nodig om een privécloud van Azure VMware-oplossing te maken?
 
 U hebt een Azure-account in een Azure-abonnement nodig.
+
+#### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Worden Red Hat-oplossingen ondersteund op de Azure VMware-oplossing?
+
+Micro soft en Red Hat delen een geïntegreerd ondersteunings team dat een uniform contact punt biedt voor Red Hat-ecosystemen die worden uitgevoerd op het Azure-platform.  Net als andere Azure-platform services die met Red Hat Enterprise Linux werken, valt de Azure VMware-oplossing onder de Cloud toegang en het geïntegreerde ondersteunings paraplu, en wordt Red Hat Enterprise Linux ondersteund voor het uitvoeren van een Azure VMware-oplossing in Azure.
+
+#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Is VMware HCX Enter prise Edition beschikbaar, en zo ja, hoeveel kost het?
+
+VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview* -functie/-service. Hoewel VMware HCX EE voor de Azure VMware-oplossing in preview is, is het een gratis functie/service en onderhevig aan de voor waarden van de preview-versie van de service. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U kunt de service uitschakelen of u afmelden.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hoe kan ik een toename voor een quotum van een host voor een Azure VMware-oplossing aanvragen?
 

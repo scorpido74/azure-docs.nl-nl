@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2899121db4b6a3f202be4860e2e4f43027cdef7c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320639"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348761"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Firewall-logboeken en metrische gegevens bewaken
 
@@ -45,7 +45,7 @@ Nadat u deze procedure voor het inschakelen van diagnostische logboekregistratie
 
 3. Selecteer **Diagnostische instelling toevoegen**. Op de pagina **Diagnostische instellingen** staan de instellingen voor de diagnostische logboeken.
 5. In dit voorbeeld worden de logboeken in Azure Monitor-logboeken opgeslagen, dus typ **Firewall Log Analytics** als naam.
-6. Selecteer **onder logboek**de optie **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule**, **AzureFirewallThreatIntelLog**en **AzureFirewallDnsProxy** om de logboeken te verzamelen.
+6. Selecteer **onder logboek** de optie **AzureFirewallApplicationRule** , **AzureFirewallNetworkRule** , **AzureFirewallThreatIntelLog** en **AzureFirewallDnsProxy** om de logboeken te verzamelen.
 7. Selecteer **verzenden naar log Analytics** om uw werk ruimte te configureren.
 8. Selecteer uw abonnement.
 9. Selecteer **Opslaan**.
@@ -56,11 +56,11 @@ Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Ma
 
 Volg de onderstaande stappen om diagnostische logboekregistratie in te schakelen:
 
-1. Noteer de resource-ID van uw opslagaccount waar de logboekgegevens worden opgeslagen. Deze waarde is van het formulier: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> *.
+1. Noteer de resource-ID van uw opslagaccount waar de logboekgegevens worden opgeslagen. Deze waarde is van het formulier: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\>*.
 
    U kunt elk opslagaccount in uw abonnement gebruiken. U kunt de Azure-portal gebruiken om deze informatie te vinden. De informatie staat op de pagina **Eigenschap** van de resource.
 
-2. Noteer de resource-ID van uw firewall waarvoor logboekregistratie is ingeschakeld. Deze waarde is van het formulier: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\> *.
+2. Noteer de resource-ID van uw firewall waarvoor logboekregistratie is ingeschakeld. Deze waarde is van het formulier: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\>*.
 
    U kunt de portal gebruiken om deze informatie te vinden.
 
@@ -75,13 +75,57 @@ Volg de onderstaande stappen om diagnostische logboekregistratie in te schakelen
 > [!TIP]
 >Voor diagnostische logboeken is geen apart opslagaccount nodig. Voor het gebruik van opslag voor toegangs- en prestatielogboeken worden servicekosten in rekening gebracht.
 
+## <a name="enable-diagnostic-logging-by-using-azure-cli"></a>Diagnostische logboek registratie inschakelen met behulp van Azure CLI
+
+Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. Diagnostische logboekregistratie moet worden ingeschakeld om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via die logboeken.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="enable-diagnostic-logging"></a>registratie in het diagnoselogboek inschakelen
+
+Gebruik de volgende opdrachten om diagnostische logboek registratie in te scha kelen.
+
+1. Voer de opdracht [AZ monitor Diagnostic-settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) uit om diagnostische logboek registratie in te scha kelen:
+
+   ```azurecli
+   az monitor diagnostic-settings create –name AzureFirewallApplicationRule \
+     --resource Firewall07 --storage-account MyStorageAccount
+   ```
+
+   Voer de opdracht [AZ monitor Diagnostic-Settings List](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_list) uit om de diagnostische instellingen voor een resource weer te geven:
+
+   ```azurecli
+   az monitor diagnostic-settings list --resource Firewall07
+   ```
+
+   Gebruik de [AZ monitor Diagnostic-Settings show](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_show) om de actieve Diagnostische instellingen voor een resource weer te geven:
+
+   ```azurecli
+   az monitor diagnostic-settings show --name AzureFirewallApplicationRule --resource Firewall07
+   ```
+
+1. Voer de opdracht [AZ monitor Diagnostic-Settings Update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) uit om de instellingen bij te werken.
+
+   ```azurecli
+   az monitor diagnostic-settings update --name AzureFirewallApplicationRule --resource Firewall07 --set retentionPolicy.days=365
+   ```
+
+   Gebruik de opdracht [AZ monitor Diagnostic-Settings delete](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_delete) om een instelling voor diagnostische gegevens te verwijderen.
+
+   ```azurecli
+   az monitor diagnostic-settings delete --name AzureFirewallApplicationRule --resource Firewall07
+   ```
+
+> [!TIP]
+>Voor diagnostische logboeken is geen apart opslagaccount nodig. Voor het gebruik van opslag voor toegangs- en prestatielogboeken worden servicekosten in rekening gebracht.
+
 ## <a name="view-and-analyze-the-activity-log"></a>Het activiteitenlogboek bekijken en analyseren
 
 U kunt activiteitenlogboekgegevens bekijken en analyseren via een van de volgende methoden:
 
-* **Azure-hulpprogramma’s**: Haal informatie uit het activiteitenlogboek op via Azure PowerShell, de Azure CLI, de Azure REST-API of de Azure-portal. In het artikel [Activiteitsbewerkingen met Resource Manager](../azure-resource-manager/management/view-activity-logs.md) staan stapsgewijze instructies voor elke methode.
-* **Power BI**: Als u nog geen [Power BI](https://powerbi.microsoft.com/pricing)-account hebt, kunt u het gratis uitproberen. Door het [inhoudspakket voor Azure-activiteitenlogboeken voor Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) te gebruiken, kunt u uw gegevens analyseren met vooraf geconfigureerde dashboards die u kunt gebruiken zoals geleverd of kunt aanpassen.
-* **Azure-Sentinel**: u kunt Azure firewall-logboeken verbinden met Azure-Sentinel, zodat u logboek gegevens in werkmappen weer geven, ze kunt gebruiken om aangepaste waarschuwingen te maken en deze op te nemen om uw onderzoek te verbeteren. De Azure Firewall gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview. Zie [verbinding maken tussen gegevens van Azure firewall](../sentinel/connect-azure-firewall.md)voor meer informatie.
+* **Azure-hulpprogramma’s** : Haal informatie uit het activiteitenlogboek op via Azure PowerShell, de Azure CLI, de Azure REST-API of de Azure-portal. In het artikel [Activiteitsbewerkingen met Resource Manager](../azure-resource-manager/management/view-activity-logs.md) staan stapsgewijze instructies voor elke methode.
+* **Power BI** : Als u nog geen [Power BI](https://powerbi.microsoft.com/pricing)-account hebt, kunt u het gratis uitproberen. Door het [inhoudspakket voor Azure-activiteitenlogboeken voor Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) te gebruiken, kunt u uw gegevens analyseren met vooraf geconfigureerde dashboards die u kunt gebruiken zoals geleverd of kunt aanpassen.
+* **Azure-Sentinel** : u kunt Azure firewall-logboeken verbinden met Azure-Sentinel, zodat u logboek gegevens in werkmappen weer geven, ze kunt gebruiken om aangepaste waarschuwingen te maken en deze op te nemen om uw onderzoek te verbeteren. De Azure Firewall gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview. Zie [verbinding maken tussen gegevens van Azure firewall](../sentinel/connect-azure-firewall.md)voor meer informatie.
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>De logboeken voor netwerk- en toepassingsregels bekijken en analyseren
 
@@ -95,7 +139,7 @@ U kunt ook verbinding maken met uw opslagaccount en de JSON-logboekitems voor to
 > Als u bekend bent met Visual Studio en de basisconcepten van het wijzigen van waarden voor constanten en variabelen in C#, kunt u de [logboekconversieprogramma’s](https://github.com/Azure-Samples/networking-dotnet-log-converter) gebruiken die beschikbaar zijn in GitHub.
 
 ## <a name="view-metrics"></a>Metrische gegevens bekijken
-Blader naar een Azure Firewall en selecteer **metrische gegevens**onder **bewaking** . Om de beschikbare waarden te zien, selecteert u de vervolgkeuzelijst **METRISCH**.
+Blader naar een Azure Firewall en selecteer **metrische gegevens** onder **bewaking** . Om de beschikbare waarden te zien, selecteert u de vervolgkeuzelijst **METRISCH**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

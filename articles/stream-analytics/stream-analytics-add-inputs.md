@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: a9f48d95281971fc49a6a3fda93e4ee13ed8d753
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b344e9e24d15189b805f586227c7253395e8448e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130779"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348981"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Wat is invoer van Azure Stream Analytics?
 
@@ -26,7 +26,7 @@ Stream Analytics heeft eersteklas integratie met vier soorten resources als invo
 
 Deze invoer resources kunnen in hetzelfde Azure-abonnement wonen als uw Stream Analytics-taak of vanuit een ander abonnement.
 
-U kunt de [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input),  [Azure POWERSHELL](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.net API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [rest API](./stream-analytics-define-inputs.md)en [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) gebruiken voor het maken, bewerken en testen van stream Analytics taak invoer.
+U kunt de [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input),  [Azure POWERSHELL](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.net API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [rest API](/rest/api/streamanalytics/2016-03-01/inputs)en [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) gebruiken voor het maken, bewerken en testen van stream Analytics taak invoer.
 
 ## <a name="stream-and-reference-inputs"></a>Invoer van Stream en referentie
 Wanneer gegevens worden gepusht naar een gegevens bron, wordt deze door de Stream Analytics-taak verbruikt en in realtime verwerkt. Invoer wordt onderverdeeld in twee typen: gegevensstroominvoer en verwijzingsgegevensinvoer.
@@ -37,7 +37,7 @@ Een gegevens stroom is na verloop van tijd een niet-gebonden reeks gebeurtenisse
 Zie [gegevens streamen als invoer in stream Analytics](stream-analytics-define-inputs.md) voor meer informatie over het streamen van gegevens.
 
 ### <a name="reference-data-input"></a>Invoer van referentie gegevens
-Stream Analytics biedt ook ondersteuning voor invoer die bekend staat als *referentie gegevens* . Referentie gegevens zijn volledig statisch of veranderen langzaam. Het wordt doorgaans gebruikt om correlatie en lookups uit te voeren. U kunt bijvoorbeeld gegevens in de gegevens stroom invoer toevoegen aan gegevens in de referentie gegevens, net zoals u een SQL-koppeling uitvoert om statische waarden op te zoeken. Azure Blob-opslag, Azure Data Lake Storage Gen2 en Azure SQL Database worden momenteel ondersteund als invoer bronnen voor referentie gegevens. Referentie gegevens bron-blobs hebben een limiet van Maxi maal 300 MB, afhankelijk van de query complexiteit en toegewezen streaming-eenheden (Zie de sectie [grootte beperking](stream-analytics-use-reference-data.md#size-limitation) van de documentatie voor referentie gegevens voor meer informatie).
+Stream Analytics biedt ook ondersteuning voor invoer die bekend staat als *referentie gegevens*. Referentie gegevens zijn volledig statisch of veranderen langzaam. Het wordt doorgaans gebruikt om correlatie en lookups uit te voeren. U kunt bijvoorbeeld gegevens in de gegevens stroom invoer toevoegen aan gegevens in de referentie gegevens, net zoals u een SQL-koppeling uitvoert om statische waarden op te zoeken. Azure Blob-opslag, Azure Data Lake Storage Gen2 en Azure SQL Database worden momenteel ondersteund als invoer bronnen voor referentie gegevens. Referentie gegevens bron-blobs hebben een limiet van Maxi maal 300 MB, afhankelijk van de query complexiteit en toegewezen streaming-eenheden (Zie de sectie [grootte beperking](stream-analytics-use-reference-data.md#size-limitation) van de documentatie voor referentie gegevens voor meer informatie).
 
 Zie [referentie gegevens gebruiken voor zoek acties in stream Analytics](stream-analytics-use-reference-data.md) voor meer informatie over het invoeren van referentie gegevens.
 

@@ -5,16 +5,16 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 681c5e169acc30cc6708b56b5ba180d2729919e5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 73813ffbb6ac1839a48fc455dec5f6ad26ed0164
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222315"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348786"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Updatebeheer inschakelen via Azure Portal
 
-In dit artikel wordt beschreven hoe u de [updatebeheer](overview.md) functie voor vm's kunt inschakelen door te bladeren door de Azure Portal. Om Azure VM's in te schakelen op schaal, moet u een bestaande VM inschakelen met behulp van Updatebeheer.
+In dit artikel wordt beschreven hoe u de [updatebeheer](overview.md) functie voor vm's kunt inschakelen door te bladeren door de Azure Portal. Als u Azure-Vm's op schaal wilt inschakelen, moet u een bestaande Azure VM inschakelen met behulp van Updatebeheer.
 
 Het aantal resource groepen dat u kunt gebruiken voor het beheren van uw Vm's, wordt beperkt door de [implementatie limieten van Resource Manager](../../azure-resource-manager/templates/cross-scope-deployment.md). Implementaties van Resource Manager, niet te verwarren met update-implementaties, zijn beperkt tot vijf resource groepen per implementatie. Twee van deze resource groepen zijn gereserveerd voor het configureren van de Log Analytics-werk ruimte, het Automation-account en gerelateerde resources. Hiermee kunt u drie resource groepen selecteren voor beheer door Updatebeheer. Deze limiet is alleen van toepassing op gelijktijdige installatie, niet het aantal resource groepen dat kan worden beheerd door een automatiserings functie.
 
@@ -35,7 +35,7 @@ Meld u aan bij Azure op https://portal.azure.com.
 
 1. Ga in het Azure Portal naar **virtuele machines**.
 
-2. Gebruik de selectie vakjes om de Vm's te kiezen die u wilt toevoegen aan Updatebeheer. U kunt machines toevoegen voor Maxi maal drie verschillende resource groepen tegelijk. Azure-Vm's kunnen in elke regio bestaan, ongeacht de locatie van uw Automation-account.
+2. Gebruik op de pagina **virtuele machines** de selectie vakjes om de vm's te kiezen die u wilt toevoegen aan updatebeheer. U kunt machines toevoegen voor Maxi maal drie verschillende resource groepen tegelijk. Azure-Vm's kunnen in elke regio bestaan, ongeacht de locatie van uw Automation-account.
 
     ![Lijst met Vm's](media/enable-from-portal/vmlist.png)
 

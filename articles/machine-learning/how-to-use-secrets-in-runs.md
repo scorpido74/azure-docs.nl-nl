@@ -1,7 +1,7 @@
 ---
 title: Verificatie geheimen in trainingen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u geheimen kunt door geven aan trainings uitvoeringen op veilige wijze met behulp van de Azure Key Vault fo ryour-werk ruimte.
+description: Informatie over het door geven van geheimen aan trainings uitvoeringen op veilige wijze met behulp van de Azure Key Vault voor uw werk ruimte.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 60459579b277684355eaf5cb92ba2f75fb05cd28
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ce47041d888b8a7786f0f87f54e725919638e7f7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305426"
+ms.locfileid: "93349015"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Verificatie referentie geheimen gebruiken in Azure Machine Learning training-uitvoeringen
 

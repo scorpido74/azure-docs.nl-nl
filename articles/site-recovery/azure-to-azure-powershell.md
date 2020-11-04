@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 6a272294ca602e3f482156a7334084bf041f683e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1570bd9dfa62caa749d5a3983b93c2555be058ec
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307548"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348726"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Herstel na noodgevallen van virtuele Azure-machines instellen met Azure PowerShell
 
@@ -41,17 +41,17 @@ In deze zelfstudie leert u procedures om het volgende te doen:
 Voordat u begint:
 - Zorg ervoor dat u inzicht hebt in de [architectuur en onderdelen voor dit scenario](azure-to-azure-architecture.md).
 - Raadpleeg de [ondersteuningsvereisten](azure-to-azure-support-matrix.md) voor alle onderdelen.
-- U hebt de `Az` module Azure PowerShell. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
+- U hebt de Azure PowerShell-module `Az`. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Meld u aan bij uw Microsoft Azure-abonnement
+## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Aanmelden bij uw Microsoft Azure-abonnement
 
-Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount` cmdlet.
+Meld u aan bij uw Azure-abonnement met de cmdlet `Connect-AzAccount`.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Selecteer uw Azure-abonnement. Gebruik de `Get-AzSubscription` cmdlet om de lijst met Azure-abonnementen waartoe u toegang hebt, op te halen. Selecteer het Azure-abonnement waarmee u wilt werken met de `Set-AzContext` cmdlet.
+Selecteer uw Azure-abonnement. Gebruik de cmdlet `Get-AzSubscription` om de lijst met Azure-abonnementen weer te geven waartoe u toegang hebt. Selecteer het Azure-abonnement waarmee u wilt werken met de `Set-AzContext` cmdlet.
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -249,6 +249,15 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
+#### <a name="fabric-and-container-creation-when-enabling-zone-to-zone-replication"></a>Infra structuur en container maken bij het inschakelen van zone replicatie
+
+Wanneer zone-replicatie wordt ingeschakeld, wordt er slechts één infra structuur gemaakt. Maar er zijn twee containers. Ervan uitgaande dat de regio Europa-west is, gebruikt u de volgende opdrachten om de primaire en beveiligings containers op te halen:
+
+```azurepowershell
+$primaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-container"
+$recoveryPprotectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-t-container"
+```
+
 ### <a name="create-a-replication-policy"></a>Een replicatiebeleid maken
 
 ```azurepowershell
@@ -287,6 +296,14 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
+#### <a name="protection-container-mapping-creation-when-enabling-zone-to-zone-replication"></a>Toewijzing van beveiligings container maken wanneer zone replicatie wordt ingeschakeld
+
+Wanneer zone replicatie inschakelt, gebruikt u de onderstaande opdracht om de toewijzing van de beveiligings container te maken. Ervan uitgaande dat de regio is Europa-west, wordt de opdracht
+
+```azurepowershell
+$protContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimprotectionContainer -Name "westeurope-westeurope-24-hour-retention-policy-s"
+```
+
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Een beveiligings container toewijzing maken voor failback (omgekeerde replicatie na een failover)
 
 Wanneer u klaar bent om de virtuele machine waarvoor een failover is uitgevoerd, toe te voegen aan de oorspronkelijke Azure-regio, voert u een failback uit. Als u een failback wilt uitvoeren, wordt de virtuele machine waarvoor een failover is uitgevoerd, omgekeerd gerepliceerd van de regio voor een failover naar de oorspronkelijke regio. Voor omgekeerde replicatie, de rollen van de oorspronkelijke regio en de herstel regio-switch. De oorspronkelijke regio wordt nu de nieuwe herstel regio en de aanvankelijke herstel regio wordt nu de primaire regio. De toewijzing van de beveiligings container voor omgekeerde replicatie vertegenwoordigt de geschakelde rollen van de oorspronkelijke en herstel regio's.
@@ -316,7 +333,7 @@ Een cache-opslag account is een standaard opslag account in dezelfde Azure-regio
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-Voor virtuele machines die **geen beheerde schijven gebruiken**, is het doel opslag account het opslag account in de herstel regio waarnaar schijven van de virtuele machine worden gerepliceerd. Het doel opslag account kan een Standard-opslag account of een Premium Storage-account zijn. Selecteer het type opslag account dat is vereist op basis van de waarde voor het wijzigen van de gegevens (i/o-schrijf snelheden) voor de schijven en de Azure Site Recovery ondersteunde verloop limieten voor het opslag type.
+Voor virtuele machines die **geen beheerde schijven gebruiken** , is het doel opslag account het opslag account in de herstel regio waarnaar schijven van de virtuele machine worden gerepliceerd. Het doel opslag account kan een Standard-opslag account of een Premium Storage-account zijn. Selecteer het type opslag account dat is vereist op basis van de waarde voor het wijzigen van de gegevens (i/o-schrijf snelheden) voor de schijven en de Azure Site Recovery ondersteunde verloop limieten voor het opslag type.
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account

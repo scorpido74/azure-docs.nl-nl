@@ -3,7 +3,7 @@ title: Overzicht van Azure Media Services | Microsoft Docs
 description: Microsoft Azure Media Services is een uitbreidbaar cloudplatform waarmee ontwikkelaars schaalbare toepassingen voor mediabeheer en -levering kunnen ontwikkelen. Dit artikel geeft een overzicht van Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: c6f889963e87d900040d1fe77031f943ab368837
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261152"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348741"
 ---
 # <a name="azure-media-services-overview"></a>Overzicht van Azure Media Services
 
@@ -78,7 +78,7 @@ Als u Media Services-oplossingen wilt maken, kunt u het volgende gebruiken:
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-Zoeken naar meerdere codevoorbeelden in de galerie **Azure-codevoorbeelden**: [Azure Media Services-codevoorbeelden](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+Zoeken naar meerdere codevoorbeelden in de galerie **Azure-codevoorbeelden** : [Azure Media Services-codevoorbeelden](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 ## <a name="concepts"></a>Concepten
 
@@ -86,13 +86,12 @@ Zie [Concepten](media-services-concepts.md) voor Azure Media Services-concepten.
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>Ondersteunde scenario's en de beschikbaarheid van Media Services in datacenters
 
-Zie voor gedetailleerde informatie [Scenarios and availability of Media Services features across datacenters](scenarios-and-availability.md) (Scenario's en beschikbaarheid van Media Services-functies via datacenters).
+Zie [AMS-scenario's](scenarios-and-availability.md)voor meer informatie over algemene Scenario's van Azure.
+Zie [Beschik baarheid van media service](availability-regions-v-2.md)voor meer informatie over regionale Beschik baarheid.
 
 ## <a name="service-level-agreement-sla"></a>Service Level Agreement (SLA)
 
 Zie [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/) voor meer informatie.
-
-Zie de sectie [Beschikbaarheid](scenarios-and-availability.md#availability) voor informatie over beschikbaarheid in datacenters.
 
 ## <a name="support"></a>Ondersteuning
 

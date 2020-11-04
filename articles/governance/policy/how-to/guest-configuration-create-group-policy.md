@@ -3,25 +3,25 @@ title: Beleids definities voor gast configuratie maken van groepsbeleid basis li
 description: Meer informatie over het converteren van groepsbeleid van de Windows Server 2019-beveiligings basislijn naar een beleids definitie.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893370"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348641"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Beleids definities voor gast configuratie maken van groepsbeleid basis lijn voor Windows
 
 Voordat u aangepaste beleids definities maakt, is het een goed idee om de conceptuele overzichts informatie te lezen op [Azure Policy-gast configuratie](../concepts/guest-configuration.md). Zie [gast configuratie beleidsregels voor Linux maken](./guest-configuration-create-linux.md)voor meer informatie over het maken van aangepaste gast configuratie beleids definities voor Linux. Zie [gast configuratie beleidsregels voor Windows maken](./guest-configuration-create.md)voor meer informatie over het maken van aangepaste gast configuratie beleids definities voor Windows.
 
-Bij het controleren van Windows gebruikt gastconfiguratie de resourcemodule [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om het configuratiebestand te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevinden. Als de evaluatie van de configuratie **niet-compatibel**is, wordt het beleids effect *auditIfNotExists* geactiveerd.
+Bij het controleren van Windows gebruikt gastconfiguratie de resourcemodule [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om het configuratiebestand te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevinden. Als de evaluatie van de configuratie **niet-compatibel** is, wordt het beleids effect *auditIfNotExists* geactiveerd.
 [Azure Policy-gast configuratie](../concepts/guest-configuration.md) controleert alleen de instellingen binnen machines.
 
 > [!IMPORTANT]
-> Aangepaste beleids definities met gast configuratie is een preview-functie.
->
 > De gastconfiguratie-extensie is vereist voor het uitvoeren van controles op virtuele machines van Azure. Als u de uitbrei ding op schaal op alle Windows-computers wilt implementeren, wijst u de volgende beleids definities toe:
 > - [Vereisten voor het inschakelen van gastconfiguratiebeleid op Windows-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> 
+> Gebruik geen geheimen of vertrouwelijke informatie in aangepaste inhouds pakketten.
 
 De DSC-Community heeft de [BaselineManagement-module](https://github.com/microsoft/BaselineManagement) gepubliceerd voor het converteren van geëxporteerde Groepsbeleid sjablonen naar de DSC-indeling. In combi natie met de GuestConfiguration-cmdlet maakt de BaselineManagement-module Azure Policy-gast configuratie pakket voor Windows van groepsbeleid inhoud. Meer informatie over het gebruik van de BaselineManagement-module vindt u in het artikel [Snelstartgids: Groepsbeleid converteren naar DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 
@@ -29,7 +29,7 @@ In deze hand leiding wordt het proces door lopen om een Azure Policy-gast config
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>De beveiligings basislijn van Windows Server 2019 downloaden en gerelateerde Power shell-modules installeren
 
-De **DSC**-, **GuestConfiguration**-, **baseline Management**-en gerelateerde Azure-modules in Power Shell installeren:
+De **DSC** -, **GuestConfiguration** -, **baseline Management** -en gerelateerde Azure-modules in Power Shell installeren:
 
 1. Voer de volgende opdracht uit vanuit een Power shell-prompt:
 
@@ -87,78 +87,12 @@ Vervolgens wordt de gedownloade server 2019-basis lijn geconverteerd naar een ga
 
 ## <a name="create-azure-policy-guest-configuration"></a>Azure Policy-gast configuratie maken
 
-De volgende stap is het publiceren van het bestand naar Azure Blob Storage. 
-
-1. Het onderstaande script bevat een functie die u kunt gebruiken om deze taak te automatiseren. Opmerking: voor de opdrachten die in de functie worden gebruikt, `publish` is de `Az.Storage` module vereist.
+1. De volgende stap is het publiceren van het bestand naar Azure Blob Storage. Voor de opdracht `Publish-GuestConfigurationPackage` is de `Az.Storage` module vereist.
 
    ```azurepowershell-interactive
-    function Publish-Configuration {
-        param(
-        [Parameter(Mandatory=$true)]
-        $resourceGroup,
-        [Parameter(Mandatory=$true)]
-        $storageAccountName,
-        [Parameter(Mandatory=$true)]
-        $storageContainerName,
-        [Parameter(Mandatory=$true)]
-        $filePath,
-        [Parameter(Mandatory=$true)]
-        $blobName
-        )
-
-        # Get Storage Context
-        $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-            -Name $storageAccountName | `
-            ForEach-Object { $_.Context }
-
-        # Upload file
-        $Blob = Set-AzStorageBlobContent -Context $Context `
-            -Container $storageContainerName `
-            -File $filePath `
-            -Blob $blobName `
-            -Force
-
-        # Get url with SAS token
-        $StartTime = (Get-Date)
-        $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-        $SAS = New-AzStorageBlobSASToken -Context $Context `
-            -Container $storageContainerName `
-            -Blob $blobName `
-            -StartTime $StartTime `
-            -ExpiryTime $ExpiryTime `
-            -Permission rl `
-            -FullUri
-
-        # Output
-        return $SAS
-    }
+   Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName  myResourceGroupName -StorageAccountName myStorageAccountName
    ```
 
-1. Maak para meters om de unieke resource groep, het opslag account en de container te definiëren. 
-   
-   ```azurepowershell-interactive
-    # Replace the $resourceGroup, $storageAccount, and $storageContainer values below.
-    $resourceGroup = 'rfc_customguestconfig'
-    $storageAccount = 'guestconfiguration'
-    $storageContainer = 'content'
-    $path = 'c:\git\policyfiles\Server2019Baseline\Server2019Baseline.zip'
-    $blob = 'Server2019Baseline.zip' 
-    ```
-
-1. Gebruik de functie Publish met de toegewezen para meters voor het publiceren van het gast configuratie pakket op open bare Blob Storage.
-
-
-   ```azurepowershell-interactive
-   $PublishConfigurationSplat = @{
-       resourceGroup = $resourceGroup
-       storageAccountName = $storageAccount
-       storageContainerName = $storageContainer
-       filePath = $path
-       blobName = $blob
-       FullUri = $true
-   }
-   $uri = Publish-Configuration @PublishConfigurationSplat
-    ```
 1. Nadat een aangepast beleids pakket voor de gast configuratie is gemaakt en geüpload, maakt u de beleids definitie voor het gast configuratie beleid. Gebruik de `New-GuestConfigurationPolicy` cmdlet om de gast configuratie te maken.
 
    ```azurepowershell-interactive
@@ -185,7 +119,7 @@ Met het beleid dat is gemaakt in azure, is de laatste stap het initiatief toe te
 > [!IMPORTANT]
 > Beleids definities voor gast configuraties moeten **altijd** worden toegewezen met het initiatief waarbij het beleid voor _AuditIfNotExists_ en _DeployIfNotExists_ wordt gecombineerd. Als alleen het _AuditIfNotExists_ -beleid is toegewezen, worden de vereisten niet geïmplementeerd en wordt in het beleid altijd weer gegeven dat ' 0 '-servers compatibel zijn.
 
-Voor het toewijzen van een beleids definitie met _DeployIfNotExists_ -effect is een extra toegangs niveau vereist. Als u de minimale bevoegdheid wilt verlenen, kunt u een aangepaste roldefinitie maken die de **Inzender voor resource beleid**uitbreidt. In het onderstaande voor beeld maakt u een rol met de naam **resource Policy CONTRIBUTOR Dine** met de extra machtiging _micro soft. Authorization/roleAssignments/write_.
+Voor het toewijzen van een beleids definitie met _DeployIfNotExists_ -effect is een extra toegangs niveau vereist. Als u de minimale bevoegdheid wilt verlenen, kunt u een aangepaste roldefinitie maken die de **Inzender voor resource beleid** uitbreidt. In het onderstaande voor beeld maakt u een rol met de naam **resource Policy CONTRIBUTOR Dine** met de extra machtiging _micro soft. Authorization/roleAssignments/write_.
 
    ```azurepowershell-interactive
    $subscriptionid = '00000000-0000-0000-0000-000000000000'

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: de504cc4209aea19925c4c3e2385c7feabceedeb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ad975840a2eab0ca51dd0a219e5d86c1bd1835c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781614"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348862"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Queue Storage-verwijzing
 
@@ -51,7 +51,7 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure Q
 |  Versie  | Referentie documentatie | Pakket | Snelstartgids |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Client bibliotheek van Azure Storage-wachtrij voor Java](/java/api/overview/azure/storage-queue-readme) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor Java](./storage-quickstart-queues-java.md) |
-| 8.x | [com. micro soft. Azure. storage. Queue](/java/api/com.microsoft.azure.storage.queue) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Quick Start: blobs beheren met Java V8 SDK](../blobs/storage-quickstart-blobs-java-legacy.md) |
+| 8.x | [com. micro soft. Azure. storage. Queue](/java/api/com.microsoft.azure.storage.queue) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Quickstart: Blobs beheren met Java v8 SDK](../blobs/storage-quickstart-blobs-java-legacy.md) |
 
 ### <a name="storage-management"></a>Opslagbeheer
 
@@ -89,7 +89,7 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure Q
 
 ### <a name="other-rest-reference"></a>Andere REST-referentie
 
-- [Azure Storage import-export rest API ](/rest/api/storageimportexport/) helpt u bij het beheren van import/export-taken voor het overdragen van gegevens van of naar Blob Storage.
+- [Azure Storage import-export rest API](/rest/api/storageimportexport/) helpt u bij het beheren van import/export-taken voor het overdragen van gegevens van of naar Blob Storage.
 
 ## <a name="other-languages-and-platforms"></a>Andere talen en platformen
 

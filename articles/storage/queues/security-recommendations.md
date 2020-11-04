@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 1b13bcbe17ac546030b177eea2b2bf8a290a6af6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9ec7dcc12b7452ee4bd40fab9b2bc53b5cca9be3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781563"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348805"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Beveiligings aanbevelingen voor wachtrij opslag
 
@@ -25,7 +25,7 @@ Enkele van de aanbevelingen in dit artikel kunnen automatisch worden bewaakt doo
 
 Azure Security Center regel matig de beveiligings status van uw Azure-resources analyseren om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen over hoe u deze kunt aanpakken. Zie [beveiligings aanbevelingen in azure Security Center](../../security-center/security-center-recommendations.md)voor meer informatie over Azure Security Center aanbevelingen.
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|

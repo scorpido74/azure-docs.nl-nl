@@ -13,23 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: aa3492cb67a4ccd1c09a1f1cb55ddc4f2e00953d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318556"
+ms.locfileid: "93348624"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>SQL Information Protection-beleid in Azure Security Center
  
-Het [mechanisme voor gegevens detectie en-classificatie](../azure-sql/database/data-discovery-and-classification-overview.md) van SQL Information Protection is ingebouwd in [Azure SQL database](../azure-sql/database/sql-database-paas-overview.md), [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)en [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Het biedt geavanceerde mogelijkheden voor het detecteren, classificeren, labelen en rapporteren van gevoelige gegevens in uw data bases.
+Het [mechanisme voor gegevens detectie en-classificatie](../azure-sql/database/data-discovery-and-classification-overview.md) van SQL Information Protection biedt geavanceerde mogelijkheden voor het detecteren, classificeren, labelen en rapporteren van gevoelige gegevens in uw data bases. Het is ingebouwd in [Azure SQL database](../azure-sql/database/sql-database-paas-overview.md), [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)en [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md).
 
-Het classificatie mechanisme is gebaseerd op twee primaire constructs waaruit de classificatie taxonomie bestaat:
+Het classificatie mechanisme is gebaseerd op de volgende twee elementen:
 
-- **Labels** : de belangrijkste classificatie kenmerken, die worden gebruikt voor het definiëren van het gevoeligheids niveau van de gegevens die zijn opgeslagen in de kolom. 
-- **Informatie typen** : biedt een extra granulatie voor het type gegevens dat in de kolom wordt opgeslagen.
+- **Labels** : de belangrijkste classificatie kenmerken, die worden gebruikt voor het definiëren *van het gevoeligheids niveau van de gegevens* die zijn opgeslagen in de kolom. 
+- **Informatie typen** : biedt een extra granulatie voor het *type gegevens dat* in de kolom wordt opgeslagen.
 
 De opties voor het Information Protection-beleid in Security Center bieden een vooraf gedefinieerde set labels en gegevens typen die als standaard waarden voor de classificatie-engine dienen. U kunt het beleid aanpassen op basis van de behoeften van uw organisatie, zoals hieronder wordt beschreven.
+
+> [!IMPORTANT]
+> Als u het Information Protection-beleid voor uw Azure-Tenant wilt aanpassen, moet u beheerders rechten hebben voor de hoofd beheer groep van de Tenant. Meer informatie vindt u in de [zicht baarheid van de hele Tenant voor Azure Security Center](security-center-management-groups.md).
 
 :::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="De pagina met uw SQL Information Protection-beleid":::
  
@@ -40,9 +43,9 @@ De opties voor het Information Protection-beleid in Security Center bieden een v
 
 Er zijn drie manieren om toegang te krijgen tot het Information Protection-beleid:
 
-- **(Aanbevolen)** Op de pagina prijs en instellingen van Security Center.
+- **(Aanbevolen)** Op de pagina prijs en instellingen van Security Center
 - Uit de beveiligings aanbeveling moeten gevoelige gegevens in uw SQL-data bases worden geclassificeerd.
-- Op de pagina Azure SQL DB-gegevens detectie.
+- Op de pagina Azure SQL DB-gegevens detectie
 
 Elk van deze wordt weer gegeven op het relevante tabblad hieronder.
 
@@ -52,9 +55,10 @@ Elk van deze wordt weer gegeven op het relevante tabblad hieronder.
 
 ### <a name="access-the-policy-from-security-centers-pricing-and-settings-page"></a>Toegang tot het beleid via de pagina prijs en instellingen van Security Center <a name="sqlip-tenant"></a>
 
-Als u het Information Protection-beleid voor uw Azure-Tenant wilt aanpassen, moet u [beheerders bevoegdheden hebben voor de hoofd beheer groep van de Tenant](security-center-management-groups.md). 
-
 Selecteer op de pagina **prijzen en instellingen** van Security Center de optie **SQL Information Protection**.
+
+> [!NOTE]
+> Deze optie wordt alleen weer gegeven voor gebruikers met machtigingen op Tenant niveau. 
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Toegang tot het SQL Information Protection-beleid op de pagina prijzen en instellingen van Azure Security Center":::
 
@@ -70,9 +74,9 @@ Gebruik de aanbeveling van Security Center, ' gevoelige gegevens in uw SQL-data 
 
     :::image type="content" source="./media/security-center-info-protection-policy/sql-sensitive-data-recommendation.png" alt-text="De aanbeveling zoeken die toegang biedt tot het SQL Information Protection-beleid":::
 
-1. Selecteer op de pagina aanbevelings Details de relevante data base op **de tabbladen goed** of niet in **orde** .
+1. Selecteer op de pagina aanbevelings Details een Data Base op **de tabbladen goed** of niet in **orde** .
 
-1. De pagina **gegevens detectie & classificatie** wordt geopend. Selecteer **Configureren**. 
+1. De pagina **gegevens detectie & classificatie** wordt geopend. Selecteer **Configureren**.
 
     :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-security-center-recommendation.png" alt-text="Het SQL Information Protection-beleid wordt geopend vanuit de relevante aanbeveling in de Azure Security Center":::
 
@@ -103,14 +107,21 @@ Informatie typen beheren en aanpassen:
 
     :::image type="content" source="./media/security-center-info-protection-policy/manage-types.png" alt-text="Informatie typen voor uw Information Protection-beleid beheren":::
 
-1. Als u een nieuw **gegevens type** wilt toevoegen, selecteert u **gegevens type maken** in het bovenste menu. U kunt een naam, beschrijving en zoek patroon teken reeksen voor het **informatie type** configureren. Zoek patroon teken reeksen kunnen optioneel tref woorden gebruiken met Joker tekens (met het teken%), die de geautomatiseerde detectie-engine gebruikt om gevoelige gegevens in uw data bases te identificeren, op basis van de meta gegevens van de kolommen.
+1. Selecteer **gegevens type maken** om een nieuw type toe te voegen. U kunt een naam, beschrijving en zoek patroon teken reeksen voor het informatie type configureren. Zoek patroon teken reeksen kunnen optioneel tref woorden gebruiken met Joker tekens (met het teken%), die de geautomatiseerde detectie-engine gebruikt om gevoelige gegevens in uw data bases te identificeren, op basis van de meta gegevens van de kolommen.
  
     :::image type="content" source="./media/security-center-info-protection-policy/configure-new-type.png" alt-text="Een nieuw gegevens type voor uw Information Protection-beleid configureren":::
 
-1. U kunt ook de ingebouwde **informatie typen** configureren door extra Zoek patronen toe te voegen, een aantal bestaande teken reeksen uit te scha kelen of door de beschrijving te wijzigen. U kunt geen ingebouwde **gegevens typen** verwijderen of hun namen bewerken. 
+1. U kunt ook de ingebouwde typen wijzigen door extra Zoek patronen toe te voegen, een deel van de bestaande teken reeksen uit te scha kelen of door de beschrijving te wijzigen. 
+
+    > [!TIP]
+    > U kunt geen ingebouwde typen verwijderen of hun namen wijzigen. 
+
 1. **Informatie typen** worden weer gegeven in volg orde van oplopende detectie classificatie, wat betekent dat de typen die hoger in de lijst staan, worden geprobeerd eerst te komen. Als u de rang schikking tussen gegevens typen wilt wijzigen, sleept u de typen naar de juiste plaats in de tabel of gebruikt u de knoppen **omhoog** en **omlaag** om de volg orde te wijzigen. 
+
 1. Selecteer **OK** wanneer u klaar bent.
+
 1. Nadat u klaar bent met het beheren van uw gegevens typen, moet u de relevante typen koppelen aan de relevante labels door te klikken op **configureren** voor een bepaald label en zo nodig informatie typen toe te voegen of te verwijderen.
+
 1. Als u uw wijzigingen wilt Toep assen, selecteert u **Opslaan** op de pagina hoofd **etiketten** .
  
 
@@ -132,9 +143,9 @@ U kunt een JSON-bestand met uw gedefinieerde labels en informatie typen download
 
 ## <a name="next-steps"></a>Volgende stappen
  
-In dit artikel hebt u geleerd hoe u een SQL Information Protection-beleid definieert in Azure Security Center. Zie [Azure SQL database gegevens detectie en-classificatie](../azure-sql/database/data-discovery-and-classification-overview.md)voor meer informatie over het gebruik van SQL Information Protection voor het classificeren en beveiligen van gevoelige gegevens in uw SQL-data bases. 
+In dit artikel hebt u geleerd over het definiëren van een Information Protection-beleid in Azure Security Center. Zie [Azure SQL database gegevens detectie en-classificatie](../azure-sql/database/data-discovery-and-classification-overview.md)voor meer informatie over het gebruik van SQL Information Protection voor het classificeren en beveiligen van gevoelige gegevens in uw SQL-data bases.
 
-Raadpleeg de volgende artikelen voor meer informatie over beveiligings beleid en gegevens beveiliging in Azure Security Center:
+Raadpleeg de volgende artikelen voor meer informatie over beveiligings beleid en gegevens beveiliging in Security Center:
  
 - [Beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md): meer informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen
 - [Azure Security Center gegevens beveiliging](security-center-data-security.md): meer informatie over het Security Center beheren en beveiligen van gegevens

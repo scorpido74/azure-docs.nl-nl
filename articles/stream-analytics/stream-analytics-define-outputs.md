@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: fdd610be1dd7c5fe9c7aa574fde33df866116dd2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128831"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348709"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Uitvoer van Azure Stream Analytics
 
 Een Azure Stream Analytics-taak bestaat uit een invoer, query en een uitvoer. Er zijn verschillende uitvoer typen waarnaar u getransformeerde gegevens kunt verzenden. In dit artikel vindt u een overzicht van de ondersteunde Stream Analytics uitvoer. Wanneer u uw Stream Analytics query ontwerpt, raadpleegt u de naam van de uitvoer met behulp van de [component into](/stream-analytics-query/into-azure-stream-analytics). U kunt één uitvoer per taak of meerdere uitvoer per streaming taak gebruiken (als u deze nodig hebt) door meerdere INTO-componenten aan de query toe te voegen.
 
-Als u Stream Analytics taak uitvoer wilt maken, bewerken en testen, kunt u de [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.net API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [rest API](/rest/api/streamanalytics/)en [Visual Studio](stream-analytics-quick-create-vs.md)gebruiken.
+Als u Stream Analytics taak uitvoer wilt maken, bewerken en testen, kunt u de [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.net API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [rest API](/rest/api/streamanalytics/)en [Visual Studio](stream-analytics-quick-create-vs.md)gebruiken.
 
 Sommige typen uitvoer ondersteunen [partitionering](#partitioning)en [uitvoer batch formaten](#output-batch-size) zijn afhankelijk van de door voer te optimaliseren. De volgende tabel bevat de functies die worden ondersteund voor elk uitvoer type:
 
@@ -59,7 +59,7 @@ Wanneer u Azure Resource Manager-sjabloon implementatie of het REST API gebruikt
 
    Het aantal minimum rijen per batch. Voor Parquet maakt elke batch een nieuw bestand. De huidige standaard waarde is 2.000 rijen en het toegestane maximum is 10.000 rijen.
 
-Deze batch venster Eigenschappen worden alleen ondersteund door API versie **2017-04-01-preview** . Hieronder ziet u een voor beeld van de JSON-nettolading voor een REST API aanroep:
+Deze batch venster Eigenschappen worden alleen ondersteund door API versie **2017-04-01-preview**. Hieronder ziet u een voor beeld van de JSON-nettolading voor een REST API aanroep:
 
 ```json
 "type": "stream",

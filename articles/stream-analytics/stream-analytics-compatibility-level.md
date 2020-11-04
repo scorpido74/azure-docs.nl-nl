@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 87ee8a9c57fc456ba02f97bf56db25e4c91e9398
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129810"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348930"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Compatibiliteits niveau voor Azure Stream Analytics taken
 
@@ -33,13 +33,13 @@ Wanneer u een nieuwe Stream Analytics taak maakt, is dit een best practice om de
 
 ## <a name="set-the-compatibility-level"></a>Het compatibiliteits niveau instellen
 
-U kunt het compatibiliteits niveau instellen voor een Stream Analytics taak in het Azure Portal of met behulp van de [aanroep taak maken rest API](./stream-analytics-quick-create-portal.md).
+U kunt het compatibiliteits niveau instellen voor een Stream Analytics taak in het Azure Portal of met behulp van de [aanroep taak maken rest API](/rest/api/streamanalytics/2016-03-01/streamingjobs/createorreplace#compatibilitylevel).
 
 Het compatibiliteits niveau van de taak in het Azure Portal bijwerken:
 
 1. Gebruik de [Azure Portal](https://portal.azure.com) om naar uw stream Analytics-taak te zoeken.
 2. **Stop** de taak voordat u het compatibiliteits niveau bijwerkt. Als uw taak wordt uitgevoerd, kunt u het compatibiliteits niveau niet bijwerken.
-3. Onder de kop **configureren** selecteert u **compatibiliteits niveau** .
+3. Onder de kop **configureren** selecteert u **compatibiliteits niveau**.
 4. Kies de gewenste waarde voor het compatibiliteits niveau.
 5. Selecteer onder aan de pagina **Opslaan** .
 
@@ -75,15 +75,15 @@ Zie [updates voor georuimtelijke functies in azure stream Analytics-Cloud en IOT
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Systeem eigen bulk-API-integratie met CosmosDB-uitvoer
 
-**Eerdere niveaus:** Het upsert-gedrag is *invoegen of samen voegen* .
+**Eerdere niveaus:** Het upsert-gedrag is *invoegen of samen voegen*.
 
 **niveau van 1,2:** Systeem eigen bulk-API-integratie met CosmosDB-uitvoer maximaliseert de door Voer en efficiënt afhandelen van bandbreedte aanvragen. Zie [de pagina Azure stream Analytics uitvoer naar Azure Cosmos DB](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)voor meer informatie.
 
-Het gedrag van de upsert wordt *ingevoegd of vervangen* .
+Het gedrag van de upsert wordt *ingevoegd of vervangen*.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>Date time offset bij het schrijven naar SQL-uitvoer
 
-**Eerdere niveaus:** [Date Time offset](/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) types zijn aangepast aan UTC.
+**Eerdere niveaus:** [Date Time offset](/sql/t-sql/data-types/datetimeoffset-transact-sql) types zijn aangepast aan UTC.
 
 **niveau van 1,2:** Date time offset wordt niet meer aangepast.
 

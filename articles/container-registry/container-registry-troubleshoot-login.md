@@ -3,12 +3,12 @@ title: Problemen met aanmelding bij REGI ster oplossen
 description: Symptomen, oorzaken en oplossingen voor veelvoorkomende problemen bij het aanmelden bij een Azure container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148447"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348896"
 ---
 # <a name="troubleshoot-registry-login"></a>Problemen met register aanmelding oplossen
 
@@ -49,7 +49,7 @@ Zie [de status van een Azure container Registry controleren](container-registry-
 
 Voor de meeste Azure Container Registry-verificatie stromen is een lokale docker-installatie vereist, zodat u met uw REGI ster kunt verifiëren voor bewerkingen zoals het pushen en uitpakken van installatie kopieën. Controleer of de docker CLI-client en-daemon (docker-Engine) worden uitgevoerd in uw omgeving. U hebt docker client versie 18,03 of hoger nodig.
 
-Gerelateerde koppelingen:
+Gerelateerde links:
 
 * [Verificatieoverzicht](container-registry-authentication.md#authentication-options)
 * [Veelgestelde vragen over container Registry](container-registry-faq.md)
@@ -68,7 +68,7 @@ Wanneer u [AZ ACR login](/cli/azure/acr#az-acr-login) met een Azure Active Direc
 az acr login --name myregistry
 ```
 
-Gerelateerde koppelingen:
+Gerelateerde links:
 
 * [AZ ACR login slaagt maar docker mislukt met fout: niet toegestaan: verificatie vereist](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required )
 
@@ -77,12 +77,13 @@ Gerelateerde koppelingen:
 Controleer de geldigheid van de referenties die u gebruikt voor uw scenario of die aan u zijn geleverd door een eigenaar van het REGI ster. Enkele mogelijke problemen:
 
 * Als u een Active Directory Service-Principal gebruikt, moet u ervoor zorgen dat u de juiste referenties gebruikt in de Active Directory Tenant:
-  * Gebruikers naam-ID van de Service-Principal-toepassing (ook wel *client-id*genoemd)
-  * Wacht woord-Service-Principal-wacht woord (ook wel *client geheim*genoemd)
+  * Gebruikers naam-ID van de Service-Principal-toepassing (ook wel *client-id* genoemd)
+  * Wacht woord-Service-Principal-wacht woord (ook wel *client geheim* genoemd)
 * Als u een Azure-service gebruikt, zoals Azure Kubernetes service of Azure DevOps voor toegang tot het REGI ster, bevestigt u de Register configuratie voor uw service.
 * Als u `az acr login` met de optie hebt uitgevoerd `--expose-token` , waarbij u zich aanmeldt zonder de docker-daemon te gebruiken, moet u verifiëren met de gebruikers naam `00000000-0000-0000-0000-000000000000` .
+* Als uw REGI ster is geconfigureerd voor [anonieme pull-toegang](container-registry-faq.md#how-do-i-enable-anonymous-pull-access), kunnen bestaande docker-referenties die zijn opgeslagen van een eerdere docker-aanmelding, anonieme toegang verhinderen. Voer uit `docker logout` voordat u een anonieme pull-bewerking in het REGI ster probeert uit te voeren.
 
-Gerelateerde koppelingen:
+Gerelateerde links:
 
 * [Verificatieoverzicht](container-registry-authentication.md#authentication-options)
 * [Afzonderlijke aanmelding met Azure AD](container-registry-authentication.md#individual-login-with-azure-ad)
@@ -101,7 +102,7 @@ Voor toegang tot een REGI ster in de portal of het register beheer met de Azure 
 
 U of een register eigenaar moet voldoende bevoegdheden hebben in het abonnement om roltoewijzingen toe te voegen of te verwijderen.
 
-Gerelateerde koppelingen:
+Gerelateerde links:
 
 * [Azure-rollen en-machtigingen-Azure Container Registry](container-registry-roles.md)
 * [Aanmelden met een token uit de opslag plaats](container-registry-repository-scoped-permissions.md)
@@ -118,7 +119,7 @@ Tokens en Active Directory referenties kunnen verlopen na gedefinieerde Peri Ode
 * Als u een AD-Service-Principal gebruikt met een verlopen client geheim, moet een eigenaar van het abonnement of account beheerder referenties opnieuw instellen of een nieuwe Service-Principal genereren.
 * Als u een [token van een opslag plaats bereik](container-registry-repository-scoped-permissions.md)gebruikt, moet de eigenaar van het REGI ster mogelijk een wacht woord opnieuw instellen of een nieuw token genereren.
 
-Gerelateerde koppelingen:
+Gerelateerde links:
 
 * [De Service-Principal-referenties opnieuw instellen](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset)
 * [Token wachtwoorden opnieuw genereren](container-registry-repository-scoped-permissions.md#regenerate-token-passwords)
@@ -128,7 +129,7 @@ Gerelateerde koppelingen:
 
 Als het [verzamelen van bron logboeken](container-registry-diagnostics-audit-logs.md) is ingeschakeld in het REGI ster, raadpleegt u het ContainterRegistryLoginEvents-logboek. In dit logboek worden verificatie gebeurtenissen en status opgeslagen, met inbegrip van de binnenkomende identiteit en het IP-adres. Zoek het logboek op voor [register verificatie fouten](container-registry-diagnostics-audit-logs.md#registry-authentication-failures). 
 
-Gerelateerde koppelingen:
+Gerelateerde links:
 
 * [Logboeken voor diagnostische evaluaties en controles](container-registry-diagnostics-audit-logs.md)
 * [Veelgestelde vragen over container Registry](container-registry-faq.md)

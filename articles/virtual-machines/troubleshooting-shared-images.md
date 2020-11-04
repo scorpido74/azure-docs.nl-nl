@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 189fa12b1fc11e79ab64231a7ecd453113b8771a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336007"
+ms.locfileid: "93348913"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Problemen met gedeelde afbeeldings galerieën in azure oplossen
 
@@ -223,8 +223,8 @@ Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën m
 **Oorzaak** : de resource-id van de schijf versleuteling die wordt gebruikt op een installatie kopie van de gegevens schijf gebruikt een ongeldige indeling.  
 **Tijdelijke oplossing** : Zorg ervoor dat de resource-id van de ingestelde schijf versleuteling de indeling/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.Compute/<diskEncryptionSetName volgt \> .
 
-*De waarde van de para meter galleryArtifactVersion. Properties. publishingProfile. targetRegions. encryption. osDiskImage. diskEncryptionSetId is ongeldig.* 
- **Oorzaak** : de resource-id van de schijf versleuteling die op de besturingssysteem schijf installatie kopie wordt gebruikt, gebruikt een ongeldige indeling  
+*De waarde van de para meter galleryArtifactVersion. Properties. publishingProfile. targetRegions. encryption. osDiskImage. diskEncryptionSetId is ongeldig.*  
+**Oorzaak** : de resource-id van de schijf versleuteling die op de besturingssysteem schijf installatie kopie wordt gebruikt, gebruikt een ongeldige indeling  
 **Tijdelijke oplossing** : Zorg ervoor dat de resource-id van de ingestelde schijf versleuteling de indeling/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.Compute/<diskEncryptionSetName volgt \> .
 
 *Kan geen nieuwe gegevens schijf opgeven versleutelings-LUN [<nummer \> ] met een schijf versleutelings in regio [<regio \> ] voor de update van de installatie kopie van de afbeeldings versie. Als u deze versie wilt bijwerken, verwijdert u de nieuwe LUN. Als u de versleutelings instellingen voor de gegevens schijf wilt wijzigen, moet u een nieuwe versie van de galerie-installatie kopie met de juiste instellingen maken.*  

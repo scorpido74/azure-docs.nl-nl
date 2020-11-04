@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b59c7d2af33efd82f27af9e13fc9c1f36ca788ee
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787462"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348590"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Aan de slag met Azure Queue Storage met .NET
 
@@ -71,7 +71,7 @@ U moet verwijzen naar de volgende vier pakketten in uw project om deze zelf stud
 
 U kunt NuGet gebruiken om deze pakketten te verkrijgen. Volg deze stappen:
 
-1. Klik met de rechter muisknop op uw project in **Solution Explorer** en kies **NuGet-pakketten beheren** .
+1. Klik met de rechter muisknop op uw project in **Solution Explorer** en kies **NuGet-pakketten beheren**.
 1. **Bladeren** selecteren
 1. Zoek online naar ' Azure. storage. queues ' en selecteer **installeren** om de Storage-client bibliotheek en de afhankelijkheden ervan te installeren. Hiermee worden ook de bibliotheken Azure. storage. common en Azure. core geïnstalleerd. Dit zijn afhankelijkheden van de wachtrij bibliotheek.
 1. Zoek online naar ' System.Configuration.ConfigurationManager ' en selecteer **installeren** om de Configuration Manager te installeren.
@@ -86,7 +86,7 @@ U moet verwijzen naar de volgende drie pakketten in uw project om deze zelf stud
 
 U kunt NuGet gebruiken om deze pakketten te verkrijgen. Volg deze stappen:
 
-1. Klik met de rechter muisknop op uw project in **Solution Explorer** en kies **NuGet-pakketten beheren** .
+1. Klik met de rechter muisknop op uw project in **Solution Explorer** en kies **NuGet-pakketten beheren**.
 1. **Bladeren** selecteren
 1. Zoek online naar ' micro soft. Azure. storage. Queue ' en selecteer **installeren** om de Storage-client bibliotheek en de afhankelijkheden ervan te installeren. Hiermee wordt ook de bibliotheek micro soft. Azure. storage. common geïnstalleerd. Dit is een afhankelijkheid van de wachtrij bibliotheek.
 1. Zoek online naar ' Microsoft.Azure.ConfigurationManager ' en selecteer **installeren** om de Azure-Configuration Manager te installeren.
@@ -113,7 +113,7 @@ De voorbeeldcode moet de toegang tot uw opslagaccount autoriseren. Om te autoris
 
 1. Navigeer naar [Azure Portal](https://portal.azure.com).
 2. Zoek uw opslagaccount.
-3. In de sectie **Instellingen** van het overzicht met opslagaccounts selecteert u **Toegangssleutels** . De toegangssleutels van uw account worden weergegeven, evenals de volledige verbindingsreeks voor elke sleutel.
+3. In de sectie **Instellingen** van het overzicht met opslagaccounts selecteert u **Toegangssleutels**. De toegangssleutels van uw account worden weergegeven, evenals de volledige verbindingsreeks voor elke sleutel.
 4. Zoek de waarde van de **Verbindingsreeks** onder **key1** en klik op de knop **Kopiëren** om de verbindingsreeks te kopiëren. U gaat in de volgende stap de waarde voor de verbinding toevoegen aan een omgevingsvariabele.
 
     ![Schermopname waarin een verbindingsreeks vanuit de Azure-portal wordt gekopieerd](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)

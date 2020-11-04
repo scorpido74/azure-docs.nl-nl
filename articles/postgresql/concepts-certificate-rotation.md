@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 1bd02043183bd0477d8663300fcb7a1d7ac9ea55
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 96720e156963a5fb542e72823a602aa2cc6a0ead
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242072"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348998"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for PostgreSQL één server
 
@@ -31,9 +31,9 @@ Het nieuwe certificaat wordt vanaf 15 februari 2021 (02/15/2021) gebruikt. Als u
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Hoe kan ik weet of mijn Data Base wordt beïnvloed?
 
 Alle toepassingen die gebruikmaken van SSL/TLS en controleren of het basis certificaat het basis certificaat moet bijwerken. U kunt bepalen of uw verbindingen het basis certificaat verifiëren door uw connection string te controleren.
--   Als uw connection string bevat `sslmode=verify-ca` of `sslmode=verify-full` , moet u het certificaat bijwerken.
--   Als uw Connection String bevat `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` , of `sslmode=require` , hoeft u geen certificaten bij te werken. 
--   Als uw connection string geen sslmode opgeeft, hoeft u geen certificaten bij te werken.
+-    Als uw connection string bevat `sslmode=verify-ca` of `sslmode=verify-full` , moet u het certificaat bijwerken.
+-    Als uw Connection String bevat `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` , of `sslmode=require` , hoeft u geen certificaten bij te werken. 
+-    Als uw connection string geen sslmode opgeeft, hoeft u geen certificaten bij te werken.
 
 Als u een-client gebruikt die het connection string verwijderd, raadpleegt u de documentatie van de client om te begrijpen of de certificaten worden geverifieerd.
 
@@ -80,19 +80,19 @@ Volg de onderstaande stappen om te voor komen dat de beschik baarheid van uw toe
  </br>-----EIND CERTIFICAAT-----
 
 *   Vervang het oorspronkelijke PEM-bestand van de basis-CA door het gecombineerde basis-CA-bestand en start de toepassing/client opnieuw.
-*   Nadat het nieuwe certificaat op de server is geïmplementeerd, kunt u in de toekomst het PEM-bestand van de CA wijzigen in DigiCertGlobalRootG2. CRT. pem.
+*    Nadat het nieuwe certificaat op de server is geïmplementeerd, kunt u in de toekomst het PEM-bestand van de CA wijzigen in DigiCertGlobalRootG2. CRT. pem.
 
 ## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>Wat kan de invloed zijn van het bijwerken van het certificaat?
 Als u het basis certificaat Baltimore Cyber Trust gebruikt om de SSL-verbinding met Azure Database for PostgreSQL te controleren, zoals hier wordt beschreven, kan de beschik baarheid van uw toepassing worden onderbroken omdat de data base niet bereikbaar is. Afhankelijk van uw toepassing kunnen er diverse fout berichten worden weer gegeven, inclusief, maar niet beperkt tot:
-*   Ongeldig certificaat/ingetrokken certificaat
-*   Time-out opgetreden voor verbinding
+*    Ongeldig certificaat/ingetrokken certificaat
+*    Time-out opgetreden voor verbinding
 
 > [!NOTE]
 > Verwijder het **Baltimore-certificaat** niet en pas het pas toe nadat het certificaat is gewijzigd. Er wordt een communicatie verzonden zodra de wijziging is aangebracht, waarna deze de Baltimore-certificaat kan verwijderen. 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. als ik SSL/TLS niet gebruik, moet ik dan nog steeds de basis-CA bijwerken?
+###    <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. als ik SSL/TLS niet gebruik, moet ik dan nog steeds de basis-CA bijwerken?
 Er zijn geen acties vereist als u SSL/TLS niet gebruikt. 
 
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2. als ik SSL/TLS gebruik, moet ik mijn database server opnieuw starten om de basis-CA bij te werken?
@@ -104,7 +104,7 @@ Als u het basis certificaat niet bijwerkt vóór 15 februari 2021 (02/15/2021), 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-postgresql"></a>4. Wat is de impact van het gebruik van App Service met Azure Database for PostgreSQL?
 Voor Azure app Services, het maken van verbinding met Azure Database for PostgreSQL, kunnen we twee mogelijke scenario's hebben. Dit is afhankelijk van hoe u SSL met uw toepassing gebruikt.
 *   Dit nieuwe certificaat is toegevoegd aan App Service op platform niveau. Als u de SSL-certificaten gebruikt die zijn opgenomen in App Service platform in uw toepassing, is er geen actie vereist.
-*   Als u expliciet het pad naar het SSL-certificaat bestand in uw code opneemt, moet u het nieuwe certificaat downloaden en de code bijwerken om het nieuwe certificaat te gebruiken. Een goed voor beeld van dit scenario is wanneer u aangepaste containers in App Service gebruikt zoals gedeeld in de [app service documentatie](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)
+*   Als u expliciet het pad naar het SSL-certificaat bestand in uw code opneemt, moet u het nieuwe certificaat downloaden en de code bijwerken om het nieuwe certificaat te gebruiken. Een goed voor beeld van dit scenario is wanneer u aangepaste containers in App Service gebruikt zoals gedeeld in de [app service documentatie](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-postgresql"></a>5. Wat is de impact van het gebruik van Azure Kubernetes Services (AKS) met Azure Database for PostgreSQL?
 Als u probeert verbinding te maken met de Azure Database for PostgreSQL met behulp van Azure Kubernetes Services (AKS), is dit vergelijkbaar met de toegang vanuit een specifieke host-omgeving van klanten. Raadpleeg de stappen [hier](../aks/ingress-own-tls.md).
@@ -123,10 +123,10 @@ Omdat de clients die zijn gebruikt voor het maken van een verbinding met de serv
 ### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. als ik een nieuwe server Maak na 15 februari 2021 (02/15/2021), wordt dit van invloed?
 Voor servers die zijn gemaakt na 15 februari 2021 (02/15/2021), kunt u het zojuist uitgegeven certificaat voor uw toepassingen gebruiken om verbinding te maken via SSL.
 
-### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. hoe vaak werkt micro soft hun certificaten bij of wat is het verloop beleid?
+###    <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. hoe vaak werkt micro soft hun certificaten bij of wat is het verloop beleid?
 Deze certificaten die worden gebruikt door Azure Database for PostgreSQL worden door vertrouwde certificerings instanties (CA) verschaft. Daarom is de ondersteuning van deze certificaten op Azure Database for PostgreSQL gekoppeld aan de ondersteuning van deze certificaten per CA. In dit geval kunnen er echter onvoorziene fouten voor komen in deze vooraf gedefinieerde certificaten, die op het eerst moeten worden opgelost.
 
-### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>11. als ik lees replica's gebruik, moet ik deze update alleen op de primaire server of de Lees replica's uitvoeren?
+###    <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>11. als ik lees replica's gebruik, moet ik deze update alleen op de primaire server of de Lees replica's uitvoeren?
 Omdat deze update een wijziging aan de client zijde is, moet u de wijzigingen voor deze clients ook Toep assen als de client de gegevens van de replica server heeft gelezen. 
 
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. hebben we een query aan de server zijde om te controleren of SSL wordt gebruikt?
@@ -138,5 +138,5 @@ Nee. Er is geen actie vereist als uw certificaat bestand al het **DigiCertGlobal
 ### <a name="14-what-is-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>14. u gebruikt nu docker-installatie kopie van PgBouncer-zijspaners van micro soft?
 [Hieronder vindt](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar) u een nieuwe docker-installatie kopie die zowel [**Baltimore**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) als [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ondersteunt. U kunt deze nieuwe installatie kopie ophalen om onderbrekingen te voor komen in connectiviteit vanaf 15 februari 2021. 
 
-### <a name="15-what-if-i-have-further-questions"></a>15. Wat moet ik doen als ik meer vragen heb?
+###    <a name="15-what-if-i-have-further-questions"></a>15. Wat moet ik doen als ik meer vragen heb?
 Als u vragen hebt, kunt u antwoorden krijgen van experts van community's in [micro soft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com). Als u een ondersteunings abonnement hebt en technische hulp nodig hebt, kunt u [contact met ons](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com) opnemen

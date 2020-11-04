@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: 99b7891f332298024c82103322cc6b58d066f587
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7eb610f741681be89ef44f8288ed47674c1d6440
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123231"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348573"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren bij Azure Blob Storage-uitvoer
 
@@ -21,11 +21,11 @@ Dit artikel laat u zien hoe u beheerde identiteit voor de BLOB-uitvoer (en) van 
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Maak de Stream Analytics taak met behulp van de Azure Portal
 
-1. Maak een nieuwe Stream Analytics-taak of open een bestaande taak in de Azure Portal. Selecteer in de menu balk aan de linkerkant van het scherm **beheerde identiteit** onder **configureren** . Zorg ervoor dat de door het systeem toegewezen beheerde identiteit gebruiken is geselecteerd en klik vervolgens op de knop **Opslaan** aan de onderkant van het scherm.
+1. Maak een nieuwe Stream Analytics-taak of open een bestaande taak in de Azure Portal. Selecteer in de menu balk aan de linkerkant van het scherm **beheerde identiteit** onder **configureren**. Zorg ervoor dat de door het systeem toegewezen beheerde identiteit gebruiken is geselecteerd en klik vervolgens op de knop **Opslaan** aan de onderkant van het scherm.
 
    ![Stream Analytics beheerde identiteit configureren](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. Selecteer in het venster uitvoer eigenschappen van de Azure Blob Storage-uitvoer Sink de vervolg keuzelijst authenticatie modus en kies **beheerde identiteit** . Zie voor meer informatie over de andere uitvoer eigenschappen [inzicht in de uitvoer van Azure stream Analytics](./stream-analytics-define-outputs.md). Klik op **Opslaan** als u klaar bent.
+2. Selecteer in het venster uitvoer eigenschappen van de Azure Blob Storage-uitvoer Sink de vervolg keuzelijst authenticatie modus en kies **beheerde identiteit**. Zie voor meer informatie over de andere uitvoer eigenschappen [inzicht in de uitvoer van Azure stream Analytics](./stream-analytics-define-outputs.md). Klik op **Opslaan** als u klaar bent.
 
    ![Azure Blob Storage-uitvoer configureren](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -33,7 +33,7 @@ Dit artikel laat u zien hoe u beheerde identiteit voor de BLOB-uitvoer (en) van 
 
 ## <a name="azure-resource-manager-deployment"></a>Implementatie van Azure Resource Manager
 
-Met behulp van Azure Resource Manager kunt u de implementatie van uw Stream Analytics taak volledig automatiseren. U kunt Resource Manager-sjablonen implementeren met behulp van Azure PowerShell of de [Azure cli](/cli/azure/?view=azure-cli-latest). In de onderstaande voor beelden wordt de Azure CLI gebruikt.
+Met behulp van Azure Resource Manager kunt u de implementatie van uw Stream Analytics taak volledig automatiseren. U kunt Resource Manager-sjablonen implementeren met behulp van Azure PowerShell of de [Azure cli](/cli/azure/). In de onderstaande voor beelden wordt de Azure CLI gebruikt.
 
 
 1. U kunt een **micro soft. StreamAnalytics/streamingjobs-** resource maken met een beheerde identiteit door de volgende eigenschap op te nemen in de resource sectie van uw Resource Manager-sjabloon:
@@ -168,14 +168,14 @@ Tenzij u de taak nodig hebt om namens u containers te maken, moet u **toegang op
 
 2. Selecteer **Access Control (IAM)** aan de linkerkant.
 
-3. Klik onder de sectie toewijzing van een rol toevoegen op **toevoegen** .
+3. Klik onder de sectie toewijzing van een rol toevoegen op **toevoegen**.
 
 4. In het deel venster roltoewijzing:
 
     1. De **rol** instellen op ' BLOB gegevens Inzender '
     2. Zorg ervoor dat de vervolg keuzelijst **toegang toewijzen aan** is ingesteld op Azure AD-gebruiker,-groep of Service-Principal.
     3. Typ de naam van uw Stream Analytics-taak in het zoek veld.
-    4. Selecteer uw Stream Analytics-taak en klik op **Opslaan** .
+    4. Selecteer uw Stream Analytics-taak en klik op **Opslaan**.
 
    ![Toegang tot de container verlenen](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
 
@@ -185,14 +185,14 @@ Tenzij u de taak nodig hebt om namens u containers te maken, moet u **toegang op
 
 2. Selecteer **Access Control (IAM)** aan de linkerkant.
 
-3. Klik onder de sectie toewijzing van een rol toevoegen op **toevoegen** .
+3. Klik onder de sectie toewijzing van een rol toevoegen op **toevoegen**.
 
 4. In het deel venster roltoewijzing:
 
     1. De **rol** instellen op ' BLOB gegevens Inzender '
     2. Zorg ervoor dat de vervolg keuzelijst **toegang toewijzen aan** is ingesteld op Azure AD-gebruiker,-groep of Service-Principal.
     3. Typ de naam van uw Stream Analytics-taak in het zoek veld.
-    4. Selecteer uw Stream Analytics-taak en klik op **Opslaan** .
+    4. Selecteer uw Stream Analytics-taak en klik op **Opslaan**.
 
    ![Account toegang verlenen](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
 
@@ -218,9 +218,9 @@ Voer de volgende opdracht uit met behulp van de Azure CLI om toegang te krijgen 
 
 Bij het configureren van **firewalls en virtuele netwerken** van uw opslag account kunt u optioneel netwerk verkeer van andere vertrouwde micro soft-Services toestaan. Wanneer Stream Analytics verifieert met behulp van beheerde identiteit, geeft het bewijs dat de aanvraag afkomstig is van een vertrouwde service. Hieronder vindt u instructies om deze VNET-toegangs uitzondering in te scha kelen.
 
-1.  Ga naar het deel venster firewalls en virtuele netwerken in het configuratie venster van het opslag account.
-2.  Zorg ervoor dat de optie ' vertrouwde micro soft-Services voor toegang tot dit opslag account toestaan ' is ingeschakeld.
-3.  Als u het hebt ingeschakeld, klikt u op **Opslaan** .
+1.    Ga naar het deel venster firewalls en virtuele netwerken in het configuratie venster van het opslag account.
+2.    Zorg ervoor dat de optie ' vertrouwde micro soft-Services voor toegang tot dit opslag account toestaan ' is ingeschakeld.
+3.    Als u het hebt ingeschakeld, klikt u op **Opslaan**.
 
    ![VNET-toegang inschakelen](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 

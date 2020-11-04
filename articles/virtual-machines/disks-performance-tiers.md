@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4e31af3a66927e0c93caf477a7daf1b86eebf8f5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359676"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348692"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Prestatie lagen voor beheerde schijven (preview-versie)
 
@@ -55,10 +55,6 @@ Zie [prijzen voor beheerde schijven](https://azure.microsoft.com/pricing/details
 - U moet de toewijzing van de virtuele machine ongedaan maken of de schijf loskoppelen van een actieve virtuele machine voordat u de laag van de schijf kunt wijzigen.
 - Het gebruik van de P60-, P70-en P80-prestatie lagen is beperkt tot schijven van 4.096 GiB of hoger.
 - De prestatie-laag van een schijf kan slechts eenmaal per 24 uur worden gedowngraded.
-
-## <a name="regional-availability"></a>Regionale beschikbaarheid
-
-De mogelijkheid om de prestatie tier van een beheerde schijf aan te passen, is momenteel alleen beschikbaar in Premium Ssd's in de VS-Oost 2, Zuid-Centraal VS, West-Centraal VS, Australië-Zuid-Oost.
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Een lege gegevens schijf maken met een hogere laag dan de basislijn laag
 

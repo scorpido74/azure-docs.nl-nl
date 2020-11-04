@@ -1,9 +1,9 @@
 ---
-title: Microsoft Azure Media Services-scenario's en de beschikbaarheid van functies in datacenters | Microsoft Docs
-description: In dit onderwerp vindt u informatie over Microsoft Azure Media Services-scenario's en over de beschikbaarheid van functies en services in datacenters.
+title: Algemene scenario's Microsoft Azure Media Services | Microsoft Docs
+description: Dit artikel geeft een overzicht van Microsoft Azure Media Services scenario's.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,33 +11,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 58ecca6251e4c428ae5f834379e8b45059b0efc9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/3/2020
+ms.author: inhenkel
+ms.openlocfilehash: 001c535a2b39898673f2d587ee807d43b4d5f60a
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042762"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348539"
 ---
-# <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
+# <a name="microsoft-azure-media-services-common-scenarios"></a>Algemene scenario's Microsoft Azure Media Services
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. Bekijk de nieuwste versie [Media Services v3](../latest/media-services-overview.md). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Met Microsoft Azure Media Services (AMS) kunt u veilig video- of audio-inhoud uploaden, opslaan, coderen en verpakken, zowel voor levering on-demand als levering via livestreaming aan verschillende clients (bijvoorbeeld tv, pc en mobiele apparaten).
 
-Azure Media Services werkt vanuit diverse datacentra, op locaties overal ter wereld. Deze datacenters worden gegroepeerd in geografische regio's, waardoor u flexibiliteit heeft bij het kiezen waar u uw toepassingen ontwikkelt. U kunt zelf de [lijst met regio's en bijbehorende locaties](https://azure.microsoft.com/regions/) bekijken. 
-
-In dit onderwerp vindt u algemene scenario's voor het leveren van uw inhoud: [Live](#live_scenarios) of on-demand. Het onderwerp bevat ook informatie over de beschikbaarheid van mediafuncties en -services in datacenters.
+In dit artikel vindt u algemene scenario's voor het leveren van uw inhoud live of on-demand.
 
 ## <a name="overview"></a>Overzicht
 
 ### <a name="prerequisites"></a>Vereisten
-
-Als u Azure Media Services wilt gaan gebruiken, moet u over het volgende beschikken:
 
 * Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
 * Een Azure Media Services-account. Zie [Een account maken](media-services-portal-create-account.md) voor meer informatie.
@@ -61,61 +57,46 @@ U kunt [hier](https://media.windows.net/API/$metadata?api-version=2.15) het hele
 
 1. Upload een mediabestand van hoge kwaliteit naar een asset.
 
-    Het is raadzaam de optie voor opslagversleuteling toe te passen op de uitvoerasset om de inhoud in de opslag te beveiligen.
-2. Codeer de assets als een set Adaptive Bitrate MP4-bestanden.
+    Het Toep assen van de optie voor opslag versleuteling op uw asset om uw inhoud te beschermen tijdens het uploaden en tijdens de opslag wordt aanbevolen.
 
-    Het is raadzaam de optie voor opslagversleuteling toe te passen op de uitvoerasset om de opgeslagen inhoud te beveiligen.
-3. Configureer het beleid voor de levering van assets (gebruikt voor dynamische pakketten).
+1. Codeer de assets als een set Adaptive Bitrate MP4-bestanden.
+
+    Het is raadzaam de optie voor opslag versleuteling toe te passen op de uitvoer Asset om uw inhoud op rest te beveiligen.
+
+1. Configureer het beleid voor de levering van assets (gebruikt voor dynamische pakketten).
 
     Als de opslag van uw asset is versleuteld, **moet** u een beleid voor assetlevering configureren.
-4. Publiceer de asset door een OnDemand-locator te maken.
-5. Stream de gepubliceerde inhoud.
-
-Zie de sectie [Beschikbaarheid](#availability) voor informatie over beschikbaarheid in datacenters.
+1. Publiceer de asset door een OnDemand-locator te maken.
+1. Stream de gepubliceerde inhoud.
 
 ## <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>De inhoud in de opslag beveiligen, dynamisch versleutelde streamingmedia leveren
 
 ![Beveiligen met PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
 1. Upload een mediabestand van hoge kwaliteit naar een asset. Pas de optie voor opslagversleuteling toe op de asset.
-2. Codeer de assets als een set Adaptive Bitrate MP4-bestanden. Pas de optie voor opslagversleuteling toe op de uitvoerasset.
-3. Maak een inhoudssleutel voor de versleuteling van de asset die tijdens het afspelen dynamisch moet worden versleuteld.
-4. Configureer het autorisatiebeleid voor de inhoudssleutel.
-5. Configureer het beleid voor de levering van assets (gebruikt door dynamische pakketten en dynamische versleuteling).
-6. Publiceer de asset door een OnDemand-locator te maken.
-7. Stream de gepubliceerde inhoud.
-
-Zie de sectie [Beschikbaarheid](#availability) voor informatie over beschikbaarheid in datacenters.
-
-## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Media Analytics gebruiken om inzichten aan uw video's te ontlenen waarvoor een actie kan worden uitgevoerd
-
-Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarmee organisaties en bedrijven gemakkelijker inzichten aan hun video's kunnen ontlenen waarvoor een actie kan worden uitgevoerd. Zie [Overzicht van Azure Media Services Analytics](./legacy-components.md) voor meer informatie.
-
-1. Upload een mediabestand van hoge kwaliteit naar een asset.
-2. Verwerk uw video's met één van de Media Analytics-services die worden beschreven in de sectie [Media Analytics-overzicht](./legacy-components.md).
-3. Media Analytics-mediaprocessoren produceren MP4- of JSON-bestanden. Als een Mediaprocessor een MP4-bestand produceert, kunt u het bestand progressief downloaden. Als een mediaprocessor een JSON-bestand produceert, kunt u het bestand downloaden via Azure Blob Storage.
-
-Zie de sectie [Beschikbaarheid](#availability) voor informatie over beschikbaarheid in datacenters.
+1. Codeer de assets als een set Adaptive Bitrate MP4-bestanden. Pas de optie voor opslagversleuteling toe op de uitvoerasset.
+1. Maak een inhoudssleutel voor de versleuteling van de asset die tijdens het afspelen dynamisch moet worden versleuteld.
+1. Configureer het autorisatiebeleid voor de inhoudssleutel.
+1. Configureer het beleid voor de levering van assets (gebruikt door dynamische pakketten en dynamische versleuteling).
+1. Publiceer de asset door een OnDemand-locator te maken.
+1. Stream de gepubliceerde inhoud.
 
 ## <a name="deliver-progressive-download"></a>Een progressieve download leveren
 
 1. Upload een mediabestand van hoge kwaliteit naar een asset.
-2. Codeer het bestand naar één MP4-bestand.
-3. Publiceer de asset door een OnDemand- of SAS-locator te maken.
+1. Codeer het bestand naar één MP4-bestand.
+1. Publiceer de asset door een OnDemand- of SAS-locator te maken. Als SAS-locator wordt gebruikt, wordt de inhoud gedownload vanaf Azure Blob Storage. U hoeft geen streaming-eind punten in de status gestart te hebben.
+1. Download de inhoud op progressieve wijze.
 
-    Als SAS-locator wordt gebruikt, wordt de inhoud gedownload vanaf Azure Blob Storage. In dit geval hebt u geen gereserveerde streaming-eindpunten in de status Gestart nodig.
-4. Download de inhoud op progressieve wijze.
-
-## <a name="delivering-live-streaming-events"></a><a id="live_scenarios"></a>Evenementen live streamen 
+## <a name="delivering-live-streaming-events"></a>Evenementen live streamen
 
 1. Live-inhoud met verschillende protocollen voor live streamen opnemen (bijvoorbeeld RTMP of Smooth Streaming).
-2. (Optioneel) Uw stream coderen in een stream met een adaptieve bitsnelheid.
-3. Een voorbeeld van uw livestream bekijken.
-4. De inhoud rechtstreeks aan uw klanten weergeven via algemene protocollen voor streaming (bijvoorbeeld MPEG DASH, Smooth of HLS) of aan een Content Delivery Network (CDN) voor verdere distributie.
-
-    -of-
-
-    De opgenomen inhoud vastleggen en opnemen om deze later te streamen (Video-on-Demand).
+1. (Optioneel) Uw stream coderen in een stream met een adaptieve bitsnelheid.
+1. Een voorbeeld van uw livestream bekijken.
+1. Bezorgt de inhoud via:
+    1. Algemene streaming-protocollen (bijvoorbeeld MPEG DASH, Smooth, HLS) rechtstreeks aan uw klanten,
+    1. Naar een Content Delivery Network (CDN) voor verdere distributie, of
+    1. Noteer de opgenomen inhoud en bewaar deze op een later tijdstip (video-on-demand).
 
 Als u live streamt, kunt u één van de volgende routes kiezen:
 
@@ -129,143 +110,42 @@ Zie [Werken met kanalen die een multi-bitrate livestream van on-premises coderin
 
 ### <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Werken met kanalen waarmee Live Encoding kan worden uitgevoerd met Azure Media Services
 
-Het volgende diagram toont de belangrijke onderdelen van het AMS-platform die betrokken zijn bij de Live Streaming-werkstroom waarbij een kanaal live codering kan uitvoeren met Media Services.
+In het volgende diagram ziet u de belangrijkste onderdelen van het AMS-platform die betrokken zijn bij een live streaming-werk stroom waarbij een kanaal is ingeschakeld voor Live encoding met Media Services.
 
 ![Live-werkstroom](./media/scenarios-and-availability/media-services-live-streaming-new.png)
 
 Zie [Werken met kanalen waarmee Live Encoding kan worden uitgevoerd met Azure Media Services](media-services-manage-live-encoder-enabled-channels.md) voor meer informatie.
 
-Zie de sectie [Beschikbaarheid](#availability) voor informatie over beschikbaarheid in datacenters.
-
 ## <a name="consuming-content"></a>Inhoud gebruiken
 
-Azure Media Services biedt de hulpprogramma's die u nodig hebt om geavanceerde, dynamische clientspelertoepassingen te maken voor de meeste platforms, waaronder: iOS-apparaten, Android-apparaten, Windows, Windows Phone, Xbox en settopboxen. 
+Azure Media Services biedt de hulpprogramma's die u nodig hebt om geavanceerde, dynamische clientspelertoepassingen te maken voor de meeste platforms, waaronder: iOS-apparaten, Android-apparaten, Windows, Windows Phone, Xbox en settopboxen.
 
 ## <a name="enabling-azure-cdn"></a>Azure CDN inschakelen
 
 Media Services ondersteunt de integratie met Azure CDN. Zie [Streaming-eindpunten in een Media Services-account beheren](media-services-portal-manage-streaming-endpoints.md) voor meer informatie over het inschakelen van Azure CDN.
 
-## <a name="scaling-a-media-services-account"></a><a id="scaling"></a>Een Media Services-account schalen
+## <a name="scaling-a-media-services-account"></a>Een Media Services-account schalen
 
 AMS-klanten kunnen streaming-eindpunten, de mediaverwerking en de opslag in hun AMS-accounts schalen.
 
-* Media Services-klanten kunnen een **Standard** -streaming-eindpunt of een Premium- **streaming** -eindpunt kiezen. **Standard** -streaming-eindpunten zijn geschikt voor de meeste streaming-workloads. Deze hebben dezelfde kenmerken als **Premium** -streaming-eindpunten en de uitgaande bandbreedte wordt hiermee automatisch geschaald. 
+* Media Services-klanten kunnen een **Standard** -streaming-eindpunt of een Premium- **streaming** -eindpunt kiezen. **Standard** -streaming-eindpunten zijn geschikt voor de meeste streaming-workloads. Deze hebben dezelfde kenmerken als **Premium** -streaming-eindpunten en de uitgaande bandbreedte wordt hiermee automatisch geschaald.
 
     **Premium** -streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium** -streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het onderwerp [Streaming-eindpunten schalen](media-services-portal-scale-streaming-endpoints.md) voor meer informatie over het schalen van **Premium** -streaming-eindpunten.
 
-* Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1** , **S2** en **S3** . Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1** ).
+* Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1** , **S2** en **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1** ).
 
     Naast het opgeven van het type gereserveerde eenheid kunt u opgeven om uw account in te richten met **gereserveerde eenheden** (RUs). Op basis van het aantal ingerichte RU's wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account.
 
-    >[!NOTE]
-    >RU's werken voor het parallel verwerken van alle media, waaronder indexeringstaken via Azure Media Indexer. Indexeringstaken worden echter niet sneller verwerkt met snellere gereserveerde eenheden, terwijl dit bij coderen wel het geval is.
+    > [!NOTE]
+    > RU's werken voor het parallel verwerken van alle media, waaronder indexeringstaken via Azure Media Indexer. Indexeringstaken worden echter niet sneller verwerkt met snellere gereserveerde eenheden, terwijl dit bij coderen wel het geval is.
 
     Zie [Media verwerking schalen](media-services-portal-scale-media-processing.md)voor meer informatie.
-* U kunt uw Media Services-account schalen door opslagaccounts toe te voegen. Elk opslagaccount is beperkt tot 500 TB. Als u uw opslag wilt uitbreiden buiten de standaardbeperkingen, kunt u meerdere opslagaccounts aan een enkel Media Services-account koppelen. Zie [Opslagaccounts beheren](./media-services-managing-multiple-storage-accounts.md) voor meer informatie.
 
-## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> De beschikbaarheid van Media Services-functies in datacenters
-
-Deze sectie bevat informatie over de beschikbaarheid van Media Services-functies in datacenters.
-
-### <a name="ams-accounts"></a>AMS-accounts
-
-#### <a name="availability"></a>Beschikbaarheid
-
-Gebruik [Azure-producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all) om te bepalen of Media Services beschikbaar is in een specifiek Data Center.
-
-### <a name="streaming-endpoints"></a>Streaming-eindpunten 
-
-Media Services-klanten kunnen een **Standard** -streaming-eindpunt of een Premium- **streaming** -eindpunt kiezen. Zie de sectie [Schalen](#scaling) voor meer informatie.
-
-#### <a name="availability"></a>Beschikbaarheid
-
-|Naam|Status|Datacenters
-|---|---|---|
-|Standard|Algemene beschikbaarheid|Alles|
-|Premium|Algemene beschikbaarheid|Alles|
-
-### <a name="live-encoding"></a>Live Encoding
-
-#### <a name="availability"></a>Beschikbaarheid
-
-Beschikbaar in alle datacenters, behalve in: Duitsland, BR - zuid, India - west, India - zuid en India - centraal. 
-
-### <a name="encoding-media-processors"></a>Mediaprocessors coderen
-
-AMS biedt twee coderingsprogramma's die op basis van behoefte kunnen worden gebruikt: **Media Encoder Standard** en **Media Encoder Premium Workflow** . Zie [Overzicht en een vergelijking van Azure-mediacoderingsprogramma's die op basis van behoefte kunnen worden gebruikt](media-services-encode-asset.md) voor meer informatie. 
-
-#### <a name="availability"></a>Beschikbaarheid
-
-|Naam van mediaprocessor|Status|Datacenters
-|---|---|---|
-|Media Encoder Standard|Algemene beschikbaarheid|Alles|
-|Media Encoder Premium Workflow|Algemene beschikbaarheid|Overal behalve China|
-
-### <a name="analytics-media-processors"></a>Mediaprocessors voor analyse
-
-Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarmee organisaties en bedrijven gemakkelijker inzichten kunnen verkrijgen op basis van hun video's, waarvoor een actie kan worden uitgevoerd. Zie [Overzicht van Azure Media Services Analytics](./legacy-components.md) voor meer informatie.
-
-> [!NOTE]
-> Sommige analyse media-processors worden buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de pensioen datums.
-
-#### <a name="availability"></a>Beschikbaarheid
-
-|Naam van mediaprocessor|Status|Datacenters
-|---|---|---|
-|Azure Media Face Detector|Preview|Alles|
-|Azure Media Indexer|Algemene beschikbaarheid|Alles|
-|Azure Media Motion Detector|Preview|Alles|
-|Azure Media OCR|Preview|Alles|
-|Azure Media Redactor|Algemene beschikbaarheid|Alles|
-|Azure Media Video Thumbnails|Preview|Alles|
-
-### <a name="protection"></a>Protection
-
-Met Microsoft Azure Media Services kunt u uw media beveiligen vanaf het moment dat deze uw computer verlaten en ze worden opgeslagen, verwerkt en afgeleverd. Zie [AMS-inhoud beveiligen](media-services-content-protection-overview.md) voor meer informatie.
-
-#### <a name="availability"></a>Beschikbaarheid
-
-|Versleuteling|Status|Datacenters|
-|---|---|---| 
-|Storage|Algemene beschikbaarheid|Alles|
-|AES-128-sleutels|Algemene beschikbaarheid|Alles|
-|FairPlay|Algemene beschikbaarheid|Alles|
-|PlayReady|Algemene beschikbaarheid|Alles|
-|Widevine|Algemene beschikbaarheid|Overal behalve in Duitsland, bij overheden en in China.
-
-### <a name="reserved-units-rus"></a>Gereserveerde eenheden (RU's)
-
-Op basis van het aantal ingerichte, gereserveerde eenheden wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account. 
-
-Zie de sectie [Schalen](#scaling) voor meer informatie.
-
-#### <a name="availability"></a>Beschikbaarheid
-
-Beschikbaar in alle datacenters.
-
-### <a name="reserved-unit-ru-type"></a>Gereserveerde-eenheidstype (RU)
-
-Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: S1, S2 en S3.
-
-Zie de sectie [Schalen](#scaling) voor meer informatie.
-
-#### <a name="availability"></a>Beschikbaarheid
-
-|RU-typenaam|Status|Datacenters
-|---|---|---|
-|S1|Algemene beschikbaarheid|Alles|
-|S2|Algemene beschikbaarheid|Overal behalve in BR - zuid en India - west|
-|S3|Algemene beschikbaarheid|Overal behalve in India - west|
-
-## <a name="additional-notes"></a>Aanvullende opmerkingen
-
-* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
+* U kunt uw Media Services-account schalen door opslagaccounts toe te voegen. Elk opslagaccount is beperkt tot 500 TB. Zie [Opslagaccounts beheren](./media-services-managing-multiple-storage-accounts.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Media Services-leertrajecten bekijken.
-
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
+[Migreren naar Media Services v3](../latest/media-services-overview.md)
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

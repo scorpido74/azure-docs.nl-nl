@@ -3,12 +3,12 @@ title: Beleidsregels voor gastconfiguratie voor Windows maken
 description: Meer informatie over het maken van een Azure Policy-gast configuratie beleid voor Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 563b178b9ba92125967c779b59a78a8e105ec744
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348879"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Beleidsregels voor gastconfiguratie voor Windows maken
 
@@ -23,8 +23,12 @@ Bij het controleren van Windows gebruikt gastconfiguratie de resourcemodule [Des
 Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren van de status van een Azure-of niet-Azure-machine.
 
 > [!IMPORTANT]
+> Aangepaste beleids definities met gast configuratie in de Azure Government-en Azure China-omgevingen is een preview-functie.
+>
 > De gastconfiguratie-extensie is vereist voor het uitvoeren van controles op virtuele machines van Azure.
 > Als u de uitbrei ding op schaal op alle Windows-computers wilt implementeren, wijst u de volgende beleids definities toe: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> 
+> Gebruik geen geheimen of vertrouwelijke informatie in aangepaste inhouds pakketten.
 
 ## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
 
@@ -94,7 +98,7 @@ De functie `Get-TargetResource` heeft speciale vereisten voor gast configuratie 
 
 - De geretourneerde hashtabel moet een eigenschap met de naam **redenen** bevatten.
 - De eigenschap redenen moet een matrix zijn.
-- Elk item in de matrix moet een hashtabel zijn met sleutels met de naam **code** en een **zin** .
+- Elk item in de matrix moet een hashtabel zijn met sleutels met de naam **code** en een **zin**.
 
 De eigenschap redenen wordt door de service gebruikt om te standaardiseren hoe informatie wordt gepresenteerd wanneer een computer niet meer compatibel is. U kunt elk item beschouwen als een ' reden ' dat de resource niet aan het beleid voldoet. De eigenschap is een matrix omdat een bron niet meer dan één reden kan worden nageleefd.
 
@@ -134,7 +138,7 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
-### <a name="configuration-requirements"></a>Configuratie vereisten
+### <a name="configuration-requirements"></a>Configuratievereisten
 
 De naam van de aangepaste configuratie moet consistent zijn. De naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand en de naam van de gast toewijzing in de Azure Resource Manager sjabloon (ARM-sjabloon) moet hetzelfde zijn.
 
@@ -274,7 +278,7 @@ De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de 
 
 Ten slotte publiceert u de beleids definities met de `Publish-GuestConfigurationPolicy` cmdlet. De cmdlet heeft alleen de para meter **Path** die verwijst naar de locatie van de json-bestanden die zijn gemaakt door `New-GuestConfigurationPolicy` .
 
-Als u de opdracht publiceren wilt uitvoeren, moet u toegang hebben tot beleids regels maken in Azure. De specifieke autorisatie vereisten worden beschreven op de pagina [overzicht van Azure Policy](../overview.md) . De beste ingebouwde rol is Inzender voor **resource beleid** .
+Als u de opdracht publiceren wilt uitvoeren, moet u toegang hebben tot beleids regels maken in Azure. De specifieke autorisatie vereisten worden beschreven op de pagina [overzicht van Azure Policy](../overview.md) . De beste ingebouwde rol is Inzender voor **resource beleid**.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
@@ -325,7 +329,7 @@ Hieronder vindt u een voorbeeld fragment van een beleids definitie waarmee filte
 
 Gast configuratie ondersteunt het overschrijven van eigenschappen van een configuratie tijdens runtime. Deze functie betekent dat de waarden in het MOF-bestand in het pakket niet als statisch moeten worden beschouwd. De onderdrukkings waarden worden geleverd via Azure Policy en hebben geen invloed op de manier waarop de configuraties worden gemaakt of gecompileerd.
 
-De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meter** . Deze para meter gebruikt de definitie van de hash-tabel, inclusief alle details over elke para meter en maakt de vereiste secties van elk bestand dat wordt gebruikt voor de Azure Policy definitie.
+De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meter**. Deze para meter gebruikt de definitie van de hash-tabel, inclusief alle details over elke para meter en maakt de vereiste secties van elk bestand dat wordt gebruikt voor de Azure Policy definitie.
 
 In het volgende voor beeld wordt een beleids definitie gemaakt voor het controleren van een service, waarbij de gebruiker selecteert in een lijst op het moment van beleids toewijzing.
 
@@ -487,9 +491,13 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>Levens duur van beleid
 
-Als u een update voor het beleid wilt vrijgeven, zijn er twee velden die aandacht vereisen.
+Als u een update wilt vrijgeven voor het beleid, zijn er drie velden waarvoor aandacht is vereist.
 
-- **Versie** : wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan het aantal dat momenteel is gepubliceerd. De eigenschap werkt de versie van de toewijzing van de gast configuratie bij, zodat de agent het bijgewerkte pakket herkent.
+> [!NOTE]
+> De `version` eigenschap van de toewijzing van de gast configuratie heeft alleen invloed op pakketten die door micro soft worden gehost. De best practice voor het versie beheer van aangepaste inhoud is het insluiten van de versie in de bestands naam.
+
+- **Versie** : wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan het aantal dat momenteel is gepubliceerd.
+- **contentUri** : wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een URI naar de locatie van het pakket opgeven. Met inbegrip van een pakket versie in de bestands naam zorgt u ervoor dat de waarde van deze eigenschap in elke versie verandert.
 - **contentHash** : deze eigenschap wordt automatisch bijgewerkt door de `New-GuestConfigurationPolicy` cmdlet. Het is een hash-waarde van het pakket dat is gemaakt door `New-GuestConfigurationPackage` . De eigenschap moet correct zijn voor het `.zip` bestand dat u publiceert. Als alleen de eigenschap **contentUri** is bijgewerkt, wordt het inhouds pakket niet geaccepteerd door de extensie.
 
 De eenvoudigste manier om een bijgewerkt pakket vrij te geven, is het proces dat wordt beschreven in dit artikel herhalen en een bijgewerkt versie nummer opgeven. Dit proces garandeert dat alle eigenschappen correct zijn bijgewerkt.

@@ -6,22 +6,18 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: ed0f486afe466d31388fa99b4ce5f5754210533f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f48de7ef5d9525a995af4ebbd12c5f14f40189
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91571383"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349134"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Redis-versie voor Azure cache instellen voor redis (preview)
 In dit artikel leert u hoe u de redis-software versie kunt configureren voor gebruik met uw cache-exemplaar. Azure cache voor redis biedt de meest recente primaire versie van redis en ten minste één vorige versie. Deze versies worden regel matig bijgewerkt als nieuwere redis-software wordt uitgebracht. U kunt kiezen uit de twee beschik bare versies. Houd er rekening mee dat uw cache automatisch wordt bijgewerkt naar de volgende versie als de versie die momenteel wordt gebruikt, niet meer wordt ondersteund.
 
 ## <a name="prerequisites"></a>Vereisten
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-
-> [!NOTE]
-> Deze functie is momenteel beschikbaar als preview- [contact](mailto:azurecache@microsoft.com) opnemen als u geïnteresseerd bent.
->
+* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
 
 ## <a name="create-a-cache"></a>Een cache maken
 Voer de volgende stappen uit om een cache te maken:
@@ -44,9 +40,9 @@ Voer de volgende stappen uit om een cache te maken:
    
 1. Kies op de pagina **Geavanceerd** een redis-versie die u wilt gebruiken.
    
-    :::image type="content" source="media/cache-how-to-version/select-redis-version.png" alt-text="Selecteer Azure Cache voor Redis.":::
+    :::image type="content" source="media/cache-how-to-version/select-redis-version.png" alt-text="Redis-versie.":::
 
-1. Klik op **Maken**. 
+1. Klik op **Create**. 
    
     Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
 
