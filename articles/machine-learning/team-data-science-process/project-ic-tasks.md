@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721248"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321922"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Taken voor afzonderlijke mede werkers in het team data Science process
 
 In dit onderwerp vindt u een overzicht van de taken die een *individuele mede werker* heeft voltooid voor het instellen van een project in het [team data Science process](overview.md) (TDSP). Het doel is om te werken in een samen werkende team omgeving die wordt gestandaardiseerd op de TDSP. De TDSP is ontworpen om samen werking en team educatie te verbeteren. Voor een overzicht van de personeels rollen en de bijbehorende taken die worden verwerkt door een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md).
 
-In het volgende diagram ziet u de taken die door project afzonderlijke mede werkers (gegevens wetenschappers) zijn voltooid om hun team omgeving in te stellen. Zie voor instructies over het uitvoeren van een Data Science-project onder het TDSP de [uitvoering van data Science-projecten](project-execution.md). 
+In het volgende diagram ziet u de taken die door project afzonderlijke mede werkers (gegevens wetenschappers) zijn voltooid om hun team omgeving in te stellen. Zie voor instructies over het uitvoeren van een Data Science-project onder het TDSP de [uitvoering van data Science-projecten](./agile-development.md). 
 
 ![Individuele Inzender taken](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
@@ -46,7 +46,7 @@ Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine o
 
 - Een Azure-abonnement.
 - Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
-- Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
+- Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](../data-science-virtual-machine/index.yml)voor meer informatie en instructies.
 - Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
 - Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
 - De Azure File Storage-gegevens voor Azure file storage die u nodig hebt om te koppelen aan uw DSVM. 
@@ -103,4 +103,3 @@ Hier vindt u koppelingen naar gedetailleerde beschrijvingen van de andere rollen
 - [Groeps Manager-taken voor een Data Science-Team](group-manager-tasks.md)
 - [Team lead taken voor een Data Science-Team](team-lead-tasks.md)
 - [Project Lead taken voor een Data Science-Team](project-lead-tasks.md)
-

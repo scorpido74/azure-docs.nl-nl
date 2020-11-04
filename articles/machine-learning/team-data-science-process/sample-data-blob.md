@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04528d28e9f54710cd0a63372e32b099c2e07fb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b190bf0c474640c07d84971069072d3af2faa66d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026165"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321903"
 ---
 # <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Voorbeeldgegevens in Azure Blob-opslag
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven welke voorbeeld gegevens zijn opgeslagen in Azur
 **Waarom een voor beeld van uw gegevens?**
 Als de gegevensset die u wilt analyseren groot is, is het doorgaans een goed idee om de gegevens te verlagen om deze te verminderen tot een kleinere, maar representatieve en meer beheersbare grootte. Bemonstering vereenvoudigt het leren van gegevens, het verkennen en functie-engineering. De rol van het proces Cortana Analytics is om snel een prototype van de functies voor gegevens verwerking en machine learning modellen mogelijk te maken.
 
-Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze steekproef taak is een stap in het [team data Science process (TDSP)](./index.yml).
 
 ## <a name="download-and-down-sample-data"></a>Voorbeeld gegevens downloaden en verlagen
 1. Down load de gegevens uit Azure Blob-opslag met behulp van de Blob service uit de volgende python-voorbeeld code: 
@@ -102,7 +102,6 @@ U kunt de volgende voorbeeld code gebruiken om de gegevens voor te bereiden en d
         print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
     ```
 
-3. Lees de gegevens van de Azure-Blob met Azure Machine Learning [gegevens importeren](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) , zoals wordt weer gegeven in de onderstaande afbeelding:
+3. Lees de gegevens van de Azure-Blob met Azure Machine Learning [gegevens importeren](/azure/machine-learning/studio-module-reference/import-data) , zoals wordt weer gegeven in de onderstaande afbeelding:
 
 ![Lees-BLOB](./media/sample-data-blob/reader_blob.png)
-

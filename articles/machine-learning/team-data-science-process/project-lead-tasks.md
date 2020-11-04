@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76714409"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321937"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Project Lead-taken in het team data Science process
 
@@ -49,7 +49,7 @@ Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine o
 
 - Een Azure-abonnement.
 - Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
-- Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
+- Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](../data-science-virtual-machine/index.yml)voor meer informatie en instructies.
 - Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
 - Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
 
@@ -57,13 +57,13 @@ Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine o
 
 Een project opslagplaats maken in het **MyTeam** -project van uw team:
 
-1. Ga naar de project **samenvattings** pagina van uw team op *https: \/ / \<server name> / \<organization name> / \<team name> *, bijvoorbeeld **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam**, en selecteer **opslag plaatsen** in de linkernavigatiebalk. 
+1. Ga naar de project **samenvattings** pagina van uw team op *https: \/ / \<server name> / \<organization name> / \<team name>* , bijvoorbeeld **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam** , en selecteer **opslag plaatsen** in de linkernavigatiebalk. 
    
 1. Selecteer de naam van de opslag plaats boven aan de pagina en selecteer vervolgens **nieuwe opslag plaats** in de vervolg keuzelijst.
    
    ![Nieuwe opslag plaats selecteren](./media/project-lead-tasks/project-leads-9-select-repos.png)
    
-1. Zorg ervoor dat in het dialoog venster **een nieuwe opslag plaats maken** de tekst **Git** is geselecteerd onder **type**. Voer *DSProject1* in bij **naam van opslag plaats**en selecteer vervolgens **maken**.
+1. Zorg ervoor dat in het dialoog venster **een nieuwe opslag plaats maken** de tekst **Git** is geselecteerd onder **type**. Voer *DSProject1* in bij **naam van opslag plaats** en selecteer vervolgens **maken**.
    
    ![Opslag plaats maken](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
    
@@ -79,11 +79,11 @@ Uw project opslagplaats vullen met de inhoud van de opslag plaats van uw team sj
    
 1. Selecteer de naam van de opslag plaats boven aan de pagina en selecteer **DSProject1** in de vervolg keuzelijst.
    
-1. Selecteer **importeren**op de pagina **DSProject1 is leeg** . 
+1. Selecteer **importeren** op de pagina **DSProject1 is leeg** . 
    
    ![Import selecteren](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. Selecteer **Git** als **bron type**in het dialoog venster **een Git-opslag plaats importeren** en voer de URL voor uw **TeamTemplate** -opslag plaats in onder **kloon-URL**. De URL is *https: \/ / \<server name> / \<organization name> / \<team name> /_git/ \<team template repository name> *. Bijvoorbeeld: **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. Selecteer **Git** als **bron type** in het dialoog venster **een Git-opslag plaats importeren** en voer de URL voor uw **TeamTemplate** -opslag plaats in onder **kloon-URL**. De URL is *https: \/ / \<server name> / \<organization name> / \<team name> /_git/ \<team template repository name>*. Bijvoorbeeld: **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
    
 1. Selecteer **Importeren**. De inhoud van de opslag plaats van uw team sjabloon wordt in uw project opslagplaats geïmporteerd. 
    

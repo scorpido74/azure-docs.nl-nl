@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250654"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322017"
 ---
 # <a name="feature-engineering-in-data-science"></a>Functie techniek in data wetenschappen
 
 In dit artikel vindt u informatie over feature engineering en de bijbehorende rol bij het verbeteren van gegevens in machine learning. Leer van voor beelden die zijn getekend uit [Azure machine learning Studio (klassieke)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) experimenten. 
 
-* **Functie techniek**: het proces van het maken van nieuwe functies van onbewerkte gegevens om de voorspellende kracht van het leer algoritme te verg Roten. Functies die zijn ontworpen, moeten extra informatie vastleggen die niet eenvoudig zichtbaar is in de oorspronkelijke functieset.
-* **Functie selectie**: het proces van het selecteren van de sleutel subset van functies om de dimensionaliteit van het trainings probleem te verminderen.
+* **Functie techniek** : het proces van het maken van nieuwe functies van onbewerkte gegevens om de voorspellende kracht van het leer algoritme te verg Roten. Functies die zijn ontworpen, moeten extra informatie vastleggen die niet eenvoudig zichtbaar is in de oorspronkelijke functieset.
+* **Functie selectie** : het proces van het selecteren van de sleutel subset van functies om de dimensionaliteit van het trainings probleem te verminderen.
 
 Normaal gesp roken **functie techniek** wordt eerst toegepast om extra functies te genereren en vervolgens wordt de **functie selectie** uitgevoerd om irrelevante, redundante of zeer gecorreleerde functies te elimineren.
 
@@ -60,7 +60,7 @@ Naast de functieset A, die al aanwezig is in de oorspronkelijke onbewerkte gegev
 
 ### <a name="feature-engineering-using-studio-classic"></a>Functie techniek met Studio (klassiek)
 
-In het Studio (klassiek) experiment worden deze vier trainings gegevens sets gevormd via vier vertakkingen van de vooraf verwerkte invoer gegevensset. Met uitzonde ring van de meest linkse vertakking bevat elk van deze vertakkingen een [Execute R-script](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) module, waarin de afgeleide functies (functieset B, C en D) zijn gebouwd en worden toegevoegd aan de geïmporteerde gegevensset.
+In het Studio (klassiek) experiment worden deze vier trainings gegevens sets gevormd via vier vertakkingen van de vooraf verwerkte invoer gegevensset. Met uitzonde ring van de meest linkse vertakking bevat elk van deze vertakkingen een [Execute R-script](/azure/machine-learning/studio-module-reference/execute-r-script) module, waarin de afgeleide functies (functieset B, C en D) zijn gebouwd en worden toegevoegd aan de geïmporteerde gegevensset.
 
 In de volgende afbeelding ziet u het R-script dat wordt gebruikt om de functieset B in de tweede vertakking te maken.
 
@@ -80,9 +80,9 @@ Functie techniek wordt veel toegepast in taken met betrekking tot tekst analyse,
 
 ### <a name="feature-hashing"></a>Functie-hashing
 
-Ter verkrijging van deze taak wordt een techniek met de naam [hashing](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) toegepast om op efficiënte wijze wille keurige tekst functies in indexen in te scha kelen. In plaats van elke tekst functie (woorden/zinsdelen) aan een bepaalde index te koppelen, wordt met deze methode een hash-functie toegepast op de functies en worden de hash-waarden direct als indexen gebruikt.
+Ter verkrijging van deze taak wordt een techniek met de naam [hashing](/azure/machine-learning/studio-module-reference/feature-hashing) toegepast om op efficiënte wijze wille keurige tekst functies in indexen in te scha kelen. In plaats van elke tekst functie (woorden/zinsdelen) aan een bepaalde index te koppelen, wordt met deze methode een hash-functie toegepast op de functies en worden de hash-waarden direct als indexen gebruikt.
 
-In Studio (klassiek) bevindt zich een [functie hashing](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) -module die de functies van Word/woordgroepen handig maakt. In de volgende afbeelding ziet u een voor beeld van het gebruik van deze module. De invoer gegevensset bevat twee kolommen: de classificatie van het boek van 1 tot 5 en de werkelijke beoordelings inhoud. Het doel van deze module is om een aantal nieuwe functies op te halen die de frequentie van het voorval van de corresponderende woord (en)/phrase (s) in de specifieke boek beoordeling tonen. Als u deze module wilt gebruiken, voert u de volgende stappen uit:
+In Studio (klassiek) bevindt zich een [functie hashing](/azure/machine-learning/studio-module-reference/feature-hashing) -module die de functies van Word/woordgroepen handig maakt. In de volgende afbeelding ziet u een voor beeld van het gebruik van deze module. De invoer gegevensset bevat twee kolommen: de classificatie van het boek van 1 tot 5 en de werkelijke beoordelings inhoud. Het doel van deze module is om een aantal nieuwe functies op te halen die de frequentie van het voorval van de corresponderende woord (en)/phrase (s) in de specifieke boek beoordeling tonen. Als u deze module wilt gebruiken, voert u de volgende stappen uit:
 
 * Selecteer eerst de kolom die de invoer tekst bevat ("col2" in dit voor beeld).
 * Stel vervolgens ' hashing bitsize ' in op 8, wat betekent dat 2 ^ 8 = 256 functies worden gemaakt. Het woord/de fase in alle tekst wordt gehasht naar 256 indices. De para meter "hashing bitsize" ligt tussen 1 en 31. De woord (en)/phrase (en) worden waarschijnlijk in dezelfde index gehasht als het een groter getal is.

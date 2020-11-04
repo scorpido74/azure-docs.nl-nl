@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026046"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321889"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Voorbeeldgegevens in Hive-tabellen in Azure HDInsight
 In dit artikel wordt beschreven hoe u voor beelden van gegevens die zijn opgeslagen in azure HDInsight-Hive-tabellen met hive-query's, kunt u deze beperken tot een grootte die meer kan worden beheerd voor analyse. Dit omvat drie veelgebruikte steekproef methoden:
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u voor beelden van gegevens die zijn opgesla
 **Waarom een voor beeld van uw gegevens?**
 Als de gegevensset die u wilt analyseren groot is, is het doorgaans een goed idee om de gegevens te verlagen om deze te verminderen tot een kleinere, maar representatieve en meer beheersbare grootte. Down sampling vereenvoudigt het leren van gegevens, het verkennen en functie-engineering. De rol van het team data Science proces is om snel een prototype van de functies voor gegevens verwerking en machine learning modellen mogelijk te maken.
 
-Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze steekproef taak is een stap in het [team data Science process (TDSP)](./index.yml).
 
 ## <a name="how-to-submit-hive-queries"></a>Hive-query's verzenden
 Hive-query's kunnen worden verzonden vanuit de Hadoop Command-Line-console op het hoofd knooppunt van het Hadoop-cluster.  Meld u aan bij het hoofd knooppunt van het Hadoop-cluster, open de Hadoop Command-Line-console en verzend de Hive-query's. Zie [Hive-Query's verzenden](move-hive-tables.md#submit)voor instructies over het verzenden van Hive-query's in de Hadoop Command-Line-console.
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 Hier `<sample rate, 0-1>` geeft u het aandeel van records op waarmee de gebruikers willen steek proeven.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> Wille keurige steek proeven per groep
-Bij het bemonsteren van categorische-gegevens wilt u mogelijk alle instanties opnemen of uitsluiten voor een bepaalde waarde van de variabele categorische. Deze soort steek proef wordt ' steek proef op groep ' genoemd. Als u bijvoorbeeld een categorische-variabele '*State*' hebt, die waarden bevat zoals NY, ma, CA, NJ en PA, wilt u dat records uit elke staat samen komen, ongeacht of ze worden bemonsterd of niet.
+Bij het bemonsteren van categorische-gegevens wilt u mogelijk alle instanties opnemen of uitsluiten voor een bepaalde waarde van de variabele categorische. Deze soort steek proef wordt ' steek proef op groep ' genoemd. Als u bijvoorbeeld een categorische-variabele ' *State* ' hebt, die waarden bevat zoals NY, ma, CA, NJ en PA, wilt u dat records uit elke staat samen komen, ongeacht of ze worden bemonsterd of niet.
 
 Hier volgt een voor beeld van een query die voor beelden per groep bevat:
 
@@ -105,4 +105,3 @@ where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 ```
 
 Zie [LanguageManual sampling](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)(Engelstalig) voor meer informatie over geavanceerde bemonsterings methoden die beschikbaar zijn in Hive.
-

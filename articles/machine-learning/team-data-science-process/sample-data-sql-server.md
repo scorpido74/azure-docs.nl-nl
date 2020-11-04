@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e43c343b27dfe2dc0c364e58ed7305bdcec37215
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ac1fc5688dad3406041f36ff858e6fd27c7272f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026063"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321861"
 ---
 # <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Voorbeeldgegevens in SQL Server op Azure
 
@@ -30,9 +30,9 @@ In de python-steek proef wordt gebruikgemaakt van de [pyodbc](https://code.googl
 > 
 
 **Waarom een voor beeld van uw gegevens?**
-Als de gegevensset die u wilt analyseren groot is, is het doorgaans een goed idee om de gegevens te verlagen om deze te verminderen tot een kleinere, maar representatieve en meer beheersbare grootte. Bemonstering vereenvoudigt het leren van gegevens, het verkennen en functie-engineering. De rol van het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) is om snel een prototype van de functies voor gegevens verwerking en machine learning modellen mogelijk te maken.
+Als de gegevensset die u wilt analyseren groot is, is het doorgaans een goed idee om de gegevens te verlagen om deze te verminderen tot een kleinere, maar representatieve en meer beheersbare grootte. Bemonstering vereenvoudigt het leren van gegevens, het verkennen en functie-engineering. De rol van het [team data Science process (TDSP)](./index.yml) is om snel een prototype van de functies voor gegevens verwerking en machine learning modellen mogelijk te maken.
 
-Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze steekproef taak is een stap in het [team data Science process (TDSP)](./index.yml).
 
 ## <a name="using-sql"></a><a name="SQL"></a>SQL gebruiken
 In deze sectie worden verschillende methoden beschreven voor het gebruik van SQL om een wille keurige steek proef uit te voeren op de gegevens in de data base. Kies een methode op basis van uw gegevens grootte en de distributie ervan.
@@ -134,4 +134,4 @@ Voor een voor beeld van het team data Science process a met behulp van een open 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png
 
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

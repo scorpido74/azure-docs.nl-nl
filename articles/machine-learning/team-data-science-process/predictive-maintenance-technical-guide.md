@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 742dc4b613c180550a4b3ec02827061acbf0bf78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3edeee8f41c806c90f32208c0c4f174c76ba38d0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122942"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321990"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technische hand leiding voor het oplossings sjabloon voor predictief onderhoud in lucht vaart
 
@@ -58,7 +58,7 @@ De [Azure Event hub](https://azure.microsoft.com/services/event-hubs/) -service 
 Gebruik [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) om bijna realtime analyses te bieden op de invoer stroom vanuit de [Azure Event hub](#azure-event-hub) -service. U publiceert vervolgens resultaten naar een [Power bi](https://powerbi.microsoft.com) dash board en archiveert alle onbewerkte binnenkomende gebeurtenissen naar de [Azure Storage](https://azure.microsoft.com/services/storage/) -service voor latere verwerking door de [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) service.
 
 ### <a name="hdinsight-custom-aggregation"></a>Aangepaste HDInsight-aggregatie
-Voer [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -scripts (in azure Data Factory) uit met HDInsight om aggregaties te bieden voor de onbewerkte gebeurtenissen die zijn gearchiveerd met de Azure stream Analytics-resource.
+Voer [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -scripts (in azure Data Factory) uit met HDInsight om aggregaties te bieden voor de onbewerkte gebeurtenissen die zijn gearchiveerd met de Azure stream Analytics-resource.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Maak voor spellingen voor de resterende levens duur (resterende levens duur) van een bepaalde vliegtuig motor met behulp van de invoer ontvangen met [Azure machine learning service](https://azure.microsoft.com/services/machine-learning/) (georganiseerd door Azure Data Factory). 
@@ -96,7 +96,7 @@ De Azure Stream Analytics query kan worden gevonden door:
   
   * ***Invoer** _ voor het weer geven van de query-invoer _ * **query** _ voor het weer geven van de query zelf _ * **uitvoer** _ voor het weer geven van de verschillende uitvoer
 
-Informatie over het bouwen van Azure Stream Analytics query's vindt u in de naslag informatie over het [Stream Analytics query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) op MSDN.
+Informatie over het bouwen van Azure Stream Analytics query's vindt u in de naslag informatie over het [Stream Analytics query](/stream-analytics-query/stream-analytics-query-language-reference) op MSDN.
 
 In deze oplossing worden met de query's drie gegevens sets uitgevoerd met bijna realtime analyse gegevens over de binnenkomende gegevens stroom naar een Power BI dash board dat is opgenomen als onderdeel van deze oplossings sjabloon. Omdat er impliciete kennis is over de binnenkomende gegevens indeling, moeten deze query's worden gewijzigd op basis van uw gegevens indeling.
 
@@ -111,27 +111,27 @@ In deze sectie worden de benodigde [pijp lijnen en activiteiten](../../data-fact
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-Twee van de pijp lijnen van deze Factory bevatten [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -scripts die worden gebruikt om de gegevens te partitioneren en samen te voegen. De scripts bevinden zich in het [Azure Storage](https://azure.microsoft.com/services/storage/) -account dat tijdens de installatie is gemaakt. De locatie is: maintenancesascript \\ \\ \\ \\ -script Hive \\ \\ (of https://[uw oplossings naam]. blob. core. Windows. net/maintenancesascript).
+Twee van de pijp lijnen van deze Factory bevatten [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -scripts die worden gebruikt om de gegevens te partitioneren en samen te voegen. De scripts bevinden zich in het [Azure Storage](https://azure.microsoft.com/services/storage/) -account dat tijdens de installatie is gemaakt. De locatie is: maintenancesascript \\ \\ \\ \\ -script Hive \\ \\ (of https://[uw oplossings naam]. blob. core. Windows. net/maintenancesascript).
 
-Net als bij [Azure stream Analytics](#azure-stream-analytics-1) query's hebben de [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -scripts impliciete kennis over de binnenkomende gegevens indeling en moeten ze worden gewijzigd op basis van uw gegevens indeling.
+Net als bij [Azure stream Analytics](#azure-stream-analytics-1) query's hebben de [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -scripts impliciete kennis over de binnenkomende gegevens indeling en moeten ze worden gewijzigd op basis van uw gegevens indeling.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-Deze [pijp lijn](../../data-factory/concepts-pipelines-activities.md) bevat één activiteit: een [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit met een [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) die een [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script uitvoert voor het partitioneren van de gegevens die in [Azure Storage](https://azure.microsoft.com/services/storage/) worden geplaatst tijdens de [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) taak.
+Deze [pijp lijn](../../data-factory/concepts-pipelines-activities.md) bevat één activiteit: een [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit met een [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) die een [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script uitvoert voor het partitioneren van de gegevens die in [Azure Storage](https://azure.microsoft.com/services/storage/) worden geplaatst tijdens de [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) taak.
 
-Het [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script voor deze partitie taak is * **AggregateFlightInfo. HQL** _
+Het [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script voor deze partitie taak is * **AggregateFlightInfo. HQL** _
 
 #### <a name="_mlscoringpipeline"></a>_MLScoringPipeline *
 Deze [pijp lijn](../../data-factory/concepts-pipelines-activities.md) bevat verschillende activiteiten waarvan het eind resultaat de gescoorde voor spelling is van het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) experiment dat is gekoppeld aan deze oplossings sjabloon.
 
 Inbegrepen activiteiten zijn:
 
-* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit met een [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) die een [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script uitvoert om aggregaties en functie-engineering uit te voeren die nodig zijn voor het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) -experiment.
-  Het [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script voor deze partitie taak is * **PrepareMLInput. HQL** _.
-  Een [Kopieer](https://msdn.microsoft.com/library/azure/dn835035.aspx) activiteit waarmee de resultaten van de [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit worden verplaatst naar een enkele [Azure Storage](https://azure.microsoft.com/services/storage/) blob die wordt geopend door de [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) -activiteit.
-* Met [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) -activiteit wordt het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) experiment aangeroepen, waarbij de resultaten in één [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB worden geplaatst.
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit met een [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) die een [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script uitvoert om aggregaties en functie-engineering uit te voeren die nodig zijn voor het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) -experiment.
+  Het [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -script voor deze partitie taak is * **PrepareMLInput. HQL** _.
+  Een [Kopieer](/previous-versions/azure/dn835035(v=azure.100)) activiteit waarmee de resultaten van de [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -activiteit worden verplaatst naar een enkele [Azure Storage](https://azure.microsoft.com/services/storage/) blob die wordt geopend door de [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) -activiteit.
+* Met [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) -activiteit wordt het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) experiment aangeroepen, waarbij de resultaten in één [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB worden geplaatst.
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-Deze [pijp lijn](../../data-factory/concepts-pipelines-activities.md) bevat één activiteit: een [Kopieer](https://msdn.microsoft.com/library/azure/dn835035.aspx) activiteit waarmee de resultaten van het [Azure machine learning](#azure-machine-learning) experiment van de * **MLScoringPipeline** _ worden verplaatst naar de [Azure SQL database](https://azure.microsoft.com/services/sql-database/) ingericht als onderdeel van de installatie van de oplossings sjabloon.
+Deze [pijp lijn](../../data-factory/concepts-pipelines-activities.md) bevat één activiteit: een [Kopieer](/previous-versions/azure/dn835035(v=azure.100)) activiteit waarmee de resultaten van het [Azure machine learning](#azure-machine-learning) experiment van de * **MLScoringPipeline** _ worden verplaatst naar de [Azure SQL database](https://azure.microsoft.com/services/sql-database/) ingericht als onderdeel van de installatie van de oplossings sjabloon.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Het [Azure machine learning](https://azure.microsoft.com/services/machine-learning/) experiment dat wordt gebruikt voor deze oplossings sjabloon biedt de resterende levens duur (resterende levens duur) van een vliegtuig motor. Het experiment is specifiek voor de gebruikte gegevensset en vereist aanpassing of vervanging specifiek voor de gegevens die in worden gebracht.
@@ -139,7 +139,7 @@ Het [Azure machine learning](https://azure.microsoft.com/services/machine-learni
 ## <a name="monitor-progress"></a>Voortgang van monitor
 Zodra de gegevens Generator is gestart, begint de pijp lijn te gedehydrateerd en de verschillende onderdelen van uw oplossing beginnen met het uitvoeren van de opdrachten die worden verstrekt door de data factory. Er zijn twee manieren om de pijp lijn te bewaken.
 
-_ Een van de Stream Analytics taken schrijft de onbewerkte binnenkomende gegevens naar de Blob-opslag. Als u in het scherm op Blob Storage onderdeel van uw oplossing klikt en vervolgens in het rechterdeel venster op openen klikt, gaat u naar de [Azure Portal](https://portal.azure.com/). Klik daarna op blobs. In het volgende deel venster ziet u een lijst met containers. Klik op **maintenancesadata** . In het volgende deel venster vindt u de map **rawdata** . In de map rawdata zijn mappen met namen zoals Hour = 17 en uur = 18. De aanwezigheid van deze mappen geeft aan dat onbewerkte gegevens op uw computer worden gegenereerd en opgeslagen in Blob Storage. U ziet CSV-bestanden met een eindige grootte in MB in deze mappen.
+_ Een van de Stream Analytics taken schrijft de onbewerkte binnenkomende gegevens naar de Blob-opslag. Als u in het scherm op Blob Storage onderdeel van uw oplossing klikt en vervolgens in het rechterdeel venster op openen klikt, gaat u naar de [Azure Portal](https://portal.azure.com/). Klik daarna op blobs. In het volgende deel venster ziet u een lijst met containers. Klik op **maintenancesadata**. In het volgende deel venster vindt u de map **rawdata** . In de map rawdata zijn mappen met namen zoals Hour = 17 en uur = 18. De aanwezigheid van deze mappen geeft aan dat onbewerkte gegevens op uw computer worden gegenereerd en opgeslagen in Blob Storage. U ziet CSV-bestanden met een eindige grootte in MB in deze mappen.
 * De laatste stap van de pijp lijn is het schrijven van gegevens (bijvoorbeeld voor spelling van machine learning) naar SQL Database. Mogelijk moet u Maxi maal drie uur wachten tot de gegevens worden weer gegeven in SQL Database. Een manier om te controleren hoeveel gegevens er in uw SQL Database beschikbaar zijn, is via de [Azure Portal](https://portal.azure.com/). Zoek in het linkerdeel venster naar SQL-data BASEs :::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-SQL-databases.png" border="false"::: en klik erop. Zoek vervolgens de **pmaintenancedb** van de data base en klik erop. Klik op de volgende pagina onderaan op beheren.
    
     ![Pictogram beheren](./media/predictive-maintenance-technical-guide/icon-manage.png)
@@ -157,7 +157,7 @@ Power BI maakt verbinding met een Azure SQL Database als de bijbehorende gegeven
 
 Opmerking: 
 1.    Bij het implementeren van uw oplossing wordt binnen drie uur een voor spelling in de Data Base weer gegeven. Het pbix-bestand dat is meegeleverd met de generator van het pakket bevat enkele seed-gegevens, zodat u het dash board van Power BI direct kunt maken. 
-2.    In deze stap is het vereist dat u de gratis software [Power bi bureau blad](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop)downloadt en installeert.
+2.    In deze stap is het vereist dat u de gratis software [Power bi bureau blad](/power-bi/fundamentals/desktop-get-the-desktop)downloadt en installeert.
 
 De volgende stappen begeleiden u bij het koppelen van het pbix-bestand aan de SQL Database die is opgetreden op het moment van de oplossings implementatie met gegevens (bijvoorbeeld Voorspellings resultaten) voor visualisatie.
 
@@ -165,21 +165,21 @@ De volgende stappen begeleiden u bij het koppelen van het pbix-bestand aan de SQ
    
    U hebt de **naam van de database server, de database naam, de gebruikers naam en het wacht woord** nodig voordat u verdergaat met de volgende stappen. Hier volgen de stappen om u te helpen bij het vinden van deze.
    
-   * Zodra de **Azure SQL database** in het diagram van de oplossings sjabloon groen wordt, klikt u erop en klikt u vervolgens op **openen** .
+   * Zodra de **Azure SQL database** in het diagram van de oplossings sjabloon groen wordt, klikt u erop en klikt u vervolgens op **openen**.
    * Er wordt een nieuw browser tabblad/-venster weer gegeven met de Azure Portal-pagina. Klik op **resource groepen** in het linkerdeel venster.
-   * Selecteer het abonnement dat u gebruikt voor het implementeren van de oplossing en selecteer vervolgens **' YourSolutionName \_ ResourceGroup '** .
-   * Klik in het deel venster nieuwe pop-out op het  :::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-sql.png" border="false"::: pictogram voor toegang tot uw data base. De naam van uw Data Base bevindt zich naast dit pictogram (bijvoorbeeld **' pmaintenancedb '** ) en de naam van de **database server** wordt vermeld onder de eigenschap Server naam en moet er ongeveer uitzien als **YourSolutionName.database.Windows.net** .
+   * Selecteer het abonnement dat u gebruikt voor het implementeren van de oplossing en selecteer vervolgens **' YourSolutionName \_ ResourceGroup '**.
+   * Klik in het deel venster nieuwe pop-out op het  :::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-sql.png" border="false"::: pictogram voor toegang tot uw data base. De naam van uw Data Base bevindt zich naast dit pictogram (bijvoorbeeld **' pmaintenancedb '** ) en de naam van de **database server** wordt vermeld onder de eigenschap Server naam en moet er ongeveer uitzien als **YourSolutionName.database.Windows.net**.
    * De **gebruikers** naam en het **wacht woord** voor de Data Base zijn hetzelfde als de gebruikers naam en het wacht woord die eerder zijn vastgelegd tijdens de implementatie van de oplossing.
 2. Werk de gegevens bron van het rapport bestand met koude paden bij met Power BI Desktop.
    
-   * Dubbel klik in de map waar u het generator bestand hebt gedownload en uitgepakt op het bestand **PowerBI \\ PredictiveMaintenanceAerospace. pbix** . Als er waarschuwings berichten worden weer gegeven wanneer u het bestand opent, negeert u deze. Klik boven aan het bestand op **Query's bewerken** .
+   * Dubbel klik in de map waar u het generator bestand hebt gedownload en uitgepakt op het bestand **PowerBI \\ PredictiveMaintenanceAerospace. pbix** . Als er waarschuwings berichten worden weer gegeven wanneer u het bestand opent, negeert u deze. Klik boven aan het bestand op **Query's bewerken**.
      
      ![Query's bewerken](./media/predictive-maintenance-technical-guide/edit-queries.png)
-   * U ziet twee tabellen, **RemainingUsefulLife** en **PMResult** . Selecteer de eerste tabel en klik op ![ het pictogram query instellingen ](./media/predictive-maintenance-technical-guide/icon-query-settings.png) naast **bron** onder **toegepaste stappen** in het rechterdeel venster **' query instellingen '** . Waarschuwings berichten negeren die worden weer gegeven.
-   * Vervang in het venster pop-out **' server '** en **' data base '** door uw eigen server-en database namen en klik vervolgens op **OK** . Zorg ervoor dat u voor de server naam de poort 1433 ( **YourSolutionName.database.Windows.net, 1433** ) opgeeft. Verlaat het veld Data Base als **pmaintenancedb** . De waarschuwings berichten negeren die op het scherm worden weer gegeven.
-   * In het volgende pop-out venster ziet u twee opties in het linkerdeel venster ( **Windows** en **Data Base** ). Klik op **Data Base** , vul uw **gebruikers naam** en **wacht** woord in (de gebruikers naam en het wacht woord die u hebt ingevoerd toen u de oplossing voor het eerst implementeerde en een Azure SQL database hebt gemaakt). **Controleer de optie database niveau in _Selecteer welk niveau u deze instellingen wilt Toep assen_ op *_. Klik vervolgens op _* verbinding maken** .
+   * U ziet twee tabellen, **RemainingUsefulLife** en **PMResult**. Selecteer de eerste tabel en klik op ![ het pictogram query instellingen ](./media/predictive-maintenance-technical-guide/icon-query-settings.png) naast **bron** onder **toegepaste stappen** in het rechterdeel venster **' query instellingen '** . Waarschuwings berichten negeren die worden weer gegeven.
+   * Vervang in het venster pop-out **' server '** en **' data base '** door uw eigen server-en database namen en klik vervolgens op **OK**. Zorg ervoor dat u voor de server naam de poort 1433 ( **YourSolutionName.database.Windows.net, 1433** ) opgeeft. Verlaat het veld Data Base als **pmaintenancedb**. De waarschuwings berichten negeren die op het scherm worden weer gegeven.
+   * In het volgende pop-out venster ziet u twee opties in het linkerdeel venster ( **Windows** en **Data Base** ). Klik op **Data Base** , vul uw **gebruikers naam** en **wacht** woord in (de gebruikers naam en het wacht woord die u hebt ingevoerd toen u de oplossing voor het eerst implementeerde en een Azure SQL database hebt gemaakt). **Controleer de optie database niveau in _Selecteer welk niveau u deze instellingen wilt Toep assen_ op *_. Klik vervolgens op _* verbinding maken**.
    * Klik op de tweede tabel **PMResult** en klik vervolgens op ![ Navigatie pictogram ](./media/predictive-maintenance-technical-guide/icon-navigation.png) naast **' Bron '** onder **' toegepaste stappen '** in het rechterdeel venster ' **query instellingen** ' en werk de namen van de server en de data base bij, zoals in de bovenstaande stappen. Klik vervolgens op OK.
-   * Nadat u de vorige pagina hebt weer gegeven, sluit u het venster. Er wordt een bericht weer gegeven: Klik op **Toep assen** . Klik ten slotte op de knop **Opslaan** om de wijzigingen op te slaan. Uw Power BI-bestand heeft nu verbinding gemaakt met de server. Als uw visualisaties leeg zijn, moet u de selecties op de visualisaties wissen om alle gegevens te visualiseren door te klikken op het pictogram gum in de rechter bovenhoek van de legenda's. Gebruik de knop Vernieuwen om nieuwe gegevens in de visualisaties weer te geven. In eerste instantie worden alleen de seedgegevens in uw visualisaties weer gegeven, omdat de data factory is gepland om elke 3 uur te vernieuwen. Na 3 uur ziet u nieuwe voor spellingen die worden weer gegeven in uw visualisaties Wanneer u de gegevens vernieuwt.
+   * Nadat u de vorige pagina hebt weer gegeven, sluit u het venster. Er wordt een bericht weer gegeven: Klik op **Toep assen**. Klik ten slotte op de knop **Opslaan** om de wijzigingen op te slaan. Uw Power BI-bestand heeft nu verbinding gemaakt met de server. Als uw visualisaties leeg zijn, moet u de selecties op de visualisaties wissen om alle gegevens te visualiseren door te klikken op het pictogram gum in de rechter bovenhoek van de legenda's. Gebruik de knop Vernieuwen om nieuwe gegevens in de visualisaties weer te geven. In eerste instantie worden alleen de seedgegevens in uw visualisaties weer gegeven, omdat de data factory is gepland om elke 3 uur te vernieuwen. Na 3 uur ziet u nieuwe voor spellingen die worden weer gegeven in uw visualisaties Wanneer u de gegevens vernieuwt.
 3. Beschrijving Publiceer het dash board koud pad om [online te Power bi](https://www.powerbi.com/). Voor deze stap hebt u een Power BI-account (of een werk-of school account) nodig.
    
    * Klik op **publiceren** en een paar seconden later verschijnt een venster met de weer gave ' publiceren naar Power bi slagen! '. met een groen vinkje. Klik op de koppeling onder "open PredictiveMaintenanceAerospace. pbix in Power BI". Zie [publiceren vanuit Power bi Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)voor gedetailleerde instructies.
@@ -189,7 +189,7 @@ De volgende stappen begeleiden u bij het koppelen van het pbix-bestand aan de SQ
      <br/>
      ![Laatste weer gave](./media/predictive-maintenance-technical-guide/final-view.png)
      <br/>
-   * Als u de gegevens wilt vernieuwen, houdt u de muis aanwijzer over de **PredictiveMaintenanceAerospace** -gegevensset, klikt u op ![ pictogram met het weglatings teken ](./media/predictive-maintenance-technical-guide/icon-elipsis.png) en kiest u vervolgens **vernieuwen plannen** .
+   * Als u de gegevens wilt vernieuwen, houdt u de muis aanwijzer over de **PredictiveMaintenanceAerospace** -gegevensset, klikt u op ![ pictogram met het weglatings teken ](./media/predictive-maintenance-technical-guide/icon-elipsis.png) en kiest u vervolgens **vernieuwen plannen**.
      <br/>
      > [!NOTE]
      > Als er een waarschuwings bericht wordt weer gegeven, klikt u op **referenties bewerken** en controleert u of de database referenties hetzelfde zijn als de gegevens die u in stap 1 hebt beschreven.
@@ -206,7 +206,7 @@ De volgende stappen begeleiden u bij het visualiseren van gegevens uitvoer van S
 1. Power BI uitvoer toevoegen in Azure Stream Analytics (ASA).
    
    * U moet de instructies in [Azure Stream Analytics & Power BI: een dash board van Analytics voor realtime zicht baarheid van streaminggegevens](../../stream-analytics/stream-analytics-power-bi-dashboard.md) om de uitvoer van uw Azure stream Analytics-taak in te stellen als uw Power bi dash board.
-   * De ASA-query heeft drie uitvoer, **aircraftmonitor** , **aircraftalert** en **flightsbyhour** . U kunt de query weer geven door te klikken op het tabblad query. Die overeenkomt met elk van deze tabellen, moet u een uitvoer toevoegen aan ASA. Wanneer u de eerste uitvoer ( **aircraftmonitor** ) toevoegt, moet u ervoor zorgen dat de **uitvoer alias** , de naam van de **gegevensset** en de **tabel naam** hetzelfde zijn ( **aircraftmonitor** ). Herhaal de stappen voor het toevoegen van uitvoer voor **aircraftalert** en **flightsbyhour** . Zodra u alle drie de uitvoer tabellen hebt toegevoegd en de ASA-taak hebt gestart, wordt een bevestigings bericht weer gegeven ("starten Stream Analytics-taak maintenancesa02asapbi geslaagd").
+   * De ASA-query heeft drie uitvoer, **aircraftmonitor** , **aircraftalert** en **flightsbyhour**. U kunt de query weer geven door te klikken op het tabblad query. Die overeenkomt met elk van deze tabellen, moet u een uitvoer toevoegen aan ASA. Wanneer u de eerste uitvoer ( **aircraftmonitor** ) toevoegt, moet u ervoor zorgen dat de **uitvoer alias** , de naam van de **gegevensset** en de **tabel naam** hetzelfde zijn ( **aircraftmonitor** ). Herhaal de stappen voor het toevoegen van uitvoer voor **aircraftalert** en **flightsbyhour**. Zodra u alle drie de uitvoer tabellen hebt toegevoegd en de ASA-taak hebt gestart, wordt een bevestigings bericht weer gegeven ("starten Stream Analytics-taak maintenancesa02asapbi geslaagd").
 2. Meld u online aan bij [Power bi](https://www.powerbi.com)
    
    * In de sectie gegevens sets van het linkerdeel venster in mijn werk ruimte moeten de * **gegevensset** _ namen _ * aircraftmonitor * *, **aircraftalert** en **flightsbyhour** worden weer gegeven. Dit zijn de streaminggegevens die u hebt gepusht van Azure Stream Analytics in de vorige stap. De **flightsbyhour** van de gegevensset wordt mogelijk niet tegelijk met de andere twee gegevens sets weer gegeven vanwege de aard van de SQL-query achter deze. Het moet echter na een uur worden weer gegeven.
@@ -226,11 +226,10 @@ De volgende stappen begeleiden u bij het visualiseren van gegevens uitvoer van S
    * Houd de muis aanwijzer boven deze tegel op het dash board en klik op het pictogram bewerken in de rechter bovenhoek om de titel te wijzigen in ' vloot weergave van sensor 11 versus drempel waarde 48,26 ' en ondertitel op ' gemiddeld over de hele periode '.
 
 ## <a name="delete-your-solution"></a>Uw oplossing verwijderen
-Zorg ervoor dat u de gegevens Generator stopt wanneer u de oplossing niet actief gebruikt voor het uitvoeren van de gegevens generator, waardoor er hogere kosten in rekening worden gebracht. Verwijder de oplossing als u deze niet gebruikt. Als u de oplossing verwijdert, worden alle onderdelen die in uw abonnement zijn ingericht, verwijderd wanneer u de oplossing implementeert. Als u de oplossing wilt verwijderen, klikt u op de naam van de oplossing in het linkerdeel venster van de oplossings sjabloon en klikt u vervolgens op **verwijderen** .
+Zorg ervoor dat u de gegevens Generator stopt wanneer u de oplossing niet actief gebruikt voor het uitvoeren van de gegevens generator, waardoor er hogere kosten in rekening worden gebracht. Verwijder de oplossing als u deze niet gebruikt. Als u de oplossing verwijdert, worden alle onderdelen die in uw abonnement zijn ingericht, verwijderd wanneer u de oplossing implementeert. Als u de oplossing wilt verwijderen, klikt u op de naam van de oplossing in het linkerdeel venster van de oplossings sjabloon en klikt u vervolgens op **verwijderen**.
 
 ## <a name="cost-estimation-tools"></a>Hulpprogram ma's voor kosten raming
 De volgende twee hulpprogram ma's zijn beschikbaar om u te helpen beter inzicht te krijgen in de totale kosten die zijn verbonden aan het uitvoeren van de oplossings sjabloon voor predictief onderhoud voor sjablonen in uw abonnement:
 
 * [Hulp programma voor Microsoft Azure kosten Estimator (online)](https://azure.microsoft.com/pricing/calculator/)
 * [Hulp programma voor Microsoft Azure kosten Estimator (Desktop)](https://www.microsoft.com/download/details.aspx?id=43376)
-

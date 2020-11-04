@@ -1,6 +1,6 @@
 ---
 title: Workloadurgentie
-description: Richt lijnen voor het instellen van de urgentie voor Synapse SQL-pool query's in azure Synapse Analytics.
+description: Richt lijnen voor het instellen van de urgentie voor exclusieve SQL-groeps query's in azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1b2c71d7bf9e796af77e9a2a4a3a31152f2ca884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07c781672874bff306c9d25a464ec66414ebc9f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212340"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322121"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Prioriteit van Azure Synapse Analytics-workload
 
-In dit artikel wordt uitgelegd hoe de urgentie van het workload invloed kan hebben op de volg orde van de uitvoering van Synapse SQL pool-aanvragen in azure Synapse.
+In dit artikel wordt uitgelegd hoe de urgentie van het workload invloed kan hebben op de volg orde van de uitvoering van toegewezen SQL-groeps aanvragen in azure Synapse.
 
 ## <a name="importance"></a>Urgentie
 
@@ -38,7 +38,7 @@ Naast het scenario met de basis prioriteit die hierboven wordt beschreven met ve
 
 ### <a name="locking"></a>Vergrendelen
 
-Toegang tot de vergren delingen voor lees-en schrijf activiteiten is één gebied met natuurlijke conflicten. Voor activiteiten zoals het overschakelen van een [partitie](sql-data-warehouse-tables-partition.md) of het [wijzigen van de naam van het object](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) is verhoogde vergren deling vereist  Zonder urgentie van de werk belasting, Synapse SQL-pool in azure Synapse optimaliseert voor door voer. Optimalisatie voor door Voer betekent dat wanneer in-en in de wachtrij geplaatste aanvragen dezelfde vergrendelings behoeften hebben en resources beschikbaar zijn, de aanvragen in de wachtrij kunnen verzoeken met een hogere vergrendelings behoefte die eerder in de wachtrij voor aanvragen is aangekomen, worden overgeslagen. Zodra de urgentie van de werk belasting wordt toegepast op aanvragen met hogere vergrendelings behoeften. Een aanvraag met een hogere urgentie wordt uitgevoerd vóór de aanvraag met een lagere urgentie.
+Toegang tot de vergren delingen voor lees-en schrijf activiteiten is één gebied met natuurlijke conflicten. Voor activiteiten zoals het overschakelen van een [partitie](sql-data-warehouse-tables-partition.md) of het [wijzigen van de naam van het object](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) is verhoogde vergren deling vereist  Zonder urgentie van de workload is de toegewezen SQL-groep in azure Synapse geoptimaliseerd voor door voer. Optimalisatie voor door Voer betekent dat wanneer in-en in de wachtrij geplaatste aanvragen dezelfde vergrendelings behoeften hebben en resources beschikbaar zijn, de aanvragen in de wachtrij kunnen verzoeken met een hogere vergrendelings behoefte die eerder in de wachtrij voor aanvragen is aangekomen, worden overgeslagen. Zodra de urgentie van de werk belasting wordt toegepast op aanvragen met hogere vergrendelings behoeften. Een aanvraag met een hogere urgentie wordt uitgevoerd vóór de aanvraag met een lagere urgentie.
 
 Kijk eens naar het volgende voorbeeld:
 
@@ -50,7 +50,7 @@ Als Q2 en Q3 hetzelfde urgentie hebben en Q1 nog steeds wordt uitgevoerd, wordt 
 
 ### <a name="non-uniform-requests"></a>Niet-uniforme aanvragen
 
-Een ander scenario waarbij het belang rijk kan zijn om te voldoen aan query vereisten is wanneer aanvragen met verschillende resource klassen worden verzonden.  Zoals eerder vermeld, is in Synapse SQL-pool in azure Synapse geoptimaliseerd voor door voer. Wanneer aanvragen voor gemengde grootte (zoals smallrc of mediumrc) in de wachtrij worden geplaatst, kiest Synapse SQL-pool de vroegste aankomende aanvraag die binnen de beschik bare resources past. Als de urgentie van de werk belasting wordt toegepast, wordt de aanvraag voor de hoogste urgentie gepland op de volgende regel.
+Een ander scenario waarbij het belang rijk kan zijn om te voldoen aan query vereisten is wanneer aanvragen met verschillende resource klassen worden verzonden.  Zoals eerder vermeld, is er onder hetzelfde belang een exclusieve SQL-groep in azure Synapse geoptimaliseerd voor door voer. Wanneer aanvragen voor gemengde grootte (zoals smallrc of mediumrc) in de wachtrij worden geplaatst, kiest de toegewezen SQL-groep de vroegste aankomende aanvraag die binnen de beschik bare resources past. Als de urgentie van de werk belasting wordt toegepast, wordt de aanvraag voor de hoogste urgentie gepland op de volgende regel.
   
 Bekijk het volgende voor beeld op DW500c:
 

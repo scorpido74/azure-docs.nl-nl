@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0be75b3b0a7b9b5aaec0da1d9f41f67a7108e77a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c20bf1c5856276c4c7ee0e37ed4ef2120d1d93d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085307"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322036"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Met SQL en Python functies maken voor gegevens in SQL Server
 In dit document wordt beschreven hoe u functies kunt genereren voor gegevens die zijn opgeslagen in een SQL Server-VM op Azure, waardoor algoritmen efficiënter kunnen worden geleerd vanuit de gegevens. U kunt SQL of een programmeer taal zoals python gebruiken om deze taak uit te voeren. Beide benaderingen worden hier toegelicht.
 
-Deze taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze taak is een stap in het [team data Science process (TDSP)](./index.yml).
 
 > [!NOTE]
 > Voor een praktijk voorbeeld kunt u de [NYC taxi-gegevensset](https://www.andresmh.com/nyctaxitrips/) raadplegen en verwijzen naar de IPNB getiteld [NYC data wrangling met behulp van IPython notebook en SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) voor een end-to-end-instructies.
@@ -99,12 +99,12 @@ Deze op locatie gebaseerde functies kunnen verder worden gebruikt voor het gener
 
 > [!TIP]
 > U kunt de records programmatisch invoegen met de taal van uw keuze. Mogelijk moet u de gegevens in segmenten invoegen om de schrijf efficiëntie te verbeteren. [Hier volgt een voor beeld van hoe u dit kunt doen met behulp van pyodbc](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
-> Een andere mogelijkheid is om gegevens in de data base in te voegen met het [hulp programma BCP](https://msdn.microsoft.com/library/ms162802.aspx)
+> Een andere mogelijkheid is om gegevens in de data base in te voegen met het [hulp programma BCP](/sql/tools/bcp-utility)
 > 
 > 
 
 ### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Verbinding maken met Azure Machine Learning
-De zojuist gegenereerde functie kan worden toegevoegd als een kolom aan een bestaande tabel of worden opgeslagen in een nieuwe tabel en gekoppeld aan de oorspronkelijke tabel voor machine learning. Functies kunnen worden gegenereerd of geopend als deze al zijn gemaakt met behulp van de module [gegevens importeren](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) in azure ml, zoals hieronder wordt weer gegeven:
+De zojuist gegenereerde functie kan worden toegevoegd als een kolom aan een bestaande tabel of worden opgeslagen in een nieuwe tabel en gekoppeld aan de oorspronkelijke tabel voor machine learning. Functies kunnen worden gegenereerd of geopend als deze al zijn gemaakt met behulp van de module [gegevens importeren](/azure/machine-learning/studio-module-reference/import-data) in azure ml, zoals hieronder wordt weer gegeven:
 
 ![Azure ML-lezers](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
 
@@ -126,5 +126,4 @@ De [bibliotheek Pandas](https://pandas.pydata.org/) in python biedt een uitgebre
 data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 ```
 
-Nu kunt u samen werken met het gegevens frame van de Panda-Data, zoals beschreven in onderwerpen, [functies maken voor Azure Blob Storage-gegevens met behulp van Panda](create-features-blob.md).
-
+Nu kunt u samen werken met het gegevens frame van de Panda-Data, zoals beschreven in onderwerpen, [functies maken voor Azure Blob Storage-gegevens met behulp van Panda](./explore-data-blob.md).
