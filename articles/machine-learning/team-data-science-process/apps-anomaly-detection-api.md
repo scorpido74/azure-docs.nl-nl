@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087160"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305692"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning anomalie detectie-API
 
@@ -28,9 +28,9 @@ De [anomalie detectie-API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-D
 
 Met deze API kunnen de volgende typen afwijkende patronen worden gedetecteerd in time series-gegevens:
 
-* **Positieve en negatieve trends**: als u bijvoorbeeld het geheugen gebruik bewaken in het berekenen van een opwaartse trend, kan dit van belang zijn, omdat dit mogelijk indicatief is voor een geheugenlek,
-* **Wijzigingen in het dynamische waarden bereik**: als u de uitzonde ringen die door een Cloud service worden gegenereerd, bijvoorbeeld bewaken, kunnen eventuele wijzigingen in het dynamische waardebereik duiden op instabiliteit in de status van de service en
-* **Pieken en spannings dips**: als u bijvoorbeeld het aantal mislukte aanmeldingen in een service of het aantal afhandelingen in een e-commerce site bewaken, kunnen pieken of spannings dips duiden op abnormaal gedrag.
+* **Positieve en negatieve trends** : als u bijvoorbeeld het geheugen gebruik bewaken in het berekenen van een opwaartse trend, kan dit van belang zijn, omdat dit mogelijk indicatief is voor een geheugenlek,
+* **Wijzigingen in het dynamische waarden bereik** : als u de uitzonde ringen die door een Cloud service worden gegenereerd, bijvoorbeeld bewaken, kunnen eventuele wijzigingen in het dynamische waardebereik duiden op instabiliteit in de status van de service en
+* **Pieken en spannings dips** : als u bijvoorbeeld het aantal mislukte aanmeldingen in een service of het aantal afhandelingen in een e-commerce site bewaken, kunnen pieken of spannings dips duiden op abnormaal gedrag.
 
 Deze machine learning detectoren volgen dergelijke wijzigingen in waarden gedurende een bepaalde periode en melden de lopende wijzigingen in hun waarden als afwijkende scores. Deze vereisen geen ad hoc-drempel waarde en hun scores kunnen worden gebruikt voor het beheren van het onjuiste positieve aantal. De anomalie detectie-API is handig in verschillende scenario's, zoals service bewaking, door Kpi's te volgen over een bepaalde periode, de gebruiks bewaking via metrische gegevens, zoals het aantal Zoek opdrachten, aantallen klikken, prestatie bewaking via prestatie meter items, zoals geheugen, CPU, lees bewerkingen van bestanden, enzovoort.
 
@@ -46,13 +46,13 @@ De afwijkings detectie aanbieding wordt geleverd met handige hulp middelen om aa
 -->
 
 ## <a name="api-deployment"></a>API-implementatie
-Als u de API wilt gebruiken, moet u deze implementeren in uw Azure-abonnement waar deze wordt gehost als een Azure Machine Learning-webservice.  U kunt dit doen vanuit de [Azure AI Gallery](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2).  Hiermee worden twee Azure Machine Learning Studio (Classic) webservices (en hun gerelateerde resources) geïmplementeerd voor uw Azure-abonnement, een voor detectie van anomalieën met seizoensgebonden detectie en één zonder detectie van de seizoensgebondenheid.  Zodra de implementatie is voltooid, kunt u uw Api's beheren via de pagina met [webservices van Azure machine learning Studio (klassiek)](https://services.azureml.net/webservices/) .  Op deze pagina kunt u de eindpunt locaties en API-sleutels vinden, evenals voorbeeld code voor het aanroepen van de API.  Meer gedetailleerde instructies zijn [hier](/azure/machine-learning/studio/manage-new-webservice)beschikbaar.
+Als u de API wilt gebruiken, moet u deze implementeren in uw Azure-abonnement waar deze wordt gehost als een Azure Machine Learning-webservice.  U kunt dit doen vanuit de [Azure AI Gallery](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2).  Hiermee worden twee Azure Machine Learning Studio (Classic) webservices (en hun gerelateerde resources) geïmplementeerd voor uw Azure-abonnement, een voor detectie van anomalieën met seizoensgebonden detectie en één zonder detectie van de seizoensgebondenheid.  Zodra de implementatie is voltooid, kunt u uw Api's beheren via de pagina met [webservices van Azure machine learning Studio (klassiek)](https://services.azureml.net/webservices/) .  Op deze pagina kunt u de eindpunt locaties en API-sleutels vinden, evenals voorbeeld code voor het aanroepen van de API.  Meer gedetailleerde instructies zijn [hier](../classic/manage-new-webservice.md)beschikbaar.
 
 ## <a name="scaling-the-api"></a>De API schalen
 Standaard heeft uw implementatie een gratis facturerings plan voor ontwikkelen en testen met 1.000 trans acties/maand en 2 reken uren/maand.  U kunt een upgrade uitvoeren naar een ander abonnement volgens uw behoeften.  Meer informatie over de prijzen van verschillende abonnementen vindt u [hier](https://azure.microsoft.com/pricing/details/machine-learning/) onder ' productie Web API-prijzen '.
 
 ## <a name="managing-aml-plans"></a>AML-abonnementen beheren
-U kunt uw facturerings plan [hier](https://services.azureml.net/plans/)beheren.  De naam van het abonnement is gebaseerd op de naam van de resource groep die u hebt gekozen bij het implementeren van de API, plus een teken reeks die uniek is voor uw abonnement.  Instructies voor het uitvoeren van een upgrade van uw [abonnement zijn te vinden in de](/azure/machine-learning/studio/manage-new-webservice) sectie ' Betaal plannen beheren '.
+U kunt uw facturerings plan [hier](https://services.azureml.net/plans/)beheren.  De naam van het abonnement is gebaseerd op de naam van de resource groep die u hebt gekozen bij het implementeren van de API, plus een teken reeks die uniek is voor uw abonnement.  Instructies voor het uitvoeren van een upgrade van uw [abonnement zijn te vinden in de](../classic/manage-new-webservice.md) sectie ' Betaal plannen beheren '.
 
 ## <a name="api-definition"></a>API-definitie
 De webservice biedt een op REST gebaseerde API via HTTPS die op verschillende manieren kan worden gebruikt, zoals een web-of mobiele toepassing, R, Python, Excel, enzovoort.  U verzendt uw time series-gegevens naar deze service via een REST API-aanroep en voert een combi natie van de drie typen afwijkingen uit die hieronder worden beschreven.
@@ -115,7 +115,7 @@ In de afbeelding hieronder ziet u een voor beeld van afwijkingen die de Score-AP
 ### <a name="detectors"></a>Detectoren
 De anomalie detectie-API ondersteunt detectoren in drie algemene categorieën. Meer informatie over specifieke invoer parameters en uitvoer voor elke detector vindt u in de volgende tabel.
 
-| Detector categorie | Detectie | Beschrijving | Invoerparameters | Uitvoerwaarden |
+| Detector categorie | Detectie | Beschrijving | Invoerparameters | Uitvoer |
 | --- | --- | --- | --- | --- |
 | Piek detectoren |TSpike detector |Spoor pieken en spannings dips op basis van de waarden uit het eerste en derde kwartiel |*tspikedetector. sensitivity:* Hiermee wordt een geheel getal in het bereik 1-10, standaard waarde: 3, gebruikt. Bij hogere waarden worden er meer extreme waarden onderschept waardoor deze minder gevoelig zijn |TSpike: binaire waarden – ' 1 ' als een Prikker/DIP wordt gedetecteerd, ' 0 ' anders |
 | Piek detectoren | ZSpike detector |Pieken en spannings dips detecteren op basis van de betekenis van de data Points |*zspikedetector. sensitivity:* waarde voor geheel getal in het bereik 1-10 opgeven, standaard: 3; Bij hogere waarden worden er meer extreme waarden onderschept waardoor deze minder gevoelig zijn |ZSpike: binaire waarden – ' 1 ' als een Prikker/DIP wordt gedetecteerd, ' 0 ' anders |
@@ -138,7 +138,7 @@ Meer gedetailleerde informatie over deze invoer parameters vindt u in de volgend
 ### <a name="output"></a>Uitvoer
 De API voert alle detectoren uit op uw tijdreeks gegevens en retourneert afwijkende scores en binaire piek indicatoren voor elk tijdstip. De volgende tabel bevat de uitvoer van de API.
 
-| Uitvoerwaarden | Beschrijving |
+| Uitvoer | Beschrijving |
 | --- | --- |
 | Tijd |Tijds tempels van onbewerkte gegevens, of geaggregeerd (en/of) toegerekende gegevens als aggregatie (en/of) ontbrekende gegevens toerekening is toegepast |
 | Gegevens |Waarden van onbewerkte gegevens, of geaggregeerd (en/of) toegerekende gegevens als aggregatie (en/of) ontbrekende gegevens toerekening is toegepast |
@@ -181,7 +181,7 @@ Meer gedetailleerde informatie over deze invoer parameters vindt u in de volgend
 ### <a name="output"></a>Uitvoer
 De API voert alle detectoren uit op uw tijdreeks gegevens en retourneert afwijkende scores en binaire piek indicatoren voor elk tijdstip. De volgende tabel bevat de uitvoer van de API.
 
-| Uitvoerwaarden | Beschrijving |
+| Uitvoer | Beschrijving |
 | --- | --- |
 | Tijd |Tijds tempels van onbewerkte gegevens, of geaggregeerd (en/of) toegerekende gegevens als aggregatie (en/of) ontbrekende gegevens toerekening is toegepast |
 | OriginalData |Waarden van onbewerkte gegevens, of geaggregeerd (en/of) toegerekende gegevens als aggregatie (en/of) ontbrekende gegevens toerekening is toegepast |
@@ -197,4 +197,3 @@ De API voert alle detectoren uit op uw tijdreeks gegevens en retourneert afwijke
 
 [1]: ./media/apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/apps-anomaly-detection-api/anomaly-detection-seasonal.png
-

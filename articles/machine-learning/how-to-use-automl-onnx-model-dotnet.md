@@ -10,18 +10,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to
-ms.openlocfilehash: eb1a3c1f306b6941987d0981967cf5d096a68735
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cb4e57cfe8b7494b7d5c38869f83190bff76ef2a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133570"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305766"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>Voor spellingen doen met een AutoML ONNX-model in .NET
 
 In dit artikel leert u hoe u een Automated ML (AutoML) open Neural Network Exchange (ONNX)-model kunt gebruiken om voor spellingen te maken in een C# .NET core-console toepassing met ML.NET.
 
-[Ml.net](https://docs.microsoft.com/dotnet/machine-learning/) is een open-source, platformoverschrijdende machine learning Framework voor het .net-ecosysteem waarmee u aangepaste machine learning modellen kunt trainen en gebruiken met behulp van een code-First-benadering in C# of F #, en met weinig code, zoals [model Builder](https://docs.microsoft.com/dotnet/machine-learning/automate-training-with-model-builder) en de [ml.net cli](https://docs.microsoft.com/dotnet/machine-learning/automate-training-with-cli). Het Framework is ook uitbreidbaar en biedt u de mogelijkheid om andere populaire machine learning frameworks, zoals tensor flow en ONNX, te gebruiken.
+[Ml.net](/dotnet/machine-learning/) is een open-source, platformoverschrijdende machine learning Framework voor het .net-ecosysteem waarmee u aangepaste machine learning modellen kunt trainen en gebruiken met behulp van een code-First-benadering in C# of F #, en met weinig code, zoals [model Builder](/dotnet/machine-learning/automate-training-with-model-builder) en de [ml.net cli](/dotnet/machine-learning/automate-training-with-cli). Het Framework is ook uitbreidbaar en biedt u de mogelijkheid om andere populaire machine learning frameworks, zoals tensor flow en ONNX, te gebruiken.
 
 ONNX is een open-source indeling voor AI-modellen. ONNX biedt ondersteuning voor interoperabiliteit tussen frameworks. Dit betekent dat u een model kunt trainen in een van de vele populaire machine learning frameworks zoals PyTorch, dit te converteren naar de ONNX-indeling en het ONNX-model in een ander Framework zoals ML.NET te gebruiken. Ga naar de [website van ONNX](https://onnx.ai/)voor meer informatie.
 
@@ -34,7 +34,7 @@ ONNX is een open-source indeling voor AI-modellen. ONNX biedt ondersteuning voor
 
 ## <a name="create-a-c-console-application"></a>Een C#-console toepassing maken
 
-In dit voor beeld gebruikt u de .NET Core SLI om uw toepassing te bouwen, maar u kunt ook dezelfde taken uitvoeren met Visual Studio. Meer informatie over de [.net core SLI](https://docs.microsoft.com/dotnet/core/tools/).
+In dit voor beeld gebruikt u de .NET Core SLI om uw toepassing te bouwen, maar u kunt ook dezelfde taken uitvoeren met Visual Studio. Meer informatie over de [.net core SLI](/dotnet/core/tools/).
 
 1. Open een Terminal en maak een nieuwe C# .NET core-console toepassing. In dit voor beeld is de naam van de toepassing `AutoMLONNXConsoleApp` . Er wordt een map met dezelfde naam gemaakt met de inhoud van uw toepassing.
 
@@ -71,7 +71,7 @@ In dit voor beeld gebruikt u de .NET Core SLI om uw toepassing te bouwen, maar u
 
 ## <a name="add-a-reference-to-the-onnx-model"></a>Een verwijzing naar het ONNX-model toevoegen
 
-Een manier om de console toepassing toegang te geven tot het ONNX-model is door het toe te voegen aan de map build uitvoermap.  Zie de [MSBuild-hand leiding](https://docs.microsoft.com/visualstudio/msbuild/common-msbuild-project-items)voor meer informatie over algemene MSBuild-items.
+Een manier om de console toepassing toegang te geven tot het ONNX-model is door het toe te voegen aan de map build uitvoermap.  Zie de [MSBuild-hand leiding](/visualstudio/msbuild/common-msbuild-project-items)voor meer informatie over algemene MSBuild-items.
 
 Een verwijzing naar het ONNX-model bestand in uw toepassing toevoegen
 
@@ -86,7 +86,7 @@ Een verwijzing naar het ONNX-model bestand in uw toepassing toevoegen
     </ItemGroup>
     ```
 
-    In dit geval is de naam van het ONNX-model bestand *automl-model. ONNX* .
+    In dit geval is de naam van het ONNX-model bestand *automl-model. ONNX*.
 
 1. Open het *Program.cs* -bestand en voeg de volgende regel toe aan de `Program` klasse.
 
@@ -161,7 +161,7 @@ Elk van de eigenschappen wordt toegewezen aan een kolom in de gegevensset. De ei
   
 Voor numerieke waarden werkt ML.NET alleen op [`Single`](xref:System.Single) waardetypen. Het oorspronkelijke gegevens type van een aantal kolommen is echter een geheel getal. Het [`OnnxMapType`](xref:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute) kenmerk wijst typen toe tussen ONNX en ml.net.
 
-Zie voor meer informatie over gegevens kenmerken de [hand leiding](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/load-data-ml-net)voor het laden van ml.net-gegevens.
+Zie voor meer informatie over gegevens kenmerken de [hand leiding](/dotnet/machine-learning/how-to-guides/load-data-ml-net)voor het laden van ml.net-gegevens.
 
 ### <a name="define-model-output-schema"></a>Model-uitvoer schema definiëren
 
@@ -179,7 +179,7 @@ Vergelijkbaar met `OnnxInput` , gebruikt u het [`ColumnName`](xref:Microsoft.ML.
 
 ## <a name="define-a-prediction-pipeline"></a>Een Voorspellings pijplijn definiëren
 
-Een pijp lijn in ML.NET is doorgaans een reeks gekoppelde trans formaties die op de invoer gegevens worden uitgevoerd om een uitvoer te produceren. Zie de [hand leiding voor ml.net-gegevens transformatie](https://docs.microsoft.com/dotnet/machine-learning/resources/transforms)voor meer informatie over gegevens transformaties.
+Een pijp lijn in ML.NET is doorgaans een reeks gekoppelde trans formaties die op de invoer gegevens worden uitgevoerd om een uitvoer te produceren. Zie de [hand leiding voor ml.net-gegevens transformatie](/dotnet/machine-learning/resources/transforms)voor meer informatie over gegevens transformaties.
 
 1. Een nieuwe methode met `GetPredictionPipeline` de naam in de `Program` klasse maken
 
@@ -226,7 +226,7 @@ Een pijp lijn in ML.NET is doorgaans een reeks gekoppelde trans formaties die op
     De [`Fit`](xref:Microsoft.ML.IEstimator%601.Fit%2A) methode verwacht een [`IDataView`](xref:Microsoft.ML.IDataView) als invoer voor het uitvoeren van de bewerkingen op. Een [`IDataView`](xref:Microsoft.ML.IDataView) manier om gegevens te vertegenwoordigen in ml.net met behulp van een tabellaire indeling. Omdat in dit geval de pijp lijn alleen voor voor spellingen wordt gebruikt, kunt u een lege waarde opgeven [`IDataView`](xref:Microsoft.ML.IDataView) om de [`ITransformer`](xref:Microsoft.ML.ITransformer) benodigde invoer-en uitvoer schema-informatie te geven. De aanwezige [`ITransformer`](xref:Microsoft.ML.ITransformer) wordt vervolgens geretourneerd voor verder gebruik in uw toepassing.
 
     > [!TIP]
-    > In dit voor beeld wordt de pijp lijn gedefinieerd en gebruikt binnen dezelfde toepassing. Het is echter raadzaam om afzonderlijke toepassingen te gebruiken om de pijp lijn te definiëren en te gebruiken om voor spellingen te maken. In ML.NET kunnen uw pijp lijnen worden geserialiseerd en opgeslagen voor verder gebruik in andere .NET-toepassingen voor eind gebruikers. ML.NET ondersteunt verschillende implementatie doelen, zoals desktop toepassingen, webservices, webassemblage toepassingen * en nog veel meer. Zie de [hand leiding voor ml.net voor het opslaan en laden van getrainde modellen](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/save-load-machine-learning-models-ml-net)voor meer informatie over het opslaan van pijp lijnen.
+    > In dit voor beeld wordt de pijp lijn gedefinieerd en gebruikt binnen dezelfde toepassing. Het is echter raadzaam om afzonderlijke toepassingen te gebruiken om de pijp lijn te definiëren en te gebruiken om voor spellingen te maken. In ML.NET kunnen uw pijp lijnen worden geserialiseerd en opgeslagen voor verder gebruik in andere .NET-toepassingen voor eind gebruikers. ML.NET ondersteunt verschillende implementatie doelen, zoals desktop toepassingen, webservices, webassemblage toepassingen * en nog veel meer. Zie de [hand leiding voor ml.net voor het opslaan en laden van getrainde modellen](/dotnet/machine-learning/how-to-guides/save-load-machine-learning-models-ml-net)voor meer informatie over het opslaan van pijp lijnen.
     >
     > * Webassembly wordt alleen ondersteund in .NET Core 5 of hoger
 
@@ -284,9 +284,9 @@ Nu u een pijp lijn hebt, is het tijd om deze te gebruiken voor het maken van voo
     Predicted Fare: 15.621523
     ```
 
-Zie de [hand leiding een model gebruiken om voor spellingen te maken](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/machine-learning-model-predictions-ml-net)voor meer informatie over het maken van voor spellingen in ml.net.
+Zie de [hand leiding een model gebruiken om voor spellingen te maken](/dotnet/machine-learning/how-to-guides/machine-learning-model-predictions-ml-net)voor meer informatie over het maken van voor spellingen in ml.net.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Implementeer uw model als een ASP.NET Core Web-API](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/serve-model-web-api-ml-net)
-- [Implementeer uw model als een serverloze .NET Azure-functie](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/serve-model-serverless-azure-functions-ml-net)
+- [Implementeer uw model als een ASP.NET Core Web-API](/dotnet/machine-learning/how-to-guides/serve-model-web-api-ml-net)
+- [Implementeer uw model als een serverloze .NET Azure-functie](/dotnet/machine-learning/how-to-guides/serve-model-serverless-azure-functions-ml-net)

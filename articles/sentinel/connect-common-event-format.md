@@ -1,6 +1,6 @@
 ---
 title: CEF-gegevens verbinden met Azure Sentinel preview | Microsoft Docs
-description: Verbind een externe oplossing die CEF-berichten (common Event Format) naar Azure Sentinel verzendt met behulp van een Linux-machine als een proxy.
+description: Verbind een externe oplossing die CEF-berichten (common Event Format) naar Azure Sentinel verzendt met behulp van een Linux-machine als een logboek doorstuur server.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e09b44504623516d41b6d310a82e78619477367c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747899"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93304989"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
 
@@ -50,40 +50,49 @@ Als u TLS-communicatie tussen de syslog-bron en de syslog-doorstuur server wilt 
  
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat op de Linux-machine die u als proxy gebruikt, een van de volgende besturings systemen wordt uitgevoerd:
+Zorg ervoor dat de Linux-machine die u als een logboek-doorstuur server gebruikt, een van de volgende besturings systemen wordt uitgevoerd:
 
 - 64-bits
-  - CentOS 7 en subversies en hoger (niet 6)
+  - CentOS 7 en 8, inclusief subversies (niet 6)
   - Amazon Linux 2017,09
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 en subversies en hoger (niet 6)
-  - Debian GNU/Linux 8 en 9
+  - Red Hat Enterprise Linux (RHEL) Server 7 en 8, inclusief subversies (niet 6)
+  - Debian GNU/Linux 8, 9 en 10
   - Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
-  - SUSE Linux Enterprise Server 12
+  - SUSE Linux Enterprise Server 12, 15
+
 - 32-bits
-   - CentOS 7
-   - Oracle Linux 7
-   - Red Hat Enterprise Linux Server 7
-   - Debian GNU/Linux 8 en 9
-   - Ubuntu Linux 14,04 LTS en 16,04 LTS
+  - CentOS 7 en 8, inclusief subversies (niet 6)
+  - Oracle Linux 7
+  - Red Hat Enterprise Linux (RHEL) Server 7 en 8, inclusief subversies (niet 6)
+  - Debian GNU/Linux 8, 9 en 10
+  - Ubuntu Linux 14,04 LTS en 16,04 LTS
  
- - Daemon-versies
-   - Syslog-ng: 2,1-3.22.1
-   - Rsyslog: V8
+- Daemon-versies
+  - Syslog-ng: 2,1-3.22.1
+  - Rsyslog: V8
   
- - Ondersteuning voor syslog-Rfc's
-   - Syslog RFC 3164
-   - Syslog RFC 5424
+- Ondersteuning voor syslog-Rfc's
+  - Syslog RFC 3164
+  - Syslog RFC 5424
  
 Zorg ervoor dat uw computer ook aan de volgende vereisten voldoet: 
+
 - Machtigingen
-    - U moet over verhoogde machtigingen (sudo) beschikken op uw computer. 
+  - U moet over verhoogde machtigingen (sudo) beschikken op uw computer. 
+
 - Softwarevereisten
-    - Zorg ervoor dat python 2,7 op uw computer wordt uitgevoerd.
+  - Zorg ervoor dat python 2,7 op uw computer wordt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document hebt u geleerd hoe u CEF-apparaten verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+In dit document hebt u geleerd hoe Azure Sentinel CEF-logboeken verzamelt van beveiligings oplossingen en-apparaten. Raadpleeg de volgende artikelen voor meer informatie over het verbinden van uw oplossing met Azure Sentinel:
+
+- STAP 1: [verbinding maken met CEF door een syslog/CEF-doorstuur server te implementeren](connect-cef-agent.md)
+- STAP 2: [Voer oplossingen uit die specifiek zijn](connect-cef-solution-config.md) voor de oplossing
+- STAP 3: de [connectiviteit controleren](connect-cef-verify.md)
+
+Raadpleeg de volgende artikelen voor meer informatie over wat u moet doen met de gegevens die u hebt verzameld in azure Sentinel:
 - Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
 

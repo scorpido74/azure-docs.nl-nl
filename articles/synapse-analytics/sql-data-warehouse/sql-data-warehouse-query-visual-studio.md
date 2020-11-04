@@ -11,14 +11,15 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a3e8ea3b0ed2840e5eee7a046fa3a145f82884dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e0aed3ceda369909c6a4aecd03637a82a2dd1b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200695"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305383"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Verbinding maken met Azure Synapse Analytics met Visual Studio en SSDT
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
@@ -28,18 +29,18 @@ ms.locfileid: "85200695"
 > 
 > 
 
-Gebruik Visual Studio om binnen een paar minuten een SQL-groep in azure Synapse op te vragen. Deze methode maakt gebruik van de uitbrei ding SQL Server Data Tools (SSDT) in Visual Studio 2019. 
+Gebruik Visual Studio om binnen een paar minuten een specifieke SQL-groep in azure Synapse op te vragen. Deze methode maakt gebruik van de uitbrei ding SQL Server Data Tools (SSDT) in Visual Studio 2019. 
 
 ## <a name="prerequisites"></a>Vereisten
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een bestaande SQL-groep. Zie [Een SQL-pool maken](create-data-warehouse-portal.md) voor informatie over het maken van een datawarehouse.
+* Een bestaande exclusieve SQL-groep. Zie [een toegewezen SQL-groep maken](create-data-warehouse-portal.md)om er een te maken.
 * SSDT voor Visual Studio. Als u Visual Studio hebt, hebt u waarschijnlijk al SSDT voor Visual Studio. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren](sql-data-warehouse-install-visual-studio.md).
-* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met de SQL-groep](../sql/connect-overview.md)om deze informatie te vinden.
+* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met een toegewezen SQL-groep](../sql/connect-overview.md)om deze informatie te vinden.
 
-## <a name="1-connect-to-your-sql-pool"></a>1. Maak verbinding met de SQL-groep
+## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. Maak verbinding met uw toegewezen SQL-groep
 1. Open Visual Studio 2019.
-2. Open SQL Server-objectverkenner door SQL Server-objectverkenner **weer geven**te selecteren  >  **SQL Server Object Explorer**.
+2. Open SQL Server-objectverkenner door SQL Server-objectverkenner **weer geven** te selecteren  >  **SQL Server Object Explorer**.
    
     ![SQL Server-objectverkenner](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. Klik op het pictogram **SQL Server toevoegen**.
@@ -79,4 +80,4 @@ Nu er een verbinding met uw database is ingesteld, gaat u een query schrijven.
 ## <a name="next-steps"></a>Volgende stappen
 Nu u weet hoe u verbinding maakt en een query uitvoert, kunt u proberen [de gegevens te visualiseren met Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md).
 
-Zie [verifiëren bij SQL-groep](sql-data-warehouse-authentication.md)om uw omgeving te configureren voor Azure Active Directory-verificatie.
+Zie [verifiëren voor exclusieve SQL-groep](sql-data-warehouse-authentication.md)om uw omgeving te configureren voor Azure Active Directory-verificatie.

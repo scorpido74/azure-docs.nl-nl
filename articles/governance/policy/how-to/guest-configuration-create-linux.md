@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een Azure Policy gast configurat
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b072a615cfc31f250d1a605a20e1628d601bb25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c0559e284f1e7022510a458209ec8d985ffc6324
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676640"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305548"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Beleidsregels voor gastconfiguratie voor Linux maken
 
@@ -80,7 +80,7 @@ De **GuestConfiguration** -module installeren in Power shell:
 Zelfs in Linux-omgevingen gebruikt de gast configuratie de gewenste status configuratie als een taal abstractie. De implementatie is gebaseerd op systeem eigen code (C++) zodat Power shell niet hoeft te worden geladen. Er is echter wel een configuratie-MOF vereist waarin de details van de omgeving worden beschreven.
 DSC fungeert als wrapper voor inspecers om te standaardiseren hoe het wordt uitgevoerd, hoe para meters worden opgegeven en hoe uitvoer wordt geretourneerd naar de service. Er is weinig kennis van DSC vereist bij het werken met aangepaste Inspec-inhoud.
 
-#### <a name="configuration-requirements"></a>Configuratie vereisten
+#### <a name="configuration-requirements"></a>Configuratievereisten
 
 De naam van de aangepaste configuratie moet consistent zijn. De naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand en de naam van de gast toewijzing in de Azure Resource Manager sjabloon (ARM-sjabloon) moet hetzelfde zijn.
 
@@ -160,7 +160,7 @@ Met de `New-GuestConfigurationPackage` cmdlet maakt u het pakket. Para meters va
 - **Naam** : naam van het gast configuratie pakket.
 - **Configuratie** : gecompileerd configuratie document volledig pad.
 - **Pad** : pad naar map voor uitvoer. Deze parameter is optioneel. Als u niets opgeeft, wordt het pakket gemaakt in de huidige map.
-- **ChefProfilePath** : volledig pad naar het INSPEC-profiel. Deze para meter wordt alleen ondersteund bij het maken van inhoud om Linux te controleren.
+- **ChefInspecProfilePath** : volledig pad naar het INSPEC-profiel. Deze para meter wordt alleen ondersteund bij het maken van inhoud om Linux te controleren.
 
 Voer de volgende opdracht uit om een pakket te maken met behulp van de configuratie die in de vorige stap is gegeven:
 
@@ -191,7 +191,7 @@ Test-GuestConfigurationPackage `
 De cmdlet ondersteunt ook invoer van de Power shell-pijp lijn. Pipet de uitvoer van de `New-GuestConfigurationPackage` cmdlet naar de `Test-GuestConfigurationPackage` cmdlet.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
 De volgende stap is het publiceren van het bestand naar Azure Blob Storage.  Voor de opdracht `Publish-GuestConfigurationPackage` is de `Az.Storage` module vereist.
@@ -235,7 +235,7 @@ De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de 
 
 Ten slotte publiceert u de beleids definities met de `Publish-GuestConfigurationPolicy` cmdlet. De cmdlet heeft alleen de para meter **Path** die verwijst naar de locatie van de json-bestanden die zijn gemaakt door `New-GuestConfigurationPolicy` .
 
-Als u de opdracht publiceren wilt uitvoeren, moet u toegang hebben tot beleids regels maken in Azure. De specifieke autorisatie vereisten worden beschreven op de pagina [overzicht van Azure Policy](../overview.md) . De beste ingebouwde rol is Inzender voor **resource beleid** .
+Als u de opdracht publiceren wilt uitvoeren, moet u toegang hebben tot beleids regels maken in Azure. De specifieke autorisatie vereisten worden beschreven op de pagina [overzicht van Azure Policy](../overview.md) . De beste ingebouwde rol is Inzender voor **resource beleid**.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
@@ -271,7 +271,7 @@ describe file(attr_path) do
 end
 ```
 
-De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meter** . Met deze para meter wordt een hashtabel met alle details van elke para meter en worden automatisch alle vereiste secties gemaakt van de bestanden die worden gebruikt voor het maken van elke Azure Policy definitie.
+De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meter**. Met deze para meter wordt een hashtabel met alle details van elke para meter en worden automatisch alle vereiste secties gemaakt van de bestanden die worden gebruikt voor het maken van elke Azure Policy definitie.
 
 In het volgende voor beeld wordt een beleids definitie gemaakt om een bestandspad te controleren. de gebruiker geeft het pad op naar het tijdstip van de beleids toewijzing.
 

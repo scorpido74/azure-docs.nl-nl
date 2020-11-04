@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: de8eefd099f3691ae5e5eb5234ae8f76015dd68f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80179506c133de92b56d476c9aa99d55c3e3bbd9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86041112"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305794"
 ---
 # <a name="azure-stream-analytics-configuration-error-codes"></a>Configuratie fout codes Azure Stream Analytics
 
@@ -19,82 +19,82 @@ U kunt activiteiten logboeken en resource Logboeken gebruiken om fouten in het o
 
 ## <a name="eventhubunauthorizedaccess"></a>EventHubUnauthorizedAccess
 
-* **Oorzaak**: Event hub heeft een niet- *geautoriseerde toegangs* fout veroorzaakt.
+* **Oorzaak** : Event hub heeft een niet- *geautoriseerde toegangs* fout veroorzaakt.
 
 ## <a name="eventhubreceiverepochconflict"></a>EventHubReceiverEpochConflict
 
-* **Oorzaak**: er is meer dan een event hub-ontvanger met verschillende epoche waarden.
-* **Aanbeveling**: Zorg ervoor dat *Service Bus Explorer* of een *EventProcessorHost* -toepassing niet is verbonden terwijl uw stream Analytics-taak wordt uitgevoerd.
+* **Oorzaak** : er is meer dan een event hub-ontvanger met verschillende epoche waarden.
+* **Aanbeveling** : Zorg ervoor dat *Service Bus Explorer* of een *EventProcessorHost* -toepassing niet is verbonden terwijl uw stream Analytics-taak wordt uitgevoerd.
 
 ## <a name="eventhubreceiverquotaexceeded"></a>EventHubReceiverQuotaExceeded
 
-* **Oorzaak**: stream Analytics kan geen verbinding maken met een partitie omdat het maximum aantal toegestane ontvangers per partitie in een consumenten groep is bereikt.
-* **Aanbeveling**: Zorg ervoor dat andere stream Analytics-taken of service bus Explorer niet dezelfde Consumer groep gebruiken.
+* **Oorzaak** : stream Analytics kan geen verbinding maken met een partitie omdat het maximum aantal toegestane ontvangers per partitie in een consumenten groep is bereikt.
+* **Aanbeveling** : Zorg ervoor dat andere stream Analytics-taken of service bus Explorer niet dezelfde Consumer groep gebruiken.
 
 ## <a name="eventhuboutputthrottled"></a>EventHubOutputThrottled
 
-* **Oorzaak**: er is een fout opgetreden tijdens het schrijven van gegevens naar de Event hub vanwege beperking.
-* **Aanbeveling**: als dit consistent gebeurt, moet u de door Voer bijwerken.
+* **Oorzaak** : er is een fout opgetreden tijdens het schrijven van gegevens naar de Event hub vanwege beperking.
+* **Aanbeveling** : als dit consistent gebeurt, moet u de door Voer bijwerken.
 
 ## <a name="eventhuboutputinvalidconnectionconfig"></a>EventHubOutputInvalidConnectionConfig
 
-* **Oorzaak**: de gegeven verbindings configuratie is onjuist.
-* **Aanbeveling**: Corrigeer de configuratie en start de taak opnieuw.
+* **Oorzaak** : de gegeven verbindings configuratie is onjuist.
+* **Aanbeveling** : Corrigeer de configuratie en start de taak opnieuw.
 
 ## <a name="eventhuboutputinvalidhostname"></a>EventHubOutputInvalidHostname
 
-* **Oorzaak**: de Event hub-host is onbereikbaar.
-* **Aanbeveling**: Zorg ervoor dat de opgegeven hostnaam juist is.
+* **Oorzaak** : de Event hub-host is onbereikbaar.
+* **Aanbeveling** : Zorg ervoor dat de opgegeven hostnaam juist is.
 
 ## <a name="eventhuboutputunexpectedpartitioncount"></a>EventHubOutputUnexpectedPartitionCount
 
-* **Oorzaak**: de EventHub-afzender heeft een onverwacht aantal EventHub-partities aangetroffen.
-* **Aanbeveling**: start de stream Analytics-taak opnieuw als het aantal partities van de EventHub is gewijzigd.
+* **Oorzaak** : de EventHub-afzender heeft een onverwacht aantal EventHub-partities aangetroffen.
+* **Aanbeveling** : start de stream Analytics-taak opnieuw als het aantal partities van de EventHub is gewijzigd.
 
 ## <a name="cosmosdbpartitionkeynotfound"></a>CosmosDBPartitionKeyNotFound
 
-* **Oorzaak**: stream Analytics de partitie sleutel van een bepaalde Cosmos DB verzameling niet vinden in de data base.
-* **Aanbeveling**: Zorg ervoor dat er een geldige partitie sleutel is opgegeven voor de verzameling in Cosmos db.
+* **Oorzaak** : stream Analytics de partitie sleutel van een bepaalde Cosmos DB verzameling niet vinden in de data base.
+* **Aanbeveling** : Zorg ervoor dat er een geldige partitie sleutel is opgegeven voor de verzameling in Cosmos db.
 
 ## <a name="cosmosdbinvalidpartitionkeycolumn"></a>CosmosDBInvalidPartitionKeyColumn
 
-* **Oorzaak**: wordt gegenereerd wanneer een partitie sleutel geen blad knooppunt of op het hoogste niveau is.
+* **Oorzaak** : wordt gegenereerd wanneer een partitie sleutel geen blad knooppunt of op het hoogste niveau is.
 
 ## <a name="cosmosdbinvalididcolumn"></a>CosmosDBInvalidIdColumn
 
-* **Oorzaak**: de query-uitvoer mag de kolom \[ -id niet bevatten] als er een andere kolom is geselecteerd als de primaire-sleutel eigenschap.
+* **Oorzaak** : de query-uitvoer mag de kolom \[ -id niet bevatten] als er een andere kolom is geselecteerd als de primaire-sleutel eigenschap.
 
 ## <a name="cosmosdbdatabasenotfound"></a>CosmosDBDatabaseNotFound
 
-* **Oorzaak**: stream Analytics kan geen CosmosDB-data base vinden.
+* **Oorzaak** : stream Analytics kan geen CosmosDB-data base vinden.
 
 ## <a name="cosmosdbcollectionnotfound"></a>CosmosDBCollectionNotFound
 
-* **Oorzaak**: stream Analytics kunt een bepaalde Cosmos DB verzameling niet vinden in een Data Base.
+* **Oorzaak** : stream Analytics kunt een bepaalde Cosmos DB verzameling niet vinden in een Data Base.
 
 ## <a name="cosmosdboutputwritethrottling"></a>CosmosDBOutputWriteThrottling
 
-* **Oorzaak**: er is een fout opgetreden tijdens het schrijven van gegevens als gevolg van het beperken van Cosmos db.
-* **Aanbeveling**: Voer een upgrade uit van de prestatie tier van de verzameling en stel de prestaties van uw data base af.
+* **Oorzaak** : er is een fout opgetreden tijdens het schrijven van gegevens als gevolg van het beperken van Cosmos db.
+* **Aanbeveling** : Voer een upgrade uit van de prestatie tier van de verzameling en stel de prestaties van uw data base af.
 
 ## <a name="sqldatabaseconnectionstringerror"></a>SQLDatabaseConnectionStringError
 
-* **Oorzaak**: de stream Analytics-taak heeft een verificatie fout aangetroffen.
-* **Aanbeveling**: Controleer of de SQL database connection string juist is.
+* **Oorzaak** : de stream Analytics-taak heeft een verificatie fout aangetroffen.
+* **Aanbeveling** : Controleer of de SQL database connection string juist is.
 
 ## <a name="sqldatabasemanagedidentityauthenticationerror"></a>SQLDatabaseManagedIdentityAuthenticationError
 
-* **Oorzaak**: de stream Analytics-taak heeft een verificatie fout aangetroffen. 
-* **Aanbeveling**: Controleer of de account naam correct is geconfigureerd en of de beheerde identiteit van de taak toegang heeft tot de SQL database.
+* **Oorzaak** : de stream Analytics-taak heeft een verificatie fout aangetroffen. 
+* **Aanbeveling** : Controleer of de account naam correct is geconfigureerd en of de beheerde identiteit van de taak toegang heeft tot de SQL database.
 
 ## <a name="sqldatabaseoutputnotableerror"></a>SQLDatabaseOutputNoTableError
 
-* **Oorzaak**: stream Analytics kunt de schema gegevens voor een bepaalde tabel niet vinden.
+* **Oorzaak** : stream Analytics kunt de schema gegevens voor een bepaalde tabel niet vinden.
 
 ## <a name="sqldwoutputinvalidserviceedition"></a>SQLDWOutputInvalidServiceEdition
 
-* **Oorzaak**: SQL database wordt niet ondersteund.
-* **Aanbeveling**: gebruik de SQL-groep Synapse.
+* **Oorzaak** : SQL database wordt niet ondersteund.
+* **Aanbeveling** : gebruik exclusieve SQL-groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 

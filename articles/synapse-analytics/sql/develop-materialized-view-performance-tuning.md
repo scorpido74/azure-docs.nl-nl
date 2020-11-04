@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d10b7084cfc49d60e9d14c3c857d1ade839398ac
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474764"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305107"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
+# <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Prestaties afstemmen met gerealiseerde weer gaven met exclusieve SQL-groep in azure Synapse Analytics
 
-In de Synapse-SQL-pool bieden de gerealiseerde weer gaven een lage onderhouds methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat een query wordt gewijzigd. In dit artikel vindt u de algemene richt lijnen voor het gebruik van gerealiseerde weer gaven.
+In de toegewezen SQL-groep bieden gerealiseerde weer gaven een lage onderhouds methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat er een query wordt gewijzigd. In dit artikel vindt u de algemene richt lijnen voor het gebruik van gerealiseerde weer gaven.
 
 ## <a name="materialized-views-vs-standard-views"></a>Gerealiseerde weer gaven versus standaard weergaven
 
@@ -27,7 +27,7 @@ SQL-pool ondersteunt zowel standaard als gerealiseerde weer gaven.  Beide zijn v
 
 Een standaard weergave berekent de gegevens telkens wanneer de weer gave wordt gebruikt.  Er zijn geen gegevens opgeslagen op schijf. Personen gebruiken meestal standaard weergaven als een hulp middel waarmee u de logische objecten en query's in een Data Base kunt ordenen.  Als u een standaard weergave wilt gebruiken, moet er direct naar een query worden verwezen.
 
-Met een gerealiseerde weer gave worden de gegevens in de SQL-groep, net als in een tabel, opgeslagen en bewaard.  Herberekening is niet nodig wanneer een gerealiseerde weer gave wordt gebruikt.  Daarom kunnen query's die gebruikmaken van alle of een subset van de gegevens in gerealiseerde weer gaven, betere prestaties krijgen.  Daarnaast kunt u met query's gebruikmaken van een gerealiseerde weer gave zonder dat hiervoor direct een verwijzing wordt gemaakt. u hoeft geen toepassings code te wijzigen.  
+Een gerealiseerde weer gave van vooraf berekende, opgeslagen en onderhoudt de gegevens in een exclusieve SQL-groep, net als een tabel.  Herberekening is niet nodig wanneer een gerealiseerde weer gave wordt gebruikt.  Daarom kunnen query's die gebruikmaken van alle of een subset van de gegevens in gerealiseerde weer gaven, betere prestaties krijgen.  Daarnaast kunt u met query's gebruikmaken van een gerealiseerde weer gave zonder dat hiervoor direct een verwijzing wordt gemaakt. u hoeft geen toepassings code te wijzigen.  
 
 De meeste standaard weergave vereisten zijn nog steeds van toepassing op een gerealiseerde weer gave. Zie [gerealiseerde weer gave maken als selecteren](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)voor meer informatie over de syntaxis van gerealiseerde weer gaven en andere vereisten.
 
@@ -38,7 +38,7 @@ De meeste standaard weergave vereisten zijn nog steeds van toepassing op een ger
 |Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt
 |Snelheid om weergave gegevens op te halen uit complexe query's     | Langzaam                                         | Snel  
 |Extra opslag ruimte                   | Nee                                           | Ja
-|Syntax                          | CREATE VIEW                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
+|Syntaxis                          | CREATE VIEW                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
 
 ## <a name="benefits-of-materialized-views"></a>Voor delen van gerealiseerde weer gaven
 
@@ -46,13 +46,13 @@ Een goed ontworpen gerealiseerde weer gave biedt de volgende voor delen:
 
 - Beperkte uitvoerings tijd voor complexe query's met samen voegingen en statistische functies. Hoe complexer de query, des te hoger de mogelijkheden voor het besparen van de uitvoering. Het meest voor deel is opgedaan wanneer de kosten van een query hoog zijn en de resulterende gegevensset klein is.  
 
-- De Optimizer in de SQL-groep kan automatisch geïmplementeerde gerealiseerde weer gaven gebruiken om de uitvoerings plannen voor query's te verbeteren.  Dit proces is transparant voor gebruikers die snellere query prestaties bieden en er hoeven geen query's te worden uitgevoerd om direct naar de gerealiseerde weer gaven te verwijzen.
+- De query optimalisatie in de toegewezen SQL-groep kan automatisch geïmplementeerde gerealiseerde weer gaven gebruiken om de uitvoerings plannen voor query's te verbeteren.  Dit proces is transparant voor gebruikers die snellere query prestaties bieden en er hoeven geen query's te worden uitgevoerd om direct naar de gerealiseerde weer gaven te verwijzen.
 
 - Vereist weinig onderhoud voor de weer gaven.  In een gerealiseerde weer gave worden gegevens op twee plaatsen opgeslagen, een geclusterde column store-index voor de eerste gegevens op de weer gave en een Delta-Archief voor de incrementele gegevens wijzigingen.  Alle gegevens wijzigingen van de basis tabellen worden op synchrone wijze automatisch toegevoegd aan de Delta opslag.  Een achtergrond proces (tuple-overschakeling) verplaatst de gegevens van het Delta archief periodiek naar de column store-index van de weer gave.  Met dit ontwerp kunt u query's uitvoeren op gerealiseerde weer gaven om dezelfde gegevens te retour neren als het rechtstreeks uitvoeren van query's op de basis tabellen.
 - De gegevens in een gerealiseerde weer gave kunnen anders worden gedistribueerd vanuit de basis tabellen.  
 - Gegevens in gerealiseerde weer gaven hebben dezelfde hoge Beschik baarheid en tolerantie voor delen als gegevens in reguliere tabellen.  
 
-In vergelijking met andere data warehouse-providers bieden de gerealiseerde weer gaven die in de SQL-groep zijn geïmplementeerd ook de volgende extra voor delen:
+In vergelijking met andere data warehouse-providers bieden de gerealiseerde weer gaven die in de toegewezen SQL-pool worden geïmplementeerd ook de volgende extra voor delen:
 
 - Automatische en synchrone gegevens vernieuwing met gegevens wijzigingen in basis tabellen. Er is geen gebruikers actie vereist.
 - Ondersteuning voor uitgebreide statistische functies. Zie [gerealiseerde weer gave maken als Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
@@ -151,7 +151,7 @@ Om te voor komen dat de prestaties van query's worden vertraagd, is het een goed
 
 **Gerealiseerde weer gave en caching van resultaten sets**
 
-Deze twee functies worden rond dezelfde tijd geïntroduceerd in de SQL-groep voor het afstemmen van de query prestaties. Het opslaan in de cache voor de resultatenset wordt gebruikt voor het bereiken van hoge gelijktijdigheid en snelle respons tijden van herhaalde query's tegen statische gegevens.  
+Deze twee functies worden op hetzelfde moment geïntroduceerd in een toegewezen SQL-groep voor het afstemmen van de query prestaties. Het opslaan in de cache voor de resultatenset wordt gebruikt voor het bereiken van hoge gelijktijdigheid en snelle respons tijden van herhaalde query's tegen statische gegevens.  
 
 Om het resultaat in de cache te kunnen gebruiken, moet de vorm van de cache die query vraagt overeenkomen met de query die de cache heeft geproduceerd.  Daarnaast moet het resultaat in de cache op de hele query worden toegepast.  
 

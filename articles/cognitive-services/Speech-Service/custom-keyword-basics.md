@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+zone_pivot_groups: keyword-quickstart
+ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166451"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305854"
 ---
 # <a name="get-started-with-custom-keyword"></a>Aan de slag met Aangepast sleutelwoord
 
@@ -36,9 +37,9 @@ Voordat u een aangepast tref woord kunt gebruiken, moet u een tref woord maken m
 
 1. Ga naar de [Speech Studio](https://aka.ms/sdsdk-speechportal) en **Meld** u aan of als u nog geen abonnement op spraak hebt, kiest u [**een abonnement maken**](https://go.microsoft.com/fwlink/?linkid=2086754).
 
-1. Maak een **Nieuw project**op de pagina [aangepast tref woord](https://aka.ms/sdsdk-wakewordportal) . 
+1. Maak een **Nieuw project** op de pagina [aangepast tref woord](https://aka.ms/sdsdk-wakewordportal) . 
 
-1. Voer een **naam**, een optionele **Beschrijving**en selecteer de taal. U hebt één project per taal nodig en de ondersteuning is momenteel beperkt tot de `en-US` taal.
+1. Voer een **naam** , een optionele **Beschrijving** en selecteer de taal. U hebt één project per taal nodig en de ondersteuning is momenteel beperkt tot de `en-US` taal.
 
     ![Uw trefwoord project beschrijven](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -48,7 +49,7 @@ Voordat u een aangepast tref woord kunt gebruiken, moet u een tref woord maken m
 
 1. Als u een nieuw trefwoord model wilt maken, klikt u op **model trainen**.
 
-1. Voer een **naam** in voor het model, een optionele **Beschrijving**en het **tref woord** van uw keuze en klik vervolgens op **volgende**. Zie de [richt lijnen](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) voor het kiezen van een effectief tref woord.
+1. Voer een **naam** in voor het model, een optionele **Beschrijving** en het **tref woord** van uw keuze en klik vervolgens op **volgende**. Zie de [richt lijnen](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) voor het kiezen van een effectief tref woord.
 
     ![Voer uw tref woord in](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -64,25 +65,17 @@ Voordat u een aangepast tref woord kunt gebruiken, moet u een tref woord maken m
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>Een trefwoord model gebruiken met de SDK
 
-Laad eerst uw trefwoorden model bestand met behulp van de `FromFile()` statische functie. dit retourneert een `KeywordRecognitionModel` . Gebruik het pad naar het `.table` bestand dat u hebt gedownload vanuit speech Studio. Daarnaast maakt u een `AudioConfig` met de standaard microfoon en vervolgens een nieuw exemplaar `KeywordRecognizer` van de audio configuratie.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [C# Basics include](includes/how-to/keyword-recognition/keyword-basics-csharp.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python Basics include](includes/how-to/keyword-recognition/keyword-basics-python.md)]
+::: zone-end
 
-var keywordModel = KeywordRecognitionModel.FromFile("your/path/to/Activate_device.table");
-using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-using var keywordRecognizer = new KeywordRecognizer(audioConfig);
-```
-
-Vervolgens wordt het uitvoeren van trefwoord herkenning uitgevoerd met één aanroep naar `RecognizeOnceAsync()` door uw model object door te geven. Hiermee wordt een sessie voor het herkennen van een tref woord gestart totdat het sleutel woord is herkend. Daarom gebruikt u dit ontwerp patroon doorgaans in toepassingen met meerdere threads of in gevallen waarin u voor onbepaalde tijd kunt wachten op een Wake-woord.
-
-```csharp
-KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(keywordModel);
-```
-
-> [!NOTE]
-> In het voor beeld dat hier wordt weer gegeven, wordt gebruikgemaakt van lokale woord herkenning, omdat hiervoor geen `SpeechConfig` object voor verificatie context is vereist en er geen contact wordt gemaakt met de back-end. U kunt echter zowel trefwoord herkenning als verificatie uitvoeren waarbij [een continue back-endverbinding wordt gebruikt](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword).
+::: zone pivot="programming-languages-objectivec-swift"
+[!INCLUDE [ObjectiveC/Swift Basics include](includes/how-to/keyword-recognition/keyword-basics-objc.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>Volgende stappen
 

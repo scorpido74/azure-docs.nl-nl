@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed54fda744978ac43bbffc6a70d6b331e85dc5e7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720449"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305601"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>De levens cyclus van het team data Science-proces
 
@@ -43,12 +43,12 @@ De levens cyclus van TDSP is gemodelleerd als een reeks herhaalde stappen die on
 
 Voor elke fase bieden we de volgende informatie:
 
-   * **Doel**stellingen: de specifieke doel stellingen.
-   * **Hoe kan ik dit doen**: een overzicht van de specifieke taken en richt lijnen voor het volt ooien ervan.
-   * **Artefacten**: de producten en de ondersteuning voor het produceren hiervan.
+   * **Doel** stellingen: de specifieke doel stellingen.
+   * **Hoe kan ik dit doen** : een overzicht van de specifieke taken en richt lijnen voor het volt ooien ervan.
+   * **Artefacten** : de producten en de ondersteuning voor het produceren hiervan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 We bieden volledige end-to-end-instructies die alle stappen in het proces voor specifieke scenario's demonstreren. Het artikel [voorbeeld](walkthroughs.md) scenario's bevat een lijst met de scenario's met koppelingen en miniaturen. In de scenario's wordt uitgelegd hoe u Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn kunt combi neren om een intelligente toepassing te maken. 
 
-Zie [de TDSP gebruiken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.
+Zie [de TDSP gebruiken met Azure machine learning](./index.yml)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.

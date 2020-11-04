@@ -1,7 +1,7 @@
 ---
 title: Een model implementeren voor gebruik met Cognitive Search
 titleSuffix: Azure Machine Learning
-description: In dit artikel leert u hoe u Azure Machine Learning kunt gebruiken om een model te implementeren voor gebruik met Azure Cognitive Search. Cognitive Search kunnen modellen die door Azure Machine Learning zijn geïmplementeerd als aangepaste vaardigheid gebruiken om de zoek ervaring te verrijken.
+description: Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model voor gebruik met Cognitive Search. Het model wordt gebruikt als aangepaste vaardigheid voor het verrijken van de zoek ervaring.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.custom: deploy
-ms.openlocfilehash: 5d198a27d7aeca679f1ee17f35d3f4384283f13c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: e1eebf88b72c87ce9db02760c5c44a0aa25c57cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998910"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305915"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Een model implementeren voor gebruik met Cognitive Search
 
@@ -25,7 +25,7 @@ In dit artikel leert u hoe u Azure Machine Learning kunt gebruiken om een model 
 
 Cognitive Search voert inhouds verwerking uit via heterogene-inhoud, zodat deze kan worden doorzocht door mensen of toepassingen. Dit proces kan worden uitgebreid met behulp van een model dat is geïmplementeerd vanuit Azure Machine Learning.
 
-Azure Machine Learning kunt een getraind model implementeren als een webservice. De webservice wordt vervolgens Inge sloten in een Cognitive Search _vaardigheid_, die onderdeel wordt van de verwerkings pijplijn.
+Azure Machine Learning kunt een getraind model implementeren als een webservice. De webservice wordt vervolgens Inge sloten in een Cognitive Search _vaardigheid_ , die onderdeel wordt van de verwerkings pijplijn.
 
 > [!IMPORTANT]
 > De informatie in dit artikel is specifiek voor de implementatie van het model. Het bevat informatie over de ondersteunde implementatie configuraties waarmee het model door Cognitive Search kan worden gebruikt.
@@ -46,7 +46,7 @@ Bij het implementeren van een model voor gebruik met Azure Cognitive Search moet
 
 * Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
-* Een python-ontwikkel omgeving met de Azure Machine Learning SDK geïnstalleerd. Zie [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)voor meer informatie.  
+* Een python-ontwikkel omgeving met de Azure Machine Learning SDK geïnstalleerd. Zie [Azure machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)voor meer informatie.  
 
 * Een geregistreerd model. Als u geen model hebt, gebruikt u het voorbeeld notitieblok op [https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill) .
 
@@ -75,7 +75,7 @@ except:
 
 ## <a name="create-a-kubernetes-cluster"></a>Een Kubernetes-cluster maken
 
-**Geschatte tijd**: circa 20 minuten.
+**Geschatte tijd** : circa 20 minuten.
 
 Een Kubernetes-cluster is een set virtuele-machine-instanties (knoop punten genaamd) die worden gebruikt voor het uitvoeren van container toepassingen.
 
@@ -252,7 +252,7 @@ from azureml.core.model import InferenceConfig
 inf_config = InferenceConfig(entry_script='score.py', environment=myenv)
 ```
 
-Zie de referentie documentatie voor [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true)voor meer informatie.
+Zie de referentie documentatie voor [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)voor meer informatie.
 
 ## <a name="deploy-the-model"></a>Het model implementeren
 
@@ -277,7 +277,7 @@ aks_service.wait_for_deployment(show_output = True)
 print(aks_service.state)
 ```
 
-Zie de referentie documentatie voor [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)voor meer informatie.
+Zie de referentie documentatie voor [model](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)voor meer informatie.
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Een voorbeeld query voor uw service uitgeven
 

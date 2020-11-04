@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9922ddf0859e4f28d5759108581f5ef538f0c294
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343689"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305563"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Een Machine Learning Studio-webservice (klassiek) gebruiken
 
-**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Nadat u een Azure Machine Learning Studio (klassiek) voorspellend model als een webservice hebt geïmplementeerd, kunt u een REST API gebruiken om gegevens te verzenden en voor spellingen te ontvangen. U kunt de gegevens in realtime of in batch modus verzenden.
@@ -52,7 +52,7 @@ De API-sleutel voor een nieuwe Machine Learning-webservice ophalen:
 1. Klik in het Azure Machine Learning Web Services-portal op **Web Services** in het bovenste menu.
 2. Klik op de webservice waarvoor u de sleutel wilt ophalen.
 3. Klik in het menu bovenaan op **verbruikt**.
-4. Kopieer de **primaire sleutel**en sla deze op.
+4. Kopieer de **primaire sleutel** en sla deze op.
 
 De API-sleutel voor een klassieke Machine Learning-webservice ophalen:
 
@@ -60,7 +60,7 @@ De API-sleutel voor een klassieke Machine Learning-webservice ophalen:
 2. Klik op de webservice waarmee u werkt.
 3. Klik op het eind punt waarvoor u de sleutel wilt ophalen.
 4. Klik in het menu bovenaan op **verbruikt**.
-5. Kopieer de **primaire sleutel**en sla deze op.
+5. Kopieer de **primaire sleutel** en sla deze op.
 
 ### <a name="classic-web-service"></a>Klassieke webservice
  U kunt ook een sleutel voor een klassieke webservice ophalen van Machine Learning Studio (klassiek).

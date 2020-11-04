@@ -8,17 +8,17 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e643a7ce5ccf4aa5107df1e505d90a0767517350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070408"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306910"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure Table Storage-bewerkingen uitvoeren met Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Azure Table Storage is een NoSQL-gegevens opslag die u kunt gebruiken om grote sets gestructureerde, niet-relationele gegevens op te slaan en op te vragen. De belangrijkste onderdelen van de service zijn tabellen, entiteiten en eigenschappen. Een tabel is een verzameling entiteiten. Een entiteit is een set eigenschappen. Elke entiteit kan Maxi maal 252 eigenschappen hebben, die alle naam/waarde-paren zijn. In dit artikel wordt ervan uitgegaan dat u al bekend bent met de Azure Table Storage service-concepten. Zie voor gedetailleerde informatie [over het Table service-gegevens model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) en [aan de slag met Azure Table Storage met behulp van .net](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Azure Table Storage is een NoSQL-gegevens opslag die u kunt gebruiken om grote sets gestructureerde, niet-relationele gegevens op te slaan en op te vragen. De belangrijkste onderdelen van de service zijn tabellen, entiteiten en eigenschappen. Een tabel is een verzameling entiteiten. Een entiteit is een set eigenschappen. Elke entiteit kan Maxi maal 252 eigenschappen hebben, die alle naam/waarde-paren zijn. In dit artikel wordt ervan uitgegaan dat u al bekend bent met de Azure Table Storage service-concepten. Zie voor gedetailleerde informatie [over het Table service-gegevens model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) en [aan de slag met Azure Table Storage met behulp van .net](../../cosmos-db/tutorial-develop-table-dotnet.md).
 
 In dit artikel wordt beschreven hoe algemene Azure Table Storage-bewerkingen worden uitgevoerd. In deze zelfstudie leert u procedures om het volgende te doen: 
 
@@ -38,7 +38,7 @@ Voor de voor beelden zijn AZ Power shell-modules `Az.Storage (1.1.0 or greater)`
 > Als u deze Azure-functie vanuit Power shell wilt gebruiken, moet u de `Az` module hebben geïnstalleerd. De huidige versie van `AzTable` is niet compatibel met de oudere AzureRM-module.
 > Volg de [meest recente installatie-instructies voor het installeren van AZ module](/powershell/azure/install-az-ps) , indien nodig.
 
-Nadat Azure PowerShell is geïnstalleerd of bijgewerkt, moet u de module **AzTable**installeren. Deze bevat de opdrachten voor het beheren van de entiteiten. Als u deze module wilt installeren, voert u Power shell uit als beheerder en gebruikt u de opdracht **install-module** .
+Nadat Azure PowerShell is geïnstalleerd of bijgewerkt, moet u de module **AzTable** installeren. Deze bevat de opdrachten voor het beheren van de entiteiten. Als u deze module wilt installeren, voert u Power shell uit als beheerder en gebruikt u de opdracht **install-module** .
 
 > [!IMPORTANT]
 > Voor de compatibiliteit van module namen hebben we deze module nog steeds in de oude naam `AzureRmStorageTables` in PowerShell Gallery. In dit document wordt alleen verwezen naar de nieuwe naam.
@@ -57,7 +57,7 @@ Add-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Lijst met locaties ophalen
 
-Als u niet weet welke locatie u kunt gebruiken, kunt u een lijst met de beschikbare locaties weergeven. Selecteer de gewenste locatie in de lijst. In deze voor beelden wordt **Oost**-US gebruikt. Sla deze waarde op in de **locatie** van de variabele voor toekomstig gebruik.
+Als u niet weet welke locatie u kunt gebruiken, kunt u een lijst met de beschikbare locaties weergeven. Selecteer de gewenste locatie in de lijst. In deze voor beelden wordt **Oost** -US gebruikt. Sla deze waarde op in de **locatie** van de variabele voor toekomstig gebruik.
 
 ```powershell
 Get-AzLocation | select Location
@@ -120,7 +120,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 > [!IMPORTANT]
 > Het gebruik van CloudTable is verplicht bij het werken met de **AzTable** Power shell-module. Roep de opdracht **Get-AzStorageTable** om de verwijzing naar dit object op te halen. Met deze opdracht wordt ook de tabel gemaakt als deze nog niet bestaat.
 
-Als u bewerkingen wilt uitvoeren voor een tabel met behulp van **AzTable**, moet u een verwijzing naar de eigenschap CloudTable van een specifieke tabel hebben.
+Als u bewerkingen wilt uitvoeren voor een tabel met behulp van **AzTable** , moet u een verwijzing naar de eigenschap CloudTable van een specifieke tabel hebben.
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable

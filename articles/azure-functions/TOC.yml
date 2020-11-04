@@ -270,7 +270,7 @@
         - name: Verbindingen beheren
           href: manage-connections.md
           displayName: best practice
-        - name: Foutafhandeling
+        - name: Foutafhandeling en nieuwe pogingen
           href: functions-bindings-error-pages.md
         - name: Handmatig een niet door HTTP geactiveerde functie uitvoeren
           href: functions-manually-run-non-http.md

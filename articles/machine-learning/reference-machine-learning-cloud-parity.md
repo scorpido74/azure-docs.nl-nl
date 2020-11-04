@@ -1,7 +1,7 @@
 ---
 title: Pariteit tussen open bare en soevereine regio's
 titleSuffix: Azure Machine Learning
-description: Sommige functies van Azure Machine Learning, zoals open bare preview-functies, zijn mogelijk alleen beschikbaar in open bare-Cloud regio's. Dit artikel bevat een overzicht van de functies die ook beschikbaar zijn in de regio's Azure Government, Azure Duitsland en Azure China 21Vianet.
+description: In dit artikel vindt u een overzicht van de functie pariteit tussen open bare Cloud en de regio's Azure Government, Azure Duitsland en Azure China 21Vianet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddfe1344b235500f0f1ea69b6e3d8c537f96b855
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426523"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305743"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning soevereine Cloud pariteit
 

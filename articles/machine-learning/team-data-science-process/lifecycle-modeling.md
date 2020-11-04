@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3845c5e5d7cf6bb372744fb3c740c44aa2b94236
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336442"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305615"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Model fase van de levens cyclus van het team data Science-proces
 
@@ -41,8 +41,8 @@ Hier volgt een visuele representatie van de levens cyclus van TDSP:
 ## <a name="how-to-do-it"></a>Hoe u dit doet
 Er zijn drie hoofd taken die in deze fase worden behandeld:
 
-  * **Functie techniek**: Maak gegevens functies van de onbewerkte gegevens om model trainingen te vergemakkelijken.
-  * **Model training**: Zoek het model dat de vraag het meest nauw keurig beantwoordt door de metrische gegevens over het slagen te vergelijken.
+  * **Functie techniek** : Maak gegevens functies van de onbewerkte gegevens om model trainingen te vergemakkelijken.
+  * **Model training** : Zoek het model dat de vraag het meest nauw keurig beantwoordt door de metrische gegevens over het slagen te vergelijken.
   * Bepaal of uw model **geschikt is voor productie.**
 
 ### <a name="feature-engineering"></a>Functie-engineering
@@ -59,11 +59,11 @@ De training voor het model proces bestaat uit de volgende stappen:
 
    * **Splits de invoer gegevens** wille keurig splitsen voor model lering in een set met trainings gegevens en een test gegevensverzameling.
    * **Bouw de modellen** met behulp van de gegevensset voor training.
-   * **Evalueer** de training en de test gegevensset. Gebruik een reeks concurrerende algoritmen voor machine learning samen met de verschillende bijbehorende afstemmings parameters (ook wel een *parameter sweep*genoemd) die zijn gericht op het beantwoorden van de vraag naar belang stelling met de huidige gegevens.
+   * **Evalueer** de training en de test gegevensset. Gebruik een reeks concurrerende algoritmen voor machine learning samen met de verschillende bijbehorende afstemmings parameters (ook wel een *parameter sweep* genoemd) die zijn gericht op het beantwoorden van de vraag naar belang stelling met de huidige gegevens.
    * **Bepaal de ' beste ' oplossing** om de vraag te beantwoorden door de metrische gegevens over het succes te vergelijken tussen alternatieve methoden.
 
 > [!NOTE]
-> **Lekkage voor komen**: u kunt lekkage van gegevens veroorzaken als u gegevens opneemt van buiten de set met trainingen die een model of machine learning-algoritme mogelijk maakt om onrealistisch goede voor spellingen te maken. Lekkage is een gemeen schappelijke reden voor het verkrijgen van zenuwen bij gegevens wetenschappers wanneer ze voorspellende resultaten ontvangen die te mooi lijken om waar te zijn. Deze afhankelijkheden kunnen moeilijk te detecteren zijn. Om te voor komen dat lekkage vaak een iteratie vereist tussen het bouwen van een analyse gegevensset, het maken van een model en het evalueren van de nauw keurigheid van de resultaten. 
+> **Lekkage voor komen** : u kunt lekkage van gegevens veroorzaken als u gegevens opneemt van buiten de set met trainingen die een model of machine learning-algoritme mogelijk maakt om onrealistisch goede voor spellingen te maken. Lekkage is een gemeen schappelijke reden voor het verkrijgen van zenuwen bij gegevens wetenschappers wanneer ze voorspellende resultaten ontvangen die te mooi lijken om waar te zijn. Deze afhankelijkheden kunnen moeilijk te detecteren zijn. Om te voor komen dat lekkage vaak een iteratie vereist tussen het bouwen van een analyse gegevensset, het maken van een model en het evalueren van de nauw keurigheid van de resultaten. 
 > 
 > 
 
@@ -74,7 +74,7 @@ De artefacten die in deze fase worden geproduceerd, zijn onder andere:
 
    * [Functie sets](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): de functies die voor het model leren zijn ontwikkeld, worden beschreven in de sectie **functie sets** van het rapport **gegevens definitie** . Het bevat aanwijzers naar de code voor het genereren van de functies en een beschrijving van de manier waarop de functie is gegenereerd.
    * [Model rapport](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): voor elk model dat wordt geprobeerd, een standaard rapport op basis van een sjabloon dat details bevat over elk experiment, wordt er geproduceerd.
-   * **Beslissing van het controle punt**: evalueren of het model voldoende voor productie wordt uitgevoerd. Hier volgen enkele belang rijke vragen die u kunt stellen:
+   * **Beslissing van het controle punt** : evalueren of het model voldoende voor productie wordt uitgevoerd. Hier volgen enkele belang rijke vragen die u kunt stellen:
      * Beantwoordt het model de vraag met voldoende betrouw baarheid op basis van de test gegevens? 
      * Moet u andere benaderingen proberen? Kunt u extra gegevens verzamelen, meer functies uitvoeren of experimenteren met andere algoritmen?
 
@@ -90,4 +90,4 @@ Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
 We bieden volledige end-to-end-instructies die alle stappen in het proces voor specifieke scenario's demonstreren. Het artikel [voorbeeld](walkthroughs.md) scenario's bevat een lijst met de scenario's met koppelingen en miniaturen. In de scenario's wordt uitgelegd hoe u Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn kunt combi neren om een intelligente toepassing te maken. 
 
-Zie [de TDSP gebruiken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio. 
+Zie [de TDSP gebruiken met Azure machine learning](./index.yml)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.

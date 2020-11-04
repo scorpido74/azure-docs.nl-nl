@@ -1,6 +1,6 @@
 ---
-title: Een query uitvoeren op Parquet-bestanden met behulp van SQL op aanvraag (preview)
-description: In dit artikel leert u hoe u een query kunt uitvoeren op Parquet-bestanden met behulp van SQL op aanvraag (preview).
+title: Parquet-bestanden doorzoeken met serverloze SQL-pool (preview)
+description: In dit artikel leert u hoe u een query kunt uitvoeren op Parquet-bestanden met serverloze SQL-pool (preview).
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e00ecd6048239683951a2d1e60d3bcb0eb5aa68
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242429"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306848"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op Parquet-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
+# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op Parquet-bestanden met serverloze SQL-pool (preview) in azure Synapse Analytics
 
-In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) waarmee Parquet-bestanden worden gelezen.
+In dit artikel leert u hoe u een query schrijft met behulp van serverloze SQL-pool (preview) waarmee Parquet-bestanden worden gelezen.
 
 ## <a name="quickstart-example"></a>Quick start-voor beeld
 
@@ -111,7 +111,7 @@ U hoeft de component OPENROWSET WITH niet te gebruiken bij het lezen van Parquet
 In het onderstaande voor beeld ziet u de mogelijkheden voor het automatisch afnemen van schema's voor Parquet-bestanden. Het retourneert het aantal rijen in september 2017 zonder een schema op te geven.
 
 > [!NOTE]
-> U hoeft geen kolommen op te geven in de component OPENROWSET WITH bij het lezen van Parquet-bestanden. In dat geval worden meta gegevens in de SQL-query service op aanvraag gebruikt in het Parquet-bestand en worden kolommen op naam gebonden.
+> U hoeft geen kolommen op te geven in de component OPENROWSET WITH bij het lezen van Parquet-bestanden. In dat geval gebruiken de query service voor serverloze SQL-Pools meta gegevens in het Parquet-bestand en bindt kolommen op naam.
 
 ```sql
 SELECT TOP 10 *
@@ -128,7 +128,7 @@ FROM
 De gegevensset die in dit voor beeld wordt gegeven, wordt in afzonderlijke submappen verdeeld (gepartitioneerd). U kunt met behulp van de functie filepath specifieke partities richten. In dit voor beeld worden de ritbedrag bedragen per jaar, maand en payment_type voor de eerste drie maanden van 2017 weer gegeven.
 
 > [!NOTE]
-> De SQL op aanvraag-query is compatibel met hive/Hadoop-partitie schema.
+> De query van de serverloze SQL-groep is compatibel met het Hive/Hadoop-partitie schema.
 
 ```sql
 SELECT

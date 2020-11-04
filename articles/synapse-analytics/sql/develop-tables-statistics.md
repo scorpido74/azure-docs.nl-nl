@@ -11,30 +11,30 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 6d59d64c861b74610e82b962ddd5db2331d3db64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148249"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305013"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistieken in Synapse SQL
 
-In dit artikel worden aanbevelingen en voor beelden gegeven voor het maken en bijwerken van statistieken voor het optimaliseren van query's met behulp van de Synapse SQL-resources: SQL-pool en SQL on-demand (preview).
+In dit artikel vindt u aanbevelingen en voor beelden voor het maken en bijwerken van statistieken voor het optimaliseren van query's met behulp van de Synapse SQL-resources: exclusieve SQL-groep en serverloze SQL-pool (preview).
 
-## <a name="statistics-in-sql-pool"></a>Statistieken in SQL-groep
+## <a name="statistics-in-dedicated-sql-pool"></a>Statistieken in de toegewezen SQL-groep
 
 ### <a name="why-use-statistics"></a>Waarom statistieken gebruiken?
 
-Hoe meer de SQL-pool resource weet wat uw gegevens zijn, des te sneller query's kunnen worden uitgevoerd. Wanneer u gegevens in de SQL-groep hebt geladen, is het verzamelen van statistieken voor uw gegevens een van de belangrijkste dingen die u kunt doen voor het optimaliseren van query's.  
+Hoe meer exclusieve SQL-groepen weet over uw gegevens, hoe sneller query's kunnen worden uitgevoerd. Wanneer u gegevens in een toegewezen SQL-groep hebt geladen, is het verzamelen van statistieken voor uw gegevens een van de belangrijkste dingen die u kunt doen voor het optimaliseren van query's.  
 
-De SQL-groep query optimalisatie is een op kosten gebaseerd Optimizer. Hiermee worden de kosten van verschillende query plannen vergeleken en wordt vervolgens het abonnement met de laagste kosten gekozen. In de meeste gevallen kiest u het plan dat het snelst wordt uitgevoerd.
+De exclusieve SQL pool-query optimalisatie is een op kosten gebaseerd Optimizer. Hiermee worden de kosten van verschillende query plannen vergeleken en wordt vervolgens het abonnement met de laagste kosten gekozen. In de meeste gevallen kiest u het plan dat het snelst wordt uitgevoerd.
 
 Als de Optimizer bijvoorbeeld een schatting maakt van de datum waarop uw query wordt gefilterd, wordt er één regel geretourneerd. Als er wordt geschat dat de geselecteerde datum 1.000.000 rijen retourneert, wordt een ander plan geretourneerd.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatisch statistieken maken
 
-De SQL-groep analyseert binnenkomende gebruikers query's voor ontbrekende statistieken wanneer de data base-AUTO_CREATE_STATISTICS optie is ingesteld op `ON` .  Als er statistieken ontbreken, worden in de query Optimizer statistieken gemaakt voor afzonderlijke kolommen in het predikaat query of de voor waarde voor samen voegen. 
+De toegewezen SQL-groeps engine analyseert binnenkomende gebruikers query's voor ontbrekende statistieken wanneer de data base-AUTO_CREATE_STATISTICS optie is ingesteld op `ON` .  Als er statistieken ontbreken, worden in de query Optimizer statistieken gemaakt voor afzonderlijke kolommen in het predikaat query of de voor waarde voor samen voegen. 
 
 Deze functie wordt gebruikt om de schattingen voor de kardinaliteit van het query plan te verbeteren.
 
@@ -166,7 +166,7 @@ Deze voor beelden laten zien hoe u verschillende opties kunt gebruiken om statis
 #### <a name="create-single-column-statistics-with-default-options"></a>Statistieken met één kolom maken met standaard opties
 
 Als u statistieken wilt maken voor een kolom, geeft u een naam op voor het statistiek object en de naam van de kolom.
-Deze syntaxis maakt gebruik van alle standaard opties. Standaard wordt in SQL pool voor **20 procent** van de tabel gesampled wanneer er statistieken worden gemaakt.
+Deze syntaxis maakt gebruik van alle standaard opties. Standaard worden met exclusieve SQL-pool voor **20 procent** van de tabel monsters gemaakt bij het maken van statistieken.
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -245,7 +245,7 @@ Als u een statistieken object met meerdere kolommen wilt maken, gebruikt u de vo
 > [!NOTE]
 > Het histogram dat wordt gebruikt om het aantal rijen in het query resultaat te schatten, is alleen beschikbaar voor de eerste kolom die wordt vermeld in de definitie van het statistieken-object.
 
-In dit voor beeld is het histogram voor de *product \_ categorie* . Statistieken voor meerdere kolommen worden berekend voor *product \_ categorie* -en *product \_ sub_category* :
+In dit voor beeld is het histogram voor de *product \_ categorie*. Statistieken voor meerdere kolommen worden berekend voor *product \_ categorie* -en *product \_ sub_category* :
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -430,7 +430,7 @@ De instructie UPDATE STATISTICs is eenvoudig te gebruiken. Houd er rekening mee 
 Als de prestaties niet van belang zijn, is deze methode de eenvoudigste en meest volledige manier om te garanderen dat statistieken up-to-date zijn.
 
 > [!NOTE]
-> Wanneer alle statistieken voor een tabel worden bijgewerkt, voert SQL-pool een scan uit om een voor beeld van de tabel voor elk statistiek object te bekijken. Als de tabel groot is en veel kolommen en veel statistieken heeft, kan het efficiënter zijn om afzonderlijke statistieken bij te werken op basis van de behoefte.
+> Wanneer alle statistieken voor een tabel worden bijgewerkt, voert de toegewezen SQL-pool een scan uit om een voor beeld van de tabel voor elk statistiek object te bekijken. Als de tabel groot is en veel kolommen en veel statistieken heeft, kan het efficiënter zijn om afzonderlijke statistieken bij te werken op basis van de behoefte.
 
 `UPDATE STATISTICS`Zie [tijdelijke tabellen](develop-tables-temporary.md)voor een implementatie van een procedure. De implementatie methode wijkt enigszins af van de voor gaande `CREATE STATISTICS` procedure, maar het resultaat is hetzelfde.
 Zie [Statistieken bijwerken](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)voor de volledige syntaxis.
@@ -512,7 +512,7 @@ DBCC SHOW_STATISTICS () toont de gegevens binnen een statistiek object. Deze geg
 
 De kop bevat de meta gegevens over de statistieken. In het histogram wordt de verdeling weer gegeven van de waarden in de eerste sleutel kolom van het statistiek object. 
 
-De dichtheids vector meet de correlatie tussen kolommen. De SQL-pool berekent kardinaliteit met een van de gegevens in het statistiek object.
+De dichtheids vector meet de correlatie tussen kolommen. De toegewezen SQL-groep berekent de kardinaliteit met een van de gegevens in het statistiek object.
 
 #### <a name="show-header-density-and-histogram"></a>Koptekst, densiteit en histogram weer geven
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>Verschillen DBCC SHOW_STATISTICS ()
 
-`DBCC SHOW_STATISTICS()` is meer strikt geïmplementeerd in de SQL-groep vergeleken met SQL Server:
+`DBCC SHOW_STATISTICS()` is meer strikt geïmplementeerd in de toegewezen SQL-groep vergeleken met SQL Server:
 
 - Niet-gedocumenteerde functies worden niet ondersteund.
 - Kan Stats_stream niet gebruiken.
@@ -556,25 +556,22 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - Kan geen kolom namen gebruiken om statistieken objecten te identificeren.
 - Aangepaste fout 2767 wordt niet ondersteund.
 
-### <a name="next-steps"></a>Volgende stappen
 
-Zie [uw werk belasting controleren](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie over het verbeteren van de prestaties van query's
-
-## <a name="statistics-in-sql-on-demand-preview"></a>Statistieken in SQL on-demand (preview-versie)
+## <a name="statistics-in-serverless-sql-pool-preview"></a>Statistieken in SQL-groep zonder server (preview-versie)
 
 Er worden statistieken gemaakt per bepaalde kolom voor een bepaalde gegevensset (opslagpad).
 
 ### <a name="why-use-statistics"></a>Waarom statistieken gebruiken?
 
-Hoe meer SQL on-demand (preview) weet over uw gegevens, des te sneller query's kunnen worden uitgevoerd. Het verzamelen van statistieken voor uw gegevens is een van de belangrijkste dingen die u kunt doen om uw query's te optimaliseren. 
+Hoe langer de serverloze SQL-groep (preview) weet wat uw gegevens zijn, des te sneller query's kunnen worden uitgevoerd. Het verzamelen van statistieken voor uw gegevens is een van de belangrijkste dingen die u kunt doen om uw query's te optimaliseren. 
 
-De SQL on demand-query Optimizer is een op kosten gebaseerd Optimizer. Hiermee worden de kosten van verschillende query plannen vergeleken en wordt vervolgens het abonnement met de laagste kosten gekozen. In de meeste gevallen kiest u het plan dat het snelst wordt uitgevoerd. 
+De query optimalisatie van de serverloze SQL-groep is een op kosten gebaseerd Optimizer. Hiermee worden de kosten van verschillende query plannen vergeleken en wordt vervolgens het abonnement met de laagste kosten gekozen. In de meeste gevallen kiest u het plan dat het snelst wordt uitgevoerd. 
 
 Als de Optimizer bijvoorbeeld een schatting maakt van de datum waarop uw query wordt gefilterd, wordt er één regel geretourneerd. Als er wordt geschat dat de geselecteerde datum 1.000.000 rijen retourneert, wordt een ander plan geretourneerd.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatisch statistieken maken
 
-SQL on demand analyseert binnenkomende gebruikers query's voor ontbrekende statistieken. Als er statistieken ontbreken, worden in de query Optimizer statistieken gemaakt voor afzonderlijke kolommen in het query-predikaat of de samenvoegings voorwaarde om de kardinaliteit voor het query plan te verbeteren.
+Serverloze SQL-pool analyseert binnenkomende gebruikers query's voor ontbrekende statistieken. Als er statistieken ontbreken, worden in de query Optimizer statistieken gemaakt voor afzonderlijke kolommen in het query-predikaat of de samenvoegings voorwaarde om de kardinaliteit voor het query plan te verbeteren.
 
 Met de instructie SELECT wordt het automatisch maken van statistieken geactiveerd.
 
@@ -585,7 +582,7 @@ Het automatisch maken van statistieken wordt synchroon uitgevoerd, zodat u een s
 
 ### <a name="manual-creation-of-statistics"></a>Hand matig statistieken maken
 
-Met SQL on-Demand kunt u statistieken hand matig maken. Voor CSV-bestanden moet u hand matig statistieken maken omdat het automatisch maken van statistieken niet is ingeschakeld voor CSV-bestanden. 
+Met serverloze SQL-pool kunt u statistieken hand matig maken. Voor CSV-bestanden moet u hand matig statistieken maken omdat het automatisch maken van statistieken niet is ingeschakeld voor CSV-bestanden. 
 
 Raadpleeg de volgende voor beelden voor instructies over het hand matig maken van statistieken.
 
@@ -593,7 +590,7 @@ Raadpleeg de volgende voor beelden voor instructies over het hand matig maken va
 
 Wijzigingen in gegevens in bestanden, verwijderen en toevoegen van bestanden resulteren in wijzigingen in de gegevens distributie en maakt statistieken verouderd. In dat geval moeten statistieken worden bijgewerkt.
 
-SQL on-demand maakt automatisch statistieken als gegevens ingrijpend worden gewijzigd. Telkens wanneer statistieken automatisch worden gemaakt, wordt de huidige status van de gegevensset ook opgeslagen: bestands paden, grootten, datum van laatste wijziging.
+Serverloze SQL-groep maakt statistieken automatisch opnieuw wanneer gegevens ingrijpend worden gewijzigd. Telkens wanneer statistieken automatisch worden gemaakt, wordt de huidige status van de gegevensset ook opgeslagen: bestands paden, grootten, datum van laatste wijziging.
 
 Wanneer statistieken verouderd zijn, worden nieuwe gemaakt. Het algoritme doorloopt de gegevens en vergelijkt deze met de huidige status van de gegevensset. Als de grootte van de wijzigingen groter is dan de specifieke drempel waarde, worden de oude statistieken verwijderd en wordt de nieuwe gegevensset opnieuw gemaakt.
 
@@ -650,7 +647,7 @@ Argumenten: [ @stmt =] N ' statement_text '-Hiermee geeft u een Transact-SQL-ins
 
 Als u statistieken wilt maken voor een kolom, geeft u een query op die de kolom retourneert waarvoor u statistieken nodig hebt.
 
-Standaard, als u niet anders opgeeft, maakt SQL op aanvraag gebruik van 100% van de gegevens in de gegevensset bij het maken van statistieken.
+Standaard, als u niet anders opgeeft, gebruikt de serverloze SQL-pool 100% van de gegevens die in de gegevensset zijn opgegeven bij het maken van statistieken.
 
 Als u bijvoorbeeld statistieken met standaard opties (FULLSCAN) wilt maken voor een kolom Year van de gegevensset op basis van het population.csv bestand:
 
@@ -816,4 +813,6 @@ CREATE STATISTICS sState
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Aanbevolen procedures voor SQL-groep](best-practices-sql-pool.md#maintain-statistics)voor meer verbeteringen in de query prestaties.
+Zie [uw werk belasting](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en [Aanbevolen procedures voor een toegewezen SQL-groep](best-practices-sql-pool.md#maintain-statistics)controleren voor meer informatie over het verbeteren van query prestaties voor een toegewezen SQL-groep.
+
+Zie [Aanbevolen procedures voor serverloze SQL-groepen](best-practices-sql-on-demand.md) voor meer informatie over het verbeteren van de query prestaties voor een SERVERloze SQL-groep

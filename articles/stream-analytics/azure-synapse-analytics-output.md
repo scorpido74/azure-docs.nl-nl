@@ -7,20 +7,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 04c315f593b90204faaeaec562c18e9e4be301d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b3bec9c4d4476b95279e35953ff89177f4488d4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90881890"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305842"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure Synapse Analytics-uitvoer van Azure Stream Analytics
 
 [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) (voorheen SQL Data Warehouse) is een oneindige analyse service waarmee bedrijfs gegevensopslag en Big data-analyses worden gecombineerd. 
 
-Azure Stream Analytics-taken kunnen worden uitgevoerd naar een SQL-groeps tabel in azure Synapse Analytics en kunnen doorvoer snelheden tot 200 MB per seconde verwerken. Dit biedt ondersteuning voor de meest veeleisende, realtime analyse-en hot-path gegevens verwerking voor werk belastingen, zoals rapportage en dash boarding.  
+Azure Stream Analytics-taken kunnen worden uitgevoerd naar een specifieke SQL-groeps tabel in azure Synapse Analytics en kunnen doorvoer snelheden tot 200 MB per seconde verwerken. Dit biedt ondersteuning voor de meest veeleisende, realtime analyse-en hot-path gegevens verwerking voor werk belastingen, zoals rapportage en dash boarding.  
 
-De SQL-groeps tabel moet bestaan voordat u deze als uitvoer kunt toevoegen aan uw Stream Analytics-taak. Het schema van de tabel moet overeenkomen met de velden en hun typen in de uitvoer van uw taak. 
+De toegewezen SQL-groeps tabel moet bestaan voordat u deze als uitvoer kunt toevoegen aan uw Stream Analytics-taak. Het schema van de tabel moet overeenkomen met de velden en hun typen in de uitvoer van uw taak. 
 
 Als u Azure Synapse als uitvoer wilt gebruiken, moet u ervoor zorgen dat u het opslag account hebt geconfigureerd. Navigeer naar de instellingen van het opslag account om het opslag account te configureren. Alleen de typen opslag accounts die ondersteuning bieden voor tabellen zijn toegestaan: v2 en algemeen gebruik v1. Selecteer alleen standaard laag. De Premium-laag wordt niet ondersteund.
 
@@ -31,7 +31,7 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 |Naam van eigenschap|Beschrijving|
 |-|-|
 |Uitvoeralias |Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query naar deze data base te sturen. |
-|Database |De naam van de SQL-groep waarnaar u uw uitvoer wilt verzenden. |
+|Database |de naam van de exclusieve SQL-groep waarnaar u uw uitvoer verzendt. |
 |Servernaam |Naam van de Azure Synapse-server.  |
 |Gebruikersnaam |De gebruikers naam die schrijf toegang tot de data base heeft. Stream Analytics ondersteunt alleen SQL-verificatie. |
 |Wachtwoord |Het wacht woord om verbinding te maken met de data base. |
