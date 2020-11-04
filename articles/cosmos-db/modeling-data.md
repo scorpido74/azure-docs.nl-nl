@@ -5,14 +5,15 @@ description: Meer informatie over gegevens modellering in NoSQL-data bases, vers
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 0868b0d3e917b857d09c89e3a35d03872c42a23e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a141177846def9c94216684c1083d0d336eeda1e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096645"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333236"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Gegevens modellering in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -86,9 +87,9 @@ In het algemeen gebruikt u Inge sloten gegevens modellen wanneer:
 
 * Er zijn **relaties** tussen entiteiten.
 * Er zijn **een-op-veel-** relaties tussen entiteiten.
-* Er zijn Inge sloten gegevens die niet **regel matig veranderen** .
-* Er zijn Inge sloten gegevens die niet worden uitgebreid **zonder gebonden** .
-* Er zijn Inge sloten gegevens die **vaak samen worden opgevraagd** .
+* Er zijn Inge sloten gegevens die niet **regel matig veranderen**.
+* Er zijn Inge sloten gegevens die niet worden uitgebreid **zonder gebonden**.
+* Er zijn Inge sloten gegevens die **vaak samen worden opgevraagd**.
 
 > [!NOTE]
 > Normaal gesp roken gegevens modellen bieden betere **Lees** prestaties.
@@ -242,7 +243,7 @@ In het algemeen gebruikt u genormaliseerde gegevens modellen als:
 
 * **Een-op-veel-** relaties vertegenwoordigen.
 * **Veel-op-veel** -relaties vertegenwoordigen.
-* Vaak gerelateerde gegevens **wijzigingen** .
+* Vaak gerelateerde gegevens **wijzigingen**.
 * Gegevens waarnaar wordt verwezen, kunnen **onbegrensd** zijn.
 
 > [!NOTE]
@@ -300,7 +301,7 @@ In het bovenstaande voor beeld hebben we de niet-gebonden verzameling verwijderd
 In een relationele data base zijn *veel* relaties vaak gemodelleerd met samenvoeg tabellen, die alleen worden gekoppeld aan records uit andere tabellen.
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Relationeel database model" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Tabellen koppelen" border="false":::
 
 Misschien bent u geneigd om hetzelfde te repliceren met behulp van documenten en een gegevens model te produceren dat er ongeveer als volgt uitziet.
 

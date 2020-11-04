@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 47eae616ffc62e42448da23fb02152dae17aa548
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 29518fb971649087d8a5afa39d69c7fc2c014f98
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116781"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331132"
 ---
 | Resource | Doel | Harde limiet |
 |----------|--------------|------------|
@@ -21,7 +21,7 @@ ms.locfileid: "92116781"
 | Synchronisatiegroepen per opslagsynchronisatieservice | 200 synchronisatiegroepen | Ja |
 | Geregistreerde servers per opslagsynchronisatieservice | 99 servers | Ja |
 | Cloudeindpunten per synchronisatiegroep | 1 cloudeindpunt | Ja |
-| Servereindpunten per synchronisatiegroep | 50 servereindpunten | Nee |
+| Servereindpunten per synchronisatiegroep | 100 servereindpunten | Yes |
 | Servereindpunten per server | 30 servereindpunten | Ja |
 | Bestandssysteemobjecten (mappen en bestanden) per synchronisatiegroep | 100 miljoen objecten | Nee |
 | Maximumaantal bestandssysteemobjecten (mappen en bestanden) in een map | 5 miljoen objecten | Ja |

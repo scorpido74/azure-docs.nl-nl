@@ -3,16 +3,17 @@ title: ARRAY_CONCAT in Azure Cosmos DB query taal
 description: Meer informatie over hoe de SQL-systeem functie van de matrix in Azure Cosmos DB een matrix retourneert die het resultaat is van het samen voegen van twee of meer matrix waarden
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 137662ac27ea297a5f57ad784d7bb24cf3acebda
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8b6424a161b5fc4d0c075ade6f852b33dff20a09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090916"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332755"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

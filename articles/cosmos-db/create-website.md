@@ -3,15 +3,16 @@ title: Een web-app implementeren met een sjabloon-Azure Cosmos DB
 description: Meer informatie over het implementeren van een Azure Cosmos-account, Azure App Service Web Apps en een voor beeld-webtoepassing met behulp van een Azure Resource Manager-sjabloon.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: c206c89bf8e9abae219ce863a8b08f4b0e7041c3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089913"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333576"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Cosmos DB en Azure App Service met een web-app implementeren vanuit GitHub met behulp van een Azure Resource Manager-sjabloon
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +42,7 @@ Selecteer eerst de onderstaande knop **implementeren naar Azure** om de Azure po
 
 Selecteer in de Azure Portal het abonnement dat u wilt implementeren en selecteer of maak een nieuwe resource groep. Vul vervolgens de volgende waarden in.
 
-:::image type="content" source="./media/create-website/template-deployment.png" alt-text="Implementeren in Azure":::
+:::image type="content" source="./media/create-website/template-deployment.png" alt-text="Scherm afbeelding van de gebruikers interface van de sjabloon implementatie":::
 
 * **Regio** : dit is vereist voor de Resource Manager. Voer dezelfde regio in die wordt gebruikt door de locatie parameter waar uw resources zich bevinden.
 * **Toepassings naam** : deze naam wordt gebruikt door alle resources voor deze implementatie. Zorg ervoor dat u een unieke naam kiest om conflicten met bestaande Azure Cosmos DB-en App Service-accounts te voor komen.
@@ -65,31 +66,31 @@ Nadat u de waarden hebt ingevuld, selecteert u de knop **maken** om de implement
 
 Wanneer de resources zijn geïmplementeerd met de sjabloon, kunt u deze nu weer geven in de resource groep.
 
-:::image type="content" source="./media/create-website/resource-group.png" alt-text="Implementeren in Azure":::
+:::image type="content" source="./media/create-website/resource-group.png" alt-text="Resourcegroep":::
 
 ### <a name="view-cosmos-db-endpoint-and-keys"></a>Cosmos DB-eind punt en-sleutels weer geven
 
 Open vervolgens het Azure Cosmos-account in de portal. De volgende scherm afbeelding toont het eind punt en de sleutels voor een Azure Cosmos-account.
 
-:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Implementeren in Azure":::
+:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Cosmos-sleutels":::
 
 ### <a name="view-the-azure-cosmos-db-keys-in-application-settings"></a>De Azure Cosmos DB sleutels in toepassings instellingen weer geven
 
 Ga vervolgens naar de Azure App Service in de resource groep. Klik op het tabblad Configuratie om de toepassings instellingen voor de App Service weer te geven. De toepassings instellingen bevatten het Cosmos DB account en de primaire sleutel waarden die nodig zijn om verbinding te maken met Cosmos DB, evenals de naam van de data base en de container die in de sjabloon implementatie zijn door gegeven.
 
-:::image type="content" source="./media/create-website/application-settings.png" alt-text="Implementeren in Azure":::
+:::image type="content" source="./media/create-website/application-settings.png" alt-text="Toepassings instellingen":::
 
 ### <a name="view-web-app-in-deployment-center"></a>Web-app weer geven in implementatie centrum
 
 Ga vervolgens naar het implementatie centrum voor de App Service. Hier ziet u opslag plaatsen naar de GitHub-opslag plaats die is door gegeven aan de sjabloon. De onderstaande status duidt ook op geslaagd (actief), wat betekent dat de toepassing is geïmplementeerd en gestart.
 
-:::image type="content" source="./media/create-website/deployment-center.png" alt-text="Implementeren in Azure":::
+:::image type="content" source="./media/create-website/deployment-center.png" alt-text="Implementatiecenter":::
 
 ### <a name="run-the-web-application"></a>De webtoepassing uitvoeren
 
 Klik op **Bladeren** bovenaan in Deployment Center om de webtoepassing te openen. De webtoepassing wordt geopend in het Start scherm. Klik op **nieuwe maken** en voer enkele gegevens in de velden in en klik op opslaan. In het scherm worden de gegevens weer gegeven die zijn opgeslagen in Cosmos DB.
 
-:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="Implementeren in Azure":::
+:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="Start scherm":::
 
 ## <a name="step-3-how-does-it-work"></a>Stap 3: Hoe werkt het?
 
@@ -99,19 +100,19 @@ Er zijn drie elementen die nodig zijn om dit te laten werken.
 
 Ten eerste moet de toepassing het Cosmos DB-eind punt en de sleutel aanvragen in de- `Startup` klasse in de ASP.NET MVC-webtoepassing. Het [Cosmos DB te doen-voor beeld](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) kan lokaal worden uitgevoerd, waarbij u de verbindings gegevens in appsettings.jskunt invoeren. Wanneer dit bestand is geïmplementeerd, wordt het echter met de app geïmplementeerd. Als deze regels in rood geen toegang hebben tot de instellingen van appsettings.jsop, wordt het programma vanuit toepassings instellingen in Azure App Service geprobeerd.
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="Implementeren in Azure":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="Scherm afbeelding toont een methode met verschillende teken reeks variabelen die zijn gemarkeerd in rood, waaronder DATABASENAME, containernaam, account en sleutel.":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>Speciale functies van Azure Resource Management gebruiken
 
 Deze waarden zijn alleen beschikbaar voor de toepassing wanneer deze worden geïmplementeerd, maar de Azure Resource Manager-sjabloon kan om deze waarden van het Cosmos DB account vragen met behulp van speciale Azure resource management-functies, inclusief [referentie](../azure-resource-manager/templates/template-functions-resource.md#reference) -en [listkeys ophalen](../azure-resource-manager/templates/template-functions-resource.md#listkeys) die de waarden van het Cosmos DB-account ophaalt en ze invoegen in de waarden van de toepassings instellingen met sleutel namen die overeenkomen met wat wordt gebruikt in de bovenstaande toepassing in een Bijvoorbeeld `CosmosDb:Account`.
 
-:::image type="content" source="./media/create-website/template-keys.png" alt-text="Implementeren in Azure":::
+:::image type="content" source="./media/create-website/template-keys.png" alt-text="Sjabloon sleutels":::
 
 ### <a name="deploying-web-apps-from-github"></a>Web-Apps implementeren vanuit GitHub
 
 Ten slotte moeten we de webtoepassing implementeren vanuit GitHub in de App Service. Dit wordt gedaan met behulp van de JSON hieronder. Er zijn twee dingen die u voorzichtig moet zijn met het type en de naam van deze resource. De waarden van de `"type": "sourcecontrols"` en- `"name": "web"` eigenschap zijn vastgelegd en mogen niet worden gewijzigd.
 
-:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="Implementeren in Azure":::
+:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="Implementeren vanuit GitHub":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

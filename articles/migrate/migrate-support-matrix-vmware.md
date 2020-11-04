@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0fd884a7d95edaf6586e7eecd644400c05c15e5a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9d5c954be2a6f05e5132a5f57f8169f436719a8d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315798"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332267"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -34,7 +34,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 **VMware** | **Details**
 --- | ---
 **vCenter Server** | Machines die u wilt detecteren en beoordelen, moeten worden beheerd door vCenter Server versie 5,5, 6,0, 6,5, 6,7 of 7,0.<br/><br/> De detectie van VMware-Vm's door ESXi in het apparaat op te geven, wordt momenteel niet ondersteund.
-**Machtigingen** | Server Assessment heeft een vCenter Server alleen-lezen account nodig voor detectie en evaluatie.<br/><br/> Als u toepassings detectie of afhankelijkheids visualisatie wilt uitvoeren, moet de account bevoegdheden hebben om **virtual machines**-  >  **gast bewerkingen**in te scha kelen.
+**Machtigingen** | Server Assessment heeft een vCenter Server alleen-lezen account nodig voor detectie en evaluatie.<br/><br/> Als u toepassings detectie of afhankelijkheids visualisatie wilt uitvoeren, moet de account bevoegdheden hebben om **virtual machines** -  >  **gast bewerkingen** in te scha kelen.
 
 ## <a name="vm-requirements"></a>VM-vereisten
 **VMware** | **Details**
@@ -66,14 +66,14 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 
 **Ondersteuning** | **Details**
 --- | ---
-**Ondersteunde computers** | App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines.
+**Ondersteunde computers** | App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines. U kunt op elk Azure Migrate apparaat apps die zijn geïnstalleerd op Maxi maal 10000 VMware-Vm's detecteren.
 **Discovery** (Detectie) | App-detectie is zonder agent. Hierbij worden de gast referenties van de machine gebruikt en kunnen computers op afstand worden benaderd met WMI-en SSH-aanroepen.
 **VM-ondersteuning** | App-Discovery wordt ondersteund voor Vm's waarop alle Windows-en Linux-versies worden uitgevoerd.
-**vCenter** | Het vCenter Server alleen-lezen account dat wordt gebruikt voor de evaluatie, heeft bevoegdheden nodig die zijn ingeschakeld voor **virtual machines**  >  **gast bewerkingen**om te kunnen communiceren met de virtuele machine voor toepassings detectie.
+**vCenter** | Het vCenter Server alleen-lezen account dat wordt gebruikt voor de evaluatie, heeft bevoegdheden nodig die zijn ingeschakeld voor **virtual machines**  >  **gast bewerkingen** om te kunnen communiceren met de virtuele machine voor toepassings detectie.
 **VM-toegang** | App-detectie heeft een lokaal gebruikers account op de virtuele machine nodig voor toepassings detectie.<br/><br/> Azure Migrate biedt momenteel ondersteuning voor het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gast gebruikers account voor Windows-Vm's en een standaard/normaal gebruikers account (niet-sudo toegang) voor alle virtuele Linux-machines.
 **VMware-hulpprogram ma's** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt detecteren. <br/><br/> De versie van de VMware-hulpprogram ma's moet later zijn dan 10.2.0.
 **PowerShell** | Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
-**Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt detecteren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
+**Poort toegang** | Het Azure Migrate apparaat moet verbinding kunnen maken met TCP-poort 443 op ESXi-hosts waarop Vm's worden uitgevoerd waarop u apps wilt detecteren. De vCenter Server retourneert een ESXI om het bestand met de app-gegevens te downloaden.
 **Limieten** | Voor app-Discovery kunt u tot 10000 Vm's op elk Azure Migrate apparaat detecteren.
 
 

@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f6bf436110e9822d687419b74a8a22bad7a6d700
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048080"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333461"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Voor beeld: door de klant beheerde sleutels gebruiken voor het versleutelen van installatie kopieën
 
@@ -25,7 +25,7 @@ Versleuteling aan de server zijde met door de klant beheerde sleutels maakt gebr
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor dit artikel moet u al een schijf versleuteling instellen die voor uw installatie kopie moet worden gebruikt.
+Voor dit artikel moet u al een schijf versleuteling instellen in elke regio waarin u de installatie kopie wilt repliceren.
 
 - Als u alleen een door de klant beheerde sleutel wilt gebruiken, raadpleegt u door de **klant beheerde sleutels met versleuteling aan de server zijde inschakelen** met behulp van de [Azure Portal](./disks-enable-customer-managed-keys-portal.md) of [Power shell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
 
@@ -196,7 +196,7 @@ az sig image-version create \
    
 ```
 
-### <a name="create-the-vm"></a>De virtuele machine maken
+### <a name="create-the-vm"></a>De VM maken
 
 U kunt een virtuele machine maken op basis van een galerie met gedeelde afbeeldingen en door de klant beheerde sleutels gebruiken om de schijven te versleutelen. De syntaxis is hetzelfde als het maken van een [gegeneraliseerde](vm-generalized-image-version-cli.md) of [gespecialiseerde](vm-specialized-image-version-cli.md) virtuele machine uit een installatie kopie, maar u hoeft alleen de para meter toe te voegen `--os-disk-encryption-set` met de id van de versleutelings. Voeg voor gegevens schijven `--data-disk-encryption-sets` een door spaties gescheiden lijst van de schijf versleutelings sets voor de gegevens schijven toe.
 
@@ -213,7 +213,7 @@ Wanneer u de versie van de installatie kopie maakt in de portal, kunt u het tabb
 2. Selecteer in **versleutelings type** **versleuteling op-rest met een door de klant beheerde sleutel** of **dubbele versleuteling met door het platform beheerde en door de klant beheerde sleutels**. 
 3. Selecteer voor elke schijf in de installatie kopie de **schijf versleutelings** die u wilt gebruiken in de vervolg keuzelijst. 
 
-### <a name="create-the-vm"></a>De virtuele machine maken
+### <a name="create-the-vm"></a>De VM maken
 
 U kunt een virtuele machine maken op basis van een installatie kopie versie en door de klant beheerde sleutels gebruiken om de schijven te versleutelen. Wanneer u de virtuele machine in de portal maakt, selecteert u op het tabblad **schijven** de optie **versleuteling in rust met door de klant beheerde sleutels** of **dubbele versleuteling met door het platform beheerde en door de klant beheerde sleutels** voor het **versleutelings type**. Vervolgens kunt u de versleutelings reeks selecteren in de vervolg keuzelijst.
 

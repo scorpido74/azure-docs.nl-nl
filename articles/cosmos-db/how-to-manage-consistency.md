@@ -3,16 +3,17 @@ title: Consistentie in Azure Cosmos DB beheren
 description: Meer informatie over het configureren en beheren van consistentie niveaus in Azure Cosmos DB met behulp van Azure Portal, .NET SDK, Java SDK en diverse andere Sdk's
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 4be2b8cdd987b6357df283f0791593c51417dfc7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b0c03c2f5313605fbdf288a9262df0852e066efd
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101490"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333474"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB beheren
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,9 +26,9 @@ In dit artikel wordt uitgelegd hoe u consistentieniveaus beheert in Azure Cosmos
 
 Het [standaard consistentie niveau](consistency-levels.md) is het consistentie niveau dat clients standaard gebruiken.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
-Als u het standaardconsistentieniveau wilt weergeven of wijzigen, moet u zich aanmelden bij de Azure-portal. Zoek uw Azure Cosmos-account en open het **standaard consistentie** venster. Selecteer het consistentieniveau dat u als nieuwe standaard wilt gebruiken en selecteer **Opslaan** . De Azure Portal biedt ook een visualisatie van verschillende consistentie niveaus met muziek notities. 
+Als u het standaardconsistentieniveau wilt weergeven of wijzigen, moet u zich aanmelden bij de Azure-portal. Zoek uw Azure Cosmos-account en open het **standaard consistentie** venster. Selecteer het consistentieniveau dat u als nieuwe standaard wilt gebruiken en selecteer **Opslaan**. De Azure Portal biedt ook een visualisatie van verschillende consistentie niveaus met muziek notities. 
 
 :::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Menu Consistentie in de Azure-portal":::
 
@@ -280,9 +281,9 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Metrische gegevens van aan waarschijnlijkheid gebonden veroudering (PBS) controleren
 
-Wat is de uiteindelijke consistentie? Voor het gemiddelde kunnen we verouderde grenzen bieden ten aanzien van versie geschiedenis en-tijd. De metrische gegevens van de [**Probabilistically-binding (PBS)**](https://pbs.cs.berkeley.edu/) proberen de waarschijnlijkheid van veroudering te bepalen en geeft deze weer als een metrieke waarde. Als u de metrische gegevens van de PBS wilt weer geven, gaat u naar uw Azure Cosmos-account in de Azure Portal. Open het deel venster **metrieken** en selecteer het tabblad **consistentie** . Bekijk de grafiek met de naam **kans op zeer consistente Lees bewerkingen op basis van uw werk belasting (Zie PBS)** .
+Wat is de uiteindelijke consistentie? Voor het gemiddelde kunnen we verouderde grenzen bieden ten aanzien van versie geschiedenis en-tijd. De metrische gegevens van de [**Probabilistically-binding (PBS)**](https://pbs.cs.berkeley.edu/) proberen de waarschijnlijkheid van veroudering te bepalen en geeft deze weer als een metrieke waarde. Als u de metrische gegevens van de PBS wilt weer geven, gaat u naar uw Azure Cosmos-account in de Azure Portal. Open het deel venster **metrieken** en selecteer het tabblad **consistentie** . Bekijk de grafiek met de naam **kans op zeer consistente Lees bewerkingen op basis van uw werk belasting (Zie PBS)**.
 
-:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Menu Consistentie in de Azure-portal":::
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="PBS-grafiek in de Azure-portal":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

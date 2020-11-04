@@ -4,15 +4,16 @@ description: Meer informatie over het maken van een live weers-dash board in Pow
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: fc285599176057c57621dc6bfefbe9188d3badd7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3ec3e96aa1ba4bce3893c1af2446bb509a867b6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096883"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333593"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Maak een realtime-dash board met behulp van Azure Cosmos DB en Power BI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -58,13 +59,18 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
 1. **Incrementeel vernieuwen configureren** : Volg de stappen in [Incrementeel vernieuwen met Power bi](/power-bi/service-premium-incremental-refresh) artikel om incrementeel vernieuwen voor de gegevensset in te stellen. Voeg de para meter **Range** en **RangeEnd** toe, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="Azure Cosmos DB - Power BI-connector" = Table.SelectRows(#"Expanded Document", each [Document.date] > DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd"))
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="Bereik parameters configureren":::
+
+   Omdat de gegevensset een datum kolom heeft die in tekst vorm is, moeten de **Range Start** -en **RangeEnd** -para meters worden getransformeerd om het volgende filter te gebruiken. Wijzig in het deel venster **Geavanceerde editor** de volgende tekst door de query toe te voegen om de rijen te filteren op basis van de Range Start-en RangeEnd-para meters:
+
+   ```
+   #"Filtered Rows" = Table.SelectRows(#"Expanded Document", each [Document.date] > DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd"))
    ```
    
    Afhankelijk van welke kolom en welk gegevens type aanwezig zijn in de bron-gegevensset, kunt u de velden Range Start en RangeEnd dienovereenkomstig wijzigen
 
    
-   |Eigenschap  |Gegevenstype  |Filter  |
+   |Eigenschap  |Gegevenstype  |Filteren  |
    |---------|---------|---------|
    |_ts     |   Numeriek      |  [_ts] > duration. TotalSeconds (Range Start-#datetime (1970, 1, 1, 0, 0, 0)) en [_ts] < duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0))       |
    |Datum (bijvoorbeeld:-2019-08-19)     |   Tekenreeks      | [Document. date] > DateTime. ToText (Range Start, "JJJJ-MM-DD") en [document. date] < DateTime. ToText (RangeEnd, "JJJJ-MM-DD")        |
@@ -73,13 +79,13 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
 1. **Het vernieuwings beleid definiëren** : Definieer het vernieuwings beleid door te navigeren naar het tabblad **Incrementeel vernieuwen** in het **context** menu voor de tabel. Stel het vernieuwings beleid in op Vernieuwen **elke dag** en sla de gegevens van de afgelopen maand op.
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Azure Cosmos DB - Power BI-connector":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Beleid voor vernieuwen definiëren":::
 
-   Negeer de waarschuwing die aangeeft dat *de M-query niet kan worden bevestigd om te worden gevouwen* . De Azure Cosmos DB-connector vouwt filter query's uit.
+   Negeer de waarschuwing die aangeeft dat *de M-query niet kan worden bevestigd om te worden gevouwen*. De Azure Cosmos DB-connector vouwt filter query's uit.
 
 1. **De gegevens laden en de rapporten genereren** -met behulp van de gegevens die u eerder hebt geladen, maakt u de grafieken om te rapporteren over de Tempe ratuur en neer slag.
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Azure Cosmos DB - Power BI-connector":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Gegevens laden en rapport genereren":::
 
 1. **Publiceer het rapport naar Power bi Premium** -omdat incrementeel vernieuwen een functie is die alleen Premium is, kan het dialoog venster publiceren alleen een selectie van een werk ruimte met Premium-capaciteit toestaan. De eerste vernieuwing kan langer duren omdat de historische gegevens moeten worden geïmporteerd. Volgende gegevens vernieuwingen zijn veel sneller omdat ze incrementeel vernieuwen gebruiken.
 
@@ -96,19 +102,19 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
 1. **Een nieuw Analysis Services Tabellaire project maken in Visual Studio**  -   [Installeer de SQL Server Data tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017&preserve-view=true) en maak een Analysis Services tabellaire project in Visual Studio.
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Azure Cosmos DB - Power BI-connector":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Azure Analysis Services project maken":::
 
    Kies het **geïntegreerde werkruimte** exemplaar en het compatibiliteits niveau instellen op **SQL Server 2017/Azure Analysis Services (1400)**
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Azure Cosmos DB - Power BI-connector":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Ontwerper van Azure Analysis Services tabellair model":::
 
 1. **Voeg de Azure Cosmos DB gegevens bron toe** : Navigeer naar **model** >  **gegevens bronnen**  >  **nieuwe gegevens bron** en voeg de Azure Cosmos DB gegevens bron toe zoals weer gegeven in de volgende scherm afbeelding:
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Azure Cosmos DB - Power BI-connector":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Cosmos DB gegevens bron toevoegen":::
 
    Maak verbinding met Azure Cosmos DB door de **account-URI** , de naam van de **Data Base** en de **container naam** op te geven. U kunt nu zien dat de gegevens uit de Azure Cosmos-container worden geïmporteerd in Power BI.
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB - Power BI-connector":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB gegevens bekijken":::
 
 1. **Het Analysis Services model bouwen** : Open de query-editor en voer de vereiste bewerkingen uit om de geladen gegevensset te optimaliseren:
 
@@ -138,12 +144,16 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
 1. **Azure-analyse partities maken** : Maak partities in azure Analysis Services om de gegevensset te verdelen in logische partities die onafhankelijk van elkaar kunnen worden vernieuwd en met verschillende frequenties. In dit voor beeld maakt u twee partities die de gegevensset zouden verdelen in de gegevens van de meest recente maand en alle andere.
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Azure Cosmos DB - Power BI-connector" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Analysis Services-partities maken":::
+
+   Maak de volgende twee partities in Azure Analysis Services:
+
+   * **Laatste maand** - `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
    * **Historische** -  `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] <> "2019-07")`
 
-1. **Implementeer het model in Azure analyseserver** -Klik met de rechter muisknop op het Azure Analysis Services project en kies **implementeren** . Voeg de server naam toe in het eigenschappen venster van de **implementatie server** .
+1. **Implementeer het model in Azure analyseserver** -Klik met de rechter muisknop op het Azure Analysis Services project en kies **implementeren**. Voeg de server naam toe in het eigenschappen venster van de **implementatie server** .
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Cosmos DB - Power BI-connector":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Analysis Services model implementeren":::
 
 1. **Partitie vernieuwingen en samen voegingen configureren** : Azure Analysis Services kunt u een onafhankelijke verwerking van partities toestaan. Omdat we willen dat de **laatste maand** partitie voortdurend wordt bijgewerkt met de meest recente gegevens, stelt u het Vernieuwings interval in op 5 minuten. U kunt de gegevens vernieuwen met behulp van de [rest API](../analysis-services/analysis-services-async-refresh.md), [Azure Automation](../analysis-services/analysis-services-refresh-azure-automation.md)of met een [logische app](../analysis-services/analysis-services-refresh-logic-app.md). Het is niet vereist voor het vernieuwen van de gegevens in de historische partitie. Daarnaast moet u een aantal code schrijven om de laatste maand partitie te consolideren naar de historische partitie en een nieuwe laatste partitie van de maand te maken.
 
@@ -151,11 +161,11 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
 1. **Verbinding maken met de Azure-analyseserver met behulp van de Azure Analysis Services Data Base-connector** : Kies de **modus Live** en maak verbinding met het Azure Analysis Services-exemplaar, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Azure Cosmos DB - Power BI-connector":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Gegevens ophalen uit Azure Analysis Services":::
 
 1. **De gegevens laden en rapporten genereren** : met behulp van de gegevens die u eerder hebt geladen, maakt u grafieken om te rapporteren over de Tempe ratuur en neer slag. Omdat u een live-verbinding maakt, moeten de query's worden uitgevoerd op de gegevens in het Azure Analysis Services model dat u in de vorige stap hebt geïmplementeerd. De temperatuur grafieken worden binnen vijf minuten na het laden van de nieuwe gegevens in Azure Cosmos DB bijgewerkt.
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Azure Cosmos DB - Power BI-connector":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="De gegevens laden en rapporten genereren":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

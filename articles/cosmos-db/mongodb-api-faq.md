@@ -3,15 +3,16 @@ title: Veelgestelde vragen over de API van de Azure Cosmos DB voor MongoDB
 description: Krijg antwoorden op veelgestelde vragen over de API van de Azure Cosmos DB voor MongoDB
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 03c47b398a715a128a32fb6a6fd9d99564ccb891
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4c93aea5a37fb286b49dabfb97522bf40c8f5429
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096628"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333168"
 ---
 # <a name="frequently-asked-questions-about-the-azure-cosmos-dbs-api-for-mongodb"></a>Veelgestelde vragen over de API van de Azure Cosmos DB voor MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -20,7 +21,7 @@ De API van het Azure Cosmos DB voor MongoDB is een interprotocol Compatibility L
 
 ## <a name="how-do-i-connect-to-my-database"></a>Hoe kan ik verbinding maken met mijn data base?
 
-De snelste manier om verbinding te maken met een Cosmos-data base met de API van Azure Cosmos DB voor MongoDB, is naar de [Azure Portal](https://portal.azure.com). Ga naar uw account en klik vervolgens in het navigatie menu links op **Quick Start** . Quick start is de beste manier om code fragmenten op te halen om verbinding te maken met uw data base.
+De snelste manier om verbinding te maken met een Cosmos-data base met de API van Azure Cosmos DB voor MongoDB, is naar de [Azure Portal](https://portal.azure.com). Ga naar uw account en klik vervolgens in het navigatie menu links op **Quick Start**. Quick start is de beste manier om code fragmenten op te halen om verbinding te maken met uw data base.
 
 Azure Cosmos DB dwingt strikte beveiligings vereisten en-standaarden af. Voor Azure Cosmos DB accounts is verificatie en beveiligde communicatie via TLS vereist. Zorg er dus voor dat u TLSv 1.2 gebruikt.
 
@@ -30,7 +31,7 @@ Zie [verbinding maken met uw Cosmos-data base met de API van Azure Cosmos DB voo
 
 Naast de algemene MongoDB-fout codes heeft de API van de Azure Cosmos DB voor MongoDB een eigen specifieke fout code:
 
-| Fout               | Code  | Description  | Oplossing  |
+| Fout               | Code  | Beschrijving  | Oplossing  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Het totale aantal verbruikte aanvraag eenheden is hoger dan de ingerichte aanvraag-eenheids snelheid voor de container en is beperkt. | U kunt de door Voer die is toegewezen aan een container of een set containers van de Azure Portal schalen of het opnieuw proberen. |
 | ExceededMemoryLimit | 16501 | Als multi tenant service heeft de bewerking de geheugen toewijzing van de client overschreden. | Verklein het bereik van de bewerking via meer beperkende query criteria of neem contact op met de ondersteuning van de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br> Voorbeeld: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |

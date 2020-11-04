@@ -3,16 +3,17 @@ title: MongoDB-extensie opdrachten voor het beheren van gegevens in de API van A
 description: In dit artikel wordt beschreven hoe u MongoDB-extensie opdrachten gebruikt voor het beheren van gegevens die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB.
 author: jasonwhowell
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: 68f7c9331423fa4ef350bd7915ad85e3152c6885
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: db230dc0bd1d5cdddf9446b22d8ae682c019c438
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096543"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333004"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Gebruik MongoDB-extensie opdrachten voor het beheren van gegevens die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,7 +28,7 @@ De API van Azure Cosmos DB voor MongoDB is compatibel met MongoDB Server versie 
 
 De volgende extensie opdrachten bieden de mogelijkheid om Azure Cosmos DB-specifieke resources te maken en te wijzigen via database aanvragen:
 
-* [Data base maken](#create-database)
+* [Database maken](#create-database)
 * [Data base bijwerken](#update-database)
 * [Data base ophalen](#get-database)
 * [Verzameling maken](#create-collection)

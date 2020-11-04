@@ -3,20 +3,21 @@ title: SQL-SAMENVOEG query's voor Azure Cosmos DB
 description: Meer informatie over het koppelen van meerdere tabellen in Azure Cosmos DB om de gegevens op te vragen
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: b4c754455e2a686274eab8b1f77713b8983251a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100793"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333831"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Samen voegen in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-In een relationele data base is het samen voegen van meerdere tabellen de logische corolling voor het ontwerpen van genormaliseerde schema's. De SQL-API maakt daarentegen gebruik van het Gedenormaliseerde gegevens model van items die zonder schema worden gebruikt. Dit is het logische equivalent van een *Self-deelname* .
+In een relationele data base is het samen voegen van meerdere tabellen de logische corolling voor het ontwerpen van genormaliseerde schema's. De SQL-API maakt daarentegen gebruik van het Gedenormaliseerde gegevens model van items die zonder schema worden gebruikt. Dit is het logische equivalent van een *Self-deelname*.
 
 Inner joins resulteren in een volledig ander product van de sets die deel nemen aan de join. Het resultaat van een N-way-koppeling is een set N-element-Tuples, waarbij elke waarde in de tuple is gekoppeld aan de aliasset die deelneemt aan de samen voeging en toegankelijk is door naar die alias in andere componenten te verwijzen.
 

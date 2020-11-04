@@ -3,15 +3,16 @@ title: LINQ to SQL vertaling in Azure Cosmos DB
 description: Meer informatie over de LINQ-Opera tors die worden ondersteund en hoe de LINQ-query's worden toegewezen aan SQL-query's in Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38d37d03c99bd3a39b00276da110ea0ef6bb962e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075398"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332369"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL-omzetting
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -84,7 +85,7 @@ De LINQ-provider die is opgenomen in de SQL .NET SDK ondersteunt de volgende Ope
 - **Waar** : filters vertalen naar [waar](sql-query-where.md)en ondersteunen de vertaling tussen `&&` , `||` en `!` naar de SQL-Opera tors
 - **SelectMany** : Hiermee staat u het ongedaan maken van matrices toe op de component voor [samen voegen](sql-query-join.md) . Gebruiken voor het koppelen of nesten van expressies voor het filteren op matrix elementen.
 - **OrderBy** en **OrderByDescending** : vertalen naar [order by](sql-query-order-by.md) met ASC of DESC.
-- De Opera tors **Count** , **Sum** , **min** , **Max** en **Average** voor [aggregatie](sql-query-aggregates.md), en hun async-equivalenten **CountAsync** , **SumAsync** , **MinAsync** , **MaxAsync** en **AverageAsync** .
+- De Opera tors **Count** , **Sum** , **min** , **Max** en **Average** voor [aggregatie](sql-query-aggregates.md), en hun async-equivalenten **CountAsync** , **SumAsync** , **MinAsync** , **MaxAsync** en **AverageAsync**.
 - **CompareTo** : wordt omgezet naar bereikvergelijkingen. Wordt meestal gebruikt voor teken reeksen, omdat ze niet vergelijkbaar zijn in .NET.
 - **Overs Laan** en **uitvoeren** : vertaalt de [Offset en de limiet](sql-query-offset-limit.md) voor het beperken van de resultaten van een query en het uitvoeren van de paginering.
 - **Wiskundige functies** : ondersteunt de omzetting van .net,,,,,,,,,,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` en `Truncate` naar de equivalente [ingebouwde wiskundige functies](sql-query-mathematical-functions.md).
