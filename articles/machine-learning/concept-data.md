@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f46222740ad668b8bb6ec9eb85e78efb0f673528
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446697"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322234"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Beveiligde toegang tot gegevens in Azure Machine Learning
 
@@ -29,7 +29,7 @@ Met Azure Machine Learning kunt u eenvoudig verbinding maken met uw gegevens in 
     
 ## <a name="data-workflow"></a>Gegevens werk stroom
 
-Wanneer u klaar bent voor het gebruik van de gegevens in uw opslag oplossing op basis van de Cloud, raden we u aan de volgende werk stroom voor het leveren van gegevens te gebruiken. In deze werk stroom wordt ervan uitgegaan dat u een [Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) en gegevens hebt in een cloud-gebaseerde opslag service in Azure. 
+Wanneer u klaar bent voor het gebruik van de gegevens in uw opslag oplossing op basis van de Cloud, raden we u aan de volgende werk stroom voor het leveren van gegevens te gebruiken. In deze werk stroom wordt ervan uitgegaan dat u een [Azure-opslag account](../storage/common/storage-account-create.md?tabs=azure-portal) en gegevens hebt in een cloud-gebaseerde opslag service in Azure. 
 
 1. Maak een [Azure machine learning gegevens opslag](#datastores) om verbindings gegevens op te slaan in uw Azure-opslag.
 
@@ -81,9 +81,9 @@ Gegevens sets kunnen worden gemaakt op basis van lokale bestanden, open bare url
 
 Er zijn twee typen gegevens sets: 
 
-+ Een [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. Als uw gegevens al zijn gereinigd en klaar zijn voor gebruik in trainings experimenten, kunt u [bestanden downloaden of koppelen](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) waarnaar wordt verwezen door FileDatasets naar uw reken doel.
++ Een [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) verwijst naar één of meer bestanden in uw gegevens opslag of open bare url's. Als uw gegevens al zijn gereinigd en klaar zijn voor gebruik in trainings experimenten, kunt u [bestanden downloaden of koppelen](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) waarnaar wordt verwezen door FileDatasets naar uw reken doel.
 
-+ Een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. U kunt een TabularDataset laden in een Panda of Spark data frame voor verdere manipulatie en reiniging. Voor een volledige lijst met gegevens indelingen waaruit u TabularDatasets kunt maken, raadpleegt u de [klasse TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
++ Een [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) vertegenwoordigt gegevens in tabel vorm door het bestand of de lijst met bestanden te parseren. U kunt een TabularDataset laden in een Panda of Spark data frame voor verdere manipulatie en reiniging. Voor een volledige lijst met gegevens indelingen waaruit u TabularDatasets kunt maken, raadpleegt u de [klasse TabularDatasetFactory](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory).
 
 Aanvullende gegevens sets kunnen worden gevonden in de volgende documentatie:
 
@@ -100,7 +100,7 @@ Met gegevens sets kunt u een aantal machine learning taken uitvoeren via een naa
      + de [ontwerper](tutorial-designer-automobile-price-train-score.md#import-data)
      + [-](how-to-train-with-datasets.md)
      + [Azure Machine Learning pijp lijnen](how-to-create-your-first-pipeline.md)
-+ Toegang tot gegevens sets voor het afgeven van een [batch-deinterferentie](how-to-use-parallel-run-step.md) in [machine learning pijp lijnen](how-to-create-your-first-pipeline.md).
++ Toegang tot gegevens sets voor het afgeven van een [batch-deinterferentie](./tutorial-pipeline-batch-scoring-classification.md) in [machine learning pijp lijnen](how-to-create-your-first-pipeline.md).
 + Stel een monitor voor gegevensset in voor de detectie van [gegevens drift](#drift) .
 
 <a name="label"></a>

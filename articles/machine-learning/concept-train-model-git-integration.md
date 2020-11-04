@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275962"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324771"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integratie voor Azure Machine Learning
 
@@ -39,7 +39,7 @@ Zie voor meer informatie over klonen de hand leiding voor het [gebruik van Git c
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>Uw Git-account verifiëren met SSH
 ### <a name="generate-a-new-ssh-key"></a>Een nieuwe SSH-sleutel genereren
-1) [Open het Terminal venster](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) op het tabblad Azure machine learning notitie blok.
+1) [Open het Terminal venster](./how-to-run-jupyter-notebooks.md#terminal) op het tabblad Azure machine learning notitie blok.
 
 2) Plak de onderstaande tekst en vervang deze in uw e-mail adres.
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure-DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Begin bij **stap 2**.
++ [Azure-DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Begin bij **stap 2**.
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Begin bij **stap 4**.
 
@@ -115,7 +115,7 @@ Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of know
 
 SSH kan de SSH-vinger afdruk van de server weer geven en u vragen om deze te verifiëren. Controleer of de weer gegeven vinger afdruk overeenkomt met een van de vinger afdrukken op de pagina open bare SSH-sleutels.
 
-SSH geeft deze vinger afdruk weer wanneer deze verbinding maakt met een onbekende host om u te beschermen tegen [man-in-the-middle-aanvallen](https://technet.microsoft.com/library/cc959354.aspx). Zodra u de vinger afdruk van de host hebt geaccepteerd, wordt u niet gevraagd om u opnieuw te vragen, tenzij de vinger afdruk is gewijzigd.
+SSH geeft deze vinger afdruk weer wanneer deze verbinding maakt met een onbekende host om u te beschermen tegen [man-in-the-middle-aanvallen](/previous-versions/windows/it-pro/windows-2000-server/cc959354(v=technet.10)). Zodra u de vinger afdruk van de host hebt geaccepteerd, wordt u niet gevraagd om u opnieuw te vragen, tenzij de vinger afdruk is gewijzigd.
 
 3) Wanneer u wordt gevraagd of u wilt door gaan met verbinding maken, typt u `yes` . Git kloont de opslag plaats en stelt de externe oorsprong in om verbinding te maken met SSH voor toekomstige Git-opdrachten.
 
@@ -153,9 +153,9 @@ De Git-informatie wordt opgeslagen in de eigenschappen voor een trainings uitvoe
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Selecteer uw werk ruimte vanuit de [Studio Portal](https://ml.azure.com).
-1. Selecteer __experimenten__en selecteer vervolgens een van uw experimenten.
+1. Selecteer __experimenten__ en selecteer vervolgens een van uw experimenten.
 1. Selecteer een van de uitvoeringen in de kolom __uitvoerings nummer__ .
-1. Selecteer __uitvoer en logboeken__en vouw vervolgens de __Logboeken__ en __azureml__ -vermeldingen uit. Selecteer de koppeling die begint met __ ### \_ Azure__.
+1. Selecteer __uitvoer en logboeken__ en vouw vervolgens de __Logboeken__ en __azureml__ -vermeldingen uit. Selecteer de koppeling die begint met __### \_ Azure__.
 
 De geregistreerde gegevens bevatten tekst die vergelijkbaar is met de volgende JSON:
 
@@ -178,7 +178,7 @@ De geregistreerde gegevens bevatten tekst die vergelijkbaar is met de volgende J
 
 ### <a name="python-sdk"></a>Python-SDK
 
-Na het verzenden van een trainings uitvoering wordt een [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) -object geretourneerd. Het `properties` kenmerk van dit object bevat de geregistreerde Git-informatie. Met de volgende code wordt bijvoorbeeld de commit-hash opgehaald:
+Na het verzenden van een trainings uitvoering wordt een [Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) -object geretourneerd. Het `properties` kenmerk van dit object bevat de geregistreerde Git-informatie. Met de volgende code wordt bijvoorbeeld de commit-hash opgehaald:
 
 ```python
 run.properties['azureml.git.commit']
@@ -192,7 +192,7 @@ De `az ml run` cli-opdracht kan worden gebruikt om de eigenschappen op te halen 
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Zie voor meer informatie de documentatie van [AZ ml run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) Reference.
+Zie voor meer informatie de documentatie van [AZ ml run](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest) Reference.
 
 ## <a name="next-steps"></a>Volgende stappen
 

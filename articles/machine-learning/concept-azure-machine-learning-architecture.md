@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276081"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322312"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -36,7 +36,7 @@ De werk ruimte is de centrale locatie waar u het volgende kunt doen:
   * [Pijplijnen](#ml-pipelines)
   * [Gegevenssets](#datasets-and-datastores)
   * [Modellen](#models)
-  * [Eindpunten](#endpoints)
+  * [Eind punten](#endpoints)
 
 Een werk ruimte bevat andere Azure-resources die worden gebruikt door de werk ruimte:
 
@@ -53,9 +53,9 @@ U kunt een werk ruimte delen met anderen.
 
 Azure Machine Learning introduceert twee volledig beheerde virtuele machines in de Cloud (VM) die zijn geconfigureerd voor machine learning taken:
 
-* <a name="compute-instance"></a>**Reken instantie**: een reken instantie is een VM met meerdere hulpprogram ma's en omgevingen die zijn geïnstalleerd voor machine learning. Het primaire gebruik van een reken instantie is voor uw ontwikkel werkstation.  U kunt voorbeeld notitieblokken starten zonder dat Setup is vereist. Een reken instantie kan ook worden gebruikt als een reken doel voor trainings-en detrainings taken.
+* <a name="compute-instance"></a>**Reken instantie** : een reken instantie is een VM met meerdere hulpprogram ma's en omgevingen die zijn geïnstalleerd voor machine learning. Het primaire gebruik van een reken instantie is voor uw ontwikkel werkstation.  U kunt voorbeeld notitieblokken starten zonder dat Setup is vereist. Een reken instantie kan ook worden gebruikt als een reken doel voor trainings-en detrainings taken.
 
-* **Reken clusters**: reken clusters zijn een cluster met virtuele machines met schaal mogelijkheden voor meerdere knoop punten. Reken clusters zijn beter geschikt voor reken doelen voor grote taken en productie.  Het cluster wordt automatisch geschaald wanneer een taak wordt verzonden.  Gebruik als een trainings berekenings doel of voor een dev/test-implementatie.
+* **Reken clusters** : reken clusters zijn een cluster met virtuele machines met schaal mogelijkheden voor meerdere knoop punten. Reken clusters zijn beter geschikt voor reken doelen voor grote taken en productie.  Het cluster wordt automatisch geschaald wanneer een taak wordt verzonden.  Gebruik als een trainings berekenings doel of voor een dev/test-implementatie.
 
 Zie [trainings Compute-doelen](concept-compute-target.md#train)voor meer informatie over de doelen van de trainings compute.  Zie [implementatie doelen](concept-compute-target.md#deploy)voor meer informatie over Compute-doelen voor de implementatie.
 
@@ -102,7 +102,7 @@ U produceert een uitvoering wanneer u een script voor het trainen van een model 
 
 [Werk ruimte](#workspace)  >  [Experimenten](#experiments)  >  [Uitvoeren](#runs)  >  **Configuratie uitvoeren**
 
-Een uitvoerings configuratie definieert hoe een script moet worden uitgevoerd in een opgegeven Compute-doel. U gebruikt de configuratie om het script, het reken doel en de Azure ML-omgeving op te geven die moeten worden uitgevoerd, alle gedistribueerde taak configuraties en enkele aanvullende eigenschappen. Zie [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)voor meer informatie over de volledige set Configureer bare opties voor uitvoeringen.
+Een uitvoerings configuratie definieert hoe een script moet worden uitgevoerd in een opgegeven Compute-doel. U gebruikt de configuratie om het script, het reken doel en de Azure ML-omgeving op te geven die moeten worden uitgevoerd, alle gedistribueerde taak configuraties en enkele aanvullende eigenschappen. Zie [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)voor meer informatie over de volledige set Configureer bare opties voor uitvoeringen.
 
 Een uitvoerings configuratie kan worden opgeslagen in een bestand in de map die uw trainings script bevat.   Of kan worden geconstrueerd als een in-memory-object en worden gebruikt voor het verzenden van een run.
 
@@ -164,7 +164,7 @@ U implementeert een [geregistreerd model](#register-model) als een service-eind 
 
 * **Omgeving**. Deze omgeving omvat de afhankelijkheden die nodig zijn voor het uitvoeren van uw model.
 * **Score code**. Met dit script worden aanvragen geaccepteerd, worden de aanvragen met behulp van het model gescoord en worden de resultaten geretourneerd.
-* **Configuratie**afleiding. De configuratie voor afwijzen specificeert de omgeving, het invoer script en andere onderdelen die nodig zijn om het model als een service uit te voeren.
+* **Configuratie** afleiding. De configuratie voor afwijzen specificeert de omgeving, het invoer script en andere onderdelen die nodig zijn om het model als een service uit te voeren.
 
 Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over deze onderdelen.
 
@@ -233,10 +233,10 @@ De studio heeft ook toegang tot de interactieve hulp middelen die deel uitmaken 
 > De hulpprogram ma's die zijn gemarkeerd (preview) zijn momenteel beschikbaar als open bare preview.
 > De preview-versie wordt aangeboden zonder Service Level Agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-+  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
++  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 + Communiceer met de service in een wille keurige R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (preview).
 + Gebruik [Azure machine learning Designer](concept-designer.md) om de werk stroom stappen uit te voeren zonder code te schrijven. 
-+ Gebruik [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) voor Automation.
++ Gebruik [Azure machine learning cli](./reference-azure-machine-learning-cli.md) voor Automation.
 + De [Many Models Solution Accelerator](https://aka.ms/many-models) (preview) heeft Azure Machine Learning als basis en stelt u in staat om honderden, of zelfs duizenden machine Learning-modellen, te trainen, te gebruiken en te beheren.
 
 ## <a name="next-steps"></a>Volgende stappen

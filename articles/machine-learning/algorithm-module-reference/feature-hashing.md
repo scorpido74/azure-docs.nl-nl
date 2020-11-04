@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907921"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323720"
 ---
 # <a name="feature-hashing-module-reference"></a>Naslag informatie over functie hashing-module
 
@@ -22,7 +22,7 @@ In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Lea
 
 Gebruik de functie hashing-module om een stroom van Engelse tekst te transformeren in een set integer-functies. U kunt deze hash-functie vervolgens door geven die is ingesteld op een machine learning algoritme voor het trainen van een tekst analyse model.
 
-De functie hashing-functionaliteit die in deze module wordt gegeven, is gebaseerd op het nimbusml-Framework. Zie [NgramHash class](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)voor meer informatie.
+De functie hashing-functionaliteit die in deze module wordt gegeven, is gebaseerd op het nimbusml-Framework. Zie [NgramHash class](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)voor meer informatie.
 
 ## <a name="what-is-feature-hashing"></a>Wat is functie-hashing?
 
@@ -90,7 +90,7 @@ Met numerieke uitvoer kunt u ook algemene machine learning methoden gebruiken, z
     
     De standaard-bits grootte is 10. Deze waarde is voor veel problemen voldoende. Mogelijk hebt u meer ruimte nodig om conflicten te voor komen, afhankelijk van de grootte van de lijst met n-grammen in de tekst van de training.
     
-1. Voer voor **N-gram**een getal in dat de maximum lengte van het N-gram definieert dat aan de trainings woordenlijst moet worden toegevoegd. Een n-gram bestaat uit een reeks *n* woorden, behandeld als een unieke eenheid.
+1. Voer voor **N-gram** een getal in dat de maximum lengte van het N-gram definieert dat aan de trainings woordenlijst moet worden toegevoegd. Een n-gram bestaat uit een reeks *n* woorden, behandeld als een unieke eenheid.
 
     Als u bijvoorbeeld 3, unigrams, bigrams en trigrams invoert, worden deze gemaakt.
 
@@ -131,4 +131,4 @@ De optimale set voor verwerkings methoden die in een oplossing moeten worden toe
 
 ## <a name="next-steps"></a>Volgende stappen
             
-De [set met modules bekijken die beschikbaar zijn](module-reference.md) voor Azure machine learning 
+De [set met modules bekijken die beschikbaar zijn](module-reference.md) voor Azure machine learning

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4aec299e15964d45ad949034ba02729ff43934de
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043175"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322201"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 en 8600 migratie naar Azure File Sync
 
@@ -76,7 +76,7 @@ Als u de sleutels niet in uw records vindt, kunt u de sleutel van het apparaat o
 >
 > * Het maken van een verbinding via een HTTPS-sessie is de veiligste en aanbevolen optie.
 > * Rechtstreeks verbinding maken met de seriële console van het apparaat is beveiligd, maar het maken van verbinding met de seriële console via netwerk switches is niet.
-> * HTTP-sessie verbindingen zijn een optie, maar zijn *niet versleuteld* . Ze worden niet aanbevolen, tenzij ze worden gebruikt in een gesloten, vertrouwd netwerk.
+> * HTTP-sessie verbindingen zijn een optie, maar zijn *niet versleuteld*. Ze worden niet aanbevolen, tenzij ze worden gebruikt in een gesloten, vertrouwd netwerk.
 
 ### <a name="storsimple-volume-backups"></a>StorSimple volume back-ups
 
@@ -119,7 +119,7 @@ Aan het einde van fase 1:
 * U hebt een abonnement waarvoor volumes moeten worden gemigreerd en ook hoe uw volumes moeten worden toegewezen aan het juiste aantal Azure-bestands shares en-opslag accounts.
 
 > [!CAUTION]
-> Als u back-ups moet migreren van StorSimple-volumes, kunt u **hier stoppen** .
+> Als u back-ups moet migreren van StorSimple-volumes, kunt u **hier stoppen**.
 >
 > Deze migratie aanpak is afhankelijk van de nieuwe functies voor gegevens transformatie service die momenteel geen back-ups kunnen migreren. Ondersteuning voor back-upmigratie arriveert aan het einde van 2020. U kunt momenteel alleen uw Live gegevens migreren. Als u nu begint, kunt u later niet meer op uw back-ups flitsen. Back-ups moeten worden ' afgespeeld ' naar de Azure-bestands shares van oudste naar nieuwste tot dynamische gegevens, met moment opnamen van Azure-bestands shares in.
 
@@ -165,8 +165,8 @@ Nog steeds niet zeker?
 
 #### <a name="account-kind"></a>Soort account
 
-* Kies voor standaard opslag *StorageV2 (algemeen gebruik v2)* .
-* Kies voor Premium-bestands shares de optie *FileStorage* .
+* Kies voor standaard opslag *StorageV2 (algemeen gebruik v2)*.
+* Kies voor Premium-bestands shares de optie *FileStorage*.
 
 #### <a name="replication"></a>Replicatie
 
@@ -174,13 +174,13 @@ Er zijn verschillende replicatie-instellingen beschikbaar. Meer informatie over 
 
 Kies alleen een van de volgende twee opties:
 
-* *Lokaal redundante opslag (LRS)* .
+* *Lokaal redundante opslag (LRS)*.
 * *Zone redundant Storage (ZRS)* , die niet beschikbaar is in alle Azure-regio's.
 
 > [!NOTE]
 > Alleen LRS-en ZRS-redundantie typen zijn compatibel met de grote 100-TiB capaciteit Azure-bestands shares.
 
-Wereld wijde redundante opslag (GRS) in alle variaties wordt momenteel niet ondersteund. U kunt later overschakelen op het redundantie type en overschakelen naar GRS wanneer ondersteuning voor deze arriveert in Azure.
+Geo redundant Storage (GRS) in alle variaties wordt momenteel niet ondersteund. U kunt later overschakelen op het redundantie type en overschakelen naar GRS wanneer ondersteuning voor deze arriveert in Azure.
 
 #### <a name="enable-100-tib-capacity-file-shares"></a>100-TiB-capaciteits bestands shares inschakelen
 
@@ -206,16 +206,16 @@ Nadat uw opslag accounts zijn gemaakt, gaat u naar de sectie **Bestands share** 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Een afbeelding met het tabblad Geavanceerd in de Azure Portal voor het maken van een opslag account.":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Een Azure Portal scherm opname waarin de nieuwe gebruikers interface voor bestands shares wordt weer gegeven.":::
     :::column-end:::
     :::column:::
-        </br>**Naam**</br>Kleine letters, cijfers en afbreek streepjes worden ondersteund.</br></br>**Quota**</br>Quotum hier is vergelijkbaar met een SMB-vaste quota op een Windows Server-exemplaar. Het best practice heeft geen quotum opgegeven, omdat uw migratie en andere services mislukken wanneer het quotum is bereikt.</br></br>**Lagen**</br>Selecteer **geoptimaliseerde trans actie** voor uw nieuwe bestands share. Tijdens de migratie worden er veel trans acties uitgevoerd. Het is efficiënter om uw laag later te wijzigen in de laag die het meest geschikt is voor uw werk belasting.
+        </br>**Naam**</br>Kleine letters, cijfers en afbreek streepjes worden ondersteund.</br></br>**Quota**</br>Quotum hier is vergelijkbaar met een SMB-vaste quota op een Windows Server-exemplaar. Het best practice heeft geen quotum opgegeven, omdat uw migratie en andere services mislukken wanneer het quotum is bereikt.</br></br>**Lagen**</br>Selecteer **geoptimaliseerde trans actie** voor uw nieuwe bestands share. Tijdens de migratie worden er veel trans acties uitgevoerd. Meer kosten efficiënt om uw laag later te wijzigen in de laag die het meest geschikt is voor uw werk belasting.
     :::column-end:::
 :::row-end:::
 
 ### <a name="storsimple-data-manager"></a>StorSimple-gegevensbeheer
 
-De Azure-resource die uw migratie taken zal bevatten, wordt een **StorSimple Data Manager** genoemd. Selecteer **nieuwe resource** en zoek ernaar. Selecteer vervolgens **Maken** .
+De Azure-resource die uw migratie taken zal bevatten, wordt een **StorSimple Data Manager** genoemd. Selecteer **nieuwe resource** en zoek ernaar. Selecteer vervolgens **Maken**.
 
 Deze tijdelijke resource wordt gebruikt voor de indeling. U kunt de inrichting ongedaan maken nadat de migratie is voltooid. Het moet worden geïmplementeerd in hetzelfde abonnement, dezelfde resource groep en regio als uw StorSimple-opslag account.
 
@@ -232,7 +232,7 @@ Aan het einde van fase 2 hebt u uw opslag accounts en alle Azure-bestands shares
 
 ## <a name="phase-3-create-and-run-a-migration-job"></a>Fase 3: een migratie taak maken en uitvoeren
 
-In deze sectie wordt beschreven hoe u een migratie taak instelt en hoe u de mappen op een StorSimple-volume zorgvuldig toewijst die moeten worden gekopieerd naar de Azure-doel bestands share die u selecteert. Als u aan de slag wilt gaan, gaat u naar uw StorSimple Data Manager, zoekt u naar **taak definities** in het menu en selecteert u **+ taak definitie** . Het doel opslag type is de standaard **Bestands share van Azure** .
+In deze sectie wordt beschreven hoe u een migratie taak instelt en hoe u de mappen op een StorSimple-volume zorgvuldig toewijst die moeten worden gekopieerd naar de Azure-doel bestands share die u selecteert. Als u aan de slag wilt gaan, gaat u naar uw StorSimple Data Manager, zoekt u naar **taak definities** in het menu en selecteert u **+ taak definitie**. Het doel opslag type is de standaard **Bestands share van Azure**.
 
 ![Typen migratie taken StorSimple 8000-serie.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "Een scherm opname van de taak definities Azure Portal in het dialoog venster nieuwe taak definities waarin wordt gevraagd om het type taak: kopiëren naar een bestands share of een BLOB-container.")
 
@@ -270,21 +270,21 @@ Een toewijzing wordt uitgedrukt van links naar rechts: [\Source pad] \> [\target
 |Semantisch teken          | Betekenis  |
 |:---------------------------|:---------|
 | **\\**                     | Hoofd niveau-indicator.       |
-| **\>**                     | [Bron] en [doel-toewijzings operator.     |
+| **\>**                     | [Bron] en [doel-toewijzing] operator.     |
 |**\|** of RETURN (nieuwe regel) | Schei ding van twee instructies voor toewijzing van mappen. </br>U kunt dit teken ook weglaten en **Enter** selecteren als u de volgende toewijzings expressie op een eigen regel wilt ophalen.        |
 
 ### <a name="examples"></a>Voorbeelden
 Hiermee wordt de inhoud van de *gebruikers gegevens* van de map verplaatst naar de hoofdmap van de doel bestands share:
 ``` console
-\User data > \\
+\User data > \
 ```
 Verplaatst de inhoud van het hele volume naar een nieuw pad op de doel bestands share:
 ``` console
-\ \> \Apps\HR tracker
+\ > \Apps\HR tracker
 ```
 Hiermee verplaatst u de inhoud van de bronmap naar een nieuw pad op de doel bestands share:
 ``` console
-\HR resumes-Backup \> \Backups\HR\resumes
+\HR resumes-Backup > \Backups\HR\resumes
 ```
 Hiermee worden meerdere bron locaties in een nieuwe mapstructuur gesorteerd:
 ``` console
@@ -296,7 +296,7 @@ Hiermee worden meerdere bron locaties in een nieuwe mapstructuur gesorteerd:
 ### <a name="semantic-rules"></a>Semantische regels
 
 * Geef altijd mappaden op die relatief zijn ten opzichte van het hoofd niveau.
-* Begin elke mappad met een indicator op hoofd niveau \" .
+* Begin elke mappad met een indicator op hoofd niveau \\ .
 * Geen stationsletters bevatten.
 * Wanneer u meerdere paden opgeeft, kunnen de bron-of doel paden elkaar niet overlappen:</br>
    Ongeldig overlappend voor beeld van bronpad:</br>
@@ -425,12 +425,12 @@ Nadat dit is gewijzigd in een andere, maar een **initiële synchronisatie** , wo
 
 U kunt ook de Logboeken op uw Windows Server-exemplaar gebruiken om te zien wanneer de naam ruimte volledig is aangekomen.
 
-1. Open de **Logboeken** en ga naar **toepassingen en services** .
-1. Ga naar en open **Microsoft\FileSync\Agent\Telemetry** .
+1. Open de **Logboeken** en ga naar **toepassingen en services**.
+1. Ga naar en open **Microsoft\FileSync\Agent\Telemetry**.
 1. Zoek naar de meest recente **gebeurtenis 9102** , die overeenkomt met een voltooide synchronisatie sessie.
-1. Selecteer **Details** en bevestig dat u op zoek bent naar een gebeurtenis waar de **SyncDirection** -waarde wordt **gedownload** .
-1. Voor het moment waarop uw naam ruimte het downloaden van de server heeft voltooid, is er één gebeurtenis met **scenario** , de waarde **FullGhostedSync** en **HResult**  =  **0** .
-1. Als u deze gebeurtenis hebt gemist, kunt u ook andere **9102-gebeurtenissen** zoeken met **SyncDirection**  =  **down load** en **scenario**  =  **"RegularSync"** . Als u een van deze gebeurtenissen zoekt, geeft u ook aan dat de naam ruimte is gedownload en dat de synchronisatie is voltooid naar reguliere synchronisatie sessies, ongeacht of er op dit moment iets is om te synchroniseren.
+1. Selecteer **Details** en bevestig dat u op zoek bent naar een gebeurtenis waar de **SyncDirection** -waarde wordt **gedownload**.
+1. Voor het moment waarop uw naam ruimte het downloaden van de server heeft voltooid, is er één gebeurtenis met **scenario** , de waarde **FullGhostedSync** en **HResult**  =  **0**.
+1. Als u deze gebeurtenis hebt gemist, kunt u ook andere **9102-gebeurtenissen** zoeken met **SyncDirection**  =  **down load** en **scenario**  =  **"RegularSync"**. Als u een van deze gebeurtenissen zoekt, geeft u ook aan dat de naam ruimte is gedownload en dat de synchronisatie is voltooid naar reguliere synchronisatie sessies, ongeacht of er op dit moment iets is om te synchroniseren.
 
 ### <a name="a-final-robocopy"></a>Een laatste RoboCopy
 
@@ -518,7 +518,7 @@ Achtergrondbitmap
    :::column-end:::
 :::row-end:::
 
-Wanneer u bron-en doel locaties van de RoboCopy-opdracht configureert, moet u de structuur van de bron en het doel controleren om ervoor te zorgen dat ze overeenkomen. Als u de functie voor adreslijst toewijzing van de migratie taak hebt gebruikt, kan de structuur van de hoofdmap afwijken van de structuur van uw StorSimple-volume. Als dat het geval is, hebt u mogelijk meerdere RoboCopy-taken nodig, één voor elke submap.
+Wanneer u bron-en doel locaties van de RoboCopy-opdracht configureert, moet u de structuur van de bron en het doel controleren om ervoor te zorgen dat ze overeenkomen. Als u de functie voor adreslijst toewijzing van de migratie taak hebt gebruikt, kan de structuur van de hoofdmap afwijken van de structuur van uw StorSimple-volume. Als dat het geval is, hebt u mogelijk meerdere RoboCopy-taken nodig, één voor elke submap. Als u niet zeker weet of de opdracht wordt uitgevoerd zoals verwacht, kunt u de para meter */l* gebruiken. Hiermee wordt de opdracht gesimuleerd zonder dat er wijzigingen worden aangebracht.
 
 Deze RoboCopy-opdracht gebruikt/MIR, zodat er geen bestanden worden verplaatst die hetzelfde zijn (gelaagde bestanden, bijvoorbeeld). Maar als u het pad naar de bron en het doelpad onjuist ophaalt, verwijdert/MIR ook mapstructuren op uw Windows Server-exemplaar of Azure-bestands share die niet aanwezig zijn in het StorSimple. Ze moeten exact overeenkomen voor de RoboCopy-taak om het beoogde doel te bereiken van het bijwerken van uw gemigreerde inhoud met de laatste wijzigingen die zijn aangebracht tijdens de migratie.
 
@@ -547,7 +547,7 @@ Wanneer u de inrichting van een bron ongedaan maakt, verliest u de toegang tot d
 Voordat u begint, is het een best practice om uw nieuwe implementatie van Azure File Sync tijdens de productie tijd te observeren. Op die manier kunt u eventuele problemen oplossen die zich kunnen voordoen. Nadat u uw Azure File Sync-implementatie ten minste enkele dagen hebt waargenomen, kunt u de inrichting van resources in deze volg orde ongedaan maken:
 
 1. De inrichting van uw StorSimple Data Manager-bron via de Azure Portal ongedaan maken. Al uw DTS-taken worden hiermee verwijderd. U kunt de Kopieer logboeken niet eenvoudig ophalen. Als ze belang rijk zijn voor uw records, haalt u deze op voordat u de inrichting ongedaan maakt.
-1. Zorg ervoor dat uw fysieke StorSimple-apparaten zijn gemigreerd en hef de registratie ervan op. Als u niet volledig zeker weet dat ze zijn gemigreerd, kunt u niet door gaan. Als u de inrichting van deze resources ongedaan maakt terwijl ze nog steeds nodig zijn, kunt u de gegevens of de configuratie ervan niet herstellen.
+1. Zorg ervoor dat uw fysieke StorSimple-apparaten zijn gemigreerd en hef de registratie ervan op. Als u niet volledig zeker weet dat ze zijn gemigreerd, kunt u niet door gaan. Als u de inrichting van deze resources ongedaan maakt terwijl ze nog steeds nodig zijn, kunt u de gegevens of de configuratie ervan niet herstellen.<br>U kunt eventueel eerst de inrichting van de StorSimple-volume bron ongedaan maken, waardoor de gegevens op het apparaat worden opgeruimd. Dit kan enkele dagen duren en de gegevens op het apparaat **worden niet** forensically op nul. Als dit belang rijk voor u is, moet u schijf Zeroing afzonderlijk van de bron inrichting en volgens uw beleid afhandelen.
 1. Als er nog geen geregistreerde apparaten meer zijn in een StorSimple-Apparaatbeheer, kunt u door gaan met het verwijderen van die Apparaatbeheer resource zelf.
 1. Het is nu tijd om het StorSimple-opslag account te verwijderen in Azure. Het opnieuw, stoppen en bevestigen van de migratie is voltooid en die niets en niemand is afhankelijk van deze gegevens voordat u verdergaat.
 1. Ontkoppel het fysieke StorSimple-apparaat uit uw Data Center.

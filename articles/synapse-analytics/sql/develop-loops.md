@@ -1,6 +1,6 @@
 ---
 title: T-SQL-lussen gebruiken
-description: Tips voor het gebruik van T-SQL-lussen, het vervangen van cursors en het ontwikkelen van gerelateerde oplossingen met SQL-pool in Synapse SQL.
+description: Tips voor het gebruik van T-SQL-lussen, het vervangen van cursors en het ontwikkelen van gerelateerde oplossingen met Synapse SQL in azure Synapse Analytics.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,23 +10,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99ee41de7ffd66191ff712a5ffbda65f3233196f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289052"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324437"
 ---
-# <a name="use-t-sql-loops-in-synapse-sql"></a>T-SQL-lussen gebruiken in Synapse SQL
-In dit artikel vindt u belang rijke tips voor het gebruik van T-SQL-lussen, het vervangen van cursors en het ontwikkelen van gerelateerde oplossingen met SQL-pool in Synapse SQL.
+# <a name="use-t-sql-loops-with-synapse-sql-in-azure-synapse-analytics"></a>T-SQL-lussen gebruiken met Synapse SQL in azure Synapse Analytics
+
+In dit artikel vindt u belang rijke tips voor het gebruik van T-SQL-lussen, het vervangen van cursors en het ontwikkelen van gerelateerde oplossingen met Synapse SQL.
 
 ## <a name="purpose-of-while-loops"></a>Doel van WHILE-lussen
 
 Synapse SQL ondersteunt de [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) -lus voor het herhaaldelijk uitvoeren van instructie blokken. Deze lus wordt voortgezet zolang de opgegeven voor waarden waar zijn of totdat de code de lus met behulp van het sleutel woord desplit verbreekt. 
 
-Lussen in SQL-groep zijn handig voor het vervangen van cursors die zijn gedefinieerd in SQL-code. Gelukkig zijn bijna alle cursors die in SQL-code zijn geschreven van het besnelde, alleen-lezen RAS. En lussen zijn dus een geweldig alternatief voor het vervangen van cursors.
+Lussen in Synapse SQL zijn handig voor het vervangen van cursors die zijn gedefinieerd in SQL-code. Gelukkig zijn bijna alle cursors die in SQL-code zijn geschreven van het besnelde, alleen-lezen RAS. En lussen zijn dus een geweldig alternatief voor het vervangen van cursors.
 
-## <a name="replace-cursors-in-sql-pool"></a>Cursors in SQL-groep vervangen
+## <a name="replace-cursors-in-synapse-sql"></a>Cursors vervangen in Synapse SQL
 
 Voordat u aan de slag gaat, moet u rekening houden met de volgende vraag: ' kan deze cursor opnieuw schrijven voor het gebruik van op sets gebaseerde bewerkingen? ' In veel gevallen is het antwoord ja en is het vaak de beste aanpak. Een op sets gebaseerde bewerking voert vaak sneller uit dan een iteratieve, rij-by-rij-benadering.
 

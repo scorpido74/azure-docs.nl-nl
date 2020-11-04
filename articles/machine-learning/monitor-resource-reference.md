@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: edd2b3e02c1a768b1f18a62faaf9b59539b92774
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739144"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323943"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Naslag informatie over Azure machine learning-gegevens bewaken
 
@@ -22,11 +22,11 @@ Meer informatie over de gegevens en resources die worden verzameld door Azure Mo
 
 ## <a name="metrics"></a>Metrische gegevens
 
-In deze sectie vindt u alle automatisch verzamelde platform gegevens die zijn verzameld voor Azure Machine Learning. De resource provider voor deze metrische gegevens is [micro soft. MachineLearningServices/Workspaces](/azure/azure-monitor/platform/metrics-supported#microsoftmachinelearningservicesworkspaces).
+In deze sectie vindt u alle automatisch verzamelde platform gegevens die zijn verzameld voor Azure Machine Learning. De resource provider voor deze metrische gegevens is [micro soft. MachineLearningServices/Workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Model**
 
-| Gegevens | Eenheid | Beschrijving |
+| Metrisch gegeven | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
 | Model implementeren is mislukt | Aantal | Het aantal model implementaties dat is mislukt. |
 | Model implementeren gestart | Aantal | Het aantal model implementaties is gestart. |
@@ -38,7 +38,7 @@ In deze sectie vindt u alle automatisch verzamelde platform gegevens die zijn ve
 
 Quota gegevens zijn alleen voor het berekenen van Azure Machine Learning.
 
-| Gegevens | Eenheid | Beschrijving |
+| Metrisch gegeven | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
 | Actieve kernen | Aantal | Het aantal actieve reken kernen. |
 | Actieve knoop punten | Aantal | Het aantal actieve knoop punten. |
@@ -56,16 +56,16 @@ Quota gegevens zijn alleen voor het berekenen van Azure Machine Learning.
 
 **Resource**
 
-| Gegevens | Eenheid | Beschrijving |
+| Metrisch gegeven | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
 | CpuUtilization | Percentage | Hoeveel procent van de CPU voor een bepaald knoop punt is gebruikt tijdens een uitvoering/taak. Deze metrische gegevens worden alleen gepubliceerd wanneer een taak wordt uitgevoerd op een knoop punt. Eén taak kan gebruikmaken van een of meer knoop punten. Deze metriek wordt per knoop punt gepubliceerd. |
 | GpuUtilization | Percentage | Hoeveel percentage van de GPU voor een bepaald knoop punt is gebruikt tijdens een uitvoering/taak. Eén knoop punt kan een of meer Gpu's hebben. Deze metrische gegevens worden per GPU per knoop punt gepubliceerd. |
 
-**Uitvoeringsrun**
+**Uitvoeren**
 
 Informatie over trainings uitvoeringen.
 
-| Gegevens | Eenheid | Beschrijving |
+| Metrisch gegeven | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
 | Voltooide uitvoeringen | Aantal | Het aantal voltooide uitvoeringen. |
 | Mislukte uitvoeringen | Aantal | Het aantal mislukte uitvoeringen. |
@@ -73,7 +73,7 @@ Informatie over trainings uitvoeringen.
 
 ## <a name="metric-dimensions"></a>Metrische dimensies
 
-Zie [multidimensionale metrische](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics)gegevens voor meer informatie over de metrieke dimensies.
+Zie [multidimensionale metrische](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)gegevens voor meer informatie over de metrieke dimensies.
 
 Azure Machine Learning heeft de volgende dimensies die zijn gekoppeld aan de metrische gegevens.
 
@@ -87,7 +87,7 @@ Azure Machine Learning heeft de volgende dimensies die zijn gekoppeld aan de met
 | NodeId | De ID van het knoop punt dat is gemaakt waarbij de taak wordt uitgevoerd. Alleen beschikbaar voor CpuUtilization en GpuUtilization. |
 | RunId | ID van de uitvoeringsrun/taak. Alleen beschikbaar voor CpuUtilization en GpuUtilization. |
 | ComputeType | Het reken type dat wordt gebruikt voor de uitvoering. Alleen beschikbaar voor voltooide uitvoeringen, mislukte uitvoeringen en gestarte uitvoeringen. |
-| PipelineStepType | Het type [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) dat wordt gebruikt in de uitvoering. Alleen beschikbaar voor voltooide uitvoeringen, mislukte uitvoeringen en gestarte uitvoeringen. |
+| PipelineStepType | Het type [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) dat wordt gebruikt in de uitvoering. Alleen beschikbaar voor voltooide uitvoeringen, mislukte uitvoeringen en gestarte uitvoeringen. |
 | PublishedPipelineId | De ID van de gepubliceerde pijp lijn die wordt gebruikt in de uitvoering. Alleen beschikbaar voor voltooide uitvoeringen, mislukte uitvoeringen en gestarte uitvoeringen. |
 | RunType | Het type uitvoering. Alleen beschikbaar voor voltooide uitvoeringen, mislukte uitvoeringen en gestarte uitvoeringen. |
 
@@ -116,7 +116,7 @@ De volgende tabel geeft een lijst van de bewerkingen met betrekking tot Azure Ma
 
 In deze sectie vindt u de typen bron logboeken die u kunt verzamelen voor Azure Machine Learning-werk ruimte.
 
-Resource provider en type: [micro soft. MachineLearningServices/Workspace](/azure/azure-monitor/platform/resource-logs-categories#microsoftmachinelearningservicesworkspaces).
+Resource provider en type: [micro soft. MachineLearningServices/Workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Categorie | Weergavenaam |
 | ----- | ----- |
@@ -178,7 +178,7 @@ De volgende schema's zijn in gebruik door Azure Machine Learning
 | MinimumNodeCount | Minimum aantal knoop punten van het cluster |
 | MaximumNodeCount | Maximum aantal knoop punten van het cluster |
 | NodeDeallocationOption | Hoe de toewijzing van het knoop punt moet worden opgeheven |
-| Publisher | Uitgever van het cluster type |
+| Uitgever | Uitgever van het cluster type |
 | Aanbieding | Aanbod waarmee het cluster is gemaakt |
 | Sku | SKU van het knoop punt/de virtuele machine die in het cluster is gemaakt |
 | Versie | Versie van de installatie kopie die wordt gebruikt tijdens het maken van het knoop punt/VM |
@@ -214,7 +214,7 @@ De volgende schema's zijn in gebruik door Azure Machine Learning
 | VmSize | VM-grootte van het knoop punt |
 | VmFamilyName | De VM-familie waartoe het knoop punt behoort |
 | VmPriority | Prioriteit van het knoop punt dat speciaal is gemaakt/LowPriority |
-| Publisher | Uitgever van de VM-installatie kopie. Bijvoorbeeld micro soft-dsvm |
+| Uitgever | Uitgever van de VM-installatie kopie. Bijvoorbeeld micro soft-dsvm |
 | Aanbieding | Aanbieding gekoppeld aan het maken van een virtuele machine |
 | Sku | SKU van het knoop punt/VM gemaakt |
 | Versie | Versie van de installatie kopie die wordt gebruikt tijdens het maken van het knoop punt/VM |
@@ -231,4 +231,4 @@ De volgende schema's zijn in gebruik door Azure Machine Learning
 ## <a name="see-also"></a>Zie ook
 
 - Zie [bewaking Azure machine learning](monitor-azure-machine-learning.md) voor een beschrijving van de bewakings Azure machine learning.
-- Zie [Azure-resources bewaken met Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource) voor meer informatie over het bewaken van Azure-resources.
+- Zie [Azure-resources bewaken met Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) voor meer informatie over het bewaken van Azure-resources.

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/09/2020
-ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940349"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324906"
 ---
 # <a name="convert-to-image-directory"></a>Converteren naar afbeeldingsmap
 
@@ -49,7 +49,7 @@ In dit artikel wordt beschreven hoe u de module converteren naar afbeelding kunt
 
     Voor scores moet de map gegevensset voor afbeeldingen alleen niet-geclassificeerde afbeeldingen bevatten.
 
-1. [Registreer de gegevensset van de installatie kopie als een bestands gegevensset](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) in uw werk ruimte, omdat de invoer van Convert naar afbeelding Directory module moet een **Bestands gegevensset**zijn.
+1. [Registreer de gegevensset van de installatie kopie als een bestands gegevensset](../how-to-create-register-datasets.md) in uw werk ruimte, omdat de invoer van Convert naar afbeelding Directory module moet een **Bestands gegevensset** zijn.
 
 1. Voeg de gegevensset van de geregistreerde installatie kopie toe aan het canvas. U kunt de geregistreerde gegevensset vinden in de categorie **gegevens sets** in de module lijst links van het canvas. De ontwerper ondersteunt momenteel geen gegevensset voor het visualiseren van afbeeldingen.
 
@@ -82,4 +82,4 @@ De uitvoer van de modus **converteren naar afbeeldings mappen** is in de indelin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

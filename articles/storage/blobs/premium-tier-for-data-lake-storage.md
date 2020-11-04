@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: dc0b620629b5dce651e02e5fe95b0619c1d42a78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131153"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324226"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Premium-laag voor Azure Data Lake Storage
 
@@ -57,7 +57,7 @@ Sommige functies van de Blob-opslag zijn mogelijk niet beschikbaar of bevatten s
 
 ## <a name="enabling-the-premium-performance-tier"></a>De Premium-laag inschakelen 
 
-U kunt de Premium-laag voor Azure Data Lake Storage gebruiken door een BlockBlobStorage-account te maken met de instelling **hiërarchische naam ruimte** **ingeschakeld** . Zie [een BlockBlobStorage-account account maken](storage-blob-create-account-block-blob.md) voor volledige instructies.
+U kunt de Premium-laag voor Azure Data Lake Storage gebruiken door een BlockBlobStorage-account te maken met de instelling **hiërarchische naam ruimte** **ingeschakeld**. Zie [een BlockBlobStorage-account account maken](storage-blob-create-account-block-blob.md) voor volledige instructies.
 
 Wanneer u het account maakt, moet u ervoor zorgen dat u de optie **Premium** -prestaties en het account type **BlockBlobStorage** kiest.
 
@@ -75,15 +75,15 @@ In de volgende afbeelding ziet u deze instelling op de pagina **opslag account m
 
 De Premium-laag voor Azure Data Lake Storage is beschikbaar in de volgende regio's.
 
-|Regio|Redundantie|
+|Region|Redundantie|
 |--|--|
 |VS - oost|LRS, ZRS|
 |US - oost 2|LRS, ZRS|
-|Central US|LRS|
+|VS - centraal|LRS|
 |VS - west|LRS|
 |West US 2|LRS, ZRS|
 |VS - west-centraal|LRS|
-|South Central US|LRS|
+|VS - zuid-centraal|LRS|
 |Canada - midden|LRS|
 |Canada - oost|LRS|
 |Europa - noord|LRS, ZRS|
@@ -97,9 +97,18 @@ De Premium-laag voor Azure Data Lake Storage is beschikbaar in de volgende regio
 |India - centraal|LRS|
 |India - west|LRS|
 |VAE - noord|LRS|
-|Japan East|LRS|
+|Japan - oost|LRS|
 |Japan - west|LRS|
 |Azië - zuidoost|LRS, ZRS|
 |Australië - oost|LRS, ZRS|
 |Australië - zuidoost|LRS|
-|Brazil South|LRS|
+|Brazilië - zuid|LRS|
+
+## <a name="next-steps"></a>Volgende stappen
+
+Gebruik de Premium-laag voor Azure Data Lake Storage met uw favoriete analyse service, zoals Azure Databricks, Azure HDInsight en Azure Synapse Analytics. 
+
+- [Zelf studie: Azure Data Lake Storage Gen2, Azure Databricks & Spark](data-lake-storage-use-databricks-spark.md) 
+- [Azure data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) HDInsight ondersteunt momenteel een account dat gebruikmaakt van de Premium-prestatie-laag, samen met een HBase-cluster waarvoor versnelde schrijf bewerkingen zijn ingeschakeld.
+- [Quickstart: Een Synapse-werkruimte maken](../../synapse-analytics/quickstart-create-workspace.md)
+

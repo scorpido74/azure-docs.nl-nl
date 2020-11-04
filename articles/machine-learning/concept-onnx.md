@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: acaab8aaa12a107f4d0f8a8aac0baf7d5ebb8e4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7b818de12a968869d655a80917572ddf5f2c210
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012755"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323007"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX en Azure Machine Learning: ML-modellen maken en versnellen
 
@@ -29,9 +29,9 @@ Micro soft en een community van partners hebben ONNX als Open Standard gemaakt v
 [ONNX runtime](https://onnxruntime.ai) is een krachtige engine voor het afnemen van prestaties voor het implementeren van ONNX-modellen voor productie. Het is geoptimaliseerd voor zowel Cloud als Edge en werkt op Linux, Windows en Mac. Het is geschreven in C++ en heeft daarnaast C-, Python-, C#-, Java-en Java script-Api's (Node.js) voor gebruik in verschillende omgevingen. ONNX runtime ondersteunt zowel DNN-als traditionele ML modellen en kan worden geïntegreerd met accelerators op verschillende hardware, zoals TensorRT op NVidia-Gpu's, open-processor op Intel-processors, DirectML in Windows en meer. Met behulp van ONNX runtime kunt u profiteren van de uitgebreide optimalisaties, testen en voortdurende verbeteringen van productie kwaliteit.
 
 ONNX runtime wordt gebruikt in grootschalige micro soft-Services, zoals Bing, Office en Azure Cognitive Services. Prestatie verbeteringen zijn afhankelijk van een aantal factoren, maar deze micro soft-Services hebben een __gemiddelde 2x-prestatie verbetering gezien op de CPU__. Naast Azure Machine Learning Services wordt ONNX runtime ook uitgevoerd in andere producten die Machine Learning workloads ondersteunen, waaronder:
-+ Windows: de runtime is ingebouwd in Windows als onderdeel van [windows machine learning](https://docs.microsoft.com/windows/ai/windows-ml/) en wordt uitgevoerd op honderden miljoenen apparaten. 
-+ Product familie van Azure SQL: systeem eigen scores uitvoeren op gegevens in [Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/onnx-overview) en [Azure SQL Managed instance](https://docs.microsoft.com/azure/azure-sql/managed-instance/machine-learning-services-overview).
-+ ML.NET: [Voer ONNX-modellen uit in ml.net](https://docs.microsoft.com/dotnet/machine-learning/tutorials/object-detection-onnx).
++ Windows: de runtime is ingebouwd in Windows als onderdeel van [windows machine learning](/windows/ai/windows-ml/) en wordt uitgevoerd op honderden miljoenen apparaten. 
++ Product familie van Azure SQL: systeem eigen scores uitvoeren op gegevens in [Azure SQL Edge](../azure-sql-edge/onnx-overview.md) en [Azure SQL Managed instance](../azure-sql/managed-instance/machine-learning-services-overview.md).
++ ML.NET: [Voer ONNX-modellen uit in ml.net](/dotnet/machine-learning/tutorials/object-detection-onnx).
 
 
 [![ONNX-stroom diagram met trainingen, conversie Programma's en implementatie](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
@@ -42,7 +42,7 @@ U kunt ONNX modellen op verschillende manieren verkrijgen:
 + Train een nieuw ONNX-model in Azure Machine Learning (Zie de voor beelden onder aan dit artikel) of met behulp van [geautomatiseerde machine learning mogelijkheden](concept-automated-ml.md#automl--onnx)
 + Bestaand model converteren van een andere indeling naar ONNX (Raadpleeg de [zelf studies](https://github.com/onnx/tutorials)) 
 + Een vooraf getraind ONNX-model ophalen uit het [ONNX-model Zoo](https://github.com/onnx/models)
-+ Een aangepast ONNX-model genereren vanuit de [Azure Custom Vision-service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ Een aangepast ONNX-model genereren vanuit de [Azure Custom Vision-service](../cognitive-services/custom-vision-service/index.yml) 
 
 Veel modellen, waaronder afbeeldings classificatie, object detectie en tekst verwerking, kunnen worden weer gegeven als ONNX modellen. Als u een probleem ondervindt met een model dat niet kan worden geconverteerd, kunt u een probleem oplossen in het GitHub van het respectieve conversie programma dat u hebt gebruikt. U kunt door gaan met het gebruik van uw bestaande indelings model totdat het probleem is opgelost.
 
@@ -98,5 +98,3 @@ Meer informatie over **ONNX** of bijdragen aan het project:
 Meer informatie over **ONNX runtime** of bijdragen aan het project:
 + [ONNX runtime-project website](https://onnxruntime.ai)
 + [ONNX runtime GitHub opslag plaats](https://github.com/Microsoft/onnxruntime)
-
-

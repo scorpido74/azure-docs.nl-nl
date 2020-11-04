@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: fc9da659e7e55e8b15071f957d6a51e3b4673244
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37f10cc8eb3d606d99eb5b3f821a486e9e4ea2fe
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427571"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322350"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Een webservice beheren via de portal voor webservices van Azure Machine Learning Studio (klassiek)
 
-**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 U kunt uw Machine Learning nieuwe en klassieke webservices beheren met behulp van de Microsoft Azure Machine Learning Web Services-portal. Aangezien klassieke webservices en nieuwe webservices zijn gebaseerd op verschillende onderliggende technologieën, hebt u voor elk van deze onderdelen enigszins verschillende beheer mogelijkheden.
@@ -120,7 +120,7 @@ Uw klassieke webservices beheren:
 1. Meld u aan bij de [Microsoft Azure machine learning Web Services](https://services.azureml.net/quickstart) -Portal met uw Microsoft Azure account: gebruik het account dat is gekoppeld aan het Azure-abonnement.
 2. Klik in het menu op **klassieke webservices**.
 
-Als u een klassieke webservice wilt beheren, klikt u op **klassieke**webservices. U kunt op de pagina klassiek Web Services het volgende doen:
+Als u een klassieke webservice wilt beheren, klikt u op **klassieke** webservices. U kunt op de pagina klassiek Web Services het volgende doen:
 
 * Klik op de webservice om de bijbehorende eind punten weer te geven.
 * Een webservice verwijderen.
@@ -155,5 +155,3 @@ U kunt de volgende eigenschappen bijwerken:
 * Met **Beschrijving** kunt u een beschrijving invoeren voor de webservice. Beschrijving is een verplicht veld.
 * Met **logboek registratie** kunt u fout logboek registratie op het eind punt in-of uitschakelen. Zie [logboek registratie inschakelen voor machine learning-webservices](web-services-logging.md)voor meer informatie over logboek registratie.
 * Door **voorbeeld gegevens in te scha kelen** kunt u voorbeeld gegevens opgeven die u kunt gebruiken om de Request-Response-service te testen. Als u de webservice in Machine Learning Studio (klassiek) hebt gemaakt, worden de voorbeeld gegevens opgehaald uit de gegevens waarmee u uw model hebt getraind. Als u de service programmatisch hebt gemaakt, worden de gegevens opgehaald uit de voorbeeld gegevens die u hebt ingevoerd als onderdeel van het JSON-pakket.
-
-

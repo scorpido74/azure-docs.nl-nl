@@ -1,6 +1,6 @@
 ---
 title: Tabellen indexeren
-description: Aanbevelingen en voor beelden voor het indexeren van tabellen in de SQL-groep Synapse.
+description: Aanbevelingen en voor beelden voor het indexeren van tabellen in een toegewezen SQL-groep.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 605c3320b0fcc7ac9663acc1578740e2cb3f3174
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05551f39203f2c070dd2ede0740135d6963aedcf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797595"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323573"
 ---
-# <a name="indexing-tables-in-synapse-sql-pool"></a>Tabellen indexeren in Synapse SQL-pool
+# <a name="indexing-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tabellen indexeren met een toegewezen SQL-groep in azure Synapse Analytics
 
-Aanbevelingen en voor beelden voor het indexeren van tabellen in de SQL-groep Synapse.
+Aanbevelingen en voor beelden voor het indexeren van tabellen in een toegewezen SQL-groep.
 
 ## <a name="index-types"></a>Indextypen
 
-Synapse SQL pool biedt verschillende indexerings opties, waaronder [geclusterde column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [geclusterde indexen en niet-geclusterde indexen](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), en een niet-index optie die ook wel [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)is genoemd.  
+Een toegewezen SQL-groep biedt verschillende indexerings opties, waaronder [geclusterde column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [geclusterde indexen en niet-geclusterde indexen](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), en een niet-index optie die ook wel een [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)is genoemd.  
 
-Als u een tabel met een index wilt maken, raadpleegt u de documentatie van [Create Table (Synapse SQL-groep)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Als u een tabel met een index wilt maken, raadpleegt u de documentatie van [Create Table (exclusieve SQL-groep)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
 ## <a name="clustered-columnstore-indexes"></a>Geclusterde column Store-indexen
 
-Synapse SQL pool maakt standaard een geclusterde column store-index wanneer er geen index opties zijn opgegeven in een tabel. Geclusterde column Store-tabellen bieden zowel het hoogste niveau van gegevens compressie als de beste algemene query prestaties.  Geclusterde column Store-tabellen leverde in het algemeen geclusterde index-of heap-tabellen en zijn doorgaans de beste keuze voor grote tabellen.  Om die reden is geclusterde column Store de beste plaats om te starten wanneer u niet zeker weet hoe u de tabel wilt indexeren.  
+Standaard maakt exclusieve SQL-groep een geclusterde column store-index wanneer er geen index opties zijn opgegeven in een tabel. Geclusterde column Store-tabellen bieden zowel het hoogste niveau van gegevens compressie als de beste algemene query prestaties.  Geclusterde column Store-tabellen leverde in het algemeen geclusterde index-of heap-tabellen en zijn doorgaans de beste keuze voor grote tabellen.  Om die reden is geclusterde column Store de beste plaats om te starten wanneer u niet zeker weet hoe u de tabel wilt indexeren.  
 
 Als u een geclusterde column Store-tabel wilt maken, geeft u een geclusterde column Store-INDEX op in de WITH-component of verlaat u de WITH-component uit:
 
@@ -52,7 +52,7 @@ Er zijn enkele scenario's waarin geclusterde column Store mogelijk geen goede op
 
 ## <a name="heap-tables"></a>Heap-tabellen
 
-Wanneer u tijdelijk gegevens in Synapse SQL-pool overbrengt, is het mogelijk dat het hele proces wordt versneld met behulp van een heap-tabel. Dit komt doordat het laden van heaps sneller is dan het indexeren van tabellen, en in sommige gevallen kan de volgende Lees bewerking vanuit de cache worden uitgevoerd.  Als u alleen gegevens laadt om deze te stageen voordat u meer trans formaties uitvoert, is het laden van de tabel naar de heap-tabel veel sneller dan het laden van de gegevens naar een geclusterde column Store-tabel. Daarnaast laadt het laden van gegevens naar een [tijdelijke tabel](sql-data-warehouse-tables-temporary.md) sneller dan het laden van een tabel naar permanente opslag.  Nadat het laden van gegevens is uitgevoerd, kunt u in de tabel indexen maken voor snellere query prestaties.  
+Wanneer u tijdelijk gegevens in een toegewezen SQL-groep onderbrengt, is het mogelijk dat het hele proces wordt versneld met behulp van een heap-tabel. Dit komt doordat het laden van heaps sneller is dan het indexeren van tabellen, en in sommige gevallen kan de volgende Lees bewerking vanuit de cache worden uitgevoerd.  Als u alleen gegevens laadt om deze te stageen voordat u meer trans formaties uitvoert, is het laden van de tabel naar de heap-tabel veel sneller dan het laden van de gegevens naar een geclusterde column Store-tabel. Daarnaast laadt het laden van gegevens naar een [tijdelijke tabel](sql-data-warehouse-tables-temporary.md) sneller dan het laden van een tabel naar permanente opslag.  Nadat het laden van gegevens is uitgevoerd, kunt u in de tabel indexen maken voor snellere query prestaties.  
 
 Cluster column Store-tabellen beginnen met het uitvoeren van optimale compressie wanneer er meer dan 60.000.000 rijen zijn.  Voor kleine opzoek tabellen, kleiner dan 60.000.000 rijen, kunt u overwegen HEAP of geclusterde index te gebruiken voor snellere query prestaties. 
 
@@ -204,13 +204,13 @@ Batch-update-en Insert-bewerkingen die de bulk drempel van 102.400 rijen per par
 
 ### <a name="small-or-trickle-load-operations"></a>Kleine of trickle laad bewerkingen
 
-Kleine belasting die in Synapse SQL-pool stroomt, wordt ook wel trickle-belasting genoemd. Ze vertegenwoordigen meestal een nabije constante stroom van gegevens die door het systeem worden opgenomen. Omdat deze stroom bijna continu is, is de hoeveelheid rijen echter niet bijzonder groot. Vaker dan niet de gegevens zijn aanzienlijk onder de drempel waarde die is vereist voor het direct laden naar de column Store-indeling.
+Kleine belasting die in een toegewezen SQL-pool stroomt, ook wel bekend als trickle-belasting. Ze vertegenwoordigen meestal een nabije constante stroom van gegevens die door het systeem worden opgenomen. Omdat deze stroom bijna continu is, is de hoeveelheid rijen echter niet bijzonder groot. Vaker dan niet de gegevens zijn aanzienlijk onder de drempel waarde die is vereist voor het direct laden naar de column Store-indeling.
 
-In deze situaties is het vaak beter om de gegevens eerst in Azure Blob-opslag in te voeren en deze te laten oplopen voordat ze worden geladen. Deze techniek wordt vaak wel *micro-batching*genoemd.
+In deze situaties is het vaak beter om de gegevens eerst in Azure Blob-opslag in te voeren en deze te laten oplopen voordat ze worden geladen. Deze techniek wordt vaak wel *micro-batching* genoemd.
 
 ### <a name="too-many-partitions"></a>Te veel partities
 
-Een andere manier om rekening mee te houden is de impact van het partitioneren van de geclusterde column Store-tabellen.  Voordat u partitioneert, deelt Synapse SQL-pool uw gegevens al met 60-data bases.  Door partities te partitioneren, worden uw gegevens verder verdeeld.  Als u uw gegevens partitioneert, moet u er rekening mee houden dat **elke** partitie ten minste 1.000.000 rijen nodig heeft om te profiteren van een geclusterde column store-index.  Als u een tabel in 100 partities partitioneert, moet uw tabel ten minste 6.000.000.000 rijen hebben om te profiteren van een geclusterde column store-index (60 distributies *100 partities* 1.000.000 rijen). Als uw 100-partitie tabel geen 6.000.000.000-rijen bevat, verlaagt u het aantal partities of kunt u in plaats daarvan een heap-tabel gebruiken.
+Een andere manier om rekening mee te houden is de impact van het partitioneren van de geclusterde column Store-tabellen.  Voordat partitioneren wordt toegewezen, worden uw gegevens al verdeeld in 60-data bases.  Door partities te partitioneren, worden uw gegevens verder verdeeld.  Als u uw gegevens partitioneert, moet u er rekening mee houden dat **elke** partitie ten minste 1.000.000 rijen nodig heeft om te profiteren van een geclusterde column store-index.  Als u een tabel in 100 partities partitioneert, moet uw tabel ten minste 6.000.000.000 rijen hebben om te profiteren van een geclusterde column store-index (60 distributies *100 partities* 1.000.000 rijen). Als uw 100-partitie tabel geen 6.000.000.000-rijen bevat, verlaagt u het aantal partities of kunt u in plaats daarvan een heap-tabel gebruiken.
 
 Als uw tabellen zijn geladen met enkele gegevens, volgt u de onderstaande stappen om tabellen te identificeren en opnieuw te maken met behulp van suboptimale geclusterde column Store-indexen.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Het opnieuw opbouwen van een index in Synapse SQL-groep is een offline bewerking.  Voor meer informatie over het opnieuw opbouwen van indexen raadpleegt u de sectie ALTER INDEX Rebuild in [Column Store-indexen defragmenteren](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)en [ALTER index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Het opnieuw opbouwen van een index in de toegewezen SQL-groep is een offline bewerking.  Voor meer informatie over het opnieuw opbouwen van indexen raadpleegt u de sectie ALTER INDEX Rebuild in [Column Store-indexen defragmenteren](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)en [ALTER index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Stap 3: controleren of de kwaliteit van geclusterde column Store-segmenten is verbeterd
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Zie [using partitions in Synapse SQL pool](sql-data-warehouse-tables-partition.md)(Engelstalig) voor meer informatie over het opnieuw maken van partities met CTAS.
+Zie [using partitions in DEDICATED SQL pool](sql-data-warehouse-tables-partition.md)voor meer informatie over het opnieuw maken van partities met CTAS.
 
 ## <a name="next-steps"></a>Volgende stappen
 

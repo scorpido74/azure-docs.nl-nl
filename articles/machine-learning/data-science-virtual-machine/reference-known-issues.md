@@ -9,12 +9,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 864b5e519875029149e93df248aa5953f62ec51e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78206517"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322949"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Bekende problemen en het oplossen van problemen met de Azure-Data Science Virtual Machine
 
@@ -30,7 +30,7 @@ Gebruik `sudo pip install` in plaats van `pip install` Wanneer u pakketten insta
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Schijf versleuteling mislukt op de Ubuntu-DSVM
 
-Azure Disk Encryption (ADE) wordt momenteel niet ondersteund in de Ubuntu-DSVM. Als tijdelijke oplossing kunt u overwegen om [versleuteling aan de server zijde van Azure Managed disks](../../virtual-machines/windows/disk-encryption.md)te configureren.
+Azure Disk Encryption (ADE) wordt momenteel niet ondersteund in de Ubuntu-DSVM. Als tijdelijke oplossing kunt u overwegen om [versleuteling aan de server zijde van Azure Managed disks](../../virtual-machines/disk-encryption.md)te configureren.
 
 ## <a name="tool-appears-disabled"></a>Hulp programma wordt uitgeschakeld weer gegeven
 
@@ -46,4 +46,3 @@ De werking van Hyper-V in eerste instantie werkt niet in Windows. Sommige servic
 Het laatste scherm moet er als volgt uitzien:
 
    ![Hyper-V inschakelen](./media/workaround/hyperv-enable-dsvm.png)
-

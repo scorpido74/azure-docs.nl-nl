@@ -2,16 +2,16 @@
 title: Problemen met Azure Automation runbook oplossen
 description: In dit artikel leest u hoe u problemen met Azure Automation runbooks oplost en oplost.
 services: automation
-ms.date: 07/28/2020
+ms.date: 11/03/2020
 ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e173e76b80717d6685e9a6b383ee98eddf910f5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904799"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323480"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Problemen met runbooks oplossen
 
@@ -42,7 +42,7 @@ Wanneer u fouten ontvangt tijdens het uitvoeren van een runbook in Azure Automat
     * [Vernieuw het certificaat](../manage-runas-account.md#cert-renewal) als het uitvoeren als-account is verlopen.
     * [Vernieuw de webhook](../automation-webhooks.md#renew-a-webhook) als u probeert een verlopen webhook te gebruiken om het runbook te starten.
     * [Controleer de status](../automation-runbook-execution.md#job-statuses) van de taak om de huidige runbooknaam en enkele mogelijke oorzaken van het probleem vast te stellen.
-    * [Voeg extra uitvoer](../automation-runbook-output-and-messages.md#monitor-message-streams) aan het runbook toe om te bepalen wat er gebeurt voordat het runbook wordt onderbroken.
+    * [Voeg extra uitvoer](../automation-runbook-output-and-messages.md#working-with-message-streams) aan het runbook toe om te bepalen wat er gebeurt voordat het runbook wordt onderbroken.
     * [Alle uitzonde ringen verwerken](../automation-runbook-execution.md#exceptions) die door uw taak worden gegenereerd.
 
 1. Voer deze stap uit als de runbook-taak of de omgeving op Hybrid Runbook Worker niet reageert.
@@ -201,7 +201,7 @@ Deze fout kan optreden als:
 Volg deze stappen om te bepalen of u hebt geverifieerd voor Azure en toegang hebt tot het abonnement dat u wilt selecteren:
 
 1. Om ervoor te zorgen dat uw script zelfstandig werkt, test u het buiten Azure Automation.
-1. Zorg ervoor dat uw script de cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) uitvoert voordat u de `Select-*` cmdlet uitvoert.
+1. Zorg ervoor dat uw script de cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) uitvoert voordat u de `Select-*` cmdlet uitvoert.
 1. Voeg `Disable-AzContextAutosave –Scope Process` aan het begin van uw runbook toe. Deze cmdlet zorgt ervoor dat alle referenties alleen van toepassing zijn op de uitvoering van het huidige runbook.
 1. Als het fout bericht nog steeds wordt weer gegeven, wijzigt u de code door de para meter toe te voegen `AzContext` voor `Connect-AzAccount` en voert u de code uit.
 
@@ -291,7 +291,7 @@ Deze fout kan worden veroorzaakt door het gebruik van verouderde Azure-modules.
 
 U kunt deze fout oplossen door uw Azure-modules bij te werken naar de nieuwste versie:
 
-1. Selecteer **modules**in uw Automation-account en selecteer vervolgens **Azure-modules bijwerken**.
+1. Selecteer **modules** in uw Automation-account en selecteer vervolgens **Azure-modules bijwerken**.
 1. De update neemt ongeveer 15 minuten in beslag. Nadat de bewerking is voltooid, voert u het runbook dat is mislukt opnieuw uit.
 
 Zie [Azure-modules bijwerken in azure Automation](../automation-update-azure-modules.md)voor meer informatie over het bijwerken van uw modules.
@@ -398,7 +398,7 @@ Als de stroom objecten bevat, `Start-AzAutomationRunbook` wordt de uitvoer stroo
 
 ### <a name="resolution"></a>Oplossing
 
-Implementeer een polling-logica en gebruik de cmdlet [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) om de uitvoer op te halen. Een voor beeld van deze logica wordt hier gedefinieerd:
+Implementeer een polling-logica en gebruik de cmdlet [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) om de uitvoer op te halen. Een voor beeld van deze logica wordt hier gedefinieerd:
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -476,14 +476,14 @@ Wanneer u de cmdlet uitvoert, wordt het volgende fout bericht weer gegeven `Get-
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout kan optreden bij het ophalen van de taak uitvoer van een runbook met veel [uitgebreide stromen](../automation-runbook-output-and-messages.md#monitor-verbose-stream).
+Deze fout kan optreden bij het ophalen van de taak uitvoer van een runbook met veel [uitgebreide stromen](../automation-runbook-output-and-messages.md#write-output-to-verbose-stream).
 
 ### <a name="resolution"></a>Oplossing
 
 Voer een van de volgende handelingen uit om deze fout op te lossen:
 
 * Bewerk het runbook en verminder het aantal taak stromen dat wordt verzonden.
-* Verminder het aantal streams dat moet worden opgehaald bij het uitvoeren van de cmdlet. U kunt dit doen door de waarde van de `Stream` para meter voor de cmdlet [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) in te stellen op alleen uitvoer stromen op te halen. 
+* Verminder het aantal streams dat moet worden opgehaald bij het uitvoeren van de cmdlet. U kunt dit doen door de waarde van de `Stream` para meter voor de cmdlet [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) in te stellen op alleen uitvoer stromen op te halen. 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>Scenario: Runbook-taak is mislukt omdat het toegewezen quotum is overschreden
 
@@ -505,7 +505,7 @@ Als u meer dan 500 minuten van verwerking per maand wilt gebruiken, wijzigt u uw
 
 1. Meld u aan bij uw Azure-abonnement.
 1. Selecteer het Automation-account dat u wilt bijwerken.
-1. Selecteer **instellingen**en selecteer vervolgens **prijzen**.
+1. Selecteer **instellingen** en selecteer vervolgens **prijzen**.
 1. Selecteer op de pagina onder **inschakelen** om uw account te upgraden naar de laag basis.
 
 ## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Scenario: Runbook-uitvoer stroom groter dan 1 MB
@@ -576,7 +576,7 @@ Deze fout kan erop wijzen dat runbooks die worden uitgevoerd in een Azure-sandbo
 
 Er zijn twee manieren om deze fout op te lossen:
 
-* Gebruik start [-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) in plaats van de [Start-taak](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)te gebruiken om het runbook te starten.
+* Gebruik start [-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) in plaats van de [Start-taak](/powershell/module/microsoft.powershell.core/start-job)te gebruiken om het runbook te starten.
 * Probeer het runbook uit te voeren op een Hybrid Runbook Worker.
 
 Zie voor meer informatie over dit gedrag en ander gedrag van Azure Automation runbooks [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md).
@@ -605,8 +605,8 @@ Een andere oplossing is het optimaliseren van het runbook door [onderliggende ru
 
 De Power shell-cmdlets waarmee het onderliggende runbook-scenario wordt ingeschakeld, zijn:
 
-* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). met deze cmdlet kunt u een runbook starten en parameters aan het runbook doorgeven.
-* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Als er bewerkingen zijn die moeten worden uitgevoerd nadat het onderliggende runbook is voltooid, kunt u met deze cmdlet de taak status voor elk onderliggend item controleren.
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook). met deze cmdlet kunt u een runbook starten en parameters aan het runbook doorgeven.
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob). Als er bewerkingen zijn die moeten worden uitgevoerd nadat het onderliggende runbook is voltooid, kunt u met deze cmdlet de taak status voor elk onderliggend item controleren.
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Scenario: fout in taak stromen over de methode get_SerializationSettings
 
@@ -642,7 +642,7 @@ Wanneer uw runbook of toepassing probeert uit te voeren in een Azure-sandbox, we
 
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem kan optreden omdat Azure-sandboxes geen toegang tot alle out-of-process COM-servers. Zo kan een toepassing of runbook in de sandbox niet aanroepen naar Windows Management Instrumentation (WMI) of naar de Windows Installer-service (msiserver.exe). 
+Dit probleem kan optreden omdat Azure-sandboxes geen toegang tot alle out-of-process COM-servers. Zo kan een toepassing of runbook in de sandbox niet aanroepen naar Windows Management Instrumentation (WMI) of naar de Windows Installer-service (msiserver.exe).
 
 ### <a name="resolution"></a>Oplossing
 

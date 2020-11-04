@@ -1,7 +1,7 @@
 ---
 title: Geen code-implementatie (preview-versie)
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het implementeren van een model zonder een invoer script.
+description: Als u geen code implementeert, kunt u een model implementeren als een webservice zonder dat u hand matig een invoer script hoeft te maken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: deploy
 ms.reviewer: larryfr
-ms.openlocfilehash: 32b2afe036b443846199b5e9d74e690859fb581d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998862"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324926"
 ---
 # <a name="preview-no-code-model-deployment"></a>Evaluatie Implementatie van geen code model
 
@@ -63,7 +63,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-Zie [een Azure machine learning model gebruiken dat is geïmplementeerd als een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)om een model te scoren. Veel ONNX-projecten maken gebruik van protobuf-bestanden om trainings-en validatie gegevens op te slaan, waardoor het moeilijk is om te weten wat de door de service verwachte gegevens indeling is. Als model ontwikkelaar kunt u het beste documenten voor uw ontwikkel aars documenteren:
+Zie [een Azure machine learning model gebruiken dat is geïmplementeerd als een webservice](./how-to-consume-web-service.md)om een model te scoren. Veel ONNX-projecten maken gebruik van protobuf-bestanden om trainings-en validatie gegevens op te slaan, waardoor het moeilijk is om te weten wat de door de service verwachte gegevens indeling is. Als model ontwikkelaar kunt u het beste documenten voor uw ontwikkel aars documenteren:
 
 * Invoer indeling (JSON of binair)
 * De vorm van invoer gegevens en het type (bijvoorbeeld een matrix met zwevende vormen [100100, 3])

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 11/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d22d0da692516c89f6dd5ca7377ec83d7c430280
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203432"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322161"
 ---
 # <a name="string-claims-transformations"></a>Teken reeks claim transformaties
 
@@ -80,10 +80,10 @@ Het zelfondertekende technische profiel aanroept het technische profiel voor val
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
+  - **inputClaim1** : someone@contoso.com
+  - **inputClaim2** : someone@outlook.com
 - Invoer parameters:
-  - **stringComparison**: ordinalIgnoreCase
+  - **stringComparison** : ordinalIgnoreCase
 - Resultaat: er is een fout opgetreden
 
 ## <a name="changecase"></a>ChangeCase
@@ -115,11 +115,11 @@ Gebruik deze claim transformatie om een wille keurig teken reeks claim type te w
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **e-mail**: SomeOne@contoso.com
+  - **e-mail** : SomeOne@contoso.com
 - Invoer parameters:
-    - **toCase**: lager
+    - **toCase** : lager
 - Uitvoer claims:
-  - **e-mail**: someone@contoso.com
+  - **e-mail** : someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
@@ -146,9 +146,9 @@ Gebruik deze claim transformatie om een teken reeks claim waarde in te stellen.
 ### <a name="example"></a>Voorbeeld
 
 - Invoer parameter:
-    - **waarde**: contoso Service voorwaarden...
+    - **waarde** : contoso Service voorwaarden...
 - Uitvoer claims:
-    - **createdClaim**: het TOS claim type bevat de ' contoso-Service voorwaarden... ' Value.
+    - **createdClaim** : het TOS claim type bevat de ' contoso-Service voorwaarden... ' Value.
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -183,13 +183,13 @@ Gebruik deze claim transformatie om te controleren of een claim gelijk is aan ee
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
+  - **inputClaim1** : someone@contoso.com
+  - **inputClaim2** : someone@outlook.com
 - Invoer parameters:
-    - **operator**: niet gelijk aan
-    - **ignoreCase**: True
+    - **operator** : niet gelijk aan
+    - **ignoreCase** : True
 - Uitvoer claims:
-    - **output claim**: True
+    - **output claim** : True
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
@@ -223,13 +223,13 @@ U kunt deze claim transformatie gebruiken om te controleren of een claim gelijk 
 
 ### <a name="example"></a>Voorbeeld
 - Invoer claims:
-    - **inputClaim1**: v1
+    - **inputClaim1** : v1
 - Invoer parameters:
-    - **CompareTo**: v1
-    - **operator**: gelijk
-    - **ignoreCase**: True
+    - **CompareTo** : v1
+    - **operator** : gelijk
+    - **ignoreCase** : True
 - Uitvoer claims:
-    - **output claim**: True
+    - **output claim** : True
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
@@ -259,9 +259,9 @@ In het volgende voor beeld wordt een algemene unieke ID gegenereerd. Deze claim 
 ### <a name="example"></a>Voorbeeld
 
 - Invoer parameters:
-    - **randomGeneratorType**: GUID
+    - **randomGeneratorType** : GUID
 - Uitvoer claims:
-    - **output claim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
+    - **output claim** : bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
 In het volgende voor beeld wordt een wille keurige waarde voor geheel getal gegenereerd tussen 0 en 1000. De waarde wordt opgemaakt als OTP_ {wille keurige waarde}.
 
@@ -282,12 +282,12 @@ In het volgende voor beeld wordt een wille keurige waarde voor geheel getal gege
 ### <a name="example"></a>Voorbeeld
 
 - Invoer parameters:
-    - **randomGeneratorType**: geheel getal
-    - **maximumNumber**: 1000
-    - **stringFormat**: OTP_{0}
-    - **Base64**: onwaar
+    - **randomGeneratorType** : geheel getal
+    - **maximumNumber** : 1000
+    - **stringFormat** : OTP_{0}
+    - **Base64** : onwaar
 - Uitvoer claims:
-    - **output claim**: OTP_853
+    - **output claim** : OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
@@ -300,7 +300,7 @@ Een claim opmaken volgens de gegeven teken reeks voor opmaak. Deze trans formati
 | Parameter | stringFormat | tekenreeks | De teken reeks notatie, inclusief de {0}  para meter. Deze invoer parameter ondersteunt [teken reeks claim transformatie expressies](string-transformations.md#string-claim-transformations-expressions).  |
 | Output claim | Output claim | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. |
 
-Gebruik deze claim transformatie om een wille keurige teken reeks met één para meter op te maken {0} . In het volgende voor beeld wordt een **userPrincipalName**gemaakt. Alle technische profielen van de sociale ID-provider, zoals `Facebook-OAUTH` het aanroepen van de **CreateUserPrincipalName** om een **userPrincipalName**te genereren.
+Gebruik deze claim transformatie om een wille keurige teken reeks met één para meter op te maken {0} . In het volgende voor beeld wordt een **userPrincipalName** gemaakt. Alle technische profielen van de sociale ID-provider, zoals `Facebook-OAUTH` het aanroepen van de **CreateUserPrincipalName** om een **userPrincipalName** te genereren.
 
 ```xml
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -319,11 +319,11 @@ Gebruik deze claim transformatie om een wille keurige teken reeks met één para
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **input claim**: 5164db16-3eee-4629-bfda-dcc3326790e9
+    - **input claim** : 5164db16-3eee-4629-bfda-dcc3326790e9
 - Invoer parameters:
-    - **stringFormat**: cpim_ {0} @ {RelyingPartyTenantId}
+    - **stringFormat** : cpim_ {0} @ {RelyingPartyTenantId}
 - Uitvoer claims:
-  - **output claim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **output claim** : cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
@@ -356,12 +356,12 @@ Gebruik deze claim transformatie om een wille keurige teken reeks te Format tere
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **inputClaim1**: Joe
-    - **inputClaim2**: Fernando
+    - **inputClaim1** : Joe
+    - **inputClaim2** : Fernando
 - Invoer parameters:
-    - **stringFormat**: {0}{1}
+    - **stringFormat** : {0}{1}
 - Uitvoer claims:
-    - **output claim**: Joe Fernando
+    - **output claim** : Joe Fernando
 
 ## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
@@ -427,10 +427,10 @@ De claim transformatie stelt de waarde van het *claim type in* op de waarde van 
 ### <a name="example"></a>Voorbeeld
 
 - Uitvoer claims:
-  - **onderwerp**: e-mail verificatie code van Contoso-account
-  - **bericht**: Bedankt voor het verifiëren van je account.
-  - **codeIntro**: uw code is
-  - **hand tekening**: met vriendelijke groet
+  - **onderwerp** : e-mail verificatie code van Contoso-account
+  - **bericht** : Bedankt voor het verifiëren van je account.
+  - **codeIntro** : uw code is
+  - **hand tekening** : met vriendelijke groet
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -464,7 +464,7 @@ De claim transformatie zoekt de tekst van het item en retourneert de waarde erva
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -472,9 +472,9 @@ De claim transformatie zoekt de tekst van het item en retourneert de waarde erva
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **mapFromClaim**: B2C_V1_90001
+    - **mapFromClaim** : B2C_V1_90001
 - Uitvoer claims:
-    - **restrictionValueClaim**: u kunt zich niet aanmelden omdat u een kleine.
+    - **restrictionValueClaim** : u kunt zich niet aanmelden omdat u een kleine.
 
 ## <a name="lookupvalue"></a>LookupValue
 
@@ -509,14 +509,14 @@ In het volgende voor beeld wordt de domein naam in een van de input parameters-v
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **inputParameterId**: test.com
+    - **inputParameterId** : test.com
 - Invoer parameters:
-    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup**: False
+    - **contoso.com** : 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **Microsoft.com** : 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup** : False
 - Uitvoer claims:
-    - **output claim**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **output claim** : c7026f88-4299-4cdb-965d-3f166464b8a9
 
 Wanneer `errorOnFailedLookup` de invoer parameter is ingesteld op `true` , wordt de **LookupValue** -claim transformatie altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelfbevestigend technisch profiel](self-asserted-technical-profile.md)of een [DisplayConrtol](display-controls.md). De `LookupNotFound` meta gegevens van een zelf-bebevestigde technische profiel bepalen het fout bericht dat aan de gebruiker wordt gepresenteerd.
 
@@ -544,12 +544,12 @@ In het volgende voor beeld wordt de domein naam in een van de input parameters-v
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **inputParameterId**: Live.com
+    - **inputParameterId** : Live.com
 - Invoer parameters:
-    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup**: True
+    - **contoso.com** : 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **Microsoft.com** : 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup** : True
 - Fout:
     - Er is geen overeenkomst gevonden voor de invoer claim waarde in de lijst met invoer parameter-id's en errorOnFailedLookup is waar.
 
@@ -573,9 +573,9 @@ Gebruik deze claim transformatie om overbodige gegevens uit de eigenschap Bag va
 ```
 
 - Invoer claims:
-    - **output claim**: Welkom bij de app contoso. Als u doorgaat met bladeren en deze website gebruikt, gaat u ermee akkoord dat u voldoet aan de volgende voor waarden...
+    - **output claim** : Welkom bij de app contoso. Als u doorgaat met bladeren en deze website gebruikt, gaat u ermee akkoord dat u voldoet aan de volgende voor waarden...
 - Uitvoer claims:
-    - **output claim**: null
+    - **output claim** : null
 
 ## <a name="parsedomain"></a>ParseDomain
 
@@ -602,9 +602,9 @@ Gebruik deze claim transformatie voor het parseren van de domein naam na het @-s
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **emailAddress**: joe@outlook.com
+  - **emailAddress** : joe@outlook.com
 - Uitvoer claims:
-    - **domein**: Outlook.com
+    - **domein** : Outlook.com
 
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 
@@ -641,13 +641,13 @@ Hiermee wordt gecontroleerd of het gegeven telefoon nummer geldig is, op basis v
 ```
 
 - Invoer claims:
-    - **claimToMatch**: "64854114520"
+    - **claimToMatch** : "64854114520"
 - Invoer parameters:
-    - **matchTo**: "^ [0-9] {4,16} $"
-    - **outputClaimIfMatched**: "isPhone"
+    - **matchTo** : "^ [0-9] {4,16} $"
+    - **outputClaimIfMatched** : "isPhone"
 - Uitvoer claims:
-    - **output claim**: "isPhone"
-    - **regexCompareResultClaim**: True
+    - **output claim** : "isPhone"
+    - **regexCompareResultClaim** : True
 
 ### <a name="example-2"></a>Voorbeeld 2
 
@@ -672,15 +672,15 @@ Controleert of het gegeven e-mail adres geldig is en retourneert de e-mail alias
 ```
 
 - Invoer claims:
-    - **claimToMatch**: " emily@contoso.com "
+    - **claimToMatch** : " emily@contoso.com "
 - Invoer parameters:
-    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
-    - **outputClaimIfMatched**: "isEmail"
-    - **extractGroups**: True
+    - **matchTo** : `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched** : "isEmail"
+    - **extractGroups** : True
 - Uitvoer claims:
-    - **output claim**: "isEmail"
-    - **regexCompareResultClaim**: True
-    - **mailalias**: Elsje
+    - **output claim** : "isEmail"
+    - **regexCompareResultClaim** : True
+    - **mailalias** : Elsje
     
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
@@ -720,16 +720,16 @@ U kunt deze claim transformatie gebruiken om te controleren of een claim gelijk 
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **input claim**: v1
+    - **input claim** : v1
 - Invoer parameters:
-    - **matchTo**: v1
-    - **stringComparison**: ordinalIgnoreCase
-    - **stringMatchMsg**: B2C_V1_90005
-    - **stringMatchMsgCode**: de TOS wordt bijgewerkt naar v2
+    - **matchTo** : v1
+    - **stringComparison** : ordinalIgnoreCase
+    - **stringMatchMsg** : B2C_V1_90005
+    - **stringMatchMsgCode** : de TOS wordt bijgewerkt naar v2
 - Uitvoer claims:
-    - **outputClaim1**: B2C_V1_90005
-    - **outputClaim2**: de TOS wordt bijgewerkt naar v2
-    - **stringCompareResultClaim**: True
+    - **outputClaim1** : B2C_V1_90005
+    - **outputClaim2** : de TOS wordt bijgewerkt naar v2
+    - **stringCompareResultClaim** : True
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
@@ -766,14 +766,14 @@ De volgende claim transformatie controleert bijvoorbeeld of de waarde van **ageG
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **claimToMatch**: Minor
+    - **claimToMatch** : Minor
 - Invoer parameters:
-    - **matchTo**: Minor
-    - **stringComparison**: ordinalIgnoreCase
-    - **outputClaimIfMatched**: B2C_V1_90001
+    - **matchTo** : Minor
+    - **stringComparison** : ordinalIgnoreCase
+    - **outputClaimIfMatched** : B2C_V1_90001
 - Uitvoer claims:
-    - **isMinorResponseCode**: B2C_V1_90001
-    - **isMinor**: True
+    - **isMinorResponseCode** : B2C_V1_90001
+    - **isMinor** : True
 
 
 ## <a name="stringcontains"></a>StringContains
@@ -787,7 +787,7 @@ Bepalen of een opgegeven subtekenreeks in de invoer claim voor komt. Het resulta
 |Parameter|ignoreCase|tekenreeks|Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeks die wordt vergeleken.|
 | Output claim | Output claim | tekenreeks | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. Een Booleaanse indicator als de subtekenreeks in de invoer claim voor komt. |
 
-Gebruik deze claim transformatie om te controleren of een teken reeks claim type een subtekenreeks bevat. In het volgende voor beeld wordt gecontroleerd of het `roles` type teken reeks claim de waarde **beheerder**bevat.
+Gebruik deze claim transformatie om te controleren of een teken reeks claim type een subtekenreeks bevat. In het volgende voor beeld wordt gecontroleerd of het `roles` type teken reeks claim de waarde **beheerder** bevat.
 
 ```xml
 <ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
@@ -807,12 +807,12 @@ Gebruik deze claim transformatie om te controleren of een teken reeks claim type
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **input claim**: "beheerder, goed keurder, editor"
+    - **input claim** : "beheerder, goed keurder, editor"
 - Invoer parameters:
-    - **bevat**: "beheerder"
-    - **ignoreCase**: True
+    - **bevat** : "beheerder"
+    - **ignoreCase** : True
 - Uitvoer claims:
-    - **output claim**: True
+    - **output claim** : True
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -845,12 +845,12 @@ Haal bijvoorbeeld het voor voegsel land/regio telefoon nummer op.
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **input claim**: "+ 1644114520"
+    - **input claim** : "+ 1644114520"
 - Invoer parameters:
-    - **Start index**: 0
-    - **lengte**: 2
+    - **Start index** : 0
+    - **lengte** : 2
 - Uitvoer claims:
-    - **output claim**: "+ 1"
+    - **output claim** : "+ 1"
 
 ## <a name="stringreplace"></a>StringReplace
 
@@ -883,12 +883,12 @@ U kunt bijvoorbeeld een telefoon nummer normaliseren door de tekens te verwijder
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **input claim**: "+ 164-411-452-054"
+    - **input claim** : "+ 164-411-452-054"
 - Invoer parameters:
-    - **oldValue**: "-"
-    - **lengte**: ""
+    - **oldValue** : "-"
+    - **newValue** : ""
 - Uitvoer claims:
-    - **output claim**: "+ 164411452054"
+    - **output claim** : "+ 164411452054"
 
 ## <a name="stringjoin"></a>StringJoin
 
@@ -919,11 +919,11 @@ In het volgende voor beeld wordt een teken reeks verzameling van gebruikers roll
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **input claim**: ["beheerder", "Auteur", "lezer"]
+  - **input claim** : ["beheerder", "Auteur", "lezer"]
 - Invoer parameters:
-  - **scheidings teken**: ","
+  - **scheidings teken** : ","
 - Uitvoer claims:
-  - **output claim**: "beheerder, auteur, lezer"
+  - **output claim** : "beheerder, auteur, lezer"
 
 
 ## <a name="stringsplit"></a>StringSplit
@@ -955,11 +955,11 @@ In het volgende voor beeld wordt een teken reeks met scheidings tekens van gebru
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **input claim**: "beheerder, auteur, lezer"
+  - **input claim** : "beheerder, auteur, lezer"
 - Invoer parameters:
-  - **scheidings teken**: ","
+  - **scheidings teken** : ","
 - Uitvoer claims:
-  - **output claim**: ["beheerder", "Auteur", "lezer"]
+  - **output claim** : ["beheerder", "Auteur", "lezer"]
 
 ## <a name="string-claim-transformations-expressions"></a>Teken reeks claim transformaties expressies
 Claim Transforms-expressies in Azure AD B2C aangepaste beleids regels bieden context informatie over de Tenant-ID en de technische profiel-ID.

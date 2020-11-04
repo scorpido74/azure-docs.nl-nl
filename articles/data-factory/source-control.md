@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/08/2020
-ms.openlocfilehash: 43e3916e47aa0305209b8e6e32803426ac1ebe3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/02/2020
+ms.openlocfilehash: 78e230453e256e90803b3607fa02904f90774881
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637561"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325097"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -26,10 +26,14 @@ Standaard Azure Data Factory gebruikers interface-schrijvers (UX) direct voor de
 - De Data Factory-service bevat geen opslag plaats voor het opslaan van de JSON-entiteiten voor uw wijzigingen. De enige manier om wijzigingen op te slaan is via de knop **Alles publiceren** en alle wijzigingen worden rechtstreeks naar de Data Factory-service gepubliceerd.
 - De Data Factory-service is niet geoptimaliseerd voor samen werking en versie beheer.
 
-Azure Data Factory kunt u een Git-opslag plaats met behulp van Azure opslag plaatsen of GitHub configureren om een betere ontwerp ervaring te bieden. Git is een versie beheersysteem waarmee u eenvoudiger wijzigingen kunt bijhouden en samen werken. In deze zelf studie wordt uitgelegd hoe u een Git-opslag plaats kunt configureren en gebruiken, samen met het markeren van aanbevolen procedures en een probleemoplossings handleiding.
+Azure Data Factory kunt u een Git-opslag plaats met behulp van Azure opslag plaatsen of GitHub configureren om een betere ontwerp ervaring te bieden. Git is een versie beheersysteem waarmee u eenvoudiger wijzigingen kunt bijhouden en samen werken. In dit artikel wordt beschreven hoe u in een Git-opslag plaats kunt configureren en gebruiken, samen met het markeren van aanbevolen procedures en een probleemoplossings handleiding.
 
 > [!NOTE]
 > Azure data factory Git-integratie is niet beschikbaar in de Azure Government Cloud.
+
+Voor meer informatie over hoe Azure Data Factory integreert met git, raadpleegt u de video over 15 minuten zelf studie:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4GNKv]
 
 ## <a name="advantages-of-git-integration"></a>Voordelen van Git-integratie
 
@@ -38,7 +42,7 @@ Hieronder vindt u een lijst met een aantal voor delen Git-integratie voor de ont
 -   **Broncode beheer:** Als uw data factory-workloads cruciaal worden, wilt u uw fabriek met git integreren om diverse voor delen van broncode beheer te benutten, zoals in het volgende:
     -   De mogelijkheid om wijzigingen bij te houden/te controleren.
     -   De mogelijkheid om wijzigingen die fouten hebben geïntroduceerd te herstellen.
--   **Gedeeltelijk opgeslagen:** Wanneer u een ontwerp uitvoert voor de data factory-service, kunt u geen wijzigingen opslaan als concept en moeten alle publicaties data factory validatie door geven. Of uw pijp lijnen niet zijn voltooid of dat u de wijzigingen niet wilt kwijt raken wanneer een computer vastloopt, wordt met git-integratie incrementele wijzigingen van data factory resources toegestaan, ongeacht de toestand waarin ze zich bevinden. Als u een Git-opslag plaats configureert, kunt u de wijzigingen opslaan, zodat u alleen publiceert wanneer u uw wijzigingen in uw tevredenheid hebt getest.
+-   **Gedeeltelijk opgeslagen:** Wanneer u een ontwerp uitvoert voor de data factory-service, kunt u geen wijzigingen opslaan als concept en moeten alle publicaties data factory validatie door geven. Of uw pijp lijnen niet zijn voltooid of dat u de wijzigingen niet wilt kwijt raken als uw computer vastloopt, kunt u met git-integratie incrementele wijzigingen van data factory resources toestaan, ongeacht de status van deze apparaten. Als u een Git-opslag plaats configureert, kunt u de wijzigingen opslaan, zodat u alleen publiceert wanneer u uw wijzigingen in uw tevredenheid hebt getest.
 -   **Samen werking en beheer:** Als u meerdere team leden hebt die bijdragen aan dezelfde Factory, kunt u uw team genoten met elkaar laten samen werken via een code controle proces. U kunt ook uw fabriek zodanig instellen dat niet elke Inzender dezelfde machtigingen heeft. Sommige team leden mogen alleen wijzigingen aanbrengen via git en alleen bepaalde personen in het team mogen de wijzigingen in de fabriek publiceren.
 -   **Betere CI/CD:**  Als u implementeert in meerdere omgevingen met een [doorlopend leverings proces](continuous-integration-deployment.md), worden bepaalde acties eenvoudiger gemaakt door git-integratie. Enkele van deze acties zijn:
     -   Configureer de release pijplijn zo dat deze automatisch wordt geactiveerd zodra er wijzigingen zijn aangebracht in de Factory van de ontwikkelaar.
@@ -48,29 +52,45 @@ Hieronder vindt u een lijst met een aantal voor delen Git-integratie voor de ont
 > [!NOTE]
 > Als u een Git-opslag plaats configureert, wordt de Data Factory-service direct in de Azure Data Factory UX gemaakt. Wijzigingen die zijn aangebracht via Power shell of een SDK worden rechtstreeks naar de Data Factory-service gepubliceerd en worden niet in Git ingevoerd.
 
+## <a name="connect-to-a-git-repository"></a>Verbinding maken met een Git-opslag plaats
+
+Er zijn vier verschillende manieren om een Git-opslag plaats te koppelen aan uw data factory voor zowel Azure opslag plaatsen als GitHub. Nadat u verbinding hebt gemaakt met een Git-opslag plaats, kunt u uw configuratie weer geven en beheren in de [beheer hub](author-management-hub.md) onder **Git-configuratie** in de sectie **bron beheer**
+
+### <a name="configuration-method-1-home-page"></a>Configuratie methode 1: start pagina
+
+Selecteer op de start pagina van Azure Data Factory de optie **code opslagplaats instellen**.
+
+![Een code opslagplaats configureren vanaf de start pagina](media/author-visually/configure-repo.png)
+
+### <a name="configuration-method-2-authoring-canvas"></a>Configuratie methode 2: canvas ontwerpen
+
+Selecteer in het Azure Data Factory UX-bewerkings canvas de vervolg keuzelijst **Data Factory** en selecteer vervolgens **code opslagplaats instellen**.
+
+![De instellingen van de code opslagplaats configureren vanuit ontwerpen](media/author-visually/configure-repo-2.png)
+
+### <a name="configuration-method-3-management-hub"></a>Configuratie methode 3: Management hub
+
+Ga naar de beheer hub in de ADF-UX. Selecteer **Git-configuratie** in de sectie **bron beheer** . Als u geen opslag plaats hebt verbonden, klikt u op **code opslagplaats instellen**.
+
+![De instellingen van de code opslagplaats van de Management hub configureren](media/author-visually/configure-repo-3.png)
+
+### <a name="configuration-method-4-during-factory-creation"></a>Configuratie methode 4: tijdens het maken van de fabriek
+
+Wanneer u een nieuwe data factory in het Azure Portal maakt, kunt u Git-opslagplaats gegevens configureren op het tabblad **Git-configuratie** .
+
+> [!NOTE]
+> Bij het configureren van git in azure Portal, moeten instellingen zoals project naam en opslag plaats naam hand matig worden ingevoerd in plaats daarvan deel uit te maken van een vervolg keuzelijst.
+
+![De instellingen van de code opslagplaats configureren vanuit Azure Portal](media/author-visually/configure-repo-4.png)
+
 ## <a name="author-with-azure-repos-git-integration"></a>Ontwerpen met Git-integratie van Azure-opslagplaatsen
 
 Visual authoring met Azure opslag plaatsen Git-integratie ondersteunt broncode beheer en samen werking voor werk op uw data factory-pijp lijnen. U kunt een data factory koppelen aan een Azure opslag plaatsen Git-opslag plaats voor broncode beheer, samen werking, versies, enzovoort. Eén Azure opslag plaatsen Git-organisatie kan meerdere opslag plaatsen hebben, maar een Azure opslag plaatsen Git-opslag plaats kan slechts worden gekoppeld aan één data factory. Als u geen Azure opslag plaatsen-organisatie of-opslag plaats hebt, volgt u [deze instructies](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) om uw resources te maken.
 
 > [!NOTE]
-> U kunt script-en gegevens bestanden opslaan in een Azure opslag plaatsen Git-opslag plaats. U moet de bestanden echter hand matig uploaden naar Azure Storage. Een Data Factory pijp lijn uploadt niet automatisch script-of gegevens bestanden die zijn opgeslagen in een Azure opslag plaatsen Git-opslag plaats naar Azure Storage.
+> U kunt script-en gegevens bestanden opslaan in een Azure opslag plaatsen Git-opslag plaats. U moet de bestanden echter hand matig uploaden naar Azure Storage. Een data factory pijp lijn uploadt geen script of gegevens bestanden die zijn opgeslagen in een Azure opslag plaatsen Git-opslag plaats naar Azure Storage.
 
-### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Een Azure opslag plaatsen Git-opslag plaats met Azure Data Factory configureren
-
-U kunt een Azure opslag plaatsen Git-opslag plaats met een data factory via twee methoden configureren.
-
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuratie methode 1: Azure Data Factory start pagina
-
-Op de start pagina van Azure Data Factory selecteert u **code opslagplaats instellen** .
-
-![Een Azure opslag plaatsen code-opslag plaats configureren](media/author-visually/configure-repo.png)
-
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuratie methode 2: UX ontwerpen canvas
-Selecteer in het Azure Data Factory UX-bewerkings canvas de vervolg keuzelijst **Data Factory** en selecteer vervolgens **code opslagplaats instellen** .
-
-![De instellingen van de code opslagplaats voor UX ontwerpen configureren](media/author-visually/configure-repo-2.png)
-
-Met beide methoden wordt het configuratie deel venster opslagplaats instellingen geopend.
+### <a name="azure-repos-settings"></a>Azure opslag plaatsen-instellingen
 
 ![De instellingen voor de code opslagplaats configureren](media/author-visually/repo-settings.png)
 
@@ -95,6 +115,9 @@ In het deel venster configuratie worden de volgende instellingen voor Azure opsl
 
 De Azure opslag plaatsen Git opslag plaats kan zich in een andere Azure Active Directory Tenant bevindt. Als u een andere Azure AD-tenant wilt opgeven, moet u beheerdersmachtigingen hebben voor het Azure-abonnement dat u gebruikt. Zie de [abonnements beheerder wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md#to-assign-a-user-as-an-administrator) voor meer informatie
 
+> [!IMPORTANT]
+> Als u verbinding wilt maken met een andere Azure Active Directory, moet de aangemelde gebruiker deel uitmaken van die Active Directory. 
+
 ### <a name="use-your-personal-microsoft-account"></a>Uw persoonlijke Microsoft-account gebruiken
 
 Als u een persoonlijk Microsoft-account wilt gebruiken voor git-integratie, kunt u uw persoonlijke Azure-opslag plaats koppelen aan de Active Directory van uw organisatie.
@@ -117,27 +140,7 @@ De GitHub-integratie met Data Factory ondersteunt zowel open bare GitHub (dat wi
 
 Als u een GitHub opslag plaats wilt configureren, moet u over beheerders rechten beschikken voor het Azure-abonnement dat u gebruikt.
 
-Bekijk de volgende video voor een inleiding en demonstratie van negen minuten voor deze functie:
-
-> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
-
-### <a name="configure-a-github-repository-with-azure-data-factory"></a>Een GitHub-opslag plaats met Azure Data Factory configureren
-
-U kunt een GitHub-opslag plaats met een data factory via twee methoden configureren.
-
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuratie methode 1: Azure Data Factory start pagina
-
-Op de start pagina van Azure Data Factory selecteert u **code opslagplaats instellen** .
-
-![Een Azure opslag plaatsen code-opslag plaats configureren](media/author-visually/configure-repo.png)
-
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuratie methode 2: UX ontwerpen canvas
-
-Selecteer in het Azure Data Factory UX-bewerkings canvas de vervolg keuzelijst **Data Factory** en selecteer vervolgens **code opslagplaats instellen** .
-
-![De instellingen van de code opslagplaats voor UX ontwerpen configureren](media/author-visually/configure-repo-2.png)
-
-Met beide methoden wordt het configuratie deel venster opslagplaats instellingen geopend.
+### <a name="github-settings"></a>GitHub-instellingen
 
 ![Instellingen voor GitHub-opslag plaats](media/author-visually/github-integration-image2.png)
 
@@ -155,6 +158,38 @@ In het deel venster configuratie worden de volgende instellingen voor de GitHub-
 | **Bestaande Data Factory-resources importeren in opslag plaats** | Hiermee geeft u op of bestaande data factory resources van het UX-ontwerp canvas in een GitHub-opslag plaats moeten worden geïmporteerd. Schakel het selectie vakje in om uw data factory-resources te importeren in de bijbehorende Git-opslag plaats in JSON-indeling. Deze actie exporteert elke resource afzonderlijk (dat wil zeggen, de gekoppelde services en gegevens sets worden geëxporteerd naar afzonderlijke JSONs). Als dit selectie vakje niet is ingeschakeld, worden de bestaande resources niet geïmporteerd. | Geselecteerd (standaard) |
 | **Vertakking waarvoor de resource moet worden geïmporteerd** | Hiermee wordt aangegeven in welke vertakking de data factory resources (pijp lijnen, gegevens sets, gekoppelde services, enzovoort) worden geïmporteerd. U kunt resources importeren in een van de volgende vertakkingen: a. Samen werking b. Nieuwe c maken. Bestaande gebruiken |  |
 
+### <a name="github-organizations"></a>GitHub organisaties
+
+Als u verbinding wilt maken met een GitHub-organisatie, moet de organisatie toestemming geven voor Azure Data Factory. Een gebruiker met beheerders machtigingen voor de organisatie moet de onderstaande stappen uitvoeren om data factory verbinding te maken.
+
+#### <a name="connecting-to-github-for-the-first-time-in-azure-data-factory"></a>De eerste keer in Azure Data Factory verbinding maken met GitHub
+
+Als u voor de eerste keer verbinding maakt met GitHub vanuit Azure Data Factory, voert u de volgende stappen uit om verbinding te maken met een GitHub-organisatie.
+
+1. Voer in het deel venster Git-configuratie de naam van de organisatie in het veld *github-account* in. Er verschijnt een prompt om u aan te melden bij GitHub. 
+1. Meld u aan met uw gebruikers referenties.
+1. U wordt gevraagd Azure Data Factory te autoriseren als een toepassing met de naam *AzureDataFactory*. In dit scherm ziet u een optie voor het verlenen van machtigingen voor de ADF om toegang te krijgen tot de organisatie. Als u de optie om toestemming te verlenen niet ziet, vraagt u een beheerder om de machtiging hand matig via GitHub toe te kennen.
+
+Zodra u deze stappen hebt uitgevoerd, kan uw fabriek verbinding maken met zowel open bare als privé-opslag plaatsen binnen uw organisatie. Als u geen verbinding kunt maken, probeert u de cache van de browser te wissen en opnieuw te proberen.
+
+#### <a name="already-connected-to-github-using-a-personal-account"></a>Al verbonden met GitHub met een persoonlijk account
+
+Als u al verbinding hebt gemaakt met GitHub en alleen machtigingen hebt verleend voor toegang tot een persoonlijk account, volgt u de onderstaande stappen om machtigingen toe te kennen aan een organisatie. 
+
+1. Ga naar GitHub en open **instellingen**.
+
+    ![Instellingen voor GitHub openen](media/author-visually/github-settings.png)
+
+1. Selecteer **toepassingen**. Op het tabblad **geautoriseerde OAuth-apps** ziet u *AzureDataFactory*.
+
+    ![OAuth-apps selecteren](media/author-visually/github-organization-select-application.png)
+
+1. Selecteer de toepassing en verleen de toepassing toegang tot uw organisatie.
+
+    ![Toegang verlenen](media/author-visually/github-organization-grant.png)
+
+Zodra u deze stappen hebt uitgevoerd, kan uw fabriek verbinding maken met zowel open bare als privé-opslag plaatsen binnen uw organisatie. 
+
 ### <a name="known-github-limitations"></a>Bekende GitHub-beperkingen
 
 - U kunt script-en gegevens bestanden opslaan in een GitHub-opslag plaats. U moet de bestanden echter hand matig uploaden naar Azure Storage. Een Data Factory pijp lijn uploadt niet automatisch script-of gegevens bestanden die zijn opgeslagen in een GitHub-opslag plaats naar Azure Storage.
@@ -163,7 +198,6 @@ In het deel venster configuratie worden de volgende instellingen voor de GitHub-
 
 - GitHub-integratie met de Data Factory Visual authoring-hulpprogram ma's werkt alleen in de algemeen beschik bare versie van Data Factory.
 
-- Azure Data Factory biedt geen ondersteuning voor GitHub-organisatie accounts
 
 - Er kunnen Maxi maal 1.000 entiteiten per resource type (zoals pijp lijnen en gegevens sets) worden opgehaald uit één GitHub-vertakking. Als deze limiet is bereikt, wordt u geadviseerd om uw resources te splitsen in afzonderlijke fabrieken. Deze beperking is niet van Azure DevOps git.
 
@@ -177,7 +211,7 @@ Elke Azure opslag plaatsen Git-opslag plaats die is gekoppeld aan een data facto
 
 ![Een nieuwe vertakking maken](media/author-visually/new-branch.png)
 
-Wanneer u klaar bent om de wijzigingen van uw functie vertakking samen te voegen met uw vertakking voor samen werking, klikt u op de vervolg keuzelijst vertakking en selecteert u **pull-aanvraag maken** . Met deze actie gaat u naar Azure opslag plaatsen Git waar u pull-aanvragen kunt genereren, code beoordelingen moet uitvoeren en wijzigingen kunt samen voegen in uw samenwerkings vertakking. ( `master` is de standaard instelling). U mag alleen publiceren naar de Data Factory-service vanuit uw vertakking voor samen werking. 
+Wanneer u klaar bent om de wijzigingen van uw functie vertakking samen te voegen met uw vertakking voor samen werking, klikt u op de vervolg keuzelijst vertakking en selecteert u **pull-aanvraag maken**. Met deze actie gaat u naar Azure opslag plaatsen Git waar u pull-aanvragen kunt genereren, code beoordelingen moet uitvoeren en wijzigingen kunt samen voegen in uw samenwerkings vertakking. ( `master` is de standaard instelling). U mag alleen publiceren naar de Data Factory-service vanuit uw vertakking voor samen werking. 
 
 ![Een nieuwe pull-aanvraag maken](media/author-visually/create-pull-request.png)
 
@@ -244,7 +278,7 @@ Hieronder ziet u enkele voor beelden van situaties die een verouderde publicatie
 
 ## <a name="switch-to-a-different-git-repository"></a>Overschakelen naar een andere Git-opslag plaats
 
-Als u wilt overschakelen naar een andere Git-opslag plaats, gaat u naar de pagina Git-configuratie in de beheer hub onder **broncode beheer** . Selecteer **verbinding verbreken** . 
+Als u wilt overschakelen naar een andere Git-opslag plaats, gaat u naar de pagina Git-configuratie in de beheer hub onder **broncode beheer**. Selecteer **verbinding verbreken**. 
 
 ![Git-pictogram](media/author-visually/remove-repository.png)
 

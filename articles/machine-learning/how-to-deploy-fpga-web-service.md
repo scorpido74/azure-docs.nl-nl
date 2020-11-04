@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 18b1c155c0bb85e346ec28d5c145e6578ca3ec48
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999077"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324963"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>ML-modellen implementeren op veld-Programmeer bare poort matrices (Fpga's) met Azure Machine Learning 
 
-In dit artikel leert u meer over Fpga's en hoe u uw ML-modellen implementeert in een Azure-FPGA met behulp van het [python-pakket met hardware-versnelde modellen](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) van [Azure machine learning](overview-what-is-azure-ml.md).
+In dit artikel leert u meer over Fpga's en hoe u uw ML-modellen implementeert in een Azure-FPGA met behulp van het [python-pakket met hardware-versnelde modellen](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) van [Azure machine learning](overview-what-is-azure-ml.md).
 
 ## <a name="what-are-fpgas"></a>Wat zijn Fpga's?
 FPGA's bevatten een matrix van programmeerbare logische blokken en een hiërarchie van herconfigureerbare interconnects. Met de onderlinge verbindingen kunnen deze blokken na de productie op verschillende manieren worden geconfigureerd. Vergeleken met andere chips, biedt Fpga's een combi natie van programmeer baarheid en prestaties. 
@@ -56,7 +56,7 @@ De **PBS-serie van Azure-vm's** bevat Intel Arria 10 fpga's. Het wordt weer gege
 
 ## <a name="deploy-models-on-fpgas"></a>Modellen implementeren op Fpga's
 
-U kunt een model als een webservice implementeren op Fpga's met [Azure Machine Learning modellen met hardwareversnelling](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true). Het gebruik van Fpga's biedt een dering van ultra lage latentie, zelfs met één batch grootte. 
+U kunt een model als een webservice implementeren op Fpga's met [Azure Machine Learning modellen met hardwareversnelling](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py). Het gebruik van Fpga's biedt een dering van ultra lage latentie, zelfs met één batch grootte. 
 
 In dit voor beeld maakt u een tensor flow-grafiek om de invoer installatie kopie voor te verwerken, een featurizer te maken met ResNet 50 op een FPGA en vervolgens de functies uit te voeren via een getrainde classificatie voor de ImageNet gegevensset. Vervolgens wordt het model geïmplementeerd naar een AKS-cluster.
 
@@ -68,7 +68,7 @@ In dit voor beeld maakt u een tensor flow-grafiek om de invoer installatie kopie
  
 - Het pakket met hardware-versnelde modellen:  `pip install --upgrade azureml-accel-models[cpu]`    
     
-- De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+- De [Azure cli](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 
 - FPGA quota. Dien een [quotum aanvraag](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u)in of voer deze cli-opdracht uit om het quotum te controleren: 
 
@@ -80,7 +80,7 @@ In dit voor beeld maakt u een tensor flow-grafiek om de invoer installatie kopie
 
 ### <a name="define-the-tensorflow-model"></a>Het tensor flow-model definiëren
 
-Begin met het maken van een service definitie met behulp van de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) . Een service definitie is een bestand met een beschrijving van een pijp lijn van grafieken (invoer, featurizer en classificatie) op basis van tensor flow. De implementatie opdracht comprimeert de definitie en grafieken in een ZIP-bestand en uploadt de ZIP naar Azure Blob-opslag. De DNN is al geïmplementeerd om te worden uitgevoerd op de FPGA.
+Begin met het maken van een service definitie met behulp van de [Azure machine learning SDK voor python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) . Een service definitie is een bestand met een beschrijving van een pijp lijn van grafieken (invoer, featurizer en classificatie) op basis van tensor flow. De implementatie opdracht comprimeert de definitie en grafieken in een ZIP-bestand en uploadt de ZIP naar Azure Blob-opslag. De DNN is al geïmplementeerd om te worden uitgevoerd op de FPGA.
 
 1. Azure Machine Learning werk ruimte laden
 
@@ -223,7 +223,7 @@ Voordat u kunt implementeren in Fpga's, moet u het model converteren naar de [ON
 
 ### <a name="containerize-and-deploy-the-model"></a>Het model container plaatsen en implementeren
 
-Maak vervolgens een docker-installatie kopie op basis van het geconverteerde model en alle afhankelijkheden.  Deze docker-installatie kopie kan vervolgens worden geïmplementeerd en geïnstantieerd.  Ondersteunde implementatie doelen zijn Azure Kubernetes service (AKS) in de Cloud of een edge-apparaat, zoals [Azure data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview).  U kunt ook Tags en beschrijvingen toevoegen voor uw geregistreerde docker-installatie kopie.
+Maak vervolgens een docker-installatie kopie op basis van het geconverteerde model en alle afhankelijkheden.  Deze docker-installatie kopie kan vervolgens worden geïmplementeerd en geïnstantieerd.  Ondersteunde implementatie doelen zijn Azure Kubernetes service (AKS) in de Cloud of een edge-apparaat, zoals [Azure data Box Edge](../databox-online/azure-stack-edge-overview.md).  U kunt ook Tags en beschrijvingen toevoegen voor uw geregistreerde docker-installatie kopie.
 
    ```python
    from azureml.core.image import Image
@@ -297,7 +297,7 @@ Maak vervolgens een docker-installatie kopie op basis van het geconverteerde mod
 
 #### <a name="deploy-to-a-local-edge-server"></a>Implementeren op een lokale Edge-Server
 
-Alle [Azure data Box edge-apparaten](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
+Alle [Azure data Box edge-apparaten](../databox-online/azure-stack-edge-overview.md
 ) bevatten een FPGA voor het uitvoeren van het model.  Er kan slechts één model tegelijk op de FPGA worden uitgevoerd.  Als u een ander model wilt uitvoeren, implementeert u gewoon een nieuwe container. Instructies en voorbeeld code vindt u in [Dit Azure](https://github.com/Azure-Samples/aml-hardware-accelerated-models)-voor beeld.
 
 ### <a name="consume-the-deployed-model"></a>Het geïmplementeerde model gebruiken
@@ -349,7 +349,7 @@ for top in sorted_results[:5]:
 
 ### <a name="clean-up-resources"></a>Resources opschonen
 
-Om onnodige kosten te voor komen, moet u uw resources opschonen **in deze volg orde**: webservice, vervolgens afbeelding, en vervolgens het model.
+Om onnodige kosten te voor komen, moet u uw resources opschonen **in deze volg orde** : webservice, vervolgens afbeelding, en vervolgens het model.
 
 ```python
 aks_service.delete()

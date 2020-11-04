@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f73643baa92956280d67d0d931459af3a80925ee
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e8554bf4385c7ddad540b8ba807988618fe80b53
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233745"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322995"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -53,11 +53,11 @@ Zie [Azure machine learning prijzen](https://azure.microsoft.com/pricing/details
 
 ## <a name="get-cost-alerts"></a>Kosten waarschuwingen ophalen
 
-Maak [budgetten](../cost-management/tutorial-acm-create-budgets.md) om de kosten te beheren en [waarschuwingen](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) te maken waarmee de betrokkenen automatisch worden geïnformeerd over uitgave afwijkingen en het overeden van Risico's. Waarschuwingen zijn gebaseerd op de vergelijking tussen uitgaven en drempelwaarden voor budgetten en kosten. Budgetten en waarschuwingen worden gemaakt voor Azure-abonnementen en-resource groepen, dus zijn ze nuttig als onderdeel van een strategie voor de kosten bewaking. Budgetten en waarschuwingen kunnen echter een beperkte functionaliteit hebben voor het beheren van afzonderlijke Azure-service kosten omdat ze zijn ontworpen om de kosten op een hoger niveau bij te houden.
+Maak [budgetten](../cost-management-billing/costs/tutorial-acm-create-budgets.md) om de kosten te beheren en [waarschuwingen](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md) te maken waarmee de betrokkenen automatisch worden geïnformeerd over uitgave afwijkingen en het overeden van Risico's. Waarschuwingen zijn gebaseerd op de vergelijking tussen uitgaven en drempelwaarden voor budgetten en kosten. Budgetten en waarschuwingen worden gemaakt voor Azure-abonnementen en-resource groepen, dus zijn ze nuttig als onderdeel van een strategie voor de kosten bewaking. Budgetten en waarschuwingen kunnen echter een beperkte functionaliteit hebben voor het beheren van afzonderlijke Azure-service kosten omdat ze zijn ontworpen om de kosten op een hoger niveau bij te houden.
 
 ## <a name="monitor-costs"></a>Kosten bewaken
 
-Als u resources met Azure Machine Learning gebruikt, worden er kosten in rekening gebracht. De kosten voor de Azure resource usage-eenheid variëren per tijds interval (seconden, minuten, uren en dagen) of per aanvraag eenheids gebruik. Zodra het gebruik van Azure Machine Learning wordt gestart, worden de kosten in rekening gebracht. Bekijk deze kosten in het deel venster [kosten analyse](../cost-management/quick-acm-cost-analysis.md) in de Azure Portal.
+Als u resources met Azure Machine Learning gebruikt, worden er kosten in rekening gebracht. De kosten voor de Azure resource usage-eenheid variëren per tijds interval (seconden, minuten, uren en dagen) of per aanvraag eenheids gebruik. Zodra het gebruik van Azure Machine Learning wordt gestart, worden de kosten in rekening gebracht. Bekijk deze kosten in het deel venster [kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md) in de Azure Portal.
 
 U kunt de kosten in grafieken en tabellen weer geven voor verschillende tijds intervallen. U kunt ook kosten weer geven op basis van budgetten en geraamde kosten. Door over te scha kelen op meer weer gaven, kunt u uitgaven trends identificeren en zien waar overuitgave mogelijk is gebeurd. Als u budgetten hebt gemaakt, raadpleegt u waar ze zijn overschreden.  
 
@@ -86,7 +86,7 @@ U kunt ook configureren hoe lang het knoop punt inactief moet zijn voordat omlaa
 + Als u minder iteratieve experimenten uitvoert, moet u deze tijd beperken om kosten te besparen.
 + Als u een sterk iteratief dev/test-experiment wilt uitvoeren, moet u mogelijk de tijd verhogen zodat u niet betaalt voor constante schaling omhoog en omlaag na elke wijziging in uw trainings script of-omgeving.
 
-AmlCompute-clusters kunnen worden geconfigureerd voor uw gewijzigde werkbelasting vereisten in Azure Portal, met behulp van de [AMLCOMPUTE SDK-klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) [AmlCompute cli](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute), met de [rest api's](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
+AmlCompute-clusters kunnen worden geconfigureerd voor uw gewijzigde werkbelasting vereisten in Azure Portal, met behulp van de [AMLCOMPUTE SDK-klasse](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) [AmlCompute cli](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute), met de [rest api's](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300

@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 21c57257f9ce5a33585f151d38c16736f94a166c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3509530994b07a16fb1f2780fffc6fd27cf8aa7c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998709"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325518"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Een gecodeerde webservice voor het afwijzen van een versleutelings service implementeren (preview)
 
-Meer informatie over het implementeren van een installatie kopie-classificatie model als een versleutelde webservice voor het afwijzen van een provider in [Azure container instances](https://docs.microsoft.com/azure/container-instances/) (ACI). De webservice is een docker-container installatie kopie die het model en de Score logica bevat.
+Meer informatie over het implementeren van een installatie kopie-classificatie model als een versleutelde webservice voor het afwijzen van een provider in [Azure container instances](../container-instances/index.yml) (ACI). De webservice is een docker-container installatie kopie die het model en de Score logica bevat.
 
 In deze hand leiding gebruikt u Azure Machine Learning-service voor het volgende:
 
@@ -30,7 +30,7 @@ In deze hand leiding gebruikt u Azure Machine Learning-service voor het volgende
 > * Versleutelde voor spellingen maken
 > * Resources opschonen
 
-ACI is een geweldige oplossing voor het testen en het leren van de implementatie werk stroom voor modellen. Voor schaalbare productie-implementaties is het misschien beter om Azure Kubernetes Service te gebruiken. Zie [Modellen implementeren met de Azure Machine Learning-service](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) voor meer informatie.
+ACI is een geweldige oplossing voor het testen en het leren van de implementatie werk stroom voor modellen. Voor schaalbare productie-implementaties is het misschien beter om Azure Kubernetes Service te gebruiken. Zie [Modellen implementeren met de Azure Machine Learning-service](./how-to-deploy-and-where.md) voor meer informatie.
 
 De versleutelings methode die in dit voor beeld wordt gebruikt, is [Homomorphic-versleuteling](https://github.com/Microsoft/SEAL#homomorphic-encryption). Met Homomorphic versleuteling kunnen berekeningen worden uitgevoerd op versleutelde gegevens zonder dat daarvoor toegang nodig is tot een geheime sleutel (ontsleuteling). De resultaten van de berekeningen zijn versleuteld en kunnen alleen worden onthuld door de eigenaar van de geheime sleutel. 
 

@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908087"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323770"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Uitzonde ringen en fout codes voor de ontwerper
 
@@ -187,7 +187,7 @@ Controleer ook of het account, de container of de blob is verwijderd. Gebruik ee
 
 Sommige nieuwere account typen worden niet ondersteund door Azure Machine Learning. De nieuwe opslag typen ' hot ' of ' koud ' kunnen bijvoorbeeld niet worden gebruikt voor machine learning. Zowel klassieke opslag accounts als opslag accounts die zijn gemaakt als "algemeen gebruik" werken prima.
 
-Als het volledige pad naar een blob is opgegeven, controleert u of het pad is opgegeven als **container/blobnaam**en of de container en de BLOB aanwezig zijn in het account.  
+Als het volledige pad naar een blob is opgegeven, controleert u of het pad is opgegeven als **container/blobnaam** en of de container en de BLOB aanwezig zijn in het account.  
 
  Het pad mag geen voorloop streep bevatten. Bijvoorbeeld **/container/BLOB** is onjuist en moet worden ingevoerd als **container/BLOB**.  
 
@@ -713,7 +713,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **Oplossing:** Deze fout wordt veroorzaakt door veel omstandigheden en er is geen specifiek verhaal.  
  De volgende tabel bevat algemene berichten voor deze fout, gevolgd door een specifieke beschrijving van de voor waarde. 
 
- Als er geen gegevens beschikbaar zijn, wordt [op de pagina van micro soft Q&een vraag weer gegeven voor het verzenden van feedback](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html) en wordt informatie gegeven over de modules die de fout hebben gegenereerd en de bijbehorende voor waarden.
+ Als er geen gegevens beschikbaar zijn, wordt [op de pagina van micro soft Q&een vraag weer gegeven voor het verzenden van feedback](/answers/topics/azure-machine-learning-studio-classic.html) en wordt informatie gegeven over de modules die de fout hebben gegenereerd en de bijbehorende voor waarden.
 
 |Uitzonderings berichten|
 |------------------------|
@@ -862,7 +862,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 
  Deze fout in Azure Machine Learning treedt op als de sleutel die wordt gebruikt voor toegang tot het Azure Storage-account onjuist is. U kunt deze fout bijvoorbeeld zien als de Azure-opslag sleutel is afgekapt bij het kopiëren en plakken of als de verkeerde sleutel is gebruikt.  
 
- Zie [toegangs sleutels voor opslag weer geven, kopiëren en opnieuw genereren](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/)voor meer informatie over het ophalen van de sleutel voor een Azure-opslag account.  
+ Zie [toegangs sleutels voor opslag weer geven, kopiëren en opnieuw genereren](../../storage/common/storage-account-create.md)voor meer informatie over het ophalen van de sleutel voor een Azure-opslag account.  
 
 **Oplossing:** Ga naar de module en controleer of de Azure Storage-sleutel juist is voor het account. Kopieer de sleutel opnieuw vanuit de klassieke Azure-Portal, indien nodig.  
 
@@ -1083,9 +1083,9 @@ Het fout bericht van Hive wordt normaal gesp roken weer gegeven in het fouten lo
 
 Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor machine learning:
 
-+ [Hive-tabellen maken en gegevens laden vanuit Azure Blob Storage](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [Gegevens in tabellen verkennen met hive-query's](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [Met Hive-query’s functies maken voor gegevens in een Hadoop-cluster](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [Hive-tabellen maken en gegevens laden vanuit Azure Blob Storage](../team-data-science-process/move-hive-tables.md)
++ [Gegevens in tabellen verkennen met hive-query's](../team-data-science-process/explore-data-hive-tables.md)
++ [Met Hive-query’s functies maken voor gegevens in een Hadoop-cluster](../team-data-science-process/create-features-hive.md)
 + [Hive voor SQL-gebruikers Cheat Sheet (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
@@ -1106,8 +1106,8 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
  Controleer of de query correct werkt buiten Azure ML door u rechtstreeks aan te melden bij de database server en de query uit te voeren.  
 
  Als er een gegenereerd SQL-bericht wordt gemeld door de module-uitzonde ring, actie ondernemen op basis van de gerapporteerde fout. De fout berichten bevatten bijvoorbeeld soms specifieke richt lijnen voor de waarschijnlijke fout:
-+ Een *dergelijke kolom of ontbrekende data base*geeft aan dat u een ongeldige kolom naam hebt opgegeven. Als u zeker weet dat de naam van de kolom juist is, gebruikt u accolades of aanhalings tekens om de kolom-id op te sluiten.
-+ *SQL Logic-fout \<SQL keyword\> *in de buurt geeft aan dat er een syntaxis fout is opgetreden voor het opgegeven tref woord
++ Een *dergelijke kolom of ontbrekende data base* geeft aan dat u een ongeldige kolom naam hebt opgegeven. Als u zeker weet dat de naam van de kolom juist is, gebruikt u accolades of aanhalings tekens om de kolom-id op te sluiten.
++ *SQL Logic-fout \<SQL keyword\>* in de buurt geeft aan dat er een syntaxis fout is opgetreden voor het opgegeven tref woord
 
   
 |Uitzonderings berichten|
@@ -1164,7 +1164,7 @@ Deze fout in Azure Machine Learning treedt op wanneer u gegevens op basis van ee
 
 Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie van Azure Machine Learning die meer aanpassing van binning-methoden had toegestaan. Momenteel zijn alle binning-methoden gebaseerd op een selectie uit een vervolg keuzelijst, zodat deze fout niet meer kan worden weer geven.
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |Uitzonderings berichten|
 |------------------------|
@@ -1516,11 +1516,10 @@ Uitzonde ring interne bibliotheek.
 
 Deze fout wordt gegeven voor het vastleggen van anderszins onverwerkte interne Engine fouten. Daarom kan de oorzaak van deze fout afwijken, afhankelijk van de module die de fout heeft gegenereerd.  
 
-Als u meer hulp nodig hebt, raden we u aan het gedetailleerde bericht te plaatsen dat bij de fout aan het [Azure machine learning forum](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)wordt geleverd, samen met een beschrijving van het scenario, inclusief de gegevens die worden gebruikt als invoer. Deze feedback helpt ons bij het bepalen van de prioriteit van fouten en het identificeren van de belangrijkste problemen voor verdere werkzaamheden.  
+Als u meer hulp nodig hebt, raden we u aan het gedetailleerde bericht te plaatsen dat bij de fout aan het [Azure machine learning forum](/answers/topics/azure-machine-learning.html)wordt geleverd, samen met een beschrijving van het scenario, inclusief de gegevens die worden gebruikt als invoer. Deze feedback helpt ons bij het bepalen van de prioriteit van fouten en het identificeren van de belangrijkste problemen voor verdere werkzaamheden.  
 
 |Uitzonderings berichten|
 |------------------------|
 |Bibliotheek uitzondering.|
 |Bibliotheek uitzondering: {Exception}.|
 |Onbekende bibliotheek uitzondering: {Exception}. {customer_support_guidance}.|
-

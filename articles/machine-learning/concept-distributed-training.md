@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c479a64b2100cfc1a6fdf17f5e6f5636d3a689d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651148"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322219"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Gedistribueerde training met Azure Machine Learning
 
@@ -24,7 +24,7 @@ In de gedistribueerde training wordt de werk belasting voor het trainen van een 
 
 ## <a name="deep-learning-and-distributed-training"></a>Diep gaande lessen en gedistribueerde trainingen 
 
-Er zijn twee hoofd typen gedistribueerde training: [gegevens parallellisme](#data-parallelism) en [model parallellisme](#model-parallelism). Voor gedistribueerde training over diepe leer modellen ondersteunt de [Azure machine learning SDK in python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) integraties met populaire frameworks, PyTorch en tensor flow. Beide Frameworks gebruiken gegevens parallellisme voor gedistribueerde trainingen en kunnen gebruikmaken van [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) voor het optimaliseren van reken snelheden. 
+Er zijn twee hoofd typen gedistribueerde training: [gegevens parallellisme](#data-parallelism) en [model parallellisme](#model-parallelism). Voor gedistribueerde training over diepe leer modellen ondersteunt de [Azure machine learning SDK in python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) integraties met populaire frameworks, PyTorch en tensor flow. Beide Frameworks gebruiken gegevens parallellisme voor gedistribueerde trainingen en kunnen gebruikmaken van [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) voor het optimaliseren van reken snelheden. 
 
 * [Gedistribueerde training met PyTorch](how-to-train-pytorch.md#distributed-training)
 
@@ -51,6 +51,6 @@ In model parallelie hoeven werk knooppunten alleen de gedeelde para meters te sy
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het [gebruik van Compute-doelen voor model training](how-to-set-up-training-targets.md) met de PYTHON-SDK.
-* Zie het [scenario referentie architectuur](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)voor een technisch voor beeld.
+* Zie het [scenario referentie architectuur](/azure/architecture/reference-architectures/ai/training-deep-learning)voor een technisch voor beeld.
 * [Train ml-modellen met tensor flow](how-to-train-tensorflow.md).
-* [Train ml-modellen met PyTorch](how-to-train-pytorch.md). 
+* [Train ml-modellen met PyTorch](how-to-train-pytorch.md).

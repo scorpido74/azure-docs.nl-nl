@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344482"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325014"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Aan de slag met Azure Machine Learning Studio (klassiek) in R
 
-**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 <!-- Stephen F Elston, Ph.D. -->
@@ -144,7 +144,7 @@ U begint met het laden van het **csdairydata.csv** bestand in machine learning S
 
 1. Start uw Machine Learning Studio-omgeving (klassiek).
 1. Selecteer **+ Nieuw** in de linkerbenedenhoek van het scherm en selecteer **gegevensset**.
-1. Selecteer een **lokaal bestand**en selecteer vervolgens **Bladeren** om het bestand te selecteren.
+1. Selecteer een **lokaal bestand** en selecteer vervolgens **Bladeren** om het bestand te selecteren.
 1. Zorg ervoor dat u **Algemeen CSV-bestand met header (. CSV)** hebt geselecteerd als het type voor de gegevensset.
 1. Schakel het selectie vakje in.
 1. Nadat de gegevensset is geüpload, ziet u de nieuwe gegevensset wanneer u het tabblad **gegevens sets** selecteert.
@@ -153,13 +153,13 @@ U begint met het laden van het **csdairydata.csv** bestand in machine learning S
 
 Nu we een aantal gegevens hebben in Machine Learning Studio (klassiek), moeten we een experiment maken om de analyse uit te voeren.  
 
-1. Selecteer **+ Nieuw** in de linkerbenedenhoek van het scherm **en selecteer een**  >  **leeg experiment**experimenteren.
+1. Selecteer **+ Nieuw** in de linkerbenedenhoek van het scherm **en selecteer een**  >  **leeg experiment** experimenteren.
 1. Noem uw experiment door het experiment dat boven aan de pagina is **gemaakt** , te selecteren en te wijzigen. U kunt dit bijvoorbeeld wijzigen in **CA-zuivel analyse**.
-1. Selecteer aan de linkerkant van de pagina Experimenteer **opgeslagen gegevens sets**met  >  **mijn gegevens sets**. U ziet het **cadairydata.csv** bestand dat u eerder hebt geüpload.
+1. Selecteer aan de linkerkant van de pagina Experimenteer **opgeslagen gegevens sets** met  >  **mijn gegevens sets**. U ziet het **cadairydata.csv** bestand dat u eerder hebt geüpload.
 1. Sleep **csdairydata.csv gegevensset** naar het experiment.
 1. Voer in het vak **Zoek proef items** bovenaan in het linkerdeel venster de opdracht [R-script uitvoeren][execute-r-script]in. De module wordt weer gegeven in de lijst zoeken.
 1. Sleep de module [R-script uitvoeren][execute-r-script] naar uw pallet.
-1. Verbind de uitvoer van **csdairydata.csv gegevensset** met de meest linkse invoer (**Dataset1**) van het [R-script uitvoeren][execute-r-script].
+1. Verbind de uitvoer van **csdairydata.csv gegevensset** met de meest linkse invoer ( **Dataset1** ) van het [R-script uitvoeren][execute-r-script].
 1. Selecteer **Opslaan**.
 
 Op dit moment moet uw experiment er ongeveer als volgt uitzien.
@@ -169,7 +169,7 @@ Op dit moment moet uw experiment er ongeveer als volgt uitzien.
 
 #### <a name="check-on-the-data"></a>De gegevens controleren
 
-Laten we eens kijken naar de gegevens die we in ons experiment hebben geladen. Selecteer in het experiment de uitvoer van de **cadairydata.csv gegevensset**en selecteer **visualiseren**. U ziet iets als deze samen vatting.
+Laten we eens kijken naar de gegevens die we in ons experiment hebben geladen. Selecteer in het experiment de uitvoer van de **cadairydata.csv gegevensset** en selecteer **visualiseren**. U ziet iets als deze samen vatting.
 
 ![Scherm afbeelding met een samen vatting van de cadairydata.csv gegevensset.](./media/r-quickstart/fig4.png)
 
@@ -231,7 +231,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
    maml.mapOutputPort('cadairydata')
    ```
 
-1. Maak een zip-bestand en kopieer uw script naar dit zip-bestand. In Windows kunt u met de rechter muisknop op het bestand klikken en **verzenden naar**  >  **gecomprimeerde map**selecteren. Met deze actie maakt u een nieuw zip-bestand dat de **simpleplot bevat. R** -bestand.
+1. Maak een zip-bestand en kopieer uw script naar dit zip-bestand. In Windows kunt u met de rechter muisknop op het bestand klikken en **verzenden naar**  >  **gecomprimeerde map** selecteren. Met deze actie maakt u een nieuw zip-bestand dat de **simpleplot bevat. R** -bestand.
 
 1. Voeg uw bestand toe aan de **gegevens sets** in machine learning Studio (klassiek) en geef het type op als **zip**. U ziet nu het zip-bestand in de gegevens sets.
 
@@ -404,7 +404,7 @@ We gaan deze code uitvoeren en kijken naar het uitvoer logboek voor het R-script
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-Voor het type voor maand moet nu de **factor w/14 niveaus**worden gedicteerd. Dit type is een probleem omdat er slechts 12 maanden in het jaar zijn. U kunt ook controleren of het type in **visualiseren** van de **categorische**van het resultaat van de gegevensset wordt weer geven.
+Voor het type voor maand moet nu de **factor w/14 niveaus** worden gedicteerd. Dit type is een probleem omdat er slechts 12 maanden in het jaar zijn. U kunt ook controleren of het type in **visualiseren** van de **categorische** van het resultaat van de gegevensset wordt weer geven.
 
 Het probleem is dat de maand kolom niet systematisch is gecodeerd. In sommige gevallen wordt een maand april genoemd, en in andere situaties wordt deze afgekort tot apr. We kunnen dit probleem oplossen door de teken reeks te verkleinen tot drie tekens. De regel code ziet er nu uit als in het volgende voor beeld.
 
@@ -1029,10 +1029,10 @@ Deze functie genereert de volgende uitvoer.
 ##
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
-## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
-## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
+## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 **_
+## Time              1.63e-09   1.72e-10    9.47   <2e-16 _*_
 ## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
-## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
+## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 _  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
@@ -1062,10 +1062,10 @@ Deze functie genereert de volgende uitvoer.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
-## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
-## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
+## Time              1.57e-09   4.32e-11    36.3   <2e-16 **_
+## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0417 on 213 degrees of freedom
 ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
@@ -1113,21 +1113,21 @@ Deze functie genereert de volgende uitvoer.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
-## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
-## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
-## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
-## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
-## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
-## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
-## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
-## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
-## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
-## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
-## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
-## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
-## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 **_
+## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 _*_
+## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 _*_
+## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 _*_
+## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 _*_
+## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 _*_
+## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 _*_
+## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 _*_
+## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 _*_
+## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 _*_
+## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 _*_
+## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 _*_
+## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0263 on 202 degrees of freedom
 ## Multiple R-squared:     1,    Adjusted R-squared:     1
@@ -1276,11 +1276,11 @@ Vanuit deze resultaten ziet u dat het toevoegen van de seizoensgebonden factoren
 
 RStudio is goed gedocumenteerd. Hier vindt u enkele koppelingen naar de belangrijkste secties van de RStudio-documentatie om aan de slag te gaan.
 
-* **Projecten maken**: u kunt uw R-code in projecten indelen en beheren met behulp van RStudio. Zie [using projects](https://support.rstudio.com/hc/articles/200526207-Using-Projects)(Engelstalig) voor meer informatie. Volg deze instructies en maak een project voor de R-code voorbeelden in dit artikel.
-* **R-code bewerken en uitvoeren**: RStudio biedt een geïntegreerde omgeving voor het bewerken en uitvoeren van r-code. Zie [code bewerken en uitvoeren](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)voor meer informatie.
-* **Debug**: RStudio bevat krachtige functies voor fout opsporing. Zie [fout opsporing met RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)voor meer informatie over deze functies. Zie [probleem oplossing](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)voor meer informatie over functies voor het oplossen van onderbrekings punten.
+* **Projecten maken** : u kunt uw R-code in projecten indelen en beheren met behulp van RStudio. Zie [using projects](https://support.rstudio.com/hc/articles/200526207-Using-Projects)(Engelstalig) voor meer informatie. Volg deze instructies en maak een project voor de R-code voorbeelden in dit artikel.
+* **R-code bewerken en uitvoeren** : RStudio biedt een geïntegreerde omgeving voor het bewerken en uitvoeren van r-code. Zie [code bewerken en uitvoeren](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)voor meer informatie.
+* **Debug** : RStudio bevat krachtige functies voor fout opsporing. Zie [fout opsporing met RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)voor meer informatie over deze functies. Zie [probleem oplossing](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)voor meer informatie over functies voor het oplossen van onderbrekings punten.
 
-## <a name="further-reading"></a><a id="appendixb"></a>Meer lezen
+## <a name="further-reading"></a><a id="appendixb"></a>Meer informatie
 
 Deze zelf studie R-programmeer behandelt de basis beginselen van wat u nodig hebt om de R-taal met Machine Learning Studio (klassiek) te gebruiken. Als u niet bekend bent met R, zijn er twee inleidingen beschikbaar op KRANen:
 

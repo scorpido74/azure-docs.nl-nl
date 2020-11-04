@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac6055029b8fc7bbba11a8e3b789df3b6b1622e2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864227"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322751"
 ---
 # <a name="team-data-science-process-project-planning"></a>Project gegevens wetenschap proces plannen
 
@@ -30,7 +30,7 @@ De levenscyclus bevat de belangrijkste fasen die projecten meestal doorlopen, va
 - Implementatie
 - Klant acceptatie
 
-Zie voor beschrijvingen van elk van deze fasen [de team data Science process Lifecycle](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
+Zie voor beschrijvingen van elk van deze fasen [de team data Science process Lifecycle](./lifecycle.md).
 
  
 ## <a name="microsoft-project-template"></a>Micro soft project-sjabloon
@@ -60,5 +60,4 @@ Gebruik deze [project sjabloon opslagplaats](https://github.com/Azure/Azure-TDSP
 
 [Flexibele ontwikkeling van data Science-projecten](agile-development.md) In dit document wordt een Data Science-project beschreven in een systematische versie en op samenwerkings wijze met behulp van het team data Science process.
 
-Er zijn ook instructies voor het leveren van alle stappen in het proces voor **specifieke scenario's** . Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken. 
-
+Er zijn ook instructies voor het leveren van alle stappen in het proces voor **specifieke scenario's** . Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken.

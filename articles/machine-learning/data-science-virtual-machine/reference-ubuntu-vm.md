@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: d356bd43e5e09dfce96a801732e79d2efe8c08bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da757e47308fe0fe1a96958e464b440d99f0984
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440334"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324728"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Naslag informatie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -97,7 +97,7 @@ Er is ook een R-script waarmee u de [beste 20 R-pakketten](https://www.kdnuggets
 
 ## <a name="python"></a>Python
 
-Anaconda python wordt geïnstalleerd met python 2,7-en 3,5-omgevingen. De 2,7-omgeving heet _root_en de 3,5-omgeving heet _py35_. Deze distributie bevat de basis-python, samen met ongeveer 300 van de populairste wiskundige, technische en gegevens analyse pakketten.
+Anaconda python wordt geïnstalleerd met python 2,7-en 3,5-omgevingen. De 2,7-omgeving heet _root_ en de 3,5-omgeving heet _py35_. Deze distributie bevat de basis-python, samen met ongeveer 300 van de populairste wiskundige, technische en gegevens analyse pakketten.
 
 De py35 omgeving is de standaard instelling. Gebruik deze opdracht om de basis omgeving (2,7) te activeren:
 
@@ -148,7 +148,7 @@ U kunt vanaf elke host toegang krijgen tot de Jupyter-notebook server. Voer **ht
 > [!NOTE]
 > Poort 8000 wordt standaard geopend in de firewall wanneer de virtuele machine wordt ingericht. 
 
-We hebben voorbeeld notitieblokken, een in Python en één in R, verpakt. U kunt de koppeling naar de voor beelden op de start pagina van het notitie blok zien nadat u zich bij de Jupyter-notebook hebt geverifieerd met behulp van uw lokale Linux-gebruikers naam en-wacht woord. U kunt een nieuw notitie blok maken door **Nieuw**te selecteren en vervolgens de juiste taal-kernel te selecteren. Als de knop **Nieuw** niet wordt weer gegeven, selecteert u het **Jupyter** pictogram in de linkerbovenhoek om naar de start pagina van de notebook server te gaan.
+We hebben voorbeeld notitieblokken, een in Python en één in R, verpakt. U kunt de koppeling naar de voor beelden op de start pagina van het notitie blok zien nadat u zich bij de Jupyter-notebook hebt geverifieerd met behulp van uw lokale Linux-gebruikers naam en-wacht woord. U kunt een nieuw notitie blok maken door **Nieuw** te selecteren en vervolgens de juiste taal-kernel te selecteren. Als de knop **Nieuw** niet wordt weer gegeven, selecteert u het **Jupyter** pictogram in de linkerbovenhoek om naar de start pagina van de notebook server te gaan.
 
 ## <a name="apache-spark-standalone"></a>Zelfstandige Apache Spark
 
@@ -206,13 +206,13 @@ Zie [Squirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshot
 
 Het ODBC-stuur programmapakket voor SQL Server wordt ook geleverd met twee opdracht regel Programma's:
 
-- **bcp**: het BCP-hulp programma kopieert gegevens tussen een exemplaar van Microsoft SQL Server en een gegevens bestand in een door de gebruiker opgegeven indeling. U kunt het hulp programma BCP gebruiken om grote aantallen nieuwe rijen te importeren in SQL Server tabellen, of om gegevens uit tabellen te exporteren naar gegevens bestanden. Als u gegevens wilt importeren in een tabel, moet u een indelings bestand gebruiken dat voor die tabel is gemaakt. Of u moet inzicht hebben in de structuur van de tabel en de typen gegevens die geldig zijn voor de kolommen.
+- **bcp** : het BCP-hulp programma kopieert gegevens tussen een exemplaar van Microsoft SQL Server en een gegevens bestand in een door de gebruiker opgegeven indeling. U kunt het hulp programma BCP gebruiken om grote aantallen nieuwe rijen te importeren in SQL Server tabellen, of om gegevens uit tabellen te exporteren naar gegevens bestanden. Als u gegevens wilt importeren in een tabel, moet u een indelings bestand gebruiken dat voor die tabel is gemaakt. Of u moet inzicht hebben in de structuur van de tabel en de typen gegevens die geldig zijn voor de kolommen.
 
-  Zie [verbinding maken met BCP](https://msdn.microsoft.com/library/hh568446.aspx)voor meer informatie.
+  Zie [verbinding maken met BCP](/sql/connect/odbc/linux-mac/connecting-with-bcp)voor meer informatie.
 
-- **Sqlcmd**: u kunt Transact-SQL-instructies opgeven met behulp van het hulp programma Sqlcmd. U kunt ook systeem procedures en script bestanden invoeren bij de opdracht prompt. Dit hulp programma gebruikt ODBC om Transact-SQL-batches uit te voeren.
+- **Sqlcmd** : u kunt Transact-SQL-instructies opgeven met behulp van het hulp programma Sqlcmd. U kunt ook systeem procedures en script bestanden invoeren bij de opdracht prompt. Dit hulp programma gebruikt ODBC om Transact-SQL-batches uit te voeren.
 
-  Zie [verbinding maken met Sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx)voor meer informatie.
+  Zie [verbinding maken met Sqlcmd](/sql/connect/odbc/linux-mac/connecting-with-sqlcmd)voor meer informatie.
 
   > [!NOTE]
   > Er zijn enkele verschillen in dit hulp programma tussen Linux-en Windows-platforms. Raadpleeg de documentatie voor meer informatie.
@@ -228,13 +228,13 @@ Bibliotheken zijn beschikbaar in R en python voor database toegang:
 
 De volgende Azure-hulpprogram ma's zijn geïnstalleerd op de VM:
 
-* **Azure cli**: u kunt de opdracht regel interface in azure gebruiken om Azure-resources te maken en te beheren via shell-opdrachten. Als u de Azure-hulpprogram ma's wilt openen, voert u **Azure Help**in. Zie de [Azure cli-documentatie pagina](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)voor meer informatie.
-* **Azure Storage Explorer**: Azure Storage Explorer is een grafisch hulp programma dat u kunt gebruiken om te bladeren door de objecten die u in uw Azure-opslag account hebt opgeslagen, en om gegevens van en naar Azure-blobs te uploaden en te downloaden. U hebt toegang tot Storage Explorer via het pictogram Bureaublad snelkoppeling. U kunt deze ook openen vanuit een shell-prompt door **StorageExplorer**in te voeren. U moet zijn aangemeld bij een X2Go-client of X11 door sturen hebben ingesteld.
-* **Azure-bibliotheken**: Hier volgen enkele van de vooraf geïnstalleerde bibliotheken.
+* **Azure cli** : u kunt de opdracht regel interface in azure gebruiken om Azure-resources te maken en te beheren via shell-opdrachten. Als u de Azure-hulpprogram ma's wilt openen, voert u **Azure Help** in. Zie de [Azure cli-documentatie pagina](/cli/azure/get-started-with-az-cli2)voor meer informatie.
+* **Azure Storage Explorer** : Azure Storage Explorer is een grafisch hulp programma dat u kunt gebruiken om te bladeren door de objecten die u in uw Azure-opslag account hebt opgeslagen, en om gegevens van en naar Azure-blobs te uploaden en te downloaden. U hebt toegang tot Storage Explorer via het pictogram Bureaublad snelkoppeling. U kunt deze ook openen vanuit een shell-prompt door **StorageExplorer** in te voeren. U moet zijn aangemeld bij een X2Go-client of X11 door sturen hebben ingesteld.
+* **Azure-bibliotheken** : Hier volgen enkele van de vooraf geïnstalleerde bibliotheken.
   
-  * **Python**: de Azure-gerelateerde bibliotheken in python zijn *Azure*, *azureml*, *pydocumentdb*en *pyodbc*. Met de eerste drie bibliotheken kunt u toegang krijgen tot Azure Storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-data base in Azure). De vierde bibliotheek, pyodbc (samen met het micro soft ODBC-stuur programma voor SQL Server), biedt toegang tot SQL Server, Azure SQL Database en Azure Synapse Analytics van python met behulp van een ODBC-interface. Voer een **PIP-lijst** in om alle weer gegeven bibliotheken weer te geven. Zorg ervoor dat u deze opdracht uitvoert in zowel de python 2,7-als de 3,5-omgeving.
-  * **R**: de Azure-gerelateerde bibliotheken in R zijn AZUREML en RODBC.
-  * **Java**: de lijst met Azure Java-bibliotheken vindt u in de map/dsvm/SDK/AzureSDKJava op de virtuele machine. De belangrijkste bibliotheken zijn Azure-opslag-en beheer-Api's, Azure Cosmos DB en JDBC-Stuur Programma's voor SQL Server.  
+  * **Python** : de Azure-gerelateerde bibliotheken in python zijn *Azure* , *azureml* , *pydocumentdb* en *pyodbc*. Met de eerste drie bibliotheken kunt u toegang krijgen tot Azure Storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-data base in Azure). De vierde bibliotheek, pyodbc (samen met het micro soft ODBC-stuur programma voor SQL Server), biedt toegang tot SQL Server, Azure SQL Database en Azure Synapse Analytics van python met behulp van een ODBC-interface. Voer een **PIP-lijst** in om alle weer gegeven bibliotheken weer te geven. Zorg ervoor dat u deze opdracht uitvoert in zowel de python 2,7-als de 3,5-omgeving.
+  * **R** : de Azure-gerelateerde bibliotheken in R zijn AZUREML en RODBC.
+  * **Java** : de lijst met Azure Java-bibliotheken vindt u in de map/dsvm/SDK/AzureSDKJava op de virtuele machine. De belangrijkste bibliotheken zijn Azure-opslag-en beheer-Api's, Azure Cosmos DB en JDBC-Stuur Programma's voor SQL Server.  
 
 U kunt de [Azure Portal](https://portal.azure.com) openen vanuit de vooraf geïnstalleerde Firefox-browser. Op de Azure Portal kunt u Azure-resources maken, beheren en bewaken.
 
@@ -246,7 +246,7 @@ Nadat u zich hebt aangemeld bij Azure Machine Learning Studio, kunt u een Experi
 
 Operationeel maken de machine learning modellen die u hebt gemaakt door deze in een webservice-interface in te pakken. Met inzet machine learning-modellen kunnen clients die in elke taal zijn geschreven, voor spellingen van deze modellen aanroepen. Zie de [machine learning-documentatie](https://azure.microsoft.com/documentation/services/machine-learning/)voor meer informatie.
 
-U kunt ook uw modellen bouwen in R of python op de virtuele machine en deze vervolgens implementeren in productie op Azure Machine Learning. Er zijn bibliotheken geïnstalleerd in R (**azureml**) en python (**azureml**) om deze functionaliteit in te scha kelen.
+U kunt ook uw modellen bouwen in R of python op de virtuele machine en deze vervolgens implementeren in productie op Azure Machine Learning. Er zijn bibliotheken geïnstalleerd in R ( **azureml** ) en python ( **azureml** ) om deze functionaliteit in te scha kelen.
 
 > [!NOTE]
 > Deze instructies zijn geschreven voor de Windows-versie van de Data Science Virtual Machine. Maar de informatie over het implementeren van modellen naar Azure Machine Learning is van toepassing op de virtuele Linux-machine.
@@ -255,12 +255,12 @@ U kunt ook uw modellen bouwen in R of python op de virtuele machine en deze verv
 
 De VM wordt geleverd met machine learning-hulpprogram ma's en-algoritmen die vooraf zijn gecompileerd en lokaal zijn geïnstalleerd. Deze omvatten:
 
-* **Vowpal Wabbit**: een Fast Online Learning-algoritme.
-* **xgboost**: een hulp programma dat geoptimaliseerde, gestimuleerde structuur algoritmen biedt.
-* **Rattle**: een op R gebaseerd grafisch hulp programma voor het snel verkennen en model leren van gegevens.
-* **Python**: Anaconda python wordt geleverd met machine learning-algoritmen met bibliotheken zoals Scikit. U kunt andere bibliotheken installeren met behulp van de `pip install` opdracht.
-* **LightGBM**: een snelle, gedistribueerde, hoogwaardige kleur overgang voor het verbeteren van het Framework op basis van de beslissings structuur algoritmen.
-* **R**: er is een uitgebreide bibliotheek met machine learning functies beschikbaar voor R. vooraf geïnstalleerde bibliotheken zijn LM, GLM, randomForest en rpart. U kunt andere bibliotheken installeren door deze opdracht uit te voeren:
+* **Vowpal Wabbit** : een Fast Online Learning-algoritme.
+* **xgboost** : een hulp programma dat geoptimaliseerde, gestimuleerde structuur algoritmen biedt.
+* **Rattle** : een op R gebaseerd grafisch hulp programma voor het snel verkennen en model leren van gegevens.
+* **Python** : Anaconda python wordt geleverd met machine learning-algoritmen met bibliotheken zoals Scikit. U kunt andere bibliotheken installeren met behulp van de `pip install` opdracht.
+* **LightGBM** : een snelle, gedistribueerde, hoogwaardige kleur overgang voor het verbeteren van het Framework op basis van de beslissings structuur algoritmen.
+* **R** : er is een uitgebreide bibliotheek met machine learning functies beschikbaar voor R. vooraf geïnstalleerde bibliotheken zijn LM, GLM, randomForest en rpart. U kunt andere bibliotheken installeren door deze opdracht uit te voeren:
 
     ```r
     install.packages(<lib name>)
@@ -316,7 +316,7 @@ Zie de [xgboost-documentatie pagina](https://xgboost.readthedocs.org/en/latest/)
 
 ### <a name="rattle"></a>Rattle
 
-Rattle (de **R** **A**analytische **t**Ool **t**o **L**verdienen **E**asily) maakt gebruik van op GUI gebaseerde gegevens exploratie en model lering. Het biedt statistische en visuele samen vattingen van gegevens, transformeert gegevens die gemakkelijk kunnen worden gemodelleerd, bouwt zowel niet-bewaakte als gecontroleerde modellen van de gegevens, geeft de prestaties van modellen grafisch en scoort nieuwe gegevens sets. Ook wordt er een R-code gegenereerd, waarbij de bewerkingen in de gebruikers interface worden gerepliceerd en die rechtstreeks kunnen worden uitgevoerd in R of worden gebruikt als uitgangs punt voor verdere analyse.
+Rattle (de **R** **A** analytische **t** Ool **t** o **L** verdienen **E** asily) maakt gebruik van op GUI gebaseerde gegevens exploratie en model lering. Het biedt statistische en visuele samen vattingen van gegevens, transformeert gegevens die gemakkelijk kunnen worden gemodelleerd, bouwt zowel niet-bewaakte als gecontroleerde modellen van de gegevens, geeft de prestaties van modellen grafisch en scoort nieuwe gegevens sets. Ook wordt er een R-code gegenereerd, waarbij de bewerkingen in de gebruikers interface worden gerepliceerd en die rechtstreeks kunnen worden uitgevoerd in R of worden gebruikt als uitgangs punt voor verdere analyse.
 
 Als u Rattle wilt uitvoeren, moet u zich in een grafische sessie op het bureau blad bevindt. Voer op de Terminal **r** in om de R-omgeving te openen. Voer bij de R-prompt de volgende opdrachten in:
 

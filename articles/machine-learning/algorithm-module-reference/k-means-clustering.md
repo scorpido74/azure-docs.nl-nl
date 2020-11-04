@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/04/2020
-ms.openlocfilehash: 97cadfb8f5004cfd2701335172d4416c64f05259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e0b61c1ca6ae30044e4c9d4705bdce01eac1942
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907866"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323695"
 ---
 # <a name="module-k-means-clustering"></a>Module: K-betekent clustering
 
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u de *clustering module K-betekent* in azure
  
 K: is een van de eenvoudigste en *meest bekende* algoritmen voor leren. U kunt het algoritme gebruiken voor een aantal machine learning taken, zoals: 
 
-* [Abnormale gegevens detecteren](https://msdn.microsoft.com/magazine/jj891054.aspx).
+* [Abnormale gegevens detecteren](/archive/msdn-magazine/2013/february/data-clustering-detecting-abnormal-data-using-k-means-clustering).
 * Clustering van tekst documenten.
 * Gegevens sets analyseren voordat u andere classificatie-of regressie methoden gebruikt. 
 
@@ -58,46 +58,46 @@ Wanneer de trainings gegevens worden verwerkt, begint het algoritme van K: met e
   
 2.  Selecteer de optie **trainer maken** om op te geven hoe het model moet worden getraind.  
   
-    -   **Eén para meter**: als u de exacte para meters die u wilt gebruiken in het cluster model weet, kunt u een specifieke set waarden opgeven als argumenten.  
+    -   **Eén para meter** : als u de exacte para meters die u wilt gebruiken in het cluster model weet, kunt u een specifieke set waarden opgeven als argumenten.  
   
-3.  Voor het **aantal centroids**typt u het aantal clusters waarmee u het algoritme wilt beginnen.  
+3.  Voor het **aantal centroids** typt u het aantal clusters waarmee u het algoritme wilt beginnen.  
   
      Het model is niet gegarandeerd om precies dit aantal clusters te produceren. Het algoritme begint met dit aantal gegevens punten en wordt herhaald om de optimale configuratie te vinden. U kunt verwijzen naar de [bron code van sklearn](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069).
   
 4.  De **initialisatie van** eigenschappen wordt gebruikt om het algoritme op te geven dat wordt gebruikt voor het definiëren van de eerste cluster configuratie.  
   
-    -   **Eerste N**: het eerste aantal gegevens punten wordt gekozen uit de gegevensset en gebruikt als eerste manier. 
+    -   **Eerste N** : het eerste aantal gegevens punten wordt gekozen uit de gegevensset en gebruikt als eerste manier. 
     
-         Deze methode wordt ook wel de *smeden-methode*genoemd.  
+         Deze methode wordt ook wel de *smeden-methode* genoemd.  
   
-    -   **Wille keurig**: het algoritme plaatst een gegevens punt in een cluster wille keurig en berekent het oorspronkelijke gemiddelde als de massa middelpunt van de wille keurig toegewezen punten van het cluster. 
+    -   **Wille keurig** : het algoritme plaatst een gegevens punt in een cluster wille keurig en berekent het oorspronkelijke gemiddelde als de massa middelpunt van de wille keurig toegewezen punten van het cluster. 
 
          Deze methode wordt ook wel de *wille keurige partitie* methode genoemd.  
   
-    -   **K-betekent + +**: dit is de standaard methode voor het initialiseren van clusters.  
+    -   **K-betekent + +** : dit is de standaard methode voor het initialiseren van clusters.  
   
          De **K-houdt + +-** algoritme is voorgesteld in 2007 door David Arthur en Sergei Vassilvitskii om te voor komen dat er geclusterd wordt door het standaard-K-algoritme. **K-betekent + +** verbetert de standaard K-betekent dat u een andere methode gebruikt voor het kiezen van de eerste cluster centrums.  
   
     
-5.  Voor **wille keurig getal zaad**typt u optioneel een waarde die moet worden gebruikt als seed voor de initialisatie van het cluster. Deze waarde kan een aanzienlijk effect hebben op de selectie van een cluster.  
+5.  Voor **wille keurig getal zaad** typt u optioneel een waarde die moet worden gebruikt als seed voor de initialisatie van het cluster. Deze waarde kan een aanzienlijk effect hebben op de selectie van een cluster.  
   
-6.  Kies voor **metriek**de functie die u wilt gebruiken voor het meten van de afstand tussen cluster vectoren of tussen nieuwe gegevens punten en de wille keurig gekozen massa middelpunt. Azure Machine Learning ondersteunt de volgende waarden voor de cluster afstand:  
+6.  Kies voor **metriek** de functie die u wilt gebruiken voor het meten van de afstand tussen cluster vectoren of tussen nieuwe gegevens punten en de wille keurig gekozen massa middelpunt. Azure Machine Learning ondersteunt de volgende waarden voor de cluster afstand:  
   
-    -   **Euclidean**: de Euclidean-afstand wordt vaak gebruikt als een meting van een cluster spreiding voor k-means clustering. Deze metrische gegevens hebben de voor keur omdat hiermee de gemiddelde afstand tussen punten en de centroids wordt geminimaliseerd.
+    -   **Euclidean** : de Euclidean-afstand wordt vaak gebruikt als een meting van een cluster spreiding voor k-means clustering. Deze metrische gegevens hebben de voor keur omdat hiermee de gemiddelde afstand tussen punten en de centroids wordt geminimaliseerd.
   
-7.  Voor **herhalingen**typt u het aantal keren dat het algoritme moet worden herhaald om de trainings gegevens te herhalen voordat de selectie van centroids wordt voltooid.  
+7.  Voor **herhalingen** typt u het aantal keren dat het algoritme moet worden herhaald om de trainings gegevens te herhalen voordat de selectie van centroids wordt voltooid.  
   
      U kunt deze para meter aanpassen om de nauw keurigheid van de trainings tijd af te stemmen.  
   
-8.  Voor de **modus label toewijzen**kiest u een optie die aangeeft hoe een label kolom, als deze aanwezig is in de gegevensset, moet worden afgehandeld.  
+8.  Voor de **modus label toewijzen** kiest u een optie die aangeeft hoe een label kolom, als deze aanwezig is in de gegevensset, moet worden afgehandeld.  
   
      Omdat k-means clustering een onbewaakte machine learning methode is, zijn labels optioneel. Als uw gegevensset echter al een kolom label heeft, kunt u deze waarden gebruiken om de selectie van de clusters te begeleiden, of u kunt opgeven dat de waarden moeten worden genegeerd.  
   
-    -   **Kolom Label negeren**: de waarden in de kolom Label worden genegeerd en worden niet gebruikt bij het maken van het model.
+    -   **Kolom Label negeren** : de waarden in de kolom Label worden genegeerd en worden niet gebruikt bij het maken van het model.
   
-    -   **Ontbrekende waarden vullen**: de waarden van de label kolom worden gebruikt als functies om de clusters te bouwen. Als er rijen ontbreken in een label, wordt de waarde toegerekend met behulp van andere functies.  
+    -   **Ontbrekende waarden vullen** : de waarden van de label kolom worden gebruikt als functies om de clusters te bouwen. Als er rijen ontbreken in een label, wordt de waarde toegerekend met behulp van andere functies.  
   
-    -   **Overschrijven van dichtstbijzijnde naar Center**: de waarden van de label kolom worden vervangen door voorspelde label waarden met behulp van het label van het punt dat zich het dichtst bij de huidige massa middelpunt bevindt.  
+    -   **Overschrijven van dichtstbijzijnde naar Center** : de waarden van de label kolom worden vervangen door voorspelde label waarden met behulp van het label van het punt dat zich het dichtst bij de huidige massa middelpunt bevindt.  
 
 8.  Selecteer de optie **kenmerken normaliseren** als u functies wilt normaliseren vóór de training.
   
@@ -105,7 +105,7 @@ Wanneer de trainings gegevens worden verwerkt, begint het algoritme van K: met e
 
 10. Train het model.  
   
-    -   Als u de **modus trainer maken** instelt op **één para meter**, voegt u een gecodeerde gegevensset toe en traint u het model met behulp van de module [clustering model trainen](train-clustering-model.md) .  
+    -   Als u de **modus trainer maken** instelt op **één para meter** , voegt u een gecodeerde gegevensset toe en traint u het model met behulp van de module [clustering model trainen](train-clustering-model.md) .  
   
 ## <a name="results"></a>Resultaten
 
@@ -145,4 +145,4 @@ Over het algemeen is het mogelijk dat een wille keurige configuratie een lokaal 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

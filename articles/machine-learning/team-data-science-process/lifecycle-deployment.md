@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fe5eba72b507ebea6bc1012c567de70bc3deb5ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3bf8e5f81ae7bf35ff34039fa1e81c9fd4a406b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261342"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324544"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Implementatie fase van de team data Science proces levenscyclus
 
@@ -39,7 +39,7 @@ Implementeer modellen met een gegevens pijplijn naar een productie-of productie 
 ## <a name="how-to-do-it"></a>Hoe u dit doet
 De belangrijkste taak die in deze fase wordt behandeld:
 
-**Operationeel maken het model**: Implementeer het model en de pijp lijn op een productie-of productie omgeving voor het verbruik van toepassingen.
+**Operationeel maken het model** : Implementeer het model en de pijp lijn op een productie-of productie omgeving voor het verbruik van toepassingen.
 
 ### <a name="operationalize-a-model"></a>Een model operationeel maken
 Nadat u een set modellen hebt die goed pres teren, kunt u deze operationeel maken voor andere toepassingen die u wilt gebruiken. Afhankelijk van de bedrijfs vereisten worden de voor spellingen in realtime of op basis van een batch gemaakt. Als u modellen wilt implementeren, kunt u ze beschikbaar maken met een open API-interface. Met de-interface kan het model eenvoudig worden gebruikt vanuit verschillende toepassingen, zoals:
@@ -71,4 +71,4 @@ Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
 We bieden volledige instructies voor het demonstreren van alle stappen in het proces voor specifieke scenario's. Het artikel [voorbeeld](walkthroughs.md) scenario's bevat een lijst met de scenario's met koppelingen en miniaturen. In de scenario's wordt uitgelegd hoe u Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn kunt combi neren om een intelligente toepassing te maken. 
 
-Zie [de TDSP gebruiken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.
+Zie [de TDSP gebruiken met Azure machine learning](./index.yml)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.

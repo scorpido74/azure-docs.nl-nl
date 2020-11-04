@@ -1,6 +1,6 @@
 ---
 title: Verbinden met SSMS
-description: Gebruik SQL Server Management Studio (SSMS) om verbinding te maken met Azure Synapse Analytics en om deze op te vragen.
+description: Gebruik SQL Server Management Studio (SSMS) om verbinding te maken met en een query uit te zoeken naar een toegewezen SQL-groep in azure Synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 772e4253244f5e13a60f155549d5f5513695e5fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2fab8f02f31897a2e3d38094b9bd365f8e921e9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200746"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325321"
 ---
-# <a name="connect-to-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Verbinding maken met Azure Synapse Analytics met SQL Server Management Studio (SSMS)
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Verbinding maken met een toegewezen SQL-groep in azure Synapse Analytics met SQL Server Management Studio (SSMS)
 
 > [!div class="op_single_selector"]
 >
@@ -34,14 +34,14 @@ Gebruik SQL Server Management Studio (SSMS) om verbinding te maken met en een qu
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een bestaande SQL-groep. Zie [Een SQL-pool maken](create-data-warehouse-portal.md) voor informatie over het maken van een datawarehouse.
+* Een bestaande exclusieve SQL-groep. Zie [een toegewezen SQL-groep maken](create-data-warehouse-portal.md)om er een te maken.
 * SQL Server Management Studio (SSMS) is geïnstalleerd. [Down load SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gratis als u dit nog niet hebt gedaan.
-* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met de SQL-groep](sql-data-warehouse-connect-overview.md)om deze informatie te vinden.
+* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met een toegewezen SQL-groep](sql-data-warehouse-connect-overview.md)om deze informatie te vinden.
 
-## <a name="1-connect-to-your-sql-pool"></a>1. Maak verbinding met de SQL-groep
+## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. Maak verbinding met uw toegewezen SQL-groep
 
 1. Open SQL Server Management Studio.
-2. Open objectverkenner door **bestand**  >  **Connect objectverkenner**te selecteren.
+2. Open objectverkenner door **bestand**  >  **Connect objectverkenner** te selecteren.
 
     ![SQL Server-objectverkenner](./media/sql-data-warehouse-query-ssms/connect-object-explorer.png)
 3. Vul de velden in het venster Connect to Server (Verbinding maken met server) in.
@@ -79,4 +79,4 @@ Nu er een verbinding met uw database is ingesteld, gaat u een query schrijven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u weet hoe u verbinding maakt en een query uitvoert, kunt u proberen [de gegevens te visualiseren met Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md). Zie [verifiëren bij SQL-groep](sql-data-warehouse-authentication.md)om uw omgeving te configureren voor Azure Active Directory-verificatie.
+Nu u weet hoe u verbinding maakt en een query uitvoert, kunt u proberen [de gegevens te visualiseren met Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md). Zie [verifiëren voor exclusieve SQL-groep](sql-data-warehouse-authentication.md)om uw omgeving te configureren voor Azure Active Directory-verificatie.

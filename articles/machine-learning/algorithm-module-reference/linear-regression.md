@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 51a9b0ec0fc19b6b6efa0453d698a5a978dacabc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 809b1be4f9f12e1963ff5caeaacd109c84db154f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907837"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323660"
 ---
 # <a name="linear-regression-module"></a>Lineaire regressie module
 In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
@@ -31,7 +31,7 @@ Azure Machine Learning ondersteunt diverse regressie modellen, naast lineaire re
 
 + Het klassieke regressie probleem omvat één onafhankelijke variabele en een afhankelijke variabele. Dit heet *eenvoudige regressie*.  Deze module biedt ondersteuning voor eenvoudige regressie.
 
-+ *Meerdere lineaire regressie* omvat twee of meer onafhankelijke variabelen die bijdragen aan één afhankelijke variabele. Problemen waarbij meerdere invoer wordt gebruikt om een enkele numerieke uitkomst te voors pellen, ook wel *multidimensionale lineaire regressie*genoemd.
++ *Meerdere lineaire regressie* omvat twee of meer onafhankelijke variabelen die bijdragen aan één afhankelijke variabele. Problemen waarbij meerdere invoer wordt gebruikt om een enkele numerieke uitkomst te voors pellen, ook wel *multidimensionale lineaire regressie* genoemd.
 
     Deze problemen kunnen worden opgelost met de module **Linear Regression** , evenals de meeste andere regressie modules.
 
@@ -41,7 +41,7 @@ Azure Machine Learning ondersteunt diverse regressie modellen, naast lineaire re
 
 Voor jaren statistici zijn steeds meer geavanceerde methoden ontwikkeld voor regressie. Dit geldt ook voor lineaire regressie. Deze module ondersteunt twee methoden om een fout te meten en te voldoen aan de regressie regel: normale, minimale kwadraten methode en daal van kleur overgang.
 
-- **Gradient Daal** is een methode die de fout waarde bij elke stap van het model trainings proces minimaliseert. Er zijn veel variaties in Daal en de optimalisatie voor verschillende leer problemen is uitgebreid bestudeerd. Als u deze optie voor de **oplossings methode**kiest, kunt u een aantal para meters instellen om de stap grootte, het leer tempo, enzovoort te bepalen. Deze optie biedt ook ondersteuning voor het gebruik van een geïntegreerde parameter opruiming.
+- **Gradient Daal** is een methode die de fout waarde bij elke stap van het model trainings proces minimaliseert. Er zijn veel variaties in Daal en de optimalisatie voor verschillende leer problemen is uitgebreid bestudeerd. Als u deze optie voor de **oplossings methode** kiest, kunt u een aantal para meters instellen om de stap grootte, het leer tempo, enzovoort te bepalen. Deze optie biedt ook ondersteuning voor het gebruik van een geïntegreerde parameter opruiming.
 
 - **Normale minimale kwadraten** is een van de meest gebruikte technieken in lineaire regressie. Bijvoorbeeld, minste kwadraten is de methode die wordt gebruikt in Analysis ToolPak voor micro soft Excel.
 
@@ -63,19 +63,19 @@ Deze module ondersteunt twee methoden voor het aanpassen van een regressie model
 
 1. Voeg de module **Linear regressie model** toe aan uw pijp lijn in de ontwerp functie.
 
-    U kunt deze module vinden in de categorie **machine learning** . Vouw **Initialiseer model**uit, vouw **regressie**uit en sleep de module **Linear regressie model** naar uw pijp lijn.
+    U kunt deze module vinden in de categorie **machine learning** . Vouw **Initialiseer model** uit, vouw **regressie** uit en sleep de module **Linear regressie model** naar uw pijp lijn.
 
 2. Selecteer in het deel venster **Eigenschappen** in de vervolg keuzelijst **oplossings methode** de optie **normale kleinste kwadraten**. Met deze optie geeft u de reken methode op die wordt gebruikt om de regressie regel te vinden.
 
-3. In **L2-regularisatie gewicht**typt u de waarde die moet worden gebruikt als gewicht voor de L2-regularisatie. U kunt het beste een andere waarde dan nul gebruiken om te voor komen dat deze wordt overpast.
+3. In **L2-regularisatie gewicht** typt u de waarde die moet worden gebruikt als gewicht voor de L2-regularisatie. U kunt het beste een andere waarde dan nul gebruiken om te voor komen dat deze wordt overpast.
 
-     Zie dit artikel: [L1 en L2 regularisatie voor machine learning voor](https://msdn.microsoft.com/magazine/dn904675.aspx) meer informatie over hoe regularisatie van invloed is op model fittings.
+     Zie dit artikel: [L1 en L2 regularisatie voor machine learning voor](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning) meer informatie over hoe regularisatie van invloed is op model fittings.
 
-4. Selecteer de optie, **Voeg interceptie term**toe als u de term voor het snij punt wilt weer geven.
+4. Selecteer de optie, **Voeg interceptie term** toe als u de term voor het snij punt wilt weer geven.
 
     Schakel deze optie uit als u de regressie formule niet hoeft te controleren.
 
-5. Voor **wille keurig getal Seed**kunt u optioneel een waarde typen om de wille keurige generator te seeden die door het model wordt gebruikt.
+5. Voor **wille keurig getal Seed** kunt u optioneel een waarde typen om de wille keurige generator te seeden die door het model wordt gebruikt.
 
     Het gebruik van een Seed-waarde is handig als u dezelfde resultaten wilt behouden in verschillende uitvoeringen van dezelfde pijp lijn. Anders wordt de standaard instelling gebruikt voor het gebruik van een waarde uit de systeem klok.
 
@@ -96,42 +96,42 @@ Nadat de training is voltooid:
 
 1. Voeg de module **Linear regressie model** toe aan uw pijp lijn in de ontwerp functie.
 
-    U kunt deze module vinden in de categorie **machine learning** . Vouw **initialiseren model**uit, vouw **regressie**uit en sleep de module **Linear regressie model** naar uw pijp lijn
+    U kunt deze module vinden in de categorie **machine learning** . Vouw **initialiseren model** uit, vouw **regressie** uit en sleep de module **Linear regressie model** naar uw pijp lijn
 
 2. Kies in het deel venster **Eigenschappen** in de vervolg keuzelijst **oplossings methode** de optie **online verloop Daal** als de reken methode die wordt gebruikt om de regressie lijn te vinden.
 
-3. Voor de **modus trainer maken**geeft u aan of u het model wilt trainen met een vooraf gedefinieerde set para meters of als u het model wilt optimaliseren met behulp van een parameter sweep.
+3. Voor de **modus trainer maken** geeft u aan of u het model wilt trainen met een vooraf gedefinieerde set para meters of als u het model wilt optimaliseren met behulp van een parameter sweep.
 
-    + **Eén para meter**: als u weet hoe u het lineaire regressie netwerk wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
+    + **Eén para meter** : als u weet hoe u het lineaire regressie netwerk wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
     
-    + **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.  
+    + **Parameter bereik** : Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.  
 
    
-4. Voor het **leer tempo**geeft u het eerste leer tempo op voor de stochastische Daal Optimizer van een kleur overgang.
+4. Voor het **leer tempo** geeft u het eerste leer tempo op voor de stochastische Daal Optimizer van een kleur overgang.
 
-5. Voor het **aantal trainings-epochen**typt u een waarde die aangeeft hoe vaak de algoritme voor beelden moet herhalen. Voor gegevens sets met een klein aantal voor beelden moet dit aantal groot zijn om convergentie te bereiken.
+5. Voor het **aantal trainings-epochen** typt u een waarde die aangeeft hoe vaak de algoritme voor beelden moet herhalen. Voor gegevens sets met een klein aantal voor beelden moet dit aantal groot zijn om convergentie te bereiken.
 
-6. **Functies normaliseren**: als u de numerieke gegevens die worden gebruikt voor het trainen van het model al hebt genormaliseerd, kunt u deze optie deselecteren. Standaard normaleert de module alle numerieke invoer naar een bereik tussen 0 en 1.
+6. **Functies normaliseren** : als u de numerieke gegevens die worden gebruikt voor het trainen van het model al hebt genormaliseerd, kunt u deze optie deselecteren. Standaard normaleert de module alle numerieke invoer naar een bereik tussen 0 en 1.
 
     > [!NOTE]
     > 
     > Vergeet niet om dezelfde normalisatie methode toe te passen op nieuwe gegevens die worden gebruikt voor een score.
 
-7. In **L2-regularisatie gewicht**typt u de waarde die moet worden gebruikt als gewicht voor de L2-regularisatie. U kunt het beste een andere waarde dan nul gebruiken om te voor komen dat deze wordt overpast.
+7. In **L2-regularisatie gewicht** typt u de waarde die moet worden gebruikt als gewicht voor de L2-regularisatie. U kunt het beste een andere waarde dan nul gebruiken om te voor komen dat deze wordt overpast.
 
-    Zie dit artikel: [L1 en L2 regularisatie voor machine learning voor](https://msdn.microsoft.com/magazine/dn904675.aspx) meer informatie over hoe regularisatie van invloed is op model fittings.
+    Zie dit artikel: [L1 en L2 regularisatie voor machine learning voor](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning) meer informatie over hoe regularisatie van invloed is op model fittings.
 
 
-9. Selecteer de optie, **Verminder het leer**tempo als u wilt dat het leer tempo afneemt als de voortgang van herhalingen.  
+9. Selecteer de optie, **Verminder het leer** tempo als u wilt dat het leer tempo afneemt als de voortgang van herhalingen.  
 
-10. Voor **wille keurig getal Seed**kunt u optioneel een waarde typen om de wille keurige generator te seeden die door het model wordt gebruikt. Het gebruik van een Seed-waarde is handig als u dezelfde resultaten wilt behouden in verschillende uitvoeringen van dezelfde pijp lijn.
+10. Voor **wille keurig getal Seed** kunt u optioneel een waarde typen om de wille keurige generator te seeden die door het model wordt gebruikt. Het gebruik van een Seed-waarde is handig als u dezelfde resultaten wilt behouden in verschillende uitvoeringen van dezelfde pijp lijn.
 
 
 12. Het model trainen:
 
-    + Als u de **modus trainer maken** instelt op **één para meter**, verbindt u een gecodeerde gegevensset en de module [Train model](train-model.md) .  
+    + Als u de **modus trainer maken** instelt op **één para meter** , verbindt u een gecodeerde gegevensset en de module [Train model](train-model.md) .  
   
-    + Als u de **modus trainer maken** instelt op het **parameter bereik**, verbindt u een gecodeerde gegevensset en traint u het model met behulp van [Hyper parameters model](tune-model-hyperparameters.md).  
+    + Als u de **modus trainer maken** instelt op het **parameter bereik** , verbindt u een gecodeerde gegevensset en traint u het model met behulp van [Hyper parameters model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 
@@ -152,4 +152,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

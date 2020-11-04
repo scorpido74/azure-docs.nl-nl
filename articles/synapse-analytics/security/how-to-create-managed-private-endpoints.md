@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065475"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323165"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Een beheerd persoonlijk eind punt maken voor uw gegevens bron (preview-versie)
 
@@ -21,12 +21,11 @@ In dit artikel leert u hoe u een beheerd persoonlijk eind punt maakt voor uw geg
 
 ## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>Stap 1: Open de Azure Synapse-werk ruimte in Azure Portal
 
-U kunt een beheerd privé-eind punt maken voor uw gegevens bron vanuit Azure Synapse Studio. Selecteer het tabblad **overzicht** in azure Portal en selecteer **Synapse Studio starten**.
-![Azure Synapse Studio starten](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-1.png)
+U kunt een beheerd privé-eind punt maken voor uw gegevens bron vanuit Azure Synapse Studio. Selecteer het tabblad **overzicht** in azure Portal en selecteer **openen** op de kaart open Synapse Studio in de sectie aan de slag.
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>Stap 2: Navigeer naar het tabblad beheerde virtuele netwerken in Synapse Studio
 
-Selecteer in azure Synapse Studio het tabblad **beheren** vanuit het navigatie venster aan de linkerkant. Selecteer **beheerde virtuele netwerken** en selecteer vervolgens **+ Nieuw**.
+Selecteer in azure Synapse Studio het tabblad **beheren** vanuit het navigatie venster aan de linkerkant. Selecteer **beheerde persoonlijke eind punten** en selecteer **+ Nieuw**.
 ![Een nieuw beheerd persoonlijk eind punt maken](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>Stap 3: het type gegevens bron selecteren
@@ -36,14 +35,14 @@ Selecteer het type gegevens bron. In dit geval is de doel gegevens bron een ADLS
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>Stap 4: Voer informatie over de gegevens bron in
 
-Voer in het volgende venster informatie over de gegevens bron in. In dit voor beeld maken we een beheerd persoonlijk eind punt met een ADLS Gen2-account. Voer een **naam** in voor het beheerde persoonlijke eind punt. Geef een **Azure-abonnement** en een naam voor het **opslag account**op. Selecteer **Maken**.
+Voer in het volgende venster informatie over de gegevens bron in. In dit voor beeld maken we een beheerd persoonlijk eind punt met een ADLS Gen2-account. Voer een **naam** in voor het beheerde persoonlijke eind punt. Geef een **Azure-abonnement** en een naam voor het **opslag account** op. Selecteer **Maken**.
 ![Details van doel gegevens bron opgeven](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>Stap 5: controleren of uw beheerde persoonlijke eind punt is gemaakt
 
-Nadat de aanvraag is verzonden, ziet u de status. Controleer de *inrichtings status*om te controleren of uw beheerde persoonlijke eind punt is gemaakt. Mogelijk moet u 1 minuut wachten en vervolgens **vernieuwen** selecteren om de inrichtings status bij te werken. U kunt zien dat het beheerde persoonlijke eind punt naar het ADLS Gen2-account is gemaakt.
+Nadat de aanvraag is verzonden, ziet u de status. Controleer de *inrichtings status* om te controleren of uw beheerde persoonlijke eind punt is gemaakt. Mogelijk moet u 1 minuut wachten en vervolgens **vernieuwen** selecteren om de inrichtings status bij te werken. U kunt zien dat het beheerde persoonlijke eind punt naar het ADLS Gen2-account is gemaakt.
 
-U kunt ook zien dat de *goedkeurings status* *in behandeling*is. De eigenaar van de doel resource kan de verbindings aanvraag van het particuliere eind punt goed keuren of weigeren. Als de eigenaar de verbindings aanvraag van het particuliere eind punt goedkeurt, wordt een privé-koppeling tot stand gebracht. Als u deze weigert, wordt er geen persoonlijke koppeling tot stand gebracht.
+U kunt ook zien dat de *goedkeurings status* *in behandeling* is. De eigenaar van de doel resource kan de verbindings aanvraag van het particuliere eind punt goed keuren of weigeren. Als de eigenaar de verbindings aanvraag van het particuliere eind punt goedkeurt, wordt een privé-koppeling tot stand gebracht. Als u deze weigert, wordt er geen persoonlijke koppeling tot stand gebracht.
 ![Status van de aanvraag voor het maken van beheerde privé-eind punten](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: c92351131a60b571a102b85f7d11b79ab29d939e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883118"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322259"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Wat is Azure Machine Learning Designer? 
 
@@ -40,7 +40,7 @@ De Designer biedt u een visueel canvas om machine learning modellen te bouwen, t
 + [Gegevens sets](#datasets) en [modules](#module) slepen en neerzetten op het canvas.
 + Verbind de modules om een [pijp lijn concept](#pipeline-draft)te maken.
 + Een [pijplijn uitvoering](#pipeline-run) verzenden met behulp van de reken resources in uw Azure machine learning-werk ruimte.
-+ Converteer uw **trainings pijplijnen** om **pijp lijnen**af te leiden.
++ Converteer uw **trainings pijplijnen** om **pijp lijnen** af te leiden.
 + [Publiceer](#publish) uw pijp lijnen naar een rest **pijplijn-eind punt** om een nieuwe pijp lijn te verzenden die wordt uitgevoerd met verschillende para meters en gegevens sets.
     + Publiceer een **trainings pijplijn** om één pijp lijn te gebruiken voor het trainen van meerdere modellen tijdens het wijzigen van para meters en gegevens sets.
     + Publiceer een batch-uitstel **pijp lijn** om voor spellingen te maken op nieuwe gegevens met behulp van een eerder getraind model.
@@ -100,7 +100,7 @@ Reken doelen zijn gekoppeld aan uw [Azure machine learning-werk ruimte](concept-
 
 ## <a name="deploy"></a>Implementeren
 
-Als u real-time-interferentie wilt uitvoeren, moet u een pijp lijn als een **real-time-eind punt**implementeren. Het real-time eind punt maakt een interface tussen een externe toepassing en uw score model. Een aanroep van een real-time-eind punt retourneert Voorspellings resultaten voor de toepassing in realtime. Als u een real-time eind punt wilt aanroepen, geeft u de API-sleutel door die is gemaakt tijdens het implementeren van het eind punt. Het eind punt is gebaseerd op REST, een populaire architectuur keuze voor webprogrammeer projecten.
+Als u real-time-interferentie wilt uitvoeren, moet u een pijp lijn als een **real-time-eind punt** implementeren. Het real-time eind punt maakt een interface tussen een externe toepassing en uw score model. Een aanroep van een real-time-eind punt retourneert Voorspellings resultaten voor de toepassing in realtime. Als u een real-time eind punt wilt aanroepen, geeft u de API-sleutel door die is gemaakt tijdens het implementeren van het eind punt. Het eind punt is gebaseerd op REST, een populaire architectuur keuze voor webprogrammeer projecten.
 
 Realtime-eind punten moeten worden geïmplementeerd in een Azure Kubernetes-service cluster.
 
@@ -114,7 +114,7 @@ Gepubliceerde pijp lijnen zijn flexibel, ze kunnen worden gebruikt om modellen t
 
 Een gepubliceerde pijp lijn wordt uitgevoerd op de reken resources die u in de pijp lijn concept voor elke module definieert.
 
-De Designer maakt hetzelfde [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py&preserve-view=true) -object als de SDK.
+De Designer maakt hetzelfde [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?preserve-view=true&view=azure-ml-py) -object als de SDK.
 
 ## <a name="next-steps"></a>Volgende stappen
 

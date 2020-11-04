@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791321"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324996"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuele netwerk service-eind punten en-regels gebruiken voor servers in Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -83,7 +83,7 @@ Voor Azure SQL Database heeft de functie regels voor virtuele netwerken de volge
 
 - IP-adresbereiken op de firewall zijn van toepassing op de volgende netwerk items, maar de regels voor het virtuele netwerk doen dit niet:
   - [Virtueel particulier netwerk (VPN) van site-naar-site (S2S)][vpn-gateway-indexmd-608y]
-  - On-premises via [ExpressRoute][expressroute-indexmd-744v]
+  - On-premises via [ExpressRoute](../../expressroute/index.yml)
 
 ### <a name="considerations-when-using-service-endpoints"></a>Overwegingen bij het gebruik van service-eind punten
 
@@ -114,7 +114,7 @@ Poly base en de instructie COPY worden meestal gebruikt voor het laden van gegev
 
 - Installeer Azure PowerShell met behulp van deze [gids](/powershell/azure/install-az-ps).
 - Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u eerst een upgrade uitvoeren naar de v2 voor algemeen gebruik met behulp van deze [gids](../../storage/common/storage-account-upgrade.md).
-- U moet **vertrouwde Microsoft-services toegang geven tot dit opslagaccount** ingeschakeld onder het instellingenmenu van uw Azure Storage-account **Firewalls en virtuele netwerken** . Als u deze configuratie inschakelt, kan poly base en de instructie COPY verbinding maken met het opslag account met behulp van sterke verificatie waarbij netwerk verkeer op de Azure-backbone blijft. Raadpleeg deze [gids](../../storage/common/storage-network-security.md#exceptions) voor meer informatie.
+- U moet **vertrouwde Microsoft-services toegang geven tot dit opslagaccount** ingeschakeld onder het instellingenmenu van uw Azure Storage-account **Firewalls en virtuele netwerken**. Als u deze configuratie inschakelt, kan poly base en de instructie COPY verbinding maken met het opslag account met behulp van sterke verificatie waarbij netwerk verkeer op de Azure-backbone blijft. Raadpleeg deze [gids](../../storage/common/storage-network-security.md#exceptions) voor meer informatie.
 
 > [!IMPORTANT]
 > De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.
@@ -136,7 +136,7 @@ Poly base en de instructie COPY worden meestal gebruikt voor het laden van gegev
    > - Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar de v2** voor algemeen gebruik met behulp van deze [gids](../../storage/common/storage-account-upgrade.md).
    > - Raadpleeg deze [hand leiding](../../storage/blobs/data-lake-storage-known-issues.md)voor bekende problemen met Azure data Lake Storage Gen2.
 
-1. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen** . Wijs de Azure-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor uw Azure Synapse Analytics, die u bij Azure Active Directory (Aad) hebt geregistreerd, zoals in stap #1.
+1. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs de Azure-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor uw Azure Synapse Analytics, die u bij Azure Active Directory (Aad) hebt geregistreerd, zoals in stap #1.
 
    > [!NOTE]
    > Deze stap kan alleen worden uitgevoerd door leden met de bevoegdheid eigenaar van het opslag account. Raadpleeg deze [gids](../../role-based-access-control/built-in-roles.md) voor verschillende ingebouwde Azure-rollen.
@@ -210,7 +210,7 @@ Verbindings fout 40914 is gekoppeld aan *regels voor virtuele netwerken* , zoals
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>De portal kan een regel voor een virtueel netwerk maken
 
-In deze sectie ziet u hoe u de [Azure Portal][http-azure-portal-link-ref-477t] kunt gebruiken om een *regel voor een virtueel netwerk* te maken in uw data base in Azure SQL database. De regel vertelt uw data base om communicatie te accepteren van een bepaald subnet dat is gelabeld als een *Virtual Network Service-eind punt* .
+In deze sectie ziet u hoe u de [Azure Portal][http-azure-portal-link-ref-477t] kunt gebruiken om een *regel voor een virtueel netwerk* te maken in uw data base in Azure SQL database. De regel vertelt uw data base om communicatie te accepteren van een bepaald subnet dat is gelabeld als een *Virtual Network Service-eind punt*.
 
 > [!NOTE]
 > Als u van plan bent een service-eind punt toe te voegen aan de VNet-firewall regels van uw server, moet u eerst controleren of service-eind punten zijn ingeschakeld voor het subnet.
@@ -231,7 +231,7 @@ Intern, de Power shell-cmdlets voor SQL VNet-acties roepen REST-Api's. U kunt de
 
 U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtual Network service-eindpunt *type* dat relevant is voor Azure SQL database.
 
-- De relevante naam van het eindpunt type is **micro soft. SQL** .
+- De relevante naam van het eindpunt type is **micro soft. SQL**.
 - Zie [controleren of uw subnet een eind punt is][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]als uw subnet mogelijk niet is gelabeld met de type naam.
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
@@ -240,7 +240,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
 1. Meld u aan bij de [Azure-portal][http-azure-portal-link-ref-477t].
 
-2. Zoek en selecteer **SQL-servers** en selecteer vervolgens uw server. Onder **beveiliging** selecteert u **firewalls en virtuele netwerken** .
+2. Zoek en selecteer **SQL-servers** en selecteer vervolgens uw server. Onder **beveiliging** selecteert u **firewalls en virtuele netwerken**.
 
 3. Stel het besturings element **toegang tot Azure-Services toestaan** in op uit.
 
@@ -255,7 +255,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
     > [!TIP]
     > U moet het juiste **adres voorvoegsel** voor uw subnet toevoegen. U kunt de waarde vinden in de portal.
-    > Ga naar alle **resources** &gt; **alle typen** &gt; **virtuele netwerken** . Met het filter worden uw virtuele netwerken weer gegeven. Klik op uw virtuele netwerk en klik vervolgens op **subnetten** . De kolom **adres bereik** bevat het adres voorvoegsel dat u nodig hebt.
+    > Ga naar alle **resources** &gt; **alle typen** &gt; **virtuele netwerken**. Met het filter worden uw virtuele netwerken weer gegeven. Klik op uw virtuele netwerk en klik vervolgens op **subnetten**. De kolom **adres bereik** bevat het adres voorvoegsel dat u nodig hebt.
 
     ![Vul velden in voor nieuwe regel.][image-portal-firewall-create-update-vnet-rule-20-png]
 

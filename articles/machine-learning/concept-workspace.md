@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495715"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324793"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werkruimte?
 
 De werk ruimte is de resource op het hoogste niveau voor Azure Machine Learning, waardoor u een centrale locatie kunt gebruiken met alle artefacten die u maakt wanneer u Azure Machine Learning gebruikt.  De werk ruimte houdt een geschiedenis bij van alle uitvoeringen van de training, met inbegrip van Logboeken, metrische gegevens, uitvoer en een moment opname van uw scripts. U gebruikt deze informatie om te bepalen welke trainings uitvoering het beste model produceert.  
 
@@ -52,9 +52,9 @@ U kunt op de volgende manieren met uw werk ruimte werken:
 + Op het web:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning-ontwerpprogramma](concept-designer.md) 
-+ In een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
++ In een python-omgeving met de [Azure machine learning SDK voor python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 + In elke R-omgeving met de [Azure machine learning SDK voor R (preview)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
-+ Op de opdracht regel met behulp van de Azure Machine Learning [cli-extensie](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
++ Op de opdracht regel met behulp van de Azure Machine Learning [cli-extensie](./reference-azure-machine-learning-cli.md)
 + [Azure Machine Learning VS code-uitbrei ding](how-to-manage-resources-vscode.md#workspaces)
 
 
@@ -103,7 +103,7 @@ Wanneer u een nieuwe werk ruimte maakt, worden er automatisch verschillende Azur
 + [Azure Storage account](https://azure.microsoft.com/services/storage/): wordt gebruikt als de standaard gegevens opslag voor de werk ruimte.  Jupyter-notebooks die worden gebruikt met uw Azure Machine Learning Reken instanties worden hier ook opgeslagen. 
   
   > [!IMPORTANT]
-  > Het opslag account is standaard een v1-account voor algemeen gebruik. U kunt [deze upgrade uitvoeren naar de versie v2 voor algemeen gebruik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) nadat de werk ruimte is gemaakt. Schakel de hiërarchische naam ruimte op het opslag account niet in na de upgrade naar de versie van het algemene doel v2.
+  > Het opslag account is standaard een v1-account voor algemeen gebruik. U kunt [deze upgrade uitvoeren naar de versie v2 voor algemeen gebruik](../storage/common/storage-account-upgrade.md) nadat de werk ruimte is gemaakt. Schakel de hiërarchische naam ruimte op het opslag account niet in na de upgrade naar de versie van het algemene doel v2.
 
   Als u een bestaand Azure Storage account wilt gebruiken, kan het geen Premium-account zijn (Premium_LRS en Premium_GRS). Het kan ook geen hiërarchische naam ruimte hebben (gebruikt met Azure Data Lake Storage Gen2). Geen enkele Premium-opslag of hiërarchische naam ruimten worden ondersteund met het _standaard_ opslag account van de werk ruimte. U kunt Premium-opslag of een hiërarchische naam ruimte gebruiken met _niet-standaard_ opslag accounts.
   
@@ -135,5 +135,5 @@ Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 + [Zelf studie: aan de slag met Azure Machine Learning in uw ontwikkel omgeving](tutorial-1st-experiment-sdk-setup-local.md)
 + [Zelf studie: aan de slag met het maken van uw eerste ML-experiment op een reken instantie](tutorial-1st-experiment-sdk-setup.md)
 + [Zelf studie: aan de slag met Azure Machine Learning met de R SDK](tutorial-1st-r-experiment.md)
-+ [Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md) 
++ [Zelfstudie: Uw eerste classificatiemodel maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md) 
 + [Zelfstudie: Autoprijzen voorspellen met de ontwerpfunctie](tutorial-designer-automobile-price-train-score.md)

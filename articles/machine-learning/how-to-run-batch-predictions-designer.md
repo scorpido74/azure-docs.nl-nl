@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f070cfc1fd9b4326c5a80ce31f6263aadbe8e8bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883089"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325442"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch voorspellingen uitvoeren met behulp van Azure Machine Learning Designer
 
@@ -29,7 +29,7 @@ In deze procedure leert u de volgende taken uit te voeren:
 > * Een pijplijn eindpunt gebruiken
 > * Eindpunt versies beheren
 
-Zie voor meer informatie over het instellen van batch Score Services met behulp van de SDK de bijbehorende [How-to](how-to-run-batch-predictions.md).
+Zie voor meer informatie over het instellen van batch Score Services met behulp van de SDK de bijbehorende [How-to](./tutorial-pipeline-batch-scoring-classification.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,7 +51,7 @@ Uw trainings pijplijn moet ten minste één keer worden uitgevoerd om een inleid
 
 Nu de training-pijp lijn is uitgevoerd, kunt u een batch-uitstel pijp lijn maken.
 
-1. Selecteer bij **verzenden**de optie nieuwe vervolg keuzelijst voor het maken van een **Inleiding**.
+1. Selecteer bij **verzenden** de optie nieuwe vervolg keuzelijst voor het maken van een **Inleiding**.
 
 1. Selecteer de **pijp lijn voor batch-deinterferentie**.
 
@@ -80,7 +80,7 @@ Nu bent u klaar om de pijp lijn voor de deinterferentie te implementeren. Hierme
 
 1. Selecteer de knop **Publiceren**.
 
-1. Vouw in het dialoog venster dat wordt weer gegeven de vervolg keuzelijst voor **PipelineEndpoint**uit en selecteer **nieuwe PipelineEndpoint**.
+1. Vouw in het dialoog venster dat wordt weer gegeven de vervolg keuzelijst voor **PipelineEndpoint** uit en selecteer **nieuwe PipelineEndpoint**.
 
 1. Geef een naam en een optionele beschrijving voor het eind punt op.
 

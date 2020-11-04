@@ -1,6 +1,6 @@
 ---
-title: Aanbevolen procedures voor SQL-groepen
-description: Aanbevelingen en aanbevolen procedures die u moet weten tijdens het werken met SQL-groepen.
+title: Aanbevolen procedures voor toegewezen SQL-groepen
+description: Aanbevelingen en aanbevolen procedures die u moet weten tijdens het werken met toegewezen SQL-groepen.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,20 +10,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03a536e16a6ba12611ed704b404c1bd411f0c4c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85958418"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322706"
 ---
-# <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL-groepen in azure Synapse Analytics
+# <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Aanbevolen procedures voor toegewezen SQL-groepen in azure Synapse Analytics
 
-Dit artikel bevat een aantal aanbevolen procedures om u te helpen optimale prestaties voor SQL-groepen in azure Synapse Analytics te krijgen. Hieronder vindt u basis richtlijnen en belang rijke gebieden waarop u zich kunt richten tijdens het bouwen van uw oplossing. In elke sectie maakt u kennis met een concept en verwijst u naar meer gedetailleerde artikelen over het concept.
+In dit artikel vindt u een aantal aanbevolen procedures om u te helpen bij het bezorgen van optimale prestaties voor specifieke SQL-groepen in azure Synapse Analytics. Hieronder vindt u basis richtlijnen en belang rijke gebieden waarop u zich kunt richten tijdens het bouwen van uw oplossing. In elke sectie maakt u kennis met een concept en verwijst u naar meer gedetailleerde artikelen over het concept.
 
-## <a name="sql-pools-loading"></a>SQL-groepen laden
+## <a name="dedicated-sql-pools-loading"></a>Gereserveerde SQL-groepen laden
 
-Zie [richt lijnen voor het laden van gegevens](data-loading-best-practices.md)voor instructies voor het laden van SQL-groepen.
+Raadpleeg de [richt lijnen voor het laden van gegevens](data-loading-best-practices.md)voor toegewezen SQL-groepen.
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Kosten verlagen met onderbreken en schalen
 
@@ -31,7 +31,7 @@ Zie [Compute beheren](../sql-data-warehouse/sql-data-warehouse-manage-compute-ov
 
 ## <a name="maintain-statistics"></a>Statistieken bijhouden
 
-Terwijl SQL Server automatisch statistieken voor kolommen detecteert en maakt of bijwerkt, vereisen SQL-Pools hand matig onderhoud van statistieken. U wilt uw statistieken onderhouden om ervoor te zorgen dat de SQL-groeps plannen worden geoptimaliseerd.  De plannen die door de optimalisatie worden gemaakt, zijn maar zo goed als de beschikbare statistieken.
+Terwijl SQL Server automatisch statistieken voor kolommen detecteert en maakt of bijwerkt, moeten toegewezen SQL-groepen hand matig onderhoud van statistieken vereisen. U wilt uw statistieken onderhouden om ervoor te zorgen dat de SQL-groeps plannen worden geoptimaliseerd.  De plannen die door de optimalisatie worden gemaakt, zijn maar zo goed als de beschikbare statistieken.
 
 > [!TIP]
 > Voorbeeldstatistieken maken voor elke kolom is een gemakkelijke manier om met statistieken aan de slag te gaan.  
@@ -40,13 +40,13 @@ Het is net zo belangrijk om uw statistieken bij te werken omdat er significante 
 
 Als u de onderhouds tijd voor de statistieken wilt verkorten, moet u selectief weten welke kolommen statistieken hebben of het meest frequent bijwerken. Stel dat u datum kolommen wilt bijwerken waar nieuwe waarden dagelijks kunnen worden toegevoegd. Focus op het hebben van statistieken voor kolommen die deel uitmaken van samen voegingen, kolommen die worden gebruikt in de WHERE-component en kolommen in GROUP BY.
 
-Meer informatie over statistieken vindt u in de artikelen [tabel statistieken beheren](develop-tables-statistics.md), [Statistieken maken](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)en [Statistieken bijwerken](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Meer informatie over statistieken vindt u in de artikelen [tabel statistieken beheren](develop-tables-statistics.md), [Statistieken maken](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)en [Statistieken bijwerken](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 
 ## <a name="group-insert-statements-into-batches"></a>INSERT-instructie in batches groeperen
 
 Een eenmalige belasting naar een kleine tabel met een INSERT-instructie zoals `INSERT INTO MyLookup VALUES (1, 'Type 1')` mogelijk de beste benadering is afhankelijk van uw behoeften. Als u echter duizenden of miljoenen rijen per dag moet laden, is het waarschijnlijk dat Singleton-INVOEG bladen niet optimaal zijn.
 
-Een manier om dit probleem op te lossen is het ontwikkelen van een proces dat naar een bestand schrijft en vervolgens een ander proces om dit bestand periodiek te laden. Raadpleeg het artikel [Insert](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
+Een manier om dit probleem op te lossen is het ontwikkelen van een proces dat naar een bestand schrijft en vervolgens een ander proces om dit bestand periodiek te laden. Raadpleeg het artikel [Insert](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor meer informatie.
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>PolyBase gebruiken om snel gegevens te laden en te exporteren
 
@@ -64,12 +64,12 @@ Als u de door voer wilt maximaliseren bij het gebruik van gzip-tekst bestanden, 
 - [De Azure SQL-groep voor het laden van patronen en strategieën](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Gegevens laden met Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Gegevens verplaatsen met Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 - [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ## <a name="load-then-query-external-tables"></a>Externe tabellen laden en vervolgens query’s uitvoeren
 
-Poly Base is niet optimaal voor query's. Poly base-tabellen voor SQL-Pools ondersteunen momenteel alleen Azure Blob-bestanden en Azure Data Lake opslag. Er zijn geen reken resources die deze bestanden kunnen herstellen. Als gevolg hiervan kunnen SQL-groepen dit werk niet verhelpen en moet het hele bestand worden gelezen door het te laden in TempDB zodat de gegevens kunnen worden gelezen.
+Poly Base is niet optimaal voor query's. Poly base-tabellen voor toegewezen SQL-groepen ondersteunen momenteel alleen Azure Blob-bestanden en Azure Data Lake opslag. Er zijn geen reken resources die deze bestanden kunnen herstellen. Als gevolg hiervan kunnen toegewezen SQL-groepen dit werk niet offloaden en het hele bestand lezen door het te laden in TempDB zodat de gegevens kunnen worden gelezen.
 
 Als u verschillende query's hebt voor het uitvoeren van query's op deze gegevens, is het beter om deze gegevens één keer te laden en query's te laten gebruiken voor de lokale tabel. Meer informatie over poly Base is opgenomen in de  [hand leiding voor het gebruik van poly base](data-loading-best-practices.md) -artikel.
 
@@ -89,14 +89,14 @@ De onderstaande koppelingen vindt u meer informatie over het verbeteren van de p
 - [Tabel overzicht](develop-tables-overview.md)
 - [Tabeldistributie](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Tabeldistributie selecteren](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)
-- [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="do-not-over-partition"></a>Niet te veel partities maken
 
-Hoewel het partitioneren van gegevens effectief kan zijn voor het onderhouden van uw gegevens via partitie wisseling of het optimaliseren van scans met behulp van partitie-eliminatie, waardoor er te veel partities zijn, kunnen de query's worden vertraagd.  Vaak is het mogelijk dat de strategie voor het partitioneren van hoge granulariteit goed werkt op SQL Server niet goed werkt voor de SQL-groep.  
+Hoewel het partitioneren van gegevens effectief kan zijn voor het onderhouden van uw gegevens via partitie wisseling of het optimaliseren van scans met behulp van partitie-eliminatie, waardoor er te veel partities zijn, kunnen de query's worden vertraagd.  Vaak is het mogelijk dat een hoge granulatie strategie die goed werkt op SQL Server wellicht niet goed werkt op een toegewezen SQL-groep.  
 
-Het gebruik van te veel partities kan de effectiviteit van geclusterde column Store-indexen verminderen als elke partitie minder dan 1.000.000 rijen heeft. Met SQL-groepen worden uw gegevens automatisch gepartitioneerd in 60-data bases. Als u dus een tabel met 100-partities maakt, is het resultaat 6000 partities. Elke werk belasting verschilt, dus het beste is om te experimenteren met partitioneren om te zien wat het beste werkt voor uw werk belasting.  
+Het gebruik van te veel partities kan de effectiviteit van geclusterde column Store-indexen verminderen als elke partitie minder dan 1.000.000 rijen heeft. met toegewezen SQL-groepen worden uw gegevens automatisch gepartitioneerd in 60-data bases. Als u dus een tabel met 100-partities maakt, is het resultaat 6000 partities. Elke werk belasting verschilt, dus het beste is om te experimenteren met partitioneren om te zien wat het beste werkt voor uw werk belasting.  
 
 U kunt het beste een granulatie gebruiken die lager is dan wat u met SQL Server hebt geïmplementeerd. U kunt bijvoorbeeld wekelijkse of maandelijkse partities gebruiken in plaats van dagelijks partities.
 
@@ -119,8 +119,8 @@ Meer informatie over de inhoud die betrekking heeft op deze sectie is opgenomen 
 - [Inzicht krijgen in transacties](develop-transactions.md)
 - [Transacties optimaliseren](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Tabel partities](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="reduce-query-result-sizes"></a>De grootte van het query resultaat verminderen
 
@@ -130,25 +130,25 @@ Het verminderen van de grootte van query resultaten helpt u bij het voor komen v
 
 Gebruik bij het definiëren van uw DDL het kleinste gegevens type dat uw gegevens ondersteunt, waardoor de query prestaties worden verbeterd.  Deze aanbeveling is vooral belang rijk voor CHAR-en VARCHAR-kolommen.  Als de langste waarde in een kolom 25 tekens is, definieert u uw kolom als VARCHAR(25).  U kunt alle tekenkolommen beter niet volgens een grote standaardlengte definiëren.  Definieer bovendien kolommen als VARCHAR wanneer dat nodig is, in plaats van NVARCHAR te gebruiken.
 
-Raadpleeg het [tabel Overzicht](develop-tables-overview.md), de [tabel gegevens typen](develop-tables-data-types.md)en [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) artikelen voor een uitgebreidere beoordeling van essentiële concepten die relevant zijn voor de bovenstaande informatie.
+Raadpleeg het [tabel Overzicht](develop-tables-overview.md), de [tabel gegevens typen](develop-tables-data-types.md)en [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) artikelen voor een uitgebreidere beoordeling van essentiële concepten die relevant zijn voor de bovenstaande informatie.
 
 ## <a name="use-temporary-heap-tables-for-transient-data"></a>Tijdelijke heap-tabellen gebruiken voor tijdelijke gegevens
 
-Wanneer u tijdelijk gegevens op SQL-groepen overbrengt, maken heap-tabellen het algehele proces doorgaans sneller.  Als u alleen gegevens laadt om deze te stageen voordat u meer trans formaties uitvoert, is het laden van de tabel naar een heap-tabel sneller dan het laden van de gegevens naar een geclusterde column Store-tabel.  
+Wanneer u tijdelijk gegevens op toegewezen SQL-groepen overbrengt, maken heap-tabellen het algehele proces doorgaans sneller.  Als u alleen gegevens laadt om deze te stageen voordat u meer trans formaties uitvoert, is het laden van de tabel naar een heap-tabel sneller dan het laden van de gegevens naar een geclusterde column Store-tabel.  
 
 Het laden van gegevens naar een tijdelijke tabel wordt ook veel sneller geladen dan het laden van een tabel naar permanente opslag.  Tijdelijke tabellen beginnen met een ' # ' en zijn alleen toegankelijk voor de sessie die de tabel heeft gemaakt. Daarom kunnen ze alleen worden gebruikt in beperkte scenario's. Heap-tabellen worden gedefinieerd in het WITH-component van een CREATE TABLE-instructie.  Als u wel een tijdelijke tabel gebruikt, vergeet dan niet ook statistieken voor de tijdelijke tabel te maken.
 
-Raadpleeg de [tijdelijke tabellen](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), en [Create Table als artikelen selecteren](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
+Raadpleeg de [tijdelijke tabellen](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), en [Create Table als artikelen selecteren](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor meer informatie.
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Geclusterde columnstore-tabellen optimaliseren
 
-Geclusterde column Store-indexen zijn een van de meest efficiënte manieren om uw gegevens in de SQL-groep op te slaan.  Tabellen in SQL-groep worden standaard gemaakt als geclusterde column Store.  Een goede segmentkwaliteit is belangrijk om de beste resultaten te behalen voor query’s voor columnstore-tabellen.  Wanneer rijen naar columnstore-tabellen worden geschreven onder geheugendruk, kan dit ten koste gaan van de kwaliteit van columnstore-segmenten.  
+Geclusterde column Store-indexen zijn een van de meest efficiënte manieren om uw gegevens op te slaan in een toegewezen SQL-groep.  Tabellen in een toegewezen SQL-groep worden standaard gemaakt als geclusterde column Store.  Een goede segmentkwaliteit is belangrijk om de beste resultaten te behalen voor query’s voor columnstore-tabellen.  Wanneer rijen naar columnstore-tabellen worden geschreven onder geheugendruk, kan dit ten koste gaan van de kwaliteit van columnstore-segmenten.  
 
 De segment kwaliteit kan worden gemeten aan de hand van het aantal rijen in een gecomprimeerde Rijg groep. Zie de [oorzaken van slechte kwaliteit van Column store-index](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality) in het artikel [tabel indexen](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor stapsgewijze instructies voor het detecteren en verbeteren van segment kwaliteit voor geclusterde column Store-tabellen.  
 
 Omdat column Store-segmenten van hoge kwaliteit belang rijk zijn, is het een goed idee om gebruikers-Id's te gebruiken die zich in de middel lange of grote resource klasse bevinden voor het laden van gegevens. Als u lagere [Data Warehouse-eenheden](resource-consumption-models.md) gebruikt, wilt u een grotere resource klasse toewijzen aan de gebruiker die u wilt laden.
 
-Column Store-tabellen pushen doorgaans geen gegevens naar een gecomprimeerd column Store-segment totdat er meer dan 1.000.000 rijen per tabel zijn. Elke tabel in de SQL-groep is gepartitioneerd in 60 tabellen. Daarom profiteren column Store-tabellen niet voor een query tenzij de tabel meer dan 60.000.000 rijen heeft.  
+Column Store-tabellen pushen doorgaans geen gegevens naar een gecomprimeerd column Store-segment totdat er meer dan 1.000.000 rijen per tabel zijn. Elke toegewezen SQL-groeps tabel is gepartitioneerd in 60 tabellen. Daarom profiteren column Store-tabellen niet voor een query tenzij de tabel meer dan 60.000.000 rijen heeft.  
 
 > [!TIP]
 > Voor tabellen met minder dan 60.000.000 rijen is het mogelijk dat een column store-index niet de optimale oplossing is.  
@@ -157,7 +157,7 @@ Als u uw gegevens partitioneert, moet elke partitie 1.000.000 rijen hebben om te
 
 Als uw tabel niet 6.000.000.000 rijen bevat, hebt u twee belang rijke opties. Verminder het aantal partities of overweeg in plaats daarvan een heap-tabel te gebruiken.  Het is ook mogelijk dat u experimenteert om te zien of er betere prestaties kunnen worden verkregen door gebruik te maken van een heap-tabel met secundaire indexen in plaats van een column Store-tabel.
 
-Query’s worden sneller uitgevoerd voor een columnstore-tabel als u alleen de kolommen selecteert die u nodig hebt.  Meer informatie over tabel-en column Store-indexen en vindt u in de [tabel indexen](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), de [Column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)en het opnieuw [opbouwen van Column Store-indexen](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#rebuilding-indexes-to-improve-segment-quality) artikelen.
+Query’s worden sneller uitgevoerd voor een columnstore-tabel als u alleen de kolommen selecteert die u nodig hebt.  Meer informatie over tabel-en column Store-indexen en vindt u in de [tabel indexen](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), de [Column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)en het opnieuw [opbouwen van Column Store-indexen](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#rebuilding-indexes-to-improve-segment-quality) artikelen.
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Een grotere resourceklasse gebruiken om queryprestaties te verbeteren
 
@@ -171,7 +171,7 @@ Raadpleeg het artikel [resource klassen voor workload Management](../sql-data-wa
 
 Als u een lange vertraging in de gebruikers query's ziet, kunnen uw gebruikers in grotere bron klassen worden uitgevoerd. Met dit scenario wordt het verbruik van gelijktijdigheids sleuven verhoogd. Dit kan ertoe leiden dat andere query's in de wachtrij worden geplaatst.  Als u wilt bepalen of gebruikers query's in de wachtrij staan, voert `SELECT * FROM sys.dm_pdw_waits` u uit om te zien of er rijen worden geretourneerd.
 
-De [resource klassen voor workload Management](../sql-data-warehouse/resource-classes-for-workload-management.md) en [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) artikelen bevatten meer informatie.
+De [resource klassen voor workload Management](../sql-data-warehouse/resource-classes-for-workload-management.md) en [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) artikelen bevatten meer informatie.
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Gebruik DMV’s om uw query’s te controleren en te optimaliseren
 
@@ -180,14 +180,14 @@ SQL-groepen hebben verschillende Dmv's die kunnen worden gebruikt voor het bewak
 - [Monitor your workload using DMVs](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 - [ADRES](develop-label.md)
-- [SELECTEERT](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [SELECTEERT](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="next-steps"></a>Volgende stappen
 

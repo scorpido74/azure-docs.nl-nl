@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131935"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325432"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Overzicht van virtuele netwerk isolatie en privacy
 
@@ -31,10 +31,10 @@ Dit zijn de andere artikelen in deze serie:
 ## <a name="prerequisites"></a>Vereisten
 
 In dit artikel wordt ervan uitgegaan dat u bekend bent met de volgende onderwerpen:
-+ [Virtuele netwerken van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-+ [IP-netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
++ [Virtuele netwerken van Azure](../virtual-network/virtual-networks-overview.md)
++ [IP-netwerken](../virtual-network/public-ip-addresses.md)
 + [Azure Private Link](how-to-configure-private-link.md)
-+ [Netwerk beveiligings groepen (NSG)](../virtual-network/security-overview.md)
++ [Netwerk beveiligings groepen (NSG)](../virtual-network/network-security-groups-overview.md)
 + [Netwerk firewalls](../firewall/overview.md)
 
 ## <a name="example-scenario"></a>Voorbeeldscenario

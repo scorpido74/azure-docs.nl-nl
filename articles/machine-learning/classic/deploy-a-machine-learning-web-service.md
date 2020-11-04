@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: c9cfe05b6547cbdc61a1c8cc6223f08900cf09d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a588195f2095b2d0cb261e1573eeb9ec881f2fd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342961"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322834"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Een Azure Machine Learning Studio-webservice (klassiek) implementeren
 
-**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Met Azure Machine Learning Studio (klassiek) kunt u een voorspellende analyse oplossing bouwen en testen. Vervolgens kunt u de oplossing implementeren als een webservice.
@@ -89,11 +89,11 @@ Wanneer u dit trainings experiment converteert naar een voorspellend experiment,
   
     In dit voor beeld kan de gegevensset van de voor beelden bijvoorbeeld ontbrekende waarden bevatten, zodat er een [schone ontbrekende gegevens][clean-missing-data] module werd opgenomen om deze te verwerken. De voorbeeld gegevensset bevat ook kolommen die niet nodig zijn voor het trainen van het model. Daarom is een [select columns in dataset][select-columns] -module opgenomen om deze extra kolommen uit te sluiten van de gegevens stroom. Als u weet dat de gegevens die via de webservice worden verzonden, geen ontbrekende waarden bevatten, kunt u de module [clean Missing Data][clean-missing-data] verwijderen. Omdat in de module [select columns in dataset][select-columns] de kolommen met gegevens worden gedefinieerd die het getrainde model verwacht, moet die module echter behouden blijven.
 
-* **Train** : deze modules worden gebruikt om het model te trainen. Wanneer u op **webservice instellen**klikt, worden deze modules vervangen door één module die het model bevat dat u hebt getraind. Deze nieuwe module wordt opgeslagen in de sectie **getrainde modellen** van het module palet.
+* **Train** : deze modules worden gebruikt om het model te trainen. Wanneer u op **webservice instellen** klikt, worden deze modules vervangen door één module die het model bevat dat u hebt getraind. Deze nieuwe module wordt opgeslagen in de sectie **getrainde modellen** van het module palet.
 
 * **Score** : in dit voor beeld wordt de module [Split data][split] gebruikt om de gegevens stroom te verdelen in test gegevens en trainings gegevens. In het voorspellende experiment worden we niet meer getraind, zodat [gesplitste gegevens][split] kunnen worden verwijderd. Op dezelfde manier worden de module voor het tweede [score model][score-model] en de [model module evalueren][evaluate-model] gebruikt voor het vergelijken van de resultaten van de test gegevens. deze modules zijn dus niet nodig in het voorspellende experiment. De resterende [score model][score-model] module is echter nodig om een score resultaat te retour neren via de webservice.
 
-Hier ziet u hoe het voor beeld eruitziet nadat **u op webservice instellen**hebt geklikt:
+Hier ziet u hoe het voor beeld eruitziet nadat **u op webservice instellen** hebt geklikt:
 
 ![Geconverteerd predictief experiment](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
@@ -149,7 +149,7 @@ Voer op de pagina experiment implementeren een naam in voor de webservice.
 Selecteer een prijs plan. Als u een bestaand prijs plan hebt, kunt u dit selecteren, anders moet u een nieuw prijs plan maken voor de service.
 
 1. Selecteer een bestaand abonnement in de vervolg keuzelijst **prijs plan** of selecteer de optie **Nieuw abonnement selecteren** .
-2. Typ in **naam van abonnement**een naam waarmee u het plan op uw factuur kunt identificeren.
+2. Typ in **naam van abonnement** een naam waarmee u het plan op uw factuur kunt identificeren.
 3. Selecteer een van de **niveaus van de maandelijkse abonnementen**. Standaard worden de prijscategorieën voor uw standaardregio gebruikt en de webservice wordt ook in die regio geïmplementeerd.
 
 Klik op **implementeren** en op de pagina **Quick** start voor uw webservice wordt geopend.
@@ -211,16 +211,16 @@ Prijzen zijn specifiek voor regio's. u moet dus een facturerings plan definiëre
 5. Selecteer in de vervolg keuzelijst **regio** een regio voor het nieuwe plan. De plannings opties voor de geselecteerde regio worden weer gegeven in de sectie **plan opties** van de pagina.
 6. Selecteer een resource groep voor het plan uit de vervolg keuzelijst **resource groep** . Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md)(Engelstalig) voor meer informatie over resource groepen.
 7. Typ in **naam van plan** de naam van het plan.
-8. Klik onder **Opties plannen**op het facturerings niveau voor het nieuwe abonnement.
-9. Klik op **Maken**.
+8. Klik onder **Opties plannen** op het facturerings niveau voor het nieuwe abonnement.
+9. Klik op **Create**.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>De webservice implementeren in een andere regio
 
 1. Klik op de pagina webservices Microsoft Azure Machine Learning op de menu optie **webservices** .
 2. Selecteer de webservice die u naar een nieuwe regio implementeert.
 3. Klik op **kopiëren**.
-4. In de naam van de **webservice**typt u een nieuwe naam voor de webservice.
-5. Typ in **Web Service Description**een beschrijving voor de webservice.
+4. In de naam van de **webservice** typt u een nieuwe naam voor de webservice.
+5. Typ in **Web Service Description** een beschrijving voor de webservice.
 6. Selecteer in de vervolg keuzelijst **abonnement** het abonnement waarin de nieuwe webservice wordt opgeslagen.
 7. Selecteer een resource groep voor de webservice in de vervolg keuzelijst **resource groep** . Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md)(Engelstalig) voor meer informatie over resource groepen.
 8. Selecteer in de vervolg keuzelijst **regio** de regio waarin u de webservice wilt implementeren.
@@ -250,7 +250,7 @@ Als u de service voor batch uitvoering wilt testen, klikt u op de koppeling **te
 
 Op de pagina **configuratie** kunt u de weergave naam van de service wijzigen en een beschrijving geven. De naam en beschrijving worden weer gegeven in de [Azure Portal](https://portal.azure.com/) waar u uw webservices beheert.
 
-U kunt een beschrijving opgeven voor de invoer gegevens, uitvoer gegevens en para meters van de webservice door een teken reeks op te geven voor elke kolom onder **invoer schema**, **uitvoer schema**en **Web Service-para meter**. Deze beschrijvingen worden gebruikt in de voorbeeld code documentatie van de webservice.
+U kunt een beschrijving opgeven voor de invoer gegevens, uitvoer gegevens en para meters van de webservice door een teken reeks op te geven voor elke kolom onder **invoer schema** , **uitvoer schema** en **Web Service-para meter**. Deze beschrijvingen worden gebruikt in de voorbeeld code documentatie van de webservice.
 
 U kunt logboek registratie inschakelen om te controleren of er fouten zijn opgetreden die u ziet wanneer de webservice wordt geopend. Zie [logboek registratie inschakelen voor machine learning Studio (klassieke) webservices](web-services-logging.md)voor meer informatie.
 
@@ -282,7 +282,7 @@ Omdat u dit experiment eerder hebt geïmplementeerd, wordt u gevraagd of u de be
 > [!NOTE]
 > Als u wijzigingen in de configuratie hebt aangebracht in de oorspronkelijke webservice, bijvoorbeeld door een nieuwe weergave naam of beschrijving in te voeren, moet u deze waarden opnieuw invoeren.
 
-Een optie voor het bijwerken van uw webservice is het model via een programma opnieuw te trainen. Zie voor meer informatie [(Engelstalig) Retrain machine learning Studio-modellen (klassiek) via een programma](/azure/machine-learning/studio/retrain-machine-learning-model).
+Een optie voor het bijwerken van uw webservice is het model via een programma opnieuw te trainen. Zie voor meer informatie [(Engelstalig) Retrain machine learning Studio-modellen (klassiek) via een programma](./retrain-machine-learning-model.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -305,11 +305,11 @@ Een optie voor het bijwerken van uw webservice is het model via een programma op
 
 [webserviceparameters]: web-service-parameters.md
 [deploy]: deploy-a-machine-learning-web-service.md
-[clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-[export-data]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
+[clean-missing-data]: /azure/machine-learning/studio-module-reference/clean-missing-data
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
+[export-data]: /azure/machine-learning/studio-module-reference/export-data

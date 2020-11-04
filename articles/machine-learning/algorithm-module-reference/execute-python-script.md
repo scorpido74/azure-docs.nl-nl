@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e6a7eabec76cf27044b5d0e13acfc2431cb19b77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092990"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323750"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
@@ -61,7 +61,7 @@ if spec is None:
 > De excute python-script module biedt geen ondersteuning voor het installeren van pakketten die afhankelijk zijn van extra systeem eigen bibliotheken met opdracht als ' apt-get ', zoals Java, PyODBC en etc. Dit is omdat deze module wordt uitgevoerd in een eenvoudige omgeving met python vooraf geïnstalleerd en met niet-beheerders machtigingen.  
 
 ## <a name="upload-files"></a>Bestanden uploaden
-De script module voor het uitvoeren van python ondersteunt het uploaden van bestanden met behulp van de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-).
+De script module voor het uitvoeren van python ondersteunt het uploaden van bestanden met behulp van de [Azure machine learning PYTHON SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-).
 
 In het volgende voor beeld ziet u hoe u een afbeeldings bestand uploadt in de script module voor het uitvoeren van python:
 
@@ -110,17 +110,17 @@ De script module python uitvoeren bevat een voor beeld van python-code die u als
 
 1. Voeg de **script module python uitvoeren** toe aan de pijp lijn.
 
-2. Voeg gegevens sets toe aan **Dataset1** uit de ontwerp functie die u voor invoer wilt gebruiken en maak er verbinding mee. Verwijs naar deze gegevensset in uw python-script als **DataFrame1** .
+2. Voeg gegevens sets toe aan **Dataset1** uit de ontwerp functie die u voor invoer wilt gebruiken en maak er verbinding mee. Verwijs naar deze gegevensset in uw python-script als **DataFrame1**.
 
     Het gebruik van een gegevensset is optioneel. Gebruik deze functie als u gegevens wilt genereren met behulp van python of python-code wilt gebruiken om de gegevens rechtstreeks in de module te importeren.
 
-    Deze module biedt ondersteuning voor het toevoegen van een tweede gegevensset op **Dataset2** . Raadpleeg de tweede gegevensset in uw python-script als **DataFrame2** .
+    Deze module biedt ondersteuning voor het toevoegen van een tweede gegevensset op **Dataset2**. Raadpleeg de tweede gegevensset in uw python-script als **DataFrame2**.
 
     Gegevens sets die zijn opgeslagen in Azure Machine Learning worden automatisch geconverteerd naar Panda data-frames wanneer deze met deze module worden geladen.
 
     ![Python-invoer toewijzing uitvoeren](media/module/python-module.png)
 
-4. Als u nieuwe Python-pakketten of-code wilt toevoegen, verbindt u het zip-bestand dat deze aangepaste bronnen bevat, om de poort te **bundelen** . Als uw script groter is dan 16 KB, gebruikt u de **script bundel** poort om fouten te voor komen, zoals *commandline de limiet van 16597 tekens overschrijdt* . 
+4. Als u nieuwe Python-pakketten of-code wilt toevoegen, verbindt u het zip-bestand dat deze aangepaste bronnen bevat, om de poort te **bundelen** . Als uw script groter is dan 16 KB, gebruikt u de **script bundel** poort om fouten te voor komen, zoals *commandline de limiet van 16597 tekens overschrijdt*. 
 
     
     1. Het script en andere aangepaste resources bundelen naar een zip-bestand.
@@ -315,4 +315,4 @@ De vooraf geïnstalleerde pakketten zijn:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

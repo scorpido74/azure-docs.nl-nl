@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9405eb01dbe2d7ea9d4a9e64bf7dd79ca356e9f5
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926985"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323791"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
@@ -30,11 +30,11 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
 
 
 > [!TIP]
-> Als u geen ervaring hebt met het model, kunt u het beste de video serie door Dr. Stephen Elston als onderdeel van de [machine learning cursus](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) van EdX. 
+> Als u geen ervaring hebt met het model, kunt u het beste de video serie door Dr. Stephen Elston als onderdeel van de [machine learning cursus](/archive/blogs/machinelearning/new-edx-course-data-science-machine-learning-essentials) van EdX. 
 
 
 ## <a name="how-to-use-evaluate-model"></a>Het gebruik van een evalueren model
-1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of de uitvoer van de gegevensset van het resultaat van de gegevens van het type [toewijzen aan clusters](./assign-data-to-clusters.md) aan de linkerkant invoer poort van het **Evalueer model** . 
+1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of de uitvoer van de gegevensset van het resultaat van de gegevens van het type [toewijzen aan clusters](./assign-data-to-clusters.md) aan de linkerkant invoer poort van het **Evalueer model**. 
     > [!NOTE] 
     > Als u modules als ' select columns in Dataset ' wilt gebruiken om een deel van een invoer gegevensset te selecteren, moet u ervoor zorgen dat de werkelijke Label kolom (gebruikt in de training), de kolom ' gescoorde kansen ' en de kolom ' gescoorde labels ' bestaan voor het berekenen van metrische gegevens zoals AUC, nauw keurigheid voor binaire classificatie/anomalie detectie.
     > Kolom werkelijk label, de kolom scoored labels bestaat voor het berekenen van metrische gegevens voor classificatie en regressie met meerdere klassen.
@@ -48,7 +48,7 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
     > + Voor een taak met meerdere classificaties moet de te evalueren gegevensset één kolom hebben met de naam `Multi Class Scored Labels` , die de gescoorde labels vertegenwoordigt.
     > Als de uitvoer van de upstream-module deze kolommen niet bevat, moet u wijzigingen aanbrengen in overeenstemming met de bovenstaande vereisten.
 
-2. Beschrijving Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of het resultaat van de gegevensset-uitvoer van de gegevens voor het tweede model aan de **juiste** invoer poort van het **Evalueer model** . U kunt de resultaten van twee verschillende modellen op dezelfde gegevens eenvoudig vergelijken. De twee invoer algoritmen moeten hetzelfde algoritme type zijn. U kunt ook scores van twee verschillende uitvoeringen vergelijken met dezelfde gegevens met verschillende para meters.
+2. Beschrijving Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of het resultaat van de gegevensset-uitvoer van de gegevens voor het tweede model aan de **juiste** invoer poort van het **Evalueer model**. U kunt de resultaten van twee verschillende modellen op dezelfde gegevens eenvoudig vergelijken. De twee invoer algoritmen moeten hetzelfde algoritme type zijn. U kunt ook scores van twee verschillende uitvoeringen vergelijken met dezelfde gegevens met verschillende para meters.
 
     > [!NOTE]
     > Algoritme type verwijst naar ' Two-class classificatie ', ' multi-class classificatie ', ' regressie ', ' clustering ' onder ' Machine Learning-algoritmen '. 
@@ -142,4 +142,4 @@ De volgende metrische gegevens worden gerapporteerd voor het evalueren van clust
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

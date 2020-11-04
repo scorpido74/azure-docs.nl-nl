@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: e93db23b09e933b58d6338646e7fff6fa30bc68e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5e5ab4e3c9332d0daa1acf32edeeba2423c97ac3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736568"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324603"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
 
@@ -26,12 +26,12 @@ Meer informatie over het implementeren van een model van Azure Machine Learning 
 > [!IMPORTANT]
 > Hoewel zowel Azure Machine Learning als Azure Functions algemeen beschikbaar zijn, is de mogelijkheid om een model te verpakken van de Machine Learning-service voor functions in de preview-versie.
 
-Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van getrainde machine learning modellen. Azure Machine Learning heeft nu de Preview-functionaliteit om deze machine learning modellen te bouwen in functie-apps, die [in azure functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)kunnen worden geïmplementeerd.
+Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van getrainde machine learning modellen. Azure Machine Learning heeft nu de Preview-functionaliteit om deze machine learning modellen te bouwen in functie-apps, die [in azure functions](../azure-functions/functions-deployment-technologies.md#docker-container)kunnen worden geïmplementeerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning-werkruimte. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
-* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* De [Azure cli](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 * Een getraind machine learning model dat is geregistreerd in uw werk ruimte. Als u geen model hebt, gebruikt u de [zelf studie voor installatie kopie classificatie: Train model](tutorial-train-models-with-aml.md) om er een te trainen en te registreren.
 
     > [!IMPORTANT]
@@ -47,23 +47,23 @@ Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van
 
 Voordat u implementeert, moet u definiëren wat er nodig is om het model als een webservice uit te voeren. In de volgende lijst worden de belangrijkste items beschreven die nodig zijn voor een implementatie:
 
-* Een __invoer script__ . Met dit script worden aanvragen geaccepteerd, wordt de aanvraag met het model gescoord en worden de resultaten geretourneerd.
+* Een __invoer script__. Met dit script worden aanvragen geaccepteerd, wordt de aanvraag met het model gescoord en worden de resultaten geretourneerd.
 
     > [!IMPORTANT]
     > Het invoer script is specifiek voor uw model. het moet inzicht krijgen in de indeling van de gegevens van de inkomende aanvraag, de indeling van de gegevens die worden verwacht door uw model en de indeling van de gegevens die aan clients worden geretourneerd.
     >
     > Als de gegevens van de aanvraag een indeling hebben die niet kan worden gebruikt door uw model, kan het script deze omzetten in een acceptabele indeling. Het kan ook de reactie transformeren voordat deze naar de client wordt teruggekeerd.
     >
-    > Wanneer de functie wordt ingepakt, wordt de invoer standaard beschouwd als tekst. Als u geïnteresseerd bent in het verbruiken van de onbewerkte bytes van de invoer (bijvoorbeeld voor BLOB-triggers), moet u [AMLRequest gebruiken om onbewerkte gegevens te accepteren](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data).
+    > Wanneer de functie wordt ingepakt, wordt de invoer standaard beschouwd als tekst. Als u geïnteresseerd bent in het verbruiken van de onbewerkte bytes van de invoer (bijvoorbeeld voor BLOB-triggers), moet u [AMLRequest gebruiken om onbewerkte gegevens te accepteren](./how-to-deploy-advanced-entry-script.md#binary-data).
 
-Zie [Score code definiëren](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#script) voor meer informatie over het invoer script
+Zie [Score code definiëren](./how-to-deploy-and-where.md#define-an-entry-script) voor meer informatie over het invoer script
 
 * **Afhankelijkheden** , zoals hulp scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding
 
-Deze entiteiten worden ingekapseld in een Afleidings __configuratie__ . De deductieconfiguratie verwijst naar het invoerscript en andere afhankelijkheden.
+Deze entiteiten worden ingekapseld in een Afleidings __configuratie__. De deductieconfiguratie verwijst naar het invoerscript en andere afhankelijkheden.
 
 > [!IMPORTANT]
-> Wanneer u een configuratie voor afwijzen maakt voor gebruik met Azure Functions, moet u een [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) object gebruiken. Houd er rekening mee dat als u een aangepaste omgeving definieert, de standaard waarden van azureml en versie >= 1.0.45 als een PIP-afhankelijkheid worden toegevoegd. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten. In het volgende voor beeld ziet u hoe u een omgevings object maakt en dit gebruikt met een configuratie voor ingaand gebruik:
+> Wanneer u een configuratie voor afwijzen maakt voor gebruik met Azure Functions, moet u een [omgevings](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) object gebruiken. Houd er rekening mee dat als u een aangepaste omgeving definieert, de standaard waarden van azureml en versie >= 1.0.45 als een PIP-afhankelijkheid worden toegevoegd. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten. In het volgende voor beeld ziet u hoe u een omgevings object maakt en dit gebruikt met een configuratie voor ingaand gebruik:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -96,7 +96,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure Functions, gebruikt u [azureml. contrib. functions. package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) of de specifieke pakket functie voor de trigger die u wilt gebruiken. Het volgende code fragment laat zien hoe u een nieuw pakket maakt met een BLOB-trigger uit het model en de configuratie voor afleiden:
+Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure Functions, gebruikt u [azureml. contrib. functions. package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) of de specifieke pakket functie voor de trigger die u wilt gebruiken. Het volgende code fragment laat zien hoe u een nieuw pakket maakt met een BLOB-trigger uit het model en de configuratie voor afleiden:
 
 > [!NOTE]
 > In het code fragment wordt ervan uitgegaan dat het `model` een geregistreerd model bevat en dat `inference_config` de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
@@ -113,7 +113,7 @@ print(blob.location)
 Wanneer `show_output=True` wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package@sha256:<imagename>` .
 
 > [!NOTE]
-> De functie voor verpakking voor functions ondersteunt momenteel HTTP-triggers, Blob-triggers en service bus-triggers. Zie [Azure functions-bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)voor meer informatie over triggers.
+> De functie voor verpakking voor functions ondersteunt momenteel HTTP-triggers, Blob-triggers en service bus-triggers. Zie [Azure functions-bindingen](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns)voor meer informatie over triggers.
 
 > [!IMPORTANT]
 > Sla de locatie gegevens op, zoals deze worden gebruikt bij het implementeren van de installatie kopie.
@@ -293,12 +293,12 @@ Nadat de installatie kopie is geladen en de app beschikbaar is, gebruikt u de vo
 
     Zodra de opdracht is voltooid, opent u het bestand. Het bevat de gegevens die door het model worden geretourneerd.
 
-Zie voor meer informatie over het gebruik van BLOB-triggers het artikel [een functie maken die wordt geactiveerd door Azure Blob-opslag](/azure/azure-functions/functions-create-storage-blob-triggered-function) .
+Zie voor meer informatie over het gebruik van BLOB-triggers het artikel [een functie maken die wordt geactiveerd door Azure Blob-opslag](../azure-functions/functions-create-storage-blob-triggered-function.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het configureren van uw functions-app in de [functions](/azure/azure-functions/functions-create-function-linux-custom-image) -documentatie.
-* Meer informatie over Blob Storage activeert [Azure Blob-opslag bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
+* Meer informatie over het configureren van uw functions-app in de [functions](../azure-functions/functions-create-function-linux-custom-image.md) -documentatie.
+* Meer informatie over Blob Storage activeert [Azure Blob-opslag bindingen](../azure-functions/functions-bindings-storage-blob.md).
 * [Implementeer uw model naar Azure app service](how-to-deploy-app-service.md).
 * [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
-* [Naslaginformatie voor API](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true)
+* [Naslaginformatie voor API](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py)

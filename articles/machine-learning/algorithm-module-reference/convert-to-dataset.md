@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c014f14149b903713ae2f03b98956cd4ecaf8a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898711"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323060"
 ---
 # <a name="convert-to-dataset"></a>Converteren naar gegevensset
 
@@ -25,7 +25,7 @@ Conversie is in de meeste gevallen niet vereist. Azure Machine Learning gegevens
 Het is aan te raden om gegevens op te slaan in de indeling van de gegevensset als u een bepaalde vorm van normalisatie of reiniging hebt uitgevoerd voor een set gegevens en u ervoor wilt zorgen dat de wijzigingen worden gebruikt in andere pijp lijnen.  
   
 > [!NOTE]
-> Converteren naar dataset wijzigt alleen de indeling van de gegevens. Er wordt geen nieuwe kopie van de gegevens opgeslagen in de werk ruimte. Als u de gegevensset wilt opslaan, dubbelklikt u op de uitvoer poort, selecteert u **Opslaan als gegevensset**en voert u een nieuwe naam in.  
+> Converteren naar dataset wijzigt alleen de indeling van de gegevens. Er wordt geen nieuwe kopie van de gegevens opgeslagen in de werk ruimte. Als u de gegevensset wilt opslaan, dubbelklikt u op de uitvoer poort, selecteert u **Opslaan als gegevensset** en voert u een nieuwe naam in.  
   
 ## <a name="how-to-use-convert-to-dataset"></a>Converteren naar dataset gebruiken  
 
@@ -35,18 +35,18 @@ U wordt aangeraden de module [meta gegevens bewerken](edit-metadata.md) te gebru
 
 2. Verbind het met een wille keurige module die een gegevensset uitvoert.   
 
-    Zolang de gegevens [in tabel vorm](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)zijn, kunt u deze converteren naar een gegevensset. Dit geldt ook voor gegevens die zijn geladen via gegevens [importeren](import-data.md), gegevens die zijn gemaakt via [gegevens hand matig invoeren](enter-data-manually.md)of data sets die zijn getransformeerd via [trans formatie Toep assen](apply-transformation.md).
+    Zolang de gegevens [in tabel vorm](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)zijn, kunt u deze converteren naar een gegevensset. Dit geldt ook voor gegevens die zijn geladen via gegevens [importeren](import-data.md), gegevens die zijn gemaakt via [gegevens hand matig invoeren](enter-data-manually.md)of data sets die zijn getransformeerd via [trans formatie Toep assen](apply-transformation.md).
 
 3.  Geef in de vervolg keuzelijst **actie** aan of u de gegevens wilt opschonen voordat u de gegevensset opslaat:  
   
-    - **Geen**: gebruik de gegevens als.  
+    - **Geen** : gebruik de gegevens als.  
   
-    - **SetMissingValue**: Stel een specifieke waarde in op een ontbrekende waarde in de gegevensset. De standaard aanduiding is het vraag teken (?), maar u kunt de aangepaste optie voor  **ontbrekende waarden** gebruiken om een andere waarde op te geven. Als u bijvoorbeeld een **taxi** voor een **aangepaste ontbrekende waarde**invoert, worden alle exemplaren van de **taxi** in de gegevensset gewijzigd in de ontbrekende waarde.
+    - **SetMissingValue** : Stel een specifieke waarde in op een ontbrekende waarde in de gegevensset. De standaard aanduiding is het vraag teken (?), maar u kunt de aangepaste optie voor  **ontbrekende waarden** gebruiken om een andere waarde op te geven. Als u bijvoorbeeld een **taxi** voor een **aangepaste ontbrekende waarde** invoert, worden alle exemplaren van de **taxi** in de gegevensset gewijzigd in de ontbrekende waarde.
   
-    - **ReplaceValues**: gebruik deze optie om een enkele exacte waarde op te geven die moet worden vervangen door een andere exacte waarde. U kunt ontbrekende waarden of aangepaste waarden vervangen door de **Vervang** methode in te stellen:
+    - **ReplaceValues** : gebruik deze optie om een enkele exacte waarde op te geven die moet worden vervangen door een andere exacte waarde. U kunt ontbrekende waarden of aangepaste waarden vervangen door de **Vervang** methode in te stellen:
 
-      - **Ontbrekend**: Kies deze optie om ontbrekende waarden in de invoer-gegevensset te vervangen. Voer bij **nieuwe waarde**de waarde in om de ontbrekende waarden te vervangen door.
-      - **Aangepast**: Kies deze optie om aangepaste waarden in de invoer-gegevensset te vervangen. Voer voor **aangepaste waarde**de waarde in die u wilt zoeken. Als uw gegevens bijvoorbeeld de teken reeks bevatten `obs` die wordt gebruikt als tijdelijke aanduiding voor ontbrekende waarden, voert u in `obs` . Voer bij **nieuwe waarde**de nieuwe waarde in om de oorspronkelijke teken reeks te vervangen door.
+      - **Ontbrekend** : Kies deze optie om ontbrekende waarden in de invoer-gegevensset te vervangen. Voer bij **nieuwe waarde** de waarde in om de ontbrekende waarden te vervangen door.
+      - **Aangepast** : Kies deze optie om aangepaste waarden in de invoer-gegevensset te vervangen. Voer voor **aangepaste waarde** de waarde in die u wilt zoeken. Als uw gegevens bijvoorbeeld de teken reeks bevatten `obs` die wordt gebruikt als tijdelijke aanduiding voor ontbrekende waarden, voert u in `obs` . Voer bij **nieuwe waarde** de nieuwe waarde in om de oorspronkelijke teken reeks te vervangen door.
   
     Houd er rekening mee dat de bewerking **ReplaceValues** alleen van toepassing is op exacte overeenkomsten. Deze teken reeksen worden bijvoorbeeld niet beïnvloed: `obs.` , `obsolete` .  
  
@@ -70,4 +70,4 @@ U wordt aangeraden de module [meta gegevens bewerken](edit-metadata.md) te gebru
   
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

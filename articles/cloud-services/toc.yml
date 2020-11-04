@@ -12,6 +12,12 @@
       href: cloud-services-dotnet-get-started.md
     - name: Voorbeeld van Python voor Visual Studio-cloudservice
       href: cloud-services-python-ptvs.md
+- name: Concepten
+  items:
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
 - name: Procedures
   items:
     - name: Plannen

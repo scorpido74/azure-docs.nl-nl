@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: aebe1d995f3cb6da4663876b8d39d36a1a8b16c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a21d2f0debb2ade8e46b0cdb5b3fa5b51f0a180c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030164"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323862"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Door de gebruiker gedefinieerde schema's in Synapse SQL
 
@@ -27,7 +27,7 @@ Traditionele analyse architectuur maakt vaak gebruik van afzonderlijke data base
 In plaats daarvan voert Synapse SQL de volledige analyse werk belasting binnen één Data Base uit. Cross-data base-samen voegingen zijn niet toegestaan. Synapse SQL verwacht dat alle tabellen die door het magazijn worden gebruikt, worden opgeslagen in de ene data base.
 
 > [!NOTE]
-> SQL-groepen bieden geen ondersteuning voor query's voor meerdere data bases van welke aard dan ook. Daarom moeten analyse-implementaties die gebruikmaken van dit patroon, worden gereviseerd. SQL on-demand (preview) ondersteunt query's tussen data bases.
+> Exclusieve SQL-groepen bieden geen ondersteuning voor query's voor meerdere data bases van welke aard dan ook. Daarom moeten analyse-implementaties die gebruikmaken van dit patroon, worden gereviseerd. Serverloze SQL-groep (preview) ondersteunt query's tussen data bases.
 
 ## <a name="user-defined-schema-recommendations"></a>Door de gebruiker gedefinieerde schema aanbevelingen
 

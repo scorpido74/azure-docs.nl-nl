@@ -1,6 +1,6 @@
 ---
 title: IDENTITEIT gebruiken om surrogaat sleutels te maken
-description: Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in Synapse SQL-pool.
+description: Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in een toegewezen SQL-groep.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 96e81b3d7781f1c6f7bf5743a083e9640dd6c831
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876002"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323580"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>IDENTITEIT gebruiken voor het maken van surrogaat sleutels in de SQL-groep Synapse
+# <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>IDENTITEIT gebruiken om surrogaat sleutels te maken met behulp van een toegewezen SQL-groep in AzureSynapse Analytics
 
-In dit artikel vindt u aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in Synapse SQL-pool.
+In dit artikel vindt u aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in een toegewezen SQL-groep.
 
 ## <a name="what-is-a-surrogate-key"></a>Wat is een surrogaat sleutel?
 
@@ -31,7 +31,7 @@ Een surrogaat sleutel in een tabel is een kolom met een unieke id voor elke rij.
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Een tabel maken met een IDENTITEITs kolom
 
-De IDENTITEITs eigenschap is ontworpen om uit te schalen over alle distributies in de SQL-groep Synapse zonder de belasting prestaties te beïnvloeden. Daarom is de implementatie van de identiteit gericht op het bereiken van deze doel stellingen.
+De IDENTITEITs eigenschap is ontworpen om uit te schalen over alle distributies in de toegewezen SQL-groep zonder de belasting prestaties te beïnvloeden. Daarom is de implementatie van de identiteit gericht op het bereiken van deze doel stellingen.
 
 U kunt een tabel definiëren met de IDENTITEITs eigenschap wanneer u de tabel voor het eerst maakt met behulp van syntaxis die vergelijkbaar is met de volgende instructie:
 
@@ -53,7 +53,7 @@ In dit rest gedeelte van deze sectie worden de nuances van de implementatie gema
 
 ### <a name="allocation-of-values"></a>Toewijzing van waarden
 
-De IDENTITEITs eigenschap biedt geen garantie voor de volg orde waarin de surrogaat waarden worden toegewezen vanwege de gedistribueerde architectuur van het Data Warehouse. De IDENTITEITs eigenschap is ontworpen om uit te schalen over alle distributies in de SQL-groep Synapse zonder de belasting prestaties te beïnvloeden. 
+De IDENTITEITs eigenschap biedt geen garantie voor de volg orde waarin de surrogaat waarden worden toegewezen vanwege de gedistribueerde architectuur van het Data Warehouse. De IDENTITEITs eigenschap is ontworpen om uit te schalen over alle distributies in de toegewezen SQL-groep zonder de belasting prestaties te beïnvloeden. 
 
 Het volgende voor beeld is een illustratie:
 
@@ -103,7 +103,7 @@ CREATE TABLE AS SELECT (CTAS) volgt hetzelfde SQL Server gedrag dat is gedocumen
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Expliciet waarden invoegen in een IDENTITEITs kolom
 
-De SQL-groep Synapse ondersteunt de `SET IDENTITY_INSERT <your table> ON|OFF` syntaxis. U kunt deze syntaxis gebruiken om expliciet waarden in te voegen in de IDENTITEITs kolom.
+De toegewezen SQL-groep ondersteunt `SET IDENTITY_INSERT <your table> ON|OFF` syntaxis. U kunt deze syntaxis gebruiken om expliciet waarden in te voegen in de IDENTITEITs kolom.
 
 Veel gegevens modelers, zoals het gebruik van vooraf gedefinieerde negatieve waarden voor bepaalde rijen in hun dimensies. Een voor beeld is de rij-1 of het onbekende lid.
 
@@ -164,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Het is niet mogelijk om momenteel te gebruiken `CREATE TABLE AS SELECT` bij het laden van gegevens in een tabel met een identiteits kolom.
 >
 
-Zie voor meer informatie over het laden van gegevens [ontwerpen extra heren, laden en transformeren (ELT) voor Synapse SQL pool](design-elt-data-loading.md) en  [Aanbevolen procedures laden](guidance-for-loading-data.md).
+Zie voor meer informatie over het laden van gegevens [ontwerpen extra heren, laden en transformeren (ELT) voor een toegewezen SQL-groep](design-elt-data-loading.md) en  [Aanbevolen procedures laden](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systeemweergaven
 
@@ -198,7 +198,7 @@ De IDENTITEITs eigenschap kan niet worden gebruikt:
 - Wanneer de kolom ook de distributie sleutel is
 - Wanneer de tabel een externe tabel is
 
-De volgende gerelateerde functies worden niet ondersteund in de Synapse SQL-groep:
+De volgende gerelateerde functies worden niet ondersteund in een toegewezen SQL-groep:
 
 - [IDENTITEIT ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

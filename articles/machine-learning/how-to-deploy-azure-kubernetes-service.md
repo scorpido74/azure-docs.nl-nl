@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 50f8768aec12b8bda8d9d489462a8f61e8d83c18
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: b98d3ea69286fe7c23b6c2978b71699ba7eb0e00
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999176"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325188"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 
@@ -34,7 +34,7 @@ Meer informatie over het gebruik van Azure Machine Learning voor het implementer
 Wanneer u implementeert in azure Kubernetes service, implementeert u naar een AKS-cluster dat is __verbonden met uw werk ruimte__. Zie [een Azure Kubernetes-service cluster maken en koppelen](how-to-create-attach-kubernetes.md)voor meer informatie over het verbinden van een AKS-cluster met uw werk ruimte.
 
 > [!IMPORTANT]
-> U wordt aangeraden lokaal fouten op te sporen voordat u de webservice implementeert. Zie voor meer informatie [fouten opsporen in lokaal](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+> U wordt aangeraden lokaal fouten op te sporen voordat u de webservice implementeert. Zie voor meer informatie [fouten opsporen in lokaal](./how-to-troubleshoot-deployment.md#debug-locally)
 >
 > U kunt ook verwijzen naar Azure Machine Learning: [Deploy to Local Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) (Implementeren naar lokale notebook)
 
@@ -44,7 +44,7 @@ Wanneer u implementeert in azure Kubernetes service, implementeert u naar een AK
 
 - Een machine learning model dat in uw werk ruimte is geregistreerd. Als u geen geregistreerd model hebt, raadpleegt u [hoe en hoe u modellen implementeert](how-to-deploy-and-where.md).
 
-- De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
+- De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
 
 - In de code fragmenten van __python__ in dit artikel wordt ervan uitgegaan dat de volgende variabelen zijn ingesteld:
 
@@ -71,8 +71,8 @@ In Azure Machine Learning wordt ' implementatie ' gebruikt voor een meer algemen
 1. Het dockerfile maken of downloaden van het reken knooppunt (heeft betrekking op Kubernetes)
     1. Het systeem berekent een hash van: 
         - De basis installatie kopie 
-        - Aangepaste stappen voor docker (Zie [een model implementeren met behulp van een aangepaste docker-basis installatie kopie](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
-        - De Conda definition YAML (Zie [& software omgevingen maken in azure machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+        - Aangepaste stappen voor docker (Zie [een model implementeren met behulp van een aangepaste docker-basis installatie kopie](./how-to-deploy-custom-docker-image.md))
+        - De Conda definition YAML (Zie [& software omgevingen maken in azure machine learning](./how-to-use-environments.md))
     1. Het systeem gebruikt deze hash als de sleutel in een zoek opdracht van de werk ruimte Azure Container Registry (ACR)
     1. Als deze niet wordt gevonden, wordt gezocht naar een overeenkomst in de globale ACR
     1. Als deze niet wordt gevonden, bouwt het systeem een nieuwe installatie kopie (die in de cache wordt opgeslagen en gepusht naar de werk ruimte ACR)
@@ -87,7 +87,7 @@ In Azure Machine Learning wordt ' implementatie ' gebruikt voor een meer algemen
 Het front-end-onderdeel (azureml-Fe) dat binnenkomende aanvragen voor in-interferentie naar geïmplementeerde Services doorstuurt, wordt automatisch geschaald naar behoefte. Schalen van azureml-Fe is gebaseerd op het cluster doel en de grootte van het AKS (aantal knoop punten). Het cluster doeleinde en knoop punten worden geconfigureerd wanneer u [een AKS-cluster maakt of koppelt](how-to-create-attach-kubernetes.md). Er is één azureml-Fe-service per cluster, die op meerdere peulen kan worden uitgevoerd.
 
 > [!IMPORTANT]
-> Wanneer u een cluster gebruikt dat is geconfigureerd als __dev-test__, wordt de zelf schaal **uitgeschakeld**.
+> Wanneer u een cluster gebruikt dat is geconfigureerd als __dev-test__ , wordt de zelf schaal **uitgeschakeld**.
 
 Azureml-Fe schaalt beide omhoog (verticaal) om meer kernen te gebruiken en uit (horizon taal) om meer peulen te gebruiken. Wanneer u besluit om omhoog te schalen, wordt de tijd gebruikt die nodig is voor het routeren van binnenkomende aanvragen voor navragen. Als deze tijd de drempel waarde overschrijdt, wordt er een opschalen uitgevoerd. Als de tijd voor het routeren van binnenkomende aanvragen de drempel waarde blijft overschrijden, treedt er een uitschalen op.
 
@@ -95,7 +95,7 @@ Wanneer u omlaag of omlaag schaalt, wordt het CPU-gebruik gebruikt. Als aan de d
 
 ## <a name="deploy-to-aks"></a>Implementeren naar AKS
 
-Als u een model wilt implementeren in azure Kubernetes service, maakt u een __implementatie configuratie__ waarin de benodigde reken resources worden beschreven. Bijvoorbeeld het aantal kernen en het geheugen. U hebt ook een Afleidings __configuratie__nodig, waarmee de omgeving wordt beschreven die nodig is voor het hosten van het model en de webservice. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van de configuratie voor demijnen.
+Als u een model wilt implementeren in azure Kubernetes service, maakt u een __implementatie configuratie__ waarin de benodigde reken resources worden beschreven. Bijvoorbeeld het aantal kernen en het geheugen. U hebt ook een Afleidings __configuratie__ nodig, waarmee de omgeving wordt beschreven die nodig is voor het hosten van het model en de webservice. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van de configuratie voor demijnen.
 
 > [!NOTE]
 > Het aantal modellen dat moet worden geïmplementeerd, is beperkt tot 1.000 modellen per implementatie (per container).
@@ -121,10 +121,10 @@ print(service.get_logs())
 
 Voor meer informatie over de klassen, methoden en para meters die in dit voor beeld worden gebruikt, raadpleegt u de volgende referentie documenten:
 
-* [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py&preserve-view=true)
-* [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py&preserve-view=true)
-* [Model. implementeren](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truewait-for-deployment-show-output-false-)
+* [AksCompute](/python/api/azureml-core/azureml.core.compute.aks.akscompute?preserve-view=true&view=azure-ml-py)
+* [AksWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?preserve-view=true&view=azure-ml-py)
+* [Model. implementeren](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Webservice.wait_for_deployment](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -136,7 +136,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-Zie voor meer informatie de referentie [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-deploy) .
+Zie voor meer informatie de referentie [AZ ml model Deploy](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -154,7 +154,7 @@ Het onderdeel dat automatisch schalen afhandelt voor Azure ML-model implementati
 > [!IMPORTANT]
 > * **Schakel Kubernetes Horizontal pod autoscaler (HPA) niet in voor model implementaties**. Als dit het geval is, worden de twee onderdelen voor automatisch schalen met elkaar in concurrentie gebracht. Azureml-Fe is ontworpen voor het automatisch schalen van modellen die door Azure ML zijn geïmplementeerd, waarbij HPA het model gebruik van een algemene metriek zoals CPU-gebruik of een aangepaste metrische configuratie zou moeten raden of benaderen.
 > 
-> * Met **Azureml-Fe wordt het aantal knoop punten in een AKS-cluster niet geschaald**, omdat dit tot onverwachte kosten verhogingen kan leiden. In plaats daarvan **wordt het aantal replica's voor het model** binnen de grenzen van het fysieke cluster geschaald. Als u het aantal knoop punten in het cluster wilt schalen, kunt u het cluster hand matig schalen of [de AKS-cluster-automatische schaalr configureren](/azure/aks/cluster-autoscaler).
+> * Met **Azureml-Fe wordt het aantal knoop punten in een AKS-cluster niet geschaald** , omdat dit tot onverwachte kosten verhogingen kan leiden. In plaats daarvan **wordt het aantal replica's voor het model** binnen de grenzen van het fysieke cluster geschaald. Als u het aantal knoop punten in het cluster wilt schalen, kunt u het cluster hand matig schalen of [de AKS-cluster-automatische schaalr configureren](../aks/cluster-autoscaler.md).
 
 Automatisch schalen kan worden bepaald door de instelling `autoscale_target_utilization` , `autoscale_min_replicas` en `autoscale_max_replicas` voor de AKS-webservice. In het volgende voor beeld ziet u hoe u automatisch schalen inschakelt:
 
@@ -188,7 +188,7 @@ concurrentRequests = targetRps * reqTime / targetUtilization
 replicas = ceil(concurrentRequests / maxReqPerContainer)
 ```
 
-`autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` Zie de naslag gids voor [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true) voor meer informatie over het instellen van en.
+`autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` Zie de naslag gids voor [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) voor meer informatie over het instellen van en.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellen implementeren op AKS met behulp van gecontroleerde implementatie (preview-versie)
 
@@ -201,7 +201,7 @@ Analyseer en promoot model versies op een gecontroleerde manier met behulp van e
     >
     > De eerste versie van het eind punt die wordt gemaakt, wordt automatisch geconfigureerd als standaard. U kunt dit wijzigen door in te stellen `is_default=True` Wanneer u een eindpunt versie maakt of bijwerkt.
      
-* Een eindpunt versie als een __controle__ of __behandeling__labelen. Zo kan de huidige versie van het productie-eind punt het besturings element zijn, terwijl mogelijke nieuwe modellen worden geïmplementeerd als behandelings versies. Na het evalueren van de prestaties van de behandelings versies, kan deze worden gepromoveerd tot de nieuwe productie/het andere besturings element.
+* Een eindpunt versie als een __controle__ of __behandeling__ labelen. Zo kan de huidige versie van het productie-eind punt het besturings element zijn, terwijl mogelijke nieuwe modellen worden geïmplementeerd als behandelings versies. Na het evalueren van de prestaties van de behandelings versies, kan deze worden gepromoveerd tot de nieuwe productie/het andere besturings element.
 
     > [!NOTE]
     > U kunt slechts __één__ besturings element hebben. U kunt meerdere behandelingen hebben.
@@ -302,7 +302,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Als u een sleutel opnieuw moet genereren, gebruikt u [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true)
+> Als u een sleutel opnieuw moet genereren, gebruikt u [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>Verificatie met tokens
 
@@ -324,12 +324,12 @@ print(token)
 >
 > Micro soft raadt u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster. Als u wilt verifiëren met een token, wordt er door de webservice een aanroep naar de regio waarin uw Azure Machine Learning-werk ruimte is gemaakt. Als de regio van uw werk ruimte niet beschikbaar is, kunt u geen token voor uw webservice ophalen, zelfs als uw cluster zich in een andere regio bevindt dan uw werk ruimte. Dit leidt ertoe dat op tokens gebaseerde verificatie niet beschikbaar is totdat de regio van de werk ruimte weer beschikbaar is. Daarnaast is de afstand tussen de regio van uw cluster en de regio van uw werk ruimte groter, hoe langer het duurt om een token op te halen.
 >
-> Als u een token wilt ophalen, moet u de Azure Machine Learning SDK of de opdracht [AZ ml service Get-access-token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-service-get-access-token) gebruiken.
+> Als u een token wilt ophalen, moet u de Azure Machine Learning SDK of de opdracht [AZ ml service Get-access-token](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) gebruiken.
 
 
-### <a name="vulnerability-scanning"></a>Scannen van beveiligings problemen
+### <a name="vulnerability-scanning"></a>Scannen op beveiligingsproblemen
 
-Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor verschillende hybride cloudworkloads. U moet Azure Security Center toestaan om uw resources te scannen en de aanbevelingen te volgen. Zie [integratie van Azure Kubernetes Services met Security Center](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)voor meer informatie.
+Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor verschillende hybride cloudworkloads. U moet Azure Security Center toestaan om uw resources te scannen en de aanbevelingen te volgen. Zie [integratie van Azure Kubernetes Services met Security Center](../security-center/defender-for-kubernetes-introduction.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

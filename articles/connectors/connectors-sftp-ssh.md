@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 tags: connectors
-ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823624"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324240"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met behulp van SSH en Azure Logic Apps
 
@@ -40,6 +40,8 @@ U kunt triggers gebruiken die gebeurtenissen op uw SFTP-server controleren en ui
 Zie de sectie [SFTP-SSH versus SFTP vergelijken](#comparison) verderop in dit onderwerp voor verschillen tussen de SFTP-SSH-connector en de SFTP-connector.
 
 ## <a name="limits"></a>Limieten
+
+* De SFTP-SSH-connector ondersteunt verificatie van de persoonlijke sleutel of wachtwoord verificatie, niet beide.
 
 * SFTP-SSH-acties die ondersteuning bieden voor [segmentering](../logic-apps/logic-apps-handle-large-messages.md) , kunnen bestanden van Maxi maal 1 GB afhandelen, terwijl SFTP-SSH-acties die geen ondersteuning bieden voor bestands verwerking, bestanden tot 50 MB kunnen verwerken. Hoewel de standaard grootte van het segment 15 MB is, kan deze grootte dynamisch worden gewijzigd, beginnend bij 5 MB en geleidelijk toenemen tot een maximum van 50 MB, op basis van factoren zoals netwerk latentie, Server reactietijd, enzovoort.
 
@@ -84,7 +86,7 @@ Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de S
 
 * Biedt de actie **Bestands naam wijzigen** , waarmee een bestand op de sftp-server wordt hernoemd.
 
-* Hiermee wordt de verbinding met de SFTP-server *Maxi maal 1 uur*in de cache opgeslagen, waardoor de prestaties worden verbeterd en het aantal pogingen om verbinding te maken met de server wordt verminderd. Als u de duur voor dit cache gedrag wilt instellen, bewerkt u de eigenschap [**' ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) in de SSH-configuratie op de sftp-server.
+* Hiermee wordt de verbinding met de SFTP-server *Maxi maal 1 uur* in de cache opgeslagen, waardoor de prestaties worden verbeterd en het aantal pogingen om verbinding te maken met de server wordt verminderd. Als u de duur voor dit cache gedrag wilt instellen, bewerkt u de eigenschap [**' ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) in de SSH-configuratie op de sftp-server.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -96,16 +98,16 @@ Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de S
   >
   > De SFTP-SSH-connector ondersteunt *alleen* deze indelingen, algoritmen en vinger afdrukken van persoonlijke sleutels:
   >
-  > * **Indelingen van persoonlijke sleutels**: RSA-sleutels (Rivest Shamir Adleman) en DSA (Digital Signature Algorithm) in zowel de OpenSSH-als de SSH.com-indeling. Als uw persoonlijke sleutel zich in de PuTTy-bestands indeling (. ppk) bevindt, [moet u eerst de sleutel converteren naar de OpenSSH-bestands indeling (. pem)](#convert-to-openssh).
+  > * **Indelingen van persoonlijke sleutels** : RSA-sleutels (Rivest Shamir Adleman) en DSA (Digital Signature Algorithm) in zowel de OpenSSH-als de SSH.com-indeling. Als uw persoonlijke sleutel zich in de PuTTy-bestands indeling (. ppk) bevindt, [moet u eerst de sleutel converteren naar de OpenSSH-bestands indeling (. pem)](#convert-to-openssh).
   >
-  > * **Versleutelings algoritmen**: des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC en AES-256-cbc
+  > * **Versleutelings algoritmen** : des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC en AES-256-cbc
   >
-  > * **Vinger afdruk**: MD5
+  > * **Vinger afdruk** : MD5
   >
-  > Nadat u de SFTP-SSH-trigger of actie die u wilt toevoegen aan uw logische app hebt toegevoegd, moet u verbindings gegevens voor uw SFTP-server opgeven. Wanneer u uw persoonlijke SSH-sleutel voor deze verbinding opgeeft, ***hoeft u de sleutel niet hand matig in te voeren of te bewerken***. Dit kan ertoe leiden dat de verbinding mislukt. Zorg er in plaats daarvan voor dat u ***de sleutel kopieert*** uit uw persoonlijke SSH-sleutel bestand en ***plak*** die sleutel in de verbindings gegevens. 
+  > Nadat u de SFTP-SSH-trigger of actie die u wilt toevoegen aan uw logische app hebt toegevoegd, moet u verbindings gegevens voor uw SFTP-server opgeven. Wanneer u uw persoonlijke SSH-sleutel voor deze verbinding opgeeft, *_hoeft u niet hand matig de sleutel_* _ in te voeren of te bewerken. Dit kan ertoe leiden dat de verbinding mislukt. Zorg er in plaats daarvan voor dat u _*_de sleutel kopieert_*_ uit uw persoonlijke SSH-sleutel bestand en _*_plak_*_ die sleutel in de verbindings gegevens. 
   > Zie de sectie [verbinding maken met SFTP met SSH verderop in](#connect) dit artikel voor meer informatie.
 
-* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * De logische app waar u toegang wilt krijgen tot uw SFTP-account. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een SFTP-SSH-trigger. Als u een SFTP-SSH-actie wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
@@ -145,7 +147,7 @@ Als uw persoonlijke sleutel zich in de PuTTy-indeling bevindt, waarbij de bestan
 
 1. Als u dit nog niet hebt gedaan, [downloadt u het hulp programma voor de nieuwste putty-Generator (puttygen.exe)](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)en start u het hulp programma.
 
-1. Selecteer **laden**op dit scherm.
+1. Selecteer **laden** op dit scherm.
 
    ![Selecteer laden](./media/connectors-sftp-ssh/puttygen-load.png)
 
@@ -195,11 +197,11 @@ Als u een bestand op uw SFTP-server wilt maken, kunt u de actie SFTP-SSH- **best
 
    1. Selecteer in het menu **bewerken** in Klad blok de optie **Alles selecteren**.
 
-   1. Selecteer **Edit**  >  **kopie**bewerken.
+   1. Selecteer **Edit**  >  **kopie** bewerken.
 
-   1. Plak de *volledige* sleutel die u hebt gekopieerd in de eigenschap van de **persoonlijke SSH-sleutel** , die ondersteuning biedt voor meerdere regels in de SFTP-SSH-trigger of de actie die u hebt toegevoegd.  ***Zorg ervoor dat u*** de sleutel plakt. ***Voer de sleutel niet hand matig in of bewerk deze***.
+   1. Plak de *volledige* sleutel die u hebt gekopieerd in de eigenschap van de **persoonlijke SSH-sleutel** , die ondersteuning biedt voor meerdere regels in de SFTP-SSH-trigger of de actie die u hebt toegevoegd.  **_Zorg ervoor dat u_* de sleutel plakt. _*_Voer de sleutel niet hand matig in of bewerk deze_*_.
 
-1. Wanneer u klaar bent met het invoeren van de verbindings gegevens, selecteert u **maken**.
+1. Wanneer u klaar bent met het invoeren van de verbindings gegevens, selecteert u _ * maken * *.
 
 1. Geef nu de gegevens op die nodig zijn voor de geselecteerde trigger of actie en blijf de werk stroom van uw logische app bouwen.
 
@@ -209,11 +211,11 @@ Als u een bestand op uw SFTP-server wilt maken, kunt u de actie SFTP-SSH- **best
 
 Als u het standaard adaptieve gedrag dat door de segmentering wordt gebruikt, wilt overschrijven, kunt u een constante segment grootte van 5 MB tot 50 MB opgeven.
 
-1. Selecteer de knop met weglatings tekens (**...**) in de rechter bovenhoek van de actie en selecteer vervolgens **instellingen**.
+1. Selecteer de knop met weglatings tekens ( **...** ) in de rechter bovenhoek van de actie en selecteer vervolgens **instellingen**.
 
    ![SFTP-SSH-instellingen openen](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. Voer onder **inhouds overdracht**, in de eigenschap **segment grootte** , een geheel getal in van `5` tot `50` , bijvoorbeeld: 
+1. Voer onder **inhouds overdracht** , in de eigenschap **segment grootte** , een geheel getal in van `5` tot `50` , bijvoorbeeld: 
 
    ![Geef de segment grootte op die u in plaats daarvan wilt gebruiken](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
@@ -227,7 +229,7 @@ Als u het standaard adaptieve gedrag dat door de segmentering wordt gebruikt, wi
 
 Deze trigger start een werk stroom voor logische apps wanneer een bestand wordt toegevoegd aan of gewijzigd op een SFTP-server. U kunt bijvoorbeeld een voor waarde toevoegen waarmee de inhoud van het bestand wordt gecontroleerd en de inhoud wordt opgehaald op basis van het feit of de inhoud voldoet aan een opgegeven voor waarde. U kunt vervolgens een actie toevoegen waarmee de inhoud van het bestand wordt opgehaald en die inhoud in een map op de SFTP-server plaatsen.
 
-**Enter prise-voor beeld**: u kunt deze trigger gebruiken om een SFTP-map te bewaken voor nieuwe bestanden die klant orders vertegenwoordigen. U kunt vervolgens een SFTP-actie gebruiken, zoals het **ophalen van bestands inhoud** , zodat u de inhoud van de bestelling krijgt voor verdere verwerking en die order in een Data Base orders opslaat.
+**Enter prise-voor beeld** : u kunt deze trigger gebruiken om een SFTP-map te bewaken voor nieuwe bestanden die klant orders vertegenwoordigen. U kunt vervolgens een SFTP-actie gebruiken, zoals het **ophalen van bestands inhoud** , zodat u de inhoud van de bestelling krijgt voor verdere verwerking en die order in een Data Base orders opslaat.
 
 <a name="get-content"></a>
 
@@ -253,21 +255,23 @@ Als u het verplaatsen van het bestand niet kunt voor komen of vertragen, kunt u 
 
 1. Als u later de meta gegevens van dit bestand nodig hebt, kunt u de actie **bestand meta gegevens ophalen** gebruiken.
 
+<a name="connection-attempt-failed"></a>
+
 ### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504 fout: ' een verbindings poging is mislukt omdat de verbonden partij niet op de juiste manier heeft gereageerd of een verbinding tot stand is gebracht, omdat de verbinding met de SFTP-server meer dan 00:00:30 seconden heeft plaatsgevonden
 
-Deze fout kan optreden wanneer de logische app geen verbinding kan maken met de SFTP-server. Er kunnen verschillende redenen zijn om het probleem op te lossen met de volgende aspecten. 
+Deze fout kan optreden wanneer de logische app geen verbinding kan maken met de SFTP-server. Er kunnen verschillende redenen zijn om dit probleem te verhelpen, dus probeer deze opties voor probleem oplossing:
 
-1. De time-out van de verbinding is 20 seconden. Zorg ervoor dat de SFTP-server goede prestaties heeft en dat de intermidiate-apparaten, zoals firewall, niet veel overhead toevoegen. 
+* De verbindingstime-out is 20 seconden. Controleer of de SFTP-server goede prestaties en tussenliggende apparaten heeft, zoals firewalls, maar geen overhead toevoegen. 
 
-2. Als er een firewall is betrokken, moet u ervoor zorgen dat de IP-adressen van de **beheerde connector** worden toegevoegd aan de lijst goedgekeurd. U kunt deze IP-adressen voor de regio van de logische app vinden [**hier**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+* Als u een firewall hebt ingesteld, moet u ervoor zorgen dat u de **IP-** adressen van de beheerde connector aan de goedgekeurde lijst toevoegt. Zie [limieten en configuratie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#multi-tenant-azure---outbound-ip-addresses)als u de IP-adressen voor de regio van de logische app wilt vinden.
 
-3. Als dit een onregelmatig probleem is, moet u de instelling voor opnieuw proberen testen om te zien of een hoger aantal nieuwe pogingen dan de standaard 4 mogelijk zou zijn.
+* Als deze fout regel matig optreedt, wijzigt u de beleids instelling voor **opnieuw proberen** voor de SFTP-SSH-actie in een aantal pogingen hoger dan de standaard vier nieuwe pogingen.
 
-4. Controleer of de SFTP-server een limiet voor het aantal verbindingen van elk IP-adres heeft. Als dat het geval is, moet u mogelijk het aantal gelijktijdige logische app-exemplaren beperken. 
+* Controleer of de SFTP-server een limiet voor het aantal verbindingen van elk IP-adres heeft. Als er een limiet bestaat, moet u mogelijk het aantal gelijktijdige logische app-exemplaren beperken.
 
-5. De eigenschap [**' ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) wordt verhoogd naar een waarde van 1 uur in de SSH-configuratie op uw SFTP-server om de kosten voor de verbindings inrichting te verminderen.
+* Verhoog de eigenschap [**' ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) in de SSH-configuratie voor uw SFTP-server om de kosten voor de verbinding te verlagen.
 
-6. U kunt het SFTP-server logboek controleren om te zien of de aanvraag van de logische app de SFTP-server ooit heeft bereikt. Mogelijk neemt u ook netwerk tracering op uw firewall en uw SFTP-server op om verder te gaan met het connectiviteits probleem.
+* Bekijk het SFTP-server logboek om te controleren of de SFTP-server is bereikt met de aanvraag vanuit de logische app. Als u meer informatie wilt over het connectiviteits probleem, kunt u ook een netwerk tracering uitvoeren op uw firewall en op uw SFTP-server.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 

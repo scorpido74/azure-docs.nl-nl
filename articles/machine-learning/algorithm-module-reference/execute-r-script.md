@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 0a3dbb42e69978a8a4895f44b57cc3ca5353e799
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330390"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323741"
 ---
 # <a name="execute-r-script-module"></a>R-script module uitvoeren
 
@@ -121,7 +121,7 @@ Nadat de pijplijn uitvoering is voltooid, kunt u een voor beeld van de afbeeldin
 
 ## <a name="access-to-registered-dataset"></a>Toegang tot geregistreerde gegevensset
 
-U kunt de volgende voorbeeld code [gebruiken om toegang te krijgen tot de geregistreerde gegevens sets](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script) in uw werk ruimte:
+U kunt de volgende voorbeeld code [gebruiken om toegang te krijgen tot de geregistreerde gegevens sets](../how-to-create-register-datasets.md) in uw werk ruimte:
 
 ```R
         azureml_main <- function(dataframe1, dataframe2){
@@ -147,11 +147,11 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
 
 1. Verbind alle invoer die het script nodig heeft. Invoer zijn optioneel en kunnen gegevens en aanvullende R-code bevatten.
 
-    * **Dataset1**: referentie de eerste invoer als `dataframe1` . De invoer gegevensset moet zijn opgemaakt als een CSV-, TSV-of ARFF-bestand. U kunt ook verbinding maken met een Azure Machine Learning-gegevensset.
+    * **Dataset1** : referentie de eerste invoer als `dataframe1` . De invoer gegevensset moet zijn opgemaakt als een CSV-, TSV-of ARFF-bestand. U kunt ook verbinding maken met een Azure Machine Learning-gegevensset.
 
-    * **Dataset2**: verwijst naar de tweede invoer als `dataframe2` . Deze gegevensset moet ook worden geformatteerd als een CSV-, TSV-of ARFF-bestand of als een Azure Machine Learning-gegevensset.
+    * **Dataset2** : verwijst naar de tweede invoer als `dataframe2` . Deze gegevensset moet ook worden geformatteerd als een CSV-, TSV-of ARFF-bestand of als een Azure Machine Learning-gegevensset.
 
-    * **Script bundel**: de derde invoer accepteert zip-bestanden. Een zip-bestand kan meerdere bestanden en meerdere bestands typen bevatten.
+    * **Script bundel** : de derde invoer accepteert zip-bestanden. Een zip-bestand kan meerdere bestanden en meerdere bestands typen bevatten.
 
 1. Typ of plak een geldig R-script in het tekstvak **R-script** .
 
@@ -216,7 +216,7 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
     }
     ```
 
-1.  Voer voor **wille keurige Seed**een waarde in die in de R-omgeving moet worden gebruikt als de wille keurige Seed-waarde. Deze para meter is gelijk aan het aanroepen `set.seed(value)` van de R-code.  
+1.  Voer voor **wille keurige Seed** een waarde in die in de R-omgeving moet worden gebruikt als de wille keurige Seed-waarde. Deze para meter is gelijk aan het aanroepen `set.seed(value)` van de R-code.  
 
 1. Verzend de pijp lijn.  
 
@@ -237,7 +237,7 @@ Er zijn veel manieren om uw pijp lijn uit te breiden met behulp van aangepaste R
 
 De script module Execute R ondersteunt wille keurige R-script bestanden als invoer. Als u deze wilt gebruiken, moet u deze uploaden naar uw werk ruimte als onderdeel van het zip-bestand.
 
-1. Als u een zip-bestand met R-code naar uw werk ruimte wilt uploaden, gaat u naar de pagina **gegevens sets** . Selecteer **gegevensset maken**en selecteer vervolgens **uit lokaal bestand** en de optie type **Bestands** gegevensset.  
+1. Als u een zip-bestand met R-code naar uw werk ruimte wilt uploaden, gaat u naar de pagina **gegevens sets** . Selecteer **gegevensset maken** en selecteer vervolgens **uit lokaal bestand** en de optie type **Bestands** gegevensset.  
 
 1. Controleer of het gezipte bestand wordt weer gegeven in **mijn gegevens sets** onder de categorie **gegevens sets** in de structuur van de linker module.
 
@@ -505,4 +505,4 @@ De volgende vooraf geïnstalleerde R-pakketten zijn momenteel beschikbaar:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

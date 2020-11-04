@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 18f9af0198c7a89b607630c686fbf8dafdd01a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cdfe2ebe79abb9649ac497a6ecddda8918b951
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841940"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322300"
 ---
-# <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning?
+# <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn compute-doelen in Azure Machine Learning?
 
 Een *Compute-doel* is een aangewezen reken resource of omgeving waar u uw trainings script uitvoert of uw service-implementatie host. Deze locatie is mogelijk uw lokale machine of een cloud-gebaseerde Compute-resource. Met Compute-doelen kunt u op een later tijdstip uw berekenings omgeving wijzigen zonder dat u de code hoeft te wijzigen.
 
@@ -54,7 +54,7 @@ Bij het uitvoeren van een dematiging maakt Azure Machine Learning een docker-con
 
 * Als een _batch_ -defactorion-eind punt dat wordt gebruikt om periodiek batches gegevens te verwerken. Met batch-interferenties wordt gebruikgemaakt van [Azure machine learning reken clusters](how-to-create-attach-compute-cluster.md).
 
-* Naar een _IOT-apparaat_ (preview-versie). Implementatie naar een IoT-apparaat is alleen afhankelijk van Azure Machine Learning voor het bouwen van de docker-container. Van daaruit wordt het geïmplementeerd met behulp van Azure IoT Edge. Zie [Deploy as a IOT Edge module (preview)](/azure/iot-edge/tutorial-deploy-machine-learning)voor meer informatie.
+* Naar een _IOT-apparaat_ (preview-versie). Implementatie naar een IoT-apparaat is alleen afhankelijk van Azure Machine Learning voor het bouwen van de docker-container. Van daaruit wordt het geïmplementeerd met behulp van Azure IoT Edge. Zie [Deploy as a IOT Edge module (preview)](../iot-edge/tutorial-deploy-machine-learning.md)voor meer informatie.
 
 Meer informatie over [waar en hoe u uw model implementeert in een compute-doel](how-to-deploy-and-where.md).
 
@@ -89,7 +89,7 @@ Bij het maken worden deze reken resources automatisch opgenomen in uw werk ruimt
 
 ### <a name="supported-vm-series-and-sizes"></a>Ondersteunde VM-reeksen en-groottes
 
-Wanneer u de grootte van een knoop punt selecteert voor een beheerde Compute-resource in Azure Machine Learning, kunt u kiezen uit beschik bare VM-grootten in Azure. Azure biedt tal van grootten voor Linux en Windows voor verschillende werk belastingen. Zie [VM-typen en-grootten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie.
+Wanneer u de grootte van een knoop punt selecteert voor een beheerde Compute-resource in Azure Machine Learning, kunt u kiezen uit beschik bare VM-grootten in Azure. Azure biedt tal van grootten voor Linux en Windows voor verschillende werk belastingen. Zie [VM-typen en-grootten](../virtual-machines/sizes.md)voor meer informatie.
 
 Er zijn enkele uitzonde ringen en beperkingen voor het kiezen van een VM-grootte:
 
@@ -133,7 +133,7 @@ De huidige aanbiedingen voor geïsoleerde VM'S zijn onder andere:
 
 *RDMA-compatibel
 
-Zie voor meer informatie over isolatie [isolatie in de open bare Azure-Cloud](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices).
+Zie voor meer informatie over isolatie [isolatie in de open bare Azure-Cloud](../security/fundamentals/isolation-choices.md).
 
 ## <a name="unmanaged-compute"></a>Onbeheerde compute
 

@@ -1,6 +1,6 @@
 ---
-title: T-SQL-weer gaven met Synapse SQL
-description: Tips voor het gebruik van T-SQL-weer gaven en het ontwikkelen van oplossingen met Synapse SQL.
+title: T-SQL-weer gaven met behulp van SQL-groepen
+description: Tips voor het gebruik van T-SQL-weer gaven en het ontwikkelen van oplossingen met een exclusieve SQL-groep en serverloze SQL-groep (preview) in azure Synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,15 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fafa0c2e1b02cc49bfb852ed7770b0927b0e9334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e416974d1326415e9a459e39d7bdea8e3fd8a84c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032721"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323808"
 ---
-# <a name="t-sql-views-using-synapse-sql"></a>T-SQL-weer gaven met Synapse SQL
-In dit artikel vindt u tips voor het gebruik van T-SQL-weer gaven en het ontwikkelen van oplossingen met Synapse SQL. 
+# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-preview--in-azure-synapse-analytics"></a>T-SQL-weer gaven met exclusieve SQL-groep en serverloze SQL-groep (preview) in azure Synapse Analytics
+
+In dit artikel vindt u tips voor het gebruik van T-SQL-weer gaven en het ontwikkelen van oplossingen met een exclusieve SQL-groep en serverloze SQL-pool (preview) in azure Synapse Analytics.
 
 ## <a name="why-use-views"></a>Waarom weer gaven gebruiken
 
@@ -26,12 +27,7 @@ Weer gaven kunnen op verschillende manieren worden gebruikt om de kwaliteit van 
 ### <a name="sql-pool---create-view"></a>SQL-groep-weer gave maken
 
 > [!NOTE]
-> **SQL-groep**: de syntaxis voor de weer gave Create wordt niet in dit artikel besproken. Zie de documentatie voor het [maken van weer gaven](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
-
-### <a name="sql-on-demand-preview---create-view"></a>SQL on-demand (preview): weer gave maken
-
-> [!NOTE]
-> **SQL on-demand**: de syntaxis voor de weer gave Create wordt niet beschreven in dit artikel. Zie de documentatie voor het [maken van weer gaven](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
+> De syntaxis voor de weer gave CREATE wordt niet beschreven in dit artikel. Zie de documentatie voor het [maken van weer gaven](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
 
 ## <a name="architectural-abstraction"></a>Samen vatting van architectuur
 
@@ -54,7 +50,6 @@ FROM   dbo.DimDate_stg AS stg
 
 RENAME OBJECT DimDate TO DimDate_Old;
 RENAME OBJECT DimDate_New TO DimDate;
-
 ```
 
 Houd er wel op dat deze benadering kan leiden tot tabellen die worden weer gegeven en weer gegeven in de weer gave van een gebruiker en prompts "tabel bestaat niet". Weer gaven kunnen worden gebruikt om gebruikers een consistente presentatielaag te geven terwijl de namen van de onderliggende objecten worden gewijzigd.

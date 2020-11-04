@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6261e31fd84b9471fa4ea5d30e1d6a4afbac9115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c0a02c2cbc11002f8e0bf0295dab91de5d0365
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085375"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323678"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Functies maken voor gegevens in een Hadoop-cluster met behulp van Hive-query's
 In dit document wordt beschreven hoe u functies maakt voor gegevens die zijn opgeslagen in een Azure HDInsight Hadoop cluster met behulp van Hive-query's. Deze Hive-query's maken gebruik van Inge sloten Hive User-Defined functions (UDFs), de scripts waarvoor wordt voorzien.
@@ -25,15 +25,15 @@ De bewerkingen die nodig zijn om functies te maken, kunnen geheugen intensief zi
 
 Voor beelden van de query's die worden gepresenteerd, zijn specifiek voor de [NYC-gegevens](https://chriswhong.com/open-data/foil_nyc_taxi/) scenario's in de [github-opslag plaats](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Deze query's hebben al een gegevens schema opgegeven en zijn gereed om te worden verzonden om te worden uitgevoerd. In de laatste sectie zijn para meters die gebruikers kunnen afstemmen, zodat de prestaties van Hive-query's kunnen worden verbeterd.
 
-Deze taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze taak is een stap in het [team data Science process (TDSP)](./index.yml).
 
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u het volgende hebt:
 
 * Een Azure-opslag account gemaakt. Als u instructies nodig hebt, raadpleegt u [een Azure Storage account maken](../../storage/common/storage-account-create.md)
-* Er is een aangepast Hadoop-cluster ingericht met de HDInsight-service.  Zie [Azure HDInsight Hadoop clusters aanpassen voor geavanceerde analyse](customize-hadoop-cluster.md)als u instructies nodig hebt.
+* Er is een aangepast Hadoop-cluster ingericht met de HDInsight-service.  Zie [Azure HDInsight Hadoop clusters aanpassen voor geavanceerde analyse](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)als u instructies nodig hebt.
 * De gegevens zijn geüpload naar Hive-tabellen in Azure HDInsight Hadoop clusters. Als dat niet het geval is, volgt u [gegevens maken en laden in Hive-tabellen](move-hive-tables.md) om eerst gegevens naar Hive-tabellen te uploaden.
-* Externe toegang tot het cluster is ingeschakeld. Zie [toegang tot het hoofd knooppunt van het Hadoop-cluster](customize-hadoop-cluster.md)als u instructies nodig hebt.
+* Externe toegang tot het cluster is ingeschakeld. Zie [toegang tot het hoofd knooppunt van het Hadoop-cluster](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)als u instructies nodig hebt.
 
 ## <a name="feature-generation"></a><a name="hive-featureengineering"></a>Onderdelen genereren
 In deze sectie worden verschillende voor beelden van de manieren waarop functies kunnen worden gegenereerd met hive-query's beschreven. Zodra u extra functies hebt gegenereerd, kunt u deze als kolommen toevoegen aan de bestaande tabel of een nieuwe tabel maken met de extra functies en de primaire sleutel, die vervolgens kunnen worden gekoppeld aan de oorspronkelijke tabel. Dit zijn de voor beelden die worden weer gegeven:
@@ -104,7 +104,7 @@ select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime f
 from <databasename>.<tablename>;
 ```
 
-In deze query geldt dat als het een *\<datetime field>* patroon heeft dat lijkt op * \<pattern of the datetime field> * *03/26/2015 12:04:39* `'MM/dd/yyyy HH:mm:ss'` . Gebruikers kunnen de app testen
+In deze query geldt dat als het een *\<datetime field>* patroon heeft dat lijkt op *\<pattern of the datetime field>* *03/26/2015 12:04:39* `'MM/dd/yyyy HH:mm:ss'` . Gebruikers kunnen de app testen
 
 ```hiveql
 select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
@@ -124,7 +124,7 @@ from <databasename>.<tablename>;
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>De afstanden tussen sets van GPS-coördinaten berekenen
 De query die in deze sectie wordt gegeven, kan rechtstreeks worden toegepast op de NYC-gegevens van de taxi-reis. Het doel van deze query is om te laten zien hoe een Inge sloten wiskundige functie in Hive moet worden toegepast om functies te genereren.
 
-De velden die in deze query worden gebruikt, zijn de GPS-coördinaten van pickup-en dropoff-locaties, de naam van de *ophaal \_ lengte*, *afhalen \_ breedte*graad, *dropoff- \_ lengte graad*en *dropoff \_ breedte graad*. De query's die de directe afstand berekenen tussen de coördinaten voor ophalen en dropoff zijn:
+De velden die in deze query worden gebruikt, zijn de GPS-coördinaten van pickup-en dropoff-locaties, de naam van de *ophaal \_ lengte* , *afhalen \_ breedte* graad, *dropoff- \_ lengte graad* en *dropoff \_ breedte graad*. De query's die de directe afstand berekenen tussen de coördinaten voor ophalen en dropoff zijn:
 
 ```hiveql
 set R=3959;
@@ -144,7 +144,7 @@ and dropoff_latitude between 30 and 90
 limit 10;
 ```
 
-De wiskundige vergelijkingen waarmee de afstand tussen twee GPS-coördinaten worden berekend, vindt u op de site met <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Gebeweegde type scripts</a> , ontworpen door Peter Lapisu. In deze Java script is de functie `toRad()` gewoon *lat_or_lon*pi/180, waarmee graden wordt geconverteerd naar radialen. *Lat_or_lon* is hier de breedte graad of lengte graad. Component bevat de functie niet `atan2` , maar biedt de functie `atan` . de `atan2` functie wordt geïmplementeerd door de `atan` functie in de bovenstaande Hive-query met behulp van de definitie in <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
+De wiskundige vergelijkingen waarmee de afstand tussen twee GPS-coördinaten worden berekend, vindt u op de site met <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Gebeweegde type scripts</a> , ontworpen door Peter Lapisu. In deze Java script is de functie `toRad()` gewoon *lat_or_lon* pi/180, waarmee graden wordt geconverteerd naar radialen. *Lat_or_lon* is hier de breedte graad of lengte graad. Component bevat de functie niet `atan2` , maar biedt de functie `atan` . de `atan2` functie wordt geïmplementeerd door de `atan` functie in de bovenstaande Hive-query met behulp van de definitie in <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
 
 ![Werkruimte maken](./media/create-features-hive/atan2new.png)
 
@@ -153,7 +153,7 @@ Een volledige lijst met Inge sloten Hive-Udf's vindt u in de sectie **ingebouwde
 ## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Geavanceerde onderwerpen: Hive-para meters afstemmen om de query snelheid te verbeteren
 De standaard parameter instellingen van het Hive-cluster zijn mogelijk niet geschikt voor de Hive-query's en de gegevens die door de query's worden verwerkt. In deze sectie worden enkele para meters beschreven die gebruikers kunnen afstemmen om de prestaties van Hive-query's te verbeteren. Gebruikers moeten de para meters voor het afstemmen van query's toevoegen vóór de query's voor het verwerken van gegevens.
 
-1. **Java-heapruimte**: voor query's waarbij grote gegevens sets worden samengevoegd of waarmee lange **records worden verwerkt, is een** van de meest voorkomende fouten opgetreden. Deze fout kan worden vermeden door het instellen van de para meters *MapReduce. map. java. kiest* en *MapReduce. Task. io.* . Hier volgt een voorbeeld:
+1. **Java-heapruimte** : voor query's waarbij grote gegevens sets worden samengevoegd of waarmee lange **records worden verwerkt, is een** van de meest voorkomende fouten opgetreden. Deze fout kan worden vermeden door het instellen van de para meters *MapReduce. map. java. kiest* en *MapReduce. Task. io.* . Hier volgt een voorbeeld:
    
     ```hiveql
     set mapreduce.map.java.opts=-Xmx4096m;
@@ -162,20 +162,20 @@ De standaard parameter instellingen van het Hive-cluster zijn mogelijk niet gesc
 
     Met deze para meter wordt er 4 GB geheugen toegewezen aan de opslag ruimte voor Java-heaps, en wordt het sorteren efficiënter door meer geheugen toe te wijzen. Het is een goed idee om met deze toewijzingen af te spelen als er sprake is van fout fouten met betrekking tot de heap-ruimte.
 
-1. **Grootte van DFS-blok**: met deze para meter wordt de kleinste eenheid van gegevens ingesteld die het bestands systeem opslaat. Als de grootte van het DFS-blok bijvoorbeeld 128 MB is, worden gegevens met een grootte van minder dan en Maxi maal 128 MB opgeslagen in één blok. Gegevens die groter zijn dan 128 MB, worden toegewezen aan extra blokken. 
+1. **Grootte van DFS-blok** : met deze para meter wordt de kleinste eenheid van gegevens ingesteld die het bestands systeem opslaat. Als de grootte van het DFS-blok bijvoorbeeld 128 MB is, worden gegevens met een grootte van minder dan en Maxi maal 128 MB opgeslagen in één blok. Gegevens die groter zijn dan 128 MB, worden toegewezen aan extra blokken. 
 2. Het kiezen van een kleine blok grootte leidt tot grote overhead in Hadoop omdat het naam knooppunt veel meer aanvragen moet verwerken om het relevante blok dat bij het bestand hoort te vinden. Een aanbevolen instelling voor het omgaan met gigabytes (of grotere) gegevens is:
 
     ```hiveql
     set dfs.block.size=128m;
     ```
 
-2. De **samenvoegings bewerking in de Hive wordt geoptimaliseerd**: Hoewel samen voegingen in het Framework van de kaart of het raam werk normaal gesp roken plaatsvinden in de reductie fase, kunnen enorm winsten worden gerealiseerd door het plannen van samen voegingen in de kaart fase (ook wel ' mapjoins ' genoemd). Stel deze optie in:
+2. De **samenvoegings bewerking in de Hive wordt geoptimaliseerd** : Hoewel samen voegingen in het Framework van de kaart of het raam werk normaal gesp roken plaatsvinden in de reductie fase, kunnen enorm winsten worden gerealiseerd door het plannen van samen voegingen in de kaart fase (ook wel ' mapjoins ' genoemd). Stel deze optie in:
    
     ```hiveql
     set hive.auto.convert.join=true;
     ```
 
-3. **Opgeven van het aantal mappers naar Hive**: Hoewel Hadoop de gebruiker in staat stelt het aantal verminderers in te stellen, wordt het aantal mappers doorgaans niet ingesteld door de gebruiker. Een slag waarmee u rekening moet houden met een zekere mate van controle op dit nummer is het kiezen van de Hadoop-variabelen *mapred. min. split. size* en *mapred. max. split. size* als de grootte van elke kaart taak wordt bepaald door:
+3. **Opgeven van het aantal mappers naar Hive** : Hoewel Hadoop de gebruiker in staat stelt het aantal verminderers in te stellen, wordt het aantal mappers doorgaans niet ingesteld door de gebruiker. Een slag waarmee u rekening moet houden met een zekere mate van controle op dit nummer is het kiezen van de Hadoop-variabelen *mapred. min. split. size* en *mapred. max. split. size* als de grootte van elke kaart taak wordt bepaald door:
    
     ```hiveql
     num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
@@ -198,4 +198,3 @@ De standaard parameter instellingen van het Hive-cluster zijn mogelijk niet gesc
     set mapred.reduce.tasks=128;
     set mapred.tasktracker.reduce.tasks.maximum=128;
     ```
-

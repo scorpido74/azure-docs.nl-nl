@@ -11,21 +11,23 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: e8f78d6031e57da42e1d69587aedca0763c9fec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b2c03c5c7ea8c65cb1cde3cbdb73b6bb838dc06
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289069"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324461"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Labels van query's gebruiken in Synapse SQL
+
 In dit artikel vindt u essentiële tips voor het gebruik van query-labels in Synapse SQL.
 
 > [!NOTE]
-> SQL on-demand (preview) biedt geen ondersteuning voor het uitvoeren van query's.
+> SQL-groep zonder server (preview) biedt geen ondersteuning voor het uitvoeren van query's.
 
 ## <a name="what-are-query-labels"></a>Wat zijn query labels?
-SQL-pool ondersteunt een concept met de naam query labels. We kijken naar een voor beeld voordat u naar een andere diepte gaat:
+
+De toegewezen SQL-groep ondersteunt een concept met de naam query labels. We kijken naar een voor beeld voordat u naar een andere diepte gaat:
 
 ```sql
 SELECT *

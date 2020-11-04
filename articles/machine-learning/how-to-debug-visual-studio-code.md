@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530671"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325583"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interactieve fout opsporing met Visual Studio code
 
@@ -38,7 +38,7 @@ Gebruik de Azure Machine Learning-extensie om uw machine learning experimenten t
 > Zorg ervoor dat u in Windows [docker configureert voor het gebruik van Linux-containers](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 > [!TIP]
-> Voor Windows, hoewel dit niet vereist is, is het raadzaam [docker te gebruiken met het Windows-subsysteem voor Linux (WSL) 2](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
+> Voor Windows, hoewel dit niet vereist is, is het raadzaam [docker te gebruiken met het Windows-subsysteem voor Linux (WSL) 2](/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
 
 > [!IMPORTANT]
 > Voordat u uw experiment lokaal uitvoert, moet u ervoor zorgen dat docker actief is.
@@ -50,15 +50,15 @@ Gebruik de Azure Machine Learning-extensie om uw machine learning experimenten t
 1. Vouw het knoop punt van de werk ruimte uit.
 1. Klik met de rechter muisknop op het knoop punt **experimenten** en selecteer **experiment maken**. Wanneer de prompt wordt weer gegeven, geeft u een naam op voor uw experiment.
 1. Vouw het knoop punt **experimenten** uit, klik met de rechter muisknop op het experiment dat u wilt uitvoeren en selecteer **Run experimenten**.
-1. Selecteer **lokaal**in de lijst met opties om uw experiment uit te voeren.
-1. De **eerste keer alleen in Windows gebruiken**. Selecteer **Ja**als u wordt gevraagd of u de bestands share wilt toestaan. Wanneer u bestands share inschakelt, kan docker de directory met uw script koppelen aan de container. Daarnaast kunt u met docker de logboeken en uitvoer van de uitvoering opslaan in een tijdelijke map op uw systeem.
+1. Selecteer **lokaal** in de lijst met opties om uw experiment uit te voeren.
+1. De **eerste keer alleen in Windows gebruiken**. Selecteer **Ja** als u wordt gevraagd of u de bestands share wilt toestaan. Wanneer u bestands share inschakelt, kan docker de directory met uw script koppelen aan de container. Daarnaast kunt u met docker de logboeken en uitvoer van de uitvoering opslaan in een tijdelijke map op uw systeem.
 1. Selecteer **Ja** om het experiment op te lossen. Anders selecteert u **Nee**. Als u Nee kiest, wordt uw experiment lokaal uitgevoerd zonder dat dit aan het fout opsporingsprogramma is gekoppeld.
 1. Selecteer **nieuwe uitvoerings configuratie maken** om uw uitvoerings configuratie te maken. De uitvoerings configuratie definieert het script dat u wilt uitvoeren, afhankelijkheden en gegevens sets die worden gebruikt. Als u er al een hebt, selecteert u deze in de vervolg keuzelijst.
     1. Kies uw omgeving. U kunt kiezen uit een van de [Azure machine learning](resource-curated-environments.md) met de curator of uw eigen maken.
     1. Geef de naam op van het script dat u wilt uitvoeren. Het pad is relatief ten opzichte van de map die in VS code is geopend.
     1. Kies of u een Azure Machine Learning gegevensset wilt gebruiken of niet. U kunt [Azure machine learning gegevens sets](how-to-manage-resources-vscode.md#create-dataset) maken met behulp van de extensie.
     1. Debugpy is vereist om het fout opsporingsprogramma te koppelen aan de container die uw experiment uitvoert. Als u debugpy wilt toevoegen als een afhankelijkheid, selecteert u **Debugpy toevoegen**. Anders selecteert u **overs Laan**. Als u debugpy niet toevoegt als afhankelijkheid, wordt uw experiment uitgevoerd zonder dat het fout opsporingsprogramma is gekoppeld.
-    1. Een configuratie bestand met de instellingen voor het uitvoeren van de configuratie wordt geopend in de editor. Als u tevreden bent met de instellingen, selecteert u **experiment verzenden**. U kunt ook het opdracht palet openen (**> opdracht palet weer geven**) in de menu balk en de `Azure ML: Submit experiment` opdracht invoeren in het tekstvak.
+    1. Een configuratie bestand met de instellingen voor het uitvoeren van de configuratie wordt geopend in de editor. Als u tevreden bent met de instellingen, selecteert u **experiment verzenden**. U kunt ook het opdracht palet openen ( **> opdracht palet weer geven** ) in de menu balk en de `Azure ML: Submit experiment` opdracht invoeren in het tekstvak.
 1. Zodra het experiment is verzonden, wordt een docker-installatie kopie met uw script en de configuraties die zijn opgegeven in de configuratie van de uitvoering, gemaakt.
 
     Wanneer het proces voor het bouwen van de docker-installatie kopie wordt gestart, wordt de inhoud van de `60_control_log.txt` Bestands stroom naar de uitvoer console in VS code.
@@ -89,7 +89,7 @@ In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-cod
 * Een __Azure machine learning-werk ruimte__ die is geconfigureerd voor het gebruik van een __Azure Virtual Network__.
 * Een __Azure machine learning pijp lijn__ die gebruikmaakt van python-scripts als onderdeel van de pijplijn stappen. Bijvoorbeeld een PythonScriptStep.
 * Een Azure Machine Learning Compute-Cluster, dat zich __in het virtuele netwerk__ bevindt en wordt __gebruikt door de pijp lijn voor training__.
-* Een __ontwikkel omgeving__ die zich __in het virtuele netwerk__bevindt. De ontwikkel omgeving kan een van de volgende zijn:
+* Een __ontwikkel omgeving__ die zich __in het virtuele netwerk__ bevindt. De ontwikkel omgeving kan een van de volgende zijn:
 
   * Een virtuele machine van Azure in het virtuele netwerk
   * Een reken instantie van een notebook-VM in het virtuele netwerk
@@ -100,7 +100,7 @@ Zie [Virtual Network-isolatie en privacy overview](how-to-network-security-overv
 > [!TIP]
 > Hoewel u kunt werken met Azure Machine Learning-resources die zich niet achter een virtueel netwerk bevinden, wordt het gebruik van een virtueel netwerk aanbevolen.
 
-### <a name="how-it-works"></a>Uitleg
+### <a name="how-it-works"></a>Hoe werkt het?
 
 Met uw ML pijplijn stappen voert u python-scripts uit. Deze scripts zijn gewijzigd om de volgende acties uit te voeren:
 
@@ -339,7 +339,7 @@ Sla de `ip_address` waarde op. Deze wordt gebruikt in de volgende sectie.
 In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-code die in uw model implementatie is opgenomen. Als het script voor de vermelding bijvoorbeeld mislukt en de reden niet kan worden bepaald door aanvullende logboek registratie. U kunt met behulp van VS code en de debugpy koppelen aan de code die wordt uitgevoerd in de docker-container.
 
 > [!IMPORTANT]
-> Deze methode van fout opsporing werkt niet wanneer u `Model.deploy()` `LocalWebservice.deploy_configuration` een model gebruikt en lokaal implementeert. In plaats daarvan moet u een installatie kopie maken met behulp van de methode [model. package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) .
+> Deze methode van fout opsporing werkt niet wanneer u `Model.deploy()` `LocalWebservice.deploy_configuration` een model gebruikt en lokaal implementeert. In plaats daarvan moet u een installatie kopie maken met behulp van de methode [model. package ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) .
 
 Voor lokale web service-implementaties is een werkende docker-installatie op uw lokale systeem vereist. Raadpleeg de [docker-documentatie](https://docs.docker.com/)voor meer informatie over het gebruik van docker. Houd er rekening mee dat bij het werken met reken instanties al docker is geïnstalleerd.
 

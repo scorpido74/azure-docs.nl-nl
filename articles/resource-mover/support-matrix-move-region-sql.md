@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4925f6ffd2383c21f8ff9b0e3196d44fc15bb657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda41a22c9bd9c66dd691b283ece10ac044db3ed
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652868"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324585"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>Ondersteuning voor het verplaatsen van Azure SQL-resources tussen Azure-regio's
 
@@ -38,7 +38,7 @@ In de volgende tabel vindt u een overzicht van de vereisten.
 **Automatisch afstemmen** | Niet ondersteund. | Tijdelijke oplossing: Stel de instellingen voor automatisch afstemmen in na de verplaatsing. [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning-enable).
 **Database waarschuwingen** | Niet ondersteund. | Tijdelijke oplossing: Stel waarschuwingen in na de verplaatsing. [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal).
 **Azure SQL Server stretch data base** | Niet ondersteund | Kan SQL Server stretch-data bases niet verplaatsen met resource-overdrijfing.
-**Azure Synapse Analytics** | Niet ondersteund | Kan Synapse Analytics (voorheen Azure SQL Data Warehouse) niet verplaatsen met resource-overboeking.
+**Azure Synapse Analytics** | Niet ondersteund | Kan Synapse Analytics (voorheen SQL Data Warehouse) niet verplaatsen met resource-overboeking.
 ## <a name="next-steps"></a>Volgende stappen
 
 Probeer [Azure SQL-resources](tutorial-move-region-sql.md) naar een andere regio met resource-overdrijfing.

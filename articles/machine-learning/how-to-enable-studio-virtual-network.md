@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: a5206ed55dfe2632c7f6604c4f3d8e3199e23b99
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 781b37405bebc5ddc3d33cbbc089049b0c0f8ca4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792018"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325527"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio gebruiken in een virtueel Azure-netwerk
 
@@ -36,7 +36,7 @@ Zie de andere artikelen in deze serie:
 
 
 > [!IMPORTANT]
-> Als uw werk ruimte zich in een __soevereine Cloud__ bevindt, zoals Azure Government of Azure China 21vianet, bieden geïntegreerde notebooks _geen_ ondersteuning voor het gebruik van opslag die zich in een virtueel netwerk bevindt. In plaats daarvan kunt u Jupyter-notebooks van een reken instantie gebruiken. Zie de sectie [toegang tot gegevens in een reken instantie-notitie blok](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) voor meer informatie.
+> Als uw werk ruimte zich in een __soevereine Cloud__ bevindt, zoals Azure Government of Azure China 21vianet, bieden geïntegreerde notebooks _geen_ ondersteuning voor het gebruik van opslag die zich in een virtueel netwerk bevindt. In plaats daarvan kunt u Jupyter-notebooks van een rekenproces gebruiken. Zie de sectie [toegang tot gegevens in een reken instantie-notitie blok](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) voor meer informatie.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -85,9 +85,9 @@ Azure Machine Learning maakt gebruik van [data stores](concept-data.md#datastore
 
 1. Selecteer __+ Nieuw gegevens archief__ als u een nieuwe gegevens opslag wilt maken.
 
-    Als u een bestaande gegevens opslag wilt bijwerken, selecteert u de gegevens opslag en selecteert u __referenties bijwerken__ .
+    Als u een bestaande gegevens opslag wilt bijwerken, selecteert u de gegevens opslag en selecteert u __referenties bijwerken__.
 
-1. Selecteer in de instellingen voor gegevens archief de optie __Ja__  __Als u wilt dat Azure machine learning-service toegang heeft tot de opslag met behulp van een door werk ruimte beheerde identiteit__ .
+1. Selecteer in de instellingen voor gegevens archief de optie __Ja__  __Als u wilt dat Azure machine learning-service toegang heeft tot de opslag met behulp van een door werk ruimte beheerde identiteit__.
 
 
 Met deze stappen wordt de door de werk ruimte beheerde identiteit als __lezer__ aan de opslag service toegevoegd met behulp van Azure resource-based Access Control (Azure RBAC). Met __Reader__ toegang kan de werk ruimte Firewall instellingen ophalen en ervoor zorgen dat gegevens het virtuele netwerk niet verlaten.
@@ -119,7 +119,7 @@ Azure Data Lake Storage Gen1 ondersteunt alleen Access Control Lists in POSIX-st
 
 Als u toegang wilt krijgen tot gegevens die zijn opgeslagen in een Azure SQL Database met behulp van beheerde identiteit, moet u een SQL-Inge sloten gebruiker maken die is gekoppeld aan de beheerde identiteit. Zie voor meer informatie over het maken van een gebruiker van een externe provider [opgenomen gebruikers maken die zijn toegewezen aan Azure AD-identiteiten](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities).
 
-Nadat u een SQL-Inge sloten gebruiker hebt gemaakt, moet u er machtigingen voor verlenen met behulp van de [opdracht T-SQL toewijzen](https://docs.microsoft.com/sql/t-sql/statements/grant-object-permissions-transact-sql).
+Nadat u een SQL-Inge sloten gebruiker hebt gemaakt, moet u er machtigingen voor verlenen met behulp van de [opdracht T-SQL toewijzen](/sql/t-sql/statements/grant-object-permissions-transact-sql).
 
 ### <a name="azure-machine-learning-designer-default-datastore"></a>Standaard gegevens opslag van Azure Machine Learning Designer
 
@@ -128,15 +128,15 @@ De ontwerp functie gebruikt het opslag account dat aan uw werk ruimte is gekoppe
 Een nieuwe standaard opslag voor een pijp lijn instellen:
 
 1. Selecteer in een pijp lijn concept het **tandwiel pictogram instellingen** in de buurt van de titel van de pijp lijn.
-1. Selecteer de **Selecteer standaard gegevens opslag** .
+1. Selecteer de **Selecteer standaard gegevens opslag**.
 1. Geef een nieuwe gegevens opslag op.
 
 U kunt ook de standaard gegevens opslag per module negeren. Dit geeft u de controle over de opslag locatie voor elke afzonderlijke module.
 
 1. Selecteer de module waarvan u de uitvoer wilt opgeven.
 1. Vouw de sectie **uitvoer instellingen** uit.
-1. Selecteer **standaard instellingen voor uitvoer negeren** .
-1. Selecteer **uitvoer instellingen instellen** .
+1. Selecteer **standaard instellingen voor uitvoer negeren**.
+1. Selecteer **uitvoer instellingen instellen**.
 1. Geef een nieuwe gegevens opslag op.
 
 ## <a name="next-steps"></a>Volgende stappen

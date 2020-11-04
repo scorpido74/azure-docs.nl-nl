@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f03a1e44fdb62570b693753f5e01c7ab0f53e78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64784d747e9f33961c2f5d2df95e0d5a83e01548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302414"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324837"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -46,7 +46,7 @@ Gebruik ML-pijp lijnen van Azure Machine Learning om alle stappen in uw model tr
 
 Een ML-pijp lijn kan stappen bevatten van gegevens voorbereiding voor het uitpakken van de functie voor het afstemmen van de model evaluatie. Zie [ml-pijp lijnen](concept-ml-pipelines.md)voor meer informatie.
 
-Als u de [Designer](concept-designer.md) gebruikt om uw ml-pijp lijnen te maken, kunt u op elk gewenst moment klikken op **'... '** in de rechter bovenhoek van de ontwerp pagina en vervolgens **klonen**selecteren. Door uw pijp lijn te klonen, kunt u het ontwerp van de pijp lijn herhalen zonder dat uw oude versies verloren gaan.  
+Als u de [Designer](concept-designer.md) gebruikt om uw ml-pijp lijnen te maken, kunt u op elk gewenst moment klikken op **'... '** in de rechter bovenhoek van de ontwerp pagina en vervolgens **klonen** selecteren. Door uw pijp lijn te klonen, kunt u het ontwerp van de pijp lijn herhalen zonder dat uw oude versies verloren gaan.  
 
 ## <a name="create-reusable-software-environments"></a>Herbruikbare software omgevingen maken
 
@@ -70,6 +70,9 @@ Geregistreerde modellen worden geïdentificeerd met naam en versie. Telkens wann
 
 U kunt een geregistreerd model dat wordt gebruikt in een actieve implementatie, niet verwijderen.
 Zie de sectie model registreren van [modellen implementeren](how-to-deploy-and-where.md#registermodel)voor meer informatie.
+
+> [!IMPORTANT]
+> Bij gebruik van `Tags` de optie filteren op de pagina modellen van Azure machine learning Studio in plaats van gebruik te maken van `TagName : TagValue` klanten `TagName=TagValue` (zonder ruimte)
 
 ### <a name="profile-models"></a>Profielmodellen
 
@@ -106,7 +109,7 @@ U geeft ook de configuratie van het doelimplementatieplatform op. Bijvoorbeeld, 
 Wanneer de installatiekopie is gemaakt, worden ook de onderdelen toegevoegd die worden vereist door Azure Machine Learning. Bijvoorbeeld assets die nodig zijn om de webservice uit te voeren en te communiceren met IoT Edge.
 
 #### <a name="batch-scoring"></a>Batchscore
-Batch scores worden ondersteund via ML-pijp lijnen. Zie [batch voorspellingen op Big Data](how-to-use-parallel-run-step.md)voor meer informatie.
+Batch scores worden ondersteund via ML-pijp lijnen. Zie [batch voorspellingen op Big Data](./tutorial-pipeline-batch-scoring-classification.md)voor meer informatie.
 
 #### <a name="real-time-web-services"></a>Real-time webservices
 
@@ -142,7 +145,7 @@ Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
 
 ### <a name="analytics"></a>Analyse
 
-Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)voor meer informatie.
+Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](/power-bi/service-machine-learning-integration)voor meer informatie.
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Vastleggen van de governance-gegevens die nodig zijn voor het vastleggen van de end-to-end ML levenscyclus
 
@@ -158,7 +161,7 @@ Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets
 > [!TIP]
 > Hoewel er automatisch een aantal informatie over modellen en gegevens sets wordt vastgelegd, kunt u extra informatie toevoegen met behulp van __Tags__. Wanneer u op zoek bent naar geregistreerde modellen en gegevens sets in uw werk ruimte, kunt u Tags gebruiken als filter.
 >
-> Een gegevensset koppelen aan een geregistreerd model is een optionele stap. Zie de verwijzing naar [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true) klassen voor informatie over het verwijzen naar een gegevensset bij het registreren van een model.
+> Een gegevensset koppelen aan een geregistreerd model is een optionele stap. Zie de verwijzing naar [model](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) klassen voor informatie over het verwijzen naar een gegevensset bij het registreren van een model.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Meldingen, automatiseren en waarschuwen voor gebeurtenissen in de levens cyclus van ML

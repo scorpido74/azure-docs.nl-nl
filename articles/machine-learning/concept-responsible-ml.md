@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ece76ef3594cadfa1fcda89259ee18eb1f9084
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829387"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324852"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Wat is er verantwoordelijk machine learning? (preview)
 
@@ -73,7 +73,7 @@ In traditionele Cloud opslag-en berekenings oplossingen moet de Cloud niet-versl
 
 Met Homomorphic versleuteling kunnen berekeningen worden uitgevoerd op versleutelde gegevens zonder dat daarvoor toegang nodig is tot een geheime sleutel (ontsleuteling). De resultaten van de berekeningen zijn versleuteld en kunnen alleen worden onthuld door de eigenaar van de geheime sleutel. Met Homomorphic-versleuteling hebben Cloud operators nooit niet-versleutelde toegang tot de gegevens die ze opslaan en verwerken. Berekeningen worden direct uitgevoerd op versleutelde gegevens. Data privacy is afhankelijk van geavanceerde crypto grafie en de gegevens eigenaar beheert alle informatie releases. Zie [micro soft Research](https://www.microsoft.com/research/project/homomorphic-encryption/)voor meer informatie over Homomorphic-versleuteling bij micro soft.
 
-Om aan de slag te gaan met Homomorphic-versleuteling in Azure Machine Learning gebruikt u de [versleutelde python-](https://pypi.org/project/encrypted-inference/) bindingen voor het afdwingen van [micro soft-zegels](https://github.com/microsoft/SEAL). Micro soft afdichting is een open-source Homomorphic-versleutelings bibliotheek waarmee toevoegingen en vermenigvuldigingen kunnen worden uitgevoerd op versleutelde gehele getallen of echte getallen. Zie de pagina [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) of [micro soft Research project](https://www.microsoft.com/research/project/microsoft-seal/)(Engelstalig) voor meer informatie over micro soft-zegels.
+Om aan de slag te gaan met Homomorphic-versleuteling in Azure Machine Learning gebruikt u de [versleutelde python-](https://pypi.org/project/encrypted-inference/) bindingen voor het afdwingen van [micro soft-zegels](https://github.com/microsoft/SEAL). Micro soft afdichting is een open-source Homomorphic-versleutelings bibliotheek waarmee toevoegingen en vermenigvuldigingen kunnen worden uitgevoerd op versleutelde gehele getallen of echte getallen. Zie de pagina [Azure Architecture Center](/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) of [micro soft Research project](https://www.microsoft.com/research/project/microsoft-seal/)(Engelstalig) voor meer informatie over micro soft-zegels.
 
 Raadpleeg het volgende voor beeld voor meer informatie [over het implementeren van een versleutelde webservice in azure machine learning](how-to-homomorphic-encryption-seal.md).
 
@@ -96,5 +96,5 @@ Raadpleeg het volgende voor beeld om te leren hoe u de Azure Machine Learning SD
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- Raadpleeg voor meer informatie de [verantwoordelijke vernieuwings Toolkit](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) voor informatie over best practices.
+- Raadpleeg voor meer informatie de [verantwoordelijke vernieuwings Toolkit](/azure/architecture/guide/responsible-innovation/) voor informatie over best practices.
 - Meer informatie over de set met richt lijnen [over milliliters](https://www.partnershiponai.org/about-ml/) voor machine learning systeem documentatie.

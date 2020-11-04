@@ -1,6 +1,6 @@
 ---
 title: Trans acties gebruiken
-description: Tips voor het implementeren van trans acties in de SQL-groep (Data Warehouse) voor het ontwikkelen van oplossingen.
+description: Tips voor het implementeren van trans acties met een toegewezen SQL-groep in azure Synapse Analytics voor het ontwikkelen van oplossingen.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,20 +10,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288610"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323839"
 ---
-# <a name="use-transactions-in-sql-pool"></a>Trans acties in SQL-groep gebruiken
+# <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Trans acties met een toegewezen SQL-groep gebruiken in azure Synapse Analytics
 
-Tips voor het implementeren van trans acties in de SQL-groep (Data Warehouse) voor het ontwikkelen van oplossingen.
+Tips voor het implementeren van trans acties met een toegewezen SQL-groep in azure Synapse Analytics voor het ontwikkelen van oplossingen.
 
 ## <a name="what-to-expect"></a>Wat u kunt verwachten
 
-Zoals verwacht, ondersteunt de SQL-groep trans acties als onderdeel van de werk belasting van het Data Warehouse. Om ervoor te zorgen dat de prestaties van de SQL-groep op schaal worden gehandhaafd, zijn sommige functies beperkt in vergelijking tot SQL Server. In dit artikel worden de verschillen gemarkeerd en worden de andere weer gegeven.
+Zoals u verwacht, ondersteunt de toegewezen SQL-pool trans acties als onderdeel van de werk belasting van het Data Warehouse. Om ervoor te zorgen dat de prestaties van de toegewezen SQL-groep worden gehandhaafd op schaal, zijn sommige functies beperkt in vergelijking tot SQL Server. In dit artikel worden de verschillen gemarkeerd en worden de andere weer gegeven.
 
 ## <a name="transaction-isolation-levels"></a>Trans actie-isolatie niveaus
 
@@ -50,7 +50,7 @@ In de onderstaande tabel zijn de volgende veronderstellingen aangebracht:
 | DW300c |2.25 |60 |135 |9.000.000 |540.000.000 |
 | DW400c |3 |60 |180 |12.000.000 |720.000.000 |
 | DW500c |3,75 |60 |225 |15.000.000 |900.000.000 |
-| DW1000c |7.5 |60 |450 |30.000.000 |1.800.000.000 |
+| DW1000c |7,5 |60 |450 |30.000.000 |1.800.000.000 |
 | DW1500c |11,25 |60 |675 |45.000.000 |2.700.000.000 |
 | DW2000c |15 |60 |900 |60.000.000 |3.600.000.000 |
 | DW2500c |18,75 |60 |1125 |75.000.000 |4.500.000.000 |
@@ -72,7 +72,7 @@ In de onderstaande tabel zijn de volgende veronderstellingen aangebracht:
 | DW400 |3 |60 |180 |12.000.000 |720.000.000 |
 | DW500 |3,75 |60 |225 |15.000.000 |900.000.000 |
 | DW600 |4.5 |60 |270 |18.000.000 |1.080.000.000 |
-| DW1000 |7.5 |60 |450 |30.000.000 |1.800.000.000 |
+| DW1000 |7,5 |60 |450 |30.000.000 |1.800.000.000 |
 | DW1200 |9 |60 |540 |36.000.000 |2.160.000.000 |
 | DW1500 |11,25 |60 |675 |45.000.000 |2.700.000.000 |
 | DW2000 |15 |60 |900 |60.000.000 |3.600.000.000 |
@@ -92,7 +92,7 @@ Als u de hoeveelheid gegevens die naar het logboek moet worden geschreven, wilt 
 De SQL-groep maakt gebruik van de functie XACT_STATE () om een mislukte trans actie te rapporteren met de waarde-2. Deze waarde betekent dat de trans actie is mislukt en alleen is gemarkeerd voor terugdraaien.
 
 > [!NOTE]
-> Het gebruik van-2 door de functie XACT_STATE om een mislukte trans actie aan te duiden, vertegenwoordigt een ander gedrag voor SQL Server. SQL Server gebruikt de waarde-1 om een niet-doorvoer bare trans actie weer te geven. SQL Server kunt een aantal fouten binnen een trans actie verdragen zonder dat het als niet-doorvoerbaar moet worden gemarkeerd. Er `SELECT 1/0` kan bijvoorbeeld een fout optreden, maar geen trans actie geforceerd worden uitgevoerd. Met SQL Server wordt ook lees bewerkingen in de niet-doorvoer bare trans actie toegestaan. Met de SQL-groep kunt u dit echter niet doen. Als er een fout optreedt in een SQL-groeps transactie, wordt automatisch de status-2 ingevoerd en kunt u geen verdere SELECT-instructies meer maken totdat de instructie terug is teruggedraaid. Het is daarom belang rijk om te controleren of de toepassings code gebruikmaakt van XACT_STATE (), omdat u mogelijk code wijzigingen moet aanbrengen.
+> Het gebruik van-2 door de functie XACT_STATE om een mislukte trans actie aan te duiden, vertegenwoordigt een ander gedrag voor SQL Server. SQL Server gebruikt de waarde-1 om een niet-doorvoer bare trans actie weer te geven. SQL Server kunt een aantal fouten binnen een trans actie verdragen zonder dat het als niet-doorvoerbaar moet worden gemarkeerd. Er `SELECT 1/0` kan bijvoorbeeld een fout optreden, maar geen trans actie geforceerd worden uitgevoerd. Met SQL Server wordt ook lees bewerkingen in de niet-doorvoer bare trans actie toegestaan. Met exclusieve SQL-groep kunt u dit echter niet doen. Als er een fout optreedt in een toegewezen SQL-groeps transactie, wordt automatisch de status-2 ingevoerd en kunt u geen verdere SELECT-instructies meer maken totdat de instructie terug is teruggedraaid. Het is daarom belang rijk om te controleren of de toepassings code gebruikmaakt van XACT_STATE (), omdat u mogelijk code wijzigingen moet aanbrengen.
 
 In SQL Server ziet u bijvoorbeeld een trans actie die er ongeveer als volgt uitziet:
 
@@ -138,7 +138,7 @@ Msg 111233, niveau 16, status 1, regel 1 111233; De huidige trans actie is afgeb
 
 U krijgt geen uitvoer van de ERROR_ *-functies.
 
-In de SQL-groep moet de code enigszins worden gewijzigd:
+In de toegewezen SQL-groep moet de code enigszins worden gewijzigd:
 
 ```sql
 SET NOCOUNT ON;
@@ -181,11 +181,11 @@ Alle wijzigingen die zijn gewijzigd, zijn dat het terugdraaien van de trans acti
 
 ## <a name="error_line-function"></a>Functie Error_Line ()
 
-Het is ook een goed idee dat de functie ERROR_LINE () niet wordt geïmplementeerd of ondersteund door de SQL-groep. Als u deze functie in uw code hebt, moet u deze verwijderen om te voldoen aan de SQL-groep. Gebruik in plaats daarvan query labels in uw code om gelijkwaardige functionaliteit te implementeren. Zie het artikel [Label](develop-label.md) voor meer informatie.
+Het is ook een goed idee dat de functie ERROR_LINE () niet wordt geïmplementeerd of ondersteund door de toegewezen SQL-groep. Als u deze functie in uw code hebt, moet u deze verwijderen om te voldoen aan de toegewezen SQL-groep. Gebruik in plaats daarvan query labels in uw code om gelijkwaardige functionaliteit te implementeren. Zie het artikel [Label](develop-label.md) voor meer informatie.
 
 ## <a name="use-of-throw-and-raiserror"></a>Gebruik van THROW en///////
 
-THROW is de meer moderne implementatie voor het verhogen van uitzonde ringen in de SQL-groep, maar dit wordt ook wel ondersteund. Er zijn enkele verschillen die u moet betalen.
+THROW is de meer moderne implementatie voor het verhogen van uitzonde ringen in een toegewezen SQL-pool, maar dit wordt ook wel ondersteund. Er zijn enkele verschillen die u moet betalen.
 
 * Door de gebruiker gedefinieerde fout berichten getallen kunnen zich niet in het 100.000-150.000-bereik bevallen
 * Fout berichten met de volgende strekking worden opgelost om 50.000
@@ -204,4 +204,4 @@ De SQL-groep heeft enkele andere beperkingen die betrekking hebben op trans acti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Aanbevolen procedures voor trans acties](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie over het optimaliseren van trans acties. Er zijn ook aanvullende best practices-hand leidingen beschikbaar voor [SQL-groep](best-practices-sql-pool.md) en [SQL on-demand (preview)](best-practices-sql-on-demand.md).
+Zie [Aanbevolen procedures voor trans acties](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie over het optimaliseren van trans acties. Er zijn ook aanvullende best practices-hand leidingen beschikbaar voor [SQL-groep](best-practices-sql-pool.md) en [serverloze SQL-groep (preview)](best-practices-sql-on-demand.md).

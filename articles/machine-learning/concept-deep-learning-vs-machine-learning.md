@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330125"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324866"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Diep gaande informatie versus machine learning in Azure Machine Learning
 
 In dit artikel worden uitgebreide lessen vergeleken met machine learning en wordt uitgelegd hoe ze in de bredere categorie van kunst matige intelligentie passen. Meer informatie over oplossingen voor uitgebreide trainingen die u kunt bouwen op Azure Machine Learning, zoals fraude detectie, spraak-en gezichts herkenning, sentiment analyse en tijd reeks prognoses.
 
-Zie het overzicht van [machine learning Algorithm Cheat](algorithm-cheat-sheet.md)voor meer informatie over het kiezen van algoritmen voor uw oplossingen.
+Zie het overzicht van [machine learning Algorithm Cheat](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri)voor meer informatie over het kiezen van algoritmen voor uw oplossingen.
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Diep leren, machine learning en AI
 
@@ -73,7 +73,7 @@ Grondige kennis is toegepast in veel object detectie-use cases. Object detectie 
 
 Object detectie wordt al gebruikt in branches zoals gaming, handels verkeer, toer isme en zelf gerichte auto's.
 
-Meer informatie over het gebruik van een afbeeldings classificatie model van een open source-framework in Azure Machine Learning: [classificeren van afbeeldingen met behulp van een Pytorch-model](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+Meer informatie over het gebruik van een afbeeldings classificatie model van een open source-framework in Azure Machine Learning: [classificeren van afbeeldingen met behulp van een Pytorch-model](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Bijschrift bij afbeelding genereren
 
@@ -93,7 +93,7 @@ Voor tekst analyse op basis van diepe leer methoden moet u grote hoeveel heden t
 
 Bedrijven gebruiken dieper leren om tekst analyse uit te voeren om de handel en naleving van de overheid te detecteren. Een ander algemeen voor beeld is een verzekerings fraude: tekst analyse is vaak gebruikt voor het analyseren van grote hoeveel heden documenten om de kans op fraude van een verzekerings claim te herkennen. 
 
-Meer informatie over het gebruik van een tensor flow-model in Azure Machine Learning: [geclassificeerde handgeschreven cijfers met behulp van een tensor flow-model](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+Meer informatie over het gebruik van een tensor flow-model in Azure Machine Learning: [geclassificeerde handgeschreven cijfers met behulp van een tensor flow-model](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>Kunst matige Neural netwerken
 
@@ -117,8 +117,8 @@ Convolutional Neural Networks zijn gebruikt in gebieden zoals video herkenning, 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende artikelen ziet u meer opties voor het gebruik van open-source uitgebreide leer modellen in [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
+In de volgende artikelen ziet u meer opties voor het gebruik van open-source uitgebreide leer modellen in [Azure machine learning](./index.yml?WT.mc_id=docs-article-lazzeri):
 
-- [Geclassificeerde handgeschreven cijfers door gebruik te maken van een tensor flow Estimator en Keras](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [Geclassificeerde handgeschreven cijfers door gebruik te maken van een tensor flow Estimator en Keras](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 
-- [Hand matige cijfers classificeren met behulp van een ketting model](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
+- [Hand matige cijfers classificeren met behulp van een ketting model](./how-to-set-up-training-targets.md)

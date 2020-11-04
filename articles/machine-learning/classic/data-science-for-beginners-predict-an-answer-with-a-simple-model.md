@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1cfe617ab424fbb29e2866cd98d4b8c390f306c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c02abf095beefdd131a5835d015175d56a63de47
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343930"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322824"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Met een eenvoudig model een antwoord voorspellen
 
@@ -82,7 +82,7 @@ Nu gaan we elke ruit in deze lijst door lopen en hetzelfde doen. Als we dit doen
 ## <a name="draw-the-model-through-the-data-points"></a>Het model door middel van de gegevens punten tekenen
 Als u nu de punten en squint bekijkt, ziet de verzameling eruit als een FAT-, fuzzy-regel. We kunnen onze markering door lopen en een rechte lijn door ons laten tekenen.
 
-Door een regel te tekenen, hebben we een *model*gemaakt. U kunt dit zien als de echte wereld en een vereenvoudigde-strip-versie. De strip is nu onjuist. de lijn gaat niet alle gegevens punten door. Maar het is een nuttige vereenvoudiging.
+Door een regel te tekenen, hebben we een *model* gemaakt. U kunt dit zien als de echte wereld en een vereenvoudigde-strip-versie. De strip is nu onjuist. de lijn gaat niet alle gegevens punten door. Maar het is een nuttige vereenvoudiging.
 
 ![Lineaire regressie lijn](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/linear-regression-line.png)
 
@@ -98,7 +98,7 @@ Om onze vraag te beantwoorden, Eyeball 1,35 CARATS en tekent u een verticale lij
 ![Het antwoord op het model zoeken](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Een betrouwbaarheids interval maken
-Het is natuurlijk dat u afvraagt hoe nauw keurig deze voor spelling is. Het is handig om te weten of de dakje-Diamond van 1,35 erg dicht bij $10.000 of veel hoger of lager is. Om dit uit te zetten, tekenen we een envelop rond de regressie lijn die de meeste punten bevat. Deze envelop wordt ons *betrouwbaarheids interval*genoemd: we zijn redelijk dat de prijzen binnen deze envelop vallen omdat ze in het verleden het meest hebben. We kunnen twee meer horizontale lijnen tekenen vanaf het punt waarop de 1,35 dakje lijn de bovenkant en de onderkant van de envelop overschrijdt.
+Het is natuurlijk dat u afvraagt hoe nauw keurig deze voor spelling is. Het is handig om te weten of de dakje-Diamond van 1,35 erg dicht bij $10.000 of veel hoger of lager is. Om dit uit te zetten, tekenen we een envelop rond de regressie lijn die de meeste punten bevat. Deze envelop wordt ons *betrouwbaarheids interval* genoemd: we zijn redelijk dat de prijzen binnen deze envelop vallen omdat ze in het verleden het meest hebben. We kunnen twee meer horizontale lijnen tekenen vanaf het punt waarop de 1,35 dakje lijn de bovenkant en de onderkant van de envelop overschrijdt.
 
 ![Betrouwbaarheidsinterval](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
@@ -109,7 +109,7 @@ We hebben bepaald wat gegevens wetenschappers aan de slag krijgen, en we hebben 
 
 * We hebben een vraag gesteld die we kunnen beantwoorden met gegevens
 * We hebben een *model* gemaakt met behulp van *lineaire regressie*
-* We hebben een voor *Spelling*gemaakt, compleet met een *betrouwbaarheids interval*
+* We hebben een voor *Spelling* gemaakt, compleet met een *betrouwbaarheids interval*
 
 En we hebben geen wiskunde of computers gebruikt om dit uit te voeren.
 
@@ -129,4 +129,4 @@ Bekijk de andere Video's in "data Science for beginners" van Microsoft Azure Mac
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Probeer een eerste experiment van data Science met Machine Learning Studio (klassiek)](create-experiment.md)
-* [Krijg een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)
+* [Krijg een inleiding tot Machine Learning op Microsoft Azure](../overview-what-is-azure-ml.md)

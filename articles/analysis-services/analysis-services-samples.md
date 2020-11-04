@@ -1,5 +1,5 @@
 ---
-title: Voor beelden van code, project en data base Azure Analysis Services | Microsoft Docs
+title: Voor beelden van code, project en data bases Azure Analysis Services
 description: In dit artikel vindt u informatie over de bronnen voor het Azure Analysis Services van code, project en data base.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b63581b5192c93a8377a642c21eacbd291579b22
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 920cc5142d14308fce412ad44543ddc46dc1663e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013675"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324373"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services-voor beelden
 
@@ -28,7 +28,7 @@ De [Analysis Services](https://github.com/Microsoft/Analysis-Services) opslag pl
 
 ## <a name="sample-database-on-azure"></a>Voorbeeld database in azure
 
-Azure Synapse Analytics (SQL Data Warehouse) biedt een voor beeld van een AdventureWorksDW-data base die kan worden opgenomen in een ingerichte resource. Zie voor meer informatie [Quick Start: een Azure Synapse Analytics SQL-groep maken en er een query op uitvoeren](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+Azure Synapse Analytics (voorheen SQL Data Warehouse) biedt een voor beeld van een AdventureWorksDW-data base die kan worden opgenomen in een ingerichte resource. Zie [Quick Start: een toegewezen SQL-groep maken en een query uitvoeren in azure Synapse Analytics ](/azure/sql-data-warehouse/create-data-warehouse-portal)voor meer informatie.
 
 ## <a name="sample-databases-on-github"></a>Voorbeeld databases op GitHub
 
@@ -40,7 +40,7 @@ Deze voorbeeld databases op GitHub kunnen worden gebruikt voor het maken en test
 
 ## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Adventure Works-voorbeeld model voor Internet-omzet in Azure Portal
 
-Als u een Analysis Services-server in Azure Portal hebt, kunt u snel en eenvoudig een voorbeeld model maken. Op de pagina overzicht van de server in Azure Portal klikt u op **Nieuw model**en selecteert u vervolgens **voorbeeld gegevens**in **een gegevens bron kiezen**.
+Als u een Analysis Services-server in Azure Portal hebt, kunt u snel en eenvoudig een voorbeeld model maken. Op de pagina overzicht van de server in Azure Portal klikt u op **Nieuw model** en selecteert u vervolgens **voorbeeld gegevens** in **een gegevens bron kiezen**.
 
 
 

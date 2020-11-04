@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa650fe9cb7df64a6a7a948224be225ecfad9057
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691459"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324606"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: voor speld onderhoud met de Cognitive Services voor Big Data
 
-Dit recept laat zien hoe u Azure Synapse Analytics en Cognitive Services op Spark kunt gebruiken voor het voor speld onderhoud van IoT-apparaten. We volgen samen met het [CosmosDB-en Synapse-koppelings](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) voorbeeld. Om alles eenvoudig te maken, lezen we in dit recept de gegevens rechtstreeks vanuit een CSV-bestand in plaats van gestreamde gegevens via de CosmosDB-en Synapse-koppeling. We raden u aan om het voor beeld van de Synapse-koppeling te bekijken.
+Dit recept laat zien hoe u Azure Synapse Analytics en Cognitive Services op Apache Spark kunt gebruiken voor het voor speld onderhoud van IoT-apparaten. We volgen samen met het [CosmosDB-en Synapse-koppelings](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) voorbeeld. Om alles eenvoudig te maken, lezen we in dit recept de gegevens rechtstreeks vanuit een CSV-bestand in plaats van gestreamde gegevens via de CosmosDB-en Synapse-koppeling. We raden u aan om het voor beeld van de Synapse-koppeling te bekijken.
 
 ## <a name="hypothetical-scenario"></a>Hypothetisch scenario
 
@@ -31,7 +31,7 @@ De gegevens kunnen in wille keurige frequentie uitbijten. In dat geval worden de
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services)
-* [Azure Synapse-werk ruimte](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) die is geconfigureerd met een [Spark-groep](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
+* [Azure Synapse-werk ruimte](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) die is geconfigureerd met een [serverloze Apache Spark pool](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
 
 ## <a name="setup"></a>Instellen
 
@@ -100,9 +100,9 @@ Deze cel moet een resultaat opleveren dat er als volgt uitziet:
 
 | tijdstempel           |   waarde | deviceId   | isAnomaly   |
 |:--------------------|--------:|:-----------|:------------|
-| 2020-05-01 18:33:51 |    3174 | dev-7      | False       |
-| 2020-05-01 18:33:52 |    2976 | dev-7      | False       |
-| 2020-05-01 18:33:53 |    2714 | dev-7      | False       |
+| 2020-05-01 18:33:51 |    3174 | dev-7      | Niet waar       |
+| 2020-05-01 18:33:52 |    2976 | dev-7      | Niet waar       |
+| 2020-05-01 18:33:53 |    2714 | dev-7      | Niet waar       |
 
 
  ## <a name="visualize-anomalies-for-one-of-the-devices"></a>Afwijkingen voor een van de apparaten visualiseren

@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 53d821809820b11a9a126a826db79726dd43e382
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8280af20d63da969504cda8ffe875405d4bf0218
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708234"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324723"
 ---
-# <a name="configure-and-submit-training-runs"></a>Trainings uitvoeringen configureren en verzenden
+# <a name="configure-and-submit-training-runs"></a>Trainingsuitvoering configureren en verzenden
 
 In dit artikel leert u hoe u Azure Machine Learning uitvoeringen kunt configureren en verzenden om uw modellen te trainen.
 
@@ -29,20 +29,20 @@ Het enige wat u hoeft te doen, is het definiëren van de omgeving voor elk reken
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
-* De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (>= 1.13.0)
+* De [Azure machine learning SDK voor python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md), `ws`
 * Een reken doel, `my_compute_target` .  [Een rekendoel maken](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Wat is een script voor het uitvoeren van een configuratie?
-Een [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) wordt gebruikt voor het configureren van de informatie die nodig is voor het indienen van een training die als onderdeel van een experiment moet worden uitgevoerd.
+Een [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) wordt gebruikt voor het configureren van de informatie die nodig is voor het indienen van een training die als onderdeel van een experiment moet worden uitgevoerd.
 
 U verzendt uw trainings experiment met een ScriptRunConfig-object.  Dit object bevat:
 
-* **source_directory**: de bron directory die uw trainings script bevat
-* **script**: het trainings script dat moet worden uitgevoerd
-* **compute_target**: het Compute-doel om uit te voeren
-* **omgeving**: de omgeving die moet worden gebruikt bij het uitvoeren van het script
-* en een aantal extra Configureer bare opties (Zie de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) voor meer informatie)
+* **source_directory** : de bron directory die uw trainings script bevat
+* **script** : het trainings script dat moet worden uitgevoerd
+* **compute_target** : het Compute-doel om uit te voeren
+* **omgeving** : de omgeving die moet worden gebruikt bij het uitvoeren van het script
+* en een aantal extra Configureer bare opties (Zie de [referentie documentatie](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) voor meer informatie)
 
 ## <a name="train-your-model"></a><a id="submit"></a>Uw model trainen
 
@@ -79,7 +79,7 @@ In de voorbeeld code in dit artikel wordt ervan uitgegaan dat u al een reken doe
 ## <a name="create-an-environment"></a>Een omgeving maken
 Azure Machine Learning [omgevingen](concept-environments.md) zijn een inkapseling van de omgeving waarin uw machine learning-training zich voordoet. Hiermee worden de Python-pakketten, docker-installatie kopie, omgevings variabelen en software-instellingen voor uw trainings-en Score scripts opgegeven. Ze geven ook runtime (python, Spark, of docker) op.
 
-U kunt uw eigen omgeving definiëren of een Azure ML-omgeving gebruiken. Gehoste [omgevingen](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#use-a-curated-environment) zijn vooraf gedefinieerde omgevingen die standaard beschikbaar zijn in uw werk ruimte. Deze omgevingen worden ondersteund door docker-installatie kopieën in de cache, waarmee de kosten voor het uitvoeren van de voor bereiding worden verminderd. Zie [Azure machine learning Gecuratorde omgevingen](https://docs.microsoft.com/azure/machine-learning/resource-curated-environments) voor een volledige lijst met beschik bare, gecuratorde omgevingen.
+U kunt uw eigen omgeving definiëren of een Azure ML-omgeving gebruiken. Gehoste [omgevingen](./how-to-use-environments.md#use-a-curated-environment) zijn vooraf gedefinieerde omgevingen die standaard beschikbaar zijn in uw werk ruimte. Deze omgevingen worden ondersteund door docker-installatie kopieën in de cache, waarmee de kosten voor het uitvoeren van de voor bereiding worden verminderd. Zie [Azure machine learning Gecuratorde omgevingen](./resource-curated-environments.md) voor een volledige lijst met beschik bare, gecuratorde omgevingen.
 
 Voor een extern Compute-doel kunt u een van deze populaire gestarte omgevingen gebruiken om te beginnen met:
 
@@ -94,7 +94,7 @@ Zie [& software omgevingen maken in azure machine learning](how-to-use-environme
   
 ### <a name="local-compute-target"></a><a name="local"></a>Lokaal Compute-doel
 
-Als uw reken doel uw **lokale computer**is, bent u verantwoordelijk voor het controleren of alle benodigde pakketten beschikbaar zijn in de python-omgeving waarin het script wordt uitgevoerd.  Gebruik `python.user_managed_dependencies` om uw huidige python-omgeving (of de python op het door u opgegeven pad) te gebruiken.
+Als uw reken doel uw **lokale computer** is, bent u verantwoordelijk voor het controleren of alle benodigde pakketten beschikbaar zijn in de python-omgeving waarin het script wordt uitgevoerd.  Gebruik `python.user_managed_dependencies` om uw huidige python-omgeving (of de python op het door u opgegeven pad) te gebruiken.
 
 ```python
 from azureml.core import Environment
@@ -130,12 +130,12 @@ Als u opdracht regel argumenten hebt die u wilt door geven aan uw trainings scri
 Als u de standaard toegestane maximum tijd voor de uitvoering wilt onderdrukken, kunt u dit doen via de **`max_run_duration_seconds`** para meter. Het systeem probeert de uitvoering automatisch te annuleren als deze langer duurt dan deze waarde.
 
 ### <a name="specify-a-distributed-job-configuration"></a>Configuratie van een gedistribueerde taak opgeven
-Als u een gedistribueerde trainings taak wilt uitvoeren, geeft u de gedistribueerde taak-specifieke configuratie op voor de **`distributed_job_config`** para meter. Ondersteunde configuratie typen zijn [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true)en [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true). 
+Als u een gedistribueerde trainings taak wilt uitvoeren, geeft u de gedistribueerde taak-specifieke configuratie op voor de **`distributed_job_config`** para meter. Ondersteunde configuratie typen zijn [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py)en [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py). 
 
 Zie voor meer informatie en voor beelden over het uitvoeren van gedistribueerde Horovod-, tensor flow-en PyTorch-taken:
 
-* [TensorFlow-modellen trainen](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow#distributed-training)
-* [PyTorch-modellen trainen](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch#distributed-training)
+* [TensorFlow-modellen trainen](./how-to-train-tensorflow.md#distributed-training)
+* [PyTorch-modellen trainen](./how-to-train-pytorch.md#distributed-training)
 
 ## <a name="submit-the-experiment"></a>Het experiment verzenden
 
@@ -152,7 +152,7 @@ run.wait_for_completion(show_output=True)
 > Zie [moment opnamen](concept-azure-machine-learning-architecture.md#snapshots)voor meer informatie over moment opnamen.
 
 > [!IMPORTANT]
-> **Speciale mappen** Twee mappen, *uitvoer* en *Logboeken*, een speciale behandeling ontvangen door Azure machine learning. Wanneer u tijdens de training bestanden schrijft naar mappen met de naam *outputs* en *Logboeken* die relatief zijn ten opzichte van de hoofdmap ( `./outputs` en `./logs` respectievelijk), worden de bestanden automatisch geüpload naar de uitvoerings geschiedenis, zodat u er toegang tot hebt zodra de uitvoering is voltooid.
+> **Speciale mappen** Twee mappen, *uitvoer* en *Logboeken* , een speciale behandeling ontvangen door Azure machine learning. Wanneer u tijdens de training bestanden schrijft naar mappen met de naam *outputs* en *Logboeken* die relatief zijn ten opzichte van de hoofdmap ( `./outputs` en `./logs` respectievelijk), worden de bestanden automatisch geüpload naar de uitvoerings geschiedenis, zodat u er toegang tot hebt zodra de uitvoering is voltooid.
 >
 > Als u artefacten wilt maken tijdens de training (zoals model bestanden, controle punten, gegevens bestanden of geplote afbeeldingen), schrijft u deze naar de `./outputs` map.
 >
@@ -179,5 +179,5 @@ Bekijk deze notebooks voor voor beelden van het configureren van uitvoeringen vo
 * Zie modellen trainen met specifieke ML-frameworks, zoals [Scikit-Learn](how-to-train-scikit-learn.md), [tensor flow](how-to-train-tensorflow.md)en [PyTorch](how-to-train-pytorch.md).
 * Meer informatie over hoe u [Hyper parameters efficiënt kunt afstemmen](how-to-tune-hyperparameters.md) om betere modellen te bouwen.
 * Wanneer u een getraind model hebt, leert u [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md).
-* Bekijk de [ScriptRunConfig class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) SDK-referentie.
-* [Azure Machine Learning gebruiken met virtuele netwerken van Azure](how-to-enable-virtual-network.md)
+* Bekijk de [ScriptRunConfig class](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) SDK-referentie.
+* [Azure Machine Learning gebruiken met virtuele netwerken van Azure](./how-to-network-security-overview.md)

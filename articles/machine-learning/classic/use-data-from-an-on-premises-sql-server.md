@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357485"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325699"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Analyses uitvoeren met Azure Machine Learning Studio (klassiek) met behulp van een SQL Server-Data Base
 
-**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Bedrijven die werken met on-premises gegevens, willen vaak profiteren van de schaal en flexibiliteit van de Cloud voor hun machine learning werk belastingen. Maar ze willen hun huidige bedrijfs processen en werk stromen niet verstoren door hun on-premises gegevens naar de cloud te verplaatsen. Azure Machine Learning Studio (klassiek) biedt nu ondersteuning voor het lezen van uw gegevens uit een SQL Server-Data Base en vervolgens de training en het scoren van een model met deze gegevens. U hoeft de gegevens niet meer hand matig te kopiëren en te synchroniseren tussen de Cloud en uw on-premises server. In plaats daarvan kan de module **gegevens importeren** in azure machine learning Studio (klassiek) nu rechtstreeks worden gelezen vanuit uw SQL Server-Data Base voor uw trainings-en Score taken.
@@ -83,7 +83,7 @@ De eerste stap is om de gateway te maken en in te stellen voor toegang tot uw SQ
 3. Klik onder aan het scherm op **nieuwe gegevens gateway** .
 
     ![Nieuwe gegevens gateway](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
-4. Voer in het dialoog venster **nieuwe gegevens gateway** de **naam** van de gateway in en voeg eventueel een **Beschrijving**toe. Klik op de pijl in de rechter bovenhoek om naar de volgende stap van de configuratie te gaan.
+4. Voer in het dialoog venster **nieuwe gegevens gateway** de **naam** van de gateway in en voeg eventueel een **Beschrijving** toe. Klik op de pijl in de rechter bovenhoek om naar de volgende stap van de configuratie te gaan.
 
     ![De gateway naam en-beschrijving invoeren](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
 5. In het dialoog venster gegevens gateway downloaden en registreren kopieert u de registratie sleutel voor de GATEWAY naar het klem bord.
@@ -91,7 +91,7 @@ De eerste stap is om de gateway te maken en in te stellen voor toegang tot uw SQ
     ![Gegevens gateway downloaden en registreren](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 6. <span id="note-1" class="anchor"></span>Als u de micro soft-Data Management Gateway nog niet hebt gedownload en geïnstalleerd, klikt u op **Data Management Gateway downloaden**. Hiermee gaat u naar het micro soft Download centrum waar u de gateway versie kunt selecteren die u nodig hebt, downloadt u deze en installeert u deze. Meer informatie over de installatie vereisten, installatie stappen en tips voor het oplossen van problemen vindt u in de eerste sectie van het artikel [gegevens verplaatsen tussen on-premises bronnen en Cloud met Data Management Gateway](../../data-factory/tutorial-hybrid-copy-portal.md).
 7. Nadat de gateway is geïnstalleerd, wordt de Data Management Gateway Configuration Manager geopend en wordt het dialoog venster **Gateway registreren** weer gegeven. Plak de **Gateway registratie sleutel** die u hebt gekopieerd naar het klem bord en klik op **registreren**.
-8. Als u al een gateway hebt geïnstalleerd, voert u de Data Management Gateway-Configuration Manager uit. Klik op **sleutel wijzigen**, plak de **Gateway registratie sleutel** die u in de vorige stap naar het klem bord hebt gekopieerd en klik op **OK**.
+8. Als u al een gateway hebt geïnstalleerd, voert u de Data Management Gateway-Configuration Manager uit. Klik op **sleutel wijzigen** , plak de **Gateway registratie sleutel** die u in de vorige stap naar het klem bord hebt gekopieerd en klik op **OK**.
 9. Wanneer de installatie is voltooid, wordt het dialoog venster **Gateway registreren** voor micro soft data management gateway Configuration Manager weer gegeven. Plak de GATEWAY registratie sleutel die u in een vorige stap naar het klem bord hebt gekopieerd en klik op **registreren**.
 
     ![Gateway registreren](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
@@ -134,7 +134,7 @@ Nadat u de gateway hebt ingesteld, kunt u een module voor **gegevens import** to
 5. Selecteer de **gegevens gateway** die u hebt geïnstalleerd en geregistreerd. U kunt een andere gateway instellen door ' (nieuwe gegevens gateway toevoegen...) ' te selecteren.
 
    ![Gegevens gateway selecteren voor de module gegevens importeren](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. Voer de naam van de SQL **Data Base-Server** en de **database naam**in, samen met de SQL **Data Base-query** die u wilt uitvoeren.
+6. Voer de naam van de SQL **Data Base-Server** en de **database naam** in, samen met de SQL **Data Base-query** die u wilt uitvoeren.
 7. Klik op **waarden opgeven** onder **gebruikers naam en wacht woord** en voer uw database referenties in. U kunt geïntegreerde Windows-verificatie of SQL Server verificatie gebruiken, afhankelijk van hoe uw SQL Server is geconfigureerd.
 
    ![Database referenties opgeven](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
@@ -144,6 +144,6 @@ Nadat u de gateway hebt ingesteld, kunt u een module voor **gegevens import** to
    ![Eigenschappen van module gegevens importeren](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. Klik op **uitvoeren** om het experiment uit te voeren.
 
-Zodra het experiment is voltooid, kunt u de gegevens die u uit de Data Base hebt geïmporteerd, visualiseren door te klikken op de uitvoer poort van de module **gegevens importeren** en **visualiseren**te selecteren.
+Zodra het experiment is voltooid, kunt u de gegevens die u uit de Data Base hebt geïmporteerd, visualiseren door te klikken op de uitvoer poort van de module **gegevens importeren** en **visualiseren** te selecteren.
 
 Wanneer u klaar bent met het ontwikkelen van uw experiment, kunt u uw model implementeren en operationeel maken. Als u de batch Execution-Service gebruikt, worden gegevens uit de SQL Server-Data Base die in de **import gegevens** module zijn geconfigureerd, gelezen en gebruikt voor scores. Hoewel u de aanvraag respons service kunt gebruiken voor het bepalen van on-premises gegevens, raadt micro soft u aan om in plaats daarvan de [Excel-invoeg toepassing](excel-add-in-for-web-services.md) te gebruiken. Het schrijven naar een SQL Server-Data Base via **export gegevens** wordt momenteel niet ondersteund in uw experimenten of gepubliceerde webservices.

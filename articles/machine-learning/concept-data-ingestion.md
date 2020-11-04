@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 401398da4d71f32973f720dd0ca5cc9b550892e8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890168"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323046"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Opties voor gegevens opname van Azure Machine Learning werk stromen
 
@@ -33,7 +33,7 @@ Gegevens opname is het proces waarin ongestructureerde gegevens worden geëxtrah
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) biedt systeem eigen ondersteuning voor de bewaking van gegevens bronnen en triggers voor gegevens opname pijplijnen.  
+[Azure Data Factory](../data-factory/introduction.md) biedt systeem eigen ondersteuning voor de bewaking van gegevens bronnen en triggers voor gegevens opname pijplijnen.  
 
 De volgende tabel bevat een overzicht van de voor-en nadelen voor het gebruik van Azure Data Factory voor uw werk stromen voor gegevens opname.
 
@@ -41,11 +41,11 @@ De volgende tabel bevat een overzicht van de voor-en nadelen voor het gebruik va
 ---|---
 Speciaal gebouwd om gegevens te extra heren, te laden en te transformeren.|Biedt momenteel een beperkte set Azure Data Factory pijplijn taken 
 Hiermee kunt u gegevensgestuurde werk stromen maken voor het organiseren van gegevens verplaatsing en-trans formaties op schaal.|Duur om te bouwen en te onderhouden. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) van Azure Data Factory voor meer informatie.
-Geïntegreerd met verschillende Azure-hulpprogram ma's zoals [Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) en [Azure functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) | Voert geen systeem eigen scripts uit, in plaats daarvan afhankelijk van afzonderlijke Compute voor script uitvoeringen 
+Geïntegreerd met verschillende Azure-hulpprogram ma's zoals [Azure Databricks](../data-factory/transform-data-using-databricks-notebook.md) en [Azure functions](../data-factory/control-flow-azure-function-activity.md) | Voert geen systeem eigen scripts uit, in plaats daarvan afhankelijk van afzonderlijke Compute voor script uitvoeringen 
 Systeem eigen ondersteuning voor door gegevens bron geactiveerde gegevens opname| 
 Gegevens voorbereiding en model trainings processen zijn gescheiden.|
 Afkomst mogelijkheid voor Inge sloten gegevens voor Azure Data Factory gegevens stromen|
-Biedt een [gebruikers interface](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) met lage code ervaring voor niet-script benaderingen |
+Biedt een [gebruikers interface](../data-factory/quickstart-create-data-factory-portal.md) met lage code ervaring voor niet-script benaderingen |
 
 Deze stappen en het volgende diagram illustreren de werk stroom voor gegevens opname van Azure Data Factory.
 
@@ -60,7 +60,7 @@ Meer informatie over het bouwen van een pijp lijn voor gegevens opname voor Mach
 
 ## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning python-SDK 
 
-Met de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml)kunt u gegevens opname taken opnemen in een [Azure machine learning pijplijn](how-to-create-your-first-pipeline.md) stap.
+Met de [python-SDK](/python/api/overview/azure/ml)kunt u gegevens opname taken opnemen in een [Azure machine learning pijplijn](how-to-create-your-first-pipeline.md) stap.
 
 In de volgende tabel vindt u een overzicht van de voor-en hand leidingen voor het gebruik van de SDK en een stap van ML-pijp lijnen voor gegevens opname taken.
 

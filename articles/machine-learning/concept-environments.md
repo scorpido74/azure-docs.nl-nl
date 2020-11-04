@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: e1b92563acd6983b1680cacc06a8f2d0789dddf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c554abc8aef89ca353e06c14b04fab2622d2827
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302499"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322195"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Wat zijn Azure Machine Learning omgevingen?
 
@@ -35,7 +35,7 @@ De omgeving, de reken doel-en trainings script vormen samen de configuratie van 
 
 ## <a name="types-of-environments"></a>Typen omgevingen
 
-Omgevingen kunnen breed worden onderverdeeld in drie categorieën: met *curator*, door de *gebruiker beheerd*en door *het systeem beheerd*.
+Omgevingen kunnen breed worden onderverdeeld in drie categorieën: met *curator* , door de *gebruiker beheerd* en door *het systeem beheerd*.
 
 Gehoste omgevingen worden verzorgd door Azure Machine Learning en zijn standaard beschikbaar in uw werk ruimte. Deze zijn bedoeld om te worden gebruikt als zodanig dat ze verzamelingen van Python-pakketten en-instellingen bevatten die u helpen aan de slag te gaan met diverse machine learning frameworks. Deze vooraf gemaakte omgevingen bieden ook een snellere implementatie tijd. Zie het artikel over de gedocumenteerde [omgevingen](resource-curated-environments.md)voor een volledige lijst.
 
@@ -68,7 +68,7 @@ De Azure Machine Learning-service bouwt omgevings definities in docker-installat
 
 ### <a name="submitting-a-run-using-an-environment"></a>Een run verzenden met een omgeving
 
-Wanneer u een externe uitvoering voor het eerst met een omgeving verzendt, wordt door de Azure Machine Learning-service een [ACR-build-taak](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview) aangeroepen in de Azure container Registry (ACR) die aan de werk ruimte is gekoppeld. De ingebouwde docker-installatie kopie wordt vervolgens in de cache opgeslagen in de werk ruimte ACR. Met een hoofd omgeving worden er back-ups gemaakt van docker-installatie kopieën die in de cache zijn opgeslagen in de globale ACR. Aan het begin van het uitvoeren van de uitvoering wordt de installatie kopie opgehaald door het berekenings doel van de relevante ACR.
+Wanneer u een externe uitvoering voor het eerst met een omgeving verzendt, wordt door de Azure Machine Learning-service een [ACR-build-taak](../container-registry/container-registry-tasks-overview.md) aangeroepen in de Azure container Registry (ACR) die aan de werk ruimte is gekoppeld. De ingebouwde docker-installatie kopie wordt vervolgens in de cache opgeslagen in de werk ruimte ACR. Met een hoofd omgeving worden er back-ups gemaakt van docker-installatie kopieën die in de cache zijn opgeslagen in de globale ACR. Aan het begin van het uitvoeren van de uitvoering wordt de installatie kopie opgehaald door het berekenings doel van de relevante ACR.
 
 Voor lokale uitvoeringen wordt een docker-of Conda-omgeving gemaakt op basis van de omgevings definitie. De scripts worden vervolgens uitgevoerd op de doel computer, een lokale runtime-omgeving of een lokale docker-engine.
 
@@ -79,13 +79,13 @@ Als de omgevings definitie nog niet bestaat in de werk ruimte ACR, wordt er een 
  1. Een basis installatie kopie downloaden en alle docker-stappen uitvoeren
  2. Het bouwen van een Conda-omgeving op basis van Conda-afhankelijkheden die zijn opgegeven in de omgevings definitie.
 
-De tweede stap wordt wegge laten als u door de [gebruiker beheerde afhankelijkheden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py&preserve-view=true)opgeeft. In dit geval bent u verantwoordelijk voor het installeren van Python-pakketten door ze op te nemen in uw basis installatie kopie of door aangepaste docker-stappen in de eerste stap op te geven. U bent ook verantwoordelijk voor het opgeven van de juiste locatie voor het uitvoer bare python-bestand. Het is ook mogelijk om een [aangepaste docker-basis installatie kopie](how-to-deploy-custom-docker-image.md)te gebruiken.
+De tweede stap wordt wegge laten als u door de [gebruiker beheerde afhankelijkheden](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)opgeeft. In dit geval bent u verantwoordelijk voor het installeren van Python-pakketten door ze op te nemen in uw basis installatie kopie of door aangepaste docker-stappen in de eerste stap op te geven. U bent ook verantwoordelijk voor het opgeven van de juiste locatie voor het uitvoer bare python-bestand. Het is ook mogelijk om een [aangepaste docker-basis installatie kopie](how-to-deploy-custom-docker-image.md)te gebruiken.
 
 ### <a name="image-caching-and-reuse"></a>Afbeeldingen in cache opslaan en opnieuw gebruiken
 
 Als u dezelfde omgevings definitie gebruikt voor een andere uitvoering, gebruikt de Azure Machine Learning-service de in de cache opgeslagen afbeelding van de werk ruimte ACR. 
 
-Gebruik [environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) methode om de details van een afbeelding in de cache weer te geven.
+Gebruik [environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) methode om de details van een afbeelding in de cache weer te geven.
 
 Als u wilt bepalen of u een installatie kopie in cache opnieuw wilt gebruiken of een nieuwe afbeelding wilt maken, berekent de service [een hashwaarde](https://en.wikipedia.org/wiki/Hash_table) van de omgevings definitie en vergelijkt deze met de hashes van bestaande omgevingen. De hash is gebaseerd op:
  
@@ -108,10 +108,10 @@ In het volgende diagram ziet u drie omgevings definities. Er zijn twee verschill
 Als u het pakket wilt bijwerken, moet u een versie nummer opgeven om het opnieuw samen stellen van de installatie kopie af te dwingen ```numpy==1.18.1``` . Er worden nieuwe afhankelijkheden, inclusief geneste items, geïnstalleerd die een eerder werkend scenario kunnen verstoren. 
 
 > [!WARNING]
->  Met de methode [environment. build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=truebuild-workspace--image-build-compute-none-) wordt de installatie kopie in de cache opnieuw opgebouwd, met mogelijk neven effect van het bijwerken van losgemaakte pakketten en het verbreken van de reproduceer baarheid voor alle omgevings definities die overeenkomen met die in de cache opgeslagen afbeelding.
+>  Met de methode [environment. build](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) wordt de installatie kopie in de cache opnieuw opgebouwd, met mogelijk neven effect van het bijwerken van losgemaakte pakketten en het verbreken van de reproduceer baarheid voor alle omgevings definities die overeenkomen met die in de cache opgeslagen afbeelding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het [maken en gebruiken van omgevingen](how-to-use-environments.md) in azure machine learning.
-* Raadpleeg de documentatie van python SDK voor de [omgevings klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true).
+* Raadpleeg de documentatie van python SDK voor de [omgevings klasse](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py).
 * Raadpleeg de naslag documentatie over R SDK voor [omgevingen](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments).

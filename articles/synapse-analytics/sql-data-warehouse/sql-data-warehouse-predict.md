@@ -11,19 +11,19 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ef56274e0bda3f1a9d494852520a77ecdfc25799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048003"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325377"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Score machine learning modellen met voor spel
 
 Synapse SQL biedt u de mogelijkheid om machine learning modellen te scoren met behulp van de vertrouwde T-SQL-taal. Met T-SQL-voor [spel](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)kunt u uw bestaande machine learning-modellen getraind met historische gegevens en ze een score geven binnen de beveiligde grenzen van uw data warehouse. De functie voors PELLEn heeft een [ONNX-model (open Neural Network Exchange)](https://onnx.ai/) en gegevens als invoer. Deze functie elimineert de stap voor het verplaatsen van waardevolle gegevens buiten het Data Warehouse voor een score. Het is erop gericht om data professionals in staat te stellen om eenvoudig machine learning modellen te implementeren met de vertrouwde T-SQL-interface en naadloos samen te werken met gegevens wetenschappers die samen werken met het juiste Framework voor hun taak.
 
 > [!NOTE]
-> Deze functionaliteit wordt momenteel niet ondersteund in SQL op aanvraag.
+> Deze functionaliteit wordt momenteel niet ondersteund in een serverloze SQL-groep.
 
 Voor de functionaliteit moet het model buiten Synapse SQL worden getraind. Nadat u het model hebt gemaakt, laadt u het in het Data Warehouse en verdeelt u het met de syntaxis van de T-SQL-voor speling om inzicht te krijgen in de gegevens.
 

@@ -1,6 +1,6 @@
 ---
 title: Richt lijnen voor het ontwerpen van gedistribueerde tabellen
-description: Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in Synapse SQL-pool.
+description: Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen met een exclusieve SQL-groep in azure Synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487004"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323622"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Richtlijnen voor het ontwerpen van gedistribueerde tabellen in een Synapse SQL-pool
+# <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Richt lijnen voor het ontwerpen van gedistribueerde tabellen met een toegewezen SQL-groep in azure Synapse Analytics
 
-Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in Synapse SQL-groepen.
+Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in toegewezen SQL-groepen.
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met de concepten voor gegevens distributie en gegevens verplaatsing in Synapse SQL.  Zie [Azure Synapse Analytics-architectuur](massively-parallel-processing-mpp-architecture.md)voor meer informatie.
+In dit artikel wordt ervan uitgegaan dat u bekend bent met de concepten voor gegevens distributie en gegevens verplaatsing in de toegewezen SQL-groep.  Zie [Azure Synapse Analytics-architectuur](massively-parallel-processing-mpp-architecture.md)voor meer informatie.
 
 ## <a name="what-is-a-distributed-table"></a>Wat is een gedistribueerde tabel?
 
@@ -36,7 +36,7 @@ Als onderdeel van het tabel ontwerp begrijpt u zoveel mogelijk informatie over u
 
 - Hoe groot is de tabel?
 - Hoe vaak is de tabel vernieuwd?
-- Heb ik feiten-en dimensie tabellen in een Synapse-SQL-groep?
+- Heb ik feiten-en dimensie tabellen in een toegewezen SQL-groep?
 
 ### <a name="hash-distributed"></a>Hash gedistribueerd
 
@@ -44,7 +44,7 @@ Een hash-gedistribueerde tabel distribueert tabel rijen over de reken knooppunte
 
 ![Gedistribueerde tabel](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Gedistribueerde tabel")  
 
-Omdat identieke waarden altijd een hash naar dezelfde distributie hebben, heeft het Data Warehouse ingebouwde kennis van de maplocaties. In Synapse SQL-pool wordt deze kennis gebruikt om de verplaatsing van gegevens tijdens query's te minimaliseren, waardoor de query prestaties worden verbeterd.
+Omdat identieke waarden altijd een hash naar dezelfde distributie hebben, heeft het Data Warehouse ingebouwde kennis van de maplocaties. In de toegewezen SQL-groep wordt deze kennis gebruikt om de verplaatsing van gegevens tijdens query's te minimaliseren, waardoor de query prestaties worden verbeterd.
 
 Hash-gedistribueerde tabellen werken goed voor grote feiten tabellen in een ster schema. Ze kunnen zeer grote aantallen rijen hebben en toch hoge prestaties bezorgen. Er zijn uiteraard enkele ontwerp overwegingen waarmee u de prestaties van het gedistribueerde systeem kunt bepalen. Het kiezen van een goede distributie kolom is een van deze overwegingen die in dit artikel wordt beschreven.
 
@@ -113,7 +113,7 @@ Als u de parallelle verwerking wilt verdelen, selecteert u een distributie kolom
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Kies een distributie kolom die de verplaatsing van gegevens minimaliseert
 
-Om de juiste query resultaat query's te verkrijgen, kunnen gegevens van het ene reken knooppunt naar het andere worden verplaatst. Gegevens verplaatsing gebeurt meestal wanneer query's samen voegingen en aggregaties hebben op gedistribueerde tabellen. Het kiezen van een distributie kolom die helpt bij het minimaliseren van gegevens verplaatsing is een van de belangrijkste strategieën voor het optimaliseren van de prestaties van uw Synapse SQL-pool.
+Om de juiste query resultaat query's te verkrijgen, kunnen gegevens van het ene reken knooppunt naar het andere worden verplaatst. Gegevens verplaatsing gebeurt meestal wanneer query's samen voegingen en aggregaties hebben op gedistribueerde tabellen. Het kiezen van een distributie kolom die helpt bij het minimaliseren van gegevens verplaatsing is een van de belangrijkste strategieën voor het optimaliseren van de prestaties van uw toegewezen SQL-groep.
 
 Als u de verplaatsing van gegevens wilt minimaliseren, selecteert u een distributie kolom die:
 
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Als u een gedistribueerde tabel wilt maken, gebruikt u een van de volgende instructies:
 
-- [CREATE TABLE (Synapse SQL-groep)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE als SELECT (Synapse SQL-groep)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (toegewezen SQL-groep)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE als selecteren (toegewezen SQL-groep)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

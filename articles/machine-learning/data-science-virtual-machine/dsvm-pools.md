@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 0745957620aab7ed4d08cb016c706b56e6da1c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 789c6c36def21bfe1c2acc8797c1847455a5c86c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708965"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324386"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Een gedeelde groep data Science maken Virtual Machines
 
@@ -27,7 +27,7 @@ U kunt veel methoden en technologieën gebruiken om een pool met Dsvm te maken. 
 
 Een groep interactieve Vm's die door het hele AI/data Science-Team worden gedeeld, stelt gebruikers in staat om zich aan te melden bij een beschikbaar exemplaar van de DSVM in plaats van dat ze een toegewezen exemplaar voor elke set gebruikers hebben. Deze installatie maakt betere Beschik baarheid en efficiëntere gebruik van resources mogelijk.
 
-U gebruikt de [Azure virtual machine Scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) -technologie om een interactieve VM-groep te maken. U kunt schaal sets gebruiken voor het maken en beheren van een groep met virtuele machines met gelijke taak verdeling en automatisch schalen.
+U gebruikt de [Azure virtual machine Scale sets](../../virtual-machine-scale-sets/index.yml) -technologie om een interactieve VM-groep te maken. U kunt schaal sets gebruiken voor het maken en beheren van een groep met virtuele machines met gelijke taak verdeling en automatisch schalen.
 
 De gebruiker meldt zich aan bij het IP-of DNS-adres van de hoofd groep. De schaalset stuurt de sessie automatisch door naar een beschik bare DSVM in de schaalset. Omdat gebruikers een consistente en vertrouwde omgeving willen, ongeacht de VM waarin ze zich aanmelden bij, kunnen alle exemplaren van de virtuele machine in de schaalset een gedeeld netwerk station koppelen, zoals een Azure Files share of een NFS-share (Network File System). De gedeelde werk ruimte van de gebruiker wordt normaal gesp roken bewaard op het gedeelde bestands archief dat is gekoppeld aan elk van de instanties.
 
@@ -53,7 +53,7 @@ Met de voor gaande sjabloon kunnen de SSH-en JupyterHub-poort van de front-end-s
 
 Het [script dat de Azure Files share koppelt](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) , is ook beschikbaar in de Azure DataScienceVM-opslag plaats in github. Het script koppelt de Azure Files-share op het opgegeven koppel punt in het parameter bestand. Het script maakt ook zachte koppelingen naar het gekoppelde station in de basismap van de eerste gebruiker. Een gebruikersspecifieke notebook-map in de Azure Files share is zacht gekoppeld aan de `$HOME/notebooks/remote` Directory, zodat gebruikers hun Jupyter-notebooks kunnen openen, uitvoeren en opslaan. U kunt dezelfde conventie gebruiken wanneer u extra gebruikers op de VM maakt om de Jupyter-werk ruimte van elke gebruiker te laten verwijzen naar de Azure Files share.
 
-Schaal sets voor virtuele machines ondersteunen automatisch schalen. U kunt regels instellen over wanneer u extra instanties wilt maken en wanneer u exemplaren omlaag wilt schalen. U kunt bijvoorbeeld omlaag schalen naar nul-exemplaren om te besparen op kosten voor het gebruik van Cloud-hardware wanneer de Vm's helemaal niet worden gebruikt. De documentatie pagina's van virtuele-machine schaal sets bieden uitgebreide stappen voor automatisch [schalen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
+Schaal sets voor virtuele machines ondersteunen automatisch schalen. U kunt regels instellen over wanneer u extra instanties wilt maken en wanneer u exemplaren omlaag wilt schalen. U kunt bijvoorbeeld omlaag schalen naar nul-exemplaren om te besparen op kosten voor het gebruik van Cloud-hardware wanneer de Vm's helemaal niet worden gebruikt. De documentatie pagina's van virtuele-machine schaal sets bieden uitgebreide stappen voor automatisch [schalen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
