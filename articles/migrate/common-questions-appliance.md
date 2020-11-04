@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate apparaat
 description: Krijg antwoorden op veelgestelde vragen over het Azure Migrate-apparaat.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314784"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337588"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -42,12 +42,13 @@ Het apparaat kan als volgt worden geïmplementeerd:
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hoe maakt het apparaat verbinding met Azure?
 
-Het apparaat kan verbinding maken via internet of met behulp van Azure ExpressRoute. Zorg ervoor dat deze [url's](./migrate-appliance.md#url-access) zijn goedgekeurd voor het apparaat om verbinding te maken met Azure.
+Het apparaat kan verbinding maken via internet of met behulp van Azure ExpressRoute. 
 
-- Als u Azure ExpressRoute wilt gebruiken voor Azure Migrate replicatie verkeer, is micro soft-peering of een bestaande open bare peering vereist (open bare peering is afgeschaft voor nieuwe gemaakte aanmaak bewerkingen).
-- Replicatie via Azure ExpressRoute met (alleen) persoonlijke peering is ingeschakeld, wordt niet ondersteund.
+- Zorg ervoor dat het apparaat verbinding kan maken met deze [Azure-url's](./migrate-appliance.md#url-access). 
+- U kunt ExpressRoute gebruiken met micro soft-peering.  Open bare peering is afgeschaft en is niet beschikbaar voor nieuwe ExpressRoute-circuits.
+- Alleen privé-peering wordt niet ondersteund.
 
-Azure ExpressRoute met micro soft-peering geconfigureerd is het aanbevolen routerings domein voor replicatie verkeer.
+
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Is de invloed van de apparatuur op de prestaties?
 
@@ -65,9 +66,9 @@ Het apparaat moet toegang hebben tot Azure-Url's. [Controleer](migrate-appliance
 
 Raadpleeg de volgende artikelen voor informatie over gegevens die het Azure Migrate apparaat verzamelt op Vm's:
 
-- **VMware-VM**: [Controleer](migrate-appliance.md#collected-data---vmware) de verzamelde gegevens.
-- **Hyper-V VM**: [Controleer](migrate-appliance.md#collected-data---hyper-v) de verzamelde gegevens.
-- **Fysieke of virtuele servers**:[Controleer](migrate-appliance.md#collected-data---physical) verzamelde gegevens.
+- **VMware-VM** : [Controleer](migrate-appliance.md#collected-data---vmware) de verzamelde gegevens.
+- **Hyper-V VM** : [Controleer](migrate-appliance.md#collected-data---hyper-v) de verzamelde gegevens.
+- **Fysieke of virtuele servers** : [Controleer](migrate-appliance.md#collected-data---physical) verzamelde gegevens.
 
 ## <a name="how-is-data-stored"></a>Hoe worden gegevens opgeslagen?
 

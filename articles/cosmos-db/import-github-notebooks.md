@@ -4,14 +4,15 @@ description: Informatie over het maken van verbinding met GitHub en het importer
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 46170a0f723e912c370eb6e068542a02b9959948
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101473"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339798"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Notitie blokken importeren van een GitHub-opslag plaats in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +29,7 @@ U kunt verbinding maken met uw eigen GitHub-opslag plaatsen of andere open bare 
 
 1. Selecteer de menu opdracht **verbinding maken met github** .
 
-1. Er wordt een tabblad geopend waarin u kunt kiezen om verbinding te maken met alleen **open bare opslag plaatsen** of **open bare en privé opslag plaatsen** .  Nadat u de optie vereist hebt gekozen, selecteert u **toegang verlenen** . Er is autorisatie vereist voor Azure Cosmos DB om toegang te krijgen tot de opslag plaatsen in uw GitHub-account.
+1. Er wordt een tabblad geopend waarin u kunt kiezen om verbinding te maken met alleen **open bare opslag plaatsen** of **open bare en privé opslag plaatsen**.  Nadat u de optie vereist hebt gekozen, selecteert u **toegang verlenen**. Er is autorisatie vereist voor Azure Cosmos DB om toegang te krijgen tot de opslag plaatsen in uw GitHub-account.
 
    :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="Azure Cosmos DB toegang verlenen tot uw GitHub-opslag plaatsen":::
 
@@ -38,23 +39,23 @@ U kunt verbinding maken met uw eigen GitHub-opslag plaatsen of andere open bare 
 
 1. Wanneer u de vereiste opslag plaats selecteert, wordt de opslag plaats-vermelding verplaatst van de sectie **vastgemaakte opslag plaatsen** naar **vastgemaakte opslag plaatsen** sectie. Als dat nodig is, kunt u ook een specifieke vertakking van die opslag plaats kiezen waaruit de notitie blokken moeten worden geïmporteerd.
 
-   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Azure Cosmos DB toegang verlenen tot uw GitHub-opslag plaatsen":::
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Een opslag plaats en een vertakking kiezen":::
 
 1. Selecteer **OK** om de import bewerking te volt ooien. Alle notitie blokken die beschikbaar zijn in de geselecteerde vertakking van uw opslag plaats, worden geïmporteerd in uw Azure Cosmos-account.
 
 Nadat u hebt geïntegreerd met een GitHub-account, kunt u alleen de lijst met opslag plaatsen en notitie blokken in uw Azure Cosmos-account zien. Deze instructie is waar, zelfs als meerdere gebruikers zich aanmelden bij het Azure Cosmos DB-account en hun eigen accounts toevoegen. Met andere woorden, meerdere gebruikers kunnen hetzelfde Azure Cosmos-account gebruiken om de notebook-werk ruimte te verbinden met GitHub. Elke gebruiker ziet echter alleen de lijst met opslag plaatsen en notitie blokken die ze hebben geïmporteerd. De notitie blokken die door anderen zijn geïmporteerd, zijn niet zichtbaar voor u.
 
-Als u uw GitHub-account wilt loskoppelen van de werk ruimte notebooks, opent u het tabblad **Data Explorer** , selecteert `…` u naast **github opslag plaatsen** en selecteert u **verbinding verbreken met github** .
+Als u uw GitHub-account wilt loskoppelen van de werk ruimte notebooks, opent u het tabblad **Data Explorer** , selecteert `…` u naast **github opslag plaatsen** en selecteert u **verbinding verbreken met github**.
 
 ## <a name="edit-a-notebook-and-push-changes-to-github"></a>Een notitie blok en push wijzigingen in GitHub bewerken
 
 U kunt een bestaand notitie blok bewerken of een nieuw notitie blok toevoegen aan de opslag plaats en de wijzigingen opnieuw opslaan in GitHub.
 
-Nadat u een bestaand notitie blok hebt bewerkt, selecteert u **Opslaan** . Er wordt een dialoog venster geopend waarin u het commit-bericht kunt invoeren voor de wijzigingen die u hebt aangebracht. Selecteer **door voeren** en het notitie blok in github wordt bijgewerkt. U kunt de updates valideren door u aan te melden bij uw GitHub-account en de doorvoer geschiedenis te controleren.
+Nadat u een bestaand notitie blok hebt bewerkt, selecteert u **Opslaan**. Er wordt een dialoog venster geopend waarin u het commit-bericht kunt invoeren voor de wijzigingen die u hebt aangebracht. Selecteer **door voeren** en het notitie blok in github wordt bijgewerkt. U kunt de updates valideren door u aan te melden bij uw GitHub-account en de doorvoer geschiedenis te controleren.
 
 Na het door voeren van de wijzigingen in de normale GitHub-stroom worden meestal wijzigingen naar een extern bericht pushen. In dit geval is de doorvoer optie echter het doel van ' fase ring, het door voeren en het pushen van ' uw updates voor GitHub.
 
-:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Azure Cosmos DB toegang verlenen tot uw GitHub-opslag plaatsen":::
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Notitie blokken bewerken en wijzigingen door voeren in GitHub":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

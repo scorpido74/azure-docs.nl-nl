@@ -2,14 +2,14 @@
 title: Toegangs beheer Azure Service Bus met hand tekeningen voor gedeelde toegang
 description: Overzicht van Service Bus toegangs beheer met behulp van hand tekeningen voor gedeelde toegang, Details over SAS-autorisatie met Azure Service Bus.
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f71320613682f7d4b9f3b706845e68f581b3dc10
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012072"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339407"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Toegangs beheer Service Bus met hand tekeningen voor gedeelde toegang
 
@@ -36,7 +36,7 @@ Het [Shared Access Signature](/dotnet/api/microsoft.servicebus.sharedaccesssigna
 
 Elke Service Bus naam ruimte en elke Service Bus entiteit heeft een beleid voor gedeelde toegang dat bestaat uit regels. Het beleid op het niveau van de naam ruimte is van toepassing op alle entiteiten in de naam ruimte, ongeacht hun afzonderlijke beleids configuratie.
 
-Voor elke autorisatie beleids regel besluit u over drie stukjes informatie: **naam**, **bereik**en **rechten**. De **naam** is gewoon. een unieke naam binnen dat bereik. Het bereik is eenvoudig genoeg: het is de URI van de bron in kwestie. Voor een Service Bus naam ruimte is de scope de Fully Qualified Domain Name (FQDN), zoals `https://<yournamespace>.servicebus.windows.net/` .
+Voor elke autorisatie beleids regel besluit u over drie stukjes informatie: **naam** , **bereik** en **rechten**. De **naam** is gewoon. een unieke naam binnen dat bereik. Het bereik is eenvoudig genoeg: het is de URI van de bron in kwestie. Voor een Service Bus naam ruimte is de scope de Fully Qualified Domain Name (FQDN), zoals `https://<yournamespace>.servicebus.windows.net/` .
 
 De rechten die worden verleend door de beleids regel, kunnen een combi natie zijn van:
 
@@ -48,9 +48,23 @@ Het recht ' beheren ' bevat de rechten Send en receive.
 
 Een naam ruimte-of entiteits beleid kan Maxi maal 12 Shared Access Authorization Rules bevatten, zodat er ruimte is voor drie sets regels, elk met de basis rechten en de combi natie van verzenden en Luis teren. Deze limiet onderstreept dat het SAS-beleids archief niet bedoeld is als een gebruikers-of service account-archief. Als uw toepassing toegang moet verlenen tot Service Bus op basis van gebruikers-of service-identiteiten, moet het een beveiligings token service implementeren die SAS-tokens uitgeeft na een verificatie en toegangs controle.
 
-Aan een autorisatie regel is een *primaire sleutel* en een *secundaire sleutel*toegewezen. Dit zijn cryptografische sterke sleutels. Zorg ervoor dat ze niet verloren gaan of lekken: ze zijn altijd beschikbaar in de [Azure Portal][Azure portal]. U kunt een van de gegenereerde sleutels gebruiken en u kunt deze op elk gewenst moment opnieuw genereren. Als u een sleutel in het beleid opnieuw genereert of wijzigt, worden alle eerder uitgegeven tokens op basis van die sleutel onmiddellijk ongeldig. Actieve verbindingen die zijn gemaakt op basis van deze tokens blijven echter werken totdat het token verloopt.
+Aan een autorisatie regel is een *primaire sleutel* en een *secundaire sleutel* toegewezen. Dit zijn cryptografische sterke sleutels. Zorg ervoor dat ze niet verloren gaan of lekken: ze zijn altijd beschikbaar in de [Azure Portal][Azure portal]. U kunt een van de gegenereerde sleutels gebruiken en u kunt deze op elk gewenst moment opnieuw genereren. Als u een sleutel in het beleid opnieuw genereert of wijzigt, worden alle eerder uitgegeven tokens op basis van die sleutel onmiddellijk ongeldig. Actieve verbindingen die zijn gemaakt op basis van deze tokens blijven echter werken totdat het token verloopt.
 
 Wanneer u een Service Bus naam ruimte maakt, wordt automatisch een beleids regel gemaakt met de naam **RootManageSharedAccessKey** voor de naam ruimte. Dit beleid heeft beheer machtigingen voor de volledige naam ruimte. Het is raadzaam deze regel te behandelen als **een account met** beheerders rechten en niet in uw toepassing te gebruiken. U kunt aanvullende beleids regels maken op het tabblad **configureren** van de naam ruimte in de portal via Power shell of Azure cli.
+
+## <a name="best-practices-when-using-sas"></a>Best practices bij gebruik van SAS
+Wanneer u gebruikmaakt van hand tekeningen voor gedeelde toegang in uw toepassingen, moet u rekening houden met twee mogelijke Risico's:
+
+- Als een SAS wordt gelekt, kan deze worden gebruikt door iedereen die deze verkrijgt, waardoor uw Event Hubs-resources mogelijk kunnen worden aangetast.
+- Als een SAS die aan een client toepassing is gegeven, verloopt en de toepassing geen nieuwe SA'S kan ophalen van uw service, wordt de functionaliteit van de toepassing mogelijk belemmerd.
+
+De volgende aanbevelingen voor het gebruik van hand tekeningen voor gedeelde toegang kunnen helpen bij het oplossen van deze Risico's:
+
+- **Clients automatisch de SAS vernieuwen, indien nodig** : clients moeten de sa's goed vernieuwen voordat ze verlopen, zodat er tijd is om nieuwe pogingen te doen als de service die de SAS aanbiedt, niet beschikbaar is. Als uw SAS is bedoeld om te worden gebruikt voor een klein aantal directe, korte, langdurige bewerkingen die naar verwachting binnen de verloop periode zullen worden voltooid, is het mogelijk onnodig dat de SA'S niet naar verwachting worden verlengd. Als u echter een client hebt die regel matig aanvragen maakt via SAS, is het mogelijk dat de verval datum wordt afgespeeld. De belangrijkste overweging is om de nood zaak van de SA'S te verkorten (zoals eerder vermeld), met de nood zaak om ervoor te zorgen dat de client vernieuwingen vroeg genoeg aanvraagt (om onderbrekingen te voor komen als gevolg van het verlopen van SAS vóór een geslaagde vernieuwing).
+- **Wees voorzichtig met de SAS-start tijd** : als u de begin tijd voor SAS **nu** instelt, wordt de klok scheefheid (verschillen in de huidige tijd op basis van verschillende computers) mogelijk voor de eerste paar minuten afgenomen. In het algemeen stelt u de start tijd in op ten minste 15 minuten in het verleden. U kunt de service ook niet instellen, waardoor deze onmiddellijk in alle gevallen geldig is. Hetzelfde geldt ook voor de verloop tijd. Houd er rekening mee dat u gedurende een wille keurige aanvraag Maxi maal 15 minuten aan de klok kunt laten hellen. 
+- **Zorg ervoor dat de resource toegankelijk** is: een beveiligings best practice is om een gebruiker te voorzien van de mini maal vereiste bevoegdheden. Als een gebruiker alleen lees toegang nodig heeft tot één entiteit, dan verlenen zij Lees-en schrijf toegang tot de ene entiteit en niet lezen/schrijven/verwijderen voor alle entiteiten. Het helpt ook de schade te beperken als een SAS is aangetast omdat de SAS minder kracht in de handen van een aanvaller heeft.
+- **Gebruik niet altijd SAS** : soms zijn de Risico's die zijn gekoppeld aan een bepaalde bewerking ten opzichte van uw event hubs, tegen de voor delen van SAS. Voor dergelijke bewerkingen maakt u een middelste laag service die naar uw Event Hubs schrijft na de validatie van de bedrijfs regel, verificatie en controle.
+- **Altijd https gebruiken** : altijd https gebruiken om een SAS te maken of te distribueren. Als een SAS wordt door gegeven via HTTP en onderschept, kan een aanvaller die een man-in-the-Middle-koppeling uitvoert, de SA'S lezen en deze vervolgens gebruiken, net zoals de beoogde gebruiker kan hebben, mogelijk gevoelige gegevens in gevaar brengen of beschadiging van gegevens door de kwaadwillende gebruiker kan veroorzaken.
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Configuratie voor Shared Access Signature-verificatie
 
@@ -58,7 +72,7 @@ U kunt de [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messa
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-In deze afbeelding zijn de *manageRuleNS*-, *SendRuleNS*-en *listenRuleNS* -autorisatie regels van toepassing op zowel wachtrij W1 als onderwerp T1, terwijl *listenRuleQ* en *SendRuleQ* alleen van toepassing zijn op wachtrij W1 en *sendRuleT* alleen van toepassing op het onderwerp T1.
+In deze afbeelding zijn de *manageRuleNS* -, *SendRuleNS* -en *listenRuleNS* -autorisatie regels van toepassing op zowel wachtrij W1 als onderwerp T1, terwijl *listenRuleQ* en *SendRuleQ* alleen van toepassing zijn op wachtrij W1 en *sendRuleT* alleen van toepassing op het onderwerp T1.
 
 ## <a name="generate-a-shared-access-signature-token"></a>Een Shared Access Signature-token genereren
 
@@ -73,7 +87,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** -De URI van de bron waartoe toegang wordt verkregen.
 * **`sig`** Ondertekening.
 
-De `signature-string` is de SHA-256-Hash berekend op basis van de resource-URI (**bereik** zoals beschreven in de vorige sectie) en de teken reeks representatie van het token verloop, gescheiden door LF.
+De `signature-string` is de SHA-256-Hash berekend op basis van de resource-URI ( **bereik** zoals beschreven in de vorige sectie) en de teken reeks representatie van het token verloop, gescheiden door LF.
 
 De hash-berekening ziet er ongeveer uit als de volgende pseudo code en retourneert een 256-bits/32-byte hash-waarde.
 
@@ -85,7 +99,7 @@ Het token bevat de niet-gehashte waarden, zodat de ontvanger de hash opnieuw kan
 
 De resource-URI is de volledige URI van de Service Bus resource waarmee de toegang wordt geclaimd. Bijvoorbeeld, `http://<namespace>.servicebus.windows.net/<entityPath>` of `sb://<namespace>.servicebus.windows.net/<entityPath>` ; `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` ... 
 
-**De URI moet een [percentage zijn gecodeerd](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1).**
+**De URI moet een [percentage zijn gecodeerd](/dotnet/api/system.web.httputility.urlencode).**
 
 De gedeelde toegangs autorisatie regel die wordt gebruikt voor ondertekening moet worden geconfigureerd voor de entiteit die door deze URI wordt opgegeven of door een van de hiërarchische bovenliggende items. Bijvoorbeeld `http://contoso.servicebus.windows.net/contosoTopics/T1` of `http://contoso.servicebus.windows.net` in het vorige voor beeld.
 
@@ -160,7 +174,7 @@ sendClient.Send(helloMessage);
 
 U kunt de token provider ook rechtstreeks voor het uitgeven van tokens gebruiken om aan andere clients door te geven.
 
-Verbindings reeksen kunnen bestaan uit een regel naam (*SharedAccessKeyName*) en regel sleutel (*SharedAccessKey*) of een eerder uitgegeven token (*SharedAccessSignature*). Als deze aanwezig zijn in de connection string die is door gegeven aan een wille keurige constructor of fabrieks methode die een connection string accepteert, wordt de SAS-token provider automatisch gemaakt en gevuld.
+Verbindings reeksen kunnen bestaan uit een regel naam ( *SharedAccessKeyName* ) en regel sleutel ( *SharedAccessKey* ) of een eerder uitgegeven token ( *SharedAccessSignature* ). Als deze aanwezig zijn in de connection string die is door gegeven aan een wille keurige constructor of fabrieks methode die een connection string accepteert, wordt de SAS-token provider automatisch gemaakt en gevuld.
 
 Als u SAS-autorisatie wilt gebruiken met Service Bus relays, kunt u SAS-sleutels gebruiken die zijn geconfigureerd voor de Service Bus naam ruimte. Als u expliciet een relay maakt in de naam ruimte ([NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) met een [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription))-object, kunt u de SAS-regels voor die relay instellen. Als u SAS-autorisatie wilt gebruiken met Service Bus-abonnementen, kunt u SAS-sleutels gebruiken die zijn geconfigureerd op een Service Bus naam ruimte of op een onderwerp.
 

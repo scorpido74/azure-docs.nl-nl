@@ -3,15 +3,16 @@ title: Azure Cosmos DB PDF-query Cheat-pagina's
 description: Afdruk bare PDF Cheat-pagina's die u helpen bij het gebruik van de SQL-, MongoDB-, Graph-en Table-Api's van Azure Cosmos DB om uw gegevens op te vragen
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 0e9010ba79e4253d7569a0bba79fa05423e1a1ec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ef8aed7243e8956ad9ca62b630cda0efbd2deb9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081753"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339645"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Query Cheat-werk bladen Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +30,7 @@ Down load de [Azure Cosmos DB Cheat-pagina's van de letterlijke grootte](https:/
 ## <a name="oversized-cheat-sheets"></a>Grote cheat-bladen
 Down load de [Azure Cosmos DB Blade Cheat van A3-formaat](https://go.microsoft.com/fwlink/?linkid=870413) als u wilt afdrukken met een plotter of grootschalige printer op A3-formaat (11,7 x 16,5).
 
-:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB query Cheat Sheets-letterlijke grootte, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies" border="false":::
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB query Cheat Sheets: A3-formaat, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor meer informatie over het schrijven van query's:

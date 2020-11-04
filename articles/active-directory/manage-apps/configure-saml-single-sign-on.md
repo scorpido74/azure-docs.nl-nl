@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c72a2b134fc2c24789ebb75f61d9b64d63d3d48e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597910"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339475"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>Informatie over eenmalige aanmelding op basis van SAML
 
@@ -85,21 +85,24 @@ Vanuit Azure AD kunt u het actieve certificaat in base64-of RAW-indeling rechtst
 
 Enkele veelvoorkomende zaken die u moet controleren om te controleren of een certificaat is inbegrepen: 
    - *De juiste verval datum.* U kunt de verval datum Maxi maal drie jaar in de toekomst configureren.
-   - *De status actief voor het juiste certificaat.* Als de status niet **actief**is, wijzigt u de status in **actief**. Als u de status wilt wijzigen, klikt u met de rechter muisknop op de rij van het certificaat en selecteert **u certificaat actief maken**.
+   - *De status actief voor het juiste certificaat.* Als de status niet **actief** is, wijzigt u de status in **actief**. Als u de status wilt wijzigen, klikt u met de rechter muisknop op de rij van het certificaat en selecteert **u certificaat actief maken**.
    - *De juiste handtekening optie en algoritme.*
    - *Het juiste e-mail adres (sen) van de melding.* Wanneer het actieve certificaat bijna de verloop datum heeft, stuurt Azure AD een melding naar het e-mail adres dat in dit veld is geconfigureerd.
 
 Soms moet u het certificaat misschien downloaden. Wees voorzichtig wanneer u deze opslaat. Als u het certificaat wilt downloaden, selecteert u een van de opties voor Base64-indeling, RAW-indeling of federatieve meta gegevens-XML. Azure AD biedt ook de **URL voor de federatieve meta gegevens** van de app, waar u de meta gegevens die specifiek zijn voor de toepassing kunt openen in de indeling `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` .
 
+> [!NOTE]
+> De toepassing moet kunnen omgaan met het verwerken van byte volgorde markeringen die aanwezig zijn in de XML die wordt weer gegeven wanneer u gebruikt https://login.microsoftonline.com/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={app-id} . Byte Order Mark wordt weer gegeven als een niet-afdrukbaar ASCII-teken (¿) en in hexadecimale notatie wordt weer gegeven als EF BB BF bij het controleren van de XML-gegevens.
+
 Selecteer de knop bewerken om certificaat wijzigingen door te voeren. Er zijn verschillende dingen die u kunt doen op de pagina **SAML-handtekening certificaat** :
-   - Een nieuw certificaat maken: Selecteer **Nieuw certificaat**, selecteer de **verval datum**en selecteer vervolgens **Opslaan**. Als u het certificaat wilt activeren, selecteert u het context menu (**...**) en selecteert **u certificaat actief maken**.
-   - Een certificaat uploaden met persoonlijke sleutel en pfx-referenties: Selecteer **certificaat importeren** en blader naar het certificaat. Voer het **PFX-wacht woord**in en selecteer vervolgens **toevoegen**.  
+   - Een nieuw certificaat maken: Selecteer **Nieuw certificaat** , selecteer de **verval datum** en selecteer vervolgens **Opslaan**. Als u het certificaat wilt activeren, selecteert u het context menu ( **...** ) en selecteert **u certificaat actief maken**.
+   - Een certificaat uploaden met persoonlijke sleutel en pfx-referenties: Selecteer **certificaat importeren** en blader naar het certificaat. Voer het **PFX-wacht woord** in en selecteer vervolgens **toevoegen**.  
    - Geavanceerde certificaat ondertekening configureren. Zie [Geavanceerde opties voor certificaat ondertekening](certificate-signing-options.md)voor meer informatie over deze opties.
    - Informeer extra personen wanneer het actieve certificaat bijna de verloop datum heeft: Voer de e-mail adressen in de velden **e-mail** adres voor meldingen in.
 
 ## <a name="set-up-the-application-to-use-azure-ad"></a>De toepassing instellen voor gebruik van Azure AD
 
-In de sectie **instellen \<applicationName> ** worden de waarden vermeld die moeten worden geconfigureerd in de toepassing, zodat Azure AD wordt gebruikt als een SAML-ID-provider. U stelt de waarden in op de configuratie pagina op de website toepassingen. Als u bijvoorbeeld GitHub configureert, gaat u naar de github.com-site en stelt u de waarden in. Als de toepassing al vooraf is geconfigureerd en in de Azure AD-galerie, vindt u een koppeling waarmee u **Stapsgewijze instructies kunt bekijken**. Als dat niet het geval is, moet u de documentatie vinden voor de toepassing die u configureert. 
+In de sectie **instellen \<applicationName>** worden de waarden vermeld die moeten worden geconfigureerd in de toepassing, zodat Azure AD wordt gebruikt als een SAML-ID-provider. U stelt de waarden in op de configuratie pagina op de website toepassingen. Als u bijvoorbeeld GitHub configureert, gaat u naar de github.com-site en stelt u de waarden in. Als de toepassing al vooraf is geconfigureerd en in de Azure AD-galerie, vindt u een koppeling waarmee u **Stapsgewijze instructies kunt bekijken**. Als dat niet het geval is, moet u de documentatie vinden voor de toepassing die u configureert. 
 
 De waarden van de **aanmeldings-URL** en de **afmeldings-URL** worden beide omgezet naar hetzelfde eind punt. Dit is het SAML-eind punt voor aanvraag verwerking voor de Azure AD-Tenant. 
 
@@ -111,7 +114,7 @@ Nadat u uw toepassing hebt geconfigureerd voor het gebruik van Azure AD als id-p
 
 Selecteer **testen** en kies vervolgens om te testen met de gebruiker die momenteel is aangemeld of als iemand anders. 
 
-Als de aanmelding is geslaagd, kunt u gebruikers en groepen toewijzen aan uw SAML-toepassing. Gefeliciteerd!
+Als de aanmelding is geslaagd, kunt u gebruikers en groepen toewijzen aan uw SAML-toepassing. Gefeliciteerd
 
 Als er een fout bericht wordt weer gegeven, voert u de volgende stappen uit:
 
@@ -119,7 +122,7 @@ Als er een fout bericht wordt weer gegeven, voert u de volgende stappen uit:
 
     ![Hulp krijgen bij het oplossen van problemen](media/configure-single-sign-on-non-gallery-applications/error-guidance.png)
 
-2. Selecteer **ondersteuning**voor het oplossen van oplossingen. De richtlijnen voor de oorzaak en de oplossing van het probleem worden weergegeven.  In dit voorbeeld was de gebruiker niet toegewezen aan de toepassing.
+2. Selecteer **ondersteuning** voor het oplossen van oplossingen. De richtlijnen voor de oorzaak en de oplossing van het probleem worden weergegeven.  In dit voorbeeld was de gebruiker niet toegewezen aan de toepassing.
 
 3. Lees de richt lijnen voor oplossingen en probeer het probleem op te lossen.
 

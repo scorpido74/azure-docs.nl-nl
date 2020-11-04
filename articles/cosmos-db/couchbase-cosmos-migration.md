@@ -2,17 +2,18 @@
 title: Migreren van Couch Base naar Azure Cosmos DB SQL-API
 description: Stapsgewijze richt lijnen voor het migreren van Couch Base naar Azure Cosmos DB SQL-API
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 0f286b5586a0d74afed0bb185179454bb1efff95
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097546"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339508"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migreren van Couch Base naar Azure Cosmos DB SQL-API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -312,7 +313,7 @@ Dit is een eenvoudig type werk belasting waarin u zoek acties kunt uitvoeren in 
 
 1. Overweeg '/ID ' als primaire sleutel. Dit zorgt ervoor dat u de opzoek bewerking rechtstreeks kunt uitvoeren in de specifieke partitie. Maak een verzameling en geef '/ID ' op als partitie sleutel.
 
-1. Schakel het indexeren volledig uit. Omdat u opzoek bewerkingen wilt uitvoeren, is er geen punt om de overhead van indexeren te belasten. Als u indexeren wilt uitschakelen, meldt u zich aan bij Azure Portal, ga naar Azure Cosmos DB account. Open de **Data Explorer** , selecteer uw **Data Base** en de **container** . Open het tabblad **schaal & instellingen** en selecteer het  **indexerings beleid** . Momenteel ziet het indexerings beleid er als volgt uit:
+1. Schakel het indexeren volledig uit. Omdat u opzoek bewerkingen wilt uitvoeren, is er geen punt om de overhead van indexeren te belasten. Als u indexeren wilt uitschakelen, meldt u zich aan bij Azure Portal, ga naar Azure Cosmos DB account. Open de **Data Explorer** , selecteer uw **Data Base** en de **container**. Open het tabblad **schaal & instellingen** en selecteer het  **indexerings beleid**. Momenteel ziet het indexerings beleid er als volgt uit:
     
    ```json
    {

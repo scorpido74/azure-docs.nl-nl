@@ -3,15 +3,16 @@ title: Scalaire expressies in Azure Cosmos DB SQL-query's
 description: Meer informatie over de SQL-syntaxis van scalaire expressies voor Azure Cosmos DB. In dit artikel wordt ook beschreven hoe u scalaire expressies kunt combi neren in complexe expressies met behulp van Opera tors.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: c40916d975b8acabaa7083cf57259291f09b40a9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082603"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339628"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Scalaire expressies in Azure Cosmos DB SQL-query's
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

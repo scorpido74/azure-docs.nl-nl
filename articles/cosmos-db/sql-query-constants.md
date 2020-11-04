@@ -3,15 +3,16 @@ title: SQL-constanten in Azure Cosmos DB
 description: Meer informatie over hoe de SQL-query constanten in Azure Cosmos DB worden gebruikt om een specifieke gegevens waarde weer te geven
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100861"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339196"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-query constanten  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,11 +25,11 @@ ms.locfileid: "93100861"
 |-|-|  
 |**Undefined**|Enkele waarde: niet **gedefinieerd**|  
 |**Null**|Enkele waarde: **Null**|  
-|**True**|Waarden: **False** , **True** .|  
+|**Booleaans**|Waarden: **False** , **True**.|  
 |**Number**|Een drijvende-komma getal met dubbele precisie, IEEE 754-standaard.|  
 |**Tekenreeks**|Een reeks van nul of meer Unicode-tekens. Teken reeksen moeten tussen enkele of dubbele aanhalings tekens worden geplaatst.|  
-|**Array**|Een reeks van nul of meer elementen. Elk element kan een waarde van elk scalair gegevens type zijn, behalve niet **gedefinieerd** .|  
-|**Object**|Een niet-geordende set met nul of meer naam/waarde-paren. Naam is een Unicode-teken reeks, waarde kan van elk scalair gegevens type zijn, behalve niet **gedefinieerd** .|  
+|**Array**|Een reeks van nul of meer elementen. Elk element kan een waarde van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
+|**Object**|Een niet-geordende set met nul of meer naam/waarde-paren. Naam is een Unicode-teken reeks, waarde kan van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
@@ -68,7 +69,7 @@ ms.locfileid: "93100861"
   
 * `<null_constant>; null`  
   
-  Vertegenwoordigt een **Null** -waarde van het type **Null** .  
+  Vertegenwoordigt een **Null** -waarde van het type **Null**.  
   
 * `<boolean_constant>`  
   
@@ -114,7 +115,7 @@ ms.locfileid: "93100861"
 |\f|formulier feed|U + 000C|  
 |\n|regel invoer|U + 000A|  
 |\r| regelterugloop|U + 000D|  
-|\|tabbesturingselement|U + 0009|  
+|\| tabblad|U + 0009|  
 |\uXXXX|Een Unicode-teken dat is gedefinieerd door 4 hexadecimale cijfers.|U + XXXX|  
 
 ## <a name="next-steps"></a>Volgende stappen

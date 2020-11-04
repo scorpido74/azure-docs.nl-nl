@@ -3,12 +3,12 @@ title: Afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure
 description: Een afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure Migrate server.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667466"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337690"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Machine-afhankelijkheden analyseren (zonder agents)
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u analyse van agentloze afhankelijkheden ins
 
 - In de weer gave afhankelijkheids analyse kunt u op dit moment geen server toevoegen aan of verwijderen uit een groep.
 - Een afhankelijkheids toewijzing voor een groep servers is momenteel niet beschikbaar.
-- Het verzamelen van afhankelijkheids gegevens kan gelijktijdig worden ingesteld voor 1000-servers. U kunt een hoger aantal servers analyseren door sequentiëren in batches van 1000.
+- In een Azure Migrate project kan het verzamelen van afhankelijkheids gegevens gelijktijdig worden ingesteld voor 1000-servers. U kunt een hoger aantal servers analyseren door sequentiëren in batches van 1000.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -48,8 +48,8 @@ Voeg het gebruikers account toe aan het apparaat.
 
 1. Open de app voor het beheren van apparaten. 
 2. Navigeer naar het deel venster **vCenter-gegevens opgeven** .
-3. Klik in **toepassing en afhankelijkheden van Vm's detecteren**op **referenties toevoegen**
-3. Kies het **besturings systeem**, geef een beschrijvende naam op voor het account en het **User name** / **wacht woord** voor de gebruikers naam
+3. Klik in **toepassing en afhankelijkheden van Vm's detecteren** op **referenties toevoegen**
+3. Kies het **besturings systeem** , geef een beschrijvende naam op voor het account en het **User name** / **wacht woord** voor de gebruikers naam
 6. Klik op **Opslaan**.
 7. Klik op **opslaan en detectie starten**.
 
@@ -59,7 +59,7 @@ Voeg het gebruikers account toe aan het apparaat.
 
 Kies de computers waarop u detectie van afhankelijkheden wilt inschakelen. 
 
-1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
+1. Klik in **Azure migrate: Server evaluatie** op **gedetecteerde servers**.
 2. Klik op het pictogram **afhankelijkheids analyse** .
 3. Klik op **servers toevoegen**.
 4. Kies op de pagina **servers toevoegen** het apparaat dat de relevante computers detecteert.
@@ -72,7 +72,7 @@ U kunt afhankelijkheden ongeveer zes uur na het starten van de detectie van afha
 
 ## <a name="visualize-dependencies"></a>Afhankelijkheden visualiseren
 
-1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
+1. Klik in **Azure migrate: Server evaluatie** op **gedetecteerde servers**.
 2. Zoek naar de computer die u wilt weer geven.
 3. Klik in de kolom **afhankelijkheden** op **afhankelijkheden weer geven**
 4. Wijzig de tijds periode waarvoor u de kaart wilt weer geven met de vervolg keuzelijst **tijd duur** .
@@ -93,7 +93,7 @@ U kunt afhankelijkheden ongeveer zes uur na het starten van de detectie van afha
 
 ## <a name="export-dependency-data"></a>Afhankelijkheids gegevens exporteren
 
-1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
+1. Klik in **Azure migrate: Server evaluatie** op **gedetecteerde servers**.
 2. Klik op het pictogram **afhankelijkheids analyse** .
 3. Klik op **toepassings afhankelijkheden exporteren**.
 4. Kies op de pagina **toepassings afhankelijkheden exporteren** het apparaat dat de relevante computers detecteert.
@@ -127,7 +127,7 @@ Doelpoort | Poort nummer op de doel computer
 
 Kies de computers waarop u de detectie van afhankelijkheden wilt stoppen. 
 
-1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
+1. Klik in **Azure migrate: Server evaluatie** op **gedetecteerde servers**.
 2. Klik op het pictogram **afhankelijkheids analyse** .
 3. Klik op **servers verwijderen**.
 3. Kies op de pagina **servers verwijderen** het **apparaat** dat de vm's detecteert waarop u de detectie van de afhankelijkheid wilt stoppen.

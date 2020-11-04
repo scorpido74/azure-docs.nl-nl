@@ -4,16 +4,15 @@ description: Meer informatie over het instellen van waarschuwingen voor Azure Co
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 1042638dc622e6675c997bc6db8df1d072824816
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099909"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339535"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Waarschuwingen maken voor Azure Cosmos DB met behulp van Azure Monitor
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +33,7 @@ In deze sectie wordt beschreven hoe u een waarschuwing maakt wanneer u een HTTP-
 
 1. Meld u aan bij de [Azure Portal.](https://portal.azure.com/)
 
-1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **waarschuwingen** .
+1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **waarschuwingen**.
 
 1. Selecteer de knop nieuwe waarschuwings regel om het deel venster waarschuwings regel maken te openen.  
 
@@ -44,11 +43,11 @@ In deze sectie wordt beschreven hoe u een waarschuwing maakt wanneer u een HTTP-
 
    * Kies de naam van uw **abonnement** .
 
-   * Selecteer **Azure Cosmos DB accounts** voor het **resource type** .
+   * Selecteer **Azure Cosmos DB accounts** voor het **resource type**.
 
    * De **locatie** van uw Azure Cosmos-account.
 
-   * Nadat u de details hebt ingevuld, wordt een lijst met Azure Cosmos-accounts in het geselecteerde bereik weer gegeven. Kies het abonnement waarvoor u waarschuwingen wilt configureren en selecteer **gereed** .
+   * Nadat u de details hebt ingevuld, wordt een lijst met Azure Cosmos-accounts in het geselecteerde bereik weer gegeven. Kies het abonnement waarvoor u waarschuwingen wilt configureren en selecteer **gereed**.
 
 1. Vul de sectie **voor waarde** in:
 
@@ -58,17 +57,17 @@ In deze sectie wordt beschreven hoe u een waarschuwing maakt wanneer u een HTTP-
 
    * **Alles** selecteren voor de **Monitor service**
 
-   * Kies een **signaal naam** . Als u een waarschuwing wilt ontvangen voor HTTP-status codes, kiest u het totale signaal voor **aanvraag eenheden** .
+   * Kies een **signaal naam**. Als u een waarschuwing wilt ontvangen voor HTTP-status codes, kiest u het totale signaal voor **aanvraag eenheden** .
 
    * Op het volgende tabblad kunt u de logica voor het activeren van een waarschuwing definiëren en de grafiek gebruiken om trends van uw Azure Cosmos-account weer te geven. De metrische gegevens voor de **totale aanvraag eenheden** ondersteunen dimensies. Met deze dimensies kunt u filteren op de metriek. Als u geen dimensie selecteert, wordt deze waarde genegeerd.
 
-   * Kies **status** code als **dimensie naam** . Selecteer **aangepaste waarde toevoegen** en stel de status code in op 429.
+   * Kies **status** code als **dimensie naam**. Selecteer **aangepaste waarde toevoegen** en stel de status code in op 429.
 
-   * Stel in de logica van de **waarschuwing** de **drempel waarde** in op **statisch** . De statische drempel waarde gebruikt een door de gebruiker gedefinieerde drempelwaarde voor het evalueren van de regel, terwijl de dynamische drempel waarden gebruikmaken van ingebouwde machine learning algoritmen om voortdurend het meet patroon voor metrische gegevens te ontdekken en de drempel waarden automatisch te berekenen.
+   * Stel in de logica van de **waarschuwing** de **drempel waarde** in op **statisch**. De statische drempel waarde gebruikt een door de gebruiker gedefinieerde drempelwaarde voor het evalueren van de regel, terwijl de dynamische drempel waarden gebruikmaken van ingebouwde machine learning algoritmen om voortdurend het meet patroon voor metrische gegevens te ontdekken en de drempel waarden automatisch te berekenen.
 
-   * Stel de **operator** in **op groter dan** , **het aggregatie type** in **totaal** en de **drempel waarde** op **100** . Als uw client meer dan 100 aanvragen met een 429-status code heeft gezien, wordt de waarschuwing geactiveerd. U kunt ook het aggregatie type, de granulariteit van aggregatie en de frequentie van de evaluatie op basis van uw vereiste configureren.
+   * Stel de **operator** in **op groter dan** , **het aggregatie type** in **totaal** en de **drempel waarde** op **100**. Als uw client meer dan 100 aanvragen met een 429-status code heeft gezien, wordt de waarschuwing geactiveerd. U kunt ook het aggregatie type, de granulariteit van aggregatie en de frequentie van de evaluatie op basis van uw vereiste configureren.
 
-   * Nadat u het formulier hebt ingevuld, selecteert u **gereed** . Op de volgende scherm afbeelding ziet u de details van de waarschuwings logica:
+   * Nadat u het formulier hebt ingevuld, selecteert u **gereed**. Op de volgende scherm afbeelding ziet u de details van de waarschuwings logica:
 
      :::image type="content" source="./media/create-alerts/configure-alert-logic.png" alt-text="De logica configureren voor het ontvangen van waarschuwingen voor een aantal beperkte/429-aanvragen":::
 
@@ -82,9 +81,9 @@ In deze sectie wordt beschreven hoe u een waarschuwing maakt wanneer u een HTTP-
 
    * Kies het abonnement en de resource groep waarin deze actie groep wordt gemaakt.  
 
-   * Geef een naam op voor uw actie en selecteer **e-mail/SMS-bericht/push/Voice** als **actie type** . De volgende scherm afbeelding toont de details van het actie Type:
+   * Geef een naam op voor uw actie en selecteer **e-mail/SMS-bericht/push/Voice** als **actie type**. De volgende scherm afbeelding toont de details van het actie Type:
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="De logica configureren voor het ontvangen van waarschuwingen voor een aantal beperkte/429-aanvragen":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Het actie Type zoals e-mail melding configureren om de waarschuwing te ontvangen":::
 
 1. Vul de sectie **Details van waarschuwings regel** in:
 

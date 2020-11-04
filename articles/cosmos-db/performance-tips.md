@@ -3,16 +3,17 @@ title: Tips voor Azure Cosmos DB prestaties voor .NET SDK v2
 description: Meer informatie over client configuratie opties voor het verbeteren van de prestaties van Azure Cosmos DB .NET v2 SDK.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: a1c986663c42b87e7e5d4530b26200d48fe612cb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f2da2047469f342814ff349cfa059ed61e3adc25
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314265"
+ms.locfileid: "93339679"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

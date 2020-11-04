@@ -5,15 +5,16 @@ author: anfeldma-ms
 ms.custom: devx-track-java
 ms.author: anfeldma
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: eb2553346881bc2e8de631988bd11642b85aa847
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b33524acd09cbf565127dc81ef2b5bfa16b4504d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099637"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339755"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Uw toepassing migreren om de Azure Cosmos DB Java SDK v4 te gebruiken
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -67,7 +68,7 @@ Hieronder vindt u een overzicht van de API-wijzigingen in Azure Cosmos DB Java S
 
   * **Java SDK 3. x. x** : alle klassen behoren tot de ASYNC-API tenzij de naam van de klasse wordt toegevoegd `Async` `Cosmos` .
 
-  * **Asynchrone Java SDK 2. x. x** : de namen van klassen zijn vergelijkbaar met het synchroniseren van Java SDK 2. x. x, maar de naam begint met *async* .
+  * **Asynchrone Java SDK 2. x. x** : de namen van klassen zijn vergelijkbaar met het synchroniseren van Java SDK 2. x. x, maar de naam begint met *async*.
 
 ### <a name="hierarchical-api-structure"></a>Hiërarchische API-structuur
 

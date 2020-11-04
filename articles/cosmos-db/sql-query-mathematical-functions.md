@@ -3,16 +3,17 @@ title: Wiskundige functies in Azure Cosmos DB query taal
 description: Meer informatie over de wiskundige functies in Azure Cosmos DB voor het uitvoeren van een berekening, op basis van invoer waarden die zijn opgegeven als argumenten en het retour neren van een numerieke waarde.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b6b2c47d5a4cb71ecf46d1eb1c33e2f667fa8052
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9dc3631b738da78df83113d89d23051033674d11
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078251"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338364"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Wiskundige functies (Azure Cosmos DB)  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +32,7 @@ Het resultaat is:
     [4]
 ```
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 De volgende ingebouwde wiskundige functies voeren een berekening uit, meestal op basis van invoer argumenten, en retour neren een numerieke expressie:
  
@@ -56,7 +57,7 @@ De volgende ingebouwde wiskundige functies voeren een berekening uit, meestal op
 * [SIGN](sql-query-sign.md)
 * [SIN](sql-query-sin.md)
 * [SQRT](sql-query-sqrt.md)
-* [SQUARE](sql-query-square.md)
+* [WORTEL](sql-query-square.md)
 * [TAN](sql-query-tan.md)
 * [TRUNC](sql-query-trunc.md)
 

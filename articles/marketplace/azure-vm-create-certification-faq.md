@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f065b1bc98eab86542ecff73e1471e4d90cd4182
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677905"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339530"
 ---
 # <a name="vm-certification-troubleshooting"></a>Problemen oplossen met VM-certificering
 
@@ -47,15 +47,15 @@ Controleer of de installatie kopie VM-extensies ondersteunt.
 Ga als volgt te werk om VM-extensies in te scha kelen:
 
 1. Selecteer uw virtuele Linux-machine.
-1. Ga naar **instellingen voor diagnostische gegevens** .
+1. Ga naar **instellingen voor diagnostische gegevens**.
 1. Schakel basis matrices in door het **opslag account** bij te werken.
-1. Selecteer **Opslaan** .
+1. Selecteer **Opslaan**.
 
    ![Bewaking op gastniveau inschakelen](./media/create-vm/vm-certification-issues-solutions-1.png)
 
 Ga als volgt te werk om te controleren of de VM-extensies correct zijn geactiveerd:
 
-1. Selecteer op de VM het tabblad **VM-extensies** en controleer de status van de **Linux Diagnostics-extensie** .
+1. Selecteer op de VM het tabblad **VM-extensies** en controleer de status van de **Linux Diagnostics-extensie**.
 1. 
     * Als de status is *ingericht* , wordt de test case door gegeven.  
     * Als de status van de *inrichting mislukt* is, is het mogelijk dat de uitbrei dingen van de aanvraag zijn mislukt en dat u de gereduceerde vlag moet instellen.
@@ -81,6 +81,45 @@ Het inrichtings probleem kan de volgende fout scenario's omvatten:
 > Zie voor meer informatie over VM-generalisatie:
 > - [Linux-documentatie](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Windows-documentatie](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
+
+
+## <a name="vhd-specifications"></a>VHD-specificaties
+
+### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix cookie en andere VHD-specificaties
+De teken reeks ' conectix ' maakt deel uit van de VHD-specificatie en gedefinieerd als de 8-bytes ' cookie ' in de onderstaande VHD-voet tekst die de maker van het bestand aangeeft. Alle VHD-bestanden die door micro soft zijn gemaakt, hebben deze cookie. 
+
+Een blob met VHD-indeling moet een 512 byte-voet tekst hebben. Dit is de indeling voor de VHD-voet tekst:
+
+|Vaste-schijf voet tekst velden|Grootte (bytes)|
+|---|---|
+Cookies|8
+Functies|4
+Bestands indelings versie|4
+Gegevens offset|8
+Tijdstempel|4
+Maker-toepassing|4
+Creator-versie|4
+Creator host-besturings systeem|4
+Oorspronkelijke grootte|8
+Huidige grootte|8
+Schijf geometrie|4
+Schijftype|4
+Controlesom|4
+Unieke id|16
+Opgeslagen status|1
+Gereserveerd|427
+
+
+### <a name="vhd-specifications"></a>VHD-specificaties
+Zorg ervoor dat **de VHD voldoet aan de volgende criteria** om te zorgen voor een naadloze publicatie:
+* De cookie moet de teken reeks ' conectix ' bevatten
+* Het schijf type moet worden hersteld
+* De virtuele grootte van de VHD is ten minste 20 MB
+* De VHD is uitgelijnd (dat wil zeggen: de virtuele grootte moet een meervoud van 1 MB zijn)
+* De VHD-BLOB-lengte = virtuele grootte + VHD-voet tekst lengte (512)
+
+U kunt de VHD-specificatie [hier downloaden.](https://www.microsoft.com/download/details.aspx?id=23850)
+
 
 ## <a name="software-compliance-for-windows"></a>Software compatibiliteit voor Windows
 
@@ -123,8 +162,8 @@ De volgende tabel bevat algemene fouten die zijn gevonden tijdens het uitvoeren 
 |---|---|---|---|
 |1|Test case voor Linux-agent versie|De minimale versie van de Linux-agent is 2.2.41 of hoger. Deze vereiste is verplicht sinds 1 mei 2020.|Werk de versie van de Linux-agent bij en deze moet 2,241 of hoger zijn. Ga voor meer informatie naar de [Update pagina van de Linux-agent versie](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).|
 |2|Test case voor bash geschiedenis|U ziet een fout als de grootte van de bash-geschiedenis in uw verzonden afbeelding meer dan 1 kilo byte (KB) is. De grootte is beperkt tot 1 KB om ervoor te zorgen dat mogelijk gevoelige gegevens niet worden vastgelegd in uw bash-geschiedenis bestand.|Om dit probleem op te lossen, koppelt u de VHD aan een andere werkende VM en brengt u de gewenste wijzigingen aan (u kunt bijvoorbeeld de *bash* -geschiedenis bestanden verwijderen) om de grootte te verkleinen tot minder dan of gelijk aan 1 KB.|
-|3|Vereiste test case voor de kernel-para meter|U ontvangt deze fout melding wanneer de waarde voor de **console** niet is ingesteld op **ttyS0** . Controleer door de volgende opdracht uit te voeren:<br>`cat /proc/cmdline`|Stel de waarde voor de **console** in op **ttyS0** en verzend de aanvraag opnieuw.|
-|4|Test case ClientAlive-interval|Als het resultaat van de Toolkit een mislukt resultaat voor deze test case geeft, is er een onjuiste waarde voor **' ClientAliveInterval** .|Stel de waarde voor **' ClientAliveInterval** in op kleiner dan of gelijk aan 235 en verzend de aanvraag vervolgens opnieuw.|
+|3|Vereiste test case voor de kernel-para meter|U ontvangt deze fout melding wanneer de waarde voor de **console** niet is ingesteld op **ttyS0**. Controleer door de volgende opdracht uit te voeren:<br>`cat /proc/cmdline`|Stel de waarde voor de **console** in op **ttyS0** en verzend de aanvraag opnieuw.|
+|4|Test case ClientAlive-interval|Als het resultaat van de Toolkit een mislukt resultaat voor deze test case geeft, is er een onjuiste waarde voor **' ClientAliveInterval**.|Stel de waarde voor **' ClientAliveInterval** in op kleiner dan of gelijk aan 235 en verzend de aanvraag vervolgens opnieuw.|
 
 ### <a name="windows-test-cases"></a>Test cases van Windows
 
@@ -197,7 +236,7 @@ De versie van het installatie kopie bestand kan worden gecontroleerd vanuit `C:\
 |Windows Server 2012|6.2.9200.22099|
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
-|Windows Server 2019|N.v.t.|
+|Windows Server 2019|NA|
 |
 
 ## <a name="sack-vulnerability-patch-verification"></a>Verificatie van beveiligings patch voor de Opzakken
@@ -501,36 +540,36 @@ Ga als volgt te werk om een installatie kopie van een virtuele machine te vervan
 Als u deze stappen wilt uitvoeren, moet u de technische assets voorbereiden voor de VM-installatie kopie die u wilt toevoegen. Zie [een virtuele machine maken met behulp van een goedgekeurde basis](azure-vm-create-using-approved-base.md) of [een virtuele machine maken met uw eigen installatie kopie](azure-vm-create-using-own-image.md)en [een SAS-URI voor uw VM-installatie kopie genereren](azure-vm-get-sas-uri.md)voor meer informatie.
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het navigatie menu de optie **commerciële Marketplace** -  >  **overzicht** .
+2. Selecteer in het navigatie menu de optie **commerciële Marketplace** -  >  **overzicht**.
 3. Selecteer de aanbieding in de kolom **aanbiedings alias** .
 4. Selecteer op het tabblad **plan overzicht** , in de kolom **naam** , het plan waaraan u de virtuele machine wilt toevoegen.
-5. Selecteer op het tabblad **technische configuratie** onder **VM-installatie kopieën** **+ installatie kopie van virtuele machine toevoegen** .
+5. Selecteer op het tabblad **technische configuratie** onder **VM-installatie kopieën** **+ installatie kopie van virtuele machine toevoegen**.
 
 > [!NOTE]
 > U kunt slechts één VM-installatie kopie toevoegen aan één abonnement per keer. Als u meerdere VM-installatie kopieën wilt toevoegen, publiceert u de eerste Live voordat u de volgende VM-installatie kopie toevoegt.
 
 6. Geef in de weer gegeven vakken een nieuwe schijf versie en de installatie kopie van de virtuele machine op.
-7. Selecteer **Concept opslaan** .
+7. Selecteer **Concept opslaan**.
 
 Ga verder met de volgende sectie hieronder om de VM-installatie kopie te verwijderen met het beveiligings probleem.
 
 #### <a name="remove-the-vm-image-with-the-security-vulnerability-or-exploit"></a>De VM-installatie kopie verwijderen met het beveiligings probleem of de misbruik
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het navigatie menu de optie **commerciële Marketplace** -  >  **overzicht** .
+2. Selecteer in het navigatie menu de optie **commerciële Marketplace** -  >  **overzicht**.
 3. Selecteer de aanbieding in de kolom **aanbiedings alias** .
 4. Selecteer op het tabblad **plan overzicht** , in de kolom **naam** , het plan met de virtuele machine die u wilt verwijderen.
-5. Op het tabblad **technische configuratie** onder **VM-installatie kopieën** naast de VM-installatie kopie die u wilt verwijderen, selecteert u VM- **installatie kopie verwijderen** .
+5. Op het tabblad **technische configuratie** onder **VM-installatie kopieën** naast de VM-installatie kopie die u wilt verwijderen, selecteert u VM- **installatie kopie verwijderen**.
 6. Selecteer **door gaan** in het dialoog venster dat wordt weer gegeven.
-7. Selecteer **Concept opslaan** .
+7. Selecteer **Concept opslaan**.
 
 Ga verder met de volgende sectie hieronder om de aanbieding opnieuw te publiceren.
 
 #### <a name="republish-the-offer"></a>De aanbieding opnieuw publiceren
 
-1. Selecteer **controleren en publiceren** .
+1. Selecteer **controleren en publiceren**.
 2. Als u informatie moet verstrekken aan het certificerings team, voegt u deze toe aan het vak **notities voor certificering** .
-3. Selecteer **Publiceren** .
+3. Selecteer **Publiceren**.
 
 Zie [aanbiedingen bekijken en publiceren](review-publish-offer.md)om het publicatie proces te volt ooien.
 

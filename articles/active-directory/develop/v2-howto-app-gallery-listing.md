@@ -1,5 +1,5 @@
 ---
-title: Uw app publiceren in de app-galerie van Azure AD
+title: Uw app publiceren in de galerie met Azure Active Directory apps
 description: Meer informatie over het weer geven van een toepassing die eenmalige aanmelding in de app-galerie van Azure Active Directory ondersteunt.
 services: active-directory
 author: kenwith
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/19/2020
+ms.date: 11/03/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5ade98e04853ae8293f762f237b3b3154c876f7e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275655"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339428"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uw app publiceren in de app-galerie van Azure AD
 
@@ -60,11 +60,28 @@ De stappen voor het publiceren van uw app in de app-galerie van Azure AD zijn:
 5. Verzend uw app.
 6. Word lid van het micro soft Partner Network.
 
+## <a name="what-is-the-azure-ad-application-gallery"></a>Wat is de Azure AD-toepassings galerie?
+
+- Klanten vinden de best mogelijke eenmalige aanmelding.
+- De configuratie van de toepassing is eenvoudig en mini maal.
+- Met een snelle zoek opdracht vindt u uw toepassing in de galerie.
+- Gratis, Basic en Premium Azure AD-klanten kunnen deze integratie gebruiken.
+- Wederzijdse klanten krijgen een stapsgewijze zelf studie voor configuratie.
+- Klanten die het systeem voor Cross-Domain Identity Management ([scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) gebruiken, kunnen inrichten voor dezelfde app gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt een permanent account nodig om te testen met ten minste twee gebruikers die zijn geregistreerd.
 
+- Voor federatieve toepassingen (Open-ID en SAML/WS-voeder) moet de toepassing het SaaS-model (Software-as-a-Service) ondersteunen om te worden weer gegeven in de Azure AD-App-galerie. De Enter prise Gallery-toepassingen moeten ondersteuning bieden voor meerdere klant configuraties en niet voor een specifieke klant.
+- Voor Open ID Connect moet de toepassing meerdere tenants zijn en moet het [Azure AD toestemmings raamwerk](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) goed worden geïmplementeerd voor de toepassing. De gebruiker kan de aanmeldings aanvraag naar een gemeen schappelijk eind punt verzenden, zodat elke klant toestemming kan geven voor de toepassing. U kunt de gebruikers toegang beheren op basis van de Tenant-ID en de UPN van de gebruiker die in het token is ontvangen.
+- Voor SAML 2.0/WS-voeder moet uw toepassing de mogelijkheid hebben om de integratie van SAML/WS-invoerende SSO in de SP-of IDP-modus te kunnen uitvoeren. Zorg ervoor dat deze functie correct werkt voordat u de aanvraag indient.
+- Zorg ervoor dat uw toepassing ondersteuning biedt voor formulier verificatie, zodat wachtwoord kluizen kan worden uitgevoerd om eenmalige aanmelding te kunnen werken.
+- U hebt een permanent account nodig om te testen met ten minste twee gebruikers die zijn geregistreerd.
+
+**Hoe kan ik Azure AD voor ontwikkel aars ophalen?**
+
+U kunt een gratis test account krijgen met alle Premium Azure AD-functies-90 dagen gratis en kunnen worden uitgebreid zolang u de ontwikkel aars ermee kunt werken: https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>Stap 1: Kies de juiste eenmalige aanmelding voor uw app
 
@@ -161,7 +178,7 @@ Zodra u een Tenant hebt, moet u toegang voor eenmalige aanmelding inschakelen en
 
 **Voor OIDC-of Oath-toepassingen** [registreert u uw toepassing](quickstart-register-app.md) als multi tenant-toepassing. Selecteer de optie accounts in een organisatorische map en persoonlijke micro soft-accounts in ondersteunde account typen.
 
-**Voor SAML-en WS-based-toepassingen**kunt u [eenmalige aanmelding op basis van SAML configureren](../manage-apps/configure-saml-single-sign-on.md) met behulp van een algemene SAML-sjabloon in azure AD.
+**Voor SAML-en WS-based-toepassingen** kunt u [eenmalige aanmelding op basis van SAML configureren](../manage-apps/configure-saml-single-sign-on.md) met behulp van een algemene SAML-sjabloon in azure AD.
 
 U kunt indien nodig ook [een toepassing met één Tenant converteren naar meerdere tenants](howto-convert-app-to-be-multi-tenant.md) .
 
@@ -236,7 +253,7 @@ Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van Ope
 
 ![Een OpenID Connect Connect-toepassing in de galerie weer geven](./media/howto-app-gallery-listing/openid.png)
 
-Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van **saml 2,0** of **WS-voeder**, selecteert u **SAML 2.0/WS-wordt gevoederd** zoals weer gegeven.
+Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van **saml 2,0** of **WS-voeder** , selecteert u **SAML 2.0/WS-wordt gevoederd** zoals weer gegeven.
 
 ![Een SAML 2,0-of WS-Fed-toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
 
@@ -256,6 +273,16 @@ U kunt een bestaande galerie-app bijwerken of verwijderen in de portal van het [
 
 > [!NOTE]
 > Als u problemen hebt met Access, raadpleegt u de vorige sectie over het maken van uw account. Als dat niet werkt, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+### <a name="list-requests-by-customers"></a>Aanvragen van klanten weer geven
+
+Klanten kunnen een aanvraag indienen om een toepassing weer te geven door app-aanvragen te selecteren **door klanten**  >  **nieuwe aanvraag** in te dienen.
+
+![Toont de tegel door de klant aangevraagde apps](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+Hier volgt de stroom van door de klant aangevraagde toepassingen.
+
+![Toont de stroom van de door de klant aangevraagde apps](./media/howto-app-gallery-listing/customer-request-2.png)
 
 
 ### <a name="timelines"></a>Tijdlijnen
