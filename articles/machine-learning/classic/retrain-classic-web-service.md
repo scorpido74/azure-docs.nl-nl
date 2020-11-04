@@ -9,23 +9,23 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 0064509c1158d8b016413046cb528bfd125b5f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 158541d34568b7ea02ea82dbfe90f5801824716f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362313"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325778"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Een klassieke studio-webservice (klassiek) opnieuw trainen en implementeren
 
-**van toepassing op:** ![ Groen vinkje. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ X duidt op Nee.](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
+**van toepassing op:** ![ Groen vinkje. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ X duidt op Nee. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Het opnieuw trainen van machine learning modellen is een manier om ervoor te zorgen dat ze nauw keurig en op basis van de meest relevante gegevens beschikbaar blijven. In dit artikel wordt uitgelegd hoe u een klassieke studio-webservice (Classic) opnieuw traint. Raadpleeg voor meer informatie over het opnieuw trainen van een nieuwe studio-webservice (klassiek) [dit artikel.](retrain-machine-learning-model.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u al een experiment met een opnieuw trainen en een voorspellend experiment hebt. Deze stappen worden beschreven in [een machine learning model opnieuw trainen en implementeren.](/azure/machine-learning/studio/retrain-machine-learning-model) In plaats van uw machine learning model te implementeren als een nieuwe webservice, implementeert u echter uw voorspellende experiment als een klassieke webservice.
+In dit artikel wordt ervan uitgegaan dat u al een experiment met een opnieuw trainen en een voorspellend experiment hebt. Deze stappen worden beschreven in [een machine learning model opnieuw trainen en implementeren.](./retrain-machine-learning-model.md) In plaats van uw machine learning model te implementeren als een nieuwe webservice, implementeert u echter uw voorspellende experiment als een klassieke webservice.
      
 ## <a name="add-a-new-endpoint"></a>Een nieuw eind punt toevoegen
 
@@ -76,7 +76,7 @@ De Help-pagina voor de PATCH bevat de URL van de PATCH die u moet gebruiken en b
 
 U kunt nu het getrainde model gebruiken om het Score-eind punt bij te werken dat u eerder hebt gemaakt.
 
-De volgende voorbeeld code laat zien hoe u de *BaseLocation*, *RelativeLocation*, *SASBLOBTOKEN*en de patch-URL kunt gebruiken om het eind punt bij te werken.
+De volgende voorbeeld code laat zien hoe u de *BaseLocation* , *RelativeLocation* , *SASBLOBTOKEN* en de patch-URL kunt gebruiken om het eind punt bij te werken.
 
 ```csharp
 private async Task OverwriteModel()
@@ -122,7 +122,7 @@ De *apiKey* en de *endpointUrl* voor de oproep kunnen worden verkregen via het d
 
 De waarde van de para meter *name* in *resources* moet overeenkomen met de resource naam van het opgeslagen getrainde model in het voorspellende experiment. De resource naam ophalen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik in het linkermenu op **machine learning**.
 1. Klik onder naam op uw werk ruimte en klik vervolgens op **webservices**.
 1. Klik onder naam op **optellings model [voorspellend exp.]**.

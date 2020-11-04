@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.custom: devx-track-java
-ms.openlocfilehash: 53171fedac23401b7d696a9e611c53da86b1bb60
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-java, contperfq2
+ms.openlocfilehash: c1dec2c8451ddd1feb4b5b0dac9c82e1716079b7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078064"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325834"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tips voor betere prestaties voor Azure Cosmos DB async Java SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -87,7 +87,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
   * ***Overzicht van de directe modus** _
 
-  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Afbeelding van het verbindings beleid voor Azure Cosmos DB" border="false":::
+  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Afbeelding van de architectuur van de directe modus" border="false":::
   
   De architectuur aan de client zijde die in directe modus wordt gebruikt, maakt voorspel bare netwerk gebruik en multiplex toegang tot Azure Cosmos DB replica's mogelijk. In het bovenstaande diagram ziet u hoe directe modus client aanvragen naar replica's in de Cosmos DB back-end stuurt. De architectuur van de directe modus wijst Maxi maal 10 _ *kanalen* * toe aan de client zijde per database replica. Een kanaal is een TCP-verbinding voorafgegaan door een aanvraag buffer, die 30 aanvragen diep is. De kanalen die deel uitmaken van een replica, worden dynamisch toegewezen naar behoefte aan het **service-eind punt** van de replica. Wanneer de gebruiker een aanvraag uitgeeft in de directe modus, stuurt de **TransportClient** de aanvraag naar het juiste service-eind punt op basis van de partitie sleutel. De **aanvraag wachtrij** buffers aanvragen vóór het service-eind punt.
 

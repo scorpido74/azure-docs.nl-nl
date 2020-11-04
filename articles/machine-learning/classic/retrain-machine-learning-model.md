@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 2f115313b17ed159973d2545b947e2ff031508eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362330"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325813"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Een machine learning model opnieuw trainen en implementeren
 
-**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Retraining is een manier om ervoor te zorgen dat machine learning modellen nauw keurig blijven en op basis van de meest relevante gegevens die beschikbaar zijn. In dit artikel wordt beschreven hoe u een machine learning model opnieuw traint en implementeert als nieuwe webservice in Studio (klassiek). Als u een klassieke webservice opnieuw wilt trainen, [raadpleegt u dit artikel met instructies.](retrain-classic-web-service.md)
@@ -35,7 +35,7 @@ U kunt deze stappen volgen om een machine learning nieuwe webservice opnieuw te 
 
 ## <a name="deploy-the-retraining-web-service"></a>De webservice voor retraining implementeren
 
-Met een Retrain web service kunt u uw model opnieuw trainen met een nieuwe set para meters, zoals nieuwe gegevens, en deze op een later tijdstip opslaan. Wanneer u een **webservice-uitvoer**  verbindt met een **Train-model**, voert het trainings experiment een nieuw model uit dat u wilt gebruiken.
+Met een Retrain web service kunt u uw model opnieuw trainen met een nieuwe set para meters, zoals nieuwe gegevens, en deze op een later tijdstip opslaan. Wanneer u een **webservice-uitvoer**  verbindt met een **Train-model** , voert het trainings experiment een nieuw model uit dat u wilt gebruiken.
 
 Gebruik de volgende stappen voor het implementeren van een retraining-webservice:
 
@@ -89,14 +89,14 @@ Zoek in de sectie **basis informatie** over het gebruik van de pagina **verbruik
 De voorbeeld code BES uploadt een bestand van een lokaal station (bijvoorbeeld ' C:\temp\CensusInput.csv ') naar Azure Storage, verwerkt het en schrijft de resultaten terug naar Azure Storage.
 
 1. Aanmelden bij Azure Portal
-1. Klik in de linker navigatie kolom op **meer services**, zoek naar **opslag accounts**en selecteer deze.
+1. Klik in de linker navigatie kolom op **meer services** , zoek naar **opslag accounts** en selecteer deze.
 1. Selecteer in de lijst met opslag accounts een om het opnieuw getrainde model op te slaan.
 1. Klik in de linker navigatie kolom op **toegangs toetsen**.
-1. Kopieer de **primaire toegangs sleutel**en sla deze op.
+1. Kopieer de **primaire toegangs sleutel** en sla deze op.
 1. Klik in de linker navigatie kolom op **blobs**.
 1. Selecteer een bestaande container, of maak een nieuwe, en sla de naam op.
 
-Zoek de *StorageAccountName*-, *StorageAccountKey*-en *StorageContainerName* -declaraties en werk de waarden bij die u hebt opgeslagen in de portal.
+Zoek de *StorageAccountName* -, *StorageAccountKey* -en *StorageContainerName* -declaraties en werk de waarden bij die u hebt opgeslagen in de portal.
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -130,11 +130,11 @@ Hier volgt een voor beeld van het opnieuw trainen van uitvoer:
 
 Wanneer u de toepassing uitvoert, bevat de uitvoer de token van de URL en Shared Access signatures die nodig zijn voor toegang tot de evaluatie resultaten.
 
-U kunt de prestatie resultaten van het opnieuw getrainde model weer geven door de *BaseLocation*, *RelativeLocation*en *SasBlobToken* van de uitvoer resultaten voor *OUTPUT2* te combi neren en de volledige URL te plakken in de adres balk van de browser.
+U kunt de prestatie resultaten van het opnieuw getrainde model weer geven door de *BaseLocation* , *RelativeLocation* en *SasBlobToken* van de uitvoer resultaten voor *OUTPUT2* te combi neren en de volledige URL te plakken in de adres balk van de browser.
 
 Bekijk de resultaten om te bepalen of het nieuwe getrainde model beter presteert dan het bestaande.
 
-Sla de *BaseLocation*-, *RelativeLocation*-en *SasBlobToken* op uit de uitvoer resultaten.
+Sla de *BaseLocation* -, *RelativeLocation* -en *SasBlobToken* op uit de uitvoer resultaten.
 
 ## <a name="update-the-predictive-experiment"></a>Het voorspellende experiment bijwerken
 
@@ -144,7 +144,7 @@ Meld u eerst aan bij uw Azure-account vanuit de Power shell-omgeving met behulp 
 
 ### <a name="get-the-web-service-definition-object"></a>Het definitie object van de webservice ophalen
 
-Ga vervolgens naar het web service-definitie object door de cmdlet [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) aan te roepen.
+Ga vervolgens naar het web service-definitie object door de cmdlet [Get-AzMlWebService](/powershell/module/az.machinelearning/get-azmlwebservice) aan te roepen.
 
 ```azurepowershell
 $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
@@ -167,7 +167,7 @@ Als u de naam van de resource groep van een bestaande webservice wilt bepalen, m
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>Het web service-definitie object exporteren als JSON
 
-Als u de definitie van het getrainde model voor het gebruik van het pas getrainde model wilt wijzigen, moet u eerst de cmdlet [export-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) gebruiken om het te exporteren naar een bestand met JSON-indeling.
+Als u de definitie van het getrainde model voor het gebruik van het pas getrainde model wilt wijzigen, moet u eerst de cmdlet [export-AzMlWebService](/powershell/module/az.machinelearning/export-azmlwebservice) gebruiken om het te exporteren naar een bestand met JSON-indeling.
 
 ```azurepowershell
 Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
@@ -194,7 +194,7 @@ Zoek in de activa het [getrainde model], werk de *URI* -waarde in het *locationI
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>De JSON importeren in een web service definition-object
 
-Gebruik de cmdlet [import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) om het gewijzigde JSON-bestand terug te converteren naar een web service-definitie object dat u kunt gebruiken om het predikaat bij te werken.
+Gebruik de cmdlet [import-AzMlWebService](/powershell/module/az.machinelearning/import-azmlwebservice) om het gewijzigde JSON-bestand terug te converteren naar een web service-definitie object dat u kunt gebruiken om het predikaat bij te werken.
 
 ```azurepowershell
 $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
@@ -202,7 +202,7 @@ $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-web-service"></a>De webservice bijwerken
 
-Gebruik ten slotte de cmdlet [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) om het voorspellende experiment bij te werken.
+Gebruik ten slotte de cmdlet [Update-AzMlWebService](/powershell/module/az.machinelearning/update-azmlwebservice) om het voorspellende experiment bij te werken.
 
 ```azurepowershell
 Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'

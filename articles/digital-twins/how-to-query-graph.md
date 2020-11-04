@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8aad0d9fde30a235903364d57a73c1c53f08ecce
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145783"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325774"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
@@ -85,7 +85,7 @@ Met behulp van projecties kunt u kiezen welke kolommen een query moet retour ner
 >[!NOTE]
 >Op dit moment worden complexe eigenschappen niet ondersteund. Combi neer de projecties met een controle om te controleren of de projectie-eigenschappen geldig zijn `IS_PRIMITIVE` .
 
-Hier volgt een voor beeld van een query die projectie gebruikt voor het retour neren van apparaatdubbels en relaties. Met de volgende query worden de *Consumer* , de *fabriek* en de *rand* van een scenario waarin een *Factory* met de id *ABC* is gerelateerd aan de *consument* gekoppeld via een relatie van *Factory. Customer* , en die relatie wordt weer gegeven als de *rand* .
+Hier volgt een voor beeld van een query die projectie gebruikt voor het retour neren van apparaatdubbels en relaties. Met de volgende query worden de *Consumer* , de *fabriek* en de *rand* van een scenario waarin een *Factory* met de id *ABC* is gerelateerd aan de *consument* gekoppeld via een relatie van *Factory. Customer* , en die relatie wordt weer gegeven als de *rand*.
 
 ```sql
 SELECT Consumer, Factory, Edge
@@ -94,7 +94,7 @@ JOIN Consumer RELATED Factory.customer Edge
 WHERE Factory.$dtId = 'ABC'
 ```
 
-U kunt projectie ook gebruiken om een eigenschap van een dubbele waarde te retour neren. Met de volgende query wordt de eigenschap *name* van de *consumenten* projecten die zijn gerelateerd aan de *fabriek* met een id van *ABC* door middel van een relatie van *Factory. Customer* .
+U kunt projectie ook gebruiken om een eigenschap van een dubbele waarde te retour neren. Met de volgende query wordt de eigenschap *name* van de *consumenten* projecten die zijn gerelateerd aan de *fabriek* met een id van *ABC* door middel van een relatie van *Factory. Customer*.
 
 ```sql
 SELECT Consumer.name
@@ -104,7 +104,7 @@ WHERE Factory.$dtId = 'ABC'
 AND IS_PRIMITIVE(Consumer.name)
 ```
 
-U kunt ook projectie gebruiken om een eigenschap van een relatie te retour neren. Net als in het vorige voor beeld, met de volgende query worden de eigenschap *name* van de *consumenten* met betrekking tot de *fabriek* met een id van *ABC* door middel van een relatie van *Factory. Customer* ; het resultaat is nu ook twee eigenschappen van die relatie, *prop1* en *prop2* . Dit doet u door de relatie *rand* te benoemen en de eigenschappen ervan te verzamelen.  
+U kunt ook projectie gebruiken om een eigenschap van een relatie te retour neren. Net als in het vorige voor beeld, met de volgende query worden de eigenschap *name* van de *consumenten* met betrekking tot de *fabriek* met een id van *ABC* door middel van een relatie van *Factory. Customer* ; het resultaat is nu ook twee eigenschappen van die relatie, *prop1* en *prop2*. Dit doet u door de relatie *rand* te benoemen en de eigenschappen ervan te verzamelen.  
 
 ```sql
 SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area
@@ -151,7 +151,7 @@ AND T.Temperature = 70
 > [!TIP]
 > De ID van een digitale dubbele query wordt uitgevoerd met behulp van het veld meta gegevens `$dtId` .
 
-U kunt ook apparaatdubbels ophalen op basis van **het feit of een bepaalde eigenschap is gedefinieerd** . Hier volgt een query waarmee apparaatdubbels worden opgehaald die een gedefinieerde *locatie* -eigenschap hebben:
+U kunt ook apparaatdubbels ophalen op basis van **het feit of een bepaalde eigenschap is gedefinieerd**. Hier volgt een query waarmee apparaatdubbels worden opgehaald die een gedefinieerde *locatie* -eigenschap hebben:
 
 ```sql
 SELECT *
@@ -164,7 +164,7 @@ Dit kan u helpen apparaatdubbels te verkrijgen op basis van de *code* -eigenscha
 select * from digitaltwins where is_defined(tags.red)
 ```
 
-U kunt ook apparaatdubbels ophalen op basis van het **type van een eigenschap** . Dit is een query die apparaatdubbels ophaalt waarvan de eigenschap *Tempe ratuur* een getal is:
+U kunt ook apparaatdubbels ophalen op basis van het **type van een eigenschap**. Dit is een query die apparaatdubbels ophaalt waarvan de eigenschap *Tempe ratuur* een getal is:
 
 ```sql
 SELECT * FROM DIGITALTWINS T
@@ -175,39 +175,41 @@ WHERE IS_NUMBER(T.Temperature)
 
 De `IS_OF_MODEL` operator kan worden gebruikt om te filteren op basis van het dubbele [**model**](concepts-models.md).
 
-Het houdt rekening met de semantiek van [overname](concepts-models.md#model-inheritance) en [versie volgorde](how-to-manage-model.md#update-models) , en resulteert in waar voor een bepaalde dubbele **waarde** als de dubbele aan een van deze voor waarden voldoet:
+Het gaat over [overname](concepts-models.md#model-inheritance) en model [versie beheer](how-to-manage-model.md#update-models)en resulteert in waar voor een bepaalde dubbele **waarde** als de dubbele aan een van deze voor waarden voldoet:
 
 * Het dubbele implementeert het door gegeven model `IS_OF_MODEL()` en het versie nummer van het model op de dubbele waarde is *groter dan of gelijk aan* het versie nummer van het gegeven model
 * Het dubbele implementeert een model dat het model *uitbreidt* `IS_OF_MODEL()` , en het uitgebreide model versie nummer van het type is *groter dan of gelijk aan* het versie nummer van het gegeven model
 
-Deze methode heeft verschillende overbelasting opties.
+Als u bijvoorbeeld een query uitvoert voor apparaatdubbels van het model `dtmi:example:widget;4` , retourneert de query alle apparaatdubbels op basis van **versie 4 of hoger** van het **widget** model en ook apparaatdubbels op basis van versie **4 of hoger** van alle **modellen die van de widget overnemen**.
+
+`IS_OF_MODEL` verschillende para meters kunnen worden uitgevoerd en de rest van deze sectie is toegewezen aan de verschillende overbelasting opties.
 
 Het eenvoudigste gebruik van `IS_OF_MODEL` heeft alleen een `twinTypeName` para meter: `IS_OF_MODEL(twinTypeName)` .
 Hier volgt een query voorbeeld waarin een waarde in deze para meter wordt door gegeven:
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1')
 ```
 
 Als u een dubbele verzameling wilt opgeven wanneer er meer dan één moet worden gezocht `JOIN` , voegt u de `twinCollection` para meter: toe als u er meer dan een wilt zoeken `IS_OF_MODEL(twinCollection, twinTypeName)` .
 Hier volgt een query voorbeeld waarmee een waarde voor deze para meter wordt toegevoegd:
 
 ```sql
-SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1')
 ```
 
 Als u een exacte overeenkomst wilt, voegt u de `exact` para meter: toe `IS_OF_MODEL(twinTypeName, exact)` .
 Hier volgt een query voorbeeld waarmee een waarde voor deze para meter wordt toegevoegd:
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1', exact)
 ```
 
 U kunt ook alle drie de argumenten tegelijk door geven: `IS_OF_MODEL(twinCollection, twinTypeName, exact)` .
 Hier volgt een query voorbeeld waarin een waarde voor alle drie de para meters wordt opgegeven:
 
 ```sql
-SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', exact)
 ```
 
 ### <a name="query-based-on-relationships"></a>Query op basis van relaties
@@ -242,7 +244,7 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>De eigenschappen van een relatie opvragen
 
-Net zoals bij digitale apparaatdubbels eigenschappen beschreven via DTDL, kunnen relaties ook eigenschappen hebben. U kunt apparaatdubbels query's uitvoeren op **basis van de eigenschappen van hun relaties** .
+Net zoals bij digitale apparaatdubbels eigenschappen beschreven via DTDL, kunnen relaties ook eigenschappen hebben. U kunt apparaatdubbels query's uitvoeren op **basis van de eigenschappen van hun relaties**.
 Met de Azure Digital Apparaatdubbels-query taal kunnen relaties worden gefilterd en geprojectied door een alias toe te wijzen aan de relatie binnen de `JOIN` component.
 
 Denk bijvoorbeeld aan een *servicedBy* -relatie die een *reportedCondition* -eigenschap heeft. In de onderstaande query krijgt deze relatie een alias van ' R ' om te kunnen verwijzen naar de eigenschap.
@@ -297,7 +299,7 @@ De volgende Opera tors worden ondersteund:
 | Vergelijking |=,! =, <, >, <=, >= |
 | Contains | IN, NOVER ENKELE |
 
-### <a name="functions"></a>Functies
+### <a name="functions"></a>Functions
 
 De volgende typen functies voor controleren en casting worden ondersteund:
 
