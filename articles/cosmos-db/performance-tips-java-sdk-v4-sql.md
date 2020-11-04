@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
-ms.custom: devx-track-java
-ms.openlocfilehash: 49827b7387edc1e914bbd58c63df2db74f4ed17b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-java, contperfq2
+ms.openlocfilehash: c65cd4012d29146061183ea13749a0f42c03b1eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091273"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314327"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tips voor betere prestaties van Azure Cosmos DB Java SDK v4
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 * **Verbindings modus: directe modus gebruiken**
 <a id="direct-connection"></a>
     
-    De standaard verbindings modus van Java SDK is direct. U kunt de verbindings modus configureren in de client builder met behulp van de methoden *directMode ()* of *gatewayMode ()* , zoals hieronder wordt weer gegeven. Voor het configureren van een beide modus met standaard instellingen roept u een van beide methoden aan zonder argumenten. Als dat niet het geval is, geeft u een instantie van de klasse configuratie-instellingen als het argument ( *DirectConnectionConfig* voor *directMode ()* ,  *GatewayConnectionConfig* voor *gatewayMode ()* .). Zie het artikel [connectiviteits modi](sql-sdk-connection-modes.md) voor meer informatie over de verschillende connectiviteits opties.
+    De standaard verbindings modus van Java SDK is direct. U kunt de verbindings modus configureren in de client builder met behulp van de methoden *directMode ()* of *gatewayMode ()* , zoals hieronder wordt weer gegeven. Voor het configureren van een beide modus met standaard instellingen roept u een van beide methoden aan zonder argumenten. Als dat niet het geval is, geeft u een instantie van de klasse configuratie-instellingen als het argument ( *DirectConnectionConfig* voor *directMode ()* ,  *GatewayConnectionConfig* voor *gatewayMode ()*.). Zie het artikel [connectiviteits modi](sql-sdk-connection-modes.md) voor meer informatie over de verschillende connectiviteits opties.
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -107,7 +107,7 @@ Raadpleeg de [Windows](../virtual-network/create-vm-accelerated-networking-power
 
 * **Het laagste consistentie niveau gebruiken dat is vereist voor uw toepassing**
 
-    Wanneer u een *CosmosClient* maakt, wordt de standaard consistentie gebruikt als deze niet expliciet is ingesteld op *sessie* . Als *sessie* consistentie niet vereist is door uw toepassings logica, stelt u de *consistentie* in op *uiteindelijk* . Opmerking: het wordt aanbevolen om ten minste *sessie* consistentie te gebruiken in toepassingen die gebruikmaken van de Azure Cosmos DB Change feed-processor.
+    Wanneer u een *CosmosClient* maakt, wordt de standaard consistentie gebruikt als deze niet expliciet is ingesteld op *sessie*. Als *sessie* consistentie niet vereist is door uw toepassings logica, stelt u de *consistentie* in op *uiteindelijk*. Opmerking: het wordt aanbevolen om ten minste *sessie* consistentie te gebruiken in toepassingen die gebruikmaken van de Azure Cosmos DB Change feed-processor.
 
 * **Asynchrone API gebruiken om de ingerichte door voer te maximaliseren**
 
@@ -151,7 +151,7 @@ Raadpleeg de [Windows](../virtual-network/create-vm-accelerated-networking-power
 
     * ***Overzicht van de directe modus** _
 
-        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Afbeelding van het verbindings beleid voor Azure Cosmos DB" border="false":::
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Afbeelding van de architectuur van de directe modus" border="false":::
 
         De architectuur aan de client zijde die in directe modus wordt gebruikt, maakt voorspel bare netwerk gebruik en multiplex toegang tot Azure Cosmos DB replica's mogelijk. In het bovenstaande diagram ziet u hoe directe modus client aanvragen naar replica's in de Cosmos DB back-end stuurt. De architectuur van de directe modus wijst Maxi maal 10 _ *kanalen* * toe aan de client zijde per database replica. Een kanaal is een TCP-verbinding voorafgegaan door een aanvraag buffer, die 30 aanvragen diep is. De kanalen die deel uitmaken van een replica, worden dynamisch toegewezen naar behoefte aan het **service-eind punt** van de replica. Wanneer de gebruiker een aanvraag uitgeeft in de directe modus, stuurt de **TransportClient** de aanvraag naar het juiste service-eind punt op basis van de partitie sleutel. De **aanvraag wachtrij** buffers aanvragen vóór het service-eind punt.
 

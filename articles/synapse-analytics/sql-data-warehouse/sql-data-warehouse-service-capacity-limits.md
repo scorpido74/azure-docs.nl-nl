@@ -1,6 +1,6 @@
 ---
-title: Capaciteits limieten-Azure Synapse Analytics (voorheen SQL DW)
-description: De maximum waarden die zijn toegestaan voor verschillende onderdelen van de Synapse SQL-groep in azure Synapse.
+title: Capaciteits limieten voor exclusieve SQL-groep
+description: De maximum waarden die zijn toegestaan voor verschillende onderdelen van een toegewezen SQL-groep in azure Synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e06dbee5b1edbb4fd1a3379ee2d9aa06f9949ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dac2a60b6b9db082a10d2473eb22b86d8097eee0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742461"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313146"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Capaciteits limieten voor Azure Synapse Analytics (voorheen SQL DW)
+# <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Capaciteits limieten voor exclusieve SQL-groep in azure Synapse Analytics
 
-De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure Synapse.
+De maximum waarden die zijn toegestaan voor verschillende onderdelen van een toegewezen SQL-groep in azure Synapse Analytics.
 
 ## <a name="workload-management"></a>Werklastbeheer
 
 | Categorie | Beschrijving | Maximum |
 |:--- |:--- |:--- |
-| [Data Warehouse-eenheden (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maxi maal aantal DWU voor één SQL-pool-eenheid (Data Warehouse) | Gen1: DW6000<br></br>Gen2: DW30000c |
+| [Data Warehouse-eenheden (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximum aantal DWU voor één toegewezen SQL-pool-eenheid (Data Warehouse) | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Data Warehouse-eenheden (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Standaard-DTU per server |54.000<br></br>Elke SQL-Server (bijvoorbeeld myserver.database.windows.net) heeft standaard een DTU-quotum van 54.000, waarmee Maxi maal DW5000c kan worden toegestaan. Dit quotum is gewoon een veiligheidsbeperking. U kunt het quotum verhogen door [een ondersteunings ticket te maken](sql-data-warehouse-get-started-create-support-ticket.md) en *quotum* als aanvraag type te selecteren.  U kunt uw DTU-behoeften berekenen door de 7,5 te vermenigvuldigen met het totale DWU dat nodig is, of door 9,5 te vermenigvuldigen met het totale aantal cDWU dat nodig is. Bijvoorbeeld:<br></br>DW6000 x 7,5 = 45.000 Dtu's<br></br>DW5000c x 9,5 = 47.500 Dtu's.<br></br>U kunt uw huidige DTU-verbruik weer geven met de optie SQL Server in de portal. Zowel onderbroken als niet-onderbroken databases tellen mee voor het DTU-quotum. |
 | Database verbinding |Maximum aantal gelijktijdige open sessies |1024<br/><br/>Het aantal gelijktijdige open sessies varieert op basis van de geselecteerde DWU. DWU600c en hoger ondersteunen Maxi maal 1024 geopende sessies. DWU500c en lager ondersteunen een maximum aantal gelijktijdige open sessies van 512. Opmerking: er gelden limieten voor het aantal query's dat gelijktijdig kan worden uitgevoerd. Wanneer de limiet voor gelijktijdigheid wordt overschreden, wordt de aanvraag in een interne wachtrij geplaatst, waarin wordt gewacht om te worden verwerkt. |
 | Database verbinding |Maxi maal geheugen voor voor bereide instructies |20 MB |
@@ -62,7 +62,7 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | Categorie | Beschrijving | Maximum |
 |:--- |:--- |:--- |
 | Poly base belastingen |MB per rij |1<br/><br/>Poly base laadt rijen die kleiner zijn dan 1 MB. Het laden van LOB-gegevens typen in tabellen met een geclusterde column store-index (CCI) wordt niet ondersteund.<br/> |
-|Poly base belastingen|Totaal aantal bestanden|1.000.000<br/><br/>Poly base ladingen mogen niet meer dan 1M bestanden overschrijden. De volgende fout kan optreden: de **bewerking is mislukt omdat het aantal gesplitste items groter is dan de bovengrens van 1000000** .|
+|Poly base belastingen|Totaal aantal bestanden|1.000.000<br/><br/>Poly base ladingen mogen niet meer dan 1M bestanden overschrijden. De volgende fout kan optreden: de **bewerking is mislukt omdat het aantal gesplitste items groter is dan de bovengrens van 1000000**.|
 
 ## <a name="queries"></a>Query's
 

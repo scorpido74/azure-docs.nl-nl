@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 7ea0cbfb8ddfa2991e2a362bcb321418428cb16b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288133"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313982"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs configureren
 
@@ -51,7 +51,7 @@ Het niet toestaan van open bare toegang voor het opslag account voor komt anonie
 > [!IMPORTANT]
 > Het niet toestaan van open bare toegang voor een opslag account heeft voor rang op de instellingen voor open bare toegang voor alle containers in dat opslag account. Wanneer open bare toegang niet is toegestaan voor het opslag account, zullen toekomstige anonieme aanvragen voor dat account mislukken. Voordat u deze instelling wijzigt, moet u weten wat het effect is op client toepassingen die anoniem toegang hebben tot gegevens in uw opslag account. Zie [anonieme open bare Lees toegang tot containers en blobs voor komen](anonymous-read-access-prevent.md)voor meer informatie.
 
-Als u open bare toegang voor een opslag account wilt toestaan of weigeren, configureert u de eigenschap **AllowBlobPublicAccess** van het account. Deze eigenschap is beschikbaar voor alle opslag accounts die zijn gemaakt met het Azure Resource Manager-implementatie model in de open bare Azure-Cloud of in Azure Government Clouds. Zie [overzicht van opslag accounts](../common/storage-account-overview.md)voor meer informatie.
+Als u open bare toegang voor een opslag account wilt toestaan of weigeren, configureert u de eigenschap **AllowBlobPublicAccess** van het account. Deze eigenschap is beschikbaar voor alle opslag accounts die zijn gemaakt met het Azure Resource Manager-implementatie model. Zie [overzicht van opslag accounts](../common/storage-account-overview.md)voor meer informatie.
 
 De eigenschap **AllowBlobPublicAccess** is niet standaard ingesteld en retourneert geen waarde voordat u deze expliciet hebt ingesteld. Het opslag account staat open bare toegang toe wanneer de waarde van de eigenschap **Null** of **True** is.
 

@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66efb9112a9342122f5b56ab11b862ce3c7c61b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077677"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314433"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Resource gebruik en query activiteit bewaken in azure Synapse Analytics
 
@@ -31,8 +31,8 @@ De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor Synapse 
 | CPU-percentage          | CPU-gebruik in alle knoop punten voor het Data Warehouse      | Gem, min, Max    |
 | Gegevens-I/O-percentage      | IO-gebruik over alle knoop punten voor het Data Warehouse       | Gem, min, Max    |
 | Geheugen percentage       | Geheugen gebruik (SQL Server) op alle knoop punten voor het Data Warehouse | Gem, min, Max   |
-| Actieve Query's          | Aantal actieve query's dat op het systeem wordt uitgevoerd             | Sum              |
-| Query's in de wachtrij          | Aantal query's in de wachtrij dat wacht om te worden uitgevoerd          | Sum              |
+| Actieve Query's          | Aantal actieve query's dat op het systeem wordt uitgevoerd             | Som              |
+| Query's in de wachtrij          | Aantal query's in de wachtrij dat wacht om te worden uitgevoerd          | Som              |
 | Geslaagde verbindingen  | Aantal geslaagde verbindingen (aanmeldingen) voor de data base | Som, aantal       |
 | Mislukte verbindingen      | Aantal mislukte verbindingen (aanmeldingen) voor de data base | Som, aantal       |
 | Geblokkeerd door de firewall     | Aantal aanmeldingen bij het data warehouse dat is geblokkeerd     | Som, aantal       |
@@ -53,7 +53,7 @@ Aandachtspunten bij het weer geven van metrische gegevens en het instellen van w
 
 Voor een programmatische ervaring bij het bewaken van Synapse SQL via T-SQL biedt de service een set dynamische beheer weergaven (Dmv's). Deze weer gaven zijn handig bij het oplossen van problemen met de prestaties en het identificeren van prestatie knelpunten met uw werk belasting.
 
-Raadpleeg deze [documentatie](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)om de lijst met dmv's die van toepassing zijn op Synapse SQL te bekijken. 
+Raadpleeg deze [documentatie](../sql/reference-tsql-system-views.md#dedicated-sql-pool-dynamic-management-views-dmvs)om de lijst met dmv's die van toepassing zijn op Synapse SQL te bekijken. 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metrische gegevens en diagnoselogboeken 
 

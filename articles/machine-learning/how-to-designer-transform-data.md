@@ -10,19 +10,19 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f08d0f1be166630d9cf4b0b9236d78228fd78aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983845"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312809"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Gegevens transformeren in Azure Machine Learning Designer
 
 
 In dit artikel leert u hoe u gegevens sets transformeert en opslaat in Azure Machine Learning Designer, zodat u uw eigen gegevens kunt voorbereiden voor machine learning.
 
-U gebruikt het voor beeld van de gegevensset [inkomsten binaire classificatie voor volwassenen](sample-designer-datasets.md) om twee gegevens sets voor te bereiden: één gegevensset met informatie over de optelling van de volwassene van alleen de Verenigde Staten en een andere gegevensset die informatie over de telling van niet-Amerikaanse volwassenen bevat.
+U gebruikt het voor beeld van de gegevensset [inkomsten binaire classificatie voor volwassenen](./samples-designer.md) om twee gegevens sets voor te bereiden: één gegevensset met informatie over de optelling van de volwassene van alleen de Verenigde Staten en een andere gegevensset die informatie over de telling van niet-Amerikaanse volwassenen bevat.
 
 In dit artikel leert u het volgende:
 
@@ -42,7 +42,7 @@ In deze sectie vindt u informatie over het importeren van de voor beeld-gegevens
 
 Gebruik de volgende stappen om de voor beeld-gegevensset te importeren.
 
-1. Meld u aan op <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> en selecteer de werkruimte waar u mee wilt werken.
+1. Meld u aan op <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> en selecteer de werkruimte waarmee u wilt werken.
 
 1. Ga naar de ontwerp functie. Selecteer **eenvoudig te gebruiken-modules voor prebuild** om een nieuwe pijp lijn te maken.
 
@@ -74,7 +74,7 @@ In deze sectie gebruikt u de [gesplitste gegevens module](algorithm-module-refer
 
 1. Stel in het deel venster module details rechts van het canvas de **Splits modus** in op **reguliere expressie**.
 
-1. Voer de **reguliere expressie**in: `\"native-country" United-States` .
+1. Voer de **reguliere expressie** in: `\"native-country" United-States` .
 
     In de **reguliere expressie** modus wordt één kolom voor een waarde getest. Meer informatie over de module Split data kunt u vinden op de [pagina verwante algoritme module Reference](algorithm-module-reference/split-data.md).
 
@@ -97,36 +97,36 @@ Nu de pijp lijn is ingesteld voor het splitsen van de gegevens, moet u opgeven w
 
     ![Scherm afbeelding die laat zien hoe u verbinding maakt met de gegevens modules voor exporteren](media/how-to-designer-transform-data/export-data-pipeline.png).
 
-1. Selecteer de module **gegevens exporteren** die is verbonden met de meest *linkse*poort van de module **Split data** .
+1. Selecteer de module **gegevens exporteren** die is verbonden met de meest *linkse* poort van de module **Split data** .
 
     De volg orde van de uitvoer poorten voor de module **Split data** . De eerste uitvoer poort bevat de rijen waar de reguliere expressie waar is. In dit geval bevat de eerste poort rijen voor Amerikaanse inkomsten en de tweede poort bevat rijen voor inkomsten op basis van een niet-Amerikaanse.
 
 1. Stel in het detail venster van de module rechts van het canvas de volgende opties in:
     
-    **Gegevens opslag type**: Azure Blob Storage
+    **Gegevens opslag type** : Azure Blob Storage
 
-    **Data Store**: Selecteer een bestaande gegevens opslag of selecteer nieuwe gegevens opslag om er nu een te maken.
+    **Data Store** : Selecteer een bestaande gegevens opslag of selecteer nieuwe gegevens opslag om er nu een te maken.
 
-    **Pad**: `/data/us-income`
+    **Pad** : `/data/us-income`
 
-    **Bestands indeling**: CSV
+    **Bestands indeling** : CSV
 
     > [!NOTE]
     > In dit artikel wordt ervan uitgegaan dat u toegang hebt tot een gegevens opslag die is geregistreerd in de huidige Azure Machine Learning-werk ruimte. Zie [verbinding maken met Azure Storage-services](how-to-connect-data-ui.md#create-datastores)voor instructies over het instellen van een gegevens opslag.
 
     Als u geen gegevens opslag hebt, kunt u er nu een maken. Voor beeld: in dit artikel worden de gegevens sets opgeslagen in het standaard-Blob Storage-account dat is gekoppeld aan de werk ruimte. De gegevens sets worden opgeslagen in de `azureml` container in een nieuwe map met de naam `data` .
 
-1.  Selecteer de module **gegevens exporteren** die zijn verbonden met de meest *rechtse*poort van de module **Split data** .
+1.  Selecteer de module **gegevens exporteren** die zijn verbonden met de meest *rechtse* poort van de module **Split data** .
 
 1. Stel in het detail venster van de module rechts van het canvas de volgende opties in:
     
-    **Gegevens opslag type**: Azure Blob Storage
+    **Gegevens opslag type** : Azure Blob Storage
 
-    **Data Store**: Selecteer dezelfde gegevens opslag als hierboven
+    **Data Store** : Selecteer dezelfde gegevens opslag als hierboven
 
-    **Pad**: `/data/non-us-income`
+    **Pad** : `/data/non-us-income`
 
-    **Bestands indeling**: CSV
+    **Bestands indeling** : CSV
 
 1. Controleer of de module voor het **exporteren van gegevens** die is verbonden met de linker poort van de **gesplitste gegevens** , het **pad** heeft `/data/us-income` .
 

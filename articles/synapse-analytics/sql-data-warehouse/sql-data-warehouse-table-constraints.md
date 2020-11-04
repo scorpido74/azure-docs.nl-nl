@@ -1,6 +1,6 @@
 ---
 title: Primaire, refererende en unieke sleutels
-description: Tabel beperkingen ondersteuning in Synapse SQL-groep in azure Synapse Analytics
+description: Tabel beperkingen bieden ondersteuning voor het gebruik van een toegewezen SQL-groep in azure Synapse Analytics
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,33 +11,33 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 562e2cce317d8774ecf72971d53be4f66f9c3da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd1d92dd6be47b2bdf6b8ca2f9a99c62e35eb12a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212765"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313067"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Primaire sleutel, refererende sleutel en unieke sleutel in de SQL-groep Synapse
+# <a name="primary-key-foreign-key-and-unique-key-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Primaire sleutel, refererende sleutel en unieke sleutel met behulp van een toegewezen SQL-groep in azure Synapse Analytics
 
-Meer informatie over tabel beperkingen in de Synapse SQL-pool, met inbegrip van primaire sleutel, refererende sleutel en unieke sleutel.
+Meer informatie over tabel beperkingen in een toegewezen SQL-groep, waaronder primaire sleutel, refererende sleutel en unieke sleutel.
 
 ## <a name="table-constraints"></a>Tabelbeperkingen
 
-De SQL-groep Synapse ondersteunt deze tabel beperkingen: 
+De toegewezen SQL-groep ondersteunt deze tabel beperkingen: 
 - De primaire sleutel wordt alleen ondersteund als niet-geclusterd en niet afgedwongen worden gebruikt.    
 - EEN unieke beperking wordt alleen ondersteund als er geen afgedwongen wordt toegepast.
 
 Raadpleeg voor syntaxis [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) en [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse). 
 
-REFERERende-sleutel beperking wordt niet ondersteund in de SQL-groep Synapse.  
+REFERERende-sleutel beperking wordt niet ondersteund in een toegewezen SQL-groep.  
 
 
 ## <a name="remarks"></a>Opmerkingen
 
-Met een primaire sleutel en/of unieke sleutel kan Synapse SQL-groeps engine een optimaal uitvoerings plan voor een query genereren.  Alle waarden in een primaire-sleutel kolom of een kolom met unieke beperkingen moeten uniek zijn.
+Met een primaire sleutel en/of unieke sleutel kan exclusieve SQL-groeps engine een optimaal uitvoerings plan voor een query genereren.  Alle waarden in een primaire-sleutel kolom of een kolom met unieke beperkingen moeten uniek zijn.
 
-Na het maken van een tabel met een primaire sleutel of unieke beperking in Synapse SQL-groep moeten gebruikers ervoor zorgen dat alle waarden in die kolommen uniek zijn.  Een schending van dat kan ertoe leiden dat de query onnauwkeurig resultaat retourneert.  In dit voor beeld ziet u hoe een query onnauwkeurig resultaat kan retour neren als de kolom Primary Key of unique constraint dubbele waarden bevat.  
+Na het maken van een tabel met een primaire sleutel of een unieke beperking in de toegewezen SQL-groep moeten gebruikers ervoor zorgen dat alle waarden in die kolommen uniek zijn.  Een schending van dat kan ertoe leiden dat de query onnauwkeurig resultaat retourneert.  In dit voor beeld ziet u hoe een query onnauwkeurig resultaat kan retour neren als de kolom Primary Key of unique constraint dubbele waarden bevat.  
 
 ```sql
  -- Create table t1
@@ -164,12 +164,13 @@ a1          total
 
 ## <a name="examples"></a>Voorbeelden
 
-Maak een Synapse SQL-groeps tabel met een primaire sleutel: 
+Maak een exclusieve SQL-groeps tabel met een primaire sleutel: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Maak een Synapse SQL-groeps tabel met een unieke beperking:
+
+Een exclusieve SQL-groeps tabel maken met een unieke beperking:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -177,4 +178,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de tabellen voor uw Synapse-SQL-groep hebt gemaakt, is de volgende stap het laden van gegevens in de tabel. Zie [loading data to Synapse SQL pool](load-data-wideworldimportersdw.md)voor een zelf studie voor het laden van gegevens.
+Nadat u de tabellen voor uw toegewezen SQL-groep hebt gemaakt, is de volgende stap het laden van gegevens in de tabel. Zie [gegevens laden naar een toegewezen SQL-groep](load-data-wideworldimportersdw.md)voor een zelf studie voor het laden van een hand leiding.

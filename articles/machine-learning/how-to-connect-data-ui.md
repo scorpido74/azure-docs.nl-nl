@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841353"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312788"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Verbinding maken met gegevens met behulp van de Azure Machine Learning Studio
 
@@ -31,7 +31,7 @@ In de volgende tabel worden de voor delen van data stores en gegevens sets gedef
 
 Zie het artikel over [beveiligde toegang](concept-data.md#data-workflow) als u wilt weten waar gegevens opslag en gegevens sets passen in de algehele werk stroom van Azure machine learning Data Access.
 
-Raadpleeg de volgende artikelen voor een code-eerste ervaring om de [Azure machine learning python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) te gebruiken voor het volgende:
+Raadpleeg de volgende artikelen voor een code-eerste ervaring om de [Azure machine learning python-SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) te gebruiken voor het volgende:
 * [Verbinding maken met Azure Storage-services met gegevens opslag](how-to-access-data.md). 
 * [Azure machine learning gegevens sets maken](how-to-create-register-datasets.md). 
 
@@ -48,27 +48,27 @@ Raadpleeg de volgende artikelen voor een code-eerste ervaring om de [Azure machi
 
 ## <a name="create-datastores"></a>Gegevens opslag maken
 
-U kunt gegevens opslag maken op basis van [deze Azure Storage-oplossingen](how-to-access-data.md#matrix). **Voor niet-ondersteunde opslag oplossingen**en voor het opslaan van de kosten voor de uitvoer van gegevens tijdens ml experimenten, moet u [uw gegevens verplaatsen](how-to-access-data.md#move) naar een ondersteunde Azure Storage-oplossing. [Meer informatie over gegevens opslag](how-to-access-data.md). 
+U kunt gegevens opslag maken op basis van [deze Azure Storage-oplossingen](how-to-access-data.md#matrix). **Voor niet-ondersteunde opslag oplossingen** en voor het opslaan van de kosten voor de uitvoer van gegevens tijdens ml experimenten, moet u [uw gegevens verplaatsen](how-to-access-data.md#move) naar een ondersteunde Azure Storage-oplossing. [Meer informatie over gegevens opslag](how-to-access-data.md). 
 
 
 
 Maak in een paar stappen een nieuwe gegevens opslag met behulp van de Azure Machine Learning Studio.
 
 > [!IMPORTANT]
-> Als uw gegevens opslag account zich in een virtueel netwerk bevindt, zijn er extra configuratie stappen vereist om ervoor te zorgen dat Studio toegang heeft tot uw gegevens. Zie [netwerk isolatie & privacy](how-to-enable-virtual-network.md#machine-learning-studio) om te controleren of de juiste configuratie stappen worden toegepast.
+> Als uw gegevens opslag account zich in een virtueel netwerk bevindt, zijn er extra configuratie stappen vereist om ervoor te zorgen dat Studio toegang heeft tot uw gegevens. Zie [netwerk isolatie & privacy](how-to-enable-studio-virtual-network.md) om te controleren of de juiste configuratie stappen worden toegepast.
 
 1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com/).
 1. Selecteer **gegevens opslag** in het linkerdeel venster onder **beheren**.
 1. Selecteer **+ Nieuw gegevensarchief**.
 1. Vul het formulier in voor een nieuwe gegevens opslag. Het formulier wordt intelligent bijgewerkt op basis van uw selecties voor het Azure-opslag type en verificatie type. Zie de [sectie opslag toegang en-machtigingen](#access-validation) voor meer informatie over waar u de verificatie referenties kunt vinden die u nodig hebt om dit formulier in te vullen.
 
-In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een **Azure Blob-gegevens opslag**maakt:
+In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een **Azure Blob-gegevens opslag** maakt:
 
 ![Formulier voor een nieuwe gegevens opslag](media/how-to-connect-data-ui/new-datastore-form.png)
 
 ## <a name="create-datasets"></a>Gegevenssets maken
 
-Nadat u een gegevens opslag hebt gemaakt, maakt u een gegevensset om te communiceren met uw gegevens. Met gegevens sets kunt u in een vertraagd geëvalueerd voor machine learning-taken, zoals training. [Meer informatie over gegevens sets](how-to-create-register-datasets.md).
+Nadat u een gegevens opslag hebt gemaakt, maakt u een gegevensset om te communiceren met uw gegevens. Met gegevens sets kunt u in een vertraagd geëvalueerd voor machine learning-taken, zoals training. [Meer informatie over gegevenssets](how-to-create-register-datasets.md).
 
 Er zijn twee typen gegevens sets: FileDataset en TabularDataset. 
 [FileDatasets](how-to-create-register-datasets.md#filedataset) maakt verwijzingen naar één of meer bestanden of open bare url's. Dat [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) uw gegevens in tabel vorm weer geven. 
@@ -86,7 +86,7 @@ Een gegevensset maken in Studio:
 1. Selecteer **gegevensset maken** om de bron van uw gegevensset te kiezen. Deze bron kan lokale bestanden, een gegevens opslag, een open bare URL of een [Azure open-gegevens sets](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)zijn.
 1. Selecteer een **tabel** of **bestand** voor het type gegevensset.
 1. Selecteer **volgende** om het formulier **gegevens opslag en bestand selecteren** te openen. Op dit formulier selecteert u waar u uw gegevensset na het maken moet blijven en selecteert u welke gegevens bestanden u voor uw gegevensset wilt gebruiken.
-    1. Schakel overs laan van validatie in als uw gegevens zich in een virtueel netwerk bevindt. Meer informatie over het [isoleren van virtuele netwerken en privacy](how-to-enable-virtual-network.md#machine-learning-studio).
+    1. Schakel overs laan van validatie in als uw gegevens zich in een virtueel netwerk bevindt. Meer informatie over het [isoleren van virtuele netwerken en privacy](how-to-enable-studio-virtual-network.md).
     1. Voor Tabellaire gegevens sets kunt u een ' tijds Erie-Trait opgeven om tijd gerelateerde bewerkingen op uw gegevensset in te scha kelen. Meer informatie over [het toevoegen van de tijds Erie-eigenschappen aan uw gegevensset](how-to-monitor-datasets.md#studio-dataset).
 1. Selecteer **volgende** om de **instellingen en de voor beeld** -en **schema** formulieren in te vullen. ze worden op intelligente wijze ingevuld op basis van het bestands type en u kunt uw gegevensset verder configureren voordat deze formulieren worden gemaakt. 
 1. Selecteer **volgende** om het formulier **Details bevestigen** weer te geven. Controleer uw selecties en maak een optioneel gegevens profiel voor uw gegevensset. Meer informatie over [gegevensprofilering](#profile).
@@ -120,7 +120,7 @@ Het gegevens Profiel van Azure Machine Learning gegevensset bevat met name het v
 |Type distributie| In-line waarde van het aantal typen in een kolom. Nullen zijn hun eigen type, waardoor deze visualisatie nuttig is voor het detecteren van oneven of ontbrekende waarden.
 |Type|Het type van de kolom is afgeleid. Mogelijke waarden zijn: teken reeksen, booleans, datums en decimalen.
 |Min.| Minimum waarde van de kolom. Lege vermeldingen worden weer gegeven voor functies waarvan het type geen inherente ordening (zoals Boole-waarden) heeft.
-|Max.| De maximum waarde van de kolom. 
+|Max| De maximum waarde van de kolom. 
 |Aantal| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
 |Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
 |Kwantielen| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
@@ -136,13 +136,13 @@ Om ervoor te zorgen dat u veilig verbinding maakt met uw Azure Storage-service, 
 
 ### <a name="virtual-network"></a>Virtueel netwerk
 
-Als uw gegevens opslag account zich in een **virtueel netwerk**bevindt, moet u extra configuratie stappen uitvoeren om ervoor te zorgen dat Azure machine learning toegang heeft tot uw gegevens. Zie [netwerk isolatie & privacy](how-to-enable-virtual-network.md#machine-learning-studio) om te controleren of de juiste configuratie stappen worden toegepast wanneer u uw gegevens opslag maakt en registreert.  
+Als uw gegevens opslag account zich in een **virtueel netwerk** bevindt, moet u extra configuratie stappen uitvoeren om ervoor te zorgen dat Azure machine learning toegang heeft tot uw gegevens. Zie [netwerk isolatie & privacy](how-to-enable-studio-virtual-network.md) om te controleren of de juiste configuratie stappen worden toegepast wanneer u uw gegevens opslag maakt en registreert.  
 
 ### <a name="access-validation"></a>Toegangs validatie
 
-**Als onderdeel van het proces voor het maken en registreren van de eerste Data Store**, Azure machine learning automatisch gevalideerd of de onderliggende opslag service bestaat en de door de gebruiker opgegeven principal (gebruikers naam, Service-Principal of SAS-token) heeft toegang tot de opgegeven opslag.
+**Als onderdeel van het proces voor het maken en registreren van de eerste Data Store** , Azure machine learning automatisch gevalideerd of de onderliggende opslag service bestaat en de door de gebruiker opgegeven principal (gebruikers naam, Service-Principal of SAS-token) heeft toegang tot de opgegeven opslag.
 
-**Nadat Data Store is gemaakt**, wordt deze validatie alleen uitgevoerd voor methoden waarvoor toegang tot de onderliggende opslag container is vereist. **niet** elke keer dat de objecten gegevens opslag worden opgehaald. Validatie vindt bijvoorbeeld plaats als u bestanden wilt downloaden uit uw gegevens archief. maar als u de standaard gegevens opslag gewoon wilt wijzigen, vindt validatie niet plaats.
+**Nadat Data Store is gemaakt** , wordt deze validatie alleen uitgevoerd voor methoden waarvoor toegang tot de onderliggende opslag container is vereist. **niet** elke keer dat de objecten gegevens opslag worden opgehaald. Validatie vindt bijvoorbeeld plaats als u bestanden wilt downloaden uit uw gegevens archief. maar als u de standaard gegevens opslag gewoon wilt wijzigen, vindt validatie niet plaats.
 
 Als u uw toegang tot de onderliggende opslag service wilt verifiëren, kunt u uw account sleutel, SAS-tokens (Shared Access signatures) of Service-Principal opgeven op basis van het gegevens opslag type dat u wilt maken. De [opslag type matrix](how-to-access-data.md#matrix) bevat de ondersteunde verificatie typen die overeenkomen met elk type gegevens opslag.
 
@@ -153,7 +153,7 @@ U vindt de account sleutel, het SAS-token en de gegevens van de Service-Principa
       1. Ga voor account sleutels naar **toegangs sleutels** in het deel venster **instellingen** .
       1. Voor SAS-tokens gaat u naar de **hand tekeningen voor gedeelde toegang** in het deel venster **instellingen** .
 
-* Als u van plan bent om een [Service-Principal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) te gebruiken voor verificatie, gaat u naar uw **app-registraties** en selecteert u welke app u wilt gebruiken.
+* Als u van plan bent om een [Service-Principal](../active-directory/develop/howto-create-service-principal-portal.md) te gebruiken voor verificatie, gaat u naar uw **app-registraties** en selecteert u welke app u wilt gebruiken.
     * De bijbehorende **overzichts** pagina bevat de vereiste informatie, zoals Tenant-id en client-id.
 
 > [!IMPORTANT]
@@ -161,7 +161,7 @@ U vindt de account sleutel, het SAS-token en de gegevens van de Service-Principa
 
 ### <a name="permissions"></a>Machtigingen
 
-Voor Azure Blob-container en Azure Data Lake gen 2-opslag, moet u ervoor zorgen dat uw verificatie referenties toegang hebben tot de **gegevens lezer** van de opslag-blob. Meer informatie over [Storage BLOB data Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). 
+Voor Azure Blob-container en Azure Data Lake gen 2-opslag, moet u ervoor zorgen dat uw verificatie referenties toegang hebben tot de **gegevens lezer** van de opslag-blob. Meer informatie over [Storage BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). 
 
 ## <a name="train-with-datasets"></a>Trainen met gegevenssets
 

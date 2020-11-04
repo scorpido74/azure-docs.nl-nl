@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09eeafa99c14984f74f8807014f646379c7507f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897652"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314211"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eindpunten bewaken en verzamelen
 
@@ -204,9 +204,9 @@ Als u gegevens van de webservice-aanvraag wilt registreren, voegt `print` u inst
 ## <a name="export-data-for-retention-and-processing"></a>Gegevens exporteren voor retentie en verwerking
 
 >[!Important]
-> Azure-toepassing Insights ondersteunt alleen export naar Blob Storage. Zie [telemetrie exporteren vanuit app Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration)voor meer informatie over de limieten van deze implementatie.
+> Azure-toepassing Insights ondersteunt alleen export naar Blob Storage. Zie [telemetrie exporteren vanuit app Insights](../azure-monitor/app/export-telemetry.md#continuous-export-advanced-storage-configuration)voor meer informatie over de limieten van deze implementatie.
 
-Gebruik Application Insights [doorlopend exporteren](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) om gegevens te exporteren naar een Blob Storage-account waar u Bewaar instellingen kunt definiëren. Application Insights exporteert de gegevens in JSON-indeling. 
+Gebruik Application Insights [doorlopend exporteren](../azure-monitor/app/export-telemetry.md) om gegevens te exporteren naar een Blob Storage-account waar u Bewaar instellingen kunt definiëren. Application Insights exporteert de gegevens in JSON-indeling. 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Continue export":::
 
@@ -215,8 +215,8 @@ Gebruik Application Insights [doorlopend exporteren](https://docs.microsoft.com/
 In dit artikel hebt u geleerd hoe u logboek registratie inschakelt en Logboeken kunt weer geven voor webservice-eind punten. Voer deze artikelen uit voor de volgende stappen:
 
 
-* [Een model implementeren in een AKS-cluster](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
+* [Een model implementeren in een AKS-cluster](./how-to-deploy-azure-kubernetes-service.md)
 
-* [Een model implementeren in Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)
+* [Een model implementeren in Azure Container Instances](./how-to-deploy-azure-container-instance.md)
 
-* [MLOps: modellen met Azure machine learning beheren, implementeren en bewaken](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) voor meer informatie over het benutten van gegevens die zijn verzameld van modellen in de productie omgeving. Dergelijke gegevens kunnen helpen uw machine learning proces voortdurend te verbeteren.
+* [MLOps: modellen met Azure machine learning beheren, implementeren en bewaken](./concept-model-management-and-deployment.md) voor meer informatie over het benutten van gegevens die zijn verzameld van modellen in de productie omgeving. Dergelijke gegevens kunnen helpen uw machine learning proces voortdurend te verbeteren.

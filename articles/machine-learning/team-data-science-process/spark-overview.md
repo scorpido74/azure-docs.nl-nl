@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3aa33efa9aa416ad1dfefd2fe957ce04b2b14432
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dd82fb00c55e3676929999f204eae8755671038
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027457"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314739"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Overzicht van data Science met behulp van Spark in azure HDInsight
 
@@ -41,8 +41,8 @@ Deze notitie blokken moeten worden uitgevoerd in de pySpark-kernel van Jupyter n
 ### <a name="spark-20-notebooks"></a>Spark 2,0-notebooks
 Deze notitie blokken moeten worden uitgevoerd in de pySpark3-kernel van Jupyter notebook server.
 
-- [Spark 2.0-pySpark3-machine-learning-data-Science-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): dit bestand bevat informatie over het verkennen, model leren en bepalen van gegevens in Spark 2,0-clusters met behulp van de NYC taxi trip en ritbedrag data-set die [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)wordt beschreven. Dit notitie blok is mogelijk een goed uitgangs punt voor het snel verkennen van de code die u hebt ingesteld voor Spark 2,0. Zie het volgende notitie blok in deze lijst voor een meer gedetailleerde notebook-analyse van de NYC taxi-gegevens. Zie de opmerkingen na deze lijst waarin deze notitie blokken worden vergeleken.
-- [Spark 2.0-pySpark3_NYC_Taxi_Tip_Regression. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): dit bestand bevat informatie over het uitvoeren van gegevens Wrangling (Spark SQL-en data frame-bewerkingen), exploratie, model leren en scoren met behulp van de NYC-reis-en ritbedrag gegevensverzameling die [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)wordt beschreven.
+- [Spark 2.0-pySpark3-machine-learning-data-Science-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): dit bestand bevat informatie over het verkennen, model leren en bepalen van gegevens in Spark 2,0-clusters met behulp van de NYC taxi trip en ritbedrag data-set die [hier](#the-nyc-2013-taxi-data)wordt beschreven. Dit notitie blok is mogelijk een goed uitgangs punt voor het snel verkennen van de code die u hebt ingesteld voor Spark 2,0. Zie het volgende notitie blok in deze lijst voor een meer gedetailleerde notebook-analyse van de NYC taxi-gegevens. Zie de opmerkingen na deze lijst waarin deze notitie blokken worden vergeleken.
+- [Spark 2.0-pySpark3_NYC_Taxi_Tip_Regression. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): dit bestand bevat informatie over het uitvoeren van gegevens Wrangling (Spark SQL-en data frame-bewerkingen), exploratie, model leren en scoren met behulp van de NYC-reis-en ritbedrag gegevensverzameling die [hier](#the-nyc-2013-taxi-data)wordt beschreven.
 - [Spark 2.0-pySpark3_Airline_Departure_Delay_Classification. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): dit bestand bevat informatie over het uitvoeren van gegevens Wrangling (Spark SQL en data frame Operations), exploratie, modellering en scoreing met behulp van de bekende luchtvaart maatschappij op tijd van 2011 en 2012. We hebben de gegevensset van de luchtvaart maatschappij geïntegreerd met de weers gegevens van de lucht haven (bijvoorbeeld windspeed, Tempe ratuur, hoogte enz.) voordat ze worden gemodelleerd, zodat deze weers functies kunnen worden opgenomen in het model.
 
 <!-- -->
@@ -156,13 +156,13 @@ U kunt de Jupyter Notebook vanuit de Azure Portal starten. Zoek uw Spark-cluster
 
 ![Cluster dashboards](./media/spark-overview/spark-jupyter-on-portal.png)
 
-U kunt ook bladeren naar ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** om toegang te krijgen tot de Jupyter-notebooks. Vervang het gedeelte CLUSTERNAME van deze URL door de naam van uw eigen cluster. U hebt het wacht woord voor uw beheerders account nodig om toegang te krijgen tot de notitie blokken.
+U kunt ook zoeken naar * *_`https://CLUSTERNAME.azurehdinsight.net/jupyter`_* _ om toegang te krijgen tot de Jupyter-notebooks. Vervang het gedeelte CLUSTERNAME van deze URL door de naam van uw eigen cluster. U hebt het wacht woord voor uw beheerders account nodig om toegang te krijgen tot de notitie blokken.
 
 ![Bladeren in Jupyter-notebooks](./media/spark-overview/spark-jupyter-notebook.png)
 
 Selecteer PySpark om een map te bekijken met een aantal voor beelden van vooraf verpakte notitie blokken die gebruikmaken van de PySpark-API. De notitie blokken die de code voorbeelden voor dit pakket met Spark bevatten, zijn beschikbaar op [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)
 
-U kunt de notebooks rechtstreeks vanuit [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) uploaden naar de Jupyter notebook-server op uw Spark-cluster. Klik op de start pagina van uw Jupyter op de knop **uploaden** aan de rechter kant van het scherm. Er wordt een Verkenner geopend. Hier kunt u de GitHub-URL (onbewerkte inhoud) van het notitie blok plakken en op **openen**klikken.
+U kunt de notebooks rechtstreeks vanuit [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) uploaden naar de Jupyter notebook-server op uw Spark-cluster. Op de start pagina van uw Jupyter klikt u op de knop _ *uploaden* * aan de rechter kant van het scherm. Er wordt een Verkenner geopend. Hier kunt u de GitHub-URL (onbewerkte inhoud) van het notitie blok plakken en op **openen** klikken.
 
 U ziet de bestands naam in de lijst met Jupyter bestanden met een knop **uploaden** . Klik op de knop **uploaden** . Nu hebt u het notitie blok geïmporteerd. Herhaal deze stappen om de andere notitie blokken uit deze walkthrough te uploaden.
 
@@ -174,7 +174,7 @@ U ziet de bestands naam in de lijst met Jupyter bestanden met een knop **uploade
 U kunt nu:
 
 * Zie de code door te klikken op het notitie blok.
-* Voer elke cel uit door op **SHIFT + ENTER**te drukken.
+* Voer elke cel uit door op **SHIFT + ENTER** te drukken.
 * Voer het hele notitie blok uit door te klikken op de knop voor het uitvoeren van de **cel**  ->  **Run**.
 * Gebruik de automatische visualisatie van query's.
 
@@ -192,5 +192,4 @@ Nu u een HDInsight Spark-cluster hebt ingesteld en de Jupyter-notebooks hebt ge�
 
 **Model verbruik:** Zie voor meer informatie over het beoordelen van de classificatie en regressie modellen die in dit onderwerp zijn gemaakt, de [Score en evalueren van met Spark ontwikkelde machine learning modellen](spark-model-consumption.md).
 
-**Kruisvalidatie en sweeping van hyperparameters**: Zie [Advanced data exploration and modeling with Spark](spark-advanced-data-exploration-modeling.md) (Geavanceerde gegevensverkenning en -modellering met Spark) over de manier waarop modellen kunnen worden getraind met behulp van kruisvalidatie en sweeping van hyperparameters.
-
+**Kruisvalidatie en sweeping van hyperparameters** : Zie [Advanced data exploration and modeling with Spark](spark-advanced-data-exploration-modeling.md) (Geavanceerde gegevensverkenning en -modellering met Spark) over de manier waarop modellen kunnen worden getraind met behulp van kruisvalidatie en sweeping van hyperparameters.

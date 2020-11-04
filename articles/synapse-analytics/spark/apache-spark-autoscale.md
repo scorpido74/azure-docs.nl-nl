@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500348"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313636"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatisch schalen van Azure Synapse Analytics Apache Spark Pools
 
@@ -49,7 +49,7 @@ Voor opschalen, op basis van het aantal uitvoerende modules, toepassings Masters
 
 ## <a name="get-started"></a>Aan de slag
 
-### <a name="create-a-spark-pool-with-autoscaling"></a>Een Spark-groep maken met automatisch schalen
+### <a name="create-a-serverless-apache-spark-pool-with-autoscaling"></a>Een Apache Spark groep zonder server maken met automatisch schalen
 
 Als u de functie voor automatisch schalen wilt inschakelen, voert u de volgende stappen uit als onderdeel van het normale proces voor het maken van een pool:
 

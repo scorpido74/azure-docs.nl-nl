@@ -1,6 +1,6 @@
 ---
 title: Opgeslagen procedures gebruiken
-description: Tips voor het implementeren van opgeslagen procedures in Synapse SQL voor het ontwikkelen van oplossingen.
+description: Tips voor het implementeren van opgeslagen procedures met Synapse SQL in azure Synapse Analytics voor het ontwikkelen van oplossingen.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 607060851a8afa48b9570dfcb17732279a3629ee
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3940d762dbc249e0303ddf905acbeeed7f96aa4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286669"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315561"
 ---
-# <a name="use-stored-procedures-in-synapse-sql"></a>Opgeslagen procedures in Synapse SQL gebruiken
+# <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>Opgeslagen procedures met Synapse SQL in azure Synapse Analytics
 
 Met Synapse SQL provisioned en serverloze groepen kunt u complexe gegevens verwerkings logica plaatsen in opgeslagen SQL-procedures. Opgeslagen procedures zijn een uitstekende manier om uw SQL-code te integreren en de gegevens op te slaan in het Data Warehouse. Met opgeslagen procedures kunnen ontwikkel aars hun oplossingen modularize door de code in te kapselen in beheer bare eenheden en meer herbruikbaarheid van code te vergemakkelijken. Elke opgeslagen procedure kan ook para meters accepteren om ze nog flexibeler te maken.
 In dit artikel vindt u enkele tips voor het implementeren van opgeslagen procedures in Synapse SQL pool voor het ontwikkelen van oplossingen.
@@ -27,7 +27,7 @@ In dit artikel vindt u enkele tips voor het implementeren van opgeslagen procedu
 Synapse SQL ondersteunt veel van de T-SQL-functies die worden gebruikt in SQL Server. Belang rijker is dat er specifieke functies zijn die u kunt gebruiken om de prestaties van uw oplossing te optimaliseren. In dit artikel vindt u informatie over de functies die u in opgeslagen procedures kunt plaatsen.
 
 > [!NOTE]
-> In de hoofd tekst van de procedure kunt u alleen de functies gebruiken die worden ondersteund in Synapse SQL surface area. Lees [dit artikel](overview-features.md) om objecten te identificeren, een instructie die kan worden gebruikt in opgeslagen procedures. In de voor beelden in deze artikelen worden generieke functies gebruikt die zowel in serverloze als ingerichte surface area beschikbaar zijn. Raadpleeg het einde van dit artikel voor meer [beperkingen in de ingerichte en serverloze Synapse SQL-groepen](#limitations) .
+> In de hoofd tekst van de procedure kunt u alleen de functies gebruiken die worden ondersteund in Synapse SQL surface area. Lees [dit artikel](overview-features.md) om objecten te identificeren, een instructie die kan worden gebruikt in opgeslagen procedures. In de voor beelden in deze artikelen worden algemene functies gebruikt die zowel in serverloze als toegewezen surface area beschikbaar zijn. Raadpleeg het einde van dit artikel voor meer [beperkingen in de ingerichte en serverloze Synapse SQL-groepen](#limitations) .
 
 Voor het behoud van de schaal en prestaties van de SQL-groep zijn er ook enkele functies en functionaliteit die gedrags verschillen hebben en andere die niet worden ondersteund.
 

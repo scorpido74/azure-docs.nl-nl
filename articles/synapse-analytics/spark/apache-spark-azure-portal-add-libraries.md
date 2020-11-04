@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737972"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313540"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Bibliotheken voor Apache Spark beheren in azure Synapse Analytics
 
-Bibliotheken bieden herbruikbare code die u mogelijk wilt toevoegen aan uw Program ma's of projecten. Als u van derden of lokaal gemaakte code beschikbaar wilt maken voor uw toepassingen, kunt u een bibliotheek installeren op een van uw Spark-Pools (preview). Zodra een bibliotheek is geïnstalleerd voor een Spark-groep, is deze beschikbaar voor alle sessies die gebruikmaken van dezelfde groep. 
+Bibliotheken bieden herbruikbare code die u mogelijk wilt toevoegen aan uw Program ma's of projecten. Als u derden of lokaal gemaakte code beschikbaar wilt maken voor uw toepassingen, kunt u een bibliotheek installeren op een van uw serverloze Apache Spark Pools (preview). Zodra een bibliotheek is geïnstalleerd voor een Spark-groep, is deze beschikbaar voor alle sessies die gebruikmaken van dezelfde groep. 
 
 ## <a name="default-installation"></a>Standaard installatie
 Apache Spark in azure Synapse Analytics beschikt over een volledige Anacondas-installatie plus extra bibliotheken. De lijst met volledige bibliotheken vindt u op [Apache Spark-versie ondersteuning](apache-spark-version-support.md). 
@@ -68,7 +68,7 @@ Als u extra bibliotheken wilt bijwerken of toevoegen aan een Spark-groep (previe
    
 2.  Start uw Azure Synapse Analytics-werk ruimte vanuit het Azure Portal.
 
-3.  Selecteer **beheren** in het hoofd paneel navigatie en selecteer vervolgens **Apache Spark groepen** .
+3.  Selecteer **beheren** in het hoofd paneel navigatie en selecteer vervolgens **Apache Spark groepen**.
    
 4. Selecteer één Spark-groep en upload het omgevings configuratie bestand met behulp van de bestands kiezer in het gedeelte  **pakketten** van de pagina.
 

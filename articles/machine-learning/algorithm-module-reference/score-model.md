@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0cc367b86507d6d819608795851052e8a0c1c73b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d17af4f615907ca50b27ce8fa26973e5869608
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890308"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314248"
 ---
 # <a name="score-model"></a>Score Model
 
@@ -48,8 +48,8 @@ De Score of voorspelde waarde kan in veel verschillende indelingen worden opgege
 
 ## <a name="publish-scores-as-a-web-service"></a>Scores publiceren als een webservice
 
-Een gemeen schappelijk gebruik van scores is het retour neren van de uitvoer als onderdeel van een voorspellende webservice. Zie [deze zelf studie](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) voor meer informatie over het implementeren van een real-time-eind punt op basis van een pijp lijn in azure machine learning Designer.
+Een gemeen schappelijk gebruik van scores is het retour neren van de uitvoer als onderdeel van een voorspellende webservice. Zie [deze zelf studie](../tutorial-designer-automobile-price-deploy.md) voor meer informatie over het implementeren van een real-time-eind punt op basis van een pijp lijn in azure machine learning Designer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

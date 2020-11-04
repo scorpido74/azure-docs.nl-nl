@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5a04e5a7136ac1a33766bf543a27ff7794498c26
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: be2afad7e7cb08d9c677e589846f3d67cf43e708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314237"
 ---
 # <a name="collect-data-from-models-in-production"></a>Gegevens verzamelen van modellen in productie
 
@@ -67,11 +67,11 @@ Het pad naar de uitvoer gegevens in de BLOB volgt de volgende syntaxis:
 
 - U hebt een AKS-cluster nodig. Voor informatie over hoe u een maakt en implementeert, raadpleegt [u hoe u implementeert en waar](how-to-deploy-and-where.md).
 
-- [Stel uw omgeving](how-to-configure-environment.md) in en installeer de [Azure machine learning monitoring-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+- [Stel uw omgeving](how-to-configure-environment.md) in en installeer de [Azure machine learning monitoring-SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 ## <a name="enable-data-collection"></a>Gegevensverzameling inschakelen
 
-U kunt [gegevens verzameling](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true) inschakelen, ongeacht het model dat u via Azure machine learning of andere hulpprogram ma's implementeert.
+U kunt [gegevens verzameling](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py) inschakelen, ongeacht het model dat u via Azure machine learning of andere hulpprogram ma's implementeert.
 
 Als u gegevens verzameling wilt inschakelen, moet u het volgende doen:
 
@@ -138,7 +138,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
 1. Open uw werk ruimte.
 
-1. Selecteer **opslag**.
+1. Selecteer **Opslag**.
 
     [![Selecteer de optie voor opslag](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
@@ -153,7 +153,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
 1. Down load en open [Power bi Desktop](https://www.powerbi.com).
 
-1. Selecteer **gegevens ophalen** en selecteer [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
+1. Selecteer **gegevens ophalen** en selecteer [**Azure Blob Storage**](/power-bi/desktop-data-sources).
 
     [![Setup van Power BI BLOB](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
@@ -187,11 +187,11 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
 ### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> Model gegevens analyseren met behulp van Azure Databricks
 
-1. Maak een [Azure Databricks-werk ruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+1. Maak een [Azure Databricks-werk ruimte](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 
 1. Ga naar uw Databricks-werk ruimte.
 
-1. Selecteer **gegevens uploaden**in uw Databricks-werk ruimte.
+1. Selecteer **gegevens uploaden** in uw Databricks-werk ruimte.
 
     [![De optie Databricks-gegevens uploaden selecteren](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 

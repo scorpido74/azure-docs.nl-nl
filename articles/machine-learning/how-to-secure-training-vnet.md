@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 232260ada4d810127584e675480f91d0213e3953
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091494"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314169"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Een Azure Machine Learning-trainings omgeving beveiligen met virtuele netwerken
 
@@ -47,7 +47,7 @@ In dit artikel leert u hoe u de volgende trainings Compute-resources in een virt
     - ' Micro soft. Network/virtualNetworks/lid/Action ' op de virtuele netwerk resource.
     - ' Micro soft. Network/virtualNetworks/subnet/lid/Action ' op de bron van het subnet.
 
-    Zie voor meer informatie over Azure RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking)
+    Zie voor meer informatie over Azure RBAC met netwerken de [ingebouwde rollen voor netwerken](../role-based-access-control/built-in-roles.md#networking)
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>& exemplaren van compute-clusters 
@@ -61,17 +61,17 @@ Als u een [beheerd Azure machine learning __Compute-doel__](concept-compute-targ
 > * Als u meerdere reken instanties of clusters in één virtueel netwerk wilt plaatsen, moet u mogelijk een quotum verhoging aanvragen voor een of meer van uw resources.
 > * Als de Azure Storage account (s) voor de werk ruimte ook worden beveiligd in een virtueel netwerk, moeten ze zich in hetzelfde virtuele netwerk bevinden als de Azure Machine Learning Reken instantie of het cluster. 
 > * Zorg ervoor dat de communicatie tussen websockets niet is uitgeschakeld voor de Jupyter-functionaliteit van reken instanties. Zorg ervoor dat uw netwerk WebSocket-verbindingen toestaat naar *. instances.azureml.net en *. instances.azureml.ms. 
-> * Wanneer reken instantie wordt geïmplementeerd in een persoonlijke koppelings werkruimte, kan deze alleen worden geopend vanuit een virtueel netwerk. Als u een aangepast DNS-of hosts-bestand gebruikt, voegt u een vermelding toe voor met het privé `<instance-name>.<region>.instances.azureml.ms` -IP-adres van het persoonlijke eind punt van de werk ruimte. Zie het [aangepaste DNS-](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns) artikel voor meer informatie.
+> * Wanneer reken instantie wordt geïmplementeerd in een persoonlijke koppelings werkruimte, kan deze alleen worden geopend vanuit een virtueel netwerk. Als u een aangepast DNS-of hosts-bestand gebruikt, voegt u een vermelding toe voor met het privé `<instance-name>.<region>.instances.azureml.ms` -IP-adres van het persoonlijke eind punt van de werk ruimte. Zie het [aangepaste DNS-](./how-to-custom-dns.md) artikel voor meer informatie.
     
 > [!TIP]
-> Het Machine Learning Reken exemplaar of cluster wijst automatisch extra netwerk bronnen toe __aan de resource groep die het virtuele netwerk bevat__ . Voor elk reken exemplaar of cluster wijst de service de volgende bronnen toe:
+> Het Machine Learning Reken exemplaar of cluster wijst automatisch extra netwerk bronnen toe __aan de resource groep die het virtuele netwerk bevat__. Voor elk reken exemplaar of cluster wijst de service de volgende bronnen toe:
 > 
 > * Eén netwerk beveiligings groep
 > * Eén openbaar IP-adres
 > * Een load balancer
 > 
 > In het geval van clusters worden deze bronnen verwijderd (en opnieuw gemaakt) elke keer dat het cluster wordt geschaald naar 0 knoop punten, maar voor een instantie waarvan de bronnen worden vastgehouden, is het exemplaar volledig verwijderd (stoppen wordt niet verwijderd uit de resources). 
-> De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) van het abonnement.
+> De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Vereiste poorten
@@ -80,7 +80,7 @@ Als u van plan bent het virtuele netwerk te beveiligen door het netwerk verkeer 
 
 De batch-service voegt netwerk beveiligings groepen (Nsg's) toe op het niveau van netwerk interfaces (Nic's) die zijn gekoppeld aan Vm's. Met deze netwerkbeveiligingsgroepen worden automatisch binnenkomende en uitgaande regels geconfigureerd om het volgende verkeer toe te staan:
 
-- Binnenkomend TCP-verkeer op de poorten 29876 en 29877 van een __service label__ van __BatchNodeManagement__ .
+- Binnenkomend TCP-verkeer op de poorten 29876 en 29877 van een __service label__ van __BatchNodeManagement__.
 
     ![Een regel voor binnenkomende verbindingen die gebruikmaakt van het BatchNodeManagement-service label](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -90,7 +90,7 @@ De batch-service voegt netwerk beveiligings groepen (Nsg's) toe op het niveau va
 
 - Uitgaand verkeer op een willekeurige poort naar internet.
 
-- Voor het binnenkomende TCP-verkeer van reken instanties op poort 44224 van een __service-tag__ van __AzureMachineLearning__ .
+- Voor het binnenkomende TCP-verkeer van reken instanties op poort 44224 van een __service-tag__ van __AzureMachineLearning__.
 
 > [!IMPORTANT]
 > Wees voorzichtig als u binnenkomende of uitgaande regels toevoegt of wijzigt in netwerkbeveiligingsgroepen die door Batch zijn geconfigureerd. Als een NSG communicatie met de reken knooppunten blokkeert, stelt de compute-service de status van de reken knooppunten in op onbruikbaar.
@@ -112,8 +112,8 @@ Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u d
 - Uitgaande Internet verbinding weigeren met behulp van de NSG-regels.
 
 - Beperk het uitgaande verkeer voor een __reken instantie__ of een __berekenings cluster__ tot de volgende items:
-   - Azure Storage, door gebruik te maken van de __service tag__ __Storage. regionaam__ . Waar `{RegionName}` de naam is van een Azure-regio.
-   - Azure Container Registry, met behulp van de __service-tag__ __AzureContainerRegistry. regionaam__ . Waar `{RegionName}` de naam is van een Azure-regio.
+   - Azure Storage, door gebruik te maken van de __service tag__ __Storage. regionaam__. Waar `{RegionName}` de naam is van een Azure-regio.
+   - Azure Container Registry, met behulp van de __service-tag__ __AzureContainerRegistry. regionaam__. Waar `{RegionName}` de naam is van een Azure-regio.
    - Azure Machine Learning, met behulp van het __service label__ __AzureMachineLearning__
    - Azure Resource Manager, met behulp van het __service label__ __AzureResourceManager__
    - Azure Active Directory, met behulp van het __service label__ __AzureActiveDirectory__
@@ -154,17 +154,17 @@ De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende a
 
 ### <a name="forced-tunneling"></a>Geforceerde tunneling
 
-Als u gebruik wilt maken van [geforceerde tunneling](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) met Azure machine learning compute, moet u communicatie met het open bare Internet toestaan vanaf het subnet dat de reken resource bevat. Deze communicatie wordt gebruikt voor het plannen van taken en het openen van Azure Storage.
+Als u gebruik wilt maken van [geforceerde tunneling](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) met Azure machine learning compute, moet u communicatie met het open bare Internet toestaan vanaf het subnet dat de reken resource bevat. Deze communicatie wordt gebruikt voor het plannen van taken en het openen van Azure Storage.
 
 U kunt dit op twee manieren doen:
 
 * Gebruik een [Virtual Network NAT](../virtual-network/nat-overview.md). Een NAT-gateway biedt een uitgaande Internet verbinding voor een of meer subnetten in het virtuele netwerk. Zie [virtuele netwerken ontwerpen met NAT-gateway bronnen](../virtual-network/nat-gateway-resource.md)voor meer informatie.
 
-* Door de [gebruiker gedefinieerde routes (udr's)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) toevoegen aan het subnet dat de reken resource bevat. Stel een UDR in voor elk IP-adres dat wordt gebruikt door de Azure Batch-service in de regio waar uw resources bestaan. Deze Udr's inschakelen de batch-service om te communiceren met reken knooppunten voor het plannen van taken. Voeg ook het IP-adres voor de Azure Machine Learning-service toe waarin de resources bestaan, omdat dit vereist is voor toegang tot reken instanties. Gebruik een van de volgende methoden om een lijst met IP-adressen van de batch-service en Azure Machine Learning-service te verkrijgen:
+* Door de [gebruiker gedefinieerde routes (udr's)](../virtual-network/virtual-networks-udr-overview.md) toevoegen aan het subnet dat de reken resource bevat. Stel een UDR in voor elk IP-adres dat wordt gebruikt door de Azure Batch-service in de regio waar uw resources bestaan. Deze Udr's inschakelen de batch-service om te communiceren met reken knooppunten voor het plannen van taken. Voeg ook het IP-adres voor de Azure Machine Learning-service toe waarin de resources bestaan, omdat dit vereist is voor toegang tot reken instanties. Gebruik een van de volgende methoden om een lijst met IP-adressen van de batch-service en Azure Machine Learning-service te verkrijgen:
 
     * Down load de [Azure IP-bereiken en-service Tags](https://www.microsoft.com/download/details.aspx?id=56519) en zoek het bestand voor `BatchNodeManagement.<region>` en `AzureMachineLearning.<region>` , waar `<region>` is uw Azure-regio.
 
-    * Gebruik de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) om de informatie te downloaden. In het volgende voor beeld worden de IP-adres gegevens gedownload en worden de gegevens voor de regio VS Oost 2 gefilterd:
+    * Gebruik de [Azure cli](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) om de informatie te downloaden. In het volgende voor beeld worden de IP-adres gegevens gedownload en worden de gegevens voor de regio VS Oost 2 gefilterd:
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -177,7 +177,7 @@ U kunt dit op twee manieren doen:
         > * [IP-adresbereiken en service tags voor Azure voor Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)
         > * [Azure IP-adresbereiken en service tags voor Azure China](https://www.microsoft.com//download/details.aspx?id=57062)
     
-    Wanneer u de Udr's toevoegt, definieert u de route voor elk gerelateerde IP-adres voorvoegsel voor batch en stelt u het __type volgende hop__ in op __Internet__ . In de volgende afbeelding ziet u een voor beeld van deze UDR in de Azure Portal:
+    Wanneer u de Udr's toevoegt, definieert u de route voor elk gerelateerde IP-adres voorvoegsel voor batch en stelt u het __type volgende hop__ in op __Internet__. In de volgende afbeelding ziet u een voor beeld van deze UDR in de Azure Portal:
 
     ![Voor beeld van een UDR voor een adres voorvoegsel](./media/how-to-enable-virtual-network/user-defined-route.png)
 
@@ -253,7 +253,7 @@ Wanneer het maken van het proces is voltooid, traint u uw model met behulp van h
 
 Als u notitie blokken op een Azure Compute-instantie gebruikt, moet u ervoor zorgen dat uw notitie blok wordt uitgevoerd op een reken resource achter hetzelfde virtuele netwerk en subnet als uw gegevens. 
 
-U moet uw reken instantie configureren zodat deze zich in hetzelfde virtuele netwerk bevindt tijdens het maken van **Geavanceerde instellingen**  >  **virtuele netwerken configureren** . U kunt een bestaand reken exemplaar niet toevoegen aan een virtueel netwerk.
+U moet uw reken instantie configureren zodat deze zich in hetzelfde virtuele netwerk bevindt tijdens het maken van **Geavanceerde instellingen**  >  **virtuele netwerken configureren**. U kunt een bestaand reken exemplaar niet toevoegen aan een virtueel netwerk.
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
@@ -278,15 +278,15 @@ In deze sectie leert u hoe u een virtuele machine of een Azure HDInsight-cluster
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>De virtuele machine of het HDInsight-cluster maken
 
 Maak een virtuele machine of een HDInsight-cluster met behulp van de Azure Portal of de Azure CLI en plaats het cluster in een virtueel Azure-netwerk. Raadpleeg voor meer informatie de volgende artikelen:
-* [Virtuele Azure-netwerken voor Linux-Vm's maken en beheren](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+* [Virtuele Azure-netwerken voor Linux-Vm's maken en beheren](../virtual-machines/linux/tutorial-virtual-network.md)
 
-* [HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
+* [HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](../hdinsight/hdinsight-plan-virtual-network-deployment.md)
 
 ### <a name="configure-network-ports"></a>Netwerk poorten configureren 
 
 Azure Machine Learning toestaan te communiceren met de SSH-poort op de virtuele machine of het cluster, configureert u een bron vermelding voor de netwerk beveiligings groep. De SSH-poort is doorgaans poort 22. Voer de volgende acties uit om verkeer van deze bron toe te staan:
 
-1. Selecteer in de vervolg keuzelijst __bron__ de optie __service label__ .
+1. Selecteer in de vervolg keuzelijst __bron__ de optie __service label__.
 
 1. Selecteer __AzureMachineLearning__ in de vervolg keuzelijst __bron service label__ .
 
@@ -294,15 +294,15 @@ Azure Machine Learning toestaan te communiceren met de SSH-poort op de virtuele 
 
 1. Selecteer in de vervolg keuzelijst __bron poort bereik__ __*__ .
 
-1. Selecteer in de vervolg keuzelijst __bestemming__ __een__ .
+1. Selecteer in de vervolg keuzelijst __bestemming__ __een__.
 
 1. Selecteer __22__ in de vervolg keuzelijst __doel poort bereik__ .
 
-1. Onder __protocol__ selecteert u __een__ .
+1. Onder __protocol__ selecteert u __een__.
 
-1. Selecteer onder __actie__ __toestaan__ .
+1. Selecteer onder __actie__ __toestaan__.
 
-Behoud de standaard regels voor uitgaande verbindingen voor de netwerk beveiligings groep. Zie de standaard beveiligings regels in [beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)voor meer informatie.
+Behoud de standaard regels voor uitgaande verbindingen voor de netwerk beveiligings groep. Zie de standaard beveiligings regels in [beveiligings groepen](../virtual-network/network-security-groups-overview.md#default-security-rules)voor meer informatie.
 
 Als u de standaard regels voor uitgaand verkeer niet wilt gebruiken en u de uitgaande toegang van uw virtuele netwerk wilt beperken, raadpleegt u de sectie [uitgaande verbindingen beperken via het virtuele netwerk](#limiting-outbound-from-vnet) .
 

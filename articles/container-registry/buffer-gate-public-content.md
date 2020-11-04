@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: e5fd70cdde6be431f7bb1950a42ca43e81b34e36
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bb185e7d5803219135fddf421b7d6a89edd296b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130847"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315813"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Open bare inhoud beheren met Azure Container Registry
 
@@ -25,16 +25,14 @@ Als er sprake is van een goede controle, kunnen afhankelijkheden van open bare r
 
 ## <a name="authenticate-with-docker-hub"></a>Verifiëren met docker hub
 
-Als eerste stap, als u momenteel open bare installatie kopieën uit docker hub als onderdeel van een build of implementatie werk stroom haalt, raden we u aan om te verifiëren met behulp van een docker hub-account in plaats van een anonieme pull-aanvraag te doen.
+Als eerste stap, als u momenteel open bare installatie kopieën uit docker hub als onderdeel van een build of implementatie werk stroom haalt, raden we u aan om te [verifiëren met behulp van een docker hub-account](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) in plaats van een anonieme pull-aanvraag te doen.
 
 > [!NOTE]
-> Met ingang van 2 november 2020 worden limieten voor down loads toegepast op anonieme en geverifieerde aanvragen voor docker-hub vanuit docker Free plan-accounts en worden afgedwongen op basis van het IP-adres. 
+> Vanaf 2 november 2020 worden de [Download frequentie limieten](https://docs.docker.com/docker-hub/download-rate-limit) toegepast op anonieme en geverifieerde aanvragen voor docker-hub vanuit een docker Free plan-account en worden afgedwongen met het IP-adres en de docker-id respecitively. 
 >
-> Bij het schatten van het aantal pull-aanvragen moet u rekening houden met het gebruik van Cloud provider Services of achter een bedrijfs-NAT, maar meerdere gebruikers worden aan docker hub als een subset van IP-adressen gepresenteerd.  Door docker betaalde account authenticatie toe te voegen aan aanvragen naar docker hub, voor komt u mogelijke onderbrekingen van de service vanwege een beperking van de frequentie limiet.
+> Bij het schatten van het aantal pull-aanvragen moet u rekening houden met het gebruik van Cloud provider Services of achter een bedrijfs-NAT, maar meerdere gebruikers worden aan docker hub als een subset van IP-adressen gepresenteerd. Door docker betaalde account authenticatie toe te voegen aan aanvragen naar docker hub, voor komt u mogelijke onderbrekingen van de service vanwege een beperking van de frequentie limiet.
 >
 > Zie [prijzen voor docker en abonnementen](https://www.docker.com/pricing) en de [docker-Service voorwaarden](https://www.docker.com/legal/docker-terms-service)voor meer informatie.
-
-Zie limiet voor de [Download frequentie](https://docs.docker.com/docker-hub/download-rate-limit/)voor verificatie voorbeelden en-scenario's.
 
 ### <a name="docker-hub-access-token"></a>Toegangs token docker hub
 

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 824c48646ab32e02c627fb623dbab60c3050ad96
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: a1c986663c42b87e7e5d4530b26200d48fe612cb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080716"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314265"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,12 +47,12 @@ U wordt aangeraden Windows 64-bits host te verwerken voor betere prestaties. De 
 
 - Voor VSTest test projecten kunt u de verwerking van de host wijzigen door test **Test**  >  **instellingen** testen  >  **standaard processor architectuur als x64** te selecteren in het menu van Visual Studio **testen** .
 
-- Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u de verwerking van de host wijzigen door **de 64-bits versie van IIS Express voor websites en projecten** te selecteren onder **extra**  >  **Opties**  >  **projecten en oplossingen**  >  **webprojecten** .
+- Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u de verwerking van de host wijzigen door **de 64-bits versie van IIS Express voor websites en projecten** te selecteren onder **extra**  >  **Opties**  >  **projecten en oplossingen**  >  **webprojecten**.
 
 - Voor ASP.NET-webtoepassingen die in azure zijn geïmplementeerd, kunt u de verwerking van de host wijzigen door het **64-bits** platform te selecteren in **Toepassings instellingen** in de Azure Portal.
 
 > [!NOTE] 
-> Nieuwe Visual Studio-projecten worden standaard ingesteld op **elke CPU** . We raden u aan om uw project in te stellen op **x64** zodat het niet wordt overgeschakeld naar **x86** . Een project ingesteld op **een wille keurige CPU** kan eenvoudig overschakelen naar **x86** als er een alleen-x86-afhankelijkheid is toegevoegd.<br/>
+> Nieuwe Visual Studio-projecten worden standaard ingesteld op **elke CPU**. We raden u aan om uw project in te stellen op **x64** zodat het niet wordt overgeschakeld naar **x86**. Een project ingesteld op **een wille keurige CPU** kan eenvoudig overschakelen naar **x86** als er een alleen-x86-afhankelijkheid is toegevoegd.<br/>
 > ServiceInterop.dll moet zich in de map bevindt waarin de SDK-DLL wordt uitgevoerd. Dit is alleen een probleem als u hand matig Dll's kopieert of aangepaste build/Deployment-systemen hebt.
     
 **Garbage Collection aan de server zijde inschakelen (GC)**

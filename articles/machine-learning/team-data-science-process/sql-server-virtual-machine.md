@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e387d5f7ee0b1926457717b30b03bbfeb8d70a1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8be878cf40967356d68e9be0765e898c81b5ba0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027423"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314619"
 ---
 # <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Gegevens verwerken in virtuele SQL Server-machine in Azure
 In dit document wordt beschreven hoe u gegevens kunt verkennen en functies kunt genereren voor gegevens die zijn opgeslagen in een SQL Server VM in Azure. Dit doel kan worden voltooid door gegevens wrangling met behulp van SQL of door gebruik te maken van een programmeer taal zoals python.
@@ -98,7 +98,7 @@ Hier volgt een korte beschrijving van de locatie gegevens voor de breedte graad/
 * De vijfde decimaal heeft een waarde van Maxi maal 1,1 m: het onderscheidt bomen van elkaar. Nauw keurigheid van dit niveau met commerciële GPS-eenheden kan alleen worden behaald met differentiële correctie.
 * De zesde decimaal positie is Maxi maal 0,11 m: u kunt dit gebruiken voor het indelen van structuren, voor het ontwerpen van landschappen, het bouwen van wegen. Het moet meer dan goed genoeg zijn voor het volgen van de bewegingen van Glaciers en rivieren. Dit kan worden bereikt door Painstaking-maat regelen te nemen met GPS, zoals een differentieeel gecorrigeerd GPS.
 
-De locatie-informatie kan als volgt worden featurized: het scheiden van de regio, locatie en plaatsgegevens. U kunt ook een REST-eind punt aanroepen, zoals Bing Kaarten-API beschikbaar op [een locatie zoeken op basis van](https://msdn.microsoft.com/library/ff701710.aspx) de regio/district-informatie ophalen.
+De locatie-informatie kan als volgt worden featurized: het scheiden van de regio, locatie en plaatsgegevens. U kunt ook een REST-eind punt aanroepen, zoals Bing Kaarten-API beschikbaar op [een locatie zoeken op basis van](/bingmaps/rest-services/locations/find-a-location-by-point) de regio/district-informatie ophalen.
 
 ```sql
 select 
@@ -116,7 +116,7 @@ from <tablename>
 Deze op locatie gebaseerde functies kunnen verder worden gebruikt voor het genereren van extra aantal functies, zoals eerder beschreven. 
 
 > [!TIP]
-> U kunt de records programmatisch invoegen met de taal van uw keuze. Mogelijk moet u de gegevens in segmenten invoegen om de schrijf efficiëntie te verbeteren (Zie voor een voor beeld van hoe u dit doet met pyodbc het voor beeld van [een HelloWorld om toegang te krijgen tot sqlserver met python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Een andere mogelijkheid is om gegevens in de data base in te voegen met behulp van het [bcp-hulp programma](https://msdn.microsoft.com/library/ms162802.aspx).
+> U kunt de records programmatisch invoegen met de taal van uw keuze. Mogelijk moet u de gegevens in segmenten invoegen om de schrijf efficiëntie te verbeteren (Zie voor een voor beeld van hoe u dit doet met pyodbc het voor beeld van [een HelloWorld om toegang te krijgen tot sqlserver met python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Een andere mogelijkheid is om gegevens in de data base in te voegen met behulp van het [bcp-hulp programma](/sql/tools/bcp-utility).
 > 
 > 
 
@@ -152,5 +152,4 @@ Zie voor een volledig overzicht van het Azure data Science-proces met behulp van
 
 
 <!-- Module References -->
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
+[import-data]: /azure/machine-learning/studio-module-reference/import-data
