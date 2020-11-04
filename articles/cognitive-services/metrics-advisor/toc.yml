@@ -5,12 +5,14 @@
   items:
     - name: Wat is Metrics Advisor?
       href: overview.md
+    - name: Wat is nieuw?
+      href: whats-new.md
 - name: Snelstartgidsen
   items:
     - name: De webportal gebruiken
       href: quickstarts/web-portal.md
-    - name: REST-API gebruiken
-      href: quickstarts/rest-api.md
+    - name: De REST API of clientbibliotheken gebruiken
+      href: quickstarts/rest-api-and-client-library.md
 - name: Procedures
   items:
     - name: Onboarding van uw gegevens

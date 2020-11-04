@@ -7,21 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88003357"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912324"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Zelfstudie: Een app voor het verwerken van formulieren maken met AI Builder
 
-[AI Builder](https://docs.microsoft.com/ai-builder/overview) is een Power Platform-functie waarmee u processen kunt automatiseren en resultaten kunt voorspellen om de bedrijfsprestaties te verbeteren. U kunt formulierverwerking van AI Builder gebruiken om AI-modellen te maken waarmee sleutel-waardeparen en tabelgegevens uit formulierdocumenten worden geïdentificeerd en geëxtraheerd.
+[AI Builder](/ai-builder/overview) is een Power Platform-functie waarmee u processen kunt automatiseren en resultaten kunt voorspellen om de bedrijfsprestaties te verbeteren. U kunt formulierverwerking van AI Builder gebruiken om AI-modellen te maken waarmee sleutel-waardeparen en tabelgegevens uit formulierdocumenten worden geïdentificeerd en geëxtraheerd.
 
 > [!NOTE]
-> Dit project is ook beschikbaar als [Microsoft Learn-module](https://docs.microsoft.com/learn/modules/get-started-with-form-processing/).
+> Dit project is ook beschikbaar als [Microsoft Learn-module](/learn/modules/get-started-with-form-processing/).
 
 In deze zelfstudie leert u het volgende:
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 * Een set van ten minste vijf formulieren van hetzelfde type voor het trainen en testen van gegevens. Zie [Een set met trainingsgegevens samenstellen](./build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2128080) gebruiken.
-* Een licentie voor Power Apps of Power Automate - zie de [licentiehandleiding](https://go.microsoft.com/fwlink/?linkid=2085130). De licentie moet [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/) bevatten.
+* Een licentie voor Power Apps of Power Automate - zie de [licentiehandleiding](https://go.microsoft.com/fwlink/?linkid=2085130). De licentie moet [Common Data Service](https://powerplatform.microsoft.com/common-data-service/) bevatten.
 * Een [invoegtoepassing of proefversie](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409) van AI Builder.
 
 
@@ -61,7 +61,7 @@ Op de pagina **Documenten toevoegen** moet u voorbeelddocumenten opgeven om het 
 
 ### <a name="upload-your-documents"></a>Uw documenten uploaden
 
-1. Selecteer **Documenten toevoegen**, selecteer minimaal vijf documenten en selecteer vervolgens **Uploaden**.
+1. Selecteer **Documenten toevoegen** , selecteer minimaal vijf documenten en selecteer vervolgens **Uploaden**.
 1. Nadat het uploaden is voltooid, selecteert u **Sluiten**.
 1. Selecteer vervolgens **Analyseren**.
 
@@ -69,7 +69,7 @@ Op de pagina **Documenten toevoegen** moet u voorbeelddocumenten opgeven om het 
 > Nadat u deze documenten hebt geüpload, kunt u nog steeds een aantal documenten verwijderen of extra uploaden.
 
 > [!div class="mx-imgBorder"]
-> ![pagina documenten toevoegen](./media/tutorial-ai-builder/add-documents-page.png)
+> ![Schermopname met de knop Documenten toevoegen gemarkeerd.](./media/tutorial-ai-builder/add-documents-page.png)
 
 ### <a name="analyze-your-documents"></a>Uw documenten analyseren
 
@@ -89,11 +89,11 @@ Op de pagina voor veldselectie kiest u de velden die voor u van belang zijn:
 
     Wanneer u op een gedetecteerd veld klikt, wordt de volgende informatie weergegeven:
 
-    - **Veldnaam**: De naam van het label voor het gedetecteerde veld.
-    - **Veldwaarde**: De waarde voor het gedetecteerde veld.
+    - **Veldnaam** : De naam van het label voor het gedetecteerde veld.
+    - **Veldwaarde** : De waarde voor het gedetecteerde veld.
 
 > [!div class="mx-imgBorder"]
-> ![pagina documenten toevoegen](./media/tutorial-ai-builder/select-fields-page.png)
+> ![pagina voor tagging](./media/tutorial-ai-builder/select-fields-page.png)
 
 ### <a name="label-undetected-fields"></a>Niet-gedetecteerde velden labelen
 
@@ -104,7 +104,7 @@ Als het veld dat u wilt labelen niet automatisch door het model is gedetecteerd,
 1. Selecteer **Volgende** om de geselecteerde formuliervelden te controleren. Als alles er goed uitziet, selecteert u **Trainen** om uw model te trainen.
 
     > [!div class="mx-imgBorder"]
-    > ![pagina documenten toevoegen](./media/tutorial-ai-builder/summary-train-page.png)
+    > ![pagina voor training](./media/tutorial-ai-builder/summary-train-page.png)
 1. Wanneer de training is voltooid, selecteert u **Ga naar de pagina Details** in het scherm **Training voltooid**.
 ## <a name="quick-test-your-model"></a>Snel uw model testen
 
@@ -127,13 +127,13 @@ Als u slechte resultaten of scores met een lage betrouwbaarheid voor bepaalde ve
 Als u tevreden bent met uw model, selecteert u **Publiceren** om het te publiceren. Wanneer het publiceren is voltooid, wordt uw model verhoogd naar het niveau **Gepubliceerd** en is het klaar voor gebruik.
 
 > [!div class="mx-imgBorder"]
-> ![pagina documenten toevoegen](./media/tutorial-ai-builder/model-page.png)
+> ![pagina voor het publiceren van een model](./media/tutorial-ai-builder/model-page.png)
 
-Nadat u uw model voor formulierverwerking hebt gepubliceerd, kunt u het gebruiken in een [Power Apps-canvas-app](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps) of in [Power Automate](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow).
+Nadat u uw model voor formulierverwerking hebt gepubliceerd, kunt u het gebruiken in een [Power Apps-canvas-app](/ai-builder/form-processor-component-in-powerapps) of in [Power Automate](/ai-builder/form-processing-model-in-flow).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Volg de AI Builder-documentatie voor het gebruik van een model voor formulierverwerking.
 
-* [Het onderdeel voor formulierverwerking gebruiken in Power Apps](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)
-* [Een model voor formulierverwerking gebruiken in Power Automate](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)
+* [Het onderdeel voor formulierverwerking gebruiken in Power Apps](/ai-builder/form-processor-component-in-powerapps)
+* [Een model voor formulierverwerking gebruiken in Power Automate](/ai-builder/form-processing-model-in-flow)
