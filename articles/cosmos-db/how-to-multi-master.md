@@ -3,16 +3,17 @@ title: Schrijf bewerkingen voor meerdere regio's configureren in Azure Cosmos DB
 description: Meer informatie over het configureren van schrijf bewerkingen voor meerdere regio's voor uw toepassingen met behulp van verschillende Sdk's in Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2c91b330f52733a91fbceb1dc9ca2309c0d10547
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a2b1ca8434c40eca610f95a3031e677782866e04
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317103"
+ms.locfileid: "93342003"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Schrijf bewerkingen in meerdere regio's configureren in uw toepassingen die gebruikmaken van Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

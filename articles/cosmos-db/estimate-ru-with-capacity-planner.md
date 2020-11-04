@@ -3,15 +3,16 @@ title: Kosten ramen met behulp van de capaciteits planner voor Azure Cosmos DB
 description: Met de Azure Cosmos DB capacity planner kunt u een schatting maken van de door Voer (RU/s) die vereist zijn en de kosten voor uw werk belasting. In dit artikel wordt beschreven hoe u de nieuwe versie van de capaciteits planner gebruikt om de door Voer en de vereiste kosten te ramen.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: 460f47ce453f183821ec0f49c38865c44b15ba9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 017aeaaa24e8ac2d493d0de81a7abb655bae5611
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096713"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342076"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Een raming van RU/s met behulp van de Azure Cosmos DB capaciteit planner
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +41,7 @@ Als u een snelle schatting wilt maken voor uw werk belasting met behulp van de b
 |Lees bewerkingen per regio|Aantal verwachte Lees bewerkingen per seconde. |
 |Schrijf bewerkingen/sec per regio|Aantal schrijf bewerkingen dat wordt verwacht per seconde. |
 
-Nadat u de vereiste gegevens hebt ingevuld, selecteert u **berekenen** . Op het tabblad **kosten raming** worden de totale kosten voor opslag en ingerichte door Voer weer gegeven. U kunt de koppeling **Details weer geven** op dit tabblad uitsplitsing van de door Voer die is vereist voor lees-en schrijf aanvragen. Telkens wanneer u de waarde van een veld wijzigt, selecteert u **berekenen** om de geschatte kosten opnieuw te berekenen. 
+Nadat u de vereiste gegevens hebt ingevuld, selecteert u **berekenen**. Op het tabblad **kosten raming** worden de totale kosten voor opslag en ingerichte door Voer weer gegeven. U kunt de koppeling **Details weer geven** op dit tabblad uitsplitsing van de door Voer die is vereist voor lees-en schrijf aanvragen. Telkens wanneer u de waarde van een veld wijzigt, selecteert u **berekenen** om de geschatte kosten opnieuw te berekenen. 
 
 :::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode.png" alt-text="Basis modus voor capaciteits planner":::
 
@@ -63,7 +64,7 @@ Nadat u zich hebt aangemeld, ziet u aanvullende velden vergeleken met de velden 
 
 U kunt ook de knop **schatting opslaan** gebruiken om een CSV-bestand met de huidige schatting te downloaden. 
 
-:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Basis modus voor capaciteits planner":::
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Geavanceerde modus voor capaciteits planner":::
 
 De prijzen die in de Azure Cosmos DB capaciteits planner worden weer gegeven, zijn schattingen op basis van de open bare prijs tarieven voor door Voer en opslag. Alle prijzen worden weer gegeven in Amerikaanse dollars. Raadpleeg de [pagina met prijzen voor Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) om alle tarieven per regio weer te geven.  
 

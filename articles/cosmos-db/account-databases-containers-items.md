@@ -4,16 +4,15 @@ description: In dit artikel wordt Azure Cosmos DB resource model beschreven, inc
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 23adbd289ae2be484f1aef86b2224097c6ba489c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 37f1c9f59b6ffb45e1b874d2a6969bf263d2d5eb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087924"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341362"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB-resourcemodel
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +33,7 @@ Nadat u een account hebt gemaakt onder uw Azure-abonnement, kunt u de gegevens i
 
 In de volgende afbeelding ziet u de hiërarchie van verschillende entiteiten in een Azure Cosmos DB-account:
 
-:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Hiërarchie van een Azure Cosmos-account" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Entiteiten van Azure Cosmos-account" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos-databases
 
@@ -42,7 +41,7 @@ U kunt een of meer Azure Cosmos-data bases maken onder uw account. Een data base
 
 | Azure Cosmos-entiteit | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-data base | Database | Keys Pace | Database | Database | N.v.t. |
+|Azure Cosmos-data base | Database | Keys Pace | Database | Database | NA |
 
 > [!NOTE]
 > Wanneer u uw eerste tabel maakt met Table-API accounts, wordt er automatisch een standaard database gemaakt in uw Azure Cosmos-account.

@@ -4,12 +4,12 @@ description: Meer informatie over het schalen van uw resource web-app, Cloud ser
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: b43b7488f2bb3fec810e8a9de67829a676f6b599
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e0c9770e2065002a4e2acc1198ed096dc588f8e5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369264"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342212"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Aan de slag met automatisch schalen in azure
 In dit artikel wordt beschreven hoe u uw instellingen voor automatisch schalen instelt voor uw resource in de Microsoft Azure-portal.
@@ -32,9 +32,9 @@ U kunt het filter deel venster bovenaan het bereik van de lijst gebruiken om res
 
 Voor elke resource vindt u het aantal huidige instanties en de status automatisch schalen. De status voor automatisch schalen kan zijn:
 
-- **Niet geconfigureerd**: u hebt automatisch schalen nog niet ingeschakeld voor deze resource.
-- **Ingeschakeld**: u hebt automatisch schalen ingeschakeld voor deze resource.
-- **Uitgeschakeld**: u hebt automatisch schalen uitgeschakeld voor deze resource.
+- **Niet geconfigureerd** : u hebt automatisch schalen nog niet ingeschakeld voor deze resource.
+- **Ingeschakeld** : u hebt automatisch schalen ingeschakeld voor deze resource.
+- **Uitgeschakeld** : u hebt automatisch schalen uitgeschakeld voor deze resource.
 
 ## <a name="create-your-first-autoscale-setting"></a>Uw eerste instelling voor automatisch schalen maken
 
@@ -45,7 +45,7 @@ We gaan nu een eenvoudige stapsgewijze procedure volgen om uw eerste instelling 
   ![Schaal instelling voor nieuwe web-app][5]
 1. Geef een naam op voor de schaal instelling en klik vervolgens op **een regel toevoegen**. U ziet de opties voor de schaal regel die worden geopend als een context venster aan de rechter kant. Dit stelt standaard de optie in voor het schalen van het aantal instanties met 1 als het CPU-percentage van de resource groter is dan 70 procent. Behoud de standaard waarden en klik op **toevoegen**.
   ![Schaal instelling voor een web-app maken][6]
-1. U hebt nu uw eerste schaal regel gemaakt. Houd er rekening mee dat de UX aanbevolen procedures en ' wordt aanbevolen om ten minste één schaal in regel te hebben '. Hiervoor doet u het volgende:
+1. U hebt nu uw eerste schaal regel gemaakt. Houd er rekening mee dat de UX aanbevolen procedures en ' wordt aanbevolen om ten minste één schaal in regel te hebben '. Dit doet u als volgt:
 
     a. Klik op **Een regel toevoegen**.
 
@@ -59,7 +59,7 @@ We gaan nu een eenvoudige stapsgewijze procedure volgen om uw eerste instelling 
    ![Schalen op basis van CPU][8]
 1. Klik op **Opslaan**.
 
-Gefeliciteerd! U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
+Gefeliciteerd U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
 
 > [!NOTE]
 > Dezelfde stappen zijn van toepassing om aan de slag te gaan met een virtuele-machine schaalset of een Cloud service-rol.
@@ -89,7 +89,7 @@ Wanneer uw resource omhoog of omlaag wordt geschaald, wordt er een gebeurtenis i
 
 ![Uitvoer.gesch][11]
 
-Als u de volledige schaal geschiedenis (Maxi maal 90 dagen) wilt weer geven, selecteert u **hier om meer details weer te**geven. Het activiteiten logboek wordt geopend, waarbij automatisch schalen vooraf is geselecteerd voor uw resource en categorie.
+Als u de volledige schaal geschiedenis (Maxi maal 90 dagen) wilt weer geven, selecteert u **hier om meer details weer te** geven. Het activiteiten logboek wordt geopend, waarbij automatisch schalen vooraf is geselecteerd voor uw resource en categorie.
 
 ### <a name="view-the-scale-definition-of-your-resource"></a>De schaal definitie van uw resource weer geven
 Automatisch schalen is een Azure Resource Manager bron. U kunt de schaal definitie in JSON weer geven door naar het tabblad **JSON** te scha kelen.
@@ -121,7 +121,7 @@ Als u de functie wilt inschakelen met ARM-sjablonen, stelt `healthcheckpath` u d
 
 ### <a name="health-check-path"></a>Pad voor status controle
 
-Het pad moet binnen één minuut reageren met een status code tussen 200 en 299 (inclusief). Als het pad niet binnen één minuut reageert of een status code buiten het bereik retourneert, wordt het exemplaar als ' beschadigd ' beschouwd. App Service volgt niet 302 omleidingen op het Health Check-pad. Status controle kan worden geïntegreerd met de functies voor verificatie en autorisatie van App Service. het systeem bereikt het eind punt zelfs als deze secuity-functies zijn ingeschakeld. Als u uw eigen verificatie systeem gebruikt, moet het Health Check-pad anonieme toegang toestaan. Als de site HTTP**s**-only heeft ingeschakeld, wordt de status controle-aanvraag verzonden via http**s**.
+Het pad moet binnen één minuut reageren met een status code tussen 200 en 299 (inclusief). Als het pad niet binnen één minuut reageert of een status code buiten het bereik retourneert, wordt het exemplaar als ' beschadigd ' beschouwd. App Service volgt niet 302 omleidingen op het Health Check-pad. Status controle kan worden geïntegreerd met de functies voor verificatie en autorisatie van App Service. het systeem bereikt het eind punt zelfs als deze secuity-functies zijn ingeschakeld. Als u uw eigen verificatie systeem gebruikt, moet het Health Check-pad anonieme toegang toestaan. Als de site HTTP **s** -only heeft ingeschakeld, wordt de status controle-aanvraag verzonden via http **s**.
 
 Het controle traject voor de status moet de essentiële onderdelen van uw toepassing controleren. Als uw toepassing bijvoorbeeld afhankelijk is van een Data Base en een berichten systeem, moet het eind punt van de status controle verbinding maken met deze onderdelen. Als de toepassing geen verbinding kan maken met een kritiek onderdeel, moet het pad een respons code op 500-niveau retour neren om aan te geven dat de app een slechte status heeft.
 
@@ -131,7 +131,7 @@ Ontwikkel teams in grote ondernemingen moeten vaak voldoen aan de beveiligings v
 
 ### <a name="behavior"></a>Gedrag
 
-Wanneer het pad voor de status controle wordt gegeven, wordt door App Service het pad naar alle exemplaren gepingd. Als een geslaagde respons code niet wordt ontvangen na 5 pings, wordt dat exemplaar als ' beschadigd ' beschouwd. Een of meer beschadigde instanties worden uitgesloten van de load balancer draaiing. Bovendien, wanneer u omhoog of omlaag schaalt, App Service pingt het Health Check-pad om ervoor te zorgen dat de nieuwe exemplaren gereed zijn voor aanvragen.
+Wanneer het pad voor de status controle wordt gegeven, wordt door App Service het pad naar alle exemplaren gepingd. Als een geslaagde respons code niet wordt ontvangen na 5 pings, wordt dat exemplaar als ' beschadigd ' beschouwd. Een of meer beschadigde instanties worden uitgesloten van de load balancer draaiing. U kunt het vereiste aantal mislukte pings configureren met de `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` app-instelling. Deze app-instelling kan worden ingesteld op een wille keurig geheel getal tussen 2 en 10. Als deze instelling is ingesteld op `2` , worden uw instanties van de Load Balancer na twee mislukte pings verwijderd. Bovendien, wanneer u omhoog of omlaag schaalt, App Service pingt het Health Check-pad om ervoor te zorgen dat de nieuwe exemplaren gereed zijn voor aanvragen voordat ze worden toegevoegd aan de load balancer.
 
 De resterende in orde zijnde instanties kunnen een grotere belasting hebben. Om te voor komen dat de resterende instanties overblijven, worden niet meer dan de helft van uw instanties uitgesloten. Als een App Service plan bijvoorbeeld wordt uitgeschaald naar vier instanties en 3 van de status niet in orde, wordt Maxi maal 2 uitgesloten van de loadbalancer-rotatie. De andere twee instanties (1 in orde en 1 zijn beschadigd) blijven aanvragen ontvangen. In het slechtste scenario waarbij alle instanties een slechte status hebben, wordt geen uitgesloten. Als u dit gedrag wilt overschrijven, kunt u de `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` app-instelling instellen op een waarde tussen `0` en `100` . Als u dit instelt op een hogere waarde, worden er meer beschadigde instanties verwijderd (de standaard waarde is 50).
 

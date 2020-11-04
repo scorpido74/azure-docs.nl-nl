@@ -3,23 +3,24 @@ title: Type controleren van functies in Azure Cosmos DB query taal
 description: Meer informatie over het type controle van SQL-functies in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bafc599ddb502d5714b08ff58ed942e9c17557a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 96fea7cb53c89c02583a6dba8434cd33641d6a09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093755"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341498"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>Type controle functies (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Met de functies voor type controles kunt u het type van een expressie in een SQL-query controleren. U kunt type-controle functies gebruiken om de typen eigenschappen binnen items te bepalen, wanneer deze worden gevariable of onbekend. 
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 Hier volgt een tabel met ondersteunde ingebouwde functies voor type controle:
 

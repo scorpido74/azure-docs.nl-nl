@@ -3,15 +3,16 @@ title: Elastisch schalen met Cassandra-API in Azure Cosmos DB
 description: Meer informatie over de beschik bare opties voor het schalen van een Azure Cosmos DB Cassandra-API-account en hun voor delen/nadelen
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 0d5aded62c9c3990a3fa102863f4850bbfda6702
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aad2e80598146be7b45a8a7b8a02cfe050163102
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088673"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340954"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Een Azure Cosmos DB Cassandra-API account elastisch schalen
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -39,7 +40,7 @@ Als u de latentie wilt minimaliseren, is er een breed scala aan opties voor het 
 
 In de volgende secties worden de voor-en nadelen van elke benadering uitgelegd. U kunt vervolgens besluiten over de beste strategie om de schaal behoeften van uw systeem, de totale kosten en efficiëntie behoeften voor uw oplossing te verdelen.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure Portal gebruiken
 
 U kunt de resources in Azure Cosmos DB Cassandra-API-account schalen met behulp van Azure Portal. Zie het artikel over het inrichten van de [door Voer voor containers en data bases](set-throughput.md)voor meer informatie. In dit artikel worden de relatieve voor delen beschreven van het instellen van door Voer op [Data Base](set-throughput.md#set-throughput-on-a-database) -of [container](set-throughput.md#set-throughput-on-a-container) niveau in de Azure Portal. De termen "data base" en "container" die in deze artikelen worden vermeld, worden respectievelijk toegewezen aan "sleutel ruimte" en "tabel" voor de Cassandra-API.
 
@@ -63,7 +64,7 @@ Het voor deel van deze benadering is dat u op dynamische wijze op schaal behoeft
 
 Naast standaard (hand matig) of programmatische manier om door Voer in te richten, kunt u ook Azure Cosmos-containers configureren in ingerichte door Voer voor automatisch schalen. Automatisch schalen wordt voor de behoeften van het gebruik binnen de opgegeven RU-bereiken en direct aangepast zonder dat er in rekening wordt gebracht over Sla's. Zie het artikel [Azure Cosmos-containers en-data bases maken in automatisch schalen](provision-throughput-autoscale.md) voor meer informatie.
 
-Het voor deel van deze benadering is dat het de eenvoudigste manier is om de schaal vereisten in uw systeem te beheren. Er worden geen beperkings beperkingen toegepast **binnen de geconfigureerde ru-bereiken** . Het nadeel is dat, als de schaal behoefte in uw systeem voorspelbaar is, de functie voor automatisch schalen een minder rendabele manier is om uw schaal behoeften te verwerken dan met behulp van het Bespoke-besturings vlak of het hierboven vermelde SDK-niveau.
+Het voor deel van deze benadering is dat het de eenvoudigste manier is om de schaal vereisten in uw systeem te beheren. Er worden geen beperkings beperkingen toegepast **binnen de geconfigureerde ru-bereiken**. Het nadeel is dat, als de schaal behoefte in uw systeem voorspelbaar is, de functie voor automatisch schalen een minder rendabele manier is om uw schaal behoeften te verwerken dan met behulp van het Bespoke-besturings vlak of het hierboven vermelde SDK-niveau.
 
 Als u de maximale door Voer (RUs) voor automatisch schalen wilt instellen of wijzigen met behulp van CQL, gebruikt u het volgende (Vervang de spatie/tabel naam dienovereenkomstig):
 

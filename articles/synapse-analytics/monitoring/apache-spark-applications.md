@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 9f55d65b215c03769caa7c812dcda138f8e83595
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 16b37258d922db59f520d4e30c45773f6d1108cf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322462"
+ms.locfileid: "93341037"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio gebruiken om uw Apache Spark-toepassingen te bewaken
 
@@ -35,27 +35,11 @@ Zorg ervoor dat u aan de volgende vereisten voldoet voordat u met deze zelfstudi
 
 - Een Synapse studio-werk ruimte. Zie [een Synapse studio-werk ruimte maken](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)voor instructies.
 
-- Een serverloze Apache Spark groep.
+- Een Apache Spark-pool.
 
-## <a name="monitor-running-apache-spark-application"></a>Controleren op uitvoering Apache Spark toepassing
-
-Open **monitor** en selecteer vervolgens **Apache Spark toepassingen**. Als u de details wilt weer geven van de Apache Spark toepassingen die worden uitgevoerd, selecteert u de toepassing voor het verzenden van Apache Spark en bekijkt u de details. Als de Apache Spark toepassing nog steeds wordt uitgevoerd, kunt u de voortgang bewaken.
-
-  ![actieve taak selecteren](./media/how-to-monitor-spark-applications/select-running-job.png)
-
-1. Controleer de **voltooide taken** , **status** en **totale duur**.
-
-2. De Apache Spark-toepassing annuleren.
-
-3. Logboek query vernieuwen.
-
-4. Bekijk de grafiek.
-
-5. Controleer de **samenvattings** informatie.
-
-6. Controleer de **Logboeken**. De logboek gegevens zijn leeg tijdens het uitvoeren.
-
-    ![actieve taak weer geven](./media/how-to-monitor-spark-applications/view-running-job.png)
+## <a name="view-apache-spark-applications"></a>Apache Spark-toepassingen weer geven 
+U kunt alle Apache Spark toepassingen weer geven **Monitor** om  ->  **Apache Spark toepassingen** te bewaken.
+   ![Apache Spark-toepassingen](./media/how-to-monitor-spark-applications/apache-spark-applications.png)
 
 ## <a name="view-completed-apache-spark-application"></a>Voltooide Apache Spark-toepassing weer geven
 
@@ -69,17 +53,17 @@ Open **monitor** en selecteer vervolgens **Apache Spark toepassingen**. Als u de
 
 3. Open de koppeling Apache Spark geschiedenis server door te klikken op de **Spark-geschiedenis server**.
 
-4. Controleer de **overzichts** gegevens door te klikken op het pictogram in de grafiek.
+4. Controleer de **samenvattings** informatie.
 
-5. Controleer de **Logboeken**. U kunt verschillende soorten logboeken selecteren in de vervolg keuzelijst en u kunt de logboek gegevens downloaden door op **Logboeken downloaden** te klikken.
+5. Controleer de **Logboeken**. U kunt verschillende soorten logboeken selecteren in de vervolg keuzelijst, en u kunt de logboek gegevens downloaden door op **Logboeken downloaden** te klikken en het selectie vakje van **filter fouten en waarschuwingen** in te stellen om de fouten en waarschuwingen die u nodig hebt te filteren.
 
 6. U ziet een overzicht van uw taak in het gegenereerde taak diagram. In de grafiek worden standaard alle taken weer gegeven. U kunt deze weer gave filteren op **taak-id**.
 
-7. Standaard wordt de **voortgangs** weergave geselecteerd. U kunt de gegevens stroom controleren door **lezen** of **geschreven** te selecteren in de vervolg keuzelijst **weer geven** .
+7. Standaard wordt de **voortgangs** weergave geselecteerd. U kunt de gegevens stroom controleren door **Progress** / **Read** / **Written** / in de vervolg keuzelijst **weer gave** voortgang gelezen **duur** te selecteren.
 
-8. Selecteer **afspelen** als u de taak wilt afspelen. U kunt op elk gewenst moment **stoppen** selecteren om te stoppen.
+8. Als u de taak wilt afspelen, klikt u op de knop **afspelen** . U kunt op elk gewenst moment op de knop **stoppen** klikken om te stoppen.
 
-9. Gebruik de schuif balk van de muis om in en uit te zoomen op de taak grafiek, of selecteer **Inzoomen passend** maken om deze aan te passen aan het scherm.
+9. Gebruik muis schuiven of schuif balk om in te zoomen en uitzoomen op de taak grafiek, u kunt ook **Inzoomen passend** maken om het aan te passen aan het scherm.
 
 10. In het knoop punt taak grafiek worden de volgende gegevens van elke fase weer gegeven:
 
@@ -101,9 +85,34 @@ Open **monitor** en selecteer vervolgens **Apache Spark toepassingen**. Als u de
 
      ![voltooide taak weer geven](./media/how-to-monitor-spark-applications/view-completed-job.png)
     
-11. Klik op de grafiek, waarna de details van de fase worden weer gegeven.
+11. Klik op **Details weer geven** in de grafiek en vervolgens de details van de fase worden weer gegeven.
 
-   ![Details voor fase](./media/how-to-monitor-spark-applications/details-for-stage.png)
+    ![Details voor fase](./media/how-to-monitor-spark-applications/details-for-stage.png)
+
+
+## <a name="monitor-running-apache-spark-application"></a>Controleren op uitvoering Apache Spark toepassing
+
+Open **monitor** en selecteer vervolgens **Apache Spark toepassingen**. Als u de details wilt weer geven van de Apache Spark toepassingen die worden uitgevoerd, selecteert u de toepassing voor het verzenden van Apache Spark en bekijkt u de details. Als de Apache Spark toepassing nog steeds wordt uitgevoerd, kunt u de voortgang bewaken.
+
+   ![actieve taak selecteren](./media/how-to-monitor-spark-applications/select-running-job.png)
+
+1. Controleer de **voltooide taken** , **status** en **totale duur**.
+
+2. De Apache Spark-toepassing **Annuleren** .
+
+3. **Vernieuwen** Query registreren.
+
+4. Klik op de knop met **Spark-gebruikers interface** om naar de Spark-taak pagina te gaan.
+
+5. Bekijk de grafiek. U ziet een overzicht van uw taak in het gegenereerde taak diagram. Raadpleeg stap 6, 7, 8, 9, 10 van [weer gave is voltooid Apache Spark toepassing](#view-completed-apache-spark-application).
+
+6. Controleer de **samenvattings** informatie.
+
+7. Controleer het tabblad Diagnostische gegevens op **diagnose** .
+
+8. Controleer de **Logboeken** op dit tabblad. U kunt verschillende soorten logboeken selecteren in de vervolg keuzelijst, en u kunt de logboek gegevens downloaden door op **Logboeken downloaden** te klikken en het selectie vakje van **filter fouten en waarschuwingen** in te stellen om de fouten en waarschuwingen die u nodig hebt te filteren.
+
+    ![actieve taak weer geven](./media/how-to-monitor-spark-applications/view-running-job.png)
 
 ## <a name="view-canceled-apache-spark-application"></a>Geannuleerde Apache Spark toepassing weer geven
 
@@ -117,11 +126,13 @@ Open **monitor** en selecteer vervolgens **Apache Spark toepassingen**. Als u de
 
 3. Open Apache geschiedenis server koppeling door te klikken op de **Spark-geschiedenis server**.
 
-4. Bekijk de grafiek.
+4. Bekijk de grafiek. U ziet een overzicht van uw taak in het gegenereerde taak diagram. Raadpleeg stap 6, 7, 8, 9, 10 van [weer gave is voltooid Apache Spark toepassing](#view-completed-apache-spark-application).
 
 5. Controleer de **samenvattings** informatie.
 
-6. Controleer de **Logboeken**. U kunt verschillende soorten logboeken selecteren in de vervolg keuzelijst en u kunt de logboek gegevens downloaden door op **Logboeken downloaden** te klikken.
+6. Controleer de **Logboeken**. U kunt verschillende soorten logboeken selecteren in de vervolg keuzelijst, en u kunt de logboek gegevens downloaden door op Logboeken **downloaden** te klikken en het selectie vakje van **filter fouten en waarschuwingen** in te stellen om de fouten en waarschuwingen die u nodig hebt te filteren.
+
+7. Klik op **Details weer geven** in de grafiek en vervolgens de details van de fase worden weer gegeven.
 
    ![geannuleerde taak weer geven](./media/how-to-monitor-spark-applications/view-cancelled-job.png)
 
@@ -137,7 +148,7 @@ Open **monitor** en selecteer vervolgens **Apache Spark toepassingen**. Als u de
 
 3. Open de koppeling Apache Spark geschiedenis server door te klikken op de **Spark-geschiedenis server**.
 
-4. Bekijk de grafiek.
+4. Bekijk de grafiek. U ziet een overzicht van uw taak in het gegenereerde taak diagram. Raadpleeg stap 6, 7, 8, 9, 10 van [weer gave is voltooid Apache Spark toepassing](#view-completed-apache-spark-application)
 
 5. Controleer de **samenvattings** informatie.
 

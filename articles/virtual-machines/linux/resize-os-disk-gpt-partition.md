@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 30a960c3ed76788158b15022947fec49a95ae299
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa260e911673ea99b292ab5dc9895840d0098ef
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375207"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340304"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Het formaat van een besturingssysteem schijf met een GPT-partitie wijzigen
 
@@ -177,7 +177,7 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
 
 1. Gebruik op basis van het bestandssysteem type de juiste opdrachten om de grootte van het bestands systeem te wijzigen.
    
-   Voor **xfs**, gebruikt u de volgende opdracht:
+   Voor **xfs** , gebruikt u de volgende opdracht:
    
    ```
    #xfs_growfs /
@@ -200,13 +200,13 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
    data blocks changed from 7470331 to 12188923
    ```
    
-   Voor **ext4**, gebruikt u de volgende opdracht:
+   Voor **ext4** , gebruikt u de volgende opdracht:
    
    ```
    #resize2fs /dev/sda4
    ```
    
-1. Controleer de verhoogde grootte van het bestands systeem voor **VG-th**, met behulp van de volgende opdracht:
+1. Controleer de verhoogde grootte van het bestands systeem voor **VG-th** , met behulp van de volgende opdracht:
    
    ```
    #df -Thl
@@ -231,7 +231,7 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
    
    In het vorige voor beeld ziet u dat de bestandssysteem grootte van de besturingssysteem schijf is verhoogd.
 
-### <a name="rhel"></a>RHEL
+### <a name="rhel-lvm"></a>RHEL LVM
 
 Verhoog de grootte van de besturingssysteem schijf in RHEL 7. x met LVM:
 
@@ -351,6 +351,129 @@ Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
 
 > [!NOTE]
 > Als u dezelfde procedure wilt gebruiken om de grootte van een ander logisch volume te wijzigen, wijzigt u de **LV** -naam in stap 7.
+
+### <a name="rhel-raw"></a>RHEL RAW
+>[!NOTE]
+>Maak altijd een moment opname van de virtuele machine voordat u de schijf grootte van het besturings systeem verg root.
+
+De besturingssysteem schijf in RHEL met onbewerkte partitie verg Roten:
+
+Stop de virtuele machine.
+Verhoog de grootte van de besturingssysteem schijf van de portal.
+Start de virtuele machine.
+Wanneer de VM opnieuw is opgestart, voert u de volgende stappen uit:
+
+1. Gebruik de volgende opdracht om toegang te krijgen tot uw VM als een **hoofd** gebruiker:
+ 
+   ```
+   sudo su
+   ```
+
+1. Installeer het **gptfdisk** -pakket, dat vereist is voor het verg Roten van de besturingssysteem schijf.
+
+   ```
+   yum install gdisk -y
+   ```
+
+1.  Als u alle beschik bare sectoren op de schijf wilt zien, voert u de volgende opdracht uit:
+    ```
+    gdisk -l /dev/sda
+    ```
+
+1. De details van het partitie type worden weer geven. Zorg ervoor dat het GPT is. De basis partitie identificeren. Wijzig of verwijder de opstart partitie (BIOS-opstart partitie) en de systeem partitie (EFI-systeem partitie) niet.
+
+1. Gebruik de volgende opdracht om het partitioneren voor de eerste keer te starten. 
+    ```
+    gdisk /dev/sda
+    ```
+
+1. U ziet nu een bericht waarin u wordt gevraagd om de volgende opdracht (' opdracht:? voor hulp '). 
+
+   ```
+   w
+   ```
+
+1. Er wordt een waarschuwing weer gegeven met de melding ' waarschuwing! De secundaire header is te vroeg op de schijf geplaatst. Wilt u dit probleem corrigeren? (J/N): ". U moet op Y drukken
+
+   ```
+   Y
+   ```
+
+1. Er wordt een bericht weer gegeven waarin wordt gemeld dat de definitieve controles zijn voltooid en om bevestiging wordt gevraagd. Druk op Y
+
+   ```
+   Y
+   ```
+
+1. Controleren of alles goed is gebeurd met behulp van de partprobe-opdracht
+
+   ```
+   partprobe
+   ```
+
+1. De bovenstaande stappen hebben ervoor gezorgd dat de secundaire GPT-header aan het einde wordt geplaatst. De volgende stap is het proces van het wijzigen van de grootte te starten met het hulp programma gdisk opnieuw. Gebruik de volgende opdracht.
+
+   ```
+   gdisk /dev/sda
+   ```
+1. Druk in het menu opdracht op ' p ' om een lijst met partities weer te geven. Identificeren van de hoofd partitie (in de stappen wordt sda2 beschouwd als de basis partitie) en de opstart partitie (in de stappen wordt sda3 beschouwd als de opstart partitie) 
+
+   ```
+   p
+   ```
+    ![Hoofd partitie en opstart partitie](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+
+1. Druk op ' om de partitie te verwijderen en selecteer het partitie nummer dat is toegewezen aan opstarten (in dit voor beeld is ' 3 ')
+   ```
+   d
+   3
+   ```
+1. Druk op ' om de partitie te verwijderen en selecteer het partitie nummer dat is toegewezen aan het opstarten (in dit voor beeld is ' 2 ')
+   ```
+   d
+   2
+   ```
+    ![De hoofd partitie en opstart partitie verwijderen](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+
+1. Als u de basis partitie opnieuw wilt maken met een verhoogde grootte, drukt u op ' n ', voert u het partitie nummer in dat u eerder voor root (' 2 ' voor dit voor beeld) hebt verwijderd en kiest u de eerste sector als ' standaard waarde ', laatste sector als ' waarde van de laatste sector-opstart grootte ' (' 4096 in dit geval ' overeenkomt met het 8300 2-
+   ```
+   n
+   2
+   (Enter default)
+   (Calculateed value of Last sector value - 4096)
+   8300
+   ```
+1. Als u de opstart partitie opnieuw wilt maken, drukt u op ' n ', voert u het partitie nummer in dat u eerder voor het opstarten hebt verwijderd (' 3 ' voor dit voor beeld) en kiest u de eerste sector als standaard waarde, laatste sector als standaard waarde en hexadecimale code als ' EF02 '
+   ```
+   n
+   3
+   (Enter default)
+   (Enter default)
+   EF02
+   ```
+
+1. Schrijf de wijzigingen met de opdracht ' w ' en druk op ' Y ' om te bevestigen
+   ```
+   w
+   Y
+   ```
+1. Voer de opdracht ' partprobe ' uit om te controleren op schijf stabiliteit
+   ```
+   partprobe
+   ```
+1. De virtuele machine opnieuw opstarten en de grootte van de hoofd partitie zijn verhoogd
+   ```
+   reboot
+   ```
+
+   ![Nieuwe hoofd partitie en opstart partitie](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+
+1. Voer de xfs_growfs opdracht uit op de partitie om de grootte ervan te wijzigen
+   ```
+   xfs_growfs /dev/sda2
+   ```
+
+   ![XFS-groeiende FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

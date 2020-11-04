@@ -4,15 +4,16 @@ description: Meer informatie over toegangs beheer concepten in Azure Cosmos DB, 
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68f3fd34081868884782e007885befff59fa05da
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096118"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340903"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -90,7 +91,7 @@ Hier volgt een typisch ontwerp patroon waarbij bron tokens kunnen worden aangevr
 7. De telefoon-app kan het bron token blijven gebruiken voor rechtstreekse toegang tot Cosmos DB resources met de machtigingen die zijn gedefinieerd door het bron token en voor het interval dat is toegestaan door het bron token.
 8. Wanneer het bron token verloopt, ontvangen volgende aanvragen een ongeautoriseerde uitzonde ring van 401.  Op dit moment brengt de telefoon-app de identiteit opnieuw tot stand en wordt er een nieuw bron token aangevraagd.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Rotatie van primaire sleutel in de Azure Portal-demonstring NoSQL data base Security" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Werk stroom voor Azure Cosmos DB resource tokens" border="false":::
 
 Het genereren en beheren van bron tokens worden verwerkt door de systeem eigen Cosmos DB-client bibliotheken. Als u echter REST gebruikt, moet u de aanvraag-en verificatie headers maken. Zie [Access Control op Cosmos DB resources](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) of de bron code voor onze [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) of [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)voor meer informatie over het maken van verificatie headers voor rest.
 
@@ -157,12 +158,12 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 Als u Azure Cosmos DB account lezer-toegang wilt toevoegen aan uw gebruikers account, moet u de eigenaar van een abonnement hebben om de volgende stappen uit te voeren in de Azure Portal.
 
 1. Open de Azure Portal en selecteer uw Azure Cosmos DB-account.
-2. Klik op het tabblad **toegangs beheer (IAM)** en klik vervolgens op  **+ roltoewijzing toevoegen** .
+2. Klik op het tabblad **toegangs beheer (IAM)** en klik vervolgens op  **+ roltoewijzing toevoegen**.
 3. In het deel venster **toewijzing van rol toevoegen** selecteert u **Cosmos DB rol van account lezer** in het vak **rol** .
-4. Selecteer in het **vak toegang toewijzen aan** de optie **Azure AD-gebruiker,-groep of-toepassing** .
+4. Selecteer in het **vak toegang toewijzen aan** de optie **Azure AD-gebruiker,-groep of-toepassing**.
 5. Selecteer de gebruiker, groep of toepassing in de map waaraan u toegang wilt verlenen.  U kunt in de map zoeken op de weergave naam, het e-mail adres of de object-id's.
     De geselecteerde gebruiker, groep of toepassing wordt weer gegeven in de lijst geselecteerde leden.
-6. Klik op **Opslaan** .
+6. Klik op **Opslaan**.
 
 De entiteit kan nu Azure Cosmos DB resources lezen.
 

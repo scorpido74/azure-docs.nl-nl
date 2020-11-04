@@ -4,17 +4,16 @@ description: Gebruik Azure Key Vault om Azure Cosmos DB connection string, sleut
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: bd67f9641a644d3302e1f8bc1e53ad14a3801e47
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6c5ef4f0ee0d68e2eae755f000423db4620b834d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092837"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341379"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-sleutels beveiligen met Azure Key Vault 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -35,22 +34,22 @@ De volgende stappen zijn vereist om Azure Cosmos DB toegangs sleutels op te slaa
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).  
-2. Selecteer **een resource maken > beveiligings > Key Vault** .  
+2. Selecteer **een resource maken > beveiligings > Key Vault**.  
 3. Geef in de sectie **Sleutelkluis maken** de volgende gegevens op:  
    * **Naam:** Geef een unieke naam op voor de Key Vault.  
    * **Abonnement:** Kies het abonnement dat u gaat gebruiken.  
    * Klik onder **resource groep** op **nieuwe maken** en voer een naam voor de resource groep in.  
    * Kies een locatie in de vervolgkeuzelijst Locatie.  
    * Wijzig de standaard instellingen van de andere opties.  
-4. Selecteer na het opgeven van de bovenstaande gegevens **Maken** .  
+4. Selecteer na het opgeven van de bovenstaande gegevens **Maken**.  
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>Azure Cosmos DB toegangs sleutels toevoegen aan de Key Vault.
 1. Ga naar het Key Vault dat u in de vorige stap hebt gemaakt en open het tabblad **geheimen** .  
 2. Selecteer **+ genereren/importeren** , 
 
-   * Selecteer **hand matig** voor **Upload opties** .
+   * Selecteer **hand matig** voor **Upload opties**.
    * Geef een **naam** op voor uw geheim
-   * Geef de connection string van uw Cosmos DB-account op in het veld **waarde** . En selecteer vervolgens **Maken** .
+   * Geef de connection string van uw Cosmos DB-account op in het veld **waarde** . En selecteer vervolgens **Maken**.
 
    :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="Een geheim maken":::
 
@@ -67,15 +66,15 @@ De volgende stappen zijn vereist om Azure Cosmos DB toegangs sleutels op te slaa
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
 3. **Sla** het bestand op en **bouw** de oplossing.  
-4. Implementeer de toepassing vervolgens naar Azure. Klik met de rechter muisknop op project en kies **publiceren** . Maak een nieuw app service-profiel (u kunt de app WebAppKeyVault1 noemen) en selecteer **publiceren** .   
+4. Implementeer de toepassing vervolgens naar Azure. Klik met de rechter muisknop op project en kies **publiceren**. Maak een nieuw app service-profiel (u kunt de app WebAppKeyVault1 noemen) en selecteer **publiceren**.   
 
 5. Zodra de toepassing is geïmplementeerd. Ga vanuit het Azure Portal naar de web-app die u hebt geïmplementeerd en schakel de **beheerde service-identiteit** van deze toepassing in.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Een geheim maken":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Beheerde service-identiteit":::
 
 Als u de toepassing nu wilt uitvoeren, wordt de volgende fout weer gegeven, omdat u geen machtiging hebt gekregen voor deze toepassing in Key Vault.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Een geheim maken":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="App geïmplementeerd zonder toegang":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>De toepassing registreren & machtigingen verlenen om de Key Vault te lezen
 
@@ -83,13 +82,13 @@ In deze sectie registreert u de toepassing met Azure Active Directory en geeft u
 
 1. Ga naar het Azure Portal en open de **Key Vault** die u hebt gemaakt in de vorige sectie.  
 
-2. Open **toegangs beleid** , selecteer **+ nieuwe** zoeken de web-app die u hebt geïmplementeerd, selecteer machtigingen en selecteer **OK** .  
+2. Open **toegangs beleid** , selecteer **+ nieuwe** zoeken de web-app die u hebt geïmplementeerd, selecteer machtigingen en selecteer **OK**.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Een geheim maken":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Toegangs beleid toevoegen":::
 
 Als u de toepassing nu uitvoert, kunt u het geheim lezen van Key Vault.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Een geheim maken":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="App geïmplementeerd met geheim":::
  
 Op dezelfde manier kunt u een gebruiker toevoegen voor toegang tot de sleutel kluis. U moet uzelf toevoegen aan de Key Vault door **toegangs beleid** te selecteren en vervolgens alle machtigingen te verlenen die u nodig hebt om de toepassing uit te voeren vanuit Visual Studio. Wanneer deze toepassing wordt uitgevoerd vanaf uw bureau blad, neemt u uw identiteit in beslag.
 

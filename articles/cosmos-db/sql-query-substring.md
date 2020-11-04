@@ -3,16 +3,17 @@ title: Subtekenreeks in Azure Cosmos DB query taal
 description: Meer informatie over de subtekenreeks voor de SQL-systeemfunctie in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6cb96270d1db970230e3abb528b58b7341d652f0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 17888ccd8fc51ed96f7fc92a0f9275d2c8cb56f8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081464"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340824"
 ---
 # <a name="substring-azure-cosmos-db"></a>Subtekenreeks (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +32,7 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
    Is een teken reeks expressie.
   
 *num_expr1*  
-   Is een numerieke expressie om het begin teken aan te duiden. De waarde 0 is het eerste teken van *str_expr* .
+   Is een numerieke expressie om het begin teken aan te duiden. De waarde 0 is het eerste teken van *str_expr*.
   
 *num_expr2*  
    Is een numerieke expressie waarmee het maximum aantal tekens van *str_expr* wordt aangegeven dat moet worden geretourneerd. Een waarde van 0 of minder resulteert in een lege teken reeks.

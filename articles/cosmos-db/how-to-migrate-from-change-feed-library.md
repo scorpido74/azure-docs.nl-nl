@@ -3,16 +3,17 @@ title: Migreren van de bibliotheek voor het wijzigen van de feed-processor naar 
 description: Meer informatie over hoe u uw toepassing kunt migreren met behulp van de bibliotheek voor het wijzigen van de feed-processor naar de Azure Cosmos DB SDK v3
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e19c2a8711a9862bb72b29045c65ecd1bd5b5d20
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ce2d4d3ad3ae349718f01584ec077b18e11e4f8d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075498"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341260"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migreren van de bibliotheek voor het wijzigen van de feed-processor naar de Azure Cosmos DB .NET v3 SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -49,7 +50,7 @@ De SDK v3 Change feed-processor detecteert elke oude status van de bibliotheek e
 
 U kunt de toepassing veilig stoppen met de oude code, de code migreren naar de nieuwe versie, de gemigreerde toepassing starten en eventuele wijzigingen die zijn opgetreden tijdens het stoppen van de toepassing, worden opgehaald en verwerkt door de nieuwe versie.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Voor beelden van gebruik op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

@@ -3,15 +3,16 @@ title: SQL-subquery's voor Azure Cosmos DB
 description: Meer informatie over SQL-subquery's en de meest voorkomende use-cases en verschillende typen subquery's in Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 16be1b91d007ca2dbc88405cfc55ff519f51ee41
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f5f209229d17a2587258d21ee90e7560e629d082
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081533"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340852"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Voor beelden van SQL-subquery voor Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

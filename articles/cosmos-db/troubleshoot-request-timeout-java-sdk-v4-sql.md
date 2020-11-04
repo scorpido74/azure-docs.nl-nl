@@ -3,18 +3,21 @@ title: Problemen met Azure Cosmos DB HTTP 408 of time-outs met de Java v4 SDK op
 description: Meer informatie over het vaststellen en oplossen van time-outuitzonderingen voor het aanvragen van Java SDK met de Java v4-SDK.
 author: kushagrathapar
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 45452109582be40f007ae57a00c2a151f216bdb8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103009"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340072"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Problemen met de time-out voor de Azure Cosmos DB Java v4 SDK-aanvragen diagnosticeren en oplossen
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 De HTTP 408-fout treedt op als de SDK de aanvraag niet kan volt ooien voordat de time-outlimiet is opgetreden.
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing

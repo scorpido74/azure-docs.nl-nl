@@ -3,16 +3,17 @@ title: Data Base-door Voer inrichten in Azure Cosmos DB SQL-API
 description: Meer informatie over het inrichten van de door Voer op database niveau in Azure Cosmos DB SQL-API met behulp van Azure Portal, CLI, Power shell en diverse andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 63de1c970a118ddf24c52e7e14a0632a4eee7fba
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4ecbee2260da735cd6ba74d3b9ffb55b4a652e9e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086292"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341991"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Standaard doorvoer (hand matig) door Voer voor een data base in Azure Cosmos DB-SQL-API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -23,16 +24,16 @@ Als u een andere API gebruikt, raadpleegt u [API voor MongoDb](how-to-provision-
 
 ## <a name="provision-throughput-using-azure-portal"></a>Doorvoer inrichten met behulp van de Azure-portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
-1. Open het deel venster **Data Explorer** en selecteer **nieuwe data base** . Geef de volgende gegevens op:
+1. Open het deel venster **Data Explorer** en selecteer **nieuwe data base**. Geef de volgende gegevens op:
 
    * Voer een database-id in.
    * Selecteer de optie **doorvoer database inrichten** .
    * Voer een doorvoer in, bijvoorbeeld 1000 RU's.
-   * Selecteer **OK** .
+   * Selecteer **OK**.
 
     :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Schermafbeelding van het dialoogvenster Nieuwe database":::
 

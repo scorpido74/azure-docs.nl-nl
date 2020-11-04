@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 90d059aaa16e24df1e71d4d439cb9aa23b786c77
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d0727f512ab24342b493ba2563262a9253d95d8c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323210"
+ms.locfileid: "93339968"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB Analytical Store is momenteel beschikbaar als preview-versie. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -150,7 +150,7 @@ Hier volgt een overzicht van alle eigenschaps gegevens typen en de bijbehorende 
 | Dubbel |  ".float64" |    24,99|
 | Matrix | ". matrix" |    ["a", "b"]|
 |Binair | '. binary ' |0|
-|Boolean-waarde    | ". BOOL"   |Waar|
+|Booleaans    | ". BOOL"   |Waar|
 |Int32  | ". Int32"  |123|
 |Int64  | ". int64"  |255486129307|
 |Null   | ". null"   | null|

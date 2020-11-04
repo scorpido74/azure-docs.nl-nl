@@ -3,12 +3,12 @@ title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0c35c8e041e47f02d53c680b5812b10d25d75a67
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2e85ee19012f6ae13c18e26b3aa0b5ae28bcaade
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425707"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341345"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -31,6 +31,7 @@ Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest re
 
 Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning van de update.
 
+## <a name="updates-october-2020"></a>Updates (oktober 2020)
 
 ### <a name="update-rollup-51"></a>Update pakket 51
 
@@ -41,7 +42,9 @@ Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning v
 **Providers en agents** | Updates van Site Recovery agents en providers zoals beschreven in het pakket.
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in het pakket, inclusief nieuwe Linux-ondersteuning voor de Mobility-service.
 
-## <a name="update-september-2020"></a>Update (september 2020)
+## <a name="updates-september-2020"></a>Updates (september 2020)
+
+### <a name="update-rollup-50"></a>Update pakket 50
 
 [Update pakket 50](https://support.microsoft.com/help/4582666/update-rollup-50-for-azure-site-recovery) bevat de volgende updates:
 

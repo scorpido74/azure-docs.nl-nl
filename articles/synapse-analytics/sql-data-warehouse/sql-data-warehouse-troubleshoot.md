@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fe20304341d6e99eb77ad2818e675b0063efd693
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319517"
+ms.locfileid: "93340274"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problemen met Synapse SQL oplossen in azure Synapse Analytics
 
@@ -67,8 +67,6 @@ In dit artikel worden veelvoorkomende problemen met het oplossen van problemen i
 | :------------------------------------ | :----------------------------------------------------------- |
 | Niet-ondersteunde SQL Database functies     | Zie [niet-ondersteunde tabel functies](sql-data-warehouse-tables-overview.md#unsupported-table-features). |
 | Niet-ondersteunde SQL Database gegevens typen   | Zie [niet-ondersteunde gegevens typen](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
-| Beperkingen voor verwijderen en bijwerken         | Zie [oplossingen bijwerken](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements), [tijdelijke oplossingen verwijderen](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements) en [CTAS gebruiken om niet-ondersteunde syntaxis voor bijwerken en verwijderen te](sql-data-warehouse-develop-ctas.md)omzeilen. |
-| De instructie MERGe wordt niet ondersteund      | Zie [tijdelijke oplossingen voor samen voegen](sql-data-warehouse-develop-ctas.md#replace-merge-statements).                  |
 | Beperkingen voor opgeslagen procedures          | Zie [beperkingen van opgeslagen](sql-data-warehouse-develop-stored-procedures.md#limitations) procedures voor een overzicht van de beperkingen van opgeslagen procedure. |
 | Udf's bieden geen ondersteuning voor SELECT-instructies | Dit is een huidige beperking van onze Udf's.  Zie [Create function](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor de syntaxis die we ondersteunen. |
 

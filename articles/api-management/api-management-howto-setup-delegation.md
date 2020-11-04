@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 54193c9333c75fd8b973ebe33470fca3617e2f2d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148762"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341838"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Gebruikers registratie en product abonnement delegeren
 
@@ -44,7 +44,7 @@ We gaan eerst API Management instellen om aanvragen te routeren via het eind pun
 * Bepaal wat de URL van uw speciale eind punt voor delegering is en voer deze in het veld **delegering ENDPOINT URL** in. 
 * Voer in het veld verificatie sleutel delegering een geheim in dat wordt gebruikt voor het berekenen van een hand tekening die u voor verificatie hebt ontvangen om ervoor te zorgen dat de aanvraag inderdaad afkomstig is van Azure API Management. U kunt op de knop **genereren** klikken om API Management wille keurig een sleutel te genereren.
 
-U moet nu het **eind punt voor delegering**maken. Het moet een aantal acties uitvoeren:
+U moet nu het **eind punt voor delegering** maken. Het moet een aantal acties uitvoeren:
 
 1. Ontvang een aanvraag in de volgende vorm:
    
@@ -52,18 +52,18 @@ U moet nu het **eind punt voor delegering**maken. Het moet een aantal acties uit
    
     Query parameters voor de case voor aanmelden/registreren:
    
-   * **bewerking**: identificeert het type overdrachts aanvraag. het kan alleen **Aanmelden** in dit geval
-   * **returnUrl**: de URL van de pagina waarop de gebruiker heeft geklikt op een koppeling voor aanmelden of registreren
-   * **Salt**: een speciale Salt-teken reeks die wordt gebruikt voor het berekenen van een beveiligings-hash
-   * **sig**: een berekende beveiligings-hash die moet worden gebruikt voor de vergelijking met uw eigen berekende hash
+   * **bewerking** : identificeert het type overdrachts aanvraag. het kan alleen **Aanmelden** in dit geval
+   * **returnUrl** : de URL van de pagina waarop de gebruiker heeft geklikt op een koppeling voor aanmelden of registreren
+   * **Salt** : een speciale Salt-teken reeks die wordt gebruikt voor het berekenen van een beveiligings-hash
+   * **sig** : een berekende beveiligings-hash die moet worden gebruikt voor de vergelijking met uw eigen berekende hash
 2. Controleer of de aanvraag afkomstig is van Azure API Management (optioneel, maar wordt nadrukkelijk aanbevolen voor beveiliging)
    
-   * Een HMAC-SHA512 gebruikt-hash van een teken reeks berekenen op basis van de **returnUrl** -en **Salt** -query parameters ([voorbeeld code hieronder]):
+   * Een HMAC-SHA512 gebruikt-hash van een teken reeks berekenen op basis van de **returnUrl** -en **Salt** -query parameters ( [voorbeeld code hieronder]):
      
-     > HMAC (**Salt** + ' \n ' + **returnUrl**)
+     > HMAC ( **Salt** + ' \n ' + **returnUrl** )
 
    * Vergelijk de bovenstaande berekende hash met de waarde van de para meter **sig** -query. Als de twee hashes overeenkomen, gaat u verder met de volgende stap en weigert u de aanvraag.
-3. Controleer of u een aanvraag voor aanmelden/aanmelden ontvangt: de **bewerking** query parameter wordt ingesteld op '**Aanmelden**'.
+3. Controleer of u een aanvraag voor aanmelden/aanmelden ontvangt: de **bewerking** query parameter wordt ingesteld op ' **Aanmelden** '.
 4. De gebruiker met de gebruikers interface weer geven om zich aan te melden of zich aan te melden
 5. Als de gebruiker zich aanmeldt, moet u in API Management een bijbehorend account maken. [Maak een gebruiker] met de API Management rest API. Als u dit doet, moet u ervoor zorgen dat u de gebruikers-ID instelt op dezelfde waarde als in uw gebruikers archief of op een ID die u kunt bijhouden.
 6. Als de gebruiker is geverifieerd:
@@ -71,7 +71,7 @@ U moet nu het **eind punt voor delegering**maken. Het moet een aantal acties uit
    * [Een gedeeld toegangs token aanvragen] via de API Management rest API
    * Voeg een returnUrl-query parameter toe aan de SSO-URL die u hebt ontvangen van de bovenstaande API-aanroep:
      
-     > bijvoorbeeld: `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     > bijvoorbeeld: `https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
      
    * De gebruiker omleiden naar de bovenstaande geproduceerde URL
 
@@ -84,10 +84,10 @@ Naast de **aanmeldings** bewerking kunt u ook account beheer uitvoeren door de v
 
 U moet de volgende query parameters door geven voor account beheer bewerkingen.
 
-* **bewerking**: identificeert welk type overdrachts aanvraag is (ChangePassword, ChangeProfile of CloseAccount)
-* **GebruikersID**: de gebruikers-id van het account dat u wilt beheren
-* **Salt**: een speciale Salt-teken reeks die wordt gebruikt voor het berekenen van een beveiligings-hash
-* **sig**: een berekende beveiligings-hash die moet worden gebruikt voor de vergelijking met uw eigen berekende hash
+* **bewerking** : identificeert welk type overdrachts aanvraag is (ChangePassword, ChangeProfile of CloseAccount)
+* **GebruikersID** : de gebruikers-id van het account dat u wilt beheren
+* **Salt** : een speciale Salt-teken reeks die wordt gebruikt voor het berekenen van een beveiligings-hash
+* **sig** : een berekende beveiligings-hash die moet worden gebruikt voor de vergelijking met uw eigen berekende hash
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Product abonnement delegeren
 
@@ -108,21 +108,21 @@ Zorg er vervolgens voor dat het eind punt voor delegering de volgende acties uit
    
     Query parameters voor het case-product abonnement:
    
-   * **bewerking**: identificeert welk type overdrachts aanvraag. Voor aanvragen voor product abonnementen zijn de volgende geldige opties:
+   * **bewerking** : identificeert welk type overdrachts aanvraag. Voor aanvragen voor product abonnementen zijn de volgende geldige opties:
      * "Abonneren": een aanvraag om de gebruiker te abonneren op een bepaald product met de opgegeven ID (zie hieronder)
      * ' Abonnement opzeggen ': een aanvraag voor het afmelden van een gebruiker bij een product
      * "Renew": een aanvraag om een abonnement te vernieuwen (bijvoorbeeld dat mogelijk verloopt)
-   * **ProductID**: bij het *Abonneren* -de id van het product waarvoor de gebruiker zich heeft gevraagd om zich te abonneren
-   * **subscriptionId**: on *unsubscribe* and *renew* -de id van het product abonnement
-   * **gebruikers**-id: bij het *Aanmelden* -de gebruikers naam van de gebruiker voor wie de aanvraag is ingediend
-   * **Salt**: een speciale Salt-teken reeks die wordt gebruikt voor het berekenen van een beveiligings-hash
-   * **sig**: een berekende beveiligings-hash die moet worden gebruikt voor de vergelijking met uw eigen berekende hash
+   * **ProductID** : bij het *Abonneren* -de id van het product waarvoor de gebruiker zich heeft gevraagd om zich te abonneren
+   * **subscriptionId** : on *unsubscribe* and *renew* -de id van het product abonnement
+   * **gebruikers** -id: bij het *Aanmelden* -de gebruikers naam van de gebruiker voor wie de aanvraag is ingediend
+   * **Salt** : een speciale Salt-teken reeks die wordt gebruikt voor het berekenen van een beveiligings-hash
+   * **sig** : een berekende beveiligings-hash die moet worden gebruikt voor de vergelijking met uw eigen berekende hash
 
 2. Controleer of de aanvraag afkomstig is van Azure API Management (optioneel, maar wordt nadrukkelijk aanbevolen voor beveiliging)
    
-   * Een HMAC-SHA512 gebruikt van een teken reeks berekenen op basis van de query parameters **ProductID**, **userId**en **Salt** :
+   * Een HMAC-SHA512 gebruikt van een teken reeks berekenen op basis van de query parameters **ProductID** , **userId** en **Salt** :
      
-     > HMAC (**Salt** + ' \n ' + **ProductID** + ' \n ' + **GebruikersID**)
+     > HMAC ( **Salt** + ' \n ' + **ProductID** + ' \n ' + **GebruikersID** )
      > 
      > 
    * Vergelijk de bovenstaande berekende hash met de waarde van de para meter **sig** -query. Als de twee hashes overeenkomen, gaat u verder met de volgende stap en weigert u de aanvraag.
@@ -133,7 +133,7 @@ Zorg er vervolgens voor dat het eind punt voor delegering de volgende acties uit
 
 Deze code voorbeelden laten zien hoe u:
 
-* Neem de *verificatie sleutel voor delegering*op die is ingesteld in het scherm overdracht van de uitgevers Portal
+* Neem de *verificatie sleutel voor delegering* op die is ingesteld in het scherm overdracht van de uitgevers Portal
 * Maak een HMAC, dat vervolgens wordt gebruikt om de hand tekening te valideren en de geldigheid van de door gegeven returnUrl te bewijzen.
 
 Dezelfde code werkt voor de productId en de gebruikers naam met een kleine wijziging.

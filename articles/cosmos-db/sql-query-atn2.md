@@ -3,16 +3,17 @@ title: ATN2 in Azure Cosmos DB-query taal
 description: Meer informatie over hoe de ATN2-functie van SQL System in Azure Cosmos DB de principal-waarde van de boog tangens van y/x retourneert, uitgedrukt in radialen
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f8fa4738cdd165d068f05cead09e25b382a83730
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6db42713ec6f0eac64e0f1123825c21a4206fa99
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081702"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341940"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71ed590440a8c7e37a071b4eadfc09977ef91d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 424a1ef7a73b5abbdba0d89ededb44cb9efdd116
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310826"
+ms.locfileid: "93340985"
 ---
 # <a name="query-folders-and-multiple-files"></a>Query uitvoeren op mappen en meerdere bestanden  
 
@@ -29,7 +29,7 @@ De eerste stap bestaat uit het **maken van een database** waarin u de query's ga
 U gebruikt de map *CSV/taxi* om de voorbeeld query's te volgen. Het bevat NYC-Gelee taxi-excursie records van 2016 juli tot juni 2018. Bestanden in *CSV/taxi* worden na jaar en maand benoemd met het volgende patroon: yellow_tripdata_ <year> - <month> . CSV
 
 ## <a name="read-all-files-in-folder"></a>Alle bestanden in de map lezen
-    
+
 In het onderstaande voor beeld worden alle NYC Yellow Taxi-gegevens bestanden uit de map *CSV/taxi* gelezen en wordt het totale aantal passagiers en onderdrukkingen per jaar geretourneerd. Ook wordt het gebruik van statistische functies weer gegeven.
 
 ```sql
@@ -180,6 +180,49 @@ ORDER BY
 > Alle bestanden die worden geopend met één OPENROWSET, moeten dezelfde structuur hebben (bijvoorbeeld het aantal kolommen en de bijbehorende gegevens typen).
 
 Omdat u slechts één map hebt die voldoet aan de criteria, is het resultaat van de query hetzelfde als [alle bestanden in de map lezen](#read-all-files-in-folder).
+
+## <a name="traverse-folders-recursively"></a>Door mappen recursief door bladeren
+
+Een serverloze SQL-groep kan mappen recursief door bladeren als u/* * aan het einde van het pad opgeeft. Met de volgende query worden alle bestanden van alle mappen en submappen in de *CSV* -map gelezen.
+
+```sql
+SELECT
+    YEAR(pickup_datetime) as [year],
+    SUM(passenger_count) AS passengers_total,
+    COUNT(*) AS [rides_total]
+FROM OPENROWSET(
+        BULK 'csv/taxi/**', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIRSTROW = 2
+    )
+    WITH (
+        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
+        pickup_datetime DATETIME2, 
+        dropoff_datetime DATETIME2,
+        passenger_count INT,
+        trip_distance FLOAT,
+        rate_code INT,
+        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
+        pickup_location_id INT,
+        dropoff_location_id INT,
+        payment_type INT,
+        fare_amount FLOAT,
+        extra FLOAT,
+        mta_tax FLOAT,
+        tip_amount FLOAT,
+        tolls_amount FLOAT,
+        improvement_surcharge FLOAT,
+        total_amount FLOAT
+    ) AS nyc
+GROUP BY
+    YEAR(pickup_datetime)
+ORDER BY
+    YEAR(pickup_datetime);
+```
+
+> [!NOTE]
+> Alle bestanden die worden geopend met één OPENROWSET, moeten dezelfde structuur hebben (bijvoorbeeld het aantal kolommen en de bijbehorende gegevens typen).
 
 ## <a name="multiple-wildcards"></a>Meerdere joker tekens
 

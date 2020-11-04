@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8fd794822e9e4fe282d6ef8a8ccf1eb908c03560
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321660"
+ms.locfileid: "93340031"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Controleren op Azure SQL Database en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,6 +104,13 @@ Als u de controle van Microsoft Ondersteuning bewerkingen (preview) wilt inschak
   > Controle van micro soft-ondersteunings bewerkingen (preview) biedt geen ondersteuning voor opslag account bestemming. Als u de mogelijkheid wilt inschakelen, moet een Log Analytics-werk ruimte of een event hub-doel worden geconfigureerd.
 
 ![Scherm opname van Microsoft Ondersteuning bewerkingen](./media/auditing-overview/support-operations.png)
+
+Gebruik de volgende query om de controle logboeken van Microsoft Ondersteuning-bewerkingen in uw Log Analytics-werk ruimte te bekijken:
+
+```kusto
+AzureDiagnostics
+| where Category == "DevOpsOperationsAudit"
+```
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Controleren op opslag bestemming
 
@@ -205,9 +212,7 @@ Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te s
 - Aanvullende methoden:
 
   - Nadat u meerdere bestanden of een submap met logboek bestanden hebt gedownload, kunt u deze lokaal samen voegen zoals beschreven in de instructies voor het samen voegen van de opdracht SSMS merge.
-  - Audit logboeken voor blobs weer geven via een programma:
-
-    - [Query's uitvoeren op bestanden met uitgebreide gebeurtenissen](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) met behulp van Power shell.
+  - Controle logboeken voor blobs weer geven programmatisch: [Query's uitvoeren op bestanden met uitgebreide gebeurtenissen](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) met behulp van Power shell.
 
 ## <a name="production-practices"></a><a id="production-practices"></a>Productie-procedures
 

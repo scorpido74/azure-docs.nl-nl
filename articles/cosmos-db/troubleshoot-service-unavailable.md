@@ -3,16 +3,17 @@ title: Problemen oplossen met uitzonde ringen Azure Cosmos DB service niet besch
 description: Meer informatie over het opsporen en oplossen van uitzonde ringen voor Azure Cosmos DB service niet beschikbaar.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 44dcaa270e167ada22d48d1061c3eb3ed3ac88f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d19d30c03412ba7212211b30646acb50c3f55ece
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097869"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340019"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable-exceptions"></a>Problemen vaststellen en oplossen Azure Cosmos DB service niet-beschik bare uitzonde ringen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

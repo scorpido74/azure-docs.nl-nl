@@ -6,16 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 38077dca1b8a27098e8db17354b82340a651b880
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305165"
+ms.locfileid: "93342246"
 ---
-# <a name="use-power-bi-and-serverless-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Power BI en serverloze SQL-groep gebruiken voor het analyseren van Azure Cosmos DB gegevens met een Synapse-koppeling (preview-versie)
-
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Power BI en serverloze Synapse SQL-groep gebruiken om Azure Cosmos DB gegevens te analyseren met Synapse-koppeling (preview-versie) 
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 In dit artikel leert u hoe u een serverloze SQL-pool database en weer gaven kunt maken via de Synapse-koppeling voor Azure Cosmos DB. U voert een query uit op de Azure Cosmos DB containers en bouwt vervolgens een model met Power BI over die weer gaven om die query weer te geven.
 

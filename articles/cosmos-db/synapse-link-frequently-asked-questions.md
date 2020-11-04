@@ -6,15 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 30f139c92fe426369c609dabd826a7bff1617e72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098039"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341284"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Met Azure Synapse link voor Azure Cosmos DB maakt u een nauwe integratie tussen Azure Cosmos DB en Azure Synapse Analytics. Hierdoor kunnen klanten bijna realtime analyses uitvoeren via hun operationele gegevens met volledige prestatie isolatie van hun transactionele werk belastingen en zonder een ETL-pijp lijn. Dit artikel beantwoordt veelgestelde vragen over Synapse Link voor Azure Cosmos DB.
 
@@ -157,7 +157,7 @@ Een Azure Cosmos DB container waarvoor een analytische opslag is ingeschakeld, h
 
 Een transactionele opslag container wordt weer gegeven met het volgende pictogram:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB container ingeschakeld met analytische archief-pictogram":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB container ingeschakeld met transactionele Store-pictogram":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>Hoe geeft u Azure Cosmos DB referenties door van Azure Synapse Studio?
 

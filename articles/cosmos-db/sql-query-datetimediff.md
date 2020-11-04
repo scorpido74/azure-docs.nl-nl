@@ -3,21 +3,21 @@ title: DateTimeDiff in Azure Cosmos DB-query taal
 description: Meer informatie over de SQL-functie DateTimeDiff in Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: d51c8774a8646a4b961906ee77913d8edbe752ee
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 09b801c48bf2998a2d8926009cae76287c1ac9b6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095822"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342263"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
-
-Retourneert het aantal (als een ondertekend geheel getal) van de opgegeven DateTimePart grenzen tussen de opgegeven *begin datum* en *eind datum* .
+Retourneert het aantal (als een ondertekend geheel getal) van de opgegeven DateTimePart grenzen tussen de opgegeven *begin datum* en *eind datum*.
   
 ## <a name="syntax"></a>Syntaxis
   

@@ -4,16 +4,18 @@ description: Meer informatie over het gebruik van TransactionalBatch in de Azure
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c27eb2b4e0dc0d269e1cffc9e213cebeb93443e2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93328700"
+ms.locfileid: "93340556"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>Transactionele batch bewerkingen in Azure Cosmos DB met behulp van de .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Transactionele batch beschrijft een groep punt bewerkingen die moeten slagen of mislukken samen met dezelfde partitie sleutel in een container. In de .NET SDK wordt de- `TranscationalBatch` klasse gebruikt voor het definiëren van deze batch bewerkingen. Als alle bewerkingen zijn geslaagd in de volg orde waarin ze worden beschreven in de transactionele batch-bewerking, wordt de trans actie doorgevoerd. Als een bewerking echter mislukt, wordt de hele trans actie teruggedraaid.
 

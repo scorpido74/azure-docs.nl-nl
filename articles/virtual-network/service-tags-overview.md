@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d21b59b8822684598ac2fc3fd813278c1cf0c698
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8aae75aca585c30c0678c88247a8ecfe8a0b801d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319809"
+ms.locfileid: "93340257"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk
 <a name="network-service-tags"></a>
@@ -84,7 +84,6 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **DataFactory**  | Azure Data Factory | Beide | Nee | Nee |
 | **DataFactoryManagement** | Beheer verkeer voor Azure Data Factory. | Uitgaand | Nee | Nee |
 | **Dynamics365ForMarketingEmail** | De adresbereiken voor de marketing-e-mail service van Dynamics 365. | Uitgaand | Ja | Nee |
-| **ElasticAFD** | Elastische Azure-deur. | Beide | Nee | Nee |
 | **EventHub** | Azure Event Hubs. | Uitgaand | Ja | Ja |
 | **GatewayManager** | Beheer verkeer voor implementaties die zijn toegewezen aan Azure VPN Gateway en Application Gateway. | Inkomend | Nee | Nee |
 | **GuestAndHybridManagement** | Azure Automation-en gast configuratie. | Uitgaand | Nee | Ja |

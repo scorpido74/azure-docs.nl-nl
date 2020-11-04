@@ -3,16 +3,17 @@ title: Indexeringsbeleid in Azure Cosmos DB beheren
 description: Meer informatie over het beheren van indexerings beleid, het opnemen of uitsluiten van een eigenschap van indexeren, het definiëren van indexering met verschillende Azure Cosmos DB Sdk's
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 335eac64bd5dff5b466fd97f5b2e093f2f56ee79
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289936"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341311"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB beheren
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

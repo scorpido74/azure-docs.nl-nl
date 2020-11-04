@@ -2,14 +2,14 @@
 title: Resources vergren delen om wijzigingen te voor komen
 description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of verwijderen door een vergren deling toe te passen op alle gebruikers en rollen.
 ms.topic: conceptual
-ms.date: 10/20/2020
+ms.date: 11/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3830c7e78cf3cc607c7abfca63e6ae74f89b7aff
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281744"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340138"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
@@ -24,7 +24,7 @@ Wanneer u een vergren deling toepast op een bovenliggend bereik, nemen alle reso
 
 In tegenstelling tot op rollen gebaseerd toegangsbeheer wordt met beheervergrendelingen een beperking toegepast op alle gebruikers en rollen. Zie voor meer informatie over het instellen van machtigingen voor gebruikers en rollen [het toegangs beheer op basis van rollen (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 
-Vergrendelingen van Resource Manager gelden alleen voor bewerkingen die zich op beheerniveau voordoen, wat bewerkingen zijn die worden verzonden naar `https://management.azure.com`. De vergrendelingen hebben geen invloed op hoe resources hun eigen functies uitvoeren. Resourcewijzigingen worden beperkt, maar resourcebewerkingen worden niet beperkt. Een alleen-lezen vergrendeling op een SQL Database voor komt dat u de Data Base kunt verwijderen of wijzigen. U kunt echter wel gegevens in de database maken, bijwerken of verwijderen. Gegevenstransacties zijn toegestaan omdat deze bewerkingen niet naar `https://management.azure.com` worden verzonden.
+Vergrendelingen van Resource Manager gelden alleen voor bewerkingen die zich op beheerniveau voordoen, wat bewerkingen zijn die worden verzonden naar `https://management.azure.com`. De vergrendelingen hebben geen invloed op hoe resources hun eigen functies uitvoeren. Resourcewijzigingen worden beperkt, maar resourcebewerkingen worden niet beperkt. Een alleen-lezen vergrendeling op een SQL Database logische server voor komt dat u de server kunt verwijderen of wijzigen. Het is niet mogelijk om gegevens in de data bases op die server te maken, bij te werken of te verwijderen. Gegevenstransacties zijn toegestaan omdat deze bewerkingen niet naar `https://management.azure.com` worden verzonden.
 
 ## <a name="considerations-before-applying-locks"></a>Overwegingen voor het Toep assen van vergren delingen
 
@@ -58,7 +58,7 @@ Selecteer voor beheerde toepassingen de service die u hebt geïmplementeerd.
 
 ![Service selecteren](./media/lock-resources/select-service.png)
 
-U ziet dat de service een koppeling voor een **beheerde resource groep**bevat. Deze resource groep bevat de infra structuur en is vergrendeld. Het kan niet rechtstreeks worden verwijderd.
+U ziet dat de service een koppeling voor een **beheerde resource groep** bevat. Deze resource groep bevat de infra structuur en is vergrendeld. Het kan niet rechtstreeks worden verwijderd.
 
 ![Beheerde groep weer geven](./media/lock-resources/show-managed-group.png)
 
@@ -76,12 +76,12 @@ Als u alles wilt verwijderen voor de service, inclusief de resource groep vergre
 
 Wanneer u een resource manager-sjabloon gebruikt om een vergren deling te implementeren, gebruikt u verschillende waarden voor de naam en het type, afhankelijk van het bereik van de vergren deling.
 
-Bij het Toep assen van een vergren deling op een **resource**gebruikt u de volgende indelingen:
+Bij het Toep assen van een vergren deling op een **resource** gebruikt u de volgende indelingen:
 
 * naam `{resourceName}/Microsoft.Authorization/{lockName}`
 * voert `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-Bij het Toep assen van een vergren deling op een **resource groep** of- **abonnement**, gebruikt u de volgende indelingen:
+Bij het Toep assen van een vergren deling op een **resource groep** of- **abonnement** , gebruikt u de volgende indelingen:
 
 * naam `{lockName}`
 * voert `Microsoft.Authorization/locks`
@@ -237,7 +237,7 @@ Voer de volgende handelingen uit om een vergren deling te maken:
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-Het bereik kan een abonnement, een resource groep of een resource zijn. De naam van de vergren deling is datgene wat u aan de vergren deling wilt aanroepen. Gebruik **2016-09-01**voor de API-versie.
+Het bereik kan een abonnement, een resource groep of een resource zijn. De naam van de vergren deling is datgene wat u aan de vergren deling wilt aanroepen. Gebruik **2016-09-01** voor de API-versie.
 
 Neem in de aanvraag een JSON-object op waarmee de eigenschappen voor de vergren deling worden opgegeven.
 

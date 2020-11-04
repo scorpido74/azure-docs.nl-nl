@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521302"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341855"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Ondersteuning voor het verplaatsen van virtuele Azure-machines tussen Azure-regio's
 
@@ -101,7 +101,7 @@ SUSE Linux Enterprise Server 15 en 15 SP1 |  Alle Stock-SUSE 15-en 15-kernels wo
 **Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
 Grootte | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Controleer de [grootte van virtuele Azure-machines](../virtual-machines/sizes-general.md).
-Beschikbaarheidssets | Momenteel niet ondersteund | Als u een virtuele machine van Azure toevoegt met een beschikbaarheidsset met de standaard opties, mislukt het voorbereidings proces. U kunt ervoor kiezen om de virtuele machine naar een beschikbaarheids zone te verplaatsen of te verplaatsen als een virtuele machine met één exemplaar. U kunt deze instellingen wijzigen op de pagina doel eigenschappen bewerken.
+Beschikbaarheidssets | Ondersteund | Ondersteund.
 Beschikbaarheidszones | Ondersteund | Ondersteund, afhankelijk van de ondersteuning van het doel gebied.
 Installatie kopieën van Azure Gallery (gepubliceerd door micro soft) | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Installatie kopieën van Azure Gallery (gepubliceerd door derden)  | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.

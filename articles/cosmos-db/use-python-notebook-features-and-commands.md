@@ -3,15 +3,16 @@ title: Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB p
 description: Meer informatie over het gebruik van ingebouwde opdrachten en functies voor het uitvoeren van algemene bewerkingen met behulp van de ingebouwde python-notebooks van Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 32c433455e1075045323dc466b41ad19ac68f454
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 381aa88326440aba91e02393cfe2bdb1e2c38097
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074349"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340410"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB python-notebooks (preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -201,7 +202,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>Werk ruimte notitie blokken opnieuw instellen
 Als u de werk ruimte notitie blokken opnieuw wilt instellen op de standaard instellingen, selecteert u **werk ruimte opnieuw instellen** op de opdracht balk. Hiermee worden alle aangepaste geïnstalleerde pakketten verwijderd en wordt de Jupyter-server opnieuw gestart. Uw notitie blokken, bestanden en Azure Cosmos-resources worden niet beïnvloed.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="nteract Data Explorer":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Werk ruimte notitie blokken opnieuw instellen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

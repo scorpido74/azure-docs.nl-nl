@@ -3,17 +3,17 @@ title: Voorbeelden van Azure CLI voor Azure Cosmos DB API voor MongoDB
 description: Voorbeelden van Azure CLI voor Azure Cosmos DB API voor MongoDB
 author: markjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41943a30f78bd906d314d6ec10fa01866708f534
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b17d3b0072d893751586f87d9a4ceb7ac8607416
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073043"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342093"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-api-for-mongodb"></a>Voorbeelden van Azure CLI voor Azure Cosmos DB MongoDB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

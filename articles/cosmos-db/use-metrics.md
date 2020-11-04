@@ -5,15 +5,16 @@ author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8694a884b26194c61cc77d00848692a24e3009be
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073703"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340457"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -52,13 +53,13 @@ Als u aan de slag wilt gaan, gaat u naar de [Azure Portal](https://portal.azure.
 
 De meest voorkomende fout status code is 429 (beperking of beperking). Deze fout betekent dat aanvragen voor Azure Cosmos DB meer zijn dan de ingerichte door voer. De meest voorkomende oplossing voor dit probleem is het [opschalen van het RUs](./set-throughput.md) voor de gegeven verzameling.
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Meet gegevens voor prestaties Cosmos DB in Azure Portal":::
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Aantal aanvragen per minuut":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>De doorvoer distributie voor alle partities bepalen
 
 Een goede kardinaliteit van uw partitie sleutels is essentieel voor elke schaal bare toepassing. Ga naar de **Blade metrische gegevens** in de [Azure Portal](https://portal.azure.com)om de doorvoer distributie te bepalen van een gepartitioneerde container die is onderverdeeld in partities. Op het tabblad **door Voer** wordt de opslag specificatie weer gegeven in de tabel **Max. aantal geconsumeerde ru/seconde per fysieke partitie** . In de volgende afbeelding ziet u een voor beeld van een slechte distributie van gegevens, zoals wordt weer gegeven door de gescheefe partitie helemaal links.
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Meet gegevens voor prestaties Cosmos DB in Azure Portal":::
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Enkelvoudige partitie Zie intensief gebruik":::
 
 Een ongelijke doorvoer distributie kan leiden tot *dynamische* partities, wat kan leiden tot getraagde aanvragen en mogelijk opnieuw partitioneert. Zie [partitioneren en schalen in azure Cosmos DB](./partitioning-overview.md)voor meer informatie over partitioneren in azure Cosmos db.
 
@@ -66,11 +67,11 @@ Een ongelijke doorvoer distributie kan leiden tot *dynamische* partities, wat ka
 
 Een goede kardinaliteit van uw partitie is essentieel voor elke schaal bare toepassing. Als u de opslag distributie wilt bepalen van een gepartitioneerde container die is onderverdeeld in partities, kop naar de Blade metrische gegevens in de [Azure Portal](https://portal.azure.com). Op het tabblad opslag wordt de opslag specificatie weer gegeven in de grafiek gegevens en index opslag die worden gebruikt door de bovenste partitie sleutels. In de volgende afbeelding ziet u een slechte distributie van gegevens opslag, zoals wordt weer gegeven door de gescheefe partitie helemaal links.
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Meet gegevens voor prestaties Cosmos DB in Azure Portal":::
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Voor beeld van slechte gegevens distributie":::
 
 U kunt de hoofd oorzaak van de partitie sleutel scheef trekken door te klikken op de partitie in de grafiek.
 
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Meet gegevens voor prestaties Cosmos DB in Azure Portal":::
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="De partitie sleutel verscheeft de distributie":::
 
 Nadat u hebt vastgesteld welke partitie sleutel het hellen van de verdeling veroorzaakt, moet u de container wellicht opnieuw partitioneren met een meer gedistribueerde partitie sleutel. Zie [partitioneren en schalen in azure Cosmos DB](./partitioning-overview.md)voor meer informatie over partitioneren in azure Cosmos db.
 

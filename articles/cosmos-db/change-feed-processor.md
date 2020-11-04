@@ -4,17 +4,18 @@ description: Meer informatie over het gebruik van de Azure Cosmos DB Change feed
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dfd96e7c62d700ccec2ecd4b223668d7aca4f18f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072803"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340223"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +32,7 @@ Er zijn vier belangrijke onderdelen bij de implementatie van de wijzigingenfeedv
 
 1. **De leasecontainer:** De leasecontainer fungeert als een statusopslag en coördineert de wijzigingenfeed voor meerdere werkrollen. De leasecontainer kan worden opgeslagen in hetzelfde account als de bewaakte container of in een afzonderlijk account.
 
-1. **De host:** Een host is een toepassingsexemplaar dat de wijzigingenfeedverwerker gebruikt om naar wijzigingen te luisteren. Er kunnen meerdere exemplaren met dezelfde leaseconfiguratie parallel worden uitgevoerd, maar elk exemplaar moet een andere **naam hebben** .
+1. **De host:** Een host is een toepassingsexemplaar dat de wijzigingenfeedverwerker gebruikt om naar wijzigingen te luisteren. Er kunnen meerdere exemplaren met dezelfde leaseconfiguratie parallel worden uitgevoerd, maar elk exemplaar moet een andere **naam hebben**.
 
 1. **De gemachtigde:** De gemachtigde is de code die definieert wat u, de ontwikkelaar, wilt doen met elke batch met wijzigingen die door de wijzigingenfeedverwerker wordt verwerkt. 
 
@@ -62,7 +63,7 @@ De normale levenscyclus van een host-exemplaar is:
 
 1. Lees de wijzigings feed.
 1. Als er geen wijzigingen zijn, schakelt u de slaap stand in voor een vooraf gedefinieerde hoeveelheid tijd (aanpasbaar met `WithPollInterval` in de opbouw functie) en gaat u naar #1.
-1. Als er wijzigingen zijn, stuurt u deze naar de **gemachtigde** .
+1. Als er wijzigingen zijn, stuurt u deze naar de **gemachtigde**.
 1. Wanneer de gemachtigde de verwerking van de wijzigingen **heeft** voltooid, werkt u de lease Store bij met het meest recente verwerkte punt in de tijd en gaat u naar #1.
 
 ## <a name="error-handling"></a>Foutafhandeling
@@ -113,7 +114,7 @@ De Change feed-processor wordt geïnitialiseerd voor die specifieke datum en tij
 
 ### <a name="reading-from-the-beginning"></a>Lezen vanaf het begin
 
-In andere scenario's, zoals gegevens migraties of het analyseren van de volledige geschiedenis van een container, moeten we de wijzigings feed lezen vanaf **het begin van de levens duur van die container** . Hiervoor kunnen we gebruiken `WithStartTime` op de uitbrei ding van de opbouw functie, maar door geven `DateTime.MinValue.ToUniversalTime()` , waardoor de UTC-weer gave van de minimum `DateTime` waarde zou worden gegenereerd, zoals:
+In andere scenario's, zoals gegevens migraties of het analyseren van de volledige geschiedenis van een container, moeten we de wijzigings feed lezen vanaf **het begin van de levens duur van die container**. Hiervoor kunnen we gebruiken `WithStartTime` op de uitbrei ding van de opbouw functie, maar door geven `DateTime.MinValue.ToUniversalTime()` , waardoor de UTC-weer gave van de minimum `DateTime` waarde zou worden gegenereerd, zoals:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 
@@ -133,7 +134,7 @@ De Change feed-processor kan worden gehost in elk platform dat ondersteuning bie
 
 Hoewel de feed-processor in korte Bewaar omgevingen kan worden uitgevoerd, omdat de lease container de status behoudt, zal de opstart cyclus van deze omgevingen vertraging oplopen om de meldingen te ontvangen (als gevolg van de overhead van het starten van de processor telkens wanneer de omgeving wordt gestart).
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [De voorbeeld toepassing op GitHub volt ooien](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)

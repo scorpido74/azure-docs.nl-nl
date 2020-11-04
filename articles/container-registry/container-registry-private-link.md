@@ -3,19 +3,19 @@ title: Persoonlijke koppeling instellen
 description: Stel een persoonlijk eind punt in op een container register en Schakel toegang in via een persoonlijke koppeling in een lokaal virtueel netwerk. Toegang voor persoonlijke koppelingen is een functie van de laag Premium-Service.
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: d5193efc1b1def2dc51411630ab6a2305d369cf4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026119"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342297"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Persoonlijke verbinding maken met een Azure container Registry met behulp van een persoonlijke Azure-koppeling
 
 
 Beperk de toegang tot een REGI ster door particuliere IP-adressen voor het virtuele netwerk toe te wijzen aan de register eindpunten en met behulp van een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md) Netwerk verkeer tussen de clients in het virtuele netwerk en de persoonlijke eind punten van het REGI ster passeren het virtuele netwerk en een privé-koppeling in het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen. Met persoonlijke koppeling kunt u ook persoonlijke toegang tot het REGI ster vanuit on-premises via [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) private peering of een [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-U kunt [DNS-instellingen configureren](../private-link/private-endpoint-overview.md#dns-configuration) voor de privé-eind punten van het REGI ster, zodat de instellingen kunnen worden omgezet in het toegewezen privé IP-adres van het REGI ster. Met DNS-configuratie kunnen clients en services in het netwerk het REGI ster blijven gebruiken op het Fully Qualified Domain Name van het REGI ster, zoals *myregistry.azurecr.io* . 
+U kunt [DNS-instellingen configureren](../private-link/private-endpoint-overview.md#dns-configuration) voor de privé-eind punten van het REGI ster, zodat de instellingen kunnen worden omgezet in het toegewezen privé IP-adres van het REGI ster. Met DNS-configuratie kunnen clients en services in het netwerk het REGI ster blijven gebruiken op het Fully Qualified Domain Name van het REGI ster, zoals *myregistry.azurecr.io*. 
 
 Deze functie is beschikbaar in de service tier van het **Premium** -container register. Momenteel kunnen Maxi maal tien privé-eind punten worden ingesteld voor een REGI ster. Zie [Azure container Registry-lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
 
@@ -50,7 +50,7 @@ VM_NAME=<virtual-machine-name>
 
 Als u deze nog niet hebt, hebt u de namen van een virtueel netwerk en subnet nodig om een persoonlijke koppeling in te stellen. In dit voor beeld gebruikt u hetzelfde subnet voor de virtuele machine en het persoonlijke eind punt van het REGI ster. In veel gevallen zou u het eind punt echter instellen in een afzonderlijk subnet. 
 
-Wanneer u een virtuele machine maakt, maakt Azure standaard een virtueel netwerk in dezelfde resource groep. De naam van het virtuele netwerk is gebaseerd op de naam van de virtuele machine. Als u bijvoorbeeld een *myDockerVM* naam voor de virtuele machine hebt, is de standaard naam van het virtuele netwerk *myDockerVMVNET* , met een subnet met de naam *myDockerVMSubnet* . Stel deze waarden in omgevings variabelen in door de opdracht [AZ Network vnet List][az-network-vnet-list] uit te voeren:
+Wanneer u een virtuele machine maakt, maakt Azure standaard een virtueel netwerk in dezelfde resource groep. De naam van het virtuele netwerk is gebaseerd op de naam van de virtuele machine. Als u bijvoorbeeld een *myDockerVM* naam voor de virtuele machine hebt, is de standaard naam van het virtuele netwerk *myDockerVMVNET* , met een subnet met de naam *myDockerVMSubnet*. Stel deze waarden in omgevings variabelen in door de opdracht [AZ Network vnet List][az-network-vnet-list] uit te voeren:
 
 ```azurecli
 NETWORK_NAME=$(az network vnet list \
@@ -81,7 +81,7 @@ az network vnet subnet update \
 
 Maak een [privé-DNS-zone](../dns/private-dns-privatednszone.md) voor het persoonlijke Azure-container register domein. In latere stappen maakt u DNS-records voor uw register domein in deze DNS-zone.
 
-Als u een privé zone wilt gebruiken om de standaard DNS-omzetting voor uw Azure container Registry te overschrijven, moet de zone de naam **privatelink.azurecr.io** . Voer de volgende [AZ Network private-DNS zone Create][az-network-private-dns-zone-create] opdracht uit om de privé zone te maken:
+Als u een privé zone wilt gebruiken om de standaard DNS-omzetting voor uw Azure container Registry te overschrijven, moet de zone de naam **privatelink.azurecr.io**. Voer de volgende [AZ Network private-DNS zone Create][az-network-private-dns-zone-create] opdracht uit om de privé zone te maken:
 
 ```azurecli
 az network private-dns zone create \
@@ -91,7 +91,7 @@ az network private-dns zone create \
 
 ### <a name="create-an-association-link"></a>Een koppelings koppeling maken
 
-Voer [AZ Network private-DNS link vnet maken][az-network-private-dns-link-vnet-create] uit om uw persoonlijke zone te koppelen aan het virtuele netwerk. In dit voor beeld wordt een koppeling gemaakt met de naam *myDNSLink* .
+Voer [AZ Network private-DNS link vnet maken][az-network-private-dns-link-vnet-create] uit om uw persoonlijke zone te koppelen aan het virtuele netwerk. In dit voor beeld wordt een koppeling gemaakt met de naam *myDNSLink*.
 
 ```azurecli
 az network private-dns link vnet create \
@@ -204,9 +204,9 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
 
 ### <a name="create-a-private-endpoint---new-registry"></a>Een persoonlijk eind punt maken-nieuw REGI ster
 
-1. Wanneer u een REGI ster maakt in de portal, selecteert u op het tabblad **basis beginselen** in **SKU** de optie **Premium** .
+1. Wanneer u een REGI ster maakt in de portal, selecteert u op het tabblad **basis beginselen** in **SKU** de optie **Premium**.
 1. Selecteer het tabblad **netwerken** .
-1. Selecteer in **netwerk connectiviteit** **persoonlijke eind punt**  >  **+ toevoegen** .
+1. Selecteer in **netwerk connectiviteit** **persoonlijke eind punt**  >  **+ toevoegen**.
 1. Voer de volgende informatie in of Selecteer deze:
 
     | Instelling | Waarde |
@@ -216,21 +216,21 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | Naam | Voer een unieke naam in. |
     | Subbron |**REGI ster** selecteren|
     | **Netwerken** | |
-    | Virtueel netwerk| Selecteer het virtuele netwerk waarin uw virtuele machine is geïmplementeerd, zoals *myDockerVMVNET* . |
+    | Virtueel netwerk| Selecteer het virtuele netwerk waarin uw virtuele machine is geïmplementeerd, zoals *myDockerVMVNET*. |
     | Subnet | Selecteer een subnet, zoals *myDockerVMSubnet* waarop uw virtuele machine is geïmplementeerd. |
     |**Integratie van Privé-DNS**||
-    |Integreren met privé-DNS-zone |Selecteer **Ja** . |
+    |Integreren met privé-DNS-zone |Selecteer **Ja**. |
     |Privé-DNS-zone |Selecteer *(nieuw) privatelink.azurecr.io* |
     |||
-1. Configureer de resterende register instellingen en selecteer vervolgens **controleren + maken** .
+1. Configureer de resterende register instellingen en selecteer vervolgens **controleren + maken**.
 
   ![REGI ster maken met een persoonlijk eind punt](./media/container-registry-private-link/private-link-create-portal.png)
 
 ### <a name="create-a-private-endpoint---existing-registry"></a>Een persoonlijk eind punt maken-bestaand REGI ster
 
 1. Navigeer in de portal naar het container register.
-1. Selecteer onder **instellingen** de optie **netwerken** .
-1. Selecteer op het tabblad **privé-eind punten** **+ persoonlijk eind punt** .
+1. Selecteer onder **instellingen** de optie **netwerken**.
+1. Selecteer op het tabblad **privé-eind punten** **+ persoonlijk eind punt**.
 1. Voer op het tabblad **basis beginselen** de volgende informatie in of Selecteer deze:
 
     | Instelling | Waarde |
@@ -240,38 +240,38 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | Resourcegroep | Voer de naam van een bestaande groep in of maak een nieuwe.|
     | **Exemplaardetails** |  |
     | Naam | Voer een naam in. |
-    |Regio|Selecteer een regio.|
+    |Region|Selecteer een regio.|
     |||
-5. Selecteer **Volgende: Resource** .
+5. Selecteer **Volgende: Resource**.
 6. Voer de volgende informatie in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    |Verbindingsmethode  | Selecteer **Verbinding maken met een Azure-resource in mijn directory** .|
+    |Verbindingsmethode  | Selecteer **Verbinding maken met een Azure-resource in mijn directory**.|
     | Abonnement| Selecteer uw abonnement. |
-    | Resourcetype | Selecteer **micro soft. ContainerRegistry/registers** . |
+    | Resourcetype | Selecteer **micro soft. ContainerRegistry/registers**. |
     | Resource |De naam van het REGI ster selecteren|
     |Subresource van doel |**REGI ster** selecteren|
     |||
-7. Selecteer **Volgende: Configuratie** .
+7. Selecteer **Volgende: Configuratie**.
 8. Voer de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
     |**Netwerken**| |
-    | Virtueel netwerk| Selecteer het virtuele netwerk waarin uw virtuele machine is geïmplementeerd, zoals *myDockerVMVNET* . |
+    | Virtueel netwerk| Selecteer het virtuele netwerk waarin uw virtuele machine is geïmplementeerd, zoals *myDockerVMVNET*. |
     | Subnet | Selecteer een subnet, zoals *myDockerVMSubnet* waarop uw virtuele machine is geïmplementeerd. |
     |**Integratie van Privé-DNS**||
-    |Integreren met privé-DNS-zone |Selecteer **Ja** . |
+    |Integreren met privé-DNS-zone |Selecteer **Ja**. |
     |Privé-DNS-zone |Selecteer *(nieuw) privatelink.azurecr.io* |
     |||
 
-1. Selecteer **Controleren + maken** . De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure. 
-2. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken** .
+1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure. 
+2. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**.
 
 Nadat het persoonlijke eind punt is gemaakt, worden de DNS-instellingen in de privé zone weer gegeven op de pagina **privé-eind punten** in de portal:
 
-1. Ga in de portal naar het container register en selecteer **instellingen > netwerk** .
+1. Ga in de portal naar het container register en selecteer **instellingen > netwerk**.
 1. Selecteer op het tabblad **privé-eind punten** het persoonlijke eind punt dat u hebt gemaakt.
 1. Bekijk de koppelings instellingen en aangepaste DNS-instellingen op de pagina **overzicht** .
 
@@ -297,8 +297,8 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 
 ### <a name="disable-public-access---portal"></a>Open bare toegang uitschakelen-Portal
 
-1. Ga in de portal naar het container register en selecteer **instellingen > netwerk** .
-1. Selecteer op het tabblad **open bare toegang** in **open bare netwerk toegang toestaan** de optie **uitgeschakeld** . Selecteer vervolgens **Opslaan** .
+1. Ga in de portal naar het container register en selecteer **instellingen > netwerk**.
+1. Selecteer op het tabblad **open bare toegang** in **open bare netwerk toegang toestaan** de optie **uitgeschakeld**. Selecteer vervolgens **Opslaan**.
 
 ## <a name="validate-private-link-connection"></a>Verbinding met persoonlijke koppeling valideren
 
@@ -387,7 +387,12 @@ Als u later een nieuwe replica toevoegt, moet u hand matig een nieuwe zone recor
 
 Het persoonlijke eind punt in dit voor beeld is geïntegreerd met een privé-DNS-zone die is gekoppeld aan een basis-virtueel netwerk. Deze instelling maakt gebruik van de door Azure verschafte DNS-service om de open bare FQDN van het REGI ster te herstellen naar het privé-IP-adres in het virtuele netwerk. 
 
-Persoonlijke koppeling ondersteunt extra DNS-configuratie scenario's die gebruikmaken van de privé zone, met inbegrip van aangepaste DNS-oplossingen. U hebt bijvoorbeeld een aangepaste DNS-oplossing die is geïmplementeerd in het virtuele netwerk, of on-premises in een netwerk waarmee u verbinding maakt met het virtuele netwerk met behulp van een VPN-gateway. Als u in deze scenario's de open bare FQDN van het REGI ster wilt omzetten naar het privé-IP-adres, moet u een doorstuur server voor de Azure DNS-service configureren (168.63.129.16). De exacte configuratie opties en stappen zijn afhankelijk van uw bestaande netwerken en DNS. Zie voor beelden [Azure private endpoint DNS-configuratie](../private-link/private-endpoint-dns.md).
+Persoonlijke koppeling ondersteunt extra DNS-configuratie scenario's die gebruikmaken van de privé zone, met inbegrip van aangepaste DNS-oplossingen. Stel dat u een aangepaste DNS-oplossing hebt geïmplementeerd in het virtuele netwerk, of on-premises in een netwerk waarmee u verbinding maakt met het virtuele netwerk met behulp van een VPN-gateway of Azure ExpressRoute. 
+
+Als u in deze scenario's de open bare FQDN van het REGI ster wilt omzetten naar het privé-IP-adres, moet u een doorstuur server voor de Azure DNS-service configureren (168.63.129.16). De exacte configuratie opties en stappen zijn afhankelijk van uw bestaande netwerken en DNS. Zie voor beelden [Azure private endpoint DNS-configuratie](../private-link/private-endpoint-dns.md).
+
+> [!IMPORTANT]
+> Als voor hoge Beschik baarheid die u hebt gemaakt in meerdere regio's, wordt u aangeraden een afzonderlijke resource groep te gebruiken in elke regio en het virtuele netwerk en de bijbehorende privé-DNS-zone te plaatsen. Deze configuratie voor komt ook dat onvoorspelbare DNS-omzetting wordt veroorzaakt door het delen van dezelfde privé-DNS-zone.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
