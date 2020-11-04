@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cbe3ef7080397b135ea0fb17cd50de9b1ccfdf09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367734"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336116"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in de Azure-portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -20,9 +20,9 @@ In dit artikel wordt beschreven hoe u actie groepen maakt en beheert in de Azure
 
 Elke actie bestaat uit de volgende eigenschappen:
 
-* **Type**: de melding of actie die is uitgevoerd. Voor beelden hiervan zijn het verzenden van een spraak oproep, SMS, e-mail; of het activeren van verschillende typen geautomatiseerde acties. Zie typen verderop in dit artikel.
-* **Naam**: een unieke id in de actie groep.
-* **Details**: de bijbehorende details die per *type*verschillen.
+* **Type** : de melding of actie die is uitgevoerd. Voor beelden hiervan zijn het verzenden van een spraak oproep, SMS, e-mail; of het activeren van verschillende typen geautomatiseerde acties. Zie typen verderop in dit artikel.
+* **Naam** : een unieke id in de actie groep.
+* **Details** : de bijbehorende details die per *type* verschillen.
 
 Zie voor meer informatie over het gebruik van Azure Resource Manager sjablonen voor het configureren van actie groepen de [actie groep Resource Manager-sjablonen](./action-groups-create-resource-manager-template.md).
 
@@ -30,17 +30,17 @@ Zie voor meer informatie over het gebruik van Azure Resource Manager sjablonen v
 
 1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **monitor**. In het deel venster **monitor** worden al uw bewakings instellingen en-gegevens in één weer gave geconsolideerd.
 
-1. Selecteer **waarschuwingen**en selecteer vervolgens **acties beheren**.
+1. Selecteer **waarschuwingen** en selecteer vervolgens **acties beheren**.
 
     ![Knop acties beheren](./media/action-groups/manage-action-groups.png)
     
-1. Selecteer **actie groep toevoegen**en vul de relevante velden in de wizard ervaring in.
+1. Selecteer **actie groep toevoegen** en vul de relevante velden in de wizard ervaring in.
 
     ![De opdracht ' actie groep toevoegen '](./media/action-groups/add-action-group.PNG)
 
 ### <a name="configure-basic-action-group-settings"></a>Basis instellingen voor de actie groep configureren
 
-Onder **Project Details**:
+Onder **Project Details** :
 
 Selecteer het **abonnement** en de **resource groep** waarin de actie groep wordt opgeslagen.
 
@@ -48,7 +48,7 @@ Geef onder **Exemplaardetails** het volgende op:
 
 1. Voer een naam in voor de **actie groep**.
 
-1. Voer een **weergave naam**in. De weergave naam wordt gebruikt in plaats van de naam van een volledige actie groep wanneer er meldingen worden verzonden met behulp van deze groep.
+1. Voer een **weergave naam** in. De weergave naam wordt gebruikt in plaats van de naam van een volledige actie groep wanneer er meldingen worden verzonden met behulp van deze groep.
 
       ![Het dialoog venster actie groep toevoegen](./media/action-groups/action-group-1-basics.png)
 
@@ -59,15 +59,15 @@ Geef onder **Exemplaardetails** het volgende op:
 
 1. Definieer een lijst met meldingen die moeten worden verzonden wanneer een waarschuwing wordt geactiveerd. Geef het volgende op voor elke melding:
 
-    a. **Meldings type**: Selecteer het type melding dat u wilt verzenden. De beschikbare opties zijn:
+    a. **Meldings type** : Selecteer het type melding dat u wilt verzenden. De beschikbare opties zijn:
       * Rol e-mail Azure Resource Manager: een e-mail verzenden naar gebruikers die zijn toegewezen aan bepaalde ARM-rollen op abonnements niveau.
       * E-mail/SMS/push/Voice: verzend deze meldings typen naar specifieke ontvangers.
     
-    b. **Naam**: Voer een unieke naam in voor de melding.
+    b. **Naam** : Voer een unieke naam in voor de melding.
 
-    c. **Details**: Voer een e-mail adres, telefoon nummer, enzovoort in op basis van het geselecteerde meldings type.
+    c. **Details** : Voer een e-mail adres, telefoon nummer, enzovoort in op basis van het geselecteerde meldings type.
     
-    d. **Algemeen waarschuwings schema**: u kunt ervoor kiezen om het [algemene waarschuwings schema](./alerts-common-schema.md)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
+    d. **Algemeen waarschuwings schema** : u kunt ervoor kiezen om het [algemene waarschuwings schema](./alerts-common-schema.md)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
 
     ![Het tabblad meldingen](./media/action-groups/action-group-2-notifications.png)
     
@@ -77,13 +77,13 @@ Geef onder **Exemplaardetails** het volgende op:
 
 1. Definieer een lijst met acties die moeten worden geactiveerd wanneer een waarschuwing wordt geactiveerd. Geef het volgende op voor elke actie:
 
-    a. **Actie type**: Selecteer Automation-Runbook, Azure function, ITSM, Logic app, beveiligde webhook, webhook.
+    a. **Actie type** : Selecteer Automation-Runbook, Azure function, ITSM, Logic app, beveiligde webhook, webhook.
     
-    b. **Naam**: Voer een unieke naam in voor de actie.
+    b. **Naam** : Voer een unieke naam in voor de actie.
 
-    c. **Details**: Voer een webhook-URI, een Azure-app, ITSM-verbinding of een Automation-runbook in op basis van het actie type. Geef voor ITSM-actie ook **werk item** en andere velden op die nodig zijn voor het ITSM-hulp programma.
+    c. **Details** : Voer een webhook-URI, een Azure-app, ITSM-verbinding of een Automation-runbook in op basis van het actie type. Geef voor ITSM-actie ook **werk item** en andere velden op die nodig zijn voor het ITSM-hulp programma.
     
-    d. **Algemeen waarschuwings schema**: u kunt ervoor kiezen om het [algemene waarschuwings schema](./alerts-common-schema.md)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
+    d. **Algemeen waarschuwings schema** : u kunt ervoor kiezen om het [algemene waarschuwings schema](./alerts-common-schema.md)in te scha kelen. Dit biedt het voor deel van het gebruik van een single Extensible en Unified alert Payload in alle waarschuwings Services in azure monitor.
     
     ![Het tabblad acties](./media/action-groups/action-group-3-actions.png)
 
@@ -120,7 +120,7 @@ Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep.
 ### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-mail
 E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-mail filtering op de juiste wijze is geconfigureerd
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -287,13 +287,15 @@ Als u updates wilt ontvangen over wijzigingen in deze IP-adressen, raden we u aa
 
 Mogelijk hebt u een beperkt aantal webhook-acties in een actie groep.
 
-### <a name="service-tag"></a>Servicetag
+Regel matige updates van bron-IP-adressen kunnen veel tijd in beslag nemen in webhooks. Het gebruik van de **service tag** voor *ActionGroup* helpt bij het hand matig beperken van de complexiteit van regel matige updates van IP-adressen. Het bereik van de bron-IP-adressen die hierboven worden gedeeld, wordt automatisch beheerd door micro soft, dat is opgenomen in het **service label**.
+
+#### <a name="service-tag"></a>Servicetag
 Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het service label en werkt de servicetag automatisch bij met gewijzigde adressen, zodat de complexiteit van regel matige updates voor netwerk beveiligings regels voor een ActionGroup wordt geminimaliseerd.
 
 1. Zoek in Azure Portal onder Azure Services naar *netwerk beveiligings groep*.
 2. Klik op **toevoegen** en maak een netwerk beveiligings groep.
 
-   1. Voeg de naam van de resource groep toe en voer vervolgens Details van het *exemplaar*in.
+   1. Voeg de naam van de resource groep toe en voer vervolgens Details van het *exemplaar* in.
    1. Klik op **controleren + maken** en klik vervolgens op *maken*.
    
    :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Voor beeld voor het maken van een netwerk beveiligings groep."border="true":::
@@ -311,8 +313,6 @@ Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde
     1.  Klik op **Add**.
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Voor beeld voor het toevoegen van een servicetag."border="true":::
-
-Het gebruik van de **service tag** voor ActionGroup helpt bij het minimaliseren van de complexiteit van frequente updates voor IP-adressen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [gedrag van SMS-waarschuwingen](./alerts-sms-behavior.md).  

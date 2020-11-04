@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: a6550ff9bc3a7cec3d9c50b6c60a02ef1af851f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d9a842af5e1d3fac73515d96644bef250d7d0c4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213479"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334566"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE ALS SELECTEREN (CTAS)
 
@@ -206,62 +206,29 @@ AND     CTAS_acs.[CalendarYear]  = AnnualCategorySales.[CalendarYear] ;
 DROP TABLE CTAS_acs;
 ```
 
-## <a name="ansi-join-replacement-for-delete-statements"></a>Vervanging van ANSI-lidmaatschap voor Delete-instructies
+## <a name="ansi-join-replacement-for-merge"></a>Vervanging van ANSI-koppeling voor samen VOEGen 
 
-Soms is de beste benadering voor het verwijderen van gegevens het gebruik van CTAS, met name voor `DELETE` instructies die gebruikmaken van de syntaxis van de ANSI-samen voeging. Dit komt doordat Synapse SQL geen ondersteuning biedt voor ANSI-samen voegingen in de `FROM` component van een- `DELETE` instructie. In plaats van de gegevens te verwijderen, selecteert u de gegevens die u wilt blijven gebruiken.
-
-Hier volgt een voor beeld van een geconverteerde `DELETE` instructie:
+In azure Synapse Analytics, [Merge](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (preview) met niet-OVEREENKOMEND op doel moet het doel een gedistribueerde hash-tabel zijn.  Gebruikers kunnen de ANSI-JOIN met [Update](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) of [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) als tijdelijke oplossing gebruiken om de gegevens van de doel tabel te wijzigen op basis van het resultaat van het samen voegen met een andere tabel.  Hier volgt een voorbeeld.
 
 ```sql
-CREATE TABLE dbo.DimProduct_upsert
-WITH
-(   Distribution=HASH(ProductKey)
-,   CLUSTERED INDEX (ProductKey)
-)
-AS -- Select Data you want to keep
-SELECT p.ProductKey
-, p.EnglishProductName
-,  p.Color
-FROM  dbo.DimProduct p
-RIGHT JOIN dbo.stg_DimProduct s
-ON p.ProductKey = s.ProductKey;
+CREATE TABLE dbo.Table1   
+    (ColA INT NOT NULL, ColB DECIMAL(10,3) NOT NULL);  
+GO  
+CREATE TABLE dbo.Table2   
+    (ColA INT NOT NULL, ColB DECIMAL(10,3) NOT NULL);  
+GO  
+INSERT INTO dbo.Table1 VALUES(1, 10.0);  
+INSERT INTO dbo.Table2 VALUES(1, 0.0);  
+GO  
+UPDATE dbo.Table2   
+SET dbo.Table2.ColB = dbo.Table2.ColB + dbo.Table1.ColB  
+FROM dbo.Table2   
+    INNER JOIN dbo.Table1   
+    ON (dbo.Table2.ColA = dbo.Table1.ColA);  
+GO  
+SELECT ColA, ColB   
+FROM dbo.Table2;
 
-RENAME OBJECT dbo.DimProduct TO DimProduct_old;
-RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
-```
-
-## <a name="replace-merge-statements"></a>Instructies voor samen voegen vervangen
-
-U kunt merge-instructies, ten minste een deel, vervangen door CTAS te gebruiken. U kunt de `INSERT` en de `UPDATE` in één instructie combi neren. Alle verwijderde records moeten worden beperkt van de `SELECT` instructie om de resultaten weg te laten.
-
-Het volgende voor beeld is voor een `UPSERT` :
-
-```sql
-CREATE TABLE dbo.[DimProduct_upsert]
-WITH
-(   DISTRIBUTION = HASH([ProductKey])
-,   CLUSTERED INDEX ([ProductKey])
-)
-AS
--- New rows and new versions of rows
-SELECT s.[ProductKey]
-, s.[EnglishProductName]
-, s.[Color]
-FROM      dbo.[stg_DimProduct] AS s
-UNION ALL  
--- Keep rows that are not being touched
-SELECT      p.[ProductKey]
-, p.[EnglishProductName]
-, p.[Color]
-FROM      dbo.[DimProduct] AS p
-WHERE NOT EXISTS
-(   SELECT  *
-    FROM    [dbo].[stg_DimProduct] s
-    WHERE   s.[ProductKey] = p.[ProductKey]
-);
-
-RENAME OBJECT dbo.[DimProduct]          TO [DimProduct_old];
-RENAME OBJECT dbo.[DimProduct_upsert]  TO [DimProduct];
 ```
 
 ## <a name="explicitly-state-data-type-and-nullability-of-output"></a>Het gegevens type en de opties voor de null-waarde van uitvoer expliciet aangeven
@@ -330,7 +297,7 @@ AS
 SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
-Houd rekening met het volgende:
+en let op het volgende:
 
 * U kunt CAST of CONVERT gebruiken.
 * Gebruik ISNULL, niet COALESCE, om de NULL-waarde af te dwingen. Zie de volgende opmerking.

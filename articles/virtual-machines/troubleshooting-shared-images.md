@@ -1,93 +1,314 @@
 ---
 title: Problemen met gedeelde installatie kopieën in azure oplossen
 description: Meer informatie over het oplossen van problemen met gedeelde afbeeldings galerieën.
-author: cynthn
+author: olayemio
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: troubleshooting
 ms.workload: infrastructure
-ms.date: 06/15/2020
-ms.author: cynthn
+ms.date: 10/27/2020
+ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d01ac7d5b01f485c3b0100c468332475a9bd4274
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 189fa12b1fc11e79ab64231a7ecd453113b8771a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978540"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336007"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Problemen met gedeelde afbeeldings galerieën in azure oplossen
 
 Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën met gedeelde installatiekopieën, definities van installatiekopieën en versies van installatiekopieën, voert u de mislukte opdracht opnieuw uit in de foutopsporingsmodus. De foutopsporingsmodus wordt geactiveerd door de `--debug` Switch door te geven met CLI en de `-Debug` Switch met Power shell. Wanneer u de fout hebt gevonden, volgt u dit document om de fouten op te lossen.
 
 
-## <a name="unable-to-create-a-shared-image-gallery"></a>Kan geen galerie met gedeelde installatiekopieën maken
+## <a name="issues-with-creating-or-modifying-a-gallery"></a>Problemen met het maken of wijzigen van een galerie ##
 
-Mogelijke oorzaken:
+*De galerie naam is ongeldig. Toegestane tekens zijn Engelse alfanumerieke tekens, met een onderstrepings teken en een aantal punten die in het midden zijn toegestaan, tot 80 tekens in totaal. Alle andere speciale tekens, inclusief streepjes, zijn niet toegestaan.*  
+**Oorzaak** : de opgegeven naam voor de galerie voldoet niet aan de naamgevings vereisten.  
+**Tijdelijke oplossing** : Kies een naam die voldoet aan de volgende voor waarden: 1) 80-teken limiet, 2) bevat alleen Engelse letters, cijfers, onderstrepings tekens en punten, 3) begint en eindigt met Engelse letters of cijfers.
 
-*De naam van de galerie is ongeldig.*
+*De entiteits naam ' Gallery name ' is ongeldig volgens de validatie regel: ^ [^ \_ \w] [\w-. \_ ] {0,79} (? <! [-.]) $.*  
+**Oorzaak** : de naam van de galerie voldoet niet aan de naamgevings vereisten.  
+**Tijdelijke oplossing** : Kies een naam voor de galerie die voldoet aan de volgende voor waarden: 1) 80-teken limiet, 2) bevat alleen Engelse letters, cijfers, onderstrepings tekens en punten, 3) begint en eindigt met Engelse letters of cijfers.
 
-De naam van de galerie kan bestaan uit hoofdletters en kleine letters, cijfers en punten. De naam van de galerie kan geen liggende streepjes bevatten. Wijzig de naam van de galerie en probeer het opnieuw. 
+*De naam van de verschafte resource name <Gallery \> bevat de volgende ongeldige tekens voor nasluitend: <teken \> . De naam mag niet eindigen op tekens: <teken\>*  
+**Oorzaak** : de naam voor de galerie eindigt met een punt of een onderstrepings teken.  
+**Tijdelijke oplossing** : Kies een naam voor de galerie die voldoet aan de volgende voor waarden: 1) 80-teken limiet, 2) bevat alleen Engelse letters, cijfers, onderstrepings tekens en punten, 3) begint en eindigt met Engelse letters of cijfers.
 
-*De naam van de galerie is niet uniek in uw abonnement.*
+*De gegeven locatie <regio \> is niet beschikbaar voor het resource type micro soft. Compute/galerieën. Lijst met beschik bare regio's voor het resource type is...*  
+**Oorzaak** : de opgegeven regio voor de galerie is onjuist of vereist een toegangs aanvraag.  
+**Tijdelijke oplossing** : Controleer of de naam van de regio juist is gespeld. U kunt deze opdracht uitvoeren om te zien welke regio's u hebt geopend. Als de regio niet wordt weer gegeven in de lijst, moet u [een toegangs aanvraag](/troubleshoot/azure/general/region-access-request-process)indienen.
 
-Kies een andere galerie naam en probeer het opnieuw.
+*Kan de resource niet verwijderen voordat de geneste resources zijn verwijderd.*  
+**Oorzaak** : u hebt geprobeerd een galerie te verwijderen die ten minste één bestaande afbeeldings definitie bevat. Een galerie moet leeg zijn voordat deze kan worden verwijderd.  
+**Tijdelijke oplossing** : Verwijder alle afbeeldings definities in de galerie en ga vervolgens door met het verwijderen van de galerie. Als de definitie van de installatie kopie installatie kopieën bevat, moeten de installatie kopieën worden verwijderd voordat u de afbeeldings definities verwijdert.
 
+*De resource <Gallery \> bestaat al in de locatie <regio \_ 1 \> in de resource groep <resourceGroup \> . Een resource met dezelfde naam kan niet worden gemaakt op locatie <regio \_ 2 \> . Selecteer een nieuwe resource naam.*  
+**Oorzaak** : u hebt al een bestaande galerie in de resource groep met dezelfde naam en u hebt geprobeerd een andere galerie te maken met dezelfde naam maar in een andere regio.  
+**Tijdelijke oplossing** : gebruik een andere galerie of een andere resource groep.
 
-## <a name="unable-to-create-an-image-definition"></a>Kan geen definitie voor de installatiekopie maken 
+## <a name="issues-with-creating-or-modifying-image-definitions"></a>Problemen met het maken of wijzigen van afbeeldings definities ##
 
-Mogelijke oorzaken:
+*Het wijzigen van de eigenschap ' galleryImage. Properties. <\> ' is niet toegestaan.*  
+**Oorzaak** : u hebt geprobeerd het type besturings systeem, de status van het besturings systeem, de generatie van Hyper V, de aanbieding, de uitgever, de SKU te wijzigen. Het is niet toegestaan om een van deze eigenschappen te wijzigen.  
+**Tijdelijke oplossing** : Maak in plaats daarvan een nieuwe definitie van de installatie kopie.
 
-*de naam van de definitie van de installatie kopie is ongeldig.*
+*De resource <Gallery/imageDefinitionName \> bestaat al in de locatie <regio \_ 1 \> in de resource groep <resourceGroup \> . Een resource met dezelfde naam kan niet worden gemaakt op locatie <regio \_ 2 \> . Selecteer een nieuwe resource naam.*  
+**Oorzaak** : u hebt al een bestaande definitie van een installatie kopie in dezelfde galerie en resource groep met dezelfde naam en u hebt geprobeerd een andere definitie van een installatie kopie te maken met dezelfde naam en in dezelfde galerie, maar in een andere regio.  
+**Tijdelijke oplossing** : gebruik een andere naam voor de definitie van de installatie kopie of plaats de definitie van de installatie kopie in een andere galerie of resource groep
 
-Toegestane tekens voor de definitie van de installatie kopie zijn hoofd letters, kleine letters, cijfers, punten, streepjes en punten. Wijzig de naam van de definitie van de installatie kopie en probeer het opnieuw.
+*De gegeven resource naam <Gallery \> /<imageDefinitionName \> heeft de volgende ongeldige Volg tekens: <teken \> . De naam mag niet eindigen op tekens: <teken\>*  
+**Oorzaak** : de opgegeven <imageDefinitionName \> eindigt met een punt of een onderstrepings teken.  
+**Tijdelijke oplossing** : Kies een naam voor de definitie van de installatie kopie die voldoet aan de volgende voor waarden: 1) 80-teken limiet, 2) bevat alleen Engelse letters, cijfers, afbreek streepjes, onderstrepings tekens en punten, 3) begint en eindigt met Engelse letters of cijfers.
 
-*De verplichte eigenschappen voor het maken van een definitie van een installatie kopie zijn niet ingevuld.*
+*De entiteits naam <imageDefinitionName \> is ongeldig volgens de validatie regel: ^ [^ \_ \\ W] [ \\ W-. \_ ] {0,79} (? <! [-.]) $"*  
+**Oorzaak** : de opgegeven <imageDefinitionName \> eindigt met een punt of een onderstrepings teken.  
+**Tijdelijke oplossing** : Kies een naam voor de definitie van de installatie kopie die voldoet aan de volgende voor waarden: 1) 80-teken limiet, 2) bevat alleen Engelse letters, cijfers, afbreek streepjes, onderstrepings tekens en punten, 3) begint en eindigt met Engelse letters of cijfers.
 
-De eigenschappen, zoals naam, uitgever, aanbieding, SKU en type besturings systeem, zijn verplicht. Controleer of alle eigenschappen worden door gegeven.
+*De eigenschap Asset name galleryImage. Properties. identifier. <\> is ongeldig. De waarde mag niet leeg zijn. Toegestane tekens zijn hoofd letters of kleine letters, cijfers, afbreek streepjes (-), punt (.), onderstrepings teken ( \_ ). Namen mogen niet eindigen op een punt (.). De lengte van de naam mag niet langer zijn dan <numerieke \> tekens.*  
+**Oorzaak** : de opgegeven Uitgever, aanbieding of SKU-waarde voldoet niet aan de naamgevings vereisten.  
+**Tijdelijke oplossing** : Kies een waarde die voldoet aan de volgende voor waarden: 1) 128-teken limiet voor uitgever of 64-teken limiet voor aanbieding en SKU, 2) bevat alleen Engelse letters, cijfers, afbreek streepjes, onderstrepings tekens, punten en 3) eindigt niet met een punt.
 
-Zorg ervoor dat de **OSTYPE**, Linux of Windows, van de definitie van de installatie kopie hetzelfde is als de bron die u gebruikt om de installatie kopie versie te maken. 
+*Kan de aangevraagde bewerking niet uitvoeren op de geneste resource. Kan de bovenliggende resource <galerienaam \> niet vinden.*  
+**Oorzaak** : er is geen galerie met de naam <collagenaam \> in het huidige abonnement en de resource groep.  
+**Tijdelijke oplossing** : Controleer of de naam van de galerie, het abonnement en de resource groep juist zijn. Als dat niet het geval is, maakt u een nieuwe galerie met de naam <Gallery name \> .
 
+*De gegeven locatie <regio \> is niet beschikbaar voor het resource type micro soft. Compute/galerieën. Lijst met beschik bare regio's voor het resource type is...*  
+**Oorzaak** : de <regio \> is onjuist of vereist een toegangs aanvraag  
+**Tijdelijke oplossing** : Controleer of de naam van de regio juist is gespeld. U kunt deze opdracht uitvoeren om te zien welke regio's u hebt geopend. Als de regio niet wordt weer gegeven in de lijst, moet u [een toegangs aanvraag](/troubleshoot/azure/general/region-access-request-process)indienen.
 
-## <a name="unable-to-create-an-image-version"></a>Kan geen versie voor de installatiekopie maken 
+*Kan waarde niet serialiseren: <waarde \> als type: ISO-8601., ISO8601Error: iso 8601-time-out ontbreekt. Kan de waarde van de datetime-teken reeks niet parseren <\>*  
+**Oorzaak** : de waarde die is gegeven aan de eigenschap heeft niet de juiste notatie als datum.  
+**Tijdelijke oplossing** : Geef een datum op in jjjj-mm-dd, jjjj-mm-dd'T'HH: mm: Sszzz of [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)-geldige indeling.
 
-Mogelijke oorzaken:
+*Kan de teken reeks niet converteren naar date time offset: <waarde \> . Pad eigenschappen. \> <eigenschap*  
+**Oorzaak** : de waarde die is gegeven aan de eigenschap heeft niet de juiste notatie als datum.  
+**Tijdelijke oplossing** : Geef een datum op in jjjj-mm-dd, jjjj-mm-dd'T'HH: mm: Sszzz of [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)-geldige indeling.
 
-*De naam van de installatie kopie versie is ongeldig.*
+*EndOfLifeDate moet worden ingesteld op een datum in de toekomst.*  
+**Oorzaak** : de eigenschap datum van het einde van de levens duur is niet juist ingedeeld als datum die na de huidige datum valt.  
+**Tijdelijke oplossing** : Geef een datum op in jjjj-mm-dd, jjjj-mm-dd'T'HH: mm: Sszzz of [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)-geldige indeling.
 
-Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion. MinorVersion. patch*. Wijzig de versie naam van de installatie kopie en probeer het opnieuw.
+*argument--<eigenschap \> : ongeldige int-waarde: <waarde\>*  
+**Oorzaak** : de eigenschap <\> accepteert alleen gehele getallen en <waarde \> is geen geheel getal.  
+**Tijdelijke oplossing** : Kies een geheel getal.
 
-*Een door de bron beheerde installatie kopie van waaruit de installatie kopie versie wordt gemaakt, is niet gevonden.* 
+*De minimum waarde van <eigenschap \> mag niet groter zijn dan de maximum waarde van <eigenschap \> .*  
+**Oorzaak** : de minimum waarde die voor de eigenschap <is gegeven, \> is hoger dan de maximum waarde die is ingesteld voor de <eigenschap \> .  
+**Tijdelijke oplossing** : Wijzig de waarden zodat het minimum kleiner is dan of gelijk is aan het maximum.
 
-Controleer of de bron installatie kopie bestaat en zich in dezelfde regio bevindt als de versie van de installatie kopie.
+*Galerie afbeelding: <imageDefinitionName \> geïdentificeerd door (Uitgever: <Uitgever \> , aanbieding: <aanbieding \> , SKU: <SKU \> ) bestaat al. Kies een andere uitgever, aanbieding, SKU-combi natie.*  
+**Oorzaak** : u hebt geprobeerd een nieuwe definitie van een installatie kopie te maken met dezelfde uitgever, aanbieding, SKU triplet als een bestaande definitie van een installatie kopie in dezelfde galerie.  
+**Tijdelijke oplossing** : in een bepaalde galerie moeten alle afbeeldings definities een unieke combi natie zijn van Publisher, offer, SKU. Kies een unieke combi natie of kies een nieuwe galerie en maak de definitie van de installatie kopie opnieuw.
 
-*De beheerde installatie kopie wordt niet ingericht.*
+*Kan de resource niet verwijderen voordat de geneste resources zijn verwijderd.*  
+**Oorzaak** : u hebt geprobeerd een afbeeldings definitie te verwijderen die afbeeldings versies bevat. Een definitie van een installatie kopie moet leeg zijn voordat deze kan worden verwijderd.  
+**Tijdelijke oplossing** : Verwijder alle installatie kopieën in de definitie van de installatie kopie en verwijder vervolgens de definitie van de installatie kopie.
 
-Zorg ervoor dat de inrichtings status van de door de bron beheerde installatie kopie is **geslaagd**.
+*Kan para meter <eigenschap niet binden \> . Kan waarde <waarde niet converteren \> naar type <Property type \> . Kan de id-naam <waarde niet overeenkomen met \> een geldige inventarisatie naam. Geef een van de volgende inventarisatie namen op en probeer het opnieuw: <choice1 \> , <choice2 \> ,...*  
+**Oorzaak** : de eigenschap heeft een beperkte lijst met mogelijke waarden en <waarde \> is niet een.  
+**Tijdelijke oplossing** : Kies een van de mogelijke <keuze \> waarden.
 
-*De lijst met doel regio's bevat niet de bron regio.*
+*Kan para meter <eigenschap niet binden \> . Kan waarde <waarde niet converteren \> naar type &quot; System. datetime&quot;*  
+**Oorzaak** : de waarde die is gegeven aan de eigenschap heeft niet de juiste notatie als datum.  
+**Tijdelijke oplossing** : Geef een datum op in jjjj-mm-dd, jjjj-mm-dd'T'HH: mm: Sszzz of [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)-geldige indeling.
 
-De doel regio lijst moet de bron regio van de versie van de installatie kopie bevatten. Zorg ervoor dat u de bron regio hebt opgenomen in de lijst met doel regio's waarvoor Azure de versie van de installatie kopie moet repliceren.
+*Kan para meter <eigenschap niet binden \> . Kan waarde <waarde niet converteren \> naar type &quot; System. Int32&quot;*  
+**Oorzaak** : de eigenschap <\> accepteert alleen gehele getallen en <waarde \> is geen geheel getal.  
+**Tijdelijke oplossing** : Kies een geheel getal.
 
-*De replicatie naar alle doel regio's is niet voltooid.*
+*Het ZRS-opslag account type wordt niet ondersteund in deze regio.*  
+**Oorzaak** : u hebt een standaard ZRS gekozen in een regio die deze nog niet ondersteunt.  
+**Tijdelijke oplossing** : Wijzig het type opslag account in ' Premium \_ LRS ' of ' Standard \_ LRS '. Raadpleeg onze documentatie voor de meest recente [lijst met regio's](/azure/storage/common/storage-redundancy#zone-redundant-storage) waarvoor ZRS preview is ingeschakeld.
 
-Gebruik de markering **--expand ReplicationStatus** om te controleren of de replicatie naar alle opgegeven doel regio's is voltooid. Als dat niet het geval is, wacht u tot 6 uur totdat de taak is voltooid. Als dit mislukt, voert u de opdracht opnieuw uit om de installatie kopie versie te maken en te repliceren. Als er sprake is van een groot aantal doel regio's, wordt de versie van de installatie kopie gerepliceerd naar. Overweeg de replicatie in fasen uit te voeren.
+## <a name="issues-with-creating-or-updating-image-versions"></a>Problemen met het maken of bijwerken van installatie kopie versies ##
 
-## <a name="unable-to-create-a-vm-or-a-scale-set"></a>Kan geen VM of schaalset maken 
+*De gegeven locatie <regio \> is niet beschikbaar voor het resource type micro soft. Compute/galerieën. Lijst met beschik bare regio's voor het resource type is...*  
+**Oorzaak** : de <regio \> is onjuist of vereist een toegangs aanvraag  
+**Tijdelijke oplossing** : Controleer of de naam van de regio juist is gespeld. U kunt deze opdracht uitvoeren om te zien welke regio's u hebt geopend. Als de regio niet wordt weer gegeven in de lijst, moet u [een toegangs aanvraag](/troubleshoot/azure/general/region-access-request-process)indienen.
 
-Mogelijke oorzaken:
+*Kan de aangevraagde bewerking niet uitvoeren op de geneste resource. De bovenliggende resource <Gallery/imageDefinitionName is \> niet gevonden.*  
+**Oorzaak** : er is geen galerie met de naam <Gallery/imageDefinitionName \> in het huidige abonnement en de resource groep.  
+**Tijdelijke oplossing** : Controleer of de naam van de galerie, het abonnement en de resource groep juist zijn. Als dat niet het geval is, maakt u een nieuwe galerie met de naam <galerieën \> en/of de definitie van de installatie kopie met de naam <imageDefinitionName \> in de aangegeven resource groep.
 
-*De gebruiker die probeert een virtuele machine of VM-schaalset te maken, heeft geen lees toegang tot de versie van de installatie kopie.*
+*Kan para meter <eigenschap niet binden \> . Kan waarde <waarde niet converteren \> naar type &quot; System. datetime&quot;*  
+**Oorzaak** : de waarde die is gegeven aan de eigenschap heeft niet de juiste notatie als datum.  
+**Tijdelijke oplossing** : Geef een datum op in jjjj-mm-dd, jjjj-mm-dd'T'HH: mm: Sszzz of [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)-geldige indeling.
 
-Neem contact op met de eigenaar van het abonnement en vraag hen om Lees toegang te verlenen aan de installatie kopie versie of de bovenliggende resources (zoals de galerie met gedeelde installatie kopieën of de definitie van de installatie kopie) via [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md). 
+*Kan para meter <eigenschap niet binden \> . Kan waarde <waarde niet converteren \> naar type &quot; System. Int32&quot;*  
+**Oorzaak** : de eigenschap <\> accepteert alleen gehele getallen en <waarde \> is geen geheel getal.  
+**Tijdelijke oplossing** : Kies een geheel getal.
 
-*De versie van de installatie kopie is niet gevonden.*
+*Publicatie profiel regio's van de galerie afbeelding <publishingRegions \> moet de locatie van de installatie kopie versie <sourceRegion bevatten\>*  
+**Oorzaak** : de locatie van de bron afbeelding (<sourceRegion \> ) moet zijn opgenomen in de lijst <publishingRegions \>  
+**Tijdelijke oplossing** : Neem < sourceRegion \> op in de \> lijst <publishingRegions.
 
-Controleer of de regio waarvoor u een VM of virtuele machine wilt maken, is opgenomen in de lijst met doel regio's van de versie van de installatie kopie. Als de regio al in de lijst met doel regio's staat, controleert u of de replicatie taak is voltooid. U kunt de vlag **-ReplicationStatus** gebruiken om te controleren of de replicatie naar alle opgegeven doel regio's is voltooid. 
+*De waarde <waarde \> van de para meter <eigenschap \> valt buiten het bereik. De waarde moet liggen tussen <minValue \> en <maxValue \> , inclusief.*  
+**Oorzaak** : <waarde \> ligt buiten het bereik van mogelijke waarden voor de eigenschap <\> .  
+**Tijdelijke oplossing** : Kies een waarde die binnen het bereik van <minValue ligt \> en <maxValue bevat \> .
 
-*Het maken van de virtuele machine of de VM-schaalset neemt veel tijd in beslag.*
+*Kan de bron <resourceID \> niet vinden. Controleer of de bron bestaat en zich in dezelfde regio bevindt als de versie van de galerie-installatie kopie die wordt gemaakt.*  
+**Oorzaak** : er bevindt zich geen bron op <ResourceID \> of de bron op <resourceID bevindt zich \> niet in dezelfde regio als de galerie afbeelding die wordt gemaakt.  
+**Tijdelijke oplossing** : Controleer of de <resourceID \> juist is en of de bron regio van de versie van de galerie afbeelding hetzelfde is als de regio van de <resourceID\>
 
-Controleer of de **OSTYPE** van de versie van de installatie kopie die u probeert te maken van de virtuele machine en de VM-schaalset hetzelfde **OSTYPE** heeft van de bron die u hebt gebruikt voor het maken van de installatie kopie versie. 
+*Het wijzigen van de eigenschap ' galleryImageVersion. Properties. storageProfile. <disk image \> . source.id ' is niet toegestaan.*  
+**Oorzaak** : de bron-id van een galerie-afbeeldings versie kan niet worden gewijzigd nadat deze is gemaakt.  
+**Tijdelijke oplossing** : Zorg ervoor dat de bron-id hetzelfde is als de bestaande bron-id of wijzig het versie nummer van de versie van de installatie kopie.
+
+*Er zijn dubbele LUN-nummers gedetecteerd op de invoer gegevens schijven. LUN-nummer moet uniek zijn voor elke gegevens schijf.*  
+**Oorzaak** : wanneer u een installatie kopie versie maakt met behulp van een lijst met schijven en/of schijf momentopnamen, hebben twee of meer schijven of moment opnamen van schijven dezelfde LUN-nummers.  
+**Tijdelijke oplossing** : u kunt dubbele LUN-nummers verwijderen of wijzigen.
+
+*Er zijn dubbele bron-id's gevonden op de invoer schijven. De bron-id moet uniek zijn voor elke schijf.*  
+**Oorzaak** : wanneer u een installatie kopie versie maakt met behulp van een lijst met schijven en/of schijf momentopnamen, hebben twee of meer schijven of moment opnamen van schijven dezelfde resource-id.  
+**Tijdelijke oplossing** : Verwijder de bron-id's van de dubbele en andere schijven.
+
+*De eigenschaps-id <resourceID \> op het pad Properties. storageProfile. <diskImages \> . source.id is ongeldig. U verwacht een volledig gekwalificeerde resource-id die begint met '/subscriptions/{subscriptionId} ' of '/providers/{resourceProviderNamespace}/'.*  
+**Oorzaak** : de <resourceID \> heeft een onjuiste indeling.  
+**Tijdelijke oplossing** : Controleer of resourceID juist is.
+
+*De bron-id: <resourceID \> moet een beheerde installatie kopie, een virtuele machine of een andere versie van de galerie-afbeelding zijn*  
+**Oorzaak** : de <resourceID \> heeft een onjuiste indeling.  
+**Tijdelijke oplossing** : als u een VM, beheerde installatie kopie of galerie-afbeelding versie als bron afbeelding gebruikt, controleert u of de resource-id van de versie van de virtuele machine, de beheerde installatie kopie of de installatie kopie juist is.
+
+*De bron-id: <resourceID \> moet een beheerde schijf of moment opname zijn.*  
+**Oorzaak** : de <resourceID \> heeft een onjuiste indeling.  
+**Tijdelijke oplossing** : als u schijven en/of schijf momentopnamen als bronnen voor de installatie kopie versie gebruikt, controleert u of de bron-id's van de schijven en/of schijf momentopnamen juist zijn.
+
+*Kan geen versie van de galerie afbeelding maken van: <resourceID \> sinds de status van het besturings systeem in de bovenliggende galerie afbeelding (<OsState \_ 1 \> ) niet <OsState \_ 2 \> .*  
+**Oorzaak** : de status van het besturings systeem (gegeneraliseerd of gespecialiseerd) komt niet overeen met de status van het besturings systeem dat is opgegeven in de definitie van de installatie kopie.  
+**Tijdelijke oplossing** : Kies een bron op basis van een virtuele machine met de status van het besturings systeem <OsState \_ 1 \> of maak een nieuwe definitie van de installatie kopie voor vm's op basis van <OsState \_ 2 \> .
+
+*De resource met de id <resourceID \> heeft een andere Hyper Visor generatie [' <V # \_ 1 \> ] dan de bovenliggende galerie installatie kopie van Hyper visor [' <V # \_ 2 \> ']*  
+**Oorzaak** : de Hyper Visor generatie van de installatie kopie versie komt niet overeen met de Hyper Visor generatie die is opgegeven in de definitie van de installatie kopie. Het besturings systeem voor de installatie kopie definitie is <V # \_ 1 \> en het besturings systeem van de installatie kopie versie is <V # \_ 2 \> .  
+**Tijdelijke oplossing** : Kies een bron met dezelfde Hyper Visor genereren als de definitie van de installatie kopie of maak/Kies een nieuwe definitie van de installatie kopie die dezelfde Hyper Visor genereert als de versie van de installatie kopie.
+
+*De resource met id <resourceID \> heeft een ander type besturings systeem [<OsType \_ 1 \> ] dan de bovenliggende galerie installatie kopie van het besturings systeem type [' <OsType \_ 2 \> ']*  
+**Oorzaak** : de Hyper Visor generatie van de installatie kopie versie komt niet overeen met de Hyper Visor generatie die is opgegeven in de definitie van de installatie kopie. Het besturings systeem voor de installatie kopie definitie is <OsType \_ 1 \> en het besturings systeem van de installatie kopie versie is <OsType \_ 2 \> .  
+**Tijdelijke oplossing** : Kies een bron met hetzelfde besturings systeem (Linux/Windows) als de definitie van de installatie kopie of maak/Kies een nieuwe definitie van de installatie kopie die hetzelfde besturings systeem als de installatie kopie versie heeft.
+
+*De virtuele bron machine <resourceID \> kan geen tijdelijke besturingssysteem schijf bevatten.*  
+**Oorzaak** : de bron op ' <resourceID \> ' bevat een kortstondige besturingssysteem schijf. De galerie met gedeelde afbeeldingen biedt momenteel geen ondersteuning voor kortstondige besturingssysteem schijf.  
+**Tijdelijke oplossing** : Kies een andere bron op basis van een virtuele machine die geen tijdelijke besturingssysteem schijf gebruikt.
+
+*De virtuele bron machine <resourceID \> mag geen schijf [' <diskID \> '] bevatten die is opgeslagen in een UltraSSD-account type.*  
+**Oorzaak** : de schijf <diskID \> is een UltraSSD-schijf. De galerie met gedeelde afbeeldingen biedt momenteel geen ondersteuning voor Ultra-SSD-schijven.  
+**Tijdelijke oplossing** : gebruik een bron die alleen Premium-SSD, Standard-SSD en/of Standard-HDD-Managed disks bevat.
+
+*Virtuele bron machine <resourceID \> moet worden gemaakt op basis van Managed disks.*  
+**Oorzaak** : de virtuele machine in <resourceID \> maakt gebruik van niet-beheerde schijven.  
+**Tijdelijke oplossing** : gebruik een bron op basis van een virtuele machine die alleen Premium-SSD, Standard-SSD en/of Standard-HDD-Managed disks bevat.
+
+*Te veel aanvragen op de bron <resourceID \> . Verminder het aantal aanvragen op de bron of wacht enige tijd voordat u het opnieuw probeert.*  
+**Oorzaak** : de bron voor deze installatie kopie versie wordt momenteel beperkt wegens te veel aanvragen.  
+**Tijdelijke oplossing** : Probeer later de installatie kopie versie te maken.
+
+*De schijf versleuteling set <diskEncryptionSetID \> moet zich in hetzelfde abonnement <subscriptionID bevallen \> als de resource voor de galerie.*  
+**Oorzaak** : schijf versleutelings sets kunnen alleen worden gebruikt in hetzelfde abonnement en dezelfde regio als waarin ze zijn gemaakt.  
+**Tijdelijke oplossing** : Maak of gebruik een versleutelings reeks in hetzelfde abonnement en dezelfde regio als de installatie kopie versie
+
+*Versleutelde Bron: ' <resourceID \> ' bevindt zich in een andere abonnements-id dan het huidige versie abonnement van de galerie-installatie kopie ' <subscriptionID \_ 1 \> '. Probeer het opnieuw met een niet-versleutelde bron (nen) of gebruik het bron abonnement <subcriptionID \_ 2 \> om de versie van de galerie afbeelding te maken.*  
+**Oorzaak** : de galerie met gedeelde installatie kopieën biedt momenteel geen ondersteuning voor het maken van installatie kopieën in een ander abonnement van een andere bron installatie kopie als de bron installatie kopie is versleuteld.  
+**Tijdelijke oplossing** : gebruik een niet-versleutelde bron of maak de installatie kopie versie in hetzelfde abonnement als de bron.
+
+*De schijf versleutelings <diskEncryptionSetID \> is niet gevonden.*  
+**Oorzaak** : de schijf versleuteling is mogelijk onjuist.  
+**Tijdelijke oplossing** : Controleer of de resource-id van de ingestelde schijf versleuteling juist is.
+
+*De naam van de installatie kopie versie is ongeldig. De naam van de installatie kopie versie moet volgen op primair (int). Secundair (int). De indeling van de patch (int), bijvoorbeeld: 1.0.0, 2018.12.1 etc.*  
+**Oorzaak** : de geldige indeling voor een afbeeldings versie is 3 gehele getallen gescheiden door een punt. De versie naam van de installatie kopie voldoet niet aan de geldige indeling.  
+**Tijdelijke oplossing** : gebruik een installatie kopie versie naam die de indeling primair (int) volgt. Secundair (int). Patch (int), bijvoorbeeld: 1.0.0. of 2018.12.1.
+
+*De waarde van de para meter galleryArtifactVersion. Properties. publishingProfile. targetRegions. encryption. dataDiskImages. diskEncryptionSetId is ongeldig*  
+**Oorzaak** : de resource-id van de schijf versleuteling die wordt gebruikt op een installatie kopie van de gegevens schijf gebruikt een ongeldige indeling.  
+**Tijdelijke oplossing** : Zorg ervoor dat de resource-id van de ingestelde schijf versleuteling de indeling/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.Compute/<diskEncryptionSetName volgt \> .
+
+*De waarde van de para meter galleryArtifactVersion. Properties. publishingProfile. targetRegions. encryption. osDiskImage. diskEncryptionSetId is ongeldig.* 
+ **Oorzaak** : de resource-id van de schijf versleuteling die op de besturingssysteem schijf installatie kopie wordt gebruikt, gebruikt een ongeldige indeling  
+**Tijdelijke oplossing** : Zorg ervoor dat de resource-id van de ingestelde schijf versleuteling de indeling/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.Compute/<diskEncryptionSetName volgt \> .
+
+*Kan geen nieuwe gegevens schijf opgeven versleutelings-LUN [<nummer \> ] met een schijf versleutelings in regio [<regio \> ] voor de update van de installatie kopie van de afbeeldings versie. Als u deze versie wilt bijwerken, verwijdert u de nieuwe LUN. Als u de versleutelings instellingen voor de gegevens schijf wilt wijzigen, moet u een nieuwe versie van de galerie-installatie kopie met de juiste instellingen maken.*  
+**Oorzaak** : versleuteling toegevoegd aan de gegevens schijf van een bestaande installatie kopie versie. Kan geen versleuteling toevoegen aan een bestaande versie van de installatie kopie.  
+**Tijdelijke oplossing** : Maak een nieuwe versie van de galerie-afbeelding of verwijder de toegevoegde versleutelings instellingen.
+
+*De versie bron van de galerie artefact kan alleen direct onder storageProfile of in een afzonderlijk besturings systeem of gegevens schijven worden opgegeven. Er kan slechts één bron type (gebruikers installatie kopie, moment opname, schijf, virtuele machine) worden gegeven.*  
+**Oorzaak** : de bron-ID ontbreekt.  
+**Tijdelijke oplossing** : Zorg ervoor dat de bron-id van de bron aanwezig is.
+
+*Bron is niet gevonden: <resourceID \> . Controleer of de bron bestaat.*  
+**Oorzaak** : de resourceID van de bron is mogelijk onjuist.  
+**Tijdelijke oplossing** : Zorg ervoor dat de resourceID van de bron juist is.
+
+*Er is een schijf versleutelings vereist voor de schijf ' galleryArtifactVersion. Properties. publishingProfile. targetRegions. encryption. osDiskImage. diskEncryptionSetId ' in de doel regio <regio \_ 1 \> omdat de schijf versleuteling set ' <diskEncryptionSetId \> ' wordt gebruikt voor de bijbehorende schijf in regio ' <regio \_ 2 \> '*  
+**Oorzaak** : versleuteling is gebruikt op de besturingssysteem schijf in <regio \_ 2 \> , maar niet in <regio \_ 1 \> .  
+**Tijdelijke oplossing** : als u versleuteling gebruikt op de besturingssysteem schijf, gebruikt u versleuteling in alle regio's.
+
+*Er is een schijf versleutelings vereist voor de schijf ' LUN <number \> ' in de doel regio <regio \_ 1 \> omdat de set ' <diskEncryptionSetID \> ' van de schijf versleuteling wordt gebruikt voor de bijbehorende schijf in regio ' <regio \_ 2 \> '*  
+**Oorzaak** : versleuteling is gebruikt op de gegevens schijf op LUN <nummer \> in <regio \_ 2 \> , maar niet in <regio \_ 1 \> .  
+**Tijdelijke oplossing** : als u versleuteling op een gegevens schijf gebruikt, gebruikt u versleuteling in alle regio's.
+
+*Er is een ongeldige LUN [<number \> ] opgegeven in encryption. dataDiskImages. Het LUN moet een van de volgende waarden zijn: [' 0, 9 '].*  
+**Oorzaak** : het LUN-nummer dat is opgegeven voor de versleuteling, komt niet overeen met een van de LUN-nummers voor schijven die zijn gekoppeld aan de virtuele machine.  
+**Tijdelijke oplossing** : Wijzig het LUN-nummer in de versleuteling in het LUN-nummer van een gegevens schijf die aanwezig is in de virtuele machine.
+
+*Er zijn dubbele lun's ' <number \> ' opgegeven in doel regio ' <regio \> ' Encryption. dataDiskImages.*  
+**Oorzaak** : de versleutelings instellingen die in de <regio worden gebruikt, hebben \> ten minste twee keer een LUN-nummer opgegeven.  
+**Tijdelijke oplossing** : Wijzig het LUN-nummer in <regio \> om ervoor te zorgen dat alle LUN-nummers uniek zijn in <regio \> .
+
+*OSDiskImage en DataDiskImage kunnen niet verwijzen naar dezelfde BLOB <sourceID\>*  
+**Oorzaak** : de bron van de besturingssysteem schijf en ten minste één gegevens schijf zijn niet uniek.  
+**Tijdelijke oplossing** : Wijzig de bron voor de besturingssysteem schijf en/of gegevens schijven om ervoor te zorgen dat de besturingssysteem schijf en elke gegevens schijf uniek zijn.
+
+*Dubbele regio's zijn niet toegestaan in doel publicatie regio's.*  
+**Oorzaak** : een regio wordt meer dan eens in de publicatie regio's weer gegeven.  
+**Tijdelijke oplossing** : Verwijder de dubbele regio.
+
+*Het is niet toegestaan om nieuwe gegevens schijven toe te voegen of het LUN van een gegevens schijf in een bestaande installatie kopie te wijzigen.*  
+**Oorzaak** : een update aanroep naar de versie van de installatie kopie bevat een nieuwe gegevens schijf of heeft een nieuw LUN-nummer voor een schijf.  
+**Tijdelijke oplossing** : gebruik de LUN-nummers en gegevens schijven van de bestaande versie van de installatie kopie.
+
+*De schijf versleutelings <diskEncryptionSetID \> moet zich in hetzelfde abonnement be<subscriptionID \> als de resource van de galerie.*  
+**Oorzaak** : de galerie met gedeelde installatie kopieën biedt momenteel geen ondersteuning voor het gebruik van een schijf versleuteling die is ingesteld in een ander abonnement.  
+**Tijdelijke oplossing** : Maak de installatie kopie versie en schijf versleuteling die in hetzelfde abonnement zijn ingesteld.
+
+## <a name="issues-creating-or-updating-a-vm-or-scale-sets-from-image-version"></a>Problemen met het maken of bijwerken van een virtuele machine of schaal sets vanuit een installatie kopie versie ##
+
+*De client is gemachtigd om de actie ' micro soft. computes/afbeeldingen/versies/lezen ' op het bereik <resourceID uit te voeren \> , maar de huidige tenant <tenantId1 \> is niet gemachtigd om toegang te krijgen tot het gekoppelde abonnement <subscriptionId2 \> .*  
+**Oorzaak** : de virtuele machine of schaalset is gemaakt met behulp van een SIG-installatie kopie in een andere Tenant. U hebt geprobeerd een wijziging aan te brengen in de virtuele machine of schaalset, maar u hebt geen toegang tot het abonnement dat eigenaar is van de installatie kopie.  
+**Tijdelijke oplossing** : Neem contact op met de eigenaar van het abonnement van de versie van de installatie kopie om Lees toegang te verlenen tot de installatie kopie versie.
+
+*De galerie afbeelding <resourceID \> is niet beschikbaar in <regio \> regio. Neem contact op met de eigenaar van de afbeelding om deze regio te repliceren, of wijzig uw aangevraagde regio.*  
+**Oorzaak** : de virtuele machine wordt gemaakt in een regio die zich niet in de lijst met gepubliceerde regio's voor de galerie afbeelding bevindt.  
+**Tijdelijke oplossing** : repliceer de installatie kopie naar de regio of maak een virtuele machine in een van de regio's in de publicatie regio's van de galerie-afbeelding.
+
+*De para meter osProfile is niet toegestaan.*  
+**Oorzaak** : gebruikers naam, wacht woord of SSH-sleutels zijn opgegeven voor een virtuele machine die is gemaakt op basis van een gespecialiseerde installatie kopie versie.  
+**Tijdelijke oplossing** : Neem geen beheerders naam, wacht woord of SSH-sleutel op als u van plan bent om een virtuele machine te maken op basis van die installatie kopie. Gebruik anders een gegeneraliseerde installatie kopie versie en geef de gebruikers naam, het wacht woord of de SSH-sleutels op.
+
+*De vereiste para meter osProfile ontbreekt (null).*  
+**Oorzaak** : de VM is gemaakt op basis van een gegeneraliseerde installatie kopie en er ontbreken beheerders naam, wacht woord of SSH-sleutels. Aangezien gegeneraliseerde installatie kopieën geen beheerders naam, wacht woord of SSH-sleutels behouden, moeten deze velden worden opgegeven tijdens het maken van een virtuele machine of schaalset.  
+**Tijdelijke oplossing** : Geef de gebruikers naam, het wacht woord of de SSH-sleutels op of gebruik een gespecialiseerde installatie kopie versie.
+
+*Kan geen versie van de galerie afbeelding maken van: <resourceID \> omdat de besturingssysteem status in de bovenliggende galerie-afbeelding (' gespecialiseerd ') niet ' gegeneraliseerd ' is.*  
+**Oorzaak** : de versie van de installatie kopie is gemaakt op basis van een gegeneraliseerde bron, maar de bovenliggende definitie is gespecialiseerd.  
+**Tijdelijke oplossing** : Maak de installatie kopie versie met behulp van een gespecialiseerde bron of gebruik een bovenliggende, algemene definitie.
+
+*Kan de Schaalset voor virtuele machines <vmssName niet bijwerken \> omdat de huidige status van het besturings systeem van de VM-schaalset niet is gegeneraliseerd en verschilt van de bijgewerkte versie van het besturings systeem van de galerie-installatie kopie die gespecialiseerd is.*  
+**Oorzaak** : de huidige bron installatie kopie voor de schaalset is een gegeneraliseerde bron installatie kopie, maar wordt bijgewerkt met een bron installatie kopie die speciaal is bedoeld. De huidige bron installatie kopie en de nieuwe bron installatie kopie voor een schaalset moeten dezelfde status hebben.  
+**Tijdelijke oplossing** : gebruik een algemene versie van de installatie kopie om de schaalset bij te werken.
+
+*Schijf Encryption set <diskEncryptionSetId \> in de galerie met gedeelde installatie kopieën <versionId \> behoort tot het abonnement <subscriptionId1 \> en kan niet worden gebruikt met resource ' ' in het abonnement <subscriptionId2\>*  
+**Oorzaak** : de schijf versleuteling die is gebruikt voor het versleutelen van de versie van de installatie kopie bevindt zich in een ander abonnement dan het abonnement om de installatie kopie versie te hosten.  
+**Tijdelijke oplossing** : gebruik hetzelfde abonnement voor de installatie kopie versie en de schijf versleutelings.
+
+*Het maken van de virtuele machine of de VM-schaalset neemt veel tijd in beslag.*  
+**Tijdelijke oplossing** : Controleer of de **OSTYPE** van de versie van de installatie kopie die u probeert te maken van de virtuele machine en de VM-schaalset hetzelfde **OSTYPE** heeft van de bron die u hebt gebruikt voor het maken van de installatie kopie versie. 
+
+## <a name="issues-creating-a-disk-from-an-image-version"></a>Problemen met het maken van een schijf uit een installatie kopie versie ##
+
+*De waarde van de para meter imageReference is ongeldig.*  
+**Oorzaak** : u hebt geprobeerd te exporteren vanuit een SIG-installatie kopie versie naar een schijf, maar u hebt een LUN-positie gebruikt die niet voor komt in de installatie kopie.    
+**Tijdelijke oplossing** : Controleer de versie van de installatie kopie om te zien welke LUN-posities in gebruik zijn.
 
 ## <a name="unable-to-share-resources"></a>Kan geen resources delen
 
@@ -95,7 +316,7 @@ Het delen van de galerie met gedeelde installatie kopieën, de definitie van de 
 
 ## <a name="replication-is-slow"></a>De replicatie is traag
 
-Gebruik de markering **--expand ReplicationStatus** om te controleren of de replicatie naar alle opgegeven doel regio's is voltooid. Als dat niet het geval is, wacht u tot 6 uur totdat de taak is voltooid. Als dit mislukt, moet u de opdracht opnieuw activeren om de installatie kopie versie te maken en te repliceren. Als er sprake is van een groot aantal doel regio's, wordt de versie van de installatie kopie gerepliceerd naar. Overweeg de replicatie in fasen uit te voeren.
+Gebruik de markering **--expand ReplicationStatus** om te controleren of de replicatie naar alle opgegeven doel regio's is voltooid. Als dat niet het geval is, wacht u tot 6 uur totdat de taak is voltooid. Als dit mislukt, moet u de opdracht opnieuw activeren om de installatie kopie versie te maken en te repliceren. Als er veel doel regio's zijn waarnaar de versie van de installatie kopie wordt gerepliceerd, kunt u overwegen om de replicatie in fasen uit te voeren.
 
 ## <a name="azure-limits-and-quotas"></a>Limieten en quota in Azure 
 

@@ -3,15 +3,16 @@ title: De component FROM in Azure Cosmos DB
 description: Meer informatie over de SQL-syntaxis en voor beeld voor de component FROM voor Azure Cosmos DB. In dit artikel ziet u ook voor beelden van bereik resultaten en het ophalen van subitems met behulp van de component FROM.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 967e07e55599be0a614e0b6097ae4745f6c7081f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3844a628a8e3773821736324bfdaab3f64ff9da5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100079"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336245"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>De component FROM in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

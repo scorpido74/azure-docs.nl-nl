@@ -3,32 +3,19 @@ title: VM-extensie inschakelen met behulp van Azure CLI
 description: In dit artikel wordt beschreven hoe u virtuele-machine uitbreidingen implementeert voor Azure Arc-servers die worden uitgevoerd in hybride Cloud omgevingen met behulp van de Azure CLI.
 ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f09914f246635f07b3c51c682bd67591c706732
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 99504c86046c1ef34eeab500a703b9a028cb46fb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462904"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336726"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure-VM-extensies inschakelen met behulp van Azure CLI
 
 In dit artikel wordt beschreven hoe u Azure-VM-extensies die worden ondersteund door Azure Arc-servers, kunt implementeren en verwijderen naar een virtuele Linux-of Windows-machine met behulp van Azure CLI.
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
-
-## <a name="prerequisites"></a>Vereisten
-
-[Installeer de Azure CLI](/cli/azure/install-azure-cli).
-
-Voordat u de Azure CLI gebruikt om VM-extensies te beheren op uw hybride server die wordt beheerd door servers met Arc-functionaliteit, moet u de `ConnectedMachine` cli-extensie installeren. Voer de volgende opdracht uit op de server met Arc-functionaliteit:
-
-```azurecli
-az extension add connectedmachine
-```
-
-Wanneer de installatie is voltooid, wordt het volgende bericht weer gegeven:
-
-`The installed extension `connectedmachine` is experimental and not covered by customer support. Please use with discretion.`
 
 ## <a name="enable-extension"></a>Extensie inschakelen
 

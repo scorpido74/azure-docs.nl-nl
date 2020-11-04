@@ -4,14 +4,15 @@ description: Overzicht van algemene ontwerp patronen voor wijzigingen in feeds
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 0c890d50bbfe498f9d90698394b2cc2d373c0d8b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 443d00e61e593daacca04a4451b90bb78cc7d854
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072991"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334579"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Ontwerp patronen voor feeds wijzigen in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +40,7 @@ U kunt ook selectief een melding activeren of een aanroep naar een API verzenden
 De Azure Cosmos DB wijzigings feed kan worden gebruikt voor realtime-stroom verwerking voor IoT of realtime analyse verwerking op operationele gegevens.
 U kunt bijvoorbeeld gebeurtenis gegevens van apparaten, Sens oren, infra structuur en toepassingen ontvangen en opslaan en deze gebeurtenissen in realtime verwerken met [Spark](../hdinsight/spark/apache-spark-overview.md). De volgende afbeelding laat zien hoe u een lambda-architectuur kunt implementeren met behulp van de Azure Cosmos DB via een wijzigings feed:
 
-:::image type="content" source="./media/change-feed/lambda.png" alt-text="Azure Cosmos DB Change feed gebruiken om realtime analyse en op gebeurtenissen gebaseerde computer scenario's uit te voeren" border="false":::
+:::image type="content" source="./media/change-feed/lambda.png" alt-text="Lambda-pijp lijn op basis van Azure Cosmos DB voor opname en query" border="false":::
 
 In veel gevallen ontvangen implementaties voor stroom verwerking eerst een groot aantal inkomende gegevens in een tijdelijke berichten wachtrij, zoals Azure Event hub of Apache Kafka. De wijzigings feed is een uitstekend alternatief als gevolg van de mogelijkheden van Azure Cosmos DB om een aanhoudende hoge frequentie van gegevens opname te ondersteunen met gegarandeerde lage lees-en schrijf latentie. De voor delen van de Azure Cosmos DB wijzigings feed voor een berichten wachtrij zijn onder andere:
 

@@ -3,16 +3,17 @@ title: StartsWith in Azure Cosmos DB-query taal
 description: Meer informatie over de SQL-functie STARTSWITH in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c1ef1a815469e7fb2dd10311b92a28b828772be7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7217a8416354de260f958bfb5b980a8fdc391618
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079900"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334919"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +32,7 @@ STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
    Is een teken reeks expressie.
   
 *str_expr2*  
-   Is een teken reeks expressie die moet worden vergeleken met het begin van *str_expr1* .
+   Is een teken reeks expressie die moet worden vergeleken met het begin van *str_expr1*.
 
 *bool_expr* Optionele waarde voor het negeren van case. Als deze eigenschap is ingesteld op True, wordt in STARTSWITH een hoofdletter gevoelige zoek opdracht uitgevoerd. Indien niet opgegeven, is deze waarde false.
 

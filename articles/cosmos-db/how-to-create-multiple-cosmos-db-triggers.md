@@ -3,16 +3,17 @@ title: Meerdere onafhankelijke Azure Functions triggers maken voor Cosmos DB
 description: Meer informatie over het configureren van meerdere onafhankelijke Azure Functions triggers voor Cosmos DB voor het maken van op gebeurtenissen gebaseerde architecturen.
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14c18d0cae335f96cc2d95c79bcf39bf85ef6a2b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101541"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336670"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Meerdere Azure Functions triggers maken voor Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +30,7 @@ Wanneer u op gebeurtenissen gebaseerde serverloze stromen bouwt met behulp [van 
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Containers voor meerdere triggers optimaliseren
 
-Gezien de *vereisten* van de Azure functions trigger voor Cosmos DB hebben we een tweede container nodig om de status op te slaan, ook wel de *container leases* . Betekent dit dat u een afzonderlijke leases-container nodig hebt voor elke Azure-functie?
+Gezien de *vereisten* van de Azure functions trigger voor Cosmos DB hebben we een tweede container nodig om de status op te slaan, ook wel de *container leases*. Betekent dit dat u een afzonderlijke leases-container nodig hebt voor elke Azure-functie?
 
 Hier hebt u twee opties:
 
