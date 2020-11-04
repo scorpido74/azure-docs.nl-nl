@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure IoT Hub?
       href: about-iot-hub.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Telemetrie verzenden
@@ -74,7 +74,7 @@
           href: tutorial-routing-view-message-routing-results.md
     - name: Berichtverrijkingen
       href: tutorial-message-enrichments.md
-    - name: Metrische gegevens en diagnostische logboeken gebruiken
+    - name: Metrische gegevens en logboeken gebruiken
       href: tutorial-use-metrics-and-diags.md
     - name: Handmatige failover uitvoeren
       href: tutorial-manual-failover.md

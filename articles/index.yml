@@ -13,12 +13,12 @@ metadata:
   ms.date: 09/25/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 8dd08112bbfd56ddccb14cef1123b10ed7907a95
-  ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+  ms.openlocfilehash: b29654a0eb305d2e20dcc8aed5c60d96b7ca3268
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/21/2020
-  ms.locfileid: "92329203"
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93313263"
 highlightedContent:
   items:
   - title: Introductiehandleiding voor Azure-ontwikkelaars
@@ -643,7 +643,7 @@ productDirectory:
     - developer-tools
     url: azure-app-configuration/index.yml
   - title: Azure Data Studio
-    summary: Een lichtgewicht editor die SQL-query's op aanvraag kan uitvoeren en resultaten kan weergeven en opslaan als tekst, JSON of Excel.
+    summary: Een lichtgewicht editor die query's op serverloze SQL-pools kan uitvoeren en resultaten kan weergeven en opslaan als tekst, JSON of Excel.
     imageSrc: https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg
     azureCategories:
     - developer-tools

@@ -361,7 +361,7 @@
               href: database/network-access-controls-overview.md
             - name: DNS-aliassen
               href: database/dns-alias-overview.md
-            - name: vNet-eindpunten
+            - name: VNet-eindpunten
               href: database/vnet-service-endpoint-rule-overview.md
             - name: Private Link
               href: database/private-endpoint-overview.md
@@ -993,6 +993,8 @@
                   href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Beheer
               items:
+                - name: SQL IaaS Agent-extensie
+                  href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                 - name: Toegewezen host
                   href: virtual-machines/windows/dedicated-host.md
                 - name: Ondersteuning voor SQL 2008 en R2 verlengen
@@ -1021,12 +1023,14 @@
                   href: virtual-machines/windows/change-sql-server-version.md
                 - name: Storage
                   href: virtual-machines/windows/storage-configuration.md
+                - name: Automatisch patchen
+                  href: virtual-machines/windows/automated-patching.md
                 - name: Integratie van Azure Sleutelkluis
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Opslag naar UltraSSD migreren
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: Registreren met SQL-VM RP
-                  displayName: 'resource provider, registration'
+                - name: SQL IaaS Agent-extensie installeren
+                  displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: Automatische registratie
                       href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
@@ -1034,12 +1038,6 @@
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: Meerdere VM's bulksgewijs registreren
                       href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-                - name: Beheertaken automatiseren
-                  items:
-                    - name: De SQL Server IaaS Agent-extensie gebruiken
-                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
-                    - name: Automatisch patchen
-                      href: virtual-machines/windows/automated-patching.md
             - name: Migreren
               items:
                 - name: SQL Server-database naar VM

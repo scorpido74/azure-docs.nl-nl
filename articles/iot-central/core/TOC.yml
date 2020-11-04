@@ -221,6 +221,8 @@
           href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Naslaginformatie over de IoT Central-API
       href: /rest/api/iotcentral/
+    - name: Locatie van klantgegevens
+      href: iot-central-customer-data-residency.md
     - name: Aanvragen van klantgegevens
       href: iot-central-customer-data-requests.md
     - name: Ondersteunde browsers
