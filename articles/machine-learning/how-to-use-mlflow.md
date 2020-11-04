@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a81e60e3bb7a1b0f34a29ccd9cebf3d82279027e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: cf0817ad1e9fae901bfe2b4a174d95a4f673e4c0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676647"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319013"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Spoor experiment en implementeer ML-modellen met MLflow en Azure Machine Learning (preview-versie)
 
@@ -24,9 +24,9 @@ In dit artikel leert u hoe u de tracerings-URI en logboek registratie-API van ML
 
 Ondersteunde mogelijkheden zijn onder andere: 
 
-+ Meet en log-gegevens en artefacten in uw [Azure machine learning-werk ruimte](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)bijhouden. Als u MLflow tracking al gebruikt voor uw experimenten, biedt de werk ruimte een gecentraliseerde, veilige en schaal bare locatie voor het opslaan van metrische gegevens en modellen voor trainingen.
++ Meet en log-gegevens en artefacten in uw [Azure machine learning-werk ruimte](./concept-azure-machine-learning-architecture.md#workspace)bijhouden. Als u MLflow tracking al gebruikt voor uw experimenten, biedt de werk ruimte een gecentraliseerde, veilige en schaal bare locatie voor het opslaan van metrische gegevens en modellen voor trainingen.
 
-+ Verzend trainings taken met MLflow-projecten met Azure Machine Learning back-end-ondersteuning (preview). U kunt taken lokaal verzenden met Azure Machine Learning tracking of uw uitvoeringen migreren naar de Cloud, zoals via een [Azure machine learning reken kracht](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-sdk#amlcompute).
++ Verzend trainings taken met MLflow-projecten met Azure Machine Learning back-end-ondersteuning (preview). U kunt taken lokaal verzenden met Azure Machine Learning tracking of uw uitvoeringen migreren naar de Cloud, zoals via een [Azure machine learning reken kracht](./how-to-create-attach-compute-cluster.md).
 
 + Modellen in MLflow en Azure Machine Learning model register bijhouden en beheren.
 
@@ -48,7 +48,7 @@ In het volgende diagram ziet u hoe u met MLflow tracking de metrische gegevens v
 
  De volgende tabel bevat een overzicht van de verschillende clients die Azure Machine Learning kunnen gebruiken en hun respectieve functie mogelijkheden.
 
- MLflow tracking biedt metrische logboek registratie en opslag functies voor artefacten die alleen beschikbaar zijn via de [python-SDK van Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
+ MLflow tracking biedt metrische logboek registratie en opslag functies voor artefacten die alleen beschikbaar zijn via de [python-SDK van Azure machine learning](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
 | Mogelijkheid | MLflow tracking &-implementatie | Azure Machine Learning python-SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
@@ -65,14 +65,14 @@ In het volgende diagram ziet u hoe u met MLflow tracking de metrische gegevens v
 ## <a name="prerequisites"></a>Vereisten
 
 * Installeer het `azureml-mlflow`-pakket. 
-    * Dit pakket maakt automatisch deel uit `azureml-core` van de [Azure machine learning PYTHON-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), waarmee de connectiviteit voor MLflow wordt geboden om toegang te krijgen tot uw werk ruimte.
+    * Dit pakket maakt automatisch deel uit `azureml-core` van de [Azure machine learning PYTHON-SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), waarmee de connectiviteit voor MLflow wordt geboden om toegang te krijgen tot uw werk ruimte.
 * [Maak een Azure machine learning-werkruimte](how-to-manage-workspace.md).
 
 ## <a name="track-local-runs"></a>Lokale uitvoeringen bijhouden
 
 MLflow tracking met Azure Machine Learning kunt u de vastgelegde metrische gegevens en artefacten van uw lokale uitvoeringen opslaan in uw Azure Machine Learning-werk ruimte.
 
-Importeer de `mlflow` klassen en en [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true) Configureer de MLflow om uw werk ruimte te openen.
+Importeer de `mlflow` klassen en en [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) Configureer de MLflow om uw werk ruimte te openen.
 
 In de volgende code wijst de `get_mlflow_tracking_uri()` methode een uniek tracerings-URI-adres toe aan de werk ruimte `ws` en `set_tracking_uri()` wijst de tracerings-URI van de MLflow naar dat adres.
 
@@ -119,7 +119,7 @@ dependencies:
     - numpy
 ```
 
-Configureer uw reken-en trainings uitvoerings omgeving in uw script met de- [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) klasse. Maak vervolgens  [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py&preserve-view=true) met uw externe Compute als het reken doel.
+Configureer uw reken-en trainings uitvoerings omgeving in uw script met de- [`Environment`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) klasse. Maak vervolgens  [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) met uw externe Compute als het reken doel.
 
 ```Python
 import mlflow
@@ -146,7 +146,7 @@ Installeer het `azureml-mlflow` pakket om MLflow tracking te gebruiken met Azure
 pip install azureml-mlflow
 ```
 
-Importeer de `mlflow` klassen en en [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true) Configureer de MLflow om uw werk ruimte te openen.
+Importeer de `mlflow` klassen en en [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) Configureer de MLflow om uw werk ruimte te openen.
 
 ```Python
 import mlflow
@@ -259,7 +259,7 @@ In het volgende diagram ziet u dat u met de MLflow implementation API uw bestaan
 
 ### <a name="deploy-to-aci"></a>Implementeren naar ACI
 
-Stel uw implementatie configuratie in met de methode [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
+Stel uw implementatie configuratie in met de methode [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -290,7 +290,7 @@ webservice.wait_for_deployment(show_output=True)
 
 ### <a name="deploy-to-aks"></a>Implementeren naar AKS
 
-Als u wilt implementeren op AKS, moet u eerst een AKS-cluster maken. Maak een AKS-cluster met behulp van de methode [ComputeTarget. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-workspace--name--provisioning-configuration-) . Het kan 20-25 minuten duren om een nieuw cluster te maken.
+Als u wilt implementeren op AKS, moet u eerst een AKS-cluster maken. Maak een AKS-cluster met behulp van de methode [ComputeTarget. Create ()](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) . Het kan 20-25 minuten duren om een nieuw cluster te maken.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -310,7 +310,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-Stel uw implementatie configuratie in met de methode [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
+Stel uw implementatie configuratie in met de methode [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -353,9 +353,9 @@ Als u niet van plan bent om de vastgelegde metrische gegevens en artefacten in u
 
 1. Selecteer de resourcegroep die u eerder hebt gemaakt uit de lijst.
 
-1. Selecteer **Resourcegroep verwijderen** .
+1. Selecteer **Resourcegroep verwijderen**.
 
-1. Voer de naam van de resourcegroup in. Selecteer vervolgens **Verwijderen** .
+1. Voer de naam van de resourcegroup in. Selecteer vervolgens **Verwijderen**.
 
 ## <a name="example-notebooks"></a>Voorbeeldnotebooks
 
@@ -367,5 +367,5 @@ De [MLflow met Azure ml-notebooks](https://github.com/Azure/MachineLearningNoteb
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uw modellen beheren](concept-model-management-and-deployment.md).
-* Bewaak uw productie modellen voor [gegevens drift](how-to-monitor-data-drift.md).
-* [Volg Azure Databricks uitvoeringen met MLflow](how-to-use-mlflow-azure-databricks.md). 
+* Bewaak uw productie modellen voor [gegevens drift](./how-to-enable-data-collection.md).
+* [Volg Azure Databricks uitvoeringen met MLflow](how-to-use-mlflow-azure-databricks.md).

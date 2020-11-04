@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: dbc00d37b912ce7efb250aade0ea6790a1a227eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296753"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320703"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Toegangs sleutels voor het opslag account opnieuw genereren
 
@@ -26,13 +26,13 @@ Meer informatie over het wijzigen van de toegangs sleutels voor Azure Storage ac
 Uit veiligheids overwegingen moet u de toegangs sleutels voor een Azure Storage-account mogelijk wijzigen. Wanneer u de toegangs sleutel opnieuw genereert, moet Azure Machine Learning worden bijgewerkt om de nieuwe sleutel te gebruiken. Azure Machine Learning maakt mogelijk gebruik van het opslag account voor zowel model opslag als een gegevens opslag.
 
 > [!IMPORTANT]
-> Referenties registred met gegevens opslag worden opgeslagen in uw Azure Key Vault die zijn gekoppeld aan de werk ruimte. Als u voor uw Key Vault [voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) hebt ingeschakeld, moet u dit artikel volgen voor het bijwerken van referenties. Het ongedaan maken van de registratie van het gegevens archief en het opnieuw registreren onder dezelfde naam zal mislukken.
+> Referenties registred met gegevens opslag worden opgeslagen in uw Azure Key Vault die zijn gekoppeld aan de werk ruimte. Als u voor uw Key Vault [voorlopig verwijderen](../key-vault/general/soft-delete-overview.md) hebt ingeschakeld, moet u dit artikel volgen voor het bijwerken van referenties. Het ongedaan maken van de registratie van het gegevens archief en het opnieuw registreren onder dezelfde naam zal mislukken.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning-werkruimte. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
 
-* De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+* De [Azure machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 * De [Azure machine learning cli-extensie](reference-azure-machine-learning-cli.md).
 
@@ -110,7 +110,7 @@ Gebruik de volgende stappen om Azure Machine Learning bij te werken voor het geb
         Met deze opdracht worden automatisch de nieuwe sleutels gesynchroniseerd voor het Azure-opslag account dat wordt gebruikt door de werk ruimte.
 
 1. U kunt de gegevens die gebruikmaken van het opslag account opnieuw registreren via de SDK of [de Azure machine learning Studio](https://ml.azure.com).
-    1. **Als u gegevens opslag opnieuw wilt registreren via de python-SDK**, gebruikt u de waarden in de sectie [Wat moet worden bijgewerkt](#whattoupdate) en de sleutel uit stap 1 met de volgende code. 
+    1. **Als u gegevens opslag opnieuw wilt registreren via de python-SDK** , gebruikt u de waarden in de sectie [Wat moet worden bijgewerkt](#whattoupdate) en de sleutel uit stap 1 met de volgende code. 
     
         Sinds `overwrite=True` is opgegeven, overschrijft deze code de bestaande registratie en werkt deze bij om de nieuwe sleutel te gebruiken.
     
@@ -132,13 +132,13 @@ Gebruik de volgende stappen om Azure Machine Learning bij te werken voor het geb
         
         ```
     
-    1. **Als u gegevens opslag opnieuw wilt registreren via Studio**, selecteert u **gegevens opslag** in het linkerdeel venster van de Studio. 
+    1. **Als u gegevens opslag opnieuw wilt registreren via Studio** , selecteert u **gegevens opslag** in het linkerdeel venster van de Studio. 
         1. Selecteer de gegevens opslag die u wilt bijwerken.
         1. Selecteer de knop **referenties bijwerken** in de linkerbovenhoek. 
         1. Gebruik uw nieuwe toegangs sleutel uit stap 1 om het formulier in te vullen en klik op **Opslaan**.
         
-            Als u de referenties voor uw **standaard gegevens opslag**bijwerkt, voert u deze stap uit en herhaalt u stap 2b om uw nieuwe sleutel opnieuw te synchroniseren met de standaard gegevens opslag van de werk ruimte. 
+            Als u de referenties voor uw **standaard gegevens opslag** bijwerkt, voert u deze stap uit en herhaalt u stap 2b om uw nieuwe sleutel opnieuw te synchroniseren met de standaard gegevens opslag van de werk ruimte. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de verwijzing naar een klasse voor meer informatie over het registreren van gegevens opslag [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true) .
+Zie de verwijzing naar een klasse voor meer informatie over het registreren van gegevens opslag [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) .

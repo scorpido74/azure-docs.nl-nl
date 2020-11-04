@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864278"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321202"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Taken voor de team leider van een team data Science process team
 
@@ -61,7 +61,7 @@ Om opslag plaatsen te kunnen klonen en hun inhoud op uw lokale machine of DSVM t
 
 - Een Azure-abonnement.
 - Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
-- Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
+- Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](../data-science-virtual-machine/index.yml)voor meer informatie en instructies.
 - Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
 - Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
 
@@ -77,7 +77,7 @@ Voor de namen die zijn opgegeven voor de opslag plaatsen en directory's in deze 
 - Een kleine gegevens Science-groep die geen meerdere data Science-teams heeft. 
 - Een grotere gegevens Science-groep met meerdere teams voor data technologie die de samen werking tussen teams wil optimaliseren met activiteiten zoals het plannen van Sprint op groepniveau. 
 
-Als teams ervoor kiezen hun team-specifieke opslag plaatsen te hebben onder één groeps project, moeten de team leiders de opslag plaatsen maken met namen als * \<TeamName> sjabloon* en * \<TeamName> hulpprogram ma's*. Bijvoorbeeld: *TeamATemplate* en *TeamAUtilities*. 
+Als teams ervoor kiezen hun team-specifieke opslag plaatsen te hebben onder één groeps project, moeten de team leiders de opslag plaatsen maken met namen als *\<TeamName> sjabloon* en *\<TeamName> hulpprogram ma's*. Bijvoorbeeld: *TeamATemplate* en *TeamAUtilities*. 
 
 In elk geval moeten team leiders hun team leden laten weten welke opslag plaatsen en hulpprogram ma's voor het instellen en klonen van de sjabloon moeten worden gemaakt. Project leiders moeten de [Project Lead taken volgen voor een Data Science-Team](project-lead-tasks.md) om project opslagplaatsen te maken, hetzij onder afzonderlijke projecten of één project. 
 
@@ -85,17 +85,17 @@ In elk geval moeten team leiders hun team leden laten weten welke opslag plaatse
 
 Een apart project maken voor uw team:
 
-1. Ga in uw webbrowser naar de start pagina van de Azure DevOps-organisatie van uw groep op URL *https: \/ / \<server name> / \<organization name> *en selecteer **Nieuw project**. 
+1. Ga in uw webbrowser naar de start pagina van de Azure DevOps-organisatie van uw groep op URL *https: \/ / \<server name> / \<organization name>* en selecteer **Nieuw project**. 
    
    ![Selecteer Nieuw project](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. Voer in het dialoog venster **project maken** de naam van uw team in, zoals *MyTeam*, onder **project naam**en selecteer **Geavanceerd**. 
+1. Voer in het dialoog venster **project maken** de naam van uw team in, zoals *MyTeam* , onder **project naam** en selecteer **Geavanceerd**. 
    
-1. Onder **versie beheer**selecteert u **Git**en klikt u onder **werk item proces**op **Agile**. Selecteer vervolgens **Maken**. 
+1. Onder **versie beheer** selecteert u **Git** en klikt u onder **werk item proces** op **Agile**. Selecteer vervolgens **Maken**. 
    
    ![Project maken](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-De pagina **samen vatting** team project wordt geopend met pagina-URL *https: \/ / \<server name> / \<organization name> / \<team name> *.
+De pagina **samen vatting** team project wordt geopend met pagina-URL *https: \/ / \<server name> / \<organization name> / \<team name>*.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Wijzig de naam van de MyTeam-standaard opslagplaats in TeamUtilities
 
@@ -110,7 +110,7 @@ De pagina **samen vatting** team project wordt geopend met pagina-URL *https: \/
    
    ![Naam opslag plaats selecteren](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
    
-1. Voer in het pop-upvenster **naam van de MyTeam-opslag plaats de** optie *TeamUtilities*in en selecteer **naam wijzigen**. 
+1. Voer in het pop-upvenster **naam van de MyTeam-opslag plaats de** optie *TeamUtilities* in en selecteer **naam wijzigen**. 
 
 ### <a name="create-the-teamtemplate-repository"></a>De TeamTemplate-opslag plaats maken
 
@@ -120,7 +120,7 @@ De pagina **samen vatting** team project wordt geopend met pagina-URL *https: \/
    
    Of selecteer **opslag plaatsen** in de linkernavigatiebalk van de pagina **overzicht** van de **MyTeam** -project, selecteer een opslag plaats boven aan de pagina en selecteer vervolgens **nieuwe opslag plaats** in de vervolg keuzelijst.
    
-1. Zorg ervoor dat in het dialoog venster **een nieuwe opslag plaats maken** de tekst **Git** is geselecteerd onder **type**. Voer *TeamTemplate* in bij **naam van opslag plaats**en selecteer vervolgens **maken**.
+1. Zorg ervoor dat in het dialoog venster **een nieuwe opslag plaats maken** de tekst **Git** is geselecteerd onder **type**. Voer *TeamTemplate* in bij **naam van opslag plaats** en selecteer vervolgens **maken**.
    
    ![Opslag plaats maken](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
    
@@ -136,11 +136,11 @@ Als u uw team opslagplaatsen wilt vullen met de inhoud van de groep algemene ops
    
    De standaard- **TeamTemplate** -opslag plaats wordt geopend. 
    
-1. Selecteer **importeren**op de pagina **TeamTemplate is leeg** . 
+1. Selecteer **importeren** op de pagina **TeamTemplate is leeg** . 
    
    ![Import selecteren](./media/team-lead-tasks/import-repo.png)
    
-1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u de URL in voor de opslag plaats van de gemeen schappelijke sjabloon onder **kloon-URL**. De URL is *https: \/ / \<server name> / \<organization name> /_git/ \<repository name> *. Bijvoorbeeld: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type** en voert u de URL in voor de opslag plaats van de gemeen schappelijke sjabloon onder **kloon-URL**. De URL is *https: \/ / \<server name> / \<organization name> /_git/ \<repository name>*. Bijvoorbeeld: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Selecteer **Importeren**. De inhoud van de opslag plaats van de groeps sjabloon wordt geïmporteerd in uw team sjabloon opslagplaats. 
    
@@ -148,7 +148,7 @@ Als u uw team opslagplaatsen wilt vullen met de inhoud van de groep algemene ops
    
 1. Klik boven aan de pagina **opslag plaatsen** van het project en selecteer de **TeamUtilities** -opslag plaats.
    
-1. Herhaal het import proces om de inhoud van de gemeen schappelijke opslag plaats van de groep, bijvoorbeeld *GroupUtilities*, te importeren in uw **TeamUtilities** -opslag plaats. 
+1. Herhaal het import proces om de inhoud van de gemeen schappelijke opslag plaats van de groep, bijvoorbeeld *GroupUtilities* , te importeren in uw **TeamUtilities** -opslag plaats. 
    
 Elk van uw twee team opslagplaatsen bevat nu de bestanden uit de bijbehorende groeps-algemene opslag plaats. 
 
@@ -184,11 +184,11 @@ Als u wilt werken met opslag plaatsen op uw lokale machine of DSVM, kopieert u d
 
 Opslag plaatsen klonen:
 
-1. Selecteer op de pagina **MyTeam** project **Summary** **opslag plaatsen**en selecteer boven aan de pagina de opslag plaats die u wilt klonen.
+1. Selecteer op de pagina **MyTeam** project **Summary** **opslag plaatsen** en selecteer boven aan de pagina de opslag plaats die u wilt klonen.
    
 1. Selecteer op de pagina opslag plaats rechtsboven **klonen** .
    
-1. In het dialoog venster kloon van de **opslag plaats** , onder **opdracht regel**, selecteert u **https** voor een http-verbinding of **SSH** voor een SSH-verbinding en kopieert u de kloon-URL naar het klem bord.
+1. In het dialoog venster kloon van de **opslag plaats** , onder **opdracht regel** , selecteert u **https** voor een http-verbinding of **SSH** voor een SSH-verbinding en kopieert u de kloon-URL naar het klem bord.
    
    ![Kloon-URL kopiëren](./media/team-lead-tasks/clone.png)
    
@@ -240,7 +240,7 @@ Leden toevoegen aan het team:
 
 1. In azure DevOps selecteert u op de start pagina van het **MyTeam** -project de optie **project instellingen** in het linkernavigatievenster. 
    
-1. Selecteer op de pagina **project instellingen** links de optie **teams**en selecteer vervolgens **het** **team MyTeam**. 
+1. Selecteer op de pagina **project instellingen** links de optie **teams** en selecteer vervolgens **het** **team MyTeam**. 
    
    ![Teams configureren](./media/team-lead-tasks/teams.png)
    
@@ -255,11 +255,11 @@ Leden toevoegen aan het team:
 
 Machtigingen voor team leden configureren:
 
-1. Selecteer **machtigingen**in de **project instellingen** links in het navigatie venster. 
+1. Selecteer **machtigingen** in de **project instellingen** links in het navigatie venster. 
    
 1. Selecteer op de pagina **machtigingen** de groep waaraan u leden wilt toevoegen. 
    
-1. Selecteer op de pagina voor die groep de optie **leden**en selecteer vervolgens **toevoegen**. 
+1. Selecteer op de pagina voor die groep de optie **leden** en selecteer vervolgens **toevoegen**. 
    
 1. Zoek en selecteer leden in het pop-upvenster **leden** toevoegen aan de groep en selecteer vervolgens **Opslaan**. 
    
@@ -296,7 +296,7 @@ Zie [platformen en hulpprogram ma's](platforms-and-tools.md)voor meer informatie
    
 1. Selecteer het opslag account dat u wilt gebruiken of maak een nieuw item onder het geselecteerde abonnement. U kunt kleine letters, cijfers en afbreek streepjes gebruiken voor de naam van de Azure file storage.
    
-1. Om het koppelen en delen van de opslag te vergemakkelijken, drukt u op ENTER of voert u *Y* in om de gegevens van de Azure-bestands opslag op te slaan in een tekst bestand in de huidige map. U kunt dit tekst bestand controleren in uw **TeamTemplate** -opslag plaats, in het ideale geval onder **Docs\DataDictionaries**, zodat alle projecten in uw team er toegang toe hebben. U hebt ook de bestands informatie nodig om uw Azure-bestands opslag te koppelen aan uw Azure-DSVM in de volgende sectie. 
+1. Om het koppelen en delen van de opslag te vergemakkelijken, drukt u op ENTER of voert u *Y* in om de gegevens van de Azure-bestands opslag op te slaan in een tekst bestand in de huidige map. U kunt dit tekst bestand controleren in uw **TeamTemplate** -opslag plaats, in het ideale geval onder **Docs\DataDictionaries** , zodat alle projecten in uw team er toegang toe hebben. U hebt ook de bestands informatie nodig om uw Azure-bestands opslag te koppelen aan uw Azure-DSVM in de volgende sectie. 
    
 ### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>Azure File Storage koppelen op uw lokale machine of DSVM
 
@@ -318,7 +318,7 @@ Zie [platformen en hulpprogram ma's](platforms-and-tools.md)voor meer informatie
    
 1. Druk op ENTER of Voer *Y* in om door te gaan, als u een Azure File Storage-informatie bestand in de vorige stap hebt opgeslagen. Voer het volledige pad en de naam in van het bestand dat u hebt gemaakt. 
    
-   Als u geen bestand met informatie over Azure File Storage hebt, voert u *n*in en volgt u de instructies om uw abonnement, Azure-opslag account en Azure File Storage-gegevens in te voeren.
+   Als u geen bestand met informatie over Azure File Storage hebt, voert u *n* in en volgt u de instructies om uw abonnement, Azure-opslag account en Azure File Storage-gegevens in te voeren.
    
 1. Voer de naam in van een lokaal of TDSP station om de bestands share op te koppelen. In het scherm wordt een lijst met bestaande stations weer gegeven. Geef een station naam op die nog niet bestaat.
    

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/03/2020
 ms.author: jgao
-ms.openlocfilehash: fb6d1c9e0e2ca545be850af22df15b342cf8d82c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a04377289b78c23a83fc696ebebb9b5808e904c9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89667499"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321641"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -77,7 +77,7 @@ De bron van het implementatie script is alleen beschikbaar in de regio's waar Az
 - **Azure PowerShell** of **Azure cli**. Een lijst met [ondersteunde versies van Azure PowerShell](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)weer geven. Een lijst met [ondersteunde Azure cli-versies](https://mcr.microsoft.com/v2/azure-cli/tags/list)weer geven.
 
     >[!IMPORTANT]
-    > Het implementatie script maakt gebruik van de beschik bare CLI-installatie kopieën van micro soft Container Registry (MCR). Het duurt ongeveer één maand om een CLI-installatie kopie te certificeren voor het implementatie script. Gebruik de CLI-versies die binnen 30 dagen zijn uitgebracht. Zie opmerkingen bij de [release van Azure cli](/cli/azure/release-notes-azure-cli?view=azure-cli-latest)om de release datums voor de installatie kopieën te vinden. Als er een niet-ondersteunde versie wordt gebruikt, wordt het fout bericht weer gegeven met de ondersteunde versies.
+    > Het implementatie script maakt gebruik van de beschik bare CLI-installatie kopieën van micro soft Container Registry (MCR). Het duurt ongeveer één maand om een CLI-installatie kopie te certificeren voor het implementatie script. Gebruik de CLI-versies die binnen 30 dagen zijn uitgebracht. Zie opmerkingen bij de [release van Azure cli](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)om de release datums voor de installatie kopieën te vinden. Als er een niet-ondersteunde versie wordt gebruikt, wordt het fout bericht weer gegeven met de ondersteunde versies.
 
     U hebt deze versies niet nodig voor het implementeren van sjablonen. Deze versies zijn echter nodig om implementatie scripts lokaal te testen. Zie [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). U kunt een vooraf geconfigureerde docker-installatie kopie gebruiken.  Zie [ontwikkel omgeving configureren](#configure-development-environment).
 
@@ -135,19 +135,19 @@ De volgende JSON is een voor beeld.  Het meest recente sjabloon schema kunt u [h
 
 Details van eigenschaps waarde:
 
-- **Identiteit**: de implementatie script service gebruikt een door de gebruiker toegewezen beheerde identiteit voor het uitvoeren van de scripts. Op dit moment wordt alleen door de gebruiker toegewezen beheerde identiteit ondersteund.
-- **kind**: Geef het type script op. Momenteel worden Azure PowerShell-en Azure CLI-scripts ondersteund. De waarden zijn **AzurePowerShell** en **AzureCLI**.
-- **updatetag**: als u deze waarde wijzigt tussen de implementaties van een sjabloon, wordt het implementatie script opnieuw uitgevoerd. Gebruik de functie newGuid () of utcNow () die moet worden ingesteld als de defaultValue van een para meter. Zie [Script meerdere keren uitvoeren](#run-script-more-than-once) voor meer informatie.
-- **containerSettings**: Geef de instellingen op om Azure container instance aan te passen.  **containerGroupName** is voor het opgeven van de naam van de container groep.  Als u niets opgeeft, wordt de groeps naam automatisch gegenereerd.
-- **storageAccountSettings**: Geef de instellingen op om een bestaand opslag account te gebruiken. Als u niets opgeeft, wordt er automatisch een opslag account gemaakt. Zie [een bestaand opslag account gebruiken](#use-existing-storage-account).
-- **azPowerShellVersion** / **azCliVersion**: Geef de module versie op die moet worden gebruikt. Zie [vereisten](#prerequisites)voor een lijst met ondersteunde Power shell-en CLI-versies.
-- **arguments**: Geef de parameterwaarden op. De waarden worden gescheiden door een spatie.
+- **Identiteit** : de implementatie script service gebruikt een door de gebruiker toegewezen beheerde identiteit voor het uitvoeren van de scripts. Op dit moment wordt alleen door de gebruiker toegewezen beheerde identiteit ondersteund.
+- **kind** : Geef het type script op. Momenteel worden Azure PowerShell-en Azure CLI-scripts ondersteund. De waarden zijn **AzurePowerShell** en **AzureCLI**.
+- **updatetag** : als u deze waarde wijzigt tussen de implementaties van een sjabloon, wordt het implementatie script opnieuw uitgevoerd. Gebruik de functie newGuid () of utcNow () die moet worden ingesteld als de defaultValue van een para meter. Zie [Script meerdere keren uitvoeren](#run-script-more-than-once) voor meer informatie.
+- **containerSettings** : Geef de instellingen op om Azure container instance aan te passen.  **containerGroupName** is voor het opgeven van de naam van de container groep.  Als u niets opgeeft, wordt de groeps naam automatisch gegenereerd.
+- **storageAccountSettings** : Geef de instellingen op om een bestaand opslag account te gebruiken. Als u niets opgeeft, wordt er automatisch een opslag account gemaakt. Zie [een bestaand opslag account gebruiken](#use-existing-storage-account).
+- **azPowerShellVersion** / **azCliVersion** : Geef de module versie op die moet worden gebruikt. Zie [vereisten](#prerequisites)voor een lijst met ondersteunde Power shell-en CLI-versies.
+- **arguments** : Geef de parameterwaarden op. De waarden worden gescheiden door een spatie.
 
     Met implementatie scripts worden de argumenten gesplitst in een matrix met teken reeksen door het aanroepen van de [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) -systeem aanroep. Dit is nodig omdat de argumenten worden door gegeven als een [opdracht eigenschap](/rest/api/container-instances/containergroups/createorupdate#containerexec) naar Azure container instance en de opdracht eigenschap een matrix van teken reeks is.
 
     Als de argumenten escape tekens bevatten, gebruikt u [JsonEscaper](https://www.jsonescaper.com/) om de tekens te verdubbelen. Plak de oorspronkelijke escape teken reeks in het hulp programma en selecteer vervolgens **Escape**.  Het hulp programma voert een dubbele escape teken reeks uit. In de vorige voorbeeld sjabloon is het argument bijvoorbeeld **: naam \\ "John Davids \\ "**.  De escape teken reeks is **: name \\ \\ \\ "John Davids \\ \\ \\ "**.
 
-    Als u een arm-sjabloon parameter van het type object wilt door geven als een argument, converteert u het object naar een teken reeks met behulp van de functie [String ()](./template-functions-string.md#string) en gebruikt u vervolgens de functie [replace ()](./template-functions-string.md#replace) ** \\ om alle naar** te ** \\ \\ \\ vervangen.** Bijvoorbeeld:
+    Als u een arm-sjabloon parameter van het type object wilt door geven als een argument, converteert u het object naar een teken reeks met behulp van de functie [String ()](./template-functions-string.md#string) en gebruikt u vervolgens de functie [replace ()](./template-functions-string.md#replace) **\\ om alle naar** te **\\ \\ \\ vervangen.** Bijvoorbeeld:
 
     ```json
     replace(string(parameters('tables')), '\"', '\\\"')
@@ -155,13 +155,13 @@ Details van eigenschaps waarde:
 
     Selecteer [hier](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)om een voorbeeld sjabloon weer te geven.
 
-- **omgevings variabelen**: Geef de omgevings variabelen op die moeten worden door gegeven aan het script. Zie [implementatie scripts ontwikkelen](#develop-deployment-scripts)voor meer informatie.
-- **scriptContent**: Geef de scriptinhoud op. Als u een extern script wilt uitvoeren, gebruikt u `primaryScriptUri` in plaats daarvan. Zie [inline-script gebruiken](#use-inline-scripts) en [extern script gebruiken](#use-external-scripts)voor voor beelden.
-- **primaryScriptUri**: Geef een openbaar toegankelijke URL op voor het primaire implementatie script met ondersteunde bestands extensies.
-- **supportingScriptUris**: Geef een matrix met openbaar toegankelijke url's op voor de ondersteunende bestanden die worden genoemd in `ScriptContent` of `PrimaryScriptUri` .
-- **timeout**: Geef de maximale toegestane uitvoeringstijd voor het script op, opgegeven in de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). Standaardwaarde is **P1D**.
-- **cleanupPreference**. Geef de voor keur op voor het opschonen van implementatie resources wanneer de uitvoering van het script wordt uitgevoerd in een Terminal status. De standaard instelling is **altijd**, wat betekent dat de resources worden verwijderd ondanks de status van de Terminal (geslaagd, mislukt, geannuleerd). Zie [Resources van implementatiescripts opschonen](#clean-up-deployment-script-resources) voor meer informatie.
-- **retentionInterval**: Geef het interval op waarvoor de service de implementatie script bronnen behoudt nadat de uitvoering van het implementatie script een Terminal status heeft bereikt. De resources van het implementatie script worden verwijderd wanneer deze duur verloopt. De duur is gebaseerd op het [ISO 8601-patroon](https://en.wikipedia.org/wiki/ISO_8601). De standaard waarde is **P1D**. Dit betekent een dag. Deze eigenschap wordt gebruikt wanneer cleanupPreference is ingesteld op *OnExpiration*. De eigenschap *OnExpiration* is momenteel niet ingeschakeld. Zie [Resources van implementatiescripts opschonen](#clean-up-deployment-script-resources) voor meer informatie.
+- **omgevings variabelen** : Geef de omgevings variabelen op die moeten worden door gegeven aan het script. Zie [implementatie scripts ontwikkelen](#develop-deployment-scripts)voor meer informatie.
+- **scriptContent** : Geef de scriptinhoud op. Als u een extern script wilt uitvoeren, gebruikt u `primaryScriptUri` in plaats daarvan. Zie [inline-script gebruiken](#use-inline-scripts) en [extern script gebruiken](#use-external-scripts)voor voor beelden.
+- **primaryScriptUri** : Geef een openbaar toegankelijke URL op voor het primaire implementatie script met ondersteunde bestands extensies.
+- **supportingScriptUris** : Geef een matrix met openbaar toegankelijke url's op voor de ondersteunende bestanden die worden genoemd in `ScriptContent` of `PrimaryScriptUri` .
+- **timeout** : Geef de maximale toegestane uitvoeringstijd voor het script op, opgegeven in de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). Standaardwaarde is **P1D**.
+- **cleanupPreference**. Geef de voor keur op voor het opschonen van implementatie resources wanneer de uitvoering van het script wordt uitgevoerd in een Terminal status. De standaard instelling is **altijd** , wat betekent dat de resources worden verwijderd ondanks de status van de Terminal (geslaagd, mislukt, geannuleerd). Zie [Resources van implementatiescripts opschonen](#clean-up-deployment-script-resources) voor meer informatie.
+- **retentionInterval** : Geef het interval op waarvoor de service de implementatie script bronnen behoudt nadat de uitvoering van het implementatie script een Terminal status heeft bereikt. De resources van het implementatie script worden verwijderd wanneer deze duur verloopt. De duur is gebaseerd op het [ISO 8601-patroon](https://en.wikipedia.org/wiki/ISO_8601). Het retentie-interval ligt tussen 1 en 26 uur (PT26H). Deze eigenschap wordt gebruikt wanneer cleanupPreference is ingesteld op *OnExpiration*. De eigenschap *OnExpiration* is momenteel niet ingeschakeld. Zie [Resources van implementatiescripts opschonen](#clean-up-deployment-script-resources) voor meer informatie.
 
 ### <a name="additional-samples"></a>Aanvullende voor beelden
 
@@ -241,7 +241,7 @@ De volgende sjabloon laat zien hoe waarden worden door gegeven tussen twee deplo
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-84" highlight="39-40,66":::
 
-In de eerste resource definieert u een variabele met de naam **$DeploymentScriptOutputs**en gebruikt u deze om de uitvoer waarden op te slaan. Als u de uitvoer waarde van een andere resource in de sjabloon wilt openen, gebruikt u:
+In de eerste resource definieert u een variabele met de naam **$DeploymentScriptOutputs** en gebruikt u deze om de uitvoer waarden op te slaan. Als u de uitvoer waarde van een andere resource in de sjabloon wilt openen, gebruikt u:
 
 ```json
 reference('<ResourceName>').output.text
@@ -287,8 +287,8 @@ Als u een bestaand opslag account wilt opgeven, voegt u de volgende JSON toe aan
 },
 ```
 
-- **storageAccountName**: Geef de naam van het opslag account op.
-- **storageAccountKey "**: Geef een van de sleutels voor het opslag account op. U kunt de [`listKeys()`](./template-functions-resource.md#listkeys) functie gebruiken om de sleutel op te halen. Bijvoorbeeld:
+- **storageAccountName** : Geef de naam van het opslag account op.
+- **storageAccountKey "** : Geef een van de sleutels voor het opslag account op. U kunt de [`listKeys()`](./template-functions-resource.md#listkeys) functie gebruiken om de sleutel op te halen. Bijvoorbeeld:
 
     ```json
     "storageAccountSettings": {
@@ -331,7 +331,7 @@ Nadat u een implementatie script bron hebt geïmplementeerd, wordt de resource v
 
 ![Overzicht van de portal voor de implementatie van Resource Manager-sjablonen](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
 
-Op de pagina overzicht vindt u enkele belang rijke informatie over de resource, zoals de **inrichtings status**, het **opslag account**, de **container instantie**en de **Logboeken**.
+Op de pagina overzicht vindt u enkele belang rijke informatie over de resource, zoals de **inrichtings status** , het **opslag account** , de **container instantie** en de **Logboeken**.
 
 Vanuit het menu links kunt u de inhoud van het implementatie script bekijken, de argumenten die zijn door gegeven aan het script en de uitvoer.  U kunt ook een sjabloon voor het implementatie script exporteren, inclusief het implementatie script.
 
@@ -375,10 +375,10 @@ Timeout             : PT1H
 
 Met Azure CLI kunt u implementatie scripts beheren op basis van het abonnement of het bereik van de resource groep:
 
-- [AZ Deployment-scripts delete](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): een implementatie script verwijderen.
-- [AZ Deployment-scripts lijst](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): alle implementatie scripts weer geven.
-- [AZ Deployment-scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): een implementatie script ophalen.
-- [AZ Deployment-scripts show-log](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log): script logboeken van de implementatie weer geven.
+- [AZ Deployment-scripts delete](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-delete): een implementatie script verwijderen.
+- [AZ Deployment-scripts lijst](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-list): alle implementatie scripts weer geven.
+- [AZ Deployment-scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-show): een implementatie script ophalen.
+- [AZ Deployment-scripts show-log](/cli/azure/deployment-scripts?view=azure-cli-lates&preserve-view=truet#az-deployment-scripts-show-log): script logboeken van de implementatie weer geven.
 
 De uitvoer van de lijst opdracht ziet er ongeveer als volgt uit:
 
@@ -519,7 +519,7 @@ De volgende REST API retourneert het logboek:
 
 Het werkt alleen als de implementatie script bronnen worden verwijderd.
 
-Als u de deploymentScripts-resource in de portal wilt bekijken, selecteert u **verborgen typen weer geven**:
+Als u de deploymentScripts-resource in de portal wilt bekijken, selecteert u **verborgen typen weer geven** :
 
 ![Implementatie script van Resource Manager-sjabloon, verborgen typen weer geven, portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
@@ -529,13 +529,13 @@ Een opslag account en een container exemplaar zijn nodig voor het uitvoeren van 
 
 De levens cyclus van deze resources wordt bepaald door de volgende eigenschappen in de sjabloon:
 
-- **cleanupPreference**: de voor keur opschonen wanneer het script wordt uitgevoerd in een Terminal status. De ondersteunde waarden zijn:
+- **cleanupPreference** : de voor keur opschonen wanneer het script wordt uitgevoerd in een Terminal status. De ondersteunde waarden zijn:
 
-  - **Altijd**: de automatisch gemaakte resources verwijderen wanneer de uitvoering van het script in een Terminal status krijgt. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share die is gemaakt in het opslag account door de script service verwijderd. Omdat de deploymentScripts-resource mogelijk nog steeds aanwezig is nadat de resources zijn opgeruimd, blijft de script service de resultaten van het script uitvoeren, bijvoorbeeld stdout, outputs, retour waarde enzovoort voordat de resources worden verwijderd.
-  - **OnSuccess**: Verwijder de automatisch gemaakte resources alleen wanneer de uitvoering van het script is geslaagd. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share alleen door de script service verwijderd wanneer de uitvoering van het script is geslaagd. U hebt nog steeds toegang tot de resources om de informatie over de fout opsporing te vinden.
-  - **OnExpiration**: Verwijder de automatisch gemaakte resources alleen wanneer de instelling **retentionInterval** is verlopen. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share door de script service verwijderd, maar blijft het opslag account behouden.
+  - **Altijd** : de automatisch gemaakte resources verwijderen wanneer de uitvoering van het script in een Terminal status krijgt. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share die is gemaakt in het opslag account door de script service verwijderd. Omdat de deploymentScripts-resource mogelijk nog steeds aanwezig is nadat de resources zijn opgeruimd, blijft de script service de resultaten van het script uitvoeren, bijvoorbeeld stdout, outputs, retour waarde enzovoort voordat de resources worden verwijderd.
+  - **OnSuccess** : Verwijder de automatisch gemaakte resources alleen wanneer de uitvoering van het script is geslaagd. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share alleen door de script service verwijderd wanneer de uitvoering van het script is geslaagd. U hebt nog steeds toegang tot de resources om de informatie over de fout opsporing te vinden.
+  - **OnExpiration** : Verwijder de automatisch gemaakte resources alleen wanneer de instelling **retentionInterval** is verlopen. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share door de script service verwijderd, maar blijft het opslag account behouden.
 
-- **retentionInterval**: Geef het tijds interval op dat een script bron moet worden bewaard en waarna deze wordt verwijderd.
+- **retentionInterval** : Geef het tijds interval op dat een script bron moet worden bewaard en waarna deze wordt verwijderd.
 
 > [!NOTE]
 > Het is niet raadzaam om het opslag account en het container exemplaar dat door de script service wordt gegenereerd voor andere doel einden te gebruiken. De twee resources kunnen worden verwijderd, afhankelijk van de levens cyclus van het script.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cc4256ae0591e9fc82dcdce7c66514710fad3f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44f6d700ff25f0c2f2cb8bedc5c2d15ad2adcb83
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711249"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320833"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Reken doelen instellen voor model training en implementatie
 
@@ -43,7 +43,7 @@ Als u Compute-doelen wilt gebruiken die worden beheerd door Azure Machine Learni
 
 * Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
-* De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
+* De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -58,9 +58,9 @@ Met Azure Machine Learning kunt u uw model trainen op diverse resources of omgev
 
 ## <a name="local-computer"></a><a id="local"></a>Lokale computer
 
-Wanneer u uw lokale computer gebruikt voor **trainingen**, hoeft u geen reken doel te maken.  U hoeft alleen maar [de training](how-to-set-up-training-targets.md) uit te voeren vanaf uw lokale computer.
+Wanneer u uw lokale computer gebruikt voor **trainingen** , hoeft u geen reken doel te maken.  U hoeft alleen maar [de training](how-to-set-up-training-targets.md) uit te voeren vanaf uw lokale computer.
 
-Wanneer u uw lokale computer **gebruikt voor**demijnen, moet docker zijn geïnstalleerd. Als u de implementatie wilt uitvoeren, gebruikt u [LocalWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-port-none-) om de poort te definiëren die wordt gebruikt door de webservice. Gebruik vervolgens het normale implementatie proces zoals beschreven in [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md).
+Wanneer u uw lokale computer **gebruikt voor** demijnen, moet docker zijn geïnstalleerd. Als u de implementatie wilt uitvoeren, gebruikt u [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-) om de poort te definiëren die wordt gebruikt door de webservice. Gebruik vervolgens het normale implementatie proces zoals beschreven in [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md).
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Externe virtuele machines
 
@@ -68,16 +68,16 @@ Azure Machine Learning biedt ook ondersteuning voor het meebrengen van uw eigen 
 
 U kunt een door het systeem gemaakte Conda-omgeving, een al bestaande python-omgeving of een docker-container gebruiken. Als u wilt uitvoeren op een docker-container, moet er een docker-engine op de VM worden uitgevoerd. Deze functionaliteit is vooral nuttig wanneer u een flexibele, Cloud ontwikkeling/experimentatie omgeving wilt gebruiken dan uw lokale computer.
 
-Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze voor dit scenario. Deze VM is een vooraf geconfigureerde data Science-en AI-ontwikkel omgeving in Azure. De virtuele machine biedt een geruime keuze aan hulpprogram ma's en frameworks voor een volledige levenscyclus machine learning ontwikkeling. Zie [Configure a Development Environment](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm)(Engelstalig) voor meer informatie over het gebruik van de DSVM met Azure machine learning.
+Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze voor dit scenario. Deze VM is een vooraf geconfigureerde data Science-en AI-ontwikkel omgeving in Azure. De virtuele machine biedt een geruime keuze aan hulpprogram ma's en frameworks voor een volledige levenscyclus machine learning ontwikkeling. Zie [Configure a Development Environment](./how-to-configure-environment.md#dsvm)(Engelstalig) voor meer informatie over het gebruik van de DSVM met Azure machine learning.
 
-1. **Maken**: Maak een DSVM voordat u het gebruikt om het model te trainen. Zie [de data Science virtual machine inrichten voor Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)als u deze resource wilt maken.
+1. **Maken** : Maak een DSVM voordat u het gebruikt om het model te trainen. Zie [de data Science virtual machine inrichten voor Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md)als u deze resource wilt maken.
 
     > [!WARNING]
-    > Azure Machine Learning ondersteunt alleen virtuele machines waarop **Ubuntu**wordt uitgevoerd. Wanneer u een virtuele machine maakt of een bestaande virtuele machine kiest, moet u een virtuele machine selecteren die gebruikmaakt van Ubuntu.
+    > Azure Machine Learning ondersteunt alleen virtuele machines waarop **Ubuntu** wordt uitgevoerd. Wanneer u een virtuele machine maakt of een bestaande virtuele machine kiest, moet u een virtuele machine selecteren die gebruikmaakt van Ubuntu.
     > 
-    > Azure Machine Learning moet de virtuele machine ook een __openbaar IP-adres__hebben.
+    > Azure Machine Learning moet de virtuele machine ook een __openbaar IP-adres__ hebben.
 
-1. **Bijvoegen**: als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de resource-id, gebruikers naam en het wacht woord voor de virtuele machine opgeven. De resource-ID van de virtuele machine kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en de naam van de virtuele machine met de volgende teken reeks notatie: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
+1. **Bijvoegen** : als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de resource-id, gebruikers naam en het wacht woord voor de virtuele machine opgeven. De resource-ID van de virtuele machine kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en de naam van de virtuele machine met de volgende teken reeks notatie: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
  
    ```python
@@ -102,7 +102,7 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
     > [!WARNING]
     > Maak niet meerdere gelijktijdige bijlagen met dezelfde DSVM in uw werk ruimte. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
 
-1. **Configureren**: een uitvoerings configuratie voor het DSVM Compute-doel maken. Docker en Conda worden gebruikt om de trainings omgeving op de DSVM te maken en te configureren.
+1. **Configureren** : een uitvoerings configuratie voor het DSVM Compute-doel maken. Docker en Conda worden gebruikt om de trainings omgeving op de DSVM te maken en te configureren.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -128,16 +128,16 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
 
 Azure HDInsight is een populair platform voor Big data-analyses. Het platform biedt Apache Spark, dat kan worden gebruikt voor het trainen van uw model.
 
-1. **Maken**: Maak het HDInsight-cluster voordat u het gebruikt om het model te trainen. Zie [een Spark-cluster maken in hdinsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql)voor informatie over het maken van een Spark in hdinsight-cluster. 
+1. **Maken** : Maak het HDInsight-cluster voordat u het gebruikt om het model te trainen. Zie [een Spark-cluster maken in hdinsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)voor informatie over het maken van een Spark in hdinsight-cluster. 
 
     > [!WARNING]
-    > Voor Azure Machine Learning moet het HDInsight-cluster een __openbaar IP-adres__hebben.
+    > Voor Azure Machine Learning moet het HDInsight-cluster een __openbaar IP-adres__ hebben.
 
     Wanneer u het cluster maakt, moet u een SSH-gebruikers naam en-wacht woord opgeven. Noteer deze waarden, omdat u ze nodig hebt om HDInsight als reken doel te gebruiken.
     
     Nadat het cluster is gemaakt, maakt u een verbinding met de hostnaam \<clustername> -SSH.azurehdinsight.net, waarbij \<clustername> de naam is die u voor het cluster hebt ingesteld. 
 
-1. **Bijvoegen**: als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de resource-id, gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. De resource-ID van het HDInsight-cluster kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en het HDInsight-cluster met de volgende teken reeks indeling: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
+1. **Bijvoegen** : als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de resource-id, gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. De resource-ID van het HDInsight-cluster kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en het HDInsight-cluster met de volgende teken reeks indeling: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -165,7 +165,7 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
     > [!WARNING]
     > Maak niet meerdere gelijktijdige bijlagen met dezelfde HDInsight vanuit uw werk ruimte. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
 
-1. **Configureren**: een uitvoerings configuratie voor het HDI Compute-doel maken. 
+1. **Configureren** : een uitvoerings configuratie voor het HDI Compute-doel maken. 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -178,9 +178,9 @@ Azure Batch wordt gebruikt voor het efficiënt uitvoeren van grootschalige paral
 
 Als u Azure Batch als een reken doel wilt koppelen, moet u de Azure Machine Learning SDK gebruiken en de volgende informatie opgeven:
 
--    **Azure batch Compute name**: een beschrijvende naam die moet worden gebruikt voor de compute in de werk ruimte
--    **Azure batch account naam**: de naam van het Azure batch account
--    **Resource groep**: de resource groep die het Azure batch-account bevat.
+-    **Azure batch Compute name** : een beschrijvende naam die moet worden gebruikt voor de compute in de werk ruimte
+-    **Azure batch account naam** : de naam van het Azure batch account
+-    **Resource groep** : de resource groep die het Azure batch-account bevat.
 
 De volgende code laat zien hoe u Azure Batch als een reken doel koppelt:
 
@@ -219,15 +219,15 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 
 Azure Databricks is een op Apache Spark gebaseerde omgeving in de Azure-Cloud. Het kan worden gebruikt als een reken doel met een Azure Machine Learning-pijp lijn.
 
-Maak een Azure Databricks-werk ruimte voordat u deze gebruikt. Als u een werkruimte resource wilt maken, raadpleegt u de [taak een Spark uitvoeren op Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) document.
+Maak een Azure Databricks-werk ruimte voordat u deze gebruikt. Als u een werkruimte resource wilt maken, raadpleegt u de [taak een Spark uitvoeren op Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) document.
 
 Als u Azure Databricks als een reken doel wilt koppelen, geeft u de volgende informatie op:
 
-* __Databricks Compute name__: de naam die u wilt toewijzen aan deze Compute-resource.
-* __Naam van de Databricks-werk ruimte__: de naam van de Azure Databricks-werk ruimte.
-* __Databricks-toegangs token__: het toegangs token dat wordt gebruikt voor het verifiëren van Azure Databricks. Als u een toegangs token wilt genereren, raadpleegt u het [verificatie](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) document.
+* __Databricks Compute name__ : de naam die u wilt toewijzen aan deze Compute-resource.
+* __Naam van de Databricks-werk ruimte__ : de naam van de Azure Databricks-werk ruimte.
+* __Databricks-toegangs token__ : het toegangs token dat wordt gebruikt voor het verifiëren van Azure Databricks. Als u een toegangs token wilt genereren, raadpleegt u het [verificatie](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) document.
 
-De volgende code laat zien hoe u Azure Databricks als een compute-doel koppelt aan de Azure Machine Learning SDK (__de werk ruimte Databricks moet aanwezig zijn in hetzelfde abonnement als uw AML-werk ruimte__):
+De volgende code laat zien hoe u Azure Databricks als een compute-doel koppelt aan de Azure Machine Learning SDK ( __de werk ruimte Databricks moet aanwezig zijn in hetzelfde abonnement als uw AML-werk ruimte__ ):
 
 ```python
 import os
@@ -275,13 +275,13 @@ Bekijk een [voor beeld](https://aka.ms/pl-databricks) van een notebook op github
 
 Azure Data Lake Analytics is een big data Analytics-platform in de Azure-Cloud. Het kan worden gebruikt als een reken doel met een Azure Machine Learning-pijp lijn.
 
-Maak een Azure Data Lake Analytics-account voordat u het gebruikt. Zie aan de [slag met Azure data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) document om deze resource te maken.
+Maak een Azure Data Lake Analytics-account voordat u het gebruikt. Zie aan de [slag met Azure data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) document om deze resource te maken.
 
 Als u Data Lake Analytics als een reken doel wilt koppelen, moet u de Azure Machine Learning SDK gebruiken en de volgende informatie opgeven:
 
-* __Compute name__: de naam die u wilt toewijzen aan deze Compute-resource.
-* __Resource groep__: de resource groep die het data Lake Analytics-account bevat.
-* __Account naam__: de naam van het data Lake Analytics-account.
+* __Compute name__ : de naam die u wilt toewijzen aan deze Compute-resource.
+* __Resource groep__ : de resource groep die het data Lake Analytics-account bevat.
+* __Account naam__ : de naam van het data Lake Analytics-account.
 
 De volgende code laat zien hoe u Data Lake Analytics als een reken doel koppelt:
 
@@ -325,7 +325,7 @@ Bekijk een [voor beeld](https://aka.ms/pl-adla) van een notebook op github voor 
 > Maak niet meerdere gelijktijdige bijlagen met dezelfde ADLA in uw werk ruimte. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
 
 > [!TIP]
-> Azure Machine Learning pijp lijnen kunnen alleen worden gebruikt voor gegevens die zijn opgeslagen in de standaard gegevens opslag van het Data Lake Analytics-account. Als de gegevens waarmee u wilt werken, zich in een niet-standaard archief bevindt, kunt u een gebruiken [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) om de gegevens te kopiëren voor de training.
+> Azure Machine Learning pijp lijnen kunnen alleen worden gebruikt voor gegevens die zijn opgeslagen in de standaard gegevens opslag van het Data Lake Analytics-account. Als de gegevens waarmee u wilt werken, zich in een niet-standaard archief bevindt, kunt u een gebruiken [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?preserve-view=true&view=azure-ml-py) om de gegevens te kopiëren voor de training.
 
 ## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container Instance
 
@@ -350,4 +350,4 @@ Bekijk deze notebooks voor voor beelden van training met verschillende Compute-d
 * [Zelf studie: een model trainen](tutorial-train-models-with-aml.md) maakt gebruik van een beheerd Compute-doel om een model te trainen.
 * Meer informatie over hoe u [Hyper parameters efficiënt kunt afstemmen](how-to-tune-hyperparameters.md) om betere modellen te bouwen.
 * Wanneer u een getraind model hebt, leert u [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md).
-* [Azure Machine Learning gebruiken met virtuele netwerken van Azure](how-to-enable-virtual-network.md)
+* [Azure Machine Learning gebruiken met virtuele netwerken van Azure](./how-to-network-security-overview.md)

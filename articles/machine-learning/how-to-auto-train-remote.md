@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 57108bed97b59513309213d55a0654f4405d509c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1f73e3d31e162801e540e4d4ed5881041c4178
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893325"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320772"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellen trainen met geautomatiseerde machine learning in de cloud
 
@@ -43,9 +43,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Bron maken
 
-Maak het [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true) doel in uw werk ruimte ( `ws` ) als deze nog niet bestaat.
+Maak het [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py) doel in uw werk ruimte ( `ws` ) als deze nog niet bestaat.
 
-**Geschatte tijd**: het maken van het AmlCompute-doel duurt ongeveer 5 minuten.
+**Geschatte tijd** : het maken van het AmlCompute-doel duurt ongeveer 5 minuten.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -90,7 +90,7 @@ De beperkingen voor de cluster naam zijn onder andere:
 
 ## <a name="access-data-using-tabulardataset-function"></a>Toegang tot gegevens met de functie TabularDataset
 
-Gedefinieerd training_data als [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) en het label, dat wordt door gegeven aan automatische milliliters in de [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) . De `TabularDataset` methode `from_delimited_files` stelt de standaard waarde `infer_column_types` in op waar, waardoor het kolommen type automatisch wordt afleiden. 
+Gedefinieerd training_data als [`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) en het label, dat wordt door gegeven aan automatische milliliters in de [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) . De `TabularDataset` methode `from_delimited_files` stelt de standaard waarde `infer_column_types` in op waar, waardoor het kolommen type automatisch wordt afleiden. 
 
 Als u de kolom typen hand matig wilt instellen, kunt u het argument instellen `set_column_types` om het type van elke kolom hand matig in te stellen. In het volgende code voorbeeld zijn de gegevens afkomstig uit het sklearn-pakket.
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>Resultaten verkennen
 
-U kunt dezelfde Jupyter- [widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) gebruiken zoals weer gegeven in [de trainings zelfstudie](tutorial-auto-train-models.md#explore-the-results) om een grafiek en een tabel met resultaten weer te geven.
+U kunt dezelfde Jupyter- [widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) gebruiken zoals weer gegeven in [de trainings zelfstudie](tutorial-auto-train-models.md#explore-the-results) om een grafiek en een tabel met resultaten weer te geven.
 
 ```python
 from azureml.widgets import RunDetails

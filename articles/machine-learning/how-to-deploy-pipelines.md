@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: ae20b339ae3eec694140621b14db26606c9d5ab3
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: dea38705dbb6c2b7abd8a9786ef9adb66ad56ad7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145562"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320438"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>machine learning pijp lijnen publiceren en bijhouden
 
@@ -38,7 +38,7 @@ Machine learning-pijp lijnen zijn herbruikbare werk stromen voor machine learnin
 
 Zodra u een pijp lijn hebt geactiveerd, kunt u een pijp lijn publiceren zodat deze wordt uitgevoerd met verschillende invoer. Voor het REST-eind punt van een al gepubliceerde pijp lijn om para meters te accepteren, moet u uw pijp lijn configureren om objecten te gebruiken `PipelineParameter` voor de argumenten die kunnen variëren.
 
-1. Als u een pijplijn parameter wilt maken, gebruikt u een [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) -object met een standaard waarde.
+1. Als u een pijplijn parameter wilt maken, gebruikt u een [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?preserve-view=true&view=azure-ml-py) -object met een standaard waarde.
 
    ```python
    from azureml.pipeline.core.graph import PipelineParameter
@@ -76,7 +76,7 @@ Alle gepubliceerde pijp lijnen hebben een REST-eind punt. Met het eind punt van 
 > [!IMPORTANT]
 > Als u gebruikmaakt van op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot uw pijp lijn, [stelt u de machtigingen in voor uw pijplijn scenario (training of Score)](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service).
 
-Als u de uitvoering van de voor gaande pijp lijn wilt aanroepen, hebt u een token voor de Azure Active Directory-verificatie header nodig. Het ophalen van een dergelijk token wordt beschreven in de [AzureCliAuthentication-klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true) verwijzing en in de [verificatie in azure machine learning](https://aka.ms/pl-restep-auth) notitie blok.
+Als u de uitvoering van de voor gaande pijp lijn wilt aanroepen, hebt u een token voor de Azure Active Directory-verificatie header nodig. Het ophalen van een dergelijk token wordt beschreven in de [AzureCliAuthentication-klasse](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py) verwijzing en in de [verificatie in azure machine learning](https://aka.ms/pl-restep-auth) notitie blok.
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -343,9 +343,9 @@ U kunt ook een gepubliceerde pijp lijn uitvoeren vanuit de studio:
 
 1. [Uw werk ruimte weer geven](how-to-manage-workspace.md#view).
 
-1. Selecteer aan de linkerkant **eind punten** .
+1. Selecteer aan de linkerkant **eind punten**.
 
-1. Selecteer bovenaan de **pijp lijn-eind punten** .
+1. Selecteer bovenaan de **pijp lijn-eind punten**.
  ![lijst met machine learning gepubliceerde pijp lijnen](./media/how-to-create-your-first-pipeline/pipeline-endpoints.png)
 
 1. Selecteer een specifieke pijp lijn om uit te voeren, te gebruiken of Bekijk de resultaten van de vorige uitvoeringen van het pijplijn eindpunt.
@@ -360,10 +360,10 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-U kunt deze opnieuw inschakelen met `p.enable()` . Zie referentie [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py&preserve-view=true) voor meer informatie.
+U kunt deze opnieuw inschakelen met `p.enable()` . Zie referentie [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?preserve-view=true&view=azure-ml-py) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Gebruik [deze Jupyter-notebooks op github](https://aka.ms/aml-pipeline-readme) om machine learning pijp lijnen verder te verkennen.
-- Zie de SDK-Naslag informatie voor het pakket met het kern pakket voor [azureml-pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) en de stappen voor het [oplossen van azureml-pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) .
+- Zie de SDK-Naslag informatie voor het pakket met het kern pakket voor [azureml-pijp lijnen](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) en de stappen voor het [oplossen van azureml-pijp lijnen](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) .
 - Raadpleeg de [hand](how-to-debug-pipelines.md) leiding voor tips over het opsporen van fouten en pijp lijnen voor probleem oplossing.

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2da8bd0b36b553a4b5f85b6f79987ab1a7b8d5a7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286564"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321712"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Release opmerkingen-Azure Arc ingeschakelde Data Services (preview-versie)
 
@@ -28,7 +28,7 @@ Azure data CLI ( `azdata` )-versie nummer: 20.2.3. Downloaden op [https://aka.ms
 
 In deze release worden de volgende belang rijke wijzigingen geïntroduceerd: 
 
-* De PostgreSQL-bestanden voor de aangepaste resource definitie (CRD) vervangen de naam van de term `shards` `workers` . Deze term ( `workers` ) komt overeen met de naam van de opdracht regel parameter.
+* In de PostgreSQL-aangepaste resource definitie (CRD) wordt de naam van de term `shards` gewijzigd in `workers` . Deze term ( `workers` ) komt overeen met de naam van de opdracht regel parameter.
 
 * `azdata arc postgres server delete` Hiermee wordt om bevestiging gevraagd voordat een post gres-exemplaar wordt verwijderd.  Gebruik `--force` om de prompt te overs Laan.
 
@@ -50,15 +50,15 @@ In deze release worden de volgende belang rijke wijzigingen geïntroduceerd:
 
    * Als er geen gegevens zijn geladen in azure, wordt u gevraagd om het opnieuw te proberen.
 
-* `azdata arc dc debug copy-logs` Lees nu ook uit `/var/opt/controller/log` map en verzamelt post gres-Logboeken.
+* `azdata arc dc debug copy-logs` Lees nu ook uit `/var/opt/controller/log` map en verzamelt postgresql engine-Logboeken in Linux.
 
-*   Een werk indicator weer geven tijdens het maken en herstellen van de back-up.
+*   Een werk indicator weer geven tijdens het maken en herstellen van de back-up met PostgreSQL grootschalige.
 
 * `azdata arc postrgres backup list` bevat nu informatie over de grootte van de back-up.
 
 * De eigenschap admin name van SQL Managed instance is toegevoegd aan de rechter kolom van de Blade overzicht in het Azure Portal.
 
-* Azure Data Studio ondersteunt het configureren van het aantal worker-knoop punten, de vCore en de geheugen instellingen voor een server groep. 
+* Azure Data Studio ondersteunt het configureren van het aantal worker-knoop punten, de vCore en de geheugen instellingen voor PostgreSQL grootschalige. 
 
 * Preview ondersteunt Backup/Restore voor post gres-versie 11 en 12.
 
@@ -80,9 +80,7 @@ Zie [Wat zijn Azure Arc-gegevens Services?](overview.md) voor instructies.
 - Als u nu gebruikmaakt van NFS, moet u `allowRunAsRoot` `true` in uw implementatie profiel bestand instellen voordat u de Azure Arc-gegevens controller maakt.
 - Alleen SQL-en PostgreSQL-aanmeldings verificatie.  Er wordt geen ondersteuning geboden voor Azure Active Directory of Active Directory.
 - Voor het maken van een gegevens controller voor open Shift zijn beperkte beveiligings beperkingen vereist.  Zie documentatie voor details.
-- Het schalen van het aantal PostgresSQL grootschalige-worker _-knoop punten_ wordt niet ondersteund.
 - Als u Azure Kubernetes service Engine (AKS-Engine) op Azure Stack hub met Azure Arc data controller-en data base-instanties gebruikt, wordt het upgraden naar een nieuwere versie van Kubernetes niet ondersteund. Verwijder de Azure Arc-gegevens controller en alle data base-exemplaren voordat u het Kubernetes-cluster bijwerkt.
-- Preview biedt geen ondersteuning voor Backup/Restore voor post gres versie 11-engine. (Opgelost in oktober, 2020) Het ondersteunt alleen Backup/Restore voor post gres versie 12.
 - Azure Kubernetes service (AKS), clusters die [meerdere beschikbaarheids zones](../../aks/availability-zones.md) omvatten, worden momenteel niet ondersteund voor Azure Arc-gegevens Services. Als u dit probleem wilt voor komen, moet u, wanneer u het AKS-cluster maakt in Azure Portal, als u een regio selecteert waar zones beschikbaar zijn, alle zones verwijderen uit het selectie besturings element. Zie de volgende afbeelding:
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Schakel de selectie vakjes voor elke zone uit om geen op te geven.":::
@@ -90,10 +88,11 @@ Zie [Wat zijn Azure Arc-gegevens Services?](overview.md) voor instructies.
 
 ### <a name="known-issues-for-azure-arc-enabled-postgresql-hyperscale"></a>Bekende problemen voor Azure Arc enabled PostgreSQL grootschalige   
 
+- Preview biedt geen ondersteuning voor Backup/Restore voor PostgreSQL versie 11-engine. Het ondersteunt alleen Backup/Restore voor PostgreSQL versie 12.
+- `azdata arc dc debug copy-logs` ndoes PostgreSQL-engine-logboeken niet verzamelen in Windows.
 - Het opnieuw maken van een server groep met de naam van een server groep die zojuist is verwijderd, kan mislukken of vastlopen. 
    - **Tijdelijke oplossing** Gebruik dezelfde naam niet wanneer u een server groep opnieuw maakt of wacht op de load balancer/externe service van eerder verwijderde Server groep. Ervan uitgaande dat de naam van de Server groep die u hebt verwijderd `postgres01` , werd gehost in een naam ruimte `arc` , voordat u een server groep met dezelfde naam maakt, moet u wachten totdat deze `postgres01-external-svc` niet wordt weer gegeven in de uitvoer van de kubectl-opdracht `kubectl get svc -n arc` .
- 
-- Het laden van de pagina overzicht en configuratie van Compute + Storage in Azure Data Studio is traag. 
+ - Het laden van de pagina overzicht en configuratie van Compute + Storage in Azure Data Studio is traag. 
 
 
 

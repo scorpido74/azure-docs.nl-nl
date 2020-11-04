@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b708d85e94782ea264432ae3780b2b1f0d240396
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296770"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320808"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 
 
-In dit artikel vindt u informatie over het configureren en trainen van een regressie model voor het maken van een time-reeks met behulp van geautomatiseerde machine learning, AutoML, in de [Azure machine learning python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true). 
+In dit artikel vindt u informatie over het configureren en trainen van een regressie model voor het maken van een time-reeks met behulp van geautomatiseerde machine learning, AutoML, in de [Azure machine learning python-SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
 
 Dit doet u als volgt: 
 
@@ -120,7 +120,7 @@ Meer informatie over hoe AutoML van toepassing is op Kruis validatie om te [voor
 
 ## <a name="configure-experiment"></a>Experiment configureren
 
-Het [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) object definieert de instellingen en gegevens die nodig zijn voor een geautomatiseerde machine learning taak. De configuratie van een prognose model is vergelijkbaar met de instelling van een standaard regressie model, maar bepaalde modellen, configuratie opties en parametrisatie-stappen zijn specifiek voor tijdreeks gegevens. 
+Het [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) object definieert de instellingen en gegevens die nodig zijn voor een geautomatiseerde machine learning taak. De configuratie van een prognose model is vergelijkbaar met de instelling van een standaard regressie model, maar bepaalde modellen, configuratie opties en parametrisatie-stappen zijn specifiek voor tijdreeks gegevens. 
 
 ### <a name="supported-models"></a>Ondersteunde modellen
 Automatische machine learning probeert automatisch verschillende modellen en algoritmen als onderdeel van het maken en afstemmen van het model. Als gebruiker hoeft u het algoritme niet op te geven. Voor het voors pellen van experimenten zijn zowel systeem eigen time-series als diepe leer modellen onderdeel van het aanbevelings systeem. De volgende tabel geeft een overzicht van deze subset van modellen. 
@@ -138,7 +138,7 @@ ForecastTCN (preview-versie)| ForecastTCN is een Neural-netwerk model dat is ont
 
 Net als bij een regressie probleem definieert u de standaard opleidings parameters, zoals het taak type, het aantal iteraties, de trainings gegevens en het aantal Kruis validaties. Voor prognose taken zijn er aanvullende para meters die moeten worden ingesteld die van invloed zijn op het experiment. 
 
-De volgende tabel bevat een overzicht van deze aanvullende para meters. Zie de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) voor patronen voor syntaxis ontwerpen.
+De volgende tabel bevat een overzicht van deze aanvullende para meters. Zie de [referentie documentatie](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) voor patronen voor syntaxis ontwerpen.
 
 | Parameter &nbsp; naam | Beschrijving | Vereist |
 |-------|-------|-------|
@@ -149,10 +149,11 @@ De volgende tabel bevat een overzicht van deze aanvullende para meters. Zie de [
 |`target_lags`|Het aantal rijen dat de doel waarden moeten worden vertraagd op basis van de frequentie van de gegevens. De vertraging wordt weer gegeven als een lijst of één geheel getal. Er moet een vertraging worden gebruikt wanneer de relatie tussen de onafhankelijke variabelen en de afhankelijke variabele standaard niet overeenkomt met of correleert. ||
 |`feature_lags`| De functies voor vertraging worden automatisch bepaald door automatische MILLILITERs wanneer `target_lags` ze zijn ingesteld en `feature_lags` ingesteld op `auto` . Het inschakelen van functie lags kan helpen de nauw keurigheid te verbeteren. Functie lags zijn standaard uitgeschakeld. ||
 |`target_rolling_window_size`|*n* historische Peri Oden die moeten worden gebruikt voor het genereren van prognose waarden, <= grootte van de Trainingsset. Als u dit weglaat, is *n* de volledige grootte van de Trainingsset. Geef deze para meter op als u alleen een bepaalde hoeveelheid geschiedenis wilt beschouwen bij het trainen van het model. Meer informatie over het [samen voegen van target-rollen](#target-rolling-window-aggregation).||
+|`short_series_handling`| Hiermee wordt het verwerken van korte tijd reeksen voor komen dat fouten tijdens de training mislukken vanwege onvoldoende gegevens. Het afhandelen van de korte serie is standaard ingesteld op waar.|
 
 
 De volgende code, 
-* Hiermee wordt het `time-series settings` object voor een woorden lijst gemaakt. 
+* Maakt gebruik van de- `ForecastingParameters` klasse om de para meters voor de voor spellingen van uw experiment training te definiëren
 * Hiermee stelt `time_column_name` u de `day_datetime` waarde in op het veld in de gegevensset. 
 * Hiermee definieert `time_series_id_column_names` u de para meter voor `"store"` . Dit zorgt ervoor dat er **twee afzonderlijke time-series groepen** worden gemaakt voor de gegevens. een voor Store A en B.
 * Hiermee stelt `forecast_horizon` u de 50 in op om te voors pellen voor de hele testset. 
@@ -161,16 +162,18 @@ De volgende code,
 * Wordt ingesteld `target_lags` op de aanbevolen instelling ' automatisch ', waardoor deze waarde automatisch voor u wordt gedetecteerd.
 
 ```python
-time_series_settings = {
-    "time_column_name": "day_datetime",
-    "time_series_id_column_names": ["store"],
-    "forecast_horizon": 50,
-    "target_lags": "auto",
-    "target_rolling_window_size": 10,
-}
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecasting_parameters = ForecastingParameters(
+    time_column_name='day_datetime', 
+    forecast_horizon=50,
+    time_series_id_column_names=["store"],
+    target_lags='auto',
+    target_rolling_window_size=10
+)
 ```
 
-Deze `time_series_settings` worden vervolgens door gegeven aan uw standaard `AutoMLConfig` object, samen met het `forecasting` taak type, de primaire metrische gegevens, afsluit criteria en trainings gegevens. 
+Deze `forecasting_parameters` worden vervolgens door gegeven aan uw standaard `AutoMLConfig` object, samen met het `forecasting` taak type, de primaire metrische gegevens, afsluit criteria en trainings gegevens. 
 
 ```python
 from azureml.core.workspace import Workspace
@@ -213,7 +216,7 @@ U hebt ook de optie om uw parametrisatie-instellingen aan te passen, zodat u zek
 
 Ondersteunde aanpassingen voor `forecasting` taken zijn onder andere:
 
-|Aanpassen|Definitie|
+|Aanpassing|Definitie|
 |--|--|
 |**Update van het kolom doel**|Overschrijf het automatisch gedetecteerde functie type voor de opgegeven kolom.|
 |**Para meter bijwerken van trans formatie** |De para meters voor de opgegeven transformator bijwerken. *Ondersteunt momenteel* toerekenings functie (fill_value en mediaan).|
@@ -346,4 +349,3 @@ Zie de voor beelden van voor beeld van de [voorbeeld notitieblokken](https://git
 * Meer informatie over [Interpretiteit: model uitleg bij automatische machine learning (preview)](how-to-machine-learning-interpretability-automl.md). 
 * Meer informatie over het trainen van meerdere modellen met AutoML in de [vele modellen oplossings versneller](https://aka.ms/many-models).
 * Volg de [zelf studie](tutorial-auto-train-models.md) voor een end-to-end-voor beeld voor het maken van experimenten met automatische machine learning.
-

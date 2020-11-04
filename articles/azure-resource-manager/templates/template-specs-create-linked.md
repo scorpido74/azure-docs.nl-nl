@@ -2,17 +2,17 @@
 title: Een sjabloon specificatie met gekoppelde sjablonen maken
 description: Meer informatie over het maken van een sjabloon spec met gekoppelde sjablonen.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728536"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321599"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Zelf studie: een sjabloon specificatie met gekoppelde sjablonen maken (preview)
 
-Meer informatie over het maken van een [sjabloon specificatie](template-specs.md) met een [gekoppelde sjabloon](linked-templates.md#linked-template). U kunt sjabloon specificaties gebruiken om ARM-sjablonen te delen met andere gebruikers in uw organisatie. In dit artikel wordt beschreven hoe u een sjabloon specificatie maakt voor het inpakken van een hoofd sjabloon en gekoppelde sjablonen met behulp `relativePath` van de eigenschap van de [implementatie bron](/azure/templates/microsoft.resources/deployments).
+Meer informatie over het maken van een [sjabloon specificatie](template-specs.md) met een hoofd sjabloon en een [gekoppelde sjabloon](linked-templates.md#linked-template). U kunt sjabloon specificaties gebruiken om ARM-sjablonen te delen met andere gebruikers in uw organisatie. In dit artikel wordt beschreven hoe u een sjabloon specificatie maakt voor het inpakken van een hoofd sjabloon en gekoppelde sjablonen met behulp `relativePath` van de eigenschap van de [implementatie bron](/azure/templates/microsoft.resources/deployments).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -27,7 +27,7 @@ Maak de hoofd sjabloon en de gekoppelde sjabloon.
 
 Als u een sjabloon wilt koppelen, moet u een implementatie van een [resource](/azure/templates/microsoft.resources/deployments) toevoegen aan uw hoofd sjabloon. Geef in de `templateLink` eigenschap het relatieve pad van de gekoppelde sjabloon op in overeenstemming met het pad van de bovenliggende sjabloon.
 
-De gekoppelde sjabloon heet **linkedTemplate.jsop**en wordt opgeslagen in een submap met de naam **artefacten** in het pad waar de hoofd sjabloon is opgeslagen.  U kunt een van de volgende waarden gebruiken voor de relativePath:
+De gekoppelde sjabloon heet **linkedTemplate.jsop** en wordt opgeslagen in een submap met de naam **artefacten** in het pad waar de hoofd sjabloon is opgeslagen.  U kunt een van de volgende waarden gebruiken voor de relativePath:
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`
@@ -35,7 +35,7 @@ De gekoppelde sjabloon heet **linkedTemplate.jsop**en wordt opgeslagen in een su
 
 De `relativePath` eigenschap is altijd relatief ten opzichte van het sjabloon bestand waar `relativePath` is gedeclareerd, dus als er een andere linkedTemplate2.jsis aangeroepen vanuit linkedTemplate.jsop en linkedTemplate2.jsop wordt opgeslagen in dezelfde submap voor artefacten, is de relativePath die is opgegeven in linkedTemplate.js, alleen `linkedTemplate2.json` .
 
-1. Maak de hoofd sjabloon met de volgende JSON. Sla de hoofd sjabloon ** op alsazuredeploy.jsop** de lokale computer. In deze zelf studie wordt ervan uitgegaan dat u hebt opgeslagen in een pad **c:\Templates\linkedTS\azuredeploy.js** , maar u kunt een wille keurig pad gebruiken.
+1. Maak de hoofd sjabloon met de volgende JSON. Sla de hoofd sjabloon **op alsazuredeploy.jsop** de lokale computer. In deze zelf studie wordt ervan uitgegaan dat u hebt opgeslagen in een pad **c:\Templates\linkedTS\azuredeploy.js** , maar u kunt een wille keurig pad gebruiken.
 
     ```json
     {
@@ -158,7 +158,7 @@ De `relativePath` eigenschap is altijd relatief ten opzichte van het sjabloon be
     }
     ```
 
-1. Sla de sjabloon ** op alslinkedTemplate.js** in de map **artefacten** .
+1. Sla de sjabloon **op alslinkedTemplate.js** in de map **artefacten** .
 
 ## <a name="create-template-spec"></a>Sjabloonspecificatie maken
 

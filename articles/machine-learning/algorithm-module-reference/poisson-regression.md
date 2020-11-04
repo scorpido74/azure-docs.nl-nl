@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905257"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319425"
 ---
 # <a name="poisson-regression"></a>Regressie Poisson
 
@@ -29,7 +29,7 @@ Gebruik deze module om een Poisson-regressie model in een pijp lijn te maken. Po
 - Een Poisson-verdeling is een discrete distributie; Daarom is het niet zinvol om deze methode te gebruiken met niet-geheel getal.
 
 > [!TIP]
-> Als uw doel geen aantal is, is Poisson-regressie waarschijnlijk geen geschikte methode. Probeer [andere regressie modules in de ontwerp functie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference#machine-learning-algorithms). 
+> Als uw doel geen aantal is, is Poisson-regressie waarschijnlijk geen geschikte methode. Probeer [andere regressie modules in de ontwerp functie](./module-reference.md#machine-learning-algorithms). 
 
 Nadat u de regressie methode hebt ingesteld, moet u het model trainen met een gegevensset met voor beelden van de waarde die u wilt voors pellen. Het getrainde model kan vervolgens worden gebruikt voor het maken van voor spellingen.
 
@@ -49,7 +49,7 @@ Omdat de reactie variabele een Poisson-verdeling heeft, maakt het model verschil
 
 ## <a name="how-to-configure-poisson-regression"></a>Poisson-regressie configureren
 
-1. Voeg de module **Poisson regressie** toe aan uw pijp lijn in Designer. U kunt deze module vinden onder **machine learning-algoritmen**in de categorie **regressie** .
+1. Voeg de module **Poisson regressie** toe aan uw pijp lijn in Designer. U kunt deze module vinden onder **machine learning-algoritmen** in de categorie **regressie** .
 
 2. Voeg een gegevensset toe die de opleidings gegevens van het juiste type bevat. 
 
@@ -57,13 +57,13 @@ Omdat de reactie variabele een Poisson-verdeling heeft, maakt het model verschil
 
 3. Geef in het rechterdeel venster van de **Poisson-regressie** -module op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    - **Eén para meter**: als u weet hoe u het model wilt configureren, geeft u een specifieke set waarden als argumenten op.
+    - **Eén para meter** : als u weet hoe u het model wilt configureren, geeft u een specifieke set waarden als argumenten op.
   
-    - **Parameter bereik**: als u niet zeker weet wat de beste para meters zijn, kunt u een para meter opruimen met behulp van de Hyper parameters-module [model](tune-model-hyperparameters.md) . De trainer herhaalt over meerdere waarden die u opgeeft om de optimale configuratie te vinden.
+    - **Parameter bereik** : als u niet zeker weet wat de beste para meters zijn, kunt u een para meter opruimen met behulp van de Hyper parameters-module [model](tune-model-hyperparameters.md) . De trainer herhaalt over meerdere waarden die u opgeeft om de optimale configuratie te vinden.
   
-4. **Optimalisatie tolerantie**: Typ een waarde die het tolerantie-interval tijdens de optimalisatie definieert. Hoe lager de waarde, hoe langzamer en nauw keuriger de fitting.
+4. **Optimalisatie tolerantie** : Typ een waarde die het tolerantie-interval tijdens de optimalisatie definieert. Hoe lager de waarde, hoe langzamer en nauw keuriger de fitting.
 
-5. **L1-regularisatie gewicht** en **L2-regularisatie gewicht**: Typ de waarden die moeten worden gebruikt voor L1 en L2-regularisatie. *Regularisatie* voegt beperkingen toe aan het algoritme met betrekking tot aspecten van het model die onafhankelijk zijn van de trainings gegevens. Regularisatie wordt vaak gebruikt om overmontage te voor komen. 
+5. **L1-regularisatie gewicht** en **L2-regularisatie gewicht** : Typ de waarden die moeten worden gebruikt voor L1 en L2-regularisatie. *Regularisatie* voegt beperkingen toe aan het algoritme met betrekking tot aspecten van het model die onafhankelijk zijn van de trainings gegevens. Regularisatie wordt vaak gebruikt om overmontage te voor komen. 
 
     - L1 regularisatie is handig als het doel een model moet hebben dat zo sparst mogelijk is.
 
@@ -73,9 +73,9 @@ Omdat de reactie variabele een Poisson-verdeling heeft, maakt het model verschil
 
     In deze module kunt u een combi natie van L1 en L2-regularizations Toep assen. Door de combi natie van L1 en L2-regularisatie kunt u een sanctie opleggen voor de grootte van de parameter waarden. De cursist probeert de sanctie te minimaliseren, in een afweging waarbij het verlies wordt geminimaliseerd.
 
-    Voor een goede bespreking van L1 en L2-regularisatie raadpleegt u [L1 en L2-regularisatie voor machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx).
+    Voor een goede bespreking van L1 en L2-regularisatie raadpleegt u [L1 en L2-regularisatie voor machine learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning).
 
-6. **Geheugen grootte voor L-BFGS**: Geef de hoeveelheid geheugen op die moet worden gereserveerd voor model fitting en-optimalisatie.
+6. **Geheugen grootte voor L-BFGS** : Geef de hoeveelheid geheugen op die moet worden gereserveerd voor model fitting en-optimalisatie.
 
      L-BFGS is een specifieke methode voor optimalisatie, gebaseerd op het algoritme Broyden – Fletcher – Goldfarb – Shanno (BFGS). De methode maakt gebruik van een beperkte hoeveelheid geheugen (L) om de richting van de volgende stap te berekenen.
 
@@ -83,9 +83,9 @@ Omdat de reactie variabele een Poisson-verdeling heeft, maakt het model verschil
 
 7. Verbind de trainings-gegevensset en het niet-getrainde model met een van de trainings modules: 
 
-    - Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](train-model.md) .
+    - Als u de **modus trainer maken** instelt op **één para meter** , gebruikt u de module [Train model](train-model.md) .
 
-    - Als u de **modus trainer maken** instelt op het **parameter bereik**, gebruikt u de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) .
+    - Als u de **modus trainer maken** instelt op het **parameter bereik** , gebruikt u de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) .
 
     > [!WARNING]
     > 
@@ -105,4 +105,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

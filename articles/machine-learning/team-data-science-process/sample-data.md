@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 878a2a47dfaddf1d3399a1dbd98865332838e148
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76718600"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321754"
 ---
 # <a name="sample-data-in-azure-blob-containers-sql-server-and-hive-tables"></a><a name="heading"></a>Voorbeeldgegevens in Azure Blob-containers, SQL Server en Hive-tabellen
 
@@ -26,9 +26,8 @@ In de volgende artikelen wordt beschreven hoe u voorbeeld gegevens die zijn opge
 * [**SQL Server gegevens**](sample-data-sql-server.md) worden bemonsterd met behulp van SQL en de python-programmeer taal. 
 * Voor de [**Hive-tabel gegevens**](sample-data-hive.md) wordt gebruikgemaakt van Hive-query's.
 
-Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze steekproef taak is een stap in het [team data Science process (TDSP)](./index.yml).
 
 **Waarom voorbeeld gegevens?**
 
 Als de gegevensset die u wilt analyseren groot is, is het doorgaans een goed idee om de gegevens te verlagen om deze te verminderen tot een kleinere, maar representatieve en meer beheersbare grootte. Overweeg kan bijdragen aan het leren, verkennen en functie techniek. Deze steekproef rol in het proces van Cortana Analytics is het snel maken van prototypen van de functies voor gegevens verwerking en het machine learning model.
-

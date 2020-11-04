@@ -10,17 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: fe00d7f107911e2245041419c20f86e2e32a0480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289256"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321490"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Aanbevolen procedures voor het ontwikkelen van Synapse-SQL
+
 In dit artikel worden richt lijnen en aanbevolen procedures beschreven voor het ontwikkelen van uw data warehouse-oplossing. 
 
-## <a name="sql-pool-development-best-practices"></a>Aanbevolen procedures voor het ontwikkelen van SQL-Pools
+## <a name="dedicated-sql-pool-development-best-practices"></a>Best practices voor het ontwikkelen van exclusieve SQL-Pools
 
 ### <a name="reduce-cost-with-pause-and-scale"></a>Kosten verlagen met onderbreken en schalen
 
@@ -55,12 +56,12 @@ Raadpleeg de volgende koppelingen voor meer informatie over het selecteren van e
 Zie ook [tabel Overzicht](develop-tables-overview.md), [tabel distributie](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [selecteren van tabel distributie](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)en [Create Table als selecteren](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="do-not-over-partition"></a>Niet te veel partities maken
-Hoewel het partitioneren van gegevens effectief kan zijn voor het onderhouden van uw gegevens via partitie wisseling of het optimaliseren van scans met behulp van partitie-eliminatie, waardoor er te veel partities zijn, kunnen de query's worden vertraagd.  Vaak is het mogelijk dat de strategie voor het partitioneren van hoge granulariteit goed werkt op SQL Server niet goed werkt voor de SQL-groep.  
+Hoewel het partitioneren van gegevens effectief kan zijn voor het onderhouden van uw gegevens via partitie wisseling of het optimaliseren van scans met behulp van partitie-eliminatie, waardoor er te veel partities zijn, kunnen de query's worden vertraagd.  Vaak is het mogelijk dat een hoge granulatie strategie die goed werkt op SQL Server wellicht niet goed werkt op een toegewezen SQL-groep.  
 
 > [!NOTE]
-> Vaak is het mogelijk dat de strategie voor het partitioneren van hoge granulariteit goed werkt op SQL Server niet goed werkt voor de SQL-groep.  
+> Vaak is het mogelijk dat een hoge granulatie strategie die goed werkt op SQL Server wellicht niet goed werkt op een toegewezen SQL-groep.  
 
-Te veel partities kunnen ook geclusterde columnstore-indexen minder effectief maken als elke partitie minder dan 1 miljoen rijen bevat. Met SQL pool worden uw gegevens naar 60-data bases gepartitioneerd. 
+Te veel partities kunnen ook geclusterde columnstore-indexen minder effectief maken als elke partitie minder dan 1 miljoen rijen bevat. Met toegewezen SQL-pool worden uw gegevens naar 60-data bases gepartitioneerd. 
 
 Als u dus een tabel met 100-partities maakt, is het resultaat 6000 partities.  Elke workload is verschillend, en daarom kunt u het beste experimenteren met partities om te zien wat het beste werkt voor uw workload.  
 
@@ -95,7 +96,7 @@ Zie ook [tabel Overzicht](develop-tables-overview.md), [tabel gegevens typen](de
 
 ### <a name="optimize-clustered-columnstore-tables"></a>Geclusterde columnstore-tabellen optimaliseren
 
-Geclusterde column Store-indexen zijn een van de meest efficiënte manieren om uw gegevens in de SQL-groep op te slaan.  Tabellen in SQL-groep worden standaard gemaakt als geclusterde column Store.  
+Geclusterde column Store-indexen zijn een van de meest efficiënte manieren om uw gegevens op te slaan in een toegewezen SQL-groep.  Tabellen in een toegewezen SQL-groep worden standaard gemaakt als geclusterde column Store.  
 
 Een goede segmentkwaliteit is belangrijk om de beste resultaten te behalen voor query’s voor columnstore-tabellen.  Wanneer rijen naar columnstore-tabellen worden geschreven onder geheugendruk, kan dit ten koste gaan van de kwaliteit van columnstore-segmenten.  
 
@@ -103,7 +104,7 @@ Segmentkwaliteit kan worden gemeten aan de hand van het aantal rijen in een geco
 
 Omdat column Store-segmenten van hoge kwaliteit belang rijk zijn, is het een goed idee om gebruikers-Id's te gebruiken die zich in de middel lange of grote resource klasse bevinden voor het laden van gegevens. Als u lagere [Data Warehouse-eenheden](resource-consumption-models.md) gebruikt, wilt u een grotere resource klasse toewijzen aan de gebruiker die u wilt laden.
 
-Aangezien column Store-tabellen doorgaans geen gegevens naar een gecomprimeerd column Store-segment pushen totdat er meer dan 1.000.000 rijen per tabel zijn en elke tabel in de SQL-groep is gepartitioneerd in 60 tabellen, profiteren column Store-tabellen niet voor een query tenzij de tabel meer dan 60.000.000 rijen heeft.  
+Aangezien column Store-tabellen doorgaans geen gegevens naar een gecomprimeerd column Store-segment pushen totdat er meer dan 1.000.000 rijen per tabel zijn en elke toegewezen SQL-groeps tabel is gepartitioneerd in 60 tabellen, profiteren column Store-tabellen niet voor een query tenzij de tabel meer dan 60.000.000 rijen heeft.  
 
 > [!TIP]
 > Voor tabellen met minder dan 60.000.000 rijen is het mogelijk dat een column store-index niet de optimale oplossing is.  
@@ -116,23 +117,23 @@ Query’s worden sneller uitgevoerd voor een columnstore-tabel als u alleen de k
 
 Zie ook [tabel indexen](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [gids column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [Column Store-indexen opnieuw samen stellen](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality).
 
-## <a name="sql-on-demand-development-best-practices"></a>Aanbevolen procedures voor het ontwikkelen van SQL op aanvraag
+## <a name="serverless-sql-pool-development-best-practices"></a>Aanbevolen procedures voor het ontwikkelen van SQL-Pools zonder server
 
 ### <a name="general-considerations"></a>Algemene overwegingen
 
-Met SQL on-Demand kunt u bestanden in uw Azure Storage-accounts opvragen. Het bevat geen lokale opslag-of opname mogelijkheden, wat inhoudt dat alle bestanden die de query streeft, extern zijn voor SQL op aanvraag. Het lezen van bestanden uit de opslag kan dus gevolgen hebben voor de prestaties van query's.
+Met serverloze SQL-pool kunt u een query uitvoeren op bestanden in uw Azure-opslag accounts. Het bevat geen lokale opslag-of opname mogelijkheden, wat inhoudt dat alle bestanden die de query bedoelt, extern zijn voor een serverloze SQL-groep. Het lezen van bestanden uit de opslag kan dus gevolgen hebben voor de prestaties van query's.
 
-### <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Azure Storage account en SQL on-demand zoeken
+### <a name="colocate-azure-storage-account-and-serverless-sql-pool"></a>Azure Storage account en serverloze SQL-groep selecteren
 
-Als u de latentie wilt minimaliseren, gaat u naar uw Azure Storage-account en uw SQL on-demand-eind punt. Opslag accounts en eind punten die zijn ingericht tijdens het maken van de werk ruimte bevinden zich in dezelfde regio.
+Als u de latentie wilt beperken, moet u uw Azure Storage-account en uw serverloze SQL-groeps eindpunt vinden. Opslag accounts en eind punten die zijn ingericht tijdens het maken van de werk ruimte bevinden zich in dezelfde regio.
 
-Voor optimale prestaties kunt u, als u toegang krijgt tot andere opslag accounts met SQL on-demand, ervoor zorgen dat ze zich in dezelfde regio bevinden. Anders wordt de latentie verhoogd voor de netwerk overdracht van de gegevens van de externe regio naar de regio van het eind punt.
+Voor optimale prestaties kunt u, als u toegang krijgt tot andere opslag accounts met serverloze SQL-groep, ervoor zorgen dat ze zich in dezelfde regio bevinden. Anders wordt de latentie verhoogd voor de netwerk overdracht van de gegevens van de externe regio naar de regio van het eind punt.
 
 ### <a name="azure-storage-throttling"></a>Azure Storage beperking
 
-Meerdere toepassingen en services kunnen toegang krijgen tot uw opslag account. Wanneer de gecombineerde IOPS of door Voer die door toepassingen, services en SQL on-demand-werk belasting worden gegenereerd, de limieten van het opslag account overschrijden, wordt er sprake van opslag beperking. Als er sprake is van opslag beperking, is er een aanzienlijk negatief effect op de query prestaties.
+Meerdere toepassingen en services kunnen toegang krijgen tot uw opslag account. Wanneer de gecombineerde IOPS of door Voer die door toepassingen, services en serverloze SQL pool-werk belasting worden gegenereerd, de limieten van het opslag account overschrijden, wordt er sprake van opslag beperking. Als er sprake is van opslag beperking, is er een aanzienlijk negatief effect op de query prestaties.
 
-Zodra de beperking is gedetecteerd, heeft SQL op aanvraag ingebouwde verwerking van dit scenario. Op aanvraag van SQL on-demand worden de opslag ruimte in een langzamer tempo opgeslagen totdat de beperking is opgelost. 
+Wanneer het beperken is gedetecteerd, heeft de serverloze SQL-groep ingebouwde verwerking van dit scenario. Serverloze SQL-pool maakt aanvragen voor opslag in een langzamer tempo tot de beperking is opgelost. 
 
 Voor een optimale uitvoering van query's is het echter raadzaam dat u het opslag account met andere werk belastingen tijdens de uitvoering van de query niet stressert.
 
@@ -140,7 +141,7 @@ Voor een optimale uitvoering van query's is het echter raadzaam dat u het opslag
 
 Als dat mogelijk is, kunt u bestanden voorbereiden voor betere prestaties:
 
-- Converteer CSV naar Parquet: Parquet is de kolom indeling. Omdat het gecomprimeerd is, heeft het kleinere bestands grootten dan CSV-bestanden met dezelfde gegevens, en heeft SQL on-demand minder tijd en opslag aanvragen nodig om het te lezen.
+- Converteer CSV naar Parquet: Parquet is de kolom indeling. Omdat het gecomprimeerd is, heeft het kleinere bestands grootten dan CSV-bestanden met dezelfde gegevens, en heeft de serverloze SQL-pool minder tijd en opslag aanvragen nodig om deze te lezen.
 - Als een query is gericht op één groot bestand, is het van belang om deze te splitsen in meerdere kleinere bestanden.
 - Probeer de grootte van het CSV-bestand onder de 10 GB te houden.
 - Het verdient de voor keur om even grote bestanden te hebben voor één OPENROWSET-pad of een externe tabel locatie.
@@ -148,17 +149,17 @@ Als dat mogelijk is, kunt u bestanden voorbereiden voor betere prestaties:
 
 ### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>De functies file info en filepath gebruiken om specifieke partities te bereiken
 
-Gegevens zijn vaak ingedeeld in partities. U kunt SQL op aanvraag een instructie geven om specifieke mappen en bestanden op te vragen. Hierdoor beperkt u het aantal bestanden en de hoeveelheid gegevens die de query moet lezen en verwerken. 
+Gegevens zijn vaak ingedeeld in partities. U kunt een serverloze SQL-groep instrueren voor het opvragen van specifieke mappen en bestanden. Hierdoor beperkt u het aantal bestanden en de hoeveelheid gegevens die de query moet lezen en verwerken. 
 
 Hierdoor krijgt u betere prestaties. Controleer voor meer informatie de functies [filename](query-data-storage.md#filename-function) en [filepath](query-data-storage.md#filepath-function) en voor beelden voor het [uitvoeren van query's op specifieke bestanden](query-specific-files.md).
 
 Als uw gegevens in de opslag niet zijn gepartitioneerd, kunt u overwegen deze te partitioneren zodat u de query's met betrekking tot die bestanden optimaliseert.
 
-Bij het uitvoeren van een [query op gepartitioneerde Apache Spark voor externe tabellen van Azure Synapse](develop-storage-files-spark-tables.md) vanuit SQL op aanvraag, worden automatisch alleen de benodigde bestanden voor de query gericht.
+Bij het uitvoeren van een [query op gepartitioneerde Apache Spark voor externe tabellen van Azure Synapse](develop-storage-files-spark-tables.md) vanuit een serverloze SQL-pool, zullen de query automatisch alleen worden gericht op bestanden die nodig zijn.
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS gebruiken om de query prestaties te verbeteren en samen te voegen
 
-[CETAS](develop-tables-cetas.md) is een van de belangrijkste functies die beschikbaar zijn in SQL on-demand. CETAS is een parallelle bewerking die meta gegevens van externe tabellen maakt en het resultaat van de SELECT-query exporteert naar een set bestanden in uw opslag account.
+[CETAS](develop-tables-cetas.md) is een van de belangrijkste functies die beschikbaar zijn in een SERVERloze SQL-groep. CETAS is een parallelle bewerking die meta gegevens van externe tabellen maakt en het resultaat van de SELECT-query exporteert naar een set bestanden in uw opslag account.
 
 U kunt CETAS gebruiken om een regel matig gebruikt deel van query's op te slaan, zoals gekoppelde referentie tabellen, naar een nieuwe set bestanden. Later kunt u deel nemen aan deze afzonderlijke externe tabel in plaats van het herhalen van algemene samen voegingen in meerdere query's. 
 
@@ -166,7 +167,7 @@ Omdat CETAS Parquet-bestanden genereert, worden er automatisch statistieken gema
 
 ### <a name="next-steps"></a>Volgende stappen
 
-Als u informatie nodig hebt die niet in dit artikel wordt vermeld, gebruikt u de functie **zoeken naar document** aan de linkerkant van deze pagina om alle documenten van de SQL-groep te doorzoeken.  De [pagina van micro soft Q&een vraag voor SQL-groep](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) is een plek waar u vragen kunt stellen aan andere gebruikers en de product groep van de SQL-groep.  
+Als u informatie nodig hebt die niet in dit artikel wordt vermeld, gebruikt u de functie **zoeken naar document** aan de linkerkant van deze pagina om alle documenten van de SQL-groep te doorzoeken.  De [pagina micro soft Q&een vraag voor Azure Synapse Analytics](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) is een plek waar u vragen kunt stellen aan andere gebruikers en aan de Azure Synapse Analytics-product groep. We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  
 
-We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  Als u liever vragen hebt over Stack Overflow, hebben we ook een [Azure SQL-groep stack overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
+Als u liever vragen hebt over Stack Overflow, hebben we ook een [Azure Synapse Analytics stack overflow-forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
  

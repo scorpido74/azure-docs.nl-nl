@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c1ecd3a3d29d6876a59a2fa039802966f348a09d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9209b33f23b7f6c836dedb6227d052610a21d9d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089828"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319488"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Transacties en optimistisch beheer van gelijktijdigheid
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,4 +65,5 @@ Meer informatie over database transacties en optimistisch gelijktijdigheids behe
 - [Werken met Azure Cosmos-data bases,-containers en-items](account-databases-containers-items.md)
 - [Consistentieniveaus](consistency-levels.md)
 - [Conflicttypen en oplossingsbeleid](conflict-resolution-policies.md)
+- [TransactionalBatch gebruiken](transactional-batch.md)
 - [Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies](stored-procedures-triggers-udfs.md)

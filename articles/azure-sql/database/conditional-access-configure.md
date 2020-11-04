@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: 2ba0c53b9d0b9791364f532d999d86c74fa21177
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: eae7d0a34d6bd76dae5998f05f9d64e0d40f7d9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678057"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321610"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Voorwaardelijke toegang met Azure SQL Database en Azure Synapse Analytics
 
@@ -29,7 +29,7 @@ De volgende stappen laten zien hoe u Azure SQL Database, SQL Managed instance of
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet Azure SQL Database, een door Azure SQL beheerd exemplaar of een Azure SQL-groep in azure Synapse configureren ter ondersteuning van Azure Active Directory-verificatie (Azure AD). Zie voor specifieke stappen [Azure Active Directory verificatie configureren en beheren met SQL database of Azure Synapse](authentication-aad-configure.md).  
+- U moet Azure SQL Database, een door Azure SQL beheerd exemplaar of een toegewezen SQL-groep in azure Synapse configureren ter ondersteuning van Azure Active Directory-verificatie (Azure AD). Zie voor specifieke stappen [Azure Active Directory verificatie configureren en beheren met SQL database of Azure Synapse](authentication-aad-configure.md).  
 - Als Multi-Factor Authentication is ingeschakeld, moet u verbinding maken met een ondersteund hulp programma, zoals de meest recente SQL Server Management Studio (SSMS). Zie [Azure SQL database multi-factor Authentication configureren voor SQL Server Management Studio](authentication-mfa-ssms-configure.md)voor meer informatie.  
 
 ## <a name="configure-conditional-access"></a>Voorwaardelijke toegang configureren
@@ -37,21 +37,21 @@ De volgende stappen laten zien hoe u Azure SQL Database, SQL Managed instance of
 > [!NOTE]
 > In het onderstaande voor beeld wordt Azure SQL Database gebruikt, maar u moet het juiste product selecteren dat u wilt gebruiken voor het configureren van voorwaardelijke toegang.
 
-1. Meld u aan bij de Azure Portal, selecteer **Azure Active Directory** en selecteer vervolgens **voorwaardelijke toegang** . Zie [Azure Active Directory technische Naslag informatie voor voorwaardelijke toegang](../../active-directory/conditional-access/concept-conditional-access-conditions.md).  
+1. Meld u aan bij de Azure Portal, selecteer **Azure Active Directory** en selecteer vervolgens **voorwaardelijke toegang**. Zie [Azure Active Directory technische Naslag informatie voor voorwaardelijke toegang](../../active-directory/conditional-access/concept-conditional-access-conditions.md).  
    ![Blade voorwaardelijke toegang](./media/conditional-access-configure/conditional-access-blade.png)
 
-2. Klik op de Blade **voorwaardelijke toegang-beleids regels** op **Nieuw beleid** , geef een naam op en klik vervolgens op **regels configureren** .  
+2. Klik op de Blade **voorwaardelijke toegang-beleids regels** op **Nieuw beleid** , geef een naam op en klik vervolgens op **regels configureren**.  
 3. Onder **toewijzingen** selecteert u **gebruikers en groepen** , **selecteert u gebruikers en groepen selecteren** en selecteert u vervolgens de gebruiker of groep voor voorwaardelijke toegang. Klik op **selecteren** en klik vervolgens op **gereed** om uw selectie te accepteren.  
    ![gebruikers en groepen selecteren](./media/conditional-access-configure/select-users-and-groups.png)  
 
-4. Selecteer **Cloud-apps** , klik op **apps selecteren** . U ziet alle apps die beschikbaar zijn voor voorwaardelijke toegang. Selecteer **Azure SQL database** , klik onderaan op **selecteren** en klik vervolgens op **gereed** .  
+4. Selecteer **Cloud-apps** , klik op **apps selecteren**. U ziet alle apps die beschikbaar zijn voor voorwaardelijke toegang. Selecteer **Azure SQL database** , klik onderaan op **selecteren** en klik vervolgens op **gereed**.  
    ![SQL Database selecteren](./media/conditional-access-configure/select-sql-database.png)  
    Als **Azure SQL database** niet wordt weer gegeven in de volgende derde scherm afbeelding, voert u de volgende stappen uit:
    - Maak verbinding met uw data base in Azure SQL Database door SSMS te gebruiken met een Azure AD-beheerders account.  
    - Uitvoeren `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER` .  
    - Meld u aan bij Azure AD en controleer of Azure SQL Database, SQL Managed instance of Azure Synapse worden weer gegeven in de toepassingen in uw Azure AD-exemplaar.  
 
-5. Selecteer **toegangs beheer** , selecteer **toekennen** en controleer vervolgens het beleid dat u wilt Toep assen. Voor dit voor beeld selecteren we **multi-factor Authentication vereisen** .  
+5. Selecteer **toegangs beheer** , selecteer **toekennen** en controleer vervolgens het beleid dat u wilt Toep assen. Voor dit voor beeld selecteren we **multi-factor Authentication vereisen**.  
    ![Selecteer toegang verlenen](./media/conditional-access-configure/grant-access.png)  
 
 ## <a name="summary"></a>Samenvatting

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440453"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320947"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Data Wetenschappen met een Windows-Data Science Virtual Machine
 
@@ -58,7 +58,7 @@ Nadat u Jupyter hebt gestart, gaat u naar de `/notebooks` map voor bijvoorbeeld 
 
 * Selecteer het notitie blok om de code te zien.
 * Voer elke cel uit door SHIFT + ENTER te selecteren.
-* Voer het hele notitie blok uit door de **cel**  >  **Run**te selecteren.
+* Voer het hele notitie blok uit door de **cel**  >  **Run** te selecteren.
 * Maak een nieuw notitie blok door het Jupyter-pictogram (linkerbovenhoek) te selecteren, de knop **Nieuw** aan de rechter kant te selecteren en vervolgens de taal voor het notitie blok te kiezen (ook wel kernels genoemd).   
 
 > [!NOTE]
@@ -75,13 +75,13 @@ Voor R kunt u een IDE gebruiken zoals RStudio die u kunt vinden in het menu Star
 
 Voor python kunt u een IDE gebruiken zoals de versie van Visual Studio Community, waarop de uitbrei ding Python Tools for Visual Studio (PTVS) vooraf is geïnstalleerd. Standaard wordt alleen python 3,6, de hoofd-Conda-omgeving, geconfigureerd op PTVS. Voer de volgende stappen uit om Anaconda python 2,7 in te scha kelen:
 
-1. Maak aangepaste omgevingen voor elke versie door naar **hulpprogram ma's**  >  **python tools**python  >  -**omgevingen**te gaan en vervolgens **+ Custom** te selecteren in de versie van Visual Studio community.
+1. Maak aangepaste omgevingen voor elke versie door naar **hulpprogram ma's**  >  **python tools** python  >  - **omgevingen** te gaan en vervolgens **+ Custom** te selecteren in de versie van Visual Studio community.
 1. Geef een beschrijving en stel het pad voor het voor voegsel van de omgeving in als **c:\anaconda\envs\python2** voor anaconda python 2,7.
 1. Selecteer **Automatische detectie**  >  **Toep assen** om de omgeving op te slaan.
 
-Raadpleeg de [PTVS-documentatie](https://aka.ms/ptvsdocs) voor meer informatie over het maken van python-omgevingen.
+Raadpleeg de [PTVS-documentatie](/visualstudio/python/) voor meer informatie over het maken van python-omgevingen.
 
-Nu kunt u een nieuw python-project maken. Ga naar **bestand**  >  **Nieuw**  >  **project**  >  **python** en selecteer het type python-toepassing dat u wilt maken. U kunt de python-omgeving voor het huidige project instellen op de gewenste versie (python 2,7 of 3,6) door met de rechter muisknop te klikken op **python-omgevingen** en vervolgens **python-omgevingen toevoegen/verwijderen**te selecteren. Meer informatie over het werken met PTVS vindt u in de [product documentatie](https://aka.ms/ptvsdocs).
+Nu kunt u een nieuw python-project maken. Ga naar **bestand**  >  **Nieuw**  >  **project**  >  **python** en selecteer het type python-toepassing dat u wilt maken. U kunt de python-omgeving voor het huidige project instellen op de gewenste versie (python 2,7 of 3,6) door met de rechter muisknop te klikken op **python-omgevingen** en vervolgens **python-omgevingen toevoegen/verwijderen** te selecteren. Meer informatie over het werken met PTVS vindt u in de [product documentatie](/visualstudio/python/).
 
 
 
@@ -91,7 +91,7 @@ Met de DSVM kunt u uw analyse oplossing niet lokaal op de virtuele machine maken
 Als u uw Azure-abonnement en cloud resources wilt beheren, hebt u twee opties:
 + Gebruik uw browser en ga naar de [Azure Portal](https://portal.azure.com).
 
-+ Gebruik Power shell-scripts. Voer Azure PowerShell uit vanuit een snelkoppeling op het bureau blad of vanuit het menu **Start** . Raadpleeg de [Microsoft Azure PowerShell-documentatie](../../powershell-azure-resource-manager.md) voor volledige informatie. 
++ Gebruik Power shell-scripts. Voer Azure PowerShell uit vanuit een snelkoppeling op het bureau blad of vanuit het menu **Start** . Raadpleeg de [Microsoft Azure PowerShell-documentatie](../../azure-resource-manager/management/manage-resources-powershell.md) voor volledige informatie. 
 
 ## <a name="extend-storage-by-using-shared-file-systems"></a>Opslag uitbreiden met behulp van gedeelde bestands systemen
 Gegevens wetenschappers kunnen grote gegevens sets, code of andere resources binnen het team delen. De DSVM heeft ongeveer 45 GB beschik bare ruimte. Als u uw opslag wilt uitbreiden, kunt u Azure Files gebruiken en deze koppelen aan een of meer DSVM-instanties of toegang krijgen via een REST API. U kunt ook de [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) gebruiken of [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) gebruiken om extra toegewezen gegevens schijven toe te voegen. 
@@ -162,7 +162,7 @@ Azure Blob-opslag is een betrouw bare, voordelige service voor Cloud opslag voor
 
    ![Scherm opname van het proces voor het maken van het opslag account in de Azure Portal](./media/vm-do-ten-things/create-azure-blob.png)
 
-* Controleer of het opdracht regel programma AzCopy vooraf is geïnstalleerd: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . De map met azcopy.exe bevindt zich al in uw omgevings variabele PATH. u kunt dus voor komen dat u het volledige pad naar de opdracht typt wanneer u dit hulp programma uitvoert. Zie de [AzCopy-documentatie](../../storage/common/storage-use-azcopy.md)voor meer informatie over het hulp programma AzCopy.
+* Controleer of het opdracht regel programma AzCopy vooraf is geïnstalleerd: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . De map met azcopy.exe bevindt zich al in uw omgevings variabele PATH. u kunt dus voor komen dat u het volledige pad naar de opdracht typt wanneer u dit hulp programma uitvoert. Zie de [AzCopy-documentatie](../../storage/common/storage-use-azcopy-v10.md)voor meer informatie over het hulp programma AzCopy.
 * Start het Azure Storage Explorer-hulp programma. U kunt deze downloaden van de  [Storage Explorer webpagina](https://storageexplorer.com/). 
 
    ![Scherm afbeelding van Azure Storage Explorer toegang tot een opslag account](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -197,7 +197,7 @@ Nadat u de AzCopy-opdracht hebt uitgevoerd om naar een Azure-Blob te kopiëren, 
 U kunt ook gegevens uit het lokale bestand in uw virtuele machine uploaden met behulp van Azure Storage Explorer:
 
 * Als u gegevens wilt uploaden naar een container, selecteert u de doel container en selecteert u de knop **uploaden** . ![ Scherm afbeelding van de knop uploaden in Azure Storage Explorer](./media/vm-do-ten-things/storage-accounts.png)
-* Selecteer het beletsel teken (**...**) rechts van het vak **bestanden** , selecteer een of meer bestanden die u wilt uploaden uit het bestands systeem en selecteer **uploaden** om te beginnen met het uploaden van de bestanden. ![ Scherm afbeelding van het dialoog venster bestanden uploaden](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Selecteer het beletsel teken ( **...** ) rechts van het vak **bestanden** , selecteer een of meer bestanden die u wilt uploaden uit het bestands systeem en selecteer **uploaden** om te beginnen met het uploaden van de bestanden. ![ Scherm afbeelding van het dialoog venster bestanden uploaden](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Gegevens lezen uit een Azure-Blob: python ODBC
 
@@ -255,7 +255,7 @@ De gegevens worden als een gegevens frame gelezen:
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (voorheen SQL DW) en data bases
 Azure Synapse Analytics (voorheen SQL DW) is een elastisch data warehouse als een service met een SQL Server ervaring op bedrijfs niveau.
 
-U kunt Azure Synapse Analytics inrichten door de instructies in [dit artikel](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)te volgen. Nadat u Azure Synapse Analytics hebt ingericht, kunt u [deze procedure](../team-data-science-process/sqldw-walkthrough.md) gebruiken om gegevens te uploaden, te verkennen en te model leren met behulp van gegevens in azure Synapse Analytics.
+U kunt Azure Synapse Analytics inrichten door de instructies in [dit artikel](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)te volgen. Nadat u Azure Synapse Analytics hebt ingericht, kunt u [deze procedure](../team-data-science-process/sqldw-walkthrough.md) gebruiken om gegevens te uploaden, te verkennen en te model leren met behulp van gegevens in azure Synapse Analytics.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB is een NoSQL-data base in de Cloud. U kunt het gebruiken om te werken met documenten zoals JSON, en om de documenten op te slaan en op te vragen.
@@ -269,7 +269,7 @@ Gebruik de volgende vereiste stappen om toegang te krijgen tot Azure Cosmos DB v
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
-Nadat u de gegevens hebt geïmporteerd, gaat u naar Jupyter en opent u het notitie blok met de titel *DocumentDBSample*. Het bevat python-code om toegang te krijgen tot Azure Cosmos DB en een eenvoudige query uit te voeren. Ga naar de [documentatie pagina](https://docs.microsoft.com/azure/cosmos-db/)van de service voor meer informatie over Azure Cosmos db.
+Nadat u de gegevens hebt geïmporteerd, gaat u naar Jupyter en opent u het notitie blok met de titel *DocumentDBSample*. Het bevat python-code om toegang te krijgen tot Azure Cosmos DB en een eenvoudige query uit te voeren. Ga naar de [documentatie pagina](../../cosmos-db/index.yml)van de service voor meer informatie over Azure Cosmos db.
 
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI-rapporten en-dash boards gebruiken 
 U kunt het JSON-bestand van Volcano visualiseren vanuit het voor gaande Azure Cosmos DB voor beeld in Power BI Desktop om visuele inzichten in de gegevens te krijgen. In het [Power bi-artikel](../../cosmos-db/powerbi-visualize.md)vindt u gedetailleerde stappen. Dit zijn de stappen op hoog niveau:
@@ -326,10 +326,9 @@ Naast de voor beelden op basis van het Framework, kunt u een set uitgebreide ins
 
 - [Een hand leiding met instructies voor het bouwen van een end-to-end oplossing voor het detecteren van producten binnen installatie kopieën](https://github.com/Azure/cortana-intelligence-product-detection-from-images): detectie van afbeeldingen is een techniek waarmee objecten in afbeeldingen kunnen worden gevonden en geclassificeerd. Deze technologie biedt de mogelijkheid om enorme voor delen te bieden in veel zakelijke domeinen in de praktijk. Detail handelaren kunnen bijvoorbeeld deze techniek gebruiken om te bepalen welk product een klant uit het schap heeft gekozen. Met deze informatie kunt u de product inventaris van beheer opslaan. 
 
-- [Diep gaande informatie over audio: in](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)deze zelf studie leert u hoe u een diep-Learning model kunt trainen voor de detectie van audio gebeurtenissen op de [gegevensset stads geluiden](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Het bevat ook een overzicht van hoe u met audio gegevens werkt.
+- [Diep gaande informatie over audio: in](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure)deze zelf studie leert u hoe u een diep-Learning model kunt trainen voor de detectie van audio gebeurtenissen op de [gegevensset stads geluiden](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Het bevat ook een overzicht van hoe u met audio gegevens werkt.
 
 - [Classificatie van tekst documenten](https://github.com/anargyri/lstm_han): in dit scenario ziet u hoe u twee Neural-netwerk architecturen bouwt en traint: hiërarchische netwerk-en LSTM-netwerk (Long Short Term Memory). Deze Neural-netwerken gebruiken de Keras-API voor diep gaande lessen om tekst documenten te classificeren. 
 
 ## <a name="summary"></a>Samenvatting
 In dit artikel worden enkele dingen beschreven die u kunt doen op de micro soft-Data Science Virtual Machine. Er zijn nog veel meer dingen die u kunt doen om de DSVM een efficiënte analyse omgeving te maken.
-

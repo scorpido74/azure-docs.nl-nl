@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: fc5b958813ea1107d98525b6dfc1b0b56c9c5400
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 09fe93d4e3ba50ced6c8f07d6fe25ace2376c388
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091199"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320531"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 
 
-In deze hand leiding vindt u informatie over het definiëren van verschillende configuratie-instellingen van uw geautomatiseerde machine learning experimenten met de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true). Automatische machine learning kiest een algoritme en Hyper parameters voor u en genereert een model dat gereed is voor implementatie. Er zijn verschillende opties die u kunt gebruiken voor het configureren van geautomatiseerde machine learning experimenten.
+In deze hand leiding vindt u informatie over het definiëren van verschillende configuratie-instellingen van uw geautomatiseerde machine learning experimenten met de [Azure machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). Automatische machine learning kiest een algoritme en Hyper parameters voor u en genereert een model dat gereed is voor implementatie. Er zijn verschillende opties die u kunt gebruiken voor het configureren van geautomatiseerde machine learning experimenten.
 
 Zie [zelf studie: een classificatie model met geautomatiseerde machine learning](tutorial-auto-train-models.md) of [Train modellen met geautomatiseerde machine learning in de Cloud](how-to-auto-train-remote.md)om voor beelden van automatische machine learning experimenten te bekijken.
 
@@ -46,7 +46,7 @@ Voor dit artikel hebt u het volgende nodig:
     Als u de SDK wilt installeren, kunt u 
     * Maak een reken instantie, waarmee de SDK automatisch wordt geïnstalleerd en vooraf is geconfigureerd voor ML-werk stromen. Zie [een Azure machine learning Compute-exemplaar maken en beheren](how-to-create-manage-compute-instance.md) voor meer informatie. 
 
-    * [Installeer de SDK zelf](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). Zorg ervoor dat u de `automl` extra hebt. 
+    * [Installeer de SDK zelf](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Zorg ervoor dat u de `automl` extra hebt. 
 
 ## <a name="select-your-experiment-type"></a>Het type experimenten selecteren
 
@@ -61,20 +61,20 @@ from azureml.train.automl import AutoMLConfig
 automl_config = AutoMLConfig(task = "classification")
 ```
 
-## <a name="data-source-and-format"></a>Gegevens bron en-indeling
+## <a name="data-source-and-format"></a>Gegevensbron en -indeling
 
-Automatische machine learning ondersteunt gegevens die zich op uw lokale bureau blad of in de cloud bevinden, zoals Azure Blob Storage. De gegevens kunnen worden gelezen in een **Panda data frame** of een **Azure machine learning TabularDataset**. [Meer informatie over gegevens sets](how-to-create-register-datasets.md).
+Geautomatiseerde machine learning biedt ondersteuning voor gegevens die zich bevinden op de lokale desktop of in de cloud, zoals Azure Blob Storage. De gegevens kunnen worden gelezen in een **Panda data frame** of een **Azure machine learning TabularDataset**. [Meer informatie over gegevenssets](how-to-create-register-datasets.md).
 
-Vereisten voor trainings gegevens:
+Vereisten voor trainingsgegevens:
 - Gegevens moeten in tabel vorm zijn.
 - De waarde die u wilt voors pellen, doel kolom, moet in de gegevens zijn.
 
-**Voor externe experimenten**moeten opleidings gegevens toegankelijk zijn vanaf de externe compute. AutoML accepteert alleen [Azure machine learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) wanneer ze op een externe Compute werken. 
+**Voor externe experimenten** moeten opleidings gegevens toegankelijk zijn vanaf de externe compute. AutoML accepteert alleen [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) wanneer ze werken op een externe compute. 
 
-Azure Machine Learning gegevens sets bieden functionaliteit aan:
+Azure Machine Learning-gegevenssets bieden functionaliteit voor:
 
 * U kunt eenvoudig gegevens van statische bestanden of URL-bronnen overdragen naar uw werk ruimte.
-* Zorg ervoor dat uw gegevens beschikbaar zijn voor trainings scripts wanneer ze worden uitgevoerd op Cloud Compute-resources. Bekijk [hoe u met gegevens sets traint](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) voor een voor beeld van het gebruik van de- `Dataset` klasse om gegevens te koppelen aan uw externe Compute-doel.
+* Het beschikbaar maken van uw gegevens voor trainingsscripts bij uitvoering in computeresources in de cloud. Bekijk [hoe u met gegevens sets traint](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) voor een voor beeld van het gebruik van de- `Dataset` klasse om gegevens te koppelen aan uw externe Compute-doel.
 
 Met de volgende code wordt een TabularDataset gemaakt op basis van een web-URL. Zie [een TabularDatasets maken](how-to-create-register-datasets.md#create-a-tabulardataset) voor code voorbeelden voor het maken van gegevens sets van andere bronnen, zoals lokale bestanden en gegevens opslag.
 
@@ -83,7 +83,7 @@ from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**Voor lokale Compute experimenten**raden wij Pandas dataframes aan voor snellere verwerkings tijden.
+**Voor lokale Compute experimenten** raden wij Pandas dataframes aan voor snellere verwerkings tijden.
 
   ```python
   import pandas as pd
@@ -103,21 +103,21 @@ Als u geen expliciet een or- `validation_data` `n_cross_validation` para meter o
 |Grootte van de trainings &nbsp; gegevens &nbsp;| Validatie techniek |
 |---|-----|
 |**Meer &nbsp; dan &nbsp; 20.000 &nbsp; rijen**| De splitsing van Train/validatie gegevens wordt toegepast. De standaard instelling is om 10% van de eerste set met trainings gegevens te nemen als de validatieset. Deze validatieset wordt vervolgens gebruikt voor de berekening van metrische gegevens.
-|**Kleiner &nbsp; dan &nbsp; 20.000 &nbsp; rijen**| De methode voor kruis validatie wordt toegepast. Het standaard aantal vouwen is afhankelijk van het aantal rijen. <br> **Als de gegevensset kleiner is dan 1.000 rijen**, worden er 10 vouwen gebruikt. <br> **Als de rijen tussen 1.000 en 20.000**liggen, worden er drie vouwen gebruikt.
+|**Kleiner &nbsp; dan &nbsp; 20.000 &nbsp; rijen**| De methode voor kruis validatie wordt toegepast. Het standaard aantal vouwen is afhankelijk van het aantal rijen. <br> **Als de gegevensset kleiner is dan 1.000 rijen** , worden er 10 vouwen gebruikt. <br> **Als de rijen tussen 1.000 en 20.000** liggen, worden er drie vouwen gebruikt.
 
 Op dit moment moet u uw eigen **test gegevens** voor de model evaluatie opgeven. Zie de sectie **testen** van [Dit Jupyter-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)voor een code voorbeeld van het inbrengen van uw eigen test gegevens voor model evaluatie.
 
 ## <a name="compute-to-run-experiment"></a>Compute en uitvoering van het experiment instellen
 
-Bepaal vervolgens op welke locatie het model moet worden getraind. Een geautomatiseerd machine learning training-experiment kan worden uitgevoerd op de volgende reken opties. Meer informatie over de [voor-en nadelen van lokale en externe Compute](concept-automated-ml.md#local-remote) -opties. 
+Bepaal vervolgens op welke locatie het model moet worden getraind. Een experiment met geautomatiseerd machine learning-training kan worden uitgevoerd op de volgende compute-opties. Meer informatie over de [voordelen en nadelen van lokale en externe compute-opties](concept-automated-ml.md#local-remote). 
 
-* Uw **lokale** computer, zoals een lokaal bureau blad of laptop, in het algemeen wanneer u een kleine gegevensset hebt en u zich nog steeds in het exploratie stadium bevindt. Bekijk [Dit notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) voor een lokaal reken voorbeeld. 
+* Uw **lokale** computer, zoals een lokaal bureau blad of laptop, in het algemeen wanneer u een kleine gegevensset hebt en u zich nog steeds in het exploratie stadium bevindt. Bekijk [dit notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) voor een lokaal compute-voorbeeld. 
  
 * Een **externe** computer in de cloud – [Azure machine learning beheerde Compute](concept-compute-target.md#amlcompute) is een beheerde service waarmee u machine learning modellen kunt trainen op clusters van virtuele machines van Azure. 
 
-    Bekijk [Dit notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) voor een extern voor beeld met behulp van Azure machine learning beheerde reken kracht. 
+    Raadpleeg [dit notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) voor een extern voorbeeld met behulp van beheerde compute van Azure Machine Learning. 
 
-* Een **Azure Databricks cluster** in uw Azure-abonnement. U kunt hier meer informatie vinden- [Setup Azure Databricks cluster voor automatische milliliters](how-to-configure-environment.md#aml-databricks). Bekijk deze [github-site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) voor voor beelden van notitie blokken met Azure Databricks.
+* Een **Azure Databricks cluster** in uw Azure-abonnement. U vindt hier meer informatie: [Azure Databricks-cluster instellen voor geautomatiseerde ML](how-to-configure-environment.md#aml-databricks). Bekijk deze [github-site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) voor voor beelden van notitie blokken met Azure Databricks.
 
 <a name='configure-experiment'></a>
 
@@ -198,10 +198,10 @@ Classificatie | Regressie | Tijdreeksvoorspelling
 [Wille keurig forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Wille keurig forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Wille keurig forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Zeer wille keurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Zeer wille keurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Zeer wille keurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[Gemiddelde Perceptron-classificatie](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)|[Online verloop Daal Regressor hierop](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest&preserve-view=true) |[Automatische ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Snelle lineaire Regressor hierop](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest&preserve-view=true)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[Gemiddelde Perceptron-classificatie](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)|[Online verloop Daal Regressor hierop](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest) |[Automatische ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Snelle lineaire Regressor hierop](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
 [Stochastische kleur overgang Daal (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
-|[Classificatie van lineaire SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)*||
+|[Classificatie van lineaire SVM](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)*||
 
 ### <a name="primary-metric"></a>Primaire metriek
 De `primary metric` para meter bepaalt de metrische gegevens die moeten worden gebruikt tijdens de model training voor Optima Lise ring. De beschik bare metrische gegevens die u kunt selecteren, worden bepaald door het taak type dat u kiest, en in de volgende tabel worden geldige primaire metrische gegevens weer gegeven voor elk taak type.
@@ -333,7 +333,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 Er zijn enkele opties die u kunt definiëren om uw experiment te beëindigen.
 
-|Criteria| description
+|Criteria| beschrijving
 |----|----
 Geen &nbsp; criteria | Als u geen afsluit parameters definieert, wordt het experiment voortgezet tot er geen verdere voortgang wordt gemaakt op basis van uw primaire metriek.
 Na &nbsp; een &nbsp; &nbsp; tijds duur &nbsp;| Gebruik `experiment_timeout_minutes` in uw instellingen om te bepalen hoe lang, in minuten, uw experiment moet blijven werken. <br><br> Om te voor komen dat er storingen optreden, is er mini maal 15 minuten of 60 minuten als uw rij op kolom grootte groter is dan 10.000.000.

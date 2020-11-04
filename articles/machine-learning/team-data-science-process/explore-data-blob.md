@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5a0804ae5ee2dbffaa57fc967fda29701562ab44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ee92a9eaf9316cbd453ea1ec4def58bb543a5a6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085698"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321131"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Gegevens in Azure Blob-opslag verkennen met Pandas
 
@@ -28,7 +28,7 @@ Deze taak is een stap in het [team data Science process](overview.md).
 In dit artikel wordt ervan uitgegaan dat u het volgende hebt:
 
 * Een Azure-opslag account gemaakt. Als u instructies nodig hebt, raadpleegt u [een Azure Storage account maken](../../storage/common/storage-account-create.md)
-* Uw gegevens zijn opgeslagen in een Azure Blob-opslag account. Zie [gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-moving-data.md) als u instructies nodig hebt.
+* Uw gegevens zijn opgeslagen in een Azure Blob-opslag account. Zie [gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-choose-data-transfer-solution.md) als u instructies nodig hebt.
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>De gegevens laden in een Panda data frame
 Als u een gegevensset wilt verkennen en bewerken, moet deze eerst worden gedownload van de BLOB-bron naar een lokaal bestand, dat vervolgens in een Panda data frame kan worden geladen. Dit zijn de stappen die u moet volgen voor deze procedure:

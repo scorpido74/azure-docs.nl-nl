@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 2c487b5bc5c8d5fa01388b2942a70defa0001253
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791525"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319274"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Servers en individuele data bases maken en beheren in Azure SQL Database
 
 U kunt servers en individuele data bases maken en beheren in Azure SQL Database met behulp van de Azure Portal, Power shell, de Azure CLI, REST API en Transact-SQL.
 
-## <a name="the-azure-portal"></a>Azure Portal
+## <a name="the-azure-portal"></a>De Azure-portal
 
 U kunt de resource groep voor Azure SQL Database van tevoren of tijdens het maken van de server maken.
 
@@ -123,10 +123,10 @@ Gebruik de volgende T-SQL-opdrachten om de servers, data bases en firewalls te m
 
 | Opdracht | Beschrijving |
 | --- | --- |
-|[DATA BASE MAKEN](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Hiermee maakt u een nieuwe afzonderlijke data base. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
-| [ALTER DATA BASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Hiermee wijzigt u een Data Base of elastische pool. |
+|[DATA BASE MAKEN](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)|Hiermee maakt u een nieuwe afzonderlijke data base. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
+| [ALTER DATA BASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Hiermee wijzigt u een Data Base of elastische pool. |
 |[DATA BASE VERWIJDEREN](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
-|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor Azure SQL Database of een Azure Synapse Analytics SQL-groep. Als u bent aangemeld bij de hoofd database op een server in SQL Database, wordt er informatie weer gegeven over alle data bases. Voor Azure Synapse Analytics moet u verbinding hebben met de hoofd database.|
+|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor Azure SQL Database of een specifieke SQL-groep in azure Synapse Analytics. Als u bent aangemeld bij de hoofd database op een server in SQL Database, wordt er informatie weer gegeven over alle data bases. Voor Azure Synapse Analytics moet u verbinding hebben met de hoofd database.|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een data base in Azure SQL Database. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
 |[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een data base in Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
 |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor SQL Database connectiviteits gebeurtenissen, met een overzicht van geslaagde en mislukte database verbindingen. |

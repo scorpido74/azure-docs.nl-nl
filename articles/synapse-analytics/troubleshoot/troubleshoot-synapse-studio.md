@@ -8,28 +8,28 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287744"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321015"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Problemen met Azure Synapse Studio (preview) oplossen
 
 Deze hand leiding voor het oplossen van problemen bevat instructies over welke informatie moet worden geboden bij het openen van een ondersteunings ticket voor problemen met de netwerk verbinding. Met de juiste informatie kunnen we het probleem mogelijk sneller oplossen.
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>Verbindings probleem met de service on demand van SQL (preview)
+## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>Serverloze SQL-pool (preview)-verbindings probleem service
 
 ### <a name="symptom-1"></a>Symptoom 1
 
-De optie ' SQL op aanvraag ' is grijs weer gegeven in de vervolg keuzelijst verbinding maken met.
+De optie ' serverloze SQL-groep ' is niet beschikbaar in de vervolg keuzelijst verbinding maken met.
 
 ![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>Symptoom 2
 
-Als u de query uitvoert met ' SQL on-demand ', wordt het fout bericht ' kan geen verbinding maken met server ' weer gegeven.
+Als u de query uitvoert met ' serverloze SQL-groep ', wordt het fout bericht ' kan geen verbinding maken met server ' weer gegeven.
 
 ![symptoom 2](media/troubleshooting-synapse-studio/symptom2.png)
  
@@ -45,7 +45,7 @@ Open het deel venster diagnostische gegevens, selecteer de knop diagnose downloa
 
 Voer de bewerking uit die u in azure Synapse Studio hebt uitgevoerd om te beginnen met het oplossen van problemen.
 
-- Selecteer voor symptoom 1 de knop Vernieuwen rechts van de vervolg keuzelijst ' Data Base gebruiken ' op het tabblad SQL-script en controleer of u ' SQL on-demand ' kunt zien.
+- Selecteer voor symptoom 1 de knop Vernieuwen rechts van de vervolg keuzelijst ' Data Base gebruiken ' op het tabblad SQL-script en controleer of u ' serverloze SQL-groep ' kunt zien.
 - Voor symptoom 2 voert u de query opnieuw uit om te zien of deze met succes wordt uitgevoerd.
 
 Als het probleem zich nog steeds voordoet, drukt u op F12 in uw browser om "Ontwikkelhulpprogramma's" (DevTools) te openen.
@@ -61,7 +61,7 @@ Zoek het item waarvan de URL-kolom overeenkomt met het volgende patroon:
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-Waarbij [*A*] de naam van uw werk ruimte is en "-OnDemand" kan '-sqlod ' zijn en waarbij [*B*] een database naam moet zijn, zoals "Master". Er mogen Maxi maal twee items met dezelfde URL-waarde maar andere methode waarden zijn. OPTIES en POST. Controleer of deze twee items ' 200 ' of ' 20x ' bevatten in de kolom Status, waarbij ' x ' één cijfer kan zijn.
+Waarbij [ *A* ] de naam van uw werk ruimte is en "-OnDemand" kan '-sqlod ' zijn en waarbij [ *B* ] een database naam moet zijn, zoals "Master". Er mogen Maxi maal twee items met dezelfde URL-waarde maar andere methode waarden zijn. OPTIES en POST. Controleer of deze twee items ' 200 ' of ' 20x ' bevatten in de kolom Status, waarbij ' x ' één cijfer kan zijn.
 
 Als een van beide items een andere waarde heeft dan ' 20x ' en:
 
@@ -71,7 +71,7 @@ Als een van beide items een andere waarde heeft dan ' 20x ' en:
 
     - Als ERR_NAME_NOT_RESOLVED en u uw werk ruimte binnen 10 minuten hebt gemaakt, wacht u 10 minuten en probeert u opnieuw of het probleem zich nog steeds voordoet.
     - Als ERR_INTERNET_DISCONNECTED of ERR_NETWORK_CHANGED wordt weer geven, is het mogelijk dat de netwerk verbinding van uw PC problemen ondervindt. Controleer uw netwerk verbinding en voer de bewerking opnieuw uit.
-    - Als ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR of andere fout codes met "SSL" worden weer geven, is het mogelijk dat uw lokale SSL-configuratie problemen ondervindt of dat uw netwerk beheerder de toegang tot de SQL Server op aanvraag heeft geblokkeerd. Open een ondersteunings ticket en koppel de fout code in de beschrijving.
+    - Als ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR of andere fout codes met "SSL" worden weer geven, is het mogelijk dat uw lokale SSL-configuratie problemen ondervindt of dat uw netwerk beheerder de toegang tot de serverloze SQL-groeps server heeft geblokkeerd. Open een ondersteunings ticket en koppel de fout code in de beschrijving.
     - Als ERR_NETWORK_ACCESS_DENIED wordt weer geven, moet u mogelijk de beheerder vragen of uw lokale firewall beleid de toegang heeft geblokkeerd tot een database.windows.net-domein of externe poort 1443.
     - Probeer eventueel dezelfde bewerking direct op een andere computer en/of netwerk omgeving om een probleem met de netwerk configuratie op uw PC uit te voeren.
 

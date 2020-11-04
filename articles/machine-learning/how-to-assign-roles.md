@@ -11,16 +11,16 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18, devx-track-azurecli
-ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: aa84d7cce09b370ab35ef67029f4dbe2ca29cabb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736605"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320850"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>De toegang tot een Azure Machine Learning-werkruimte beheren
 
-In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werk ruimte beheert. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](/azure/role-based-access-control/overview) wordt gebruikt om de toegang tot Azure-resources te beheren. Gebruikers in uw Azure Active Directory krijgen specifieke rollen toegewezen, waarmee toegang tot resources wordt verleend. Azure biedt zowel ingebouwde rollen als de mogelijkheid om aangepaste rollen te maken.
+In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werk ruimte beheert. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../role-based-access-control/overview.md) wordt gebruikt om de toegang tot Azure-resources te beheren. Gebruikers in uw Azure Active Directory krijgen specifieke rollen toegewezen, waarmee toegang tot resources wordt verleend. Azure biedt zowel ingebouwde rollen als de mogelijkheid om aangepaste rollen te maken.
 
 ## <a name="default-roles"></a>Standaard rollen
 
@@ -34,18 +34,18 @@ Een Azure Machine Learning-werkruimte is een Azure-resource. Net als andere Azur
 | **Aangepaste rol** | Hiermee kunt u de toegang tot specifieke besturings elementen of gegevenslaag bewerkingen in een werk ruimte aanpassen. Bijvoorbeeld het verzenden van een run, het maken van een compute, het implementeren van een model of het registreren van een gegevensset. |
 
 > [!IMPORTANT]
-> De toegang tot rollen kan worden beperkt tot meerdere niveaus in Azure. Bijvoorbeeld: iemand met een eigenaar van de gebruikers toegang tot een werk ruimte heeft geen eigenaars toegang tot de resource groep die de werk ruimte bevat. Zie [hoe Azure RBAC werkt](/azure/role-based-access-control/overview#how-azure-rbac-works)voor meer informatie.
+> De toegang tot rollen kan worden beperkt tot meerdere niveaus in Azure. Bijvoorbeeld: iemand met een eigenaar van de gebruikers toegang tot een werk ruimte heeft geen eigenaars toegang tot de resource groep die de werk ruimte bevat. Zie [hoe Azure RBAC werkt](../role-based-access-control/overview.md#how-azure-rbac-works)voor meer informatie.
 
-Zie [ingebouwde rollen van Azure](/azure/role-based-access-control/built-in-roles)voor meer informatie over specifieke ingebouwde rollen.
+Zie [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md)voor meer informatie over specifieke ingebouwde rollen.
 
 ## <a name="manage-workspace-access"></a>Toegang tot de werk ruimte beheren
 
 Als u eigenaar bent van een werk ruimte, kunt u rollen toevoegen en verwijderen voor de werk ruimte. U kunt ook rollen toewijzen aan gebruikers. Gebruik de volgende koppelingen om te ontdekken hoe u de toegang beheert:
-- [Azure Portal gebruikers interface](/azure/role-based-access-control/role-assignments-portal)
-- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
-- [Azure-CLI](/azure/role-based-access-control/role-assignments-cli)
-- [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager sjablonen](/azure/role-based-access-control/role-assignments-template)
+- [Azure Portal gebruikers interface](../role-based-access-control/role-assignments-portal.md)
+- [PowerShell](../role-based-access-control/role-assignments-powershell.md)
+- [Azure-CLI](../role-based-access-control/role-assignments-cli.md)
+- [REST API](../role-based-access-control/role-assignments-rest.md)
+- [Azure Resource Manager-sjablonen](../role-based-access-control/role-assignments-template.md)
 
 Als u de [Azure machine learning cli](reference-azure-machine-learning-cli.md)hebt geïnstalleerd, kunt u de CLI-opdrachten gebruiken om rollen toe te wijzen aan gebruikers:
 
@@ -65,7 +65,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning bewerkingen
 
-Azure Machine Learning ingebouwde acties voor veel bewerkingen en taken. Zie [Azure resource provider-bewerkingen](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor een volledige lijst.
+Azure Machine Learning ingebouwde acties voor veel bewerkingen en taken. Zie [Azure resource provider-bewerkingen](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)voor een volledige lijst.
 
 ## <a name="mlflow-operations-in-azure-machine-learning"></a>MLflow-bewerkingen in azure machine learning
 
@@ -135,7 +135,7 @@ Na de implementatie wordt deze rol beschikbaar in de opgegeven werk ruimte. U ku
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-Zie aangepaste rollen voor [Azure](/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste rollen. Zie bewerkingen voor de [resource provider](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor meer informatie over de bewerkingen (acties en niet acties) die kunnen worden gebruikt met aangepaste rollen.
+Zie aangepaste rollen voor [Azure](../role-based-access-control/custom-roles.md)voor meer informatie over aangepaste rollen. Zie bewerkingen voor de [resource provider](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)voor meer informatie over de bewerkingen (acties en niet acties) die kunnen worden gebruikt met aangepaste rollen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -165,7 +165,7 @@ De volgende tabel bevat een overzicht van Azure Machine Learning activiteiten en
 
 ### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>V. Publiceren we ingebouwde rollen van Azure voor de Machine Learning-service?
 
-Er worden momenteel geen [ingebouwde rollen van Azure](/azure/role-based-access-control/built-in-roles) gepubliceerd voor de machine learning-service. Een ingebouwde rol na publicatie kan niet worden bijgewerkt en er worden nog steeds de roldefinities op basis van klant scenario's en feedback gefiatteerd. 
+Er worden momenteel geen [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md) gepubliceerd voor de machine learning-service. Een ingebouwde rol na publicatie kan niet worden bijgewerkt en er worden nog steeds de roldefinities op basis van klant scenario's en feedback gefiatteerd. 
 
 <a id="customroles"></a>
 
@@ -419,7 +419,7 @@ Voer de volgende opdracht uit in de Azure CLI.
 az provider operation show –n Microsoft.MachineLearningServices
 ```
 
-Ze kunnen ook worden gevonden in de lijst met [bewerkingen van de resource provider](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+Ze kunnen ook worden gevonden in de lijst met [bewerkingen van de resource provider](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices).
 
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>V. Wat zijn enkele algemene gotchas bij het gebruik van Azure RBAC?
@@ -427,18 +427,18 @@ Ze kunnen ook worden gevonden in de lijst met [bewerkingen van de resource provi
 Hier volgen enkele dingen waarvan u op de hoogte moet zijn terwijl u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruikt:
 
 - Wanneer u een resource maakt in azure, zegt u een werk ruimte, bent u niet rechtstreeks de eigenaar van de werk ruimte. Uw rol wordt overgenomen van de hoogste rol van het bereik waarvoor u gemachtigd bent in dat abonnement. Als u bijvoorbeeld een netwerk beheerder bent en u de machtigingen hebt om een Machine Learning-werk ruimte te maken, wordt u de rol netwerk beheerder toegewezen voor die werk ruimte en niet de rol van eigenaar.
-- Wanneer er twee roltoewijzingen aan dezelfde Azure Active Directory gebruiker met conflicterende secties met acties/verhoudingen, worden uw bewerkingen die worden vermeld in de ene rol, mogelijk niet van kracht als ze ook worden weer gegeven als acties in een andere rol. Lees [hoe Azure RBAC bepaalt of een gebruiker toegang heeft tot een resource](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) voor meer informatie over hoe Azure-roltoewijzingen parseert.
+- Wanneer er twee roltoewijzingen aan dezelfde Azure Active Directory gebruiker met conflicterende secties met acties/verhoudingen, worden uw bewerkingen die worden vermeld in de ene rol, mogelijk niet van kracht als ze ook worden weer gegeven als acties in een andere rol. Lees [hoe Azure RBAC bepaalt of een gebruiker toegang heeft tot een resource](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) voor meer informatie over hoe Azure-roltoewijzingen parseert.
 - Als u uw reken resources binnen een VNet wilt implementeren, moet u expliciet machtigingen hebben voor de volgende acties:
     - "Micro soft. Network/virtualNetworks/lid/Action" voor de VNet-resource.
     - ' Micro soft. Network/virtualNetworks/subnet/lid/Action ' op de bron van het subnet.
     
-    Zie voor meer informatie over Azure RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking).
+    Zie voor meer informatie over Azure RBAC met netwerken de [ingebouwde rollen voor netwerken](../role-based-access-control/built-in-roles.md#networking).
 
 - Het kan soms tot 1 uur duren voordat de nieuwe roltoewijzingen van kracht worden via de cache machtigingen in de stack.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>V. Welke machtigingen heb ik nodig om een door de gebruiker toegewezen beheerde identiteit te gebruiken met mijn Amlcompute-clusters?
 
-Als u een door de gebruiker toegewezen identiteit op Amlcompute-clusters wilt toewijzen, moet u schrijf machtigingen hebben om Compute te maken en de [rol Managed Identity-operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator)hebben. Lees voor meer informatie over Azure RBAC met beheerde identiteiten [hoe u een door de gebruiker toegewezen identiteit beheert](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)
+Als u een door de gebruiker toegewezen identiteit op Amlcompute-clusters wilt toewijzen, moet u schrijf machtigingen hebben om Compute te maken en de [rol Managed Identity-operator](../role-based-access-control/built-in-roles.md#managed-identity-operator)hebben. Lees voor meer informatie over Azure RBAC met beheerde identiteiten [hoe u een door de gebruiker toegewezen identiteit beheert](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>V. Bieden we ondersteuning voor op rollen gebaseerd toegangs beheer op de Studio Portal?
@@ -480,4 +480,4 @@ U hebt machtigingen op abonnements niveau nodig om aan quota gerelateerde bewerk
 - [Overzicht van Enterprise-beveiliging](concept-enterprise-security.md)
 - [Overzicht van virtuele netwerk isolatie en privacy](how-to-network-security-overview.md)
 - [Zelf studie: modellen trainen](tutorial-train-models-with-aml.md)
-- [Resourceproviderbewerkingen](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)
+- [Resourceproviderbewerkingen](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)

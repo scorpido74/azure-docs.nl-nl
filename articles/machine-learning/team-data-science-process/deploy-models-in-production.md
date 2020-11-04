@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a44ead4f0e7c9fcd8dfd19f562b453e600ed6a31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ea1e991df46b4e4d23305b6118980b80c2f917
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333748"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321192"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Modellen implementeren voor productie om een actieve rol te spelen bij het nemen van zakelijke beslissingen
 
@@ -26,8 +26,8 @@ Bij de productie-implementatie kan een model een actieve rol spelen in een bedri
 Er zijn verschillende benaderingen en platformen om modellen in productie te brengen. Hier volgen enkele opties:
 
 - [Het implementeren van modellen met Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Implementatie van een model in SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning-server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Implementatie van een model in SQL-Server](/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
 >Voorafgaand aan de implementatie moet u er zeker van zijn dat de latentie van de model Score laag genoeg is voor gebruik in de productie omgeving.
@@ -43,4 +43,4 @@ Wanneer er meerdere modellen in productie zijn, kan [een/B-test](https://en.wiki
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Er zijn ook instructies voor het leveren van alle stappen in het proces voor **specifieke scenario's** . Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken. 
+Er zijn ook instructies voor het leveren van alle stappen in het proces voor **specifieke scenario's** . Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken.

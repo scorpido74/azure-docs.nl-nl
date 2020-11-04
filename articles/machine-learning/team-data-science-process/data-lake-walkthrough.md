@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b45cc87c525ab66a3807f71901728e60d086ea74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6eb0be4d9946907dc5bb2f22b27530a27a37aec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440402"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321261"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Schaal bare gegevens wetenschap met Azure Data Lake: een end-to-end-procedure
-In dit scenario ziet u hoe u Azure Data Lake kunt gebruiken om gegevens te verkennen en binaire classificatie taken uit te voeren op basis van een steek proef van de NYC taxi en de ritbedrag-gegevensset om te voors pellen of een tip wordt betaald door een tarief. U wordt begeleid bij de stappen van het [team data Science process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end-to-end, van data acquisition to model training en vervolgens naar de implementatie van een webservice die het model publiceert.
+In dit scenario ziet u hoe u Azure Data Lake kunt gebruiken om gegevens te verkennen en binaire classificatie taken uit te voeren op basis van een steek proef van de NYC taxi en de ritbedrag-gegevensset om te voors pellen of een tip wordt betaald door een tarief. U wordt begeleid bij de stappen van het [team data Science process](./index.yml), end-to-end, van data acquisition to model training en vervolgens naar de implementatie van een webservice die het model publiceert.
 
 ## <a name="technologies"></a>Technologieën
 
@@ -92,7 +92,7 @@ Maak een ADLA-account op basis van de [Azure Portal](https://portal.azure.com). 
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Een Azure Blob-opslag account maken
-Maak een Azure Blob-opslag account op basis van de [Azure Portal](https://portal.azure.com). Zie de sectie een opslag account maken in [over Azure Storage-accounts](../../storage/common/storage-create-storage-account.md)voor meer informatie.
+Maak een Azure Blob-opslag account op basis van de [Azure Portal](https://portal.azure.com). Zie de sectie een opslag account maken in [over Azure Storage-accounts](../../storage/common/storage-account-create.md)voor meer informatie.
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -143,7 +143,7 @@ De gegevens verwerkings taken die in deze sectie worden geïllustreerd, zijn opn
 
 De U-SQL-scripts worden hier beschreven en opgenomen in een afzonderlijk bestand. U kunt de volledige **u-SQL-scripts** downloaden van [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
-Om U-SQL uit te voeren, opent U Visual Studio, klikt u op **bestand--> nieuw--> project**, kiest **U-SQL project**, naam en slaat u het op in een map.
+Om U-SQL uit te voeren, opent U Visual Studio, klikt u op **bestand--> nieuw--> project** , kiest **U-SQL project** , naam en slaat u het op in een map.
 
 ![8](./media/data-lake-walkthrough/8-create-USQL-project.PNG)
 
@@ -181,7 +181,7 @@ FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyct
 USING Extractors.Csv();
 ```
 
-Omdat er kopteksten zijn in de eerste rij, moet u de kopteksten verwijderen en de kolom typen wijzigen in de gewenste waarden. U kunt de verwerkte gegevens opslaan op Azure Data Lake Storage met behulp van **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ of naar een Azure Blob Storage-account met  **wasb://container_name \@ blob_storage_account_name. blob. core. windows. net/blob_name**.
+Omdat er kopteksten zijn in de eerste rij, moet u de kopteksten verwijderen en de kolom typen wijzigen in de gewenste waarden. U kunt de verwerkte gegevens opslaan op Azure Data Lake Storage met behulp van **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name** _ of naar een Azure Blob Storage-account met  **wasb://container_name \@ blob_storage_account_name. blob. core. windows. net/blob_name**.
 
 ```sql
 // change data types
@@ -461,7 +461,7 @@ USING Outputters.Csv();
 ```
 
 ### <a name="run-u-sql-jobs"></a><a name="run"></a>U-SQL-taken uitvoeren
-Nadat u-SQL-scripts hebt bewerkt, kunt u deze naar de server verzenden met uw Azure Data Lake Analytics-account. Klik op **Data Lake**, **taak verzenden**, selecteer uw **Analytics-account**, kies **parallellisme**en klik op **verzenden** .
+Nadat u-SQL-scripts hebt bewerkt, kunt u deze naar de server verzenden met uw Azure Data Lake Analytics-account. Klik op **Data Lake** , **taak verzenden** , selecteer uw **Analytics-account** , kies **parallellisme** en klik op **verzenden** .
 
  ![12](./media/data-lake-walkthrough/12-submit-USQL.PNG)
 
@@ -671,11 +671,11 @@ Een HDInsight-cluster (Linux) maken op basis van de [Azure Portal](https://porta
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>Hive-tabel maken in HDInsight
-U maakt nu Hive-tabellen die worden gebruikt in Azure Machine Learning Studio (klassiek) in het HDInsight-cluster met behulp van de gegevens die zijn opgeslagen in Azure Data Lake Storage in de vorige stap. Ga naar het HDInsight-cluster dat u hebt gemaakt. Klik op **instellingen**  -->  **Eigenschappen**  -->  **cluster Aad-identiteit**  -->  **ADLS toegang**, Controleer of uw Azure data Lake Storage account is toegevoegd in de lijst met rechten voor lezen, schrijven en uitvoeren.
+U maakt nu Hive-tabellen die worden gebruikt in Azure Machine Learning Studio (klassiek) in het HDInsight-cluster met behulp van de gegevens die zijn opgeslagen in Azure Data Lake Storage in de vorige stap. Ga naar het HDInsight-cluster dat u hebt gemaakt. Klik op **instellingen**  -->  **Eigenschappen**  -->  **cluster Aad-identiteit**  -->  **ADLS toegang** , Controleer of uw Azure data Lake Storage account is toegevoegd in de lijst met rechten voor lezen, schrijven en uitvoeren.
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
-Klik vervolgens op **dash board** naast de knop **instellingen** en een venster dat verschijnt. Klik op **Hive-weer gave** in de rechter bovenhoek van de pagina en de **query-editor**wordt weer gegeven.
+Klik vervolgens op **dash board** naast de knop **instellingen** en een venster dat verschijnt. Klik op **Hive-weer gave** in de rechter bovenhoek van de pagina en de **query-editor** wordt weer gegeven.
 
  ![20](./media/data-lake-walkthrough/20-HDI-dashboard.PNG)
 
@@ -722,7 +722,7 @@ Wanneer de query is voltooid, ziet u de resultaten als volgt:
 ### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>Modellen bouwen en implementeren in Azure Machine Learning Studio
 U bent nu klaar om een model te bouwen en te implementeren waarmee wordt gedicteerd of een tip wordt betaald met Azure Machine Learning. De stratified-voorbeeld gegevens zijn gereed voor gebruik in dit probleem met de binaire classificatie (tip of niet). De voorspellende modellen die gebruikmaken van multiklasses classificatie (tip_class) en regressie (tip_amount) kunnen ook worden gebouwd en geïmplementeerd met Azure Machine Learning Studio, maar hier wordt alleen weer gegeven hoe u het probleem kunt afhandelen met het binaire classificatie model.
 
-1. De gegevens ophalen in Azure Machine Learning Studio (klassiek) met behulp van de module **import data** , die beschikbaar is in de sectie **gegevens invoer en-uitvoer** . Zie de pagina referentie [gegevens module importeren](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) voor meer informatie.
+1. De gegevens ophalen in Azure Machine Learning Studio (klassiek) met behulp van de module **import data** , die beschikbaar is in de sectie **gegevens invoer en-uitvoer** . Zie de pagina referentie [gegevens module importeren](/azure/machine-learning/studio-module-reference/import-data) voor meer informatie.
 2. Selecteer **Hive query** als de **gegevens bron** in het deel venster **Eigenschappen** .
 3. Plak het volgende Hive-script in de query-editor van de **Hive-data base**
 
@@ -738,7 +738,7 @@ Een voor beeld van een experiment met binaire classificatie voor het lezen van g
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 
-Wanneer het experiment is gemaakt, klikt **u op webservice**voor  -->  **Predictive Web** service instellen
+Wanneer het experiment is gemaakt, klikt **u op webservice** voor  -->  **Predictive Web** service instellen
 
  ![25](./media/data-lake-walkthrough/25-AML-exp-deploy.PNG)
 
@@ -754,7 +754,7 @@ Het web service-dash board wordt binnenkort weer gegeven:
 Door deze procedure uit te voeren, hebt u een Data Science-omgeving gemaakt voor het bouwen van schaal bare end-to-end-oplossingen in Azure Data Lake. Deze omgeving werd gebruikt voor het analyseren van een grote open bare gegevensset, door het gebruik van de canonieke stappen van het data Science-proces, van gegevens overname via model training en vervolgens naar de implementatie van het model als een webservice. U-SQL is gebruikt om de gegevens te verwerken, te verkennen en voor te bereiden. Python en Hive zijn gebruikt met Azure Machine Learning Studio (klassiek) voor het bouwen en implementeren van voorspellende modellen.
 
 ## <a name="whats-next"></a>Volgende stappen
-Het leer traject voor het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) bevat koppelingen naar onderwerpen waarin elke stap in het geavanceerde analyse proces wordt beschreven. Er zijn een aantal instructies op de pagina met procedures voor [team data Science proces](walkthroughs.md) waarin wordt uitgelegd hoe u resources en services gebruikt in verschillende Predictive Analytics scenario's:
+Het leer traject voor het [team data Science process (TDSP)](./index.yml) bevat koppelingen naar onderwerpen waarin elke stap in het geavanceerde analyse proces wordt beschreven. Er zijn een aantal instructies op de pagina met procedures voor [team data Science proces](walkthroughs.md) waarin wordt uitgelegd hoe u resources en services gebruikt in verschillende Predictive Analytics scenario's:
 
 * [Het proces van de team data Science in actie: Azure Synapse Analytics gebruiken](sqldw-walkthrough.md)
 * [Het proces van de team data Science in actie: HDInsight Hadoop-clusters gebruiken](hive-walkthrough.md)

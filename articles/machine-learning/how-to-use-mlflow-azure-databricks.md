@@ -11,18 +11,18 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344332"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319023"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Azure Databricks ML experimenten bijhouden met MLflow en Azure Machine Learning (preview)
 
 In dit artikel leert u hoe u de tracking-URI en logboek registratie-API van MLflow kunt inschakelen, die gezamenlijk bekend staat als [MLflow-tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), om verbinding te maken met uw Azure Databricks-experimenten (ADB), MLflow en Azure machine learning.
 
-[MLflow](https://www.mlflow.org) is een open-source bibliotheek voor het beheren van de levens cyclus van uw machine learning experimenten. MLFlow tracking is een onderdeel van MLflow dat de metrische gegevens van uw training en model artefacten registreert en registreert. Meer informatie over [Azure Databricks en MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/). 
+[MLflow](https://www.mlflow.org) is een open-source bibliotheek voor het beheren van de levens cyclus van uw machine learning experimenten. MLFlow tracking is een onderdeel van MLflow dat de metrische gegevens van uw training en model artefacten registreert en registreert. Meer informatie over [Azure Databricks en MLflow](/azure/databricks/applications/mlflow/). 
 
 Bekijk het [volgen van experimenten en maak eind punten met MLflow en Azure machine learning](how-to-use-mlflow.md) voor aanvullende MLflow-en Azure machine learning functionaliteits integraties.
 
@@ -35,8 +35,8 @@ Bekijk het [volgen van experimenten en maak eind punten met MLflow en Azure mach
 ## <a name="prerequisites"></a>Vereisten
 
 * Installeer het `azureml-mlflow`-pakket. 
-    * Dit pakket maakt automatisch deel uit `azureml-core` van de [Azure machine learning PYTHON-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), waarmee de connectiviteit voor MLflow wordt geboden om toegang te krijgen tot uw werk ruimte.
-* Een [Azure Databricks-werk ruimte en-cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+    * Dit pakket maakt automatisch deel uit `azureml-core` van de [Azure machine learning PYTHON-SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), waarmee de connectiviteit voor MLflow wordt geboden om toegang te krijgen tot uw werk ruimte.
+* Een [Azure Databricks-werk ruimte en-cluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 * [Maak een Azure machine learning-werkruimte](how-to-manage-workspace.md).
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks uitvoeringen bijhouden
@@ -156,9 +156,9 @@ Nadat uw model is getraind, kunt u uw modellen registreren en registreren bij de
 
 De back-upserver is standaard de Azure Databricks-werk ruimte. tenzij u ervoor hebt gekozen om [MLflow tracking zo in te stellen dat deze alleen in uw Azure machine learning-werk ruimte worden bijgehouden](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace), dan is de back-upserver Azure machine learning de werk ruimte.   
 
-* **Als een geregistreerd model met de naam niet bestaat**, wordt een nieuw model door de methode geregistreerd, wordt versie 1 gemaakt en wordt een ModelVersion MLflow-object geretourneerd. 
+* **Als een geregistreerd model met de naam niet bestaat** , wordt een nieuw model door de methode geregistreerd, wordt versie 1 gemaakt en wordt een ModelVersion MLflow-object geretourneerd. 
 
-* **Als er al een geregistreerd model met de naam bestaat**, maakt de methode een nieuwe model versie en retourneert het versie object. 
+* **Als er al een geregistreerd model met de naam bestaat** , maakt de methode een nieuwe model versie en retourneert het versie object. 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -234,4 +234,4 @@ De [MLflow met Azure machine learning-notebooks](https://github.com/Azure/Machin
 
 * [Uw modellen beheren](concept-model-management-and-deployment.md).
 * [Houd experimenten bij en maak eind punten met MLflow en Azure machine learning](how-to-use-mlflow.md). 
-* Meer informatie over [Azure Databricks en MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/).
+* Meer informatie over [Azure Databricks en MLflow](/azure/databricks/applications/mlflow/).

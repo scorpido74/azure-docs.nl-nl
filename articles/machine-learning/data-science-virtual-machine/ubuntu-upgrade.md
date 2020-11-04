@@ -10,12 +10,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: d57de4d52ccf3a029a8dd1350635fb65dd3ac829
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828571"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320978"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Werk uw Data Science Virtual Machine bij naar Ubuntu 18.04
 
@@ -38,9 +38,9 @@ Gebruik in de Azure Portal de zoek balk om de functionaliteit van **moment opnam
 
 :::image type="content" source="media/ubuntu_upgrade/azure-portal-search-bar.png" alt-text="Scherm opname met Azure Portal en zoek balk, met * * moment opnamen * * gemarkeerd":::
 
-1. Selecteer **toevoegen**, waarmee u naar de pagina **moment opname maken** gaat. Selecteer het abonnement en de resource groep van de virtuele machine. Selecteer voor **regio**dezelfde regio waarin de doel opslag zich bevindt. Selecteer de DSVM-opslag schijf en aanvullende back-upopties. **Standard-HDD** is een geschikt opslag type voor dit back-upscenario.
+1. Selecteer **toevoegen** , waarmee u naar de pagina **moment opname maken** gaat. Selecteer het abonnement en de resource groep van de virtuele machine. Selecteer voor **regio** dezelfde regio waarin de doel opslag zich bevindt. Selecteer de DSVM-opslag schijf en aanvullende back-upopties. **Standard-HDD** is een geschikt opslag type voor dit back-upscenario.
 
-:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Scherm opname met Azure Portal en zoek balk, met * * moment opnamen * * gemarkeerd":::
+:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Scherm opname met opties voor het maken van een moment opname":::
 
 2. Als alle details zijn gevuld en de validatie is geslaagd, selecteert u **controleren + maken** om de moment opname te valideren en te maken. Wanneer de moment opname is voltooid, ziet u een bericht met de melding dat de implementatie is voltooid.
 
@@ -65,9 +65,14 @@ Het duurt even voordat het upgrade proces is voltooid. Wanneer dit het geval is,
 
 Nadat uw VM is bijgewerkt en opnieuw is opgestart, probeert u deze opnieuw via SSH. Het IP-adres is mogelijk gewijzigd tijdens het opnieuw opstarten, dus bevestig het voordat u probeert verbinding te maken.
 
-Als u het fout bericht **externe host-id is gewijzigd**, moet u uw SSH-referenties opnieuw genereren.
+Als u het fout bericht **externe host-id is gewijzigd** , moet u uw SSH-referenties opnieuw genereren.
 
-:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="Scherm opname met Azure Portal en zoek balk, met * * moment opnamen * * gemarkeerd"
+:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="Power shell-scherm opname met externe host-id waarschuwing gewijzigd":::
+
+Als u dit wilt doen, voert u de volgende opdracht uit op de lokale computer:
+
+```bash
+ssh-keygen -R "your server hostname or ip"
 ```
 
 U kunt nu verbinding maken met SSH. Als u nog steeds problemen ondervindt, kunt u op de pagina **verbinding** de koppeling volgen om **problemen met ssh-verbindingen op te lossen**.
@@ -98,19 +103,19 @@ U kunt ervoor kiezen om de onderdelen van het besturings systeem van het bestand
 
 Als u nog geen VM-moment opname hebt gemaakt zoals eerder beschreven, doet u dat nu. 
 
-1. In de Azure Portal zoekt u naar **schijven** en selecteert u **toevoegen**, waarmee de **schijf** pagina wordt geopend.
+1. In de Azure Portal zoekt u naar **schijven** en selecteert u **toevoegen** , waarmee de **schijf** pagina wordt geopend.
 
-:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Scherm opname met Azure Portal en zoek balk, met * * moment opnamen * * gemarkeerd":::
+:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Scherm opname van Azure Portal weer geven van de pagina zoeken naar schijven en de knop toevoegen":::
 
-2. Stel het **abonnement**, de **resource groep**en de **regio** in op de waarden van uw VM-moment opname. Kies een **naam** voor de schijf die u wilt maken.
+2. Stel het **abonnement** , de **resource groep** en de **regio** in op de waarden van uw VM-moment opname. Kies een **naam** voor de schijf die u wilt maken.
 
-3. Selecteer **bron type** als **moment opname** en selecteer de moment opname van de virtuele machine als **moment opname**van de bron. Controleer de schijf en maak deze. 
+3. Selecteer **bron type** als **moment opname** en selecteer de moment opname van de virtuele machine als **moment opname** van de bron. Controleer de schijf en maak deze. 
 
-:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="Scherm opname met Azure Portal en zoek balk, met * * moment opnamen * * gemarkeerd":::
+:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="Scherm opname van het dialoog venster schijf maken met opties":::
 
 ### <a name="create-a-new-ubuntu-data-science-virtual-machine"></a>Een nieuwe Ubuntu-Data Science Virtual Machine maken
 
-Maak een nieuwe Ubuntu-Data Science Virtual Machine met behulp van de [Azure Portal](https://portal.azure.com) of een [arm-sjabloon](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager). 
+Maak een nieuwe Ubuntu-Data Science Virtual Machine met behulp van de [Azure Portal](https://portal.azure.com) of een [arm-sjabloon](./dsvm-tutorial-resource-manager.md). 
 
 ### <a name="recreate-user-accounts-on-your-new-data-science-virtual-machine"></a>Gebruikers account (s) opnieuw maken op uw nieuwe Data Science Virtual Machine
 
@@ -118,7 +123,7 @@ Omdat u alleen gegevens van uw oude computer kopieert, moet u de gebruikers acco
 
 Linux is flexibel genoeg om u in staat te stellen mappen en paden in uw nieuwe installatie aan te passen om uw oude machine te volgen. Over het algemeen is het eenvoudiger om de voorkeurs indeling van het moderne Ubuntu te gebruiken en uw gebruikers omgeving en-scripts te wijzigen en aan te passen.
 
-Voor meer informatie raadpleegt [u Quick Start: de data Science Virtual Machine instellen voor Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+Voor meer informatie raadpleegt [u Quick Start: de data Science Virtual Machine instellen voor Linux (Ubuntu)](./dsvm-ubuntu-intro.md).
 
 ### <a name="mount-the-disk-of-the-snapshotted-vm-as-a-data-disk-on-your-new-data-science-virtual-machine"></a>Koppel de schijf van de moment opname-VM als een gegevens schijf op uw nieuwe Data Science Virtual Machine
 
@@ -128,7 +133,7 @@ Voor meer informatie raadpleegt [u Quick Start: de data Science Virtual Machine 
 
 3. Selecteer in de vervolg keuzelijst **schijf naam** de schijf die u hebt gemaakt op basis van de moment opname van uw oude VM.
 
-:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="Scherm opname met Azure Portal en zoek balk, met * * moment opnamen * * gemarkeerd":::
+:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="Scherm afbeelding van de pagina opties voor DSVM met opties voor de schijf bijlage":::
 
 4. Selecteer **Opslaan** om uw virtuele machine bij te werken.
 
@@ -147,7 +152,7 @@ Voor meer informatie raadpleegt [u Quick Start: de data Science Virtual Machine 
     
     De resultaten moeten er ongeveer uitzien als in de volgende afbeelding. In de installatie kopie wordt de schijf `sda1` aan de hoofdmap gekoppeld en `sdb2` is de `/mnt` Scratch schijf. De gegevens schijf die is gemaakt op basis van de moment opname van uw oude VM, wordt geïdentificeerd als `sdc1` , maar is nog niet beschikbaar, zoals wordt aangegeven door het ontbreken van een koppelings locatie. De resultaten kunnen verschillende id's hebben, maar u moet een vergelijkbaar patroon zien.
     
-    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="Scherm opname met Azure Portal en zoek balk, met * * moment opnamen * * gemarkeerd":::
+    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="Scherm opname van lsblk uitvoer met niet-gekoppeld gegevens station":::
     
 3. Voor toegang tot het gegevens station maakt u een locatie voor de schijf en koppelt u deze. Vervang door `/dev/sdc1` de juiste waarde die wordt geretourneerd door `lsblk` :
 
@@ -157,7 +162,7 @@ Voor meer informatie raadpleegt [u Quick Start: de data Science Virtual Machine 
     
 4. Bevat nu `/datadrive` de mappen en bestanden van uw oude data Science virtual machine. Verplaats of kopieer de gewenste mappen of bestanden van het gegevens station naar de nieuwe VM naar wens.
 
-Zie [de portal gebruiken om een gegevens schijf te koppelen aan een virtuele Linux-machine](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)voor meer informatie.
+Zie [de portal gebruiken om een gegevens schijf te koppelen aan een virtuele Linux-machine](../../virtual-machines/linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk)voor meer informatie.
 
 ## <a name="connect-and-confirm-version-upgrade"></a>Verbinding maken en versie-upgrade bevestigen
 
@@ -169,13 +174,13 @@ cat /etc/os-release
 
 U ziet dat u Ubuntu 18,04 uitvoert.
 
-:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="Scherm opname met Azure Portal en zoek balk, met * * moment opnamen * * gemarkeerd":::
+:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="Scherm afbeelding van Ubuntu Terminal met besturingssysteem versie gegevens":::
 
 De wijziging van de versie wordt ook weer gegeven in de Azure Portal.
 
-:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="Scherm opname met Azure Portal en zoek balk, met * * moment opnamen * * gemarkeerd":::
+:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="Scherm opname van de portal met DSVM-eigenschappen, waaronder de versie van het besturings systeem":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Data Wetenschappen met een Ubuntu data Science machine in azure](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough)
-- [Welke hulpmiddelen worden meegeleverd met de Azure Data Science Virtual Machine?](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/tools-included)
+- [Data Wetenschappen met een Ubuntu data Science machine in azure](./linux-dsvm-walkthrough.md)
+- [Welke hulpmiddelen worden meegeleverd met de Azure Data Science Virtual Machine?](./tools-included.md)

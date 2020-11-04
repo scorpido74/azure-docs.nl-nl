@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: a6612f3df5fba834dff8fc60e90c359ceff4cbe1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7e189885fbf7befcaea3f63148a42c81dc1da03e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743115"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320484"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Een ontwikkel omgeving instellen voor Azure Machine Learning
 
@@ -55,7 +55,7 @@ Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK verte
 
 Dit JSON-bestand moet zich in de mapstructuur bevinden die uw python-scripts of Jupyter-notebooks bevat. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml* of in een bovenliggende map.
 
-Als u dit bestand uit uw code wilt gebruiken, gebruikt u de- [`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) methode. Met deze code worden de gegevens uit het bestand geladen en wordt verbinding gemaakt met uw werk ruimte.
+Als u dit bestand uit uw code wilt gebruiken, gebruikt u de- [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) methode. Met deze code worden de gegevens uit het bestand geladen en wordt verbinding gemaakt met uw werk ruimte.
 
 Maak een werkruimte configuratie bestand op een van de volgende manieren:
 
@@ -67,7 +67,7 @@ Maak een werkruimte configuratie bestand op een van de volgende manieren:
 
 * Azure Machine Learning python-SDK
 
-    Maak een script om verbinding te maken met uw Azure Machine Learning-werk ruimte en gebruik de [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) methode om uw bestand te genereren en op te slaan als *. azureml/config.jsop* . Zorg ervoor dat u `subscription_id` , `resource_group` en `workspace_name` met uw eigen vervangen.
+    Maak een script om verbinding te maken met uw Azure Machine Learning-werk ruimte en gebruik de [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) methode om uw bestand te genereren en op te slaan als *. azureml/config.jsop*. Zorg ervoor dat u `subscription_id` , `resource_group` en `workspace_name` met uw eigen vervangen.
 
     ```python
     from azureml.core import Workspace
@@ -97,7 +97,7 @@ Voor het configureren van een lokale ontwikkel omgeving (die mogelijk ook een ex
     > Als u gebruikmaakt van Linux of macOS en een andere shell dan bash gebruikt (bijvoorbeeld zsh), kunnen er fouten optreden wanneer u sommige opdrachten uitvoert. U kunt dit probleem omzeilen door de `bash` opdracht te gebruiken om een nieuwe bash-shell te starten en de opdrachten daar uit te voeren.
 
 1. Activeer de zojuist gemaakte virtuele python-omgeving.
-1. Installeer de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+1. Installeer de [Azure machine learning PYTHON SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 1. Als u uw lokale omgeving wilt configureren voor het gebruik van uw Azure Machine Learning-werk ruimte, [maakt u een configuratie bestand voor een werk ruimte](#workspace) of gebruikt u een bestaand.
 
 Nu u uw lokale omgeving hebt ingesteld, kunt u aan de slag gaan met Azure Machine Learning. Raadpleeg de Azure Machine Learning aan de slag- [hand leiding voor python](tutorial-1st-experiment-sdk-setup-local.md) om aan de slag te gaan.
@@ -123,9 +123,9 @@ Wanneer u een lokale Jupyter Notebook server uitvoert, is het raadzaam om een IP
 Raadpleeg de [opslag plaats Azure machine learning notitie blokken](https://github.com/Azure/MachineLearningNotebooks) om aan de slag te gaan met Azure machine learning-en Jupyter-notebooks.
 
 > [!NOTE]
-> Een door de Community aangedreven opslag plaats met voor beelden vindt u op https://github.com/Azure/azureml-examples .
+> Een door de community gestuurde opslagplaats met voorbeelden vindt u op https://github.com/Azure/azureml-examples.
 
-### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio code
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 Visual Studio code gebruiken voor ontwikkeling:
 
@@ -172,7 +172,7 @@ De DSVM gebruiken als een ontwikkel omgeving
 
     * Gebruik de Azure Portal voor het maken van een [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) -of [Windows](data-science-virtual-machine/provision-vm.md) DSVM.
     * [Maak een DSVM met arm-sjablonen](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
-    * De Azure CLI gebruiken
+    * Azure CLI gebruiken
 
         Als u een Ubuntu-DSVM wilt maken, gebruikt u de volgende opdracht:
 
@@ -223,7 +223,7 @@ Hoe Azure Databricks met Azure Machine Learning werkt:
 
 ### <a name="set-up-your-databricks-cluster"></a>Uw Databricks-cluster instellen
 
-Maak een [Databricks-cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Sommige instellingen zijn alleen van toepassing als u de SDK installeert voor automatische machine learning op Databricks.
+Maak een [Databricks-cluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Sommige instellingen zijn alleen van toepassing als u de SDK installeert voor automatische machine learning op Databricks.
 **Het duurt enkele minuten om het cluster te maken.**
 
 Gebruik deze instellingen:
@@ -254,10 +254,10 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
    > [!Warning]
    > Er kunnen geen andere SDK-extra's worden geïnstalleerd. Kies alleen de `databricks` optie [].
 
-   * Selecteer niet **automatisch koppelen aan alle clusters** .
+   * Selecteer niet **automatisch koppelen aan alle clusters**.
    * Selecteer  **koppelen** naast de naam van uw cluster.
 
-1. Controleer op fouten totdat de status is gewijzigd in **bijgevoegd** . Dit kan enkele minuten duren.  Als deze stap mislukt:
+1. Controleer op fouten totdat de status is gewijzigd in **bijgevoegd**. Dit kan enkele minuten duren.  Als deze stap mislukt:
 
    Probeer het cluster opnieuw te starten door:
    1. Selecteer **clusters** in het linkerdeel venster.
@@ -297,4 +297,4 @@ Uitproberen:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een model](tutorial-train-models-with-aml.md) op Azure machine learning trainen met de MNIST-gegevensset
-- Naslag informatie over de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) weer geven
+- Naslag informatie over de [Azure machine learning SDK voor python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) weer geven

@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/03/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56a797864b70cb1be4a1bc5d4b79c44348d43dae
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c0323bed627fd622471724b20677914736c564d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93144423"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319903"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Acl's (toegangs beheer lijsten) recursief instellen voor Azure Data Lake Storage Gen2
 
@@ -63,7 +63,7 @@ Installeer de benodigde bibliotheken.
 
    Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie over het installeren van Power shell-modules.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 1. Open de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview)of open een opdracht console toepassing zoals Windows Power shell als u de Azure cli lokaal hebt [geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
@@ -192,7 +192,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 1. Als u Azure CLI lokaal gebruikt, voert u de aanmeldings opdracht uit.
 
@@ -416,7 +416,7 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 > [!NOTE]
 > Als u een **standaard** -ACL-vermelding wilt instellen, gebruikt u de para meter **-DefaultScope** wanneer u de opdracht **set-AzDataLakeGen2ItemAclObject** uitvoert. Bijvoorbeeld: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Stel op recursief een ACL in met behulp van de opdracht [AZ Storage FS Access set-recursief](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_set_recursive) .
 
@@ -433,7 +433,7 @@ az storage fs access set-recursive --acl "user::rwx,group::r-x,other::---,user:x
 
 Stel een recursief-ACL in door de methode **DataLakeDirectoryClient. SetAccessControlRecursiveAsync** aan te roepen. Geef deze methode een [lijst](/dotnet/api/system.collections.generic.list-1) van [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Elk [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definieert een ACL-vermelding. 
 
-Als u een **standaard** -ACL-vermelding wilt instellen, kunt u de eigenschap [PathAccessControlItem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) van de [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) instellen op **True** . 
+Als u een **standaard** -ACL-vermelding wilt instellen, kunt u de eigenschap [PathAccessControlItem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) van de [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) instellen op **True**. 
 
 In dit voor beeld wordt de ACL van een map met de naam ingesteld `my-parent-directory` . Deze methode accepteert een Booleaanse para meter `isDefaultScope` met de naam die aangeeft of de standaard-ACL moet worden ingesteld. Deze para meter wordt gebruikt in de constructor van de [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). De vermeldingen van de ACL geven de machtigingen gebruiker lezen, schrijven en uitvoeren, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en verleent alle anderen geen toegang. De laatste ACL-vermelding in dit voor beeld geeft een specifieke gebruiker met de object-ID ' XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX ' machtigingen voor lezen en uitvoeren.
 
@@ -603,7 +603,7 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 > [!NOTE]
 > Als u een **standaard** -ACL-vermelding wilt bijwerken, gebruikt u de para meter **-DefaultScope** wanneer u de opdracht **set-AzDataLakeGen2ItemAclObject** uitvoert. Bijvoorbeeld: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Een ACL recursief bijwerken met behulp van de opdracht  [AZ Storage FS Access update-recursieve](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_update_recursive) . 
 
@@ -620,7 +620,7 @@ az storage fs access update-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 
 Werk een ACL recursief bij door de methode **DataLakeDirectoryClient. UpdateAccessControlRecursiveAsync** aan te roepen.  Geef deze methode een [lijst](/dotnet/api/system.collections.generic.list-1) van [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Elk [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definieert een ACL-vermelding. 
 
-Als u een **standaard** -ACL-vermelding wilt bijwerken, kunt u de eigenschap [PathAccessControlItem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) van de [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) instellen op **True** . 
+Als u een **standaard** -ACL-vermelding wilt bijwerken, kunt u de eigenschap [PathAccessControlItem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) van de [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) instellen op **True**. 
 
 In dit voor beeld wordt een ACL-vermelding met schrijf machtiging bijgewerkt. Deze methode accepteert een Booleaanse para meter `isDefaultScope` met de naam die aangeeft of de standaard-ACL moet worden bijgewerkt. Deze para meter wordt gebruikt in de constructor van de [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem).
 
@@ -738,7 +738,7 @@ Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Ac
 > [!NOTE]
 > Als u een **standaard** -ACL-vermelding wilt verwijderen, gebruikt u de para meter **-DefaultScope** wanneer u de opdracht **set-AzDataLakeGen2ItemAclObject** uitvoert. Bijvoorbeeld: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Verwijder ACL-vermeldingen met behulp van de opdracht [AZ Storage FS Access Remove-recursieve](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_remove_recursive) . 
 
@@ -755,7 +755,7 @@ az storage fs access remove-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 
 Verwijder ACL-vermeldingen door de methode **DataLakeDirectoryClient. RemoveAccessControlRecursiveAsync** aan te roepen. Geef deze methode een [lijst](/dotnet/api/system.collections.generic.list-1) van [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Elk [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definieert een ACL-vermelding. 
 
-Als u een **standaard** -ACL-vermelding wilt verwijderen, kunt u de eigenschap [PathAccessControlItem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) van de [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) instellen op **True** . 
+Als u een **standaard** -ACL-vermelding wilt verwijderen, kunt u de eigenschap [PathAccessControlItem. DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) van de [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) instellen op **True**. 
 
 In dit voor beeld wordt een ACL-vermelding verwijderd uit de toegangs beheer lijst van de map met de naam `my-parent-directory` . Deze methode accepteert een Booleaanse para meter `isDefaultScope` met de naam die aangeeft of het item uit de standaard-ACL moet worden verwijderd. Deze para meter wordt gebruikt in de constructor van de [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem).
 
@@ -847,23 +847,44 @@ Er kunnen runtime-of machtigings fouten optreden. Start voor runtime-fouten het 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Resultaten naar de variabele retour neren. Niet-ingedeelde gegevens pipes naar een opgemaakte tabel.
+In dit voor beeld worden Acl's in batches ingesteld. Elke aanroep van **set-AzDataLakeGen2AclRecursive** retourneert een vervolg token totdat alle acl's zijn ingesteld. In dit voor beeld wordt een variabele met de naam ingesteld op `$ContinueOnFailure` `$false` om aan te geven dat het proces geen acl's moet blijven instellen in het geval van een machtigings fout. Het vervolg token wordt opgeslagen in een `&token` variabele. Als er een fout optreedt, kan dat token worden gebruikt om het proces te hervatten vanaf het moment van de fout.
 
 ```powershell
-$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
-$result
-$result.FailedEntries | ft 
+$ContinueOnFailure = $false
+
+$token = $null
+$TotalDirectoriesSuccess = 0
+$TotalFilesSuccess = 0
+$totalFailure = 0
+$FailedEntries = New-Object System.Collections.Generic.List[System.Object]
+do
+{
+    if ($ContinueOnFailure)
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
+    }
+    else
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
+    }
+    echo $result
+    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
+    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
+    $totalFailure += $result.TotalFailureCount
+    $FailedEntries += $result.FailedEntries
+    $token = $result.ContinuationToken
+} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
+echo ""
+echo "[Result Summary]"
+echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
+echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
+echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
+echo "FailedEntries:"$($FailedEntries | ft)
+
+
 ```
 
-Op basis van de uitvoer van de tabel kunt u eventuele machtigings fouten oplossen en de uitvoering hervatten met behulp van het vervolg token.
-
-```powershell
-$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinuationToken $result.ContinuationToken
-$result
-
-```
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als er een fout optreedt, kunt u een vervolg token retour neren door de `--continue-on-failure` para meter in te stellen op `false` . Nadat u de fouten hebt verhelpen, kunt u het proces hervatten vanaf het moment van de fout door de opdracht opnieuw uit te voeren en vervolgens de `--continuation` para meter in te stellen op het vervolg token. 
 
@@ -970,26 +991,44 @@ Als u wilt dat het proces wordt afgebroken door machtigings fouten, kunt u dit o
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-In dit voor beeld worden ACL-vermeldingen recursief ingesteld. Als met deze code een machtigings fout optreedt, wordt die fout geregistreerd en wordt de uitvoering voortgezet. In dit voor beeld worden de resultaten (inclusief het aantal fouten) naar de-console afgedrukt. 
+In dit voor beeld wordt de variabele ingesteld op `$ContinueOnFailure` `$true` om aan te geven dat het proces de acl's moet blijven instellen in het geval van een machtigings fout. 
 
 ```powershell
 $ContinueOnFailure = $true
 
+$token = $null
 $TotalDirectoriesSuccess = 0
 $TotalFilesSuccess = 0
 $totalFailure = 0
 $FailedEntries = New-Object System.Collections.Generic.List[System.Object]
-
-$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
-
+do
+{
+    if ($ContinueOnFailure)
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
+    }
+    else
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
+    }
+    echo $result
+    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
+    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
+    $totalFailure += $result.TotalFailureCount
+    $FailedEntries += $result.FailedEntries
+    $token = $result.ContinuationToken
+} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
+echo ""
 echo "[Result Summary]"
-echo "TotalDirectoriesSuccessfulCount: `t$($result.TotalFilesSuccessfulCount)"
-echo "TotalFilesSuccessfulCount: `t`t`t$($result.TotalDirectoriesSuccessfulCount)"
-echo "TotalFailureCount: `t`t`t`t`t$($result.TotalFailureCount)"
-echo "FailedEntries:"$($result.FailedEntries | ft) 
+echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
+echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
+echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
+echo "FailedEntries:"$($FailedEntries | ft)
+
+
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Om ervoor te zorgen dat het proces wordt voltooid, stelt u de `--continue-on-failure` para meter in op `true` . 
 
@@ -1138,7 +1177,7 @@ Het maximum aantal Acl's dat u kunt Toep assen op een map of bestand is 32 toega
 
 U kunt uw feedback geven of een probleem melden op  [recursiveACLfeedback@microsoft.com](mailto:recursiveACLfeedback@microsoft.com) .
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Toegangsbeheer in Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
 - [Bekende problemen](data-lake-storage-known-issues.md)

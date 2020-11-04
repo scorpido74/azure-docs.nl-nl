@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c80a90b07e25942e751d52cafa47f6e3e94852ab
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012175"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320340"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Gegevens verplaatsen naar SQL Server op een virtuele Azure-machine
 
@@ -43,7 +43,7 @@ In deze zelf studie wordt ervan uitgegaan dat u het volgende hebt:
 
 * Een **Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
 * Een **Azure-opslag account**. U gebruikt een Azure-opslag account voor het opslaan van de gegevens in deze zelf studie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslag account hebt gemaakt, moet u de account sleutel ophalen die wordt gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
-* Ingericht **SQL Server op een virtuele machine van Azure**. Zie [een virtuele machine van Azure SQL Server instellen als IPython-notebook server voor geavanceerde analyses](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)voor instructies.
+* Ingericht **SQL Server op een virtuele machine van Azure**. Zie [een virtuele machine van Azure SQL Server instellen als IPython-notebook server voor geavanceerde analyses](../data-science-virtual-machine/overview.md)voor instructies.
 * **Azure PowerShell** lokaal geïnstalleerd en geconfigureerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor instructies.
 
 ## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> Gegevens verplaatsen van een bron met een plat bestand naar SQL Server op een virtuele machine van Azure
@@ -58,7 +58,7 @@ BCP is een opdracht regel programma dat wordt geïnstalleerd met SQL Server en i
 
 > [!NOTE]
 > **Waar moeten mijn gegevens voor BCP voor komen?**  
-> Hoewel dit niet vereist is, waarbij bestanden met bron gegevens op dezelfde computer als de doel-SQL Server een snellere overdracht (netwerk snelheid versus een lokale schijf-i/o-snelheid) mogelijk maakt. U kunt de platte bestanden met gegevens verplaatsen naar de computer waarop SQL Server wordt geïnstalleerd met behulp van verschillende hulpprogram ma's voor het kopiëren van bestanden, zoals [AZCopy](../../storage/common/storage-use-azcopy.md), [Azure Storage Explorer](https://storageexplorer.com/) of Windows copy/paste via Remote Desktop Protocol (RDP).
+> Hoewel dit niet vereist is, waarbij bestanden met bron gegevens op dezelfde computer als de doel-SQL Server een snellere overdracht (netwerk snelheid versus een lokale schijf-i/o-snelheid) mogelijk maakt. U kunt de platte bestanden met gegevens verplaatsen naar de computer waarop SQL Server wordt geïnstalleerd met behulp van verschillende hulpprogram ma's voor het kopiëren van bestanden, zoals [AZCopy](../../storage/common/storage-use-azcopy-v10.md), [Azure Storage Explorer](https://storageexplorer.com/) of Windows copy/paste via Remote Desktop Protocol (RDP).
 >
 >
 
@@ -82,7 +82,7 @@ BCP is een opdracht regel programma dat wordt geïnstalleerd met SQL Server en i
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
-> **Bcp-invoeg bladen optimaliseren** Raadpleeg het volgende artikel [' richt lijnen voor het optimaliseren van bulksgewijs importeren '](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) om dergelijke toevoegingen te optimaliseren.
+> **Bcp-invoeg bladen optimaliseren** Raadpleeg het volgende artikel [' richt lijnen voor het optimaliseren van bulksgewijs importeren '](/previous-versions/sql/sql-server-2008-r2/ms177445(v=sql.105)) om dergelijke toevoegingen te optimaliseren.
 >
 >
 
@@ -133,7 +133,7 @@ Set-ExecutionPolicy Restricted #reset the execution policy
 ```
 
 ### <a name="bulk-insert-sql-query"></a><a name="insert-tables-bulkquery"></a>SQL-query bulksgewijs invoegen
-[Bulksgewijs invoegen SQL-query](https://msdn.microsoft.com/library/ms188365) kan worden gebruikt om gegevens te importeren in de data base van op rij/kolom gebaseerde bestanden (de ondersteunde typen worden behandeld in het onderwerp[gegevens voorbereiden voor bulk export of importeren (SQL Server)](https://msdn.microsoft.com/library/ms188609)).
+[Bulksgewijs invoegen SQL-query](/sql/t-sql/statements/bulk-insert-transact-sql) kan worden gebruikt om gegevens te importeren in de data base van op rij/kolom gebaseerde bestanden (de ondersteunde typen worden behandeld in het onderwerp[gegevens voorbereiden voor bulk export of importeren (SQL Server)](/sql/relational-databases/import-export/prepare-data-for-bulk-export-or-import-sql-server)).
 
 Hier volgen enkele voor beelden van opdrachten voor bulksgewijs invoegen:  
 
@@ -158,10 +158,10 @@ Hier volgen enkele voor beelden van opdrachten voor bulksgewijs invoegen:
 
 ### <a name="built-in-utilities-in-sql-server"></a><a name="sql-builtin-utilities"></a>Ingebouwde Hulpprogram Ma's in SQL Server
 U kunt SQL Server Integration Services (SSIS) gebruiken om gegevens te importeren in SQL Server VM op Azure vanuit een plat bestand.
-SSIS is beschikbaar in twee studio omgevingen. Zie voor meer informatie, [Integration Services (SSIS) en Studio omgevingen](https://technet.microsoft.com/library/ms140028.aspx):
+SSIS is beschikbaar in twee studio omgevingen. Zie voor meer informatie, [Integration Services (SSIS) en Studio omgevingen](/sql/integration-services/integration-services-ssis-development-and-management-tools):
 
-* Zie [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx) (Engelstalig) voor meer informatie over SQL Server Data tools.  
-* Zie [SQL Server wizard Importeren en exporteren](https://msdn.microsoft.com/library/ms141209.aspx) voor meer informatie over de wizard Importeren/exporteren.
+* Zie [Microsoft SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) (Engelstalig) voor meer informatie over SQL Server Data tools.  
+* Zie [SQL Server wizard Importeren en exporteren](/sql/integration-services/import-export-data/import-and-export-data-with-the-sql-server-import-and-export-wizard) voor meer informatie over de wizard Importeren/exporteren.
 
 ## <a name="moving-data-from-on-premises-sql-server-to-sql-server-on-an-azure-vm"></a><a name="sqlonprem_to_sqlonazurevm"></a>Gegevens verplaatsen van on-premises SQL Server naar SQL Server op een Azure VM
 U kunt ook de volgende migratie strategieën gebruiken:
@@ -177,13 +177,13 @@ Hieronder vindt u een beschrijving van elk van deze opties:
 De **wizard een SQL Server-Data Base implementeren naar een Microsoft Azure VM** is een eenvoudige en aanbevolen manier om gegevens van een on-premises SQL Server exemplaar te verplaatsen naar SQL Server op een virtuele machine van Azure. Zie [een Data Base migreren naar SQL Server op een virtuele machine van Azure](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)voor gedetailleerde stappen en een bespreking van andere alternatieven.
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>Exporteren naar plat bestand
-Verschillende methoden kunnen worden gebruikt om gegevens van een on-premises SQL Server bulksgewijs te exporteren, zoals wordt beschreven in het onderwerp [bulksgewijs importeren en exporteren van gegevens (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) . In dit document wordt het bulksgewijze Kopieer programma (BCP) als voor beeld behandeld. Wanneer gegevens worden geëxporteerd naar een plat bestand, kunnen ze worden geïmporteerd in een andere SQL-Server met behulp van bulk import.
+Verschillende methoden kunnen worden gebruikt om gegevens van een on-premises SQL Server bulksgewijs te exporteren, zoals wordt beschreven in het onderwerp [bulksgewijs importeren en exporteren van gegevens (SQL Server)](/sql/relational-databases/import-export/bulk-import-and-export-of-data-sql-server) . In dit document wordt het bulksgewijze Kopieer programma (BCP) als voor beeld behandeld. Wanneer gegevens worden geëxporteerd naar een plat bestand, kunnen ze worden geïmporteerd in een andere SQL-Server met behulp van bulk import.
 
 1. De gegevens van on-premises SQL Server exporteren naar een bestand met behulp van het BCP-hulp programma
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
 2. Maak de data base en de tabel op SQL Server VM in azure met behulp van de `create database` en `create table` voor het tabel schema dat u in stap 1 hebt geëxporteerd.
-3. Maak een indelings bestand voor het beschrijven van het tabel schema van de gegevens die worden geëxporteerd/geïmporteerd. Details van het indelings bestand worden beschreven in [een indelings bestand maken (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx).
+3. Maak een indelings bestand voor het beschrijven van het tabel schema van de gegevens die worden geëxporteerd/geïmporteerd. Details van het indelings bestand worden beschreven in [een indelings bestand maken (SQL Server)](/sql/relational-databases/import-export/create-a-format-file-sql-server).
 
     Het genereren van bestanden opmaken bij het uitvoeren van BCP vanaf de SQL Server computer
 
@@ -202,8 +202,8 @@ Verschillende methoden kunnen worden gebruikt om gegevens van een on-premises SQ
 ### <a name="database-back-up-and-restore"></a><a name="sql-backup"></a>Back-up en herstel van data base
 SQL Server ondersteunt:
 
-1. [Data Base back-up en herstel](https://msdn.microsoft.com/library/ms187048.aspx) (zowel naar een lokaal bestand of Bacpac exporteren naar blob) als [gegevenslaag toepassingen](https://msdn.microsoft.com/library/ee210546.aspx) (met behulp van Bacpac).
-2. De mogelijkheid om rechtstreeks SQL Server Vm's in azure te maken met een gekopieerde data base of een kopie te kopiëren naar een bestaande data base in SQL Database. Zie [de wizard Data Base kopiëren gebruiken](https://msdn.microsoft.com/library/ms188664.aspx)voor meer informatie.
+1. [Data Base back-up en herstel](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) (zowel naar een lokaal bestand of Bacpac exporteren naar blob) als [gegevenslaag toepassingen](/sql/relational-databases/data-tier-applications/data-tier-applications) (met behulp van Bacpac).
+2. De mogelijkheid om rechtstreeks SQL Server Vm's in azure te maken met een gekopieerde data base of een kopie te kopiëren naar een bestaande data base in SQL Database. Zie [de wizard Data Base kopiëren gebruiken](/sql/relational-databases/databases/use-the-copy-database-wizard)voor meer informatie.
 
 Hieronder ziet u een scherm opname van de opties data base back-up/herstellen van SQL Server Management Studio.
 

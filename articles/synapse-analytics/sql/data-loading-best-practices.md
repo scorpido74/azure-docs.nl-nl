@@ -1,6 +1,6 @@
 ---
 title: Best practices voor laden van gegevens
-description: Aanbevelingen en prestatie optimalisaties voor het laden van gegevens in Synapse SQL
+description: Aanbevelingen en prestatie optimalisaties voor het laden van gegevens in een exclusieve SQL-groep Azure Synapse Analytics.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289228"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321504"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Best practices voor het laden van gegevens voor datawarehousing
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>Aanbevolen procedures voor het laden van gegevens in een toegewezen SQL-groep Azure Synapse Analytics
 
 In dit artikel vindt u aanbevelingen en prestatie optimalisaties voor het laden van gegevens.
 
 ## <a name="prepare-data-in-azure-storage"></a>Gegevens voorbereiden in Azure Storage
 
-Als u de latentie wilt minimaliseren, gaat u naar uw opslaglaag en uw data warehouse.
+Als u de latentie wilt minimaliseren, gaat u naar uw opslaglaag en uw toegewezen SQL-groep.
 
 Bij het exporteren van gegevens in een ORC-bestandsindeling kunnen er Java-geheugenfouten optreden wanneer er grote tekstkolommen zijn. U kunt deze beperking omzeilen door slechts een subset van de kolommen te exporteren.
 
@@ -36,7 +36,7 @@ Splits grote gecomprimeerde bestanden in kleinere gecomprimeerde bestanden.
 
 ## <a name="run-loads-with-enough-compute"></a>Laden uitvoeren met voldoende reken kracht
 
-Voer voor de hoogste laadsnelheid slechts één taak tegelijk uit. Voer een zo klein mogelijk aantal laadtaken tegelijk uit als dit niet haalbaar is. Als u een grote laad taak verwacht, kunt u de SQL-groep vóór de belasting verg Roten of verkleinen.
+Voer voor de hoogste laadsnelheid slechts één taak tegelijk uit. Voer een zo klein mogelijk aantal laadtaken tegelijk uit als dit niet haalbaar is. Als u een grote laad taak verwacht, kunt u overwegen om uw toegewezen SQL-groep vóór de belasting te schalen.
 
 Als u loads wilt uitvoeren met geschikte rekenresources, maakt u gebruikers voor het laadproces die zijn aangewezen voor het uitvoeren van loads. Wijs elke laad gebruiker toe aan een specifieke resource klasse of werkbelasting groep. Als u een belasting wilt uitvoeren, meldt u zich aan als een van de laad gebruikers en voert u de belasting uit. De load wordt uitgevoerd met de resourceklasse van de gebruiker.  Deze methode is eenvoudiger dan de resourceklasse van een gebruiker aanpassen om te voldoen aan de huidige benodigde resourceklasse.
 

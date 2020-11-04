@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026182"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321366"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Gegevenswetenschap met Scala en Spark op Azure
-Dit artikel laat u zien hoe u scala gebruikt voor onder Super visie machine learning taken met de mousserend schaal bare MLlib en Spark ML-pakketten op een Azure HDInsight Spark cluster. U wordt begeleid bij de taken die het [Data Science proces](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)vormen: gegevens opname en exploratie, visualisatie, functie techniek, model lering en model verbruik. De modellen in het artikel zijn onder andere logistiek en lineaire regressie, wille keurige forests en GBTs (Gradient-boosted Trees), naast twee algemene gecontroleerde machine learning taken:
+Dit artikel laat u zien hoe u scala gebruikt voor onder Super visie machine learning taken met de mousserend schaal bare MLlib en Spark ML-pakketten op een Azure HDInsight Spark cluster. U wordt begeleid bij de taken die het [Data Science proces](./index.yml)vormen: gegevens opname en exploratie, visualisatie, functie techniek, model lering en model verbruik. De modellen in het artikel zijn onder andere logistiek en lineaire regressie, wille keurige forests en GBTs (Gradient-boosted Trees), naast twee algemene gecontroleerde machine learning taken:
 
 * Regressie probleem: voor spelling van het fooien bedrag ($) voor een taxi reis
 * Binaire classificatie: voor spelling van tip of zonder fooien (1/0) voor een taxi
@@ -52,7 +52,7 @@ De installatie stappen en code in dit artikel zijn voor Azure HDInsight 3,4 Spar
 Zie voor een beschrijving van de NYC en instructies over het uitvoeren van code uit een Jupyter-notebook op het Spark-cluster de relevante secties in [overzicht van data Science met behulp van Spark in azure HDInsight](spark-overview.md).  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Scala-code uitvoeren vanuit een Jupyter-notebook in het Spark-cluster
-U kunt een Jupyter-notebook starten vanuit het Azure Portal. Zoek het Spark-cluster op uw dash board en klik erop om de beheer pagina voor uw cluster in te voeren. Klik vervolgens op **cluster dashboards**en klik vervolgens op **Jupyter notebook** om het notitie blok te openen dat is gekoppeld aan het Spark-cluster.
+U kunt een Jupyter-notebook starten vanuit het Azure Portal. Zoek het Spark-cluster op uw dash board en klik erop om de beheer pagina voor uw cluster in te voeren. Klik vervolgens op **cluster dashboards** en klik vervolgens op **Jupyter notebook** om het notitie blok te openen dat is gekoppeld aan het Spark-cluster.
 
 ![Cluster dashboard en Jupyter-notebooks](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -258,8 +258,8 @@ sqlResultsDF.show(3)
 | fare_amount | passenger_count | tip_amount | gekanteld |
 | --- | --- | --- | --- |
 |        13,5 |1.0 |2.9 |1.0 |
-|        16,0 |2.0 |3.4 |1.0 |
-|        10.5 |2.0 |1.0 |1.0 |
+|        16,0 |2,0 |3.4 |1.0 |
+|        10.5 |2,0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Gegevens verkennen en visualisatie
 Nadat u de gegevens in Spark hebt gebracht, is de volgende stap in het data Science-proces het verkrijgen van meer inzicht in de gegevens door te verkennen en visualisatie. In deze sectie onderzoekt u de taxi gegevens met behulp van SQL-query's. Importeer vervolgens de resultaten in een gegevens frame om de doel variabelen en de potentiële functies voor visuele inspectie uit te zetten met behulp van de functie voor automatische visualisatie Jupyter.
@@ -353,7 +353,7 @@ Voor modellen die zijn gebaseerd op een structuur van Spark ML en MLlib, moet u 
 1. Maak een nieuwe functie door **binning** uur in tijds verzamelingen voor verkeer.
 2. Pas **indexering en één Hot encoding** toe op categorische-functies.
 3. **Steek proef en Splits de gegevensset** in trainings-en test breuken.
-4. **Geef de variabele en functies**voor de training op en maak een geïndexeerde of een hot-rdd's code ring en test invoer met de naam flexibel gedistribueerde gegevens sets () of gegevens frames.
+4. **Geef de variabele en functies** voor de training op en maak een geïndexeerde of een hot-rdd's code ring en test invoer met de naam flexibel gedistribueerde gegevens sets () of gegevens frames.
 5. **Categoriseer en vectorize functies en doelen** automatisch om te gebruiken als invoer voor machine learning modellen.
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Een nieuwe functie maken door tijdstippen van ophalen toe te wijzen aan tariefperioden
@@ -922,11 +922,11 @@ In deze sectie gebruikt u machine learning-hulpprogram ma's die ontwikkel aars v
 * Optimaliseer het model met behulp van kruis validatie en Hyper-para meter sweep met behulp van de CrossValidator-functie van Spark ML (binaire classificatie)
 * Optimaliseer het model met behulp van aangepaste code voor kruis validatie en het opruimen van para meters voor het gebruik van een machine learning functie en parameter set (lineaire regressie)
 
-**Kruis validatie** is een techniek waarmee wordt beoordeeld hoe goed een model dat is getraind op een bekende set gegevens, wordt gegeneraliseerd om de functies te voors pellen van gegevens sets waarvoor het niet is getraind. Het algemene idee achter deze techniek is dat een model wordt getraind op basis van een gegevens reeks van bekende gegevens en vervolgens de nauw keurigheid van de voor spellingen wordt getest op een onafhankelijke gegevensset. Een veelvoorkomende implementatie is het opsplitsen van een gegevensset in *k*-vouwen en het model vervolgens op een Round-Robin op alle, maar een van de vouwen te trainen.
+**Kruis validatie** is een techniek waarmee wordt beoordeeld hoe goed een model dat is getraind op een bekende set gegevens, wordt gegeneraliseerd om de functies te voors pellen van gegevens sets waarvoor het niet is getraind. Het algemene idee achter deze techniek is dat een model wordt getraind op basis van een gegevens reeks van bekende gegevens en vervolgens de nauw keurigheid van de voor spellingen wordt getest op een onafhankelijke gegevensset. Een veelvoorkomende implementatie is het opsplitsen van een gegevensset in *k* -vouwen en het model vervolgens op een Round-Robin op alle, maar een van de vouwen te trainen.
 
 **Optimalisatie van Hyper-para meters** is het probleem bij het kiezen van een set Hyper-para meters voor een leer algoritme, meestal met het doel om een meting van de prestaties van het algoritme op een onafhankelijke gegevensset te optimaliseren. Een Hyper-para meter is een waarde die u buiten de model trainings procedure moet opgeven. Veronderstellingen over waarden voor Hyper-para meters kunnen van invloed zijn op de flexibiliteit en nauw keurigheid van het model. Beslissings structuren hebben Hyper-para meters, bijvoorbeeld zoals de gewenste diepte en het aantal bladeren in de boom structuur. U moet een niet-geclassificeerde sanctie term instellen voor een ondersteunings vector machine (SVM).
 
-Een veelgebruikte manier om optimalisatie van Hyper-para meters uit te voeren is het gebruik van een raster zoekactie, ook wel het **opruimen van para**meters. In een raster zoekopdracht wordt een uitgebreide zoek opdracht uitgevoerd via de waarden van een opgegeven subset van de Hyper-parameter ruimte voor een leer algoritme. Kruis validatie kan een prestatie metriek bieden om de optimale resultaten te sorteren die worden geproduceerd door het zoek algoritme voor rasters. Als u de functie voor het opruimen van Hyper-para meters Kruis validatie gebruikt, kunt u problemen ondervinden zoals het aanpassen van een model op trainings gegevens. Op deze manier behoudt het model de capaciteit die moet worden toegepast op de algemene set gegevens waaruit de trainings gegevens zijn geëxtraheerd.
+Een veelgebruikte manier om optimalisatie van Hyper-para meters uit te voeren is het gebruik van een raster zoekactie, ook wel het **opruimen van para** meters. In een raster zoekopdracht wordt een uitgebreide zoek opdracht uitgevoerd via de waarden van een opgegeven subset van de Hyper-parameter ruimte voor een leer algoritme. Kruis validatie kan een prestatie metriek bieden om de optimale resultaten te sorteren die worden geproduceerd door het zoek algoritme voor rasters. Als u de functie voor het opruimen van Hyper-para meters Kruis validatie gebruikt, kunt u problemen ondervinden zoals het aanpassen van een model op trainings gegevens. Op deze manier behoudt het model de capaciteit die moet worden toegepast op de algemene set gegevens waaruit de trainings gegevens zijn geëxtraheerd.
 
 ### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>Een lineair regressie model optimaliseren met Hyper-para meters opruimen
 Vervolgens splitst u gegevens in de trein-en validatie sets, maakt u gebruik van Hyper-para meters voor een Trainingsset om het model te optimaliseren en evalueert u een valideringsset (lineaire regressie).
@@ -1135,9 +1135,8 @@ val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 Tijd voor het uitvoeren van de cel: 61 seconden.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Automatisch met Spark gebouwde machine learning modellen gebruiken met scala
-Zie [team data Science process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)voor een overzicht van de onderwerpen die u helpen bij het uitvoeren van de taken die het data Science-proces in azure vormen.
+Zie [team data Science process](./index.yml)voor een overzicht van de onderwerpen die u helpen bij het uitvoeren van de taken die het data Science-proces in azure vormen.
 
 Met de [scenario's voor team data Science proces](walkthroughs.md) worden andere end-to-end-procedures beschreven die de stappen in het proces voor de team data Science voor specifieke scenario's illustreren. De procedures illustreren ook hoe u Cloud-en on-premises hulpprogram ma's en services in een werk stroom of pijp lijn kunt combi neren om een intelligente toepassing te maken.
 
 Met een [Score van Spark-machine learning modellen](spark-model-consumption.md) wordt aangegeven hoe u scala code kunt gebruiken om automatisch nieuwe gegevens sets te laden en te scoren met machine learning modellen die zijn ingebouwd in Spark en opgeslagen in Azure Blob Storage. U kunt de instructies hieronder volgen en de python-code vervangen door scala-code in dit artikel voor automatisch verbruik.
-

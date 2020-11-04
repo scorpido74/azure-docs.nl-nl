@@ -11,25 +11,26 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d160040620fcaa60a8adc955efcc54ac3ca2609e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289166"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321435"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>GROEPEREN op Opties in Synapse SQL
+
 Met Synapse SQL kunt u oplossingen ontwikkelen door verschillende opties voor groeperen op te implementeren. 
 
-## <a name="what-does-group-by-do"></a>Wat doet GROUP BY
+## <a name="what-group-by-does"></a>De groep BY bevat
 
 Met de component [Group by](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL worden gegevens geaggregeerd naar een samen vatting van rijen.
 
-SQL on-demand ondersteunt het hele bereik met opties voor groeperen op. De SQL-pool ondersteunt een beperkt aantal opties voor groeperen op.
+Een serverloze SQL-pool ondersteunt het hele bereik met opties voor groeperen op. De toegewezen SQL-groep ondersteunt een beperkt aantal opties voor groeperen op.
 
-## <a name="group-by-options-supported-in-sql-pool"></a>Opties voor groeperen op die worden ondersteund in de SQL-groep
+## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>Opties voor groeperen op die worden ondersteund in de toegewezen SQL-groep
 
-GROEPEREN op heeft een aantal opties die niet worden ondersteund door SQL-groep. Deze opties hebben de volgende tijdelijke oplossingen:
+GROEPEREN op heeft een aantal opties die niet worden ondersteund door de exclusieve SQL-groep. Deze opties hebben de volgende tijdelijke oplossingen:
 
 * GROEPEREN op met ROLLUP
 * GROEPEER SETS

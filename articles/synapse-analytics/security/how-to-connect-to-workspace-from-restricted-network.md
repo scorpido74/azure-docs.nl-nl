@@ -1,0 +1,96 @@
+---
+title: Verbinding maken met een Synapse Studio-werkruimte resource vanuit een beperkt netwerk
+description: In dit artikel leert u hoe u vanuit een beperkt netwerk verbinding maakt met uw Azure Synapse Studio-werkruimte resources
+author: xujxu
+ms.service: synapse-analytics
+ms.topic: how-to
+ms.subservice: security
+ms.date: 10/25/2020
+ms.author: xujiang1
+ms.reviewer: jrasnick
+ms.openlocfilehash: 5d28b8f2ff3045c9fdf5e8a866419a22bfbc6504
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321786"
+---
+# <a name="connect-to-synapse-studio-workspace-resources-from-a-restricted-network"></a>Verbinding maken met Synapse Studio-werkruimte bronnen vanuit een beperkt netwerk
+
+De doel lezer van dit artikel is de IT-beheerder van het bedrijf die het beperkte netwerk van het bedrijf beheert. De IT-beheerder staat op het punt om de netwerk verbinding tussen Azure Synapse Studio en het werk station binnen dit beperkte netwerk in te scha kelen.
+
+In dit artikel leert u hoe u verbinding kunt maken met uw Azure Synapse-werk ruimte vanuit een beperkte netwerk omgeving. 
+
+## <a name="prerequisites"></a>Vereisten
+
+* **Azure-abonnement** : als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+* **Azure Synapse-werk ruimte** : als u geen Synapse Studio hebt, maakt u een Synapse-werk ruimte vanuit Azure Synapse Analytics. De werkruimte naam is vereist in de volgende stap 4.
+* **Een beperkt netwerk** : het beperkte netwerk wordt onderhouden door de IT-beheerder van het bedrijf. de IT-beheerder beschikt over de machtiging om het netwerk beleid te configureren. De naam van het virtuele netwerk en het bijbehorende subnet is vereist in de volgende stap 3.
+
+
+
+## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>Stap 1: uitgaande beveiligings regels voor het netwerk toevoegen aan het beperkte netwerk
+
+U moet vier regels voor uitgaande netwerk beveiliging toevoegen met vier service tags. Meer informatie over [service Tags Overview](/azure/virtual-network/service-tags-overview.md) 
+* AzureResourceManager
+* AzureFrontDoor. front-end
+* AzureActiveDirectory
+* AzureMonitor (optioneel. Voeg dit type regel alleen toe als u de gegevens wilt delen naar micro soft.)
+
+**Azure Resource Manager** Details van uitgaande regel als hieronder. Wanneer u de andere drie regels maakt, vervangt u de waarde van ' **doel** servicetag ' door de naam van de servicetag ' **AzureFrontDoor.** front-end ', ' **AzureActiveDirectory** ', ' **AzureMonitor** ' te kiezen in de vervolg keuzelijst selectie.
+
+![AzureResourceManager](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
+
+
+## <a name="step-2-create-azure-synapse-analytics-private-link-hubs"></a>Stap 2: Azure Synapse Analytics (persoonlijke koppelings hubs) maken
+
+U moet een Azure Synapse Analytics (persoonlijke koppelings hubs) maken van Azure Portal. Zoek in ' **Azure Synapse Analytics (private link hubs)** ' door de Azure Portal, vul vervolgens het gewenste veld in en maak het. 
+
+> [!Note]
+> De regio moet hetzelfde zijn als de naam waar uw Synapse-werk ruimte zich bevindt.
+
+![Synapse Analytics-hubs voor persoonlijke koppelingen maken](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
+
+## <a name="step-3-create-private-link-endpoint-for-synapse-studio-gateway"></a>Stap 3: Maak een persoonlijk koppelings eindpunt voor Synapse Studio gateway
+
+Om toegang te krijgen tot de Synapse Studio-gateway, moet u het eind punt van een persoonlijke verbinding maken op basis van Azure Portal. Zoek " **persoonlijke koppeling** " via de Azure Portal. Selecteer ' **persoonlijk eind punt maken** ' in het ' **persoonlijke koppelingen centrum** ' en vul vervolgens het gewenste veld in en maak het. 
+
+> [!Note]
+> De regio moet hetzelfde zijn als de naam waar uw Synapse-werk ruimte zich bevindt.
+
+![Een persoonlijk eind punt maken voor Synapse Studio 1](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-1.png)
+
+Kies op het volgende tabblad van ' **resource** ' de privécloud, die u in stap 2 hierboven hebt gemaakt.
+
+![Een persoonlijk eind punt maken voor Synapse Studio 2](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-2.png)
+
+Op het volgende tabblad van " **configuratie** " 
+* Kies de beperkte naam van het virtuele netwerk dat u hebt voor ' **virtueel netwerk** '.
+* Kies het subnet van het beperkte virtuele netwerk voor " **subnet** ". 
+* Selecteer **Ja** om te **integreren met een privé-DNS-zone**.
+
+![Een persoonlijk eind punt maken voor Synapse Studio 3](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
+
+Nadat het eind punt van de persoonlijke koppeling is gemaakt, kunt u toegang krijgen tot de aanmeldings pagina van Synapse Studio Web Tool. U hebt echter nog geen toegang tot de resources in uw Synapse-werk ruimte totdat u de volgende stap moet volt ooien.
+
+## <a name="step-4-create-private-link-endpoints-for-synapse-studio-workspace-resource"></a>Stap 4: Maak persoonlijke koppelings eindpunten voor Synapse Studio werkruimte resource
+
+Als u toegang wilt krijgen tot de resources in uw Synapse Studio-werkruimte resource, moet u ten minste één persoonlijk koppelings eindpunt maken met ' **dev** ' type ' **target subresource** ' en twee andere optionele persoonlijke koppelings eindpunten met typen ' **SQL** ' of ' **SqlOnDemand** ', afhankelijk van de resources in de Synapse studio-werk ruimte die u wilt gebruiken. Het maken van een persoonlijk koppelings eindpunt voor Synapse studio-werk ruimte is vergelijkbaar met het maken van een eind punt.  
+
+Let op de onderstaande gebieden op het tabblad ' **resource** ':
+* Selecteer **micro soft. Synapse/werk ruimten** in het **resource type**.
+* Selecteer ' **YourWorkSpaceName** ' in ' **resource** ' die u eerder hebt gemaakt.
+* Selecteer het eindpunt type in ' **doel-subresource** ':
+  * **SQL** : is voor het uitvoeren van SQL-query's in de SQL-groep.
+  * **SqlOnDemand** : is voor de uitvoering van SQL ingebouwde query's.
+  * **Dev** : is voor het openen van alle andere binnen Synapse studio-werk ruimten. U moet ten minste een persoonlijk eind punt van de persoonlijke koppeling maken met dit type.
+
+![Een persoonlijk eind punt maken voor Synapse studio-werk ruimte](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
+
+Nu is alle ingesteld. U hebt toegang tot de resource van uw Synapse studio-werk ruimte.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over [Managed workspace Virtual Network](./synapse-workspace-managed-vnet.md)
+
+Meer informatie over [beheerde privé-eindpunten](./synapse-workspace-managed-private-endpoints.md)

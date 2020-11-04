@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: c24c82e6e013734798b75d7c2cfa5ca126e32bc4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 37931aee24e2dbcab03bca400d58f236601c87e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788601"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321431"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>De Transparent Data Encryption-Protector (TDE) draaien
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,7 +28,7 @@ In dit artikel wordt de belangrijkste draaiing beschreven voor een [Server](logi
 In deze hand leiding worden twee opties besproken voor het draaien van de TDE-protector op de-server.
 
 > [!NOTE]
-> Een onderbroken Azure Synapse Analytics SQL-groep moet worden hervat voordat de sleutel wordt gedraaid.
+> Een onderbroken, toegewezen SQL-groep in azure Synapse Analytics moet worden hervat voordat de sleutel wordt gedraaid.
 
 > [!IMPORTANT]
 > Verwijder geen eerdere versies van de sleutel na een rollover. Wanneer sleutels worden doorgevoerd, worden er nog enkele gegevens versleuteld met de vorige sleutels, zoals oudere back-ups van de data base.

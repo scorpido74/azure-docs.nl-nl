@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1662af6cd3499fdf851d4e1bd8a0db48da7635b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864142"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320130"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>HDInsight Spark data Science-scenario's met PySpark en scala op Azure
 
@@ -40,12 +40,11 @@ Bekijk [geavanceerde gegevens exploratie en model lering met Spark](spark-advanc
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Gebruik scala in azure Spark om aan de taxi tips te voors pellen
 
-Met het scenario [scala gebruiken met Spark in azure wordt voor](scala-walkthrough.md) speld of een tip wordt betaald en het bereik van de bedragen die naar verwachting worden betaald. Hierin ziet u hoe u scala kunt gebruiken voor onder Super visie machine learning taken met de Spark machine learning Library (MLlib) en SparkML-pakketten op een Azure HDInsight Spark cluster. U wordt begeleid bij de taken die het [Data Science proces](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)vormen: gegevens opname en exploratie, visualisatie, functie techniek, model lering en model verbruik. De modellen zijn gebaseerd op logistieke en lineaire regressie, wille keurige forests en verlopen structuren.
+Met het scenario [scala gebruiken met Spark in azure wordt voor](scala-walkthrough.md) speld of een tip wordt betaald en het bereik van de bedragen die naar verwachting worden betaald. Hierin ziet u hoe u scala kunt gebruiken voor onder Super visie machine learning taken met de Spark machine learning Library (MLlib) en SparkML-pakketten op een Azure HDInsight Spark cluster. U wordt begeleid bij de taken die het [Data Science proces](./index.yml)vormen: gegevens opname en exploratie, visualisatie, functie techniek, model lering en model verbruik. De modellen zijn gebaseerd op logistieke en lineaire regressie, wille keurige forests en verlopen structuren.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [overzicht van team data Science process](overview.md)voor een overzicht van het team data Science process.
 
-Zie voor een bespreking van de team data Science proces levenscyclus de [team data Science process Lifecycle](lifecycle.md). Deze levens cyclus bevat een overzicht van de stappen, van begin tot eind, die projecten meestal volgen wanneer ze worden uitgevoerd. 
-
+Zie voor een bespreking van de team data Science proces levenscyclus de [team data Science process Lifecycle](lifecycle.md). Deze levens cyclus bevat een overzicht van de stappen, van begin tot eind, die projecten meestal volgen wanneer ze worden uitgevoerd.

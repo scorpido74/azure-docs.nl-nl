@@ -11,20 +11,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 940d4c465acb5e8478d2b204ab5b9b18c79254f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76716677"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321317"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Functies selecteren in Team Data Science Process (TDSP)
 In dit artikel wordt het doel van de functie selectie beschreven en worden voor beelden gegeven van hun rol in het proces voor gegevens verbetering van machine learning. Deze voor beelden worden uit Azure Machine Learning Studio opgehaald.
 
 De techniek en selectie van functies is een onderdeel van het team data Science process (TDSP), zoals beschreven in het artikel [Wat is het proces voor team data Science?](overview.md). Functie techniek en selectie zijn onderdelen van de stap **functies ontwikkelen** van de TDSP.
 
-* **functie techniek**: dit proces probeert extra relevante functies te maken op basis van de bestaande onbewerkte functies in de gegevens en om de voorspellende stroom te verg Roten tot het leer algoritme.
-* **functie selectie**: dit proces selecteert de sleutel subset van de oorspronkelijke gegevens functies in een poging om de dimensionaliteit van het trainings probleem te reduceren.
+* **functie techniek** : dit proces probeert extra relevante functies te maken op basis van de bestaande onbewerkte functies in de gegevens en om de voorspellende stroom te verg Roten tot het leer algoritme.
+* **functie selectie** : dit proces selecteert de sleutel subset van de oorspronkelijke gegevens functies in een poging om de dimensionaliteit van het trainings probleem te reduceren.
 
 Normaal gesp roken **functie techniek** wordt eerst toegepast om extra functies te genereren, en vervolgens wordt de **functie selectie** stap uitgevoerd om irrelevante, redundante of zeer gecorreleerde functies te elimineren.
 
@@ -64,7 +64,6 @@ Functie techniek en functie selectie zijn twee vaak ontworpen en geselecteerde f
 Het is niet altijd nood zakelijk om functie-engineering of functie selectie uit te voeren. Of het nodig is of niet afhankelijk is van de verzamelde gegevens, de geselecteerde algoritme en het doel van het experiment.
 
 <!-- Module References -->
-[feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
-[filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
-[fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
-
+[feature-hashing]: /azure/machine-learning/studio-module-reference/feature-hashing
+[filter-based-feature-selection]: /previous-versions/azure/dn905854(v=azure.100)
+[fisher-linear-discriminant-analysis]: /azure/machine-learning/studio-module-reference/fisher-linear-discriminant-analysis

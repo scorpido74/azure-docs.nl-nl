@@ -1,6 +1,6 @@
 ---
-title: Statistieken voor tabellen maken en bijwerken met behulp van Azure Synapse SQL
-description: Aanbevelingen en voor beelden voor het maken en bijwerken van statistieken voor query optimalisatie voor tabellen in Synapse SQL-pool.
+title: Statistieken voor tabellen maken en bijwerken
+description: Aanbevelingen en voor beelden voor het maken en bijwerken van statistieken voor query optimalisatie voor tabellen in een toegewezen SQL-groep.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,42 +11,42 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9349c5d1c4e6255dc0854537bb7e93e3e636ce8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799312"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321068"
 ---
-# <a name="table-statistics-in-synapse-sql-pool"></a>Tabel statistieken in Synapse SQL-pool
+# <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tabel statistieken voor exclusieve SQL-groep in azure Synapse Analytics
 
-In dit artikel vindt u aanbevelingen en voor beelden voor het maken en bijwerken van statistieken voor query optimalisatie voor tabellen in de SQL-groep.
+In dit artikel vindt u aanbevelingen en voor beelden voor het maken en bijwerken van statistieken voor query optimalisatie voor tabellen in een toegewezen SQL-groep.
 
 ## <a name="why-use-statistics"></a>Waarom statistieken gebruiken?
 
-Hoe meer SQL-groepen weet wat uw gegevens zijn, des te sneller query's kunnen worden uitgevoerd. Wanneer u gegevens in de SQL-groep hebt geladen, is het verzamelen van statistieken voor uw gegevens een van de belangrijkste dingen die u kunt doen om uw query's te optimaliseren.
+Hoe meer exclusieve SQL-groepen weet wat uw gegevens zijn, des te sneller query's kunnen worden uitgevoerd. Na het laden van gegevens in een toegewezen SQL-groep is het verzamelen van statistieken voor uw gegevens een van de belangrijkste dingen die u kunt doen om uw query's te optimaliseren.
 
-De SQL-groep query optimalisatie is een op kosten gebaseerd Optimizer. Hiermee worden de kosten van verschillende query plannen vergeleken en wordt vervolgens het abonnement met de laagste kosten gekozen. In de meeste gevallen kiest u het plan dat het snelst wordt uitgevoerd.
+De exclusieve SQL pool-query optimalisatie is een op kosten gebaseerd Optimizer. Hiermee worden de kosten van verschillende query plannen vergeleken en wordt vervolgens het abonnement met de laagste kosten gekozen. In de meeste gevallen kiest u het plan dat het snelst wordt uitgevoerd.
 
 Als de Optimizer bijvoorbeeld een schatting maakt van de datum waarop uw query wordt gefilterd, wordt er één regel geretourneerd. Als er wordt geschat dat de geselecteerde datum 1.000.000 rijen retourneert, wordt een ander plan geretourneerd.
 
 ## <a name="automatic-creation-of-statistic"></a>Automatisch statistieken maken
 
-Wanneer de optie Data Base AUTO_CREATE_STATISTICS is ingeschakeld, analyseert SQL-pool de binnenkomende gebruikers query's voor ontbrekende statistieken.
+Wanneer de optie Data Base AUTO_CREATE_STATISTICS is ingeschakeld, analyseert de toegewezen SQL-groep binnenkomende gebruikers query's voor ontbrekende statistieken.
 
 Als er statistieken ontbreken, worden in de query Optimizer statistieken gemaakt voor afzonderlijke kolommen in het query-predikaat of de samenvoegings voorwaarde om de kardinaliteit voor het query plan te verbeteren.
 
 > [!NOTE]
 > Automatisch maken van statistieken is momenteel standaard ingeschakeld.
 
-U kunt controleren of uw SQL-groep AUTO_CREATE_STATISTICS geconfigureerd door de volgende opdracht uit te voeren:
+U kunt controleren of uw toegewezen SQL-groep AUTO_CREATE_STATISTICS geconfigureerd door de volgende opdracht uit te voeren:
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-Als uw SQL-groep niet AUTO_CREATE_STATISTICS is geconfigureerd, raden we u aan deze eigenschap in te scha kelen door de volgende opdracht uit te voeren:
+Als uw toegewezen SQL-groep niet AUTO_CREATE_STATISTICS is geconfigureerd, raden we u aan deze eigenschap in te scha kelen door de volgende opdracht uit te voeren:
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -72,7 +72,7 @@ Om te voor komen dat de prestaties meetbaar zijn, moet u ervoor zorgen dat de st
 > [!NOTE]
 > Het maken van statistieken wordt geregistreerd in [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) onder een andere gebruikers context.
 
-Wanneer er automatische statistieken worden gemaakt, worden de volgende notatie toegepast: _WA_Sys_<kolom-id van 8 cijfers in hex>_<tabel-ID van 8 cijfers in hexadecimale>. U kunt de statistieken weer geven die al zijn gemaakt door de [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -opdracht uit te voeren:
+Wanneer er automatische statistieken worden gemaakt, worden de volgende notatie toegepast: _WA_Sys_ <kolom-id van 8 cijfers in hex>_<tabel-ID van 8 cijfers in hexadecimale>. U kunt de statistieken weer geven die al zijn gemaakt door de [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -opdracht uit te voeren:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -82,11 +82,11 @@ De table_name is de naam van de tabel die de statistieken bevat die moeten worde
 
 ## <a name="update-statistics"></a>Statistieken bijwerken
 
-Een best practice is het bijwerken van statistieken voor datum kolommen elke dag wanneer er nieuwe datums worden toegevoegd. Telkens wanneer er nieuwe rijen in de SQL-groep worden geladen, worden er nieuwe laad datums of transactie datums toegevoegd. Deze toevoegingen wijzigen de gegevens distributie en maken de statistieken verouderd.
+Een best practice is het bijwerken van statistieken voor datum kolommen elke dag wanneer er nieuwe datums worden toegevoegd. Elke keer dat er nieuwe rijen worden geladen in de toegewezen SQL-groep, worden nieuwe laad datums of transactie datums toegevoegd. Deze toevoegingen wijzigen de gegevens distributie en maken de statistieken verouderd.
 
 Statistieken voor een kolom land/regio in een tabel Klant hoeven nooit te worden bijgewerkt omdat de verdeling van waarden doorgaans niet wordt gewijzigd. Ervan uitgaande dat de distributie een constante is tussen klanten, het toevoegen van nieuwe rijen aan de tabel variatie is geen wijziging van de gegevens distributie.
 
-Als uw SQL-groep echter slechts één land/regio bevat en u gegevens uit een nieuw land/nieuwe regio haalt, wat resulteert in gegevens uit meerdere landen/regio's die worden opgeslagen, moet u de statistieken bijwerken in de kolom land/regio.
+Als uw toegewezen SQL-groep echter slechts één land/regio bevat en u gegevens uit een nieuw land/nieuwe regio hebt, worden er gegevens uit meerdere landen/regio's opgeslagen. vervolgens moet u de statistieken bijwerken in de kolom land/regio.
 
 Hier volgen de aanbevelingen voor het bijwerken van statistieken:
 
@@ -101,7 +101,7 @@ Deze vraag is niet een die kan worden beantwoord door de leeftijd van de gegeven
 
 Er is geen dynamische beheer weergave om te bepalen of de gegevens in de tabel zijn gewijzigd sinds de laatste keer dat de statistieken zijn bijgewerkt.  U kunt met behulp van de volgende twee query's bepalen of uw statistieken verouderd zijn.
 
-**Query 1:**  Bepaal het verschil tussen het aantal rijen uit de statistieken (**stats_row_count**) en het werkelijke aantal rijen (**actual_row_count**). 
+**Query 1:**  Bepaal het verschil tussen het aantal rijen uit de statistieken ( **stats_row_count** ) en het werkelijke aantal rijen ( **actual_row_count** ). 
 
 ```sql
 select 
@@ -182,11 +182,11 @@ WHERE
     st.[user_created] = 1;
 ```
 
-Voor **datum kolommen** in een SQL-groep zijn bijvoorbeeld doorgaans regel matige statistieken vereist. Telkens wanneer er nieuwe rijen in de SQL-groep worden geladen, worden er nieuwe laad datums of transactie datums toegevoegd. Deze toevoegingen wijzigen de gegevens distributie en maken de statistieken verouderd.
+Voor **datum kolommen** in een toegewezen SQL-groep zijn bijvoorbeeld vaak updates met statistieken nodig. Elke keer dat er nieuwe rijen worden geladen in de toegewezen SQL-groep, worden nieuwe laad datums of transactie datums toegevoegd. Deze toevoegingen wijzigen de gegevens distributie en maken de statistieken verouderd.
 
 De statistieken voor de kolom gender in een tabel Klant kunnen echter nooit worden bijgewerkt. Ervan uitgaande dat de distributie een constante is tussen klanten, het toevoegen van nieuwe rijen aan de tabel variatie is geen wijziging van de gegevens distributie.
 
-Als uw SQL-groep slechts één gender bevat en een nieuwe vereiste resulteert in meerdere geslachten, moet u de statistieken bijwerken in de kolom gender.
+Als uw toegewezen SQL-groep slechts één gender bevat en een nieuwe vereiste resulteert in meerdere geslachten, moet u de statistieken bijwerken in de kolom gender.
 
 Zie algemene richt lijnen voor [Statistieken](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie.
 
@@ -214,7 +214,7 @@ Deze voor beelden laten zien hoe u verschillende opties kunt gebruiken om statis
 
 Als u statistieken wilt maken voor een kolom, geeft u een naam op voor het statistiek object en de naam van de kolom.
 
-Deze syntaxis maakt gebruik van alle standaard opties. Standaard wordt in SQL pool voor **20 procent** van de tabel gesampled wanneer er statistieken worden gemaakt.
+Deze syntaxis maakt gebruik van alle standaard opties. Standaard wordt **20 procent** van de tabel gesampled bij het maken van statistieken.
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -282,13 +282,13 @@ Als u een statistieken object met meerdere kolommen wilt maken, gebruikt u de vo
 > [!NOTE]
 > Het histogram dat wordt gebruikt om het aantal rijen in het query resultaat te schatten, is alleen beschikbaar voor de eerste kolom die wordt vermeld in de definitie van het statistieken-object.
 
-In dit voor beeld is het histogram voor de *product \_ categorie*. Statistieken voor meerdere kolommen worden berekend voor *product \_ categorie* -en *product \_ sub_category*:
+In dit voor beeld is het histogram voor de *product \_ categorie*. Statistieken voor meerdere kolommen worden berekend voor *product \_ categorie* -en *product \_ sub_category* :
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Omdat er een correlatie bestaat tussen *product \_ categorie* en *product \_ \_ subcategorie*, kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
+Omdat er een correlatie bestaat tussen *product \_ categorie* en *product \_ \_ subcategorie* , kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Statistieken maken voor alle kolommen in een tabel
 
@@ -314,7 +314,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Een opgeslagen procedure gebruiken om statistieken te maken voor alle kolommen in een Data Base
 
-De SQL-groep heeft geen opgeslagen systeem procedure die gelijk is aan sp_create_stats in SQL Server. Met deze opgeslagen procedure maakt u één kolom statistieken-object op elke kolom van de data base waarvoor nog geen statistieken zijn.
+De toegewezen SQL-groep heeft geen door het systeem opgeslagen procedure die gelijk is aan sp_create_stats in SQL Server. Met deze opgeslagen procedure maakt u één kolom statistieken-object op elke kolom van de data base waarvoor nog geen statistieken zijn.
 
 Het volgende voor beeld helpt u aan de slag te gaan met uw database ontwerp. U kunt deze aanpassen aan uw behoeften.
 
@@ -462,7 +462,7 @@ UPDATE STATISTICS dbo.table1;
 De instructie UPDATE STATISTICs is eenvoudig te gebruiken. Houd er rekening mee dat *alle* statistieken in de tabel worden bijgewerkt en dat daarom meer werk kan worden uitgevoerd dan nodig is. Als de prestaties geen probleem zijn, is dit de eenvoudigste en meest volledige manier om te garanderen dat statistieken up-to-date zijn.
 
 > [!NOTE]
-> Wanneer alle statistieken voor een tabel worden bijgewerkt, voert SQL-pool een scan uit om een voor beeld van de tabel voor elk statistiek object te bekijken. Als de tabel groot is en veel kolommen en veel statistieken heeft, kan het efficiënter zijn om afzonderlijke statistieken bij te werken op basis van de behoefte.
+> Wanneer alle statistieken voor een tabel worden bijgewerkt, voert de toegewezen SQL-pool een scan uit om een voor beeld van de tabel voor elk statistiek object te bekijken. Als de tabel groot is en veel kolommen en veel statistieken heeft, kan het efficiënter zijn om afzonderlijke statistieken bij te werken op basis van de behoefte.
 
 `UPDATE STATISTICS`Zie [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md)voor een implementatie van een procedure. De implementatie methode wijkt enigszins af van de voor gaande `CREATE STATISTICS` procedure, maar het resultaat is hetzelfde.
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS () toont de gegevens binnen een statistiek object. Deze geg
 De meta gegevens van de koptekst over de statistieken. In het histogram wordt de verdeling weer gegeven van de waarden in de eerste sleutel kolom van het statistiek object. De dichtheids vector meet de correlatie tussen kolommen.
 
 > [!NOTE]
-> De SQL-pool berekent kardinaliteit met een van de gegevens in het statistiek object.
+> De toegewezen SQL-groep berekent de kardinaliteit met een van de gegevens in het statistiek object.
 
 ### <a name="show-header-density-and-histogram"></a>Koptekst, densiteit en histogram weer geven
 
@@ -578,7 +578,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>Verschillen DBCC SHOW_STATISTICS ()
 
-DBCC SHOW_STATISTICS () is in de SQL-groep uitgebreid vergeleken met SQL Server:
+DBCC SHOW_STATISTICS () wordt in een specifieke SQL-groep uitgebreid vergeleken met SQL Server:
 
 - Niet-gedocumenteerde functies worden niet ondersteund.
 - Kan Stats_stream niet gebruiken.

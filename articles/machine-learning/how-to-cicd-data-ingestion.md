@@ -1,7 +1,7 @@
 ---
-title: DevOps voor een pijp lijn voor gegevens opname
+title: DevOps voor een gegevensopnamepijplijn
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het Toep assen van DevOps-procedures voor het maken van een pijp lijn voor gegevens opname die wordt gebruikt om gegevens voor te bereiden voor gebruik met Azure Machine Learning. De opname pijplijn maakt gebruik van Azure Data Factory en Azure Databricks. Een Azure-pijp lijn wordt gebruikt voor het maken van een doorlopend integratie-en leverings proces voor de opname pijplijn.
+description: Meer informatie over het Toep assen van DevOps-procedures voor het maken van een pijp lijn voor gegevens opname om gegevens voor te bereiden. De gebruikt Azure Data Factory en Azure Databricks.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,20 +12,20 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e3774b360df6dce318d1d640903d0df2e21c856
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971262"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320690"
 ---
-# <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps voor een pijp lijn voor gegevens opname
+# <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps voor een gegevensopnamepijplijn
 
 In de meeste gevallen is een oplossing voor gegevens opname een samen stelling van scripts, aanroepen van de service en een pijp lijn die alle activiteiten organiseert. In dit artikel leert u hoe u DevOps-procedures toepast op de ontwikkelings levenscyclus van een gemeen schappelijke gegevens opname pijplijn die gegevens voorbereidt voor machine learning model training. De pijp lijn is gebouwd met behulp van de volgende Azure-Services:
 
-* __Azure Data Factory__: de onbewerkte gegevens worden gelezen en gegevens worden voor bereid.
-* __Azure Databricks__: voert een python-notebook uit waarmee de gegevens worden getransformeerd.
-* __Azure pipelines__: automatiseert een doorlopend integratie-en ontwikkelings proces.
+* __Azure Data Factory__ : de onbewerkte gegevens worden gelezen en gegevens worden voor bereid.
+* __Azure Databricks__ : voert een python-notebook uit waarmee de gegevens worden getransformeerd.
+* __Azure pipelines__ : automatiseert een doorlopend integratie-en ontwikkelings proces.
 
 ## <a name="data-ingestion-pipeline-workflow"></a>Pijplijn werk stroom voor gegevens opname
 
@@ -72,18 +72,17 @@ De bron code van Azure Data Factory pijp lijnen is een verzameling JSON-bestande
 
 Zie [Author with Azure opslag plaatsen Git Integration](../data-factory/source-control.md#author-with-azure-repos-git-integration)voor informatie over het configureren van de werk ruimte voor het gebruik van een broncode beheer bibliotheek.   
 
-## <a name="continuous-integration-ci"></a>Doorlopende integratie (CI)
+## <a name="continuous-integration-ci"></a>Continue integratie (CI)
 
 Het ultieme doel van het proces voor continue integratie is het verzamelen van het gezamenlijke team werk van de bron code en het voorbereiden van de implementatie op de downstream-omgevingen. Net als bij broncode beheer is dit proces verschillend voor de python-notebooks en Azure Data Factory pijp lijnen. 
 
 ### <a name="python-notebook-ci"></a>Python-notebook-CI
 
-Het CI-proces voor de python-notebooks haalt de code op uit de vertakking voor samen werking (bijvoorbeeld ***Master*** of ***develope***) en voert de volgende activiteiten uit:
-* Code linting
+Het CI-proces voor de python-notebooks haalt de code op uit de vertakking voor samen werking (bijvoorbeeld * **Master** _ of _*_ontwikkeling_*_ ) en voert de volgende activiteiten uit: _ code linting
 * Het testen van modules
 * De code opslaan als een artefact
 
-In het volgende code fragment ziet u de implementatie van deze stappen in een Azure DevOps ***yaml*** -pijp lijn:
+In het volgende code fragment ziet u de implementatie van deze stappen in een Azure DevOps * **yaml** _ pijp lijn:
 
 ```yaml
 steps:
@@ -99,7 +98,7 @@ steps:
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
-    testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
+    testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
     testRunTitle: 'Linting & Unit tests'
     failTaskOnFailedTests: true
   displayName: 'Publish linting and unit test results'
@@ -116,13 +115,13 @@ Als de samenvoegings-en eenheids test is geslaagd, kopieert de pijp lijn de bron
 
 ### <a name="azure-data-factory-ci"></a>Azure Data Factory CI
 
-CI-proces voor een Azure Data Factory pijp lijn is een knel punt voor een gegevens opname pijplijn. Er is geen continue integratie. Een implementeerbaar artefact voor Azure Data Factory is een verzameling Azure Resource Manager sjablonen. De enige manier om deze sjablonen te maken, is door op de knop ***publiceren*** te klikken in de werk ruimte Azure Data Factory.
+CI-proces voor een Azure Data Factory pijp lijn is een knel punt voor een gegevens opname pijplijn. Er is geen continue integratie. Een implementeerbaar artefact voor Azure Data Factory is een verzameling Azure Resource Manager sjablonen. De enige manier om deze sjablonen te maken, is door te klikken op de knop * **publiceren** _ in de werk ruimte Azure Data Factory.
 
-1. De gegevens technici voegen de bron code van hun functie vertakkingen samen in de vertakking voor samen werking, bijvoorbeeld ***hoofd*** of ***ontwikkeling***. 
-1. Iemand met de verleende machtigingen klikt op de knop ***publiceren*** om Azure Resource Manager sjablonen te genereren van de bron code in de vertakking voor samen werking. 
-1. De werk ruimte valideert de pijp lijnen (deze zijn van toepassing op het maken van linten en het testen van eenheden), genereert Azure Resource Manager sjablonen (denk eraan dat deze zijn gemaakt) en slaat de gegenereerde sjablonen op in een technische vertakking ***adf_publish*** in dezelfde code opslagplaats (denk eraan als publicatie artefacten). Deze vertakking wordt automatisch gemaakt door de Azure Data Factory-werk ruimte. 
+1. De gegevens technici voegen de bron code van hun functie vertakkingen samen in de vertakking voor samen werking, bijvoorbeeld _*_hoofd_*_ of _*_ontwikkeling_*_. 
+1. Iemand met de verleende machtigingen klikt op de knop _*_publiceren_*_ om Azure Resource Manager sjablonen te genereren van de bron code in de vertakking voor samen werking. 
+1. De werk ruimte valideert de pijp lijnen (deze zijn van toepassing op het maken van linten en het testen van eenheden), genereert Azure Resource Manager sjablonen (denk eraan dat deze zijn gemaakt) en slaat de gegenereerde sjablonen op in een technische vertakking _*_adf_publish_*_ in dezelfde code opslagplaats (denk eraan als publicatie artefacten). Deze vertakking wordt automatisch gemaakt door de Azure Data Factory-werk ruimte. 
 
-Zie voor meer informatie over dit proces [doorlopende integratie en levering in azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment).
+Zie voor meer informatie over dit proces [doorlopende integratie en levering in azure Data Factory](../data-factory/continuous-integration-deployment.md).
 
 Het is belang rijk om ervoor te zorgen dat de gegenereerde Azure Resource Manager sjablonen omgeving neutraal zijn. Dit betekent dat alle waarden die kunnen verschillen tussen omgevingen, parametrized zijn. Azure Data Factory is slim genoeg om het meren deel van dergelijke waarden als para meters weer te geven. Zo worden in de volgende sjabloon de verbindings eigenschappen voor een Azure Machine Learning werk ruimte als para meters weer gegeven:
 
@@ -166,7 +165,7 @@ labels = np.array(data['target'])
 ...
 ```
 
-Deze naam wijkt af van ***ontwikkel***-, ***QA***-, ***bedoeld***-en ***productie*** omgevingen. In een complexe pijp lijn met meerdere activiteiten kunnen er verschillende aangepaste eigenschappen zijn. Het is raadzaam om al deze waarden op één plek te verzamelen en ze als pijplijn ***variabelen***te definiëren:
+Deze naam wijkt af van _*_ontwikkel_*_ -, _*_QA_*_ -, _*_bedoeld_*_ -en _*_productie_*_ omgevingen. In een complexe pijp lijn met meerdere activiteiten kunnen er verschillende aangepaste eigenschappen zijn. Het is raadzaam om al deze waarden op één plek te verzamelen en ze als pijplijn _*_variabelen_*_ te definiëren:
 
 ![In de scherm afbeelding wordt een notitie blok met de naam PrepareData en M L-pijp lijn uitvoeren met de naam M L uitvoeren pijp lijn weer gegeven bovenaan met het tabblad variabelen dat hieronder is geselecteerd, met de optie om nieuwe variabelen toe te voegen.](media/how-to-cicd-data-ingestion/adf-variables.png)
 
@@ -174,13 +173,13 @@ De pijplijn activiteiten kunnen verwijzen naar de pijplijn variabelen en ze in f
 
 ![Scherm afbeelding toont een notitie blok met de naam PrepareData en M L-pijp lijn uitvoeren met de naam M L Voer pijp lijn uit, bovenaan met het tabblad instellingen hieronder geselecteerd.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-In de Azure Data Factory-werk ruimte worden pijplijn variabelen ***niet*** standaard weer gegeven als Azure Resource Manager sjablonen-para meters. In de werk ruimte wordt gebruikgemaakt van de [standaard sjabloon voor parameterisering](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) die bepaalt welke pijplijn eigenschappen moeten worden weer gegeven als Azure Resource Manager sjabloon parameters. Als u pijplijn variabelen wilt toevoegen aan de lijst, werkt u de `"Microsoft.DataFactory/factories/pipelines"` sectie van de [standaard sjabloon parameterisering](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) bij met het volgende code fragment en plaatst u het JSON-bestand in de hoofdmap van de bronmap:
+In de Azure Data Factory-werk ruimte worden pijplijn variabelen _*_niet_*_ standaard weer gegeven als Azure Resource Manager sjablonen-para meters. In de werk ruimte wordt gebruikgemaakt van de [standaard sjabloon voor parameterisering](../data-factory/continuous-integration-deployment.md#default-parameterization-template) die bepaalt welke pijplijn eigenschappen moeten worden weer gegeven als Azure Resource Manager sjabloon parameters. Als u pijplijn variabelen wilt toevoegen aan de lijst, werkt u de `"Microsoft.DataFactory/factories/pipelines"` sectie van de [standaard sjabloon parameterisering](../data-factory/continuous-integration-deployment.md#default-parameterization-template) bij met het volgende code fragment en plaatst u het JSON-bestand in de hoofdmap van de bronmap:
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
         "properties": {
             "variables": {
-                "*": {
+                "_": {
                     "defaultValue": "="
                 }
             }
@@ -188,7 +187,7 @@ In de Azure Data Factory-werk ruimte worden pijplijn variabelen ***niet*** stand
     }
 ```
 
-Als u dit doet, wordt de Azure Data Factory-werk ruimte de variabelen aan de lijst met para meters toegevoegd wanneer u op de knop ***publiceren*** klikt:
+Als u dit doet, wordt de Azure Data Factory-werk ruimte gedwongen de variabelen toe te voegen aan de lijst met para meters wanneer u op de knop * **publiceren** _ klikt:
 
 ```json
 {
@@ -212,18 +211,18 @@ De waarden in het JSON-bestand zijn standaard waarden die zijn geconfigureerd in
 
 Het doorlopende leverings proces neemt de artefacten en implementeert deze in de eerste doel omgeving. Er wordt gecontroleerd of de oplossing werkt door tests uit te voeren. Als dat lukt, gaat het verder met de volgende omgeving. 
 
-De CD Azure-pijp lijn bestaat uit meerdere fasen die de omgevingen vertegenwoordigen. Elke fase bevat [implementaties](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) en [taken](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) die de volgende stappen uitvoeren:
+De CD Azure-pijp lijn bestaat uit meerdere fasen die de omgevingen vertegenwoordigen. Elke fase bevat [implementaties](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) en [taken](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) die de volgende stappen uitvoeren:
 
-* Een python-notebook implementeren op Azure Databricks werk ruimte
+_ Een python-notebook implementeren op Azure Databricks-werk ruimte
 * Een Azure Data Factory-pijp lijn implementeren 
 * De pijplijn uitvoeren
 * Het resultaat van de gegevens opname controleren
 
-De pijplijn fasen kunnen worden geconfigureerd met [goed keuringen](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) en [poorten](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops) die extra controle bieden over hoe het implementatie proces zich ontwikkelt door de keten van omgevingen.
+De pijplijn fasen kunnen worden geconfigureerd met [goed keuringen](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops) en [poorten](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) die extra controle bieden over hoe het implementatie proces zich ontwikkelt door de keten van omgevingen.
 
 ### <a name="deploy-a-python-notebook"></a>Een python-notebook implementeren
 
-Het volgende code fragment definieert een Azure-pijplijn [implementatie](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) waarmee een python-notebook wordt gekopieerd naar een Databricks-cluster:
+Het volgende code fragment definieert een Azure-pijplijn [implementatie](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) waarmee een python-notebook wordt gekopieerd naar een Databricks-cluster:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -259,13 +258,13 @@ Het volgende code fragment definieert een Azure-pijplijn [implementatie](https:/
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-De artefacten die door de CI worden geproduceerd, worden automatisch naar de implementatie agent gekopieerd en zijn beschikbaar in de `$(Pipeline.Workspace)` map. In dit geval verwijst de implementatie taak naar het `di-notebooks` artefact met de python-notebook. Deze [implementatie](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) maakt gebruik van de [Databricks Azure DevOps-extensie](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) om de notitieblok bestanden te kopiëren naar de Databricks-werk ruimte.
+De artefacten die door de CI worden geproduceerd, worden automatisch naar de implementatie agent gekopieerd en zijn beschikbaar in de `$(Pipeline.Workspace)` map. In dit geval verwijst de implementatie taak naar het `di-notebooks` artefact met de python-notebook. Deze [implementatie](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) maakt gebruik van de [Databricks Azure DevOps-extensie](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) om de notitieblok bestanden te kopiëren naar de Databricks-werk ruimte.
 
 Het `Deploy_to_QA` stadium bevat een verwijzing naar de `devops-ds-qa-vg` variabelen groep die is gedefinieerd in het Azure DevOps-project. De stappen in deze fase verwijzen naar de variabelen van deze variabelen groep (bijvoorbeeld `$(DATABRICKS_URL)` en `$(DATABRICKS_TOKEN)` ). Het idee is dat de volgende fase (bijvoorbeeld `Deploy_to_UAT` ) werkt met dezelfde namen van variabelen die zijn gedefinieerd in de eigen variabelen groep bedoeld.
 
 ### <a name="deploy-an-azure-data-factory-pipeline"></a>Een Azure Data Factory-pijp lijn implementeren
 
-Een implementeerbaar artefact voor Azure Data Factory is een Azure Resource Manager sjabloon. Het wordt geïmplementeerd met de implementatie taak van de ***Azure-resource groep*** , zoals wordt gedemonstreerd in het volgende code fragment:
+Een implementeerbaar artefact voor Azure Data Factory is een Azure Resource Manager sjabloon. Het wordt geïmplementeerd met de * **Azure-resource groep implementatie** _ taak, zoals wordt getoond in het volgende code fragment:
 
 ```yaml
   - deployment: "Deploy_to_ADF"
@@ -286,7 +285,7 @@ Een implementeerbaar artefact voor Azure Data Factory is een Azure Resource Mana
                 csmParametersFile: '$(Pipeline.Workspace)/adf-pipelines/ARMTemplateParametersForFactory.json'
                 overrideParameters: -data-ingestion-pipeline_properties_variables_data_file_name_defaultValue "$(DATA_FILE_NAME)"
 ```
-De waarde van de para meter data filename is afkomstig van de variabele die is `$(DATA_FILE_NAME)` gedefinieerd in een QA-fase variabelen groep. Op dezelfde manier kunnen alle para meters die zijn gedefinieerd in ***ARMTemplateForFactory.jsop*** worden overschreven. Als dat niet het geval is, worden de standaard waarden gebruikt.
+De waarde van de para meter data filename is afkomstig van de variabele die is `$(DATA_FILE_NAME)` gedefinieerd in een QA-fase variabelen groep. Op dezelfde manier kunnen alle para meters die zijn gedefinieerd in _*_ARMTemplateForFactory.jsop_*_ worden overschreven. Als dat niet het geval is, worden de standaard waarden gebruikt.
 
 ### <a name="run-the-pipeline-and-check-the-data-ingestion-result"></a>De pijp lijn uitvoeren en het resultaat van de gegevens opname controleren
 
@@ -335,15 +334,14 @@ De laatste taak in de taak controleert het resultaat van de uitvoering van de no
 
 ## <a name="putting-pieces-together"></a>Delen samen brengen
 
-De volledige CI/CD Azure-pijp lijn bestaat uit de volgende fasen:
-* CI
+De volledige CI/CD Azure-pijp lijn bestaat uit de volgende fasen: _ CI
 * Implementeren naar QA
     * Implementeren naar Databricks + implementeren naar ADF
     * Integratie test
 
-Het bevat een aantal ***implementatie*** fasen die gelijk zijn aan het aantal doel omgevingen dat u hebt. Elke ***implementatie*** fase bevat twee [implementaties](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) die parallel worden uitgevoerd en een [taak](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) die wordt uitgevoerd na implementaties om de oplossing in de omgeving te testen.
+Het bevat een aantal * **Implementeer** _-fasen die gelijk zijn aan het aantal doel omgevingen dat u hebt. Elke _*_implementatie_*_ fase bevat twee [implementaties](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) die parallel worden uitgevoerd en een [taak](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) die wordt uitgevoerd na implementaties om de oplossing in de omgeving te testen.
 
-Een voorbeeld implementatie van de pijp lijn wordt geassembleerd in het volgende ***yaml*** -fragment:
+Een voorbeeld implementatie van de pijp lijn wordt geassembleerd in het volgende _*_yaml_*_ -fragment:
 
 ```yaml
 variables:
@@ -378,7 +376,7 @@ stages:
     - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
-        testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
+        testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
         testRunTitle: 'Linting & Unit tests'
         failTaskOnFailedTests: true
     displayName: 'Publish linting and unit test results'    
@@ -480,6 +478,6 @@ stages:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Broncodebeheer in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/source-control)
-* [Continue integratie en levering in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)
+* [Broncodebeheer in Azure Data Factory](../data-factory/source-control.md)
+* [Continue integratie en levering in Azure Data Factory](../data-factory/continuous-integration-deployment.md)
 * [DevOps voor Azure Databricks](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

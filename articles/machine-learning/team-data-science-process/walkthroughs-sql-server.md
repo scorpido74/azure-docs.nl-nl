@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8789050257b8bc67649233760baefe7e2ee9adf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864091"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320147"
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>SQL Server Data Science-instructies met R, python en T-SQL
 
@@ -32,21 +32,21 @@ In het scenario [SQL Server gebruiken kunt](sql-walkthrough.md) u zien hoe u mac
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Gebruik micro soft R met SQL Server om de taxi tips te voors pellen 
 
-In het [SQL Server R Servicess](https://msdn.microsoft.com/library/mt612857.aspx) scenario voor gebruik ziet u hoe u een R-model bouwt en implementeert voor SQL Server. De walkthrough is ontworpen om R-ontwikkel aars te introduceren voor R-Services (in-data base).
+In het [SQL Server R Servicess](/sql/machine-learning/tutorials/walkthrough-data-science-end-to-end-walkthrough) scenario voor gebruik ziet u hoe u een R-model bouwt en implementeert voor SQL Server. De walkthrough is ontworpen om R-ontwikkel aars te introduceren voor R-Services (in-data base).
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>Voors pellen van de taxi tips met R van T-SQL of opgeslagen procedures met SQL Server
 
-De [Data Science-overzicht voor R en SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) biedt SQL-programmeurs ervaring met het bouwen van een geavanceerde analyse oplossing met Transact-SQL met behulp van SQL Server R Services om een R-oplossing te operationeel maken. 
+De [Data Science-overzicht voor R en SQL Server](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) biedt SQL-programmeurs ervaring met het bouwen van een geavanceerde analyse oplossing met Transact-SQL met behulp van SQL Server R Services om een R-oplossing te operationeel maken. 
 
 
 ## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>Bevoors pellen van de taxi tips met python in SQL Server opgeslagen procedures
 
-Het overzicht van het [gebruik van T-SQL met SQL Server python-Services](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) biedt SQL-programmeurs ervaring met het bouwen van een machine learning oplossing in SQL Server. Hierin wordt beschreven hoe u python in een toepassing opneemt door python-code aan opgeslagen procedures toe te voegen.
+Het overzicht van het [gebruik van T-SQL met SQL Server python-Services](/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) biedt SQL-programmeurs ervaring met het bouwen van een machine learning oplossing in SQL Server. Hierin wordt beschreven hoe u python in een toepassing opneemt door python-code aan opgeslagen procedures toe te voegen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [overzicht van team data Science process](overview.md)voor een bespreking van de belangrijkste onderdelen die het team data Science proces vormen.
 
-Zie voor een bespreking van de team data Science proces levenscyclus dat u kunt gebruiken om uw data Science-projecten te structureren, de [team data Science process Lifecycle](lifecycle.md). De levens cyclus geeft een overzicht van de stappen, van begin tot eind, die projecten meestal volgen wanneer ze worden uitgevoerd. 
+Zie voor een bespreking van de team data Science proces levenscyclus dat u kunt gebruiken om uw data Science-projecten te structureren, de [team data Science process Lifecycle](lifecycle.md). De levens cyclus geeft een overzicht van de stappen, van begin tot eind, die projecten meestal volgen wanneer ze worden uitgevoerd.

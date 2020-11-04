@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c024b12210d408fe2a9987cba56a08e4b660ae1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027542"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321346"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Met Spark verkennen en modelleren van geavanceerde gegevens
 
-In deze walkthrough wordt gebruikgemaakt van HDInsight Spark om gegevens te verkennen en binaire classificatie en regressie modellen te trainen met behulp van kruis validatie en afstemming-optimalisatie op basis van een voor beeld van de NYC taxi en ritbedrag 2013-gegevensset. U wordt begeleid bij de stappen van het [Data Science proces](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end-to-end, met behulp van een HDInsight Spark-cluster voor verwerking en Azure-blobs voor het opslaan van de gegevens en de modellen. Met het proces worden gegevens van een Azure Storage Blob verkend en gevisualiseerd. vervolgens worden de gegevens voor het ontwikkelen van voorspellende modellen voor bereid. Python is gebruikt om de oplossing te coderen en om de relevante waarnemings punten weer te geven. Deze modellen worden gebouwd met behulp van de Spark MLlib Toolkit om binaire classificatie en regressie model taken uit te voeren. 
+In deze walkthrough wordt gebruikgemaakt van HDInsight Spark om gegevens te verkennen en binaire classificatie en regressie modellen te trainen met behulp van kruis validatie en afstemming-optimalisatie op basis van een voor beeld van de NYC taxi en ritbedrag 2013-gegevensset. U wordt begeleid bij de stappen van het [Data Science proces](./index.yml), end-to-end, met behulp van een HDInsight Spark-cluster voor verwerking en Azure-blobs voor het opslaan van de gegevens en de modellen. Met het proces worden gegevens van een Azure Storage Blob verkend en gevisualiseerd. vervolgens worden de gegevens voor het ontwikkelen van voorspellende modellen voor bereid. Python is gebruikt om de oplossing te coderen en om de relevante waarnemings punten weer te geven. Deze modellen worden gebouwd met behulp van de Spark MLlib Toolkit om binaire classificatie en regressie model taken uit te voeren. 
 
 * De **binaire classificatie** taak is om te voors pellen of een tip voor de reis wordt betaald. 
 * De **regressie** taak is om de hoeveelheid fooien te voors pellen op basis van andere tip-functies. 
@@ -254,7 +254,7 @@ plt.show()
 
 ![Frequentie van de trips op het aantal reizigers](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-U kunt kiezen uit verschillende soorten visualisaties (tabel, cirkel, lijn, vlak of staaf) met behulp van de **Type**-knoppen in het notebook. Hier ziet u een staafdiagram.
+U kunt kiezen uit verschillende soorten visualisaties (tabel, cirkel, lijn, vlak of staaf) met behulp van de **Type** -knoppen in het notebook. Hier ziet u een staafdiagram.
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Een histogram plotten van fooien en hoe fooien verschillen per aantal passagiers en ritbedragen
 Een SQL-query gebruiken om gegevens te bemonsteren...
@@ -764,7 +764,7 @@ Benodigde tijd voor het uitvoeren van de cel: 2,67 seconden
 
 **De ROC-curve plotten**
 
-*predictionAndLabelsDF* wordt geregistreerd als een tabel, *tmp_results*, in de vorige cel. *tmp_results* kan worden gebruikt om query's uit te voeren en resultaten uit te voeren in het dataframe sqlResults voor plotten. Dit is de code.
+*predictionAndLabelsDF* wordt geregistreerd als een tabel, *tmp_results* , in de vorige cel. *tmp_results* kan worden gebruikt om query's uit te voeren en resultaten uit te voeren in het dataframe sqlResults voor plotten. Dit is de code.
 
 ```python
 # QUERY RESULTS                              
@@ -895,7 +895,7 @@ Benodigde tijd voor het uitvoeren van de cel: 107,98 seconden
 
 **De ROC-curve plotten**
 
-*predictionAndLabelsDF* wordt geregistreerd als een tabel, *tmp_results*, in de vorige cel. *tmp_results* kan worden gebruikt om query's uit te voeren en resultaten uit te voeren in het dataframe sqlResults voor plotten. Dit is de code.
+*predictionAndLabelsDF* wordt geregistreerd als een tabel, *tmp_results* , in de vorige cel. *tmp_results* kan worden gebruikt om query's uit te voeren en resultaten uit te voeren in het dataframe sqlResults voor plotten. Dit is de code.
 
 ```python
 # QUERY RESULTS
@@ -1508,4 +1508,3 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 U hebt nu regressie- en classificatiemodellen gemaakt met de Spark MlLib en bent dus klaar om te leren hoe u deze modellen kunt beoordelen en evalueren.
 
 **Modelverbruik:** Voor meer informatie over het beoordelen en evalueren van de classificatie- en regressiemodellen die in dit onderwerp zijn gemaakt, raadpleegt u [Operationalize Spark-built machine learning models](spark-model-consumption.md) (In Spark gebouwde machine learning-modellen operationeel maken).
-

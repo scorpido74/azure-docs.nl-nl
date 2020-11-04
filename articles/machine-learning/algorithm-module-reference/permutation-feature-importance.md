@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bddd9a6825899f646a86ae274c539b54156667c5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905272"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319408"
 ---
 # <a name="permutation-feature-importance"></a>Belang van permutatiefunctie
 
@@ -24,7 +24,7 @@ In deze module worden functie waarden wille keurig in de andere volg orde, één
 
 De scores die de module retourneert, vertegenwoordigen de *wijziging* van de prestaties van een getraind model, na permutatie. Belang rijke functies zijn doorgaans gevoeliger voor het proces waarin de procedure wordt uitgevoerd, zodat ze resulteren in hogere urgentie scores. 
 
-Dit artikel bevat een overzicht van de permutatie functie, de theoretische basis en de bijbehorende toepassingen in machine learning: het belang van de [permutatie functie](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
+Dit artikel bevat een overzicht van de permutatie functie, de theoretische basis en de bijbehorende toepassingen in machine learning: het belang van de [permutatie functie](/archive/blogs/machinelearning/permutation-feature-importance).  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>Het belang van de permutatie-functie gebruiken
 
@@ -36,11 +36,11 @@ Als u een set functie scores wilt genereren, moet u een al getraind model en een
 
 3.  Verbind een gegevensset aan de rechter invoer. Kies bij voor keur een ander type dan de gegevensset die u hebt gebruikt voor het trainen van het model. Deze gegevensset wordt gebruikt voor het scoren op basis van het getrainde model. Het wordt ook gebruikt voor het evalueren van het model nadat de waarden van de onderdelen zijn gewijzigd.  
 
-4.  Voer voor **wille keurig zaad**een waarde in die moet worden gebruikt als seed voor wille keurige invoer. Als u 0 (de standaard waarde) opgeeft, wordt er een nummer gegenereerd op basis van de systeem klok.
+4.  Voer voor **wille keurig zaad** een waarde in die moet worden gebruikt als seed voor wille keurige invoer. Als u 0 (de standaard waarde) opgeeft, wordt er een nummer gegenereerd op basis van de systeem klok.
 
      Een Seed-waarde is optioneel, maar u moet een waarde opgeven als u de reproduceer baarheid van dezelfde pijp lijn wilt uitvoeren.  
 
-5.  Selecteer voor **metrische gegevens voor het meten van de prestaties**één metrische waarde voor het gebruik van de model kwaliteit na permutatie.  
+5.  Selecteer voor **metrische gegevens voor het meten van de prestaties** één metrische waarde voor het gebruik van de model kwaliteit na permutatie.  
 
      Azure Machine Learning Designer ondersteunt de volgende metrische gegevens, afhankelijk van of u een classificatie of regressie model wilt evalueren:  
 
@@ -69,4 +69,4 @@ De reden voor het verschil is dat het belang van permutatie functies de koppelin
   
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

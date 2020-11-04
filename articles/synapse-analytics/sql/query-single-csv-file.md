@@ -1,6 +1,6 @@
 ---
-title: Een query uitvoeren op CSV-bestanden met behulp van SQL op aanvraag (preview)
-description: In dit artikel leert u hoe u met behulp van SQL on-demand (preview) een query kunt uitvoeren op enkelvoudige CSV-bestanden met verschillende bestands indelingen.
+title: CSV-bestanden doorzoeken met serverloze SQL-groep (preview-versie)
+description: In dit artikel leert u hoe u met een serverloze SQL-groep (preview) een query kunt uitvoeren op enkelvoudige CSV-bestanden met verschillende bestands indelingen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288287"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321459"
 ---
 # <a name="query-csv-files"></a>Query uitvoeren op CSV-bestanden
 
-In dit artikel leert u hoe u een query kunt uitvoeren op één CSV-bestand met behulp van SQL on-demand (preview) in azure Synapse Analytics. CSV-bestanden hebben mogelijk verschillende indelingen: 
+In dit artikel leert u hoe u een query kunt uitvoeren op één CSV-bestand met serverloze SQL-groep (preview) in azure Synapse Analytics. CSV-bestanden hebben mogelijk verschillende indelingen: 
 
 - Met en zonder een veldnamenrij
 - Door komma's en tabs gescheiden waarden

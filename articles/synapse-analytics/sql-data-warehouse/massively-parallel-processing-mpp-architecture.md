@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cb49fc33567b13065351a28a557232212c6adc4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479337"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319659"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architectuur van Azure Synapse Analytics (voorheen SQL DW)
 
@@ -25,8 +25,8 @@ Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big 
 
 - Synapse SQL: op T-SQL gebaseerde analyses volt ooien
 
-  - SQL-groep (betalen per DWU ingericht): algemeen beschikbaar
-  - SQL on-demand (betalen per TB verwerkte) – (preview-versie)
+  - Toegewezen SQL-groep (betalen per DWU ingericht): algemeen beschikbaar
+  - Serverloze SQL-groep (betalen per TB verwerkte) – (preview-versie)
 - Spark: diep geïntegreerde Apache Spark (preview-versie)
 - Gegevens integratie: hybride gegevens integratie (preview-versie)
 - Studio: uniforme gebruikers ervaring.  (Preview)
@@ -35,7 +35,7 @@ Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big 
 
 ## <a name="synapse-sql-architecture-components"></a>Synapse SQL-architectuur onderdelen
 
-[Synapse SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) maakt gebruik van een scale-out architectuur voor het distribueren van reken kundige verwerking van gegevens over meerdere knoop punten. De schaal eenheid is een abstractie van reken kracht die wordt aangeduid als [Data Warehouse-eenheid](what-is-a-data-warehouse-unit-dwu-cdwu.md). Compute staat los van de opslag, waarmee u de reken kracht onafhankelijk van de gegevens in uw systeem kunt schalen.
+[Synapse SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) maakt gebruik van een scale-out architectuur voor het distribueren van reken kundige verwerking van gegevens over meerdere knoop punten. De schaal eenheid is een abstractie van reken kracht die wordt aangeduid als [Data Warehouse-eenheid](what-is-a-data-warehouse-unit-dwu-cdwu.md). Compute staat los van de opslag, waarmee u de reken kracht onafhankelijk van de gegevens in uw systeem kunt schalen.
 
 ![Synapse SQL-architectuur](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 

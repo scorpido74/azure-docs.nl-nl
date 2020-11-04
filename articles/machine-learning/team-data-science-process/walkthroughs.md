@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76027275d6f0b838ed6fbb7275086f190701d286
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a1af48d89fbf5d303c2a6b8ef85ca3117debd5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439824"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320079"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Stapsgewijze instructies voor het uitvoeren van het team data Science process
 
@@ -42,5 +42,4 @@ Zie [overzicht van team data Science process](overview.md)voor een bespreking va
 
 Zie voor een bespreking van de team data Science proces levenscyclus de [team data Science process Lifecycle](lifecycle.md). Deze levens cyclus bevat een overzicht van de stappen, van begin tot eind, die projecten meestal volgen wanneer ze worden uitgevoerd. 
 
-Zie [Data Science process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)(Engelstalig) voor een overzicht. 
-
+Zie [Data Science process](./index.yml)(Engelstalig) voor een overzicht.

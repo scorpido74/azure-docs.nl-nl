@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: afbc16f0fb30c1ada22b668771525288602cda44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d589d6c3394556499daf033c4c1d528a214b0e3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296634"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319301"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scenario's voor geavanceerde analyses in Azure Machine Learning
 In dit artikel vindt u een overzicht van de verschillende voorbeeld gegevens bronnen en doel scenario's die kunnen worden verwerkt door het [team data Science process (TDSP)](overview.md). De TDSP biedt een systematische aanpak voor teams om samen te werken aan het bouwen van intelligente toepassingen. De scenario's die hier worden weer gegeven, illustreren de beschik bare opties in de werk stroom voor gegevens verwerking die afhankelijk is van de gegevens kenmerken, bron locaties en doel opslagplaatsen in Azure.
@@ -252,4 +252,4 @@ Zie voor end-to-end Azure Machine Learning-scenario's die gebruikmaken van het g
 
 
 <!-- Module References -->
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

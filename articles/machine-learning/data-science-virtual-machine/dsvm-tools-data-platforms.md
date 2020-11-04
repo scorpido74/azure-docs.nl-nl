@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f432b417140440584bf4dfd01ed45814a746953
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440351"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320916"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Gegevens platforms die worden ondersteund op de Data Science Virtual Machine
 
@@ -103,5 +103,4 @@ Bibliotheken om toegang te krijgen tot gegevens van Azure Blob-opslag of Azure D
 
 Voor de Spark-instantie in de DSVM om toegang te krijgen tot gegevens die zijn opgeslagen in Blob Storage of Azure Data Lake Storage, moet u het bestand maken en configureren op `core-site.xml` basis van de sjabloon die is gevonden in $SPARK _HOME/conf/core-site.xml. Temp late. U moet ook de juiste referenties hebben voor toegang tot de Blob-opslag en de Azure Data Lake Storage. (Houd er rekening mee dat de sjabloon bestanden tijdelijke aanduidingen gebruiken voor Blob Storage en Azure Data Lake Storage configuraties.)
 
-Zie [verificatie met Azure data Lake Storage gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)voor meer gedetailleerde informatie over het maken van Azure data Lake Storage-service referenties. Nadat de referenties voor Blob Storage of Azure Data Lake Storage in het core-site.xml bestand zijn ingevoerd, kunt u verwijzen naar de gegevens die in deze bronnen zijn opgeslagen via het URI-voor voegsel van wasb://of adl://.
-
+Zie [verificatie met Azure data Lake Storage gen1](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)voor meer gedetailleerde informatie over het maken van Azure data Lake Storage-service referenties. Nadat de referenties voor Blob Storage of Azure Data Lake Storage in het core-site.xml bestand zijn ingevoerd, kunt u verwijzen naar de gegevens die in deze bronnen zijn opgeslagen via het URI-voor voegsel van wasb://of adl://.

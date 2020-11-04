@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 229bcbb8c8c429b7fe4e5878b0e57e74dd828b72
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756548"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320662"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>Parametrisatie in automatische machine learning
+# <a name="featurization-in-automated-machine-learning"></a>Featurization in geautomatiseerde machine learning
 
 
 
@@ -27,7 +27,7 @@ In deze hand leiding leert u het volgende:
 - Welke parametrisatie-instellingen Azure Machine Learning Voorst Ellen.
 - Hoe u deze functies kunt aanpassen voor uw [geautomatiseerde machine learning experimenten](concept-automated-ml.md).
 
-*Functie techniek* is het proces van het gebruik van domein kennis van de gegevens voor het maken van functies die machine learning (ml) algoritmen voor meer informatie. In Azure Machine Learning worden technieken voor het schalen van gegevens en normalisatie toegepast om functie techniek gemakkelijker te maken. Deze technieken en deze functie techniek worden gezamenlijk *parametrisatie* genoemd in geautomatiseerde machine learning, of *AutoML*, experimenten.
+*Functie techniek* is het proces van het gebruik van domein kennis van de gegevens voor het maken van functies die machine learning (ml) algoritmen voor meer informatie. In Azure Machine Learning worden technieken voor het schalen van gegevens en normalisatie toegepast om functie techniek gemakkelijker te maken. Deze technieken en deze functie techniek worden gezamenlijk *parametrisatie* genoemd in geautomatiseerde machine learning, of *AutoML* , experimenten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,7 +38,7 @@ In dit artikel wordt ervan uitgegaan dat u al weet hoe u een AutoML-experiment k
 
 ## <a name="configure-featurization"></a>Parametrisatie configureren
 
-In elk automatisch machine learning experiment worden standaard [technieken voor automatisch schalen en normaliseren](#featurization) toegepast op uw gegevens. Deze technieken zijn soorten parametrisatie die *bepaalde* algoritmen helpen die gevoelig zijn voor functies op verschillende schalen. U kunt echter ook extra parametrisatie inschakelen, zoals gegevens over *ontbrekende waarden*, *code ring*en *trans formaties*.
+In elk automatisch machine learning experiment worden standaard [technieken voor automatisch schalen en normaliseren](#featurization) toegepast op uw gegevens. Deze technieken zijn soorten parametrisatie die *bepaalde* algoritmen helpen die gevoelig zijn voor functies op verschillende schalen. U kunt echter ook extra parametrisatie inschakelen, zoals gegevens over *ontbrekende waarden* , *code ring* en *trans formaties*.
 
 > [!NOTE]
 > Stappen voor automatische machine learning parametrisatie (zoals functie normalisatie, het verwerken van ontbrekende gegevens of het converteren van tekst naar numerieke) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde parametrisatie-stappen die tijdens de training worden toegepast, automatisch toegepast op de invoer gegevens.
@@ -64,11 +64,11 @@ De volgende tabel bevat een overzicht van de technieken die automatisch worden t
 
 |Parametrisatie- &nbsp; stappen| Beschrijving |
 | ------------- | ------------- |
-|**Hoge kardinaliteit of geen variantie-functies verwijderen*** |Verwijder deze functies uit de trainings-en validatie sets. Is van toepassing op functies waarbij alle waarden ontbreken, met dezelfde waarde in alle rijen of met een hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
-|**Ontbrekende waarden toegerekend*** |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
-|**Aanvullende functies genereren*** |Voor DateTime-functies: jaar, maand, dag, dag van de week, dag van jaar, kwar taal, week van het jaar, uur, minuut, seconde.<br><br> *Voor prognose taken* worden de volgende extra datetime-functies gemaakt: ISO-jaar, half-halfjaar, kalender maand als teken reeks, week, dag van de week, teken reeks, dag van kwar taal, dag van jaar, am/pm (0 als het uur vóór 12:00 uur (12 uur), 1 anders), am/pm als teken reeks, uur van dag (12 uur)<br/><br/>Voor tekst functies: term frequentie op basis van unigrams, bigrams en trigrams. Meer informatie over [hoe dit wordt gedaan met Bert.](#bert-integration)|
-|**Transformeren en coderen***|Numerieke functies met weinig unieke waarden transformeren in categorische-functies.<br/><br/>Code ring met één Hot-categorische wordt gebruikt voor functies met weinig kardinaliteit. Een hot-hash-code ring wordt gebruikt voor categorische-functies met een hoge kardinaliteit.|
-|**Woord insluitingen**|Met een tekst-featurizer worden vectoren van tekst tokens geconverteerd naar zinnen vectoren met behulp van een vooraf getraind model. De insluitings vector van elk woord in een document wordt samengevoegd met de rest om een document functie Vector te maken.|
+|**Hoge kardinaliteit of geen variantie-functies verwijderen** _ |Verwijder deze functies uit de trainings-en validatie sets. Is van toepassing op functies waarbij alle waarden ontbreken, met dezelfde waarde in alle rijen of met een hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
+|_*Ontbrekende waarden toegerekend**_ |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
+|_*Aanvullende functies genereren**_ |Voor DateTime-functies: jaar, maand, dag, dag van de week, dag van jaar, kwar taal, week van het jaar, uur, minuut, seconde.<br><br> _For prognose taken, * deze extra DateTime-functies worden gemaakt: ISO-jaar, half-halfjaar, kalender maand als teken reeks, week, dag van de week als teken reeks, dag van kwar taal, dag van jaar, AM/PM (0 als uur vóór 12:00 uur (12 uur), 1 anders), AM/PM als teken reeks, uur van dag (12 uur)<br/><br/>Voor tekst functies: term frequentie op basis van unigrams, bigrams en trigrams. Meer informatie over [hoe dit wordt gedaan met Bert.](#bert-integration)|
+|**Transformeren en versleutelen** _|Numerieke functies met weinig unieke waarden transformeren in categorische-functies.<br/><br/>Code ring met één Hot-categorische wordt gebruikt voor functies met weinig kardinaliteit. Een hot-hash-code ring wordt gebruikt voor categorische-functies met een hoge kardinaliteit.|
+|_ *Woord insluitingen**|Met een tekst-featurizer worden vectoren van tekst tokens geconverteerd naar zinnen vectoren met behulp van een vooraf getraind model. De insluitings vector van elk woord in een document wordt samengevoegd met de rest om een document functie Vector te maken.|
 |**Doel codering**|Voor categorische-functies wordt met deze stap elke categorie toegewezen aan een gemiddelde doel waarde voor regressie problemen en aan de klasse-kans voor elke klasse voor classificatie problemen. Op frequentie gebaseerde weging en kruis validatie met k-vouwen worden toegepast om het overschrijden van de toewijzing en lawaai door sparse gegevens categorieën te verminderen.|
 |**Coderen van tekst doel**|Voor tekst invoer wordt een gestapeld lineair model met Bag-of-woorden gebruikt om de kans van elke klasse te genereren.|
 |**Gewicht van bewijs (WoE)**|Hiermee wordt WoE berekend als een maat eenheid van de correlatie tussen categorische-kolommen en de doel kolom. WoE wordt berekend als het logboek van de ratio van in-class versus out-of-the-Class-kansen. Met deze stap wordt één numerieke functie kolom per klasse gegenereerd en wordt de nood zaak om ontbrekende waarden en uitschieter-behandeling expliciet te verduidelijkt.|
@@ -80,8 +80,8 @@ De volgende tabel bevat een overzicht van de technieken die automatisch worden t
 
 De gegevens Guardrails worden toegepast:
 
-- **Voor SDK-experimenten**: wanneer de para meters `"featurization": 'auto'` of `validation=auto` in uw object zijn opgegeven `AutoMLConfig` .
-- **Voor Studio experimenten**: wanneer automatische parametrisatie is ingeschakeld.
+- **Voor SDK-experimenten** : wanneer de para meters `"featurization": 'auto'` of `validation=auto` in uw object zijn opgegeven `AutoMLConfig` .
+- **Voor Studio experimenten** : wanneer automatische parametrisatie is ingeschakeld.
 
 U kunt de gegevens Guardrails voor uw experiment bekijken:
 
@@ -105,22 +105,22 @@ In de volgende tabel worden de gegevens Guardrails beschreven die momenteel word
 
 Guardrail|Status|Voor waarde &nbsp; voor &nbsp; trigger
 ---|---|---
-**Ontbrekende functie waarden toerekening** |Buffer <br><br><br> Gereed| Er zijn geen ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens. Meer informatie over de toerekening van [ontbrekende waarden.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn ontbrekende functie waarden gedetecteerd in uw trainings gegevens en deze zijn toegerekend.
+**Ontbrekende functie waarden toerekening** |Buffer <br><br><br> Gereed| Er zijn geen ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens. Meer informatie over de toerekening van [ontbrekende waarden.](./how-to-use-automated-ml-for-ml-models.md#customize-featurization) <br><br> Er zijn ontbrekende functie waarden gedetecteerd in uw trainings gegevens en deze zijn toegerekend.
 **Functie verwerking met hoge kardinaliteit** |Buffer <br><br><br> Gereed| Uw invoer is geanalyseerd en er zijn geen functies met een hoge kardinaliteit gedetecteerd. <br><br> Er zijn functies met een hoge kardinaliteit gedetecteerd in uw invoer en zijn afgehandeld.
-**Verwerking van splitsing van validatie** |Gereed| De validatie configuratie is ingesteld op `'auto'` en de trainings gegevens bevatten *minder dan 20.000 rijen*. <br> Elke iteratie van het getrainde model is gevalideerd door Kruis validatie te gebruiken. Meer informatie over [validatie gegevens](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data). <br><br> De validatie configuratie is ingesteld op `'auto'` en de trainings gegevens bevatten *meer dan 20.000 rijen*. <br> De invoer gegevens zijn gesplitst in een trainings gegevensset en een validatie gegevensset voor validatie van het model.
-**Detectie van klasse-verdeling** |Buffer <br><br><br><br>Gewaarschuwd <br><br><br>Gereed | Uw invoer is geanalyseerd en alle klassen zijn evenwichtig in uw trainings gegevens. Een gegevensset wordt beschouwd als evenwichtig als elke klasse een goede representatie heeft in de gegevensset, gemeten op basis van het aantal en de verhouding van steek proeven. <br><br> Er zijn niet-sluitende klassen gedetecteerd in uw invoer. Los het probleem met de oplossing op om model afwijking te herstellen. Meer informatie over [gegevens](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)die niet in balans zijn.<br><br> Er zijn niet-sluitende klassen gedetecteerd in uw invoer en de logica voor het opruimen van de gegevens is bepaald voor het Toep assen van Balancing.
-**Detectie van geheugen problemen** |Buffer <br><br><br><br> Gereed |<br> De geselecteerde waarden (horizon, vertraging, doorlopend venster) zijn geanalyseerd en er zijn geen mogelijke problemen met de geheugen detectie gedetecteerd. Meer informatie over [prognose configuraties](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)voor time series. <br><br><br>De geselecteerde waarden (horizon, vertraging, doorlopend venster) zijn geanalyseerd en kunnen ervoor zorgen dat het experiment te weinig geheugen heeft. De vertragings-of venster configuraties zijn uitgeschakeld.
-**Frequentie detectie** |Buffer <br><br><br><br> Gereed |<br> De tijd reeks is geanalyseerd en alle gegevens punten zijn afgestemd op de gedetecteerde frequentie. <br> <br> De tijd reeks is geanalyseerd en gegevens punten die niet zijn uitgelijnd met de gedetecteerde frequentie, zijn gedetecteerd. Deze gegevens punten zijn verwijderd uit de gegevensset. Meer informatie over het [voorbereiden van gegevens voor time series-prognoses](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data).
+**Verwerking van splitsing van validatie** |Gereed| De validatie configuratie is ingesteld op `'auto'` en de trainings gegevens bevatten *minder dan 20.000 rijen*. <br> Elke iteratie van het getrainde model is gevalideerd door Kruis validatie te gebruiken. Meer informatie over [validatie gegevens](./how-to-configure-auto-train.md#training-validation-and-test-data). <br><br> De validatie configuratie is ingesteld op `'auto'` en de trainings gegevens bevatten *meer dan 20.000 rijen*. <br> De invoer gegevens zijn gesplitst in een trainings gegevensset en een validatie gegevensset voor validatie van het model.
+**Detectie van klasse-verdeling** |Buffer <br><br><br><br>Gewaarschuwd <br><br><br>Gereed | Uw invoer is geanalyseerd en alle klassen zijn evenwichtig in uw trainings gegevens. Een gegevensset wordt beschouwd als evenwichtig als elke klasse een goede representatie heeft in de gegevensset, gemeten op basis van het aantal en de verhouding van steek proeven. <br><br> Er zijn niet-sluitende klassen gedetecteerd in uw invoer. Los het probleem met de oplossing op om model afwijking te herstellen. Meer informatie over [gegevens](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data)die niet in balans zijn.<br><br> Er zijn niet-sluitende klassen gedetecteerd in uw invoer en de logica voor het opruimen van de gegevens is bepaald voor het Toep assen van Balancing.
+**Detectie van geheugen problemen** |Buffer <br><br><br><br> Gereed |<br> De geselecteerde waarden (horizon, vertraging, doorlopend venster) zijn geanalyseerd en er zijn geen mogelijke problemen met de geheugen detectie gedetecteerd. Meer informatie over [prognose configuraties](./how-to-auto-train-forecast.md#configuration-settings)voor time series. <br><br><br>De geselecteerde waarden (horizon, vertraging, doorlopend venster) zijn geanalyseerd en kunnen ervoor zorgen dat het experiment te weinig geheugen heeft. De vertragings-of venster configuraties zijn uitgeschakeld.
+**Frequentie detectie** |Buffer <br><br><br><br> Gereed |<br> De tijd reeks is geanalyseerd en alle gegevens punten zijn afgestemd op de gedetecteerde frequentie. <br> <br> De tijd reeks is geanalyseerd en gegevens punten die niet zijn uitgelijnd met de gedetecteerde frequentie, zijn gedetecteerd. Deze gegevens punten zijn verwijderd uit de gegevensset. Meer informatie over het [voorbereiden van gegevens voor time series-prognoses](./how-to-auto-train-forecast.md#preparing-data).
 
 ## <a name="customize-featurization"></a>Parametrisatie aanpassen
 
 U kunt uw parametrisatie-instellingen aanpassen om ervoor te zorgen dat de gegevens en functies die worden gebruikt om uw ML-model te trainen, in relevante voor spellingen resulteren.
 
-Geef in uw object op om featurizations aan te passen  `"featurization": FeaturizationConfig` `AutoMLConfig` . Als u de Azure Machine Learning Studio gebruikt voor uw experiment, raadpleegt u het [artikel](how-to-use-automated-ml-for-ml-models.md#customize-featurization). Als u parametrisatie voor prognoses taak typen wilt aanpassen, raadpleegt u de voor [spellingen](how-to-auto-train-forecast.md#customize-featurization).
+Geef in uw object op om featurizations aan te passen `"featurization": FeaturizationConfig` `AutoMLConfig` . Als u de Azure Machine Learning Studio gebruikt voor uw experiment, raadpleegt u het [artikel](how-to-use-automated-ml-for-ml-models.md#customize-featurization). Als u parametrisatie voor prognoses taak typen wilt aanpassen, raadpleegt u de voor [spellingen](how-to-auto-train-forecast.md#customize-featurization).
 
 Ondersteunde aanpassingen zijn onder andere:
 
-|Aanpassen|Definitie|
+|Aanpassing|Definitie|
 |--|--|
 |**Update van het kolom doel**|Overschrijf het automatisch gedetecteerde functie type voor de opgegeven kolom.|
 |**Para meter bijwerken van trans formatie** |De para meters voor de opgegeven transformator bijwerken. *Biedt momenteel* ondersteuning voor toerekening (gemiddelde, meest frequente en gemiddelde) en *HashOneHotEncoder*.|
@@ -318,7 +318,7 @@ AutoML voert de volgende stappen uit voor BERT.
 
 1. **Voor verwerking en tokening van alle tekst kolommen**. De transformator ' StringCast ' kan bijvoorbeeld worden gevonden in de parametrisatie-samen vatting van het uiteindelijke model. Een voor beeld van het maken van een samen vatting van het model parametrisatie vindt u in [Dit notitie blok](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b).
 
-2. **Alle tekst kolommen samen voegen tot één tekst kolom**, dus de `StringConcatTransformer` in het laatste model. 
+2. **Alle tekst kolommen samen voegen tot één tekst kolom** , dus de `StringConcatTransformer` in het laatste model. 
 
     Onze implementatie van BERT beperkt de totale tekst lengte van een trainings voorbeeld tot 128-tokens. Dit betekent dat alle tekst kolommen bij het samen voegen de meeste 128-tokens lang moeten zijn. Als er meerdere kolommen aanwezig zijn, moet elke kolom worden verwijderd zodat aan deze voor waarde wordt voldaan. Als dat niet het geval is, wordt voor de Tokenizer laag van BERT-tokens deze invoer met 128-tokens afgekapt voor samengevoegde kolommen met een lengte >128.
 

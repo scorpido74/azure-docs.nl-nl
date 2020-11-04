@@ -11,22 +11,22 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1789f83f048a2ab0fb75aa33635e58b0850b865b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89647337"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319133"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identiteit gebruiken met uw Machine Learning-webservice in Azure Kubernetes Service
 
-In deze procedure leert u hoe u een Azure Active Directorys-id (AAD) toewijst aan uw geïmplementeerde machine learning model in de Azure Kubernetes-service. Met het [pod Identity](https://github.com/Azure/aad-pod-identity) project van Aad kunnen toepassingen veilig toegang krijgen tot Cloud bronnen met Aad met behulp van een [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) en Kubernetes primitieven. Zo kunt u uw webservices veilig toegang geven tot uw Azure-resources zonder dat u referenties hoeft in te sluiten of tokens rechtstreeks in uw script hoeft te beheren `score.py` . In dit artikel worden de stappen beschreven voor het maken en installeren van een Azure-identiteit in uw Azure Kubernetes service-cluster en het toewijzen van de identiteit aan uw geïmplementeerde webservice.
+In deze procedure leert u hoe u een Azure Active Directorys-id (AAD) toewijst aan uw geïmplementeerde machine learning model in de Azure Kubernetes-service. Met het [pod Identity](https://github.com/Azure/aad-pod-identity) project van Aad kunnen toepassingen veilig toegang krijgen tot Cloud bronnen met Aad met behulp van een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) en Kubernetes primitieven. Zo kunt u uw webservices veilig toegang geven tot uw Azure-resources zonder dat u referenties hoeft in te sluiten of tokens rechtstreeks in uw script hoeft te beheren `score.py` . In dit artikel worden de stappen beschreven voor het maken en installeren van een Azure-identiteit in uw Azure Kubernetes service-cluster en het toewijzen van de identiteit aan uw geïmplementeerde webservice.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
+- De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
 
-- Toegang tot uw AKS-cluster met behulp van de `kubectl` opdracht. Zie [verbinding maken met het cluster](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster) voor meer informatie.
+- Toegang tot uw AKS-cluster met behulp van de `kubectl` opdracht. Zie [verbinding maken met het cluster](../aks/kubernetes-walkthrough.md#connect-to-the-cluster) voor meer informatie.
 
 - Een Azure Machine Learning-webservice die is geïmplementeerd in uw AKS-cluster.
 
@@ -48,7 +48,7 @@ In deze procedure leert u hoe u een Azure Active Directorys-id (AAD) toewijst aa
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
         ```
     
-    * Als op uw AKS-cluster **geen RBAC is ingeschakeld**, gebruikt u de volgende opdracht:
+    * Als op uw AKS-cluster **geen RBAC is ingeschakeld** , gebruikt u de volgende opdracht:
     
         ```azurecli-interactive
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
@@ -126,7 +126,7 @@ Zodra het meren onderdeel actief is, kunnen de webservices voor deze implementat
 
 ## <a name="assign-the-appropriate-roles-to-your-azure-identity"></a>De juiste rollen toewijzen aan uw Azure-identiteit
 
-[Wijs uw door Azure beheerde identiteit toe met de juiste rollen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) om toegang te krijgen tot andere Azure-resources. Zorg ervoor dat de rollen die u toewijst de juiste **gegevens acties**hebben. De rol van de [gegevens lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) van de opslag-BLOB heeft bijvoorbeeld lees machtigingen voor uw opslag-BLOB terwijl de rol van algemene [lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) niet mogelijk is.
+[Wijs uw door Azure beheerde identiteit toe met de juiste rollen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) om toegang te krijgen tot andere Azure-resources. Zorg ervoor dat de rollen die u toewijst de juiste **gegevens acties** hebben. De rol van de [gegevens lezer](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) van de opslag-BLOB heeft bijvoorbeeld lees machtigingen voor uw opslag-BLOB terwijl de rol van algemene [lezer](../role-based-access-control/built-in-roles.md#reader) niet mogelijk is.
 
 ## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>Azure Identity gebruiken met uw machine learning-webservice
 
@@ -134,7 +134,7 @@ Implementeer een model op uw AKS-cluster. Het `score.py` script kan bewerkingen 
 
 ### <a name="access-key-vault-from-your-web-service"></a>Toegang tot Key Vault via uw webservice
 
-Als u uw Azure Identity Lees toegang hebt gegeven tot een geheim in een **Key Vault**, `score.py` kunt u er toegang toe krijgen met de volgende code.
+Als u uw Azure Identity Lees toegang hebt gegeven tot een geheim in een **Key Vault** , `score.py` kunt u er toegang toe krijgen met de volgende code.
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -153,11 +153,11 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> In dit voor beeld wordt het DefaultAzureCredential gebruikt. Zie [een Key Vault toegangs beleid toewijzen met behulp van de Azure-cli](/azure/key-vault/general/assign-access-policy-cli)als u uw identiteit toegang wilt verlenen met behulp van een specifiek toegangs beleid.
+> In dit voor beeld wordt het DefaultAzureCredential gebruikt. Zie [een Key Vault toegangs beleid toewijzen met behulp van de Azure-cli](../key-vault/general/assign-access-policy-cli.md)als u uw identiteit toegang wilt verlenen met behulp van een specifiek toegangs beleid.
 
 ### <a name="access-blob-from-your-web-service"></a>Toegang tot BLOB vanuit uw webservice
 
-Als u uw Azure Identity Lees toegang hebt tot gegevens in een **opslag-BLOB**, `score.py` kunt u deze openen met de volgende code.
+Als u uw Azure Identity Lees toegang hebt tot gegevens in een **opslag-BLOB** , `score.py` kunt u deze openen met de volgende code.
 
 ```python
 from azure.identity import DefaultAzureCredential

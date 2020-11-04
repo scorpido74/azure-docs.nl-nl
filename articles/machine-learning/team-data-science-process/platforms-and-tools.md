@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439994"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320227"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformen en hulpprogram ma's voor data Science-projecten
 
@@ -92,23 +92,23 @@ Zie [Hive en HiveQL gebruiken met Hadoop in HDInsight](../../hdinsight/hadoop/hd
 
 Azure File Storage is een service die bestands shares in de Cloud aanbiedt met behulp van het standaard SMB-protocol (Server Message Block). Zowel SMB 2.1 als SMB 3.0 wordt ondersteund. Met Azure File Storage kunt u oudere toepassingen die afhankelijk zijn van bestandsshares, snel en zonder kostbare regeneraties naar Azure migreren. Toepassingen die worden uitgevoerd op virtuele machines of in cloudservices van Azure, of op on-premises clients, kunnen een bestandsshare in de cloud koppelen, op dezelfde manier zoals een bureaubladtoepassing een gewone SMB-share koppelt. Daarna kan een willekeurig aantal toepassingsonderdelen de File Storage-share tegelijkertijd koppelen en gebruiken.
 
-Vooral handig voor data Science-projecten is de mogelijkheid om een Azure-bestands archief te maken als de plaats om project gegevens te delen met uw projectteam leden. Elk daarvan heeft toegang tot dezelfde kopie van de gegevens in de Azure file storage. Ze kunnen ook deze bestands opslag gebruiken om functie sets te delen die zijn gegenereerd tijdens de uitvoering van het project. Als het project een client afspraak is, kunnen uw clients een Azure-bestands opslag maken onder hun eigen Azure-abonnement om de project gegevens en-functies met u te delen. Op deze manier heeft de client volledig beheer over de gegevensassets van het project. Zie aan de [slag met Azure file storage in Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) en [Azure File Storage gebruiken met Linux](../../storage/files/storage-how-to-use-files-linux.md)voor meer informatie over Azure file storage.
+Vooral handig voor data Science-projecten is de mogelijkheid om een Azure-bestands archief te maken als de plaats om project gegevens te delen met uw projectteam leden. Elk daarvan heeft toegang tot dezelfde kopie van de gegevens in de Azure file storage. Ze kunnen ook deze bestands opslag gebruiken om functie sets te delen die zijn gegenereerd tijdens de uitvoering van het project. Als het project een client afspraak is, kunnen uw clients een Azure-bestands opslag maken onder hun eigen Azure-abonnement om de project gegevens en-functies met u te delen. Op deze manier heeft de client volledig beheer over de gegevensassets van het project. Zie aan de [slag met Azure file storage in Windows](../../storage/files/storage-dotnet-how-to-use-files.md) en [Azure File Storage gebruiken met Linux](../../storage/files/storage-how-to-use-files-linux.md)voor meer informatie over Azure file storage.
 
 
 ## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R-en python-Services
 
 R Services (in-data base) biedt een platform voor het ontwikkelen en implementeren van intelligente toepassingen die nieuwe inzichten kunnen opsporen. U kunt de uitgebreide en krachtige taal van het R-pakket gebruiken, inclusief de vele pakketten van de R-Community, om modellen te maken en voor spellingen te genereren op basis van uw SQL Server gegevens. Omdat R Services (in-data base) de R-taal integreert met SQL Server, behouden de analyses zich dicht bij de gegevens, waardoor de kosten en beveiligings Risico's voor het verplaatsen van gegevens worden geëlimineerd.
 
-R Services (in-data base) biedt ondersteuning voor de open source R-taal met een uitgebreide set SQL Server-hulpprogram ma's en-technologieën. Ze bieden superieure prestaties, beveiliging, betrouw baarheid en beheersbaarheid. U kunt R-oplossingen implementeren met behulp van handige en vertrouwde hulpprogram ma's. Uw productie toepassingen kunnen de R runtime aanroepen en de voor spellingen en visuele elementen ophalen met behulp van Transact-SQL. U kunt ook de Schalende bibliotheken gebruiken om de schaal en prestaties van uw R-oplossingen te verbeteren. Zie [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)voor meer informatie.
+R Services (in-data base) biedt ondersteuning voor de open source R-taal met een uitgebreide set SQL Server-hulpprogram ma's en-technologieën. Ze bieden superieure prestaties, beveiliging, betrouw baarheid en beheersbaarheid. U kunt R-oplossingen implementeren met behulp van handige en vertrouwde hulpprogram ma's. Uw productie toepassingen kunnen de R runtime aanroepen en de voor spellingen en visuele elementen ophalen met behulp van Transact-SQL. U kunt ook de Schalende bibliotheken gebruiken om de schaal en prestaties van uw R-oplossingen te verbeteren. Zie [SQL Server R Services](/sql/advanced-analytics/r/sql-server-r-services)voor meer informatie.
 
-Het TDSP-team van micro soft heeft twee end-to-end-procedures gepubliceerd die laten zien hoe u oplossingen voor data technologie bouwt in SQL Server 2016 R Services: één voor R-programmeurs en één voor SQL-ontwikkel aars. Voor **R-programmeurs**raadpleegt [u end-to-end-scenario voor data](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)technologie. Zie [in-data base Advanced Analytics voor SQL-ontwikkel aars (zelf studie)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)voor **SQL-ontwikkel aars**.
+Het TDSP-team van micro soft heeft twee end-to-end-procedures gepubliceerd die laten zien hoe u oplossingen voor data technologie bouwt in SQL Server 2016 R Services: één voor R-programmeurs en één voor SQL-ontwikkel aars. Voor **R-programmeurs** raadpleegt [u end-to-end-scenario voor data](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)technologie. Zie [in-data base Advanced Analytics voor SQL-ontwikkel aars (zelf studie)](/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)voor **SQL-ontwikkel aars**.
 
 
 ## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>Bijlage: Hulpprogram Ma's voor het instellen van data Science-projecten
 
 ### <a name="install-git-credential-manager-on-windows"></a>Git Credential Manager installeren in Windows
 
-Als u de TDSP in **Windows**volgt, moet u de **Git CREDENTIAL Manager (GCM)** installeren om te communiceren met de Git-opslag plaatsen. Als u GCM wilt installeren, moet u eerst **chocolaty**installeren. Als u chocolaty en GCM wilt installeren, voert u de volgende opdrachten uit in Windows Power shell als **beheerder**:  
+Als u de TDSP in **Windows** volgt, moet u de **Git CREDENTIAL Manager (GCM)** installeren om te communiceren met de Git-opslag plaatsen. Als u GCM wilt installeren, moet u eerst **chocolaty** installeren. Als u chocolaty en GCM wilt installeren, voert u de volgende opdrachten uit in Windows Power shell als **beheerder** :  
 
 ```powershell
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
@@ -142,7 +142,7 @@ Als u Linux-machines (CentOS) gebruikt om de Git-opdrachten uit te voeren, moet 
     
    ![Klik op uw naam en klik vervolgens op beveiliging](./media/platforms-and-tools/resources-2-user-setting.png)
 
-1. Klik op **open bare SSH-sleutels**en klik op **+ toevoegen**. 
+1. Klik op **open bare SSH-sleutels** en klik op **+ toevoegen**. 
 
    ![Klik op open bare SSH-sleutels en klik vervolgens op + toevoegen](./media/platforms-and-tools/resources-3-add-ssh.png)
 
@@ -153,4 +153,4 @@ Als u Linux-machines (CentOS) gebruikt om de Git-opdrachten uit te voeren, moet 
 
 Volledige end-to-end-scenario's waarin alle stappen in het proces voor **specifieke scenario's** worden getoond, worden ook gegeven. Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het onderwerp [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken. 
 
-Voor voor beelden die laten zien hoe u de stappen in het team data Science process uitvoert met behulp van Azure Machine Learning Studio (klassiek), raadpleegt u het leer traject [van Azure ml](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) .
+Voor voor beelden die laten zien hoe u de stappen in het team data Science process uitvoert met behulp van Azure Machine Learning Studio (klassiek), raadpleegt u het leer traject [van Azure ml](./index.yml) .

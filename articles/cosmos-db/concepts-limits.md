@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 070c1ef4eeec2b4ed15f2f4720d9fbd8494fca0f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8b13369cb961d4be49f0045805a805fda38a59c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090423"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319824"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -133,7 +133,6 @@ Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-item een document in
 | Maximale lengte van partitie sleutel waarde | 2048 bytes |
 | Maximale lengte van ID-waarde | 1023 bytes |
 | Maximum aantal eigenschappen per item | Geen praktische limiet |
-| Maximale nest diepte | Geen praktische limiet |
 | Maximale lengte van eigenschaps naam | Geen praktische limiet |
 | Maximale lengte van eigenschaps waarde | Geen praktische limiet |
 | Maximale lengte van de waarde van de teken reeks eigenschap | Geen praktische limiet |

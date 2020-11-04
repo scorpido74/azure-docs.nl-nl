@@ -10,20 +10,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe822b75368a1ab72bcd7f73419770b291d2508
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320520"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321147"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Data science tasks uitvoeren: verkennen, model leren en implementeren
 
 Typische data science tasks omvatten het verkennen, model leren en implementeren van gegevens. In dit artikel wordt beschreven hoe u de Program ma's voor het **verkennen, analyseren en rapporteren van interactieve gegevens (ideeën)** en **geautomatiseerde modellen en rapporten (AMAR)** gebruikt voor het uitvoeren van verschillende algemene gegevens Science-taken, zoals het verkennen van interactieve gegevens, het analyseren van gegevens en het maken van een model. De opties voor het implementeren van een model in een productie omgeving kunnen het volgende omvatten:
 
 - [Azure Machine Learning](../index.yml)
-- [SQL-Server met ML-Services](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
-- [Microsoft Machine Learning-server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [SQL-Server met ML-Services](/sql/advanced-analytics/r/r-services)
+- [Microsoft Machine Learning Server](/machine-learning-server/what-is-machine-learning-server)
 
 
 ## <a name="1--exploration"></a>1. <a name='DataQualityReportUtility-1'></a> verkennen 
@@ -76,7 +76,7 @@ Nadat er meerdere modellen zijn gebouwd, hebt u doorgaans een systeem nodig voor
 1. [Azure Machine Learning-model beheer service](../index.yml)
 2. [ModelDB van MIT](http://modeldb.csail.mit.edu:3000/projects) 
 3. [SQL-Server als model beheersysteem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [Microsoft Machine Learning-server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+4. [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 ## <a name="3--deployment"></a>3. <a name='Deployment-3'></a> implementatie
 
@@ -87,15 +87,15 @@ Er zijn verschillende benaderingen en platformen om modellen in productie te bre
 
 
 - [Model implementatie in Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Implementatie van een model in SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning-server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Implementatie van een model in SQL-Server](/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
 > Voorafgaand aan de implementatie moet u er zeker van zijn dat de latentie van de model Score laag genoeg is voor gebruik in de productie omgeving.
 >
 >
 
-Meer voor beelden zijn beschikbaar in een scenario waarin alle stappen in het proces voor **specifieke scenario's**worden getoond. Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken.
+Meer voor beelden zijn beschikbaar in een scenario waarin alle stappen in het proces voor **specifieke scenario's** worden getoond. Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken.
 
 > [!NOTE]
 > Zie [Deploy a Azure machine learning web service](../classic/deploy-a-machine-learning-web-service.md)(Engelstalig) voor implementatie met behulp van Azure machine learning Studio.

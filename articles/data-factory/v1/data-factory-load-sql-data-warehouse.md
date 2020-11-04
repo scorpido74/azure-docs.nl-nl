@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636898"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321105"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>1 TB in azure Synapse Analytics onder 15 minuten laden met Data Factory
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92636898"
 
 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een schaal bare Cloud database die grote hoeveel heden gegevens kan verwerken, zowel relationele als niet-relationeel.  Azure Synapse Analytics is gebaseerd op de MPP-architectuur (enorm parallel processing) en is geoptimaliseerd voor bedrijfsdata Warehouse-workloads.  De service biedt de flexibiliteit van de cloud om opslag te schalen en onafhankelijk te berekenen.
 
-Aan de slag met Azure Synapse Analytics is nu nog eenvoudiger dan ooit gebruik te maken van **Azure Data Factory** .  Azure Data Factory is een volledig beheerde service voor gegevens integratie in de Cloud, die kan worden gebruikt voor het vullen van Azure Synapse Analytics met de gegevens van uw bestaande systeem en het besparen van uw kost bare tijd bij het evalueren van Azure Synapse Analytics en het bouwen van uw analyse oplossingen. Hier volgen de belangrijkste voor delen van het laden van gegevens in azure Synapse Analytics met behulp van Azure Data Factory:
+Aan de slag met Azure Synapse Analytics is nu nog eenvoudiger dan ooit gebruik te maken van **Azure Data Factory**.  Azure Data Factory is een volledig beheerde service voor gegevens integratie in de Cloud, die kan worden gebruikt voor het vullen van Azure Synapse Analytics met de gegevens van uw bestaande systeem en het besparen van uw kost bare tijd bij het evalueren van Azure Synapse Analytics en het bouwen van uw analyse oplossingen. Hier volgen de belangrijkste voor delen van het laden van gegevens in azure Synapse Analytics met behulp van Azure Data Factory:
 
 * **Eenvoudig in te stellen** : 5-stap intuïtieve wizard zonder scripting vereist.
 * **Ondersteuning voor uitgebreide gegevens opslag** : ingebouwde ondersteuning voor een uitgebreide set on-premises en cloud-gebaseerde gegevens archieven.
@@ -65,7 +65,7 @@ In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegeven
   >
   >
 
-    Als u een Synapse SQL-groep met 6.000 Dwu's wilt maken, moet u de schuif regelaar prestaties helemaal naar rechts verplaatsen:
+    Als u een exclusieve SQL-groep met 6.000 Dwu's wilt maken, moet u de schuif regelaar prestaties helemaal naar rechts verplaatsen:
 
     ![Schuif regelaar prestaties](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -112,18 +112,18 @@ In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegeven
 
 ## <a name="launch-copy-wizard"></a>De wizard Kopiëren starten
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Klik op **een resource maken** in de linkerbovenhoek, klik op **Intelligence en analytische** gegevens en klik op **Data Factory** .
+2. Klik op **een resource maken** in de linkerbovenhoek, klik op **Intelligence en analytische** gegevens en klik op **Data Factory**.
 3. In het deel venster **nieuw Data Factory** :
 
-   1. Voer **LoadIntoSQLDWDataFactory** in als **naam** .
+   1. Voer **LoadIntoSQLDWDataFactory** in als **naam**.
        De naam van de Azure-gegevensfactory moet wereldwijd uniek zijn. Als het volgende fout bericht wordt weer gegeven: **naam van Data Factory "LoadIntoSQLDWDataFactory" is niet beschikbaar** , wijzigt u de naam van de Data Factory (bijvoorbeeld yournameLoadIntoSQLDWDataFactory) en probeert u het opnieuw. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](data-factory-naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.  
-   2. Selecteer uw Azure- **abonnement** .
+   2. Selecteer uw Azure- **abonnement**.
    3. Voer een van de volgende stappen uit voor de resourcegroep:
       1. Selecteer **Bestaande gebruiken** om een bestaande resourcegroep te selecteren.
       2. Selecteer **Nieuwe maken** als u een naam voor een resourcegroep wilt typen.
    4. Selecteer een **locatie** voor de gegevensfactory.
    5. Selecteer het selectievakje **Vastmaken aan dashboard** onderaan de blade.  
-   6. Klik op **Create** .
+   6. Klik op **Create**.
 4. Wanneer het aanmaken is voltooid, ziet u de blade **Gegevensfactory** zoals op de volgende afbeelding wordt weergegeven:
 
    ![Startpagina van de gegevensfactory](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -141,22 +141,22 @@ Op de pagina **Eigenschappen** :
 
 1. **CopyFromBlobToAzureSqlDataWarehouse** voor **taak naam** invoeren
 2. Selecteer de optie **nu uitvoeren** .   
-3. Klik op **Volgende** .  
+3. Klik op **Volgende**.  
 
     ![Wizard kopiëren-pagina eigenschappen](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>Stap 2: bron configureren
 In deze sectie worden de stappen beschreven voor het configureren van de bron: Azure-Blob met de items bestanden van de TPC-H-lijn van 1 TB.
 
-1. Selecteer **Azure Blob Storage** als gegevens archief en klik op **volgende** .
+1. Selecteer **Azure Blob Storage** als gegevens archief en klik op **volgende**.
 
     ![Wizard kopiëren-bron pagina selecteren](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-2. Vul de verbindings gegevens voor het Azure Blob-opslag account in en klik op **volgende** .
+2. Vul de verbindings gegevens voor het Azure Blob-opslag account in en klik op **volgende**.
 
     ![Wizard kopiëren-informatie bron verbinding](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. Selecteer de **map** met de TPC-H-regel item bestanden en klik op **volgende** .
+3. Selecteer de **map** met de TPC-H-regel item bestanden en klik op **volgende**.
 
     ![Wizard kopiëren-map voor invoer selecteren](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
@@ -167,23 +167,23 @@ In deze sectie worden de stappen beschreven voor het configureren van de bron: A
 ## <a name="step-3-configure-destination"></a>Stap 3: bestemming configureren
 In deze sectie wordt beschreven hoe u de bestemming configureert: `lineitem` tabel in de Azure Synapse Analytics-Data Base.
 
-1. Kies **Azure Synapse Analytics** als doel archief en klik op **volgende** .
+1. Kies **Azure Synapse Analytics** als doel archief en klik op **volgende**.
 
     ![Wizard kopiëren-doel gegevens archief selecteren](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Vul de verbindings gegevens in voor Azure Synapse Analytics.  Zorg ervoor dat u de gebruiker opgeeft die lid is van de rol `xlargerc` (Zie de sectie **vereisten** voor gedetailleerde instructies) en klik op **volgende** .
+2. Vul de verbindings gegevens in voor Azure Synapse Analytics.  Zorg ervoor dat u de gebruiker opgeeft die lid is van de rol `xlargerc` (Zie de sectie **vereisten** voor gedetailleerde instructies) en klik op **volgende**.
 
     ![Wizard kopiëren: de verbindings gegevens voor de bestemming](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. Kies de doel tabel en klik op **volgende** .
+3. Kies de doel tabel en klik op **volgende**.
 
     ![Wizard kopiëren-tabel toewijzings pagina](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. In de pagina schema toewijzing, schakelt u de optie kolom toewijzing Toep assen uit en klikt u op **volgende** .
+4. In de pagina schema toewijzing, schakelt u de optie kolom toewijzing Toep assen uit en klikt u op **volgende**.
 
 ## <a name="step-4-performance-settings"></a>Stap 4: prestatie-instellingen
 
-**Poly base toestaan** is standaard ingeschakeld.  Klik op **Volgende** .
+**Poly base toestaan** is standaard ingeschakeld.  Klik op **Volgende**.
 
 ![Wizard kopiëren-schema toewijzing](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 

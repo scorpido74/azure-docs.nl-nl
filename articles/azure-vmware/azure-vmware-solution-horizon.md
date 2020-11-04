@@ -3,12 +3,12 @@ title: Distributie op Azure VMware-oplossing implementeren
 description: Meer informatie over het implementeren van VMware horizon op de Azure VMware-oplossing.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369009"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321359"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Distributie op Azure VMware-oplossing implementeren 
 
@@ -86,7 +86,7 @@ Op basis van de limiet van Azure Private Cloud en SDDC is het raadzaam een imple
 
 De verbinding van Azure Virtual Network met Azure private clouds/SDDCs moet worden geconfigureerd met ExpressRoute FastPath. In het volgende diagram ziet u een eenvoudige implementatie van Horizon pod.
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Horizon in azure VMware-oplossing en horizon-Cloud op Azure" border="false":::
+:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Typische implementatie van Horizon pod met ExpressPath snel pad" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>Netwerk connectiviteit voor schaal horizon op Azure VMware-oplossing
 
@@ -94,7 +94,7 @@ In deze sectie wordt de netwerk architectuur op hoog niveau beschreven met enkel
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Enkelvoudige pod op de Azure VMware-oplossing
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Horizon in azure VMware-oplossing en horizon-Cloud op Azure" border="false":::
+:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Enkelvoudige pod op de Azure VMware-oplossing" border="false":::
 
 Eén horizon Pod is het meest rechtse implementatie scenario omdat u slechts één Horizon pod in de regio VS Oost implementeert.  Omdat elke privécloud en SDDC wordt geschat voor het afhandelen van 4.000-bureaublad sessies, implementeert u de maximale grootte van pod.  U kunt de implementatie van Maxi maal drie privé Clouds/SDDCs plannen.
 
@@ -112,7 +112,7 @@ Een variant op het eenvoudige voor beeld is mogelijk om connectiviteit te onders
 
 In het diagram ziet u hoe connectiviteit voor on-premises resources wordt ondersteund. Als u verbinding wilt maken met het bedrijfs netwerk met Azure Virtual Network, hebt u een ExpressRoute-circuit nodig.  U moet ook verbinding maken met uw bedrijfs netwerk met elk van de privécloud en SDDCs met behulp van ExpressRoute Global Reach.  Hiermee kan de verbinding van de SDDC met het ExpressRoute-circuit en on-premises resources. 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Horizon in azure VMware-oplossing en horizon-Cloud op Azure" border="false":::
+:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Verbind uw bedrijfs netwerk met een Azure-Virtual Network" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Meerdere horizon-peulen voor Azure VMware-oplossing in meerdere regio's
 
@@ -122,7 +122,7 @@ U verbindt de Azure-Virtual Network in elke regio met de persoonlijke Clouds/SDD
 
 Dezelfde principes zijn van toepassing als u twee Horizons-peulen in dezelfde regio implementeert.  Zorg ervoor dat u de tweede horizon pod implementeert in een *afzonderlijke Azure-Virtual Network*. Net als bij het single pod-voor beeld kunt u uw bedrijfs netwerk en on-premises pod verbinding laten maken met dit voor beeld van een multi-pod/regio met behulp van ExpressRoute en Global Reach. 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Horizon in azure VMware-oplossing en horizon-Cloud op Azure" border="false":::
+:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text=" Meerdere horizon-peulen voor Azure VMware-oplossing in meerdere regio's" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Grootte van Azure VMware Solution-hosts voor Horizon-implementaties 
 
@@ -211,3 +211,6 @@ Op basis van de architectuur van de standaard implementatie, bestaan de Vm's van
 | Windows-bestands share               | D4sv3          |         | *Optioneel*                               |
 
 De kosten voor de VM van de infra structuur zijn \$ 0,36 per gebruiker per maand voor de 2.000-desktop implementatie in bovenstaand voor beeld. In dit voor beeld wordt de prijs van juni 2020 van het US Oost Azure-exemplaar gebruikt. Uw prijzen kunnen variëren, afhankelijk van de regio, opties geselecteerd en timing.
+
+## <a name="next-steps"></a>Volgende stappen
+Lees de [Veelgestelde vragen](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)over VMware-horizon voor meer informatie over VMware-horizon op de Azure VMware-oplossing.
