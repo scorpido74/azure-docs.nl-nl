@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339710"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346516"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
 
@@ -135,7 +135,7 @@ De regels voor een groep machines bewerken:
 
       ![Een aangepaste regel toevoegen](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
-   1. Als u een bekend veilig pad definieert, wijzigt u het **regel type** in ' pad '. U kunt joker tekens in het pad toevoegen.
+   1. Als u een bekend veilig pad definieert, wijzigt u het **regel type** in ' pad ' en voert u één pad in. U kunt joker tekens in het pad toevoegen.
    
       > [!TIP]
       > Enkele scenario's waarvoor joker tekens in een pad handig kunnen zijn:
@@ -147,7 +147,7 @@ De regels voor een groep machines bewerken:
 
    1. Wanneer u klaar bent met het definiëren van de regel, selecteert u **toevoegen**.
 
-1. Selecteer **Opslaan**om de wijzigingen toe te passen.
+1. Selecteer **Opslaan** om de wijzigingen toe te passen.
 
 
 ## <a name="review-and-edit-a-groups-settings"></a>De instellingen van een groep controleren en bewerken
@@ -156,12 +156,12 @@ De regels voor een groep machines bewerken:
 
     Dit deel venster toont de naam van de groep (die kan worden gewijzigd), het type besturings systeem, de locatie en andere relevante informatie.
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Besturings elementen voor adaptieve toepassingen openen vanuit het Azure-dash board" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="De pagina groeps instellingen voor besturings elementen voor adaptieve toepassingen" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
     > [!IMPORTANT]
     > De optie **afdwingen** , in de instellingen voor de beveiligings modus voor bestands typen, wordt in **alle** scenario's grijs weer gegeven. Er zijn op dit moment geen afdwingings opties beschikbaar. 
     >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Besturings elementen voor adaptieve toepassingen openen vanuit het Azure-dash board":::
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="De afdwingings modus voor bestands beveiliging wordt permanent grijs weer gegeven. Er zijn geen afdwingings opties beschikbaar.":::
 
 1. U kunt desgewenst de naam van de groep of de beveiligings modus voor het bestands type wijzigen.
 
@@ -181,7 +181,7 @@ De problemen oplossen:
 
 1. Bekijk de verschillende secties van de pagina **regels voor toepassings beheer configureren** zoals beschreven in [besturings elementen voor adaptieve toepassingen inschakelen op een groep machines](#enable-application-controls-on-a-group-of-machines).
 
-1. Selecteer **audit**om de wijzigingen toe te passen.
+1. Selecteer **audit** om de wijzigingen toe te passen.
 
 
 
@@ -214,7 +214,7 @@ Wanneer u een machine van de ene naar de andere groep verplaatst, wordt het toep
 
 1. Selecteer de doel groep en selecteer **machine verplaatsen**.
 
-1. Selecteer **Opslaan**om uw wijzigingen op te slaan.
+1. Selecteer **Opslaan** om uw wijzigingen op te slaan.
 
 
 

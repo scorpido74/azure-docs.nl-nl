@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: db396bbd2f26638c39f2573fb6014cd2602279d0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 362c16a87e5a24c35b3aa637171b6a3f77aa62a6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129742"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346329"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics uitvoer naar Azure SQL Database
 
@@ -35,7 +35,7 @@ Hier vindt u enkele configuraties binnen elke service die de algehele door Voer 
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **Gepartitioneerde tabel en indexen** : door gebruik te maken van een [gepartitioneerde](/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL-tabel en gepartitioneerde indexen in de tabel met dezelfde kolom als uw partitie sleutel (bijvoorbeeld PartitionId) kunnen de conflicten tussen partities tijdens het schrijven aanzienlijk verminderen. Voor een gepartitioneerde tabel moet u een [partitie functie](/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) en een [partitie schema](/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) maken voor de primaire bestands groep. Hierdoor wordt ook de beschik baarheid van bestaande gegevens verhoogd terwijl er nieuwe gegevens worden geladen. De i/o-limiet voor logboeken kan worden bereikt op basis van het aantal partities dat kan worden verhoogd door de SKU bij te werken.
+- **Gepartitioneerde tabel en indexen** : door gebruik te maken van een [gepartitioneerde](/sql/relational-databases/partitions/partitioned-tables-and-indexes) SQL-tabel en gepartitioneerde indexen in de tabel met dezelfde kolom als uw partitie sleutel (bijvoorbeeld PartitionId) kunnen de conflicten tussen partities tijdens het schrijven aanzienlijk verminderen. Voor een gepartitioneerde tabel moet u een [partitie functie](/sql/t-sql/statements/create-partition-function-transact-sql) en een [partitie schema](/sql/t-sql/statements/create-partition-scheme-transact-sql) maken voor de primaire bestands groep. Hierdoor wordt ook de beschik baarheid van bestaande gegevens verhoogd terwijl er nieuwe gegevens worden geladen. De i/o-limiet voor logboeken kan worden bereikt op basis van het aantal partities dat kan worden verhoogd door de SKU bij te werken.
 
 - **Vermijd unieke sleutel schendingen** : als u [waarschuwingen met meerdere sleutel overtredingen](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) ontvangt in het activiteiten logboek van Azure stream Analytics, moet u ervoor zorgen dat uw taak niet wordt beïnvloed door de schendingen van unieke beperkingen die waarschijnlijk optreden tijdens herstel cases. Dit kan worden vermeden door [de \_ \_ sleutel optie dubbele negeren](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) in te stellen op uw indexen.
 

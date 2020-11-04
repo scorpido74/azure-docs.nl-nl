@@ -3,7 +3,7 @@ title: Een exemplaar van een media processor ophalen met behulp van REST | Micro
 description: Meer informatie over het maken van een media processor onderdeel voor het coderen, converteren van de indeling, het versleutelen of ontsleutelen van media-inhoud voor Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f9ff1997-0da6-4528-aaed-792837e5be41
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: ba625aa048360a4c201b91b4a5a4a7ca4dd6277b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: e1ac2a2408e16c3f8057c49c69c354ebb1e377c7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269502"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348488"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Een media processor-exemplaar ophalen
 
@@ -28,18 +28,18 @@ ms.locfileid: "89269502"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
-> 
-> 
+
 
 ## <a name="overview"></a>Overzicht
-Media processors zijn een onderdeel dat een specifieke video-of audio verwerkings taak verwerkt, zoals code ring, indelings conversie, versleuteling of ontsleuteling van media-inhoud. Voor alle taken die naar Media Services worden verzonden, is een media processor vereist voor het coderen, versleutelen of converteren van de video-of audio-inhoud. 
 
-## <a name="azure-media-processors"></a>Azure media-processors 
+Media processors zijn een onderdeel dat een specifieke video-of audio verwerkings taak verwerkt, zoals code ring, indelings conversie, versleuteling of ontsleuteling van media-inhoud. Voor alle taken die naar Media Services worden verzonden, is een media processor vereist voor het coderen, versleutelen of converteren van de video-of audio-inhoud.
+
+## <a name="azure-media-processors"></a>Azure media-processors
 
 Het volgende onderwerp bevat een lijst met media processors:
 
-* [Mediaprocessors coderen](scenarios-and-availability.md#encoding-media-processors)
-* [Mediaprocessors voor analyse](scenarios-and-availability.md#analytics-media-processors)
+* [Mediaprocessors coderen](scenarios-and-availability.md)
+* [Mediaprocessors voor analyse](scenarios-and-availability.md)
 
 >[!NOTE]
 >Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
@@ -51,7 +51,7 @@ Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-ser
 
 ## <a name="get-a-media-processor"></a>Een media processor ophalen
 
-De volgende REST-aanroep laat zien hoe u een media processor exemplaar krijgt op naam (in dit geval **Media Encoder Standard**). 
+De volgende REST-aanroep laat zien hoe u een media processor exemplaar krijgt op naam (in dit geval **Media Encoder Standard** ). 
 
 Aanvraag:
 

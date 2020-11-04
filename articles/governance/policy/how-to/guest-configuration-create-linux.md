@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een Azure Policy gast configurat
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c0559e284f1e7022510a458209ec8d985ffc6324
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305548"
+ms.locfileid: "93346873"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Beleidsregels voor gastconfiguratie voor Linux maken
 
@@ -24,7 +24,11 @@ Bij het controleren van Linux maakt gastconfiguratie gebruik van [Chef InSpec](h
 Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren van de status van een Azure-of niet-Azure-machine.
 
 > [!IMPORTANT]
+> Aangepaste beleids definities met gast configuratie in de Azure Government-en Azure China-omgevingen is een preview-functie.
+>
 > De gastconfiguratie-extensie is vereist voor het uitvoeren van controles op virtuele machines van Azure. Als u de uitbrei ding op schaal wilt implementeren op alle Linux-machines, wijst u de volgende beleids definitie toe: `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 
+> Gebruik geen geheimen of vertrouwelijke informatie in aangepaste inhouds pakketten.
 
 ## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
 
@@ -49,7 +53,9 @@ Besturings systemen waarop de module kan worden geïnstalleerd:
 - Windows
 
 > [!NOTE]
-> Voor de cmdlet test-GuestConfigurationPackage is OpenSSL-versie 1,0 vereist vanwege een afhankelijkheid van OMI. Dit veroorzaakt een fout op een wille keurige omgeving met OpenSSL 1,1 of hoger.
+> De cmdlet `Test-GuestConfigurationPackage` vereist openssl versie 1,0, vanwege een afhankelijkheid van Omi. Dit veroorzaakt een fout op een wille keurige omgeving met OpenSSL 1,1 of hoger.
+>
+> Het uitvoeren van de cmdlet `Test-GuestConfigurationPackage` wordt alleen ondersteund op Windows voor de gast configuratie module versie 2.1.0.
 
 Voor de module gast configuratie resource is de volgende software vereist:
 
@@ -319,13 +325,16 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>Levens duur van beleid
 
-Voor het vrijgeven van een update voor de beleids definitie zijn er twee velden waarvoor aandacht is vereist.
+Er zijn drie velden waarvoor aandacht is vereist voor het vrijgeven van een update voor de beleids definitie.
 
-- **Versie** : wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan het aantal dat momenteel is gepubliceerd. De eigenschap werkt de versie van de toewijzing van de gast configuratie bij, zodat de agent het bijgewerkte pakket herkent.
+> [!NOTE]
+> De `version` eigenschap van de toewijzing van de gast configuratie heeft alleen invloed op pakketten die door micro soft worden gehost. De best practice voor het versie beheer van aangepaste inhoud is het insluiten van de versie in de bestands naam.
+
+- **Versie** : wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan het aantal dat momenteel is gepubliceerd.
+- **contentUri** : wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een URI naar de locatie van het pakket opgeven. Met inbegrip van een pakket versie in de bestands naam zorgt u ervoor dat de waarde van deze eigenschap in elke versie verandert.
 - **contentHash** : deze eigenschap wordt automatisch bijgewerkt door de `New-GuestConfigurationPolicy` cmdlet. Het is een hash-waarde van het pakket dat is gemaakt door `New-GuestConfigurationPackage` . De eigenschap moet correct zijn voor het `.zip` bestand dat u publiceert. Als alleen de eigenschap **contentUri** is bijgewerkt, wordt het inhouds pakket niet geaccepteerd door de extensie.
 
 De eenvoudigste manier om een bijgewerkt pakket vrij te geven, is het proces dat wordt beschreven in dit artikel herhalen en een bijgewerkt versie nummer opgeven. Dit proces garandeert dat alle eigenschappen correct zijn bijgewerkt.
-
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Beleid voor gast configuratie filteren met behulp van Tags
 

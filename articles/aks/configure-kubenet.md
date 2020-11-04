@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 3bc245fa02f57a433a76a316caac67ed5d884fe9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 82745d4f86a440c671e73ac3c74702a4a0c56b2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072744"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348199"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
-AKS-clusters gebruiken standaard [kubenet][kubenet]en er worden voor u een virtueel Azure-netwerk en-subnet gemaakt. Met *kubenet*krijgen knoop punten een IP-adres uit het subnet van het virtuele Azure-netwerk. Pods krijgen een IP-adres van een logisch verschillende adresruimte van het subnet van het virtuele Azure-netwerk van de knooppunten. NAT (Network Address Translation) wordt vervolgens zo geconfigureerd dat de pods resources kunnen bereiken in het virtuele Azure-netwerk. Het bron-IP-adres van het verkeer is NAT naar het primaire IP-adres van het knoop punt. Met deze methode wordt het aantal IP-adressen dat u in uw netwerk ruimte moet reserveren, aanzienlijk verminderd voor gebruik.
+AKS-clusters gebruiken standaard [kubenet][kubenet]en er worden voor u een virtueel Azure-netwerk en-subnet gemaakt. Met *kubenet* krijgen knoop punten een IP-adres uit het subnet van het virtuele Azure-netwerk. Pods krijgen een IP-adres van een logisch verschillende adresruimte van het subnet van het virtuele Azure-netwerk van de knooppunten. NAT (Network Address Translation) wordt vervolgens zo geconfigureerd dat de pods resources kunnen bereiken in het virtuele Azure-netwerk. Het bron-IP-adres van het verkeer is NAT naar het primaire IP-adres van het knoop punt. Met deze methode wordt het aantal IP-adressen dat u in uw netwerk ruimte moet reserveren, aanzienlijk verminderd voor gebruik.
 
 Met [Azure container Networking interface (cni)][cni-networking]haalt elke pod een IP-adres uit het subnet en kan het rechtstreeks worden geopend. Deze IP-adressen moeten uniek zijn binnen uw netwerk ruimte en moeten vooraf worden gepland. Elk knoop punt heeft een configuratie parameter voor het maximum aantal peulen dat wordt ondersteund. Het equivalente aantal IP-adressen per knoop punt wordt vervolgens vóór dat knoop punt gereserveerd. Deze aanpak vereist meer planning en leidt vaak tot een aflopende IP-adres afvoer of de nood zaak om clusters opnieuw te bouwen in een groter subnet naarmate uw toepassings vereisten groeien. U kunt het Maxi maal te implementeren maximum aantal te configureren voor een knoop punt in een cluster maken of bij het maken van nieuwe knooppunt groepen. Als u maxPods niet opgeeft bij het maken van nieuwe knooppunt groepen, ontvangt u een standaard waarde van 110 voor kubenet.
 
@@ -34,19 +34,19 @@ Dit artikel laat u zien hoe u *kubenet* -netwerken kunt gebruiken om een subnet 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.0.65 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.65 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Overzicht van kubenet-netwerken met uw eigen subnet
 
-In veel omgevingen hebt u virtuele netwerken en subnetten met toegewezen IP-adresbereiken gedefinieerd. Deze virtuele netwerk bronnen worden gebruikt ter ondersteuning van meerdere services en toepassingen. Om netwerk connectiviteit te bieden, kunnen AKS-clusters gebruikmaken van *kubenet* (Basic-netwerken) of Azure cni (*Geavanceerd netwerk*).
+In veel omgevingen hebt u virtuele netwerken en subnetten met toegewezen IP-adresbereiken gedefinieerd. Deze virtuele netwerk bronnen worden gebruikt ter ondersteuning van meerdere services en toepassingen. Om netwerk connectiviteit te bieden, kunnen AKS-clusters gebruikmaken van *kubenet* (Basic-netwerken) of Azure cni ( *Geavanceerd netwerk* ).
 
-Met *kubenet*ontvangen alleen de knoop punten een IP-adres in het subnet van het virtuele netwerk. Het is niet mogelijk om rechtstreeks met elkaar te communiceren. In plaats daarvan wordt door de gebruiker gedefinieerde route ring (UDR) en door sturen via IP gebruikt voor connectiviteit tussen verschillende knoop punten. De Udr's-en IP-doorstuur configuratie wordt standaard gemaakt en onderhouden door de AKS-service, maar u hebt de mogelijkheid om [uw eigen route tabel voor aangepaste route beheer te plaatsen][byo-subnet-route-table]. U kunt ook peul implementeren achter een service die een toegewezen IP-adres ontvangt en verkeer voor de toepassing verdeelt. In het volgende diagram ziet u hoe de AKS-knoop punten een IP-adres in het subnet van het virtuele netwerk ontvangen, maar niet de peul:
+Met *kubenet* ontvangen alleen de knoop punten een IP-adres in het subnet van het virtuele netwerk. Het is niet mogelijk om rechtstreeks met elkaar te communiceren. In plaats daarvan wordt door de gebruiker gedefinieerde route ring (UDR) en door sturen via IP gebruikt voor connectiviteit tussen verschillende knoop punten. De Udr's-en IP-doorstuur configuratie wordt standaard gemaakt en onderhouden door de AKS-service, maar u hebt de mogelijkheid om [uw eigen route tabel voor aangepaste route beheer te plaatsen][byo-subnet-route-table]. U kunt ook peul implementeren achter een service die een toegewezen IP-adres ontvangt en verkeer voor de toepassing verdeelt. In het volgende diagram ziet u hoe de AKS-knoop punten een IP-adres in het subnet van het virtuele netwerk ontvangen, maar niet de peul:
 
 ![Kubenet-netwerk model met een AKS-cluster](media/use-kubenet/kubenet-overview.png)
 
 Azure ondersteunt Maxi maal 400 routes in een UDR, zodat u geen AKS-cluster hebt dat groter is dan 400 knoop punten. Virtuele AKS- [knoop punten][virtual-nodes] en Azure-netwerk beleid worden niet ondersteund met *kubenet*.  U kunt [Calico-netwerk beleid][calico-network-policies]gebruiken, aangezien deze worden ondersteund met kubenet.
 
-Met *Azure cni*ontvangt elke pod een IP-adres in het IP-subnet en kan het rechtstreeks communiceren met andere peulen en services. Uw clusters kunnen zo groot zijn als het IP-adres bereik dat u opgeeft. Het IP-adres bereik moet echter vooraf worden gepland en alle IP-adressen worden gebruikt door de AKS-knoop punten op basis van het maximum aantal peul dat ze kunnen ondersteunen. Geavanceerde netwerk functies en-scenario's, zoals [virtuele knoop punten][virtual-nodes] of netwerk beleid (Azure of Calico), worden ondersteund met *Azure cni*.
+Met *Azure cni* ontvangt elke pod een IP-adres in het IP-subnet en kan het rechtstreeks communiceren met andere peulen en services. Uw clusters kunnen zo groot zijn als het IP-adres bereik dat u opgeeft. Het IP-adres bereik moet echter vooraf worden gepland en alle IP-adressen worden gebruikt door de AKS-knoop punten op basis van het maximum aantal peul dat ze kunnen ondersteunen. Geavanceerde netwerk functies en-scenario's, zoals [virtuele knoop punten][virtual-nodes] of netwerk beleid (Azure of Calico), worden ondersteund met *Azure cni*.
 
 ### <a name="limitations--considerations-for-kubenet"></a>Beperkingen & overwegingen voor kubenet
 
@@ -57,22 +57,22 @@ Met *Azure cni*ontvangt elke pod een IP-adres in het IP-subnet en kan het rechts
 * Functies die **niet worden ondersteund in kubenet** zijn onder andere:
    * [Azure-netwerk beleid](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), maar Calico-netwerk beleid wordt ondersteund op kubenet
    * [Windows-knooppunt groepen](./windows-faq.md)
-   * [Virtuele knoop punten toevoegen](virtual-nodes-portal.md#known-limitations)
+   * [Virtuele knoop punten toevoegen](virtual-nodes.md#network-requirements)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>Beschik baarheid en uitputting van IP-adressen
 
-Met *Azure cni*is een veelvoorkomend probleem het toegewezen IP-adres bereik te klein om extra knoop punten toe te voegen wanneer u een cluster schaalt of bijwerkt. Het netwerk team kan ook geen groot genoeg IP-adres bereik geven om de verwachte toepassings vereisten te ondersteunen.
+Met *Azure cni* is een veelvoorkomend probleem het toegewezen IP-adres bereik te klein om extra knoop punten toe te voegen wanneer u een cluster schaalt of bijwerkt. Het netwerk team kan ook geen groot genoeg IP-adres bereik geven om de verwachte toepassings vereisten te ondersteunen.
 
 Als inbreuk kunt u een AKS-cluster maken dat gebruikmaakt van *kubenet* en verbinding maken met een bestaand subnet van een virtueel netwerk. Op deze manier kunnen de knoop punten gedefinieerde IP-adressen ontvangen, zonder dat er een groot aantal IP-adressen hoeft te worden gereserveerd voor alle mogelijke peulen die in het cluster kunnen worden uitgevoerd.
 
-Met *kubenet*kunt u een veel kleiner IP-adres bereik gebruiken en kunt u grote clusters en toepassings vereisten ondersteunen. Bijvoorbeeld, zelfs met een */27* IP-adres bereik in uw subnet, kunt u een 20-25-knooppunt cluster uitvoeren met voldoende ruimte om te schalen of bij te werken. Deze cluster grootte zou Maxi maal *2200-2750* peul ondersteunen (met een standaard maximum van 110 peul per knoop punt). Het maximum aantal peulen per knoop punt dat u kunt configureren met *kubenet* in AKS is 110.
+Met *kubenet* kunt u een veel kleiner IP-adres bereik gebruiken en kunt u grote clusters en toepassings vereisten ondersteunen. Bijvoorbeeld, zelfs met een */27* IP-adres bereik in uw subnet, kunt u een 20-25-knooppunt cluster uitvoeren met voldoende ruimte om te schalen of bij te werken. Deze cluster grootte zou Maxi maal *2200-2750* peul ondersteunen (met een standaard maximum van 110 peul per knoop punt). Het maximum aantal peulen per knoop punt dat u kunt configureren met *kubenet* in AKS is 110.
 
 In de volgende basis berekeningen wordt het verschil in netwerk modellen vergeleken:
 
 - **kubenet** : een eenvoudig */24* IP-adres bereik kan Maxi maal *251* knoop punten in het cluster ondersteunen (elk subnet van het virtuele netwerk van Azure reserveert de eerste drie IP-adressen voor beheer bewerkingen)
-  - Dit aantal knoop punten kan Maxi maal *27.610* peul ondersteunen (met een standaard maximum van 110 peul per knoop punt met *kubenet*)
+  - Dit aantal knoop punten kan Maxi maal *27.610* peul ondersteunen (met een standaard maximum van 110 peul per knoop punt met *kubenet* )
 - **Azure cni** : hetzelfde basis *-/24* -subnet-bereik kan slechts Maxi maal *8* knoop punten in het cluster ondersteunen
-  - Dit aantal knoop punten kan Maxi maal *240* peul ondersteunen (met een standaard maximum van 30 peulen per knoop punt met *Azure cni*)
+  - Dit aantal knoop punten kan Maxi maal *240* peul ondersteunen (met een standaard maximum van 30 peulen per knoop punt met *Azure cni* )
 
 > [!NOTE]
 > Bij deze maximum waarden wordt geen rekening gehouden met het bijwerken of schalen. In de praktijk kunt u het maximum aantal knoop punten dat het IP-adres bereik van het subnet ondersteunt niet uitvoeren. U moet de IP-adressen die beschikbaar zijn voor gebruik tijdens de schaal van de upgrade-bewerkingen, laten staan.
@@ -102,7 +102,7 @@ Zie [netwerk modellen vergelijken en hun ondersteunings bereik][network-comparis
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Een virtueel netwerk en een subnet maken
 
-Om aan de slag te gaan met het gebruik van *kubenet* en uw eigen virtuele netwerk subnet, maakt u eerst een resource groep met de opdracht [AZ Group Create][az-group-create] . In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
+Om aan de slag te gaan met het gebruik van *kubenet* en uw eigen virtuele netwerk subnet, maakt u eerst een resource groep met de opdracht [AZ Group Create][az-group-create] . In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -168,7 +168,7 @@ De volgende IP-adresbereiken worden ook gedefinieerd als onderdeel van het proce
 
 * De *--pod-CIDR* moet een grote adres ruimte zijn die elders niet in uw netwerk omgeving wordt gebruikt. Dit bereik bevat alle on-premises netwerkbereiken als u verbinding maakt met uw virtuele Azure-netwerken of een verbinding wilt maken met behulp van een snelle route of een site-naar-site-VPN-verbinding.
     * Dit adres bereik moet groot genoeg zijn voor het aantal knoop punten dat u naar verwachting omhoog wilt schalen. U kunt dit adres bereik niet meer wijzigen wanneer het cluster is geïmplementeerd als u meer adressen nodig hebt voor extra knoop punten.
-    * Het IP-adres bereik van Pod wordt gebruikt om een */24* -adres ruimte toe te wijzen aan elk knoop punt in het cluster. In het volgende voor beeld wijst de *--pod-CIDR* van *10.244.0.0/16* het eerste knoop punt *10.244.0.0/24*, het tweede knoop punt *10.244.1.0/24*en het derde knoop punt *10.244.2.0/24*toe.
+    * Het IP-adres bereik van Pod wordt gebruikt om een */24* -adres ruimte toe te wijzen aan elk knoop punt in het cluster. In het volgende voor beeld wijst de *--pod-CIDR* van *10.244.0.0/16* het eerste knoop punt *10.244.0.0/24* , het tweede knoop punt *10.244.1.0/24* en het derde knoop punt *10.244.2.0/24* toe.
     * Naarmate het cluster wordt geschaald of bijgewerkt, blijft het Azure-platform een IP-adres bereik van pod toewijzen aan elk nieuw knoop punt.
     
 * Met de *--docker-Bridge-Address* kunnen de AKS-knoop punten communiceren met het onderliggende beheer platform. Dit IP-adres mag zich niet binnen het IP-adres bereik van het virtuele netwerk van uw cluster bevallen en mag niet overlappen met andere adresbereiken die in het netwerk worden gebruikt.

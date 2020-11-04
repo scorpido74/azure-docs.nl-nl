@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: bc630fc5ea9407c284e2e2e879c349a83302cd9f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6942fd68625fd8eac18ea899330fd99f31f771f7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122620"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346108"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problemen met Azure Stream Analytics uitvoer oplossen
 
@@ -67,7 +67,7 @@ Tijdens de normale werking van een taak kan de uitvoer langer en langer duren. A
 * Hiermee wordt aangegeven of de upstream-bron wordt beperkt
 * Of de verwerkings logica in de query reken intensief is
 
-Als u de uitvoer details wilt zien, selecteert u de streaming-taak in de Azure Portal en selecteert u vervolgens **taak diagram** . Voor elke invoer is er een gebeurtenis metriek voor de achterstand per partitie. Als de metriek toeneemt, is het een indicatie dat de systeem bronnen beperkt zijn. De verhoging wordt mogelijk veroorzaakt door een beperking van de uitvoer-sink of een hoog CPU-gebruik. Zie voor meer informatie [fout opsporing op basis van gegevens met behulp van het taak diagram](stream-analytics-job-diagram-with-metrics.md).
+Als u de uitvoer details wilt zien, selecteert u de streaming-taak in de Azure Portal en selecteert u vervolgens **taak diagram**. Voor elke invoer is er een gebeurtenis metriek voor de achterstand per partitie. Als de metriek toeneemt, is het een indicatie dat de systeem bronnen beperkt zijn. De verhoging wordt mogelijk veroorzaakt door een beperking van de uitvoer-sink of een hoog CPU-gebruik. Zie voor meer informatie [fout opsporing op basis van gegevens met behulp van het taak diagram](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Waarschuwing voor sleutel schending bij Azure SQL Database uitvoer
 
@@ -91,7 +91,7 @@ Wanneer een Stream Analytics taak met SQL-uitvoer de eerste batch gebeurtenissen
 2. Met de taak wordt het schema van de doel tabel opgehaald.
 3. Met de taak worden kolom namen en-typen gecontroleerd op basis van het schema van de doel tabel.
 4. De taak bereidt een in-Memory-gegevens tabel voor op basis van de uitvoer records in de batch.
-5. Met de taak wordt de gegevens tabel naar SQL geschreven met behulp van de BulkCopy- [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver?view=dotnet-plat-ext-3.1).
+5. Met de taak wordt de gegevens tabel naar SQL geschreven met behulp van de BulkCopy- [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver).
 
 Tijdens deze stappen kan de SQL-uitvoer gebruikmaken van de volgende typen fouten:
 

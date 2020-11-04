@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9d5c954be2a6f05e5132a5f57f8169f436719a8d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332267"
+ms.locfileid: "93345428"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -67,12 +67,11 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 **Ondersteuning** | **Details**
 --- | ---
 **Ondersteunde computers** | App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines. U kunt op elk Azure Migrate apparaat apps die zijn geïnstalleerd op Maxi maal 10000 VMware-Vm's detecteren.
+**Besturingssystemen** | App-Discovery wordt ondersteund voor Vm's waarop alle Windows-en Linux-versies worden uitgevoerd.
+**VM-vereisten** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op virtuele machines waarop u apps wilt detecteren. <br/><br/> De versie van de VMware-hulpprogram ma's moet later zijn dan 10.2.0.<br/><br/> Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
 **Discovery** (Detectie) | App-detectie is zonder agent. Hierbij worden de gast referenties van de machine gebruikt en kunnen computers op afstand worden benaderd met WMI-en SSH-aanroepen.
-**VM-ondersteuning** | App-Discovery wordt ondersteund voor Vm's waarop alle Windows-en Linux-versies worden uitgevoerd.
 **vCenter** | Het vCenter Server alleen-lezen account dat wordt gebruikt voor de evaluatie, heeft bevoegdheden nodig die zijn ingeschakeld voor **virtual machines**  >  **gast bewerkingen** om te kunnen communiceren met de virtuele machine voor toepassings detectie.
 **VM-toegang** | App-detectie heeft een lokaal gebruikers account op de virtuele machine nodig voor toepassings detectie.<br/><br/> Azure Migrate biedt momenteel ondersteuning voor het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gast gebruikers account voor Windows-Vm's en een standaard/normaal gebruikers account (niet-sudo toegang) voor alle virtuele Linux-machines.
-**VMware-hulpprogram ma's** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt detecteren. <br/><br/> De versie van de VMware-hulpprogram ma's moet later zijn dan 10.2.0.
-**PowerShell** | Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
 **Poort toegang** | Het Azure Migrate apparaat moet verbinding kunnen maken met TCP-poort 443 op ESXi-hosts waarop Vm's worden uitgevoerd waarop u apps wilt detecteren. De vCenter Server retourneert een ESXI om het bestand met de app-gegevens te downloaden.
 **Limieten** | Voor app-Discovery kunt u tot 10000 Vm's op elk Azure Migrate apparaat detecteren.
 

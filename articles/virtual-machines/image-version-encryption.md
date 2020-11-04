@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: f6bf436110e9822d687419b74a8a22bad7a6d700
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e0534fa6eaccbfb9318369e0a4224d84fa8de7c8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333461"
+ms.locfileid: "93347706"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Voor beeld: door de klant beheerde sleutels gebruiken voor het versleutelen van installatie kopieën
 
@@ -134,7 +134,7 @@ Voor gegevens schijven moet u de `-DiskEncryptionSetId $setID` para meter toevoe
 
 ## <a name="cli"></a>CLI 
 
-Voor de open bare Preview moet u eerst de functie registreren.
+Voor de open bare Preview moet u zich eerst registreren voor de functie. De registratie duurt ongeveer 30 minuten.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SIGEncryption

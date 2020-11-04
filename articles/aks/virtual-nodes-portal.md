@@ -5,22 +5,23 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 21bbe15a37e95df297f580064beb63ebd5debe57
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9becd6341baad54a74f10ae2f38cf9ccf1fd3037
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899902"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347893"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten in de Azure Portal
 
-Als u werk belastingen snel wilt implementeren in een Azure Kubernetes service (AKS)-cluster, kunt u virtuele knoop punten gebruiken. Met virtuele knoop punten hebt u snel de inrichting van Peul en betaalt u alleen per seconde voor de uitvoerings tijd. In een schaal scenario hoeft u niet te wachten tot de Kubernetes van het cluster voor het implementeren van VM-reken knooppunten om het andere peul uit te voeren. Virtuele knoop punten worden alleen ondersteund met Linux-en knoop punten.
+In dit artikel wordt beschreven hoe u de Azure Portal gebruikt voor het maken en configureren van de virtuele netwerk resources en een AKS-cluster waarop virtuele knoop punten zijn ingeschakeld.
 
-In dit artikel wordt beschreven hoe u de virtuele netwerk resources en een AKS-cluster maakt en configureert waarop virtuele knoop punten zijn ingeschakeld.
+> [!NOTE]
+> In [dit artikel](virtual-nodes.md) vindt u een overzicht van de beschik baarheid van regio's en beperkingen met behulp van virtuele knoop punten.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Virtuele knoop punten scha kelen netwerk communicatie in tussen de peulen die worden uitgevoerd in Azure Container Instances (ACI) en het AKS-cluster. Om deze communicatie te bieden, wordt een subnet van een virtueel netwerk gemaakt en worden gedelegeerde machtigingen toegewezen. Virtuele knoop punten werken alleen met AKS-clusters die zijn gemaakt met *Geavanceerde* netwerken. Standaard worden AKS-clusters gemaakt met een *basis* netwerk. In dit artikel wordt beschreven hoe u een virtueel netwerk en subnetten maakt en hoe u een AKS-cluster implementeert dat gebruikmaakt van geavanceerde netwerken.
+Virtuele knoop punten scha kelen netwerk communicatie in tussen de peulen die worden uitgevoerd in Azure Container Instances (ACI) en het AKS-cluster. Om deze communicatie te bieden, wordt een subnet van een virtueel netwerk gemaakt en worden gedelegeerde machtigingen toegewezen. Virtuele knoop punten werken alleen met AKS-clusters die zijn gemaakt met *Advanced* Network (Azure cni). Standaard worden AKS-clusters gemaakt met *Basic* -netwerken (kubenet). In dit artikel wordt beschreven hoe u een virtueel netwerk en subnetten maakt en hoe u een AKS-cluster implementeert dat gebruikmaakt van geavanceerde netwerken.
 
 Als u geen ACI eerder hebt gebruikt, registreert u de service provider bij uw abonnement. U kunt de status van de ACI-provider registratie controleren met de opdracht [AZ provider List][az-provider-list] , zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -42,34 +43,6 @@ Als de provider wordt weer gegeven als *NotRegistered* , registreert u de provid
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Regionale beschikbaarheid
-
-De volgende regio's worden ondersteund voor implementaties van virtuele knoop punten:
-
-* Australië-oost (australiaeast)
-* VS-Midden (centraal)
-* VS-Oost (Oost)
-* VS-Oost 2 (eastus2)
-* Japan-Oost (japaneast)
-* Europa-noord (northeurope)
-* Zuidoost-Azië (southeastasia)
-* VS-West-Centraal (westcentralus)
-* Europa-west (Europa West)
-* VS-West (westus)
-* VS-West 2 (westus2)
-
-## <a name="known-limitations"></a>Bekende beperkingen
-De functionaliteit van virtuele knoop punten is sterk afhankelijk van de functieset van ACI. Naast de [quota en limieten voor Azure container instances](../container-instances/container-instances-quotas.md), worden de volgende scenario's nog niet ondersteund met virtuele knoop punten:
-
-* Service-Principal gebruiken voor het ophalen van ACR-installatie kopieën. [Tijdelijke oplossing](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) is het gebruik van [Kubernetes-geheimen](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
-* [Virtual Network beperkingen](../container-instances/container-instances-virtual-network-concepts.md) , waaronder VNet-peering, Kubernetes-netwerk beleid en uitgaand verkeer naar Internet met netwerk beveiligings groepen.
-* Init-containers
-* [Host-aliassen](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* [Argumenten](../container-instances/container-instances-exec.md#restrictions) voor exec in ACI
-* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) implementeert geen peuling voor het virtuele knoop punt
-* Virtuele knoop punten ondersteunen de planning van Linux. U kunt de open source [Virtual KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -provider hand matig installeren om Windows Server-containers te plannen voor ACI.
-* Virtuele knoop punten vereisen AKS-clusters met Azure CNI-netwerken
-
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
@@ -80,14 +53,14 @@ Selecteer in de linkerbovenhoek van de Azure Portal **een resource**  >  **Kuber
 
 Configureer op de pagina **Basisprincipes** de volgende opties:
 
-- *Project Details* : Selecteer een Azure-abonnement en selecteer of maak een Azure-resource groep, zoals *myResourceGroup* . Voer een **Kubernetes-clusternaam** in, zoals *myAKSCluster* .
+- *Project Details* : Selecteer een Azure-abonnement en selecteer of maak een Azure-resource groep, zoals *myResourceGroup*. Voer een **Kubernetes-clusternaam** in, zoals *myAKSCluster*.
 - *CLUSTERDETAILS* : selecteer een regio, Kubernetes-versie en DNS-naamvoorvoegsel voor het AKS-cluster.
 - *Primaire knooppunt groep* : Selecteer een VM-grootte voor de AKS-knoop punten. De VM-grootte kan **niet** meer worden gewijzigd als een AKS-cluster eenmaal is geïmplementeerd.
-     - Selecteer het aantal knooppunten dat u in het cluster wilt implementeren. Voor dit artikel stelt u het **aantal knoop punten** in op *1* . Het aantal knooppunten kan nog **wel** worden gewijzigd als het cluster is geïmplementeerd.
+     - Selecteer het aantal knooppunten dat u in het cluster wilt implementeren. Voor dit artikel stelt u het **aantal knoop punten** in op *1*. Het aantal knooppunten kan nog **wel** worden gewijzigd als het cluster is geïmplementeerd.
 
-Klik op **volgende: schalen** .
+Klik op **volgende: schalen**.
 
-Selecteer op de pagina **schalen** de optie *ingeschakeld* onder **virtuele knoop punten** .
+Selecteer op de pagina **schalen** de optie *ingeschakeld* onder **virtuele knoop punten**.
 
 ![AKS-cluster maken en de virtuele knoop punten inschakelen](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
@@ -95,7 +68,7 @@ Standaard wordt een Azure Active Directory Service-Principal gemaakt. Deze servi
 
 Het cluster is ook geconfigureerd voor geavanceerde netwerken. De virtuele knoop punten zijn geconfigureerd voor het gebruik van hun eigen subnet van het virtuele netwerk van Azure. Dit subnet heeft gedelegeerde machtigingen voor het verbinden van Azure-resources tussen het AKS-cluster. Als u nog geen overgedragen subnet hebt, wordt het virtuele Azure-netwerk en-subnet door de Azure Portal gemaakt en geconfigureerd voor gebruik met de virtuele knoop punten.
 
-Selecteer **Controleren + maken** . Nadat de validatie is voltooid, selecteert u **maken** .
+Selecteer **Controleren + maken**. Nadat de validatie is voltooid, selecteert u **maken**.
 
 Het duurt enkele minuten om het AKS-cluster te maken en voor te bereiden voor gebruik.
 
@@ -241,5 +214,5 @@ Virtuele knoop punten zijn één onderdeel van een schaal oplossing in AKS. Raad
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-provider-list]: /cli/azure/provider&preserve-view=true#az-provider-list
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest&preserve-view=true#az-provider-register

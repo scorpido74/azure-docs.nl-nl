@@ -3,7 +3,7 @@ title: Een Azure Media Services-account maken via Azure Portal | Microsoft Docs
 description: In deze zelfstudie wordt stapsgewijs uitgelegd hoe u een Azure Media Services-account maakt via Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: c551e158-aad6-47b4-931e-b46260b3ee4c
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 2f8718b108ca5af0034d4d70c10422d6ac73e892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2ca47e49af06ab0a6dffc1f4011d7dceb58830be
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260846"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348505"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Een Media Services-account maken via de Azure-portal
 
@@ -35,11 +35,11 @@ Het Media Services-account en alle gekoppelde opslagaccounts moeten zich in hetz
 In dit artikel wordt uitgelegd hoe u een Media Services-account maakt met de Azure Portal.
 
 > [!NOTE]
-> Zie [Scenarios and availability of Media Services features across datacenters](scenarios-and-availability.md#availability) (Scenario's en beschikbaarheid van Media Services-functies via datacenters) voor meer informatie over de beschikbaarheid van Azure Media Services-functies in verschillende regio's.
+> Zie [AMS-functies](availability-regions-v-2.md)voor meer informatie over de beschik baarheid van Azure Media Services functies in verschillende regio's.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie. 
+U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 
 ## <a name="create-an-ams-account"></a>Een AMS-account maken
 
@@ -54,11 +54,11 @@ In de stappen in deze sectie wordt uitgelegd hoe u een AMS-account maakt.
    3. Selecteer in **Resourcegroep** de nieuwe of bestaande resource.  Een resourcegroep is een verzameling resources met dezelfde levenscyclus, dezelfde machtigingen en hetzelfde beleid. Klik [hier](../../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie.
    4. Selecteer in **Locatie** de geografische regio die wordt gebruikt om de media en metagegevensrecords voor uw Media Services-account op te slaan. Deze regio wordt gebruikt om uw media te verwerken en te streamen. Alleen de beschikbare Media Services-regio's worden in de vervolgkeuzelijst weergegeven. 
    5. Selecteer bij **Opslagaccount** een opslagaccount om Blob Storage van de media-inhoud vanaf uw Media Services-account te leveren. U kunt een bestaand opslagaccount selecteren in dezelfde geografische regio als uw Media Services-account of u kunt een opslagaccount maken. Een nieuw opslagaccount wordt in dezelfde regio gemaakt. De regels voor opslagaccountnamen zijn hetzelfde als voor Media Services-accounts.
-      
+
        Klik [hier](../../storage/common/storage-introduction.md) voor meer informatie over opslag.
    6. Selecteer **Vastmaken aan dashboard** om de voortgang van de implementatie van het account te bekijken.
 4. Klik op **Maken** onder in het formulier.
-   
+
     Wanneer het account is gemaakt, worden de overzichtspagina's geladen. In de tabel met het streaming-eindpunt heeft het account een standaardstreaming-eindpunt met de status **Gestopt**. 
 
     >[!NOTE]
@@ -66,7 +66,7 @@ In de stappen in deze sectie wordt uitgelegd hoe u een AMS-account maakt.
    
 ## <a name="to-manage-your-ams-account"></a>Uw AMS-account beheren
 
-Selecteer **Instellingen** aan de linkerkant van de portal als u uw AMS-account wilt beheren, bijvoorbeeld om via programmacode verbinding te maken met de AMS-API, video's te uploaden, assets te coderen, beveiliging van inhoud te configureren of de taakvoortgang te bekijken. Ga vanuit **Instellingen** naar een van de beschikbare blades (zoals **API-toegang**, **Assets**, **Taken** of **Inhoudsbeveiliging**).
+Selecteer **Instellingen** aan de linkerkant van de portal als u uw AMS-account wilt beheren, bijvoorbeeld om via programmacode verbinding te maken met de AMS-API, video's te uploaden, assets te coderen, beveiliging van inhoud te configureren of de taakvoortgang te bekijken. Ga vanuit **Instellingen** naar een van de beschikbare blades (zoals **API-toegang** , **Assets** , **Taken** of **Inhoudsbeveiliging** ).
 
 ## <a name="next-steps"></a>Volgende stappen
 

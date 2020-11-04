@@ -2,19 +2,19 @@
 title: Azure Automation Updatebeheer inschakelen vanaf een virtuele machine in azure
 description: In dit artikel leest u hoe u Updatebeheer kunt inschakelen vanuit een Azure-VM.
 services: automation
-ms.date: 09/16/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 2d81b822986f641e64b9211300f83e3b254f316d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 1ed4ad3e1bae34b5007d13c7d092f46e972ac8a8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222379"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347077"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Updatebeheer inschakelen vanaf een virtuele Azure-machine
 
-In dit artikel wordt beschreven hoe u een virtuele machine van Azure kunt gebruiken om de functie [updatebeheer](overview.md) op andere computers in te scha kelen. Om Azure VM's in te schakelen op schaal, moet u een bestaande VM inschakelen met behulp van Updatebeheer.
+In dit artikel wordt beschreven hoe u de functie [updatebeheer](overview.md) kunt inschakelen op een of meer virtuele machines van Azure (VM). Als u Azure-Vm's op schaal wilt inschakelen, moet u een bestaande Azure VM inschakelen met behulp van Updatebeheer.
 
 > [!NOTE]
 > Bij het inschakelen van Updatebeheer worden slechts bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werkruimte aan een Automation-account. Zie [Regio's toewijzen voor Automation-account en Log Analytics-werkruimte](../how-to/region-mappings.md) voor een lijst van alle ondersteunde toewijzingsparen.
@@ -35,7 +35,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer de virtuele machine waarvoor u Updatebeheer wilt inschakelen. Vm's kunnen in elke regio bestaan, ongeacht de locatie van uw Automation-account. U
 
-3. Selecteer op de pagina VM onder **bewerkingen**de optie **gast en host-updates**.
+3. Selecteer op de pagina VM onder **bewerkingen** de optie **gast en host-updates**.
 
     ![Selecteer gast en host updates in het linkerdeel venster](media/enable-from-vm/select-guest-and-os-updates.png)
 

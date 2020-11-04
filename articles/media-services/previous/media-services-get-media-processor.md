@@ -3,7 +3,7 @@ title: Een media processor maken met behulp van de Azure Media Services SDK voor
 description: Meer informatie over het maken van een media processor onderdeel voor het coderen, converteren van de indeling, het versleutelen of ontsleutelen van media-inhoud voor Azure Media Services. Code voorbeelden zijn geschreven in C# en gebruiken de Media Services SDK voor .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: dbf9496f-c6f0-42a7-aa36-70f89dcb8ea2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 11/03/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df89acb7d3686a478c87c12bbf8a42962597dca6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3215eef337ca1c9a84f2f4d917dbea8ea2e090f0
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269383"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346686"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Procedure: een media processor-exemplaar ophalen
 
@@ -29,18 +29,17 @@ ms.locfileid: "89269383"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
-> 
-> 
 
 ## <a name="overview"></a>Overzicht
+
 In Media Services een media processor een onderdeel dat een specifieke verwerkings taak verwerkt, zoals code ring, indelings conversie, versleuteling of ontsleuteling van media-inhoud. Doorgaans maakt u een media processor wanneer u een taak maakt voor het coderen, versleutelen of converteren van de indeling van media-inhoud.
 
-## <a name="azure-media-processors"></a>Azure media-processors 
+## <a name="azure-media-processors"></a>Azure media-processors
 
 Het volgende onderwerp bevat een lijst met media processors:
 
-* [Mediaprocessors coderen](scenarios-and-availability.md#encoding-media-processors)
-* [Mediaprocessors voor analyse](scenarios-and-availability.md#analytics-media-processors)
+* [Mediaprocessors coderen](scenarios-and-availability.md)
+* [Mediaprocessors voor analyse](scenarios-and-availability.md)
 
 ## <a name="get-media-processor"></a>Media processor ophalen
 
@@ -59,13 +58,14 @@ private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcess
 }
 ```
 
-
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geven
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u weet hoe u een exemplaar van een media processor krijgt, gaat u naar het onderwerp [een Asset coderen](media-services-dotnet-encode-with-media-encoder-standard.md) . hier wordt uitgelegd hoe u de Media Encoder Standard kunt gebruiken om een Asset te coderen.
 
+Nu u weet hoe u een exemplaar van een media processor krijgt, gaat u naar het onderwerp [een Asset coderen](media-services-dotnet-encode-with-media-encoder-standard.md) . hier wordt uitgelegd hoe u de Media Encoder Standard kunt gebruiken om een Asset te coderen.

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a2f1229ab8a292b06dfc43b95d9047ed8d233523
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791134"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345700"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-bewerkingen uitvoeren met Azure PowerShell
 
@@ -22,12 +22,12 @@ Azure Queue-opslag is een service voor het opslaan van grote aantallen berichten
 
 > [!div class="checklist"]
 >
-> * Een wachtrij maken
-> * Een wachtrij ophalen
-> * Een bericht toevoegen
-> * Een bericht lezen
-> * Een bericht verwijderen
-> * Een wachtrij verwijderen
+> - Een wachtrij maken
+> - Een wachtrij ophalen
+> - Een bericht toevoegen
+> - Een bericht lezen
+> - Een bericht verwijderen
+> - Een wachtrij verwijderen
 
 Voor deze procedure is de Azure PowerShell-module AZ versie 0,7 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Lijst met locaties ophalen
 
-Als u niet weet welke locatie u kunt gebruiken, kunt u een lijst met de beschikbare locaties weergeven. Selecteer de gewenste locatie in de lijst. In deze oefening wordt gebruikgemaakt van **oostus** . Sla dit op in de **locatie** van de variabele voor toekomstig gebruik.
+Als u niet weet welke locatie u kunt gebruiken, kunt u een lijst met de beschikbare locaties weergeven. Selecteer de gewenste locatie in de lijst. In deze oefening wordt gebruikgemaakt van **oostus**. Sla dit op in de **locatie** van de variabele voor toekomstig gebruik.
 
 ```powershell
 Get-AzLocation | Select-Object Location
@@ -127,7 +127,7 @@ Als u de [Azure Storage Explorer](https://storageexplorer.com)gebruikt, kunt u v
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>Een bericht uit de wachtrij lezen en vervolgens verwijderen
 
-Berichten worden in de best mogelijke eerst-try-volg orde gelezen. Dit is niet gegarandeerd. Wanneer u het bericht uit de wachtrij leest, wordt het onzichtbaar voor alle andere processen die in de wachtrij kijken. Dit zorgt ervoor dat als uw code het bericht niet kan verwerken vanwege een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en probeer het opnieuw.  
+Berichten worden in de best mogelijke eerst-try-volg orde gelezen. Dit is niet gegarandeerd. Wanneer u het bericht uit de wachtrij leest, wordt het onzichtbaar voor alle andere processen die in de wachtrij kijken. Dit zorgt ervoor dat als uw code het bericht niet kan verwerken vanwege een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en probeer het opnieuw.
 
 Deze **time-out voor onzichtbaarheid** bepaalt hoe lang het bericht onzichtbaar blijft voordat het weer beschikbaar is voor verwerking. De standaardwaarde is 30 seconden.
 
@@ -185,17 +185,17 @@ In dit procedure-artikel hebt u geleerd over het basis beheer van wachtrij opsla
 
 > [!div class="checklist"]
 >
-> * Een wachtrij maken
-> * Een wachtrij ophalen
-> * Een bericht toevoegen
-> * Het volgende bericht lezen
-> * Een bericht verwijderen
-> * Een wachtrij verwijderen
+> - Een wachtrij maken
+> - Een wachtrij ophalen
+> - Een bericht toevoegen
+> - Het volgende bericht lezen
+> - Een bericht verwijderen
+> - Een wachtrij verwijderen
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Opslag-cmdlets Microsoft Azure PowerShell
 
-* [PowerShell Storage-cmdlets](/powershell/module/az.storage)
+- [PowerShell Storage-cmdlets](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) is een gratis, zelfstandige app van Microsoft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux.
+- [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) is een gratis, zelfstandige app van Microsoft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux.

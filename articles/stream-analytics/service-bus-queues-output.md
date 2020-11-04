@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: bba7da0343f234d8cc057ac4ecfa2a4f2e5b7242
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3527bdbbf1ba337d24dc390f97ed090c8dfbe039
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129878"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348386"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Service Bus uitvoer wachtrijen van Azure Stream Analytics
 
@@ -66,13 +66,13 @@ In het volgende voor beeld worden de velden `DeviceId` en `DeviceStatus` worden 
 
 De volgende afbeelding heeft de verwachte uitvoer bericht eigenschappen die in EventHub zijn geïnspecteerd met behulp van [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
 
-:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Eigenschappen kolommen":::
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Aangepaste eigenschappen van gebeurtenis":::
 
 ## <a name="system-properties"></a>Systeemeigenschappen
 
-U kunt query kolommen als [systeem eigenschappen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) koppelen aan uw uitgaande service bus-wachtrij of onderwerp-berichten.
+U kunt query kolommen als [systeem eigenschappen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) koppelen aan uw uitgaande service bus-wachtrij of onderwerp-berichten.
 
-Deze kolommen worden niet in de payload gezet, maar de bijbehorende [systeem eigenschap](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) BrokeredMessage wordt gevuld met de query kolom waarden.
+Deze kolommen worden niet in de payload gezet, maar de bijbehorende [systeem eigenschap](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) BrokeredMessage wordt gevuld met de query kolom waarden.
 Deze systeem eigenschappen worden ondersteund `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Teken reeks waarden van deze kolommen worden geparseerd als overeenkomend type eigenschaps waarde van het systeem en eventuele fouten bij het parseren worden behandeld als gegevens fouten.

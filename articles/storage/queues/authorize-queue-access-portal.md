@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
 ms.custom: contperfq1
-ms.openlocfilehash: 2593f1b7ea4cfabe0243fe6f830d718896e68473
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc6c4e57d0e04cc85bd83c11ba583b3f0b24fa82
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715512"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345989"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Kies hoe u de toegang tot de wachtrij gegevens in de Azure Portal wilt autoriseren
 
-Wanneer u toegang krijgt tot wachtrij gegevens met behulp van de [Azure Portal](https://portal.azure.com), brengt de portal aanvragen naar Azure Storage onder de voor vallen. Een aanvraag voor Azure Storage kan worden geautoriseerd met behulp van uw Azure AD-account of de toegangs sleutel voor het opslag account. De portal geeft aan welke methode u gebruikt en stelt u in staat om tussen de twee te scha kelen als u de juiste machtigingen hebt.  
+Wanneer u toegang krijgt tot wachtrij gegevens met behulp van de [Azure Portal](https://portal.azure.com), brengt de portal aanvragen naar Azure Storage onder de voor vallen. Een aanvraag voor Azure Storage kan worden geautoriseerd met behulp van uw Azure AD-account of de toegangs sleutel voor het opslag account. De portal geeft aan welke methode u gebruikt en stelt u in staat om tussen de twee te scha kelen als u de juiste machtigingen hebt.
 
 ## <a name="permissions-needed-to-access-queue-data"></a>Machtigingen die nodig zijn voor toegang tot de wachtrij gegevens
 
@@ -28,7 +28,7 @@ Afhankelijk van hoe u de toegang tot wachtrij gegevens in de Azure Portal wilt a
 
 ### <a name="use-the-account-access-key"></a>De toegangs sleutel voor het account gebruiken
 
-Als u toegang wilt hebben tot wachtrij gegevens met de toegangs sleutel voor het account, moet u een Azure-rol aan u hebben toegewezen die de Azure RBAC-actie **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat. Deze Azure-rol is mogelijk een ingebouwde of aangepaste rol. Ingebouwde rollen die **micro soft. Storage/Storage accounts/listkeys ophalen/Action** ondersteunen zijn onder andere:
+Als u toegang wilt hebben tot wachtrij gegevens met de toegangs sleutel voor het account, moet u een Azure-rol aan u hebben toegewezen die de Azure RBAC-actie **micro soft. Storage/Storage accounts/listkeys ophalen/Action** bevat. Deze Azure-rol is mogelijk een ingebouwde of aangepaste rol. Ingebouwde rollen die **micro soft. Storage/Storage accounts/listkeys ophalen/Action** ondersteunen zijn onder andere:
 
 - De rol van Azure Resource Manager [eigenaar](../../role-based-access-control/built-in-roles.md#owner)
 - De rol [inzender](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
@@ -37,7 +37,7 @@ Als u toegang wilt hebben tot wachtrij gegevens met de toegangs sleutel voor het
 Wanneer u probeert toegang te krijgen tot wachtrij gegevens in de Azure Portal, controleert de portal eerst of aan u een rol is toegewezen met **micro soft. Storage/Storage accounts/listkeys ophalen/Action**. Als aan u een rol is toegewezen met deze actie, gebruikt de Portal de account sleutel voor toegang tot de wachtrij gegevens. Als u geen rol aan deze actie hebt toegewezen, probeert de portal toegang te krijgen tot gegevens met uw Azure AD-account.
 
 > [!NOTE]
-> De service beheerder rollen van de klassieke abonnements beheerder en Co-Administrator omvatten het equivalent van de Azure Resource Manager [eigenaar](../../role-based-access-control/built-in-roles.md#owner) van de rol. De rol **eigenaar** omvat alle acties, waaronder **micro soft. Storage/Storage accounts/listkeys ophalen/Action**, zodat een gebruiker met een van deze beheerders rollen ook toegang heeft tot de wachtrij gegevens met de account sleutel. Zie [Klassieke abonnementsbeheerdersrollen, Azure-rollen en Azure AD-beheerdersrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles) voor meer informatie.
+> De service beheerder rollen van de klassieke abonnements beheerder en Co-Administrator omvatten het equivalent van de Azure Resource Manager [eigenaar](../../role-based-access-control/built-in-roles.md#owner) van de rol. De rol **eigenaar** omvat alle acties, waaronder **micro soft. Storage/Storage accounts/listkeys ophalen/Action** , zodat een gebruiker met een van deze beheerders rollen ook toegang heeft tot de wachtrij gegevens met de account sleutel. Zie [Klassieke abonnementsbeheerdersrollen, Azure-rollen en Azure AD-beheerdersrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles) voor meer informatie.
 
 ### <a name="use-your-azure-ad-account"></a>Uw Azure AD-account gebruiken
 
@@ -58,7 +58,7 @@ Aangepaste rollen kunnen verschillende combi Naties van dezelfde machtigingen on
 Het weer geven van wacht rijen met een rol beheerder voor klassieke abonnementen wordt niet ondersteund. Een gebruiker moet een lijst met wacht rijen hebben toegewezen aan de rol van de Azure Resource Manager **lezer** , de rol van de **gegevens lezer van de opslag wachtrij** of de rol van de gegevens Inzender voor de **opslag wachtrij** .
 
 > [!IMPORTANT]
-> De preview-versie van Storage Explorer in het Azure Portal biedt geen ondersteuning voor het gebruik van Azure AD-referenties om wachtrij gegevens te bekijken en te wijzigen. Storage Explorer in de Azure Portal maakt altijd gebruik van de account sleutels om toegang te krijgen tot gegevens. Als u Storage Explorer in het Azure Portal wilt gebruiken, moet u een rol toewijzen die **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat.
+> De preview-versie van Storage Explorer in het Azure Portal biedt geen ondersteuning voor het gebruik van Azure AD-referenties om wachtrij gegevens te bekijken en te wijzigen. Storage Explorer in de Azure Portal maakt altijd gebruik van de account sleutels om toegang te krijgen tot gegevens. Als u Storage Explorer in het Azure Portal wilt gebruiken, moet u een rol toewijzen die **micro soft. Storage/Storage accounts/listkeys ophalen/Action** bevat.
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Navigeer naar wacht rijen in de Azure Portal
 
@@ -74,11 +74,11 @@ Wanneer u naar een wachtrij navigeert, geeft de Azure Portal aan of u momenteel 
 
 Als u een verificatie uitvoert met de toegangs sleutel voor het account, ziet u de **toegangs sleutel** die is opgegeven als verificatie methode in de portal:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar wachtrij gegevens in de Azure Portal":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Scherm opname van de gebruiker die momenteel toegang heeft tot wacht rijen met de account sleutel":::
 
 Als u wilt overschakelen op het gebruik van een Azure AD-account, klikt u op de koppeling die in de afbeelding is gemarkeerd. Als u over de juiste machtigingen beschikt via de Azure-rollen die aan u zijn toegewezen, kunt u door gaan. Als u echter niet over de juiste machtigingen beschikt, ziet u een fout bericht als het volgende:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar wachtrij gegevens in de Azure Portal":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Fout die wordt weer gegeven als het Azure AD-account geen ondersteuning biedt voor toegang":::
 
 U ziet dat er geen wacht rijen worden weer gegeven in de lijst als uw Azure AD-account geen machtigingen heeft om ze weer te geven. Klik op de **Schakel optie om toegang te krijgen** tot de sleutel koppeling om de toegangs sleutel opnieuw te gebruiken voor verificatie.
 
@@ -86,7 +86,7 @@ U ziet dat er geen wacht rijen worden weer gegeven in de lijst als uw Azure AD-a
 
 Als u de verificatie uitvoert met uw Azure AD-account, ziet u de **Azure AD-gebruikers account** die is opgegeven als verificatie methode in de portal:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar wachtrij gegevens in de Azure Portal":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Scherm opname van de gebruiker die momenteel toegang heeft tot wacht rijen met een Azure AD-account":::
 
 Als u wilt overschakelen op het gebruik van de toegangs sleutel voor het account, klikt u op de koppeling die in de afbeelding is gemarkeerd. Als u toegang hebt tot de account sleutel, kunt u door gaan. Als u echter geen toegang hebt tot de account sleutel, wordt er een fout bericht weer gegeven in de Azure Portal.
 

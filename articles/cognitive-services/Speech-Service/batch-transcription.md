@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e4e5f4c1a50c814174dbbd5d419fe24b2e9f88e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336677"
+ms.locfileid: "93345496"
 ---
 # <a name="how-to-use-batch-transcription"></a>Batch-transcriptie gebruiken
 
@@ -49,7 +49,7 @@ Net als bij alle functies van de speech-service maakt u een abonnements sleutel 
 Volg de stappen in [akoestische aanpassing](how-to-customize-acoustic-models.md) en [taal aanpassing](how-to-customize-language-model.md)als u van plan bent om modellen aan te passen. Als u de gemaakte modellen in batch transcriptie wilt gebruiken, hebt u hun model locatie nodig. U kunt de model locatie ophalen wanneer u de details van het model ( `self` eigenschap) inspecteert. Een geïmplementeerd aangepast eind punt is *niet nodig* voor de batch transcriptie-service.
 
 >[!NOTE]
-> Als onderdeel van de REST API heeft batch transcriptie een set [quota en limieten](speech-services-quotas-and-limits.md#speech-to-text-quotas-and-limits-per-speech-resource), die we aanmoedigen te beoordelen. Om optimaal te profiteren van de mogelijkheid van batch transcriptie om een groot aantal audio bestanden efficiënt te transcriberen, raden we u aan om altijd meerdere bestanden per aanvraag te verzenden of een Blob Storage-container aan te wijzen met de audio bestanden om te transcriberen. Met de service worden de bestanden gelijktijdig getranscribeerd, waardoor de verlever tijd is verminderd. Het gebruik van meerdere bestanden in één aanvraag is zeer eenvoudig en eenvoudig: Zie de [configuratie](#configuration) sectie. 
+> Als onderdeel van de REST API heeft batch transcriptie een set [quota en limieten](speech-services-quotas-and-limits.md#batch-transcription), die we aanmoedigen te beoordelen. Om optimaal te profiteren van de mogelijkheid van batch transcriptie om een groot aantal audio bestanden efficiënt te transcriberen, raden we u aan om altijd meerdere bestanden per aanvraag te verzenden of een Blob Storage-container aan te wijzen met de audio bestanden om te transcriberen. Met de service worden de bestanden gelijktijdig getranscribeerd, waardoor de verlever tijd is verminderd. Het gebruik van meerdere bestanden in één aanvraag is zeer eenvoudig en eenvoudig: Zie de [configuratie](#configuration) sectie. 
 
 ## <a name="batch-transcription-api"></a>Transcriptie-API voor batch
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 957695892c39dd3ddfd9dc45d60158c89eb22698
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 62cb8db094cf1bfd7d81b1da06dd7a1b743ec045
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130626"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347479"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Aanbieding voor IoT Edge-module maken
 
@@ -21,8 +21,8 @@ In dit artikel wordt beschreven hoe u een Internet of Things (IoT) Edge-module a
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links de optie **commerciële Marketplace** -  >  **overzicht** .
-3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **IOT Edge module** .
+2. Selecteer in het menu links de optie **commerciële Marketplace** -  >  **overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **IOT Edge module**.
 
     ![Illustreert het navigatie menu.](./media/new-offer-iot-edge.png)
 
@@ -94,7 +94,7 @@ Op deze pagina kunt u de categorieën definiëren die worden gebruikt voor het g
 Selecteer categorieën en subcategorieën om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Zorg ervoor dat u beschrijft hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. Selecteer:
 
 - Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
-- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing** .
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
 
 Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md). In Marketplace worden IOT Edge-modules altijd weer gegeven in de categorie  **Internet of Things**  >  **IOT Edge module**   .
 
@@ -111,7 +111,7 @@ We bieden een standaard contract sjabloon om trans acties in de commerciële Mar
 
 Zie voor meer informatie over het standaard contract [Standard-contract voor de micro soft Commercial Marketplace](../standard-contract.md). U kunt ook het [standaard](https://go.microsoft.com/fwlink/?linkid=2041178) -PDF-bestand downloaden (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
 
-Als u het standaard contract wilt gebruiken, schakelt u het selectie vakje **het standaard contract voor commerciële Marketplace van micro soft gebruiken** in en klikt u op **accepteren** .
+Als u het standaard contract wilt gebruiken, schakelt u het selectie vakje **het standaard contract voor commerciële Marketplace van micro soft gebruiken** in en klikt u op **accepteren**.
 
 > [!NOTE]
 > Nadat u een aanbieding hebt gepubliceerd met het standaard contract voor micro soft Commercial Marketplace, kunt u uw eigen aangepaste voor waarden niet gebruiken. U kunt uw oplossing aanbieden onder het Standard-contract of onder uw eigen voor waarden.
@@ -242,7 +242,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de zoek resultaten van Azure Marketplace:
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de zoek resultaten voor Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -252,7 +252,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal:
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -263,7 +263,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal Zoek resultaten:
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal Zoek resultaten.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -310,16 +310,16 @@ De acties die beschikbaar zijn in het plan overzicht variëren, afhankelijk van 
 
 ### <a name="create-new-plan"></a>Nieuw plan maken
 
-Selecteer **nieuw plan maken** . Het dialoog venster **nieuw plan** wordt weer gegeven.
+Selecteer **nieuw plan maken**. Het dialoog venster **nieuw plan** wordt weer gegeven.
 
 Maak in het vak **abonnement-id** een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in het webadres van het product. Gebruik alleen kleine letters en cijfers, streepjes of onderstrepings tekens en Maxi maal 50.
 
-Voer in het vak **naam van abonnement** een naam in voor dit abonnement. Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke naam voor elk abonnement. U kunt bijvoorbeeld een aanbiedings naam van **Windows Server** gebruiken met plannen **Windows Server 2016** en **Windows Server 2019** .
+Voer in het vak **naam van abonnement** een naam in voor dit abonnement. Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke naam voor elk abonnement. U kunt bijvoorbeeld een aanbiedings naam van **Windows Server** gebruiken met plannen **Windows Server 2016** en **Windows Server 2019**.
 
 > [!NOTE]
 > De plan-ID kan niet worden gewijzigd nadat u **maken** hebt geselecteerd.
 
-Selecteer **Maken** .
+Selecteer **Maken**.
 
 ### <a name="plan-setup"></a>Installatie plannen
 
@@ -327,7 +327,7 @@ Op dit tabblad kunt u configureren in welke Clouds het plan beschikbaar is. Uw a
 
 #### <a name="azure-regions"></a>Azure-regio's
 
-Alle plannen voor IoT Edge module aanbiedingen worden automatisch beschikbaar gemaakt in **Azure Global** .  Uw abonnement kan door klanten worden gebruikt in alle wereld wijde Azure-regio's die gebruikmaken van Marketplace. Zie [geografische Beschik baarheid en valuta ondersteuning](../marketplace-geo-availability-currencies.md)voor meer informatie.
+Alle plannen voor IoT Edge module aanbiedingen worden automatisch beschikbaar gemaakt in **Azure Global**.  Uw abonnement kan door klanten worden gebruikt in alle wereld wijde Azure-regio's die gebruikmaken van Marketplace. Zie [geografische Beschik baarheid en valuta ondersteuning](../marketplace-geo-availability-currencies.md)voor meer informatie.
 
 Selecteer de optie [Azure Government](../../azure-government/documentation-government-welcome.md) om uw oplossing hier weer te geven. Dit is een community-Cloud met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-en lokale of tribale overheids instanties en partners die in aanmerking komen voor de overheid. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor deze Cloud community. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten). Voordat u naar Azure Government [publiceert](../../azure-government/documentation-government-manage-marketplace-partners.md) , moet u de oplossing in dat gebied testen en bevestigen, omdat de resultaten mogelijk verschillend zijn. Als u uw oplossing wilt klaarzetten en testen, vraagt u een proef account aan bij [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/).
 
@@ -336,7 +336,7 @@ Selecteer de optie [Azure Government](../../azure-government/documentation-gover
 
 #### <a name="azure-government-certifications"></a>Azure Government-certificeringen
 
-Deze optie is alleen zichtbaar als **Azure Government** is geselecteerd onder **Azure-regio's** .
+Deze optie is alleen zichtbaar als **Azure Government** is geselecteerd onder **Azure-regio's**.
 
 Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS. Als u uw certificeringen voor deze Program ma's wilt behalen, kunt u Maxi maal 100 koppelingen opgeven die uw certificeringen beschrijven. Dit kunnen koppelingen zijn naar uw aanbiedingen op het programma, rechtstreeks of op uw eigen website. Deze koppelingen zijn alleen zichtbaar voor Azure Government klanten.
 
@@ -362,7 +362,7 @@ Selecteer **concept opslaan** nadat u deze velden hebt voltooid.
 
 Hier volgt een voor beeld van de details van het Azure Marketplace-plan (alle prijzen in de lijst zijn alleen bedoeld als voor beeld van de werkelijke kosten):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Illustreert Details van het Azure Marketplace-abonnement.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -372,7 +372,7 @@ Hier volgt een voor beeld van de details van het Azure Marketplace-plan (alle pr
 
 <br>Hier volgt een voor beeld van de details van het Azure Portal plan (alle prijzen in de lijst zijn alleen bedoeld als voor beeld van de werkelijke kosten):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Illustreert de details van het Azure Portal plan.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -413,15 +413,15 @@ U geeft de volgende informatie op het tabblad **Details van de afbeeldings opsla
 
 **Gebruikers naam van de beheerder voor de Azure container Registry** : Geef de [gebruikers naam](../../container-registry/container-registry-authentication.md#admin-account)van de beheerder op die is gekoppeld aan de Azure container Registry met de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. Als u de gebruikers naam en het wacht woord van de beheerder wilt ophalen, stelt u de eigenschap **beheerder** in op **True** met behulp van de Azure Command-Line interface (CLI). U kunt desgewenst **beheerder** instellen om in te **scha kelen** in de Azure Portal.
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Illustreert het dialoog venster update container Registry.":::
 
 #### <a name="call-out-description"></a>Beschrijving van aanroep
 
 1. Gebruiker met beheerdersrechten
 
-<br>**Wacht woord voor de Azure container Registry** : Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht.](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
+<br>**Wacht woord voor de Azure container Registry** : Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht.](/cli/azure/acr/credential#az-acr-credential-show)
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Illustreert het scherm toegangs sleutel in de Azure Portal.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -429,19 +429,19 @@ U geeft de volgende informatie op het tabblad **Details van de afbeeldings opsla
 2. Gebruikersnaam
 3. Wachtwoord
 
-**De naam van de opslag plaats in de Azure container Registry** . Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. U geeft de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **pagina container Registry opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in de Azure Portal](../../container-registry/container-registry-repositories.md)voor meer informatie. Nadat de naam is ingesteld, kan deze niet meer worden gewijzigd. Gebruik een unieke naam voor elke aanbieding in uw account.
+**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. U geeft de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **pagina container Registry opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in de Azure Portal](../../container-registry/container-registry-repositories.md)voor meer informatie. Nadat de naam is ingesteld, kan deze niet meer worden gewijzigd. Gebruik een unieke naam voor elke aanbieding in uw account.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Afbeeldings Tags voor nieuwe versies van uw aanbieding
 
 Klanten moeten automatisch updates kunnen ophalen van de Azure Marketplace wanneer u een update publiceert. Als ze niet willen bijwerken, moeten ze een specifieke versie van de installatie kopie kunnen blijven. U kunt dit doen door telkens wanneer u een update voor de installatie kopie maakt, nieuwe afbeeldings tags toe te voegen.
 
-**Afbeeldings code** . Dit veld moet een **laatste** tag bevatten die verwijst naar de nieuwste versie van uw installatie kopie op alle ondersteunde platforms. Het moet ook een versie label bevatten (bijvoorbeeld vanaf xx. xx. xx, waarbij XX een getal is). Klanten moeten [manifest Tags](https://github.com/estesp/manifest-tool) gebruiken om meerdere platforms te bereiken. Alle labels waarnaar wordt verwezen door een manifest-tag, moeten ook worden toegevoegd, zodat ze kunnen worden geüpload. Alle manifest Tags (met uitzonde ring van de laatste tag) moeten beginnen met X. Y-of X. Y. Z-waarbij X, Y en Z gehele getallen zijn. Als een van de nieuwste Tags bijvoorbeeld verwijst naar 1.0.1-Linux-x64, 1.0.1-Linux-arm32 en 1.0.1-Windows-arm32, moeten deze zes Tags worden toegevoegd aan dit veld. Zie [de technische activa van uw IOT Edge-module voorbereiden](create-iot-edge-module-asset.md) voor meer informatie over tags en versie beheer.
+**Afbeeldings code**. Dit veld moet een **laatste** tag bevatten die verwijst naar de nieuwste versie van uw installatie kopie op alle ondersteunde platforms. Het moet ook een versie label bevatten (bijvoorbeeld vanaf xx. xx. xx, waarbij XX een getal is). Klanten moeten [manifest Tags](https://github.com/estesp/manifest-tool) gebruiken om meerdere platforms te bereiken. Alle labels waarnaar wordt verwezen door een manifest-tag, moeten ook worden toegevoegd, zodat ze kunnen worden geüpload. Alle manifest Tags (met uitzonde ring van de laatste tag) moeten beginnen met X. Y-of X. Y. Z-waarbij X, Y en Z gehele getallen zijn. Als een van de nieuwste Tags bijvoorbeeld verwijst naar 1.0.1-Linux-x64, 1.0.1-Linux-arm32 en 1.0.1-Windows-arm32, moeten deze zes Tags worden toegevoegd aan dit veld. Zie [de technische activa van uw IOT Edge-module voorbereiden](create-iot-edge-module-asset.md) voor meer informatie over tags en versie beheer.
 
 ### <a name="default-deployment-settings-optional"></a>Standaard implementatie-instellingen (optioneel)
 
 Definieer de meest voorkomende instellingen voor het implementeren van uw IoT Edge-module. Optimaliseer klant implementaties door uw IoT Edge module out-of-the-box te laten starten met deze standaard instellingen.
 
-**Standaard routes** . De IoT Edge hub beheert de communicatie tussen modules, de IoT Hub en apparaten. U kunt routes instellen voor de invoer van gegevens en de uitvoer tussen modules en de IoT Hub, waarmee u de flexibiliteit krijgt om berichten te verzenden waar ze moeten zijn, zonder dat er extra services nodig zijn om berichten te verwerken of extra code te schrijven. Routes worden gemaakt met behulp van naam/waarde-paren. U kunt Maxi maal vijf standaard route namen definiëren, elk Maxi maal 512 tekens lang.
+**Standaard routes**. De IoT Edge hub beheert de communicatie tussen modules, de IoT Hub en apparaten. U kunt routes instellen voor de invoer van gegevens en de uitvoer tussen modules en de IoT Hub, waarmee u de flexibiliteit krijgt om berichten te verzenden waar ze moeten zijn, zonder dat er extra services nodig zijn om berichten te verwerken of extra code te schrijven. Routes worden gemaakt met behulp van naam/waarde-paren. U kunt Maxi maal vijf standaard route namen definiëren, elk Maxi maal 512 tekens lang.
 
 Zorg ervoor dat u de juiste [route syntaxis](../../iot-edge/module-composition.md#declare-routes)gebruikt) in uw route waarde (meestal gedefinieerd als van/Message/* in $upstream). Dit betekent dat alle berichten die door modules worden verzonden, naar uw IoT Hub gaan. Als u wilt verwijzen naar uw module, gebruikt u de standaard module naam. de naam van uw **aanbieding** is geen spaties of speciale tekens. Als u wilt verwijzen naar andere modules die nog niet bekend zijn, gebruikt u de <FROM_MODULE_NAME> Conventie om uw klanten te laten weten dat ze deze gegevens moeten bijwerken. Zie voor meer informatie over IoT Edge routes [routes declareren](../../iot-edge/module-composition.md#declare-routes).
 
@@ -452,21 +452,21 @@ Als module ContosoModule bijvoorbeeld luistert naar invoer op ContosoInput en ui
 - #2 van naam: FromContosoModuleToCloud
 - Waarde #2: van/messages/modules/ContonsoModule/outputs/ContosoOutput naar $upstream
 
-**Standaard module dubbele gewenste eigenschappen** . Een module dubbele is een JSON-document in de IoT Hub waarin de status informatie voor een module-exemplaar wordt opgeslagen, inclusief gewenste eigenschappen. Gewenste eigenschappen worden samen met gerapporteerde eigenschappen gebruikt voor het synchroniseren van module configuratie of-voor waarden. De back-end van de oplossing kan gewenste eigenschappen instellen en de module kan deze lezen. De module kan ook wijzigings meldingen ontvangen in de gewenste eigenschappen. Gewenste eigenschappen worden gemaakt met Maxi maal vijf paren naam/waarde en elke standaard waarde moet kleiner zijn dan 512 tekens. U kunt Maxi maal vijf naam/waarde dubbele gewenste eigenschappen definiëren. Waarden van dubbele gewenste eigenschappen moeten een geldige JSON, niet-escaped zijn, zonder matrices met een Maxi maal geneste hiërarchie van vier niveaus. In een scenario waarbij een para meter die vereist is voor een standaard waarde niet logisch is (bijvoorbeeld het IP-adres van de server van een klant), kunt u een para meter toevoegen als de standaard waarde. Zie [gewenste eigenschappen definiëren of bijwerken](../../iot-edge/module-composition.md#define-or-update-desired-properties)voor meer informatie over dubbele gewenste eigenschappen.
+**Standaard module dubbele gewenste eigenschappen**. Een module dubbele is een JSON-document in de IoT Hub waarin de status informatie voor een module-exemplaar wordt opgeslagen, inclusief gewenste eigenschappen. Gewenste eigenschappen worden samen met gerapporteerde eigenschappen gebruikt voor het synchroniseren van module configuratie of-voor waarden. De back-end van de oplossing kan gewenste eigenschappen instellen en de module kan deze lezen. De module kan ook wijzigings meldingen ontvangen in de gewenste eigenschappen. Gewenste eigenschappen worden gemaakt met Maxi maal vijf paren naam/waarde en elke standaard waarde moet kleiner zijn dan 512 tekens. U kunt Maxi maal vijf naam/waarde dubbele gewenste eigenschappen definiëren. Waarden van dubbele gewenste eigenschappen moeten een geldige JSON, niet-escaped zijn, zonder matrices met een Maxi maal geneste hiërarchie van vier niveaus. In een scenario waarbij een para meter die vereist is voor een standaard waarde niet logisch is (bijvoorbeeld het IP-adres van de server van een klant), kunt u een para meter toevoegen als de standaard waarde. Zie [gewenste eigenschappen definiëren of bijwerken](../../iot-edge/module-composition.md#define-or-update-desired-properties)voor meer informatie over dubbele gewenste eigenschappen.
 
 Als een module bijvoorbeeld een dynamisch Configureer bare vernieuwings frequentie ondersteunt met behulp van dubbele gewenste eigenschappen, is het zinvol om de volgende standaard dubbele gewenste eigenschap te definiëren:
 
 - #1 van naam: RefreshRate
 - Waarde #1:60
 
-**Standaard omgevings variabelen** . Omgevings variabelen bieden aanvullende informatie over een module die het configuratie proces helpt. Omgevings variabelen worden gemaakt met behulp van naam/waarde-paren. De naam en waarde van elke standaard omgevings variabele moet kleiner zijn dan 512 tekens en u kunt Maxi maal vijf definiëren. Als een para meter die vereist is voor een standaard waarde niet logisch is (bijvoorbeeld het IP-adres van de server van een klant), kunt u een para meter toevoegen als de standaard waarde.
+**Standaard omgevings variabelen**. Omgevings variabelen bieden aanvullende informatie over een module die het configuratie proces helpt. Omgevings variabelen worden gemaakt met behulp van naam/waarde-paren. De naam en waarde van elke standaard omgevings variabele moet kleiner zijn dan 512 tekens en u kunt Maxi maal vijf definiëren. Als een para meter die vereist is voor een standaard waarde niet logisch is (bijvoorbeeld het IP-adres van de server van een klant), kunt u een para meter toevoegen als de standaard waarde.
 
 Als er bijvoorbeeld een module vereist is om de gebruiksrecht overeenkomst te accepteren voordat deze wordt gestart, kunt u de volgende omgevings variabele definiëren:
 
 - Name #1: ACCEPT_EULA
 - Waarde #1: Y
 
-**Standaard opties voor container maken** . Opties voor het maken van containers Maak het maken van de docker-container van de IoT Edge module direct. IoT Edge ondersteunt docker engine API-container opties maken. Bekijk alle opties in [lijst containers.](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) Het veld voor het maken van opties moet een geldige JSON, een niet-escape teken en minder dan 512 tekens zijn.
+**Standaard opties voor container maken**. Opties voor het maken van containers Maak het maken van de docker-container van de IoT Edge module direct. IoT Edge ondersteunt docker engine API-container opties maken. Bekijk alle opties in [lijst containers.](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) Het veld voor het maken van opties moet een geldige JSON, een niet-escape teken en minder dan 512 tekens zijn.
 
 Als een module bijvoorbeeld poort binding vereist, definieert u de volgende Create-opties:
 
@@ -476,7 +476,7 @@ Als een module bijvoorbeeld poort binding vereist, definieert u de volgende Crea
 
 Nadat u alle vereiste delen van de aanbieding hebt voltooid, kunt u deze verzenden om te controleren en te publiceren.
 
-Selecteer in de rechter bovenhoek van de portal **controleren en publiceren** .
+Selecteer in de rechter bovenhoek van de portal **controleren en publiceren**.
 
 Op de pagina controleren kunt u de publicatie status zien:
 
@@ -488,8 +488,8 @@ Op de pagina controleren kunt u de publicatie status zien:
 
 Selecteer **publiceren** om de aanbieding voor publicatie in te dienen.
 
-We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live** .
+We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](//azure/marketplace/partner-center-portal/update-existing-offer)
+- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](update-existing-offer.md)

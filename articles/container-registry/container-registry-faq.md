@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 4c65ca24b3fa4dccb2bb0060996ade50c90bd02a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148523"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346992"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -262,7 +262,8 @@ Afbeeldings quarantaine is momenteel een preview-functie van ACR. U kunt de quar
 Het instellen van een Azure container Registry voor anonieme toegang (openbaar) is momenteel een preview-functie. Als u een [bereik toewijzing (gebruiker) of Token bronnen](./container-registry-repository-scoped-permissions.md) in uw REGI ster hebt, moet u deze verwijderen voordat u een ondersteunings ticket gaat maken (systeem bereik toewijzingen kunnen worden genegeerd). Als u open bare toegang wilt inschakelen, opent u een ondersteunings ticket op https://aka.ms/acr/support/create-ticket . Zie het [Feedback forum van Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)voor meer informatie.
 
 > [!NOTE]
-> Alleen de Api's die zijn vereist voor het ophalen van een bekende installatie kopie, kunnen anoniem worden geopend. Geen andere Api's voor bewerkingen als label lijst of opslagplaats lijst zijn anoniem toegankelijk.
+> * Alleen de Api's die zijn vereist voor het ophalen van een bekende installatie kopie, kunnen anoniem worden geopend. Geen andere Api's voor bewerkingen als label lijst of opslagplaats lijst zijn anoniem toegankelijk.
+> * Voordat u een anonieme pull-bewerking probeert `docker logout` uit te voeren, moet u uitvoeren om ervoor te zorgen dat u alle bestaande docker-referenties wist.
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnose-en status controles
 

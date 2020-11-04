@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7cf3caa0e309c1640db6ca2817a91f9db71c5110
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 03655e88d4d4c9183bff71e04bf447f470fcf557
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129912"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348403"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Azure-beveiligings basislijn voor Stream Analytics
 
@@ -238,9 +238,9 @@ Zie het [overzicht van Azure Security-basis lijnen](../security/benchmarks/secur
 
 **Hulp** : Azure AD heeft ingebouwde rollen die expliciet moeten worden toegewezen. Rollen kunnen worden opgevraagd om lidmaatschap te detecteren. Gebruik de Azure AD Power shell-module om ad hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
-* [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center bewaking** : Ja
 
@@ -542,7 +542,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 * [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription)
 
 * [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
@@ -682,7 +682,7 @@ Daarnaast kunt u met Azure resource Graph bronnen in de abonnementen opvragen/on
 
 **Hulp** : gebruik Azure Policy aliassen in de naam ruimte ' micro soft. StreamAnalytics ' om aangepaste beleids regels te maken om de configuratie van uw Azure stream Analytics te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities die betrekking hebben op uw Azure Stream Analytics, zoals:-Diagnostische logboeken in Azure Stream Analytics moeten worden ingeschakeld
 
-* [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Ingebouwde beleidsdefinities voor Azure Policy](../governance/policy/samples/built-in-policies.md)
 
@@ -724,7 +724,7 @@ Daarnaast kunt u met Azure resource Graph bronnen in de abonnementen opvragen/on
 
 **Hulp** : Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren, met inbegrip van aangepaste Azure-beleids regels, Azure Resource Manager sjablonen, desired state Configuration-scripts, door de gebruiker gedefinieerde functies, query's. Als u toegang wilt krijgen tot de resources die u beheert in azure DevOps, kunt u machtigingen verlenen of weigeren aan specifieke gebruikers, ingebouwde beveiligings groepen of groepen die zijn gedefinieerd in Azure Active Directory (Azure AD) als deze zijn geïntegreerd met Azure DevOps, of Active Directory als dit is geïntegreerd met TFS.
 
-* [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
 * [Over machtigingen en groepen in azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -880,7 +880,7 @@ Als u een back-up wilt maken van gegevens van services die worden ondersteund do
 
 Door de klant beheerd/verschafte sleutels kunnen worden ondersteund in Azure Key Vault met behulp van Azure CLI of Power shell.
 
-* [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center bewaking** : momenteel niet beschikbaar
 

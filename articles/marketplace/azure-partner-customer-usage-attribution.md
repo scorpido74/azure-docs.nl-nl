@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 91de9aff154dec1a61360477edebc90b7a13cf24
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125169"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348335"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -74,7 +74,7 @@ Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de
    * Partners kunnen meerdere GUID'S registreren.
    * Partners kunnen GUID'S registreren voor niet-Marketplace-oplossings sjablonen en aanbiedingen.
 
-1. Selecteer in de rechter bovenhoek het tandwiel pictogram instellingen en selecteer vervolgens **instellingen voor ontwikkel aars** .
+1. Selecteer in de rechter bovenhoek het tandwiel pictogram instellingen en selecteer vervolgens **instellingen voor ontwikkel aars**.
 
 1. Selecteer op de **pagina account instellingen** de optie **Tracking GUID toevoegen.**
 
@@ -82,7 +82,7 @@ Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de
 
 1. Als u meer dan één GUID wilt registreren, selecteert u opnieuw **Tracking GUID toevoegen** . Er worden aanvullende vakken op de pagina weer gegeven.
 
-1. Selecteer **Opslaan** .
+1. Selecteer **Opslaan**.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sjablonen gebruiken
 Veel partner oplossingen worden geïmplementeerd met Azure Resource Manager sjablonen. Als u een resource manager-sjabloon hebt die beschikbaar is in azure Marketplace, op GitHub of als Snelstartgids, is het proces voor het wijzigen van uw sjabloon om de toewijzing van klant gebruik direct uit te scha kelen.
@@ -102,7 +102,7 @@ Als u een Globally Unique Identifier (GUID) wilt toevoegen, brengt u één wijzi
 
 1. Voeg een nieuwe resource van het type [micro soft. resources/Deployments](/azure/templates/microsoft.resources/deployments) toe in het hoofd sjabloon bestand. De resource moet zich in het **mainTemplate.jsop** of **azuredeploy.js** alleen in het bestand en niet in geneste of gekoppelde sjablonen.
 
-1. Voer de GUID-waarde na het `pid-` voor voegsel in als de naam van de resource. Als de GUID bijvoorbeeld eb7927c8-dd66-43e1-b0cf-c346a422063 is, is de resource naam _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_ .
+1. Voer de GUID-waarde na het `pid-` voor voegsel in als de naam van de resource. Als de GUID bijvoorbeeld eb7927c8-dd66-43e1-b0cf-c346a422063 is, is de resource naam _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_.
 
 1. Controleer de sjabloon op eventuele fouten.
 
@@ -159,7 +159,7 @@ Gebruik het **configuratie** kenmerk voor python. U kunt het kenmerk alleen toev
 
 #### <a name="example-the-net-sdk"></a>Voor beeld: de .NET SDK
 
-Zorg ervoor dat u de gebruikers agent instelt voor .NET. De bibliotheek [micro soft. Azure. Management. Fluent](/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) kan worden gebruikt om de gebruikers agent in te stellen met de volgende code (voor beeld in C#):
+Zorg ervoor dat u de gebruikers agent instelt voor .NET. De bibliotheek [micro soft. Azure. Management. Fluent](/dotnet/api/microsoft.azure.management.fluent) kan worden gebruikt om de gebruikers agent in te stellen met de volgende code (voor beeld in C#):
 
 ```csharp
 

@@ -4,18 +4,22 @@ description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108419"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346312"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
 
 Dit artikel is een inleiding tot het ontwikkelen van Azure Functions met behulp van python. De onderstaande inhoud veronderstelt dat u de [hand leiding voor de Azure functions-ontwikkel aars](functions-reference.md)al hebt gelezen.
 
-Zie de voor [beelden van python-functies](/samples/browse/?products=azure-functions&languages=python)voor voorbeeld projecten van een zelfstandige functie in python.
+Als een python-ontwikkelaar bent u mogelijk ook geïnteresseerd in een van de volgende artikelen:
+
+| Aan de slag | Concepten| Scenario's/voor beelden |
+| -- | -- | -- | 
+| <ul><li>[Python-functie met Visual Studio code](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[Python-functie met Terminal/opdracht prompt](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[Ontwikkelaarsgids](functions-reference.md)</li><li>[Hostingopties](functions-scale.md)</li><li>[Prestatie &nbsp; overwegingen](functions-best-practices.md)</li></ul> | <ul><li>[Classificatie van afbeeldingen met PyTorch](machine-learning-pytorch.md)</li><li>[Voor beeld van Azure Automation](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Machine Learning met TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Bladeren door python-voor beelden](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>Programmeermodel
 
@@ -44,7 +48,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Gebruik de python-aantekeningen in het pakket [Azure. functions. *](/python/api/azure-functions/azure.functions?view=azure-python) om invoer en uitvoer aan uw methoden te koppelen.
+Gebruik de python-aantekeningen in het pakket [Azure. functions. *](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) om invoer en uitvoer aan uw methoden te koppelen.
 
 ## <a name="alternate-entry-point"></a>Alternatief invoer punt
 
@@ -83,19 +87,19 @@ De aanbevolen mapstructuur voor een python functions-project ziet eruit als in h
 ```
 De hoofdmap van het project ( \_ \_ app \_ \_ ) kan de volgende bestanden bevatten:
 
-* *local.settings.jsop*: wordt gebruikt voor het opslaan van app-instellingen en verbindings reeksen wanneer deze lokaal worden uitgevoerd. Dit bestand wordt niet gepubliceerd naar Azure. Zie [Local. settings. File](functions-run-local.md#local-settings-file)voor meer informatie.
-* *requirements.txt*: bevat de lijst met pakketten die door het systeem worden geïnstalleerd bij het publiceren naar Azure.
-* *host.jsop*: bevat globale configuratie opties die van invloed zijn op alle functies in een functie-app. Dit bestand wordt gepubliceerd naar Azure. Niet alle opties worden ondersteund bij het lokaal uitvoeren. Zie [host.jsvoor](functions-host-json.md)meer informatie.
-* *. funcignore*: (optioneel) declareert bestanden die niet naar Azure mogen worden gepubliceerd.
-* *Dockerfile*: (optioneel) gebruikt bij het publiceren van uw project in een [aangepaste container](functions-create-function-linux-custom-image.md).
+* *local.settings.jsop* : wordt gebruikt voor het opslaan van app-instellingen en verbindings reeksen wanneer deze lokaal worden uitgevoerd. Dit bestand wordt niet gepubliceerd naar Azure. Zie [Local. settings. File](functions-run-local.md#local-settings-file)voor meer informatie.
+* *requirements.txt* : bevat de lijst met pakketten die door het systeem worden geïnstalleerd bij het publiceren naar Azure.
+* *host.jsop* : bevat globale configuratie opties die van invloed zijn op alle functies in een functie-app. Dit bestand wordt gepubliceerd naar Azure. Niet alle opties worden ondersteund bij het lokaal uitvoeren. Zie [host.jsvoor](functions-host-json.md)meer informatie.
+* *. funcignore* : (optioneel) declareert bestanden die niet naar Azure mogen worden gepubliceerd.
+* *Dockerfile* : (optioneel) gebruikt bij het publiceren van uw project in een [aangepaste container](functions-create-function-linux-custom-image.md).
 
 Elke functie heeft een eigen code bestand en een bindings configuratie bestand (function.jsaan).
 
-Wanneer u uw project implementeert in een functie-app in azure, moet de volledige inhoud van de map main project (* \_ \_ app \_ \_ *) worden opgenomen in het pakket, maar niet in de map zelf. U wordt aangeraden uw tests te onderhouden in een map gescheiden van de projectmap, in dit voor beeld `tests` . Hierdoor kunt u geen test code implementeren met uw app. Zie [unit testen](#unit-testing)voor meer informatie.
+Wanneer u uw project implementeert in een functie-app in azure, moet de volledige inhoud van de map main project ( *\_ \_ app \_ \_* ) worden opgenomen in het pakket, maar niet in de map zelf. U wordt aangeraden uw tests te onderhouden in een map gescheiden van de projectmap, in dit voor beeld `tests` . Hierdoor kunt u geen test code implementeren met uw app. Zie [unit testen](#unit-testing)voor meer informatie.
 
 ## <a name="import-behavior"></a>Gedrag bij importeren
 
-U kunt modules in uw functie code importeren met behulp van zowel expliciete relatieve als absolute verwijzingen. Op basis van de mappen structuur die hierboven wordt weer gegeven, werkt de volgende import vanuit de functie bestand * \_ \_ app \_ \_ \Mijn de \_ eerste \_ functie \\ _ \_ init \_ \_ . py*:
+U kunt modules in uw functie code importeren met behulp van zowel expliciete relatieve als absolute verwijzingen. Op basis van de mappen structuur die hierboven wordt weer gegeven, werkt de volgende import vanuit de functie bestand *\_ \_ app \_ \_ \Mijn de \_ eerste \_ functie \\ _ \_ init \_ \_ . py* :
 
 ```python
 from . import example #(explicit relative)
@@ -127,7 +131,7 @@ from example import some_helper_code
 import shared_code
 ```
 
-Gedeelde code moet worden bewaard in een afzonderlijke map in de * \_ \_ app \_ \_ *. U kunt met behulp van de volgende syntaxis verwijzen naar modules in de map *gedeelde \_ code* :
+Gedeelde code moet worden bewaard in een afzonderlijke map in de *\_ \_ app \_ \_*. U kunt met behulp van de volgende syntaxis verwijzen naar modules in de map *gedeelde \_ code* :
 
 ```python
 from __app__.shared_code import my_first_helper_function
@@ -194,7 +198,7 @@ Output kan worden uitgedrukt in retour waarde en uitvoer parameters. Als er slec
 
 Als u de retour waarde van een functie als de waarde van een uitvoer binding wilt gebruiken, moet u de `name` eigenschap van de binding instellen op `$return` in `function.json` .
 
-Als u meerdere uitvoer wilt maken, gebruikt u de `set()` methode van de [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) interface om een waarde toe te wijzen aan de binding. Met de volgende functie kan bijvoorbeeld een bericht naar een wachtrij worden gepusht en wordt ook een HTTP-antwoord geretourneerd.
+Als u meerdere uitvoer wilt maken, gebruikt u de `set()` methode van de [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) interface om een waarde toe te wijzen aan de binding. Met de volgende functie kan bijvoorbeeld een bericht naar een wachtrij worden gepusht en wordt ook een HTTP-antwoord geretourneerd.
 
 ```json
 {
@@ -310,7 +314,7 @@ Een sleutel voor het verbeteren van de prestaties is te weten hoe uw app resourc
 
 De standaard configuraties zijn geschikt voor de meeste toepassingen van Azure Functions. U kunt de prestaties van de door Voer van uw toepassingen echter verbeteren door configuraties te gebruiken op basis van uw werkbelasting profiel. De eerste stap is het begrijpen van het type werk belasting dat u uitvoert.
 
-|| I/O-gebonden werk belasting | CPU-gebonden werk belasting |
+|&nbsp;| I/O-gebonden werk belasting | CPU-gebonden werk belasting |
 |--| -- | -- |
 |Kenmerken van functie-app| <ul><li>De app moet veel gelijktijdige aanroepen verwerken.</li> <li> Met de app worden een groot aantal I/O-gebeurtenissen verwerkt, zoals netwerk aanroepen en lees-en schrijf bewerkingen van de schijf.</li> </ul>| <ul><li>App voert langlopende berekeningen uit, zoals het wijzigen van de grootte van afbeeldingen.</li> <li>App maakt gegevens transformatie.</li> </ul> |
 |Voorbeelden| <ul><li>Web-API's</li><ul> | <ul><li>Gegevensverwerking</li><li> Machine learning-interferentie</li><ul>|
@@ -381,7 +385,7 @@ De FUNCTIONS_WORKER_PROCESS_COUNT is van toepassing op elke host die functies ma
 
 ## <a name="context"></a>Context
 
-Als u de aanroep context van een functie tijdens de uitvoering wilt ophalen, neemt u het [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) argument op in de hand tekening.
+Als u de aanroep context van een functie tijdens de uitvoering wilt ophalen, neemt u het [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) argument op in de hand tekening.
 
 Bijvoorbeeld:
 
@@ -394,7 +398,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-De [**context**](/python/api/azure-functions/azure.functions.context?view=azure-python) klasse heeft de volgende teken reeks kenmerken:
+De [**context**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) klasse heeft de volgende teken reeks kenmerken:
 
 `function_directory` De map waarin de functie wordt uitgevoerd.
 
@@ -744,9 +748,9 @@ Alle bekende problemen en functie aanvragen worden bijgehouden met de lijst met 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende bronnen voor meer informatie:
+Zie de volgende resources voor meer informatie:
 
-* [Documentatie over de API voor Azure Functions-pakketten](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Documentatie over de API voor Azure Functions-pakketten](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 * [Azure Functions-triggers en -bindingen](functions-triggers-bindings.md)
 * [Blob Storage-bindingen](functions-bindings-storage-blob.md)
@@ -755,5 +759,5 @@ Zie de volgende bronnen voor meer informatie:
 * [Timertrigger](functions-bindings-timer.md)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true

@@ -6,22 +6,23 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 4b43cfe41943dcf086afe332508bc6e48fbdb4d7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a655c8c145b4f3812dae9f1a4ec1e5eebbe44809
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899888"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348471"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten met behulp van de Azure CLI
 
-Als u de werk belastingen van toepassingen in een Azure Kubernetes service-cluster (AKS) snel wilt schalen, kunt u virtuele knoop punten gebruiken. Met virtuele knoop punten hebt u een snelle inrichting van Peul en betaalt u slechts per seconde voor de uitvoerings tijd. U hoeft niet te wachten op de Kubernetes-cluster-automatische schaal functie om VM-reken knooppunten te implementeren om de extra peulen uit te voeren. Virtuele knoop punten worden alleen ondersteund met Linux-en knoop punten.
+In dit artikel wordt beschreven hoe u de Azure CLI gebruikt om de virtuele netwerk resources en het AKS-cluster te maken en te configureren en vervolgens virtuele knoop punten in te scha kelen.
 
-In dit artikel wordt beschreven hoe u de virtuele netwerk resources en het AKS-cluster maakt en configureert en vervolgens virtuele knoop punten inschakelt.
+> [!NOTE]
+> In [dit artikel](virtual-nodes.md) vindt u een overzicht van de beschik baarheid van regio's en beperkingen met behulp van virtuele knoop punten.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Virtuele knoop punten scha kelen netwerk communicatie in tussen de peulen die worden uitgevoerd in Azure Container Instances (ACI) en het AKS-cluster. Om deze communicatie te bieden, wordt een subnet van een virtueel netwerk gemaakt en worden gedelegeerde machtigingen toegewezen. Virtuele knoop punten werken alleen met AKS-clusters die zijn gemaakt met *Geavanceerde* netwerken. Standaard worden AKS-clusters gemaakt met een *basis* netwerk. In dit artikel wordt beschreven hoe u een virtueel netwerk en subnetten maakt en hoe u een AKS-cluster implementeert dat gebruikmaakt van geavanceerde netwerken.
+Virtuele knoop punten scha kelen netwerk communicatie in tussen de peulen die worden uitgevoerd in Azure Container Instances (ACI) en het AKS-cluster. Om deze communicatie te bieden, wordt een subnet van een virtueel netwerk gemaakt en worden gedelegeerde machtigingen toegewezen. Virtuele knoop punten werken alleen met AKS-clusters die zijn gemaakt met *Advanced* Network (Azure cni). Standaard worden AKS-clusters gemaakt met *Basic* -netwerken (kubenet). In dit artikel wordt beschreven hoe u een virtueel netwerk en subnetten maakt en hoe u een AKS-cluster implementeert dat gebruikmaakt van geavanceerde netwerken.
 
 Als u geen ACI eerder hebt gebruikt, registreert u de service provider bij uw abonnement. U kunt de status van de ACI-provider registratie controleren met de opdracht [AZ provider List][az-provider-list] , zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -43,34 +44,6 @@ Als de provider wordt weer gegeven als *NotRegistered* , registreert u de provid
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Regionale beschikbaarheid
-
-De volgende regio's worden ondersteund voor implementaties van virtuele knoop punten:
-
-* Australië-oost (australiaeast)
-* VS-Midden (centraal)
-* VS-Oost (Oost)
-* VS-Oost 2 (eastus2)
-* Japan-Oost (japaneast)
-* Europa-noord (northeurope)
-* Zuidoost-Azië (southeastasia)
-* VS-West-Centraal (westcentralus)
-* Europa-west (Europa West)
-* VS-West (westus)
-* VS-West 2 (westus2)
-
-## <a name="known-limitations"></a>Bekende beperkingen
-De functionaliteit van virtuele knoop punten is sterk afhankelijk van de functieset van ACI. Naast de [quota en limieten voor Azure container instances](../container-instances/container-instances-quotas.md), worden de volgende scenario's nog niet ondersteund met virtuele knoop punten:
-
-* Service-Principal gebruiken voor het ophalen van ACR-installatie kopieën. [Tijdelijke oplossing](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) is het gebruik van [Kubernetes-geheimen](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
-* [Virtual Network beperkingen](../container-instances/container-instances-vnet.md) , waaronder VNet-peering, Kubernetes-netwerk beleid en uitgaand verkeer naar Internet met netwerk beveiligings groepen.
-* Init-containers
-* [Host-aliassen](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* [Argumenten](../container-instances/container-instances-exec.md#restrictions) voor exec in ACI
-* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) implementeert geen peuling voor het virtuele knoop punt
-* Virtuele knoop punten ondersteunen de planning van Linux. U kunt de open source [Virtual KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -provider hand matig installeren om Windows Server-containers te plannen voor ACI.
-* Virtuele knoop punten vereisen AKS-clusters met Azure CNI-netwerken
-
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account.
@@ -81,7 +54,7 @@ Als u liever de CLI lokaal wilt installeren en gebruiken, moet u voor dit artike
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Een resourcegroep maken met de opdracht [az group create][az-group-create]. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *westus* .
+Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Een resourcegroep maken met de opdracht [az group create][az-group-create]. In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *westus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -89,7 +62,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak een virtueel netwerk met behulp van de opdracht [AZ Network vnet Create][az-network-vnet-create] . In het volgende voor beeld wordt een virtuele netwerk naam *myVnet* met het adres voorvoegsel *10.0.0.0/8* en een subnet met de naam *myAKSSubnet* . Het adres voorvoegsel van dit subnet is standaard ingesteld op *10.240.0.0/16* :
+Maak een virtueel netwerk met behulp van de opdracht [AZ Network vnet Create][az-network-vnet-create] . In het volgende voor beeld wordt een virtuele netwerk naam *myVnet* met het adres voorvoegsel *10.0.0.0/8* en een subnet met de naam *myAKSSubnet*. Het adres voorvoegsel van dit subnet is standaard ingesteld op *10.240.0.0/16* :
 
 ```azurecli-interactive
 az network vnet create \
@@ -100,7 +73,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-Maak nu een extra subnet voor virtuele knoop punten met behulp van de opdracht [AZ Network vnet subnet Create][az-network-vnet-subnet-create] . In het volgende voor beeld wordt een subnet met de naam *myVirtualNodeSubnet* gemaakt met het adres voorvoegsel *10.241.0.0/16* .
+Maak nu een extra subnet voor virtuele knoop punten met behulp van de opdracht [AZ Network vnet subnet Create][az-network-vnet-subnet-create] . In het volgende voor beeld wordt een subnet met de naam *myVirtualNodeSubnet* gemaakt met het adres voorvoegsel *10.241.0.0/16*.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -132,7 +105,7 @@ De uitvoer lijkt op die in het volgende voorbeeld:
 }
 ```
 
-Noteer de *appId* en *wachtwoord* . Deze waarden worden gebruikt in de volgende stappen.
+Noteer de *appId* en *wachtwoord*. Deze waarden worden gebruikt in de volgende stappen.
 
 ## <a name="assign-permissions-to-the-virtual-network"></a>Machtigingen toewijzen aan het virtuele netwerk
 

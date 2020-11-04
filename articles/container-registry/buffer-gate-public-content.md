@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: bb185e7d5803219135fddf421b7d6a89edd296b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315813"
+ms.locfileid: "93347519"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Open bare inhoud beheren met Azure Container Registry
 
@@ -28,7 +28,7 @@ Als er sprake is van een goede controle, kunnen afhankelijkheden van open bare r
 Als eerste stap, als u momenteel open bare installatie kopieën uit docker hub als onderdeel van een build of implementatie werk stroom haalt, raden we u aan om te [verifiëren met behulp van een docker hub-account](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) in plaats van een anonieme pull-aanvraag te doen.
 
 > [!NOTE]
-> Vanaf 2 november 2020 worden de [Download frequentie limieten](https://docs.docker.com/docker-hub/download-rate-limit) toegepast op anonieme en geverifieerde aanvragen voor docker-hub vanuit een docker Free plan-account en worden afgedwongen met het IP-adres en de docker-id respecitively. 
+> Vanaf 2 november 2020 zijn de [Download frequentie limieten](https://docs.docker.com/docker-hub/download-rate-limit) van toepassing op anonieme en geverifieerde aanvragen voor docker-hub vanuit docker Free plan-accounts en worden afgedwongen door respectievelijk het IP-adres en de docker-id. 
 >
 > Bij het schatten van het aantal pull-aanvragen moet u rekening houden met het gebruik van Cloud provider Services of achter een bedrijfs-NAT, maar meerdere gebruikers worden aan docker hub als een subset van IP-adressen gepresenteerd. Door docker betaalde account authenticatie toe te voegen aan aanvragen naar docker hub, voor komt u mogelijke onderbrekingen van de service vanwege een beperking van de frequentie limiet.
 >

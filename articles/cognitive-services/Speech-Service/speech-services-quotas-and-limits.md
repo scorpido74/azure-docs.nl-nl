@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/04/2020
 ms.author: alexeyo
-ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567159"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345394"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Quota en limieten voor Speech Services
 
@@ -24,20 +24,35 @@ Dit artikel bevat een korte naslag informatie en een **gedetailleerde beschrijvi
 ## <a name="quotas-and-limits-quick-reference"></a>Naslag informatie over quota's en beperkingen
 Overschakelen naar de [quota en limieten voor tekst naar spraak](#text-to-speech-quotas-and-limits-per-speech-resource)
 ### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Quota en limieten voor spraak-naar-tekst per spraakresource
-In de onderstaande tabel zijn para meters zonder ' aanpas bare ' rij **niet** aanpasbaar voor alle prijs categorieën.
+In de onderstaande tabellen zijn para meters zonder ' instel bare ' rij **niet** aanpasbaar voor alle prijs categorieën.
+
+#### <a name="online-transcription"></a>Online transcriptie
 
 | Quota | Gratis (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
-| **Limiet voor gelijktijdige aanvragen voor online transcriptie (basis-en aangepaste modellen)** |  |  |
-| Standaardwaarde | 1 | 20 |
+| **Limiet voor gelijktijdige aanvragen (basis-en aangepaste modellen)** | 1 | 20 (standaard waarde) |
 | Aanpasbaar | Geen<sup>2</sup> | Ja<sup>2</sup> |
-| **Limiet voor REST API aanvragen ([API Management](../../api-management/api-management-key-concepts.md) -eind punten)** | 100 aanvragen per 10 seconden | 100 aanvragen per 10 seconden |
-| **Maximale grootte van het gegevenssetbestand voor het importeren van gegevens** | 2 GB | 2 GB |
-| **Maximale grootte van invoer-BLOB voor batch-transcriptie** | N.v.t. | 2,5 GB |
-| **Maximale grootte van de BLOB-container voor batch-transcriptie** | N.v.t. | 5 GB |
-| **Maximum aantal blobs per container voor batch-transcriptie** | N.v.t. | 10.000 |
-| **Maximum aantal bestanden per transcriptie-aanvraag voor batch-transcriptie (wanneer meerdere Url's voor inhoud als invoer worden gebruikt)** | N.v.t. | 1000  |
-| **Maximum aantal gelijktijdig uitgevoerde taken voor batch-transcriptie** | N.v.t. | 2000  |
+
+#### <a name="batch-transcription"></a>Batch-transcriptie
+| Quota | Gratis (F0)<sup>1</sup> | Standard (S0) |
+|--|--|--|
+| REST API limiet | Batch-transcriptie is niet beschikbaar voor F0 | 300 aanvragen per minuut |
+| Maximale grootte van audio-invoer bestand | N.v.t. | 1 GB |
+| Maximale grootte van invoer-BLOB (kan meer dan één bestand bevatten, bijvoorbeeld in een zip-archief; Controleer of de maximale bestands grootte hierboven) | N.v.t. | 2,5 GB |
+| Maximale grootte van BLOB-container | N.v.t. | 5 GB |
+| Maximum aantal blobs per container | N.v.t. | 10.000 |
+| Maximum aantal bestanden per transcriptie-aanvraag (wanneer meerdere inhouds-Url's als invoer worden gebruikt) | N.v.t. | 1000  |
+| Maximum aantal gelijktijdig uitgevoerde taken | N.v.t. | 2000  |
+
+#### <a name="model-customization"></a>Model aanpassing
+| Quota | Gratis (F0)<sup>1</sup> | Standard (S0) |
+|--|--|--|
+| REST API limiet | 300 aanvragen per minuut | 300 aanvragen per minuut |
+| Maximum aantal spraak gegevens sets | 2 | 500 |
+| Maximale akoestische gegevensset-bestands grootte voor het importeren van gegevens | 2 GB | 2 GB |
+| Maximale grootte van gegevenssetbestand voor gegevens import | 200 MB | 1,5 GB |
+| Maximale grootte van de uitspraak van gegevensset voor gegevens import | 1 kB | 1 MB |
+| Maximale teken grootte bij het gebruik `text` van para meter in [Create model](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/) API-aanvraag | 200 kB | 500 kB |
 
 de prijs categorie <sup>1</sup> voor **gratis (F0)** Zie ook maandelijkse vergoedingen op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).<br/>
 <sup>2</sup> Zie [aanvullende uitleg](#detailed-description-quota-adjustment-and-best-practices), [Aanbevolen procedures](#general-best-practices-to-mitigate-throttling-during-autoscaling)en [correctie-instructies](#speech-to-text-increasing-online-transcription-concurrent-request-limit).<br/> 
@@ -57,7 +72,7 @@ In de onderstaande tabel zijn para meters zonder ' aanpas bare ' rij **niet** aa
 | **WebSocket-specifieke quota's** |  |  |
 |Maximale audio duur per beurt | 10 minuten | 10 minuten |
 |Maximale SSML bericht grootte per draaiing |64 kB |64 kB |
-| **Limiet voor REST API aanvragen** | 20 aanvragen per minuut | 25 aanvragen per 5 seconden |
+| **REST API limiet** | 20 aanvragen per minuut | 25 aanvragen per 5 seconden |
 
 
 de prijs categorie <sup>3</sup> voor **gratis (F0)** Zie ook maandelijkse vergoedingen op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).<br/>
@@ -84,7 +99,7 @@ Het aantal gelijktijdige aanvragen is standaard beperkt tot 20 per spraak bron (
 
 Het verhogen van de limiet voor gelijktijdige aanvragen heeft **geen** invloed op uw kosten. Spraak Services maakt gebruik van het model ' alleen betalen voor wat u gebruikt '. De limiet bepaalt hoe hoog de service kan worden geschaald voordat uw aanvragen worden vertraagd.
 
-Gelijktijdige aanvraag limieten voor **basis** -en **aangepaste** modellen moeten **afzonderlijk**worden aangepast.
+Gelijktijdige aanvraag limieten voor **basis** -en **aangepaste** modellen moeten **afzonderlijk** worden aangepast.
 
 De bestaande waarde van de para meter voor gelijktijdige aanvraag limiet is **niet** zichtbaar via Azure Portal, Command-Line-hulpprogram MA'S of API-aanvragen. Als u de bestaande waarde wilt verifiëren, maakt u een ondersteunings aanvraag voor Azure.
 
@@ -92,22 +107,22 @@ De bestaande waarde van de para meter voor gelijktijdige aanvraag limiet is **ni
 >Voor [spraak containers](speech-container-howto.md) is geen verhoging van de limiet van gelijktijdige aanvragen vereist, omdat containers alleen worden beperkt door de cpu's van de hardware waarop ze worden gehost.
 
 #### <a name="have-the-required-information-ready"></a>De vereiste gegevens zijn gereed:
-- Voor **basis model**:
+- Voor **basis model** :
   - Spraak Resource-ID
-  - Regio
-- Voor **aangepast model**: 
-  - Regio
+  - Region
+- Voor **aangepast model** : 
+  - Region
   - Aangepaste eind punt-ID
 
-- **Informatie over het ophalen van gegevens (basis model)**:  
+- **Informatie over het ophalen van gegevens (basis model)** :  
   - Ga naar [Azure Portal](https://portal.azure.com/)
   - Selecteer de spraak bron waarvoor u de limiet voor gelijktijdige aanvragen wilt verhogen
-  - *Eigenschappen* selecteren (*resource beheer* groep) 
+  - *Eigenschappen* selecteren ( *resource beheer* groep) 
   - Kopieer de waarden van de volgende velden en sla deze op:
-    - **Resource-ID**
+    - **Resource-id**
     - **Locatie** (uw eindpunt regio)
 
-- **Informatie over het ophalen van gegevens (aangepast model)**:
+- **Informatie over het ophalen van gegevens (aangepast model)** :
   - Ga naar de [Speech Studio](https://speech.microsoft.com/) -Portal
   - Aanmelden indien nodig
   - Ga naar Custom Speech
@@ -124,7 +139,7 @@ Begin met het verhogen van de limiet voor gelijktijdige aanvragen voor uw resour
 - Zorg ervoor dat u de [vereiste gegevens](#have-the-required-information-ready) hebt
 - Ga naar [Azure Portal](https://portal.azure.com/)
 - Selecteer de spraak bron waarvan u wilt verg Roten (of om te controleren) de limiet voor gelijktijdige aanvragen
-- *Nieuwe ondersteunings aanvraag* selecteren (*ondersteuning en groep voor probleem oplossing* ) 
+- *Nieuwe ondersteunings aanvraag* selecteren ( *ondersteuning en groep voor probleem oplossing* ) 
 - Er wordt een nieuw venster weer gegeven met automatisch gevulde informatie over uw Azure-abonnement en Azure-resource
 - Voer een *samen vatting* in (bijvoorbeeld ' verg Roten STT gelijktijdigheids aanvraag limiet ')
 - Selecteer bij *probleem type* de optie quotum-of abonnements problemen
@@ -176,7 +191,7 @@ Begin met het verhogen van de limiet voor gelijktijdige aanvragen voor uw resour
 - Zorg ervoor dat u de [vereiste gegevens](#prepare-the-required-information) hebt
 - Ga naar [Azure Portal](https://portal.azure.com/)
 - Selecteer de spraak bron waarvan u wilt verg Roten (of om te controleren) de limiet voor gelijktijdige aanvragen
-- *Nieuwe ondersteunings aanvraag* selecteren (*ondersteuning en groep voor probleem oplossing* ) 
+- *Nieuwe ondersteunings aanvraag* selecteren ( *ondersteuning en groep voor probleem oplossing* ) 
 - Er wordt een nieuw venster weer gegeven met automatisch gevulde informatie over uw Azure-abonnement en Azure-resource
 - Geef een *samen vatting* op (bijvoorbeeld ' Verhoog het aantal aangepaste TTS-aanvragen voor het afrekenen van een aangepast eind punt)
 - Selecteer bij *probleem type* de optie quotum-of abonnements problemen

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 77c35ae4b9e845cd3c0f638407c0d71c36fcf9f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a9fb1a179164d24c84213762ee7e2332a1aa25
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289681"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345938"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Azure-wachtrij opslag gebruiken met Node.js
 
@@ -44,7 +44,7 @@ De [Azure Storage-client bibliotheek voor Java script][Azure Storage client libr
 
 1. Typ **NPM \@ Azure/Storage-Queue installeren** in het opdracht venster.
 
-1. Controleer of er een map met **knooppunt \_ modules** is gemaakt. In deze map vindt u het pakket ** \@ Azure/Storage-Queue** , dat de client bibliotheek bevat die u nodig hebt om toegang te krijgen tot de opslag.
+1. Controleer of er een map met **knooppunt \_ modules** is gemaakt. In deze map vindt u het pakket **\@ Azure/Storage-Queue** , dat de client bibliotheek bevat die u nodig hebt om toegang te krijgen tot de opslag.
 
 # <a name="javascript-v2"></a>[Java script v2](#tab/javascript2)
 
@@ -160,13 +160,13 @@ In het volgende voor beeld wordt de tekst van een bericht bijgewerkt.
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-Wijzig de inhoud van een bericht dat in de wachtrij wordt geplaatst door [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-)aan te roepen. 
+Wijzig de inhoud van een bericht dat in de wachtrij wordt geplaatst door [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-)aan te roepen.
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_UpdateMessage":::
 
 # <a name="javascript-v2"></a>[Java script v2](#tab/javascript2)
 
-Wijzig de inhoud van een bericht dat in de wachtrij wordt geplaatst door **updateMessage**aan te roepen. 
+Wijzig de inhoud van een bericht dat in de wachtrij wordt geplaatst door **updateMessage** aan te roepen.
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -200,7 +200,7 @@ Als u een bericht wilt ontvangen, roept u de methode [receiveMessages](/javascri
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DequeueMessage":::
 
-Standaard wordt een bericht 30 seconden verborgen. Na 30 seconden is de weer gave van andere clients zichtbaar. U kunt een andere waarde opgeven door [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) in te stellen wanneer u **receiveMessages**aanroept.
+Standaard wordt een bericht 30 seconden verborgen. Na 30 seconden is de weer gave van andere clients zichtbaar. U kunt een andere waarde opgeven door [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) in te stellen wanneer u **receiveMessages** aanroept.
 
 Het aanroepen van **receiveMessages** als de wachtrij geen berichten bevat, wordt er geen fout geretourneerd. Er worden echter geen berichten geretourneerd.
 
@@ -234,8 +234,8 @@ Als u **getMessages** gebruikt wanneer er geen berichten in de wachtrij staan, w
 
 Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt aanpassen:
 
-* [Options. numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) : een batch berichten ophalen (maxi maal 32.)
-* [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) : Stel een langere of korte time-out voor onzichtbaarheid in.
+- [Options. numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) : een batch berichten ophalen (maxi maal 32.)
+- [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) : Stel een langere of korte time-out voor onzichtbaarheid in.
 
 In het volgende voor beeld wordt de methode **receiveMessages** gebruikt om vijf berichten in één aanroep op te halen. Vervolgens wordt elk bericht met een `for` lus verwerkt. Ook wordt de time-out voor ininzicht ingesteld op vijf minuten voor alle berichten die door deze methode worden geretourneerd.
 
@@ -245,8 +245,8 @@ In het volgende voor beeld wordt de methode **receiveMessages** gebruikt om vijf
 
 Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt aanpassen:
 
-* `options.numOfMessages` -Een batch berichten ophalen (Maxi maal 32.)
-* `options.visibilityTimeout` -Stel een langere of korte time-out voor onzichtbaar in.
+- `options.numOfMessages` -Een batch berichten ophalen (Maxi maal 32.)
+- `options.visibilityTimeout` -Stel een langere of korte time-out voor onzichtbaar in.
 
 In het volgende voor beeld wordt de methode **getMessages** gebruikt om 15 berichten in één aanroep op te halen. Vervolgens wordt elk bericht met een `for` lus verwerkt. Ook wordt de time-out voor ininzicht ingesteld op vijf minuten voor alle berichten die door deze methode worden geretourneerd.
 
@@ -301,7 +301,7 @@ Roep [QueueServiceClient. list queues]()aan om een lijst met wacht rijen op te h
 
 # <a name="javascript-v2"></a>[Java script v2](#tab/javascript2)
 
-Gebruik **listQueuesSegmented**om een lijst met wacht rijen op te halen. Gebruik **listQueuesSegmentedWithPrefix**om een lijst op te halen die wordt gefilterd op een specifiek voor voegsel.
+Gebruik **listQueuesSegmented** om een lijst met wacht rijen op te halen. Gebruik **listQueuesSegmentedWithPrefix** om een lijst op te halen die wordt gefilterd op een specifiek voor voegsel.
 
 ```javascript
 queueSvc.listQueuesSegmented(null, function(error, results, response){
@@ -337,7 +337,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 });
 ```
 
-Als u alle berichten uit een wachtrij wilt wissen zonder deze te verwijderen, roept u **clearMessages**aan.
+Als u alle berichten uit een wachtrij wilt wissen zonder deze te verwijderen, roept u **clearMessages** aan.
 
 ---
 
@@ -347,8 +347,8 @@ Als u alle berichten uit een wachtrij wilt wissen zonder deze te verwijderen, ro
 
 Nu u de basis principes van wachtrij opslag hebt geleerd, volgt u deze koppelingen voor meer informatie over complexere opslag taken.
 
-* Ga naar het [Azure Storage-Team blog][Azure Storage Team Blog] voor meer informatie over wat er nieuw is
-* Ga naar de [Azure Storage-client bibliotheek voor de Java script][Azure Storage client library for JavaScript] -opslag plaats op github
+- Ga naar het [Azure Storage-Team blog][Azure Storage Team Blog] voor meer informatie over wat er nieuw is
+- Ga naar de [Azure Storage-client bibliotheek voor de Java script][Azure Storage client library for JavaScript] -opslag plaats op github
 
 [Azure Storage client library for JavaScript]: https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#azure-storage-client-library-for-javascript
 [Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog

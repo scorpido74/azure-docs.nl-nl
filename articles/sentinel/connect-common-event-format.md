@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e09b44504623516d41b6d310a82e78619477367c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93304989"
+ms.locfileid: "93347604"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
 
@@ -57,7 +57,7 @@ Zorg ervoor dat de Linux-machine die u als een logboek-doorstuur server gebruikt
   - Amazon Linux 2017,09
   - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 en 8, inclusief subversies (niet 6)
-  - Debian GNU/Linux 8, 9 en 10
+  - Debian GNU/Linux 8 en 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
   - SUSE Linux Enterprise Server 12, 15
 
@@ -65,7 +65,7 @@ Zorg ervoor dat de Linux-machine die u als een logboek-doorstuur server gebruikt
   - CentOS 7 en 8, inclusief subversies (niet 6)
   - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 en 8, inclusief subversies (niet 6)
-  - Debian GNU/Linux 8, 9 en 10
+  - Debian GNU/Linux 8 en 9
   - Ubuntu Linux 14,04 LTS en 16,04 LTS
  
 - Daemon-versies

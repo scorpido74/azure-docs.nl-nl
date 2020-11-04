@@ -3,12 +3,12 @@ title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653363"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347791"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -107,7 +107,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | batchAccounts | Regio | 3-24 | Kleine letters en cijfers. |
+> | batchAccounts | Region | 3-24 | Kleine letters en cijfers. |
 > | batchAccounts/toepassingen | batch-account | 1-64 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
 > | batchAccounts/certificaten | batch-account | 5-45 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
 > | batchAccounts/Pools | batch-account | 1-64 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
@@ -494,6 +494,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | firewallPolicies | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
 > | firewallPolicies / ruleGroups | Firewall beleid | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
 > | frontDoors | internationaal | 5-64 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
+> | frontdoorWebApplicationFirewallPolicies | resourcegroep | 1-128 | Alfanumerieke tekens.<br><br>Begin met letter. |
 > | loadBalancers | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
 > | loadBalancers/inboundNatRules | load balancer | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |
 > | localNetworkGateways | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Einde alfanumeriek of onderstrepings teken. |

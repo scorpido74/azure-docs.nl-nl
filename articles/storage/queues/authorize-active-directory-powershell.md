@@ -10,12 +10,12 @@ ms.date: 09/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: queues
-ms.openlocfilehash: 6937f3aa136ee4d5b906492c3f8cffc86acbc2e5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3636b0366dfe687c4825ec1a16c5e8094a7db10b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785660"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346023"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot wachtrij gegevens
 
@@ -27,7 +27,7 @@ U kunt machtigingen voor de wachtrij gegevens toewijzen aan een Azure AD-beveili
 
 De Azure Storage-extensies worden ondersteund voor bewerkingen op wachtrij gegevens. Welke bewerkingen u kunt aanroepen, is afhankelijk van de machtigingen die zijn verleend aan de Azure AD-beveiligings-principal waarmee u zich aanmeldt bij Power shell. Machtigingen voor Azure Storage wachtrijen worden toegewezen via Azure RBAC. Als u bijvoorbeeld de rol **gegevens lezer** van de wachtrij hebt toegewezen, kunt u script opdrachten uitvoeren die gegevens uit een wachtrij lezen. Als u de rol Inzender voor **wachtrij gegevens** hebt toegewezen, kunt u script opdrachten uitvoeren om een wachtrij of de gegevens die ze bevatten, te lezen, schrijven of verwijderen.
 
-Zie [Storage-bewerkingen aanroepen met OAuth-tokens](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)voor meer informatie over de vereiste machtigingen voor elke Azure Storage bewerking in een wachtrij.  
+Zie [Storage-bewerkingen aanroepen met OAuth-tokens](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)voor meer informatie over de vereiste machtigingen voor elke Azure Storage bewerking in een wachtrij.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Power shell-opdrachten aanroepen met Azure AD-referenties
 
@@ -45,7 +45,7 @@ In het volgende voor beeld ziet u hoe u een wachtrij maakt in een nieuw opslag a
 
     Zie [Aanmelden met Azure PowerShell](/powershell/azure/authenticate-azureps)voor meer informatie over het aanmelden bij Azure met Power shell.
 
-1. Maak een Azure-resource groep door [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)aan te roepen. 
+1. Maak een Azure-resource groep door [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)aan te roepen.
 
     ```powershell
     $resourceGroup = "sample-resource-group-ps"

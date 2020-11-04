@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: d4c23e6b213c102813758742b8d191735207d285
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 04137fef640da46ca8876811e127e109a8c3d445
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124897"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348301"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Bouw de landings pagina voor uw voor transactable SaaS-aanbieding in de commerciële Marketplace
 
@@ -122,7 +122,7 @@ Het ID-token bevat basis informatie voor het identificeren van de koper, maar uw
 | surname | De achternaam van de gebruiker. |
 |||
 
-Aanvullende eigenschappen, zoals de naam van het bedrijf van de gebruiker of de locatie van de gebruiker (land), kunnen worden geselecteerd voor opname in de aanvraag. Zie [Eigenschappen voor het resource type van de gebruiker](/graph/api/resources/user?view=graph-rest-1.0#properties) voor meer informatie.
+Aanvullende eigenschappen, zoals de naam van het bedrijf van de gebruiker of de locatie van de gebruiker (land), kunnen worden geselecteerd voor opname in de aanvraag. Zie [Eigenschappen voor het resource type van de gebruiker](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties) voor meer informatie.
 
 De meeste apps die zijn geregistreerd bij Azure AD, hebben gedelegeerde machtigingen voor het lezen van de gegevens van de gebruiker uit de Azure AD-Tenant van hun bedrijf. Elke aanvraag voor het Microsoft Graph van die informatie moet vergezeld gaan van een toegangs token voor verificatie. Specifieke stappen voor het genereren van het toegangs token zijn afhankelijk van de technologie stack die u gebruikt, maar de voorbeeld code bevat een voor beeld. Zie [toegang namens een gebruiker verkrijgen](/graph/auth-v2-user)voor meer informatie.
 
