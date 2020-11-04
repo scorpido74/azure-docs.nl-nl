@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126770"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289775"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informatie over Azure Key Vault-certificaten
 
@@ -44,7 +44,7 @@ Wanneer een Key Vault-certificaat wordt gemaakt, kan het worden opgehaald uit he
 
 De adresseerbare sleutel wordt relevanter bij niet-exporteerbare KV-certificaten. De adresseerbare bewerkingen voor de KV-sleutel worden toegewezen uit het veld *keyusage* van het KV-certificaatbeleid dat wordt gebruikt om het KV-certificaat te maken.  
 
- - Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) genoemd) Exporteren is alleen toegestaan met RSA, EC. HSM-sleutels zouden niet exporteerbaar zijn.
+ - Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) genoemd) Exporteren is alleen toegestaan met RSA, EC. HSM-sleutels zouden niet exporteerbaar zijn.
 
 
 ## <a name="certificate-attributes-and-tags"></a>Certificaatkenmerken en -tags
@@ -57,7 +57,7 @@ De certificaatkenmerken worden gespiegeld met kenmerken van de adresseerbare sle
 
 Een Key Vault-certificaat heeft de volgende kenmerken:  
 
--   *enabled* : boolean, optioneel; standaardwaarde is **true** . Kan worden opgegeven om aan te geven of de certificaatgegevens kunnen worden opgehaald als geheim of bruikbaar als sleutel. Wordt tevens gebruikt in combinatie met *nbf* en *exp* wanneer er een bewerking plaatsvindt tussen *nbf* en *exp* , en wordt alleen toegestaan als enabled is ingesteld op true. Bewerkingen buiten het venster van *nbf* en *exp* worden automatisch niet toegestaan.  
+-   *enabled* : boolean, optioneel; standaardwaarde is **true**. Kan worden opgegeven om aan te geven of de certificaatgegevens kunnen worden opgehaald als geheim of bruikbaar als sleutel. Wordt tevens gebruikt in combinatie met *nbf* en *exp* wanneer er een bewerking plaatsvindt tussen *nbf* en *exp* , en wordt alleen toegestaan als enabled is ingesteld op true. Bewerkingen buiten het venster van *nbf* en *exp* worden automatisch niet toegestaan.  
 
 Er zijn aanvullende alleen-lezen kenmerken die zijn opgenomen in de volgende antwoorden:
 
@@ -82,11 +82,11 @@ Een certificaatbeleid bevat informatie over het maken en beheren van de levenscy
 
 Wanneer een volledig nieuw Key Vault-certificaat wordt gemaakt, moet er een beleid worden aangeleverd. Het beleid bepaalt hoe u deze Key Vault-certificaatversie maakt, of de volgende Key Vault-certificaatversie. Als er beleid is ingesteld, is dit niet nodig bij daaropvolgende nieuwe bewerkingen voor toekomstige versies. Er is slechts één beleidsexemplaar voor alle versies van een Key Vault-certificaat.  
 
-Op hoog niveau bevat certificaatbeleid de volgende informatie (de definities ervan zijn [hier](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0) te vinden):  
+Op hoog niveau bevat certificaatbeleid de volgende informatie (de definities ervan zijn [hier](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0) te vinden):  
 
 -   Eigenschappen X509-certificaat: Bevat de onderwerpnaam, alternatieve onderwerpnamen en andere eigenschappen waarmee de aanvraag van een x509-certificaat wordt gemaakt.  
 -   Sleuteleigenschappen: bevat sleuteltype, sleutellengte, exporteerbare en ReuseKeyOnRenewal-velden. Met deze velden wordt de sleutelkluis geïnstrueerd hoe een sleutel moet worden gegenereerd. 
-     - Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) vermeld) 
+     - Ondersteunde sleuteltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) vermeld) 
 -   Geheimeigenschappen: bevat geheimeigenschappen, zoals het inhoudstype van adresseerbare geheim om de geheime waarde te genereren, voor het ophalen van een certificaat als geheim.  
 -   Levensduuracties: bevat levensduuracties voor het KV-certificaat. Elke levensduuractie bevat:  
 
@@ -133,7 +133,7 @@ Voordat een certificaatverlener kan worden gemaakt in een Key Vault, moeten de v
 
     -   Deze biedt de configuratie die moet worden gebruikt voor het maken van een verlenerobject van de provider in de sleutelkluis  
 
-Raadpleeg de blog [Key Vault-certificaten](https://aka.ms/kvcertsblog) Voor meer informatie over het maken van verlenerobjecten vanuit de portal Certificaten  
+Raadpleeg de blog [Key Vault-certificaten](/archive/blogs/kv/manage-certificates-via-azure-key-vault) Voor meer informatie over het maken van verlenerobjecten vanuit de portal Certificaten  
 
 Met Key Vault kunnen meerdere verlenerobjecten worden gemaakt met een andere verlener-/providerconfiguratie. Zodra een verlenerobject is gemaakt, kan in een of meer certificaatbeleidsregels naar de naam ervan worden verwezen. In referenties naar het verlenerobject wordt Key Vault geïnstrueerd om van de configuratie gebruik te maken zoals die is opgegeven in het verlenerobject bij het aanvragen van het x509-certificaat van de CA-provider tijdens het maken en verlengen van het certificaat.  
 

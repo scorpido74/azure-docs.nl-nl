@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 4678ab34de169a8406f0d73b63906152ef1185f0
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 4b62b591c408f663fd28d5077af924f785ee66c8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281910"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090406"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Quickstart: Een Java-app bouwen om Azure Cosmos DB SQL API-gegevens te beheren
-
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -43,15 +43,15 @@ In deze quickstart maakt en beheert u een SQL API-account van Azure Cosmos DB vi
 
 ## <a name="introductory-notes"></a>Inleidende opmerkingen
 
-*De structuur van een Cosmos DB-account.* Ongeacht de API- of programmeer taal, bevat een Cosmos DB-*account* nul of meer *databases*, een *database* (DB) bevat nul of meer *containers* en een *container* bevat nul of meer items, zoals in het onderstaande diagram wordt weer gegeven:
+*De structuur van een Cosmos DB-account.* Ongeacht de API- of programmeer taal, bevat een Cosmos DB- *account* nul of meer *databases* , een *database* (DB) bevat nul of meer *containers* en een *container* bevat nul of meer items, zoals in het onderstaande diagram wordt weer gegeven:
 
 :::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Entiteiten van Azure Cosmos-account" border="false":::
 
 Vind [hier](account-databases-containers-items.md) meer informatie over databases, containers en items. Enkele belangrijke eigenschappen worden op het niveau van de container gedefinieerd, onder andere *ingerichte doorvoer* en *partitiesleutel*. 
 
-De ingerichte doorvoer wordt gemeten in de aanvraageenheden (*RU’s*) die een monetaire prijs hebben en die een substantiële bepaling van de bedrijfskosten van het account zijn. Ingerichte doorvoer kan worden geselecteerd bij granulatie op basis van een container of nauwkeurigheid per database, maar de specificatie voor doorvoer op containerniveau verdient doorgaans de voorkeur. U kunt [hier](set-throughput.md) meer lezen over het inrichten van de doorvoer.
+De ingerichte doorvoer wordt gemeten in de aanvraageenheden ( *RU’s* ) die een monetaire prijs hebben en die een substantiële bepaling van de bedrijfskosten van het account zijn. Ingerichte doorvoer kan worden geselecteerd bij granulatie op basis van een container of nauwkeurigheid per database, maar de specificatie voor doorvoer op containerniveau verdient doorgaans de voorkeur. U kunt [hier](set-throughput.md) meer lezen over het inrichten van de doorvoer.
 
-Naarmate items worden ingevoegd in een Cosmos DB-container, groeit de database horizontaal door meer opslag en rekenkracht toe te voegen voor het afhandelen van aanvragen. Opslag-en rekencapaciteit worden toegevoegd aan discrete eenheden die *partities worden genoemd* en u moet één veld in uw documenten selecteren als partitiesleutel die elk document aan een partitie toewijst. De manier waarop partities worden beheerd, is dat aan elke partitie een ongeveer gelijk segment uit het bereik van partitiesleutelwaarden wordt toegewezen. Daarom wordt u aangeraden een partitiesleutel te kiezen die relatief willekeurig of gelijkmatig gedistribueerd is. Als dat niet het geval is, zien sommige partities aanzienlijk meer aanvragen (*dynamische partitie*), terwijl andere partities aanzienlijk minder aanvragen (*statische partitie*) zien. Dit moet vermeden worden. U vind [hier](partitioning-overview.md) meer informatie over partitionering.
+Naarmate items worden ingevoegd in een Cosmos DB-container, groeit de database horizontaal door meer opslag en rekenkracht toe te voegen voor het afhandelen van aanvragen. Opslag-en rekencapaciteit worden toegevoegd aan discrete eenheden die *partities worden genoemd* en u moet één veld in uw documenten selecteren als partitiesleutel die elk document aan een partitie toewijst. De manier waarop partities worden beheerd, is dat aan elke partitie een ongeveer gelijk segment uit het bereik van partitiesleutelwaarden wordt toegewezen. Daarom wordt u aangeraden een partitiesleutel te kiezen die relatief willekeurig of gelijkmatig gedistribueerd is. Als dat niet het geval is, zien sommige partities aanzienlijk meer aanvragen ( *dynamische partitie* ), terwijl andere partities aanzienlijk minder aanvragen ( *statische partitie* ) zien. Dit moet vermeden worden. U vind [hier](partitioning-overview.md) meer informatie over partitionering.
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 

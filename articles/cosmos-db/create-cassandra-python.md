@@ -9,14 +9,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 06e0d3618e96b44eca60f32a0977e7f03d6f5603
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8a76a37de64733ba3e0126c7885d8690d2d83c1b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824624"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099716"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Quickstart: een Cassandra-app bouwen met de Python SDK en Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -157,11 +158,11 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
     Druk op Ctrl+C om de uitvoering van het programma te stoppen en het consolevenster te sluiten. 
 
-    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Een gebruikersnaam, wachtwoord en contactpunt voor toegang in Azure Portal weergeven en kopiëren, blade Verbindingsreeks":::
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="De uitvoer weergeven en controleren":::
     
 4. Open **Data Explorer** in de Azure-portal om deze nieuwe gegevens te bekijken, te wijzigen, een query erop uit te voeren of er iets anders mee te doen. 
 
-    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Een gebruikersnaam, wachtwoord en contactpunt voor toegang in Azure Portal weergeven en kopiëren, blade Verbindingsreeks":::
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="De gegevens weergeven in Data Explorer":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 

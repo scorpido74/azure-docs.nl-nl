@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 924cf1e1b5bc155bfdbd2f5f766c5459d599fed5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c5aa7e5189b4c89636fdb38e8fd365208148900
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276183"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094639"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Quickstart: X.509-apparaten registreren bij de Device Provisioning Service met behulp van Java
 
@@ -26,7 +26,7 @@ In deze quickstart gebruikt u Java om programmatisch een groep gesimuleerde X.50
 
 - U hebt [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) voltooid.
 - Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks). In deze quickstart wordt de [Java-service-SDK](https://azure.github.io/azure-iot-sdk-java/service/) hieronder geïnstalleerd. Deze is geschikt voor Windows en Linux. In deze quickstart wordt Windows gebruikt.
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). In deze quickstart wordt de [Java-service-SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) hieronder geïnstalleerd. Deze is geschikt voor Windows en Linux. In deze quickstart wordt Windows gebruikt.
 - [Maven 3](https://maven.apache.org/download.cgi).
 - [Git](https://git-scm.com/download/).
 
@@ -41,7 +41,7 @@ In dit gedeelte wordt een zelfondertekend X.509-certificaat gebruikt. Het is bel
 
 In de volgende stappen wordt gedemonstreerd hoe u de inrichtingsgegevens van het X.509-apparaat toevoegt aan de voorbeeldcode. 
 
-1. Open een opdrachtprompt. Kloon de GitHub-opslagplaats voor het codevoorbeeld van de apparaatinschrijving met behulp van de [Java service-SDK](https://azure.github.io/azure-iot-sdk-java/service/):
+1. Open een opdrachtprompt. Kloon de GitHub-opslagplaats voor het codevoorbeeld van de apparaatinschrijving met behulp van de [Java service-SDK](https://azure.github.io/azure-iot-sdk-java/master/service/):
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -78,8 +78,8 @@ In de volgende stappen wordt gedemonstreerd hoe u de inrichtingsgegevens van het
             ```
 
         5. Wanneer u hierom wordt gevraagd, kunt u ook een _algemene naam_ invoeren voor de certificaten.
-        6. Het hulpprogramma genereert lokaal een **Clientcertificaat**, de **Persoonlijke sleutel van clientcertificaat** en het **Basiscertificaat**.
-        7. Kopieer het **Basiscertificaat**, inclusief de regels **_-----BEGIN CERTIFICATE-----_** and **_-----END CERTIFICATE-----_**. 
+        6. Het hulpprogramma genereert lokaal een **Clientcertificaat** , de **Persoonlijke sleutel van clientcertificaat** en het **Basiscertificaat**.
+        7. Kopieer het **Basiscertificaat** , inclusief de regels **_-----BEGIN CERTIFICATE-----_** and **_-----END CERTIFICATE-----_**. 
         8. Wijs de waarde van het **Basiscertificaat** toe aan de parameter **PUBLIC_KEY_CERTIFICATE_STRING** zoals hieronder wordt weergegeven:
 
             ```Java

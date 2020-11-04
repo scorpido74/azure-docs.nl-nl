@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 5ba47522f483b6c9b2a03e99f3608c58e916e010
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f53ff85dd118774b86a0ec25c89f912798a6418d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944934"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125849"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Quickstart: Een Azure Stream Analytics-taak maken in Visual Studio Code (preview-versie)
 
@@ -33,7 +33,7 @@ Deze quickstart laat zien hoe u een Azure Stream Analytics-taak kunt maken en ui
 
 1. Open Visual Studio Code.
 
-2. Ga vanuit **Extensies** in het linkerdeelvenster naar **Stream Analytics** en selecteer **Installeren** in de **Azure Stream Analytics Tools**-extensie.
+2. Ga vanuit **Extensies** in het linkerdeelvenster naar **Stream Analytics** en selecteer **Installeren** in de **Azure Stream Analytics Tools** -extensie.
 
 3. Nadat de extensie is geïnstalleerd, controleert u of **Azure Stream Analytics Tools** zichtbaar is in de **ingeschakelde extensies**.
 
@@ -118,18 +118,18 @@ Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden d
 
    ![Een nieuw project maken](./media/quick-create-visual-studio-code/create-new-project.png)
 
-2. Voer de naam van uw project in, zoals **myASAproj**, en selecteer een map voor uw project.
+2. Voer de naam van uw project in, zoals **myASAproj** , en selecteer een map voor uw project.
 
     ![Een projectnaam opgeven](./media/quick-create-visual-studio-code/create-project-name.png)
 
-3. Het nieuwe project wordt toegevoegd aan uw werkruimte. Een Stream Analytics-project bestaat uit drie mappen: **Invoer**, **Uitvoer**en **Functies**. Het bevat ook het queryscript **(*.asaql)** , het bestand **JobConfig.json** en het configuratiebestand **asaproj.json**.
+3. Het nieuwe project wordt toegevoegd aan uw werkruimte. Een Stream Analytics-project bestaat uit drie mappen: **Invoer** , **Uitvoer** en **Functies**. Het bevat ook het queryscript **(*.asaql)** , het bestand **JobConfig.json** en het configuratiebestand **asaproj.json**.
 
     Het configuratiebestand **asaproj. json** bevat de invoer-, uitvoer- en taakconfiguratiebestandgegevens die nodig zijn voor het indienen van de Stream Analytics-taak bij Azure.
 
     ![Stream Analytics-projectbestanden in Visual Studio Code](./media/quick-create-visual-studio-code/asa-project-files.png)
 
 > [!Note]
-> Wanneer u invoer en uitvoer toevoegt vanuit het opdrachtenpalet, worden de bijbehorende paden automatisch toegevoegd aan **asaproj.json**. Als u invoer of uitvoer rechtstreeks aan de schijf toevoegt of verwijdert, moet u deze handmatig toevoegen aan of verwijderen uit **asaproj.json**. U kunt ervoor kiezen om de invoer en uitvoer op één plek te plaatsen en ernaar te verwijzen in verschillende taken door de paden op te geven in elk **asaproj.json**-bestand.
+> Wanneer u invoer en uitvoer toevoegt vanuit het opdrachtenpalet, worden de bijbehorende paden automatisch toegevoegd aan **asaproj.json**. Als u invoer of uitvoer rechtstreeks aan de schijf toevoegt of verwijdert, moet u deze handmatig toevoegen aan of verwijderen uit **asaproj.json**. U kunt ervoor kiezen om de invoer en uitvoer op één plek te plaatsen en ernaar te verwijzen in verschillende taken door de paden op te geven in elk **asaproj.json** -bestand.
 
 ## <a name="define-the-transformation-query"></a>De transformatiequery definiëren
 
@@ -166,7 +166,7 @@ Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden d
 
     ![Selecteren in abonnementen](./media/quick-create-visual-studio-code/add-input-select-subscription.png)
 
-5. Bewerk het zojuist gegenereerde **IoTHub1.json**-bestand met de volgende waarden. Behoud standaardwaarden voor velden die hier niet worden vermeld.
+5. Bewerk het zojuist gegenereerde **IoTHub1.json** -bestand met de volgende waarden. Behoud standaardwaarden voor velden die hier niet worden vermeld.
 
    |Instelling|Voorgestelde waarde|Beschrijving|
    |-------|---------------|-----------|
@@ -281,4 +281,4 @@ Ga voor meer informatie over Azure Stream Analytics-hulpprogramma's voor Visual 
 
 * [Visual Studio Code gebruiken om Azure Stream Analytics-taken weer te geven](visual-studio-code-explore-jobs.md)
 
-* [CI/CD-pijplijnen instellen met behulp van het NPM-pakket](setup-cicd-vs-code.md)
+* [CI/CD-pijplijnen instellen met behulp van het NPM-pakket](./cicd-overview.md)

@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495988"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310163"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>What is Azure Machine Learning-studio?
 
@@ -83,7 +83,7 @@ De volgende tabel bevat een overzicht van enkele van de belangrijkste verschille
 | Functie | ML Studio (klassiek) | Azure Machine Learning |
 |---| --- | --- |
 | Interface met slepen en neerzetten | Klassieke ervaring | Bijgewerkte ervaring - [Azure Machine Learning Designer](concept-designer.md)| 
-| Code-SDK's | Niet ondersteund | Volledig geïntegreerd met [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) en [R](tutorial-1st-r-experiment.md) SDK's |
+| Code-SDK's | Niet ondersteund | Volledig geïntegreerd met [Azure Machine Learning Python](/python/api/overview/azure/ml/) en [R](tutorial-1st-r-experiment.md) SDK's |
 | Experiment | Schaalbaar (max. 10 GB aan trainingsgegevens) | Schalen met rekendoel |
 | Rekendoelen voor training | Eigen rekendoel, alleen CPU-ondersteuning | Breed scala aan aanpasbare [rekendoelen voor training](concept-compute-target.md#train). Inclusief GPU- en CPU-ondersteuning | 
 | Rekendoelen voor implementatie | Bedrijfseigen webservice-indeling, niet aanpasbaar | Breed scala aan aanpasbare [rekendoelen voor implementatie](concept-compute-target.md#deploy). Inclusief GPU- en CPU-ondersteuning |
@@ -103,4 +103,3 @@ Ga naar de [studio](https://ml.azure.com)of leer meer over de verschillende ontw
   + [Jupyter-notebooks gebruiken in een rekenproces om modellen te trainen en te implementeren](tutorial-1st-experiment-sdk-setup.md)
   + [Geautomatiseerde machine learning gebruiken voor het trainen en implementeren van modellen](tutorial-first-experiment-automated-ml.md)  
   + [De ontwerpfunctie gebruiken om modellen te trainen en implementeren](tutorial-designer-automobile-price-train-score.md)
-

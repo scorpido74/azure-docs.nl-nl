@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: jasonh
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0b81bf951df6db0da7ed049c435a319f6ee33b8a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 816a16b34c16b2ccc95cbe57aec482b8d3e13fc6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479048"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099749"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Quickstart: Een .NET Framework- of Core-toepassing ontwikkelen met het Azure Cosmos DB Gremlin API-account
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin-console](create-graph-gremlin-console.md)
@@ -110,7 +111,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
    **Gremlin-eindpunt** : deze waarde wordt gebruikt wanneer u verbinding met het grafiekaccount maakt met behulp van de Gremlin.Net-bibliotheek.
 
-    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Het eindpunt kopiëren&quot;:::
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Het eindpunt kopiëren":::
 
    Als u dit voorbeeld wilt uitvoeren, moet u de waarde voor het **Gremlin-eindpunt** kopiëren, het poortnummer aan het eind verwijderen, zodat de URI `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` wordt. De eindpuntwaarde moet er als volgt uitzien `testgraphacct.gremlin.cosmosdb.azure.com`
 
@@ -119,8 +120,8 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 1. Nadat u de URI en PRIMAIRE SLEUTEL van uw account hebt gekopieerd, slaat u deze op in een nieuwe omgevingsvariabele op de lokale computer waarop de toepassing wordt uitgevoerd. Als u de omgevingsvariabele wilt instellen, opent u een opdrachtpromptvenster en voert u de volgende opdracht uit. Zorg ervoor dat u de waarden voor < Your_Azure_Cosmos_account_URI > en < Your_Azure_Cosmos_account_PRIMARY_KEY> vervangt.
 
    ```console
-   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
-   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+   setx Host "<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com"
+   setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
 1. Open het bestand *Program.cs* en werk de variabelen database en container bij met de database en container (dit is ook de naam van de grafiek) die hierboven zijn gemaakt.
@@ -141,23 +142,13 @@ Klik op Ctrl+F5 om de toepassing uit te voeren. De toepassing drukt zowel de Gre
 
 U kunt nu teruggaan naar Data Explorer in Azure Portal en door uw nieuwe graafgegevens bladeren en er query’s op uitvoeren.
 
-1. De nieuwe database wordt in Data Explorer weergegeven in het deelvenster Grafieken. Vouw de database en containerknooppunten uit en klik op **Graph** .
+1. De nieuwe database wordt in Data Explorer weergegeven in het deelvenster Grafieken. Vouw de database en containerknooppunten uit en klik op **Graph**.
 
 2. Klik op de knop **Filter toepassen** om de standaardquery te gebruiken om alle hoekpunten in de grafiek weer te geven. De gegevens die worden gegenereerd door de voorbeeldapp worden weergegeven in het deelvenster Grafen.
 
     U kunt op de grafiek in- en uitzoomen, u kunt u de grafiek uitvouwen voor meer ruimte, extra hoekpunten toevoegen en hoekpunten verplaatsen in de weergaveruimte.
 
-    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Het eindpunt kopiëren&quot;:::
-
-   Als u dit voorbeeld wilt uitvoeren, moet u de waarde voor het **Gremlin-eindpunt** kopiëren, het poortnummer aan het eind verwijderen, zodat de URI `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` wordt. De eindpuntwaarde moet er als volgt uitzien `testgraphacct.gremlin.cosmosdb.azure.com`
-
-1. Ga vervolgens naar het tabblad **Sleutels** en kopieer de waarde voor **PRIMAIRE SLEUTEL** uit Azure Portal. 
-
-1. Nadat u de URI en PRIMAIRE SLEUTEL van uw account hebt gekopieerd, slaat u deze op in een nieuwe omgevingsvariabele op de lokale computer waarop de toepassing wordt uitgevoerd. Als u de omgevingsvariabele wilt instellen, opent u een opdrachtpromptvenster en voert u de volgende opdracht uit. Zorg ervoor dat u de waarden voor < Your_Azure_Cosmos_account_URI > en < Your_Azure_Cosmos_account_PRIMARY_KEY> vervangt.
-
-   ```console
-   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
-   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>":::
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="De grafiek weergeven in Data Explorer in Azure Portal":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 

@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 97bb7db434322609630d97b7eff84e08da72c11c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 127b491da3e01e88c90e689e7dbcc9052ae4392f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486647"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099740"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Quickstart: Een Azure Cosmos-account, -database, -container en -items maken vanuit de Azure-portal
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Azure-portal](create-cosmosdb-resources-portal.md)
@@ -40,11 +41,11 @@ Een Azure-abonnement of gratis Azure Cosmos DB-proefaccount
 <a id="create-account"></a>
 ## <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
 
-Ga naar de [Azure-portal](https://portal.azure.com/) om een Azure Cosmos DB-account aan te maken. Zoek en selecteer **Azure Cosmos DB** .
+Ga naar de [Azure-portal](https://portal.azure.com/) om een Azure Cosmos DB-account aan te maken. Zoek en selecteer **Azure Cosmos DB**.
 
    :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Het deelvenster Databases in Azure Portal":::
 
-1. Selecteer **Toevoegen** .
+1. Selecteer **Toevoegen**.
 1. Voer op de pagina **Azure Cosmos DB-account maken** de basisinstellingen in voor het nieuwe Azure Cosmos-account. 
 
     |Instelling|Waarde|Beschrijving |
@@ -70,28 +71,28 @@ Ga naar de [Azure-portal](https://portal.azure.com/) om een Azure Cosmos DB-acco
 > - Geografische redundantie
 > - Schrijven voor meerdere regio's
    
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Het deelvenster Databases in Azure Portal":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="De pagina Nieuw account voor Azure Cosmos DB":::
 
-1. Selecteer **Controleren + maken** . U kunt de secties **Netwerk** en **Tags** overslaan.
+1. Selecteer **Controleren + maken**. U kunt de secties **Netwerk** en **Tags** overslaan.
 
-1. Controleer de accountinstellingen en selecteer vervolgens **Maken** . Het duurt een paar minuten om het account te maken. Wacht tot de portal-pagina **Uw implementatie is voltooid** weergeeft. 
+1. Controleer de accountinstellingen en selecteer vervolgens **Maken**. Het duurt een paar minuten om het account te maken. Wacht tot de portal-pagina **Uw implementatie is voltooid** weergeeft. 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Het deelvenster Databases in Azure Portal":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Het deelvenster Meldingen in Azure Portal":::
 
 1. Selecteer **Ga naar resource** om naar de Azure Cosmos DB-accountpagina te gaan. 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Het deelvenster Databases in Azure Portal":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="De Azure Cosmos DB-accountpagina":::
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Een database en een container toevoegen 
 
 U kunt Data Explorer in de Azure-portal gebruiken om een database en een container te maken. 
 
-1.  Selecteer **Data Explorer** op de linkernavigatiebalk op uw accountpagina van Azure Cosmos DB en selecteer **Nieuwe container** . 
+1.  Selecteer **Data Explorer** op de linkernavigatiebalk op uw accountpagina van Azure Cosmos DB en selecteer **Nieuwe container**. 
     
     Mogelijk moet u naar rechts schuiven om het venster **Container toevoegen** te zien.
     
-    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Het deelvenster Databases in Azure Portal":::
+    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Data Explorer in Azure Portal, het deelvenster Container toevoegen":::
     
 1.  Geef in het deelvenster **Container toevoegen** de instellingen voor de nieuwe container op.
     
@@ -105,15 +106,15 @@ U kunt Data Explorer in de Azure-portal gebruiken om een database en een contain
     
     Voeg geen **unieke sleutels** toe voor dit voorbeeld. Met unieke sleutels kunt u een laag van gegevensintegriteit toevoegen aan de database door de uniekheid van een of meer waarden per partitiesleutel te garanderen. Zie [Unieke sleutels in Azure Cosmos DB](unique-keys.md) voor meer informatie.
     
-1.  Selecteer **OK** . In Data Explorer worden de nieuwe database en container weergegeven die u hebt gemaakt.
+1.  Selecteer **OK**. In Data Explorer worden de nieuwe database en container weergegeven die u hebt gemaakt.
 
 ## <a name="add-data-to-your-database"></a>Gegevens toevoegen aan uw database
 
 Voeg gegevens aan uw nieuwe database toe met behulp van Data Explorer.
 
-1. Vouw in **Data Explorer** de database **Takenlijst** uit en vouw de container **Items** uit. Selecteer vervolgens **Items** en selecteer **Nieuw item** . 
+1. Vouw in **Data Explorer** de database **Takenlijst** uit en vouw de container **Items** uit. Selecteer vervolgens **Items** en selecteer **Nieuw item**. 
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Het deelvenster Databases in Azure Portal":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Nieuwe documenten maken in Data Explorer in de Azure-portal":::
    
 1. Voeg de volgende structuur toe aan het document aan de rechterkant van het deelvenster **Documenten** :
 
@@ -127,9 +128,9 @@ Voeg gegevens aan uw nieuwe database toe met behulp van Data Explorer.
      }
      ```
 
-1. Selecteer **Opslaan** .
+1. Selecteer **Opslaan**.
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Het deelvenster Databases in Azure Portal":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="JSON-gegevens kopiëren en Opslaan selecteren in Data Explorer in de Azure-portal":::
    
 1. Selecteer opnieuw **Nieuw document** , maak nog een document en sla dit op met een unieke `id` en andere eigenschappen en waarden die u wilt instellen. De documenten kunnen elke gewenste structuur hebben, omdat in Azure Cosmos DB uw gegevens geen schema krijgen opgelegd.
 
@@ -144,7 +145,7 @@ Voeg gegevens aan uw nieuwe database toe met behulp van Data Explorer.
 Als u alleen de database wilt verwijderen en het Azure Cosmos-account in de toekomst wilt gebruiken, kunt u de database verwijderen door de volgende stappen uit te voeren:
 
 * Ga naar uw Azure Cosmos-account.
-* Open **Data Explorer** , klik met de rechtermuisknop op de database die u wilt verwijderen en selecteer **Database verwijderen** .
+* Open **Data Explorer** , klik met de rechtermuisknop op de database die u wilt verwijderen en selecteer **Database verwijderen**.
 * Voer de database-id/databasenaam in om de verwijderbewerking te bevestigen. 
 
 ## <a name="next-steps"></a>Volgende stappen

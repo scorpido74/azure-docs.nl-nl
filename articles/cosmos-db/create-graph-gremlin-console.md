@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be93df10614e32fb14e5ca7497461f0f2d6fc93e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409388"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099705"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Quickstart: Gebruik de Gremlin-console om een Azure Cosmos DB-grafiekdatabase te maken, er query’s op uit te voeren en erdoorheen te gaan
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin-console](create-graph-gremlin-console.md)
@@ -56,20 +57,20 @@ U moet ook de [Gremlin-console](https://tinkerpop.apache.org/downloads.html) ins
 
     Instelling|Voorgestelde waarde|Beschrijving
     ---|---|---
-    hosts|[*account-name*.**gremlin**.cosmos.azure.com]|Zie de volgende schermafbeelding. Dit is de **Gremlin URI**-waarde op de pagina Overzicht van Azure Portal tussen vierkante haken, waarbij de afsluitende :443/ is verwijderd. Opmerking: Zorg ervoor dat u de Gremlin-waarde gebruikt en **niet** de URI die eindigt op [*account-name*.documents.azure.com], wat waarschijnlijk zou resulteren in de uitzondering Host reageerde niet tijdig wanneer u later probeert Gremlin-query's uit te voeren. 
+    hosts|[ *account-name*. **gremlin**.cosmos.azure.com]|Zie de volgende schermafbeelding. Dit is de **Gremlin URI** -waarde op de pagina Overzicht van Azure Portal tussen vierkante haken, waarbij de afsluitende :443/ is verwijderd. Opmerking: Zorg ervoor dat u de Gremlin-waarde gebruikt en **niet** de URI die eindigt op [ *account-name*.documents.azure.com], wat waarschijnlijk zou resulteren in de uitzondering Host reageerde niet tijdig wanneer u later probeert Gremlin-query's uit te voeren. 
     poort|443|Ingesteld op 443.
     gebruikersnaam|*Uw gebruikersnaam*|De bron van het formulier `/dbs/<db>/colls/<coll>` waar `<db>` de naam van uw database is en `<coll>` de naam van uw verzameling is.
     wachtwoord|*Uw primaire sleutel*| Zie de tweede onderstaande schermafbeelding. Dit is uw primaire sleutel, die u kunt ophalen van de pagina Sleutels in Azure Portal, in het vak Primaire sleutel. Gebruik de kopieerknop aan de linkerkant van het vak om de waarde te kopiëren.
     connectionPool|{enableSsl: true}|De instelling van uw verbindingsgroep voor TLS.
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Instellen op deze waarden en eventuele `\n`-regeleinden verwijderen bij het plakken in de waarde.
 
-   Kopieer voor de waarde voor hosts de **Gremlin-URI** op de pagina **Overzicht**:
+   Kopieer voor de waarde voor hosts de **Gremlin-URI** op de pagina **Overzicht** :
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Azure Cosmo DB vanuit de Apache Gremlin-console":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="De Gremlin-URI op de pagina Overzicht in Azure Portal bekijken en kopiëren":::
 
-   Kopieer voor het wachtwoord de **primaire sleutel** op de pagina**Sleutels**:
+   Kopieer voor het wachtwoord de **primaire sleutel** op de pagina **Sleutels** :
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Azure Cosmo DB vanuit de Apache Gremlin-console":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="De primaire sleutel bekijken en kopiëren op de pagina Sleutels in Azure Portal":::
 
    Het remote-secure.yaml-bestand moet er als volgt uitzien:
 
@@ -108,7 +109,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>Hoekpunten en randen maken
 
-Laten we beginnen met het toevoegen van vijf hoekpunten voor de personen *Thomas*, *Marije*, *Robin*, *Ben* en *Jack*.
+Laten we beginnen met het toevoegen van vijf hoekpunten voor de personen *Thomas* , *Marije* , *Robin* , *Ben* en *Jack*.
 
 Invoer (Thomas):
 

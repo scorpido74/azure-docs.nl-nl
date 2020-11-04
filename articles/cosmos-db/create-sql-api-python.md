@@ -13,14 +13,15 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: aa23f6d5d7b81e93145fd7db3fb5b45e46918d21
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c74da5e612609ce6a0525b24e5868059f06da179
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487582"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078778"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Quickstart: Een Python-app maken met behulp van een SQL API-account van Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -57,7 +58,7 @@ In deze snelstart maakt en beheert u een SQL API-account van Azure Cosmos DB via
 
 U kunt nu het hulpprogramma Data Explorer in de Azure-portal gebruiken om een database en een container te maken. 
 
-1. Selecteer **Data Explorer** > **Nieuwe container** . 
+1. Selecteer **Data Explorer** > **Nieuwe container**. 
     
     Uiterst rechts wordt het gedeelte **Container toevoegen** weergegeven. Mogelijk moet u naar rechts scrollen om het te kunnen zien.
 
@@ -74,7 +75,7 @@ U kunt nu het hulpprogramma Data Explorer in de Azure-portal gebruiken om een da
     
     Naast de voornoemde instellingen kunt u indien gewenst **unieke sleutels** voor de container toevoegen. In dit voorbeeld laten we het veld leeg. Unieke sleutels bieden ontwikkelaars de mogelijkheid om een gegevensintegriteitslaag aan de database toe te voegen. Door een beleid met unieke sleutels te maken als u een container maakt, zorgt u ervoor dat een of meer waarden per partitiesleutel uniek zijn. Raadpleeg het artikel [Unique keys in Azure Cosmos DB](unique-keys.md) (Unieke sleutels in Azure Cosmos DB) voor meer informatie.
     
-    Selecteer **OK** . In Data Explorer worden de nieuwe database en container weergegeven.
+    Selecteer **OK**. In Data Explorer worden de nieuwe database en container weergegeven.
 
 ## <a name="add-sample-data"></a>Voorbeeldgegevens toevoegen
 
@@ -117,15 +118,15 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Sleutels** in het linkernavigatiegedeelte. Gebruik in de volgende stap de kopieerknoppen aan de rechterkant van het scherm om de **URI** en **Primaire sleutel** in het bestand *cosmos_get_started.py* te kopiëren.
 
-    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Data Explorer in Azure Portal, het deelvenster Container toevoegen":::
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Een toegangssleutel en URI in de sleutelinstellingen in Azure Portal ophalen":::
 
 2. Open het bestand *cosmos_get_started.py* in *\git-samples\azure-cosmos-db-python-getting-started* in Visual Studio Code.
 
-3. Kopieer uw **URI** -waarde via de portal (met de kopieerknop) en geef deze als waarde aan de **eindpunt** variabele in *cosmos_get_started.py* . 
+3. Kopieer uw **URI** -waarde via de portal (met de kopieerknop) en geef deze als waarde aan de **eindpunt** variabele in *cosmos_get_started.py*. 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. Kopieer vervolgens de waarde van uw **PRIMAIRE SLEUTEL** via de portal en geef deze als waarde aan de **sleutel** in *cosmos_get_started.py* . U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
+4. Kopieer vervolgens de waarde van uw **PRIMAIRE SLEUTEL** via de portal en geef deze als waarde aan de **sleutel** in *cosmos_get_started.py*. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
 
     `key = 'FILLME'`
 
@@ -135,7 +136,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 Deze stap is optioneel. Lees meer over de databaseresources die zijn gemaakt in code of sla dit over en ga naar [Uw verbindingsreeks bijwerken](#update-your-connection-string).
 
-De volgende codefragmenten zijn allemaal afkomstig uit het bestand *cosmos_get_started.py* .
+De volgende codefragmenten zijn allemaal afkomstig uit het bestand *cosmos_get_started.py*.
 
 * De CosmosClient wordt geïnitialiseerd. Zorg ervoor dat u de waarden voor 'Eindpunt' en 'sleutel' bijwerkt zoals is beschreven in het gedeelte [Uw verbindingsreeks bijwerken](#update-your-connection-string). 
 

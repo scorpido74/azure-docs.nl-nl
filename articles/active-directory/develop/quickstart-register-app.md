@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/03/2020
 ms.author: marsma
-ms.custom: aaddev, identityplatformtop40, contperfq1
+ms.custom: aaddev, identityplatformtop40, contperfq1, contentperfq2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ed4e3c54bd4aa6be314fe7ec12d6ba6e7cf949d9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258129"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083317"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snelstart: Een toepassing registreren bij het Microsoft-identiteitsplatform
 
@@ -45,7 +45,7 @@ Volg deze stappen om de app-registratie te maken:
 
     | Ondersteunde accounttypen | Beschrijving |
     |-------------------------|-------------|
-    | **Alleen accounts in deze organisatiemap** | Selecteer deze optie als u een toepassing bouwt die alleen is bedoeld voor gebruikers (of gasten) in *uw* tenant.<br><br>Dit wordt vaak een *LOB*-toepassing (Line-of-Business) genoemd. Dit is een toepassing met **één tenant** in het Microsoft Identity Platform. |
+    | **Alleen accounts in deze organisatiemap** | Selecteer deze optie als u een toepassing bouwt die alleen is bedoeld voor gebruikers (of gasten) in *uw* tenant.<br><br>Dit wordt vaak een *LOB* -toepassing (Line-of-Business) genoemd. Dit is een toepassing met **één tenant** in het Microsoft Identity Platform. |
     | **Accounts in elke organisatiemap** | Selecteer deze optie als u wilt dat gebruikers in *een willekeurige* Azure AD-tenant uw toepassing kunnen gebruiken. Deze optie is geschikt als u bijvoorbeeld een SaaS-toepassing (Software-as-a-Service) bouwt die u aan meerdere organisaties wilt leveren.<br><br>Dit wordt een toepassing met **meerdere tenants** genoemd in het Microsoft Identity Platform. |
     | **Accounts in elke organisatiemap en persoonlijke Microsoft-accounts** | Selecteer deze optie om de breedste groep klanten te bereiken.<br><br>Als u deze optie selecteert registreert u een toepassing met **meerdere tenants** die ook ondersteuning kan bieden voor gebruikers met een persoonlijk **Microsoft-account** (MSA). |
     | **Persoonlijk Microsoft-account** | Selecteer deze optie als u een toepassing bouwt die alleen is bedoeld voor gebruikers met een persoonlijk Microsoft-account. Persoonlijke Microsoft-accounts inclusief Skype-, Xbox-, Live- en Hotmail-accounts. |
@@ -59,7 +59,7 @@ Wanneer de registratie is voltooid, wordt in de Azure-portal het deelvenster **O
 
 De code van uw toepassing (meestal een verificatiebibliotheek die wordt gebruikt in uw toepassing) gebruikt ook de client-id als één aspect bij het valideren van de beveiligingstokens die worden ontvangen van het Identity Platform.
 
-:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Een toepassing registreren.":::
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Overzicht van de app-registratie.":::
 
 ## <a name="add-a-redirect-uri"></a>Een omleidings-URI toevoegen
 
@@ -71,22 +71,22 @@ U kunt omleidings-URI's voor uw geregistreerde toepassingen toevoegen en wijzige
 
 ### <a name="configure-platform-settings"></a>Platforminstellingen configureren
 
-Instellingen voor elk toepassingstype, waaronder omleidings-URI's, worden geconfigureerd in **Platformconfiguraties** in de Azure-portal. Voor sommige platformen, zoals **Webtoepassingen** en **Toepassingen met één pagina**, moet u handmatig een omleidings-URI opgeven. Voor andere platformen, zoals mobiele toepassingen en desktoptoepassingen, kunt u kiezen uit omleidings-URI's die voor u zijn gegenereerd tijdens het configureren van de andere bijbehorende instellingen.
+Instellingen voor elk toepassingstype, waaronder omleidings-URI's, worden geconfigureerd in **Platformconfiguraties** in de Azure-portal. Voor sommige platformen, zoals **Webtoepassingen** en **Toepassingen met één pagina** , moet u handmatig een omleidings-URI opgeven. Voor andere platformen, zoals mobiele toepassingen en desktoptoepassingen, kunt u kiezen uit omleidings-URI's die voor u zijn gegenereerd tijdens het configureren van de andere bijbehorende instellingen.
 
 Als u toepassingsinstellingen wilt configureren op basis van het platform of apparaat, doet u het volgende:
 
 1. Selecteer de toepassing in **App-registraties** in de Azure-portal.
 1. Selecteer **Verificatie** onder **Beheren**.
-1. Selecteer **Een platform toevoegen**onder **Platformconfiguraties**.
+1. Selecteer **Een platform toevoegen** onder **Platformconfiguraties**.
 1. Selecteer in **Platforms configureren** de tegel voor uw toepassingstype (platform) om de bijbehorende instellingen te configureren.
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Een toepassing registreren." border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Schermopname van het deelvenster Platformconfiguratie in de Azure-portal" border="false":::
 
     | Platform | Configuratie-instellingen |
     | -------- | ---------------------- |
     | **Web** | Voer een **Omleidings-URI** voor de app in, de locatie waar het Microsoft Identity Platform een client van de gebruiker naartoe omleidt en beveiligingstokens naartoe stuurt na de verificatie.<br/><br/>Selecteer dit platform voor standaardwebtoepassingen die worden uitgevoerd op een server. |
     | **Toepassing met één pagina** | Voer een **Omleidings-URI** voor de app in, de locatie waar het Microsoft Identity Platform een client van de gebruiker naartoe omleidt en beveiligingstokens naartoe stuurt na de verificatie.<br/><br/>Selecteer dit platform als u een web-app aan de clientzijde bouwt in JavaScript of met een framework zoals Angular, Vue.js, React.js of Blazor WebAssembly. |
-    | **iOS / macOS** | Voer de **Bundel-id** van de app in. Deze vindt u in XCode in *Info.plist*, of in de instellingen voor de build.<br/><br/>Er wordt een omleidings-URI gegenereerd wanneer u een bundel-id opgeeft. |
+    | **iOS / macOS** | Voer de **Bundel-id** van de app in. Deze vindt u in XCode in *Info.plist* , of in de instellingen voor de build.<br/><br/>Er wordt een omleidings-URI gegenereerd wanneer u een bundel-id opgeeft. |
     | **Android** | Voer de **Pakketnaam** van de app in. Deze vindt u in het bestand *AndroidManifest.xml*. Genereer vervolgens de **Hash voor ondertekening** en voer deze in.<br/><br/>Er wordt een omleidings-URI gegenereerd wanneer u deze instellingen opgeeft. |
     | **Mobiele toepassingen en desktoptoepassingen** | Selecteer een van de **Voorgestelde omleidings-URI's** of geef een **Aangepaste omleidings-URI** op.<br/>Voor desktoptoepassingen kunt u het beste het volgende doen:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Selecteer dit platform voor mobiele toepassingen die niet gebruikmaken van de nieuwste MSAL-versie (Microsoft Authentication Library) of die geen broker gebruiken. Selecteer dit platform ook voor desktoptoepassingen. |
 1. Selecteer **Configureren** om de platformconfiguratie te voltooien.
@@ -101,7 +101,7 @@ Referenties worden gebruikt voor vertrouwelijke clienttoepassingen die toegang h
 
 U kunt zowel certificaten als clientgeheimen (een tekenreeks) toevoegen als referenties voor de registratie van uw vertrouwelijke client-app.
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Een toepassing registreren.":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Schermopname van de Azure-portal, met het deelvenster Certificaten en geheimen in een app-registratie":::
 
 ### <a name="add-a-certificate"></a>Een certificaat toevoegen
 

@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 65a3e9a1e60ad28fbc0357c5b04007ce4da37895
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 513af71384fd1fa5d38ee3ec367a42892a662444
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487599"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096934"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Quickstart: Een Table-API-app bouwen met .NET SDK en Azure Cosmos DB 
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -72,7 +73,7 @@ We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en d
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>De voorbeeldtoepassing openen in Visual Studio
 
-1. In Visual Studio opent u het menu **Bestand** , kiest u **Openen** en vervolgens **Project/oplossing** . 
+1. In Visual Studio opent u het menu **Bestand** , kiest u **Openen** en vervolgens **Project/oplossing**. 
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-open-solution.png" alt-text="De oplossing openen"::: 
 
@@ -102,9 +103,17 @@ Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code wor
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app. Hierdoor kan de app communiceren met de gehoste database. 
 
-1. Klik in [Azure Portal](https://portal.azure.com/) op **Verbindingsreeks** . Gebruik de kopieerknop aan de rechterkant van het venster om de **PRIMARY CONNECTION STRING** te kopiëren.
+1. Klik in [Azure Portal](https://portal.azure.com/) op **Verbindingsreeks**. Gebruik de kopieerknop aan de rechterkant van het venster om de **PRIMARY CONNECTION STRING** te kopiëren.
 
-   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="De oplossing openen"
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="De PRIMARY CONNECTION STRING in het deelvenster Verbindingsreeks weergeven en kopiëren":::
+
+2. Open het bestand **Settings.json** in Visual Studio. 
+
+3. Plak de **PRIMARY CONNECTION STRING** vanuit de portal in de waarde StorageConnectionString. Plak de tekenreeks tussen de aanhalingstekens.
+
+   ```csharp
+   {
+      "StorageConnectionString": "<Primary connection string from Azure portal>"
    }
    ```
 
@@ -114,27 +123,27 @@ U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicati
 
 ## <a name="build-and-deploy-the-app"></a>De app compileren en implementeren
 
-1. Klik in Visual Studio met de rechtermuisknop op het project **CosmosTableSamples** in **Solution Explorer** en klik vervolgens op **NuGet-pakketten beheren** . 
+1. Klik in Visual Studio met de rechtermuisknop op het project **CosmosTableSamples** in **Solution Explorer** en klik vervolgens op **NuGet-pakketten beheren**. 
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="De oplossing openen":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="NuGet-pakketten beheren":::
 
 2. Typ in het NuGet-vak **Bladeren** Microsoft.Azure.Cosmos.Table. Daarmee wordt de clientbibliotheek Cosmos DB-tabel API gevonden. Houd er rekening mee dat deze bibliotheek momenteel alleen beschikbaar is voor .NET Framework en .NET Standard. 
    
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="De oplossing openen":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="Tabblad NuGet bladeren":::
 
 3. Klik op **Installeren** om de bibliotheek **Microsoft.Azure.Cosmos.Table** te installeren. Hiermee worden het pakket voor de Azure Cosmos DB-tabel API en alle daarvoor vereiste onderdelen geïnstalleerd.
 
-4. Wanneer u de hele app uitvoert, worden er voorbeeldgegevens in de tabelentiteit ingevoegd en aan het eind verwijderd, zodat er geen ingevoegd gegevens worden weergegeven als u het hele voorbeeld uitvoert. U kunt echter een aantal onderbrekingspunten invoegen om de gegevens weer te geven. Open het bestand BasicSamples.cs en klik met de rechtermuisknop op regel 52, selecteer **Onderbrekingspunt** en selecteer daarna **Onderbrekingspunt invoegen** . Voeg nog een onderbrekingspunt in op regel 55.
+4. Wanneer u de hele app uitvoert, worden er voorbeeldgegevens in de tabelentiteit ingevoegd en aan het eind verwijderd, zodat er geen ingevoegd gegevens worden weergegeven als u het hele voorbeeld uitvoert. U kunt echter een aantal onderbrekingspunten invoegen om de gegevens weer te geven. Open het bestand BasicSamples.cs en klik met de rechtermuisknop op regel 52, selecteer **Onderbrekingspunt** en selecteer daarna **Onderbrekingspunt invoegen**. Voeg nog een onderbrekingspunt in op regel 55.
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="De oplossing openen"::: 
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="Een onderbrekingspunt toevoegen"::: 
 
 5. Druk op F5 om de toepassing uit te voeren. In het consolevenster wordt de naam van de nieuwe tabeldatabase (in dit geval demoa13b1) weergegeven in Azure Cosmos DB. 
     
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="De oplossing openen":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="Console-uitvoer":::
 
-   Als u het eerste onderbrekingspunt bereikt, gaat u terug naar de Data Explorer in Azure Portal. Klik op de knop **Vernieuwen** , vouw de demo*-tabel uit en klik op **Entiteiten** . Het tabblad **Entiteiten** aan de rechterkant geeft de nieuwe entiteit weer die is toegevoegd voor Walter Harp. U ziet dat het telefoonnummer voor de nieuwe entiteit 425-555-0101 is.
+   Als u het eerste onderbrekingspunt bereikt, gaat u terug naar de Data Explorer in Azure Portal. Klik op de knop **Vernieuwen** , vouw de demo*-tabel uit en klik op **Entiteiten**. Het tabblad **Entiteiten** aan de rechterkant geeft de nieuwe entiteit weer die is toegevoegd voor Walter Harp. U ziet dat het telefoonnummer voor de nieuwe entiteit 425-555-0101 is.
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="De oplossing openen":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="Nieuwe entiteit":::
     
    Als er een foutbericht wordt weergegeven met de tekst dat het Settings.json-bestand niet gevonden is bij het uitvoeren van het project, kunt u dit oplossen door de volgende XML-vermelding toe te voegen aan de projectinstellingen. Klik met de rechtermuisknop op CosmosTableSamples, selecteer Bewerken CosmosTableSamples.csproj en voeg de volgende itemGroup toe: 
 

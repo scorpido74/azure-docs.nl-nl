@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 30e1a9e4b82971180f375a006f4825832e6179e9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 98ad02c134df919c593c87dd96a9a71d73371a1c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087398"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Inleiding tot de Gremlin-API in Azure Cosmos DB
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 [Azure Cosmos DB](introduction.md)  is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft voor essentiële toepassingen. Dit is een database met meerdere modellen die modellen voor document-, sleutelwaarde-, grafiek- en kolomgegevens ondersteunt. 'Azure Cosmos DB biedt een databaseservice voor grafieken via de Gremin-API in een volledig beheerde databaseservice die voor welke schaal dan ook is ontworpen.  
 
@@ -106,7 +107,7 @@ Graafdatabases worden vaak opgenomen in de NoSQL- of niet-relationele databaseca
 
 Laten we een voorbeeldgrafiek gebruiken om te zien hoe query’s kunnen worden uitgedrukt in Gremlin. In de volgende afbeelding ziet u een zakelijke toepassing waarmee gegevens over gebruikers, interesses en apparaten worden beheerd, in de vorm van een grafiek.  
 
-:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Azure Cosmos DB-grafiekarchitectuur" border="false"::: 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Voorbeelddatabase met personen, apparaten en interesses" border="false"::: 
 
 Deze grafiek heeft de volgende types van *hoekpunten* (in Gremlin ook wel 'labels' genoemd):
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: e6b299b5befec93f21e9e8476d0cc74710612d66
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6c6282f487d6a20de4654118df94c8bfac8a441d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323801"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075922"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Quickstart: TPM-apparaat inschrijven bij IoT Hub Device Provisioning Service met behulp van de Java-service-SDK
 
@@ -27,7 +27,7 @@ In deze quickstart gaat u programmatisch een afzonderlijke inschrijving voor een
 - U hebt [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) voltooid.
 - U hebt [Cryptografische sleutels van het TPM-apparaat lezen](quick-create-simulated-device.md#simulatetpm) voltooid.
 - Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks). In deze quickstart wordt de [Java-service-SDK](https://azure.github.io/azure-iot-sdk-java/service/) hieronder geïnstalleerd. Deze is geschikt voor Windows en Linux. In deze quickstart wordt Windows gebruikt.
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). In deze quickstart wordt de [Java-service-SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) hieronder geïnstalleerd. Deze is geschikt voor Windows en Linux. In deze quickstart wordt Windows gebruikt.
 - [Maven 3](https://maven.apache.org/download.cgi).
 - [Git](https://git-scm.com/download/).
 
@@ -62,7 +62,7 @@ In deze quickstart gaat u programmatisch een afzonderlijke inschrijving voor een
 
 In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt aan de voorbeeldcode. 
 
-1. Open een opdrachtprompt. Kloon de GitHub-opslagplaats voor het codevoorbeeld van de apparaatinschrijving met behulp van de [Java service-SDK](https://azure.github.io/azure-iot-sdk-java/service/):
+1. Open een opdrachtprompt. Kloon de GitHub-opslagplaats voor het codevoorbeeld van de apparaatinschrijving met behulp van de [Java service-SDK](https://azure.github.io/azure-iot-sdk-java/master/service/):
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -130,7 +130,7 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
     mvn install -DskipTests
     ```
 
-   Met deze opdracht wordt het Maven-pakket [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) gedownload naar de computer. Dit pakket bevat de binaire bestanden voor de [Java service-SDK](https://azure.github.io/azure-iot-sdk-java/service/), die de voorbeeldcode nodig heeft voor het bouwen. 
+   Met deze opdracht wordt het Maven-pakket [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) gedownload naar de computer. Dit pakket bevat de binaire bestanden voor de [Java service-SDK](https://azure.github.io/azure-iot-sdk-java/master/service/), die de voorbeeldcode nodig heeft voor het bouwen. 
 
 3. Voer het voorbeeld uit met behulp van deze opdrachten in het opdrachtvenster:
 

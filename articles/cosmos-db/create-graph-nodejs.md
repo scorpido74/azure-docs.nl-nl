@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 546187b49e1186d665fe32b3f8d632a0281bffa4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409371"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099671"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Quickstart: Een Node.js-toepassing ontwikkelen met het Gremlin-API-account van Azure Cosmos DB
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin-console](create-graph-gremlin-console.md)
@@ -95,7 +96,7 @@ In deze console-app wordt gebruik gemaakt van het opensource-stuurprogramma [Gre
 
     ```
 
-  De configuraties staan allemaal in *config.js*, die we bewerken in de [volgende sectie](#update-your-connection-string).
+  De configuraties staan allemaal in *config.js* , die we bewerken in de [volgende sectie](#update-your-connection-string).
 
 * Een reeks functies wordt gedefinieerd voor het uitvoeren van verschillende Gremlin-bewerkingen. Dit is er een van:
 
@@ -161,7 +162,7 @@ In deze console-app wordt gebruik gemaakt van het opensource-stuurprogramma [Gre
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Een toegangssleutel in Azure Portal weergeven en kopiëren op de pagina Overzicht":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="De blade Sleutels in Azure Portal":::
 
 4. Voer de databasenaam en de naam van de graaf (container) in voor de waarde van config.database en config.collection. 
 
