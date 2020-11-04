@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 658d18ed3c9eefeedffd82bbccedbde0621fe748
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145526"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307779"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
@@ -36,7 +36,7 @@ Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volge
 - [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
-- [Azure SQL Database en Data Warehouse](../../azure-sql/database/conditional-access-configure.md)
+- [Azure SQL Database en Azure Synapse Analytics](../../azure-sql/database/conditional-access-configure.md)
 - Dynamics CRM Online
 - Micro soft Application Insights Analytics
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
@@ -125,7 +125,7 @@ Naast de micro soft-apps kunnen beheerders een door Azure AD geregistreerde toep
 
 ## <a name="user-actions"></a>Gebruikersacties
 
-Gebruikers acties zijn taken die door een gebruiker kunnen worden uitgevoerd. De enige bewerking die momenteel wordt ondersteund, is het **registreren van beveiligings gegevens**, waardoor het beleid voor voorwaardelijke toegang kan worden afgedwongen wanneer gebruikers die zijn ingeschakeld voor gecombineerde registratie proberen hun beveiligings gegevens te registreren. Meer informatie vindt u in het artikel, [registratie van gecombineerde beveiligings gegevens](../authentication/concept-registration-mfa-sspr-combined.md).
+Gebruikers acties zijn taken die door een gebruiker kunnen worden uitgevoerd. De enige bewerking die momenteel wordt ondersteund, is het **registreren van beveiligings gegevens** , waardoor het beleid voor voorwaardelijke toegang kan worden afgedwongen wanneer gebruikers die zijn ingeschakeld voor gecombineerde registratie proberen hun beveiligings gegevens te registreren. Meer informatie vindt u in het artikel, [registratie van gecombineerde beveiligings gegevens](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,16 +11,16 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 1a4e4e8f97f543132e4295cca59312b0e78a6637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a5857e44623f545f2807592c0f6f7b6dae366f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362828"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308628"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Para meters voor de webservice Azure Machine Learning Studio (klassiek) gebruiken
 
-**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Een Azure Machine Learning-webservice wordt gemaakt door een experiment te publiceren dat modules bevat met Configureer bare para meters. In sommige gevallen wilt u mogelijk het gedrag van de module wijzigen terwijl de webservice wordt uitgevoerd. Met de *para meters* van de webservice kunt u deze taak uitvoeren. 
@@ -51,8 +51,8 @@ Als voor beeld gaan we ervan uit dat we een experiment hebben met een [export ge
 1. Klik in Machine Learning Studio (klassiek) op de module [gegevens exporteren][writer] om deze te selecteren. De eigenschappen worden weer gegeven in het deel venster Eigenschappen rechts van het canvas voor het experiment.
 2. Geef het opslag type op:
    
-   * Selecteer onder **gegevens doel opgeven**de optie Azure Blob Storage.
-   * Selecteer onder **verificatie type opgeven**de optie account.
+   * Selecteer onder **gegevens doel opgeven** de optie Azure Blob Storage.
+   * Selecteer onder **verificatie type opgeven** de optie account.
    * Voer de account gegevens in voor de Azure Blob-opslag. 
 
 3. Klik op het pictogram rechts van het **pad naar de blob die begint met de container parameter**. Deze ziet er als volgt uit:
@@ -75,13 +75,12 @@ Als voor beeld gaan we ervan uit dat we een experiment hebben met een [export ge
 De gebruiker van de webservice kan nu een nieuwe bestemming opgeven voor de module [gegevens exporteren][writer] bij het openen van de webservice.
 
 ## <a name="more-information"></a>Meer informatie
-Zie de vermelding [webservice-para meters](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) in het [machine learning blog](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)voor een gedetailleerd voor beeld.
+Zie de vermelding [webservice-para meters](/archive/blogs/machinelearning/azureml-web-service-parameters) in het [machine learning blog](/archive/blogs/machinelearning/azureml-web-service-parameters)voor een gedetailleerd voor beeld.
 
 Zie [How to verbruik a Azure machine learning web service](consume-web-services.md)(Engelstalig) voor meer informatie over het openen van een machine learning-webservice.
 
 <!-- Module References -->
-[feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
-[filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
-
+[feature-hashing]: /azure/machine-learning/studio-module-reference/feature-hashing
+[filter-based-feature-selection]: /previous-versions/azure/dn905854(v=azure.100)
+[reader]: /azure/machine-learning/studio-module-reference/import-data
+[writer]: /azure/machine-learning/studio-module-reference/export-data

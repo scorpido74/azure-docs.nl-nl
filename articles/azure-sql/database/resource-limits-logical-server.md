@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 813f229d414ab911169f404dfc6b3cbf93fa96b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780781"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308826"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Resource limieten voor Azure SQL Database en Azure Synapse Analytics-servers
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,7 +61,7 @@ Wanneer het gebruik van hoge berekeningen wordt tegengekomen, zijn de volgende o
 - De reken grootte van de data base of elastische pool verg Roten om de data base te voorzien van meer compute-resources. Zie bronnen van [één data base schalen](single-database-scale.md) en [elastische pool resources schalen](elastic-pool-scale.md).
 - Query's optimaliseren om het CPU-resource gebruik van elke query te verminderen. Zie [Afstemmen van query's en query-hints](performance-guidance.md#query-tuning-and-hinting) voor meer informatie.
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 
 Wanneer gebruikte database ruimte de maximale grootte bereikt, worden invoeg bewerkingen en updates die de omvang van de gegevens overschrijden, door data bases ingevoegd en bijgewerkt en ontvangen clients een [fout bericht](troubleshoot-common-errors-issues.md). De instructies SELECT en DELETE blijven slagen.
 
@@ -131,7 +131,7 @@ Azure SQL Database Resource governance is hiërarchisch van aard. Van boven naar
 
 Data IO governance is een proces in Azure SQL Database dat wordt gebruikt voor het beperken van fysieke IO-Lees-en schrijf bewerkingen op gegevens bestanden van een Data Base. IOPS-limieten worden voor elk service niveau ingesteld om het effect "ruis op de buur" zo klein mogelijk te maken, om resource toewijzings verdeling in de multi tenant-service te bieden en om binnen de mogelijkheden van de onderliggende hardware en opslag te blijven.
 
-Voor afzonderlijke data bases worden de limieten voor werkbelasting groepen toegepast op alle opslag-i/o-bewerkingen op de data base, terwijl de limieten voor de resource groep van toepassing zijn op alle opslag-i/o-data bases in dezelfde SQL-groep, inclusief `tempdb` Voor elastische Pools gelden werkbelasting groeps limieten voor elke data base in de pool, terwijl de limiet voor de resource groep van toepassing is op de volledige elastische pool, met inbegrip van de `tempdb` Data Base, die wordt gedeeld door alle data bases in de groep. Over het algemeen kunnen limieten voor resource groepen niet worden behaald door de werk belasting op basis van een Data Base (enkel of gegroepeerd), omdat de limieten voor werkbelasting groepen lager zijn dan de limieten voor de resource groep en het aantal IOPS/door Voer is beperkt. Groeps limieten kunnen echter worden bereikt door de gecombineerde werk belasting op meerdere data bases in dezelfde groep.
+Voor afzonderlijke data bases worden de limieten voor werkbelasting groepen toegepast op alle opslag-i/o-bewerkingen op de data base, terwijl de limieten voor de resource groep van toepassing zijn op alle opslag-i/o-data bases op dezelfde specifieke SQL-groep, inclusief `tempdb` Voor elastische Pools gelden werkbelasting groeps limieten voor elke data base in de pool, terwijl de limiet voor de resource groep van toepassing is op de volledige elastische pool, met inbegrip van de `tempdb` Data Base, die wordt gedeeld door alle data bases in de groep. Over het algemeen kunnen limieten voor resource groepen niet worden behaald door de werk belasting op basis van een Data Base (enkel of gegroepeerd), omdat de limieten voor werkbelasting groepen lager zijn dan de limieten voor de resource groep en het aantal IOPS/door Voer is beperkt. Groeps limieten kunnen echter worden bereikt door de gecombineerde werk belasting op meerdere data bases in dezelfde groep.
 
 Als een query bijvoorbeeld 1000 IOPS genereert zonder IO resource governance, maar de maximale IOPS-limiet van de werkbelasting groep is ingesteld op 900 IOPS, kan de query niet meer dan 900 IOPS genereren. Als de maximale IOPS-limiet van de resource groep is ingesteld op 1500 IOPS en het totale aantal IO-bewerkingen van alle werkbelasting groepen die zijn gekoppeld aan de resource groep meer dan 1500 IOPS overschrijdt, kan de i/o van dezelfde query worden verminderd onder de limiet van 900 IOPS voor de werk groep.
 

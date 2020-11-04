@@ -1,6 +1,6 @@
 ---
 title: Verbindings problemen oplossen
-description: Probleem oplossing voor connectiviteit in Synapse SQL-pool.
+description: Connectiviteit in de toegewezen SQL-groep oplossen.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,47 +11,47 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82b9f988ef4a7f4a53cd0b451da28642b53bcb65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362177"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308363"
 ---
-# <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Verbindings problemen in de Synapse SQL-pool oplossen
+# <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool"></a>Verbindings problemen in een toegewezen SQL-groep oplossen
 
-Dit artikel bevat algemene probleemoplossings technieken om verbinding te maken met uw SQL-groeps database.
+Dit artikel bevat algemene probleemoplossings technieken om verbinding te maken met uw toegewezen SQL-groeps database.
 
 ## <a name="check-service-availability"></a>Beschik baarheid van service controleren
 
-Controleer of de service beschikbaar is. Ga in het Azure Portal naar de SQL-groep waarmee u verbinding wilt maken. Klik in het deel venster links TOC op **problemen vaststellen en oplossen**.
+Controleer of de service beschikbaar is. Ga in het Azure Portal naar de exclusieve SQL-groep waarmee u verbinding wilt maken. Klik in het deel venster links TOC op **problemen vaststellen en oplossen**.
 
 ![Resource status selecteren](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Hier wordt de status van de SQL-groep weer gegeven. Als de service niet wordt weer gegeven als **beschikbaar**, raadpleegt u verdere stappen.
+Hier wordt de status van uw toegewezen SQL-groep weer gegeven. Als de service niet wordt weer gegeven als **beschikbaar** , raadpleegt u verdere stappen.
 
 ![Service beschikbaar](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Als uw resource status laat zien dat uw exemplaar van SQL-groep is gepauzeerd of geschaald, volgt u de richt lijnen om uw exemplaar te hervatten.
+Als uw resource status laat zien dat uw toegewezen exemplaar van SQL-groep is gepauzeerd of geschaald, volgt u de richt lijnen om uw exemplaar te hervatten.
 
 ![Scherm afbeelding toont een exemplaar van SQL data warehouse dat is gepauzeerd of geschaald.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
 Meer informatie over Resource Health kunt u hier vinden.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Controleren op onderbroken of schaalbewerking
 
-Controleer de portal om te zien of het exemplaar van de SQL-groep is gepauzeerd of geschaald.
+Controleer de portal om te zien of uw toegewezen exemplaar van SQL-groep is gepauzeerd of geschaald.
 
 ![Scherm afbeelding laat zien hoe u kunt controleren of een Data Warehouse is gepauzeerd.](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Als u ziet dat uw service is gepauzeerd of geschaald, controleert u of deze niet tijdens de onderhouds planning wordt weer geven. In de portal voor het *overzicht*van uw SQL-groep ziet u de gekozen onderhouds planning.
+Als u ziet dat uw service is gepauzeerd of geschaald, controleert u of deze niet tijdens de onderhouds planning wordt weer geven. In de portal voor uw specifieke *overzicht* van SQL-groepen ziet u de gekozen onderhouds planning.
 
 ![Onderhouds planning overzicht](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud geen geplande gebeurtenis is. Volg [deze stappen](pause-and-resume-compute-portal.md)om het exemplaar van de SQL-groep te hervatten.
+Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud geen geplande gebeurtenis is. Volg [deze stappen](pause-and-resume-compute-portal.md)om de toegewezen exemplaar van SQL-groep te hervatten.
 
 ## <a name="check-your-firewall-settings"></a>Uw firewallinstellingen controleren
 
-De SQL-groeps database communiceert via poort 1433.Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw [logische server](../../azure-sql/database/logical-servers.md) , tenzij uw IT-afdeling poort 1433 opent. Meer informatie over Firewall configuraties vindt u [hier](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules).
+De toegewezen SQL-groeps database communiceert via poort 1433.Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw [logische server](../../azure-sql/database/logical-servers.md) , tenzij uw IT-afdeling poort 1433 opent. Meer informatie over Firewall configuraties vindt u [hier](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>De instellingen van uw VNet/service-eindpunt controleren
 
@@ -61,7 +61,7 @@ Als u fouten 40914 en 40615 ontvangt, raadpleegt u de [fout beschrijving en oplo
 
 ### <a name="software"></a>Software
 
-Controleer of u de nieuwste hulpprogram ma's gebruikt om verbinding te maken met uw SQL-groep:
+Controleer of u de nieuwste hulpprogram ma's gebruikt om verbinding te maken met uw toegewezen SQL-groep:
 
 - SSMS
 - Azure Data Studio
@@ -106,7 +106,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Onregelmatige verbindingsproblemen
 
-Controleer of er sprake is van een zware belasting op de server met een groot aantal aanvragen in de wachtrij. Mogelijk moet u de SQL-groep opschalen voor meer resources.
+Controleer of er sprake is van een zware belasting op de server met een groot aantal aanvragen in de wachtrij. Mogelijk moet u uw toegewezen SQL-groep opschalen voor meer resources.
 
 ## <a name="common-error-messages"></a>Veelvoorkomende foutberichten
 

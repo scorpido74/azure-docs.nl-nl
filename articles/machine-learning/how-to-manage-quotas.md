@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a8a04d9e1b17c7e65be946cb51bfc41019e0706d
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233986"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309088"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Quota voor resources beheren en verg Roten met Azure Machine Learning
 
@@ -52,7 +52,7 @@ In deze sectie vindt u informatie over de standaard-en maximum quotum limieten v
 + Azure Storage
 
 > [!IMPORTANT]
-> Limieten zijn onderhevig aan wijzigingen. Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) voor alle Azure voor de meest recente informatie.
+> Limieten zijn onderhevig aan wijzigingen. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) voor alle Azure voor de meest recente informatie.
 
 ### <a name="virtual-machines"></a>Virtuele machines
 Elk Azure-abonnement heeft een limiet voor het aantal virtuele machines in alle services. De kernen van virtuele machines hebben een regionale limiet en een regionale limiet per grootte reeks. Beide limieten worden afzonderlijk afgedwongen.
@@ -100,7 +100,7 @@ de maximale levens duur van <sup>1</sup> is de duur tussen het moment waarop een
 
 ### <a name="container-instances"></a>Container Instances
 
-Zie [container instances limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)voor meer informatie.
+Zie [container instances limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits)voor meer informatie.
 
 ### <a name="storage"></a>Storage
 Azure Storage heeft een limiet van 250 opslag accounts per regio, per abonnement. Deze limiet is inclusief standaard-en Premium-opslag accounts.
@@ -115,7 +115,7 @@ Quota op werk ruimte niveau gebruiken om de toewijzing van Azure Machine Learnin
 Standaard delen alle werk ruimten dezelfde quota als het quotum op abonnements niveau voor VM-families. U kunt echter een maximum quotum instellen voor afzonderlijke VM-families in werk ruimten in een abonnement. Dit biedt u de mogelijkheid capaciteit te delen en problemen met bronnen te voor komen.
 
 1. Ga naar een werk ruimte in uw abonnement.
-1. Selecteer in het linkerdeel venster de optie **gebruik en quota's** .
+1. Selecteer in het linkerdeel venster de optie **gebruik en quota's**.
 1. Selecteer het tabblad **Quota's configureren** om de quota's weer te geven.
 1. Vouw een VM-serie uit.
 1. Stel een quotum limiet in voor elke werk ruimte die wordt vermeld onder die VM-serie.
@@ -156,7 +156,7 @@ U kunt limieten boven de maximum waarden die in de voor gaande tabellen worden w
 Wanneer u een quotum toename wilt aanvragen, selecteert u de gewenste service. Selecteer bijvoorbeeld Azure Machine Learning, Container Instances of opslag. Voor Azure Machine Learning compute, kunt u de knop **aanvraag quotum** selecteren tijdens het weer geven van het quotum in de voor gaande stappen.
 
 > [!NOTE]
-> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een gratis proef abonnement hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie [gratis proef versie van Azure upgraden naar betalen per gebruik](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) en [gratis Azure-account](https://azure.microsoft.com/free/free-account-faq)voor meer informatie.
+> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een gratis proef abonnement hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie [gratis proef versie van Azure upgraden naar betalen per gebruik](../cost-management-billing/manage/upgrade-azure-subscription.md) en [gratis Azure-account](https://azure.microsoft.com/free/free-account-faq)voor meer informatie.
 
 ## <a name="private-endpoint-and-private-dns-quota-increases"></a>Quotumverhogingen voor Privé-eindpunt en Privé-DNS
 
@@ -172,12 +172,12 @@ Azure Machine Learning maakt resources in uw (klant)-abonnement, maar sommige sc
 
 Als u een limiet wilt aanvragen voor deze scenario's, gebruikt u de volgende stappen:
 
-1. [Maak een ondersteunings aanvraag voor Azure](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) en selecteer de volgende opties in de sectie __basis beginselen__ :
+1. [Maak een ondersteunings aanvraag voor Azure](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request) en selecteer de volgende opties in de sectie __basis beginselen__ :
 
     | Veld | Selectie |
     | ----- | ----- |
     | Type probleem | **Technisch** |
-    | Service | **Mijn services** . Selecteer vervolgens __machine learning__ in de vervolg keuzelijst. |
+    | Service | **Mijn services**. Selecteer vervolgens __machine learning__ in de vervolg keuzelijst. |
     | Probleem type | **Werkruimte configuratie en-beveiliging** |
     | Subtype van probleem | **Aanvraag voor het privé-eind punt en de Privé-DNS zone** |
 

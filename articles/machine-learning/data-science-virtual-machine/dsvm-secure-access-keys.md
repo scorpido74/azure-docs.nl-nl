@@ -10,20 +10,20 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5604e42c2c27463e10c136ccd18c3c21846fc5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79477320"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309153"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Toegangs referenties veilig opslaan op een Azure-Data Science Virtual Machine
 
 Het is gebruikelijk dat de code in Cloud toepassingen referenties bevat voor de verificatie van Cloud Services. Het beheren en beveiligen van deze referenties is een goed bekende uitdaging bij het bouwen van Cloud toepassingen. In het ideale geval moeten referenties nooit worden weer gegeven op werk stations voor ontwikkel aars of worden ingecheckt bij broncode beheer.
 
-Met de functie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) kunt u dit probleem eenvoudiger oplossen door Azure-Services een automatisch beheerde identiteit in azure Active Directory (Azure AD) te geven. U kunt deze identiteit gebruiken voor verificatie bij alle services die ondersteuning bieden voor Azure AD-verificatie, zonder dat u referenties in uw code hoeft te hebben.
+Met de functie [beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md) kunt u dit probleem eenvoudiger oplossen door Azure-Services een automatisch beheerde identiteit in azure Active Directory (Azure AD) te geven. U kunt deze identiteit gebruiken voor verificatie bij alle services die ondersteuning bieden voor Azure AD-verificatie, zonder dat u referenties in uw code hoeft te hebben.
 
-Een manier om referenties te beveiligen is het gebruik van Windows Installer (MSI) in combi natie met [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), een beheerde Azure-service voor het veilig opslaan van geheimen en cryptografische sleutels. U kunt een sleutel kluis openen met behulp van de beheerde identiteit en vervolgens de geautoriseerde geheimen en cryptografische sleutels ophalen uit de sleutel kluis.
+Een manier om referenties te beveiligen is het gebruik van Windows Installer (MSI) in combi natie met [Azure Key Vault](../../key-vault/index.yml), een beheerde Azure-service voor het veilig opslaan van geheimen en cryptografische sleutels. U kunt een sleutel kluis openen met behulp van de beheerde identiteit en vervolgens de geautoriseerde geheimen en cryptografische sleutels ophalen uit de sleutel kluis.
 
 De documentatie over beheerde identiteiten voor Azure-resources en Key Vault bestaat uit een uitgebreide resource voor gedetailleerde informatie over deze services. De rest van dit artikel doorloopt het basis gebruik van MSI en Key Vault op de Data Science Virtual Machine (DSVM) om toegang te krijgen tot Azure-resources. 
 

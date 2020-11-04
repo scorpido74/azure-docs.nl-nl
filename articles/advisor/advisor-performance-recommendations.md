@@ -3,12 +3,12 @@ title: Verbeter de prestaties van Azure-apps met Advisor
 description: Gebruik aanbevelingen voor prestaties in Azure Advisor om de snelheid en reactie tijd van uw bedrijfskritische toepassingen te verbeteren.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077810"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308675"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met behulp van Azure Advisor
 
@@ -22,7 +22,7 @@ Azure Advisor identificeert Traffic Manager profielen met een langere TTL-config
 
 ## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>Prestaties van de data base verbeteren met behulp van SQL Database Advisor (tijdelijk uitgeschakeld)
 
-Azure Advisor biedt een consistente, geconsolideerde weer gave van aanbevelingen voor al uw Azure-resources. Het integreert met SQL Database Advisor om u aanbevelingen te doen voor het verbeteren van de prestaties van uw data bases.SQL Database Advisor evalueert de prestaties van uw data bases door de gebruiks geschiedenis te analyseren. Vervolgens worden aanbevelingen geboden die het meest geschikt zijn voor het uitvoeren van de normale werk belasting van de data base.
+Azure Advisor biedt een consistente, geconsolideerde weer gave van aanbevelingen voor al uw Azure-resources. Het integreert met SQL Database Advisor om u aanbevelingen te doen voor het verbeteren van de prestaties van uw data bases. SQL Database Advisor evalueert de prestaties van uw data bases door de gebruiks geschiedenis te analyseren. Vervolgens worden aanbevelingen geboden die het meest geschikt zijn voor het uitvoeren van de normale werk belasting van de data base.
 
 > [!NOTE]
 > Voordat u aanbevelingen kunt krijgen, moet uw data base gedurende een week worden gebruikt en moet er binnen die week een consistente activiteit zijn. SQL Database Advisor kan gemakkelijker worden geoptimaliseerd voor consistente query patronen dan voor wille keurige bursts van de activiteit.
@@ -108,7 +108,7 @@ Advisor detecteert of u de belasting prestaties en door Voer kunt verhogen door 
 
 ## <a name="co-locate-the-storage-account-in-the-same-region-to-minimize-latency-when-loading"></a>Het opslag account in dezelfde regio samen zoeken om de latentie bij het laden te minimaliseren
 
-Advisor detecteert of u laadt vanuit een regio die afwijkt van de SQL-groep. Overweeg het laden van een opslag account in dezelfde regio als uw SQL-groep om de latentie te minimaliseren bij het laden van gegevens. Deze wijziging helpt de latentie te minimaliseren en de belasting prestaties te verg Roten.
+Advisor detecteert of u nu laadt vanuit een regio die afwijkt van uw toegewezen SQL-groep. Overweeg het laden van een opslag account in dezelfde regio als uw toegewezen SQL-groep om de latentie te minimaliseren bij het laden van gegevens. Deze wijziging helpt de latentie te minimaliseren en de belasting prestaties te verg Roten.
 
 ## <a name="use-a-supported-kubernetes-version"></a>Een ondersteunde Kubernetes-versie gebruiken
 
@@ -120,17 +120,17 @@ Advisor detecteert niet-ondersteunde versies van Kubernetes.
 Intensief gebruik van de CPU gedurende een langere periode kan de prestaties van uw werk belasting vertragen. Het verg Roten van de CPU-grootte helpt de runtime van de database query's te optimaliseren en de algehele prestaties te verbeteren. Advisor identificeert servers met een hoog CPU-gebruik waarvoor waarschijnlijk CPU-beperkte werk belastingen worden uitgevoerd en raadt u aan om uw reken kracht te schalen.
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Verminder de geheugen beperkingen op uw Azure Database for MySQL-, Azure Database for PostgreSQL-en Azure Database for MariaDB-servers of ga naar een voor geheugen geoptimaliseerde SKU
-Een lage cache verhouding kan leiden tot tragere query prestaties en meer IOPS. Dit probleem kan worden veroorzaakt door een beschadigd query plan of een geheugenintensieve werk belasting. Het herstellen van het query plan of het [verg Roten](../postgresql/concepts-pricing-tiers.md) van het geheugen van de Azure Database for PostgreSQL, Azure Database for MySQL of Azure database for MariaDB server helpt de uitvoering van de werk belasting van de data base te optimaliseren. Azure Advisor identificeert servers die worden beïnvloed door deze hoge buffer van groeps verloop. U wordt aangeraden een van de volgende acties uit te voeren: 
+Een lage cache verhouding kan leiden tot tragere query prestaties en meer IOPS. Dit probleem kan worden veroorzaakt door een beschadigd query plan of een geheugenintensieve werk belasting. Het herstellen van het query plan of het [verg Roten](../postgresql/concepts-pricing-tiers.md) van het geheugen van de Azure Database for PostgreSQL, Azure Database for MySQL of Azure database for MariaDB server helpt de uitvoering van de werk belasting van de data base te optimaliseren. Azure Advisor identificeert servers die worden beïnvloed door deze hoge buffer van groeps verloop. U wordt aangeraden een van de volgende acties uit te voeren: 
 - Het query plan herstellen
 - Ga naar een SKU met meer geheugen 
 - Verg root de opslag ruimte om meer IOPS te verkrijgen.
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Een Azure Database for MySQL of Azure Database for PostgreSQL een replica lezen om Lees bewerkingen voor lees-intensieve workloads uit te schalen
-Advisor maakt gebruik van methodieken op basis van werk belastingen, zoals de verhouding van Lees bewerkingen op de server gedurende de afgelopen zeven dagen om Lees-intensieve workloads te identificeren. Een Azure Database for PostgreSQL-of Azure Database for MySQL resource met een hoge lees-en schrijf ratio kan leiden tot CPU-of geheugen conflicten en leiden tot trage query prestaties. Het toevoegen van een [replica](../postgresql/howto-read-replicas-portal.md) helpt bij het uitschalen van Lees bewerkingen naar de replica server en voor komt CPU-of geheugen beperkingen op de primaire server. Advisor identificeert servers met lees-intensieve workloads en raadt u aan een [Lees replica](../postgresql/concepts-read-replicas.md)toe te voegen   voor het offloaden van sommige Lees workloads.
+Advisor maakt gebruik van methodieken op basis van werk belastingen, zoals de verhouding van Lees bewerkingen op de server gedurende de afgelopen zeven dagen om Lees-intensieve workloads te identificeren. Een Azure Database for PostgreSQL-of Azure Database for MySQL resource met een hoge lees-en schrijf ratio kan leiden tot CPU-of geheugen conflicten en leiden tot trage query prestaties. Het toevoegen van een [replica](../postgresql/howto-read-replicas-portal.md) helpt bij het uitschalen van Lees bewerkingen naar de replica server en voor komt CPU-of geheugen beperkingen op de primaire server. Advisor identificeert servers met lees-intensieve workloads en raadt u aan een [Lees replica](../postgresql/concepts-read-replicas.md) toe te voegen voor het offloaden van sommige Lees workloads.
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Uw Azure Database for MySQL, Azure Database for PostgreSQL of Azure Database for MariaDB server schalen naar een hogere SKU om verbindings beperkingen te voor komen
-Elke nieuwe verbinding met uw database server neemt geheugen in beslag. De prestaties van de database server verslechteren als verbindingen met uw server mislukken vanwege een [bovenlimiet](../postgresql/concepts-limits.md) in het geheugen. Azure Advisor identificeert servers met veel verbindings fouten. Het wordt aanbevolen om de verbindings limieten van uw server te upgraden om meer geheugen beschikbaar te maken voor uw server door een van de volgende acties uit te voeren:
+Elke nieuwe verbinding met uw database server neemt geheugen in beslag. De prestaties van de database server verslechteren als verbindingen met uw server mislukken vanwege een [bovenlimiet](../postgresql/concepts-limits.md) in het geheugen. Azure Advisor identificeert servers met veel verbindings fouten. Het wordt aanbevolen om de verbindings limieten van uw server te upgraden om meer geheugen beschikbaar te maken voor uw server door een van de volgende acties uit te voeren:
 - De reken kracht omhoog schalen. 
 - Gebruik Sku's die zijn geoptimaliseerd voor geheugen en meer reken kracht per kern.
 

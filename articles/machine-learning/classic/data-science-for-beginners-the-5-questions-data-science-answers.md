@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: a0c99c05701c7f2d64fcfc2f70081f2d7475ce5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4eca82df498f1aa8f9ef84691cecdf719d0d76
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343418"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307491"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Gegevenswetenschap voor beginners, video 1: de 5 vragen waarop gegevenswetenschap antwoord geeft
 
@@ -37,7 +37,7 @@ Deze eerste video is ongeveer het soort vragen dat door data Science kan worden 
 * Video 5: [werk van anderen naar gegevens wetenschap kopiëren](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sec.)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>Transcriptie: de 5 vragen data Science-antwoorden
-Hallo! Welkom bij de *gegevens wetenschap van*de video serie voor beginners.
+Hallo! Welkom bij de *gegevens wetenschap van* de video serie voor beginners.
 
 Data Science kan worden intimideren, dus ik maak hier de basis principes zonder vergelijkingen of jargon van computer programmatuur.
 
@@ -45,7 +45,7 @@ In deze eerste video wordt gecommuniceerd over ' de 5 vragen met betrekking tot 
 
 Data wetenschappen gebruikt cijfers en namen (ook wel categorieën of labels genoemd) om antwoorden op vragen te voors pellen.
 
-Het kan voor komen dat u, maar *Er zijn slechts vijf vragen die worden beantwoord door data Science*:
+Het kan voor komen dat u, maar *Er zijn slechts vijf vragen die worden beantwoord door data Science* :
 
 * Is dit A of B?
 * Is dit klinken?
@@ -136,4 +136,4 @@ Dat is alles: de gegevens wetenschap van 5 vragen kan beantwoorden.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Probeer een eerste experiment van data Science met Machine Learning Studio (klassiek)](create-experiment.md)
-* [Krijg een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)
+* [Krijg een inleiding tot Machine Learning op Microsoft Azure](../overview-what-is-azure-ml.md)

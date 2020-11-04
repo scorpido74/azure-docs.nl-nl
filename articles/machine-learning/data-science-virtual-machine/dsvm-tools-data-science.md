@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087679c49c3cc025268e6f895757ae5f5c47c917
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012403"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309120"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine learning-en data Science-hulpprogram ma's op Azure data Science Virtual Machines
 Azure data Science Virtual Machines (Dsvm) beschikt over een uitgebreide set hulpprogram ma's en bibliotheken voor machine learning die beschikbaar zijn in populaire talen, zoals python, R en Julia.
@@ -24,7 +24,7 @@ Hier volgen enkele van de machine learning-hulpprogram ma's en-bibliotheken op D
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning-SDK voor Python
 
-Zie de volledige referentie voor de [Azure machine learning SDK voor python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
+Zie de volledige referentie voor de [Azure machine learning SDK voor python](../overview-what-is-azure-ml.md).
 
 | Categorie | Waarde |
 | ------------- | ------------- |
@@ -113,5 +113,3 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Typische toepassingen      |  Voor in-place gegevens onderzoek zonder extra heren, transformeren, laden (ETL). Query's uitvoeren op verschillende gegevens bronnen en indelingen, waaronder CSV, JSON, relationele tabellen en Hadoop.     |
 | Hoe gebruiken en uitvoeren      | Snelkoppeling bureau blad  <br/> [Aan de slag met boren in 10 minuten](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | Gerelateerde hulpprogram ma's op de DSVM      |   Rattle, Fridge, SQL Server Management Studio      |
-
-

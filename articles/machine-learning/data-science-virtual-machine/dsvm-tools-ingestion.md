@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 736504febea16af53c2c05bc367513b2dde93ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89cf81f8d0a66c29a345f56676fbb97601743710
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012311"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308987"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science Virtual Machine hulpprogram ma's voor gegevens opname
 
@@ -31,7 +31,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Ondersteunde DSVM-versies      | Windows      |
 | Typische toepassingen      | Meerdere blobs uit Azure Blob-opslag importeren in Azure Data Lake Store.      |
 |  Hoe kunt u het gebruiken/uitvoeren?    |   Open een opdracht prompt en typ `adlcopy` om hulp te krijgen.    |
-| Koppelingen naar voor beelden      | [AdlCopy gebruiken](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| Koppelingen naar voor beelden      | [AdlCopy gebruiken](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)      |
 | Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, Azure CLI     |
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -42,7 +42,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Ondersteunde DSVM-versies      | Windows, Linux     |
 | Typische toepassingen      | Importeren en exporteren van gegevens van en naar Azure Storage en Azure Data Lake Store.      |
 |  Hoe kunt u het gebruiken/uitvoeren?    |   Open een opdracht prompt en typ `az` om hulp te krijgen.    |
-| Koppelingen naar voor beelden      | [Azure CLI gebruiken](https://docs.microsoft.com/cli/azure)     |
+| Koppelingen naar voor beelden      | [Azure CLI gebruiken](/cli/azure)     |
 | Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, AdlCopy      |
 
 
@@ -54,7 +54,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Ondersteunde DSVM-versies      | Windows      |
 | Typische toepassingen      | Kopiëren van bestanden naar Azure Blob-opslag en het kopiëren van blobs tussen accounts.      |
 |  Hoe kunt u het gebruiken/uitvoeren?    |   Open een opdracht prompt en typ `azcopy` om hulp te krijgen.    |
-| Koppelingen naar voor beelden      | [AzCopy in Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
+| Koppelingen naar voor beelden      | [AzCopy in Windows](../../storage/common/storage-use-azcopy-v10.md)      |
 | Gerelateerde hulpprogram ma's op de DSVM      | AdlCopy     |
 
 
@@ -66,10 +66,10 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Ondersteunde DSVM-versies      | Windows      |
 | Typische toepassingen      | Importeren van bestanden van een virtuele machine naar CosmosDB, importeren van gegevens uit Azure-tabel opslag naar CosmosDB en het importeren van gegevens uit een Microsoft SQL Server-Data Base naar CosmosDB.     |
 |  Hoe kunt u het gebruiken/uitvoeren?    |   Als u de opdracht regel versie wilt gebruiken, opent u een opdracht prompt en typt u `dt` . Als u het hulp programma GUI wilt gebruiken, opent u een opdracht prompt en typt u `dtui` .    |
-| Koppelingen naar voor beelden      | [Gegevens CosmosDB importeren](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
+| Koppelingen naar voor beelden      | [Gegevens CosmosDB importeren](../../cosmos-db/import-data.md)      |
 | Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, AdlCopy      |
 
-## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+## <a name="azure-storage-explorer"></a>Azure Opslagverkenner
 
 | Categorie | Waarde |
 | ------------- | ------------- |
@@ -88,7 +88,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Ondersteunde DSVM-versies      | Windows      |
 | Typische toepassingen      | Het importeren van een CSV-bestand in een SQL Server tabel en het exporteren van een SQL Server-tabel naar een bestand.      |
 |  Hoe kunt u het gebruiken/uitvoeren?    |   Open een opdracht prompt en typ `bcp` om hulp te krijgen.    |
-| Koppelingen naar voor beelden      | [BCP-hulp programma](https://docs.microsoft.com/sql/tools/bcp-utility)      |
+| Koppelingen naar voor beelden      | [BCP-hulp programma](/sql/tools/bcp-utility)      |
 | Gerelateerde hulpprogram ma's op de DSVM      | SQL Server, Sqlcmd      |
 
 ## <a name="blobfuse"></a>blobfuse

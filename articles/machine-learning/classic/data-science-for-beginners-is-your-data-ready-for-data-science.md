@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 12e939b8fb66b3cffbee49a4b3bedd74b71d7232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2174044a1a913663e255b125f2ea89c312f5e9d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343426"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307700"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Zijn gegevens gereed voor gegevenswetenschap?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: gegevens wetenschap voor beginners-serie
@@ -103,4 +103,4 @@ Zorg ervoor dat u de andere vier Video's in *Data Science voor beginners* van Mi
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Probeer een eerste experiment van data Science met Machine Learning Studio (klassiek)](create-experiment.md)
-* [Krijg een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)
+* [Krijg een inleiding tot Machine Learning op Microsoft Azure](../overview-what-is-azure-ml.md)

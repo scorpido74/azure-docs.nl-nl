@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a559b29502adb1c507b1543463d84eb3bd15d5a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083283"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308283"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procedure: uw Azure AD-koppelings implementatie plannen
 
@@ -119,7 +119,7 @@ Er zijn twee benaderingen voor het beheren van apparaten die zijn toegevoegd aan
 - **Alleen MDM** : een apparaat wordt exclusief beheerd door een MDM-provider zoals intune. Alle beleids regels worden geleverd als onderdeel van het MDM-inschrijvings proces. Voor Azure AD Premium-of EMS-klanten is MDM-registratie een automatische stap die deel uitmaakt van een Azure AD-deelname.
 - **Co-beheer** : een apparaat wordt beheerd door een MDM-provider en SCCM. In deze benadering wordt de SCCM-agent geïnstalleerd op een MDM-beheerd apparaat om bepaalde aspecten te beheren.
 
-Als u groeps beleid gebruikt, evalueert u de MDM-beleids pariteit met behulp van het [MDM-hulp programma voor MMAT](https://github.com/WindowsDeviceManagement/MMAT). 
+Als u groeps beleid gebruikt, evalueert u uw GPO en MDM-beleid-pariteit met behulp van [Groepsbeleid Analytics](/mem/intune/configuration/group-policy-analytics) in micro soft Endpoint Manager. 
 
 Bekijk ondersteunde en niet-ondersteunde beleids regels om te bepalen of u een MDM-oplossing kunt gebruiken in plaats van groeps beleid. Voor niet-ondersteunde beleids regels kunt u het volgende overwegen:
 
@@ -246,7 +246,7 @@ Voordat u uw mobiliteits instellingen kunt configureren, moet u mogelijk eerst e
 **Een MDM-provider toevoegen** :
 
 1. Klik op de **pagina Azure Active Directory** in de sectie **beheren** op `Mobility (MDM and MAM)` . 
-1. Klik op **toepassing toevoegen** .
+1. Klik op **toepassing toevoegen**.
 1. Selecteer uw MDM-provider in de lijst.
 
    :::image type="content" source="./media/azureadjoin-plan/04.png" alt-text="Scherm afbeelding van de Azure Active Directory een toepassings pagina toe te voegen. Er worden verschillende M D M-providers weer gegeven." border="false":::
@@ -272,7 +272,7 @@ Er zijn drie Url's die betrekking hebben op uw MDM-configuratie:
 - URL voor MDM-detectie 
 - URL voor MDM-naleving
 
-:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Scherm afbeelding van de Azure Active Directory een toepassings pagina toe te voegen. Er worden verschillende M D M-providers weer gegeven." border="false":::
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Scherm afbeelding van een deel van de configuratie van Azure Active Directory M D M, met U R L-velden voor de gebruiks voorwaarden van M D M, detectie en naleving." border="false":::
 
 Elke URL heeft een vooraf gedefinieerde standaardwaarde. Als deze velden leeg zijn, neemt u contact op met uw MDM-provider voor meer informatie.
 

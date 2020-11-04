@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 22e834ccc31e2d01646250c973080848173661de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbc532acf704128e2311f440aabe8f707fc03aea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743774"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307228"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch-modellen op schaal trainen met Azure Machine Learning
 
@@ -36,7 +36,7 @@ Voer deze code uit in een van de volgende omgevingen:
     - Zoek in de map met uitgebreide trainingen op de notebook server een volledig en uitgebreid notitie blok door naar deze map te navigeren: **instructies-to-use-azureml > ml-frameworks > pytorch > Train-afstemming-Tune-Deploy-with-pytorch** . 
  
  - Uw eigen Jupyter Notebook-server
-    - [Installeer de Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (>= 1.15.0).
+    - [Installeer de Azure machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0).
     - [Maak een configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
     - [De voorbeeld script bestanden downloaden](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
@@ -63,7 +63,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Een werk ruimte initialiseren
 
-De [Azure machine learning werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) object te maken.
+De [Azure machine learning werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) object te maken.
 
 Maak een werkruimte object op basis van het `config.json` bestand dat in de [sectie vereisten](#prerequisites)is gemaakt.
 
@@ -182,7 +182,7 @@ Zie [software omgevingen maken en gebruiken in azure machine learning](how-to-us
 
 ### <a name="create-a-scriptrunconfig"></a>Een ScriptRunConfig maken
 
-Maak een [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)-object om de configuratiegegevens van uw trainingstaak op te geven, inclusief het trainingsscript, de omgeving die u wilt gebruiken en het rekendoel om uit te voeren. Eventuele argumenten voor uw trainings script worden door gegeven via de opdracht regel indien opgegeven in de `arguments` para meter. 
+Maak een [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)-object om de configuratiegegevens van uw trainingstaak op te geven, inclusief het trainingsscript, de omgeving die u wilt gebruiken en het rekendoel om uit te voeren. Eventuele argumenten voor uw trainings script worden door gegeven via de opdracht regel indien opgegeven in de `arguments` para meter. 
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -204,7 +204,7 @@ Zie [trainings uitvoeringen configureren en verzenden](how-to-set-up-training-ta
 
 ## <a name="submit-your-run"></a>Uw uitvoering verzenden
 
-Het [object run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) biedt de interface voor de uitvoerings geschiedenis terwijl de taak wordt uitgevoerd en nadat deze is voltooid.
+Het [object run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) biedt de interface voor de uitvoerings geschiedenis terwijl de taak wordt uitgevoerd en nadat deze is voltooid.
 
 ```Python
 run = Experiment(ws, name='pytorch-birds').submit(src)
@@ -214,13 +214,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Wat er gebeurt tijdens de uitvoering van het programma
 Wanneer de uitvoering wordt uitgevoerd, worden de volgende fasen door lopen:
 
-- **Voorbereiden**: een docker-installatie kopie wordt gemaakt volgens de gedefinieerde omgeving. De afbeelding wordt geüpload naar het container register van de werk ruimte en opgeslagen in de cache voor latere uitvoeringen. Logboeken worden ook gestreamd naar de uitvoerings geschiedenis en kunnen worden weer gegeven om de voortgang te bewaken. Als er in plaats daarvan een gecuratorde omgeving wordt opgegeven, wordt er een back-up van de in de cache opgeslagen installatie kopie gebruikt.
+- **Voorbereiden** : een docker-installatie kopie wordt gemaakt volgens de gedefinieerde omgeving. De afbeelding wordt geüpload naar het container register van de werk ruimte en opgeslagen in de cache voor latere uitvoeringen. Logboeken worden ook gestreamd naar de uitvoerings geschiedenis en kunnen worden weer gegeven om de voortgang te bewaken. Als er in plaats daarvan een gecuratorde omgeving wordt opgegeven, wordt er een back-up van de in de cache opgeslagen installatie kopie gebruikt.
 
-- **Schalen**: het cluster probeert omhoog te schalen als het batch AI-cluster meer knoop punten nodig heeft om de uitvoering uit te voeren dan momenteel beschikbaar zijn.
+- **Schalen** : het cluster probeert omhoog te schalen als het batch AI-cluster meer knoop punten nodig heeft om de uitvoering uit te voeren dan momenteel beschikbaar zijn.
 
-- **Uitvoeren**: alle scripts in de map script worden geüpload naar het Compute-doel, gegevens archieven worden gekoppeld of gekopieerd en de `script` wordt uitgevoerd. Uitvoer van stdout en de map **./logs** worden gestreamd naar de uitvoerings geschiedenis en kunnen worden gebruikt om de uitvoering te bewaken.
+- **Uitvoeren** : alle scripts in de map script worden geüpload naar het Compute-doel, gegevens archieven worden gekoppeld of gekopieerd en de `script` wordt uitgevoerd. Uitvoer van stdout en de map **./logs** worden gestreamd naar de uitvoerings geschiedenis en kunnen worden gebruikt om de uitvoering te bewaken.
 
-- **Na de verwerking**: de map **./outputs** van de uitvoering wordt gekopieerd naar de uitvoerings geschiedenis.
+- **Na de verwerking** : de map **./outputs** van de uitvoering wordt gekopieerd naar de uitvoerings geschiedenis.
 
 ## <a name="register-or-download-a-model"></a>Een model registreren of downloaden
 
@@ -268,7 +268,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-Als u een gedistribueerde taak wilt uitvoeren met behulp van MPI/Horovod op Azure ML, moet u een [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) opgeven voor de `distributed_job_config` para meter van de ScriptRunConfig-constructor. De onderstaande code configureert een gedistribueerde taak van 2 knoop punten die per knoop punt wordt uitgevoerd. Als u ook meerdere processen per knoop punt wilt uitvoeren (dat wil zeggen, als uw cluster-SKU meerdere Gpu's heeft), geeft u ook de `process_count_per_node` para meter op in MpiConfiguration (de standaard instelling is `1` ).
+Als u een gedistribueerde taak wilt uitvoeren met behulp van MPI/Horovod op Azure ML, moet u een [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) opgeven voor de `distributed_job_config` para meter van de ScriptRunConfig-constructor. De onderstaande code configureert een gedistribueerde taak van 2 knoop punten die per knoop punt wordt uitgevoerd. Als u ook meerdere processen per knoop punt wilt uitvoeren (dat wil zeggen, als uw cluster-SKU meerdere Gpu's heeft), geeft u ook de `process_count_per_node` para meter op in MpiConfiguration (de standaard instelling is `1` ).
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -286,7 +286,7 @@ Zie [gedistribueerde PyTorch met Horovod](https://github.com/Azure/MachineLearni
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 Als u de ingebouwde [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) -module van PyTorch gebruikt die is gebouwd met behulp van het **Torch. distributed** -pakket in uw trainings code, kunt u de gedistribueerde taak ook starten via Azure ml.
 
-Als u een gedistribueerde PyTorch-taak wilt uitvoeren met DistributedDataParallel, geeft u een [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true) op voor de `distributed_job_config` para meter van de ScriptRunConfig-constructor. Als u de NCCL-back-end voor Torch. distributed wilt gebruiken, geeft u `communication_backend='Nccl'` in de PyTorchConfiguration op. Met de onderstaande code wordt een gedistribueerde taak van 2 knoop punten geconfigureerd. De NCCL-back-end is de aanbevolen back-end voor PyTorch Distributed GPU training.
+Als u een gedistribueerde PyTorch-taak wilt uitvoeren met DistributedDataParallel, geeft u een [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) op voor de `distributed_job_config` para meter van de ScriptRunConfig-constructor. Als u de NCCL-back-end voor Torch. distributed wilt gebruiken, geeft u `communication_backend='Nccl'` in de PyTorchConfiguration op. Met de onderstaande code wordt een gedistribueerde taak van 2 knoop punten geconfigureerd. De NCCL-back-end is de aanbevolen back-end voor PyTorch Distributed GPU training.
 
 Voor gedistribueerde PyTorch-taken die zijn geconfigureerd via PyTorchConfiguration, worden in azure ML de volgende omgevings variabelen ingesteld voor de knoop punten van het Compute-doel:
 

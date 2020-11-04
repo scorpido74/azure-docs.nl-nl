@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254771"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307450"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Experimenten bijhouden en modellen implementeren in Azure Machine Learning
 
@@ -26,11 +26,11 @@ In het volgende diagram ziet u hoe u met MLflow tracking de metrische gegevens v
 
 ## <a name="prerequisites"></a>Vereisten
 
-* U moet [een Azure machine learning-werkruimte inrichten](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
+* U moet [een Azure machine learning-werkruimte inrichten](../how-to-manage-workspace.md#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>Een nieuwe notebook maken
 
-De SDK voor Azure Machine Learning en MLFlow zijn vooraf geïnstalleerd op de Data Science VM en kunnen worden geopend in de **azureml_py36_ \* ** Conda-omgeving. Klik in Jjupyterlab op het start programma en selecteer de volgende kernel:
+De SDK voor Azure Machine Learning en MLFlow zijn vooraf geïnstalleerd op de Data Science VM en kunnen worden geopend in de omgeving ** \* azureml_py36_* _ Conda. Klik in Jjupyterlab op het start programma en selecteer de volgende kernel:
 
 ![kernel selecteren](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +137,7 @@ Klik in het menu aan de linkerkant in [AzureML Studio](https://ml.azure.com) op 
 
 In de __nieuwe__ Details van het deel venster voor het delegeren van het cluster paneel voor:
 
-* Compute name
+_ Compute-naam
 * Kubernetes-service-Selecteer nieuwe maken
 * De regio selecteren
 * Selecteer de VM-grootte (in het kader van deze zelf studie is de standaard waarde van Standard_D3_v2 voldoende)
@@ -177,7 +177,7 @@ Wanneer het model is geïmplementeerd, ziet u het volgende (als u deze pagina wi
 
 ![Model verbruiken](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-U ziet dat de implementatie status van __overgang__ naar __in orde__gaat. Daarnaast bevat deze sectie Details de Url's REST-eind punt en Swagger die een toepassings ontwikkelaar kan gebruiken om uw ML-model in hun apps te integreren.
+U ziet dat de implementatie status van __overgang__ naar __in orde__ gaat. Daarnaast bevat deze sectie Details de Url's REST-eind punt en Swagger die een toepassings ontwikkelaar kan gebruiken om uw ML-model in hun apps te integreren.
 
 U kunt het eind punt testen met behulp van [postman](https://www.postman.com/), of u kunt de AZUREML-SDK gebruiken:
 
@@ -204,4 +204,4 @@ Verwijder de reken kracht die u in stap 1 hebt gemaakt, zodat u geen lopende rek
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [implementeren van modellen in AzureML](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)
+* Meer informatie over het [implementeren van modellen in AzureML](../how-to-deploy-and-where.md)

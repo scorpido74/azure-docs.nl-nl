@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 21821bbb41126a53c2b137bf1f5e5684ff1ae267
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: 8c042032fb12e63ae32eb5a51b06e07386e5fbfc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096279"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308839"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,16 +40,16 @@ Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop.dll niet
 
 De vier hier vermelde toepassings typen gebruiken standaard 32-bits host verwerking. Ga als volgt te werk om de verwerking van de host te wijzigen in 64-bits verwerking voor uw toepassings type:
 
-- **Voor uitvoer bare toepassingen** : Stel in het venster **project eigenschappen** in het deel venster voor het **maken** van het [platform doel](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) in op **x64** .
+- **Voor uitvoer bare toepassingen** : Stel in het venster **project eigenschappen** in het deel venster voor het **maken** van het [platform doel](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) in op **x64**.
 
-- **Voor op VSTest gebaseerde test projecten** : Selecteer in het menu **test** van Visual Studio **Test** test  >  **instellingen** testen en stel de **standaard architectuur** van de processor in op **x64** .
+- **Voor op VSTest gebaseerde test projecten** : Selecteer in het menu **test** van Visual Studio **Test** test  >  **instellingen** testen en stel de **standaard architectuur** van de processor in op **x64**.
 
-- **Voor lokaal geïmplementeerde ASP.NET-webtoepassingen** : Selecteer **extra**  >  **Opties**  >  **projecten en oplossingen**  >  **webprojecten** , en selecteer vervolgens **de 64-bits versie van IIS Express voor websites en projecten gebruiken** .
+- **Voor lokaal geïmplementeerde ASP.NET-webtoepassingen** : Selecteer **extra**  >  **Opties**  >  **projecten en oplossingen**  >  **webprojecten** , en selecteer vervolgens **de 64-bits versie van IIS Express voor websites en projecten gebruiken**.
 
 - **Voor ASP.NET-webtoepassingen die zijn geïmplementeerd op Azure** : Selecteer in het Azure Portal in **toepassings instellingen** het **64-bits** platform.
 
 > [!NOTE] 
-> Nieuwe Visual Studio-projecten worden standaard ingesteld op **elke CPU** . We raden u aan om uw project in te stellen op **x64** zodat het niet wordt overgeschakeld naar **x86** . Een project dat is ingesteld op **een CPU** kan eenvoudig overschakelen naar **x86** als een afhankelijkheid van alleen een x86-processor is toegevoegd.<br/>
+> Nieuwe Visual Studio-projecten worden standaard ingesteld op **elke CPU**. We raden u aan om uw project in te stellen op **x64** zodat het niet wordt overgeschakeld naar **x86**. Een project dat is ingesteld op **een CPU** kan eenvoudig overschakelen naar **x86** als een afhankelijkheid van alleen een x86-processor is toegevoegd.<br/>
 > Het ServiceInterop.dll-bestand moet zich in de map bevindt waarin de SDK-DLL wordt uitgevoerd. Dit is alleen een probleem als u hand matig Dll's kopieert of aangepaste build-of implementatie systemen hebt.
     
 **Garbage Collection aan server zijde inschakelen**

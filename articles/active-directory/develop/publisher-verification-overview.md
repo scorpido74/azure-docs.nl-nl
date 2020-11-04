@@ -12,16 +12,20 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363416"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308768"
 ---
 # <a name="publisher-verification"></a>Verificatie van uitgever
 
-Verificatie van de uitgever helpt beheerders en eind gebruikers begrijpen van de echtheid van toepassings ontwikkelaars die integreren met het micro soft Identity-platform. Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van een [Microsoft Partner Network](https://partner.microsoft.com/membership) account dat het [verificatie](/partner-center/verification-responses) proces heeft voltooid en dat dit MPN-account is gekoppeld aan de registratie van de toepassing. 
+Verificatie van de uitgever helpt beheerders en eind gebruikers begrijpen van de echtheid van toepassings ontwikkelaars die integreren met het micro soft Identity-platform. 
+
+> [!VIDEO https://www.youtube.com/embed/IYRN2jDl5dc]
+
+Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van een [Microsoft Partner Network](https://partner.microsoft.com/membership) account dat het [verificatie](/partner-center/verification-responses) proces heeft voltooid en dat dit MPN-account is gekoppeld aan de registratie van de toepassing. 
 
 Een ' geverifieerde ' badge wordt weer gegeven op de Azure AD-toestemming prompt en andere schermen: ![ toestemming vragen](./media/publisher-verification-overview/consent-prompt.png)
 
@@ -29,11 +33,11 @@ Deze functie is voornamelijk bedoeld voor ontwikkel aars die multi tenant-apps b
 
 ## <a name="benefits"></a>Voordelen
 Verificatie van de uitgever biedt de volgende voor delen:
-- **Grotere transparantie en risico verlaging voor klanten**: met deze mogelijkheid kunnen klanten begrijpen welke apps in hun organisaties worden gebruikt, gepubliceerd door ontwikkel aars die ze vertrouwen. 
+- **Grotere transparantie en risico verlaging voor klanten** : met deze mogelijkheid kunnen klanten begrijpen welke apps in hun organisaties worden gebruikt, gepubliceerd door ontwikkel aars die ze vertrouwen. 
 
-- **Verbeterde huis stijl**: een ' geverifieerde ' badge wordt weer gegeven op de Azure AD- [opdracht prompt voor toestemming](application-consent-experience.md), de pagina voor zakelijke apps en extra UX-Opper vlakken die worden gebruikt door eind gebruikers en beheerders. 
+- **Verbeterde huis stijl** : een ' geverifieerde ' badge wordt weer gegeven op de Azure AD- [opdracht prompt voor toestemming](application-consent-experience.md), de pagina voor zakelijke apps en extra UX-Opper vlakken die worden gebruikt door eind gebruikers en beheerders. 
 
-- **Vloeiendere ondernemings acceptatie**: beheerders kunnen het beleid voor de [gebruikers toestemming](../manage-apps/configure-user-consent.md)configureren met de verificatie status van de uitgever als een van de primaire beleids criteria.
+- **Vloeiendere ondernemings acceptatie** : beheerders kunnen het beleid voor de [gebruikers toestemming](../manage-apps/configure-user-consent.md)configureren met de verificatie status van de uitgever als een van de primaire beleids criteria.
 
 > [!NOTE]
 > Vanaf november 2020 kunnen eind gebruikers geen toestemming meer geven aan de meeste nieuw geregistreerde multi tenant-apps zonder geverifieerde uitgevers. Dit is van toepassing op apps die zijn geregistreerd na november 2020, OAuth 2.0 gebruiken om machtigingen aan te vragen buiten het basis aanmeld-en lees gebruikers profiel en toestemming vragen aan gebruikers in verschillende tenants dan de app die is geregistreerd in. Er wordt een waarschuwing weer gegeven op het scherm voor toestemming waarmee gebruikers worden geïnformeerd dat deze apps riskant zijn en afkomstig zijn van niet-geverifieerde uitgevers.    

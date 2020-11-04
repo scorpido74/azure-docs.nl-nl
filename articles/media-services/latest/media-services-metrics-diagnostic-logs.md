@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296648"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309067"
 ---
-# <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrische gegevens en Diagnostische logboeken via Azure Monitor bewaken
+# <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Media Services metrische gegevens en Diagnostische logboeken met Azure Monitor bewaken
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -67,8 +67,10 @@ De volgende Media Services gegevens [stromen voor streaming-eind punten](/rest/a
 |Aanvragen|Aanvragen|Geeft het totale aantal HTTP-aanvragen dat door het streaming-eind punt wordt geleverd.|
 |Uitgaand verkeer|Uitgaand verkeer|Totaal aantal uitgaande bytes per minuut per streaming-eind punt.|
 |SuccessE2ELatency|Geslaagde end-to-end-latentie|Tijds duur vanaf het moment waarop het streaming-eind punt de aanvraag bij het verzenden van de laatste byte van het antwoord heeft ontvangen.|
+|CPU-gebruik| CPU-gebruik voor Premium streaming-eind punten. Deze gegevens zijn niet beschikbaar voor standaard streaming-eind punten. |
+|Uitgangs band breedte | Uitgangs band breedte in bits per seconde.|
 
-### <a name="why-would-i-want-to-use-metrics"></a>Waarom zou ik metrische gegevens willen gebruiken?
+### <a name="metrics-are-useful"></a>Metrische gegevens zijn handig
 
 Hier volgen enkele voor beelden van de manier waarop bewaking Media Services metrische gegevens u kan helpen inzicht te krijgen in hoe uw apps worden uitgevoerd. Enkele vragen die kunnen worden behandeld met Media Services metrische gegevens zijn:
 
@@ -79,6 +81,8 @@ Hier volgen enkele voor beelden van de manier waarop bewaking Media Services met
 * Hoe kan ik de uitsplitsing van mislukte aanvragen zien en wat de oorzaak van de fout is?
 * Hoe kan ik zien hoeveel HLS of STREEPJES aanvragen worden opgehaald uit de packager?
 * Hoe kan ik een waarschuwing instellen om te weten wanneer de drempel waarde van het aantal mislukte aanvragen is bereikt?
+
+Gelijktijdigheid wordt een probleem met het aantal streaming-eind punten dat gedurende een bepaalde periode in één account wordt gebruikt. Houd er rekening mee dat u de relatie tussen het aantal gelijktijdige streams met complexe publicatie parameters, zoals dynamische pakketten, met meerdere protocollen, meerdere DRM-versleuteling, enzovoort, moet onthouden. Elke aanvullende gepubliceerde live stream wordt toegevoegd aan de CPU-en uitvoer bandbreedte van het streaming-eind punt. In dat geval moet u Azure Monitor gebruiken om het gebruik van het streaming-eind punt nauw keurig te bekijken (CPU en uitgangs capaciteit) om ervoor te zorgen dat u het op de juiste wijze schaalt (of het verkeer tussen meerdere streaming-eind punten splitst als u een zeer hoge gelijktijdigheid krijgt).
 
 ### <a name="example"></a>Voorbeeld
 

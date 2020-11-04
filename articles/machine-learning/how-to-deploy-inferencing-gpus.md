@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 9a18b35ce974aebb38f8f58b892fd93b94f5e3c8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8480a0b8722fbfff0f1d8a8fafc1a64f38d21d6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314788"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307217"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
 
@@ -26,7 +26,7 @@ In dit artikel leert u hoe u Azure Machine Learning kunt gebruiken om een model 
 Detrainer of model Score is de fase waarin het geïmplementeerde model wordt gebruikt voor het maken van voor spellingen. Het gebruik van Gpu's in plaats van Cpu's biedt prestatie voordelen voor een zeer kan worden opgestart berekening.
 
 > [!IMPORTANT]
-> Voor implementaties van webservices wordt GPU-declienting alleen ondersteund in de Azure Kubernetes-service. Voor demijnen met behulp van een __machine learning pijp lijn__worden gpu's alleen ondersteund op Azure machine learning compute. Zie [zelf studie: een Azure machine learning-pijp lijn bouwen voor batch scores](tutorial-pipeline-batch-scoring-classification.md)voor meer informatie over het gebruik van ml-pijp lijnen. 
+> Voor implementaties van webservices wordt GPU-declienting alleen ondersteund in de Azure Kubernetes-service. Voor demijnen met behulp van een __machine learning pijp lijn__ worden gpu's alleen ondersteund op Azure machine learning compute. Zie [zelf studie: een Azure machine learning-pijp lijn bouwen voor batch scores](tutorial-pipeline-batch-scoring-classification.md)voor meer informatie over het gebruik van ml-pijp lijnen. 
 
 > [!TIP]
 > Hoewel de code fragmenten in dit artikel een tensor flow-model gebruiken, kunt u de gegevens Toep assen op elk machine learning Framework dat Gpu's ondersteunt.
@@ -38,7 +38,7 @@ Detrainer of model Score is de fase waarin het geïmplementeerde model wordt geb
 
 * Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
-* Een python-ontwikkel omgeving met de Azure Machine Learning SDK geïnstalleerd. Zie [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)voor meer informatie.  
+* Een python-ontwikkel omgeving met de Azure Machine Learning SDK geïnstalleerd. Zie [Azure machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)voor meer informatie.  
 
 * Een geregistreerd model dat gebruikmaakt van een GPU.
 
@@ -192,7 +192,7 @@ inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 ```
 
 Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)voor meer informatie over omgevingen.
-Zie de referentie documentatie voor [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true)voor meer informatie.
+Zie de referentie documentatie voor [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)voor meer informatie.
 
 ## <a name="deploy-the-model"></a>Het model implementeren
 
@@ -217,7 +217,7 @@ aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
-Zie de referentie documentatie voor [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)voor meer informatie.
+Zie de referentie documentatie voor [model](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)voor meer informatie.
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Een voorbeeld query voor uw service uitgeven
 

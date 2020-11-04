@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 3f192493dfd6bfc2fb3d5802b1dd94cd4ca3a9a9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285220"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309375"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure-resource provider bewerkingen
 
@@ -4100,7 +4100,7 @@ Azure-service: [Azure SQL database](../azure-sql/database/index.yml), Azure [SQL
 > | Micro soft. SQL/servers/data bases/dataMaskingPolicies/Rules/Delete | Beleids regel voor gegevens maskering voor een bepaalde data base verwijderen |
 > | Micro soft. SQL/servers/data bases/dataWarehouseQueries/lezen | Retourneert de gegevens van de distributie query van het Data Warehouse voor de geselecteerde query-ID |
 > | Micro soft. SQL/servers/data bases/dataWarehouseQueries/dataWarehouseQuerySteps/lezen | Retourneert de stap gegevens van de gedistribueerde query van de Data Warehouse-query voor de geselecteerde stap-ID |
-> | Micro soft. SQL/servers/data bases/dataWarehouseUserActivities/lezen | Hiermee worden de gebruikers activiteiten opgehaald van een SQL Data Warehouse-exemplaar dat actieve en onderbroken query's bevat |
+> | Micro soft. SQL/servers/data bases/dataWarehouseUserActivities/lezen | Hiermee worden de gebruikers activiteiten opgehaald van een toegewezen SQL-groep in azure Synapse Analytics, waaronder actieve en onderbroken query's |
 > | Micro soft. SQL/servers/data bases/extendedAuditingSettings/lezen | Details ophalen van het uitgebreide BLOB-controle beleid dat is geconfigureerd voor een bepaalde data base |
 > | Micro soft. SQL/servers/data bases/extendedAuditingSettings/schrijven | Het uitgebreide BLOB-controle beleid voor een bepaalde data base wijzigen |
 > | Micro soft. SQL/servers/data bases/uitbrei dingen/lezen | Hiermee wordt een verzameling extensies opgehaald voor de data base. |

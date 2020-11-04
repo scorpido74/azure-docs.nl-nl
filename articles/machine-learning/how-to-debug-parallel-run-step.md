@@ -11,17 +11,17 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 602babb3544093b7cd7c5b30ce4f4612148591cb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 93997629b6b30f87769a0154e344215ca52c8ec4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216909"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308386"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Fouten in ParallelRunStep opsporen en problemen oplossen
 
 
-In dit artikel leert u hoe u fouten kunt opsporen en oplossen van de [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py&preserve-view=true) -klasse in de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
+In dit artikel leert u hoe u fouten kunt opsporen en oplossen van de [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) -klasse in de [Azure machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
 ## <a name="testing-scripts-locally"></a>Scripts lokaal testen
 
@@ -94,7 +94,7 @@ def run(mini_batch):
 
 De gebruiker kan referentie gegevens door geven aan een script met behulp van side_inputs para meter ParalleRunStep. Alle gegevens sets die als side_inputs worden gegeven, worden op elk worker-knoop punt gekoppeld. De gebruiker kan de locatie van de koppeling verkrijgen door het argument door te geven.
 
-Maak een [gegevensset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) met de referentie gegevens en Registreer deze bij uw werk ruimte. Geef deze door aan de `side_inputs` para meter van uw `ParallelRunStep` . Daarnaast kunt u het pad in de sectie toevoegen `arguments` om eenvoudig toegang te krijgen tot het gekoppelde pad:
+Maak een [gegevensset](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) met de referentie gegevens en Registreer deze bij uw werk ruimte. Geef deze door aan de `side_inputs` para meter van uw `ParallelRunStep` . Daarnaast kunt u het pad in de sectie toevoegen `arguments` om eenvoudig toegang te krijgen tot het gekoppelde pad:
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -124,26 +124,26 @@ Gebruiker kan invoer gegevens sets door geven met Service-Principal-verificatie 
 
 ```python
 service_principal = ServicePrincipalAuthentication(
-    tenant_id="***",
-    service_principal_id="***",
-    service_principal_password="***")
+    tenant_id="**_",
+    service_principal_id="_*_",
+    service_principal_password="_*_")
  
 ws = Workspace(
-    subscription_id="***",
-    resource_group="***",
-    workspace_name="***",
+    subscription_id="_*_",
+    resource_group="_*_",
+    workspace_name="_*_",
     auth=service_principal
     )
  
-default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
-ds = Dataset.File.from_files(default_blob_store, '**path***')
-registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '_*_datastore-name_*_') 
+ds = Dataset.File.from_files(default_blob_store, '_*path**_')
+registered_ds = ds.register(ws, '_*_dataset-name_*_', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk deze [Jupyter-notebooks die Azure machine learning pijp lijnen demonstreren](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
+_ Bekijk deze [Jupyter-notebooks die Azure machine learning pijp lijnen demonstreren](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
-* Raadpleeg de SDK-Naslag informatie voor hulp met het pakket met de stappen voor de [azureml-pipelines](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true) . Referentie [documentatie](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py&preserve-view=true) voor de klasse ParallelRunStep weer geven.
+* Raadpleeg de SDK-Naslag informatie voor hulp met het pakket met de stappen voor de [azureml-pipelines](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) . Referentie [documentatie](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py) voor de klasse ParallelRunStep weer geven.
 
-* Volg de [Geavanceerde zelf studie](tutorial-pipeline-batch-scoring-classification.md) over het gebruik van pijp lijnen met ParallelRunStep. De zelf studie laat zien hoe u een ander bestand als een kantlijn invoer kunt door geven. 
+* Volg de [Geavanceerde zelf studie](tutorial-pipeline-batch-scoring-classification.md) over het gebruik van pijp lijnen met ParallelRunStep. De zelf studie laat zien hoe u een ander bestand als een kantlijn invoer kunt door geven.

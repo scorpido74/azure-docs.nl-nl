@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790879"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308336"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -95,7 +95,7 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 - Als u een bestaande sleutel in de sleutel kluis importeert, moet u deze opgeven in de ondersteunde bestands indelingen (. pfx,. byok of. back-up).
 
 > [!NOTE]
-> Azure SQL ondersteunt nu het gebruik van een RSA-sleutel die is opgeslagen in een beheerde HSM als TDE-Protector. Deze functie is beschikbaar als **open bare preview** . Azure Key Vault Managed HSM is een volledig beheerde, Maxi maal beschik bare, door standaarden compatibele Cloud service met één Tenant waarmee u cryptografische sleutels voor uw Cloud toepassingen kunt beveiligen met behulp van FIPS 140-2 level 3 gevalideerd Hsm's. Meer informatie over [beheerde hsm's](../../key-vault/managed-hsm/index.yml).
+> Azure SQL ondersteunt nu het gebruik van een RSA-sleutel die is opgeslagen in een beheerde HSM als TDE-Protector. Deze functie is beschikbaar als **open bare preview**. Azure Key Vault Managed HSM is een volledig beheerde, Maxi maal beschik bare, door standaarden compatibele Cloud service met één Tenant waarmee u cryptografische sleutels voor uw Cloud toepassingen kunt beveiligen met behulp van FIPS 140-2 level 3 gevalideerd Hsm's. Meer informatie over [beheerde hsm's](../../key-vault/managed-hsm/index.yml).
 
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Aanbevelingen voor het configureren van door de klant beheerde TDE
@@ -126,7 +126,7 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 
 ## <a name="inaccessible-tde-protector"></a>Ontoegankelijke TDE-beveiliging
 
-Wanneer transparante gegevens versleuteling is geconfigureerd voor het gebruik van een door de klant beheerde sleutel, is voortdurende toegang tot de TDE-Protector vereist voor de data base om online te blijven. Als de server geen toegang meer heeft tot de door de klant beheerde TDE-Protector in azure, wordt in Maxi maal tien minuten een Data Base gestart met het weigeren van alle verbindingen met het bijbehorende fout bericht en wordt de status gewijzigd in niet *toegankelijk* . De enige actie die is toegestaan voor een Data Base met de status unaccessible, wordt deze verwijderd.
+Wanneer transparante gegevens versleuteling is geconfigureerd voor het gebruik van een door de klant beheerde sleutel, is voortdurende toegang tot de TDE-Protector vereist voor de data base om online te blijven. Als de server geen toegang meer heeft tot de door de klant beheerde TDE-Protector in azure, wordt in Maxi maal tien minuten een Data Base gestart met het weigeren van alle verbindingen met het bijbehorende fout bericht en wordt de status gewijzigd in niet *toegankelijk*. De enige actie die is toegestaan voor een Data Base met de status unaccessible, wordt deze verwijderd.
 
 > [!NOTE]
 > Als de data base niet toegankelijk is vanwege een onregelmatige netwerk storing, is er geen actie vereist en worden de data bases automatisch weer online gezet.
@@ -135,7 +135,7 @@ Nadat de toegang tot de sleutel is hersteld, is voor de Data Base weer online ex
 
 - Als de sleutel toegang binnen acht uur wordt hersteld, wordt de data base binnen het volgende uur automatisch opnieuw geactiveerd.
 
-- Als de sleuteltoegang na meer dan acht uur is hersteld, is automatisch herstellen niet mogelijk en zijn er voor aanvullende stappen in de portal nodig om de database weer actief te krijgen. Dit kan afhankelijk van de grootte van de database vrij lang duren. Zodra de Data Base weer online is, eerder geconfigureerde instellingen op server niveau, zoals [failover-groeps](auto-failover-group-overview.md) configuratie, punt-in-time-herstel geschiedenis en tags **gaan verloren** . Daarom is het raadzaam om een meldings systeem te implementeren waarmee u de onderliggende sleutel toegangs problemen binnen acht uur kunt identificeren en oplossen.
+- Als de sleuteltoegang na meer dan acht uur is hersteld, is automatisch herstellen niet mogelijk en zijn er voor aanvullende stappen in de portal nodig om de database weer actief te krijgen. Dit kan afhankelijk van de grootte van de database vrij lang duren. Zodra de Data Base weer online is, eerder geconfigureerde instellingen op server niveau, zoals [failover-groeps](auto-failover-group-overview.md) configuratie, punt-in-time-herstel geschiedenis en tags **gaan verloren**. Daarom is het raadzaam om een meldings systeem te implementeren waarmee u de onderliggende sleutel toegangs problemen binnen acht uur kunt identificeren en oplossen.
 
 Hieronder ziet u een overzicht van de extra stappen die vereist zijn op de portal om een ontoegankelijke Data Base weer online te zetten.
 
@@ -156,7 +156,7 @@ Het kan gebeuren dat iemand met voldoende toegangs rechten voor de sleutel kluis
 
 - de beheerde identiteit van de server in Azure Active Directory verwijderen
 
-Meer informatie over [de algemene oorzaken voor het ontoegankelijk maken van de data base](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current#common-errors-causing-databases-to-become-inaccessible).
+Meer informatie over [de algemene oorzaken voor het ontoegankelijk maken van de data base](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current&preserve-view=true#common-errors-causing-databases-to-become-inaccessible).
 
 ## <a name="monitoring-of-the-customer-managed-tde"></a>Bewaking van de door de klant beheerde TDE
 
@@ -179,7 +179,7 @@ Als de sleutel die nodig is voor het herstellen van een back-up niet langer besc
 
 Om het te beperken, voert u de cmdlet [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) uit voor de doel server of [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) voor het beheerde exemplaar van het doel om de lijst met beschik bare sleutels te retour neren en de ontbrekende waarden te identificeren. Om ervoor te zorgen dat alle back-ups kunnen worden hersteld, moet u ervoor zorgen dat de doel server voor het terugzetten toegang heeft tot alle benodigde sleutels. Deze sleutels hoeven niet als TDE-Protector te worden gemarkeerd.
 
-Zie [een Data Base herstellen in SQL database](recovery-using-backups.md)voor meer informatie over het herstel van back-ups voor SQL database. Zie [een SQL-groep herstellen](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md)voor meer informatie over het herstel van back-ups voor SQL-groepen. Zie voor het systeem eigen back-up/herstel van de SQL Server met SQL Managed instance [Quick Start: een Data Base herstellen naar een SQL-beheerd exemplaar](../managed-instance/restore-sample-database-quickstart.md)
+Zie [een Data Base herstellen in SQL database](recovery-using-backups.md)voor meer informatie over het herstel van back-ups voor SQL database. Zie [een toegewezen SQL-groep herstellen](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md)voor meer informatie over back-upherstel voor een toegewezen SQL-groep in azure Synapse Analytics. Zie voor het systeem eigen back-up/herstel van de SQL Server met SQL Managed instance [Quick Start: een Data Base herstellen naar een SQL-beheerd exemplaar](../managed-instance/restore-sample-database-quickstart.md)
 
 Aanvullende overwegingen voor logboek bestanden: back-ups van logboek bestanden blijven versleuteld met de oorspronkelijke TDE-Protector, zelfs als deze is gedraaid en de data base nu een nieuwe TDE-Protector gebruikt.  Op het moment van terugzetten zijn beide sleutels nodig om de data base te herstellen.  Als het logboek bestand gebruikmaakt van een TDE-Protector die is opgeslagen in Azure Key Vault, is deze sleutel vereist tijdens de herstel tijd, zelfs als de data base is gewijzigd voor het gebruik van door de service beheerde TDE.
 

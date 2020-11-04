@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: b30cd926f6908c26c6f71c1513a8c68c8a46bf43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 154479be1eae01bcc533b556b751ed24aee3da2b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359746"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308568"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Logboek registratie inschakelen voor Azure Machine Learning Studio (klassieke) webservices
 
-**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Dit document bevat informatie over de logboek registratie van Machine Learning Studio (klassieke) webservices. Logboek registratie biedt aanvullende informatie, behalve een fout nummer en een bericht, waarmee u uw aanroepen naar de Machine Learning Studio (klassieke) Api's kunt oplossen.  
@@ -54,7 +54,7 @@ U schakelt logboek registratie in via de [Web Services-portal van Azure machine 
 
    2. Klik onder **Blob Service** op **Containers**.
 
-   3. Als de container **ml-diagnostische gegevens** niet aanwezig is, klikt u op **+ container**, geeft u de container de naam ' ml-Diagnostics ' en selecteert u het **toegangs type** als ' BLOB '. Klik op **OK**.
+   3. Als de container **ml-diagnostische gegevens** niet aanwezig is, klikt u op **+ container** , geeft u de container de naam ' ml-Diagnostics ' en selecteert u het **toegangs type** als ' BLOB '. Klik op **OK**.
 
       ![Een nieuwe container maken om uw Diagnostische logboeken op te slaan](./media/web-services-logging/create-ml-diagnostics-container.png)
 
@@ -66,7 +66,7 @@ U schakelt logboek registratie in via de [Web Services-portal van Azure machine 
 ## <a name="the-effects-of-enabling-logging"></a>De gevolgen van het inschakelen van logboek registratie
 Wanneer logboek registratie is ingeschakeld, worden de diagnostische gegevens en fouten van het eind punt van de webservice vastgelegd in de BLOB-container voor **milliliters diagnostiek** in het Azure Storage account dat is gekoppeld aan de werk ruimte van de gebruiker. Deze container bevat alle diagnostische gegevens voor alle webservice-eind punten voor alle werk ruimten die zijn gekoppeld aan dit opslag account.
 
-De logboeken kunnen worden weer gegeven met een van de verschillende hulpprogram ma's die beschikbaar zijn om een Azure Storage account te verkennen. Het eenvoudigste kan zijn om naar het opslag account in de Azure Portal te gaan, op **containers**te klikken en vervolgens op de container **ml-diagnostische gegevens**te klikken.  
+De logboeken kunnen worden weer gegeven met een van de verschillende hulpprogram ma's die beschikbaar zijn om een Azure Storage account te verkennen. Het eenvoudigste kan zijn om naar het opslag account in de Azure Portal te gaan, op **containers** te klikken en vervolgens op de container **ml-diagnostische gegevens** te klikken.  
 
 ## <a name="log-blob-detail-information"></a>Informatie over logboek-blobs
 Elke Blob in de container bevat de diagnostische gegevens voor precies één van de volgende acties:
@@ -85,5 +85,4 @@ Waarbij _logboek type_ een van de volgende waarden is:
 
 * batch  
 * Score/aanvragen  
-* Score/init  
-
+* Score/init

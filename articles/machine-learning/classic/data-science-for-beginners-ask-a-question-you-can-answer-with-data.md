@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: ff08af00649cf61134c3e27d07b329e40169ea66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbac7c8818300ffb09959969e6b79f949177f457
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343474"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307663"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Stel een vraag die u met gegevens kunt beantwoorden
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: gegevens wetenschap voor beginners-serie
@@ -69,7 +69,7 @@ Als u geen doel gegevens hebt, moet u een aantal ophalen. U kunt geen antwoord g
 ## <a name="reformulate-your-question"></a>Uw vraag opnieuw formuleren
 Het kan zijn dat u uw vraag opnieuw kunt weer geven om een nuttig antwoord te krijgen.
 
-De vraag is dit gegevens punt A of B? de categorie (of de naam of het label) van iets voors pellen. We gebruiken een *classificatie algoritme*om het te beantwoorden.
+De vraag is dit gegevens punt A of B? de categorie (of de naam of het label) van iets voors pellen. We gebruiken een *classificatie algoritme* om het te beantwoorden.
 
 De vraag wat? of ' hoeveel? ' voor spelt een bedrag. Voor het beantwoorden van het gebruik van een *regressie algoritme*.
 
@@ -91,4 +91,4 @@ Bekijk de andere Video's in "data Science for beginners" van Microsoft Azure Mac
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Probeer een eerste experiment van data Science met Machine Learning Studio (klassiek)](create-experiment.md)
-* [Krijg een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)
+* [Krijg een inleiding tot Machine Learning op Microsoft Azure](../overview-what-is-azure-ml.md)

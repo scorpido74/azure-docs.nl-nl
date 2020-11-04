@@ -11,16 +11,16 @@ ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a963a9f10ee23c50f50e66191e92f0839c457d9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc348318401c9362636893d70294496c7012408
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362839"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308470"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Azure Machine Learning Studio (klassieke) webservices implementeren die gebruikmaken van modules voor het importeren en exporteren van gegevens
 
-**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Wanneer u een voorspellend experiment maakt, voegt u doorgaans een invoer en uitvoer van een webservice toe. Wanneer u het experiment implementeert, kunnen gebruikers gegevens van de webservice verzenden en ontvangen via de invoer en uitvoer. Voor sommige toepassingen is het mogelijk dat de gegevens van een consument beschikbaar zijn via een gegevensfeed of al aanwezig zijn in een externe gegevens bron, zoals Azure Blob Storage. In deze gevallen hebben ze geen lees-en schrijf gegevens met behulp van de invoer en uitvoer van webservices. Ze kunnen in plaats daarvan de batch Execution Service (BES) gebruiken voor het lezen van gegevens uit de gegevens bron met behulp van een import data-module en de Score resultaten naar een andere gegevens locatie schrijven met behulp van een module export data.
@@ -41,7 +41,7 @@ De gegevens uit de Azure SQL-tabel lezen:
 3. Voeg in de lijst met resultaten een module *import gegevens* toe aan het canvas voor het experiment.
 4. Verbinding maken met de uitvoer van de module *import data* de invoer van de module *clean Missing Data* .
 5. Selecteer in het deel venster Eigenschappen **Azure SQL database** in de vervolg keuzelijst **gegevens bron** .
-6. In de velden **database server naam**, **database naam**, **gebruikers naam**en **wacht woord** voert u de juiste informatie in voor uw data base.
+6. In de velden **database server naam** , **database naam** , **gebruikers naam** en **wacht woord** voert u de juiste informatie in voor uw data base.
 7. Voer in het veld database query de volgende query in.
 
     ```tsql
@@ -73,12 +73,12 @@ Vervolgens stelt u het voorspellende experiment in van waaruit u de-webservice i
 4. Voeg in de lijst met resultaten een module *export gegevens* toe aan het canvas van het experiment.
 5. Verbinding maken met de uitvoer van de module *score model* de invoer van de module *gegevens exporteren* .
 6. Selecteer in het deel venster Eigenschappen **Azure SQL database** in de vervolg keuzelijst gegevens bestemming.
-7. Voer in de velden **database server naam**, **database naam**, **Server gebruikers account naam**en **wacht woord voor Server gebruikers account** de juiste informatie in voor uw data base.
+7. Voer in de velden **database server naam** , **database naam** , **Server gebruikers account naam** en **wacht woord voor Server gebruikers account** de juiste informatie in voor uw data base.
 8. In het veld **door komma's gescheiden lijst met kolommen die moeten worden opgeslagen** , typt u labels met scores.
 9. Typ dbo in het **veld naam van gegevens tabel**. ScoredLabels. Als de tabel niet bestaat, wordt deze gemaakt wanneer het experiment wordt uitgevoerd of de webservice wordt aangeroepen.
 10. Typ ScoredLabels in het veld **door komma's gescheiden lijst met DataTable-kolommen** .
 
-Wanneer u een toepassing schrijft die de uiteindelijke webservice aanroept, wilt u mogelijk een andere invoer query of doel tabel opgeven tijdens de uitvoering. Als u deze invoer en uitvoer wilt configureren, gebruikt u de functie webservice-para meters om de eigenschap *gegevens bron* van de gegevens module *importeren* en de gegevens doel eigenschap *export gegevens* modus in te stellen.  Zie voor meer informatie over para meters voor de webservice de [para meters](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) voor de Azure machine learning Studio-webservice in de blog Cortana Intelligence en machine learning.
+Wanneer u een toepassing schrijft die de uiteindelijke webservice aanroept, wilt u mogelijk een andere invoer query of doel tabel opgeven tijdens de uitvoering. Als u deze invoer en uitvoer wilt configureren, gebruikt u de functie webservice-para meters om de eigenschap *gegevens bron* van de gegevens module *importeren* en de gegevens doel eigenschap *export gegevens* modus in te stellen.  Zie voor meer informatie over para meters voor de webservice de [para meters](/archive/blogs/machinelearning/azureml-web-service-parameters) voor de Azure machine learning Studio-webservice in de blog Cortana Intelligence en machine learning.
 
 De webservice-para meters voor de query import en de doel tabel configureren:
 
@@ -152,4 +152,3 @@ Als u een nieuwe webservice wilt implementeren en een toepassing wilt maken om d
     };
     ```
 10. Voer de toepassing uit.
-

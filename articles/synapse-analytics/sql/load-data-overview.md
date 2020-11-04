@@ -1,6 +1,6 @@
 ---
-title: Een poly base-strategie voor het laden van gegevens ontwerpen voor een SQL-groep
-description: In plaats van ETL kunt u een uitpak-, laad-en transformatie proces (ELT) ontwerpen voor het laden van gegevens of SQL-groep.
+title: Een polybase data-strategie voor het laden van gegevens ontwerpen voor een toegewezen SQL-groep
+description: In plaats van ETL kunt u een uitpak-, laad-en transformatie proces (ELT) voor het laden van gegevens met exclusieve SQL ontwerpen.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a57abd080bdbbaefbe07258a2b241c093dc8c441
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474662"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308739"
 ---
-# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Een polybase data-strategie voor gegevens laden ontwerpen voor Azure Synapse SQL-groep
+# <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Een polybase data-strategie voor het laden van gegevens ontwerpen voor een toegewezen SQL-groep in azure Synapse Analytics
 
 Traditionele SMP-data warehouses maken gebruik van een proces voor het laden van de gegevens extract, Transform en load (ETL). De Azure SQL-groep is een enorm parallelle verwerkings architectuur (MPP) die gebruikmaakt van de schaal baarheid en flexibiliteit van reken-en opslag resources. Het gebruik van een proces voor het uitpakken, laden en transformeren (ELT) kan profiteren van de ingebouwde mogelijkheden voor gedistribueerde query verwerking en resources elimineren die nodig zijn om de gegevens te transformeren voordat ze worden geladen.
 
@@ -29,12 +29,12 @@ Hoewel de SQL-groep veel methoden voor het laden ondersteunt, inclusief niet-pol
 
 Extra heren, laden en transformeren (ELT) is een proces waarmee gegevens worden geëxtraheerd uit een bron systeem, in een Data Warehouse worden geladen en vervolgens worden getransformeerd.
 
-De basis stappen voor het implementeren van een poly base-ELT voor SQL-groep zijn:
+De basis stappen voor het implementeren van een poly base-ELT voor een toegewezen SQL-groep zijn:
 
 1. Extraheer de brongegevens naar tekstbestanden.
 2. Voer de gegevens in op Azure Blob-opslag of Azure Data Lake Store.
 3. De gegevens voorbereiden voor het laden van.
-4. Laad de gegevens in de faserings tabellen van een SQL-groep met poly base.
+4. Laad de gegevens in speciale faserings tabellen van SQL-groep met poly base.
 5. Transformeer de gegevens.
 6. Voeg de gegevens in productietabellen in.
 
@@ -85,11 +85,11 @@ Hulpprogram ma's en services die u kunt gebruiken om gegevens naar Azure Storage
 
 - De [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) -service verbetert de netwerk doorvoer, prestaties en voorspel baarheid. ExpressRoute is een service waarmee uw gegevens worden gerouteerd via een speciale particuliere verbinding met Azure. ExpressRoute-verbindingen sturen geen gegevens via het open bare Internet. De verbindingen bieden meer betrouw baarheid, hogere snelheden, lagere wacht tijden en hogere beveiliging dan typische verbindingen via het open bare Internet.
 - Met het [hulp programma AZCopy](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kunt u gegevens verplaatsen naar Azure Storage via het open bare Internet. Dit werkt als uw gegevens grootten minder dan 10 TB zijn. Als u de belasting regel matig wilt uitvoeren met AZCopy, test u de netwerk snelheid om te controleren of deze acceptabel is.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) heeft een gateway die u op uw lokale server kunt installeren. Vervolgens kunt u een pijp lijn maken om gegevens van uw lokale server naar Azure Storage te verplaatsen. Zie [gegevens laden in SQL-groep](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)om Data Factory met SQL-pool te gebruiken.
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) heeft een gateway die u op uw lokale server kunt installeren. Vervolgens kunt u een pijp lijn maken om gegevens van uw lokale server naar Azure Storage te verplaatsen. Zie [gegevens laden in toegewezen SQL-groep](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)om Data Factory te gebruiken met exclusieve SQL-groep.
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. de gegevens voorbereiden voor het laden
 
-Mogelijk moet u de gegevens in uw opslag account voorbereiden en opschonen voordat u deze in de SQL-groep laadt. Gegevens voorbereiding kan worden uitgevoerd terwijl de gegevens zich in de bron bevinden, terwijl u de gegevens naar tekst bestanden exporteert of wanneer de gegevens zich in Azure Storage bevinden.  Het is eenvoudig om zo snel mogelijk in het proces te werken met de gegevens.  
+Mogelijk moet u de gegevens in uw opslag account voorbereiden en opschonen voordat u deze in een toegewezen SQL-groep laadt. Gegevens voorbereiding kan worden uitgevoerd terwijl de gegevens zich in de bron bevinden, terwijl u de gegevens naar tekst bestanden exporteert of wanneer de gegevens zich in Azure Storage bevinden.  Het is eenvoudig om zo snel mogelijk in het proces te werken met de gegevens.  
 
 ### <a name="define-external-tables"></a>Externe tabellen definiëren
 
@@ -97,7 +97,7 @@ Voordat u gegevens kunt laden, moet u externe tabellen definiëren in uw data wa
 
 Als u externe tabellen definieert, moet u de gegevens bron, de indeling van de tekst bestanden en de tabel definities opgeven. Hieronder vindt u de functies van de T-SQL-syntaxis die u nodig hebt:
 
-- [EXTERNE GEGEVENS BRON MAKEN](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
@@ -110,7 +110,7 @@ De tekst bestanden opmaken:
 - Gegevens in het tekst bestand opmaken om uit te lijnen met de kolommen en gegevens typen in de doel tabel van de SQL-pool. Een onjuiste uitlijning tussen gegevens typen in de externe tekst bestanden en de Data Warehouse tabel zorgt ervoor dat rijen worden afgewezen tijdens het laden.
 - Scheid velden in het tekst bestand met een terminator.  Zorg ervoor dat u een teken of een teken reeks gebruikt die niet in uw bron gegevens is gevonden. Gebruik de Terminator die u hebt opgegeven met [externe BESTANDS indeling maken](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. gegevens in faserings tabellen van SQL-groep laden met poly base
+## <a name="4-load-the-data-into-dedicated-sql-pool-staging-tables-using-polybase"></a>4. Laad de gegevens in speciale faserings tabellen van de SQL-groep met poly base
 
 Het is best practice om gegevens in een faserings tabel te laden. Met faserings tabellen kunt u fouten afhandelen zonder de productie tabellen te verstoren. Een faserings tabel biedt u ook de mogelijkheid om de ingebouwde mogelijkheden van de gedistribueerde query verwerking van SQL-groepen te gebruiken voor gegevens transformaties voordat u de gegevens in productie tabellen invoegt.
 
@@ -125,7 +125,7 @@ Als u gegevens wilt laden met poly Base, kunt u een van de volgende laad opties 
 
 ### <a name="non-polybase-loading-options"></a>Opties voor het laden van niet-poly base
 
-Als uw gegevens niet compatibel zijn met poly Base, kunt u [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) of de [SQLBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)gebruiken. BCP wordt rechtstreeks naar een SQL-groep geladen zonder Azure Blob-opslag te passeren en is uitsluitend bedoeld voor kleine belastingen. Houd er rekening mee dat de belasting prestaties van deze opties aanzienlijk langzamer zijn dan poly base.
+Als uw gegevens niet compatibel zijn met poly Base, kunt u [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) of de [SQLBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)gebruiken. BCP wordt rechtstreeks naar een toegewezen SQL-groep geladen zonder Azure Blob-opslag te passeren en is uitsluitend bedoeld voor kleine belastingen. Houd er rekening mee dat de belasting prestaties van deze opties aanzienlijk langzamer zijn dan poly base.
 
 ## <a name="5-transform-the-data"></a>5. de gegevens transformeren
 

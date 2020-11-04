@@ -8,16 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 186289826273e85c9faa7f972b6f48d34e38416f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5c9e27e894541d71986fe929cbc5d6fde31bc18
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357366"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308806"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Beheer van toepassings levenscyclus in Azure Machine Learning Studio (klassiek)
 
-**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Azure Machine Learning Studio (klassiek) is een hulp programma voor het ontwikkelen van machine learning experimenten die operationeel zijn in het Azure-Cloud platform. Het is vergelijkbaar met de Visual Studio IDE en de schaal bare Cloud service die is samengevoegd met één platform. U kunt standaard ALM-procedures (Application Lifecycle Management) opnemen van het versie beheer van verschillende assets tot geautomatiseerde uitvoering en implementatie, in Azure Machine Learning Studio (klassiek). In dit artikel worden enkele van de opties en benaderingen besproken.
@@ -46,7 +46,7 @@ De moment opnamen van de uitvoerings geschiedenis blijven een onveranderbare ver
 Het JSON-bestand is een tekst weergave van de experimentele grafiek, die mogelijk een verwijzing bevat naar assets in de werk ruimte, zoals een gegevensset of een getraind model. Het bevat geen geserialiseerde versie van de Asset. Als u het JSON-document weer in de werk ruimte probeert te importeren, moeten de activa waarnaar wordt verwezen al bestaan met dezelfde activa-Id's waarnaar in het experiment wordt verwezen. Anders hebt u geen toegang tot het geïmporteerde experiment.
 
 ## <a name="versioning-trained-model"></a>Getraind model voor versie beheer
-Een getraind model in Azure Machine Learning Studio (klassiek) wordt geserialiseerd in een indeling die wordt aangeduid als een iLearner-bestand ( `.iLearner` ) en wordt opgeslagen in het Azure Blob Storage-account dat is gekoppeld aan de werk ruimte. Een manier om een kopie van het iLearner-bestand op te halen, is via de retraining-API. In [dit artikel](/azure/machine-learning/studio/retrain-machine-learning-model) wordt uitgelegd hoe de retraining-API werkt. De stappen op hoog niveau:
+Een getraind model in Azure Machine Learning Studio (klassiek) wordt geserialiseerd in een indeling die wordt aangeduid als een iLearner-bestand ( `.iLearner` ) en wordt opgeslagen in het Azure Blob Storage-account dat is gekoppeld aan de werk ruimte. Een manier om een kopie van het iLearner-bestand op te halen, is via de retraining-API. In [dit artikel](./retrain-machine-learning-model.md) wordt uitgelegd hoe de retraining-API werkt. De stappen op hoog niveau:
 
 1. Stel uw trainings experiment in.
 2. Voeg een webservice-uitvoer poort toe aan de module Train model of de module die het getrainde model produceert, zoals model afstemming afstemmen of R-model maken.
@@ -78,7 +78,7 @@ In de loop van de tijd zijn er mogelijk veel eind punten gemaakt in dezelfde web
 U kunt ook veel identieke webservice-eind punten maken en vervolgens verschillende versies van het iLearner-bestand naar het eind punt patchen om een vergelijkbaar effect te krijgen. In [dit artikel](create-models-and-endpoints-with-powershell.md) vindt u meer informatie over hoe u dit kunt doen.
 
 ### <a name="new-web-service"></a>Nieuwe webservice
-Als u een nieuwe webservice op basis van Azure Resource Manager maakt, is de eindpunt constructie niet meer beschikbaar. In plaats daarvan kunt u WSD-bestanden (web service Definition) in JSON-indeling genereren vanuit uw voorspellende experiment met behulp van de Power shell [-Commandlet export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) of met behulp van de Power shell-commandlet [*export-AzMlWebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) van een geïmplementeerde web service van Resource Manager.
+Als u een nieuwe webservice op basis van Azure Resource Manager maakt, is de eindpunt constructie niet meer beschikbaar. In plaats daarvan kunt u WSD-bestanden (web service Definition) in JSON-indeling genereren vanuit uw voorspellende experiment met behulp van de Power shell [-Commandlet export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) of met behulp van de Power shell-commandlet [*export-AzMlWebservice*](/powershell/module/az.machinelearning/export-azmlwebservice) van een geïmplementeerde web service van Resource Manager.
 
 Nadat u het WSD-bestand en de versie beheer ervan hebt geëxporteerd, kunt u de WSD ook als een nieuwe webservice implementeren in een ander abonnement in een andere Azure-regio. Zorg ervoor dat u de juiste configuratie voor het opslag account en de nieuwe abonnement-ID van de webservice opgeeft. Als u een patch in verschillende iLearner-bestanden wilt uitvoeren, kunt u het WSD-bestand wijzigen en de locatie verwijzing van het getrainde model bijwerken en implementeren als een nieuwe webservice.
 

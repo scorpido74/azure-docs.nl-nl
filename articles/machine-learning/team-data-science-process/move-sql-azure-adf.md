@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6f2e0b9a797edb2d5529bb0645ed56c44df3121c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440015"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309540"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Gegevens verplaatsen van een SQL Server Data Base naar SQL Database met Azure Data Factory
 
@@ -43,7 +43,7 @@ We stellen een ADF-pijp lijn in die twee gegevens migratie activiteiten samen st
 * Kopieer gegevens van het Azure Blob Storage-account naar Azure SQL Database.
 
 > [!NOTE]
-> De stappen die hier worden beschreven, zijn aangepast aan de meer gedetailleerde zelf studie van het ADF-team: [gegevens kopiëren van een SQL Server Data Base naar Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) -verwijzingen naar de relevante secties van dat onderwerp worden indien van toepassing.
+> De stappen die hier worden beschreven, zijn aangepast aan de meer gedetailleerde zelf studie van het ADF-team: [gegevens kopiëren van een SQL Server Data Base naar Azure Blob Storage](../../data-factory/tutorial-hybrid-copy-portal.md) -verwijzingen naar de relevante secties van dat onderwerp worden indien van toepassing.
 >
 >
 
@@ -52,7 +52,7 @@ In deze zelf studie wordt ervan uitgegaan dat u het volgende hebt:
 
 * Een **Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
 * Een **Azure-opslag account**. U gebruikt een Azure-opslag account voor het opslaan van de gegevens in deze zelf studie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslagaccount hebt gemaakt, moet u de accountsleutel ophalen die wordt gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
-* Toegang tot een **Azure SQL database**. Als u een Azure SQL Database moet instellen, bevat het onderwerp aan de [slag met Microsoft Azure SQL database](../../sql-database/sql-database-get-started.md) informatie over het inrichten van een nieuw exemplaar van een Azure SQL database.
+* Toegang tot een **Azure SQL database**. Als u een Azure SQL Database moet instellen, bevat het onderwerp aan de [slag met Microsoft Azure SQL database](../../azure-sql/database/single-database-create-quickstart.md) informatie over het inrichten van een nieuw exemplaar van een Azure SQL database.
 * **Azure PowerShell** lokaal geïnstalleerd en geconfigureerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor instructies.
 
 > [!NOTE]
@@ -71,7 +71,7 @@ De instructies voor het maken van een nieuwe Azure Data Factory en een resource 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory Integration Runtime installeren en configureren
 De Integration Runtime is een door de klant beheerde infra structuur voor gegevens integratie die door Azure Data Factory wordt gebruikt om mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Deze runtime werd voorheen ' Data Management Gateway ' genoemd.
 
-Als u wilt instellen, [volgt u de instructies voor het maken van een pijp lijn](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+Als u wilt instellen, [volgt u de instructies voor het maken van een pijp lijn](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)
 
 ## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>Maak gekoppelde services om verbinding te maken met de gegevens bronnen
 Een gekoppelde service definieert de informatie die nodig is om Azure Data Factory verbinding te maken met een gegevens bron. Er zijn drie resources in dit scenario waarvoor gekoppelde services nodig zijn:
@@ -87,7 +87,7 @@ De stapsgewijze procedure voor het maken van gekoppelde services vindt u in [gek
 Maak tabellen waarmee de structuur, locatie en beschik baarheid van de gegevens sets worden opgegeven met de volgende procedures op basis van een script. JSON-bestanden worden gebruikt voor het definiëren van de tabellen. Zie [gegevens sets](../../data-factory/concepts-datasets-linked-services.md)voor meer informatie over de structuur van deze bestanden.
 
 > [!NOTE]
-> U moet de `Add-AzureAccount` cmdlet uitvoeren voordat u de cmdlet [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) uitvoert om te bevestigen dat het juiste Azure-abonnement is geselecteerd voor het uitvoeren van de opdracht. Zie [add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)voor documentatie van deze cmdlet.
+> U moet de `Add-AzureAccount` cmdlet uitvoeren voordat u de cmdlet [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) uitvoert om te bevestigen dat het juiste Azure-abonnement is geselecteerd voor het uitvoeren van de opdracht. Zie [add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)voor documentatie van deze cmdlet.
 >
 >
 
@@ -138,7 +138,7 @@ De tabel definitie voor de SQL Server is opgegeven in het volgende JSON-bestand:
 
 De kolom namen zijn hier niet opgenomen. U kunt de kolom namen subselecteren door deze hier op te nemen (Zie het onderwerp [ADF-documentatie](../../data-factory/copy-activity-overview.md) voor meer informatie.
 
-Kopieer de JSON-definitie van de tabel naar een bestand met de naam *onpremtabledef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\onpremtabledef.jsop*). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
+Kopieer de JSON-definitie van de tabel naar een bestand met de naam *onpremtabledef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\onpremtabledef.jsop* ). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
@@ -173,7 +173,7 @@ De definitie voor de tabel voor de blob van de uitvoer is als volgt (Hiermee wor
 }
 ```
 
-Kopieer de JSON-definitie van de tabel naar een bestand met de naam *bloboutputtabledef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\bloboutputtabledef.jsop*). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
+Kopieer de JSON-definitie van de tabel naar een bestand met de naam *bloboutputtabledef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\bloboutputtabledef.jsop* ). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
@@ -207,7 +207,7 @@ De definitie voor de tabel voor de SQL Azure uitvoer bevindt zich in het volgend
 }
 ```
 
-Kopieer de JSON-definitie van de tabel naar een bestand met de naam *AzureSqlTable.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\AzureSqlTable.jsop*). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
+Kopieer de JSON-definitie van de tabel naar een bestand met de naam *AzureSqlTable.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\AzureSqlTable.jsop* ). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
@@ -217,7 +217,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 ## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>De pijp lijn definiëren en maken
 Geef de activiteiten op die deel uitmaken van de pijp lijn en maak de pijp lijn met de volgende procedures op basis van een script. Er wordt een JSON-bestand gebruikt om de pijplijn eigenschappen te definiëren.
 
-* In het script wordt ervan uitgegaan dat de naam van de **pijp lijn** *AMLDSProcessPipeline*is.
+* In het script wordt ervan uitgegaan dat de naam van de **pijp lijn** *AMLDSProcessPipeline* is.
 * Houd er ook rekening mee dat we de periodiciteit van de pijp lijn zo instellen dat ze dagelijks worden uitgevoerd en de standaard uitvoerings tijd voor de taak (12 uur UTC) gebruiken.
 
 > [!NOTE]
@@ -294,7 +294,7 @@ Met behulp van de tabel definities die eerder zijn opgegeven, wordt de pijplijn 
 }
 ```
 
-Kopieer deze JSON-definitie van de pijp lijn naar een bestand met de naam *pipelinedef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\pipelinedef.jsop*). Maak de pijp lijn in ADF met de volgende Azure PowerShell-cmdlet:
+Kopieer deze JSON-definitie van de pijp lijn naar een bestand met de naam *pipelinedef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\pipelinedef.jsop* ). Maak de pijp lijn in ADF met de volgende Azure PowerShell-cmdlet:
 
 ```azurepowershell
 New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json

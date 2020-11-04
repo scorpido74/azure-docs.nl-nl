@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 23ecc3bdfb0ca85caf219fc262348937923f53c3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d4a2d9e43dadc53008c04b44ea1dda9cb337da99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286131"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308352"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>Automatische registratie bij de resource provider van de SQL-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Zodra automatische registratie is ingeschakeld voor een abonnement, worden alle 
 
 Als u uw SQL Server-VM wilt registreren bij de resource provider, hebt u het volgende nodig: 
 
-- Een [Azure-abonnement](https://azure.microsoft.com/free/).
+- Een [Azure-abonnement](https://azure.microsoft.com/free/) en ten minste machtigingen voor de [rol Inzender](../../../role-based-access-control/built-in-roles.md#all) .
 - Een Azure resource model [Windows Server 2008 R2 (of hoger) virtuele machine](../../../virtual-machines/windows/quick-create-portal.md) met [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) geïmplementeerd naar de open bare of Azure Government Cloud. Windows Server 2008 wordt niet ondersteund. 
 
 

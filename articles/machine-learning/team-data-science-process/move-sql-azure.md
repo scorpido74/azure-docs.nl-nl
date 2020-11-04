@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1f1120c78ef2a634c079705c85170d9742eabd1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42bac2df7abe00be8c0e6ffddcc9bef7ef28ba9d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087421"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309516"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Gegevens voor Azure Machine Learning verplaatsen naar een Azure SQL-database
 
@@ -36,10 +36,10 @@ Voor de procedures die hier worden beschreven, is het volgende vereist:
 
 * Een **Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
 * Een **Azure-opslag account**. U gebruikt een Azure-opslag account voor het opslaan van de gegevens in deze zelf studie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslagaccount hebt gemaakt, moet u de accountsleutel ophalen die wordt gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
-* Toegang tot een **Azure SQL database**. Als u een Azure SQL Database moet instellen, kunt u aan de [slag met Microsoft Azure SQL database](../../sql-database/sql-database-get-started.md) informatie over het inrichten van een nieuw exemplaar van een Azure SQL database.
+* Toegang tot een **Azure SQL database**. Als u een Azure SQL Database moet instellen, kunt u aan de [slag met Microsoft Azure SQL database](../../azure-sql/database/single-database-create-quickstart.md) informatie over het inrichten van een nieuw exemplaar van een Azure SQL database.
 * **Azure PowerShell** lokaal geïnstalleerd en geconfigureerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor instructies.
 
-**Gegevens**: de migratie processen worden gedemonstreerd met behulp van de [NYC taxi-gegevensset](https://chriswhong.com/open-data/foil_nyc_taxi/). De NYC taxi-gegevensset bevat informatie over reis gegevens en beurzen en is beschikbaar in Azure Blob-opslag: [NYC taxi-gegevens](https://www.andresmh.com/nyctaxitrips/). Een voor beeld en een beschrijving van deze bestanden zijn te vinden in de beschrijving van de [NYC taxi trips](sql-walkthrough.md#dataset)van de verzameling.
+**Gegevens** : de migratie processen worden gedemonstreerd met behulp van de [NYC taxi-gegevensset](https://chriswhong.com/open-data/foil_nyc_taxi/). De NYC taxi-gegevensset bevat informatie over reis gegevens en beurzen en is beschikbaar in Azure Blob-opslag: [NYC taxi-gegevens](https://www.andresmh.com/nyctaxitrips/). Een voor beeld en een beschrijving van deze bestanden zijn te vinden in de beschrijving van de [NYC taxi trips](sql-walkthrough.md#dataset)van de verzameling.
 
 U kunt de procedures die hier worden beschreven, aanpassen aan een set met uw eigen gegevens of de stappen volgen die worden beschreven met behulp van de NYC taxi-gegevensset. Als u de NYC taxi-gegevensset wilt uploaden naar uw SQL Server-Data Base, volgt u de procedure die wordt beschreven in [gegevens bulksgewijs importeren in SQL Server-Data Base](sql-walkthrough.md#dbload).
 

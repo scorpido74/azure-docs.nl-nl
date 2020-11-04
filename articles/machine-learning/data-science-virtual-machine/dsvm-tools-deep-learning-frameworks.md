@@ -11,12 +11,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 29f1949cbe9998ac569b0389986023a72e7845b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8c6ee3d5eecc02ac921d7b10f2394380af684c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070913"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309039"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Diep gaande lessen en AI-frameworks voor Azure Data Science VM
 Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
@@ -55,7 +55,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Ondersteunde versies | 10.0.130|
 | Ondersteunde DSVM-edities      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016<br> Ubuntu 16.04  |
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  |_NVIDIA-SMI_ is beschikbaar op het systeempad.  |
-| Het uitvoeren van het programma      | Open een opdracht prompt (in Windows) of een Terminal (op Linux) en voer _NVIDIA-SMI_uit. |
+| Het uitvoeren van het programma      | Open een opdracht prompt (in Windows) of een Terminal (op Linux) en voer _NVIDIA-SMI_ uit. |
 
 
 ## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
@@ -76,7 +76,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Keras is geïnstalleerd in Python 3,6 in Windows en in Python 3,5 in Linux |
 | Het uitvoeren van het programma      | Activeer de juiste omgeving bij de Terminal en voer python uit. |
 
-## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](/cognitive-toolkit/)
 
 | Categorie | Waarde |
 | ------------- | ------------- |
@@ -110,7 +110,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Ondersteunde DSVM-edities      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016<br> Ubuntu 16.04   |
 | Wat is het voor? | NVIDIA-hulp programma voor het uitvoeren van een query op GPU-activiteit |
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | `nvidia-smi` bevindt zich op het systeempad. |
-| Het uitvoeren van het programma      | Open op een virtuele machine **met GPU**een opdracht prompt (in Windows) of een Terminal (op Linux) en voer deze uit `nvidia-smi` . |
+| Het uitvoeren van het programma      | Open op een virtuele machine **met GPU** een opdracht prompt (in Windows) of een Terminal (op Linux) en voer deze uit `nvidia-smi` . |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
@@ -146,5 +146,5 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | ------------- | ------------- |
 | Ondersteunde versies | 1.0.3 |
 | Ondersteunde DSVM-edities      | Ubuntu 16.04 |
-| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  |Theano is geïnstalleerd in Python 2,7 (_root_) en in de_py35_-omgeving (python 3,5). |
+| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  |Theano is geïnstalleerd in Python 2,7 ( _root_ ) en in de _py35_ -omgeving (python 3,5). |
 | Het uitvoeren van het programma      |  Terminal: Activeer de python-versie die u wilt (root of py35), voer python uit en importeer Theano.<br/>* Jupyter: Selecteer de python 2,7-of 3,5-kernel en importeer vervolgens Theano.  <br/>Als u een recente MKL-fout (math kernel Library) wilt omzeilen, moet u eerst de MKL-threading Layer als volgt instellen:<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

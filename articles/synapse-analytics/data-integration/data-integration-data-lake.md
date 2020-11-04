@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: cc5c72c2d0db7c17fdbc29e7fb815f1d06134730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f06777e559187a57bfe0625cde700f30fb636a2b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033214"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309336"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>Gegevens opnemen in Azure Data Lake Storage Gen2 
 
@@ -22,23 +22,23 @@ In dit artikel leert u hoe u gegevens opneemt van de ene locatie naar de andere 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**: als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
-* **Azure Storage account**: u Azure data Lake gen 2 gebruiken als een *brongegevens* opslag. Als u geen opslag account hebt, raadpleegt u [een Azure Storage-account maken](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om er een te maken.
+* **Azure-abonnement** : als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+* **Azure Storage account** : u Azure data Lake gen 2 gebruiken als een *brongegevens* opslag. Als u geen opslag account hebt, raadpleegt u [een Azure Storage-account maken](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om er een te maken.
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
 In azure Synapse Analytics is een gekoppelde service waar u de verbindings gegevens voor andere services definieert. In deze sectie voegt u Azure Synapse Analytics en Azure Data Lake gen 2 toe als gekoppelde services.
 
 1. Open Azure Synapse Analytics UX en ga naar het tabblad **beheren** .
-1. Onder **externe verbindingen**selecteert u **gekoppelde services**.
-1. Selecteer **Nieuw**om een gekoppelde service toe te voegen.
+1. Onder **externe verbindingen** selecteert u **gekoppelde services**.
+1. Selecteer **Nieuw** om een gekoppelde service toe te voegen.
 1. Selecteer de tegel Azure Data Lake Storage Gen2 in de lijst en selecteer **door gaan**.
 1. Voer uw verificatie referenties in. Account sleutel, Service-Principal en beheerde identiteit worden momenteel ondersteunde verificatie typen. Selecteer verbinding testen om te controleren of uw referenties correct zijn. 
 1. Selecteer **Maken** nadat dit is voltooid.
 
 ## <a name="create-pipeline"></a>Pijplijn maken
 
-Een pijp lijn bevat de logische stroom voor het uitvoeren van een reeks activiteiten. In deze sectie maakt u een pijp lijn met een Kopieer activiteit waarmee gegevens uit Azure Data Lake gen 2 worden opgenomen in een SQL-groep.
+Een pijp lijn bevat de logische stroom voor het uitvoeren van een reeks activiteiten. In deze sectie maakt u een pijp lijn met een Kopieer activiteit waarmee gegevens van Azure Data Lake gen 2 worden opgenomen in een toegewezen SQL-groep.
 
 1. Ga naar het tabblad **Orchestration** . Selecteer op het plus-pictogram naast de kop pijp lijnen en selecteer **pijp lijn**.
 1. Sleep onder **verplaatsen en transformeren** in het deel venster activiteiten de gegevens naar het pijp lijn papier **kopiëren** .
@@ -67,9 +67,9 @@ In deze stap moet u de pijp lijn die u in de vorige stap hebt gepubliceerd hand 
 1. Selecteer op de werkbalk de optie **Trigger toevoegen** en selecteer vervolgens **Nu activeren**. Selecteer op de pagina **pijplijn uitvoering** de optie **volt ooien**.  
 1. Ga naar het tabblad **monitor** in de zijbalk links. U ziet een pijplijn die wordt geactiveerd door een handmatige trigger. U kunt via de links in de kolom **Acties** details van de activiteiten bekijken en de pijplijn opnieuw uitvoeren.
 1. Selecteer de link **Uitvoeringen van activiteit weergeven** in de kolom **Acties** om de activiteituitvoeringen te zien die zijn gekoppeld aan de pijplijnuitvoering. Omdat er in dit voorbeeld slechts één activiteit is, ziet u slechts één vermelding in de lijst. Selecteer de link **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. Selecteer de **pijp lijn wordt** aan de bovenkant uitgevoerd om terug te gaan naar de weer gave pijplijn uitvoeringen. Selecteer **Vernieuwen** om de weergave te vernieuwen.
-1. Controleer of uw gegevens correct zijn geschreven in de SQL-groep.
+1. Controleer of uw gegevens correct zijn geschreven in de toegewezen SQL-groep.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over gegevens integratie voor Synapse Analytics het [opnemen van gegevens in een SQL-groeps](data-integration-sql-pool.md) artikel.
+Zie voor meer informatie over gegevens integratie voor Synapse Analytics de [opname van gegevens in een speciaal artikel voor een SQL-groep](data-integration-sql-pool.md) .
