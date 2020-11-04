@@ -11,12 +11,12 @@ ms.date: 9/17/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: gezichtsherkenning, gezichtsherkenningssoftware, gezichtsanalyse, gezichtsvergelijking, gezichtsherkennings-app, gezichten zoeken binnen een afbeelding, zoekfunctie voor gezichtsherkenning
-ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262481"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911440"
 ---
 # <a name="what-is-the-azure-face-service"></a>Wat is de Azure Face-service?
 
@@ -34,7 +34,7 @@ De Face-service biedt verschillende functies voor gezichtsanalyse die in de volg
 De Face-service is in staat om menselijke gezichten te detecteren op een afbeelding en de locatiecoördinaten van de gezichtsrechthoek te retourneren. Gezichtsdetectie kan desgewenst een reeks gezichtsgerelateerde kenmerken extraheren, zoals de houding van het hoofd, geslacht, leeftijd, emotie, gezichtsbeharing en of er een bril gedragen wordt.
 
 > [!NOTE]
-> De functie voor gezichtsdetectie is ook beschikbaar via de [Computer Vision-service](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Als u echter verdere bewerkingen met gezichtsgegevens wilt uitvoeren, moet u deze service gebruiken.
+> De functie voor gezichtsdetectie is ook beschikbaar via de [Computer Vision-service](../computer-vision/overview.md). Als u echter verdere bewerkingen met gezichtsgegevens wilt uitvoeren, moet u deze service gebruiken.
 
 ![Een afbeelding van een vrouw en een man met rechthoeken getekend rond de gezichten, en de leeftijd en het geslacht weergegeven](./Images/Face.detection.jpg)
 

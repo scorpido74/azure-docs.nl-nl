@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 2db80cdba778d868d90d5278005791257acb0ed3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 793dc6d210751d0605ab756cd1c72b1dc5dd308f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548063"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92918706"
 ---
 Ga aan de slag met de Azure Content Moderator-clientbibliotheek voor .NET. Voer deze stappen uit om het NuGet-pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. 
 
@@ -28,7 +28,7 @@ Gebruik de Content Moderator-clientbibliotheek voor .NET om:
 * [Afbeeldingen modereren](#moderate-images)
 * [Een beoordeling maken](#create-a-review)
 
-[Referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [Voorbeelden](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
+[Referentiedocumentatie](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [Voorbeelden](../../samples-dotnet.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -96,7 +96,7 @@ Maak in de klasse **Programma** variabelen voor de sleutel en het eindpunt van u
 > [!IMPORTANT]
 > Ga naar Azure Portal. Als de Content Moderator-resource die u in de sectie **Vereisten** hebt gemaakt, is geïmplementeerd, klikt u op de knop **Naar de resource gaan** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
 >
-> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
+> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](../../../cognitive-services-security.md) voor meer informatie.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
 
@@ -118,10 +118,10 @@ De volgende klassen worden gebruikt voor enkele van de belangrijkste functies va
 
 |Naam|Beschrijving|
 |---|---|
-|[ContentModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Deze klasse is nodig voor alle Content Moderator-functionaliteit. U instantieert deze klasse met uw abonnementsgegevens en gebruikt deze om instanties van andere klassen te maken.|
-|[ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Deze klasse biedt de functionaliteit voor het analyseren van afbeeldingen op inhoud voor volwassenen, persoonlijke gegevens of menselijke gezichten.|
-|[TextModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|Deze klasse biedt de functionaliteit voor het analyseren van tekst op taal, grove taal, fouten en persoonlijke gegevens.|
-|[Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|Deze klasse biedt de functionaliteit van de Review-API's, waaronder de methoden voor het maken van taken, aangepaste werkstromen en menselijke beoordelingen.|
+|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Deze klasse is nodig voor alle Content Moderator-functionaliteit. U instantieert deze klasse met uw abonnementsgegevens en gebruikt deze om instanties van andere klassen te maken.|
+|[ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Deze klasse biedt de functionaliteit voor het analyseren van afbeeldingen op inhoud voor volwassenen, persoonlijke gegevens of menselijke gezichten.|
+|[TextModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|Deze klasse biedt de functionaliteit voor het analyseren van tekst op taal, grove taal, fouten en persoonlijke gegevens.|
+|[Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|Deze klasse biedt de functionaliteit van de Review-API's, waaronder de methoden voor het maken van taken, aangepaste werkstromen en menselijke beoordelingen.|
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -158,10 +158,10 @@ Definieer vervolgens de tekstmoderatiemethode ergens in uw **Program** -klasse:
 
 ## <a name="moderate-images"></a>Afbeeldingen modereren
 
-In de volgende code wordt een Content Moderator-client samen met een [ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)-object gebruikt om externe afbeeldingen te analyseren op inhoud voor volwassenen.
+In de volgende code wordt een Content Moderator-client samen met een [ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)-object gebruikt om externe afbeeldingen te analyseren op inhoud voor volwassenen.
 
 > [!NOTE]
-> U kunt ook de inhoud van een lokale afbeelding analyseren. Zie de [naslagdocumentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) voor methoden en bewerkingen die werken met lokale afbeeldingen.
+> U kunt ook de inhoud van een lokale afbeelding analyseren. Zie de [naslagdocumentatie](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) voor methoden en bewerkingen die werken met lokale afbeeldingen.
 
 ### <a name="get-sample-images"></a>Voorbeeldafbeeldingen ophalen
 
@@ -204,7 +204,7 @@ Zie de handleiding [Image moderation concepts](../../image-moderation-api.md) (c
 
 U kunt de Content Moderator .NET-clientbibliotheek gebruiken om inhoud naar het [beoordelingsprogramma](https://contentmoderator.cognitive.microsoft.com) te sturen zodat menselijke moderators die kunnen beoordelen. Zie de [conceptgids over het beoordelingsprogramma](../../review-tool-user-guide/human-in-the-loop.md) voor meer informatie over het beoordelingsprogramma.
 
-De methode in deze sectie gebruikt de [Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)-klasse om een beoordeling te maken, de id ervan op te halen en de gegevens ervan te controleren na menselijke invoer te hebben gekregen via de webportal van het beoordelingsprogramma. Al deze gegevens worden vastgelegd in een uitvoertekstbestand. 
+De methode in deze sectie gebruikt de [Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)-klasse om een beoordeling te maken, de id ervan op te halen en de gegevens ervan te controleren na menselijke invoer te hebben gekregen via de webportal van het beoordelingsprogramma. Al deze gegevens worden vastgelegd in een uitvoertekstbestand. 
 
 ### <a name="get-sample-images"></a>Voorbeeldafbeeldingen ophalen
 
@@ -248,7 +248,7 @@ Het object dat door de API-aanroep wordt geretourneerd, bevat unieke id-waarde v
 
 ### <a name="get-review-details"></a>Beoordelingsdetails ophalen
 
-De volgende code zorgt ervoor dat het programma wacht op gebruikersinvoer. Wanneer u tijdens de uitvoering bij deze stap komt, kunt u zelf naar het [beoordelingsprogramma](https://contentmoderator.cognitive.microsoft.com) gaan, controleren dat de voorbeeldafbeelding is geüpload en daarmee werken. Zie de [instructiegids voor Reviews](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images) voor informatie over het werken met een beoordeling. Wanneer u klaar bent, kunt u op een willekeurige toets drukken om door te gaan met het programma en de resultaten van het beoordelingsproces op te halen.
+De volgende code zorgt ervoor dat het programma wacht op gebruikersinvoer. Wanneer u tijdens de uitvoering bij deze stap komt, kunt u zelf naar het [beoordelingsprogramma](https://contentmoderator.cognitive.microsoft.com) gaan, controleren dat de voorbeeldafbeelding is geüpload en daarmee werken. Zie de [instructiegids voor Reviews](../../review-tool-user-guide/review-moderated-images.md) voor informatie over het werken met een beoordeling. Wanneer u klaar bent, kunt u op een willekeurige toets drukken om door te gaan met het programma en de resultaten van het beoordelingsproces op te halen.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_results)]
 
@@ -296,7 +296,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 In deze quickstart hebt u geleerd hoe u de Content Moderator .NET-bibliotheek kunt gebruiken om moderatietaken uit te voeren. Nu kunt u doorgaan en in conceptgids meer lezen over het modereren van afbeeldingen en andere media.
 
 > [!div class="nextstepaction"]
-> [Concepten voor afbeeldingsmoderatie](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
+> [Concepten voor afbeeldingsmoderatie](../../image-moderation-api.md)
 
 * [Wat is Azure Content Moderator?](../../overview.md)
 * De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs).

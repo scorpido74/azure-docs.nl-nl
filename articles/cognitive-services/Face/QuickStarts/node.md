@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 0f87bc13a75355306f7d2d15b22ff9cdfaa53794
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77282502a0032a5b1811e32d9aa47d9b4ede569
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858219"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912817"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Quickstart: Gezichten in een afbeelding detecteren met de Face REST API en Node.js
 
@@ -42,7 +42,7 @@ npm install axios --save
 
 ## <a name="write-the-nodejs-script"></a>Het Node.js-script schrijven
 
-Plak de volgende code in *facedetection.js*. Met deze velden wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) en voeg hieraan uw Azure Face-abonnementssleutel en -eindpunt toe. U kunt desgewenst het veld `imageUrl` wijzigen zodat het verwijst naar uw invoerafbeelding.
+Plak de volgende code in *facedetection.js*. Met deze velden wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. [Maak omgevingsvariabelen](../../cognitive-services-apis-create-account.md?tabs=multiservice%252cwindows#configure-an-environment-variable-for-authentication) en voeg hieraan uw Azure Face-abonnementssleutel en -eindpunt toe. U kunt desgewenst het veld `imageUrl` wijzigen zodat het verwijst naar uw invoerafbeelding.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

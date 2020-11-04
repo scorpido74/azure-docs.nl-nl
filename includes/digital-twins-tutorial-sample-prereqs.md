@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 2c20bce35a3b6effcdeea2b82d903db0895d42b2
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1a14c6d5d96726033694d8fc88cc4b6eead87221
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495950"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135662"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -20,8 +20,10 @@ Voordat u begint, moet u ook **versie 16.5 of nieuwer van [Visual Studio 2019](h
 
 De zelfstudie is gebaseerd op een voorbeeldproject dat is geschreven in C#. Het voorbeeld is hier te vinden: [End-to-end-voorbeelden voor Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Download het voorbeeldproject** op uw computer door naar de voorbeeldkoppeling te gaan en de knop *ZIP* downloaden te selecteren onder de titel.
 
-Hiermee wordt een *ZIP-map* gedownload naar uw computer als **Azure_Digital_Twins_samples.zip** . Pak de map uit en extraheer de bestanden.
+Hiermee wordt een *ZIP-map* gedownload naar uw computer als **Azure_Digital_Twins_samples.zip**. Pak de map uit en extraheer de bestanden.
 
-[!INCLUDE [Azure Digital Twins tutorials: instance prereq](digital-twins-tutorial-prereq-instance.md)]
+### <a name="prepare-an-azure-digital-twins-instance"></a>Een Azure Digital Twins-exemplaar voorbereiden
+
+[!INCLUDE [Azure Digital Twins: instance prereq](digital-twins-prereq-instance.md)]
 
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](digital-twins-local-credentials-outer.md)]

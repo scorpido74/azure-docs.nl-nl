@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 72420019ead1ae47054ae62197d8cc310063a6b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5ea5e352084e379632b88194fd13011879041fd3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969769"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899440"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Quickstart: Tekst- en indelingsgegevens extraheren met behulp van de Form Recognizer REST API en Python
 
@@ -61,7 +61,8 @@ Als u de indeling wilt analyseren, roept u de **[Analyze Layout](https://westus2
     
     headers = {
         # Request headers
-        'Content-Type': 'application/json',
+        # Change Content-Type as appropriate
+        'Content-Type': 'application/pdf',
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     with open(source, "rb") as f:
@@ -94,7 +95,8 @@ Als u de indeling wilt analyseren, roept u de **[Analyze Layout](https://westus2
     
     headers = {
         # Request headers
-        'Content-Type': 'application/json',
+        # Change Content-Type as appropriate
+        'Content-Type': 'application/pdf',
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     with open(source, "rb") as f:
@@ -120,7 +122,7 @@ Als u de indeling wilt analyseren, roept u de **[Analyze Layout](https://westus2
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-layout.py`.
 
-U ontvangt een `202 (Success)`-antwoord met een **Operation-Location**-header, die het script naar de console afdrukt. Deze header bevat een bewerkings-id die u kunt gebruiken om query's uit te voeren op de status van de asynchrone bewerking en de resultaten op te halen. In de volgende voorbeeldwaarde is de tekenreeks na `operations/` de bewerkings-id.
+U ontvangt een `202 (Success)`-antwoord met een **Operation-Location** -header, die het script naar de console afdrukt. Deze header bevat een bewerkings-id die u kunt gebruiken om query's uit te voeren op de status van de asynchrone bewerking en de resultaten op te halen. In de volgende voorbeeldwaarde is de tekenreeks na `operations/` de bewerkings-id.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)   
 ```console
@@ -172,7 +174,7 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-Met het script worden antwoorden naar de console afgedrukt totdat de **Analyze Layout**-bewerking is voltooid. Vervolgens worden de geëxtraheerde gegevens in JSON-indeling afgedrukt. Het knooppunt `"readResults"` bevat elke tekstregel met het bijbehorende begrenzingsvak op de pagina. Het knooppunt `"selectionMarks"` (in preview 2.1) toont elke selectiemarkering (selectievakje, keuzerondje) en of de status ervan 'ingeschakeld' of 'niet ingeschakeld' is. In het veld `"pageResults"` wordt elk stuk tekst in tabellen weergegeven, elk stuk met een eigen rij-kolomcoördinaat.
+Met het script worden antwoorden naar de console afgedrukt totdat de **Analyze Layout** -bewerking is voltooid. Vervolgens worden de geëxtraheerde gegevens in JSON-indeling afgedrukt. Het knooppunt `"readResults"` bevat elke tekstregel met het bijbehorende begrenzingsvak op de pagina. Het knooppunt `"selectionMarks"` (in preview 2.1) toont elke selectiemarkering (selectievakje, keuzerondje) en of de status ervan 'ingeschakeld' of 'niet ingeschakeld' is. In het veld `"pageResults"` wordt elk stuk tekst in tabellen weergegeven, elk stuk met een eigen rij-kolomcoördinaat.
 
 Bekijk de volgende factuurafbeelding en de bijbehorende JSON-uitvoer. De uitvoer is voor het gemak ingekort.
 
