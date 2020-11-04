@@ -13,12 +13,12 @@ ms.custom:
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 5360c053370d4963b9fa9f6e24273edd4038b9ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7569606429740de23b56767d490b9bb14283d468
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710393"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331689"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Node.js gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - Single Server
 
@@ -48,7 +48,7 @@ npm list
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor PostgreSQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
-1. Zoek en selecteer in de [Azure-portal](https://portal.azure.com/) de server die u hebt gemaakt (zoals **mydemoserver**).
+1. Zoek en selecteer in de [Azure-portal](https://portal.azure.com/) de server die u hebt gemaakt (zoals **mydemoserver** ).
 
 1. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Gebruikersnaam van beheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
 
@@ -250,6 +250,16 @@ function queryDatabase() {
             throw err;
         });
 }
+```
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u alle resources wilt opschonen die tijdens deze quickstart zijn gebruikt, verwijdert u de resourcegroep. Dit kan met de volgende opdracht:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

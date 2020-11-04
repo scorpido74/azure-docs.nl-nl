@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 2bfcdfcb01e7908c199054e793d82cdfa1b726c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7bcee0f571fe42e4c00499f188e35d0e0ff2ebe7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88816334"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322505"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wat is de Azure Data Science Virtual Machine voor Linux en Windows?
 
@@ -28,7 +28,7 @@ De DSVM is beschikbaar op:
 
 ## <a name="comparison-with-azure-machine-learning"></a>Vergelijking met Azure Machine Learning
 
-De DSVM is een aangepaste VM-installatiekopie voor Data Science, maar [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AzureML) is een end-to-end platform dat het volgende omvat:
+De DSVM is een aangepaste VM-installatiekopie voor Data Science, maar [Azure Machine Learning](../overview-what-is-azure-ml.md) (AzureML) is een end-to-end platform dat het volgende omvat:
 
 + Volledig beheerd rekenproces
   + Rekeninstanties
@@ -44,7 +44,7 @@ De DSVM is een aangepaste VM-installatiekopie voor Data Science, maar [Azure Mac
 
 ### <a name="comparison-with-azureml-compute-instances"></a>Vergelijking met AzureML Compute-instanties
 
-[Azure Machine Learning Compute-instanties](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance) zijn een volledig geconfigureerde en __beheerde__ VM-installatiekopie, terwijl de DSVM een __niet-beheerde__ VM is.
+[Azure Machine Learning Compute-instanties](../concept-compute-instance.md) zijn een volledig geconfigureerde en __beheerde__ VM-installatiekopie, terwijl de DSVM een __niet-beheerde__ VM is.
 
 De belangrijkste verschillen tussen deze twee productaanbiedingen worden hieronder beschreven:
 

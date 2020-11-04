@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88136096"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319677"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheatsheet voor Azure Synapse Analytics (voorheen SQL DW)
 
@@ -37,7 +37,7 @@ Als u de typen bewerkingen van tevoren kent, kunt u het ontwerp van uw tabellen 
 
 ## <a name="data-migration"></a>Gegevensmigratie
 
-Laad uw gegevens eerst in [Azure Data Lake Store](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) of Azure Blob-opslag. Gebruik vervolgens de [instructie COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (preview) om uw gegevens in faseringstabellen te laden. Gebruik de volgende configuratie:
+Laad uw gegevens eerst in [Azure Data Lake Store](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) of Azure Blob-opslag. Gebruik vervolgens de [instructie COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (preview) om uw gegevens in faseringstabellen te laden. Gebruik de volgende configuratie:
 
 | Ontwerp | Aanbeveling |
 |:--- |:--- |
@@ -64,8 +64,8 @@ Gebruik de volgende strategieën, afhankelijk van de eigenschappen van de tabel:
 * Zorg ervoor dat algemene hashsleutels dezelfde gegevensindeling hebben.
 * Distribueer niet in een varchar-indeling.
 * Dimensietabellen met een algemene hashsleutel voor een feitentabel met regelmatige samenvoegbewerkingen kunnen met hash worden verdeeld.
-* Gebruik *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* om eventuele asymmetrie in gegevens te analyseren.
-* Gebruik *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* om gegevensverplaatsingen achter query's te analyseren, de tijdbroadcast te bewaken en de opnamevolgorde van bewerkingen te wijzigen. Dit is handig om uw distributiestrategie te controleren.
+* Gebruik *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* om eventuele asymmetrie in gegevens te analyseren.
+* Gebruik *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* om gegevensverplaatsingen achter query's te analyseren, de tijdbroadcast te bewaken en de opnamevolgorde van bewerkingen te wijzigen. Dit is handig om uw distributiestrategie te controleren.
 
 Meer informatie over [gerepliceerde tabellen](design-guidance-for-replicated-tables.md) en [gedistribueerde tabellen](sql-data-warehouse-tables-distribute.md).
 
@@ -121,7 +121,7 @@ Resourcegroepen worden gebruikt om geheugen toe te wijzen aan query’s. Als u m
 
 Als u merkt dat query's te lang duren, controleert u of uw gebruikers niet in grote resourceklassen worden uitgevoerd. Grote resourceklassen nemen veel gelijktijdigheidssleuven in beslag. Ze kunnen ervoor zorgen dat andere query's in de wachtrij komen.
 
-Door het gebruik van Gen2 van [SQL-pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) krijgt iedere resourceklasse uiteindelijk 2,5 keer zoveel geheugen als Gen1.
+Door het gebruik van Gen2 van [SQL-pool](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) krijgt iedere resourceklasse uiteindelijk 2,5 keer zoveel geheugen als Gen1.
 
 Meer informatie over het werken met [resourceklassen en gelijktijdigheid](resource-classes-for-workload-management.md).
 

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8a9661f7f5cdd66dc0aab6d937701cda48048219
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1ddc8c2b9531dd78c1c6746e28b8ff5864af563e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488024"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331944"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Quickstart: Een Azure Database for PostgreSQL-server maken met behulp van Azure CLI
 
@@ -153,7 +153,3 @@ az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
 > [Een database migreren met behulp van exporteren en importeren](./howto-migrate-using-export-and-import.md)
-> 
-> [Een Django-web-app implementeren met PostgreSQL](../app-service/tutorial-python-postgresql-app.md)
->
-> [Verbinding maken met een Node.js-app](./connect-nodejs.md)

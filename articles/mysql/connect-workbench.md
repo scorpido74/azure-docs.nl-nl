@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57bd8348977270de9b0e445e0a40c006b65d8392
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896321"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332037"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
 
@@ -35,7 +35,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
+2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver** ).
 
 3. Klik op de servernaam.
 
@@ -47,9 +47,9 @@ Verbinding maken met Azure MySQL Server met behulp van het GUI-hulpprogramma MyS
 
 1.    Start de toepassing MySQL Workbench op de computer. 
 
-2.    Voer in het dialoogvenster **Nieuwe verbinding instellen** de volgende gegevens in op het tabblad **Parameters**:
+2.    Voer in het dialoogvenster **Nieuwe verbinding instellen** de volgende gegevens in op het tabblad **Parameters** :
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Naam van Azure Database voor MySQL-server":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="nieuwe verbinding instellen":::
 
 | **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld** |
 |---|---|---|
@@ -103,13 +103,23 @@ Verbinding maken met Azure MySQL Server met behulp van het GUI-hulpprogramma MyS
 
     In de schermopname wordt een voorbeeld getoond van SQL-code in SQL Workbench, alsmede de uitvoer nadat de code is uitgevoerd.
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Naam van Azure Database voor MySQL-server":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Tabblad MySQL Workbench voor het uitvoeren van SQL-code":::
 
 2. Als u de SQL-code wilt uitvoeren, klikt u op het bliksemstraalpictogram in de werkbalk van het tabblad **SQL File**.
 3. Let op de drie tabbladen met resultaten in de sectie **Result Grid** in het midden van de pagina. 
 4. Let ook op de lijst **Output** onderaan de pagina. De status van elke opdracht wordt weergegeven. 
 
 U hebt nu verbinding gemaakt met Azure Database for MySQL met behulp van MyQL Workbench en u hebt query's uitgevoerd op gegevens met behulp van de taal SQL.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u alle resources wilt opschonen die tijdens deze quickstart zijn gebruikt, verwijdert u de resourcegroep. Dit kan met de volgende opdracht:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

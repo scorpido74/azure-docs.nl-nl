@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: ad025d2278d6c9ab360ddbdc250e8db4b4eec665
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 4dcc1d755f4fe11dda69f84466d3e958ca981ddf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495747"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316285"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -43,7 +43,7 @@ Prognoses of voorspellingen op basis van machine learning kunnen apps en apparat
 Azure Machine Learning biedt alle hulpprogramma's die ontwikkelaars en gegevenswetenschappers nodig hebben voor hun machine learning-werkstromen, waaronder:
 + De [Azure Machine Learning-ontwerpfunctie](tutorial-designer-automobile-price-train-score.md): modules slepen om experimenten te bouwen en vervolgens pijplijnen te implementeren.
 
-+ Jupyter-notebooks: gebruik onze [voorbeelden van notebooks](https://github.com/Azure/MachineLearningNotebooks) of maak uw eigen notebooks om onze <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK voor Python</a> in te zetten voor uw machine learning. 
++ Jupyter-notebooks: gebruik onze [voorbeelden van notebooks](https://github.com/Azure/MachineLearningNotebooks) of maak uw eigen notebooks om onze <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK voor Python</a> in te zetten voor uw machine learning. 
 
 + R-scripts of notebooks waarin u de <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK voor R</a> gebruikt voor het schrijven van uw eigen code of het gebruik van R-modules in de ontwerpfunctie.
 
@@ -61,9 +61,9 @@ U kunt zelfs [MLflow gebruiken om metrische gegevens bij te houden en modellen t
 
 ## <a name="build-ml-models-in-python-or-r"></a>ML-modellen bouwen in Python of R
 
-Begin met het trainen van modellen op uw lokale machine met behulp van de <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python-SDK</a> of <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R-SDK</a> van Azure Machine Learning. Vervolgens kunt u uitschalen naar de cloud. 
+Begin met het trainen van modellen op uw lokale machine met behulp van de <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python-SDK</a> of <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R-SDK</a> van Azure Machine Learning. Vervolgens kunt u uitschalen naar de cloud. 
 
-Dankzij de vele beschikbare [rekendoelen](how-to-create-attach-compute-studio.md) zoals Azure Machine Learning Compute en [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), en [geavanceerde afstemmingsservices van hyperparameters](how-to-tune-hyperparameters.md), kunt u sneller betere modellen bouwen, met de kracht van de cloud.
+Dankzij de vele beschikbare [rekendoelen](how-to-create-attach-compute-studio.md) zoals Azure Machine Learning Compute en [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks), en [geavanceerde afstemmingsservices van hyperparameters](how-to-tune-hyperparameters.md), kunt u sneller betere modellen bouwen, met de kracht van de cloud.
 
 U kunt de SDK ook gebruiken voor het [automatiseren van het trainen en afstemmen van modellen](tutorial-auto-train-models.md).
 
@@ -92,9 +92,9 @@ U kunt de SDK ook gebruiken voor het [automatiseren van het trainen en afstemmen
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: Implementatie- en levenscyclusbeheer
 Wanneer u het juiste model hebt, kunt u dit eenvoudig gebruiken in een webservice, op een IoT-apparaat of in Power BI. Zie het artikel [Hoe implementeren en waar](how-to-deploy-and-where.md) voor meer informatie.
 
-Daarna kunt u uw geïmplementeerde modellen beheren met de [Azure Machine Learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true), [Azure Machine Learning Studio](https://ml.azure.com) of de [machine learning CLI](reference-azure-machine-learning-cli.md).
+Daarna kunt u uw geïmplementeerde modellen beheren met de [Azure Machine Learning SDK voor Python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py), [Azure Machine Learning Studio](https://ml.azure.com) of de [machine learning CLI](reference-azure-machine-learning-cli.md).
 
-Deze modellen kunnen in [realtime](how-to-consume-web-service.md) of [asynchroon](how-to-use-parallel-run-step.md) worden uitgevoerd om voorspellingen te retourneren voor grote hoeveelheden gegevens.
+Deze modellen kunnen in [realtime](how-to-consume-web-service.md) of [asynchroon](./tutorial-pipeline-batch-scoring-classification.md) worden uitgevoerd om voorspellingen te retourneren voor grote hoeveelheden gegevens.
 
 En met geavanceerde [machine learning-pijplijnen](concept-ml-pipelines.md) kunt u samenwerken aan alle stappen, van de gegevensvoorbereiding, modeltraining en evaluatie tot de implementatie. Met pijplijnen kunt u het volgende doen:
 
@@ -112,7 +112,7 @@ Zie [Volgende stappen](#next-steps) om aan de slag te gaan met Azure Machine Lea
 Azure Machine Learning werkt met andere services op het Azure-platform en kan ook worden geïntegreerd met opensource-tools zoals Git en MLFlow.
 
 + Rekendoelen zoals __Azure Kubernetes Service__ , __Azure Container Instances__ , __Azure Databricks__ , __Azure Data Lake Analytics__ en __Azure HDInsight__. Zie [Wat zijn rekendoelen?](concept-compute-target.md) voor meer informatie over rekendoelen.
-+ __Azure Event Grid__. Zie [Consume Azure Machine Learning events](concept-event-grid-integration.md) (Azure Machine Learning-gebeurtenissen gebruiken) voor meer informatie.
++ __Azure Event Grid__. Zie [Consume Azure Machine Learning events](./how-to-use-event-grid.md) (Azure Machine Learning-gebeurtenissen gebruiken) voor meer informatie.
 + __Azure Monitor__. Zie [Monitoring Azure Machine Learning](monitor-azure-machine-learning.md) (Azure Machine Learning bewaken) voor meer informatie.
 + Gegevensarchieven zoals __Azure Storage-accounts__ , __Azure Data Lake Storage__ , __Azure SQL Database__ , __Azure Database for PostgreSQL__ en __Azure Open Datasets__. Zie [Access data in Azure storage services](how-to-access-data.md) (Toegang tot gegevens in Azure-opslagservices) en [Gegevenssets maken met Azure Open Datasets](how-to-create-register-datasets.md) voor meer informatie.
 + __Virtuele netwerken van Azure__. Zie [Overzicht van isolatie van virtueel netwerk en privacy](how-to-network-security-overview.md).

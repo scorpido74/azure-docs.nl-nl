@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 4afe6f175095d146c7feed04d469d78203179e0f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb2ff066089e3348c40f5a22bd73ea376ecef6de
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91707877"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341396"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Ruby gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - één server
 
@@ -32,7 +32,7 @@ Daarnaast moet ook het volgende zijn geïnstalleerd:
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor PostgreSQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
+2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver** ).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
  :::image type="content" source="./media/connect-ruby/1-connection-string.png" alt-text="Servernaam Azure Database for PostgreSQL":::
@@ -41,7 +41,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 > Het `@`-symbool in de Azure Postgres-gebruikersnaam is als URL gecodeerd als `%40` in alle verbindingstekenreeksen.
 
 ## <a name="connect-and-create-a-table"></a>Verbinding maken en een tabel maken
-Gebruik de volgende code om een tabel te verbinden en te maken met de SQL-instructie **CREATE TABLE**, gevolgd door **INSERT INTO**-instructies om rijen in de tabel toe te voegen.
+Gebruik de volgende code om een tabel te verbinden en te maken met de SQL-instructie **CREATE TABLE** , gevolgd door **INSERT INTO** -instructies om rijen in de tabel toe te voegen.
 
 In de code wordt een ```PG::Connection```-object met de ```new```-constructor gebruikt om verbinding te maken met Azure Database for PostgreSQL. Vervolgens wordt de methode ```exec()``` aangeroepen op de opdrachten DROP, CREATE TABLE en INSERT INTO uit te voeren. Met de code wordt met de klasse ```PG::Error``` gecontroleerd op fouten. Vervolgens wordt methode ```close()``` aangeroepen om de verbinding vóór het sluiten te verbreken. Zie [de referentiedocumentatie voor Ruby Pg](https://www.rubydoc.info/gems/pg/PG) (Engelstalig) voor meer informatie over deze klassen en methoden.
 
@@ -183,6 +183,16 @@ rescue PG::Error => e
 ensure
     connection.close if connection
 end
+```
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u alle resources wilt opschonen die tijdens deze quickstart zijn gebruikt, verwijdert u de resourcegroep. Dit kan met de volgende opdracht:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

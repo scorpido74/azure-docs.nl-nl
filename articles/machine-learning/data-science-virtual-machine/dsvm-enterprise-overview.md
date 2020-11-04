@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 538802cc2129a8e8f379c8b569bd1f8696097dab
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87919936"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314184"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Teamanalyse en AI-omgeving op basis van de Data Science Virtual Machine 
 De [Data Science Virtual Machine](overview.md) (DSVM) biedt een uitgebreide omgeving op het Azure-platform, met vooraf ontwikkelde software voor kunstmatige intelligentie (AI) en gegevensanalyse.
@@ -37,13 +37,13 @@ De belangrijkste bouwstenen van een zakelijke teamanalyse-omgeving zijn onder me
 
 Deze reeks bevat richtlijnen voor en verwijzingen naar alle voorgaande onderwerpen. Dit geldt niet voor alle overwegingen en vereisten voor het implementeren van DSVM's in grote bedrijfsconfiguraties. Hier volgen enkele andere Azure-resources die u kunt gebruiken tijdens het implementeren van DSVM-exemplaren in uw onderneming:
 
-* [Netwerkbeveiliging](https://docs.microsoft.com/azure/security/fundamentals/network-security)
-* [Controle](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) en [beheer](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [Logboekregistratie en bewaking](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [Azure RBAC (op rollen gebaseerd toegangsbeheer)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Netwerkbeveiliging](../../security/fundamentals/network-overview.md)
+* [Controle](../../azure-monitor/insights/monitor-vm-azure.md) en [beheer](../../virtual-machines/maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)
+* [Logboekregistratie en bewaking](../../security/fundamentals/log-audit.md)
+* [Azure RBAC (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/overview.md)
 * [Beleidsinstelling en -afdwinging](../../governance/policy/overview.md)
-* [Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [Versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
-* [Gegevensdetectie en -beheer](https://docs.microsoft.com/azure/data-catalog/)
+* [Antimalware](../../security/fundamentals/antimalware.md)
+* [Versleuteling](../../virtual-machines/windows/disk-encryption-overview.md)
+* [Gegevensdetectie en -beheer](../../data-catalog/index.yml)
 
-Ten slotte biedt het [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/) een uitgebreide end-to-end architectuur en modellen voor het maken en beheren van uw infrastructuur voor analyses in de cloud.
+Ten slotte biedt het [Azure Architecture Center](/azure/architecture/) een uitgebreide end-to-end architectuur en modellen voor het maken en beheren van uw infrastructuur voor analyses in de cloud.

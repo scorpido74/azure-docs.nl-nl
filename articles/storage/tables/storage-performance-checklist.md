@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89458329"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316193"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Controlelijst voor prestaties en schaalbaarheid van Table-opslag
 
@@ -153,7 +153,7 @@ Stel de verbindingslimiet in voordat u verbindingen opent.
 
 Raadpleeg voor andere programmeertalen de documentatie van die taal om te bepalen hoe de verbindingslimiet moet worden ingesteld.  
 
-Zie voor meer informatie het blogbericht [Webservices: Gelijktijdige verbindingen](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+Zie voor meer informatie het blogbericht [Webservices: Gelijktijdige verbindingen](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>Minimumaantal threads verhogen
 
@@ -171,7 +171,7 @@ Parallelle uitvoering kan ideaal zijn voor de prestaties, maar wees voorzichtig 
 
 ## <a name="client-libraries-and-tools"></a>Clientbibliotheken en hulpprogramma's
 
-Gebruik altijd de nieuwste clientbibliotheken en hulpprogramma's van Microsoft voor de beste prestaties. Azure Storage-clientbibliotheken zijn beschikbaar in diverse talen. Azure Storage biedt ook ondersteuning voor PowerShell en Azure CLI. Microsoft ontwikkelt deze clientbibliotheken en hulpprogramma's actief met het oog op de prestaties, houdt ze up-to-date met de nieuwste serviceversies en zorgt ervoor dat ze een groot aantal van de bewezen uitvoeringspraktijken intern verwerken. Zie de referentiedocumentatie bij [Azure Storage](/azure/storage/#reference) voor meer informatie.
+Gebruik altijd de nieuwste clientbibliotheken en hulpprogramma's van Microsoft voor de beste prestaties. Azure Storage-clientbibliotheken zijn beschikbaar in diverse talen. Azure Storage biedt ook ondersteuning voor PowerShell en Azure CLI. Microsoft ontwikkelt deze clientbibliotheken en hulpprogramma's actief met het oog op de prestaties, houdt ze up-to-date met de nieuwste serviceversies en zorgt ervoor dat ze een groot aantal van de bewezen uitvoeringspraktijken intern verwerken.
 
 ## <a name="handle-service-errors"></a>Servicefouten afhandelen
 
@@ -197,7 +197,7 @@ In deze sectie worden verschillende snelle configuratie-instellingen weergegeven
 
 Vanaf Storage-serviceversie 2013-08-15 ondersteunt de Table service het gebruik van JSON in plaats van de op XML gebaseerde AtomPub-indeling voor het overdragen van tabelgegevens. Het gebruik van JSON kan de payloadgrootte tot wel 75% verminderen en kan de prestaties van uw toepassing aanzienlijk verbeteren.
 
-Zie voor meer informatie het bericht [Microsoft Azure-tabellen: Kennismaking met JSON](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) en [Payload-indeling voor Table service-bewerkingen](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+Zie voor meer informatie het bericht [Microsoft Azure-tabellen: Kennismaking met JSON](/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) en [Payload-indeling voor Table service-bewerkingen](/rest/api/storageservices/Payload-Format-for-Table-Service-Operations).
 
 ### <a name="disable-nagle"></a>Nagle uitschakelen
 
@@ -273,16 +273,16 @@ Batchtransacties worden ook wel entiteitsgroepstransacties genoemd in Azure Stor
 
 #### <a name="upsert"></a>Upsert
 
-Gebruik waar mogelijk de tabelbewerkingen voor **Upsert**. Er zijn twee soorten **Upsert**, die beide efficiënter kunnen zijn dan traditionele bewerkingen voor **invoegen** en **bijwerken**:  
+Gebruik waar mogelijk de tabelbewerkingen voor **Upsert**. Er zijn twee soorten **Upsert** , die beide efficiënter kunnen zijn dan traditionele bewerkingen voor **invoegen** en **bijwerken** :  
 
-- **InsertOrMerge**: Gebruik deze bewerking wanneer u een subset van de eigenschappen van de entiteit wilt uploaden, maar niet zeker weet of de entiteit al bestaat. Als de entiteit bestaat, worden met deze aanroep de eigenschappen die zijn opgenomen in de **Upsert**-bewerking bijgewerkt en blijven alle bestaande eigenschappen ongewijzigd. Als de entiteit niet bestaat, wordt de nieuwe entiteit ingevoegd. Dit is vergelijkbaar met het gebruik van projectie in een query, in zoverre dat u alleen de eigenschappen hoeft te uploaden die worden gewijzigd.
-- **InsertOrReplace**: Gebruik deze bewerking wanneer u een geheel nieuwe entiteit wilt uploaden, maar u niet zeker weet of deze al bestaat. Gebruik deze bewerking wanneer u weet dat de zojuist geüploade entiteit volledig juist is, omdat hiermee de oude entiteit volledig wordt overschreven. U wilt bijvoorbeeld de entiteit bijwerken waarin de huidige locatie van een gebruiker is opgeslagen, ongeacht of de toepassing eerder opgeslagen locatiegegevens van de gebruiker bevat. De nieuwe locatie-entiteit is compleet en u hebt dus geen gegevens nodig van een vorige entiteit.
+- **InsertOrMerge** : Gebruik deze bewerking wanneer u een subset van de eigenschappen van de entiteit wilt uploaden, maar niet zeker weet of de entiteit al bestaat. Als de entiteit bestaat, worden met deze aanroep de eigenschappen die zijn opgenomen in de **Upsert** -bewerking bijgewerkt en blijven alle bestaande eigenschappen ongewijzigd. Als de entiteit niet bestaat, wordt de nieuwe entiteit ingevoegd. Dit is vergelijkbaar met het gebruik van projectie in een query, in zoverre dat u alleen de eigenschappen hoeft te uploaden die worden gewijzigd.
+- **InsertOrReplace** : Gebruik deze bewerking wanneer u een geheel nieuwe entiteit wilt uploaden, maar u niet zeker weet of deze al bestaat. Gebruik deze bewerking wanneer u weet dat de zojuist geüploade entiteit volledig juist is, omdat hiermee de oude entiteit volledig wordt overschreven. U wilt bijvoorbeeld de entiteit bijwerken waarin de huidige locatie van een gebruiker is opgeslagen, ongeacht of de toepassing eerder opgeslagen locatiegegevens van de gebruiker bevat. De nieuwe locatie-entiteit is compleet en u hebt dus geen gegevens nodig van een vorige entiteit.
 
 #### <a name="storing-data-series-in-a-single-entity"></a>Gegevensreeksen opslaan in één entiteit
 
 Soms slaat een toepassing een reeks gegevens op die regelmatig allemaal tegelijk moet worden opgehaald: een toepassing kan bijvoorbeeld het CPU-gebruik in de loop van de tijd volgen om een doorlopende grafiek van de gegevens in de afgelopen 24 uur te tekenen. Een manier is om één tabelentiteit per uur te hebben, waarbij elke entiteit een specifiek uur vertegenwoordigt waarin het CPU-gebruik voor dat uur wordt opgeslagen. Voor het uitzetten van deze gegevens moet de toepassing de entiteiten ophalen die de gegevens van de 24 meest recente uren bevatten.  
 
-Het is ook mogelijk dat uw toepassing het CPU-gebruik voor elk uur opslaat als afzonderlijke eigenschap van één entiteit: uw toepassing kan elk uur bijwerken door via één **InsertOrMerge Upsert**-aanroep de waarde voor het meest recente uur bij te werken. Voor het uitzetten van de gegevens hoeft de toepassing slechts één entiteit op te halen in plaats van 24, waardoor u een efficiënte query krijgt. Zie de sectie met de titel [Querybereik](#query-scope) voor meer informatie over de efficiëntie van query's.
+Het is ook mogelijk dat uw toepassing het CPU-gebruik voor elk uur opslaat als afzonderlijke eigenschap van één entiteit: uw toepassing kan elk uur bijwerken door via één **InsertOrMerge Upsert** -aanroep de waarde voor het meest recente uur bij te werken. Voor het uitzetten van de gegevens hoeft de toepassing slechts één entiteit op te halen in plaats van 24, waardoor u een efficiënte query krijgt. Zie de sectie met de titel [Querybereik](#query-scope) voor meer informatie over de efficiëntie van query's.
 
 #### <a name="storing-structured-data-in-blobs"></a>Gestructureerde gegevens opslaan in blobs
 

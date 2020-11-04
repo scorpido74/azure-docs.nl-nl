@@ -5,23 +5,25 @@ author: SnehaGunda
 ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: a319e5f3b6aa861feb2d9dfc88d471ff695c2a3c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482316"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339662"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Quickstart: Een Azure Cosmos DB en een container maken met behulp van een ARM-sjabloon
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB is de snelle NoSQL-database van Microsoft, met open API's voor elke schaal. U kunt Azure Cosmos DB gebruiken om snel databases voor sleutels en waarden, documentdatabases en grafiekdatabases te maken en te doorzoeken. Deze quickstart is gericht op het implementeren van een Azure Resource Manager-sjabloon (ARM-sjabloon) voor het maken van een Azure Cosmos-database en een container in die database. U kunt later gegevens opslaan in deze container.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure** . De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeren in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
@@ -57,13 +59,13 @@ Meer voorbeelden van Azure Cosmos DB-sjablonen vindt u in de [galerie met quicks
 
 2. Typ of selecteer de volgende waarden.
 
-   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Implementeren in Azure":::
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM-sjabloon, Azure Cosmos DB-integratie, portal voor implementeren":::
 
     Gebruik de standaardwaarden om de Azure Cosmos-resources te maken, tenzij er iets anders is aangegeven.
 
     * **Abonnement** : selecteer een Azure-abonnement.
-    * **Resourcegroep** : selecteer **Nieuwe maken** , geef een unieke naam op voor de resourcegroep en klik op **OK** .
-    * **Locatie** : selecteer een locatie.  Bijvoorbeeld **VS - centraal** .
+    * **Resourcegroep** : selecteer **Nieuwe maken** , geef een unieke naam op voor de resourcegroep en klik op **OK**.
+    * **Locatie** : selecteer een locatie.  Bijvoorbeeld **VS - centraal**.
     * **Accountnaam** : voer een naam in voor het Azure Cosmos-account. De naam moet wereldwijd uniek zijn.
     * **Locatie** : geef aan waar u uw Azure Cosmos-account wilt maken. Het Azure Cosmos-account kan zich op dezelfde locatie bevinden als de resourcegroep.
     * **Primaire regio** : De primaire-replicaregio voor het Azure Cosmos-account.
@@ -76,9 +78,9 @@ Meer voorbeelden van Azure Cosmos DB-sjablonen vindt u in de [galerie met quicks
     * **Doorvoer** :  De doorvoer van de container. De minimale doorvoerwaarde is 400 RU/s.
     * **Ik ga akkoord met de bovenstaande voorwaarden** : Selecteren.
 
-3. Selecteer **Aankoop** . Nadat het Azure Cosmos-account is geïmplementeerd, ontvangt u een melding:
+3. Selecteer **Aankoop**. Nadat het Azure Cosmos-account is geïmplementeerd, ontvangt u een melding:
 
-   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Implementeren in Azure":::
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM-sjabloon, Cosmos DB-integratie, melding van portal voor implementeren":::
 
 Voor het implementeren van de sjabloon wordt de Azure-portal gebruikt. Naast Azure Portal kunt u ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../azure-resource-manager/templates/deploy-powershell.md) voor meer informatie over andere implementatiemethoden.
 

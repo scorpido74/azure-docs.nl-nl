@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: a08145ba5ffb5b30eb2c472d3eb8f608703f44a0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 8d181483032deed35adfd6eebcbf870b89593407
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743451"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332063"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
 
@@ -67,7 +67,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
    
 1. Ga naar de pagina **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord op deze pagina opnieuw instellen.
    
-   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Naam van Azure Database voor MySQL-server":::
+   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Naam 2 van Azure Database for MySQL-server":::
 
 ## <a name="run-the-python-examples"></a>De Python-voorbeelden uitvoeren
 
@@ -75,7 +75,7 @@ Voor elk codevoorbeeld in dit artikel:
 
 1. Maak een nieuw bestand in een teksteditor.
 1. Voeg het codevoorbeeld toe aan het bestand. Vervang in de code de tijdelijke aanduidingen `<mydemoserver>`, `<myadmin>`, `<mypassword>`en `<mydatabase>` door de waarden voor uw MySQL-server en -database.
-1. Sla het bestand op in een projectmap met de extensie *.py*, zoals *C:\pythonmysql\createtable.py* of */home/username/pythonmysql/createtable.py*.
+1. Sla het bestand op in een projectmap met de extensie *.py* , zoals *C:\pythonmysql\createtable.py* of */home/username/pythonmysql/createtable.py*.
 1. Als u de code wilt uitvoeren, opent u een opdrachtprompt of `bash`-shell en wijzigt u vervolgens de map in uw projectmap, bijvoorbeeld `cd pythonmysql`. Typ de `python`-opdracht, gevolgd door de bestandsnaam (bijvoorbeeld `python createtable.py`) en druk op Enter. 
    
    > [!NOTE]
@@ -270,6 +270,16 @@ else:
   cursor.close()
   conn.close()
   print("Done.")
+```
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u alle resources wilt opschonen die tijdens deze quickstart zijn gebruikt, verwijdert u de resourcegroep. Dit kan met de volgende opdracht:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

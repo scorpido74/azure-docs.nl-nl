@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 8bedb7177c93eecd13f64d151c56baf5a394e0c2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f370794aafb4a5ac0948c219593e7028ff1b2e55
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896269"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337296"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: Ruby gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
 
@@ -39,7 +39,7 @@ Installeer Ruby, Gem en de MySQL2-bibliotheek op de computer.
 5. Test de Gem-installatie door met de opdracht `gem -v` te controleren welke versie er is geïnstalleerd.
 6. Bouw de MySQL2-module voor Ruby. Gebruik hiervoor Gem en voer de opdracht `gem install mysql2` uit.
 
-### <a name="macos"></a>MacOS
+### <a name="macos"></a>macOS
 1. Installeer Ruby met Homebrew. Voer daarvoor de opdracht `brew install ruby` uit. Zie de Ruby-[documentatie voor installatie](https://www.ruby-lang.org/en/documentation/installation/#homebrew) voor meer installatieopties.
 2. Test de Ruby-installatie door met de opdracht `ruby -v` te controleren welke versie er is geïnstalleerd.
 3. Test de Gem-installatie door met de opdracht `gem -v` te controleren welke versie er is geïnstalleerd.
@@ -58,7 +58,7 @@ Installeer Ruby, Gem en de MySQL2-bibliotheek op de computer.
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor MySQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
+2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver** ).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
  :::image type="content" source="./media/connect-ruby/1_server-overview-name-login.png" alt-text="Naam van Azure Database voor MySQL-server":::
@@ -70,7 +70,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 4. Als de Ruby-toepassing zich niet in uw padomgevingsvariabele bevindt, moet u in Windows mogelijk het volledige pad, zoals `"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`, gebruiken om de knooppunttoepassing te starten.
 
 ## <a name="connect-and-create-a-table"></a>Verbinding maken en een tabel maken
-Gebruik de volgende code om een tabel te verbinden en te maken met behulp van de SQL-instructie **CREATE TABLE**, gevolgd door de SQL-instructie **INSERT INTO** om rijen in de tabel toe te voegen.
+Gebruik de volgende code om een tabel te verbinden en te maken met behulp van de SQL-instructie **CREATE TABLE** , gevolgd door de SQL-instructie **INSERT INTO** om rijen in de tabel toe te voegen.
 
 De code gebruikt een [mysql2::client](https://www.rubydoc.info/gems/mysql2)-klasse om verbinding te maken met de MySQL-server. Vervolgens wordt de methode ```query()``` aangeroepen op de opdrachten DROP, CREATE TABLE en INSERT INTO uit te voeren. Roep tot slot de ```close()``` aan om de verbinding vóór het sluiten te verbreken.
 
@@ -224,6 +224,16 @@ ensure
     client.close if client
     puts 'Done.'
 end
+```
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u alle resources wilt opschonen die tijdens deze quickstart zijn gebruikt, verwijdert u de resourcegroep. Dit kan met de volgende opdracht:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
