@@ -1,7 +1,7 @@
 ---
 title: REST gebruiken voor het beheren van ML-resources
 titleSuffix: Azure Machine Learning
-description: REST-Api's gebruiken om Azure ML-resources te maken, uit te voeren en te verwijderen
+description: REST-Api's gebruiken om Azure Machine Learning resources, zoals een werk ruimte, te maken, uit te voeren en te verwijderen, of om modellen te registreren.
 author: lobrien
 ms.author: laobri
 services: machine-learning
@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322305"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316906"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-resources maken, uitvoeren en verwijderen met REST
 
 
 
-Er zijn verschillende manieren om uw Azure ML-resources te beheren. U kunt de [Portal](https://portal.azure.com/), de [opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)of de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)gebruiken. U kunt ook de REST API kiezen. De REST API maakt gebruik van HTTP-termen op een standaard manier om resources te maken, op te halen, bij te werken en te verwijderen. De REST API werkt met elke taal of elk hulp programma waarmee HTTP-aanvragen kunnen worden gemaakt. Met de eenvoudige structuur van de REST is het vaak een goede keuze in script omgevingen en voor MLOps Automation. 
+Er zijn verschillende manieren om uw Azure ML-resources te beheren. U kunt de [Portal](https://portal.azure.com/), de [opdracht regel interface](/cli/azure/?preserve-view=true&view=azure-cli-latest)of de [python-SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)gebruiken. U kunt ook de REST API kiezen. De REST API maakt gebruik van HTTP-termen op een standaard manier om resources te maken, op te halen, bij te werken en te verwijderen. De REST API werkt met elke taal of elk hulp programma waarmee HTTP-aanvragen kunnen worden gemaakt. Met de eenvoudige structuur van de REST is het vaak een goede keuze in script omgevingen en voor MLOps Automation. 
 
 In dit artikel leert u het volgende:
 
@@ -36,9 +36,9 @@ In dit artikel leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 - Een **Azure-abonnement** waarvoor u beheerders rechten hebt. Als u geen abonnement hebt, probeer [dan het gratis of betaalde persoonlijke abonnement](https://aka.ms/AMLFree)
-- Een [Azure machine learning-werkruimte](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
-- Beheer REST-aanvragen gebruiken Service-Principal-verificatie. Volg de stappen in [verificatie instellen voor Azure machine learning resources en werk stromen](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) om een service-principal te maken in uw werk ruimte
-- Het **krul** -hulp programma. Het **krul** programma is beschikbaar in het [Windows-subsysteem voor Linux](https://aka.ms/wslinstall/) of een Unix-distributie. In Power shell is **krul** een alias voor **invoke-WebRequest** en `curl -d "key=val" -X POST uri` wordt `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
+- Een [Azure machine learning-werkruimte](./how-to-manage-workspace.md)
+- Beheer REST-aanvragen gebruiken Service-Principal-verificatie. Volg de stappen in [verificatie instellen voor Azure machine learning resources en werk stromen](./how-to-setup-authentication.md#service-principal-authentication) om een service-principal te maken in uw werk ruimte
+- Het **krul** -hulp programma. Het **krul** programma is beschikbaar in het [Windows-subsysteem voor Linux](/windows/wsl/install-win10) of een Unix-distributie. In Power shell is **krul** een alias voor **invoke-WebRequest** en `curl -d "key=val" -X POST uri` wordt `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>Een Service-Principal-verificatie Token ophalen
 
@@ -48,7 +48,7 @@ Beheer REST-aanvragen worden geverifieerd met een OAuth2 impliciete stroom. Deze
 - De client-ID (die wordt gekoppeld aan het gemaakte token)
 - Uw client geheim (dat u moet beveiligen)
 
-U moet deze waarden van de reactie hebben op het maken van de Service-Principal. Deze waarden worden beschreven in [verificatie instellen voor Azure machine learning resources en werk stromen](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication). Als u uw bedrijfs abonnement gebruikt, bent u mogelijk niet gemachtigd om een service-principal te maken. In dat geval moet u een [gratis of betaald persoonlijk abonnement](https://aka.ms/AMLFree)gebruiken.
+U moet deze waarden van de reactie hebben op het maken van de Service-Principal. Deze waarden worden beschreven in [verificatie instellen voor Azure machine learning resources en werk stromen](./how-to-setup-authentication.md#service-principal-authentication). Als u uw bedrijfs abonnement gebruikt, bent u mogelijk niet gemachtigd om een service-principal te maken. In dat geval moet u een [gratis of betaald persoonlijk abonnement](https://aka.ms/AMLFree)gebruiken.
 
 Een Token ophalen:
 
@@ -236,7 +236,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Als u een benoemde Compute-resource wilt maken of overschrijven, gebruikt u een PUT-aanvraag. In de volgende, naast de nu bekende vervangingen `your-subscription-id` , `your-resource-group` ,, `your-workspace-name` en `your-access-token` , substitueer en `your-compute-name` waarden voor `location` , `vmSize` , `vmPriority` , `scaleSettings` `adminUserName` `adminUserPassword` , en. Zoals beschreven in de referentie bij [machine learning Compute-SDK-verwijzing maken of bijwerken](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate), maakt de volgende opdracht een toegewezen Standard_D1 met één knoop punt (een basis-CPU-reken resource) die na 30 minuten omlaag wordt geschaald:
+Als u een benoemde Compute-resource wilt maken of overschrijven, gebruikt u een PUT-aanvraag. In de volgende, naast de nu bekende vervangingen `your-subscription-id` , `your-resource-group` ,, `your-workspace-name` en `your-access-token` , substitueer en `your-compute-name` waarden voor `location` , `vmSize` , `vmPriority` , `scaleSettings` `adminUserName` `adminUserPassword` , en. Zoals beschreven in de referentie bij [machine learning Compute-SDK-verwijzing maken of bijwerken](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate), maakt de volgende opdracht een toegewezen Standard_D1 met één knoop punt (een basis-CPU-reken resource) die na 30 minuten omlaag wordt geschaald:
 
 ```bash
 curl -X PUT \
@@ -279,7 +279,7 @@ Als u een run binnen een experiment wilt starten, hebt u een zip-map met uw trai
 print("Hello, REST!")
 ```
 
-Sla dit volgende fragment ** op alsdefinition.jsop**. Bevestig dat de waarde ' script ' overeenkomt met de naam van het python-bestand dat u net hebt ingepakt. Bevestig dat de doel waarde overeenkomt met de naam van een beschik bare Compute-resource. 
+Sla dit volgende fragment **op alsdefinition.jsop**. Bevestig dat de waarde ' script ' overeenkomt met de naam van het python-bestand dat u net hebt ingepakt. Bevestig dat de doel waarde overeenkomt met de naam van een beschik bare Compute-resource. 
 
 ```json
 {
@@ -349,7 +349,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>Resources verwijderen die u niet meer nodig hebt
 
-Sommige, maar niet alle resources ondersteunen de VERWIJDERings bewerking. Controleer de [API-verwijzing](https://docs.microsoft.com/rest/api/azureml/) voordat u de rest API doorvoert voor het gebruik van verwijderings aanvragen. Als u een model wilt verwijderen, kunt u bijvoorbeeld het volgende gebruiken:
+Sommige, maar niet alle resources ondersteunen de VERWIJDERings bewerking. Controleer de [API-verwijzing](/rest/api/azureml/) voordat u de rest API doorvoert voor het gebruik van verwijderings aanvragen. Als u een model wilt verwijderen, kunt u bijvoorbeeld het volgende gebruiken:
 
 ```bash
 curl
@@ -422,6 +422,6 @@ In de Azure Machine Learning-werk ruimte wordt Azure Container Registry (ACR) ge
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Verken de volledige [referentie voor AzureML-rest API](https://docs.microsoft.com/rest/api/azureml/).
-- Meer informatie over hoe u de Designer kunt gebruiken om [de prijs van een auto Mobile te voors pellen met de ontwerper](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
-- Verken [Azure machine learning met Jupyter-notebooks](https://docs.microsoft.com/azure//machine-learning/samples-notebooks).
+- Verken de volledige [referentie voor AzureML-rest API](/rest/api/azureml/).
+- Meer informatie over hoe u de Designer kunt gebruiken om [de prijs van een auto Mobile te voors pellen met de ontwerper](./tutorial-designer-automobile-price-train-score.md).
+- Verken [Azure machine learning met Jupyter-notebooks](..//machine-learning/samples-notebooks.md).

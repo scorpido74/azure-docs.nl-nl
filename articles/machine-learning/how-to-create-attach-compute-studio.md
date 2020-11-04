@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708392"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318265"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Reken doelen voor model training en implementatie in Azure Machine Learning Studio maken
 
@@ -45,7 +45,7 @@ Als u alle reken doelen voor uw werk ruimte wilt zien, gebruikt u de volgende st
 
 1. Navigeer naar [Azure machine learning Studio](https://ml.azure.com).
  
-1. Selecteer onder __beheren__de optie __reken kracht__.
+1. Selecteer onder __beheren__ de optie __reken kracht__.
 
 1. Selecteer de tabbladen bovenaan om elk type Compute-doel weer te geven.
 
@@ -59,11 +59,11 @@ Volg de vorige stappen om de lijst met Compute-doelen weer te geven. Gebruik ver
 
 1. Als u geen Compute-doelen hebt, selecteert u in het midden van de pagina  **maken** .
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Lijst met Compute-doelen weer geven":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Reken doel maken":::
 
 1. Als u een lijst met reken resources ziet, selecteert u **+ Nieuw** boven de lijst.
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Lijst met Compute-doelen weer geven":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Selecteer Nieuw":::
 
 
 1. Vul het formulier in voor het reken type:
@@ -77,14 +77,14 @@ Volg de vorige stappen om de lijst met Compute-doelen weer te geven. Gebruik ver
 
 1. Bekijk de status van de maak bewerking door het doel van de berekening te selecteren in de lijst:
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Lijst met Compute-doelen weer geven":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Reken status weer geven uit een lijst":::
 
 
 ### <a name="compute-instance"></a>Rekenproces
 
 Gebruik de [bovenstaande stappen](#portal-create) om het reken exemplaar te maken.  Vul het formulier vervolgens als volgt in:
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Lijst met Compute-doelen weer geven":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Een nieuw reken exemplaar maken":::
 
 
 |Veld  |Beschrijving  |
@@ -93,7 +93,7 @@ Gebruik de [bovenstaande stappen](#portal-create) om het reken exemplaar te make
 |Type virtuele machine |  Kies CPU of GPU. Dit type kan niet worden gewijzigd nadat het is gemaakt     |
 |Grootte van de virtuele machine     |  Ondersteunde grootten voor virtuele machines kunnen worden beperkt in uw regio. De [beschikbaarheids lijst](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) controleren     |
 |SSH-toegang inschakelen/uitschakelen     |   SSH-toegang is standaard uitgeschakeld.  SSH-toegang kan niet. gewijzigd na het maken. Zorg ervoor dat u toegang inschakelt als u van plan bent om interactief fouten op te lossen met [versus externe code](how-to-set-up-vs-code-remote.md)   |
-|Geavanceerde instellingen     |  Optioneel. Configureer een virtueel netwerk. Geef de **resource groep**, het **virtuele netwerk**en het **subnet** op om het reken exemplaar te maken binnen een Azure-Virtual Network (vnet). Zie deze [netwerk vereisten](how-to-enable-virtual-network.md#compute-instance) voor vnet voor meer informatie.  |
+|Geavanceerde instellingen     |  Optioneel. Configureer een virtueel netwerk. Geef de **resource groep** , het **virtuele netwerk** en het **subnet** op om het reken exemplaar te maken binnen een Azure-Virtual Network (vnet). Zie deze [netwerk vereisten](./how-to-secure-training-vnet.md) voor vnet voor meer informatie.  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> Reken clusters
 
@@ -108,13 +108,13 @@ Maak een berekenings cluster met één of meerdere knoop punten voor uw training
 |Grootte van de virtuele machine     |  Ondersteunde grootten voor virtuele machines kunnen worden beperkt in uw regio. De [beschikbaarheids lijst](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) controleren     |
 |Minimum aantal knooppunten | Het minimum aantal knoop punten dat u wilt inrichten. Als u een toegewezen aantal knoop punten wilt, stelt u dit aantal hier in. Bespaar geld door het minimum in te stellen op 0, zodat u niet betaalt voor knoop punten wanneer het cluster niet actief is. |
 |Maximum aantal knoop punten | Het maximum aantal knoop punten dat u wilt inrichten. De compute wordt automatisch geschaald naar een maximum van dit aantal knoop punten wanneer een taak wordt verzonden. |
-|Geavanceerde instellingen     |  Optioneel. Configureer een virtueel netwerk. Geef de **resource groep**, het **virtuele netwerk**en het **subnet** op om het reken exemplaar te maken binnen een Azure-Virtual Network (vnet). Zie deze [netwerk vereisten](how-to-enable-virtual-network.md#compute-instance) voor vnet voor meer informatie.   Ook [beheerde identiteiten](#managed-identity) koppelen om toegang tot resources te verlenen     |
+|Geavanceerde instellingen     |  Optioneel. Configureer een virtueel netwerk. Geef de **resource groep** , het **virtuele netwerk** en het **subnet** op om het reken exemplaar te maken binnen een Azure-Virtual Network (vnet). Zie deze [netwerk vereisten](./how-to-secure-training-vnet.md) voor vnet voor meer informatie.   Ook [beheerde identiteiten](#managed-identity) koppelen om toegang tot resources te verlenen     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Beheerde identiteit instellen
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 
-Tijdens het maken van het cluster of bij het bewerken van de details van het reken cluster, in de **Geavanceerde instellingen**, kunt u **een beheerde identiteit toewijzen** en een door het systeem toegewezen identiteit opgeven.
+Tijdens het maken van het cluster of bij het bewerken van de details van het reken cluster, in de **Geavanceerde instellingen** , kunt u **een beheerde identiteit toewijzen** en een door het systeem toegewezen identiteit opgeven.
 
 #### <a name="managed-identity-usage"></a>Gebruik van beheerde identiteit
 
@@ -132,16 +132,16 @@ Maak of koppel een Azure Kubernetes service-cluster (AKS) voor grootschalige dei
 |---------|---------|
 |Naam berekening     |  <li>De naam is vereist. De naam moet tussen 2 en 16 tekens lang zijn. </li><li>Geldige tekens zijn onder andere hoofd letters, cijfers en het  **-** teken.</li><li>De naam moet beginnen met een letter</li><li>De naam moet uniek zijn voor alle bestaande berekeningen binnen een Azure-regio. U ziet een waarschuwing als de naam die u kiest, niet uniek is</li><li>Als het **-**  teken wordt gebruikt, moet dit worden gevolgd door ten minste één letter later in de naam</li>     |
 |Kubernetes-service | Selecteer **nieuwe maken** en vul de rest van het formulier in.  Of selecteer **bestaande gebruiken** en selecteer vervolgens een bestaand AKS-cluster in uw abonnement.
-|Regio |  Selecteer de regio waar het cluster wordt gemaakt |
+|Region |  Selecteer de regio waar het cluster wordt gemaakt |
 |Grootte van de virtuele machine     |  Ondersteunde grootten voor virtuele machines kunnen worden beperkt in uw regio. De [beschikbaarheids lijst](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) controleren     |
 |Cluster doel  | Selecteer **productie** of **dev-test** |
 |Aantal knooppunten | Het aantal knoop punten vermenigvuldigd met het aantal kernen van de virtuele machine (Vcpu's) moet groter zijn dan of gelijk zijn aan 12. |
-| Netwerkconfiguratie | Selecteer **Geavanceerd** om de compute in een bestaand virtueel netwerk te maken. Voor meer informatie over AKS in een virtueel netwerk, Zie [netwerk isolatie tijdens de training en demijnen met persoonlijke eind punten en virtuele netwerken](how-to-enable-virtual-network.md#aksvnet). |
+| Netwerkconfiguratie | Selecteer **Geavanceerd** om de compute in een bestaand virtueel netwerk te maken. Voor meer informatie over AKS in een virtueel netwerk, Zie [netwerk isolatie tijdens de training en demijnen met persoonlijke eind punten en virtuele netwerken](./how-to-secure-inferencing-vnet.md). |
 | SSL-configuratie inschakelen | Gebruik deze om het SSL-certificaat op de compute te configureren |
 
 ### <a name="attached-compute"></a>Gekoppelde compute
 
-Als u Compute-doelen wilt gebruiken die buiten de Azure Machine Learning-werk ruimte zijn gemaakt, moet u ze koppelen. Als u een reken doel koppelt, wordt het beschikbaar voor uw werk ruimte.  Gebruik **attached Compute** om een reken doel voor **training**te koppelen.  Gebruik **clusters** gebruiken om een AKS-cluster te **koppelen voor**demijnen.
+Als u Compute-doelen wilt gebruiken die buiten de Azure Machine Learning-werk ruimte zijn gemaakt, moet u ze koppelen. Als u een reken doel koppelt, wordt het beschikbaar voor uw werk ruimte.  Gebruik **attached Compute** om een reken doel voor **training** te koppelen.  Gebruik **clusters** gebruiken om een AKS-cluster te **koppelen voor** demijnen.
 
 Gebruik de [bovenstaande stappen](#portal-create) om een reken proces te koppelen.  Vul het formulier vervolgens als volgt in:
 
@@ -157,8 +157,8 @@ Gebruik de [bovenstaande stappen](#portal-create) om een reken proces te koppele
     > [!NOTE]
     > Micro soft raadt u aan om SSH-sleutels te gebruiken, die veiliger zijn dan wacht woorden. Wacht woorden zijn gevoelig voor beveiligings aanvallen. SSH-sleutels zijn afhankelijk van cryptografische hand tekeningen. Raadpleeg de volgende documenten voor informatie over het maken van SSH-sleutels voor gebruik met Azure Virtual Machines:
     >
-    > * [SSH-sleutels maken en gebruiken in Linux of macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [SSH-sleutels maken en gebruiken in Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [SSH-sleutels maken en gebruiken in Linux of macOS](../virtual-machines/linux/mac-create-ssh-keys.md)
+    > * [SSH-sleutels maken en gebruiken in Windows](../virtual-machines/linux/ssh-from-windows.md)
 
 1. Selecteer __koppelen__. 
 
@@ -176,4 +176,4 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * [Zelf studie: een model trainen](tutorial-train-models-with-aml.md) maakt gebruik van een beheerd Compute-doel om een model te trainen.
 * Meer informatie over hoe u [Hyper parameters efficiënt kunt afstemmen](how-to-tune-hyperparameters.md) om betere modellen te bouwen.
 * Wanneer u een getraind model hebt, leert u [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md).
-* [Azure Machine Learning gebruiken met virtuele netwerken van Azure](how-to-enable-virtual-network.md)
+* [Azure Machine Learning gebruiken met virtuele netwerken van Azure](./how-to-network-security-overview.md)

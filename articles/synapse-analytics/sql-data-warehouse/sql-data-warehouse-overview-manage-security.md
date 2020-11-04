@@ -1,6 +1,6 @@
 ---
 title: Een database beveiligen
-description: Tips voor het beveiligen van een Data Base en het ontwikkelen van oplossingen in een Synapse SQL-groeps resource.
+description: Tips voor het beveiligen van een toegewezen SQL-groep en het ontwikkelen van oplossingen in azure Synapse Analytics.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: c94924c973a1095a4bebf6231d9853968facc1b2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516880"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317695"
 ---
-# <a name="secure-a-database-in-azure-synapse"></a>Een data base in azure Synapse beveiligen
+# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Een toegewezen SQL-groep beveiligen in azure Synapse Analytics
 
 > [!div class="op_single_selector"]
 >
@@ -27,7 +27,7 @@ ms.locfileid: "92516880"
 > * [Versleuteling (Portal)](sql-data-warehouse-encryption-tde.md)
 > * [Versleuteling (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-Dit artikel begeleidt u stapsgewijs door de basis beginselen van het beveiligen van uw Synapse SQL-groep. In dit artikel wordt met name aan de slag met resources voor het beperken van toegang, het beveiligen van gegevens en het bewaken van activiteiten in een Data Base die is ingericht met een SQL-groep.
+Dit artikel begeleidt u stapsgewijs door de basis beginselen van het beveiligen van uw specifieke SQL-groep. In dit artikel wordt met name aan de slag met resources voor het beperken van toegang, het beveiligen van gegevens en het bewaken van activiteiten met een toegewezen SQL-groep.
 
 ## <a name="connection-security"></a>Verbindingsbeveiliging
 
@@ -35,15 +35,15 @@ Verbindingsbeveiliging verwijst naar de manier waarop u verbindingen met uw data
 
 Firewall regels worden door de [logische SQL-Server](../../azure-sql/database/logical-servers.md) en de bijbehorende data bases gebruikt om verbindings pogingen te weigeren van IP-adressen die niet expliciet zijn goedgekeurd. Als u verbindingen van uw toepassing of het open bare IP-adres van de client computer wilt toestaan, moet u eerst een firewall regel op server niveau maken met behulp van de Azure Portal, REST API of Power shell.
 
-Als best practice moet u de IP-adresbereiken zo veel mogelijk beperken via de firewall op server niveau.  Als u toegang wilt krijgen tot de SQL-groep vanaf uw lokale computer, zorgt u ervoor dat de firewall op uw netwerk en lokale computer uitgaande communicatie toestaat op TCP-poort 1433.  
+Als best practice moet u de IP-adresbereiken zo veel mogelijk beperken via de firewall op server niveau.  Om toegang te krijgen tot uw toegewezen SQL-groep vanaf uw lokale computer, zorgt u ervoor dat de firewall op uw netwerk en lokale computer uitgaande communicatie toestaat op TCP-poort 1433.  
 
 Azure Synapse Analytics maakt gebruik van IP-firewall regels op server niveau. Het biedt geen ondersteuning voor IP-firewall regels op database niveau. Zie [Azure SQL database firewall-regels](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor meer informatie.
 
-Verbindingen met uw SQL-groep worden standaard versleuteld.  Het wijzigen van de verbindings instellingen om versleuteling uit te scha kelen, wordt genegeerd.
+Verbindingen met uw toegewezen SQL-groep worden standaard versleuteld.  Het wijzigen van de verbindings instellingen om versleuteling uit te scha kelen, wordt genegeerd.
 
 ## <a name="authentication"></a>Verificatie
 
-Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. SQL-pool ondersteunt momenteel SQL Server verificatie met een gebruikers naam en wacht woord en met Azure Active Directory.
+Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. De toegewezen SQL-groep ondersteunt momenteel SQL Server verificatie met een gebruikers naam en wacht woord en met Azure Active Directory.
 
 Wanneer u de server voor uw data base hebt gemaakt, hebt u de aanmelding ' Server beheerder ' opgegeven met een gebruikers naam en wacht woord. Met deze referenties kunt u zich bij elke Data Base op die server als de eigenaar van de data base of "dbo" verifiëren via SQL Server-verificatie.
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Maak vervolgens verbinding met uw **SQL-groeps database** met de aanmelding van de server beheerder en maakt u een database gebruiker op basis van de Server aanmelding die u hebt gemaakt.
+Maak vervolgens verbinding met uw **toegewezen SQL-groeps database** met de aanmelding van de server beheerder en stel een database gebruiker in op basis van de aanmeldingen bij de server die u hebt gemaakt.
 
 ```sql
 -- Connect to the database and create a database user
@@ -104,4 +104,4 @@ U kunt uw data base versleutelen met behulp van de [Azure Portal](sql-data-wareh
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [verbinding maken met SQL-groep](../sql/connect-overview.md)voor meer informatie en voor beelden over het maken van verbinding met uw magazijn met verschillende protocollen.
+Zie [verbinding maken met een exclusieve SQL-groep](../sql/connect-overview.md)voor meer informatie en voor beelden over het maken van verbinding met uw magazijn met verschillende protocollen.

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 35c0b5529cd9ada612caf4884683fbeaacb25b33
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2c91b330f52733a91fbceb1dc9ca2309c0d10547
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100130"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317103"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Schrijf bewerkingen in meerdere regio's configureren in uw toepassingen die gebruikmaken van Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,22 @@ Als een account is gemaakt terwijl meerdere schrijf regio's zijn ingeschakeld, m
 
 > [!Note]
 > Cosmos-accounts die in eerste instantie zijn geconfigureerd met één schrijf regio kunnen worden geconfigureerd voor meerdere schrijf regio's met een onbepaalde tijd. Zie [meerdere regio's configureren](how-to-manage-database-account.md#configure-multiple-write-regions) voor meer informatie.
+
+## <a name="azure-portal"></a><a id="portal"></a> Azure Portal
+
+Gebruik de volgende stappen om meerdere regio's van Azure Portal in te scha kelen:
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+
+1. Ga naar uw Azure Cosmos-account en open in het menu het deel venster **gegevens globaal repliceren** .
+
+1. Kies **inschakelen** onder de optie voor **schrijf bewerkingen met meerdere regio's** . De bestaande regio's worden automatisch toegevoegd aan de regio's lezen en schrijven.
+
+1. U kunt extra regio's toevoegen door de pictogrammen op de kaart te selecteren of door de knop **regio toevoegen** te selecteren. Voor alle regio's die u toevoegt, zijn lees-en schrijf bewerkingen ingeschakeld.
+
+1. Nadat u de regio lijst hebt bijgewerkt, selecteert u **Opslaan** om de wijzigingen toe te passen.
+
+   :::image type="content" source="./media/how-to-multi-master/enable-multi-region-writes.png" alt-text="Scherm afbeelding voor het inschakelen van schrijf bewerkingen met meerdere regio's met behulp van Azure Portal" lightbox="./media/how-to-multi-master/enable-multi-region-writes.png":::
 
 ## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET-SDK v2
 

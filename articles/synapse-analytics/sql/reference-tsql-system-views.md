@@ -1,5 +1,5 @@
 ---
-title: Systeem weergaven die worden ondersteund in Synapse SQL-werk ruimten-voor beeld
+title: Systeem weergaven die worden ondersteund in Synapse SQL
 description: Koppelingen naar de documentatie voor systeem weergaven die worden ondersteund in Synapse SQL.
 author: filippopovic
 ms.service: synapse-analytics
@@ -8,20 +8,21 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7079bbcf3bd7cb7f6073b132cd558386744f6884
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092763"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317319"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Systeem weergaven die worden ondersteund in Synapse SQL
+
 Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in Synapse SQL.
 
 > [!NOTE]
-> Synapse SQL on-demand ondersteunt alleen SQL Server catalogus weergaven.  
+> Synapse serverloze SQL-pool ondersteunt alleen SQL Server catalogus weergaven.  
 
-## <a name="sql-pool-catalog-views"></a>Catalogus weergaven van SQL-groep
+## <a name="dedicated-sql-pool-and-serverless-sql-pool-catalog-views"></a>Catalogus weergaven voor toegewezen SQL-groepen en serverloze SQL-pool
 
 * [sys.pdw_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-column-distribution-properties-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_distributions](/sql/relational-databases/system-catalog-views/sys-pdw-distributions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -47,7 +48,7 @@ Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund i
 * [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (preview-versie)
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (preview-versie)
 
-## <a name="sql-pool-dynamic-management-views-dmvs"></a>Dynamische beheer weergaven van SQL-pool (Dmv's)
+## <a name="dedicated-sql-pool-dynamic-management-views-dmvs"></a>Dynamische beheer weergaven van exclusieve SQL-groep (Dmv's)
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -69,9 +70,9 @@ Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund i
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-applicable-to-sql-pool"></a>SQL Server Dmv's die van toepassing zijn op de SQL-groep
+## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>SQL Server Dmv's die van toepassing zijn op een toegewezen SQL-groep
 
-De volgende Dmv's zijn van toepassing op de SQL-groep, maar moeten worden uitgevoerd door verbinding te maken met de **hoofd** database.
+De volgende Dmv's zijn van toepassing op een toegewezen SQL-groep, maar moeten worden uitgevoerd door verbinding te maken met de **hoofd** database.
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -151,16 +152,16 @@ De volgende Dmv's zijn van toepassing op de SQL-groep, maar moeten worden uitgev
 * [sys. types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys. views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-sql-pool"></a>SQL Server Dmv's beschikbaar in SQL-groep
+## <a name="sql-server-dmvs-available-in-dedicated-sql-pool"></a>SQL Server Dmv's beschikbaar in toegewezen SQL-groep
 
-De SQL-groep stelt veel van de SQL Server dynamische beheer weergaven (Dmv's) beschikbaar. Deze weer gaven zijn een overzicht van de status van SQL-data bases die worden uitgevoerd op de distributies.
+De SQL-groep stelt veel van de SQL Server dynamische beheer weergaven (Dmv's) beschikbaar. Deze weer gaven, wanneer u een query uitvoert in een toegewezen SQL-groep, rapporteren de status van SQL-data bases die worden uitgevoerd op de distributies.
 
 Het parallelle Data Warehouse (PDW) van de SQL-pool en het Analytics platform-systeem gebruiken dezelfde systeem weergaven. Elke DMV heeft een kolom met de naam pdw_node_id, de id voor het reken knooppunt.
 
 > [!NOTE]
 > Als u deze weer gaven wilt gebruiken, voegt u ' pdw_nodes_ ' in de naam in, zoals wordt weer gegeven in de volgende tabel:
 
-| DMV naam in SQL-groep | Artikel SQL Server Transact-SQL|
+| De naam van de DMV in de toegewezen SQL-groep | Artikel SQL Server Transact-SQL|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -222,9 +223,9 @@ Het parallelle Data Warehouse (PDW) van de SQL-pool en het Analytics platform-sy
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-pool"></a>SQL Server 2016 poly base Dmv's beschikbaar in SQL-groep
+## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>SQL Server 2016 poly base Dmv's beschikbaar in toegewezen SQL-groep
 
-De volgende Dmv's zijn van toepassing op de SQL-groep, maar moeten worden uitgevoerd door verbinding te maken met de **hoofd** database.
+De volgende Dmv's zijn van toepassing op een toegewezen SQL-groep, maar moeten worden uitgevoerd door verbinding te maken met de **hoofd** database.
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e48261c4c6aeb75556663e1bf77c675557bcd1b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b638cb2b33f24220e7ceb852402862c707cc7bc6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315487"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315998"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Het proces van de team data Science in actie: Azure Synapse Analytics gebruiken
 In deze zelf studie leert u hoe u een machine learning model bouwt en implementeert met behulp van Azure Synapse Analytics voor een openbaar beschik bare gegevensset, de NYC-gegevensset voor de [taxi](https://www.andresmh.com/nyctaxitrips/) Het binaire classificatie model heeft voor speld, ongeacht of er een tip voor een reis wordt betaald.  Modellen bevatten een multi klasse-classificatie (ongeacht of er sprake is van een tip) en regressie (de verdeling van de fooien die worden betaald).
 
-De procedure volgt de werk stroom [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) . We laten zien hoe u een Data Science-omgeving instelt, hoe u de gegevens in azure Synapse Analytics laadt en hoe u Azure Synapse Analytics of een IPython-notebook gebruikt om de gegevens-en Engineer functies te verkennen. Vervolgens laten we zien hoe u een model met Azure Machine Learning bouwt en implementeert.
+De procedure volgt de werk stroom [team data Science process (TDSP)](./index.yml) . We laten zien hoe u een Data Science-omgeving instelt, hoe u de gegevens in azure Synapse Analytics laadt en hoe u Azure Synapse Analytics of een IPython-notebook gebruikt om de gegevens-en Engineer functies te verkennen. Vervolgens laten we zien hoe u een model met Azure Machine Learning bouwt en implementeert.
 
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>De NYC-gegevensset voor taxi trips
 De NYC-gegevens over de taxi bestaan uit ongeveer 20 GB gecomprimeerde CSV-bestanden (~ 48 GB niet-gecomprimeerd), waarbij meer dan 173.000.000 afzonderlijke reizen en de betaalde tarieven voor elke reis worden opgenomen. Elke reis record bevat de locaties en tijden voor ophalen en dropoff, het licentie nummer van geanonimiseerd Hack (rijbewijs) en het Medallion (unieke ID-nummer van de taxi). De gegevens omvatten alle reizen in het jaar 2013 en worden in de volgende twee gegevens sets voor elke maand vermeld:
@@ -63,8 +63,8 @@ De **unieke sleutel** die wordt gebruikt voor het koppelen \_ van reis gegevens 
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Drie typen Voorspellings taken adresseren
 We formuleren drie Voorspellings problemen op basis van het *fooien \_ aantal* om drie soorten model taken te illustreren:
 
-1. **Binaire classificatie**: als u wilt voors pellen of er voor een reis een tip is betaald, dat wil zeggen, is een *fooiwaarde \_ * van meer dan $0 een positief voor beeld, terwijl een *Tip- \_ bedrag* van $0 een negatief voor beeld is.
-2. **Classificatie**met verschillende klassen: om het bereik van fooien voor de reis te voors pellen. We delen het *fooien \_ bedrag* in vijf bakken of klassen:
+1. **Binaire classificatie** : als u wilt voors pellen of er voor een reis een tip is betaald, dat wil zeggen, is een *fooiwaarde \_* van meer dan $0 een positief voor beeld, terwijl een *Tip- \_ bedrag* van $0 een negatief voor beeld is.
+2. **Classificatie** met verschillende klassen: om het bereik van fooien voor de reis te voors pellen. We delen het *fooien \_ bedrag* in vijf bakken of klassen:
 
 `Class 0 : tip_amount = $0`
 
@@ -76,15 +76,15 @@ We formuleren drie Voorspellings problemen op basis van het *fooien \_ aantal* o
 
 `Class 4 : tip_amount > $20`
 
-3. **Regressie taak**: voor het voors pellen van de hoeveelheid fooien die voor een reis wordt betaald.
+3. **Regressie taak** : voor het voors pellen van de hoeveelheid fooien die voor een reis wordt betaald.
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>De Azure data Science-omgeving instellen voor geavanceerde analyse
 Voer de volgende stappen uit om uw Azure data Science-omgeving in te stellen.
 
 **Uw eigen Azure Blob-opslag account maken**
 
-* Wanneer u uw eigen Azure Blob-opslag inricht, kiest u een geografische locatie voor uw Azure Blob-opslag in of zo dicht mogelijk bij **Zuid-Centraal VS**, waar de NYCe taxi gegevens worden opgeslagen. De gegevens worden gekopieerd met AzCopy uit de open bare Blob-opslag container naar een container in uw eigen opslag account. Hoe dichter uw Azure Blob-opslag is naar Zuid-Centraal, hoe sneller deze taak (stap 4) wordt voltooid.
-* Als u uw eigen Azure Storage-account wilt maken, volgt u de stappen die worden beschreven in [over Azure Storage-accounts](../../storage/common/storage-create-storage-account.md). Zorg ervoor dat u notities maakt voor de waarden van de volgende referenties voor het opslag account, omdat deze later in dit overzicht nodig zijn.
+* Wanneer u uw eigen Azure Blob-opslag inricht, kiest u een geografische locatie voor uw Azure Blob-opslag in of zo dicht mogelijk bij **Zuid-Centraal VS** , waar de NYCe taxi gegevens worden opgeslagen. De gegevens worden gekopieerd met AzCopy uit de open bare Blob-opslag container naar een container in uw eigen opslag account. Hoe dichter uw Azure Blob-opslag is naar Zuid-Centraal, hoe sneller deze taak (stap 4) wordt voltooid.
+* Als u uw eigen Azure Storage-account wilt maken, volgt u de stappen die worden beschreven in [over Azure Storage-accounts](../../storage/common/storage-account-create.md). Zorg ervoor dat u notities maakt voor de waarden van de volgende referenties voor het opslag account, omdat deze later in dit overzicht nodig zijn.
 
   * **Naam van opslag account**
   * **Sleutel van het opslag account**
@@ -93,7 +93,7 @@ Voer de volgende stappen uit om uw Azure data Science-omgeving in te stellen.
 **Richt uw Azure Synapse Analytics-exemplaar in.**
 Volg de documentatie op [een Azure Synapse Analytics maken en query's uitvoeren in de Azure Portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) om een Azure Synapse Analytics-exemplaar in te richten. Zorg ervoor dat u een notatie maakt voor de volgende Azure Synapse Analytics-referenties die in latere stappen zullen worden gebruikt.
 
-* **Server naam**: \<server Name> . database.Windows.net
+* **Server naam** : \<server Name> . database.Windows.net
 * **SQLDW-naam (data base)**
 * **Gebruikersnaam**
 * **Wachtwoord**
@@ -139,7 +139,7 @@ Nadat de uitvoering is voltooid, wordt de huidige werkmap gewijzigd in *-DestDir
 
 ![Huidige wijzigingen in de werkmap][19]
 
-In uw *-DestDir*voert u het volgende Power shell-script uit in de Administrator-modus:
+In uw *-DestDir* voert u het volgende Power shell-script uit in de Administrator-modus:
 
 ```azurepowershell
 ./SQLDW_Data_Import.ps1
@@ -154,7 +154,7 @@ Wanneer het Power shell-script voor de eerste keer wordt uitgevoerd, wordt u gev
 
 Dit **Power shell-script** bestand voert de volgende taken uit:
 
-* **Down loads en installeert AzCopy**als AzCopy nog niet is geïnstalleerd
+* **Down loads en installeert AzCopy** als AzCopy nog niet is geïnstalleerd
 
   ```azurepowershell
   $AzCopy_path = SearchAzCopy
@@ -418,7 +418,7 @@ Deze query's bieden een snelle controle van het aantal rijen en kolommen in de t
 **Uitvoer:** U moet 173.179.759 rijen en 14 kolommen ophalen.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Exploratie: reis distributie per Medallion
-In dit voor beeld wordt de Medallions (taxi-nummers) geïdentificeerd die meer dan 100 trips binnen een opgegeven periode hebben voltooid. De query zou profiteren van de gepartitioneerde tabel toegang, omdat deze wordt voor bereid op het partitie schema van de ** \_ datum van ophalen**. Bij het uitvoeren van query's op de volledige gegevensset wordt ook gebruikgemaakt van de gepartitioneerde tabel en/of index scan.
+In dit voor beeld wordt de Medallions (taxi-nummers) geïdentificeerd die meer dan 100 trips binnen een opgegeven periode hebben voltooid. De query zou profiteren van de gepartitioneerde tabel toegang, omdat deze wordt voor bereid op het partitie schema van de **\_ datum van ophalen**. Bij het uitvoeren van query's op de volledige gegevensset wordt ook gebruikgemaakt van de gepartitioneerde tabel en/of index scan.
 
 ```sql
 SELECT medallion, COUNT(*)
@@ -609,7 +609,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Gegevens voorbereiden voor het maken van modellen
-Met de volgende query wordt de **nyctaxi- \_ reis** -en **nyctaxi- \_ ritbedrag** tabellen toegevoegd, wordt een binaire classificatie label met een classificatie ** \_ klasse**met meerdere klassen **gekanteld**, en wordt een voor beeld geëxtraheerd uit de volledig gekoppelde gegevensset. De steek proef wordt uitgevoerd door een subset van de trips op te halen op basis van de ophaal tijd.  Deze query kan worden gekopieerd en vervolgens rechtstreeks in de module [Azure machine learning Studio (klassiek)](https://studio.azureml.net) [import gegevens][importeren voor] directe gegevens opname van het SQL database-exemplaar in Azure worden geplakt. De query sluit records met onjuiste (0, 0) coördinaten toe.
+Met de volgende query wordt de **nyctaxi- \_ reis** -en **nyctaxi- \_ ritbedrag** tabellen toegevoegd, wordt een binaire classificatie label met een classificatie **\_ klasse** met meerdere klassen **gekanteld** , en wordt een voor beeld geëxtraheerd uit de volledig gekoppelde gegevensset. De steek proef wordt uitgevoerd door een subset van de trips op te halen op basis van de ophaal tijd.  Deze query kan worden gekopieerd en vervolgens rechtstreeks in de module [Azure machine learning Studio (klassiek)](https://studio.azureml.net) [import gegevens][importeren voor] directe gegevens opname van het SQL database-exemplaar in Azure worden geplakt. De query sluit records met onjuiste (0, 0) coördinaten toe.
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
@@ -814,7 +814,7 @@ pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 ![Uitvoer van het regel teken][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Visualisatie: scatterplot-voor beelden
-Er wordt een spreidings diagram weer gegeven tussen de ** \_ duur van de reis tijd \_ in \_ seconden** en **reis \_ afstand** om te zien of er een correlatie is
+Er wordt een spreidings diagram weer gegeven tussen de **\_ duur van de reis tijd \_ in \_ seconden** en **reis \_ afstand** om te zien of er een correlatie is
 
 ```sql
 plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
@@ -822,7 +822,7 @@ plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Scatterplot uitvoer van relatie tussen tijd en afstand][6]
 
-Op dezelfde manier kunnen we de relatie tussen **tarief \_ code** en **reis \_ afstand**controleren.
+Op dezelfde manier kunnen we de relatie tussen **tarief \_ code** en **reis \_ afstand** controleren.
 
 ```sql
 plt.scatter(df1['passenger_count'], df1['trip_distance'])
@@ -937,9 +937,9 @@ pd.read_sql(query,conn)
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Modellen maken in Azure Machine Learning
 U kunt nu door gaan met het model leren van het bouwen en model implementeren in [Azure machine learning](https://studio.azureml.net). De gegevens zijn gereed voor gebruik in een van de eerder genoemde Voorspellings problemen, namelijk:
 
-1. **Binaire classificatie**: om te voors pellen of er al dan niet een tip voor een reis is betaald.
-2. **Classificatie**met verschillende klassen: om het bereik aan betaalde fooien te voors pellen volgens de eerder gedefinieerde klassen.
-3. **Regressie taak**: voor het voors pellen van de hoeveelheid fooien die voor een reis wordt betaald.
+1. **Binaire classificatie** : om te voors pellen of er al dan niet een tip voor een reis is betaald.
+2. **Classificatie** met verschillende klassen: om het bereik aan betaalde fooien te voors pellen volgens de eerder gedefinieerde klassen.
+3. **Regressie taak** : voor het voors pellen van de hoeveelheid fooien die voor een reis wordt betaald.
 
 Meld u aan bij uw **Azure machine learning (klassieke)** werk ruimte om de modellerings oefening te starten. Als u nog geen machine learning-werk ruimte hebt gemaakt, raadpleegt u [een werk ruimte Azure machine learning Studio (klassiek) maken](../classic/create-workspace.md).
 
@@ -968,7 +968,7 @@ In deze oefening hebben we de gegevens in azure Synapse Analytics al bekeken en 
 2. Selecteer **Azure SQL database** als **gegevens bron** in het deel venster **Eigenschappen** .
 3. Voer de naam van de data base-DNS in het veld **database server naam** in. Formatteer `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Voer de **database naam** in het bijbehorende veld in.
-5. Voer de *SQL-gebruikers naam* in de naam van de **Server gebruikers account**en het *wacht woord* in het **wacht woord van de server gebruikers account**in.
+5. Voer de *SQL-gebruikers naam* in de naam van de **Server gebruikers account** en het *wacht woord* in het **wacht woord van de server gebruikers account** in.
 7. Plak in het tekst gebied **database query** bewerken de query waarmee de benodigde database velden worden geëxtraheerd (met inbegrip van berekende velden zoals de labels) en druk op voor beelden van de gegevens naar de gewenste steekproef grootte.
 
 Een voor beeld van een experiment met binaire classificatie voor het lezen van gegevens rechtstreeks vanuit de Azure Synapse Analytics-Data Base bevindt zich in de onderstaande afbeelding (Vergeet niet om de tabel namen te vervangen nyctaxi_trip en nyctaxi_fare door de schema naam en de tabel namen die u in uw walkthrough hebt gebruikt). Vergelijk bare experimenten kunnen worden gebouwd voor classificaties en regressie problemen.
@@ -976,7 +976,7 @@ Een voor beeld van een experiment met binaire classificatie voor het lezen van g
 ![Azure ML-trein][10]
 
 > [!IMPORTANT]
-> In de voor beelden van model gegevens extractie en bemonsterings query's in de vorige secties **zijn alle labels voor de drie model oefeningen opgenomen in de query**. Een belang rijke (vereiste) stap in elk van de modellerings oefeningen is het **uitsluiten** van de overbodige labels voor de andere twee problemen en eventuele andere **doel lekkages**. Als u bijvoorbeeld een binaire classificatie gebruikt, gebruikt u het **label en** sluit u de velden **Tip- \_ klasse**, **foois \_ hoeveelheid**en **totaal \_ bedrag**uit. Deze laatste zijn doelwit lekkages, omdat ze de fooi hebben betaald.
+> In de voor beelden van model gegevens extractie en bemonsterings query's in de vorige secties **zijn alle labels voor de drie model oefeningen opgenomen in de query**. Een belang rijke (vereiste) stap in elk van de modellerings oefeningen is het **uitsluiten** van de overbodige labels voor de andere twee problemen en eventuele andere **doel lekkages**. Als u bijvoorbeeld een binaire classificatie gebruikt, gebruikt u het **label en** sluit u de velden **Tip- \_ klasse** , **foois \_ hoeveelheid** en **totaal \_ bedrag** uit. Deze laatste zijn doelwit lekkages, omdat ze de fooi hebben betaald.
 >
 > Als u overbodige kolommen of doel lekkages wilt uitsluiten, kunt u de module [kolommen selecteren in gegevensset][select-columns] of de [meta gegevens bewerken][edit-metadata]gebruiken. Zie [kolommen selecteren in gegevensset][select-columns] en referentie pagina's voor [meta gegevens bewerken][edit-metadata] voor meer informatie.
 >
@@ -1012,7 +1012,7 @@ Om te samen vatting wat we in deze walkthrough zelf studie hebben gedaan, hebt u
 ### <a name="license-information"></a>Licentie gegevens
 Deze voorbeeld walkthrough en de bijbehorende scripts en IPython-Notebook (s) worden door micro soft gedeeld onder de MIT-licentie. Controleer het LICENSE.txt-bestand in de map van de voorbeeld code op GitHub voor meer informatie.
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Verwijzingen
 - [Download pagina voor Andrés Monroy NYCe taxi](https://www.andresmh.com/nyctaxitrips/)
 - [De taxi-reis gegevens van NYC door Chris Whong te folie](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [Onderzoek en statistieken voor NYCe taxi en limousine-Commissie](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
@@ -1046,6 +1046,6 @@ Deze voorbeeld walkthrough en de bijbehorende scripts en IPython-Notebook (s) wo
 
 
 <!-- Module References -->
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

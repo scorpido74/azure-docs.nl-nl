@@ -1,7 +1,7 @@
 ---
 title: Privépakketten van Python gebruiken
 titleSuffix: Azure Machine Learning
-description: Open persoonlijke Python-pakketten veilig vanuit Azure Machine Learning omgevingen.
+description: Meer informatie over hoe u veilig kunt werken met privé Python-pakketten vanuit uw Azure Machine Learning omgevingen.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 58bb08cad111e0744f7831783169901cd76caef4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a722746c8e06a691e702b095d3081f1530645de
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772631"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318919"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Gebruik persoonlijke Python-pakketten met Azure Machine Learning
 
@@ -27,16 +27,16 @@ In dit artikel leest u hoe u privé Python-pakketten veilig kunt gebruiken in Az
 
 De aanbevolen benadering is afhankelijk van of u slechts enkele pakketten hebt voor een enkele Azure Machine Learning-werk ruimte of een volledige opslag plaats van pakketten voor alle werk ruimten binnen een organisatie.
 
-De persoonlijke pakketten worden gebruikt via de [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment) klasse. Binnen een omgeving declareert u welke Python-pakketten moeten worden gebruikt, inclusief persoonlijke items. Zie [omgevingen gebruiken](how-to-use-environments.md)voor meer informatie over de omgeving van Azure machine learning in het algemeen. 
+De persoonlijke pakketten worden gebruikt via de [omgevings](/python/api/azureml-core/azureml.core.environment.environment) klasse. Binnen een omgeving declareert u welke Python-pakketten moeten worden gebruikt, inclusief persoonlijke items. Zie [omgevingen gebruiken](how-to-use-environments.md)voor meer informatie over de omgeving van Azure machine learning in het algemeen. 
 
 ## <a name="prerequisites"></a>Vereisten
 
- * De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+ * De [Azure machine learning SDK voor python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
  * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md)
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>Klein aantal pakketten gebruiken voor ontwikkelen en testen
 
-Gebruik de statische methode voor een klein aantal privé-pakketten voor één werk ruimte [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) . Met deze aanpak kunt u snel een persoonlijk pakket toevoegen aan de werk ruimte en is het goed geschikt voor ontwikkelings-en test doeleinden.
+Gebruik de statische methode voor een klein aantal privé-pakketten voor één werk ruimte [`Environment.add_private_pip_wheel()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) . Met deze aanpak kunt u snel een persoonlijk pakket toevoegen aan de werk ruimte en is het goed geschikt voor ontwikkelings-en test doeleinden.
 
 Wijs het pad naar het bestand naar een lokaal wiel bestand en voer de ```add_private_pip_wheel``` opdracht uit. De opdracht retourneert een URL die wordt gebruikt om de locatie van het pakket in uw werk ruimte bij te houden. Leg de opslag-URL vast en geef deze de `add_pip_package()` methode door.
 
@@ -52,13 +52,13 @@ Intern wordt de URL door Azure Machine Learning service vervangen door een bevei
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Een opslag plaats van pakketten van Azure DevOps feed gebruiken
 
-Als u Python-pakketten actief ontwikkelt voor uw machine learning-toepassing, kunt u deze als artefacten hosten in een Azure DevOps-opslag plaats en publiceren als een feed. Met deze aanpak kunt u de DevOps-werk stroom voor het bouwen van pakketten integreren met uw Azure Machine Learning-werkruimte. Lees aan de [slag met Python-pakketten in azure artefacten](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops&preserve-view=true) voor meer informatie over het instellen van python-feeds met behulp van Azure DevOps
+Als u Python-pakketten actief ontwikkelt voor uw machine learning-toepassing, kunt u deze als artefacten hosten in een Azure DevOps-opslag plaats en publiceren als een feed. Met deze aanpak kunt u de DevOps-werk stroom voor het bouwen van pakketten integreren met uw Azure Machine Learning-werkruimte. Lees aan de [slag met Python-pakketten in azure artefacten](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops) voor meer informatie over het instellen van python-feeds met behulp van Azure DevOps
 
 Deze benadering maakt gebruik van een persoonlijk toegangs token voor verificatie op basis van de opslag plaats. Dezelfde benadering is van toepassing op andere opslag plaatsen met verificatie op basis van tokens, zoals persoonlijke GitHub-opslag plaatsen. 
 
- 1. [Maak een persoonlijk toegangs token (Pat)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&preserve-view=true&tabs=preview-page#create-a-pat) voor uw Azure DevOps-exemplaar. Stel het bereik van het token in op __verpakt > lezen__. 
+ 1. [Maak een persoonlijk toegangs token (Pat)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) voor uw Azure DevOps-exemplaar. Stel het bereik van het token in op __verpakt > lezen__. 
 
- 2. Voeg de URL van Azure DevOps en PAT als werkruimte eigenschappen toe met behulp van de [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) methode.
+ 2. Voeg de URL van Azure DevOps en PAT als werkruimte eigenschappen toe met behulp van de [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) methode.
 
      ```python
     from azureml.core import Workspace

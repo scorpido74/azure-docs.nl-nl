@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 30979f49a48954280942d786af7e7ff592089062
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521064"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317089"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks in Azure Automation beheren
 
@@ -45,7 +45,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Een runbook importeren
 
-U kunt een Power shell-of Power shell workflow-script (**. ps1**), een grafisch runbook (**. graphrunbook**) of een python 2-script (**. py**) importeren om uw eigen runbook te maken. U moet het [type runbook](automation-runbook-types.md) opgeven dat tijdens het importeren wordt gemaakt, waarbij rekening wordt gehouden met de volgende overwegingen.
+U kunt een Power shell-of Power shell workflow-script ( **. ps1** ), een grafisch runbook ( **. graphrunbook** ) of een python 2-script ( **. py** ) importeren om uw eigen runbook te maken. U moet het [type runbook](automation-runbook-types.md) opgeven dat tijdens het importeren wordt gemaakt, waarbij rekening wordt gehouden met de volgende overwegingen.
 
 * U kunt een **. ps1** -bestand importeren dat geen werk stroom bevat in een [Power shell-Runbook](automation-runbook-types.md#powershell-runbooks) of een [Power shell workflow-runbook](automation-runbook-types.md#powershell-workflow-runbooks). Als u deze importeert in een Power shell workflow-runbook, wordt dit geconverteerd naar een werk stroom. In dit geval worden opmerkingen in het runbook opgenomen om de aangebrachte wijzigingen te beschrijven.
 
@@ -68,7 +68,7 @@ U kunt de volgende procedure gebruiken om een script bestand te importeren in Az
 4. Klik op **Runbook-bestand** en selecteer het bestand dat u wilt importeren.
 5. Als het veld **naam** is ingeschakeld, kunt u de naam van het runbook wijzigen. De naam moet beginnen met een letter en mag letters, cijfers, onderstrepings tekens en streepjes bevatten.
 6. Het [runbook-type](automation-runbook-types.md) wordt automatisch geselecteerd, maar u kunt het type wijzigen nadat u de toepasselijke beperkingen in het account hebt genomen.
-7. Klik op **Maken**. Het nieuwe runbook wordt weer gegeven in de lijst met runbooks voor het Automation-account.
+7. Klik op **Create**. Het nieuwe runbook wordt weer gegeven in de lijst met runbooks voor het Automation-account.
 8. U moet [het runbook publiceren](#publish-a-runbook) voordat u het kunt uitvoeren.
 
 > [!NOTE]
@@ -228,7 +228,7 @@ Een aangepast script gebruiken:
 
 ## <a name="test-a-runbook"></a>Een runbook testen
 
-Wanneer u een runbook test, wordt de [concept versie](#publish-a-runbook) uitgevoerd en de acties die worden uitgevoerd, worden voltooid. Er is geen taak geschiedenis gemaakt, maar de [uitvoer](automation-runbook-output-and-messages.md#use-the-output-stream) -en [waarschuwings-en fout](automation-runbook-output-and-messages.md#monitor-message-streams) stromen worden weer gegeven in het deel venster test uitvoer. Berichten naar de [uitgebreide stroom](automation-runbook-output-and-messages.md#monitor-message-streams) worden alleen weer gegeven in het deel venster uitvoer als de variabele [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) is ingesteld op `Continue` .
+Wanneer u een runbook test, wordt de [concept versie](#publish-a-runbook) uitgevoerd en de acties die worden uitgevoerd, worden voltooid. Er is geen taak geschiedenis gemaakt, maar de [uitvoer](automation-runbook-output-and-messages.md#use-the-output-stream) -en [waarschuwings-en fout](automation-runbook-output-and-messages.md#working-with-message-streams) stromen worden weer gegeven in het deel venster test uitvoer. Berichten naar de [uitgebreide stroom](automation-runbook-output-and-messages.md#write-output-to-verbose-stream) worden alleen weer gegeven in het deel venster uitvoer als de variabele [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) is ingesteld op `Continue` .
 
 Hoewel de concept versie wordt uitgevoerd, wordt het runbook nog steeds normaal uitgevoerd en worden alle acties uitgevoerd voor resources in de omgeving. Daarom moet u runbooks alleen testen op niet-productie resources.
 
@@ -272,7 +272,7 @@ Als uw runbook is gepubliceerd, kunt u het voor de bewerking plannen:
 1. Open het runbook in de Azure Portal.
 2. Selecteer **schema's** onder **resources**.
 3. Selecteer **een schema toevoegen**.
-4. Selecteer **een planning aan uw Runbook koppelen**in het deel venster Runbook plannen.
+4. Selecteer **een planning aan uw Runbook koppelen** in het deel venster Runbook plannen.
 5. Kies **een nieuw schema maken** in het deel venster planning.
 6. Voer een naam, beschrijving en andere para meters in het deel venster nieuwe planning in.
 7. Wanneer de planning is gemaakt, markeert u deze en klikt u op **OK**. Deze moet nu zijn gekoppeld aan uw runbook.
@@ -292,13 +292,13 @@ Als u op de tegel klikt, wordt de pagina taken weer gegeven, die een overzicht b
 
 :::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text="Scherm afbeelding van de pagina taken.":::
 
-U kunt de lijst met taken filteren door **taken filteren**te selecteren. Filter op een specifiek runbook, de taak status of een keuze in de vervolg keuzelijst en geef het tijds bereik voor de zoek opdracht op.
+U kunt de lijst met taken filteren door **taken filteren** te selecteren. Filter op een specifiek runbook, de taak status of een keuze in de vervolg keuzelijst en geef het tijds bereik voor de zoek opdracht op.
 
 ![Taak status filteren](./media/manage-runbooks/automation-account-jobs-filter.png)
 
-U kunt ook samenvattings Details van taken weer geven voor een specifiek runbook door dat runbook te selecteren op de pagina Runbooks in uw Automation-account en vervolgens **taken**te selecteren. Deze actie geeft de pagina taken weer. Hier kunt u klikken op een taak record om de details en de uitvoer weer te geven.
+U kunt ook samenvattings Details van taken weer geven voor een specifiek runbook door dat runbook te selecteren op de pagina Runbooks in uw Automation-account en vervolgens **taken** te selecteren. Deze actie geeft de pagina taken weer. Hier kunt u klikken op een taak record om de details en de uitvoer weer te geven.
 
-:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Scherm afbeelding van de pagina taken.":::
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Scherm afbeelding van de pagina taken met de knop fouten gemarkeerd.":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Taak statussen ophalen met behulp van Power shell
 

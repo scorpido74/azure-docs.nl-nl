@@ -1,6 +1,6 @@
 ---
 title: Beheer baarheid en controle-overzicht
-description: Overzicht van bewaking en beheer baarheid voor het gebruik van resources, logboek-en query activiteit, aanbevelingen en gegevens beveiliging (back-up en herstel) met Synapse SQL-pool.
+description: Overzicht van bewaking en beheer baarheid voor het gebruik van resources, logboek-en query activiteit, aanbevelingen en gegevens beveiliging (back-up en herstel) met toegewezen SQL-groep in azure Synapse Analytics.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 19b2b4aecedbaa66c258b9076c517b02034a46fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4792842eddac3e8082be2d3a67736824a02dfebd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200984"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317497"
 ---
-# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Beheer baarheid en bewaking met Synapse SQL-pool
+# <a name="manageability-and-monitoring-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Beheer baarheid en bewaking met exclusieve SQL-groep in azure Synapse Analytics
 
-Met Synapse SQL kunt u een Data Warehouse inrichten via een SQL-groep. De volgende artikelen helpen u bij het beheren en bewaken van uw data warehouse. U leert ook hoe u het gebruik en de prestaties van het Data Warehouse optimaliseert.
+Met Synapse SQL kunt u een Data Warehouse inrichten via een exclusieve SQL-groep. De volgende artikelen helpen u bij het beheren en bewaken van uw data warehouse. U leert ook hoe u het gebruik en de prestaties van het Data Warehouse optimaliseert.
 
 ## <a name="overview"></a>Overzicht
 
@@ -33,4 +33,4 @@ Met Synapse SQL kunt u een Data Warehouse inrichten via een SQL-groep. De volgen
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [uw SQL-groep bewaken en afstemmen](sql-data-warehouse-manage-monitor.md)voor instructies voor hand leidingen.
+Zie [uw toegewezen SQL-groep controleren en aanpassen](sql-data-warehouse-manage-monitor.md)voor instructies.

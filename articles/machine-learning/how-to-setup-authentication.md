@@ -1,7 +1,7 @@
 ---
 title: Verificatie instellen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het instellen en configureren van verificatie voor verschillende resources en werk stromen in Azure Machine Learning. Er zijn meerdere manieren om verificatie in de service te configureren en te gebruiken, variërend van eenvoudige op gebruikers interface gebaseerde verificatie voor ontwikkelings-of test doeleinden tot volledige Azure Active Directory Service-Principal-verificatie.
+description: Meer informatie over het instellen en configureren van verificatie voor verschillende resources en werk stromen in Azure Machine Learning.
 services: machine-learning
 author: cjgronlund
 ms.author: cgronlun
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a23f44e60bd68e51c26cc6a0bbf3e85e64914135
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: fd6f933e1b3c1e7c003f62e03215273e3d28ea5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125764"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318541"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 
@@ -38,7 +38,7 @@ Ongeacht het gebruikte verificatie type wordt Azure RBAC (op rollen gebaseerd to
 ## <a name="interactive-authentication"></a>Interactieve verificatie
 
 > [!IMPORTANT]
-> Interactieve verificatie maakt gebruik van uw browser en vereist cookies (inclusief cookies van derden). Als u cookies hebt uitgeschakeld, wordt er mogelijk een fout bericht weer gegeven zoals ' we kunnen u niet aanmelden '. Deze fout kan ook optreden als u [Azure multi-factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks)hebt ingeschakeld.
+> Interactieve verificatie maakt gebruik van uw browser en vereist cookies (inclusief cookies van derden). Als u cookies hebt uitgeschakeld, wordt er mogelijk een fout bericht weer gegeven zoals ' we kunnen u niet aanmelden '. Deze fout kan ook optreden als u [Azure multi-factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)hebt ingeschakeld.
 
 De meeste voor beelden in de documentatie en voor beelden gebruiken interactieve verificatie. Wanneer u de SDK gebruikt, zijn er bijvoorbeeld twee functie aanroepen waarmee automatisch een verificatie stroom op basis van een gebruikers interface wordt gevraagd:
 
@@ -77,7 +77,7 @@ Als u de verificatie van de Service-Principal (SP) wilt gebruiken, moet u eerst 
 >
 > De reden voor het verlenen van de minimale toegang is dat een Service-Principal gebruikmaakt van een wacht woord voor verificatie en dat het wacht woord kan worden opgeslagen als onderdeel van een Automation-script. Als het wacht woord wordt gelekt, en de mini maal vereiste toegang voor een bepaalde taken, minimaliseert het schadelijke gebruik van de SP.
 
-De eenvoudigste manier om een SP te maken en toegang te verlenen tot uw werk ruimte is met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true). Als u een Service-Principal wilt maken en toegang tot uw werk ruimte wilt verlenen, gebruikt u de volgende stappen:
+De eenvoudigste manier om een SP te maken en toegang te verlenen tot uw werk ruimte is met behulp van de [Azure cli](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest). Als u een Service-Principal wilt maken en toegang tot uw werk ruimte wilt verlenen, gebruikt u de volgende stappen:
 
 > [!NOTE]
 > U moet een beheerder zijn van het abonnement om al deze stappen uit te voeren.
@@ -92,7 +92,7 @@ De eenvoudigste manier om een SP te maken en toegang te verlenen tot uw werk rui
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-    Zie [Aanmelden met Azure cli](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)voor andere verificatie methoden.
+    Zie [Aanmelden met Azure cli](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)voor andere verificatie methoden.
 
 1. Installeer de Azure Machine Learning extensie:
 
@@ -190,11 +190,11 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Een service-principal van de Azure CLI gebruiken
 
-U kunt een Service-Principal gebruiken voor Azure CLI-opdrachten. Zie [Aanmelden met een Service-Principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest&preserve-view=true#sign-in-using-a-service-principal)voor meer informatie.
+U kunt een Service-Principal gebruiken voor Azure CLI-opdrachten. Zie [Aanmelden met een Service-Principal](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal)voor meer informatie.
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Een Service-Principal gebruiken met de REST API (preview-versie)
 
-De service-principal kan ook worden gebruikt voor de verificatie van de Azure Machine Learning [rest API](https://docs.microsoft.com/rest/api/azureml/) (preview). U gebruikt de Azure Active Directory [toekennings stroom voor client referenties](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow), waarmee service-to-service-aanroepen kunnen worden uitgevoerd voor headless authenticatie in automatische werk stromen. De voor beelden worden geïmplementeerd met de [ADAL-bibliotheek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) in zowel Python als Node.js, maar u kunt ook een open-source bibliotheek gebruiken die openid connect Connect 1,0 ondersteunt.
+De service-principal kan ook worden gebruikt voor de verificatie van de Azure Machine Learning [rest API](/rest/api/azureml/) (preview). U gebruikt de Azure Active Directory [toekennings stroom voor client referenties](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md), waarmee service-to-service-aanroepen kunnen worden uitgevoerd voor headless authenticatie in automatische werk stromen. De voor beelden worden geïmplementeerd met de [ADAL-bibliotheek](../active-directory/azuread-dev/active-directory-authentication-libraries.md) in zowel Python als Node.js, maar u kunt ook een open-source bibliotheek gebruiken die openid connect Connect 1,0 ondersteunt.
 
 > [!NOTE]
 > MSAL.js is een nieuwe bibliotheek dan ADAL, maar u kunt geen service-to-service-verificatie uitvoeren met behulp van client referenties met MSAL.js, omdat het hoofd zakelijk een bibliotheek aan de client zijde is die is bedoeld voor interactieve/UI-verificatie die is gekoppeld aan een specifieke gebruiker. We raden u aan ADAL te gebruiken zoals hieronder wordt weer gegeven om automatische werk stromen te bouwen met de REST API.
@@ -391,7 +391,7 @@ Wanneer u token verificatie inschakelt voor een webservice, moeten gebruikers ee
 
 * Token verificatie is **standaard uitgeschakeld** wanneer u implementeert in azure Kubernetes service.
 * Verificatie van tokens **wordt niet ondersteund** wanneer u implementeert in azure container instances.
-* Token verificatie **kan niet tegelijkertijd worden gebruikt als verificatie op basis van een sleutel** .
+* Token verificatie **kan niet tegelijkertijd worden gebruikt als verificatie op basis van een sleutel**.
 
 Als u de verificatie van tokens wilt beheren, gebruikt `token_auth_enabled` u de para meter bij het maken of bijwerken van een implementatie:
 

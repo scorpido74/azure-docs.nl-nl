@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ae21d97bc9d8292270ae62006e649f4bcf540b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236332"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316150"
 ---
 # <a name="design-for-querying"></a>Ontwerp voor query's
 Table service oplossingen kunnen intensieve, schrijf intensief of een combi natie van beide worden gelezen. In dit artikel vindt u informatie over de zaken die u moet overwegen wanneer u uw Table service ontwerpt om Lees bewerkingen efficiënt te ondersteunen. Normaal gesp roken is een ontwerp dat lees bewerkingen efficiënt ondersteunt ook efficiënt voor schrijf bewerkingen. Er zijn echter extra aandachtspunten bij het ontwerpen ter ondersteuning van schrijf bewerkingen, zoals beschreven in het artikel [ontwerp voor het wijzigen van gegevens](table-storage-design-for-modification.md).
@@ -35,7 +35,7 @@ Deze sectie richt zich op de belangrijkste problemen die u moet aanpakken wannee
 ## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>Hoe uw keuze van PartitionKey en RowKey gevolgen heeft voor de query prestaties
 In de volgende voor beelden wordt ervan uitgegaan dat de tabel service werk nemers-entiteiten opslaat met de volgende structuur (in de meeste voor beelden wordt de **Time Stamp** -eigenschap voor duidelijkheid wegge laten):  
 
-| *Kolomnaam* | *Gegevenstype* |
+| *Kolomnaam* | *Gegevens type* |
 | --- | --- |
 | **PartitionKey** (afdelings naam) |Tekenreeks |
 | **RowKey** (werk nemer-id) |Tekenreeks |
@@ -44,15 +44,15 @@ In de volgende voor beelden wordt ervan uitgegaan dat de tabel service werk neme
 | **Age** |Geheel getal |
 | **EmailAddress** |Tekenreeks |
 
-In het artikel [overzicht van Azure Table Storage](table-storage-overview.md) worden enkele van de belangrijkste functies van de Azure-Table service beschreven die een directe invloed hebben op het ontwerpen van query's. Dit resulteert in de volgende algemene richt lijnen voor het ontwerpen van Table service query's. Houd er rekening mee dat de filter syntaxis die in de onderstaande voor beelden wordt gebruikt, afkomstig is uit de Table service REST API, Zie [query-entiteiten](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)voor meer informatie.  
+In het artikel [overzicht van Azure Table Storage](table-storage-overview.md) worden enkele van de belangrijkste functies van de Azure-Table service beschreven die een directe invloed hebben op het ontwerpen van query's. Dit resulteert in de volgende algemene richt lijnen voor het ontwerpen van Table service query's. Houd er rekening mee dat de filter syntaxis die in de onderstaande voor beelden wordt gebruikt, afkomstig is uit de Table service REST API, Zie [query-entiteiten](/rest/api/storageservices/Query-Entities)voor meer informatie.  
 
-* Een ***Point-query*** is de meest efficiënte zoek actie die moet worden gebruikt en wordt aanbevolen voor gebruik voor Zoek opdrachten met hoge volumes of lookups waarvoor een laagste latentie is vereist. Een dergelijke query kan de indexen gebruiken om een afzonderlijke entiteit efficiënt te vinden door de waarden voor **PartitionKey** en **RowKey** op te geven. Bijvoorbeeld: $filter = (PartitionKey EQ ' Sales ') en (RowKey EQ ' 2 ')  
-* Seconde best is een ***bereik query*** die gebruikmaakt van de **PartitionKey** en filters voor een bereik van **RowKey** -waarden om meer dan één entiteit te retour neren. De waarde **PartitionKey** identificeert een specifieke partitie en de **RowKey** -waarden identificeren een subset van de entiteiten in die partitie. Bijvoorbeeld: $filter = PartitionKey EQ ' Sales ' en RowKey ge ' en RowKey lt 'T '  
-* De derde beste is een ***partitie scan*** die gebruikmaakt van de **PartitionKey** en filters op een andere niet-sleutel eigenschap en die mogelijk meer dan één entiteit retourneert. De waarde **PartitionKey** identificeert een specifieke partitie en de eigenschapwaarden worden geselecteerd voor een subset van de entiteiten in die partitie. Bijvoorbeeld: $filter = PartitionKey EQ ' Sales ' en LastName EQ ' Smit '  
-* Een ***tabel scan*** bevat niet de **PartitionKey** en is zeer inefficiënt omdat hiermee wordt gezocht in alle partities waaruit de tabel bestaat, op zijn beurt voor overeenkomende entiteiten. Er wordt een tabel scan uitgevoerd, ongeacht of het filter gebruikmaakt van de **RowKey**. Bijvoorbeeld: $filter = LastName EQ ' Jansen '  
+* Een *- **punt query** _ is de meest efficiënte zoek opdracht die wordt gebruikt voor het gebruik van grote hoeveel heden lookups of lookups waarvoor de laagste latentie is vereist. Een dergelijke query kan de indexen gebruiken om een afzonderlijke entiteit efficiënt te vinden door de waarden _ *PartitionKey* * en **RowKey** op te geven. Bijvoorbeeld: $filter = (PartitionKey EQ ' Sales ') en (RowKey EQ ' 2 ')  
+* Second Best is een *- **bereik query** _ die gebruikmaakt van de _ *PartitionKey* * en filters voor een bereik van **RowKey** -waarden om meer dan één entiteit te retour neren. De waarde **PartitionKey** identificeert een specifieke partitie en de **RowKey** -waarden identificeren een subset van de entiteiten in die partitie. Bijvoorbeeld: $filter = PartitionKey EQ ' Sales ' en RowKey ge ' en RowKey lt 'T '  
+* De derde beste is een *- **partitie scan** _ die gebruikmaakt van de _ *PartitionKey* * en filters op een andere niet-sleutel eigenschap en die mogelijk meer dan één entiteit retourneert. De waarde **PartitionKey** identificeert een specifieke partitie en de eigenschapwaarden worden geselecteerd voor een subset van de entiteiten in die partitie. Bijvoorbeeld: $filter = PartitionKey EQ ' Sales ' en LastName EQ ' Smit '  
+* Een * **tabel scan** _ bevat niet de _ *PartitionKey* * en is zeer inefficiënt omdat hiermee wordt gezocht in alle partities waaruit de tabel bestaat, op zijn beurt voor overeenkomende entiteiten. Er wordt een tabel scan uitgevoerd, ongeacht of het filter gebruikmaakt van de **RowKey**. Bijvoorbeeld: $filter = LastName EQ ' Jansen '  
 * Query's waarmee meerdere entiteiten worden geretourneerd, retour neren ze in **PartitionKey** -en **RowKey** -volg orde. Kies een **RowKey** die de meest voorkomende sorteer volgorde definieert om te voor komen dat de entiteiten in de client worden gebruikt.  
 
-Houd er rekening mee dat het gebruik van een '**or**' om een filter op te geven op basis van **RowKey** waarden resulteert in een partitie scan en niet wordt behandeld als een bereik query. U moet daarom query's voor komen die gebruikmaken van filters zoals: $filter = PartitionKey EQ ' Sales ' en (RowKey EQ ' 121 ' of RowKey EQ ' 322 ')  
+Houd er rekening mee dat het gebruik van een ' **or** ' om een filter op te geven op basis van **RowKey** waarden resulteert in een partitie scan en niet wordt behandeld als een bereik query. U moet daarom query's voor komen die gebruikmaken van filters zoals: $filter = PartitionKey EQ ' Sales ' en (RowKey EQ ' 121 ' of RowKey EQ ' 322 ')  
 
 Zie voor voor beelden van code aan client zijde die de Storage-client bibliotheek gebruikt voor het uitvoeren van efficiënte query's:  
 

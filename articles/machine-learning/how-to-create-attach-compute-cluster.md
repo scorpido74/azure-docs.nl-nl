@@ -11,30 +11,30 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 56ab5ba93545ffdbfd36850c08eda78cc239f694
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207118"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318206"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Een Azure Machine Learning-rekencluster maken
 
 Meer informatie over het maken en beheren van een [berekenings cluster](concept-compute-target.md#azure-machine-learning-compute-managed) in uw Azure machine learning-werk ruimte.
 
-U kunt Azure Machine Learning Compute-cluster gebruiken voor het distribueren van een training of batch-deprocessor proces over een cluster van CPU-of GPU-reken knooppunten in de Cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten. 
+U kunt Azure Machine Learning Compute-cluster gebruiken voor het distribueren van een training of batch-deprocessor proces over een cluster van CPU-of GPU-reken knooppunten in de Cloud. Zie [grootten geoptimaliseerd voor virtuele machines](../virtual-machines/sizes-gpu.md)voor meer informatie over de VM-grootten die GPU bevatten. 
 
 In dit artikel leert u het volgende:
 
 * Een rekencluster maken
 * De kosten voor reken clusters verlagen
-* Een [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het cluster instellen
+* Een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor het cluster instellen
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
-* De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
+* De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
 
 ## <a name="what-is-a-compute-cluster"></a>Wat is een berekenings cluster?
 
@@ -60,7 +60,7 @@ Reken clusters kunnen taken veilig uitvoeren in een [virtuele netwerk omgeving](
 
 ## <a name="create"></a>Maken
 
-**Geschatte tijd**: ongeveer 5 minuten.
+**Geschatte tijd** : ongeveer 5 minuten.
 
 Azure Machine Learning Compute kan worden hergebruikt in uitvoeringen. De compute kan worden gedeeld met andere gebruikers in de werk ruimte en wordt bewaard tussen uitvoeringen, waarbij knoop punten automatisch omhoog of omlaag worden geschaald op basis van het aantal verzonden uitvoeringen en de max_nodes die in uw cluster zijn ingesteld. Met de instelling min_nodes bepaalt u de mini maal beschik bare knoop punten.
 
@@ -74,13 +74,13 @@ De berekening wordt automatisch geschaald naar nul knoop punten wanneer deze nie
 
 Als u een permanente Azure Machine Learning Compute-resource in python wilt maken, geeft u de **vm_size** en **max_nodes** eigenschappen op. Azure Machine Learning gebruikt vervolgens slimme standaard instellingen voor de andere eigenschappen. 
     
-* **vm_size**: de VM-familie van de knoop punten die door Azure machine learning Compute zijn gemaakt.
-* **max_nodes**: het maximum aantal knoop punten waarmee automatisch kan worden geschaald wanneer u een taak op Azure machine learning Compute uitvoert.
+* **vm_size** : de VM-familie van de knoop punten die door Azure machine learning Compute zijn gemaakt.
+* **max_nodes** : het maximum aantal knoop punten waarmee automatisch kan worden geschaald wanneer u een taak op Azure machine learning Compute uitvoert.
 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-U kunt ook verschillende geavanceerde eigenschappen configureren wanneer u Azure Machine Learning Compute maakt. Met de eigenschappen kunt u een permanent cluster met een vaste grootte of binnen een bestaand Azure-Virtual Network in uw abonnement maken.  Zie de [klasse AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) voor meer informatie.
+U kunt ook verschillende geavanceerde eigenschappen configureren wanneer u Azure Machine Learning Compute maakt. Met de eigenschappen kunt u een permanent cluster met een vaste grootte of binnen een bestaand Azure-Virtual Network in uw abonnement maken.  Zie de [klasse AmlCompute](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) voor meer informatie.
 
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
@@ -90,7 +90,7 @@ U kunt ook verschillende geavanceerde eigenschappen configureren wanneer u Azure
 az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
 ```
 
-Zie [AZ ml computetarget Create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true)voor meer informatie.
+Zie [AZ ml computetarget Create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true)voor meer informatie.
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -217,4 +217,4 @@ Zie [beheerde identiteit instellen in Studio](how-to-create-attach-compute-studi
 Gebruik uw berekenings cluster voor het volgende:
 
 * [Een trainings uitvoering verzenden](how-to-set-up-training-targets.md) 
-* [Batch](how-to-use-parallel-run-step.md)afleiding uitvoeren.
+* [Batch](./tutorial-pipeline-batch-scoring-classification.md)afleiding uitvoeren.

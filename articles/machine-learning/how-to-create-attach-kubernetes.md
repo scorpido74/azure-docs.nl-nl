@@ -1,7 +1,7 @@
 ---
 title: Azure Kubernetes-service maken en koppelen
 titleSuffix: Azure Machine Learning
-description: Azure Kubernetes service (AKS) kan worden gebruikt voor het implementeren van een machine learning model als een webservice. Meer informatie over het maken van een nieuw AKS-cluster via Azure Machine Learning. U leert ook hoe u een bestaand AKS-cluster kunt koppelen aan uw Azure Machine Learning-werk ruimte.
+description: Meer informatie over het maken van een nieuw Azure Kubernetes service-cluster via Azure Machine Learning, of het koppelen van een bestaand AKS-cluster aan uw werk ruimte.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b14ba12c9f9b679d1d63008d31825647f42619d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792001"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318057"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken en koppelen
 
@@ -26,25 +26,25 @@ Azure Machine Learning kunt getrainde machine learning modellen implementeren in
 
 - Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
-- De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
+- De [Azure cli-extensie voor machine learning service](reference-azure-machine-learning-cli.md), [Azure machine learning python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
 
-- Als u van plan bent om een Azure-Virtual Network te gebruiken om de communicatie tussen uw Azure ML-werk ruimte en het AKS-cluster te beveiligen, leest u de [netwerk isolatie tijdens de training &](how-to-enable-virtual-network.md) artikel dezicht.
+- Als u van plan bent om een Azure-Virtual Network te gebruiken om de communicatie tussen uw Azure ML-werk ruimte en het AKS-cluster te beveiligen, leest u de [netwerk isolatie tijdens de training &](./how-to-network-security-overview.md) artikel dezicht.
 
 ## <a name="limitations"></a>Beperkingen
 
 - Als u een **Standard Load Balancer (SLB)** hebt geïmplementeerd in uw cluster in plaats van een Basic-Load BALANCER (BLB), maakt u een cluster in de AKS-Portal/cli/SDK en **koppelt** u het vervolgens aan de werk ruimte AML.
 
-- Als u een Azure Policy hebt waarmee het maken van open bare IP-adressen wordt beperkt, mislukt het maken van een AKS-cluster. AKS vereist een openbaar IP-adres voor uitgaand [verkeer](/azure/aks/limit-egress-traffic). Het artikel uitgangs verkeer bevat ook richt lijnen voor het vergren delen van uitgaand verkeer van het cluster via het open bare IP-adres, met uitzonde ring van een aantal volledig gekwalificeerde domein namen. Er zijn twee manieren om een openbaar IP-adres in te scha kelen:
+- Als u een Azure Policy hebt waarmee het maken van open bare IP-adressen wordt beperkt, mislukt het maken van een AKS-cluster. AKS vereist een openbaar IP-adres voor uitgaand [verkeer](../aks/limit-egress-traffic.md). Het artikel uitgangs verkeer bevat ook richt lijnen voor het vergren delen van uitgaand verkeer van het cluster via het open bare IP-adres, met uitzonde ring van een aantal volledig gekwalificeerde domein namen. Er zijn twee manieren om een openbaar IP-adres in te scha kelen:
     - Het cluster kan gebruikmaken van het open bare IP-adres dat standaard is gemaakt met de BLB of SLB, of
-    - Het cluster kan worden gemaakt zonder een openbaar IP-adres en vervolgens moet een openbaar IP-adres met een firewall met een door de gebruiker gedefinieerde route worden geconfigureerd. Zie [cluster uitgang aanpassen met een door de gebruiker gedefinieerde route](/azure/aks/egress-outboundtype)voor meer informatie.
+    - Het cluster kan worden gemaakt zonder een openbaar IP-adres en vervolgens moet een openbaar IP-adres met een firewall met een door de gebruiker gedefinieerde route worden geconfigureerd. Zie [cluster uitgang aanpassen met een door de gebruiker gedefinieerde route](../aks/egress-outboundtype.md)voor meer informatie.
     
     Het AML-besturings vlak communiceert niet met dit open bare IP-adres. Het spreekt naar het AKS-besturings vlak voor implementaties. 
 
-- Als u een AKS-cluster **koppelt** , waarvoor een [geautoriseerd IP-bereik is ingeschakeld voor toegang tot de API-server](/azure/aks/api-server-authorized-ip-ranges), schakelt u de IP-ADRESBEREIKEN van het AML-besturings vlak in voor het AKS-cluster. Het AML-besturings vlak wordt geïmplementeerd in gepaarde regio's en er wordt een afnemende samen Stel op het AKS-cluster geïmplementeerd. Zonder toegang tot de API-server kan het maken van de deinterferentie niet worden geïmplementeerd. Gebruik de [IP-bereiken](https://www.microsoft.com/download/confirmation.aspx?id=56519) voor beide [regio's](/azure/best-practices-availability-paired-regions) bij het inschakelen van de IP-bereiken in een AKS-cluster.
+- Als u een AKS-cluster **koppelt** , waarvoor een [geautoriseerd IP-bereik is ingeschakeld voor toegang tot de API-server](../aks/api-server-authorized-ip-ranges.md), schakelt u de IP-ADRESBEREIKEN van het AML-besturings vlak in voor het AKS-cluster. Het AML-besturings vlak wordt geïmplementeerd in gepaarde regio's en er wordt een afnemende samen Stel op het AKS-cluster geïmplementeerd. Zonder toegang tot de API-server kan het maken van de deinterferentie niet worden geïmplementeerd. Gebruik de [IP-bereiken](https://www.microsoft.com/download/confirmation.aspx?id=56519) voor beide [regio's](../best-practices-availability-paired-regions.md) bij het inschakelen van de IP-bereiken in een AKS-cluster.
 
     Geautoriseerde IP-bereiken werken alleen met Standard Load Balancer.
 
-- Als u een persoonlijk AKS-cluster wilt gebruiken (met behulp van een persoonlijke Azure-koppeling), moet u eerst het cluster maken en het vervolgens **koppelen** aan de werk ruimte. Zie [een persoonlijk Azure Kubernetes service-cluster maken](/azure/aks/private-clusters)voor meer informatie.
+- Als u een persoonlijk AKS-cluster wilt gebruiken (met behulp van een persoonlijke Azure-koppeling), moet u eerst het cluster maken en het vervolgens **koppelen** aan de werk ruimte. Zie [een persoonlijk Azure Kubernetes service-cluster maken](../aks/private-clusters.md)voor meer informatie.
 
 - De naam van de compute voor het AKS-cluster moet uniek zijn binnen uw Azure ML-werk ruimte.
     - De naam is vereist en moet tussen de 3 en 24 tekens lang zijn.
@@ -54,7 +54,7 @@ Azure Machine Learning kunt getrainde machine learning modellen implementeren in
    
  - Als u modellen wilt implementeren op **GPU** -knoop punten of **FPGA** -knoop punten (of een specifieke SKU), moet u een cluster maken met de specifieke SKU. Er is geen ondersteuning voor het maken van een secundaire knooppunt groep in een bestaand cluster en het implementeren van modellen in de secundaire knooppunt groep.
  
-- Wanneer u een cluster maakt of koppelt, kunt u selecteren of u het cluster wilt maken voor __dev-test__ of __productie__ . Als u een AKS-cluster wilt maken voor __ontwikkeling__ , __validatie__ en __testen__ in plaats van productie, stelt u het __cluster doel__ in op __dev-test__ . Als u het cluster doel niet opgeeft, wordt er een __productie__ cluster gemaakt. 
+- Wanneer u een cluster maakt of koppelt, kunt u selecteren of u het cluster wilt maken voor __dev-test__ of __productie__. Als u een AKS-cluster wilt maken voor __ontwikkeling__ , __validatie__ en __testen__ in plaats van productie, stelt u het __cluster doel__ in op __dev-test__. Als u het cluster doel niet opgeeft, wordt er een __productie__ cluster gemaakt. 
 
     > [!IMPORTANT]
     > Een __dev-test-__ cluster is niet geschikt voor verkeer op productie niveau en kan leiden tot meer tijd. Dev/test-clusters garanderen ook geen fout tolerantie.
@@ -70,7 +70,7 @@ Azure Machine Learning kunt getrainde machine learning modellen implementeren in
 
 ## <a name="azure-kubernetes-service-version"></a>Versie van de Azure Kubernetes-service
 
-Met de Azure Kubernetes-service kunt u een cluster maken met behulp van verschillende Kubernetes-versies. Zie [ondersteunde Kubernetes-versies in azure Kubernetes service](/azure/aks/supported-kubernetes-versions)voor meer informatie over de beschik bare versies.
+Met de Azure Kubernetes-service kunt u een cluster maken met behulp van verschillende Kubernetes-versies. Zie [ondersteunde Kubernetes-versies in azure Kubernetes service](../aks/supported-kubernetes-versions.md)voor meer informatie over de beschik bare versies.
 
 Wanneer u een Azure Kubernetes-service cluster **maakt** op basis van een van de volgende methoden, *hebt u geen keuze in de versie* van het cluster dat is gemaakt:
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-Als u **de beschik bare versies programmatisch wilt controleren** , gebruikt u de rest API van de [Container Service-client lijst](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) . Als u de beschik bare versies wilt vinden, bekijkt u de vermeldingen in `orchestratorType` `Kubernetes` . De bijbehorende `orchestrationVersion` vermeldingen bevatten de beschik bare versies die aan uw werk ruimte kunnen worden **gekoppeld** .
+Als u **de beschik bare versies programmatisch wilt controleren** , gebruikt u de rest API van de [Container Service-client lijst](/rest/api/container-service/container%20service%20client/listorchestrators) . Als u de beschik bare versies wilt vinden, bekijkt u de vermeldingen in `orchestratorType` `Kubernetes` . De bijbehorende `orchestrationVersion` vermeldingen bevatten de beschik bare versies die aan uw werk ruimte kunnen worden **gekoppeld** .
 
 Als u de standaard versie wilt vinden die wordt gebruikt bij **het maken** van een cluster via Azure machine learning, zoekt u de vermelding waar `orchestratorType` `Kubernetes` en `default` is `true` . De gekoppelde `orchestratorVersion` waarde is de standaard versie. In het volgende JSON-fragment ziet u een voorbeeld vermelding:
 
@@ -183,18 +183,18 @@ aks_target.wait_for_completion(show_output = True)
 
 Voor meer informatie over de klassen, methoden en para meters die in dit voor beeld worden gebruikt, raadpleegt u de volgende referentie documenten:
 
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
 * [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget. Create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false-)
+* [ComputeTarget. Create](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false-)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az ml computetarget create aks -n myaks
 ```
 
-Zie voor meer informatie de referentie [AZ ml computetarget Create AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) .
+Zie voor meer informatie de referentie [AZ ml computetarget Create AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -215,12 +215,12 @@ Als u al een AKS-cluster in uw Azure-abonnement hebt en versie 1,17 of lager is,
 > [!WARNING]
 > Maak vanuit uw werk ruimte niet meerdere gelijktijdige bijlagen op hetzelfde AKS-cluster. U kunt bijvoorbeeld een AKS-cluster koppelen aan een werk ruimte met behulp van twee verschillende namen. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
 >
-> Als u een AKS-cluster opnieuw wilt koppelen, bijvoorbeeld om TLS of een andere cluster configuratie-instelling te wijzigen, moet u eerst de bestaande bijlage verwijderen met behulp van [AksCompute. Detach ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#detach--).
+> Als u een AKS-cluster opnieuw wilt koppelen, bijvoorbeeld om TLS of een andere cluster configuratie-instelling te wijzigen, moet u eerst de bestaande bijlage verwijderen met behulp van [AksCompute. Detach ()](/python/api/azureml-core/azureml.core.compute.akscompute?preserve-view=true&view=azure-ml-py#detach--).
 
 Raadpleeg de volgende artikelen voor meer informatie over het maken van een AKS-cluster met behulp van de Azure CLI of portal:
 
-* [Een AKS-cluster maken (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest&preserve-view=true#az-aks-create)
-* [Een AKS-cluster maken (Portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest&preserve-view=true)
+* [Een AKS-cluster maken (CLI)](/cli/azure/aks?bc=%252fazure%252fbread%252ftoc.json&preserve-view=true&toc=%252fazure%252faks%252fTOC.json&view=azure-cli-latest#az-aks-create)
+* [Een AKS-cluster maken (Portal)](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
 * [Een AKS-cluster maken (ARM-sjabloon in azure Quick Start-sjablonen)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 In het volgende voor beeld ziet u hoe u een bestaand AKS-cluster koppelt aan uw werk ruimte:
@@ -248,10 +248,10 @@ aks_target.wait_for_completion(show_output = True)
 Voor meer informatie over de klassen, methoden en para meters die in dit voor beeld worden gebruikt, raadpleegt u de volgende referentie documenten:
 
 * [AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
-* [AksCompute. attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#attach-workspace--name--attach-configuration-)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
+* [AksCompute. attach](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u een bestaand cluster wilt koppelen met behulp van de CLI, moet u de bron-ID van het bestaande cluster ophalen. Gebruik de volgende opdracht om deze waarde op te halen. Vervang door `myexistingcluster` de naam van uw AKS-cluster. Vervang door `myresourcegroup` de resource groep die het cluster bevat:
 
@@ -271,7 +271,7 @@ Gebruik de volgende opdracht om het bestaande cluster aan uw werk ruimte te kopp
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Zie voor meer informatie de referentie [AZ ml computetarget attach AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-attach-aks) .
+Zie voor meer informatie de referentie [AZ ml computetarget attach AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -284,7 +284,7 @@ Zie [Compute-doelen maken in azure machine learning Studio](how-to-create-attach
 Gebruik een van de volgende methoden om een cluster los te koppelen van uw werk ruimte:
 
 > [!WARNING]
-> Als u de Azure Machine Learning Studio, SDK of de Azure CLI-extensie gebruikt voor machine learning om een AKS-cluster los te koppelen, **wordt het AKS-cluster niet verwijderd** . Zie [de Azure CLI gebruiken met AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster)voor het verwijderen van het cluster.
+> Als u de Azure Machine Learning Studio, SDK of de Azure CLI-extensie gebruikt voor machine learning om een AKS-cluster los te koppelen, **wordt het AKS-cluster niet verwijderd**. Zie [de Azure CLI gebruiken met AKS](../aks/kubernetes-walkthrough.md#delete-the-cluster)voor het verwijderen van het cluster.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -292,7 +292,7 @@ Gebruik een van de volgende methoden om een cluster los te koppelen van uw werk 
 aks_target.detach()
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Gebruik de volgende opdracht om het bestaande cluster los te koppelen aan uw werk ruimte. Vervang door `myaks` de naam die het AKS-cluster aan uw werk ruimte is gekoppeld. Vervang door `myresourcegroup` de resource groep die uw werk ruimte bevat. Vervang door `myworkspace` de naam van uw werk ruimte.
 

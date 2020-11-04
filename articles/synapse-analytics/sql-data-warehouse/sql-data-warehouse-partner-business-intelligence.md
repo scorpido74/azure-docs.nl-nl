@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a21cee6806c4200a73b35afba73cf04d7ca60308
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 33571283b876506e419ed675dde0988974c3841e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280020"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317879"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>business intelligence partners van Azure Synapse Analytics
 
@@ -41,7 +41,7 @@ Als u uw data warehouse-oplossing wilt maken, kunt u kiezen uit verschillende so
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Met de self-service-analyse van tableau kunnen gebruikers hun gegevens bekijken en begrijpen, in veel soorten gegevens van platte bestanden tot data bases. Tableau heeft een native, geoptimaliseerde connector voor Synapse SQL-groep die zowel live data als in-Memory analyse ondersteunt. |[Product pagina](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**TARGIT (besluit Suite)**<br>TARGIT decision Suite biedt een BI-platform dat realtime Dash boards, self-service analyses, gebruikers vriendelijke rapporten, verbluffende mobiele mogelijkheden en eenvoudige gegevens detectie technologie levert. Alles in één samenhangende oplossing. TARGIT biedt bedrijven de Voorst te nemen. |[Product pagina](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/targit.targit-decision-suite)<br> |
 | ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>Gebruik zoeken om nauw keurige inzichten te verkrijgen uit miljarden rijen, of laat AI inzicht krijgen in vragen die u mogelijk niet hebt behandeld. ThoughtSpot helpt businesspeople om in enkele seconden verborgen inzichten in hun bedrijfs gegevens te vinden. Gebruik zoeken om uw gegevens te analyseren en geautomatiseerd inzicht te krijgen wanneer u ze nodig hebt.|[Product pagina](https://www.thoughtspot.com)<br>|
-| ![Volgroeide](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Volgroeide**<br>Bij het maken van BARC is een belangrijkste leverancier van Cloud BI voor _ad-hoc_ -rapportage en-dash boards. De BI-enquête. Maak verbinding met de Synapse-SQL-pool en deel prachtige rapporten en dash boards met behulp van bekroonde, samenwerkings functies voor BI en locatie Intelligence. |[Product pagina](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
+| ![Volgroeide](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Volgroeide**<br>Bij het maken van BARC is een belangrijkste leverancier van Cloud BI voor _ad-hoc_ -rapportage en-dash boards. De BI-enquête. Maak verbinding met een toegewezen SQL-groep in azure Synapse Analytics en deel prachtige rapporten en dash boards met behulp van bekroonde, samenwerkings functies voor BI en locatie Intelligence. |[Product pagina](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 

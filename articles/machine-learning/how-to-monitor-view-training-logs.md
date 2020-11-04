@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 11e4b79bf76a4612728992f7c16000d840b9c639
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285948"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316678"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>MILLILITERs logboeken en-metrische gegevens bewaken en weer geven
 
@@ -58,7 +58,7 @@ Zodra een uitvoering is voltooid, wordt deze niet meer weer gegeven op deze pagi
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Monitor uitvoeringen met behulp van de Jupyter notebook-widget
 
-Wanneer u de methode **ScriptRunConfig** gebruikt om uitvoeringen te verzenden, kunt u de voortgang van de uitvoering bekijken met behulp van de [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true). Net als het indienen van de run, is de widget asynchroon en biedt deze elke 10-15 seconden live updates totdat de taak is voltooid.
+Wanneer u de methode **ScriptRunConfig** gebruikt om uitvoeringen te verzenden, kunt u de voortgang van de uitvoering bekijken met behulp van de [Jupyter-widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). Net als het indienen van de run, is de widget asynchroon en biedt deze elke 10-15 seconden live updates totdat de taak is voltooid.
 
 Bekijk de widget Jupyter tijdens het wachten tot de uitvoering is voltooid.
     
@@ -134,4 +134,3 @@ Voer de volgende stappen uit om te leren hoe u Azure Machine Learning gebruikt:
 * Meer informatie over het [bijhouden van experimenten en het inschakelen van Logboeken in de Azure machine learning Designer](how-to-track-designer-experiments.md).
 
 * Bekijk een voorbeeld van hoe u het beste model registreert en implementeert in de zelfstudie [Een afbeeldingsclassificatiemodel trainen met Azure Machine Learning](tutorial-train-models-with-aml.md).
-

@@ -1,6 +1,6 @@
 ---
-title: Gegevens opnemen in een SQL-groep
-description: Meer informatie over het opnemen van gegevens in een SQL-groep in azure Synapse Analytics
+title: Gegevens opnemen in een toegewezen SQL-groep
+description: Meer informatie over het opnemen van gegevens in een toegewezen SQL-groep in azure Synapse Analytics
 services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40f8834a69101682abaaa7eac8ec9cafe8ef3d9e
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317793"
 ---
-# <a name="ingest-data-into-a-sql-pool"></a>Gegevens opnemen in een SQL-groep
+# <a name="ingest-data-into-a-dedicated-sql-pool"></a>Gegevens opnemen in een toegewezen SQL-groep
 
-In dit artikel leert u hoe u gegevens opneemt vanuit een Azure Data Lake gen 2-opslag account in een SQL-pool met behulp van Azure Synapse Analytics.
+In dit artikel leert u hoe u gegevens opneemt van een Azure Data Lake gen 2-opslag account in een toegewezen SQL-groep in azure Synapse Analytics.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * **Azure-abonnement** : als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 * **Azure-opslag account** : u Azure data Lake Storage gen 2 gebruiken als een *brongegevens* opslag. Als u geen opslag account hebt, raadpleegt u [een Azure Storage-account maken](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om er een te maken.
-* **Azure Synapse Analytics** : u gebruikt een SQL-groep als *sink* -gegevens archief. Als u geen exemplaar van Azure Synapse Analytics hebt, raadpleegt u [een SQL-groep maken](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om er een te maken.
+* **Azure Synapse Analytics** : u gebruikt een toegewezen SQL-groep als *sink* -gegevens archief. Als u geen exemplaar van Azure Synapse Analytics hebt, raadpleegt u [een speciale SQL-groep maken](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om er een te maken.
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
@@ -39,7 +39,7 @@ In azure Synapse Analytics is een gekoppelde service waar u de verbindings gegev
 
 ## <a name="create-pipeline"></a>Pijplijn maken
 
-Een pijp lijn bevat de logische stroom voor het uitvoeren van een reeks activiteiten. In deze sectie maakt u een pijp lijn met een Kopieer activiteit waarmee gegevens uit ADLS Gen2 worden opgenomen in een SQL-groep.
+Een pijp lijn bevat de logische stroom voor het uitvoeren van een reeks activiteiten. In deze sectie maakt u een pijp lijn met een Kopieer activiteit waarmee gegevens uit ADLS Gen2 worden opgenomen in een toegewezen SQL-groep.
 
 1. Ga naar het tabblad **integreren** . Selecteer op het plus-pictogram naast de kop pijp lijnen en selecteer **pijp lijn**.
 1. Sleep onder **verplaatsen en transformeren** in het deel venster activiteiten de gegevens naar het pijp lijn papier **kopiëren** .
@@ -68,7 +68,7 @@ In deze stap moet u de pijp lijn die u in de vorige stap hebt gepubliceerd hand 
 1. Selecteer op de werkbalk de optie **Trigger toevoegen** en selecteer vervolgens **Nu activeren**. Selecteer op de pagina **pijplijn uitvoering** de optie **volt ooien**.  
 1. Ga naar het tabblad **monitor** in de zijbalk links. U ziet een pijplijn die wordt geactiveerd door een handmatige trigger. U kunt via de links in de kolom **Acties** details van de activiteiten bekijken en de pijplijn opnieuw uitvoeren.
 1. Selecteer de link **Uitvoeringen van activiteit weergeven** in de kolom **Acties** om de activiteituitvoeringen te zien die zijn gekoppeld aan de pijplijnuitvoering. Omdat er in dit voorbeeld slechts één activiteit is, ziet u slechts één vermelding in de lijst. Selecteer de link **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. Selecteer de **pijp lijn wordt** aan de bovenkant uitgevoerd om terug te gaan naar de weer gave pijplijn uitvoeringen. Selecteer **Vernieuwen** om de weergave te vernieuwen.
-1. Controleer of uw gegevens correct zijn geschreven in de SQL-groep.
+1. Controleer of uw gegevens correct zijn geschreven in de toegewezen SQL-groep.
 
 
 ## <a name="next-steps"></a>Volgende stappen
