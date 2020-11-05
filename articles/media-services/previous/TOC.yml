@@ -3,8 +3,10 @@
 - name: Overzicht
   href: media-services-overview.md
   items:
-    - name: Scenario's en beschikbaarheid
+    - name: Algemene scenario's
       href: scenarios-and-availability.md
+    - name: Regionale beschikbaarheid
+      href: availability-regions-v-2.md
     - name: Concepten
       href: media-services-concepts.md
 - name: Aan de slag

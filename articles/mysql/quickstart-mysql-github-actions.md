@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: ce045da7d21c2af0dfde5ee896b4f7f343ce6545
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541261"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337010"
 ---
-# <a name="use-github-actions-to-connect-to-azure-mysql"></a>GitHub Actions gebruiken om verbinding te maken met Azure MySQL
+# <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Quickstart: GitHub Actions gebruiken om verbinding te maken met Azure MySQL
 
 Aan de slag met [GitHub Actions](https://docs.github.com/en/actions) met behulp van een werkstroom voor het implementeren van database-updates voor [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/). 
 
@@ -66,7 +66,7 @@ De uitvoer is een JSON-object met de roltoewijzingsreferenties die toegang biede
 
 ## <a name="copy-the-mysql-connection-string"></a>MySQL-verbindingsreeks kopiëren 
 
-Ga in het Azure Portal naar uw Azure Database for MySQL-server en open **Instellingen** > **Verbindingsreeksen** . Kopieer de verbindingsreeks voor **ADO.NET** . Vervang de plaatsaanduidingswaarden door `your_database` en `your_password`. De verbindingsreeks ziet er ongeveer als volgt uit. 
+Ga in het Azure Portal naar uw Azure Database for MySQL-server en open **Instellingen** > **Verbindingsreeksen**. Kopieer de verbindingsreeks voor **ADO.NET**. Vervang de plaatsaanduidingswaarden door `your_database` en `your_password`. De verbindingsreeks ziet er ongeveer als volgt uit. 
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
@@ -77,7 +77,7 @@ U gebruikt de verbindingsreeks als een GitHub-geheim.
 
 1. In [GitHub](https://github.com/), bladert u in uw opslagplaats.
 
-1. Selecteer **Instellingen > Geheimen > Nieuwe geheimen** .
+1. Selecteer **Instellingen > Geheimen > Nieuwe geheimen**.
 
 1. Plak de volledige JSON-uitvoer van de Azure CLI-opdracht in het waardeveld van het geheim. Geef het geheim de naam `AZURE_CREDENTIALS`.
 
@@ -98,7 +98,7 @@ U gebruikt de verbindingsreeks als een GitHub-geheim.
 
 1. Ga naar **Acties** voor uw GitHub-opslagplaats. 
 
-2. Selecteer **Uw werkstroom zelf instellen** . 
+2. Selecteer **Uw werkstroom zelf instellen**. 
 
 2. Verwijder alles na de sectie `on:` van uw werkstroombestand. Uw resterende werkstroom kan er bijvoorbeeld als volgt uitzien. 
 

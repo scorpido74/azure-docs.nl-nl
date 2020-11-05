@@ -4,7 +4,7 @@
   items:
     - name: Informatie over virtuele machines
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Virtuele machine maken - Portal
       href: quick-create-portal.md
@@ -558,7 +558,7 @@
     - name: Virtuele machines beveiligen
       items:
         - name: Aanbevelingen
-          href: security-recommendations.md
+          href: ../security-recommendations.md
         - name: Just-in-time-toegang
           href: ../../security-center/security-center-just-in-time.md
         - name: Azure Bastion gebruiken
@@ -666,7 +666,7 @@
         - name: Azure VM-agent
           href: ../extensions/agent-windows.md
         - name: Speculatieve uitvoering beperken
-          href: mitigate-se.md
+          href: ../mitigate-se.md
         - name: Metagegevens bewaken
           href: instance-metadata-service.md
         - name: Geneste virtualisatie inschakelen
@@ -959,7 +959,7 @@
         - name: Versneld netwerken gebruiken
           href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Een openbare DNS-naam toewijzen
-          href: portal-create-fqdn.md
+          href: ../create-fqdn.md
         - name: DNS-resolutie
           href: ../../dns/dns-for-azure-services.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Beheerde identiteiten configureren

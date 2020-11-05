@@ -147,8 +147,6 @@
       items:
         - name: Publiceren naar een app-bron
           href: howto-get-appsource-certified.md
-        - name: Publiceren naar de Azure AD-app-galerie
-          href: howto-app-gallery-listing.md
         - name: Publiceren naar het Office 365-verkopersdashboard
           href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
     - name: Azure Access Control Service

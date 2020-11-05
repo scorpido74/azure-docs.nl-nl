@@ -1,4 +1,4 @@
-- name: Documentatie voor Azure DB for PostgreSQL
+- name: Documentatie voor Azure Database for PostgreSQL
   href: index.yml
 - name: Overzicht
   items:
@@ -255,6 +255,9 @@
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore, georestore, geo-restore, outage'
+            - name: Een gestopte server herstellen
+              href: howto-restore-dropped-server.md
+              displayName: 'restore server,dropped, recover'
         - name: Verificatie inschakelen
           items:
             - name: Gebruikers maken

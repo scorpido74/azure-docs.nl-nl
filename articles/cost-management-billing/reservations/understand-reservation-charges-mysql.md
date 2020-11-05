@@ -1,18 +1,18 @@
 ---
 title: 'Meer informatie over reserveringskorting: Azure Database for MySQL Single-servers'
 description: Meer informatie over hoe reserveringskorting wordt toegepast op uw Azure Database for MySQL-servers.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 5cb4e3dd4145319361a2494ee346c0d2696edf45
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 85a8c59cce74787a7b1723850915ec133b34b3b0
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148307"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240372"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>Hoe reserveringskorting wordt toegepast op Azure Database for MySQL
 
@@ -20,7 +20,7 @@ Wanneer u gereserveerde capaciteit voor Azure Database for MySQL hebt gekocht, w
 
 ## <a name="how-reservation-discount-is-applied"></a>De manier waarop reserveringskorting wordt toegepast
 
-Voor een reserveringskorting geldt: ***gebruiken of verliezen***. Als u voor een bepaald uur geen passende resources hebt, verliest u de reserveringshoeveelheid voor dat uur. U kunt ongebruikte gereserveerde uren niet meenemen.</br>
+Voor een reserveringskorting geldt * **gebruiken of verliezen** _. Als u voor een bepaald uur geen passende resources hebt, verliest u de reserveringshoeveelheid voor dat uur. U kunt ongebruikte gereserveerde uren niet meenemen.</br>
 
 Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomstige resources in het opgegeven bereik worden gevonden, verliest u de gereserveerde uren.
 
@@ -30,15 +30,15 @@ De korting op gereserveerde capaciteit voor Azure Database for MySQL wordt op uu
 
 In de volgende voorbeelden ziet u hoe de korting voor de gereserveerde capaciteit voor Azure Database for MySQL wordt toegepast, afhankelijk van hoeveel kernen u hebt aangeschaft en wanneer deze worden uitgevoerd.
 
-**Voorbeeld 1**: U koopt een gereserveerde capaciteit voor Azure Database for MySQL voor acht vCores. Als u een Azure Database for MySQL-server met 16 vCores uitvoert die met de rest van de reserveringskenmerken overeenkomt, betaalt u voor 8 vCores van uw MySQL-serverrekengebruik de prijs per gebruik en krijgt u op de andere 8 vCores een uur lang reserveringskorting.</br>
+_ **Voorbeeld 1** : U koopt een gereserveerde capaciteit voor Azure Database for MySQL voor acht vCores. Als u een Azure Database for MySQL-server met 16 vCores uitvoert die met de rest van de reserveringskenmerken overeenkomt, betaalt u voor 8 vCores van uw MySQL-serverrekengebruik de prijs per gebruik en krijgt u op de andere 8 vCores een uur lang reserveringskorting.</br>
 
 Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capaciteit voor Azure Database for MySQL met 16 vCores koopt en dat de rest van de reserveringskenmerken overeenkomen met de actieve MySQL-servers.
 
-* **Voorbeeld 2**: U voert gedurende een uur twee Azure Database for MySQL-servers met 8 vCores uit. De reserveringskorting voor 16 vCores wordt toegepast op het rekengebruik van beide Azure Database for MySQL-servers met 8 vCores.
+* **Voorbeeld 2** : U voert gedurende een uur twee Azure Database for MySQL-servers met 8 vCores uit. De reserveringskorting voor 16 vCores wordt toegepast op het rekengebruik van beide Azure Database for MySQL-servers met 8 vCores.
 
-* **Voorbeeld 3**: U voert van 13.00 tot 13.30 uur een Azure Database for MySQL-server met 16 vCores uit. Van 13.30 tot 14.00 uur voert u nog een Azure Database for MySQL-server met 16 vCores uit. Beide worden gedekt door de reserveringskorting.
+* **Voorbeeld 3** : U voert van 13.00 tot 13.30 uur een Azure Database for MySQL-server met 16 vCores uit. Van 13.30 tot 14.00 uur voert u nog een Azure Database for MySQL-server met 16 vCores uit. Beide worden gedekt door de reserveringskorting.
 
-* **Voorbeeld 4**: U voert van 13.00 tot 13.45 uur een Azure Database for MySQL-server met 16 vCores uit. Van 13.30 tot 14.00 uur voert u nog een Azure Database for MySQL-server met 16 vCores uit. Voor de overlapping van 15 minuten wordt de prijs voor betalen per gebruik in rekening gebracht. De reserveringskorting geldt voor het rekengebruik voor de rest van de tijd.
+* **Voorbeeld 4** : U voert van 13.00 tot 13.45 uur een Azure Database for MySQL-server met 16 vCores uit. Van 13.30 tot 14.00 uur voert u nog een Azure Database for MySQL-server met 16 vCores uit. Voor de overlapping van 15 minuten wordt de prijs voor betalen per gebruik in rekening gebracht. De reserveringskorting geldt voor het rekengebruik voor de rest van de tijd.
 
 Raadpleeg [Meer informatie over Azure-reserveringsgebruik](./understand-reserved-instance-usage-ea.md) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
 

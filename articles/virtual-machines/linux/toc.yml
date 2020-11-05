@@ -4,7 +4,7 @@
   items:
     - name: Informatie over virtuele machines
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Virtuele machine maken - Azure CLI
       href: quick-create-cli.md
@@ -582,7 +582,7 @@
     - name: Virtuele machines beveiligen
       items:
         - name: Aanbevelingen
-          href: security-recommendations.md
+          href: ../security-recommendations.md
         - name: Just-in-time-toegang
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure Bastion gebruiken
@@ -717,7 +717,7 @@
             - name: Update van agent
               href: ../extensions/update-linux-agent.md
         - name: Speculatieve uitvoering beperken
-          href: mitigate-se.md
+          href: ../mitigate-se.md
         - name: Metagegevens bewaken
           href: instance-metadata-service.md
         - name: Metrische gebruiksgegevens ophalen met REST
@@ -1045,7 +1045,7 @@
         - name: Versneld netwerken gebruiken
           href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Een openbare DNS-naam toewijzen
-          href: portal-create-fqdn.md
+          href: ../create-fqdn.md
         - name: Niet-gekoppelde NIC's zoeken en verwijderen
           href: find-unattached-nics.md
         - name: DNS-resolutie
