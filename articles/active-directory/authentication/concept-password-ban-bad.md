@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd367b337a0f26323411111ea7eb1120bf6d75d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c4da1066166a3384ffb5f0f94599452829faed1b
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965179"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356583"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Verwijder ongeldige wacht woorden met Azure Active Directory wachtwoord beveiliging
 
@@ -44,7 +44,7 @@ De lijst met globale verboden wacht woorden wordt automatisch toegepast op alle 
 
 ## <a name="custom-banned-password-list"></a>Aangepaste lijst met verboden wacht woorden
 
-Sommige organisaties willen de beveiliging verbeteren en hun eigen aanpassingen toevoegen boven op de lijst met globale verboden wacht woorden. U kunt de *aangepaste lijst met geblokkeerde wacht woorden*gebruiken om uw eigen vermeldingen toe te voegen. Termen die zijn toegevoegd aan de lijst met aangepaste geblokkeerde wacht woorden, moeten worden gericht op organisatie-specifieke voor waarden, zoals de volgende voor beelden:
+Sommige organisaties willen de beveiliging verbeteren en hun eigen aanpassingen toevoegen boven op de lijst met globale verboden wacht woorden. U kunt de *aangepaste lijst met geblokkeerde wacht woorden* gebruiken om uw eigen vermeldingen toe te voegen. Termen die zijn toegevoegd aan de lijst met aangepaste geblokkeerde wacht woorden, moeten worden gericht op organisatie-specifieke voor waarden, zoals de volgende voor beelden:
 
 - Merknamen
 - Productnamen
@@ -202,7 +202,7 @@ Laten we eens kijken hoe extra complexiteit in een wacht woord het vereiste aant
 > [!IMPORTANT]
 > De verboden wachtwoord algoritme, samen met de lijst met globale verboden wacht woorden, kan op elk gewenst moment in Azure worden gewijzigd op basis van de continue beveiligings analyse en onderzoek.
 >
-> Voor de on-premises DC-Agent service in hybride scenario's worden bijgewerkte algoritmen pas van kracht nadat de software van de DC-agent opnieuw is geïnstalleerd.
+> Voor de on-premises DC-Agent service in hybride scenario's worden bijgewerkte algoritmen pas van kracht nadat de software van de DC-agent is bijgewerkt.
 
 ## <a name="what-do-users-see"></a>Wat gebruikers zien
 

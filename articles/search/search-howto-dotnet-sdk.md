@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 47cface4efbf38f2cec630745d498db674c936d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4b3256591c0aa2536fd42bcdbb2ef339fc1d5c48
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791950"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356804"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>Azure.Search.Documents gebruiken in een C# .NET-toepassing
 
@@ -60,7 +60,7 @@ Azure SDK voor .NET voldoet aan [.NET Standard 2,0](/dotnet/standard/net-standar
 
 ## <a name="example-application"></a>Voorbeeld toepassing
 
-In dit artikel leert u hoe u het [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo/v11) -code voorbeeld op github kunt gebruiken om basis concepten te illustreren in azure Cognitive Search-specifiek, hoe u een zoek index maakt, laadt en er query's op uitvoert.
+In dit artikel leert u hoe u het [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) -code voorbeeld op github kunt gebruiken om basis concepten te illustreren in azure Cognitive Search-specifiek, hoe u een zoek index maakt, laadt en er query's op uitvoert.
 
 Voor de rest van dit artikel wordt ervan uitgegaan dat er een nieuwe index met de naam "Hotels" is gevuld met een paar documenten, met verschillende query's die overeenkomen met de resultaten.
 

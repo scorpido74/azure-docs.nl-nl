@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Azure-opslagservices
+title: Verbinding maken met Storage services in azure
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van data stores om veilig verbinding te maken met Azure Storage-services tijdens de training met Azure Machine Learning
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 07/22/2020
-ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: db641eee13350f5a774e4ffd138e38c474af4981
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/03/2020
+ms.custom: how-to, contperfq1, devx-track-python, data4ml
+ms.openlocfilehash: f60d864bd367b5f44869abc9ccac4e4cc266075a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320869"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358096"
 ---
-# <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure-opslagservices
+# <a name="connect-to-storage-services-azure"></a>Verbinding maken met Storage services Azure
 
-In dit artikel leert u hoe u **verbinding kunt maken met Azure Storage-services via Azure machine learning gegevens opslag**. Data stores maken een beveiligde verbinding met uw Azure Storage-service zonder dat uw verificatie referenties en de integriteit van de oorspronkelijke gegevens bron risico lopen. Er worden verbindings gegevens opgeslagen, zoals uw abonnements-ID en Token autorisatie in uw [Key Vault](https://azure.microsoft.com/services/key-vault/) die aan de werk ruimte zijn gekoppeld, zodat u veilig toegang kunt krijgen tot uw opslag zonder dat u deze hoeft te coderen in uw scripts. U kunt de [Azure machine learning python-SDK](#python) of de [Azure machine learning Studio](how-to-connect-data-ui.md) gebruiken om gegevens opslag te maken en te registreren.
+In dit artikel leert u hoe u **verbinding kunt maken met Storage services op Azure via Azure machine learning gegevens opslag**. Data stores maken een beveiligde verbinding met uw Azure Storage-service zonder dat uw verificatie referenties en de integriteit van de oorspronkelijke gegevens bron risico lopen. Er worden verbindings gegevens opgeslagen, zoals uw abonnements-ID en Token autorisatie in uw [Key Vault](https://azure.microsoft.com/services/key-vault/) die aan de werk ruimte zijn gekoppeld, zodat u veilig toegang kunt krijgen tot uw opslag zonder dat u deze hoeft te coderen in uw scripts. U kunt de [Azure machine learning python-SDK](#python) of de [Azure machine learning Studio](how-to-connect-data-ui.md) gebruiken om gegevens opslag te maken en te registreren.
 
 Als u gegevens opslag wilt maken en beheren met behulp van de Azure Machine Learning VS code-extensie; Ga naar de [bron beheer handleiding voor het VS code-overzicht](how-to-manage-resources-vscode.md#datastores) voor meer informatie.
 
@@ -109,11 +109,13 @@ U vindt de account sleutel, het SAS-token en de gegevens van de Service-Principa
     * De bijbehorende **overzichts** pagina bevat de vereiste informatie, zoals Tenant-id en client-id.
 
 > [!IMPORTANT]
-> Uit veiligheids overwegingen moet u mogelijk uw toegangs sleutels wijzigen voor een Azure Storage account (account sleutel of SAS-token). Zorg er daarom voor dat u de nieuwe referenties synchroniseert met uw werk ruimte en de gegevens opslag die ermee zijn verbonden. Meer informatie over [het synchroniseren van uw bijgewerkte referenties](how-to-change-storage-access-key.md). 
-
+> * Als u de toegangs sleutels voor een Azure Storage account (account sleutel of SAS-token) wilt wijzigen, moet u ervoor zorgen dat u de nieuwe referenties synchroniseert met uw werk ruimte en de gegevens opslag die ermee zijn verbonden. Meer informatie over [het synchroniseren van uw bijgewerkte referenties](how-to-change-storage-access-key.md). 
 ### <a name="permissions"></a>Machtigingen
 
-Voor Azure Blob-container en Azure Data Lake gen 2-opslag, moet u ervoor zorgen dat uw verificatie referenties toegang hebben tot de **gegevens lezer** van de opslag-blob. Meer informatie over [Storage BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). Een SAS-token voor het account is standaard ingesteld op geen machtigingen. Voor lees toegang voor gegevens moet uw verificatie referenties mini maal lijst-en lees machtigingen voor containers en objecten hebben. Voor het schrijven van gegevens is het schrijven en toevoegen van machtigingen ook vereist.
+Voor Azure Blob-container en Azure Data Lake gen 2-opslag, moet u ervoor zorgen dat uw verificatie referenties toegang hebben tot **BLOB-gegevens lezer voor opslag** . Meer informatie over [Storage BLOB data Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). Een SAS-token voor het account is standaard ingesteld op geen machtigingen. 
+* Voor **Lees toegang** voor gegevens moet uw verificatie referenties mini maal lijst-en lees machtigingen voor containers en objecten hebben. 
+
+* Voor het **schrijven** van gegevens is het schrijven en toevoegen van machtigingen ook vereist.
 
 <a name="python"></a>
 
@@ -130,6 +132,8 @@ In deze sectie vindt u voor beelden van het maken en registreren van een gegeven
  Zie de [documentatie van de betreffende `register_azure_*` methoden](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods)voor het maken van gegevens opslag voor andere ondersteunde opslag Services.
 
 Zie [verbinding maken met gegevens met Azure machine learning Studio](how-to-connect-data-ui.md)als u de voor keur geeft aan een lage code-ervaring.
+>[!IMPORTANT]
+> Als u de registratie ongedaan maakt en een gegevens archief met dezelfde naam opnieuw registreert, en dit mislukt, is het mogelijk dat de Azure Key Vault voor uw werk ruimte niet voor het voorlopig verwijderen is ingeschakeld. Voorlopig verwijderen is standaard ingeschakeld voor het sleutel kluis-exemplaar dat is gemaakt door uw werk ruimte, maar kan niet worden ingeschakeld als u een bestaande sleutel kluis hebt gebruikt of een werk ruimte hebt gemaakt vóór oktober 2020. Zie voor meer informatie over het inschakelen van soft voorlopig [verwijderen inschakelen voor een bestaande sleutel kluis]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 > [!NOTE]
 > De naam van het gegevens archief mag alleen bestaan uit kleine letters, cijfers en onderstrepings tekens. 

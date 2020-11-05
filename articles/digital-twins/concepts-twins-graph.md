@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c62d1a0b17fda2531a963c292fbd16aaf3a551b3
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a1fc5be93e2b9729838aa9fb3a777936003c5f45
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145987"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356384"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
 
-In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgeving vertegenwoordigd door Azure **Digital apparaatdubbels** . Een digitale dubbele is een exemplaar van een van uw door uw eigen gedefinieerde [modellen](concepts-models.md). Het kan worden verbonden met andere digitale apparaatdubbels via **relaties** om een **dubbele grafiek** te vormen: deze dubbele grafiek is de weer gave van uw gehele omgeving.
+In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgeving vertegenwoordigd door Azure **Digital apparaatdubbels**. Een digitale dubbele is een exemplaar van een van uw door uw eigen gedefinieerde [modellen](concepts-models.md). Het kan worden verbonden met andere digitale apparaatdubbels via **relaties** om een **dubbele grafiek** te vormen: deze dubbele grafiek is de weer gave van uw gehele omgeving.
 
 > [!TIP]
 > ' Azure Digital Apparaatdubbels ' verwijst naar deze Azure-service als geheel. ' Digitale twee (en) ' of alleen ' dubbele (s) ' verwijzen naar afzonderlijke dubbele knoop punten in uw exemplaar van de service.
@@ -43,20 +43,20 @@ In deze sectie ziet u hoe u digitale apparaatdubbels en relaties van een client 
 
 ### <a name="create-digital-twins"></a>Digitale tweelingen maken
 
-Hieronder vindt u een code fragment van de clientcode die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het instantiëren van een dubbele van het type *kamer* .
+Hieronder vindt u een code fragment van de clientcode die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het instantiëren van een dubbele van het type *kamer*.
 
 U kunt de eigenschappen van een dubbele waarde initialiseren wanneer deze wordt gemaakt of later instellen. Als u een dubbele met geïnitialiseerde eigenschappen wilt maken, moet u een JSON-document maken dat de benodigde initialisatie waarden verschaft.
 
 [!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
 
-U kunt ook een helper-klasse met de naam gebruiken `BasicDigitalTwin` om eigenschaps velden in een ' twee ' object direct sneller op te slaan als alternatief voor het gebruik van een woorden lijst. Zie voor meer informatie over de Help-klasse en voor beelden van het gebruik van het artikel [*een digitale dubbele sectie maken*](how-to-manage-twin.md#create-a-digital-twin) van *How-to: Manage Digital apparaatdubbels* .
+U kunt ook een helper-klasse met de naam gebruiken `BasicDigitalTwin` om eigenschaps velden in een ' twee ' object direct sneller op te slaan als alternatief voor het gebruik van een woorden lijst. Zie voor meer informatie over de Help-klasse en voor beelden van het gebruik van het artikel [*een digitale dubbele sectie maken*](how-to-manage-twin.md#create-a-digital-twin) van *How-to: Manage Digital apparaatdubbels*.
 
 >[!NOTE]
 >Hoewel dubbele eigenschappen als optioneel worden beschouwd en dus niet hoeven te worden geïnitialiseerd, moeten [onderdelen](concepts-models.md#elements-of-a-model) op de dubbele **taak** worden ingesteld wanneer de dubbele eigenschap wordt gemaakt. Ze kunnen lege objecten zijn, maar de onderdelen zelf moeten aanwezig zijn.
 
 ### <a name="create-relationships"></a>Relaties maken
 
-Hier volgt een voor beeld van een client code die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het bouwen van een relatie tussen een van de twee *basis* typen, *GroundFloor* en een *kamer* type digitale dubbele naam *Cafe* .
+Hier volgt een voor beeld van een client code die gebruikmaakt van de [DigitalTwins-api's](/rest/api/digital-twins/dataplane/twins) voor het bouwen van een relatie tussen een van de twee *basis* typen, *GroundFloor* en een *kamer* type digitale dubbele naam *Cafe*.
 
 ```csharp
 // Create Twins, using functions similar to the previous sample
@@ -71,7 +71,7 @@ var relationship = new BasicRelationship
 try
 {
     string relId = $"GroundFloor-contains-Cafe";
-    await client.CreateOrReplaceRelationshipAsync("GroundFloor", relId, relationship);
+    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>("GroundFloor", relId, relationship);
 } catch(ErrorResponseException e)
 {
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");

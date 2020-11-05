@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 2d156887416fb9a587c9690c3b275229e91f1dbe
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e802f798ade5e6bfe0b40b17bbf15df5387ef7c3
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339795"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357841"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
 
@@ -28,6 +28,143 @@ Op deze pagina vindt u informatie over:
 - Nieuwe functies
 - Opgeloste fouten
 - Afgeschafte functionaliteit
+
+
+
+
+## <a name="may-2020"></a>Mei 2020
+
+De updates in mei zijn onder meer:
+- [Regels voor waarschuwingsonderdrukking (preview)](#alert-suppression-rules-preview)
+- [Evaluatie van beveiligingsproblemen van virtuele machines is nu algemeen beschikbaar](#virtual-machine-vulnerability-assessment-is-now-generally-available)
+- [Wijzigingen in de Just-In-Time-toegang van virtuele machines (VM)](#changes-to-just-in-time-jit-virtual-machine-vm-access)
+- [Aangepaste aanbevelingen zijn verplaatst naar een afzonderlijk besturingselement voor beveiliging](#custom-recommendations-have-been-moved-to-a-separate-security-control)
+- [Schakeloptie toegevoegd om aanbevelingen weer te geven in besturingselementen of als een platte lijst](#toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list)
+- [Besturingselement voor beveiliging 'Aanbevolen procedures voor beveiliging implementeren' uitgebreid](#expanded-security-control-implement-security-best-practices)
+- [Aangepaste beleidsregels met aangepaste metagegevens zijn nu algemeen beschikbaar](#custom-policies-with-custom-metadata-are-now-generally-available)
+- [Mogelijkheden voor crashdumpanalyse migreren naar detectie van bestandsloze aanvallen](#crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection)
+
+
+### <a name="alert-suppression-rules-preview"></a>Regels voor waarschuwingsonderdrukking (preview)
+
+Met deze nieuwe functie (momenteel in preview) kunt u overbodige waarschuwingen verminderen. Gebruik regels om waarschuwingen waarvan bekend is dat ze onschuldig of gerelateerd zijn aan normale activiteiten in uw organisatie automatisch te verbergen. Zo kunt u zich richten op de meest relevante bedreigingen. 
+
+Waarschuwingen die overeenkomen met uw ingeschakelde onderdrukkingsregels worden nog steeds gegenereerd, maar de status wordt ingesteld op 'Genegeerd'. U kunt de status bekijken in Azure Portal of de manier waarop u uw Security Center beveiligingswaarschuwingen bekijkt.
+
+Met onderdrukkingsregels worden de criteria gedefinieerd waarvoor waarschuwingen automatisch moeten worden genegeerd. Normaal gesproken gebruikt u een onderdrukkingsregel voor het volgende:
+
+- waarschuwingen onderdrukken die u als fout-positieven hebt geïdentificeerd
+
+- waarschuwingen onderdrukken die te vaak worden geactiveerd om nuttig te zijn
+
+Meer informatie over [het onderdrukken van waarschuwingen voor beveiliging tegen bedreigingen van Azure Security Center](alerts-suppression-rules.md).
+
+
+### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>Evaluatie van beveiligingsproblemen van virtuele machines is nu algemeen beschikbaar
+
+De Standaard-laag van Security Center bevat nu een geïntegreerde evaluatie van beveiligingsproblemen voor virtuele machines zonder extra kosten. Deze uitbreiding wordt mogelijk gemaakt door Qualys, maar rapporteert de resultaten direct terug naar Security Center. U hebt geen Qualys-licentie of Qualys-account nodig. De scans worden naadloos uitgevoerd in Security Center.
+
+De nieuwe oplossing kan voortdurend uw virtuele machines scannen om beveiligingsproblemen op te sporen en de bevindingen in Security Center weergeven. 
+
+Als u de oplossing wilt implementeren, gebruikt u de nieuwe beveiligingsaanbeveling:
+
+'De ingebouwde oplossing voor evaluatie van beveiligingsproblemen inschakelen op virtuele machines (mogelijk gemaakt door Qualys)'
+
+Meer informatie over [De geïntegreerde evaluatie van beveiligingsproblemen voor virtuele machines van Security Center](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
+
+
+
+### <a name="changes-to-just-in-time-jit-virtual-machine-vm-access"></a>Wijzigingen in de Just-In-Time-toegang van virtuele machines (VM)
+
+Security Center bevat een optionele functie waarmee u de beheerpoorten van uw virtuele machines kunt beveiligen. Dit biedt een verdediging tegen de meest voorkomende vorm van beveiligingsaanvallen.
+
+Met deze update worden de volgende wijzigingen doorgevoerd in deze functie:
+
+- De naam van de aanbeveling waarmee u wordt geadviseerd om JIT in te schakelen, is gewijzigd. Eerder was de naam 'Just-In-Time-netwerktoegangsbeheer moet worden toegepast op virtuele machines' en nu is de naam: 'Beheerpoorten van virtuele machines moeten worden beveiligd met Just-In-Time-netwerktoegangsbeheer'.
+
+- De aanbeveling wordt alleen geactiveerd als er open beheerpoorten zijn.
+
+Meer informatie over [de JIT-toegangsfunctie](security-center-just-in-time.md).
+
+
+### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>Aangepaste aanbevelingen zijn verplaatst naar een afzonderlijk besturingselement voor beveiliging
+
+Een besturingselement voor beveiliging dat is geïntroduceerd in de verbeterde beveiligingsscore is 'Aanbevolen procedures voor beveiliging implementeren'. Aangepaste aanbevelingen die zijn gemaakt voor uw abonnementen, worden automatisch in dat besturingselement geplaatst. 
+
+Om u te helpen uw aangepaste aanbevelingen gemakkelijker te vinden, zijn deze naar een speciaal besturingselement voor beveiliging, 'Aangepaste aanbevelingen ', verplaatst. Dit besturingselement heeft geen invloed op uw beveiligingsscore.
+
+Meer informatie over besturingselementen voor beveiliging vindt u in [Verbeterde beveiligingsscore (preview) in Azure Security Center](secure-score-security-controls.md).
+
+
+### <a name="toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list"></a>Schakeloptie toegevoegd om aanbevelingen weer te geven in besturingselementen of als een platte lijst
+
+Besturingselementen voor beveiliging zijn logische groepen van gerelateerde beveiligingsaanbevelingen. Ze zijn gebaseerd op gebieden waar u kwetsbaar bent voor aanvallen. Een besturingselement is een reeks beveiligingsaanbevelingen met instructies die u helpen bij het implementeren van deze aanbevelingen.
+
+Als u onmiddellijk wilt zien hoe goed uw organisatie een afzonderlijke kwetsbaarheid beveiligt, controleert u de scores voor elk besturingselement voor beveiliging.
+
+Uw aanbevelingen worden standaard weergegeven in de besturingselementen voor beveiliging. Vanaf deze update kunt u ze ook als een lijst weergeven. Als u ze wilt weergeven als een eenvoudige lijst, gesorteerd op de status van de betrokken resources, gebruikt u de nieuwe schakeloptie 'Groeperen op besturingselementen'. De schakeloptie bevindt zich boven de lijst in de portal.
+
+De besturingselementen voor beveiliging - en deze schakeloptie - maken deel uit van de vernieuwde beveiligingsscore. Vergeet niet om ons uw feedback te sturen vanuit de portal.
+
+Meer informatie over besturingselementen voor beveiliging vindt u in [Verbeterde beveiligingsscore (preview) in Azure Security Center](secure-score-security-controls.md).
+
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="De schakeloptie Groeperen op besturingselementen voor aanbevelingen":::
+
+### <a name="expanded-security-control-implement-security-best-practices"></a>Besturingselement voor beveiliging 'Aanbevolen procedures voor beveiliging implementeren' uitgebreid 
+
+Een besturingselement voor beveiliging dat is geïntroduceerd in de verbeterde beveiligingsscore is 'Aanbevolen procedures voor beveiliging implementeren'. Wanneer een aanbeveling zich in dit besturingselement bevindt, heeft dit geen invloed op de beveiligingsscore. 
+
+Met deze update zijn drie aanbevelingen uit de besturingselementen waarin deze oorspronkelijk zijn geplaatst naar dit besturingselement voor aanbevolen procedures verplaatst. We hebben deze stap doorgevoerd omdat er is vastgesteld dat het risico van deze drie aanbevelingen lager is dan oorspronkelijk werd aangenomen.
+
+Daarnaast zijn er twee nieuwe aanbevelingen geïntroduceerd en toegevoegd aan dit besturingselement.
+
+De drie aanbevelingen die zijn verplaatst, zijn:
+
+- **MFA moet zijn ingeschakeld voor accounts met leesmachtigingen voor uw abonnement** (oorspronkelijk in het besturingselement 'MFA inschakelen')
+- **Externe accounts met leesmachtigingen moeten worden verwijderd uit uw abonnement** (oorspronkelijk in het besturingselement 'Toegang en machtigingen beheren')
+- **Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement** (oorspronkelijk in het besturingselement 'Toegang en machtigingen beheren')
+
+De twee nieuwe aanbevelingen die aan het besturingselement zijn toegevoegd, zijn:
+
+- **De Gastconfiguratie-extensie moet op virtuele Windows-machines zijn geïnstalleerd (preview)** : het gebruik van [Azure Policy-gastconfiguratie](../governance/policy/concepts/guest-configuration.md) biedt inzicht in de instellingen van de virtuele machines op de server en toepassing (alleen Windows).
+
+- **Windows Defender Exploit Guard moet zijn ingeschakeld op uw computers (preview)** : Windows Defender Exploit Guard maakt gebruik van de Azure Policy-gastconfiguratieagent. Exploit Guard bestaat uit vier onderdelen die zijn ontworpen om apparaten te vergrendelen tegen diverse aanvalsvectoren en blokkeergedrag die in malware-aanvallen worden gebruikt en die bedrijven de mogelijkheid bieden om een goede balans te vinden tussen hun vereisten op het gebied van beveiligingsrisico's en productiviteit (alleen Windows).
+
+Meer informatie over Windows Defender Exploit Guard vindt u in [Een Exploit Guard-beleid maken en implementeren](/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy).
+
+Meer informatie over besturingselementen voor beveiliging vindt u in [Verbeterde beveiligingsscore (preview)](secure-score-security-controls.md).
+
+
+
+### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Aangepaste beleidsregels met aangepaste metagegevens zijn nu algemeen beschikbaar
+
+Aangepaste beleidsregels maken nu deel uit van de Security Center-aanbevelingen, de beveiligingsscore en het dashboard voor naleving van regelgeving. Deze functie is nu algemeen beschikbaar en biedt u de mogelijkheid om de dekking van de evaluatie van beveiligingsproblemen van uw organisatie in Security Center uit te breiden. 
+
+Maak een aangepaste initiatief in Azure Policy, voeg er beleidsregels aan toe en onboard dit naar Azure Security Center, en visualiseer het vervolgens als aanbevelingen.
+
+We hebben nu ook de optie toegevoegd voor het bewerken van de aangepaste metagegevens voor aanbevelingen. Opties voor metagegevens zijn ernst, herstelstappen, informatie over bedreigingen en meer.  
+
+Meer informatie over [uw aangepaste aanbevelingen verbeteren met gedetailleerde informatie](custom-security-policies.md#enhance-your-custom-recommendations-with-detailed-information).
+
+
+
+### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Mogelijkheden voor crashdumpanalyse migreren naar detectie van bestandsloze aanvallen 
+
+De detectiemogelijkheden van Windows Crash Dump Analysis (CDA) worden geïntegreerd in [detectie van bestandsloze aanvallen](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers). Analyse van detectie van bestandsloze aanvallen biedt verbeterde versies van de volgende beveiligingswaarschuwingen voor Windows-computers: 'Code-injectie gedetecteerd', 'Verdachte Windows-module gedetecteerd', 'Shellcode gedetecteerd' en 'Verdacht codesegment gedetecteerd'.
+
+Enkele voordelen hiervan:
+
+- **Proactieve en tijdige detectie van malware** : bij de CDA-benadering werd gewacht op een crash, en werden vervolgens analyses uitgevoerd om schadelijke artefacten te vinden. Bij het gebruik van detectie van bestandsloze aanvallen worden bedreigingen in het geheugen proactief geïdentificeerd terwijl ze worden uitgevoerd. 
+
+- **Verrijkte waarschuwingen** : de beveiligingswaarschuwingen van detectie van bestandsloze aanvallen bevatten verrijkingen die niet beschikbaar zijn via CDA, zoals informatie over actieve netwerkverbindingen. 
+
+- **Waarschuwingsaggregatie** : wanneer CDA meerdere aanvalspatronen in één crashdump heeft gedetecteerd, worden er meerdere beveiligingswaarschuwingen geactiveerd. Bij detectie van bestandsloze aanvallen worden alle geïdentificeerde aanvalspatronen uit hetzelfde proces gecombineerd tot één waarschuwing, waardoor de noodzaak om meerdere waarschuwingen met elkaar in verband te brengen, wordt weggenomen.
+
+- **Minder vereisten voor uw Log Analytics-werkruimte** : crashdumps met mogelijk gevoelige gegevens worden niet meer geüpload naar uw Log Analytics-werkruimte.
+
+
+
+
 
 
 ## <a name="april-2020"></a>April 2020
@@ -346,7 +483,7 @@ Wanneer u JIT voor uw virtuele machines inschakelt, kunt u een beleid maken dat 
 
 Aanvragen worden vastgelegd in het Azure-activiteiten logboek, zodat u de toegang eenvoudig kunt bewaken en controleren. De just-in-time pagina helpt u ook snel bestaande Vm's te identificeren waarvoor JIT is ingeschakeld en Vm's waarvoor JIT wordt aanbevolen.
 
-Meer [informatie over Azure firewall](../firewall/overview.md).
+Meer informatie over [Azure Firewall](../firewall/overview.md).
 
 
 ### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>Eén Klik op herbemiddeling om uw beveiligings postuur te verbeteren (preview-versie)

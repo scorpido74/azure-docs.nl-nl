@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320703"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357943"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Toegangs sleutels voor het opslag account opnieuw genereren
 
@@ -26,7 +26,8 @@ Meer informatie over het wijzigen van de toegangs sleutels voor Azure Storage ac
 Uit veiligheids overwegingen moet u de toegangs sleutels voor een Azure Storage-account mogelijk wijzigen. Wanneer u de toegangs sleutel opnieuw genereert, moet Azure Machine Learning worden bijgewerkt om de nieuwe sleutel te gebruiken. Azure Machine Learning maakt mogelijk gebruik van het opslag account voor zowel model opslag als een gegevens opslag.
 
 > [!IMPORTANT]
-> Referenties registred met gegevens opslag worden opgeslagen in uw Azure Key Vault die zijn gekoppeld aan de werk ruimte. Als u voor uw Key Vault [voorlopig verwijderen](../key-vault/general/soft-delete-overview.md) hebt ingeschakeld, moet u dit artikel volgen voor het bijwerken van referenties. Het ongedaan maken van de registratie van het gegevens archief en het opnieuw registreren onder dezelfde naam zal mislukken.
+
+> De referenties die zijn geregistreerd bij data stores worden opgeslagen in uw Azure Key Vault gekoppeld aan de werk ruimte. Als u [voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) hebt ingeschakeld voor uw Key Vault, bevat dit artikel instructies voor het bijwerken van referenties. Als u de registratie van de gegevens opslag ongedaan maakt en opnieuw probeert te registreren onder dezelfde naam, mislukt deze actie. Zie [voorlopig verwijderen inschakelen voor een bestaande sleutel kluis]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) voor het inschakelen van voorlopig verwijderen in dit scenario.
 
 ## <a name="prerequisites"></a>Vereisten
 

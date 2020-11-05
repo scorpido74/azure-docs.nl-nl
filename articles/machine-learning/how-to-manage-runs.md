@@ -1,7 +1,7 @@
 ---
 title: Trainings uitvoeringen in python starten, controleren en annuleren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u begint, de status van het label instelt en uw machine learning-experimenten indeelt.
+description: Meer informatie over het starten, status en beheren van uw machine learning-experiment met de Azure Machine Learning python SDK.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0baee1646d2346a411b3b7bdb8efc90e9aeb7a4a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2f7d102ad6bf2aba2056456acfe6207a0b0643ba
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316887"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357977"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainings uitvoeringen in python starten, controleren en annuleren
 

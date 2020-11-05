@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1734af799ee473d6ba75fe2e8ab8429afa51d0
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f6c30dffbc8f97273ee59ce33ae3fe75ed730763
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318200"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356634"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Een nieuw toegangs pakket maken in het beheer van rechten van Azure AD
 
@@ -67,7 +67,7 @@ Dit zijn de stappen op hoog niveau voor het maken van een nieuw toegangs pakket.
    
     ![Rechtenbeheer in de Azure-portal](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>Basisbeginselen
+## <a name="basics"></a>Basisinstellingen
 
 Op het tabblad **basis beginselen** geeft u het toegangs pakket een naam en geeft u op in welke catalogus u het toegangs pakket wilt maken.
 
@@ -89,7 +89,7 @@ Op het tabblad **basis beginselen** geeft u het toegangs pakket een naam en geef
 
 Op het tabblad **resource rollen** selecteert u de resources die u wilt toevoegen in het toegangs pakket. Gebruikers die het toegangs pakket aanvragen en ontvangen, ontvangen alle resource rollen in het toegangs pakket.
 
-1. Klik op het resource type dat u wilt toevoegen (**groepen en teams**, **toepassingen**of **share point-sites**).
+1. Klik op het resource type dat u wilt toevoegen ( **groepen en teams** , **toepassingen** of **share point-sites** ).
 
 1. Selecteer in het deel venster selecteren dat wordt weer gegeven een of meer resources uit de lijst.
 
@@ -125,7 +125,7 @@ Op het tabblad **controleren en maken** kunt u uw instellingen controleren en co
 
 1. De instellingen van het toegangs pakket controleren
 
-    ![Toegangs pakket-beleids instelling beleid inschakelen](./media/entitlement-management-access-package-create/review-create.png)
+    ![Toegangs pakket-beleids instelling inschakelen](./media/entitlement-management-access-package-create/review-create.png)
 
 1. Klik op **maken** om het toegangs pakket te maken.
 

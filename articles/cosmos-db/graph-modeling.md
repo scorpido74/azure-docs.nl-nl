@@ -1,18 +1,18 @@
 ---
 title: Graph data modellering voor Azure Cosmos DB Gremlin-API
 description: Meer informatie over het model leren van een grafiek database met behulp van Azure Cosmos DB Gremlin API. In dit artikel wordt beschreven hoe u een grafiek database en aanbevolen procedures gebruikt voor het model leren van entiteiten en relaties.
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
-ms.author: jasonh
-ms.openlocfilehash: 70cbe3a7dae243105a659e1363a44f17f03758e2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.author: chrande
+ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129640"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357042"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph data modellering voor Azure Cosmos DB Gremlin-API
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -31,22 +31,22 @@ Het proces dat in deze hand leiding wordt beschreven, is gebaseerd op de volgend
 Een grafiek database oplossing kan optimaal worden toegepast als de entiteiten en relaties in een gegevens domein een van de volgende kenmerken hebben: 
 
 * De entiteiten zijn **zeer verbonden** via beschrijvende relaties. Het voor deel in dit scenario is het feit dat de relaties in de opslag worden bewaard.
-* Er zijn **cyclische relaties** of **entiteiten die naar zichzelf verwijzen** . Dit patroon is vaak een uitdaging bij het gebruik van relationele of document databases.
+* Er zijn **cyclische relaties** of **entiteiten die naar zichzelf verwijzen**. Dit patroon is vaak een uitdaging bij het gebruik van relationele of document databases.
 * Er zijn **dynamisch veranderende relaties** tussen entiteiten. Dit patroon is vooral van toepassing op hiërarchische of gestructureerde gegevens op basis van een groot aantal niveaus.
 * Er zijn **veel-op-veel-relaties** tussen entiteiten.
-* Er zijn **Schrijf-en lees vereisten voor zowel entiteiten als relaties** . 
+* Er zijn **Schrijf-en lees vereisten voor zowel entiteiten als relaties**. 
 
-Als aan de bovenstaande criteria is voldaan, is het waarschijnlijk dat een grafiek database benadering voor delen biedt voor de **complexiteit van query's** , **schaal baarheid van gegevens modellen** en de **prestaties van query's** .
+Als aan de bovenstaande criteria is voldaan, is het waarschijnlijk dat een grafiek database benadering voor delen biedt voor de **complexiteit van query's** , **schaal baarheid van gegevens modellen** en de **prestaties van query's**.
 
 De volgende stap is om te bepalen of de grafiek wordt gebruikt voor analyse-of transactionele doel einden. Als de grafiek moet worden gebruikt voor zware werk belastingen voor reken kracht en gegevens verwerking, is het waard om de [Cosmos DB Spark-connector](./spark-connector.md) en het gebruik van de [graphx-bibliotheek](https://spark.apache.org/graphx/)te verkennen. 
 
 ## <a name="how-to-use-graph-objects"></a>Grafiek objecten gebruiken
 
-De [Apache Tinkerpop-eigenschap Graph Standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) definieert twee typen objecten van **hoek punten** en **randen** . 
+De [Apache Tinkerpop-eigenschap Graph Standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) definieert twee typen objecten van **hoek punten** en **randen**. 
 
 Hieronder volgen de aanbevolen procedures voor de eigenschappen in de grafiek objecten:
 
-| Object | Eigenschap | Type | Opmerkingen |
+| Object | Eigenschap | Type | Notities |
 | --- | --- | --- |  --- |
 | Shad | Id | Tekenreeks | Uniek afgedwongen per partitie. Als er bij het invoegen geen waarde wordt opgegeven, wordt een automatisch gegenereerde GUID opgeslagen. |
 | Shad | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type entiteit te definiëren dat door het hoek punt wordt vertegenwoordigd. Als er geen waarde wordt opgegeven, wordt er een standaard waarde ' vertex ' gebruikt. |
@@ -68,7 +68,7 @@ Hier volgen een aantal richt lijnen om gegevens modellering te benaderen voor ee
 
 ### <a name="modeling-vertices-and-properties"></a>Hoek punten en eigenschappen van modellen 
 
-De eerste stap voor een grafiek gegevens model is het toewijzen van elke geïdentificeerde entiteit aan een **object Vertex** . Een een-op-een-toewijzing van alle entiteiten aan vertices moet een eerste stap zijn en kan worden gewijzigd.
+De eerste stap voor een grafiek gegevens model is het toewijzen van elke geïdentificeerde entiteit aan een **object Vertex**. Een een-op-een-toewijzing van alle entiteiten aan vertices moet een eerste stap zijn en kan worden gewijzigd.
 
 Een algemene Pitfall is het toewijzen van eigenschappen van één entiteit als afzonderlijke hoek punten. Bekijk het voor beeld hieronder, waarbij dezelfde entiteit op twee verschillende manieren wordt weer gegeven:
 
@@ -78,7 +78,7 @@ Een algemene Pitfall is het toewijzen van eigenschappen van één entiteit als a
 
 * Met **Eigenschappen Inge sloten hoek punten** : deze benadering maakt gebruik van de lijst met sleutel waarden om alle eigenschappen van de entiteit binnen een hoek punt weer te geven. Deze benadering biedt een gereduceerde model complexiteit, die leidt tot eenvoudigere query's en rendabelere trans acties.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Entiteits model met hoek punten voor eigenschappen." border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Diagram toont het hoek punt Luis uit het vorige diagram met i d, label en eigenschappen." border="false":::
 
 > [!NOTE]
 > In de bovenstaande voor beelden ziet u een vereenvoudigd grafiek model waarmee alleen de vergelijking tussen de twee manieren van het delen van entiteits eigenschappen wordt weer gegeven.
@@ -89,7 +89,7 @@ Er zijn echter scenario's waarin het verwijzen naar een eigenschap mogelijk voor
 
 ### <a name="relationship-modeling-with-edge-directions"></a>Relatie modellen met Edge-instructies
 
-Nadat de hoek punten zijn gemodelleerd, kunnen de randen worden toegevoegd om de relaties tussen de hoeken aan te duiden. Het eerste aspect dat moet worden geëvalueerd, is de **richting van de relatie** . 
+Nadat de hoek punten zijn gemodelleerd, kunnen de randen worden toegevoegd om de relaties tussen de hoeken aan te duiden. Het eerste aspect dat moet worden geëvalueerd, is de **richting van de relatie**. 
 
 Rand objecten hebben een standaard richting, gevolgd door een passage bij het gebruik van de `out()` or- `outE()` functie. Het gebruik van deze natuurlijke richting resulteert in een efficiënte bewerking, omdat alle hoek punten worden opgeslagen met hun uitgaande randen. 
 
@@ -106,7 +106,7 @@ Het gebruik van beschrijvende relatielabels kan de efficiëntie van Edge-resolut
 * Gebruik niet-algemene voor waarden om een relatie te labelen.
 * Koppel het label van het bron hoekpunt aan het label van het doel hoekpunt met de naam van de relatie.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Entiteits model met hoek punten voor eigenschappen." border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Voor beelden van relatie labelen." border="false":::
 
 Hoe meer specifiek het label wordt gebruikt voor het filteren van de randen, hoe beter. Deze beslissing kan ook een grote invloed hebben op de query kosten. U kunt de query kosten op elk gewenst moment evalueren [met behulp van de executionProfile-stap](graph-execution-profile.md).
 

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 7a4b2a778fc3d520c0ce85bed5bec0b49fc14384
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341906"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356617"
 ---
 # <a name="getting-started-with-sql-queries"></a>Aan de slag met SQL-query's
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,26 +21,35 @@ In Azure Cosmos DB SQL-API-accounts zijn er twee manieren om gegevens te lezen:
 
 **Punt Lees bewerkingen** : u kunt een sleutel/waarde zoeken op één *item-id* en partitie sleutel. De combi natie van *item-id* en partitie sleutel is de sleutel en het item zelf is de waarde. Voor een 1 KB-document wordt bij het lezen van punten doorgaans de [aanvraag eenheid](request-units.md) kosten 1 berekend met een latentie van 10 MS. Punt lezen retourneert één item.
 
-**SQL-query's** : u kunt gegevens opvragen door query's te schrijven met behulp van de STRUCTURED query language (SQL) als een JSON-query taal. Query's kosten altijd ten minste 2,3 aanvraag eenheden en, in het algemeen, heeft een hogere en meer variabele latentie dan lees punten. Query's kunnen veel items retour neren.
-
-De meeste Lees-en zware werk belastingen op Azure Cosmos DB gebruiken een combi natie van zowel lees-als SQL-query's. Als u slechts één item hoeft te lezen, zijn punt lezen goed koper en sneller dan query's. Punt Lees bewerkingen hoeven de query-engine niet te gebruiken voor toegang tot gegevens en kunnen de gegevens rechtstreeks lezen. Het is natuurlijk niet mogelijk om alle werk belastingen exclusief gegevens te lezen met behulp van punt Lees bewerkingen, zodat SQL als query taal en [indexering](index-overview.md) van het neutraal een flexibele manier is om toegang te krijgen tot uw gegevens.
-
-Hier volgen enkele voor beelden van hoe u met elke SDK punt Lees bewerkingen kunt uitvoeren:
+Hier volgen enkele voor beelden van hoe u met elke SDK **punt Lees bewerkingen** kunt uitvoeren:
 
 - [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet)
 - [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem?preserve-view=true&view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
 - [Node.js SDK](/javascript/api/@azure/cosmos/item?preserve-view=true&view=azure-node-latest#read-requestoptions-)
 - [Python SDK](/python/api/azure-cosmos/azure.cosmos.containerproxy?preserve-view=true&view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
+**SQL-query's** : u kunt gegevens opvragen door query's te schrijven met behulp van de STRUCTURED query language (SQL) als een JSON-query taal. Query's kosten altijd ten minste 2,3 aanvraag eenheden en, in het algemeen, heeft een hogere en meer variabele latentie dan lees punten. Query's kunnen veel items retour neren.
+
+De meeste Lees-en zware werk belastingen op Azure Cosmos DB gebruiken een combi natie van zowel lees-als SQL-query's. Als u slechts één item hoeft te lezen, zijn punt lezen goed koper en sneller dan query's. Punt Lees bewerkingen hoeven de query-engine niet te gebruiken voor toegang tot gegevens en kunnen de gegevens rechtstreeks lezen. Het is natuurlijk niet mogelijk om alle werk belastingen exclusief gegevens te lezen met behulp van punt Lees bewerkingen, zodat SQL als query taal en [indexering](index-overview.md) van het neutraal een flexibele manier is om toegang te krijgen tot uw gegevens.
+
+Hier volgen enkele voor beelden van hoe u **SQL-query's** kunt uitvoeren voor elke SDK:
+
+- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
+- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
+- [Node.js SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
+- [Python SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+
 In de rest van dit document ziet u hoe u SQL-query's in Azure Cosmos DB kunt schrijven. SQL-query's kunnen worden uitgevoerd via de SDK of de Azure Portal.
 
 ## <a name="upload-sample-data"></a>Voorbeeld gegevens uploaden
 
-Maak in uw SQL API-Cosmos DB account een container met de naam `Families` . Maak twee eenvoudige JSON-items in de container. U kunt de meeste voorbeeld query's uitvoeren in de Azure Cosmos DB query-documentatie met behulp van deze gegevensset.
+Open in uw SQL API-account Cosmos DB het [Data Explorer](https://docs.microsoft.com/azure/cosmos-db/data-explorer) om een container te maken `Families` . Nadat de sjabloon is gemaakt, gebruikt u de gegevens structuren browser om deze te zoeken en te openen. In uw `Families` container ziet u de `Items` optie rechts onder de naam van de container. Als u deze optie opent, ziet u een knop in de menu balk in het midden van het scherm om een nieuw item te maken. U gebruikt deze functie om de volgende JSON-items te maken.
 
 ### <a name="create-json-items"></a>JSON-items maken
 
-Met de volgende code worden twee eenvoudige JSON-onderdelen gemaakt over families. De eenvoudige JSON-items voor de families Splinter en Wakefield bevatten ouders, kinderen en hun huis dieren, adres en registratie gegevens. Het eerste item heeft teken reeksen, getallen, Booleaanse waarden, matrices en geneste eigenschappen.
+De volgende twee JSON-items zijn documenten over de Wakefield-families. Ze omvatten ouders, kinderen en hun huis dieren, adres en registratie gegevens. 
+
+Het eerste item heeft teken reeksen, getallen, Booleaanse waarden, matrices en geneste eigenschappen:
 
 ```json
 {
@@ -64,7 +73,7 @@ Met de volgende code worden twee eenvoudige JSON-onderdelen gemaakt over familie
 }
 ```
 
-Het tweede item maakt `givenName` Gebruik `familyName` van en in plaats van `firstName` en `lastName` .
+Het tweede item maakt `givenName` Gebruik `familyName` van en in plaats van `firstName` en `lastName` :
 
 ```json
 {

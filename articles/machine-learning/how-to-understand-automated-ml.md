@@ -10,19 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2
-ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperfq2, automl
+ms.openlocfilehash: fcbe0fc5049f6e892f80f048a885c75420bc636e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311483"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359082"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Resultaten van automatische machine learning experimenten evalueren
 
-In dit artikel vindt u informatie over het weer geven en evalueren van de resultaten van uw geautomatiseerde machine learning, AutoML, experimenten. Deze experimenten bestaan uit meerdere uitvoeringen, waarbij elke uitvoering een model maakt. Om u te helpen elk model te evalueren, genereert AutoML automatisch metrische gegevens over prestaties en grafieken die specifiek zijn voor uw soort experiment. 
+In dit artikel vindt u informatie over het weer geven en evalueren van de resultaten van uw geautomatiseerde machine learning, automatische ML, experimenten. Deze experimenten bestaan uit meerdere uitvoeringen, waarbij elke uitvoering een model maakt. Om u te helpen elk model te evalueren, genereert automatische ML automatisch metrische gegevens over prestaties en grafieken die specifiek zijn voor uw soort experiment. 
 
-AutoML biedt bijvoorbeeld verschillende grafieken voor classificatie-en regressie modellen. 
+Automatische ML biedt bijvoorbeeld verschillende grafieken voor classificatie-en regressie modellen. 
 
 |Classificatie|Regressie
 |---|---|
@@ -61,7 +61,7 @@ Bekijk de uitvoerings geschiedenis en de metrische gegevens voor de model presta
 
 ## <a name="classification-performance-metrics"></a>Metrische classificatie prestaties
 
-De volgende tabel bevat een overzicht van de prestatie gegevens van het model die AutoML berekent voor elk classificatie model dat voor uw experiment wordt gegenereerd. 
+De volgende tabel bevat een overzicht van de prestatie gegevens van het model die geautomatiseerd ML berekent voor elk classificatie model dat voor uw experiment wordt gegenereerd. 
 
 Gegevens|Beschrijving|Berekening|Extra para meters
 --|--|--|--
@@ -88,7 +88,7 @@ weighted_accuracy|Gewogen nauw keurigheid is nauw keurig wanneer het gewicht dat
 
 ### <a name="binary-vs-multiclass-metrics"></a>Binaire en metrische gegevens met meer klassen
 
-AutoML onderscheidt zich niet tussen binaire en multimetrische metrische gegevens. Dezelfde validatie gegevens worden gerapporteerd, of een gegevensset twee klassen of meer dan twee klassen heeft. Sommige metrische gegevens zijn echter bedoeld voor de classificatie van verschillende klassen. Wanneer dit wordt toegepast op een binaire gegevensset, worden deze metrische gegevens niet als `true` klasse beschouwd, zoals u mogelijk verwacht. Metrische gegevens die duidelijk bedoeld zijn voor multi class, worden met `micro` ,, of geachtervoegseld `macro` `weighted` . Voor beelden zijn `average_precision_score` , `f1_score` ,, en `precision_score` `recall_score` `AUC` .
+Automatische ML maakt geen onderscheid tussen binaire en multimetrische metrische gegevens. Dezelfde validatie gegevens worden gerapporteerd, of een gegevensset twee klassen of meer dan twee klassen heeft. Sommige metrische gegevens zijn echter bedoeld voor de classificatie van verschillende klassen. Wanneer dit wordt toegepast op een binaire gegevensset, worden deze metrische gegevens niet als `true` klasse beschouwd, zoals u mogelijk verwacht. Metrische gegevens die duidelijk bedoeld zijn voor multi class, worden met `micro` ,, of geachtervoegseld `macro` `weighted` . Voor beelden zijn `average_precision_score` , `f1_score` ,, en `precision_score` `recall_score` `AUC` .
 
 In plaats van intrekken te berekenen als `tp / (tp + fn)` , wordt het gemiddelde van de multiklasse-inhaal ( `micro` , `macro` of `weighted` ) gemiddeld boven beide klassen van een gegevensset voor binaire classificatie. Dit komt overeen met het berekenen van het terughalen voor de `true` klasse en de `false` klasse afzonderlijk, en vervolgens het gemiddelde van de twee.
 
@@ -209,7 +209,7 @@ Een goed gekalibreerd model wordt uitgelijnd met de lijn y = x, waarbij de kans 
 
 ## <a name="regression-performance-metrics"></a>Gegevens over regressie prestaties
 
-De volgende tabel bevat een overzicht van de prestatie gegevens van het model die AutoML berekent voor elk regressie-of prognose model dat voor uw experiment wordt gegenereerd. 
+De volgende tabel bevat een overzicht van de prestatie gegevens van het model die geautomatiseerd ML berekent voor elk regressie-of prognose model dat voor uw experiment wordt gegenereerd. 
 
 |Gegevens|Beschrijving|Berekening|Extra para meters
 --|--|--|--|

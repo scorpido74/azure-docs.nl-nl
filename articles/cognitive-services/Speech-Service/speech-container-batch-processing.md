@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425803"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356702"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch processing Kit voor spraak containers
 
@@ -106,7 +106,7 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 
 `ONESHOT` modus transcribeert één batch met audio bestanden (van een invoer Directory en een lijst met optionele bestanden) naar een uitvoermap.
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Een diagram met een voor beeld van een werk stroom voor een batch Kit-container.":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Een diagram van de batch Kit container verwerkings bestanden in de modus OneShot.":::
 
 1. Definieer de eind punten van de spraak container die de batch-client in het bestand zal gebruiken `config.yaml` . 
 2. Plaats audio bestanden voor transcriptie in een invoer Directory.  
@@ -121,7 +121,7 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 
 `DAEMON` in de modus worden bestaande bestanden in een bepaalde map getranscribeerd en worden er voortdurend nieuwe audio bestanden getranscribeerd wanneer ze worden toegevoegd.          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Een diagram met een voor beeld van een werk stroom voor een batch Kit-container.":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Een diagram waarin batch-Kit container verwerkings bestanden in de daemon-modus worden verwerkt.":::
 
 1. Definieer de eind punten van de spraak container die de batch-client in het bestand zal gebruiken `config.yaml` . 
 2. Roep de container aan in een invoer Directory. De batch-client begint met het controleren van de map op binnenkomende bestanden. 
@@ -134,7 +134,7 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 
 `REST` modus is een API-server modus die een eenvoudige set HTTP-eind punten biedt voor het verzenden van audio bestanden, het controleren van statussen en lange polling. Maakt ook programmatisch gebruik mogelijk met behulp van een module-extensie van python of als een submodule importeren.
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Een diagram met een voor beeld van een werk stroom voor een batch Kit-container.":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Een diagram van de batch Kit container verwerkings bestanden in rust modus.":::
 
 1. Definieer de eind punten van de spraak container die de batch-client in het bestand zal gebruiken `config.yaml` . 
 2. Verzend een aanvraag voor een HTTP-aanvraag naar een van de eind punten van de API-server. 
@@ -158,7 +158,7 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 
 De client maakt een *Run. log* -bestand in de map die is opgegeven door het `-log_folder` argument in de docker- `run` opdracht. Logboeken worden standaard vastgelegd op het niveau van de fout opsporing. Dezelfde logboeken worden verzonden naar de `stdout/stderr` en gefilterd, afhankelijk van het `-log_level` argument. Dit logboek is alleen nodig voor fout opsporing of als u een tracering wilt verzenden voor ondersteuning. De map logboek registratie bevat ook de spraak-SDK-logboeken voor elk audio bestand.
 
-De opgegeven uitvoermap `-output_folder` bevat een *run_summary.jsin*het   bestand, dat periodiek elke 30 seconden wordt herschreven of wanneer nieuwe transcripties zijn voltooid. U kunt dit bestand gebruiken om de voortgang van de batch te controleren. Het bevat ook de laatste uitvoerings statistieken en de uiteindelijke status van elk bestand wanneer de batch is voltooid. De batch is voltooid wanneer het proces een schone afsluiting heeft. 
+De opgegeven uitvoermap `-output_folder` bevat een *run_summary.jsin* het   bestand, dat periodiek elke 30 seconden wordt herschreven of wanneer nieuwe transcripties zijn voltooid. U kunt dit bestand gebruiken om de voortgang van de batch te controleren. Het bevat ook de laatste uitvoerings statistieken en de uiteindelijke status van elk bestand wanneer de batch is voltooid. De batch is voltooid wanneer het proces een schone afsluiting heeft. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

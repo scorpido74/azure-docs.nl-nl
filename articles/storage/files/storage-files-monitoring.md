@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: b89112ab2384386d20b62f2510ec576d4a2075f1
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: f37fc8e19025b78475f706ff96c502cc6094d54f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186753"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358419"
 ---
 # <a name="monitoring-azure-files"></a>Bewakings Azure Files
 
@@ -69,20 +69,20 @@ U kunt een diagnostische instelling maken met behulp van de Azure Portal, Power 
 
 Zie voor algemene instructies de [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../../azure-monitor/platform/diagnostic-settings.md).
 
-### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+### <a name="azure-portal"></a>[Azure-portal](#tab/azure-portal)
 
 1. Meld u aan bij Azure Portal.
 
 2. Ga naar uw opslagaccount.
 
-3. Klik in de sectie **bewaking** op **Diagnostische instellingen (preview-versie)** .
+3. Klik in de sectie **bewaking** op **Diagnostische instellingen (preview-versie)**.
 
    > [!div class="mx-imgBorder"]
    > ![Portal: Diagnostische logboeken](media/storage-files-monitoring/diagnostic-logs-settings-pane.png)   
 
 4. Kies **bestand** als het type opslag waarvoor u logboeken wilt inschakelen.
 
-5. Klik op **Diagnostische instelling toevoegen** .
+5. Klik op **Diagnostische instelling toevoegen**.
 
    > [!div class="mx-imgBorder"]
    > ![Portal-resource logboeken-diagnostische instelling toevoegen](media/storage-files-monitoring/diagnostic-logs-settings-pane-2.png)
@@ -184,7 +184,7 @@ Hier volgt een voorbeeld:
 
 Zie [Azure-resource logboeken streamen naar log Analytics werk ruimte in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store)voor meer informatie.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 1. Open eerst de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview)of als u de Azure cli lokaal hebt [geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli) , opent u een opdracht console toepassing zoals Windows Power shell.
 
@@ -254,7 +254,7 @@ U kunt metrische gegevens analyseren voor Azure Storage met metrische gegevens u
 
 Voor metrische gegevens die dimensies ondersteunen, kunt u de metriek filteren met de gewenste dimensie waarde.  Zie [metrische dimensies](storage-files-monitoring-reference.md#metrics-dimensions)voor een volledige lijst met de dimensies die Azure Storage ondersteunt. De metrische gegevens voor Azure Files bevinden zich in de volgende naam ruimten: 
 
-- Micro soft. Storage/Storage accounts
+- Microsoft.Storage/storageAccounts
 - Micro soft. Storage/Storage accounts/fileServices
 
 Zie [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)voor een lijst met alle Azure monitor metrische gegevens over ondersteuning, waaronder Azure files.
@@ -286,7 +286,7 @@ U kunt metrische waarden op account niveau van uw opslag account of de Azure Fil
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>De metrische definitie op account niveau weer geven
 
@@ -571,11 +571,11 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 
 ### <a name="how-to-create-alerts-for-azure-files"></a>Waarschuwingen voor Azure Files maken
 
-1. Ga naar uw **opslag account** in de **Azure Portal** . 
+1. Ga naar uw **opslag account** in de **Azure Portal**. 
 
-2. Klik op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel** .
+2. Klik op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
 
-3. Klik op **Resource bewerken** , selecteer het **bron type** voor het bestand en klik vervolgens op **gereed** . 
+3. Klik op **Resource bewerken** , selecteer het **bron type** voor het bestand en klik vervolgens op **gereed**. 
 
 4. Klik op **voor waarde selecteren** en geef de volgende informatie op voor de waarschuwing: 
 
@@ -585,7 +585,7 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 
 5. Klik op **actie groep selecteren** en voeg een actie groep (E-mail, SMS, enzovoort) toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
 
-6. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst** van de **waarschuwings regel** .
+6. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst** van de **waarschuwings regel**.
 
 7. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
@@ -594,74 +594,74 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 
 ### <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Een waarschuwing maken als een bestands share wordt beperkt
 
-1. Ga naar uw **opslag account** in de **Azure Portal** .
-2. Klik in de sectie **bewaking** op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel** .
-3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed** . Als de naam van het opslag account bijvoorbeeld is `contoso` , selecteert u de `contoso/file` resource.
+1. Ga naar uw **opslag account** in de **Azure Portal**.
+2. Klik in de sectie **bewaking** op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
+3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld is `contoso` , selecteert u de `contoso/file` resource.
 4. Klik op **voor waarde selecteren** om een voor waarde toe te voegen.
 5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer de metrische gegevens van de **trans actie** .
-6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **antwoord type** .
+6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **antwoord type**.
 7. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer **SUCCESSWITHTHROTTLING** (voor SMB) of **ClientThrottlingError** (voor rest).
 
    > [!NOTE]
    > Als de dimensie waarde SuccessWithThrottling of ClientThrottlingError niet wordt weer gegeven, betekent dit dat de resource niet is beperkt. Als u de dimensie waarde wilt toevoegen, klikt u op **aangepaste waarde toevoegen** naast de vervolg keuzelijst **dimensie waarden** , typt u **SuccessWithThrottling** of **ClientThrottlingError** , klikt u op **OK** en herhaalt u stap #7.
 
-8. Klik op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share** .
+8. Klik op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share**.
 9. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands share (s) waarop u een waarschuwing wilt ontvangen.
 
    > [!NOTE]
-   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden** . De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Het beperken van waarschuwingen voor standaard bestands shares wordt geactiveerd als een bestands share binnen het opslag account wordt beperkt en de waarschuwing niet kan bepalen welke bestands share is beperkt. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
+   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden**. De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Het beperken van waarschuwingen voor standaard bestands shares wordt geactiveerd als een bestands share binnen het opslag account wordt beperkt en de waarschuwing niet kan bepalen welke bestands share is beperkt. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
 
-10. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregatie granulatie en frequentie van evaluatie) en klik op **gereed** .
+10. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregatie granulatie en frequentie van evaluatie) en klik op **gereed**.
 
     > [!TIP]
     > Als u een statische drempel waarde gebruikt, kan de metrische grafiek helpen bij het bepalen van een redelijke drempelwaarde als de bestands share momenteel wordt beperkt. Als u een dynamische drempel waarde gebruikt, worden in de metrische grafiek de berekende drempel waarden weer gegeven op basis van recente gegevens.
 
 11. Klik op **actie groep selecteren** om een **actie groep** (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
-12. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel** , de beschrijving en de **Ernst** .
+12. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel** , de beschrijving en de **Ernst**.
 13. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-size-is-80-of-capacity"></a>Een waarschuwing maken als de grootte van de Azure-bestands share 80% van de capaciteit is
 
-1. Ga naar uw **opslag account** in de **Azure Portal** .
-2. Klik in de sectie **bewaking** op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel** .
-3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed** . Als de naam van het opslag account bijvoorbeeld is `contoso` , selecteert u de `contoso/file` resource.
+1. Ga naar uw **opslag account** in de **Azure Portal**.
+2. Klik in de sectie **bewaking** op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
+3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld is `contoso` , selecteert u de `contoso/file` resource.
 4. Klik op **voor waarde selecteren** om een voor waarde toe te voegen.
 5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer de metrische **Bestands capaciteit** .
-6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share** .
+6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share**.
 7. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands share (s) waarop u een waarschuwing wilt ontvangen.
 
    > [!NOTE]
-   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden** . De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Waarschuwingen voor standaard bestands shares zijn gebaseerd op alle bestands shares in het opslag account. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
+   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden**. De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Waarschuwingen voor standaard bestands shares zijn gebaseerd op alle bestands shares in het opslag account. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
 
 8. Voer de **drempel waarde** in bytes in. Als de grootte van de bestands share bijvoorbeeld 100 TiB is en u een waarschuwing wilt ontvangen wanneer de grootte van de bestands share 80% van de capaciteit is, is de drempel waarde in bytes 87960930222080.
-9. Definieer de overige **para meters** voor de waarschuwing (aggregatie granulatie en frequentie van evaluatie) en klik op **gereed** .
+9. Definieer de overige **para meters** voor de waarschuwing (aggregatie granulatie en frequentie van evaluatie) en klik op **gereed**.
 10. Klik op actie groep selecteren om een actie groep (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
-11. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel** , de beschrijving en de **Ernst** .
+11. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel** , de beschrijving en de **Ernst**.
 12. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-egress-has-exceeded-500-gib-in-a-day"></a>Een waarschuwing maken als het uitkomen van de Azure-bestands share op een dag 500 GiB is overschreden
 
-1. Ga naar uw **opslag account** in de **Azure Portal** .
-2. Klik in de sectie bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel** .
-3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed** . Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
+1. Ga naar uw **opslag account** in de **Azure Portal**.
+2. Klik in de sectie bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
+3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
 4. Klik op **voor waarde selecteren** om een voor waarde toe te voegen.
 5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer **de waarde** voor uitgaand verkeer.
-6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share** .
+6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share**.
 7. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands share (s) waarop u een waarschuwing wilt ontvangen.
 
    > [!NOTE]
-   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden** . De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Waarschuwingen voor standaard bestands shares zijn gebaseerd op alle bestands shares in het opslag account. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
+   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden**. De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Waarschuwingen voor standaard bestands shares zijn gebaseerd op alle bestands shares in het opslag account. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
 
 8. Voer **536870912000** bytes in voor de drempel waarde. 
-9. Klik op de vervolg keuzelijst **aggregatie granulatie** en selecteer **24 uur** .
-10. Selecteer de **frequentie van de evaluatie** en **Klik op gereed** .
+9. Klik op de vervolg keuzelijst **aggregatie granulatie** en selecteer **24 uur**.
+10. Selecteer de **frequentie van de evaluatie** en **Klik op gereed**.
 11. Klik op **actie groep selecteren** om een **actie groep** (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
-12. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel** , de beschrijving en de **Ernst** .
+12. Vul de details van de **waarschuwing** in, zoals de naam van de **waarschuwings regel** , de beschrijving en de **Ernst**.
 13. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Naslag informatie over Azure Files bewakings gegevens](storage-files-monitoring.md)
+- [Naslag informatie over Azure Files bewakings gegevens](storage-files-monitoring-reference.md)
 - [Azure-resources bewaken met Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Migratie van Azure Storage metrieken](../common/storage-metrics-migration.md)
 - [Een Azure Files-implementatie plannen](https://docs.microsoft.com/azure/storage/files/storage-files-planning)

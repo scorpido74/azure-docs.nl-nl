@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 88f1c88e721419bf944207b9c748b9250a25f428
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348063"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358453"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Herhalingen maken waarmee werkstroomacties worden herhaald of matrices worden verwerkt in Azure Logic Apps
 
 Als u een matrix in uw logische app wilt verwerken, kunt u een [' foreach-lus](#foreach-loop)maken. Met deze lus worden een of meer acties herhaald voor elk item in de matrix. Zie voor de limiet voor het aantal matrix items dat door een ' foreach-lus kan worden verwerkt ' [gelijktijdigheid, lussen en limieten voor het debatchren](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-Als u acties wilt herhalen totdat aan een voor waarde wordt voldaan of een status verandert, kunt u een [' until '-lus](#until-loop)maken. De logische app voert eerst alle acties in de lus uit en controleert vervolgens de voor waarde of status. Als aan de voor waarde wordt voldaan, wordt de lus gestopt. Anders wordt de lus herhaald. Zie voor de limiet van het aantal "until"-lussen dat een logische app kan hebben, gelijktijdigheid [, lussen en het debatchren van limieten](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+Als u acties wilt herhalen totdat aan een voor waarde wordt voldaan of een status verandert, kunt u een [' until '-lus](#until-loop)maken. De logische app voert eerst alle acties in de lus uit en controleert vervolgens de voor waarde of status. Als aan de voor waarde wordt voldaan, wordt de lus gestopt. Anders wordt de lus herhaald. Zie voor de standaard-en maximum limieten voor het aantal ' until ' dat een logische app wordt uitgevoerd, [gelijktijdigheid, lussen en het debatchren van limieten](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
 > [!TIP]
 > Als u een trigger hebt die een matrix ontvangt en een werk stroom voor elk matrix item wilt uitvoeren, kunt u die matrix *debatchren* met de [trigger eigenschap **SplitOn**](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
@@ -152,7 +152,7 @@ Als u werkt met de JSON-definitie van uw logische app, kunt u de `Sequential` op
 
 ## <a name="until-loop"></a>' Until '-lus
   
-Als u acties wilt uitvoeren en herhalen totdat aan een voor waarde wordt voldaan of een status verandert, plaatst u deze acties in een lus ' until '. In uw logische app worden eerst alle acties in de lus uitgevoerd en wordt vervolgens de voor waarde of staat gecontroleerd. Als aan de voor waarde wordt voldaan, wordt de lus gestopt. Anders wordt de lus herhaald. Zie voor de limiet van het aantal "until"-lussen dat een logische app kan hebben, gelijktijdigheid [, lussen en het debatchren van limieten](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+Als u acties wilt uitvoeren en herhalen totdat aan een voor waarde wordt voldaan of een status verandert, plaatst u deze acties in een lus ' until '. In uw logische app worden eerst alle acties in de lus uitgevoerd en wordt vervolgens de voor waarde of staat gecontroleerd. Als aan de voor waarde wordt voldaan, wordt de lus gestopt. Anders wordt de lus herhaald. Zie voor de standaard-en maximum limieten voor het aantal ' until ' dat een logische app wordt uitgevoerd, [gelijktijdigheid, lussen en het debatchren van limieten](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
 Hier volgen enkele veelvoorkomende scenario's waarin u een ' until '-lus kunt gebruiken:
 
@@ -245,17 +245,19 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
       ![Ontvangen e-mail adres](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
+<a name="prevent-endless-loops"></a>
+
 ## <a name="prevent-endless-loops"></a>Eindeloze lussen voor komen
 
-Een ' until '-lus heeft standaard limieten die de uitvoering stoppen als een van deze voor waarden van toepassing is:
+De lus until stopt de uitvoering op basis van deze eigenschappen. Zorg er dus voor dat u de waarden dienovereenkomstig instelt:
 
-| Eigenschap | Standaardwaarde | Beschrijving | 
-| -------- | ------------- | ----------- | 
-| **Aantal** | 60 | Het hoogste aantal lussen dat wordt uitgevoerd voordat de lus wordt afgesloten. De standaard waarde is 60 cycli. | 
-| **Out** | PT1H | De meeste tijd voor het uitvoeren van een lus voordat de lus wordt afgesloten. De standaard waarde is één uur en wordt opgegeven in de ISO 8601-indeling. <p>De time-outwaarde wordt geëvalueerd voor elke lus-cyclus. Als een actie in de lus langer duurt dan de time-outlimiet, wordt de huidige cyclus niet gestopt. De volgende cyclus wordt echter niet gestart omdat niet wordt voldaan aan de limiet voorwaarde. | 
-|||| 
+* **Aantal** : deze waarde is het hoogste aantal lussen dat wordt uitgevoerd voordat de lus wordt afgesloten. Zie voor de standaard-en maximum limieten voor het aantal ' until ' dat een logische app wordt uitgevoerd, [gelijktijdigheid, lussen en het debatchren van limieten](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-Als u deze standaard limieten wilt wijzigen, kiest u **Geavanceerde opties weer geven** in de vorm van de lus.
+* **Time-out** : deze waarde is de meeste tijd die de lus uitvoert voordat deze wordt afgesloten en is opgegeven in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). Zie voor de standaard-en maximum limieten voor de **time-outwaarde** de [limieten voor gelijktijdigheid, lussen en](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)het afrekenen van batches.
+
+  De time-outwaarde wordt geëvalueerd voor elke lus-cyclus. Als een actie in de lus langer duurt dan de time-outlimiet, wordt de huidige cyclus niet gestopt. De volgende cyclus wordt echter niet gestart omdat niet wordt voldaan aan de limiet voorwaarde.
+
+Als u deze limieten wilt wijzigen, selecteert u in de actie herhalen de optie **limieten wijzigen**.
 
 <a name="until-json"></a>
 

@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
+ms.custom: how-to, devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fe2f35708f6a148f8db9ef6fd0a598e19e746fbd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348556"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358623"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps voor een gegevensopnamepijplijn
 
@@ -211,18 +211,18 @@ De waarden in het JSON-bestand zijn standaard waarden die zijn geconfigureerd in
 
 Het doorlopende leverings proces neemt de artefacten en implementeert deze in de eerste doel omgeving. Er wordt gecontroleerd of de oplossing werkt door tests uit te voeren. Als dat lukt, gaat het verder met de volgende omgeving. 
 
-De CD Azure-pijp lijn bestaat uit meerdere fasen die de omgevingen vertegenwoordigen. Elke fase bevat [implementaties](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) en [taken](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) die de volgende stappen uitvoeren:
+De CD Azure-pijp lijn bestaat uit meerdere fasen die de omgevingen vertegenwoordigen. Elke fase bevat [implementaties](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) en [taken](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) die de volgende stappen uitvoeren:
 
 _ Een python-notebook implementeren op Azure Databricks-werk ruimte
 * Een Azure Data Factory-pijp lijn implementeren 
 * De pijplijn uitvoeren
 * Het resultaat van de gegevens opname controleren
 
-De pijplijn fasen kunnen worden geconfigureerd met [goed keuringen](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops) en [poorten](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) die extra controle bieden over hoe het implementatie proces zich ontwikkelt door de keten van omgevingen.
+De pijplijn fasen kunnen worden geconfigureerd met [goed keuringen](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops&preserve-view=true) en [poorten](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true) die extra controle bieden over hoe het implementatie proces zich ontwikkelt door de keten van omgevingen.
 
 ### <a name="deploy-a-python-notebook"></a>Een python-notebook implementeren
 
-Het volgende code fragment definieert een Azure-pijplijn [implementatie](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) waarmee een python-notebook wordt gekopieerd naar een Databricks-cluster:
+Het volgende code fragment definieert een Azure-pijplijn [implementatie](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) waarmee een python-notebook wordt gekopieerd naar een Databricks-cluster:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -258,7 +258,7 @@ Het volgende code fragment definieert een Azure-pijplijn [implementatie](/azure/
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-De artefacten die door de CI worden geproduceerd, worden automatisch naar de implementatie agent gekopieerd en zijn beschikbaar in de `$(Pipeline.Workspace)` map. In dit geval verwijst de implementatie taak naar het `di-notebooks` artefact met de python-notebook. Deze [implementatie](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) maakt gebruik van de [Databricks Azure DevOps-extensie](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) om de notitieblok bestanden te kopiëren naar de Databricks-werk ruimte.
+De artefacten die door de CI worden geproduceerd, worden automatisch naar de implementatie agent gekopieerd en zijn beschikbaar in de `$(Pipeline.Workspace)` map. In dit geval verwijst de implementatie taak naar het `di-notebooks` artefact met de python-notebook. Deze [implementatie](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) maakt gebruik van de [Databricks Azure DevOps-extensie](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) om de notitieblok bestanden te kopiëren naar de Databricks-werk ruimte.
 
 Het `Deploy_to_QA` stadium bevat een verwijzing naar de `devops-ds-qa-vg` variabelen groep die is gedefinieerd in het Azure DevOps-project. De stappen in deze fase verwijzen naar de variabelen van deze variabelen groep (bijvoorbeeld `$(DATABRICKS_URL)` en `$(DATABRICKS_TOKEN)` ). Het idee is dat de volgende fase (bijvoorbeeld `Deploy_to_UAT` ) werkt met dezelfde namen van variabelen die zijn gedefinieerd in de eigen variabelen groep bedoeld.
 
@@ -339,7 +339,7 @@ De volledige CI/CD Azure-pijp lijn bestaat uit de volgende fasen: _ CI
     * Implementeren naar Databricks + implementeren naar ADF
     * Integratie test
 
-Het bevat een aantal * **Implementeer** _-fasen die gelijk zijn aan het aantal doel omgevingen dat u hebt. Elke _*_implementatie_*_ fase bevat twee [implementaties](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) die parallel worden uitgevoerd en een [taak](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) die wordt uitgevoerd na implementaties om de oplossing in de omgeving te testen.
+Het bevat een aantal * **Implementeer** _-fasen die gelijk zijn aan het aantal doel omgevingen dat u hebt. Elke _*_implementatie_*_ fase bevat twee [implementaties](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) die parallel worden uitgevoerd en een [taak](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) die wordt uitgevoerd na implementaties om de oplossing in de omgeving te testen.
 
 Een voorbeeld implementatie van de pijp lijn wordt geassembleerd in het volgende _*_yaml_*_ -fragment:
 

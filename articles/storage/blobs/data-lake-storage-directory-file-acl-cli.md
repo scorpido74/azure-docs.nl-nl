@@ -10,12 +10,12 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 22d048b15cc097cd8a24e5ed57bbe4d5a6183e2f
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ee461193be81297c6577ce4c264cabbf08e72417
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131595"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359439"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLI gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -249,7 +249,7 @@ In dit voor beeld heeft de gebruiker die eigenaar is, de machtigingen lezen, sch
 
 ### <a name="set-an-acl"></a>Een ACL instellen
 
-Gebruik de `az storage fs access set` opdracht om de ACL van een **Directory**in te stellen. 
+Gebruik de `az storage fs access set` opdracht om de ACL van een **Directory** in te stellen. 
 
 In dit voor beeld wordt de ACL ingesteld op een map voor de gebruiker die eigenaar is van de groep of andere gebruikers, en wordt de ACL vervolgens naar de console afgedrukt.
 
@@ -263,7 +263,7 @@ In dit voor beeld wordt de *standaard* -ACL ingesteld op een map voor de gebruik
 az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-Gebruik de `az storage fs access set` opdracht om de ACL van een **bestand**in te stellen. 
+Gebruik de `az storage fs access set` opdracht om de ACL van een **bestand** in te stellen. 
 
 In dit voor beeld wordt de toegangs beheer lijst voor een bestand ingesteld op de gebruiker die eigenaar is van de groep of van andere gebruikers, en wordt de ACL vervolgens naar de console afgedrukt.
 
@@ -283,13 +283,13 @@ Een andere manier om deze machtiging in te stellen, is met behulp van de `az sto
 
 De ACL van een map of bestand bijwerken door de `-permissions` para meter in te stellen op de korte vorm van een ACL.
 
-In dit voor beeld wordt de ACL van een **Directory**bijgewerkt.
+In dit voor beeld wordt de ACL van een **Directory** bijgewerkt.
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-In dit voor beeld wordt de ACL van een **bestand**bijgewerkt.
+In dit voor beeld wordt de ACL van een **bestand** bijgewerkt.
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -307,7 +307,12 @@ In dit voor beeld wordt de eigenaar van een bestand gewijzigd.
 
 ```azurecli
 az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
+
 ```
+
+### <a name="set-an-acl-recursively"></a>Recursief instellen van een ACL
+
+U kunt Acl's recursief toevoegen, bijwerken en verwijderen voor de bestaande onderliggende items van een bovenliggende map zonder dat u deze wijzigingen afzonderlijk voor elk onderliggend item hoeft aan te brengen. Zie [acl's (Access Control Lists) recursief instellen voor Azure data Lake Storage Gen2](recursive-access-control-lists.md)voor meer informatie.
 
 ## <a name="see-also"></a>Zie ook
 

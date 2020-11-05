@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0769366ad56e1b7431dbfa7c95f1256c509d24fa
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266286"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358164"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Beheerde identiteiten voor Azure-resources gebruiken op een Azure VM om een toegangs token te verkrijgen 
 
@@ -64,7 +64,7 @@ Een client toepassing kan beheerde identiteiten aanvragen voor de Azure [-resour
 
 De fundamentele interface voor het verkrijgen van een toegangs token is gebaseerd op REST, waardoor deze toegankelijk is voor elke client toepassing die op de virtuele machine wordt uitgevoerd en die HTTP REST-aanroepen kan maken. Dit is vergelijkbaar met het Azure AD-programmeer model, met uitzonde ring van de client gebruikt een eind punt op de virtuele machine (VS een Azure AD-eind punt).
 
-Voorbeeld aanvraag met behulp van het Azure Instance Metadata Service (IMDS)-eind punt *(aanbevolen)*:
+Voorbeeld aanvraag met behulp van het Azure Instance Metadata Service (IMDS)-eind punt *(aanbevolen)* :
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | Beschrijving Een query reeks parameter, waarmee de client_id van de beheerde identiteit wordt aangegeven waarvoor u het token wilt voor. Vereist als uw virtuele machine meerdere door de gebruiker toegewezen beheerde identiteiten heeft.|
 | `mi_res_id` | Beschrijving Een query teken reeks parameter, waarmee de mi_res_id (Azure-Resource-ID) wordt aangegeven van de beheerde identiteit waarvoor u het token wilt voor. Vereist als uw virtuele machine meerdere door de gebruiker toegewezen beheerde identiteiten heeft. |
 
-Voorbeeld aanvraag met behulp van het eind punt voor beheerde identiteiten voor Azure-resources VM extension *(gepland voor afschaffing in januari 2019)*:
+Voorbeeld aanvraag met behulp van het eind punt voor beheerde identiteiten voor Azure-resources VM extension *(gepland voor afschaffing in januari 2019)* :
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -393,7 +393,7 @@ Voor opnieuw proberen wordt de volgende strategie aanbevolen:
 
 | **Strategie voor opnieuw proberen** | **Instellingen** | **Waarden** | **Uitleg** |
 | --- | --- | --- | --- |
-|ExponentialBackoff |Aantal pogingen<br />Min. uitstel<br />Max. uitstel<br />Delta-uitstel<br />Eerste snelle poging |5<br />0 sec.<br />60 sec.<br />2 sec.<br />onjuist |Poging 1, vertraging 0 sec.<br />Poging 2, vertraging ~2 sec.<br />Poging 3, vertraging ~6 sec.<br />Poging 4, vertraging ~14 sec.<br />Poging 5, vertraging ~30 sec. |
+|ExponentialBackoff |Aantal pogingen<br />Min. uitstel<br />Max. uitstel<br />Delta-uitstel<br />Eerste snelle poging |5<br />0 sec.<br />60 sec.<br />2 sec.<br />false |Poging 1, vertraging 0 sec.<br />Poging 2, vertraging ~2 sec.<br />Poging 3, vertraging ~6 sec.<br />Poging 4, vertraging ~14 sec.<br />Poging 5, vertraging ~30 sec. |
 
 ## <a name="resource-ids-for-azure-services"></a>Resource-Id's voor Azure-Services
 

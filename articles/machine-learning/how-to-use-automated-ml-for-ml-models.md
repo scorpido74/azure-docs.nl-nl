@@ -1,7 +1,7 @@
 ---
 title: AutoML gebruiken om modellen te maken & implementeren
 titleSuffix: Azure Machine Learning
-description: Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning.
+description: Maak, Bekijk en implementeer automatische machine learning modellen met de Azure Machine Learning Studio.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: ad84d3d3fd58edc6f7967c6f50440dcc90625617
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, automl
+ms.openlocfilehash: 0c697e6332b757e1d135a77b70f33a6e32528309
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311274"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358895"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 
@@ -80,7 +80,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
         Kolomkoppen| Geeft aan hoe eventuele koppen van de gegevensset worden behandeld.
         Rijen overslaan | Geeft aan hoeveel rijen er eventueel worden overgeslagen in de gegevensset.
     
-        Selecteer **Next**.
+        Selecteer **Volgende**.
 
     1. Het **schema** formulier wordt op de slimme wijze ingevuld op basis van de selecties in het formulier **instellingen en preview** . Hier configureert u het gegevens type voor elke kolom, bekijkt u de kolom namen en selecteert u welke kolommen niet voor uw experiment moeten worden **toegevoegd** . 
             
@@ -88,7 +88,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     1. Het formulier **Details bevestigen** is een samen vatting van de gegevens die eerder zijn ingevuld in de **basis gegevens** en- **instellingen en preview** -formulieren. U kunt ook een gegevens profiel maken voor uw gegevensset met behulp van een profilerings functie ingeschakeld. Meer informatie over [gegevensprofilering](how-to-connect-data-ui.md#profile).
 
-        Selecteer **Next**.
+        Selecteer **Volgende**.
 1. Selecteer de zojuist gemaakte gegevensset zodra deze wordt weer gegeven. U kunt ook een preview van de gegevensset en voorbeeld statistieken bekijken. 
 
 1. Voer een unieke naam voor het experiment in op het formulier voor het configureren van een **uitvoering** .
@@ -113,7 +113,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     >[!NOTE]
     > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie de sectie [gegevens profilering](how-to-connect-data-ui.md#profile) voor meer informatie).
 
-    Selecteer **Next**.
+    Selecteer **Volgende**.
 
 1. Selecteer op het **taak type en het instellingen** formulier het taak type: classificatie, regressie of prognose. Zie [ondersteunde taak typen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) voor meer informatie.
 

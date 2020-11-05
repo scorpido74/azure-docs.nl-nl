@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073822"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358708"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Meer informatie over uw Azure Cosmos DB-factuur
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -103,11 +103,11 @@ Als u de ingerichte door Voer voor een container of een set containers op 9:30 u
 
 * Als er in een maand van 720 uur een ingerichte door Voer van 300 uur 120-K RU/SEC is en voor de resterende 420 uur door Voer is 155-K RU/sec., wordt uw maandelijkse factuur weer gegeven: 300 x $9.60/uur + 420 x $12.40/Hour = $2.880 + $5.208 = $8088/maand. 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Voor beeld van toegewezen doorvoer facturering":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Voor beeld van een facturering van gedeelde door Voer":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>Facturerings voorbeelden met het schrijven van geo-replicatie en meerdere regio's  
+## <a name="billing-examples-with-geo-replication"></a>Facturerings voorbeelden met geo-replicatie  
 
-U kunt Azure-regio's overal ter wereld toevoegen aan of verwijderen uit uw Azure Cosmos-database account. De door u geconfigureerde doorvoer voor de verschillende Azure Cosmos-data bases en containers wordt gereserveerd in elk van de Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-database account. Als de som van de ingerichte door Voer (RU/sec) die is geconfigureerd voor alle data bases en containers in uw Azure Cosmos-database account (ingericht per uur), T is en het aantal Azure-regio's dat aan uw database account is gekoppeld, N is, de totale ingerichte door Voer voor een bepaald uur, voor uw Azure Cosmos-database account, (a) die is geconfigureerd met één schrijf regio is gelijk aan T x N RU/sec. en (b) geconfigureerd met alle regio's die kunnen worden verwerkt, is gelijk aan T x (N + 1) RU/sec. Ingerichte door Voer (enkele schrijf regio) kosten $0.008/uur per 100 RU/SEC en ingerichte door Voer met meerdere Beschrijf bare regio's (multi-regio writes config) kosten $0,016/per uur per 100 RU/SEC (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)). Met Azure Cosmos DB kunt u de gegevens uit een wille keurige regio lezen, ongeacht of er een enkele schrijf regio of meerdere schrijf regio's zijn.
+U kunt Azure-regio's overal ter wereld toevoegen aan of verwijderen uit uw Azure Cosmos-database account. De door u geconfigureerde doorvoer voor de verschillende Azure Cosmos-data bases en containers wordt gereserveerd in elk van de Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-database account. Als de som van de ingerichte door Voer (RU/sec) die is geconfigureerd voor alle data bases en containers in uw Azure Cosmos-database account (ingericht per uur) is en het aantal Azure-regio's dat aan uw database account is gekoppeld, N is en de totale ingerichte door Voer voor een bepaald uur gelijk is aan T x N RU/sec. Ingerichte door Voer (enkele schrijf regio) kosten $0.008/uur per 100 RU/SEC en ingerichte door Voer met meerdere Beschrijf bare regio's (multi-regio writes config) kosten $0,016/per uur per 100 RU/SEC (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)). Met Azure Cosmos DB kunt u de gegevens uit een wille keurige regio lezen, ongeacht of er een enkele schrijf regio of meerdere schrijf regio's zijn.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Voor beeld van facturering: meerdere regio's Azure Cosmos-account, schrijf bewerkingen in één regio
 
@@ -193,7 +193,7 @@ Bekijk het volgende voor beeld, waarbij we een Azure Cosmos-account met meerdere
 
 In de onderstaande afbeelding ziet u de wijzigingen in de totale ingerichte door Voer gedurende 720 uur voor de maand. 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Voor beeld van toegewezen doorvoer facturering":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Voor beeld van Real-Life":::
 
 De totale maandelijkse factuur (ervan uitgaande tot 30 dagen/720 uur per maand) wordt als volgt berekend:
 
@@ -286,7 +286,7 @@ Uw totale factuur (zonder gereserveerde capaciteit) zou worden (waarbij 30 dagen
 |**Regio**| **Uurtarief per uur op basis van 100 RU/s**|**Eenheden (RU/s)**|**Gefactureerd bedrag (per uur)**| **Gefactureerd bedrag (maandelijks)**|
 |----|----|----|----|----|
 |VS - oost|$0,008 |50 K|$4|$2.880 |
-|Japan East|$0,009 |50 K| $4,50 |$3.240 |
+|Japan - oost|$0,009 |50 K| $4,50 |$3.240 |
 |Totaal|||$8,50|$6.120 |
 
 U kunt in plaats daarvan een gereserveerde capaciteit hebben gekocht. U kunt gereserveerde capaciteit voor 100-K RU/seconde kopen tegen de prijs van $56.064 gedurende één jaar (bij 20% korting) of $6,40 per uur. Bekijk de prijzen voor gereserveerde capaciteit op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/).  
@@ -300,8 +300,8 @@ Wat u effectief hebt aangeschaft, is een tegoed van $8 per uur, voor 100 K RU pe
 |**Regio**| **Uurtarief per uur op basis van 100 RU/s**|**Eenheden (RU/s)**| **Gefactureerd bedrag (per uur)**| **Gefactureerd bedrag (maandelijks)**|
 |----|----|----|----|----|
 |VS - oost|$0,008 |50 K|$4|$2.880 |
-|Japan East|$0,009 |50 K| $4,50 |$3.240 |
-|||Betalen per gebruik|$8,50|$6120|
+|Japan - oost|$0,009 |50 K| $4,50 |$3.240 |
+|||Betalen naar gebruik|$8,50|$6120|
 |Aangeschafte gereserveerde capaciteit|$0,0064 (20% korting) |100 RU/sec of $8 capaciteit vooraf aangeschaft |-$8|-$5.760 |
 |Netfactuur|||$ 0,50 |$360 |
 
