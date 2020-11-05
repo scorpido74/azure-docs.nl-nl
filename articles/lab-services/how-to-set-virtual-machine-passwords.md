@@ -3,12 +3,12 @@ title: Wacht woorden instellen voor virtuele machines in Azure Lab Services | Mi
 description: Meer informatie over het instellen en opnieuw instellen van wacht woorden voor virtuele machines (Vm's) in klassikale Labs van Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e24fee26670a664012ec5f0216b0638d6149453f
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334069"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379686"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>VM-pool instellen en beheren 
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
@@ -53,15 +53,14 @@ Op dezelfde manier kunt u een of meer Vm's stoppen door te klikken op de knop in
 > Wanneer een onderwijzer een student-VM inschakelt, wordt het quotum voor de student niet beïnvloed. Een quotum voor een gebruiker specificeert het aantal beschikbare laburen voor de gebruiker buiten de geplande lestijd. Voor meer informatie over quota raadpleegt u [Quota instellen voor gebruikers](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="reset-vms"></a>Vm's opnieuw instellen
+
 Als u een of meer Vm's opnieuw wilt instellen, selecteert u deze in de lijst en selecteert u vervolgens **opnieuw instellen** op de werk balk. 
 
 ![Geselecteerde Vm's opnieuw instellen](./media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
 
-Selecteer **opnieuw instellen**in het dialoog venster **virtuele machine (s) opnieuw instellen** . 
+Selecteer **opnieuw instellen** in het dialoog venster **virtuele machine (s) opnieuw instellen** . 
 
 ![Het dialoog venster VM opnieuw instellen](./media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
-
-
 
 ## <a name="set-password-for-vms"></a>Wacht woord instellen voor Vm's
 Een Lab-eigenaar (docenten) kan het wacht woord voor Vm's instellen of opnieuw instellen op het moment van het maken van de Lab (wizard Lab maken) of na het maken van het lab op de **sjabloon** pagina. 
