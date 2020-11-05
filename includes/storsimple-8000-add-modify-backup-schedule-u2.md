@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ab3b089ce65c9f27457fd1cfb360d6776ed6244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f423d30dd10930d593bb1d5d39b46ed8914146e7
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176224"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376105"
 ---
 #### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>Een StorSimple-back-upschema toevoegen of wijzigen
 
@@ -21,9 +21,9 @@ ms.locfileid: "67176224"
 
 3. Wijzig op de Blade **schema toevoegen** het type moment opname, de back-upfrequentie, retentie en de begin datum en-tijd. Klik op **Add**.
 
-    ![schema's beheren](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
+    ![planningen 2 beheren](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 
 4. U wordt gewaarschuwd wanneer het maken van het back-upbeleid is voltooid. De lijst back-upbeleid is ook bijgewerkt.
 
-    ![schema's beheren](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule4.png)
+    ![planningen 3 beheren](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule4.png)
 

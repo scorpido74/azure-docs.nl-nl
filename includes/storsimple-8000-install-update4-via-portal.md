@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3cfab78ab4bcc92b3e65b5e4fa04a29bf688de0
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176238"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375810"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Een update installeren via Azure Portal
 
@@ -23,11 +23,11 @@ ms.locfileid: "67176238"
 
 2. Er wordt een melding weer gegeven als er nieuwe updates beschikbaar zijn. U kunt ook op de Blade **updates voor apparaten** klikken op **updates scannen**. Er wordt een taak gemaakt om te zoeken naar beschikbare updates. U ontvangt een melding wanneer de taak is voltooid.
 
-    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update4-via-portal/update3.png)
+    ![Klik op updates voor apparaten 2](./media/storsimple-8000-install-update4-via-portal/update3.png)
 
-3. We raden u aan de releaseopmerkingen te bekijken voordat u een update toepast op uw apparaat. Klik op **updates installeren**om updates toe te passen. Controleer op de Blade **regel matige updates bevestigen** de vereiste onderdelen om te volt ooien voordat u updates toepast. Schakel het selectie vakje in om aan te geven dat u klaar bent voor het bijwerken van het apparaat en klik vervolgens op **installeren**.
+3. We raden u aan de releaseopmerkingen te bekijken voordat u een update toepast op uw apparaat. Klik op **updates installeren** om updates toe te passen. Controleer op de Blade **regel matige updates bevestigen** de vereiste onderdelen om te volt ooien voordat u updates toepast. Schakel het selectie vakje in om aan te geven dat u klaar bent voor het bijwerken van het apparaat en klik vervolgens op **installeren**.
 
-    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update4-via-portal/update4.png)
+    ![Klik op updates 3](./media/storsimple-8000-install-update4-via-portal/update4.png)
 
 6. Er wordt een reeks vereiste controles gestart. Deze controles zijn onder andere:
    
@@ -45,13 +45,13 @@ ms.locfileid: "67176238"
 
 9. De update neemt enkele uren in beslag. Selecteer de bijwerktaak en klik op **Details** om de details van de taak te bekijken.
 
-    ![Maken van bijwerktaak](./media/storsimple-8000-install-update4-via-portal/update8.png)
+    ![Taak maken 2 bijwerken](./media/storsimple-8000-install-update4-via-portal/update8.png)
 
      U kunt ook de voortgang van de update taak controleren op basis van **apparaatinstellingen > taken**. Op de Blade **taken** ziet u de voortgang van de update.
 
-     ![Maken van bijwerktaak](./media/storsimple-8000-install-update4-via-portal/update7.png)
+     ![Taak voor het maken van updates 3](./media/storsimple-8000-install-update4-via-portal/update7.png)
 
-10. Nadat de taak is voltooid, gaat u naar de **apparaatinstellingen > updates**van het apparaat. De software versie moet nu worden bijgewerkt.
+10. Nadat de taak is voltooid, gaat u naar de **apparaatinstellingen > updates** van het apparaat. De software versie moet nu worden bijgewerkt.
 
-   ![Maken van bijwerktaak](./media/storsimple-8000-install-update4-via-portal/update9.png)
+   ![Taak maken 4 bijwerken](./media/storsimple-8000-install-update4-via-portal/update9.png)
 

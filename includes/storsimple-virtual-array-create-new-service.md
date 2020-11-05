@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: b7bdeeedaac65f67a3224e824c19e8cad794682b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bdbfd8ffd44f9515ae4df20c55b09c8a0adcaef
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507370"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376035"
 ---
 #### <a name="to-create-a-new-service"></a>Een nieuwe service maken
 
 1.  Meld u met uw Microsoft-account-referenties aan bij de Azure Portal op deze URL: <https://portal.azure.com/> . Als u het apparaat in de overheids Portal implementeert, meldt u zich aan bij: <https://portal.azure.us/>
 
-2.  Klik in het Azure Portal op **+ een resource** -StorSimple maken voor de &gt; **Storage** &gt; **virtuele**opslag.
+2.  Klik in het Azure Portal op **+ een resource** -StorSimple maken voor de &gt; **Storage** &gt; **virtuele** opslag.
 
     ![Nieuwe service maken](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 
@@ -29,7 +29,7 @@ ms.locfileid: "87507370"
 
     2.  Kies een **abonnement** in de vervolgkeuzelijst. Het abonnement is gekoppeld aan uw factureringsrekening. Dit veld wordt niet weergegeven als u slechts één abonnement hebt.
 
-    3.  Voor **resource groep**selecteert u een bestaande of een nieuwe groep maken. Zie [Azure-resourcegroepen](/azure/azure-resource-manager/management/manage-resource-groups-portal) voor meer informatie.
+    3.  Voor **resource groep** selecteert u een bestaande of een nieuwe groep maken. Zie [Azure-resourcegroepen](/azure/azure-resource-manager/management/manage-resource-groups-portal) voor meer informatie.
 
     4.  Geef een **locatie** voor uw service op. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services) voor meer informatie over welke services beschikbaar zijn in welke regio. Kies in het algemeen een **locatie** die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren. U kunt ook rekening houden met het volgende:
 
@@ -45,7 +45,7 @@ ms.locfileid: "87507370"
 
     7.  Klik op **Maken** om de StorSimple-apparaatbeheerfunctie te maken.
 
-        ![Nieuwe service maken](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
+        ![Nieuwe service maken 2](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
 
 U wordt omgeleid naar de pagina **service** -lands. Het maken van de service duurt enkele minuten. Nadat de service is gemaakt, krijgt u hierover een melding en wordt de status van de service gewijzigd in **Actief**.
 

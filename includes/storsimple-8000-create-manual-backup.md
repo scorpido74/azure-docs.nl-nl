@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89f7be31514f0b78c3bfb3efd6e6aca14658d5cd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176110"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375986"
 ---
 #### <a name="to-create-a-manual-backup"></a>Een handmatige back-up maken
 
@@ -19,17 +19,17 @@ ms.locfileid: "67176110"
 
     ![Handmatige back-up maken](./media/storsimple-8000-create-manual-backup/createmanualbu1.png)
 
-3. Voer de volgende stappen uit op de blade **Nu back-up uitvoeren**:
+3. Voer de volgende stappen uit op de blade **Nu back-up uitvoeren** :
 
     1. Kies het juiste **Type momentopname** in de vervolgkeuzelijst: **Lokale momentopname** of **Cloud-momentopname**. Selecteer Lokale momentopname voor snelle back-ups of herstelacties en Cloud-momentopname voor tolerantie van gegevens.
 
-        ![Handmatige back-up maken](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
+        ![Hand matige back-up maken 2](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 
     2. Klik op **OK** om een taak te starten voor het maken van een momentopname. U ziet boven aan de pagina een melding nadat de taak is gemaakt.
 
-        ![Handmatige back-up maken](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
+        ![Hand matige back-up maken 3](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
 
-    3. Klik op de melding om de taak te controleren. U gaat nu naar de blade **Taken**, waar u de voortgang van de taak kunt bekijken.
+    3. Klik op de melding om de taak te controleren. U gaat nu naar de blade **Taken** , waar u de voortgang van de taak kunt bekijken.
 
 
 5. Nadat de back-uptaak is voltooid, gaat u naar het tabblad **Back-upcatalogus**.

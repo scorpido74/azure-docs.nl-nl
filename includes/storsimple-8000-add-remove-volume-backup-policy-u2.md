@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 92036cebf0541f9e9928acf1a9c32db0037bde48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b57c2ff2e53a5b836d9faeef7e18052d6e670cf6
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176226"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376179"
 ---
 #### <a name="to-add-or-remove-a-volume"></a>Een volume toevoegen of verwijderen
 
@@ -21,15 +21,15 @@ ms.locfileid: "67176226"
 
 3. Schakel op de Blade **volume toevoegen/verwijderen** het selectie vakje (sen) in of uit om het volume toe te voegen of te verwijderen. Meerdere volumes worden geselecteerd/uitgeschakeld door de betreffende selectie vakjes in of uit te scha kelen.
 
-    ![schema's beheren](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol3.png)
+    ![planningen 2 beheren](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol3.png)
 
     Als u volumes van verschillende volume containers aan een back-upbeleid toewijst, moet u er rekening mee houden dat deze volume containers samen met een failover moeten worden uitgevoerd. Er wordt een waarschuwing weer gegeven.
 
-    ![schema's beheren](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol2.png)
+    ![planningen 3 beheren](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol2.png)
 
 4. U ontvangt een melding wanneer het back-upbeleid wordt gewijzigd. De lijst back-upbeleid is ook bijgewerkt.
 
-    ![schema's beheren](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol6.png)
+    ![planningen 4 beheren](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol6.png)
 
 
 

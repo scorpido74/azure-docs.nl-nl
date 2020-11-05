@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bff61cfbf89aee3566d677ccf593b102cff36d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176225"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376249"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>Een StorSimple-back-upbeleid toevoegen
 
@@ -19,7 +19,7 @@ ms.locfileid: "67176225"
    
     ![Een back-upbeleid toevoegen](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
 
-3. Voer de volgende stappen uit op de blade **Back-upbeleid maken**:
+3. Voer de volgende stappen uit op de blade **Back-upbeleid maken** :
    
    1. **Apparaat selecteren** wordt automatisch ingevuld op basis van het apparaat dat u hebt geselecteerd.
    
@@ -27,11 +27,11 @@ ms.locfileid: "67176225"
        
    3. Als u volumes wilt toewijzen aan dit back-upbeleid, selecteert u **Volumes toevoegen** en klikt u vervolgens vanuit de lijst in tabelvorm met volumesop het selectievakje uit om een of meer volumes toe te wijzen aan het back-upbeleid.
 
-       ![Een back-upbeleid toevoegen](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
+       ![Een back-upbeleid toevoegen 2](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
 
    4. Als u een planning voor het back-upbeleid wilt definiëren, klikt u op **Eerste planning** en wijzigt u vervolgens de volgende parameters:
 
-       ![Een back-upbeleid toevoegen](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
+       ![Een back-upbeleid toevoegen 3](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
 
        1. Selecteer voor **Type momentopname** de optie **Cloud** of **Lokaal**.
 
@@ -45,9 +45,9 @@ ms.locfileid: "67176225"
 
    5. Klik op **Maken** om een back-upbeleid te maken.
 
-       ![Een back-upbeleid toevoegen](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
+       ![Een back-upbeleid toevoegen 4](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
    6. U krijgt een melding wanneer het back-upbeleid is gemaakt. Het nieuwe beleid wordt in tabelvorm weergegeven op de blade **Back-upbeleid**.
 
-       ![Een back-upbeleid toevoegen](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
+       ![Een back-upbeleid toevoegen 5](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
 

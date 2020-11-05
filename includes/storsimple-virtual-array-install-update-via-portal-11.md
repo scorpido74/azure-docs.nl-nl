@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 65d5a88f7b5d059deb633f062639e455c64ef2f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed290e861a0fdebeb76b9e08e62c03eda52be82
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176559"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375793"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Updates installeren via Azure Portal
 
 1. Ga naar uw StorSimple Device Manager en selecteer **Apparaten**. Selecteer in de lijst met apparaten die zijn verbonden met uw service, het apparaat dat u wilt bijwerken.
 
-2. Klik onder **instellingen**op **updates voor apparaten**.  
+2. Klik onder **instellingen** op **updates voor apparaten**.  
 
 3. Als er software-updates beschikbaar zijn, wordt er een bericht weergegeven. U kunt ook op **Scannen** klikken om naar updates te zoeken. Noteer de software versie die u gebruikt. 
 
@@ -29,23 +29,23 @@ ms.locfileid: "67176559"
  
 4. Nadat de updates zijn gescand, klikt u op **Updates downloaden**. Bekijk de opmerkingen bij de release onder **nieuwe updates**. Nadat de updates zijn gedownload, moet u de installatie bevestigen. Klik op **OK**.
 
-    ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
+    ![apparaat 2 bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
 
     U ontvangt een melding wanneer de upload wordt gestart en wanneer deze is voltooid.
 
-5. Klik onder **updates voor apparaten**op **installeren**.
+5. Klik onder **updates voor apparaten** op **installeren**.
 
-     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
+     ![apparaat 3 bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
 
-6. Onder **nieuwe updates**wordt u gewaarschuwd dat de update is verstoord. Als de virtuele matrix een apparaat met een enkel knooppunt is, wordt het apparaat opnieuw opgestart nadat het is bijgewerkt. Dit verstoort alle actieve IO. Klik op **OK** om de updates te installeren.
+6. Onder **nieuwe updates** wordt u gewaarschuwd dat de update is verstoord. Als de virtuele matrix een apparaat met een enkel knooppunt is, wordt het apparaat opnieuw opgestart nadat het is bijgewerkt. Dit verstoort alle actieve IO. Klik op **OK** om de updates te installeren.
 
-    ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
+    ![apparaat bijwerken 4](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
 
     U ontvangt een melding wanneer de installatietaak wordt gestart.
 
 7.  Nadat de installatie taak is voltooid, klikt u op **taak koppeling weer geven** . Met deze actie gaat u naar de Blade **updates installeren** . Hier kunt u gedetailleerde informatie over de taak weergeven. 
 
-    ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
+    ![apparaat 5 bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
 
 8. Als u bent begonnen met een virtuele array met software versie update 1 (10.0.10296.0), voert u nu update 1,1 uit en bent u klaar. U kunt de resterende stappen overs Laan. 
 

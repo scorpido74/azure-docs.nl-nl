@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c10482029e6cfce7063d205161fed54030919c48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a01f91a81629800d3f03b907c65f05433b6163e6
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176093"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376255"
 ---
 #### <a name="to-stop-and-start-a-cloud-appliance"></a>Een cloudapparaat starten en stoppen
 
@@ -18,19 +18,19 @@ ms.locfileid: "67176093"
 
 2. Klik vanuit de opdrachtbalk op **Stoppen**.
 
-    ![StorSimple-cloudapparaat - virtuele machine](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
+    ![Virtuele machine StorSimple Cloud Appliance 2](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
 
 3. Klik op **Ja** als u om bevestiging wordt gevraagd.
 
-    ![StorSimple-cloudapparaat - virtuele machine](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
+    ![StorSimple Cloud Appliance virtuele machine 3](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
 
 4. Wanneer u een virtuele machine stopt, wordt de toewijzing ervan opgeheven. Terwijl het cloudapparaat wordt gestopt, is de status ervan **Toewijzing ongedaan maken**. Nadat het cloudapparaat is gestopt, is de status ervan **Gestopt (toewijzing opgeheven)**.
 
-    ![StorSimple-cloudapparaat - virtuele machine](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
+    ![StorSimple Cloud Appliance virtuele machine 4](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
 
 5. Nadat een virtuele machine is gestopt, klikt u op **Starten** (knop wordt beschikbaar) om de virtuele machine te starten. Nadat het cloudapparaat is gestart, wordt de status ervan **Gestart**.
 
-    ![StorSimple-cloudapparaat - virtuele machine](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart5.png)
+    ![StorSimple Cloud Appliance virtuele machine 5](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart5.png)
 
 Gebruik de volgende cmdlets om een cloudapparaat te stoppen en te starten.
 
@@ -42,7 +42,7 @@ Gebruik de volgende cmdlets om een cloudapparaat te stoppen en te starten.
 
 Als u een cloudapparaat opnieuw wilt opstarten, gaat u naar de virtuele machine voor uw cloudapparaat. Klik vanuit de opdrachtbalk op **Opnieuw starten**. Bevestig het opnieuw starten als u daarom wordt gevraagd. Wanneer het cloudapparaat gereed is voor gebruik, is de status **Wordt uitgevoerd**.
 
-![StorSimple-cloudapparaat - virtuele machine](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart6.png)
+![StorSimple Cloud Appliance virtuele machine 6](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart6.png)
 
 Gebruik de volgende cmdlet om een cloudapparaat opnieuw op te starten.
 

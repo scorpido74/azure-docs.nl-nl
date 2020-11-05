@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 48a3326dbe0e9eed4a5490e720248555586d189c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e923fdf560692c645c8a69e7e26d13f69d6920c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176087"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376021"
 ---
 ### <a name="to-take-a-backup"></a>Een back-up maken
 
@@ -19,15 +19,15 @@ ms.locfileid: "67176087"
 
 2. Klik op de blade **Back-upbeleid** op **+ Beleid toevoegen**.
 
-    ![Back-upbeleid-toevoegen](./media/storsimple-8000-take-backup/step8takebu2.png)
+    ![Add-backup-beleid 2](./media/storsimple-8000-take-backup/step8takebu2.png)
 
 3. Geef op de blade **Back-upbeleid maken** een naam op voor uw back-upbeleid die tussen de 3 en 150 tekens lang is.
 
 4. Selecteer de volumes waarvan u een back-up wilt maken. Als u meer dan één volume selecteert, worden deze volumes samen gegroepeerd om zo een crashconsistente back-up te maken.
 
-    ![Back-upbeleid-toevoegen](./media/storsimple-8000-take-backup/step8takebu4.png)
+    ![Add-backup-policy 3](./media/storsimple-8000-take-backup/step8takebu4.png)
 
-5. Op de blade **Eerste schema toevoegen**:
+5. Op de blade **Eerste schema toevoegen** :
 
     1. Selecteer het type back-up. Selecteer **Lokale momentopname** voor sneller herstellen. Selecteer **Cloudmomentopname** voor gegevenstolerantie.
     2. Geef de back-upfrequentie op in minuten, uren, dagen of weken.
@@ -35,11 +35,11 @@ ms.locfileid: "67176087"
     4. Selecteer de begintijd en -datum voor het back-upbeleid.
     5. Klik op **OK** om het back-upbeleid te maken.
 
-        ![Back-upbeleid-toevoegen](./media/storsimple-8000-take-backup/step8takebu5.png) 
+        ![Add-backup-policy 4](./media/storsimple-8000-take-backup/step8takebu5.png) 
 
 6. Klik op **Maken** om te beginnen met het maken van het back-upbeleid. U krijgt een melding wanneer het back-upbeleid is gemaakt. De lijst met back-upbeleidsregels wordt ook bijgewerkt.
       
-      ![Back-upbeleid-toevoegen](./media/storsimple-8000-take-backup/step8takebu9.png)
+      ![Add-backup-policy 5](./media/storsimple-8000-take-backup/step8takebu9.png)
       
       U hebt nu een back-upbeleid voor geplande back-ups van uw volumegegevens.
 
