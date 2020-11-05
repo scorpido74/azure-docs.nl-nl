@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bd0eda16f9f96dd356eef900369ab25854e9f9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293897"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392245"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>DACPAC-en BACPAC-pakketten in SQL-rand SQL Database
 
 Azure SQL Edge is een geoptimaliseerde relationele database-engine voor IoT- en Edge-implementaties. Het is gebaseerd op de nieuwste versies van de micro soft SQL Database-Engine, waarmee toonaangevende prestaties, beveiliging en verwerkings mogelijkheden voor query's worden geboden. Naast de toonaangevende mogelijkheden voor het beheer van relationele data bases van SQL Server biedt Azure SQL Edge ingebouwde streaming-mogelijkheden voor realtime analyse en complexe gebeurtenis verwerking.
 
-Azure SQL Edge biedt systeem eigen mechanisme waarmee u een [SQL database DACPAC-en BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens of na de implementatie van SQL Edge.
+Azure SQL Edge biedt systeem eigen mechanisme waarmee u een [SQL database DACPAC-en BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens of na de implementatie van SQL Edge.
 
 SQL Database dacpac-en Bacpac-pakketten kunnen worden geïmplementeerd naar SQL Edge met behulp van de `MSSQL_PACKAGE` omgevings variabele. De omgevings variabele kan worden geconfigureerd met een van de volgende.  
 - Een locatie van een lokale map binnen de SQL-container met de dacpac-en Bacpac-bestanden. Deze map kan worden toegewezen aan een host volume met behulp van koppel punten of gegevens volume containers. 
@@ -35,7 +35,7 @@ Volg de onderstaande stappen om een SQL Database DAC-pakket of een BACPAC-bestan
 
 1. Een DAC-pakket maken/extra heren of een Bacpac-bestand exporteren met behulp van het hieronder vermelde mechanisme. 
     - Een SQL Database DAC-pakket maken of extra heren. Zie [een DAC extra heren uit een Data Base](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) voor informatie over het genereren van een DAC-pakket voor een bestaande SQL Server-Data Base.
-    - Een geïmplementeerd DAC-pakket of een Data Base exporteren. Zie [een gegevenslaag toepassing exporteren](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) voor meer informatie over het genereren van een Bacpac-bestand voor een bestaande SQL Server-Data Base.
+    - Een geïmplementeerd DAC-pakket of een Data Base exporteren. Zie [een gegevenslaag toepassing exporteren](/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) voor meer informatie over het genereren van een Bacpac-bestand voor een bestaande SQL Server-Data Base.
 
 2. Zip het `*.dacpac` of het `*.bacpac` bestand en upload het naar een Azure Blob Storage-account. Zie [blobs uploaden, downloaden en weer geven met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)voor meer informatie over het uploaden van bestanden naar Azure Blob-opslag.
 

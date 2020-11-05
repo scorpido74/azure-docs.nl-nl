@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ca22b3d2c00bfef128455df4ad6b9bb6411f8a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f63ab040e750c0c642c9656a5482529b926e9295
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900557"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392109"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Gegevens stromen in Azure SQL Edge
 
-Azure SQL Edge biedt een systeem eigen implementatie van mogelijkheden voor het streamen van gegevens met de naam T-SQL-streaming. Het biedt realtime gegevens stromen, analyses en gebeurtenis verwerking voor het analyseren en verwerken van hoge volumes van gegevens snel streamen uit meerdere bronnen tegelijk. T-SQL-streaming is gebouwd met behulp van dezelfde Streaming-Engine met hoge prestaties die [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) in Microsoft Azure voorziet. De functie ondersteunt een vergelijk bare reeks mogelijkheden die wordt geboden door Azure Stream Analytics die aan de rand worden uitgevoerd.
+Azure SQL Edge biedt een systeem eigen implementatie van mogelijkheden voor het streamen van gegevens met de naam T-SQL-streaming. Het biedt realtime gegevens stromen, analyses en gebeurtenis verwerking voor het analyseren en verwerken van hoge volumes van gegevens snel streamen uit meerdere bronnen tegelijk. T-SQL-streaming is gebouwd met behulp van dezelfde Streaming-Engine met hoge prestaties die [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) in Microsoft Azure voorziet. De functie ondersteunt een vergelijk bare reeks mogelijkheden die wordt geboden door Azure Stream Analytics die aan de rand worden uitgevoerd.
 
 Net als bij Stream Analytics herkent T-SQL streaming patronen en relaties in gegevens die worden geëxtraheerd uit een aantal IoT-invoer bronnen, waaronder apparaten, Sens oren en toepassingen. U kunt deze patronen gebruiken om acties te activeren en werk stromen te initiëren. U kunt bijvoorbeeld waarschuwingen, feedgegevens maken voor een rapportage-of visualisatie-oplossing, of de gegevens opslaan voor later gebruik. 
 
@@ -31,25 +31,25 @@ Met T-SQL streaming kunt u:
 
 ## <a name="how-does-t-sql-streaming-work"></a>Hoe werkt T-SQL-streaming?
 
-T-SQL-streaming werkt op exact dezelfde manier als [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction#how-does-stream-analytics-work). Het concept van streaming- *taken* wordt bijvoorbeeld gebruikt voor het verwerken van realtime gegevens stromen. 
+T-SQL-streaming werkt op exact dezelfde manier als [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md#how-does-stream-analytics-work). Het concept van streaming- *taken* wordt bijvoorbeeld gebruikt voor het verwerken van realtime gegevens stromen. 
 
 Een stream Analytics-taak bestaat uit:
 
-- **Stroom invoer**: Hiermee worden de verbindingen met een gegevens bron gedefinieerd waaruit de gegevens stroom moet worden gelezen. Azure SQL Edge ondersteunt momenteel de volgende invoer typen voor streams:
+- **Stroom invoer** : Hiermee worden de verbindingen met een gegevens bron gedefinieerd waaruit de gegevens stroom moet worden gelezen. Azure SQL Edge ondersteunt momenteel de volgende invoer typen voor streams:
     - Edge hub
     - Kafka (ondersteuning voor Kafka-invoer is momenteel alleen beschikbaar voor Intel/AMD64-versies van Azure SQL Edge.)
 
-- **Uitvoer**van de stream: Hiermee worden de verbindingen met een gegevens bron gedefinieerd om de gegevens stroom naar te schrijven. Azure SQL Edge ondersteunt momenteel de volgende uitvoer typen voor streams
+- **Uitvoer** van de stream: Hiermee worden de verbindingen met een gegevens bron gedefinieerd om de gegevens stroom naar te schrijven. Azure SQL Edge ondersteunt momenteel de volgende uitvoer typen voor streams
     - Edge hub
     - SQL (de SQL-uitvoer kan een lokale Data Base zijn in het exemplaar van Azure SQL Edge of een externe SQL Server of Azure SQL Database.) 
 
-- **Stroom query**: Hiermee definieert u de trans formatie, aggregaties, filters, sorteren en samen voegingen die moeten worden toegepast op de invoer stroom voordat deze wordt geschreven naar de uitvoer van de stroom. De stroom query is gebaseerd op de query taal die wordt gebruikt door Stream Analytics. Zie [Stream Analytics query language (Engelstalig](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)) voor meer informatie.
+- **Stroom query** : Hiermee definieert u de trans formatie, aggregaties, filters, sorteren en samen voegingen die moeten worden toegepast op de invoer stroom voordat deze wordt geschreven naar de uitvoer van de stroom. De stroom query is gebaseerd op de query taal die wordt gebruikt door Stream Analytics. Zie [Stream Analytics query language (Engelstalig](/stream-analytics-query/stream-analytics-query-language-reference)) voor meer informatie.
 
 > [!IMPORTANT]
-> T-SQL-streaming, in tegens telling tot Stream Analytics, biedt momenteel geen ondersteuning [voor het gebruik van referentie gegevens voor Zoek opdrachten](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data) of het [gebruik van UDF en UDA in een stroom taak](https://docs.microsoft.com/azure/stream-analytics/streaming-technologies#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c).
+> T-SQL-streaming, in tegens telling tot Stream Analytics, biedt momenteel geen ondersteuning [voor het gebruik van referentie gegevens voor Zoek opdrachten](../stream-analytics/stream-analytics-use-reference-data.md) of het [gebruik van UDF en UDA in een stroom taak](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c).
 
 > [!NOTE]
-> T-SQL streaming ondersteunt alleen een subset van de taal surface area die door Stream Analytics wordt ondersteund. Zie [Stream Analytics query language (Engelstalig](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)) voor meer informatie.
+> T-SQL streaming ondersteunt alleen een subset van de taal surface area die door Stream Analytics wordt ondersteund. Zie [Stream Analytics query language (Engelstalig](/stream-analytics-query/stream-analytics-query-language-reference)) voor meer informatie.
 
 ## <a name="limitations-and-restrictions"></a>Beperkingen en beperkingen
 

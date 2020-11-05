@@ -10,12 +10,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
-ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3097041c96f70dda384f0b116bbbc9bc9130be4d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72249182"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395747"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Overzicht van bedrijfs continuïteit met Microsoft Genomics
 In dit overzicht worden de mogelijkheden beschreven die Microsoft Genomics biedt voor bedrijfs continuïteit en herstel na nood gevallen. Meer informatie over opties voor het herstellen van verstorende gebeurtenissen, zoals een onderbreking van de Azure-regio, die gegevens verlies kan veroorzaken. 
@@ -43,7 +43,7 @@ Wanneer de oorspronkelijke regio wordt hersteld, migreert de Microsoft Genomics-
 Als u zich zorgen maakt over een snellere herstel bewerking in het geval van een storing in een Data Center, zijn er enkele stappen die u kunt uitvoeren om uw Microsoft Genomics-werk stromen hand matig opnieuw in te dienen bij een secundaire regio:
 
 * Identificeer een geschikte secundaire regio en pro-actief een Genomics-account maken in die regio
-* Dupliceer uw gegevens in de primaire en secundaire regio zodat uw gegevens onmiddellijk beschikbaar zijn in de secundaire regio. Dit kan hand matig worden gedaan of met behulp van de [geo-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy) functie die beschikbaar is in azure Storage. 
+* Dupliceer uw gegevens in de primaire en secundaire regio zodat uw gegevens onmiddellijk beschikbaar zijn in de secundaire regio. Dit kan hand matig worden gedaan of met behulp van de [geo-redundante opslag](../storage/common/storage-redundancy.md) functie die beschikbaar is in azure Storage. 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd over de opties voor bedrijfs continuïteit en herstel na nood gevallen bij het gebruik van de Microsoft Genomics service. Voor meer informatie over bedrijfs continuïteit en herstel na nood gevallen in Azure in het algemeen raadpleegt u [technische richt lijnen voor Azure-tolerantie.](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region) 
+In dit artikel hebt u geleerd over de opties voor bedrijfs continuïteit en herstel na nood gevallen bij het gebruik van de Microsoft Genomics service. Voor meer informatie over bedrijfs continuïteit en herstel na nood gevallen in Azure in het algemeen raadpleegt u [technische richt lijnen voor Azure-tolerantie.](/azure/architecture/resiliency/recovery-loss-azure-region)

@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513367"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394863"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Gegevensstroom van Azure IoT Connector for FHIR (preview)
 
@@ -26,7 +26,7 @@ In het bovenstaande diagram ziet u algemene gegevens stromen met behulp van Azur
 Hieronder ziet u verschillende fasen die de gegevens gaan passeren zodra deze zijn ontvangen door Azure IoT connector voor FHIR.
 
 ## <a name="ingest"></a>Opnemen
-Opname is de eerste fase waarin apparaatgegevens worden ontvangen in azure IoT connector voor FHIR. Het opname-eind punt voor apparaatgegevens wordt gehost op een [Azure Event hub](https://docs.microsoft.com/azure/event-hubs/). Het Azure Event hub-platform ondersteunt hoge schaal en door Voer met de mogelijkheid om miljoenen berichten per seconde te ontvangen en verwerken. Daarnaast kan Azure IoT connector voor FHIR berichten asynchroon gebruiken, waardoor apparaten niet hoeven te worden gewacht wanneer de gegevens van het apparaat worden verwerkt.
+Opname is de eerste fase waarin apparaatgegevens worden ontvangen in azure IoT connector voor FHIR. Het opname-eind punt voor apparaatgegevens wordt gehost op een [Azure Event hub](../event-hubs/index.yml). Het Azure Event hub-platform ondersteunt hoge schaal en door Voer met de mogelijkheid om miljoenen berichten per seconde te ontvangen en verwerken. Daarnaast kan Azure IoT connector voor FHIR berichten asynchroon gebruiken, waardoor apparaten niet hoeven te worden gewacht wanneer de gegevens van het apparaat worden verwerkt.
 
 > [!NOTE]
 > JSON is op dit moment de enige indeling die wordt ondersteund voor apparaatgegevens.

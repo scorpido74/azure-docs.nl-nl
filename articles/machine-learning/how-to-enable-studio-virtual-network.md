@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 781b37405bebc5ddc3d33cbbc089049b0c0f8ca4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: aca7b7e8590c9c8eb3db987c5d1527d9f135bf3f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325527"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392993"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio gebruiken in een virtueel Azure-netwerk
 
@@ -97,7 +97,10 @@ Met deze stappen wordt de door de werk ruimte beheerde identiteit als __lezer__ 
 
 ## <a name="technical-notes-for-managed-identity"></a>Technische opmerkingen voor beheerde identiteit
 
-Het gebruik van beheerde identiteit voor toegang tot opslag Services heeft betrekking op enkele beveiligings overwegingen. Deze overwegingen zijn uniek voor het type opslag account dat u wilt openen. In deze sectie worden de wijzigingen voor elk type opslag account beschreven.
+Het gebruik van beheerde identiteit voor toegang tot opslag Services heeft betrekking op enkele beveiligings overwegingen. In deze sectie worden de wijzigingen voor elk type opslag account beschreven.
+
+> [!IMPORTANT]
+> Deze overwegingen zijn uniek voor het __type opslag account__ dat u wilt openen.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 

@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 10/07/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eee8ae8eeebfff61dd90aedc35a3dc04a88d6758
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 092604429cf5a527d7ee62b412e879ad9991eace
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026731"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394744"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Groepen toevoegen en beheren in een beheer eenheid in Azure Active Directory
 
@@ -31,29 +31,29 @@ Zie aan de [slag](admin-units-manage.md#get-started)voor het voorbereiden van he
 
 U kunt groepen toevoegen aan een administratieve eenheid door gebruik te maken van de Azure Portal, Power shell of Microsoft Graph.
 
-### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 U kunt alleen afzonderlijke groepen toewijzen aan een beheer eenheid. Er is geen optie om groepen toe te wijzen als een bulk bewerking. In de Azure Portal kunt u op twee manieren een groep toewijzen aan een beheer eenheid:
 
 * In het deel venster **groepen** :
 
-  1. Ga in de Azure Portal naar **Azure AD** .
+  1. Ga in de Azure Portal naar **Azure AD**.
   1. Selecteer **groepen** en selecteer vervolgens de groep die u aan de beheer eenheid wilt toewijzen. 
   1. Selecteer in het linkerdeel venster **beheer eenheden** om een lijst weer te geven van de beheer eenheden waaraan de groep is toegewezen. 
 
      ![Scherm afbeelding van de koppeling toewijzen aan beheer eenheid in het deel venster beheer eenheden.](./media/admin-units-add-manage-groups/assign-to-group-1.png)
 
-  1. Selecteer **toewijzen aan beheer eenheid** .
+  1. Selecteer **toewijzen aan beheer eenheid**.
   1. Selecteer de beheer eenheid in het rechterdeel venster.
 
 * In het deel venster **beheer eenheden** van  >  **alle groepen** :
 
-  1. Ga in de Azure Portal naar **Azure AD** .
+  1. Ga in de Azure Portal naar **Azure AD**.
   
-  1. Selecteer **beheer eenheden** in het linkerdeel venster en selecteer vervolgens **alle groepen** . 
+  1. Selecteer **beheer eenheden** in het linkerdeel venster en selecteer vervolgens **alle groepen**. 
      Alle groepen die al zijn toegewezen aan de beheer eenheid, worden weer gegeven in het rechterdeel venster. 
 
-  1. Selecteer in het deel venster **groepen** de optie **toevoegen** .
+  1. Selecteer in het deel venster **groepen** de optie **toevoegen**.
     In het rechterdeel venster worden alle beschik bare groepen in uw Azure AD-organisatie weer gegeven. 
 
      ![Scherm afbeelding van de knop toevoegen voor het toevoegen van een groep aan een beheer eenheid.](./media/admin-units-add-manage-groups/assign-to-admin-unit.png)
@@ -95,9 +95,9 @@ Voorbeeld:
 
 ## <a name="view-a-list-of-groups-in-an-administrative-unit"></a>Een lijst met groepen in een beheer eenheid weer geven
 
-### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-1. Ga in de Azure Portal naar **Azure AD** .
+1. Ga in de Azure Portal naar **Azure AD**.
 
 1. Selecteer **beheer eenheden** in het linkerdeel venster en selecteer vervolgens de beheer eenheid waarvan u de groepen wilt weer geven. Standaard is **alle gebruikers** geselecteerd in het linkerdeel venster. 
 
@@ -139,9 +139,9 @@ Request body
 
 ## <a name="view-a-list-of-administrative-units-for-a-group"></a>Een lijst met beheer eenheden voor een groep weer geven
 
-### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-1. Ga in de Azure Portal naar **Azure AD** .
+1. Ga in de Azure Portal naar **Azure AD**.
 
 1. Selecteer in het linkerdeel venster **groepen** om een lijst met groepen weer te geven.
 
@@ -169,25 +169,25 @@ https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 ## <a name="remove-a-group-from-an-administrative-unit"></a>Een groep verwijderen uit een beheer eenheid
 
-### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 U kunt op twee manieren een groep uit een beheer eenheid verwijderen in de Azure Portal:
 
 - Verwijderen uit een groeps overzicht:
 
-  1. Ga in de Azure Portal naar **Azure AD** .
+  1. Ga in de Azure Portal naar **Azure AD**.
   1. Selecteer **groepen** in het linkerdeel venster en open vervolgens het profiel voor de groep die u wilt verwijderen uit een beheer eenheid.
   1. Selecteer in het linkerdeel venster **beheer eenheden** om alle administratieve eenheden weer te geven waaraan de groep is toegewezen. 
-  1. Selecteer de beheer eenheid waarvan u de groep wilt verwijderen en selecteer vervolgens **verwijderen uit beheer eenheid** .
+  1. Selecteer de beheer eenheid waarvan u de groep wilt verwijderen en selecteer vervolgens **verwijderen uit beheer eenheid**.
 
      ![Scherm opname van het deel venster "administratieve eenheden", waarin een lijst met groepen wordt weer gegeven die zijn toegewezen aan de geselecteerde beheer eenheid.](./media/admin-units-add-manage-groups/group-au-remove.png)
 
 - Verwijderen uit een administratieve eenheid:
 
-  1. Ga in de Azure Portal naar **Azure AD** .
+  1. Ga in de Azure Portal naar **Azure AD**.
   1. Selecteer **beheer eenheden** in het linkerdeel venster en selecteer vervolgens de beheer eenheid waaraan de groep is toegewezen.
   1. Selecteer in het linkerdeel venster **groepen** om alle groepen weer te geven die aan de beheer eenheid zijn toegewezen.
-  1. Selecteer de groep die u wilt verwijderen en selecteer vervolgens **groepen verwijderen** .
+  1. Selecteer de groep die u wilt verwijderen en selecteer vervolgens **groepen verwijderen**.
 
     ![Scherm opname van het deel venster groepen, waarin een lijst met groepen in een administratieve eenheid wordt weer gegeven.](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 

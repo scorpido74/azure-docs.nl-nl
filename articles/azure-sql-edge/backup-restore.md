@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f2cc8901ee3952f7d258d768e175412254ec5d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 114be810ea50f984c3211291691b4c4dd45ac2c7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905957"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395237"
 ---
 # <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Back-up en herstel van data bases in Azure SQL Edge 
 
@@ -75,9 +75,9 @@ In het volgende voor beeld gebruikt u de `BACKUP DATABASE` Transact-SQL-opdracht
 
 ### <a name="back-up-to-url"></a>Back-up naar URL
 
-Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Zie [een back-up maken om de BLOB tegenover de pagina te blok keren](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob)voor meer informatie. In het volgende voor beeld wordt er een back-up van de Data Base *IronOreSilicaPrediction* gemaakt naar een blok-blob. 
+Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Zie [een back-up maken om de BLOB tegenover de pagina te blok keren](/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob)voor meer informatie. In het volgende voor beeld wordt er een back-up van de Data Base *IronOreSilicaPrediction* gemaakt naar een blok-blob. 
 
-1. Als u back-ups wilt configureren om blobs te blok keren, moet u eerst een SAS-token (Shared Access Signature) genereren dat u kunt gebruiken om een SQL Server referentie te maken op Azure SQL Edge. Het script maakt een SAS die is gekoppeld aan een opgeslagen toegangs beleid. Zie [Shared Access Signatures, Part 1: uitleg over het SAS-model](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)voor meer informatie. Het script schrijft ook de T-SQL-opdracht die is vereist om de referentie te maken op SQL Server. In het volgende script wordt ervan uitgegaan dat u al een Azure-abonnement hebt met een opslag account en een opslag container voor de back-ups.
+1. Als u back-ups wilt configureren om blobs te blok keren, moet u eerst een SAS-token (Shared Access Signature) genereren dat u kunt gebruiken om een SQL Server referentie te maken op Azure SQL Edge. Het script maakt een SAS die is gekoppeld aan een opgeslagen toegangs beleid. Zie [Shared Access Signatures, Part 1: uitleg over het SAS-model](../storage/common/storage-sas-overview.md)voor meer informatie. Het script schrijft ook de T-SQL-opdracht die is vereist om de referentie te maken op SQL Server. In het volgende script wordt ervan uitgegaan dat u al een Azure-abonnement hebt met een opslag account en een opslag container voor de back-ups.
 
     ```PowerShell
     # Define global variables for the script  
@@ -133,7 +133,7 @@ Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Zie [een ba
 
 ## <a name="restore-a-database-in-azure-sql-edge"></a>Een data base in Azure SQL Edge herstellen
 
-In Azure SQL Edge kunt u herstellen vanaf een lokale schijf, een netwerk locatie of een Azure Blob Storage-account. Zie [overzicht van herstellen en](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server)herstellen voor meer informatie over herstel en herstel in SQL Server. Zie [volledige database herstel (Simple Recovery model)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model)voor een overzicht van het eenvoudige herstel model in SQL Server.
+In Azure SQL Edge kunt u herstellen vanaf een lokale schijf, een netwerk locatie of een Azure Blob Storage-account. Zie [overzicht van herstellen en](/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server)herstellen voor meer informatie over herstel en herstel in SQL Server. Zie [volledige database herstel (Simple Recovery model)](/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model)voor een overzicht van het eenvoudige herstel model in SQL Server.
 
 > [!IMPORTANT] 
 > Data bases die zijn gemaakt in Azure SQL Edge, kunnen niet worden hersteld op een exemplaar van Microsoft SQL Server of Azure SQL. Daarnaast kan een Data Base die is gemaakt op Microsoft SQL Server of Azure SQL worden hersteld op Azure SQL Edge, op voor hand dat de data base geen van de functies bevat die niet worden ondersteund door Azure SQL Edge. 
@@ -180,5 +180,3 @@ WITH MOVE 'IronOreSilicaPrediction' TO '/var/opt/mssql/data/IronOreSilicaPredict
 MOVE 'IronOreSilicaPrediction_log' TO '/var/opt/mssql/data/IronOreSilicaPrediction_Primary_3.ldf',
 STATS = 10;
 ```
-
-

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9408aaa8fd5b677f012392ef4bd51c8826650eee
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902499"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395152"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Het Bewaar beleid voor gegevens in-en uitschakelen
 
@@ -22,7 +22,7 @@ In dit onderwerp wordt beschreven hoe u het Bewaar beleid voor gegevens inschake
 
 ## <a name="enable-data-retention-for-a-database"></a>Bewaren van gegevens voor een Data Base inschakelen
 
-In het volgende voor beeld ziet u hoe u het bewaren van gegevens inschakelt met behulp van [ALTER data base](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options).
+In het volgende voor beeld ziet u hoe u het bewaren van gegevens inschakelt met behulp van [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql-set-options).
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -38,9 +38,9 @@ FROM sys.databases;
 
 ## <a name="enable-data-retention-for-a-table"></a>Bewaren van gegevens voor een tabel inschakelen
 
-Gegevens retentie moet zijn ingeschakeld voor elke tabel waarvoor u wilt dat gegevens automatisch worden opgeschoond. Wanneer het bewaren van gegevens is ingeschakeld voor de data base en de tabel, scant een achtergrond systeem taak de tabel regel matig om eventuele verouderde rijen te identificeren en te verwijderen. Het bewaren van gegevens kan tijdens het maken van een tabel in een tabel worden ingeschakeld met behulp van de tabel [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) of [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
+Gegevens retentie moet zijn ingeschakeld voor elke tabel waarvoor u wilt dat gegevens automatisch worden opgeschoond. Wanneer het bewaren van gegevens is ingeschakeld voor de data base en de tabel, scant een achtergrond systeem taak de tabel regel matig om eventuele verouderde rijen te identificeren en te verwijderen. Het bewaren van gegevens kan tijdens het maken van een tabel in een tabel worden ingeschakeld met behulp van de tabel [Create Table](/sql/t-sql/statements/create-table-transact-sql) of [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql).
 
-In het volgende voor beeld ziet u hoe u de Bewaar periode voor gegevens inschakelt voor een tabel met behulp van de [tabel Create](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql). 
+In het volgende voor beeld ziet u hoe u de Bewaar periode voor gegevens inschakelt voor een tabel met behulp van de [tabel Create](/sql/t-sql/statements/create-table-transact-sql). 
 
 ```sql
 CREATE TABLE [dbo].[data_retention_table] 
@@ -63,7 +63,7 @@ Het `WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdatetime2], RETENTION_PERIOD 
     - Date time offset
 - RETENTION_PERIOD-een integerwaarde gevolgd door de descriptor van een eenheid. De toegestane eenheden zijn dag, dagen, WEEK, weken, maand, maanden, jaar en jaar.
 
-In het volgende voor beeld ziet u hoe u de Bewaar periode voor gegevens inschakelt voor een tabel met behulp van [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).  
+In het volgende voor beeld ziet u hoe u de Bewaar periode voor gegevens inschakelt voor een tabel met behulp van [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql).  
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -101,7 +101,7 @@ De instelling gegevens retentie voor de data base en de tabel wordt in combi nat
 
 ## <a name="disable-data-retention-on-a-table"></a>Bewaren van gegevens uitschakelen voor een tabel 
 
-Het bewaren van gegevens kan worden uitgeschakeld voor een tabel met behulp van [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql). De volgende opdracht kan worden gebruikt om gegevens retentie uit te scha kelen voor een tabel.
+Het bewaren van gegevens kan worden uitgeschakeld voor een tabel met behulp van [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql). De volgende opdracht kan worden gebruikt om gegevens retentie uit te scha kelen voor een tabel.
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -110,7 +110,7 @@ Set (DATA_DELETION = OFF)
 
 ## <a name="disable-data-retention-on-a-database"></a>Bewaren van gegevens op een Data Base uitschakelen
 
-Het bewaren van gegevens kan worden uitgeschakeld voor een tabel met behulp van [ALTER data base](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options). De volgende opdracht kan worden gebruikt om gegevens retentie uit te scha kelen voor een Data Base.
+Het bewaren van gegevens kan worden uitgeschakeld voor een tabel met behulp van [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql-set-options). De volgende opdracht kan worden gebruikt om gegevens retentie uit te scha kelen voor een Data Base.
 
 ```sql
 ALTER DATABASE <DatabaseName> SET DATA_RETENTION  OFF;

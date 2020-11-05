@@ -9,27 +9,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 01/31/2019
+ms.date: 11/05/2020
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 66c7229c7e6d32bbec9a7659329aff7a90e7887d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375631"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393605"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Aangepaste domein namen in uw Azure Active Directory beheren
 
-Een domein naam is een belang rijk onderdeel van de id voor veel Directory bronnen: het maakt deel uit van een gebruikers naam of e-mail adres voor een gebruiker, een deel van het adres voor een groep en maakt soms deel uit van de App-ID-URI voor een toepassing. Een resource in Azure Active Directory (Azure AD) kan een domein naam bevatten die het eigendom is van de map die de bron bevat. Alleen een globale beheerder kan domeinen in azure AD beheren.
+Een domein naam is een belang rijk onderdeel van de id voor veel Azure Active Directory-resources (Azure AD): het is onderdeel van een gebruikers naam of e-mail adres voor een gebruiker, een deel van het adres voor een groep en maakt deel uit van de App-ID-URI voor een toepassing. Een resource in azure AD kan een domein naam bevatten die het eigendom is van de organisatie die de resource bevat. Alleen een globale beheerder kan domeinen in azure AD beheren.
 
-## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>De primaire domein naam voor uw Azure AD-Directory instellen
+## <a name="set-the-primary-domain-name-for-your-azure-ad-organization"></a>De primaire domein naam voor uw Azure AD-organisatie instellen
 
-Als uw directory is gemaakt, is de initiële domein naam, zoals ' contoso.onmicrosoft.com ', ook de primaire domein naam. Het primaire domein is de standaard domein naam voor een nieuwe gebruiker wanneer u een nieuwe gebruiker maakt. Het instellen van een primaire domein naam stroomlijnt het proces voor een beheerder om nieuwe gebruikers te maken in de portal. De primaire domein naam wijzigen:
+Als uw organisatie is gemaakt, is de initiële domein naam, zoals ' contoso.onmicrosoft.com ', ook de primaire domein naam. Het primaire domein is de standaard domein naam voor een nieuwe gebruiker wanneer u een nieuwe gebruiker maakt. Het instellen van een primaire domein naam stroomlijnt het proces voor een beheerder om nieuwe gebruikers te maken in de portal. De primaire domein naam wijzigen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een account dat een globale beheerder voor de Directory is.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een account dat een globale beheerder voor de organisatie is.
 2. Selecteer **Azure Active Directory**.
 3. Selecteer **Namen van aangepaste domeinen**.
   
@@ -39,19 +39,19 @@ Als uw directory is gemaakt, is de initiële domein naam, zoals ' contoso.onmicr
   
    ![Een domein naam instellen als primair](./media/domains-manage/make-primary-domain.png)
 
-U kunt de primaire domein naam voor uw Directory wijzigen naar een geverifieerd aangepast domein dat niet federatief is. Als u het primaire domein voor uw map wijzigt, wordt de gebruikers naam niet gewijzigd voor bestaande gebruikers.
+U kunt de primaire domein naam voor uw organisatie wijzigen naar een geverifieerd aangepast domein dat niet federatief is. Het wijzigen van het primaire domein voor uw organisatie heeft geen invloed op de gebruikers naam voor bestaande gebruikers.
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Aangepaste domein namen toevoegen aan uw Azure AD-organisatie
 
-U kunt Maxi maal 900 beheerde domein namen toevoegen. Als u al uw domeinen configureert voor Federatie met on-premises Active Directory, kunt u Maxi maal 450 domein namen toevoegen aan elke directory.
+U kunt Maxi maal 900 beheerde domein namen toevoegen. Als u al uw domeinen configureert voor Federatie met on-premises Active Directory, kunt u Maxi maal 450 domein namen toevoegen aan elke organisatie.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Subdomeinen van een aangepast domein toevoegen
 
-Als u een domein naam van een derde niveau, zoals ' europe.contoso.com ', aan uw Directory wilt toevoegen, moet u eerst het domein van het tweede niveau toevoegen en controleren, zoals contoso.com. Het subdomein wordt automatisch gecontroleerd door Azure AD. Vernieuw de lijst met domeinen in de browser om te zien dat het subdomein dat u hebt toegevoegd, is geverifieerd.
+Als u een subdomeinnaam zoals ' europe.contoso.com ' aan uw organisatie wilt toevoegen, moet u eerst het hoofd domein, zoals contoso.com, toevoegen en verifiëren. Het subdomein wordt automatisch gecontroleerd door Azure AD. Vernieuw de lijst met domeinen in de browser om te zien dat het subdomein dat u hebt toegevoegd, is geverifieerd.
 
-Notitie
+Als u al een contoso.com-domein aan één Azure AD-organisatie hebt toegevoegd, kunt u ook de europe.contoso.com van het subdomein in een andere Azure AD-organisatie controleren. Wanneer u het subdomein toevoegt, wordt u gevraagd een TXT-record toe te voegen aan de DNS-hosting provider.
 
-Als u al een contoso.com-domein aan een Azure AD-Tenant hebt toegevoegd, kunt u ook het subdomein europe.contoso.com toevoegen aan een tweede Azure AD-Tenant. Wanneer u het subdomein toevoegt, wordt u gevraagd een TXT-record toe te voegen aan de DNS-hosting provider.
+
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Wat u moet doen als u de DNS-registratie functie voor uw aangepaste domein naam wijzigt
 
@@ -61,19 +61,19 @@ Als u de DNS-registratie service wijzigt, zijn er geen aanvullende configuratie 
 
 U kunt een aangepaste domein naam uit uw Azure AD verwijderen als uw organisatie niet langer gebruikmaakt van die domein naam of als u deze domein naam moet gebruiken met een andere Azure AD.
 
-Als u een aangepaste domein naam wilt verwijderen, moet u er eerst voor zorgen dat er geen resources in uw Directory afhankelijk zijn van de domein naam. U kunt geen domein naam uit uw Directory verwijderen als:
+Als u een aangepaste domein naam wilt verwijderen, moet u er eerst voor zorgen dat geen resources in uw organisatie afhankelijk zijn van de domein naam. U kunt geen domein naam uit uw organisatie verwijderen als:
 
 * Elke gebruiker heeft een gebruikers naam, e-mail adres of proxy adres dat de domein naam bevat.
 * Elke groep heeft een e-mail adres of proxy adres dat de domein naam bevat.
 * Elke toepassing in uw Azure AD heeft een app-ID-URI die de domein naam bevat.
 
-U moet deze resource in uw Azure AD-adres lijst wijzigen of verwijderen voordat u de aangepaste domein naam kunt verwijderen.
+U moet deze resource in uw Azure AD-organisatie wijzigen of verwijderen voordat u de aangepaste domein naam kunt verwijderen.
 
 ### <a name="forcedelete-option"></a>ForceDelete optie
 
-U kunt een domein naam in het [Azure AD-beheer centrum](https://aad.portal.azure.com) **ForceDelete** of gebruikmaken van [Microsoft Graph-API](/graph/api/domain-forcedelete?view=graph-rest-beta). Deze opties gebruiken een asynchrone bewerking en werken alle verwijzingen van de aangepaste domein naam zoals " user@contoso.com " bij naar de oorspronkelijke standaard domein naam, zoals " user@contoso.onmicrosoft.com ." 
+U kunt een domein naam in het [Azure AD-beheer centrum](https://aad.portal.azure.com) **ForceDelete** of gebruikmaken van [Microsoft Graph-API](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true). Deze opties gebruiken een asynchrone bewerking en werken alle verwijzingen van de aangepaste domein naam zoals " user@contoso.com " bij naar de oorspronkelijke standaard domein naam, zoals " user@contoso.onmicrosoft.com ."
 
-Als u **ForceDelete** wilt aanroepen in de Azure Portal, moet u ervoor zorgen dat er minder dan 1000 verwijzingen naar de domein naam zijn en alle verwijzingen waarbij Exchange de inrichtings service is, moeten worden bijgewerkt of verwijderd in het [Exchange-beheer centrum](https://outlook.office365.com/ecp/). Dit omvat Exchange Mail-Enabled-beveiligings groepen en gedistribueerde lijsten. Zie [beveiligings groepen met e-mail beveiliging verwijderen](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)voor meer informatie. De **ForceDelete** -bewerking kan ook niet worden uitgevoerd als aan een van de volgende voor waarden wordt voldaan:
+Als u **ForceDelete** wilt aanroepen in de Azure Portal, moet u ervoor zorgen dat er minder dan 1000 verwijzingen naar de domein naam zijn en alle verwijzingen waarbij Exchange de inrichtings service is, moeten worden bijgewerkt of verwijderd in het [Exchange-beheer centrum](https://outlook.office365.com/ecp/). Dit omvat Exchange Mail-Enabled-beveiligings groepen en gedistribueerde lijsten. Zie [beveiligings groepen met e-mail beveiliging verwijderen](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true)voor meer informatie. De **ForceDelete** -bewerking kan ook niet worden uitgevoerd als aan een van de volgende voor waarden wordt voldaan:
 
 * U hebt een domein aangeschaft via Microsoft 365-abonnements services van het domein
 * U bent een partner die u beheert namens een andere klant organisatie
@@ -110,11 +110,11 @@ Als u merkt dat aan een van de voor waarden niet is voldaan, moet u de verwijzin
 
 De meeste beheer taken voor domein namen in Azure Active Directory kunnen ook worden voltooid met behulp van micro soft power shell of via een programma met behulp van de Microsoft Graph-API.
 
-* [Power shell gebruiken voor het beheren van domein namen in azure AD](/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [Bron type van het domein](/graph/api/resources/domain?view=graph-rest-1.0)
+* [Power shell gebruiken voor het beheren van domein namen in azure AD](/powershell/module/azuread/?view=azureadps-2.0#domains&preserve-view=true)
+* [Bron type van het domein](/graph/api/resources/domain?view=graph-rest-1.0&preserve-view=true)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Aangepaste domeinnamen toevoegen](../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
-* [Beveiligings groepen met Exchange-e-mail verwijderen in Exchange-beheer centrum op een aangepaste domein naam in azure AD](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)
-* [Een aangepaste domein naam ForceDelete met Microsoft Graph-API](/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [Beveiligings groepen met Exchange-e-mail verwijderen in Exchange-beheer centrum op een aangepaste domein naam in azure AD](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true)
+* [Een aangepaste domein naam ForceDelete met Microsoft Graph-API](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true)

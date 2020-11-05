@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: e34cd0907320f96f2846c1f424e678555381cccc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74e12a5e9bdd2dfdbc6ac07b66798e517f6f426
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907116"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395067"
 ---
 # <a name="what-is-azure-sql-edge"></a>Wat is Azure SQL Edge?
 
 Azure SQL Edge is een geoptimaliseerde relationele data base-engine die is toegespitst op IoT en IoT Edge implementaties. Het biedt mogelijkheden voor het maken van een hoogwaardige gegevens opslag en verwerkings laag voor IoT-toepassingen en-oplossingen. Azure SQL Edge biedt mogelijkheden voor het streamen, verwerken en analyseren van relationele en niet-relationele gegevens, zoals JSON, Graph en time-series, waardoor deze de juiste keuze is voor een groot aantal moderne IoT-toepassingen.
 
-Azure SQL Edge is gebaseerd op de nieuwste versies van de [SQL server data base-engine](/sql/sql-server/sql-server-technical-documentation), waarmee toonaangevende prestaties, beveiligings-en query verwerkings mogelijkheden worden geboden. Omdat Azure SQL Edge is gebouwd op dezelfde engine als [SQL Server](/sql/sql-server/sql-server-technical-documentation) en [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), levert deze dezelfde Transact-SQL (T-sql)-programmeer Surface Area die het ontwikkelen van toepassingen of oplossingen eenvoudiger en sneller maakt, en zorgt u ervoor dat toepassings portabiliteit tussen IOT edge apparaten, data centers en de Cloud direct kan worden uitgevoerd.
+Azure SQL Edge is gebaseerd op de nieuwste versies van de [SQL server data base-engine](/sql/sql-server/sql-server-technical-documentation), waarmee toonaangevende prestaties, beveiligings-en query verwerkings mogelijkheden worden geboden. Omdat Azure SQL Edge is gebouwd op dezelfde engine als [SQL Server](/sql/sql-server/sql-server-technical-documentation) en [Azure SQL](../azure-sql/index.yml), levert deze dezelfde Transact-SQL (T-sql)-programmeer Surface Area die het ontwikkelen van toepassingen of oplossingen eenvoudiger en sneller maakt, en zorgt u ervoor dat toepassings portabiliteit tussen IOT edge apparaten, data centers en de Cloud direct kan worden uitgevoerd.
 
 Wat is Azure SQL Edge video op Channel 9:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]

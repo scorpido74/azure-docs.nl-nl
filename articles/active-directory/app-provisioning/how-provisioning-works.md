@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/20/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424646"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393078"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -43,9 +43,7 @@ Als u een automatische Azure AD-inrichtings connector wilt aanvragen voor een ap
 
 ## <a name="authorization"></a>Autorisatie
 
-Er zijn referenties vereist voor Azure AD om verbinding te maken met de gebruikers beheer-API van de toepassing. Tijdens het configureren van het automatisch inrichten van gebruikers voor een toepassing, moet u geldige referenties invoeren. U kunt referentie typen en vereisten voor de toepassing vinden door te verwijzen naar de zelf studie over apps. In de Azure Portal kunt u de referenties testen door Azure AD te proberen verbinding te maken met de inrichtings-app van de app met behulp van de opgegeven referenties.
-
-Als op SAML gebaseerde eenmalige aanmelding ook voor de toepassing is geconfigureerd, is de interne opslag limiet voor Azure AD per toepassing 1024 bytes. Deze limiet omvat alle certificaten, geheime tokens, referenties en gerelateerde configuratie gegevens die zijn gekoppeld aan één exemplaar van een toepassing (ook wel een Service-Principal record genoemd in azure AD). Wanneer op SAML gebaseerde eenmalige aanmelding is geconfigureerd, verbruikt het certificaat dat wordt gebruikt voor het ondertekenen van de SAML-tokens vaak meer dan 50% van de ruimte. Eventuele aanvullende items (geheime tokens, Uri's, e-mail adressen, gebruikers namen en wacht woorden) die u tijdens het instellen van de gebruikers inrichting invoert, kunnen de opslag limiet overschrijden. Zie voor meer informatie [probleem bij het opslaan van beheerders referenties tijdens het configureren van gebruikers inrichting](./application-provisioning-config-problem-storage-limit.md).
+Er zijn referenties vereist voor Azure AD om verbinding te maken met de gebruikers beheer-API van de toepassing. Tijdens het configureren van het automatisch inrichten van gebruikers voor een toepassing, moet u geldige referenties invoeren. Voor galerie toepassingen kunt u referentie typen en vereisten voor de toepassing vinden door te verwijzen naar de zelf studie over apps. Voor niet-galerie toepassingen kunt u de [scim](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery) -documentatie raadplegen om inzicht te krijgen in de referentie typen en vereisten. In de Azure Portal kunt u de referenties testen door Azure AD te proberen verbinding te maken met de inrichtings-app van de app met behulp van de opgegeven referenties.
 
 ## <a name="mapping-attributes"></a>Kenmerken toewijzen
 
@@ -53,7 +51,7 @@ Wanneer u het inrichten van gebruikers inschakelt voor een SaaS-toepassing van d
 
 Er is een vooraf geconfigureerde set met kenmerken en kenmerk toewijzingen tussen Azure AD-gebruikers objecten en de gebruikers objecten van de SaaS-app. Sommige apps beheren andere typen objecten samen met gebruikers, zoals groepen.
 
-Bij het instellen van de inrichting is het belang rijk om de kenmerk toewijzingen en werk stromen te controleren en te configureren waarmee wordt gedefinieerd welke gebruikers-(of groeps) eigenschappen stromen van Azure AD naar de toepassing. Bekijk en configureer de overeenkomende eigenschap (**objecten matchen met dit kenmerk**) die worden gebruikt om gebruikers/groepen op unieke wijze te identificeren en te vergelijken tussen de twee systemen.
+Bij het instellen van de inrichting is het belang rijk om de kenmerk toewijzingen en werk stromen te controleren en te configureren waarmee wordt gedefinieerd welke gebruikers-(of groeps) eigenschappen stromen van Azure AD naar de toepassing. Bekijk en configureer de overeenkomende eigenschap ( **objecten matchen met dit kenmerk** ) die worden gebruikt om gebruikers/groepen op unieke wijze te identificeren en te vergelijken tussen de twee systemen.
 
 U kunt de standaard kenmerk toewijzingen aanpassen op basis van de behoeften van uw bedrijf. U kunt dus bestaande kenmerk toewijzingen wijzigen of verwijderen, of nieuwe kenmerk toewijzingen maken. Zie voor meer informatie [Gebruikers inrichten kenmerk toewijzingen voor SaaS-toepassingen aanpassen](./customize-application-attributes.md).
 
@@ -64,7 +62,7 @@ Wanneer u inrichting voor een SaaS-toepassing configureert, is een van de typen 
 
 Voor uitgaande levering vanuit Azure AD naar een SaaS-toepassing is afhankelijkheid van [gebruikers-of groeps toewijzingen](../manage-apps/assign-user-or-group-access-portal.md) de meest voorkomende manier om te bepalen welke gebruikers binnen het bereik van de inrichting vallen. Omdat gebruikers toewijzingen ook worden gebruikt voor het inschakelen van eenmalige aanmelding, kan dezelfde methode worden gebruikt voor het beheren van toegang en inrichting. Op toewijzing gebaseerde scopes zijn niet van toepassing op binnenkomende inrichtings scenario's zoals workday en Successfactors.
 
-* **Groepen.** Met een Azure AD Premium-licentie abonnement kunt u groepen gebruiken om toegang te verlenen aan een SaaS-toepassing. Wanneer het inrichtings bereik is ingesteld op **alleen toegewezen gebruikers en groepen synchroniseren**, wordt door de Azure AD-inrichtings service gebruikers ingericht of ongedaan gemaakt op basis van het feit of ze lid zijn van een groep die is toegewezen aan de toepassing. Het groeps object zelf is alleen ingericht als de toepassing groeps objecten ondersteunt. Zorg ervoor dat de eigenschap "SecurityEnabled" is ingesteld op "True" voor groepen die zijn toegewezen aan uw toepassing.
+* **Groepen.** Met een Azure AD Premium-licentie abonnement kunt u groepen gebruiken om toegang te verlenen aan een SaaS-toepassing. Wanneer het inrichtings bereik is ingesteld op **alleen toegewezen gebruikers en groepen synchroniseren** , wordt door de Azure AD-inrichtings service gebruikers ingericht of ongedaan gemaakt op basis van het feit of ze lid zijn van een groep die is toegewezen aan de toepassing. Het groeps object zelf is alleen ingericht als de toepassing groeps objecten ondersteunt. Zorg ervoor dat de eigenschap "SecurityEnabled" is ingesteld op "True" voor groepen die zijn toegewezen aan uw toepassing.
 
 * **Dynamische groepen.** De Azure AD User Provisioning-Service kan gebruikers in [dynamische groepen](../enterprise-users/groups-create-rule.md)lezen en inrichten. Houd deze aanvullende opmerkingen en aanbevelingen in acht:
 
@@ -135,7 +133,7 @@ Na de eerste cyclus zullen alle andere cycli:
 10. Een nieuw water merk aan het einde van de incrementele cyclus persistent maken, dat het start punt voor de latere incrementele cycli levert.
 
 > [!NOTE]
-> U kunt de bewerkingen **maken**, **bijwerken**of **verwijderen** eventueel uitschakelen met behulp van de selectie vakjes voor de acties van het **doel object** in de sectie [toewijzingen](customize-application-attributes.md) . De logica voor het uitschakelen van een gebruiker tijdens een update wordt ook bepaald via een kenmerk toewijzing van een veld zoals ' accountEnabled '.
+> U kunt de bewerkingen **maken** , **bijwerken** of **verwijderen** eventueel uitschakelen met behulp van de selectie vakjes voor de acties van het **doel object** in de sectie [toewijzingen](customize-application-attributes.md) . De logica voor het uitschakelen van een gebruiker tijdens een update wordt ook bepaald via een kenmerk toewijzing van een veld zoals ' accountEnabled '.
 
 De inrichtings service blijft een incrementele cyclus van back-to-back uitvoeren, op intervallen die zijn gedefinieerd in de [zelf studie specifiek voor elke toepassing](../saas-apps/tutorial-list.md). Incrementele cycli worden voortgezet totdat een van de volgende gebeurtenissen zich voordoet:
 
@@ -192,7 +190,7 @@ In de volgende scenario's wordt een uitschakelen of verwijderen geactiveerd:
 * Een gebruiker is niet toegewezen vanuit een app.
 * Een gebruiker gaat van binnen bereik tot buiten bereik (geeft geen bereik filter meer toe).
 
-:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Een gebruiker uitschakelen" lightbox="./media/how-provisioning-works/delete-user.png":::
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Een gebruiker verwijderen" lightbox="./media/how-provisioning-works/delete-user.png":::
 
 De Azure AD-inrichtings service laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Als u dit standaard gedrag wilt overschrijven, kunt u een markering instellen om [verwijderingen buiten het bereik over te slaan.](skip-out-of-scope-deletions.md)
 

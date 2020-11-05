@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232305"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394727"
 ---
 # <a name="email-notifications-in-pim"></a>E-mail meldingen in PIM
 
@@ -50,11 +50,11 @@ Wie deze e-mails voor Azure AD-rollen ontvangt, is afhankelijk van uw rol, de ge
 
 | Gebruiker | Activering van rol is in behandeling | De activerings aanvraag voor de rol is voltooid | PIM is ingeschakeld |
 | --- | --- | --- | --- |
-| Beheerder van geprivilegieerde rol</br>(Geactiveerd/in aanmerking komend) | Ja</br>(alleen als er geen expliciete goed keurders zijn opgegeven) | Ja* | Ja |
-| Beveiligingsbeheer</br>(Geactiveerd/in aanmerking komend) | Nee | Ja* | Ja |
-| Hoofdbeheerder</br>(Geactiveerd/in aanmerking komend) | Nee | Ja* | Ja |
+| Beheerder van geprivilegieerde rol</br>(Geactiveerd/in aanmerking komend) | Yes</br>(alleen als er geen expliciete goed keurders zijn opgegeven) | Ja* | Yes |
+| Beveiligingsbeheer</br>(Geactiveerd/in aanmerking komend) | No | Ja* | Yes |
+| Hoofdbeheerder</br>(Geactiveerd/in aanmerking komend) | No | Ja* | Yes |
 
-\*Als de [instelling **meldingen** ](pim-how-to-change-default-settings.md#notifications) is ingesteld op **inschakelen**.
+\*Als de [instelling **meldingen**](pim-how-to-change-default-settings.md#notifications) is ingesteld op **inschakelen**.
 
 Hieronder ziet u een voor beeld van een e-mail bericht dat wordt verzonden wanneer een gebruiker een Azure AD-rol activeert voor de fictieve Contoso-organisatie.
 
@@ -79,10 +79,13 @@ In het gedeelte **overzicht van uw belangrijkste rollen** worden de vijf meest v
 
 ## <a name="email-timing-for-activation-approvals"></a>E-mail tijd voor de activerings goedkeuringen
 
-Wanneer gebruikers hun rol activeren en de functie-instelling goed keuring vereist, ontvangen goed keurders drie e-mail berichten voor elke goed keuring:
+Wanneer gebruikers hun rol activeren en de rol-instelling goed keuring vereist, ontvangen goed keurders twee e-mail berichten voor elke goed keuring:
 
 - Aanvraag voor het goed keuren of weigeren van de activerings aanvraag van de gebruiker (verzonden door de aanvraag goedkeurings Engine)
 - De aanvraag van de gebruiker wordt goedgekeurd (verzonden door de engine voor het goed keuren van aanvragen)
+
+Daarnaast ontvangen beheerders van globale beheerders en geprivilegieerde rollen een e-mail voor elke goed keuring:
+
 - De rol van de gebruiker wordt geactiveerd (verzonden door Privileged Identity Management)
 
 De eerste twee e-mail berichten die worden verzonden door de engine voor aanvraag goedkeuring, kunnen worden uitgesteld. Momenteel duurt 90% van de e-mails drie tot tien minuten, maar voor 1% klanten kan het veel langer duren, Maxi maal vijf tien minuten.

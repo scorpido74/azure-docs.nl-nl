@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c877878fe25d4c6c8904840c3c3350fbe2acf7b5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026663"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395526"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Gebruikers toevoegen en beheren in een beheer eenheid in Azure Active Directory
 
@@ -29,7 +29,7 @@ Zie aan de [slag](admin-units-manage.md#get-started)voor het voorbereiden van he
 
 ## <a name="add-users-to-an-administrative-unit"></a>Gebruikers toevoegen aan een beheer eenheid
 
-### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 U kunt gebruikers afzonderlijk of als een bulk bewerking toewijzen aan beheer eenheden.
 
@@ -39,7 +39,7 @@ U kunt gebruikers afzonderlijk of als een bulk bewerking toewijzen aan beheer ee
 
    1. Selecteer **gebruikers** en selecteer vervolgens de gebruiker die aan een beheer eenheid moet worden toegewezen om het profiel van de gebruiker te openen.
    
-   1. Selecteer **beheer eenheden** . 
+   1. Selecteer **beheer eenheden**. 
    
    1. Als u de gebruiker aan een of meer administratieve eenheden wilt toewijzen, selecteert u **toewijzen aan beheer eenheid** en selecteert u vervolgens in het rechterdeel venster de beheer eenheden waaraan u de gebruiker wilt toewijzen.
 
@@ -57,11 +57,11 @@ U kunt gebruikers afzonderlijk of als een bulk bewerking toewijzen aan beheer ee
 
    1. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com) met privileged Role Administrator Permissions.
 
-   1. Selecteer **beheer eenheden** .
+   1. Selecteer **beheer eenheden**.
 
    1. Selecteer de beheer eenheid waaraan u gebruikers wilt toevoegen.
 
-   1. Selecteer **gebruikers** bulksgewijs  >  **activiteiten** bulk  >  **leden toevoegen** . U kunt vervolgens de sjabloon met door komma's gescheiden waarden (CSV) downloaden en het bestand bewerken. De indeling is eenvoudig en er moet één user principal name worden toegevoegd aan elke regel. Sla het bestand op een geschikte locatie op en upload het als onderdeel van deze stap.
+   1. Selecteer **gebruikers** bulksgewijs  >  **activiteiten** bulk  >  **leden toevoegen**. U kunt vervolgens de sjabloon met door komma's gescheiden waarden (CSV) downloaden en het bestand bewerken. De indeling is eenvoudig en er moet één user principal name worden toegevoegd aan elke regel. Sla het bestand op een geschikte locatie op en upload het als onderdeel van deze stap.
 
       ![Scherm opname van het deel venster ' gebruikers ' voor het toewijzen van gebruikers aan een beheer eenheid als een bulk bewerking.](./media/admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
@@ -99,11 +99,11 @@ Voorbeeld:
 
 ## <a name="view-a-list-of-administrative-units-for-a-user"></a>Een lijst met beheer eenheden voor een gebruiker weer geven
 
-### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 In de Azure Portal kunt u een gebruikers profiel openen door het volgende te doen:
 
-1. Ga naar **Azure AD** en selecteer vervolgens **gebruikers** .
+1. Ga naar **Azure AD** en selecteer vervolgens **gebruikers**.
 
 1. Selecteer de gebruiker van wie u het profiel wilt weer geven.
 
@@ -131,19 +131,19 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>Eén gebruiker uit een beheer eenheid verwijderen
 
-### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 U kunt op twee manieren een gebruiker uit een administratieve eenheid verwijderen: 
 
-* Ga in de Azure Portal naar **Azure AD** en selecteer vervolgens **gebruikers** . 
+* Ga in de Azure Portal naar **Azure AD** en selecteer vervolgens **gebruikers**. 
   1. Selecteer de gebruiker om het profiel van de gebruiker te openen. 
-  1. Selecteer de beheer eenheid waarvan u de gebruiker wilt verwijderen en selecteer vervolgens **verwijderen uit beheer eenheid** .
+  1. Selecteer de beheer eenheid waarvan u de gebruiker wilt verwijderen en selecteer vervolgens **verwijderen uit beheer eenheid**.
 
      ![Scherm opname waarin wordt getoond hoe een gebruiker uit een administratieve eenheid moet worden verwijderd uit het profiel deel venster van de gebruiker.](./media/admin-units-add-manage-users/user-remove-admin-units.png)
 
-* Ga in de Azure Portal naar **Azure AD** en selecteer vervolgens **beheer eenheden** .
+* Ga in de Azure Portal naar **Azure AD** en selecteer vervolgens **beheer eenheden**.
   1. Selecteer de beheer eenheid waarvan u de gebruiker wilt verwijderen. 
-  1. Selecteer de gebruiker en selecteer **lid verwijderen** .
+  1. Selecteer de gebruiker en selecteer **lid verwijderen**.
   
      ![Scherm afbeelding die laat zien hoe een gebruiker op het niveau van de beheer eenheid wordt verwijderd.](./media/admin-units-add-manage-users/admin-units-remove-user.png)
 
@@ -165,7 +165,7 @@ Vervang de tijdelijke aanduidingen door test informatie en voer de volgende opdr
 
 Ga als volgt te werk om meerdere gebruikers uit een beheer eenheid te verwijderen:
 
-1. Ga in de Azure Portal naar **Azure AD** .
+1. Ga in de Azure Portal naar **Azure AD**.
 
 1. Selecteer **beheer eenheden** en selecteer vervolgens de beheer eenheid waaruit u gebruikers wilt verwijderen. 
 
@@ -177,7 +177,7 @@ Ga als volgt te werk om meerdere gebruikers uit een beheer eenheid te verwijdere
 
    ![Scherm afbeelding van een bewerkte CSV-bestand voor het verwijderen van gebruikers uit een beheer eenheid in bulk.](./media/admin-units-add-manage-users/bulk-user-entries.png)
 
-1. Sla de wijzigingen op, upload het bestand en selecteer vervolgens **verzenden** .
+1. Sla de wijzigingen op, upload het bestand en selecteer vervolgens **verzenden**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ee8ea874ba8133216bf5a28587f841d3b7cfa2ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b60be1b3d30ab462f89dd4d72ab67d43393740b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740165"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393367"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -33,7 +33,7 @@ Raadpleeg de volgende secties voor meer informatie over hoe een resource de clai
 > [!IMPORTANT]
 > Toegangs tokens worden gemaakt op basis van de *doel groep* van het token, wat betekent dat de toepassing die eigenaar is van de scopes in het token.  Op deze manier kan een bron instelling `accessTokenAcceptedVersion` in het [app-manifest](reference-app-manifest.md#manifest-reference) `2` een client toestaan het v 1.0-eind punt aan te roepen om een v 2.0-toegangs token te ontvangen.  Op deze manier wordt het toegangs token dat u hebt ontvangen bij een token dat eigendom is van de resource, niet gewijzigd door het wijzigen van de [optionele claims](active-directory-optional-claims.md) voor het toegangs token voor uw client `user.read` .
 >
-> Om dezelfde reden, terwijl u uw client toepassing test met een micro soft-API die een persoonlijk account ondersteunt (zoals hotmail.com of outlook.com), zult u merken dat het toegangs token dat door uw client is ontvangen, een ondoorzichtige teken reeks is. Dit komt doordat de toegang tot de bron die gebruikmaakt van versleutelde tokens gebruikt en niet kan worden begrepen door de client.  Dit wordt verwacht en dit mag geen probleem zijn voor uw app-client-apps mogen nooit een afhankelijkheid hebben van de indeling van het toegangs token. 
+> Om dezelfde reden, terwijl u uw client toepassing test met een micro soft-API die een persoonlijk account ondersteunt (zoals hotmail.com of outlook.com), zult u merken dat het toegangs token dat door uw client is ontvangen, een ondoorzichtige teken reeks is. Dit komt doordat de toegang tot de bron die gebruikmaakt van versleutelde tokens gebruikt en niet kan worden begrepen door de client.  Dit wordt verwacht en dit mag geen probleem zijn voor uw app-client-apps mogen nooit een afhankelijkheid hebben van de indeling van het toegangs token.
 
 ## <a name="sample-tokens"></a>Voorbeeld tokens
 
@@ -103,7 +103,7 @@ Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw a
 | `roles` | Matrix van teken reeksen, een lijst met machtigingen | De set machtigingen die door uw toepassing worden weer gegeven en waarvoor de aanvraag of gebruiker toestemming heeft gegeven om deze aan te roepen. Voor [toepassings tokens](#user-and-application-tokens)wordt dit gebruikt tijdens de client referentie stroom ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) in plaats van de gebruikers scopes.  Voor [gebruikers tokens](#user-and-application-tokens) wordt dit ingevuld met de rollen waaraan de gebruiker is toegewezen in de doel toepassing. |
 | `wids` | Matrix van [RoleTemplateID](../roles/permissions-reference.md#role-template-ids) -guid's | Hiermee worden de rollen voor de Tenant opgegeven die aan deze gebruiker zijn toegewezen, in het gedeelte van de rollen die aanwezig zijn op [de pagina beheer rollen](../roles/permissions-reference.md#role-template-ids).  Deze claim wordt per toepassing geconfigureerd op basis `groupMembershipClaims` van de eigenschap van het [toepassings manifest](reference-app-manifest.md).  Het instellen op ' all ' of ' DirectoryRole ' is vereist.  Mag niet aanwezig zijn in tokens die zijn verkregen via de impliciete stroom vanwege problemen met de token lengte. |
 | `groups` | JSON-matrix met GUID'S | Bevat object-Id's die de groepslid maatschappen van het onderwerp vertegenwoordigen. Deze waarden zijn uniek (zie object-ID) en kunnen veilig worden gebruikt voor het beheren van toegang, zoals het afdwingen van autorisatie voor toegang tot een bron. De groepen die zijn opgenomen in de claim groepen, worden per toepassing geconfigureerd via de `groupMembershipClaims` eigenschap van het [toepassings manifest](reference-app-manifest.md). Een waarde van Null sluit alle groepen uit, de waarde ' beveiligings groep ' bevat alleen Active Directory beveiligings groepslid maatschappen en de waarde ' all ' bevat zowel beveiligings groepen als Microsoft 365 distributie lijsten. <br><br>Zie `hasgroups` onderstaande claim voor meer informatie over het gebruik van de `groups` claim met de impliciete toekenning. <br>Voor andere stromen geldt dat als het aantal groepen dat de gebruiker in de loop van een limiet is (150 voor SAML, 200 voor JWT), een overschrijding-claim wordt toegevoegd aan de claim bronnen die naar het Microsoft Graph-eind punt met de lijst met groepen voor de gebruiker verwijzen. |
-| `hasgroups` | Boolean-waarde | Indien aanwezig, `true` wordt het identificeren van de gebruiker altijd in ten minste één groep. Wordt gebruikt in plaats van de `groups` claim voor JWTs in impliciete toekennings stromen als de claim van de volledige groep het URI-fragment zou uitbreiden dat groter is dan de URL-lengte limieten (momenteel 6 of meer groepen). Geeft aan dat de client de Microsoft Graph-API moet gebruiken om de groepen van de gebruiker te bepalen `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` . |
+| `hasgroups` | Booleaans | Indien aanwezig, `true` wordt het identificeren van de gebruiker altijd in ten minste één groep. Wordt gebruikt in plaats van de `groups` claim voor JWTs in impliciete toekennings stromen als de claim van de volledige groep het URI-fragment zou uitbreiden dat groter is dan de URL-lengte limieten (momenteel 6 of meer groepen). Geeft aan dat de client de Microsoft Graph-API moet gebruiken om de groepen van de gebruiker te bepalen `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` . |
 | `groups:src1` | JSON-object | Voor token aanvragen die geen beperkte lengte hebben (Zie `hasgroups` hierboven), maar nog steeds te groot zijn voor het token, wordt een koppeling naar de lijst met volledige groepen voor de gebruiker opgenomen. Voor JWTs als een gedistribueerde claim voor SAML als een nieuwe claim in plaats van de `groups` claim. <br><br>**Voor beeld-JWT-waarde** : <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | Tekenreeks | De principal over welke het token informatie bedient, zoals de gebruiker van een app. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om autorisatie controles veilig uit te voeren, zoals wanneer het token wordt gebruikt om toegang te krijgen tot een resource, en kan worden gebruikt als sleutel in database tabellen. Omdat het onderwerp altijd aanwezig is in de tokens die door Azure AD worden uitgegeven, raden we u aan deze waarde te gebruiken in een autorisatie systeem voor algemeen gebruik. Het onderwerp is echter een Pairwise-id en is uniek voor een bepaalde toepassings-ID. Als één gebruiker zich bij twee verschillende apps aanmeldt met twee verschillende client-Id's, ontvangen die apps daarom twee verschillende waarden voor de claim van de certificaat houder. Dit kan al dan niet gewenst zijn, afhankelijk van de vereisten van uw architectuur en privacy. Zie ook de `oid` claim (die hetzelfde blijft voor apps binnen een Tenant). |
 | `oid` | Teken reeks, een GUID | De onveranderbare id voor een object in het micro soft Identity-platform, in dit geval een gebruikers account. Het kan ook worden gebruikt om autorisatie controles veilig en als sleutel in database tabellen uit te voeren. Met deze ID wordt de gebruiker op unieke wijze in verschillende toepassingen geïdentificeerd: twee verschillende toepassingen die in dezelfde gebruiker worden ondertekend, ontvangen dezelfde waarde in de `oid` claim. Kan dus `oid` worden gebruikt bij het uitvoeren van query's naar micro soft onlineservices, zoals de Microsoft Graph. De Microsoft Graph retourneert deze ID als de `id` eigenschap voor een bepaald [gebruikers account](/graph/api/resources/user). Omdat `oid` meerdere apps toestaan gebruikers te correleren, is de `profile` Scope vereist om deze claim te ontvangen. Houd er rekening mee dat als één gebruiker bestaat in meerdere tenants, de gebruiker een andere object-ID in elke Tenant bevat. deze worden beschouwd als verschillende accounts, zelfs als de gebruiker zich aanmeldt bij elke account met dezelfde referenties. |
@@ -245,7 +245,7 @@ Vernieuwings tokens kunnen op elk gewenst moment ongeldig worden gemaakt of inge
 
 ### <a name="token-timeouts"></a>Token-time-outs
 
-Met de configuratie van de [levens duur van tokens](active-directory-configurable-token-lifetimes.md)kan de levens duur van vernieuwings tokens worden gewijzigd.  Het is normaal en verwacht dat sommige tokens zonder gebruik worden uitgevoerd (bijvoorbeeld de gebruiker heeft de app drie maanden niet geopend) en verloopt daarom.  Apps zullen scenario's ondervinden waarbij de aanmeldings server een vernieuwings token weigert als gevolg van de leeftijd. 
+Met de configuratie van de [levens duur van tokens](active-directory-configurable-token-lifetimes.md)kan de levens duur van vernieuwings tokens worden gewijzigd.  Het is normaal en verwacht dat sommige tokens zonder gebruik worden uitgevoerd (bijvoorbeeld de gebruiker heeft de app drie maanden niet geopend) en verloopt daarom.  Apps zullen scenario's ondervinden waarbij de aanmeldings server een vernieuwings token weigert als gevolg van de leeftijd.
 
 * MaxInactiveTime: als het vernieuwings token niet is gebruikt binnen de tijd die is bepaald door de MaxInactiveTime, is het vernieuwings token niet langer geldig.
 * MaxSessionAge: als MaxAgeSessionMultiFactor of MaxAgeSessionSingleFactor is ingesteld op een andere waarde dan de standaard instelling (tot-ingetrokken), is de verificatie vereist na de tijd die is ingesteld in de MaxAgeSession * verstreken.
@@ -255,7 +255,7 @@ Met de configuratie van de [levens duur van tokens](active-directory-configurabl
 
 ### <a name="revocation"></a>Intrekkings
 
-Het vernieuwen van tokens kan door de server worden ingetrokken vanwege een wijziging in de referenties of door het gebruik of de beheerder.  Vernieuwings tokens kunnen worden onderverdeeld in twee klassen, die zijn uitgegeven aan vertrouwelijke clients (de meest rechtse kolom) en die worden verleend aan open bare clients (alle andere kolommen).   
+Het vernieuwen van tokens kan door de server worden ingetrokken vanwege een wijziging in de referenties of door het gebruik of de beheerder.  Vernieuwings tokens kunnen worden onderverdeeld in twee klassen, die zijn uitgegeven aan vertrouwelijke clients (de meest rechtse kolom) en die worden verleend aan open bare clients (alle andere kolommen).
 
 | Wijziging | Cookie op basis van wacht woorden | Token op basis van wacht woorden | Cookie op basis van niet-wacht woord | Niet-op wacht woord gebaseerde token | Vertrouwelijk client token |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
@@ -275,12 +275,12 @@ Een aanmelding *zonder wacht woord* is een aanmeldings locatie waar de gebruiker
 - FIDO2-sleutel
 - Sms
 - Spraak
-- PIN 
+- PIN
 
 > [!NOTE]
 > Primaire vernieuwings tokens (PRT) in Windows 10 worden gescheiden op basis van de referentie. Windows hello en het wacht woord hebben bijvoorbeeld hun respectieve PRTs, die van elkaar zijn geïsoleerd. Wanneer een gebruiker zich aanmeldt met een Hello-Referentie (pincode of biometrie) en vervolgens het wacht woord wijzigt, wordt het wacht woord gebaseerd op PRT dat eerder is opgehaald, ingetrokken. Als u zich opnieuw aanmeldt met een wacht woord, worden de oude PRT ongeldig en wordt een nieuwe aanvraag aangevraagd.
 >
-> Vernieuwings tokens worden niet ongeldig of ingetrokken wanneer het wordt gebruikt om een nieuw toegangs token op te halen en token te vernieuwen.  Uw app moet echter de oude verwijderen als deze wordt gebruikt en vervangen door de nieuwe, omdat het nieuwe token een nieuwe verloop tijd bevat. 
+> Vernieuwings tokens worden niet ongeldig of ingetrokken wanneer het wordt gebruikt om een nieuw toegangs token op te halen en token te vernieuwen.  Uw app moet echter de oude verwijderen als deze wordt gebruikt en vervangen door de nieuwe, omdat het nieuwe token een nieuwe verloop tijd bevat.
 
 ## <a name="next-steps"></a>Volgende stappen
 

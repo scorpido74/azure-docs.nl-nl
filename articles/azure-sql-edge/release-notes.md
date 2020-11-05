@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284479"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395033"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Release opmerkingen bij Azure SQL Edge 
 
@@ -37,9 +37,9 @@ In dit artikel wordt beschreven wat er nieuw is en wat er is gewijzigd bij elke 
    - Parallelle uitvoerings scenario's inschakelen
 6. Energiebesparende verbeteringen voor de modus voor laag energie verbruik
 7. Ondersteuning voor streaming van nieuwe functies 
-   - [Snap shot-Vensters](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : het nieuwe venster type waarmee kan worden gegroepeerd op gebeurtenissen die op dezelfde tijd aankomen. 
-   - Schakel [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) en [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) in als analytische functie. Dit kan ertoe leiden dat records worden geretourneerd die zijn gesorteerd op basis van de kolom van uw keuze, zonder dat het nodig is om een deel van een venster te maken. 
-   - Verbeteringen in [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics). 
+   - [Snap shot-Vensters](/stream-analytics-query/snapshot-window-azure-stream-analytics) : het nieuwe venster type waarmee kan worden gegroepeerd op gebeurtenissen die op dezelfde tijd aankomen. 
+   - Schakel [TopOne](/stream-analytics-query/topone-azure-stream-analytics) en [CollectTop](/stream-analytics-query/collecttop-azure-stream-analytics) in als analytische functie. Dit kan ertoe leiden dat records worden geretourneerd die zijn gesorteerd op basis van de kolom van uw keuze, zonder dat het nodig is om een deel van een venster te maken. 
+   - Verbeteringen in [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics). 
 
 ### <a name="fixes"></a>Oplossingen
 1. Aanvullende fout berichten en Details voor het oplossen van problemen met TSQL-streaming. 

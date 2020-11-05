@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: df27d7b25010fa68fc86ffe093318b2b0b7f4e96
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927682"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393826"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>De besturingssysteemschijf van een virtuele machine uitbreiden
 
@@ -39,18 +39,18 @@ Wanneer u een nieuwe virtuele machine (VM) maakt in een resource groep door een 
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Het formaat van een beheerde schijf in het Azure Portal wijzigen
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar de virtuele machine waarin u de schijf wilt uitbreiden. Selecteer **stoppen** om de toewijzing van de virtuele machine ongedaan te maken.
-2. Wanneer de virtuele machine is gestopt, selecteert u in het menu links onder **instellingen** de optie **schijven** .
+2. Wanneer de virtuele machine is gestopt, selecteert u in het menu links onder **instellingen** de optie **schijven**.
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
 
  
 3. Selecteer bij **schijf naam** de schijf waarvan u de grootte wilt wijzigen.
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Scherm opname van het deel venster schijven waarin een schijf naam is geselecteerd.":::
 
-4. Selecteer in het linkermenu onder **instellingen** de optie **configuratie** .
+4. Selecteer in het linkermenu onder **instellingen** de optie **configuratie**.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Scherm opname van de configuratie optie die is geselecteerd in de sectie instellingen van het menu.":::
 
 5. Selecteer in **grootte (GIB)** de gewenste schijf grootte.
    
@@ -58,11 +58,11 @@ Wanneer u een nieuwe virtuele machine (VM) maakt in een resource groep door een 
    > De nieuwe grootte moet groter zijn dan de bestaande schijfgrootte. Het Maxi maal toegestane aantal is 2.048 GB voor besturingssysteem schijven. (Het is mogelijk om de VHD-BLOB buiten die grootte uit te breiden, maar het besturings systeem werkt alleen met de eerste 2.048 GB schijf ruimte.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Scherm opname van het configuratie deel venster waarin de schijf grootte is geselecteerd.":::
 
-6. Selecteer **Opslaan** .
+6. Selecteer **Opslaan**.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Scherm afbeelding met de optie schijven die is geselecteerd in de sectie instellingen van het menu.":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Scherm opname van het configuratie deel venster waarin de knop Opslaan is geselecteerd.":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>Het formaat van een beheerde schijf wijzigen met behulp van Power shell
@@ -226,16 +226,16 @@ Op dezelfde manier kunt u verwijzen naar andere gegevens schijven die zijn gekop
 **Niet-beheerde schijf**
 
 ```powershell
-($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
+($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).DiskSizeGB = 1023
 ```
 
 ## <a name="expand-the-volume-within-the-os"></a>Het volume binnen het besturings systeem uitbreiden
 
-Wanneer u de schijf voor de virtuele machine hebt uitgebreid, moet u naar het besturings systeem gaan en het volume uitbreiden om de nieuwe ruimte te maken. Er zijn verschillende methoden voor het uitbreiden van een partitie. In deze sectie wordt beschreven hoe u de virtuele machine verbindt met een RDP-verbinding om de partitie uit te breiden met **Disk Part** .
+Wanneer u de schijf voor de virtuele machine hebt uitgebreid, moet u naar het besturings systeem gaan en het volume uitbreiden om de nieuwe ruimte te maken. Er zijn verschillende methoden voor het uitbreiden van een partitie. In deze sectie wordt beschreven hoe u de virtuele machine verbindt met een RDP-verbinding om de partitie uit te breiden met **Disk Part**.
 
 1. Open een RDP-verbinding met uw VM.
 
-2. Open een opdracht prompt en typ **Disk Part** .
+2. Open een opdracht prompt en typ **Disk Part**.
 
 3. Typ bij de **Disk Part** -prompt `list volume` . Noteer het volume dat u wilt uitbreiden.
 

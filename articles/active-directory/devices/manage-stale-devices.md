@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7651f84e14d6ea7dcb4e12d57e2bf494d5aeff1e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083181"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393673"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Procedure: verouderde apparaten beheren in azure AD
 
@@ -59,7 +59,7 @@ Er zijn twee manieren om de waarde van de tijdstempel van activiteit te bepalen:
 
 - De cmdlet [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice)
 
-    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="Scherm opname van een pagina in de Azure Portal de naam, eigenaar en andere informatie op apparaten weer geven. In één kolom wordt de tijds tempel van de activiteit weer gegeven." border="false":::
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="Scherm opname van de uitvoer van de opdracht regel. Er wordt één regel gemarkeerd en er wordt een tijds tempel voor de waarde ApproximateLastLogonTimeStamp weer gegeven." border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>Opschonen van verlopen apparaten plannen
 
@@ -147,7 +147,7 @@ Als uw Directory een groot aantal apparaten bevat, kunt u het tijds tempel filte
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>Wat u moet weten

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 10/13/2020
-ms.openlocfilehash: 8da0b34339f2ac03f50e2dcb1a4ed13cc2ea9785
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6dd7715292470d186806443d0a0b05bdbb084a43
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075430"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392177"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>Voor spellingen implementeren en maken met een ONNX-model en SQL-machine learning
 
@@ -26,11 +26,11 @@ Deze Quick start is gebaseerd op **scikit-Learn** en maakt gebruik van de [Bosto
 
 * Als u Azure SQL Edge gebruikt en u geen Azure SQL Edge-module hebt geïmplementeerd, volgt u de stappen voor het [implementeren van SQL Edge met behulp van de Azure Portal](deploy-portal.md).
 
-* Installeer [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
+* Installeer [Azure Data Studio](/sql/azure-data-studio/download).
 
 * Python-pakketten installeren die nodig zijn voor deze Quick Start:
 
-  1. Open een [Nieuw notitie blok](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) dat is verbonden met de python 3-kernel. 
+  1. Open een [Nieuw notitie blok](/sql/azure-data-studio/sql-notebooks) dat is verbonden met de python 3-kernel. 
   1. Klik op **Pakketten beheren**
   1. Zoek op het tabblad **geïnstalleerd** naar de volgende python-pakketten in de lijst met geïnstalleerde pakketten. Als een van deze pakketten niet is geïnstalleerd, selecteert u het tabblad **Nieuw toevoegen** , zoekt u naar het pakket en klikt u op **installeren**.
      - **scikit-learn**
@@ -72,14 +72,14 @@ y_train = pd.DataFrame(df.iloc[:,df.columns.tolist().index(target_column)])
 print("\n*** Training dataset x\n")
 print(x_train.head())
 
-print("\n*** Training dataset y\n")
+print("\n**_ Training dataset y\n")
 print(y_train.head())
 ```
 
-**Uitvoer**:
+_ * Uitvoer * *:
 
 ```text
-*** Training dataset x
+**_ Training dataset x
 
         CRIM    ZN  INDUS  CHAS    NOX     RM   AGE     DIS  RAD    TAX  \
 0  0.00632  18.0   2.31   0.0  0.538  6.575  65.2  4.0900  1.0  296.0
@@ -95,7 +95,7 @@ print(y_train.head())
 3     18.7  394.63   2.94  
 4     18.7  396.90   5.33  
 
-*** Training dataset y
+_*_ Training dataset y
 
 0    24.0
 1    21.6
@@ -137,15 +137,15 @@ from sklearn.metrics import r2_score, mean_squared_error
 y_pred = model.predict(x_train)
 sklearn_r2_score = r2_score(y_train, y_pred)
 sklearn_mse = mean_squared_error(y_train, y_pred)
-print('*** Scikit-learn r2 score: {}'.format(sklearn_r2_score))
-print('*** Scikit-learn MSE: {}'.format(sklearn_mse))
+print('_*_ Scikit-learn r2 score: {}'.format(sklearn_r2_score))
+print('_*_ Scikit-learn MSE: {}'.format(sklearn_mse))
 ```
 
-**Uitvoer**:
+_ * Uitvoer * *:
 
 ```text
-*** Scikit-learn r2 score: 0.7406426641094094
-*** Scikit-learn MSE: 21.894831181729206
+**_ Scikit-learn r2 score: 0.7406426641094094
+_*_ Scikit-learn MSE: 21.894831181729206
 ```
 
 ## <a name="convert-the-model-to-onnx"></a>Het model converteren naar ONNX
@@ -208,18 +208,18 @@ onnx_r2_score = r2_score(y_train, y_pred)
 onnx_mse = mean_squared_error(y_train, y_pred)
 
 print()
-print('*** Onnx r2 score: {}'.format(onnx_r2_score))
-print('*** Onnx MSE: {}\n'.format(onnx_mse))
+print('_*_ Onnx r2 score: {}'.format(onnx_r2_score))
+print('_*_ Onnx MSE: {}\n'.format(onnx_mse))
 print('R2 Scores are equal' if sklearn_r2_score == onnx_r2_score else 'Difference in R2 scores: {}'.format(abs(sklearn_r2_score - onnx_r2_score)))
 print('MSE are equal' if sklearn_mse == onnx_mse else 'Difference in MSE scores: {}'.format(abs(sklearn_mse - onnx_mse)))
 print()
 ```
 
-**Uitvoer**:
+_ * Uitvoer * *:
 
 ```text
-*** Onnx r2 score: 0.7406426691136831
-*** Onnx MSE: 21.894830759270633
+**_ Onnx r2 score: 0.7406426691136831
+_*_ Onnx MSE: 21.894830759270633
 
 R2 Scores are equal
 MSE are equal
@@ -227,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>Het ONNX-model invoegen
 
-Sla het model op in een `models` tabel in een data base in Azure SQL Edge of Azure SQL Managed instance `onnx` . Geef in het connection string het **server adres**, de **gebruikers naam**en het **wacht woord**op.
+Sla het model op in een `models` tabel in een data base in Azure SQL Edge of Azure SQL Managed instance `onnx` . Geef in het connection string het adres van de @-server * *, de **gebruikers naam** en het **wacht woord** op.
 
 ```python
 import pyodbc
@@ -287,7 +287,7 @@ conn.commit()
 
 Laad de gegevens in SQL.
 
-Maak eerst twee tabellen, **onderdelen** en **doel items**om subsets van de Boston-Veste-gegevensset op te slaan.
+Maak eerst twee tabellen, **onderdelen** en **doel items** om subsets van de Boston-Veste-gegevensset op te slaan.
 
 * **Functies** bevatten alle gegevens die worden gebruikt voor het voors pellen van het doel, mediaan waarde. 
 * **Doel** bevat de mediaan waarde voor elke record in de gegevensset. 

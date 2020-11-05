@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
-ms.openlocfilehash: 4548d4956b4cd01886fb1be9a530cc1627f76b2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b56b65261950e9cf534a3755d214229ef7d5bb1e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888234"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395203"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>Verbinding maken en query's uitvoeren op Azure SQL Edge
 
@@ -29,15 +29,15 @@ In Azure SQL Edge kunt u, nadat u een container hebt geïmplementeerd, verbindin
 
 U kunt verbinding maken met een exemplaar van de Azure SQL Edge-instantie vanuit een van deze algemene hulpprogram ma's:
 
-* [Sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): Sqlcmd-client hulpprogramma's zijn al opgenomen in de container installatie kopie van Azure SQL Edge. Als u aan een actieve container met een interactieve bash-shell koppelt, kunt u de hulpprogram ma's lokaal uitvoeren. SQL Client-hulpprogram ma's zijn niet beschikbaar op het ARM64-platform, omdat ze niet zijn opgenomen in de ARM64-versie van de SQL Edge-containers. 
-* [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
-* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
-* [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
+* [Sqlcmd](/sql/linux/sql-server-linux-setup-tools): Sqlcmd-client hulpprogramma's zijn al opgenomen in de container installatie kopie van Azure SQL Edge. Als u aan een actieve container met een interactieve bash-shell koppelt, kunt u de hulpprogram ma's lokaal uitvoeren. SQL Client-hulpprogram ma's zijn niet beschikbaar op het ARM64-platform, omdat ze niet zijn opgenomen in de ARM64-versie van de SQL Edge-containers. 
+* [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms)
+* [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
+* [Visual Studio Code](/sql/visual-studio-code/sql-server-develop-use-vscode)
 
 Als u verbinding wilt maken met een Azure SQL Edge data base-engine vanaf een netwerk computer, hebt u het volgende nodig:
 
-- **IP-adres of netwerk naam van de hostmachine**: dit is de hostmachine waarop de Azure SQL Edge-container wordt uitgevoerd.
-- **Poort toewijzing van Azure SQL Edge-container**: dit is de toewijzing voor de docker-container poort aan een poort op de host. Binnen de container wordt Azure SQL Edge altijd toegewezen aan poort 1433. U kunt deze desgewenst wijzigen. Als u het poort nummer wilt wijzigen, moet u de opties voor het maken van de **container** bijwerken voor de Azure SQL Edge-module in azure IOT Edge. In het volgende voor beeld wordt poort 1433 op de container toegewezen aan poort 1600 op de host.
+- **IP-adres of netwerk naam van de hostmachine** : dit is de hostmachine waarop de Azure SQL Edge-container wordt uitgevoerd.
+- **Poort toewijzing van Azure SQL Edge-container** : dit is de toewijzing voor de docker-container poort aan een poort op de host. Binnen de container wordt Azure SQL Edge altijd toegewezen aan poort 1433. U kunt deze desgewenst wijzigen. Als u het poort nummer wilt wijzigen, moet u de opties voor het maken van de **container** bijwerken voor de Azure SQL Edge-module in azure IOT Edge. In het volgende voor beeld wordt poort 1433 op de container toegewezen aan poort 1600 op de host.
 
     ```JSON
     {
@@ -51,11 +51,11 @@ Als u verbinding wilt maken met een Azure SQL Edge data base-engine vanaf een ne
     }
     ```
 
-- **Sa-wacht woord voor het exemplaar van de Azure SQL Edge**: dit is de waarde die is opgegeven voor de `SA_PASSWORD` omgevings variabele tijdens de implementatie van de Azure SQL-rand.
+- **Sa-wacht woord voor het exemplaar van de Azure SQL Edge** : dit is de waarde die is opgegeven voor de `SA_PASSWORD` omgevings variabele tijdens de implementatie van de Azure SQL-rand.
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Verbinding maken met de data base-engine vanuit de container
 
-De [SQL Server opdracht regel Programma's](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) zijn opgenomen in de container installatie kopie van Azure SQL Edge. Als u aan de container met een interactieve opdracht prompt koppelt, kunt u de hulpprogram ma's lokaal uitvoeren. SQL Client-hulpprogram ma's zijn niet beschikbaar op het ARM64-platform, omdat ze niet zijn opgenomen in de ARM64-versie van de SQL Edge-containers. 
+De [SQL Server opdracht regel Programma's](/sql/linux/sql-server-linux-setup-tools) zijn opgenomen in de container installatie kopie van Azure SQL Edge. Als u aan de container met een interactieve opdracht prompt koppelt, kunt u de hulpprogram ma's lokaal uitvoeren. SQL Client-hulpprogram ma's zijn niet beschikbaar op het ARM64-platform, omdat ze niet zijn opgenomen in de ARM64-versie van de SQL Edge-containers. 
 
 1. Gebruik de opdracht `docker exec -it` voor het starten van een interactieve bash-shell in de container die wordt uitgevoerd. In het volgende voor beeld `e69e056c702d` is de container-ID.
 
@@ -94,7 +94,7 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ## <a name="connect-to-azure-sql-edge-from-another-network-machine"></a>Verbinding maken met Azure SQL Edge vanaf een andere netwerk computer
 
-U kunt verbinding maken met het exemplaar van Azure SQL Edge vanaf een andere computer in het netwerk. Als u dit wilt doen, gebruikt u het IP-adres van de docker-host en de poort van de host waaraan de Azure SQL Edge-container is toegewezen. Als het IP-adres van de docker-host bijvoorbeeld *xxx.xxx.xxx.xxx*is en de Azure SQL Edge-container is toegewezen aan poort *1600*van de host, zou het server adres voor het exemplaar van Azure SQL Edge *xxx. xxx. xxx. xxx, 1.600*zijn. Het bijgewerkte python-script is:
+U kunt verbinding maken met het exemplaar van Azure SQL Edge vanaf een andere computer in het netwerk. Als u dit wilt doen, gebruikt u het IP-adres van de docker-host en de poort van de host waaraan de Azure SQL Edge-container is toegewezen. Als het IP-adres van de docker-host bijvoorbeeld *xxx.xxx.xxx.xxx* is en de Azure SQL Edge-container is toegewezen aan poort *1600* van de host, zou het server adres voor het exemplaar van Azure SQL Edge *xxx. xxx. xxx. xxx, 1.600* zijn. Het bijgewerkte python-script is:
 
 ```python
 
@@ -108,14 +108,14 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ```
 
-Als u verbinding wilt maken met een exemplaar van Azure SQL Edge door SQL Server Management Studio op een Windows-computer uit te voeren, raadpleegt u [SQL Server Management Studio](https://docs.microsoft.com/sql/linux/sql-server-linux-manage-ssms).
+Als u verbinding wilt maken met een exemplaar van Azure SQL Edge door SQL Server Management Studio op een Windows-computer uit te voeren, raadpleegt u [SQL Server Management Studio](/sql/linux/sql-server-linux-manage-ssms).
 
-Zie [Visual Studio code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)om verbinding te maken met een exemplaar van Azure SQL Edge door Visual Studio code op een Windows-, Mac-of Linux-computer te gebruiken.
+Zie [Visual Studio code](/sql/visual-studio-code/sql-server-develop-use-vscode)om verbinding te maken met een exemplaar van Azure SQL Edge door Visual Studio code op een Windows-, Mac-of Linux-computer te gebruiken.
 
-Als u verbinding wilt maken met een exemplaar van Azure SQL Edge door Azure Data Studio te gebruiken op een Windows-, Mac-of Linux-computer, raadpleegt u [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server).
+Als u verbinding wilt maken met een exemplaar van Azure SQL Edge door Azure Data Studio te gebruiken op een Windows-, Mac-of Linux-computer, raadpleegt u [Azure Data Studio](/sql/azure-data-studio/quickstart-sql-server).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Verbinding maken en query's uitvoeren](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-docker#connect-and-query)
+[Verbinding maken en query's uitvoeren](/sql/linux/sql-server-linux-configure-docker#connect-and-query)
 
-[SQL Server-hulpprogram ma's installeren in Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)
+[SQL Server-hulpprogram ma's installeren in Linux](/sql/linux/sql-server-linux-setup-tools)

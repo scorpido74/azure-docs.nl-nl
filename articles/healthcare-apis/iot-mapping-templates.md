@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 1702c17555d1d3c39a83fa16ca790d6f8f2b3344
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558530"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394234"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Toewijzingssjablonen in Azure IoT Connector for FHIR (preview)
 In dit artikel vindt u informatie over het configureren van Azure IoT connector voor FHIR * met toewijzings sjablonen.
@@ -254,7 +254,7 @@ Met de JsonPathContentTemplate kunt u waarden uit een event hub-bericht vergelij
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
 De IotJsonPathContentTemplate is vergelijkbaar met de JsonPathContentTemplate, met uitzonde ring van de DeviceIdExpression en TimestampExpression niet vereist zijn.
 
-De veronderstelling bij het gebruik van deze sjabloon is dat de berichten die worden geëvalueerd, worden verzonden met behulp van de [apparaat-sdk's van Azure IOT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks). Wanneer u deze Sdk's gebruikt, wordt de identiteit van het apparaat (ervan uitgaande dat de apparaat-id van Azure IOT hub/centraal is geregistreerd als een id voor een apparaatbestand op de doel FHIR-server) en de tijds tempel van het bericht bekend. Als u de Sdk's van Azure IoT Hub apparaat gebruikt, maar aangepaste eigenschappen gebruikt in de bericht tekst van de apparaat-id of meting tijds tempel, kunt u nog steeds de JsonPathContentTemplate gebruiken.
+De veronderstelling bij het gebruik van deze sjabloon is dat de berichten die worden geëvalueerd, worden verzonden met behulp van de [apparaat-sdk's van Azure IOT hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks). Wanneer u deze Sdk's gebruikt, wordt de identiteit van het apparaat (ervan uitgaande dat de apparaat-id van Azure IOT hub/centraal is geregistreerd als een id voor een apparaatbestand op de doel FHIR-server) en de tijds tempel van het bericht bekend. Als u de Sdk's van Azure IoT Hub apparaat gebruikt, maar aangepaste eigenschappen gebruikt in de bericht tekst van de apparaat-id of meting tijds tempel, kunt u nog steeds de JsonPathContentTemplate gebruiken.
 
 *Opmerking: wanneer de IotJsonPathContentTemplate wordt gebruikt, moet de TypeMatchExpression worden omgezet in het hele bericht als een JToken. Zie de onderstaande voor beelden.* 
 ##### <a name="examples"></a>Voorbeelden

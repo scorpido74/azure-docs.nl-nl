@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b424ece9207328d87068160f78ebc78a3bd1a8d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888421"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395220"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>Replicatie naar Azure SQL Edge configureren 
 
@@ -24,8 +24,8 @@ U kunt een exemplaar van de Azure SQL-rand configureren als de push-abonnee voor
   
 - Het exemplaar van de Azure SQL-Edge moet een push-abonnee zijn voor een uitgever.
 - De uitgever en de Distributor kunnen een van de volgende zijn:
-   - Een exemplaar van SQL Server dat on-premises wordt uitgevoerd of een exemplaar van SQL Server dat wordt uitgevoerd op een virtuele machine van Azure. Zie [SQL Server op Azure virtual machines Overview](https://docs.microsoft.com/azure/azure-sql/virtual-machines/)voor meer informatie. SQL Server exemplaren moeten een versie hebben die hoger is dan SQL Server 2016.
-   - Een exemplaar van een door Azure SQL beheerd exemplaar. SQL Managed instance kan Uitgever, distributeur en abonnee database hosten. Zie [replicatie met SQL database Managed instance](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)voor meer informatie.
+   - Een exemplaar van SQL Server dat on-premises wordt uitgevoerd of een exemplaar van SQL Server dat wordt uitgevoerd op een virtuele machine van Azure. Zie [SQL Server op Azure virtual machines Overview](../azure-sql/virtual-machines/index.yml)voor meer informatie. SQL Server exemplaren moeten een versie hebben die hoger is dan SQL Server 2016.
+   - Een exemplaar van een door Azure SQL beheerd exemplaar. SQL Managed instance kan Uitgever, distributeur en abonnee database hosten. Zie [replicatie met SQL database Managed instance](/azure/sql-database/replication-with-sql-database-managed-instance/)voor meer informatie.
 
 - De distributie database en de replicatie agenten kunnen niet worden geplaatst op een exemplaar van de Azure SQL-rand.  
 
@@ -36,7 +36,7 @@ U kunt een exemplaar van de Azure SQL-rand configureren als de push-abonnee voor
 
 De volgende vereisten en aanbevolen procedures zijn belang rijk om te begrijpen wanneer u replicatie configureert:
 
-- U kunt replicatie configureren met behulp van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). U kunt dit ook doen door Transact-SQL-instructies uit te voeren op de Publisher met behulp van SQL Server Management Studio of [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio).
+- U kunt replicatie configureren met behulp van [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms). U kunt dit ook doen door Transact-SQL-instructies uit te voeren op de Publisher met behulp van SQL Server Management Studio of [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio).
 - Als u wilt repliceren naar een exemplaar van Azure SQL Edge, moet u SQL Server-verificatie gebruiken om u aan te melden.
 - Gerepliceerde tabellen moeten een primaire sleutel hebben.
 - Eén publicatie op SQL Server kan zowel Azure SQL-Edge als SQL Server (on-premises en SQL Server in een virtuele machine van Azure) ondersteunen.  
@@ -82,15 +82,13 @@ De volgende opties worden niet ondersteund voor Azure SQL Edge-abonnementen:
 
 Maak een publicatie en een push-abonnement. Zie voor meer informatie:
   
-- [Een publicatie maken](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) met behulp van de naam en het IP-adres van de Azure SQL Edge-Server (bijvoorbeeld **myEdgeinstance, 1433**) en een database naam op het exemplaar van de Azure SQL-Edge als de doel database (bijvoorbeeld **AdventureWorks**).  
+- [Een publicatie maken](/sql/relational-databases/replication/publish/create-a-publication)
+- [Maak een push-abonnement](/sql/relational-databases/replication/create-a-push-subscription/) met behulp van de naam en het IP-adres van de Azure SQL Edge-Server (bijvoorbeeld **myEdgeinstance, 1433** ) en een database naam op het exemplaar van de Azure SQL-Edge als de doel database (bijvoorbeeld **AdventureWorks** ).  
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Een publicatie maken](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Een push-abonnement maken](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Typen replicatie](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Bewaking (replicatie)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Een abonnement initialiseren](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
-
-
+- [Een publicatie maken](/sql/relational-databases/replication/publish/create-a-publication)
+- [Een push-abonnement maken](/sql/relational-databases/replication/create-a-push-subscription/)
+- [Typen replicatie](/sql/relational-databases/replication/types-of-replication)
+- [Bewaking (replicatie)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Een abonnement initialiseren](/sql/relational-databases/replication/initialize-a-subscription)

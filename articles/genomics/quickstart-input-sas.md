@@ -9,23 +9,23 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82f5e8b4a0c06517381857f0d914bcb65ba41d35
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72248589"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394608"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Een werkstroom indienen aan Microsoft Genomics met behulp van een SAS in plaats van een opslagaccountsleutel 
 
-In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service met behulp van een config.txt-bestand met [Shared Access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) in plaats van de sleutel van het opslag account. Deze mogelijkheid kan handig zijn als er de zichtbaarheid van een opslagaccountsleutel in het bestand config.txt uit veiligheidsoogpunt niet wenselijk is. 
+In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service met behulp van een config.txt-bestand met [Shared Access signatures (SAS)](../storage/common/storage-sas-overview.md) in plaats van de sleutel van het opslag account. Deze mogelijkheid kan handig zijn als er de zichtbaarheid van een opslagaccountsleutel in het bestand config.txt uit veiligheidsoogpunt niet wenselijk is. 
 
 In dit artikel wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werk stroom met de opgegeven voorbeeld gegevens hebt verzonden, kunt u door gaan met dit artikel. 
 
 ## <a name="what-is-a-sas"></a>Wat is een SAS?
-Een [SAS (Shared Access Signature; handtekening voor gedeelde toegang)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) biedt gedelegeerde toegang tot bronnen in uw opslagaccount. Met behulp van een SAS kunt u toegang geven tot resources in uw opslagaccount zonder dat u de sleutels van uw account hoeft te delen. De belangrijkste reden voor het gebruik van handtekeningen voor gedeelde toegang in uw toepassingen is dat een SAS een veilige manier is voor het delen van uw opslagresources zonder dat uw accountsleutels in gevaar komen.
+Een [Shared Access Signature (SAS)](../storage/common/storage-sas-overview.md) biedt gedelegeerde toegang tot resources in uw opslag account. Met behulp van een SAS kunt u toegang geven tot resources in uw opslagaccount zonder dat u de sleutels van uw account hoeft te delen. De belangrijkste reden voor het gebruik van handtekeningen voor gedeelde toegang in uw toepassingen is dat een SAS een veilige manier is voor het delen van uw opslagresources zonder dat uw accountsleutels in gevaar komen.
 
-De SAS die wordt verzonden naar Microsoft Genomics moet een [service-SAS](https://docs.microsoft.com/rest/api/storageservices/Constructing-a-Service-SAS) zijn die alleen toegang biedt tot de blob of de container waarin de invoer- en uitvoerbestanden worden opgeslagen. 
+De SAS die wordt verzonden naar Microsoft Genomics moet een [service-SAS](/rest/api/storageservices/Constructing-a-Service-SAS) zijn die alleen toegang biedt tot de blob of de container waarin de invoer- en uitvoerbestanden worden opgeslagen. 
 
 De URI voor een SAS-token op serviceniveau bestaat uit de URI voor de resource waartoe de SAS toegang biedt, gevolgd door het SAS-token. Het SAS-token is de queryreeks die alle gegevens bevat die nodig zijn om de SAS te verifiëren, namelijk: de resource, de machtigingen die beschikbaar zijn voor toegang, de periode waarin de handtekening geldig is, het ondersteunde IP-adres of het adresbereik van waaruit aanvragen afkomstig mogen zijn, het ondersteunde protocol waarmee een aanvraag kan worden verstuurd, een optionele id voor toegangsbeleid die is gekoppeld aan de aanvraag en de handtekening zelf. 
 
@@ -49,18 +49,18 @@ Er zijn twee manieren om een SAS-token te maken: met behulp van Azure Storage Ex
 
 ### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>Een SAS maken met behulp van Azure Storage Explorer
 
-[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) is een hulpprogramma voor het beheren van resources die u hebt opgeslagen in Azure Storage.  U vindt [hier](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) meer informatie over het gebruik van Azure Storage Explorer.
+[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) is een hulpprogramma voor het beheren van resources die u hebt opgeslagen in Azure Storage.  U vindt [hier](../vs-azure-tools-storage-manage-with-storage-explorer.md) meer informatie over het gebruik van Azure Storage Explorer.
 
-Het bereik van de SAS voor de invoerbestanden moet worden ingesteld op het specifieke invoerbestand (blob). Volg [deze instructies](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer) om een SAS-token te maken. Als u de SAS hebt gemaakt, ziet u de volledige URL met de querytekenreeks, evenals de querytekenreeks zelf, op het scherm en kunt u deze gegevens kopiëren.
+Het bereik van de SAS voor de invoerbestanden moet worden ingesteld op het specifieke invoerbestand (blob). Volg [deze instructies](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) om een SAS-token te maken. Als u de SAS hebt gemaakt, ziet u de volledige URL met de querytekenreeks, evenals de querytekenreeks zelf, op het scherm en kunt u deze gegevens kopiëren.
 
  ![SAS Storage Explorer-Genomics](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "SAS Storage Explorer-Genomics")
 
 
 ### <a name="set-up-create-a-sas-programmatically"></a>Instellen: een SAS programmatisch maken
 
-Als u een SAS wilt maken met behulp van de SDK van Azure Storage, raadpleegt u de documentatie voor verschillende talen, waaronder [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) en [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
+Als u een SAS wilt maken met behulp van de SDK van Azure Storage, raadpleegt u de documentatie voor verschillende talen, waaronder [.NET](../storage/common/storage-sas-overview.md), [Python](../storage/blobs/storage-quickstart-blobs-python.md) en [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md). 
 
-Als u een SAS wilt maken zonder een SDK, kunt u de SAS-querytekenreeks rechtstreeks samenstellen, inclusief alle gegevens die vereist zijn voor verificatie van de SAS. In deze [instructies](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas) worden de onderdelen van de SAS-queryreeks beschreven en ook hoe u de reeks samenstelt. De vereiste SAS-handtekening maakt u door het genereren van een HMAC aan de hand van de verificatiegegevens voor de blob/container, zoals wordt beschreven in deze [instructies](https://docs.microsoft.com/rest/api/storageservices/service-sas-examples).
+Als u een SAS wilt maken zonder een SDK, kunt u de SAS-querytekenreeks rechtstreeks samenstellen, inclusief alle gegevens die vereist zijn voor verificatie van de SAS. In deze [instructies](/rest/api/storageservices/constructing-a-service-sas) worden de onderdelen van de SAS-queryreeks beschreven en ook hoe u de reeks samenstelt. De vereiste SAS-handtekening maakt u door het genereren van een HMAC aan de hand van de verificatiegegevens voor de blob/container, zoals wordt beschreven in deze [instructies](/rest/api/storageservices/service-sas-examples).
 
 
 ## <a name="add-the-sas-to-the-configtxt-file"></a>De SAS toevoegen aan het config.txt-bestand
@@ -86,4 +86,4 @@ msgen submit -f [full path to your config file]
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u SAS-tokens gebruikt in plaats van accountsleutels om een werkstroom via de Python-client `msgen` aan te bieden aan de service Microsoft Genomics. Zie onze [veelgestelde vragen](frequently-asked-questions-genomics.md) voor meer informatie over de verzending van werkstromen en andere opdrachten die u kunt gebruiken met de service Microsoft Genomics. 
+In dit artikel hebt u SAS-tokens gebruikt in plaats van accountsleutels om een werkstroom via de Python-client `msgen` aan te bieden aan de service Microsoft Genomics. Zie onze [veelgestelde vragen](frequently-asked-questions-genomics.md) voor meer informatie over de verzending van werkstromen en andere opdrachten die u kunt gebruiken met de service Microsoft Genomics.

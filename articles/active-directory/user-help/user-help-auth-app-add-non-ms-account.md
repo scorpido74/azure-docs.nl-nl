@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015967"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392574"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Niet-micro soft-accounts toevoegen aan de app Microsoft Authenticator
 
@@ -36,7 +36,7 @@ Over het algemeen moet u voor al uw persoonlijke accounts het volgende doen:
     >[!Note]
     >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of de wilt toestaan foto's te maken en video op te nemen (Android). U moet **Toestaan** selecteren, zodat de Authenticator-app toegang heeft tot uw camera om in de volgende stap een foto te maken van de QR-code. Als u de app geen cameratoegang geeft, kunt u de Authenticator-app wel installeren, maar moet u de codegegevens handmatig toevoegen. Zie [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md) voor informatie over het handmatig toevoegen van de code.
 
-We bieden hier het proces voor uw Facebook-, Google-, GitHub-en Amazon-accounts, maar dit proces is hetzelfde voor alle andere apps, zoals Insta gram, Netflix of Adobe.
+We bieden hier het proces voor uw Facebook-, Google-, GitHub-en Amazon-accounts, maar het proces is hetzelfde voor andere apps, zoals Insta gram en Adobe.
 
 ## <a name="add-your-google-account"></a>Uw Google-account toevoegen
 
@@ -44,7 +44,7 @@ Voeg uw Google-account toe door twee ledige verificatie in te scha kelen en het 
 
 ### <a name="turn-on-two-factor-verification"></a>Twee ledige verificatie inschakelen
 
-1. Ga op uw computer naar https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , selecteer **aan de slag**en controleer uw identiteit.
+1. Ga op uw computer naar https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , selecteer **aan de slag** en controleer uw identiteit.
 
 2. Volg de stappen op de pagina om verificatie in twee stappen voor uw persoonlijke Google-account in te scha kelen.
 
@@ -159,7 +159,7 @@ Voeg uw Amazon-account toe door twee ledige verificatie in te scha kelen en het 
 
 1. Open op uw computer Amazon, selecteer de vervolg keuzelijst **Account & lijsten** en selecteer vervolgens **uw account**.
 
-2. Selecteer **aanmelden & beveiliging**, Meld u aan bij uw Amazon-account en selecteer vervolgens **bewerken** in het gebied **Geavanceerde beveiligings instellingen** .
+2. Selecteer **aanmelden & beveiliging** , Meld u aan bij uw Amazon-account en selecteer vervolgens **bewerken** in het gebied **Geavanceerde beveiligings instellingen** .
 
     De pagina **Geavanceerde beveiligings instellingen** wordt weer gegeven.
 

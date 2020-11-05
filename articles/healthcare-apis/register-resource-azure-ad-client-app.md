@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e92fab392dc73d8de0b7b2547e38b3f345562930
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e22eaacd73bb15ddf43f416831ff5ff42923b6e0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975855"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393384"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Een resource toepassing registreren in Azure Active Directory
 
@@ -43,7 +43,7 @@ Als u gebruikmaakt van de open source FHIR-server voor Azure, voert u de volgend
 
 1. Klik in de [Azure-portal](https://portal.azure.com) in het navigatiepaneel aan de linkerkant op **Azure Active Directory**.
 
-2. Klik in de Blade **Azure Active Directory** op **app-registraties**:
+2. Klik in de Blade **Azure Active Directory** op **app-registraties** :
 
     ![Azure Portal. Nieuwe app-registratie.](media/how-to-aad/portal-aad-new-app-registration.png)
 
@@ -71,9 +71,9 @@ Een resource toepassing heeft een id-URI (URI voor de toepassings-ID), die clien
 
 ### <a name="define-application-roles"></a>Toepassings rollen definiëren
 
-De Azure-API voor FHIR en de OSS FHIR-server voor Azure gebruiken [Azure Active Directory toepassings rollen](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) voor toegangs beheer op basis van rollen. Als u wilt definiëren welke rollen beschikbaar moeten zijn voor uw FHIR-Server-API, opent u het [manifest](https://docs.microsoft.com/azure/active-directory/active-directory-application-manifest/)van de resource toepassing:
+De Azure-API voor FHIR en de OSS FHIR-server voor Azure gebruiken [Azure Active Directory toepassings rollen](/azure/architecture/multitenant-identity/app-roles) voor toegangs beheer op basis van rollen. Als u wilt definiëren welke rollen beschikbaar moeten zijn voor uw FHIR-Server-API, opent u het [manifest](/azure/active-directory/active-directory-application-manifest/)van de resource toepassing:
 
-1. Klik op **manifest**:
+1. Klik op **manifest** :
 
     ![Toepassings rollen](media/how-to-aad/portal-aad-register-new-app-registration-APP-ROLES.png)
 

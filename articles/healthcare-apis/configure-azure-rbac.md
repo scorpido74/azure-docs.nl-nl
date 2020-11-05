@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: 1df2d112814c93261c364883f4b834e0bdb657bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cadfad445c76726b1b825b131de4016a57979fa
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839908"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93391837"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Azure RBAC configureren voor FHIR 
 
-In dit artikel leert u hoe u Azure [RBAC (op rollen gebaseerd toegangs beheer)](https://docs.microsoft.com/azure/role-based-access-control/) kunt gebruiken om toegang te krijgen tot de Azure API voor FHIR data-vlak. Azure RBAC is de voorkeurs methoden voor het toewijzen van toegang tot gegevens vlak wanneer gegevenslaag gebruikers worden beheerd in de Azure Active Directory Tenant die aan uw Azure-abonnement is gekoppeld. Als u een externe Azure Active Directory Tenant gebruikt, raadpleegt u de [lokale RBAC-toewijzings verwijzing](configure-local-rbac.md).
+In dit artikel leert u hoe u Azure [RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/index.yml) kunt gebruiken om toegang te krijgen tot de Azure API voor FHIR data-vlak. Azure RBAC is de voorkeurs methoden voor het toewijzen van toegang tot gegevens vlak wanneer gegevenslaag gebruikers worden beheerd in de Azure Active Directory Tenant die aan uw Azure-abonnement is gekoppeld. Als u een externe Azure Active Directory Tenant gebruikt, raadpleegt u de [lokale RBAC-toewijzings verwijzing](configure-local-rbac.md).
 
 ## <a name="confirm-azure-rbac-mode"></a>De Azure RBAC-modus bevestigen
 
@@ -29,13 +29,13 @@ De **instantie** moet worden ingesteld op de Azure Active Directory-Tenant die i
 
 ## <a name="assign-roles"></a>Rollen toewijzen
 
-Als u gebruikers, service-principals of groepen toegang tot het FHIR-gegevens vlak wilt verlenen, klikt u op **toegangs beheer (IAM)**, klikt u vervolgens op **Roltoewijzingen en klikt** u op **+ toevoegen**:
+Als u gebruikers, service-principals of groepen toegang tot het FHIR-gegevens vlak wilt verlenen, klikt u op **toegangs beheer (IAM)** , klikt u vervolgens op **Roltoewijzingen en klikt** u op **+ toevoegen** :
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="De Azure RBAC-modus bevestigen":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Toewijzing van Azure-functie toevoegen":::
 
 Zoek in de selectie van de **rol** naar een van de ingebouwde rollen voor het FHIR-gegevens vlak:
 
-:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="De Azure RBAC-modus bevestigen":::
+:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Ingebouwde FHIR-gegevens rollen":::
 
 U kunt kiezen uit:
 
@@ -44,7 +44,7 @@ U kunt kiezen uit:
 * FHIR-gegevens exporteur: kan operator gegevens lezen en exporteren `$export` .
 * FHIR data contributor: kan alle gegevensvlak bewerkingen uitvoeren.
 
-Als deze rollen niet voldoende zijn voor uw behoeften, kunt u ook [aangepaste rollen maken](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell).
+Als deze rollen niet voldoende zijn voor uw behoeften, kunt u ook [aangepaste rollen maken](../role-based-access-control/tutorial-custom-role-powershell.md).
 
 Zoek in het **selectie** vakje naar een gebruiker, Service-Principal of groep waaraan u de rol wilt toewijzen.
 

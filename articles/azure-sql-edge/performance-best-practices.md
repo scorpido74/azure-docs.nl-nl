@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 35985404d5ac97940c324c3ad7f7d46c959b4902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02f22883a0989714d8b74f778cacf1ba2c65d0b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936740"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392007"
 ---
 # <a name="performance-best-practices-and-configuration-guidelines"></a>Aanbevolen procedures voor prestaties en configuratie richtlijnen
 
@@ -28,13 +28,13 @@ In Azure SQL Edge wordt standaard slechts één TempDB-gegevens bestand gemaakt 
 
 ### <a name="use-clustered-columnstore-indexes-where-possible"></a>Waar mogelijk geclusterde column Store-indexen gebruiken
 
-IoT-en edge-apparaten genereren grote hoeveel heden gegevens die doorgaans worden geaggregeerd over een bepaald tijd venster voor analyse. Afzonderlijke gegevens rijen worden zelden gebruikt voor analyse doeleinden. Column Store-indexen zijn ideaal voor het opslaan en opvragen van dergelijke grote gegevens sets. In deze index wordt gebruikgemaakt van gegevens opslag en query verwerking op basis van kolommen om te zorgen voor Maxi maal tien keer de query prestaties op de traditionele rij-georiënteerde opslag. U kunt ook Maxi maal tien keer de gegevens compressie van de niet-gecomprimeerde gegevens grootte behaalt. Zie [Column Store-indexen](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) voor meer informatie.
+IoT-en edge-apparaten genereren grote hoeveel heden gegevens die doorgaans worden geaggregeerd over een bepaald tijd venster voor analyse. Afzonderlijke gegevens rijen worden zelden gebruikt voor analyse doeleinden. Column Store-indexen zijn ideaal voor het opslaan en opvragen van dergelijke grote gegevens sets. In deze index wordt gebruikgemaakt van gegevens opslag en query verwerking op basis van kolommen om te zorgen voor Maxi maal tien keer de query prestaties op de traditionele rij-georiënteerde opslag. U kunt ook Maxi maal tien keer de gegevens compressie van de niet-gecomprimeerde gegevens grootte behaalt. Zie [Column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview) voor meer informatie.
 
 Daarnaast kunnen andere functies van Azure SQL Edge, zoals het streamen van gegevens en gegevens retentie, profiteren van de column Store-optimalisaties voor het invoegen en verwijderen van gegevens. 
 
 ### <a name="simple-recovery-model"></a>Eenvoudig herstel model
 
-Omdat opslag op edge-apparaten kan worden beperkt, gebruiken alle gebruikers databases in Azure SQL Edge standaard het eenvoudige herstel model. Het eenvoudige herstel model herstelt automatisch de logboek ruimte om ruimte vereisten te beperken, waardoor de transactie logboek ruimte niet meer hoeft te worden beheerd. Dit kan handig zijn op edge-apparaten met beperkte opslag ruimte. Zie [herstel modellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) voor meer informatie over het eenvoudige herstel model en andere beschik bare herstel modellen
+Omdat opslag op edge-apparaten kan worden beperkt, gebruiken alle gebruikers databases in Azure SQL Edge standaard het eenvoudige herstel model. Het eenvoudige herstel model herstelt automatisch de logboek ruimte om ruimte vereisten te beperken, waardoor de transactie logboek ruimte niet meer hoeft te worden beheerd. Dit kan handig zijn op edge-apparaten met beperkte opslag ruimte. Zie [herstel modellen](/sql/relational-databases/backup-restore/recovery-models-sql-server) voor meer informatie over het eenvoudige herstel model en andere beschik bare herstel modellen
 
 Bewerkingen zoals logboek verzending en tijdstippen voor herstel, waarvoor transactie logboek back-ups zijn vereist, worden niet ondersteund door het eenvoudige herstel model.  
 
@@ -56,16 +56,9 @@ Trans acties in Azure SQL Edge kunnen volledig duurzaam zijn, de SQL Server stan
 
 Volledig duurzame trans acties worden synchroon en worden door Voer als geslaagd gerapporteerd en de controle terugsturen naar de client pas nadat de logboek records voor de trans actie naar de schijf zijn geschreven. Vertraagde duurzame trans acties worden asynchroon uitgevoerd en het rapport wordt doorgevoerd als geslaagd voordat de logboek records voor de trans actie naar de schijf worden geschreven. Het schrijven van de transactie logboek vermeldingen naar de schijf is vereist voor een duurzame trans actie. Vertraagde duurzame trans acties worden duurzaam wanneer de transactie logboek vermeldingen worden leeg gemaakt op de schijf. 
 
-In implementaties waar **gegevens verlies** kan worden toegestaan of op edge-apparaten met een trage opslag, kan een vertraagde duurzaamheid worden gebruikt om gegevens opname en op basis van gegevens retentie te optimaliseren. Zie voor meer informatie [controle transactie duurzaamheid](https://docs.microsoft.com/sql/relational-databases/logs/control-transaction-durability).
+In implementaties waar **gegevens verlies** kan worden toegestaan of op edge-apparaten met een trage opslag, kan een vertraagde duurzaamheid worden gebruikt om gegevens opname en op basis van gegevens retentie te optimaliseren. Zie voor meer informatie [controle transactie duurzaamheid](/sql/relational-databases/logs/control-transaction-durability).
 
 
 ### <a name="linux-os-configurations"></a>Configuraties van Linux-besturings systeem 
 
-Overweeg de volgende configuratie-instellingen voor [Linux-besturings systeem](https://docs.microsoft.com/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration) te gebruiken om de beste prestaties voor een SQL-installatie te ervaren.
-
-
-
-
-
-
-
+Overweeg de volgende configuratie-instellingen voor [Linux-besturings systeem](/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration) te gebruiken om de beste prestaties voor een SQL-installatie te ervaren.

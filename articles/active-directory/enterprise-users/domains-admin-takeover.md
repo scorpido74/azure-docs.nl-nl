@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 11/04/2020
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 11708aeb434f3b258377c02f15214f1ac9ae4295
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375670"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393622"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Als beheerder in Azure Active Directory een niet-beheerde directory overnemen
 
@@ -40,7 +40,7 @@ Sommige producten die share point en OneDrive bevatten, zoals Microsoft 365, bie
 
 2. Open de [Power bi-site](https://powerbi.com) en selecteer **gratis starten**. Voer een gebruikers account in dat gebruikmaakt van de domein naam voor de organisatie. bijvoorbeeld `admin@fourthcoffee.xyz` . Nadat u de verificatie code hebt ingevoerd, controleert u uw e-mail op de bevestigings code.
 
-3. Selecteer **Ja**in het bevestigings bericht van Power bi.
+3. Selecteer **Ja** in het bevestigings bericht van Power bi.
 
 4. Meld u aan bij het [Microsoft 365-beheer centrum](https://portal.office.com/admintakeover) met de Power bi gebruikers account. U ontvangt een bericht waarin wordt aangegeven dat u **de beheerder** bent van de domein naam die al is geverifieerd in de niet-beheerde organisatie. Selecteer **Ja, ik wil de beheerder zijn**.
   
@@ -67,7 +67,7 @@ Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder v
   
 6. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat de globale beheerder is voor de Azure AD-organisatie.
   
-7. Selecteer **aangepaste domein namen**en voeg vervolgens de domein naam toe. U moet de DNS TXT-records invoeren om het eigendom van de domein naam te verifiëren. 
+7. Selecteer **aangepaste domein namen** en voeg vervolgens de domein naam toe. U moet de DNS TXT-records invoeren om het eigendom van de domein naam te verifiëren. 
   
    ![het domein is geverifieerd als toegevoegd aan Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
@@ -100,7 +100,7 @@ De ondersteunde service plannen zijn onder andere:
 
 Externe beheerder overname wordt niet ondersteund voor een service met service plannen die share point, OneDrive of Skype voor bedrijven bevatten. bijvoorbeeld via een gratis Office-abonnement. 
 
-U kunt eventueel de [optie **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) gebruiken om de domein naam van de onbeheerde organisatie te verwijderen en te verifiëren op de gewenste organisatie. 
+U kunt eventueel de [optie **ForceTakeover**](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) gebruiken om de domein naam van de onbeheerde organisatie te verwijderen en te verifiëren op de gewenste organisatie. 
 
 #### <a name="more-information-about-rms-for-individuals"></a>Meer informatie over RMS voor personen
 
@@ -174,7 +174,7 @@ Bij een geslaagde poging keert u terug naar de prompt zonder fout.
 * [Azure PowerShell installeren en configureren](/powershell/azure/)
 * [Azure PowerShell](/powershell/azure/)
 * [Azure-cmdlet-naslaginformatie](/powershell/azure/get-started-azureps)
-* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0&preserve-view=true)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png

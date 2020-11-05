@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 9e75edad9f2e473d27d81c73fc784c568c4e404c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4d420bf45cd705f518df0d52929a331d23537184
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896137"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395169"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Een taak voor gegevens stromen maken in Azure SQL Edge 
 
@@ -24,21 +24,21 @@ In dit artikel wordt uitgelegd hoe u een T-SQL streaming-taak in Azure SQL Edge 
 
 T-SQL streaming maakt gebruik van de functionaliteit van de externe gegevens bron van SQL Server om de gegevens bronnen te definiëren die zijn gekoppeld aan de externe stream-invoer en uitvoer van de streaming-taak. Gebruik de volgende T-SQL-opdrachten om een externe stream-invoer of-uitvoer object te maken:
 
-- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)
 
-- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](/sql/t-sql/statements/create-external-data-source-transact-sql)
 
 - [EXTERNE STREAM maken (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-Als Azure SQL Edge, SQL Server of Azure SQL Database als een uitvoer stroom wordt gebruikt, hebt u de [Data Base scoped CREDENTIAL (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)nodig. Deze T-SQL-opdracht definieert de referenties voor toegang tot de data base.
+Als Azure SQL Edge, SQL Server of Azure SQL Database als een uitvoer stroom wordt gebruikt, hebt u de [Data Base scoped CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)nodig. Deze T-SQL-opdracht definieert de referenties voor toegang tot de data base.
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>Ondersteunde gegevens bronnen voor invoer en uitvoer stroom
 
 Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als invoer en uitvoer van streams.
 
-| Gegevens bron type | Invoer | Uitvoer | Description |
+| Gegevens bron type | Invoer | Uitvoer | Beschrijving |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)voor meer informatie.|
+| Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub)voor meer informatie.|
 | SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De data base kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
 | Kafka | J | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Deze adapter is momenteel alleen beschikbaar voor Intel-of AMD-versies van Azure SQL Edge. Het is niet beschikbaar voor de ARM64-versie van Azure SQL Edge.|
 
@@ -103,7 +103,7 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
 
 3. Een externe gegevens bron maken met externe gegevens bron maken. Het volgende voor beeld:
 
-    * Hiermee maakt u een externe gegevens bron met de naam *LocalSQLOutput* .
+    * Hiermee maakt u een externe gegevens bron met de naam *LocalSQLOutput*.
     * Hiermee wordt de externe gegevens bron geïdentificeerd (locatie = ' <vendor> :// <server> [: <port> ] '). In het voor beeld verwijst deze naar een lokaal exemplaar van de Azure SQL-rand.
     * Maakt gebruik van de referentie die eerder is gemaakt.
 
@@ -117,7 +117,7 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
     go
     ```
 
-4. Maak het externe Stream-object. In het volgende voor beeld wordt een extern Stream-object gemaakt dat verwijst naar een tabel *dbo. TemperatureMeasurements* , in de Data Base- *MySQLDatabase* .
+4. Maak het externe Stream-object. In het volgende voor beeld wordt een extern Stream-object gemaakt dat verwijst naar een tabel *dbo. TemperatureMeasurements* , in de Data Base- *MySQLDatabase*.
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -173,7 +173,7 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
 Gebruik de door het `sys.sp_create_streaming_job` systeem opgeslagen procedure om de streaming-query's te definiëren en de streaming-taak te maken. De `sp_create_streaming_job` opgeslagen procedure heeft de volgende para meters:
 
 - `job_name`: De naam van de streaming-taak. De namen van streaming-taken zijn uniek binnen het exemplaar.
-- `statement`: Query's op basis van streaming-query-instructies in de [query taal stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
+- `statement`: Query's op basis van streaming-query-instructies in de [query taal stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference).
 
 In het volgende voor beeld wordt een eenvoudige streaming-taak gemaakt met één streaming-query. Deze query leest de invoer van de IoT Edge hub en schrijft naar `dbo.TemperatureMeasurements` in de-data base.
 

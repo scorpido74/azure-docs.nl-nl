@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfae813f01d3e7a08e18cde76e5c26ca253a371f
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 73ed2741c7dd754127a57642703b650a70637c63
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026595"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393435"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een beheer eenheid
 
@@ -50,9 +50,9 @@ De volgende beveiligings-principals kunnen worden toegewezen aan een rol met een
 
 U kunt een scoped-rol toewijzen met behulp van de Azure Portal, Power shell of Microsoft Graph.
 
-### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-1. Ga in de Azure Portal naar **Azure AD** .
+1. Ga in de Azure Portal naar **Azure AD**.
 
 1. Selecteer **beheer eenheden** en selecteer vervolgens de beheer eenheid waaraan u een gebruikersrol bereik wilt toewijzen. 
 
@@ -60,7 +60,7 @@ U kunt een scoped-rol toewijzen met behulp van de Azure Portal, Power shell of M
 
    ![Scherm opname van het deel venster ' rol en beheerder ' voor het selecteren van een administratieve eenheid waarvan u het rolinstantie wilt toewijzen.](./media/admin-units-assign-roles/select-role-to-scope.png)
 
-1. Selecteer de rol die u wilt toewijzen en selecteer vervolgens **toewijzingen toevoegen** . 
+1. Selecteer de rol die u wilt toewijzen en selecteer vervolgens **toewijzingen toevoegen**. 
 
 1. Selecteer in het deel venster **toewijzingen toevoegen** een of meer gebruikers die moeten worden toegewezen aan de rol.
 
@@ -101,11 +101,11 @@ Request body
 
 U kunt een lijst met scoped beheerders weer geven met behulp van de Azure Portal, Power shell of Microsoft Graph.
 
-### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 U kunt alle roltoewijzingen weer geven die zijn gemaakt met een bereik administratieve eenheid in het [gedeelte Administrative units van Azure AD](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit). 
 
-1. Ga in de Azure Portal naar **Azure AD** .
+1. Ga in de Azure Portal naar **Azure AD**.
 
 1. Selecteer **beheer eenheden** in het linkerdeel venster en selecteer vervolgens de beheer eenheid voor de lijst met roltoewijzingen die u wilt weer geven. 
 
