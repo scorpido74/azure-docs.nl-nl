@@ -13,16 +13,22 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8f573f5f00d266fe5d27857cc9e244d136f61a5
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84488882"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379261"
 ---
-# <a name="enable-kdump-service"></a>Kdump-service inschakelen
+# <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Kdump voor SAP HANA on Azure Large Instances (HLI)
 
-Dit document bevat informatie over het inschakelen van de kdump-service op Azure HANA grote instantie (**type I en type II**)
+Het configureren en inschakelen van kdump is een stap die nodig is om systeem crashes op te lossen die geen duidelijke oorzaak hebben.
+Er zijn momenten waarop een systeem onverwacht vastloopt dat niet kan worden verklaard door een hardware-of infrastructuur probleem.
+In deze gevallen kan het een besturings systeem of toepassings probleem zijn en kdump kan SUSE bepalen waarom een systeem is vastgelopen.
+
+## <a name="enable-kdump-service"></a>Kdump-service inschakelen
+
+Dit document bevat informatie over het inschakelen van de kdump-service op Azure HANA grote instantie ( **type I en type II** )
 
 ## <a name="supported-skus"></a>Ondersteunde Sku's
 
@@ -62,6 +68,10 @@ Dit document bevat informatie over het inschakelen van de kdump-service op Azure
 ## <a name="setup-details"></a>Details van de installatie
 
 - Script voor het inschakelen van kdump vindt u [hier](https://github.com/Azure/sap-hana/blob/master/tools/enable-kdump.sh)
+> [!NOTE]
+> Dit script wordt gemaakt op basis van de instellingen van het lab en de klant wordt naar verwachting contact opnemen met de leverancier van het besturings systeem voor verdere afstemming.
+> Er wordt een afzonderlijke LUN ingericht voor de nieuwe en bestaande servers voor het opslaan van de dumps en het script zal ervoor zorgen dat het bestands systeem van het LUN wordt geconfigureerd.
+> Micro soft is niet verantwoordelijk voor het analyseren van de dump. De klant moet een ticket openen met de leverancier van het besturings systeem om het te kunnen analyseren.
 
 - Dit script uitvoeren op een HANA grote instantie met behulp van de onderstaande opdracht
 
@@ -72,7 +82,7 @@ Dit document bevat informatie over het inschakelen van de kdump-service op Azure
     sudo bash enable-kdump.sh
     ```
 
-- Als de opdracht uitvoer kdump is ingeschakeld, start u het systeem opnieuw op om de wijziging toe te passen. de kdump is nu ingeschakeld. Start het systeem opnieuw op om de wijzigingen toe te passen.
+- Als de opdracht uitvoer van kdump is ingeschakeld, moet u het systeem opnieuw opstarten om de wijzigingen toe te passen.
 
 - Als de uitvoer van de opdracht bepaalde bewerking niet kan uitvoeren, sluit u!!!!, en wordt de kdump-service niet ingeschakeld. Raadpleeg het [ondersteunings probleem](#support-issue)van de sectie.
 
@@ -104,3 +114,6 @@ Als het script mislukt met een fout of kdump niet is ingeschakeld, verhoogt u de
 * Besturingssysteemversie
 
 * Kernelversie
+
+## <a name="related-documents"></a>Gerelateerde documenten
+- Meer informatie over [het configureren van de kdump](https://www.suse.com/support/kb/doc/?id=3374462)

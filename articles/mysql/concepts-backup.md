@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 283befd08c7802a9df6d2fca78465d50cfb2ba7b
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348454"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376813"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Back-ups maken en herstellen in Azure Database for MySQL
 
@@ -115,7 +115,12 @@ U kunt een server herstellen naar een andere Azure-regio waar de service beschik
 
 Geo-Restore is de standaard herstel optie als uw server niet beschikbaar is vanwege een incident in de regio waarin de server wordt gehost. Als een grootschalig incident in een regio resulteert in niet-beschik baarheid van uw database toepassing, kunt u een server herstellen van de geo-redundante back-ups naar een server in een andere regio. Geo-Restore maakt gebruik van de meest recente back-up van de server. Er is een vertraging tussen het moment waarop een back-up wordt gemaakt en wanneer deze wordt gerepliceerd naar een andere regio. Deze vertraging kan tot een uur duren, dus als er sprake is van een nood geval, kan er Maxi maal één uur gegevens verlies zijn.
 
+> [!IMPORTANT]
+>Als er een geo-herstel bewerking wordt uitgevoerd voor een nieuwe server, kan de eerste back-upsynchronisatie langer dan 24 uur duren, afhankelijk van de grootte van de back-up, maar veel meer. Volgende back-ups van moment opnamen worden incrementeel gekopieerd en daarom zijn de herstel bewerkingen sneller na 24 uur nadat de server is gemaakt. Als u geo-restores evalueert om uw RTO te definiëren, raden we u aan om geo-Restore te wachten en te evalueren **nadat u 24 uur** aan het maken van de server voor betere schattingen hebt gemaakt.
+
 Tijdens de geo-herstel bewerking kunnen de volgende server configuraties worden gewijzigd: Compute Generation, vCore, Bewaar periode voor back-up en opties voor back-redundantie. Het wijzigen van de prijs categorie (Basic, Algemeen of Optimized memory) of opslag grootte tijdens geo-Restore wordt niet ondersteund.
+
+De geschatte duur van de herstel bewerking is afhankelijk van verschillende factoren, zoals de grootte van de data base, het transactie logboek, de netwerk bandbreedte en het totale aantal data bases dat op hetzelfde moment in dezelfde regio wordt hersteld. De herstel tijd is doorgaans minder dan 12 uur.
 
 ### <a name="perform-post-restore-tasks"></a>Taken na herstel uitvoeren
 

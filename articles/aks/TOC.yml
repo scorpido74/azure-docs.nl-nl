@@ -154,6 +154,8 @@
           href: cluster-container-registry-integration.md
         - name: Virtuele knooppunten maken
           items:
+            - name: Virtuele knooppunten gebruiken
+              href: virtual-nodes.md
             - name: Azure CLI gebruiken
               href: virtual-nodes-cli.md
             - name: Azure Portal gebruiken

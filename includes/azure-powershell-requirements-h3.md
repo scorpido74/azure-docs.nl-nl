@@ -8,17 +8,17 @@ ms.technology: azure-powershell
 ms.service: azure-powershell
 ms.devlang: azurepowershell
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4c6ebf7152cb24ad997859b66d9e9034642fe7f5
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 09be1f3859d8e75e5985086092bce376aa7ffbe6
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234087"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376239"
 ---
 ### <a name="requirements"></a>Vereisten
 
-* Als u Power shell lokaal wilt gebruiken:
+* Als u Azure PowerShell lokaal wilt gebruiken:
   * [Installeer de AZ Power shell-module](/powershell/azure/install-az-ps).
   * Maak verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
-* Als u ervoor kiest om Cloud Shell te gebruiken:
+* Als u ervoor kiest om Azure Cloud Shell te gebruiken:
   * Zie [overzicht van Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) voor meer informatie.

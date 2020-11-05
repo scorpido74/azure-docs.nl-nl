@@ -5,20 +5,20 @@ services: active-directory
 author: markwahl-msft
 manager: daveba
 ms.author: curtand
-ms.date: 11/08/2019
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffcbd77997e230b9b21ed29b47e37236de025f6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376229"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378751"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Accounts voor nood toegang beheren in azure AD
 
@@ -87,34 +87,34 @@ Organisaties moeten de activiteiten voor aanmelding en controle logboeken van de
 ### <a name="create-an-alert-rule"></a>Een waarschuwingsregel maken
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een account dat is toegewezen aan de rol voor het controleren van inzender in azure monitor.
-1. Selecteer **alle services**', voer ' Log Analytics ' in de zoek opdracht in en selecteer vervolgens **log Analytics-werk ruimten**.
+1. Selecteer **alle services** ', voer ' Log Analytics ' in de zoek opdracht in en selecteer vervolgens **log Analytics-werk ruimten**.
 1. Selecteer een werkruimte.
 1. Selecteer in uw werk ruimte **waarschuwingen**  >  **nieuwe waarschuwings regel**.
-    1. Controleer onder **resource**of het abonnement is waarmee u de waarschuwings regel wilt koppelen.
-    1. Selecteer onder **voor waarde**de optie **toevoegen**.
+    1. Controleer onder **resource** of het abonnement is waarmee u de waarschuwings regel wilt koppelen.
+    1. Selecteer onder **voor waarde** de optie **toevoegen**.
     1. Selecteer **aangepaste zoek opdracht in logboek** onder **signaal naam**.
-    1. Voer onder **Zoek query**de volgende query in en voeg de object-id's van de twee afbreek glazen accounts in.
+    1. Voer onder **Zoek query** de volgende query in en voeg de object-id's van de twee afbreek glazen accounts in.
         > [!NOTE]
         > Voor elk extra account voor een afbreek glazen dat u wilt toevoegen, voegt u een andere ' or UserId = = ' ObjectGuid ' ' toe aan de query.
 
         ![De object-Id's van de afbreek glazen accounts toevoegen aan een waarschuwings regel](./media/security-emergency-access/query-image1.png)
 
-    1. Onder **waarschuwings logica**voert u het volgende in:
+    1. Onder **waarschuwings logica** voert u het volgende in:
 
         - Gebaseerd op: aantal resultaten
         - Operator: groter dan
         - Drempel waarde: 0
 
-    1. Onder **geëvalueerd op basis van**selecteert u de **periode (in minuten)** voor hoe lang de query moet worden uitgevoerd en de **frequentie (in minuten)** voor hoe vaak de query moet worden uitgevoerd. De frequentie moet kleiner dan of gelijk aan de periode zijn.
+    1. Onder **geëvalueerd op basis van** selecteert u de **periode (in minuten)** voor hoe lang de query moet worden uitgevoerd en de **frequentie (in minuten)** voor hoe vaak de query moet worden uitgevoerd. De frequentie moet kleiner dan of gelijk aan de periode zijn.
 
         ![waarschuwings logica](./media/security-emergency-access/alert-image2.png)
 
     1. Selecteer **Gereed**. U kunt nu de geschatte maandelijkse kosten van deze waarschuwing weer geven.
 1. Selecteer een actie groep van gebruikers die door de waarschuwing moeten worden gewaarschuwd. Zie [een actie groep maken](#create-an-action-group)als u er een wilt maken.
 1. Als u de e-mail melding die wordt verzonden naar de leden van de actie groep wilt aanpassen, selecteert u acties onder **acties aanpassen**.
-1. Geef onder **waarschuwings Details**de naam van de waarschuwings regel op en voeg een optionele beschrijving toe.
+1. Geef onder **waarschuwings Details** de naam van de waarschuwings regel op en voeg een optionele beschrijving toe.
 1. Stel het **Ernst niveau** van de gebeurtenis in. U kunt het beste instellen op **kritiek (Ernst 0)**.
-1. Onder **regel inschakelen bij het maken**, blijft de optie ingesteld op **Ja**.
+1. Onder **regel inschakelen bij het maken** , blijft de optie ingesteld op **Ja**.
 1. Als u waarschuwingen voor een tijdje wilt uitschakelen, schakelt u het selectie vakje **waarschuwingen onderdrukken** in en voert u de wacht tijd in voordat u opnieuw een waarschuwing krijgt en selecteert u vervolgens **Opslaan**.
 1. Klik op **Waarschuwingsregel maken**.
 

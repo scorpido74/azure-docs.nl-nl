@@ -223,7 +223,8 @@
         - name: Azure Defender voor SQL configureren op virtuele Azure-machines
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: Het informatiebeschermingsbeleid aanpassen
+        - name: Uw SQL-informatiebeschermingsbeleid aanpassen
+          displayName: 'sql, database, data discovery'
           href: security-center-info-protection-policy.md
     - name: Azure Defender voor containerregisters gebruiken
       items:

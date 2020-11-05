@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ef67580928a45609f50d3fe798eb9d054265c0a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75751533"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375941"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -23,7 +23,7 @@ Schakel het vakje **De identiteit van de server verifiëren door het certificaat
 
 Het is in het algemeen niet aan te raden om de validatie van de serveridentiteit over te slaan, maar met Azure-certificaatverificatie wordt hetzelfde certificaat gebruikt voor servervalidatie in het VPN-tunnelprotocol (IKEv2/SSTP) en het EAP-protocol. Aangezien het servercertificaat en de FQDN al gevalideerd zijn door het VPN-tunnelprotocol, is het overbodig om deze nogmaals te valideren in de EAP.
 
-![punt-naar-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Servercertificaat")
+![Verificatie van punt-naar-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Servercertificaat")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Kan ik mijn eigen interne PKI basis-CA gebruiken om certificaten te genereren voor een punt-naar-site-verbinding?
 

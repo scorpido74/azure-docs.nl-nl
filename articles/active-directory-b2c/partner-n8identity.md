@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a6d6ca825a556ea3c98fb94d4becbb75b8f2a7d7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294275"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376881"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van TheAccessHub-beheer hulpprogramma met Azure Active Directory B2C
 
@@ -102,7 +102,7 @@ Voer de volgende stappen uit om het TheAccessHub-beheer hulpprogramma te machtig
 
 5. Volg de aanwijzingen en selecteer **accepteren** om TheAccessHub-beheer hulpprogramma de aangevraagde machtigingen te verlenen.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-your-enterprise-identity"></a>Een nieuwe CSR/helpdesk gebruiker configureren met uw bedrijfs identiteit
+## <a name="configure-a-new-csr-user-using-your-enterprise-identity"></a>Een nieuwe CSR-gebruiker configureren met uw bedrijfs identiteit
 
 Maak een CSR/helpdesk gebruiker die toegang heeft tot het TheAccessHub-beheer hulpprogramma met hun bestaande referenties voor ondernemings Azure Active Directory.
 
@@ -126,7 +126,7 @@ Als u de CSR/helpdesk gebruiker wilt configureren met eenmalige aanmelding (SSO)
 
 6. Selecteer **Indienen**.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-a-new-identity"></a>Een nieuwe CSR/helpdesk gebruiker configureren met een nieuwe identiteit
+## <a name="configure-a-new-csr-user-using-a-new-identity"></a>Een nieuwe CSR-gebruiker configureren met een nieuwe identiteit
 
 Maak een CSR/helpdesk gebruiker die toegang heeft tot het TheAccessHub-beheer programma met een nieuwe lokale referentie die uniek is voor TheAccessHub-beheer programma. Dit wordt hoofd zakelijk gebruikt door organisaties die geen Azure AD gebruiken voor hun onderneming.
 
@@ -150,7 +150,7 @@ Als u [een CSR/helpdesk](https://youtu.be/iOpOI2OpnLI) gebruiker zonder SSO wilt
 
 7. Selecteer **verzenden**
 
-## <a name="configure-partitioned-csrhelpdesk-administration"></a>Gepartitioneerde CSR/helpdesk beheer configureren
+## <a name="configure-partitioned-csr-administration"></a>Beheer van gepartitioneerde CSR configureren
 
 Machtigingen voor het beheren van de klant en CSR/helpdesk gebruikers in het hulp programma TheAccessHub-beheer worden beheerd met het gebruik van een organisatie hiërarchie. Alle collega's en klanten hebben een thuis organisatie waar ze zich bevinden. Specifieke collega's of groepen collega's kunnen worden toegewezen als eigen aren van organisaties.  Organisatie-eigen aren kunnen collega's en klanten beheren (wijzigingen aanbrengen in) in organisaties of suborganisaties. Als u meerdere collega's wilt toestaan een set gebruikers te beheren, kunt u een groep maken met veel leden. De groep kan vervolgens worden toegewezen als organisatie-eigenaar en alle leden van de groep kunnen collega's en klanten in de organisatie beheren.
 
@@ -324,7 +324,7 @@ Met het hulp programma TheAccessHub-beheer kunt u gegevens importeren uit versch
 
 18. Wanneer de **gegevens synchronisatie** record in de laad fase 100% wordt, zijn alle wijzigingen die zijn ontstaan ten gevolge van de belasting, geïnitieerd. Klanten moeten beginnen met het weer gegeven of ontvangen van wijzigingen in Azure AD B2C.
 
-## <a name="synchronize-azure-ad-b2c-customer-data-into-theaccesshub-admin-tool"></a>Azure AD B2C klant gegevens synchroniseren met TheAccessHub-beheer programma
+## <a name="synchronize-azure-ad-b2c-customer-data"></a>Azure AD B2C klant gegevens synchroniseren 
 
 Als eenmalige of lopende bewerking, kan TheAccessHub-beheer programma alle klant gegevens van Azure AD B2C synchroniseren in TheAccessHub-beheer programma. Dit zorgt ervoor dat CSR/helpdesk beheerders actuele klant gegevens bekijken.
 
@@ -356,7 +356,7 @@ Gegevens van Azure AD B2C synchroniseren met TheAccessHub-beheer programma:
 
 13. Wanneer de **gegevens synchronisatie** record in de laad fase 100% wordt, zijn alle wijzigingen die zijn ontstaan ten gevolge van de belasting, geïnitieerd.
 
-## <a name="configure-azure-ad-b2c-policies-to-call-theaccesshub-admin-tool"></a>Azure AD B2C-beleid configureren voor het aanroepen van TheAccessHub-beheer programma
+## <a name="configure-azure-ad-b2c-policies"></a>Azure AD B2C-beleid configureren
 
 Het TheAccessHub-beheer programma wordt af en toe gesynchroniseerd met een beperkt aantal mogelijkheden om de status up-to-date te houden met Azure AD B2C. We kunnen gebruikmaken van het API-en Azure AD B2C-beleid van het TheAccessHub-beheer hulpprogramma om het TheAccessHub-beheer programma van wijzigingen op de hoogte te stellen wanneer ze plaatsvinden. Deze oplossing vereist technische kennis van [Azure AD B2C aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20). In het volgende gedeelte krijgt u een voor beeld van de beleids stappen en een beveiligd certificaat om het TheAccessHub-beheer programma van nieuwe accounts in uw Sign-Up aangepast beleid te melden.
 

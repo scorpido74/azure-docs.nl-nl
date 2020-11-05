@@ -4,17 +4,19 @@ description: Uitgebreide prestaties en gebruiks bewaking van uw Java-website met
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e91e0252ac2af02157c30fe025e75b6cfee7de6e
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371359"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378479"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Afhankelijkheden, onderschepte uitzonde ringen en methode-uitvoerings tijden in Java-Web-apps bewaken
 
+> [!IMPORTANT]
+> De aanbevolen benadering voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor [Application Insights Java 3,0-agent](./java-in-process-agent.md).
 
-Als u [uw Java-Web-app hebt voorzien van Application Insights][java], kunt u de Java-Agent gebruiken om diepere inzichten te verkrijgen, zonder dat u code hoeft te wijzigen:
+Als u [uw Java-Web-app hebt geinstrumenteerd met Application INSIGHTS SDK][java], kunt u de Java-Agent gebruiken om diepere inzichten te verkrijgen, zonder dat u code hoeft te wijzigen:
 
 * **Afhankelijkheden:** Gegevens over de aanroepen die uw toepassing maakt met andere onderdelen, waaronder:
   * **Uitgaande HTTP-aanroepen** via Apache httpclient maakt, OkHttp en `java.net.HttpURLConnection` worden vastgelegd.

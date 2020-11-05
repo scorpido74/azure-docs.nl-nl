@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28df0e420183239eae21aa18c807bb82b4ec7649
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fb81b5dc98bf75a17e55abafdebfbeca68774a99
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376013"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379142"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Een rol toewijzen aan een Cloud groep in Azure Active Directory
 
@@ -30,7 +30,7 @@ Het toewijzen van een groep aan een Azure AD-rol is vergelijkbaar met het toewij
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
 
-1. Selecteer **Azure Active Directory**  >  **rollen en beheerders**, en selecteer de rol die u wilt toewijzen.
+1. Selecteer **Azure Active Directory**  >  **rollen en beheerders** , en selecteer de rol die u wilt toewijzen.
 
 1. Selecteer op de **pagina _rolnaam_*_ de optie > _* toewijzing toevoegen**.
 
@@ -101,5 +101,5 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Cloud groepen gebruiken om roltoewijzingen te beheren](groups-concept.md)
+- [Cloudgroepen gebruiken om roltoewijzingen te beheren](groups-concept.md)
 - [Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen](groups-faq-troubleshooting.md)

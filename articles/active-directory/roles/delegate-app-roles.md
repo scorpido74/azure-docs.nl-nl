@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8139dca2896610b8a3a52f1446255bea0031dc11
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9ad21e15d33dabba74d338b339e4b2fdc25df52e
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376271"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379210"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Machtigingen voor app-registratie in Azure Active Directory delegeren
 
@@ -90,9 +90,9 @@ Volg de instructies in de [rollen toewijzen aan gebruikers met Azure Active Dire
 Het maken van aangepaste rollen en het toewijzen van aangepaste rollen is een afzonderlijke stap:
 
 - [Een aangepaste *roldefinitie* maken](custom-create.md) en [er machtigingen aan toevoegen vanuit een vooraf ingestelde lijst](custom-available-permissions.md). Dit zijn dezelfde machtigingen die worden gebruikt in de ingebouwde rollen.
-- [Maak een *roltoewijzing* ](custom-assign-powershell.md) om de aangepaste rol toe te wijzen.
+- [Maak een *roltoewijzing*](custom-assign-powershell.md) om de aangepaste rol toe te wijzen.
 
-Met deze schei ding kunt u een definitie van één rol maken en deze vervolgens meerdere keren aan verschillende *bereiken*toewijzen. Een aangepaste rol kan worden toegewezen aan het hele organisatie bereik of kan worden toegewezen aan het bereik als één Azure AD-object. Een voor beeld van een object bereik is een enkele app-registratie. Als u verschillende bereiken gebruikt, kan dezelfde roldefinitie worden toegewezen aan Sandra via alle app-registraties in de organisatie en vervolgens Naveen alleen over de registratie van de app voor onkosten rapporten van contoso.
+Met deze schei ding kunt u een definitie van één rol maken en deze vervolgens meerdere keren aan verschillende *bereiken* toewijzen. Een aangepaste rol kan worden toegewezen aan het hele organisatie bereik of kan worden toegewezen aan het bereik als één Azure AD-object. Een voor beeld van een object bereik is een enkele app-registratie. Als u verschillende bereiken gebruikt, kan dezelfde roldefinitie worden toegewezen aan Sandra via alle app-registraties in de organisatie en vervolgens Naveen alleen over de registratie van de app voor onkosten rapporten van contoso.
 
 Tips voor het maken en gebruiken van aangepaste rollen voor het delegeren van toepassings beheer:
 - Aangepaste rollen verlenen alleen toegang via de meest actuele Blade van de app-registratie van de Azure AD-Portal. Ze verlenen geen toegang via de Blade verouderde app-registraties.

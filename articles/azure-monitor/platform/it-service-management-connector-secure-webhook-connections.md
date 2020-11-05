@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5976b70825ac2854e67ddad968752fc87d9e8cea
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427330"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377136"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van beveiligde export
 
@@ -28,8 +28,8 @@ ITSMC maakt gebruik van gebruikers naam en wacht woord. Beveiligd exporteren hee
 
 De Secure export-architectuur introduceert de volgende nieuwe mogelijkheden:
 
-* **Nieuwe actie groep**: waarschuwingen worden verzonden naar het ITSM-hulp programma via de actie groep van de beveiligde webhook, in plaats van de ITSM actie groep die ITSMC gebruikt.
-* **Azure AD-verificatie**: de verificatie vindt plaats via Azure AD in plaats van de referenties van de gebruikers naam en het wacht woord.
+* **Nieuwe actie groep** : waarschuwingen worden verzonden naar het ITSM-hulp programma via de actie groep van de beveiligde webhook, in plaats van de ITSM actie groep die ITSMC gebruikt.
+* **Azure AD-verificatie** : de verificatie vindt plaats via Azure AD in plaats van de referenties van de gebruikers naam en het wacht woord.
 
 ## <a name="secure-export-data-flow"></a>Gegevens stroom voor beveiligde export
 
@@ -49,9 +49,9 @@ De stappen voor de beveiligde export gegevens stroom zijn:
 
 De belangrijkste voor delen van de integratie zijn:
 
-* **Betere verificatie**: Azure AD biedt een veiligere verificatie zonder de time-outs die zich vaak voordoen in ITSMC.
-* **Waarschuwingen die zijn opgelost in het ITSM-hulp programma**: metrische waarschuwingen implementeren ' fireed ' en ' opgeloste ' statussen. Wanneer aan de voor waarde wordt voldaan, wordt de status van de waarschuwing geactiveerd. Als niet meer aan de voor waarde wordt voldaan, is de waarschuwings status opgelost. In ITSMC kunnen waarschuwingen niet automatisch worden opgelost. Met beveiligde export stromen de omgezette status naar het ITSM-hulp programma en worden deze automatisch bijgewerkt.
-* **[Gebruikelijk waarschuwings schema](./alerts-common-schema.md)**: in ITSMC verschilt het schema van de nettolading van de waarschuwing op basis van het waarschuwings type. Bij beveiligde export is er een gemeen schappelijk schema voor alle waarschuwings typen. Dit algemene schema bevat de CI voor alle waarschuwings typen. Alle waarschuwings typen kunnen hun CI binden met de CMDB.
+* **Betere verificatie** : Azure AD biedt een veiligere verificatie zonder de time-outs die zich vaak voordoen in ITSMC.
+* **Waarschuwingen die zijn opgelost in het ITSM-hulp programma** : metrische waarschuwingen implementeren ' fireed ' en ' opgeloste ' statussen. Wanneer aan de voor waarde wordt voldaan, wordt de status van de waarschuwing geactiveerd. Als niet meer aan de voor waarde wordt voldaan, is de waarschuwings status opgelost. In ITSMC kunnen waarschuwingen niet automatisch worden opgelost. Met beveiligde export stromen de omgezette status naar het ITSM-hulp programma en worden deze automatisch bijgewerkt.
+* **[Gebruikelijk waarschuwings schema](./alerts-common-schema.md)** : in ITSMC verschilt het schema van de nettolading van de waarschuwing op basis van het waarschuwings type. Bij beveiligde export is er een gemeen schappelijk schema voor alle waarschuwings typen. Dit algemene schema bevat de CI voor alle waarschuwings typen. Alle waarschuwings typen kunnen hun CI binden met de CMDB.
 
 Ga met de volgende stappen aan de slag met het ITSM-connector-hulp programma:
 
@@ -60,6 +60,7 @@ Ga met de volgende stappen aan de slag met het ITSM-connector-hulp programma:
 3. Configureer uw partner omgeving. 
 
 Beveiligd exporteren ondersteunt verbindingen met de volgende ITSM-hulpprogram ma's:
+* [ServiceNow](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-servicenow-to-azure-monitor)
 * [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Registreren bij Azure Active Directory
@@ -67,7 +68,7 @@ Beveiligd exporteren ondersteunt verbindingen met de volgende ITSM-hulpprogram m
 Volg deze stappen om de toepassing te registreren bij Azure AD:
 
 1. Volg de stappen in [een toepassing registreren bij het micro soft Identity-platform](../../active-directory/develop/quickstart-register-app.md).
-2. Selecteer **toepassing zichtbaar**maken in azure AD.
+2. Selecteer **toepassing zichtbaar** maken in azure AD.
 3. Selecteer **instellen** voor de URI van de **toepassings-id**.
 
    [![Scherm afbeelding van de optie voor het instellen van de U R I van de toepassing die ik D.](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
@@ -102,6 +103,26 @@ De configuratie bevat twee stappen:
 1. Haal de URI voor de beveiligde export definitie op.
 2. Definities volgens de stroom van het ITSM-hulp programma.
 
+
+### <a name="connect-servicenow-to-azure-monitor"></a>ServiceNow verbinden met Azure Monitor
+
+De volgende secties bevatten informatie over hoe u verbinding kunt maken met uw ServiceNow-product en beveiligde export in Azure.
+
+### <a name="prerequisites"></a>Vereisten
+
+Zorg ervoor dat u aan de volgende vereisten voldoet:
+
+* Azure AD is geregistreerd.
+* U hebt de ondersteunde versie van ServiceNow Event Management-ITOM (versie Orlando of hoger).
+
+### <a name="configure-the-servicenow-connection"></a>De ServiceNow-verbinding configureren
+
+1. Gebruik de koppeling <https:// <instance name> . service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor> de URI voor de definitie van de beveiligde export.
+
+2. Volg de instructies op basis van de versie:
+   * [Parijs](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [Orlando](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>BMC Helix verbinden met Azure Monitor
 
 De volgende secties bevatten informatie over hoe u verbinding kunt maken met uw BMC Helix-product en hoe u de export in azure kunt beveiligen.
@@ -135,15 +156,18 @@ Zorg ervoor dat u aan de volgende vereisten voldoet:
    4. Selecteer **configuratie**.
    5. Selecteer de configuratie **nieuwe verbinding toevoegen** .
    6. Vul de informatie in voor de configuratie sectie:
-      - **Name**: Maak uw eigen naam.
-      - **Autorisatie type**: **geen**
-      - **Beschrijving**: Maak uw eigen naam.
-      - **Site**: **Cloud**
-      - **Aantal instanties**: **2**, de standaard waarde.
-      - **Controle**: standaard ingeschakeld om gebruik in te scha kelen.
+      - **Name** : Maak uw eigen naam.
+      - **Autorisatie type** : **geen**
+      - **Beschrijving** : Maak uw eigen naam.
+      - **Site** : **Cloud**
+      - **Aantal instanties** : **2** , de standaard waarde.
+      - **Controle** : standaard ingeschakeld om gebruik in te scha kelen.
       - De Azure-Tenant-ID en de Azure-toepassings-ID zijn afkomstig uit de toepassing die u eerder hebt gedefinieerd.
 
 ![Scherm opname van de BMC-configuratie.](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
+
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

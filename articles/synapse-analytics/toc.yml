@@ -529,6 +529,8 @@
       items:
         - name: Gegevens laden in SQL-pools met kopieeractiviteit
           href: quickstart-copy-activity-load-sql-pool.md
+        - name: Gegevens transformeren met toewijzingsgegevensstromen
+          href: quickstart-data-flow.md
     - name: Concepten
       items:
         - name: Pijplijn en activiteit

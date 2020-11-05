@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
-ms.openlocfilehash: 021c3705ff96774583438d261f894ff1bc24c21f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/06/2020
+ms.openlocfilehash: 1885dd76a94a7a4a6b91c67735103350c473ba44
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636320"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378428"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>De instellingen voor een Azure-SSIS Integration Runtime aanpassen
 
@@ -76,15 +76,15 @@ Voer de volgende stappen uit om uw Azure-SSIS IR in te richten of opnieuw te con
 
 1. Down load, installeer en open [Azure Storage Explorer](https://storageexplorer.com/).
 
-   a. Onder **(lokaal en gekoppeld)** klikt u met de rechter muisknop op **opslag accounts** en selecteert **u verbinding maken met Azure Storage** .
+   a. Onder **(lokaal en gekoppeld)** klikt u met de rechter muisknop op **opslag accounts** en selecteert **u verbinding maken met Azure Storage**.
 
       ![Verbinding maken met Azure Storage](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
-   b. Selecteer **een opslag accountnaam en-sleutel gebruiken** en selecteer **volgende** .
+   b. Selecteer **een opslag accountnaam en-sleutel gebruiken** en selecteer **volgende**.
 
       ![De naam en sleutel van een opslagaccount gebruiken](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image2.png)
 
-   c. Voer de naam en sleutel van uw Azure Storage-account in, selecteer **volgende** en selecteer vervolgens **verbinding maken** .
+   c. Voer de naam en sleutel van uw Azure Storage-account in, selecteer **volgende** en selecteer vervolgens **verbinding maken**.
 
       ![Naam en sleutel van opslag account opgeven](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
 
@@ -96,7 +96,7 @@ Voer de volgende stappen uit om uw Azure-SSIS IR in te richten of opnieuw te con
 
       ![Bestanden uploaden naar de BLOB-container](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
-   f. Klik met de rechter muisknop op de container en selecteer vervolgens **Shared Access Signature ophalen** .
+   f. Klik met de rechter muisknop op de container en selecteer vervolgens **Shared Access Signature ophalen**.
 
       ![De Shared Access Signature voor de container ophalen](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
@@ -135,31 +135,31 @@ Als u het type **omgevings variabele toevoegen** voor uw snelle aangepaste insta
 
 #### <a name="installing-azure-powershell"></a>Azure PowerShell installeren
 
-Als u het **Azure PowerShell type installeren** selecteert voor uw snelle aangepaste installatie, kunt u de AZ-module van Power shell op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u het versie nummer AZ module (x. y. z) uit een [lijst met ondersteunde items](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)in. Hiermee kunt u Azure PowerShell-cmdlets/scripts in uw pakketten uitvoeren om Azure-resources te beheren, bijvoorbeeld [Azure Analysis Services (aas)](../analysis-services/analysis-services-powershell.md).
+Als u het **Azure PowerShell type installeren** selecteert voor uw snelle aangepaste installatie, kunt u de AZ-module van Power shell op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u het versie nummer AZ module (x. y. z) uit een [lijst met ondersteunde items](https://www.powershellgallery.com/packages/az)in. Hiermee kunt u Azure PowerShell-cmdlets/scripts in uw pakketten uitvoeren om Azure-resources te beheren, bijvoorbeeld [Azure Analysis Services (aas)](../analysis-services/analysis-services-powershell.md).
 
 #### <a name="installing-licensed-components"></a>Gelicentieerde onderdelen installeren
 
 Als u het **onderdeel type licenties installeren** selecteert voor uw snelle aangepaste installatie, kunt u vervolgens een geïntegreerd onderdeel selecteren in onze ISV-partners in de vervolg keuzelijst **onderdeel naam** :
 
-   * Als u het onderdeel **Task Factory van SentryOne** selecteert, kunt u de [taken fabrieks](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) suite van onderdelen van SentryOne op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **2020.1.3** .
+   * Als u het onderdeel **Task Factory van SentryOne** selecteert, kunt u de [taken fabrieks](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) suite van onderdelen van SentryOne op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **2020.1.3**.
 
-   * Als u de **oh22's-HEDDA selecteert. IO** -onderdeel kunt u de [HEDDA installeren.](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) Het onderdeel io-gegevens kwaliteit/opschoning van oh22 op uw Azure-SSIS IR. Om dit te doen, moet u de service vooraf aanschaffen. De huidige geïntegreerde versie is **1.0.14** .
+   * Als u de **oh22's-HEDDA selecteert. IO** -onderdeel kunt u de [HEDDA installeren.](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) Het onderdeel io-gegevens kwaliteit/opschoning van oh22 op uw Azure-SSIS IR. Om dit te doen, moet u de service vooraf aanschaffen. De huidige geïntegreerde versie is **1.0.14**.
 
-   * Als u het **oh22's SQLPhonetics.net** -onderdeel selecteert, kunt u het [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) Data Quality/matching-onderdeel van oh22 op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **1.0.45** .
+   * Als u het **oh22's SQLPhonetics.net** -onderdeel selecteert, kunt u het [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) Data Quality/matching-onderdeel van oh22 op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **1.0.45**.
 
-   * Als u het **SSIS Integration Toolkit** -onderdeel van de KingswaySoft selecteert, kunt u het pakket met de [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) van connectors voor CRM/ERP/marketing/samenwerkings-apps installeren, zoals micro soft Dynamics/share point/Project Server, Oracle/Sales Force marketing Cloud, enzovoort van KingswaySoft op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **2020,1** .
+   * Als u het **SSIS Integration Toolkit** -onderdeel van de KingswaySoft selecteert, kunt u het pakket met de [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) van connectors voor CRM/ERP/marketing/samenwerkings-apps installeren, zoals micro soft Dynamics/share point/Project Server, Oracle/Sales Force marketing Cloud, enzovoort van KingswaySoft op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **2020,1**.
 
-   * Als u het **SSIS Productivity Pack** -onderdeel van de KingswaySoft selecteert, kunt u de [SSIS-productiviteits pakket](https://www.kingswaysoft.com/products/ssis-productivity-pack) onderdelen van KingswaySoft op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **20,1** .
+   * Als u het **SSIS Productivity Pack** -onderdeel van de KingswaySoft selecteert, kunt u de [SSIS-productiviteits pakket](https://www.kingswaysoft.com/products/ssis-productivity-pack) onderdelen van KingswaySoft op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **20,1**.
 
-   * Als u het onderdeel **Xtract van de Theobald-software** selecteert, kunt u de [Xtract](https://theobald-software.com/en/xtract-is/) een suite van connectors voor SAP-systemen (ERP, s/4HANA, BW) installeren van de Theobald-software op uw Azure-SSIS IR. Als u dit wilt doen, sleept u & het product licentie bestand dat u eerder hebt aangeschaft, naar het invoervak **licentie bestand** te slepen. De huidige geïntegreerde versie is **6.1.1.3** .
+   * Als u het onderdeel **Xtract van de Theobald-software** selecteert, kunt u de [Xtract](https://theobald-software.com/en/xtract-is/) een suite van connectors voor SAP-systemen (ERP, s/4HANA, BW) installeren van de Theobald-software op uw Azure-SSIS IR. Als u dit wilt doen, sleept u & het product licentie bestand dat u eerder hebt aangeschaft, naar het invoervak **licentie bestand** te slepen. De huidige geïntegreerde versie is **6.1.1.3**.
 
-   * Als u het **Integration service** -onderdeel van AecorSoft selecteert, kunt u het [integratie service](https://www.aecorsoft.com/en/products/integrationservice) pakket van connectors voor SAP-en Sales Force-systemen installeren vanuit AecorSoft op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **3.0.00** .
+   * Als u het **Integration service** -onderdeel van AecorSoft selecteert, kunt u het [integratie service](https://www.aecorsoft.com/en/products/integrationservice) pakket van connectors voor SAP-en Sales Force-systemen installeren vanuit AecorSoft op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **3.0.00**.
 
-   * Als u het **SSIS-standaard pakket** onderdeel voor CData selecteert, kunt u de [SSIS Standard-pakket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) suite van de populairste onderdelen van CDATA installeren, zoals micro soft share point-connectors, op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **19,7354** .
+   * Als u het **SSIS-standaard pakket** onderdeel voor CData selecteert, kunt u de [SSIS Standard-pakket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) suite van de populairste onderdelen van CDATA installeren, zoals micro soft share point-connectors, op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **19,7354**.
 
-   * Als u het **Extended SSIS-pakket** onderdeel van CDATA selecteert, kunt u de [SSIS Extended package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) suite van alle onderdelen van CData installeren, zoals micro soft Dynamics 365 Business Central connectors en andere onderdelen in hun **SSIS-standaard pakket** , op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **19,7354** . Als gevolg van de omvang van de installatie, moet u ervoor zorgen dat uw Azure-SSIS IR ten minste 4 CPU-kernen per knoop punt heeft.
+   * Als u het **Extended SSIS-pakket** onderdeel van CDATA selecteert, kunt u de [SSIS Extended package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) suite van alle onderdelen van CData installeren, zoals micro soft Dynamics 365 Business Central connectors en andere onderdelen in hun **SSIS-standaard pakket** , op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **19,7354**. Als gevolg van de omvang van de installatie, moet u ervoor zorgen dat uw Azure-SSIS IR ten minste 4 CPU-kernen per knoop punt heeft.
 
-Uw toegevoegde snelle aangepaste Setup wordt weer gegeven op de pagina **Geavanceerde instellingen** . Als u deze wilt verwijderen, schakelt u de selectie vakjes in en selecteert u **Verwijderen** .
+Uw toegevoegde snelle aangepaste Setup wordt weer gegeven op de pagina **Geavanceerde instellingen** . Als u deze wilt verwijderen, schakelt u de selectie vakjes in en selecteert u **Verwijderen**.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -273,7 +273,7 @@ Voer de volgende stappen uit om enkele voor beelden van aangepaste standaard ins
 
 1. Maak verbinding met onze open bare preview-container met behulp van Azure Storage Explorer.
 
-   a. Onder **(lokaal en gekoppeld)** klikt u met de rechter muisknop op **opslag accounts** , selecteert **u verbinding maken met Azure Storage** , selecteert **u een Connection String of een URI voor de hand tekening voor gedeelde toegang gebruiken** en selecteert u vervolgens **volgende** .
+   a. Onder **(lokaal en gekoppeld)** klikt u met de rechter muisknop op **opslag accounts** , selecteert **u verbinding maken met Azure Storage** , selecteert **u een Connection String of een URI voor de hand tekening voor gedeelde toegang gebruiken** en selecteert u vervolgens **volgende**.
 
       ![Verbinding maken met Azure Storage met de Shared Access Signature](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
@@ -283,13 +283,13 @@ Voer de volgende stappen uit om enkele voor beelden van aangepaste standaard ins
 
       ![De Shared Access Signature voor de container opgeven](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image10.png)
 
-   c. Selecteer **volgende** en selecteer vervolgens **verbinding maken** .
+   c. Selecteer **volgende** en selecteer vervolgens **verbinding maken**.
 
    d. Selecteer in het linkerdeel venster de container Connected **publicpreview** en dubbel klik vervolgens op de map *CustomSetupScript* . In deze map zijn de volgende items:
 
       * Een voor *beeld* van een map, die een aangepaste installatie bevat voor het installeren van een basis taak op elk knoop punt van uw Azure-SSIS IR. De taak heeft niets maar een paar seconden in de slaap stand. De map bevat ook een map *gacutil* , waarvan de volledige inhoud ( *gacutil.exe* , *gacutil.exe.config* en *1033\gacutlrc.dll* ) naar uw container kan worden gekopieerd.
 
-      * Een *UserScenarios* -map, die verschillende aangepaste installatie voorbeelden bevat uit echte gebruikers scenario's.
+      * Een *UserScenarios* -map, die verschillende aangepaste installatie voorbeelden bevat uit echte gebruikers scenario's. Als u meerdere voor beelden op uw Azure-SSIS IR wilt installeren, kunt u de aangepaste installatie script bestanden ( *Main. cmd* ) samen voegen met één en uploaden naar de container met alle bijbehorende bestanden.
 
         ![Inhoud van de open bare preview-container](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 

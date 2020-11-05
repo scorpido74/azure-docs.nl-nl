@@ -92,7 +92,7 @@
       href: find-identity-object-ids.md
     - name: Diagnostische logboekregistratie inschakelen in Azure API for FHIR®
       href: enable-diagnostic-logging.md
-    - name: Metrische gegevens over Azure IoT Connector for FHIR (preview) exporteren via diagnostische instellingen
+    - name: Metrische gegevens van Azure IoT Connector voor FHIR (preview) exporteren via diagnostische instellingen
       href: iot-metrics-diagnostics-export.md
     - name: Azure IoT Connector for FHIR bekijken en configureren (preview) Metrische gegevens
       href: iot-metrics-display.md

@@ -4,12 +4,12 @@ description: Meer informatie over het schalen van uw resource web-app, Cloud ser
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d37a33ea575bbb8481d7d50dad8eab0f9ce0899d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3662f6007049a5531e11c193adf71e8f8442dcdb
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361199"
+ms.locfileid: "93377017"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Aan de slag met automatisch schalen in azure
 In dit artikel wordt beschreven hoe u uw instellingen voor automatisch schalen instelt voor uw resource in de Microsoft Azure-portal.
@@ -132,6 +132,9 @@ Ontwikkel teams in grote ondernemingen moeten vaak voldoen aan de beveiligings v
 ### <a name="behavior"></a>Gedrag
 
 Wanneer het pad voor de status controle wordt gegeven, wordt door App Service het pad naar alle exemplaren gepingd. Als een geslaagde respons code niet wordt ontvangen na 5 pings, wordt dat exemplaar als ' beschadigd ' beschouwd. Een of meer beschadigde instanties worden uitgesloten van de load balancer draaiing. U kunt het vereiste aantal mislukte pings configureren met de `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` app-instelling. Deze app-instelling kan worden ingesteld op een wille keurig geheel getal tussen 2 en 10. Als deze instelling is ingesteld op `2` , worden uw instanties van de Load Balancer na twee mislukte pings verwijderd. Bovendien, wanneer u omhoog of omlaag schaalt, App Service pingt het Health Check-pad om ervoor te zorgen dat de nieuwe exemplaren gereed zijn voor aanvragen voordat ze worden toegevoegd aan de load balancer.
+
+> [!NOTE]
+> Houd er rekening mee dat uw App Service plan moet worden uitgebreid naar twee of meer exemplaren zodat de load balancer uitsluiting kan worden uitgevoerd. Als u slechts één exemplaar hebt, wordt het niet verwijderd uit het load balancer, zelfs niet als het een slechte status heeft. 
 
 De resterende in orde zijnde instanties kunnen een grotere belasting hebben. Om te voor komen dat de resterende instanties overblijven, worden niet meer dan de helft van uw instanties uitgesloten. Als een App Service plan bijvoorbeeld wordt uitgeschaald naar vier instanties en 3 van de status niet in orde, wordt Maxi maal 2 uitgesloten van de loadbalancer-rotatie. De andere twee instanties (1 in orde en 1 zijn beschadigd) blijven aanvragen ontvangen. In het slechtste scenario waarbij alle instanties een slechte status hebben, wordt geen uitgesloten. Als u dit gedrag wilt overschrijven, kunt u de `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` app-instelling instellen op een waarde tussen `0` en `100` . Als u dit instelt op een hogere waarde, worden er meer beschadigde instanties verwijderd (de standaard waarde is 50).
 

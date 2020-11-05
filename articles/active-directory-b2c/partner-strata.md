@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: e3f067647eb7bdb33b06a9ebdefd8fdd0485e4c6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294258"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376851"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Zelf studie voor het uitbreiden van Azure AD B2C om on-premises toepassingen te beveiligen met behulp van Strata
 
@@ -65,13 +65,11 @@ In het volgende architectuur diagram wordt de implementatie weer gegeven.
 | 4. | De IdP vraagt de gebruiker om referenties. Afhankelijk van de IdP moet de gebruiker mogelijk multi-factor Authentication (MFA) uitvoeren.|
 | 5. | De IdP stuurt de verificatie reactie terug naar Azure AD B2C. De gebruiker kan tijdens deze stap eventueel een lokaal account maken in de map Azure AD B2C.|
 | 6. | Azure AD B2C verzendt de gebruikers aanvraag naar het eind punt dat is opgegeven tijdens de registratie van de Orchestrator-app in de Azure AD B2C-Tenant.|
-| 7. | De Orchestrator evalueert het toegangs beleid en berekent kenmerk waarden die moeten worden opgenomen in HTTP-headers die worden doorgestuurd naar de app. Tijdens deze stap kan de Orchestrator extra kenmerk providers aanroepen om de gegevens op te halen die nodig zijn om de header waarden correct in te stellen.|
-| 8. | De Orchestrator stelt de header waarden in en verzendt de aanvraag naar de app.|
-| 9. | De gebruiker is nu geverifieerd en heeft toegang tot de app.|
+| 7. | De Orchestrator evalueert het toegangs beleid en berekent kenmerk waarden die moeten worden opgenomen in HTTP-headers die worden doorgestuurd naar de app. Tijdens deze stap kan de Orchestrator extra kenmerk providers aanroepen om de gegevens op te halen die nodig zijn om de header waarden correct in te stellen. De Orchestrator stelt de header waarden in en verzendt de aanvraag naar de app.|
+| 8. | De gebruiker is nu geverifieerd en heeft toegang tot de app.|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Maverics Identity Orchestrator ophalen
 
-Neem contact op met [Strata](https://www.strata.io/contact/)om de software te gebruiken die u gebruikt om uw oude on-premises app te integreren met Azure AD B2C. Nadat u de software hebt verkregen, volgt u de onderstaande stappen om de specifieke vereisten voor Orchestrator te bepalen en de vereiste installatie-en configuratie stappen uit te voeren.
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Uw Azure AD B2C-Tenant configureren
 

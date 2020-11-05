@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 30ca4d330d9b16214396ac81e5ab5722ca0e7569
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6a6cbf51ef2ff1f1ef53b53a2b84c7a4f9510d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254288"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375898"
 ---
 1. Selecteer in [Azure Portal](https://portal.azure.com/) uw Azure Stack Edge-resource en ga naar het **Overzicht**. Als het goed is, is uw apparaat online.
 
@@ -34,6 +34,6 @@ ms.locfileid: "89254288"
     
 4. Als u dit nieuwe opslagaccount selecteert en naar **Toegangssleutels** gaat, kunt u het eindpunt van de blob-service en de bijbehorende opslagaccountnaam vinden. Als deze gegevens samen met de toegangssleutels worden gekopieerd, kunt u verbinding maken met het Edge-opslagaccount.
 
-    ![Een opslagaccount toevoegen](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
+    ![Een opslagaccount toevegen 2](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
     U krijgt de toegangssleutels door [Verbinding te maken met de lokale API's van het apparaat met behulp van Azure Resource Manager](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md). 

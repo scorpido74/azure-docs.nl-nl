@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: d452070619a8e6284b976ff202d2a86f1ff9312b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d95459797a32ab3e026ee1c3a2cf93fe6e95cc4
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480731"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378955"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Back-ups maken en herstellen in Azure Database for MariaDB
 
@@ -52,7 +52,7 @@ Lange termijn retentie van back-ups van meer dan 35 dagen wordt momenteel niet o
 Azure Database for MariaDB biedt de flexibiliteit om te kiezen tussen lokaal redundante of geografisch redundante back-upopslag in de lagen Algemeen en geoptimaliseerd voor geheugen. Wanneer de back-ups worden opgeslagen in geografisch redundante back-upopslag, worden ze niet alleen opgeslagen in de regio waarin uw server wordt gehost, maar worden ook gerepliceerd naar een [gekoppeld Data Center](../best-practices-availability-paired-regions.md). Dit biedt betere beveiliging en de mogelijkheid om uw server in een andere regio te herstellen in het geval van een ramp. De laag basis biedt alleen lokaal redundante back-upopslag.
 
 #### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Verplaatsen van lokaal redundant naar geografisch redundante back-upopslag
-Het configureren van lokaal redundante of geografisch redundante opslag voor back-up is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen. Als u uw back-upopslag wilt verplaatsen van lokaal redundante opslag naar geografisch redundante opslag, het maken van een nieuwe server en het migreren van de gegevens met [dump en herstellen](howto-migrate-dump-restore.md) is de enige optie die wordt ondersteund.
+Het configureren van lokaal redundante of geografisch redundante opslag voor back-up is alleen toegestaan tijdens het maken van een server. Zodra de server is ingericht, kunt u de optie voor redundantie van back-upopslag niet meer wijzigen. Als u uw back-upopslag wilt verplaatsen van lokaal redundante opslag naar geografisch redundante opslag, het maken van een nieuwe server en het migreren van de gegevens met [dump en herstellen](howto-migrate-dump-restore.md) is de enige optie die wordt ondersteund.
 
 ### <a name="backup-storage-cost"></a>Kosten voor back-upopslag
 
@@ -90,7 +90,12 @@ U kunt een server herstellen naar een andere Azure-regio waar de service beschik
 
 Geo-Restore is de standaard herstel optie als uw server niet beschikbaar is vanwege een incident in de regio waarin de server wordt gehost. Als een grootschalig incident in een regio resulteert in niet-beschik baarheid van uw database toepassing, kunt u een server herstellen van de geo-redundante back-ups naar een server in een andere regio. Geo-Restore maakt gebruik van de meest recente back-up van de server. Er is een vertraging tussen het moment waarop een back-up wordt gemaakt en wanneer deze wordt gerepliceerd naar een andere regio. Deze vertraging kan tot een uur duren, dus als er sprake is van een nood geval, kan er Maxi maal één uur gegevens verlies zijn.
 
+> [!IMPORTANT]
+>Als er een geo-herstel bewerking wordt uitgevoerd voor een nieuwe server, kan de eerste back-upsynchronisatie langer dan 24 uur duren, afhankelijk van de grootte van de back-up, maar veel meer. Volgende back-ups van moment opnamen worden incrementeel gekopieerd en daarom zijn de herstel bewerkingen sneller na 24 uur nadat de server is gemaakt. Als u geo-restores evalueert om uw RTO te definiëren, raden we u aan om geo-Restore te wachten en te evalueren **nadat u 24 uur** aan het maken van de server voor betere schattingen hebt gemaakt.
+
 Tijdens de geo-herstel bewerking kunnen de volgende server configuraties worden gewijzigd: Compute Generation, vCore, Bewaar periode voor back-up en opties voor back-redundantie. Het wijzigen van de prijs categorie (Basic, Algemeen of Optimized memory) of opslag grootte tijdens geo-Restore wordt niet ondersteund.
+
+De geschatte duur van de herstel bewerking is afhankelijk van verschillende factoren, zoals de grootte van de data base, het transactie logboek, de netwerk bandbreedte en het totale aantal data bases dat op hetzelfde moment in dezelfde regio wordt hersteld. De herstel tijd is doorgaans minder dan 12 uur.
 
 ### <a name="perform-post-restore-tasks"></a>Taken na herstel uitvoeren
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25161054a53377b9fbbb12621b95dff9c119fa17
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165503"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377748"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Verificatie methoden in Azure Active Directory-telefoon opties
 
@@ -23,7 +23,7 @@ Voor directe verificatie met een tekst bericht kunt u [gebruikers configureren e
 
 Gebruikers kunnen zich ook zelf verifiëren via een mobiele telefoon of een zakelijke telefoon als een secundaire vorm van verificatie die wordt gebruikt tijdens Azure Multi-Factor Authentication of selfservice voor wachtwoord herstel (SSPR).
 
-Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phonenumber*hebben, bijvoorbeeld *+ 1 4251234567*.
+Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phonenumber* hebben, bijvoorbeeld *+ 1 4251234567*.
 
 > [!NOTE]
 > Er moet een spatie zijn tussen de land-/regiocode en het telefoon nummer.
@@ -49,8 +49,6 @@ Met de verificatie van SMS-berichten tijdens SSPR of Azure Multi-Factor Authenti
 Bij een verificatie via telefoon gesprekken tijdens SSPR of Azure Multi-Factor Authentication wordt een automatische telefoon oproep uitgevoerd naar het telefoon nummer dat door de gebruiker is geregistreerd. Om het aanmeldings proces te volt ooien, wordt de gebruiker gevraagd hun pincode in te voeren, gevolgd door # op hun toetsen blok.
 
 ## <a name="office-phone-verification"></a>Verificatie op bedrijfs telefoon
-
-Het kenmerk Office Phone wordt beheerd door de Azure AD-beheerder en kan niet worden geregistreerd door een gebruiker zelf.
 
 Bij een verificatie via telefoon gesprekken tijdens SSPR of Azure Multi-Factor Authentication wordt een automatische telefoon oproep uitgevoerd naar het telefoon nummer dat door de gebruiker is geregistreerd. Om het aanmeldings proces te volt ooien, wordt de gebruiker gevraagd hun pincode in te voeren, gevolgd door # op hun toetsen blok.
 
@@ -81,7 +79,7 @@ Zie [hoe Azure AD self-service password reset werkt][concept-sspr]voor meer info
 
 Zie [hoe Azure multi-factor Authentication werkt][concept-mfa]voor meer informatie over MFA-concepten.
 
-Meer informatie over het configureren van verificatie methoden met behulp van de [Microsoft Graph rest API bèta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Meer informatie over het configureren van verificatie methoden met behulp van de [Microsoft Graph rest API bèta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true).
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

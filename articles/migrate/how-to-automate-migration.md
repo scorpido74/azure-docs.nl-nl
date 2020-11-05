@@ -6,18 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: 5541d5c3b9beea86f5c76747dd13ffeff1b12d97
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133539"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377952"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>Migratie van virtuele VMware-machines schalen 
 
 Dit artikel helpt u inzicht te krijgen in het gebruik van scripts voor het migreren van een groot aantal virtuele VMware-machines (Vm's) met behulp van de methode zonder agent. Als u migraties wilt schalen, gebruikt u [Azure migrate Power shell-module](https://aka.ms/azuremigratepowershellvmware). 
 
-De Azure Migrate VMware-migratie automatiserings scripts kunnen worden gedownload via [Azure PowerShell samples] https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) opslag plaats op github. De scripts kunnen worden gebruikt voor het migreren van virtuele VMware-machines naar Azure met behulp van de migratie methode zonder agent. De Azure Migrate Power shell-opdrachten die in deze scripts worden gebruikt, worden [hier](https://aka.ms/azuremigratepowershellvmware)beschreven.
+De Azure Migrate VMware-migratie automatiserings scripts kunnen worden gedownload op [Azure PowerShell samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) opslag plaats op github. De scripts kunnen worden gebruikt voor het migreren van virtuele VMware-machines naar Azure met behulp van de migratie methode zonder agent. De Azure Migrate Power shell-opdrachten die in deze scripts worden gebruikt, worden [hier](https://aka.ms/azuremigratepowershellvmware)beschreven.
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 - Deze scripts ondersteunen de migratie van virtuele VMware-machines met alle schijven. U kunt de scripts bijwerken als u de schijven die zijn gekoppeld aan een VMware VM selectief wilt repliceren. 

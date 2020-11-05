@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7f441930d9d99f35c2e53bb040b0db0a427659
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d58465c56be310d3f9d500ab551c7d2b19ffaa83
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375970"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378377"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Roltoewijzingen uit een groep in Azure Active Directory verwijderen
 
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe een IT-beheerder Azure AD-rollen kan verwijd
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
 
-1. Selecteer **rollen en beheerders** > **_rolnaam_*_.
+1. Selecteer **rollen en beheerders** > * *_rolnaam_* _.
 
 1. Selecteer de groep waaruit u de roltoewijzing wilt verwijderen en selecteer _ * toewijzing verwijderen * *.
 
@@ -107,5 +107,5 @@ DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Cloud groepen gebruiken om roltoewijzingen te beheren](groups-concept.md)
+- [Cloudgroepen gebruiken om roltoewijzingen te beheren](groups-concept.md)
 - [Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen](groups-faq-troubleshooting.md)

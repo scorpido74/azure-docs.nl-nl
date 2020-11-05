@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 123595bb6cd0112e597b9d958763900e07b9ff38
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2dc8773dc41493e30f64c0602b4345a9491cd7b7
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633073"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379703"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime maken en configureren
 
@@ -60,26 +60,26 @@ Gebruik de volgende stappen om een zelf-hostende IR te maken met behulp van Azur
 
    ![De knop Beheren op de startpagina](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Selecteer **Integration Runtimes** in het linkerdeelvenster en selecteer vervolgens **+Nieuw** .
+1. Selecteer **Integration Runtimes** in het linkerdeelvenster en selecteer vervolgens **+Nieuw**.
 
    ![Een Integration Runtime maken](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. Selecteer op de pagina **Integration runtime Setup** de optie **Azure, zelf-hostend** en selecteer **door gaan** . 
+1. Selecteer op de pagina **Integration runtime Setup** de optie **Azure, zelf-hostend** en selecteer **door gaan**. 
 
-1. Selecteer op de volgende pagina **zelf-host** om een Self-Hosted IR te maken en selecteer vervolgens **door gaan** .
+1. Selecteer op de volgende pagina **zelf-host** om een Self-Hosted IR te maken en selecteer vervolgens **door gaan**.
    ![Een selfhosted-IR maken](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
-1. Voer een naam in voor uw IR en selecteer **maken** .
+1. Voer een naam in voor uw IR en selecteer **maken**.
 
 1. Selecteer op de pagina **Integration runtime Setup** de koppeling onder **optie 1** om de snelle installatie op uw computer te openen. Of volg de stappen onder **optie 2** om hand matig in te stellen. De volgende instructies zijn gebaseerd op hand matige installatie:
 
    ![Installatie van integratieruntime](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 
-    1. Kopieer en plak de verificatie sleutel. Selecteer **down load en installeer Integration runtime** .
+    1. Kopieer en plak de verificatie sleutel. Selecteer **down load en installeer Integration runtime**.
 
     1. Download de zelf-hostende Integration Runtime op een lokale Windows-computer. Voer het installatieprogramma uit.
 
-    1. Plak de sleutel die u eerder hebt opgeslagen op de pagina **registreren Integration runtime (zelf-hostend)** en selecteer **registreren** .
+    1. Plak de sleutel die u eerder hebt opgeslagen op de pagina **registreren Integration runtime (zelf-hostend)** en selecteer **registreren**.
     
        ![De Integration Runtime registreren](media/create-self-hosted-integration-runtime/register-integration-runtime.png)
 
@@ -109,22 +109,22 @@ Hier volgen de details van de para meters en eigenschappen van de toepassing:
 
 | Eigenschap                                                    | Beschrijving                                                  | Vereist |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | Registreer een zelf-hostend Integration runtime-knoop punt met de opgegeven verificatie sleutel. | Nee       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Registreer een zelf-hostend Integration runtime-knoop punt met de opgegeven verificatie sleutel en knooppunt naam. | Nee       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | Schakel externe toegang op het huidige knoop punt in om een cluster met hoge Beschik baarheid in te stellen. Of schakel referenties rechtstreeks in voor de zelf-hostende IR zonder Azure Data Factory te passeren. U doet dit met behulp van de cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** van een externe computer in hetzelfde netwerk. | Nee       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Externe toegang tot het huidige knoop punt inschakelen wanneer het knoop punt in een container wordt uitgevoerd. | Nee       |
-| **DisableRemoteAccess**                                         | Externe toegang tot het huidige knoop punt uitschakelen. Externe toegang is vereist voor het instellen van een configuratie met meer knoop punten. De Power shell **-cmdlet New-AzDataFactoryV2LinkedServiceEncryptedCredential** werkt nog steeds, zelfs wanneer externe toegang is uitgeschakeld. Dit gedrag is waar, zolang de cmdlet wordt uitgevoerd op dezelfde computer als het zelf-hostende IR-knoop punt. | Nee       |
-| **Sleutel** "`<AuthenticationKey>`"                                 | De vorige verificatie sleutel overschrijven of bijwerken. Wees voorzichtig met deze actie. Het vorige zelf-hostende IR-knoop punt kan offline gaan als de sleutel een nieuwe Integration runtime is. | Nee       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Genereer een back-upbestand voor het huidige knoop punt. Het back-upbestand bevat de referenties van de knooppunt sleutel en de gegevens opslag. | Nee       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Herstel het knoop punt uit een back-upbestand.                          | Nee       |
-| **Opnieuw starten**                                                     | Start de zelf-hostende Integration runtime host-service opnieuw.   | Nee       |
-| **Begin**                                                       | Start de zelf-hostende integratie runtime host service.     | Nee       |
-| **Stoppen**                                                        | Stop de zelf-hostende integratie runtime host service.        | Nee       |
-| **StartUpgradeService**                                         | Start de zelf-hostende Integration runtime upgrade-service.       | Nee       |
-| **StopUpgradeService**                                          | Stop de zelf-hostende Integration runtime upgrade-service.        | Nee       |
-| **TurnOnAutoUpdate**                                            | Schakel automatisch bijwerken van de zelf-hostende Integration runtime in.        | Nee       |
-| **TurnOffAutoUpdate**                                           | Schakel automatisch bijwerken van de zelf-hostende Integration runtime uit.       | Nee       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Stel DIAHostService in om te worden uitgevoerd als een nieuw account. Gebruik het lege wacht woord voor systeem accounts en virtuele accounts. | Nee       |
+| **RegisterNewNode** "`<AuthenticationKey>`"                     | Registreer een zelf-hostend Integration runtime-knoop punt met de opgegeven verificatie sleutel. | No       |
+| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Registreer een zelf-hostend Integration runtime-knoop punt met de opgegeven verificatie sleutel en knooppunt naam. | No       |
+| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | Schakel externe toegang op het huidige knoop punt in om een cluster met hoge Beschik baarheid in te stellen. Of schakel referenties rechtstreeks in voor de zelf-hostende IR zonder Azure Data Factory te passeren. U doet dit met behulp van de cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** van een externe computer in hetzelfde netwerk. | No       |
+| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Externe toegang tot het huidige knoop punt inschakelen wanneer het knoop punt in een container wordt uitgevoerd. | No       |
+| **DisableRemoteAccess**                                         | Externe toegang tot het huidige knoop punt uitschakelen. Externe toegang is vereist voor het instellen van een configuratie met meer knoop punten. De Power shell **-cmdlet New-AzDataFactoryV2LinkedServiceEncryptedCredential** werkt nog steeds, zelfs wanneer externe toegang is uitgeschakeld. Dit gedrag is waar, zolang de cmdlet wordt uitgevoerd op dezelfde computer als het zelf-hostende IR-knoop punt. | No       |
+| **Sleutel** "`<AuthenticationKey>`"                                 | De vorige verificatie sleutel overschrijven of bijwerken. Wees voorzichtig met deze actie. Het vorige zelf-hostende IR-knoop punt kan offline gaan als de sleutel een nieuwe Integration runtime is. | No       |
+| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Genereer een back-upbestand voor het huidige knoop punt. Het back-upbestand bevat de referenties van de knooppunt sleutel en de gegevens opslag. | No       |
+| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Herstel het knoop punt uit een back-upbestand.                          | No       |
+| **Opnieuw starten**                                                     | Start de zelf-hostende Integration runtime host-service opnieuw.   | No       |
+| **Begin**                                                       | Start de zelf-hostende integratie runtime host service.     | No       |
+| **Stoppen**                                                        | Stop de zelf-hostende integratie runtime host service.        | No       |
+| **StartUpgradeService**                                         | Start de zelf-hostende Integration runtime upgrade-service.       | No       |
+| **StopUpgradeService**                                          | Stop de zelf-hostende Integration runtime upgrade-service.        | No       |
+| **TurnOnAutoUpdate**                                            | Schakel automatisch bijwerken van de zelf-hostende Integration runtime in.        | No       |
+| **TurnOffAutoUpdate**                                           | Schakel automatisch bijwerken van de zelf-hostende Integration runtime uit.       | No       |
+| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Stel DIAHostService in om te worden uitgevoerd als een nieuw account. Gebruik het lege wacht woord voor systeem accounts en virtuele accounts. | No       |
 
 
 ## <a name="command-flow-and-data-flow"></a>Opdracht stroom en gegevens stroom
@@ -147,7 +147,6 @@ Hier volgt een beknopt overzicht van de stappen voor de gegevens stroom voor het
 - U kunt slechts één exemplaar van een zelf-hostende Integration runtime op één computer installeren. Als u twee gegevens fabrieken hebt die toegang nodig hebben tot on-premises gegevens bronnen, gebruikt u de [zelf-hostende](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory) IR-functie voor delen om de zelf-hostende IR te delen of installeert u de zelf-hostende IR op twee on-premises computers, één voor elke Data Factory.  
 - De zelf-hostende Integration runtime hoeft zich niet op dezelfde computer als de gegevens bron te bevinden. Als de zelf-hostende Integration runtime echter dicht bij de gegevens bron afneemt, vermindert u de tijd voor de zelf-hostende Integration runtime om verbinding te maken met de gegevens bron. U wordt aangeraden de zelf-hostende Integration runtime te installeren op een computer die afwijkt van de versie die als host fungeert voor de on-premises gegevens bron. Wanneer de zelf-hostende Integration runtime en de gegevens bron zich op verschillende computers bevinden, kan de zelf-hostende Integration runtime niet concurreren met de gegevens bron voor bronnen.
 - U kunt meerdere zelf-hostende Integration Runtimes op verschillende computers hebben die verbinding maken met dezelfde on-premises gegevens bron. Als u bijvoorbeeld twee zelf-hostende Integration Runtimes hebt die twee gegevens fabrieken gebruiken, kan dezelfde on-premises gegevens bron worden geregistreerd met beide gegevens fabrieken.
-- Als u al een gateway op uw computer hebt geïnstalleerd voor een Power BI scenario, installeert u een afzonderlijke zelf-hostende Integration runtime voor Data Factory op een andere computer.
 - Gebruik een zelf-hostende Integration runtime voor de ondersteuning van gegevens integratie binnen een virtueel Azure-netwerk.
 - Behandel uw gegevens bron als een on-premises gegevens bron die zich achter een firewall bevindt, zelfs wanneer u Azure ExpressRoute gebruikt. Gebruik de zelf-hostende Integration runtime om de service te verbinden met de gegevens bron.
 - Gebruik de zelf-hostende Integration runtime, zelfs als het gegevens archief zich in de Cloud bevindt op een virtuele machine met Azure Infrastructure as a Service (IaaS).
@@ -186,11 +185,11 @@ U kunt de zelf-hostende Integration runtime installeren door een configuratie pa
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Een zelf-hostende IR installeren en registreren vanuit het micro soft Download centrum
 
 1. Ga naar de [Download pagina voor micro soft Integration runtime](https://www.microsoft.com/download/details.aspx?id=39717).
-1. Selecteer **downloaden** , selecteer de 64-bits versie en selecteer **volgende** . De 32-bits versie wordt niet ondersteund.
+1. Selecteer **downloaden** , selecteer de 64-bits versie en selecteer **volgende**. De 32-bits versie wordt niet ondersteund.
 1. Voer het beheerde ID-bestand rechtstreeks uit of sla het op de vaste schijf op en voer het uit.
-1. Selecteer een taal in het **welkomst** venster en selecteer **volgende** .
-1. Ga akkoord met de licentie voorwaarden voor micro soft-software en selecteer **volgende** .
-1. Selecteer **map** om de zelf-hostende Integration runtime te installeren en selecteer **volgende** .
+1. Selecteer een taal in het **welkomst** venster en selecteer **volgende**.
+1. Ga akkoord met de licentie voorwaarden voor micro soft-software en selecteer **volgende**.
+1. Selecteer **map** om de zelf-hostende Integration runtime te installeren en selecteer **volgende**.
 1. Selecteer **installeren** op de pagina **gereed voor installatie** .
 1. Selecteer **volt ooien** om de installatie te volt ooien.
 1. De verificatie sleutel ophalen met behulp van Power shell. Hier volgt een Power shell-voor beeld voor het ophalen van de verificatie sleutel:
@@ -205,7 +204,7 @@ U kunt de zelf-hostende Integration runtime installeren door een configuratie pa
 
     1. Selecteer eventueel **verificatie sleutel weer geven** om de sleutel tekst te bekijken.
 
-    1. Selecteer **Registreren** .
+    1. Selecteer **Registreren**.
 
 ## <a name="high-availability-and-scalability"></a>Hoge Beschik baarheid en schaal baarheid
 
@@ -220,7 +219,7 @@ U kunt meerdere knoop punten koppelen door de zelf-hostende Integration runtime-
 > U hoeft geen nieuwe zelf-hostende Integration runtime te maken om elk knoop punt te koppelen. U kunt de zelf-hostende Integration runtime op een andere computer installeren en registreren met behulp van dezelfde verificatie sleutel.
 
 > [!NOTE]
-> Voordat u een ander knoop punt toevoegt voor hoge Beschik baarheid en schaal baarheid, moet u ervoor zorgen dat de optie **externe toegang tot intranet** is ingeschakeld op het eerste knoop punt. Als u dit wilt doen, selecteert u **Microsoft Integration Runtime Configuration Manager**  >  **instellingen**  >  **externe toegang tot intranet** .
+> Voordat u een ander knoop punt toevoegt voor hoge Beschik baarheid en schaal baarheid, moet u ervoor zorgen dat de optie **externe toegang tot intranet** is ingeschakeld op het eerste knoop punt. Als u dit wilt doen, selecteert u **Microsoft Integration Runtime Configuration Manager**  >  **instellingen**  >  **externe toegang tot intranet**.
 
 ### <a name="scale-considerations"></a>Schaal overwegingen
 
@@ -360,10 +359,10 @@ De integratie runtime host service wordt automatisch opnieuw opgestart nadat u d
 
 Wanneer u de zelf-hostende Integration runtime hebt geregistreerd en u de proxy-instellingen wilt weer geven of bijwerken, gebruikt u Microsoft Integration Runtime Configuration Manager.
 
-1. Open **Microsoft Integration Runtime Configuration Manager** .
-1. Selecteer het tabblad **Instellingen** .
+1. Open **Microsoft Integration Runtime Configuration Manager**.
+1. Selecteer het tabblad **Instellingen**.
 1. Selecteer onder **http-proxy** de **wijzigings** koppeling om het dialoog venster **http-proxy instellen** te openen.
-1. Selecteer **Next** . Vervolgens wordt er een waarschuwing weer gegeven waarin u wordt gevraagd om de proxy instelling op te slaan en de integratie runtime host-service opnieuw te starten.
+1. Selecteer **Volgende**. Vervolgens wordt er een waarschuwing weer gegeven waarin u wordt gevraagd om de proxy instelling op te slaan en de integratie runtime host-service opnieuw te starten.
 
 U kunt het hulp programma Configuration Manager gebruiken om de HTTP-proxy weer te geven en bij te werken.
 
@@ -403,7 +402,7 @@ Als u de optie **systeem proxy gebruiken** voor de http-proxy selecteert, gebrui
     ```
 1. Sla het configuratie bestand op de oorspronkelijke locatie op. Start vervolgens de zelf-hostende integratie runtime host service, waarmee de wijzigingen worden opgehaald.
 
-   Als u de service opnieuw wilt starten, gebruikt u het onderdeel Services van het configuratie scherm. Of selecteer de knop **service stoppen** in Integration Runtime Configuration Manager en selecteer vervolgens **service starten** .
+   Als u de service opnieuw wilt starten, gebruikt u het onderdeel Services van het configuratie scherm. Of selecteer de knop **service stoppen** in Integration Runtime Configuration Manager en selecteer vervolgens **service starten**.
 
    Als de service niet start, hebt u waarschijnlijk onjuiste XML-label syntaxis toegevoegd in het configuratie bestand van de toepassing dat u hebt bewerkt.
 
@@ -417,7 +416,7 @@ U moet er ook voor zorgen dat Microsoft Azure zich in de acceptatie lijst van uw
 Als er fout berichten worden weer geven, zoals de volgende, is de waarschijnlijke oorzaak een onjuiste configuratie van de firewall of proxy server. Met deze configuratie kan de zelf-hostende Integration runtime geen verbinding maken met Data Factory om zichzelf te verifiëren. Raadpleeg de vorige sectie om ervoor te zorgen dat uw firewall en proxy server correct zijn geconfigureerd.
 
 * Wanneer u de zelf-hostende Integration runtime probeert te registreren, wordt het volgende fout bericht weer gegeven: ' kan dit knoop punt niet registreren Integration Runtime. Controleer of de verificatie sleutel geldig is en of de service Integration service host op deze computer wordt uitgevoerd.
-* Wanneer u Integration Runtime Configuration Manager opent, ziet u de status **losgekoppeld** of verbinding **maken** . Wanneer u Windows-gebeurtenis logboeken bekijkt onder **Logboeken**  >  **Logboeken van toepassingen en services**  >  **Microsoft Integration runtime** , worden fout berichten als deze weer gegeven:
+* Wanneer u Integration Runtime Configuration Manager opent, ziet u de status **losgekoppeld** of verbinding **maken**. Wanneer u Windows-gebeurtenis logboeken bekijkt onder **Logboeken**  >  **Logboeken van toepassingen en services**  >  **Microsoft Integration runtime** , worden fout berichten als deze weer gegeven:
 
     ```
     Unable to connect to the remote server
@@ -426,7 +425,7 @@ Als er fout berichten worden weer geven, zoals de volgende, is de waarschijnlijk
 
 ### <a name="enable-remote-access-from-an-intranet"></a>Externe toegang via een intranet inschakelen
 
-Als u Power shell gebruikt voor het versleutelen van referenties van een andere netwerk computer dan waar u de zelf-hostende Integration runtime hebt geïnstalleerd, kunt u de optie **externe toegang vanaf intranet** inschakelen. Als u Power shell uitvoert om referenties te versleutelen op de computer waarop u de zelf-hostende Integration runtime hebt geïnstalleerd, kunt u **externe toegang niet inschakelen via intranet** .
+Als u Power shell gebruikt voor het versleutelen van referenties van een andere netwerk computer dan waar u de zelf-hostende Integration runtime hebt geïnstalleerd, kunt u de optie **externe toegang vanaf intranet** inschakelen. Als u Power shell uitvoert om referenties te versleutelen op de computer waarop u de zelf-hostende Integration runtime hebt geïnstalleerd, kunt u **externe toegang niet inschakelen via intranet**.
 
 Schakel **externe toegang vanaf intranet in** voordat u een ander knoop punt toevoegt voor hoge Beschik baarheid en schaal baarheid.  
 

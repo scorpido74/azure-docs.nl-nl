@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: reference
-ms.date: 05/04/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc33b0bafc0d56ebf1a14769aeaa5a55508fc4a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7e83ff37140369cb073f4bdc2bd24ac08ee9b1ab
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376054"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379091"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Beheerders rollen per beheer taak in Azure Active Directory
 
@@ -351,6 +351,7 @@ Alle eigenschappen bijwerken met uitzonde ring van Principal-naam van gebruiker 
 Principal-naam van gebruiker voor beperkte beheerders bijwerken (Zie de documentatie) | Gebruikersbeheerder | 
 De eigenschap User Principal name voor bevoegde beheerders bijwerken (Zie de documentatie) | Hoofdbeheerder | 
 Gebruikers instellingen bijwerken | Hoofdbeheerder | 
+Verificatie methoden bijwerken | Verificatie beheerder | Beheerder van geprivilegieerde authenticatie, globale beheerder
 
 
 ## <a name="support"></a>Ondersteuning

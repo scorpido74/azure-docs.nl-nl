@@ -4,14 +4,18 @@ description: 'Probleemoplossings handleiding: Live java-apps bewaken met Applica
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372515"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379533"
 ---
-# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Probleemoplossing voor en antwoorden op vragen over Application Insights voor Java
+# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Probleem oplossing en Q en A voor Application Insights voor Java SDK
+
+> [!IMPORTANT]
+> De aanbevolen benadering voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor [Application Insights Java 3,0-agent](./java-in-process-agent.md).
+
 Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen enkele tips.
 
 ## <a name="build-errors"></a>Build-fouten
@@ -85,7 +89,7 @@ Met behulp van de XML-methode moet u de toepassing opnieuw opstarten wanneer u d
 **Hoe kan ik wijzigen met welke Azure-resource mijn project gegevens verzendt?**
 
 * [Haal de instrumentatie sleutel van de nieuwe resource op.][java]
-* Als u Application Insights aan uw project hebt toegevoegd met behulp van de Azure-toolkit voor Eclipse, klikt u met de rechter muisknop op uw webproject, selecteert u **Azure**, **configureert u Application Insights**en wijzigt u de sleutel.
+* Als u Application Insights aan uw project hebt toegevoegd met behulp van de Azure-toolkit voor Eclipse, klikt u met de rechter muisknop op uw webproject, selecteert u **Azure** , **configureert u Application Insights** en wijzigt u de sleutel.
 * Als u de instrumentatie sleutel als omgevings variabele hebt geconfigureerd, moet u de waarde van de omgevings variabele bijwerken met de nieuwe iKey.
 * Als dat niet het geval is, werkt u de sleutel in ApplicationInsights.xml in de map resources in uw project bij.
 

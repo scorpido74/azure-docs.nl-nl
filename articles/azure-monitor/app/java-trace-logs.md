@@ -4,14 +4,18 @@ description: Log4J-of logback-traceringen zoeken in Application Insights
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: fca5c9b1bde8429d829ab6113804602c8baa2ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d219f4fcfd22d25babd8c9f6564f8dcd11d3144
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374266"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377918"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Java-traceer logboeken verkennen in Application Insights
+
+> [!IMPORTANT]
+> De aanbevolen benadering voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor [Application Insights Java 3,0-agent](./java-in-process-agent.md).
+
 Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw traceer logboeken automatisch laten verzenden naar Application Insights waar u ze kunt verkennen en doorzoeken.
 
 > [!TIP]

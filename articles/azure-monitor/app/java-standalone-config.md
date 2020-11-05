@@ -1,47 +1,50 @@
 ---
-title: Java-toepassingen overal bewaken-Azure Monitor Application Insights
-description: Toepassings prestatie bewaking voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Zoek de hoofd oorzaak van de problemen d met behulp van gedistribueerde tracering en toepassings overzicht.
+title: Configuratie opties-Azure Monitor Application Insights java
+description: Configuratie opties voor Azure Monitor Application Insights java
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 36f2add41457d1d82b0efd6c6804496018c85225
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 710347061f072fe66987d88852045986c00812c8
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215260"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377680"
 ---
-# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratie opties-Java zelfstandige agent voor Azure Monitor Application Insights
+# <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Configuratie opties voor Azure Monitor Application Insights java
 
-
+> [!WARNING]
+> **Als u een upgrade uitvoert van 3,0 Preview**
+>
+> Controleer alle onderstaande configuratie opties zorgvuldig, omdat de JSON-structuur volledig is gewijzigd, naast de naam van het bestand dat alle kleine letters bevat.
 
 ## <a name="connection-string-and-role-name"></a>Verbindings reeks en rolnaam
 
+De verbindings reeks en de rolnaam zijn de meest voorkomende instellingen die nodig zijn om aan de slag te gaan:
+
 ```json
 {
-  "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-    "preview": {
-      "roleName": "my cloud role name"
-    }
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "role": {
+    "name": "my cloud role name"
   }
 }
 ```
 
 De connection string is vereist en de rolnaam is belang rijk telkens wanneer u gegevens van verschillende toepassingen naar dezelfde Application Insights resource verzendt.
 
-Meer informatie en aanvullende configuratie opties vindt u hieronder voor meer informatie.
+Hieronder vindt u meer informatie en aanvullende configuratie-opties.
 
 ## <a name="configuration-file-path"></a>Pad naar configuratie bestand
 
-Application Insights Java 3,0 Preview verwacht dat het configuratie bestand wordt benoemd `ApplicationInsights.json` en zich in dezelfde map als bevindt `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
+Application Insights Java 3,0 verwacht dat het configuratie bestand wordt benoemd `applicationinsights.json` en zich in dezelfde map als bevindt `applicationinsights-agent-3.0.0.jar` .
 
 U kunt uw eigen pad naar een configuratie bestand opgeven met
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` omgevings variabele of
-* `applicationinsights.configurationFile` Java-systeem eigenschap
+* `applicationinsights.configuration.file` Java-systeem eigenschap
 
-Als u een relatief pad opgeeft, wordt dit omgezet ten opzichte van de map waar `applicationinsights-agent-3.0.0-PREVIEW.5.jar` zich bevindt.
+Als u een relatief pad opgeeft, wordt dit omgezet ten opzichte van de map waar `applicationinsights-agent-3.0.0.jar` zich bevindt.
 
 ## <a name="connection-string"></a>Verbindingsreeks
 
@@ -52,9 +55,7 @@ Dit is vereist. U kunt uw connection string vinden in uw Application Insights-re
 
 ```json
 {
-  "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
-  }
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
 }
 ```
 
@@ -70,10 +71,8 @@ Als u de naam van de Cloud functie wilt instellen:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {   
-      "roleName": "my cloud role name"
-    }
+  "role": {   
+    "name": "my cloud role name"
   }
 }
 ```
@@ -90,43 +89,118 @@ Als u de Cloud rolinstantie wilt instellen op iets anders dan de naam van de com
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "roleInstance": "my cloud role instance"
-    }
+  "role": {
+    "name": "my cloud role name",
+    "instance": "my cloud role instance"
   }
 }
 ```
 
 U kunt ook de Cloud rolinstantie instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
 
-## <a name="application-log-capture"></a>Toepassings logboeken vastleggen
+## <a name="sampling"></a>Steekproeven
 
-Application Insights Java 3,0 Preview registreert automatisch toepassings logboeken via Log4j, logback en Java. util. log.
+Steek proeven zijn handig als u kosten wilt verlagen.
+Steek proeven worden uitgevoerd als een functie van de bewerkings-ID (ook wel traceer-ID genoemd), zodat dezelfde bewerkings-ID altijd resulteert in dezelfde steekproef beslissing. Dit zorgt ervoor dat er geen delen van een gedistribueerde trans actie worden opgehaald, terwijl andere onderdelen hiervan worden bemonsterd.
 
-Standaard worden alle logboek registraties vastgelegd op `INFO` niveau of hoger.
+Als u bijvoorbeeld steek proeven instelt op 10%, worden er slechts 10% van uw trans acties weer geven, maar elke waarde van 10% heeft volledige end-to-end-transactie gegevens.
 
-Als u deze drempel waarde wilt wijzigen:
+Hier volgt een voor beeld van het instellen van de steek proef voor het vastleggen **van ongeveer 1/3 van alle trans acties** . Controleer of u de sampling frequentie hebt ingesteld die juist is voor uw gebruiks voorbeeld:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "instrumentation": {
-        "logging": {
-          "threshold": "WARN"
-        }
-      }
+  "sampling": {
+    "percentage": 33.333
+  }
+}
+```
+
+U kunt het steekproef percentage ook instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
+
+> [!NOTE]
+> Kies voor het steekproef percentage een percentage dat dicht bij 100/N ligt waarbij N een geheel getal is. De huidige steek proef biedt geen ondersteuning voor andere waarden.
+
+## <a name="jmx-metrics"></a>Metrische gegevens van JMX
+
+Als u een aantal aanvullende JMX-metrische gegevens wilt verzamelen:
+
+```json
+{
+  "jmxMetrics": [
+    {
+      "name": "JVM uptime (millis)",
+      "objectName": "java.lang:type=Runtime",
+      "attribute": "Uptime"
+    },
+    {
+      "name": "MetaSpace Used",
+      "objectName": "java.lang:type=MemoryPool,name=Metaspace",
+      "attribute": "Usage.used"
+    }
+  ]
+}
+```
+
+`name` is de metrische naam die wordt toegewezen aan deze JMX-metriek (dit kan alles zijn).
+
+`objectName` is de [object naam](https://docs.oracle.com/javase/8/docs/api/javax/management/ObjectName.html) van de JMX-MBean die u wilt verzamelen.
+
+`attribute` is de naam van het kenmerk in de JMX-MBean die u wilt verzamelen.
+
+De waarden voor de numerieke en Booleaanse JMX-metriek worden ondersteund. Booleaanse JMX-metrische gegevens worden toegewezen aan `0` voor onwaar en `1` voor waar.
+
+[//]: # "Opmerking: APPLICATIONINSIGHTS_JMX_METRICS hier niet te documenteren"
+[//]: # "JSON embedded in env var is rommelf en moet alleen worden gedocumenteerd voor het scenarioloze koppeling"
+
+## <a name="custom-dimensions"></a>Aangepaste dimensies
+
+Als u aangepaste dimensies wilt toevoegen aan al uw telemetrie:
+
+```json
+{
+  "customDimensions": {
+    "mytag": "my value",
+    "anothertag": "${ANOTHER_VALUE}"
+  }
+}
+```
+
+`${...}` kan worden gebruikt om de waarde van de opgegeven omgevings variabele bij het opstarten te lezen.
+
+## <a name="telemetry-processors-preview"></a>Telemetrie-processors (preview-versie)
+
+Dit is een preview-functie.
+
+Hiermee kunt u regels configureren die worden toegepast op aanvraag-, afhankelijkheids-en traceer-telemetrie, bijvoorbeeld
+ * Masker gevoelige gegevens
+ * Aangepaste dimensies voorwaardelijk toevoegen
+ * De naam van de telemetrie bijwerken die wordt gebruikt voor aggregatie en weer gave
+
+Raadpleeg de documentatie van de [telemetrie-processor](./java-standalone-telemetry-processors.md) voor meer informatie.
+
+## <a name="auto-collected-logging"></a>Automatisch verzamelde logboek registratie
+
+Log4j, logback en Java. util. logging zijn automatisch instrumenteel en logboek registratie die via deze logboek registratie raamwerken wordt uitgevoerd, wordt automatisch verzameld.
+
+Logboek registratie wordt standaard alleen verzameld wanneer de logboek registratie wordt uitgevoerd op het `INFO` niveau of hoger.
+
+Als u dit verzamelings niveau wilt wijzigen:
+
+```json
+{
+  "instrumentation": {
+    "logging": {
+      "level": "WARN"
     }
   }
 }
 ```
 
-U kunt ook de drempel waarde voor logboek registratie instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` .
+U kunt de drempel waarde ook instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` .
 
-Dit zijn de geldige `threshold` waarden die u in het bestand kunt opgeven `ApplicationInsights.json` en de manier waarop ze overeenkomen met de registratie niveaus in verschillende registratie raamwerken:
+Dit zijn de geldige `level` waarden die u in het bestand kunt opgeven `applicationinsights.json` en hoe ze overeenkomen met de registratie niveaus in verschillende registratie raamwerken:
 
-| drempel waarde   | Log4j  | Logback | JUL     |
+| niveau             | Log4j  | Logback | JUL     |
 |-------------------|--------|---------|---------|
 | UIT               | UIT    | UIT     | UIT     |
 | FATALE             | FATALE  | FOUT   | ZEER  |
@@ -139,53 +213,19 @@ Dit zijn de geldige `threshold` waarden die u in het bestand kunt opgeven `Appli
 | TRACERen (of het kleinste) | TRACERINGS  | TRACERINGS   | MEEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="jmx-metrics"></a>Metrische gegevens van JMX
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatisch verzamelde metrische gegevens over micrometer (inclusief lente-metrische gegevens over het starten van de klep)
 
-Als u bepaalde JMX-metrische gegevens hebt die u wilt vastleggen:
+Als uw toepassing gebruikmaakt van [micrometer](https://micrometer.io), worden metrische gegevens die naar het globale REGI ster van micrometer worden verzonden, automatisch verzameld.
 
-```json
-{
-  "instrumentationSettings": {
-    "preview": {
-      "jmxMetrics": [
-        {
-          "objectName": "java.lang:type=Runtime",
-          "attribute": "Uptime",
-          "display": "JVM uptime (millis)"
-        },
-        {
-          "objectName": "java.lang:type=MemoryPool,name=Metaspace",
-          "attribute": "Usage.used",
-          "display": "MetaSpace Used"
-        }
-      ]
-    }
-  }
-}
-```
+Als uw toepassing een [Spring boot-klep](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)gebruikt, worden de metrische gegevens die zijn geconfigureerd met een Spring boot-klep ook automatisch verzameld.
 
-De waarden voor de numerieke en Booleaanse JMX-metriek worden ondersteund. Booleaanse JMX-metrische gegevens worden toegewezen aan `0` voor onwaar en `1` voor waar.
-
-[//]: # "Opmerking: APPLICATIONINSIGHTS_JMX_METRICS hier niet te documenteren"
-[//]: # "JSON embedded in env var is rommelf en moet alleen worden gedocumenteerd voor het scenarioloze koppeling"
-
-## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (inclusief metrische gegevens van de lente-boot-klep)
-
-Als uw toepassing [micrometer](https://micrometer.io)gebruikt, worden de metrische gegevens die worden verzonden naar het globale REGI ster van micrometer vastgelegd in Application Insights 3,0 (te beginnen met preview. 2).
-
-Als uw toepassing [veer boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)gebruikt, wordt in Application Insights 3,0 (te beginnen met preview. 4) nu de metrische gegevens vastgelegd die zijn geconfigureerd met een Spring boot-klep (die gebruikmaakt van micrometer, maar het globale REGI ster van micrometer niet gebruikt).
-
-Als u deze functies wilt uitschakelen:
+Automatische verzameling van micrometer-metrische gegevens uitschakelen (inclusief lente-metrische gegevens over het starten van de klep):
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "instrumentation": {
-        "micrometer": {
-          "enabled": false
-        }
-      }
+  "instrumentation": {
+    "micrometer": {
+      "enabled": false
     }
   }
 }
@@ -193,16 +233,12 @@ Als u deze functies wilt uitschakelen:
 
 ## <a name="heartbeat"></a>Hartslag
 
-Application Insights Java 3,0 Preview verzendt standaard elke 15 minuten een heartbeat-metriek. Als u de heartbeat-metriek gebruikt om waarschuwingen te activeren, kunt u de frequentie van deze heartbeat verhogen:
+Application Insights Java 3,0 verzendt standaard elke 15 minuten een heartbeat-metriek. Als u de heartbeat-metriek gebruikt om waarschuwingen te activeren, kunt u de frequentie van deze heartbeat verhogen:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "heartbeat": {
-        "intervalSeconds": 60
-      }
-    }
+  "heartbeat": {
+    "intervalSeconds": 60
   }
 }
 ```
@@ -210,86 +246,63 @@ Application Insights Java 3,0 Preview verzendt standaard elke 15 minuten een hea
 > [!NOTE]
 > U kunt de frequentie van deze heartbeat niet verlagen, omdat de heartbeat-gegevens ook worden gebruikt om Application Insights gebruik bij te houden.
 
-## <a name="sampling"></a>Steekproeven
-
-Steek proeven zijn handig als u kosten wilt verlagen.
-Steek proeven worden uitgevoerd als een functie van de bewerkings-ID (ook wel traceer-ID genoemd), zodat dezelfde bewerkings-ID altijd resulteert in dezelfde steekproef beslissing. Dit zorgt ervoor dat er geen delen van een gedistribueerde trans actie worden opgehaald, terwijl andere onderdelen hiervan worden bemonsterd.
-
-Als u bijvoorbeeld steek proeven instelt op 10%, worden er slechts 10% van uw trans acties weer geven, maar elke waarde van 10% heeft volledige end-to-end-transactie gegevens.
-
-Hier volgt een voor beeld van het instellen van de steek proef op **10% van alle trans acties** . Controleer of u de sampling frequentie hebt ingesteld die juist is voor uw gebruiks voorbeeld:
-
-```json
-{
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10
-        }
-      }
-    }
-  }
-}
-```
-
-U kunt het steekproef percentage ook instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
-
 ## <a name="http-proxy"></a>HTTP-proxy
 
-Als uw toepassing zich achter een firewall bevindt en niet rechtstreeks verbinding kan maken met Application Insights (Zie [IP-adressen die worden gebruikt door Application Insights](./ip-addresses.md)), kunt u Application Insights Java 3,0 Preview configureren voor het gebruik van een http-proxy:
+Als uw toepassing zich achter een firewall bevindt en niet rechtstreeks verbinding kan maken met Application Insights (Zie [IP-adressen die worden gebruikt door Application Insights](./ip-addresses.md)), kunt u Application Insights Java 3,0 configureren voor het gebruik van een http-proxy:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "httpProxy": {
-        "host": "myproxy",
-        "port": 8080
-      }
-    }
+  "proxy": {
+    "host": "myproxy",
+    "port": 8080
   }
 }
 ```
+
+[//]: # "Let erop dat u geen OpenTelemetry-ondersteuning adverteert tot wij 0.10.0 ondersteunen. Dit heeft een enorme invloed op het verbreken van 0.9.0"
+
+[//]: # "# # Ondersteuning voor OpenTelemetry-API-releases van vóór 1,0"
+
+[//]: # "Ondersteuning voor pre-1,0-versies van OpenTelemetry-API is opt-in, omdat de OpenTelemetry-API nog niet stabiel is"
+[//]: # "en daarom ondersteunt elke versie van de agent alleen een specifieke pre-1,0-versie van OpenTelemetry-API"
+[//]: # "(deze beperking is niet van toepassing zodra OpenTelemetry API 1,0 wordt uitgebracht."
+
+[//]: # "JSON"
+[//]: # "{"
+[//]: # "  \"voor beeld \" : {"
+[//]: # "    \"openTelemetryApiSupport \" : True"
+[//]: # "  }"
+[//]: # "}"
+[//]: # "```"
 
 ## <a name="self-diagnostics"></a>Zelf diagnostische gegevens
 
-' Zelf diagnostische gegevens ' verwijst naar interne logboek registratie van Application Insights Java 3,0 Preview.
+' Zelf diagnostische gegevens ' verwijst naar interne logboek registratie van Application Insights Java 3,0.
 
 Dit kan handig zijn voor herkennen en het diagnosticeren van problemen met Application Insights zichzelf.
 
-Standaard meldt de app aan op de console met niveau `warn` , die overeenkomt met deze configuratie:
+Application Insights Java 3,0-logboeken worden standaard op niveau `INFO` naar het bestand `applicationinsights.log` en de console, die overeenkomt met deze configuratie:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "selfDiagnostics": {
-        "destination": "console",
-        "level": "WARN"
-      }
+  "selfDiagnostics": {
+    "destination": "file+console",
+    "level": "INFO",
+    "file": {
+      "path": "applicationinsights.log",
+      "maxSizeMb": 5,
+      "maxHistory": 1
     }
   }
 }
 ```
 
-Geldige niveaus zijn,,,, `OFF` `ERROR` `WARN` `INFO` `DEBUG` en `TRACE` .
+`destination` Dit kan een van `file` `console` of zijn `file+console` .
 
-Als u zich wilt aanmelden bij een bestand in plaats van zich aan te melden bij de console:
+`level` Dit kan een van,,,, `OFF` `ERROR` of zijn `WARN` `INFO` `DEBUG` `TRACE` .
 
-```json
-{
-  "instrumentationSettings": {
-    "preview": {
-      "selfDiagnostics": {
-        "destination": "file",
-        "directory": "/var/log/applicationinsights",
-        "level": "WARN",
-        "maxSizeMB": 10
-      }
-    }
-  }
-}
-```
+`path` Dit kan een absoluut of relatief pad zijn. Relatieve paden worden omgezet in de map waarin zich zich `applicationinsights-agent-3.0.0.jar` bevindt.
 
-Wanneer u logboek registratie gebruikt en het bestand is gevonden, `maxSizeMB` wordt het overschakelt, waarbij alleen het meest recente voltooide logboek bestand naast het huidige logboek bestand wordt bewaard.
+`maxSizeMb` is de maximale grootte van het logboek bestand voordat deze wordt doorgevoerd.
+
+`maxHistory` is het aantal doorgevoerde logboek bestanden dat wordt bewaard (naast het huidige logboek bestand).

@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f92ae370358ef09574d0839234ddc8ad11aa47ad
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a0300bd66dbeec84aba2102a510b4f6194debc5
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376223"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378581"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Aangepaste roltoewijzingen in Azure Active Directory weer geven
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u aangepaste rollen kunt weer geven die u he
 In deze procedure wordt beschreven hoe u toewijzingen van een rol met bereik voor de hele organisatie weergeeft.
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
-1. Selecteer **Azure Active Directory**, selecteer **rollen en beheerders**en selecteer vervolgens een rol om deze te openen en de eigenschappen ervan weer te geven.
+1. Selecteer **Azure Active Directory** , selecteer **rollen en beheerders** en selecteer vervolgens een rol om deze te openen en de eigenschappen ervan weer te geven.
 1. Selecteer **toewijzingen** om de toewijzingen voor de rol weer te geven.
 
     ![Roltoewijzingen en-machtigingen weer geven bij het openen van een rol in de lijst](./media/view-assignments/role-assignments.png)
@@ -105,11 +105,11 @@ HTTP/1.1 200 OK
 In deze sectie wordt beschreven hoe u toewijzingen van een rol met een bereik met één toepassing weergeeft. Deze functie is momenteel beschikbaar als openbare preview-versie.
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
-1. Selecteer **app-registraties**en selecteer vervolgens de app-registratie om de eigenschappen ervan weer te geven. Mogelijk moet u **alle toepassingen** selecteren om de volledige lijst van app-registraties in uw Azure AD-organisatie weer te geven.
+1. Selecteer **app-registraties** en selecteer vervolgens de app-registratie om de eigenschappen ervan weer te geven. Mogelijk moet u **alle toepassingen** selecteren om de volledige lijst van app-registraties in uw Azure AD-organisatie weer te geven.
 
     ![App-registraties maken of bewerken op de App-registraties pagina](./media/view-assignments/app-reg-all-apps.png)
 
-1. Selecteer in de app-registratie **rollen en beheerders**, en selecteer vervolgens een rol om de eigenschappen ervan weer te geven.
+1. Selecteer in de app-registratie **rollen en beheerders** , en selecteer vervolgens een rol om de eigenschappen ervan weer te geven.
 
     ![Roltoewijzingen van de app-registratie weer geven op de pagina App-registraties](./media/view-assignments/app-reg-assignments.png)
 

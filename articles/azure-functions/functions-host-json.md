@@ -3,12 +3,12 @@ title: host.jsbij verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor de Azure Functions host.jsin het bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aaea37b100d6fadd271f48490628b38cba6cf822
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284514"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377119"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referentie naar host.json voor Azure Functions 2.x en hoger 
 
@@ -357,7 +357,7 @@ Configuratie-instellingen vindt u in de [opslag wachtrij Triggers en bindingen](
 
 ## <a name="retry"></a>retry
 
-Hiermee bepaalt u de beleids opties voor [opnieuw proberen](./functions-bindings-error-pages.md#retry-policies) voor alle uitvoeringen in de app.
+Hiermee bepaalt u de beleids opties voor [opnieuw proberen](./functions-bindings-error-pages.md#retry-policies-preview) voor alle uitvoeringen in de app.
 
 ```json
 {

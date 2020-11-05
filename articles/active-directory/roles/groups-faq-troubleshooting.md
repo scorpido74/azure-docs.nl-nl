@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 08/13/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837750d7eeef9bc7a133a54b23a0c52c847364eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0f80f67ac695c17cc760e0e87fb9b11384fb7585
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375994"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377731"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen
 
@@ -32,9 +32,9 @@ Hier volgen enkele veelgestelde vragen en tips voor probleem oplossing voor het 
 
 **A:** Standaard beheert alleen de beheerder van de bevoegde rol en de globale beheerder het lidmaatschap van een door een functie toewijs bare groep, maar u kunt het beheer van aan rollen toewijs bare groepen delegeren door groeps eigenaren toe te voegen.
 
-**V**: Ik ben een helpdesk beheerder in mijn organisatie, maar ik kan het wacht woord van een gebruiker die een directory lezer is, niet bijwerken. Waarom gebeurt dit?
+**V** : Ik ben een helpdesk beheerder in mijn organisatie, maar ik kan het wacht woord van een gebruiker die een directory lezer is, niet bijwerken. Waarom gebeurt dit?
 
-**A**: de gebruiker heeft mogelijk een gemapeerde Directory lezer met een door een functie toewijs bare groep. Alle leden en eigen aren van een door een functie toewijs bare groep zijn beveiligd. Alleen gebruikers met de rol privileged Authentication Administrator of globale beheerder kunnen referenties voor een beveiligde gebruiker opnieuw instellen.
+**A** : de gebruiker heeft mogelijk een gemapeerde Directory lezer met een door een functie toewijs bare groep. Alle leden en eigen aren van een door een functie toewijs bare groep zijn beveiligd. Alleen gebruikers met de rol privileged Authentication Administrator of globale beheerder kunnen referenties voor een beveiligde gebruiker opnieuw instellen.
 
 **V:** Ik kan het wacht woord van een gebruiker niet bijwerken. Er is geen rol met een hoger privilege toegewezen aan de gebruiker. Waarom gebeurt dit?
 
@@ -89,7 +89,7 @@ Gebruiker | Catalogus eigenaar | Alleen als de groeps eigenaar | Alleen als de g
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en open **Azure Active Directory**.
 1. Selecteer gebruikers en open een gebruikers profiel.
-1. Selecteer **toegewezen rollen**en klik vervolgens op:
+1. Selecteer **toegewezen rollen** en klik vervolgens op:
 
     - In Azure AD Premium P1-gelicentieerde organisaties: Selecteer het tandwiel pictogram. Er wordt een deel venster geopend waarin u deze informatie kunt opgeven.
     - In Azure AD Premium P2-licenties voor licentie verlening: u vindt directe en overgenomen licentie gegevens in de kolom **lidmaatschap** .
@@ -100,5 +100,5 @@ Gebruiker | Catalogus eigenaar | Alleen als de groeps eigenaar | Alleen als de g
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Cloud groepen gebruiken om roltoewijzingen te beheren](groups-concept.md)
+- [Cloudgroepen gebruiken om roltoewijzingen te beheren](groups-concept.md)
 - [Een roltoewijzbare groep maken](groups-create-eligible.md)

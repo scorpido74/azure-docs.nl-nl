@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa5671a73c8a4de945a2013d8678d7f0f74625e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4446e5b8abf9ac308a5eb32cadf31eddfcb9d9a1
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097988"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379244"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Een aangepaste rol maken en toewijzen in Azure Active Directory
 
@@ -31,11 +31,11 @@ U kunt aangepaste rollen maken op het tabblad [rollen en beheerders](https://por
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Een nieuwe aangepaste rol maken voor het verlenen van toegang voor het beheren van app-registraties
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
-1. Selecteer **Azure Active Directory**  >  **rollen en beheerders**  >  **nieuwe aangepaste rol** .
+1. Selecteer **Azure Active Directory**  >  **rollen en beheerders**  >  **nieuwe aangepaste rol**.
 
    ![Rollen maken of bewerken op de pagina Rollen en beheerders](./media/custom-create/new-custom-role.png)
 
-1. Geef op het tabblad **basis beginselen** een naam en beschrijving op voor de rol en klik vervolgens op **volgende** .
+1. Geef op het tabblad **basis beginselen** een naam en beschrijving op voor de rol en klik vervolgens op **volgende**.
 
    ![Geef een naam en beschrijving op voor een aangepaste rol op het tabblad Basis](./media/custom-create/basics-tab.png)
 
@@ -44,8 +44,8 @@ U kunt aangepaste rollen maken op het tabblad [rollen en beheerders](https://por
 
       ![De machtigingen voor een aangepaste rol selecteren op het tabblad Machtigingen](./media/custom-create/permissions-tab.png)
 
-   1. Voer vervolgens ' Basic ' in de zoek balk in, selecteer de `microsoft.directory/applications/basic/update` machtiging en klik vervolgens op **volgende** .
-1. Controleer op het tabblad **Beoordelen en maken** de machtigingen en selecteer **Maken** .
+   1. Voer vervolgens ' Basic ' in de zoek balk in, selecteer de `microsoft.directory/applications/basic/update` machtiging en klik vervolgens op **volgende**.
+1. Controleer op het tabblad **Beoordelen en maken** de machtigingen en selecteer **Maken**.
 
 Uw aangepaste rol wordt weer gegeven in de lijst met beschik bare rollen die moeten worden toegewezen.
 
@@ -169,12 +169,12 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 Net als ingebouwde rollen worden aangepaste rollen standaard toegewezen op basis van het standaard organisatie bereik om toegangs machtigingen te verlenen voor alle app-registraties in uw organisatie. Maar in tegens telling tot ingebouwde rollen kunnen aangepaste rollen ook worden toegewezen in het bereik van één Azure AD-resource. Hierdoor kunt u de gebruiker toestemming geven om referenties en basis eigenschappen van één app bij te werken zonder dat u een tweede aangepaste rol hoeft te maken.
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met toepassings ontwikkelaars machtigingen in de Azure AD-organisatie.
-1. Selecteer **App-registraties** .
+1. Selecteer **App-registraties**.
 1. Selecteer de app-registratie waaraan u toegang wilt verlenen. Mogelijk moet u **alle toepassingen** selecteren om de volledige lijst van app-registraties in uw Azure AD-organisatie weer te geven.
 
     ![Selecteer de app-registratie als een resource bereik voor een roltoewijzing](./media/custom-create/appreg-all-apps.png)
 
-1. Selecteer in de app-registratie **rollen en beheerders** . Als u er nog geen hebt gemaakt, vindt u de instructies in de [voor gaande procedure](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
+1. Selecteer in de app-registratie **rollen en beheerders**. Als u er nog geen hebt gemaakt, vindt u de instructies in de [voor gaande procedure](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
 
 1. Selecteer de rol voor het openen van de pagina **toewijzingen** .
 1. Selecteer **toewijzing toevoegen** om een gebruiker toe te voegen. Aan de gebruiker worden alleen machtigingen verleend via de geselecteerde app-registratie.

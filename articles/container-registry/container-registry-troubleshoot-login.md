@@ -3,12 +3,12 @@ title: Problemen met aanmelding bij REGI ster oplossen
 description: Symptomen, oorzaken en oplossingen voor veelvoorkomende problemen bij het aanmelden bij een Azure container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348896"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379499"
 ---
 # <a name="troubleshoot-registry-login"></a>Problemen met register aanmelding oplossen
 
@@ -98,7 +98,9 @@ Gerelateerde links:
 
 Bevestig de register machtigingen die zijn gekoppeld aan de referenties, zoals de `AcrPull` Azure-rol voor het ophalen van installatie kopieën uit het REGI ster of de `AcrPush` rol voor het pushen van installatie kopieën. 
 
-Voor toegang tot een REGI ster in de portal of het register beheer met de Azure CLI is ten minste de `Reader` rol vereist om Azure Resource Manager bewerkingen uit te voeren.
+Toegang tot een REGI ster in de portal of het register beheer met behulp van Azure CLI vereist ten minste de `Reader` rol of gelijkwaardige machtigingen om Azure Resource Manager bewerkingen uit te voeren.
+
+Als uw machtigingen recent zijn gewijzigd om toegang tot het REGI ster mogelijk te maken via de portal, moet u mogelijk een incognito of een persoonlijke sessie in uw browser proberen om te voor komen dat er verouderde browser cache of cookies worden geopend.
 
 U of een register eigenaar moet voldoende bevoegdheden hebben in het abonnement om roltoewijzingen toe te voegen of te verwijderen.
 

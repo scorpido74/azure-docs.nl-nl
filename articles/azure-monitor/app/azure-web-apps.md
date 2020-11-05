@@ -4,12 +4,12 @@ description: Bewaking van toepassings prestaties voor Azure app Services. Grafie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c78a43f9efb263c08dad21218636f21121b9732c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875602"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377799"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -65,7 +65,7 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor door Azure-a
 | Verzamelt gebruikstrends en maakt correlatie mogelijk van beschikbaarheidsresultaten tot transacties | Ja |Ja |
 | Verzamelt uitzonderingen die niet zijn verwerkt door het hostproces | Ja |Ja |
 | Verbetert de nauwkeurigheid van metrische APM-gegevens onder belasting, wanneer steekproeven worden gebruikt | Ja |Ja |
-| Correleert microservices over aanvraag-/afhankelijkheidsgrenzen | Nee (alleen APM-mogelijkheden met één instantie) |Ja |
+| Correleert microservices over aanvraag-/afhankelijkheidsgrenzen | Nee (alleen APM-mogelijkheden met één instantie) |Yes |
 
 3. Voor het configureren van instellingen zoals steek proeven, die u eerder kunt beheren via het applicationinsights.config-bestand, hebt u nu de opdracht om te communiceren met dezelfde instellingen via toepassings instellingen met een bijbehorend voor voegsel. 
 
@@ -96,11 +96,12 @@ Het is **niet mogelijk** om het volledige Framework te richten op basis van .net
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Selecteer in de app service-Web-app onder **instellingen**de  >  **optie Application Insights**  >  **inschakelen**. Node.js bewaking op basis van agents is momenteel beschikbaar als preview-versie.
+Selecteer in de app service-Web-app onder **instellingen** de  >  **optie Application Insights**  >  **inschakelen**. Node.js bewaking op basis van agents is momenteel beschikbaar als preview-versie.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java-webtoepassingen op basis van App Service ondersteunen momenteel geen automatische bewaking op basis van agent/extensie. Als u bewaking voor uw Java-toepassing wilt inschakelen, moet u [uw toepassing hand matig instrumenteren](./java-get-started.md).
+Volg de richt lijnen voor [Application Insights java 3,0-agent](./java-in-process-agent.md) om automatisch instrumentatie in te scha kelen voor uw java-apps zonder uw code te wijzigen.
+De automatische integratie is nog niet beschikbaar voor App Service.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -115,9 +116,9 @@ Python App Service gebaseerde webtoepassingen bieden momenteel geen ondersteunin
 Bewaking aan client zijde is opt-in voor ASP.NET. Bewaking aan client zijde inschakelen:
 
 * **Instellingen** **>** **Configuratie**
-   * Maak een **nieuwe toepassings instelling**onder toepassings instellingen:
+   * Maak een **nieuwe toepassings instelling** onder toepassings instellingen:
 
-     Name: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Naam: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Waarde: `true`
 
@@ -127,12 +128,12 @@ Als u bewaking aan client zijde wilt uitschakelen, verwijdert u het gekoppelde s
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Bewaking aan client zijde is **standaard ingeschakeld** voor .net Core-Apps met **Aanbevolen verzameling**, ongeacht of de app-instelling ' APPINSIGHTS_JAVASCRIPT_ENABLED ' aanwezig is.
+Bewaking aan client zijde is **standaard ingeschakeld** voor .net Core-Apps met **Aanbevolen verzameling** , ongeacht of de app-instelling ' APPINSIGHTS_JAVASCRIPT_ENABLED ' aanwezig is.
 
 Als u de bewaking aan client zijde om een of andere reden wilt uitschakelen:
 
 * **Instellingen** **>** **Configuratie**
-   * Maak een **nieuwe toepassings instelling**onder toepassings instellingen:
+   * Maak een **nieuwe toepassings instelling** onder toepassings instellingen:
 
      naam `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -350,7 +351,8 @@ Als de upgrade wordt uitgevoerd vanaf een eerdere versie dan 2.5.1, controleert 
 Hieronder vindt u stapsgewijze richt lijnen voor het oplossen van problemen met de bewaking van extensies en agents voor .NET-en .NET core-toepassingen die worden uitgevoerd op Azure-app Services.
 
 > [!NOTE]
-> Java-toepassingen worden alleen ondersteund op Azure-app Services via hand matige instrumentatie op basis van SDK en daarom zijn de volgende stappen niet van toepassing op deze scenario's.
+> De aanbevolen benadering voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor [Application Insights Java 3,0-agent](./java-in-process-agent.md).
+
 
 1. Controleer of de toepassing wordt bewaakt via `ApplicationInsightsAgent` .
     * Controleer of `ApplicationInsightsAgent_EXTENSION_VERSION` de app-instelling is ingesteld op de waarde "~ 2".

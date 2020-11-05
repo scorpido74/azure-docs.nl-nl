@@ -4,14 +4,17 @@ description: Verminder telemetrie-verkeer door de gebeurtenissen die u niet hoef
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 329f07a530a584a14d5312631ec977773e70af29
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761002"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378190"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Telemetrie filteren in uw Java-Web-app
+
+> [!IMPORTANT]
+> De aanbevolen benadering voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor [Application Insights Java 3,0-agent](./java-in-process-agent.md).
 
 Filters bieden een manier om de telemetrie te selecteren die uw [Java-Web-app naar Application Insights verzendt](java-get-started.md). Er zijn een aantal out-of-the-box filters die u kunt gebruiken, en u kunt ook uw eigen aangepaste filters schrijven.
 

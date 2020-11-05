@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58aaecaa9f8606399b40fdb1d38a274117ec6a2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bc2c42f407ee31a792a6634a813358d428120b46
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376000"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378615"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Een door een functie toewijs bare groep maken in Azure Active Directory
 
@@ -126,6 +126,6 @@ Voor dit type groep is `isPublic` altijd False en is `isSecurityEnabled` altijd 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een rol toewijzen aan een Cloud groep](groups-assign-role.md)
-- [Cloud groepen gebruiken om roltoewijzingen te beheren](groups-concept.md)
+- [Een rol toewijzen aan een cloudgroep](groups-assign-role.md)
+- [Cloudgroepen gebruiken om roltoewijzingen te beheren](groups-concept.md)
 - [Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen](groups-faq-troubleshooting.md)

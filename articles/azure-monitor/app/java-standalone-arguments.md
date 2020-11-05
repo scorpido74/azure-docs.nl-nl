@@ -1,17 +1,17 @@
 ---
-title: Java-toepassingen bewaken die worden uitgevoerd in een omgeving-Azure Monitor Application Insights
-description: Bewaking van toepassings prestaties voor Java-toepassingen die worden uitgevoerd op een wille keurige omgeving met Java zelfstandige agent zonder de app te instrumenteren. Gedistribueerde tracering en toepassings toewijzing.
+title: De JVM ARG-Azure Monitor Application Insights Java toevoegen
+description: Het JVM ARG voor Azure Monitor Application Insights Java toevoegen
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c9c38d4173413310b715e05c9dcfb9c15be9d4f
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374300"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377630"
 ---
-# <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>De Java zelfstandige JVM args-agent configureren voor Azure Monitor Application Insights
+# <a name="adding-the-jvm-arg-for-azure-monitor-application-insights-java"></a>Het JVM ARG voor Azure Monitor Application Insights Java toevoegen
 
 
 
@@ -170,7 +170,7 @@ Toevoegen `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` aan d
 
 ## <a name="websphere-8"></a>WebSphere 8
 
-Open de beheer console en ga naar **servers > WebSphere toepassings servers > toepassings**servers, kies de juiste toepassings servers en klik op: 
+Open de beheer console en ga naar **servers > WebSphere toepassings servers > toepassings** servers, kies de juiste toepassings servers en klik op: 
 
 ```
 Java and Process Management > Process definition >  Java Virtual Machine

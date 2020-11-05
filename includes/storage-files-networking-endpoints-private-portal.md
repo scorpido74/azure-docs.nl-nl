@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b941084c8a196081c2443364ed3fb52868386670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09723030f0da0252120f66f36347cad2e3a3546a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84464986"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376276"
 ---
 Ga naar het opslagaccount waarvoor u een privé-eindpunt wilt maken. Selecteer **Privé-eindpuntverbindingen** in de inhoudsopgave van het opslagaccount en selecteer vervolgens **+ Privé-eindpunt** om een nieuw privé-eindpunt te maken. 
 
@@ -23,9 +23,9 @@ Er wordt een wizard gestart waarin u meerdere pagina's moet invullen.
 
 Selecteer op de blade **Algemeen** de gewenste resourcegroep, geef een naam op en selecteer de regio voor het privé-eindpunt. U kunt hier kiezen wat u wilt. De waarden hoeven niet overeen te komen met die van het opslagaccount. U moet het privé-eindpunt wel maken in dezelfde regio als het virtuele netwerk waarin u het privé-eindpunt wilt maken.
 
-![Een schermopname van de blade Algemeen in de sectie Een privé-eindpunt maken](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-1.png)
+![Een schermopname van het gedeelte Basis in het gedeelte Privé-eindpunt maken](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-1.png)
 
-Schakel op de blade **Resource** het keuzerondje **Verbinding maken met een Azure-resource in mijn directory** in. Selecteer onder **Resourcetype** **Microsoft.Storage/storageAccounts** als het type resource. Geef in het veld **Resource** het opslagaccount op met de Azure-bestandsshare waarmee u verbinding wilt maken. Selecteer voor Subresource van doel de waarde **bestand**, aangezien dit voor Azure Files is.
+Schakel op de blade **Resource** het keuzerondje **Verbinding maken met een Azure-resource in mijn directory** in. Selecteer onder **Resourcetype** **Microsoft.Storage/storageAccounts** als het type resource. Geef in het veld **Resource** het opslagaccount op met de Azure-bestandsshare waarmee u verbinding wilt maken. Selecteer voor Subresource van doel de waarde **bestand** , aangezien dit voor Azure Files is.
 
 Op de blade **Configuratie** kunt u het specifieke virtuele netwerk en het subnet selecteren waaraan u het privé-eindpunt wilt toevoegen. U moet een ander subnet selecteren dan het subnet waaraan u hierboven het service-eindpunt hebt toegevoegd. De blade Configuratie bevat ook de gegevens voor het maken/bijwerken van de privé-DNS-zone. We adviseren om de standaardzone `privatelink.file.core.windows.net` te gebruiken.
 

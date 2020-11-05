@@ -4,24 +4,24 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d6bad1ec584b28fee77bc654eba8a2d0c7b5df30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1c30b303bd1fe02e0685c7d848be92073ca2f6
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67176098"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375798"
 ---
 #### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>Een opslagaccountreferentie toevoegen aan hetzelfde Azure-abonnement als de StorSimple-apparaatbeheerfunctie
 
 1. Ga naar uw StorSimple-apparaatbeheerservice. Klik in de sectie **Configuratie** op **Opslagaccountreferenties**.
 
-    ![Opslagaccountreferenties](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct1.png)
+    ![Naar de referenties van het opslag account](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct1.png)
 
 2. Klik op de blade **Opslagaccountreferenties** op **+ Toevoegen**.
 
     ![Een opslagaccountreferentie toevoegen](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct2.png)
 
-3. Voer de volgende stappen uit op de blade **Een opslagaccountreferentie toevoegen**:
+3. Voer de volgende stappen uit op de blade **Een opslagaccountreferentie toevoegen** :
 
     1. Als u een opslagaccountreferentie aan hetzelfde Azure-abonnement als uw service toevoegt, zorg ervoor dat **Huidig** is geselecteerd.
 
@@ -39,5 +39,5 @@ ms.locfileid: "67176098"
 
 De nieuwe opslagaccountreferenties worden weergegeven onder de lijst met **Opslagaccountreferenties**.
 
-![Lijst met opslagaccountreferenties](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct6.png)
+![De referenties van het opslag account weer geven](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct6.png)
 
