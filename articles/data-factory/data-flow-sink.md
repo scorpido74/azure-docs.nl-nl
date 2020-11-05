@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 11/02/2020
+ms.openlocfilehash: 47aada0abe2520ba81689ca8fa17787fde847d83
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147220"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360242"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Trans formatie sinken bij toewijzing van gegevens stroom
 
@@ -71,11 +71,13 @@ In de volgende video wordt een aantal verschillende Sink-opties voor door tekst 
 
 **Tempdb gebruiken:** Data Factory maakt standaard gebruik van een globale tijdelijke tabel om gegevens op te slaan als onderdeel van het laad proces. U kunt ook de optie ' TempDB gebruiken ' uitschakelen en in plaats daarvan vragen om Data Factory de tijdelijke Holding tabel op te slaan in een gebruikers database die zich in de Data Base bevindt die wordt gebruikt voor deze sink.
 
-![TempDB](media/data-flow/tempdb.png "TempDB")
+![Tijdelijke data base gebruiken](media/data-flow/tempdb.png "Tijdelijke data base gebruiken")
 
 ## <a name="cache-sink"></a>Cache-Sink
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4HKt1]
  
-Een *cache-Sink* is wanneer een gegevens stroom gegevens schrijft naar de Spark-cache in plaats van een gegevens archief. Bij het toewijzen van gegevens stromen kunt u binnen dezelfde stroom meerdere keren naar deze gegevens verwijzen met behulp van een *cache zoekopdracht* . Dit is handig als u wilt verwijzen naar gegevens als onderdeel van een expressie, maar niet expliciet de kolommen wilt samen voegen. Veelvoorkomende voor beelden waarbij een cache-Sink kan helpen bij het opzoeken van een maximum waarde in een gegevens archief en het vinden van overeenkomende fout codes naar een Data Base met fout berichten. 
+Een *cache-Sink* is wanneer een gegevens stroom gegevens schrijft naar de Spark-cache in plaats van een gegevens archief. Bij het toewijzen van gegevens stromen kunt u binnen dezelfde stroom meerdere keren naar deze gegevens verwijzen met behulp van een *cache zoekopdracht*. Dit is handig als u wilt verwijzen naar gegevens als onderdeel van een expressie, maar niet expliciet de kolommen wilt samen voegen. Veelvoorkomende voor beelden waarbij een cache-Sink kan helpen bij het opzoeken van een maximum waarde in een gegevens archief en het vinden van overeenkomende fout codes naar een Data Base met fout berichten. 
 
 Als u naar een cache-Sink wilt schrijven, voegt u een Sink-trans formatie toe en selecteert u **cache** als Sink-type. In tegens telling tot andere Sink-typen hoeft u geen gegevensset of gekoppelde service te selecteren omdat u niet naar een externe Store schrijft. 
 
@@ -101,6 +103,11 @@ Wanneer u automatisch toewijzen uitschakelt, kunt u vaste toewijzingen op basis 
 Standaard worden gegevens in een niet-deterministische volg orde naar meerdere sinks geschreven. De uitvoerings engine schrijft gegevens parallel als de transformatie logica is voltooid en de Sink-bestelling kan elke uitvoering variëren. Als u een exacte Sink-ordening wilt opgeven, schakelt u **aangepaste Sink-ordening** in op het tabblad **Algemeen** van de gegevens stroom. Als deze functie is ingeschakeld, worden de sinks opeenvolgend geschreven in een oplopende volg orde.
 
 ![Scherm afbeelding waarin de aangepaste Sink-ordening wordt weer gegeven.](media/data-flow/custom-sink-ordering.png "Scherm afbeelding waarin de aangepaste Sink-ordening wordt weer gegeven.")
+
+> [!NOTE]
+> Wanneer u [opzoek acties in de cache](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)gebruikt, moet u ervoor zorgen dat de sinks in de cache zijn ingesteld op 0.
+
+![Aangepaste Sink-ordening](media/data-flow/cache-2.png "Aangepaste Sink-ordening")
 
 ## <a name="data-preview-in-sink"></a>Voor beeld van gegevens in Sink
 

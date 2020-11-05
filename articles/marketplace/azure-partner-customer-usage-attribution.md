@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 10/30/2020
+ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 3f3196e775ff9e7d8064559069414952f09a3016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348335"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360221"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -311,10 +311,6 @@ Klanten kunnen hun gebruik van afzonderlijke resources of door de klant gedefini
 **Is deze methodologie vergelijkbaar met de digitale partner of record (DPOR)?**
 
 Deze nieuwe methode voor het verbinden van de implementatie en het gebruik van een partner oplossing biedt een mechanisme om een partner oplossing te koppelen aan Azure-gebruik. DPOR is bedoeld om een Consulting (Systems Integrator) of Management (Managed Service Provider)-partner te koppelen aan het Azure-abonnement van de klant.
-
-**Wat is het voor deel van het gebruik van het formulier voor de GUID-Generator van Azure Storage?**
-
-Het formulier GUID-Generator van Azure Storage is gegarandeerd een GUID van de vereiste indeling te genereren. Daarnaast kunt u, als u een van de methoden voor het bijhouden van gegevenslaags van Azure Storage gebruikt, dezelfde GUID gebruiken voor het bijhouden van het Marketplace-besturings vlak. Zo kunt u gebruikmaken van een enkelvoudige, uniforme GUID voor het toewijzen van partners, zonder dat u afzonderlijke GUID'S hoeft te hand haven.
 
 **Kan ik een persoonlijke, aangepaste VHD voor een oplossings sjabloon aanbieding in azure Marketplace gebruiken?**
 

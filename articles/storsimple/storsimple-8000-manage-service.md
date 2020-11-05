@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249549"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360673"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>De StorSimple Apparaatbeheer-service voor StorSimple 8000 Series-apparaten implementeren
 
@@ -58,7 +58,7 @@ Voer de volgende stappen uit om een service te maken.
 Voor elke StorSimple-Apparaatbeheer service bestaan de volgende kenmerken:
 
 * **Naam** : de naam die is toegewezen aan uw StorSimple-Apparaatbeheer service toen deze werd gemaakt. **De service naam kan niet worden gewijzigd nadat de service is gemaakt. Dit geldt ook voor andere entiteiten, zoals apparaten, volumes, volume containers en back-upbeleiden waarvan de naam niet kan worden gewijzigd in de Azure Portal.**
-* **Status** : de status van de service, die **actief**, **maken**of **online**kan zijn.
+* **Status** : de status van de service, die **actief** , **maken** of **online** kan zijn.
 * **Locatie** : de geografische locatie waar het StorSimple-apparaat wordt geïmplementeerd.
 * **Abonnement** : het facturerings abonnement dat is gekoppeld aan uw service.
 
@@ -103,9 +103,9 @@ Als u een sleutel rotatie moet uitvoeren of als de lijst met service beheerders 
 Voer de volgende stappen uit om een service registratie sleutel opnieuw te genereren.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>De service registratie sleutel opnieuw genereren
-1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt; ** **sleutels**.
+1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt;** **sleutels**.
     
-    ![De blade Sleutels](./media/storsimple-8000-manage-service/regenregkey2.png)
+    ![Ga naar de Blade sleutels](./media/storsimple-8000-manage-service/regenregkey2.png)
 
 2. Klik op de Blade **sleutels** op **opnieuw genereren**.
 

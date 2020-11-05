@@ -4,12 +4,12 @@ description: Meer informatie over het schalen van uw resource web-app, Cloud ser
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: e0c9770e2065002a4e2acc1198ed096dc588f8e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d37a33ea575bbb8481d7d50dad8eab0f9ce0899d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342212"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361199"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Aan de slag met automatisch schalen in azure
 In dit artikel wordt beschreven hoe u uw instellingen voor automatisch schalen instelt voor uw resource in de Microsoft Azure-portal.
@@ -140,6 +140,20 @@ Als een exemplaar gedurende één uur niet in orde is, wordt het vervangen door 
 ### <a name="monitoring"></a>Bewaking
 
 Nadat u het Health Check-pad van uw toepassing hebt opgegeven, kunt u de status van uw site bewaken met behulp van Azure Monitor. Klik op de Blade **status controle** in de portal op de **metrische gegevens** in de bovenste werk balk. Hiermee opent u een nieuwe blade waar u de historische status van de site kunt zien en een nieuwe waarschuwings regel maakt. [Zie de gids over Azure monitor](../../app-service/web-sites-monitor.md)voor meer informatie over het bewaken van uw sites.
+
+## <a name="moving-autoscale-to-a-different-region"></a>Automatisch schalen verplaatsen naar een andere regio
+In deze sectie wordt beschreven hoe u een automatische schaal aanpassing van Azure naar een andere regio onder hetzelfde abonnement en resource groep kunt verplaatsen. U kunt REST API gebruiken om instellingen voor automatisch schalen te verplaatsen.
+### <a name="prerequisite"></a>Vereiste
+1. Zorg ervoor dat het abonnement en de resource groep beschikbaar zijn en dat de details in zowel de bron-als de doel regio's identiek zijn.
+1. Zorg ervoor dat automatisch schalen van Azure beschikbaar is in de [Azure-regio waarnaar u wilt overschakelen](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all).
+
+### <a name="move"></a>Verplaatsen
+Gebruik [rest API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) om een instelling voor automatisch schalen te maken in de nieuwe omgeving. De instelling voor automatisch schalen die in de doel regio wordt gemaakt, is een kopie van de instelling voor automatisch schalen in de bron regio.
+
+[Diagnostische instellingen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) die zijn gemaakt in samen hang met de instelling voor automatisch schalen in de bron regio, kunnen niet worden verplaatst. U moet de diagnostische instellingen opnieuw maken in de doel regio nadat het maken van de instellingen voor automatisch uitverkoop is voltooid. 
+
+### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Meer informatie over het verplaatsen van resources tussen Azure-regio's
+Raadpleeg [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een waarschuwing voor een activiteiten logboek maken om alle bewerkingen voor het automatisch schalen van de engine voor uw abonnement te bewaken](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

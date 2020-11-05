@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: b67de07777fa3f4f2b6190d8b003eb0495e66d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400482"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359898"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Informatie extraheren in Excel met behulp van Text Analytics en Power Automate 
 
@@ -53,7 +53,7 @@ De problemen worden gerapporteerd in onbewerkte tekst. We gebruiken de benoemde 
 Ga naar de [Power-site voor automatisch](https://preview.flow.microsoft.com/)aanmelden en meld u aan. Klik vervolgens op **maken** en **Geplande stroom**.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/flow-creation.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/flow-creation.png" alt-text="Het scherm voor het maken van de stroom.":::
 
 
 Initialiseer uw stroom op de pagina **een geplande stroom maken** met de volgende velden:
@@ -72,7 +72,7 @@ Initialiseer uw stroom op de pagina **een geplande stroom maken** met de volgend
 Maak variabelen die de informatie vertegenwoordigen die wordt toegevoegd aan het Excel-bestand. Klik op **nieuwe stap** en zoek naar **initialisatie variabele**. Doe dit vier keer om vier variabelen te maken.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/initialize-variables.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/initialize-variables.png" alt-text="Variabelen initialiseren.":::
 
 Voeg de volgende informatie toe aan de variabelen die u hebt gemaakt. Ze vertegenwoordigen de kolommen van het Excel-bestand. Als er variabelen zijn samengevouwen, kunt u erop klikken om deze uit te vouwen.
 
@@ -84,29 +84,29 @@ Voeg de volgende informatie toe aan de variabelen die u hebt gemaakt. Ze vertege
 | Variabele 4 initialiseren | var_other | Tekenreeks | other | 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="informatie in de stroom variabelen":::
 
 ## <a name="read-the-excel-file"></a>Het Excel-bestand lezen
 
-Klik op **nieuwe stap** en typ **Excel**en selecteer vervolgens **lijst rijen weer geven in een tabel** in de lijst met acties.
+Klik op **nieuwe stap** en typ **Excel** en selecteer vervolgens **lijst rijen weer geven in een tabel** in de lijst met acties.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/list-excel-rows.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/list-excel-rows.png" alt-text="Voeg Excel-rijen toe.":::
 
 Voeg het Excel-bestand toe aan de stroom door de velden in deze actie in te vullen. Voor deze zelf studie moet het bestand zijn geüpload naar OneDrive voor bedrijven.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="Excel-rijen vullen":::
 
 Klik op **nieuwe stap** en voeg een **Toep assen op elke** actie toe.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action.png" alt-text="Voeg een opdracht apply toe.":::
 
 Klik op **een uitvoer van de vorige stap selecteren**. In het vak dynamische inhoud dat wordt weer gegeven, selecteert u **waarde**.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/select-output.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/select-output.png" alt-text="Selecteer uitvoer uit het Excel-bestand.":::
 
 ## <a name="send-a-request-to-the-text-analytics-api"></a>Een aanvraag verzenden naar de Text Analytics-API
 
@@ -128,69 +128,69 @@ Voer in uw stroom de volgende informatie in om een nieuwe Text Analytics verbind
 | Site-URL        | Het eind punt voor uw Text Analytics-resource.                                                       |
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-credentials.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/add-credentials.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom.":::
 
 ## <a name="extract-the-excel-content"></a>De Excel-inhoud extra heren 
 
 Nadat de verbinding is gemaakt, zoekt u naar **Text Analytics** en selecteert u **entiteiten**. Hiermee wordt informatie opgehaald uit de kolom Beschrijving van het probleem.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Text Analytics entiteiten toevoegen.":::
 
 Klik in het **tekst** veld en selecteer **Beschrijving** uit het venster met dynamische inhoud dat wordt weer gegeven. Voer `en` in voor de taal. (Klik op geavanceerde opties weer geven als u geen taal ziet)
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Text Analytics-instellingen toevoegen.":::
 
 
 ## <a name="extract-the-person-name"></a>De persoons naam extra heren
 
-Vervolgens wordt het entiteits type persoon in de Text Analytics-uitvoer weer te vinden. Klik in de **Toep assen op elke**actie op **een actie toevoegen**en maak een andere **Toep assen op elke** bewerking. Klik in het tekstvak en selecteer **entiteiten** in het venster dynamische inhoud dat wordt weer gegeven.
+Vervolgens wordt het entiteits type persoon in de Text Analytics-uitvoer weer te vinden. Klik in de **Toep assen op elke** actie op **een actie toevoegen** en maak een andere **Toep assen op elke** bewerking. Klik in het tekstvak en selecteer **entiteiten** in het venster dynamische inhoud dat wordt weer gegeven.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. twee":::
 
-Klik binnen de zojuist gemaakte actie **Toep assen op elke 2** op **een actie toevoegen**en voeg een besturings element **voor waarde** toe.
+Klik binnen de zojuist gemaakte actie **Toep assen op elke 2** op **een actie toevoegen** en voeg een besturings element **voor waarde** toe.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 3D":::
 
 Klik in het venster voor waarde op het eerste tekstvak. In het venster dynamische inhoud zoekt u naar het **type entiteiten** en selecteert u dit.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 3":::
 
 Zorg ervoor dat het tweede vak is ingesteld op **is gelijk aan**. Selecteer vervolgens het derde vak en zoek `var_person` in het venster dynamische inhoud. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 5,0":::
 
 In de voor waarde **Ja** , typt u in Excel en selecteert u vervolgens **een rij bijwerken**.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 6,5":::
 
-Voer de Excel-info in en werk de velden **sleutel kolom**, **sleutel waarde** en **persoons** naam bij. Hiermee wordt de naam die is gedetecteerd door de API toegevoegd aan het Excel-werk blad. 
+Voer de Excel-info in en werk de velden **sleutel kolom** , **sleutel waarde** en **persoons** naam bij. Hiermee wordt de naam die is gedetecteerd door de API toegevoegd aan het Excel-werk blad. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 7":::
 
 ## <a name="get-the-phone-number"></a>Het telefoon nummer ophalen
 
 Minimaliseer de actie **Toep assen op elke 2** door op de naam te klikken. Voeg vervolgens een andere **toepassing toe op elke** actie, zoals voorheen. de naam wordt van **toepassing op elke 3**. Selecteer het tekstvak en voeg **entiteiten** als uitvoer voor deze actie toe. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. achtste":::
 
-Voeg binnen **Toep assen op elke 3**een besturings element **voor waarde** toe. Deze krijgt de naam **voorwaarde 2**. Zoek in het eerste tekstvak het **type entiteiten** in het venster dynamische inhoud en voeg deze toe. Zorg ervoor dat het middelste vak is ingesteld op **is gelijk aan**. Voer vervolgens in het vak rechts de tekst in `var_phone` . 
+Voeg binnen **Toep assen op elke 3** een besturings element **voor waarde** toe. Deze krijgt de naam **voorwaarde 2**. Zoek in het eerste tekstvak het **type entiteiten** in het venster dynamische inhoud en voeg deze toe. Zorg ervoor dat het middelste vak is ingesteld op **is gelijk aan**. Voer vervolgens in het vak rechts de tekst in `var_phone` . 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 9,4":::
 
 Voeg in de voor waarde **If ja** een actie voor het **bijwerken van een rij** toe. Voer vervolgens de bovenstaande gegevens in voor de kolom telefoon nummers van het Excel-werk blad. Hiermee wordt het telefoon nummer dat door de API is gedetecteerd, toegevoegd aan het Excel-werk blad. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 6":::
 
 
 ## <a name="get-the-plumbing-issues"></a>De sanitaire problemen ophalen
@@ -198,7 +198,7 @@ Voeg in de voor waarde **If ja** een actie voor het **bijwerken van een rij** to
 Minimaliseer **Toep assen op elke 3** door op de naam te klikken. Maak vervolgens een andere van **toepassing op elke** in de bovenliggende actie. Selecteer het tekstvak en voeg **entiteiten** als uitvoer voor deze actie toe vanuit het venster dynamische inhoud. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 9":::
 
 
 Vervolgens wordt met de stroom gecontroleerd of de beschrijving van het probleem uit de Excel-tabelrij het woord ' sanitair ' bevat. Zo ja, dan wordt ' sanitaire ' toegevoegd in de kolom IssueType. Als dat niet het geval is, voert u ' Overig ' in.
@@ -206,24 +206,24 @@ Vervolgens wordt met de stroom gecontroleerd of de beschrijving van het probleem
 In de actie **Toep assen op elke 4 voegt u** een besturings element **voor waarde** toe. Deze krijgt de naam **voor waarde 3**. In het eerste tekstvak zoekt en voegt u een **Beschrijving** van het Excel-bestand toe met behulp van het venster dynamische inhoud. Zorg ervoor dat het middelste vak de tekst **bevat**. Zoek en selecteer vervolgens in het juiste tekstvak `var_plumbing` . 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 12":::
 
 
-In de voor waarde **Ja** , klikt u op **een actie toevoegen**en selecteert u **een rij bijwerken**. Voer vervolgens de gegevens in zoals voorheen. Selecteer in de kolom IssueType `var_plumbing` . Hiermee wordt het label ' sanitair ' toegepast op de rij.
+In de voor waarde **Ja** , klikt u op **een actie toevoegen** en selecteert u **een rij bijwerken**. Voer vervolgens de gegevens in zoals voorheen. Selecteer in de kolom IssueType `var_plumbing` . Hiermee wordt het label ' sanitair ' toegepast op de rij.
 
-In de voor waarde **als Nee** klikt u op **een actie toevoegen**en selecteert u **een rij bijwerken**. Voer vervolgens de gegevens in zoals voorheen. Selecteer in de kolom IssueType `var_other` . Hiermee wordt het label ' Overig ' toegepast op de rij.
+In de voor waarde **als Nee** klikt u op **een actie toevoegen** en selecteert u **een rij bijwerken**. Voer vervolgens de gegevens in zoals voorheen. Selecteer in de kolom IssueType `var_other` . Hiermee wordt het label ' Overig ' toegepast op de rij.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom. 13":::
 
 ## <a name="test-the-workflow"></a>De werkstroom testen
 
-Klik in de rechter bovenhoek van het scherm op **Opslaan**en vervolgens op **testen**. Selecteer  **Ik voer de trigger actie uit**. Klik op **opslaan & test**, **Voer flow uit**en klik vervolgens op **gereed**.
+Klik in de rechter bovenhoek van het scherm op **Opslaan** en vervolgens op **testen**. Selecteer  **Ik voer de trigger actie uit**. Klik op **opslaan & test** , **Voer flow uit** en klik vervolgens op **gereed**.
 
 Het Excel-bestand wordt bijgewerkt in uw OneDrive-account. Dit ziet er als volgt uit.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/updated-excel-sheet.png" alt-text="Voor beelden van het Excel-bestand.":::
+> :::image type="content" source="../media/tutorials/excel/updated-excel-sheet.png" alt-text="Het bijgewerkte Excel-werk blad.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

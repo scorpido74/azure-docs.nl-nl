@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: caabaa6fbf65787f90c0033a06af26996c2388f2
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b076045f6a106f77717159d3095ffd5973ab27aa
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994100"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359881"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in virtuele Azure-machines
 Dit document bevat richt lijnen voor het implementeren van SAP Business One in azure Virtual Machines. De documentatie is geen vervanging voor de installatie documentatie van Business One voor SAP. De documentatie moet betrekking hebben op elementaire plannings-en implementatie richtlijnen voor de Azure-infra structuur voor het uitvoeren van één toepassing op.
@@ -139,7 +139,7 @@ Voor SAP HANA strategieën voor back-up en herstel moet u de document [back-upgi
 
  
 ### <a name="business-one-client-server"></a>Bedrijf met één client server
-Overwegingen voor de opslag van deze onderdelen zijn niet het belangrijkste probleem. Niettemin wilt u echter een betrouwbaar platform hebben. Daarom moet u Azure Premium Storage voor deze VM gebruiken, zelfs voor de basis-VHD. Het formaat van de virtuele machine wijzigen, met de gegevens die zijn opgegeven in [SAP Business One hardware requirements Guide (Engelstalig](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)). Voor Azure moet u zich richten op en berekenen met de vereisten die zijn vermeld in hoofd stuk 2,4 van het document. Bij het berekenen van de vereisten moet u deze vergelijken met de volgende documenten om de ideale virtuele machine voor u te vinden:
+Overwegingen voor de opslag van deze onderdelen zijn niet het belangrijkste probleem. Niettemin wilt u echter een betrouwbaar platform hebben. Daarom moet u Azure Premium Storage voor deze VM gebruiken, zelfs voor de basis-VHD. Het formaat van de virtuele machine wijzigen, met de gegevens die zijn opgegeven in [SAP Business One hardware requirements Guide (Engelstalig](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)). Voor Azure moet u zich richten op en berekenen met de vereisten die zijn vermeld in hoofd stuk 2,4 van het document. Bij het berekenen van de vereisten moet u deze vergelijken met de volgende documenten om de ideale virtuele machine voor u te vinden:
 
 - [Grootten voor Windows Virtual Machines in Azure](../../sizes.md)
 - [SAP-notitie #1928533](https://launchpad.support.sap.com/#/notes/1928533)

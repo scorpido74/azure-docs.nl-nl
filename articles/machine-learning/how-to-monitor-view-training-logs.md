@@ -1,7 +1,7 @@
 ---
 title: MILLILITERs logboeken & metrische gegevens controleren en weer geven
 titleSuffix: Azure Machine Learning
-description: Bewaak uw Azure ML experimenten en geef metrische uitvoerings gegevens weer om het proces voor het maken van het model te verbeteren. Gebruik widgets en de Studio Portal om de uitvoerings status te verkennen en uitvoerings records weer te geven.
+description: Bewaak uw ML experimenten en Bekijk metrische uitvoerings gegevens met Jupyter widgets en de Azure Machine Learning Studio.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316678"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360595"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>MILLILITERs logboeken en-metrische gegevens bewaken en weer geven
-
-
 
 In dit artikel leert u hoe u Azure Machine Learning uitvoeringen bewaakt en de logboeken bekijkt. Voordat u Logboeken kunt weer geven, moet u deze eerst inschakelen. Zie [logboek registratie inschakelen in azure ml-trainings uitvoeringen](how-to-track-experiments.md)voor meer informatie.
 

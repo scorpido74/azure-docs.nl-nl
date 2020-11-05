@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bf91a3b7843d3212b62ced5b6a7c6fa54892ec9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400805"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359745"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors voor Azure Logic Apps
 
@@ -108,8 +108,8 @@ Logic Apps biedt ingebouwde acties voor het structureren en beheren van de actie
 |------|-------------|
 | [![Voor waarde voor waarde ingebouwde ][condition-icon]<br> **Condition** actie][condition-doc] | Evalueer een voor waarde en voer verschillende acties uit op basis van het feit of de voor waarde waar of onwaar is. |
 | [![Voor elke ingebouwde actie ][for-each-icon]<br> **voor elk**][for-each-doc] | Voer dezelfde acties uit op elk item in een matrix. |
-| [![Bereik ingebouwd actie ][scope-icon]<br> **bereik**][scope-doc] | Groepeer acties in *bereiken*die hun eigen status krijgen nadat de acties in het bereik zijn uitgevoerd. |
-| [![][switch-icon]<br>**Switch** Schakelaar voor ingebouwde actie][switch-doc] | Groepeer acties in *gevallen*, waaraan unieke waarden worden toegewezen, met uitzonde ring van de standaard situatie. Voer alleen die aanvraag uit waarvan de toegewezen waarde overeenkomt met het resultaat van een expressie, object of token. Als er geen overeenkomsten bestaan, voert u het standaard hoofdletter gebruik uit. |
+| [![Bereik ingebouwd actie ][scope-icon]<br> **bereik**][scope-doc] | Groepeer acties in *bereiken* die hun eigen status krijgen nadat de acties in het bereik zijn uitgevoerd. |
+| [![][switch-icon]<br>**Switch** Schakelaar voor ingebouwde actie][switch-doc] | Groepeer acties in *gevallen* , waaraan unieke waarden worden toegewezen, met uitzonde ring van de standaard situatie. Voer alleen die aanvraag uit waarvan de toegewezen waarde overeenkomt met het resultaat van een expressie, object of token. Als er geen overeenkomsten bestaan, voert u het standaard hoofdletter gebruik uit. |
 | [![Het beëindigen van de ingebouwde ][terminate-icon]<br> **Terminate** bewerking is beëindigd][terminate-doc] | Stop een actieve werk stroom voor logische apps. |
 | [![Totdat de ingebouwde actie ][until-icon]<br> **tot**][until-doc] | Herhaal acties totdat de opgegeven voor waarde waar is of een andere status is gewijzigd. |
 |||
@@ -120,9 +120,9 @@ Logic Apps biedt ingebouwde acties voor het werken met gegevens uitvoer en de bi
 
 | Naam | Beschrijving |
 |------|-------------|
-| [![Gegevens bewerkingen ingebouwde actie ][data-operations-icon]<br> **gegevens bewerkingen**][data-operations-doc] | Bewerkingen uitvoeren met gegevens: <p>- **Opstellen**: Maak één uitvoer van meerdere invoer met verschillende typen. <br>- **CSV-tabel maken**: Maak een tabel met door komma's gescheiden waarden (CSV) van een matrix met JSON-objecten. <br>- **HTML-tabel maken**: een HTML-tabel maken op basis van een matrix met JSON-objecten. <br>- **Filter matrix**: Maak een matrix van items in een andere matrix die aan uw criteria voldoen. <br>- **Samen voegen**: een teken reeks maken van alle items in een matrix en deze items scheiden met het opgegeven scheidings teken. <br>- **JSON parseren**: Maak gebruikers vriendelijke tokens van eigenschappen en hun waarden in JSON-inhoud zodat u deze eigenschappen in uw werk stroom kunt gebruiken. <br>- **Select**: Maak een matrix met JSON-objecten door items of waarden in een andere matrix te transformeren en deze items aan de opgegeven eigenschappen toe te wijzen. |
-| ![Datum en tijd ingebouwde actie][date-time-icon]<br>**Datum en tijd** | Bewerkingen uitvoeren met tijds tempels: <p>- **Toevoegen aan tijd**: Voeg het opgegeven aantal eenheden toe aan een tijds tempel. <br>- **Tijd zone converteren**: Converteer een tijds tempel van de bron tijdzone naar de doel tijdzone. <br>- **Huidige tijd**: de huidige tijds tempel wordt geretourneerd als een teken reeks. <br>- **Toekomstige tijd ophalen**: retourneert de huidige tijds tempel plus de opgegeven tijds eenheden. <br>- **Vorige tijd ophalen**: retourneert de huidige tijds tempel min de opgegeven tijds eenheden. <br>- **Aftrekken van tijd**: Trek een aantal tijds eenheden af van een tijds tempel. |
-| [![Variabelen ingebouwde actie ][variables-icon]<br> **variabelen**][variables-doc] | Bewerkingen uitvoeren met variabelen: <p>- **Toevoegen aan matrix variabele**: een waarde invoegen als laatste item in een matrix die is opgeslagen door een variabele. <br>- **Toevoegen aan teken reeks variabele**: Voeg een waarde toe als het laatste teken in een teken reeks die is opgeslagen door een variabele. <br>- **Variabele verlagen**: Hiermee verkleint u een variabele met een constante waarde. <br>- **Toename van variabele**: Verhoog een variabele met een constante waarde. <br>- **Variabele initialiseren**: een variabele maken en het gegevens type en de begin waarde declareren. <br>- **Set-variabele**: wijs een andere waarde toe aan een bestaande variabele. |
+| [![Gegevens bewerkingen ingebouwde actie ][data-operations-icon]<br> **gegevens bewerkingen**][data-operations-doc] | Bewerkingen uitvoeren met gegevens: <p>- **Opstellen** : Maak één uitvoer van meerdere invoer met verschillende typen. <br>- **CSV-tabel maken** : Maak een tabel met door komma's gescheiden waarden (CSV) van een matrix met JSON-objecten. <br>- **HTML-tabel maken** : een HTML-tabel maken op basis van een matrix met JSON-objecten. <br>- **Filter matrix** : Maak een matrix van items in een andere matrix die aan uw criteria voldoen. <br>- **Samen voegen** : een teken reeks maken van alle items in een matrix en deze items scheiden met het opgegeven scheidings teken. <br>- **JSON parseren** : Maak gebruikers vriendelijke tokens van eigenschappen en hun waarden in JSON-inhoud zodat u deze eigenschappen in uw werk stroom kunt gebruiken. <br>- **Select** : Maak een matrix met JSON-objecten door items of waarden in een andere matrix te transformeren en deze items aan de opgegeven eigenschappen toe te wijzen. |
+| ![Datum en tijd ingebouwde actie][date-time-icon]<br>**Datum en tijd** | Bewerkingen uitvoeren met tijds tempels: <p>- **Toevoegen aan tijd** : Voeg het opgegeven aantal eenheden toe aan een tijds tempel. <br>- **Tijd zone converteren** : Converteer een tijds tempel van de bron tijdzone naar de doel tijdzone. <br>- **Huidige tijd** : de huidige tijds tempel wordt geretourneerd als een teken reeks. <br>- **Toekomstige tijd ophalen** : retourneert de huidige tijds tempel plus de opgegeven tijds eenheden. <br>- **Vorige tijd ophalen** : retourneert de huidige tijds tempel min de opgegeven tijds eenheden. <br>- **Aftrekken van tijd** : Trek een aantal tijds eenheden af van een tijds tempel. |
+| [![Variabelen ingebouwde actie ][variables-icon]<br> **variabelen**][variables-doc] | Bewerkingen uitvoeren met variabelen: <p>- **Toevoegen aan matrix variabele** : een waarde invoegen als laatste item in een matrix die is opgeslagen door een variabele. <br>- **Toevoegen aan teken reeks variabele** : Voeg een waarde toe als het laatste teken in een teken reeks die is opgeslagen door een variabele. <br>- **Variabele verlagen** : Hiermee verkleint u een variabele met een constante waarde. <br>- **Toename van variabele** : Verhoog een variabele met een constante waarde. <br>- **Variabele initialiseren** : een variabele maken en het gegevens type en de begin waarde declareren. <br>- **Set-variabele** : wijs een andere waarde toe aan een bestaande variabele. |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -137,12 +137,12 @@ Logic Apps biedt deze populaire standaard connectors voor het automatiseren van 
 | [![SQL Server beheerde connector ][sql-server-icon]<br> **SQL Server** SQL Server][sql-server-doc] | Maak verbinding met uw SQL Server on-premises of een Azure SQL Database in de Cloud, zodat u records kunt beheren, opgeslagen procedures uitvoert of query's uitvoert. |
 | [![Azure ][azure-blob-storage-icon]<br> **BLOB- <br> opslag** voor Azure Blob Storage Managed connector][azure-blob-storage-doc] | Maak verbinding met uw opslag account zodat u blob-inhoud kunt maken en beheren. |
 | [![Office 365 Outlook Managed connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Maak verbinding met het e-mail account van uw werk of school zodat u e-mails, taken, agenda-items en vergaderingen, contact personen, aanvragen en meer kunt maken en beheren. |
-| [![SFTP-SSH Managed connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Verbinding maken met SFTP-servers die u via het internet kunt openen met behulp van SSH, zodat u met uw bestanden en mappen kunt werken. |
-| [![Share point online Managed connector ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Maak verbinding met share point online, zodat u bestanden, bijlagen, mappen en meer kunt beheren. |
-| [![Azure queues Managed connector van Azure Queue ][azure-queues-icon]<br> ** <br> **][azure-queues-doc] | Maak verbinding met uw Azure Storage-account zodat u wacht rijen en berichten kunt maken en beheren. |
+| [![SFTP-SSH Managed connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Maak verbinding met SFTP-servers die vanaf internet met SSH toegankelijk zijn, zodat u met uw bestanden en mappen kunt werken. |
+| [![Share point online Managed connector ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Om verbinding te maken met SharePoint Online, zodat u bestanden, bijlagen, mappen en meer kunt beheren. |
+| [![Azure queues Managed connector van Azure Queue ][azure-queues-icon]<br> **<br>**][azure-queues-doc] | Maak verbinding met uw Azure Storage-account zodat u wacht rijen en berichten kunt maken en beheren. |
 | [![][ftp-icon]<br>**FTP** FTP Managed connector][ftp-doc] | Verbinding maken met FTP-servers die u vanaf internet kunt gebruiken zodat u kunt werken met uw bestanden en mappen. |
-| [![Bestands systeem Managed connector van bestands systeem ][file-system-icon]<br> ** <br> **][file-system-doc] | Maak verbinding met uw on-premises bestands share, zodat u bestanden kunt maken en beheren. |
-| [![Azure-Event Hubs voor Azure Event Hubs Managed connector ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Gebeurtenissen gebruiken en publiceren via een event hub. U kunt bijvoorbeeld uitvoer van uw logische app ophalen met Event Hubs en de uitvoer vervolgens verzenden naar een realtime analytics-provider. |
+| [![Bestands systeem Managed connector van bestands systeem ][file-system-icon]<br> **<br>**][file-system-doc] | Maak verbinding met uw on-premises bestands share, zodat u bestanden kunt maken en beheren. |
+| [![Azure-Event Hubs voor Azure Event Hubs Managed connector ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Hiermee kunt u gebeurtenissen verbruiken en publiceren via een Event Hub. U kunt bijvoorbeeld uitvoer van uw logische app ophalen met Event Hubs en de uitvoer vervolgens verzenden naar een realtime analytics-provider. |
 | [![][azure-event-grid-icon]<br>**Azure Event** <br> **grid** van Azure Event grid Managed connector][azure-event-grid-doc] | Gebeurtenissen bewaken die zijn gepubliceerd door een Event Grid, bijvoorbeeld wanneer Azure-resources of bronnen van derden worden gewijzigd. |
 | [![De Sales Force Managed connector ][salesforce-icon]<br> **Sales Force**][salesforce-doc] | Maak verbinding met uw Sales Force-account zodat u items zoals records, taken, objecten en meer kunt maken en beheren. |
 |||
@@ -151,14 +151,16 @@ Logic Apps biedt deze populaire standaard connectors voor het automatiseren van 
 
 ## <a name="on-premises-connectors"></a>On-premises connectors
 
-Hier volgen enkele veelgebruikte standaard-connectors die Logic Apps biedt voor toegang tot gegevens en resources in on-premises systemen. Voordat u een verbinding met een on-premises systeem kunt maken, moet u eerst [een on-premises gegevens gateway downloaden, installeren en instellen][gateway-doc]. Deze gateway biedt een beveiligd communicatie kanaal zonder dat u de benodigde netwerk infrastructuur hoeft in te stellen.
+Voordat u een verbinding met een on-premises systeem kunt maken, moet u eerst [een on-premises gegevens gateway downloaden, installeren en instellen][gateway-doc]. Deze gateway biedt een beveiligd communicatie kanaal zonder dat u de benodigde netwerk infrastructuur hoeft in te stellen. 
+
+Hier volgen *enkele* veelgebruikte standaard-connectors die Logic Apps biedt voor toegang tot gegevens en resources in on-premises systemen. Zie [ondersteunde gegevens bronnen](../logic-apps/logic-apps-gateway-connection.md#supported-connections)voor de lijst on-premises connectors.
 
 :::row:::
     :::column:::
         [![][biztalk-server-icon]<br>**BizTalk** <br> **Server** BizTalk Server-connector][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![Bestands systeem connector ][file-system-icon]<br> ** <br> ** bestandssysteem][file-system-doc]
+        [![Bestands systeem connector ][file-system-icon]<br> **<br>** bestandssysteem][file-system-doc]
     :::column-end:::
     :::column:::
         [![DB2-connector ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
@@ -207,18 +209,18 @@ Logic Apps biedt standaard connectors voor het bouwen van Business-to-Business (
         [![AS2-decoderings actie ][as2-icon]<br> **AS2 <br> decodering**][as2-doc]
     :::column-end:::
     :::column:::
-        [![][as2-icon]<br>** <br> Code ring** voor AS2-coderings actie AS2][as2-doc]
+        [![][as2-icon]<br>**<br> Code ring** voor AS2-coderings actie AS2][as2-doc]
     :::column-end:::
     :::column:::
         [![EDIFACT-decoderings actie ][edifact-icon]<br> **EDIFACT <br> decodering**][edifact-decode-doc]
     :::column-end:::
     :::column:::
-        [![][edifact-icon]<br>** <br> Code ring** voor EDIFACT-coderings actie EDIFACT][edifact-encode-doc]
+        [![][edifact-icon]<br>**<br> Code ring** voor EDIFACT-coderings actie EDIFACT][edifact-encode-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![Decoderings actie plat ][flat-file-decode-icon]<br> ** <br> bestand**][flat-file-decode-doc]
+        [![Decoderings actie plat ][flat-file-decode-icon]<br> **<br> bestand**][flat-file-decode-doc]
     :::column-end:::
     :::column:::
         [![Flat file encoding-actie met platte ][flat-file-encode-icon]<br> **bestands <br> codering**][flat-file-encode-doc]
@@ -235,13 +237,13 @@ Logic Apps biedt standaard connectors voor het bouwen van Business-to-Business (
         [![X12-decoderings actie ][x12-icon]<br> **X12 <br> decodering**][x12-decode-doc]
     :::column-end:::
     :::column:::
-        [![][x12-icon]<br>** <br> Code ring** voor X12-coderings actie X12][x12-encode-doc]
+        [![][x12-icon]<br>**<br> Code ring** voor X12-coderings actie X12][x12-encode-doc]
     :::column-end:::
     :::column:::
         [![XML transformeert XML-trans ][xml-transform-icon]<br> **XML** <br> **formaties** actie][xml-transform-doc]
     :::column-end:::
     :::column:::
-        [![XML-validatie van XML-validatie actie ][xml-validate-icon]<br> ** <br> **][xml-validate-doc]
+        [![XML-validatie van XML-validatie actie ][xml-validate-icon]<br> **<br>**][xml-validate-doc]
     :::column-end:::
 :::row-end:::
 
@@ -288,7 +290,7 @@ Voor Logic apps die u in een dedicated [Integration service Environment (ISE)](#
 :::row-end:::
 :::row:::
     :::column:::
-        [![][azure-event-hubs-icon]<br>Azure ISE-connector voor**Azure <br> Event hubs**][azure-event-hubs-doc]
+        [![][azure-event-hubs-icon]<br>Azure ISE-connector voor **Azure <br> Event hubs**][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
         [![][azure-event-grid-icon]<br>**Azure Event <br> grid** Azure Event grid ISE-connector][azure-event-grid-doc]
@@ -316,13 +318,13 @@ Voor Logic apps die u in een dedicated [Integration service Environment (ISE)](#
 :::row-end:::
 :::row:::
     :::column:::
-        [![Azure queues ISE ][azure-queues-icon]<br> **- <br> ** connector][azure-queues-doc]
+        [![Azure queues ISE ][azure-queues-icon]<br> **- <br>** connector][azure-queues-doc]
     :::column-end:::
     :::column:::
         [![EDIFACT ISE-connector ][edifact-icon]<br> **EDIFACT**][edifact-doc]
     :::column-end:::
     :::column:::
-        [![Bestands systeem ISE connector ][file-system-icon]<br> ** <br> ** bestandssysteem][file-system-doc]
+        [![Bestands systeem ISE connector ][file-system-icon]<br> **<br>** bestandssysteem][file-system-doc]
     :::column-end:::
     :::column:::
         [![FTP ISE-connector ][ftp-icon]<br> **FTP**][ftp-doc]
@@ -367,17 +369,17 @@ Raadpleeg de volgende onderwerpen voor meer informatie:
 
 ## <a name="triggers-and-action-types"></a>Triggers en actie typen
 
-Connectors kunnen *Triggers*, *acties*of beide bieden. Een *trigger* is de eerste stap in elke logische app, die meestal de gebeurtenis specificeert waarmee de trigger wordt geactiveerd en de logische app wordt uitgevoerd. De FTP-connector heeft bijvoorbeeld een trigger waarmee uw logische app wordt gestart wanneer een bestand wordt toegevoegd of gewijzigd. Sommige triggers controleren regel matig op de opgegeven gebeurtenis of gegevens en worden geactiveerd wanneer ze de opgegeven gebeurtenis of gegevens detecteren. Andere triggers wachten zich onmiddellijk wanneer een specifieke gebeurtenis plaatsvindt of wanneer er nieuwe gegevens beschikbaar zijn. Triggers geven ook de vereiste gegevens door aan uw logische app. Uw logische app kan deze gegevens lezen en gebruiken in de werk stroom. De Office 365 Outlook-Connector heeft bijvoorbeeld de trigger ' wanneer een nieuwe e-mail binnenkomt ', waarmee de inhoud van die e-mail kan worden door gegeven aan de werk stroom van uw logische app.
+Connectors kunnen *Triggers* , *acties* of beide bieden. Een *trigger* is de eerste stap in elke logische app, die meestal de gebeurtenis specificeert waarmee de trigger wordt geactiveerd en de logische app wordt uitgevoerd. De FTP-connector heeft bijvoorbeeld een trigger waarmee uw logische app wordt gestart wanneer een bestand wordt toegevoegd of gewijzigd. Sommige triggers controleren regel matig op de opgegeven gebeurtenis of gegevens en worden geactiveerd wanneer ze de opgegeven gebeurtenis of gegevens detecteren. Andere triggers wachten zich onmiddellijk wanneer een specifieke gebeurtenis plaatsvindt of wanneer er nieuwe gegevens beschikbaar zijn. Triggers geven ook de vereiste gegevens door aan uw logische app. Uw logische app kan deze gegevens lezen en gebruiken in de werk stroom. De Office 365 Outlook-Connector heeft bijvoorbeeld de trigger ' wanneer een nieuwe e-mail binnenkomt ', waarmee de inhoud van die e-mail kan worden door gegeven aan de werk stroom van uw logische app.
 
 Wanneer een trigger wordt geactiveerd, wordt door Azure Logic Apps een exemplaar van uw logische app gemaakt en worden de *acties* in de werk stroom van de logische app uitgevoerd. Acties zijn de stappen die de trigger volgen en taken uitvoeren in de werk stroom van uw logische app. U kunt bijvoorbeeld een logische app maken die klant gegevens ophaalt uit een SQL database en die gegevens in latere acties verwerken.
 
 Hier volgen de algemene soorten triggers die Azure Logic Apps biedt:
 
-* *Terugkeer patroon trigger*: deze trigger wordt uitgevoerd volgens een opgegeven schema en is niet nauw verbonden met een bepaalde service of systeem.
+* *Terugkeer patroon trigger* : deze trigger wordt uitgevoerd volgens een opgegeven schema en is niet nauw verbonden met een bepaalde service of systeem.
 
-* *Polling trigger*: met deze trigger wordt regel matig een specifieke service of een systeem op basis van de opgegeven planning pollen, wordt gecontroleerd of er nieuwe gegevens zijn en of er een specifieke gebeurtenis is opgetreden. Als er nieuwe gegevens beschikbaar zijn of als de specifieke gebeurtenis is opgetreden, maakt en voert de trigger een nieuw exemplaar van uw logische app uit. Dit kan nu de gegevens gebruiken die als invoer worden door gegeven.
+* *Polling trigger* : met deze trigger wordt regel matig een specifieke service of een systeem op basis van de opgegeven planning pollen, wordt gecontroleerd of er nieuwe gegevens zijn en of er een specifieke gebeurtenis is opgetreden. Als er nieuwe gegevens beschikbaar zijn of als de specifieke gebeurtenis is opgetreden, maakt en voert de trigger een nieuw exemplaar van uw logische app uit. Dit kan nu de gegevens gebruiken die als invoer worden door gegeven.
 
-* *Push trigger*: deze trigger wacht op nieuwe gegevens of voor een gebeurtenis die moet worden uitgevoerd. Wanneer er nieuwe gegevens beschikbaar zijn of wanneer de gebeurtenis plaatsvindt, maakt en voert de trigger een nieuw exemplaar van uw logische app uit. Dit kan nu de gegevens gebruiken die als invoer worden door gegeven.
+* *Push trigger* : deze trigger wacht op nieuwe gegevens of voor een gebeurtenis die moet worden uitgevoerd. Wanneer er nieuwe gegevens beschikbaar zijn of wanneer de gebeurtenis plaatsvindt, maakt en voert de trigger een nieuw exemplaar van uw logische app uit. Dit kan nu de gegevens gebruiken die als invoer worden door gegeven.
 
 <a name="connections"></a>
 

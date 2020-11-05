@@ -1,7 +1,7 @@
 ---
 title: Gegevensopname met Azure Data Factory
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het bouwen van een pijp lijn voor gegevens opname met Azure Data Factory.
+description: Meer informatie over de beschik bare opties voor het bouwen van een pijp lijn voor gegevens opname met Azure Data Factory en de voor delen van elk.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,17 +11,17 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8cf0abdeaf3a7fe71213b6fa4f78f057bf2f92eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: 73850d8022618dd6544d19564e425288aff09771
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307360"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360629"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Gegevensopname met Azure Data Factory
 
-In dit artikel leert u hoe u een pijp lijn voor gegevens opname bouwt met Azure Data Factory (ADF). Deze pijp lijn wordt gebruikt om gegevens op te nemen voor gebruik met Azure Machine Learning. Met Azure Data Factory kunt u gemakkelijk ETL-gegevens ophalen, transformeren en laden. Zodra de gegevens zijn getransformeerd en in opslag zijn geladen, kunt u deze gebruiken om uw machine learning modellen te trainen.
+In dit artikel vindt u informatie over de beschik bare opties voor het bouwen van een pijp lijn voor gegevens opname met Azure Data Factory (ADF). Deze pijp lijn wordt gebruikt om gegevens op te nemen voor gebruik met Azure Machine Learning. Met Azure Data Factory kunt u gemakkelijk ETL-gegevens ophalen, transformeren en laden. Zodra de gegevens zijn getransformeerd en in opslag zijn geladen, kunt u deze gebruiken om uw machine learning modellen te trainen.
 
 Eenvoudige gegevens transformatie kan worden afgehandeld met systeem eigen ADF-activiteiten en-instrumenten zoals de [gegevens stroom](../data-factory/control-flow-execute-data-flow-activity.md). Wanneer het gaat om complexere scenario's, kunnen de gegevens worden verwerkt met een aantal aangepaste code. Bijvoorbeeld python of R-code.
 

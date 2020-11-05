@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 94074c2c5e11187252084832e5a20a197f6723fd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321712"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359813"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Release opmerkingen-Azure Arc ingeschakelde Data Services (preview-versie)
 
@@ -90,7 +90,7 @@ Zie [Wat zijn Azure Arc-gegevens Services?](overview.md) voor instructies.
 
 - Preview biedt geen ondersteuning voor Backup/Restore voor PostgreSQL versie 11-engine. Het ondersteunt alleen Backup/Restore voor PostgreSQL versie 12.
 - `azdata arc dc debug copy-logs` ndoes PostgreSQL-engine-logboeken niet verzamelen in Windows.
-- Het opnieuw maken van een server groep met de naam van een server groep die zojuist is verwijderd, kan mislukken of vastlopen. 
+- Het opnieuw maken van een server groep met de naam van een server groep die zojuist is verwijderd, kan mislukken of reageert niet meer. 
    - **Tijdelijke oplossing** Gebruik dezelfde naam niet wanneer u een server groep opnieuw maakt of wacht op de load balancer/externe service van eerder verwijderde Server groep. Ervan uitgaande dat de naam van de Server groep die u hebt verwijderd `postgres01` , werd gehost in een naam ruimte `arc` , voordat u een server groep met dezelfde naam maakt, moet u wachten totdat deze `postgres01-external-svc` niet wordt weer gegeven in de uitvoer van de kubectl-opdracht `kubectl get svc -n arc` .
  - Het laden van de pagina overzicht en configuratie van Compute + Storage in Azure Data Studio is traag. 
 

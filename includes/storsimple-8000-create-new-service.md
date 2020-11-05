@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d47cf21e25c89c20a8baa31a80b867b74ada93df
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507264"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360672"
 ---
 #### <a name="to-create-a-new-service"></a>Een nieuwe service maken
 
@@ -19,11 +19,11 @@ ms.locfileid: "87507264"
 
     ![StorSimple-apparaatbeheerfunctie maken](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    Zoek naar _Fysieke StorSimple_. Selecteer en klik op **Serie met fysieke StorSimple-apparaten** en klik vervolgens op **Maken**. U kunt ook in de Azure Portal klikken **+** en vervolgens onder **opslag**klikken op **StorSimple fysieke apparaat Series**.
+    Zoek naar _Fysieke StorSimple_. Selecteer en klik op **Serie met fysieke StorSimple-apparaten** en klik vervolgens op **Maken**. U kunt ook in de Azure Portal klikken **+** en vervolgens onder **opslag** klikken op **StorSimple fysieke apparaat Series**.
 
-    ![StorSimple-apparaatbeheerfunctie maken](./media/storsimple-8000-create-new-service/createssdevman11.png)
+    ![StorSimple maken Apparaatbeheer 2](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
-3. Voer de volgende stappen uit op de blade **StorSimple-apparaatbeheerfunctie**:
+3. Voer de volgende stappen uit op de blade **StorSimple-apparaatbeheerfunctie** :
 
    1. Geef een unieke **resourcenaam** voor uw service op. Deze naam is een beschrijvende naam die kan worden gebruikt om de service te identificeren. De naam kan tussen 2 en 50 tekens bevatten (letters, cijfers en afbreekstreepjes). De naam moet beginnen en eindigen met een letter of cijfer.
 
@@ -42,8 +42,8 @@ ms.locfileid: "87507264"
 
    7. Klik op **Maken** om de StorSimple-apparaatbeheerfunctie te maken.
 
-       ![StorSimple-apparaatbeheerfunctie maken](./media/storsimple-8000-create-new-service/createssdevman2.png)
+       ![StorSimple Apparaatbeheer 3 maken](./media/storsimple-8000-create-new-service/createssdevman2.png)
 
 Het maken van de service duurt enkele minuten. Nadat de service is gemaakt, ziet u een melding en wordt de blade met de nieuwe service geopend.
 
-![StorSimple-apparaatbeheerfunctie maken](./media/storsimple-8000-create-new-service/createssdevman5.png)
+![StorSimple Apparaatbeheer 4 maken](./media/storsimple-8000-create-new-service/createssdevman5.png)

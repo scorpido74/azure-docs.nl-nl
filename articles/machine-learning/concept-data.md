@@ -1,7 +1,7 @@
 ---
 title: Toegang tot gegevens in de Cloud beveiligen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u veilig verbinding maakt met uw gegevens vanaf Azure Machine Learning en hoe u gegevens sets en data stores gebruikt voor ML-taken. Data stores kunnen gegevens van een Azure-Blob opslaan, Azure Data Lake gen 1 & 2, SQL DB en Azure Databricks.
+description: Meer informatie over hoe u veilig verbinding maakt met uw gegevens opslag in azure met Azure Machine Learning gegevens opslag en gegevens sets.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: f46222740ad668b8bb6ec9eb85e78efb0f673528
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322234"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360170"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Beveiligde toegang tot gegevens in Azure Machine Learning
 

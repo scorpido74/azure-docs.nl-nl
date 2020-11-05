@@ -1,7 +1,7 @@
 ---
 title: Logboekregistratie van ML-experimenten en metrische gegevens
 titleSuffix: Azure Machine Learning
-description: Bewaak uw Azure ML experimenten en metrische uitvoeringsgegevens om het proces voor het maken van het model te verbeteren. Voeg logboekregistratie toe aan uw trainingsscript met behulp van run.log, Run.start_logging of ScriptRunConfig.
+description: Schakel logboek registratie in voor uw ML-trainings uitvoeringen om realtime uitvoerings metrieken te controleren en om fouten en waarschuwingen te onderzoeken.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6680bdc525c6f07b8330277056413f886412551b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318435"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361060"
 ---
-# <a name="enable-logging-in-azure-ml-training-runs"></a>Logboekregistratie inschakelen in Azure ML-trainingsuitvoeringen
+# <a name="enable-logging-in-ml-training-runs"></a>Logboek registratie inschakelen in ML-trainings uitvoeringen
 
 
 Met de Azure Machine Learning Python-SDK kunt u in realtime informatie vastleggen met behulp van zowel het standaardpakket voor logboekregistratie van Python als de specifieke functionaliteit van de SDK. U kunt logboeken lokaal opslaan en logboeken verzenden naar uw werkruimte in de portal.

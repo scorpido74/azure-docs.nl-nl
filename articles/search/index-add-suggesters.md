@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8959bf84e2b5629e03c2571fa494b96cec4f8e9
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8ae25c63e9c6e3bf6ad363cde9eb641703562811
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347638"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360017"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Een suggestie maken om automatisch aanvullen en voorgestelde resultaten in een query in te scha kelen
 
-In azure Cognitive Search wordt ' Search-as-u-type ' ingeschakeld via een **suggestie voor suggesties** die is toegevoegd aan een [zoek index](search-what-is-an-index.md). Een voor stel biedt ondersteuning voor twee ervaring: *automatisch aanvullen* , waarmee een gedeeltelijke invoer voor een hele term query wordt voltooid en *suggesties* voor het door lopen van een bepaalde overeenkomst. Automatisch aanvullen produceert een query. Suggesties maken een overeenkomend document.
+In azure Cognitive Search wordt ' Search-as-u-type ' ingeschakeld via een **suggestie voor suggesties** die is toegevoegd aan een [zoek index](search-what-is-an-index.md). Een suggestie biedt ondersteuning voor twee ervaring: *automatisch aanvullen* , waarmee een gedeeltelijke invoer voor een volledige termijn query wordt voltooid en *suggesties* die door worden uitgenodigd, worden door middel van een bepaalde overeenkomst. Automatisch aanvullen produceert een query. Suggesties maken een overeenkomend document.
 
 De volgende scherm afbeelding van [het maken van uw eerste app in C#](tutorial-csharp-type-ahead-and-suggestions.md) illustreert beide. Bij automatisch aanvullen wordt een mogelijke term verwacht, waarbij ' TW ' wordt voltooid met ' in '. Suggesties zijn de resultaten van een mini maal zoek opdracht, waarbij een veld zoals de naam van het hotel een overeenkomend Hotel Zoek document uit de index vertegenwoordigt. Voor suggesties kunt u elk veld dat beschrijvende informatie bevat, op elk gewenst Opper vlak weer gegeven.
 
@@ -44,6 +44,8 @@ Als u een suggestie wilt maken, voegt u er een toe aan een [index schema](/rest/
 
 + Gebruik de standaard standaard-lucene Analyzer ( `"analyzer": null` ) of een [taal analyse](index-add-language-analyzers.md) (bijvoorbeeld `"analyzer": "en.Microsoft"` ) in het veld
 
+Als u probeert een suggestie te maken met behulp van bestaande velden, wordt deze niet door de API toegestaan. Voor voegsels worden gegenereerd tijdens het indexeren, wanneer gedeeltelijke termen in twee of meer teken combinaties worden getokend op basis van hele voor waarden. Gezien dat bestaande velden al zijn getokend, moet u de index opnieuw samen stellen als u deze wilt toevoegen aan een suggestie. Zie [een Azure Cognitive search-index opnieuw samen stellen](search-howto-reindex.md)voor meer informatie.
+
 ### <a name="choose-fields"></a>Velden kiezen
 
 Hoewel een suggestie meerdere eigenschappen heeft, is het hoofd zakelijk een verzameling teken reeks velden waarvoor u een zoek-als-u-type-ervaring inschakelt. Er is één suggestie voor elke index, dus de suggesties lijst moet alle velden bevatten die inhoud bijdragen voor beide suggesties en automatisch aanvullen.
@@ -64,12 +66,6 @@ Velden die gebruikmaken van [aangepaste analyse](index-add-custom-analyzers.md) 
 
 > [!NOTE]
 > Als u de restrictie beperking wilt omzeilen, bijvoorbeeld als u een tref woord of ngram Analyzer voor bepaalde query scenario's nodig hebt, moet u twee afzonderlijke velden voor dezelfde inhoud gebruiken. Hiermee kan een van de velden een suggestie bieden, terwijl de andere kan worden ingesteld met een aangepaste analyse configuratie.
-
-### <a name="when-to-create-a-suggester"></a>Wanneer maakt u een suggestie
-
-Het beste moment om een suggestie te maken, is wanneer u ook de veld definitie zelf maakt.
-
-Als u probeert een suggestie te maken met behulp van bestaande velden, wordt deze niet door de API toegestaan. Voor voegsels worden gegenereerd tijdens het indexeren, wanneer gedeeltelijke termen in twee of meer teken combinaties worden getokend op basis van hele voor waarden. Gezien dat bestaande velden al zijn getokend, moet u de index opnieuw samen stellen als u deze wilt toevoegen aan een suggestie. Zie [een Azure Cognitive search-index opnieuw samen stellen](search-howto-reindex.md)voor meer informatie.
 
 ## <a name="create-using-rest"></a>Maken met REST
 

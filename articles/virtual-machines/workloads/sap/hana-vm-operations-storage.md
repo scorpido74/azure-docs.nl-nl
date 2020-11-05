@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 99c94528c13228e07327b529782f211ec92a08ea
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670666"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359847"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -44,9 +44,9 @@ De minimale SAP HANA gecertificeerde voor waarden voor de verschillende opslag t
 
 - Azure Premium Storage- **/Hana/log** moet worden ondersteund door Azure [Write Accelerator](../../how-to-enable-write-accelerator.md). Het **/Hana/data** -volume kan in Premium Storage worden geplaatst zonder Azure write Accelerator of op een ultra schijf
 - Azure Ultra Disk ten minste voor het **/Hana/log** -volume. Het **/Hana/data** -volume kan worden geplaatst in Premium Storage zonder Azure write Accelerator of om sneller opnieuw opstarten te krijgen met een hoge schijf
-- **NFS v 4.1** -volumes boven op Azure NetApp files voor **/Hana/log en/Hana/data** . Het volume van/Hana/Shared kan NFS v3 of NFS v 4.1-protocol gebruiken
+- **NFS v 4.1** -volumes boven op Azure NetApp files voor **/Hana/log en/Hana/data**. Het volume van/Hana/Shared kan NFS v3 of NFS v 4.1-protocol gebruiken
 
-Sommige opslag typen kunnen worden gecombineerd. Het is bijvoorbeeld mogelijk om **/Hana/data** in te stellen op Premium Storage en **/Hana/log** kunnen op ultra Disk Storage worden geplaatst om de vereiste lage latentie te verkrijgen. Als u een volume gebruikt op basis van ANF voor **/Hana/data** , moet  **/Hana/log** -volume ook worden gebaseerd op NFS op ANF. Het gebruik van NFS op ANF voor een van de volumes (zoals/Hana/data) en Azure Premium Storage of Ultra disk voor het andere volume (zoals **/Hana/log** ) wordt **niet ondersteund** .
+Sommige opslag typen kunnen worden gecombineerd. Het is bijvoorbeeld mogelijk om **/Hana/data** in te stellen op Premium Storage en **/Hana/log** kunnen op ultra Disk Storage worden geplaatst om de vereiste lage latentie te verkrijgen. Als u een volume gebruikt op basis van ANF voor **/Hana/data** , moet  **/Hana/log** -volume ook worden gebaseerd op NFS op ANF. Het gebruik van NFS op ANF voor een van de volumes (zoals/Hana/data) en Azure Premium Storage of Ultra disk voor het andere volume (zoals **/Hana/log** ) wordt **niet ondersteund**.
 
 In de on-premises wereld moest u zelden aandacht houden met de I/O-subsystemen en de mogelijkheden ervan. Daarom moest de leverancier van het apparaat controleren of aan de minimale opslag vereisten wordt voldaan voor de SAP HANA. Wanneer u zelf de Azure-infra structuur bouwt, moet u rekening houden met een aantal van deze SAP-vereisten. Enkele van de minimale doorvoer kenmerken die door SAP worden aanbevolen, zijn:
 
@@ -93,7 +93,7 @@ In de onderstaande cache aanbevelingen voor Azure Premium-schijven worden de I/O
 - **Besturingssysteem schijf** -de standaard cache die door Azure is ingesteld tijdens het maken van de VM, niet wijzigen
 
 
-Als u LVM of mdadm gebruikt om stripesets te maken op verschillende Azure Premium-schijven, moet u Stripe-grootten definiëren. Deze grootten verschillen tussen **/Hana/data** en **/Hana/log** . **Aanbeveling: als het formaat van de Stripe moet worden gebruikt:**
+Als u LVM of mdadm gebruikt om stripesets te maken op verschillende Azure Premium-schijven, moet u Stripe-grootten definiëren. Deze grootten verschillen tussen **/Hana/data** en **/Hana/log**. **Aanbeveling: als het formaat van de Stripe moet worden gebruikt:**
 
 - 256 KB voor **/Hana/data**
 - 64 KB voor **/Hana/log**
@@ -179,8 +179,8 @@ Voor de andere volumes ziet de configuratie er als volgt uit:
 
 | VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /hana/shared | /root volume | /usr/sap |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 GiB | 500 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
-| M32ls | 256 GiB | 500 MBps |  1 x P20 | 1 x P6 | 1 x P6 |
+| M32ts | 192 GiB | 500 MBps | 1 x P15 | 1 x P6 | 1 x P6 |
+| M32ls | 256 GiB | 500 MBps |  1 x P15 | 1 x P6 | 1 x P6 |
 | M64ls | 512 GiB | 1000 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
 | M64s | 1.000 GiB | 1.000 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
 | M64ms | 1.750 GiB | 1.000 MBps | 1 x P30 | 1 x P6 | 1 x P6 | 

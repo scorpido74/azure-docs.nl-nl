@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36540de8924a1433f16f942d9aedc059efae05de
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348675"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360782"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
@@ -18,6 +18,9 @@ U kunt Updatebeheer in Azure Automation gebruiken om updates van besturings syst
 
 > [!NOTE]
 > U kunt een computer die is geconfigureerd met Updatebeheer niet gebruiken om aangepaste scripts uit Azure Automation uit te voeren. Op deze computer kan alleen het door micro soft ondertekende update script worden uitgevoerd.
+
+> [!NOTE]
+> Op dit moment wordt het inschakelen van Updatebeheer rechtstreeks vanaf een server waarop Arc is ingeschakeld, niet ondersteund. Zie [updatebeheer inschakelen in uw Automation-account](../../automation/update-management/enable-from-automation-account.md) voor meer informatie over vereisten en het inschakelen van uw server.
 
 Als u de beschik bare *essentiële* en *beveiligings* patches automatisch op uw Azure-VM wilt downloaden en installeren, controleert u [automatische VM-gast patches](../../virtual-machines/windows/automatic-vm-guest-patching.md) voor Windows-vm's.
 

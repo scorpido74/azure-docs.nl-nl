@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
-ms.custom: how-to
-ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, data4ml
+ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312788"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359864"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Verbinding maken met gegevens met behulp van de Azure Machine Learning Studio
 
@@ -50,8 +50,6 @@ Raadpleeg de volgende artikelen voor een code-eerste ervaring om de [Azure machi
 
 U kunt gegevens opslag maken op basis van [deze Azure Storage-oplossingen](how-to-access-data.md#matrix). **Voor niet-ondersteunde opslag oplossingen** en voor het opslaan van de kosten voor de uitvoer van gegevens tijdens ml experimenten, moet u [uw gegevens verplaatsen](how-to-access-data.md#move) naar een ondersteunde Azure Storage-oplossing. [Meer informatie over gegevens opslag](how-to-access-data.md). 
 
-
-
 Maak in een paar stappen een nieuwe gegevens opslag met behulp van de Azure Machine Learning Studio.
 
 > [!IMPORTANT]
@@ -60,7 +58,7 @@ Maak in een paar stappen een nieuwe gegevens opslag met behulp van de Azure Mach
 1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com/).
 1. Selecteer **gegevens opslag** in het linkerdeel venster onder **beheren**.
 1. Selecteer **+ Nieuw gegevensarchief**.
-1. Vul het formulier in voor een nieuwe gegevens opslag. Het formulier wordt intelligent bijgewerkt op basis van uw selecties voor het Azure-opslag type en verificatie type. Zie de [sectie opslag toegang en-machtigingen](#access-validation) voor meer informatie over waar u de verificatie referenties kunt vinden die u nodig hebt om dit formulier in te vullen.
+1. Vul het formulier in om een nieuw gegevens archief te maken en te registreren. Het formulier wordt intelligent bijgewerkt op basis van uw selecties voor het Azure-opslag type en verificatie type. Zie de [sectie opslag toegang en-machtigingen](#access-validation) voor meer informatie over waar u de verificatie referenties kunt vinden die u nodig hebt om dit formulier in te vullen.
 
 In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een **Azure Blob-gegevens opslag** maakt:
 
@@ -157,11 +155,15 @@ U vindt de account sleutel, het SAS-token en de gegevens van de Service-Principa
     * De bijbehorende **overzichts** pagina bevat de vereiste informatie, zoals Tenant-id en client-id.
 
 > [!IMPORTANT]
-> Uit veiligheids overwegingen moet u mogelijk uw toegangs sleutels wijzigen voor een Azure Storage account (account sleutel of SAS-token). Zorg er daarom voor dat u de nieuwe referenties synchroniseert met uw werk ruimte en de gegevens opslag die ermee zijn verbonden. Meer informatie over [het synchroniseren van uw bijgewerkte referenties](how-to-change-storage-access-key.md).
+> * Als u de toegangs sleutels voor een Azure Storage account (account sleutel of SAS-token) wilt wijzigen, moet u ervoor zorgen dat u de nieuwe referenties synchroniseert met uw werk ruimte en de gegevens opslag die ermee zijn verbonden. Meer informatie over [het synchroniseren van uw bijgewerkte referenties](how-to-change-storage-access-key.md). <br> <br>
+> * Als u de registratie ongedaan maakt en een gegevens archief met dezelfde naam opnieuw registreert, en dit mislukt, is het mogelijk dat de Azure Key Vault voor uw werk ruimte niet voor het voorlopig verwijderen is ingeschakeld. Voorlopig verwijderen is standaard ingeschakeld voor het sleutel kluis-exemplaar dat is gemaakt door uw werk ruimte, maar kan niet worden ingeschakeld als u een bestaande sleutel kluis hebt gebruikt of een werk ruimte hebt gemaakt vóór oktober 2020. Zie voor meer informatie over het inschakelen van soft voorlopig [verwijderen inschakelen voor een bestaande sleutel kluis]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 ### <a name="permissions"></a>Machtigingen
 
-Voor Azure Blob-container en Azure Data Lake gen 2-opslag, moet u ervoor zorgen dat uw verificatie referenties toegang hebben tot de **gegevens lezer** van de opslag-blob. Meer informatie over [Storage BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). 
+Voor Azure Blob-container en Azure Data Lake gen 2-opslag, moet u ervoor zorgen dat uw verificatie referenties toegang hebben tot **BLOB-gegevens lezer voor opslag** . Meer informatie over [Storage BLOB data Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). Een SAS-token voor het account is standaard ingesteld op geen machtigingen. 
+* Voor **Lees toegang** voor gegevens moet uw verificatie referenties mini maal lijst-en lees machtigingen voor containers en objecten hebben. 
+
+* Voor het **schrijven** van gegevens is het schrijven en toevoegen van machtigingen ook vereist.
 
 ## <a name="train-with-datasets"></a>Trainen met gegevenssets
 

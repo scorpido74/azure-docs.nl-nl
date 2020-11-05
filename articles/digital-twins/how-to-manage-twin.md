@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f8eae6381a438f6820f525a4d66cb5dc388eefb0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280386"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360068"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -32,7 +32,7 @@ Dit artikel richt zich op het beheren van digitale apparaatdubbels; Zie [*How-to
 Als u een dubbele wilt maken, gebruikt u de `CreateOrReplaceDigitalTwinAsync()` methode op de service-client als volgt:
 
 ```csharp
-await client.CreateOrReplaceDigitalTwinAsync("myTwinId", initData);
+await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myTwinId", initData);
 ```
 
 Als u een digitale dubbele wilt maken, moet u het volgende opgeven:
@@ -55,12 +55,7 @@ U kunt de eigenschappen van een twee initialiseren op het moment dat de dubbele 
 
 De twee keer dat er een API wordt gemaakt, accepteert een object dat is geserialiseerd in een geldige JSON-beschrijving van de dubbele eigenschappen. Zie [*concepten: Digital apparaatdubbels en de dubbele grafiek*](concepts-twins-graph.md) voor een beschrijving van de JSON-indeling voor een dubbele. 
 
-U kunt eerst een gegevens object maken om de dubbele en de bijbehorende eigenschaps gegevens weer te geven, zoals:
-
-```csharp
-await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(srcId, twin);
-```
-U kunt een parameter object hand matig of via een beschik bare helper-klasse maken. Hier volgt een voor beeld van elk.
+Eerst kunt u een gegevens object maken om de dubbele en de bijbehorende eigenschaps gegevens weer te geven. U kunt een parameter object hand matig of via een beschik bare helper-klasse maken. Hier volgt een voor beeld van elk.
 
 #### <a name="create-twins-using-manually-created-data"></a>Apparaatdubbels maken met hand matig gemaakte gegevens
 

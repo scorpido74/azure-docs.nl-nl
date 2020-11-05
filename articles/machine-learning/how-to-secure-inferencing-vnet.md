@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 3f1e2e12b7ba0a47c20614065510ffd1ae8bf195
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325346"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361162"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning-deductieomgeving beveiligen met virtuele netwerken
 
@@ -115,35 +115,10 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Wanneer het maken van het proces is voltooid, kunt u het decoderen of model leren uitvoeren op een AKS-cluster achter een virtueel netwerk. Zie [implementeren op AKS](how-to-deploy-and-where.md)voor meer informatie.
 
-## <a name="secure-vnet-traffic"></a>Beveiligd VNet-verkeer
-
-Er zijn twee benaderingen voor het isoleren van verkeer van en naar het AKS-cluster naar het virtuele netwerk:
-
-* __Persoonlijk AKS-cluster__ : deze benadering maakt gebruik van een persoonlijke Azure-koppeling om de communicatie met het cluster te beveiligen voor implementatie-en beheer bewerkingen.
-* __Interne AKS Load Balancer__ : met deze aanpak configureert u het eind punt voor uw implementaties naar AKS voor het gebruik van een privé-IP-adres in het virtuele netwerk.
-
-> [!WARNING]
-> Interne load balancer werkt niet met een AKS-cluster dat gebruikmaakt van kubenet. Als u een interne load balancer en een persoonlijk AKS-cluster tegelijk wilt gebruiken, configureert u uw particuliere AKS-cluster met Azure container Networking interface (CNI). Zie [Azure cni Networking configureren in de Azure Kubernetes-service](../aks/configure-azure-cni.md)voor meer informatie.
-
-### <a name="private-aks-cluster"></a>Persoonlijk AKS-cluster
-
-Standaard hebben AKS-clusters een besturings vlak of API-server met open bare IP-adressen. U kunt AKS configureren voor het gebruik van een privé beheergebied door een persoonlijk AKS-cluster te maken. Zie [een persoonlijk Azure Kubernetes service-cluster maken](../aks/private-clusters.md)voor meer informatie.
-
-Nadat u het persoonlijke AKS-cluster hebt gemaakt, [koppelt u het cluster aan het virtuele netwerk](how-to-create-attach-kubernetes.md) om te gebruiken met Azure machine learning.
+## <a name="network-contributor-role"></a>Rol netwerk bijdrager
 
 > [!IMPORTANT]
-> Voordat u een AKS-cluster met persoonlijke koppelingen gebruikt met Azure Machine Learning, moet u een ondersteunings incident openen om deze functionaliteit in te scha kelen. Zie [Quota's beheren en verhogen](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)voor meer informatie.
-
-### <a name="internal-aks-load-balancer"></a>Interne AKS load balancer
-
-AKS-implementaties gebruiken standaard een [open bare Load Balancer](../aks/load-balancer-standard.md). In deze sectie leert u hoe u AKS kunt configureren voor het gebruik van een interne load balancer. Een intern (of privé) load balancer wordt gebruikt wanneer alleen privé Ip's zijn toegestaan als frontend. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk
-
-Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor het gebruik van een _interne Load Balancer_. 
-
-#### <a name="network-contributor-role"></a>Rol netwerk bijdrager
-
-> [!IMPORTANT]
-> Als u een AKS-cluster maakt of koppelt met een virtueel netwerk dat u eerder hebt gemaakt, moet u de Service-Principal (SP) of de beheerde identiteit voor uw AKS-cluster de rol _netwerk bijdrage_ verlenen aan de resource groep met het virtuele netwerk. U moet dit doen voordat u probeert de interne load balancer te wijzigen in privé-IP.
+> Als u een AKS-cluster maakt of koppelt met een virtueel netwerk dat u eerder hebt gemaakt, moet u de Service-Principal (SP) of de beheerde identiteit voor uw AKS-cluster de rol _netwerk bijdrage_ verlenen aan de resource groep met het virtuele netwerk.
 >
 > Gebruik de volgende stappen om de identiteit als netwerkinzender toe te voegen:
 
@@ -171,6 +146,31 @@ Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor 
     az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
     ```
 Zie voor meer informatie over het gebruik van de interne load balancer met AKS [interne Load Balancer gebruiken met de Azure Kubernetes-service](../aks/internal-lb.md).
+
+## <a name="secure-vnet-traffic"></a>Beveiligd VNet-verkeer
+
+Er zijn twee benaderingen voor het isoleren van verkeer van en naar het AKS-cluster naar het virtuele netwerk:
+
+* __Persoonlijk AKS-cluster__ : deze benadering maakt gebruik van een persoonlijke Azure-koppeling om de communicatie met het cluster te beveiligen voor implementatie-en beheer bewerkingen.
+* __Interne AKS Load Balancer__ : met deze aanpak configureert u het eind punt voor uw implementaties naar AKS voor het gebruik van een privé-IP-adres in het virtuele netwerk.
+
+> [!WARNING]
+> Interne load balancer werkt niet met een AKS-cluster dat gebruikmaakt van kubenet. Als u een interne load balancer en een persoonlijk AKS-cluster tegelijk wilt gebruiken, configureert u uw particuliere AKS-cluster met Azure container Networking interface (CNI). Zie [Azure cni Networking configureren in de Azure Kubernetes-service](../aks/configure-azure-cni.md)voor meer informatie.
+
+### <a name="private-aks-cluster"></a>Persoonlijk AKS-cluster
+
+Standaard hebben AKS-clusters een besturings vlak of API-server met open bare IP-adressen. U kunt AKS configureren voor het gebruik van een privé beheergebied door een persoonlijk AKS-cluster te maken. Zie [een persoonlijk Azure Kubernetes service-cluster maken](../aks/private-clusters.md)voor meer informatie.
+
+Nadat u het persoonlijke AKS-cluster hebt gemaakt, [koppelt u het cluster aan het virtuele netwerk](how-to-create-attach-kubernetes.md) om te gebruiken met Azure machine learning.
+
+> [!IMPORTANT]
+> Voordat u een AKS-cluster met persoonlijke koppelingen gebruikt met Azure Machine Learning, moet u een ondersteunings incident openen om deze functionaliteit in te scha kelen. Zie [Quota's beheren en verhogen](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)voor meer informatie.
+
+### <a name="internal-aks-load-balancer"></a>Interne AKS load balancer
+
+AKS-implementaties gebruiken standaard een [open bare Load Balancer](../aks/load-balancer-standard.md). In deze sectie leert u hoe u AKS kunt configureren voor het gebruik van een interne load balancer. Een intern (of privé) load balancer wordt gebruikt wanneer alleen privé Ip's zijn toegestaan als frontend. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk
+
+Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor het gebruik van een _interne Load Balancer_. 
 
 #### <a name="enable-private-load-balancer"></a>Persoonlijke load balancer inschakelen
 

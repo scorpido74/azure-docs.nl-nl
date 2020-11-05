@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 69cc835b37d2405e15638d85309dc89d51c6d043
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "91598093"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360272"
 ---
 # <a name="data-flow-script-dfs"></a>Gegevens stroom script (DFS)
 
@@ -218,6 +218,17 @@ Dit is een fragment dat u in uw gegevens stroom kunt plakken, zodat u alle kolom
 ```
 split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
+```
+
+### <a name="automap-schema-drift-with-a-select"></a>AutoMap schema drift met een selectie
+Wanneer u een bestaand database schema van een onbekende of dynamische set binnenkomende kolommen wilt laden, moet u de kolommen aan de rechter kant toewijzen in de Sink-trans formatie. Dit is alleen nodig wanneer u een bestaande tabel wilt laden. Voeg dit fragment vóór uw Sink toe om een selectie te maken waarmee uw kolommen automatisch worden toegewezen. Zorg ervoor dat uw Sink-toewijzing automatisch is toegewezen.
+
+```
+select(mapColumn(
+        each(match(true()))
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> automap
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
