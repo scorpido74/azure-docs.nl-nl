@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 285c3bf37e9d6de042cb028745fc8b094d34c3a1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c0556350482e171234a3ff9dce0c16ed88d110
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284386"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93406709"
 ---
 Fouten die zijn opgetreden in een Azure Functions kunnen afkomstig zijn van een van de volgende oorsprongen:
 
@@ -23,15 +23,15 @@ De volgende goede procedures voor het afhandelen van fouten zijn belang rijk om 
 - [Application Insights inschakelen](../articles/azure-functions/functions-monitoring.md)
 - [Gestructureerde fout afhandeling gebruiken](#use-structured-error-handling)
 - [Ontwerpen voor idempotentie](../articles/azure-functions/functions-idempotent.md)
-- [Beleid voor opnieuw proberen implementeren](#retry-policies) (indien van toepassing)
+- [Beleid voor opnieuw proberen implementeren](#retry-policies-preview) (indien van toepassing)
 
 ### <a name="use-structured-error-handling"></a>Gestructureerde fout afhandeling gebruiken
 
 Vastleggen en vastleggen van fouten is van cruciaal belang voor het controleren van de status van uw toepassing. Het bovenste niveau van een functie code moet een try/catch-blok bevatten. In het blok catch kunt u fouten vastleggen en registreren.
 
-## <a name="retry-policies"></a>Beleid voor opnieuw proberen
+## <a name="retry-policies-preview"></a>Beleid voor opnieuw proberen (voor beeld)
 
-Een beleid voor opnieuw proberen kan worden gedefinieerd voor elke functie voor elk type trigger in uw functie-app.  Het beleid voor opnieuw proberen voert een functie opnieuw uit totdat de uitvoering is geslaagd of totdat het maximum aantal nieuwe pogingen is ontstaan.  Beleid voor opnieuw proberen kan worden gedefinieerd voor alle functies in een app of voor afzonderlijke functies.  Standaard worden berichten van een functie-app niet opnieuw geprobeerd (afgezien van de [specifieke triggers die een beleid voor opnieuw proberen hebben op de trigger bron](#trigger-specific-retry-support)).  Een beleid voor opnieuw proberen wordt geëvalueerd wanneer een uitvoering resulteert in een niet-onderschepte uitzonde ring.  Als best practice moet u alle uitzonde ringen in uw code opvangen en eventuele fouten opnieuw genereren die moeten resulteren in een nieuwe poging.  Event Hubs en Azure Cosmos DB controle punten worden pas geschreven wanneer het beleid voor opnieuw proberen voor de uitvoering is voltooid, wat betekent dat de voortgang van de partitie wordt onderbroken totdat de huidige batch is voltooid.
+Een beleid voor opnieuw proberen kan worden gedefinieerd voor elke functie voor elk type trigger in uw functie-app.  Het beleid voor opnieuw proberen voert een functie opnieuw uit totdat de uitvoering is geslaagd of totdat het maximum aantal nieuwe pogingen is ontstaan.  Beleid voor opnieuw proberen kan worden gedefinieerd voor alle functies in een app of voor afzonderlijke functies.  Standaard worden berichten van een functie-app niet opnieuw geprobeerd (afgezien van de [specifieke triggers die een beleid voor opnieuw proberen hebben op de trigger bron](#using-retry-support-on-top-of-trigger-resilience)).  Een beleid voor opnieuw proberen wordt geëvalueerd wanneer een uitvoering resulteert in een niet-onderschepte uitzonde ring.  Als best practice moet u alle uitzonde ringen in uw code opvangen en eventuele fouten opnieuw genereren die moeten resulteren in een nieuwe poging.  Event Hubs en Azure Cosmos DB controle punten worden pas geschreven wanneer het beleid voor opnieuw proberen voor de uitvoering is voltooid, wat betekent dat de voortgang van de partitie wordt onderbroken totdat de huidige batch is voltooid.
 
 ### <a name="retry-policy-options"></a>Beleids opties voor opnieuw proberen
 
@@ -57,6 +57,8 @@ U kunt een beleid voor opnieuw proberen definiëren voor een specifieke functie.
 #### <a name="fixed-delay-retry"></a>Nieuwe poging vaste vertraging
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+Voor nieuwe pogingen is NuGet Package [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23 vereist
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -152,6 +154,8 @@ Dit is het beleid voor opnieuw proberen in het *function.js* bestand:
 #### <a name="exponential-backoff-retry"></a>Exponentiële uitstel opnieuw proberen
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+Voor nieuwe pogingen is NuGet Package [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23 vereist
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -255,12 +259,27 @@ Dit is het beleid voor opnieuw proberen in het *function.js* bestand:
 |minimumInterval|n.v.t.|De minimale vertraging voor nieuwe pogingen bij het gebruik van de `exponentialBackoff` strategie.|
 |maximumInterval|n.v.t.|De maximale vertraging voor nieuwe pogingen bij het gebruik van de `exponentialBackoff` strategie.| 
 
-## <a name="trigger-specific-retry-support"></a>Trigger-specifieke ondersteuning voor nieuwe pogingen
+### <a name="retry-limitations-during-preview"></a>De beperkingen voor opnieuw proberen tijdens de preview
 
-Sommige triggers geven nieuwe pogingen bij de trigger bron.  Deze triggers kunnen worden gebruikt naast of als vervanging voor het beleid voor opnieuw proberen van de functie-app.  Als u een vast aantal nieuwe pogingen wilt doen, moet u het trigger beleid voor opnieuw proberen gebruiken voor het beleid voor opnieuw proberen van de algemene host.  Met de volgende triggers worden nieuwe pogingen voor de trigger bron ondersteund:
+- Voor .NET-projecten moet u mogelijk hand matig een versie van [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23 ophalen.
+- In het verbruiks abonnement kan de app worden geschaald naar nul tijdens het opnieuw proberen van de eind berichten in een wachtrij.
+- In het verbruiks abonnement kan de app worden geschaald tijdens het uitvoeren van nieuwe pogingen.  Kies voor de beste resultaten een interval voor opnieuw proberen <= 00:01:00 en <= 5 nieuwe pogingen.
+
+## <a name="using-retry-support-on-top-of-trigger-resilience"></a>Ondersteuning voor nieuwe pogingen gebruiken boven op de trigger tolerantie
+
+Het beleid voor het opnieuw proberen van de functie-app is onafhankelijk van eventuele nieuwe pogingen of toleranties die door de trigger worden geboden.  Het beleid voor opnieuw proberen wordt alleen op de laag van een trigger overschreven tot een nieuwe poging.  Als u bijvoorbeeld Azure Service Bus gebruikt, wordt voor de standaard wachtrij een aantal berichten geleverd van 10.  Het standaard aantal bezorgingen betekent dat na 10 pogingen om een wachtrij bericht te leveren, Service Bus onbestelbaar bericht wordt verzonden.  U kunt een beleid voor opnieuw proberen definiëren voor een functie met een Service Bus trigger, maar de nieuwe pogingen slaagt op de Service Bus bezorgings pogingen.  
+
+Als u bijvoorbeeld de standaard Service Bus leverings aantallen van 10 hebt gebruikt en een beleid voor opnieuw proberen van de functie 5 hebt gedefinieerd.  Het bericht wordt eerst in de wachtrij geplaatst, waarbij het service bus-bezorgings account wordt verhoogd naar 1.  Als het uitvoeren van elke uitvoering is mislukt, wordt dat bericht na vijf pogingen om hetzelfde bericht te activeren, gemarkeerd als afgebroken.  Service Bus het bericht onmiddellijk opnieuw in de wachtrij plaatsen, wordt de functie geactiveerd en wordt het aantal levering verhoogd naar 2.  Ten slotte wordt na 50 tot een aantal pogingen (10 service bus-leveringen * vijf nieuwe pogingen per levering) het bericht afgebroken en wordt er een onbestelbare letter op service bus geactiveerd.
+
+> [!WARNING]
+> Het is niet raadzaam om het aantal bezorgingen voor een trigger als Service Bus wacht rijen in te stellen op 1, wat betekent dat het bericht onbestelbaar wordt direct na een nieuwe cyclus van een enkele functie.  Dit komt omdat triggers toleranties met nieuwe pogingen bieden, terwijl het beleid voor nieuwe pogingen het beste is en dit kan leiden tot minder dan het gewenste aantal nieuwe pogingen.
+
+### <a name="triggers-with-additional-resiliency-or-retries"></a>Triggers met extra tolerantie of nieuwe pogingen
+
+Met de volgende triggers worden nieuwe pogingen voor de trigger bron ondersteund:
 
 * [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure-wachtrij opslag](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (wachtrij/onderwerp)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Deze triggers worden standaard Maxi maal vijf keer aangevraagd. Na de vijfde nieuwe poging is de Azure Queue-opslag en de Azure Service Bus trigger een bericht naar een [verontreinigde wachtrij](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)schrijven.
+De meeste pogingen van triggers worden standaard Maxi maal vijf keer aangevraagd. Na de vijfde nieuwe poging wordt door de Azure Queue-opslag een bericht naar een [verontreinigde wachtrij](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)geschreven.  Met de standaard Service Bus wachtrij en onderwerpbeleid wordt een bericht naar een [wachtrij met onbestelbare](../articles/service-bus-messaging/service-bus-dead-letter-queues.md) berichten geschreven na 10 pogingen.
