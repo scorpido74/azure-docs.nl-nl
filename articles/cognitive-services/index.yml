@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: ca210f144d56aa56ddbcb959e0240bd4816dc3af
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: b1aa2c098ead7086e670a92ce0657aa5a20a2b61
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92547109"
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93323101"
 highlightedContent:
   items:
   - title: Wat is Cognitive Services?
@@ -118,9 +118,12 @@ conceptualContent:
   - title: Containers voor Cognitive Services
     summary: Met containerondersteuning in Azure Cognitive Services kunnen ontwikkelaars gebruikmaken van dezelfde uitgebreide API's die beschikbaar zijn in Azure. Ook biedt de ondersteuning flexiliteit in de implementatie en hostlocatie van de service die bij Docker-containers horen.
     links:
+    - url: ./containers/index.yml
+      itemType: overview
+      text: Documentatie voor Cognitive Services-containers
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: Containers voor Cognitive Services
+      text: Wat zijn Cognitive Service-containers?
     - url: ./containers/container-reuse-recipe.md
       itemType: learn
       text: Containers maken voor hergebruik

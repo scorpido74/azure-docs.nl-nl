@@ -39,8 +39,6 @@
           href: how-to-automatic-language-detection.md
         - name: De API voor transcriptie in batch gebruiken
           href: batch-transcription.md
-        - name: Uitspraak evalueren
-          href: how-to-pronunciation-assessment.md
     - name: Zelfstudies
       items:
         - name: Spraak herkennen die is opgeslagen in blobopslag
@@ -530,6 +528,8 @@
           href: deploy-speech-on-container-instances.md
         - name: Veelgestelde vragen over containers
           href: speech-container-faq.md
+        - name: Documentatie voor Cognitive Services-containers
+          href: ../containers/index.yml
 - name: Apparaten
   items:
     - name: Documentatie over Speech Devices

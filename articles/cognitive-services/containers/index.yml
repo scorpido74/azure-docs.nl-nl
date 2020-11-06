@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Azure Cognitive Services-containers
+summary: Azure Cognitive Services biedt verschillende containers om AI on-premises te gebruiken. Containers bieden u de flexibiliteit om Cognitive Services dichterbij uw gegevens te brengen voor naleving, beveiliging en andere operationele redenen.
+metadata:
+  title: Azure Cognitive Services-containers
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.topic: landing-page
+  ms.date: 10/27/2020
+  ms.author: aahi
+  ms.openlocfilehash: 28eb8450201280e58e24dd5ad9b8826165b614c3
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93328069"
+landingContent:
+- title: Over Cognitive Services-containers
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Wat zijn Cognitive Services-containers?
+      url: ../cognitive-services-container-support.md
+    - text: Veelgestelde vragen
+      url: container-faq.md
+    - text: Tags voor containerinstallatiekopieën
+      url: container-image-tags.md
+- title: Containerrecepten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Recept voor hergebruik van containers
+      url: container-reuse-recipe.md
+    - text: Implementeren in Azure Container Instances
+      url: azure-container-instance-recipe.md
+    - text: Implementeren in Kubernetes
+      url: azure-kubernetes-recipe.md
+    - text: Implementeren met Docker Compose
+      url: azure-kubernetes-recipe.md
+- title: Vision-containers
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../computer-vision/computer-vision-how-to-install-containers.md
+      text: OCR lezen
+    - url: ../computer-vision/spatial-analysis-container.md
+      text: Ruimtelijke analyse
+    - url: ../face/face-how-to-install-containers.md
+      text: Face
+    - url: ../form-recognizer/form-recognizer-container-howto.md
+      text: Form Recognizer
+- title: Taalcontainers
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+      text: Sentimentanalyse
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
+      text: Sleuteltermextractie
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
+      text: Taaldetectie van tekst
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare
+      text: Text Analytics voor status
+    - url: ../luis/luis-container-howto.md
+      text: LUIS-container
+- title: Spraakcontainers
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../speech-service/speech-container-howto.md?tabs=stt
+      text: Spraak-naar-tekst
+    - url: ../speech-service/speech-container-howto.md?tabs=cstt
+      text: Aangepaste spraak-naar-tekst
+    - url: ../speech-service/speech-container-howto.md?tabs=tts
+      text: Tekst naar spraak
+    - url: ../speech-service/speech-container-howto.md?tabs=ctts
+      text: Aangepaste tekst-naar-spraak
+    - url: ../speech-service/speech-container-howto.md?tabs=ntts
+      text: Neurale tekst-naar-spraak
+    - url: ../speech-service/speech-container-howto.md?tabs=lid
+      text: Taaldetectie van spraak
+- title: Beslissingscontainer
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../anomaly-detector/anomaly-detector-container-howto.md
+      text: Anomaly Detector

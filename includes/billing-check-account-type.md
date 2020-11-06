@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
 ms.openlocfilehash: 6787983421285122834479cb652fec52ee7bf72b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91360685"
 ---
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
  
-2. Zoek naar **kostenbeheer en facturering** .
+2. Zoek naar **kostenbeheer en facturering**.
  
    ![Schermopname van een zoekopdracht in Azure Portal naar kostenbeheer en facturering.](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
  
@@ -23,7 +23,7 @@ ms.locfileid: "91360685"
     
     Het **Type factureringsaccount** op de pagina Eigenschappen bepaalt het type van uw account. De mogelijke typen zijn: Microsoft Online-serviceprogramma, Enterprise Agreement, Microsoft-klantovereenkomst en Microsoft Partner-overeenkomst. Zie [Uw factureringsaccounts weergeven in de Azure-portal](../articles/cost-management-billing/manage/view-all-accounts.md) voor meer informatie over typen factureringsaccounts.  
  
-4. Als u toegang hebt tot meerdere factureringsbereiken, controleert u het type in de kolom **Type factureringsaccount** .
+4. Als u toegang hebt tot meerdere factureringsbereiken, controleert u het type in de kolom **Type factureringsaccount**.
  
     ![Schermopname met Microsoft-klantovereenkomst op de pagina met een lijst van factureringsaccounts](./media/billing-check-account-type/billing-account-type-in-the-list.png)
  

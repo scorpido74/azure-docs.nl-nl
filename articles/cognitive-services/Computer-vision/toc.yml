@@ -161,6 +161,8 @@
           href: spatial-analysis-zone-line-placement.md
         - name: Cameraplaatsing
           href: spatial-analysis-camera-placement.md
+    - name: Documentatie voor Cognitive Services-containers
+      href: ../containers/index.yml
 - name: Instructiegidsen
   items:
     - name: De Computer Vision-API aanroepen
