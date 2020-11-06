@@ -4,12 +4,12 @@ description: Meer informatie over hoe u via een programma toegang hebt tot uw re
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71e647c05a84c70fe61a66458801bf7390dcb653
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913208"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337488"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Key Vault veilig openen met Batch
 
@@ -46,7 +46,7 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
-De toegang tot Key Vault wordt verleend aan een **gebruiker** of een **Service-Principal** . Als u toegang wilt krijgen tot Key Vault via een programma, gebruikt u een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) met het certificaat dat u in de vorige stap hebt gemaakt. De Service-Principal moet zich in dezelfde Azure AD-Tenant beKey Vault.
+De toegang tot Key Vault wordt verleend aan een **gebruiker** of een **Service-Principal**. Als u toegang wilt krijgen tot Key Vault via een programma, gebruikt u een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) met het certificaat dat u in de vorige stap hebt gemaakt. De Service-Principal moet zich in dezelfde Azure AD-Tenant beKey Vault.
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -67,7 +67,7 @@ De Url's voor de toepassing zijn niet belang rijk, omdat we deze alleen gebruike
 
 ## <a name="grant-rights-to-key-vault"></a>Rechten toekennen aan Key Vault
 
-De service-principal die in de vorige stap is gemaakt, heeft toestemming nodig om de geheimen op te halen uit Key Vault. Machtigingen kunnen worden verleend via de [Azure Portal](/key-vault/general/assign-access-policy-portal.md) of met de Power shell-opdracht hieronder.
+De service-principal die in de vorige stap is gemaakt, heeft toestemming nodig om de geheimen op te halen uit Key Vault. Machtigingen kunnen worden verleend via de [Azure Portal](/azure/key-vault/general/assign-access-policy-portal) of met de Power shell-opdracht hieronder.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'

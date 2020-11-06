@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147945"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337505"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy het exporteren van orders
 
@@ -50,11 +50,11 @@ Zie [Aanbevolen procedures voor Azure RBAC](../role-based-access-control/best-pr
 
 ## <a name="enable-verbose-log-in-the-order"></a>Uitgebreide logboek inschakelen in de volg orde
 
-Wanneer u een export volgorde voor Data Box plaatst, hebt u de mogelijkheid om de verzameling uitgebreide Logboeken in te scha kelen. Hier volgt het bestel scherm waarin u het uitgebreide logboek kunt inschakelen:
+Wanneer u een export volgorde voor Data Box plaatst, hebt u de mogelijkheid om de verzameling van een uitgebreid logboek in te scha kelen. Hier volgt het bestel scherm waarin u het uitgebreide logboek kunt inschakelen:
 
-![Selecteer de optie exporteren](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+![Selecteer de optie exporteren](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-Wanneer u de optie **uitgebreide logboek opnemen** selecteert, wordt er een uitgebreid logboek bestand gegenereerd bij het kopiëren van de gegevens uit uw Azure Storage-account. Dit logboek bevat een lijst met alle bestanden die zijn geëxporteerd.      
+Wanneer u de optie **uitgebreide logboek opnemen** selecteert, wordt er een uitgebreid logboek bestand gegenereerd bij het kopiëren van de gegevens uit uw Azure Storage-account. Dit logboek bevat een lijst met alle bestanden die zijn geëxporteerd.
 
 Zie [een export volgorde voor data Box maken](data-box-deploy-export-ordered.md) voor meer informatie over de export volgorde
 
@@ -246,13 +246,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Ordergeschiedenis downloaden
 
-Order geschiedenis is beschikbaar in Azure Portal. Als de order is voltooid en het opschonen van het apparaat (gegevens verwijdering van de schijven) is voltooid, gaat u naar **de volg orde**van uw apparaten en navigeert u naar Bestellingsgegevens. De optie **Ordergeschiedenis downloaden** is beschikbaar. Zie [order geschiedenis downloaden](data-box-portal-admin.md#download-order-history)voor meer informatie.
+Order geschiedenis is beschikbaar in Azure Portal. Als de order is voltooid en het opschonen van het apparaat (gegevens verwijdering van de schijven) is voltooid, gaat u naar **de volg orde** van uw apparaten en navigeert u naar Bestellingsgegevens. De optie **Ordergeschiedenis downloaden** is beschikbaar. Zie [order geschiedenis downloaden](data-box-portal-admin.md#download-order-history)voor meer informatie.
 
 Als u door de order geschiedenis schuift, ziet u het volgende:
 
 - Informatie over het bijhouden van vervoerders voor uw apparaat.
 - Gebeurtenissen met *SecureErase* -activiteit. Deze gebeurtenissen komen overeen met het verwijderen van de gegevens op de schijf.
-- Data Box logboek koppelingen. De paden voor de *audit logboeken*, *Kopieer logboeken*en *stuk lijst* bestanden worden weer gegeven.
+- Data Box logboek koppelingen. De paden voor de *audit logboeken* , *Kopieer logboeken* en *stuk lijst* bestanden worden weer gegeven.
 
 Hier volgt een voor beeld van het logboek voor order geschiedenis van Azure Portal:
 

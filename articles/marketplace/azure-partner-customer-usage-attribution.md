@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 3f3196e775ff9e7d8064559069414952f09a3016
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360221"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337896"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -43,7 +43,7 @@ De toewijzing van klant gebruik ondersteunt drie implementatie opties:
 Een GUID is een unieke referentie-id met 32 hexadecimale cijfers. Als u GUID'S wilt maken voor bijhouden, moet u een GUID-generator gebruiken, bijvoorbeeld via Power shell.
 
 ```powershell
-[guid]::NewGuid()]
+[guid]::NewGuid()
 ```
 
 We raden u aan om voor elk product een unieke GUID te maken voor elk aanbod en distributie kanaal. U kunt ervoor kiezen om een enkele GUID voor de meerdere distributie kanalen van het product te gebruiken als u niet wilt dat rapportage wordt gesplitst.

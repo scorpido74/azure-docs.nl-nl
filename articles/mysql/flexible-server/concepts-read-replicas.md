@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 9d683f96f31d3b34ac311251f45456551148ca26
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ae73885016a40cd3cf79de968ca7c07c51f1400a
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420883"
+ms.locfileid: "94336060"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Replica's in Azure Database for MySQL-flexibele server lezen
 
@@ -125,8 +125,8 @@ Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failov
 | Gestopte replica's | Als u de replicatie tussen een bron server en een lees replica stopt, wordt de gestopte replica een zelfstandige server die zowel lees-als schrijf bewerkingen accepteert. De zelfstandige server kan niet opnieuw in een replica worden gemaakt. |
 | Verwijderde bron-en zelfstandige servers | Wanneer een bron server wordt verwijderd, wordt replicatie gestopt met alle replica's lezen. Deze replica's worden automatisch zelfstandige servers en kunnen Lees-en schrijf bewerkingen accepteren. De bron server zelf wordt verwijderd. |
 | Gebruikersaccounts | Gebruikers op de bron server worden gerepliceerd naar de Lees replica's. U kunt alleen verbinding maken met een lees replica met behulp van de beschik bare gebruikers accounts op de bron server. |
-| Serverparameters | Om problemen met de synchronisatie van gegevens en mogelijk verlies of beschadiging van gegevens te voorkomen, worden bepaalde serverparameters vergrendeld zodat ze niet kunnen worden bijgewerkt bij gebruik van replica's voor lezen. <br> De volgende server parameters zijn vergrendeld op de bron-en replica servers:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> De [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) para meter is vergrendeld op de replica servers. <br> Als u een van de bovenstaande para meters op de bron server wilt bijwerken, verwijdert u de replica servers, werkt u de parameter waarde op de bron bij en maakt u de replica's opnieuw. |
-| Anders | Het maken van een replica van een replica wordt niet ondersteund. <br> -In-Memory tabellen kunnen ertoe leiden dat replica's niet meer synchroon zijn. Dit is een beperking van de MySQL-replicatie technologie. Meer informatie vindt u in de [referentie documentatie voor mysql](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>-Zorg ervoor dat de bron Server tabellen primaire sleutels hebben. Het ontbreken van primaire sleutels kan leiden tot replicatie latentie tussen de bron en de replica's.<br>-Bekijk de volledige lijst met MySQL-replicatie beperkingen in de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) |
+| Serverparameters | Om problemen met de synchronisatie van gegevens en mogelijk verlies of beschadiging van gegevens te voorkomen, worden bepaalde serverparameters vergrendeld zodat ze niet kunnen worden bijgewerkt bij gebruik van replica's voor lezen. <br> De volgende server parameters zijn vergrendeld op de bron-en replica servers:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> De [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) para meter is vergrendeld op de replica servers. <br> Als u een van de bovenstaande para meters op de bron server wilt bijwerken, verwijdert u de replica servers, werkt u de parameter waarde op de bron bij en maakt u de replica's opnieuw. |
+| Overige | Het maken van een replica van een replica wordt niet ondersteund. <br> -In-Memory tabellen kunnen ertoe leiden dat replica's niet meer synchroon zijn. Dit is een beperking van de MySQL-replicatie technologie. Meer informatie vindt u in de [referentie documentatie voor mysql](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>-Zorg ervoor dat de bron Server tabellen primaire sleutels hebben. Het ontbreken van primaire sleutels kan leiden tot replicatie latentie tussen de bron en de replica's.<br>-Bekijk de volledige lijst met MySQL-replicatie beperkingen in de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) |
 
 ## <a name="next-steps"></a>Volgende stappen
 

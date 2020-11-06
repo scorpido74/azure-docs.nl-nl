@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 6c0908d2656d9d6464ae1f94d5b0cd68f759530a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 972c32b5403a7e6f614161271b7cb7e88693e032
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637340"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335091"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics werkruimte gegevens exporteren in Azure Monitor (preview-versie)
 Met Log Analytics werkruimte gegevens exporteren in Azure Monitor kunt u voortdurend gegevens exporteren uit geselecteerde tabellen in uw Log Analytics-werk ruimte naar een Azure Storage-account of Azure-Event Hubs wanneer het wordt verzameld. Dit artikel bevat informatie over deze functie en de stappen voor het configureren van gegevens export in uw werk ruimten.
@@ -64,9 +64,9 @@ Er zijn momenteel geen extra kosten verbonden aan de functie voor het exporteren
 ## <a name="export-destinations"></a>Export doelen
 
 ### <a name="storage-account"></a>Storage-account
-Gegevens worden elk uur naar opslag accounts verzonden. De gegevens export configuratie maakt een container voor elke tabel in het opslag account met de naam *am,* gevolgd door de naam van de tabel. De tabel *SecurityEvent* wordt bijvoorbeeld verzonden naar een container met de naam *am-SecurityEvent* .
+Gegevens worden elk uur naar opslag accounts verzonden. De gegevens export configuratie maakt een container voor elke tabel in het opslag account met de naam *am,* gevolgd door de naam van de tabel. De tabel *SecurityEvent* wordt bijvoorbeeld verzonden naar een container met de naam *am-SecurityEvent*.
 
-Het BLOB-pad van het opslag account is *WorkspaceResourceId =/Subscriptions/Subscription-id/ResourceGroups/ \<resource-group\> /providers/Microsoft.operationalinsights/Workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d = \<two-digit numeric day\> /h = \<two-digit 24-hour clock hour\> /m = 00/PT1H.jsop* . Omdat toevoeg-blobs zijn beperkt tot 50.000-schrijf bewerkingen in opslag, kan het aantal geëxporteerde blobs worden uitgebreid als het aantal toegevoegde waarden hoog is. Het naamgevings patroon voor blobs in zo'n geval zou worden PT1H_ #. json, waarbij # het aantal incrementele blobs is.
+Het BLOB-pad van het opslag account is *WorkspaceResourceId =/Subscriptions/Subscription-id/ResourceGroups/ \<resource-group\> /providers/Microsoft.operationalinsights/Workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d = \<two-digit numeric day\> /h = \<two-digit 24-hour clock hour\> /m = 00/PT1H.jsop*. Omdat toevoeg-blobs zijn beperkt tot 50.000-schrijf bewerkingen in opslag, kan het aantal geëxporteerde blobs worden uitgebreid als het aantal toegevoegde waarden hoog is. Het naamgevings patroon voor blobs in zo'n geval zou worden PT1H_ #. json, waarbij # het aantal incrementele blobs is.
 
 De gegevens indeling van het opslag account is [JSON-lijnen](diagnostic-logs-append-blobs.md). Dit betekent dat elke record wordt gescheiden door een nieuwe regel, zonder een matrix van buitenste records en geen komma's tussen JSON-records. 
 
@@ -75,7 +75,7 @@ De gegevens indeling van het opslag account is [JSON-lijnen](diagnostic-logs-app
 Log Analytics gegevens export kan toevoeg-blobs schrijven naar onveranderlijke opslag accounts wanneer de instelling *allowProtectedAppendWrites* is ingeschakeld voor het Bewaar beleid op basis van tijd. Hierdoor kunnen nieuwe blokken naar een toevoeg-BLOB worden geschreven, terwijl de beveiliging en naleving van Onveranderbaarheid behouden blijven. Zie het [schrijven van beveiligde toevoeg-blobs toestaan](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
 
 ### <a name="event-hub"></a>Event Hub
-Gegevens worden bijna in realtime naar uw Event Hub verzonden, omdat deze Azure Monitor bereikt. Er wordt een Event Hub gemaakt voor elk gegevens type dat u exporteert *,* gevolgd door de naam van de tabel. De tabel *SecurityEvent* wordt bijvoorbeeld verzonden naar een event hub met de naam *am-SecurityEvent* . Als u wilt dat de geëxporteerde gegevens een specifieke Event Hub bereiken, of als u een tabel hebt met een naam die groter is dan de limiet van 47 tekens, kunt u uw eigen Event Hub naam opgeven en alle gegevens voor gedefinieerde tabellen naar de groep exporteren.
+Gegevens worden bijna in realtime naar uw Event Hub verzonden, omdat deze Azure Monitor bereikt. Er wordt een Event Hub gemaakt voor elk gegevens type dat u exporteert *,* gevolgd door de naam van de tabel. De tabel *SecurityEvent* wordt bijvoorbeeld verzonden naar een event hub met de naam *am-SecurityEvent*. Als u wilt dat de geëxporteerde gegevens een specifieke Event Hub bereiken, of als u een tabel hebt met een naam die groter is dan de limiet van 47 tekens, kunt u uw eigen Event Hub naam opgeven en alle gegevens voor gedefinieerde tabellen naar de groep exporteren.
 
 Het volume van de geëxporteerde gegevens neemt vaak toe in de loop van de tijd en de Event Hub schaal moet worden verhoogd om grotere overdrachts snelheden te verwerken en om te voor komen dat scenario's en gegevens latentie worden beperkt. U moet de functie voor automatisch verg Roten van Event Hubs gebruiken om het aantal doorvoer eenheden automatisch te verg Roten of te verhogen en te voldoen aan de behoeften van het gebruik. Zie [Event hubs doorvoer eenheden van Azure automatisch schalen](../../event-hubs/event-hubs-auto-inflate.md) voor meer informatie.
 
@@ -99,7 +99,7 @@ De volgende Azure-resource provider moet zijn geregistreerd voor uw abonnement o
 
 - Microsoft.Insights
 
-Deze resource provider is waarschijnlijk al geregistreerd voor de meeste gebruikers van Azure Monitor. Als u wilt controleren, gaat u naar **abonnementen** in het Azure Portal. Selecteer uw abonnement en klik vervolgens op **resource providers** in het gedeelte **instellingen** van het menu. Zoek **micro soft. Insights** . Als de status is **geregistreerd** , is deze al geregistreerd. Als dat niet het geval is, klikt u op **registreren** om het te registreren.
+Deze resource provider is waarschijnlijk al geregistreerd voor de meeste gebruikers van Azure Monitor. Als u wilt controleren, gaat u naar **abonnementen** in het Azure Portal. Selecteer uw abonnement en klik vervolgens op **resource providers** in het gedeelte **instellingen** van het menu. Zoek **micro soft. Insights**. Als de status is **geregistreerd** , is deze al geregistreerd. Als dat niet het geval is, klikt u op **registreren** om het te registreren.
 
 U kunt ook een van de beschik bare methoden gebruiken om een resource provider te registreren zoals beschreven in [Azure-resource providers en-typen](../../azure-resource-manager/management/resource-providers-and-types.md). Hieronder volgt een voor beeld van een opdracht met behulp van Power shell:
 
@@ -189,6 +189,7 @@ Hier volgt een voor beeld van een hoofd tekst voor de REST-aanvraag voor een Eve
         ],
         "enable": true
     }
+  }
 }
 ```
 
@@ -270,7 +271,7 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 
 
 | Tabel | Beperkingen |
-|:---|:---|:---|
+|:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |
 | AADDomainServicesDirectoryServiceAccess | |
@@ -436,7 +437,6 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | WindowsEvent | |
 | WindowsFirewall | |
 | WireData | Gedeeltelijke ondersteuning. Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Deze gegevens worden momenteel niet geëxporteerd. |
-| WorkloadMonitoringPerf | |
 | WorkloadMonitoringPerf | |
 | WVDAgentHealthStatus | |
 | WVDCheckpoints | |

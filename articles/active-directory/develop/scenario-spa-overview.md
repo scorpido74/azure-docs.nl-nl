@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 658e7f206f892c9dc241aab228aa933884f95b94
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 11a295402c925f5b8244eb3294097ff2271b5d68
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675637"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335261"
 ---
 # <a name="scenario-single-page-application"></a>Scenario: Toepassing met één pagina
 
@@ -38,7 +38,7 @@ Het micro soft Identity-platform biedt **twee** opties voor het inschakelen van 
 
 ![Toepassingen met één pagina - verificatie](./media/scenarios/spa-app-auth.svg)
 
-- [Impliciete OAuth 2.0-stroom](./v2-oauth2-implicit-grant-flow.md). De impliciete toekenningsstroom stelt de toepassing in staat om **id-tokens** en **toegangstokens** op te halen. In tegenstelling tot de autorisatiecodestroom retourneert de impliciete toekenningsstroom geen **vernieuwingstoken** .
+- [Impliciete OAuth 2.0-stroom](./v2-oauth2-implicit-grant-flow.md). De impliciete toekenningsstroom stelt de toepassing in staat om **id-tokens** en **toegangstokens** op te halen. In tegenstelling tot de autorisatiecodestroom retourneert de impliciete toekenningsstroom geen **vernieuwingstoken**.
 
 ![Toepassingen met één pagina - impliciet](./media/scenarios/spa-app.svg)
 
@@ -58,5 +58,4 @@ U hebt het volgende nodig om dit scenario voor uw toepassing in te scha kelen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [App-registratie](scenario-spa-app-registration.md)
+[App-registratie](scenario-spa-app-registration.md)

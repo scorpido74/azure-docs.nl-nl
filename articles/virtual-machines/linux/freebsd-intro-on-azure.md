@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 2959904029643e5345590bd49f81b231c49771d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39564a34eb7a57cbd20e37b90d064917d5bf3b7a
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286305"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337526"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Inleiding tot FreeBSD op Azure
 Dit artikel bevat een overzicht van het uitvoeren van een FreeBSD-virtuele machine in Azure.
@@ -22,9 +22,9 @@ FreeBSD voor Microsoft Azure is een geavanceerd computer besturingssysteem dat w
 
 Micro soft Corporation maakt installatie kopieën van FreeBSD beschikbaar in azure met de vooraf geconfigureerde [Azure VM-gast agent](https://github.com/Azure/WALinuxAgent/) . Momenteel worden de volgende FreeBSD-versies aangeboden als installatie kopieën van micro soft:
 
-- [FreeBSD 10,4 op Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [FreeBSD 11,2 op Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
-- [FreeBSD 12,0 op Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
+- FreeBSD 10,4 op Azure Marketplace
+- FreeBSD 11,2 op Azure Marketplace
+- FreeBSD 12,0 op Azure Marketplace
 
 De agent is verantwoordelijk voor de communicatie tussen de FreeBSD-VM en de Azure-infra structuur voor bewerkingen, zoals het inrichten van de virtuele machine bij het eerste gebruik (gebruikers naam, wacht woord of SSH-sleutel, hostnaam enzovoort) en het inschakelen van functionaliteit voor selectieve VM-extensies.
 
@@ -33,22 +33,22 @@ Net als voor toekomstige versies van FreeBSD is de strategie actueel en zijn de 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>Een FreeBSD-VM maken via Azure CLI op FreeBSD
 Eerst moet u [Azure cli](/cli/azure/get-started-with-azure-cli) installeren, met de volgende opdracht op een FreeBSD-machine.
 
-```bash 
+```bash 
 curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
-Als bash niet is geïnstalleerd op uw FreeBSD-computer, voert u de volgende opdracht uit vóór de installatie. 
+Als bash niet is geïnstalleerd op uw FreeBSD-computer, voert u de volgende opdracht uit vóór de installatie. 
 
 ```bash
 sudo pkg install bash
 ```
 
-Als python niet is geïnstalleerd op uw FreeBSD-computer, voert u de volgende opdrachten uit vóór de installatie. 
+Als python niet is geïnstalleerd op uw FreeBSD-computer, voert u de volgende opdrachten uit vóór de installatie. 
 
 ```bash
 sudo pkg install python35
-cd /usr/local/bin 
-sudo rm /usr/local/bin/python 
+cd /usr/local/bin 
+sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
@@ -57,7 +57,7 @@ Tijdens de installatie wordt u gevraagd `Modify profile to update your $PATH and
 Nu kunt u zich aanmelden bij Azure en uw FreeBSD-VM maken. Hieronder ziet u een voor beeld van het maken van een FreeBSD 11,0-VM. U kunt ook de para meter toevoegen `--public-ip-address-dns-name` met een wereld wijd unieke DNS-naam voor een nieuw, gemaakt openbaar IP-adres. 
 
 ```azurecli
-az login 
+az login 
 az group create --name myResourceGroup --location eastus
 az vm create --name myFreeBSD11 \
     --resource-group myResourceGroup \

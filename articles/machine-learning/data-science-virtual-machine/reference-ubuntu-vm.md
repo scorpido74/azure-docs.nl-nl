@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 9da757e47308fe0fe1a96958e464b440d99f0984
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6fb7b7c2e9022b6b629a039a48bb559b36393f79
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324728"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334989"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Naslag informatie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -310,7 +310,7 @@ cd xgboostdemo
 xgboost mushroom.conf
 ```
 
-Een. model-bestand wordt geschreven naar de opgegeven map. Meer informatie over dit voor beeld van deze demo vindt u [op github](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
+Een. model-bestand wordt geschreven naar de opgegeven map. Meer informatie over dit voor beeld van deze demo vindt u [op github](https://github.com/dmlc/xgboost/tree/master/demo/CLI/binary_classification).
 
 Zie de [xgboost-documentatie pagina](https://xgboost.readthedocs.org/en/latest/) en de bijbehorende [github-opslag plaats](https://github.com/dmlc/xgboost)voor meer informatie over xgboost.
 

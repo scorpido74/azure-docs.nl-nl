@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e426962310417fdca56ea2f7d45a6ea820d41981
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449418"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335873"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-connector-beheer oplossing (afgeschaft)
 
@@ -47,7 +47,7 @@ In tegens telling tot de meeste andere Log Analytics oplossingen, worden er geen
 | [Windows-agents](./agent-windows.md) | Nee | De oplossing verzamelt geen gegevens van Windows-agents. |
 | [Linux-agents](../learn/quick-collect-linux-computer.md) | Nee | De oplossing verzamelt geen gegevens van Linux-agents. |
 | [SCOM-beheer groep](./om-agents.md) | Nee | De oplossing verzamelt geen gegevens van agents in een verbonden SCOM-beheer groep. |
-| [Azure-opslag account](./resource-logs.md#send-to-log-analytics-workspace) | Nee | De oplossing verzamelt geen gegevens uit Azure Storage. |
+| [Azure Storage-account](./resource-logs.md#send-to-log-analytics-workspace) | Nee | De oplossing verzamelt geen gegevens uit Azure Storage. |
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -57,9 +57,9 @@ In tegens telling tot de meeste andere Log Analytics oplossingen, worden er geen
 
 ## <a name="configuration"></a>Configuratie
 
-1. Schakel de Azure Web Apps-analyse-oplossing in via de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) of via het proces dat wordt beschreven in [log Analytics oplossingen toevoegen van de Oplossingengalerie](../insights/solutions.md).
+1. Schakel de Azure Web Apps-analyse-oplossing in via de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) of via het proces dat wordt beschreven in [log Analytics oplossingen toevoegen van de Oplossingengalerie](../insights/solutions.md).
 2. Blader naar [Azure Portal](https://portal.azure.com). Selecteer **alle services** om Application Insights te openen. Zoek vervolgens naar Application Insights. 
-3. Onder **abonnementen**selecteert u een abonnement met Application Insights resources en selecteert u vervolgens een of meer toepassingen onder **naam**.
+3. Onder **abonnementen** selecteert u een abonnement met Application Insights resources en selecteert u vervolgens een of meer toepassingen onder **naam**.
 4. Klik op **Opslaan**.
 
 In ongeveer 30 minuten wordt gegevens beschikbaar en wordt de Application Insights tegel bijgewerkt met gegevens, zoals de volgende afbeelding:
@@ -135,7 +135,7 @@ Perspectief onderdelen worden bijgewerkt op basis van de zoek query. Dit beteken
 
 Application Insights-connector Blades zijn ontworpen om u in staat te stellen om naar de geselecteerde Application Insights-app te draaien *Wanneer u de Azure Portal gebruikt*. U kunt de oplossing gebruiken als een bewakings platform op hoog niveau waarmee u een app kunt oplossen. Wanneer u een mogelijk probleem ziet in een van de verbonden toepassingen, kunt u deze inzoomen in Log Analytics zoeken of u kunt rechtstreeks naar de Application Insights-app draaien.
 
-Als u wilt draaien, klikt u op de weglatings tekens (**...**) die aan het einde van elke regel worden weer gegeven en selecteert u **openen in Application Insights**.
+Als u wilt draaien, klikt u op de weglatings tekens ( **...** ) die aan het einde van elke regel worden weer gegeven en selecteert u **openen in Application Insights**.
 
 >[!NOTE]
 >**Openen in Application Insights** is niet beschikbaar in de Azure Portal.
@@ -177,7 +177,7 @@ Er wordt een record met een *type* *ApplicationInsights* gemaakt voor elk type i
 | Eigenschap | Beschrijving |
 | --- | --- |
 | Type | ApplicationInsights |
-| Client |   |
+| ClientIP |   |
 | TimeGenerated | Tijd van de record |
 | ApplicationID | Instrumentatie sleutel van de Application Insights-app |
 | ApplicationName | De naam van de Application Insights-app |

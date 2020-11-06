@@ -3,12 +3,12 @@ title: Concepten-persoonlijke Clouds en clusters
 description: Meer informatie over de belangrijkste mogelijkheden van de Azure VMware-oplossing software-gedefinieerde data centers en vSphere-clusters.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: b261eb0517e9890d9bccf12f2e5748626f4c1ff9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791015"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337318"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-oplossing persoonlijke Cloud-en cluster concepten
 
@@ -52,9 +52,9 @@ De huidige software versies van de VMware-software die worden gebruikt in azure 
 
 | Software              |    Versie   |
 | :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6,7 U2    | 
-| ESXi                  |    6,7 U2    | 
-| vSAN                  |    6,7 U2    |
+| VCSA/vSphere/ESXi |    6,7 U3    | 
+| ESXi                  |    6,7 U3    | 
+| vSAN                  |    6,7 U3    |
 | NSX-T                 |      2.5     |
 
 Voor elk nieuw cluster in een privécloud komt de software versie overeen met wat momenteel wordt uitgevoerd. Voor elke nieuwe privécloud in een abonnement wordt de meest recente versie van de software stack geïnstalleerd.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: dbce9019e33c07dd4faa91ffd490eba4d313c675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e810a31fab4457e47329e37f54b16e6f488c9da
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630607"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337624"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Algemene routeringsproblemen oplossen
 
@@ -103,5 +103,26 @@ Er zijn verschillende mogelijke oorzaken voor dit symptoom:
             * *Geaccepteerde protocollen* zijn http en HTTPS. *Protocol voor door sturen* is http. De overeenkomst werkt niet, omdat HTTPS een toegestaan protocol is en als een aanvraag is ontvangen als HTTPS, probeert de voor deur de aanvraag door te sturen via HTTPS.
 
             * *Geaccepteerde protocollen* zijn http. Het *doorstuur protocol* komt overeen met de aanvraag of http.
-
     - Het opnieuw schrijven van de *URL* is standaard uitgeschakeld. Dit veld wordt alleen gebruikt als u het bereik van op back-gehoste bronnen wilt beperken dat u beschikbaar wilt maken. Als deze functie is uitgeschakeld, stuurt de voor deur hetzelfde aanvraag traject dat het ontvangt. Dit veld kan niet worden geconfigureerd. Als de voor deur echter een bron aanvraagt vanaf de back-end die niet beschikbaar is, wordt een HTTP 404-status code geretourneerd.
+
+## <a name="request-to-frontend-host-name-returns-411-status-code"></a>Aanvraag voor frontend-hostnaam retourneert 411-status code
+
+### <a name="symptom"></a>Symptoom
+
+U hebt een voor deur gemaakt en een front-end-host geconfigureerd, een back-end-pool met ten minste één back-end en een routerings regel die de frontend-host verbindt met de back-end-groep. Uw inhoud lijkt niet beschikbaar te zijn bij het verzenden van een aanvraag naar de geconfigureerde frontend-host, omdat er een HTTP 411-status code wordt geretourneerd.
+
+Antwoorden op deze aanvragen kunnen ook een HTML-fout pagina bevatten in de antwoord tekst die een verklaring bevat. Bijvoorbeeld: `HTTP Error 411. The request must be chunked or have a content length`
+
+### <a name="cause"></a>Oorzaak
+
+Er zijn verschillende mogelijke oorzaken voor dit symptoom. de algehele reden is echter dat uw HTTP-aanvraag niet volledig compatibel met RFC is. 
+
+Een voor beeld van een niet-naleving is een `POST` aanvraag die wordt verzonden zonder een `Content-Length` of een `Transfer-Encoding` header (bijvoorbeeld met `curl -X POST https://example-front-door.domain.com` ). Deze aanvraag voldoet niet aan de vereisten die zijn opgegeven in [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.3.2) en worden geblokkeerd door uw voor deur met een HTTP 411-antwoord.
+
+Dit gedrag is gescheiden van de WAF-functionaliteit van de voor deur. Op dit moment is er geen manier om dit gedrag uit te scha kelen. Alle HTTP-aanvragen moeten voldoen aan de vereisten, zelfs als de WAF-functionaliteit niet wordt gebruikt.
+
+### <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
+
+- Controleer of uw aanvragen voldoen aan de vereisten in de benodigde Rfc's.
+
+- Noteer de hoofd tekst van een HTML-bericht die wordt geretourneerd als reactie op uw aanvraag, omdat ze vaak precies uitleggen *hoe* uw aanvraag niet aan het beleid voldoet.

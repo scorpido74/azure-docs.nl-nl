@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7d2734d386f1e49e2227058b148ee6b591d14a42
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123712"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336377"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Gebruik de Azure Portal om uw Azure Data Box en Azure Data Box Heavy te beheren
 
@@ -34,11 +34,11 @@ Voer de volgende stappen uit om een order te annuleren.
 
 1.  Ga naar **Overzicht > Annuleren**.
 
-    ![Order annuleren 1](media/data-box-portal-admin/cancel-order1.png)
+    ![Opdracht annuleren op het tabblad Overzicht voor een order](media/data-box-portal-admin/portal-admin-cancel-command.png)
 
 2.  Geef een reden op voor het annuleren van de order.  
 
-    ![Order annuleren 2](media/data-box-portal-admin/cancel-order2.png)
+    ![Het dialoog venster bestelling annuleren](media/data-box-portal-admin/portal-admin-cancel-order-dbox.png)
 
 3.  Zodra de order is geannuleerd, werkt de portal de status van de order bij naar **Geannuleerd**.
 
@@ -53,9 +53,9 @@ Voer de volgende stappen uit om een import volgorde te klonen.
 
 1.  Ga naar **Overzicht > Klonen**. 
 
-    ![Order klonen 1](media/data-box-portal-admin/clone-order1.png)
+    ![De opdracht Clone op het tabblad Overzicht voor een order](media/data-box-portal-admin/portal-admin-clone-command.png)
 
-2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik op **Maken**.
+2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik op **Create**.
 
 De kloon wordt binnen enkele minuten gemaakt en de portal wordt bijgewerkt met de nieuwe order.
 
@@ -70,7 +70,7 @@ U kunt alleen orders verwijderen die zijn voltooid of geannuleerd. Voer de volge
 
 2. Klik op de order die u wilt verwijderen en ga naar **Overzicht**. Klik in de opdrachtbalk op **Verwijderen**.
 
-    ![Data Box-order verwijderen 1](media/data-box-portal-admin/delete-order1.png)
+    ![De opdracht verwijderen op het tabblad Overzicht voor een order](media/data-box-portal-admin/portal-admin-delete-command.png)
 
 3. Voer de naam van de order in wanneer u wordt gevraagd de orderverwijdering te bevestigen. Klik op **Verwijderen**.
 
@@ -82,11 +82,11 @@ Voer de volgende stappen uit om een verzendlabel te downloaden.
 
 1.  Ga naar **Overzicht > Verzendlabel downloaden**. Deze optie is alleen beschikbaar nadat het apparaat is verzonden. 
 
-    ![Verzendlabel downloaden](media/data-box-portal-admin/download-shipping-label.png)
+    ![Verzendlabel downloaden](media/data-box-portal-admin/portal-admin-download-shipping-label.png)
 
 2.  Hiermee downloadt u het volgende verzendlabel voor retourzending. Sla het label op en druk het af. Vouw het label in op de heldere hoes op het apparaat. Zorg dat het label zichtbaar is. Verwijder eventuele stickers van de vorige verzending die op het apparaat zitten.
 
-    ![Voorbeeld van verzendlabel](media/data-box-portal-admin/example-shipping-label.png)
+    ![Voorbeeld van verzendlabel](media/data-box-portal-admin/portal-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Verzendadres bewerken
 
@@ -96,11 +96,11 @@ Voer de volgende stappen uit om de order te bewerken.
 
 1. Ga naar **Ordergegevens > Verzendadres bewerken**.
 
-    ![Verzendadres bewerken 1](media/data-box-portal-admin/edit-shipping-address1.png)
+    ![Opdracht voor het verzend adres bewerken in de details van de order](media/data-box-portal-admin/portal-admin-edit-shipping-address-command.png)
 
 2. Bewerk en valideer het verzendadres en sla de wijzigingen vervolgens op.
 
-    ![Verzendadres bewerken 2](media/data-box-portal-admin/edit-shipping-address2.png)
+    ![Het dialoog venster verzend adres bewerken](media/data-box-portal-admin/portal-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>Meldingsdetails bewerken
 
@@ -110,11 +110,11 @@ Voer de volgende stappen uit om meldingsdetails te bewerken.
 
 1. Ga naar **Ordergegevens > Meldingsdetails bewerken**.
 
-    ![Meldingsdetails bewerken 1](media/data-box-portal-admin/edit-notification-details1.png)
+    ![De opdracht Details van melding bewerken in de details van de order](media/data-box-portal-admin/portal-admin-edit-notification-details-command.png)
 
 2. U kunt de meldingsdetails nu bewerken en de wijzigingen vervolgens opslaan.
  
-    ![Meldingsdetails bewerken 2](media/data-box-portal-admin/edit-notification-details2.png)
+    ![Het dialoog venster meldings Details bewerken](media/data-box-portal-admin/portal-admin-edit-notification-details-dbox.png)
 
 
 ## <a name="download-order-history"></a>Ordergeschiedenis downloaden
@@ -125,7 +125,7 @@ Voer de volgende stappen uit om de ordergeschiedenis te downloaden.
 
 1. Ga in uw Data Box-order naar **Overzicht**. Controleer of de order is voltooid. Als de order is voltooid en het opschonen van het apparaat is voltooid, gaat u naar **Ordergegevens**. De optie **Ordergeschiedenis downloaden** is beschikbaar.
 
-    ![Ordergeschiedenis downloaden](media/data-box-portal-admin/download-order-history-1.png)
+    ![Ordergeschiedenis downloaden](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
 2. Klik op **Ordergeschiedenis downloaden**. In de downloadgeschiedenis ziet u een record met logboeken voor tracering van de koerier. Er worden twee sets logboeken die overeenkomen met de twee knoop punten op een Data Box Heavy. Als u naar de onderkant van dit logboek bladert, kunt u koppelingen zien naar:
     
@@ -198,11 +198,11 @@ Voer de volgende stappen uit om de ordergeschiedenis te downloaden.
 
     U kunt vervolgens naar uw opslagaccount gaan en de logboeken met kopieerbewerkingen bekijken.
 
-![Logboeken in opslagaccounts](media/data-box-portal-admin/logs-in-storage-acct-2.png)
+   ![De Kopieer logboeken voor een opslag account](media/data-box-portal-admin/portal-admin-storage-account-copy-logs.png)
 
-U kunt ook de bewakingsketenlogboeken bekijken die de auditlogboeken en de BOM-bestanden bevatten.
+   U kunt ook de keten van Bewaar logboeken weer geven, waaronder de audit logboeken en de stuk lijst bestanden.
 
-![Logboeken in opslag accounts 2](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+   ![Keten van Bewaar logboeken voor een opslag account](media/data-box-portal-admin/portal-admin-storage-account-chain-of-custody-logs.png)
 
 ## <a name="view-order-status"></a>Orderstatus bekijken
 

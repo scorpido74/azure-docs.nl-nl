@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 09/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0332400ce6808e92ba09e3bee3277495f6b6d1a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf819e5cff8c6ef008b0e55e156ba3531936b489
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897482"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337879"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Gebruik Azure Machine Learning met het open-source pakket Fairlearn om de verdeling van ML-modellen te beoordelen (preview-versie)
 
@@ -33,7 +33,7 @@ In deze hand leiding vindt u informatie over het gebruik van het [Fairlearn](htt
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning verdeling SDK 
 
-De Azure Machine Learning verdeling SDK, `azureml-contrib-fairness` , integreert het open source python-pakket [Fairlearn](http://fairlearn.github.io), binnen Azure machine learning. Bekijk deze [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)voor meer informatie over de integratie van Fairlearn in azure machine learning. Voor meer informatie over Fairlearn raadpleegt u de voorbeeld [handleiding](https://fairlearn.github.io/auto_examples/) en de [voorbeeld notitieblokken](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
+De Azure Machine Learning verdeling SDK, `azureml-contrib-fairness` , integreert het open source python-pakket [Fairlearn](http://fairlearn.github.io), binnen Azure machine learning. Bekijk deze [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)voor meer informatie over de integratie van Fairlearn in azure machine learning. Voor meer informatie over Fairlearn raadpleegt u de voorbeeld [handleiding](https://fairlearn.github.io/master/auto_examples/) en de [voorbeeld notitieblokken](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
 
 Gebruik de volgende opdrachten om de- `azureml-contrib-fairness` en-pakketten te installeren `fairlearn` :
 ```bash
@@ -205,7 +205,7 @@ In het volgende voor beeld ziet u hoe u het verdeling-pakket gebruikt om model v
     1. Als u het oorspronkelijke model hebt geregistreerd door de vorige stappen te volgen, kunt u **modellen** selecteren in het linkerdeel venster om de app weer te geven.
     1. Selecteer een model en klik vervolgens op het tabblad **verdeling** om het visualisatie Dashboard van de uitleg weer te geven.
 
-    Raadpleeg de [Gebruikers handleiding](https://fairlearn.github.io/user_guide/assessment.html#fairlearn-dashboard)van Fairlearn voor meer informatie over het visualisatie dashboard en wat het bevat.
+    Raadpleeg de [Gebruikers handleiding](https://fairlearn.github.io/master/user_guide/assessment.html#fairlearn-dashboard)van Fairlearn voor meer informatie over het visualisatie dashboard en wat het bevat.
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>Verdeling Insights voor meerdere modellen uploaden
 
@@ -306,14 +306,14 @@ Als u geïnteresseerd bent in het vergelijken van meerdere modellen en u wilt zi
     ```
 
 
-    Net als bij de vorige sectie kunt u een van de hierboven beschreven paden volgen (via **experimenten** of **modellen**) in azure machine learning Studio om toegang te krijgen tot het visualisatie dashboard en de twee modellen te vergelijken met de voor waarden van verdeling en prestaties.
+    Net als bij de vorige sectie kunt u een van de hierboven beschreven paden volgen (via **experimenten** of **modellen** ) in azure machine learning Studio om toegang te krijgen tot het visualisatie dashboard en de twee modellen te vergelijken met de voor waarden van verdeling en prestaties.
 
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>Niet-verholpen en verkleinde verdeling-inzichten uploaden
 
-U kunt de [beperkende algoritmen](https://fairlearn.github.io/user_guide/mitigation.html)van Fairlearn gebruiken, de gegenereerde gereduceerde model (s) vergelijken met het oorspronkelijke ongebruikte model en door de Verwissel bare prestaties/verdeling te navigeren tussen de vergeleken modellen.
+U kunt de [beperkende algoritmen](https://fairlearn.github.io/master/user_guide/mitigation.html)van Fairlearn gebruiken, de gegenereerde gereduceerde model (s) vergelijken met het oorspronkelijke ongebruikte model en door de Verwissel bare prestaties/verdeling te navigeren tussen de vergeleken modellen.
 
-Bekijk dit [voorbeeld notitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)om een voor beeld te zien van het gebruik van het risico voor het beperken van de [raster zoek actie](https://fairlearn.github.io/user_guide/mitigation.html#grid-search) (waarmee een verzameling verlaagde modellen met verschillende verdeling en prestaties wordt gemaakt). 
+Bekijk dit [voorbeeld notitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)om een voor beeld te zien van het gebruik van het risico voor het beperken van de [raster zoek actie](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) (waarmee een verzameling verlaagde modellen met verschillende verdeling en prestaties wordt gemaakt). 
 
 Bij het uploaden van meerdere modellen verdeling Insights in één keer worden modellen met betrekking tot verdeling en prestaties toegestaan. U kunt verder klikken op een van de modellen die worden weer gegeven in de model vergelijkings grafiek om de gedetailleerde verdeling inzichten van het desbetreffende model te bekijken.
 

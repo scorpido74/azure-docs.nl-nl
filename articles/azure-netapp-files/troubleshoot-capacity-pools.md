@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/13/2020
+ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 54e6f4abd5ca6d15a4cc5a7bc9015abb005296a0
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ff1899fbc89ab4a78bf793a133a7aa9a8f03dd2a
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013641"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337556"
 ---
-# <a name="troubleshoot-capacity-pool-issues"></a>Problemen met de capaciteits pool oplossen
+# <a name="troubleshoot-capacity-pool-issues"></a>Problemen met capaciteitspools oplossen
 
 In dit artikel worden oplossingen beschreven voor problemen die u mogelijk hebt bij het beheren van capaciteits groepen, inclusief de bewerking voor het wijzigen van de groep. 
 
@@ -38,7 +38,6 @@ In dit artikel worden oplossingen beschreven voor problemen die u mogelijk hebt 
 |-|-|
 | Het is niet toegestaan de capaciteits groep voor een volume te wijzigen. | U bent mogelijk nog niet gemachtigd om deze functie te gebruiken. <br> De functie voor het verplaatsen van een volume naar een andere capaciteits groep is momenteel beschikbaar als preview-versie. Als u deze functie voor de eerste keer gebruikt, moet u eerst de functie registreren en instellen `-FeatureName ANFTierChange` . Zie de registratie stappen in [het service niveau van een volume dynamisch wijzigen](dynamic-change-volume-service-level.md). |
 | De grootte van de capaciteits groep is te klein voor de totale volume grootte. |  De fout is het gevolg van de doel capaciteits groep die niet de beschik bare capaciteit heeft voor het volume dat wordt verplaatst.  <br> Verg root de grootte van de doel groep of kies een andere groep die groter is.  Zie [het formaat van een capaciteits groep of een volume wijzigen](azure-netapp-files-resize-capacity-pools-or-volumes.md).   |
-| Een volume kan niet worden verplaatst wanneer de doel capaciteits groep een ander versleutelings type heeft dan de oorspronkelijke capaciteits groep.  U kunt bijvoorbeeld overstappen van dubbele versleuteling naar enkele versleuteling, of andersom.  | Selecteer een doel capaciteits groep met hetzelfde versleutelings type als bron capaciteits pool.   |
 |  Het wijzigen van de groep kan niet worden voltooid omdat er al een volume `'{source pool name}'` met de naam in de doel groep bestaat `'{target pool name}'` | Deze fout treedt op omdat het volume met dezelfde naam al bestaat in de doel capaciteits groep.  Selecteer een andere capaciteits groep zonder een volume met dezelfde naam.   | 
 
 ## <a name="next-steps"></a>Volgende stappen  

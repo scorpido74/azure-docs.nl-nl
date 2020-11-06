@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b514cce8128dc0b17b5cebf8f2dc42e2c4dd8c8e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122463"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336892"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Zelf studie: export volgorde voor Azure Data Box maken (preview)
 
@@ -58,11 +58,11 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
 
 2. Selecteer **+ Een resource maken** en zoek naar *Azure Data Box*. Selecteer **Azure Data Box**.
 
-   ![Bron maken](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
+   ![Een resource maken](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
 3. Selecteer **Maken**.
 
-   ![Azure Data Box maken](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
+   ![Een Azure Data Box resource maken](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
 4. Controleer of de Azure Data Box-Service beschikbaar is in uw regio. Voer de volgende gegevens in of selecteer deze en selecteer **Toepassen**.
 
@@ -74,13 +74,13 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     |Azure-regio van bron    |    Selecteer de Azure-regio waarin uw gegevens zich momenteel bevinden.         |
     |Land van bestemming     |     Selecteer het land waar u het apparaat wilt verzenden.        |
 
-   ![Uw Data Box-instellingen selecteren](media/data-box-deploy-export-ordered/azure-data-box-export-01.png)
+   ![Uw Data Box-instellingen selecteren](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 
 5. Selecteer **Data Box**. De maximale bruikbare capaciteit voor één bestelling is 80 TB. U kunt meerdere bestellingen doen voor grotere gegevensgrootten.
 
-   ![Data Box capaciteit selecteren](media/data-box-deploy-export-ordered/azure-data-box-export-02b.png)
+   ![Data Box capaciteit selecteren](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
-6. In **volg orde**geeft u de details van de **basis** order op. Voer de volgende gegevens in of selecteer deze en selecteer **Volgende**.
+6. In **volg orde** geeft u de details van de **basis** order op. Voer de volgende gegevens in of selecteer deze en selecteer **Volgende**.
 
     |Instelling  |Waarde  |
     |---------|---------|
@@ -88,21 +88,21 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     |Resourcegroep | De resourcegroep die u eerder hebt geselecteerd. |
     |Naam van de export volgorde     |  Geef een beschrijvende naam op om de bestelling te volgen. <br> De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). <br> De naam moet beginnen en eindigen met een letter of cijfer.      |
 
-    ![Basis principes van export volgorde](media/data-box-deploy-export-ordered/azure-data-box-export-03.png)
+    ![Basis principes van export volgorde](media/data-box-deploy-export-ordered/azure-data-box-export-order-storage-account-export-type.png)
 
     Selecteer **volgende: gegevens selectie** om door te gaan.
 
-7. Selecteer bij **gegevens selectie**de optie **opslag account en export type toevoegen**.
+7. Selecteer bij **gegevens selectie** de optie **opslag account en export type toevoegen**.
 
-    ![Opslag account en export type toevoegen](media/data-box-deploy-export-ordered/azure-data-box-export-03b.png)
+    ![Opslag account en export type toevoegen](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics.png)
 
-8. Geef bij **export optie selecteren**de optie Details van de export op. Voer de volgende informatie in of Selecteer deze en selecteer **toevoegen**.
+8. Geef bij **export optie selecteren** de optie Details van de export op. Voer de volgende informatie in of Selecteer deze en selecteer **toevoegen**.
 
     |Instelling  |Waarde  |
     |---------|---------|
     |Opslagaccount     | Het Azure Storage account van waaruit u gegevens wilt exporteren. |
     |Export type     | Hiermee geeft u het type gegevens op dat van **alle objecten** moet worden geëxporteerd en het **XML-bestand moet worden gebruikt**.<ul><li> **Alle objecten** : Hiermee geeft u op dat de taak alle gegevens exporteert, afhankelijk van uw selectie voor de **overdrachts opties**.</li><li> **XML-bestand gebruiken** : Hiermee geeft u een XML-bestand op dat een set paden en voor voegsels bevat voor blobs en/of bestanden die uit het opslag account moeten worden geëxporteerd. Het XML-bestand moet zich in de container van het geselecteerde opslag account bevinden en er wordt momenteel geen ondersteuning voor het selecteren van bestands shares ondersteund. Het bestand moet een niet-leeg XML-bestand zijn.</li></ul>        |
-    |Overdrachts opties     |  Hiermee geeft u de opties voor gegevens overdracht van **Alles selecteren**, **alle blobs**en **alle bestanden**. <ul><li> **Alles selecteren** : Hiermee geeft u op dat alle blobs en Azure files worden geëxporteerd. Als u een opslag account gebruikt dat alleen blobs (Blob Storage-account) ondersteunt, kan de optie **alle bestanden** niet worden geselecteerd.</li><li> **Alle blobs** : Hiermee geeft u op dat alleen blok-en pagina-blobs worden geëxporteerd.</li><li> **Alle bestanden** : Hiermee geeft u op dat alle bestanden met uitzonde ring van blobs worden geëxporteerd. Het type opslag account dat u hebt (GPv1-en GPv2-, Premium-opslag of Blob-opslag) bepaalt de typen gegevens die u kunt exporteren. Zie [ondersteunde opslag accounts voor export](../storage/common/storage-import-export-requirements.md#supported-storage-types)voor meer informatie.</li></ul>         |
+    |Overdrachts opties     |  Hiermee geeft u de opties voor gegevens overdracht van **Alles selecteren** , **alle blobs** en **alle bestanden**. <ul><li> **Alles selecteren** : Hiermee geeft u op dat alle blobs en Azure files worden geëxporteerd. Als u een opslag account gebruikt dat alleen blobs (Blob Storage-account) ondersteunt, kan de optie **alle bestanden** niet worden geselecteerd.</li><li> **Alle blobs** : Hiermee geeft u op dat alleen blok-en pagina-blobs worden geëxporteerd.</li><li> **Alle bestanden** : Hiermee geeft u op dat alle bestanden met uitzonde ring van blobs worden geëxporteerd. Het type opslag account dat u hebt (GPv1-en GPv2-, Premium-opslag of Blob-opslag) bepaalt de typen gegevens die u kunt exporteren. Zie [ondersteunde opslag accounts voor export](../storage/common/storage-import-export-requirements.md#supported-storage-types)voor meer informatie.</li></ul>         |
     |Uitgebreid logboek opnemen     | Hiermee wordt aangegeven of u een uitgebreid logboek bestand wilt met een lijst met alle bestanden die zijn geëxporteerd.        |
 
     > [!NOTE]
@@ -111,82 +111,85 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
 
     Zie [order exporteren met XML-bestand](data-box-deploy-export-ordered.md#export-order-using-xml-file)voor meer informatie over het toevoegen van een XML-bestand aan een container.
 
-   ![Selecteer de optie exporteren](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+   ![Selecteer de optie exporteren](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
    Voor een voor beeld van de XML-invoer raadpleegt u [XML-voor beeld-invoer](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. Controleer de instellingen in **gegevens selectie**en selecteer **volgende: beveiligings>**.
+9. Controleer de instellingen in **gegevens selectie** en selecteer **volgende: beveiligings>**.
 
-   ![Contactgegevens](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+   ![Export volgorde, gegevens selectie](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-1. Als u dubbele versleuteling op basis van software wilt inschakelen, selecteert u onder **Beveiliging** de optie **Dubbele versleuteling inschakelen voor de volgorde**. 
+10. Als u dubbele versleuteling op basis van software wilt inschakelen, selecteert u onder **Beveiliging** de optie **Dubbele versleuteling inschakelen voor de volgorde**. 
 
-   De op software gebaseerde versleuteling wordt uitgevoerd naast de AES-256-bits versleuteling van de gegevens op de Data Box.
+    De op software gebaseerde versleuteling wordt uitgevoerd naast de AES-256-bits versleuteling van de gegevens op de Data Box.
 
-   > [!NOTE]
-   > Als u deze optie inschakelt, kan verwerking van de opdracht en het kopiëren van gegevens langer duren. U kunt deze optie niet wijzigen nadat u uw opdracht hebt gemaakt.
+   
+    > [!NOTE]
+    > Als u deze optie inschakelt, kan verwerking van de opdracht en het kopiëren van gegevens langer duren. U kunt deze optie niet wijzigen nadat u uw opdracht hebt gemaakt.
 
-   ![Beveiligingsscherm voor het importeren in Data Box, dubbele versleuteling](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+    ![Beveiligingsscherm voor het importeren in Data Box, dubbele versleuteling](media/data-box-deploy-export-ordered/azure-data-box-export-order-security-double-encryption.png)
 
-   Selecteer **Volgende: Contactgegevens** om verder te gaan.
+    Selecteer **Volgende: Contactgegevens** om verder te gaan.
 
-10. Selecteer in de **contact gegevens** **+ Verzend adres toevoegen** om uw verzend gegevens in te voeren.
+11. Selecteer in de **contact gegevens** **+ Verzend adres toevoegen** om uw verzend gegevens in te voeren.
 
-    ![Verzend adres toevoegen](media/data-box-deploy-export-ordered/azure-data-box-export-06.png)
+    ![Verzend adres toevoegen](media/data-box-deploy-export-ordered/azure-data-box-export-order-add-shipping-address.png)
 
-11. Geef bij **Verzend adres toevoegen**uw voor-en achternaam, naam en post adres van het bedrijf en een geldig telefoon nummer op. Selecteer **Valideren**. De service controleert of de service beschikbaar is voor de regio van het verzendadres. Als de service beschikbaar is voor het opgegeven verzendadres, ontvangt u daarover een melding.
+12. Geef bij **Verzend adres toevoegen** uw voor-en achternaam, naam en post adres van het bedrijf en een geldig telefoon nummer op. Selecteer **Valideren**. De service controleert of de service beschikbaar is voor de regio van het verzendadres. Als de service beschikbaar is voor het opgegeven verzendadres, ontvangt u daarover een melding.
 
-    ![Verzend adres valideren](media/data-box-deploy-export-ordered/azure-data-box-export-07.png)
+    ![Verzend adres valideren](media/data-box-deploy-export-ordered/azure-data-box-export-order-validate-shipping-address.png)
 
     U kunt deze optie selecteren als u een regio wilt best Ellen waarvoor self-managed Shipping beschikbaar is. Zie [Zelfbeheerde verzending gebruiken](data-box-portal-customer-managed-shipping.md) voor meer informatie over zelfbeheerde verzendingen.
 
-12. Selecteer **Verzend adres toevoegen** zodra de verzend gegevens zijn gevalideerd.
+13. Selecteer **Verzend adres toevoegen** zodra de verzend gegevens zijn gevalideerd.
 
-13. Controleer uw verzend adres en e-mail adres bij **contact gegevens**. De service stuurt e-mailmeldingen naar het opgegeven e-mailadres over updates van de bestelstatus.
+14. Controleer uw verzend adres en e-mail adres bij **contact gegevens**. De service stuurt e-mailmeldingen naar het opgegeven e-mailadres over updates van de bestelstatus.
 
     We raden u aan een e-mailadres van een groep te gebruiken, zodat u meldingen blijft ontvangen als een beheerder de groep verlaat.
 
-    ![Bestellingsgegevens](media/data-box-deploy-export-ordered/azure-data-box-export-09.png)
+    ![Contactgegevens](media/data-box-deploy-export-ordered/azure-data-box-export-order-contact-details.png)
 
-14. Selecteer **volgende: controleren + volg orde>**. U moet de voor waarden accepteren om door te gaan met het maken van de order.
+15. Selecteer **volgende: controleren + volg orde>**. U moet de voor waarden accepteren om door te gaan met het maken van de order.
 
-15. Selecteer **Bestellen**. Het duurt een paar minuten voordat de bestelling is gemaakt.
+16. Selecteer **Bestellen**. Het duurt een paar minuten voordat de bestelling is gemaakt.
 
-    ![Volg orde door voeren](media/data-box-deploy-export-ordered/azure-data-box-export-10.png)
+    ![Volg orde door voeren](media/data-box-deploy-export-ordered/azure-data-box-select-export-order-commit-order.png)
 
 ## <a name="export-order-using-xml-file"></a>Bestelling exporteren met XML-bestand
 
-Als u **XML-bestand gebruiken**selecteert, kunt u specifieke containers en blobs opgeven (pagina en blok keren) die u wilt exporteren. U moet de [XML-voorbeeld bestands tabel](#sample-xml-file) specificaties volgen voor het opmaken van uw XML. De volgende stappen laten zien hoe u een XML-bestand gebruikt voor het exporteren van uw gegevens:
+Als u **XML-bestand gebruiken** selecteert, kunt u specifieke containers en blobs opgeven (pagina en blok keren) die u wilt exporteren. U moet de [XML-voorbeeld bestands tabel](#sample-xml-file) specificaties volgen voor het opmaken van uw XML. De volgende stappen laten zien hoe u een XML-bestand gebruikt voor het exporteren van uw gegevens:
 
-1. Voor **Export type**selecteert **u XML-bestand gebruiken**. Dit is het XML-bestand waarin specifieke blobs en Azure-bestanden worden opgegeven die u wilt exporteren. Als u het XML-bestand wilt toevoegen, selecteert u **hier klikken om een XML-bestand te selecteren**.
-     ![Scherm afbeelding van de optie export selecteren met de Klik hier om een bestands optie van X M L te selecteren.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+1. Voor **Export type** selecteert **u XML-bestand gebruiken**. Dit is het XML-bestand waarin specifieke blobs en Azure-bestanden worden opgegeven die u wilt exporteren. Als u het XML-bestand wilt toevoegen, selecteert u **hier klikken om een XML-bestand te selecteren**.
+
+     ![Selecteer de optie exporteren, XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-select-xml-option.png)
 
 2. Selecteer **+ container** om een container te maken.
-    ![Scherm afbeelding van de sectie containers.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+
+    ![Selecteer de optie exporteren, containers](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-containers-option.png)
 
 3. Voeg op het tabblad **nieuwe container** die aan de rechter kant van de Azure Portal, een naam voor de container toe. De naam moet een kleine letter zijn en u kunt cijfers en streepjes '-' bevatten. Selecteer vervolgens het **niveau Public Access** in de vervolg keuzelijst. U wordt aangeraden **particuliere (niet-anonieme toegang)** te kiezen om te voor komen dat anderen toegang krijgen tot uw gegevens. Zie [toegangs machtigingen voor containers](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container)voor meer informatie over toegangs niveaus voor containers.
 
-   ![Scherm afbeelding van het tabblad nieuwe container met de optie privé (geen anonieme toegang) geselecteerd.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![Selecteer de optie exporteren, nieuwe container instellingen](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
 4. Selecteer **Maken**.
 
-   ![Scherm afbeelding van het tabblad nieuwe container met de optie voor het maken van een naam.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![Selecteer export optie, nieuwe container maken.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
    Als uw container is gemaakt, wordt het volgende bericht weer gegeven:
 
-   ![Scherm afbeelding van het bericht met de tekst ' de opslag container is gemaakt '.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![De container is gemaakt](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-container-success.png)
 
 5. Selecteer de container die u hebt gemaakt en dubbel klik erop.
 
-   ![Scherm afbeelding van de sectie containers met de container mijn persoonlijke test container met de naam.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![Container details weer geven](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
 6. Door te dubbel klikken op de container verschijnt de weer gave container eigenschappen. Nu wilt u het XML-bestand dat de lijst met blobs en/of Azure-bestanden bevat die u wilt exporteren, koppelen (of naar). Selecteer **Uploaden**.
 
-   ![Scherm afbeelding van het dialoog venster BLOB uploaden met de Upload optie.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![Blob uploaden naar container](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
 7. Het XML-bestand is toegevoegd aan de container. Alleen blobs en Azure-bestanden die u in deze XML hebt opgegeven, worden geëxporteerd.
 
-   ![Scherm opname van de wizard bestelling met de volgende: beveiligings optie met de naam.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![XML-bestand toegevoegd aan container](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
 ## <a name="track-the-order"></a>De bestelling volgen
 
@@ -194,25 +197,25 @@ Nadat u uw bestelling hebt geplaatst, kunt u de status van de bestelling volgen 
 
 Wanneer de voor bereiding van het apparaat is voltooid, begint de gegevens kopie van de geselecteerde opslag accounts. In de portal wordt de volg orde van de status van het kopiëren van de **gegevens** weer gegeven.
 
-![Verwerkte export order Data Box](media/data-box-deploy-export-ordered/azure-data-box-export-15b.png)
+![Data Box-export volgorde, gegevens kopiëren wordt uitgevoerd](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-in-progress.png)
 
 Data Box kopieert gegevens uit de bron-Storage-account (s). Wanneer het kopiëren van de gegevens is voltooid, wordt Data Box vergrendeld en wordt de volg orde van de status **kopie voltooid** weer gegeven in de portal.
 
-![Het kopiëren van de gegevens Data Box het exporteren is voltooid](media/data-box-deploy-export-ordered/azure-data-box-export-15c.png)
+![Data Box-export volgorde, gegevens kopiëren voltooid](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
 
 Als het apparaat niet beschikbaar is, wordt er een melding weer gegeven. Als het apparaat wel beschikbaar is, identificeert Microsoft het apparaat dat moet worden verzonden en bereidt Microsoft de verzending voor. Tijdens de voor bereiding van het apparaat worden de volgende acties uitgevoerd:
 
 * Voor elk opslagaccount dat aan het apparaat is gekoppeld, worden SMB-shares gemaakt.
 * Voor elke share worden toegangsreferenties zoals een gebruikersnaam en wachtwoord gegenereerd.
-* Het apparaat is vergrendeld en kan alleen worden geopend met het wacht woord voor ontgrendelen van het apparaat. Als u het wacht woord wilt ophalen, moet u zich aanmelden bij uw Azure Portal-account en de details van het **apparaat**selecteren.
+* Het apparaat is vergrendeld en kan alleen worden geopend met het wacht woord voor ontgrendelen van het apparaat. Als u het wacht woord wilt ophalen, moet u zich aanmelden bij uw Azure Portal-account en de details van het **apparaat** selecteren.
 
 Micro soft bereidt vervolgens uw apparaat voor en verzendt dit via een regionale luchtvaart maatschappij. U ontvangt uw volgnummer zodra het apparaat is verzonden. In de portal wordt bestelling weergegeven met de status **Verzonden**.
 
-![Data Box export order verzonden](media/data-box-deploy-export-ordered/azure-data-box-export-16.png)
+![Data Box export order verzonden](media/data-box-deploy-export-ordered/azure-data-box-export-order-dispatched.png)
 
 Als self-managed Shipping is geselecteerd, ontvangt u een e-mail melding met de volgende stappen wanneer het apparaat gereed is om te worden opgenomen in het Data Center. Zie voor meer informatie over [zelf-beheerde](data-box-portal-customer-managed-shipping.md)verzen ding.
 
-![Zelf-beheerde verzen ding gereed voor ophalen](media/data-box-deploy-export-ordered/azure-data-box-export-17.png)
+![Zelf-beheerde verzen ding gereed voor ophalen](media/data-box-deploy-export-ordered/azure-data-box-export-order-ready-for-pickup.png)
 
 ## <a name="cancel-the-order"></a>De bestelling annuleren
 
@@ -228,7 +231,7 @@ De volgende XML-code toont een voor beeld van BLOB-namen, blob-voor voegsels en 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-   <!-- BlobList/prefix/Container list for Blob storage for export  -->
+   <!-- BlobList/prefix/Container list for Blob storage for export  -->
    <BlobList>
       <BlobPath>/8tbpageblob/8tbpageblob/8tbpageblob</BlobPath>
       <BlobPathPrefix>/blockblob4dot75tbdata/</BlobPathPrefix>
@@ -237,7 +240,7 @@ De volgende XML-code toont een voor beeld van BLOB-namen, blob-voor voegsels en 
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
+   <!-- FileList/prefix/Share list for Azure File storage for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>

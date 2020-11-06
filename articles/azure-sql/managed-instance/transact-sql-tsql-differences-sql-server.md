@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2e07a54e20e6e60214b2905cf9321120484503eb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790607"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337641"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>T-SQL-verschillen tussen SQL Server & Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -153,11 +153,13 @@ SQL Managed instance heeft geen toegang tot bestanden, zodat er geen cryptografi
 - Het instellen van een Azure AD-aanmelding die is toegewezen aan een Azure AD-groep, wordt niet ondersteund voor de eigenaar van de data base.
 - Imitatie van Azure AD-principals op server niveau met behulp van andere Azure AD-principals wordt ondersteund, zoals de component [Execute as](/sql/t-sql/statements/execute-as-transact-sql) . UITVOEREN als beperkingen zijn:
 
-  - UITVOEREN als gebruiker wordt niet ondersteund voor Azure AD-gebruikers wanneer de naam verschilt van de aanmeldings naam. Een voor beeld hiervan is wanneer de gebruiker wordt gemaakt via de syntaxis CREATE USER [myAadUser] van LOGIN [ john@contoso.com ] en imitatie wordt geprobeerd via exec as User = _myAadUser_ . Wanneer u een **gebruiker** maakt op basis van een Azure ad server-principal (aanmelden), geeft u de user_name op als dezelfde login_name van de **aanmelding** .
+  - UITVOEREN als gebruiker wordt niet ondersteund voor Azure AD-gebruikers wanneer de naam verschilt van de aanmeldings naam. Een voor beeld hiervan is wanneer de gebruiker wordt gemaakt via de syntaxis CREATE USER [myAadUser] van LOGIN [ john@contoso.com ] en imitatie wordt geprobeerd via exec as User = _myAadUser_. Wanneer u een **gebruiker** maakt op basis van een Azure ad server-principal (aanmelden), geeft u de user_name op als dezelfde login_name van de **aanmelding**.
   - Alleen de principals op het SQL Server niveau (aanmeldingen) die deel uitmaken van de `sysadmin` rol kunnen de volgende bewerkingen uitvoeren die zijn gericht op Azure AD-principals:
 
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
+
+  - Om een gebruiker met de instructie EXECUTe AS te imiteren, moet de gebruiker rechtstreeks worden toegewezen aan de Azure AD-server principal (login). Gebruikers die lid zijn van Azure AD-groepen die zijn toegewezen aan Azure AD-server-principals, kunnen niet effectief worden geïmiteerd met de instructie EXECUTe AS, ook al is de aanroeper gemachtigd voor het imiteren van de opgegeven gebruikers naam.
 
 - Het exporteren/importeren van een Data Base met Bacpac-bestanden wordt ondersteund voor Azure AD-gebruikers in een SQL Managed instance met behulp van [SSMS v 18.4 of hoger](/sql/ssms/download-sql-server-management-studio-ssms), of [SQLPackage.exe](/sql/tools/sqlpackage-download).
   - De volgende configuraties worden ondersteund met behulp van het Bacpac-bestand van de Data Base: 
@@ -300,6 +302,7 @@ Zie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql-file-and
   - Waarschuwingen worden nog niet ondersteund.
   - Proxy's worden niet ondersteund.
 - EventLog wordt niet ondersteund.
+- De gebruiker moet rechtstreeks worden toegewezen aan de Azure AD-server principal (login) om SQL-Agent taken te maken, te wijzigen of uit te voeren. Gebruikers die niet rechtstreeks zijn toegewezen, bijvoorbeeld gebruikers die deel uitmaken van een Azure AD-groep die de rechten heeft om SQL-Agent taken te creëren, te wijzigen of uit te voeren, kunnen deze acties niet uitvoeren. Dit wordt veroorzaakt door Managed instance nabootsing en [Execute as-beperkingen](#logins-and-users).
 
 De volgende functies van de SQL-Agent worden momenteel niet ondersteund:
 

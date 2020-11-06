@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: b34c6fe58873a614ee8502e052c2af5aaed898cd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3c1c7ac8fe8b7adf287bcde30a054df5ebaa63d7
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547942"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337437"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Apache Hadoop-toepassingen van derden installeren op Azure HDInsight
 
@@ -23,13 +23,13 @@ An HDInsight toepassing is een toepassing die gebruikers kunnen installeren op e
 
 De volgende lijst bevat de gepubliceerde toepassingen:
 
-|Toepassing |Cluster type (n) | Description |
+|Toepassing |Cluster type (n) | Beschrijving |
 |---|---|---|
 |[AtScale intelligence-platform](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |Met AtScale wordt uw HDInsight-cluster omgezet in een scale-out OLAP-server, zodat u miljarden rijen gegevens interactief kunt opvragen met behulp van de BI-hulpprogram ma's die u al kent, eigenaar en liefde – van micro soft Excel, Power BI, tableau software naar QlikView. |
 |[CDAP voor HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP is het eerste geïntegreerde integratie platform voor big data dat de time-to-waarde voor Hadoop versnelt en de IT-service in staat stelt om selfservice gegevens te leveren. Open source en uitbreid bare, CDAP verwijdert belemmeringen voor innovatie. Vereisten: 4 regio knooppunten, min D3 v2. |
 |[Data meer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |Het selfservice schaal bare platform voor het voorbereiden, verkennen en beheren van uw gegevens voor analyse versnelt het omschakelen van complexe gegevens van meerdere bronnen tot waardevolle informatie over het bedrijf, waardoor u sneller, slimmere inzichten kunt leveren op bedrijfs niveau. |
 |[Dataiku DSS op HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS in een Enter prise data Science-platform waarmee gegevens wetenschappers en gegevens analisten kunnen samen werken om nieuwe gegevens producten en-services efficiënter te ontwerpen en uit te voeren, waardoor onbewerkte gegevens worden omgezet in impactieve voor spellingen. |
-|[WANdisco Fusion HDI-app](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.wandisco-liveanalytics) |Hadoop, Spark, HBase, Storm, Kafka |Het bijhouden van gegevens consistentie in een gedistribueerde omgeving is een enorme uitdaging voor gegevens bewerkingen. WANdisco Fusion, een software platform op bedrijfs niveau, lost dit probleem op door ongestructureerde gegevens consistentie in alle omgevingen in te scha kelen. |
+|[WANdisco Fusion HDI-app](https://community.wandisco.com/s/article/Use-WANdisco-Fusion-for-parallel-operation-of-ADLS-Gen1-and-Gen2) |Hadoop, Spark, HBase, Storm, Kafka |Het bijhouden van gegevens consistentie in een gedistribueerde omgeving is een enorme uitdaging voor gegevens bewerkingen. WANdisco Fusion, een software platform op bedrijfs niveau, lost dit probleem op door ongestructureerde gegevens consistentie in alle omgevingen in te scha kelen. |
 |[H2O SparklingWater voor HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O mousserend water biedt ondersteuning voor de volgende gedistribueerde algoritmen: GLM, Naïve Bayes, gedistribueerd wille keurig forest, Gradient Boosting machine, diep Neural Networks, diep leren, K-houdt, PCA, gegeneraliseerde lage-positie modellen, anomalie detectie, automatische code ring. |
 |[Realtimeplatform voor de integratie van Real-Time gegevens naar HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, Storm, Spark, Kafka |Realtimeplatform (uitgesp roken: ' stream ') is een end-to-end streaming Data Integration + intelligence-platform, waarmee u doorlopende opname, verwerking en analyse van verschillende gegevens stromen kunt maken. |
 |[Jumbune Enterprise-Accelerating BigData-analyse](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Op hoog niveau helpt Jumbune ondernemingen met, 1. Versnellen van TEZ, MapReduce & op basis van Spark-engine, Java, scala workload-prestaties. 2. Proactieve Hadoop-cluster bewaking, 3. Het kwaliteits beheer van gegevens in een gedistribueerd bestands systeem vaststellen. |
@@ -51,10 +51,10 @@ De volgende procedure beschrijft hoe u HDInsight-toepassingen in een bestaand HD
 
 **Een HDInsight-toepassing installeren**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters** .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters**.
 3. Selecteer een HDInsight-cluster in de lijst.  Als u deze niet hebt, maakt u die eerst.  Zie [Clusters maken](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-4. Selecteer in de categorie **instellingen** de optie **toepassingen** . In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
+4. Selecteer in de categorie **instellingen** de optie **toepassingen**. In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
    
     ![Menu van HDInsight-toepassingenportal](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Selecteer **+ toevoegen** in het menu. U kunt een lijst met beschik bare toepassingen weer geven.  Als **+ add** grijs wordt weer gegeven, betekent dit dat er geen toepassingen zijn voor deze versie van het HDInsight-cluster.
@@ -66,7 +66,7 @@ U kunt de installatie status bekijken via de meldingen van de portal (Selecteer 
 
 ## <a name="install-applications-during-cluster-creation"></a>Toepassingen installeren tijdens het maken van het cluster
 
-U hebt ook de optie HDInsight-toepassingen te installeren wanneer u een cluster maakt. Tijdens het proces worden HDInsight-toepassingen geïnstalleerd nadat het cluster is gemaakt en actief is. Als u toepassingen wilt installeren tijdens het maken van het cluster met behulp van de Azure Portal, klikt u op het tabblad **configuratie + prijzen** en selecteert u **+ toepassing toevoegen** .
+U hebt ook de optie HDInsight-toepassingen te installeren wanneer u een cluster maakt. Tijdens het proces worden HDInsight-toepassingen geïnstalleerd nadat het cluster is gemaakt en actief is. Als u toepassingen wilt installeren tijdens het maken van het cluster met behulp van de Azure Portal, klikt u op het tabblad **configuratie + prijzen** en selecteert u **+ toepassing toevoegen**.
 
 ![Azure Portal cluster configuratie toepassingen](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
 
@@ -75,10 +75,10 @@ De portal toont een lijst van de geïnstalleerde HDInsight-toepassingen voor een
 
 **Lijst met HDInsight-toepassingen en weer gave-eigenschappen**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters** .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters**.
 3. Selecteer een HDInsight-cluster in de lijst.
-4. Selecteer in de categorie **instellingen** de optie **toepassingen** . In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
+4. Selecteer in de categorie **instellingen** de optie **toepassingen**. In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
    
     ![HDInsight-toepassingen, geïnstalleerde apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. Selecteer een van de geïnstalleerde toepassingen om de eigenschap weer te geven. De eigenschappen lijsten:
@@ -89,7 +89,7 @@ De portal toont een lijst van de geïnstalleerde HDInsight-toepassingen voor een
     |Status |Toepassings status. |
     |Webpagina |De URL van de webtoepassing die u hebt geïmplementeerd op het Edge-knoop punt. De referenties zijn dezelfde als de HTTP-gebruikersreferenties die u hebt geconfigureerd voor het cluster. |
     |SSH-eind punt |U kunt SSH gebruiken om verbinding te maken met het Edge-knoop punt. De SSH-referenties zijn dezelfde als de SSH-gebruikersreferenties die u hebt geconfigureerd voor het cluster. Zie [SSH-sleutels gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie. |
-    |Description | Beschrijving van toepassing. |
+    |Beschrijving | Beschrijving van toepassing. |
 
 6. Als u een toepassing wilt verwijderen, klikt u met de rechter muisknop op de toepassing en klikt u vervolgens op **verwijderen** in het context menu.
 

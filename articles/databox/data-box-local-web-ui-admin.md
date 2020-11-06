@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127521"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337284"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Gebruik de lokale web-UI voor het beheren van uw Data Box en Data Box Heavy
 
@@ -153,7 +153,7 @@ U kunt deze lijst gebruiken om de bestanden die zijn geüpload naar het Azure St
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-Dit bestand bevat de lijst met alle bestanden die zijn gekopieerd op de Data Box of Data Box Heavy. In dit bestand is de *crc64*-waarde gerelateerd aan de controlesom die is gegenereerd voor het bijbehorende bestand.
+Dit bestand bevat de lijst met alle bestanden die zijn gekopieerd op de Data Box of Data Box Heavy. In dit bestand is de *crc64* -waarde gerelateerd aan de controlesom die is gegenereerd voor het bijbehorende bestand.
 
 ## <a name="view-available-capacity-of-the-device"></a>Beschikbare capaciteit van het apparaat weergeven
 
@@ -212,7 +212,7 @@ De bevoegdheden van een back-upoperator inschakelen op uw Azure-apparaat:
 
 1. Selecteer in de rechter bovenhoek van de lokale web-UI van uw apparaat de optie **instellingen**.
 
-   ![Data Box instellingen openen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+   ![Open Data Box-instellingen-1](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Inschakelen** Bevoegdheden voor back-upoperators.
 
@@ -235,7 +235,7 @@ De overdracht van Acl's voor Azure files inschakelen:
 
 1. Selecteer in de rechter bovenhoek van de lokale web-UI van uw apparaat de optie **instellingen**.
 
-    ![Data Box instellingen openen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Open Data Box-instellingen-2](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Inschakelen** Acl's voor Azure files.
 
@@ -255,7 +255,7 @@ TLS 1,1 inschakelen in uw Azure-apparaat:
 
 1. Selecteer in de rechter bovenhoek van de lokale web-UI van uw apparaat de optie **instellingen**.
 
-    ![Data Box instellingen openen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Data Box instellingen openen-3](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Inschakelen** TLS 1,1.
 

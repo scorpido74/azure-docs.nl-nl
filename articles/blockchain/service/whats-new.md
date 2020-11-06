@@ -4,12 +4,12 @@ description: Meer informatie over wat er nieuw is in azure Block Chain Service, 
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 47e0da5a729519f2af3c5b2a2fd3e0f7485624cf
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 6a3113a2d28e704b188d701da13493ecd8263cab
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948456"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335023"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Wat is er nieuw in de Azure Block Chain-Service?
 
@@ -27,7 +27,7 @@ De Azure Block Chain-service ontvangt verbeteringen doorlopend. Om u op de hoogt
 
 ### <a name="version-upgrades"></a>Versie-upgrades
 
-- Upgrade van de quorum versie naar 2.6.0. Met versie 2.6.0 kunt u ondertekende persoonlijke trans acties verzenden. Zie de [quorum API-documentatie](https://docs.goquorum.com/en/latest/Getting%20Started/api/)voor meer informatie over het verzenden van persoonlijke trans acties.
+- Upgrade van de quorum versie naar 2.6.0. Met versie 2.6.0 kunt u ondertekende persoonlijke trans acties verzenden. Zie de [quorum API-documentatie](https://docs.goquorum.consensys.net/en/latest/Reference/APIs/ContractExtensionAPIs/#apis)voor meer informatie over het verzenden van persoonlijke trans acties.
 - Upgrade van Tessera-versie naar 0.10.5.
 
 ### <a name="contract-size-and-transaction-size-increased-to-128-kb"></a>De grootte van het contract en de transactie grootte zijn verhoogd tot 128 KB
@@ -69,7 +69,7 @@ In twee fasen kunt u scenario's voor het maken van een lid in een lang bestaand 
 In quorum v-2.6.0 aanroepen naar de functie *Eth. estimateGas* zonder de para meter extra *waarde* op te geven, wordt een uitzonde ring veroorzaakt door een *methode-handler* . Het quorum team is op de hoogte gebracht en er wordt een correctie verwacht tot eind juli 2020. U kunt de volgende tijdelijke oplossingen gebruiken totdat een oplossing beschikbaar is:
 
 - Vermijd het gebruik van *Eth. estimateGas* omdat dit van invloed kan zijn op de prestaties. Zie voor meer informatie over Eth. estimateGas-prestatie problemen. de functie voor het [aanroepen van ETH. estimateGas vermindert de prestaties](#calling-ethestimategas-function-reduces-performance). Neem een aardgas waarde op voor elke trans actie. De meeste bibliotheken zullen Eth. estimateGas aanroepen als er geen aardgas waarde wordt gegeven, waardoor quorum v-2.6.0 vastloopt.
-- Als u *Eth. estimateGas*moet aanroepen, raadt het quorum *team aan de* extra parameter *waarde* als tijdelijke oplossing door te geven.
+- Als u *Eth. estimateGas* moet aanroepen, raadt het quorum *team aan de* extra parameter *waarde* als tijdelijke oplossing door te geven.
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>De analyse stopt als er minder dan vier validatie knooppunten zijn
 
@@ -123,9 +123,9 @@ Gebruik, indien mogelijk, een conservatieve aardgas waarde voor het verzenden va
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Ongebonden lussen in slimme contracten verminderen de prestaties
 
-Vermijd ongebonden lussen in slimme contracten, omdat deze de prestaties kunnen verminderen. Zie de volgende bronnen voor meer informatie:
+Vermijd ongebonden lussen in slimme contracten, omdat deze de prestaties kunnen verminderen. Zie de volgende resources voor meer informatie:
 
 - [Niet-begrensde lussen voor komen](https://blog.b9lab.com/getting-loopy-with-solidity-1d51794622ad )
 - [Aanbevolen procedures voor de beveiliging van Smart contracten](https://github.com/ConsenSys/smart-contract-best-practices)
-- [Richt lijnen voor intelligente contracten van quorum](http://docs.goquorum.com/en/latest/Security/Framework/Decentralized%20Application/Smart%20Contracts%20Security/)
+- [Richt lijnen voor intelligente contracten van quorum](https://docs.goquorum.consensys.net/en/stable/Concepts/Security/Framework/DecentralizedApplication/SmartContractsSecurity/)
 - [Richt lijnen voor grenzen van het gas en lussen die worden verzorgd door middel van volheid](https://solidity.readthedocs.io/en/develop/security-considerations.html#gas-limit-and-loops)

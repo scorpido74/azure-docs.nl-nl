@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 459cb1f7ea6c756b8cf6eba70af5ebabe76cc8b0
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689674"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335755"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Verdeling in machine learning modellen beperken (preview-versie)
 
 Meer informatie over verdeling in machine learning en hoe u met het open-source python-pakket van [Fairlearn](https://fairlearn.github.io/) verdeling problemen in machine learning modellen kunt oplossen. Als u geen moeite hebt om verdeling problemen te begrijpen en verdeling te beoordelen bij het bouwen van machine learning modellen, kunt u modellen bouwen die oneerlijke resultaten opleveren.
 
-In de volgende samen vatting van de [Gebruikers handleiding](https://fairlearn.github.io/user_guide/index.html) voor het open-source pakket Fairlearn wordt beschreven hoe u dit kunt gebruiken om de verdeling te beoordelen van de AI-systemen die u bouwt.  Het open-source pakket Fairlearn kan ook opties bieden voor het beperken of helpen verminderen van verdeling-problemen die u kunt waarnemen.  Bekijk de [instructies](how-to-machine-learning-fairness-aml.md) en voor [beelden van notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) voor het inschakelen van verdeling-evaluatie van AI-systemen tijdens de training van Azure machine learning.
+In de volgende samen vatting van de [Gebruikers handleiding](https://fairlearn.github.io/master/user_guide/index.html) voor het open-source pakket Fairlearn wordt beschreven hoe u dit kunt gebruiken om de verdeling te beoordelen van de AI-systemen die u bouwt.  Het open-source pakket Fairlearn kan ook opties bieden voor het beperken of helpen verminderen van verdeling-problemen die u kunt waarnemen.  Bekijk de [instructies](how-to-machine-learning-fairness-aml.md) en voor [beelden van notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) voor het inschakelen van verdeling-evaluatie van AI-systemen tijdens de training van Azure machine learning.
 
 
 ## <a name="what-is-fairness-in-machine-learning-models"></a>Wat is verdeling in machine learning modellen?
@@ -51,7 +51,7 @@ Met deze onderdelen kunnen gegevens wetenschappers en bedrijfs leiders alle tran
 
 ## <a name="assess-fairness-in-machine-learning-models"></a>Verdeling evalueren in machine learning modellen
 
-In het open-source pakket Fairlearn wordt verdeling geconceptueeleerd, maar ook wel **groeps verdeling**, waarin wordt gevraagd: welke groepen personen risico lopen voor het optreden van het probleem? De relevante groepen, ook wel subpopulaties genoemd, worden gedefinieerd door middel van **gevoelige functies** of gevoelige kenmerken. Gevoelige functies worden door gegeven aan een estimator in het open-source pakket Fairlearn als een vector of matrix met de naam  `sensitive_features` . De term impliceert dat de systeem ontwerper gevoelig moet zijn voor deze functies bij het bepalen van de groeps verdeling. 
+In het open-source pakket Fairlearn wordt verdeling geconceptueeleerd, maar ook wel **groeps verdeling** , waarin wordt gevraagd: welke groepen personen risico lopen voor het optreden van het probleem? De relevante groepen, ook wel subpopulaties genoemd, worden gedefinieerd door middel van **gevoelige functies** of gevoelige kenmerken. Gevoelige functies worden door gegeven aan een estimator in het open-source pakket Fairlearn als een vector of matrix met de naam  `sensitive_features` . De term impliceert dat de systeem ontwerper gevoelig moet zijn voor deze functies bij het bepalen van de groeps verdeling. 
 
 Als mindful is, is het van belang of deze functies privacy-implicaties hebben vanwege persoonlijke gegevens. Maar het woord ' gevoelig ' impliceert niet dat deze functies mogen worden gebruikt voor het maken van voor spellingen.
 
@@ -108,6 +108,6 @@ Het open-source pakket Fairlearn biedt postprocessing en reductie algoritmen voo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het gebruik van de verschillende onderdelen door de Fairlearn van de [github](https://github.com/fairlearn/fairlearn/), de [Gebruikers handleiding](https://fairlearn.github.io/user_guide/index.html), [voor beelden](https://fairlearn.github.io/auto_examples/)en de [voorbeeld notitieblokken](https://github.com/fairlearn/fairlearn/tree/master/notebooks)te controleren.
+- Meer informatie over het gebruik van de verschillende onderdelen door de Fairlearn van de [github](https://github.com/fairlearn/fairlearn/), de [Gebruikers handleiding](https://fairlearn.github.io/master/user_guide/index.html), [voor beelden](https://fairlearn.github.io/master/auto_examples/)en de [voorbeeld notitieblokken](https://github.com/fairlearn/fairlearn/tree/master/notebooks)te controleren.
 - Meer informatie [over het](how-to-machine-learning-fairness-aml.md) inschakelen van verdeling-evaluatie van machine learning-modellen in azure machine learning.
 - Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) voor aanvullende verdeling-evaluatie scenario's in azure machine learning. 

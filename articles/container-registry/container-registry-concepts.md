@@ -3,12 +3,12 @@ title: Over opslag plaatsen & installatie kopieën
 description: Inleiding tot de belangrijkste concepten van Azure-container registers, opslag plaatsen en container installatie kopieën.
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85390445"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335891"
 ---
 # <a name="about-registries-repositories-and-images"></a>Over registers, opslag plaatsen en installatie kopieën
 
@@ -45,7 +45,7 @@ Een *opslag plaats* is een verzameling container installatie kopieën of andere 
 - *ACR-HelloWorld: v1*
 - *ACR-HelloWorld: v2*
 
-Opslagplaats namen kunnen ook [naam ruimten](container-registry-best-practices.md#repository-namespaces)bevatten. Met naam ruimten kunt u verwante opslag plaatsen en eigendoms artefacten in uw organisatie identificeren met door komma's gescheiden namen. Het REGI ster beheert echter alle opslag plaatsen onafhankelijk, niet als een-hiërarchie. Voorbeelden:
+Opslagplaats namen kunnen ook [naam ruimten](container-registry-best-practices.md#repository-namespaces)bevatten. Met naam ruimten kunt u verwante opslag plaatsen en eigendoms artefacten in uw organisatie identificeren met door komma's gescheiden namen. Het REGI ster beheert echter alle opslag plaatsen onafhankelijk, niet als een-hiërarchie. Bijvoorbeeld:
 
 - *Marketing/campaign10-18/Web: v2*
 - *Marketing-campaign10-18/API: v3*
@@ -73,7 +73,7 @@ Raadpleeg de [docker-documentatie](https://docs.docker.com/engine/reference/comm
 
 ### <a name="layer"></a>Laag
 
-Container installatie kopieën bestaan uit een of meer *lagen*, die overeenkomen met een regel in de Dockerfile die de afbeelding definieert. Installatie kopieën in een REGI ster delen algemene lagen, waardoor de efficiëntie van opslag wordt verhoogd. Het is bijvoorbeeld mogelijk dat verschillende installatie kopieën in verschillende opslag plaatsen dezelfde Alpine Linux-basis laag delen, maar er wordt slechts één exemplaar van die laag opgeslagen in het REGI ster.
+Container installatie kopieën bestaan uit een of meer *lagen* , die overeenkomen met een regel in de Dockerfile die de afbeelding definieert. Installatie kopieën in een REGI ster delen algemene lagen, waardoor de efficiëntie van opslag wordt verhoogd. Het is bijvoorbeeld mogelijk dat verschillende installatie kopieën in verschillende opslag plaatsen dezelfde Alpine Linux-basis laag delen, maar er wordt slechts één exemplaar van die laag opgeslagen in het REGI ster.
 
 Laag delen optimaliseert ook laag distributie naar knoop punten met meerdere afbeeldingen die algemene lagen delen. Als een afbeelding die al in een knoop punt staat, bijvoorbeeld de Alpine Linux-laag als basis bevat, wordt de laag door de volgende pull-bewerking van een andere afbeelding die verwijst naar dezelfde laag, niet overgedragen naar het knoop punt. In plaats daarvan verwijst deze naar de laag die al bestaat op het knoop punt.
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565750"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337341"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box-beveiliging en -gegevensbescherming
 
@@ -32,11 +32,11 @@ De Microsoft Azure Data Box-oplossing bestaat uit vier hoofdonderdelen die met e
 
 In het volgende diagram ziet u de stroom van gegevens via de Azure Data Box oplossing van on-premises naar Azure en de verschillende beveiligings functies die worden toegepast als de gegevens via de oplossing worden uitgevoerd. Deze stroom is voor een import volgorde voor uw Data Box.
 
-![Beveiliging Data Box importeren](media/data-box-security/data-box-security-2.png)
+![Beveiliging Data Box importeren](media/data-box-security/data-box-security-import.png)
 
 Het volgende diagram is voor de export volgorde voor uw Data Box.
 
-![Beveiliging Data Box exporteren](media/data-box-security/data-box-security-3.png)
+![Beveiliging Data Box exporteren](media/data-box-security/data-box-security-export.png)
 
 Wanneer de gegevens via deze oplossing stromen, worden gebeurtenissen vastgelegd en worden logboeken gegenereerd. Ga voor meer informatie naar:
 

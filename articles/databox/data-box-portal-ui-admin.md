@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 538a650c6063422f89c8ed3d1753981a293693b7
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87924750"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94338038"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>De Azure-portal gebruiken om uw Data Box te beheren
 
@@ -29,15 +29,15 @@ Voer de volgende stappen uit om een order te annuleren.
 
 1.  Ga naar **Overzicht > Annuleren**. 
 
-    ![Order annuleren 1](media/data-box-portal-ui-admin/cancel-order1.png)
+    ![Opdracht annuleren op het tabblad Overzicht voor een order](media/data-box-portal-ui-admin/portal-ui-admin-cancel-command.png)
 
 2.  Geef een reden op voor het annuleren van de order.  
 
-    ![Order annuleren 2](media/data-box-portal-ui-admin/cancel-order2.png)
+    ![Reden voor het annuleren van een order](media/data-box-portal-ui-admin/portal-ui-admin-cancel-order-reason.png)
 
 3.  Zodra de order is geannuleerd, werkt de portal de status van de order bij naar **Geannuleerd**.
 
-    ![Order annuleren 3](media/data-box-portal-ui-admin/cancel-order3.png)
+    ![Geannuleerde order](media/data-box-portal-ui-admin/portal-ui-admin-canceled-order.png)
 
 U ontvangt geen e-mailmelding wanneer de order is geannuleerd.
 
@@ -49,13 +49,13 @@ Voer de volgende stappen uit om een order te klonen.
 
 1.  Ga naar **Overzicht > Klonen**. 
 
-    ![Order klonen 1](media/data-box-portal-ui-admin/clone-order1.png)
+    ![De opdracht Clone op het tabblad Overzicht voor een order](media/data-box-portal-ui-admin/portal-ui-admin-clone-command.png)
 
-2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik op **Maken**.    
+2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik op **Create**.    
 
 De kloon wordt binnen enkele minuten gemaakt en de portal wordt bijgewerkt met de nieuwe order.
 
-[![Kloon volgorde 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![Gekloonde volg orde](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png)](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png#lightbox) 
 
 ## <a name="delete-order"></a>Order verwijderen
 
@@ -65,15 +65,15 @@ U kunt alleen orders verwijderen die zijn voltooid of geannuleerd. Voer de volge
 
 1. Ga naar **Alle resources**. Zoek uw order.
 
-    ![Doorzoek Data Box Disk-orders.](media/data-box-portal-ui-admin/search-data-box-disk-orders.png)
+    ![Zoek opdrachten](media/data-box-portal-ui-admin/portal-ui-admin-search-data-box-disk-orders.png)
 
 2. Klik op de order die u wilt verwijderen en ga naar **Overzicht**. Klik in de opdrachtbalk op **Verwijderen**.
 
-    ![Data Box Disk-order verwijderen 1](media/data-box-portal-ui-admin/delete-order1.png)
+    ![Een bestelling verwijderen](media/data-box-portal-ui-admin/portal-ui-admin-delete-command.png)
 
 3. Voer de naam van de order in wanneer u wordt gevraagd de orderverwijdering te bevestigen. Klik op **Verwijderen**.
 
-     ![Data Box Disk-order verwijderen 2](media/data-box-portal-ui-admin/delete-order2.png)
+     ![Verwijdering van een bestelling bevestigen](media/data-box-portal-ui-admin/portal-ui-admin-confirm-deletion.png)
 
 
 ## <a name="download-shipping-label"></a>Verzendlabel downloaden
@@ -83,11 +83,11 @@ Als het verzendlabel voor retourzending dat bij uw schijven is meegeleverd is kw
 Voer de volgende stappen uit om een verzendlabel te downloaden.
 1.  Ga naar **Overzicht > Verzendlabel downloaden**. Deze optie is alleen beschikbaar nadat de schijf is verzonden. 
 
-    ![Verzendlabel downloaden](media/data-box-portal-ui-admin/download-shipping-label.png)
+    ![Verzendlabel downloaden](media/data-box-portal-ui-admin/portal-ui-admin-download-shipping-label.png)
 
 2.  Hiermee downloadt u het volgende verzendlabel voor retourzending. Sla het label op, druk het af en bevestig het aan de retourzending.
 
-    ![Voorbeeld van verzendlabel](media/data-box-portal-ui-admin/example-shipping-label.png)
+    ![Voorbeeld van verzendlabel](media/data-box-portal-ui-admin/portal-ui-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Verzendadres bewerken
 
@@ -97,11 +97,11 @@ Voer de volgende stappen uit om de order te bewerken.
 
 1. Ga naar **Ordergegevens > Verzendadres bewerken**.
 
-    ![Verzendadres bewerken 1](media/data-box-portal-ui-admin/edit-shipping-address1.png)
+    ![Opdracht voor het verzend adres bewerken in de details van de order](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-command.png)
 
 2. U kunt het verzendadres nu bewerken en de wijzigingen vervolgens opslaan.
 
-    ![Verzendadres bewerken 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
+    ![Het dialoog venster verzend adres bewerken](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>Meldingsdetails bewerken
 
@@ -111,11 +111,11 @@ Voer de volgende stappen uit om meldingsdetails te bewerken.
 
 1. Ga naar **Ordergegevens > Meldingsdetails bewerken**.
 
-    ![Meldingsdetails bewerken 1](media/data-box-portal-ui-admin/edit-notification-details1.png)
+    ![De opdracht Details van melding bewerken in de details van de order](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-command.png)
 
 2. U kunt de meldingsdetails nu bewerken en de wijzigingen vervolgens opslaan.
  
-    ![Meldingsdetails bewerken 2](media/data-box-portal-ui-admin/edit-notification-details2.png)
+    ![Het dialoog venster meldings Details bewerken](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-dbox.png)
 
 ## <a name="view-order-status"></a>Orderstatus bekijken
 

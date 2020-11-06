@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167811"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335673"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Problemen oplossen: verwijderen van een virtueel netwerk in Azure is mislukt
 
@@ -31,10 +31,11 @@ Er kunnen fouten optreden wanneer u probeert een virtueel netwerk te verwijderen
 
 1. [Controleer of er een virtuele netwerk gateway in het virtuele netwerk wordt uitgevoerd](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network).
 2. [Controleer of een toepassings gateway wordt uitgevoerd in het virtuele netwerk](#check-whether-an-application-gateway-is-running-in-the-virtual-network).
-3. [Controleer of Azure Active Directory domein service is ingeschakeld in het virtuele netwerk](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
-4. [Controleer of het virtuele netwerk is verbonden met een andere bron](#check-whether-the-virtual-network-is-connected-to-other-resource).
-5. [Controleer of een virtuele machine nog steeds wordt uitgevoerd in het virtuele netwerk](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
-6. [Controleer of het virtuele netwerk is vastgelopen in de migratie](#check-whether-the-virtual-network-is-stuck-in-migration).
+3. [Controleer of er nog Azure container instances aanwezig zijn in het virtuele netwerk](#check-whether-azure-container-instances-still-exist-in-the-virtual-network).
+4. [Controleer of Azure Active Directory domein service is ingeschakeld in het virtuele netwerk](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
+5. [Controleer of het virtuele netwerk is verbonden met een andere bron](#check-whether-the-virtual-network-is-connected-to-other-resource).
+6. [Controleer of een virtuele machine nog steeds wordt uitgevoerd in het virtuele netwerk](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
+7. [Controleer of het virtuele netwerk is vastgelopen in de migratie](#check-whether-the-virtual-network-is-stuck-in-migration).
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 
@@ -59,6 +60,19 @@ Ga naar de **overzichts** pagina van het virtuele netwerk. Controleer de **verbo
 ![Scherm opname van de lijst met verbonden apparaten voor een virtueel netwerk in Azure Portal. De toepassings gateway is gemarkeerd in de lijst.](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 Als er een toepassings gateway is, moet u deze verwijderen voordat u het virtuele netwerk kunt verwijderen.
+
+### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>Controleren of er nog Azure container instances aanwezig zijn in het virtuele netwerk
+
+1. Ga in het Azure Portal naar de **overzichts** pagina van de resource groep.
+1. Selecteer in de kop voor de lijst met resources van de resource groep de optie **verborgen typen weer geven**. Het type netwerk profiel wordt standaard verborgen in de Azure Portal.
+1. Selecteer het netwerk profiel dat is gerelateerd aan de container groepen.
+1. Selecteer **Verwijderen**.
+
+   ![Scherm opname van de lijst met verborgen netwerk profielen.](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
+
+1. Verwijder het subnet of het virtuele netwerk opnieuw.
+
+Als met deze stappen het probleem niet wordt opgelost, gebruikt u deze [Azure cli-opdrachten](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) om resources op te schonen. 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Controleer of Azure Active Directory domein service is ingeschakeld in het virtuele netwerk
 

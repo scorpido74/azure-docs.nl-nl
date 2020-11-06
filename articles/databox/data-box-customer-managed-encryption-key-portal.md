@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40b777342c2c565efc5b40d361a259c98eae693c
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739932"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337709"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Door de klant beheerde sleutels gebruiken in Azure Key Vault voor Azure Data Box
 
@@ -47,7 +47,7 @@ Het configureren van door de klant beheerde sleutel voor uw Azure Data Box is op
 
     ![Blade overzicht van Data Box order](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-1.png)
 
-2. Ga naar **instellingen > versleuteling**. Onder **versleutelings type**kunt u kiezen hoe u de ontgrendelings sleutel van het apparaat wilt beveiligen. Een door micro soft beheerde sleutel wordt standaard gebruikt om het wacht woord voor het ontgrendelen van uw apparaat te beveiligen. 
+2. Ga naar **instellingen > versleuteling**. Onder **versleutelings type** kunt u kiezen hoe u de ontgrendelings sleutel van het apparaat wilt beveiligen. Een door micro soft beheerde sleutel wordt standaard gebruikt om het wacht woord voor het ontgrendelen van uw apparaat te beveiligen. 
 
     ![Versleutelings optie kiezen](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-2.png)
 
@@ -55,40 +55,40 @@ Het configureren van door de klant beheerde sleutel voor uw Azure Data Box is op
 
     ![Door de klant beheerde sleutel selecteren](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3.png)
 
-5. In de Blade **sleutel selecteren op basis van Azure Key Vault** wordt het abonnement automatisch ingevuld. Voor **sleutel kluis**kunt u een bestaande sleutel kluis selecteren in de vervolg keuzelijst.
+4. In de Blade **sleutel selecteren op basis van Azure Key Vault** wordt het abonnement automatisch ingevuld. Voor **sleutel kluis** kunt u een bestaande sleutel kluis selecteren in de vervolg keuzelijst.
 
-    ![Nieuwe Azure Key Vault maken](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-31.png)
+    ![Bestaande Azure Key Vault selecteren](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3-a.png)
 
-    U kunt ook **nieuwe maken** selecteren om een nieuwe sleutel kluis te maken. Voer op de **Blade sleutel kluis maken**de resource groep en de naam van de sleutel kluis in. Zorg ervoor dat de functie voor het **voorlopig verwijderen** en leegmaken van de **beveiliging** is ingeschakeld. Accepteer alle overige standaard waarden. Selecteer **Controleren + maken**.
+    U kunt ook **nieuwe maken** selecteren om een nieuwe sleutel kluis te maken. Voer op de **Blade sleutel kluis maken** de resource groep en de naam van de sleutel kluis in. Zorg ervoor dat de functie voor het **voorlopig verwijderen** en leegmaken van de **beveiliging** is ingeschakeld. Accepteer alle overige standaard waarden. Selecteer **Controleren + maken**.
 
-    ![Nieuwe Azure Key Vault 2 maken](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![Azure Key Vault controleren en maken](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
-7. Controleer de informatie die is gekoppeld aan uw sleutel kluis en selecteer **maken**. Wacht enkele minuten totdat de sleutel kluis is gemaakt.
+5. Controleer de informatie die is gekoppeld aan uw sleutel kluis en selecteer **maken**. Wacht enkele minuten totdat de sleutel kluis is gemaakt.
 
-    ![Azure Key Vault maken](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
+    ![Azure Key Vault met uw instellingen maken](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
 
-8. U kunt in de **sleutel Select from Azure Key Vault**een sleutel selecteren in de bestaande sleutel kluis.
+6. U kunt in de **sleutel Select from Azure Key Vault** een sleutel selecteren in de bestaande sleutel kluis.
 
-    ![Nieuwe sleutel maken in Azure Key Vault 3](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![Selecteer een sleutel in Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
-9. Als u een nieuwe sleutel wilt maken, selecteert u **nieuwe maken** om een sleutel te maken. RSA-sleutel grootte kan 2048 of hoger zijn.
+7. Als u een nieuwe sleutel wilt maken, selecteert u **nieuwe maken** om een sleutel te maken. RSA-sleutel grootte kan 2048 of hoger zijn.
 
-    ![Nieuwe sleutel maken in Azure Key Vault 4](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![Nieuwe sleutel maken in Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6-a.png)
 
-10. Geef de naam voor de sleutel op, accepteer de andere standaard waarden en selecteer **maken**. 
+8. Geef de naam voor de sleutel op, accepteer de andere standaard waarden en selecteer **maken**.
 
-    ![Nieuwe sleutel maken](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
+    ![Naam nieuwe sleutel](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
 
 
-11. U wordt gewaarschuwd dat er een sleutel in uw sleutel kluis is gemaakt. Selecteer de **versie** en kies vervolgens **selecteren**.
+9. U wordt gewaarschuwd dat er een sleutel in uw sleutel kluis is gemaakt. Selecteer de **versie** en kies vervolgens **selecteren**.
 
-    ![Nieuwe sleutel gemaakt in sleutel kluis](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
+    ![Selecteer een versie voor de nieuwe sleutel](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
 
-12. In het deel venster **versleutelings type** ziet u de sleutel kluis en de sleutel die is geselecteerd voor de door de klant beheerde sleutel.
+10. In het deel venster **versleutelings type** ziet u de sleutel kluis en de sleutel die is geselecteerd voor de door de klant beheerde sleutel.
 
     ![Sleutel en sleutel kluis voor door de klant beheerde sleutel](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
 
-13. Sla de sleutel op. 
+11. Sla de sleutel op. 
 
     ![Door de klant beheerde sleutel opslaan](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-10.png)
 

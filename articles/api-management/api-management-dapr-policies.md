@@ -6,12 +6,12 @@ ms.author: vlvinogr
 ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 2bf9c4d233cfad454d63da4dce30a38af80d24ab
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 16788e3f547c5848893ba3867da4291c45b04408
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558394"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335482"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management-integratie beleid voor Dapr
 
@@ -25,7 +25,7 @@ Dit onderwerp bevat een Naslag informatie voor Dapr-integratie API Management-be
 
 ## <a name="enable-dapr-support-in-the-self-hosted-gateway"></a>Ondersteuning voor Dapr inschakelen op de zelf-hostende gateway
 
-Als u ondersteuning voor Dapr wilt inschakelen op de zelf-hostende gateway, voegt u de onderstaande [aantekeningen voor Dapr](https://github.com/dapr/docs/blob/master/howto/configure-k8s/README.md) toe aan de sjabloon voor de [Kubernetes-implementatie](how-to-deploy-self-hosted-gateway-kubernetes.md) waarbij "app-naam" wordt vervangen door een gewenste naam. Voltooi de procedure voor het instellen en gebruiken van API Management met Dapr is [hier](https://aka.ms/apim/dapr/walkthru)beschikbaar.
+Als u ondersteuning voor Dapr wilt inschakelen op de zelf-hostende gateway, voegt u de onderstaande [aantekeningen voor Dapr](https://github.com/dapr/docs/blob/master/README.md) toe aan de sjabloon voor de [Kubernetes-implementatie](how-to-deploy-self-hosted-gateway-kubernetes.md) waarbij "app-naam" wordt vervangen door een gewenste naam. Voltooi de procedure voor het instellen en gebruiken van API Management met Dapr is [hier](https://aka.ms/apim/dapr/walkthru)beschikbaar.
 ```yml
 template:
     metadata:
@@ -39,9 +39,9 @@ template:
 
 ## <a name="distributed-application-runtime-dapr-integration-policies"></a>Integratiebeleid voor Gedistribueerde toepassingruntime (Dapr)
 
--  [Aanvraag verzenden naar een service](api-management-dapr-policies.md#invoke): maakt gebruik van Dapr-runtime om een Dapr-micro service te zoeken en betrouwbaar te communiceren. Zie de beschrijving in dit [Leesmij](https://github.com/dapr/docs/blob/master/concepts/service-invocation/README.md#service-invocation) -bestand voor meer informatie over het aanroepen van de service in Dapr.
--  [Bericht verzenden naar pub/sub-onderwerp](api-management-dapr-policies.md#pubsub): maakt gebruik van Dapr runtime om een bericht te publiceren naar een onderwerp over publiceren/abonneren. Zie de beschrijving in dit [Leesmij](https://github.com/dapr/docs/blob/master/concepts/publish-subscribe-messaging/README.md) -bestand voor meer informatie over het publiceren/abonneren van berichten in Dapr.
--  [Uitvoer binding activeren](api-management-dapr-policies.md#bind): maakt gebruik van Dapr runtime om een extern systeem via een uitvoer binding aan te roepen. Zie de beschrijving in dit [Leesmij](https://github.com/dapr/docs/blob/master/concepts/bindings/README.md) -bestand voor meer informatie over bindingen in Dapr.
+-  [Aanvraag verzenden naar een service](api-management-dapr-policies.md#invoke): maakt gebruik van Dapr-runtime om een Dapr-micro service te zoeken en betrouwbaar te communiceren. Zie de beschrijving in dit [Leesmij](https://github.com/dapr/docs/blob/master/README.md#service-invocation) -bestand voor meer informatie over het aanroepen van de service in Dapr.
+-  [Bericht verzenden naar pub/sub-onderwerp](api-management-dapr-policies.md#pubsub): maakt gebruik van Dapr runtime om een bericht te publiceren naar een onderwerp over publiceren/abonneren. Zie de beschrijving in dit [Leesmij](https://github.com/dapr/docs/blob/master/README.md) -bestand voor meer informatie over het publiceren/abonneren van berichten in Dapr.
+-  [Uitvoer binding activeren](api-management-dapr-policies.md#bind): maakt gebruik van Dapr runtime om een extern systeem via een uitvoer binding aan te roepen. Zie de beschrijving in dit [Leesmij](https://github.com/dapr/docs/blob/master/README.md) -bestand voor meer informatie over bindingen in Dapr.
 
 ## <a name="send-request-to-a-service"></a><a name="invoke"></a> Aanvraag verzenden naar een service
 
@@ -92,8 +92,8 @@ Het `forward-request` beleid wordt hier weer gegeven voor duidelijkheid. Het bel
 | Kenmerk        | Beschrijving                     | Vereist | Standaard |
 |------------------|---------------------------------|----------|---------|
 | back-end-id       | Moet worden ingesteld op ' dapr '           | Ja      | N.v.t.     |
-| dapr-app-id      | De naam van de doel-micro service. Wordt toegewezen aan de [AppID](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) -para meter in Dapr.| Ja | N.v.t. |
-| dapr-methode      | De naam van de methode of een URL die moet worden aangeroepen voor de doel-micro service. Wordt toegewezen aan de para meter [method-name](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) in Dapr.| Ja | N.v.t. |
+| dapr-app-id      | De naam van de doel-micro service. Wordt toegewezen aan de [AppID](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) -para meter in Dapr.| Ja | N.v.t. |
+| dapr-methode      | De naam van de methode of een URL die moet worden aangeroepen voor de doel-micro service. Wordt toegewezen aan de para meter [method-name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) in Dapr.| Ja | N.v.t. |
 
 ### <a name="usage"></a>Gebruik
 
@@ -120,7 +120,7 @@ In het beleid wordt ervan uitgegaan dat Dapr runtime wordt uitgevoerd in een zij
 
 #### <a name="example"></a>Voorbeeld
 
-In het volgende voor beeld wordt gedemonstreerd dat de hoofd tekst van de huidige aanvraag wordt verzonden naar het [onderwerp](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md#url-parameters) ' nieuw ' van het [onderdeel](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md#url-parameters)' orders ' van het pub-element ' order '. Het antwoord dat is ontvangen van de Dapr-runtime wordt opgeslagen in de vermelding ' Dapr-Response ' van de verzameling Varia bles in het [context](api-management-policy-expressions.md#ContextVariables) -object.
+In het volgende voor beeld wordt gedemonstreerd dat de hoofd tekst van de huidige aanvraag wordt verzonden naar het [onderwerp](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md#url-parameters) ' nieuw ' van het [onderdeel](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md#url-parameters)' orders ' van het pub-element ' order '. Het antwoord dat is ontvangen van de Dapr-runtime wordt opgeslagen in de vermelding ' Dapr-Response ' van de verzameling Varia bles in het [context](api-management-policy-expressions.md#ContextVariables) -object.
 
 Als Dapr runtime het doel onderwerp niet kan vinden, bijvoorbeeld reageert op een fout, wordt de sectie ' op de fout ' geactiveerd. Het antwoord dat is ontvangen van de Dapr-runtime wordt geretourneerd naar de aanroeper Verbatim. Anders wordt standaard `200 OK` antwoord geretourneerd.
 
@@ -159,8 +159,8 @@ De sectie back-end is leeg en de aanvraag wordt niet doorgestuurd naar de back-e
 
 | Kenmerk        | Beschrijving                     | Vereist | Standaard |
 |------------------|---------------------------------|----------|---------|
-| pubsub-naam      | De naam van het doel-PubSub-onderdeel. Wordt toegewezen aan de para meter [pubsubname](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) in Dapr. Als dat niet het geval is, moet de waarde van het __onderwerp__ worden opgegeven in de vorm van `pubsub-name/topic-name` .    | Nee       | Geen    |
-| onderwerp            | De naam van het onderwerp. Wordt toegewezen aan de [onderwerp](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) -para meter in Dapr.               | Ja      | N.v.t.     |
+| pubsub-naam      | De naam van het doel-PubSub-onderdeel. Wordt toegewezen aan de para meter [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) in Dapr. Als dat niet het geval is, moet de waarde van het __onderwerp__ worden opgegeven in de vorm van `pubsub-name/topic-name` .    | Nee       | Geen    |
+| onderwerp            | De naam van het onderwerp. Wordt toegewezen aan de [onderwerp](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) -para meter in Dapr.               | Ja      | N.v.t.     |
 | negeren-fout     | Als deze instelling is ingesteld op `true` , wordt het beleid niet geactiveerd om de sectie ["On-Error"](api-management-error-handling-policies.md) te activeren bij het ontvangen van een fout vanuit Dapr runtime | Nee | `false` |
 | reactie-variabele-naam | Naam van de verzamelings vermelding van de [variabelen](api-management-policy-expressions.md#ContextVariables) die moet worden gebruikt voor het opslaan van de reactie van Dapr runtime | Nee | Geen |
 | timeout | Tijd (in seconden) die moet worden gewacht voordat Dapr runtime reageert. U kunt een waarde tussen 1 en 240 seconden opgeven. | Nee | 5 |
@@ -176,7 +176,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 ## <a name="trigger-output-binding"></a><a name="bind"></a> Uitvoer binding activeren
 
-Dit beleid geeft API Management Gateway om een uitgaande Dapr- [binding](https://github.com/dapr/docs/blob/master/concepts/bindings/README.md)te activeren. Het beleid zorgt dat door een HTTP POST-aanvraag te maken voor het `http://localhost:3500/v1.0/bindings/{{bind-name}}` vervangen van de sjabloon parameter en het toevoegen van inhoud die is opgegeven in de beleids verklaring.
+Dit beleid geeft API Management Gateway om een uitgaande Dapr- [binding](https://github.com/dapr/docs/blob/master/README.md)te activeren. Het beleid zorgt dat door een HTTP POST-aanvraag te maken voor het `http://localhost:3500/v1.0/bindings/{{bind-name}}` vervangen van de sjabloon parameter en het toevoegen van inhoud die is opgegeven in de beleids verklaring.
 
 In het beleid wordt ervan uitgegaan dat Dapr runtime wordt uitgevoerd in een zijspan container in dezelfde pod als de gateway. Dapr runtime is verantwoordelijk voor het aanroepen van de externe resource die wordt vertegenwoordigd door de binding.
 
@@ -237,16 +237,16 @@ De sectie back-end is leeg en de aanvraag wordt niet doorgestuurd naar de back-e
 | Element             | Beschrijving  | Vereist |
 |---------------------|--------------|----------|
 | invoke-dapr-binding | Hoofd element | Ja      |
-| metagegevens            | Bindende specifieke meta gegevens in de vorm van sleutel/waarde-paren. Wordt toegewezen aan de [meta gegevens](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) eigenschap in Dapr. | Nee |
-| gegevens            | De inhoud van het bericht. Wordt toegewezen aan de eigenschap [Data](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) in Dapr. | Nee |
+| metagegevens            | Bindende specifieke meta gegevens in de vorm van sleutel/waarde-paren. Wordt toegewezen aan de [meta gegevens](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) eigenschap in Dapr. | Nee |
+| gegevens            | De inhoud van het bericht. Wordt toegewezen aan de eigenschap [Data](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) in Dapr. | Nee |
 
 
 ### <a name="attributes"></a>Kenmerken
 
 | Kenmerk        | Beschrijving                     | Vereist | Standaard |
 |------------------|---------------------------------|----------|---------|
-| name            | Doel binding naam. Moet overeenkomen met de naam van de bindingen die zijn [gedefinieerd](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) in Dapr.           | Ja      | N.v.t.     |
-| bewerking       | Doel bewerkings naam (binding specifiek). Wordt toegewezen aan de [bewerkings](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) eigenschap in Dapr. | Nee | Geen |
+| naam            | Doel binding naam. Moet overeenkomen met de naam van de bindingen die zijn [gedefinieerd](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) in Dapr.           | Ja      | N.v.t.     |
+| bewerking       | Doel bewerkings naam (binding specifiek). Wordt toegewezen aan de [bewerkings](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) eigenschap in Dapr. | Nee | Geen |
 | negeren-fout     | Als deze instelling is ingesteld op `true` , wordt het beleid niet geactiveerd om de sectie ["On-Error"](api-management-error-handling-policies.md) te activeren bij het ontvangen van een fout vanuit Dapr runtime | Nee | `false` |
 | reactie-variabele-naam | Naam van de verzamelings vermelding van de [variabelen](api-management-policy-expressions.md#ContextVariables) die moet worden gebruikt voor het opslaan van de reactie van Dapr runtime | Nee | Geen |
 | timeout | Tijd (in seconden) die moet worden gewacht voordat Dapr runtime reageert. U kunt een waarde tussen 1 en 240 seconden opgeven. | Nee | 5 |
