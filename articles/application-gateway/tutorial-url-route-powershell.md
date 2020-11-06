@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 37e76f54b9c4fe38c891f7cee7bc443d1b0b20f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a73208ef7014c1f21c78485fc613a26ce3bfc76
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596063"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397141"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Webverkeer routeren op basis van de URL met Azure PowerShell
 
-U kunt Azure PowerShell gebruiken om webverkeersroutering te configureren naar specifieke schaalbare serverpools op basis van de URL die wordt gebruikt voor toegang tot uw toepassing. In dit artikel maakt u een [Azure-toepassing gateway](application-gateway-introduction.md) met drie back-end-Pools met behulp van [Virtual Machine Scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Elk van de back-endpools heeft een specifiek doel, zoals algemene gegevens, afbeeldingen en video's.  Door verkeer te routeren om pools te scheiden, zorgt u ervoor dat uw klanten de informatie krijgen die ze nodig hebben wanneer ze deze nodig hebben.
+U kunt Azure PowerShell gebruiken om webverkeersroutering te configureren naar specifieke schaalbare serverpools op basis van de URL die wordt gebruikt voor toegang tot uw toepassing. In dit artikel maakt u een [Azure-toepassing gateway](./overview.md) met drie back-end-Pools met behulp van [Virtual Machine Scale sets](../virtual-machine-scale-sets/overview.md). Elk van de back-endpools heeft een specifiek doel, zoals algemene gegevens, afbeeldingen en video's.  Door verkeer te routeren om pools te scheiden, zorgt u ervoor dat uw klanten de informatie krijgen die ze nodig hebben wanneer ze deze nodig hebben.
 
-Als u verkeersroutering wilt inschakelen, maakt u [routeringsregels](application-gateway-url-route-overview.md) die worden toegewezen aan listeners die op bepaalde poorten luisteren om ervoor te zorgen dat webverkeer binnenkomt op de juiste servers in de pools.
+Als u verkeersroutering wilt inschakelen, maakt u [routeringsregels](./url-route-overview.md) die worden toegewezen aan listeners die op bepaalde poorten luisteren om ervoor te zorgen dat webverkeer binnenkomt op de juiste servers in de pools.
 
 In dit artikel leert u het volgende:
 
@@ -85,8 +85,8 @@ $pip = New-AzPublicIpAddress `
 In deze sectie kunt u resources maken die ondersteuning bieden voor de toepassingsgateway. Ten slotte maakt u deze. De resources die u maakt, zijn onder andere:
 
 - *IP-configuraties en front-end-poort* : koppelt het subnet dat u eerder hebt gemaakt aan de toepassings gateway en wijst een poort toe voor toegang tot de server.
-- *Standaardpool*: alle toepassingsgateways moeten ten minste één back-endpool met servers hebben.
-- *Standaard-listener en regel*: de standaard-listener luistert naar verkeer op de poort die is toegewezen en de standaardregel verzendt verkeer naar de standaardpool.
+- *Standaardpool* : alle toepassingsgateways moeten ten minste één back-endpool met servers hebben.
+- *Standaard-listener en regel* : de standaard-listener luistert naar verkeer op de poort die is toegewezen en de standaardregel verzendt verkeer naar de standaardpool.
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP-configuraties en front-endpoort maken
 
@@ -185,7 +185,7 @@ U hebt nu een toepassings gateway die luistert naar verkeer op poort 80 en dat v
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Back-endpools en -poort voor afbeeldingen en video toevoegen
 
-Voeg back-endservers met de naam *imagesBackendPool* en *videoBackendPool* toe aan uw Application Gateway[add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Voeg de frontend-poort voor de Pools toe met [add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Verzend de wijzigingen aan de toepassings gateway met behulp van [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway).
+Voeg back-endservers met de naam *imagesBackendPool* en *videoBackendPool* toe aan uw Application Gateway [add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Voeg de frontend-poort voor de Pools toe met [add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Verzend de wijzigingen aan de toepassings gateway met behulp van [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -312,7 +312,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuele-machineschaalset maken
 
-In dit voorbeeld maakt u drie virtuele-machineschaalsets die ondersteuning bieden voor de drie back-endpools die u hebt gemaakt. De schaalsets die u maakt, hebben de namen *myvmss1*, *myvmss2* en *myvmss3*. U wijst de schaalset toe aan de back-endpool wanneer u de IP-instellingen configureert.
+In dit voorbeeld maakt u drie virtuele-machineschaalsets die ondersteuning bieden voor de drie back-endpools die u hebt gemaakt. De schaalsets die u maakt, hebben de namen *myvmss1* , *myvmss2* en *myvmss3*. U wijst de schaalset toe aan de back-endpool wanneer u de IP-instellingen configureert.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `

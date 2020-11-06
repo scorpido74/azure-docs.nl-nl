@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: e35569a1dc5ce7c1cb2889ac3e2ca8f60f8ccd42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47891dfa7fc0c9b30ccdbf2ed7710125eb36e4a3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808200"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397804"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>End-to-end TLS configureren met behulp van Application Gateway met Power shell
 
@@ -20,7 +20,7 @@ ms.locfileid: "84808200"
 
 Azure-toepassing gateway ondersteunt end-to-end versleuteling van verkeer. Application Gateway beëindigt de TLS/SSL-verbinding bij de Application Gateway. De gateway past vervolgens de routerings regels op het verkeer toe, versleutelt het pakket opnieuw en stuurt het pakket door naar de juiste back-endserver op basis van de gedefinieerde routerings regels. Reacties van de webserver ondergaan hetzelfde proces terug naar de eindgebruiker.
 
-Application Gateway biedt ondersteuning voor het definiëren van aangepaste TLS-opties. Het biedt ook ondersteuning voor het uitschakelen van de volgende protocol versies: **tlsv 1.0**, **Tlsv 1.1**en **tlsv 1.2**, evenals de te definiëren coderings suites en de volg orde van voor keur. Zie het overzicht van het [TLS-beleid](application-gateway-SSL-policy-overview.md)voor meer informatie over CONFIGUREER bare TLS-opties.
+Application Gateway biedt ondersteuning voor het definiëren van aangepaste TLS-opties. Het biedt ook ondersteuning voor het uitschakelen van de volgende protocol versies: **tlsv 1.0** , **Tlsv 1.1** en **tlsv 1.2** , evenals de te definiëren coderings suites en de volg orde van voor keur. Zie het overzicht van het [TLS-beleid](application-gateway-SSL-policy-overview.md)voor meer informatie over CONFIGUREER bare TLS-opties.
 
 > [!NOTE]
 > SSL 2,0 en SSL 3,0 zijn standaard uitgeschakeld en kunnen niet worden ingeschakeld. Ze worden beschouwd als onveilig en kunnen niet worden gebruikt met Application Gateway.
@@ -202,7 +202,7 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Configureer de exemplaargrootte van de toepassingsgateway. De beschik bare grootten zijn **standaard \_ klein**, **standaard \_ medium**en **standaard \_ groot**.  Voor capaciteit zijn de beschik bare waarden **1** tot en met **10**.
+10. Configureer de exemplaargrootte van de toepassingsgateway. De beschik bare grootten zijn **standaard \_ klein** , **standaard \_ medium** en **standaard \_ groot**.  Voor capaciteit zijn de beschik bare waarden **1** tot en met **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -219,7 +219,7 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
     - **TLSV1_1**
     - **TLSV1_2**
     
-    In het volgende voor beeld wordt de minimale Protocol versie ingesteld op **TLSv1_2** en wordt **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 128 \_ GCM \_ sha256**, **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 256 \_ GCM \_ SHA384**en **TLS \_ RSA \_ met \_ AES \_ 128 \_ GCM \_ sha256** .
+    In het volgende voor beeld wordt de minimale Protocol versie ingesteld op **TLSv1_2** en wordt **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 128 \_ GCM \_ sha256** , **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 256 \_ GCM \_ SHA384** en **TLS \_ RSA \_ met \_ AES \_ 128 \_ GCM \_ sha256** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -312,7 +312,7 @@ In de voor gaande stappen hebt u geleid tot het maken van een toepassing met end
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definieer een TLS-beleid. In het volgende voor beeld zijn **tlsv 1.0** en **tlsv 1.1** uitgeschakeld en de coderings suites **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 128 \_ GCM \_ sha256**, **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 256 \_ GCM \_ SHA384**en **TLS \_ RSA \_ met \_ AES \_ 128 \_ GCM \_ ** sha256 zijn de enige toegestaan.
+2. Definieer een TLS-beleid. In het volgende voor beeld zijn **tlsv 1.0** en **tlsv 1.1** uitgeschakeld en de coderings suites **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 128 \_ GCM \_ sha256** , **TLS \_ ECDHE \_ ECDSA \_ met \_ AES \_ 256 \_ GCM \_ SHA384** en **TLS \_ RSA \_ met \_ AES \_ 128 \_ GCM \_** sha256 zijn de enige toegestaan.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
@@ -359,6 +359,6 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [overzicht van Web Application firewall](application-gateway-webapplicationfirewall-overview.md)voor meer informatie over het beveiligen van de beveiliging van uw webtoepassingen met Web Application firewall via Application Gateway.
+Zie het [overzicht van Web Application firewall](../web-application-firewall/ag/ag-overview.md)voor meer informatie over het beveiligen van de beveiliging van uw webtoepassingen met Web Application firewall via Application Gateway.
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png

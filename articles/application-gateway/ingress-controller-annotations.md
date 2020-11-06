@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f570f9f18f9c9d484a9bc9c1a5c64d42dbdc714
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335828"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397447"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Aantekeningen voor de Application Gateway ingangs controller 
 
@@ -72,7 +72,7 @@ In het bovenstaande voor beeld hebben we een ingangs resource gedefinieerd `go-s
 
 ## <a name="tls-redirect"></a>TLS-omleiding
 
-Application Gateway [kunnen worden geconfigureerd](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) om http-url's automatisch om te leiden naar hun HTTPS-equivalenten. Als deze aantekening aanwezig is en TLS op de juiste wijze is geconfigureerd, maakt Kubernetes ingangs controller een [routerings regel met een omleidings configuratie](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) en worden de wijzigingen toegepast op uw Application Gateway. De omleiding die u hebt gemaakt, is HTTP `301 Moved Permanently` .
+Application Gateway [kunnen worden geconfigureerd](./redirect-overview.md) om http-url's automatisch om te leiden naar hun HTTPS-equivalenten. Als deze aantekening aanwezig is en TLS op de juiste wijze is geconfigureerd, maakt Kubernetes ingangs controller een [routerings regel met een omleidings configuratie](./redirect-http-to-https-portal.md#add-a-routing-rule-with-a-redirection-configuration) en worden de wijzigingen toegepast op uw Application Gateway. De omleiding die u hebt gemaakt, is HTTP `301 Moved Permanently` .
 
 ### <a name="usage"></a>Gebruik
 

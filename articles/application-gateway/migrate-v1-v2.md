@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dd46f4033a568a278d7006c0d5aab451496ff47
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311594"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397220"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure-toepassing gateway en Web Application firewall migreren van v1 naar v2
 
@@ -125,7 +125,7 @@ Het script uitvoeren:
       $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
       ```
 
-      Zie [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)als u een lijst met PSApplicationGatewayTrustedRootCertificate-objecten wilt maken.
+      Zie [New-AzApplicationGatewayTrustedRootCertificate](/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)als u een lijst met PSApplicationGatewayTrustedRootCertificate-objecten wilt maken.
    * **privateIpAddress: [teken reeks]: optioneel**. Een specifiek privé-IP-adres dat u wilt koppelen aan uw nieuwe v2-gateway.  Dit moet afkomstig zijn uit hetzelfde VNet dat u toewijst voor uw nieuwe v2-gateway. Als dit niet is opgegeven, wordt door het script een persoonlijk IP-adres voor uw v2-gateway toegewezen.
    * **publicIpResourceId: [teken reeks]: optioneel**. De resourceId van een bestaande open bare IP-adres resource (standaard-SKU) in uw abonnement dat u wilt toewijzen aan de nieuwe v2-gateway. Als dit niet is opgegeven, wijst het script een nieuw openbaar IP-adres toe aan dezelfde resource groep. De naam is de naam van de v2-gateway met *-IP* toegevoegd.
    * **validateMigration: [Switch]: optioneel**. Gebruik deze para meter als u wilt dat het script enkele validaties op basis van de configuratie van de 2-en de configuratie kopie van de v2-gateway. Standaard wordt er geen validatie uitgevoerd.

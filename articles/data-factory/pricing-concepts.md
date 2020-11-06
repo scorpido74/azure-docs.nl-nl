@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13a05089ae6365bb5d279105f8c010278bd0adb8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983613"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396002"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory-prijzen leren begrijpen met voorbeelden
 
@@ -48,7 +48,7 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | Pijp lijn ophalen | 1 entiteit lezen/schrijven |
 | Pijp lijn uitvoeren | 2 uitvoeringen van activiteit (1 voor uitvoering van trigger, 1 voor uitvoeringen van activiteit) |
 | Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration runtime (standaard instelling voor DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
-| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
+| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 2 bewakings records voor uitvoering opgehaald (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
 
 **Totaal prijs scenario: $0,16811**
 
@@ -79,7 +79,7 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | Pijp lijn ophalen | 1 entiteit lezen/schrijven |
 | Pijp lijn uitvoeren | 3 uitvoeringen van activiteit (1 voor uitvoering van trigger, 2 voor uitvoeringen van activiteit) |
 | Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration runtime (standaard instelling voor DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
-| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 3 uitgevoerde uitvoerings records voor bewaking (1 voor pijplijn uitvoering, 2 voor uitvoering van activiteit) |
+| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 3 controle records voor uitvoering opgehaald (1 voor pijplijn uitvoering, 2 voor uitvoering van activiteit) |
 | Uitvoer van Databricks-activiteit uitvoeren: uitvoerings tijd = 10 minuten | 10 min. uitvoering van externe pijplijn activiteit |
 
 **Totaal prijs scenario: $0,16916**
@@ -113,7 +113,7 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | Pijp lijn ophalen | 1 entiteit lezen/schrijven |
 | Pijp lijn uitvoeren | 4 uitvoeringen van activiteit (1 voor uitvoering van trigger, 3 voor uitvoeringen van activiteit) |
 | Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration runtime (standaard instelling voor DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
-| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 4 uitgevoerde uitvoerings records voor de controle (1 voor de pijplijn uitvoering, 3 voor de uitvoering van de activiteit) |
+| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 4 records voor het uitvoeren van controles die zijn opgehaald (1 voor de pijplijn uitvoering, 3 voor de uitvoering van de activiteit) |
 | Opzoek activiteit uitvoeren hypo these: uitvoerings tijd = 1 min | 1 min uitvoering pijplijn activiteit |
 | Uitvoer van Databricks-activiteit uitvoeren: uitvoerings tijd = 10 minuten | 10 min. uitvoering van externe pijplijn activiteit |
 
@@ -160,7 +160,7 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | Pijp lijn ophalen | 1 entiteit lezen/schrijven |
 | Pijp lijn uitvoeren | 2 uitvoeringen van activiteit (1 voor uitvoering van trigger, 1 voor uitvoeringen van activiteit) |
 | Veronderstellingen voor gegevens stroom: uitvoerings tijd = 10 min + 10 min TTL | 10 \* 16 kernen van algemene Compute met TTL van 10 |
-| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
+| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 2 bewakings records voor uitvoering opgehaald (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
 
 **Totaal prijs scenario: $1,4631**
 
@@ -189,7 +189,7 @@ In dit scenario wilt u de oorspronkelijke bestanden op Azure Blob Storage verwij
 | Pijp lijn uitvoeren | 6 uitvoeringen van activiteit (2 voor uitvoering van trigger, 4 voor uitvoeringen van activiteit) |
 | Delete-activiteit uitvoeren: elke uitvoerings tijd = 5 minuten. De uitvoering van de activiteit verwijderen in de eerste pijp lijn is van 10:00 uur UTC tot 10:05 uur UTC. De uitvoering van de activiteit verwijderen in een tweede pijp lijn is van 10:02 uur UTC tot 10:07 uur UTC.|Totale aantal uitgevoerde pijplijn activiteit in beheerde VNET. Pijplijn activiteit biedt ondersteuning voor Maxi maal 50 gelijktijdigheid in beheerde VNET. |
 | Gegevens kopiëren hypo these: elke uitvoerings tijd = 10 minuten. De Kopieer uitvoering in de eerste pijp lijn is van 10:06 uur UTC tot 10:15 uur UTC. De uitvoering van de activiteit verwijderen in een tweede pijp lijn is van 10:08 uur UTC tot 10:17 uur UTC. | 10 * 4 Azure Integration Runtime (standaard instelling DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
-| Bewaak pijp lijn controleren: er zijn slechts twee uitvoeringen | 6 uitgevoerde uitvoerings records voor bewaking (2 voor pijplijn uitvoering, 4 voor uitvoering van activiteit) |
+| Bewaak pijp lijn controleren: er zijn slechts twee uitvoeringen | 6 bewakings records voor uitvoering opgehaald (2 voor de pijplijn uitvoering, 4 voor het uitvoeren van de activiteit) |
 
 
 **Totaal prijs scenario: $0,45523**

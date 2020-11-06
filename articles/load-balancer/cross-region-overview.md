@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336527"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398008"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Load balancer voor meerdere regio's (preview-versie)
 
@@ -45,7 +45,7 @@ De front-end-IP-configuratie van uw load balancer voor meerdere regio's is stati
 :::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="Diagram van de load balancer voor meerdere regio's." border="true":::
 
 > [!NOTE]
-> De back-uppoort van uw taakverdelings regel in de Kruis regio load balancer moet overeenkomen met de frontend-poort van de taakverdelings regel of binnenkomende NAT-regel op regionale standaard load balancer. 
+> De back-end-poort van de taakverdelings regel voor de cross-regio load balancer moet overeenkomen met de frontend-poort van de taakverdelings regel of binnenkomende NAT-regel op regionale standaard load balancer. 
 
 ### <a name="regional-redundancy"></a>Regionale redundantie
 
@@ -55,7 +55,7 @@ Als de ene regio uitvalt, wordt het verkeer doorgestuurd naar het dichtstbijzijn
 
 De status test van de Kruis regio load balancer informatie over beschik baarheid elke 20 seconden verzamelen. Als een regionale load balancer de beschik baarheid van 0 daalt, wordt de fout door de Kruis regio load balancer gedetecteerd. De regionale load balancer wordt vervolgens uit de rotatie gehaald. 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Diagram van de load balancer voor meerdere regio's." border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Diagram van de weer gave wereld wijde regio verkeer." border="true":::
 
 ### <a name="ultra-low-latency"></a>Extreem lage latentie
 
@@ -97,11 +97,11 @@ Voeg uw bestaande load balancer-implementaties toe aan een kruis regio load bala
 In de **regio thuis** wordt de Load Balancer van de Kruis regio geïmplementeerd. Deze regio heeft geen invloed op hoe het verkeer wordt doorgestuurd. Als een thuis regio uitvalt, heeft dit geen invloed op de stroom van het verkeer.
 
 ### <a name="home-regions"></a>Thuis regio's
-* VS - oost 2
+* US - oost 2
 * VS - west
 * Europa -west
 * Azië - zuidoost
-* Central US
+* VS - centraal
 * Europa - noord
 * Azië - oost
 
@@ -122,11 +122,11 @@ De load balancer over meerdere regio's stuurt het verkeer naar de juiste regiona
 * VS - west 
 * Europa - noord 
 * VS - zuid-centraal 
-* VS - west 2 
+* US - west 2 
 * Verenigd Koninkrijk Zuid 
 * Azië - zuidoost 
 * VS - noord-centraal 
-* Japan East 
+* Japan - oost 
 * Azië - oost 
 * VS - west-centraal 
 * Australia Southeast 
@@ -149,6 +149,6 @@ Load balancer over meerdere regio's, deelt u de [Sla](https://azure.microsoft.co
  
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [een open bare standaard Load Balancer maken](quickstart-load-balancer-standard-public-portal.md) om aan de slag te gaan met het gebruik van een Load Balancer.
+- Zie [Een openbare standaard load balancer maken](quickstart-load-balancer-standard-public-portal.md) om aan de slag te gaan met een load balancer.
 - Meer informatie over [Azure Load Balancer](load-balancer-overview.md).
 - [Veelgestelde vragen](load-balancer-faqs.md) over Load Balancer

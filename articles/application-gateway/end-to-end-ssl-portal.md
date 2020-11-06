@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 33240d1f44d2f26569791f72a3d5fc3a6656a757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e2d1828acefacb03cc2f42193b8cd8897578b6f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808034"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397498"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>End-to-end TLS configureren met behulp van Application Gateway met de portal
 
@@ -31,7 +31,7 @@ Als u end-to-end TLS wilt configureren met een toepassings gateway, hebt u een c
 
 Voor end-to-end TLS-versleuteling moeten de juiste back-endservers zijn toegestaan in de toepassings gateway. Als u deze toegang wilt toestaan, uploadt u het open bare certificaat van de back-endservers, ook wel bekend als verificatie certificaten (v1) of vertrouwde basis certificaten (v2), naar de toepassings gateway. Door het certificaat toe te voegen, zorgt u ervoor dat de Application Gateway alleen communiceert met bekende back-end-exemplaren. Deze configuratie beveiligt end-to-end-communicatie.
 
-Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](https://docs.microsoft.com/azure/application-gateway/ssl-overview)voor meer informatie.
+Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](./ssl-overview.md)voor meer informatie.
 
 ## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>Een nieuwe toepassings gateway maken met end-to-end TLS
 
@@ -39,17 +39,17 @@ Als u een nieuwe toepassings gateway met end-to-end TLS-versleuteling wilt maken
 
 ### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>TLS-beëindiging inschakelen tijdens het maken van een nieuwe toepassings gateway
 
-Zie [TLS-beëindiging inschakelen tijdens het maken van een nieuwe toepassings gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)voor meer informatie.
+Zie [TLS-beëindiging inschakelen tijdens het maken van een nieuwe toepassings gateway](./create-ssl-portal.md)voor meer informatie.
 
 ### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Verificatie/basis certificaten van back-endservers toevoegen
 
 1. Selecteer **Alle resources** en vervolgens **myAppGateway**.
 
-2. Selecteer **http-instellingen** in het menu aan de linkerkant. Azure heeft automatisch een standaard HTTP-instelling, **appGatewayBackendHttpSettings**, gemaakt wanneer u de toepassings gateway hebt gemaakt. 
+2. Selecteer **http-instellingen** in het menu aan de linkerkant. Azure heeft automatisch een standaard HTTP-instelling, **appGatewayBackendHttpSettings** , gemaakt wanneer u de toepassings gateway hebt gemaakt. 
 
 3. Selecteer **appGatewayBackendHttpSettings**.
 
-4. Onder **protocol**selecteert u **https**. Er wordt een deel venster voor **back-end-verificatie certificaten of vertrouwde basis certificaten** weer gegeven.
+4. Onder **protocol** selecteert u **https**. Er wordt een deel venster voor **back-end-verificatie certificaten of vertrouwde basis certificaten** weer gegeven.
 
 5. Selecteer **Nieuw maken**.
 
@@ -84,14 +84,14 @@ Als u de laatste optie kiest, moet u de stappen in de volgende procedure Toep as
 
 3. Selecteer een **Basic** -of **multi-site** -listener, afhankelijk van uw vereisten.
 
-4. Onder **protocol**selecteert u **https**. Er wordt een deel venster voor het **certificaat** weer gegeven.
+4. Onder **protocol** selecteert u **https**. Er wordt een deel venster voor het **certificaat** weer gegeven.
 
 5. Upload het PFX-certificaat dat u wilt gebruiken voor het beëindigen van TLS tussen de client en de toepassings gateway.
 
    > [!NOTE]
-   > Voor test doeleinden kunt u een zelfondertekend certificaat gebruiken. Dit wordt echter niet aanbevolen voor productie werkbelastingen, omdat ze moeilijker te beheren zijn en niet volledig zijn beveiligd. Zie [een zelfondertekend certificaat maken](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)voor meer informatie.
+   > Voor test doeleinden kunt u een zelfondertekend certificaat gebruiken. Dit wordt echter niet aanbevolen voor productie werkbelastingen, omdat ze moeilijker te beheren zijn en niet volledig zijn beveiligd. Zie [een zelfondertekend certificaat maken](./create-ssl-portal.md#create-a-self-signed-certificate)voor meer informatie.
 
-6. Voeg andere vereiste instellingen voor de **listener**toe, afhankelijk van uw vereisten.
+6. Voeg andere vereiste instellingen voor de **listener** toe, afhankelijk van uw vereisten.
 
 7. Selecteer **OK** om op te slaan.
 
@@ -99,11 +99,11 @@ Als u de laatste optie kiest, moet u de stappen in de volgende procedure Toep as
 
 1. Selecteer **Alle resources** en vervolgens **myAppGateway**.
 
-2. Selecteer **http-instellingen** in het menu aan de linkerkant. U kunt certificaten in een bestaande back-end-HTTP-instelling in de lijst met veilige geadresseerden plaatsen of een nieuwe HTTP-instelling maken. (In de volgende stap wordt het certificaat voor de standaard-HTTP-instelling **appGatewayBackendHttpSettings**toegevoegd aan de lijst met veilige geadresseerden.)
+2. Selecteer **http-instellingen** in het menu aan de linkerkant. U kunt certificaten in een bestaande back-end-HTTP-instelling in de lijst met veilige geadresseerden plaatsen of een nieuwe HTTP-instelling maken. (In de volgende stap wordt het certificaat voor de standaard-HTTP-instelling **appGatewayBackendHttpSettings** toegevoegd aan de lijst met veilige geadresseerden.)
 
 3. Selecteer **appGatewayBackendHttpSettings**.
 
-4. Onder **protocol**selecteert u **https**. Er wordt een deel venster voor **back-end-verificatie certificaten of vertrouwde basis certificaten** weer gegeven. 
+4. Onder **protocol** selecteert u **https**. Er wordt een deel venster voor **back-end-verificatie certificaten of vertrouwde basis certificaten** weer gegeven. 
 
 5. Selecteer **Nieuw maken**.
 

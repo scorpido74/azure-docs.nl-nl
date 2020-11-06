@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cffc15974bf5a016a4584f5c5f3dcc8a185c9824
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85556155"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397328"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Ondersteuning van meerdere naam ruimten in een AKS-cluster met Application Gateway ingangs controller inschakelen
 
@@ -35,7 +35,7 @@ Wanneer de implementatie is geïmplementeerd met de mogelijkheid om meerdere naa
   - lijst met binnenkomende resources van alle toegankelijke naam ruimten
   - filteren op ingangs resources die aantekeningen hebben met `kubernetes.io/ingress.class: azure/application-gateway`
   - gecombineerde [Application Gateway configuratie](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) opstellen
-  - de configuratie Toep assen op de gekoppelde Application Gateway via [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)
+  - de configuratie Toep assen op de gekoppelde Application Gateway via [arm](../azure-resource-manager/management/overview.md)
 
 ## <a name="conflicting-configurations"></a>Conflicterende configuraties
 Meerdere [ingangs bronnen](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) met naam ruimtes kunnen AGIC de instructie geven om conflicterende configuraties te maken voor een enkele Application Gateway. (Twee ingresses claimt hetzelfde domein voor exemplaar.)
@@ -99,7 +99,7 @@ Als u bijvoorbeeld eerst hebt toegevoegd `staging` , CONFIGUREERT AGIC Applicati
 ## <a name="restrict-access-to-namespaces"></a>Toegang tot naam ruimten beperken
 Standaard AGIC configureert Application Gateway op basis van inkomende aantekeningen binnen een naam ruimte. Als u dit gedrag wilt beperken, hebt u de volgende opties:
   - Beperk de naam ruimten door expliciet de definitie van naam ruimten AGIC te zien via de `watchNamespace` yaml [-sleutel in helm-config. yaml](#sample-helm-config-file)
-  - [Role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) gebruiken om de AGIC te beperken tot specifieke naam ruimten
+  - [Role/RoleBinding](../aks/azure-ad-rbac.md) gebruiken om de AGIC te beperken tot specifieke naam ruimten
 
 ## <a name="sample-helm-config-file"></a>Voor beeld van helm-configuratie bestand
 
@@ -155,4 +155,3 @@ Standaard AGIC configureert Application Gateway op basis van inkomende aantekeni
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
 ```
-

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723296"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396920"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway
 
@@ -51,10 +51,10 @@ Application Gateway ondersteunt de volgende typen certificaten:
 - Joker certificaat: dit certificaat ondersteunt een wille keurig aantal subdomeinen op basis van *. site.com, waarbij uw subdomein de * vervangen. Het biedt echter geen ondersteuning voor site.com, dus als de gebruikers toegang hebben tot uw website zonder de toonaangevende ' www ' te hoeven typen, heeft het Joker certificaat hier geen betrekking op.
 - Self-Signed certificaten: client browsers vertrouwen deze certificaten niet en de gebruiker wordt gewaarschuwd dat het certificaat van de virtuele service geen deel uitmaakt van een vertrouwens keten. Zelfondertekende certificaten zijn geschikt voor testen of omgevingen waarin beheerders de clients beheren en de beveiligings waarschuwingen van de browser veilig kunnen passeren. Werk belastingen voor productie moeten nooit zelfondertekende certificaten gebruiken.
 
-Zie [Configure TLS Termination with Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)(Engelstalig) voor meer informatie.
+Zie [Configure TLS Termination with Application Gateway](./create-ssl-portal.md)(Engelstalig) voor meer informatie.
 
 ### <a name="size-of-the-certificate"></a>Grootte van het certificaat
-Controleer de sectie [limieten van Application Gateway](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) om de maximale grootte van TLS/SSL-certificaten te weten die wordt ondersteund.
+Controleer de sectie [limieten van Application Gateway](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits) om de maximale grootte van TLS/SSL-certificaten te weten die wordt ondersteund.
 
 ## <a name="end-to-end-tls-encryption"></a>End-to-end TLS-versleuteling
 
@@ -62,7 +62,7 @@ Mogelijk wilt u niet-versleutelde communicatie met de back-endservers. Mogelijk 
 
 Met end-to-end TLS kunt u gevoelige gegevens versleutelen en veilig verzenden naar de back-end terwijl u gebruikmaakt van Application Gateway de functies voor taak verdeling van laag 7. Deze functies omvatten sessie affiniteit op basis van cookies, route ring op basis van URL, ondersteuning voor route ring op basis van sites, de mogelijkheid om X-doorgestuurde-*-headers opnieuw te schrijven of te injecteren.
 
-Wanneer het is geconfigureerd met een end-to-end TLS-communicatie modus, worden de TLS-sessies op de gateway door Application Gateway beëindigd en wordt het gebruikers verkeer ontsleuteld. Vervolgens worden de geconfigureerde regels toegepast voor het selecteren van het juiste exemplaar van de back-endgroep waarnaar het verkeer moet worden doorgeleid. Application Gateway initieert vervolgens een nieuwe TLS-verbinding met de back-endserver en versleutelt de gegevens opnieuw met het open bare-sleutel certificaat van de back-endserver voordat de aanvraag naar de back-end wordt verzonden. Reacties van de webserver ondergaan hetzelfde proces terug naar de eindgebruiker. End-to-end TLS wordt ingeschakeld door de protocol instelling in de [back-end-HTTP-instelling](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) in te stellen op https, die vervolgens wordt toegepast op een back-end-groep.
+Wanneer het is geconfigureerd met een end-to-end TLS-communicatie modus, worden de TLS-sessies op de gateway door Application Gateway beëindigd en wordt het gebruikers verkeer ontsleuteld. Vervolgens worden de geconfigureerde regels toegepast voor het selecteren van het juiste exemplaar van de back-endgroep waarnaar het verkeer moet worden doorgeleid. Application Gateway initieert vervolgens een nieuwe TLS-verbinding met de back-endserver en versleutelt de gegevens opnieuw met het open bare-sleutel certificaat van de back-endserver voordat de aanvraag naar de back-end wordt verzonden. Reacties van de webserver ondergaan hetzelfde proces terug naar de eindgebruiker. End-to-end TLS wordt ingeschakeld door de protocol instelling in de [back-end-HTTP-instelling](./configuration-overview.md#http-settings) in te stellen op https, die vervolgens wordt toegepast op een back-end-groep.
 
 Voor de SKU Application Gateway en WAF v1 is het TLS-beleid van toepassing op zowel frontend-als back-end-verkeer. Op de front-end Application Gateway fungeren als de server en wordt het beleid afgedwongen. Op de backend fungeert Application Gateway als de client en verzendt de protocol/cipher-informatie als voor keur tijdens de TLS-handshake.
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 66ea8692fd3d93b8de9740e145404a8db50ebfdf
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558564"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398093"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Veelgestelde vragen over de Azure API voor FHIR
 
@@ -52,7 +52,7 @@ Raadpleeg de [release](https://github.com/microsoft/fhir-server/releases) van de
 
 ### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>In welke regio's is Azure API voor FHIR beschikbaar?
 
-Momenteel hebben we algemene Beschik baarheid voor zowel open bare als overheid in [meerdere geografische regio's](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia). Bekijk [Azure-Services door FedRAMP](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope)voor meer informatie over Government Cloud Services bij micro soft.
+Momenteel hebben we algemene Beschik baarheid voor zowel open bare als overheid in [meerdere geografische regio's](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia). Bekijk [Azure-Services door FedRAMP](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)voor meer informatie over Government Cloud Services bij micro soft.
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Waar kan ik zien wat er wordt vrijgegeven in de Azure API voor FHIR?
 
@@ -97,17 +97,17 @@ Enkele voor beelden hiervan zijn:
 
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Wat is de standaard sortering bij het zoeken naar resources in azure API for FHIR?
 
-Sorteren op de datum die het laatst is bijgewerkt, wordt ondersteund: _sort = _lastUpdated. Bekijk onze [pagina met ondersteunde functies](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search)voor meer informatie over andere ondersteunde zoek parameters.
+Sorteren op de datum die het laatst is bijgewerkt, wordt ondersteund: _sort = _lastUpdated. Bekijk onze [pagina met ondersteunde functies](./fhir-features-supported.md#search)voor meer informatie over andere ondersteunde zoek parameters.
 
 ### <a name="how-does-export-work"></a>Hoe werkt $export?
 
-$export maakt deel uit van de FHIR-specificatie: https://hl7.org/fhir/uv/bulkdata/export/index.html . Als de FHIR-service is geconfigureerd met een beheerde identiteit en een opslag account, en als de beheerde identiteit toegang heeft tot dat opslag account, kunt u gewoon $export aanroepen in de FHIR-API en alle FHIR-resources worden geëxporteerd naar het opslag account. Raadpleeg het [artikel over $export](https://docs.microsoft.com/azure/healthcare-apis/export-data)voor meer informatie.
+$export maakt deel uit van de FHIR-specificatie: https://hl7.org/fhir/uv/bulkdata/export/index.html . Als de FHIR-service is geconfigureerd met een beheerde identiteit en een opslag account, en als de beheerde identiteit toegang heeft tot dat opslag account, kunt u gewoon $export aanroepen in de FHIR-API en alle FHIR-resources worden geëxporteerd naar het opslag account. Raadpleeg het [artikel over $export](./export-data.md)voor meer informatie.
 
 ## <a name="using-azure-api-for-fhir"></a>Azure API voor FHIR gebruiken
 
 ### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>Hoe kan ik log Analytics voor Azure API voor FHIR in te scha kelen?
 
-Diagnostische logboek registratie inschakelen en voorbeeld query's voor deze logboeken toestaan. Raadpleeg [deze sectie](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging)voor meer informatie over het inschakelen van controle logboeken en voorbeeld query's. Als u aanvullende informatie wilt toevoegen aan de logboeken, kunt u het beste eens [gebruikmaken van aangepaste HTTP-headers](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers).
+Diagnostische logboek registratie inschakelen en voorbeeld query's voor deze logboeken toestaan. Raadpleeg [deze sectie](./enable-diagnostic-logging.md)voor meer informatie over het inschakelen van controle logboeken en voorbeeld query's. Als u aanvullende informatie wilt toevoegen aan de logboeken, kunt u het beste eens [gebruikmaken van aangepaste HTTP-headers](./use-custom-headers.md).
 
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Waar kan ik enkele voor beelden zien van het gebruik van de Azure API voor FHIR binnen een werk stroom?
 
@@ -121,7 +121,7 @@ We hebben een [github-pagina met een status architectuur](https://github.com/mic
 
 ### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>Is er een manier om mijn gegevens te versleutelen met mijn persoonlijke sleutel geen standaard sleutel?
 
-Ja, met Azure API voor FHIR kunnen door de klant beheerde sleutels worden geconfigureerd, met ondersteuning van Cosmos DB. Bekijk [deze sectie](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key)voor meer informatie over het versleutelen van uw gegevens met een persoonlijke sleutel.
+Ja, met Azure API voor FHIR kunnen door de klant beheerde sleutels worden geconfigureerd, met ondersteuning van Cosmos DB. Bekijk [deze sectie](./customer-managed-key.md)voor meer informatie over het versleutelen van uw gegevens met een persoonlijke sleutel.
 
 ## <a name="azure-api-for-fhir-preview-features"></a>Azure API voor FHIR: Preview-functies
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 492041e39cf3e7be256bc783afc82fc756e17bf4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791542"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397787"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -29,7 +29,7 @@ Azure-toepassing gateway biedt een ADC (Application Delivery controller) als een
 
 ### <a name="what-features-does-application-gateway-support"></a>Welke functies ondersteunt Application Gateway?
 
-Application Gateway ondersteunt automatisch schalen, TLS-offloading en end-to-end TLS, een Web Application Firewall (WAF), sessie affiniteit op basis van cookies, op URL-pad gebaseerde route ring, hosting van meerdere sites en andere functies. Zie [Inleiding tot Application Gateway](application-gateway-introduction.md)voor een volledige lijst met ondersteunde functies.
+Application Gateway ondersteunt automatisch schalen, TLS-offloading en end-to-end TLS, een Web Application Firewall (WAF), sessie affiniteit op basis van cookies, op URL-pad gebaseerde route ring, hosting van meerdere sites en andere functies. Zie [Inleiding tot Application Gateway](./overview.md)voor een volledige lijst met ondersteunde functies.
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Hoe verschillen Application Gateway en Azure Load Balancer?
 
@@ -41,17 +41,17 @@ Application Gateway ondersteunt HTTP, HTTPS, HTTP/2 en WebSocket.
 
 ### <a name="how-does-application-gateway-support-http2"></a>Hoe ondersteunt Application Gateway HTTP/2?
 
-Zie [http/2-ondersteuning](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
+Zie [http/2-ondersteuning](./configuration-listeners.md#http2-support).
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>Welke resources worden ondersteund als onderdeel van een back-end-groep?
 
-Bekijk de [ondersteunde back-end-bronnen](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools).
+Bekijk de [ondersteunde back-end-bronnen](./application-gateway-components.md#backend-pools).
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>In welke regio's is Application Gateway beschikbaar?
 
 Application Gateway v1 (Standard en WAF) is beschikbaar in alle regio's van wereld wijd Azure. Het is ook beschikbaar in [Azure China 21vianet](https://www.azure.cn/) en [Azure Government](https://azure.microsoft.com/overview/clouds/government/).
 
-Zie voor de beschik baarheid van Application Gateway v2 (Standard_v2 en WAF_v2) [ondersteunde regio's voor Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions)
+Zie voor de beschik baarheid van Application Gateway v2 (Standard_v2 en WAF_v2) [ondersteunde regio's voor Application Gateway v2](./application-gateway-autoscaling-zone-redundant.md#supported-regions)
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>Is deze implementatie specifiek voor mijn abonnement of wordt deze gedeeld door klanten?
 
@@ -59,17 +59,17 @@ Application Gateway is een speciale implementatie in uw virtuele netwerk.
 
 ### <a name="does-application-gateway-support-http-to-https-redirection"></a>Ondersteunt Application Gateway HTTP-naar-HTTPS-omleiding?
 
-Omleiding wordt ondersteund. Zie [Application Gateway omleidings overzicht](application-gateway-redirect-overview.md).
+Omleiding wordt ondersteund. Zie [Application Gateway omleidings overzicht](./redirect-overview.md).
 
 ### <a name="in-what-order-are-listeners-processed"></a>In welke volg orde worden listeners verwerkt?
 
-Bekijk de [volg orde van de verwerking van de listener](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners).
+Bekijk de [volg orde van de verwerking van de listener](./configuration-listeners.md#order-of-processing-listeners).
 
 ### <a name="where-do-i-find-the-application-gateway-ip-and-dns"></a>Waar vind ik de Application Gateway IP en DNS?
 
 Als u een openbaar IP-adres gebruikt als een eind punt, vindt u de IP-en DNS-informatie over de open bare IP-adres resource. U kunt deze ook vinden in de portal, op de pagina overzicht voor de toepassings gateway. Als u interne IP-adressen gebruikt, vindt u de informatie op de pagina overzicht.
 
-Open voor de v2-SKU de open bare IP-resource en selecteer **configuratie** . Het **DNS-naam label (optioneel)** veld is beschikbaar voor het configureren van de DNS-naam.
+Open voor de v2-SKU de open bare IP-resource en selecteer **configuratie**. Het **DNS-naam label (optioneel)** veld is beschikbaar voor het configureren van de DNS-naam.
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Wat zijn de instellingen voor Keep-Alive time-out en TCP-time-out voor inactiviteit?
 
@@ -97,7 +97,7 @@ Een toepassings gateway ondersteunt slechts één openbaar IP-adres.
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>Hoe groot moet ik mijn subnet voor Application Gateway maken?
 
-Zie [Application Gateway de grootte](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet)van het subnet.
+Zie [Application Gateway de grootte](./configuration-infrastructure.md#size-of-the-subnet)van het subnet.
 
 ### <a name="can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Kan ik meer dan één Application Gateway resource op één subnet implementeren?
 
@@ -111,7 +111,7 @@ Ja, maar alleen specifieke scenario's. Zie [Application Gateway Infrastructure C
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Ondersteunt Application Gateway x-doorgestuurd-voor kopteksten?
 
-Ja. Zie [wijzigingen aan een aanvraag](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request).
+Ja. Zie [wijzigingen aan een aanvraag](./how-application-gateway-works.md#modifications-to-the-request).
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-will-my-application-gateway-work-while-its-being-updated"></a>Hoe lang duurt het om een toepassings gateway te implementeren? Werkt mijn toepassings gateway terwijl deze wordt bijgewerkt?
 
@@ -138,7 +138,7 @@ Nee. Application Gateway v2 biedt nog geen ondersteuning voor proxy aanvragen me
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Ondersteunt Application Gateway kenmerk SameSite-cookie?
 Ja, de [V80-update](https://chromiumdash.appspot.com/schedule) van de [chroom browser](https://www.chromium.org/Home) heeft een mandaat geïntroduceerd op http-cookies zonder SameSite kenmerk dat moet worden behandeld als SameSite = slordig. Dit betekent dat de Application Gateway affiniteits cookie niet wordt verzonden door de browser in een context van een derde partij. 
 
-Ter ondersteuning van dit scenario wordt door Application Gateway een andere cookie met de naam *ApplicationGatewayAffinityCORS* , naast de bestaande *ApplicationGatewayAffinity* cookie injecteerd.  Deze cookies zijn vergelijkbaar, maar aan de *ApplicationGatewayAffinityCORS* -cookie zijn twee meer kenmerken toegevoegd: *SameSite = none; Beveiligd* . Deze kenmerken behouden plak sessies, zelfs voor cross-Origin-aanvragen. Zie de [sectie affiniteit op basis van cookies](configuration-http-settings.md#cookie-based-affinity) voor meer informatie.
+Ter ondersteuning van dit scenario wordt door Application Gateway een andere cookie met de naam *ApplicationGatewayAffinityCORS* , naast de bestaande *ApplicationGatewayAffinity* cookie injecteerd.  Deze cookies zijn vergelijkbaar, maar aan de *ApplicationGatewayAffinityCORS* -cookie zijn twee meer kenmerken toegevoegd: *SameSite = none; Beveiligd*. Deze kenmerken behouden plak sessies, zelfs voor cross-Origin-aanvragen. Zie de [sectie affiniteit op basis van cookies](configuration-http-settings.md#cookie-based-affinity) voor meer informatie.
 
 ## <a name="performance"></a>Prestaties
 
@@ -168,11 +168,11 @@ Ja. U kunt de verbinding verbreken instellen om leden binnen een back-end-groep 
 
 Ja.
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Wordt Application Gateway altijd geïmplementeerd in een virtueel netwerk?
 
-Ja. Application Gateway wordt altijd geïmplementeerd in een subnet van een virtueel netwerk. Dit subnet kan alleen toepassings gateways bevatten. Zie [vereisten voor virtuele netwerken en subnetten](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet)voor meer informatie.
+Ja. Application Gateway wordt altijd geïmplementeerd in een subnet van een virtueel netwerk. Dit subnet kan alleen toepassings gateways bevatten. Zie [vereisten voor virtuele netwerken en subnetten](./configuration-infrastructure.md#virtual-network-and-dedicated-subnet)voor meer informatie.
 
 ### <a name="can-application-gateway-communicate-with-instances-outside-of-its-virtual-network-or-outside-of-its-subscription"></a>Kan Application Gateway communiceren met exemplaren buiten het virtuele netwerk of buiten het bijbehorende abonnement?
 
@@ -184,15 +184,15 @@ Nee. Maar u kunt ook andere toepassings gateways implementeren in het subnet.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Worden netwerk beveiligings groepen ondersteund op het subnet van de toepassings gateway?
 
-Zie [netwerk beveiligings groepen in het Application Gateway subnet](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups).
+Zie [netwerk beveiligings groepen in het Application Gateway subnet](./configuration-infrastructure.md#network-security-groups).
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Ondersteunt het subnet van de toepassings gateway door de gebruiker gedefinieerde routes?
 
-Zie door [de gebruiker gedefinieerde routes die worden ondersteund in het Application Gateway subnet](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes).
+Zie door [de gebruiker gedefinieerde routes die worden ondersteund in het Application Gateway subnet](./configuration-infrastructure.md#supported-user-defined-routes).
 
 ### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>Worden service-eindpunt beleidsregels ondersteund in het subnet van Application Gateway?
 
-Nee. [Beleids regels voor service-eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview) voor opslag accounts worden niet ondersteund in Application Gateway subnet en het configureren van Azure-infrastructuur verkeer wordt geblokkeerd.
+Nee. [Beleids regels voor service-eind punten](../virtual-network/virtual-network-service-endpoint-policies-overview.md) voor opslag accounts worden niet ondersteund in Application Gateway subnet en het configureren van Azure-infrastructuur verkeer wordt geblokkeerd.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Wat zijn de limieten voor Application Gateway? Kan ik deze limieten verhogen?
 
@@ -220,7 +220,7 @@ Nee.
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Hoe worden routerings regels verwerkt in Application Gateway?
 
-Zie [volg orde van verwerkings regels](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules).
+Zie [volg orde van verwerkings regels](./configuration-request-routing-rules.md#order-of-processing-rules).
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Wat is het veld host voor aangepaste tests?
 
@@ -228,7 +228,7 @@ In het veld host geeft u de naam op voor het verzenden van de test wanneer u mee
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Kan ik Application Gateway toegang tot slechts enkele bron-IP-adressen toestaan?
 
-Ja. Zie [toegang tot specifieke bron-ip's beperken](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips).
+Ja. Zie [toegang tot specifieke bron-ip's beperken](./configuration-infrastructure.md#allow-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Kan ik dezelfde poort gebruiken voor zowel open bare als privé gerichte listeners?
 
@@ -247,9 +247,9 @@ Application Gateway v2 biedt momenteel geen ondersteuning voor de modus Private 
 Maar als u Application Gateway v2 wilt gebruiken met alleen particulier IP-adres, kunt u het onderstaande proces volgen:
 1. Een Application Gateway maken met zowel het open bare als het persoonlijke frontend-IP-adres
 2. Maak geen listeners voor het open bare frontend-IP-adres. Application Gateway luistert niet naar verkeer op het open bare IP-adres als er geen listeners worden gemaakt.
-3. Maak en koppel een [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview) voor het subnet Application Gateway met de volgende configuratie in volg orde van prioriteit:
+3. Maak en koppel een [netwerk beveiligings groep](../virtual-network/network-security-groups-overview.md) voor het subnet Application Gateway met de volgende configuratie in volg orde van prioriteit:
     
-    a. Sta verkeer toe van de bron als **GatewayManager** -service label en-bestemming als **een** doel poort van **65200-65535** . Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door verificatie via certificaat. Externe entiteiten, met inbegrip van de gebruikers beheerders van de gateway, kunnen geen wijzigingen op deze eind punten initiëren zonder dat de juiste certificaten aanwezig zijn
+    a. Sta verkeer toe van de bron als **GatewayManager** -service label en-bestemming als **een** doel poort van **65200-65535**. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door verificatie via certificaat. Externe entiteiten, met inbegrip van de gebruikers beheerders van de gateway, kunnen geen wijzigingen op deze eind punten initiëren zonder dat de juiste certificaten aanwezig zijn
     
     b. Verkeer toestaan van bron als **AzureLoadBalancer** -service label en bestemming en doel poort **Any**
     
@@ -337,7 +337,7 @@ Ja, de SKU van Application Gateway v2 ondersteunt Key Vault. Zie [TLS Terminate 
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>HTTPS-listeners Hoe kan ik configureren voor. com-en .net-sites? 
 
-Voor meerdere op een domein gebaseerde (op een host gebaseerde) route ring kunt u multi site-listeners maken, listeners instellen die HTTPS gebruiken als protocol en de listeners koppelen aan de routerings regels. Zie voor meer informatie [meerdere sites hosten met behulp van Application Gateway](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
+Voor meerdere op een domein gebaseerde (op een host gebaseerde) route ring kunt u multi site-listeners maken, listeners instellen die HTTPS gebruiken als protocol en de listeners koppelen aan de routerings regels. Zie voor meer informatie [meerdere sites hosten met behulp van Application Gateway](./multiple-site-overview.md).
 
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>Kan ik speciale tekens in het wacht woord voor het pfx-bestand gebruiken?
 
@@ -350,7 +350,7 @@ De browser van de certificerings instantie (CA) meldt recent rapporten die zijn 
 * [Bug 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [Bug 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-Conform de nalevings vereisten van de branche begon de leveranciers van de certificerings instantie niet-compatibele certificerings instanties aan te roepen en certificaten te verlenen die voldoen aan het beleid.Micro soft werkt nauw samen met deze leveranciers om de potentiële impact op Azure-Services te minimaliseren, **maar uw zelf verleende certificaten of certificaten die worden gebruikt in de scenario's ' uw eigen certificaat gebruiken ' (BYOC) zijn nog steeds kwetsbaar voor onverwacht gebruik** .
+Conform de nalevings vereisten van de branche begon de leveranciers van de certificerings instantie niet-compatibele certificerings instanties aan te roepen en certificaten te verlenen die voldoen aan het beleid.Micro soft werkt nauw samen met deze leveranciers om de potentiële impact op Azure-Services te minimaliseren, **maar uw zelf verleende certificaten of certificaten die worden gebruikt in de scenario's ' uw eigen certificaat gebruiken ' (BYOC) zijn nog steeds kwetsbaar voor onverwacht gebruik**.
 
 Als u wilt controleren of de certificaten die door uw toepassing worden gebruikt, zijn ingetrokken, geeft u de [aankondiging van de DigiCert](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) en de [intrekkings tracering](https://misissued.com/#revoked)voor het certificaat op. Als uw certificaten zijn ingetrokken of worden ingetrokken, moet u nieuwe certificaten aanvragen bij de CA-leverancier die in uw toepassingen wordt gebruikt. Als u wilt voor komen dat de beschik baarheid van uw toepassing wordt onderbroken omdat de certificaten onverwacht zijn ingetrokken, of als u een ingetrokken certificaat wilt bijwerken, raadpleegt u de Azure updates post voor herstel koppelingen van verschillende Azure-Services die ondersteuning bieden voor BYOC: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -365,7 +365,7 @@ Als u een certificaat gebruikt dat is uitgegeven door een van de ingetrokken ICA
 U moet de volgende acties uitvoeren om te voor komen dat uw toepassing wordt onderbroken wegens dit probleem, of om een ingetrokken certificerings instantie opnieuw te verlenen: 
 
 1.  Neem contact op met uw certificaat provider voor het opnieuw uitgeven van uw certificaten
-2.  Nadat het opnieuw is uitgegeven, werkt u uw certificaten op de Azure-toepassing gateway-WAF bij met de volledige [vertrouwens keten](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (Leaf, tussenliggend, basis certificaat). Voer de onderstaande stappen uit om de certificaten bij te werken, op basis van waar u uw certificaat gebruikt, hetzij op de listener of de HTTP-instellingen van de Application Gateway, en Raadpleeg de documentatie koppelingen die worden vermeld voor meer informatie.
+2.  Nadat het opnieuw is uitgegeven, werkt u uw certificaten op de Azure-toepassing gateway-WAF bij met de volledige [vertrouwens keten](/windows/win32/seccrypto/certificate-chains) (Leaf, tussenliggend, basis certificaat). Voer de onderstaande stappen uit om de certificaten bij te werken, op basis van waar u uw certificaat gebruikt, hetzij op de listener of de HTTP-instellingen van de Application Gateway, en Raadpleeg de documentatie koppelingen die worden vermeld voor meer informatie.
 3.  Werk uw back-end-toepassings servers bij om het opnieuw uitgegeven certificaat te gebruiken. Afhankelijk van de back-endserver die u gebruikt, kunnen de stappen voor het bijwerken van het certificaat verschillen. Raadpleeg de documentatie van uw leverancier.
 
 Het certificaat in de listener bijwerken:
@@ -374,14 +374,14 @@ Het certificaat in de listener bijwerken:
 2.  Open de instellingen van de listener die zijn gekoppeld aan uw certificaat
 3.  Klik op het geselecteerde certificaat vernieuwen of bewerken
 4.  Upload uw nieuwe PFX-certificaat met het wacht woord en klik op opslaan
-5.  Ga naar de website en controleer of de site werkt zoals verwacht. Raadpleeg [hier](https://docs.microsoft.com/azure/application-gateway/renew-certificates)de documentatie voor meer informatie.
+5.  Ga naar de website en controleer of de site werkt zoals verwacht. Raadpleeg [hier](./renew-certificates.md)de documentatie voor meer informatie.
 
 Als u naar certificaten van Azure-sleutel kluis in uw Application Gateway-listener verwijst, raden we u aan de volgende stappen voor een snelle wijziging aan te brengen:
 
 1.  Ga in het [Azure Portal](https://portal.azure.com/)naar de instellingen van de Azure-sleutel kluis die is gekoppeld aan de Application Gateway
-2.  Het opnieuw verleende certificaat in uw archief toevoegen/importeren. Raadpleeg hier de documentatie voor meer informatie over hoe u [Dit](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) kunt doen.
+2.  Het opnieuw verleende certificaat in uw archief toevoegen/importeren. Raadpleeg hier de documentatie voor meer informatie over hoe u [Dit](../key-vault/certificates/quick-create-portal.md) kunt doen.
 3.  Zodra het certificaat is geïmporteerd, gaat u naar de instellingen van uw Application Gateway-listener en klikt u onder ' Kies een certificaat van Key Vault ' op de vervolg keuzelijst certificaat en kiest u het onlangs toegevoegde certificaat
-4.  Klik op opslaan voor meer informatie over het beëindigen van TLS op Application Gateway met Key Vault certificaten. Raadpleeg [hier](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)de documentatie.
+4.  Klik op opslaan voor meer informatie over het beëindigen van TLS op Application Gateway met Key Vault certificaten. Raadpleeg [hier](./key-vault-certs.md)de documentatie.
 
 
 Het certificaat in uw HTTP-instellingen bijwerken:
@@ -391,7 +391,7 @@ Als u v1 SKU van de Application Gateway/WAF-service gebruikt, moet u het nieuwe 
 2.  De HTTP-instellingen openen die aan uw certificaat zijn gekoppeld
 3.  Klik op certificaat toevoegen en upload het opnieuw uitgegeven certificaat en klik op opslaan.
 4.  U kunt het oude certificaat later verwijderen door te klikken op de '... ' op de knop opties naast het oude certificaat en selecteer verwijderen en klik op opslaan.
-Raadpleeg [de documentatie voor](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers)meer informatie.
+Raadpleeg [de documentatie voor](./end-to-end-ssl-portal.md#add-authenticationtrusted-root-certificates-of-back-end-servers)meer informatie.
 
 Als u de v2-SKU van de Application Gateway/WAF-service gebruikt, hoeft u het nieuwe certificaat niet te uploaden in de HTTP-instellingen sinds v2 SKU gebruikmaakt van ' vertrouwde basis certificaten ' en hoeft u hier geen actie te ondernemen.
 
@@ -454,7 +454,7 @@ Selecteer in de portal op de menu-Blade van een toepassings gateway het **activi
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Kan ik waarschuwingen instellen met Application Gateway?
 
-Ja. In Application Gateway worden waarschuwingen voor metrische gegevens geconfigureerd. Zie [Application Gateway metrische gegevens](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics) en [waarschuwings meldingen ontvangen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)voor meer informatie.
+Ja. In Application Gateway worden waarschuwingen voor metrische gegevens geconfigureerd. Zie [Application Gateway metrische gegevens](./application-gateway-metrics.md) en [waarschuwings meldingen ontvangen](../azure-monitor/platform/alerts-overview.md)voor meer informatie.
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Hoe kan ik verkeers statistieken voor Application Gateway analyseren?
 

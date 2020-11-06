@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04d8a77cd051823559aba42d5dfc1418e6343ecc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807147"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397379"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Een Application Gateway ingangs controller (AGIC) installeren met behulp van een nieuwe Application Gateway
 
@@ -30,7 +30,7 @@ U kunt ook Cloud Shell starten vanuit Azure Portal met behulp van het volgende p
 
 Uw [Azure Cloud shell](https://shell.azure.com/) beschikt al over alle benodigde hulpprogram ma's. Als u ervoor kiest om een andere omgeving te gebruiken, moet u ervoor zorgen dat de volgende opdracht regel Programma's zijn geïnstalleerd:
 
-* `az` -Azure CLI: [installatie-instructies](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `az` -Azure CLI: [installatie-instructies](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * `kubectl` -Kubernetes opdracht regel programma: [installatie-instructies](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` -Kubernetes Package Manager: [installatie-instructies](https://github.com/helm/helm/releases/latest)
 * `jq` -opdracht regel JSON-processor: [installatie-instructies](https://stedolan.github.io/jq/download/)
@@ -38,9 +38,9 @@ Uw [Azure Cloud shell](https://shell.azure.com/) beschikt al over alle benodigde
 
 ## <a name="create-an-identity"></a>Een identiteit maken
 
-Volg de onderstaande stappen om een [Service-Principal-object](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)voor Azure Active Directory (Aad) te maken. Noteer de `appId` waarden, `password` en, en `objectId` deze worden in de volgende stappen gebruikt.
+Volg de onderstaande stappen om een [Service-Principal-object](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)voor Azure Active Directory (Aad) te maken. Noteer de `appId` waarden, `password` en, en `objectId` deze worden in de volgende stappen gebruikt.
 
-1. AD-service-principal maken ([meer informatie over RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)):
+1. AD-service-principal maken ([meer informatie over RBAC](../role-based-access-control/overview.md)):
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
@@ -71,11 +71,11 @@ Volg de onderstaande stappen om een [Service-Principal-object](https://docs.micr
 ## <a name="deploy-components"></a>Onderdelen implementeren
 Met deze stap worden de volgende onderdelen aan uw abonnement toegevoegd:
 
-- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-- [Application Gateway](https://docs.microsoft.com/azure/application-gateway/overview) v2
-- [Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) met 2 [subnetten](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Openbaar IP-adres](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- [Beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), die wordt gebruikt door de [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity/blob/master/README.md)
+- [Azure Kubernetes Service](../aks/intro-kubernetes.md)
+- [Application Gateway](./overview.md) v2
+- [Virtual Network](../virtual-network/virtual-networks-overview.md) met 2 [subnetten](../virtual-network/virtual-networks-overview.md)
+- [Openbaar IP-adres](../virtual-network/virtual-network-public-ip-address.md)
+- [Beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md), die wordt gebruikt door de [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity/blob/master/README.md)
 
 1. Down load de Azure Resource Manager sjabloon en wijzig de sjabloon naar wens.
     ```bash
@@ -111,7 +111,7 @@ Met de instructies in de vorige sectie hebben we een nieuw AKS-cluster en een Ap
 ### <a name="setup-kubernetes-credentials"></a>Kubernetes-Referenties instellen
 Voor de volgende stappen hebt u de opdracht [kubectl](https://kubectl.docs.kubernetes.io/) vereist, die we gebruiken om verbinding te maken met het nieuwe Kubernetes-cluster. [Cloud shell](https://shell.azure.com/) is `kubectl` al geïnstalleerd. We gebruiken `az` CLI om referenties voor Kubernetes te verkrijgen.
 
-Referenties ophalen voor uw pas geïmplementeerde AKS ([meer informatie](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)):
+Referenties ophalen voor uw pas geïmplementeerde AKS ([meer informatie](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)):
 ```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
@@ -121,7 +121,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 ```
 
 ### <a name="install-aad-pod-identity"></a>AAD pod-identiteit installeren
-  Azure Active Directory pod-identiteit biedt toegang tot [Azure Resource Manager (arm)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)op basis van tokens.
+  Azure Active Directory pod-identiteit biedt toegang tot [Azure Resource Manager (arm)](../azure-resource-manager/management/overview.md)op basis van tokens.
 
   Met de [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) worden de volgende onderdelen toegevoegd aan uw Kubernetes-cluster:
    * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` , `AzureIdentityBinding`
@@ -144,9 +144,9 @@ De AAD pod-identiteit voor uw cluster installeren:
      ```
 
 ### <a name="install-helm"></a>Helm installeren
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) is een pakket beheerder voor Kubernetes. We gebruiken dit om het pakket te installeren `application-gateway-kubernetes-ingress` :
+[Helm](../aks/kubernetes-helm.md) is een pakket beheerder voor Kubernetes. We gebruiken dit om het pakket te installeren `application-gateway-kubernetes-ingress` :
 
-1. Installeer [helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) en voer het volgende uit om het helm-pakket toe te voegen `application-gateway-kubernetes-ingress` :
+1. Installeer [helm](../aks/kubernetes-helm.md) en voer het volgende uit om het helm-pakket toe te voegen `application-gateway-kubernetes-ingress` :
 
     - *RBAC ingeschakeld* AKS-cluster
 

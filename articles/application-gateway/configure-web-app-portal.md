@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323367"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397549"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service configureren met Application Gateway
 
@@ -30,15 +30,15 @@ In dit artikel leert u het volgende:
 
 - Toepassings gateway: een toepassings gateway maken zonder een back-end-pool doel. Voor meer informatie raadpleegt u [Quick Start: direct Web Traffic with Azure-toepassing gateway-Azure Portal](quick-create-portal.md)
 
-- App service: als u geen bestaande app service hebt, raadpleegt u [app service-documentatie](https://docs.microsoft.com/azure/app-service/).
+- App service: als u geen bestaande app service hebt, raadpleegt u [app service-documentatie](../app-service/index.yml).
 
 ## <a name="add-app-service-as-backend-pool"></a>App service toevoegen als back-end-groep
 
 1. Selecteer uw toepassings gateway in het Azure Portal.
 
-2. Selecteer onder **back-endservers**de back-end-pool.
+2. Selecteer onder **back-endservers** de back-end-pool.
 
-4. Onder **doel type**selecteert u **app Services**.
+4. Onder **doel type** selecteert u **app Services**.
 
 5. Onder **doel** selecteert u uw app service.
 
@@ -50,19 +50,19 @@ In dit artikel leert u het volgende:
 
 ## <a name="edit-http-settings-for-app-service"></a>HTTP-instellingen voor App Service bewerken
 
-1. Selecteer onder **http-instellingen**de bestaande http-instelling.
+1. Selecteer onder **http-instellingen** de bestaande http-instelling.
 
-2. Selecteer bij **vervangen door nieuwe hostnaam**de optie **Ja**.
-3. Onder **hostnaam negeren**selecteert u **hostnaam kiezen uit back-end doel**.
+2. Selecteer bij **vervangen door nieuwe hostnaam** de optie **Ja**.
+3. Onder **hostnaam negeren** selecteert u **hostnaam kiezen uit back-end doel**.
 4. Selecteer **Opslaan**.
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="App service-back-end":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="Kies een hostnaam uit de back-end-http-instellingen":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Aanvullende configuratie in het geval van omleiding naar het relatieve pad van de app service
 
 Wanneer de app-service een omleidings reactie naar de client verzendt om om te leiden naar het relatieve pad (bijvoorbeeld een omleiding van `contoso.azurewebsites.net/path1` naar `contoso.azurewebsites.net/path2` ), wordt dezelfde hostnaam gebruikt in de locatie header van de reactie van de toepassing als het antwoord in de aanvraag die is ontvangen van de toepassings gateway. De client zal de aanvraag dus rechtstreeks laten `contoso.azurewebsites.net/path2` door lopen in plaats van de Application Gateway ( `contoso.com/path2` ). Het overs laan van de toepassings gateway is niet gewenst.
 
-Als u in uw gebruiks voorbeeld scenario's hebt waarbij de app service een omleidings antwoord naar de client moet verzenden, voert [u de extra stappen uit om de locatie header te herschrijven](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration).
+Als u in uw gebruiks voorbeeld scenario's hebt waarbij de app service een omleidings antwoord naar de client moet verzenden, voert [u de extra stappen uit om de locatie header te herschrijven](./troubleshoot-app-service-redirection-app-service-url.md#sample-configuration).
 
 ## <a name="restrict-access"></a>Toegang beperken
 
@@ -72,4 +72,4 @@ Een manier om de toegang tot uw web-apps te beperken, is door [Azure app service
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [ondersteuning voor multi tenant-Services met toepassings gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)voor meer informatie over de app service en andere ondersteuning voor meerdere tenants met Application Gateway.
+Zie [ondersteuning voor multi tenant-Services met toepassings gateway](./application-gateway-web-app-overview.md)voor meer informatie over de app service en andere ondersteuning voor meerdere tenants met Application Gateway.

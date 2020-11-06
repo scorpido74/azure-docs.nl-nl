@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f29b31b09c2532c336ef2a2d574fab5e000b3e4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e410218117aa0d21167b6d615a3835aeec470e7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595870"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397107"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Webverkeer met een toepassingsgateway beheren met behulp van Azure PowerShell
 
-De toepassingsgateway wordt gebruikt voor het beheren en beveiligen van webverkeer naar servers die door u worden onderhouden. U kunt Azure PowerShell gebruiken om een ​​[toepassingsgateway](overview.md) te maken die gebruikmaakt van een [virtuele-machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor back-endservers om webverkeer te beheren. In dit voorbeeld bevat de schaalset twee virtuele-machine-instanties die zijn toegevoegd aan de standaard back-endgroep van de toepassingsgateway.
+De toepassingsgateway wordt gebruikt voor het beheren en beveiligen van webverkeer naar servers die door u worden onderhouden. U kunt Azure PowerShell gebruiken om een ​​[toepassingsgateway](overview.md) te maken die gebruikmaakt van een [virtuele-machineschaalset](../virtual-machine-scale-sets/overview.md) voor back-endservers om webverkeer te beheren. In dit voorbeeld bevat de schaalset twee virtuele-machine-instanties die zijn toegevoegd aan de standaard back-endgroep van de toepassingsgateway.
 
 In dit artikel leert u het volgende:
 
@@ -75,9 +75,9 @@ $pip = New-AzPublicIpAddress `
 
 In deze sectie kunt u resources maken die ondersteuning bieden voor de toepassingsgateway. Ten slotte maakt u deze. De resources die u maakt, zijn onder andere:
 
-- *IP-configuraties en front-endpoort*: hiermee koppelt u het subnet dat u eerder hebt gemaakt aan de toepassingsgateway en wijst u een poort toe die u gebruikt om de gateway te openen.
-- *Standaardpool*: alle toepassingsgateways moeten ten minste één back-endpool met servers hebben.
-- *Standaard-listener en regel*: de standaard-listener luistert naar verkeer op de poort die is toegewezen en de standaardregel verzendt verkeer naar de standaardpool.
+- *IP-configuraties en front-endpoort* : hiermee koppelt u het subnet dat u eerder hebt gemaakt aan de toepassingsgateway en wijst u een poort toe die u gebruikt om de gateway te openen.
+- *Standaardpool* : alle toepassingsgateways moeten ten minste één back-endpool met servers hebben.
+- *Standaard-listener en regel* : de standaard-listener luistert naar verkeer op de poort die is toegewezen en de standaardregel verzendt verkeer naar de standaardpool.
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP-configuraties en front-endpoort maken
 
@@ -257,4 +257,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Webverkeer beperken met een firewall voor webtoepassingen](./tutorial-restrict-web-traffic-powershell.md)
+[Webverkeer beperken met een firewall voor webtoepassingen](../web-application-firewall/ag/tutorial-restrict-web-traffic-powershell.md)

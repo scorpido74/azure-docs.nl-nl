@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 8763c07ee91f228f63880c2be16497a7a78c6453
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9606bfe8b4719ed4ab3c51fc177f331b754f7a1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595249"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397049"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Een toepassingsgateway maken met een omleiding op basis van een URL-pad met Azure PowerShell
 
-U kunt Azure PowerShell gebruiken om [op een URL gebaseerde routeringsregels](application-gateway-url-route-overview.md) te configureren als u een [toepassingsgateway maakt](application-gateway-introduction.md). In dit artikel maakt u back-endservers met  [virtuele-machine schaal sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Vervolgens maakt u URL-routeringsregels waardoor webverkeer wordt omgeleid naar de juiste back-endpool.
+U kunt Azure PowerShell gebruiken om [op een URL gebaseerde routeringsregels](./url-route-overview.md) te configureren als u een [toepassingsgateway maakt](./overview.md). In dit artikel maakt u back-endservers met  [virtuele-machine schaal sets](../virtual-machine-scale-sets/overview.md). Vervolgens maakt u URL-routeringsregels waardoor webverkeer wordt omgeleid naar de juiste back-endpool.
 
 In dit artikel leert u het volgende:
 
@@ -78,9 +78,9 @@ New-AzPublicIpAddress `
 
 In deze sectie kunt u resources maken die ondersteuning bieden voor de toepassingsgateway. Ten slotte maakt u deze. De resources die u maakt, zijn onder andere:
 
-- *IP-configuraties en front-endpoort*: hiermee koppelt u het subnet dat u eerder hebt gemaakt aan de toepassingsgateway en wijst u een poort toe die u gebruikt om de gateway te openen.
-- *Standaardpool*: alle toepassingsgateways moeten ten minste één back-endpool met servers hebben.
-- *Standaard-listener en regel*: de standaard-listener luistert naar verkeer op de poort die is toegewezen en de standaardregel verzendt verkeer naar de standaardpool.
+- *IP-configuraties en front-endpoort* : hiermee koppelt u het subnet dat u eerder hebt gemaakt aan de toepassingsgateway en wijst u een poort toe die u gebruikt om de gateway te openen.
+- *Standaardpool* : alle toepassingsgateways moeten ten minste één back-endpool met servers hebben.
+- *Standaard-listener en regel* : de standaard-listener luistert naar verkeer op de poort die is toegewezen en de standaardregel verzendt verkeer naar de standaardpool.
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP-configuraties en front-endpoort maken
 
@@ -390,7 +390,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuele-machineschaalset maken
 
-In dit voorbeeld maakt u drie virtuele-machineschaalsets die ondersteuning bieden voor de drie back-endpools die u hebt gemaakt. De schaalsets die u maakt, hebben de namen *myvmss1*, *myvmss2* en *myvmss3*. Elke schaalset bevat twee exemplaren van virtuele machines waarop u IIS installeert. U wijst de schaalset toe aan de back-endpool wanneer u de IP-instellingen configureert.
+In dit voorbeeld maakt u drie virtuele-machineschaalsets die ondersteuning bieden voor de drie back-endpools die u hebt gemaakt. De schaalsets die u maakt, hebben de namen *myvmss1* , *myvmss2* en *myvmss3*. Elke schaalset bevat twee exemplaren van virtuele machines waarop u IIS installeert. U wijst de schaalset toe aan de back-endpool wanneer u de IP-instellingen configureert.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -518,4 +518,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over wat u kunt doen met de toepassingsgateway](application-gateway-introduction.md)
+> [Meer informatie over wat u kunt doen met de toepassingsgateway](./overview.md)

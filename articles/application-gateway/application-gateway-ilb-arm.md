@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d663dc4e2bd860ec9494785ecbf6dbf10a4c5b5
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808129"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397753"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Een toepassings gateway maken met een interne load balancer (ILB)
 
@@ -50,7 +50,7 @@ Dit zijn de stappen voor het maken van een toepassingsgateway:
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Een resourcegroep maken voor Resource Manager
 
-Zorg ervoor dat u overschakelt naar de PowerShell-modus om de Azure Resource Manager-cmdlets te gebruiken. Zie [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md) (Windows PowerShell gebruiken met Resource Manager) voor meer informatie.
+Zorg ervoor dat u overschakelt naar de PowerShell-modus om de Azure Resource Manager-cmdlets te gebruiken. Zie [Using Windows PowerShell with Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md) (Windows PowerShell gebruiken met Resource Manager) voor meer informatie.
 
 ### <a name="step-1"></a>Stap 1
 
@@ -258,10 +258,9 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u SSL-offload wilt configureren, raadpleegt u [Configure an application gateway for SSL offload](application-gateway-ssl.md) (Een toepassingsgateway voor SSL-offload configureren).
+Als u SSL-offload wilt configureren, raadpleegt u [Configure an application gateway for SSL offload](./tutorial-ssl-powershell.md) (Een toepassingsgateway voor SSL-offload configureren).
 
 Als u meer informatie wilt over de algemene opties voor load balancing, raadpleegt u:
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

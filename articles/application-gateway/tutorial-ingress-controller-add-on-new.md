@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: a93ef47d4a7ecc136f66cf54a08f7ed23bec2cc0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 18c8aa0ff05dababc5a79c5c05b43ce9ebcbf9b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427974"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397090"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Zelfstudie: De invoegtoepassing voor inkomend verkeer (preview) inschakelen voor een nieuw AKS-cluster met een nieuwe Application Gateway-instantie
 
@@ -39,17 +39,17 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie de Azure CLI (versie 2.0.4 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
-Registreer de functievlag *AKS-IngressApplicationGatewayAddon* door gebruik te maken van de opdracht [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register), zoals in het volgende voorbeeld wordt gedemonstreerd. Zolang de invoegtoepassing nog in preview is, hoeft u dit slechts één keer per abonnement te doen.
+Registreer de functievlag *AKS-IngressApplicationGatewayAddon* door gebruik te maken van de opdracht [az feature register](/cli/azure/feature#az-feature-register), zoals in het volgende voorbeeld wordt gedemonstreerd. Zolang de invoegtoepassing nog in preview is, hoeft u dit slechts één keer per abonnement te doen.
 ```azurecli-interactive
 az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
 ```
 
-Het kan enkele minuten duren voordat de status `Registered` wordt weergegeven. U kunt de registratiestatus controleren met behulp van de opdracht [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register):
+Het kan enkele minuten duren voordat de status `Registered` wordt weergegeven. U kunt de registratiestatus controleren met behulp van de opdracht [az feature list](/cli/azure/feature#az-feature-register):
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
-Wanneer u klaar bent, vernieuwt u de registratie van de resourceprovider Microsoft.ContainerService met behulp van de opdracht [az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register):
+Wanneer u klaar bent, vernieuwt u de registratie van de resourceprovider Microsoft.ContainerService met behulp van de opdracht [az provider register](/cli/azure/provider#az-provider-register):
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
@@ -66,7 +66,7 @@ az extension list
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-In Azure kunt u verwante resources toewijzen aan een resourcegroep. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie (regio) *canadacentral*: 
+In Azure kunt u verwante resources toewijzen aan een resourcegroep. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie (regio) *canadacentral* : 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location canadacentral
@@ -82,7 +82,7 @@ U gaat nu een nieuw AKS-cluster implementeren waarvoor de AGIC-invoegtoepassing 
 > - Schakel WAF in op Application Gateway via de portal. 
 > - Maak eerst de Application Gateway-instantie WAF_v2 en volg daarna de instructies voor het [inschakelen van de AGIC-invoegtoepassing met een bestaand AKS-cluster en een bestaande Application Gateway-instantie](tutorial-ingress-controller-add-on-existing.md). 
 
-In het volgende voorbeeld implementeert u een nieuw AKS-cluster met de naam *myCluster* met behulp van [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) en [beheerde identiteiten](https://docs.microsoft.com/azure/aks/use-managed-identity). De AGIC-invoegtoepassing wordt ingeschakeld in de resourcegroep *myResourceGroup* die u hebt gemaakt. 
+In het volgende voorbeeld implementeert u een nieuw AKS-cluster met de naam *myCluster* met behulp van [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) en [beheerde identiteiten](../aks/use-managed-identity.md). De AGIC-invoegtoepassing wordt ingeschakeld in de resourcegroep *myResourceGroup* die u hebt gemaakt. 
 
 Als u een nieuw AKS-cluster implementeert terwijl de AGIC-invoegtoepassing is ingeschakeld zonder dat u een bestaande Application Gateway-instantie opgeeft, wordt er automatisch een instantie van de Application Gateway Standard_v2-SKU gemaakt. U geeft dus ook de naam en de adresruimte van het subnet op van de Application Gateway-instantie. De naam van de Application Gateway-instantie wordt *myApplicationGateway* en de adresruimte van het subnet dat we gebruiken is 10.2.0.0/16. Zorg ervoor dat u aan het begin van deze zelfstudie de uitbreiding aks-preview hebt toegevoegd of bijgewerkt. 
 
@@ -90,10 +90,10 @@ Als u een nieuw AKS-cluster implementeert terwijl de AGIC-invoegtoepassing is in
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
-Zie [dit referentiemateriaal](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create) voor meer informatie over het configureren van aanvullende parameters voor de opdracht `az aks create`. 
+Zie [dit referentiemateriaal](/cli/azure/aks?view=azure-cli-latest#az-aks-create) voor meer informatie over het configureren van aanvullende parameters voor de opdracht `az aks create`. 
 
 > [!NOTE]
-> Het AKS-cluster dat u hebt gemaakt, wordt weergegeven in de resourcegroep *myResourceGroup* die u hebt gemaakt. De automatisch gemaakte Application Gateway-instantie bevindt zich echter in het knooppunt van de resourcegroep, waar zich de agentpools bevinden. De resourcegroep van het knooppunt heet standaard *MC_resource-group-name_cluster-name_location*, maar kan worden gewijzigd. 
+> Het AKS-cluster dat u hebt gemaakt, wordt weergegeven in de resourcegroep *myResourceGroup* die u hebt gemaakt. De automatisch gemaakte Application Gateway-instantie bevindt zich echter in het knooppunt van de resourcegroep, waar zich de agentpools bevinden. De resourcegroep van het knooppunt heet standaard *MC_resource-group-name_cluster-name_location* , maar kan worden gewijzigd. 
 
 ## <a name="deploy-a-sample-application-by-using-agic"></a>Een voorbeeldtoepassing implementeren met behulp van AGIC
 
@@ -138,4 +138,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [Meer informatie over het uitschakelen van de AGIC-invoegtoepassing](./ingress-controller-disable-addon.md)
-

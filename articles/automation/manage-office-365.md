@@ -2,14 +2,14 @@
 title: Office 365-services beheren met Azure Automation
 description: In dit artikel leest u hoe u Azure Automation kunt gebruiken om Office 365-abonnements services te beheren.
 services: automation
-ms.date: 04/01/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91f5ac0c3adabf9880078d7a4d3703e2757cb97f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185310"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398042"
 ---
 # <a name="manage-office-365-services"></a>Office 365-services beheren
 
@@ -44,7 +44,7 @@ Voeg nu de geïnstalleerde MSOnline-en MSOnlineExt-modules toe om de Office 365-
 3. Selecteer **modules galerie** onder **gedeelde resources**.
 4. Zoek naar MSOnline.
 5. Selecteer de `MSOnline` Power shell-module en klik op **importeren** om de module als een Asset te importeren.
-6. Herhaal stap 4 en 5 om de module te zoeken en te importeren `MSOnlineExt` . 
+6. Herhaal stap 4 en 5 om de module te zoeken en te importeren `MSOnlineExt` .
 
 ## <a name="create-a-credential-asset-optional"></a>Een referentie-activum maken (optioneel)
 
@@ -52,7 +52,7 @@ Het is optioneel om een referentie-element te maken voor de Office 365-gebruiker
 
 ## <a name="create-an-office-365-service-account"></a>Een Office 365-service account maken
 
-Als u Office 365-abonnements Services wilt uitvoeren, hebt u een Office 365 service-account nodig met de juiste machtigingen. U kunt één algemeen beheerders account gebruiken, één account per service of een functie of script hebben om uit te voeren. In elk geval is een complex en veilig wacht woord vereist voor het service account. Zie [Office 365 voor bedrijven instellen](/microsoft-365/admin/setup/setup?view=o365-worldwide). 
+Als u Office 365-abonnements Services wilt uitvoeren, hebt u een Office 365 service-account nodig met de juiste machtigingen. U kunt één algemeen beheerders account gebruiken, één account per service of een functie of script hebben om uit te voeren. In elk geval is een complex en veilig wacht woord vereist voor het service account. Zie [Office 365 voor bedrijven instellen](/microsoft-365/admin/setup/setup).
 
 ## <a name="connect-to-the-azure-ad-online-service"></a>Verbinding maken met de Azure AD online-service
 
@@ -61,7 +61,7 @@ Als u Office 365-abonnements Services wilt uitvoeren, hebt u een Office 365 serv
 
 U kunt de MSOnline-module gebruiken om vanuit het Office 365-abonnement verbinding te maken met Azure AD. De verbinding maakt gebruik van een Office 365-gebruikers naam en-wacht woord of gebruikt multi-factor Authentication (MFA). U kunt verbinding maken met behulp van de Azure Portal of een Windows Power shell-opdracht prompt (heeft geen verhoogde bevoegdheden nodig).
 
-Hieronder ziet u een voor beeld van Power shell. Met de cmdlet [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) wordt om referenties gevraagd en opgeslagen in de `Msolcred` variabele. Vervolgens maakt de [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) -cmdlet gebruik van de referenties om verbinding te maken met de online service Azure Directory. Als u verbinding wilt maken met een specifieke Azure-omgeving, gebruikt u de `AzureEnvironment` para meter.
+Hieronder ziet u een voor beeld van Power shell. Met de cmdlet [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) wordt om referenties gevraagd en opgeslagen in de `Msolcred` variabele. Vervolgens maakt de [Connect-MsolService](/powershell/module/msonline/connect-msolservice) -cmdlet gebruik van de referenties om verbinding te maken met de online service Azure Directory. Als u verbinding wilt maken met een specifieke Azure-omgeving, gebruikt u de `AzureEnvironment` para meter.
 
 ```powershell
 $Msolcred = Get-Credential
@@ -71,25 +71,23 @@ Connect-MsolService -Credential $MsolCred -AzureEnvironment "AzureCloud"
 Als er geen fouten worden weer gegeven, hebt u verbinding gemaakt. Een snelle test is een Office 365-cmdlet uit te voeren, bijvoorbeeld, `Get-MsolUser` en de resultaten te bekijken. Als u fouten ontvangt, moet u er rekening mee houden dat een veelvoorkomend probleem een onjuist wacht woord is.
 
 >[!NOTE]
->U kunt ook de module AzureRM of de module AZ gebruiken om vanuit het Office 365-abonnement verbinding te maken met Azure AD. De hoofd verbindings-cmdlet is [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0). Met deze cmdlet wordt de `AzureEnvironmentName` para meter voor specifieke Office 365-omgevingen ondersteund.
+>U kunt ook de module AzureRM of de module AZ gebruiken om vanuit het Office 365-abonnement verbinding te maken met Azure AD. De hoofd verbindings-cmdlet is [Connect-AzureAD](/powershell/module/azuread/connect-azuread). Met deze cmdlet wordt de `AzureEnvironmentName` para meter voor specifieke Office 365-omgevingen ondersteund.
 
 ## <a name="create-a-powershell-runbook-from-an-existing-script"></a>Een Power shell-runbook maken op basis van een bestaand script
 
 U opent de Office 365-functionaliteit vanuit een Power shell-script. Hier volgt een voor beeld van een script voor een referentie `Office-Credentials` met de naam met de gebruikers naam van `admin@TenantOne.com` . De oplossing wordt gebruikt `Get-AutomationPSCredential` voor het importeren van de Office 365-referentie.
 
 ```powershell
-$emailFromAddress = "admin@TenantOne.com" 
-$emailToAddress = "servicedesk@TenantOne.com" 
-$emailSMTPServer = "outlook.office365.com" 
-$emailSubject = "Office 365 License Report" 
+$emailFromAddress = "admin@TenantOne.com"
+$emailToAddress = "servicedesk@TenantOne.com"
+$emailSMTPServer = "outlook.office365.com"
+$emailSubject = "Office 365 License Report"
 
-$credObject = Get-AutomationPSCredential -Name "Office-Credentials" 
+$credObject = Get-AutomationPSCredential -Name "Office-Credentials"
 Connect-MsolService -Credential $credObject
 
-$O365Licenses = Get-MsolAccountSku | Out-String 
-Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAddress -Subject $emailSubject -Body 
-
-$O365Licenses -SmtpServer $emailSMTPServer -UseSSL
+$O365Licenses = Get-MsolAccountSku | Out-String
+Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAddress -Subject $emailSubject -Body $O365Licenses -SmtpServer $emailSMTPServer -UseSSL
 ```
 
 ## <a name="run-the-script-in-a-runbook"></a>Het script uitvoeren in een runbook
@@ -100,9 +98,9 @@ U kunt uw script gebruiken in een Azure Automation runbook. We gebruiken bijvoor
 2. Selecteer in uw Automation-account **Runbooks** onder **proces automatisering**.
 3. Selecteer het nieuwe runbook en klik op **bewerken**.
 4. Kopieer uw script en plak het in de tekst editor voor het runbook.
-5. Selecteer **assets**, vouw vervolgens **referenties** uit en controleer of de Office 365-referentie daar aanwezig is.
+5. Selecteer **assets** , vouw vervolgens **referenties** uit en controleer of de Office 365-referentie daar aanwezig is.
 6. Klik op **Opslaan**.
-7. Selecteer **test deel venster**en klik vervolgens op **starten** om te beginnen met het testen van uw runbook. Zie [Runbooks beheren in azure Automation](./manage-runbooks.md).
+7. Selecteer **test deel venster** en klik vervolgens op **starten** om te beginnen met het testen van uw runbook. Zie [Runbooks beheren in azure Automation](./manage-runbooks.md).
 8. Wanneer het testen is voltooid, sluit u af vanuit het test venster.
 
 ## <a name="publish-and-schedule-the-runbook"></a>Het runbook publiceren en plannen

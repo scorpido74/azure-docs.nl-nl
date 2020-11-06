@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: d6cfac7f0fb3939e57ce64f552556138ce9feacd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc5efd6ad478710ba839634a49f041211756af71
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652977"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397668"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>Configuratie van het front-end-IP-adres Application Gateway
 
@@ -32,11 +32,11 @@ Een openbaar IP-adres is niet vereist voor een intern eind punt dat niet beschik
 
 Er wordt slechts één openbaar IP-adres of één privé-IP-adres ondersteund. U kiest het front-end-IP-adres wanneer u de toepassings gateway maakt.
 
-- Voor een openbaar IP-adres kunt u een nieuw openbaar IP-adres maken of een bestaande open bare IP gebruiken op dezelfde locatie als de toepassings gateway. Zie [static versus Dynamic Public IP Address](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)(Engelstalig) voor meer informatie.
+- Voor een openbaar IP-adres kunt u een nieuw openbaar IP-adres maken of een bestaande open bare IP gebruiken op dezelfde locatie als de toepassings gateway. Zie [static versus Dynamic Public IP Address](./application-gateway-components.md#static-versus-dynamic-public-ip-address)(Engelstalig) voor meer informatie.
 
-- Voor een privé-IP-adres kunt u een privé-IP-adres opgeven in het subnet waar de toepassings gateway is gemaakt. Als u er geen opgeeft, wordt er automatisch een wille keurig IP-adres geselecteerd in het subnet. Het IP-adres type dat u selecteert (statisch of dynamisch) kan niet later worden gewijzigd. Zie [een toepassings gateway maken met een interne Load Balancer](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)voor meer informatie.
+- Voor een privé-IP-adres kunt u een privé-IP-adres opgeven in het subnet waar de toepassings gateway is gemaakt. Als u er geen opgeeft, wordt er automatisch een wille keurig IP-adres geselecteerd in het subnet. Het IP-adres type dat u selecteert (statisch of dynamisch) kan niet later worden gewijzigd. Zie [een toepassings gateway maken met een interne Load Balancer](./application-gateway-ilb-arm.md)voor meer informatie.
 
-Een front-end-IP-adres is gekoppeld aan een *listener*, waarmee wordt gecontroleerd op binnenkomende aanvragen op de front-end-IP.
+Een front-end-IP-adres is gekoppeld aan een *listener* , waarmee wordt gecontroleerd op binnenkomende aanvragen op de front-end-IP.
 
 ## <a name="next-steps"></a>Volgende stappen
 

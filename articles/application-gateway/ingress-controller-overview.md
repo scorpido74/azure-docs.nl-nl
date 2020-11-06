@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: c1bd41587e4f56fb0a7f3eb8285d301751f558d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84668097"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397345"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Wat is Application Gateway ingangs controller?
 De Application Gateway ingangs controller (AGIC) is een Kubernetes-toepassing, waardoor [Azure Kubernetes service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) -klanten de systeem eigen [Application Gateway](https://azure.microsoft.com/services/application-gateway/) N7-Load Balancer van Azure kunnen gebruiken om cloud software op internet beschikbaar te stellen. AGIC bewaakt het Kubernetes-cluster dat wordt gehost op een Application Gateway, zodat de geselecteerde services worden blootgesteld aan Internet.
 
-De ingangs controller wordt uitgevoerd in een eigen pod op de AKS van de klant. AGIC bewaakt een subset van Kubernetes-resources op wijzigingen. De status van het AKS-cluster wordt omgezet naar Application Gateway specifieke configuratie en toegepast op de [Azure Resource Manager (arm)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+De ingangs controller wordt uitgevoerd in een eigen pod op de AKS van de klant. AGIC bewaakt een subset van Kubernetes-resources op wijzigingen. De status van het AKS-cluster wordt omgezet naar Application Gateway specifieke configuratie en toegepast op de [Azure Resource Manager (arm)](../azure-resource-manager/management/overview.md).
 
 ## <a name="benefits-of-application-gateway-ingress-controller"></a>Voor delen van Application Gateway ingangs controller
 AGIC helpt te voor komen dat er een ander load balancer/openbaar IP-adres voor het AKS-cluster nodig is en dat er meerdere hops in uw DataPath worden gemaakt voordat aanvragen het AKS-cluster bereiken. Application Gateway gespeert naar een doel dat rechtstreeks gebruikmaakt van het privé-IP-adres en geen NodePort-of KubeProxy-Services vereist. Dit brengt ook betere prestaties voor uw implementaties.
@@ -77,4 +77,3 @@ In de volgende tabellen worden de scenario's beschreven die momenteel worden ond
 - [**AKS Add-On Brownfield-implementatie**](tutorial-ingress-controller-add-on-existing.md): Installeer AGIC-invoeg toepassing op een AKS-cluster met een bestaande Application Gateway.
 - [**Helm ontwikkel-implementatie**](ingress-controller-install-new.md): Installeer AGIC via helm, nieuw AKS cluster en nieuwe Application Gateway op een lege infra structuur.
 - [**Helm Brownfield-implementatie**](ingress-controller-install-existing.md): implementeer AGIC via helm op een bestaande AKS-cluster en Application Gateway.
-

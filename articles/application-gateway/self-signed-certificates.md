@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806765"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396937"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Een zelfondertekend certificaat van Azure-toepassing gateway genereren met een aangepaste basis-CA
 
@@ -133,7 +133,7 @@ Configureer op uw webserver TLS met de bestanden fabrikam. CRT en fabrikam. key.
 
 Zie [procedure: geïmporteerde certificaten installeren op een webserver in Windows server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)voor instructies over het importeren van een certificaat en het uploaden ervan als server certificaat in IIS.
 
-Zie [SSL instellen in IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)voor instructies voor TLS-binding.
+Zie [SSL instellen in IIS 7](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)voor instructies voor TLS-binding.
 
 ### <a name="apache"></a>Apache
 
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Als u het certificaat in Application Gateway wilt uploaden, moet u het. CRT-certificaat exporteren naar een. CER-indeling basis-64-code ring. Omdat CRT de open bare sleutel in de indeling base-64 bevat, kunt u de bestands extensie alleen wijzigen van. CRT naar. cer. 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Als u het vertrouwde basis certificaat wilt uploaden vanuit de portal, selecteert u de **http-instellingen** en kiest u het **https** -protocol.
 
@@ -273,4 +273,3 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md)voor meer informatie over SSL\TLS in Application Gateway.
-

@@ -1,14 +1,14 @@
 ---
 title: Verbinding maken tussen hybride computers en Azure via de Azure Portal
 description: In dit artikel leert u hoe u de agent kunt installeren en computers kunt verbinden met Azure met behulp van Azure Arc-servers van de Azure Portal.
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8769a3b76172bc6508b7c52eda359695c01eaa4b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ca3c08acdef1b2a1f7c3774f5755967d472c93ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370148"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398025"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -52,7 +52,7 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
 
 ### <a name="install-manually"></a>De installatie handmatig uitvoeren
 
-U kunt de aangesloten machine agent hand matig installeren door de Windows Installer-pakket *AzureConnectedMachineAgent.msi*uit te voeren. U kunt de nieuwste versie van het [Windows agent-Windows Installer pakket](https://aka.ms/AzureConnectedMachineAgent) downloaden van het micro soft Download centrum.
+U kunt de aangesloten machine agent hand matig installeren door de Windows Installer-pakket *AzureConnectedMachineAgent.msi* uit te voeren. U kunt de nieuwste versie van het [Windows agent-Windows Installer pakket](https://aka.ms/AzureConnectedMachineAgent) downloaden van het micro soft Download centrum.
 
 >[!NOTE]
 >* Als u de agent wilt installeren of verwijderen, moet u over *beheerders* machtigingen beschikken.
@@ -113,9 +113,9 @@ Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleeg
 
 De verbonden machine agent voor Linux is opgenomen in de voorkeurs pakket indeling voor de distributie (. RPM of. DEB) die wordt gehost in de micro soft [package-opslag plaats](https://packages.microsoft.com/). De [shell-script bundel `Install_linux_azcmagent.sh` ](https://aka.ms/azcmagent) voert de volgende acties uit:
 
-- Hiermee configureert u de hostmachine voor het downloaden van het agent pakket van packages.microsoft.com.
-- Hiermee wordt het Hybrid resource provider-pakket geïnstalleerd.
-- Registreert de machine met Azure Arc
+* Hiermee configureert u de hostmachine voor het downloaden van het agent pakket van packages.microsoft.com.
+
+* Hiermee wordt het Hybrid resource provider-pakket geïnstalleerd.
 
 Desgewenst kunt u de agent met uw proxy gegevens configureren door de para meter op te nemen `--proxy "{proxy-url}:{proxy-port}"` .
 
@@ -131,15 +131,30 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-Voer de volgende opdrachten uit om de agent te downloaden en te installeren, met inbegrip `--proxy` van de para meter voor het configureren van de agent om te communiceren via uw proxy server:
+1. Voer de volgende opdrachten uit om de agent te downloaden en te installeren, met inbegrip `--proxy` van de para meter voor het configureren van de agent om te communiceren via uw proxy server:
 
-```bash
-# Download the installation package.
-wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
+    ```bash
+    # Download the installation package.
+    wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
-bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
-```
+    # Install the connected machine agent.
+    bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
+    ```
+
+2. Nadat u de agent hebt geïnstalleerd, moet u deze configureren om te communiceren met de Azure Arc-service door de volgende opdracht uit te voeren:
+
+    ```bash
+    azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --cloud "cloudName"
+    if [ $? = 0 ]; then echo "\033[33mTo view your onboarded server(s), navigate to https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.HybridCompute%2Fmachines\033[m"; fi
+    ```
+
+### <a name="install-with-the-scripted-method"></a>Installeren met de script methode
+
+1. Meld u bij de server aan met een account dat toegang heeft tot het hoofd niveau.
+
+1. Ga naar de map of share waarnaar u het script hebt gekopieerd en voer dit uit op de server door het script `./OnboardingScript.sh` uit te voeren.
+
+Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *var/opt/azcmagent/log*.
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 

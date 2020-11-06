@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c11de2f1bc4143281d2859de7a38268932b13fba
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807107"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397396"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Een Application Gateway ingangs controller (AGIC) installeren met behulp van een bestaande Application Gateway
 
@@ -29,8 +29,8 @@ Met AGIC worden de [Kubernetes-](https://kubernetes.io/docs/concepts/services-ne
 
 ## <a name="prerequisites"></a>Vereisten
 In dit document wordt ervan uitgegaan dat u de volgende hulpprogram ma's en infra structuur al hebt geïnstalleerd:
-- [AKS](https://azure.microsoft.com/services/kubernetes-service/) met [geavanceerde netwerken](https://docs.microsoft.com/azure/aks/configure-azure-cni) ingeschakeld
-- [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) in hetzelfde virtuele netwerk als AKS
+- [AKS](https://azure.microsoft.com/services/kubernetes-service/) met [geavanceerde netwerken](../aks/configure-azure-cni.md) ingeschakeld
+- [Application Gateway v2](./tutorial-autoscale-ps.md) in hetzelfde virtuele netwerk als AKS
 - De [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) is geïnstalleerd op uw AKS-cluster
 - [Cloud shell](https://shell.azure.com/) is de Azure shell-omgeving, die `az` CLI, `kubectl` en `helm` geïnstalleerd heeft. Deze hulpprogram ma's zijn vereist voor de onderstaande opdrachten.
 
@@ -41,10 +41,10 @@ Maak __een back-up van de configuratie van uw Application Gateway voordat u__ AG
 Het zip-bestand dat u hebt gedownload, heeft JSON-sjablonen, bash-en Power shell-scripts die u kunt gebruiken om app-gateway te herstellen, die nodig is
 
 ## <a name="install-helm"></a>Helm installeren
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) is een pakket beheerder voor Kubernetes. We gebruiken dit om het pakket te installeren `application-gateway-kubernetes-ingress` .
+[Helm](../aks/kubernetes-helm.md) is een pakket beheerder voor Kubernetes. We gebruiken dit om het pakket te installeren `application-gateway-kubernetes-ingress` .
 Gebruik [Cloud shell](https://shell.azure.com/) om helm te installeren:
 
-1. Installeer [helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) en voer het volgende uit om het helm-pakket toe te voegen `application-gateway-kubernetes-ingress` :
+1. Installeer [helm](../aks/kubernetes-helm.md) en voer het volgende uit om het helm-pakket toe te voegen `application-gateway-kubernetes-ingress` :
 
     - *RBAC ingeschakeld* AKS-cluster
 
@@ -72,7 +72,7 @@ AGIC communiceert met de Kubernetes-API-server en de Azure Resource Manager. Hie
 
 ## <a name="set-up-aad-pod-identity"></a>AAD pod-identiteit instellen
 
-De [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) is een controller, VERGELIJKBAAR met AGIC, die ook wordt uitgevoerd op uw AKS. Azure Active Directory-identiteiten worden aan uw Kubernetes-peul gebonden. De identiteit van een toepassing in een Kubernetes-Pod is vereist om te kunnen communiceren met andere Azure-onderdelen. In het specifieke geval hebt u autorisatie nodig voor de AGIC-pod om HTTP-aanvragen te kunnen maken voor [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+De [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) is een controller, VERGELIJKBAAR met AGIC, die ook wordt uitgevoerd op uw AKS. Azure Active Directory-identiteiten worden aan uw Kubernetes-peul gebonden. De identiteit van een toepassing in een Kubernetes-Pod is vereist om te kunnen communiceren met andere Azure-onderdelen. In het specifieke geval hebt u autorisatie nodig voor de AGIC-pod om HTTP-aanvragen te kunnen maken voor [arm](../azure-resource-manager/management/overview.md).
 
 Volg de [installatie-instructies voor de Aad pod-identiteit](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) om dit onderdeel toe te voegen aan uw AKS.
 
@@ -323,7 +323,7 @@ AGIC-machtigingen uitbreiden met:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Inschakelen voor een bestaande AGIC-installatie
-We gaan ervan uit dat we al een werkende AKS, Application Gateway en geconfigureerde AGIC in het cluster hebben. Er is een ingang voor `prod.contosor.com` en het verkeer wordt door aks. We willen graag toevoegen `staging.contoso.com` aan onze bestaande Application Gateway, maar moeten deze hosten op een [virtuele machine](https://azure.microsoft.com/services/virtual-machines/). We gaan de bestaande Application Gateway opnieuw gebruiken en hand matig een listener en back-end-Pools configureren voor `staging.contoso.com` . Het hand matig aanpassen van Application Gateway configuratie (via [Portal](https://portal.azure.com), [arm-api's](https://docs.microsoft.com/rest/api/resources/) of [terraform](https://www.terraform.io/)) zou echter conflicteren met de veronderstellingen van het volledige eigendom van AGIC. Kort nadat we wijzigingen hebben toegepast, worden ze door AGIC overschreven of verwijderd.
+We gaan ervan uit dat we al een werkende AKS, Application Gateway en geconfigureerde AGIC in het cluster hebben. Er is een ingang voor `prod.contosor.com` en het verkeer wordt door aks. We willen graag toevoegen `staging.contoso.com` aan onze bestaande Application Gateway, maar moeten deze hosten op een [virtuele machine](https://azure.microsoft.com/services/virtual-machines/). We gaan de bestaande Application Gateway opnieuw gebruiken en hand matig een listener en back-end-Pools configureren voor `staging.contoso.com` . Het hand matig aanpassen van Application Gateway configuratie (via [Portal](https://portal.azure.com), [arm-api's](/rest/api/resources/) of [terraform](https://www.terraform.io/)) zou echter conflicteren met de veronderstellingen van het volledige eigendom van AGIC. Kort nadat we wijzigingen hebben toegepast, worden ze door AGIC overschreven of verwijderd.
 
 We kunnen verhinderen dat AGIC wijzigingen in een subset van de configuratie aanbrengt.
 

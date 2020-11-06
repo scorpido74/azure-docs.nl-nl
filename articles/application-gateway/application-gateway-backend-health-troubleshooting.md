@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132038"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397895"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Problemen met back-endservers oplossen in Application Gateway
 ==================================================
@@ -24,7 +24,7 @@ Azure-toepassing gateway test back-endservers standaard om de status te controle
 
 ### <a name="how-to-check-backend-health"></a>De status van de back-end controleren
 
-Als u de status van uw back-end-pool wilt controleren, kunt u de **back-end-status** pagina gebruiken op de Azure Portal. U kunt ook [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), [cli](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)of [rest API](https://docs.microsoft.com/rest/api/application-gateway/applicationgateways/backendhealth)gebruiken.
+Als u de status van uw back-end-pool wilt controleren, kunt u de **back-end-status** pagina gebruiken op de Azure Portal. U kunt ook [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), [cli](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)of [rest API](/rest/api/application-gateway/applicationgateways/backendhealth)gebruiken.
 
 De status die wordt opgehaald door een van deze methoden, kan een van de volgende zijn:
 
@@ -91,7 +91,7 @@ In het bericht dat wordt weer gegeven in de kolom **Details** vindt u meer infor
 
 **Oorzaak:** Nadat Application Gateway een HTTP (S)-test aanvraag naar de back-endserver verzendt, wordt gewacht op een reactie van de back-endserver voor een geconfigureerde periode. Als de back-endserver niet reageert binnen de geconfigureerde periode (de time-outwaarde), wordt deze als beschadigd gemarkeerd totdat de server opnieuw reageert binnen de geconfigureerde time-outperiode.
 
-**Oplossing:** Controleer waarom de back-endserver of toepassing niet reageert binnen de geconfigureerde time-outperiode en Controleer ook de toepassings afhankelijkheden. Controleer bijvoorbeeld of er problemen zijn met de data base die een vertraging in de reactie kunnen veroorzaken. Als u op de hoogte bent van het gedrag van de toepassing en deze alleen na de time-outwaarde moet reageren, verhoogt u de time-outwaarde van de aangepaste test instellingen. U moet een aangepaste test hebben om de time-outwaarde te wijzigen. [Zie de documentatie pagina](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal)voor meer informatie over het configureren van een aangepaste test.
+**Oplossing:** Controleer waarom de back-endserver of toepassing niet reageert binnen de geconfigureerde time-outperiode en Controleer ook de toepassings afhankelijkheden. Controleer bijvoorbeeld of er problemen zijn met de data base die een vertraging in de reactie kunnen veroorzaken. Als u op de hoogte bent van het gedrag van de toepassing en deze alleen na de time-outwaarde moet reageren, verhoogt u de time-outwaarde van de aangepaste test instellingen. U moet een aangepaste test hebben om de time-outwaarde te wijzigen. [Zie de documentatie pagina](./application-gateway-create-probe-portal.md)voor meer informatie over het configureren van een aangepaste test.
 
 Voer de volgende stappen uit om de time-outwaarde te verhogen:
 
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om de time-outwaarde te verhogen:
 
 #### <a name="dns-resolution-error"></a>DNS-omzettings fout
 
-**Bericht:** Application Gateway kan geen test maken voor deze back-end. Dit gebeurt meestal wanneer de FQDN van de back-end niet correct is ingevoerd. 
+**Bericht:** Application Gateway kan geen test maken voor deze back-end. Dit gebeurt meestal wanneer de FQDN van de back-end niet correct is ingevoerd. 
 
 **Oorzaak:** Als de back-end-pool van het type IP-adres/FQDN of App Service is, wordt Application Gateway omgezet naar het IP-adres van de FQDN die is ingevoerd via Domain Name System (DNS) (aangepaste of Azure-standaard) en wordt geprobeerd verbinding te maken met de server op de TCP-poort die wordt vermeld in de HTTP-instellingen. Maar als dit bericht wordt weer gegeven, wordt voorgesteld dat Application Gateway het opgegeven IP-adres van de ingevoerde FQDN niet succesvol kan oplossen.
 
@@ -119,7 +119,7 @@ Voer de volgende stappen uit om de time-outwaarde te verhogen:
 
 1.  Als u de standaard-DNS van Azure gebruikt, controleert u of het juiste registratie-of CNAME-record is voltooid.
 
-1.  Als het een persoonlijk of intern domein is, probeert u het probleem op te lossen vanaf een VM in hetzelfde virtuele netwerk. Als u het probleem kunt oplossen, start u Application Gateway opnieuw op en controleert u het opnieuw. Als u Application Gateway opnieuw wilt opstarten, moet u [stoppen](https://docs.microsoft.com/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) en [starten](https://docs.microsoft.com/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) met de Power shell-opdrachten die in deze gekoppelde resources worden beschreven.
+1.  Als het een persoonlijk of intern domein is, probeert u het probleem op te lossen vanaf een VM in hetzelfde virtuele netwerk. Als u het probleem kunt oplossen, start u Application Gateway opnieuw op en controleert u het opnieuw. Als u Application Gateway opnieuw wilt opstarten, moet u [stoppen](/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) en [starten](/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) met de Power shell-opdrachten die in deze gekoppelde resources worden beschreven.
 
 #### <a name="tcp-connect-error"></a>TCP-verbindings fout
 
@@ -138,7 +138,7 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
 
 1.  Als u ook geen verbinding kunt maken met de poort op de lokale computer, dan:
 
-    a.  Controleer de instellingen van de netwerk beveiligings groep (NSG) van de netwerk adapter en het subnet van de back-endserver en of binnenkomende verbindingen met de geconfigureerde poort zijn toegestaan. Als dat niet het geval is, maakt u een nieuwe regel om de verbindingen toe te staan. [Zie de documentatie pagina](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#create-security-rules)voor meer informatie over het maken van NSG-regels.
+    a.  Controleer de instellingen van de netwerk beveiligings groep (NSG) van de netwerk adapter en het subnet van de back-endserver en of binnenkomende verbindingen met de geconfigureerde poort zijn toegestaan. Als dat niet het geval is, maakt u een nieuwe regel om de verbindingen toe te staan. [Zie de documentatie pagina](../virtual-network/tutorial-filter-network-traffic.md#create-security-rules)voor meer informatie over het maken van NSG-regels.
 
     b.  Controleer of de NSG-instellingen van Application Gateway het subnet uitgaand openbaar en privé verkeer toestaan, zodat er een verbinding kan worden gemaakt. Controleer de document pagina die wordt weer gegeven in stap 3a voor meer informatie over het maken van NSG-regels.
     ```azurepowershell
@@ -185,13 +185,13 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
 
 Of als u denkt dat het antwoord legitiem is en u Application Gateway andere status codes als in orde wilt accepteren, kunt u een aangepaste test maken. Deze aanpak is nuttig in situaties waarin de back-end-website verificatie nodig heeft. Omdat de test aanvragen geen gebruikers referenties afdragen, zullen ze mislukken en wordt een HTTP 401-status code geretourneerd door de back-endserver.
 
-Volg [deze stappen](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal)om een aangepaste test te maken.
+Volg [deze stappen](./application-gateway-create-probe-portal.md)om een aangepaste test te maken.
 
 #### <a name="http-response-body-mismatch"></a>Onjuiste hoofd tekst van HTTP-antwoord
 
 **Bericht:** De hoofd tekst van het \' HTTP-antwoord van de back-end-s komt niet overeen met de test instelling. De ontvangen antwoord tekst bevat geen {string}.
 
-**Oorzaak:** Wanneer u een aangepaste test maakt, hebt u de mogelijkheid om een back-endserver als in orde te markeren door te voldoen aan een teken reeks uit de hoofd tekst van het antwoord. U kunt bijvoorbeeld Application Gateway zodanig configureren dat "niet-geautoriseerd" als teken reeks wordt geaccepteerd. Als het antwoord van de back-endserver voor de test aanvraag de teken reeks zonder **toestemming**bevat, wordt deze als in orde gemarkeerd. Als dat niet het geval is, wordt het bericht gemarkeerd als beschadigd.
+**Oorzaak:** Wanneer u een aangepaste test maakt, hebt u de mogelijkheid om een back-endserver als in orde te markeren door te voldoen aan een teken reeks uit de hoofd tekst van het antwoord. U kunt bijvoorbeeld Application Gateway zodanig configureren dat "niet-geautoriseerd" als teken reeks wordt geaccepteerd. Als het antwoord van de back-endserver voor de test aanvraag de teken reeks zonder **toestemming** bevat, wordt deze als in orde gemarkeerd. Als dat niet het geval is, wordt het bericht gemarkeerd als beschadigd.
 
 **Oplossing:** Voer de volgende stappen uit om dit probleem op te lossen:
 
@@ -201,7 +201,7 @@ Volg [deze stappen](https://docs.microsoft.com/azure/application-gateway/applica
 
 1.  Als ze niet overeenkomen, wijzigt u de test configuratie zodat de juiste teken reeks waarde wordt geaccepteerd.
 
-Meer informatie over [Application Gateway probe matching](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching).
+Meer informatie over [Application Gateway probe matching](./application-gateway-probe-overview.md#probe-matching).
 
 >[!NOTE]
 > Zie de pagina [overzicht van TLS](ssl-overview.md) voor alle aan TLS gerelateerde fout berichten voor meer informatie over het gedrag van SNI en verschillen tussen de sku's v1 en v2.
@@ -232,13 +232,13 @@ Als een TLS/SSL-certificaat wordt vertrouwd, moet dat certificaat van de back-en
 
 1.  Open de pagina HTTP- **instellingen** Application Gateway in het Azure Portal.
 
-1. Open de HTTP-instellingen, selecteer **certificaat toevoegen**en zoek het certificaat bestand dat u zojuist hebt opgeslagen.
+1. Open de HTTP-instellingen, selecteer **certificaat toevoegen** en zoek het certificaat bestand dat u zojuist hebt opgeslagen.
 
 1. Selecteer **Opslaan** om de HTTP-instellingen op te slaan.
 
 U kunt het basis certificaat ook exporteren vanaf een client computer door rechtstreeks toegang te krijgen tot de server (Application Gateway overs Laan) via de browser en het basis certificaat te exporteren vanuit de browser.
 
-Zie voor meer informatie over het uitpakken en uploaden van vertrouwde basis certificaten in Application Gateway het [vertrouwde basis certificaat exporteren (voor v2-SKU)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
+Zie voor meer informatie over het uitpakken en uploaden van vertrouwde basis certificaten in Application Gateway het [vertrouwde basis certificaat exporteren (voor v2-SKU)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku).
 
 #### <a name="trusted-root-certificate-mismatch"></a>Niet-overeenkomende vertrouwde basis certificaten
 
@@ -253,7 +253,7 @@ Het certificaat dat is geüpload naar Application Gateway HTTP-instellingen, moe
 
 Volg de stappen 1-11 in de voor gaande methode om het juiste vertrouwde basis certificaat te uploaden naar Application Gateway.
 
-Zie voor meer informatie over het uitpakken en uploaden van vertrouwde basis certificaten in Application Gateway het [vertrouwde basis certificaat exporteren (voor v2-SKU)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
+Zie voor meer informatie over het uitpakken en uploaden van vertrouwde basis certificaten in Application Gateway het [vertrouwde basis certificaat exporteren (voor v2-SKU)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku).
 > [!NOTE]
 > Deze fout kan ook optreden als de back-endserver de volledige keten van het certificaat niet uitwisselt, met inbegrip van de basis > tussenliggende (indien van toepassing) > Leaf tijdens de TLS-handshake. Als u wilt controleren, kunt u OpenSSL-opdrachten van elke client gebruiken en verbinding maken met de back-endserver met behulp van de geconfigureerde instellingen in de Application Gateway-test.
 
@@ -331,7 +331,7 @@ Voor Linux met behulp van OpenSSL:
 
 1.  Open de Application Gateway HTTP-instellingen in de portal.
 
-1.  Selecteer de instelling met het verlopen certificaat, selecteer **certificaat toevoegen**en open het nieuwe certificaat bestand.
+1.  Selecteer de instelling met het verlopen certificaat, selecteer **certificaat toevoegen** en open het nieuwe certificaat bestand.
 
 1.  Verwijder het oude certificaat met behulp van het pictogram **verwijderen** naast het certificaat en selecteer vervolgens **Opslaan**.
 
@@ -359,7 +359,7 @@ Dit gedrag kan om een of meer van de volgende redenen optreden:
 
 **Oplossing:**
 
-1.  Controleer of uw NSG toegang tot de poorten 65503-65534 (v1 SKU) of 65200-65535 (v2-SKU) van **Internet**blokkeert:
+1.  Controleer of uw NSG toegang tot de poorten 65503-65534 (v1 SKU) of 65200-65535 (v2-SKU) van **Internet** blokkeert:
 
     a.  Selecteer op het tabblad Application Gateway **overzicht** de koppeling **Virtual Network/subnet** .
 
@@ -371,17 +371,17 @@ Dit gedrag kan om een of meer van de volgende redenen optreden:
 
     e.  Voeg in de sectie **regels voor binnenkomende** verbindingen een regel voor binnenkomend verkeer toe om het doel poort bereik 65503-65534 voor v1 sku of 65200-65535 v2-SKU toe te staan met de **bron** set als **een** of **Internet**.
 
-    f.  Selecteer **Opslaan** en controleer of u de back-end als in orde kunt weer geven. U kunt dit ook doen via [Power shell/cli](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+    f.  Selecteer **Opslaan** en controleer of u de back-end als in orde kunt weer geven. U kunt dit ook doen via [Power shell/cli](../virtual-network/manage-network-security-group.md).
 
-1.  Controleer of uw UDR een standaard route (0.0.0.0/0) heeft met de volgende hop die niet is ingesteld als **Internet**:
+1.  Controleer of uw UDR een standaard route (0.0.0.0/0) heeft met de volgende hop die niet is ingesteld als **Internet** :
     
     a.  Volg de stappen 1a en 1b om uw subnet te bepalen.
 
     b.  Controleer of er een UDR is geconfigureerd. Als dat het geval is, zoekt u naar de resource op de zoek balk of in **alle resources**.
 
-    c.  Controleer of er standaard routes (0.0.0.0/0) zijn waarbij de volgende hop niet is ingesteld als **Internet**. Als de instelling **virtueel apparaat** of **Virtual Network gateway**is, moet u ervoor zorgen dat het pakket door het virtuele apparaat of het on-premises station correct naar de Internet bestemming kan worden doorgestuurd zonder het pakket te wijzigen.
+    c.  Controleer of er standaard routes (0.0.0.0/0) zijn waarbij de volgende hop niet is ingesteld als **Internet**. Als de instelling **virtueel apparaat** of **Virtual Network gateway** is, moet u ervoor zorgen dat het pakket door het virtuele apparaat of het on-premises station correct naar de Internet bestemming kan worden doorgestuurd zonder het pakket te wijzigen.
 
-    d.  Anders wijzigt u de volgende hop naar **Internet**, selecteert u **Opslaan**en controleert u de status van de back-end.
+    d.  Anders wijzigt u de volgende hop naar **Internet** , selecteert u **Opslaan** en controleert u de status van de back-end.
 
 1.  Standaard route geadverteerd door de ExpressRoute/VPN-verbinding met het virtuele netwerk via BGP:
 
@@ -393,9 +393,9 @@ Dit gedrag kan om een of meer van de volgende redenen optreden:
 
 1.  Als er een aangepaste DNS-server is geconfigureerd in het virtuele netwerk, controleert u of de server (of servers) open bare domeinen kan omzetten. Het kan zijn dat de naam omzetting van open bare domeinen vereist is in scenario's waarbij Application Gateway moet worden bereikt met externe domeinen als OCSP-servers of om de intrekkings status van het certificaat te controleren.
 
-1.  Als u wilt controleren of Application Gateway in orde is en wordt uitgevoerd, gaat u naar de optie **resource Health** in de portal en controleert u of de status in **orde**is. [Neem contact op met de ondersteuning](https://azure.microsoft.com/support/options/)als u een **slechte** of **slechte** status ziet.
+1.  Als u wilt controleren of Application Gateway in orde is en wordt uitgevoerd, gaat u naar de optie **resource Health** in de portal en controleert u of de status in **orde** is. [Neem contact op met de ondersteuning](https://azure.microsoft.com/support/options/)als u een **slechte** of **slechte** status ziet.
 
 <a name="next-steps"></a>Volgende stappen
 ----------
 
-Meer informatie over [Application Gateway diagnostische gegevens en logboek registratie](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
+Meer informatie over [Application Gateway diagnostische gegevens en logboek registratie](./application-gateway-diagnostics.md).

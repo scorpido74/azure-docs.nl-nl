@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f015085baa8fffa6f208e9d8dd749e397c76c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85125460"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397430"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Uw AKS-peul automatisch schalen met behulp van Application Gateway metrische gegevens (bèta)
 
@@ -23,7 +23,7 @@ In de volgende zelf studie wordt uitgelegd hoe u de metrische gegevens van Appli
 We gaan de volgende twee onderdelen gebruiken:
 
 * [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) -We gebruiken de metrische adapter om Application Gateway metrische gegevens beschikbaar te stellen via de metrische server. De Azure Kubernetes metric-adapter is een open-source project onder Azure, vergelijkbaar met de Application Gateway ingangs controller. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) -We gebruiken HPA om Application Gateway metrische gegevens te gebruiken en een implementatie te richten op schalen.
+* [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) -We gebruiken HPA om Application Gateway metrische gegevens te gebruiken en een implementatie te richten op schalen.
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>De metrische adapter voor Azure Kubernetes instellen
 
@@ -92,7 +92,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>De nieuwe maat eenheid gebruiken om de implementatie omhoog te schalen
 
-Zodra we `appgw-request-count-metric` de metrische server kunnen bekijken, kunnen we gebruiken [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) om onze doel implementatie te schalen.
+Zodra we `appgw-request-count-metric` de metrische server kunnen bekijken, kunnen we gebruiken [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) om onze doel implementatie te schalen.
 
 In het volgende voor beeld is een voor beeld van een implementatie `aspnet` . We zullen het Peul omhoog schalen wanneer `appgw-request-count-metric` > 200 per pod tot een maximum van `10` peul.
 

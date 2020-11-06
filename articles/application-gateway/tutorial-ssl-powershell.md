@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bd57344f0bd7f3b97c523f9378a5820c1a90a84
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595798"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396563"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Een toepassings gateway met TLS-beëindiging maken met behulp van Azure PowerShell
 
-U kunt Azure PowerShell gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor het [beëindigen van TLS/SSL](ssl-overview.md) dat gebruikmaakt van een [schaalset voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor back-endservers. In dit voorbeeld bevat de schaalset twee virtuele-machine-instanties die zijn toegevoegd aan de standaard back-endgroep van de toepassingsgateway. 
+U kunt Azure PowerShell gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor het [beëindigen van TLS/SSL](ssl-overview.md) dat gebruikmaakt van een [schaalset voor virtuele machines](../virtual-machine-scale-sets/overview.md) voor back-endservers. In dit voorbeeld bevat de schaalset twee virtuele-machine-instanties die zijn toegevoegd aan de standaard back-endgroep van de toepassingsgateway. 
 
 In dit artikel leert u het volgende:
 
@@ -35,7 +35,7 @@ Voor dit artikel is de Azure PowerShell module versie 1.0.0 of hoger vereist. Vo
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
-Voor gebruik in de productie moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. Voor dit artikel maakt u een zelfondertekend certificaat met behulp van [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). U kunt [Export-PfxCertificate ](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) gebruiken met de Thumbprint die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren.
+Voor gebruik in de productie moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. Voor dit artikel maakt u een zelfondertekend certificaat met behulp van [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). U kunt [Export-PfxCertificate ](/powershell/module/pkiclient/export-pfxcertificate) gebruiken met de Thumbprint die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren.
 
 ```powershell
 New-SelfSignedCertificate `

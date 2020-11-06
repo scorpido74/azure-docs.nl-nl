@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: c4d1d16d07aaf92a0bc3cc365ac094893fc41c79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86eaa645cd6a81b9180d1241695240a71aa8202d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446526"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397260"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Een toepassings gateway met HTTP-naar-HTTPS-omleiding maken met behulp van Azure PowerShell
 
-U kunt de Azure PowerShell gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor het beëindigen van TLS/SSL. Er wordt een routerings regel gebruikt om HTTP-verkeer om te leiden naar de HTTPS-poort in uw toepassings gateway. In dit voor beeld maakt u ook een [schaalset voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de back-end-pool van de toepassings gateway die twee exemplaren van virtuele machines bevat. 
+U kunt de Azure PowerShell gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor het beëindigen van TLS/SSL. Er wordt een routerings regel gebruikt om HTTP-verkeer om te leiden naar de HTTPS-poort in uw toepassings gateway. In dit voor beeld maakt u ook een [schaalset voor virtuele machines](../virtual-machine-scale-sets/overview.md) voor de back-end-pool van de toepassings gateway die twee exemplaren van virtuele machines bevat. 
 
 In dit artikel leert u het volgende:
 
@@ -34,7 +34,7 @@ Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereis
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
-Voor productie gebruik moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. Voor deze zelfstudie maakt u een zelfondertekend certificaat met behulp van [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). U kunt [Export-PfxCertificate ](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) gebruiken met de Thumbprint die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren.
+Voor productie gebruik moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. Voor deze zelfstudie maakt u een zelfondertekend certificaat met behulp van [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). U kunt [Export-PfxCertificate ](/powershell/module/pkiclient/export-pfxcertificate) gebruiken met de Thumbprint die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren.
 
 ```powershell
 New-SelfSignedCertificate `

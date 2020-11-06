@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/01/2019
-ms.openlocfilehash: 948ca03b5bf503c884df5df56c61951b381874a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 262509df98b93c7902d83f90756872a16d84198f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84871699"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398127"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Diagnostische logboek registratie inschakelen in azure API voor FHIR®
 
-In dit artikel wordt beschreven hoe u diagnostische logboek registratie inschakelt in azure API for FHIR® en enkele voorbeeld query's voor deze logboeken kunt bekijken. De toegang tot Diagnostische logboeken is essentieel voor elke gezondheids zorg waarbij naleving van wettelijke vereisten (zoals HIPAA) een moet zijn. De functie in azure API voor FHIR® die Diagnostische logboeken mogelijk maakt, is de [**Diagnostische instellingen**](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) in de Azure Portal. 
+In dit artikel wordt beschreven hoe u diagnostische logboek registratie inschakelt in azure API for FHIR® en enkele voorbeeld query's voor deze logboeken kunt bekijken. De toegang tot Diagnostische logboeken is essentieel voor elke gezondheids zorg waarbij naleving van wettelijke vereisten (zoals HIPAA) een moet zijn. De functie in azure API voor FHIR® die Diagnostische logboeken mogelijk maakt, is de [**Diagnostische instellingen**](../azure-monitor/platform/diagnostic-settings.md) in de Azure Portal. 
 
 ## <a name="enable-audit-logs"></a>Audit logboeken inschakelen
 1. Als u diagnostische logboek registratie in azure API voor FHIR® wilt inschakelen, selecteert u uw Azure API for FHIR®-service in de Azure Portal 
@@ -42,12 +42,12 @@ In dit artikel wordt beschreven hoe u diagnostische logboek registratie inschake
 > [!Note] 
 > Het kan tot vijf tien minuten duren voordat de eerste Logboeken in Log Analytics worden weer gegeven.  
  
-Raadpleeg de documentatie van het [Azure-resource logboek](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview) voor meer informatie over het werken met Diagnostische logboeken
+Raadpleeg de documentatie van het [Azure-resource logboek](../azure-monitor/platform/platform-logs-overview.md) voor meer informatie over het werken met Diagnostische logboeken
 
 ## <a name="audit-log-details"></a>Details van controle logboek
 Op dit moment retourneert de Azure API voor FHIR-® service de volgende velden in het audit logboek: 
 
-|Veldnaam  |Type  |Opmerkingen  |
+|Veldnaam  |Type  |Notities  |
 |---------|---------|---------|
 |CallerIdentity|Dynamisch|Een algemene eigenschappen verzameling met identiteits gegevens
 |CallerIdentityIssuer|Tekenreeks|Verlener 
@@ -60,7 +60,7 @@ Op dit moment retourneert de Azure API voor FHIR-® service de volgende velden i
 |OperationDuration|Int|De tijd die nodig was voor het volt ooien van deze aanvraag in seconden
 |OperationName|Tekenreeks| Beschrijft het type bewerking (bijvoorbeeld update, Zoek type)
 |RequestUri|Tekenreeks|De aanvraag-URI 
-|ResultType|Tekenreeks|De beschik bare waarden zijn momenteel **gestart**, **geslaagd**of **mislukt**
+|ResultType|Tekenreeks|De beschik bare waarden zijn momenteel **gestart** , **geslaagd** of **mislukt**
 |Status code|Int|De HTTP-status code. (bijvoorbeeld 200) 
 |TimeGenerated|DateTime|Datum en tijd van de gebeurtenis|
 |Eigenschappen|Tekenreeks| Beschrijft de eigenschappen van de fhirResourceType
@@ -80,7 +80,7 @@ MicrosoftHealthcareApisAuditLogs
 | limit 100
 ```
 
-Voer deze query uit om bewerkingen te groeperen op **resource type FHIR**:
+Voer deze query uit om bewerkingen te groeperen op **resource type FHIR** :
 
 ```Application Insights
 MicrosoftHealthcareApisAuditLogs 

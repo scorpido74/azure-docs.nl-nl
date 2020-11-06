@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 69d388b12e564b307cd117c3a86ae960dabaa937
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362709"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397719"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Certificaten maken om de back-end met Azure-toepassing gateway toe te staan
 
@@ -51,7 +51,7 @@ Exporteer vanuit uw TLS/SSL-certificaat het bestand met de open bare sleutel. CE
 
    ![Base-64-code ring](./media/certificates-for-backend-authentication/base64.png)
 
-5. Als u het **bestand wilt exporteren**, **bladert** u naar de locatie waarnaar u het certificaat wilt exporteren. Geef bij **Bestandsnaam** de naam van het certificaatbestand op. Klik op **Volgende**.
+5. Als u het **bestand wilt exporteren** , **bladert** u naar de locatie waarnaar u het certificaat wilt exporteren. Geef bij **Bestandsnaam** de naam van het certificaatbestand op. Klik op **Volgende**.
 
    ![Scherm afbeelding toont de wizard Certificaat exporteren waarin u een bestand opgeeft dat u wilt exporteren.](./media/certificates-for-backend-authentication/browse.png)
 
@@ -105,5 +105,4 @@ Met de volgende stappen kunt u het. cer-bestand voor uw certificaat exporteren:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu het verificatie certificaat/het vertrouwde basis certificaat in base-64 Encoded X. 509 (. CER)-indeling. U kunt dit toevoegen aan de toepassings gateway om uw back-endservers toe te staan voor end-to-end TLS-versleuteling. Zie [end-to-end TLS configureren met behulp van Application Gateway met Power shell](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
-
+U hebt nu het verificatie certificaat/het vertrouwde basis certificaat in base-64 Encoded X. 509 (. CER)-indeling. U kunt dit toevoegen aan de toepassings gateway om uw back-endservers toe te staan voor end-to-end TLS-versleuteling. Zie [end-to-end TLS configureren met behulp van Application Gateway met Power shell](./application-gateway-end-to-end-ssl-powershell.md).

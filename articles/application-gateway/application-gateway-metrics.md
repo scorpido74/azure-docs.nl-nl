@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: ce349a0539986d88f689c53fc2099877df8030bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87424389"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397736"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
-Application Gateway publiceert gegevens punten, met de naam metrieken, naar [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) voor de prestaties van uw Application Gateway-en back-end-exemplaren. Deze metrische gegevens zijn numerieke waarden in een geordende set gegevensverzamelinggegevens die op een bepaald moment een aspect van uw toepassings gateway beschrijven. Als er aanvragen worden doorgelopen door de Application Gateway, worden de metrische gegevens gemeten en verzonden in intervallen van 60 seconden. Als er geen aanvragen worden verzonden door de Application Gateway of geen gegevens voor een metriek, wordt de metriek niet gerapporteerd. Zie [Azure monitor metrische](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)gegevens voor meer informatie.
+Application Gateway publiceert gegevens punten, met de naam metrieken, naar [Azure monitor](../azure-monitor/overview.md) voor de prestaties van uw Application Gateway-en back-end-exemplaren. Deze metrische gegevens zijn numerieke waarden in een geordende set gegevensverzamelinggegevens die op een bepaald moment een aspect van uw toepassings gateway beschrijven. Als er aanvragen worden doorgelopen door de Application Gateway, worden de metrische gegevens gemeten en verzonden in intervallen van 60 seconden. Als er geen aanvragen worden verzonden door de Application Gateway of geen gegevens voor een metriek, wordt de metriek niet gerapporteerd. Zie [Azure monitor metrische](../azure-monitor/platform/data-platform-metrics.md)gegevens voor meer informatie.
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Metrische gegevens die worden ondersteund door Application Gateway v2 SKU
 
@@ -40,7 +40,7 @@ Application Gateway biedt verschillende ingebouwde metrische gegevens voor de ti
 
   Het tijds interval tussen het begin van het tot stand brengen van een verbinding met de back-endserver en het ontvangen van de eerste byte van de reactie header. 
 
-  Dit is een benadering van de som van de *back-uptijd*, het tijdstip van de aanvraag om de back-end te bereiken van Application Gateway, de tijd die door de back-end-toepassing wordt gebruikt om te reageren (het tijdstip waarop de server inhoud heeft gegenereerd, mogelijk database query's op te halen), en de tijd die wordt ingenel door de eerste byte Application Gateway van de back-end.
+  Dit is een benadering van de som van de *back-uptijd* , het tijdstip van de aanvraag om de back-end te bereiken van Application Gateway, de tijd die door de back-end-toepassing wordt gebruikt om te reageren (het tijdstip waarop de server inhoud heeft gegenereerd, mogelijk database query's op te halen), en de tijd die wordt ingenel door de eerste byte Application Gateway van de back-end.
 
 - **Reactie tijd laatste byte van back-end**
 
@@ -52,7 +52,7 @@ Application Gateway biedt verschillende ingebouwde metrische gegevens voor de ti
 
   De gemiddelde tijd die nodig is om een aanvraag te ontvangen, verwerkt en het antwoord ervan te verzenden. 
 
-  Dit is het interval vanaf het moment dat Application Gateway de eerste byte van de HTTP-aanvraag ontvangt naar het tijdstip waarop de laatste reactie byte is verzonden naar de client. Dit omvat de verwerkings tijd van Application Gateway, de *laatste reactie tijd*van de back-end-byte, de tijd die door Application Gateway is genomen om alle antwoorden en de *client RTT*te verzenden.
+  Dit is het interval vanaf het moment dat Application Gateway de eerste byte van de HTTP-aanvraag ontvangt naar het tijdstip waarop de laatste reactie byte is verzonden naar de client. Dit omvat de verwerkings tijd van Application Gateway, de *laatste reactie tijd* van de back-end-byte, de tijd die door Application Gateway is genomen om alle antwoorden en de *client RTT* te verzenden.
 
 - **Client RTT**
 
@@ -62,7 +62,7 @@ Application Gateway biedt verschillende ingebouwde metrische gegevens voor de ti
 
 Deze metrische gegevens kunnen worden gebruikt om te bepalen of de waargenomen vertraging wordt veroorzaakt door het client netwerk, de Application Gateway prestaties, het back-end netwerk en de back-endserver TCP-stack verzadiging, back-end-toepassings prestaties of grote bestands grootte.
 
-Als er bijvoorbeeld sprake is van een piek in de back-end voor de *reactie tijd* van een time-out voor de back-end, maar de trend van de *moment verbinding* voor het verbinden stabiel is, kan deze worden uitgesteld dat de toepassings gateway naar de back-end-latentie en de tijd die nodig is om de verbinding tot stand te brengen stabiel is. Daarentegen, als de piek in de *back-end-byte-reactie tijd* is gekoppeld aan een corresponderende Prikker in back- *End Connect time*, kan deze worden afgeleid dat het netwerk tussen Application Gateway-en back-endserver of de TCP-stack van de back-endserver verzadigd is. 
+Als er bijvoorbeeld sprake is van een piek in de back-end voor de *reactie tijd* van een time-out voor de back-end, maar de trend van de *moment verbinding* voor het verbinden stabiel is, kan deze worden uitgesteld dat de toepassings gateway naar de back-end-latentie en de tijd die nodig is om de verbinding tot stand te brengen stabiel is. Daarentegen, als de piek in de *back-end-byte-reactie tijd* is gekoppeld aan een corresponderende Prikker in back- *End Connect time* , kan deze worden afgeleid dat het netwerk tussen Application Gateway-en back-endserver of de TCP-stack van de back-endserver verzadigd is. 
 
 Als u een piek in de *reactie tijd van de laatste byte* van de back-end hebt gezien, maar de *back-end-reactie tijd* van de backend stabiel is, kan deze worden afgeleid door een groter bestand dat wordt aangevraagd.
 
@@ -194,7 +194,7 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
 ## <a name="metrics-visualization"></a>Visualisatie van metrische gegevens
 
-Blader naar een toepassings gateway onder **bewaking** **metrische gegevens**selecteren. Om de beschikbare waarden te zien, selecteert u de vervolgkeuzelijst **METRISCH**.
+Blader naar een toepassings gateway onder **bewaking** **metrische gegevens** selecteren. Om de beschikbare waarden te zien, selecteert u de vervolgkeuzelijst **METRISCH**.
 
 In de volgende afbeelding ziet u een voor beeld met drie metrische gegevens die gedurende de laatste 30 minuten worden weer gegeven:
 
@@ -214,11 +214,11 @@ In het volgende voor beeld wordt stapsgewijs uitgelegd hoe u een waarschuwings r
 
 2. Vul op de pagina **regel toevoegen** de naam, de voor waarde en de meldings secties in en selecteer **OK**.
 
-   * Selecteer in de **voor waarden** kiezer een van de vier waarden: **groter dan**, **groter dan of gelijk**aan, **kleiner dan**of **kleiner dan of gelijk aan**.
+   * Selecteer in de **voor waarden** kiezer een van de vier waarden: **groter dan** , **groter dan of gelijk** aan, **kleiner dan** of **kleiner dan of gelijk aan**.
 
    * Selecteer in de **periode** kiezer een periode van vijf minuten tot zes uur.
 
-   * Als u **e-mail eigenaren, inzenders en lezers**selecteert, kan het e-mail bericht dynamisch zijn op basis van de gebruikers die toegang hebben tot de bron. Als dat niet het geval is, kunt u een door komma's gescheiden lijst met gebruikers opgeven in het vak **extra e-mail adres** van de beheerder.
+   * Als u **e-mail eigenaren, inzenders en lezers** selecteert, kan het e-mail bericht dynamisch zijn op basis van de gebruikers die toegang hebben tot de bron. Als dat niet het geval is, kunt u een door komma's gescheiden lijst met gebruikers opgeven in het vak **extra e-mail adres** van de beheerder.
 
    ![Regel pagina toevoegen][7]
 
@@ -230,7 +230,7 @@ Er wordt een lijst met waarschuwingen weer gegeven nadat u een metrische waarsch
 
 ![Lijst met waarschuwingen en regels][9]
 
-Zie [waarschuwings meldingen ontvangen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)voor meer informatie over waarschuwings meldingen.
+Zie [waarschuwings meldingen ontvangen](../azure-monitor/platform/alerts-overview.md)voor meer informatie over waarschuwings meldingen.
 
 Ga voor meer informatie over webhooks en hoe u deze kunt gebruiken met waarschuwingen, [een webhook configureren voor een Azure metric-waarschuwing](../azure-monitor/platform/alerts-webhooks.md).
 

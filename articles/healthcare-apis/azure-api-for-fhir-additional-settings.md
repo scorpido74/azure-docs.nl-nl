@@ -8,12 +8,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
-ms.openlocfilehash: 5de1d99442f307fc7850114915851f994258b537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9949ab4cfa42553e5a8d28244b8f621f09334d1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87845898"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398161"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>Aanvullende instellingen voor de Azure-API voor FHIR
 
@@ -29,7 +29,7 @@ Zie [Configure Data Base Settings](configure-database.md)(Engelstalig) voor meer
 
 ## <a name="access-control"></a>Toegangsbeheer
 
-Met de Azure-API voor FHIR kunnen geautoriseerde gebruikers alleen toegang krijgen tot de FHIR-API. U kunt geautoriseerde gebruikers configureren via twee verschillende mechanismen. De primaire en aanbevolen manier om toegangs beheer te configureren, maakt gebruik van [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/), dat toegankelijk is via de Blade **toegangs beheer (IAM)** . Azure RBAC werkt alleen als u de toegang tot het gegevens vlak wilt beveiligen met behulp van de Azure Active Directory Tenant die aan uw abonnement is gekoppeld. Als u een andere Tenant wilt gebruiken, biedt de Azure API voor FHIR een lokaal mechanisme voor het toegangs beheer van FHIR-gegevens. De configuratie opties zijn niet zo uitgebreid wanneer het lokale RBAC-mechanisme wordt gebruikt. Kies een van de volgende opties voor meer informatie:
+Met de Azure-API voor FHIR kunnen geautoriseerde gebruikers alleen toegang krijgen tot de FHIR-API. U kunt geautoriseerde gebruikers configureren via twee verschillende mechanismen. De primaire en aanbevolen manier om toegangs beheer te configureren, maakt gebruik van [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/index.yml), dat toegankelijk is via de Blade **toegangs beheer (IAM)** . Azure RBAC werkt alleen als u de toegang tot het gegevens vlak wilt beveiligen met behulp van de Azure Active Directory Tenant die aan uw abonnement is gekoppeld. Als u een andere Tenant wilt gebruiken, biedt de Azure API voor FHIR een lokaal mechanisme voor het toegangs beheer van FHIR-gegevens. De configuratie opties zijn niet zo uitgebreid wanneer het lokale RBAC-mechanisme wordt gebruikt. Kies een van de volgende opties voor meer informatie:
 
 * [Azure RBAC voor FHIR-gegevens vlak](configure-azure-rbac.md). Dit is de voorkeurs optie wanneer u de Azure Active Directory Tenant gebruikt die aan uw abonnement is gekoppeld.
 * [Toegangs beheer voor lokaal FHIR-gegevens](configure-local-rbac.md). Gebruik deze optie alleen wanneer u een externe Azure Active Directory Tenant moet gebruiken voor het toegangs beheer voor gegevens vlak. 

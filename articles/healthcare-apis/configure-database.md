@@ -7,18 +7,18 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3fe4118a8ecf4479732ba4073b342d3ec9f941b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042487"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398195"
 ---
 # <a name="configure-database-settings"></a>Database-instellingen configureren 
 
 De Azure-API voor FHIR gebruikt data base om de gegevens op te slaan. De prestaties van de onderliggende Data Base zijn afhankelijk van het aantal aanvraag eenheden (RU) dat is geselecteerd tijdens het inrichten van services of in de data base-instellingen nadat de service is ingericht.
 
-Azure API voor FHIR leent het concept van RUs van Cosmos DB (Zie [aanvraag eenheden in azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/request-units)) bij het instellen van de prestaties van de onderliggende data base. 
+Azure API voor FHIR leent het concept van RUs van Cosmos DB (Zie [aanvraag eenheden in azure Cosmos DB](../cosmos-db/request-units.md)) bij het instellen van de prestaties van de onderliggende data base. 
 
 De door voer moet worden ingericht om ervoor te zorgen dat er te allen tijde voldoende systeem bronnen beschikbaar zijn voor uw data base. Hoeveel RUs u nodig hebt voor uw toepassing is afhankelijk van de bewerkingen die u uitvoert. Bewerkingen kunnen variëren van eenvoudige Lees-en schrijf bewerkingen naar complexere query's. 
 

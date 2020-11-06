@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: d6bcb9125cdfc07eb249353cb85b40a22d3e468c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168185"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397362"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Veelvoorkomende vragen of problemen met de ingangs controller oplossen
 
@@ -132,7 +132,7 @@ Application Gateway ingangs controller (AGIC) bewaakt voortdurend de volgende Ku
 
 
 Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
-  1. AKS moet een of **meer goeden**hebben.
+  1. AKS moet een of **meer goeden** hebben.
      Controleer dit op basis van [Cloud shell](https://shell.azure.com/) `kubectl get pods -o wide --show-labels` Als u een pod hebt met een `apsnetapp` , kan uw uitvoer er als volgt uitzien:
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
@@ -141,7 +141,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. Een of meer **Services**, die verwijzen naar de bovenstaande treffers via overeenkomende `selector` labels.
+  2. Een of meer **Services** , die verwijzen naar de bovenstaande treffers via overeenkomende `selector` labels.
      Controleer dit in [Cloud shell](https://shell.azure.com/) met `kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
@@ -243,7 +243,7 @@ De Kubernetes-Community heeft negen niveaus voor logboek registratie vastgesteld
 |  5        | Gemarshalde objecten vastleggen; gezuiverde JSON-configuratie weer geven die wordt toegepast op ARM |
 
 
-De uitbreidings niveaus zijn aanpasbaar via de `verbosityLevel` variabele in het bestand [helm-config. yaml](#sample-helm-config-file) . Verhoog het niveau uitgebreid tot `5` om de JSON-configuratie te verkrijgen die wordt verzonden naar [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview):
+De uitbreidings niveaus zijn aanpasbaar via de `verbosityLevel` variabele in het bestand [helm-config. yaml](#sample-helm-config-file) . Verhoog het niveau uitgebreid tot `5` om de JSON-configuratie te verkrijgen die wordt verzonden naar [arm](../azure-resource-manager/management/overview.md):
   - `verbosityLevel: 5`op een regel zelfstandig toevoegen in [helm-config. yaml](#sample-helm-config-file) en opnieuw installeren
   - Logboeken ophalen met `kubectl logs <pod-name>`
 
@@ -300,4 +300,3 @@ rbac:
 aksClusterConfiguration:
     apiServerAddress: <aks-api-server-address>
 ```
-

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9166125fac28f43a93cbee2875b91bee986b1400
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506550"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397464"
 ---
 # <a name="how-an-application-gateway-works"></a>Hoe een toepassings gateway werkt
 
@@ -32,7 +32,7 @@ In dit artikel wordt uitgelegd hoe een toepassings gateway binnenkomende aanvrag
 
 Azure-toepassing gateway kan worden gebruikt als een interne toepassings load balancer of als een load balancer voor Internet gerichte toepassingen. Een Internet gerichte toepassings gateway maakt gebruik van open bare IP-adressen. De DNS-naam van een Internet gerichte toepassings gateway kan openbaar worden omgezet naar het open bare IP-adres. Als gevolg hiervan kunnen Internet gerichte toepassings gateways client aanvragen sturen naar het internet.
 
-Interne toepassings gateways gebruiken alleen particuliere IP-adressen. Als u een aangepaste of [privé-DNS zone](https://docs.microsoft.com/azure/dns/private-dns-overview)gebruikt, moet de domein naam intern worden omgezet naar het privé-IP-adres van de Application Gateway. Daarom kunnen interne load balancers alleen aanvragen van clients met toegang tot een virtueel netwerk voor de toepassings gateway routeren.
+Interne toepassings gateways gebruiken alleen particuliere IP-adressen. Als u een aangepaste of [privé-DNS zone](../dns/private-dns-overview.md)gebruikt, moet de domein naam intern worden omgezet naar het privé-IP-adres van de Application Gateway. Daarom kunnen interne load balancers alleen aanvragen van clients met toegang tot een virtueel netwerk voor de toepassings gateway routeren.
 
 ## <a name="how-an-application-gateway-routes-a-request"></a>Hoe een toepassings gateway een aanvraag routert
 
@@ -52,9 +52,9 @@ Wanneer een toepassings gateway de oorspronkelijke aanvraag naar de back-endserv
 
  >[!NOTE]
 >Als de back-end-groep:
-> - **Is een openbaar eind punt**, de toepassings gateway maakt gebruik van het front-end open bare IP-adres van de server. Als er geen openbaar frontend-IP-adres is, wordt er een toegewezen voor de uitgaande externe verbinding.
+> - **Is een openbaar eind punt** , de toepassings gateway maakt gebruik van het front-end open bare IP-adres van de server. Als er geen openbaar frontend-IP-adres is, wordt er een toegewezen voor de uitgaande externe verbinding.
 > - **Bevat een intern omgezette FQDN of een privé-IP-adres**. de toepassings gateway stuurt de aanvraag naar de back-endserver door de privé-IP-adressen van het exemplaar te gebruiken.
-> - **Bevat een extern eind punt of een extern omgezette FQDN**-naam, de toepassings gateway stuurt de aanvraag naar de back-endserver via het open bare frontend-IP-adres. De DNS-omzetting is gebaseerd op een privé-DNS-zone of een aangepaste DNS-server, als deze is geconfigureerd of gebruikmaakt van de standaard-DNS van Azure. Als er geen openbaar frontend-IP-adres is, wordt er een toegewezen voor de uitgaande externe verbinding.
+> - **Bevat een extern eind punt of een extern omgezette FQDN** -naam, de toepassings gateway stuurt de aanvraag naar de back-endserver via het open bare frontend-IP-adres. De DNS-omzetting is gebaseerd op een privé-DNS-zone of een aangepaste DNS-server, als deze is geconfigureerd of gebruikmaakt van de standaard-DNS van Azure. Als er geen openbaar frontend-IP-adres is, wordt er een toegewezen voor de uitgaande externe verbinding.
 
 ### <a name="modifications-to-the-request"></a>Wijzigingen in de aanvraag
 

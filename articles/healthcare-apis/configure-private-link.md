@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: 121ddcc013fbeef29c6d22cfbd273cfd3b8d3d98
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558944"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398212"
 ---
 # <a name="configure-private-link"></a>Persoonlijke koppeling configureren
 
@@ -30,7 +30,7 @@ Voordat u een persoonlijk eind punt maakt, moet u eerst een aantal Azure-resourc
 - Azure-API voor FHIR: de FHIR-resource die u achter een persoonlijk eind punt wilt plaatsen.
 - Virtual Network: het VNet waarmee uw client services en het persoonlijke eind punt worden verbonden.
 
-Raadpleeg de documentatie van de [privé koppeling](https://docs.microsoft.com/azure/private-link/)voor meer informatie.
+Raadpleeg de documentatie van de [privé koppeling](../private-link/index.yml)voor meer informatie.
 
 ## <a name="disable-public-network-access"></a>Open bare netwerk toegang uitschakelen
 
@@ -38,9 +38,9 @@ Als u een persoonlijk eind punt voor uw FHIR-resource maakt, wordt het open bare
 
 ![Open bare netwerk toegang uitschakelen](media/private-link/private-link-disable.png)
 
-## <a name="create-private-endpoint"></a>Persoonlijk eind punt maken
+## <a name="create-private-endpoint"></a>Privé-eindpunt maken
 
-Voor het maken van een persoonlijk eind punt kan een ontwikkelaar met RBAC-machtigingen voor de FHIR-resource gebruikmaken van Azure Portal, [Azure PowerShell](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell)of [Azure cli](https://docs.microsoft.com/azure/private-link/create-private-endpoint-cli). In dit artikel worden de stappen beschreven voor het gebruik van Azure Portal. Het gebruik van Azure Portal wordt aanbevolen omdat hiermee het maken en configureren van de Privé-DNS zone wordt geautomatiseerd. U kunt verwijzen naar de [persoonlijke koppeling Quick Start hand leidingen](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal) voor meer informatie.
+Voor het maken van een persoonlijk eind punt kan een ontwikkelaar met RBAC-machtigingen voor de FHIR-resource gebruikmaken van Azure Portal, [Azure PowerShell](../private-link/create-private-endpoint-powershell.md)of [Azure cli](../private-link/create-private-endpoint-cli.md). In dit artikel worden de stappen beschreven voor het gebruik van Azure Portal. Het gebruik van Azure Portal wordt aanbevolen omdat hiermee het maken en configureren van de Privé-DNS zone wordt geautomatiseerd. U kunt verwijzen naar de [persoonlijke koppeling Quick Start hand leidingen](../private-link/create-private-endpoint-portal.md) voor meer informatie.
 
 Er zijn twee manieren om een persoonlijk eind punt te maken. Met de automatische goedkeurings stroom kan een gebruiker met RBAC-machtigingen voor de FHIR-resource een persoonlijk eind punt maken zonder dat hiervoor goed keuring nodig is. Met hand matige goedkeurings stroom kan een gebruiker zonder machtigingen voor de FHIR-resource een persoonlijk eind punt aanvragen dat moet worden goedgekeurd door eigen aren van de FHIR-resource.
 

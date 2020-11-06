@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595941"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396886"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Problemen met App Service oplossen in Application Gateway
 
@@ -80,10 +80,10 @@ In het vorige voor beeld ziet u dat de antwoord header de status code 301 voor o
 
 ## <a name="solution-rewrite-the-location-header"></a>Oplossing: de locatie header opnieuw schrijven
 
-Stel de hostnaam in de locatie header in op de domein naam van de toepassings gateway. U doet dit door een [regel voor herschrijven](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) te maken met een voor waarde die evalueert of de locatie header in het antwoord azurewebsites.net bevat. Ook moet er een actie worden uitgevoerd voor het herschrijven van de locatie header om de hostnaam van de toepassings gateway te hebben. Zie instructies voor [het herschrijven van de locatie header](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)voor meer informatie.
+Stel de hostnaam in de locatie header in op de domein naam van de toepassings gateway. U doet dit door een [regel voor herschrijven](./rewrite-http-headers.md) te maken met een voor waarde die evalueert of de locatie header in het antwoord azurewebsites.net bevat. Ook moet er een actie worden uitgevoerd voor het herschrijven van de locatie header om de hostnaam van de toepassings gateway te hebben. Zie instructies voor [het herschrijven van de locatie header](./rewrite-http-headers.md#modify-a-redirection-url)voor meer informatie.
 
 > [!NOTE]
-> De ondersteuning voor het opnieuw schrijven van HTTP-headers is alleen beschikbaar voor de [Standard_v2 en WAF_V2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) van Application Gateway. Als u v1 SKU gebruikt, raden we u [aan om te migreren van v1 naar v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2). U wilt herschrijven en andere [geavanceerde mogelijkheden](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) gebruiken die beschikbaar zijn met v2 SKU.
+> De ondersteuning voor het opnieuw schrijven van HTTP-headers is alleen beschikbaar voor de [Standard_v2 en WAF_V2 SKU](./application-gateway-autoscaling-zone-redundant.md) van Application Gateway. Als u v1 SKU gebruikt, raden we u [aan om te migreren van v1 naar v2](./migrate-v1-v2.md). U wilt herschrijven en andere [geavanceerde mogelijkheden](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) gebruiken die beschikbaar zijn met v2 SKU.
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternatieve oplossing: gebruik een aangepaste domein naam
 
@@ -93,7 +93,7 @@ De app service doet nu de omleiding (indien van toepassing) op dezelfde oorspron
 
 U moet eigenaar zijn van een aangepast domein en dit proces volgen:
 
-- Registreer het domein bij de lijst met aangepaste domeinen van de app service. U moet een CNAME in uw aangepaste domein hebben dat verwijst naar de FQDN van de app-service. Zie [een bestaande aangepaste DNS-naam toewijzen aan Azure app service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)voor meer informatie.
+- Registreer het domein bij de lijst met aangepaste domeinen van de app service. U moet een CNAME in uw aangepaste domein hebben dat verwijst naar de FQDN van de app-service. Zie [een bestaande aangepaste DNS-naam toewijzen aan Azure app service](//azure/app-service/app-service-web-tutorial-custom-domain)voor meer informatie.
 
     ![Lijst met aangepaste domeinen voor app service](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
@@ -101,7 +101,7 @@ U moet eigenaar zijn van een aangepast domein en dit proces volgen:
 
 - Zorg ervoor dat uw domein wordt `www.contoso.com` omgezet naar de FQDN van de toepassings gateway wanneer u een DNS-query uitvoert.
 
-- Stel de aangepaste test voor het uitschakelen **van de hostnaam van de back-end-HTTP-instellingen**uit. Schakel in het Azure Portal het selectie vakje in de instellingen testen uit. Gebruik in Power shell niet de schakel optie **-PickHostNameFromBackendHttpSettings** in de opdracht **set-AzApplicationGatewayProbeConfig** . Voer in het veld hostnaam van de test de FQDN-naam van uw app service in, example.azurewebsites.net. De test aanvragen die vanuit de toepassings gateway worden verzonden, hebben deze FQDN in de hostheader.
+- Stel de aangepaste test voor het uitschakelen **van de hostnaam van de back-end-HTTP-instellingen** uit. Schakel in het Azure Portal het selectie vakje in de instellingen testen uit. Gebruik in Power shell niet de schakel optie **-PickHostNameFromBackendHttpSettings** in de opdracht **set-AzApplicationGatewayProbeConfig** . Voer in het veld hostnaam van de test de FQDN-naam van uw app service in, example.azurewebsites.net. De test aanvragen die vanuit de toepassings gateway worden verzonden, hebben deze FQDN in de hostheader.
 
   > [!NOTE]
   > Voor de volgende stap zorgt u ervoor dat uw aangepaste test niet is gekoppeld aan uw back-end-HTTP-instellingen. Uw HTTP-instellingen hebben nog steeds de optie **hostnaam kiezen van back-end-adres** switch op dit punt ingeschakeld.

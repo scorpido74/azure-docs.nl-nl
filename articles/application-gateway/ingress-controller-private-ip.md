@@ -7,19 +7,19 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8be37ed1da0da4da3db43ef4c1cd01ed962f24ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806787"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397305"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Privé-IP gebruiken voor interne route ring voor een ingangs eindpunt 
 
 Met deze functie kunt u het ingangs eindpunt in het `Virtual Network` gebruik van een privé-IP beschikbaar maken.
 
 ## <a name="pre-requisites"></a>Vereisten  
-Application Gateway met een [persoonlijke IP-configuratie](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)
+Application Gateway met een [persoonlijke IP-configuratie](./configure-application-gateway-with-private-frontend-ip.md)
 
 Er zijn twee manieren om de controller te configureren voor het gebruik van privé-IP-adressen voor inkomend verkeer,
 
@@ -66,4 +66,4 @@ Hiermee wordt het IP-adres geconfigureerd voor een privé-IP bij het configurere
 AGIC gaat in paniek en crashen als `usePrivateIP: true` er geen persoonlijk IP-adres is toegewezen.
 
 > [!NOTE]
-> Voor de SKU van Application Gateway v2 is een openbaar IP-adres vereist. Als u wilt dat Application Gateway privé is, koppelt u een [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) aan het subnet van Application Gateway om het verkeer te beperken.
+> Voor de SKU van Application Gateway v2 is een openbaar IP-adres vereist. Als u wilt dat Application Gateway privé is, koppelt u een [`Network Security Group`](../virtual-network/network-security-groups-overview.md) aan het subnet van Application Gateway om het verkeer te beperken.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13441899eeb5ca2b7c60977ab2858fe40a398d1a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088067"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397855"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Een aangepaste test voor Azure-toepassing gateway (klassiek) maken met behulp van Power shell
 
@@ -200,7 +200,6 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een toepassings gateway configureren voor TLS-offload](application-gateway-ssl.md)als u Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL)-offload, wilt configureren.
+Zie [een toepassings gateway configureren voor TLS-offload](./tutorial-ssl-powershell.md)als u Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL)-offload, wilt configureren.
 
-Als u een toepassingsgateway wilt configureren voor gebruik met een interne load balancer, raadpleegt u [Create an application gateway with an internal load balancer (ILB)](application-gateway-ilb.md) (Een toepassingsgateway met een interne load balancer (ILB) maken).
-
+Als u een toepassingsgateway wilt configureren voor gebruik met een interne load balancer, raadpleegt u [Create an application gateway with an internal load balancer (ILB)](./application-gateway-ilb-arm.md) (Een toepassingsgateway met een interne load balancer (ILB) maken).

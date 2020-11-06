@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d55e7f29c9ecefa7cfcf98ef890d9982b044ef30
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378819"
+ms.locfileid: "93396512"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -90,7 +90,7 @@ Met de rol [bevoorrechte verificatie beheerder](#privileged-authentication-admin
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps-beheerder](#azure-devops-administrator-permissions)
 
-Gebruikers met deze rol kunnen het Azure DevOps-beleid beheren om het maken van nieuwe Azure DevOps-organisaties te beperken tot een set Configureer bare gebruikers of groepen. Gebruikers met deze rol kunnen dit beleid beheren via een Azure DevOps-organisatie die een back-up maakt van de Azure AD-organisatie van het bedrijf.
+Gebruikers met deze rol kunnen het Azure DevOps-beleid beheren om het maken van nieuwe Azure DevOps-organisaties te beperken tot een set Configureer bare gebruikers of groepen. Gebruikers met deze rol kunnen dit beleid beheren via een Azure DevOps-organisatie die wordt ondersteund door de Azure AD-organisatie van het bedrijf. Deze rol verleent geen andere aan Azure DevOps machtigingen (bijvoorbeeld beheerders van een project verzameling) in een van de Azure DevOps-organisaties die worden ondersteund door de Azure AD-organisatie van het bedrijf.
 
 Alle Azure DevOps-beleids regels voor ondernemingen kunnen worden beheerd door gebruikers met deze rol.
 

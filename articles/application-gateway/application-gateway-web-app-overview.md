@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe6ea6f348d796962141bd39ff858d891a29a2f6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84628678"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397685"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Application Gateway ondersteuning voor back-ends met meerdere tenants, zoals app service
 
@@ -28,11 +28,11 @@ Application Gateway biedt een functie waarmee gebruikers de HTTP host-header in 
 
 ## <a name="override-host-header-in-the-request"></a>Host-header in de aanvraag overschrijven
 
-De mogelijkheid om een host op te geven, wordt gedefinieerd in de [http-instellingen](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) en kan worden toegepast op elke back-end-groep tijdens het maken van de regel. De volgende twee manieren om de host-header en de SNI-extensie voor back-ends met meerdere tenants te overschrijven, worden ondersteund:
+De mogelijkheid om een host op te geven, wordt gedefinieerd in de [http-instellingen](./configuration-overview.md#http-settings) en kan worden toegepast op elke back-end-groep tijdens het maken van de regel. De volgende twee manieren om de host-header en de SNI-extensie voor back-ends met meerdere tenants te overschrijven, worden ondersteund:
 
 - De mogelijkheid om de hostnaam in te stellen op een vaste waarde die expliciet is ingevoerd in de HTTP-instellingen. Op deze manier zorgt u ervoor dat de host-header wordt overschreven door deze waarde voor al het verkeer naar de back-end-groep waarin de specifieke HTTP-instellingen worden toegepast. Als u end-to-end TLS gebruikt, wordt deze overschreven hostnaam gebruikt in de SNI-extensie. Met deze mogelijkheid kunnen scenario's waarbij een back-end-pool farm een host-header verwacht die afwijkt van de inkomende host-header van de klant.
 
-- De mogelijkheid om de hostnaam af te leiden van het IP-adres of de FQDN-naam van de back-end-groeps leden. HTTP-instellingen bieden ook een optie voor het dynamisch kiezen van de hostnaam uit de FQDN van een back-end-groep als deze is geconfigureerd met de optie voor het afleiden van een hostnaam van een afzonderlijke lid van een back-end-pool. Als u end-to-end TLS gebruikt, wordt deze hostnaam afgeleid van de FQDN-naam en gebruikt in de SNI-extensie. Met deze mogelijkheid kunnen scenario's waarin een back-end-pool twee of meer multi tenant PaaS Services, zoals Azure web apps en de hostheader van de aanvraag voor elk lid, de hostnaam bevatten die is afgeleid van de FQDN-naam. Voor de implementatie van dit scenario gebruiken we een switch in de HTTP-instellingen [Kies hostnaam van back-mailadres](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) , waarmee de hostheader in de oorspronkelijke aanvraag dynamisch wordt overschreven naar de host die in de back-endadresgroep wordt vermeld.  Als uw back-end-groep bijvoorbeeld de naam ' contoso11.azurewebsites.net ' en ' contoso22.azurewebsites.net ' bevat, wordt de header van de oorspronkelijke aanvraag die contoso.com is, overschreven naar contoso11.azurewebsites.net of contoso22.azurewebsites.net wanneer de aanvraag wordt verzonden naar de juiste back-endserver. 
+- De mogelijkheid om de hostnaam af te leiden van het IP-adres of de FQDN-naam van de back-end-groeps leden. HTTP-instellingen bieden ook een optie voor het dynamisch kiezen van de hostnaam uit de FQDN van een back-end-groep als deze is geconfigureerd met de optie voor het afleiden van een hostnaam van een afzonderlijke lid van een back-end-pool. Als u end-to-end TLS gebruikt, wordt deze hostnaam afgeleid van de FQDN-naam en gebruikt in de SNI-extensie. Met deze mogelijkheid kunnen scenario's waarin een back-end-pool twee of meer multi tenant PaaS Services, zoals Azure web apps en de hostheader van de aanvraag voor elk lid, de hostnaam bevatten die is afgeleid van de FQDN-naam. Voor de implementatie van dit scenario gebruiken we een switch in de HTTP-instellingen [Kies hostnaam van back-mailadres](./configuration-http-settings.md#pick-host-name-from-back-end-address) , waarmee de hostheader in de oorspronkelijke aanvraag dynamisch wordt overschreven naar de host die in de back-endadresgroep wordt vermeld.  Als uw back-end-groep bijvoorbeeld de naam ' contoso11.azurewebsites.net ' en ' contoso22.azurewebsites.net ' bevat, wordt de header van de oorspronkelijke aanvraag die contoso.com is, overschreven naar contoso11.azurewebsites.net of contoso22.azurewebsites.net wanneer de aanvraag wordt verzonden naar de juiste back-endserver. 
 
   ![web-app-scenario](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -59,8 +59,8 @@ Er kunnen scenario's zijn waarbij de hostnaam in het antwoord van de app service
 - U hebt de omleiding geconfigureerd op uw App Service. Omleiding kan net zo eenvoudig zijn als het toevoegen van een afsluitende schuine streep aan de aanvraag.
 - U hebt Azure AD-verificatie die de omleiding veroorzaakt.
 
-Zie [problemen met omleiding naar het URL-probleem van de app service oplossen](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url)om dergelijke gevallen op te lossen.
+Zie [problemen met omleiding naar het URL-probleem van de app service oplossen](./troubleshoot-app-service-redirection-app-service-url.md)om dergelijke gevallen op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het instellen van een toepassings gateway met een multi tenant-app, zoals Azure-app service-Web-app als een lid van de back-end-groep, door te gaan [app service Web apps configureren met Application Gateway](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)
+Meer informatie over het instellen van een toepassings gateway met een multi tenant-app, zoals Azure-app service-Web-app als een lid van de back-end-groep, door te gaan [app service Web apps configureren met Application Gateway](./configure-web-app-portal.md)

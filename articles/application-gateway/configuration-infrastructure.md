@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319789"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397617"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Configuratie van Application Gateway-infra structuur
 
@@ -55,15 +55,15 @@ Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. 
 Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de volgende beperkingen op het subnet in deze volg orde van prioriteit:
 
 1. Sta binnenkomend verkeer van een bron-IP of IP-bereik met de bestemming als het gehele adres bereik van Application Gateway subnet en de doel poort toe als uw binnenkomende toegangs poort, bijvoorbeeld poort 80 voor HTTP-toegang.
-2. Sta binnenkomende aanvragen van de bron als **GatewayManager** -service label en-bestemming toe als **wille keurige** en doel poorten als 65503-65534 voor de Application Gateway v1-SKU en poorten 65200-65535 voor v2-SKU voor de [status communicatie van back-end](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Zonder de juiste certificaten kunnen externe entiteiten geen wijzigingen op deze eind punten initiëren.
-3. Sta binnenkomende Azure Load Balancer tests (*AzureLoadBalancer* tag) en binnenkomend virtueel netwerk verkeer (*VirtualNetwork* -tag) toe aan de [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview).
+2. Sta binnenkomende aanvragen van de bron als **GatewayManager** -service label en-bestemming toe als **wille keurige** en doel poorten als 65503-65534 voor de Application Gateway v1-SKU en poorten 65200-65535 voor v2-SKU voor de [status communicatie van back-end](./application-gateway-diagnostics.md). Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Zonder de juiste certificaten kunnen externe entiteiten geen wijzigingen op deze eind punten initiëren.
+3. Sta binnenkomende Azure Load Balancer tests ( *AzureLoadBalancer* tag) en binnenkomend virtueel netwerk verkeer ( *VirtualNetwork* -tag) toe aan de [netwerk beveiligings groep](../virtual-network/network-security-groups-overview.md).
 4. Alle andere binnenkomende verkeer blok keren met behulp van de regel deny-all.
 5. Uitgaand verkeer naar Internet toestaan voor alle bestemmingen.
 
 ## <a name="supported-user-defined-routes"></a>Ondersteunde door de gebruiker gedefinieerde routes 
 
 > [!IMPORTANT]
-> Het gebruik van Udr's op het Application Gateway subnet kan ertoe leiden dat de status in de status [weergave van de back-end](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) wordt weer gegeven als **onbekend**. Het kan ook leiden tot het genereren van Application Gateway logboeken en de metrische gegevens. U wordt aangeraden Udr's niet te gebruiken op het Application Gateway subnet, zodat u de status, logboeken en metrische gegevens van de back-end kunt bekijken.
+> Het gebruik van Udr's op het Application Gateway subnet kan ertoe leiden dat de status in de status [weergave van de back-end](./application-gateway-diagnostics.md#back-end-health) wordt weer gegeven als **onbekend**. Het kan ook leiden tot het genereren van Application Gateway logboeken en de metrische gegevens. U wordt aangeraden Udr's niet te gebruiken op het Application Gateway subnet, zodat u de status, logboeken en metrische gegevens van de back-end kunt bekijken.
 
 - **RIP**
 
@@ -78,7 +78,7 @@ Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de 
    > Een onjuiste configuratie van de route tabel kan leiden tot asymmetrische route ring in Application Gateway v2. Zorg ervoor dat alle verkeers verkeer van beheer/beheer rechtstreeks naar het Internet wordt verzonden en niet via een virtueel apparaat. Logboek registratie en metrische gegevens kunnen ook worden beïnvloed.
 
 
-  **Scenario 1**: UDR-route doorgifte van Border Gateway Protocol (BGP) naar het Application Gateway subnet uitschakelen
+  **Scenario 1** : UDR-route doorgifte van Border Gateway Protocol (BGP) naar het Application Gateway subnet uitschakelen
 
    Soms wordt de standaard gateway route (0.0.0.0/0) geadverteerd via de ExpressRoute of VPN-gateways die zijn gekoppeld aan het Application Gateway virtuele netwerk. Hiermee wordt het verkeer van het beheer vlak onderbroken, waarvoor een direct pad naar het internet is vereist. In dergelijke scenario's kan een UDR worden gebruikt om BGP-route doorgifte uit te scha kelen. 
 
@@ -90,11 +90,11 @@ Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de 
 
    Het inschakelen van de UDR voor dit scenario mag geen bestaande instellingen verstoren.
 
-  **Scenario 2**: UDR om 0.0.0.0/0 te sturen naar Internet
+  **Scenario 2** : UDR om 0.0.0.0/0 te sturen naar Internet
 
    U kunt een UDR maken om het 0.0.0.0/0-verkeer rechtstreeks naar Internet te verzenden. 
 
-  **Scenario 3**: UDR for Azure Kubernetes service met kubenet
+  **Scenario 3** : UDR for Azure Kubernetes service met kubenet
 
   Als u kubenet met Azure Kubernetes service (AKS) en Application Gateway ingangs controller (AGIC) gebruikt, hebt u een route tabel nodig om verkeer toe te staan van Application Gateway naar het juiste knoop punt wordt verzonden. Dit is niet nodig als u Azure CNI gebruikt. 
 
@@ -109,7 +109,7 @@ Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de 
     
   **v2 niet-ondersteunde scenario's**
 
-  **Scenario 1**: UDR voor virtuele apparaten
+  **Scenario 1** : UDR voor virtuele apparaten
 
   Elk scenario waarbij 0.0.0.0/0 moet worden omgeleid via een virtueel apparaat, een hub/spoke-virtueel netwerk of een on-premises (geforceerde Tunneling) wordt niet ondersteund voor v2.
 

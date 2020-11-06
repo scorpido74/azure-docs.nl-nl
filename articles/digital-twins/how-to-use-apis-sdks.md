@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ed4bc60fbffbfbc553d41d7f7d44709551b620dc
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: a09563e787573f3cb3dd510229822a0b0fbcb6c9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280335"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395883"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -31,11 +31,11 @@ De meest recente versie van de Control vlak-API is _**2020-10-31**_.
 De Control-Api's gebruiken:
 * U kunt de Api's rechtstreeks aanroepen door te verwijzen naar de laatste Swagger in de map van het [besturings vlak Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Deze opslag plaats bevat ook een map met voor beelden waarin het gebruik wordt weer gegeven.
 * U kunt momenteel toegang krijgen tot Sdk's voor besturings-Api's in...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([referentie [automatisch gegenereerd]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([bron](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([referentie [automatisch gegenereerd]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ([bron](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
-  - [Java script](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([bron](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
-  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([bron](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([bron](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
+  - [**.Net (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ( [referentie [automatisch gegenereerd]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ( [bron](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
+  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ( [referentie [automatisch gegenereerd]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ( [bron](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
+  - [**Java script**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ( [bron](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
+  - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ( [bron](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
+  - [**Go**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ( [bron](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
 
 U kunt ook beheer vlak-Api's uitoefenen door interactie met Azure Digital Apparaatdubbels via de [Azure Portal](https://portal.azure.com) en [cli](how-to-use-cli.md).
 
@@ -57,17 +57,18 @@ De data-vlak-Api's gebruiken:
    - u kunt het pakket bekijken en toevoegen vanuit NuGet: [Azure. DigitalTwins. core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
    - u kunt de [SDK-referentie documentatie](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)raadplegen.
    - u vindt de SDK-bron, met inbegrip van een map met voor beelden, in GitHub: [Azure IOT Digital apparaatdubbels-client bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - u kunt gedetailleerde informatie en voor beelden van gebruik bekijken door door te gaan naar de sectie [.net (C#) SDK (Data-vlieg tuig)](#net-c-sdk-data-plane) van dit artikel.
-* U kunt de **Java** -SDK gebruiken. De Java-SDK gebruiken...
+   - u kunt gedetailleerde informatie en voor beelden van gebruik bekijken door door te gaan naar de sectie [*.net (C#) SDK (Data-vlieg tuig)*](#net-c-sdk-data-plane) van dit artikel.
+* U kunt de **Java-SDK** gebruiken. De Java-SDK gebruiken...
    - u kunt het pakket weer geven en installeren vanuit maven: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)
-   - u kunt de [SDK-referentie documentatie](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview) bekijken
+   - u kunt de [SDK-referentie documentatie](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable) bekijken
    - de SDK-bron is te vinden in GitHub: [Azure IOT Digital apparaatdubbels-client bibliotheek voor Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
-* U kunt de **Java script** -SDK gebruiken. De Java script-SDK gebruiken...
-   - u kunt het pakket weer geven en installeren vanuit NPM: [Azure Azure Digital apparaatdubbels-client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/digital-twins-core).
-   - u kunt de [SDK-referentie documentatie](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)raadplegen.
+* U kunt de **Java script-SDK** gebruiken. De Java script-SDK gebruiken...
+   - u kunt het pakket weer geven en installeren vanuit NPM: [Azure Azure Digital Apparaatdubbels core client library voor Java script](https://www.npmjs.com/package/@azure/digital-twins-core).
+   - u kunt de [SDK-referentie documentatie](/javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest&preserve-view=true)raadplegen.
    - de SDK-bron is te vinden in GitHub: [Azure Azure Digital Apparaatdubbels core client library voor Java script](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
-* U kunt de **python** -SDK gebruiken. De python-SDK gebruiken...
-   - u kunt het pakket weer geven en installeren: [Azure Azure Digital Apparaatdubbels core-client bibliotheek voor python](https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/).
+* U kunt de **python-SDK** gebruiken. De python-SDK gebruiken...
+   - u kunt het pakket weer geven en installeren vanuit PyPi: [Azure Azure Digital Apparaatdubbels core client library voor python](https://pypi.org/project/azure-digitaltwins-core/).
+   - u kunt de [SDK-referentie documentatie](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true)raadplegen.
    - de SDK-bron is te vinden in GitHub: [Azure Azure Digital Apparaatdubbels core client library voor python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * U kunt een SDK voor een andere taal genereren met behulp van auto rest. Volg de instructies in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
 

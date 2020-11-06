@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 20a665eefbb73f062f1f036e17b16da891a43eef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652984"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397532"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Routerings regels voor Application Gateway aanvragen
 
-Wanneer u een toepassings gateway maakt met behulp van de Azure Portal, maakt u een standaard regel (*firewallregel1*). Deze regel koppelt de standaard-listener (*appGatewayHttpListener*) aan de standaard back-end-pool (*appGatewayBackendPool*) en de standaard back-end-http-instellingen (*appGatewayBackendHttpSettings*). Nadat u de gateway hebt gemaakt, kunt u de instellingen van de standaard regel bewerken of nieuwe regels maken.
+Wanneer u een toepassings gateway maakt met behulp van de Azure Portal, maakt u een standaard regel ( *firewallregel1* ). Deze regel koppelt de standaard-listener ( *appGatewayHttpListener* ) aan de standaard back-end-pool ( *appGatewayBackendPool* ) en de standaard back-end-http-instellingen ( *appGatewayBackendHttpSettings* ). Nadat u de gateway hebt gemaakt, kunt u de instellingen van de standaard regel bewerken of nieuwe regels maken.
 
 ## <a name="rule-type"></a>Regel type
 
-Wanneer u een regel maakt, kiest u tussen [ *basis* en *op basis van het pad*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
+Wanneer u een regel maakt, kiest u tussen [ *basis* en *op basis van het pad*](./application-gateway-components.md#request-routing-rules).
 
 - Kies basis als u alle aanvragen voor de gekoppelde listener (bijvoorbeeld *blog <i></i> . contoso.com/ \* )* wilt door sturen naar één back-end-groep.
 - Kies op basis van pad als u aanvragen van specifieke URL-paden naar specifieke back-endservers wilt routeren. Het pad patroon wordt alleen toegepast op het pad van de URL, niet op de query parameters.
@@ -51,13 +51,13 @@ Voor een regel op basis van een pad voegt u meerdere back-end-HTTP-instellingen 
 
 ## <a name="redirection-setting"></a>Omleidings instelling
 
-Als omleiding is geconfigureerd voor een basis regel, worden alle aanvragen voor de gekoppelde listener omgeleid naar het doel. Dit is *wereld wijde* omleiding. Als omleiding is geconfigureerd voor een op een pad gebaseerde regel, worden alleen aanvragen in een specifiek site gebied omgeleid. Een voor beeld is een boodschappen mand gebied dat wordt aangeduid met */Cart/ \* *. Dit is een omleiding *op basis van pad* .
+Als omleiding is geconfigureerd voor een basis regel, worden alle aanvragen voor de gekoppelde listener omgeleid naar het doel. Dit is *wereld wijde* omleiding. Als omleiding is geconfigureerd voor een op een pad gebaseerde regel, worden alleen aanvragen in een specifiek site gebied omgeleid. Een voor beeld is een boodschappen mand gebied dat wordt aangeduid met */Cart/ \**. Dit is een omleiding *op basis van pad* .
 
 Zie [Application Gateway omleidings overzicht](redirect-overview.md)voor meer informatie over omleidingen.
 
 ### <a name="redirection-type"></a>Type omleiding
 
-Kies het type omleiding vereist: *permanent (301)*, *tijdelijk (307*), *gevonden (302)* of *Zie other (303)*.
+Kies het type omleiding vereist: *permanent (301)* , *tijdelijk (307* ), *gevonden (302)* of *Zie other (303)*.
 
 ### <a name="redirection-target"></a>Doel van omleiding
 
