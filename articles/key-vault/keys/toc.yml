@@ -30,6 +30,10 @@
   items:
     - name: Key Vault-codevoorbeelden
       href: /samples/browse/?expanded=azure&products=azure-key-vault
+- name: Concepten
+  items:
+    - name: 'Sleuteltypen, algoritmen en bewerkingen'
+      href: about-keys-details.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell

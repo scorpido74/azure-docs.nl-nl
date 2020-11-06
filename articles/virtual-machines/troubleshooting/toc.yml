@@ -109,6 +109,8 @@
           href: unresponsive-vm-apply-group-policy.md
         - name: VM is niet responsief wanneer een beveiligingsbeleid wordt toegepast
           href: unresponsive-vm-apply-security-policy.md
+        - name: VM reageert niet terwijl wordt gewacht op de lokale sessiebeheerder
+          href: vm-unresponsive-wait-local-session-manager.md
         - name: Windows Boot Manager-fout - Status ongeldige afbeeldingshash
           href: windows-boot-error-invalid-image-hash.md
         - name: Windows-stopfout - Verkeerde systeemconfiguratiegegevens
@@ -117,6 +119,8 @@
           href: troubleshoot-windows-stop-error.md
         - name: Windows-stopfout - Systeemverwerking beëindigd
           href: windows-stop-error-system-process-terminated.md
+        - name: Windows-stopfout - Uitzonder systeemthread niet verwerkt
+          href: windows-stop-error-system-thread-exception-not-handled.md
 - name: Kan geen verbinding maken met mijn VM
   items:
     - name: RDP

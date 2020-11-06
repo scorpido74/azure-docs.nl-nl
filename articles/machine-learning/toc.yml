@@ -399,6 +399,9 @@
         - name: Externe compute-doelen gebruiken
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: Geautomatiseerde ML gebruiken met Databricks
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: Automatisch een prognosemodel trainen
           displayName: time series
           href: how-to-auto-train-forecast.md

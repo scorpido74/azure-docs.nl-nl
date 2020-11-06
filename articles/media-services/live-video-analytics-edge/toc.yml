@@ -95,6 +95,8 @@
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: Implementeren op Azure Stack Edge
       href: deploy-azure-stack-edge-how-to.md
+    - name: Een signaalpoort configureren
+      href: configure-signal-gate-how-to.md
     - name: Problemen oplossen
       href: troubleshoot-how-to.md
 - name: Naslaginformatie

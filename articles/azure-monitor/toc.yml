@@ -692,12 +692,14 @@
               href: app/kubernetes-codeless.md
             - name: 'Zelfstandig: elke omgeving'
               items:
-                - name: Java (preview)
+                - name: Java
                   items:
                     - name: Overzicht
                       href: app/java-in-process-agent.md
                     - name: Configuratie-opties
                       href: app/java-standalone-config.md
+                    - name: Telemetrieverwerkers
+                      href: app/java-standalone-telemetry-processors.md
                     - name: Configuratie van JVM-argumenten
                       href: app/java-standalone-arguments.md
             - name: On-premises servers

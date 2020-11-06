@@ -140,8 +140,6 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: Azure-SDK voor JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST-API
-          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: Functiebeheer
       items:
         - name: .NET Core-bibliotheek
@@ -156,6 +154,52 @@
           href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+    - name: REST-API
+      items:
+        - name: Overzicht
+          href: rest-api.md
+        - name: Resources
+          items:
+            - name: Sleutels
+              href: ./rest-api-keys.md
+            - name: Sleutelwaarden
+              href: ./rest-api-key-value.md
+            - name: Labels
+              href: ./rest-api-labels.md
+            - name: Vergrendelingen
+              href: ./rest-api-locks.md
+            - name: Revisies
+              href: ./rest-api-revisions.md
+        - name: Protocol
+          items:
+            - name: Verificatie
+              href: ./rest-api-authentication-index.md
+              items:
+                - name: Verificatie via Azure Active Directory
+                  href: rest-api-authentication-azure-ad.md
+                - name: HMAC-verificatie
+                  href: rest-api-authentication-hmac.md
+            - name: Autorisatie
+              href: ./rest-api-authorization-index.md
+              items:
+                - name: Azure Active Directory-verificatie
+                  href: rest-api-authorization-azure-ad.md
+                - name: HMAC-verificatie
+                  href: rest-api-authorization-hmac.md
+            - name: Consistentiemodel
+              href: ./rest-api-consistency.md
+            - name: Algemene headers
+              href: ./rest-api-headers.md
+            - name: Beperking
+              href: ./rest-api-throttling.md
+            - name: Versiebeheer
+              href: ./rest-api-versioning.md
+        - name: Ontwikkeling
+          items:
+            - name: Fiddler
+              href: ./rest-api-fiddler.md
+            - name: Postman
+              href: ./rest-api-postman.md
     - name: Ingebouwde modules voor Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

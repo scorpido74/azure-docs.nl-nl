@@ -120,6 +120,8 @@
           href: customize-branding.md
         - name: '''Aangemeld blijven?'' configureren'
           href: keep-me-signed-in.md
+        - name: Een tenant-id vinden
+          href: active-directory-how-to-find-tenant.md
         - name: Een Azure-abonnement koppelen
           href: active-directory-how-subscriptions-associated-directory.md
         - name: Uw privacyinformatie toevoegen
