@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 25c79229a09db912903fba825f0d48f571880745
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a36e15a56a5a4c8a637120ca730ae1da764d376d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876935"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422895"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Algemene fout codes voor Azure Key Vault
 
@@ -22,7 +22,7 @@ De fout codes die in de volgende tabel worden weer gegeven, kunnen worden gereto
 
 | Foutcode | Gebruikers bericht |
 |--|--|
-| VaultAlreadyExists |  De opgegeven sleutel kluis bestaat al (in de modus voor zacht verwijderen of in een ander abonnement). |
+| VaultAlreadyExists |  De poging om een nieuwe sleutel kluis met de opgegeven naam te maken, is mislukt omdat de naam al in gebruik is. Als u onlangs een sleutel kluis met deze naam hebt verwijderd, kan deze zich nog steeds in de modus voorlopig verwijderd bevinden. U kunt [hier](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault) controleren of het bestaat uit de voorlopig verwijderde status |
 | VaultNameNotValid |  De naam van de kluis moet 24 tekens en alfanumeriek zijn en begint met een alfabet |
 | AccessDenied |  Mogelijk ontbreken er machtigingen in het toegangs beleid om deze bewerking uit te voeren. |
 | ForbiddenByFirewall |  Het client adres is niet geautoriseerd en de aanroeper is geen vertrouwde service. |

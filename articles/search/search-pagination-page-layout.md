@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934919"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421716"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoek resultaten in azure Cognitive Search
 
 In dit artikel wordt uitgelegd hoe u een query-antwoord krijgt dat terugkeert met een totaal aantal overeenkomende documenten, gepagineerde resultaten, gesorteerde resultaten en door waarden gemarkeerde termen.
 
-De structuur van een antwoord wordt bepaald door para meters in de query: [document zoeken](/rest/api/searchservice/Search-Documents) in de rest API-of [DocumentSearchResult-klasse](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) in de .NET SDK.
+De structuur van een antwoord wordt bepaald door para meters in de query: [document zoeken](/rest/api/searchservice/Search-Documents) in de rest API-of [searchresults-klasse](/dotnet/api/azure.search.documents.models.searchresults-1) in de .NET SDK.
 
 ## <a name="result-composition"></a>Resultaten samen stelling
 
@@ -52,7 +52,7 @@ Om een ander aantal overeenkomende documenten te retour neren, `$top` voegt `$sk
 + Retourneert de tweede set, waarbij de eerste 15 wordt overgeslagen om de volgende 15 te verkrijgen: `$top=15&$skip=15` . Doe hetzelfde voor de derde set van 15: `$top=15&$skip=30`
 
 De resultaten van gepagineerde query's zijn niet gegarandeerd stabiel als de onderliggende index wordt gewijzigd. Paginering wijzigt de waarde van `$skip` voor elke pagina, maar elke query is onafhankelijk en werkt op de huidige weer gave van de gegevens in de index op het moment van de query (met andere woorden, er is geen caching of moment opname van de resultaten, zoals de waarden in een Data Base voor algemeen gebruik).
- 
+ 
 Hieronder ziet u een voor beeld van hoe u dubbele waarden kunt krijgen. Aannemen een index met vier documenten:
 
 ```text
@@ -61,21 +61,21 @@ Hieronder ziet u een voor beeld van hoe u dubbele waarden kunt krijgen. Aannemen
 { "id": "3", "rating": 2 }
 { "id": "4", "rating": 1 }
 ```
- 
+ 
 Stel nu dat er resultaten twee per keer worden geretourneerd, gesorteerd op waardering. U voert deze query uit om de eerste pagina met resultaten op te halen: `$top=2&$skip=0&$orderby=rating desc` de volgende resultaten worden geproduceerd:
 
 ```text
 { "id": "1", "rating": 5 }
 { "id": "2", "rating": 3 }
 ```
- 
+ 
 In de service wordt ervan uitgegaan dat er een vijfde document wordt toegevoegd aan de index in tussen query-aanroepen: `{ "id": "5", "rating": 4 }` .  Vervolgens voert u een query uit om de tweede pagina op te halen: `$top=2&$skip=2&$orderby=rating desc` en haalt u de volgende resultaten op:
 
 ```text
 { "id": "2", "rating": 3 }
 { "id": "3", "rating": 2 }
 ```
- 
+ 
 U ziet dat document 2 twee keer wordt opgehaald. De reden hiervoor is dat het nieuwe document 5 een hogere waarde voor classificatie heeft, zodat het wordt gesorteerd vóór document 2 en-land op de eerste pagina. Hoewel dit gedrag mogelijk onverwacht is, is het gebruikelijk dat een zoek machine zich gedraagt.
 
 ## <a name="ordering-results"></a>Resultaten ordenen

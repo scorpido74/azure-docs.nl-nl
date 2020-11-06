@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: b57d55e91918ba612ad42acd5e6059ae0dbd0090
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538784"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422447"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Overzicht van het importeren van gegevens-Azure Cognitive Search
 
@@ -35,7 +35,7 @@ Deze aanpak is flexibeler dan het pull-model, omdat u documenten afzonderlijk of
 U kunt de volgende API's gebruiken om één of meerdere documenten in een index te laden:
 
 + [Documenten toevoegen, bijwerken of verwijderen (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction-klasse](/dotnet/api/microsoft.azure.search.models.indexaction) of [indexBatch-klasse](/dotnet/api/microsoft.azure.search.models.indexbatch) 
++ [IndexDocumentsAction class](/dotnet/api/azure.search.documents.models.indexdocumentsaction) of [IndexDocumentsBatch class](/dotnet/api/azure.search.documents.models.indexdocumentsbatch) 
 
 Er is momenteel geen ondersteuning voor het pushen van gegevens via de portal.
 
@@ -63,7 +63,7 @@ In de .NET SDK kunt u uw gegevens inpakken in een- `IndexBatch` object. Een `Ind
 
 Er zijn twee manieren om [in de index te zoeken met behulp van de REST-API](/rest/api/searchservice/Search-Documents). De ene manier is om een HTTP POST-aanvraag uit te geven waarbij uw queryparameters worden gedefinieerd in een JSON-object in de aanvraagtekst. De andere manier is om een HTTP GET-aanvraag uit te geven waarbij uw queryparameters worden gedefinieerd in de aanvraag-URL. POST heeft [soepelere limieten](/rest/api/searchservice/Search-Documents) met betrekking tot de grootte van queryparameters dan GET. Daarom wordt u aangeraden POST te gebruiken, tenzij er speciale omstandigheden zijn waarin het gebruik van GET beter zou zijn.
 
-Voor zowel POST als GET moet u uw *service naam*, *index naam*en een *API-versie* opgeven in de aanvraag-URL. 
+Voor zowel POST als GET moet u uw *service naam* , *index naam* en een *API-versie* opgeven in de aanvraag-URL. 
 
 Voor GET geeft u in de *querytekenreeks* aan het einde van de URL de queryparameters op. Hieronder vindt u de URL-indeling:
 
@@ -75,19 +75,18 @@ De indeling voor POST is hetzelfde, maar met `api-version` in de para meters van
 
 ## <a name="pulling-data-into-an-index"></a>Gegevens in een index ophalen
 
-Het pullmodel verkent een ondersteunde gegevensbron en uploadt de gegevens automatisch naar uw index. In azure Cognitive Search is deze mogelijkheid geïmplementeerd via *Indexeer functies*, die momenteel beschikbaar zijn voor deze platformen:
+Het pullmodel verkent een ondersteunde gegevensbron en uploadt de gegevens automatisch naar uw index. In azure Cognitive Search is deze mogelijkheid geïmplementeerd via *Indexeer functies* , die momenteel beschikbaar zijn voor deze platformen:
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database, SQL Managed instance en SQL Server op virtuele machines van Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
-Indexeerfuncties verbinden een index met een gegevensbron (meestal een tabel, weergave of equivalente structuur) en wijzen bronvelden toe aan equivalente velden in de index. Tijdens de uitvoering wordt de rijenset automatisch omgezet naar JSON en in de opgegeven index geladen. Alle indexeerfuncties ondersteunen planning. U kunt dus opgeven hoe vaak de gegevens moeten worden vernieuwd. Met de meeste indexeerfuncties kunt u wijzigingen bijhouden als dit door de gegevensbron wordt ondersteund. Als u naast het herkennen van nieuwe documenten, wijzigingen en verwijderingen in een bestaand document bijhoudt, hoeft u de gegevens in een index via indexeerfuncties niet actief bij te houden. 
-
+Indexeerfuncties verbinden een index met een gegevensbron (meestal een tabel, weergave of equivalente structuur) en wijzen bronvelden toe aan equivalente velden in de index. Tijdens de uitvoering wordt de rijenset automatisch omgezet naar JSON en in de opgegeven index geladen. Alle indexeerfuncties ondersteunen planning. U kunt dus opgeven hoe vaak de gegevens moeten worden vernieuwd. Met de meeste indexeerfuncties kunt u wijzigingen bijhouden als dit door de gegevensbron wordt ondersteund. Als u naast het herkennen van nieuwe documenten, wijzigingen en verwijderingen in een bestaand document bijhoudt, hoeft u de gegevens in een index via indexeerfuncties niet actief bij te houden.
 
 ### <a name="how-to-pull-data-into-an-azure-cognitive-search-index"></a>Gegevens ophalen in een Azure Cognitive Search-index
 
-Functionaliteit van de indexeerfunctie wordt weergegeven in [Azure Portal](search-import-data-portal.md), de [REST API](/rest/api/searchservice/Indexer-operations) en de [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperationsextensions). 
+Functionaliteit van de indexeerfunctie wordt weergegeven in [Azure Portal](search-import-data-portal.md), de [REST API](/rest/api/searchservice/Indexer-operations) en de [.NET SDK](/dotnet/api/azure.search.documents.indexes.searchindexerclient).
 
 Een voor deel van het gebruik van de portal is dat Azure Cognitive Search meestal een standaard index schema voor u kan genereren door de meta gegevens van de bron-gegevensset te lezen. U kunt de gegenereerde index wijzigen totdat de index wordt verwerkt. Daarna zijn alleen schemabewerkingen toegestaan waarvoor de index niet opnieuw gegenereerd hoeft te worden. Als de wijzigingen die u doorvoert, rechtstreeks invloed hebben op het schema, moet u de index opnieuw opbouwen. 
 

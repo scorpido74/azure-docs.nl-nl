@@ -1,7 +1,7 @@
 ---
 title: 'Converteren naar CSV: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module converteren naar CSV in Azure Machine Learning om een gegevensset om te zetten in een CSV-indeling die kan worden gedownload, geëxporteerd of worden gedeeld met R-of python-script modules.
+description: Meer informatie over het gebruik van de module converteren naar CSV in Azure Machine Learning Designer om een gegevensset te converteren naar een CSV-bestand dat later opnieuw kan worden gebruikt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3b7c781717952765941acd4ea4aa47593d4b8a0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898792"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421920"
 ---
 # <a name="convert-to-csv-module"></a>Converteren naar CSV-module
 
@@ -46,11 +46,11 @@ Wanneer u een gegevensset converteert naar CSV, wordt het CSV-bestand opgeslagen
 ### <a name="results"></a>Resultaten
   
 
-Selecteer het tabblad **uitvoer** in het rechterdeel venster van **converteren naar CSV**en selecteer een van deze pictogrammen onder de **poort uitvoer**.  
+Selecteer het tabblad **uitvoer** in het rechterdeel venster van **converteren naar CSV** en selecteer een van deze pictogrammen onder de **poort uitvoer**.  
 
-+ **Gegevensset registreren**: Selecteer het pictogram en sla het CSV-bestand weer op in de Azure ml-werk ruimte als afzonderlijke gegevensset. U kunt de gegevensset vinden als een module in de module structuur onder de sectie **mijn gegevens sets** .
++ **Gegevensset registreren** : Selecteer het pictogram en sla het CSV-bestand weer op in de Azure ml-werk ruimte als afzonderlijke gegevensset. U kunt de gegevensset vinden als een module in de module structuur onder de sectie **mijn gegevens sets** .
 
- + **Uitvoer weer geven**: Selecteer het oogpictogram en volg de instructies om door de **Results_dataset** map te bladeren en het data.csv bestand te downloaden.
+ + **Uitvoer weer geven** : Selecteer het oogpictogram en volg de instructies om door de **Results_dataset** map te bladeren en het data.csv bestand te downloaden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

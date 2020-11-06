@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cd96a4e8af5faab618f3302c423675b2dadca79a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a559b8c65ab57b0144b807a3b4cc1faa912d430
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710852"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422736"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Firewall regels maken en beheren in Azure Database for PostgreSQL-één server met behulp van Azure CLI
 Firewall regels op server niveau kunnen worden gebruikt voor het beheren van de toegang tot een Azure Database for PostgreSQL-server vanuit een specifiek IP-adres of IP-bereik. Met behulp van handige Azure CLI-opdrachten kunt u firewall regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for PostgreSQL Server firewall rules](concepts-firewall-rules.md)(Engelstalig) voor een overzicht van Azure database for PostgreSQL firewall regels.
@@ -40,8 +40,8 @@ az postgres server firewall-rule list --resource-group myresourcegroup --server-
 ## <a name="create-firewall-rule"></a>Firewallregel maken
 Voer de opdracht [AZ post gres Server firewall-Rule Create](/cli/azure/postgres/server/firewall-rule) uit om een nieuwe firewall regel te maken op de server. 
 
-```
-To allow access to a singular IP address, provide the same address in the `--start-ip-address` and `--end-ip-address`, as in this example, replacing the IP shown here with your specific IP.
+
+Als u toegang tot een enkelvoudig IP-adres wilt toestaan, geeft u hetzelfde adres op in de `--start-ip-address` en `--end-ip-address` , zoals in dit voor beeld, waarbij de IP-adressen die hier worden weer gegeven, worden vervangen door uw specifieke IP.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name AllowSingleIpAddress --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
 ```

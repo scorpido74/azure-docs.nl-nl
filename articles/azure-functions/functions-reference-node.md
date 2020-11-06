@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043109"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422549"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
 
@@ -20,7 +20,7 @@ Als Express.js, Node.js of Java script-ontwikkelaar, als u geen ervaring hebt me
 
 | Aan de slag | Concepten| Begeleide training |
 | -- | -- | -- | 
-| <ul><li>[Node.js functie met Visual Studio code](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[Node.js functie met Terminal/opdracht prompt](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Ontwikkelaarsgids](functions-reference.md)</li><li>[Hostingopties](functions-scale.md)</li><li>[Type script-functies](#typescript)</li><li>[Prestatie &nbsp; overwegingen](functions-best-practices.md)</li></ul> | <ul><li>[Serverloze toepassingen maken](/learn/paths/create-serverless-applications/)</li><li>[Refactorion-Node.js en Express-Api's naar Serverloze Api's](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js functie met Visual Studio code](./create-first-function-vs-code-node.md)</li><li>[Node.js functie met Terminal/opdracht prompt](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Ontwikkelaarsgids](functions-reference.md)</li><li>[Hostingopties](functions-scale.md)</li><li>[Type script-functies](#typescript)</li><li>[Prestatie &nbsp; overwegingen](functions-best-practices.md)</li></ul> | <ul><li>[Serverloze toepassingen maken](/learn/paths/create-serverless-applications/)</li><li>[Refactorion-Node.js en Express-Api's naar Serverloze Api's](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>Basis beginselen van Java script-functies
 
@@ -107,13 +107,13 @@ In Java script worden [bindingen](functions-triggers-bindings.md) geconfigureerd
 
 ### <a name="inputs"></a>Invoerwaarden
 De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de invoer van de trigger en de andere is de extra invoer. Triggers en andere invoer bindingen (bindingen van `direction === "in"` ) kunnen op drie manieren worden gelezen door een functie:
- - **_[Aanbevolen]_ Als para meters die zijn door gegeven aan de functie.** Ze worden door gegeven aan de functie in dezelfde volg orde als waarin ze zijn gedefinieerd in *function.jsop* . De `name` eigenschap die is gedefinieerd in *function.js* in, hoeft niet overeen te komen met de naam van uw para meter, maar dit moet wel.
+ - **_[Aanbevolen]_ Als para meters die zijn door gegeven aan de functie.** Ze worden door gegeven aan de functie in dezelfde volg orde als waarin ze zijn gedefinieerd in *function.jsop*. De `name` eigenschap die is gedefinieerd in *function.js* in, hoeft niet overeen te komen met de naam van uw para meter, maar dit moet wel.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Als leden van het [`context.bindings`](#contextbindings-property) object.** Elk lid krijgt de naam van de eigenschap die is `name` gedefinieerd in *function.jsop* .
+ - **Als leden van het [`context.bindings`](#contextbindings-property) object.** Elk lid krijgt de naam van de eigenschap die is `name` gedefinieerd in *function.jsop*.
  
    ```javascript
    module.exports = async function(context) { 
@@ -133,12 +133,12 @@ De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de in
    };
    ```
 
-### <a name="outputs"></a>Uitvoer
+### <a name="outputs"></a>Uitvoerwaarden
 Uitvoer (bindingen van `direction === "out"` ) kan op een aantal manieren worden geschreven naar een functie. In alle gevallen komt de `name` eigenschap van de binding, zoals gedefinieerd in *function.js* , overeen met de naam van het object lid dat is geschreven in uw functie. 
 
 U kunt gegevens aan uitvoer bindingen op een van de volgende manieren toewijzen (deze methoden niet combi neren):
 
-- **_[Aanbevolen voor meerdere uitvoer]_ Een object retour neren.** Als u een functie van async/Promise retourneert, kunt u een object retour neren met de toegewezen uitvoer gegevens. In het onderstaande voor beeld zijn de uitvoer bindingen de naam ' httpResponse ' en ' queueOutput ' in *function.jsop* .
+- **_[Aanbevolen voor meerdere uitvoer]_ Een object retour neren.** Als u een functie van async/Promise retourneert, kunt u een object retour neren met de toegewezen uitvoer gegevens. In het onderstaande voor beeld zijn de uitvoer bindingen de naam ' httpResponse ' en ' queueOutput ' in *function.jsop*.
 
   ```javascript
   module.exports = async function(context) {
@@ -358,7 +358,7 @@ Als u de drempel waarde wilt instellen voor alle traceringen die worden geschrev
 }  
 ```
 
-De waarden van **consoleLevel** komen overeen met de namen van de `context.log` methoden. Als u alle traceer logboek registratie wilt uitschakelen voor de-console, stelt u **consoleLevel** in op _uit_ . Zie voor meer informatie de [ referentie overhost.jsop v1. x](functions-host-json-v1.md).
+De waarden van **consoleLevel** komen overeen met de namen van de `context.log` methoden. Als u alle traceer logboek registratie wilt uitschakelen voor de-console, stelt u **consoleLevel** in op _uit_. Zie voor meer informatie de [ referentie overhost.jsop v1. x](functions-host-json-v1.md).
 
 ---
 
@@ -545,12 +545,12 @@ Er zijn twee manieren om pakketten te installeren op uw functie-app:
 ### <a name="using-kudu"></a>Kudu gebruiken
 1. Ga naar `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Klik op **debug console** -  >  **cmd** .
+2. Klik op **debug console** -  >  **cmd**.
 
 3. Ga naar `D:\home\site\wwwroot` en sleep uw package.jsnaar bestand naar de map **wwwroot** in het bovenste gedeelte van de pagina.  
     U kunt ook op andere manieren bestanden uploaden naar uw functie-app. Zie de [functie-app-bestanden bijwerken](functions-reference.md#fileupdate)voor meer informatie. 
 
-4. Nadat de package.jsin het bestand is geüpload, voert u de `npm install` opdracht uit in de **kudu-console voor externe uitvoering** .  
+4. Nadat de package.jsin het bestand is geüpload, voert u de `npm install` opdracht uit in de **kudu-console voor externe uitvoering**.  
     Met deze actie worden de pakketten gedownload die zijn aangegeven in de package.jsin het bestand en wordt de functie-app opnieuw gestart.
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
@@ -651,7 +651,7 @@ In versie 1. x wordt de instelling `languageWorkers:node:arguments` niet gebruik
 
 ## <a name="typescript"></a>TypeScript
 
-Wanneer u versie 2. x van de functions runtime richt, hebben zowel [Azure functions voor Visual Studio code](functions-create-first-function-vs-code.md) als de [Azure functions core tools](functions-run-local.md) u functie-apps kunnen maken met behulp van een sjabloon die type script functie-app-projecten ondersteunt. De sjabloon genereert `package.json` en `tsconfig.json` Project bestanden die het eenvoudiger maken om Java script-functies in de type script-code op te nemen, uit te voeren en te publiceren met deze hulpprogram ma's.
+Wanneer u versie 2. x van de functions runtime richt, hebben zowel [Azure functions voor Visual Studio code](./create-first-function-cli-typescript.md) als de [Azure functions core tools](functions-run-local.md) u functie-apps kunnen maken met behulp van een sjabloon die type script functie-app-projecten ondersteunt. De sjabloon genereert `package.json` en `tsconfig.json` Project bestanden die het eenvoudiger maken om Java script-functies in de type script-code op te nemen, uit te voeren en te publiceren met deze hulpprogram ma's.
 
 Een gegenereerd `.funcignore` bestand wordt gebruikt om aan te geven welke bestanden worden uitgesloten wanneer een project wordt gepubliceerd naar Azure.  
 

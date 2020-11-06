@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 5fb82c6098352076307f71eee022074a247e3cd9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: cf3c07f32f15ff176974219bd8143a1ea315c945
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629337"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423042"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Overzicht van bedrijfs continuïteit met Azure Database for PostgreSQL-één server
 
@@ -21,17 +21,22 @@ In dit overzicht worden de mogelijkheden beschreven die Azure Database for Postg
 
 Wanneer u uw bedrijfs continuïteits plan ontwikkelt, moet u weten wat de Maxi maal toegestane tijd is voordat de toepassing volledig wordt hersteld nadat de gebeurtenis is verstoord. Dit is de beoogde herstel tijd (RTO). U moet ook inzicht krijgen in de maximale hoeveelheid recente gegevens updates (tijds interval) die de toepassing kan afnemen bij het herstellen na het verstorings proces. Dit is het beoogde herstel punt (RPO).
 
-Azure Database for PostgreSQL biedt functies voor bedrijfs continuïteit die geo-redundante back-ups bevatten met de mogelijkheid om geo-herstel te initiëren en lees replica's in een andere regio te implementeren. Elk heeft verschillende kenmerken voor de herstel tijd en het mogelijke gegevens verlies. Met de functie voor [geo-Restore](concepts-backup.md) wordt een nieuwe server gemaakt met behulp van de back-upgegevens die vanuit een andere regio worden gerepliceerd. De totale tijd die nodig is om te herstellen en te herstellen, is afhankelijk van de grootte van de data base en het aantal logboeken dat moet worden hersteld. De totale tijd voor het instellen van de server varieert van enkele minuten tot enkele uren. Bij het [lezen van replica's](concepts-read-replicas.md)worden transactie logboeken van de primaire replica asynchroon naar de replica gestreamd. De vertraging tussen de primaire en de replica is afhankelijk van de latentie tussen de sites en ook de hoeveelheid gegevens die moet worden verzonden. In het geval van een storing van een primaire site, zoals een fout in de beschikbaarheids zone, biedt het promo veren van de replica een kortere RTO en minder gegevens verlies. 
+Azure Database for PostgreSQL biedt functies voor bedrijfs continuïteit die geo-redundante back-ups bevatten met de mogelijkheid om geo-herstel te initiëren en lees replica's in een andere regio te implementeren. Elk heeft verschillende kenmerken voor de herstel tijd en het mogelijke gegevens verlies. Met de functie voor [geo-Restore](concepts-backup.md) wordt een nieuwe server gemaakt met behulp van de back-upgegevens die vanuit een andere regio worden gerepliceerd. De totale tijd die nodig is om te herstellen en te herstellen, is afhankelijk van de grootte van de data base en het aantal logboeken dat moet worden hersteld. De totale tijd voor het instellen van de server varieert van enkele minuten tot enkele uren. Bij het [lezen van replica's](concepts-read-replicas.md)worden transactie logboeken van de primaire replica asynchroon naar de replica gestreamd. In het geval van een storing in de primaire Data Base als gevolg van een fout in zone-of regio niveau, biedt failover naar de replica een kortere RTO en minder gegevens verlies.
 
-De volgende tabel vergelijkt RTO en RPO in een typisch scenario:
+> [!NOTE]
+> De vertraging tussen de primaire en de replica is afhankelijk van de latentie tussen de sites, de hoeveelheid gegevens die moet worden verzonden en de belangrijkste voor de schrijf belasting van de primaire server. Zware schrijf werkbelastingen kunnen aanzienlijke vertraging veroorzaken. 
+>
+> Omdat de replicatie wordt gebruikt voor lees-replica's, **mag deze niet** worden beschouwd als een oplossing met hoge beschik BAARHEID (ha), omdat de hogere lags een hogere RTO en RPO kunnen betekenen. Lees replica's kunnen fungeren als een HA-alternatief voor werk belastingen waarbij de vertraging kleiner wordt gemaakt door de piek en niet-piek tijden van de werk belasting. Andere Lees replica's zijn bedoeld voor echte Lees-en schaal bare, zware werk belastingen en voor herstel na nood gevallen.
 
-| **Mogelijkheid** | **Basic** | **Algemeen doel** | **Geoptimaliseerd geheugen** |
+De volgende tabel vergelijkt RTO en RPO in een **typische werkbelasting** scenario:
+
+| **Mogelijkheid** | **Standaard** | **Algemeen doel** | **Geoptimaliseerd geheugen** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Herstel naar een bepaald tijdstip vanuit back-up | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode |
 | Geo-herstel van geo-gerepliceerde back-ups | Niet ondersteund | RTO-varieert <br/>RPO < 1 uur | RTO-varieert <br/>RPO < 1 uur |
 | Leesreplica's | RTO-minuten * <br/>RPO < 5 min * | RTO-minuten * <br/>RPO < 5 min *| RTO-minuten * <br/>RPO < 5 min *|
 
-\* RTO en RPO kunnen in sommige gevallen veel hoger zijn, afhankelijk van verschillende factoren, waaronder de werk belasting en latentie van de primaire data base tussen regio's. 
+ \* RTO en RPO kunnen in sommige gevallen **veel hoger zijn** , afhankelijk van verschillende factoren, waaronder de latentie tussen sites, de hoeveelheid gegevens die moet worden verzonden en de belang rijke schrijf belasting van de primaire data base. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Een server herstellen na een gebruikers-of toepassings fout
 
@@ -56,7 +61,7 @@ De functie voor geo-Restore herstelt de server met behulp van geo-redundante bac
 > Geo-herstel is alleen mogelijk als u de server hebt ingericht met geografisch redundante back-upopslag. Als u wilt overschakelen van lokaal redundant naar geo-redundante back-ups voor een bestaande server, moet u een dump nemen met pg_dump van uw bestaande server en deze herstellen op een nieuwe server die is geconfigureerd met geografisch redundante back-ups.
 
 ## <a name="cross-region-read-replicas"></a>Meerdere regio's replica's lezen
-U kunt Kruis regio's gebruiken om replica's te verg Roten om uw bedrijfs continuïteit en herstel na nood gevallen te verbeteren. Lees replica's worden asynchroon bijgewerkt met de fysieke replicatie technologie van PostgreSQL. Meer informatie over het lezen van replica's, beschik bare regio's en hoe u een failover kunt uitvoeren vanuit het [artikel concepten van replica's lezen](concepts-read-replicas.md). 
+U kunt Kruis regio's gebruiken om replica's te verg Roten om uw bedrijfs continuïteit en herstel na nood gevallen te verbeteren. Het lezen van replica's wordt asynchroon bijgewerkt met behulp van de fysieke replicatie technologie van PostgreSQL. Dit kan leiden tot een vertraging van de primaire. Meer informatie over het lezen van replica's, beschik bare regio's en hoe u een failover kunt uitvoeren vanuit het [artikel concepten van replica's lezen](concepts-read-replicas.md). 
 
 ## <a name="faq"></a>Veelgestelde vragen
 ### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Waar worden klant gegevens Azure Database for PostgreSQL opgeslagen?

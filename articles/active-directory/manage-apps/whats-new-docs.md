@@ -1,7 +1,7 @@
 ---
 title: Wat is er nieuw in Azure Active Directory toepassings beheer
 description: Nieuwe en bijgewerkte documentatie voor het Azure Active Directory toepassings beheer.
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,34 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 257057c4688fcf75651df4250c601eb1f1a2e8a3
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428024"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422600"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory toepassings beheer: wat is er nieuw
 
 Welkom bij wat er nieuw is in Azure Active Directory documentatie voor toepassings beheer. In dit artikel vindt u een lijst met nieuwe documenten die zijn toegevoegd en die in de afgelopen drie maanden aanzienlijke updates hebben ondervonden. Zie [Wat is er nieuw in azure Active Directory](../fundamentals/whats-new.md)voor meer informatie over wat er nieuw is in de Application Management-service.
+
+## <a name="october-2020"></a>Oktober 2020
+
+### <a name="new-articles"></a>Nieuwe artikelen
+
+- [Azure Active Directory toepassings beheer: wat is er nieuw](whats-new-docs.md)
+- [Informatie over eenmalige aanmelding op basis van OIDC](configure-oidc-single-sign-on.md)
+- [Machtigingsclassificaties configureren](configure-permission-classifications.md)
+- [Toestemming van groeps eigenaar configureren voor apps die toegang hebben tot groeps gegevens](configure-user-consent-groups.md)
+- [Beleid voor app-toestemming beheren](manage-app-consent-policies.md)
+
+### <a name="updated-articles"></a>Bijgewerkte artikelen
+
+- [Problemen bij het aanmelden bij geconfigureerde apps voor eenmalige aanmelding op basis van SAML](application-sign-in-problem-federated-sso-gallery.md)
+- [Probleem bij het installeren van de connector voor de toepassingsproxyagent](application-proxy-connector-installation-problem.md)
+- [Toepassings verificatie van Active Directory Federation Services naar Azure Active Directory verplaatsen](migrate-adfs-apps-to-azure.md)
+- [Configureren hoe eindgebruikers toestemming geven voor toepassingen](configure-user-consent.md)
+
 
 ## <a name="september-2020"></a>September 2020
 

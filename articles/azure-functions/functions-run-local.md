@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 78c6e4dffb35980b73fbc09bdc07d55215e659ae
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164857"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422583"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -35,7 +35,7 @@ Er zijn drie versies van Azure Functions Core Tools. Welke versie u gebruikt, is
 
 + [**Versie 3. x/2. x**](#v2): ondersteunt [versie 3. x of 2. x van de Azure functions runtime](functions-versions.md). Deze versies ondersteunen [Windows](?tabs=windows#v2), [macOS](?tabs=macos#v2)en [Linux](?tabs=linux#v2) en gebruiken platformspecifieke pakket beheerders of NPM voor installatie.
 
-+ **Versie 1. x**: ondersteunt versie 1. x van de Azure functions runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://www.npmjs.com/package/azure-functions-core-tools).
++ **Versie 1. x** : ondersteunt versie 1. x van de Azure functions runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://www.npmjs.com/package/azure-functions-core-tools).
 
 U kunt slechts één versie van de kern Hulpprogramma's installeren op een bepaalde computer. Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 
@@ -65,7 +65,7 @@ In de volgende stappen wordt een Windows-installatie programma (MSI) gebruikt om
 
 1. Als u geen [uitbreidings bundels](functions-bindings-register.md#extension-bundles)wilt gebruiken, installeert u de [.net Core 3. x SDK voor Windows](https://dotnet.microsoft.com/download).
 
-# <a name="macos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram Ma's voor macOS te installeren.
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java maakt gebruik van een Maven-archetype om het lokale functions-project te maken, samen met uw eerste HTTP-geactiveerde functie. Gebruik de volgende opdracht om uw Java-project te maken: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Zie de [opdracht regel Quick](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)start voor een voor beeld van het gebruik van de Maven-archetype.  
+> Java maakt gebruik van een Maven-archetype om het lokale functions-project te maken, samen met uw eerste HTTP-geactiveerde functie. Gebruik de volgende opdracht om uw Java-project te maken: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Zie de [opdracht regel Quick](./create-first-function-cli-java.md)start voor een voor beeld van het gebruik van de Maven-archetype.  
 
 Wanneer u een project naam opgeeft, wordt een nieuwe map met die naam gemaakt en geïnitialiseerd. Anders wordt de huidige map geïnitialiseerd.  
 In versie 3. x/2. x, wanneer u de opdracht uitvoert, moet u een runtime voor uw project kiezen. 
@@ -179,7 +179,7 @@ python
 powershell
 </pre>
 
-Gebruik de pijl omhoog/omlaag om een taal te kiezen en druk vervolgens op ENTER. Als u van plan bent java script-of type script-functies te ontwikkelen, kiest u **knoop punt**en selecteert u vervolgens de taal. Type script heeft [een aantal aanvullende vereisten](functions-reference-node.md#typescript). 
+Gebruik de pijl omhoog/omlaag om een taal te kiezen en druk vervolgens op ENTER. Als u van plan bent java script-of type script-functies te ontwikkelen, kiest u **knoop punt** en selecteert u vervolgens de taal. Type script heeft [een aantal aanvullende vereisten](functions-reference-node.md#typescript). 
 
 De uitvoer ziet eruit als in het volgende voor beeld voor een Java script-project:
 
@@ -247,13 +247,13 @@ Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsSto
 
 Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-account-create.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
 
-- Zoek en selecteer **opslag accounts**vanuit het [Azure Portal]. 
+- Zoek en selecteer **opslag accounts** vanuit het [Azure Portal]. 
   ![Selecteer opslag accounts uit Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
-  Selecteer uw opslag account, selecteer **toegangs sleutels** in **instellingen**en kopieer een van de **verbindings reeks** waarden.
+  Selecteer uw opslag account, selecteer **toegangs sleutels** in **instellingen** en kopieer een van de **verbindings reeks** waarden.
   ![connection string kopiëren van Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Gebruik [Azure Storage Explorer](https://storageexplorer.com/) om verbinding te maken met uw Azure-account. In de **Explorer**breidt u uw abonnement uit, vouwt u **opslag accounts**uit, selecteert u uw opslag account en kopieert u de primaire of secundaire Connection String.
+- Gebruik [Azure Storage Explorer](https://storageexplorer.com/) om verbinding te maken met uw Azure-account. In de **Explorer** breidt u uw abonnement uit, vouwt u **opslag accounts** uit, selecteert u uw opslag account en kopieert u de primaire of secundaire Connection String.
 
   ![connection string kopiëren van Storage Explorer](./media/functions-run-local/storage-explorer.png)
 
@@ -312,9 +312,9 @@ U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumen
 | Argument     | Beschrijving                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Versie 2. x en hoger.) Genereert dezelfde C# script-sjablonen (. CSX) die worden gebruikt in versie 1. x en in de portal. |
-| **`--language`**, **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 2. x en hoger gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
-| **`--name`**, **`-n`** | De functie naam. |
-| **`--template`**, **`-t`** | Gebruik de `func templates list` opdracht om de volledige lijst met beschik bare sjablonen voor elke ondersteunde taal weer te geven.   |
+| **`--language`** , **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 2. x en hoger gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
+| **`--name`** , **`-n`** | De functie naam. |
+| **`--template`** , **`-t`** | Gebruik de `func templates list` opdracht om de volledige lijst met beschik bare sjablonen voor elke ondersteunde taal weer te geven.   |
 
 
 Als u bijvoorbeeld een Java script-trigger in één opdracht wilt maken, voert u het volgende uit:
@@ -357,7 +357,7 @@ func start
 ```
 func start
 ```
-Deze opdracht moet worden [uitgevoerd in een virtuele omgeving](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv).
+Deze opdracht moet worden [uitgevoerd in een virtuele omgeving](./create-first-function-cli-python.md).
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -385,10 +385,10 @@ npm start
 | **`--language-worker`** | Argumenten voor het configureren van de taal medewerker. U kunt bijvoorbeeld fout opsporing voor taal werk nemer inschakelen door [poort voor fout opsporing en andere vereiste argumenten](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)op te geven. Niet ondersteund voor versie 1. x. |
 | **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Alleen gebruikt met `--useHttps` . Niet ondersteund voor versie 1. x. |
 | **`--password`** | Ofwel het wacht woord of een bestand dat het wacht woord voor een pfx-bestand bevat. Alleen gebruikt met `--cert` . Niet ondersteund voor versie 1. x. |
-| **`--port`**, **`-p`** | De lokale poort waarop moet worden geluisterd. Standaard waarde: 7071. |
+| **`--port`** , **`-p`** | De lokale poort waarop moet worden geluisterd. Standaard waarde: 7071. |
 | **`--pause-on-error`** | Wacht op extra invoer voordat het proces wordt afgesloten. Wordt alleen gebruikt bij het starten van kern Hulpprogramma's van een Integrated Development Environment (IDE).|
-| **`--script-root`**, **`--prefix`** | Hiermee geeft u het pad op naar de hoofdmap van de functie-app die moet worden uitgevoerd of geïmplementeerd. Dit wordt gebruikt voor gecompileerde projecten die Project bestanden in een submap genereren. Wanneer u bijvoorbeeld een C#-klassen bibliotheek project bouwt, worden de host.jsop, local.settings.jsaan en function.jsop bestanden gegenereerd in een *hoofdmap* met een pad zoals `MyProject/bin/Debug/netstandard2.0` . In dit geval stelt u het voor voegsel in als `--script-root MyProject/bin/Debug/netstandard2.0` . Dit is de basis van de functie-app wanneer deze wordt uitgevoerd in Azure. |
-| **`--timeout`**, **`-t`** | De time-out voor het starten van de functions-host, in seconden. Standaard: 20 seconden.|
+| **`--script-root`** , **`--prefix`** | Hiermee geeft u het pad op naar de hoofdmap van de functie-app die moet worden uitgevoerd of geïmplementeerd. Dit wordt gebruikt voor gecompileerde projecten die Project bestanden in een submap genereren. Wanneer u bijvoorbeeld een C#-klassen bibliotheek project bouwt, worden de host.jsop, local.settings.jsaan en function.jsop bestanden gegenereerd in een *hoofdmap* met een pad zoals `MyProject/bin/Debug/netstandard2.0` . In dit geval stelt u het voor voegsel in als `--script-root MyProject/bin/Debug/netstandard2.0` . Dit is de basis van de functie-app wanneer deze wordt uitgevoerd in Azure. |
+| **`--timeout`** , **`-t`** | De time-out voor het starten van de functions-host, in seconden. Standaard: 20 seconden.|
 | **`--useHttps`** | Maak een binding aan `https://localhost:{port}` in plaats van aan `http://localhost:{port}` . Met deze optie wordt standaard een vertrouwd certificaat op uw computer gemaakt.|
 
 Wanneer de functie host wordt gestart, wordt de URL van de met HTTP geactiveerde functies uitgevoerd:
@@ -488,10 +488,10 @@ In versie 1. x kunt u ook rechtstreeks een functie aanroepen met behulp `func ru
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
-| **`--content`**, **`-c`** | Inline-inhoud. |
-| **`--debug`**, **`-d`** | Koppel een fout opsporingsprogramma aan het hostproces voordat u de functie uitvoert.|
-| **`--timeout`**, **`-t`** | De tijd (in seconden) die moet worden gewacht totdat de lokale functions-host gereed is.|
-| **`--file`**, **`-f`** | De bestands naam die moet worden gebruikt als inhoud.|
+| **`--content`** , **`-c`** | Inline-inhoud. |
+| **`--debug`** , **`-d`** | Koppel een fout opsporingsprogramma aan het hostproces voordat u de functie uitvoert.|
+| **`--timeout`** , **`-t`** | De tijd (in seconden) die moet worden gewacht totdat de lokale functions-host gereed is.|
+| **`--file`** , **`-f`** | De bestands naam die moet worden gebruikt als inhoud.|
 | **`--no-interactive`** | Er wordt niet gevraagd om invoer. Handig voor automatiserings scenario's.|
 
 Als u bijvoorbeeld een door HTTP geactiveerde functie wilt aanroepen en de hoofd tekst van de inhoud wilt door geven, voert u de volgende opdracht uit:
@@ -537,12 +537,12 @@ De volgende publicatie opties worden alleen ondersteund voor versie 2. x en late
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only`**, **`-o`** |  Publiceer instellingen alleen en sla de inhoud over. De standaard instelling is prompt. |
+| **`--publish-settings-only`** , **`-o`** |  Publiceer instellingen alleen en sla de inhoud over. De standaard instelling is prompt. |
 |**`--list-ignored-files`** | Geeft een lijst weer van bestanden die worden genegeerd tijdens het publiceren, dat is gebaseerd op het. funcignore-bestand. |
 | **`--list-included-files`** | Geeft een lijst weer van bestanden die zijn gepubliceerd, die zijn gebaseerd op het. funcignore-bestand. |
 | **`--nozip`** | Hiermee schakelt u de standaard `Run-From-Package` modus uit. |
 | **`--build-native-deps`** | Slaat de map voor het genereren van wielen op tijdens het publiceren van python-functie-apps. |
-| **`--build`**, **`-b`** | Voert een build-actie uit wanneer deze wordt geïmplementeerd in een Linux-functie-app. Accepteert: `remote` en `local` . |
+| **`--build`** , **`-b`** | Voert een build-actie uit wanneer deze wordt geïmplementeerd in een Linux-functie-app. Accepteert: `remote` en `local` . |
 | **`--additional-packages`** | Lijst met pakketten die moeten worden geïnstalleerd bij het bouwen van systeem eigen afhankelijkheden. Bijvoorbeeld: `python3-dev libevent-dev`. |
 | **`--force`** | Verificatie vooraf publiceren in bepaalde scenario's negeren. |
 | **`--csx`** | Publiceer een C# script-project (. CSX). |

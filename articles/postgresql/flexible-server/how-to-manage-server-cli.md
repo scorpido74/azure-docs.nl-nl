@@ -6,75 +6,78 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 8e24dd6cb8a1fa90f1a6caf9117ab3c344c00b12
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 06341f8630684519a456d5ef89144ae3c0934b23
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913871"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423144"
 ---
-# <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Een Azure Database for PostgreSQL-flexibele server beheren met de Azure CLI
+# <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>Een Azure Database for PostgreSQL flexibele server beheren met behulp van de Azure CLI
 
 > [!IMPORTANT]
-> Azure Database for PostgreSQL - Flexible Server is als preview-versie beschikbaar
+> Azure Database for PostgreSQL-flexibele server is in preview.
 
 In dit artikel leest u hoe u uw flexibele server kunt beheren die in Azure is geïmplementeerd. Beheer taken zijn onder andere berekening en opslag schalen, beheerders wachtwoord opnieuw instellen en server details weer geven.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. In dit artikel moet u Azure CLI-versie 2.0 of later lokaal uitvoeren. Voer de opdracht `az --version` uit om de geïnstalleerde versie te zien. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-U moet zich aanmelden bij uw account met behulp van de opdracht [az login](/cli/azure/reference-index#az-login). Let op de eigenschap **id** , die verwijst naar **abonnements-id** voor uw Azure-account.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
+
+U moet de Azure CLI-versie 2,0 of hoger lokaal uitvoeren. Voer de opdracht `az --version` uit om de geïnstalleerde versie te zien. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+
+Meld u aan bij uw account met de opdracht [AZ login](/cli/azure/reference-index#az-login) . 
 
 ```azurecli-interactive
 az login
 ```
 
-Selecteer het specifieke abonnement in uw account met de opdracht [az account set](/cli/azure/account). Noteer de **id** -waarde uit de uitvoer van **az login** en gebruik deze als de waarde voor het argument **abonnement** in de opdracht. Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. U kunt al uw abonnementen ophalen met de opdracht [az account list](/cli/azure/account#az-account-list).
+Selecteer uw abonnement met behulp van de opdracht [AZ account set](/cli/azure/account) . Noteer de **id-** waarde van de AZ- **aanmeld** uitvoer die moet worden gebruikt als de waarde voor het argument **abonnement** in de volgende opdracht. Als u meerdere abonnementen hebt, kiest u het abonnement waarin de resource moet worden gefactureerd. Als u al uw abonnementen wilt identificeren, gebruikt u de opdracht [AZ account list](/cli/azure/account#az-account-list) .
 
 ```azurecli
 az account set --subscription <subscription id>
 ```
 
 > [!Important]
-> Als u nog geen flexibele server hebt gemaakt, kunt u er een maken om aan de slag te gaan met deze hand leiding.
+> Als u nog geen flexibele server hebt gemaakt, moet u dit doen voordat u deze hand leiding volgt.
 
 ## <a name="scale-compute-and-storage"></a>Schaal berekening en opslag
 
-U kunt uw Compute-laag, vCores en opslag eenvoudig omhoog schalen met de volgende opdracht. U kunt alle server bewerkingen zien die u kunt uitvoeren [AZ post gres Flexible-server server Overview (Engelstalig)](https://docs.microsoft.com/cli/azure/postgres/flexible-server)
+U kunt uw Compute-laag, vCores en opslag eenvoudig opschalen met behulp van de volgende opdracht. Zie het overzicht [AZ post gres Flexible-server](https://docs.microsoft.com/cli/azure/postgres/flexible-server) voor een lijst met alle server bewerkingen die u kunt uitvoeren.
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
 ```
 
-Hier volgen de detailgegevens voor bovenstaande argumenten:
+Hieronder vindt u de Details voor de argumenten in de voor gaande code:
 
 **Instelling** | **Voorbeeldwaarde** | **Beschrijving**
 ---|---|---
-naam | mydemoserver | Voer een unieke naam in voor uw server. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. en moet 3 tot 63 tekens lang zijn.
+naam | mydemoserver | Voer een unieke naam in voor uw server. De servernaam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. De naam moet 3 tot 63 tekens bevatten.
 resource-group | myResourceGroup | Geef de naam op van de Azure-resourcegroep.
-sku-name|Standard_D4ds_v3|Voer de naam van de compute-laag en de grootte in. Volgt de Conventie Standard_ {VM size} in steno. Raadpleeg de [prijscategorieën](../concepts-pricing-tiers.md) voor meer informatie.
-storage-size | 6144 | De opslagcapaciteit van de server (eenheid is MB). Mini maal 5120 en verhogingen in 1024 stappen.
+sku-name|Standard_D4ds_v3|Voer de naam van de compute-laag en de grootte in. De waarde volgt de Conventie *Standard_ {VM-grootte}* in steno. Raadpleeg de [prijscategorieën](../concepts-pricing-tiers.md) voor meer informatie.
+storage-size | 6144 | Voer de opslag capaciteit van de server in mega bytes in. De minimum waarde is 5120, waardoor de toename van 1024 wordt verhoogd.
 
 > [!IMPORTANT]
-> De opslag kan niet omlaag worden geschaald. 
+> U kunt de schaal van de opslag niet verlagen. 
 
 ## <a name="manage-postgresql-databases-on-a-server"></a>PostgreSQL-data bases op een server beheren
 
-Er zijn een aantal toepassingen die kunt gebruiken om verbinding te maken met uw Azure Database voor PostgreSQL-server. Als op uw clientcomputer PostgreSQL is geïnstalleerd, kunt u een lokale instantie van [psql](https://www.postgresql.org/docs/current/static/app-psql.html) gebruiken om verbinding te maken met een Azure PostgreSQL-server. We gaan nu het opdrachtregelprogramma psql gebruiken om verbinding te maken met de Azure PostgreSQL-server.
+Er zijn een aantal toepassingen die kunt gebruiken om verbinding te maken met uw Azure Database voor PostgreSQL-server. Als op uw client computer PostgreSQL is geïnstalleerd, kunt u een lokale instantie van [psql](https://www.postgresql.org/docs/current/static/app-psql.html)gebruiken. We gaan nu het opdracht regel programma psql gebruiken om verbinding te maken met de Azure Database for PostgreSQL-server.
 
-1. Voer de volgende psql-opdracht uit om verbinding te maken met een Azure-database voor PostgreSQL-server
+1. Voer de volgende **psql** -opdracht uit:
 
    ```bash
    psql --host=<servername> --port=<port> --username=<user> --dbname=<dbname>
    ```
 
-   Met de volgende opdracht maakt u bijvoorbeeld verbinding met de standaarddatabase **postgres** op uw PostgreSQL-server **mydemoserver.postgres.database.azure.com** met behulp van toegangsreferenties. Voer het `<server_admin_password>` in dat u koos toen u werd gevraagd om een wachtwoord.
+   Met de volgende opdracht maakt u bijvoorbeeld verbinding met de standaard database met de naam **post gres** op uw postgresql-server **mydemoserver.postgres.database.Azure.com** via uw toegangs referenties. Wanneer u hierom wordt gevraagd, voert u het in `<server_admin_password>` dat u hebt gekozen.
   
    ```bash
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin --dbname=postgres
    ```
 
-   Als de verbinding tot stand is gebracht, wordt er door het hulpprogramma psql een postgres-prompt weergegeven. Hier kunt u sql-opdrachten typen. In de uitvoer van de eerste verbinding kan een waarschuwing worden weergegeven, omdat de psql die u gebruikt mogelijk niet dezelfde versie heeft als de Azure Database for PostgreSQL-server.
+   Nadat u verbinding hebt gemaakt, wordt in het psql-hulp programma een **post gres** -prompt weer gegeven waarin u SQL-opdrachten kunt invoeren. Er wordt een waarschuwing weer gegeven in de eerste verbindings uitvoer als de versie van psql die u gebruikt, afwijkt van de versie op de Azure Database for PostgreSQL-server.
 
    Voorbeeld van psql-uitvoer:
 
@@ -91,11 +94,11 @@ Er zijn een aantal toepassingen die kunt gebruiken om verbinding te maken met uw
    > [!TIP]
    > Als de firewall niet is geconfigureerd voor het toestaan van het IP-adres van uw client, wordt het volgende foutbericht weergegeven:
    >
-   > 'psql: FATAL:  no pg_hba.conf entry for host `<IP address>`, user "myadmin", database "postgres", SSL on FATAL: SSL connection is required. Please specify SSL options and retry.
+   > 'psql: FATAL:  no pg_hba.conf entry for host `<IP address>`, user "myadmin", database "postgres", SSL on FATAL: SSL connection is required. Geef SSL-opties op en probeer het opnieuw. "
    >
-   > Controleer of het IP-adres van de client is toegestaan in de bovenstaande stap voor firewallregels.
+   > Controleer of het IP-adres van de client is toegestaan in de firewall regels.
 
-2. Maak een lege data base met de naam ' PostgresDB ' bij de prompt door de volgende opdracht te typen:
+2. Maak een lege data base met de naam **PostgresDB** door de volgende opdracht te typen bij de prompt:
 
     ```bash
     CREATE DATABASE postgresdb;
@@ -107,23 +110,28 @@ Er zijn een aantal toepassingen die kunt gebruiken om verbinding te maken met uw
     \c postgresdb
     ```
 
-4. Typ `\q` en druk vervolgens op Enter om psql af te sluiten.
+4. Typ  `\q` en selecteer ENTER om psql af te sluiten.
 
-U hebt nu verbinding gemaakt met de Azure Database for PostgreSQL-server via psql en u hebt een lege gebruikersdatabase gemaakt.
+In deze sectie hebt u verbinding met de Azure Database for PostgreSQL-server via psql en hebt u een lege gebruikers database gemaakt.
 
-## <a name="reset-admin-password"></a>Beheerders wachtwoord opnieuw instellen
-U kunt het wacht woord van de beheerdersrol wijzigen met deze opdracht
+## <a name="reset-the-admin-password"></a>Het beheerders wachtwoord opnieuw instellen
+
+U kunt het wacht woord van de beheerdersrol wijzigen met de volgende opdracht:
+
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --admin-password <new-password>
 ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat het wacht woord mini maal acht tekens en Maxi maal 128 tekens bevat.
-> Het wacht woord moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofd letters, Nederlandse kleine letters, cijfers en niet-alfanumerieke tekens.
+> Kies een wacht woord met mini maal acht tekens en Maxi maal 128 tekens. Het wacht woord moet tekens bevatten uit drie van de volgende categorieën: 
+> - Nederlandse hoofdletters
+> - Nederlandse kleine letters
+> - Getallen
+> - Niet-alfanumerieke tekens
 
 ## <a name="delete-a-server"></a>Een server verwijderen
 
-Als u de PostgreSQL flexibele server wilt verwijderen, kunt u de opdracht [AZ post gres Flexible-server delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) uitvoeren.
+Als u de Azure Database for PostgreSQL flexibele server wilt verwijderen, voert u de opdracht [AZ post gres Flexible-server delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) uit.
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

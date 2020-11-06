@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547415"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422294"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-clusters beveiligen en isoleren met een persoonlijke koppeling (preview-versie)
 
@@ -29,9 +29,9 @@ De HDInsight RP maakt standaard gebruik van een *inkomende* verbinding met het c
 
 De Basic load balancers die worden gebruikt in de standaard virtuele-netwerk architectuur, bieden automatisch een open bare NAT (Network Address Translation) voor toegang tot de vereiste uitgaande afhankelijkheden, zoals de HDInsight RP. Als u de uitgaande verbinding met het open bare Internet wilt beperken, kunt u [een firewall configureren](./hdinsight-restrict-outbound-traffic.md), maar dit is geen vereiste.
 
-Als `resourceProviderConnection` u configureert voor uitgaand verkeer, kunt u ook toegang krijgen tot specifieke cluster bronnen, zoals Azure data Lake Storage Gen2 of externe meta-archieven, met behulp van persoonlijke eind punten. U moet de persoonlijke eind punten en DNS-vermeldingen configureren voordat u het HDInsight-cluster maakt. We raden u aan om alle externe SQL-data bases die u nodig hebt, zoals Apache zwerver, Ambari, Oozie en Hive meta Stores, te maken en op te geven tijdens het maken van het cluster.
+Als `resourceProviderConnection` u configureert voor uitgaand verkeer, kunt u ook toegang krijgen tot specifieke cluster bronnen, zoals Azure data Lake Storage Gen2 of externe meta-archieven, met behulp van persoonlijke eind punten. Het gebruik van privé-eind punten voor deze resources is niet mandetory, maar als u van plan bent om persoonlijke eind punten voor deze resources te gebruiken, moet u de persoonlijke eind punten en DNS-vermeldingen configureren `before` die het HDInsight-cluster maken. We raden u aan alle externe SQL-data bases die u nodig hebt, zoals Apache zwerver, Ambari, Oozie en Hive-meta Stores, te maken en op te geven tijdens het maken van het cluster. De vereiste is dat al deze bronnen toegankelijk moeten zijn vanuit het subnet van het cluster, hetzij via hun eigen privé-eind punt, hetzij anderszins.
 
-Privé-eind punten voor Azure Key Vault worden niet ondersteund. Als u Azure Key Vault gebruikt voor CMK-versleuteling in rust, moet het Azure Key Vault-eind punt toegankelijk zijn vanuit het HDInsight-subnet zonder persoonlijk eind punt.
+Het gebruik van privé-eind punten voor Azure Key Vault wordt niet ondersteund. Als u Azure Key Vault gebruikt voor CMK-versleuteling in rust, moet het Azure Key Vault-eind punt toegankelijk zijn vanuit het HDInsight-subnet zonder persoonlijk eind punt.
 
 In het volgende diagram ziet u hoe een mogelijke virtuele HDInsight-netwerk architectuur eruit kan zien wanneer deze `resourceProviderConnection` is ingesteld op uitgaand:
 
@@ -52,7 +52,7 @@ Als u toegang wilt krijgen tot het cluster met behulp van cluster-FQDN-namen, ku
 
 ## <a name="enable-private-link"></a>Persoonlijke koppeling inschakelen
 
-Een persoonlijke koppeling, die standaard is uitgeschakeld, vereist uitgebreide netwerk kennis voor het instellen van door de gebruiker gedefinieerde routes (UDR) en firewall regels op de juiste manier voordat u een cluster maakt. Persoonlijke koppelings toegang tot het cluster is alleen beschikbaar wanneer de `resourceProviderConnection` eigenschap netwerk is ingesteld op *uitgaand* , zoals wordt beschreven in de vorige sectie.
+Een persoonlijke koppeling, die standaard is uitgeschakeld, vereist uitgebreide netwerk kennis voor het instellen van door de gebruiker gedefinieerde routes (UDR) en firewall regels op de juiste manier voordat u een cluster maakt. Het gebruik van deze instelling is optioneel, maar is alleen beschikbaar wanneer de `resourceProviderConnection` eigenschap netwerk is ingesteld op *uitgaand* , zoals wordt beschreven in de vorige sectie.
 
 Wanneer `privateLink` is ingesteld op *inschakelen* , worden interne [standaard load balancers](../load-balancer/load-balancer-overview.md) (SLB) gemaakt en wordt een Azure Private Link-service voor elke SLB ingericht. Met de persoonlijke koppelings service kunt u toegang krijgen tot het HDInsight-cluster vanuit privé-eind punten.
 
@@ -64,11 +64,11 @@ Voor het maken van persoonlijke koppelings Services moet u [netwerk beleid voor 
 
 In het volgende diagram ziet u een voor beeld van de netwerk configuratie die is vereist voordat u een cluster maakt. In dit voor beeld wordt al het uitgaande verkeer [geforceerd](../firewall/forced-tunneling.md) Azure Firewall met behulp van UDR en moeten de vereiste uitgaande afhankelijkheden "allowed" zijn op de firewall voordat een cluster wordt gemaakt. Voor Enterprise Security Package clusters kan de netwerk verbinding met Azure Active Directory Domain Services worden verschaft door VNet-peering.
 
-:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="Diagram van HDInsight-architectuur met behulp van een verbinding met een uitgaande resource provider":::
+:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="Diagram van een persoonlijke koppelings omgeving vóór het maken van het cluster":::
 
 Zodra u het netwerk hebt ingesteld, kunt u een cluster maken waarvoor een uitgaande resource provider verbinding en een persoonlijke koppeling is ingeschakeld, zoals wordt weer gegeven in de volgende afbeelding. In deze configuratie zijn er geen open bare Ip's en een persoonlijke koppelings service voor elke standaard load balancer ingericht.
 
-:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="Diagram van HDInsight-architectuur met behulp van een verbinding met een uitgaande resource provider":::
+:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="Diagram van een persoonlijke koppelings omgeving na het maken van het cluster":::
 
 ### <a name="access-a-private-cluster"></a>Toegang tot een persoonlijk cluster
 
@@ -84,7 +84,7 @@ De vermeldingen voor privé koppelingen die zijn gemaakt in de open bare DNS-zon
 
 In de volgende afbeelding ziet u een voor beeld van de privé-DNS-vermeldingen die zijn vereist om toegang te krijgen tot het cluster vanuit een virtueel netwerk dat niet is gekoppeld aan of geen rechtstreekse regel van het gezichts vermogen heeft voor de cluster load balancers. U kunt Azure private zone gebruiken om `*.privatelink.azurehdinsight.net` FQDN-namen te overschrijven en om te zetten in uw eigen persoonlijke eind punt-IP-adressen.
 
-:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Diagram van HDInsight-architectuur met behulp van een verbinding met een uitgaande resource provider":::
+:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Diagram van de architectuur van een persoonlijke koppeling":::
 
 ## <a name="arm-template-properties"></a>Eigenschappen van ARM-sjabloon
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89177088"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422957"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Power shell-Azure Functions lokaal debuggen
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Deze functie-app is vergelijkbaar met de toepassing die u krijgt wanneer u de [Power shell-Snelstartgids](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)voltooit.
+Deze functie-app is vergelijkbaar met de toepassing die u krijgt wanneer u de [Power shell-Snelstartgids](./create-first-function-vs-code-powershell.md)voltooit.
 
 De functie code `run.ps1` ziet eruit als in het volgende script:
 
@@ -95,10 +95,10 @@ Met `Wait-Debugger` deze functie kunt u nu fouten opsporen in de functies met be
 Als u fouten wilt opsporen in uw Power shell-functies in Visual Studio code, moet u het volgende hebben geïnstalleerd:
 
 * [Power shell-extensie voor Visual Studio code](/powershell/scripting/components/vscode/using-vscode)
-* [Azure Functions-extensie voor Visual Studio Code](functions-create-first-function-vs-code.md)
+* [Azure Functions-extensie voor Visual Studio Code](./create-first-function-cli-powershell.md)
 * [Power shell Core 6,2 of hoger](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Na het installeren van deze afhankelijkheden, laadt u een bestaand Power shell functions-project of [maakt u uw eerste Power shell functions-project](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell).
+Na het installeren van deze afhankelijkheden, laadt u een bestaand Power shell functions-project of [maakt u uw eerste Power shell functions-project](./create-first-function-vs-code-powershell.md).
 
 >[!NOTE]
 > Als uw project niet de benodigde configuratie bestanden heeft, wordt u gevraagd deze toe te voegen.
@@ -111,7 +111,7 @@ Power shell core wordt naast Windows Power shell geïnstalleerd. Stel Power shel
 
 1. Kies **Power shell: menu sessie weer geven**.
 
-1. Als uw **huidige sessie** niet **Power shell Core 6**is, kiest **u overschakelen naar: Power shell Core 6**.
+1. Als uw **huidige sessie** niet **Power shell Core 6** is, kiest **u overschakelen naar: Power shell Core 6**.
 
 Wanneer u een Power shell-bestand hebt geopend, ziet u de versie die in het groen wordt weer gegeven aan de rechter kant van het venster. Als u deze tekst selecteert, wordt ook het menu sessie weer gegeven. Zie [een versie van Power shell kiezen die u wilt gebruiken met de extensie](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)voor meer informatie.
 
@@ -250,7 +250,7 @@ Als deze onderbreking plaatsvindt, voert `continue` u de `c` opdracht of uit om 
 
 Als u problemen ondervindt tijdens het opsporen van fouten, moet u het volgende controleren:
 
-| Selecteren | Bewerking |
+| Selecteren | Actie |
 |------|------|
 | Voer `func --version` uit vanaf de Terminal. Als er een fout optreedt die `func` niet kan worden gevonden, zijn de kern hulpprogramma's (func.exe) mogelijk niet aanwezig in de lokale `path` variabele.| [Installeer kern Hulpprogramma's opnieuw](functions-run-local.md#v2).|  
 | In Visual Studio code moet de standaard terminal toegang hebben tot func.exe. Zorg ervoor dat u geen standaard terminal gebruikt waarvoor geen kern Hulpprogramma's zijn geïnstalleerd, zoals Windows-subsysteem voor Linux (WSL).  | Stel de standaard shell in Visual Studio code in op Power shell 7 (aanbevolen) of Windows Power shell 5,1.|

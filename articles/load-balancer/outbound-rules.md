@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 51810876e3636b7023ce9c9318a071636bb00c4c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 947ecaa2efbfb013f1f3e8203d1c4296b9ca329f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92002641"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422158"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Azure Load Balancer voor uitgaande regels
 
-Met uitgaande regels kunt u de open bare standaard load balancer uitgaande SNAT (bron Network Address Translation) configureren. Met deze configuratie kunt u de open bare IP ('s) van uw load balancer als proxy gebruiken.
+Met uitgaande regels kunt u voor een open bare standaard load balancer expliciet SNAT (bron Network Address Translation) definiëren. Met deze configuratie kunt u de open bare IP ('s) van uw load balancer gebruiken om uitgaande internet connectiviteit te bieden voor uw back-end-exemplaren.
 
 Deze configuratie maakt het volgende mogelijk:
 
@@ -37,7 +37,7 @@ Met uitgaande regels kunt u het volgende beheren:
 
 * **Welke virtuele machines worden omgezet naar de open bare IP-adressen.**
      * Twee regels zijn back-end-pool A maakt gebruik van IP-adres A en B. back-end-pool B gebruikt IP-adres C en D.
-* **Hoe uitgaand SNAT-poorten worden gegeven.**
+* **Hoe uitgaand SNAT-poorten worden toegewezen.**
      * Back-end-groep B is de enige groep die uitgaande verbindingen maakt, alle SNAT-poorten naar back-end-groep B en geen naar back-end-groep A heeft.
 * **De protocollen waarvoor een uitgaande vertaling moet worden geboden.**
      * Back-end-pool B heeft UDP-poorten voor uitgaand verkeer nodig. Back-end-groep A vereist TCP. Geef TCP-poorten naar een UDP-poort aan B.
@@ -48,7 +48,7 @@ Met uitgaande regels kunt u het volgende beheren:
 
 ## <a name="outbound-rule-definition"></a>Definitie van uitgaande regel
 
-Uitgaande regels volgen dezelfde vertrouwde syntaxis als taak verdeling en binnenkomende NAT-regels: **frontend**-  +  **para meters**  +  **back-end-pool**. 
+Uitgaande regels volgen dezelfde vertrouwde syntaxis als taak verdeling en binnenkomende NAT-regels: **frontend** -  +  **para meters**  +  **back-end-pool**. 
 
 Met een uitgaande regel wordt uitgaande NAT geconfigureerd voor _alle virtuele machines die door de back-endadresgroep worden geïdentificeerd_ om te worden vertaald naar de front- _End_.  
 
@@ -98,6 +98,147 @@ Wanneer u een NSG toepast op een virtuele machine met taak verdeling, moet u rek
 Zorg ervoor dat de VM Health probe-aanvragen van Azure Load Balancer kan ontvangen.
 
 Als een NSG de status test aanvragen blokkeert vanuit het standaard label AZURE_LOADBALANCER, mislukt de VM-status test en wordt de VM gemarkeerd als niet beschikbaar. De load balancer stopt met het verzenden van nieuwe stromen naar die virtuele machine.
+
+## <a name="scenarios-with-outbound-rules"></a>Scenario's met uitgaande regels
+        
+
+### <a name="outbound-rules-scenarios"></a>Scenario's voor uitgaande regels
+
+
+* Configureer uitgaande verbindingen naar een specifieke set open bare Ip's of voor voegsel.
+* Wijzig de toewijzing van de [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -poort.
+* Alleen uitgaand verkeer inschakelen.
+* Alleen uitgaand NAT voor Vm's (geen inkomend).
+* Uitgaand NAT voor interne standaard load balancer.
+* Schakel TCP & UDP-protocollen in voor uitgaande NAT met een open bare standaard load balancer.
+
+
+### <a name="scenario-1-configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>Scenario 1: uitgaande verbindingen configureren voor een specifieke set open bare Ip's of voor voegsel
+
+
+#### <a name="details"></a>Details
+
+
+Gebruik dit scenario om uitgaande verbindingen op basis van een set open bare IP-adressen aan te passen. Open bare Ip's of voor voegsels toevoegen aan een lijst voor toestaan of weigeren op basis van de oorsprong.
+
+
+Dit open bare IP-adres of voor voegsel kan hetzelfde zijn als het gebruik van een regel voor taak verdeling. 
+
+
+Een ander openbaar IP-adres of-voor voegsel gebruiken dan wordt gebruikt door een regel voor taak verdeling: 
+
+
+1. Openbaar IP-voor voegsel of openbaar IP-adres maken.
+2. Een open bare standaard load balancer maken 
+3. Een frontend maken die verwijst naar het open bare IP-voor voegsel of het open bare IP-adres dat u wilt gebruiken. 
+4. Hergebruik een back-end-pool of maak een back-end-pool en plaats de virtuele machines in een back-end-groep van de open bare load balancer
+5. Configureer een uitgaande regel op de open bare load balancer om uitgaande NAT voor de virtuele machines in te scha kelen met behulp van de front-end. Het is niet raadzaam om een taakverdelings regel te gebruiken voor uitgaand verkeer, uitgaande SNAT uit te scha kelen op de regel voor taak verdeling.
+
+
+### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>Scenario 2: toewijzing van de [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -poort wijzigen
+
+
+#### <a name="details"></a>Details
+
+
+U kunt uitgaande regels gebruiken voor het afstemmen van de [automatische toewijzing van de SNAT-poort op basis van de back-endadresgroep](load-balancer-outbound-connections.md#preallocatedports). 
+
+
+Als u een SNAT-uitputting ondervindt, verhoogt u het aantal [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -poorten dat is opgegeven in de standaard waarde van 1024. 
+
+
+Elk openbaar IP-adres draagt bij aan Maxi maal 64.000 tijdelijke poorten. Het aantal virtuele machines in de back-endadresgroep bepaalt het aantal poorten dat naar elke VM wordt gedistribueerd. Een virtuele machine in de back-end-pool heeft toegang tot Maxi maal 64.000 poorten. Voor twee virtuele machines kunnen Maxi maal 32.000 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -poorten worden opgegeven met een uitgaande regel (2x 32.000 = 64.000). 
+
+
+U kunt regels voor uitgaande verbindingen gebruiken voor het afstemmen van de maximale SNAT-poorten. U geeft meer of minder dan de standaard toewijzing van de [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -poort. Elk openbaar IP-adres van een front-end van een uitgaande regel draagt bij aan Maxi maal 64.000 tijdelijke poorten voor gebruik als [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -poorten. 
+
+
+Load Balancer geeft [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -poorten in veelvouden van 8. Als u een waarde opgeeft die niet deelbaar is door 8, wordt de configuratie bewerking geweigerd. Voor elke taakverdelings regel en binnenkomende NAT-regel wordt een bereik van 8 poorten gebruikt. Als een taak verdeling of binnenkomende NAT-regel hetzelfde bereik van 8 deelt als een andere, worden er geen extra poorten gebruikt.
+
+
+Als u meer [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -poorten probeert te geven dan beschikbaar zijn op basis van het aantal open bare IP-adressen, wordt de configuratie bewerking geweigerd. Als u bijvoorbeeld 10.000 poorten per VM geeft en zeven Vm's in een back-end-pool een enkel openbaar IP-adres delen, wordt de configuratie geweigerd. Zeven vermenigvuldigd met 10.000 overschrijdt de limiet voor 64.000 poorten. Voeg meer open bare IP-adressen toe aan de front-end van de regel voor uitgaande verbindingen om het scenario in te scha kelen. 
+
+
+Keer terug naar de [standaard poort toewijzing](load-balancer-outbound-connections.md#preallocatedports) door 0 op te geven voor het aantal poorten. De eerste 50 VM-exemplaren krijgen 1024 poorten, 51-100 VM-instanties krijgen 512 tot Maxi maal het maximum aantal exemplaren. Zie [toewijzings tabel voor SNAT-poorten](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)voor meer informatie over de standaard toewijzing van de SNAT-poort.
+
+
+### <a name="scenario-3-enable-outbound-only"></a><a name="scenario3out"></a>Scenario 3: alleen uitgaand verkeer inschakelen
+
+
+#### <a name="details"></a>Details
+
+
+Gebruik een open bare standaard load balancer om uitgaande NAT te bieden voor een groep Vm's. In dit scenario gebruikt u een uitgaande regel zelf, zonder dat er extra regels zijn geconfigureerd.
+
+
+> [!NOTE]
+> **Azure Virtual Network NAT** kan uitgaande connectiviteit bieden voor virtuele machines zonder dat hiervoor een Load Balancer nodig is. Zie [Wat is Azure Virtual Network NAT?](../virtual-network/nat-overview.md) voor meer informatie.
+
+### <a name="scenario-4-outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>Scenario 4: uitgaand NAT voor alleen Vm's (geen inkomend)
+
+
+> [!NOTE]
+> **Azure Virtual Network NAT** kan uitgaande connectiviteit bieden voor virtuele machines zonder dat hiervoor een Load Balancer nodig is. Zie [Wat is Azure Virtual Network NAT?](../virtual-network/nat-overview.md) voor meer informatie.
+
+#### <a name="details"></a>Details
+
+
+Voor dit scenario: Azure Load Balancer regels voor uitgaande verbindingen en Virtual Network NAT zijn opties beschikbaar voor het afbreken van een virtueel netwerk.
+
+
+1. Maak een openbaar IP-adres of een voor voegsel.
+2. Maak een open bare standaard load balancer. 
+3. Maak een front-end dat is gekoppeld aan het open bare IP-adres of het voor voegsel dat voor uitgaand
+4. Maak een back-end-pool voor de Vm's.
+5. Plaats de virtuele machines in de back-end-pool.
+6. Een uitgaande regel configureren om uitgaande NAT in te scha kelen.
+
+
+
+Gebruik een voor voegsel of openbaar IP-adres om [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) -poorten te schalen. Voeg de bron van uitgaande verbindingen toe aan een lijst voor toestaan of weigeren.
+
+
+
+### <a name="scenario-5-outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>Scenario 5: uitgaand NAT voor interne standaard load balancer
+
+
+> [!NOTE]
+> **Azure Virtual Network NAT** kan uitgaande connectiviteit bieden voor virtuele machines die gebruikmaken van een interne standaard Load Balancer. Zie [Wat is Azure Virtual Network NAT?](../virtual-network/nat-overview.md) voor meer informatie.
+
+#### <a name="details"></a>Details
+
+
+Er is geen uitgaande verbinding beschikbaar voor een interne standaard load balancer tot deze expliciet is gedeclareerd via open bare Ip's op exemplaar niveau of Virtual Network NAT of door de back-endadresgroep te koppelen aan een load balancer configuratie met uitgaand verkeer. 
+
+
+Zie voor meer informatie [Load Balancer configuratie voor alleen-uitgaand verkeer](https://docs.microsoft.com/azure/load-balancer/egress-only).
+
+
+
+
+### <a name="scenario-6-enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>Scenario 6: Schakel TCP & UDP-protocollen in voor uitgaande NAT met een open bare standaard load balancer
+
+
+#### <a name="details"></a>Details
+
+
+Wanneer u een open bare standaard load balancer gebruikt, komt de automatische uitgaande NAT die overeenkomt met het transport protocol van de taakverdelings regel. 
+
+
+1. Schakel uitgaande [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) uit op de taakverdelings regel. 
+2. Een uitgaande regel configureren op hetzelfde load balancer.
+3. Gebruik de back-end-groep die al door uw virtuele machines wordt gebruikt. 
+4. Geef ' Protocol ': ' all ' op als onderdeel van de uitgaande regel. 
+
+
+Wanneer alleen binnenkomende NAT-regels worden gebruikt, wordt er geen uitgaand NAT-verkeer gegeven. 
+
+
+1. Virtuele machines in een back-end-groep plaatsen.
+2. Een of meer frontend-IP-configuraties met open bare IP-adressen of open bare IP-voor voegsel definiëren 
+3. Een uitgaande regel configureren op hetzelfde load balancer. 
+4. Geef ' Protocol ': ' all ' op als onderdeel van de uitgaande regel
+
 
 ## <a name="limitations"></a>Beperkingen
 

@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b25e548fe56c22458fe625f617fb076be13525cd
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 9679f6030ac889ac442a40cd852f5cc17f505756
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927512"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422515"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
@@ -19,7 +19,7 @@ Als Java-ontwikkelaar, als u geen ervaring hebt met Azure Functions, kunt u eers
 
 | Aan de slag | Concepten| 
 | -- | -- |  
-| <ul><li>[Java-functie met Visual Studio code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Java/maven-functie met Terminal/opdracht prompt](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Java-functie met Gradle](functions-create-first-java-gradle.md)</li><li>[Java-functie met eclips](functions-create-maven-eclipse.md)</li><li>[Een Java-functie met IntelliJ-idee](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Ontwikkelaarsgids](functions-reference.md)</li><li>[Hostingopties](functions-scale.md)</li><li>[Prestatie &nbsp; overwegingen](functions-best-practices.md)</li></ul> |
+| <ul><li>[Java-functie met Visual Studio code](./create-first-function-vs-code-java.md)</li><li>[Java/maven-functie met Terminal/opdracht prompt](./create-first-function-cli-java.md)</li><li>[Java-functie met Gradle](functions-create-first-java-gradle.md)</li><li>[Java-functie met eclips](functions-create-maven-eclipse.md)</li><li>[Een Java-functie met IntelliJ-idee](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Ontwikkelaarsgids](functions-reference.md)</li><li>[Hostingopties](functions-scale.md)</li><li>[Prestatie &nbsp; overwegingen](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Basis beginselen van Java-functies
 
@@ -55,7 +55,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-Zie [Java Quick](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)start om aan de slag te gaan met deze archetype. 
+Zie [Java Quick](./create-first-function-cli-java.md)start om aan de slag te gaan met deze archetype.
 
 ## <a name="folder-structure"></a>Mapstructuur
 
@@ -202,7 +202,7 @@ U kunt aanvullende argumenten opgeven in een app-instelling met de naam `JAVA_OP
 > [!IMPORTANT]  
 > In het verbruiks plan moet u ook de instelling WEBSITE_USE_PLACEHOLDER toevoegen met de waarde 0 voordat de aanpassing werkt. Met deze instelling worden de koude start tijden voor Java-functies verhoogd.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Gebruik het [tabblad toepassings instellingen](functions-how-to-use-azure-function-app-settings.md#settings) In het [Azure Portal](https://portal.azure.com)om de instelling toe te voegen `JAVA_OPTS` .
 

@@ -1,5 +1,5 @@
 ---
-title: Ontwikkel omgeving instellen | Python
+title: Python-ontwikkel omgeving instellen
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het instellen van een python-ontwikkel omgeving voor Azure Machine Learning. Gebruik Conda-omgevingen, maak configuratie bestanden en configureer uw eigen cloud-gebaseerde Notebook server, Jupyter-notebooks, Azure Databricks, Ide's, code editors en de Data Science Virtual Machine.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 7e189885fbf7befcaea3f63148a42c81dc1da03e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 451ad33a9d041635c3f51e323539b423378d02d1
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320484"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422891"
 ---
-# <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Een ontwikkel omgeving instellen voor Azure Machine Learning
+# <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Stel een python-ontwikkel omgeving in voor Azure Machine Learning
 
 Meer informatie over het configureren van een python-ontwikkel omgeving voor Azure Machine Learning.
 
@@ -27,9 +27,9 @@ In de volgende tabel ziet u elke ontwikkel omgeving die in dit artikel wordt beh
 | Omgeving | Voordelen | Nadelen |
 | --- | --- | --- |
 | [Lokale omgeving](#local) | Volledig beheer van uw ontwikkel omgeving en afhankelijkheden. Voer uit met een hulp programma, omgeving of IDE van uw keuze. | Duurt langer om aan de slag te gaan. De benodigde SDK-pakketten moeten worden geïnstalleerd en er moet ook een omgeving worden geïnstalleerd als u er nog geen hebt. |
-| [Azure Machine Learning-rekeninstantie](#compute-instance) | Eenvoudigste manier om aan de slag te gaan. De volledige SDK is al geïnstalleerd in uw werk ruimte-VM en de notitieblok zelfstudies zijn vooraf gekloond en klaar om te worden uitgevoerd. | Geen controle over uw ontwikkel omgeving en afhankelijkheden. Er zijn extra kosten verbonden aan de virtuele Linux-machine (VM kan worden gestopt wanneer deze niet wordt gebruikt om kosten te voor komen). Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
-| [Azure Databricks](#aml-databricks) | Ideaal voor het uitvoeren van grootschalige intensieve machine learning werk stromen op het schaal bare Apache Spark platform. | Overbodig voor experimentele machine learning, of kleinschalige experimenten en werk stromen. Er zijn extra kosten gemaakt voor Azure Databricks. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/databricks/). |
 | [De Data Science Virtual Machine (DSVM)](#dsvm) | Vergelijkbaar met het Cloud Compute-exemplaar (python en de SDK zijn vooraf geïnstalleerd), maar met extra populaire gegevens wetenschap en machine learning-hulpprogram ma's vooraf geïnstalleerd. Eenvoudig te schalen en combi neren met andere aangepaste hulp middelen en werk stromen. | Een langzamere aan de slag-ervaring in vergelijking met het Cloud Compute-exemplaar. |
+| [Azure Machine Learning-rekeninstantie](#compute-instance) | Eenvoudigste manier om aan de slag te gaan. De volledige SDK is al geïnstalleerd in uw werk ruimte-VM en de notitieblok zelfstudies zijn vooraf gekloond en klaar om te worden uitgevoerd. | Geen controle over uw ontwikkel omgeving en afhankelijkheden. Er zijn extra kosten verbonden aan de virtuele Linux-machine (VM kan worden gestopt wanneer deze niet wordt gebruikt om kosten te voor komen). Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Azure Databricks](how-to-configure-databricks-automl-environment.md) | Ideaal voor het uitvoeren van grootschalige intensieve machine learning werk stromen op het schaal bare Apache Spark platform. | Overbodig voor experimentele machine learning, of kleinschalige experimenten en werk stromen. Er zijn extra kosten gemaakt voor Azure Databricks. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/databricks/). |
 
 Dit artikel bevat ook extra tips voor het gebruik van de volgende hulpprogram ma's:
 
@@ -41,7 +41,7 @@ Dit artikel bevat ook extra tips voor het gebruik van de volgende hulpprogram ma
 
 * Azure Machine Learning werk ruimte. Als u er geen hebt, kunt u een Azure Machine Learning-werk ruimte maken met behulp van de [Azure Portal](how-to-manage-workspace.md)-, [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)-en [Azure Resource Manager-sjablonen](how-to-create-workspace-template.md).
 
-### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> (Alleen lokaal en alleen DSVM) Een configuratie bestand voor een werk ruimte maken
+### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> Alleen lokale en DSVM: een configuratie bestand voor een werk ruimte maken
 
 Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK vertelt hoe er met uw Azure Machine Learning-werk ruimte moet worden gecommuniceerd. Het bestand heeft de naam *config.jsop* en heeft de volgende indeling:
 
@@ -59,11 +59,11 @@ Als u dit bestand uit uw code wilt gebruiken, gebruikt u de- [`Workspace.from_co
 
 Maak een werkruimte configuratie bestand op een van de volgende manieren:
 
-* Azure Portal
+* Azure-portal
 
     **Down load het bestand** : In de [Azure Portal](https://ms.portal.azure.com)selecteert u  **config.jsdownloaden** in het gedeelte **overzicht** van uw werk ruimte.
 
-    ![Azure Portal](./media/how-to-configure-environment/configure.png)
+    ![Azure-portal](./media/how-to-configure-environment/configure.png)
 
 * Azure Machine Learning python-SDK
 
@@ -84,9 +84,11 @@ Maak een werkruimte configuratie bestand op een van de volgende manieren:
         print('Workspace not found')
     ```
 
-## <a name="local-computer"></a><a id="local"></a>Lokale computer
+## <a name="local-computer-or-remote-vm-environment"></a><a id="local"></a>Lokale computer of externe VM-omgeving
 
-Voor het configureren van een lokale ontwikkel omgeving (die mogelijk ook een externe virtuele machine is, zoals een Azure Machine Learning Reken instantie of DSVM):
+U kunt een omgeving instellen op een lokale computer of op een externe virtuele machine, zoals een Azure Machine Learning Reken instantie of Data Science VM. 
+
+Een lokale ontwikkel omgeving of externe VM configureren:
 
 1. Maak een virtuele python-omgeving (virtualenv, Conda).
 
@@ -153,7 +155,7 @@ U kunt ook de Azure Machine Learning Visual Studio code-extensie gebruiken om [e
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
-De DSVM is een aangepaste installatie kopie van een virtuele machine (VM). Het is ontworpen voor data wetenschappen werk dat vooraf geconfigureerde hulpprogram ma's en software zoals:
+De Data Science VM is een aangepaste installatie kopie van een virtuele machine (VM) die u kunt gebruiken als een ontwikkel omgeving. Het is ontworpen voor data wetenschappen werk dat vooraf geconfigureerde hulpprogram ma's en software zoals:
 
   - Pakketten zoals tensor flow, PyTorch, Scikit-learn, XGBoost en de Azure Machine Learning SDK
   - Populaire hulp middelen voor gegevens wetenschap, zoals zelfstandig en analyse van Spark
@@ -161,23 +163,23 @@ De DSVM is een aangepaste installatie kopie van een virtuele machine (VM). Het i
   - Integrated Development Environments (Ide's) zoals Visual Studio code en PyCharm
   - Jupyter Notebook server
 
-Zie de [hand leiding voor DSVM meegeleverde hulp middelen](data-science-virtual-machine/tools-included.md)voor een uitgebreidere lijst met hulpprogram ma's.
+Zie de [hand leiding voor data Science VM-hulpprogram](data-science-virtual-machine/tools-included.md)ma's voor een uitgebreidere lijst met hulpprogram ma's.
 
 > [!IMPORTANT]
-> Als u van plan bent om de DSVM te gebruiken als een [berekenings doel](concept-compute-target.md) voor uw training of voor het afleiden van taken, wordt alleen Ubuntu ondersteund.
+> Als u van plan bent om de Data Science VM te gebruiken als een [reken doel](concept-compute-target.md) voor uw training of voor het afleiden van taken, wordt alleen Ubuntu ondersteund.
 
-De DSVM gebruiken als een ontwikkel omgeving
+Als u de Data Science VM als een ontwikkel omgeving wilt gebruiken:
 
-1. Maak een DSVM met behulp van een van de volgende methoden:
+1. Maak een Data Science VM met een van de volgende methoden:
 
     * Gebruik de Azure Portal voor het maken van een [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) -of [Windows](data-science-virtual-machine/provision-vm.md) DSVM.
-    * [Maak een DSVM met arm-sjablonen](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
+    * [Maak een Data Science VM met arm-sjablonen](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
     * Azure CLI gebruiken
 
-        Als u een Ubuntu-DSVM wilt maken, gebruikt u de volgende opdracht:
+        Als u een Ubuntu-Data Science VM wilt maken, gebruikt u de volgende opdracht:
 
         ```azurecli-interactive
-        # create a Ubuntu DSVM in your resource group
+        # create a Ubuntu Data Science VM in your resource group
         # note you need to be at least a contributor to the resource group in order to execute this command successfully
         # If you need to create a new resource group use: "az group create --name YOUR-RESOURCE-GROUP-NAME --location YOUR-REGION (For example: westus2)"
         az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:linux-data-science-vm-ubuntu:linuxdsvmubuntu:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --generate-ssh-keys --authentication-type password
@@ -193,108 +195,26 @@ De DSVM gebruiken als een ontwikkel omgeving
 
 1. Activeer de Conda-omgeving met de Azure Machine Learning SDK.
 
-    * Voor Ubuntu DSVM:
+    * Voor Ubuntu Data Science VM:
 
         ```bash
         conda activate py36
         ```
 
-    * Voor Windows DSVM:
+    * Voor Windows Data Science VM:
 
         ```bash
         conda activate AzureML
         ```
 
-1. Als u de DSVM wilt configureren voor gebruik van uw Azure Machine Learning-werk ruimte, [maakt u een configuratie bestand voor een werk ruimte](#workspace) of gebruikt u een bestaande.
+1. Als u de Data Science VM wilt configureren voor het gebruik van uw Azure Machine Learning-werk ruimte, [maakt u een configuratie bestand voor de werk ruimte](#workspace) of gebruikt u een bestaande.
 
 Net als bij lokale omgevingen kunt u Visual Studio code en de [Azure machine learning Visual Studio code-extensie](#vscode) gebruiken om te communiceren met Azure machine learning.
 
 Zie [Data Science virtual machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)voor meer informatie.
 
-## <a name="azure-databricks"></a><a name="aml-databricks"></a> Azure Databricks
-
-Azure Databricks is een op Apache Spark gebaseerde omgeving in de Azure-Cloud. Het biedt een samenwerkings omgeving op basis van een laptop met een CPU of een reken cluster op basis van GPU.
-
-Hoe Azure Databricks met Azure Machine Learning werkt:
-
-+ U kunt een model trainen met Spark MLlib en het model implementeren naar ACI/AKS in Azure Databricks.
-+ U kunt ook gebruikmaken van [geautomatiseerde machine learning](concept-automated-ml.md) mogelijkheden in een speciale Azure ml SDK met Azure Databricks.
-+ U kunt Azure Databricks als een reken doel van een [Azure machine learning pijp lijn](concept-ml-pipelines.md)gebruiken.
-
-### <a name="set-up-your-databricks-cluster"></a>Uw Databricks-cluster instellen
-
-Maak een [Databricks-cluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Sommige instellingen zijn alleen van toepassing als u de SDK installeert voor automatische machine learning op Databricks.
-**Het duurt enkele minuten om het cluster te maken.**
-
-Gebruik deze instellingen:
-
-| Instelling |Van toepassing op| Waarde |
-|----|---|---|
-| Clusternaam |altijd| yourclustername |
-| Databricks Runtime |altijd|Niet-ML runtime 7,1 (scala 2,21, Spark 3.0.0) |
-| Python-versie |altijd| 3 |
-| IT |altijd| 2 of hoger |
-| VM-typen worker-knoop punt <br>(bepaalt het maximum aantal gelijktijdige iteraties) |Geautomatiseerde machine learning<br>alleen| Voorkeurs-VM geoptimaliseerd voor geheugen |
-| Automatisch schalen inschakelen |Geautomatiseerde machine learning<br>alleen| Uitschakelen |
-
-Wacht totdat het cluster wordt uitgevoerd voordat u doorgaat.
-
-### <a name="install-the-correct-sdk-into-a-databricks-library"></a>De juiste SDK installeren in een Databricks-bibliotheek
-
-Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.databricks.com/user-guide/libraries.html#create-a-library) om het juiste Azure machine learning SDK-pakket aan uw cluster toe te voegen. Voor automatische MILLILITERs slaat u de [sectie SDK voor Databricks met automatische machine learning](#sdk-for-databricks-with-automated-machine-learning)over.
-
-1. Klik met de rechter muisknop op de huidige werkruimte map waar u de bibliotheek wilt opslaan. Selecteer **Create**  >  **bibliotheek** maken.
-
-1. Kies de volgende optie (er worden geen andere SDK-installaties ondersteund)
-
-   |SDK- &nbsp; pakket &nbsp; extra's|Bron|PyPi- &nbsp; naam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-   |----|---|---|
-   |Voor Databricks| Python-ei of PyPI uploaden | azureml-SDK [databricks]|
-
-   > [!Warning]
-   > Er kunnen geen andere SDK-extra's worden geïnstalleerd. Kies alleen de `databricks` optie [].
-
-   * Selecteer niet **automatisch koppelen aan alle clusters**.
-   * Selecteer  **koppelen** naast de naam van uw cluster.
-
-1. Controleer op fouten totdat de status is gewijzigd in **bijgevoegd**. Dit kan enkele minuten duren.  Als deze stap mislukt:
-
-   Probeer het cluster opnieuw te starten door:
-   1. Selecteer **clusters** in het linkerdeel venster.
-   1. Selecteer de naam van uw cluster in de tabel.
-   1. Selecteer **opnieuw opstarten** op het tabblad **tape wisselaars** .
-
-   Houd ook rekening met het volgende:
-   + Bij het gebruik van Azure Databricks de volgende para meters toevoegen in AutoML config:
-       1. ```max_concurrent_iterations``` is gebaseerd op het aantal worker-knoop punten in uw cluster.
-        2. ```spark_context=sc``` is gebaseerd op de standaard Spark-context.
-   + Als u een oude SDK-versie hebt, kunt u deze opheffen door de geïnstalleerde bibliotheken van het cluster te verwijderen en naar de Prullenbak te gaan. Installeer de nieuwe SDK-versie en start het cluster opnieuw op. Als er een probleem is nadat de computer opnieuw is opgestart, ontkoppelt u het cluster en koppelt u het opnieuw.
-
-Als de installatie is voltooid, moet de geïmporteerde bibliotheek er ongeveer als volgt uitzien:
-
-#### <a name="sdk-for-databricks"></a>SDK voor Databricks
-![Azure Machine Learning SDK voor Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
-
-#### <a name="sdk-for-databricks-with-automated-machine-learning"></a>SDK voor Databricks met geautomatiseerde machine learning
-Als het cluster is gemaakt met Databricks niet-ML runtime 7,1 of hoger, voert u de volgende opdracht uit in de eerste cel van uw notitie blok om de AML-SDK te installeren.
-
-```
-%pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
-```
-Voor Databricks niet-ML runtime 7,0 en lager installeert u de AML-SDK met het [init-script](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md).
-
-
-### <a name="start-exploring"></a>Begin met verkennen
-
-Uitproberen:
-+ Er zijn veel voorbeeld notitieblokken beschikbaar, **maar alleen [deze voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) werken met Azure Databricks.**
-
-+ Importeer deze voor beelden rechtstreeks vanuit uw werk ruimte. Zie hieronder: ![ Selecteer import ](./media/how-to-configure-environment/azure-db-screenshot.png)
- ![ paneel importeren](./media/how-to-configure-environment/azure-db-import.png)
-
-+ Meer informatie over het [maken van een pijp lijn met Databricks als de trainings Compute](how-to-create-your-first-pipeline.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een model](tutorial-train-models-with-aml.md) op Azure machine learning trainen met de MNIST-gegevensset
-- Naslag informatie over de [Azure machine learning SDK voor python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) weer geven
+- [Train een model](tutorial-train-models-with-aml.md) op Azure machine learning met de MNIST-gegevensset.
+- Zie de [Naslag informatie voor de Azure machine learning SDK voor python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). 

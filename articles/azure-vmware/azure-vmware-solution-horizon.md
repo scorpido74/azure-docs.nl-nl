@@ -3,12 +3,12 @@ title: Distributie op Azure VMware-oplossing implementeren
 description: Meer informatie over het implementeren van VMware horizon op de Azure VMware-oplossing.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321359"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423100"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Distributie op Azure VMware-oplossing implementeren 
 
@@ -127,6 +127,18 @@ Dezelfde principes zijn van toepassing als u twee Horizons-peulen in dezelfde re
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Grootte van Azure VMware Solution-hosts voor Horizon-implementaties 
 
 De schaal methodologie van de horizon op een host die wordt uitgevoerd in de Azure VMware-oplossing is eenvoudiger dan horizon-premises.  Dat komt doordat de host van de Azure VMware-oplossing is gestandaardiseerd.  Nauw keurige host-grootte helpt bij het bepalen van het aantal hosts dat nodig is voor de ondersteuning van uw VDI-vereisten.  Het is een centrale oplossing om de kosten per Desktop te bepalen.
+
+### <a name="sizing-tables"></a>Grootte van tabellen
+
+In de tabellen ziet u de algemene werk belastingen voor aanmelding VSI werk belastingen van werk nemers en Power werk-workloads.
+
+#### <a name="knowledge-worker-workloads"></a>Werk belastingen van kennis werk nemer
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="Tabel met algemene VDI-profielen voor VMware-horizon voor aanmelding VSI kennis werk-workloads" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
+
+#### <a name="power-worker-workloads"></a>Power work-workloads
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Tabel met algemene VDI-profielen voor VMware-horizon voor aanmelding VSI Power work-workloads" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Solution host-instantie
 

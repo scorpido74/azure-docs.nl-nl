@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108470"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422532"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions PowerShell
 
@@ -20,7 +20,7 @@ Een Power shell Azure-functie (functie) wordt weer gegeven als een Power shell-s
 
 Net als andere soorten functies voeren Power shell-script functies in para meters die overeenkomen met de namen van alle invoer bindingen die in het bestand zijn gedefinieerd `function.json` . Er `TriggerMetadata` wordt ook een para meter door gegeven met aanvullende informatie over de trigger die de functie heeft gestart.
 
-In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. U moet ook de Quick Start [van functions voor Power shell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) hebben voltooid om uw eerste Power shell-functie te maken.
+In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. U moet ook de Quick Start [van functions voor Power shell](./create-first-function-vs-code-powershell.md) hebben voltooid om uw eerste Power shell-functie te maken.
 
 ## <a name="folder-structure"></a>Mapstructuur
 
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 De volgende para meters zijn geldig voor het aanroepen van `Push-OutputBinding` :
 
-| Naam | Type | Positie | Description |
+| Naam | Type | Positie | Beschrijving |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Tekenreeks | 1 | De naam van de uitvoer binding die u wilt instellen. |
 | **`-Value`** | Object | 2 | De waarde van de uitvoer binding die u wilt instellen, die wordt geaccepteerd vanuit de pipeline-ByValue. |
@@ -418,11 +418,11 @@ Gebruik de volgende stappen om de Power shell-versie te wijzigen die door uw fun
 
 1. Blader in de [Azure-portal](https://portal.azure.com) naar uw functie-app.
 
-1. Kies onder **instellingen**de optie **configuratie**. Ga naar het tabblad **algemene instellingen** en zoek de **Power shell-versie**. 
+1. Kies onder **instellingen** de optie **configuratie**. Ga naar het tabblad **algemene instellingen** en zoek de **Power shell-versie**. 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="De Power shell-versie kiezen die wordt gebruikt door de functie-app"::: 
 
-1. Kies de gewenste **Power shell core-versie** en selecteer **Opslaan**. Klik op **door gaan**wanneer u wordt gewaarschuwd voor het opnieuw starten in behandeling. De functie-app wordt opnieuw gestart op de gekozen Power shell-versie. 
+1. Kies de gewenste **Power shell core-versie** en selecteer **Opslaan**. Klik op **door gaan** wanneer u wordt gewaarschuwd voor het opnieuw starten in behandeling. De functie-app wordt opnieuw gestart op de gekozen Power shell-versie. 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -525,7 +525,7 @@ Diverse modules worden vaak gebruikt door de Power shell-werk nemer. Deze module
 De huidige lijst met modules is als volgt:
 
 * [Micro soft. Power shell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): module die wordt gebruikt voor het werken met archieven, zoals `.zip` , `.nupkg` en anderen.
-* **ThreadJob**: een implementatie op basis van een thread van de Power shell-taak-api's.
+* **ThreadJob** : een implementatie op basis van een thread van de Power shell-taak-api's.
 
 Functies gebruiken standaard de meest recente versie van deze modules. Als u een specifieke module versie wilt gebruiken, plaatst u die specifieke versie in de `Modules` map van uw functie-app.
 
@@ -657,7 +657,7 @@ Uw script wordt uitgevoerd op elke aanroep. Vermijd `Install-Module` het gebruik
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende bronnen voor meer informatie:
+Zie de volgende resources voor meer informatie:
 
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 * [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)

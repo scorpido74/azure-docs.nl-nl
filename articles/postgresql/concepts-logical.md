@@ -5,24 +5,27 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: 0e9773e5c08f9d07f76a70bc4f899acf5004d3c2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708608"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421805"
 ---
 # <a name="logical-decoding"></a>Logische decodering
  
+> [!NOTE]
+> Logische decodering is in open bare preview op Azure Database for PostgreSQL-één server.
+
 Met [logische decodering in postgresql](https://www.postgresql.org/docs/current/logicaldecoding.html) kunt u gegevens wijzigingen streamen naar externe gebruikers. Logische decodering wordt populair gebruikt voor het streamen van gebeurtenissen en change data capture scenario's.
 
-Logische decodering maakt gebruik van een uitvoer-invoeg toepassing om het Write-Ahead logboek (WAL) van post gres te converteren naar een lees bare indeling. Azure Database for PostgreSQL biedt de uitvoer-invoeg toepassingen [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) en pgoutput. pgoutput wordt beschikbaar gesteld door post gres van post gres versie 10 en hoger.
+Logische decodering maakt gebruik van een uitvoer-invoeg toepassing om het Write-Ahead logboek (WAL) van post gres te converteren naar een lees bare indeling. Azure Database for PostgreSQL biedt de uitvoer-invoeg toepassingen [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) en pgoutput. pgoutput wordt beschikbaar gesteld door PostgreSQL van PostgreSQL versie 10 en hoger.
 
 [Ga naar onze blog](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421)voor een overzicht van hoe post gres logische code ring werkt. 
 
 > [!NOTE]
-> Logische decodering is in open bare preview op Azure Database for PostgreSQL-één server.
+> Logische replicatie met PostgreSQL-publicatie/-abonnement wordt niet ondersteund met Azure Database for PostgreSQL-één server.
 
 
 ## <a name="set-up-your-server"></a>Uw server instellen 
@@ -39,14 +42,15 @@ De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Int
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
 1. Stel azure.replication_support in op `logical` .
-   ```
+   ```azurecli-interactive
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
 
 2. Start de server opnieuw op om de wijziging toe te passen.
-   ```
+   ```azurecli-interactive
    az postgres server restart --resource-group mygroup --name myserver
    ```
+3. Als u post gres 9,5 of 9,6 uitvoert en open bare netwerk toegang gebruikt, voegt u de firewall regel toe om het open bare IP-adres van de client toe te voegen van waaruit u de logische replicatie wilt uitvoeren. De naam van de firewall regel moet **_replrule** bevatten. Bijvoorbeeld *test_replrule*. Voer de opdracht [AZ post gres Server firewall-Rule Create](/cli/azure/postgres/server/firewall-rule) uit om een nieuwe firewall regel te maken op de server. 
 
 ### <a name="using-azure-portal"></a>Azure Portal gebruiken
 
@@ -54,10 +58,13 @@ De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Int
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL-replicatie-ondersteuning van Azure-replicatie":::
 
-2. Start de server opnieuw op om de wijziging toe te passen door **Ja**te selecteren.
+2. Start de server opnieuw op om de wijziging toe te passen door **Ja** te selecteren.
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL-replicatie-ondersteuning van Azure-replicatie":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL-replicatie: bevestig opnieuw opstarten":::
 
+3. Als u post gres 9,5 of 9,6 uitvoert en open bare netwerk toegang gebruikt, voegt u de firewall regel toe om het open bare IP-adres van de client toe te voegen van waaruit u de logische replicatie wilt uitvoeren. De naam van de firewall regel moet **_replrule** bevatten. Bijvoorbeeld *test_replrule*. Klik vervolgens op **Opslaan**.
+
+   :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="Azure Database for PostgreSQL-Replication-firewall regel toevoegen":::
 
 ## <a name="start-logical-decoding"></a>Logische decodering starten
 

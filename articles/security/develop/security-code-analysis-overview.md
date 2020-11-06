@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: af4797d7d7d7cb866674747ea8871bebb059207d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fd8fb2e40fa44c5aec3f14bfd586187c952df0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031242"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422430"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informatie over analyse van micro soft-beveiligings code
 
@@ -39,7 +39,7 @@ Het toevoegen van hulpprogram ma's voor het analyseren van micro soft-beveiligin
 
 ### <a name="clean-builds"></a>Schone builds
 
-Nadat u de eerste problemen hebt opgelost die door de hulpprogram ma's worden gerapporteerd, kunt u de uitbrei ding configureren voor het verbreken van de builds van nieuwe problemen.Het instellen van continue integratie builds voor elke pull-aanvraag is eenvoudig.
+Nadat u de eerste problemen hebt opgelost die door de hulpprogram ma's worden gerapporteerd, kunt u de uitbrei ding configureren voor het verbreken van de builds van nieuwe problemen. Het instellen van continue integratie builds voor elke pull-aanvraag is eenvoudig.
 
 ### <a name="set-it-and-forget-it"></a>Instellen en het verg eten
 
@@ -73,7 +73,7 @@ Wacht woorden en andere geheimen die zijn opgeslagen in de bron code, vormen een
 
 ### <a name="roslyn-analyzers"></a>Roslyn Analyzers
 
-Roslyn-analyse functies is het met compileren van micro soft geïntegreerde hulp programma voor het statisch analyseren van beheerde C#-en Visual Basic-code. Zie [Roslyn-analyse](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer)functies voor meer informatie.
+Roslyn-analyse functies is het met compileren van micro soft geïntegreerde hulp programma voor het statisch analyseren van beheerde C#-en Visual Basic-code. Zie [Roslyn-analyse](https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/security-warnings)functies voor meer informatie.
 
 ### <a name="tslint"></a>TSLint
 

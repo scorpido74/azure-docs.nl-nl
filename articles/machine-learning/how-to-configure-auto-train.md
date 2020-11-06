@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: 009018335e57943392b83047702f24890bf714d5
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 825413421bc9025c2912bb790a3166c6e3d34a0f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359609"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421835"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 
@@ -117,7 +117,7 @@ Bepaal vervolgens op welke locatie het model moet worden getraind. Een experimen
 
     Raadpleeg [dit notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) voor een extern voorbeeld met behulp van beheerde compute van Azure Machine Learning. 
 
-* Een **Azure Databricks cluster** in uw Azure-abonnement. U vindt hier meer informatie: [Azure Databricks-cluster instellen voor geautomatiseerde ML](how-to-configure-environment.md#aml-databricks). Bekijk deze [github-site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) voor voor beelden van notitie blokken met Azure Databricks.
+* Een **Azure Databricks cluster** in uw Azure-abonnement. Meer informatie kunt u vinden in [een Azure Databricks cluster instellen voor automatische milliliters](how-to-configure-databricks-automl-environment.md). Bekijk deze [github-site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) voor voor beelden van notitie blokken met Azure Databricks.
 
 <a name='configure-experiment'></a>
 

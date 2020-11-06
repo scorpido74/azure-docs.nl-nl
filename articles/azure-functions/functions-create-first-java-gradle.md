@@ -6,19 +6,19 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104866"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422804"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Java en Gradle gebruiken voor het maken en publiceren van een functie in azure
 
 In dit artikel wordt beschreven hoe u een Java-functie project bouwt en publiceert naar Azure Functions met het opdracht regel programma Gradle. Wanneer u klaar bent, wordt de functie code in azure uitgevoerd in een [hosting abonnement](functions-scale.md#consumption-plan) op de server en wordt geactiveerd door een HTTP-aanvraag. 
 
 > [!NOTE]
-> Als Gradle niet uw voor keur is, Bekijk dan onze vergelijk bare zelf studies voor Java-Ontwikkel aars met [maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [IntelliJ idee](/azure/developer/java/toolkit-for-intellij/quickstart-functions) en [VS code](./functions-create-first-function-vs-code.md?pivots=programming-language-java).
+> Als Gradle niet uw voor keur is, Bekijk dan onze vergelijk bare zelf studies voor Java-Ontwikkel aars met [maven](./create-first-function-cli-java.md), [IntelliJ idee](/azure/developer/java/toolkit-for-intellij/quickstart-functions) en [VS code](./create-first-function-vs-code-java.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -127,7 +127,7 @@ Hiermee maakt u de volgende resources in azure, op basis van de waarden in het b
 + Resourcegroep. Met de naam van de _resourceGroup_ die u hebt opgegeven.
 + Opslagaccount. Vereist door Funtions. De naam wordt willekeurig gegenereerd op basis van de vereisten van het opslagaccount.
 + App Service plan. Serverloze verbruiks plan dat als host fungeert voor uw functie-app in de opgegeven _appRegion_. De naam wordt wille keurig gegenereerd.
-+ Functie-app. Een functie-app is de implementatie- en uitvoeringseenheid voor uw functies. De naam is uw _AppName_, die wordt toegevoegd met een wille keurig gegenereerd nummer. 
++ Functie-app. Een functie-app is de implementatie- en uitvoeringseenheid voor uw functies. De naam is uw _AppName_ , die wordt toegevoegd met een wille keurig gegenereerd nummer. 
 
 De implementatie verpakt de project bestanden ook en implementeert deze in de nieuwe functie-app met behulp van [zip-implementatie](functions-deployment-technologies.md#zip-deploy), waarbij de modus uitvoeren vanaf pakket is ingeschakeld.
 
@@ -142,7 +142,7 @@ U kunt de URL ophalen die is vereist om uw functie te activeren, met de functie 
 
 1. Blader naar de [Azure Portal], Meld u aan, typ de _AppName_ van uw functie-app in **zoeken** boven aan de pagina en druk op ENTER.
  
-1. Selecteer in de functie-app **functies**, kies uw functie en klik vervolgens op **</> functie-URL rechtsboven weer** geven. 
+1. Selecteer in de functie-app **functies** , kies uw functie en klik vervolgens op **</> functie-URL rechtsboven weer** geven. 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="De functie-URL vanuit Azure Portal kopiëren":::
 

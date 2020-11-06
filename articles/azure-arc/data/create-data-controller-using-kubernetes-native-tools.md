@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: bfdda75c0826ed12fbce1eb47680f91abbde4934
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 051a7f506d351a17764e38c760ffba06d224cc38
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91661054"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422566"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Azure Arc data controller maken met behulp van Kubernetes-hulpprogram ma's
 
@@ -102,7 +102,7 @@ containers:
       - env:
         - name: ACCEPT_EULA
           value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-sep-2020 <-- template value to change
+        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-oct-2020  <-- template value to change
         image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
         imagePullPolicy: IfNotPresent
         name: bootstrapper
@@ -170,21 +170,21 @@ Maak eerst een kopie van het [sjabloon bestand](https://raw.githubusercontent.co
 Bewerk het volgende naar behoefte:
 
 **Vereist**
-- **locatie**: Wijzig dit in de Azure-locatie waar de _meta gegevens_ over de gegevens controller worden opgeslagen.  U kunt de lijst met beschik bare Azure-locaties bekijken in het artikel overzicht van het [maken van gegevens controllers](create-data-controller.md) .
-- **resourceGroup**: de Azure-resource groep waar u de gegevens controller Azure-resource wilt maken in azure Resource Manager.  Normaal gesp roken moet deze resource groep al bestaan, maar dit is niet vereist tot de tijd dat u de gegevens uploadt naar Azure.
-- **abonnement**: de GUID van het Azure-abonnement voor het abonnement waarin u de Azure-resources wilt maken.
+- **locatie** : Wijzig dit in de Azure-locatie waar de _meta gegevens_ over de gegevens controller worden opgeslagen.  U kunt de lijst met beschik bare Azure-locaties bekijken in het artikel overzicht van het [maken van gegevens controllers](create-data-controller.md) .
+- **resourceGroup** : de Azure-resource groep waar u de gegevens controller Azure-resource wilt maken in azure Resource Manager.  Normaal gesp roken moet deze resource groep al bestaan, maar dit is niet vereist tot de tijd dat u de gegevens uploadt naar Azure.
+- **abonnement** : de GUID van het Azure-abonnement voor het abonnement waarin u de Azure-resources wilt maken.
 
 **AANBEVOLEN OM DE STANDAARD INSTELLINGEN TE CONTROLEREN EN MOGELIJK TE WIJZIGEN**
-- **opslag.. ClassName**: de opslag klasse die moet worden gebruikt voor de gegevens controller gegevens en logboek bestanden.  Als u niet zeker bent van de beschik bare opslag klassen in uw Kubernetes-cluster, kunt u de volgende opdracht uitvoeren: `kubectl get storageclass` .  De standaard instelling is dat `default` er een opslag klasse is die bestaat en een naam heeft die niet is dat `default` er een opslag klasse is die de standaard _is_ .  Opmerking: er zijn twee instellingen voor ClassName die moeten worden ingesteld op de gewenste opslag klasse: één voor gegevens en één voor Logboeken.
-- **Service type: Wijzig**het servicesapparaat in `NodePort` Als u geen Load Balancer gebruikt.  Opmerking: er zijn twee instellingen voor service type die moeten worden gewijzigd.
+- **opslag.. ClassName** : de opslag klasse die moet worden gebruikt voor de gegevens controller gegevens en logboek bestanden.  Als u niet zeker bent van de beschik bare opslag klassen in uw Kubernetes-cluster, kunt u de volgende opdracht uitvoeren: `kubectl get storageclass` .  De standaard instelling is dat `default` er een opslag klasse is die bestaat en een naam heeft die niet is dat `default` er een opslag klasse is die de standaard _is_ .  Opmerking: er zijn twee instellingen voor ClassName die moeten worden ingesteld op de gewenste opslag klasse: één voor gegevens en één voor Logboeken.
+- **Service type: Wijzig** het servicesapparaat in `NodePort` Als u geen Load Balancer gebruikt.  Opmerking: er zijn twee instellingen voor service type die moeten worden gewijzigd.
 
 **Beschrijving**
-- **naam**: de standaard naam van de gegevens controller is `arc` , maar u kunt deze desgewenst wijzigen.
-- **DisplayName**: Stel dit in op dezelfde waarde als het naam kenmerk boven aan het bestand.
-- **REGI ster**: de micro soft-container Registry is de standaard instelling.  Als u de installatie kopieën uit de micro soft-Container Registry haalt en [deze naar een persoonlijk container register pusht](offline-deployment.md), voert u hier het IP-adres of de DNS-naam van het REGI ster in.
-- **dockerRegistry**: het pull-geheim van de installatie kopie die wordt gebruikt om de installatie kopieën uit een persoonlijk container register te halen, indien nodig.
-- **opslag plaats**: de standaard opslagplaats op de micro soft-container Registry is `arcdata` .  Als u een persoonlijk container register gebruikt, voert u het pad in naar de map/opslag plaats met de container installatie kopieën van Azure ARR ingeschakelde Data Services.
-- **imageTag**: de huidige meest recente versie code wordt standaard in de sjabloon gebruikt, maar u kunt deze wijzigen als u een oudere versie wilt gebruiken.
+- **naam** : de standaard naam van de gegevens controller is `arc` , maar u kunt deze desgewenst wijzigen.
+- **DisplayName** : Stel dit in op dezelfde waarde als het naam kenmerk boven aan het bestand.
+- **REGI ster** : de micro soft-container Registry is de standaard instelling.  Als u de installatie kopieën uit de micro soft-Container Registry haalt en [deze naar een persoonlijk container register pusht](offline-deployment.md), voert u hier het IP-adres of de DNS-naam van het REGI ster in.
+- **dockerRegistry** : het pull-geheim van de installatie kopie die wordt gebruikt om de installatie kopieën uit een persoonlijk container register te halen, indien nodig.
+- **opslag plaats** : de standaard opslagplaats op de micro soft-container Registry is `arcdata` .  Als u een persoonlijk container register gebruikt, voert u het pad in naar de map/opslag plaats met de container installatie kopieën van Azure ARR ingeschakelde Data Services.
+- **imageTag** : de huidige meest recente versie code wordt standaard in de sjabloon gebruikt, maar u kunt deze wijzigen als u een oudere versie wilt gebruiken.
 
 Voor beeld van een voltooid yaml-bestand van de gegevens controller:
 ```yaml
@@ -200,7 +200,7 @@ spec:
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-sep-2020
+    imageTag: public-preview-oct-2020 
     registry: mcr.microsoft.com
     repository: arcdata
   security:

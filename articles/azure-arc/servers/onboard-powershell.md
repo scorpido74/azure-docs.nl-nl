@@ -1,18 +1,18 @@
 ---
 title: Hybride computers verbinden met Azure met behulp van Power shell
-description: In dit artikel leert u hoe u de Agent installeert en een machine verbindt met Azure met behulp van Azure Arc-servers met behulp van Power shell.
+description: In dit artikel leert u hoe u de Agent installeert en een machine verbindt met Azure met behulp van Azure Arc-servers. U kunt dit doen met Power shell.
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0755846ef02377edade98b69e478908a111ab247
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: f85e2564b2e5b194d306ef4bad2269982331a7d4
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901528"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422770"
 ---
-# <a name="connect-hybrid-machines-to-azure-using-powershell"></a>Hybride computers verbinden met Azure met behulp van Power shell
+# <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>Hybride computers verbinden met Azure met behulp van Power shell
 
-U kunt servers met Azure-ondersteuning inschakelen voor een of meer Windows-of Linux-computers in uw omgeving door een aantal hand matige stappen uit te voeren. U kunt ook de Power shell-cmdlet [Connect-AzConnectedMachine](/powershell/module/az.connectedmachine/remove-azconnectedmachine) gebruiken om de verbonden machine agent te downloaden, de agent te installeren en de machine te registreren bij Azure Arc. Met de cmdlet wordt het Windows agent-Windows Installer-pakket gedownload van het micro soft Download centrum en het Linux-agent pakket van de micro soft-pakket opslagplaats.
+Voor servers met Azure Arc kunt u hand matige stappen uitvoeren om deze in te scha kelen voor een of meer Windows-of Linux-computers in uw omgeving. U kunt ook de Power shell-cmdlet [Connect-AzConnectedMachine](/powershell/module/az.connectedmachine/remove-azconnectedmachine) gebruiken om de verbonden machine agent te downloaden, de agent te installeren en de machine te registreren met Azure Arc. Met de cmdlet wordt het Windows-agent pakket (Windows Installer) gedownload van het micro soft Download centrum en het Linux-agent pakket van de micro soft-pakket opslagplaats.
 
 Voor deze methode moet u beheerders rechten op de computer hebben om de agent te installeren en configureren. Op Linux, met behulp van het hoofd account en in Windows, bent u lid van de lokale groep Administrators. U kunt dit proces interactief of extern uitvoeren op een Windows-Server met behulp van [externe communicatie met Power shell](/powershell/scripting/learn/ps101/08-powershell-remoting).
 
@@ -24,7 +24,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 - Een machine met Azure PowerShell. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor instructies.
 
-Voordat u Azure PowerShell gebruikt om VM-extensies te beheren op uw hybride server die wordt beheerd door servers met Arc-functionaliteit, moet u de `Az.ConnectedMachine` module installeren. Voer de volgende opdracht uit op de server met Arc-functionaliteit:
+U kunt Power shell gebruiken om VM-extensies te beheren op uw hybride servers die worden beheerd door Azure Arc-servers. Voordat u Power shell gebruikt, moet u de `Az.ConnectedMachine` module installeren. Voer de volgende opdracht uit op de server die is ingeschakeld met Azure Arc:
 
 ```powershell
 Install-Module -Name Az.ConnectedMachine
@@ -54,11 +54,11 @@ Wanneer de installatie is voltooid, wordt het volgende bericht weer gegeven:
         Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
         ```
 
-Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. Op Windows op *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log* en op Linux op */var/opt/azcmagent/log/himds.log* .
+Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. Controleer dit bestand op Windows: *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*. Controleer dit bestand op Linux: */var/opt/azcmagent/log/himds.log*.
 
-## <a name="install-and-connect-using-powershell-remoting"></a>Installeren en verbinding maken met behulp van externe communicatie met Power shell
+## <a name="install-and-connect-by-using-powershell-remoting"></a>Installeren en verbinding maken met behulp van externe communicatie met Power shell
 
-Voer de volgende stappen uit om een of meer Windows-servers te configureren met Azure Arc-servers. Externe toegang via Power shell moet zijn ingeschakeld op de externe computer. Gebruik de `Enable-PSRemoting` cmdlet om externe communicatie van Power shell in te scha kelen.
+U kunt als volgt een of meer Windows-servers configureren met servers die zijn ingeschakeld met Azure Arc. U moet externe communicatie van Power shell inschakelen op de externe computer. Gebruik hiervoor de cmdlet `Enable-PSRemoting`.
 
 1. Open een Power shell-console als beheerder.
 
@@ -80,7 +80,7 @@ Voer de volgende stappen uit om een of meer Windows-servers te configureren met 
         Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
         ```
 
-    Het volgende voor beeld is de resultaten van de opdracht gericht op één computer:
+    In het volgende voor beeld ziet u de resultaten van de opdracht die is gericht op één computer:
     
     ```azurepowershell
     time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
@@ -95,14 +95,14 @@ Voer de volgende stappen uit om een of meer Windows-servers te configureren met 
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc-servers, gaat u naar Azure Portal om te controleren of de server verbinding heeft gemaakt. Bekijk uw computers in [Azure Portal](https://portal.azure.com).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd voor registratie bij Azure Arc-servers, gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw machine in [Azure Portal](https://portal.azure.com).
 
-![Een geslaagde server verbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
+![Scherm opname van het dash board servers, met een geslaagde server verbinding.](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Informatie over probleem oplossing vindt u in de [hand leiding problemen met verbonden machine agent oplossen](troubleshoot-agent-onboard.md).
+* Zie, indien nodig, de [hand leiding problemen met verbonden machine agent oplossen](troubleshoot-agent-onboard.md).
 
-* Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-policy.md)en nog veel meer.
+* Meer informatie over het beheren van uw machine met behulp van [Azure Policy](../../governance/policy/overview.md). U kunt VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md)gebruiken, controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte en de bewaking met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-policy.md)inschakelen.
 
-* Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-introduction.md)te gebruiken.
+* Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u gegevens van het besturings systeem en werk belasting wilt verzamelen of beheren met Azure Automation runbooks of functies als Updatebeheer. Deze agent is ook vereist voor het gebruik van andere Azure-Services, zoals [Azure Security Center](../../security-center/security-center-introduction.md).

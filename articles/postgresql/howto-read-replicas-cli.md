@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 11/05/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9fd828baed5a03cbce5d5327248eb34045ffd6bc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2fa8794066739302d2f32acb13c936c524dc89a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489707"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422345"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Maak en beheer Lees replica's vanuit Azure CLI, REST API
 
@@ -27,7 +27,9 @@ Als u het juiste niveau van logboek registratie wilt configureren, gebruikt u de
 * **Replica** : uitgebreidere dan **uit**. Dit is het minimale registratie niveau dat nodig is voor het werken met [replica's](concepts-read-replicas.md) . Deze instelling is de standaard waarde op de meeste servers.
 * **Logisch** -uitgebreidere dan de **replica**. Dit is het minimale registratie niveau voor het werken met logische code ring. Het lezen van replica's werkt ook bij deze instelling.
 
-De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Intern worden met deze para meter de post gres-para meters `wal_level` , `max_replication_slots` en ingesteld `max_wal_senders` .
+
+> [!NOTE]
+> Bij het implementeren van Lees replica's voor permanente zware, hoogwaardige primaire workloads kan de replicatie vertraging blijven groeien en kan het niet meer worden opgeteld bij de primaire. Hierdoor kan het gebruik van de opslag op het primaire bestand ook toenemen als de WAL-bestanden niet worden verwijderd totdat ze zijn ontvangen op de replica.
 
 ## <a name="azure-cli"></a>Azure CLI
 U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
