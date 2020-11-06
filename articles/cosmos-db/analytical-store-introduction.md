@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: d0727f512ab24342b493ba2563262a9253d95d8c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 60326b0ba06e1642e2831814dd931c69f6a04f3b
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339968"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330900"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -19,7 +19,7 @@ ms.locfileid: "93339968"
 > [!IMPORTANT]
 > Azure Cosmos DB Analytical Store is momenteel beschikbaar als preview-versie. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Cosmos DB Analytical Store is een volledig geïsoleerde column Store voor het inschakelen van grootschalige analyses op basis van operationele gegevens in uw Azure Cosmos DB, zonder dat dit invloed heeft op uw transactionele werk belastingen.  
+Azure Cosmos DB Analytical Store is een volledig geïsoleerde column Store voor het inschakelen van grootschalige analyses op basis van operationele gegevens in uw Azure Cosmos DB, zonder dat dit invloed heeft op uw transactionele werk belastingen. Azure Cosmos DB transactionele Store is schema-neutraal en biedt u de mogelijkheid om uw transactionele toepassingen te herhalen zonder schema-of index beheer te hoeven afhandelen. Azure Cosmos DB Analytical Store daarentegen is geschematiseerde om te optimaliseren voor analytische query prestaties. In dit artikel wordt gedetailleerde informatie over analytische opslag beschreven.
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>Uitdagingen met grootschalige analyses op operationele gegevens
 

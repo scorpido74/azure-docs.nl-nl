@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 3a195f9dd74353734ff65f0d5f210d861fa29a26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f16e4b1f9728ae8d9cb36ab442603083e83eb92
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632580"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331376"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problemen met Azure Data Factory oplossen
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -522,79 +522,30 @@ De volgende tabel is van toepassing op Azure Batch.
  
 ## <a name="hdinsight"></a>HDInsight
 
-### <a name="error-code-200"></a>Fout code: 200
-
-- **Bericht** : `Unexpected error happened: '%error;'.`
-
-- **Oorzaak** : er is een probleem met de interne service.
-
-- **Aanbeveling** : Neem contact op met de ondersteuning voor ADF voor verdere ondersteuning.
-
-### <a name="error-code-201"></a>Fout code: 201
-
-- **Bericht** : `JobType %jobType; is not found.`
-
-- **Oorzaak** : er is een nieuw taak type dat niet wordt ondersteund door ADF.
-
-- **Aanbeveling** : Neem contact op met het ADF-ondersteunings team voor meer informatie.
-
-### <a name="error-code-202"></a>Fout code: 202
-
-- **Bericht** : `Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **Oorzaak** : het fout bericht bevat de details van wat er verkeerd is gegaan.
-
-- **Aanbeveling** : de details van het fout bericht moeten u helpen het probleem op te lossen. Als er onvoldoende informatie is, neemt u contact op met de ondersteuning voor ADF voor verdere hulp.
-
-### <a name="error-code-203"></a>Fout code: 203
-
-- **Bericht** : `Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **Oorzaak** : het fout bericht bevat de details van wat er verkeerd is gegaan.
-
-- **Aanbeveling** : de details van het fout bericht moeten u helpen het probleem op te lossen. Als er onvoldoende informatie is, neemt u contact op met de ondersteuning voor ADF voor verdere hulp.
-
-### <a name="error-code-204"></a>Fout code: 204
-
-- **Bericht** : `The resumption token is missing for runId '%runId;'.`
-
-- **Oorzaak** : er is een probleem met de interne service.
-
-- **Aanbeveling** : Neem contact op met de ondersteuning voor ADF voor verdere ondersteuning.
-
-### <a name="error-code-205"></a>Fout code: 205
-
-- **Bericht** : `Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
-
-- **Oorzaak** : er is een fout opgetreden bij het maken van het HDI on-demand-cluster.
-
-- **Aanbeveling** : Neem contact op met de ondersteuning voor ADF voor verdere ondersteuning.
-
 ### <a name="error-code-206"></a>Fout code: 206
 
-- **Bericht** : `The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+- **Bericht** : `The batch ID for Spark job is invalid. Please retry your job.`
 
 - **Oorzaak** : er is een intern probleem opgetreden met de service die deze fout heeft veroorzaakt.
 
-- **Aanbeveling** : dit probleem kan tijdelijk zijn. Voer de taak opnieuw uit en neem contact op met de ondersteuning voor ADF als het probleem zich blijft voordoen.
+- **Aanbeveling** : dit probleem kan tijdelijk zijn. Voer de taak na enige tijd opnieuw uit.
 
 ### <a name="error-code-207"></a>Fout code: 207
 
-- **Bericht** : `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+- **Bericht** : `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI.`
 
 - **Oorzaak** : er is een interne fout opgetreden bij het bepalen van de regio van het primaire opslag account.
 
-- **Aanbeveling** : Probeer een andere opslag. Als deze optie geen acceptabele oplossing is, neemt u contact op met het ADF-ondersteunings team voor meer informatie.
+- **Aanbeveling** : Probeer een andere opslag. 
 
 ### <a name="error-code-208"></a>Fout code: 208
 
-- **Bericht** : `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+- **Bericht** : `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again.`
 
 - **Oorzaak** : er is een interne fout opgetreden tijdens het lezen van de service-principal of het instantiëren van de MSI-verificatie.
 
 - **Aanbeveling** : overweeg het leveren van een service-principal die machtigingen heeft voor het maken van een HDInsight-cluster in het opgegeven abonnement en probeer het opnieuw. Controleer of de [Managed Identities correct zijn ingesteld](../hdinsight/hdinsight-managed-identities.md).
 
-   Als deze optie geen acceptabele oplossing is, neemt u contact op met het ADF-ondersteunings team voor meer informatie.
 
 ### <a name="error-code-2300"></a>Fout code: 2300
 
@@ -612,7 +563,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 - **Aanbeveling** : het probleem kan algemeen HDInsight-connectiviteit of een netwerk verbinding zijn. Controleer eerst of de gebruikers interface van HDInsight Ambari beschikbaar is vanuit elke browser. Controleer vervolgens of uw referenties nog geldig zijn.
    
-   Als u een zelf-hosted Integrated Runtime (IR) gebruikt, voert u deze stap uit vanaf de virtuele machine of computer waarop de zelf-hostende IR is geïnstalleerd. Probeer de taak vervolgens opnieuw uit Data Factory te verzenden. Als het nog steeds niet lukt, neemt u contact op met het Data Factory-team voor ondersteuning.
+   Als u een zelf-hosted Integrated Runtime (IR) gebruikt, voert u deze stap uit vanaf de virtuele machine of computer waarop de zelf-hostende IR is geïnstalleerd. Probeer de taak vervolgens opnieuw uit Data Factory te verzenden.
 
    Lees [Ambari Web UI](../hdinsight/hdinsight-hadoop-manage-ambari.md#ambari-web-ui)voor meer informatie.
 
@@ -1024,17 +975,17 @@ De volgende tabel is van toepassing op Azure Batch.
 
 1. Down load, installeer en open [Fiddler](https://www.telerik.com/download/fiddler).
 
-1. Als uw webtoepassing gebruikmaakt van HTTPS, gaat u naar **hulpprogram ma's**  >  **Fiddler opties**  >  **https** .
+1. Als uw webtoepassing gebruikmaakt van HTTPS, gaat u naar **hulpprogram ma's**  >  **Fiddler opties**  >  **https**.
 
-   1. Selecteer op het tabblad HTTPS beide **vastleg ging-https maakt verbinding** en **VERsleutelt HTTPS-verkeer** .
+   1. Selecteer op het tabblad HTTPS beide **vastleg ging-https maakt verbinding** en **VERsleutelt HTTPS-verkeer**.
 
       ![Opties voor Fiddler](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. Als uw toepassing gebruikmaakt van TLS/SSL-certificaten, voegt u het Fiddler-certificaat toe aan uw apparaat.
 
-   Ga naar: **extra**  >  **Fiddler opties**  >  **https**  >  **acties**  >  **basis certificaat exporteren naar het bureau blad** .
+   Ga naar: **extra**  >  **Fiddler opties**  >  **https**  >  **acties**  >  **basis certificaat exporteren naar het bureau blad**.
 
-1. Vastleggen uitschakelen door te gaan naar het **bestand**  >  **Capture-verkeer** . Of druk op **F12** .
+1. Vastleggen uitschakelen door te gaan naar het **bestand**  >  **Capture-verkeer**. Of druk op **F12**.
 
 1. Wis de cache van uw browser zodat alle items in de cache worden verwijderd en opnieuw moet worden gedownload.
 
@@ -1046,7 +997,7 @@ De volgende tabel is van toepassing op Azure Batch.
  
    1. Voeg, indien nodig, kopteksten en een aanvraag tekst toe.
 
-   1. Selecteer **Uitvoeren** .
+   1. Selecteer **Uitvoeren**.
 
 1. Schakel het vastleggen van verkeer in en voltooi de problematische trans actie op de pagina.
 

@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0e8743d78c8eeafb5bdeb6ade783d5e75991f91
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226511"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330985"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
 
@@ -28,7 +28,7 @@ U kunt bijvoorbeeld uw logische app:
 
 In dit artikel wordt beschreven hoe u de actie trigger en reactie aanvragen kunt gebruiken zodat uw logische app inkomende oproepen kan ontvangen en erop kan reageren.
 
-Voor informatie over versleuteling, beveiliging en autorisatie voor inkomende oproepen naar uw logische app, zoals [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL) of [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml), raadpleegt [u beveiligde toegang en gegevens toegang voor inkomende oproepen op op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+Voor meer informatie over beveiliging, autorisatie en versleuteling voor inkomende oproepen naar uw logische app, zoals [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL), [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml), uw logische app weer geven met Azure API Management of het beperken van de IP-adressen die afkomstig zijn van binnenkomende oproepen, Zie [beveiligde toegang en gegevens toegang voor inkomende oproepen op op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,10 +42,9 @@ Voor informatie over versleuteling, beveiliging en autorisatie voor inkomende op
 
 Deze ingebouwde trigger maakt een hand matig aanroepbaar eind punt dat *alleen* binnenkomende aanvragen via https kan verwerken. Wanneer een beller een aanvraag naar dit eind punt verzendt, wordt de trigger voor de [aanvraag](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) geactiveerd en wordt de logische app uitgevoerd. Zie [werk stromen aanroepen, activeren of nesten met https-eind punten in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md)voor meer informatie over het aanroepen van deze trigger.
 
-Uw logische app houdt een binnenkomende aanvraag alleen gedurende een [beperkte periode](../logic-apps/logic-apps-limits-and-config.md#request-limits)open. Ervan uitgaande dat uw logische app een [reactie actie](#add-response)bevat, als uw logische app na deze tijd niet terugstuurt naar de aanroeper, retourneert uw logische app een `504 GATEWAY TIMEOUT` status naar de aanroeper. Als uw logische app geen reactie actie bevat, 
-> uw logische app retourneert direct een `202 ACCEPTED` status naar de aanroeper.
+Uw logische app houdt een binnenkomende aanvraag alleen gedurende een [beperkte periode](../logic-apps/logic-apps-limits-and-config.md#request-limits)open. Ervan uitgaande dat uw logische app een [reactie actie](#add-response)bevat, als uw logische app na deze tijd niet terugstuurt naar de aanroeper, retourneert uw logische app een `504 GATEWAY TIMEOUT` status naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` status naar de aanroeper.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
 
 1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak in `http request` als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** .
 
@@ -57,8 +56,8 @@ Uw logische app houdt een binnenkomende aanvraag alleen gedurende een [beperkte 
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST-URL** | geen | Ja | De eind punt-URL die wordt gegenereerd na het opslaan van de logische app en wordt gebruikt voor het aanroepen van uw logische app |
-   | **JSON-schema van aanvraag tekst** | `schema` | Nee | Het JSON-schema dat de eigenschappen en waarden in de hoofd tekst van de binnenkomende aanvraag beschrijft |
+   | **HTTP POST-URL** | geen | Yes | De eind punt-URL die wordt gegenereerd na het opslaan van de logische app en wordt gebruikt voor het aanroepen van uw logische app |
+   | **JSON-schema van aanvraag tekst** | `schema` | No | Het JSON-schema dat de eigenschappen en waarden in de hoofd tekst van de binnenkomende aanvraag beschrijft |
    |||||
 
 1. Voer desgewenst in het vak **JSON-schema van aanvraag tekst** een JSON-schema in dat de hoofd tekst in de binnenkomende aanvraag beschrijft, bijvoorbeeld:
@@ -154,9 +153,9 @@ Uw logische app houdt een binnenkomende aanvraag alleen gedurende een [beperkte 
 
 1. Voer de volgende stappen uit om te controleren of de inkomende oproep een aanvraag tekst heeft die overeenkomt met het opgegeven schema:
 
-   1. Selecteer de knop met weglatings tekens (**...**) in de titel balk van de trigger voor de aanvraag.
+   1. Selecteer de knop met weglatings tekens ( **...** ) in de titel balk van de trigger voor de aanvraag.
 
-   1. Schakel in de instellingen van de trigger **schema validatie**in en selecteer **gereed**.
+   1. Schakel in de instellingen van de trigger **schema validatie** in en selecteer **gereed**.
 
       Als de aanvraag tekst van de inkomende oproep niet overeenkomt met uw schema, retourneert de trigger een `HTTP 400 Bad Request` fout.
 
@@ -164,8 +163,8 @@ Uw logische app houdt een binnenkomende aanvraag alleen gedurende een [beperkte 
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **Methode** | `method` | Nee | De methode die de inkomende aanvraag moet gebruiken om de logische app aan te roepen |
-   | **Relatief pad** | `relativePath` | Nee | Het relatieve pad voor de para meter die door de eind punt-URL van de logische app kan worden geaccepteerd |
+   | **Methode** | `method` | No | De methode die de inkomende aanvraag moet gebruiken om de logische app aan te roepen |
+   | **Relatief pad** | `relativePath` | No | Het relatieve pad voor de para meter die door de eind punt-URL van de logische app kan worden geaccepteerd |
    |||||
 
    In dit voor beeld wordt de eigenschap **Method** toegevoegd:
@@ -194,6 +193,8 @@ Uw logische app houdt een binnenkomende aanvraag alleen gedurende een [beperkte 
 1. Als u uw logische app wilt activeren, verzendt u een HTTP POST naar de gegenereerde URL.
 
    U kunt bijvoorbeeld een hulp programma zoals [postman](https://www.getpostman.com/) gebruiken om het HTTP-bericht te verzenden. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u deze onderwerpen, [type aanvraag trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [aanroepen, activeren of nesten van werk stromen met http-eind punten in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
+
+Voor meer informatie over beveiliging, autorisatie en versleuteling voor inkomende oproepen naar uw logische app, zoals [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL), [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml), uw logische app weer geven met Azure API Management of het beperken van de IP-adressen die afkomstig zijn van binnenkomende oproepen, Zie [beveiligde toegang en gegevens toegang voor inkomende oproepen op op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="trigger-outputs"></a>Trigger uitvoer
 
@@ -232,7 +233,7 @@ Wanneer u de aanvraag trigger gebruikt voor het verwerken van inkomende aanvrage
 
    Als u een actie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen deze stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Onder **Kies een actie**, typt `response` u als filter in het zoekvak en selecteert u de **reactie** actie.
+1. Onder **Kies een actie** , typt `response` u als filter in het zoekvak en selecteert u de **reactie** actie.
 
    ![De reactie actie selecteren](./media/connectors-native-reqres/select-response-action.png)
 
@@ -246,7 +247,7 @@ Wanneer u de aanvraag trigger gebruikt voor het verwerken van inkomende aanvrage
 
    ![Details van reactie actie](./media/connectors-native-reqres/response-details.png)
 
-   Selecteer **overschakelen naar tekst weergave**om de kopteksten in JSON-indeling weer te geven.
+   Selecteer **overschakelen naar tekst weergave** om de kopteksten in JSON-indeling weer te geven.
 
    ![Headers: overschakelen naar tekst weergave](./media/connectors-native-reqres/switch-to-text-view.png)
 
@@ -254,9 +255,9 @@ Wanneer u de aanvraag trigger gebruikt voor het verwerken van inkomende aanvrage
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **Status code** | `statusCode` | Ja | De status code die in het antwoord moet worden geretourneerd |
-   | **Headers** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
-   | **Hoofdtekst** | `body` | Nee | De antwoord tekst |
+   | **Status code** | `statusCode` | Yes | De status code die in het antwoord moet worden geretourneerd |
+   | **Kopteksten** | `headers` | No | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
+   | **Hoofdtekst** | `body` | No | De antwoord tekst |
    |||||
 
 1. Als u aanvullende eigenschappen, zoals een JSON-schema voor de antwoord tekst, wilt opgeven, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de para meters die u wilt toevoegen.

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 8cd5969e4362b1581a7b9aebf39f8c6871839918
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: a101afb2089e4ab1fa32bd0668c60b477039b566
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558731"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330577"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account maken dat is verbonden met Azure
 
@@ -53,9 +53,9 @@ Als u van een *proef versie* overgaat naar een *betaalde* video indexer account,
 
 * Registreer de EventGrid-resource provider met behulp van de Azure Portal.
 
-    Ga in [Azure Portal](https://portal.azure.com/)naar **abonnementen** -> [Subscription]-> **ResourceProviders** .
+    Ga in [Azure Portal](https://portal.azure.com/)naar **abonnementen** -> [Subscription]-> **ResourceProviders**.
 
-    Zoek naar **micro soft. Media** en **micro soft. EventGrid** . Als dat niet het geval is, klikt u op **registreren** . Het duurt enkele minuten om u te registreren.
+    Zoek naar **micro soft. Media** en **micro soft. EventGrid**. Als dat niet het geval is, klikt u op **registreren**. Het duurt enkele minuten om u te registreren.
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -74,19 +74,19 @@ Als u van een *proef versie* overgaat naar een *betaalde* video indexer account,
 1. Selecteer een Azure-regio op de locatie die wordt ondersteund: VS-West 2, Europa-noord of Azië-oost.
 1. Kies onder **Azure Media Services account** een van de volgende opties:
 
-    * Als u een nieuw Media Services account wilt maken, selecteert u **nieuwe resource groep maken** . Geef een naam op voor de resource groep.
+    * Als u een nieuw Media Services account wilt maken, selecteert u **nieuwe resource groep maken**. Geef een naam op voor de resource groep.
 
         In azure wordt uw nieuwe account in uw abonnement gemaakt, met inbegrip van een nieuw Azure Storage-account.  
-    * Als u een bestaand Media Services account wilt gebruiken, selecteert u **bestaande resource gebruiken** . Selecteer uw account in de lijst accounts.
+    * Als u een bestaand Media Services account wilt gebruiken, selecteert u **bestaande resource gebruiken**. Selecteer uw account in de lijst accounts.
 
         Uw Media Services-account moet dezelfde regio hebben als uw Video Indexer-account.
 
         > [!NOTE]
-        > Om de indexerings duur en lage door voer te minimaliseren, wordt het ten zeerste aanbevolen om het type en het aantal [gereserveerde eenheden](../previous/media-services-scale-media-processing-overview.md ) in uw Media Services-account aan te passen aan **10 S3 gereserveerde eenheden** . Zie [Portal gebruiken om gereserveerde eenheden te wijzigen](../previous/media-services-portal-scale-media-processing.md). De gereserveerde eenheden worden in rekening gebracht voor uw account. Bekijk [prijs gegevens](https://azure.microsoft.com/pricing/details/media-services/#analytics).
+        > Om de indexerings duur en lage door voer te minimaliseren, wordt het ten zeerste aanbevolen om het type en het aantal [gereserveerde eenheden](../previous/media-services-scale-media-processing-overview.md ) in uw Media Services-account aan te passen aan **10 S3 gereserveerde eenheden**. Zie [Portal gebruiken om gereserveerde eenheden te wijzigen](../previous/media-services-portal-scale-media-processing.md). De gereserveerde eenheden worden in rekening gebracht voor uw account. Bekijk [prijs gegevens](https://azure.microsoft.com/pricing/details/media-services/#analytics).
     * Als u de verbinding hand matig wilt configureren, selecteert u de koppeling **overschakelen naar hand matige configuratie** .
 
         Zie de sectie [verbinding maken met Azure Manual](#connect-to-azure-manually-advanced-option) (geavanceerde optie) hieronder voor gedetailleerde informatie.
-1. Wanneer u klaar bent, kiest u **Maken** . Deze bewerking kan enkele minuten duren.
+1. Wanneer u klaar bent, kiest u **Maken**. Deze bewerking kan enkele minuten duren.
 
     Nadat u verbinding hebt gemaakt met Azure, wordt uw nieuwe Video Indexer-account weer gegeven in de lijst met accounts:
 
@@ -118,12 +118,12 @@ Als de verbinding met Azure is mislukt, kunt u proberen om het probleem op te lo
     De gereserveerde eenheden worden in rekening gebracht voor uw account en [prijs gegevens](https://azure.microsoft.com/pricing/details/media-services/#analytics)weer geven. s
 1. Voordat u uw Video's kunt afspelen in de Video Indexer web-app, moet u het standaard **streaming-eind punt** van het nieuwe Media Services-account starten.
 
-    Selecteer in het nieuwe Media Services account **streaming-eind punten** . Selecteer vervolgens het streaming-eind punt en klik op Start.
+    Selecteer in het nieuwe Media Services account **streaming-eind punten**. Selecteer vervolgens het streaming-eind punt en klik op Start.
 
     ![Streaming-eindpunten](./media/create-account/create-ams-account2.png)
 4. Er moet een AD-App worden gemaakt om Video Indexer te verifiëren met Media Services-API. De volgende stappen leiden u door het Azure AD-verificatie proces dat wordt beschreven in [aan de slag met Azure AD-verificatie met behulp van de Azure Portal](../previous/media-services-portal-get-started-with-aad.md):
 
-    1. Selecteer in het nieuwe Media Services account **API-toegang** .
+    1. Selecteer in het nieuwe Media Services account **API-toegang**.
     2. Selecteer de [verificatie methode](../previous/media-services-portal-get-started-with-aad.md)voor de Service-Principal.
     3. De client-ID en het client geheim ophalen
 
@@ -143,7 +143,7 @@ Geef in het dialoog venster de volgende informatie op:
 |Instelling|Beschrijving|
 |---|---|
 |Regio van Video Indexer-account|De naam van de regio van het Video Indexer-account. Voor betere prestaties en lagere kosten wordt u ten zeerste aangeraden de naam op te geven van de regio waar de Azure Media Services resource en het Azure Storage account zich bevinden. |
-|Azure AD-tenant|De naam van de Azure AD-Tenant, bijvoorbeeld ' contoso.onmicrosoft.com '. De gegevens van de Tenant kunnen worden opgehaald uit de Azure Portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechter bovenhoek. Zoek de naam rechts van het **domein** .|
+|Azure AD-tenant|De naam van de Azure AD-Tenant, bijvoorbeeld ' contoso.onmicrosoft.com '. De gegevens van de Tenant kunnen worden opgehaald uit de Azure Portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechter bovenhoek. Zoek de naam rechts van het **domein**.|
 |Abonnements-id|Het Azure-abonnement waarmee deze verbinding moet worden gemaakt. De abonnements-ID kan worden opgehaald uit de Azure Portal. Selecteer **alle services** in het linkerdeel venster en zoek naar ' Abonnementen '. Selecteer **abonnementen** en kies de gewenste id in de lijst met uw abonnementen.|
 |Naam van de resource groep Azure Media Services|De naam voor de resource groep waarin u het Media Services-account hebt gemaakt.|
 |Resource naam van media service|De naam van het Azure Media Services-account dat u in de vorige sectie hebt gemaakt.|
@@ -163,7 +163,7 @@ De mogelijkheid om de inhoud te importeren is geldig voor zowel geautomatiseerde
 
 Als u het account later wilt verwijderen, kunt u het account verwijderen van de Video Indexer-website. Als u het account wilt verwijderen, moet u de eigenaar zijn.
 
-Selecteer de account-> **instellingen**  ->  **dit account verwijderen** . 
+Selecteer de account-> **instellingen**  ->  **dit account verwijderen**. 
 
 Het account wordt over 90 dagen definitief verwijderd.
 
@@ -184,6 +184,15 @@ De volgende Azure Media Services gerelateerde overwegingen zijn van toepassing:
 * Als u automatisch verbinding maakt, stelt Video Indexer de **gereserveerde** media-eenheden in op 10 S3-eenheden:
 
     ![Gereserveerde eenheden Media Services](./media/create-account/ams-reserved-units.png)
+    
+## <a name="automate-creation-of-the-video-indexer-account"></a>Het maken van het Video Indexer-account automatiseren
+
+Om het maken van het account te automatiseren, is een proces van twee stappen:
+ 
+1. Gebruik Azure Resource Manager om een Azure Media Services-account + Azure AD-toepassing te maken.
+
+    Bekijk een voor beeld van de sjabloon voor het maken van het [Media Services-account](https://github.com/Azure-Samples/media-services-v3-arm-templates).
+1. Roep [create-account aan met de Media Services-en Azure AD-toepassing](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
 
 ## <a name="next-steps"></a>Volgende stappen
 

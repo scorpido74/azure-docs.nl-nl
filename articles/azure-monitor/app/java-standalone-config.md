@@ -4,12 +4,12 @@ description: Configuratie opties voor Azure Monitor Application Insights java
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 710347061f072fe66987d88852045986c00812c8
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 7165afd77e3f60af5e00b92c1063247325897f9f
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377680"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331903"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Configuratie opties voor Azure Monitor Application Insights java
 
@@ -24,7 +24,7 @@ De verbindings reeks en de rolnaam zijn de meest voorkomende instellingen die no
 
 ```json
 {
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "connectionString": "InstrumentationKey=...",
   "role": {
     "name": "my cloud role name"
   }
@@ -55,7 +55,7 @@ Dit is vereist. U kunt uw connection string vinden in uw Application Insights-re
 
 ```json
 {
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+  "connectionString": "InstrumentationKey=..."
 }
 ```
 
@@ -306,3 +306,47 @@ Application Insights Java 3,0-logboeken worden standaard op niveau `INFO` naar h
 `maxSizeMb` is de maximale grootte van het logboek bestand voordat deze wordt doorgevoerd.
 
 `maxHistory` is het aantal doorgevoerde logboek bestanden dat wordt bewaard (naast het huidige logboek bestand).
+
+## <a name="an-example"></a>Een voor beeld
+
+Dit is slechts een voor beeld om te laten zien hoe een configuratie bestand eruitziet als meerdere onderdelen.
+Configureer specifieke opties op basis van uw behoeften.
+
+```json
+{
+  "connectionString": "InstrumentationKey=...",
+  "role": {
+    "name": "my cloud role name"
+  },
+  "sampling": {
+    "percentage": 100
+  },
+  "jmxMetrics": [
+  ],
+  "customDimensions": {
+  },
+  "instrumentation": {
+    "logging": {
+      "level": "INFO"
+    },
+    "micrometer": {
+      "enabled": true
+    }
+  },
+  "httpProxy": {
+  },
+  "preview": {
+    "processors": [
+    ]
+  },
+  "selfDiagnostics": {
+    "destination": "file+console",
+    "level": "INFO",
+    "file": {
+      "path": "applicationinsights.log",
+      "maxSizeMb": 5,
+      "maxHistory": 1
+    }
+  }
+}
+```

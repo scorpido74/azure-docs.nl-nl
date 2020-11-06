@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/27/2020
-ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a59b47dadd845f1a522854c503af11c8fff72fd
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230803"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331971"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTPS-eind punten in Azure Logic Apps
 
@@ -23,7 +23,8 @@ Als u wilt dat uw logische app kan aanroepen via een URL en inkomende aanvragen 
 
 In dit artikel wordt beschreven hoe u een aanroepbaar eind punt maakt in uw logische app met behulp van de trigger voor aanvragen en dat eind punt aanroept vanuit een andere logische app. Alle principes zijn identiek van toepassing op de andere trigger typen die u kunt gebruiken om inkomende aanvragen te ontvangen.
 
-Voor informatie over versleuteling, beveiliging en autorisatie voor inkomende oproepen naar uw logische app, zoals [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL) of [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml), raadpleegt [u beveiligde toegang en gegevens toegang voor inkomende oproepen op op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+
+Voor meer informatie over beveiliging, autorisatie en versleuteling voor inkomende oproepen naar uw logische app, zoals [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL), [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml), uw logische app weer geven met Azure API Management of het beperken van de IP-adressen die afkomstig zijn van binnenkomende oproepen, Zie [beveiligde toegang en gegevens toegang voor inkomende oproepen op op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +34,7 @@ Voor informatie over versleuteling, beveiliging en autorisatie voor inkomende op
 
 ## <a name="create-a-callable-endpoint"></a>Een aanroepbaar eind punt maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege logische app maken en openen in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege logische app maken en openen in de ontwerp functie voor logische apps.
 
 1. Selecteer in het zoekvak **ingebouwde**. Voer in het zoekvak `request` als uw filter in. Selecteer in de lijst triggers **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
@@ -109,7 +110,7 @@ Voor informatie over versleuteling, beveiliging en autorisatie voor inkomende op
 
    * Kopieer de call back-URL vanuit het **overzichts** venster van uw logische app.
 
-     1. Selecteer **overzicht**in het menu van de logische app.
+     1. Selecteer **overzicht** in het menu van de logische app.
 
      1. Selecteer in de sectie **samen vatting** de optie **trigger geschiedenis weer geven**.
 
@@ -125,7 +126,7 @@ Voor informatie over versleuteling, beveiliging en autorisatie voor inkomende op
 
 De aanvraag trigger verwacht standaard een POST-aanvraag. U kunt een andere methode opgeven die u verwacht, maar slechts één methode.
 
-1. Open in de trigger voor aanvragen de lijst **nieuwe para meter toevoegen** en selecteer **methode**, waarmee deze eigenschap wordt toegevoegd aan de trigger.
+1. Open in de trigger voor aanvragen de lijst **nieuwe para meter toevoegen** en selecteer **methode** , waarmee deze eigenschap wordt toegevoegd aan de trigger.
 
    ![Eigenschap ' methode ' toevoegen aan trigger](./media/logic-apps-http-endpoint/select-add-new-parameter-for-method.png)
 
@@ -153,13 +154,13 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
 ### <a name="accept-values-through-get-parameters"></a>Waarden accepteren via GET-para meters
 
-1. In de trigger voor aanvragen opent u de **lijst nieuwe para meter toevoegen**, voegt u de eigenschap **Method** toe aan de trigger en selecteert u de **Get** -methode.
+1. In de trigger voor aanvragen opent u de **lijst nieuwe para meter toevoegen** , voegt u de eigenschap **Method** toe aan de trigger en selecteert u de **Get** -methode.
 
    Zie voor meer informatie [verwachte aanvraag methode selecteren](#select-method).
 
 1. Voeg onder de trigger voor aanvragen de actie toe waarvoor u de parameter waarde wilt gebruiken. Voor dit voor beeld voegt u de **reactie** actie toe.
 
-   1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de trigger voor aanvragen.
+   1. Selecteer **nieuwe stap**  >  **een actie toevoegen** onder de trigger voor aanvragen.
    
    1. Voer in het zoekvak onder **Kies een actie** `response` in als uw filter. Selecteer in de lijst acties de actie **reactie** .
 
@@ -216,7 +217,7 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
 ### <a name="accept-values-through-a-relative-path"></a>Waarden accepteren via een relatief pad
 
-1. Open in de trigger voor aanvragen de lijst **nieuwe para meter toevoegen** en selecteer **relatief pad**, waarmee deze eigenschap wordt toegevoegd aan de trigger.
+1. Open in de trigger voor aanvragen de lijst **nieuwe para meter toevoegen** en selecteer **relatief pad** , waarmee deze eigenschap wordt toegevoegd aan de trigger.
 
    ![Eigenschap relatief pad toevoegen aan trigger](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
@@ -226,7 +227,7 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
 1. Voeg onder de trigger voor aanvragen de actie toe waarvoor u de parameter waarde wilt gebruiken. Voor dit voor beeld voegt u de **reactie** actie toe.
 
-   1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de trigger voor aanvragen.
+   1. Selecteer **nieuwe stap**  >  **een actie toevoegen** onder de trigger voor aanvragen.
 
    1. Voer in het zoekvak onder **Kies een actie** `response` in als uw filter. Selecteer in de lijst acties de actie **reactie** .
 
@@ -303,9 +304,9 @@ Als u bijvoorbeeld meer eigenschappen toevoegt, zoals `"suite"` aan uw JSON-sche
 
 U kunt werk stromen nesten in uw logische app door andere logische apps toe te voegen die aanvragen kunnen ontvangen. Voer de volgende stappen uit om deze Logic apps op te nemen:
 
-1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de stap waarin u een andere logische app wilt aanroepen.
+1. Selecteer **nieuwe stap**  >  **een actie toevoegen** onder de stap waarin u een andere logische app wilt aanroepen.
 
-1. Selecteer onder **Kies een actie**de optie **Ingebouwd**. Voer in het zoekvak `logic apps` als uw filter in. Selecteer in de lijst acties de optie **een Logic apps werk stroom kiezen**.
+1. Selecteer onder **Kies een actie** de optie **Ingebouwd**. Voer in het zoekvak `logic apps` als uw filter in. Selecteer in de lijst acties de optie **een Logic apps werk stroom kiezen**.
 
    ![Logische app nesten in huidige logische app](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -352,10 +353,10 @@ In de antwoord tekst kunt u meerdere kopteksten en elk type inhoud toevoegen. De
 
 Antwoorden hebben de volgende eigenschappen:
 
-| Eigenschap (weer geven) | Eigenschap (JSON) | Beschrijving |
+| Eigenschap (weer geven) | Eigenschap (JSON) | Description |
 |--------------------|-----------------|-------------|
 | **Status code** | `statusCode` | De HTTPS-status code die moet worden gebruikt in het antwoord op de binnenkomende aanvraag. Deze code kan een geldige status code zijn die begint met 2xx, 4xx of 5xx. 3xx-status codes zijn echter niet toegestaan. |
-| **Headers** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
+| **Kopteksten** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
 | **Hoofdtekst** | `body` | Een body-object dat een teken reeks, een JSON-object of zelfs binaire inhoud waarnaar wordt verwezen vanuit een vorige stap kan zijn. |
 ||||
 
@@ -383,7 +384,7 @@ Als u de JSON-definitie voor de reactie actie en de volledige JSON-definitie van
 
 #### <a name="q-what-about-url-security"></a>V: wat gebeurt er met URL-beveiliging?
 
-**A**: Azure maakt veilig-call back-url's voor logische apps met behulp van [Shared Access Signature (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature). Deze hand tekening wordt door gegeven als een query parameter en moet worden gevalideerd voordat de logische app kan worden uitgevoerd. Azure genereert de hand tekening met een unieke combi natie van een geheime sleutel per logische app, de naam van de trigger en de bewerking die wordt uitgevoerd. Tenzij iemand toegang heeft tot de sleutel van de geheime logische app, kan er dus geen geldige hand tekening worden gegenereerd.
+**A** : Azure maakt veilig-call back-url's voor logische apps met behulp van [Shared Access Signature (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature). Deze hand tekening wordt door gegeven als een query parameter en moet worden gevalideerd voordat de logische app kan worden uitgevoerd. Azure genereert de hand tekening met een unieke combi natie van een geheime sleutel per logische app, de naam van de trigger en de bewerking die wordt uitgevoerd. Tenzij iemand toegang heeft tot de sleutel van de geheime logische app, kan er dus geen geldige hand tekening worden gegenereerd.
 
 > [!IMPORTANT]
 > Voor productie-en hogere beveiligings systemen raden wij u ten zeerste aan om uw logische app rechtstreeks vanuit de browser aan te roepen om de volgende redenen:
@@ -391,9 +392,11 @@ Als u de JSON-definitie voor de reactie actie en de volledige JSON-definitie van
 > * De gedeelde toegangs sleutel wordt weer gegeven in de URL.
 > * U kunt geen beleids regels voor beveiligings inhoud beheren vanwege gedeelde domeinen van Azure Logic Apps klanten.
 
+Voor meer informatie over beveiliging, autorisatie en versleuteling voor inkomende oproepen naar uw logische app, zoals [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), voorheen bekend als Secure Sockets Layer (SSL), [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml), uw logische app weer geven met Azure API Management of het beperken van de IP-adressen die afkomstig zijn van binnenkomende oproepen, Zie [beveiligde toegang en gegevens toegang voor inkomende oproepen op op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>V: kan ik aanroep bare eind punten verder configureren?
 
-**A**: Ja, https-eind punten ondersteunen meer geavanceerde configuratie via [Azure API Management](../api-management/api-management-key-concepts.md). Deze service biedt ook de mogelijkheid om alle Api's consistent te beheren, met inbegrip van Logic apps, het instellen van aangepaste domein namen, het gebruiken van meer verificatie methoden en meer, bijvoorbeeld:
+**A** : Ja, https-eind punten ondersteunen meer geavanceerde configuratie via [Azure API Management](../api-management/api-management-key-concepts.md). Deze service biedt ook de mogelijkheid om alle Api's consistent te beheren, met inbegrip van Logic apps, het instellen van aangepaste domein namen, het gebruiken van meer verificatie methoden en meer, bijvoorbeeld:
 
 * [De aanvraag methode wijzigen](../api-management/api-management-advanced-policies.md#SetRequestMethod)
 * [De URL-segmenten van de aanvraag wijzigen](../api-management/api-management-transformation-policies.md#RewriteURL)
@@ -403,4 +406,4 @@ Als u de JSON-definitie voor de reactie actie en de volledige JSON-definitie van
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Binnenkomende HTTPS-aanroepen ontvangen en erop reageren met behulp van Azure Logic Apps](../connectors/connectors-native-reqres.md)
-* [Toegang en gegevens beveiligen in Azure Logic Apps Access-toegang voor inkomende oproepen naar activerings methoden op basis van een aanvraag](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
+* [Toegang en gegevens beveiligen in Azure Logic Apps-toegang voor inkomende oproepen op op aanvragen gebaseerde activeringen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

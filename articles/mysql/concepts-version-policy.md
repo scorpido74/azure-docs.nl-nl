@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 75e24f9437257769a3d9bfd69980a9b8606d0563
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0670107d84374589aa60cc18f184b9b3d3facce1
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423985"
+ms.locfileid: "94331801"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>Beleid voor Azure Database for MySQL-versie
 
@@ -48,12 +48,13 @@ De volgende tabel bevat de details van de buiten gebruiks telling van de primair
 ## <a name="retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql"></a>Buiten gebruik gestelde MySQL-Engine versies worden niet ondersteund in Azure Database for MySQL
 
 Als u na de datum van uittreding voor elke MySQL-database versie doorgaat, moet u rekening houden met de volgende beperkingen:
-- Omdat de community geen verdere oplossingen voor problemen of beveiligingsfixes uitbrengt, wordt de buiten gebruik gestelde data base-engine niet door Azure voor MySQL in rekening gehouden voor eventuele fouten of beveiliging, of is het anders beveiligings maatregelen met betrekking tot de buiten gebruik gestelde data base-engine. Azure blijft echter periodiek onderhoud en patches uitvoeren voor de host, het besturings systeem, containers en andere service-gerelateerde onderdelen.
+- Aangezien de community geen verdere oplossingen voor problemen of beveiligingsfixes uitbrengt, zal Azure Database for MySQL de buiten gebruik gestelde data base-engine niet voor eventuele fouten of beveiliging bijwerken of anderszins beveiligings maatregelen treffen met betrekking tot de buiten gebruik gestelde data base-engine. Azure blijft echter periodiek onderhoud en patches uitvoeren voor de host, het besturings systeem, containers en andere service-gerelateerde onderdelen.
 - Als er mogelijk ondersteunings problemen optreden met betrekking tot de MySQL-data base, kunnen we u mogelijk geen ondersteuning bieden voor u. In dergelijke gevallen moet u uw data base upgraden om u te helpen bij het verlenen van ondersteuning.
 - U kunt geen nieuwe database servers maken voor de buiten gebruik gestelde versie. U kunt echter herstel naar een bepaald tijdstip uitvoeren en voor uw bestaande servers Lees replica's maken...
 - Nieuwe service functies die zijn ontwikkeld door Azure Database for MySQL, zijn mogelijk alleen beschikbaar voor ondersteunde database server versies.
 - Beschik baarheid van de uptime geldt alleen voor het Azure Database for MySQL van problemen met de service en niet voor uitval tijd die wordt veroorzaakt door fouten met betrekking tot de data base-engine.  
-- In het uitzonderlijke geval van een ernstige bedreiging van de service die wordt veroorzaakt door het beveiligingslek met betrekking tot de MySQL-data base-engine die is geïdentificeerd in de ingecheckte database versie, kan Azure ervoor kiezen het reken knooppunt van uw database server te stoppen om de service eerst te beveiligen. U wordt gevraagd de server bij te werken voordat u de server online brengt. Tijdens het upgrade proces worden uw gegevens altijd beveiligd met automatische back-ups die worden uitgevoerd op de service, die kan worden gebruikt om terug te zetten naar de oudere versie.
+- In het uitzonderlijke geval van een ernstige bedreiging van de service die wordt veroorzaakt door het beveiligingslek met betrekking tot de MySQL-data base-engine die is geïdentificeerd in de buiten gebruik gestelde versie van de data base, kan Azure ervoor kiezen het reken knooppunt van uw database server te stoppen om de service eerst te beveiligen. U wordt gevraagd de server bij te werken voordat u de server online brengt. Tijdens het upgrade proces worden uw gegevens altijd beveiligd met automatische back-ups die worden uitgevoerd op de service, die kan worden gebruikt om terug te zetten naar de oudere versie. 
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a04088fc1074949a1228794c22c1fa65a0b736a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370030"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330934"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>De synthese verbeteren met het hulp programma voor het maken van een audio-inhoud
 
@@ -131,16 +131,16 @@ Als meer dan één gebruiker het maken van audio-inhoud wil gebruiken, kunt u uw
 
 Volg deze stappen om een gebruiker toe te voegen aan een spraak bron, zodat deze audio-inhoud kan maken.
 
-1. Zoek naar **cognitieve Services** in het Azure Portal, selecteer de spraak resource waaraan u gebruikers wilt toevoegen.
+1. Zoek naar **cognitieve Services** in het [Azure Portal](https://portal.azure.com/), selecteer de spraak resource waaraan u gebruikers wilt toevoegen.
 2. Klik op **Toegangsbeheer (IAM)** . Klik op het tabblad **Roltoewijzingen** om alle roltoewijzingen voor dit abonnement weer te geven.
-    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="Een diagram van de stappen die nodig zijn om tekst-naar-spraak-uitvoer te verfijnen":::
+    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="Tabblad roltoewijzing":::
 1. Klik op **Toevoegen** > **Roltoewijzing toevoegen** om het deelvenster Roltoewijzing toevoegen te openen. Selecteer in de vervolg keuzelijst rol de gebruikersrol **cognitieve service** . Als u de gebruiker eigenaar van deze spraak bron wilt worden, kunt u de rol **eigenaar** selecteren.
 1. Selecteer een gebruiker in de lijst. Als de gebruiker niet in de lijst wordt weer gegeven, kunt u in het selectie vakje typen om in de map te zoeken naar namen en e-mail adressen. Als de gebruiker zich niet in deze map bevindt, kunt u de [Microsoft-account](https://account.microsoft.com/account) van de gebruiker (die wordt vertrouwd door Azure Active Directory) invoeren.
 1. Klik op **Opslaan** om de rol toe te wijzen. Na enkele ogen blikken is de gebruiker de rol van de cognitieve service toegewezen aan het spraak bron bereik.
 
-    :::image source="media/audio-content-creation/add-role-first.png" alt-text="Een diagram van de stappen die nodig zijn om tekst-naar-spraak-uitvoer te verfijnen":::
+    :::image source="media/audio-content-creation/add-role-first.png" alt-text="Dialoog venster rol toevoegen":::
 
-1. De gebruikers die u toevoegt, ontvangen een uitnodigings-e-mail. Nadat deze zijn geklikt op **uitnodiging accepteren**  >  **accepteren om lid te worden van Azure**, kunnen ze [audio-inhoud maken](https://aka.ms/audiocontentcreation)gebruiken.
+1. De gebruikers die u toevoegt, ontvangen een uitnodigings-e-mail. Nadat deze zijn geklikt op **uitnodiging accepteren**  >  **accepteren om lid te worden van Azure** , kunnen ze [audio-inhoud maken](https://aka.ms/audiocontentcreation)gebruiken.
 
 Gebruikers die zich in dezelfde spraak resource bevinden, zien elkaars werk in het maken van audio Contents Studio. Als u wilt dat elke afzonderlijke gebruiker een unieke en particuliere werk plek heeft bij het maken van audio-inhoud, moet u voor elke gebruiker [een nieuwe spraak bron maken](#step-2---create-a-speech-resource) en elke gebruiker de unieke toegang geven tot de spraak resource. 
 
@@ -148,15 +148,15 @@ Gebruikers die zich in dezelfde spraak resource bevinden, zien elkaars werk in h
 1. Zoek naar **cognitieve Services** in het Azure Portal, selecteer de spraak bron waarvan u gebruikers wilt verwijderen.
 2. Klik op **Toegangsbeheer (IAM)** . Klik op **het tabblad roltoewijzingen om** alle roltoewijzingen voor deze spraak resource weer te geven.
 3. Selecteer de gebruikers die u wilt verwijderen en klik op **verwijderen**  >  **OK**.
-    :::image source="media/audio-content-creation/remove-user.png" alt-text="Een diagram van de stappen die nodig zijn om tekst-naar-spraak-uitvoer te verfijnen":::
+    :::image source="media/audio-content-creation/remove-user.png" alt-text="Knop verwijderen":::
 
 ### <a name="enable-users-to-grant-access"></a>Gebruikers in staat stellen om toegang te verlenen
 Als u een van de gebruikers toegang wilt geven tot andere gebruikers, moet u de gebruiker de rol van eigenaar van de spraak resource geven en de gebruiker instellen als de Azure Directory-lezer. 
 1. Voeg de gebruiker toe als de eigenaar van de spraak resource. Zie [gebruikers toevoegen aan een spraak bron](#add-users-to-a-speech-resource).
-    :::image source="media/audio-content-creation/add-role.png" alt-text="Een diagram van de stappen die nodig zijn om tekst-naar-spraak-uitvoer te verfijnen":::
-1. Selecteer het samengevouwen menu in de linkerbovenhoek. Klik op **Azure Active Directory**en klik vervolgens op **gebruikers**.
+    :::image source="media/audio-content-creation/add-role.png" alt-text="Veld eigenaar van rol":::
+1. Selecteer het samengevouwen menu in de linkerbovenhoek. Klik op **Azure Active Directory** en klik vervolgens op **gebruikers**.
 1. Zoek de Microsoft-account van de gebruiker en ga naar de detail pagina van de gebruiker. Klik op **toegewezen rollen**.
-1. Klik op **toewijzingen**  ->  **Directory-lezers**toevoegen.
+1. Klik op **toewijzingen**  ->  **Directory-lezers** toevoegen.
 
 ## <a name="see-also"></a>Zie ook
 

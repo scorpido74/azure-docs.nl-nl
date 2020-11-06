@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a38c4bb18e16a814b626a6941d626b66311cd8ea
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755526"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329509"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Welke regio's zijn beschikbaar?
 
@@ -88,3 +88,7 @@ Een sessie mag alleen worden gestart vanuit de Azure-portal. Meld u aan bij de A
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr">Wat doe ik met implementatiefouten?</a>
 
 Bekijk de foutberichten goed en [dien een ondersteuningsaanvraag in de Azure-portal in](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request), als dat nog nodig is. Implementatiefouten kunnen het gevolg zijn van [limieten voor Azure-abonnementen, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Klanten kunnen met name te maken krijgen met de limiet voor het aantal openbare IP-adressen dat is toegestaan per abonnement. Hierdoor kan de implementatie van Azure Bastion mislukken.
+
+### <a name="how-do-i-incorporate-azure-bastion-in-my-dr-plan"></a><a name="dr"></a>Hoe neem ik Azure Bastion op in mijn plan voor herstel na noodgevallen?
+
+Omdat Azure Bastion wordt gekoppeld aan een Azure-regio en geïmplementeerd binnen VNets of gepeerde VNets, bent u verantwoordelijk om Azure Bastion te implementeren in een VNet voor herstel na noodgevallen. In het geval van een Azure-regiofout, moet u een failoverbewerking uitvoeren voor virtuele machines, vervolgens de Azure Bastion-host gebruiken die is geïmplementeerd in de regio voor herstel na noodgevallen om verbinding te maken met de VM's die geïmplementeerd zijn in de regio voor herstel na noodgevallen.

@@ -1,6 +1,6 @@
 ---
-title: Azure Load Balancer van uitgaande proxy
-description: Beschrijft hoe Azure Load Balancer wordt gebruikt als proxy voor uitgaande internet connectiviteit
+title: SNAT voor uitgaande verbindingen
+description: Beschrijft hoe Azure Load Balancer wordt gebruikt voor het uitvoeren van SNAT voor uitgaande internet connectiviteit
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,28 +8,31 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 185bb47677e978a3098f39024995da6399f90658
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b3924a563d8266cfa38f24106dbb84102031a182
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241766"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331869"
 ---
-# <a name="outbound-proxy-azure-load-balancer"></a>Azure Load Balancer van uitgaande proxy
+# <a name="using-snat-for-outbound-connections"></a>SNAT gebruiken voor uitgaande verbindingen
 
-Een Azure-load balancer kan worden gebruikt als een proxy voor uitgaande Internet verbinding. De load balancer biedt de uitgaande verbinding voor de back-end-exemplaren. 
+De frontend-Ip's van een open bare Azure-load balancer kunnen worden gebruikt om uitgaande verbinding met Internet te bieden voor back-end-exemplaren. Deze configuratie maakt gebruik van **bron Network Address Translation (SNAT)**. SNAT schrijft het IP-adres van de back-end naar het open bare IP-adres van uw load balancer. 
 
-Deze configuratie maakt gebruik van **bron Network Address Translation (SNAT)** . SNAT schrijft het IP-adres van de back-end naar het open bare IP-adres van uw load balancer. 
+SNAT maakt **IP-maskering** van het back-end-exemplaar mogelijk. Hierdoor wordt voor komen dat externe bronnen een direct adres hebben voor de back-end-exemplaren. Het delen van een IP-adres tussen back-end-instanties reduceert de kosten van statische open bare Ip's en ondersteunt scenario's zoals het vereenvoudigen van IP-lijsten met verkeer van bekende open bare Ip's. 
 
-SNAT maakt **IP-maskering** van het back-end-exemplaar mogelijk. Hierdoor wordt voor komen dat externe bronnen een direct adres hebben voor de back-end-exemplaren. 
+>[!Note]
+> [Virtual Network NAT](https://docs.microsoft.com/azure/virtual-network/nat-overview) is de aanbevolen oplossing voor toepassingen waarvoor een groot aantal uitgaande verbindingen of zakelijke klanten vereist zijn die een enkele set IP-adressen nodig hebben om te kunnen worden gebruikt vanuit een bepaald virtueel netwerk. De dynamische toewijzing maakt eenvoudige configuratie mogelijk en > het meest efficiënte gebruik van de SNAT-poorten van elk IP-adres. Ook kunnen alle bronnen in het virtuele netwerk een set IP-adressen delen zonder dat ze > een load balancer hoeven te delen.
 
-Het delen van een IP-adres tussen back-end-instanties reduceert de kosten van statische open bare Ip's en ondersteunt scenario's zoals het vereenvoudigen van IP-lijsten met verkeer van bekende open bare Ip's. 
+>[!Important]
+> Zelfs als er geen uitgaande SNAT is geconfigureerd, zijn Azure Storage-accounts binnen dezelfde regio nog steeds toegankelijk en hebben back-endservers nog steeds toegang tot micro soft-Services, zoals Windows-updates.
 
-## <a name="sharing-ports-across-resources"></a><a name ="snat"></a> Poorten delen via resources
+>[!NOTE] 
+>In dit artikel worden alleen Azure Resource Manager-implementaties behandeld. Controleer de [uitgaande verbindingen (klassiek)](load-balancer-outbound-connections-classic.md) voor alle klassieke implementatie Scenario's in Azure.
 
-Als de back-end-bronnen van een load balancer geen ILPIP-adressen op exemplaar niveau hebben, wordt er een uitgaande verbinding tot stand gebracht via het frontend-IP-adres van de open bare load balancer.
+## <a name="sharing-frontend-ip-address-across-backend-resources"></a><a name ="snat"></a> Front-end-IP-adres delen via back-upbronnen
 
-Poorten worden gebruikt voor het genereren van unieke id's die worden gebruikt voor het onderhouden van afzonderlijke stromen. Het Internet maakt gebruik van een vijf tuple om dit onderscheid te bieden.
+Als de back-end-bronnen van een load balancer geen ILPIP-adressen op exemplaar niveau hebben, wordt er een uitgaande verbinding tot stand gebracht via het frontend-IP-adres van de open bare load balancer. Poorten worden gebruikt voor het genereren van unieke id's die worden gebruikt voor het onderhouden van afzonderlijke stromen. Het Internet maakt gebruik van een vijf tuple om dit onderscheid te bieden.
 
 De vijf-tuple bestaat uit:
 
@@ -38,21 +41,96 @@ De vijf-tuple bestaat uit:
 * Bron-IP
 * Bron poort en-protocol om dit onderscheid te bieden.
 
-Als een poort wordt gebruikt voor binnenkomende verbindingen, heeft deze een **listener** voor binnenkomende verbindings aanvragen op die poort en kan deze niet worden gebruikt voor uitgaande verbindingen. 
+Als een poort wordt gebruikt voor binnenkomende verbindingen, heeft deze een **listener** voor binnenkomende verbindings aanvragen op die poort en kan deze niet worden gebruikt voor uitgaande verbindingen. Als u een uitgaande verbinding wilt maken, moet u een **tijdelijke poort** gebruiken om de bestemming aan te bieden met een poort waarop u een afzonderlijke verkeers stroom wilt communiceren en onderhouden. Wanneer deze tijdelijke poorten worden gebruikt voor het uitvoeren van SNAT, worden deze **SNAT-poorten** genoemd. 
 
-Als u een uitgaande verbinding wilt maken, moet u een **tijdelijke poort** gebruiken om de bestemming aan te bieden met een poort waarop u een afzonderlijke verkeers stroom wilt communiceren en onderhouden. 
+Elk IP-adres heeft per definitie 65.535 poorten. Elke poort kan worden gebruikt voor binnenkomende of uitgaande verbindingen voor TCP (Transmission Control Protocol) en UDP (User Data gram Protocol). Wanneer een openbaar IP-adres wordt toegevoegd als een frontend-IP aan een load balancer, geeft Azure 64.000 in aanmerking voor gebruik als SNAT-poorten. 
 
-Elk IP-adres heeft 65.535 poorten. De eerste 1024-poorten zijn gereserveerd als **systeem poorten** . Elke poort kan worden gebruikt voor binnenkomende of uitgaande verbindingen voor TCP en UDP. 
+>[!NOTE]
+> Elke poort die wordt gebruikt voor een taak verdeling of binnenkomende NAT-regel, gebruikt een bereik van acht poorten van deze 64.000-poorten, waardoor het aantal poorten dat in aanmerking komt voor SNAT, wordt verminderd. Als een taakverdelings-of NAT-regel van een load-> zich in hetzelfde bereik van acht bevindt als een andere, worden er geen extra poorten gebruikt. 
 
-Van de resterende poorten biedt Azure 64.000 voor gebruik als **tijdelijke poorten** . Wanneer een IP-adres wordt toegevoegd als een front-end-IP-configuratie, kunnen deze tijdelijke poorten worden gebruikt voor SNAT.
+Via [Uitgaande regels](https://docs.microsoft.com/azure/load-balancer/outbound-rules) en taakverdelings regels kunnen deze SNAT-poorten worden gedistribueerd naar back-end-exemplaren zodat ze de open bare IP-adressen van de Load Balancer voor uitgaande verbindingen kan delen.
 
-Via uitgaande regels kunnen deze SNAT-poorten worden gedistribueerd naar back-end-exemplaren zodat ze de open bare IP ('s) van de load balancer voor uitgaande verbindingen delen.
+Wanneer [scenario 2](#scenario2) hieronder is geconfigureerd, wordt door de host voor elk back-end-exemplaar een SNAT uitgevoerd op pakketten die deel uitmaken van een uitgaande verbinding. Bij het uitvoeren van een SNAT op een uitgaande verbinding van een back-end-exemplaar, wordt het bron-IP-adres door de host opnieuw naar een van de frontend-Ip's genoteerd. Om unieke stromen te behouden, schrijft de host de bron poort van elk uitgaand pakket naar een van de toegewezen SNAT-poorten voor de back-end-instantie.
 
-Netwerken op de host voor elk back-end-exemplaar doen SNAT naar pakketten die deel uitmaken van een uitgaande verbinding. De host herschrijft het bron-IP-adres naar een van de open bare Ip's. De host herschrijft de bron poort van elk uitgaand pakket naar een van de SNAT-poorten.
+## <a name="outbound-connection-behavior-for-different-scenarios"></a>Gedrag van uitgaande verbinding voor verschillende scenario's
+  * Virtuele machine met een openbaar IP-adres.
+  * Virtuele machine zonder openbaar IP-adres.
+  * Virtuele machine zonder openbaar IP-adres en zonder standaard load balancer.
+        
+
+ ### <a name="scenario-1-virtual-machine-with-public-ip"></a><a name="scenario1"></a> Scenario 1: virtuele machine met openbaar IP-adres
+
+
+ | Lidkoppelingen | Methode | IP-protocollen |
+ | ---------- | ------ | ------------ |
+ | Openbaar load balancer of zelfstandig | [SNAT (bron netwerk adres omzetting)](#snat) </br> niet gebruikt. | TCP (Transmission Control Protocol) </br> UDP (User Data gram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (Encapsulating Security Payload) |
+
+
+ #### <a name="description"></a>Description
+
+
+ Azure gebruikt het open bare IP-adres dat is toegewezen aan de IP-configuratie van de NIC van het exemplaar voor alle uitgaande stromen. Alle tijdelijke poorten zijn beschikbaar voor het exemplaar. Het maakt niet uit of de virtuele machine gelijkmatig is verdeeld of niet. Dit scenario heeft voor rang op de andere. 
+
+
+ Een openbaar IP-adres dat is toegewezen aan een virtuele machine is een 1:1-relatie (in plaats van 1: veel) en geïmplementeerd als een stateless 1:1 NAT.
+
+
+ ### <a name="scenario-2-virtual-machine-without-public-ip-and-behind-standard-public-load-balancer"></a><a name="scenario2"></a>Scenario 2: virtuele machine zonder openbaar IP-adres en achter standaard open bare Load Balancer
+
+
+ | Lidkoppelingen | Methode | IP-protocollen |
+ | ------------ | ------ | ------------ |
+ | Openbare load balancer | Het gebruik van load balancer frontend-IP-adressen voor [SNAT](#snat).| TCP </br> UDP |
+
+
+ #### <a name="description"></a>Description
+
+
+ De load balancer resource is geconfigureerd met een regel voor uitgaande verbindingen of een taakverdelings regel die standaard SNAT mogelijk maakt. Deze regel wordt gebruikt om een koppeling tussen de open bare IP-frontend te maken met de back-end-pool. 
+
+
+ Als u deze regel configuratie niet voltooit, wordt het gedrag in scenario 3 beschreven. 
+
+
+ Een regel met een listener is niet vereist voor het slagen van de status test.
+
+
+ Wanneer een virtuele machine een uitgaande stroom maakt, wordt het IP-adres van de bron door Azure vertaald naar het open bare IP-adres van de open bare frontend van load balancer. Deze vertaling wordt uitgevoerd via [SNAT](#snat). 
+
+
+ Tijdelijke poorten van het open bare IP-adres van de load balancer frontend worden gebruikt om onderscheid te maken tussen afzonderlijke stromen die afkomstig zijn van de virtuele machine. SNAT maakt dynamisch gebruik van [vooraf toegewezen tijdelijke poorten](#preallocatedports) wanneer uitgaande stromen worden gemaakt. 
+
+
+ In deze context worden de tijdelijke poorten die worden gebruikt voor SNAT de SNAT-poorten genoemd. Het wordt nadrukkelijk aanbevolen om een [uitgaande regel](https://docs.microsoft.com/azure/load-balancer/outbound-rules) expliciet te configureren. Als u een standaard-SNAT gebruikt via een taakverdelings regel, worden de SNAT-poorten vooraf toegewezen, zoals beschreven in de [standaard toewijzings tabel](#snatporttable)voor de SNAT-poorten.
+
+
+ ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>Scenario 3: virtuele machine zonder openbaar IP-adres en achter basis Load Balancer
+
+
+ | Lidkoppelingen | Methode | IP-protocollen |
+ | ------------ | ------ | ------------ |
+ |Geen </br> Basis load balancer | [SNAT](#snat) met dynamisch IP-adres op exemplaar niveau| TCP </br> UDP | 
+
+ #### <a name="description"></a>Description
+
+
+ Wanneer de virtuele machine een uitgaande stroom maakt, vertaalt Azure het bron-IP-adres naar een dynamisch toegewezen IP-adres voor de open bare bron. Dit open bare IP-adres kan **niet worden geconfigureerd** en kan niet worden gereserveerd. Dit adres telt niet op basis van de open bare IP-resource limiet van het abonnement. 
+
+
+ Het open bare IP-adres wordt vrijgegeven en er is een nieuwe open bare IP aangevraagd als u de volgende handelingen opnieuw implementeert: 
+
+
+ * Virtuele machine
+ * Beschikbaarheidsset
+ * Schaalset voor virtuele machines 
+
+
+ Gebruik dit scenario niet voor het toevoegen van IP-adressen aan een acceptatie lijst. Gebruik scenario 1 of 2 waar u het uitgaande gedrag expliciet declareert. De [SNAT](#snat) -poorten zijn vooraf toegewezen, zoals wordt beschreven in de [standaard toewijzings tabel](#snatporttable)voor de SNAT-poorten.
+
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Poorten uitgeputen
 
-Elke verbinding met hetzelfde doel-IP-adres en deze doel poort maakt gebruik van een SNAT-poort. Deze verbinding houdt een afzonderlijke **verkeers stroom** bij van het back-end-exemplaar of de **client** naar een **Server** . Dit proces geeft de server een afzonderlijke poort waarop verkeer kan worden geadresseerd. Zonder dit proces is de client computer niet op de hoogte van welke stroom een pakket deel uitmaakt.
+Elke verbinding met hetzelfde doel-IP-adres en deze doel poort maakt gebruik van een SNAT-poort. Deze verbinding houdt een afzonderlijke **verkeers stroom** bij van het back-end-exemplaar of de **client** naar een **Server**. Dit proces geeft de server een afzonderlijke poort waarop verkeer kan worden geadresseerd. Zonder dit proces is de client computer niet op de hoogte van welke stroom een pakket deel uitmaakt.
 
 Stel dat u meerdere browsers gaat https://www.microsoft.com :
 
@@ -72,7 +150,7 @@ Voor UDP-verbindingen gebruikt de load balancer een door de **poort beperkte keg
 
 Een poort wordt opnieuw gebruikt voor een onbeperkt aantal verbindingen. De poort wordt alleen opnieuw gebruikt als het doel-IP of de poort verschilt.
 
-## <a name="port-allocation"></a><a name="preallocatedports"></a> Poort toewijzing
+## <a name="default-port-allocation"></a><a name="preallocatedports"></a> Standaard poort toewijzing
 
 Elk openbaar IP-adres dat is toegewezen als frontend-IP van uw load balancer krijgt 64.000 SNAT-poorten voor de back-endadresgroep. Poorten kunnen niet worden gedeeld met leden van de back-endadresgroep-groep. Een bereik aan SNAT-poorten kan alleen worden gebruikt door één back-end-instantie om ervoor te zorgen dat retour pakketten correct worden gerouteerd. 
 

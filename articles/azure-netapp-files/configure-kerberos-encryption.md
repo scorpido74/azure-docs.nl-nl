@@ -12,18 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f4b485e79bfa89fe293c99fc4e84fc8c0729396a
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217045"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331886"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>NFSv 4.1 Kerberos-versleuteling voor Azure NetApp Files configureren
 
 Azure NetApp Files ondersteunt NFS-client versleuteling in Kerberos-modi (krb5, krb5i en krb5p) met AES-256-versleuteling. In dit artikel worden de vereiste configuraties voor het gebruik van een NFSv 4.1-volume met Kerberos-versleuteling beschreven.
+
+## <a name="considerations"></a>Overwegingen
+
+* NFSv 4.1 Kerberos-versleutelings volumes bieden momenteel geen ondersteuning voor Azure Active Directory Domain Services (AADDS). 
 
 ## <a name="requirements"></a>Vereisten
 
@@ -40,7 +44,7 @@ De volgende vereisten zijn van toepassing op NFSv 4.1 client Encryption:
 
 1.  Volg de stappen in [een NFS-volume maken voor Azure NetApp files](azure-netapp-files-create-volumes.md) om het nfsv 4.1-volume te maken.   
 
-    Stel op de pagina een volume maken de NFS-versie in op **nfsv 4.1**en stel Kerberos in op **ingeschakeld**.
+    Stel op de pagina een volume maken de NFS-versie in op **nfsv 4.1** en stel Kerberos in op **ingeschakeld**.
 
     > [!IMPORTANT] 
     > U kunt de selectie van Kerberos-activering niet wijzigen nadat het volume is gemaakt.
@@ -61,7 +65,7 @@ De volgende vereisten zijn van toepassing op NFSv 4.1 client Encryption:
 
     Voor Kerberos moet u ten minste één computer account maken in Active Directory. De account gegevens die u opgeeft, worden gebruikt voor het maken van de accounts voor zowel SMB- *als* Nfsv 4.1 Kerberos-volumes. De computer wordt automatisch gemaakt tijdens het maken van het volume.
 
-2.  Voer onder **Kerberos-realm**de **naam** van de ad-server en het **IP-** adres van de KDC in.
+2.  Voer onder **Kerberos-realm** de **naam** van de ad-server en het **IP-** adres van de KDC in.
 
     AD-server en KDC-IP kunnen dezelfde server zijn. Deze informatie wordt gebruikt om het SPN-computer account te maken dat wordt gebruikt door Azure NetApp Files. Nadat het computer account is gemaakt, gebruikt Azure NetApp Files DNS-server records om indien nodig aanvullende KDC-servers te vinden. 
 

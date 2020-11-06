@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376851"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330322"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Zelf studie voor het uitbreiden van Azure AD B2C om on-premises toepassingen te beveiligen met behulp van Strata
 
@@ -57,7 +57,7 @@ In het volgende architectuur diagram wordt de implementatie weer gegeven.
 
 ![Afbeelding toont de architectuur van een Azure AD B2C-integratie met Strata Maverics om toegang tot hybride apps mogelijk te maken](./media/partner-strata/strata-architecture-diagram.png)
 
-| Stappen | Beschrijving |
+| Stappen | Description |
 |:-------|:---------------|
 | 1. | De gebruiker maakt een aanvraag voor toegang tot de on-premises gehoste toepassing. De Maverics-identiteits Orchestrator proxy's de aanvraag die de gebruiker heeft gemaakt voor de toepassing.|
 | 2. | De Orchestrator controleert de verificatie status van de gebruiker. Als er geen sessie token wordt ontvangen of het opgegeven sessie token ongeldig is, wordt de gebruiker naar Azure AD B2C voor verificatie verzonden.|
@@ -69,7 +69,7 @@ In het volgende architectuur diagram wordt de implementatie weer gegeven.
 | 8. | De gebruiker is nu geverifieerd en heeft toegang tot de app.|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Maverics Identity Orchestrator ophalen
-
+Neem contact op met [Strata](https://www.strata.io/contact/)om de software te gebruiken die u gebruikt om uw oude on-premises app te integreren met Azure AD B2C. Nadat u de software hebt verkregen, volgt u de onderstaande stappen om de specifieke vereisten voor Orchestrator te bepalen en de vereiste installatie-en configuratie stappen uit te voeren.
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Uw Azure AD B2C-Tenant configureren
 

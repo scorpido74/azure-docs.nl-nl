@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91936122"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329547"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netwerklimieten - Azure Resource Manager
 De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd via **Azure Resource Manager**. De beperkingen gelden per regio en per abonnement. Meer informatie over het [bekijken van uw huidige resourcegebruik op basis van uw abonnementslimieten](../articles/networking/check-usage-against-limits.md).
@@ -55,6 +55,7 @@ De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd v
 | Openbare IP-adressen<sup>1</sup> | 10 voor Basic. | Neem contact op met ondersteuning. |
 | Statische openbare IP-adressen<sup>1</sup> | 10 voor Basic. | Neem contact op met ondersteuning. |
 | Standaard openbare IP-adressen<sup>1</sup> | 10 | Neem contact op met ondersteuning. |
+| [Openbare IP-adressen per resourcegroep](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | Neem contact op met ondersteuning. | 
 | Voorvoegsels voor openbare IP | beperkt door het aantal standaard openbare IP-adressen in een abonnement | Neem contact op met ondersteuning. |
 | Voorvoegsellengte van het openbare IP-adres | /28 | Neem contact op met ondersteuning. |
 
@@ -106,6 +107,6 @@ De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd v
 | Door de gebruiker gedefinieerde routes per routetabel |400 |400 |
 | Openbare IP-adressen (dynamisch) |500 |500 |
 | Gereserveerde openbare IP-adressen |500 |500 |
-| Openbare VIP per implementatie |5 |Contact opnemen met ondersteuning |
-| Privé-VIP (interne taakverdeling) per implementatie |1 |1 |
+| Openbaar IP per implementatie |5 |Contact opnemen met ondersteuning |
+| Privé-IP (interne taakverdeling) per implementatie |1 |1 |
 | Toegangsbeheerlijsten voor eindpunt (ACL's) |50 |50 |

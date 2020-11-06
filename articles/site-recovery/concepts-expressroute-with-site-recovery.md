@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 99fa8d4cf8f48d0fe72da36baef20c83add438c0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367989"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330254"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute met Azure Site Recovery
 
@@ -31,7 +31,7 @@ Er zijn meerdere routerings domeinen gekoppeld aan een ExpressRoute-circuit. Mee
 
 Azure Site Recovery herstel na nood gevallen en migratie naar Azure mogelijk maken voor on-premises [virtuele Hyper-V-machines](hyper-v-azure-architecture.md), [virtuele VMware-machines](vmware-azure-architecture.md)en [fysieke servers](physical-azure-architecture.md). Voor alle on-premises naar Azure-scenario's worden er replicatie gegevens verzonden naar en opgeslagen in een Azure Storage-account. Tijdens de replicatie betaalt u geen kosten voor de virtuele machine. Wanneer u een failover naar Azure uitvoert, maakt Site Recovery automatisch virtuele Azure IaaS-machines.
 
-Site Recovery repliceert gegevens naar een Azure Storage account of een door de replica beheerde schijf in de Azure-doel regio via een openbaar eind punt. Als u ExpressRoute wilt gebruiken voor Site Recovery replicatie verkeer, kunt u gebruikmaken van [micro soft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) of een bestaande [open bare peering](../expressroute/about-public-peering.md) (afgeschaft voor nieuwe creatie). Micro soft-peering is het aanbevolen routerings domein voor replicatie. Houd er rekening mee dat replicatie niet wordt ondersteund via persoonlijke peering.
+Site Recovery repliceert gegevens naar een Azure Storage account of een door de replica beheerde schijf in de Azure-doel regio via een openbaar eind punt. Als u ExpressRoute wilt gebruiken voor Site Recovery replicatie verkeer, kunt u gebruikmaken van [micro soft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) of een bestaande [open bare peering](../expressroute/about-public-peering.md) (afgeschaft voor nieuwe creatie). Micro soft-peering is het aanbevolen routerings domein voor replicatie. Houd er rekening mee dat replicatie alleen wordt ondersteund via particuliere peering als [privé-eind punten zijn ingeschakeld voor de kluis](hybrid-how-to-enable-replication-private-endpoints.md).
 
 Zorg er ook voor dat aan de [netwerk vereisten](vmware-azure-configuration-server-requirements.md#network-requirements) voor de configuratie server wordt voldaan. De configuratie server voor de indeling van Site Recovery replicatie vereist dat er verbinding wordt met specifieke Url's. ExpressRoute kan niet worden gebruikt voor deze verbinding. 
 

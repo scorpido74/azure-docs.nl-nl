@@ -11,13 +11,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/09/2020
-ms.openlocfilehash: 761841c1f2146a33b35cdddc4adc4d3eb1a4b139
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/06/2020
+ms.openlocfilehash: 6b37a0df994546762abbcf3452d8e7b52dec6847
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635283"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331410"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>De Azure SSIS Integration runtime configureren met SQL Database geo-replicatie en failover
 
@@ -33,29 +33,32 @@ Zie [overzicht: actieve geo-replicatie en groepen voor automatische failover](..
 
 ### <a name="prerequisites"></a>Vereisten
 
-Een door Azure SQL beheerd exemplaar maakt gebruik van een *database hoofd sleutel (DMK)* om gegevens, referenties en verbindings gegevens die zijn opgeslagen in een Data Base te beveiligen. Als u de automatische ontsleuteling van DMK wilt inschakelen, wordt een kopie van de sleutel versleuteld via de *Server hoofd sleutel (SMK)* . 
+Een door Azure SQL beheerd exemplaar maakt gebruik van een *database hoofd sleutel (DMK)* om gegevens, referenties en verbindings gegevens die zijn opgeslagen in een Data Base te beveiligen. Als u de automatische ontsleuteling van DMK wilt inschakelen, wordt een kopie van de sleutel versleuteld via de *Server hoofd sleutel (SMK)*. 
 
 De SMK wordt niet gerepliceerd in een failover-groep. U moet een wacht woord toevoegen aan de primaire en secundaire instanties voor DMK-ontsleuteling na een failover.
 
 1. Voer de volgende opdracht uit voor SSISDB op het primaire exemplaar. Met deze stap voegt u een nieuw versleutelings wachtwoord toe.
 
-    ```sql
-    ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
-    ```
+   ```sql
+   ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
+   ```
 
 2. Een failover-groep maken op een door SQL beheerd exemplaar.
 
 3. Voer **sp_control_dbmasterkey_password** uit op het secundaire exemplaar met behulp van het nieuwe versleutelings wachtwoord.
 
-    ```sql
-    EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB',   
-        @password = N'<password>', @action = N'add';  
-    GO
-    ```
+   ```sql
+   EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'<password>', @action = N'add';  
+   GO
+   ```
 
 ### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>Scenario 1: Azure-SSIS IR verwijst naar een listener-eind punt voor lezen/schrijven
 
-Als u wilt dat de Azure-SSIS IR naar een listener-eind punt voor lezen/schrijven wijst, moet u eerst naar het eerste eind punt van de primaire server verwijzen. Nadat u SSISDB in een failovergroep hebt geplaatst, kunt u overschakelen naar het listener-eind punt voor lezen/schrijven en de Azure-SSIS IR opnieuw starten.
+Als u wilt dat de Azure-SSIS IR naar een listener-eind punt voor lezen/schrijven wijst, moet u eerst naar het eerste eind punt van de primaire server verwijzen. Nadat u SSISDB in een failovergroep hebt geplaatst, kunt u uw Azure-SSIS IR stoppen, wijzigen om naar het listener-eind punt voor lezen/schrijven te verwijzen met Azure PowerShell en start u het opnieuw.
+
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Managed Instance read/write listener endpoint"
+```
 
 #### <a name="solution"></a>Oplossing
 
@@ -65,12 +68,12 @@ Als er een failover optreedt, voert u de volgende stappen uit:
 
 2. Bewerk de Azure-SSIS IR met een nieuwe regio, een virtueel netwerk en een SAS-URI (Shared Access Signature) voor aangepaste installatie op het secundaire exemplaar. Omdat de Azure-SSIS IR verwijst naar een listener voor lezen/schrijven en het eind punt transparant is voor de Azure-SSIS IR, hoeft u het eind punt niet te bewerken.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -VNetId "new VNet" `
-                -Subnet "new subnet" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Start de Azure-SSIS IR opnieuw op.
 
@@ -86,35 +89,35 @@ Als er een failover optreedt, voert u de volgende stappen uit:
 
 2. Bewerk de Azure-SSIS IR met nieuwe informatie over de regio, het eind punt en het virtuele netwerk voor het secundaire exemplaar.
 
-    ```powershell
-      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                    -CatalogServerEndpoint "Azure SQL Database endpoint" `
-                    -CatalogAdminCredential "Azure SQL Database admin credentials" `
-                    -VNetId "new VNet" `
-                    -Subnet "new subnet" `
-                    -SetupScriptContainerSasUri "new custom setup SAS URI"
-        ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database endpoint" `
+      -CatalogAdminCredential "Azure SQL Database admin credentials" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
-3. Restart the Azure-SSIS IR.
+3. Start de Azure-SSIS IR opnieuw op.
 
-### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
+### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-managed-instance"></a>Scenario 3: Azure-SSIS IR wijst naar een openbaar eind punt van een SQL-beheerd exemplaar
 
-This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
+Dit scenario is geschikt als de Azure-SSIS IR verwijst naar een openbaar eind punt van een door Azure SQL beheerd exemplaar en het niet wordt toegevoegd aan een virtueel netwerk. Het enige verschil van scenario 2 is dat u de gegevens van het virtuele netwerk voor de Azure-SSIS IR na een failover niet hoeft te bewerken.
 
-#### Solution
+#### <a name="solution"></a>Oplossing
 
-When failover occurs, take the following steps:
+Als er een failover optreedt, voert u de volgende stappen uit:
 
-1. Stop the Azure-SSIS IR in the primary region.
+1. Stop de Azure-SSIS IR in de primaire regio.
 
-2. Edit the Azure-SSIS IR with the new region and endpoint information for the secondary instance.
+2. Bewerk de Azure-SSIS IR met de nieuwe regio-en eindpunt gegevens voor het secundaire exemplaar.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database server endpoint" `
+      -CatalogAdminCredential "Azure SQL Database server admin credentials" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Start de Azure-SSIS IR opnieuw op.
 
@@ -133,43 +136,41 @@ Als er een failover optreedt, voert u de volgende stappen uit.
 
 2. Voer een opgeslagen procedure uit om meta gegevens in SSISDB bij te werken om verbindingen van en te accepteren **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** .
    
-    ```sql
-    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-    ```
+   ```sql
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
 
 3. Maak een nieuwe data factory die wordt genoemd **\<new_data_factory_name\>** in de nieuwe regio.
 
-    ```powershell
-    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-                      -Location "new region"`
-                      -Name "<new_data_factory_name>"
-    ```
-    
-    Zie [een Azure-Data Factory maken met Power shell](quickstart-create-data-factory-powershell.md)voor meer informatie over deze Power shell-opdracht.
+   ```powershell
+   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+      -Location "new region"`
+      -Name "<new_data_factory_name>"
+   ```
+   
+   Zie [een Azure-Data Factory maken met Power shell](quickstart-create-data-factory-powershell.md)voor meer informatie over deze Power shell-opdracht.
 
 4. Maak een nieuwe Azure-SSIS IR met **\<new_integration_runtime_name\>** de naam in de nieuwe regio met behulp van Azure PowerShell.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-                                           -DataFactoryName "new data factory name" `
-                                           -Name "<new_integration_runtime_name>" `
-                                           -Description $AzureSSISDescription `
-                                           -Type Managed `
-                                           -Location $AzureSSISLocation `
-                                           -NodeSize $AzureSSISNodeSize `
-                                           -NodeCount $AzureSSISNodeNumber `
-                                           -Edition $AzureSSISEdition `
-                                           -LicenseType $AzureSSISLicenseType `
-                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                           -VnetId "new vnet" `
-                                           -Subnet "new subnet" `
-                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                           -CatalogPricingTier $SSISDBPricingTier
-    ```
-
-    Zie [de Azure-SSIS Integration runtime in azure Data Factory maken](create-azure-ssis-integration-runtime.md)voor meer informatie over deze Power shell-opdracht.
-
-
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+      -DataFactoryName "new data factory name" `
+      -Name "<new_integration_runtime_name>" `
+      -Description $AzureSSISDescription `
+      -Type Managed `
+      -Location $AzureSSISLocation `
+      -NodeSize $AzureSSISNodeSize `
+      -NodeCount $AzureSSISNodeNumber `
+      -Edition $AzureSSISEdition `
+      -LicenseType $AzureSSISLicenseType `
+      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+      -VnetId "new vnet" `
+      -Subnet "new subnet" `
+      -CatalogServerEndpoint $SSISDBServerEndpoint `
+      -CatalogPricingTier $SSISDBPricingTier
+   ```
+   
+   Zie [de Azure-SSIS Integration runtime in azure Data Factory maken](create-azure-ssis-integration-runtime.md)voor meer informatie over deze Power shell-opdracht.
 
 ## <a name="azure-ssis-ir-failover-with-sql-database"></a>Azure-SSIS IR failover met SQL Database
 
@@ -180,7 +181,11 @@ Dit scenario is geschikt wanneer:
 - De Azure-SSIS IR verwijst naar het Lees-of schrijf-listener-eind punt van de failovergroep.
 - De SQL Database-Server is *niet* geconfigureerd met de regel voor het service-eind punt van het virtuele netwerk.
 
-Als u wilt dat de Azure-SSIS IR naar een listener-eind punt voor lezen/schrijven wijst, moet u eerst naar het eerste eind punt van de primaire server verwijzen. Nadat u SSISDB in een failovergroep hebt geplaatst, kunt u overschakelen naar een listener-eind punt voor lezen/schrijven en de Azure-SSIS IR opnieuw starten.
+Als u wilt dat de Azure-SSIS IR naar een listener-eind punt voor lezen/schrijven wijst, moet u eerst naar het eerste eind punt van de primaire server verwijzen. Nadat u SSISDB in een failovergroep hebt geplaatst, kunt u uw Azure-SSIS IR stoppen, wijzigen om naar het listener-eind punt voor lezen/schrijven te verwijzen met Azure PowerShell en start u het opnieuw.
+
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Database read/write listener endpoint"
+```
 
 #### <a name="solution"></a>Oplossing
 
@@ -201,14 +206,14 @@ Als er een failover optreedt, voert u de volgende stappen uit:
 
 2. Bewerk de Azure-SSIS IR met nieuwe informatie over de regio, het eind punt en het virtuele netwerk voor het secundaire exemplaar.
 
-    ```powershell
-      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                        -CatalogServerEndpoint "Azure SQL Database endpoint" `
-                        -CatalogAdminCredential "Azure SQL Database admin credentials" `
-                        -VNetId "new VNet" `
-                        -Subnet "new subnet" `
-                        -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database endpoint" `
+      -CatalogAdminCredential "Azure SQL Database admin credentials" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Start de Azure-SSIS IR opnieuw op.
 
@@ -227,42 +232,41 @@ Als er een failover optreedt, voert u de volgende stappen uit.
 
 2. Voer een opgeslagen procedure uit om meta gegevens in SSISDB bij te werken om verbindingen van en te accepteren **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** .
    
-    ```sql
-    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-    ```
+   ```sql
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
 
 3. Maak een nieuwe data factory die wordt genoemd **\<new_data_factory_name\>** in de nieuwe regio.
 
-    ```powershell
-    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-                         -Location "new region"`
-                         -Name "<new_data_factory_name>"
-    ```
-    
-    Zie [een Azure-Data Factory maken met Power shell](quickstart-create-data-factory-powershell.md)voor meer informatie over deze Power shell-opdracht.
+   ```powershell
+   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+      -Location "new region"`
+      -Name "<new_data_factory_name>"
+   ```
+   
+   Zie [een Azure-Data Factory maken met Power shell](quickstart-create-data-factory-powershell.md)voor meer informatie over deze Power shell-opdracht.
 
 4. Maak een nieuwe Azure-SSIS IR met **\<new_integration_runtime_name\>** de naam in de nieuwe regio met behulp van Azure PowerShell.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-                                           -DataFactoryName "new data factory name" `
-                                           -Name "<new_integration_runtime_name>" `
-                                           -Description $AzureSSISDescription `
-                                           -Type Managed `
-                                           -Location $AzureSSISLocation `
-                                           -NodeSize $AzureSSISNodeSize `
-                                           -NodeCount $AzureSSISNodeNumber `
-                                           -Edition $AzureSSISEdition `
-                                           -LicenseType $AzureSSISLicenseType `
-                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                           -VnetId "new vnet" `
-                                           -Subnet "new subnet" `
-                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                           -CatalogPricingTier $SSISDBPricingTier
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+      -DataFactoryName "new data factory name" `
+      -Name "<new_integration_runtime_name>" `
+      -Description $AzureSSISDescription `
+      -Type Managed `
+      -Location $AzureSSISLocation `
+      -NodeSize $AzureSSISNodeSize `
+      -NodeCount $AzureSSISNodeNumber `
+      -Edition $AzureSSISEdition `
+      -LicenseType $AzureSSISLicenseType `
+      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+      -VnetId "new vnet" `
+      -Subnet "new subnet" `
+      -CatalogServerEndpoint $SSISDBServerEndpoint `
+      -CatalogPricingTier $SSISDBPricingTier
+   ```
 
-    Zie [de Azure-SSIS Integration runtime in azure Data Factory maken](create-azure-ssis-integration-runtime.md)voor meer informatie over deze Power shell-opdracht.
-
+   Zie [de Azure-SSIS Integration runtime in azure Data Factory maken](create-azure-ssis-integration-runtime.md)voor meer informatie over deze Power shell-opdracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 

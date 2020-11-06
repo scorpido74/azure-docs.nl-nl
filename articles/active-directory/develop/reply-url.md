@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042902"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331852"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Omleidings-URI (antwoord-URL) beperkingen en beperkingen
 
@@ -32,7 +32,7 @@ Een omleidings-URI of antwoord-URL is de locatie waar de autorisatie server de g
 
 In deze tabel ziet u het maximum aantal omleidings-Uri's dat u kunt toevoegen aan een app-registratie in het micro soft Identity-platform.
 
-| Accounts waarbij wordt aangemeld | Maximum aantal omleidings-Uri's | Beschrijving |
+| Accounts waarbij wordt aangemeld | Maximum aantal omleidings-Uri's | Description |
 |--------------------------|---------------------------------|-------------|
 | Micro soft-werk-of school accounts in de Tenant van de Azure Active Directory van een organisatie (Azure AD) | 256 | `signInAudience` het veld in het toepassings manifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs* |
 | Persoonlijke micro soft-accounts en werk-en school accounts | 100 | `signInAudience` het veld in het manifest van de toepassing is ingesteld op *AzureADandPersonalMicrosoftAccount* |
@@ -62,7 +62,9 @@ Per [RFC 8252-secties 8,3](https://tools.ietf.org/html/rfc8252#section-8.3) en [
 
 Uit het oogpunt van ontwikkeling betekent dit een aantal dingen:
 
-* Registreer niet meerdere omleidings-Uri's waarbij alleen de poort verschilt. Op de aanmeldings server wordt één wille keurig gekozen en wordt het gedrag gebruikt dat is gekoppeld aan die omleidings-URI (bijvoorbeeld of het een `web` -, `native` -,-of `spa` -type omleiding is).
+* Registreer niet meerdere omleidings-Uri's waarbij alleen de poort verschilt. Op de aanmeldings server wordt één wille keurig gekozen en wordt het gedrag gebruikt dat aan die omleidings-URI is gekoppeld (bijvoorbeeld of het een `web` -, `native` -of `spa` -type omleiding is).
+
+    Dit is vooral belang rijk wanneer u verschillende verificatie stromen wilt gebruiken in dezelfde toepassings registratie, bijvoorbeeld zowel de autorisatie code subsidie als de impliciete stroom. Om het juiste reactie gedrag te koppelen aan elke omleidings-URI, moet de aanmeldings server kunnen onderscheiden van de omleidings-Uri's en kan dit niet doen als alleen de poort verschilt.
 * Als u meerdere omleidings-Uri's op localhost wilt registreren om verschillende stromen tijdens de ontwikkeling te testen, moet u deze onderscheiden met de *padcomponent* van de URI. `http://127.0.0.1/MyWebApp`Komt bijvoorbeeld niet overeen `http://127.0.0.1/MyNativeApp` .
 * Het IPv6-loop back-adres ( `[::1]` ) wordt momenteel niet ondersteund.
 * Als u wilt voor komen dat uw app wordt verbroken door onjuist geconfigureerde firewalls of de naam van netwerk interfaces is gewijzigd, gebruikt u het IP-adres van de letterlijke waarde `127.0.0.1` in de omleidings-URI in plaats van `localhost` .

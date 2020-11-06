@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f92864cea4332157b0bf8b171a9d88b34f79a5ac
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f325a43895e1e9d73b11c06662851d7654d31ddb
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422107"
+ms.locfileid: "94331818"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Beleid voor Azure Database for PostgreSQL-versie
 
@@ -50,12 +50,12 @@ De onderstaande tabel bevat de details van het pensioen voor PostgreSQL primaire
 ## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>Buiten gebruik gestelde PostgreSQL-Engine versies worden niet ondersteund in Azure Database for PostgreSQL
 
 Als u na de datum van uittreding voor elke PostgreSQL-database versie doorgaat, moet u rekening houden met de volgende beperkingen als u de buiten gebruik gestelde versie doorloopt:
-- Omdat de community geen verdere oplossingen voor problemen of beveiligingsfixes zal vrijgeven, zal Azure voor PostgreSQL niet de buiten gebruik gestelde data base-engine voor eventuele fouten of beveiliging patchen, of anderszins beveiligings maatregelen treffen ten aanzien van de buiten gebruik gestelde data base-engine. U kunt beveiligings problemen of andere problemen ondervinden als gevolg hiervan. Azure blijft echter periodiek onderhoud en patches uitvoeren voor de host, het besturings systeem, containers en andere service-gerelateerde onderdelen.
+- Aangezien de community geen verdere oplossingen voor problemen of beveiligingsfixes uitbrengt, zal Azure Database for PostgreSQL de buiten gebruik gestelde data base-engine niet voor eventuele fouten of beveiliging bijwerken of anderszins beveiligings maatregelen treffen met betrekking tot de buiten gebruik gestelde data base-engine. U kunt beveiligings problemen of andere problemen ondervinden als gevolg hiervan. Azure blijft echter periodiek onderhoud en patches uitvoeren voor de host, het besturings systeem, containers en andere service-gerelateerde onderdelen.
 - Als er mogelijk ondersteunings problemen optreden met betrekking tot de PostgreSQL-data base, kunnen we u mogelijk geen ondersteuning bieden voor u. In dergelijke gevallen moet u uw data base upgraden om u te helpen bij het verlenen van ondersteuning.
 - U kunt geen nieuwe database servers maken voor de buiten gebruik gestelde versie. U kunt echter herstel naar een bepaald tijdstip uitvoeren en voor uw bestaande servers Lees replica's maken...
 - Nieuwe service functies die zijn ontwikkeld door Azure Database for PostgreSQL, zijn mogelijk alleen beschikbaar voor ondersteunde database server versies.
 - Beschik baarheid van de uptime geldt alleen voor het Azure Database for PostgreSQL van problemen met de service en niet voor uitval tijd die wordt veroorzaakt door fouten met betrekking tot de data base-engine.  
-- In het uitzonderlijke geval van een ernstige bedreiging van de service die wordt veroorzaakt door het beveiligings probleem van de PostgreSQL-data base-engine die is geïdentificeerd in de ingecheckte database versie, kan Azure ervoor kiezen het reken knooppunt van de database server te stoppen om de service te beveiligen. In dat geval ontvangt u mogelijk een upgrade van de server voordat u de server online brengt.
+- In het uitzonderlijke geval van een ernstige bedreiging van de service die wordt veroorzaakt door het beveiligings probleem van de PostgreSQL-data base-engine die is geïdentificeerd in de ingecheckte database versie, kan Azure ervoor kiezen uw database server te stoppen om de service te beveiligen. In dat geval wordt u gewaarschuwd om de server te upgraden voordat u de server online brengt.
 
 ## <a name="postgresql-version-syntax"></a>Syntaxis van de PostgreSQL-versie
 Vóór PostgreSQL versie 10 wordt het [postgresql-versie beleid](https://www.postgresql.org/support/versioning/) beschouwd als een _primaire versie_ -upgrade, zodat het eerste _of_ tweede nummer toeneemt. Bijvoorbeeld: 9,5 tot 9,6 werd beschouwd als een _primaire_ versie-upgrade. Vanaf versie 10 wordt alleen een wijziging in het eerste getal beschouwd als een primaire versie-upgrade. Een voor beeld: 10,0 tot 10,1 is een _kleine_ release-upgrade. Versie 10 tot 11 is een _primaire_ versie-upgrade.

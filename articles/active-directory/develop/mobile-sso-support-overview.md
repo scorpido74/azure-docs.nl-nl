@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740152"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331603"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Ondersteuning voor eenmalige aanmelding en app-beveiligings beleid in mobiele apps die u ontwikkelt
 
@@ -30,7 +30,7 @@ Met [eenmalige aanmelding (SSO)](../manage-apps/plan-sso-deployment.md) kan een 
 
 Wanneer u eenmalige aanmelding inschakelt in uw app, worden nieuwe verificatie mechanismen die worden geleverd met moderne authenticatie, zoals [wacht woord-aanmeldingen](../authentication/concept-authentication-passwordless.md), ontgrendeld. Gebruikers namen en wacht woorden zijn een van de meest voorkomende aanvals vectoren tegen toepassingen, en het inschakelen van EENMALIGe aanmelding biedt u de mogelijkheid om dit risico te beperken door voorwaardelijke toegang of wacht woordloze aanmeldingen af te dwingen die extra beveiliging bieden of gebruikmaken van veiligere verificatie mechanismen. Ten slotte is het inschakelen van eenmalige aanmelding ook mogelijk voor [eenmalige afmelding](v2-protocols-oidc.md#single-sign-out). Dit is handig in situaties zoals werk toepassingen die worden gebruikt op gedeelde apparaten.
 
-[App-beveiligings beleid (app)](/mem/intune/apps/app-protection-policy) zorgt ervoor dat de gegevens van een organisatie veilig en aanwezig blijven. Ze kunnen bedrijven hun gegevens in een app beheren en beveiligen en kunnen bepalen wie toegang heeft tot de app en de gegevens. Door app-beveiligings beleid te implementeren, kan uw app gebruikers verbinden met bronnen die worden beveiligd door beleid voor voorwaardelijke toegang en gegevens veilig overdragen van en naar andere beveiligde apps. Scenario's die zijn ontgrendeld door app-beveiligings beleid, zijn het vereisen van een pincode voor het openen van een app, het delen van gegevens tussen apps en het voor komen van gegevens van bedrijfs-apps naar een persoonlijke opslag locatie op het apparaat.
+[App-beveiligings beleid (app)](/mem/intune/apps/app-protection-policy) zorgt ervoor dat de gegevens van een organisatie veilig en aanwezig blijven. Ze kunnen bedrijven hun gegevens in een app beheren en beveiligen en kunnen bepalen wie toegang heeft tot de app en de gegevens. Door app-beveiligings beleid te implementeren, kan uw app gebruikers verbinden met bronnen die worden beveiligd door beleid voor voorwaardelijke toegang en gegevens veilig overdragen van en naar andere beveiligde apps. Scenario's die zijn ontgrendeld door app-beveiligings beleid, zijn het vereisen van een pincode voor het openen van een app, het delen van gegevens tussen apps en het voor komen van het opslaan van app-gegevens op persoonlijke opslag locaties.
 
 ## <a name="implementing-single-sign-on"></a>Eenmalige aanmelding implementeren
 
@@ -75,6 +75,6 @@ Voeg tot slot [de intune-SDK](/mem/intune/developer/app-sdk-get-started) toe aan
 - [Micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten (preview-versie)](apple-sso-plugin.md)
 - [Brokered-verificatie in Android](brokered-auth.md)
 - [Autorisatie agenten en hoe ze kunnen worden ingeschakeld](authorization-agents.md)
-- [Aan de slag met de Microsoft Intune app SDK](/mem/intune/developer/app-sdk-get-started)
+- [Aan de slag met de Microsoft Intune App SDK](/mem/intune/developer/app-sdk-get-started)
 - [De instellingen van de Intune App SDK configureren](/mem/intune/developer/app-sdk-ios#configure-settings-for-the-intune-app-sdk)
 - [Met Microsoft Intune beveiligde apps](/mem/intune/apps/apps-supported-intune-apps)
