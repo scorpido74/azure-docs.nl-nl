@@ -1,7 +1,7 @@
 ---
 title: 'Koppelings gegevens: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module koppeling toevoegen aan Azure Machine Learning voor het samen voegen van gegevens sets.
+description: Meer informatie over het gebruik van de module gegevens samen voegen in Azure Machine Learning Designer om twee gegevens sets samen te voegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 0cde479e50c67006a9ef1668ba68b211c3a9af93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c23dca40d50c5837bd9ff45bc3c3d7fb2581685b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907896"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420747"
 ---
 # <a name="join-data"></a>Gegevens samenvoegen
 
@@ -47,17 +47,17 @@ Als u een koppeling wilt uitvoeren op twee gegevens sets, moeten deze worden ger
    
 1. Gebruik de vervolg keuzelijst **type samen voegen** om op te geven hoe de gegevens sets moeten worden gecombineerd.  
   
-    * **Inner join**: een *inner join* is de meest voorkomende join-bewerking. Het retourneert de gecombineerde rijen alleen wanneer de waarden van de sleutel kolommen overeenkomen.  
+    * **Inner join** : een *inner join* is de meest voorkomende join-bewerking. Het retourneert de gecombineerde rijen alleen wanneer de waarden van de sleutel kolommen overeenkomen.  
   
-    * **Left outer join**: een *left outer join* retourneert samengevoegde rijen voor alle rijen uit de linkertabel. Wanneer een rij in de linkertabel geen overeenkomende rijen in de rechter tabel heeft, bevat de geretourneerde rij ontbrekende waarden voor alle kolommen uit de rechter tabel. U kunt ook een vervangings waarde voor ontbrekende waarden opgeven.  
+    * **Left outer join** : een *left outer join* retourneert samengevoegde rijen voor alle rijen uit de linkertabel. Wanneer een rij in de linkertabel geen overeenkomende rijen in de rechter tabel heeft, bevat de geretourneerde rij ontbrekende waarden voor alle kolommen uit de rechter tabel. U kunt ook een vervangings waarde voor ontbrekende waarden opgeven.  
   
-    * **Volledige outer join**: een *full outer join* retourneert alle rijen uit de linkertabel (**Tabel1**) en uit de rechter tabel (**tabel2**).  
+    * **Volledige outer join** : een *full outer join* retourneert alle rijen uit de linkertabel ( **Tabel1** ) en uit de rechter tabel ( **tabel2** ).  
   
          Voor elk van de rijen in een tabel die geen overeenkomende rijen heeft, bevat het resultaat een rij met ontbrekende waarden.  
   
-    * **Linker semi-koppeling**: een *Left semi-koppeling* retourneert alleen de waarden uit de linkertabel wanneer de waarden van de sleutel kolommen overeenkomen.  
+    * **Linker semi-koppeling** : een *Left semi-koppeling* retourneert alleen de waarden uit de linkertabel wanneer de waarden van de sleutel kolommen overeenkomen.  
 
-1. Voor de optie **behoud de juiste sleutel kolommen in een gekoppelde tabel**:
+1. Voor de optie **behoud de juiste sleutel kolommen in een gekoppelde tabel** :
 
     * Selecteer deze optie om de sleutels uit beide invoer tabellen weer te geven.
     * Schakel deze optie uit als u de sleutel kolommen alleen wilt retour neren van de invoer links.

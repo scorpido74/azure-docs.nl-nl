@@ -1,7 +1,7 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het maken van een afbeeldings classificatie model met behulp van de DenseNet-algoritme.
+description: Meer informatie over het gebruik van de DenseNet-module in Azure Machine Learning Designer voor het maken van een afbeeldings classificatie model met behulp van de DenseNet-algoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536627"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421325"
 ---
 # <a name="densenet"></a>DenseNet
 
@@ -35,11 +35,11 @@ Zie voor meer informatie over DenseNet het document Research, [dense-verbonden C
 
 1.  Voeg de module **DenseNet** toe aan uw pijp lijn in de ontwerp functie.  
 
-2.  Geef bij **model naam**de naam op van een bepaalde DenseNet-structuur en u kunt kiezen uit de ondersteunde DenseNet: ' densenet121 ', ' densenet161 ', ' densenet169 ', ' densenet201 '.
+2.  Geef bij **model naam** de naam op van een bepaalde DenseNet-structuur en u kunt kiezen uit de ondersteunde DenseNet: ' densenet121 ', ' densenet161 ', ' densenet169 ', ' densenet201 '.
 
-3.  Voor vooraf **getrainde**geeft u op of u een voor ImageNet wilt gebruiken. Als deze is geselecteerd, kunt u het model op basis van het geselecteerde vooraf getrainde model verfijnen. Als u dit selectie vakje uitschakelt, kunt u helemaal zelf trainen.
+3.  Voor vooraf **getrainde** geeft u op of u een voor ImageNet wilt gebruiken. Als deze is geselecteerd, kunt u het model op basis van het geselecteerde vooraf getrainde model verfijnen. Als u dit selectie vakje uitschakelt, kunt u helemaal zelf trainen.
 
-4.  Geef voor **geheugen efficiënt**op of controle punten moeten worden gebruikt. Dit is veel meer geheugen-efficiënt, maar langzamer. Zie voor meer informatie het document Research, [geheugen-efficiënte implementatie van DenseNets](https://arxiv.org/pdf/1707.06990.pdf).
+4.  Geef voor **geheugen efficiënt** op of controle punten moeten worden gebruikt. Dit is veel meer geheugen-efficiënt, maar langzamer. Zie voor meer informatie het document Research, [geheugen-efficiënte implementatie van DenseNets](https://arxiv.org/pdf/1707.06990.pdf).
 
 5.  Verbind de uitvoer van de module **DenseNet** -module, training en validatie kopie gegevensset naar het [Model Train Pytorch](train-pytorch-model.md). 
 
@@ -54,11 +54,11 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Naam             | Bereik | Type    | Standaard     | Beschrijving                              |
+| Name             | Bereik | Type    | Standaard     | Beschrijving                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Modelnaam       | Alle   | Modus    | densenet201 | Naam van een bepaalde DenseNet-structuur     |
 | Voortraind       | Alle   | Boolean-waarde | True        | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
-| Geheugen efficiënt | Alle   | Booleaans | False       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
+| Geheugen efficiënt | Alle   | Booleaans | Niet waar       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
 
 ###  <a name="output"></a>Uitvoer  
 

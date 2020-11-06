@@ -1,7 +1,7 @@
 ---
 title: 'Gegevens exporteren: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u de module gegevens exporteren in Azure Machine Learning kunt gebruiken om resultaten, tussenliggende gegevens en werk gegevens van uw pijp lijnen op te slaan in de Cloud opslag buiten Azure Machine Learning.
+description: Gebruik de module gegevens exporteren in Azure Machine Learning Designer om resultaten en tussenliggende gegevens buiten Azure Machine Learning op te slaan.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/28/2020
-ms.openlocfilehash: 5964ed9773d45b809fc79252eabc754b1b04af84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907994"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421308"
 ---
 # <a name="export-data-module"></a>Gegevens module exporteren
 
@@ -45,7 +45,7 @@ Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren i
     > [!NOTE]
     > Het exporteren van gegevens van een bepaald gegevens type naar een SQL database-kolom die is opgegeven als een ander gegevens type, wordt niet ondersteund. De doel tabel hoeft niet eerst te bestaan.
 
-1. Het selectie vakje, **uitvoer opnieuw genereren**, bepaalt of de module moet worden uitgevoerd om de uitvoer tijdens de uitvoering opnieuw te genereren. 
+1. Het selectie vakje, **uitvoer opnieuw genereren** , bepaalt of de module moet worden uitgevoerd om de uitvoer tijdens de uitvoering opnieuw te genereren. 
 
     Deze optie is standaard niet geselecteerd, wat betekent dat als de module met dezelfde para meters eerder is uitgevoerd, de uitvoer van de laatste uitvoering opnieuw wordt gebruikt om de uitvoerings tijd te verminderen. 
 
@@ -54,7 +54,7 @@ Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren i
 1. Definieer het pad in het gegevens archief waarin de gegevens zich bevinden. Het pad is een relatief pad. De lege paden of URL-paden zijn niet toegestaan.
 
 
-1. Selecteer bij **bestands indeling**de indeling waarin de gegevens moeten worden opgeslagen.
+1. Selecteer bij **bestands indeling** de indeling waarin de gegevens moeten worden opgeslagen.
  
 1. Verzend de pijp lijn.
 

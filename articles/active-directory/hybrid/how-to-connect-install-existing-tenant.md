@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9398fc9ee61bed41cd1e8c227fc4b4068e4b3e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662258"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420526"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: wanneer u een bestaande Tenant hebt
 In de meeste onderwerpen over het gebruik van Azure AD Connect wordt ervan uitgegaan dat u begint met een nieuwe Azure AD-Tenant en dat er geen gebruikers of andere objecten zijn. Maar als u bent begonnen met een Azure AD-Tenant, deze hebt gevuld met gebruikers en andere objecten en nu verbinding maken wilt gebruiken, is dit onderwerp voor u.
@@ -34,11 +34,11 @@ U kunt on-premises en andere gebruikers in de Cloud beheren. Een veelvoorkomend 
 Als u gebruikers in azure AD wilt beheren die zich ook in on-premises AD bevinden en later verbinding willen gebruiken, zijn er enkele extra zaken die u moet overwegen.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchroniseren met bestaande gebruikers in azure AD
-Wanneer u Azure AD Connect installeert en u begint met het synchroniseren, voert de Azure AD Sync-Service (in azure AD) een controle uit op elk nieuw object en wordt geprobeerd een bestaand object te vinden dat u wilt vergelijken. Er worden drie kenmerken gebruikt voor dit proces: **userPrincipalName**, **proxyAddresses**en **Source Anchor** / **immutableID**. Een overeenkomst op **userPrincipalName** en **proxyAddresses** wordt aangeduid als een **zachte overeenkomst**. Een overeenkomst op **Source Anchor** wordt aangeduid als **hard match**. Voor het kenmerk **proxyAddresses** wordt alleen de waarde met **SMTP:**, het primaire e-mail adres, gebruikt voor de evaluatie.
+Wanneer u Azure AD Connect installeert en u begint met het synchroniseren, voert de Azure AD Sync-Service (in azure AD) een controle uit op elk nieuw object en wordt geprobeerd een bestaand object te vinden dat u wilt vergelijken. Er worden drie kenmerken gebruikt voor dit proces: **userPrincipalName** , **proxyAddresses** en **Source Anchor** / **immutableID**. Een overeenkomst op **userPrincipalName** en **proxyAddresses** wordt aangeduid als een **zachte overeenkomst**. Een overeenkomst op **Source Anchor** wordt aangeduid als **hard match**. Voor het kenmerk **proxyAddresses** wordt alleen de waarde met **SMTP:** , het primaire e-mail adres, gebruikt voor de evaluatie.
 
 De overeenkomst wordt alleen geëvalueerd voor nieuwe objecten die afkomstig zijn van verbinding maken. Als u een bestaand object wijzigt zodat dit overeenkomt met een van deze kenmerken, ziet u in plaats daarvan een fout.
 
-Als in azure AD een object wordt gevonden waarbij de kenmerk waarden hetzelfde zijn voor een object dat afkomstig is van verbinding maken en dat al aanwezig is in azure AD, wordt het object in azure AD overgenomen door verbinding te maken. Het eerder door de Cloud beheerde object wordt gemarkeerd als on-premises beheerd. Alle kenmerken in azure AD met een waarde in on-premises AD worden overschreven door de on-premises waarde. De uitzonde ring is wanneer een kenmerk op locatie een **Null** -waarde heeft. In dit geval blijft de waarde in azure AD behouden, maar u kunt deze nog steeds alleen op locatie wijzigen in iets anders.
+Als in azure AD een object wordt gevonden waarbij de kenmerk waarden hetzelfde zijn voor een object dat afkomstig is van verbinding maken en dat al aanwezig is in azure AD, wordt het object in azure AD overgenomen door verbinding te maken. Het eerder door de Cloud beheerde object wordt gemarkeerd als on-premises beheerd. Alle kenmerken in azure AD met een waarde in on-premises AD worden overschreven door de on-premises waarde.
 
 > [!WARNING]
 > Omdat alle kenmerken in azure AD worden overschreven door de on-premises waarde, moet u ervoor zorgen dat u beschikt over goede gegevens on-premises. Als u bijvoorbeeld alleen een beheerd e-mail adres in Microsoft 365 hebt en dit niet in de on-premises AD DS is bijgewerkt, verliest u alle waarden in azure AD/Microsoft 365 die niet aanwezig zijn in AD DS.

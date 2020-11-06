@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 6f3482bdc608d97e4adba5f99393e74f2e6c7cde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d683f96f31d3b34ac311251f45456551148ca26
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795224"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420883"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Replica's in Azure Database for MySQL-flexibele server lezen
 
@@ -31,7 +31,7 @@ Zie de [MySQL-replicatie documentatie](https://dev.mysql.com/doc/refman/5.7/en/r
 > [!NOTE]
 > Oordeelloze communicatie
 >
-> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord _slaaf_ . In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie, omdat het momenteel het woord is dat wordt weergegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
+> Microsoft biedt ondersteuning voor een gevarieerde en insluitende omgeving. Dit artikel bevat verwijzingen naar het woord _slaaf_. In de [stijlgids voor oordeelloze communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) wordt dit woord herkend als uitsluitend. Het woord wordt in dit artikel gebruikt voor consistentie, omdat het momenteel het woord is dat wordt weergegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel ook bijgewerkt zodat het is afgestemd.
 >
 
 ## <a name="common-use-cases-for-read-replica"></a>Veelvoorkomende use-cases voor het lezen van replica's
@@ -61,7 +61,7 @@ Meer informatie over [het maken van een lees replica in de Azure Portal](how-to-
 
 ## <a name="connect-to-a-replica"></a>Verbinding maken met een replica
 
-Bij het maken neemt een replica de connectiviteits methode van de bron server over. U kunt de connectiviteits methode van de replica niet wijzigen. Als bron server bijvoorbeeld een **persoonlijke toegang heeft (VNet-integratie),** kan de replica geen **toegang hebben tot de open bare IP-adressen** .
+Bij het maken neemt een replica de connectiviteits methode van de bron server over. U kunt de connectiviteits methode van de replica niet wijzigen. Als bron server bijvoorbeeld een **persoonlijke toegang heeft (VNet-integratie),** kan de replica geen **toegang hebben tot de open bare IP-adressen**.
 
 De replica neemt het beheerders account over van de bron server. Alle gebruikers accounts op de bron server worden gerepliceerd naar de replica's die worden gelezen. U kunt alleen verbinding maken met een lees replica met behulp van de beschik bare gebruikers accounts op de bron server.
 
@@ -117,6 +117,7 @@ Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failov
 | Scenario | Beperking/overweging |
 |:-|:-|
 | Replica op server met zone-redundante HA ingeschakeld | Niet ondersteund |
+| Replicatie tussen verschillende regio's lezen | Niet ondersteund |
 | Prijzen | De kosten voor het uitvoeren van de replica server zijn gebaseerd op de regio waarin de replica-server wordt uitgevoerd. |
 | Bron server opnieuw opstarten | Wanneer u een replica maakt voor een bron die geen bestaande replica's heeft, wordt de bron eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd er rekening mee dat u deze bewerkingen uitvoert tijdens een rustige periode |
 | Nieuwe replica's | Er wordt een lees replica gemaakt als een nieuwe Azure Database for MySQL flexibele server. Een bestaande server kan niet worden gemaakt in een replica. U kunt geen replica van een andere Lees replica maken |
@@ -125,7 +126,7 @@ Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failov
 | Verwijderde bron-en zelfstandige servers | Wanneer een bron server wordt verwijderd, wordt replicatie gestopt met alle replica's lezen. Deze replica's worden automatisch zelfstandige servers en kunnen Lees-en schrijf bewerkingen accepteren. De bron server zelf wordt verwijderd. |
 | Gebruikersaccounts | Gebruikers op de bron server worden gerepliceerd naar de Lees replica's. U kunt alleen verbinding maken met een lees replica met behulp van de beschik bare gebruikers accounts op de bron server. |
 | Serverparameters | Om problemen met de synchronisatie van gegevens en mogelijk verlies of beschadiging van gegevens te voorkomen, worden bepaalde serverparameters vergrendeld zodat ze niet kunnen worden bijgewerkt bij gebruik van replica's voor lezen. <br> De volgende server parameters zijn vergrendeld op de bron-en replica servers:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> De [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) para meter is vergrendeld op de replica servers. <br> Als u een van de bovenstaande para meters op de bron server wilt bijwerken, verwijdert u de replica servers, werkt u de parameter waarde op de bron bij en maakt u de replica's opnieuw. |
-| Overige | Het maken van een replica van een replica wordt niet ondersteund. <br> -In-Memory tabellen kunnen ertoe leiden dat replica's niet meer synchroon zijn. Dit is een beperking van de MySQL-replicatie technologie. Meer informatie vindt u in de [referentie documentatie voor mysql](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>-Zorg ervoor dat de bron Server tabellen primaire sleutels hebben. Het ontbreken van primaire sleutels kan leiden tot replicatie latentie tussen de bron en de replica's.<br>-Bekijk de volledige lijst met MySQL-replicatie beperkingen in de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) |
+| Anders | Het maken van een replica van een replica wordt niet ondersteund. <br> -In-Memory tabellen kunnen ertoe leiden dat replica's niet meer synchroon zijn. Dit is een beperking van de MySQL-replicatie technologie. Meer informatie vindt u in de [referentie documentatie voor mysql](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>-Zorg ervoor dat de bron Server tabellen primaire sleutels hebben. Het ontbreken van primaire sleutels kan leiden tot replicatie latentie tussen de bron en de replica's.<br>-Bekijk de volledige lijst met MySQL-replicatie beperkingen in de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) |
 
 ## <a name="next-steps"></a>Volgende stappen
 

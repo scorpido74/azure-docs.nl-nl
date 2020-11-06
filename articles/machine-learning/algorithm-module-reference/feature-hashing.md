@@ -1,7 +1,7 @@
 ---
 title: Naslag informatie over functie hashing-module
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module functie hashing in de Azure Machine Learning voor het parametriseer van tekst gegevens.
+description: Meer informatie over het gebruik van de module functie hashing in de Azure Machine Learning Designer voor het parametriseer van tekst gegevens.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323720"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420781"
 ---
 # <a name="feature-hashing-module-reference"></a>Naslag informatie over functie hashing-module
 
@@ -22,7 +22,7 @@ In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Lea
 
 Gebruik de functie hashing-module om een stroom van Engelse tekst te transformeren in een set integer-functies. U kunt deze hash-functie vervolgens door geven die is ingesteld op een machine learning algoritme voor het trainen van een tekst analyse model.
 
-De functie hashing-functionaliteit die in deze module wordt gegeven, is gebaseerd op het nimbusml-Framework. Zie [NgramHash class](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)voor meer informatie.
+De functie hashing-functionaliteit die in deze module wordt gegeven, is gebaseerd op het nimbusml-Framework. Zie [NgramHash class](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true)voor meer informatie.
 
 ## <a name="what-is-feature-hashing"></a>Wat is functie-hashing?
 

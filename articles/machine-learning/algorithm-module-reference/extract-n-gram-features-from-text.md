@@ -1,7 +1,7 @@
 ---
 title: N-gram-functies uit de naslag gids voor tekst modules extra heren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module N-gram uitpakken in het Azure Machine Learning om tekst gegevens te parametriseer.
+description: Meer informatie over het gebruik van de module N-gram uitpakken in de Azure Machine Learning Designer voor het parametriseer van tekst gegevens.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: c21c63bdb64f7c15c049bfe4039ef47cea689922
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d9c7c2cb7a0a86824a373f1b64044b6dcd6c20
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907971"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420798"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>N-gram-functies uit de naslag gids voor tekst modules extra heren
 
@@ -44,15 +44,15 @@ De module ondersteunt de volgende scenario's voor het gebruik van een n-gram-woo
 
 1. Met de **functie weging** wordt aangegeven hoe u de document functie Vector bouwt en hoe u de woorden lijst uit documenten ophaalt.
 
-    * **Binair gewicht**: wijst een binaire aanwezigheids waarde toe aan het geëxtraheerde n-gram. De waarde voor elke n-gram is 1 wanneer deze bestaat in het document en 0 anders.
+    * **Binair gewicht** : wijst een binaire aanwezigheids waarde toe aan het geëxtraheerde n-gram. De waarde voor elke n-gram is 1 wanneer deze bestaat in het document en 0 anders.
 
-    * **TF-gewicht**: Hiermee wordt een term frequentie (TF)-Score toegewezen aan de geëxtraheerde n-gram. De waarde voor elke n-gram is de frequentie van het voorval in het document.
+    * **TF-gewicht** : Hiermee wordt een term frequentie (TF)-Score toegewezen aan de geëxtraheerde n-gram. De waarde voor elke n-gram is de frequentie van het voorval in het document.
 
-    * **IDF Weight**: wijst een inverse document frequentie (IDF)-Score toe aan de geëxtraheerde n-gram. De waarde voor elke n-gram is het logboek van de verzameling grootte gedeeld door de frequentie van het exemplaar in het hele verzameling.
+    * **IDF Weight** : wijst een inverse document frequentie (IDF)-Score toe aan de geëxtraheerde n-gram. De waarde voor elke n-gram is het logboek van de verzameling grootte gedeeld door de frequentie van het exemplaar in het hele verzameling.
     
       `IDF = log of corpus_size / document_frequency`
  
-    *  **TF-IDF Weight**: wijst een periode/inverse document frequentie (TF/IDF)-Score toe aan het geëxtraheerde n-gram. De waarde voor elke n-gram is de TF-Score vermenigvuldigd met de IDF-Score.
+    *  **TF-IDF Weight** : wijst een periode/inverse document frequentie (TF/IDF)-Score toe aan het geëxtraheerde n-gram. De waarde voor elke n-gram is de TF-Score vermenigvuldigd met de IDF-Score.
 
 1. Stel **minimale woord lengte** in op het minimum aantal letters dat kan worden gebruikt in *één woord* in een n-gram.
 
@@ -83,7 +83,7 @@ De module ondersteunt de volgende scenario's voor het gebruik van een n-gram-woo
 
 1. Voeg de opgeslagen gegevensset met een eerder gegenereerde n-gram woorden lijst toe en verbind deze met de woordenlijst poort van de **invoer** . U kunt ook de **Resultaten woordenlijst** van een upstream-exemplaar van de functie voor het uitpakken van N-gram-functies uit de tekst module verbinden.
 
-1. Voor de **woordenlijst modus**selecteert u de optie **alleen-lezen** in de vervolg keuzelijst.
+1. Voor de **woordenlijst modus** selecteert u de optie **alleen-lezen** in de vervolg keuzelijst.
 
    De optie **ReadOnly** vertegenwoordigt de invoer verzameling voor de woordenlijst van de invoer. In plaats van term frequenties te berekenen op basis van de nieuwe tekst gegevensset (aan de linkerkant), worden de n-gram-gewichten van de invoer woordenlijst toegepast als is.
 
@@ -110,20 +110,20 @@ De module ondersteunt de volgende scenario's voor het gebruik van een n-gram-woo
 
 Met de functie N-gram functies van de tekst module extra heren worden twee typen uitvoer gemaakt: 
 
-* **Resulterende gegevensset**: deze uitvoer is een samen vatting van de geanalyseerde tekst in combi natie met het n-gram dat is geëxtraheerd. Kolommen die u niet hebt geselecteerd in de optie **tekst kolom** , worden door gegeven aan de uitvoer. Voor elke kolom met tekst die u analyseert, genereert de module deze kolommen:
+* **Resulterende gegevensset** : deze uitvoer is een samen vatting van de geanalyseerde tekst in combi natie met het n-gram dat is geëxtraheerd. Kolommen die u niet hebt geselecteerd in de optie **tekst kolom** , worden door gegeven aan de uitvoer. Voor elke kolom met tekst die u analyseert, genereert de module deze kolommen:
 
-  * **Matrix van n-gram-exemplaren**: de module genereert een kolom voor elke n-gram die is gevonden in de totale verzameling en voegt een score toe aan elke kolom om het gewicht van de n-gram voor die rij aan te geven. 
+  * **Matrix van n-gram-exemplaren** : de module genereert een kolom voor elke n-gram die is gevonden in de totale verzameling en voegt een score toe aan elke kolom om het gewicht van de n-gram voor die rij aan te geven. 
 
-* **Resultaten woordenlijst**: de woorden lijst bevat de werkelijke n-gram-woorden lijst, samen met de term frequentie scores die worden gegenereerd als onderdeel van de analyse. U kunt de gegevensset opslaan voor hergebruik met een andere set invoer of voor een latere update. U kunt ook de woorden lijst voor model lering en scores opnieuw gebruiken.
+* **Resultaten woordenlijst** : de woorden lijst bevat de werkelijke n-gram-woorden lijst, samen met de term frequentie scores die worden gegenereerd als onderdeel van de analyse. U kunt de gegevensset opslaan voor hergebruik met een andere set invoer of voor een latere update. U kunt ook de woorden lijst voor model lering en scores opnieuw gebruiken.
 
 ### <a name="result-vocabulary"></a>Resultaten woordenlijst
 
 De vocabulaire bevat de n-gram woordenlijst met de term frequentie scores die worden gegenereerd als onderdeel van de analyse. De VG-en IDF-scores worden gegenereerd, ongeacht andere opties.
 
-+ **Id**: een id die voor elke unieke n-gram wordt gegenereerd.
-+ **NGram**: de n-gram. Spaties of andere woord scheidings tekens worden vervangen door het onderstrepings teken.
-+ **VG**: de term frequentie score voor de n-gram in de oorspronkelijke verzameling.
-+ **IDF**: de inverse-frequentie score voor de n-gram in de oorspronkelijke verzameling.
++ **Id** : een id die voor elke unieke n-gram wordt gegenereerd.
++ **NGram** : de n-gram. Spaties of andere woord scheidings tekens worden vervangen door het onderstrepings teken.
++ **VG** : de term frequentie score voor de n-gram in de oorspronkelijke verzameling.
++ **IDF** : de inverse-frequentie score voor de n-gram in de oorspronkelijke verzameling.
 
 U kunt deze gegevensset hand matig bijwerken, maar mogelijk fouten introduceren. Bijvoorbeeld:
 

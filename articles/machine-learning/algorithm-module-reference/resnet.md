@@ -1,7 +1,7 @@
 ---
 title: ResNet
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het maken van een afbeeldings classificatie model met behulp van de ResNet-algoritme.
+description: Meer informatie over het maken van een afbeeldings classificatie model in Azure Machine Learning Designer met behulp van de ResNet-algoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: bd0431a8e503605c6137d948cf207c1bd2fa45b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88a820d0f1fa9515b4f2992a8305a2d1065e0987
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442033"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421206"
 ---
 # <a name="resnet"></a>ResNet
 
@@ -34,9 +34,9 @@ Raadpleeg [dit artikel](https://pytorch.org/docs/stable/torchvision/models.html?
 
 1.  Voeg de module **ResNet** toe aan uw pijp lijn in de ontwerp functie.  
 
-2.  Geef bij **model naam**een naam op van een bepaalde ResNet-structuur en u kunt kiezen uit de ondersteunde ResNet: ' resnet18 ', ' resnet34 ', ' resnet50 ', ' resnet101 ', ' resnet152 ', ' resnet152 ', ' resnext50 \_ 32x4d ', ' resnext101 \_ 32x8d ', ' wide_resnet50 \_ 2 ', ' wide_resnet101 \_ 2 '.
+2.  Geef bij **model naam** een naam op van een bepaalde ResNet-structuur en u kunt kiezen uit de ondersteunde ResNet: ' resnet18 ', ' resnet34 ', ' resnet50 ', ' resnet101 ', ' resnet152 ', ' resnet152 ', ' resnext50 \_ 32x4d ', ' resnext101 \_ 32x8d ', ' wide_resnet50 \_ 2 ', ' wide_resnet101 \_ 2 '.
 
-3.  Voor vooraf **getrainde**geeft u op of u een voor ImageNet wilt gebruiken. Als deze is geselecteerd, kunt u het model op basis van het geselecteerde vooraf getrainde model verfijnen. Als u dit selectie vakje uitschakelt, kunt u helemaal zelf trainen.
+3.  Voor vooraf **getrainde** geeft u op of u een voor ImageNet wilt gebruiken. Als deze is geselecteerd, kunt u het model op basis van het geselecteerde vooraf getrainde model verfijnen. Als u dit selectie vakje uitschakelt, kunt u helemaal zelf trainen.
 
 4.  Verbind de uitvoer van de **DenseNet** -module, de trainings-en validatie afbeelding gegevensset-module naar het [Train Pytorch-model](train-pytorch-model.md). 
 
@@ -50,7 +50,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Naam       | Bereik | Type    | Standaard           | Beschrijving                              |
+| Name       | Bereik | Type    | Standaard           | Beschrijving                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Modelnaam | Alle   | Modus    | resnext101 \_ 32x8d | Naam van een bepaalde ResNet-structuur       |
 | Voortraind | Alle   | Boolean-waarde | True              | Of u een vooraf getrainde model wilt gebruiken op ImageNet |

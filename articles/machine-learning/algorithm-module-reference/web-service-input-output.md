@@ -1,6 +1,6 @@
 ---
 title: 'Web Service input/output: module-verwijzing'
-description: Meer informatie over de web service-modules in Azure Machine Learning Designer
+description: Meer informatie over het gebruik van de webservice-modules in Azure Machine Learning Designer voor het beheren van invoer en uitvoer.
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: e1bf5dd070ac12878c608f744ff450395de84c48
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 475ad3de8e0a7636a14949d4fcd8a5ec2812ad5e
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310038"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421121"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>Webservices-invoer en-webservice-uitvoer modules
 

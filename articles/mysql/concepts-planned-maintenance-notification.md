@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544831"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93417585"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Melding over gepland onderhoud in Azure Database for MySQL-één server
 
@@ -48,12 +48,12 @@ U kunt de geplande onderhouds melding controleren op Azure Portal of waarschuwin
 
 1. Selecteer **service Health** In het [Azure Portal](https://portal.azure.com).
 2. Tabblad **gepland onderhoud** selecteren
-3. Selecteer **abonnement** , * * regio en **service** waarvoor u het geplande onderhouds bericht wilt controleren. 
+3. Selecteer **abonnement** , **regio** en **service** waarvoor u het geplande onderhouds bericht wilt controleren. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Een melding over gepland onderhoud ontvangen
 
-1. Selecteer in de [portal](https://portal.azure.com) **service Health** .
-2. Selecteer in de sectie **waarschuwingen** **Health Alerts** .
+1. Selecteer in de [portal](https://portal.azure.com) **service Health**.
+2. Selecteer in de sectie **waarschuwingen** **Health Alerts**.
 3. Selecteer **+ service Health alert toevoegen** en vul de velden in.
 4. Vul de vereiste velden in. 
 5. Kies het **gebeurtenis type** , selecteer **gepland onderhoud** of **Alles selecteren**
@@ -61,7 +61,7 @@ U kunt de geplande onderhouds melding controleren op Azure Portal of waarschuwin
 7. Zorg ervoor dat regel inschakelen bij maken is ingesteld op Ja.
 8. Selecteer **waarschuwings regel maken** om uw waarschuwing te volt ooien
 
-Zie [waarschuwingen voor activiteiten logboek maken voor service meldingen](../service-health/alerts-activity-log-service-notifications-portal.md)voor gedetailleerde stappen voor het maken van **service Health-waarschuwingen** .
+Zie [waarschuwingen voor activiteiten logboek maken voor service meldingen](../service-health/alerts-activity-log-service-notifications-portal.md)voor gedetailleerde stappen voor het maken van **service Health-waarschuwingen**.
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Kan ik gepland onderhoud annuleren of uitstellen?
 

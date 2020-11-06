@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2190079cb97e37318bd1c6a32dfb2b9b309a8d
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f337a66f50338692508ab2e5b4b7d489c735aa20
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276941"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420480"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit artikel worden de vereisten en de hardwarevereisten voor Azure Active Directory (Azure AD)-verbinding beschreven.
@@ -42,8 +42,8 @@ Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
 
 ### <a name="on-premises-active-directory"></a>On-premises Active Directory
 * De Active Directory schema versie en het forest-functionaliteits niveau moeten Windows Server 2003 of hoger zijn. Op de domein controllers kan elke versie worden uitgevoerd, mits aan de vereisten voor schema versie en forestniveau wordt voldaan.
-* Als u het *terugschrijven*van het functie wachtwoord wilt gebruiken, moeten de domein controllers zich op Windows Server 2008 R2 of later bevallen.
-* De domein controller die door Azure AD wordt gebruikt, moet beschrijfbaar zijn. Het gebruik van een alleen-lezen domein controller (RODC) *wordt niet ondersteund*en Azure AD Connect geen schrijf omleidingen volgen.
+* Als u het *terugschrijven* van het functie wachtwoord wilt gebruiken, moeten de domein controllers zich op Windows Server 2012 of hoger bevallen.
+* De domein controller die door Azure AD wordt gebruikt, moet beschrijfbaar zijn. Het gebruik van een alleen-lezen domein controller (RODC) *wordt niet ondersteund* en Azure AD Connect geen schrijf omleidingen volgen.
 * On-premises forests of domeinen gebruiken met behulp van ' dotted ' (naam bevat een punt ' '. ') NetBIOS-namen worden *niet ondersteund*.
 * U wordt aangeraden [de Prullenbak van Active Directory in te scha kelen](how-to-connect-sync-recycle-bin.md).
 
@@ -95,7 +95,7 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
   * U kunt slechts één synchronisatie-engine per SQL-exemplaar hebben. Het delen van een SQL-exemplaar met FIM/MIM Sync, DirSync of Azure AD Sync *wordt niet ondersteund*.
 
 ### <a name="accounts"></a>Accounts
-* U moet een Azure AD Global Administrator-account hebben voor de Azure AD-Tenant waarmee u wilt integreren. Dit account moet een *school-of organisatie account* zijn en kan geen *Microsoft-account*zijn.
+* U moet een Azure AD Global Administrator-account hebben voor de Azure AD-Tenant waarmee u wilt integreren. Dit account moet een *school-of organisatie account* zijn en kan geen *Microsoft-account* zijn.
 * Als u [snelle instellingen](reference-connect-accounts-permissions.md#express-settings-installation) gebruikt of als u een upgrade uitvoert van DirSync, moet u een beheerders account voor de onderneming hebben voor uw on-premises Active Directory.
 * Als u het installatiepad van aangepaste instellingen gebruikt, hebt u meer opties. Zie [aangepaste installatie-instellingen](reference-connect-accounts-permissions.md#custom-installation-settings)voor meer informatie.
 
@@ -106,7 +106,7 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
   * Als u de micro soft-Cloud in Duitsland of de Microsoft Azure Government Cloud gebruikt, raadpleegt u [Azure AD Connect Sync Service instances-overwegingen](reference-connect-instances.md) voor url's.
 * Azure AD Connect (versie 1.1.614.0 en After) maakt standaard gebruik van TLS 1,2 voor het versleutelen van de communicatie tussen de synchronisatie-engine en Azure AD. Als TLS 1,2 niet beschikbaar is in het onderliggende besturings systeem, wordt Azure AD Connect incrementeel terugvallen op oudere protocollen (TLS 1,1 en TLS 1,0).
 * Vóór versie 1.1.614.0 maakt Azure AD Connect standaard gebruik van TLS 1,0 voor het versleutelen van de communicatie tussen de synchronisatie-engine en Azure AD. Als u wilt overschakelen naar TLS 1,2, volgt u de stappen in [tls 1,2 inschakelen voor Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
-* Als u een uitgaande proxy gebruikt om verbinding te maken met internet, moet u de volgende instelling in het **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** bestand toevoegen voor de installatie wizard en Azure AD Connect synchroniseren om verbinding te kunnen maken met internet en Azure AD. Deze tekst moet aan de onderkant van het bestand worden opgegeven. In deze code vertegenwoordigt * &lt; proxyAddress attribuut &gt; * het werkelijke IP-adres of de hostnaam van de proxy.
+* Als u een uitgaande proxy gebruikt om verbinding te maken met internet, moet u de volgende instelling in het **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** bestand toevoegen voor de installatie wizard en Azure AD Connect synchroniseren om verbinding te kunnen maken met internet en Azure AD. Deze tekst moet aan de onderkant van het bestand worden opgegeven. In deze code vertegenwoordigt *&lt; proxyAddress attribuut &gt;* het werkelijke IP-adres of de hostnaam van de proxy.
 
     ```
         <system.net>
@@ -140,7 +140,7 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
 Raadpleeg MSDN over het [standaard proxy-element](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)voor meer informatie.
 Zie [verbindings problemen oplossen](tshoot-connect-connectivity.md)voor meer informatie over problemen met de connectiviteit.
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 Optioneel: gebruik een test gebruikers account om de synchronisatie te controleren.
 
 ## <a name="component-prerequisites"></a>Onderdeel vereisten
@@ -180,7 +180,7 @@ Wanneer u Azure AD Connect gebruikt om AD FS of de Web Application proxy (WAP) t
   * Op de computer waarop de wizard wordt uitgevoerd (als de doel computer niet lid is van een domein of een niet-vertrouwd domein is):
     * Gebruik de opdracht in een Power shell-opdracht venster met verhoogde bevoegdheden `Set-Item.WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate` .
     * In Server beheer:
-      * Voeg een DMZ WAP-host toe aan een machine groep. **Selecteer in Server beheer de**optie  >  **servers toevoegen**en gebruik vervolgens het tabblad **DNS** .
+      * Voeg een DMZ WAP-host toe aan een machine groep. **Selecteer in Server beheer de** optie  >  **servers toevoegen** en gebruik vervolgens het tabblad **DNS** .
       * Klik op het tabblad **Serverbeheer alle servers** met de rechter muisknop op de WAP-server en selecteer **beheren als**. Voer lokale (niet-domein) referenties in voor de WAP-computer.
       * Als u externe Power shell-connectiviteit wilt valideren, klikt u op het tabblad **Serverbeheer alle servers** met de rechter muisknop op de WAP-server en selecteert u **Windows Power shell**. Er moet een externe Power shell-sessie worden geopend om ervoor te zorgen dat externe Power shell-sessies kunnen worden ingesteld.
 

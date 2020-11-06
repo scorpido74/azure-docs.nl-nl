@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 11/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893574"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420955"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Veelgestelde vragen over metrische gegevens adviseur
 
@@ -88,7 +88,7 @@ Zorg ervoor dat u de juiste granulatie voor uw tijd reeks gebruikt. Voor de metr
 
 Houd er rekening mee dat deze query's alleen gegevens retour neren met één tijds tempel en alle dimensie combinaties bevatten die moeten worden opgenomen door de para meters Advisor. 
 
-:::image type="content" source="media/query-result.png" alt-text="Bericht wanneer een F0-resource al bestaat" lightbox="media/query-result.png":::
+:::image type="content" source="media/query-result.png" alt-text="Een query resultaat met één tijds tempel" lightbox="media/query-result.png":::
 
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Hoe kan ik detecteert pieken & spannings dips als afwijkingen?
@@ -104,6 +104,19 @@ Als er geen drempels zijn, kunt u Slimme detectie gebruiken. dit wordt mogelijk 
 
 Als uw gegevens normaal gesp roken onstabiel zijn en een heleboel schommelingen hebben en u wilt worden gewaarschuwd wanneer het te stabiel of zelfs een vlakke lijn wordt, kan ' drempel waarde wijzigen ' worden geconfigureerd om dergelijke gegevens punten te detecteren wanneer de wijziging te klein is.
 Raadpleeg de [configuraties voor anomalie detectie](how-tos/configure-metrics.md#anomaly-detection-methods) voor meer informatie.
+
+### <a name="how-to-set-up-email-settings-and-enable-alerting-by-email"></a>E-mail instellingen instellen en waarschuwingen per e-mail inschakelen?
+
+1.  Een gebruiker met de beheerders bevoegdheden van de abonnements beheerder of de resource groep moet naar de resource voor metrische gegevens Advisor navigeren die in de Azure Portal is gemaakt en het tabblad **toegangs beheer (IAM)** selecteren. 
+2.  Selecteer **roltoewijzingen toevoegen**
+3.  Kies een rol van **Cognitive Services metrics Advisor-beheerder** , selecteer uw account in de onderstaande afbeelding.
+4.  Klik op de knop **Opslaan** . vervolgens is u toegevoegd als beheerder van de Advisor-resource van metrische gegevens. Houd er rekening mee dat alle bovenstaande acties moeten worden uitgevoerd door de abonnements beheerder of de beheerder van de resource groep. 
+
+:::image type="content" source="media/access-control.png" alt-text="Menu pagina toegangs beheer (IAM) Hiermee kunt u een roltoewijzing toevoegen selecteren, gevolgd door een vak met toegang toewijzen aan de geselecteerde gebruiker die wordt weer gegeven met een toegangs rol van Cognitive Services metrics Advisor Administrator, gevolgd door de knop opslaan van de gebruikers interface die wordt geselecteerd om de stappen te illustreren voor het zoeken naar een gebruiker en het toevoegen van een bepaald niveau van toegangs machtigingen." lightbox="media/access-control.png":::
+
+
+5.  Het kan een minuut duren voordat de machtigingen zijn door gegeven. Vervolgens selecteert u de werk ruimte voor metrische gegevens adviseur en selecteert u de optie **e-mail instelling** in het navigatie deel venster aan de linkerkant. Vul de vereiste items in, met name de SMTP-gerelateerde informatie. 
+6.  Selecteer **Opslaan** en vervolgens bent u klaar met de e-mail configuratie. U kunt nieuwe hooks maken en u abonneren op metrische afwijkingen voor bijna realtime-waarschuwingen. 
 
 ## <a name="advanced-concepts"></a>Geavanceerde concepten
 
@@ -127,7 +140,7 @@ Vanaf het totaal `Response latency` kunnen we inzoomen op de metrische waarde do
 
 In metrische Advisor kunnen gebruikers een wille keurig pad opgeven dat ze willen inzoomen of samen vouwen vanaf één knoop punt van de hiërarchische topologie. Nauw keuriger is de hiërarchische topologie een Directed Acyclic Graph in plaats van een boom structuur. Er is een volledige hiërarchische topologie die bestaat uit alle mogelijke dimensie combinaties, zoals: 
 
-:::image type="content" source="media/dimension-combinations-view.png" alt-text="Bericht wanneer een F0-resource al bestaat" lightbox="media/dimension-combinations-view.png":::
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="een hiërarchisch topologie diagram dat bestaat uit meerdere onderling verbonden hoek punten en randen met meerdere dimensies met het label S, DC en M met bijbehorende getallen van 1 tot en met 6" lightbox="media/dimension-combinations-view.png":::
 
 In theorie geldt dat als de `Service` dimensie `Ls` DISTINCT-waarden heeft, de dimensie `Data center` `Ldc` DISTINCT-waarden heeft en de dimensie `Machine` `Lm` DISTINCT-waarden bevat, en dat er `(Ls + 1) * (Ldc + 1) * (Lm + 1)` dimensie combinaties kunnen zijn in de hiërarchische topologie. 
 

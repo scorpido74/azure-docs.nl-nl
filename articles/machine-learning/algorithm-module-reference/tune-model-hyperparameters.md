@@ -1,7 +1,7 @@
 ---
 title: Model Hyperparameters afstemmen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module model Hyper parameters afstemmen in Azure Machine Learning om een parameter opruiming op een model uit te voeren om de optimale parameter instellingen te bepalen.
+description: Gebruik de module model Hyper parameters afstemmen in de ontwerp functie voor het opruimen van een para meter om Hyper-para meters af te stemmen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
-ms.openlocfilehash: 2ec1726056c7ab223f7d3de70a715a8254e95db4
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 2bbf75ba5de4ad20e11261bdcfd1204b1a0b0766
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940206"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420628"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
 In dit artikel wordt beschreven hoe u de module model Hyper parameters in Azure Machine Learning Designer kunt gebruiken. Het doel is om de optimale Hyper parameters te bepalen voor een machine learning model. De module bouwt en test meerdere modellen met behulp van verschillende combi Naties van instellingen. Hiermee worden metrische gegevens van alle modellen vergeleken om de combi Naties van instellingen te verkrijgen. 
 
-De termen *para meter* en *afstemming* kunnen verwarrend zijn. De *para meters* van het model zijn wat u in het rechterdeel venster van de module hebt ingesteld. In principe voert deze module een *opruiming* van de para meters uit op basis van de opgegeven parameter instellingen. Het leert een optimale set _Hyper parameters_, die mogelijk verschillend is voor elke specifieke beslissings structuur, gegevensset of regressie methode. Het proces van het vinden van de optimale configuratie wordt soms *afstemming*genoemd. 
+De termen *para meter* en *afstemming* kunnen verwarrend zijn. De *para meters* van het model zijn wat u in het rechterdeel venster van de module hebt ingesteld. In principe voert deze module een *opruiming* van de para meters uit op basis van de opgegeven parameter instellingen. Het leert een optimale set _Hyper parameters_ , die mogelijk verschillend is voor elke specifieke beslissings structuur, gegevensset of regressie methode. Het proces van het vinden van de optimale configuratie wordt soms *afstemming* genoemd. 
 
 De module ondersteunt de volgende methode voor het vinden van de optimale instellingen voor een model: *geïntegreerde trein en afstemming.* In deze methode configureert u een set para meters die moeten worden gebruikt. U kunt de module vervolgens op meerdere combi Naties laten lopen. De module meet de nauw keurigheid totdat er een ' beste ' model wordt gevonden. Met de meeste leer modules kunt u kiezen welke para meters tijdens het trainings proces moeten worden gewijzigd en wat vast moet blijven.
 
@@ -49,27 +49,27 @@ In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, 
 
 3.  Voeg de gegevensset toe die u voor training wilt gebruiken en verbind deze met de middelste invoer van het model Hyper parameters voor het afstemmen.  
 
-    Als u een gecodeerde gegevensset hebt, kunt u deze koppelen aan de meest rechtse invoer poort (**optionele validatie gegevensset**). Zo kunt u de nauw keurigheid meten tijdens de training en het afstemmen.
+    Als u een gecodeerde gegevensset hebt, kunt u deze koppelen aan de meest rechtse invoer poort ( **optionele validatie gegevensset** ). Zo kunt u de nauw keurigheid meten tijdens de training en het afstemmen.
 
 4.  Kies in het rechterdeel venster van model Hyper parameters een waarde voor de modus voor het afwijzen van de **para meter**. Met deze optie bepaalt u hoe de para meters worden geselecteerd.
 
-    - **Volledig raster**: wanneer u deze optie selecteert, wordt de module herhaald volgens een raster dat vooraf is gedefinieerd door het systeem, om verschillende combi Naties te proberen en de beste kenniser te identificeren. Deze optie is handig wanneer u niet weet wat de beste parameter instellingen zijn en u alle mogelijke combi Naties van waarden wilt proberen.
+    - **Volledig raster** : wanneer u deze optie selecteert, wordt de module herhaald volgens een raster dat vooraf is gedefinieerd door het systeem, om verschillende combi Naties te proberen en de beste kenniser te identificeren. Deze optie is handig wanneer u niet weet wat de beste parameter instellingen zijn en u alle mogelijke combi Naties van waarden wilt proberen.
 
-    - **Wille keurige sweep**: wanneer u deze optie selecteert, selecteert de module wille keurig parameter waarden boven een door het systeem gedefinieerd bereik. U moet het maximum aantal runs opgeven dat door de module moet worden uitgevoerd. Deze optie is handig als u de prestaties van het model wilt verbeteren door de metrische gegevens van uw keuze te gebruiken, maar nog steeds computer bronnen te besparen.    
+    - **Wille keurige sweep** : wanneer u deze optie selecteert, selecteert de module wille keurig parameter waarden boven een door het systeem gedefinieerd bereik. U moet het maximum aantal runs opgeven dat door de module moet worden uitgevoerd. Deze optie is handig als u de prestaties van het model wilt verbeteren door de metrische gegevens van uw keuze te gebruiken, maar nog steeds computer bronnen te besparen.    
 
-5.  Open de kolom kiezer voor de kolom **Label**en kies een kolom met één label.
+5.  Open de kolom kiezer voor de kolom **Label** en kies een kolom met één label.
 
 6.  Kies het aantal uitvoeringen:
 
-    - **Maximum aantal uitvoeringen op wille keurige sweep**: als u een wille keurige sweep kiest, kunt u opgeven hoe vaak het model moet worden getraind met behulp van een wille keurige combi natie van parameter waarden.
+    - **Maximum aantal uitvoeringen op wille keurige sweep** : als u een wille keurige sweep kiest, kunt u opgeven hoe vaak het model moet worden getraind met behulp van een wille keurige combi natie van parameter waarden.
 
-7.  Voor de **rang schikking**kiest u één metrische waarde voor het classificeren van de modellen.
+7.  Voor de **rang schikking** kiest u één metrische waarde voor het classificeren van de modellen.
 
     Wanneer u een parameter sweep uitvoert, berekent de module alle toepasselijke metrische gegevens voor het model type en retourneert deze in het rapport met **resultaten van opruimen** . In de module worden afzonderlijke metrische gegevens gebruikt voor regressie-en classificatie modellen.
 
     De metriek die u kiest, bepaalt echter hoe de modellen worden gerangschikt. Alleen het bovenste model, zoals geclassificeerd door de gekozen metriek, wordt uitgevoerd als een getraind model om te gebruiken voor een score.
 
-8.  Voer voor **wille keurige Seed**een getal in dat moet worden gebruikt voor het starten van de parameter sweep. 
+8.  Voer voor **wille keurige Seed** een getal in dat moet worden gebruikt voor het starten van de parameter sweep. 
 
 9. Verzend de pijp lijn.
 
@@ -77,7 +77,7 @@ In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, 
 
 Wanneer de training is voltooid:
 
-+ Als u de opschonings resultaten wilt weer geven, kunt u met de rechter muisknop op de module klikken en vervolgens **visualiseren**selecteren, of met de rechter muisknop op uitvoer poort links van de module om te visualiseren.
++ Als u de opschonings resultaten wilt weer geven, kunt u met de rechter muisknop op de module klikken en vervolgens **visualiseren** selecteren, of met de rechter muisknop op uitvoer poort links van de module om te visualiseren.
 
     De opschonings **resultaten** omvatten alle para meters voor wegvegen en nauw keurigheid die van toepassing zijn op het model type en de metriek die u hebt geselecteerd voor de rang schikking bepaalt welk model als ' Best ' wordt beschouwd.
 
@@ -92,11 +92,11 @@ Deze sectie bevat implementatie details en tips.
 
 Wanneer u een parameter sweep instelt, definieert u het bereik van uw zoek opdracht. De zoek opdracht kan een eindig aantal para meters gebruiken die wille keurig zijn geselecteerd. Het is ook mogelijk dat een volledige zoek opdracht wordt uitgevoerd op een parameter ruimte die u definieert.
 
-+ **Wille keurige sweep**: met deze optie wordt een model getraind met behulp van een ingesteld aantal herhalingen. 
++ **Wille keurige sweep** : met deze optie wordt een model getraind met behulp van een ingesteld aantal herhalingen. 
 
   U geeft een reeks waarden op die moeten worden herhaald en de module gebruikt een wille keurig gekozen subset van die waarden. Waarden worden gekozen met vervanging, wat betekent dat getallen die eerder zijn gekozen, niet worden verwijderd uit de groep beschik bare getallen. De kans dat een wille keurige waarde wordt geselecteerd, blijft in alle fasen hetzelfde.  
 
-+ **Volledig raster**: de optie voor het gebruik van het hele raster betekent dat elke combi natie wordt getest. Deze optie is het meest uitgebreid, maar de meeste tijd is vereist. 
++ **Volledig raster** : de optie voor het gebruik van het hele raster betekent dat elke combi natie wordt getest. Deze optie is het meest uitgebreid, maar de meeste tijd is vereist. 
 
 ### <a name="controlling-the-length-and-complexity-of-training"></a>De lengte en complexiteit van training bepalen
 
@@ -142,7 +142,7 @@ Tijdens de training moet u echter *één* metrische waarde kiezen om te gebruike
 
 -   **Bij relatieve kwadratische fout** wordt het totale aantal kwadraten genormaliseerd door te delen door het totale aantal gekwadrateerde fouten van de voorspelde waarden.  
 
--   De **determinatie coëfficiënt** is één getal dat aangeeft hoe goed de gegevens in een model passen. Een waarde van één betekent dat het model exact overeenkomt met de gegevens. De waarde 0 betekent dat de gegevens wille keurig of anderszins niet op het model passen. Dit wordt vaak *r<sup>2</sup>*, *r<sup>2</sup>* of *r-kwadraat*genoemd.  
+-   De **determinatie coëfficiënt** is één getal dat aangeeft hoe goed de gegevens in een model passen. Een waarde van één betekent dat het model exact overeenkomt met de gegevens. De waarde 0 betekent dat de gegevens wille keurig of anderszins niet op het model passen. Dit wordt vaak *r <sup>2</sup>* , *r <sup>2</sup>* of *r-kwadraat* genoemd.  
 
 ### <a name="modules-that-dont-support-a-parameter-sweep"></a>Modules die geen para meter-sweep ondersteunen
 

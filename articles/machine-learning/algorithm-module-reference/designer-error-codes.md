@@ -1,7 +1,7 @@
 ---
 title: Problemen met de module fouten in Designer oplossen
 titleSuffix: Azure Machine Learning
-description: Problemen met module fout codes in Azure Machine Learning Designer oplossen
+description: Lees hoe u automatische module fout codes in Azure Machine Learning Designer kunt lezen en oplossen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323770"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420832"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Uitzonde ringen en fout codes voor de ontwerper
 

@@ -1,7 +1,7 @@
 ---
 title: 'Model voor kruis validatie: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de model module kruislings valideren in Azure Machine Learning om de schatting van de para meters voor classificaties of regressie modellen te valideren door de gegevens te partitioneren.
+description: Gebruik de module voor het valideren van een model in Azure Machine Learning Designer om de schatting van de para meters voor classificatie-of regressie modellen te valideren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 63c61b12ad68a3add2e7b40ab0bec38d3c2835e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4099ecf6e6bcc6654391e54292878393fb22914
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898570"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421342"
 ---
 # <a name="cross-validate-model"></a>Kruisvalidatie van model valideren
 
 In dit artikel wordt beschreven hoe u de module voor kruis validatie kunt gebruiken in Azure Machine Learning Designer. *Kruis validatie* is een techniek die vaak wordt gebruikt in machine learning om zowel de variabiliteit van een gegevensset als de betrouw baarheid te beoordelen van een model dat via deze gegevens is getraind.  
 
-De module voor kruis validatie maakt als invoer een gegevensset met een label, samen met een niet-uitgetrainde classificatie of regressie model. De gegevensset wordt onderverdeeld in een aantal subsets (*vouwen*), bouwt een model op elke vouw en retourneert vervolgens een set nauw keurige statistieken voor elke vouw. Door de nauw keurige statistieken voor alle vouwen te vergelijken, kunt u de kwaliteit van de gegevensset interpreteren. U kunt vervolgens begrijpen of het model gevoelig is voor variaties in de gegevens.  
+De module voor kruis validatie maakt als invoer een gegevensset met een label, samen met een niet-uitgetrainde classificatie of regressie model. De gegevensset wordt onderverdeeld in een aantal subsets ( *vouwen* ), bouwt een model op elke vouw en retourneert vervolgens een set nauw keurige statistieken voor elke vouw. Door de nauw keurige statistieken voor alle vouwen te vergelijken, kunt u de kwaliteit van de gegevensset interpreteren. U kunt vervolgens begrijpen of het model gevoelig is voor variaties in de gegevens.  
 
 Kruis valideren model retourneert ook voorspelde resultaten en waarschijnlijkheid voor de gegevensset, zodat u de betrouw baarheid van de voor spellingen kunt beoordelen.  
 
@@ -30,7 +30,7 @@ Kruis valideren model retourneert ook voorspelde resultaten en waarschijnlijkhei
 
    Het algoritme wordt standaard ingesteld op 10 vouwen als u de gegevensset niet eerder hebt gepartitioneerd. Als u de gegevensset wilt splitsen in een ander aantal vouwen, kunt u de module [Partition en sample](partition-and-sample.md) gebruiken en aangeven hoeveel vouwen u wilt gebruiken.  
 
-2.  In de module worden de gegevens in vouw 1 gereserveerd om te worden gebruikt voor validatie. (Dit wordt ook wel de *evaluatie-vouw*genoemd.) De module gebruikt de resterende vouwen om een model te trainen. 
+2.  In de module worden de gegevens in vouw 1 gereserveerd om te worden gebruikt voor validatie. (Dit wordt ook wel de *evaluatie-vouw* genoemd.) De module gebruikt de resterende vouwen om een model te trainen. 
 
     Als u bijvoorbeeld vijf vouwen maakt, genereert de module vijf modellen tijdens Kruis validatie. De module treinen elk model met behulp van vier vijfde van de gegevens. Elk model wordt getest op het resterende aantal van een vijfde.  
 
@@ -89,7 +89,7 @@ Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muis
 | Nieuwe kolomnaam      | Beschrijving                              |
 | -------------------- | ---------------------------------------- |
 | Labels met een score        | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Het bevat de voorspelde waarde voor elke rij. |
-| Gescoorde kansen | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Deze geeft de geschatte waarschijnlijkheid van de waarde in de **gescoorde labels**aan. |
+| Gescoorde kansen | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Deze geeft de geschatte waarschijnlijkheid van de waarde in de **gescoorde labels** aan. |
 | Vouw nummer          | Hiermee wordt de op nul gebaseerde index van de vouw aangegeven waarmee elke rij met gegevens tijdens Kruis validatie werd toegewezen. |
 
  ### <a name="evaluation-results"></a>Evaluatieresultaten
@@ -109,9 +109,9 @@ Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muis
 
 De module bevat ook de volgende metrische gegevens voor elke vouw, afhankelijk van het type model dat u wilt evalueren: 
 
-+ **Classificatie modellen**: precisie, intrekken, F-Score, AUC, nauw keurigheid  
++ **Classificatie modellen** : precisie, intrekken, F-Score, AUC, nauw keurigheid  
 
-+ **Regressie modellen**: absolute fout, wortel gemiddelde fout, relatieve absolute fout, relatieve kwadraat fout en coëfficiënt van bepaling
++ **Regressie modellen** : absolute fout, wortel gemiddelde fout, relatieve absolute fout, relatieve kwadraat fout en coëfficiënt van bepaling
 
 
 ## <a name="technical-notes"></a>Technische opmerkingen  

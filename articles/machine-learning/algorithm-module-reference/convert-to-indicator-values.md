@@ -1,7 +1,7 @@
 ---
 title: Converteren naar indicatorwaarden
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module converteren naar indicator waarden in Azure Machine Learning om kolommen die categorische-waarden bevatten, te converteren naar een reeks binaire-indicator kolommen.
+description: Gebruik de module converteren naar indicator waarden in Azure Machine Learning Designer om categorische kolommen te converteren naar een reeks binaire-indicator kolommen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81b3c113f46428327842c1555fdd1934e9ae8762
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79477660"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420849"
 ---
 # <a name="convert-to-indicator-values"></a>Converteren naar indicatorwaarden
 In dit artikel wordt een module van Azure Machine Learning Designer beschreven.
@@ -51,7 +51,7 @@ Stel dat u een kolom hebt met scores die aangeven of een server een hoge, gemidd
 | 10302     | Normaal        |
 | 10303     | Hoog          |
 
-Wanneer u **converteren toepast op indicator waarden**, zet de ontwerper één kolom met labels om in meerdere kolommen met Booleaanse waarden:  
+Wanneer u **converteren toepast op indicator waarden** , zet de ontwerper één kolom met labels om in meerdere kolommen met Booleaanse waarden:  
 
 | Server-ID | Fout Score-laag | Fout Score: medium | Fout score-hoog |
 | --------- | ------------------- | ---------------------- | -------------------- |
@@ -71,8 +71,8 @@ U kunt nu de drie indicator kolommen gebruiken als functies in een machine learn
 
 De module retourneert twee uitvoer:
 
-- **Gegevensset voor resultaten**: een gegevensset met geconverteerde indicator waarden kolommen. Kolommen die niet zijn geselecteerd voor het opschonen, zijn ook ' door gegeven '.
-- **Indicator waarden transformeren**: een gegevens transformatie die wordt gebruikt voor het converteren naar indicator waarden die kunnen worden opgeslagen in uw werk ruimte en later worden toegepast op nieuwe gegevens.
+- **Gegevensset voor resultaten** : een gegevensset met geconverteerde indicator waarden kolommen. Kolommen die niet zijn geselecteerd voor het opschonen, zijn ook ' door gegeven '.
+- **Indicator waarden transformeren** : een gegevens transformatie die wordt gebruikt voor het converteren naar indicator waarden die kunnen worden opgeslagen in uw werk ruimte en later worden toegepast op nieuwe gegevens.
 
 ## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Een opgeslagen indicator waarden-bewerking Toep assen op nieuwe gegevens
 
@@ -104,7 +104,7 @@ Deze sectie bevat implementatie details, tips en antwoorden op veelgestelde vrag
 
 -   Er is geen limiet voor het aantal kolommen dat u kunt converteren naar indicator kolommen. Omdat elke kolom met waarden echter meerdere indicator kolommen kan leveren, wilt u mogelijk slechts enkele kolommen tegelijk converteren en bekijken.  
 
--   Als de kolom ontbrekende waarden bevat, wordt er een afzonderlijke indicator kolom gemaakt voor de ontbrekende categorie met deze naam: * \<source column> -ontbreekt*  
+-   Als de kolom ontbrekende waarden bevat, wordt er een afzonderlijke indicator kolom gemaakt voor de ontbrekende categorie met deze naam: *\<source column> -ontbreekt*  
 
 -   Als de kolom die u converteert naar indicator waarden getallen bevat, moeten deze worden gemarkeerd als categorische, zoals elke andere functie kolom. Nadat u dit hebt gedaan, worden de getallen beschouwd als discrete waarden. Als u bijvoorbeeld een numerieke kolom hebt met MPG-waarden van 25 tot 30, wordt er een nieuwe indicator kolom gemaakt voor elke afzonderlijke waarde:  
 

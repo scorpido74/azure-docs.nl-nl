@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934953"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420594"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Schaal voor prestaties op Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Voordat u een grotere implementatie inspanning inneemt, moet u weten hoe een typ
 
 1. Begin met een laag aantal query's per seconde (QPS) en verhoog vervolgens geleidelijk het aantal dat in de test wordt uitgevoerd totdat de query latentie onder het vooraf gedefinieerde doel daalt. Dit is een belang rijk referentie punt om u te helpen bij het plannen van de schaal als uw toepassing groeit in gebruik.
 
-1. Gebruik waar mogelijk HTTP-verbindingen. Als u de Azure Cognitive Search .NET SDK gebruikt, betekent dit dat u een instantie of [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) -exemplaar opnieuw moet gebruiken. Als u de rest API gebruikt, moet u één httpclient maakt opnieuw gebruiken.
+1. Gebruik waar mogelijk HTTP-verbindingen. Als u de Azure Cognitive Search .NET SDK gebruikt, betekent dit dat u een instantie of [SearchClient](/dotnet/api/azure.search.documents.searchclient) -exemplaar opnieuw moet gebruiken. Als u de rest API gebruikt, moet u één httpclient maakt opnieuw gebruiken.
 
 1. U kan de query op aanvragen van query's variëren zodat de zoek actie plaatsvindt in verschillende onderdelen van de index. Variatie is belang rijk omdat als u dezelfde Zoek opdrachten doorlopend uitvoert, het opslaan van gegevens in de cache wordt gestart, waardoor de prestaties kunnen worden verbeterd.
 
@@ -43,7 +43,7 @@ Tijdens het maken van deze test werkbelastingen zijn er enkele kenmerken van Azu
 + Met Azure Cognitive Search worden index taken niet op de achtergrond uitgevoerd. Als uw service tegelijkertijd query's uitvoert en werk belastingen gelijktijdig indexeert, moet u rekening houden met het introduceren van index taken in uw query tests of door opties te verkennen voor het uitvoeren van index taken tijdens de piek uren.
 
 > [!Tip]
-> U kunt een realistische query belasting simuleren met behulp van hulpprogram ma's voor het testen van de belasting. Probeer [tests met Azure DevOps te laden](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) of gebruik een van deze [alternatieven](/azure/devops/test/load-test/overview?view=azure-devops#alternatives).
+> U kunt een realistische query belasting simuleren met behulp van hulpprogram ma's voor het testen van de belasting. Probeer [tests met Azure DevOps te laden](/azure/devops/test/load-test/get-started-simple-cloud-load-test) of gebruik een van deze [alternatieven](/azure/devops/test/load-test/overview#alternatives).
 
 ## <a name="scale-for-high-query-volume"></a>Schaal voor hoog query volume
 

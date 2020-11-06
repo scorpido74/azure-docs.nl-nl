@@ -1,6 +1,6 @@
 ---
 title: Naslaginformatie over algoritmen en modules
-description: Meer informatie over de beschik bare modules in Azure Machine Learning Designer
+description: Meer informatie over de Azure Machine Learning Designer-modules die u kunt gebruiken om uw eigen machine learning projecten te maken.
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 9a2e21696409c320b89d1fed54fefad953b955e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 998f9ef7bddfd988dc0af8183fb9c000bf8c79e7
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886391"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421291"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer
 
@@ -35,7 +35,7 @@ Zie voor hulp bij het kiezen van algoritmen
 | Functionaliteit | Beschrijving | Module |
 | --- |--- | --- |
 | Gegevens invoer en-uitvoer | Verplaats gegevens van Cloud bronnen naar uw pijp lijn. Schrijf uw resultaten of tussenliggende gegevens naar Azure Storage, SQL Database of Hive, terwijl u een pijp lijn uitvoert, of gebruik Cloud opslag voor het uitwisselen van gegevens tussen pijp lijnen.  | [Gegevens handmatig invoeren](enter-data-manually.md) <br/> [Gegevens exporteren](export-data.md) <br/> [Gegevens importeren](import-data.md) |
-| Gegevens transformatie | Bewerkingen op gegevens die uniek zijn voor machine learning, zoals het normaliseren of Binningen van gegevens, het beperken van de afmetingen en het converteren van gegevens over verschillende bestands indelingen.| [Kolommen toevoegen](add-columns.md) <br/> [Rijen toevoegen](add-rows.md) <br/> [Wiskundige bewerking toepassen](apply-math-operation.md) <br/> [SQL-transformatie toepassen](apply-sql-transformation.md) <br/> [Ontbrekende gegevens opschonen](clean-missing-data.md) <br/> [Waarden inperken](clip-values.md) <br/> [Converteren naar CSV](convert-to-csv.md) <br/> [Converteren naar gegevensset](convert-to-dataset.md) <br/> [Converteren naar indicatorwaarden](convert-to-indicator-values.md) <br/> [Metagegevens bewerken](edit-metadata.md) <br/> [Gegevens in opslaglocaties groeperen](group-data-into-bins.md) <br/> [Gegevens samenvoegen](join-data.md) <br/> [Gegevens normaliseren](normalize-data.md) <br/> [Partitie en voorbeeld](partition-and-sample.md)  <br/> [Dubbele rijen verwijderen](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Kolomtransformatie selecteren](select-columns-transform.md) <br/> [Kolommen in gegevensset selecteren](select-columns-in-dataset.md) <br/> [Gegevens splitsen](split-data.md) |
+| Gegevenstransformatie | Bewerkingen op gegevens die uniek zijn voor machine learning, zoals het normaliseren of Binningen van gegevens, het beperken van de afmetingen en het converteren van gegevens over verschillende bestands indelingen.| [Kolommen toevoegen](add-columns.md) <br/> [Rijen toevoegen](add-rows.md) <br/> [Wiskundige bewerking toepassen](apply-math-operation.md) <br/> [SQL-transformatie toepassen](apply-sql-transformation.md) <br/> [Ontbrekende gegevens opschonen](clean-missing-data.md) <br/> [Waarden inperken](clip-values.md) <br/> [Converteren naar CSV](convert-to-csv.md) <br/> [Converteren naar gegevensset](convert-to-dataset.md) <br/> [Converteren naar indicatorwaarden](convert-to-indicator-values.md) <br/> [Metagegevens bewerken](edit-metadata.md) <br/> [Gegevens in opslaglocaties groeperen](group-data-into-bins.md) <br/> [Gegevens samenvoegen](join-data.md) <br/> [Gegevens normaliseren](normalize-data.md) <br/> [Partitie en voorbeeld](partition-and-sample.md)  <br/> [Dubbele rijen verwijderen](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Kolomtransformatie selecteren](select-columns-transform.md) <br/> [Kolommen in gegevensset selecteren](select-columns-in-dataset.md) <br/> [Gegevens splitsen](split-data.md) |
 | Functie selectie | Selecteer een subset van relevante, nuttige functies om te gebruiken bij het bouwen van een analytisch model. | [Functieselectie op basis van filters](filter-based-feature-selection.md) <br/> [Belang van permutatiefunctie](permutation-feature-importance.md) |
 | Statistische functies | Bieden een groot aantal statistische methoden die zijn gerelateerd aan data Science. | [Gegevens samenvatten](summarize-data.md)|
 

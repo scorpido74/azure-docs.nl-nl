@@ -1,7 +1,7 @@
 ---
 title: One-vs-All Multiclass
 titleSuffix: Azure Machine Learning
-description: Informatie over het gebruik van de module One-vs-All Multiclass in Azure Machine Learning om een classificatie model met een klasse te maken op basis van een ensemble van binaire classificatie modellen.
+description: Meer informatie over het gebruik van de One-vs-All Multiclass-module in Azure Machine Learning Designer voor het maken van een ensemble van binaire classificatie modellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: dfe01e16b55325db03e4150a33ae5c4aa5822ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f09a77043a552d8d7f09c2a6abcb78f89cbf8ee2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898510"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420679"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -40,7 +40,7 @@ U verbindt het binaire model met de module One-vs-All Multiclass. Vervolgens tra
 
 Wanneer u de modellen combineert, maakt One-vs-All Multiclass meerdere binaire classificatie modellen, optimaliseert de algoritme voor elke klasse en voegt de modellen vervolgens samen. De module voert deze taken uit, ook al heeft de gegevensset van de training mogelijk meerdere klassen waarden.
 
-1. Voeg de module One-vs-All Multiclass toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden onder **machine learning-Initialize**, in de categorie **classificatie** .
+1. Voeg de module One-vs-All Multiclass toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden onder **machine learning-Initialize** , in de categorie **classificatie** .
 
    De classificatie van de One-vs-All Multiclass heeft geen Configureer bare para meters. Aanpassingen moeten worden uitgevoerd in het binaire classificatie model dat wordt opgegeven als invoer.
 
