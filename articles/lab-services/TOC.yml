@@ -4,6 +4,10 @@
   items:
     - name: Over Lab-Services
       href: lab-services-overview.md
+- name: Snelstartgidsen
+  items:
+    - name: Aan de slag
+      href: get-started-manage-labs.md
 - name: Zelfstudies
   items:
     - name: Een lab-account maken

@@ -662,6 +662,8 @@
               href: how-to-time-to-live.md
             - name: Unieke sleutels definiëren
               href: how-to-define-unique-keys.md
+            - name: Transactionele batch-bewerkingen uitvoeren
+              href: transactional-batch.md
         - name: Prestaties
           items:
             - name: Query’s uitvoeren
@@ -753,8 +755,6 @@
               href: create-sql-api-java-changefeed.md
         - name: Programmeren op de server
           items:
-            - name: Transactionele batch-bewerkingen uitvoeren
-              href: transactional-batch.md
             - name: 'Opgeslagen procedures, triggers en UDF''s schrijven'
               href: how-to-write-stored-procedures-triggers-udfs.md
             - name: Opgeslagen procedures en triggers schrijven met de JavaScript-query-API

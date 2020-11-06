@@ -34,7 +34,7 @@
       href: search-get-started-java.md
     - name: Javascript
       href: search-get-started-javascript.md
-    - name: Postman
+    - name: REST
       href: search-get-started-postman.md
     - name: PowerShell
       href: search-get-started-powershell.md
@@ -94,6 +94,8 @@
   items:
     - name: Zoekopdracht in volledige tekst
       href: search-lucene-query-architecture.md
+    - name: Relevantiescore
+      href: index-similarity-and-scoring.md
     - name: Indexeerfuncties
       href: search-indexer-overview.md
     - name: AI-verrijking
@@ -294,8 +296,6 @@
       items:
         - name: Werken met resultaten
           href: search-pagination-page-layout.md
-        - name: Relevantiescore
-          href: index-similarity-and-scoring.md
         - name: Scoreprofielen
           href: index-add-scoring-profiles.md
         - name: Vergelijkbaarheidsalgoritme

@@ -14,8 +14,9 @@
     - name: Releaseopmerkingen
       href: release-notes.md
 - name: Snelstartgidsen
+  expanded: true
   items:
-    - name: Inleiding
+    - name: Aan de slag
       href: get-started.md
       displayName: 'get, started, quickstart'
     - name: 1 Een Synapse-werkruimte maken
@@ -170,7 +171,9 @@
           href: sql/overview-features.md
         - name: Modellen voor resourceverbruik
           href: sql/resource-consumption-models.md
-        - name: Best practices voor serverloze SQL-pools
+        - name: Verwerkte gegevens
+          href: sql/data-processed.md
+        - name: Aanbevolen procedures voor SQL on-demand
           href: sql/best-practices-sql-on-demand.md
         - name: Best practices voor toegewezen SQL-pools
           href: sql/best-practices-sql-pool.md

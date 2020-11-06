@@ -29,6 +29,9 @@
     - name: Databasebeschadiging oplosseen
       href: how-to-fix-corrupt-database.md
       displayName: corrupt data
+    - name: Versiebeleid
+      href: concepts-version-policy.md
+      displayName: version policy
 - name: Enkele server
   expanded: true
   items:

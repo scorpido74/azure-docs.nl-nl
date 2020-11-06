@@ -13,15 +13,41 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Functie maken
+    - name: Uw eerste functie maken
       expanded: true
       items:
         - name: Visual Studio Code
-          href: ./functions-create-first-function-vs-code.md
+          expanded: true
+          items:
+            - name: C#
+              href: create-first-function-vs-code-csharp.md
+            - name: Java
+              href: create-first-function-vs-code-java.md
+            - name: Javascript
+              href: create-first-function-vs-code-node.md
+            - name: PowerShell
+              href: create-first-function-vs-code-powershell.md
+            - name: Python
+              href: create-first-function-vs-code-python.md
+            - name: TypeScript
+              href: create-first-function-vs-code-typescript.md
         - name: Visual Studio
           href: functions-create-your-first-function-visual-studio.md
         - name: Opdrachtregel
-          href: functions-create-first-azure-function-azure-cli.md
+          expanded: false
+          items:
+            - name: C#
+              href: create-first-function-cli-csharp.md
+            - name: Java
+              href: create-first-function-cli-java.md
+            - name: Javascript
+              href: create-first-function-cli-node.md
+            - name: PowerShell
+              href: create-first-function-cli-powershell.md
+            - name: Python
+              href: create-first-function-cli-python.md
+            - name: TypeScript
+              href: create-first-function-cli-typescript.md
         - name: ARM-sjabloon
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
@@ -212,11 +238,11 @@
                 - name: Azure Portal
                   href: functions-create-first-azure-function.md
                 - name: Opdrachtregel
-                  href: ./functions-create-first-azure-function-azure-cli.md
+                  href: ./create-first-function-cli-csharp.md
                 - name: Visual Studio
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
-                  href: ./functions-create-first-function-vs-code.md
+                  href: ./create-first-function-vs-code-csharp.md
                 - name: Java met behulp van Gradle
                   href: functions-create-first-java-gradle.md
                 - name: Java met behulp van Eclipse
@@ -230,7 +256,7 @@
                 - name: App Service-abonnement voor Linux
                   href: create-function-app-linux-app-service-plan.md
                 - name: Verbruiksabonnement voor Linux
-                  href: ./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python
+                  href: create-first-function-cli-python.md
                 - name: Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB-trigger
