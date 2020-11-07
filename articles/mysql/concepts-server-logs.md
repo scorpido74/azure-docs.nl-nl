@@ -5,29 +5,31 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/6/2020
+ms.openlocfilehash: 1e967c77bc41f0f91674fe55bc622adaf5046f6d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81271978"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358997"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Logboekregistratie voor trage query's in Azure Database for MySQL
 In Azure Database for MySQL is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
 
 Voor meer informatie over het MySQL-logboek voor langzame query's raadpleegt u de sectie voor het [langzame query logboek](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)van MySQL-verwijzing hand matig.
 
+Wanneer [query Store](concepts-query-store.md) is ingeschakeld op uw server, ziet u mogelijk de query's zoals " `CALL mysql.az_procedure_collect_wait_stats (900, 30);` " vastgelegd in uw logboeken met trage query's. Dit gedrag wordt verwacht, omdat de functie query archief statistieken over uw query's verzamelt. 
+
 ## <a name="configure-slow-query-logging"></a>Langzame query logboek registratie configureren 
 Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt `slow_query_log` u in op aan. Dit kan worden ingeschakeld met behulp van de Azure Portal of Azure CLI. 
 
 Andere para meters die u kunt aanpassen zijn onder andere:
 
-- **long_query_time**: als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaardinstelling is 10 seconden.
-- **log_slow_admin_statements**: als u beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies bevat die naar de slow_query_log zijn geschreven.
-- **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
-- **log_throttle_queries_not_using_indexes**: deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
-- **log_output**: als ' bestand ' is, kan het langzame query logboek worden geschreven naar zowel de lokale server opslag als Azure monitor Diagnostische logboeken. Als 'None' wordt opgegeven, wordt het logboek voor trage query's alleen naar Diagnostische logboeken van Azure Monitor geschreven. 
+- **long_query_time** : als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaardinstelling is 10 seconden.
+- **log_slow_admin_statements** : als u beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies bevat die naar de slow_query_log zijn geschreven.
+- **log_queries_not_using_indexes** : bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
+- **log_throttle_queries_not_using_indexes** : deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
+- **log_output** : als ' bestand ' is, kan het langzame query logboek worden geschreven naar zowel de lokale server opslag als Azure monitor Diagnostische logboeken. Als 'None' wordt opgegeven, wordt het logboek voor trage query's alleen naar Diagnostische logboeken van Azure Monitor geschreven. 
 
 > [!IMPORTANT]
 > Als uw tabellen niet zijn geïndexeerd, worden het `log_queries_not_using_indexes` instellen `log_throttle_queries_not_using_indexes` van de para meters op in mogelijk beïnvloed door de MySQL-prestaties, omdat alle query's die worden uitgevoerd op deze niet-geïndexeerde tabellen, worden geschreven naar het logboek voor langzame query's.<br><br>
@@ -143,4 +145,4 @@ Als uw logboeken voor trage query's worden gepiped naar Azure Monitor logboeken 
     
 ## <a name="next-steps"></a>Volgende stappen
 - [Langzame query logboeken configureren vanuit de Azure Portal](howto-configure-server-logs-in-portal.md)
-- [Langzame query logboeken configureren vanuit de Azure cli](howto-configure-server-logs-in-cli.md).
+- [Langzame query logboeken configureren vanuit de Azure CLI](howto-configure-server-logs-in-cli.md)

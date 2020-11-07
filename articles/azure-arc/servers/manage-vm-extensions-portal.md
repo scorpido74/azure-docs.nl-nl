@@ -1,18 +1,21 @@
 ---
 title: VM-extensie van Azure Portal inschakelen
 description: In dit artikel wordt beschreven hoe u virtuele-machine uitbreidingen implementeert voor Azure Arc-servers die worden uitgevoerd in hybride Cloud omgevingen van de Azure Portal.
-ms.date: 10/19/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: dcab7cb441c329a60b2c6fa3256aeedb2bb5b33d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462892"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359082"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Azure VM-extensies inschakelen vanuit de Azure Portal
 
 Dit artikel laat u zien hoe u Azure-VM-extensies, ondersteund door Azure Arc-servers, kunt implementeren en verwijderen naar een Linux-of Windows Hybrid-machine via de Azure Portal.
+
+> [!NOTE]
+> De Key Vault VM-extensie (preview) biedt geen ondersteuning voor implementatie vanuit de Azure Portal, alleen met behulp van de Azure CLI, het Azure PowerShell of het gebruik van een Azure Resource Manager sjabloon.
 
 ## <a name="enable-extensions-from-the-portal"></a>Uitbrei dingen van de portal inschakelen
 
@@ -22,7 +25,7 @@ Voor VM-extensies kan uw Arc worden toegepast voor de door de server beheerde ma
 
 2. Ga in de portal naar **servers-Azure-boog** en selecteer uw hybride machine in de lijst.
 
-3. Kies **extensies**en selecteer vervolgens **toevoegen**. Kies de gewenste uitbrei ding in de lijst met beschik bare uitbrei dingen en volg de instructies in de wizard. In dit voor beeld wordt de VM-extensie Log Analytics geïmplementeerd.
+3. Kies **extensies** en selecteer vervolgens **toevoegen**. Kies de gewenste uitbrei ding in de lijst met beschik bare uitbrei dingen en volg de instructies in de wizard. In dit voor beeld wordt de VM-extensie Log Analytics geïmplementeerd.
 
     ![VM-extensie voor geselecteerde machine selecteren](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -45,7 +48,7 @@ U kunt een of meer uitbrei dingen van een server met Arc-functionaliteit uit de 
 
 2. Ga in de portal naar **servers-Azure-boog** en selecteer uw hybride machine in de lijst.
 
-3. Kies **uitbrei dingen**en selecteer een uitbrei ding in de lijst met geïnstalleerde uitbrei dingen.
+3. Kies **uitbrei dingen** en selecteer een uitbrei ding in de lijst met geïnstalleerde uitbrei dingen.
 
 4. Selecteer **verwijderen** en wanneer u wordt gevraagd om te verifiëren, selecteert u **Ja** om door te gaan.
 

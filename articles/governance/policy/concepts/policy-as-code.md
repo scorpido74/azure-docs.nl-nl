@@ -1,16 +1,16 @@
 ---
-title: Ontwerp Azure Policy als code werk stromen
+title: Azure Policy ontwerpen als code-werkstromen
 description: Meer informatie over het ontwerpen van werk stromen om uw Azure Policy definities als code te implementeren en om resources automatisch te valideren.
 ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320617"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359677"
 ---
-# <a name="design-azure-policy-as-code-workflows"></a>Ontwerp Azure Policy als code werk stromen
+# <a name="design-azure-policy-as-code-workflows"></a>Azure Policy ontwerpen als code-werkstromen
 
 Als u de voortgang van uw reis met Cloud governance wilt, kunt u de beleids definitie hand matig beheren in de Azure Portal of via de diverse Sdk's, zodat u ze beter kunt beheren en herhalen op ondernemings schaal. Twee van de meest voorkomende benaderingen voor het beheer van systemen op schaal in de Cloud zijn:
 
@@ -38,8 +38,6 @@ Voor beelden van deze bestands indelingen vindt u in de [Azure Policy github ops
 
 - Beleids definitie: [een tag toevoegen aan resources](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - Initiatief definitie: [facturerings Tags](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
-
-Controleer ook de [Export Azure Policy resources](../how-to/export-resources.md) om uw bestaande definities en toewijzingen op te halen in de [github](https://www.github.com)van de bron code beheer omgeving.
 
 ## <a name="workflow-overview"></a>Overzicht werk stroom
 
@@ -73,6 +71,8 @@ De beleids definities worden gemaakt met JSON en opgeslagen in broncode beheer. 
 ```
 
 Wanneer een nieuw beleid wordt toegevoegd of een bestaande beleids regel is bijgewerkt, moet de werk stroom de beleids definitie automatisch bijwerken in Azure. Het testen van de nieuwe of bijgewerkte beleids definitie wordt in een latere stap geleverd.
+
+Controleer ook de [Export Azure Policy resources](../how-to/export-resources.md) om uw bestaande definities en toewijzingen op te halen in de [github](https://www.github.com)van de bron code beheer omgeving.
 
 ### <a name="create-and-update-initiative-definitions"></a>Initiatief definities maken en bijwerken
 
@@ -129,7 +129,7 @@ Het testen van de resultaten van de bijgewerkte beleids evaluatie en de omgeving
 
 ### <a name="update-to-enforced-assignments"></a>Bijwerken naar afgedwongen toewijzingen
 
-Nadat alle validatie-Gates zijn voltooid, werkt u de toewijzing bij om **enforcementMode** van _ingeschakeld_te gebruiken. Het is raadzaam deze wijziging in eerste instantie in dezelfde omgeving te maken. Zodra deze omgeving is gevalideerd terwijl deze werkt zoals verwacht, moet de wijziging de scope hebben om de volgende omgeving op te nemen, enzovoort, totdat het beleid is geïmplementeerd voor productie resources.
+Nadat alle validatie-Gates zijn voltooid, werkt u de toewijzing bij om **enforcementMode** van _ingeschakeld_ te gebruiken. Het is raadzaam deze wijziging in eerste instantie in dezelfde omgeving te maken. Zodra deze omgeving is gevalideerd terwijl deze werkt zoals verwacht, moet de wijziging de scope hebben om de volgende omgeving op te nemen, enzovoort, totdat het beleid is geïmplementeerd voor productie resources.
 
 ## <a name="process-integrated-evaluations"></a>Geïntegreerde evaluaties verwerken
 

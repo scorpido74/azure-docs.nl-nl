@@ -203,6 +203,8 @@
       href: concepts-roles-permissions.md
     - name: Naamgevingsregels
       href: naming-rules.md
+    - name: De gegevensredundantie
+      href: concepts-data-redundancy.md
 - name: Instructiegidsen
   items:
     - name: Auteur

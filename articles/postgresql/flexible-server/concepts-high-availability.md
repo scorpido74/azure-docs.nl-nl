@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934929"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359541"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Concepten met hoge Beschik baarheid in Azure Database for PostgreSQL-flexibele server
 
@@ -43,7 +43,7 @@ De status van de configuratie met hoge Beschik baarheid wordt voortdurend bewaak
 
 PostgreSQL-client toepassingen zijn verbonden met de primaire server met behulp van de naam van de DB-server. Lees bewerkingen van toepassingen worden rechtstreeks vanaf de primaire server bediend, terwijl door voeringen en schrijf bewerkingen alleen worden bevestigd aan de toepassing nadat de gegevens zijn opgeslagen op de primaire server en de stand-by replica. Als gevolg van deze extra round-trip vereiste kunnen toepassingen verhoogde latentie voor schrijf bewerkingen en door voeringen verwachten. U kunt de status van de hoge Beschik baarheid in de portal bewaken.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="zone redundant hoge Beschik baarheid"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="zone redundante hoge Beschik baarheid-constante status"::: 
 
 1. Clients maken verbinding met de flexibele server en voeren schrijf bewerkingen uit.
 2. Wijzigingen worden gerepliceerd naar de stand-by-site.
@@ -64,7 +64,7 @@ Voor andere door de gebruiker gestarte bewerkingen, zoals schalen of schalen, wo
 
 Ongeplande uitval omvat software fouten of infrastructuur onderdeel fouten die de beschik baarheid van de data base beïnvloeden. Als de server niet beschik baarheid wordt gedetecteerd door het bewakings systeem, is de replicatie naar de stand-by replica ernstig en is de stand-by replica geactiveerd voor de primaire database server. Clients kunnen opnieuw verbinding maken met de database server met behulp van dezelfde connection string en hun bewerkingen hervatten. De verwachte failover-tijd duurt 60 120s. Afhankelijk van de activiteit op de primaire database server op het moment van de failover, zoals grote trans acties en herstel tijd, kan de failover echter langer duren.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="zone redundant hoge Beschik baarheid"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="zone redundante hoge Beschik baarheid-failover"::: 
 
 1. De primaire database server is niet beschikbaar en de clients hebben geen verbinding meer met de data base. 
 2. De stand-by-server wordt geactiveerd om de nieuwe primaire server te worden. De client maakt verbinding met de nieuwe primaire server met behulp van dezelfde connection string. Het hebben van de client toepassing in dezelfde zone als de primaire database server vermindert de latentie en verbetert de prestaties.
@@ -112,6 +112,8 @@ Flexibele servers die zijn geconfigureerd met maximale Beschik baarheid, replice
 -   Het configureren van door de klant geïnitieerde beheer taken kan niet worden gepland tijdens het beheerde onderhouds venster.
 
 -   Geplande gebeurtenissen, zoals schaalberekening en schaalopslag, worden eerst uitgevoerd op de stand-byserver en vervolgens op de primaire server. Er wordt geen failover uitgevoerd voor de service. 
+
+-  Als logische decodering of logische replicatie is geconfigureerd met een door HA geconfigureerde flexibele server, in het geval van een failover naar de stand-by-server, worden de logische replicatie sleuven niet naar de stand-by-server gekopieerd.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

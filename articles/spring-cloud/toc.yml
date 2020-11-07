@@ -5,7 +5,7 @@
   items:
     - name: Wat is Azure Spring Cloud?
       href: spring-cloud-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Uw eerste app lanceren
@@ -31,14 +31,10 @@
       href: spring-cloud-tutorial-setup-autoscale.md
     - name: Waarschuwingen en actiegroepen
       href: spring-cloud-tutorial-alerts-action-groups.md
-    - name: IntelliJ gebruiken om apps te implementeren
-      href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Circuit Breaker-dashboard
       href: spring-cloud-tutorial-circuit-breaker.md
     - name: Aangepaste DNS-naam
       href: spring-cloud-tutorial-custom-domain.md
-    - name: Een Azure Spring Cloud-exemplaar inrichten met terraform
-      href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Beheerde identiteit gebruiken om Key Vault te koppelen met een Azure Spring Cloud-app
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Azure Spring Cloud implementeren in een virtueel netwerk
@@ -77,6 +73,8 @@
           href: spring-cloud-howto-staging-environment.md
         - name: Java-app starten vanuit de broncode
           href: spring-cloud-howto-launch-from-source.md
+        - name: IntelliJ gebruiken om apps te implementeren
+          href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Configureren
       items:
         - name: 'Een app starten, stoppen en verwijderen'
@@ -115,6 +113,8 @@
           href: spring-cloud-howto-github-actions.md
         - name: Autorisatie met Key Vault in GitHub Actions
           href: spring-cloud-github-actions-key-vault.md
+        - name: Een Azure Spring Cloud-exemplaar inrichten met terraform
+          href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Problemen oplossen
       items:
         - name: Problemen zelf vaststellen en oplossen

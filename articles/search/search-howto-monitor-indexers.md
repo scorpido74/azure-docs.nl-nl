@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06a31e61583ac28218b34195dd6e5b7f92776dce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b10cf314bc9394f3297839d45d3497f9f5d3b0e0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541234"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358827"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Cognitive Search Indexeer functie-status en-resultaten controleren
 
@@ -51,11 +51,11 @@ U kunt de huidige status van al uw Indexeer functies weer geven in de lijst **In
 
    ![Lijst met Indexeer functies](media/search-monitor-indexers/indexers-list.png "Lijst met Indexeer functies")
 
-Wanneer een Indexeer functie wordt uitgevoerd, wordt de status in de lijst weer **gegeven en**wordt de waarde **docs geslaagd** toont het aantal documenten dat tot nu toe is verwerkt. Het kan een paar minuten duren voordat de index status waarden en het aantal documenten zijn bijgewerkt door de portal.
+Wanneer een Indexeer functie wordt uitgevoerd, wordt de status in de lijst weer **gegeven en** wordt de waarde **docs geslaagd** toont het aantal documenten dat tot nu toe is verwerkt. Het kan een paar minuten duren voordat de index status waarden en het aantal documenten zijn bijgewerkt door de portal.
 
 Een Indexeer functie waarvan de meest recente uitvoering **is geslaagd, is geslaagd.** Het uitvoeren van een Indexeer functie kan worden geslaagd, zelfs als afzonderlijke documenten fouten bevatten, als het aantal fouten minder is dan de instelling **maximale mislukte items** van de Indexeer functie.
 
-Als de meest recente uitvoering **is**beëindigd met een fout, wordt de status weer gegeven. Als de status **opnieuw instellen is ingesteld** , is de status van het bijhouden van wijzigingen van de Indexeer functie opnieuw ingesteld.
+Als de meest recente uitvoering **is** beëindigd met een fout, wordt de status weer gegeven. Als de status **opnieuw instellen is ingesteld** , is de status van het bijhouden van wijzigingen van de Indexeer functie opnieuw ingesteld.
 
 Klik op een Indexeer functie in de lijst om meer details weer te geven over de huidige en recente uitvoeringen van de Indexeer functie.
 
@@ -122,7 +122,7 @@ De uitvoerings geschiedenis bevat tot de 50 meest recente uitvoeringen, die in o
 
 Houd er rekening mee dat er twee verschillende status waarden zijn. De status op het hoogste niveau is voor de Indexeer functie zelf. Een Indexeer functie-status van **actief** betekent dat de Indexeer functie op de juiste wijze is ingesteld en kan worden uitgevoerd, maar niet dat deze op dat moment wordt uitgevoerd.
 
-Elke uitvoering van de Indexeer functie heeft ook een eigen status die aangeeft of de specifieke uitvoering**actief**is (wordt uitgevoerd) of al is voltooid met de status **geslaagd**, **transientFailure**of **persistentFailure** . 
+Elke uitvoering van de Indexeer functie heeft ook een eigen status die aangeeft of de specifieke uitvoering **actief** is (wordt uitgevoerd) of al is voltooid met de status **geslaagd** , **transientFailure** of **persistentFailure** . 
 
 Wanneer een Indexeer functie opnieuw wordt ingesteld om de status van het bijhouden van wijzigingen te vernieuwen, wordt een afzonderlijke vermelding voor de uitvoerings geschiedenis toegevoegd met de status **opnieuw instellen** .
 
@@ -181,7 +181,7 @@ Latest run
 
 Houd er rekening mee dat er twee verschillende status waarden zijn. De status op het hoogste niveau is de status van de Indexeer functie zelf. Een Indexeer functie-status van **actief** betekent dat de Indexeer functie juist is ingesteld en beschikbaar is voor uitvoering, maar niet dat deze momenteel wordt uitgevoerd.
 
-Elke uitvoering van de Indexeer functie heeft ook een eigen status om te bepalen of die specifieke uitvoering actief is (wordt**uitgevoerd**) of al is voltooid met de status **geslaagd** of **TransientError** . 
+Elke uitvoering van de Indexeer functie heeft ook een eigen status om te bepalen of die specifieke uitvoering actief is (wordt **uitgevoerd** ) of al is voltooid met de status **geslaagd** of **TransientError** . 
 
 Wanneer een Indexeer functie opnieuw wordt ingesteld om de status van het bijhouden van wijzigingen te vernieuwen, wordt een afzonderlijk geschiedenis item toegevoegd met de status **opnieuw instellen** .
 

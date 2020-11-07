@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532497"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358929"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Veld Toewijzingen en trans formaties met Azure Cognitive Search Indexeer functies
 
@@ -28,7 +28,7 @@ Een aantal situaties waarin veld Toewijzingen handig zijn:
 * De gegevens bron bevat een veld met de naam `_id` , maar in Azure Cognitive Search zijn veld namen die beginnen met een onderstrepings teken niet toegestaan. Met een veld toewijzing kunt u effectief de naam wijzigen van een veld.
 * U wilt verschillende velden in de index vullen op basis van dezelfde gegevens bron gegevens. Het is bijvoorbeeld mogelijk dat u verschillende analyse functies op deze velden wilt Toep assen.
 * U wilt een index veld vullen met gegevens uit meer dan één gegevens bron en de gegevens bronnen gebruiken verschillende veld namen.
-* U moet uw gegevens met Base64 coderen of decoderen. Veld Toewijzingen ondersteunen verschillende **toewijzings functies**, waaronder functies voor Base64-code ring en-decodering.
+* U moet uw gegevens met Base64 coderen of decoderen. Veld Toewijzingen ondersteunen verschillende **toewijzings functies** , waaronder functies voor Base64-code ring en-decodering.
 
 > [!NOTE]
 > Veld toewijzingen in Indexeer functies zijn een eenvoudige manier om gegevens velden toe te wijzen aan index velden, met een zekere mogelijkheid voor gegevens conversie met licht gewicht. Complexere gegevens kunnen vooraf worden verwerkt om deze te wijzigen in een formulier dat kan worden geïndexeerd. Een van de opties die u kunt overwegen, is [Azure Data Factory](../data-factory/index.yml).
@@ -81,7 +81,7 @@ In meerdere veld toewijzingen kan naar een bron veld worden verwezen. In het vol
 
 ## <a name="map-fields-using-the-net-sdk"></a>Velden toewijzen met behulp van de .NET SDK
 
-U definieert veld toewijzingen in de .NET SDK met behulp van de klasse [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) , die de eigenschappen `SourceFieldName` en bevat `TargetFieldName` en een optionele `MappingFunction` verwijzing.
+U definieert veld toewijzingen in de .NET SDK met behulp van de klasse [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) , die de eigenschappen `SourceFieldName` en bevat `TargetFieldName` en een optionele `MappingFunction` verwijzing.
 
 U kunt veld Toewijzingen opgeven wanneer u de Indexeer functie bouwt of later door de eigenschap rechtstreeks in te stellen `Indexer.FieldMappings` .
 

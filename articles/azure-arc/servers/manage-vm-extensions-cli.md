@@ -1,15 +1,15 @@
 ---
 title: VM-extensie inschakelen met behulp van Azure CLI
 description: In dit artikel wordt beschreven hoe u virtuele-machine uitbreidingen implementeert voor Azure Arc-servers die worden uitgevoerd in hybride Cloud omgevingen met behulp van de Azure CLI.
-ms.date: 10/19/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99504c86046c1ef34eeab500a703b9a028cb46fb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 59c984f4adaec2261d1b08748aa5a91c8246418d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336726"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359112"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure-VM-extensies inschakelen met behulp van Azure CLI
 
@@ -21,7 +21,7 @@ In dit artikel wordt beschreven hoe u Azure-VM-extensies die worden ondersteund 
 
 Als u een VM-extensie op uw server met Arc wilt inschakelen, gebruikt u [AZ connectedmachine machine-extension Create](/cli/azure/ext/connectedmachine/connectedmachine/machine-extension#ext_connectedmachine_az_connectedmachine_machine_extension_create) met de `--machine-name` `--extension-name` `--location` `--type` `settings` `--publisher` para meters,,,, en.
 
-In het volgende voor beeld wordt de extensie Log Analytics VM ingeschakeld op een Linux-server die is ingeschakeld voor Arc:
+In het volgende voor beeld wordt de Log Analytics VM-extensie ingeschakeld op een Linux-server die is ingeschakeld voor Arc:
 
 ```azurecli
 az connectedmachine machine-extension create --machine-name "myMachineName" --name "OmsAgentforLinux" --location "eastus" --type "CustomScriptExtension" --publisher "Microsoft.EnterpriseCloud.Monitoring" --settings "{\"workspaceId\":\"workspaceId"}" --protected-settings "{\workspaceKey\":"\workspaceKey"} --type-handler-version "1.10" --resource-group "myResourceGroup"
@@ -31,6 +31,12 @@ In het volgende voor beeld wordt de aangepaste script extensie ingeschakeld op e
 
 ```azurecli
 az connectedmachine machine-extension create --machine-name "myMachineName" --name "CustomScriptExtension" --location "eastus" --type "CustomScriptExtension" --publisher "Microsoft.Compute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -gt 10000 }\\\"\"}" --type-handler-version "1.10" --resource-group "myResourceGroup"
+```
+
+In het volgende voor beeld wordt de Key Vault VM-extensie (preview) ingeschakeld op een server met Arc-functionaliteit:
+
+```azurecli
+az connectedmachine machine-extension create --resource-group "resourceGroupName" --machine-name "myMachineName" --location "regionName" --publisher "Microsoft.Azure.KeyVault" --type "KeyVaultForLinux or KeyVaultForWindows" --name "KeyVaultForLinux or KeyVaultForWindows" --settings '{"secretsManagementSettings": { "pollingIntervalInS": "60", "observedCertificates": ["observedCert1"] }, "authenticationSettings": { "msiEndpoint": "http://localhost:40342/metadata/identity" }}'
 ```
 
 ## <a name="list-extensions-installed"></a>Lijst met geïnstalleerde uitbrei dingen
@@ -70,6 +76,6 @@ az connectedmachine machine-extension delete --machine-name "myMachineName" --na
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U kunt VM-extensies implementeren, beheren en verwijderen met behulp van [Power shell](manage-vm-extensions-powershell.md), via de [Azure Portal](manage-vm-extensions-portal.md)of [Azure Resource Manager sjablonen](manage-vm-extensions-template.md).
+- U kunt VM-extensies implementeren, beheren en verwijderen met behulp van de [Azure PowerShell](manage-vm-extensions-powershell.md), vanuit de [Azure Portal](manage-vm-extensions-portal.md)of [Azure Resource Manager sjablonen](manage-vm-extensions-template.md).
 
 - Informatie over probleem oplossing vindt u in de [gids voor het oplossen van problemen met VM-extensies](troubleshoot-vm-extensions.md).

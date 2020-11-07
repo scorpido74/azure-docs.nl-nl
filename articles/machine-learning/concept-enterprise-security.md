@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: f9d6f58256ccc21e5121a16a429e0f4c3ff1e485
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 19736a37e0da07237f6b112de7da86efe3d8bfe5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323097"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359371"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Enter prise Security en governance voor Azure Machine Learning
 
@@ -126,6 +126,7 @@ De `hbi_workspace` markering bepaalt de hoeveelheid [gegevens die micro soft ver
 * De lokale scratchschijf opschonen tussen uitvoeringen
 * Referenties voor uw opslag account, container register en SSH-account veilig door gegeven van de uitvoerings slaag naar uw reken clusters met behulp van uw sleutel kluis
 * IP-filtering inschakelen om ervoor te zorgen dat de onderliggende batch-groepen niet kunnen worden aangeroepen door andere externe services dan AzureMachineLearningService
+* Houd er rekening mee dat reken instanties niet worden ondersteund in de HBI-werk ruimte
 
 #### <a name="azure-blob-storage"></a>Azure Blob Storage
 

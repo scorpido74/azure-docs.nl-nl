@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d3e856256e02e2c1914aeec493a87ffe992bbf13
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e8f71b277a4f4b538d501b1fa825bc6ec43428c8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740323"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359388"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor virtuele Linux-machines
 
@@ -25,7 +25,7 @@ Azure Disk Encryption is [geïntegreerd met Azure Key Vault](disk-encryption-key
 U kunt alleen schijf versleuteling Toep assen op virtuele machines met [ondersteunde VM-grootten en-besturings systemen](disk-encryption-overview.md#supported-vms-and-operating-systems). U moet ook aan de volgende vereisten voldoen:
 
 - [Aanvullende vereisten voor Vm's](disk-encryption-overview.md#supported-vms-and-operating-systems)
-- [Netwerk vereisten](disk-encryption-overview.md#networking-requirements)
+- [Netwerkvereisten](disk-encryption-overview.md#networking-requirements)
 - [Opslag vereisten voor de versleutelings sleutel](disk-encryption-overview.md#encryption-key-storage-requirements)
 
 In alle gevallen moet u [een moment opname nemen](snapshot-copy-managed-disk.md) en/of een back-up maken voordat schijven worden versleuteld. Back-ups zorgen ervoor dat een herstel optie mogelijk is als er een onverwachte fout optreedt tijdens het versleutelen. Voor Vm's met Managed disks is een back-up vereist voordat versleuteling wordt uitgevoerd. Als er een back-up is gemaakt, kunt u de [cmdlet Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) gebruiken om beheerde schijven te versleutelen door de para meter-skipVmBackup op te geven. Zie het [Azure backup](../../backup/backup-azure-vms-encryption.md) -artikel voor meer informatie over het maken van back-ups en het herstellen van versleutelde vm's. 
@@ -201,7 +201,7 @@ De volgende tabel bevat de para meters van Resource Manager-sjablonen voor besta
 | keyVaultName | De naam van de sleutel kluis waarnaar de versleutelings sleutel moet worden geüpload. U kunt deze ophalen met behulp van de cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` of de Azure cli-opdracht `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` .|
 | keyVaultResourceGroup | De naam van de resource groep die de sleutel kluis bevat. |
 |  keyEncryptionKeyURL | De URL van de sleutel versleutelings sleutel die wordt gebruikt voor het versleutelen van de versleutelings sleutel. Deze para meter is optioneel als u **nokek** selecteert in de vervolg keuzelijst UseExistingKek. Als u **Kek** selecteert in de vervolg keuzelijst UseExistingKek, moet u de _keyEncryptionKeyURL_ -waarde invoeren. |
-| volumeType | Type volume waarop de versleutelings bewerking wordt uitgevoerd. Geldige waarden zijn _besturings systeem_ , _gegevens_ en _alle_ . 
+| volumeType | Type volume waarop de versleutelings bewerking wordt uitgevoerd. Geldige waarden zijn _besturings systeem_ , _gegevens_ en _alle_. 
 | Updatetag | Geef een unieke waarde op als een GUID elke keer dat de bewerking geforceerd moet worden uitgevoerd. |
 | location | Locatie voor alle resources. |
 
@@ -415,6 +415,7 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's,-functies en-
 - Vm's uit de M-serie met Write Accelerator-schijven.
 - ADE Toep assen op een virtuele machine met schijven die zijn versleuteld met versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md) (SSE + CMK). Het Toep assen van SSE en CMK op een gegevens schijf op een virtuele machine die is versleuteld met ADE, is ook een niet-ondersteund scenario.
 - Migratie van een VM die is versleuteld met ADE of **ooit** is versleuteld met ADE, voor versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md).
+- [Azure VM-grootten zonder lokale tijdelijke schijf](../azure-vms-no-temp-disk.md); met name Dv4, Dsv4, Ev4 en Esv4.
 
 ## <a name="next-steps"></a>Volgende stappen
 
