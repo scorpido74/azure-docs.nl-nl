@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: e5b008dd3d3a9d2422cca1fe00329543ed6d362f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517140"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353591"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Zelf studie: Medius flow configureren voor automatische gebruikers inrichting
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. Sla de configuratie op.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Scherm opname van de Medius flow-beheer console waarin de vierde integratie stap wordt weer gegeven. De knop configuratie opslaan is gemarkeerd." border="false":::
 
 5. Selecteer gebruikers inrichten en klik op **OK**.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Scherm opname van de Medius flow-beheer console waarin de vijfde integratie stap wordt weer gegeven. De knoppen gebruikers inrichten en OK zijn gemarkeerd." border="false":::
 
 6. Klik op **geheime sleutel genereren**. Kopieer deze waarde en sla deze op. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad **inrichten** van uw Medius flow-toepassing in de Azure Portal.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Scherm afbeelding van het tabblad Configuratie van gebruikers inrichten in de Medius flow-beheer console. De knoppen geheime sleutel genereren en kopiëren zijn gemarkeerd." border="false":::
 
 7. Klik op **OK**.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Scherm opname van de Medius flow-beheer console met een melding dat gebruikers klikken op OK om een nieuwe geheime sleutel te genereren. De knop OK is gemarkeerd." border="false":::
 
 8. Als u wilt dat de gebruikers worden geïmporteerd met een vooraf gedefinieerde set rollen, bedrijven en andere algemene configuraties in Medius flow, moet u deze eerst configureren. Begin door de configuratie toe te voegen door te klikken op **nieuwe configuratie toevoegen**.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Scherm afbeelding van het tabblad Configuratie van gebruikers inrichten in de Medius flow-beheer console. De knop nieuwe configuratie toevoegen is gemarkeerd." border="false":::
 
 9. Geef de standaard instellingen voor de gebruikers op. In deze weer gave kunt u het standaard kenmerk instellen. Als de standaard instellingen in orde zijn, is het voldoende om alleen een geldige bedrijfs naam op te geven. Omdat deze configuratie-instellingen zijn opgehaald van Medius flow, moeten ze eerst worden geconfigureerd. Zie de sectie **vereisten** van dit artikel voor meer informatie.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Scherm opname van het venster Medius flow nieuwe configuratie toevoegen. Veel instellingen zijn zichtbaar, waaronder land instellingen, een filter en gebruikers rollen." border="false":::
 
 10. Klik op **Opslaan** om de gebruikers configuratie op te slaan.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Scherm afbeelding van het tabblad Configuratie van gebruikers inrichten in de Medius flow-beheer console. De knop Opslaan is gemarkeerd." border="false":::
 
 11. Als u de koppeling voor het inrichten van gebruikers wilt ophalen, klikt u op de **koppeling kopiëren van scim**. Kopieer deze waarde en sla deze op. Deze waarde wordt ingevoerd in het veld **Tenant-URL** op het tabblad **inrichten** van uw Medius flow-toepassing in de Azure Portal.
  
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Scherm afbeelding van het tabblad Configuratie van gebruikers inrichten in de Medius flow-beheer console. De koppelings knop kopiëren S C I M is gemarkeerd." border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>Stap 3. Medius flow toevoegen vanuit de Azure AD-toepassings galerie
 
@@ -114,7 +114,7 @@ Voeg Medius flow toe vanuit de Azure AD-toepassings galerie om het beheren van d
 
 Met de Azure AD-inrichtingsservice kunt u bepalen wie worden ingericht op basis van toewijzing aan de toepassing en/of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen aan de toepassing toe te wijzen. Als u ervoor kiest om uitsluitend te bepalen wie wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereikfilter gebruiken zoals [hier](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) wordt beschreven. 
 
-* Wanneer u gebruikers en groepen toewijst aan Medius flow, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol Standaardtoegang worden uitgesloten van inrichting en worden gemarkeerd als niet-effectief gerechtigd in de inrichtingslogboeken. Als Standaardtoegang de enige beschikbare rol voor de toepassing is, kunt u [het manifest van de toepassing bijwerken](../develop/howto-add-app-roles-in-azure-ad-apps.md) om extra rollen toe te voegen. 
+* Wanneer u gebruikers en groepen toewijst aan Medius flow, moet u een andere rol dan **standaard toegang** selecteren. Gebruikers met de rol Standaardtoegang worden uitgesloten van inrichting en worden gemarkeerd als niet-effectief gerechtigd in de inrichtingslogboeken. Als Standaardtoegang de enige beschikbare rol voor de toepassing is, kunt u [het manifest van de toepassing bijwerken](../develop/howto-add-app-roles-in-azure-ad-apps.md) om extra rollen toe te voegen. 
 
 * Begin klein. Test de toepassing met een kleine set gebruikers en groepen voordat u de toepassing naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer het bereik is ingesteld op alle gebruikers en groepen, kunt u een [bereikfilter op basis van kenmerken](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) opgeven. 
 

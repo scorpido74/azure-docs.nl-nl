@@ -1,5 +1,5 @@
 ---
-title: Open bare IP-adressen bijwerken
+title: Openbaar IP-adres upgraden
 titleSuffix: Azure Virtual Network
 description: Voer een upgrade uit van de open bare IP-adressen van Basic naar Standard.
 services: virtual-network
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 791c9e8ea8f7c8ffbf9268af2b3a93f592a77f9e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: a1bd303390626eaea71e588e325fedbd2d8fa4b9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629752"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353353"
 ---
-# <a name="upgrade-public-ip-addresses"></a>Open bare IP-adressen bijwerken
+# <a name="upgrade-public-ip-addresses"></a>Openbaar IP-adres upgraden
 
 Open bare IP-adressen van Azure worden gemaakt met een SKU: Basic of Standard, waarmee de aspecten van hun functionaliteit worden bepaald (inclusief toewijzings methode, gebruik in verschillende beschikbaarheids zones en aan welke resources ze kunnen worden gekoppeld). 
 
@@ -44,7 +44,7 @@ Als u een upgrade van een openbaar IP-adres wilt uitvoeren, moet dit niet aan ee
 ---
 # <a name="basic-to-standard---powershell"></a>[**Basic naar Standard-Power shell**](#tab/option-upgrade-powershell)
 
-In het volgende voor beeld wordt ervan uitgegaan dat u een basis-SKU open bare IP-adres hebt gemaakt, met behulp van het voor beeld op [Deze pagina](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-basic) met een open bare basis-IP- **myBasicPublicIP** in **myResourceGroup** .
+In het volgende voor beeld wordt ervan uitgegaan dat u een basis-SKU open bare IP-adres hebt gemaakt, met behulp van het voor beeld op [Deze pagina](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-basic) met een open bare basis-IP- **myBasicPublicIP** in **myResourceGroup**.
 
 Als u het IP-adres wilt bijwerken, voert u de onderstaande opdrachten uit met behulp van Power shell.  Opmerking Als het IP-adres al statisch is toegewezen, kan dat gedeelte worden overgeslagen.
 
@@ -66,7 +66,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pubIP
 
 # <a name="basic-to-standard---cli"></a>[**Basic naar Standard-CLI**](#tab/option-upgrade-cli)
 
-In het volgende voor beeld wordt ervan uitgegaan dat u een basis-SKU open bare IP-adres hebt gemaakt, met behulp van het voor beeld op [Deze pagina](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-basic) met een open bare basis-IP- **myBasicPublicIP** in **myResourceGroup** .
+In het volgende voor beeld wordt ervan uitgegaan dat u een basis-SKU open bare IP-adres hebt gemaakt, met behulp van het voor beeld op [Deze pagina](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-basic) met een open bare basis-IP- **myBasicPublicIP** in **myResourceGroup**.
 
 Als u het IP-adres wilt bijwerken, voert u de onderstaande opdrachten uit met behulp van de Azure CLI.  Opmerking Als het IP-adres al statisch is toegewezen, kan dat gedeelte worden overgeslagen.
 
@@ -154,11 +154,18 @@ VS - noord-centraal<br>
 VS - west<br>
 VS - west 2<br>
 Noorwegen - oost<br>
+Zuid-Afrika - noord<br>
 VS - oost<br>
-VS - oost 2<br>
+Europa - noord<br>
+Korea - centraal<br>
+Indiase centraal<br>
+US - oost 2<br>
 Zwitserland - noord<br>
 India - west<br>
-Duitsland - noord
+Duitsland - noord<br>
+Canada - midden<br>
+Frankrijk - zuid<br>
+India - west
 
 * Als u een standaard open bare IP-adres wilt bijwerken, kan deze niet worden gekoppeld aan een Azure-resource.  Raadpleeg [Deze pagina](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) voor meer informatie over het ontkoppelen van open bare ip's.  En als u een Gereserveerd IP wilt migreren, kan het niet worden gekoppeld aan een Cloud service.  Raadpleeg [Deze pagina](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) voor meer informatie over het ontkoppelen van gereserveerde ip's.  
 * Open bare Ip's die zijn bijgewerkt van Basic naar Standard SKU blijven geen [beschikbaarheids zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) en kunnen daarom niet worden gekoppeld aan een Azure-resource die een zone-redundante of zonegebonden is.  Opmerking: dit is alleen van toepassing op regio's die beschikbaarheids zones bieden.

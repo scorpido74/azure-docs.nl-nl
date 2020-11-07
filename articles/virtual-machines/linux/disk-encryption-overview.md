@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6f5526b01588649d1e094036241d616a8392949
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f95d7ae38ece2a2ad939d2b3c829aed2c676d0f7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996486"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353999"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption voor Linux-VM's 
 
@@ -47,6 +47,8 @@ Zodra het versleutelings proces van de besturingssysteem schijf is voltooid op v
 Azure Disk Encryption is ook beschikbaar voor virtuele machines met Premium Storage.
 
 Azure Disk Encryption is niet beschikbaar op virtuele machines van de [2e generatie](../generation-2.md#generation-1-vs-generation-2-capabilities) en [Lsv2-serie](../lsv2-series.md). Zie [Azure Disk Encryption: niet-ondersteunde scenario's](disk-encryption-linux.md#unsupported-scenarios)voor meer uitzonde ringen.
+
+Azure Disk Encryption is niet beschikbaar op VM-installatie kopieën zonder tijdelijke schijven (Dv4, Dsv4, Ev4 en Esv4).  Zie [Azure VM-grootten zonder lokale tijdelijke schijf](../azure-vms-no-temp-disk.md).
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -116,7 +118,7 @@ echo "UUID=$UUID0 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
 echo "UUID=$UUID1 /data1 ext4 defaults,nofail 0 0" >>/etc/fstab
 mount -a
 ```
-## <a name="networking-requirements"></a>Netwerk vereisten
+## <a name="networking-requirements"></a>Netwerkvereisten
 
 Als u de functie Azure Disk Encryption wilt inschakelen, moeten de virtuele Linux-machines voldoen aan de volgende vereisten voor netwerk eindpunt configuratie:
   - Om een token te krijgen om verbinding te maken met uw sleutel kluis, moet de virtuele Linux-machine verbinding kunnen maken met een Azure Active Directory-eind punt, \[ login.microsoftonline.com \] .

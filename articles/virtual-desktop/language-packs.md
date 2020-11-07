@@ -3,15 +3,15 @@ title: Taal pakketten installeren op Windows 10-Vm's in virtueel bureau blad van
 description: Taal pakketten installeren voor Vm's met meerdere sessies van Windows 10 in Windows virtueel bureau blad.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 11/06/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d79d08e3f6ed422f0354074ebc6e0acc125553
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084206"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354033"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Taal pakketten toevoegen aan een Windows 10-installatie kopie met meerdere sessies
 
@@ -43,6 +43,11 @@ U hebt de volgende zaken nodig om uw installatie kopieën met meerdere sessies v
      - ISO-apps voor Postvak in:
         - [Windows 10, versie 1903 of 1909 postvak in-apps ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10, versie 2004 postvak in-apps ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
+        - [Windows 10, versie 20H2 postvak in-apps ISO](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
+     
+     - Als u Windows 10, versie 2004 of 20H2 gebruikt, kunt u Local Experience Pack (LXP) Iso's gebruiken om nieuwe talen te downloaden. Gebruik de informatie in [talen toevoegen in Windows 10: bekende problemen](/windows-hardware/manufacture/desktop/language-packs-known-issue) als u wilt weten of u versie 9b of 9C moet downloaden:
+        - [Windows 10, versie 2004 of 20H2 **9b** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+        - [Windows 10, versie 2004 of 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY) 
 
 - Een Azure Files share of bestands share op een virtuele machine met Windows-Bestands server
 
@@ -57,9 +62,9 @@ Voor het maken van de inhouds opslagplaats voor taal pakketten en FODs en een op
 
 2. Open en koppel de ISO-bestanden op de VM.
 
-3. Ga naar het taal pakket ISO en kopieer de inhoud van de **LocalExperiencePacks** -en x64-bestanden van het Pack ** \\ lang** en plak de inhoud vervolgens in de bestands share.
+3. Ga naar het taal pakket ISO en kopieer de inhoud van de **LocalExperiencePacks** -en x64-bestanden van het Pack **\\ lang** en plak de inhoud vervolgens in de bestands share.
 
-4. Ga naar het **bestand in de Dom ISO**, kopieer alle inhoud en plak het in de bestands share.
+4. Ga naar het **bestand in de Dom ISO** , kopieer alle inhoud en plak het in de bestands share.
 5. Ga naar de map **amd64fre** in de ISO-apps van het postvak in en kopieer de inhoud in de opslag plaats voor de apps in het postvak in die u hebt voor bereid.
 
      >[!NOTE]
@@ -164,7 +169,7 @@ Set-WinUserLanguageList $LanguageList -force
 
 Het script kan enige tijd duren, afhankelijk van het aantal talen dat u moet installeren.
 
-Nadat het script is uitgevoerd, controleert u of de taal pakketten correct zijn geïnstalleerd door naar **Start**  >  **Settings**  >  **time & language**  >  **Language**te gaan. Als de taal bestanden zich daar bevinden, bent u klaar.
+Nadat het script is uitgevoerd, controleert u of de taal pakketten correct zijn geïnstalleerd door naar **Start**  >  **Settings**  >  **time & language**  >  **Language** te gaan. Als de taal bestanden zich daar bevinden, bent u klaar.
 
 Nadat u extra talen aan de Windows-installatie kopie hebt toegevoegd, moeten de apps in het postvak in ook worden bijgewerkt ter ondersteuning van de toegevoegde talen. U kunt dit doen door de vooraf geïnstalleerde apps te vernieuwen met de inhoud van de ISO van het postvak in-apps. Als u deze vernieuwing wilt uitvoeren in een omgeving zonder verbinding (geen Internet toegang vanaf de VM mogelijk), kunt u het volgende Power shell-voorbeeld script gebruiken om het proces te automatiseren.
 

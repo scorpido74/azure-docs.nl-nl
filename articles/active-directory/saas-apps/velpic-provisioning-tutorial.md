@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: fbed4b888c48a518d9f10a91ff0494aa7bdc1843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: cdd4fb96a42d154ccd8b508950283978ddf58ef4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532361"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354900"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Zelf studie: Velpic configureren voor automatische gebruikers inrichting
 
@@ -66,7 +66,7 @@ In deze sectie vindt u instructies voor het verbinden van uw Azure AD-Velpic en 
 
     ![Velpic-inrichting](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. Geef in het gedeelte **beheerders referenties** de **Tenant-URL op&geheime token** van Velpic. (U kunt deze waarden vinden onder uw Velpic-account: **beheren**  >  **Integratie**  >  **Invoeg toepassing**  >  **Scim**)
+5. Geef in het gedeelte **beheerders referenties** de **Tenant-URL op&geheime token** van Velpic. (U kunt deze waarden vinden onder uw Velpic-account: **beheren**  >  **Integratie**  >  **Invoeg toepassing**  >  **Scim** )
 
     ![Autorisatie waarden](./media/velpic-provisioning-tutorial/Velpic2.png)
 

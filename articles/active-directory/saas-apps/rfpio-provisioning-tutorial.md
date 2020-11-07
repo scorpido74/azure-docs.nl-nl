@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 98f92a6b0169c573b97788c7ffaf76255796cfa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 2792d5cc65e08a23a333deebdb24c0fd869446c3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278914"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352878"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Zelf studie: RFPIO configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan RFPIO om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan RFPIO, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan RFPIO, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-rfpio-for-provisioning"></a>RFPIO instellen voor inrichting
 
@@ -90,7 +90,7 @@ Als u RFPIO wilt configureren voor het automatisch inrichten van gebruikers met 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **RFPIO**in het zoekvak, selecteer **RFPIO** in het deel venster resultaten en klik vervolgens op de knop    **toevoegen** om de toepassing toe te voegen.
+4. Typ **RFPIO** in het zoekvak, selecteer **RFPIO** in het deel venster resultaten en klik vervolgens op de knop    **toevoegen** om de toepassing toe te voegen.
 
     ![RFPIO in de lijst met resultaten](common/search-new-app.png)
 

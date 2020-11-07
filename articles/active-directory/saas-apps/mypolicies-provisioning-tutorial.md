@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 55f7b64c9ade91bb2923161d60568e3ea14ee034
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850487"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353476"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Zelf studie: myPolicies configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan myPolicies om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan myPolicies, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan myPolicies, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-mypolicies-for-provisioning"></a>MyPolicies instellen voor inrichting
 
@@ -74,7 +74,7 @@ Als u myPolicies wilt configureren voor het automatisch inrichten van gebruikers
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **myPolicies**in het zoekvak, selecteer **myPolicies** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **myPolicies** in het zoekvak, selecteer **myPolicies** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![myPolicies in de lijst met resultaten](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 5. Selecteer in de sectie **beheerders referenties** de invoer `https://<myPoliciesCustomDomain>.mypolicies.com/scim` in de Tenant- **URL** waar `<myPoliciesCustomDomain>` het aangepaste domein van uw myPolicies is. U kunt uw myPolicies-klant domein ophalen uit uw URL.
 Voor beeld: `<demo0-qa>` . mypolicies.com.
 
-6. In een **geheim token**voert u de token waarde in die eerder is opgehaald. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met myPolicies. Als de verbinding mislukt, zorg er dan voor dat uw myPolicies-account beheerders machtigingen heeft en probeer het opnieuw.
+6. In een **geheim token** voert u de token waarde in die eerder is opgehaald. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met myPolicies. Als de verbinding mislukt, zorg er dan voor dat uw myPolicies-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -132,7 +132,7 @@ Voor beeld: `<demo0-qa>` . mypolicies.com.
    |naam. opgemaakt|Tekenreeks|
    |externalId|Tekenreeks|
    |adressen [type EQ "werk]. land|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Naslaginformatie|
 
 
 11. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
@@ -155,7 +155,7 @@ Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-prov
 
 ## <a name="connector-limitations"></a>Connectorbeperkingen
 
-* voor myPolicies is altijd **gebruikers naam**, **e-mail adres** en **externalId**vereist.
+* voor myPolicies is altijd **gebruikers naam** , **e-mail adres** en **externalId** vereist.
 * myPolicies biedt geen ondersteuning voor harde verwijderingen voor gebruikers kenmerken.
 
 ## <a name="change-log"></a>Wijzigingenlogboek

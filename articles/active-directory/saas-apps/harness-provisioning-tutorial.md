@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2f8cafc0ec94e9254d42bf6718e796a256d128d4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445678"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353710"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Zelf studie: harnas configureren voor automatische gebruikers inrichting
 
@@ -90,7 +90,7 @@ Voordat u een harnas configureert voor het automatisch inrichten van gebruikers 
 
     ![De knop ' nieuwe toepassing '](common/add-new-app.png)
 
-1. Voer in het zoekvak **harnas**in, Selecteer in de lijst met resultaten de optie **harnas** en selecteer vervolgens de knop **toevoegen** om de toepassing toe te voegen.
+1. Voer in het zoekvak **harnas** in, Selecteer in de lijst met resultaten de optie **harnas** en selecteer vervolgens de knop **toevoegen** om de toepassing toe te voegen.
 
     ![Harnas in de lijst met resultaten](common/search-new-app.png)
 
@@ -122,7 +122,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
     ![De vervolg keuzelijst ' inrichtings modus '](common/provisioning-automatic.png)
 
-1. Ga als volgt te werk onder **beheerders referenties**:
+1. Ga als volgt te werk onder **beheerders referenties** :
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
  
@@ -136,29 +136,29 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
 1. Selecteer **Opslaan**.
 
-1. Selecteer onder **toewijzingen**de optie **synchronisatie Azure Active Directory gebruikers om te profiteren**van.
+1. Selecteer onder **toewijzingen** de optie **synchronisatie Azure Active Directory gebruikers om te profiteren** van.
 
     ![De koppeling ' synchronisatie van Azure Active Directory gebruikers naar een harnas ' harnas](media/harness-provisioning-tutorial/usermappings.png)
 
-1. Controleer onder **kenmerk toewijzingen**de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de harnas. De kenmerken die zijn geselecteerd als *match* , worden gebruikt voor de gebruikers accounts in combi natie met update bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
+1. Controleer onder **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de harnas. De kenmerken die zijn geselecteerd als *match* , worden gebruikt voor de gebruikers accounts in combi natie met update bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
     ![Deel venster voor het toewijzen van kenmerken aan gebruikers](media/harness-provisioning-tutorial/userattributes.png)
 
-1. Selecteer onder **toewijzingen**de optie **Azure Active Directory groepen synchroniseren om te profiteren**.
+1. Selecteer onder **toewijzingen** de optie **Azure Active Directory groepen synchroniseren om te profiteren**.
 
     ![De koppeling voor het synchroniseren van Azure Active Directory groepen op elkaar bundelen](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. Controleer onder **kenmerk toewijzingen**de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de harnas. De kenmerken die zijn geselecteerd als *overeenkomende* eigenschappen worden gebruikt om de groepen in harnas te vergelijken voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
+1. Controleer onder **kenmerk toewijzingen** de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de harnas. De kenmerken die zijn geselecteerd als *overeenkomende* eigenschappen worden gebruikt om de groepen in harnas te vergelijken voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
     ![Deel venster kenmerk toewijzingen van harnas groep](media/harness-provisioning-tutorial/groupattributes.png)
 
 1. Zie op [kenmerken gebaseerde toepassing inrichten met bereik filters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het configureren van bereik filters.
 
-1. Onder **instellingen**, om de Azure AD-inrichtings service voor harnas in te scha kelen, schakelt u de **inrichtings status** in **op aan**.
+1. Onder **instellingen** , om de Azure AD-inrichtings service voor harnas in te scha kelen, schakelt u de **inrichtings status** in **op aan**.
 
     ![De inrichtings status switch is in-of uitgeschakeld](common/provisioning-toggle-on.png)
 
-1. Selecteer onder **instellingen**in de vervolg keuzelijst **bereik** hoe u de gebruikers of groepen die u wilt inrichten, wilt synchroniseren.
+1. Selecteer onder **instellingen** in de vervolg keuzelijst **bereik** hoe u de gebruikers of groepen die u wilt inrichten, wilt synchroniseren.
 
     ![Inrichtingsbereik](common/provisioning-scope.png)
 
@@ -170,7 +170,7 @@ Met deze bewerking wordt de eerste synchronisatie gestart van de gebruikers of g
 
 Zie [rapport over automatische toewijzing van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

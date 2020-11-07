@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 76b5f279294dda0d2b1c01bf8cdd803390b04cec
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 53b1db1a8c4da59055c0af5f448fa0c8a6933daf
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520027"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354213"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Zelf studie: Wrike configureren voor automatische gebruikers inrichting
 
@@ -72,7 +72,7 @@ Voordat u Wrike configureert voor het automatisch inrichten van gebruikers met A
 
     ![Wrike-token maken](media/Wrike-provisioning-tutorial/password.png)
 
-6.  Kopieer het **geheime token**en plak het in azure AD. Selecteer **Opslaan** om de inrichtings configuratie op Wrike te volt ooien.
+6.  Kopieer het **geheime token** en plak het in azure AD. Selecteer **Opslaan** om de inrichtings configuratie op Wrike te volt ooien.
 
     ![Permanent toegangs token](media/Wrike-provisioning-tutorial/Wrike-create-token.png)
 
@@ -83,7 +83,7 @@ Voordat u Wrike configureert voor het automatisch inrichten van gebruikers met A
 
 Voer de volgende stappen uit om Wrike toe te voegen vanuit de Azure AD-toepassings galerie.
 
-1. Selecteer **Azure Active Directory**in de [Azure Portal](https://portal.azure.com)in het navigatie deel venster links.
+1. Selecteer **Azure Active Directory** in de [Azure Portal](https://portal.azure.com)in het navigatie deel venster links.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -95,7 +95,7 @@ Voer de volgende stappen uit om Wrike toe te voegen vanuit de Azure AD-toepassin
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Wrike**in het zoekvak, selecteer **Wrike** in het deel venster resultaten en selecteer **toevoegen** om de toepassing toe te voegen.
+4. Typ **Wrike** in het zoekvak, selecteer **Wrike** in het deel venster resultaten en selecteer **toevoegen** om de toepassing toe te voegen.
 
     ![Wrike in de lijst met resultaten](common/search-new-app.png)
 
@@ -109,7 +109,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Wrike in azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen**in bedrijfs toepassingen.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen** in bedrijfs toepassingen.
 
     ![Alle toepassingen](common/enterprise-applications.png)
 
@@ -161,7 +161,7 @@ Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers of
 
 U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Wrike. Zie [de status van gebruikers inrichten controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 976bc7f8e36200250f230f7e543dcb181f370663
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 544e01ef96165cd6c96a97761a3e758b93b1b15b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516474"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352690"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Zelf studie: rollbar configureren voor automatische gebruikers inrichting
 
@@ -57,7 +57,7 @@ Voordat u rollbar configureert voor het automatisch inrichten van gebruikers met
 
     ![Rollbar-ID-provider](media/rollbar-provisioning-tutorial/idp.png)
 
-3. Schuif omlaag om de **inrichtings opties**in te stellen. Kopieer het toegangs token. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw rollbar-toepassing in de Azure Portal. Schakel het selectie vakje **gebruikers en team inrichten inschakelen** in en klik op **Opslaan**.
+3. Schuif omlaag om de **inrichtings opties** in te stellen. Kopieer het toegangs token. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw rollbar-toepassing in de Azure Portal. Schakel het selectie vakje **gebruikers en team inrichten inschakelen** in en klik op **Opslaan**.
 
     ![Rollbar-toegangs token](media/rollbar-provisioning-tutorial/token.png)
 
@@ -70,7 +70,7 @@ Voeg rollbar toe vanuit de Azure AD-toepassings galerie om het beheren van de in
 
 Met de Azure AD-inrichtingsservice kunt u bepalen wie worden ingericht op basis van toewijzing aan de toepassing en/of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen aan de toepassing toe te wijzen. Als u ervoor kiest om uitsluitend te bepalen wie wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereikfilter gebruiken zoals [hier](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) wordt beschreven. 
 
-* Wanneer u gebruikers en groepen toewijst aan rollbar, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol Standaardtoegang worden uitgesloten van inrichting en worden gemarkeerd als niet-effectief gerechtigd in de inrichtingslogboeken. Als Standaardtoegang de enige beschikbare rol voor de toepassing is, kunt u [het manifest van de toepassing bijwerken](../develop/howto-add-app-roles-in-azure-ad-apps.md) om extra rollen toe te voegen. 
+* Wanneer u gebruikers en groepen toewijst aan rollbar, moet u een andere rol dan **standaard toegang** selecteren. Gebruikers met de rol Standaardtoegang worden uitgesloten van inrichting en worden gemarkeerd als niet-effectief gerechtigd in de inrichtingslogboeken. Als Standaardtoegang de enige beschikbare rol voor de toepassing is, kunt u [het manifest van de toepassing bijwerken](../develop/howto-add-app-roles-in-azure-ad-apps.md) om extra rollen toe te voegen. 
 
 * Begin klein. Test de toepassing met een kleine set gebruikers en groepen voordat u de toepassing naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen aan de app toe te wijzen. Wanneer het bereik is ingesteld op alle gebruikers en groepen, kunt u een [bereikfilter op basis van kenmerken](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) opgeven. 
 

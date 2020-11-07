@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3c2fba1cba2c06e07b262e37eac651afb5c102cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: f465438a6be80a1b487a4df7d3ee8bd38be9c102
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317499"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354186"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Zelf studie: Workteam configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Workteam om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Workteam, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Workteam, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-workteam--for-provisioning"></a>Workteam instellen voor inrichting
 
@@ -60,7 +60,7 @@ Voordat u Workteam configureert voor het automatisch inrichten van gebruikers me
 
     ![Scherm afbeelding van de onderkant van de sectie instellingen met het pictogram S C I M gebruiker inrichten vistuig heet.](media/workteam-provisioning-tutorial/icon.png)
 
-3. Kopieer de **basis-URL** en **Bearer-token**. Deze waarden worden ingevoerd in het veld **Tenant-URL**en **geheim token** op het tabblad inrichten van uw Workteam-toepassing in de Azure Portal.
+3. Kopieer de **basis-URL** en **Bearer-token**. Deze waarden worden ingevoerd in het veld **Tenant-URL** en **geheim token** op het tabblad inrichten van uw Workteam-toepassing in de Azure Portal.
 
     ![Scherm afbeelding van het dialoog venster S C I M-instellingen met de tekst vakken basis U R L en BEARer-TOKEN.](media/workteam-provisioning-tutorial/scim.png)
 
@@ -83,7 +83,7 @@ Als u Workteam wilt configureren voor het automatisch inrichten van gebruikers m
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Workteam**in het zoekvak, selecteer **Workteam** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Workteam** in het zoekvak, selecteer **Workteam** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![Workteam in de lijst met resultaten](common/search-new-app.png)
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7d9f5792fe3da9f47dd1391d1e7cb0162fd36fad
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.openlocfilehash: b87b9d9e7cab0334f1b1996feb99dc69396527b7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670838"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352945"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>Zelf studie: SAP Analytics-Cloud configureren voor automatische gebruikers inrichting
 
@@ -52,11 +52,11 @@ In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan d
 
 ## <a name="step-2-configure-sap-analytics-cloud-to-support-provisioning-with-azure-ad"></a>Stap 2. SAP Analytics-Cloud configureren ter ondersteuning van het inrichten met Azure AD
 
-1. Meld u aan bij de [beheer console voor SAP-identiteits inrichting](https://ips-xlnk9v890j.dispatcher.us1.hana.ondemand.com/) met uw beheerders account en selecteer vervolgens **proxy systemen** .
+1. Meld u aan bij de [beheer console voor SAP-identiteits inrichting](https://ips-xlnk9v890j.dispatcher.us1.hana.ondemand.com/) met uw beheerders account en selecteer vervolgens **proxy systemen**.
 
    ![SAP-proxy systemen](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems.png.png)
 
-2. Selecteer **Eigenschappen** .
+2. Selecteer **Eigenschappen**.
 
    ![Eigenschappen van SAP-proxy systemen](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-properties.png)
 
@@ -91,7 +91,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-analytics-cloud-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor de SAP Analytics-Cloud in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen** .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -99,15 +99,15 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De koppeling van de SAP Analytics-Cloud in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **Inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
     ![Scherm opname van de opties voor beheer met de inrichtings optie.](common/provisioning.png)
 
-4. Stel de **Inrichtingsmodus** in op **Automatisch** .
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
     ![Scherm afbeelding van de vervolg keuzelijst voor de inrichtings modus met de automatische optie aangeroepen.](common/provisioning-automatic.png)
 
-5. Geef in het gedeelte **beheerders referenties** de waarde voor de TENANT-URL op die u eerder hebt opgehaald in de **Tenant-URL** . Voer de waarde voor het toegangs token in die eerder is opgehaald in het **geheime token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met InVision. Als de verbinding mislukt, zorg er dan voor dat uw SAP Analytics-Cloud account beheerders machtigingen heeft en probeer het opnieuw.
+5. Geef in het gedeelte **beheerders referenties** de waarde voor de TENANT-URL op die u eerder hebt opgehaald in de **Tenant-URL**. Voer de waarde voor het toegangs token in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met InVision. Als de verbinding mislukt, zorg er dan voor dat uw SAP Analytics-Cloud account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Scherm afbeelding toont het dialoog venster beheerders referenties, waarin u uw Tenant U R L en geheime token kunt invoeren.](./media/sap-analytics-cloud-provisioning-tutorial/provisioning.png)
 
@@ -115,9 +115,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
-7. Selecteer **Opslaan** .
+7. Selecteer **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers inrichten** .
+8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers inrichten**.
 
 9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar SAP Analytics Cloud in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in de SAP Analytics-Cloud voor bijwerk bewerkingen. Als u ervoor kiest om het [overeenkomende doel kenmerk](../app-provisioning/customize-application-attributes.md)te wijzigen, moet u ervoor zorgen dat de SAP Analytics Cloud-API het filteren van gebruikers op basis van dat kenmerk ondersteunt. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
@@ -140,11 +140,11 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Inrichtingsbereik](common/provisioning-scope.png)
 
-13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan** .
+13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
     ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen** . De initiële cyclus duurt langer dan volgende cycli, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
+Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. De initiële cyclus duurt langer dan volgende cycli, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
 Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende resources om uw implementatie te bewaken:
