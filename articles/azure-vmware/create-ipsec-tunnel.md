@@ -3,12 +3,12 @@ title: Een IPSec-tunnel maken in een Azure VMware-oplossing
 description: Meer informatie over het maken van een virtuele WAN-hub voor het tot stand brengen van een IPSec-tunnel in azure VMware-oplossingen.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: 74cc31abf432954008cbb20bf64825d199732dab
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 63318b9fdd0de5e0ce102fafe332f40f595f38f1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951125"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357841"
 ---
 # <a name="create-an-ipsec-tunnel-into-azure-vmware-solution"></a>Een IPSec-tunnel maken in een Azure VMware-oplossing
 
@@ -36,12 +36,12 @@ Als u de site-naar-site-VPN-tunnel wilt maken, moet u een openbaar IP-adres make
    | **Resourcegroep** | Het virtuele WAN is een globale resource en is niet beperkt tot een bepaalde regio.  |
    | **Resourcegroeplocatie** | Als u de virtuele WAN-hub wilt maken, moet u een locatie voor de resource groep instellen.  |
    | **Naam** |   |
-   | **Type** | Selecteer **standaard**, waarmee meer dan alleen het VPN gateway verkeer wordt toegestaan.  |
+   | **Type** | Selecteer **standaard** , waarmee meer dan alleen het VPN gateway verkeer wordt toegestaan.  |
 
 
     :::image type="content" source="media/create-ipsec-tunnel/create-wan.png" alt-text="Maak WAN.":::
 
-3. Selecteer in de Azure Portal het virtuele WAN dat u in de vorige stap hebt gemaakt, selecteer **virtuele hub maken**, voer de vereiste velden in en selecteer **volgende: site naar site**. 
+3. Selecteer in de Azure Portal het virtuele WAN dat u in de vorige stap hebt gemaakt, selecteer **virtuele hub maken** , voer de vereiste velden in en selecteer **volgende: site naar site**. 
 
    | Veld | Waarde |
    | --- | --- |
@@ -49,7 +49,7 @@ Als u de site-naar-site-VPN-tunnel wilt maken, moet u een openbaar IP-adres make
    | **Naam** |    |
    | **Privé-adres ruimte van hub** | Voer het subnet in met behulp van een `/24` (mini maal).  |
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="Maak WAN.":::
+    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="Virtuele hub maken.":::
 
 4. Op het tabblad **site-naar-site** definieert u de site-naar-site-gateway door de geaggregeerde door Voer in te stellen op basis van de vervolg keuzelijst met **schaal eenheden** voor de gateway. 
 
@@ -70,7 +70,7 @@ Als u de site-naar-site-VPN-tunnel wilt maken, moet u een openbaar IP-adres make
 2. In het **overzicht** van de virtuele hub selecteert u **Connectivity**  >  **VPN-verbinding (site-naar-site)** en selecteert u **nieuwe VPN-site maken**.
 
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="Maak WAN.":::  
+    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="VPN-site maken.":::  
  
 3. Op het tabblad **basis beginselen** voert u de vereiste velden in en selecteert u **volgende: koppelingen**. 
 
@@ -89,18 +89,18 @@ Als u de site-naar-site-VPN-tunnel wilt maken, moet u een openbaar IP-adres make
 
 Deze sectie is alleen van toepassing op op beleid gebaseerde Vpn's. Op beleid gebaseerde VPN-instellingen (of statisch, op route gebaseerd) worden in de meeste gevallen aangestuurd door on-premises VPN-apparaat. Hiervoor moeten on-premises en Azure VMware-oplossings netwerken worden opgegeven. Voor de Azure VMware-oplossing met een virtuele WAN-hub van Azure kunt u *geen* netwerk selecteren. In plaats daarvan moet u alle relevante bereiken voor virtuele WAN-hub op locatie en Azure VMware Solution opgeven. Deze hub-bereiken worden gebruikt voor het opgeven van het versleutelings domein van het beleid basis VPN-tunnel op het lokale eind punt. Voor de oplossings kant van de Azure VMware moet alleen de op beleid gebaseerde Traffic selector-indicator worden ingeschakeld. 
 
-1. Ga in het Azure Portal naar de site van uw virtuele WAN-hub. onder **connectiviteit**selecteert u **VPN (site-naar-site)**.
+1. Ga in het Azure Portal naar de site van uw virtuele WAN-hub. onder **connectiviteit** selecteert u **VPN (site-naar-site)**.
 
-2. Selecteer de naam van uw VPN-site en vervolgens het weglatings teken (...) helemaal rechts. Selecteer vervolgens **VPN-sectie bewerken naar deze hub**.
+2. Selecteer de naam van uw VPN-site en vervolgens het weglatings teken (...) helemaal rechts. Selecteer vervolgens **VPN-verbinding naar deze hub bewerken**.
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="Maak WAN." lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
+    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="Bewerk de VPN-verbinding met deze hub." lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
 
 3. Bewerk de verbinding tussen de VPN-site en de hub en selecteer vervolgens **Opslaan**.
    - Selecteer in Internet Protocol Security (IPSec) de optie **aangepast**.
    - Gebruik op beleid gebaseerde verkeers selectie, selecteer **inschakelen**
    - Geef de details op voor **IKE fase 1** en **IKE fase 2 (IPSec)**. 
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="Maak WAN."::: 
+    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="VPN-verbinding bewerken"::: 
  
     De selectie vakjes voor verkeer of subnetten die deel uitmaken van het op beleid gebaseerde versleutelings domein moeten zijn:
     
@@ -122,14 +122,14 @@ Deze sectie is alleen van toepassing op op beleid gebaseerde Vpn's. Op beleid ge
 
     Ga naar het gedeelte **connectiviteit** van de Privécloud van Azure VMware-oplossing. Selecteer op het tabblad **ExpressRoute** **+ aanvraag een autorisatie sleutel**. Geef deze een naam en selecteer **maken**. (Het duurt ongeveer 30 seconden om de sleutel te maken.) Kopieer de ExpressRoute-ID en de autorisatie sleutel. 
 
-    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="Maak WAN.":::
+    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="Kopieer de Express route-ID en autorisatie sleutel.":::
 
     > [!NOTE]
     > De autorisatie sleutel verdwijnt na enige tijd, dus kopieer deze zo snel als deze wordt weer gegeven.
 
 4. Vervolgens koppelen we een Azure VMware-oplossing en de VPN-gateway samen in de virtuele WAN-hub. Open in de Azure Portal de virtuele WAN die u eerder hebt gemaakt. Selecteer de virtuele WAN-hub die u hebt gemaakt en selecteer vervolgens **ExpressRoute** in het linkerdeel venster. Selecteer **+ autorisatie sleutel voor inwisselen**.
 
-    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="Maak WAN.":::
+    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="Autorisatie sleutel inwisselen.":::
 
     Plak de autorisatie sleutel in het veld autorisatie sleutel en de ExpressRoute-ID in het URL-veld van het **peer circuit** . Zorg ervoor dat u **Dit ExpressRoute-circuit automatisch koppelt aan de hub.** Selecteer **toevoegen** om de koppeling tot stand te brengen. 
 

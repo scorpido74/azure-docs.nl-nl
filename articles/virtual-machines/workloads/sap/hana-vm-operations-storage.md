@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/26/2020
+ms.date: 11/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99c94528c13228e07327b529782f211ec92a08ea
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: bbaa9d33d3a31b682a66b2a3254fc2265b6f8d7b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359847"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357074"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -37,7 +37,7 @@ Azure biedt twee implementatie methoden voor Vhd's in azure Standard en Premium 
 Raadpleeg de [Azure-documentatie voor beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/)voor een lijst met opslag typen en de bijbehorende SLA'S in IOPS en opslag doorvoer.
 
 > [!IMPORTANT]
-> Onafhankelijk van het gekozen type Azure-opslag moet het bestands systeem dat wordt gebruikt op die opslag worden ondersteund door SAP voor het specifieke besturings systeem en DBMS. [SAP-ondersteunings opmerking #405827](https://launchpad.support.sap.com/#/notes/405827) een lijst met ondersteunde bestands systemen voor verschillende besturings systemen en data bases, waaronder SAP Hana. Dit geldt voor alle volumes SAP HANA mogelijk toegang heeft tot lees-en schrijf bewerkingen voor een wille keurige taak. Door NFS in azure te gebruiken voor SAP HANA, zijn extra beperkingen van NFS-versies van toepassing, zoals verderop in dit artikel wordt vermeld 
+> Onafhankelijk van het gekozen type Azure-opslag moet het bestands systeem dat wordt gebruikt op die opslag worden ondersteund door SAP voor het specifieke besturings systeem en DBMS. [SAP-ondersteunings opmerking #2972496](https://launchpad.support.sap.com/#/notes/2972496) een lijst met ondersteunde bestands systemen voor verschillende besturings systemen en data bases, waaronder SAP Hana. Dit geldt voor alle volumes SAP HANA mogelijk toegang heeft tot lees-en schrijf bewerkingen voor een wille keurige taak. Door NFS in azure te gebruiken voor SAP HANA, zijn extra beperkingen van NFS-versies van toepassing, zoals verderop in dit artikel wordt vermeld 
 
 
 De minimale SAP HANA gecertificeerde voor waarden voor de verschillende opslag typen zijn: 

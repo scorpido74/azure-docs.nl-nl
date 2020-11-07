@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851285"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357586"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Zelf studie: 4me configureren voor automatische gebruikers inrichting
 
@@ -53,7 +53,7 @@ Voordat u 4me configureert voor het automatisch inrichten van gebruikers met Azu
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **4me**in het zoekvak, selecteer **4me** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **4me** in het zoekvak, selecteer **4me** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![4me in de lijst met resultaten](common/search-new-app.png)
 
@@ -69,7 +69,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan 4me om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan 4me, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan 4me, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="configuring-automatic-user-provisioning-to-4me"></a>Automatische gebruikers inrichting configureren voor 4me 
 
@@ -126,11 +126,11 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
     
 11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar 4me in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in 4me voor bijwerk bewerkingen. Zorg ervoor dat [4me filters ondersteunt](https://developer.4me.com/v1/scim/users/) voor het overeenkomende kenmerk dat u hebt gekozen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Scherm afbeelding van de pagina toewijzingen. Synchroniseer onder naam Azure Active Directory gebruikers synchroniseren met FourMe is gemarkeerd." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Scherm afbeelding van de pagina kenmerk toewijzingen. Een tabel bevat Azure Active Directory kenmerken, bijbehorende FourMe-kenmerken en de overeenkomende status." border="false":::
     
 12. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met 4me**.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Scherm afbeelding van de pagina toewijzingen. Synchroniseer onder naam Azure Active Directory gebruikers synchroniseren met FourMe is gemarkeerd." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Scherm afbeelding van de pagina toewijzingen. Synchroniseer onder naam Azure Active Directory groepen synchroniseren met FourMe is gemarkeerd." border="false":::
     
 13. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar 4me in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in 4me te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 

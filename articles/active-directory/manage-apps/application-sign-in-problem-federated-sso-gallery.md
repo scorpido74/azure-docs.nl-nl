@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: ec39a6d106973808e26b7c06dce8b3054af490ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427369"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357909"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problemen bij het aanmelden bij geconfigureerde apps voor eenmalige aanmelding op basis van SAML
 Voor het oplossen van de onderstaande aanmeldings problemen raden we het volgende aan om de oplossings stappen beter te diagnosticeren en te automatiseren:
@@ -33,7 +33,7 @@ De configuratie pagina voor eenmalige aanmelding op basis van SAML openen:
 1.  Typ **' Azure Active Directory '** in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 1.  Selecteer **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 1.  Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
-    Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen**in.
+    Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen** in.
 1.  Selecteer de toepassing die u wilt configureren voor eenmalige aanmelding.
 1. Zodra de toepassing is geladen, selecteert u **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
 1. Selecteer SSO op basis van SAML.
@@ -146,6 +146,23 @@ Toen de toepassing werd toegevoegd als niet-galerie-app, is deze antwoord-URL in
 Verwijder de ongebruikte antwoord-Url's die voor de toepassing zijn geconfigureerd.
 
 Op de configuratie pagina op SAML gebaseerde SSO gaat u naar de sectie **antwoord-URL (assertion Consumer Service-URL)** en verwijdert u ongebruikte of standaard antwoord-url's die zijn gemaakt door het systeem. Bijvoorbeeld `https://127.0.0.1:444/applications/default.aspx`.
+
+
+## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>Verificatie methode waarbij de gebruiker die is geverifieerd met de service, niet overeenkomt met de aangevraagde verificatie methode
+`Error: AADSTS75011 Authentication method by which the user authenticated with the service doesn't match requested authentication method 'AuthnContextClassRef'. `
+
+**Mogelijke oorzaak**
+
+De `RequestedAuthnContext` bevindt zich in de SAML-aanvraag. Dit betekent dat de app de `AuthnContext` opgegeven door heeft verwacht `AuthnContextClassRef` . De gebruiker heeft echter al een verificatie uitgevoerd voordat de toepassing wordt geopend en de `AuthnContext` (verificatie methode) die wordt gebruikt voor de vorige verificatie verschilt van het aangevraagde. Bijvoorbeeld, een federatieve gebruiker heeft toegang tot MyApps en WIA. De `AuthnContextClassRef` zal zijn `urn:federation:authentication:windows` . AAD voert geen nieuwe verificatie aanvraag uit, gebruikt de verificatie context die door de IdP (ADFS of een andere Federation service in dit geval) is door gegeven. Daarom is er een niet-overeenkomend verzoek als de app andere aanvragen dan `urn:federation:authentication:windows` . Een ander scenario is wanneer meerdere feiten zijn gebruikt: `'X509, MultiFactor` .
+
+**Oplossing**
+
+
+`RequestedAuthnContext` is een optionele waarde. Als dat mogelijk is, vraagt u de toepassing als deze kan worden verwijderd.
+
+Een andere optie is om er zeker van te zijn dat de `RequestedAuthnContext` wordt gehonoreerd. Dit wordt gedaan door een nieuwe verificatie aan te vragen. Als u dit doet, wordt er een nieuwe verificatie uitgevoerd wanneer de SAML-aanvraag wordt verwerkt `AuthnContext` . Als u een nieuwe verificatie wilt aanvragen, bevat de SAML-aanvraag de waarde `forceAuthn="true"` . 
+
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Probleem bij het aanpassen van de SAML-claims die worden verzonden naar een toepassing
 Zie [claims toewijzen in azure Active Directory](../develop/active-directory-claims-mapping.md)voor meer informatie over het aanpassen van de SAML-kenmerk claims die naar uw toepassing worden verzonden.

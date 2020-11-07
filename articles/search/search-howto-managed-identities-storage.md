@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b877ff912470cc19082410fddab64c84824eb269
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519551"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358368"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Een verbinding met een Azure Storage-account instellen met behulp van een beheerde identiteit
 
@@ -43,7 +43,7 @@ Nadat u **Opslaan** hebt geselecteerd, ziet u een object-id die is toegewezen aa
 In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens uit uw opslag account te lezen.
 
 1. Navigeer in het Azure Portal naar het opslag account dat de gegevens bevat die u wilt indexeren.
-2. **Toegangs beheer (IAM)** selecteren
+2. Selecteer **Toegangsbeheer (IAM)**
 3. Selecteer **toevoegen** en vervolgens **functie toewijzing toevoegen**
 
     ![Roltoewijzing toevoegen](./media/search-managed-identities/add-role-assignment-storage.png "Roltoewijzing toevoegen")
@@ -65,7 +65,7 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens u
 
 ### <a name="3---create-the-data-source"></a>3: de gegevens bron maken
 
-De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/microsoft.azure.search.models.datasource) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens uit een opslag account met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
+De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens uit een opslag account met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
 
 Bij het indexeren van een opslag account moet de gegevens bron de volgende vereiste eigenschappen hebben:
 
@@ -74,10 +74,10 @@ Bij het indexeren van een opslag account moet de gegevens bron de volgende verei
     * Azure Blob-opslag: `azureblob`
     * Azure-tabel opslag: `azuretable`
     * Azure Data Lake Storage Gen2: het **type** wordt gegeven nadat u zich hebt aangemeld voor het voor beeld met behulp van [dit formulier](https://aka.ms/azure-cognitive-search/mi-preview-request).
-* **aanmeldings**
+* **aanmeldingsgegevens**
     * Wanneer u een beheerde identiteit gebruikt om te verifiëren, is de notatie van de **referenties** anders dan wanneer u geen beheerde identiteit gebruikt. Hier geeft u een ResourceId op die geen account sleutel of wacht woord heeft. De ResourceId moet de abonnements-ID van het opslag account, de resource groep van het opslag account en de naam van het opslag account bevatten.
     * Indeling beheerde identiteit: 
-        * *ResourceId =/Subscriptions/**uw abonnement-id**/resourceGroups/**de naam van uw resource groep**/providers/Microsoft.Storage/storageAccounts/**uw opslag accountnaam**/;*
+        * *ResourceId =/Subscriptions/ **uw abonnement-id** /resourceGroups/ **de naam van uw resource groep** /providers/Microsoft.Storage/storageAccounts/ **uw opslag accountnaam** /;*
 * **container** bevat een container-of tabel naam in uw opslag account. Standaard kunnen alle blobs in de container worden opgehaald. Als u alleen blobs wilt indexeren in een bepaalde virtuele map, kunt u die directory opgeven met behulp van de optionele **query** parameter.
 
 Voor beeld van het maken van een BLOB-gegevens bron object met behulp van de [rest API](/rest/api/searchservice/create-data-source):

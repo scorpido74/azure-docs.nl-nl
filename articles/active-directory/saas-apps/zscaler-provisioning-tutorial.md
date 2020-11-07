@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5858e785b2105d8357ebd478699e2d17768fc25f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 2c7f4aebc70ff831459fe111bcc30f5385088028
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519721"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357671"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Zelf studie: Zscaler configureren voor automatische gebruikers inrichting
 
@@ -43,7 +43,7 @@ Voordat u Zscaler configureert voor het automatisch inrichten van gebruikers met
 
 **Voer de volgende stappen uit om Zscaler toe te voegen vanuit de Azure AD-toepassings galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -55,7 +55,7 @@ Voordat u Zscaler configureert voor het automatisch inrichten van gebruikers met
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Zscaler**in het zoekvak, selecteer **Zscaler** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Zscaler** in het zoekvak, selecteer **Zscaler** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![Zscaler in de lijst met resultaten](common/search-new-app.png)
 
@@ -82,7 +82,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Zscaler in azure AD:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Zscaler**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer **bedrijfs toepassingen** , selecteer **alle toepassingen** en selecteer vervolgens **Zscaler**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -100,7 +100,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Voer in het gedeelte **beheerders referenties** de **Tenant-URL** en het **geheime token** van uw Zscaler-account in, zoals beschreven in stap 6.
 
-6. Als u de **Tenant-URL** en het **geheime token**wilt ophalen, gaat u naar **beheer > authenticatie-instellingen** in de gebruikers interface van de Zscaler-Portal en klikt u op **SAML** onder **verificatie type**.
+6. Als u de **Tenant-URL** en het **geheime token** wilt ophalen, gaat u naar **beheer > authenticatie-instellingen** in de gebruikers interface van de Zscaler-Portal en klikt u op **SAML** onder **verificatie type**.
 
     ![Scherm afbeelding van de pagina verificatie-instellingen.](./media/zscaler-provisioning-tutorial/secret-token-1.png)
 
@@ -108,7 +108,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Scherm afbeelding van het dialoog venster S A M L configureren met de tekst vakken basis U R L en Bearer-token.](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
-    Selecteer **SCIM-Based inrichting inschakelen** om basis- **URL** en **Bearer-token**op te halen en sla de instellingen op. Kopieer de **basis-URL** naar de **Tenant-URL**en **Bearer-token**  naar een **geheim token** in de Azure Portal.
+    Selecteer **SCIM-Based inrichting inschakelen** om basis- **URL** en **Bearer-token** op te halen en sla de instellingen op. Kopieer de **basis-URL** naar de **Tenant-URL** en **Bearer-token**  naar een **geheim token** in de Azure Portal.
 
 7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Zscaler. Als de verbinding mislukt, zorg er dan voor dat uw Zscaler-account beheerders machtigingen heeft en probeer het opnieuw.
 

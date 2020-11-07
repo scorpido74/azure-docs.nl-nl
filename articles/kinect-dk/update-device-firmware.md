@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, firmware, update, herstel
-ms.openlocfilehash: ecfa4a18592d3bc70e3b7cdd66ff6464a54e560d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71557798a584635356cc47fd7c4a0309df4d018a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030681"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356220"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>Azure Kinect DK-firmware bijwerken
 
@@ -82,7 +82,7 @@ Firmware-updates kunnen om verschillende redenen mislukken. Wanneer een firmware
 
 3. Als dat niet het geval is, volgt u de stappen voor het [herstellen](https://support.microsoft.com/help/4494277/reset-azure-kinect-dk) van de firmware van de fabriek en probeert u het opnieuw.
 
-Ga voor meer problemen naar [micro soft-ondersteunings pagina's](https://aka.ms/kinectsupport)
+Ga voor meer problemen naar [micro soft-ondersteunings pagina's](./index.yml)
 
 ## <a name="next-steps"></a>Volgende stappen
 

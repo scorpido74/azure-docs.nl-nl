@@ -5,13 +5,13 @@ author: robinsh
 ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
-ms.date: 10/22/2020
-ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/06/2020
+ms.openlocfilehash: dc239843c4ed597949b4ba00c44ec84fc70741a8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128876"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357603"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub controleren
 
@@ -65,13 +65,13 @@ In Azure Portal kunt u **Diagnostische instellingen** selecteren onder **bewakin
 
 In de volgende scherm afbeelding ziet u een diagnostische instelling voor het routeren van de *verbindings bewerkingen* van het bron logboek en alle platform metrische gegevens naar een log Analytics-werk ruimte.
 
-:::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Standaard metrische grafieken op de pagina overzicht van IoT hub.":::
+:::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Het deel venster Diagnostische instellingen voor een IoT-hub.":::
 
 Zie [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](/azure/azure-monitor/platform/diagnostic-settings) voor het gedetailleerde proces voor het maken van een diagnostische instelling met behulp van de Azure Portal, CLI of Power shell. Wanneer u een diagnostische instelling maakt, geeft u op welke categorieën logboeken u wilt verzamelen. De categorieën voor Azure IoT Hub worden vermeld onder [resource Logboeken in de referentie Azure IOT hub-gegevens controleren](monitor-iot-hub-reference.md#resource-logs).
 
 Houd rekening met de volgende punten wanneer u de metrische gegevens van het platform IoT Hub naar andere locaties:
 
-- De volgende platform metrieken kunnen niet worden geëxporteerd via Diagnostische instellingen: *verbonden apparaten (preview)* en *totale aantal apparaten (preview)* .
+- De volgende platform metrieken kunnen niet worden geëxporteerd via Diagnostische instellingen: *verbonden apparaten (preview)* en *totale aantal apparaten (preview)*.
 
 - Multidimensionale metrische gegevens, zoals bepaalde [routerings metrieken](monitor-iot-hub-reference.md#routing-metrics), worden momenteel geëxporteerd als afgevlaktte eendimensionale metrische gegevens die worden geaggregeerd over dimensie waarden. Zie [platform metrieken naar andere locaties exporteren](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations)voor meer informatie.
 
@@ -81,7 +81,7 @@ U kunt metrische gegevens voor Azure IoT Hub analyseren met metrische gegevens u
 
 In Azure Portal kunt u **metrische gegevens** selecteren onder **bewaking** in het linkerdeel venster van uw IOT-hub voor het openen van metrische gegevens Verkenner scoped, standaard ingesteld op de platform metrische gegevens die worden verzonden door uw IOT-hub:
 
-:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="Standaard metrische grafieken op de pagina overzicht van IoT hub.":::
+:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="De pagina metrische gegevens Verkenner voor een IoT-hub.":::
 
 Zie [metrische gegevens in de naslag informatie over azure IOT hub](monitor-iot-hub-reference.md#metrics)voor Azure voor een lijst met de platform statistieken die worden verzameld voor IOT hub. Zie [ondersteunde metrische gegevens met Azure monitor](/azure/azure-monitor/platform/metrics-supported)voor een lijst van de platform metrische gegevens die voor alle Azure-Services worden verzameld.
 
@@ -97,7 +97,7 @@ Als u gegevens wilt omleiden naar Azure Monitor logboeken, moet u een diagnostis
 
 In Azure Portal kunt u **Logboeken** selecteren onder **bewaking** in het linkerdeel venster van uw iot-hub om log Analytics query's uit te voeren die standaard zijn vastgelegd in de logboeken en metrische gegevens die zijn verzameld in azure monitor logboeken voor uw IOT-hub.
 
-:::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="Standaard metrische grafieken op de pagina overzicht van IoT hub.":::
+:::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="De pagina logboeken voor een IoT-hub.":::
 
 Zie voor een lijst met tabellen die worden gebruikt door Azure Monitor logboeken en query's die kunnen worden doorzocht door Log Analytics [Azure monitor logboeken tabellen in de referentie Azure IOT hub-gegevens bewaken](monitor-iot-hub-reference.md#azure-monitor-logs-tables).
 
@@ -107,7 +107,7 @@ Het [activiteiten logboek](/azure/azure-monitor/platform/activity-log) is een pl
 
 Houd rekening met de volgende punten wanneer u de metrische gegevens van het IoT Hub platform wilt omleiden naar Azure Monitor-logboeken:
 
-- De volgende platform metrieken kunnen niet worden geëxporteerd via Diagnostische instellingen: *verbonden apparaten (preview)* en *totale aantal apparaten (preview)* .
+- De volgende platform metrieken kunnen niet worden geëxporteerd via Diagnostische instellingen: *verbonden apparaten (preview)* en *totale aantal apparaten (preview)*.
 
 - Multidimensionale metrische gegevens, zoals bepaalde [routerings metrieken](monitor-iot-hub-reference.md#routing-metrics), worden momenteel geëxporteerd als afgevlaktte eendimensionale metrische gegevens die worden geaggregeerd over dimensie waarden. Zie [platform metrieken naar andere locaties exporteren](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations)voor meer informatie.
 
@@ -291,6 +291,14 @@ class Program
 Azure Monitor waarschuwingen geven u proactief op de hoogte wanneer er belang rijke voor waarden worden gevonden in uw bewakings gegevens. Hiermee kunt u problemen in uw systeem identificeren en oplossen voordat uw klanten ze opmerken. U kunt waarschuwingen instellen voor [metrische gegevens](/azure/azure-monitor/platform/alerts-metric-overview), [Logboeken](/azure/azure-monitor/platform/alerts-unified-log)en het [activiteiten logboek](/azure/azure-monitor/platform/activity-log-alerts). Verschillende soorten waarschuwingen hebben voor delen en nadelen.
 
 Wanneer u een waarschuwings regel maakt op basis van de metrische gegevens van het platform, moet u er rekening mee houden dat voor IoT Hub-platform metrische gegevens die worden verzameld in aantal eenheden, sommige aggregaties mogelijk niet beschikbaar of bruikbaar zijn. Zie [ondersteunde aggregaties in de informatie over Azure IOT hub-gegevens bewaken](monitor-iot-hub-reference.md#supported-aggregations)voor meer informatie.
+
+## <a name="monitor-per-device-disconnects-with-event-grid"></a>Verbroken verbindingen per apparaat met Event Grid
+
+Azure Monitor biedt een metrische, *verbonden apparaten* die u kunt gebruiken om het aantal apparaten dat is verbonden met uw IOT hub te bewaken en een waarschuwing te activeren wanneer het aantal verbonden apparaten onder een drempel waarde daalt. Hoewel dit voldoende is voor sommige scenario's, biedt [Azure Event grid](/azure/event-grid/) een bewakings oplossing met lage latentie per apparaat die u kunt gebruiken om de verbindingen van apparaten en infra structuur te controleren.
+
+Met Event Grid kunt u zich abonneren op de IoT Hub [ **DeviceConnected** -en **DeviceDisconnected** -gebeurtenissen](iot-hub-event-grid.md#event-types) om waarschuwingen te activeren en de verbindings status van een apparaat te bewaken. Event Grid biedt veel lagere gebeurtenis latentie dan Azure Monitor, en u kunt bewaken per apparaat, in plaats van het totale aantal verbonden apparaten. Deze factoren maken Event Grid de voorkeurs methode voor het bewaken van verbindingen voor kritieke apparaten en infra structuur. Het is raadzaam om Event Grid te gebruiken voor het bewaken van apparaat verbindingen in productie omgevingen.
+
+Voor meer informatie over het bewaken van verbindingen met Event Grid en Azure Monitor raadpleegt u de [verbinding met Azure IOT hub controleren, vaststellen en problemen oplossen](iot-hub-troubleshoot-connectivity.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

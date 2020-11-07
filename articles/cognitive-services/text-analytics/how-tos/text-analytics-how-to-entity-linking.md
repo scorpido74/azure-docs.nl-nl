@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 94f863bd4f016ed1117fa236323b43515fd53797
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0ca0c4eacce88bfb53582f7969ed7acbfd75bb8a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165596"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358708"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -63,14 +63,14 @@ Elk document moet 5.120 tekens lang zijn en u kunt Maxi maal 1.000 items (Id's) 
 Maak een POST-aanvraag. U kunt [postman](text-analytics-how-to-call-api.md) of de **API-test console** in de volgende koppelingen gebruiken om een snelle structuur en verzen ding te sturen. 
 
 > [!NOTE]
-> U vindt de sleutel en het eindpunt voor uw Text Analytics-resource in Azure Portal. U vindt deze op de **Quickstart**-pagina van de resource, onder **Resourcebeheer**. 
+> U vindt de sleutel en het eindpunt voor uw Text Analytics-resource in Azure Portal. U vindt deze op de **Quickstart** -pagina van de resource, onder **Resourcebeheer**. 
 
 
 ### <a name="request-endpoints"></a>Eindpunten voor aanvragen
 
 #### <a name="version-31-preview2"></a>[Versie 3,1-Preview. 2](#tab/version-3-preview)
 
-Herkenning van benoemde entiteiten `v3.1-preview.2` gebruikt afzonderlijke eind punten voor ner en entiteits koppelings aanvragen. Gebruik een URL-indeling hieronder op basis van uw aanvraag:
+Herkenning van benoemde entiteiten `v3.1-preview.2` maakt gebruik van afzonderlijke eind punten voor ner-, PII-en entiteit koppelings aanvragen. Gebruik een URL-indeling hieronder op basis van uw aanvraag:
 
 Entiteiten koppelen
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
@@ -82,6 +82,7 @@ NER
 
 [Named entity Recognition versie 3,1-Preview-verwijzing voor `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
 
+Persoonlijk identificeer bare informatie (PII)
 * Persoonlijke `PII` gegevens ()- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
 
 U kunt ook de optionele `domain=phi` para meter gebruiken om informatie over de status ( `PHI` ) in de tekst te detecteren. 

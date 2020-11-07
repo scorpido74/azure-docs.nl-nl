@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2dfb113f4c82dfea422a7c2be1c5fb07ffd60e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329258"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358164"
 ---
 # <a name="public-ip-addresses"></a>Openbare IP-adressen
 
@@ -38,6 +38,8 @@ In Azure Resource Manager is een [openbaar IP](virtual-network-public-ip-address
 Openbare IP-adressen worden gemaakt met een IPv4- of IPv6-adres. 
 
 ## <a name="sku"></a>SKU
+
+Raadpleeg voor meer informatie over de SKU-upgrade de [open bare IP-upgrade](../virtual-network/virtual-network-public-ip-address-upgrade.md).
 
 Openbare IP-adressen worden gemaakt met een van de volgende SKU's:
 
@@ -96,7 +98,7 @@ Een open bare IP-resource wordt bijvoorbeeld vrijgegeven uit een resource met de
 Het IP-adres wordt vrijgegeven wanneer de toewijzings methode wordt gewijzigd van **statisch** naar **dynamisch**. Om ervoor te zorgen dat het IP-adres voor de gekoppelde resource hetzelfde blijft, stelt u de toewijzings methode expliciet in op **statisch**. Een statisch IP-adres wordt onmiddellijk toegewezen.
 
 > [!NOTE]
-> Ook als u de toewijzingsmethode instelt op **statisch**, kunt u het IP-adres dat aan de openbare IP-adresresource wordt toegewezen, echter niet zelf opgeven. Azure wijst het IP-adres toe vanuit een pool van beschikbare IP-adressen op de Azure-locatie waarin de resource is gemaakt.
+> Ook als u de toewijzingsmethode instelt op **statisch** , kunt u het IP-adres dat aan de openbare IP-adresresource wordt toegewezen, echter niet zelf opgeven. Azure wijst het IP-adres toe vanuit een pool van beschikbare IP-adressen op de Azure-locatie waarin de resource is gemaakt.
 >
 
 Statische openbare IP-adressen worden vaak gebruikt in de volgende scenario's:
@@ -160,7 +162,7 @@ Er wordt een openbaar IP-adres toegewezen aan de VPN Gateway om communicatie met
 
 ## <a name="application-gateways"></a>Toepassingsgateways
 
-U kunt een openbaar IP-adres koppelen aan een Azure-[toepassingsgateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) door het toe te wijzen aan de **front-end**-configuratie van de gateway. 
+U kunt een openbaar IP-adres koppelen aan een Azure- [toepassingsgateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) door het toe te wijzen aan de **front-end** -configuratie van de gateway. 
 
 * Wijs een **dynamisch** , algemeen openbaar IP-adres toe aan een Application Gateway v1-front-end-configuratie. 
 * Wijs een **statisch** standaard-SKU-adres toe aan een v2-front-end-configuratie.

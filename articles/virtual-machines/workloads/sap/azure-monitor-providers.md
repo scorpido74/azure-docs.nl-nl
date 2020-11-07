@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 235572cc4d697e7488765c464b12f9349c1e012b
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f5df8bccc10ca64ee9a04f195299c5228b7274c1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994166"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356447"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure monitor voor SAP-oplossingen providers (preview-versie)
 
 ## <a name="overview"></a>Overzicht  
 
-In de context van Azure Monitor voor SAP-oplossingen verwijst een *provider type* naar een specifieke *provider*. Bijvoorbeeld *SAP Hana*, dat is geconfigureerd voor een specifiek onderdeel in het SAP-landschap, zoals SAP Hana-data base. Een provider bevat de verbindings gegevens voor het bijbehorende onderdeel en helpt u bij het verzamelen van telemetriegegevens van dat onderdeel. Een Azure Monitor voor SAP-oplossingen resource (ook wel bekend als SAP-monitor bron) kan worden geconfigureerd met meerdere providers van hetzelfde provider type of meerdere providers van meerdere provider typen.
+In de context van Azure Monitor voor SAP-oplossingen verwijst een *provider type* naar een specifieke *provider*. Bijvoorbeeld *SAP Hana* , dat is geconfigureerd voor een specifiek onderdeel in het SAP-landschap, zoals SAP Hana-data base. Een provider bevat de verbindings gegevens voor het bijbehorende onderdeel en helpt u bij het verzamelen van telemetriegegevens van dat onderdeel. Een Azure Monitor voor SAP-oplossingen resource (ook wel bekend als SAP-monitor bron) kan worden geconfigureerd met meerdere providers van hetzelfde provider type of meerdere providers van meerdere provider typen.
    
 Klanten kunnen kiezen voor het configureren van verschillende provider typen om het verzamelen van gegevens van een bijbehorend onderdeel in hun SAP-landschap in te scha kelen. Klanten kunnen bijvoorbeeld een provider voor SAP HANA provider type configureren, een andere provider voor een cluster provider type met hoge Beschik baarheid, enzovoort.  
 
@@ -53,13 +53,24 @@ In de open bare Preview kunnen klanten verwachten dat de volgende gegevens worde
 
 ![Azure Monitor voor SAP-oplossingen providers-cluster met hoge Beschik baarheid](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
 
-Er zijn twee belang rijke stappen voor het configureren van een cluster provider met een hoge Beschik baarheid: 
-1. [Ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) installeren in *elk* knoop punt in het pacemaker-cluster 
-    - Klanten kunnen Azure Automation-scripts gebruiken voor het implementeren van clusters met een hoge Beschik baarheid. De scripts worden [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) op elk cluster knooppunt geïnstalleerd.  
-    - of klanten kunnen hand matige installatie uitvoeren door de stappen op [Deze pagina](https://github.com/ClusterLabs/ha_cluster_exporter) te volgen 
-2. Een cluster provider met hoge Beschik baarheid configureren in *elk* knoop punt binnen het pacemaker-cluster  
-  Als u de cluster provider met hoge Beschik baarheid wilt configureren, zijn de Prometheus-URL, de cluster naam, de hostnaam en de systeem-ID vereist.   
-  Klanten wordt aangeraden één provider per cluster knooppunt te configureren.   
+Voor het configureren van een cluster provider met hoge Beschik baarheid, zijn er twee primaire stappen betrokken:
+
+1. Installeer [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) in *elk* knoop punt in het pacemaker-cluster.
+
+   U hebt twee opties voor het installeren van ha_cluster_exporter:
+   
+   - Gebruik Azure Automation scripts voor het implementeren van een cluster met hoge Beschik baarheid. De scripts worden [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) op elk cluster knooppunt geïnstalleerd.  
+   - Een [hand matige installatie](https://github.com/ClusterLabs/ha_cluster_exporter#manual-clone--build)uitvoeren. 
+
+2. Configureer een cluster provider voor maximale Beschik baarheid voor *elk* knoop punt in het pacemaker-cluster.
+
+   Als u de cluster provider met maximale Beschik baarheid wilt configureren, is de volgende informatie vereist:
+   
+   - **Naam**. Een naam voor deze provider. Deze moet uniek zijn voor dit Azure Monitor voor SAP-oplossingen.
+   - **Prometheus-eind punt**. Meestal http \: // \<servername or ip address\> : 9664/meet waarden.
+   - **Sid**. Voor SAP-systemen gebruikt u de SAP-SID. Gebruik voor andere systemen (bijvoorbeeld NFS-clusters) een naam die uit drie tekens bestaan voor het cluster. De SID moet uniek zijn van andere clusters die worden bewaakt.   
+   - **Cluster naam**. De cluster naam die wordt gebruikt bij het maken van het cluster. De cluster naam kan worden gevonden in de eigenschap cluster `cluster-name` .
+   - **Hostnaam**. De Linux-hostnaam van de virtuele machine.  
 
 ## <a name="provider-type-microsoft-sql-server"></a>Provider type micro soft SQL Server
 

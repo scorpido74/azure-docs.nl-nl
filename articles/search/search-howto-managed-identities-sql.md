@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 49493f47c7178a15e37a54a70dd066690057caba
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519568"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358419"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Een Indexeer functie verbinding instellen met Azure SQL Database met behulp van een beheerde identiteit
 
@@ -81,7 +81,7 @@ Volg de onderstaande stappen om de machtiging Search service toe te wijzen om de
 In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens van uw SQL Server te lezen.
 
 1. Ga in het Azure Portal naar uw Azure SQL Server-pagina.
-2. **Toegangs beheer (IAM)** selecteren
+2. Selecteer **Toegangsbeheer (IAM)**
 3. Selecteer **toevoegen** en vervolgens **functie toewijzing toevoegen**
 
     ![Roltoewijzing toevoegen](./media/search-managed-identities/add-role-assignment-sql-server.png "Roltoewijzing toevoegen")
@@ -94,16 +94,16 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens v
 
 ### <a name="5---create-the-data-source"></a>5: de gegevens bron maken
 
-De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/microsoft.azure.search.models.datasource) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens van een Azure SQL Database met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
+De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens van een Azure SQL Database met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
 
 Wanneer u een gegevens bron maakt met behulp van de [rest API](/rest/api/searchservice/create-data-source), moet de gegevens bron de volgende vereiste eigenschappen hebben:
 
 * **naam** is de unieke naam van de gegevens bron in uw zoek service.
 * **type** is `azuresql`
-* **aanmeldings**
+* **aanmeldingsgegevens**
     * Wanneer u een beheerde identiteit gebruikt om te verifiëren, is de notatie van de **referenties** anders dan wanneer u geen beheerd-identiteit gebruikt. Hier geeft u een initiële catalogus-of database naam en een ResourceId op die geen account sleutel of wacht woord heeft. De ResourceId moet de abonnements-ID van Azure SQL Database, de resource groep van SQL Database en de naam van de SQL database bevatten. 
     * Connection string indeling beheerde identiteit:
-        * *Initiële catalogus | Data Base =**database naam**; ResourceId =/Subscriptions/**uw abonnements-id**/resourceGroups/**de naam van uw resource groep**/providers/Microsoft.SQL/servers/**uw SQL Server naam**/; Verbindingstime-out = verbindingstime **-out**;*
+        * *Initiële catalogus | Data Base = **database naam** ; ResourceId =/Subscriptions/ **uw abonnements-id** /resourceGroups/ **de naam van uw resource groep** /providers/Microsoft.SQL/servers/ **uw SQL Server naam** /; Verbindingstime-out = verbindingstime **-out** ;*
 * **container** Hiermee geeft u de naam op van de tabel of weer gave die u wilt indexeren.
 
 Voor beeld van het maken van een Azure SQL-gegevens bron object met behulp van de [rest API](/rest/api/searchservice/create-data-source):

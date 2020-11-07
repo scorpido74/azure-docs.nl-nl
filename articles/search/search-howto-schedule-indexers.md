@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: dffa8393dcfebf1cb73e3ab72890999cfa633b80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/06/2020
+ms.openlocfilehash: 80c3f9aa02680097276f966ce6aea02acf1e40fb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532564"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358793"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Indexeer functies plannen in azure Cognitive Search
 
@@ -30,8 +30,8 @@ De scheduler is een ingebouwde functie van Azure Cognitive Search. U kunt geen e
 ## <a name="define-schedule-properties"></a>Schema-eigenschappen definiëren
 
 Een indexer schema heeft twee eigenschappen:
-* **Interval**, waarmee de hoeveelheid tijd tussen de geplande uitvoeringen van de Indexeer functie wordt gedefinieerd. Het kleinste toegestane interval is 5 minuten en de grootste is 24 uur.
-* **Begin tijd (UTC)**, waarmee wordt aangegeven wanneer de Indexeer functie voor het eerst moet worden uitgevoerd.
+* **Interval** , waarmee de hoeveelheid tijd tussen de geplande uitvoeringen van de Indexeer functie wordt gedefinieerd. Het kleinste toegestane interval is 5 minuten en de grootste is 24 uur.
+* **Begin tijd (UTC)** , waarmee wordt aangegeven wanneer de Indexeer functie voor het eerst moet worden uitgevoerd.
 
 U kunt een planning opgeven wanneer u eerst de Indexeer functie maakt of door de eigenschappen van de Indexeer functie later bij te werken. De planningen voor de Indexeer functie kunnen worden ingesteld met behulp van de [Portal](#portal), de [rest API](#restApi)of de [.NET SDK](#dotNetSdk).
 
@@ -50,11 +50,11 @@ Laten we eens kijken naar een voor beeld om dit meer concreet te maken. Stel dat
 
 ## <a name="schedule-in-the-portal"></a>Plannen in de portal
 
-Met de wizard gegevens importeren in de portal kunt u het schema definiëren voor een Indexeer functie tijdens het maken. De standaard instelling voor het schema is elk **uur**, wat betekent dat de Indexeer functie eenmaal wordt uitgevoerd nadat deze is gemaakt en daarna opnieuw wordt uitgevoerd.
+Met de wizard gegevens importeren in de portal kunt u het schema definiëren voor een Indexeer functie tijdens het maken. De standaard instelling voor het schema is elk **uur** , wat betekent dat de Indexeer functie eenmaal wordt uitgevoerd nadat deze is gemaakt en daarna opnieuw wordt uitgevoerd.
 
 U kunt de instelling van het schema wijzigen in **één keer** wanneer u niet wilt dat de Indexeer functie automatisch opnieuw wordt uitgevoerd of **dagelijks** één keer per dag wordt uitgevoerd. Stel deze in op **aangepast** als u een ander interval of een specifieke toekomstige begin tijd wilt opgeven.
 
-Wanneer u de planning instelt op **aangepast**, worden er velden weer gegeven waarin u het **interval** en de **begin tijd (UTC)** kunt opgeven. Het kortste tijds interval dat is toegestaan, is 5 minuten en de langste is 1440 minuten (24 uur).
+Wanneer u de planning instelt op **aangepast** , worden er velden weer gegeven waarin u het **interval** en de **begin tijd (UTC)** kunt opgeven. Het kortste tijds interval dat is toegestaan, is 5 minuten en de langste is 1440 minuten (24 uur).
 
    ![Indexerings schema instellen in de wizard gegevens importeren](media/search-howto-schedule-indexers/schedule-import-data.png "Indexerings schema instellen in de wizard gegevens importeren")
 
@@ -92,28 +92,32 @@ U kunt op elk gewenst moment een Indexeer functie op aanvraag uitvoeren met de a
 
 U kunt het schema voor een Indexeer functie definiëren met behulp van de Azure Cognitive Search .NET SDK. Hiertoe neemt u de eigenschap **schema** op wanneer u een Indexeer functie maakt of bijwerkt.
 
-In het volgende C#-voor beeld wordt een Indexeer functie gemaakt met behulp van een vooraf gedefinieerde gegevens bron en index, en wordt het schema ingesteld op elke dag om de eerste 30 minuten vanaf nu:
+In het volgende C#-voor beeld wordt een Azure SQL database Indexeer functie gemaakt met behulp van een vooraf gedefinieerde gegevens bron en index, en wordt ingesteld dat het schema elke dag wordt uitgevoerd:
 
+```csharp
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+    StartTime = DateTimeOffset.Now
+};
+
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+    Description = "Data indexer",
+    Schedule = schedule
+};
+
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
 ```
-    Indexer indexer = new Indexer(
-        name: "azure-sql-indexer",
-        dataSourceName: dataSource.Name,
-        targetIndexName: index.Name,
-        schedule: new IndexingSchedule(
-                        TimeSpan.FromDays(1), 
-                        new DateTimeOffset(DateTime.UtcNow.AddMinutes(30))
-                    )
-        );
-    await searchService.Indexers.CreateOrUpdateAsync(indexer);
-```
-Als de para meter **schema** wordt wegge laten, wordt de Indexeer functie slechts eenmaal uitgevoerd nadat deze is gemaakt.
+
+
+Als de eigenschap **Schedule** wordt wegge laten, wordt de Indexeer functie slechts eenmaal uitgevoerd nadat deze is gemaakt.
 
 De para meter **StartTime** kan worden ingesteld op een tijd in het verleden. In dat geval wordt de eerste uitvoering gepland alsof de Indexeer functie continu actief is sinds de opgegeven **StartTime**.
 
-De planning is gedefinieerd met behulp van de [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule) -klasse. De **IndexingSchedule** -constructor vereist een **interval** parameter die is opgegeven met behulp van een **time span** -object. De kleinste toegestane interval waarde is 5 minuten en de grootste is 24 uur. De tweede para meter **StartTime** , opgegeven als **Date Time offset** -object, is optioneel.
+De planning is gedefinieerd met behulp van de [IndexingSchedule](/dotnet/api/azure.search.documents.indexes.models.indexingschedule) -klasse. De **IndexingSchedule** -constructor vereist een **interval** parameter die is opgegeven met behulp van een **time span** -object. De kleinste toegestane interval waarde is 5 minuten en de grootste is 24 uur. De tweede para meter **StartTime** , opgegeven als **Date Time offset** -object, is optioneel.
 
-Met de .NET SDK kunt u Indexeer bewerkingen beheren met de klasse [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) en de eigenschap [indexers](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) , waarmee methoden van de **IIndexersOperations** -interface worden geïmplementeerd. 
+Met de .NET SDK kunt u Indexeer bewerkingen beheren via de [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient). 
 
-U kunt op elk gewenst moment een indexer op aanvraag uitvoeren met een van de methoden [Run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)of [RunWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) .
+U kunt op elk gewenst moment een indexer op aanvraag uitvoeren met een van de methoden [RunIndexer](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexer) of [RunIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync) .
 
-Zie [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations)voor meer informatie over het maken, bijwerken en uitvoeren van Indexeer functies.
+Zie [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)voor meer informatie over het maken, bijwerken en uitvoeren van Indexeer functies.

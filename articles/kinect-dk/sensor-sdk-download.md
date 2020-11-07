@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, kinect, SDK, down load update, nieuwste, beschikbaar, installeren
-ms.openlocfilehash: 48cdd35a80d68a7ec0d900639c0fca3a2c66787e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48a3df3962796cf561057e8ec85b754c974200f4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171785"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358502"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect sensor-SDK downloaden
 
@@ -39,7 +39,7 @@ U kunt vorige versies van de Azure Kinect-sensor-SDK en-firmware vinden op [gith
 
 Momenteel is de enige ondersteunde distributie Ubuntu 18,04. Zie [Deze pagina](https://aka.ms/azurekinectfeedback)als u ondersteuning voor andere distributies wilt aanvragen.
 
-Eerst moet u de [opslag plaats van micro soft-pakket](https://packages.microsoft.com/)configureren. Volg hiervoor de instructies [hier](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software).
+Eerst moet u de [opslag plaats van micro soft-pakket](https://packages.microsoft.com/)configureren. Volg hiervoor de instructies [hier](/windows-server/administration/linux-package-repository-for-microsoft-software).
 
 U kunt nu de benodigde pakketten installeren. Het `k4a-tools` pakket bevat de [Azure Kinect-Viewer](azure-kinect-viewer.md), de [Azure Kinect-recorder](record-sensor-streams-file.md)en het [hulp programma Azure Kinect-firmware](azure-kinect-firmware-tool.md). Voer uit om de installatie uit te voeren.
 

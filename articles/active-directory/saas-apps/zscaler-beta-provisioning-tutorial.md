@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 001d139e7fc140f41fa94ea0c6f32d0b08036a9a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: de42230639351c0dc1e7986156a33b178386d1a4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519773"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357739"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Zelf studie: Zscaler Beta configureren voor het automatisch inrichten van gebruikers
 
@@ -44,7 +44,7 @@ Voordat u Zscaler Beta configureert voor het automatisch inrichten van gebruiker
 
 **Voer de volgende stappen uit om Zscaler Beta toe te voegen vanuit de Azure AD-toepassings galerie:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory** -pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -56,7 +56,7 @@ Voordat u Zscaler Beta configureert voor het automatisch inrichten van gebruiker
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Zscaler Beta**, selecteer **Zscaler Beta** in het resultaatvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Zscaler Beta** , selecteer **Zscaler Beta** in het resultaatvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![Zscaler Beta in de lijst met resultaten](common/search-new-app.png)
 
@@ -83,7 +83,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Zscaler beta in azure AD:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Zscaler Beta**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer **bedrijfs toepassingen** , selecteer **alle toepassingen** en selecteer vervolgens **Zscaler Beta**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -101,7 +101,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Voer in het gedeelte **beheerders referenties** de **Tenant-URL** en het **geheime token** van uw Zscaler-bèta account in, zoals beschreven in stap 6.
 
-6. Als u de **Tenant-URL** en het **geheime token**wilt ophalen, gaat u naar **beheer > verificatie-instellingen** in de gebruikers interface van de Zscaler-bèta Portal en klikt u op **SAML** onder **verificatie type**.
+6. Als u de **Tenant-URL** en het **geheime token** wilt ophalen, gaat u naar **beheer > verificatie-instellingen** in de gebruikers interface van de Zscaler-bèta Portal en klikt u op **SAML** onder **verificatie type**.
 
     ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
 
@@ -109,7 +109,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    Selecteer **SCIM-Based inrichting inschakelen** om basis- **URL** en **Bearer-token**op te halen en sla de instellingen op. Kopieer de **basis-URL** naar de **Tenant-URL**en **Bearer-token**  naar een **geheim token** in de Azure Portal.
+    Selecteer **SCIM-Based inrichting inschakelen** om basis- **URL** en **Bearer-token** op te halen en sla de instellingen op. Kopieer de **basis-URL** naar de **Tenant-URL** en **Bearer-token**  naar een **geheim token** in de Azure Portal.
 
 7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Zscaler Beta. Als de verbinding mislukt, zorg er dan voor dat uw Zscaler-bèta account beheerders machtigingen heeft en probeer het opnieuw.
 

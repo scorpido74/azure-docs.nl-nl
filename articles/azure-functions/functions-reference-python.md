@@ -2,14 +2,14 @@
 title: Python-ontwikkelaars referentie voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: cc99a8c10ecefc063fdb89c61bdaeb0e686b1a82
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346312"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358045"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
 
@@ -69,72 +69,70 @@ U kunt het standaard gedrag van een functie wijzigen door optioneel de `scriptFi
 De aanbevolen mapstructuur voor een python functions-project ziet eruit als in het volgende voor beeld:
 
 ```
- __app__
- | - my_first_function
+ <project_root>/
+ | - .venv/
+ | - .vscode/
+ | - my_first_function/
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - my_second_function
+ | - my_second_function/
  | | - __init__.py
  | | - function.json
- | - shared_code
+ | - shared_code/
+ | | - __init__.py
  | | - my_first_helper_function.py
  | | - my_second_helper_function.py
+ | - tests/
+ | | - test_my_second_function.py
+ | - .funcignore
  | - host.json
+ | - local.settings.json
  | - requirements.txt
  | - Dockerfile
- tests
 ```
-De hoofdmap van het project ( \_ \_ app \_ \_ ) kan de volgende bestanden bevatten:
+De hoofdmap van het project (<project_root>) kan de volgende bestanden bevatten:
 
 * *local.settings.jsop* : wordt gebruikt voor het opslaan van app-instellingen en verbindings reeksen wanneer deze lokaal worden uitgevoerd. Dit bestand wordt niet gepubliceerd naar Azure. Zie [Local. settings. File](functions-run-local.md#local-settings-file)voor meer informatie.
-* *requirements.txt* : bevat de lijst met pakketten die door het systeem worden geïnstalleerd bij het publiceren naar Azure.
+* *requirements.txt* : bevat de lijst met Python-pakketten die door het systeem wordt geïnstalleerd bij het publiceren naar Azure.
 * *host.jsop* : bevat globale configuratie opties die van invloed zijn op alle functies in een functie-app. Dit bestand wordt gepubliceerd naar Azure. Niet alle opties worden ondersteund bij het lokaal uitvoeren. Zie [host.jsvoor](functions-host-json.md)meer informatie.
-* *. funcignore* : (optioneel) declareert bestanden die niet naar Azure mogen worden gepubliceerd.
+* *. vscode/* : (optioneel) bevat de configuratie van Store vscode. Zie [VSCode-instelling](https://code.visualstudio.com/docs/getstarted/settings)voor meer informatie.
+* *. venv/* : (optioneel) bevat een virtuele python-omgeving die wordt gebruikt voor lokale ontwikkeling.
 * *Dockerfile* : (optioneel) gebruikt bij het publiceren van uw project in een [aangepaste container](functions-create-function-linux-custom-image.md).
+* testen */* : (optioneel) bevat de test cases van uw functie-app.
+* *. funcignore* : (optioneel) declareert bestanden die niet naar Azure mogen worden gepubliceerd. Normaal gesp roken bevat dit bestand `.vscode/` het negeren van de instelling van uw editor, het `.venv/` negeren van lokale python virtuele omgeving, het `tests/` negeren van test cases en `local.settings.json` om te voor komen dat lokale app-instellingen worden gepubliceerd.
 
 Elke functie heeft een eigen code bestand en een bindings configuratie bestand (function.jsaan).
 
-Wanneer u uw project implementeert in een functie-app in azure, moet de volledige inhoud van de map main project ( *\_ \_ app \_ \_* ) worden opgenomen in het pakket, maar niet in de map zelf. U wordt aangeraden uw tests te onderhouden in een map gescheiden van de projectmap, in dit voor beeld `tests` . Hierdoor kunt u geen test code implementeren met uw app. Zie [unit testen](#unit-testing)voor meer informatie.
+Wanneer u uw project implementeert in een functie-app in azure, moet de volledige inhoud van de map van het hoofd project ( *<project_root>* ) worden opgenomen in het pakket, maar niet in de map zelf. Dit betekent dat u zich `host.json` in de hoofdmap van het pakket moet bevinden. U wordt aangeraden uw tests in een map samen met andere functies te onderhouden, in dit voor beeld `tests/` . Zie [unit testen](#unit-testing)voor meer informatie.
 
 ## <a name="import-behavior"></a>Gedrag bij importeren
 
-U kunt modules in uw functie code importeren met behulp van zowel expliciete relatieve als absolute verwijzingen. Op basis van de mappen structuur die hierboven wordt weer gegeven, werkt de volgende import vanuit de functie bestand *\_ \_ app \_ \_ \Mijn de \_ eerste \_ functie \\ _ \_ init \_ \_ . py* :
+U kunt modules in uw functie code importeren met behulp van absolute en relatieve verwijzingen. Op basis van de mappen structuur die hierboven wordt weer gegeven, werkt de volgende invoer vanuit het functie bestand *<project_root> \Mijn \_ eerste \_ functie \\ _ \_ init \_ \_ . py* :
 
 ```python
-from . import example #(explicit relative)
+from shared_code import my_first_helper_function #(absolute)
 ```
 
 ```python
-from ..shared_code import my_first_helper_function #(explicit relative)
+import shared_code.my_second_helper_function #(absolute)
 ```
 
 ```python
-from __app__ import shared_code #(absolute)
+from . import example #(relative)
+```
+
+> [!NOTE]
+>  De *shared_code/* map moet een \_ \_ init \_ \_ . py-bestand bevatten om het als een python-pakket te markeren wanneer absolute import syntaxis wordt gebruikt.
+
+De volgende import \_ \_ \_ \_ van apps en meer relatieve import op het hoogste niveau zijn afgeschaft, omdat deze niet wordt ondersteund door de statische type controle en niet wordt ondersteund door python-test raamwerken:
+
+```python
+from __app__.shared_code import my_first_helper_function #(deprecated __app__ import)
 ```
 
 ```python
-import __app__.shared_code #(absolute)
-```
-
-De volgende Imports *werken niet* binnen hetzelfde bestand:
-
-```python
-import example
-```
-
-```python
-from example import some_helper_code
-```
-
-```python
-import shared_code
-```
-
-Gedeelde code moet worden bewaard in een afzonderlijke map in de *\_ \_ app \_ \_*. U kunt met behulp van de volgende syntaxis verwijzen naar modules in de map *gedeelde \_ code* :
-
-```python
-from __app__.shared_code import my_first_helper_function
+from ..shared_code import my_first_helper_function #(deprecated beyond top-level relative import)
 ```
 
 ## <a name="triggers-and-inputs"></a>Triggers en invoer
@@ -319,7 +317,7 @@ De standaard configuraties zijn geschikt voor de meeste toepassingen van Azure F
 |Kenmerken van functie-app| <ul><li>De app moet veel gelijktijdige aanroepen verwerken.</li> <li> Met de app worden een groot aantal I/O-gebeurtenissen verwerkt, zoals netwerk aanroepen en lees-en schrijf bewerkingen van de schijf.</li> </ul>| <ul><li>App voert langlopende berekeningen uit, zoals het wijzigen van de grootte van afbeeldingen.</li> <li>App maakt gegevens transformatie.</li> </ul> |
 |Voorbeelden| <ul><li>Web-API's</li><ul> | <ul><li>Gegevensverwerking</li><li> Machine learning-interferentie</li><ul>|
 
- 
+
 > [!NOTE]
 >  Omdat de werk belasting van echte wereld het meeste is van vaak een combi natie van I/O-en CPU-gebonden, wordt u aangeraden de werk belasting te profileren onder realistische productie belasting.
 
@@ -539,12 +537,14 @@ Vervang door `<APP_NAME>` de naam van uw functie-app in Azure.
 
 Functies die zijn geschreven in python kunnen worden getest als andere python-code met behulp van standaard test raamwerken. Voor de meeste bindingen is het mogelijk om een invoer object voor een model te maken door een instantie van een geschikte klasse te maken vanuit het `azure.functions` pakket. Omdat het [`azure.functions`](https://pypi.org/project/azure-functions/) pakket niet onmiddellijk beschikbaar is, moet u het installeren via uw `requirements.txt` bestand zoals beschreven in de sectie [pakket beheer](#package-management) hierboven.
 
-Het volgende is bijvoorbeeld een model test van een door HTTP geactiveerde functie:
+Neem *my_second_function* als voor beeld. hierna volgt een model test van een door http geactiveerde functie:
+
+Eerst moet u *<project_root>/my_second_function/function.jsin* het bestand maken en deze functie definiëren als een http-trigger.
 
 ```json
 {
   "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
+  "entryPoint": "main",
   "bindings": [
     {
       "authLevel": "function",
@@ -565,106 +565,72 @@ Het volgende is bijvoorbeeld een model test van een door HTTP geactiveerde funct
 }
 ```
 
+Nu kunnen we de *my_second_function* en de *shared_code. my _second_helper_function* implementeren.
+
 ```python
-# __app__/HttpTrigger/__init__.py
+# <project_root>/my_second_function/__init__.py
 import azure.functions as func
 import logging
 
-def my_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+# Use absolute import to resolve shared_code modules
+from shared_code import my_second_helper_function
 
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
+# Define an http trigger which accepts ?value=<int> query parameter
+# Double the value and return the result in HttpResponse
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Executing my_second_function.')
 
-    if name:
-        return func.HttpResponse(f"Hello {name}")
-    else:
-        return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
-        )
+    initial_value: int = int(req.params.get('value'))
+    doubled_value: int = my_second_helper_function.double(initial_value)
+
+    return func.HttpResponse(
+      body=f"{initial_value} * 2 = {doubled_value}",
+      status_code=200
+    )
 ```
 
 ```python
-# tests/test_httptrigger.py
+# <project_root>/shared_code/__init__.py
+# Empty __init__.py file marks shared_code folder as a Python package
+```
+
+```python
+# <project_root>/shared_code/my_second_helper_function.py
+
+def double(value: int) -> int:
+  return value * 2
+```
+
+We kunnen test cases voor onze http-trigger starten.
+
+```python
+# <project_root>/tests/test_my_second_function.py
 import unittest
 
 import azure.functions as func
-from __app__.HttpTrigger import my_function
+from my_second_function import main
 
 class TestFunction(unittest.TestCase):
-    def test_my_function(self):
+    def test_my_second_function(self):
         # Construct a mock HTTP request.
         req = func.HttpRequest(
             method='GET',
             body=None,
-            url='/api/HttpTrigger',
-            params={'name': 'Test'})
+            url='/api/my_second_function',
+            params={'value': '21'})
 
         # Call the function.
-        resp = my_function(req)
+        resp = main(req)
 
         # Check the output.
         self.assertEqual(
             resp.get_body(),
-            b'Hello Test',
+            b'21 * 2 = 42',
         )
 ```
 
-Hier volgt nog een voor beeld van een door de wachtrij geactiveerde functie:
+`.venv`Installeer uw favoriete python-test raamwerk in uw python virtuele omgeving (bijvoorbeeld `pip install pytest` ). Voer gewoon uit `pytest tests` om het test resultaat te controleren.
 
-```json
-{
-  "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "python-queue-items",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-
-```python
-# __app__/QueueTrigger/__init__.py
-import azure.functions as func
-
-def my_function(msg: func.QueueMessage) -> str:
-    return f'msg body: {msg.get_body().decode()}'
-```
-
-```python
-# tests/test_queuetrigger.py
-import unittest
-
-import azure.functions as func
-from __app__.QueueTrigger import my_function
-
-class TestFunction(unittest.TestCase):
-    def test_my_function(self):
-        # Construct a mock Queue message.
-        req = func.QueueMessage(
-            body=b'test')
-
-        # Call the function.
-        resp = my_function(req)
-
-        # Check the output.
-        self.assertEqual(
-            resp,
-            'msg body: test',
-        )
-```
 ## <a name="temporary-files"></a>Tijdelijke bestanden
 
 De- `tempfile.gettempdir()` methode retourneert een tijdelijke map, die op Linux is `/tmp` . Uw toepassing kan deze directory gebruiken voor het opslaan van tijdelijke bestanden die door uw functies worden gegenereerd en gebruikt tijdens de uitvoering.

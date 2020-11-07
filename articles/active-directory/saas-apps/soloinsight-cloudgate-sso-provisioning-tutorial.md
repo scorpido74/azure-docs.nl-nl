@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ab23183fa42b87dad68da1d7ef9b1a2f6145750
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 1b992150f6013fd597a3e56b243bd6236289b710
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514789"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357994"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>Zelf studie: Soloinsight-CloudGate SSO configureren voor automatische gebruikers inrichting
 
@@ -58,7 +58,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
     ![Soloinsight-CloudGate SSO SCIM toevoegen](media/soloinsight-cloudgate-sso-provisioning-tutorial/config.png)
 
-3.  Schuif omlaag naar het einde van de pagina om de **Tenant-URL** en het **geheime token**op te halen. Kopieer het **geheime token**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw Soloinsight-CloudGate SSO-toepassing in de Azure Portal.
+3.  Schuif omlaag naar het einde van de pagina om de **Tenant-URL** en het **geheime token** op te halen. Kopieer het **geheime token**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw Soloinsight-CloudGate SSO-toepassing in de Azure Portal.
 
     ![Token voor het maken van Soloinsight-CloudGate SSO](media/soloinsight-cloudgate-sso-provisioning-tutorial/token.png)
 
@@ -80,7 +80,7 @@ Voordat u Soloinsight-CloudGate SSO configureert voor het automatisch inrichten 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak **Soloinsight-CLOUDGATE SSO**in, selecteer **SSO van Soloinsight-CloudGate** in het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Voer in het zoekvak **Soloinsight-CLOUDGATE SSO** in, selecteer **SSO van Soloinsight-CloudGate** in het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![Soloinsight-CloudGate SSO in de resultatenlijst](common/search-new-app.png)
 

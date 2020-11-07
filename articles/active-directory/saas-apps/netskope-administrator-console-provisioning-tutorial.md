@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5e71566ea7cd2e8953c84d58128e3380a782ba40
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: 46766a7439185714648572f3f1b9d51ef96abba6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516712"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357467"
 ---
 # <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Zelf studie: Netskope-gebruikers authenticatie configureren voor automatische gebruikers inrichting
 
@@ -88,7 +88,7 @@ Voordat u Netskope-gebruikers authenticatie configureert voor automatische gebru
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak Netskope- **gebruikers verificatie**in, selecteer **Netskope gebruikers verificatie** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Voer in het zoekvak Netskope- **gebruikers verificatie** in, selecteer **Netskope gebruikers verificatie** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![Gebruikers authenticatie Netskope in de lijst met resultaten](common/search-new-app.png)
 

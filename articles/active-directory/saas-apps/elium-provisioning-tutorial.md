@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544227"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356737"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Zelf studie: Elium configureren voor automatische gebruikers inrichting
 
@@ -55,7 +55,7 @@ Voordat u Elium configureert voor het automatisch inrichten van gebruikers met A
 
     ![Menu-item instellingen in Elium](media/Elium-provisioning-tutorial/setting.png)
 
-1. Klik in de linkerbenedenhoek onder **Geavanceerd**op **beveiliging**.
+1. Klik in de linkerbenedenhoek onder **Geavanceerd** op **beveiliging**.
 
     ![Beveiligings koppeling in Elium](media/Elium-provisioning-tutorial/security.png)
 
@@ -79,7 +79,7 @@ Als u Elium wilt configureren voor het automatisch inrichten van gebruikers met 
 
     ![Koppeling naar nieuwe toepassing](common/add-new-app.png)
 
-1. Typ **Elium**in het zoekvak, selecteer **Elium** in de lijst met resultaten en selecteer **toevoegen** om de toepassing toe te voegen.
+1. Typ **Elium** in het zoekvak, selecteer **Elium** in de lijst met resultaten en selecteer **toevoegen** om de toepassing toe te voegen.
 
     ![Zoekvak voor galerie](common/search-new-app.png)
 
@@ -92,7 +92,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 Voer de volgende stappen uit om de automatische gebruikers inrichting voor Elium in azure AD te configureren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com), selecteer **zakelijke toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com), selecteer **zakelijke toepassingen** en selecteer vervolgens **alle toepassingen**.
 
     ![Blade Azure AD-zakelijke toepassingen](common/enterprise-applications.png)
 
@@ -108,7 +108,7 @@ Voer de volgende stappen uit om de automatische gebruikers inrichting voor Elium
 
     ![Automatische instelling voor inrichtings modus](common/provisioning-automatic.png)
 
-1. Typ in de sectie **beheerders referenties** ** \<tenantURL\> /scim/v2** in het veld **Tenant-URL** . (De **tenantURL** is de waarde die eerder is opgehaald uit de Elium-beheer console.) Typ ook de waarde van het Elium **Secret-token** in het veld **geheime token** . Selecteer tot slot **verbinding testen** om te controleren of Azure AD verbinding kan maken met Elium. Als de verbinding mislukt, zorgt u ervoor dat uw Elium-account beheerders machtigingen heeft en probeer het opnieuw.
+1. Typ in de sectie **beheerders referenties** **\<tenantURL\> /scim/v2** in het veld **Tenant-URL** . (De **tenantURL** is de waarde die eerder is opgehaald uit de Elium-beheer console.) Typ ook de waarde van het Elium **Secret-token** in het veld **geheime token** . Selecteer tot slot **verbinding testen** om te controleren of Azure AD verbinding kan maken met Elium. Als de verbinding mislukt, zorgt u ervoor dat uw Elium-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL en geheime token velden in beheerders referenties](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -144,7 +144,7 @@ Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en
 
 Gebruik de sectie **huidige status** om de voortgang te bewaken en koppelingen naar uw inrichtings activiteiten rapport te volgen. In het rapport inrichtings activiteit worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Elium. Zie [de status van gebruikers inrichten controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * Het [inrichten van een gebruikers account voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

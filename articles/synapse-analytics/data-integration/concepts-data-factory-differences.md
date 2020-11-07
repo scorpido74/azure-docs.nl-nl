@@ -5,15 +5,15 @@ services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 11/06/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: be098977ba51e529aaecfb5dc3b7a03444f55a7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343050"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357646"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Gegevens integratie in azure Synapse Analytics versus Azure Data Factory
 
@@ -27,27 +27,26 @@ Als u wilt zien of een Azure Data Factory functie of artikel van toepassing is o
 
 De volgende functies zijn beschikbaar in Azure Data Factory, maar zijn niet gepland voor Azure Synapse.
 
-* De mogelijkheid om SSIS-pakketten te liften en te verplaatsen.
-* Sneeuw als een sink in de Kopieer activiteit en toewijzing van gegevens stroom.
-* De time-outwaarde voor de toewijzing van gegevens stroom voor Azure Integration runtime.
+* **Life-en Shift-SSIS-pakketten:** In Azure Data Factory hebt u de mogelijkheid om SSIS-pakketten uit te scha kelen met behulp van de SSIS Integration runtime. De SSIS Integration runtime en de activiteit uitvoeren SSIS-pakket zijn niet beschikbaar in Synapse-werk ruimten. 
+* **Time to Live:** Time to Live is een instelling in de Azure Integration runtime waarmee het Spark-cluster in toewijzing van gegevens stromen gedurende een bepaalde tijd na voltooiing van een gegevens stroom *warme* blijft. Deze functie is niet beschikbaar in Synapse-werk ruimten.
 
 ## <a name="azure-synapse-features-not-supported-in-azure-data-factory"></a>Azure Synapse-functies die niet worden ondersteund in Azure Data Factory
 
 De volgende functies zijn beschikbaar in azure Synapse, maar zijn niet gepland voor Azure Data Factory.
 
-* Spark-taak bewaking van gegevens stromen voor toewijzing is alleen beschikbaar in Synapse. In Synapse is de Spark-engine opgenomen in het abonnement van de gebruiker, zodat gebruikers gedetailleerde Spark-logboeken kunnen bekijken. In Azure Data Factory vindt taak uitvoering plaats op een door Azure Data Factory beheerd Spark-cluster. 
+* **Spark-taak bewaking voor het toewijzen van gegevens stromen:** In Synapse is de Spark-engine opgenomen in het abonnement van de gebruiker, zodat gebruikers gedetailleerde Spark-logboeken kunnen bekijken. In Azure Data Factory vindt taak uitvoering plaats op een door Azure Data Factory beheerd Spark-cluster en is deze informatie niet beschikbaar. 
 
 ## <a name="azure-data-factory-features-that-behave-differently-in-synapse"></a>Azure Data Factory functies die zich anders gedragen in Synapse
 
 De volgende functies gedragen zich op een andere manier of bestaan momenteel niet in azure Synapse. 
 
-* Wrangling-gegevens stromen
-* De galerie met oplossings sjablonen
-* Git-integratie en een systeem eigen CI/CD-oplossing
-* Integratie met Azure monitor
-* De naam van resources na het publiceren wijzigen
-* Configuratie van hybride integratie-runtime in een Synapse-werk ruimte. Een gebruiker kan geen beheerde VNet-IR en een Azure IR hebben.
-* Integratie voor delen van runtime tussen Synapse-werk ruimten
+* **Wrangling-gegevens stromen:** De activiteit wrangling data flow is op dit moment alleen beschikbaar in Azure Data Factory.
+* **De oplossings sjabloon galerie:** In Azure Data Factory kunnen gebruikers pijplijn sjablonen vinden in de galerie met oplossingen sjablonen. In Synapse-werk ruimten bevat het kennis centrum een andere set sjablonen, samen met aanvullende gegevens sets en SQL-scripts. 
+* **Git-integratie en een systeem eigen CI/cd-oplossing:** Momenteel kan een Synapse-werk ruimte geen verbinding maken met een Git-opslag plaats, maar ook niet hetzelfde continue integratie-en leverings proces als Azure Data Factory.
+* **Integratie met Azure monitor:** Synapse-werk ruimten worden niet geïntegreerd met Azure Monitor zoals Azure Data Factory.
+* **Runtime configuratie voor hybride integratie:** Binnen een Synapse-werk ruimte kan een gebruiker geen beheerde VNet-IR en een Azure IR hebben. Deze functie wordt ondersteund in Azure Data Factory.
+* **Delen van integratie-runtime:** Zelf-hostende Integration Runtimes kunnen niet worden gedeeld tussen Synapse-werk ruimten. Deze functie wordt ondersteund in Azure Data Factory.
+* **Integratie-Runtimes voor meerdere regio's voor gegevens stromen:** Gegevens stromen kunnen niet worden uitgevoerd op Integration Runtimes in verschillende regio's dan een Synapse-werk ruimte. Deze functie wordt ondersteund in Azure Data Factory.
 
 ## <a name="next-steps"></a>Volgende stappen
 

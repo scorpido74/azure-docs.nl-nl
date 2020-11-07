@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, kinect, RGB, IR, opname, sensor, SDK, toegang, diepte, video, camera, IMU, beweging, sensor, audio, microfoon, Matroska, sensor SDK, down load, hoofd tekst, tracering, ondersteuning
-ms.openlocfilehash: 61d29284bc2ed9e574e8a19561f19ad6f4259908
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277360"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357042"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Ondersteunings opties en-bronnen voor Azure Kinect
 
@@ -32,9 +32,9 @@ Er zijn meerdere manieren om een Assisted Support voor Azure Kinect te krijgen.
 
 ### <a name="microsoft-qa"></a>Microsoft Q&A
 
-Voor snelle en betrouwbare antwoorden op uw technische productvragen van Microsoft Engineers, Azure Most Valuable Professionals (MVP's) of de community van experts, neemt u contact met ons op via [Microsoft Q&A](https://aka.ms/azureqa), de voorkeurslocatie van Azure voor ondersteuning uit de community.
+Voor snelle en betrouwbare antwoorden op uw technische productvragen van Microsoft Engineers, Azure Most Valuable Professionals (MVP's) of de community van experts, neemt u contact met ons op via [Microsoft Q&A](/answers/products/azure), de voorkeurslocatie van Azure voor ondersteuning uit de community.
 
-- [Micro soft Q&A voor Azure Kinect](https://docs.microsoft.com/answers/topics/azure-kinect-dk.html), waar u vragen kunt stellen of een bestaande bibliotheek met vragen wilt doorzoeken.
+- [Micro soft Q&A voor Azure Kinect](/answers/topics/azure-kinect-dk.html), waar u vragen kunt stellen of een bestaande bibliotheek met vragen wilt doorzoeken.
 
 ### <a name="development-azure-kinect-on-azure"></a>Azure Kinect ontwikkelen op Azure
 
@@ -50,7 +50,7 @@ Open een ticket voor professionele ondersteuning op de [micro soft-ondersteuning
 
 ### <a name="azure-kinect-dk-device"></a>Azure Kinect DK-apparaat
 
-Voordat u contact opneemt met de hardware-ondersteuning, moet u ervoor zorgen dat u Azure Kinect DK hebt ingesteld en bijgewerkt. Als u wilt testen of het apparaat werkt, gebruikt u de [Azure Kinect-Viewer](azure-kinect-viewer.md). Meer informatie vindt u op onze Help-pagina van [Azure KINECT DK](https://aka.ms/kinectsupport) .
+Voordat u contact opneemt met de hardware-ondersteuning, moet u ervoor zorgen dat u Azure Kinect DK hebt ingesteld en bijgewerkt. Als u wilt testen of het apparaat werkt, gebruikt u de [Azure Kinect-Viewer](azure-kinect-viewer.md). Meer informatie vindt u op onze Help-pagina van [Azure KINECT DK](./index.yml) .
 Mogelijk wilt u ook onze [bekende problemen en probleem oplossing](troubleshooting.md)bekijken.
 
 [Hulp krijgen](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813) bij een apparaat-of sensor functionaliteit, firmware-updates of inkoop opties.

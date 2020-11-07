@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 171a96f37d4c1e740e23cc766566d3c1756b6d08
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.openlocfilehash: a62afa9469caa886d86814036017427c0cc0d193
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460182"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357433"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Zelf studie: infor CloudSuite configureren voor automatische gebruikers inrichting
 
@@ -70,9 +70,9 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
     :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Scherm afbeelding van de infor CloudSuite-beheer console, waarin een gemarkeerde tabelrij wordt weer gegeven. Die rij bevat een gebruikers-id, wacht woord en een tijds tempel." border="false":::
 
-5. Als u een Bearer-token wilt genereren, kopieert u het **wacht woord**voor de **gebruikers-id** en het scim. Plak ze in Klad blok en vervolgens gescheiden door een dubbele punt. Codeer de teken reeks waarde door te navigeren naar **Plugins > MIME-Hulpprogram ma's > Basic64-code ring**. 
+5. Als u een Bearer-token wilt genereren, kopieert u het **wacht woord** voor de **gebruikers-id** en het scim. Plak ze in Klad blok en vervolgens gescheiden door een dubbele punt. Codeer de teken reeks waarde door te navigeren naar **Plugins > MIME-Hulpprogram ma's > Basic64-code ring**. 
 
-    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Scherm afbeelding van de infor CloudSuite-beheer console, waarin een gemarkeerde tabelrij wordt weer gegeven. Die rij bevat een gebruikers-id, wacht woord en een tijds tempel." border="false":::
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Scherm afbeelding van een Klad blok en document. In het menu plugins worden MIME-hulpprogram ma's gemarkeerd. In het menu MIME-hulpprogram ma's wordt base64-code ring gemarkeerd." border="false":::
 
 3.  Kopieer het Bearer-token. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw infor CloudSuite-toepassing in de Azure Portal.
 
@@ -94,7 +94,7 @@ Voordat u infor CloudSuite configureert voor het automatisch inrichten van gebru
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak **infor CloudSuite**in, selecteer **infor CloudSuite** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Voer in het zoekvak **infor CloudSuite** in, selecteer **infor CloudSuite** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![Infor CloudSuite in de lijst met resultaten](common/search-new-app.png)
 

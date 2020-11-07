@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d83e5c39f97db49e2cc9b77cc806cff0a1fa6de
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534791"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355981"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filters in azure Cognitive Search 
 
@@ -98,13 +98,13 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 De volgende voor beelden illustreren verschillende gebruiks patronen voor filter scenario's. Zie [OData-expressie syntaxis > voor beelden](./search-query-odata-filter.md#examples)voor meer ideeën.
 
-+ Zelfstandige **$filter**, zonder query teken reeks, handig wanneer de filter expressie volledig kan kwalificeren op interessante documenten. Zonder een query reeks is er geen lexicale of linguïstische analyse, geen scoreing en geen classificatie. U ziet dat de zoek teken reeks slechts een sterretje is, wat betekent dat alle documenten overeenkomen.
++ Zelfstandige **$filter** , zonder query teken reeks, handig wanneer de filter expressie volledig kan kwalificeren op interessante documenten. Zonder een query reeks is er geen lexicale of linguïstische analyse, geen scoreing en geen classificatie. U ziet dat de zoek teken reeks slechts een sterretje is, wat betekent dat alle documenten overeenkomen.
 
    ```
    search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ Combi natie van query teken reeks en **$filter**, waarbij het filter de subset maakt en de query reeks voorziet in de term invoer voor zoeken in volledige tekst via de gefilterde subset. Het toevoegen van voor waarden (wandel-afstands-theaters) introduceert Zoek punten in de resultaten, waarbij documenten die het beste overeenkomen met de voor waarden, hoger worden gerangschikt. Het gebruik van een filter met een query reeks is het meest voorkomende gebruiks patroon.
++ Combi natie van query teken reeks en **$filter** , waarbij het filter de subset maakt en de query reeks voorziet in de term invoer voor zoeken in volledige tekst via de gefilterde subset. Het toevoegen van voor waarden (wandel-afstands-theaters) introduceert Zoek punten in de resultaten, waarbij documenten die het beste overeenkomen met de voor waarden, hoger worden gerangschikt. Het gebruik van een filter met een query reeks is het meest voorkomende gebruiks patroon.
 
    ```
   search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
@@ -138,11 +138,11 @@ Volg deze artikelen voor uitgebreide informatie over specifieke gebruiks voorbee
 
 In de REST API is filteren standaard *ingeschakeld* voor eenvoudige velden. Filter bare velden verg Roten index grootte; Zorg ervoor dat `"filterable": false` u velden instelt die u niet wilt gebruiken in een filter. Zie [Create Index](/rest/api/searchservice/create-index)voor meer informatie over de instellingen voor veld definities.
 
-In de .NET SDK is het filterable standaard *uitgeschakeld* . U kunt een veld filterbaar maken door de [eigenschap IsFilterable](/dotnet/api/microsoft.azure.search.models.field.isfilterable) van het bijbehorende [veld](/dotnet/api/microsoft.azure.search.models.field) object in te stellen op `true` . U kunt dit ook declaratief doen met behulp van het [kenmerk IsFilterable](/dotnet/api/microsoft.azure.search.isfilterableattribute). In het onderstaande voor beeld is het kenmerk ingesteld op de `BaseRate` eigenschap van een model klasse die is toegewezen aan de index definitie.
+In de .NET SDK is het filterable standaard *uitgeschakeld* . U kunt een veld filterbaar maken door de [eigenschap IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) van het bijbehorende [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) -object in te stellen op `true` . In het onderstaande voor beeld is het kenmerk ingesteld op de `BaseRate` eigenschap van een model klasse die is toegewezen aan de index definitie.
 
 ```csharp
-    [IsFilterable, IsSortable, IsFacetable]
-    public double? BaseRate { get; set; }
+[IsFilterable, IsSortable, IsFacetable]
+public double? BaseRate { get; set; }
 ```
 
 ### <a name="making-an-existing-field-filterable"></a>Het maken van een bestaand veld filteren
@@ -160,7 +160,7 @@ Teken reeksen zijn hoofdletter gevoelig. Er bevindt zich geen kleine letters in 
 | Methode | Beschrijving | Wanneer gebruikt u dit? |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Een functie die overeenkomt met een veld in een gescheiden lijst met teken reeksen. | Aanbevolen voor [beveiligings filters](search-security-trimming-for-azure-search.md) en voor filters waarbij veel onbewerkte tekst waarden moeten overeenkomen met een teken reeks veld. De functie **Search.in** is ontworpen voor snelheid en is veel sneller dan expliciet het veld vergelijken met de teken reeks met behulp van `eq` en `or` . | 
-| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Een functie waarmee u Zoek opdrachten in volledige tekst kunt combi neren met strikt Booleaanse filter bewerkingen in dezelfde filter-expressie. | Gebruik **Search. ismatch** (of het equivalente Score-item **Search. ismatchscoring**) als u meerdere zoek filter combinaties wilt gebruiken in één aanvraag. U kunt deze ook voor een *contains* -filter gebruiken om te filteren op een gedeeltelijke teken reeks binnen een grotere teken reeks. |
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Een functie waarmee u Zoek opdrachten in volledige tekst kunt combi neren met strikt Booleaanse filter bewerkingen in dezelfde filter-expressie. | Gebruik **Search. ismatch** (of het equivalente Score-item **Search. ismatchscoring** ) als u meerdere zoek filter combinaties wilt gebruiken in één aanvraag. U kunt deze ook voor een *contains* -filter gebruiken om te filteren op een gedeeltelijke teken reeks binnen een grotere teken reeks. |
 | [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Een door de gebruiker gedefinieerde expressie die bestaat uit velden, Opera tors en waarden. | Gebruik deze instelling als u exacte overeenkomsten wilt zoeken tussen een teken reeks veld en een teken reeks waarde. |
 
 ## <a name="numeric-filter-fundamentals"></a>Basis beginselen van numerieke filters
@@ -200,6 +200,6 @@ Als u meer voor beelden wilt gebruiken, raadpleegt u de syntaxis van de [OData-f
 
 + [Hoe zoeken in de volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)
 + [REST API voor documenten zoeken](/rest/api/searchservice/search-documents)
-+ [Vereenvoudigde querysyntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Eenvoudige query syntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene-query syntaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [Ondersteunde gegevenstypen](/rest/api/searchservice/supported-data-types)

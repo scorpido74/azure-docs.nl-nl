@@ -5,29 +5,31 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/6/2020
+ms.openlocfilehash: 2f9c4cc5bac27e4734c9aabe7895002a045d583d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272080"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357008"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Trage query Logboeken in Azure Database for MariaDB
 In Azure Database for MariaDB is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
 
 Zie de MariaDB-documentatie voor [langzame query logboeken](https://mariadb.com/kb/en/library/slow-query-log-overview/)voor meer informatie over het langzame query logboek.
 
+Wanneer [query Store](concepts-query-store.md) is ingeschakeld op uw server, ziet u mogelijk de query's zoals " `CALL mysql.az_procedure_collect_wait_stats (900, 30);` " vastgelegd in uw logboeken met trage query's. Dit gedrag wordt verwacht, omdat de functie query archief statistieken over uw query's verzamelt. 
+
 ## <a name="configure-slow-query-logging"></a>Langzame query logboek registratie configureren
 Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt `slow_query_log` u in op aan. Dit kan worden ingeschakeld met behulp van de Azure Portal of Azure CLI. 
 
 Andere para meters die u kunt aanpassen zijn onder andere:
 
-- **long_query_time**: als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaardinstelling is 10 seconden.
-- **log_slow_admin_statements**: als u beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies bevat die naar de slow_query_log zijn geschreven.
-- **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
-- **log_throttle_queries_not_using_indexes**: deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
-- **log_output**: als ' bestand ' is, kan het langzame query logboek worden geschreven naar zowel de lokale server opslag als Azure monitor Diagnostische logboeken. Als 'None' wordt opgegeven, wordt het logboek voor trage query's alleen naar Diagnostische logboeken van Azure Monitor geschreven. 
+- **long_query_time** : als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaardinstelling is 10 seconden.
+- **log_slow_admin_statements** : als u beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies bevat die naar de slow_query_log zijn geschreven.
+- **log_queries_not_using_indexes** : bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
+- **log_throttle_queries_not_using_indexes** : deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
+- **log_output** : als ' bestand ' is, kan het langzame query logboek worden geschreven naar zowel de lokale server opslag als Azure monitor Diagnostische logboeken. Als 'None' wordt opgegeven, wordt het logboek voor trage query's alleen naar Diagnostische logboeken van Azure Monitor geschreven. 
 
 > [!IMPORTANT]
 > Als uw tabellen niet zijn geïndexeerd, kan het `log_queries_not_using_indexes` instellen `log_throttle_queries_not_using_indexes` van de para meters op in de prestaties van MariaDB beïnvloeden omdat alle query's die worden uitgevoerd op deze niet-geïndexeerde tabellen, worden geschreven naar het logboek voor langzame query's.<br><br>

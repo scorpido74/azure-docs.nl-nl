@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85f14329359eaf051b992f657ac0e4e634d504cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb8d578c05166f88ed7e91681dd6b5f15b1e3e5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020827"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358640"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Gelijktijdigheid beheren in azure Cognitive Search
 
@@ -30,7 +30,7 @@ Optimistische gelijktijdigheid wordt geïmplementeerd via controle van toegangs 
 Alle resources hebben een [*entity tag (ETAG)*](https://en.wikipedia.org/wiki/HTTP_ETag) die informatie over de object versie bevat. Door de ETag eerst te controleren, kunt u gelijktijdige updates voor komen in een normale werk stroom (Get, Modify lokaal, update) door ervoor te zorgen dat de resource ETag overeenkomt met uw lokale kopie.
 
 + De REST API gebruikt een [ETAG](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) op de aanvraag header.
-+ De .NET SDK stelt de ETag in via een accessCondition-object, waarbij de [if-match | If-match-geen-header](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) voor de resource. Elk object dat wordt overgenomen van [IResourceWithETag (.NET SDK)](/dotnet/api/microsoft.azure.search.models.iresourcewithetag) heeft een accessCondition-object.
++ De .NET SDK stelt de ETag in via een accessCondition-object, waarbij de [if-match | If-match-geen-header](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) voor de resource. Objecten die gebruikmaken van ETags, zoals [SynonymMap. ETAG](/dotnet/api/azure.search.documents.indexes.models.synonymmap.etag) en [SearchIndex. ETAG](/dotnet/api/azure.search.documents.indexes.models.searchindex.etag), hebben een accessCondition-object.
 
 Telkens wanneer u een resource bijwerkt, wordt de ETag automatisch gewijzigd. Wanneer u gelijktijdigheids beheer implementeert, hoeft u alleen maar een voor waarde voor de update aanvraag te plaatsen waarvoor de externe resource dezelfde ETag moet hebben als de kopie van de resource die u op de client hebt gewijzigd. Als een gelijktijdig proces de externe resource al heeft gewijzigd, komt de ETag niet overeen met de voor waarde en mislukt de aanvraag met HTTP 412. Als u de .NET SDK gebruikt, wordt dit manifest als een `CloudException` locatie waar de `IsAccessConditionFailed()` extensie methode True retourneert.
 

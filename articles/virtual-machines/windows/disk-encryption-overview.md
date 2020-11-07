@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea82724ec534aa896fa012332c10e28050caf825
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 27d962a2cf1a1c453d942d320d65b3e9b9a4b959
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909383"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357790"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption voor Windows-Vm's 
 
@@ -39,6 +39,8 @@ Azure Disk Encryption is ook beschikbaar voor virtuele machines met Premium Stor
 
 Azure Disk Encryption is niet beschikbaar op [virtuele machines van de 2e generatie](../generation-2.md#generation-1-vs-generation-2-capabilities). Zie [Azure Disk Encryption: niet-ondersteunde scenario's](disk-encryption-windows.md#unsupported-scenarios)voor meer uitzonde ringen.
 
+Azure Disk Encryption is niet beschikbaar op VM-installatie kopieën zonder tijdelijke schijven (Dv4, Dsv4, Ev4 en Esv4).  Zie [Azure VM-grootten zonder lokale tijdelijke schijf](../azure-vms-no-temp-disk.md).
+
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
 - Windows-client: Windows 8 en hoger.
@@ -50,7 +52,7 @@ Azure Disk Encryption is niet beschikbaar op [virtuele machines van de 2e genera
 > Windows Server 2012 R2 core en Windows Server 2016 core vereist dat het onderdeel bdehdcfg op de virtuele machine wordt geïnstalleerd voor versleuteling.
 
 
-## <a name="networking-requirements"></a>Netwerk vereisten
+## <a name="networking-requirements"></a>Netwerkvereisten
 Om Azure Disk Encryption in te scha kelen, moeten de virtuele machines voldoen aan de volgende vereisten voor netwerk eindpunt configuratie:
   - Om een token te krijgen om verbinding te maken met uw sleutel kluis, moet de Windows-VM verbinding kunnen maken met een Azure Active Directory-eind punt, \[ login.microsoftonline.com \] .
   - Voor het schrijven van de versleutelings sleutels naar uw sleutel kluis moet de Windows-VM verbinding kunnen maken met het eind punt van de sleutel kluis.

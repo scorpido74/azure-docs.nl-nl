@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530558"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358623"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL-inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
 
@@ -39,10 +39,10 @@ Eén Indexeer functie kan slechts één tabel of weer gave gebruiken, maar u kun
 U kunt een Azure SQL-indexer instellen en configureren met:
 
 * Wizard gegevens importeren in de [Azure Portal](https://portal.azure.com)
-* Azure Cognitive Search [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 * Azure Cognitive Search [rest API](/rest/api/searchservice/indexer-operations)
 
-In dit artikel gebruiken we de REST API om **Indexeer functies** en **gegevens bronnen**te maken.
+In dit artikel gebruiken we de REST API om **Indexeer functies** en **gegevens bronnen** te maken.
 
 ## <a name="when-to-use-azure-sql-indexer"></a>Wanneer u Azure SQL Indexeer functie wilt gebruiken
 Afhankelijk van verschillende factoren die betrekking hebben op uw gegevens, is het gebruik van Azure SQL Indexeer functie mogelijk of niet geschikt. Als uw gegevens aan de volgende vereisten voldoen, kunt u Azure SQL Indexeer functie gebruiken.
@@ -176,7 +176,7 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 Azure Cognitive Search gebruikt **incrementele indexering** om te voor komen dat de volledige tabel of weer gave telkens opnieuw moet worden geïndexeerd wanneer een Indexeer functie wordt uitgevoerd. Azure Cognitive Search biedt twee beleids regels voor wijzigingen detectie ter ondersteuning van incrementele indexering. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Wijzigingen bijhouden-beleid voor SQL-integratie
-Als uw SQL database het [bijhouden van wijzigingen](/sql/relational-databases/track-changes/about-change-tracking-sql-server)ondersteunt, kunt u het beste **SQL Integrated wijzigingen bijhouden-beleid**gebruiken. Dit is het meest efficiënte beleid. Daarnaast kunt u met Azure Cognitive Search verwijderde rijen identificeren zonder dat u een expliciete kolom ' voorlopig verwijderen ' aan de tabel hoeft toe te voegen.
+Als uw SQL database het [bijhouden van wijzigingen](/sql/relational-databases/track-changes/about-change-tracking-sql-server)ondersteunt, kunt u het beste **SQL Integrated wijzigingen bijhouden-beleid** gebruiken. Dit is het meest efficiënte beleid. Daarnaast kunt u met Azure Cognitive Search verwijderde rijen identificeren zonder dat u een expliciete kolom ' voorlopig verwijderen ' aan de tabel hoeft toe te voegen.
 
 #### <a name="requirements"></a>Vereisten 
 
@@ -316,7 +316,7 @@ De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks r
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Toewijzing tussen SQL-en Azure Cognitive Search-gegevens typen
-| SQL-gegevenstype | Toegestane doel index veld typen | Notities |
+| SQL-gegevenstype | Toegestane doel index veld typen | Opmerkingen |
 | --- | --- | --- |
 | bit |EDM. Boolean, EDM. String | |
 | int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |

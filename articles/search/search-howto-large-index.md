@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 081f073fa4933d67604173d2169a7abdc3ac7c3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403565"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358389"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevens sets indexeren in azure Cognitive Search
 
@@ -27,7 +27,7 @@ In de volgende secties worden technieken besproken voor het indexeren van grote 
 
 ## <a name="use-the-push-api"></a>De Push-API gebruiken
 
-Bij het pushen van gegevens naar een index met behulp van de [rest API documenten toevoegen](/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index), zijn er verschillende belang rijke aandachtspunten die van invloed zijn op de indexerings snelheid. Deze factoren worden beschreven in de sectie hieronder en bereik van het instellen van service capaciteit op code optimalisaties.
+Bij het pushen van gegevens naar een index met behulp van de [rest API documenten toevoegen](/rest/api/searchservice/addupdate-or-delete-documents) of de [methode IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments)zijn er verschillende belang rijke aandachtspunten die van invloed zijn op de indexerings snelheid. Deze factoren worden beschreven in de sectie hieronder en bereik van het instellen van service capaciteit op code optimalisaties.
 
 Zie [zelf studie: Optimaliseer de indexerings snelheden](tutorial-optimize-indexing-push-api.md)voor meer informatie en code voorbeelden die het indexeren van push modellen illustreren.
 
@@ -45,14 +45,14 @@ Zodra u tevreden bent met de laag, kan de volgende stap het aantal partities ver
 
 ### <a name="review-index-schema"></a>Het index schema controleren
 
-Het schema van uw index speelt een belang rijke rol bij het indexeren van gegevens. Hoe meer velden u hebt, en hoe meer eigenschappen u hebt ingesteld (zoals *doorzoekbaar*, *facetel*of *filterbaar*), alle bijdragen tot een verhoogde indexerings tijd. In het algemeen moet u alleen de velden maken en opgeven die u daad werkelijk nodig hebt in een zoek index.
+Het schema van uw index speelt een belang rijke rol bij het indexeren van gegevens. Hoe meer velden u hebt, en hoe meer eigenschappen u hebt ingesteld (zoals *doorzoekbaar* , *facetel* of *filterbaar* ), alle bijdragen tot een verhoogde indexerings tijd. In het algemeen moet u alleen de velden maken en opgeven die u daad werkelijk nodig hebt in een zoek index.
 
 > [!NOTE]
 > Voorkom dat de document grootte kleiner wordt door niet-query bare gegevens toe te voegen aan een index. Afbeeldingen en andere binaire gegevens kunnen niet rechtstreeks worden doorzocht en mogen niet worden opgeslagen in de index. Als u niet-query bare gegevens wilt integreren in Zoek resultaten, moet u een niet-doorzoekbaar veld definiëren waarin een URL-verwijzing naar de resource wordt opgeslagen.
 
 ### <a name="check-the-batch-size"></a>De Batch grootte controleren
 
-Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u gebruikmaakt van de [rest API documenten toevoegen](/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index) in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
+Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u de methode [documenten toevoegen rest API](/rest/api/searchservice/addupdate-or-delete-documents) of [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) gebruikt in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
 
 Door batches te gebruiken om documenten te indexeren, worden de index prestaties aanzienlijk verbeterd. Het vaststellen van de optimale batchgrootte voor uw gegevens is een belangrijk onderdeel van voor het optimaliseren van de indexeringssnelheid. De twee primaire factoren die van invloed zijn op de optimale batchgrootte zijn:
 
@@ -79,8 +79,8 @@ U kunt dit voorbeeld wijzigen en testen met verschillende aantallen threads om h
 
 Wanneer u de aanvragen van de zoekservice verhoogt, kunnen er [HTTP-statuscodes](/rest/api/searchservice/http-status-codes) optreden die aangeven dat de aanvraag niet volledig is voltooid. Twee veelvoorkomende HTTP-statuscodes die zich tijdens het indexeren kunnen voordoen, zijn:
 
-+ **503: service niet beschikbaar**: deze fout betekent dat het systeem zwaar belast wordt en uw aanvraag op dit moment niet kan worden verwerkt.
-+ **207: meerdere statussen**: deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
++ **503: service niet beschikbaar** : deze fout betekent dat het systeem zwaar belast wordt en uw aanvraag op dit moment niet kan worden verwerkt.
++ **207: meerdere statussen** : deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
 
 ### <a name="retry-strategy"></a>Strategie voor opnieuw proberen
 
@@ -142,7 +142,7 @@ Voor Indexeer functies is de verwerkings capaciteit soepel gebaseerd op één in
 
 1. Controleer in de [Azure Portal](https://portal.azure.com)op de pagina **overzicht** van het zoek service dashboard de **prijs categorie** om te bevestigen dat deze parallelle indexering kan bevatten. De lagen basis en standaard bieden meerdere replica's.
 
-2. U kunt zoveel Indexeer functies tegelijk uitvoeren als het aantal Zoek eenheden in uw service. **Settings**  >  [Verg root](search-capacity-planning.md) de**schaal**van replica's of partities voor parallelle verwerking in instellingen schalen: een extra replica of partitie voor elke Indexeer functie-workload. Geef een voldoende waarde voor het bestaande query volume. Het voldoet niet aan query werkbelastingen voor indexering is geen goede balans.
+2. U kunt zoveel Indexeer functies tegelijk uitvoeren als het aantal Zoek eenheden in uw service. **Settings**  >  [Verg root](search-capacity-planning.md) de **schaal** van replica's of partities voor parallelle verwerking in instellingen schalen: een extra replica of partitie voor elke Indexeer functie-workload. Geef een voldoende waarde voor het bestaande query volume. Het voldoet niet aan query werkbelastingen voor indexering is geen goede balans.
 
 3. Distribueer gegevens in meerdere containers op een niveau dat door Azure Cognitive Search Indexeer functies kan worden bereikt. Dit kan meerdere tabellen zijn in Azure SQL Database, meerdere containers in Azure Blob Storage of meerdere verzamelingen. Definieer één gegevens bron object voor elke tabel of container.
 

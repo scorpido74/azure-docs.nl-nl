@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: dd5a0e05b303d6fc7a5cfa012f49fab99828e8a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 4f230a70ae87c7c0ec9db347e7cf975c0252bb18
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300068"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357807"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Zelf studie: Brivo OnAir Identity connector configureren voor het automatisch inrichten van gebruikers
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Brivo OnAir Identity connector om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Brivo OnAir Identity connector, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Brivo OnAir Identity connector, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>Brivo OnAir-identiteits connector instellen voor inrichting
 
@@ -58,7 +58,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
    ![Brivo OnAir Identity connector Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3. Klik op de knop **token kopiëren** en sla het **geheime token**op. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw Brivo OnAir Identity connector-toepassing in de Azure Portal.
+3. Klik op de knop **token kopiëren** en sla het **geheime token** op. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw Brivo OnAir Identity connector-toepassing in de Azure Portal.
 
    ![Brivo OnAir Identity connector-token](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
@@ -80,7 +80,7 @@ Voordat u Brivo OnAir Identity connector configureert voor het automatisch inric
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Brivo OnAir Identity connector**, selecteer **Brivo OnAir Identity connector** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Brivo OnAir Identity connector** , selecteer **Brivo OnAir Identity connector** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![Brivo OnAir Identity connector in de lijst met resultaten](common/search-new-app.png)
 

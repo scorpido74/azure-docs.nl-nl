@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: troubleshooting
-ms.date: 01/30/2020
+ms.date: 11/06/2020
 ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8fb891d5a47203c9905a7def9d04199d24327f70
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909638"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357246"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -42,7 +42,7 @@ Aanvragen voor IoT Hub mislukken met een van de volgende fout berichten:
 
 ### <a name="cause-1"></a>Oorzaak 1
 
-Voor MQTT zijn sommige Sdk's afhankelijk van IoT Hub om de verbinding te verbreken wanneer het SAS-token verloopt om te weten wanneer het moet worden vernieuwd. Dus 
+Voor MQTT zijn sommige Sdk's afhankelijk van IoT Hub om de verbinding te verbreken wanneer het SAS-token verloopt om te weten wanneer het moet worden vernieuwd. Dus
 
 1. Het SAS-token verloopt
 1. IoT Hub het verlopen van het apparaat en het verbreken van de verbinding met **401003 IoTHubUnauthorized**
@@ -58,9 +58,11 @@ IoT Hub kan de Authentication Header, regel of sleutel niet verifiëren. Dit kan
 
 ### <a name="solution-1"></a>Oplossing 1
 
-Er is geen actie nodig als u IoT SDK gebruikt voor verbinding met behulp van het apparaat connection string. IoT SDK genereert het nieuwe token opnieuw om opnieuw verbinding te maken met de verval datum van SAS-tokens. 
+Er is geen actie nodig als u IoT SDK gebruikt voor verbinding met behulp van het apparaat connection string. IoT SDK genereert het nieuwe token opnieuw om opnieuw verbinding te maken met de verval datum van SAS-tokens.
 
-Als het fouten volume een probleem is, gaat u naar de C-SDK, waarmee het SAS-token wordt vernieuwd voordat het verloopt. Daarnaast kan voor AMQP het SAS-token worden vernieuwd zonder de verbinding te verbreken.
+De standaard levens duur van tokens is 60 minuten voor de Sdk's; voor sommige Sdk's kan echter de levens duur van het token en de drempel waarde voor het vernieuwen van tokens worden geconfigureerd. Bovendien verschillen de fouten die worden gegenereerd wanneer een apparaat wordt losgekoppeld en opnieuw verbinding maakt met het vernieuwen van tokens voor elke SDK. Zie MQTT voor meer informatie over hoe u kunt bepalen welke SDK uw apparaat in Logboeken gebruikt, Raadpleeg het [gedrag voor het verbreken van apparaten met Azure IOT sdk's](iot-hub-troubleshoot-connectivity.md#mqtt-device-disconnect-behavior-with-azure-iot-sdks).
+
+Als het fouten volume een probleem is, kunt u voor ontwikkel aars van het apparaat overschakelen naar de C SDK, waarmee het SAS-token wordt vernieuwd voordat het verloopt. Voor AMQP kan het SAS-token worden vernieuwd zonder de verbinding te verbreken.
 
 ### <a name="solution-2"></a>Oplossing 2
 

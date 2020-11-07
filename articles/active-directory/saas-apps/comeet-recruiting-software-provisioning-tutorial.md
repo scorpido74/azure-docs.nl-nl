@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 37a446d721b7353c647d7d7e26de79e7038d1a3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 288d1e6cec8ddcf7d4afe5a35f28a022c2a7be10
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299902"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357059"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Zelf studie: coontmoeting software configureren voor het automatisch inrichten van gebruikers
 
@@ -53,7 +53,7 @@ Voordat u de functie voor het maken van een coadering-software configureert voor
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak mede **ontmoet wervings software**in, selecteer deel nemen **aan wervings software** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Voer in het zoekvak mede **ontmoet wervings software** in, selecteer deel nemen **aan wervings software** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![Comeet Recruiting Software in de lijst met resultaten](common/search-new-app.png)
 
@@ -69,7 +69,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te passen aan de wervings software om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst om aan wervings software te voldoen, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst om aan wervings software te voldoen, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>Automatische gebruikers inrichting configureren om te voldoen aan wervings software 
 
@@ -98,7 +98,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. In het gedeelte **beheerders referenties** voert u de **Tenant-URL** en het **geheime token** in van uw mede ontmoet het account van de wervings software, zoals beschreven in stap 6.
 
-6. Navigeer in de [beheer console van de wervings software](https://app.comeet.co/)op basis van  **>-instellingen > verificatie > Microsoft Azure**en kopieer het **geheime token voor de waarde van het bedrijf** naar het veld **geheime token** in azure AD.
+6. Navigeer in de [beheer console van de wervings software](https://app.comeet.co/)op basis van  **>-instellingen > verificatie > Microsoft Azure** en kopieer het **geheime token voor de waarde van het bedrijf** naar het veld **geheime token** in azure AD.
 
     ![Tegemoetkomen aan wervings software inrichten](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 

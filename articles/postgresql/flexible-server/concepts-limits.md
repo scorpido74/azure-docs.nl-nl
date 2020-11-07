@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1405bce6761b6702146418296cb7b47bb9124ee
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936605"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357178"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Limieten in Azure Database for PostgreSQL flexibele server
 
@@ -73,10 +73,12 @@ Een PostgreSQL-verbinding, zelfs inactief, kan ongeveer 10 MB aan geheugen in be
 - Firewall regels worden niet ondersteund op VNET. in plaats daarvan kunnen netwerk beveiligings groepen worden gebruikt.
 - Open bare toegang database servers kunnen verbinding maken met openbaar Internet, bijvoorbeeld via `postgres_fdw` , en deze toegang kan niet worden beperkt. Op VNET gebaseerde servers kunnen beperkte uitgaande toegang hebben met behulp van netwerk beveiligings groepen.
 
-### <a name="high-availability"></a>Hoge beschikbaarheid
+### <a name="high-availability-ha"></a>Hoge Beschik baarheid (HA)
 
 - Zone-Redundant HA wordt momenteel niet ondersteund voor breek bare servers.
 - Het IP-adres van de database server wordt gewijzigd wanneer een failover van de server naar de stand-by-modus wordt uitgevoerd. Zorg ervoor dat u de DNS-record gebruikt in plaats van het IP-adres van de server.
+- Als logische replicatie is geconfigureerd met een met HA geconfigureerde flexibele server, in het geval van een failover naar de stand-by-server, worden de logische replicatie sleuven niet naar de stand-by-server gekopieerd. 
+- Raadpleeg de pagina [concepten-ha documentation](concepts-high-availability.md) (Engelstalig) voor meer informatie over de beperkingen van de ha.
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones
 

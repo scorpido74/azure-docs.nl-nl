@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b789bf01a043b167d6740f09df935d9b683c48f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447210"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357756"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Het patch schema voor het besturings systeem configureren voor HDInsight-clusters op basis van Linux
 
@@ -64,7 +64,7 @@ Het `install-updates-schedule-reboots` script accepteert twee numerieke para met
 
 | Parameter | Geaccepteerde waarden | Definitie |
 | --- | --- | --- |
-| Type updates die moeten worden geïnstalleerd | 0, 1 of 2 | Met de waarde 0 worden alleen kernel-updates geïnstalleerd. Met de waarde 1 worden alle updates geïnstalleerd en 2 worden alleen kernel + beveiligings updates geïnstalleerd. Als er geen para meter wordt gegeven, is de standaard waarde 0. |
+| Type updates die moeten worden geïnstalleerd | 0, 1 of 2 | Met de waarde 0 worden alleen kernel-updates geïnstalleerd. Een waarde van 1 installeert kernel + beveiligings updates en 2 installeert alle updates. Als er geen para meter wordt gegeven, is de standaard waarde 0. |
 | Type opnieuw opstarten om uit te voeren | 0, 1 of 2 | Met de waarde 0 wordt opnieuw opstarten uitgeschakeld. Met de waarde 1 wordt het opnieuw starten van de planning ingeschakeld en 2 wordt direct opnieuw opgestart. Als er geen para meter wordt gegeven, is de standaard waarde 0. De gebruiker moet invoer parameter 1 wijzigen in invoer parameter 2. |
 
 > [!NOTE]

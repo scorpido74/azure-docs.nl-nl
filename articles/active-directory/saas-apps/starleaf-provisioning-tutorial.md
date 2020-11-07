@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: bf75c4fe2053483b94c5f645816422909645854a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 07c476c0de644ac63c577d466f4691b5cf415334
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285938"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357928"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Zelf studie: StarLeaf configureren voor automatische gebruikers inrichting
 
@@ -44,7 +44,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan StarLeaf om de configuratie van automatische gebruikers inrichting te testen. U kunt later extra gebruikers en groepen toewijzen.
 
-* Wanneer u een gebruiker toewijst aan StarLeaf, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaardtoegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan StarLeaf, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaard toegang worden uitgesloten van het inrichten.
 
 ## <a name="set-up-starleaf-for-provisioning"></a>StarLeaf instellen voor inrichting
 
@@ -54,7 +54,7 @@ Voordat u StarLeaf configureert voor het automatisch inrichten van gebruikers me
 
     ![Scherm opname van de StarLeaf-beheer console met de integraties en het toevoegen van integratie opties.](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Selecteer het **type** dat moet worden Microsoft Azure Active Directory. Voer een passende naam in **naam**in. Klik op **Toepassen**.
+2. Selecteer het **type** dat moet worden Microsoft Azure Active Directory. Voer een passende naam in **naam** in. Klik op **Toepassen**.
 
     ![Scherm afbeelding van het dialoog venster integratie toevoegen met de tekst vakken type en naam.](media/starleaf-provisioning-tutorial/image01.png)
 
@@ -80,7 +80,7 @@ Als u StarLeaf wilt configureren voor het automatisch inrichten van gebruikers m
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **StarLeaf**in het zoekvak en selecteer **StarLeaf** in het deel venster resultaten.
+4. Typ **StarLeaf** in het zoekvak en selecteer **StarLeaf** in het deel venster resultaten.
     ![StarLeaf in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Automatische gebruikers inrichting configureren voor StarLeaf
@@ -146,7 +146,7 @@ Voor meer informatie over het lezen van de Azure AD-inrichtings logboeken raadpl
 * StarLeaf biedt momenteel geen ondersteuning voor het inrichten van groepen. 
 * StarLeaf vereist dat de waarden voor **e-mail** en **gebruikers naam** dezelfde bron waarde hebben.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

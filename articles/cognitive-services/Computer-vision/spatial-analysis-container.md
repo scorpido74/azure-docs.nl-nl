@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496129"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357110"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>De container voor ruimtelijke analyse installeren en uitvoeren (preview-versie)
 
@@ -105,13 +105,13 @@ Ruimtelijke analyse maakt gebruik van de reken functies van de Azure Stack Edge 
 
 ### <a name="set-up-an-edge-compute-role-and-create-an-iot-hub-resource"></a>Een Edge Compute Role instellen en een IoT Hub resource maken
 
-Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw Azure stack Edge-resource. Klik op de pagina **overzicht** of navigatie lijst op de knop rand berekening **aan de slag** . Klik in de tegel **Edge Compute configureren**   op **configureren**. 
+Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw Azure stack Edge-resource. Klik op de pagina **overzicht** of navigatie lijst op de knop rand berekening **aan de slag** . Klik in de tegel  **Edge Compute configureren**   op **configureren**. 
 
 ![Koppeling](media/spatial-analysis/configure-edge-compute-tile.png)
 
 Kies op de pagina **rand berekening configureren**   een bestaand IOT hub of kies ervoor om een nieuw item te maken. Standaard wordt een standaard prijs categorie (S1) gebruikt voor het maken van een IoT Hub bron. Als u een gratis laag IoT Hub resource wilt gebruiken, maakt u er een en selecteert u deze. De IoT Hub resource gebruikt hetzelfde abonnement en dezelfde resource groep die wordt gebruikt door de resource Azure Stack Edge 
 
-Klik op **Maken**. Het maken van IoT Hub bronnen kan een paar minuten duren. Nadat de IoT Hub resource is gemaakt, wordt de tegel **Edge Compute** bijgewerkt om de nieuwe configuratie weer te geven. Als u wilt bevestigen dat de rol Edge Compute is geconfigureerd, selecteert u **configuratie weer geven** op de tegel **Compute configureren**   .
+Klik op **Create**. Het maken van IoT Hub bronnen kan een paar minuten duren. Nadat de IoT Hub resource is gemaakt, wordt de tegel **Edge Compute** bijgewerkt om de nieuwe configuratie weer te geven. Als u wilt bevestigen dat de rol Edge Compute is geconfigureerd, selecteert u **configuratie weer geven** op de tegel **Compute configureren**   .
 
 Wanneer de Edge-rekenprocesrol wordt geconfigureerd op het Edge-apparaat, worden er twee apparaten aangemaakt: een IoT-apparaat en een IoT Edge-apparaat. Beide apparaten kunnen worden weergegeven in de IoT Hub-resource. De Azure IoT Edge runtime wordt al uitgevoerd op het IoT Edge apparaat.            
 
@@ -289,7 +289,7 @@ sudo apt-get update
 Installeer de 1.0.9-release:
 
 ```bash
-sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
 Registreer vervolgens de hostcomputer als IoT Edge apparaat in uw IoT Hub-exemplaar met behulp van een [Connection String](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal).
@@ -322,7 +322,7 @@ In de volgende tabel ziet u de verschillende omgevings variabelen die worden geb
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | Valuta Uitgebreide | Logboek registratie niveau, selecteer een van de twee waarden|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | Niet wijzigen|
-| ARCHON_PERF_MARKER| false| Stel deze waarde in op True voor prestatie logboek registratie, anders moet dit onwaar zijn| 
+| ARCHON_PERF_MARKER| onjuist| Stel deze waarde in op True voor prestatie logboek registratie, anders moet dit onwaar zijn| 
 | ARCHON_NODES_LOG_LEVEL | Valuta Uitgebreide | Logboek registratie niveau, selecteer een van de twee waarden|
 | OMP_WAIT_POLICY | Pass | Niet wijzigen|
 | QT_X11_NO_MITSHM | 1 | Niet wijzigen|
@@ -381,7 +381,7 @@ U kunt ruimtelijke analyse gebruiken met zowel opgenomen als live video. Als u r
     1. **Beveiligde overdracht moet** worden gewijzigd in **uitgeschakeld**
     2. **Open bare BLOB-toegang** tot **ingeschakeld** wijzigen toestaan
 
-Navigeer naar het gedeelte **container** en maak een nieuwe container of gebruik een bestaande. Upload het video bestand vervolgens naar de container. Vouw de bestands instellingen voor het geüploade bestand uit en selecteer **Sa's genereren**. Zorg ervoor dat u de **verval datum** lang genoeg instelt om de test periode te bedekken. **Toegestane protocollen** instellen op *http* (*https* wordt niet ondersteund).
+Navigeer naar het gedeelte **container** en maak een nieuwe container of gebruik een bestaande. Upload het video bestand vervolgens naar de container. Vouw de bestands instellingen voor het geüploade bestand uit en selecteer **Sa's genereren**. Zorg ervoor dat u de **verval datum** lang genoeg instelt om de test periode te bedekken. **Toegestane protocollen** instellen op *http* ( *https* wordt niet ondersteund).
 
 Klik op **SAS-token en URL genereren** en kopieer de URL van de BLOB-SAS. Vervang het begin `https` door `http` en test de URL in een browser die het afspelen van video ondersteunt.
 
