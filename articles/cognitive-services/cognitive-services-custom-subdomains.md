@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83590635"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368811"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Aangepaste subdomein namen voor Cognitive Services
 
-In azure Cognitive Services worden aangepaste subdomein namen gebruikt voor elke resource die via de [Azure Portal](https://portal.azure.com), [Azure Cloud shell](https://azure.microsoft.com/features/cloud-shell/)of de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)is gemaakt. In tegens telling tot regionale eind punten, die gemeen schappelijk zijn voor alle klanten in een specifieke Azure-regio, zijn aangepaste subdomein namen uniek voor de resource. Aangepaste subdomein namen zijn vereist om functies als Azure Active Directory (Azure AD) voor verificatie in te scha kelen.
+In azure Cognitive Services worden aangepaste subdomein namen gebruikt voor elke resource die via de [Azure Portal](https://portal.azure.com), [Azure Cloud shell](https://azure.microsoft.com/features/cloud-shell/)of de [Azure cli](/cli/azure/install-azure-cli)is gemaakt. In tegens telling tot regionale eind punten, die gemeen schappelijk zijn voor alle klanten in een specifieke Azure-regio, zijn aangepaste subdomein namen uniek voor de resource. Aangepaste subdomein namen zijn vereist om functies als Azure Active Directory (Azure AD) voor verificatie in te scha kelen.
 
 ## <a name="how-does-this-impact-existing-resources"></a>Hoe beïnvloedt dit de bestaande resources?
 
@@ -27,7 +27,7 @@ Cognitive Services resources die zijn gemaakt voor 1 juli 2019, zullen de region
 Als u een bestaande resource wilt migreren om aangepaste subdomeinen te gebruiken, zodat u functies als Azure AD kunt inschakelen, volgt u deze instructies:
 
 1. Meld u aan bij de Azure Portal en zoek de Cognitive Services resource waaraan u een aangepast subdomein naam wilt toevoegen.
-2. Zoek op de Blade **overzicht** de optie **aangepaste domein naam genereren**en selecteer deze.
+2. Zoek op de Blade **overzicht** de optie **aangepaste domein naam genereren** en selecteer deze.
 3. Hiermee opent u een deel venster met instructies voor het maken van een uniek aangepast subdomein voor uw resource.
    > [!WARNING]
    > Nadat u een aangepaste subdomeinnaam hebt gemaakt, **kan deze niet meer** worden gewijzigd.
@@ -68,7 +68,7 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 > [!NOTE]
 > De Translator-service en Bing Zoeken-API's globale eind punten gebruiken.
 
-| Eindpunttype | Regio | Eindpunt |
+| Eindpunttype | Region | Eindpunt |
 |---------------|--------|----------|
 | Openbaar | Global (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Australië - oost | `https://australiaeast.api.cognitive.microsoft.com` |
@@ -80,12 +80,12 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 | | VS - oost 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Frankrijk - centraal | `https://francecentral.api.cognitive.microsoft.com` |
 | | India - centraal | `https://centralindia.api.cognitive.microsoft.com` |
-| | Japan East | `https://japaneast.api.cognitive.microsoft.com` |
+| | Japan - oost | `https://japaneast.api.cognitive.microsoft.com` |
 | | Korea - centraal | `https://koreacentral.api.cognitive.microsoft.com` |
 | | VS - noord-centraal | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Europa - noord | `https://northeurope.api.cognitive.microsoft.com` |
 | | Zuid-Afrika - noord | `https://southafricanorth.api.cognitive.microsoft.com` |
-| | South Central US | `https://southcentralus.api.cognitive.microsoft.com` |
+| | VS - zuid-centraal | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Azië - zuidoost | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Verenigd Koninkrijk Zuid | `https://uksouth.api.cognitive.microsoft.com` |
 | | VS - west-centraal | `https://westcentralus.api.cognitive.microsoft.com` |
@@ -98,5 +98,5 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat zijn de Cognitive Services?](Welcome.md)
+* [Wat zijn de Cognitive Services?](./what-are-cognitive-services.md)
 * [Verificatie](authentication.md)

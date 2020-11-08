@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090814"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367553"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Uw Bing Aangepaste zoekopdrachten-ervaring configureren
 
@@ -79,16 +79,16 @@ Nadat u Web Slices aan de **actieve** lijst hebt toegevoegd, worden door de Bing
 
 ## <a name="search-for-images-and-videos"></a>Zoeken naar afbeeldingen en Video's
 
-U kunt zoeken naar afbeeldingen en Video's, op dezelfde manier als webinhoud met behulp van de [Bing custom afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) of de [Bing Custom Video's zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). U kunt deze resultaten weer geven met de [gehoste gebruikers interface](hosted-ui.md)of de api's. 
+U kunt zoeken naar afbeeldingen en Video's, op dezelfde manier als webinhoud met behulp van de [Bing custom afbeeldingen zoeken-API](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) of de [Bing Custom Video's zoeken-API](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). U kunt deze resultaten weer geven met de [gehoste gebruikers interface](hosted-ui.md)of de api's. 
 
-Deze Api's zijn vergelijkbaar met de niet-aangepaste [Bing Image Search](../Bing-Image-Search/overview.md) en [Bing Video Search](../Bing-Video-Search/search-the-web.md) api's, maar doorzoeken het hele web en vereisen geen `customConfig` query parameter. Raadpleeg deze documentatie sets voor meer informatie over het werken met afbeeldingen en Video's. 
+Deze Api's zijn vergelijkbaar met de niet-aangepaste [Bing Image Search](../Bing-Image-Search/overview.md) en [Bing Video Search](../bing-video-search/overview.md) api's, maar doorzoeken het hele web en vereisen geen `customConfig` query parameter. Raadpleeg deze documentatie sets voor meer informatie over het werken met afbeeldingen en Video's. 
 
 ## <a name="test-your-search-instance-with-the-preview-pane"></a>Uw zoek exemplaar testen met het voorbeeld venster
 
 U kunt uw zoek opdracht testen met behulp van het voorbeeld venster op de rechter kant van de portal om Zoek query's te verzenden en de resultaten weer te geven. 
 
-1. Selecteer onder het zoekvak **mijn exemplaar** . U kunt de resultaten van uw zoek ervaring vergelijken met Bing door **Bing** te selecteren. 
-2. Selecteer een veilig zoek filter en welke markt u wilt zoeken (Zie [query parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
+1. Selecteer onder het zoekvak **mijn exemplaar**. U kunt de resultaten van uw zoek ervaring vergelijken met Bing door **Bing** te selecteren. 
+2. Selecteer een veilig zoek filter en welke markt u wilt zoeken (Zie [query parameters](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
 3. Voer een query in en druk op ENTER of klik op het zoek pictogram om de resultaten van de huidige configuratie weer te geven. U kunt het Zoek type dat u hebt uitgevoerd, wijzigen door op **Web** , **afbeelding** of **video** te klikken om de bijbehorende resultaten te verkrijgen. 
 
 <a name="adjustrank"></a>
@@ -125,7 +125,7 @@ U kunt op twee manieren een webpagina aan de bovenkant vastmaken:
 
 * Voer op het tabblad **vastgemaakt** de URL in van de webpagina die u aan de bovenkant wilt vastmaken en de bijbehorende query.
 
-* Voer in het deel venster **voor beeld** een zoek opdracht in en klik op zoeken. Zoek de webpagina die u wilt vastmaken voor uw query en klik op **vastmaken aan de bovenkant** . de webpagina en de query worden toegevoegd aan de lijst met **vastgemaakte** lijsten.
+* Voer in het deel venster **voor beeld** een zoek opdracht in en klik op zoeken. Zoek de webpagina die u wilt vastmaken voor uw query en klik op **vastmaken aan de bovenkant**. de webpagina en de query worden toegevoegd aan de lijst met **vastgemaakte** lijsten.
 
 ### <a name="specify-the-pins-match-condition"></a>De match-voor waarde voor de pincode opgeven
 
@@ -165,4 +165,4 @@ Als u zich op het juiste niveau hebt geabonneerd op een aangepaste zoek opdracht
 - [Aangepaste zoekopdrachten aanroepen](./search-your-custom-view.md)
 - [Gehoste UI-ervaring configureren](./hosted-ui.md)
 - [Decoratiemarkeringen gebruiken om tekst te markeren](../bing-web-search/hit-highlighting.md)
-- [Bladeren door webpagina's](./page-webpages.md)
+- [Bladeren door webpagina's](../bing-web-search/paging-search-results.md)

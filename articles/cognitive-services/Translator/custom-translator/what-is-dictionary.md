@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ff76e090e628a880290bb0e9f90026260de0c7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510756"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368981"
 ---
 # <a name="what-is-a-dictionary"></a>Wat is een woorden lijst?
 
 Een woorden lijst is een uitgelijnd paar documenten waarin een lijst met zinsdelen of zinnen en de bijbehorende vertalingen wordt opgegeven. Gebruik een woorden lijst in uw training als u wilt dat micro soft Translator altijd alle exemplaren van de bron woord groep of zin moet vertalen met behulp van de vertaling die u in de woorden lijst hebt gegeven. Woorden lijsten worden soms Glossaries of term bases genoemd. U kunt de woorden lijst beschouwen als een brute kracht ' kopiëren en vervangen ' voor alle termen die u vermeldt. Daarnaast bouwt micro soft Custom Translator service samen met een eigen woorden boek voor algemeen gebruik om de kwaliteit van de vertaling te verbeteren. Een door de klant verschafte woorden lijst heeft echter een broncel en zal eerst zoeken naar woorden of zinnen.
 
-Woorden boeken werken alleen voor projecten in taal paren met een volledig ondersteund micro soft General Neural-netwerk model achter de computers. [Bekijk de volledige lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Woorden boeken werken alleen voor projecten in taal paren met een volledig ondersteund micro soft General Neural-netwerk model achter de computers. [Bekijk de volledige lijst met talen](../language-support.md#customization).
 
 ## <a name="phrase-dictionary"></a>Woordgroepen lijst
 Woordgroepen woordenlijst is hoofdletter gevoelig. Het is een exacte Zoek-en vervang bewerking. Wanneer u een woordgroepen lijst in uw model hebt opgenomen, wordt een wille keurig woord of zinsdeel omgezet in de manier die u hebt opgegeven. De rest van de zin wordt op de gebruikelijke manier vertaald. U kunt een woordgroepen woordenlijst gebruiken om woord groepen op te geven die niet moeten worden vertaald door dezelfde niet-vertaalde woord groep te bieden in het bron-en doel bestand in de woorden lijst.

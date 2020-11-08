@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 41586b2ec96d30fd583cbc9a746493ed9206548b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28bc07cadf9ffea56059755e243cb3e828077588
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510739"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368964"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Wat is een aangepaste Translator-werk ruimte?
 
@@ -25,7 +25,7 @@ De werk ruimte is persoonlijk voor u en de personen die u uitnodigt in uw werk r
 
 ## <a name="what-is-a-custom-translator-project"></a>Wat is een aangepast Vertaal project?
 
-Een project is een wrapper voor een model, documenten en tests. Elk project bevat automatisch alle documenten die naar die werk ruimte worden geüpload die het juiste taal paar hebben. Als u bijvoorbeeld zowel een Engels naar een Spaans project als een Spaans naar Engels project hebt, worden dezelfde documenten in beide projecten opgenomen. Aan elk project is een CategoryID gekoppeld die wordt gebruikt bij het uitvoeren van een query op de [v3 API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) voor vertalingen. CategoryID is de para meter die wordt gebruikt voor het ophalen van vertalingen van een aangepast systeem dat is gebouwd met aangepaste vertaler.
+Een project is een wrapper voor een model, documenten en tests. Elk project bevat automatisch alle documenten die naar die werk ruimte worden geüpload die het juiste taal paar hebben. Als u bijvoorbeeld zowel een Engels naar een Spaans project als een Spaans naar Engels project hebt, worden dezelfde documenten in beide projecten opgenomen. Aan elk project is een CategoryID gekoppeld die wordt gebruikt bij het uitvoeren van een query op de [v3 API](../reference/v3-0-translate.md?tabs=curl) voor vertalingen. CategoryID is de para meter die wordt gebruikt voor het ophalen van vertalingen van een aangepast systeem dat is gebouwd met aangepaste vertaler.
 
 ## <a name="project-categories"></a>Project Categorieën
 

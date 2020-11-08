@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 11/03/2020
-ms.openlocfilehash: 715b02eec7b499afdcffa5e1f31d388e8bc930e7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 239a93c58edd1f02e5e34d974fdc864f3e1cf90f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305243"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369423"
 ---
 # <a name="cognitive-services-whats-new-in-docs-for-october-1-2020---october-31-2020"></a>Cognitive Services: wat is er nieuw in Docs voor 1 oktober 2020 tot 31 oktober 2020
 
@@ -34,39 +34,39 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 oktober 2020 tot 
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Docker Compose gebruiken om meerdere containers te implementeren](/azure/cognitive-services/containers/docker-compose-recipe.md)
+- [Docker Compose gebruiken om meerdere containers te implementeren](./containers/docker-compose-recipe.md)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Wat is er nieuw in Form Recognizer?](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [Wat is er nieuw in Form Recognizer?](./form-recognizer/whats-new.md)
 
 ## <a name="immersive-reader"></a>Immersive Reader
 
 ### <a name="new-articles"></a>Nieuwe artikelen
 
-- [Release opmerkingen bij insluitende Reader java script SDK](/azure/cognitive-services/immersive-reader/release-notes.md)
+- [Release opmerkingen bij insluitende Reader java script SDK](./immersive-reader/release-notes.md)
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Gebruikers voorkeuren opslaan](/azure/cognitive-services/immersive-reader/how-to-store-user-preferences.md)
-- [Naslag informatie voor de Inge sloten Reader java script SDK (v 1.1)](/azure/cognitive-services/immersive-reader/reference.md)
+- [Gebruikers voorkeuren opslaan](./immersive-reader/how-to-store-user-preferences.md)
+- [Naslag informatie voor de Inge sloten Reader java script SDK (v 1.1)](./immersive-reader/reference.md)
 
 ## <a name="metrics-advisor"></a>Metrics Advisor
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Gegevensfeeds van verschillende gegevens bronnen toevoegen aan Metrics Advisor](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
-- [Veelgestelde vragen over metrische gegevens adviseur](/azure/cognitive-services/metrics-advisor/faq.md)
+- [Gegevensfeeds van verschillende gegevens bronnen toevoegen aan Metrics Advisor](./metrics-advisor/data-feeds-from-different-sources.md)
+- [Veelgestelde vragen over metrische gegevens adviseur](./metrics-advisor/faq.md)
 
 ## <a name="text-analytics"></a>Tekstanalyse
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Migreren naar versie 3. x van de Text Analytics-API](/azure/cognitive-services/text-analytics/migration-guide.md)
-- [Benoemde entiteits herkenning gebruiken in Text Analytics](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Procedure: Sentiment detecteren met behulp van de Text Analytics API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
+- [Migreren naar versie 3. x van de Text Analytics-API](./text-analytics/migration-guide.md)
+- [Benoemde entiteits herkenning gebruiken in Text Analytics](./text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [Procedure: Sentiment detecteren met behulp van de Text Analytics API](./text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
 
 ## <a name="community-contributors"></a>Community-inzenders
 

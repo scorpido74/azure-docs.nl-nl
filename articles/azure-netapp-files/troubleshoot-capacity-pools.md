@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: ff1899fbc89ab4a78bf793a133a7aa9a8f03dd2a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337556"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369236"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Problemen met capaciteitspools oplossen
 
@@ -34,6 +34,10 @@ In dit artikel worden oplossingen beschreven voor problemen die u mogelijk hebt 
 | Het maken of wijzigen van een volume mislukt met `Requested throughput not available` fout | Beschik bare door Voer voor een volume wordt bepaald door de grootte van de capaciteits groep en het service niveau. Als u onvoldoende door Voer hebt, moet u de pool grootte verg Roten of de bestaande volume doorvoer aanpassen. | 
 
 ## <a name="issues-moving-a-capacity-pool"></a>Problemen met het verplaatsen van een capaciteits pool 
+
+> [!IMPORTANT] 
+> Het [dynamisch wijzigen van het service niveau van een](dynamic-change-volume-service-level.md) open bare Preview-Registratie voor een volume is in de wacht stand gezet tot verdere kennisgeving.
+
 |     Foutvoorwaarde    |     Oplossing    |
 |-|-|
 | Het is niet toegestaan de capaciteits groep voor een volume te wijzigen. | U bent mogelijk nog niet gemachtigd om deze functie te gebruiken. <br> De functie voor het verplaatsen van een volume naar een andere capaciteits groep is momenteel beschikbaar als preview-versie. Als u deze functie voor de eerste keer gebruikt, moet u eerst de functie registreren en instellen `-FeatureName ANFTierChange` . Zie de registratie stappen in [het service niveau van een volume dynamisch wijzigen](dynamic-change-volume-service-level.md). |

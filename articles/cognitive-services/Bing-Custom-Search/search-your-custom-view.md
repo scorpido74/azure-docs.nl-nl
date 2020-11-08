@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 38191c55afb87151b238069a75a6c86acd8904df
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a27f252f401d0fcf863391a0d45538b01b1141e9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100538"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367281"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Uw Bing Aangepaste zoekopdrachten-exemplaar aanroepen vanuit de portal
 
@@ -31,7 +31,7 @@ Nadat u uw aangepaste zoek ervaring hebt geconfigureerd, kunt u deze testen vanu
 
 Nadat u zich hebt aangemeld bij de Bing Aangepaste zoekopdrachten [Portal](https://customsearch.ai), selecteert u uw Zoek instantie en klikt u op het tabblad **productie** . Onder **eind punten** selecteert u een API-eind punt (bijvoorbeeld Web-API). Uw abonnement bepaalt welke eind punten worden weer gegeven.
 
-Als u een zoek query wilt maken, voert u de parameter waarden voor uw eind punt in. Houd er rekening mee dat de para meters die in de portal worden weer gegeven, kunnen veranderen, afhankelijk van het eind punt dat u kiest. Zie de [aangepaste zoekopdrachten-API referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) voor meer informatie. Als u het abonnement wilt wijzigen dat door uw Zoek instantie wordt gebruikt, voegt u de juiste abonnements sleutel toe en werkt u de juiste markt-en/of taal parameters bij.
+Als u een zoek query wilt maken, voert u de parameter waarden voor uw eind punt in. Houd er rekening mee dat de para meters die in de portal worden weer gegeven, kunnen veranderen, afhankelijk van het eind punt dat u kiest. Zie de [aangepaste zoekopdrachten-API referentie](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) voor meer informatie. Als u het abonnement wilt wijzigen dat door uw Zoek instantie wordt gebruikt, voegt u de juiste abonnements sleutel toe en werkt u de juiste markt-en/of taal parameters bij.
 
 Hieronder vindt u enkele belang rijke para meters:
 
@@ -65,4 +65,4 @@ U kunt het abonnement dat is gekoppeld aan uw Bing Aangepaste zoekopdrachten-exe
 - [Uw aangepaste weer gave aanroepen met NodeJs](./call-endpoint-nodejs.md)
 - [Uw aangepaste weer gave met python aanroepen](./call-endpoint-python.md)
 
-- [Uw aangepaste weer gave aanroepen met de C#-SDK](./sdk-csharp-quick-start.md)
+- [Uw aangepaste weer gave aanroepen met de C#-SDK](./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)

@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132837"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368862"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services en machine learning
 
 Cognitive Services biedt machine learning mogelijkheden om algemene problemen op te lossen, zoals het analyseren van tekst voor emotioneel sentiment of het analyseren van installatie kopieën om objecten of gezichten te herkennen. U hebt geen speciale machine learning- of data science-kennis nodig om deze services te kunnen gebruiken. 
 
-[Cognitive Services](welcome.md) is een groep services die elk verschillende gegeneraliseerde Voorspellings mogelijkheden ondersteunt. De services zijn onderverdeeld in verschillende categorieën om u te helpen de juiste service te vinden. 
+[Cognitive Services](./what-are-cognitive-services.md) is een groep services die elk verschillende gegeneraliseerde Voorspellings mogelijkheden ondersteunt. De services zijn onderverdeeld in verschillende categorieën om u te helpen de juiste service te vinden. 
 
 |Service categorie|Doel|
 |--|--|
@@ -44,7 +44,7 @@ Machine learning is een concept waarbij u gegevens en een algoritme samenvoegt o
 
 Het proces van het bouwen van een machine learning systeem vereist enige kennis van machine learning of Data Science.
 
-Machine learning wordt gegeven met behulp van [Azure machine learning (AML)-producten en-services](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context).
+Machine learning wordt gegeven met behulp van [Azure machine learning (AML)-producten en-services](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context).
 
 ## <a name="what-is-a-cognitive-service"></a>Wat is een cognitieve service?
 
@@ -90,10 +90,10 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 |Cognitieve service|Geen trainings gegevens vereist|U geeft enkele of alle trainings gegevens op|Real-time of bijna realtime gegevens verzameling|
 |--|--|--|--|
 |[Anomaliedetectie](./Anomaly-Detector/overview.md)|x|x|x|
-|Bing Search |x|||
-|[Computer Vision](./Computer-vision/Home.md)|x|||
+|Bing Zoeken |x|||
+|[Computer Vision](./computer-vision/overview.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
-|[Custom Vision](./Custom-Vision-Service/home.md)||x||
+|[Custom Vision](./custom-vision-service/overview.md)||x||
 |[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
 |[Immersive Reader](./immersive-reader/overview.md)|x|||
@@ -101,7 +101,7 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|BxDxH|BxDxH|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
-|[Spreker-herkenning](./speaker-recognition/home.md)||x||
+|[Spreker-herkenning](./speech-service/speaker-recognition-overview.md)||x||
 |[Spraak tekst naar spraak (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Spraak-naar-tekst (STT)](speech-service/speech-to-text.md)|x|x||
 |[Speech Translation](speech-service/speech-translation.md)|x|||
@@ -127,16 +127,16 @@ Cognitive Services die export modellen bieden voor andere machine learning-hulpp
 
 |Cognitieve service|Model gegevens|
 |--|--|
-|[Custom Vision](./custom-vision-service/home.md)|[Exporteren](./Custom-Vision-Service/export-model-python.md) voor tensor flow voor Android, CoreML voor IOS11, ONNX voor Windows ml|
+|[Custom Vision](./custom-vision-service/overview.md)|[Exporteren](./Custom-Vision-Service/export-model-python.md) voor tensor flow voor Android, CoreML voor IOS11, ONNX voor Windows ml|
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
-* [Architectuur handleiding-wat zijn de machine learning producten van micro soft?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [Architectuur handleiding-wat zijn de machine learning producten van micro soft?](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Machine learning-Inleiding tot diep gaande informatie versus machine learning](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Maak uw cognitieve service account in de [Azure Portal](cognitive-services-apis-create-account.md) of met [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli).
+* Maak uw cognitieve service account in de [Azure Portal](cognitive-services-apis-create-account.md) of met [Azure cli](./cognitive-services-apis-create-account-cli.md).
 * Meer informatie over het [verifiëren](authentication.md) van een cognitieve service.
 * [Diagnostische logboek registratie](diagnostic-logging.md) gebruiken voor het identificeren van problemen en het opsporen van fouten. 
 * Implementeer een cognitieve service in een docker- [container](cognitive-services-container-support.md).

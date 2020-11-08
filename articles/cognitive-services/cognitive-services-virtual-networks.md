@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79cfce514b81c5829ee7791c18e24d3bc6563b5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843138"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369372"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Virtuele Azure Cognitive Services-netwerken configureren
 
@@ -51,7 +51,7 @@ Virtuele netwerken (VNETs) worden ondersteund in [regio's waar Cognitive service
 > * Form Recognizer
 > * Language Understanding (LUIS)
 > * Personalizer
-> * Text Analytics
+> * Tekstanalyse
 > * QnA Maker
 > * Translator Text
 > * Immersive Reader
@@ -83,7 +83,7 @@ U kunt de standaard regels voor netwerk toegang voor Cognitive Services resource
 
    ![Optie voor virtueel netwerk](media/vnet/virtual-network-blade.png)
 
-1. Als u de toegang standaard wilt weigeren, kiest u toegang vanaf **geselecteerde netwerken**toestaan. Met de **geselecteerde netwerken** alleen ingesteld, niet begeleid door geconfigureerde **virtuele netwerken** **of** adresbereiken: alle toegang wordt daad werkelijk geweigerd. Als alle toegang wordt geweigerd, zijn aanvragen voor het gebruik van de Cognitive Services resource niet toegestaan. De Azure Portal, Azure PowerShell of, Azure CLI, kan nog steeds worden gebruikt voor het configureren van de Cognitive Services resource.
+1. Als u de toegang standaard wilt weigeren, kiest u toegang vanaf **geselecteerde netwerken** toestaan. Met de **geselecteerde netwerken** alleen ingesteld, niet begeleid door geconfigureerde **virtuele netwerken** **of** adresbereiken: alle toegang wordt daad werkelijk geweigerd. Als alle toegang wordt geweigerd, zijn aanvragen voor het gebruik van de Cognitive Services resource niet toegestaan. De Azure Portal, Azure PowerShell of, Azure CLI, kan nog steeds worden gebruikt voor het configureren van de Cognitive Services resource.
 1. Als u verkeer van alle netwerken wilt toestaan, verleent u toegang vanaf **Alle netwerken**.
 
    ![Virtuele netwerken weigeren](media/vnet/virtual-network-deny.png)
@@ -154,7 +154,7 @@ U kunt de standaard regels voor netwerk toegang voor Cognitive Services resource
         --default-action Allow
     ```
 
-***
+**_
 
 ## <a name="grant-access-from-a-virtual-network"></a>Toegang verlenen vanuit een virtueel netwerk
 
@@ -166,7 +166,7 @@ Elke Cognitive Services Resource ondersteunt Maxi maal 100 regels voor virtuele 
 
 ### <a name="required-permissions"></a>Vereiste machtigingen
 
-Als u een regel voor een virtueel netwerk wilt Toep assen op een Cognitive Services resource, moet de gebruiker de juiste machtigingen hebben voor de subnetten die worden toegevoegd. De vereiste machtiging is de standaard rol *Inzender* of de rol *Cognitive Services Inzender* . De vereiste machtigingen kunnen ook worden toegevoegd aan aangepaste roldefinities.
+Als u een regel voor een virtueel netwerk wilt Toep assen op een Cognitive Services resource, moet de gebruiker de juiste machtigingen hebben voor de subnetten die worden toegevoegd. De vereiste machtiging is de standaard _Contributor * rol of de rol *Cognitive Services Inzender* . De vereiste machtigingen kunnen ook worden toegevoegd aan aangepaste roldefinities.
 
 Cognitive Services resource en de virtuele netwerken die toegang hebben verleend, kunnen zich in verschillende abonnementen bevinden, met inbegrip van abonnementen die deel uitmaken van een andere Azure AD-Tenant.
 
@@ -185,7 +185,7 @@ U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren 
 
 1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
 
-1. Als u toegang wilt verlenen tot een virtueel netwerk met een bestaande netwerk regel, selecteert u **bestaande virtuele netwerk toevoegen**onder **virtuele netwerken**.
+1. Als u toegang wilt verlenen tot een virtueel netwerk met een bestaande netwerk regel, selecteert u **bestaande virtuele netwerk toevoegen** onder **virtuele netwerken**.
 
    ![Bestaand vNet toevoegen](media/vnet/virtual-network-add-existing.png)
 
@@ -322,10 +322,10 @@ U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren 
         --subnet $subnetid
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op _ * weigeren * * of netwerk regels geen effect hebben.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Toegang verlenen vanuit een IP-bereik
 
@@ -472,10 +472,10 @@ U kunt IP-netwerk regels voor Cognitive Services resources beheren via de Azure 
         --ip-address "16.17.18.0/24"
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op _ * weigeren * * of netwerk regels geen effect hebben.
 
 ## <a name="use-private-endpoints"></a>Privé-eindpunten gebruiken
 
@@ -497,7 +497,7 @@ Privé-eind punten kunnen worden gemaakt in subnetten die gebruikmaken van [serv
 
 Wanneer u een persoonlijk eind punt maakt voor een Cognitive Services resource in uw VNet, wordt een goedkeurings aanvraag voor goed keuring verzonden naar de eigenaar van de Cognitive Services resource. Als de gebruiker die het persoonlijke eind punt wil maken ook eigenaar van de resource is, wordt deze aanvraag voor toestemming automatisch goedgekeurd.
 
-Cognitive Services resource-eigen aren kunnen toestemmings aanvragen en de persoonlijke eind punten beheren via het tabblad*privé-eind punten*voor de Cognitive Services resource in de [Azure Portal](https://portal.azure.com).
+Cognitive Services resource-eigen aren kunnen toestemmings aanvragen en de persoonlijke eind punten beheren via het tabblad *privé-eind punten* voor de Cognitive Services resource in de [Azure Portal](https://portal.azure.com).
 
 ### <a name="private-endpoints"></a>Privé-eindpunten
 
@@ -519,7 +519,7 @@ Wanneer u privé-eind punten gebruikt met de speech-service, moet u een aangepas
 
 ### <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privé-eind punten
 
-Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-bron record voor de Cognitive Services resource bijgewerkt naar een alias in een subdomein met het voor voegsel '*privatelink*'. Standaard maken we ook een [privé-DNS-zone](../dns/private-dns-overview.md), die overeenkomt met het subdomein '*privatelink*', met de DNS a-bron records voor de privé-eind punten.
+Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-bron record voor de Cognitive Services resource bijgewerkt naar een alias in een subdomein met het voor voegsel ' *privatelink* '. Standaard maken we ook een [privé-DNS-zone](../dns/private-dns-overview.md), die overeenkomt met het subdomein ' *privatelink* ', met de DNS a-bron records voor de privé-eind punten.
 
 Wanneer u de eind punt-URL van buiten het VNet met het persoonlijke eind punt oplost, wordt deze omgezet in het open bare eind punt van de Cognitive Services resource. Wanneer het is opgelost vanuit het VNet dat het persoonlijke eind punt host, wordt de eind punt-URL omgezet naar het IP-adres van het privé-eind punt.
 
@@ -532,8 +532,8 @@ Als u een aangepaste DNS-server in uw netwerk gebruikt, moeten clients de Fully 
 
 Raadpleeg de volgende artikelen voor meer informatie over het configureren van uw eigen DNS-server voor de ondersteuning van persoonlijke eind punten:
 
-* [Naamomzetting voor resources in virtuele Azure-netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-* [DNS-configuratie voor privé-eind punten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Naamomzetting voor resources in virtuele Azure-netwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+* [DNS-configuratie voor privé-eind punten](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ### <a name="pricing"></a>Prijzen
 
@@ -541,5 +541,5 @@ Zie [prijzen van Azure Private Link](https://azure.microsoft.com/pricing/details
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De verschillende [Azure-Cognitive Services](welcome.md) verkennen
+* De verschillende [Azure-Cognitive Services](./what-are-cognitive-services.md) verkennen
 * Meer informatie over [Azure Virtual Network Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)

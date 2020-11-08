@@ -9,17 +9,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: swmachan
-ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1765aaed3c0562da13c539845bfe19f6f85ed4ef
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510824"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369015"
 ---
 # <a name="what-are-trainings-and-models"></a>Wat zijn trainingen en modellen?
 
 Een model is het systeem, dat vertalingen biedt voor een specifiek taal paar.
-Het resultaat van een geslaagde training is een model. Bij het trainen van een model zijn drie wederzijds exclusieve document typen vereist: training, afstemming en testen. U kunt ook een woordenlijst document type opgeven. Raadpleeg de uitlijning van een [zin](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences).
+Het resultaat van een geslaagde training is een model. Bij het trainen van een model zijn drie wederzijds exclusieve document typen vereist: training, afstemming en testen. U kunt ook een woordenlijst document type opgeven. Raadpleeg de uitlijning van een [zin](./sentence-alignment.md#suggested-minimum-number-of-sentences).
 
 Als er alleen trainings gegevens worden weer gegeven bij het in de wachtrij plaatsen van een training, zullen aangepaste vertalers automatisch afstemmings-en test gegevens verzamelen. Er wordt een wille keurige subset van zinnen gebruikt uit uw trainings documenten en deze zinnen worden uitgesloten van de trainings gegevens zelf.
 

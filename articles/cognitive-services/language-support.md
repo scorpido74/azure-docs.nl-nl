@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cde7e677bd0121954b01cf9bb8defe45111a5b2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869878"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369185"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Ondersteuning voor natuurlijke taal voor Azure Cognitive Services
 
@@ -33,37 +33,37 @@ Deze Cognitive Services zijn taal neutraal en hebben geen beperkingen op basis v
 * [Computer Vision](./computer-vision/language-support.md)
 * [Formulier herkenning (preview-versie)](./form-recognizer/language-support.md)
 * [Ink Recognizer (preview)](./ink-recognizer/language-support.md)
-* [Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/language-identification-model#guidelines-and-limitations)
+* [Video Indexer](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>Taal
 
 * [Immersive Reader](./immersive-reader/language-support.md)
-* [Language Understanding (LUIS)](./luis/luis-supported-languages.md)
-* [QnA Maker](./qnamaker/overview/languages-supported.md)
-* [Tekstanalyse](./text-analytics/text-analytics-supported-languages.md)
-* [Translator](./translator/languages.md)
+* [Language Understanding (LUIS)](./luis/luis-language-support.md)
+* [QnA Maker](./qnamaker/overview/language-support.md)
+* [Tekstanalyse](./text-analytics/language-support.md)
+* [Translator](./translator/language-support.md)
 
-## <a name="speech"></a>Spraak
+## <a name="speech"></a>Speech
 
-* [Speech-Service: spraak naar tekst](./speech-service/supported-languages.md#speech-to-text)
-* [Speech-Service: tekst-naar-spraak](./speech-service/supported-languages.md#text-to-speech)
-* [Speech-Service: spraak omzetting](./speech-service/supported-languages.md#speech-translation)
+* [Speech-Service: spraak naar tekst](./speech-service/language-support.md#speech-to-text)
+* [Speech-Service: tekst-naar-spraak](./speech-service/language-support.md#text-to-speech)
+* [Speech-Service: spraak omzetting](./speech-service/language-support.md#speech-translation)
 
-## <a name="search"></a>Zoeken
+## <a name="search"></a>Search
 
-* [Bing Aangepaste zoekopdrachten](./bing-custom-search/supported-countries-markets.md)
-* [Bing Afbeeldingen zoeken](./bing-image-search/supported-countries-markets.md)
-* [Bing Nieuws zoeken](./bing-news-search/supported-countries-markets.md)
-* [Bing Automatische suggesties](./Bing-Autosuggest/bing-autosuggest-supported-languages.md)
-* [Bing Spellingcontrole](./bing-spell-check/bing-spell-check-supported-languages.md)
-* [Bing Visuele zoekopdrachten](./bing-visual-search/supported-countries-markets.md)
-* [Bing Webzoekopdrachten](./bing-web-search/supported-countries-markets.md)
+* [Bing Aangepaste zoekopdrachten](./bing-custom-search/language-support.md)
+* [Bing Afbeeldingen zoeken](./bing-image-search/language-support.md)
+* [Bing Nieuws zoeken](./bing-news-search/language-support.md)
+* [Bing Automatische suggesties](./bing-autosuggest/language-support.md)
+* [Bing Spellingcontrole](./bing-spell-check/language-support.md)
+* [Bing Visuele zoekopdrachten](./bing-visual-search/language-support.md)
+* [Bing Webzoekopdrachten](./bing-web-search/language-support.md)
 
 ## <a name="decision"></a>Besluit
 
-* [Content Moderator](./content-moderator/text-moderation-api-languages.md)
+* [Content Moderator](./content-moderator/language-support.md)
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat zijn de Cognitive Services?](welcome.md)
+* [Wat zijn de Cognitive Services?](./what-are-cognitive-services.md)
 * [Een account maken](cognitive-services-apis-create-account.md)

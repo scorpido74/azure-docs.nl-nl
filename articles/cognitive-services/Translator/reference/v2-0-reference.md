@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588612"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369508"
 ---
 # <a name="translator-v20"></a>Translator v 2.0
 
@@ -25,7 +25,7 @@ ms.locfileid: "83588612"
 Versie 2 van het conversie programma kan naadloos worden geïntegreerd in uw apps, websites, hulpprogram ma's of andere oplossingen om gebruikers ervaring in meerdere talen te bieden. U kunt deze gebruiken op elk platform en met elk besturings systeem voor het uitvoeren van taal omzetting en andere aan de taal gerelateerde taken, zoals tekst taal detectie en tekst-naar-spraak, volgens de industrie normen. Zie [Translator](../translator-info-overview.md)voor meer informatie.
 
 ## <a name="getting-started"></a>Aan de slag
-Voor toegang tot de vertaler moet u [zich aanmelden voor Microsoft Azure](../translator-text-how-to-signup.md).
+Voor toegang tot de vertaler moet u [zich aanmelden voor Microsoft Azure](../translator-how-to-signup.md).
 
 ## <a name="authentication"></a>Verificatie 
 Voor alle aanroepen van het conversie programma is een abonnements sleutel vereist voor verificatie. De API ondersteunt drie verificatie methoden:
@@ -49,7 +49,7 @@ Normaal gesp roken behoudt de Translator-service dat aanwezig is in de bron. De 
 Als u wilt voor komen dat de vertaling ongebruik maakt, zelfs als deze zich in de bron tekst bevindt, kunt u de filter optie voor scheld woorden gebruiken voor de methoden die deze ondersteunen. Met deze optie kunt u kiezen of u wilt zien of de woordenset is verwijderd of gemarkeerd met de juiste Tags, of dat u de scheld woorden in het doel wilt toestaan. De geaccepteerde waarden van `ProfanityAction` zijn `NoAction` (standaard), `Marked` en `Deleted` .
 
 
-|ProfanityAction    |Bewerking |Voorbeeld bron (Japans)  |Voor beeld van vertaling (Engels)  |
+|ProfanityAction    |Actie |Voorbeeld bron (Japans)  |Voor beeld van vertaling (Engels)  |
 |:--|:--|:--|:--|
 |Geen actie   |Standaard. Hetzelfde als de optie niet instellen. Scheld is van bron naar doel.        |彼はジャッカスです Marketplace.     |Hij is een Jackass.   |
 |Duidelijke     |Ongepaste woorden worden omgeven door XML-tags \<profanity> en \</profanity> .       |彼はジャッカスです Marketplace. |Hij is een \<profanity> Jackass \</profanity> .  |
@@ -607,11 +607,11 @@ Het `TranslateOptions` object bevat de waarden in de volgende lijst. Ze zijn all
 
 * `Category`: Een teken reeks die de categorie (het domein) van de vertaling bevat. De standaardwaarde is `general`.
 * `ContentType`: De enige optie die wordt ondersteund en de standaard waarde is `text/plain` .
-* `IncludeMultipleMTAlternatives`: Een Booleaanse vlag die aangeeft of er meer dan één alternatief moet worden geretourneerd door de MT-engine. Geldige waarden zijn `true` en `false` (hoofdletter gevoelig). De standaard waarde is `false` , waarmee slechts één alternatief wordt geretourneerd. Door de vlag in te stellen `true` , kunt u kunst matige alternatieven maken, volledig geïntegreerd met het samen werkende Vertaal raamwerk (Collaborative). De functie maakt het mogelijk om alternatieven te retour neren voor zinnen die geen vertalingen hebben in COLLABORATIVE door kunst matige alternatieven toe te voegen uit de *n*-beste lijst van de decoder.
+* `IncludeMultipleMTAlternatives`: Een Booleaanse vlag die aangeeft of er meer dan één alternatief moet worden geretourneerd door de MT-engine. Geldige waarden zijn `true` en `false` (hoofdletter gevoelig). De standaard waarde is `false` , waarmee slechts één alternatief wordt geretourneerd. Door de vlag in te stellen `true` , kunt u kunst matige alternatieven maken, volledig geïntegreerd met het samen werkende Vertaal raamwerk (Collaborative). De functie maakt het mogelijk om alternatieven te retour neren voor zinnen die geen vertalingen hebben in COLLABORATIVE door kunst matige alternatieven toe te voegen uit de *n* -beste lijst van de decoder.
     - Inhoudrestricties. De classificaties worden als volgt toegepast: 
          - De beste automatische vertaling heeft de classificatie 5.
        - De alternatieven van COLLABORATIVE weer spie gelen de instantie van de revisor. Ze variëren van-10 tot + 10.
-       - De automatisch gegenereerde Vertaal alternatieven (*n*-best) hebben een classificatie van 0 en een overeenkomst met een afwijkings graad van 100.
+       - De automatisch gegenereerde Vertaal alternatieven ( *n* -best) hebben een classificatie van 0 en een overeenkomst met een afwijkings graad van 100.
     - Aantal alternatieven. Het aantal geretourneerde alternatieven kan net zo hoog zijn als de waarde die is opgegeven in `maxTranslations` , maar kan lager zijn.
     - Taal paren. Deze functionaliteit is niet beschikbaar voor vertalingen tussen vereenvoudigd Chinees en traditioneel Chinees, in beide richtingen. Het is beschikbaar voor alle andere taal paren die door micro soft Translator worden ondersteund.
 * `State`: De gebruikers status die helpt bij het correleren van de aanvraag en het antwoord. Dezelfde inhoud wordt in het antwoord geretourneerd.
@@ -719,11 +719,11 @@ Dit is de indeling van de hoofd tekst van de aanvraag:
 * `Options`Beschrijving. Een `Options` object dat de volgende waarden bevat. Ze zijn allemaal optioneel en standaard ingesteld op de meest voorkomende instellingen. Opgegeven elementen moeten in alfabetische volg orde worden weer gegeven.
     - `Category`: Een teken reeks die de categorie (het domein) van de vertaling bevat. De standaardwaarde is `general`.
     - `ContentType`: De enige optie die wordt ondersteund en de standaard waarde is `text/plain` .
-    - `IncludeMultipleMTAlternatives`: Een Booleaanse vlag die aangeeft of er meer dan één alternatief moet worden geretourneerd door de MT-engine. Geldige waarden zijn `true` en `false` (hoofdletter gevoelig). De standaard waarde is `false` , waarmee slechts één alternatief wordt geretourneerd. Het instellen van de vlag voor het `true` genereren van kunst matige alternatieven in de vertaling is volledig geïntegreerd met het Framework voor samen werking van het samenwerkings verband (Collaborative). De functie maakt het mogelijk om alternatieven te retour neren voor zinnen die geen alternatieven hebben in COLLABORATIVE door kunst matige alternatieven toe te voegen uit de *n*-beste lijst van de decoder.
+    - `IncludeMultipleMTAlternatives`: Een Booleaanse vlag die aangeeft of er meer dan één alternatief moet worden geretourneerd door de MT-engine. Geldige waarden zijn `true` en `false` (hoofdletter gevoelig). De standaard waarde is `false` , waarmee slechts één alternatief wordt geretourneerd. Het instellen van de vlag voor het `true` genereren van kunst matige alternatieven in de vertaling is volledig geïntegreerd met het Framework voor samen werking van het samenwerkings verband (Collaborative). De functie maakt het mogelijk om alternatieven te retour neren voor zinnen die geen alternatieven hebben in COLLABORATIVE door kunst matige alternatieven toe te voegen uit de *n* -beste lijst van de decoder.
         - Beoordelingen de classificaties worden als volgt toegepast:
           - De beste automatische vertaling heeft de classificatie 5.
           - De alternatieven van COLLABORATIVE weer spie gelen de instantie van de revisor. Ze variëren van-10 tot + 10.
-          - De automatisch gegenereerde Vertaal alternatieven (*n*-best) hebben een classificatie van 0 en een overeenkomst met een afwijkings graad van 100.
+          - De automatisch gegenereerde Vertaal alternatieven ( *n* -best) hebben een classificatie van 0 en een overeenkomst met een afwijkings graad van 100.
         - Aantal alternatieven. Het aantal geretourneerde alternatieven kan net zo hoog zijn als de waarde die is opgegeven in `maxTranslations` , maar kan lager zijn.
         - Taal paren. Deze functionaliteit is niet beschikbaar voor vertalingen tussen vereenvoudigd Chinees en traditioneel Chinees, in beide richtingen. Het is beschikbaar voor alle andere taal paren die door micro soft Translator worden ondersteund.
 * `State`: De gebruikers status die helpt bij het correleren van de aanvraag en het antwoord. Dezelfde inhoud wordt in het antwoord geretourneerd.
@@ -804,5 +804,3 @@ Type antwoord inhoud: Application/XML
 
 > [!div class="nextstepaction"]
 > [Migreren naar Translator v3](../migrate-to-v3.md)
-
-

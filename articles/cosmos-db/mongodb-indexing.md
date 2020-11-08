@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 10/21/2020
+ms.date: 11/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 23e9b45c47cdbdb671146b772d16354b1ee3c31b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392568"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369287"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -335,6 +335,51 @@ Bij het verwijderen van indexen en het direct uitvoeren van query's zijn de filt
 
 > [!NOTE]
 > U kunt de voortgang van de [index bijhouden](#track-index-progress).
+
+## <a name="reindex-command"></a>Opdracht REINDEX
+
+`reIndex`Met de opdracht worden alle indexen voor een verzameling opnieuw gemaakt. In de meeste gevallen is dit overbodig. In sommige zeldzame gevallen kunnen query prestaties echter worden verbeterd nadat de opdracht is uitgevoerd `reIndex` .
+
+U kunt de `reIndex` opdracht uitvoeren met de volgende syntaxis:
+
+`db.runCommand({ reIndex: <collection> })`
+
+U kunt de onderstaande syntaxis gebruiken om te controleren of u de opdracht moet uitvoeren `reIndex` :
+
+`db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
+
+Voorbeelduitvoer:
+
+```
+{
+        "database" : "myDB",
+        "collection" : "myCollection",
+        "provisionedThroughput" : 400,
+        "indexes" : [
+                {
+                        "v" : 1,
+                        "key" : {
+                                "_id" : 1
+                        },
+                        "name" : "_id_",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                },
+                {
+                        "v" : 1,
+                        "key" : {
+                                "b.$**" : 1
+                        },
+                        "name" : "b.$**_1",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                }
+        ],
+        "ok" : 1
+}
+```
+
+Als dat `reIndex` nodig is, is **requiresReIndex** waar. Als `reIndex` dit niet nodig is, wordt deze eigenschap wegge laten.
 
 ## <a name="migrate-collections-with-indexes"></a>Verzamelingen migreren met indexen
 

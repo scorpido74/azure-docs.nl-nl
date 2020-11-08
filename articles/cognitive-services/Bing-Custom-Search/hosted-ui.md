@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 0033f4919e4e4e5e56e4057e00c393ae7be1ca44
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090559"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367383"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Gehoste UI-ervaring configureren
 
@@ -37,7 +37,7 @@ Als u een gehoste gebruikers interface voor uw webtoepassingen wilt configureren
   
 2. Selecteer uw Bing Aangepaste zoekopdrachten-exemplaar.
 
-3. Klik op het tabblad **Hosted UI** .  
+3. Klik op het tabblad **Hosted UI**.  
   
 4. Selecteer een lay-out.
 
@@ -45,7 +45,7 @@ Als u een gehoste gebruikers interface voor uw webtoepassingen wilt configureren
     - Alleen resultaten: alleen Zoek resultaten weer geven, zonder zoekvak. Wanneer u deze indeling gebruikt, moet u de zoek query ( `&q=<query string>` ) opgeven. Voeg de query-para meter toe aan de aanvraag-URL in het Java script-fragment of de koppeling naar het HTML-eind punt.
     - Pop-over: bevat een zoekvak en de zoek resultaten worden weer gegeven in een schuif bare overlay.
 
-5. Selecteer een kleurenthema. U kunt de kleuren aanpassen aan uw toepassing door te klikken op **thema aanpassen** . Als u een kleur wilt wijzigen, voert u de RGB HEXADECIMALe waarde van de kleur (bijvoorbeeld `#366eb8` ) in of klikt u op de kleur voorbeeld.
+5. Selecteer een kleurenthema. U kunt de kleuren aanpassen aan uw toepassing door te klikken op **thema aanpassen**. Als u een kleur wilt wijzigen, voert u de RGB HEXADECIMALe waarde van de kleur (bijvoorbeeld `#366eb8` ) in of klikt u op de kleur voorbeeld.
 
    U kunt een voor beeld bekijken van uw wijzigingen aan de rechter kant van de portal. **Als u op opnieuw instellen** klikt, worden de standaard kleuren voor het geselecteerde thema hersteld.
 
@@ -54,7 +54,7 @@ Als u een gehoste gebruikers interface voor uw webtoepassingen wilt configureren
 
 6. Geef onder **aanvullende configuraties** waarden op die geschikt zijn voor uw app. Deze instellingen zijn optioneel. Zie het voorbeeld venster aan de rechter kant om het effect van het Toep assen of verwijderen van deze items te bekijken. Beschik bare configuratie opties zijn:  
 
-7. Voer de sleutel voor het zoek abonnement in of kies er een in de vervolg keuzelijst. De vervolg keuzelijst wordt gevuld met sleutels uit de abonnementen van uw Azure-account. Zie [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
+7. Voer de sleutel voor het zoek abonnement in of kies er een in de vervolg keuzelijst. De vervolg keuzelijst wordt gevuld met sleutels uit de abonnementen van uw Azure-account. Zie [Cognitive Services-API-account](../cognitive-services-apis-create-account.md).  
 
 8. Als u automatische suggesties hebt ingeschakeld, voert u de abonnements sleutel voor Automatische suggestie in of kiest u er een in de vervolg keuzelijst. De vervolg keuzelijst wordt gevuld met sleutels uit de abonnementen van uw Azure-account. Voor aangepaste automatische suggesties is een specifieke abonnementweergave vereist. Zie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
@@ -82,7 +82,7 @@ Als u de gehoste gebruikers interface wilt gebruiken, hetzij:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Voeg indien nodig de volgende query parameters toe aan de URL. Zie [aangepaste zoekopdrachten-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) Reference (Engelstalig) voor meer informatie over deze para meters.
+  > Voeg indien nodig de volgende query parameters toe aan de URL. Zie [aangepaste zoekopdrachten-API](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) Reference (Engelstalig) voor meer informatie over deze para meters.
   >
   > - q
   > - mkt
@@ -153,4 +153,4 @@ De volgende configuraties zijn alleen van toepassing als u gebruikmaakt van de g
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Decoratiemarkeringen gebruiken om tekst te markeren](../bing-web-search/hit-highlighting.md)
-- [Bladeren door webpagina's](./page-webpages.md)
+- [Bladeren door webpagina's](../bing-web-search/paging-search-results.md)

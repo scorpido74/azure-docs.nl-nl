@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220870"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368281"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub-werk ruimte en projecten migreren naar een aangepaste vertaler
 
@@ -27,7 +27,7 @@ Deze acties worden uitgevoerd tijdens de migratie:
 * Op elk gewenst moment kunt u de BLEU-Score die vanuit de hub-training is gemigreerd, vinden op de pagina TrainingDetails van het model in de kop ' Bleu Score in MT hub '.
 
 > [!Note] 
-> Voor een succes volle training vereist een aangepast Vertaal programma mini maal 10.000 unieke geëxtraheerde zinnen. Aangepaste Translator kan geen training uitvoeren met minder dan het [voorgestelde minimum](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences).
+> Voor een succes volle training vereist een aangepast Vertaal programma mini maal 10.000 unieke geëxtraheerde zinnen. Aangepaste Translator kan geen training uitvoeren met minder dan het [voorgestelde minimum](./sentence-alignment.md#suggested-minimum-number-of-sentences).
 
 ## <a name="find-custom-translator-workspace-id"></a>Werk ruimte-ID van aangepaste vertaler zoeken
 
@@ -122,7 +122,7 @@ Als u meer gedetailleerde migratie rapporten wilt over uw projecten, trainingen 
 * Systemen met taal paren die nog niet beschikbaar zijn in het aangepaste conversie programma, zijn alleen beschikbaar voor toegang tot gegevens of het ontoegankelijk maken van de implementatie via een aangepaste vertaler. Deze projecten worden gemarkeerd als ' niet beschikbaar ' op de pagina projecten. Wanneer we nieuwe taal paren met aangepaste Translator inschakelen, worden de projecten actief voor Train en implementatie. 
 * Het migreren van een project van een hub naar een aangepast Vertaal programma heeft geen invloed op uw hub-cursussen of-projecten. Tijdens een migratie worden er geen projecten of documenten van de hub verwijderd en worden de implementatie van modellen niet ongedaan gemaakt.
 * U mag slechts één keer per project worden gemigreerd. Als u een migratie voor een project wilt herhalen, kunt u contact met ons opnemen.
-* Aangepaste Translator ondersteunt NMT taal paren van en naar het Engels. [Bekijk de volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). De hub vereist geen basislijn modellen en ondersteunt daarom een aantal duizenden talen. U kunt een niet-ondersteund taal paar migreren, maar we zullen alleen de migratie van documenten en project definities uitvoeren. Het nieuwe model kan niet worden getraind. Deze documenten en projecten worden bovendien als inactief weer gegeven om aan te geven dat ze op dit moment niet kunnen worden gebruikt. Als ondersteuning is toegevoegd voor deze projecten en/of documenten, worden ze actief en trainbaar.
+* Aangepaste Translator ondersteunt NMT taal paren van en naar het Engels. [Bekijk de volledige lijst met ondersteunde talen](../language-support.md#customization). De hub vereist geen basislijn modellen en ondersteunt daarom een aantal duizenden talen. U kunt een niet-ondersteund taal paar migreren, maar we zullen alleen de migratie van documenten en project definities uitvoeren. Het nieuwe model kan niet worden getraind. Deze documenten en projecten worden bovendien als inactief weer gegeven om aan te geven dat ze op dit moment niet kunnen worden gebruikt. Als ondersteuning is toegevoegd voor deze projecten en/of documenten, worden ze actief en trainbaar.
 * Aangepaste Translator biedt momenteel geen ondersteuning voor Monolingual-trainings gegevens. Net als niet-ondersteunde taal paren kunt u Monolingual-documenten migreren, maar ze worden als inactief weer gegeven totdat Monolingual-gegevens worden ondersteund.
 * Aangepaste Translator vereist een 10k parallele zin om te kunnen trainen. Micro soft hub kan een kleinere set gegevens trainen. Als een training wordt gemigreerd die niet aan deze vereiste voldoet, wordt deze niet getraind.
 
@@ -146,4 +146,4 @@ Als u een community of organisatie bent die bezig is met het maken van een nieuw
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Train een model](how-to-train-model.md).
-- Begin met het gebruik van uw geïmplementeerde aangepaste Vertaal model via [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Begin met het gebruik van uw geïmplementeerde aangepaste Vertaal model via [Translator v3](../reference/v3-0-translate.md?tabs=curl).

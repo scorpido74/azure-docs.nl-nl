@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: d99cfc8b50155eb4cb2aecb3cb770f71b927ce1d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 01e46ad8d139f2cab2fbb6499dc66c7af5ceb554
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148692"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368760"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Ondersteunings-en Help-opties voor Azure Cognitive Services
 
@@ -32,39 +32,39 @@ Verken het aanbod aan [ondersteuningsopties voor Azure en kies het abonnement](h
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Een vraag stellen op Microsoft Q&A
 
-Voor snelle en betrouw bare antwoorden op uw technische product vragen van micro soft-technici, Azure Most Valuable Professionals (Mvp's) of onze expert Community, kunt u contact met ons opnemen op [micro soft Q&A](https://docs.microsoft.com/answers/products/azure?product=all), het voorkeurs doel van Azure voor ondersteuning van de community.
+Voor snelle en betrouw bare antwoorden op uw technische product vragen van micro soft-technici, Azure Most Valuable Professionals (Mvp's) of onze expert Community, kunt u contact met ons opnemen op [micro soft Q&A](/answers/products/azure?product=all), het voorkeurs doel van Azure voor ondersteuning van de community.
 
 Als u via zoeken geen antwoord op uw probleem kunt vinden, dient u een nieuwe vraag in bij Microsoft Q&A. Gebruik een van de volgende tags wanneer u uw vraag stelt:
 
-* [Cognitive Services](https://docs.microsoft.com/answers/topics/azure-cognitive-services.html)
+* [Cognitive Services](/answers/topics/azure-cognitive-services.html)
 
 **Vision**
 
-* [Computer Vision](https://docs.microsoft.com/answers/topics/azure-computer-vision.html)
-* [Custom Vision](https://docs.microsoft.com/answers/topics/azure-custom-vision.html)
-* [Face](https://docs.microsoft.com/answers/topics/azure-face.html)
-* [Form Recognizer](https://docs.microsoft.com/answers/topics/azure-form-recognizer.html)
-* [Video Indexer](https://docs.microsoft.com/answers/topics/azure-media-services.html)
+* [Computer Vision](/answers/topics/azure-computer-vision.html)
+* [Custom Vision](/answers/topics/azure-custom-vision.html)
+* [Face](/answers/topics/azure-face.html)
+* [Form Recognizer](/answers/topics/azure-form-recognizer.html)
+* [Video Indexer](/answers/topics/azure-media-services.html)
 
 **Taal**
 
-* [Immersive Reader](https://docs.microsoft.com/answers/topics/azure-immersive-reader.html)
-* [Language Understanding (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
-* [QnA Maker](https://docs.microsoft.com/answers/topics/azure-qna-maker.html)
-* [Tekstanalyse](https://docs.microsoft.com/answers/topics/azure-text-analytics.html)
-* [Translator](https://docs.microsoft.com/answers/topics/azure-translator.html)
+* [Immersive Reader](/answers/topics/azure-immersive-reader.html)
+* [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
+* [QnA Maker](/answers/topics/azure-qna-maker.html)
+* [Tekstanalyse](/answers/topics/azure-text-analytics.html)
+* [Translator](/answers/topics/azure-translator.html)
 
 **Speech**
 
-* [Speech Service](https://docs.microsoft.com/answers/topics/azure-speech.html)
+* [Speech Service](/answers/topics/azure-speech.html)
 
 
 **Besluit**
 
-* [Anomaliedetectie](https://docs.microsoft.com/answers/topics/azure-anomaly-detector.html) 
-* [Content Moderator](https://docs.microsoft.com/answers/topics/azure-content-moderator.html)
+* [Anomaliedetectie](/answers/topics/azure-anomaly-detector.html) 
+* [Content Moderator](/answers/topics/azure-content-moderator.html)
 * [Metrics Advisor (preview)]()
-* [Personalizer](https://docs.microsoft.com/answers/topics/azure-personalizer.html)
+* [Personalizer](/answers/topics/azure-personalizer.html)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Een vraag stellen aan Stack Overflow
 
@@ -143,4 +143,4 @@ U kunt op de hoogte blijven van de functies in een nieuwe release of nieuws over
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Wat zijn Azure Cognitive Services?](welcome.md)
+> [Wat zijn Azure Cognitive Services?](./what-are-cognitive-services.md)

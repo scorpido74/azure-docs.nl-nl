@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 02baea817f2647f056131aa654afb129549a1e4e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aba990914ea193a7246a24b1502522f6144a0a9c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080971"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367587"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Uw aangepaste automatische suggesties configureren
 
@@ -41,7 +41,7 @@ Als u Bing-suggesties wilt inschakelen, schakelt u de schuif regelaar voor **aut
 
 ## <a name="add-your-own-suggestions"></a>Uw eigen suggesties toevoegen
 
-Als u uw eigen query teken reeks suggesties wilt toevoegen, voegt u deze toe aan de lijst onder door de **gebruiker gedefinieerde suggesties** . Nadat u een suggestie in de lijst hebt toegevoegd, drukt u op ENTER of klikt u op het **+** pictogram. U kunt de suggestie in elke taal opgeven. U kunt Maxi maal 5.000 query teken reeks suggesties toevoegen.
+Als u uw eigen query teken reeks suggesties wilt toevoegen, voegt u deze toe aan de lijst onder door de **gebruiker gedefinieerde suggesties**. Nadat u een suggestie in de lijst hebt toegevoegd, drukt u op ENTER of klikt u op het **+** pictogram. U kunt de suggestie in elke taal opgeven. U kunt Maxi maal 5.000 query teken reeks suggesties toevoegen.
 
 ## <a name="upload-suggestions"></a>Suggesties voor uploaden
 
@@ -65,7 +65,7 @@ Als u Bing Suggestions opneemt, kunt u een lijst met zoek opdracht reeksen toevo
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>Automatische suggesties inschakelen in de gehoste UI
 
-Klik op **gehoste gebruikers interface** om suggesties voor query reeksen voor uw gehoste gebruikers interface in te scha kelen. Schuif omlaag naar de sectie **aanvullende configuratie** . Selecteer onder **zoeken** **op** Internet voor **Automatische suggestie inschakelen** . Als u automatische suggesties wilt inschakelen, moet u een indeling selecteren die een zoekvak bevat.
+Klik op **gehoste gebruikers interface** om suggesties voor query reeksen voor uw gehoste gebruikers interface in te scha kelen. Schuif omlaag naar de sectie **aanvullende configuratie** . Selecteer onder **zoeken** **op** Internet voor **Automatische suggestie inschakelen**. Als u automatische suggesties wilt inschakelen, moet u een indeling selecteren die een zoekvak bevat.
 
 
 ## <a name="calling-the-autosuggest-api"></a>De automatische suggestie-API aanroepen
@@ -93,6 +93,6 @@ Als de gebruiker een voorgestelde query teken reeks in de vervolg keuzelijst sel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aangepaste suggesties ophalen](./get-custom-suggestions.md)
+- [Aangepaste suggesties ophalen]()
 - [Zoek uw aangepaste exemplaar](./search-your-custom-view.md)
 - [Aangepaste gehoste gebruikers interface configureren en gebruiken](./hosted-ui.md)

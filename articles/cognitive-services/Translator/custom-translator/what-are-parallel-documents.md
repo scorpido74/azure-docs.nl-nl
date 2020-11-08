@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ce9f7e922b9a168205ea1d193830dd654691998a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6477432636db9592d9b0d9c1f90f5eee7d6e00db
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510807"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368998"
 ---
 # <a name="what-are-parallel-documents"></a>Wat zijn parallelle documenten?
 
@@ -23,7 +23,7 @@ Het maakt niet uit welke taal is gemarkeerd als ' Bron ' en welke taal is gemark
 
 ## <a name="requirements"></a>Vereisten
 
-U hebt mini maal 10.000 unieke, afgestemde parallelle zinnen nodig om een systeem te trainen. Deze beperking is een veiligheids netwerk om ervoor te zorgen dat uw parallelle zinnen voldoende unieke woorden lijst hebben om een omzettings model te kunnen trainen. Als best practice, voeg voortdurend meer parallelle inhoud toe en opnieuw te trainen om de kwaliteit van uw Vertaal systeem te verbeteren. Raadpleeg de uitlijning van een [zin](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment).
+U hebt mini maal 10.000 unieke, afgestemde parallelle zinnen nodig om een systeem te trainen. Deze beperking is een veiligheids netwerk om ervoor te zorgen dat uw parallelle zinnen voldoende unieke woorden lijst hebben om een omzettings model te kunnen trainen. Als best practice, voeg voortdurend meer parallelle inhoud toe en opnieuw te trainen om de kwaliteit van uw Vertaal systeem te verbeteren. Raadpleeg de uitlijning van een [zin](./sentence-alignment.md).
 
 Micro soft vereist dat documenten die zijn geüpload naar de aangepaste vertaler geen inbreuk maken op de copyright-of intellectuele eigenschappen van derden. Voor meer informatie raadpleegt u de [gebruiks voorwaarden](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 Het uploaden van een document via de portal heeft geen invloed op het eigendom van het intellectueel eigendom in het document zelf.

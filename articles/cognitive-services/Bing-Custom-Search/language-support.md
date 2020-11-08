@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 3519c9d6a62eaff036cf8f7006a0b443383f5131
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2579d24e1a1754e873c6591b6d86ec12dd0dfa60
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090491"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367315"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Ondersteuning van talen en regio's voor de Bing Custom Search-API
 
@@ -26,11 +26,11 @@ ms.locfileid: "93090491"
 
 Het Bing Custom Search-API ondersteunt meer dan drie dozijn landen/regio's, veel met meer dan één taal.
 
-Hoewel dit optioneel is, moet de aanvraag de para meter [MKT](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) query opgeven, waarmee de markt wordt geïdentificeerd waarvan u wilt dat de resultaten afkomstig zijn. Zie [query parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) voor een lijst met optionele query parameters
+Hoewel dit optioneel is, moet de aanvraag de para meter [MKT](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) query opgeven, waarmee de markt wordt geïdentificeerd waarvan u wilt dat de resultaten afkomstig zijn. Zie [query parameters](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) voor een lijst met optionele query parameters
 
 U kunt een land/regio opgeven met behulp van de `cc` query parameter. Als u een land/regio opgeeft, moet u ook een of meer taal codes opgeven met behulp van de `Accept-Language` header. De ondersteunde talen variëren per land/regio. ze worden vermeld voor elk land/elke regio in de tabel **markten** .
 
-De `Accept-Language` header en de `setLang` query parameter sluiten elkaar wederzijds uit. Geef beide niet op. Zie [accepteren-taal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage)voor meer informatie.
+De `Accept-Language` header en de `setLang` query parameter sluiten elkaar wederzijds uit. Geef beide niet op. Zie [accepteren-taal](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage)voor meer informatie.
 
 ## <a name="countriesregions"></a>Landen/regio's
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e556ca2051fd75eb9bf6411c5479e63554606d48
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757024"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368335"
 ---
 # <a name="how-to-manage-settings"></a>Instellingen beheren
 
@@ -33,7 +33,7 @@ U moet beschikken over een Translator-abonnements sleutel die is gekoppeld aan u
 
 Als u geen abonnement hebt, volgt u de onderstaande stappen:
 
-1. Abonneer u om een Translator-resource te maken. Volg [hoe u zich kunt registreren voor Translator](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) om u te abonneren en een Translator-sleutel te verkrijgen.
+1. Abonneer u om een Translator-resource te maken. Volg [hoe u zich kunt registreren voor Translator](../translator-how-to-signup.md) om u te abonneren en een Translator-sleutel te verkrijgen.
 2. Let op de sleutel voor uw Vertaal abonnement. Een van de Key1 of Key2 is acceptabel.
 3. Ga terug naar de portal voor aangepaste vertalers.
 
@@ -52,7 +52,7 @@ Als u geen abonnement hebt, volgt u de onderstaande stappen:
     ![Dialoog venster nieuwe werk ruimte maken](media/how-to/create-new-workspace-dialog.png)
 
 >[!Note]
->Aangepaste Translator biedt geen ondersteuning voor het maken van een werk ruimte voor Translator Text-API resource (ook Azure-abonnements sleutel) die is gemaakt in het [ingeschakelde VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet).
+>Aangepaste Translator biedt geen ondersteuning voor het maken van een werk ruimte voor Translator Text-API resource (ook Azure-abonnements sleutel) die is gemaakt in het [ingeschakelde VNET](../../../api-management/api-management-using-with-vnet.md).
 
 ### <a name="modify-existing-key"></a>Bestaande sleutel wijzigen
 

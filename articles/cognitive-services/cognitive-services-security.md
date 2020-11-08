@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152289"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368777"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-beveiliging
 
@@ -92,7 +92,7 @@ Maak een permanente omgevings variabele en wijs deze toe, op basis van de waarde
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-In een nieuw exemplaar van de **bash**leest u de omgevings variabele.
+In een nieuw exemplaar van de **bash** leest u de omgevings variabele.
 
 ```Bash
 # Prints the env var value
@@ -113,7 +113,7 @@ Als u een omgevings variabele wilt ophalen, moet deze in het geheugen worden gel
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-<a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
+Zie <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-<a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
+Zie <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
 
 ```cpp
 #include <stdlib.h>
@@ -147,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
+Zie <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
 
 ```java
 import java.lang.*;
@@ -164,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-<a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
+Zie <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -174,7 +174,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-<a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
+Zie <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
 
 ```python
 import os
@@ -185,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-<a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
+Zie <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -201,7 +201,7 @@ NSString* value =
 
 Klanten-lockbox is beschikbaar voor deze cognitieve service:
 
-* Translator
+* Vertaler
 
 Voor de volgende services heeft micro soft-technici geen toegang tot klant gegevens in de E0-laag: 
 
@@ -211,7 +211,7 @@ Voor de volgende services heeft micro soft-technici geen toegang tot klant gegev
 * Personalizer
 
 > [!IMPORTANT]
-> Voor **formulier herkenner**hebben micro soft-technici geen toegang tot klant gegevens in resources die zijn gemaakt na 10 juli 2020.
+> Voor **formulier herkenner** hebben micro soft-technici geen toegang tot klant gegevens in resources die zijn gemaakt na 10 juli 2020.
 
 Als u de mogelijkheid wilt aanvragen om de E0-SKU te gebruiken, vult u dit [aanvraag formulier](https://aka.ms/cogsvc-cmk)in en verzendt u dit. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van de E0 SKU met LUIS, moet u een nieuwe resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
 
@@ -222,5 +222,5 @@ De spraak service biedt momenteel geen ondersteuning voor Klanten-lockbox. Klant
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De verschillende [Cognitive Services](welcome.md) verkennen
+* De verschillende [Cognitive Services](./what-are-cognitive-services.md) verkennen
 * Meer informatie over [Cognitive Services virtuele netwerken](cognitive-services-virtual-networks.md)

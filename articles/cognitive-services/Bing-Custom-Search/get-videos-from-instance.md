@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 7dbd9f609944fc63c186ca150d5b9921f3e86622
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c0184d1765052510d42337b34094f66b2536c9ec
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090576"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367536"
 ---
 # <a name="get-videos-from-your-custom-view"></a>Video's ophalen uit uw aangepaste weer gave
 
@@ -26,7 +26,7 @@ ms.locfileid: "93090576"
 
 Met de zoek functie voor aangepaste Video's in Bing kunt u uw aangepaste zoek ervaring met Video's verrijken. Bij aangepast zoeken, kunt u (net als bij webresultaten) zoeken naar video's in de lijst websites van uw exemplaar. U kunt de Video's ophalen met behulp van de zoek-API van Bing Custom Video's of via de gehoste UI-functie. Het gebruik van de gehoste UI-functie is eenvoudig te gebruiken en wordt aanbevolen om uw zoek opdracht in een korte volg orde uit te voeren. Zie [uw gehoste UI-ervaring configureren](hosted-ui.md)voor meer informatie over het configureren van uw gehoste gebruikers interface voor het toevoegen van Video's.
 
-Als u meer controle wilt over het weer geven van de zoek resultaten, kunt u de zoek-API van Bing Custom Video's gebruiken. Omdat het aanroepen van de API lijkt op het aanroepen van de Bing Video's zoeken-API, wordt met de kassa [Bing Video Search](../Bing-Video-Search/search-the-web.md) voor beelden van het aanroepen van de API. Maar voordat u dit doet, moet u vertrouwd raken met de [aangepaste Video's zoeken API-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) -inhoud. De belangrijkste verschillen zijn de ondersteunde query parameters (u moet de query parameter customConfig toevoegen) en het eind punt waarnaar u aanvragen verzendt.
+Als u meer controle wilt over het weer geven van de zoek resultaten, kunt u de zoek-API van Bing Custom Video's gebruiken. Omdat het aanroepen van de API lijkt op het aanroepen van de Bing Video's zoeken-API, wordt met de kassa [Bing Video Search](../bing-video-search/overview.md) voor beelden van het aanroepen van de API. Maar voordat u dit doet, moet u vertrouwd raken met de [aangepaste Video's zoeken API-referentie](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) -inhoud. De belangrijkste verschillen zijn de ondersteunde query parameters (u moet de query parameter customConfig toevoegen) en het eind punt waarnaar u aanvragen verzendt.
 
 <!--
 ## Next steps

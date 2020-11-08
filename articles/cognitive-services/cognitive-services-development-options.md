@@ -8,14 +8,14 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 05d3ca7cf532b739b943e2a87d5ab29ae66cabd7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4eaa33778287bfcda45547c24e6abe0606b6baa7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548572"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368794"
 ---
-# <a name="cognitive-services-development-options"></a>Cognitive Services ontwikkel opties
+# <a name="cognitive-services-development-options"></a>Cognitive Services-ontwikkelingsopties
 
 Dit document bevat een overzicht van de ontwikkelings-en implementatie opties waarmee u aan de slag kunt met Azure Cognitive Services.
 
@@ -23,10 +23,10 @@ Azure Cognitive Services zijn op de cloud gebaseerde AI-services waarmee ontwikk
 
 Cognitive Services zijn onderverdeeld in vier categorieën: beslissing, taal, spraak en visie. Normaal gesp roken hebt u toegang tot deze services via REST Api's, client bibliotheken en aangepaste hulpprogram ma's (zoals opdracht regel interfaces) van micro soft. Dit is echter maar één pad naar geslaagd. Via Azure hebt u ook toegang tot verschillende ontwikkel opties, zoals:
 
-* Automatiserings-en integratie hulpprogramma's, zoals Logic Apps en energie automatisering.
-* Implementatie opties zoals Azure Functions en de App Service. 
-* Cognitive Services docker-containers voor beveiligde toegang.
-* Hulpprogram ma's als Apache Spark, Azure Databricks, Azure Synapse Analytics en Azure Kubernetes-service voor Big Data-scenario's. 
+* Automatiserings- en integratiehulpprogramma's, zoals Logic Apps en Power Automate.
+* Implementatie-opties zoals Azure Functions en de App Service. 
+* Cognitive Services Docker-containers voor veilige toegang.
+* Hulpprogramma's als Apache Spark, Azure Databricks, Azure Synapse Analytics en Azure Kubernetes Service voor big data-scenario's. 
 
 Voordat we aan de slag gaan, is het belang rijk om te weten dat de Cognitive Services hoofd zakelijk wordt gebruikt voor twee verschillende taken. Op basis van de taak die u wilt uitvoeren, hebt u verschillende ontwikkelings-en implementatie opties waaruit u kunt kiezen. 
 
@@ -69,7 +69,7 @@ Als u meer wilt weten over Big data voor Cognitive Services, kunt u het beste be
 
 ### <a name="azure-functions-and-azure-service-web-jobs"></a>Azure Functions-en Azure-service-webjobs
 
-[Azure functions](https://docs.microsoft.com/azure/azure-functions/) -en [Azure app service webjobs](https://docs.microsoft.com/azure/app-service/) bieden beide code-eerste integratie services die zijn ontworpen voor ontwikkel aars en zijn gebouwd op [Azure-app Services](https://docs.microsoft.com/azure/app-service/). Deze producten bieden serverloze infra structuur voor het schrijven van code. Binnen die code kunt u aanroepen naar onze services met behulp van onze client bibliotheken en REST Api's. 
+[Azure functions](../azure-functions/index.yml) -en [Azure app service webjobs](../app-service/index.yml) bieden beide code-eerste integratie services die zijn ontworpen voor ontwikkel aars en zijn gebouwd op [Azure-app Services](../app-service/index.yml). Deze producten bieden serverloze infra structuur voor het schrijven van code. Binnen die code kunt u aanroepen naar onze services met behulp van onze client bibliotheken en REST Api's. 
 
 * **Doel gebruiker (s)** : ontwikkel aars en gegevens wetenschappers
 * **Voor delen** : serverloze compute-service waarmee u gebeurtenis-geactiveerde code kunt uitvoeren. 
@@ -78,7 +78,7 @@ Als u meer wilt weten over Big data voor Cognitive Services, kunt u het beste be
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps 
 
-[Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) dezelfde werk stroom ontwerper en connectors als automatische automatisering delen, maar biedt meer geavanceerde en controle mogelijkheden, inclusief integraties met Visual Studio en DevOps. Met energie automatisering kunt u gemakkelijk integreren met uw cognitieve services-resources via servicespecifieke connectors die een proxy of wrapper rond de Api's bieden. Dit zijn dezelfde connectors als die beschikbaar zijn in automatische energie automatisering. 
+[Azure Logic apps](../logic-apps/index.yml) dezelfde werk stroom ontwerper en connectors als automatische automatisering delen, maar biedt meer geavanceerde en controle mogelijkheden, inclusief integraties met Visual Studio en DevOps. Met energie automatisering kunt u gemakkelijk integreren met uw cognitieve services-resources via servicespecifieke connectors die een proxy of wrapper rond de Api's bieden. Dit zijn dezelfde connectors als die beschikbaar zijn in automatische energie automatisering. 
 
 * **Doel gebruiker (s)** : ontwikkel aars, integrators, IT-professionals, DevOps
 * **Voor delen** : Designer-First (declaratief) ontwikkelings model dat geavanceerde opties en integratie biedt in een oplossing met weinig code
@@ -87,7 +87,7 @@ Als u meer wilt weten over Big data voor Cognitive Services, kunt u het beste be
 
 ### <a name="power-automate"></a>Power Automate 
 
-Energie automatisering is een service in het [Power platform](https://docs.microsoft.com/power-platform/) waarmee u geautomatiseerde werk stromen tussen apps en services kunt maken zonder code te hoeven schrijven. We bieden verschillende connectors waarmee u eenvoudig kunt communiceren met uw Cognitive Services-resource in een oplossing voor het automatiseren van de stroom. Power Automate is gebaseerd op Logic Apps. 
+Energie automatisering is een service in het [Power platform](/power-platform/) waarmee u geautomatiseerde werk stromen tussen apps en services kunt maken zonder code te hoeven schrijven. We bieden verschillende connectors waarmee u eenvoudig kunt communiceren met uw Cognitive Services-resource in een oplossing voor het automatiseren van de stroom. Power Automate is gebaseerd op Logic Apps. 
 
 * **Doel gebruiker (s)** : zakelijke gebruikers (analisten) en share point-beheerders
 * **Voor delen** : Automatiseer Herhaalde hand matige taken door muis klikken te registreren, toetsaanslagen en kopieer plak stappen van uw bureau blad.
@@ -96,7 +96,7 @@ Energie automatisering is een service in het [Power platform](https://docs.micro
 
 ### <a name="ai-builder"></a>AI Builder 
 
-[AI Builder](https://docs.microsoft.com/ai-builder/overview) is een micro soft power platform-mogelijkheid die u kunt gebruiken om de bedrijfs prestaties te verbeteren door processen te automatiseren en resultaten te voors pellen. AI Builder biedt de kracht van AI naar uw oplossingen door middel van een point-and-click-ervaring. Veel cognitieve Services, zoals formulier herkenning, Text Analytics en Computer Vision, zijn rechtstreeks geïntegreerd en u hoeft geen eigen Cognitive Services te maken. 
+[AI Builder](/ai-builder/overview) is een micro soft power platform-mogelijkheid die u kunt gebruiken om de bedrijfs prestaties te verbeteren door processen te automatiseren en resultaten te voors pellen. AI Builder biedt de kracht van AI naar uw oplossingen door middel van een point-and-click-ervaring. Veel cognitieve Services, zoals formulier herkenning, Text Analytics en Computer Vision, zijn rechtstreeks geïntegreerd en u hoeft geen eigen Cognitive Services te maken. 
 
 * **Doel gebruiker (s)** : zakelijke gebruikers (analisten) en share point-beheerders
 * **Voor delen** : een kant-en-klare oplossing die de kracht van AI biedt met behulp van een point-and-click-ervaring. Geen code ring of vaardig heden van data Science vereist.
@@ -124,24 +124,24 @@ De hulpprogram ma's die u gebruikt om modellen te trainen en te configureren, zi
 
 | Pijler | Service | UI voor aanpassing | Snelstartgids |
 |--------|---------|------------------|------------|
-| Vision | Custom Vision | https://www.customvision.ai/ | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/quickstarts/image-classification?pivots=programming-language-csharp) | 
-| Vision | Form Recognizer | Voorbeeldhulpprogramma voor labelen | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool?tabs=v2-0) |
-| Besluit | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/human-in-the-loop) |
-| Besluit | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/web-portal) |
-| Besluit | Personalizer | De gebruikers interface is beschikbaar in het Azure Portal onder uw persoonlijke resource. | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/personalizer/quickstart-personalizer-sdk) |
+| Vision | Custom Vision | https://www.customvision.ai/ | [Snelstartgids](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
+| Vision | Form Recognizer | Voorbeeldhulpprogramma voor labelen | [Snelstartgids](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| Besluit | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [Snelstartgids](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
+| Besluit | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [Snelstartgids](./metrics-advisor/quickstarts/web-portal.md) |
+| Besluit | Personalizer | De gebruikers interface is beschikbaar in het Azure Portal onder uw persoonlijke resource. | [Snelstartgids](./personalizer/quickstart-personalizer-sdk.md) |
 | Taal | Language Understanding (LUIS) | https://www.luis.ai/ | |
-| Taal | QnA Maker | https://www.qnamaker.ai/ | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) |
-| Taal | Translator/aangepaste vertaler | https://portal.customtranslator.azure.ai/ | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model) |
-| Spraak | Aangepaste opdrachten | https://speech.microsoft.com/ | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands) |
-| Spraak | Aangepaste spraak | https://speech.microsoft.com/ | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech) |
-| Spraak | Aangepaste stem | https://speech.microsoft.com/ | [Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice) |  
+| Taal | QnA Maker | https://www.qnamaker.ai/ | [Snelstartgids](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
+| Taal | Translator/aangepaste vertaler | https://portal.customtranslator.azure.ai/ | [Snelstartgids](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
+| Speech | Aangepaste opdrachten | https://speech.microsoft.com/ | [Snelstartgids](./speech-service/custom-commands.md) |
+| Speech | Aangepaste spraak | https://speech.microsoft.com/ | [Snelstartgids](./speech-service/how-to-custom-speech.md) |
+| Speech | Aangepaste stem | https://speech.microsoft.com/ | [Snelstartgids](./speech-service/how-to-custom-voice.md) |  
 
 ### <a name="continuous-integration-and-delivery-with-devops-and-github-actions"></a>Continue integratie en levering met DevOps-en GitHub-acties
 
 Language Understanding en de speech-service bieden continue integratie en continue implementatie oplossingen die worden ondersteund door Azure DevOps-en GitHub-acties. Deze hulpprogram ma's worden gebruikt voor het automatisch trainen, testen en vrijgeven van het beheer van aangepaste modellen. 
 
-* [CI/CD voor Custom Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-* [CI/CD voor LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-devops-automation)
+* [CI/CD voor Custom Speech](./speech-service/how-to-custom-speech-continuous-integration-continuous-deployment.md)
+* [CI/CD voor LUIS](./luis/luis-concept-devops-automation.md)
 
 ## <a name="on-prem-containers"></a>On-premises containers 
 
@@ -150,4 +150,4 @@ Veel van de Cognitive Services kunnen worden geïmplementeerd in containers voor
 ## <a name="next-steps"></a>Volgende stappen
 <!--
 * Learn more about low code development options for Cognitive Services -->
-* [Een Cognitive Services resource maken en beginnen met bouwen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Clinux)
+* [Een Cognitive Services resource maken en beginnen met bouwen](./cognitive-services-apis-create-account.md?tabs=multiservice%252clinux)

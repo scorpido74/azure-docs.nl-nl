@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 9dcbfa8234aea2c558df107fc919dc74f7b4f39a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b012da0b2aea4a50002e9adbc0876396ddd4b5e7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324498"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368726"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Een resource voor insluitende lezer maken en Azure Active Directory authenticatie configureren
 
@@ -29,7 +29,7 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
 
 ## <a name="set-up-powershell-environment"></a>Power shell-omgeving instellen
 
-1. Begin met het openen van de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview). Zorg ervoor dat Cloud Shell is ingesteld op Power shell in de vervolg keuzelijst linksboven of door te typen `pwsh` .
+1. Begin met het openen van de [Azure Cloud shell](../../cloud-shell/overview.md). Zorg ervoor dat Cloud Shell is ingesteld op Power shell in de vervolg keuzelijst linksboven of door te typen `pwsh` .
 
 1. Kopieer het volgende code fragment en plak het in de shell.
 
@@ -196,7 +196,3 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
 * Bekijk de [iOS-zelfstudie](./tutorial-ios.md) om te zien wat u nog meer kunt doen met de Insluitende lezer-SDK met behulp van Swift voor iOS
 * Bekijk de [python-zelf studie](./tutorial-python.md) om te zien wat u nog meer kunt doen met de insluitende Reader SDK met behulp van python
 * De [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor Insluitende lezer](./reference.md) verkennen
-
-
-
-
