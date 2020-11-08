@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c587bb042601b947b71658bf790e9acdfbdbf742
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855648"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363779"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Tekst verschuivingen in de Text Analytics-API uitvoer
 
@@ -34,9 +34,9 @@ Houd rekening met het volgende wanneer verschuivingen het API-antwoord retournee
 
 ## <a name="extracting-substrings-from-text-with-offsets"></a>Subtekenreeksen ophalen uit tekst met verschuivingen
 
-Verschuivingen kunnen problemen veroorzaken bij het gebruik van methoden op basis van teken reeksen, bijvoorbeeld de methode .NET [subtekenreeks ()](https://docs.microsoft.com/dotnet/api/system.string.substring?view=netframework-4.8) . Eén probleem is dat een offset kan ertoe leiden dat een subtekenreeks-methode eindigt in het midden van een grapheme-code ring met meerdere tekens in plaats van het einde.
+Verschuivingen kunnen problemen veroorzaken bij het gebruik van methoden op basis van teken reeksen, bijvoorbeeld de methode .NET [subtekenreeks ()](/dotnet/api/system.string.substring?view=netframework-4.8) . Eén probleem is dat een offset kan ertoe leiden dat een subtekenreeks-methode eindigt in het midden van een grapheme-code ring met meerdere tekens in plaats van het einde.
 
-In .NET kunt u de [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) -klasse gebruiken, waarmee u kunt werken met een teken reeks als een reeks tekstuele elementen, in plaats van afzonderlijke teken objecten. U kunt ook zoeken naar grapheme splitter-bibliotheken in uw favoriete software omgeving. 
+In .NET kunt u de [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) -klasse gebruiken, waarmee u kunt werken met een teken reeks als een reeks tekstuele elementen, in plaats van afzonderlijke teken objecten. U kunt ook zoeken naar grapheme splitter-bibliotheken in uw favoriete software omgeving. 
 
 De Text Analytics-API retourneert ook deze tekstuele elementen, voor het gemak.
 

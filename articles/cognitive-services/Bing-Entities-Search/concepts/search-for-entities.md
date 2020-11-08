@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 532bf806789476c1ec901c1e4ac8522451819625
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 489a158c49bc6695a460fdef5b92606335a07ef6
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085119"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365989"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Zoeken naar entiteiten met de Bing Entiteiten-API
 
@@ -28,9 +28,9 @@ ms.locfileid: "93085119"
 
 Als u een zoekvak aanbiedt waarin de gebruiker een zoekterm invoert, kunt u de [Automatische suggestie-API voor Bing](../../bing-autosuggest/get-suggested-search-terms.md) gebruiken om de ervaring te verbeteren. De API retourneert voorgestelde queryreeksen op basis van gedeeltelijke zoektermen terwijl de gebruiker typt.
 
-Nadat de gebruiker de zoekterm heeft ingevoerd, past u URL-codering toe op de term voordat u de queryparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) instelt. Als de gebruiker bijvoorbeeld *Marcus Appel* invoert, stelt u `q` in op *Marcus+Appel* of *Marcus%20Appel* .
+Nadat de gebruiker de zoekterm heeft ingevoerd, past u URL-codering toe op de term voordat u de queryparameter [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) instelt. Als de gebruiker bijvoorbeeld *Marcus Appel* invoert, stelt u `q` in op *Marcus+Appel* of *Marcus%20Appel*.
 
-Als de zoekterm een spelfout bevat, bevat het zoekresultaat het object [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext). In het object worden de oorspronkelijke spelling weergegeven en de gecorrigeerde spelling die Bing heeft gebruikt voor de zoekopdracht.
+Als de zoekterm een spelfout bevat, bevat het zoekresultaat het object [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext). In het object worden de oorspronkelijke spelling weergegeven en de gecorrigeerde spelling die Bing heeft gebruikt voor de zoekopdracht.
 
 ```json
 "queryContext": {
@@ -43,15 +43,15 @@ Als de zoekterm een spelfout bevat, bevat het zoekresultaat het object [QueryCon
 
 ## <a name="the-bing-entity-search-api-response"></a>Het antwoord van de Bing Entiteiten zoeken-API
 
-Het API-antwoord bevat het object [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse). Als Bing een entiteit of plaats vindt die relevant is, bevat het object het veld `entities`, het veld `places` of beide. Als dat niet het geval is, bevat het antwoordobject geen van beide velden.
+Het API-antwoord bevat het object [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse). Als Bing een entiteit of plaats vindt die relevant is, bevat het object het veld `entities`, het veld `places` of beide. Als dat niet het geval is, bevat het antwoordobject geen van beide velden.
 > [!NOTE]
 > Entiteitantwoorden bieden ondersteuning voor meerdere markten, maar plaatsantwoorden bieden alleen ondersteuning voor Amerikaanse bedrijfslocaties. 
 
-Het veld `entities` is een [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)-object dat een lijst met [entiteit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity)objecten bevat (zie het veld `value`). De lijst bevat mogelijk één dominante entiteit, meerdere entiteiten met vergelijkbare opties of beide. 
+Het veld `entities` is een [EntityAnswer](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)-object dat een lijst met [entiteit](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity)objecten bevat (zie het veld `value`). De lijst bevat mogelijk één dominante entiteit, meerdere entiteiten met vergelijkbare opties of beide. 
 
 Er wordt een dominante entiteit geretourneerd waarvan Bing vindt dat deze als enige aan de aanvraag voldoet (er is geen twijfel over mogelijk). Als meerdere entiteiten het antwoord zouden kunnen bieden op de aanvraag, bevat de lijst meer dan één entiteit. Als in de aanvraag bijvoorbeeld de algemene naam van een reeks films bevat, bevat de lijst waarschijnlijk meerdere vergelijkbare entiteiten. Als de aanvraag echter een specifieke franchisenaam bevat, bevat de lijst waarschijnlijk één dominante entiteit.
 
-Entiteiten omvatten bekende personen (zoals zangers, acteurs, atleten, modellen, etc.), plaatsen en bezienswaardigheden (zoals Mount Rainier of Lincoln Memorial) en specifieke zaken zoals een banaan, een hond, een boek of een filmtitel. Het veld [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) bevat hints waarmee het type van de entiteit kan worden geïdentificeerd. U ziet hier bijvoorbeeld of het om een persoon, film, dier of bezienswaardigheid gaat. Voor een lijst met mogelijke typen gaat u naar [Entiteitstypen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
+Entiteiten omvatten bekende personen (zoals zangers, acteurs, atleten, modellen, etc.), plaatsen en bezienswaardigheden (zoals Mount Rainier of Lincoln Memorial) en specifieke zaken zoals een banaan, een hond, een boek of een filmtitel. Het veld [entityPresentationInfo](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) bevat hints waarmee het type van de entiteit kan worden geïdentificeerd. U ziet hier bijvoorbeeld of het om een persoon, film, dier of bezienswaardigheid gaat. Voor een lijst met mogelijke typen gaat u naar [Entiteitstypen](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
 ```json
 "entityPresentationInfo": {
@@ -179,9 +179,9 @@ Wanneer u de entiteitgegevens (naam, beschrijving en afbeelding) weergeeft, moet
 
 ## <a name="find-places"></a>Locaties zoeken
 
-Het veld `places` is een [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)-object dat een lijst met [plaats](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place)objecten bevat (zie [Entiteitstypen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) voor meer informatie). De lijst bevat één of meer lokale entiteiten die antwoord bieden op de aanvraag.
+Het veld `places` is een [LocalEntityAnswer](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)-object dat een lijst met [plaats](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place)objecten bevat (zie [Entiteitstypen](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) voor meer informatie). De lijst bevat één of meer lokale entiteiten die antwoord bieden op de aanvraag.
 
-Plaatsen kunnen bijvoorbeeld restaurants, hotels of lokale bedrijven zijn. Het veld [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) bevat hints waarmee het type van de lokale entiteit kan worden geïdentificeerd. De lijst bevat een lijst met hints, zoals Place, LocalBusiness of Restaurant. Met elke volgende hint in de matrix wordt het entiteitstype verder benaderd. Voor een lijst met mogelijke typen gaat u naar [Entiteitstypen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
+Plaatsen kunnen bijvoorbeeld restaurants, hotels of lokale bedrijven zijn. Het veld [entityPresentationInfo](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) bevat hints waarmee het type van de lokale entiteit kan worden geïdentificeerd. De lijst bevat een lijst met hints, zoals Place, LocalBusiness of Restaurant. Met elke volgende hint in de matrix wordt het entiteitstype verder benaderd. Voor een lijst met mogelijke typen gaat u naar [Entiteitstypen](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
 ```json
 "entityPresentationInfo": {
@@ -194,7 +194,7 @@ Plaatsen kunnen bijvoorbeeld restaurants, hotels of lokale bedrijven zijn. Het v
 > [!NOTE]
 > Entiteitantwoorden bieden ondersteuning voor meerdere markten, maar plaatsantwoorden bieden alleen ondersteuning voor Amerikaanse bedrijfslocaties. 
 
-Met lokale-entiteitsquery's zoals *restaurant in de buurt* moet de locatie van de gebruiker bekend zijn om nauwkeurige resultaten te kunnen bieden. Uw aanvragen moeten altijd de headers X-Search-Location en X-MSEdge-ClientIP bevatten om de locatie van de gebruiker op te geven. Als Bing van mening is dat het handig zou zijn de locatie van de gebruiker te weten, wordt het veld `askUserForLocation` van [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) ingesteld op **true** . 
+Met lokale-entiteitsquery's zoals *restaurant in de buurt* moet de locatie van de gebruiker bekend zijn om nauwkeurige resultaten te kunnen bieden. Uw aanvragen moeten altijd de headers X-Search-Location en X-MSEdge-ClientIP bevatten om de locatie van de gebruiker op te geven. Als Bing van mening is dat het handig zou zijn de locatie van de gebruiker te weten, wordt het veld `askUserForLocation` van [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) ingesteld op **true**. 
 
 ```json
 {
@@ -295,7 +295,7 @@ In het volgende voorbeeld bevat de regel `LinkAttribution` het veld `targetPrope
 
 ### <a name="license-attribution"></a>Toeschrijving van licentie
 
-Als de lijst met contractuele regels een regel [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution) bevat, moet u de mededeling opnemen op de regel direct na de inhoud waarop de licentie van toepassing is. De regel `LicenseAttribution` maakt gebruik van het veld `targetPropertyName` om de eigenschap te identificeren waarop de licentie van toepassing is.
+Als de lijst met contractuele regels een regel [LicenseAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution) bevat, moet u de mededeling opnemen op de regel direct na de inhoud waarop de licentie van toepassing is. De regel `LicenseAttribution` maakt gebruik van het veld `targetPropertyName` om de eigenschap te identificeren waarop de licentie van toepassing is.
 
 Hieronder ziet u een voorbeeld met een regel `LicenseAttribution`.
 
@@ -305,7 +305,7 @@ De licentiemededeling die u opneemt, moet een hyperlink bevatten naar de website
 
 ### <a name="link-and-text-attribution"></a>Toeschrijving van koppeling en tekst
 
-De regels [LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) en [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) worden meestal gebruikt voor identificatie van de provider van de gegevens. Het veld `targetPropertyName` geeft het veld aan waarop de regel van toepassing is.
+De regels [LinkAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) en [TextAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) worden meestal gebruikt voor identificatie van de provider van de gegevens. Het veld `targetPropertyName` geeft het veld aan waarop de regel van toepassing is.
 
 Als u de providers wilt toeschrijven, neemt u direct na de inhoud waarom het gaat een regel op met de toeschrijving (bijvoorbeeld na het target-veld). De regel moet een label hebben dat duidelijk aangeeft dat de providers de bron zijn van de gegevens. Voorbeeld: 'Gegevens van: contoso.com'. Voor `LinkAttribution`-regels moet u een hyperlink toevoegen naar de website van de provider.
 
@@ -315,7 +315,7 @@ Hieronder ziet u een voorbeeld met de regels `LinkAttribution` en `TextAttributi
 
 ### <a name="media-attribution"></a>Toeschrijving van media
 
-Als de entiteit een afbeelding bevat en u deze wilt weergeven, moet u een klikbare koppeling naar de website van de provider opgeven. Als de entiteit een regel [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) bevat, gebruikt u de URL van de regel om de klikbare koppeling te maken. Gebruik anders de URL die is opgenomen in het veld `provider` van de afbeelding om de klikbare koppeling te maken.
+Als de entiteit een afbeelding bevat en u deze wilt weergeven, moet u een klikbare koppeling naar de website van de provider opgeven. Als de entiteit een regel [MediaAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) bevat, gebruikt u de URL van de regel om de klikbare koppeling te maken. Gebruik anders de URL die is opgenomen in het veld `provider` van de afbeelding om de klikbare koppeling te maken.
 
 Hieronder ziet u een voorbeeld met het veld `provider` van een afbeelding en contractuele regels. Omdat het voorbeeld een contractuele regel bevat, kunt u het veld `provider` van de afbeelding negeren en de regel `MediaAttribution` toepassen.
 

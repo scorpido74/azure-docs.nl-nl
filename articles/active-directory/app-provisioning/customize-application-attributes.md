@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 2f21e4f41814b47d8e630df72c255886ac2af53b
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233880"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364289"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -110,7 +110,7 @@ Toepassingen en systemen die ondersteuning bieden voor aanpassing van de lijst m
 - Workday tot Active Directory/werkdag tot Azure Active Directory
 - SuccessFactors Active Directory/SuccessFactors naar Azure Active Directory
 - Azure Active Directory ([standaard kenmerken van Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)
-- Apps die ondersteuning bieden voor [SCIM 2,0](https://tools.ietf.org/html/rfc7643), waarbij kenmerken die zijn gedefinieerd in het [kern schema](https://tools.ietf.org/html/rfc7643) , moeten worden toegevoegd
+- Apps die ondersteuning bieden voor [SCIM 2,0](https://tools.ietf.org/html/rfc7643)
 - Voor Azure Active Directory write-back naar workday of SuccessFactors, wordt het ondersteund om relevante meta gegevens bij te werken voor ondersteunde kenmerken (XPATH en JSONPath), maar wordt niet ondersteund voor het toevoegen van nieuwe workday-of SuccessFactors-kenmerken dan die zijn opgenomen in het standaard schema
 
 
@@ -136,17 +136,17 @@ Bij het bewerken van de lijst met ondersteunde kenmerken, worden de volgende eig
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Een aangepast uitbreidings kenmerk inrichten voor een SCIM-compatibele toepassing
 De SCIM-RFC definieert een kern gebruikers-en groeps schema, en biedt ook uitbrei dingen voor het schema om te voldoen aan de behoeften van uw toepassing. Een aangepast kenmerk toevoegen aan een SCIM-toepassing:
-   1. Meld u aan bij de [Azure Active Directory-Portal](https://aad.portal.azure.com), selecteer **zakelijke toepassingen** , selecteer uw toepassing en selecteer vervolgens **inrichting** .
+   1. Meld u aan bij de [Azure Active Directory-Portal](https://aad.portal.azure.com), selecteer **zakelijke toepassingen** , selecteer uw toepassing en selecteer vervolgens **inrichting**.
    2. Selecteer onder **toewijzingen** het object (gebruiker of groep) waarvoor u een aangepast kenmerk wilt toevoegen.
-   3. Selecteer onder aan de pagina **Geavanceerde opties weer geven** .
-   4. Selecteer **kenmerk lijst bewerken voor appName** .
-   5. Typ onder aan de lijst met kenmerken informatie over het aangepaste kenmerk in de opgegeven velden. Selecteer vervolgens **kenmerk toevoegen** .
+   3. Selecteer onder aan de pagina **Geavanceerde opties weer geven**.
+   4. Selecteer **kenmerk lijst bewerken voor appName**.
+   5. Typ onder aan de lijst met kenmerken informatie over het aangepaste kenmerk in de opgegeven velden. Selecteer vervolgens **kenmerk toevoegen**.
 
 Voor SCIM-toepassingen moet de naam van het kenmerk voldoen aan het patroon dat in het voor beeld hieronder wordt weer gegeven. De ' CustomExtensionName ' en ' CustomAttribute ' kunnen worden aangepast volgens de vereisten van uw toepassing, bijvoorbeeld: urn: IETF: params: scim: schemas: extension: CustomExtensionName: 2.0: gebruiker: CustomAttribute 
 
 Deze instructies zijn alleen van toepassing op SCIM-toepassingen. Toepassingen zoals ServiceNow en Sales Force zijn niet geïntegreerd met Azure AD met behulp van SCIM. deze specifieke naam ruimte is daarom niet vereist bij het toevoegen van een aangepast kenmerk.
 
-Aangepaste kenmerken kunnen geen referentiële kenmerken of kenmerken met meerdere waarden zijn. Aangepaste extensie kenmerken voor meerdere waarden worden momenteel alleen ondersteund voor toepassingen in de galerie.  
+Aangepaste kenmerken kunnen geen referentiële kenmerken, kenmerken met meerdere waarden of complexe typen zijn. Aangepaste extensie kenmerken met meerdere waarden en complex typen worden momenteel alleen ondersteund voor toepassingen in de galerie.  
  
 **Voor beeld van een gebruiker met een extensie kenmerk:**
 

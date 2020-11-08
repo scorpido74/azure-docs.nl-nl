@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 25750f690129439f0f614724a2bb62b596f322ea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b290539bf6424895a9685c1e4cdb53d8fb8cfb41
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084983"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365904"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Verzenden van zoekaanvragen naar de Bing Entiteiten zoeken-API
 
@@ -40,18 +40,18 @@ Het is raadzaam dat alle aanvragen afkomstig zijn van een server. Het distribuer
 
 ## <a name="specifying-query-parameters-and-headers"></a>Queryparameters en headers opgeven
 
-De aanvraag moet de parameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) bevatten, met daarin de zoekterm van de gebruiker. De aanvraag moet ook de queryparameter [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) bevatten, ter aanduiding van de markt waar u de resultaten vandaan wilt halen. Zie [Queryparameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) voor een lijst met optionele queryparameters. U moet op alle queryparameters URL-codering toepassen.  
+De aanvraag moet de parameter [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) bevatten, met daarin de zoekterm van de gebruiker. De aanvraag moet ook de queryparameter [mkt](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) bevatten, ter aanduiding van de markt waar u de resultaten vandaan wilt halen. Zie [Queryparameters](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) voor een lijst met optionele queryparameters. U moet op alle queryparameters URL-codering toepassen.  
   
-De aanvraag moet de header [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) bevatten. Hoewel dit optioneel is, wordt u aangeraden ook altijd deze headers op te geven:  
+De aanvraag moet de header [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) bevatten. Hoewel dit optioneel is, wordt u aangeraden ook altijd deze headers op te geven:  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
--   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
+-   [X-MSEdge-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
 
 De headers ClientIP en Location zijn belangrijk voor het retourneren van locatiespecifieke inhoud.  
 
-Zie [Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) voor een lijst met alle aanvraag- en antwoordheaders.
+Zie [Headers](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) voor een lijst met alle aanvraag- en antwoordheaders.
 
 ## <a name="the-request"></a>De aanvraag
 
@@ -71,7 +71,7 @@ Als dit de eerste keer is van u een van de Bing-API's aanroept, moet u de header
 
 ## <a name="the-response"></a>Het antwoord
 
-Hieronder ziet u het antwoord op de vorige aanvraag. Het voorbeeld bevat ook de Bing-specifieke antwoordheaders. Zie [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) voor meer informatie over het responsobject.
+Hieronder ziet u het antwoord op de vorige aanvraag. Het voorbeeld bevat ook de Bing-specifieke antwoordheaders. Zie [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) voor meer informatie over het responsobject.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -140,4 +140,4 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Zoeken naar entiteiten met de Bing Entiteiten-API](search-for-entities.md)
-* [Vereisten voor gebruik en weergave van Bing-API](../use-display-requirements.md)
+* [Vereisten voor gebruik en weergave van Bing-API](../../bing-web-search/use-display-requirements.md)

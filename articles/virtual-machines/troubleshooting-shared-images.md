@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 89bbb16f96d06d1861dabdf89cf690e69c10735c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348913"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364476"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Problemen met gedeelde afbeeldings galerieën in azure oplossen
 
@@ -153,7 +153,7 @@ Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën m
 
 *Het wijzigen van de eigenschap ' galleryImageVersion. Properties. storageProfile. <disk image \> . source.id ' is niet toegestaan.*  
 **Oorzaak** : de bron-id van een galerie-afbeeldings versie kan niet worden gewijzigd nadat deze is gemaakt.  
-**Tijdelijke oplossing** : Zorg ervoor dat de bron-id hetzelfde is als de bestaande bron-id of wijzig het versie nummer van de versie van de installatie kopie.
+**Tijdelijke oplossing** : Zorg ervoor dat de bron-id hetzelfde is als de bestaande bron-id, wijzig het versie nummer van de installatie kopie versie of verwijder de huidige versie van de installatie kopie en probeer het opnieuw.
 
 *Er zijn dubbele LUN-nummers gedetecteerd op de invoer gegevens schijven. LUN-nummer moet uniek zijn voor elke gegevens schijf.*  
 **Oorzaak** : wanneer u een installatie kopie versie maakt met behulp van een lijst met schijven en/of schijf momentopnamen, hebben twee of meer schijven of moment opnamen van schijven dezelfde LUN-nummers.  

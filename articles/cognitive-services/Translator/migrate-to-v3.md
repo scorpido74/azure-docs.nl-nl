@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523975"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364272"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Migratie van Translator v2 naar v3
 
@@ -37,7 +37,7 @@ Het einde van dit document bevat nuttige koppelingen voor meer informatie.
 * Trans-transcrib: er is een methode voor trans-isatie toegevoegd aan de API. Met deze methode worden woorden en zinnen in één script geconverteerd (bijvoorbeeld Arabisch) in een ander script (bijvoorbeeld Latijn).
 * Talen: een nieuwe methode ' talen ' levert taal informatie, in JSON-indeling, voor gebruik met de methoden ' vertalen ', ' dictionary ' en ' '.
 * Nieuw in Vertaal: er zijn nieuwe mogelijkheden toegevoegd aan de Vertaal methode om enkele van de functies in de v2-API als afzonderlijke methoden te ondersteunen. Een voor beeld is TranslateArray.
-* Methode speak: tekst-naar-spraak-functionaliteit wordt niet meer ondersteund in micro soft Translator. Tekst-naar-spraak-functionaliteit is beschikbaar in [micro soft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
+* Methode speak: tekst-naar-spraak-functionaliteit wordt niet meer ondersteund in micro soft Translator. Tekst-naar-spraak-functionaliteit is beschikbaar in [micro soft Speech Service](../speech-service/text-to-speech.md).
 
 In de volgende lijst met v2-en V3-methoden worden de V3-methoden en Api's geïdentificeerd waarmee de functionaliteit van v2 wordt geleverd.
 
@@ -47,8 +47,8 @@ In de volgende lijst met v2-en V3-methoden worden de V3-methoden en Api's geïde
 | `TranslateArray`      | [Vertalen](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [Talen](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [Talen](reference/v3-0-languages.md)       |
-| `GetLanguagesForSpeak`      | [Micro soft Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| `Speak`     | [Micro soft Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `GetLanguagesForSpeak`      | [Micro soft Speech-Service](../speech-service/language-support.md#text-to-speech)         |
+| `Speak`     | [Micro soft Speech-Service](../speech-service/text-to-speech.md)          |
 | `Detect`     | [Detecteren](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Detecteren](reference/v3-0-detect.md)         |
 | `AddTranslation`     | De functie wordt niet meer ondersteund       |
@@ -141,7 +141,7 @@ Er wordt geen versie van de vertaler gemaakt om een record van uw vertalingen te
 
 * [Microsoft Privacy Policy](https://privacy.microsoft.com/privacystatement)
 * [Juridische informatie Microsoft Azure](https://azure.microsoft.com/support/legal)
-* [Voor waarden voor Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Voorwaarden voor Online Diensten](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 564af32b724c8b4883cd27d01813e246e5fa4901
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe9511df5fb290853dbd6cb8d39fed4e289fca4d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100198"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366414"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Upgrade handleiding voor Nieuws zoeken-API
 
@@ -75,24 +75,24 @@ Geblokkeerd|InvalidRequest. blocked
 
 ### <a name="object-changes"></a>Object wijzigingen
 
-- Het veld is toegevoegd `contractualRules` aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `contractualRules` veld bevat een lijst met regels die u moet volgen (bijvoorbeeld artikel toewijzing). U moet de toewijzing Toep assen die is opgenomen in in `contractualRules` plaats van met `provider` . Het artikel bevat `contractualRules` alleen wanneer de [webzoekopdrachten API](../bing-web-search/search-the-web.md) -antwoord een nieuws antwoord bevat.
+- Het veld is toegevoegd `contractualRules` aan het [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `contractualRules` veld bevat een lijst met regels die u moet volgen (bijvoorbeeld artikel toewijzing). U moet de toewijzing Toep assen die is opgenomen in in `contractualRules` plaats van met `provider` . Het artikel bevat `contractualRules` alleen wanneer de [webzoekopdrachten API](../bing-web-search/overview.md) -antwoord een nieuws antwoord bevat.
 
 ## <a name="non-breaking-changes"></a>Niet-brekende wijzigingen
 
 ### <a name="query-parameters"></a>Queryparameters
 
-- U hebt producten toegevoegd als mogelijke waarde waarvoor u de [categorie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) query parameter kunt instellen op. Zie [Categorieën per markt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+- U hebt producten toegevoegd als mogelijke waarde waarvoor u de [categorie](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) query parameter kunt instellen op. Zie [Categorieën per markt](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
 
-- De [sortby](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) -query parameter is toegevoegd. Hiermee worden trends op datum gesorteerd op basis van de meest recente eerst.
+- De [sortby](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) -query parameter is toegevoegd. Hiermee worden trends op datum gesorteerd op basis van de meest recente eerst.
 
-- [De after](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) query-para meter is toegevoegd, waarmee trends in onderwerpen worden geretourneerd die door Bing zijn gedetecteerd op of na de opgegeven Unix-epoche-tijds tempel.
+- [De after](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) query-para meter is toegevoegd, waarmee trends in onderwerpen worden geretourneerd die door Bing zijn gedetecteerd op of na de opgegeven Unix-epoche-tijds tempel.
 
 ### <a name="object-changes"></a>Object wijzigingen
 
-- Het veld is toegevoegd `mentions` aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `mentions` veld bevat een lijst met entiteiten (personen of plaatsen) die in het artikel zijn gevonden.
+- Het veld is toegevoegd `mentions` aan het [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `mentions` veld bevat een lijst met entiteiten (personen of plaatsen) die in het artikel zijn gevonden.
 
-- Het veld is toegevoegd `video` aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `video` veld bevat een video die aan het nieuws artikel is gerelateerd. De video is een \<iframe\> die u kunt insluiten of een animatie miniatuur.
+- Het veld is toegevoegd `video` aan het [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `video` veld bevat een video die aan het nieuws artikel is gerelateerd. De video is een \<iframe\> die u kunt insluiten of een animatie miniatuur.
 
-- Het veld is toegevoegd `sort` aan het [Nieuws](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) object. `sort`In het veld wordt de sorteer volgorde van de artikelen weer gegeven. De artikelen worden bijvoorbeeld gesorteerd op relevantie (standaard) of datum.
+- Het veld is toegevoegd `sort` aan het [Nieuws](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) object. `sort`In het veld wordt de sorteer volgorde van de artikelen weer gegeven. De artikelen worden bijvoorbeeld gesorteerd op relevantie (standaard) of datum.
 
-- Het [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) -object is toegevoegd, waarmee een sorteer volgorde wordt gedefinieerd. Het `isSelected` veld geeft aan of het antwoord de sorteer volgorde heeft gebruikt. Als dit het **geval** is, wordt de sorteer volgorde gebruikt voor het antwoord. Als `isSelected` de waarde **False** is, kunt u de URL in het `url` veld gebruiken om een andere sorteer volgorde aan te vragen.
+- Het [SortValue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) -object is toegevoegd, waarmee een sorteer volgorde wordt gedefinieerd. Het `isSelected` veld geeft aan of het antwoord de sorteer volgorde heeft gebruikt. Als dit het **geval** is, wordt de sorteer volgorde gebruikt voor het antwoord. Als `isSelected` de waarde **False** is, kunt u de URL in het `url` veld gebruiken om een andere sorteer volgorde aan te vragen.

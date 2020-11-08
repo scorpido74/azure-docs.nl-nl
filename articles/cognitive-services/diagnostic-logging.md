@@ -9,40 +9,40 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 9660aa3923964392f1789570d26dd825e0fef350
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e33e8fe6e626700790a3b62265c6889f06e0861b
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143188"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366601"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Diagnostische logboek registratie inschakelen voor Azure Cognitive Services
 
-Deze hand leiding bevat stapsgewijze instructies voor het inschakelen van diagnostische logboek registratie voor een Azure cognitieve service. Deze logboeken bevatten uitgebreide, frequente gegevens over de werking van een resource die worden gebruikt voor het identificeren van problemen en fout opsporing. Voordat u doorgaat, moet u een Azure-account hebben met een abonnement op ten minste één cognitieve service, zoals [Bing Web Search](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/overview), [spraak Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)of [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis).
+Deze hand leiding bevat stapsgewijze instructies voor het inschakelen van diagnostische logboek registratie voor een Azure cognitieve service. Deze logboeken bevatten uitgebreide, frequente gegevens over de werking van een resource die worden gebruikt voor het identificeren van problemen en fout opsporing. Voordat u doorgaat, moet u een Azure-account hebben met een abonnement op ten minste één cognitieve service, zoals [Bing Web Search](./bing-web-search/overview.md), [spraak Services](./speech-service/overview.md)of [Luis](./luis/what-is-luis.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u diagnostische logboek registratie wilt inschakelen, moet u uw logboek gegevens ergens opslaan. In deze zelf studie wordt gebruikgemaakt van Azure Storage en Log Analytics.
 
-* [Azure Storage](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) : behoudt Diagnostische logboeken voor beleids controle, statische analyse of back-up. Het opslag account hoeft zich niet in hetzelfde abonnement te betreden als de resource waarmee logboeken worden verzonden, zolang de gebruiker die de instelling configureert de juiste toegang tot Azure RBAC heeft voor beide abonnementen.
-* [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) : een flexibel hulp programma voor logboek zoeken en analyse waarmee onbewerkte logboeken kunnen worden geanalyseerd die door een Azure-resource zijn gegenereerd.
+* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) : behoudt Diagnostische logboeken voor beleids controle, statische analyse of back-up. Het opslag account hoeft zich niet in hetzelfde abonnement te betreden als de resource waarmee logboeken worden verzonden, zolang de gebruiker die de instelling configureert de juiste toegang tot Azure RBAC heeft voor beide abonnementen.
+* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) : een flexibel hulp programma voor logboek zoeken en analyse waarmee onbewerkte logboeken kunnen worden geanalyseerd die door een Azure-resource zijn gegenereerd.
 
 > [!NOTE]
-> Er zijn aanvullende configuratie opties beschikbaar. Zie [logboek gegevens verzamelen en gebruiken van uw Azure-resources](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)voor meer informatie.
+> Er zijn aanvullende configuratie opties beschikbaar. Zie [logboek gegevens verzamelen en gebruiken van uw Azure-resources](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
 
 ## <a name="enable-diagnostic-log-collection"></a>Diagnostische logboek verzameling inschakelen  
 
 Laten we beginnen door diagnostische logboek registratie in te scha kelen met behulp van de Azure Portal.
 
 > [!NOTE]
-> Als u deze functie wilt inschakelen met behulp van Power shell of de Azure CLI, gebruikt u de instructies in [logboek gegevens verzamelen en gebruiken van uw Azure-resources](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
+> Als u deze functie wilt inschakelen met behulp van Power shell of de Azure CLI, gebruikt u de instructies in [logboek gegevens verzamelen en gebruiken van uw Azure-resources](../azure-monitor/platform/platform-logs-overview.md).
 
 1. Navigeer naar de Azure Portal. Zoek en selecteer vervolgens een Cognitive Services bron. Bijvoorbeeld uw abonnement op Bing Web Search.   
 2. Zoek vervolgens in het navigatie menu aan de linkerkant naar **controle** en selecteer **Diagnostische instellingen**. Dit scherm bevat alle eerder gemaakte Diagnostische instellingen voor deze bron.
 3. Als er een eerder gemaakte resource is die u wilt gebruiken, kunt u deze nu selecteren. Als dat niet het geval is, selecteert u **+ Diagnostische instelling toevoegen**.
 4. Voer een naam in voor de instelling. Selecteer vervolgens **archiveren naar een opslag account** en **verzenden naar log Analytics**.
-5. Wanneer u wordt gevraagd om te configureren, selecteert u het opslag account en de OMS-werk ruimte die u wilt gebruiken om Diagnostische logboeken op te slaan. **Opmerking**: als u geen opslag account of OMS-werk ruimte hebt, volgt u de aanwijzingen om er een te maken.
-6. Selecteer **audit**, **RequestResponse**en **AllMetrics**. Stel vervolgens de Bewaar periode voor uw diagnostische logboek gegevens in. Als een Bewaar beleid is ingesteld op nul, worden gebeurtenissen voor die logboek categorie voor onbepaalde tijd opgeslagen.
+5. Wanneer u wordt gevraagd om te configureren, selecteert u het opslag account en de OMS-werk ruimte die u wilt gebruiken om Diagnostische logboeken op te slaan. **Opmerking** : als u geen opslag account of OMS-werk ruimte hebt, volgt u de aanwijzingen om er een te maken.
+6. Selecteer **audit** , **RequestResponse** en **AllMetrics**. Stel vervolgens de Bewaar periode voor uw diagnostische logboek gegevens in. Als een Bewaar beleid is ingesteld op nul, worden gebeurtenissen voor die logboek categorie voor onbepaalde tijd opgeslagen.
 7. Klik op **Opslaan**.
 
 Het kan tot twee uur duren voordat logboek gegevens beschikbaar zijn voor het uitvoeren van query's en analyseren. U hoeft dus geen zorgen te maken als u niets meteen ziet.
@@ -56,7 +56,7 @@ Azure Storage is een robuuste oplossing voor object opslag die is geoptimaliseer
 3. Gebruik de beschik bare vervolg keuzelijsten om uw query te configureren. Voor dit voor beeld stellen we het tijds bereik in op de **laatste 30 dagen** en de metrische gegevens voor de **trans actie**.
 4. Wanneer de query is voltooid, ziet u een visualisatie van trans acties in de afgelopen 30 dagen. Als u deze gegevens wilt exporteren, gebruikt u de knop **exporteren naar Excel** boven aan de pagina.
 
-Meer informatie over wat u kunt doen met diagnostische gegevens in [Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
+Meer informatie over wat u kunt doen met diagnostische gegevens in [Azure Storage](../storage/blobs/storage-blobs-introduction.md).
 
 ## <a name="view-logs-in-log-analytics"></a>Logboeken bekijken in Log Analytics
 
@@ -64,7 +64,7 @@ Volg deze instructies voor het verkennen van log Analytics-gegevens voor uw reso
 
 1. Zoek en selecteer in het Azure Portal **log Analytics** in het navigatie menu aan de linkerkant.
 2. Zoek en selecteer de resource die u hebt gemaakt bij het inschakelen van diagnostische gegevens.
-3. Zoek en selecteer **Logboeken**onder **Algemeen**. Op deze pagina kunt u query's uitvoeren op uw logboeken.
+3. Zoek en selecteer **Logboeken** onder **Algemeen**. Op deze pagina kunt u query's uitvoeren op uw logboeken.
 
 ### <a name="sample-queries"></a>Voorbeeldquery's
 
@@ -85,7 +85,7 @@ AzureDiagnostics
 | take 10
 ```
 
-Voer deze query uit om bewerkingen te groeperen op **resource**:
+Voer deze query uit om bewerkingen te groeperen op **resource** :
 
 ```kusto
 AzureDiagnostics
@@ -113,9 +113,9 @@ by bin(TimeGenerated, 10s), OperationName
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als u wilt weten hoe u logboek registratie kunt inschakelen en ook de metrische gegevens en logboek categorieën die worden ondersteund door de verschillende Azure-Services, leest u het [overzicht van metrische gegevens](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) in Microsoft Azure en [overzicht van de artikelen van Azure Diagnostic logs](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) .
+* Als u wilt weten hoe u logboek registratie kunt inschakelen en ook de metrische gegevens en logboek categorieën die worden ondersteund door de verschillende Azure-Services, leest u het [overzicht van metrische gegevens](../azure-monitor/platform/data-platform.md) in Microsoft Azure en [overzicht van de artikelen van Azure Diagnostic logs](../azure-monitor/platform/platform-logs-overview.md) .
 * Lees deze artikelen voor meer informatie over Event hubs:
-  * [Wat is Azure Event Hubs?](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs)
-  * [Aan de slag met Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-csharp-ephcs-getstarted)
-* Lees [metrische gegevens over het downloaden en Diagnostische logboeken van Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#download-blobs).
-* Meer [informatie over logboek zoekopdrachten in azure monitor logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-new).
+  * [Wat is Azure Event Hubs?](../event-hubs/event-hubs-about.md)
+  * [Aan de slag met Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* Lees [metrische gegevens over het downloaden en Diagnostische logboeken van Azure Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs).
+* Meer [informatie over logboek zoekopdrachten in azure monitor logs](../azure-monitor/log-query/log-query-overview.md).

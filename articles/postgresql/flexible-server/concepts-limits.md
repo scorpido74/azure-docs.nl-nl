@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d1405bce6761b6702146418296cb7b47bb9124ee
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357178"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366635"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Limieten in Azure Database for PostgreSQL flexibele server
 
@@ -78,7 +78,7 @@ Een PostgreSQL-verbinding, zelfs inactief, kan ongeveer 10 MB aan geheugen in be
 - Zone-Redundant HA wordt momenteel niet ondersteund voor breek bare servers.
 - Het IP-adres van de database server wordt gewijzigd wanneer een failover van de server naar de stand-by-modus wordt uitgevoerd. Zorg ervoor dat u de DNS-record gebruikt in plaats van het IP-adres van de server.
 - Als logische replicatie is geconfigureerd met een met HA geconfigureerde flexibele server, in het geval van een failover naar de stand-by-server, worden de logische replicatie sleuven niet naar de stand-by-server gekopieerd. 
-- Raadpleeg de pagina [concepten-ha documentation](concepts-high-availability.md) (Engelstalig) voor meer informatie over de beperkingen van de ha.
+- Raadpleeg de pagina [concepten-ha documentation](concepts-high-availability.md) (Engelstalig) voor meer informatie over zone-redundante ha, met inbegrip van de beperkingen.
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones
 

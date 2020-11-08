@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c0d9b6042ae695caa73d926653f237b756bf4971
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359541"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366720"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Concepten met hoge Beschik baarheid in Azure Database for PostgreSQL-flexibele server
 
@@ -101,17 +101,17 @@ Flexibele servers die zijn geconfigureerd met maximale Beschik baarheid, replice
 -   Hoge Beschik baarheid wordt alleen ondersteund in regio's waar meerdere zones beschikbaar zijn.
 -   Vanwege synchrone replicatie naar een andere beschikbaarheids zone kunnen toepassingen verhoogde schrijf-en doorvoer latentie ervaren.
 
--   De stand-by replica kan niet worden gebruikt voor alleen-lezen query's.
+-   De stand-by replica kan niet worden gebruikt voor lees query's.
 
--   Afhankelijk van de activiteit op de primaire server op het moment van de failover, kan het tot twee minuten of langer duren voordat de failover is voltooid.
+-   Afhankelijk van de werk belasting en activiteit op de primaire server, kan het failoverproces langer dan 120 seconden duren.
 
--   Als u de primaire database server opnieuw opstart om dynamische parameter wijzigingen op te halen, wordt de stand-by replica ook opnieuw gestart.
+-   Wanneer de primaire database server opnieuw wordt opgestart, wordt de stand-by replica ook opnieuw gestart. 
 
 -   Het configureren van aanvullende Lees replica's wordt niet ondersteund.
 
 -   Het configureren van door de klant geïnitieerde beheer taken kan niet worden gepland tijdens het beheerde onderhouds venster.
 
--   Geplande gebeurtenissen, zoals schaalberekening en schaalopslag, worden eerst uitgevoerd op de stand-byserver en vervolgens op de primaire server. Er wordt geen failover uitgevoerd voor de service. 
+-   Geplande gebeurtenissen, zoals schaalberekening en schaalopslag, worden eerst uitgevoerd op de stand-byserver en vervolgens op de primaire server. De server heeft geen failover voor deze geplande bewerkingen. 
 
 -  Als logische decodering of logische replicatie is geconfigureerd met een door HA geconfigureerde flexibele server, in het geval van een failover naar de stand-by-server, worden de logische replicatie sleuven niet naar de stand-by-server gekopieerd.  
 

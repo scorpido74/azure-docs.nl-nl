@@ -10,21 +10,21 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: 8c724925a12535c561b035296e374691f3fb2689
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9c095a46b3a0526b23645c9cbb5e99eb8eda9067
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098345"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366397"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing Nieuws zoeken-API-eind punten
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
+> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource)wordt beschreven.
 > Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Zie [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource)voor migratie-instructies.
 
-De **Nieuws zoeken-API** retourneert nieuws artikelen, webpagina's, afbeeldingen, Video's en [entiteiten](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Entiteiten bevatten samenvattings informatie over een persoon, plaats of onderwerp.
+De **Nieuws zoeken-API** retourneert nieuws artikelen, webpagina's, afbeeldingen, Video's en [entiteiten](../bing-entities-search/overview.md). Entiteiten bevatten samenvattings informatie over een persoon, plaats of onderwerp.
 
 ## <a name="endpoints"></a>Eindpunten
 
@@ -44,7 +44,7 @@ Hiermee worden nieuws items geretourneerd op basis van een zoek query. Als de zo
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Retourneert de nieuws items van het hoogste niveau per categorie. U kunt de meest voorkomende artikelen van uw bedrijf, sport of ontspanning specifiek aanvragen met `category=business` , `category=sports` of `category=entertainment` .  De `category` para meter kan alleen worden gebruikt met de `/news` URL. Er zijn enkele formele vereisten voor het opgeven van categorieën. Raadpleeg `category` de documentatie over de [query parameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) . Een query verzenden via URL uw zoek term coderen en toevoegen aan de `q=""` para meter. Zie [ondersteunde landen/regio's en markten](language-support.md#supported-markets-for-news-endpoint)voor de beschik baarheid.
+Retourneert de nieuws items van het hoogste niveau per categorie. U kunt de meest voorkomende artikelen van uw bedrijf, sport of ontspanning specifiek aanvragen met `category=business` , `category=sports` of `category=entertainment` .  De `category` para meter kan alleen worden gebruikt met de `/news` URL. Er zijn enkele formele vereisten voor het opgeven van categorieën. Raadpleeg `category` de documentatie over de [query parameter](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) . Een query verzenden via URL uw zoek term coderen en toevoegen aan de `q=""` para meter. Zie [ondersteunde landen/regio's en markten](language-support.md#supported-markets-for-news-endpoint)voor de beschik baarheid.
 
 ### <a name="trending-news-topics"></a>Onderwerpen over trending nieuws 
 
@@ -56,7 +56,7 @@ Hiermee worden nieuws onderwerpen geretourneerd die momenteel worden getrendd op
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over kopteksten, para meters, markt codes, antwoord objecten, fouten, enzovoort, zie de naslag informatie voor [Bing Nieuws zoeken-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) .
+Voor meer informatie over kopteksten, para meters, markt codes, antwoord objecten, fouten, enzovoort, zie de naslag informatie voor [Bing Nieuws zoeken-API V7](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) .
 
 Zie de naslag pagina's voor elk type voor volledige informatie over de para meters die door elk eind punt worden ondersteund.
-Zie [Bing News Search quick start (](https://docs.microsoft.com/azure/cognitive-services/bing-news-search)Engelstalig) voor voor beelden van basis aanvragen met de nieuws zoekopdracht-API.
+Zie [Bing News Search quick start (](/azure/cognitive-services/bing-news-search)Engelstalig) voor voor beelden van basis aanvragen met de nieuws zoekopdracht-API.

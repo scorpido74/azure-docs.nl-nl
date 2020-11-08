@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 2b4e4eb84cecf2f68c50f0a40630cc2e6f34554f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38bf38f47e4430c847e54bd89f6bf3cd7be50527
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084202"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367077"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Ondersteuning voor taal en regio voor Bing Spellingcontrole-API
 
@@ -26,7 +26,7 @@ ms.locfileid: "93084202"
 
 Deze talen worden ondersteund door de Bing Spellingcontrole-API (alleen in de `spell` modus).
 
-Houd er rekening mee dat u kunt werken met een andere taal dan `en-US` de `mkt` moet worden ingesteld en ofwel `Accept-Language` of `setLang` moet worden ingesteld zoals beschreven in [spell check-API V7-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Houd er rekening mee dat u kunt werken met een andere taal dan `en-US` de `mkt` moet worden ingesteld en ofwel `Accept-Language` of `setLang` moet worden ingesteld zoals beschreven in [spell check-API V7-referentie](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Taal    | Taalcode |
 |:----------- |:-------------:|
@@ -71,7 +71,7 @@ Houd er rekening mee dat u kunt werken met een andere taal dan `en-US` de `mkt` 
 | Zweeds     | `sv`          |
 | Turks     | `tr`          |
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-- [Documentatiepagina van Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Documentatiepagina van Cognitive Services](../index.yml)
 - [Productpagina van Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

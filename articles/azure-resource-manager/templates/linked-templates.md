@@ -2,19 +2,19 @@
 title: Koppelings sjablonen voor implementatie
 description: Hierin wordt beschreven hoe u gekoppelde sjablonen in een Azure Resource Manager sjabloon gebruikt om een modulaire sjabloon oplossing te maken. Toont hoe parameter waarden worden door gegeven, geef een parameter bestand op en dynamisch gemaakte Url's.
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/06/2020
+ms.openlocfilehash: 603445fdd96cc72a2d64bae21a47cfeabd6dd167
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369311"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366333"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources
 
 Als u complexe oplossingen wilt implementeren, kunt u uw sjabloon opdelen in veel gerelateerde sjablonen en deze vervolgens samen implementeren via een hoofd sjabloon. De gerelateerde sjablonen kunnen afzonderlijke bestanden of sjabloon syntaxis zijn die is inge sloten in de hoofd sjabloon. In dit artikel wordt gebruikgemaakt van de term **gekoppelde sjabloon** om te verwijzen naar een afzonderlijk sjabloon bestand waarnaar wordt verwezen via een koppeling vanuit de hoofd sjabloon. De term **geneste sjabloon** wordt gebruikt om te verwijzen naar de Inge sloten sjabloon syntaxis binnen de hoofd sjabloon.
 
-Voor kleine tot middel grote oplossingen is één sjabloon eenvoudiger te begrijpen en te onderhouden. U kunt alle resources en waarden in één bestand weer geven. Voor geavanceerde scenario's kunt u met gekoppelde sjablonen de oplossing opsplitsen in doel onderdelen. U kunt deze sjablonen eenvoudig opnieuw gebruiken voor andere scenario's.
+Voor kleine tot middelgrote oplossingen is één sjabloon eenvoudiger te begrijpen en te onderhouden. U kunt alle resources en waarden in één bestand bekijken. Voor geavanceerde scenario's kunt u met gekoppelde sjablonen de oplossing opsplitsen in de beoogde onderdelen. U kunt deze sjablonen eenvoudig opnieuw gebruiken voor andere scenario's.
 
 Zie [zelf studie: gekoppelde Azure Resource Manager sjablonen maken](./deployment-tutorial-linked-template.md)voor een zelf studie.
 
@@ -96,7 +96,7 @@ In het volgende voor beeld wordt een opslag account met een geneste sjabloon ge�
 
 ### <a name="expression-evaluation-scope-in-nested-templates"></a>Expressie-evaluatie bereik in geneste sjablonen
 
-Wanneer u een geneste sjabloon gebruikt, kunt u opgeven of sjabloon expressies worden geëvalueerd binnen het bereik van de bovenliggende sjabloon of de geneste sjabloon. Het bereik bepaalt hoe para meters, variabelen en functies, zoals [resourceGroup](template-functions-resource.md#resourcegroup) en [abonnementen](template-functions-resource.md#subscription) , worden opgelost.
+Wanneer u een geneste sjabloon gebruikt, kunt u opgeven of sjabloonexpressies worden geëvalueerd binnen het bereik van de bovenliggende sjabloon of de geneste sjabloon. Het bereik bepaalt hoe para meters, variabelen en functies, zoals [resourceGroup](template-functions-resource.md#resourcegroup) en [abonnementen](template-functions-resource.md#subscription) , worden opgelost.
 
 U stelt het bereik in via de `expressionEvaluationOptions` eigenschap. De `expressionEvaluationOptions` eigenschap is standaard ingesteld op `outer` , wat inhoudt dat het bereik van de bovenliggende sjabloon wordt gebruikt. Stel de waarde in op om te `inner` zorgen dat expressies worden geëvalueerd binnen het bereik van de geneste sjabloon.
 
@@ -281,9 +281,9 @@ In het volgende voor beeld wordt een SQL Server geïmplementeerd en wordt een sl
 >
 > Wanneer Scope is ingesteld op `outer` , kunt u de functie niet gebruiken `reference` in de sectie outputs van een geneste sjabloon voor een resource die u in de geneste sjabloon hebt geïmplementeerd. Als u de waarden voor een geïmplementeerde resource in een geneste sjabloon wilt retour neren, gebruikt u `inner` bereik of converteert u uw geneste sjabloon naar een gekoppelde sjabloon.
 
-## <a name="linked-template"></a>Gekoppelde sjabloon
+## <a name="linked-template"></a>Een gekoppelde sjabloon
 
-Als u een sjabloon wilt koppelen, moet u een implementatie van een [resource](/azure/templates/microsoft.resources/deployments) toevoegen aan uw hoofd sjabloon. Geef in de eigenschap **templateLink** de URI op van de sjabloon die u wilt toevoegen. Het volgende voor beeld is een koppeling naar een sjabloon waarmee een nieuw opslag account wordt geïmplementeerd.
+Als u een sjabloon wilt koppelen, moet u een implementatie van een [resource](/azure/templates/microsoft.resources/deployments) toevoegen aan uw hoofd sjabloon. Geef in de eigenschap **templateLink** de URI op van de sjabloon die u wilt toevoegen. Het volgende voor beeld is een koppeling naar een sjabloon in een opslag account.
 
 ```json
 {
@@ -310,13 +310,17 @@ Als u een sjabloon wilt koppelen, moet u een implementatie van een [resource](/a
 }
 ```
 
-Bij het verwijzen naar een gekoppelde sjabloon, mag de waarde van `uri` niet een lokaal bestand zijn of een bestand dat alleen beschikbaar is op uw lokale netwerk. U moet een URI-waarde opgeven die kan worden gedownload als **http** of **https**.
+Bij het verwijzen naar een gekoppelde sjabloon kan de waarde van `uri` geen lokaal bestand zijn of een bestand dat alleen beschikbaar is op uw lokale netwerk. Azure Resource Manager moet toegang hebben tot de sjabloon. Geef een URI-waarde op die kan worden gedownload als **http** of **https**. 
 
-> [!NOTE]
->
-> U kunt verwijzen naar sjablonen met behulp van para meters die uiteindelijk worden omgezet in iets waarbij gebruik wordt gemaakt van **http** of **https**, bijvoorbeeld met behulp van de `_artifactsLocation` para meter als volgt: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+U kunt verwijzen naar sjablonen met behulp van para meters die **http** of **https** bevatten. Een voor beeld: een gemeen schappelijk patroon is het gebruik van de `_artifactsLocation` para meter. U kunt de gekoppelde sjabloon instellen met een expressie als:
 
-De sjabloon moet toegankelijk zijn voor Resource Manager. U kunt ook de gekoppelde sjabloon in een opslagaccount plaatsen en de URI voor dat item gebruiken.
+```json
+"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
+```
+
+Als u een koppeling maakt naar een sjabloon in GitHub, gebruikt u de onbewerkte URL. De koppeling heeft de volgende indeling: `https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-with-templates/quickstart-template/azuredeploy.json` . Als u de RAW-koppeling wilt ophalen, selecteert u **RAW**.
+
+:::image type="content" source="./media/linked-templates/select-raw.png" alt-text="Onbewerkte URL selecteren":::
 
 ### <a name="parameters-for-linked-template"></a>Para meters voor gekoppelde sjabloon
 
@@ -384,7 +388,7 @@ U hoeft de `contentVersion` eigenschap voor de eigenschap of niet op te geven `t
 
 In de vorige voor beelden zijn in code vastgelegde URL-waarden voor de sjabloon koppelingen weer gegeven. Deze benadering werkt mogelijk voor een eenvoudige sjabloon, maar werkt niet goed voor een groot aantal modulaire sjablonen. In plaats daarvan kunt u een statische variabele maken om een basis-URL voor de hoofd sjabloon op te slaan en vervolgens dynamisch Url's te maken voor de gekoppelde sjablonen van die basis-URL. Het voor deel van deze benadering is dat u de sjabloon eenvoudig kunt verplaatsen of splitsen omdat u alleen de statische variabele in de hoofd sjabloon hoeft te wijzigen. In de hoofd sjabloon worden de juiste Uri's door gegeven in de sjabloon die is samengesteld.
 
-In het volgende voor beeld ziet u hoe u een basis-URL gebruikt om twee Url's te maken voor gekoppelde sjablonen (**sharedTemplateUrl** en **vmTemplate**).
+In het volgende voor beeld ziet u hoe u een basis-URL gebruikt om twee Url's te maken voor gekoppelde sjablonen ( **sharedTemplateUrl** en **vmTemplate** ).
 
 ```json
 "variables": {
@@ -799,7 +803,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 In de volgende voor beelden ziet u veelvoorkomende toepassingen van gekoppelde sjablonen.
 
-|Hoofd sjabloon  |Gekoppelde sjabloon |Beschrijving  |
+|Hoofd sjabloon  |Een gekoppelde sjabloon |Beschrijving  |
 |---------|---------| ---------|
 |[Hallo wereld](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Retourneert een teken reeks uit een gekoppelde sjabloon. |
 |[Load Balancer met openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Hiermee wordt het open bare IP-adres uit de gekoppelde sjabloon geretourneerd en wordt die waarde ingesteld in load balancer. |

@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132769"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365513"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Functies zijn informatie over acties en context
 
 De Personaler service werkt door te leren wat uw toepassing moet weer geven aan gebruikers in een bepaalde context.
 
-Personaler maakt gebruik van **functies**. Dit is informatie over de **huidige context** om de beste **actie**te kiezen. De functies vertegenwoordigen alle informatie die u kunt gebruiken om persoonlijke voor delen te krijgen. Functies kunnen zeer algemeen of specifiek voor een item zijn. 
+Personaler maakt gebruik van **functies**. Dit is informatie over de **huidige context** om de beste **actie** te kiezen. De functies vertegenwoordigen alle informatie die u kunt gebruiken om persoonlijke voor delen te krijgen. Functies kunnen zeer algemeen of specifiek voor een item zijn. 
 
 U hebt bijvoorbeeld een **functie** over:
 
@@ -41,8 +41,8 @@ Personaler ondersteunt functies van het type teken reeks, numeriek en Booleaanse
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Hoe de keuze van het functie type is van invloed op Machine Learning in Personaler
 
-* **Teken reeksen**: voor teken reeks typen maakt elke combi natie van sleutel en waarde nieuwe gewichten in het model personaler machine learning. 
-* **Numeriek**: u moet numerieke waarden gebruiken wanneer het getal proportioneel van invloed moet zijn op het personalisatie resultaat. Dit is een zeer afhankelijk scenario. In een vereenvoudigd voor beeld bijvoorbeeld: bij het personaliseren van een retail-ervaring kan NumberOfPetsOwned een functie zijn die numeriek is als u wilt dat mensen met 2 of 3 huis dieren twee keer zo veel mogelijk van invloed op het persoonlijke resultaat hebben of drie keer per. Functies die zijn gebaseerd op numerieke eenheden, maar waarbij de betekenis niet lineair is, zoals leeftijd, Tempe ratuur of persoons hoogte, worden het beste gecodeerd als teken reeksen en de functie kwaliteit kan meestal worden verbeterd door gebruik te maken van bereiken. Leeftijd kan bijvoorbeeld worden gecodeerd als ' leeftijd ': ' 0-5 ', ' leeftijd ': ' 6-10 ', enzovoort.
+* **Teken reeksen** : voor teken reeks typen maakt elke combi natie van sleutel en waarde nieuwe gewichten in het model personaler machine learning. 
+* **Numeriek** : u moet numerieke waarden gebruiken wanneer het getal proportioneel van invloed moet zijn op het personalisatie resultaat. Dit is een zeer afhankelijk scenario. In een vereenvoudigd voor beeld bijvoorbeeld: bij het personaliseren van een retail-ervaring kan NumberOfPetsOwned een functie zijn die numeriek is als u wilt dat mensen met 2 of 3 huis dieren twee keer zo veel mogelijk van invloed op het persoonlijke resultaat hebben of drie keer per. Functies die zijn gebaseerd op numerieke eenheden, maar waarbij de betekenis niet lineair is, zoals leeftijd, Tempe ratuur of persoons hoogte, worden het beste gecodeerd als teken reeksen en de functie kwaliteit kan meestal worden verbeterd door gebruik te maken van bereiken. Leeftijd kan bijvoorbeeld worden gecodeerd als ' leeftijd ': ' 0-5 ', ' leeftijd ': ' 6-10 ', enzovoort.
 * **Booleaanse** waarden die zijn verzonden met de waarde ' false ' fungeren alsof ze niet had zijn verzonden.
 
 Functies die niet aanwezig zijn, moeten worden wegge laten uit de aanvraag. Vermijd het verzenden van functies met een null-waarde, omdat deze wordt verwerkt als bestaande en met de waarde ' null ' bij het trainen van het model.
@@ -152,10 +152,10 @@ Bijvoorbeeld:
 
 U kunt verschillende andere [Azure-Cognitive Services](https://www.microsoft.com/cognitive-services)gebruiken, zoals
 
-* [Entiteit koppelen](../entitylinking/home.md)
+* [Entiteiten koppelen](../text-analytics/index.yml)
 * [Tekstanalyse](../text-analytics/overview.md)
-* [Emotion](../emotion/home.md)
-* [Computer Vision](../computer-vision/home.md)
+* [Emotion](../face/overview.md)
+* [Computer Vision](../computer-vision/overview.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>Acties vertegenwoordigen een lijst met opties
 
@@ -179,7 +179,7 @@ De acties die u naar de positie-API verzendt, zijn afhankelijk van wat u probeer
 
 Enkele voorbeelden:
 
-|Doel|Bewerking|
+|Doel|Actie|
 |--|--|
 |Personaliseer welk artikel op een nieuws website is gemarkeerd.|Elke actie is een mogelijk nieuws artikel.|
 |Optimaliseer de plaatsing van advertenties op een website.|Elke actie is een indeling of regels voor het maken van een indeling voor de advertenties (bijvoorbeeld bovenaan, kleine afbeeldingen, grote afbeeldingen).|
@@ -205,7 +205,7 @@ Functies van acties kunnen doorgaans afkomstig zijn van Content Management Syste
 
 In sommige gevallen zijn er acties die u niet wilt weer geven voor gebruikers. De beste manier om te voor komen dat een actie wordt geclassificeerd als een bovenste, is deze niet in de actie lijst opnemen in de positie-API in de eerste plaats.
 
-In sommige gevallen kan het alleen later in uw bedrijfs logica worden bepaald als een resulterende _actie_ van een absolute API-aanroep moet worden weer gegeven aan een gebruiker. In deze gevallen moet u _inactieve gebeurtenissen_gebruiken.
+In sommige gevallen kan het alleen later in uw bedrijfs logica worden bepaald als een resulterende _actie_ van een absolute API-aanroep moet worden weer gegeven aan een gebruiker. In deze gevallen moet u _inactieve gebeurtenissen_ gebruiken.
 
 ## <a name="json-format-for-actions"></a>JSON-indeling voor acties
 
@@ -322,4 +322,4 @@ JSON-objecten kunnen geneste JSON-objecten en eenvoudige eigenschappen/waarden b
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Bekrachtigend leren](concepts-reinforcement-learning.md) 
+[Bekrachtigend leren](concepts-reinforcement-learning.md)

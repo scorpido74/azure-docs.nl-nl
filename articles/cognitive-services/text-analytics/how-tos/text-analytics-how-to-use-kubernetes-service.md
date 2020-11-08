@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b7a5953edd9aec96a7f75e747c39e8f07f7210bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88243765"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366890"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Een Text Analytics-container implementeren in azure Kubernetes service
 
-Meer informatie over het implementeren van de Azure Cognitive Services [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) container installatie kopie naar Azure Kubernetes service (AKS). In deze procedure ziet u hoe u een Text Analytics resource maakt, hoe u een gekoppelde sentiment-analyse kopie maakt en hoe u deze indeling van de twee kunt volgen vanuit een browser. Door gebruik te maken van containers kunt u uw aandacht afleiden van het beheer van de infra structuur om te richten op het ontwikkelen van toepassingen.
+Meer informatie over het implementeren van de Azure Cognitive Services [Text Analytics](./text-analytics-how-to-install-containers.md) container installatie kopie naar Azure Kubernetes service (AKS). In deze procedure ziet u hoe u een Text Analytics resource maakt, hoe u een gekoppelde sentiment-analyse kopie maakt en hoe u deze indeling van de twee kunt volgen vanuit een browser. Door gebruik te maken van containers kunt u uw aandacht afleiden van het beheer van de infra structuur om te richten op het ontwikkelen van toepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -27,7 +27,7 @@ Voor deze procedure zijn verschillende hulpprogram ma's vereist die moeten worde
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services) aan voordat u begint.
 * Een tekst editor, bijvoorbeeld [Visual Studio code](https://code.visualstudio.com/download).
-* De [Azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) is geïnstalleerd.
+* De [Azure-cli](/cli/azure/install-azure-cli?view=azure-cli-latest) is geïnstalleerd.
 * De [Kubernetes-cli](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is geïnstalleerd.
 * Een Azure-resource met de juiste prijs categorie. Niet alle prijs categorieën werken met deze container:
     * **Azure Text Analytics** resource met alleen F0 of Standard-prijs categorieën.
@@ -55,9 +55,9 @@ Voor deze procedure zijn verschillende hulpprogram ma's vereist die moeten worde
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-***
+**_
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer [Cognitive Services containers](../../cognitive-services-container-support.md) gebruiken
-* De [Text Analytics verbonden service](../vs-text-connected-service.md) gebruiken
+_ Meer [Cognitive Services containers](../../cognitive-services-container-support.md) gebruiken
+* De [Text Analytics verbonden service](../index.yml) gebruiken

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
-ms.openlocfilehash: ae987a4239f478162e1e1f251e0d6607d63e02c5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019746"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363711"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomaly Detector-containers configureren
 
@@ -28,7 +28,7 @@ Deze container bevat de volgende configuratie-instellingen:
 |Vereist|Instelling|Doel|
 |--|--|--|
 |Ja|[ApiKey](#apikey-configuration-setting)|Wordt gebruikt om facturerings gegevens bij te houden.|
-|Nee|[ApplicationInsights](#applicationinsights-setting)|Hiermee kunt u ondersteuning voor [Azure-toepassing Insights](https://docs.microsoft.com/azure/application-insights) -telemetrie toevoegen aan uw container.|
+|Nee|[ApplicationInsights](#applicationinsights-setting)|Hiermee kunt u ondersteuning voor [Azure-toepassing Insights](/azure/application-insights) -telemetrie toevoegen aan uw container.|
 |Ja|[Facturering](#billing-configuration-setting)|Hiermee geeft u de eindpunt-URI op van de service resource op Azure.|
 |Ja|[Houdt](#eula-setting)| Geeft aan dat u de licentie voor de container hebt geaccepteerd.|
 |Nee|[Fluentd](#fluentd-settings)|Schrijf logboek en, eventueel, metrische gegevens naar een vloeiende server.|
@@ -97,8 +97,8 @@ De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhank
 
 De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u-opdrachten schrijft en gebruikt `docker run` .  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](anomaly-detector-container-howto.md#stop-the-container) .
 
-* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken de back slash, `\` , als een regel voortzettings teken voor een bash-shell. Vervang of verwijder dit op basis van de vereisten van uw host-besturings systeem. Het regel vervolg teken voor Windows is bijvoorbeeld een caret, `^` . Vervang de back slash door het caret. 
-* **Argument volgorde**: Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
+* **Regel voortzettings teken** : de docker-opdrachten in de volgende secties gebruiken de back slash, `\` , als een regel voortzettings teken voor een bash-shell. Vervang of verwijder dit op basis van de vereisten van uw host-besturings systeem. Het regel vervolg teken voor Windows is bijvoorbeeld een caret, `^` . Vervang de back slash door het caret. 
+* **Argument volgorde** : Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
 
 Vervang de waarde tussen vier Kante haken, `{}` met uw eigen waarden:
 

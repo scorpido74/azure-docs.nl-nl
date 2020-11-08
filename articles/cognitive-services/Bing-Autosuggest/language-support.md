@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: d6971dafc7e3157b3de62284b400ebdc6ddc19c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6156dbe4d189800172250f56ad3ab095bea17bb8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101898"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364510"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Ondersteuning van talen en regio's voor de Automatische suggestie-API voor Bing
 
@@ -69,7 +69,7 @@ Hieronder vindt u een lijst met de talen die door Automatische suggestie-API voo
 | Zweeds     | `sv`          |
 | Turks     | `tr`          |
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-- [Documentatie pagina voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Documentatie pagina voor Azure Cognitive Services](../index.yml)
 - [Product pagina van Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

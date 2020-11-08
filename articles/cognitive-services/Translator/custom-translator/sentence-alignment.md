@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 97327517b40e715294393a97e8a26c078173e762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8a662bf94e958d9e96a454ced9c44058b178a8c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510841"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366839"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Zin en uitlijning in parallelle documenten
 
@@ -28,7 +28,7 @@ Aangepaste vertalers leren de vertalingen van zinnen per zin. Er wordt een zin v
 
 Als u weet dat u parallelle documenten hebt, kunt u de opmaak van de zin onderdrukken door vooraf uitgelijnde tekst bestanden op te geven. U kunt alle zinnen uit beide documenten uitpakken in een tekst bestand, één zin per regel geordend en uploaden met een `.align` uitbrei ding. De `.align` uitbrei ding signaleert aangepaste vertalers, waarna de uitlijning van de zin moet worden overgeslagen.
 
-Voor de beste resultaten probeert u te controleren of u één zin per regel hebt in uw bestanden.U hebt geen nieuwe regel tekens binnen een zin, omdat dit resulteert in slechte uitlijning.
+Voor de beste resultaten probeert u te controleren of u één zin per regel hebt in uw bestanden. U hebt geen nieuwe regel tekens binnen een zin, omdat dit resulteert in slechte uitlijning.
 
 ## <a name="suggested-minimum-number-of-sentences"></a>Voorgesteld minimum aantal zinnen
 
@@ -44,7 +44,7 @@ Voor een succes volle training bevat de onderstaande tabel het minimale aantal z
 > [!NOTE]
 > - De training kan niet worden gestart en mislukt als er niet wordt voldaan aan het minimum aantal zinnen van 10.000 voor training. 
 > - Afstemmen en testen zijn optioneel. Als u deze niet opgeeft, zal het systeem een passend percentage verwijderen van de training die moet worden gebruikt voor validatie en testen. 
-> - U kunt een model trainen met alleen woordenlijst gegevens. Raadpleeg [Wat is een woorden lijst](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary).
+> - U kunt een model trainen met alleen woordenlijst gegevens. Raadpleeg [Wat is een woorden lijst](./what-is-dictionary.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

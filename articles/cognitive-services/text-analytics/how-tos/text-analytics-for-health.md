@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e3e0ae444e2b3b6ac195a83653baf4b71bac6644
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173957"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363864"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Procedure: Text Analytics gebruiken voor de status (preview)
 
@@ -84,7 +84,7 @@ Vul het [aanvraag formulier voor de Cognitive Services containers](https://aka.m
 Er zijn meerdere manieren waarop u de container kunt installeren en uitvoeren. 
 
 - Gebruik de [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) om een Text Analytics resource te maken en gebruik docker om uw container op te halen.
-- Gebruik de volgende Power shell-en [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -scripts voor het automatiseren van de configuratie van de resource-implementatie container.
+- Gebruik de volgende Power shell-en [Azure cli](/cli/azure/?view=azure-cli-latest) -scripts voor het automatiseren van de configuratie van de resource-implementatie container.
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>De container installeren met behulp van Azure Web App for Containers
 
@@ -124,7 +124,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 U kunt ook een Azure container instance (ACI) gebruiken om de implementatie eenvoudiger te maken. ACI is een bron waarmee u docker-containers op aanvraag kunt uitvoeren in een beheerde, serverloze Azure-omgeving. 
 
 Zie [Azure container instances gebruiken](text-analytics-how-to-use-container-instances.md) voor stappen voor het implementeren van een ACI-bron met behulp van de Azure Portal. U kunt ook het onderstaande Power shell-script gebruiken met behulp van Azure CLI, waarmee u een ACI maakt in uw abonnement met behulp van de container installatie kopie.  Wacht totdat het script is voltooid (ongeveer 25-30 minuten) voordat u de eerste aanvraag indient.  Als gevolg van de limiet van het maximum aantal Cpu's per ACI-resource, selecteert u deze optie niet als u verwacht dat u meer dan 5 grote documenten (ongeveer 5000 tekens per aanvraag verzendt).
-Raadpleeg het artikel over [regionale ondersteuning voor ACI](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) voor informatie over de beschik baarheid. 
+Raadpleeg het artikel over [regionale ondersteuning voor ACI](../../../container-instances/container-instances-region-availability.md) voor informatie over de beschik baarheid. 
 
 > [!NOTE] 
 > Azure Container Instances geen HTTPS-ondersteuning voor de ingebouwde domeinen op. Als u HTTPS nodig hebt, moet u deze hand matig configureren, met inbegrip van het maken van een certificaat en het registreren van een domein. U vindt hier instructies om dit te doen met NGINX hieronder.
@@ -399,7 +399,7 @@ Wanneer u de detectie van negatie gebruikt, kan één negatie term in sommige ge
 
 ### <a name="relation-extraction-output"></a>Uitvoer van relatie-extractie
 
-Uitvoer van relatie-extractie bevat URI-verwijzingen naar de *bron* van de relatie en het *doel*ervan. Entiteiten met een relatie rol van `ENTITY` worden toegewezen aan het `target` veld. Entiteiten met een relatie rol van `ATTRIBUTE` worden toegewezen aan het `source` veld. Afkortings relaties bevatten bidirectionele `source` en `target` velden en worden `bidirectional` ingesteld op `true` . 
+Uitvoer van relatie-extractie bevat URI-verwijzingen naar de *bron* van de relatie en het *doel* ervan. Entiteiten met een relatie rol van `ENTITY` worden toegewezen aan het `target` veld. Entiteiten met een relatie rol van `ATTRIBUTE` worden toegewezen aan het `source` veld. Afkortings relaties bevatten bidirectionele `source` en `target` velden en worden `bidirectional` ingesteld op `true` . 
 
 ```json
 "relations": [

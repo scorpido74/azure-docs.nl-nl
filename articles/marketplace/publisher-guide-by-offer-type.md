@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a2b41ac32f8c887d7a8ffd33d51baebaa0e2482e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146174"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366482"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Publicatiehandleiding op type aanbieding
 
@@ -30,9 +30,8 @@ De volgende tabel bevat de typen commerciële Marketplace-aanbiedingen in het pa
 
 | **Aanbiedings type**    | **Beschrijving**  |
 | :------------------- | :-------------------|
-| [Azure-toepassing: **beheerde toepassing**](marketplace-managed-apps.md) | Gebruik de Azure-toepassing: aanbieding van het type beheerde toepassing wanneer de volgende voor waarden zijn vereist: <br> <ul> <li>U implementeert een oplossing op basis van een abonnement voor uw klant met behulp van een virtuele machine of een volledige oplossing op basis van IaaS. </li> <li>U of uw klant vereisen dat de oplossing wordt beheerd door een partner. </li> <ul> |
-| [Azure-toepassing: **oplossings sjabloon**](marketplace-solution-templates.md) | Gebruik de Azure-toepassing: aanbieding voor de oplossings sjabloon wanneer voor uw oplossing extra implementatie-en configuratie automatisering is vereist dan één virtuele machine. Oplossings sjablonen kunnen veel verschillende soorten Azure-resources gebruiken, inclusief, maar niet beperkt tot Vm's.  |
-  | [**Azure-container**](marketplace-containers.md) | Gebruik het Azure container-aanbod type wanneer uw oplossing een docker-container installatie kopie is ingericht als een op Kubernetes gebaseerde Azure-container service. |
+| [**Azure Application**](plan-azure-application-offer.md) | Er zijn twee soorten Azure-toepassings abonnementen: _oplossings sjabloon_ en _beheerde toepassing_. Beide typen abonnementen ondersteunen het automatiseren van de implementatie en configuratie van een oplossing buiten één virtuele machine (VM). U kunt het proces van het bieden van meerdere resources, waaronder Vm's, netwerken en opslag resources, automatiseren om complexe oplossingen te bieden, zoals IaaS-oplossingen. Beide typen abonnementen kunnen veel verschillende soorten Azure-resources gebruiken, inclusief, maar niet beperkt tot virtuele machines.<ul><li>**Oplossingen voor oplossings sjablonen** zijn een van de belangrijkste manieren om een oplossing in de commerciële Marketplace te publiceren. Oplossingen voor oplossings sjablonen zijn niet transactable in de commerciële Marketplace, maar kunnen worden gebruikt voor het implementeren van betaalde VM-aanbiedingen die worden gefactureerd via de commerciële Marketplace. Gebruik het oplossings sjabloon type wanneer de klant de oplossing beheert en de trans acties worden gefactureerd via een ander abonnement.</li><br><li>Met **beheerde toepassings** abonnementen kunt u eenvoudig volledig beheerde, kant-en-klare toepassingen voor uw klanten maken en leveren. Ze hebben dezelfde mogelijkheden als oplossings sjabloon plannen, met enkele belang rijke verschillen:</li><ul><li> De resources worden geïmplementeerd in een resource groep en worden beheerd door de uitgever van de app. De resourcegroep is opgenomen in het abonnement van de consument, maar een identiteit in de tenant van de uitgever heeft toegang tot de resourcegroep.</li><li>Als uitgever kunt u de kosten opgeven voor de continue ondersteuning van de oplossing en trans acties worden ondersteund via de commerciële Marketplace.</li></ul>Gebruik het type beheerd toepassings plan wanneer u of uw klant vereist dat de oplossing wordt beheerd door een partner of u een oplossing op basis van een abonnement implementeert.</ul> |
+| [**Azure-container**](marketplace-containers.md) | Gebruik het Azure container-aanbod type wanneer uw oplossing een docker-container installatie kopie is ingericht als een op Kubernetes gebaseerde Azure-container service. |
 | [**Virtuele Azure-machine**](marketplace-virtual-machines.md) | Gebruik het type virtuele machine-aanbieding wanneer u een virtueel apparaat implementeert op het abonnement dat is gekoppeld aan uw klant. |
 | [**Consulting Service**](consulting-services.md) | Consulting Services helpt klanten met services te verbinden om hun gebruik van Azure-, Dynamics 365-of Power suite-services te ondersteunen en uit te breiden.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | U kunt AppSource-aanbiedingen publiceren die voortbouwen op of uitgebreid Dynamics 365 Business Central, Dynamics 365 Customer engagement, Power apps en Finance and Operations apps.|

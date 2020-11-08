@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 5d6b0a6be0d99815c4d14bb04e56241d011812b5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1d9b7c79919569830834915fc609b849e717dce8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084949"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365836"
 ---
 # <a name="bing-entity-search-api-endpoint"></a>Bing Entiteiten zoeken-API-eind punt
 
@@ -29,7 +29,7 @@ De Bing Entiteiten zoeken-API heeft één eind punt dat entiteiten uit het web r
 
 ## <a name="get-entity-results-from-the-endpoint"></a>Entiteits resultaten ophalen van het eind punt
 
-Als u entiteits resultaten wilt ophalen met behulp van de **Bing API** , verzendt `GET` u een aanvraag naar het volgende eind punt. Gebruik [kopteksten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) en [query parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) om uw zoek opdracht aan te passen. Zoek opdrachten kunnen worden verzonden met behulp van de `?q=` para meter.
+Als u entiteits resultaten wilt ophalen met behulp van de **Bing API** , verzendt `GET` u een aanvraag naar het volgende eind punt. Gebruik [kopteksten](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) en [query parameters](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) om uw zoek opdracht aan te passen. Zoek opdrachten kunnen worden verzonden met behulp van de `?q=` para meter.
 
 ```cURL
  GET https://api.cognitive.microsoft.com/bing/v7.0/entities
@@ -40,6 +40,6 @@ Als u entiteits resultaten wilt ophalen met behulp van de **Bing API** , verzend
 > [!div class="nextstepaction"]
 > [Wat is de Bing Entiteiten zoeken-API?](overview.md)
 
-## <a name="see-also"></a>Zie tevens 
+## <a name="see-also"></a>Zie ook 
 
-Voor meer informatie over kopteksten, para meters, markt codes, reactie objecten, fouten en meer, zie het naslag artikel over [Bing entiteiten zoeken-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) .
+Voor meer informatie over kopteksten, para meters, markt codes, reactie objecten, fouten en meer, zie het naslag artikel over [Bing entiteiten zoeken-API V7](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) .

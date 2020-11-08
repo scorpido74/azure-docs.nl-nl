@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: f7dbb79e2d9009b00b21d4c12663d8e6c855a4c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be43d04672dcefe368eb4052b4d1a929e25327ab
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88243748"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366856"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Een Text Analytics-container implementeren op Azure Container Instances
 
@@ -41,7 +41,7 @@ Meer informatie over het implementeren van de Cognitive Services [Text Analytics
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-#### <a name="text-analytics-for-health"></a>[Text Analytics voor de status](#tab/health)
+#### <a name="text-analytics-for-health"></a>[Text Analytics voor status](#tab/health)
 
 [!INCLUDE [Verify the health container instance](../includes/verify-health-container.md)]
 
@@ -50,7 +50,7 @@ Meer informatie over het implementeren van de Cognitive Services [Text Analytics
 ## <a name="next-steps"></a>Volgende stappen 
 
 * Gebruik meer [Cognitive Services-containers](../../cognitive-services-container-support.md)
-* De [Text Analytics verbonden service](../vs-text-connected-service.md) gebruiken
+* De [Text Analytics verbonden service](../index.yml) gebruiken
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

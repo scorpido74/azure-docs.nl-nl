@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 205adf8cb173c9df30e9907b5fe9de6d5d5ab343
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e7207a1d675298779c3523ee93a8169ac0a26e4a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098311"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367111"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Aanvragen verzenden naar de Bing Spellingcontrole-API
 
@@ -34,16 +34,16 @@ Voor de aanvraag moet het HTTPS-protocol worden gebruikt.
 
 Het is raadzaam dat alle aanvragen afkomstig zijn van een server. Het distribueren van de sleutel als onderdeel van een clienttoepassing biedt een kwaadwillende gebruiker namelijk meer mogelijkheden om de sleutel te onderscheppen. Een server biedt ook een centraal upgradepunt voor toekomstige versies van de API.
 
-De aanvraag moet de queryparameter [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text) bevatten, met daarin het te controleren stuk tekst. Hoewel dat optioneel is, moet in de aanvraag ook de [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt)-queryparameter worden opgegeven, ter aanduiding van de markt waar u de resultaten vandaan wilt halen. Zie [Queryparameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters) voor een lijst met optionele queryparameters, zoals `mode`. Alle waarden van queryparameter moeten als een URL zijn gecodeerd.  
+De aanvraag moet de queryparameter [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text) bevatten, met daarin het te controleren stuk tekst. Hoewel dat optioneel is, moet in de aanvraag ook de [mkt](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt)-queryparameter worden opgegeven, ter aanduiding van de markt waar u de resultaten vandaan wilt halen. Zie [Queryparameters](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters) voor een lijst met optionele queryparameters, zoals `mode`. Alle waarden van queryparameter moeten als een URL zijn gecodeerd.  
   
-De aanvraag moet de header [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) bevatten. Hoewel dit optioneel is, wordt u aangeraden ook altijd de volgende headers op te geven. Deze headers helpen de Bing Spellingcontrole-API nauwkeurigere resultaten op te halen:  
+De aanvraag moet de header [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) bevatten. Hoewel dit optioneel is, wordt u aangeraden ook altijd de volgende headers op te geven. Deze headers helpen de Bing Spellingcontrole-API nauwkeurigere resultaten op te halen:  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
--   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
+-   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
+-   [X-Search-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
 
-Zie [Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers) voor een lijst met alle aanvraag- en antwoordheaders.
+Zie [Headers](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers) voor een lijst met alle aanvraag- en antwoordheaders.
 
 Bij het aanroepen van de Bing Spellingcontrole-API met behulp van JavaScript, voorkomen de ingebouwde beveiligingsfuncties van uw browser mogelijk dat u toegang krijgt tot de waarden van deze headers.
 
@@ -132,4 +132,4 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is de Bing Spellingcontrole-API?](../overview.md)
-- [Naslag informatie over Bing Spellingcontrole-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Naslag informatie over Bing Spellingcontrole-API V7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

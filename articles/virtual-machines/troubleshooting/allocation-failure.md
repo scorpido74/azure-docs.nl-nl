@@ -10,22 +10,27 @@ tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 04/13/2018
+ms.date: 11/06/2020
 ms.author: daberry
-ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79bc043a991404a3ee9da954b9639bf1a41f2c51
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509355"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365870"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Toewijzingsproblemen bij het maken, opnieuw starten of het wijzigen van het formaat van VM’s in Azure oplossen
 
 Wanneer u een virtuele machine (VM) maakt, opnieuw opstarten gestopt (toewijzing opgeheven) Vm's of het formaat van een VM wijzigt, Microsoft Azure worden reken bronnen toegewezen aan uw abonnement. We investeren voortdurend in extra infra structuur en functies om ervoor te zorgen dat alle VM-typen altijd beschikbaar zijn voor de ondersteuning van de vraag van klanten. Het is echter mogelijk dat u af en toe problemen met de resource toewijzing ondervindt vanwege een ongekende groei in de vraag naar Azure-Services in bepaalde regio's. Dit probleem kan zich voordoen wanneer u virtuele machines in een regio probeert te maken of te starten terwijl de virtuele machines de volgende fout code en dit bericht weer geven:
 
-**Fout code**: AllocationFailed of ZonalAllocationFailed
+**Fout code** : AllocationFailed of ZonalAllocationFailed
 
-**Fout bericht**: ' toewijzing is mislukt. Er zijn onvoldoende capaciteit voor de aangevraagde VM-grootte in deze regio. Meer informatie over het verbeteren van de kans op een succes volle toewijzing op https: \/ /aka.MS/Allocation-guidance "
+**Fout bericht** : ' toewijzing is mislukt. Er zijn onvoldoende capaciteit voor de aangevraagde VM-grootte in deze regio. Meer informatie over het verbeteren van de kans op een succes volle toewijzing op https: \/ /aka.MS/Allocation-guidance "
+
+> [!NOTE]
+> Als u een virtuele-machine Scale set (VMSS) wilt oplossen, is het proces hetzelfde als een standaard-VM. Volg de instructies in dit artikel om het probleem op te lossen.
+> 
+>**Fout bericht** : ' toewijzing is mislukt. Als u een nieuwe VM wilt toevoegen aan een Schaalset voor virtuele machines met één plaatsings groep of als u een bestaande virtuele machine in een Schaalset voor virtuele machines met één plaatsings groep wilt bijwerken, moet u er rekening mee houden dat een dergelijke toewijzing tot één cluster is beperkt en mogelijk is de capaciteit van het cluster niet meer beschikbaar. Lees meer informatie over het verbeteren van de kans op een succes volle toewijzing op http: \/ /aka.MS/Allocation-Guidance. "
 
 In dit artikel worden de oorzaken beschreven van enkele algemene toewijzings fouten en worden mogelijke oplossingen voorgesteld.
 

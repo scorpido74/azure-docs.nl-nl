@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea153b1927a337be29c2eb69e2417cc250abf5e8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086435"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366047"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Omgaan met beperkings problemen (429-"te veel aanvragen") in Azure Logic Apps
 
@@ -35,23 +35,23 @@ Als u de beperkings gebeurtenissen op dit niveau wilt vinden, controleert u het 
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer **metrische gegevens**onder **bewaking**in het menu van de logische app.
+1. Selecteer **metrische gegevens** onder **bewaking** in het menu van de logische app.
 
-1. Onder **grafiek titel**selecteert u **metrische gegevens toevoegen** zodat u een andere metriek toevoegt aan de bestaande.
+1. Onder **grafiek titel** selecteert u **metrische gegevens toevoegen** zodat u een andere metriek toevoegt aan de bestaande.
 
-1. Selecteer in de eerste meet balk, in de lijst **metrische gegevens** , de **actie vertraagde gebeurtenissen**. Selecteer in de tweede meet balk de optie **trigger vertraagde gebeurtenissen**in de lijst **metriek** .
+1. Selecteer in de eerste meet balk, in de lijst **metrische gegevens** , de **actie vertraagde gebeurtenissen**. Selecteer in de tweede meet balk de optie **trigger vertraagde gebeurtenissen** in de lijst **metriek** .
 
 U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
 * Beperk het aantal logische app-exemplaren dat tegelijkertijd kan worden uitgevoerd.
 
-  Als de trigger voorwaarde van uw logische app meer dan één keer wordt voldaan, worden meerdere trigger exemplaren voor uw logische app gelijktijdig of *parallel*uitgevoerd. Dit gedrag houdt in dat elke trigger instantie wordt gestart voordat het vorige werk stroom exemplaar wordt uitgevoerd.
+  Als de trigger voorwaarde van uw logische app meer dan één keer wordt voldaan, worden meerdere trigger exemplaren voor uw logische app gelijktijdig of *parallel* uitgevoerd. Dit gedrag houdt in dat elke trigger instantie wordt gestart voordat het vorige werk stroom exemplaar wordt uitgevoerd.
 
   Hoewel het standaard aantal trigger instanties dat gelijktijdig kan worden uitgevoerd, [onbeperkt](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)is, kunt u dit aantal beperken door [de gelijktijdigheids instelling voor de trigger in te scha kelen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)en, indien nodig, een andere limiet te selecteren dan de standaard waarde.
 
 * Modus voor hoge door Voer inschakelen.
 
-  Een logische app heeft een [standaard limiet voor het aantal acties dat kan worden uitgevoerd gedurende een interval van 5 minuten](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Als u deze limiet wilt verhogen voor het maximum aantal acties, schakelt u de [modus voor hoge door Voer](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode) in voor uw logische app.
+  Een logische app heeft een [standaard limiet voor het aantal acties dat kan worden uitgevoerd gedurende een interval van 5 minuten](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Als u deze limiet wilt verhogen voor het maximum aantal acties, schakelt u de [modus voor hoge door Voer](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode) in voor uw logische app.
 
 * Schakel het gedrag voor het debatcheren van matrices (' splitsen op ') in triggers uit.
 
@@ -59,7 +59,7 @@ U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
 * Verdeel acties in kleinere logische apps.
 
-  Zoals eerder vermeld, is een logische app beperkt tot een [standaard aantal acties dat gedurende een periode van vijf minuten kan worden uitgevoerd](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Hoewel u deze limiet kunt verhogen door de [modus voor hoge door Voer](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)in te scha kelen, kunt u ook overwegen of u de acties van uw logische app wilt opsplitsen in kleinere logische apps zodat het aantal acties dat in elke logische app wordt uitgevoerd, onder de limiet blijft. Op die manier vermindert u de belasting van één logische app-resource en distribueert u de belasting over meerdere logische apps. Deze oplossing werkt beter voor acties waarmee grote gegevens sets worden verwerkt of waarmee zo veel gelijktijdig uitgevoerde acties, herhalingen of acties binnen elke lus worden herhaald die ze overschrijden.
+  Zoals eerder vermeld, is een logische app beperkt tot een [standaard aantal acties dat gedurende een periode van vijf minuten kan worden uitgevoerd](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Hoewel u deze limiet kunt verhogen door de [modus voor hoge door Voer](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode)in te scha kelen, kunt u ook overwegen of u de acties van uw logische app wilt opsplitsen in kleinere logische apps zodat het aantal acties dat in elke logische app wordt uitgevoerd, onder de limiet blijft. Op die manier vermindert u de belasting van één logische app-resource en distribueert u de belasting over meerdere logische apps. Deze oplossing werkt beter voor acties waarmee grote gegevens sets worden verwerkt of waarmee zo veel gelijktijdig uitgevoerde acties, herhalingen of acties binnen elke lus worden herhaald die ze overschrijden.
 
   Met deze logische app kunnen bijvoorbeeld alle tabellen uit een SQL Server Data Base worden opgehaald en worden de rijen uit elke tabel opgehaald. Met de **voor elke** lus wordt elke tabel gelijktijdig herhaald, zodat de actie **rijen ophalen** de rijen voor elke tabel retourneert. Op basis van de hoeveel heden gegevens in deze tabellen, kunnen deze acties de limiet voor het uitvoeren van acties overschrijden.
 
@@ -135,7 +135,7 @@ U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
 Hoewel een connector zijn eigen beperkings limieten heeft, hebben de doel service of het systeem dat wordt aangeroepen door de connector mogelijk ook beperkings limieten. Sommige Api's in micro soft Exchange server hebben bijvoorbeeld strikte beperkings limieten dan de Office 365 Outlook-Connector.
 
-Standaard worden de instanties van een logische app en alle lussen of vertakkingen binnen die instanties *parallel*uitgevoerd. Dit gedrag houdt in dat meerdere exemplaren tegelijkertijd hetzelfde eind punt kunnen aanroepen. Elk exemplaar weet niet over het andere bestaan, dus pogingen om mislukte acties opnieuw uit te voeren, kunnen [race omstandigheden](https://en.wikipedia.org/wiki/Race_condition) maken waarbij meerdere aanroepen gelijktijdig proberen te worden uitgevoerd, maar dat de aanroepen bij de doel service of het systeem moeten arriveren voordat de beperking wordt gestart.
+Standaard worden de instanties van een logische app en alle lussen of vertakkingen binnen die instanties *parallel* uitgevoerd. Dit gedrag houdt in dat meerdere exemplaren tegelijkertijd hetzelfde eind punt kunnen aanroepen. Elk exemplaar weet niet over het andere bestaan, dus pogingen om mislukte acties opnieuw uit te voeren, kunnen [race omstandigheden](https://en.wikipedia.org/wiki/Race_condition) maken waarbij meerdere aanroepen gelijktijdig proberen te worden uitgevoerd, maar dat de aanroepen bij de doel service of het systeem moeten arriveren voordat de beperking wordt gestart.
 
 Stel bijvoorbeeld dat u een matrix hebt met 100 items. U gebruikt een lus ' voor elke ' om de matrix door te lopen en het gelijktijdigheids beheer van de lus in te scha kelen, zodat u het aantal parallelle iteraties kunt beperken tot 20 of de [huidige standaard limiet](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits). Binnen die lus voegt een actie een item uit de matrix toe aan een SQL Server-Data Base, waardoor slechts 15 aanroepen per seconde worden toegestaan. Dit scenario resulteert in een beperkings probleem, omdat er een nieuwe poging wordt gedaan om het programma te bouwen en nooit uit te voeren.
 

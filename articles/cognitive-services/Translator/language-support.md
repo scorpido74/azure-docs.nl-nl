@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669636"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364416"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Ondersteuning van talen en regio's voor tekst-en spraak omzetting
 
@@ -279,7 +279,7 @@ U kunt een lijst met ondersteunde talen voor Translator ophalen met behulp van d
 
 [Documentatie voor het bewerkings overzicht van talen weer geven](reference/v3-0-languages.md)
 
-## <a name="customization"></a>Aanpassen
+## <a name="customization"></a>Aanpassing
 
 De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [aangepaste vertaler](https://aka.ms/CustomTranslator).
 
@@ -347,7 +347,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Welsh | `cy` |
 
 ## <a name="speech-translation"></a>Speech Translation
-Spraak omzetting is beschikbaar via Translator met Cognitive Services Speech Service. Raadpleeg de documentatie van de [Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) voor meer informatie over het gebruik van spraak omzetting en voor het weer geven van alle [beschik bare taal opties](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
+Spraak omzetting is beschikbaar via Translator met Cognitive Services Speech Service. Raadpleeg de documentatie van de [Speech-Service](../speech-service/index.yml) voor meer informatie over het gebruik van spraak omzetting en voor het weer geven van alle [beschik bare taal opties](../speech-service/language-support.md).
 
 ### <a name="speech-to-text"></a>Spraak naar tekst
 Converteer spraak naar tekst om om te zetten naar de tekst taal van uw keuze. Spraak-naar-tekst wordt gebruikt voor spraak naar tekst omzetting, of voor conversie van spraak naar spraak wanneer deze wordt gebruikt in combi natie met spraak synthese.

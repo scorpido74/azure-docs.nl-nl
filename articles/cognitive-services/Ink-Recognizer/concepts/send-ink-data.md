@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecf3ad43b46d491d5f15270790251a0bc4e882e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051097"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365360"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Inktgegevens naar de Ink Recognizer-API verzenden 
 
@@ -64,7 +64,7 @@ De inkt Recognizer-API retourneert een analyse reactie op de objecten die worden
 
 ## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>Vormen die worden herkend door de API voor inkt herkenning
 
-Met de API voor inkt herkenning kunt u de meest gebruikte vormen identificeren bij het maken van notities. In de onderstaande afbeelding ziet u enkele eenvoudige voor beelden. Zie het [naslag artikel over API](https://go.microsoft.com/fwlink/?linkid=2089907)voor een volledige lijst met shapes en andere inkt inhoud die wordt herkend door de API. 
+Met de API voor inkt herkenning kunt u de meest gebruikte vormen identificeren bij het maken van notities. In de onderstaande afbeelding ziet u enkele eenvoudige voor beelden. Zie het [naslag artikel over API](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)voor een volledige lijst met shapes en andere inkt inhoud die wordt herkend door de API. 
 
 ![De lijst met vormen die worden herkend door de API voor inkt herkenning](../media/shapes.png)
 
@@ -84,12 +84,12 @@ Met de herkennings resultaten vooraf vindt u informatie over de kenmerken van in
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>De inkt Recognizer-API integreren met Windows Ink
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) bevat hulpprogram ma's en technologieën om digitale inkt ervaringen op diverse apparaten mogelijk te maken. U kunt het Windows-inkt platform combi neren met de API voor inkt herkenning om toepassingen te maken die digitale inkt streken weer geven en interpreteren.
+[Windows Ink](/windows/uwp/design/input/pen-and-stylus-interactions) bevat hulpprogram ma's en technologieën om digitale inkt ervaringen op diverse apparaten mogelijk te maken. U kunt het Windows-inkt platform combi neren met de API voor inkt herkenning om toepassingen te maken die digitale inkt streken weer geven en interpreteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is de Ink Recognizer-API?](../overview.md)
-* [Naslag informatie over REST API van inkt herkenning](https://go.microsoft.com/fwlink/?linkid=2089907)
+* [Naslag informatie over REST API van inkt herkenning](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 * Begin met het verzenden van digitale inkt gegevens met behulp van:
     * [C#](../quickstarts/csharp.md)
