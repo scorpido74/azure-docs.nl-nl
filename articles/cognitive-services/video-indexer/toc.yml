@@ -4,7 +4,7 @@
     - name: Wat is Video Indexer?
       href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: Concepten
-      href: ../../media-services/video-indexer/video-indexer-concepts.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -13,7 +13,7 @@
 - name: Handleidingen
   items:
     - name: Migreren van v1 naar v2
-      href: ../../media-services/video-indexer/migrate-from-v1-to-v2.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: Verbinding maken met Azure
       href: ../../media-services/video-indexer/connect-to-azure.md
     - name: Een met Azure verbonden account beheren
@@ -29,7 +29,7 @@
     - name: Video Indexer-inzichten weergeven en bewerken
       href: ../../media-services/video-indexer/video-indexer-view-edit.md
     - name: Video-inzichten maken van bestaande video's
-      href: ../../media-services/video-indexer/video-indexer-create-new.md
+      href: ../../media-services/video-indexer/use-editor-create-project.md
     - name: Widgets insluiten in uw toepassing
       href: ../../media-services/video-indexer/video-indexer-embed-widgets.md
 - name: Naslaginformatie

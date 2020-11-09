@@ -64,6 +64,8 @@
           href: cdn-create-endpoint-how-to.md
         - name: Beheren met behulp van Azure PowerShell
           href: cdn-manage-powershell.md
+        - name: Onboarding van een basis- of hoofddomein
+          href: onboard-apex-domain.md
         - name: Toegang beperken per land of regio
           href: cdn-restrict-access-by-country.md
         - name: De prestaties verbeteren door bestanden te comprimeren

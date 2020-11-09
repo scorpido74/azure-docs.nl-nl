@@ -1,9 +1,9 @@
 - name: Documentatie voor Sprekerherkenning
-  href: Home.md
+  href: ../speech-service/speaker-recognition-overview.md
 - name: Overzicht
   items:
     - name: Meer informatie over Sprekerherkenning
-      href: Home.md
+      href: ../speech-service/speaker-recognition-overview.md
 - name: Naslaginformatie
   items:
     - name: API-naslaginformatie
