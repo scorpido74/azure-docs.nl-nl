@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044663"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099110"
 ---
 # <a name="what-is-azure-digital-twins"></a>Wat is Azure Digital Twins?
 
@@ -88,20 +88,16 @@ Een volledige oplossing met Azure Digital Twins kan de volgende onderdelen bevat
 
 In de volgende grafiek ziet u waar Azure Digital Twins zich bevindt in de context van een grotere Azure IoT-oplossing.
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="Schermopname van de voorbeeldtoepassing Azure Digital Twins-verkenner, waarop een grafiek van knooppunten die voor digital twins staan wordt weergegeven" border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Diagram met de invoerbronnen, uitvoerservices en communicatie in twee richtingen met zowel client-apps als externe rekenresources." border="false" lightbox="media/overview/solution-context.png":::
 
-## <a name="service-limits-in-public-preview"></a>Servicebeperkingen van de openbare preview
+## <a name="service-limits"></a>Servicelimieten
 
-> [!IMPORTANT]
-> Azure Digital Twins is momenteel beschikbaar als openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [*Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
-
-Voor een lijst van de beperkingen van Azure Digital Twins tijdens een openbare preview, raadpleegt u [*Referentie: Servicebeperkingen van de openbare preview*](reference-service-limits.md).
+Voor een lijst met beperkingen van Azure Digital Twins, raadpleegt u [*Referentie: servicelimieten*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u met de vorige preview-versie van Azure Digital Twins hebt gewerkt, leest u hier wat er is gewijzigd:
-* [*Overzicht: Verschillen met de vorige versie*](overview-differences.md)
+Als u met de eerste preview-versie van Azure Digital Twins (oktober 2018) hebt gewerkt, leest u hier wat er is gewijzigd:
+* [*Overzicht: verschillen met de eerste release*](overview-differences.md)
 
 U kunt ook direct aan de slag met Azure Digital Twins door de eerste zelfstudie te volgen:
 

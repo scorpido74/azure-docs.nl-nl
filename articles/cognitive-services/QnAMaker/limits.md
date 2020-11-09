@@ -4,13 +4,13 @@ description: QnA Maker heeft meta limieten voor delen van de Knowledge Base en d
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/14/2020
-ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776252"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375615"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Limieten en grenzen voor de Knowledge Base QnA Maker
 
@@ -50,6 +50,9 @@ Bestands namen mogen niet de volgende tekens bevatten:
 ### <a name="maximum-number-of-files"></a>Maximum aantal bestanden
 
 Het maximum aantal bestanden dat kan worden geëxtraheerd en de maximale bestands grootte is gebaseerd op uw **[QnA Maker prijs categorie limieten](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)**.
+
+> [!NOTE]
+> QnA Maker Managed (preview) is een gratis service zonder limieten voor het aantal bronnen dat kan worden toegevoegd. De door Voer is momenteel beperkt tot 10 trans acties per seconde voor zowel beheer-Api's als Voorspellings-Api's.
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>Maximum aantal diep gaande koppelingen van URL
 

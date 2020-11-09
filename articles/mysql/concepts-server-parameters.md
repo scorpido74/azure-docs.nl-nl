@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b6a914df9ed277625d3706465fe335e128aeced1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b5b171941a3da42d2f5b385303c51285ff793599
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545154"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376771"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parameters in Azure Database for MySQL
 
@@ -31,7 +31,7 @@ Raadpleeg de volgende secties voor meer informatie over de limieten van de versc
 
 ### <a name="thread-pools"></a>Thread groepen
 
-MySQL wijst traditioneel een thread toe voor elke client verbinding. Naarmate het aantal gelijktijdige gebruikers toeneemt, is er een overeenkomende daling van de prestaties. Veel actieve threads kunnen van invloed zijn op de prestaties aanzienlijk als gevolg van een grotere context omschakeling, thread-conflicten en een onjuiste plaats voor CPU-caches.
+MySQL wijst traditioneel een thread toe voor elke client verbinding. Naarmate het aantal gelijktijdige gebruikers toeneemt, is er een overeenkomstige drop in-vorm. Veel actieve threads kunnen van invloed zijn op de prestaties aanzienlijk als gevolg van een grotere context omschakeling, thread-conflicten en een onjuiste plaats voor CPU-caches.
 
 Thread groepen die zich op de server functie bevindt en die verschillend zijn van groepsgewijze verbindingen, maximaliseren de prestaties door een dynamische groep werk thread te introduceren die kan worden gebruikt om het aantal actieve threads dat op de server wordt uitgevoerd, te beperken en de thread verloop tot een minimum te beperken. Dit zorgt ervoor dat de server niet meer bronnen heeft of niet meer wordt gecrasht vanwege onvoldoende geheugen. Thread groepen zijn het meest efficiënt voor korte query's en CPU-intensieve workloads, bijvoorbeeld OLTP-workloads.
 
@@ -57,9 +57,9 @@ Als u de prestatie problemen met korte query's in de thread groep wilt verbetere
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-In Azure Database for MySQL zijn binaire logboeken altijd ingeschakeld (bijvoorbeeld `log_bin` ingesteld op aan). Als u triggers wilt gebruiken, wordt er een fout bericht weer gegeven die vergelijkbaar *is met de superrechts-en binaire logboek registratie is ingeschakeld (mogelijk wilt u de minder veilige `log_bin_trust_function_creators` variabele gebruiken)* . 
+In Azure Database for MySQL zijn binaire logboeken altijd ingeschakeld (bijvoorbeeld `log_bin` ingesteld op aan). Als u triggers wilt gebruiken, wordt er een fout bericht weer gegeven die vergelijkbaar *is met de superrechts-en binaire logboek registratie is ingeschakeld (mogelijk wilt u de minder veilige `log_bin_trust_function_creators` variabele gebruiken)*. 
 
-De indeling van de binaire logboek registratie is altijd **rij** en alle verbindingen met de server gebruiken **altijd** binaire logboek registratie van rijen. Met binaire logboek registratie op basis van rijen bestaan geen beveiligings problemen en kan binaire logboek registratie niet breken, dus u kunt veilig instellen [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) op **True** .
+De indeling van de binaire logboek registratie is altijd **rij** en alle verbindingen met de server gebruiken **altijd** binaire logboek registratie van rijen. Met binaire logboek registratie op basis van rijen bestaan geen beveiligings problemen en kan binaire logboek registratie niet breken, dus u kunt veilig instellen [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) op **True**.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -108,7 +108,7 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/innodb
 
 MySQL slaat de tabel InnoDB op in verschillende tablespaces op basis van de configuratie die u hebt ingevoerd tijdens het maken van de tabel. De [systeem-tabel ruimte](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) is het opslag gebied voor de InnoDB-data dictionary. Een [bestand-per-tabel tabel ruimte](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) bevat gegevens en indexen voor één InnoDB-tabel en wordt opgeslagen in het bestands systeem in een eigen gegevens bestand. Dit gedrag wordt bepaald door de `innodb_file_per_table` para meter server. Instelling `innodb_file_per_table` om `OFF` ervoor te zorgen dat InnoDB tabellen maakt in de ruimte van het systeem. Anders maakt InnoDB tabellen in file-per-tabel tablespaces.
 
-Azure Database for MySQL ondersteunt Maxi maal **1 TB** in één gegevens bestand. Als de grootte van de data base groter is dan 1 TB, maakt u de tabel in [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabel ruimte. Als u één tabel grootte hebt die groter is dan 1 TB, moet u de partitie tabel gebruiken.
+Azure Database for MySQL ondersteunt Maxi maal **4 TB** in één gegevens bestand. Als de grootte van de data base groter is dan 4 TB, maakt u de tabel in [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabel ruimte. Als u één tabel grootte hebt die groter is dan 4 TB, moet u de partitie tabel gebruiken.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -132,7 +132,7 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/server
 
 ### <a name="max_connections"></a>max_connections
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimumwaarde**|**Maximumwaarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|

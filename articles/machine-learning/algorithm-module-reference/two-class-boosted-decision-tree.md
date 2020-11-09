@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 568cd7b280b8fb65b5f75588a2832631361938dd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 810878956a89b6e7400be99692cf43925d1cd134
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420611"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375907"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Two-Class versterkte beslissings structuur module
 
@@ -56,7 +56,7 @@ U kunt dit type model trainen met [Train model](././train-model.md).
   
 6.  Geef voor **aantal geconstrueerde structuren** het totale aantal beslissings structuren op dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar wordt de trainings tijd verhoogd.
   
-     Deze waarde bepaalt ook het aantal structuren dat wordt weer gegeven wanneer het getrainde model wordt gevisualiseerd. Als u één structuur wilt zien of afdrukken, stelt u de waarde in op 1. Wanneer u dit echter doet, wordt er slechts één boom structuur geproduceerd (de structuur met de initiële set para meters) en worden er geen verdere herhalingen uitgevoerd.
+     Als u de waarde instelt op 1, wordt er slechts één boom structuur geproduceerd (de boom structuur met de initiële set para meters). er worden geen verdere herhalingen uitgevoerd.
   
 7.  Voor **wille keurig getal zaad** typt u optioneel een niet-negatief geheel getal dat moet worden gebruikt als de wille keurige Seed-waarde. Het opgeven van een Seed zorgt voor een reproduceer baarheid van alle uitvoeringen die dezelfde gegevens en para meters hebben.  
   

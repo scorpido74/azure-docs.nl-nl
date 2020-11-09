@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ccae831498c8c10895387b78c07e4f8ddc228be1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8eb144ab23d45e57ee8d52f06363ea37b600ec
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87026557"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375275"
 ---
 # <a name="protected-web-api---move-to-production"></a>Beveiligde web-API: verplaatsen naar productie
 
@@ -27,18 +27,11 @@ Nu u weet hoe u uw web-API moet beveiligen, kunt u deze naar productie verplaats
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het aanroepen van een stroomafwaartse API.
+Meer informatie over het aanroepen van een downstream API in [scenario: een web-API die web-api's aanroept](scenario-web-api-call-api-overview.md).
 
-> [!div class="nextstepaction"]
-> [Scenario: Web API roept downstream Api's aan](scenario-web-api-call-api-overview.md)
 
-Meer informatie met zelf studies en voor beelden.
+Meer informatie met zelf studies en voor beelden op GitHub:
 
-> [!div class="nextstepaction"]
-> [Een beveiligde API aanroepen met een daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
-
-> [!div class="nextstepaction"]
-> [Zelf studie voor de Web-API ASP.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
-
-> [!div class="nextstepaction"]
-> [ASP.NET Web API-voor beeld](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+- [Een beveiligde API aanroepen met een daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
+- [Zelf studie voor de Web-API ASP.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+- [ASP.NET Web API-voor beeld](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

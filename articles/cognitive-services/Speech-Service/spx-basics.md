@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 7ca290b7b7df9e4e03aec78b611361ba52942523
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893812"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286680"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Meer informatie over de basisbeginselen van de Speech CLI
 
@@ -72,8 +72,9 @@ In deze opdracht geeft u zowel de brontaal (taal om **vanaf** om te zetten) op a
 
 ### <a name="configuration-files-in-the-datastore"></a>Configuratiebestanden in het gegevensarchief
 
-De Spraak-CLI kan meerdere instellingen lezen en schrijven in configuratiebestanden, die zijn opgeslagen in het lokale gegevensarchief voor Spraak-CLI en die worden genoemd in Spraak-CLI-aanroepen met behulp van een @-teken. De Spraak-CLI probeert een nieuwe instelling op te slaan in een nieuwe `./spx/data`-submap die wordt gemaakt in de huidige werkmap.
-Bij het zoeken naar een configuratiewaarde zoekt de Spraak-CLI in uw huidige werkmap en vervolgens in het pad `./spx/data`.
+Het gedrag van de Speech CLI kan afhankelijk zijn van instellingen in configuratiebestanden, waarnaar u binnen Speech CLI-aanroepen kunt verwijzen met een @-teken.
+De Speech CLI slaat een nieuwe instelling op in een nieuwe `./spx/data`-submap die wordt gemaakt in de huidige werkmap.
+Bij het zoeken naar een configuratiewaarde zoekt de Speech CLI in uw huidige werkmap en vervolgens in het gegevensarchief in `./spx/data`, en vervolgens in andere gegevensarchieven, waaronder een gegevensarchief voor definitieve alleen-lezen versies in het binaire bestand `spx`.
 U hebt eerder het gegevensarchief gebruikt om uw `@key` en `@region`-waarden op te slaan, zodat u deze niet hoeft op te geven bij elke opdrachtregelaanroep.
 U kunt ook configuratiebestanden gebruiken om uw eigen configuratie-instellingen op te slaan, of zelfs gebruiken voor het doorgeven van URL's of andere dynamische inhoud die tijdens CLR is gegenereerd.
 
@@ -99,7 +100,7 @@ spx csr model status --model @my.model.txt --wait
 ```
 
 In het volgende voorbeeld worden twee URL's naar het configuratiebestand `@my.datasets.txt` geschreven.
-In dit scenario kan `--output` een optioneel **toevoegen**-trefwoord bevatten om een configuratiebestand te maken of toe te voegen aan de bestaande.
+In dit scenario kan `--output` een optioneel **toevoegen** -trefwoord bevatten om een configuratiebestand te maken of toe te voegen aan de bestaande.
 
 
 ```shell
@@ -181,4 +182,4 @@ spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.ts
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voltooi de quickstarts over [spraakherkenning](./quickstarts/speech-to-text-from-microphone.md) of [spraaksynthese](./quickstarts/text-to-speech.md) met behulp van de SDK.
+* Voltooi de quickstarts over [spraakherkenning](get-started-speech-to-text.md?pivots=programmer-tool-spx) of [spraaksynthese](get-started-text-to-speech.md?pivots=programmer-tool-spx) met behulp van de Speech CLI.

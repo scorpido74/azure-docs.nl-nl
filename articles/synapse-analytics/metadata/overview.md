@@ -1,6 +1,6 @@
 ---
 title: Gedeeld metagegevensmodel
-description: Met Azure Synapse Analytics kunnen de verschillende rekenengines voor de werkruimte databases en tabellen delen tussen de Spark-pools (preview-versie), de SQL-on-demand engine (preview-versie) en SQL-pools.
+description: Met Azure Synapse Analytics kunnen de verschillende rekenengines voor de werkruimte databases en tabellen delen tussen de serverloze Apache Spark-pools (preview), de serverloze SQL-pool (preview) en toegewezen SQL-pools.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 64c19f3331be8ffda433207da88ebf22c546ee4e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87387333"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324669"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Gedeelde Azure Synapse Analytics-metagegevens
 
-Met Azure Synapse Analytics kunnen de verschillende rekenengines voor de werkruimte databases en tabellen delen tussen de Spark-pools (preview-versie) en de SQL-on-demand engine (preview-versie).
+Met Azure Synapse Analytics kunnen de verschillende rekenengines voor de werkruimte databases en tabellen delen tussen de serverloze Apache Spark-pools (preview) en serverloze SQL-pools (preview).
 
 [!INCLUDE [preview](../includes/note-preview.md)]
 
@@ -32,7 +32,7 @@ Het gedeelde metagegevensmodel ondersteunt het moderne datawarehousepatroon op d
 
 2. De door Spark gemaakte databases en alle tabellen worden zichtbaar in een Azure Synapse-werkruimte met Spark-poolexemplaren en kunnen worden gebruikt vanuit elke Spark-taak. Deze mogelijkheid is onderhevig aan [machtigingen](#security-model-at-a-glance), aangezien alle Spark-pools in een werkruimte dezelfde onderliggende catalogusmeta-opslagplaats delen.
 
-3. De door Spark gemaakte databases en de door Parquet ondersteunde tabellen worden zichtbaar in de werkruimte-SQL on-demand engine. [Databases](database.md) worden automatisch gemaakt in de SQL-on-demand metagegevens en zowel de [externe en beheerde tabellen](table.md) die zijn gemaakt door een Spark-taak, worden toegankelijk gemaakt als externe tabellen in de SQL-on-demand metagegevens in het `dbo`-schema van de bijbehorende database. 
+3. De door Apache Spark gemaakte databases en de door Parquet ondersteunde tabellen worden zichtbaar in de werkruimte-serverloze SQL-pool. [Databases](database.md) worden automatisch gemaakt in de metagegevens van de serverloze SQL-pool en de [externe en beheerde tabellen](table.md) die zijn gemaakt door een Apache Spark-taak, worden toegankelijk gemaakt als externe tabellen in de metagegevens van de serverloze SQL-pool in het `dbo`-schema van de bijbehorende database. 
 
 <!--[INSERT PICTURE]-->
 
@@ -52,7 +52,7 @@ Zie [Gedeelde database van Azure Synapse Analytics](database.md) voor meer infor
 
 ## <a name="change-maintenance"></a>Onderhoud wijzigen
 
-Als een metagegevensobject wordt verwijderd of gewijzigd met Spark, worden de wijzigingen opgehaald en doorgegeven aan de SQL-on-demand engine. Synchronisatie is asynchroon en wijzigingen worden na enige vertraging weergegeven in de SQL-engine.
+Als een metagegevensobject wordt verwijderd of gewijzigd met Spark, worden de wijzigingen opgehaald en doorgegeven aan de serverloze SQL-pool. Synchronisatie is asynchroon en wijzigingen worden na enige vertraging weergegeven in de SQL-engine.
 
 ## <a name="next-steps"></a>Volgende stappen
 

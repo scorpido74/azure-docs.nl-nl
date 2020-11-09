@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: f09a77043a552d8d7f09c2a6abcb78f89cbf8ee2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420679"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376329"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -26,7 +26,7 @@ Deze module is handig voor het maken van modellen die drie of meer mogelijke res
 
 Sommige classificatie algoritmen maken het gebruik van meer dan twee klassen mogelijk per ontwerp. Andere beperken de mogelijke resultaten voor een van twee waarden (een binair of een model met twee klassen). Maar zelfs binaire classificatie algoritmen kunnen worden aangepast voor classificatie taken met meerdere klassen via verschillende strategieën. 
 
-Met deze module wordt de methode één-op-alle toegepast, waarbij een binair model voor elk van de meerdere uitvoer klassen wordt gemaakt. In de module wordt elk van deze binaire modellen voor de afzonderlijke klassen geëvalueerd op basis van de aanvulling (alle andere klassen in het model) alsof het een probleem is met de binaire classificatie. De module voert vervolgens voor spellingen uit door deze binaire classificaties uit te voeren en de voor spelling te kiezen met de hoogste betrouwbaarheids Score.  
+Met deze module wordt de methode één-op-alle toegepast, waarbij een binair model voor elk van de meerdere uitvoer klassen wordt gemaakt. In de module wordt elk van deze binaire modellen voor de afzonderlijke klassen geëvalueerd op basis van de aanvulling (alle andere klassen in het model) alsof het een probleem is met de binaire classificatie. Naast de verwerkings efficiëntie (alleen `n_classes` classificaties zijn nodig), is een voor deel van deze benadering de interpretiteit. Omdat elke klasse wordt vertegenwoordigd door één en één classificatie, is het mogelijk om kennis te krijgen over de-klasse door de bijbehorende classificatie te controleren. Dit is de meest gebruikte strategie voor de classificatie van verschillende klassen en is een billijke standaard optie. De module voert vervolgens voor spellingen uit door deze binaire classificaties uit te voeren en de voor spelling te kiezen met de hoogste betrouwbaarheids Score. 
 
 In essentie maakt de module een ensemble van afzonderlijke modellen en voegt de resultaten vervolgens samen om één model te maken waarmee alle klassen worden voor speld. Een binaire classificatie kan worden gebruikt als basis voor een model dat overal en op alle is gebaseerd.  
 

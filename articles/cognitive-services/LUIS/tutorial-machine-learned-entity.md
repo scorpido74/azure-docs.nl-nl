@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334720"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130748"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Zelfstudie: Gestructureerde gegevens uit de uiting van de gebruiker extraheren met machine learning-entiteiten in Language Understanding (LUIS)
 
@@ -72,7 +72,7 @@ Als u details over een pizzabestelling wilt extraheren, maakt u een `Order` enti
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    Begin met het selecteren net vóór de meest linkse tekst van `pickup` (#1) en ga vervolgens net verder dan de meest rechtse tekst, `anchovies` (#2 - hiermee wordt het labelproces beëindigd). Er wordt een pop-upmenu weergegeven. Voer in het pop-upvenster de naam van de entiteit in als `Order` (#3). Selecteer vervolgens `Order Create new entity` in de lijst (#4).
+    Klik en sleep de muisaanwijzer over de tekst voor de eerste voorbeeldintentie. Voer in het menu dat wordt weergegeven, de naam van de entiteit in als `Order`. Selecteer vervolgens `Order Create new entity` in de lijst.
 
     ![Label het begin en eind van de tekst voor de volledige bestelling](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
@@ -110,7 +110,7 @@ Door een lijst met bekende grootten toe te voegen die door de clienttoepassing w
 
 1. Selecteer **Entiteiten** in het menu links en selecteer vervolgens **+ Maken**.
 
-1. Stel de naam van de entiteit in als `SizeListentity` en stel het type in als **Lijst**, zodat het gemakkelijk te identificeren is in vergelijking met de `SizePhraselist` die in de vorige sectie is gemaakt.
+1. Stel de naam van de entiteit in als `SizeListentity` en stel het type in als **Lijst** , zodat het gemakkelijk te identificeren is in vergelijking met de `SizePhraselist` die in de vorige sectie is gemaakt.
 
 1. Voeg de grootten toe die de clienttoepassing verwacht: `Small`, `Medium`, `Large`en `XLarge`. Voeg vervolgens synoniemen toe voor elk. De synoniemen moeten de termen zijn die een gebruiker invoert in de chatbot. De entiteit wordt geëxtraheerd met een lijstentiteit wanneer deze precies overeenkomt met de genormaliseerde waarde of synoniemen.
 
@@ -236,7 +236,7 @@ Om een voorspelling van LUIS te ontvangen in een chatbot of een andere clienttoe
 
     ![Schermopname van knop om vanuit LUIS te publiceren naar eindpunt in menu rechtsboven](./media/howto-publish/publish-button.png)
 
-1. Selecteer de sleuf **Productie**, selecteer **Instellingen wijzigen**, selecteer **Sentimentanalyse** en selecteer **Gereed**.
+1. Selecteer de sleuf **Productie** , selecteer **Instellingen wijzigen** , selecteer **Sentimentanalyse** en selecteer **Gereed**.
 
     > [!div class="mx-imgBorder"]
     > ![Schermopname van publiceren naar eindpunt vanuit LUIS](./media/tutorial-machine-learned-entity/publish-with-sentiment-analysis.png)

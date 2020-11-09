@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330635"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376640"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Chit-Chat toevoegen aan een kennis database
 
@@ -60,7 +60,15 @@ Tijdens het maken van de Knowledge Base hebt u na het toevoegen van uw bron-Url'
 ## <a name="add-chit-chat-to-an-existing-kb"></a>Chit-Chat toevoegen aan een bestaande KB
 Selecteer uw KB en navigeer naar de pagina **instellingen** . Er is een koppeling naar alle Chit-Chat gegevens sets in de juiste **. TSV** -indeling. Down load de gewenste persoonlijkheid en upload deze als een bestands bron. Zorg ervoor dat u de indeling of de meta gegevens niet bewerkt wanneer u het bestand downloadt en uploadt.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
+
 ![Chit-Chat toevoegen aan bestaande KB](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+
+![Chit-Chat toevoegen aan bestaande KB-preview-versie](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
+
+---
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>Uw chit-chat vragen en-antwoorden bewerken
 Wanneer u uw KB bewerkt, ziet u een nieuwe bron voor Chit-Chat, op basis van de door u geselecteerde persoonlijkheid. U kunt nu gewijzigde vragen toevoegen of de antwoorden bewerken, net als bij elke andere bron.

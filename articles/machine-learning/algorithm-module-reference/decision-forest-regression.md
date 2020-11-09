@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 7f9677bfd793e7ff21ff2c6c7e6760b630dc074b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76fd09b5e2c2540cbc1608558800e7897a6cf839
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898530"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375353"
 ---
 # <a name="decision-forest-regression-module"></a>Regressie-module voor beslissings structuur
 
@@ -42,15 +42,15 @@ Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor 
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Het regressie model voor beslissings structuur configureren
 
-1. Voeg de regressie-module van de **beslissings structuur** toe aan de pijp lijn. U kunt de module vinden in de ontwerp functie onder **machine learning**, **model initialiseren**en **regressie**.
+1. Voeg de regressie-module van de **beslissings structuur** toe aan de pijp lijn. U kunt de module vinden in de ontwerp functie onder **machine learning** , **model initialiseren** en **regressie**.
 
-2. Open de module-eigenschappen en kies voor **resampling methode**de methode die wordt gebruikt om de afzonderlijke structuren te maken.  U kunt **kiezen uit een** of meer van de **replicatie**.
+2. Open de module-eigenschappen en kies voor **resampling methode** de methode die wordt gebruikt om de afzonderlijke structuren te maken.  U kunt **kiezen uit een** of meer van de **replicatie**.
 
-    - **Overbaggen**: de functie voor het *verzamelen van de Boots trap* Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit door middel van voor spellingen. De aggregatie is het vinden van een Gaussiaans waarvan de eerste twee seconden overeenkomen met de momenten van het combi natie van Gaussiaans distributies die worden gegeven door het combi neren van alle distributies die door afzonderlijke bomen worden geretourneerd.
+    - **Overbaggen** : de functie voor het *verzamelen van de Boots trap* Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit door middel van voor spellingen. De aggregatie is het vinden van een Gaussiaans waarvan de eerste twee seconden overeenkomen met de momenten van het combi natie van Gaussiaans distributies die worden gegeven door het combi neren van alle distributies die door afzonderlijke bomen worden geretourneerd.
 
          Zie de Wikipedia-vermelding voor [Boots trap aggregatie](https://wikipedia.org/wiki/Bootstrap_aggregating)voor meer informatie.
 
-    - **Repliceren**: in replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling waarvan het gesplitste predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en de structuur is divers.
+    - **Repliceren** : in replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling waarvan het gesplitste predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en de structuur is divers.
 
          Voor meer informatie over het trainings proces met de optie **repliceren** raadpleegt u [besluitvormings forests voor computer vision en medische afbeeldings analyse. Criminisi en J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/).
 
@@ -60,29 +60,29 @@ Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor 
 
       Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven. U hebt deze waarden mogelijk geleerd door te experimenteren of ze als richt lijn te ontvangen.
 
-    - **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren. 
+    - **Parameter bereik** : Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren. 
 
 
 
-4. Geef voor **aantal beslissings structuren**het totale aantal beslissings structuren op dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar wordt de trainings tijd verhoogd.
+4. Geef voor **aantal beslissings structuren** het totale aantal beslissings structuren op dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar wordt de trainings tijd verhoogd.
 
     > [!TIP]
-    > Deze waarde bepaalt ook het aantal structuren dat wordt weer gegeven wanneer het getrainde model wordt gevisualiseerd. Als u één boom structuur wilt zien of afdrukken, kunt u de waarde instellen op 1. Dit betekent echter dat er slechts één structuur wordt geproduceerd (de structuur met de initiële set para meters) en er geen verdere herhalingen worden uitgevoerd.
+    > Als u de waarde instelt op 1, Dit betekent echter dat er slechts één structuur wordt geproduceerd (de structuur met de initiële set para meters) en er geen verdere herhalingen worden uitgevoerd.
 
-5. Voor **de maximale diepte van de beslissings structuren**typt u een getal om de maximale diepte van een beslissings structuur te beperken. Het verg Roten van de diepte van de structuur kan nauw keuriger zijn, met het risico van een aantal verdeelde en verhoogde opleidings tijd.
+5. Voor **de maximale diepte van de beslissings structuren** typt u een getal om de maximale diepte van een beslissings structuur te beperken. Het verg Roten van de diepte van de structuur kan nauw keuriger zijn, met het risico van een aantal verdeelde en verhoogde opleidings tijd.
 
-6. Voor het **aantal wille keurige splitsingen per knoop punt**typt u het aantal splitsingen dat moet worden gebruikt bij het maken van elk knoop punt van de structuur. Een *splitsing* houdt in dat onderdelen in elk niveau van de structuur (knoop punt) wille keurig worden gedeeld.
+6. Voor het **aantal wille keurige splitsingen per knoop punt** typt u het aantal splitsingen dat moet worden gebruikt bij het maken van elk knoop punt van de structuur. Een *splitsing* houdt in dat onderdelen in elk niveau van de structuur (knoop punt) wille keurig worden gedeeld.
 
-7. Geef voor het **minimum aantal steek proeven per blad knooppunt**het minimale aantal cases op dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.
+7. Geef voor het **minimum aantal steek proeven per blad knooppunt** het minimale aantal cases op dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.
 
      Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de trainings gegevens ten minste vijf gevallen bevatten die voldoen aan dezelfde voor waarden.
 
 
 9. Het model trainen:
 
-    + Als u de **modus trainer maken** instelt op **één para meter**, verbindt u een gecodeerde gegevensset en de module [Train model](train-model.md) .  
+    + Als u de **modus trainer maken** instelt op **één para meter** , verbindt u een gecodeerde gegevensset en de module [Train model](train-model.md) .  
   
-    + Als u de **modus trainer maken** instelt op het **parameter bereik**, verbindt u een gecodeerde gegevensset en traint u het model met behulp van [Hyper parameters model](tune-model-hyperparameters.md).  
+    + Als u de **modus trainer maken** instelt op het **parameter bereik** , verbindt u een gecodeerde gegevensset en traint u het model met behulp van [Hyper parameters model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 

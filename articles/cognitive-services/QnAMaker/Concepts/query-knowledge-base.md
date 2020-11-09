@@ -1,16 +1,14 @@
 ---
 title: Query's uitvoeren op de Knowledge Base-QnA Maker
 description: Een Knowledge Base moet worden gepubliceerd. Zodra de Knowledge Base is gepubliceerd, wordt deze in de runtime-Voorspellings eindpunt opgevraagd met behulp van de generateAnswer-API.
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: e8dd056a7b6357b8342d3059e17baa88db92b404
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776915"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376709"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>De Knowledge Base doorzoeken op antwoorden
 
@@ -18,9 +16,11 @@ Een Knowledge Base moet worden gepubliceerd. Zodra de Knowledge Base is gepublic
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Hoe QnA Maker een gebruikers query verwerkt om het beste antwoord te selecteren
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
+
 De getrainde en [gepubliceerde](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker Knowledge Base ontvangt een gebruikers query, vanuit een bot of andere client toepassing, op de [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Het volgende diagram illustreert het proces wanneer de query van de gebruiker wordt ontvangen.
 
-![Het classificatie model proces voor een gebruikers query](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+![Het classificatie model proces voor een gebruikers query](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
 ### <a name="ranker-process"></a>Classificatie proces
 
@@ -38,6 +38,30 @@ Het proces wordt uitgelegd in de volgende tabel.
 |||
 
 De functies die worden gebruikt, zijn, maar zijn niet beperkt tot semantiek op woord niveau, urgentie op term niveau in een verzameling en diep opgedane semantische modellen om de gelijkenis en relevantie tussen twee teken reeksen te bepalen.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+
+De getrainde en [gepubliceerde](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker Knowledge Base ontvangt een gebruikers query, vanuit een bot of andere client toepassing, op de [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Het volgende diagram illustreert het proces wanneer de query van de gebruiker wordt ontvangen.
+
+![Het classificatie model proces voor een voor beeld van een gebruikers query](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
+
+### <a name="ranker-process"></a>Classificatie proces
+
+Het proces wordt uitgelegd in de volgende tabel.
+
+|Stap|Doel|
+|--|--|
+|1|De client toepassing verzendt de query van de gebruiker naar de [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
+|2|QnA Maker de gebruikers query met taal detectie, spellingen en woord afbreekers verwerkt.|
+|3|Deze voor verwerking wordt gebruikt om de query van de gebruiker voor de beste Zoek resultaten te wijzigen.|
+|4|Deze gewijzigde query wordt verzonden naar een Azure Cognitive Search-index, die het `top` aantal resultaten ontvangt. Als het juiste antwoord niet in deze resultaten voor komt, verhoogt u de waarde `top` enigszins. Over het algemeen is de waarde 10 voor `top` Works in 90% van de query's.|
+|5|QnA Maker maakt gebruik van een model op basis van de status van een Transformeer bewerking voor het vergelijken van de overeenkomst tussen de gebruikers query en de QnA resultaten van de kandidaat die zijn opgehaald uit Azure Cognitive Search. Het model op basis van een transformator is een dieper leren model voor meerdere talen, wat horizon taal werkt voor het bepalen van de betrouwbaarheids scores en de nieuwe classificatie volgorde.|
+|6|De nieuwe resultaten worden weer gegeven in de rang orde van de client toepassing.|
+|||
+
+De rang schikking werkt op alle alternatieve vragen en beantwoordt om de best overeenkomende QnA-paren voor de gebruikers query te vinden. Gebruikers hebben de flexibiliteit om de classificatieer te configureren voor alleen een alleen-lezen classificatieer. 
+
+---
 
 ## <a name="http-request-and-response-with-endpoint"></a>HTTP-aanvraag en-antwoord met een eind punt
 Wanneer u uw Knowledge Base publiceert, maakt de service een op REST gebaseerd HTTP-eind punt dat kan worden geïntegreerd in uw toepassing, meestal een chat-bot.

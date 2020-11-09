@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303843"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131479"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Quickstart: Een nieuwe app maken in de LUIS-portal
 
@@ -20,21 +20,22 @@ In deze quickstart maakt u een nieuwe app in de LUIS-portal. Eerst maakt u de ba
 
 ## <a name="create-an-app"></a>Een app maken
 
-1. Selecteer **+ New app for conversation** (Nieuwe app voor gesprek) in de contextwerkbalk en selecteer vervolgens nogmaals **+ New app for conversation**.
+Als u een app wilt maken, klikt u op  **+ Nieuwe app**. 
 
-    > [!div class="mx-imgBorder"]
-    > [![Schermopname van het maken van een nieuwe app in de LUIS-portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+Typ de volgende informatie in het venster dat daarna wordt weergegeven:
 
-1. Configureer in het pop-upvenster de app met de volgende instellingen en selecteer vervolgens **Done** (Gereed).
+|Naam  |Beschrijving  |
+|---------|---------|
+|Naam     | Een naam voor uw app. Bijvoorbeeld 'home automation'. Vereist.        |
+|Cultuur     | De taal die door uw app wordt begrepen en waarin deze communiceert. Vereist.   |
+|Beschrijving | Een beschrijving voor uw app. Optioneel.
+|Voorspellingsresource | De voorspellingsresource waarmee query's worden ontvangen. Optioneel. |
 
-   |Naam van de instelling| Waarde | Doel|
-   |--|--|--|
-   |Naam|`myEnglishApp`|Unieke naam van de LUIS-app<br>vereist|
-   |Cultuur|**Engels**|Taal van uitingen van gebruikers, **en-us**<br>vereist|
-   |Description (Optional)|`App made with LUIS Portal`|Beschrijving van de app<br>optioneel|
-   |Prediction resource (Optional) |-  |Niet selecteren. LUIS geeft u een starterssleutel die gratis kan worden gebruikt voor het maken van een app en 1.000 voorspellingseindpuntaanvragen. |
+Selecteer **Gereed**.
 
-   ![Schermopname van het invoeren van instellingen voor een nieuwe app](./media/get-started-portal-build-app/create-new-app-settings.png)
+>[!NOTE]
+>De cultuur kan niet worden gewijzigd nadat de toepassing is gemaakt.
+
 
 ## <a name="create-intents"></a>Intents maken
 
@@ -52,7 +53,7 @@ De twee verschillende _intenties_ van de app sluiten aan bij de volgende intenti
 
 Voer de volgende stappen uit om intenties te maken:
 
-1. Nadat de app is gemaakt, bevindt u zich op de pagina **Intents** (Intenties) van het gedeelte **Build** (Bouwen). Selecteer **Maken**.
+1. Nadat de app is gemaakt, moet u controleren of u zich op de pagina **Intenties** van de sectie **Bouwen** bevindt. Selecteer **Maken**.
 
    [![Schermopname van het selecteren van 'Create' om een nieuwe intentie te maken](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -60,14 +61,9 @@ Voer de volgende stappen uit om intenties te maken:
 
 ## <a name="add-an-example-utterance"></a>Een voorbeelduiting toevoegen
 
-Nadat u intenties hebt gemaakt, voegt u voorbeelduitingen toe. Voorbeelduitingen zijn tekst die een gebruiker invoert in een chatbot of andere clienttoepassing. Ze stemmen de intentie van de gebruikerstekst af op een LUIS-intentie.
+Nadat u intenties hebt gemaakt, voegt u voorbeelduitingen toe. Voorbeelduitingen zijn tekst die een gebruiker invoert in een chatbot of andere clienttoepassing. Ze stemmen de intentie van de gebruikerstekst af op een LUIS-intentie. Voor de `FindForm`-intentie van deze voorbeeldtoepassing bevatten voorbeelduitingen het formuliernummer. De clienttoepassing heeft het formuliernummer nodig om aan de vraag van de gebruiker te voldoen, dus het is belangrijk om het op te nemen in de uiting.
 
-Voor de `FindForm`-intentie van deze voorbeeldtoepassing bevatten voorbeelduitingen het formuliernummer. De clienttoepassing heeft het formuliernummer nodig om aan de vraag van de gebruiker te voldoen, dus het is belangrijk om het op te nemen in de uiting.
-
-> [!div class="mx-imgBorder"]
-> [![Schermopname van het invoeren van voorbeelduitingen voor de intentie FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
-
-Voeg de volgende 15 voorbeelduitingen toe aan de `FindForm`-intentie.
+Voeg op de pagina **Intenties** voor `FindForm` het volgende utterances-voorbeeld toe onder **Voorbeelden van utterances**. 
 
 |#|Voorbeelden van utterances|
 |--|--|
@@ -137,7 +133,7 @@ De voorbeelduitingen voor de intentie **None** moeten buiten het toepassingsdome
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>De reguliere expressie-entiteit in de voor beelduitingen bekijken
 
-1. Controleer of de entiteit zich in de intentie **FindForm** bevindt door **Intents** (Intenties) te selecteren in het menu links. Selecteer de **FindForm**-intentie.
+1. Controleer of de entiteit zich in de intentie **FindForm** bevindt door **Intents** (Intenties) te selecteren in het menu links. Selecteer de **FindForm** -intentie.
 
    De entiteit wordt gemarkeerd waar deze voorkomt in de voorbeelduitingen.
 
@@ -146,7 +142,7 @@ De voorbeelduitingen voor de intentie **None** moeten buiten het toepassingsdome
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Uw nieuwe app testen met het interactieve testdeelvenster
 
-Gebruik het interactieve **Test**-deelvenster in de LUIS-portal om te valideren dat de entiteit wordt geëxtraheerd van nieuwe uitingen die de app nog niet heeft gezien.
+Gebruik het interactieve **Test** -deelvenster in de LUIS-portal om te valideren dat de entiteit wordt geëxtraheerd van nieuwe uitingen die de app nog niet heeft gezien.
 
 1. Selecteer **Test** in het menu rechtsboven.
 
@@ -159,7 +155,7 @@ Gebruik het interactieve **Test**-deelvenster in de LUIS-portal om te valideren 
    > [!div class="mx-imgBorder"]
    > ![Schermopname van het testen van een nieuwe uiting in het testdeelvenster](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   De hoogst scorende voorspelde intentie is inderdaad **FindForm**, met een betrouwbaarheid van 90% (0.977). De entiteit **FormNumber** wordt geëxtraheerd met de waarde hrf-234098.
+   De hoogst scorende voorspelde intentie is inderdaad **FindForm** , met een betrouwbaarheid van 90% (0.977). De entiteit **FormNumber** wordt geëxtraheerd met de waarde hrf-234098.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

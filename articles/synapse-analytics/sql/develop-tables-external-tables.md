@@ -9,38 +9,38 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a9bb3ac7d3028937a422f2cd94aca4f4f4f41b58
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a5a958228d79c86550604109d7aaf19e68593a57
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167532"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314954"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Externe tabellen gebruiken met Synapse SQL
 
-Een externe tabel verwijst naar gegevens die zich in Hadoop, Azure Storage Blob of Azure Data Lake Storage bevinden. Externe tabellen worden gebruikt voor het lezen van gegevens uit bestanden of het schrijven van gegevens naar bestanden in Azure Storage. Met Synapse SQL kunt u externe tabellen gebruiken om gegevens te lezen uit en te schrijven naar SQL-pool of SQL on-demand (preview).
+Een externe tabel verwijst naar gegevens die zich in Hadoop, Azure Storage Blob of Azure Data Lake Storage bevinden. Externe tabellen worden gebruikt voor het lezen van gegevens uit bestanden of het schrijven van gegevens naar bestanden in Azure Storage. Met Synapse SQL kunt u externe tabellen gebruiken om gegevens te lezen uit en te schrijven naar een toegewezen SQL-pool of serverloze SQL-pool (preview).
 
-## <a name="external-tables-in-synapse-sql-pool-and-on-demand"></a>Externe tabellen in Synapse SQL-pool en on-demand
+## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>Externe tabellen in een toegewezen SQL-pool en een serverloze SQL-pool
 
-### <a name="sql-pool"></a>[SQL-pool](#tab/sql-pool) 
+### <a name="dedicated-sql-pool"></a>[Toegewezen SQL-pool](#tab/sql-pool) 
 
-In SQL-pool kunt u een externe tabel gebruiken voor het volgende:
+In een toegewezen SQL-pool kunt u een externe tabel gebruiken voor het volgende:
 
 - Query's uitvoeren op Azure Blob Storage en Azure Data Lake Gen2 met Transact-SQL-instructies.
-- Gegevens uit Azure Blob Storage en Azure Data Lake Storage importeren en opslaan in SQL-pool.
+- Gegevens uit Azure Blob Storage en Azure Data Lake Storage importeren en opslaan in een toegewezen SQL-pool.
 
 Wanneer deze wordt gebruikt in combinatie met de instructie [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), worden bij de selectie uit een externe tabel gegevens geïmporteerd in de SQL-pool. Naast de [instructie COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zijn externe tabellen handig voor het laden van gegevens. 
 
 Raadpleeg [PolyBase gebruiken om gegevens vanuit Azure Blob Storage te laden](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor een zelfstudie over het laden van gegevens.
 
-### <a name="sql-on-demand"></a>[SQL on-demand](#tab/sql-on-demand)
+### <a name="serverless-sql-pool"></a>[Serverloze SQL-pool](#tab/sql-on-demand)
 
-Voor SQL on-demand gebruikt u een externe tabel voor het volgende:
+Voor een serverloze SQL-pool gebruikt u een externe tabel voor het volgende:
 
 - Query's uitvoeren op gegevens in Azure Blob Storage of Azure Data Lake Storage met Transact-SQL-instructies
-- Queryresultaten voor SQL on-demand opslaan in bestanden in Azure Blob Storage of Azure Data Lake Storage met behulp van [CETAS](develop-tables-cetas.md)
+- Queryresultaten voor een serverloze SQL-pool opslaan in bestanden in Azure Blob Storage of Azure Data Lake Storage met behulp van [CETAS](develop-tables-cetas.md)
 
-U kunt aan de hand van de volgende stappen externe tabellen maken met behulp van SQL on-demand:
+U kunt aan de hand van de volgende stappen externe tabellen maken met behulp van serverloze SQL-pool:
 
 1. CREATE EXTERNAL DATA SOURCE
 2. CREATE EXTERNAL FILE FORMAT
@@ -56,7 +56,7 @@ Een externe tabel heeft toegang tot de onderliggende Azure Storage met behulp va
 - De gegevensbron kan referenties bevatten waarmee externe tabellen alleen toegang hebben tot de bestanden in Azure Storage met behulp van een SAS-token of beheerde identiteit van een werkruimte. Zie het artikel [Opslagtoegangsbeheer voor opslagbestanden ontwikkelen](develop-storage-files-storage-access-control.md#examples) voor voorbeelden.
 
 > [!IMPORTANT]
-> In SQL-pool kan een Microsoft Azure Active Directory-gebruiker door middel van een gegevensbron zonder referenties toegang krijgen tot opslagbestanden met hun Azure AD-identiteit. In SQL on-demand moet u een gegevensbron maken met een databasereferentie die de eigenschap `IDENTITY='User Identity'` bevat. Zie [hier voorbeelden](develop-storage-files-storage-access-control.md#examples).
+> In een toegewezen SQL-pool kan een Azure Active Directory-gebruiker door middel van een gegevensbron die is gemaakt zonder referenties toegang krijgen tot opslagbestanden met hun Azure AD-identiteit. In een serverloze SQL-pool moet u een gegevensbron maken met een databasereferentie die de eigenschap `IDENTITY='User Identity'` bevat. Zie [hier voorbeelden](develop-storage-files-storage-access-control.md#examples).
 
 ## <a name="create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE
 
@@ -64,7 +64,7 @@ Externe gegevensbronnen worden gebruikt om verbinding te maken met opslagaccount
 
 ### <a name="syntax-for-create-external-data-source"></a>Syntaxis voor CREATE EXTERNAL DATA SOURCE
 
-#### <a name="sql-pool"></a>[SQL-pool](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[Toegewezen SQL-pool](#tab/sql-pool)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -76,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="sql-on-demand"></a>[SQL on-demand](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Serverloze SQL-pool](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -110,16 +110,16 @@ Met het voorvoegsel `https:` kunt u een submap gebruiken in het pad.
 #### <a name="credential"></a>Referentie
 CREDENTIAL = `<database scoped credential>` is een optionele referentie die wordt gebruikt voor verificatie in Azure Storage. Een externe gegevensbron zonder referentie heeft toegang tot een openbaar opslagaccount. 
 
-Externe gegevensbronnen zonder referentie in SQL-pool kunnen ook gebruikmaken van de Microsoft Azure Active Directory-identiteit van de aanroeper om toegang te krijgen tot bestanden in de opslag. Een externe gegevensbron met een referentie gebruikt de id die is opgegeven in de referentie om toegang te krijgen tot bestanden.
-- In SQL-pool kan een databasereferentie een aangepaste toepassings-id, beheerde identiteit voor de werkruimte of SAK-sleutel bevatten. 
-- In SQL on-demand kan een databasereferentie een Microsoft Azure Active Directory-identiteit van de aanroeper, beheerde identiteit voor de werkruimte of SAS-sleutel bevatten. 
+Externe gegevensbronnen zonder een referentie in een toegewezen SQL-pool maken gebruik van de Azure Active Directory-identiteit van de aanroeper om toegang te krijgen tot bestanden in de opslag. Een externe gegevens bron voor een serverloze SQL-pool met referentie `IDENTITY='User Identity'` maakt gebruik van de Azure Active Directory-identiteit van de aanroeper voor toegang tot bestanden.
+- In een toegewezen SQL-pool kan een databasereferentie een aangepaste toepassings-id, beheerde identiteit voor de werkruimte of SAK-sleutel bevatten. 
+- In een serverloze SQL-pool kan een databasereferentie een Azure Active Directory-identiteit van de aanroeper, beheerde identiteit voor de werkruimte of SAS-sleutel bevatten. 
 
 #### <a name="type"></a>TYPE
-TYPE = `HADOOP` is een verplichte optie in de SQL-pool en geeft aan dat de Polybase-technologie wordt gebruikt voor toegang tot de onderliggende bestanden. Deze parameter kan niet worden gebruikt in de SQL on-demand-service die gebruikmaakt van een eigen ingebouwde lezer.
+TYPE = `HADOOP` is de verplichte optie in de toegewezen SQL-pool en geeft aan dat de Polybase-technologie wordt gebruikt voor toegang tot de onderliggende bestanden. Deze parameter kan niet worden gebruikt in de serverloze SQL-pool die gebruikmaakt van een systeemeigen ingebouwde lezer.
 
 ### <a name="example-for-create-external-data-source"></a>Voorbeeld van CREATE EXTERNAL DATA SOURCE
 
-#### <a name="sql-pool"></a>[SQL-pool](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[Toegewezen SQL-pool](#tab/sql-pool)
 
 In het volgende voorbeeld wordt een externe gegevensbron gemaakt voor Azure Data Lake Gen2 die verwijst naar de gegevensset New York:
 
@@ -133,7 +133,7 @@ WITH
   ) ;
 ```
 
-#### <a name="sql-on-demand"></a>[SQL on-demand](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Serverloze SQL-pool](#tab/sql-on-demand)
 
 In het volgende voorbeeld wordt een externe gegevensbron gemaakt voor Azure Data Lake Gen2 waartoe toegang kan worden verkregen met de SAS-referentie:
 
@@ -195,7 +195,7 @@ WITH (
 }
 ```
 
-#### <a name="sql-on-demand"></a>[SQL on-demand](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Serverloze SQL-pool](#tab/sql-on-demand)
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -266,7 +266,7 @@ TRUE: als u gegevens ophaalt uit het tekstbestand, slaat u elke ontbrekende waar
 
 FALSE: sla alle ontbrekende waarden op als NULL. NULL-waarden die zijn opgeslagen met behulp van het woord NULL in het tekstbestand met scheidingstekens worden geïmporteerd als de tekenreeks NULL.
 
-Encoding = {'UTF8' | 'UTF16'}: SQL on-demand kan met UTF8 en UTF16 gecodeerde tekstbestanden met scheidingstekens lezen.
+Codering = {'UTF8' | 'UTF16'} -Serverloze SQL-pool kan met UTF8 en UTF16 gecodeerde tekstbestanden met scheidingstekens lezen.
 
 DATA_COMPRESSION = *data_compression_method* : met dit argument geeft u de gegevenscompressiemethode voor de externe gegevens op. 
 
@@ -321,7 +321,7 @@ column_name <data_type>
 
 *{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
 
-De uit een tot drie delen bestaande naam van de tabel die u wilt maken. Voor een externe tabel slaat SQL on-demand alleen de metagegevens van de tabel op. Er worden geen werkelijke gegevens verplaatst of opgeslagen in SQL on-demand.
+De uit een tot drie delen bestaande naam van de tabel die u wilt maken. Voor een externe tabel slaat een serverloze SQL-pool alleen de metagegevens van de tabel op. Er worden geen werkelijke gegevens verplaatst of opgeslagen in de serverloze SQL-pool.
 
 <column_definition>, ... *n* ]
 
@@ -336,12 +336,12 @@ LOCATION = *folder_or_filepath*
 
 Hiermee geeft u de map of het bestandspad en de bestandsnaam op voor de werkelijke gegevens in Azure Blob Storage. De locatie gaat uit van de hoofdmap. De hoofdmap is de gegevenslocatie die is opgegeven in de externe gegevensbron.
 
-Als u een map LOCATION opgeeft, wordt een SQL on-demand-query geselecteerd in de externe tabel en worden de bestanden opgehaald uit de map.
+Als u een map LOCATION opgeeft, wordt een serverloze SQL-pool-query geselecteerd in de externe tabel en worden de bestanden opgehaald uit de map.
 
 > [!NOTE]
-> In tegenstelling tot Hadoop en PolyBase, retourneert SQL on-demand geen submappen. Het retourneert bestanden waarvan de bestandsnaam begint met een underscore (_) of een punt (.).
+> In tegenstelling tot Hadoop en PolyBase, retourneert een serverloze SQL-pool geen submappen. Het retourneert bestanden waarvan de bestandsnaam begint met een underscore (_) of een punt (.).
 
-In dit voorbeeld worden door if LOCATION='/webdata/', een SQL on -demand-query, rijen uit mydata.txt en _hidden.txt geretourneerd. Het retourneert niet mydata2.txt en mydata3.txt omdat deze bestanden zich in een submap bevinden.
+In dit voorbeeld worden door if LOCATION='/webdata/', een serverloze SQL-pool-query, rijen uit mydata.txt en _hidden.txt geretourneerd. Het retourneert niet mydata2.txt en mydata3.txt omdat deze bestanden zich in een submap bevinden.
 
 ![Recursieve gegevens voor externe tabellen](./media/develop-tables-external-tables/folder-traversal.png)
 
@@ -381,7 +381,7 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Externe tabellen maken en hierop query's uitvoeren via een bestand in Azure Data Lake
 
-Met de verkenningsmogelijkheden van Data Lake kunt u nu een externe tabel maken en hierop query's uitvoeren met SQL-pool of SQL on-demand door eenvoudig met de rechtermuisknop op het bestand te klikken.
+Met de verkenningsmogelijkheden van Data Lake kunt u nu een externe tabel maken en hierop query's uitvoeren met een toegewezen SQL-pool of serverloze SQL-pool door eenvoudig met de rechtermuisknop op het bestand te klikken.
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -389,13 +389,13 @@ Met de verkenningsmogelijkheden van Data Lake kunt u nu een externe tabel maken 
 
 - U moet ten minste over [machtigingen beschikken voor het maken](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) van externe tabellen en het uitvoeren van query's hierop in de SQL-pool of SQL on-demand
 
-- De gekoppelde service die aan het ADLS Gen2-account is gekoppeld, **moet toegang hebben tot het bestand** . Als de verificatiemethode van de gekoppelde service bijvoorbeeld beheerde identiteit is, moet de beheerde identiteit voor de werkruimte ten minste over de machtiging Lezer van Storage Blob beschikken voor het opslagaccount
+- De gekoppelde service die aan het ADLS Gen2-account is gekoppeld, **moet toegang hebben tot het bestand**. Als de verificatiemethode van de gekoppelde service bijvoorbeeld beheerde identiteit is, moet de beheerde identiteit voor de werkruimte ten minste over de machtiging Lezer van Storage Blob beschikken voor het opslagaccount
 
 Selecteer in het deelvenster Gegevens het bestand waaruit u de externe tabel wilt maken:
 > [!div class="mx-imgBorder"]
 >![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-Er wordt een dialoogvenster geopend. Selecteer SQL-pool of SQL on-demand, geef de tabel een naam en selecteer Script openen:
+Er wordt een dialoogvenster geopend. Selecteer toegewezen SQL-pool of serverloze SQL-pool, geef de tabel een naam en selecteer Script openen:
 
 > [!div class="mx-imgBorder"]
 >![externaltable2](./media/develop-tables-external-tables/external-table-2.png)

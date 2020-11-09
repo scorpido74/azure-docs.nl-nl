@@ -4,19 +4,21 @@ description: Het testen van uw QnA Maker Knowledge Base is een belang rijk onder
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 05ae359182ac3d9c3f4cc17d7675a3f2fefa0bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776830"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376142"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Test uw Knowledge Base in QnA Maker
 
 Het testen van uw QnA Maker Knowledge Base is een belang rijk onderdeel van een iteratief proces om de nauw keurigheid van de reacties die worden geretourneerd, te verbeteren. U kunt de Knowledge Base testen via een verbeterde chat-interface, waarmee u ook bewerkingen kunt uitvoeren.
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>Interactief testen in QnA Maker Portal
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
 
 1. Open uw kennis database door de naam ervan te selecteren op de pagina **mijn Knowledge bases** .
 1. Als u toegang wilt krijgen tot het toetsen paneel testen, selecteert u **testen** in het bovenste paneel van de toepassing.
@@ -37,7 +39,7 @@ U kunt de details van het test resultaat bekijken in het deel venster inspectere
 
 1.  Selecteer in het deel venster voor het testen van de schuif regelaar op **controleren** voor meer informatie over die reactie.
 
-    ![Reacties controleren](../media/qnamaker-how-to-test-kb/inspect.png)
+    ![Reacties controleren](../media/qnamaker-how-to-test-knowledge-bases/inspect.png)
 
 2.  Het deel venster inspectie wordt weer gegeven. Het paneel bevat de belangrijkste Score intentie en alle geïdentificeerde entiteiten. In het deel venster wordt het resultaat van de geselecteerde utterance weer gegeven.
 
@@ -45,13 +47,13 @@ U kunt de details van het test resultaat bekijken in het deel venster inspectere
 
 Als het bovenste Score antwoord onjuist is, selecteert u het juiste antwoord in de lijst en selecteert u **opslaan en trainen**.
 
-![Het bovenste Score antwoord corrigeren](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![Het bovenste Score antwoord corrigeren](../media/qnamaker-how-to-test-knowledge-bases/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>Alternatieve vragen toevoegen
 
-U kunt alternatieve formulieren van een vraag toevoegen aan een bepaald antwoord. Typ de alternatieve antwoorden in het tekstvak en klik op ENTER om ze toe te voegen. Selecteer **opslaan en trainen** om de updates op te slaan.
+U kunt alternatieve formulieren van een vraag toevoegen aan een bepaald antwoord. Typ de alternatieve antwoorden in het tekstvak en selecteer ENTER om ze toe te voegen. Selecteer **opslaan en trainen** om de updates op te slaan.
 
-![Alternatieve vragen toevoegen](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![Alternatieve vragen toevoegen](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question.png)
 
 ### <a name="add-a-new-answer"></a>Een nieuw antwoord toevoegen
 
@@ -64,11 +66,62 @@ Selecteer **opslaan en trainen** om dit antwoord te behouden. Er is nu een nieuw
 > [!NOTE]
 > Alle wijzigingen in uw kennis database worden alleen opgeslagen wanneer u op de knop **opslaan en trainen** drukt.
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+
+1. Open uw kennis database door de naam ervan te selecteren op de pagina **mijn Knowledge bases** .
+1. Als u toegang wilt krijgen tot het toetsen paneel testen, selecteert u **testen** in het bovenste paneel van de toepassing. 
+1. Er wordt een selectie vakje weer gegeven op het bovenste **antwoord** , dat standaard is geselecteerd. Deze optie wordt gebruikt voor het inschakelen van op MRC gebaseerde antwoord bereik detectie in het test paneel. 
+1. Voer een query in het tekstvak in en selecteer ENTER. 
+1. Voor elke query geldt dat als er sprake is van een nauw keurig antwoord/kort antwoord dat in het antwoord wordt weer gegeven, samen met het best overeenkomende antwoord dat in de Knowledge Base aanwezig is, u ook een kort antwoord hebt voor uw query.
+    ![Gemanaged test venster voor ingeschakelde tests](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
+1. Als u het selectie vakje **kort antwoord weer geven** uitschakelt, wordt alleen het beste antwoord in de Knowledge Base geretourneerd als antwoord.
+
+### <a name="clear-test-panel"></a>Test paneel wissen
+
+Als u alle ingevoerde test query's en de bijbehorende resultaten wilt wissen uit de test console, selecteert u **opnieuw beginnen** in de linkerbovenhoek van het test paneel.
+
+### <a name="close-test-panel"></a>Test paneel sluiten
+
+Als u het test paneel wilt sluiten, selecteert u de knop **testen** opnieuw. Terwijl het test paneel is geopend, kunt u de inhoud van de Knowledge Base niet bewerken.
+
+### <a name="inspect-score"></a>Score controleren
+
+U kunt de details van het test resultaat bekijken in het deel venster inspecteren.
+
+1.  Selecteer in het deel venster voor het testen van de schuif regelaar op **controleren** voor meer informatie over die reactie.
+
+    ![Voor beeld van antwoorden controleren](../media/qnamaker-how-to-test-knowledge-bases/inspect-with-managed.png)
+
+2.  Het deel venster inspectie wordt weer gegeven. Het paneel bevat de belangrijkste Score intentie en alle geïdentificeerde entiteiten. In het deel venster wordt het resultaat van de geselecteerde utterance weer gegeven.
+3. In het deel venster wordt de betrouwbaarheids Score van de antwoord-passeren weer gegeven, samen met een Score van de gedetecteerde antwoord periode.
+
+### <a name="correct-the-top-scoring-answer"></a>Het bovenste Score antwoord corrigeren
+
+Als het bovenste Score antwoord onjuist is, selecteert u het juiste antwoord in de lijst en selecteert u **opslaan en trainen**.
+
+![De voorbeeld reactie voor het bovenste Score blad corrigeren](../media/qnamaker-how-to-test-knowledge-bases/choose-answer-managed.png)
+
+### <a name="add-alternate-questions"></a>Alternatieve vragen toevoegen
+
+U kunt alternatieve formulieren van een vraag toevoegen aan een bepaald antwoord. Typ de alternatieve antwoorden in het tekstvak en selecteer ENTER om ze toe te voegen. Selecteer **opslaan en trainen** om de updates op te slaan.
+
+![Preview-versie van alternatieve vragen toevoegen](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question-with-managed.png)
+
+### <a name="add-a-new-answer"></a>Een nieuw antwoord toevoegen
+
+U kunt een nieuw antwoord toevoegen als een van de bestaande antwoorden die overeenkomen onjuist is of als het antwoord niet aanwezig is in de Knowledge Base (er is geen goede overeenkomst gevonden in de KB).
+
+Klik aan de onderkant van de lijst met antwoorden op het tekstvak om een nieuw antwoord in te voeren en druk op ENTER om het te voegen.
+
+Selecteer **opslaan en trainen** om dit antwoord te behouden. Er is nu een nieuwe vraag-antwoord paar toegevoegd aan uw Knowledge Base.
+
+---
+
 ### <a name="test-the-published-knowledge-base"></a>De gepubliceerde kennis database testen
 
 U kunt de gepubliceerde versie van de Knowledge Base testen in het test venster. Zodra u de KB hebt gepubliceerd, selecteert u het vak **gepubliceerde KB** en verzendt u een query om de resultaten van de gepubliceerde KB op te halen.
 
-![Testen op basis van een gepubliceerde KB](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Testen op basis van een gepubliceerde KB](../media/qnamaker-how-to-test-knowledge-bases/test-against-published-knowledge-base.png)
 
 ## <a name="batch-test-with-tool"></a>Batch test met hulp programma
 
@@ -107,7 +160,7 @@ Gebruik het hulp programma voor batch tests wanneer u het volgende wilt doen:
     |**+ Bestand toevoegen**|Selecteer de gedownloade `.docx`-bestandslijst in de vereisten.|
     |**Chit-chat**|**Professional** selecteren|
 
-1. Selecteer in **stap 5**, **Uw KB maken**.
+1. Selecteer in **stap 5** , **Uw KB maken**.
 
     Wanneer het proces is voltooid, geeft de portal de bewerkbare Knowledge Base weer.
 
@@ -130,11 +183,11 @@ Maak een bestand met de naam `batch-test-data-1.tsv` met een teksteditor om het 
 |--|--|--|
 |Knowledge Base-ID|Uw Knowledge Base-ID dat u kunt vinden op de pagina Publiceren. Test tegelijkertijd verschillende Knowledge Bases in dezelfde service in een enkel bestand door verschillende Knowledge Base-ID's te gebruiken in een enkel bestand.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (tekenreeks van 36 tekens weergegeven als onderdeel van `POST`) |
 |Vraag|De vraag die een gebruiker zou invoeren. Maximaal 1000 tekens.|`How do I sign out?`|
-|Tags met metagegevens|optioneel|`topic:power` gebruikt de indeling _key:value_|
+|Tags met metagegevens|optioneel|`topic:power` maakt gebruik van de `key:value` indeling|
 |Top-parameter|optioneel|`25`|
 |ID van verwacht antwoord|optioneel|`13`|
 
-Voeg voor deze Knowledge Base drie rijen toe aan het bestand met alleen de twee vereiste kolommen. De eerste kolom is het Knowledge Base-ID en de tweede kolom moet de volgende lijst vragen zijn:
+Voor deze Knowledge Base voegt u drie rijen van alleen de twee vereiste kolommen toe aan het bestand. De eerste kolom is het Knowledge Base-ID en de tweede kolom moet de volgende lijst vragen zijn:
 
 |Kolom 2, vragen|
 |--|
@@ -144,7 +197,7 @@ Voeg voor deze Knowledge Base drie rijen toe aan het bestand met alleen de twee 
 
 Deze vragen zijn de exacte tekst uit de Knowledge Base en moeten als waarde 100 retourneren voor waarschijnlijkheid.
 
-Voeg vervolgens een aantal vragen toe op drie rijen, soortgelijk als deze vragen maar niet exact gelijk en gebruik dezelfde Knowledge Base-ID:
+Voeg vervolgens enkele vragen toe die vergelijkbaar zijn met deze vragen, maar niet precies hetzelfde op drie rijen met dezelfde Knowledge Base-ID:
 
 |Kolom 2, vragen|
 |--|
@@ -176,7 +229,7 @@ De test wordt voltooid en genereert het `out.tsv`-bestand:
 
 De Knowledge Base-ID is vervangen door `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` voor de beveiliging. De kolom van uw eigen batchtest geeft uw Knowledge Base-ID weer.
 
-De testuitvoer van de waarschijnlijkheidsscore in de vierde kolom, toont dat de drie eerste vragen, zoals verwacht, een score van 100 retourneerden, omdat elke vraag precies hetzelfde is als in de Knowledge Base. De laatste drie vragen met een nieuwe tekst retourneren geen 100 bij de waarschijnlijkheidsscore. Om de score voor de test en uw gebruikers te verhogen, moet u meer alternatieve vragen toevoegen aan de Knowledge Base.
+De test uitvoer van een betrouwbaarheids Score, in de vierde kolom, toont de eerste drie vragen die een Score van 100 zoals verwacht retour neren, omdat elke vraag precies hetzelfde is als in de Knowledge Base. De laatste drie vragen, met een nieuwe vorm van de vraag, retour neren 100 niet als de betrouwbaarheids Score. Om de score voor de test en uw gebruikers te verhogen, moet u meer alternatieve vragen toevoegen aan de Knowledge Base.
 
 ### <a name="testing-with-the-optional-fields"></a>Testen met optionele velden
 
@@ -192,7 +245,7 @@ Gebruik het volgende diagram om de veldwaarden te vinden voor de optionele gegev
 
 |Kolomnummer|Optionele kolom|Locatie van gegevens|
 |--|--|--|
-|3|metagegevens|Exporteer bestaande Knowledge Base voor bestaande _key:value_-paren.|
+|3|metagegevens|Bestaande Knowledge Base exporteren voor bestaande `key:value` paren.|
 |4|top|De standaardwaarde `25` wordt aanbevolen.|
 |5|Vraag-en-antwoord-set-ID|Exporteer bestaande Knowledge Base voor ID-waarden. U ziet ook dat de ID's in het uitvoerbestand zijn geretourneerd.|
 
@@ -210,7 +263,7 @@ Gebruik het volgende diagram om de veldwaarden te vinden voor de optionele gegev
     > [!TIP]
     > Om de metagegevens en QnA-ID's van elke set te zien, moet u de Knowledge Base exporteren. Selecteer de pagina **Instellingen** en selecteer vervolgens **Exporteren** als `.xls`-bestand. Zoek dit gedownloade bestand en open het met Excel om te controleren op metagegevens en ID.
 
-1. Selecteer **Opslaan en trainen**, selecteer dan de pagina **Publiceren** en vervolgens de knop **Publiceren**. Door deze acties zijn de wijziging beschikbaar voor de batchtest. Download de Knowledge Base vanuit de pagina **Instellingen**.
+1. Selecteer **Opslaan en trainen** , selecteer dan de pagina **Publiceren** en vervolgens de knop **Publiceren**. Door deze acties zijn de wijziging beschikbaar voor de batchtest. Download de Knowledge Base vanuit de pagina **Instellingen**.
 
     Het gedownloade bestand heeft de juiste indeling voor de metagegevens en de juiste vraag-en-antwoord-set-ID. Gebruik deze velden in het volgende gedeelte
 
@@ -220,12 +273,12 @@ Gebruik het volgende diagram om de veldwaarden te vinden voor de optionele gegev
 ### <a name="create-a-second-batch-test"></a>Een tweede batchtest maken
 
 Er zijn twee belangrijke scenario's voor batchtesten:
-* **Chatlogboekbestanden verwerken**, bepaal het meestvoorkomende antwoord voor een nog niet bekeken vraag. De meestvoorkomende situatie is wanneer u een logboekbestand van query's moet verwerken, zoals gebruikersvragen van een chatbot. Maak een batchbestandtest met alleen de vereiste kolommen. De test retourneert het meestvoorkomende antwoord voor elke vraag. Dat betekent niet dat het meestvoorkomende antwoord ook het goede antwoord is. Wanneer deze test is voltooid, gaat u verder met de validatietest.
-* **Validatietest**, valideer het verwachte antwoord. Voor deze test moeten alle vragen en bijbehorende verwachte antwoorden in de batchtest zijn gevalideerd. Hier is mogelijk wat handmatige verwerking nodig.
+* **Chatlogboekbestanden verwerken** , bepaal het meestvoorkomende antwoord voor een nog niet bekeken vraag. De meestvoorkomende situatie is wanneer u een logboekbestand van query's moet verwerken, zoals gebruikersvragen van een chatbot. Maak een batchbestandtest met alleen de vereiste kolommen. De test retourneert het meestvoorkomende antwoord voor elke vraag. Dat betekent niet dat het meestvoorkomende antwoord ook het goede antwoord is. Wanneer deze test is voltooid, gaat u verder met de validatietest.
+* **Validatietest** , valideer het verwachte antwoord. Voor deze test moeten alle vragen en bijbehorende verwachte antwoorden in de batchtest zijn gevalideerd. Hier is mogelijk wat handmatige verwerking nodig.
 
 In de volgende procedure wordt ervan uitgegaan dat het scenario het verwerken is van chatlogboeken met
 
-1. Maak een nieuw batchtestbestand om de optionele gegevens in op te nemen: `batch-test-data-2.tsv`. Voeg de zes rijen van het oorspronkelijke batchtestinvoerbestand toe, vervolgens voor elke rij de metagegevens, top en het QnA-paar-ID.
+1. Maak een nieuw batchtestbestand om de optionele gegevens in op te nemen: `batch-test-data-2.tsv`. Voeg de zes rijen van het oorspronkelijke invoer bestand voor batch tests toe en voeg de meta gegevens, het hoogste en het QnA-paar ID voor elke rij toe.
 
     Stel de metagegevens voor elke kolom in op dezelfde waarde: `topic:power`, om het geautomatiseerde proces te simuleren van het vergelijken van nieuwe tekst van chatlogboeken met de Knowledge Base.
 
@@ -241,7 +294,7 @@ In de volgende procedure wordt ervan uitgegaan dat het scenario het verwerken is
 
 Dit testuitvoerbestand kan worden geparseerd als onderdeel van een geautomatiseerde doorlopende testpijplijn.
 
-Deze specifieke testuitvoer moet als volgt worden gelezen: elke rij is gefilterd met metagegevens en omdat niet elke rij overeenkwam met de metagegevens in de Knowledge Base, is het standaardantwoord geretourneerd voor deze niet-overeenkomende rijen ('geen goede overeenkomst gevonden in KB'). Van de rijen die overeenkwamen, werden de QnA-ID en score geretourneerd.
+Deze specifieke testuitvoer moet als volgt worden gelezen: elke rij is gefilterd met metagegevens en omdat niet elke rij overeenkwam met de metagegevens in de Knowledge Base, is het standaardantwoord geretourneerd voor deze niet-overeenkomende rijen ('geen goede overeenkomst gevonden in KB'). Van de rijen die overeenkomen, zijn de QnA-ID en Score geretourneerd.
 
 Alle rijen hebben het label 'onjuist' geretourneerd, omdat geen enkele rij overeenkwam met het verwachte antwoord-ID.
 

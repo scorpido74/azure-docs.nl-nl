@@ -7,44 +7,76 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 09/24/2019
-ms.openlocfilehash: c990b6980dea871679b0b301e293e4fb94748db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2019
+ms.openlocfilehash: dc910c01c401468a3dae392a6318344bee25efb7
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650894"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375636"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Taal ondersteuning voor een QnA Maker resource en kennis bases
+
+In dit artikel worden de taal ondersteunings opties voor QnA Maker resources en Knowledge bases beschreven. 
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
 
 De taal voor de service wordt geselecteerd wanneer u de eerste Knowledge Base maakt in de resource. Alle aanvullende kennis grondslagen in de resource moeten zich in dezelfde taal bekomen. 
 
 De taal bepaalt de relevantie van de resultaten QnA Maker worden uitgevoerd als reactie op gebruikers query's. De QnA Maker resource en alle kennis grondslagen in die resource ondersteunen één taal. De ene taal is nodig om de beste antwoord resultaten te bieden voor een query.
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+
+In QnA Maker beheerd, kunt u taal instellingen maken op basis van het individuele kennis niveau. Deze instelling kan alleen worden ingeschakeld met de kennis basis van de service. Eenmaal ingesteld, kunnen de taal instellingen voor de service niet meer worden gewijzigd. 
+
+Als u taal instellingen selecteert die specifiek zijn voor kennis, is het toegestaan om kennis gebaseerd te maken voor verschillende talen in de service zelf. 
+
+---
+
 ## <a name="single-language-per-resource"></a>Eén taal per resource
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
 
 Overweeg de volgende:
 
 * Een QnA Maker-service en alle kennis slagen ondersteunen slechts één taal.
+* De taal wordt expliciet ingesteld wanneer de eerste kennis basis van de service wordt gemaakt.
+* De taal wordt bepaald op basis van de bestanden en Url's die worden toegevoegd wanneer de Knowledge Base wordt gemaakt.
+* De taal kan niet worden gewijzigd voor andere kennis grondslagen in de service.
+* De taal wordt door de Cognitive Search-service (Rank #1) en de QnA Maker-service (Rank #2) gebruikt om het beste antwoord op een query te genereren.
+
+# <a name="qnamaker-managed-preview"></a>[Beheerde QnAMaker (preview-versie)](#tab/v2)
+![Taal instelling in door QnA Maker beheerd](../media/language-support/language-setting-managed.png)
+
+Als u **het selectie vakje niet inschakelt om de taal instelling per kennis-basis in te scha kelen** , moet u rekening houden met het volgende: 
+* Een QnA Maker-service en alle Knowledge bases ondersteunen slechts één taal.
 * De taal wordt expliciet ingesteld wanneer de eerste kennis basis van de service wordt gemaakt
 * De taal wordt bepaald op basis van de bestanden en Url's die worden toegevoegd wanneer de Knowledge Base wordt gemaakt.
 * De taal kan niet worden gewijzigd voor andere kennis grondslagen in de service
 * De taal wordt door de Cognitive Search-service (Rank #1) en de QnA Maker-service (Rank #2) gebruikt voor het genereren van het beste antwoord op een query
 
-## <a name="supporting-multiple-languages"></a>Ondersteuning voor meerdere talen
+---
+
+## <a name="supporting-multiple-languages-in-one-qna-maker-resource"></a>Ondersteuning van meerdere talen in één QnA Maker resource
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
+Deze functionaliteit wordt niet ondersteund in onze huidige, algemeen beschik bare (GA) stabiele release. Bekijk QnA Maker die worden beheerd om deze functionaliteit te testen. 
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+* Wanneer u de eerste Knowledge Base maakt in uw service, kunt u kiezen voor het inschakelen van de taal instelling per Knowledge Base. Schakel het selectie vakje in om kennis grondslagen te maken die horen bij verschillende talen binnen één service.
+* De taal instelling kan niet worden gewijzigd voor de service, nadat de eerste Knowledge Base is gemaakt.
+* Als u taal instellingen inschakelt die specifiek zijn voor elke kennis database, dan moet u in plaats van één test index voor de service één test index per Knowledge Base hebben. 
+
+![Taal instelling in door QnA Maker beheerd](../media/language-support/language-setting-managed.png)
+
+---
+
+## <a name="supporting-multiple-languages-in-one-knowledge-base"></a>Ondersteuning van meerdere talen in één kennis database
 
 Als u een Knowledge Base-systeem moet ondersteunen dat verschillende talen bevat, kunt u het volgende doen:
 
 * Gebruik de [Translator-service](../../translator/translator-info-overview.md) om een vraag in één taal te vertalen voordat u de vraag naar uw kennis database verzendt. Zo kunt u zich richten op de kwaliteit van één taal en de kwaliteit van de alternatieve vragen en antwoorden.
 * Maak een QnA Maker resource en een kennis database in die resource voor elke taal. Hierdoor kunt u afzonderlijke alternatieve vragen en antwoord tekst beheren die voor elke taal meer worden genuanced. Dit biedt veel meer flexibiliteit, maar vereist veel hogere onderhouds kosten wanneer de vragen of antwoorden in alle talen worden gewijzigd.
-
-Controleer [talen](../overview/language-support.md) die worden ondersteund voor QnA Maker.
-
-### <a name="support-each-language-with-a-qna-maker-resource"></a>Ondersteuning voor elke taal met een QnA Maker bron
-
-* Een QnA Maker resource maken voor elke taal
-* Alleen bestanden en Url's voor die taal toevoegen
-* Gebruik een naamgevings Conventie voor de resource om de taal te identificeren. Een voor beeld is `qna-maker-fr` voor alle kennis grondslagen voor Franse documenten
 
 
 ## <a name="languages-supported"></a>Ondersteunde talen

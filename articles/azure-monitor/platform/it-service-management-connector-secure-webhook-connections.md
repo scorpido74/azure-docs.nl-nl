@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 5976b70825ac2854e67ddad968752fc87d9e8cea
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377136"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376533"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van beveiligde export
 
@@ -117,7 +117,7 @@ Zorg ervoor dat u aan de volgende vereisten voldoet:
 
 ### <a name="configure-the-servicenow-connection"></a>De ServiceNow-verbinding configureren
 
-1. Gebruik de koppeling <https:// <instance name> . service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor> de URI voor de definitie van de beveiligde export.
+1. Gebruik de koppeling https://(exemplaar naam). Service-now. com/API/sn_em_connector/em/inbound_event? source = azuremonitor de URI voor de beveiligde export definitie.
 
 2. Volg de instructies op basis van de versie:
    * [Parijs](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)

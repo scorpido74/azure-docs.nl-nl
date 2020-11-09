@@ -4,13 +4,13 @@ description: Deze quickstart laat zien hoe u een LUIS-app maakt die gebruikmaakt
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: 28bf79b61c0278a3f45820a23cd2c69f0b609700
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/13/2020
+ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316479"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128148"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Snelstart: Een vooraf gemaakte app voor huisautomatisering gebruiken
 
@@ -23,20 +23,23 @@ In deze snelstart maakt u een LUIS-app die gebruikmaakt van het vooraf gemaakte 
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
 U kunt uw toepassingen maken en beheren in **Mijn apps**.
 
-1. Selecteer **+ Nieuwe app voor gesprek** in de lijst Mijn apps en selecteer vervolgens nogmaals **+ Nieuwe app voor gesprek** in de lijst met opties.
+### <a name="create-an-application"></a>Een app maken
 
-1. Geef in het dialoogvenster uw toepassing de naam `Home Automation`.
-1. Selecteer **Engels** als de cultuur.
-1. Voer eventueel een beschrijving in.
-1. Selecteer geen voorspellingsresource als u de resource nog niet hebt gemaakt. Als u het voorspellingseindpunt van uw app (fasering of productie) wilt gebruiken, moet u een voorspellingsbron toewijzen.
-1. Selecteer **Gereed**.
+Als u een app wilt maken, klikt u op  **+ Nieuwe app**. 
 
-    De app wordt in LUIS gemaakt.
+Typ de volgende informatie in het venster dat daarna wordt weergegeven:
 
-    ![Geef in het dialoogvenster uw toepassing de naam `Home Automation`](./media/create-new-app-details.png)
+|Naam  |Beschrijving  |
+|---------|---------|
+|Een naam     | Een naam voor uw app. Bijvoorbeeld 'home automation'.        |
+|Cultuur     | De taal die door uw app wordt begrepen en waarin deze communiceert.   |
+|Beschrijving | Een beschrijving voor uw app.
+|Voorspellingsresource | De voorspellingsresource waarmee query's worden ontvangen. |
 
-    >[!NOTE]
-    >De cultuur kan niet worden gewijzigd nadat de toepassing is gemaakt.
+Selecteer **Gereed**.
+
+>[!NOTE]
+>De cultuur kan niet worden gewijzigd nadat de toepassing is gemaakt.
 
 ## <a name="add-prebuilt-domain"></a>Vooraf gemaakt domein toevoegen
 
@@ -51,10 +54,7 @@ U kunt uw toepassingen maken en beheren in **Mijn apps**.
 
 ## <a name="intents-and-entities"></a>Intenties en entiteiten
 
-1. Selecteer **Intenties** om de intenties van het HomeAutomation-domein te controleren. De intenties van de vooraf gemaakte domeinen bevatten voorbeelduitingen.
-
-    > [!div class="mx-imgBorder"]
-    > ![Schermopname van de lijst met intenties van HomeAutomation](media/luis-quickstart-new-app/home-automation-intents.png "Schermopname van de lijst met intenties van HomeAutomation")
+1. Selecteer **Intenties** in het navigatiedeelvenster aan de linkerkant om de intenties van het domein 'HomeAutomation' weer te geven. Het bevat voorbeelden van utterances, zoals `HomeAutomation.QueryState` en `HomeAutomation.SetDevice`.
 
     > [!NOTE]
     > **None** is een intentie die door alle LUIS-apps wordt geboden. U kunt deze gebruiken voor het afhandelen van utterances die niet overeenkomen met de functionaliteit die uw app biedt.
@@ -63,6 +63,10 @@ U kunt uw toepassingen maken en beheren in **Mijn apps**.
 
     > [!div class="mx-imgBorder"]
     > [![Schermopname van de intentie HomeAutomation.TurnOff](media/luis-quickstart-new-app/home-automation-turnoff.png "Schermopname van de intentie HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+
+1. Als u de entiteiten voor de app wilt weergeven, selecteert u **Entiteiten**. Als u op een van de entiteiten klikt, zoals **HomeAutomation.DeviceName** ziet u een lijst met waarden die eraan zijn gekoppeld. 
+ 
+    :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="Afbeelding met alternatieve tekst" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
 ## <a name="train-the-luis-app"></a>LUIS-app trainen
 
@@ -73,11 +77,7 @@ Nadat u uw app hebt getraind, kunt u deze testen.
 
 1. Selecteer **Testen** in de navigatiebalk rechtsboven.
 
-1. Typ een test-uiting, zoals `Turn off the lights` in het interactieve testdeelvenster en druk op Enter.
-
-    ```
-    Turn off the lights
-    ```
+1. Typ een test-uiting, zoals `Turn off the lights` in het interactieve testdeelvenster en druk op Enter. Bijvoorbeeld: *de lichten uitschakelen*.
 
     In dit voorbeeld wordt `Turn off the lights` correct geïdentificeerd als de best scorende intentie van **HomeAutomation.TurnOff**.
 
@@ -94,7 +94,18 @@ Nadat u uw app hebt getraind, kunt u deze testen.
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>App publiceren om eindpunt-URL op te vragen
 
-[!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)]
+Om een voorspelling van LUIS te ontvangen in een chatbot of een andere clienttoepassing, moet u de app publiceren naar het voorspellingseindpunt.
+
+1. Selecteer **Publiceren** in de rechterbovenhoek van het venster.
+
+1. Selecteer de **Productiesite** en selecteer vervolgens **Gereed**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Schermopname van publiceren naar eindpunt vanuit LUIS](media/howto-publish/publish-app-popup.png)
+
+1. Selecteer de koppeling **Uw eindpunt-URL's openen** in de melding om naar de pagina **Azure-resources** te gaan. De eindpunt-URL's worden onderaan vermeld als de **Voorbeeldquery**.
+
+<!-- [!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)] -->
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 

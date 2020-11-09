@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 5256db4547f8c19960a6f470ce3c84b2eef25e24
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776609"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324679"
 ---
 # <a name="getting-started"></a>Aan de slag
 
@@ -35,15 +35,15 @@ Cloudgebaseerde Cognitive Services zijn intelligente algoritmen die worden gehos
 
 ### <a name="containerized-services-optional"></a>In een container geplaatste services (optioneel)
 
-Als uw toepassing of workload extreem grote gegevenssets gebruikt, een particulier netwerk nodig heeft of geen contact kan maken met de cloud, kan de communicatie met cloudservices onmogelijk zijn. In deze situatie bieden in een container geplaatste Cognitive Services de volgende voordelen:
+Als uw toepassing of workload grote gegevenssets gebruikt, een particulier netwerk nodig heeft of geen contact kan maken met de cloud, kan communicatie met cloudservices wel eens niet mogelijk zijn. In deze situatie bieden in een container geplaatste Cognitive Services de volgende voordelen:
 
-* **Lage connectiviteit**: U kunt in een container geplaatste Cognitive Services implementeren in elke rekenomgeving, binnen als buiten de cloud. Als uw toepassing geen contact kan maken met de cloud, overweeg dan om in een container geplaatste Cloud Services te implementeren in uw toepassing.
+* **Lage connectiviteit** : U kunt in een container geplaatste Cognitive Services implementeren in elke rekenomgeving, binnen als buiten de cloud. Als uw toepassing geen contact kan maken met de cloud, overweeg dan om in een container geplaatste Cloud Services te implementeren in uw toepassing.
 
-* **Lage latentie**: Omdat voor in een container geplaatste services geen retourcommunicatie naar/van de cloud vereist is, ligt de latentie voor antwoorden veel lager.
+* **Lage latentie** : Omdat voor in een container geplaatste services geen retourcommunicatie naar/van de cloud vereist is, ligt de latentie voor antwoorden veel lager.
 
-* **Privacy en gegevensbeveiliging**: U kunt in een container geplaatste services implementeren in privénetwerken, zodat gevoelige gegevens het netwerk niet moeten verlaten.
+* **Privacy en gegevensbeveiliging** : U kunt in een container geplaatste services implementeren in privénetwerken, zodat gevoelige gegevens het netwerk niet moeten verlaten.
 
-* **Hoge schaalbaarheid**: In een container geplaatste services hebben geen 'frequentielimieten' en worden uitgevoerd op computers die worden beheerd door de gebruiker. U kunt dus Cognitive Services schalen zonder veel grotere workloads te verwerken.
+* **Hoge schaalbaarheid** : In een container geplaatste services hebben geen 'frequentielimieten' en worden uitgevoerd op computers die worden beheerd door de gebruiker. U kunt dus Cognitive Services schalen zonder veel grotere workloads te verwerken.
 
 Volg [deze handleiding](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis) voor het maken van een in een container geplaatste Cognitive Service.
 
@@ -70,7 +70,7 @@ Azure Databricks is een op Apache Spark gebaseerd analyseplatform dat met één 
 U kunt Synapse Analytics ook gebruiken om een Spark-cluster te maken. Azure Synapse Analytics brengt datawarehousing voor ondernemingen en big data-analyses samen. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources. Voer de volgende stappen uit om aan de slag te gaan met Synapse Analytics:
 
 1. [Maak een Synapse-werkruimte (preview)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Maak een nieuwe Apache Spark-pool (preview) met behulp van het Azure-portal](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Maak een nieuwe serverloze Apache Spark-pool (preview) met behulp van Azure Portal](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
 
 Big data voor Cognitive Services is standaard geïnstalleerd in Synapse Analytics.
 
@@ -100,7 +100,7 @@ Eerst kunnen we een notitieblok maken in Azure Databricks. Gebruik voor andere S
 
     Selecteer **Maken**.
 
-1. Plak dit codefragment hieronder in uw nieuwe notebook.
+1. Plak dit codefragment in uw nieuwe notebook.
 
 ```python
 from mmlspark.cognitive import *

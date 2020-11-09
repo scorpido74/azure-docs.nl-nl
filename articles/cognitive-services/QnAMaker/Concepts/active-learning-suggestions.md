@@ -1,16 +1,16 @@
 ---
 title: Suggesties voor actieve trainingen-QnA Maker
-description: Met de suggesties voor actieve trainingen kunt u de kwaliteit van uw Knowledge Base verbeteren door alternatieve vragen te stellen op basis van de gebruikers inzendingen, naar uw vraag en antwoord paar.
+description: Met actieve Learning suggesties kunt u de kwaliteit van uw Knowledge Base verbeteren door alternatieve vragen te stellen op basis van de gebruikers inzendingen, op uw vraag en antwoord paar.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: e8cdb1d471ceef2aef790c426424b9224faac5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 707f4c098eacb0b72a7e12ebf79f9389b91095cc
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777034"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376516"
 ---
 # <a name="active-learning-suggestions"></a>Suggesties voor actieve trainingen
 
@@ -37,10 +37,18 @@ Zodra vragen worden voorgesteld in de QnA Maker Portal, moet u deze suggesties c
 
 ## <a name="turn-on-active-learning"></a>Actief leren inschakelen
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
+
 Actief leren is standaard **uitgeschakeld**.
 Actief leren gebruiken:
 * U moet [actief leren inschakelen](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) zodat QnA Maker alternatieve vragen voor uw Knowledge Base verzamelt.
 * Als u de voorgestelde alternatieve vragen wilt zien, [gebruikt u weergave opties](../How-To/improve-knowledge-base.md#view-suggested-questions) op de pagina bewerken.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+
+Actief leren bevindt zich **standaard in QnA Maker** Managed (preview). Als u de voorgestelde alternatieve vragen wilt zien, [gebruikt u weergave opties](../How-To/improve-knowledge-base.md#view-suggested-questions) op de pagina bewerken.
+
+---
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>Hoe de impliciete feedback van QnA Maker werkt
 

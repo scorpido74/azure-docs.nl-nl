@@ -4,13 +4,13 @@ description: Meer informatie over het plannen van uw QnA Maker-app. Begrijp hoe 
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/2/2020
-ms.openlocfilehash: 84e4d6907c9036503f43cd607b54577fd3d97444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776932"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376673"
 ---
 # <a name="plan-your-qna-maker-app"></a>Uw QnA Maker-app plannen
 
@@ -20,6 +20,8 @@ Als u uw QnA Maker-app wilt plannen, moet u weten hoe QnA Maker werkt en samenwe
 
 Elke [Azure-resource](azure-resources.md#resource-purposes) die is gemaakt met QnA Maker heeft een specifiek doel. Elke resource heeft zijn eigen doel, limieten en [prijs categorie](azure-resources.md#pricing-tier-considerations). Het is belang rijk dat u de functie van deze resources begrijpt, zodat u die kennis in uw plannings proces kunt gebruiken.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
+
 | Resource | Doel |
 |--|--|
 | [QnA Maker](azure-resources.md#qna-maker-resource) resource | Voor spelling en query's ontwerpen |
@@ -27,6 +29,14 @@ Elke [Azure-resource](azure-resources.md#resource-purposes) die is gemaakt met Q
 | [Resource en app-plan service resource app service](azure-resources.md#app-service-and-app-service-plan) | Eindpunt queryvoorspelling |
 | [Application Insights](azure-resources.md#application-insights) resource | Telemetrie voor spelling query |
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+
+| Resource | Doel |
+|--|--|
+| [QnA Maker](azure-resources.md#qna-maker-resource) resource | Ontwerpen, query Voorspellings eindpunt en telemetrie|
+| [Cognitive Search](azure-resources.md#cognitive-search-resource) resource | Gegevens opslag en zoeken |
+
+---
 ### <a name="resource-planning"></a>Resource planning
 
 De gratis laag, `F0` , van elke resource werkt en kan zowel de ontwerp-als query Voorspellings ervaring bieden. U kunt deze laag gebruiken om te leren ontwerpen en voor spellingen van query's. Wanneer u naar een productie-of Live scenario gaat, moet u de resource selectie opnieuw evalueren.
@@ -65,9 +75,22 @@ Een kennis database is rechtstreeks verbonden met de QnA Maker resource. Het bev
 
 ### <a name="language-considerations"></a>Taal overwegingen
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
+
 De eerste Knowledge Base die is gemaakt op uw QnA Maker resource stelt de taal voor de resource in. U kunt slechts één taal voor een QnA Maker bron hebben.
 
 U kunt uw QnA Maker resources structureren per taal of u kunt [Translator](../../translator/translator-info-overview.md) gebruiken om een query van een andere taal te wijzigen in de taal van de Knowledge Base voordat u de query naar het eind punt voor query voorspelling verzendt.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+
+U kunt nu kennissen hebben in verschillende talen binnen dezelfde QnA Maker resource. Wanneer u de eerste Knowledge Base maakt, kunt u kiezen of u de resource wilt gebruiken voor Knowledge bases in één taal of in meerdere talen.
+
+![QnA Maker Managed (preview) multi-Knowledge Base selecteren](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+
+> [!NOTE]
+> Als u taal instellingen per Knowledge Base inschakelt, kunt u niet zoveel kennis grondslagen in uw QnA Maker-resource maken. Voor [meer informatie over de beperkingen voor taal instellingen](./azure-resources.md).
+
+---
 
 ### <a name="ingest-data-sources"></a>Gegevens bronnen opnemen
 
@@ -75,7 +98,7 @@ U kunt een van de volgende opgenomen [gegevens bronnen](knowledge-base.md) gebru
 
 * Open bare URL
 * Persoonlijke share point-URL
-* File
+* Bestand
 
 Met het opname proces worden [ondersteunde inhouds typen](content-types.md) geconverteerd om te worden geprijsd. Alle verdere bewerking van het *antwoord* geschiedt met prijs verlaging. Nadat u een Knowledge Base hebt gemaakt, kunt u [QnA-paren](question-answer-set.md) in de QnA Maker Portal bewerken met [Rich Text-ontwerp](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer).
 
@@ -129,7 +152,7 @@ QnA Maker maakt gebruik van _actief leren_ om uw Knowledge Base te verbeteren do
 
 ### <a name="providing-a-default-answer"></a>Een standaard antwoord opgeven
 
-Als uw Knowledge Base geen antwoord heeft gevonden, wordt het _standaard antwoord_geretourneerd. Dit antwoord kan worden geconfigureerd op de pagina **instellingen** in de QnA Maker portal of in de [api's](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body).
+Als uw Knowledge Base geen antwoord heeft gevonden, wordt het _standaard antwoord_ geretourneerd. Dit antwoord kan worden geconfigureerd op de pagina **instellingen** in de QnA Maker portal of in de [api's](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body).
 
 Dit standaard antwoord wijkt af van het standaard antwoord van Azure bot. U kunt het standaard antwoord voor uw Azure-bot configureren in de Azure Portal als onderdeel van de configuratie-instellingen. Deze wordt geretourneerd wanneer niet aan de Score drempel wordt voldaan.
 
@@ -152,7 +175,15 @@ Er is een [rang orde van twee fasen](query-knowledge-base.md#how-qna-maker-proce
 
 ### <a name="service-updates"></a>Service-updates
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
+
 Pas de [meest recente runtime-updates](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) toe om service-updates automatisch te beheren.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+
+In QnA Maker Managed (preview) wordt de runtime beheerd door de QnA Maker-service zelf. Daarom zijn service-updates niet van toepassing.
+
+---
 
 ### <a name="scaling-throughput-and-resiliency"></a>Schalen, door Voer en tolerantie
 
@@ -160,7 +191,16 @@ Schalen, door Voer en tolerantie worden bepaald door de Azure- [resources](../ho
 
 ### <a name="analytics-with-application-insights"></a>Analytics met Application Insights
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
+
 Alle query's voor uw Knowledge Base worden opgeslagen in Application Insights. Gebruik onze [meest voorkomende query's](../how-to/get-analytics-knowledge-base.md) om inzicht te krijgen in uw metrische gegevens.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+
+In de beheerde implementatie wordt telemetrie aangeboden via de [Azure Monitor-service](https://docs.microsoft.com/azure/azure-monitor/). Gebruik onze [meest voorkomende query's](../how-to/get-analytics-knowledge-base.md) om inzicht te krijgen in uw metrische gegevens.
+
+
+---
 
 ## <a name="development-lifecycle"></a>Levenscyclus van ontwikkeling
 

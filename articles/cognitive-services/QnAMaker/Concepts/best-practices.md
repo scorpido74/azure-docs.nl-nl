@@ -4,13 +4,13 @@ description: Gebruik deze aanbevolen procedures om uw Knowledge Base te verbeter
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777017"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376754"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Aanbevolen procedures voor een QnA Maker Knowledge Base
 
@@ -116,11 +116,17 @@ QnA Maker zoekt standaard naar vragen en antwoorden. Als u alleen vragen wilt do
 [Meta gegevens](../How-To/edit-knowledge-base.md) voegen de mogelijkheid toe om een client toepassing te laten weten dat deze niet alle antwoorden mag hebben, maar in plaats daarvan de resultaten van een gebruikers query te beperken op basis van meta gegevenslabels. Het antwoord van de Knowledge Base kan variëren op basis van de meta gegevens code, zelfs als de query hetzelfde is. Bijvoorbeeld *' waar bevindt zich parkeren '* kan een ander antwoord hebben als de locatie van de restaurant vertakking anders is, dat wil zeggen, de meta gegevens zijn *Locatie: Seattle* versus *Locatie: Redmond*.
 
 ### <a name="use-synonyms"></a>Synoniemen gebruiken
-Hoewel er enige ondersteuning is voor synoniemen in de Engelse taal, gebruikt u hoofdletter gevoelige woord wijzigingen via de [aanpassings-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) om synoniemen toe te voegen aan tref woorden die een andere vorm hebben. Synoniemen worden toegevoegd op het QnA Maker service niveau en worden gedeeld door alle kennis grondslagen in de service.
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabiele versie)](#tab/v1)
+Hoewel er enige ondersteuning is voor synoniemen in de Engelse taal, gebruikt u hoofdletter gevoelige woord wijzigingen via de [aanpassings-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) om synoniemen toe te voegen aan tref woorden die verschillende vormen hebben. Synoniemen worden toegevoegd op het QnA Maker service niveau en worden **gedeeld door alle kennis grondslagen in de service**.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker beheerd (preview-versie)](#tab/v2)
+Hoewel er enige ondersteuning is voor synoniemen in de Engelse taal, gebruikt u hoofdletter gevoelige woord wijzigingen via de [aanpassings-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) om synoniemen toe te voegen aan tref woorden die verschillende vormen hebben. Synoniemen in QnA Maker Managed (preview) worden **toegevoegd per Knowledge Base**.
 
 |Oorspronkelijk woord|Synoniemen|
 |--|--|
 |ze|kopen<br>net-bankieren<br>net bankieren|
+
+---
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Afzonderlijke woorden gebruiken om vragen te onderscheiden
 Het classificatie algoritme van QnA Maker, dat overeenkomt met een gebruikers query met een vraag in de Knowledge Base, werkt het beste als elke vraag een andere behoefte behandelt. Herhaling van dezelfde woord set tussen vragen vermindert de kans dat het juiste antwoord wordt gekozen voor een bepaalde gebruikers query met deze woorden.
@@ -132,7 +138,7 @@ U kunt bijvoorbeeld twee afzonderlijke QnAs hebben met de volgende vragen:
 |waar bevindt zich de parkeer *locatie*|
 |waar is de ATM- *locatie*|
 
-Omdat deze twee QnAs worden aangeduid met zeer vergelijk bare woorden, kan deze soort gelijke scores worden veroorzaakt door veel gebruikers query's die zijn aangeduid als  *' waar is de `<x>` locatie '*. Probeer in plaats daarvan duidelijk te onderscheiden van query's zoals  *' waar is de parkeer partij '* en *' waar is de ATM '*, door woorden als ' locatie ' te vermijden, zodat u veel vragen in uw KB kunt vinden.
+Omdat deze twee QnAs worden aangeduid met zeer vergelijk bare woorden, kan deze soort gelijke scores worden veroorzaakt door veel gebruikers query's die zijn aangeduid als  *' waar is de `<x>` locatie '*. Probeer in plaats daarvan duidelijk te onderscheiden van query's zoals  *' waar is de parkeer partij '* en *' waar is de ATM '* , door woorden als ' locatie ' te vermijden, zodat u veel vragen in uw KB kunt vinden.
 
 ## <a name="collaborate"></a>Samenwerken
 Met QnA Maker kunnen gebruikers [samen werken](../How-to/collaborate-knowledge-base.md) aan een Knowledge Base. Gebruikers moeten toegang hebben tot de resource groep Azure QnA Maker om toegang te krijgen tot de kennis bases. Sommige organisaties willen het bewerken en onderhouden van de Knowledge Base mogelijk maken en nog steeds toegang tot hun Azure-resources kunnen beveiligen. Dit model voor redacteur-goed keuring wordt uitgevoerd door twee identieke [QnA Maker Services](../How-to/set-up-qnamaker-service-azure.md) in verschillende abonnementen in te stellen en er een te selecteren voor de bewerking voor het bewerken van de test cyclus. Zodra het testen is voltooid, wordt de inhoud van de Knowledge Base met een [import-export](../Tutorials/migrate-knowledge-base.md) proces overgebracht naar de QnA Maker-service van de goed keurder die de Knowledge Base uiteindelijk gaat publiceren en het eind punt bijwerkt.

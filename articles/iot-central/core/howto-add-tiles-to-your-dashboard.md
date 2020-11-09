@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5276f9b8c6dd3bdc305142e5b9452cd9c5d60bce
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985274"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376980"
 ---
 # <a name="configure-the-application-dashboard"></a>Het toepassings dashboard configureren
 
@@ -23,17 +23,17 @@ Het **dash board** is de eerste pagina die u ziet wanneer u verbinding maakt met
 
 ## <a name="add-tiles"></a>Tegels toevoegen
 
-In de volgende scherm afbeelding ziet u het dash board in een toepassing die is gemaakt op basis van de sjabloon voor **aangepaste toepassingen** . Als u het huidige dash board wilt aanpassen, selecteert u **bewerken**, selecteert u **Nieuw**persoonlijk of gedeeld dash board toevoegen.
+In de volgende scherm afbeelding ziet u het dash board in een toepassing die is gemaakt op basis van de sjabloon voor **aangepaste toepassingen** . Als u het huidige dash board wilt aanpassen, selecteert u **bewerken** , selecteert u **Nieuw** persoonlijk of gedeeld dash board toevoegen.
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="Dash board voor toepassingen op basis van de sjabloon voor aangepaste toepassingen":::
 
-Nadat u **bewerken** of **Nieuw**hebt geselecteerd, bevindt het dash board zich in de *bewerkings* modus. U kunt de hulpprogram ma's in het deel venster **dash board bewerken** gebruiken om tegels aan het dash board toe te voegen en tegels op het dash board zelf aan te passen en te verwijderen. Als u bijvoorbeeld een **telemetrie** -tegel wilt toevoegen om de huidige Tempe ratuur weer te geven die wordt gerapporteerd door een of meer apparaten:
+Nadat u **bewerken** of **Nieuw** hebt geselecteerd, bevindt het dash board zich in de *bewerkings* modus. U kunt de hulpprogram ma's in het deel venster **dash board bewerken** gebruiken om tegels aan het dash board toe te voegen en tegels op het dash board zelf aan te passen en te verwijderen. Als u bijvoorbeeld een **telemetrie** -tegel wilt toevoegen om de huidige Tempe ratuur weer te geven die wordt gerapporteerd door een of meer apparaten:
 
-1. Selecteer een **apparaatgroep**in het deel venster **dash board bewerken** .
+1. Selecteer een **apparaatgroep** in het deel venster **dash board bewerken** .
 1. Selecteer een of meer apparaten in de vervolg keuzelijst **apparaten** om weer te geven op de tegel. U ziet nu de beschik bare telemetrie, eigenschappen en opdrachten van de apparaten.
 1. Selecteer **Tempe ratuur** in het gedeelte telemetrie en selecteer vervolgens **tegel toevoegen**. De tegel wordt nu weer gegeven op het dash board, waar u de visualisatie kunt wijzigen, het formaat van de tegel wijzigt en deze configureert:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Dash board voor toepassingen op basis van de sjabloon voor aangepaste toepassingen":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Een tweemetrische temperatuur tegel toevoegen aan het dash board":::
 
 Wanneer u klaar bent met het toevoegen en aanpassen van tegels op het dash board, selecteert u **Opslaan**.
 
@@ -71,27 +71,31 @@ Op dit moment kunt u Maxi maal 10 apparaten toevoegen aan tegels die ondersteuni
 
 ### <a name="customizing-visualizations"></a>Visualisaties aanpassen
 
+Standaard worden gegevens in een tijds bereik weer gegeven in lijn diagrammen. Het geselecteerde tijds bereik is opgesplitst in 50 Bucket met gelijke grootte en de apparaatgegevens worden vervolgens samengevoegd per Bucket zodat er 50 gegevens punten over het geselecteerde tijds bereik worden weer gegeven. Als u onbewerkte gegevens wilt weer geven, kunt u de selectie wijzigen om de laatste 100 waarden weer te geven. Als u het tijds bereik wilt wijzigen of onbewerkte gegevens visualisatie wilt selecteren, gebruikt u de vervolg keuzelijst bereik weer geven in het deel venster **grafiek configureren** .
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/display-range.png" alt-text="Het weergave bereik van een lijn diagram wijzigen":::
+
 Voor tegels die statistische waarden weer geven, selecteert u het tandwiel pictogram naast het type telemetrie in het deel venster **grafiek configureren** om de aggregatie te kiezen. U kunt kiezen uit gemiddelde, som, maximum, minimum en aantal.
 
 Voor lijn diagrammen, staaf diagrammen en cirkel diagrammen kunt u de kleur van de verschillende telemetrie-waarden aanpassen. Selecteer het palet pictogram naast de telemetrie die u wilt aanpassen:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Dash board voor toepassingen op basis van de sjabloon voor aangepaste toepassingen":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="De kleur van een telemetrie-waarde wijzigen":::
 
 Voor tegels die teken reeks eigenschappen of telemetrie-waarden weer geven, kunt u kiezen hoe u de tekst wilt weer geven. Als het apparaat bijvoorbeeld een URL in een teken reeks eigenschap opslaat, kunt u deze weer geven als een klikbare koppeling. Als de URL verwijst naar een afbeelding, kunt u de installatie kopie weer geven in een laatste bekende waarde of eigenschaps tegel. Als u wilt wijzigen hoe een teken reeks wordt weer gegeven, selecteert u in de tegel configuratie het tandwiel pictogram naast het type telemetrie of de eigenschap:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Dash board voor toepassingen op basis van de sjabloon voor aangepaste toepassingen":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Wijzigen hoe een teken reeks op een tegel wordt weer gegeven":::
 
-Voor numerieke **kpi's**, de **laatste bekende waarde**en **Eigenschappen** tegels kunt u voorwaardelijke opmaak gebruiken om de kleur van de tegel aan te passen op basis van de huidige waarde. Als u voorwaardelijke opmaak wilt toevoegen, selecteert u **configureren** op de tegel en selecteert u vervolgens het pictogram **voorwaardelijke opmaak** naast de waarde die u wilt aanpassen:
+Voor numerieke **kpi's** , de **laatste bekende waarde** en **Eigenschappen** tegels kunt u voorwaardelijke opmaak gebruiken om de kleur van de tegel aan te passen op basis van de huidige waarde. Als u voorwaardelijke opmaak wilt toevoegen, selecteert u **configureren** op de tegel en selecteert u vervolgens het pictogram **voorwaardelijke opmaak** naast de waarde die u wilt aanpassen:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Dash board voor toepassingen op basis van de sjabloon voor aangepaste toepassingen":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Scherm afbeelding die laat zien hoe u de optie configureren voor een tegel kunt vinden en vervolgens het pictogram voor voorwaardelijke opmaak":::
 
 Voeg uw regels voor voorwaardelijke opmaak toe:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Dash board voor toepassingen op basis van de sjabloon voor aangepaste toepassingen":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Scherm opname van regels met voorwaardelijke opmaak voor de gemiddelde stroom. Er zijn drie regels: minder dan tha 20 groen, kleiner dan 50 is geel, en iets meer dan 50 is rood":::
 
 Op de volgende scherm afbeelding ziet u het effect van de regel voor voorwaardelijke opmaak:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Dash board voor toepassingen op basis van de sjabloon voor aangepaste toepassingen":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Scherm afbeelding van de gele achtergrond kleur op de tegel gemiddelde water stroom. Het aantal op de tegel is 40,84":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
