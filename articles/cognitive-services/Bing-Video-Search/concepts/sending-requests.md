@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
-ms.openlocfilehash: e2907cb568076ef4de199c5227e03db652414464
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1e6fc68a1e48c9c47cc6a76911f947f2d9916a25
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077214"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379507"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Zoekaanvragen verzenden naar de Bing Video's zoeken-API
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 In dit artikel vindt u informatie over de parameters en de kenmerken van aanvragen die naar de Bing Video's zoeken-API worden verzonden, evenals het JSON-antwoordobject dat wordt geretourneerd. 
 
@@ -32,7 +32,7 @@ In dit artikel vindt u informatie over de parameters en de kenmerken van aanvrag
 
 Als u een zoekvak aanbiedt waarin de gebruiker een zoekterm invoert, kunt u de [Automatische suggestie-API voor Bing](../../bing-autosuggest/get-suggested-search-terms.md) gebruiken om de ervaring te verbeteren. De API retourneert voorgestelde queryreeksen op basis van gedeeltelijke zoektermen terwijl de gebruiker typt.
 
-Nadat de gebruiker de zoekterm heeft ingevoerd, past u URL-codering toe op de term voordat u de queryparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) instelt. Als de gebruiker bijvoorbeeld *sailing dinghies* invoert, stelt u `q` in op `sailing+dinghies` of `sailing%20dinghies`.
+Nadat de gebruiker de zoekterm heeft ingevoerd, past u URL-codering toe op de term voordat u de queryparameter [q](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) instelt. Als de gebruiker bijvoorbeeld *sailing dinghies* invoert, stelt u `q` in op `sailing+dinghies` of `sailing%20dinghies`.
 
 ## <a name="sending-a-request"></a>Een aanvraag verzenden
 
@@ -47,18 +47,18 @@ Voor de aanvraag moet het HTTPS-protocol worden gebruikt.
 Het is raadzaam dat alle aanvragen afkomstig zijn van een server. Het distribueren van de sleutel als onderdeel van een clienttoepassing biedt een kwaadwillende gebruiker namelijk meer mogelijkheden om de sleutel te onderscheppen. Als u ervoor kiest om alle aanroepen via een server te laten lopen, beschikt u bovendien over een centraal upgradepunt voor toekomstige versies van de API.
 
   
-De aanvraag moet de parameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) bevatten, met daarin de zoekterm van de gebruiker. Hoewel dit optioneel is, moet de aanvraag ook de queryparameter [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt) bevatten. Hiermee geeft u de markt aan waarvan de resultaten afkomstig moeten zijn. Zie [Queryparameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters) voor een lijst met optionele queryparameters, zoals `pricing`. Alle waarden van queryparameter moeten als een URL zijn gecodeerd.  
+De aanvraag moet de parameter [q](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) bevatten, met daarin de zoekterm van de gebruiker. Hoewel dit optioneel is, moet de aanvraag ook de queryparameter [mkt](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt) bevatten. Hiermee geeft u de markt aan waarvan de resultaten afkomstig moeten zijn. Zie [Queryparameters](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters) voor een lijst met optionele queryparameters, zoals `pricing`. Alle waarden van queryparameter moeten als een URL zijn gecodeerd.  
   
-De aanvraag moet de header [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#subscriptionkey) bevatten. Hoewel dit optioneel is, wordt u aangeraden ook altijd deze headers op te geven:  
+De aanvraag moet de header [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#subscriptionkey) bevatten. Hoewel dit optioneel is, wordt u aangeraden ook altijd deze headers op te geven:  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientid)  
--   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientid)  
+-   [X-Search-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
 
 De headers ClientIP en Location zijn belangrijk voor het retourneren van locatiespecifieke inhoud.  
 
-Zie [Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers) voor een lijst met alle aanvraag- en antwoordheaders.
+Zie [Headers](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers) voor een lijst met alle aanvraag- en antwoordheaders.
 
 ## <a name="example-search-request"></a>Voorbeeld van zoekaanvraag
 
@@ -154,8 +154,8 @@ BingAPIs-Market: en-US
 
 Probeer de API uit. Ga naar [Video Search API Testing Console](https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8). 
 
-Zie [What is Bing Video Search?](../search-the-web.md) (Wat is Bing Video's zoeken?) voor meer informatie over het gebruiken van de antwoordobjecten.
+Zie [What is Bing Video Search?](../overview.md) (Wat is Bing Video's zoeken?) voor meer informatie over het gebruiken van de antwoordobjecten.
 
 Zie [Inzichten over video's](../video-insights.md) voor meer informatie over het verkrijgen van inzichten over een video, zoals verwante zoekopdrachten.  
   
-Zie [Trending video's ophalen](../trending-videos.md) voor meer informatie over video's die trending zijn op sociale media.  
+Zie [Trending video's ophalen](../trending-videos.md) voor meer informatie over video's die trending zijn op sociale media.

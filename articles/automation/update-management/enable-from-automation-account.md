@@ -2,15 +2,15 @@
 title: Azure Automation Updatebeheer inschakelen vanuit het Automation-account
 description: In dit artikel leest u hoe u Updatebeheer kunt inschakelen vanuit een Automation-account.
 services: automation
-ms.date: 11/04/2020
+ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 6f14516f36975d84256f9bb1bd3b4949dbf80448
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348828"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380535"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Updatebeheer inschakelen vanaf een Automation-account
 
@@ -49,7 +49,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="enable-non-azure-vms"></a>Vm's buiten Azure inschakelen
 
-Machines die niet in azure zijn, moeten hand matig worden toegevoegd.
+Voor computers of servers die buiten Azure worden gehost, met inbegrip van de services die zijn geregistreerd bij servers met Azure-Arc, voert u de volgende stappen uit om deze in te scha kelen met Updatebeheer.  
 
 1. Selecteer **Updatebeheer** onder **Updatebeheer** in uw Automation-account.
 

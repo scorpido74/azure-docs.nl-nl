@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: c67ef6ddcd709dea8727a67100607bfc4f8cc8f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 392bb46d481df1f872b9a61beffed9e5b46f4dc5
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099841"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379834"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Upgrade handleiding voor Video's zoeken-API
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de Bing Video's zoeken-API. Gebruik deze hand leiding om u te helpen bij het identificeren van de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
 
@@ -76,11 +76,10 @@ Geblokkeerd|InvalidRequest. blocked
 
 ### <a name="query-parameters"></a>Queryparameters
 
-- De naam van de `modulesRequested` query parameter is gewijzigd in [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested).  
+- De naam van de `modulesRequested` query parameter is gewijzigd in [modules](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested).  
 
 ### <a name="object-changes"></a>Object wijzigingen
 
-- De naam van het `nextOffsetAddCount` veld met [Video's](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) is gewijzigd in `nextOffset` . De manier waarop u de offset gebruikt, is ook gewijzigd. Voorheen zou u de [Offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) query-para meter instellen op de `nextOffset` waarde plus de vorige offset waarde plus het aantal Video's in het resultaat. U kunt nu eenvoudigweg de `offset` query parameter instellen op de `nextOffset` waarde.  
+- De naam van het `nextOffsetAddCount` veld met [Video's](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) is gewijzigd in `nextOffset` . De manier waarop u de offset gebruikt, is ook gewijzigd. Voorheen zou u de [Offset](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) query-para meter instellen op de `nextOffset` waarde plus de vorige offset waarde plus het aantal Video's in het resultaat. U kunt nu eenvoudigweg de `offset` query parameter instellen op de `nextOffset` waarde.  
   
-- Het gegevens type van het veld is gewijzigd `relatedVideos` van `Video[]` in [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (Zie [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
-
+- Het gegevens type van het veld is gewijzigd `relatedVideos` van `Video[]` in [VideosModule](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (Zie [VideoDetails](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).

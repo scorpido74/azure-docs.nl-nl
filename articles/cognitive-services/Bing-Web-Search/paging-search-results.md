@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: e7613f4b6bb301c603ae5ded98f271f3cb98b340
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1a52471240ca80335690568faed7849eabc30baf
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074094"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381062"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>De resultaten van de Bing Zoeken-API's pagina door lopen
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Wanneer u een oproep naar de Bing Web-, Custom-, Image-, News-of Video's zoeken-Api's verzendt, retourneert Bing een subset van het totale aantal resultaten dat relevant kan zijn voor de query. Als u het geschatte totale aantal beschik bare resultaten wilt ophalen, opent u het veld van het antwoord object `totalEstimatedMatches` . 
 
@@ -73,15 +73,15 @@ Host: api.cognitive.microsoft.com
 Wanneer u de Bing-installatie kopie en video-Api's gebruikt, kunt u de `nextOffset` waarde gebruiken om dubbele Zoek resultaten te voor komen. Haal de waarde uit de `Images` of `Videos` antwoord objecten en gebruik deze in uw aanvragen met de `offset` para meter.  
 
 > [!NOTE]
-> De Bing Webzoekopdrachten-API retourneert Zoek resultaten die webpagina's, afbeeldingen, Video's en nieuws kunnen bevatten. Wanneer u de zoek resultaten van de Bing Webzoekopdrachten-API doorloopt [, worden alleen webpagina's](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)gepagineerd en niet andere antwoord typen zoals afbeeldingen of nieuws. Zoek resultaten in `WebPage` objecten kunnen resultaten bevatten die ook in andere antwoord typen worden weer gegeven.
+> De Bing Webzoekopdrachten-API retourneert Zoek resultaten die webpagina's, afbeeldingen, Video's en nieuws kunnen bevatten. Wanneer u de zoek resultaten van de Bing Webzoekopdrachten-API doorloopt [, worden alleen webpagina's](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)gepagineerd en niet andere antwoord typen zoals afbeeldingen of nieuws. Zoek resultaten in `WebPage` objecten kunnen resultaten bevatten die ook in andere antwoord typen worden weer gegeven.
 >
 > Als u de `responseFilter` query parameter gebruikt zonder filter waarden op te geven, gebruikt u `count` de `offset` para meters en niet. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat zijn de Bing Web Search-Api's?](bing-api-comparison.md)
-* [Web Search API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) (Naslaggids Web Search API v7)
-* [Naslag informatie over Bing Custom Search-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-* [Naslag informatie over Bing Nieuws zoeken-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
-* [Naslag informatie over Bing Video's zoeken-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
-* [Naslag informatie over Bing Afbeeldingen zoeken-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Web Search API v7 reference](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) (Naslaggids Web Search API v7)
+* [Naslag informatie over Bing Custom Search-API V7](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+* [Naslag informatie over Bing Nieuws zoeken-API V7](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
+* [Naslag informatie over Bing Video's zoeken-API V7](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
+* [Naslag informatie over Bing Afbeeldingen zoeken-API V7](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -2,14 +2,14 @@
 title: Configuratie opties-Azure Monitor Application Insights java
 description: Configuratie opties voor Azure Monitor Application Insights java
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 7165afd77e3f60af5e00b92c1063247325897f9f
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331903"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381028"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Configuratie opties voor Azure Monitor Application Insights java
 
@@ -48,7 +48,7 @@ Als u een relatief pad opgeeft, wordt dit omgezet ten opzichte van de map waar `
 
 ## <a name="connection-string"></a>Verbindingsreeks
 
-Dit is vereist. U kunt uw connection string vinden in uw Application Insights-resource:
+De verbindings reeks is vereist. U kunt uw connection string vinden in uw Application Insights-resource:
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Verbindings reeks Application Insights":::
 
@@ -105,7 +105,7 @@ Steek proeven worden uitgevoerd als een functie van de bewerkings-ID (ook wel tr
 
 Als u bijvoorbeeld steek proeven instelt op 10%, worden er slechts 10% van uw trans acties weer geven, maar elke waarde van 10% heeft volledige end-to-end-transactie gegevens.
 
-Hier volgt een voor beeld van het instellen van de steek proef voor het vastleggen **van ongeveer 1/3 van alle trans acties** . Controleer of u de sampling frequentie hebt ingesteld die juist is voor uw gebruiks voorbeeld:
+Hier volgt een voor beeld van het instellen van de steek proef voor het vastleggen **van ongeveer 1/3 van alle trans acties** : Zorg ervoor dat u de gewenste sampling frequentie hebt ingesteld voor uw gebruiks Case:
 
 ```json
 {
@@ -169,18 +169,18 @@ Als u aangepaste dimensies wilt toevoegen aan al uw telemetrie:
 
 ## <a name="telemetry-processors-preview"></a>Telemetrie-processors (preview-versie)
 
-Dit is een preview-functie.
+Deze functie is beschikbaar als preview-versie.
 
-Hiermee kunt u regels configureren die worden toegepast op aanvraag-, afhankelijkheids-en traceer-telemetrie, bijvoorbeeld
+Hiermee kunt u regels configureren die worden toegepast op aanvraag-, afhankelijkheids-en traceer-telemetrie, bijvoorbeeld:
  * Masker gevoelige gegevens
  * Aangepaste dimensies voorwaardelijk toevoegen
  * De naam van de telemetrie bijwerken die wordt gebruikt voor aggregatie en weer gave
 
 Raadpleeg de documentatie van de [telemetrie-processor](./java-standalone-telemetry-processors.md) voor meer informatie.
 
-## <a name="auto-collected-logging"></a>Automatisch verzamelde logboek registratie
+## <a name="autocollected-logging"></a>Logboek registratie voor autocollector
 
-Log4j, logback en Java. util. logging zijn automatisch instrumenteel en logboek registratie die via deze logboek registratie raamwerken wordt uitgevoerd, wordt automatisch verzameld.
+Log4j, logback en Java. util. logging zijn automatisch instrumenteel en logboek registraties die via deze logboek registratie raamwerken worden uitgevoerd, worden niet verzameld.
 
 Logboek registratie wordt standaard alleen verzameld wanneer de logboek registratie wordt uitgevoerd op het `INFO` niveau of hoger.
 
@@ -213,13 +213,16 @@ Dit zijn de geldige `level` waarden die u in het bestand kunt opgeven `applicati
 | TRACERen (of het kleinste) | TRACERINGS  | TRACERINGS   | MEEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatisch verzamelde metrische gegevens over micrometer (inclusief lente-metrische gegevens over het starten van de klep)
+## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Autogeïncasseerde metrische micrometer-gegevens (inclusief lente-metrische gegevens voor de boot-klep)
 
-Als uw toepassing gebruikmaakt van [micrometer](https://micrometer.io), worden metrische gegevens die naar het globale REGI ster van micrometer worden verzonden, automatisch verzameld.
+Als uw toepassing gebruikmaakt van [micrometer](https://micrometer.io), worden metrische gegevens die worden verzonden naar het globale REGI ster van micrometer, verzameld.
 
-Als uw toepassing een [Spring boot-klep](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)gebruikt, worden de metrische gegevens die zijn geconfigureerd met een Spring boot-klep ook automatisch verzameld.
+Als uw toepassing een [Spring boot-klep](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)gebruikt, worden de metrische gegevens die zijn geconfigureerd met een Spring boot-klep ook, verzameld.
 
-Automatische verzameling van micrometer-metrische gegevens uitschakelen (inclusief lente-metrische gegevens over het starten van de klep):
+U kunt als volgt het autoverzamelen van metrische micrometer-gegevens uitschakelen (met inbegrip van gegevens over de veer boot-klep):
+
+> [!NOTE]
+> Aangepaste metrische gegevens worden afzonderlijk gefactureerd en kunnen extra kosten in rekening worden gebracht. Controleer de gedetailleerde [prijs informatie](https://azure.microsoft.com/pricing/details/monitor/). Als u de metrische gegevens voor micrometer en lente aandrijving wilt uitschakelen, voegt u de onderstaande configuratie toe aan het configuratie bestand.
 
 ```json
 {
@@ -244,7 +247,7 @@ Application Insights Java 3,0 verzendt standaard elke 15 minuten een heartbeat-m
 ```
 
 > [!NOTE]
-> U kunt de frequentie van deze heartbeat niet verlagen, omdat de heartbeat-gegevens ook worden gebruikt om Application Insights gebruik bij te houden.
+> U kunt de frequentie van de heartbeat niet verlagen, omdat de heartbeat-gegevens ook worden gebruikt om Application Insights gebruik bij te houden.
 
 ## <a name="http-proxy"></a>HTTP-proxy
 
@@ -279,7 +282,7 @@ Als uw toepassing zich achter een firewall bevindt en niet rechtstreeks verbindi
 
 ' Zelf diagnostische gegevens ' verwijst naar interne logboek registratie van Application Insights Java 3,0.
 
-Dit kan handig zijn voor herkennen en het diagnosticeren van problemen met Application Insights zichzelf.
+Deze functionaliteit kan handig zijn voor het herkennen en diagnosticeren van problemen met Application Insights zichzelf.
 
 Application Insights Java 3,0-logboeken worden standaard op niveau `INFO` naar het bestand `applicationinsights.log` en de console, die overeenkomt met deze configuratie:
 

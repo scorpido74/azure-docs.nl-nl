@@ -3,12 +3,12 @@ title: Veelgestelde vragen over VMware-nood herstel met Azure Site Recovery
 description: Krijg antwoorden op veelgestelde vragen over herstel na nood gevallen van on-premises virtuele VMware-machines naar Azure met behulp van Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359795"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379987"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Algemene vragen over replicatie van VMware naar Azure
 
@@ -176,7 +176,7 @@ Voor VMware-replicatie naar Azure kunt u de schijf grootte van de bron-Vm's wijz
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Kan ik on-premises machines migreren naar een nieuwe vCenter Server zonder dat dit van invloed is op de continue replicatie?
 
-Nee. Een wijziging van VMware vCenter of migratie is van invloed op voortdurende replicatie. Stel Site Recovery in met de nieuwe vCenter Server en schakel de replicatie voor machines opnieuw in.
+Raadpleeg onze [richt lijnen](vmware-azure-manage-vcenter.md#migrate-all-vms-to-a-new-server) voor het migreren van machines naar een nieuwe vCenter
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>Kan ik repliceren naar een cache-of het doel-opslag account dat een virtueel netwerk (met Azure-firewalls) heeft geconfigureerd?
 
@@ -286,7 +286,7 @@ Ja, maar houd er rekening mee dat de fysieke machine alleen kan worden teruggeze
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Waar kan ik een kluis registratie sleutel downloaden?
 
-Selecteer in de Recovery Services kluis **configuratie servers** in **site Recovery-infra structuur**  >  **beheren**. Selecteer vervolgens bij **servers**de optie **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
+Selecteer in de Recovery Services kluis **configuratie servers** in **site Recovery-infra structuur**  >  **beheren**. Selecteer vervolgens bij **servers** de optie **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Kan één configuratie server worden gebruikt voor het beveiligen van meerdere vCenter-instanties?
 

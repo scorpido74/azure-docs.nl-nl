@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Connector for FHIR bekijken en configureren (preview) Metrische gegevens
-description: In dit artikel wordt uitgelegd hoe u de metrische gegevens van Azure IoT connector voor FHIR (preview) weergeeft en configureert.
+title: De metrische gegevens van Azure IoT connector voor FHIR (preview) weer geven en configureren
+description: In dit artikel wordt uitgelegd hoe u de metrische gegevens van Azure IoT connector voor FHIR (preview) kunt weer geven en configureren.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
@@ -8,73 +8,71 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: jasteppe
-ms.openlocfilehash: 1cdae789b8286be408735fff92e2de46e28ce514
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 9a4e2c4dfe8a9de28688afe0dd036cecb7ce2b39
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394285"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381215"
 ---
-# <a name="view-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Azure IoT Connector for FHIR bekijken en configureren (preview) Metrische gegevens 
+# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>De metrische gegevens van Azure IoT connector voor FHIR (preview) weer geven en configureren 
 
-In dit artikel leert u hoe u Azure IoT connector kunt weer geven en configureren voor FHIR *-metrische gegevens. 
+In dit artikel leert u hoe u Azure IoT connector kunt weer geven en configureren voor snelle interoperabiliteits bronnen voor gezondheids zorg (FHIR&#174;) * metrische gegevens.
 
 > [!TIP]
-> Volg de richt lijnen in [Azure IOT connector voor FHIR (preview) exporteren via Diagnostische instellingen](./iot-metrics-diagnostics-export.md) voor meer informatie over het instellen van het exporteren van metrische gegevens.
+> Voor meer informatie over het instellen van het exporteren van metrische gegevens, volgt u de instructies in een [Azure IOT-connector exporteren voor FHIR (preview) met behulp van diagnostische instellingen](./iot-metrics-diagnostics-export.md).
 
-## <a name="view-metrics-for-azure-iot-connector-for-fhir-preview"></a>Metrische gegevens weer geven voor Azure IoT connector voor FHIR (preview)
-1. Als u metrische gegevens voor IoT-connectors wilt weer geven, selecteert u uw Azure API for FHIR-service in de Azure Portal. 
+## <a name="display-metrics-for-azure-iot-connector-for-fhir-preview"></a>Metrische gegevens weer geven voor Azure IoT connector voor FHIR (preview-versie)
 
-2. Ga naar **metrische gegevens** 
+1. Meld u aan bij de Azure Portal en selecteer vervolgens uw Azure API for FHIR-service. 
+
+2. Selecteer **metrische gegevens** in het linkerdeel venster. 
 
 3. Selecteer het tabblad **IOT-connector** .
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-main.png" alt-text="IoT-Connector1" lightbox="media/iot-metrics-display/iot-metrics-main.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-main.png" alt-text="Scherm opname van het deel venster van de IoT-connector, met lijn grafieken waarmee het aantal inkomende en genormaliseerde berichten wordt weer gegeven." lightbox="media/iot-metrics-display/iot-metrics-main.png"::: 
 
-4. Selecteer een IoT-connector om de metrische gegevens weer te geven (bijvoorbeeld: er zijn (4) IoT-connectors gekoppeld aan deze Azure API for FHIR-service).
+4. Selecteer een IoT-connector om de metrische gegevens weer te geven. Er zijn bijvoorbeeld vier IoT-connectors ( *connector 1* , *Connector 2* , enzovoort) die zijn gekoppeld aan deze Azure API voor de FHIR-service.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="IoT-Connector2" lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="Scherm opname van het deel venster IoT-connector, de tabbladen 1, 2, 3 en 4 van IoT-connector weer geven." lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
 
-> [!NOTE]
-> Op het tabblad **aangepast** kunnen specifieke tijd/datum combinaties worden gemaakt voor het weer geven van metrische gegevens voor IOT-connector.
+5. Selecteer de tijds periode (bijvoorbeeld **1 uur** , **24 uur** , **7 dagen** of **aangepast** ) van de metrische gegevens van de IOT-connector die u wilt weer geven. Als u het **aangepaste** tabblad selecteert, kunt u specifieke tijd/datum combinaties maken voor het weer geven van metrische gegevens van IOT-connector.
 
-5. Selecteer de tijds periode van de gegevens van de IoT-connector die moeten worden weer gegeven (bijvoorbeeld: 1 uur, 24 uur, 7 dagen of aangepast).
-
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="IoT-Connector3" lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="Scherm afbeelding van het deel venster van de IoT-connector, met een ' 1 uur ' tijd periode lijn diagram voor ' connector 1 '." lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
-## <a name="metrics-types-for-azure-iot-connector-for-fhir-preview"></a>Metrische typen voor Azure IoT connector voor FHIR (preview-versie) 
-De gegevens van de weer gegeven IoT-connector zijn als volgt:
+## <a name="metric-types-for-azure-iot-connector-for-fhir-preview"></a>Metrische typen voor Azure IoT connector voor FHIR (preview-versie) 
 
-|Type metrische gegevens|Doel van metrische gegevens| 
+De metrische gegevens voor de IoT-connector die u kunt weer geven, worden weer gegeven in de volgende tabel:
+
+|Metrisch type|Metrische doel| 
 |-----------|--------------|
-|Aantal inkomende berichten|Het aantal ontvangen onbewerkte inkomende berichten (bijvoorbeeld: de gebeurtenissen van het apparaat).|
-|Aantal genormaliseerde berichten|Het aantal genormaliseerde berichten.|
-|Aantal bericht groepen|Het aantal groepen waarvoor berichten zijn samengevoegd in een opgegeven tijd venster.|
-|Gemiddelde genormaliseerde fase latentie|Gemiddelde latentie van de normale-fase. Normaliseren fase is het uitvoeren van normalisatie op onbewerkte inkomende berichten.|
-|Gemiddelde latentie van groeps fase|Gemiddelde latentie van de groeps fase. Groeps fase is het uitvoeren van buffers, het samen voegen en groeperen van genormaliseerde berichten.| 
-|Totaal aantal fouten|Totaal aantal fouten.| 
+|Aantal inkomende berichten|Hier wordt het aantal ontvangen onbewerkte inkomende berichten weer gegeven (bijvoorbeeld de gebeurtenissen van het apparaat).|
+|Aantal genormaliseerde berichten|Hiermee wordt het aantal genormaliseerde berichten weer gegeven.|
+|Aantal bericht groepen|Geeft het aantal groepen weer waarvoor berichten zijn samengevoegd in het opgegeven tijd venster.|
+|Gemiddelde genormaliseerde fase latentie|Hiermee wordt de gemiddelde latentie van de genormaliseerde fase weer gegeven. De genormaliseerde fase voert normalisatie uit op onbewerkte inkomende berichten.|
+|Gemiddelde latentie van groeps fase|Hiermee wordt de gemiddelde latentie van de groeps fase weer gegeven. De groeps fase voert buffering, aggregatie en groepering uit op genormaliseerde berichten.| 
+|Totaal aantal fouten|Hiermee wordt het totale aantal fouten weer gegeven.| 
 
-## <a name="focusing-and-configuring-azure-iot-connector-for-fhir-preview-metrics"></a>Het concentreren en configureren van Azure IoT connector voor FHIR-metrische gegevens (preview)
-In dit voor beeld wordt gefocust op het **aantal metrische gegevens van binnenkomende berichten** .
+## <a name="focus-on-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>De metrische gegevens van de Azure IoT-connector voor FHIR (preview) richten en configureren
+
+In dit voor beeld is het belang rijk om te kijken naar het **aantal metrische binnenkomende berichten** .
 
 1. Selecteer een tijdgebonden punt waarop u wilt focussen.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="IoT-Connector4" lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="Scherm opname van het deel venster ' aantal inkomende berichten ', dat één punt in de tijd in de lijn diagram markeert." lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
 
-2. In dit scherm kunt u **metrische gegevens toevoegen** , **filters toevoegen** en **splitsing Toep assen** voor verdere aanpassingen. 
+2. In het deel venster **aantal inkomende berichten** kunt u de metriek verder aanpassen door **metrische gegevens toevoegen** , **filter toevoegen** of splitsen toe te **passen**. 
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="IoT-Connector5" lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="Scherm opname van het deel venster ' aantal inkomende berichten ', met de knoppen ' metrische gegevens toevoegen, filters toevoegen en splitsing Toep assen ' gemarkeerd." lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
 
 ## <a name="conclusion"></a>Conclusie 
-Het hebben van toegang tot metrische gegevens vlak is essentieel voor het controleren en oplossen van problemen.  Azure IoT connector voor FHIR helpt u bij het uitvoeren van deze acties via metrische gegevens. 
+Het hebben van toegang tot metrische gegevens vlak is essentieel voor het controleren en oplossen van problemen. Azure IoT connector voor FHIR helpt u bij deze acties met metrische gegevens. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk veelgestelde vragen over de Azure IoT-connector voor FHIR.
+Krijg antwoorden op veelgestelde vragen over Azure IoT connector voor FHIR.
 
 >[!div class="nextstepaction"]
 >[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md)
 
-*In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
-
-FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.
+* In de Azure Portal wordt Azure IoT connector voor FHIR aangeduid als IoT-connector (preview). FHIR is een geregistreerd handels merk van HL7 en wordt gebruikt met de machtiging van HL7. 

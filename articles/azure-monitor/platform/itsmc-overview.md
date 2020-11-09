@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: ecafc0c81a6614a914d8cad3d2c35fd04544b8f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c34cd8e399a005f5eadb3751fb0575f6ecfc27ed
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102017"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380875"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van IT Service Management-connector
 
@@ -57,7 +57,7 @@ Voordat u een verbinding kunt maken, moet u ITSMC toevoegen.
 
 3. Selecteer in de sectie **OMS-werk ruimte** de Azure log Analytics-werk ruimte waar u ITSMC wilt installeren.
    >[!NOTE]
-   > * Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als *log Analytics* .
+   > * Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als *log Analytics*.
    > * ITSMC kan alleen in Log Analytics-werk ruimten worden geïnstalleerd in de volgende regio's: VS-Oost, VS-West 2, Zuid-Centraal VS, West-Centraal VS, US Gov-Arizona, US Gov-Virginia, Canada-centraal, Europa-west, Zuid-Brittannië, Zuidoost-Azië, Japan-Oost, Centraal-India en Australië-zuidoost.
 
 
@@ -65,9 +65,9 @@ Voordat u een verbinding kunt maken, moet u ITSMC toevoegen.
 
    ![Scherm afbeelding van de sectie Log Analytics werk ruimte.](media/itsmc-overview/itsmc-solution-workspace.png)
    >[!NOTE]
-   >Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als *log Analytics* .
+   >Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als *log Analytics*.
 
-5. Selecteer **OK** .
+5. Selecteer **OK**.
 
 Wanneer de ITSMC-resource wordt geïmplementeerd, wordt er een melding weer gegeven in de rechter bovenhoek van het venster.
 
@@ -95,7 +95,7 @@ Nadat u uw ITSM-hulpprogram ma's hebt bereid, voert u de volgende stappen uit om
 
    ![Scherm opname van het menu-item ITSM-verbindingen.](media/itsmc-overview/add-new-itsm-connection.png)
    Op deze pagina wordt de lijst met verbindingen weer gegeven.
-1. Selecteer **verbinding toevoegen** .
+1. Selecteer **verbinding toevoegen**.
 
 4. Geef de verbindings instellingen op, zoals beschreven in [de ITSMC-verbinding configureren met uw ITSM-producten of-services](./itsmc-connections.md).
 
@@ -111,7 +111,7 @@ Nadat u uw ITSM-hulpprogram ma's hebt bereid, voert u de volgende stappen uit om
 
 ## <a name="template-definitions"></a>Sjabloon definities
    Er zijn typen werk items die sjablonen kunnen gebruiken die zijn gedefinieerd door het ITSM-hulp programma.
-Met behulp van sjablonen kunt u velden definiëren die automatisch worden ingevuld op basis van vaste waarden die zijn gedefinieerd als onderdeel van de actie groep. U definieert sjablonen in het hulp programma ITSM.
+Met behulp van sjablonen kunt u velden definiëren die automatisch worden ingevuld op basis van vaste waarden die zijn gedefinieerd als onderdeel van de actie groep. U definieert sjablonen in het hulp programma ITSM. U kunt definiëren in welke sjabloon u wilt gebruiken als onderdeel van de definitie van de actie groep.
       
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>ITSM-werk items maken op basis van Azure-waarschuwingen
 
@@ -125,32 +125,34 @@ Actie groepen bieden een modulaire en herbruikbare manier om acties voor uw Azur
 
 Gebruik de volgende procedure om werk items te maken:
 
-1. Selecteer in de Azure Portal  **waarschuwingen** .
+1. Selecteer in de Azure Portal  **waarschuwingen**.
 2. Selecteer in het menu boven aan het scherm **acties beheren** :
 
     ![Scherm afbeelding met de menu opdracht acties beheren.](media/itsmc-overview/action-groups-selection-big.png)
 
    Het venster **actie groep maken** wordt weer gegeven.
 
-3. Selecteer het **abonnement** en de **resource groep** waar u uw actie groep wilt maken. Geef een naam op voor de **actie groep** en de **weergave naam** voor uw actie groep. Selecteer **volgende: meldingen** .
+3. Selecteer het **abonnement** en de **resource groep** waar u uw actie groep wilt maken. Geef een naam op voor de **actie groep** en de **weergave naam** voor uw actie groep. Selecteer **volgende: meldingen**.
 
     ![Scherm opname van het venster actie groep maken.](media/itsmc-overview/action-groups-details.png)
 
-4. Selecteer in de lijst met meldingen **volgende: acties** .
+4. Selecteer in de lijst met meldingen **volgende: acties**.
 5. Selecteer in de lijst acties de optie **ITSM** in de lijst **actie type** . Geef een **naam** op voor de actie. Selecteer de knop pen die de **Details** van de bewerking weergeeft.
 6. Selecteer in de lijst **abonnement** het abonnement waarin uw log Analytics-werk ruimte zich bevindt. Selecteer in de lijst **verbinding** de naam van uw ITSM-connector. Deze wordt gevolgd door de naam van uw werk ruimte. Bijvoorbeeld MyITSMConnector (MyWorkspace).
 
 7. Selecteer een type **werk item** .
 
-8. Als u velden met vaste waarden wilt invullen, selecteert u **aangepaste sjabloon gebruiken** . Als dat niet het geval is, kiest u een bestaande [sjabloon](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) in de lijst **sjabloon** en voert u de vaste waarden in de sjabloon velden in.
+8. Als u velden met vaste waarden wilt invullen, selecteert u **aangepaste sjabloon gebruiken**. Als dat niet het geval is, kiest u een bestaande [sjabloon](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) in de lijst **sjabloon** en voert u de vaste waarden in de sjabloon velden in.
 
 9. Als u **afzonderlijke werk items maken voor elk configuratie-item** selecteert, heeft elk configuratie-item een eigen werk item. Er wordt één werk item per configuratie-item weer. Het wordt bijgewerkt op basis van de waarschuwingen die worden gemaakt.
 
-   Als u het selectie vakje **afzonderlijke werk items voor elk configuratie-item maken** uitschakelt, wordt in elke waarschuwing een nieuw werk item gemaakt. Er kan meer dan één waarschuwing per configuratie-item zijn.
+   * In het geval dat u in de vervolg keuzelijst werk item of waarschuwing klikt: als u het selectie vakje **afzonderlijke werk items voor elk configuratie-item maken** uitschakelt, wordt er door elke waarschuwing een nieuw werk item gemaakt. Er kan meer dan één waarschuwing per configuratie-item zijn.
 
    ![Scherm opname van het ITSM-ticket venster.](media/itsmc-overview/itsm-action-configuration.png)
+   
+   * In het geval dat u in de vervolg keuzelijst voor werk items selecteert: als u **afzonderlijke werk items maken voor elke logboek vermelding** in de keuze rondjes selecteert, wordt er met elke waarschuwing een nieuw werk item gemaakt. Als u **afzonderlijke werk items maken selecteert voor elk configuratie-item** in de keuze rondjes selectie, heeft elk configuratie-item een eigen werk item. 
 
-10. Selecteer **OK** .
+10. Selecteer **OK**.
 
 Wanneer u een Azure-waarschuwings regel maakt of bewerkt, gebruikt u een actie groep met een ITSM-actie. Wanneer de waarschuwing wordt geactiveerd, wordt het werk item gemaakt of bijgewerkt in het ITSM-hulp programma.
 
@@ -266,7 +268,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | AssignedTo_s | Toegewezen aan  |
 | Category_s | Categorie |
 | Title_s|  Korte beschrijving |
-| Description_s|  Opmerkingen |
+| Description_s|  Notities |
 | CreatedDate_t|  Had |
 | ClosedDate_t| gesloten|
 | ResolvedDate_t|Opgelost|

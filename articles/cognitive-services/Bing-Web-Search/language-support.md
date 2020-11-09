@@ -10,23 +10,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 998e18f8901dda3430d5289e0590ef8099b6fb8c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3ce1fdc0b52db2706f81950fff735cf7f95e52b
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095455"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379677"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Ondersteuning van talen en regio's voor de Bing Webzoekopdrachten-API
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Het Bing Webzoekopdrachten-API ondersteunt meer dan drie dozijn landen of regio's, veel met meer dan één taal. Het opgeven van een land of regio met een query helpt de zoek resultaten te verfijnen op basis van de interesses van die landen of regio's. De resultaten kunnen koppelingen naar Bing bevatten en deze koppelingen kunnen de Bing-gebruikers ervaring lokaliseren op basis van de opgegeven land/regio of taal.
 
-U kunt een land of regio opgeven met behulp van de `cc` query parameter. Wanneer u een land of regio hebt opgegeven, moet u een of meer taal codes met de [ `Accept-Language` header](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)opgeven. Gebruik de [tabel Markets](#markets) voor een lijst met talen die op elke markt worden ondersteund.
+U kunt een land of regio opgeven met behulp van de `cc` query parameter. Wanneer u een land of regio hebt opgegeven, moet u een of meer taal codes met de [ `Accept-Language` header](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)opgeven. Gebruik de [tabel Markets](#markets) voor een lijst met talen die op elke markt worden ondersteund.
 
 U kunt ook de-markt met de `mkt` query parameter en een code uit de tabel **Markets** opgeven. Als u een markt opgeeft, geeft u een land of regio en een voorkeurs taal op. U kunt de taal expliciet instellen met de `setLang` query parameter.
 

@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2cea88c2e20c9e96c5ad5504815886b2cc771e44
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3dda95312a0b9191ddc11de62959f308ee19fff4
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100555"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380977"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Webzoekopdrachten-API-antwoord structuur en-antwoord typen  
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) voor migratie-instructies.
 
-Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) object geretourneerd in de hoofd tekst van het antwoord. Het object bevat een veld voor elk antwoord dat door Bing is bepaald en dat van belang is voor de query. Dit voor beeld illustreert een reactie object als Bing alle antwoorden heeft geretourneerd:
+Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een [`SearchResponse`](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) object geretourneerd in de hoofd tekst van het antwoord. Het object bevat een veld voor elk antwoord dat door Bing is bepaald en dat van belang is voor de query. Dit voor beeld illustreert een reactie object als Bing alle antwoorden heeft geretourneerd:
 
 ```json
 {
@@ -43,13 +43,13 @@ Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een [`SearchResponse
 }, ...
 ```
 
-Meestal retourneert Bing Web Search een subset van de antwoorden. Als de query term bijvoorbeeld *dinghies* is, kan de reactie het volgende omvatten `webPages` :, `images` en `rankingResponse` . Tenzij u [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) hebt gebruikt om webpagina's te filteren, bevat het antwoord altijd de `webpages` en `rankingResponse` antwoorden.
+Meestal retourneert Bing Web Search een subset van de antwoorden. Als de query term bijvoorbeeld *dinghies* is, kan de reactie het volgende omvatten `webPages` :, `images` en `rankingResponse` . Tenzij u [responseFilter](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) hebt gebruikt om webpagina's te filteren, bevat het antwoord altijd de `webpages` en `rankingResponse` antwoorden.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ## <a name="webpages-answer"></a>Antwoord op webpagina's
 
-Het antwoord op [webpagina's](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) bevat een lijst met koppelingen naar webpagina's die Bing Web Search bepaald, zijn relevant voor de query. Elke [webpagina](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage) in de lijst bevat: de naam van de pagina, URL, weer gave-URL, een korte beschrijving van de inhoud en de datum waarop Bing de inhoud heeft gevonden.
+Het antwoord op [webpagina's](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) bevat een lijst met koppelingen naar webpagina's die Bing Web Search bepaald, zijn relevant voor de query. Elke [webpagina](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage) in de lijst bevat: de naam van de pagina, URL, weer gave-URL, een korte beschrijving van de inhoud en de datum waarop Bing de inhoud heeft gevonden.
 
 ```json
 {
@@ -72,7 +72,7 @@ The following shows an example of how you might display the webpage in a search 
 
 ## <a name="images-answer"></a>Antwoord op installatie kopieën
 
-Het antwoord op [installatie kopieën](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) bevat een lijst met installatie kopieën die door Bing worden beschouwd als relevant voor de query. Elke [afbeelding](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) in de lijst bevat de URL van de afbeelding, de grootte, de afmetingen en de coderings indeling. Het Image-object bevat ook de URL van een miniatuur van de afbeelding en de afmetingen van de miniatuur.
+Het antwoord op [installatie kopieën](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) bevat een lijst met installatie kopieën die door Bing worden beschouwd als relevant voor de query. Elke [afbeelding](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) in de lijst bevat de URL van de afbeelding, de grootte, de afmetingen en de coderings indeling. Het Image-object bevat ook de URL van een miniatuur van de afbeelding en de afmetingen van de miniatuur.
 
 ```json
 {
@@ -98,7 +98,7 @@ Het antwoord op [installatie kopieën](https://docs.microsoft.com/rest/api/cogni
 }, ...
 ```
 
-Afhankelijk van het apparaat van de gebruiker, zou u normaal gesp roken een subset van de miniaturen weer geven, met een optie waarmee de gebruiker [door](paging-webpages.md) de resterende installatie kopieën kan bladeren.
+Afhankelijk van het apparaat van de gebruiker, zou u normaal gesp roken een subset van de miniaturen weer geven, met een optie waarmee de gebruiker [door](./paging-search-results.md) de resterende installatie kopieën kan bladeren.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![List of thumbnail images](./media/cognitive-services-bing-web-api/bing-web-image-thumbnails.PNG)
@@ -112,11 +112,11 @@ U kunt de miniatuur ook uitbreiden op het moment dat de gebruiker er met de curs
 
 Als de gebruiker op de miniatuur klikt, kunt u gebruiken `webSearchUrl` om de gebruiker naar de zoek resultaten pagina van Bing te gaan voor installatie kopieën, die een collage van de afbeeldingen bevat.
 
-Zie [afbeeldingen zoeken-API](../bing-image-search/search-the-web.md)voor meer informatie over het antwoord en de installatie kopieën van de afbeelding.
+Zie [afbeeldingen zoeken-API](../bing-image-search/overview.md)voor meer informatie over het antwoord en de installatie kopieën van de afbeelding.
 
 ## <a name="related-searches-answer"></a>Antwoord op verwante Zoek opdrachten
 
-Het [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) -antwoord bevat een lijst met de populairste gerelateerde query's die door andere gebruikers zijn gemaakt. Elke [query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) in de lijst bevat een query teken reeks ( `text` ), een query reeks met treffer markeringen ( `displayText` ) en een URL ( `webSearchUrl` ) naar de pagina Zoek resultaten van Bing voor die query.
+Het [relatedSearches](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) -antwoord bevat een lijst met de populairste gerelateerde query's die door andere gebruikers zijn gemaakt. Elke [query](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) in de lijst bevat een query teken reeks ( `text` ), een query reeks met treffer markeringen ( `displayText` ) en een URL ( `webSearchUrl` ) naar de pagina Zoek resultaten van Bing voor die query.
 
 ```json
 {
@@ -136,7 +136,7 @@ Hieronder ziet u een voor beeld van het gebruik van gerelateerde query's in Bing
 
 ## <a name="videos-answer"></a>Antwoord op Video's
 
-Het antwoord [Video's](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) bevat een lijst met Video's die Bing dacht te zijn voor de query. Elke [video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) in de lijst bevat de URL van de video, de duur, de afmetingen en de coderings indeling. Het Video-object bevat ook de URL van een miniatuur van de video en de afmetingen van de miniatuur.
+Het antwoord [Video's](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) bevat een lijst met Video's die Bing dacht te zijn voor de query. Elke [video](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) in de lijst bevat de URL van de video, de duur, de afmetingen en de coderings indeling. Het Video-object bevat ook de URL van een miniatuur van de video en de afmetingen van de miniatuur.
 
 ```json
 {
@@ -186,11 +186,11 @@ Als de gebruiker op de miniatuur klikt, zijn dit de opties voor het bekijken van
 - Gebruik `webSearchUrl` om de video in de Bing Video browser weer te geven
 - Gebruik `embedHtml` om de video in uw eigen ervaring in te sluiten
 
-Zie [Video's zoeken-API](../bing-video-search/search-the-web.md)voor meer informatie over het video antwoord en Video's.
+Zie [Video's zoeken-API](../bing-video-search/overview.md)voor meer informatie over het video antwoord en Video's.
 
 ## <a name="news-answer"></a>Antwoord op nieuws
 
-Het [Nieuws](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) antwoord bevat een lijst met nieuws artikelen die door Bing worden beschouwd als relevant voor de query. Elk [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) in de lijst bevat de naam en beschrijving van het artikel, plus de URL naar het artikel op de website van de host. Als in het artikel een afbeelding staat, bevat het object een miniatuur van de afbeelding.
+Het [Nieuws](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) antwoord bevat een lijst met nieuws artikelen die door Bing worden beschouwd als relevant voor de query. Elk [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) in de lijst bevat de naam en beschrijving van het artikel, plus de URL naar het artikel op de website van de host. Als in het artikel een afbeelding staat, bevat het object een miniatuur van de afbeelding.
 
 ```json
 {
@@ -225,7 +225,7 @@ Zie [Nieuws zoeken-API](../bing-news-search/search-the-web.md)voor meer informat
 
 ## <a name="computation-answer"></a>Antwoord op berekening
 
-Als de gebruiker een wiskundige expressie of een query voor de conversie van een eenheid invoert, kan het antwoord een [reken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) antwoord bevatten. Het `computation` antwoord bevat de genormaliseerde expressie en het resultaat.
+Als de gebruiker een wiskundige expressie of een query voor de conversie van een eenheid invoert, kan het antwoord een [reken](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) antwoord bevatten. Het `computation` antwoord bevat de genormaliseerde expressie en het resultaat.
 
 Een query voor eenheids conversie is een query waarmee de ene eenheid naar een andere wordt geconverteerd. *Hoe groot bijvoorbeeld in 10 meters?* of *hoeveel tablespoons in een 1/4e Cup?*
 
@@ -333,7 +333,7 @@ Wiskundige expressies die variabelen bevatten (bijvoorbeeld 4x + 6 = 18, waarbij
 
 ## <a name="timezone-answer"></a>Antwoord tijd zone
 
-Als de gebruiker een tijd-of datum query invoert, kan het antwoord een tijd [zone](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) antwoord bevatten. Dit antwoord biedt ondersteuning voor impliciete of expliciete query's. Een impliciete query, zoals *Wat is de tijd?* , retourneert de lokale tijd op basis van de locatie van de gebruiker. Een expliciete query, zoals de *tijd in Seattle?* , retourneert de lokale tijd voor Seattle, WA.
+Als de gebruiker een tijd-of datum query invoert, kan het antwoord een tijd [zone](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) antwoord bevatten. Dit antwoord biedt ondersteuning voor impliciete of expliciete query's. Een impliciete query, zoals *Wat is de tijd?* , retourneert de lokale tijd op basis van de locatie van de gebruiker. Een expliciete query, zoals de *tijd in Seattle?* , retourneert de lokale tijd voor Seattle, WA.
 
 Het `timeZone` antwoord bevat de naam van de locatie, de huidige UTC-datum en-tijd op de opgegeven locatie en de UTC-afwijking. Als de grens van de locatie zich binnen meerdere tijd zones bevindt, bevat het antwoord de huidige UTC-datum en-tijd van alle tijd zones binnen de grens. Omdat de provincie van Florida bijvoorbeeld binnen twee tijd zones valt, bevat het antwoord de lokale datum en tijd van beide tijd zones.  
 
@@ -424,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion-antwoord
 
-Als Bing bepaalt dat de gebruiker mogelijk is bedoeld om iets anders te zoeken, bevat het antwoord een [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) -object. Als de gebruiker bijvoorbeeld zoekt naar de *Carlos-pen* , kan Bing bepalen of de gebruiker die is bedoeld om te zoeken naar Carlos Pena in plaats daarvan (op basis van vroegere Zoek opdrachten door andere *Carlos-pen* ). Hieronder ziet u een voor beeld van een spelling reactie.
+Als Bing bepaalt dat de gebruiker mogelijk is bedoeld om iets anders te zoeken, bevat het antwoord een [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) -object. Als de gebruiker bijvoorbeeld zoekt naar de *Carlos-pen* , kan Bing bepalen of de gebruiker die is bedoeld om te zoeken naar Carlos Pena in plaats daarvan (op basis van vroegere Zoek opdrachten door andere *Carlos-pen* ). Hieronder ziet u een voor beeld van een spelling reactie.
 
 ```json
 "spellSuggestions": {
@@ -487,4 +487,4 @@ Hieronder ziet u hoe Bing de spelling suggestie gebruikt.
 
 ## <a name="see-also"></a>Zie tevens  
 
-* [Bing Webzoekopdrachten-API referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Bing Webzoekopdrachten-API referentie](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

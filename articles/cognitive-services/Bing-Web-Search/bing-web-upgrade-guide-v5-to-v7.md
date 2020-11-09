@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 95e80907220a58243844b80d81dc187f8dc4c8bc
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39848bcaded1669c6a6efd5b649ecf8e8343a596
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078693"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381113"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade van Bing Webzoekopdrachten-API v5 naar v7
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de Bing Webzoekopdrachten-API. Gebruik deze hand leiding om u te helpen bij het identificeren van de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
 
@@ -80,14 +80,14 @@ Geblokkeerd|InvalidRequest. blocked
 
 ### <a name="headers"></a>Kopteksten
 
-- De optionele header [pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) -aanvraag is toegevoegd. Bing retourneert standaard cache-inhoud, indien beschikbaar. Om te voorkomen dat Bing inhoud uit de cache retourneert, stelt u de Pragma-header in op no-cache (bijvoorbeeld: Pragma: no-cache).
+- De optionele header [pragma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) -aanvraag is toegevoegd. Bing retourneert standaard cache-inhoud, indien beschikbaar. Om te voorkomen dat Bing inhoud uit de cache retourneert, stelt u de Pragma-header in op no-cache (bijvoorbeeld: Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Queryparameters
 
-- De query parameter [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) is toegevoegd. Gebruik deze para meter om het aantal antwoorden op te geven dat u wilt dat het antwoord bevat. De antwoorden worden gekozen op basis van de rang schikking. Als u deze para meter bijvoorbeeld instelt op drie (3), bevat het antwoord de eerste drie geclassificeerde antwoorden.  
+- De query parameter [answerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) is toegevoegd. Gebruik deze para meter om het aantal antwoorden op te geven dat u wilt dat het antwoord bevat. De antwoorden worden gekozen op basis van de rang schikking. Als u deze para meter bijvoorbeeld instelt op drie (3), bevat het antwoord de eerste drie geclassificeerde antwoorden.  
 
-- De [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) query-para meter is toegevoegd. Gebruik deze para meter `answerCount` om expliciet een of meer antwoord typen toe te voegen, ongeacht hun positie. Als u bijvoorbeeld Video's en afbeeldingen in het antwoord wilt promoten, stelt u promo veren in op *Video's, afbeeldingen* . De lijst met antwoorden die u wilt promoten, telt niet op basis van de `answerCount` limiet. Als bijvoorbeeld `answerCount` 2 is en `promote` is ingesteld op *Video's, installatie kopieën* , kan de reactie webpagina's, nieuws, Video's en afbeeldingen bevatten.
+- De [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) query-para meter is toegevoegd. Gebruik deze para meter `answerCount` om expliciet een of meer antwoord typen toe te voegen, ongeacht hun positie. Als u bijvoorbeeld Video's en afbeeldingen in het antwoord wilt promoten, stelt u promo veren in op *Video's, afbeeldingen*. De lijst met antwoorden die u wilt promoten, telt niet op basis van de `answerCount` limiet. Als bijvoorbeeld `answerCount` 2 is en `promote` is ingesteld op *Video's, installatie kopieën* , kan de reactie webpagina's, nieuws, Video's en afbeeldingen bevatten.
 
 ### <a name="object-changes"></a>Object wijzigingen
 
-- Het veld is toegevoegd `someResultsRemoved` aan het [webantwoord](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) -object. Het veld bevat een Booleaanse waarde die aangeeft of het antwoord een deel van de resultaten van het webantwoorden heeft uitgesloten.  
+- Het veld is toegevoegd `someResultsRemoved` aan het [webantwoord](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) -object. Het veld bevat een Booleaanse waarde die aangeeft of het antwoord een deel van de resultaten van het webantwoorden heeft uitgesloten.

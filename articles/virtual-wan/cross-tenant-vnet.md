@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 875fd40fea315269f7fe72032942c40551a6b144
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c49a85c71c9b877be7e143f5caf27dc307fe0c12
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078966"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381266"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Cross-Tenant VNets verbinden met een virtuele WAN-hub
 
@@ -54,7 +54,7 @@ Om het bovenliggende abonnement met de virtuele hub te wijzigen en toegang te kr
 1. Voeg vervolgens het externe Tenant abonnement en het bovenliggende Tenant abonnement toe aan de huidige sessie van Power shell. Voer de volgende opdracht uit. Als u bent aangemeld bij het bovenliggende item, hoeft u alleen de opdracht voor de externe Tenant uit te voeren.
 
    ```azurepowershell-interactive
-   Add-AzAccount "xxxxx-b34a-4df9-9451-4402dcaecc5b"
+   Add-AzAccount -SubscriptionId "xxxxx-b34a-4df9-9451-4402dcaecc5b"
    ```
 
 1. Controleer of de roltoewijzing is geslaagd door u aan te melden bij Azure PowerShell met de bovenliggende referenties en voer de volgende opdracht uit:

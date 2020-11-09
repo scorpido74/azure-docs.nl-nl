@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: cb532098cda290654d6bdebe9cec2edab8ccbf99
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 6393b0b8d794345fded95718a2581ae9b929ad49
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355784"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381147"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Een Azure Digital Apparaatdubbels-exemplaar verplaatsen naar een andere Azure-regio
 
@@ -120,7 +120,7 @@ Daarna voltooit u de ' verplaatsen ' van uw exemplaar door een nieuw exemplaar t
 
 ### <a name="create-a-new-instance"></a>Een nieuw exemplaar maken
 
-Maak eerst een nieuw exemplaar van Azure Digital Apparaatdubbels in de doel regio. Volg de stappen in [een exemplaar en verificatie instellen](how-to-set-up-instance-portal.md). Houd de volgende aanwijzers in acht:
+Maak eerst een nieuw exemplaar van Azure Digital Apparaatdubbels in de doel regio. Volg de stappen in [How-to: een instantie en authenticatie instellen](how-to-set-up-instance-portal.md). Houd de volgende aanwijzers in acht:
 
 * U kunt de naam *van het nieuwe exemplaar in* een andere resource groep blijven gebruiken. Als u dezelfde resource groep wilt gebruiken als de oorspronkelijke instantie, heeft de nieuwe instantie een eigen afzonderlijke naam nodig.
 * Voer de nieuwe doel regio in wanneer u wordt gevraagd om een locatie.

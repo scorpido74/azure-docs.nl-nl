@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 972c32b5403a7e6f614161271b7cb7e88693e032
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 54d5fdf1f6bc905482186475302901c46de0d285
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335091"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380123"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics werkruimte gegevens exporteren in Azure Monitor (preview-versie)
 Met Log Analytics werkruimte gegevens exporteren in Azure Monitor kunt u voortdurend gegevens exporteren uit geselecteerde tabellen in uw Log Analytics-werk ruimte naar een Azure Storage-account of Azure-Event Hubs wanneer het wordt verzameld. Dit artikel bevat informatie over deze functie en de stappen voor het configureren van gegevens export in uw werk ruimten.
@@ -58,7 +58,7 @@ Log Analytics werk ruimte gegevens exporteren doorlopend exporteert gegevens uit
 ## <a name="data-completeness"></a>Gegevens volledigheid
 Bij het exporteren van gegevens zal het verzenden van gegevens tot 30 minuten blijven duren, in het geval dat de bestemming niet beschikbaar is. Als het na 30 minuten nog steeds niet beschikbaar is, worden de gegevens verwijderd totdat de bestemming weer beschikbaar wordt.
 
-## <a name="cost"></a>Kosten
+## <a name="cost"></a>Cost
 Er zijn momenteel geen extra kosten verbonden aan de functie voor het exporteren van gegevens. De prijzen voor het exporteren van gegevens worden in de toekomst aangekondigd en er is een kennisgeving gegeven vóór het begin van de facturering. Als u ervoor kiest om de gegevens export te blijven gebruiken na de kennisgevings periode, wordt u gefactureerd tegen het toepasselijke rente bedrag.
 
 ## <a name="export-destinations"></a>Export doelen
@@ -325,7 +325,6 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | ContainerImageInventory | |
 | ContainerInventory | |
 | ContainerLog | |
-| ContainerLog | |
 | ContainerNodeInventory | |
 | ContainerServiceLog | |
 | CoreAzureBackup | |
@@ -343,7 +342,6 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | DnsInventory | |
 | Dynamics365Activity | |
 | Gebeurtenis | Gedeeltelijke ondersteuning. Sommige gegevens in deze tabel worden opgenomen via het opslag account. Deze gegevens worden momenteel niet geëxporteerd. |
-| ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |

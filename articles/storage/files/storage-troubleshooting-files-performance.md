@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 52615a968ce831a9a5a487f7422ad13bc58ecf6d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9dfdbbd982503acc063ff88c74dfccde8677eaac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426474"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380229"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 
@@ -26,15 +26,11 @@ Aanvragen worden beperkt wanneer de limiet voor IOPS, binnenkomend of uitgaand v
 
 Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de metrische gegevens van Azure in de portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Ga in het Azure Portal naar uw opslag account.
 
-1. Selecteer **alle services** en zoek vervolgens naar **metrische gegevens**.
+1. Selecteer in het linkermenu, onder **bewaking** , **metrische gegevens**.
 
-1. Selecteer **Metrische gegevens**.
-
-1. Selecteer uw opslag account als de resource.
-
-1. Selecteer **bestand** als metrische naam ruimte.
+1. Selecteer **bestand** als metrische naam ruimte voor het bereik van uw opslag account.
 
 1. Selecteer **trans acties** als metrische gegevens.
 
@@ -54,7 +50,7 @@ Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de met
 
 Als het meren deel van uw aanvragen meta gegevens georiënteerd is (zoals CreateFile/open file/closefile/queryinfo/querydirectory), is de latentie erger in vergelijking met lees-en schrijf bewerkingen.
 
-Als u wilt controleren of de meeste van uw aanvragen meta gegevens zijn gecentreerd, kunt u dezelfde stappen als hierboven gebruiken. Behalve in plaats van een filter voor **ResponseType**toe te voegen, voegt u een filter toe voor de **API-naam**.
+Als u wilt controleren of de meeste van uw aanvragen meta gegevens zijn gecentreerd, kunt u dezelfde stappen als hierboven gebruiken. Behalve in plaats van een filter voor **ResponseType** toe te voegen, voegt u een filter toe voor de **API-naam**.
 
 ![Filter voor de naam van de API in uw metrische gegevens](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
@@ -103,7 +99,7 @@ Dit is een bekend probleem met de implementatie van SMB-client op Linux.
 
 - De belasting over meerdere Vm's spreiden.
 - Gebruik op dezelfde VM meerdere koppel punten met de optie **nosharesock** en verspreid de belasting over deze koppel punten.
-- Probeer in Linux te koppelen met de optie **nostrictsync** om te voor komen dat SMB-leegmaak bewerking wordt afgedwongen bij elke **fsync** -aanroep. Voor Azure Files is deze optie niet van invloed op de consistentie van gegevens, maar kan de verouderde meta gegevens van een bestand in een map worden weer gegeven (**ls-l** opdracht). Het rechtstreeks opvragen van meta gegevens van het**bestand (de** opdracht) retourneert de meest recente meta gegevens van een bestand.
+- Probeer in Linux te koppelen met de optie **nostrictsync** om te voor komen dat SMB-leegmaak bewerking wordt afgedwongen bij elke **fsync** -aanroep. Voor Azure Files is deze optie niet van invloed op de consistentie van gegevens, maar kan de verouderde meta gegevens van een bestand in een map worden weer gegeven ( **ls-l** opdracht). Het rechtstreeks opvragen van meta gegevens van het **bestand (de** opdracht) retourneert de meest recente meta gegevens van een bestand.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Hoge latenties voor zware werk belastingen voor meta gegevens met uitgebreide open/close-bewerkingen.
 
@@ -177,28 +173,28 @@ Hoger dan de verwachte latentie die toegang heeft tot Azure Files voor intensiev
 
 1. Ga naar uw **opslag account** in de **Azure Portal**.
 2. Klik in de sectie bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
-3. Klik op **Resource bewerken**, selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
+3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
 4. Klik op **voor waarde selecteren** om een voor waarde toe te voegen.
 5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer de metrische gegevens van de **trans actie** .
 6. Klik op de Blade **signaal logica configureren** op de vervolg keuzelijst **dimensie naam** en selecteer **antwoord type**.
 7. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer **SUCCESSWITHTHROTTLING** (voor SMB) of **ClientThrottlingError** (voor rest).
 
-  > [!NOTE]
-  > Als de dimensie waarde SuccessWithThrottling of ClientThrottlingError niet wordt weer gegeven, betekent dit dat de resource niet is beperkt. Als u de dimensie waarde wilt toevoegen, klikt u op **aangepaste waarde toevoegen** naast de vervolg keuzelijst **dimensie waarden** , typt u **SuccessWithThrottling** of **ClientThrottlingError**, klikt u op **OK** en herhaalt u stap #7.
+   > [!NOTE]
+   > Als de dimensie waarde SuccessWithThrottling of ClientThrottlingError niet wordt weer gegeven, betekent dit dat de resource niet is beperkt. Als u de dimensie waarde wilt toevoegen, klikt u op **aangepaste waarde toevoegen** naast de vervolg keuzelijst **dimensie waarden** , typt u **SuccessWithThrottling** of **ClientThrottlingError** , klikt u op **OK** en herhaalt u stap #7.
 
 8. Klik op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share**.
 9. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands share (s) waarop u een waarschuwing wilt ontvangen.
 
-  > [!NOTE]
-  > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden**. De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Het beperken van waarschuwingen voor standaard bestands shares wordt geactiveerd als een bestands share binnen het opslag account wordt beperkt en de waarschuwing niet kan bepalen welke bestands share is beperkt. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
+   > [!NOTE]
+   > Als de bestands share een standaard bestands share is, selecteert u **alle huidige en toekomstige waarden**. De vervolg keuzelijst met dimensie waarden bevat niet de bestands share (s) omdat metrische gegevens per share niet beschikbaar zijn voor standaard bestands shares. Het beperken van waarschuwingen voor standaard bestands shares wordt geactiveerd als een bestands share binnen het opslag account wordt beperkt en de waarschuwing niet kan bepalen welke bestands share is beperkt. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account.
 
 10. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregatie granulatie en frequentie van evaluatie) en klik op **gereed**.
 
-  > [!TIP]
-  > Als u een statische drempel waarde gebruikt, kan de metrische grafiek helpen bij het bepalen van een redelijke drempelwaarde als de bestands share momenteel wordt beperkt. Als u een dynamische drempel waarde gebruikt, worden in de metrische grafiek de berekende drempel waarden weer gegeven op basis van recente gegevens.
+    > [!TIP]
+    > Als u een statische drempel waarde gebruikt, kan de metrische grafiek helpen bij het bepalen van een redelijke drempelwaarde als de bestands share momenteel wordt beperkt. Als u een dynamische drempel waarde gebruikt, worden in de metrische grafiek de berekende drempel waarden weer gegeven op basis van recente gegevens.
 
 11. Klik op **actie groep selecteren** om een **actie groep** (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
-12. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+12. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst** van de **waarschuwings regel**.
 13. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
 Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.
@@ -207,33 +203,33 @@ Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.co
 
 1. Ga naar uw **opslag account** in de **Azure Portal**.
 2. Klik in de sectie bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
-3. Klik op **Resource bewerken**, selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
+3. Klik op **Resource bewerken** , selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
 4. Klik op **voor waarde selecteren** om een voor waarde toe te voegen.
 5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer **de waarde** voor uitgaand verkeer.
 
-  > [!NOTE]
-  > U moet drie afzonderlijke waarschuwingen maken om te worden gewaarschuwd wanneer de ingang, de uitgang of de trans acties de drempel waarde die u instelt, overschrijdt. Dit komt doordat een waarschuwing alleen wordt geactiveerd wanneer aan alle voor waarden wordt voldaan. Dus als u alle voor waarden in één waarschuwing opneemt, wordt u alleen gewaarschuwd als binnenkomend, uitgaand verkeer en de drempel waarden van de limieten zijn overschreden.
+   > [!NOTE]
+   > U moet drie afzonderlijke waarschuwingen maken om te worden gewaarschuwd wanneer de ingang, de uitgang of de trans acties de drempel waarde die u instelt, overschrijdt. Dit komt doordat een waarschuwing alleen wordt geactiveerd wanneer aan alle voor waarden wordt voldaan. Dus als u alle voor waarden in één waarschuwing opneemt, wordt u alleen gewaarschuwd als binnenkomend, uitgaand verkeer en de drempel waarden van de limieten zijn overschreden.
 
 6. Schuif omlaag. Klik op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share**.
 7. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands share (s) waarop u een waarschuwing wilt ontvangen.
 8. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregatie granulatie en frequentie van evaluatie) en klik op **gereed**.
 
-  > [!NOTE]
-  > De metrische gegevens voor uitgaand verkeer, ingangs-en trans acties zijn per minuut, maar u hebt een uitgangs-, binnenkomend en IOPS per seconde ingericht. (Neem contact op met de granulariteit van aggregatie-> per minuut = meer ruis, dus kies een verschil 1) Als uw ingerichte uitvoerder bijvoorbeeld 90 MiB/seconde is en u wilt dat uw drempel waarde 80% van de ingerichte uitvoerder is, moet u de volgende waarschuwings parameters selecteren: 75497472 voor **drempel waarde**, groter dan of gelijk aan voor **operator**, en gemiddeld voor **aggregatie type**. Afhankelijk van hoe ruis uw waarschuwing moet zijn, kunt u kiezen welke waarden u wilt selecteren voor de granulariteit van aggregatie en de frequentie van de evaluatie. Als ik bijvoorbeeld wilt dat mijn waarschuwing de gemiddelde binnenvallen gedurende een uur bekijkt en ik wil dat mijn waarschuwings regel elk uur wordt uitgevoerd, zou ik 1 uur voor **aggregatie granulatie** en 1 uur voor de **frequentie van de evaluatie**selecteren.
+   > [!NOTE]
+   > De metrische gegevens voor uitgaand verkeer, ingangs-en trans acties zijn per minuut, maar u hebt een uitgangs-, binnenkomend en IOPS per seconde ingericht. (Neem contact op met de granulariteit van aggregatie-> per minuut = meer ruis, dus kies een verschil 1) Als uw ingerichte uitvoerder bijvoorbeeld 90 MiB/seconde is en u wilt dat uw drempel waarde 80% van de ingerichte uitvoerder is, moet u de volgende waarschuwings parameters selecteren: 75497472 voor **drempel waarde** , groter dan of gelijk aan voor **operator** , en gemiddeld voor **aggregatie type**. Afhankelijk van hoe ruis uw waarschuwing moet zijn, kunt u kiezen welke waarden u wilt selecteren voor de granulariteit van aggregatie en de frequentie van de evaluatie. Als ik bijvoorbeeld wilt dat mijn waarschuwing de gemiddelde binnenvallen gedurende een uur bekijkt en ik wil dat mijn waarschuwings regel elk uur wordt uitgevoerd, zou ik 1 uur voor **aggregatie granulatie** en 1 uur voor de **frequentie van de evaluatie** selecteren.
 
 9. Klik op **actie groep selecteren** om een **actie groep** (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
-10. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+10. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst** van de **waarschuwings regel**.
 11. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
 
-  > [!NOTE]
-  > Als u een melding wilt ontvangen als uw Premium-bestands share is bijna beperkt vanwege ingerichte inkomend verkeer, voert u dezelfde stappen uit, behalve in stap 5, selecteert u in plaats daarvan de waarde voor **ingangs** datum.
+    > [!NOTE]
+    > Als u een melding wilt ontvangen als uw Premium-bestands share is bijna beperkt vanwege ingerichte inkomend verkeer, voert u dezelfde stappen uit, behalve in stap 5, selecteert u in plaats daarvan de waarde voor **ingangs** datum.
 
-  > [!NOTE]
-  > Als u een melding wilt ontvangen als uw Premium-bestands share is bijna beperkt vanwege ingerichte IOPS, moet u enkele wijzigingen aanbrengen. Selecteer in stap 5 in plaats daarvan de metrische gegevens voor **trans acties** . Voor stap 10 is de enige optie voor **aggregatie type** totaal. De drempel waarde is daarom afhankelijk van de geselecteerde aggregatie granulatie. Als u bijvoorbeeld wilt dat uw drempel waarde 80% van de ingerichte basis lijn IOPS is en u 1 uur hebt geselecteerd voor de **granulariteit van aggregatie**, zou uw **drempelwaarde** uw basislijn IOPS (in bytes) x 0,8 x 3600 moet zijn. Naast deze wijzigingen volgt u dezelfde stappen die hierboven worden beschreven. 
+    > [!NOTE]
+    > Als u een melding wilt ontvangen als uw Premium-bestands share is bijna beperkt vanwege ingerichte IOPS, moet u enkele wijzigingen aanbrengen. Selecteer in stap 5 in plaats daarvan de metrische gegevens voor **trans acties** . Voor stap 10 is de enige optie voor **aggregatie type** totaal. De drempel waarde is daarom afhankelijk van de geselecteerde aggregatie granulatie. Als u bijvoorbeeld wilt dat uw drempel waarde 80% van de ingerichte basis lijn IOPS is en u 1 uur hebt geselecteerd voor de **granulariteit van aggregatie** , zou uw **drempelwaarde** uw basislijn IOPS (in bytes) x 0,8 x 3600 moet zijn. Naast deze wijzigingen volgt u dezelfde stappen die hierboven worden beschreven. 
 
 Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Problemen met Azure Files in Windows oplossen](storage-troubleshoot-windows-file-connection-problems.md)
 * [Problemen met Azure Files in Linux oplossen](storage-troubleshoot-linux-file-connection-problems.md)
 * [Lees de veelgestelde vragen (FAQ) over Azure Files](storage-files-faq.md)

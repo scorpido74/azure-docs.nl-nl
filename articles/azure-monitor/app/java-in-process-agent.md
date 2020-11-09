@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights java
 description: Bewaking van toepassings prestaties voor Java-toepassingen die worden uitgevoerd in een omgeving zonder dat code hoeft te worden gewijzigd. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 31ee3c4a2dbf6f6832c0228e70aa079b5f028bc4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 2459f80746d95234701319bbb5142c8e540890d3
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331920"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379766"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights voor de bewaking van Java-toepassingen
 
@@ -133,7 +133,7 @@ Zie [configuratie opties](./java-standalone-config.md) voor volledige informatie
 
 Met ons doel in 3.0 + kunt u uw aangepaste telemetrie verzenden met behulp van standaard-Api's.
 
-We ondersteunen micrometer, OpenTelemetry-API en de populaire logboek registratie raamwerken. Application Insights Java 3,0 wordt de telemetrie automatisch vastgelegd en correleert dit samen met alle automatisch verzamelde telemetrie.
+We ondersteunen micrometer, OpenTelemetry-API en de populaire logboek registratie raamwerken. Application Insights Java 3,0 wordt de telemetrie automatisch vastgelegd en correleren samen met alle automatisch verzamelde telemetrie.
 
 ### <a name="supported-custom-telemetry"></a>Ondersteunde aangepaste telemetrie
 

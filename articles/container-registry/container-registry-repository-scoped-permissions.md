@@ -3,12 +3,12 @@ title: Machtigingen voor opslag plaatsen in Azure Container Registry
 description: Een token maken met machtigingen die zijn gericht op specifieke opslag plaatsen in een Premium-REGI ster om installatie kopieën op te halen of te pushen of om andere acties uit te voeren
 ms.topic: article
 ms.date: 05/27/2020
-ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b65b1bf69337cb172a17043490a5d13c7bd7afc2
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84509403"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381232"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Een token met machtigingen voor een opslag plaats maken
 
@@ -38,7 +38,7 @@ Als u machtigingen met een opslag plaats met een bereik wilt configureren, maakt
 
   Na verificatie met een token kan de gebruiker of service een of meer *acties* uitvoeren die zijn gericht op een of meer opslag plaatsen.
 
-  |Bewerking  |Beschrijving  | Voorbeeld |
+  |Actie  |Beschrijving  | Voorbeeld |
   |---------|---------|--------|
   |`content/delete`    | Gegevens uit de opslag plaats verwijderen  | Een opslag plaats of een manifest verwijderen |
   |`content/read`     |  Gegevens uit de opslag plaats lezen |  Een artefact ophalen |
@@ -150,16 +150,16 @@ U kunt de Azure Portal gebruiken om tokens en Scope Maps te maken. Net als met d
 In het volgende voor beeld wordt een token gemaakt en wordt een scope toewijzing gemaakt met de volgende machtigingen voor de `samples/hello-world` opslag plaats: `content/write` en `content/read` .
 
 1. Navigeer in de portal naar het container register.
-1. Selecteer onder **opslagplaats machtigingen**de optie **tokens (preview) > + toevoegen**.
+1. Selecteer onder **opslagplaats machtigingen** de optie **tokens (preview) > + toevoegen**.
 
       :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-add.png" alt-text="Token maken in de portal":::
 1. Voer een token naam in.
-1. Selecteer onder **Scope toewijzing**de optie **nieuwe maken**.
+1. Selecteer onder **Scope toewijzing** de optie **nieuwe maken**.
 1. De scope toewijzing configureren:
     1. Voer een naam en beschrijving in voor de bereik toewijzing. 
-    1. Onder **opslag**plaatsen, Enter en `samples/hello-world` onder **machtigingen**selecteert u  `content/read` en `content/write` . Selecteer vervolgens **+ toevoegen**.  
+    1. Onder **opslag** plaatsen, Enter en `samples/hello-world` onder **machtigingen** selecteert u  `content/read` en `content/write` . Selecteer vervolgens **+ toevoegen**.  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Token maken in de portal":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Scope toewijzing maken in de portal":::
 
     1. Nadat u opslag plaatsen en machtigingen hebt toegevoegd, selecteert u **toevoegen** om de scope toewijzing toe te voegen.
 1. Accepteer de standaard token **status** **ingeschakeld** en selecteer vervolgens **maken**.
@@ -171,12 +171,12 @@ Nadat het token is gevalideerd en gemaakt, worden de token details weer gegeven 
 Als u een token wilt gebruiken dat is gemaakt in de portal, moet u een wacht woord genereren. U kunt één of twee wacht woorden genereren en een verval datum instellen voor elke groep. 
 
 1. Navigeer in de portal naar het container register.
-1. Selecteer onder **opslagplaats machtigingen**de optie **tokens (voor beeld)** en selecteer een token.
-1. Selecteer in de details van het token **Wachtwoord1** of **password2**en selecteer het pictogram genereren.
+1. Selecteer onder **opslagplaats machtigingen** de optie **tokens (voor beeld)** en selecteer een token.
+1. Selecteer in de details van het token **Wachtwoord1** of **password2** en selecteer het pictogram genereren.
 1. In het scherm wacht woord stelt u desgewenst een verval datum voor het wacht woord in en selecteert u **genereren**. Het is raadzaam om een verval datum in te stellen.
 1. Nadat u een wacht woord hebt gegenereerd, kopieert u het naar een veilige locatie en slaat u deze op. U kunt een gegenereerd wacht woord niet ophalen nadat het scherm is gesloten, maar er kan wel een nieuwe worden gegenereerd.
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Token maken in de portal":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Token wachtwoord maken in de portal":::
 
 ## <a name="authenticate-with-token"></a>Verifiëren met token
 
@@ -184,7 +184,7 @@ Wanneer een gebruiker of service een token gebruikt voor verificatie met het doe
 
 De verificatie methode is afhankelijk van de geconfigureerde actie of acties die zijn gekoppeld aan het token.
 
-|Bewerking  |Verificatie uitvoeren  |
+|Actie  |Verificatie uitvoeren  |
   |---------|---------|
   |`content/delete`    | `az acr repository delete` in azure CLI<br/><br/>Voorbeeld: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
   |`content/read`     |  `docker login`<br/><br/>`az acr login` in azure CLI<br/><br/>Voorbeeld: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
@@ -204,7 +204,7 @@ Voor de volgende voor beelden haalt u de- `hello-world` en- `alpine` installatie
 docker pull hello-world
 docker pull alpine
 docker tag hello-world myregistry.azurecr.io/samples/hello-world:v1
-docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
+docker tag alpine myregistry.azurecr.io/samples/alpine:v1
 ```
 
 ### <a name="authenticate-using-token"></a>Verifiëren met token
@@ -259,9 +259,9 @@ az acr scope-map update \
 In Azure Portal:
 
 1. Navigeer naar het container register.
-1. Onder **opslagplaats machtigingen**selecteert u **Scope toewijzingen (preview)** en selecteert u de scope toewijzing die u wilt bijwerken.
-1. Onder **opslag**plaatsen, Enter en `samples/alpine` onder **machtigingen**selecteert u `content/read` en `content/write` . Selecteer vervolgens **+ toevoegen**.
-1. Onder **opslag**plaatsen selecteert u `samples/hello-world` en selecteert u onder **machtigingen**de optie selectief `content/write` . Selecteer vervolgens **Opslaan**.
+1. Onder **opslagplaats machtigingen** selecteert u **Scope toewijzingen (preview)** en selecteert u de scope toewijzing die u wilt bijwerken.
+1. Onder **opslag** plaatsen, Enter en `samples/alpine` onder **machtigingen** selecteert u `content/read` en `content/write` . Selecteer vervolgens **+ toevoegen**.
+1. Onder **opslag** plaatsen selecteert u `samples/hello-world` en selecteert u onder **machtigingen** de optie selectief `content/write` . Selecteer vervolgens **Opslaan**.
 
 Nadat de scope toewijzing is bijgewerkt, is de volgende push geslaagd:
 

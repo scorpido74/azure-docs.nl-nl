@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d7a143f99eca73e0620e24ac5d93141ddb7d99e6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a0ad14481673f0061fb0170e60869109c87a6829
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215957"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379783"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van tokens in Azure Active Directory B2C
 
@@ -44,13 +44,13 @@ Beveiligings tokens die uw toepassing ontvangt van Azure AD B2C kunnen afkomstig
 
 ## <a name="claims"></a>Claims
 
-Wanneer u Azure AD B2C gebruikt, hebt u nauw keurige controle over de inhoud van uw tokens. U kunt [gebruikers stromen](user-flow-overview.md) en [aangepaste beleids regels](custom-policy-overview.md) configureren voor het verzenden van bepaalde sets gebruikers gegevens in claims die vereist zijn voor uw toepassing. Deze claims kunnen standaard eigenschappen zoals **DisplayName** en **emailAddress**bevatten. Uw toepassingen kunnen deze claims gebruiken om gebruikers en aanvragen veilig te verifiëren.
+Wanneer u Azure AD B2C gebruikt, hebt u nauw keurige controle over de inhoud van uw tokens. U kunt [gebruikers stromen](user-flow-overview.md) en [aangepaste beleids regels](custom-policy-overview.md) configureren voor het verzenden van bepaalde sets gebruikers gegevens in claims die vereist zijn voor uw toepassing. Deze claims kunnen standaard eigenschappen zoals **DisplayName** en **emailAddress** bevatten. Uw toepassingen kunnen deze claims gebruiken om gebruikers en aanvragen veilig te verifiëren.
 
 De claims in ID-tokens worden niet in een bepaalde volg orde geretourneerd. Nieuwe claims kunnen op elk gewenst moment worden geïntroduceerd in ID-tokens. Uw toepassing mag niet worden onderbroken als nieuwe claims worden geïntroduceerd. U kunt ook [aangepaste gebruikers kenmerken](user-flow-custom-attributes.md) in uw claims toevoegen.
 
 De volgende tabel geeft een lijst van de claims die u kunt verwachten in ID-tokens en toegangs tokens die zijn uitgegeven door Azure AD B2C.
 
-| Naam | Claim | Voorbeeldwaarde | Beschrijving |
+| Name | Claim | Voorbeeldwaarde | Beschrijving |
 | ---- | ----- | ------------- | ----------- |
 | Doelgroep | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identificeert de beoogde ontvanger van het token. Voor Azure AD B2C is de doel groep de toepassings-ID. Uw toepassing moet deze waarde valideren en het token afwijzen als het niet overeenkomt. De doel groep is synoniemen met resources. |
 | Verlener | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identificeert de Security Token Service (STS) die het token bouwt en retourneert. Ook wordt de map geïdentificeerd waarin de gebruiker is geverifieerd. Uw toepassing moet de Issuer claim valideren om er zeker van te zijn dat het token afkomstig is van het juiste eind punt. |
@@ -76,7 +76,7 @@ De volgende eigenschappen worden gebruikt voor het [beheren van de levens duur v
 
 - **Levens duur van het vernieuwings token (dagen)** : de maximale tijds duur waarna een vernieuwings token kan worden gebruikt om een nieuw toegangs-of id-token te verkrijgen. De tijds periode heeft ook betrekking op het ophalen van een nieuw vernieuwings token als uw toepassing het bereik heeft gekregen `offline_access` . De standaard waarde is 14 dagen. Het minimale (inclusief) is één dag. Het maximum (inclusief) is 90 dagen.
 
-- **Vernieuwings token sliding window levens duur (dagen)** : na deze periode is verstreken dat de gebruiker opnieuw moet worden geverifieerd, ongeacht de geldigheids periode van het meest recente vernieuwings token dat is verkregen door de toepassing. Deze kan alleen worden opgegeven als de schakel optie is ingesteld op **beperkt**. Deze moet groter dan of gelijk zijn aan de waarde voor de **levens duur van het vernieuwings token (dagen)** . Als de schakel optie is ingesteld op niet- **gebonden**, kunt u geen specifieke waarde opgeven. De standaard waarde is 90 dagen. Het minimale (inclusief) is één dag. Het maximum (inclusief) is 365 dagen.
+- **Vernieuwings token sliding window levens duur (dagen)** : na deze periode is verstreken dat de gebruiker opnieuw moet worden geverifieerd, ongeacht de geldigheids periode van het meest recente vernieuwings token dat is verkregen door de toepassing. Deze kan alleen worden opgegeven als de schakel optie is ingesteld op **beperkt**. Deze moet groter dan of gelijk zijn aan de waarde voor de **levens duur van het vernieuwings token (dagen)** . Als de schakel optie is ingesteld op niet- **gebonden** , kunt u geen specifieke waarde opgeven. De standaard waarde is 90 dagen. Het minimale (inclusief) is één dag. Het maximum (inclusief) is 365 dagen.
 
 De volgende use cases zijn ingeschakeld met behulp van deze eigenschappen:
 
@@ -91,7 +91,7 @@ De volgende eigenschappen worden gebruikt voor het [beheren van token compatibil
 
 - **Claim verlener (ISS)** : met deze eigenschap wordt de Azure AD B2C Tenant geïdentificeerd waarmee het token is uitgegeven. De standaardwaarde is `https://<domain>/{B2C tenant GUID}/v2.0/`. De waarde van `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` bevat zowel de Azure AD B2C-Tenant als de gebruikers stroom die in de token aanvraag is gebruikt. Als uw toepassing of bibliotheek Azure AD B2C moet voldoen aan de specificatie van de [OpenID Connect Connect-detectie 1,0](https://openid.net/specs/openid-connect-discovery-1_0.html), moet u deze waarde gebruiken.
 
-- **Subject (sub-claim)** : deze eigenschap identificeert de entiteit waarvoor het token gegevens bevestigingen. De standaard waarde is **ObjectID**, waarmee de `sub` claim in het token wordt gevuld met de object-id van de gebruiker. De waarde van **niet-ondersteund** wordt alleen gegeven voor achterwaartse compatibiliteit. Het is raadzaam om zo snel mogelijk naar **ObjectID** te scha kelen.
+- **Subject (sub-claim)** : deze eigenschap identificeert de entiteit waarvoor het token gegevens bevestigingen. De standaard waarde is **ObjectID** , waarmee de `sub` claim in het token wordt gevuld met de object-id van de gebruiker. De waarde van **niet-ondersteund** wordt alleen gegeven voor achterwaartse compatibiliteit. Het is raadzaam om zo snel mogelijk naar **ObjectID** te scha kelen.
 
 - **Claim die de beleids-id vertegenwoordigt** : deze eigenschap geeft het claim type aan waarin de beleids naam die wordt gebruikt in de token aanvraag is ingevuld. De standaardwaarde is `tfp`. De waarde van `acr` wordt alleen gegeven voor achterwaartse compatibiliteit.
 
@@ -107,7 +107,7 @@ Voor het valideren van een token moet uw toepassing zowel de hand tekening als d
 
 ### <a name="validate-signature"></a>Hand tekening valideren
 
-Een JWT bevat drie segmenten, een *koptekst*, een *hoofd tekst*en een *hand tekening*. Het handtekening segment kan worden gebruikt om de echtheid van het token te valideren, zodat het kan worden vertrouwd door uw toepassing. Azure AD B2C-tokens worden ondertekend met behulp van standaard algoritmen voor asymmetrische versleuteling van de industrie, zoals RSA 256.
+Een JWT bevat drie segmenten, een *koptekst* , een *hoofd tekst* en een *hand tekening*. Het handtekening segment kan worden gebruikt om de echtheid van het token te valideren, zodat het kan worden vertrouwd door uw toepassing. Azure AD B2C-tokens worden ondertekend met behulp van standaard algoritmen voor asymmetrische versleuteling van de industrie, zoals RSA 256.
 
 De header van het token bevat informatie over de sleutel en versleutelings methode die wordt gebruikt om het token te ondertekenen:
 
@@ -121,7 +121,7 @@ De header van het token bevat informatie over de sleutel en versleutelings metho
 
 De waarde van de claim **alg** is het algoritme dat is gebruikt voor het ondertekenen van het token. De waarde van de **Kid** -claim is de open bare sleutel die is gebruikt voor het ondertekenen van het token. Azure AD B2C kunt op elk gewenst moment een token ondertekenen met een van de combi Naties van open bare en persoonlijke sleutels. Azure AD B2C roteert de mogelijke set sleutels regel matig. Uw toepassing moet worden geschreven om deze sleutel wijzigingen automatisch te kunnen verwerken. Een redelijke frequentie om te controleren op updates voor de open bare sleutels die worden gebruikt door Azure AD B2C elke 24 uur. Voor het afhandelen van onverwachte sleutel wijzigingen moet uw toepassing worden geschreven om de open bare sleutels opnieuw op te halen als er een onverwachte **Kid** -waarde wordt ontvangen.
 
-Azure AD B2C heeft een OpenID Connect voor het verbinden van meta gegevens. Met dit eind punt kunnen toepassingen informatie opvragen over Azure AD B2C tijdens runtime. Deze informatie omvat eind punten, token inhoud en sleutels voor token-ondertekening. Uw Azure AD B2C-Tenant bevat een JSON-meta gegevens document voor elk beleid. Het meta gegevens document is een JSON-object dat verschillende nuttige informatie bevat. De meta gegevens bevatten **jwks_uri**, die de locatie van de set open bare sleutels die worden gebruikt voor het ondertekenen van tokens. Deze locatie wordt hier weer gegeven, maar het is raadzaam om de locatie dynamisch op te halen met behulp van het meta gegevens document en **jwks_uri**te parseren:
+Azure AD B2C heeft een OpenID Connect voor het verbinden van meta gegevens. Met dit eind punt kunnen toepassingen informatie opvragen over Azure AD B2C tijdens runtime. Deze informatie omvat eind punten, token inhoud en sleutels voor token-ondertekening. Uw Azure AD B2C-Tenant bevat een JSON-meta gegevens document voor elk beleid. Het meta gegevens document is een JSON-object dat verschillende nuttige informatie bevat. De meta gegevens bevatten **jwks_uri** , die de locatie van de set open bare sleutels die worden gebruikt voor het ondertekenen van tokens. Deze locatie wordt hier weer gegeven, maar het is raadzaam om de locatie dynamisch op te halen met behulp van het meta gegevens document en **jwks_uri** te parseren:
 
 ```
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys
@@ -134,7 +134,7 @@ Het meta gegevens document voor het `B2C_1_signupsignin1` beleid in de `contoso.
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.well-known/openid-configuration
 ```
 
-U hebt twee opties om te bepalen welk beleid is gebruikt voor het ondertekenen van een token (en waar u de meta gegevens kunt aanvragen). Eerst wordt de naam van het beleid opgenomen in de `acr` claim in het token. U kunt claims uit de hoofd tekst van de JWT parseren door base-64 het decoderen van de hoofd tekst en het deserialiseren van de JSON-teken reeks die de resultaten oplevert. De `acr` claim is de naam van het beleid dat is gebruikt voor het uitgeven van het token. De andere optie is om het beleid te coderen in de waarde van de `state` para meter wanneer u de aanvraag verzendt en vervolgens te decoderen om te bepalen welk beleid is gebruikt. Beide methoden zijn geldig.
+U hebt twee opties om te bepalen welk beleid is gebruikt voor het ondertekenen van een token (en waar u de meta gegevens kunt aanvragen). Eerst is de naam van het beleid opgenomen in de `tfp` (standaard) of `acr` claim (zoals geconfigureerd) in het token. U kunt claims uit de hoofd tekst van de JWT parseren door base-64 het decoderen van de hoofd tekst en het deserialiseren van de JSON-teken reeks die de resultaten oplevert. De `tfp` of- `acr` claim is de naam van het beleid dat is gebruikt voor het uitgeven van het token. De andere optie is om het beleid te coderen in de waarde van de `state` para meter wanneer u de aanvraag verzendt en vervolgens te decoderen om te bepalen welk beleid is gebruikt. Beide methoden zijn geldig.
 
 Een beschrijving van het uitvoeren van handtekening validatie valt buiten het bereik van dit document. Er zijn veel open-source bibliotheken beschikbaar om u te helpen bij het valideren van een token.
 

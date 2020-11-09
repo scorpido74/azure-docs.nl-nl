@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375615"
+ms.locfileid: "94380895"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Limieten en grenzen voor de Knowledge Base QnA Maker
 
@@ -96,14 +96,14 @@ Algemene limieten voor de inhoud van de Knowledge Base:
 
 ## <a name="create-knowledge-base-call-limits"></a>Maak Knowledge Base-oproep limieten:
 Dit zijn de limieten voor elke actie voor het maken van een Knowledge Base; dat wil zeggen, klikken op *KB maken* of de CREATEKNOWLEDGEBASE-API aanroepen.
-* Maximum aantal alternatieve vragen per antwoord: 300
+* Aanbevolen maximum aantal alternatieve vragen per antwoord: 300
 * Maximum aantal Url's: 10
 * Maximum aantal bestanden: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>Limieten voor Knowledge Base-aanroepen bijwerken
 Dit duidt op de limieten voor elke update-actie. dat wil zeggen, klikken op *opslaan en trainen* of het aanroepen van de UPDATEKNOWLEDGEBASE-API.
 * Lengte van elke bron naam: 300
-* Maximum aantal alternatieve vragen dat is toegevoegd of verwijderd: 300
+* Aanbevolen maximum aantal alternatieve vragen dat is toegevoegd of verwijderd: 300
 * Maximum aantal meta gegevens velden dat is toegevoegd of verwijderd: 10
 * Maximum aantal Url's dat kan worden vernieuwd: 5
 

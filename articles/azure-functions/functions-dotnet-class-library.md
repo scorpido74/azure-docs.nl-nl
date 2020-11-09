@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van Azure Functions met C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 19edfaf7998632ed1ebb48ff4ad36468669732ae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167743"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380960"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Naslaginformatie over Azure Functions C# voor ontwikkelaars
 
@@ -313,7 +313,7 @@ public static class CancellationTokenExample
 
 ## <a name="logging"></a>Logboekregistratie
 
-In de functie code kunt u uitvoer schrijven naar logboeken die als traceringen worden weer gegeven in Application Insights. De aanbevolen manier om naar de logboeken te schrijven, is door een para meter van het type [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)op te neemt. Dit is meestal een naam `log` . Versie 1. x van de functions runtime gebruikt `TraceWriter` , die ook naar Application Insights schrijft, maar geen ondersteuning biedt voor gestructureerde logboek registratie. Gebruik niet `Console.Write` om uw logboeken te schrijven, omdat deze gegevens niet worden vastgelegd door Application Insights. 
+In de functie code kunt u uitvoer schrijven naar logboeken die als traceringen worden weer gegeven in Application Insights. De aanbevolen manier om naar de logboeken te schrijven, is door een para meter van het type [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)op te neemt. Dit is meestal een naam `log` . Versie 1. x van de functions runtime gebruikt `TraceWriter` , die ook naar Application Insights schrijft, maar geen ondersteuning biedt voor gestructureerde logboek registratie. Gebruik `Console.Write` deze niet om uw logboeken te schrijven, omdat deze gegevens niet worden vastgelegd door Application Insights. 
 
 ### <a name="ilogger"></a>ILogger
 
@@ -327,7 +327,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
     logger.LogInformation("Request for item with key={itemKey}.", id);
 ```
 
-### <a name="structured-logging"></a>Gestructureerde logboek registratie
+### <a name="structured-logging"></a>Gestructureerde logboekregistratie
 
 De volg orde van tijdelijke aanduidingen, niet de namen, bepaalt welke para meters worden gebruikt in het logboek bericht. Stel dat u de volgende code hebt:
 

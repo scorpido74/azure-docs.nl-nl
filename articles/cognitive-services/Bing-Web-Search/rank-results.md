@@ -11,23 +11,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6c328c681874ba171eab1341a16cf059e359feea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 20501d0993cc4566a79d6e916d801911606bea35
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076275"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380446"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>De classificatie gebruiken om Bing Webzoekopdrachten-API resultaten weer te geven  
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) voor migratie-instructies.
 
-Elk zoek antwoord bevat een [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) -antwoord dat aangeeft hoe de zoek resultaten moeten worden weer gegeven. De rang orde van antwoord groepen resulteert in Mainline inhoud en Sidebar-inhoud voor een traditionele pagina met zoek resultaten. Als de resultaten niet worden weer gegeven in een traditionele Mainline-en Sidebar-indeling, moet u de mainline-inhoud beter zichtbaar maken dan de inhoud van de zijbalk.  
+Elk zoek antwoord bevat een [RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) -antwoord dat aangeeft hoe de zoek resultaten moeten worden weer gegeven. De rang orde van antwoord groepen resulteert in Mainline inhoud en Sidebar-inhoud voor een traditionele pagina met zoek resultaten. Als de resultaten niet worden weer gegeven in een traditionele Mainline-en Sidebar-indeling, moet u de mainline-inhoud beter zichtbaar maken dan de inhoud van de zijbalk.  
 
-Binnen elke groep (mainline of Sidebar) identificeert de [items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) matrix de volg orde waarin de inhoud moet worden weer gegeven. Elk item biedt de volgende twee manieren om het resultaat binnen een antwoord te identificeren.  
+Binnen elke groep (mainline of Sidebar) identificeert de [items](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) matrix de volg orde waarin de inhoud moet worden weer gegeven. Elk item biedt de volgende twee manieren om het resultaat binnen een antwoord te identificeren.  
 
 -   `answerType` en `resultIndex` het `answerType` veld geeft het antwoord aan (bijvoorbeeld webpagina of nieuws) en `resultIndex` identificeert een resultaat binnen het antwoord (bijvoorbeeld een nieuws artikel). De index is op basis van nul.  
 
@@ -35,11 +35,11 @@ Binnen elke groep (mainline of Sidebar) identificeert de [items](https://docs.mi
 
 Het gebruik van de ID is eenvoudiger te gebruiken omdat u alleen de classificatie-ID moet overeenkomen met de ID van een antwoord of een van de bijbehorende resultaten. Als een antwoord object een `id` veld bevat, worden alle resultaten van het antwoord samen weer gegeven. Als het `News` object bijvoorbeeld het `id` veld bevat, worden alle nieuws artikelen samen weer gegeven. Als het `News` veld niet is opgenomen in het `id` -object, bevat elk nieuws artikel een `id` veld en de rang orde van het bericht wordt de nieuws artikelen gemixen met de resultaten van andere antwoorden.  
 
-Het gebruik van `answerType` en `resultIndex` is iets gecompliceerder. U gebruikt `answerType` om het antwoord te identificeren dat de resultaten bevat die moeten worden weer gegeven. Vervolgens gebruikt u `resultIndex` voor het indexeren van de resultaten van het antwoord om het resultaat weer te geven. (De `answerType` waarde is de naam van het veld in het object [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) .) Als u wilt dat alle antwoord resultaten samen worden weer gegeven, bevat het positie-antwoord item niet het `resultIndex` veld.  
+Het gebruik van `answerType` en `resultIndex` is iets gecompliceerder. U gebruikt `answerType` om het antwoord te identificeren dat de resultaten bevat die moeten worden weer gegeven. Vervolgens gebruikt u `resultIndex` voor het indexeren van de resultaten van het antwoord om het resultaat weer te geven. (De `answerType` waarde is de naam van het veld in het object [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) .) Als u wilt dat alle antwoord resultaten samen worden weer gegeven, bevat het positie-antwoord item niet het `resultIndex` veld.  
 
 ## <a name="ranking-response-example"></a>Voor beeld van een rang orde-antwoord
 
-Hieronder ziet u een voor beeld van een [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Omdat het webantwoord geen `id` veld bevat, moet u alle webpagina's afzonderlijk weer geven op basis van de rang schikking (elke webpagina bevat een `id` veld). En omdat de antwoorden van afbeeldingen, Video's en verwante Zoek opdrachten het `id` veld bevatten, kunt u de resultaten van elk van deze antwoorden weer geven op basis van de rang schikking.
+Hieronder ziet u een voor beeld van een [RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Omdat het webantwoord geen `id` veld bevat, moet u alle webpagina's afzonderlijk weer geven op basis van de rang schikking (elke webpagina bevat een `id` veld). En omdat de antwoorden van afbeeldingen, Video's en verwante Zoek opdrachten het `id` veld bevatten, kunt u de resultaten van elk van deze antwoorden weer geven op basis van de rang schikking.
 
 ```json
 {  

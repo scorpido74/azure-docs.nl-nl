@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5c0bed04fccfba1ac06a54d5ddba9033ef05761b
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078540"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380705"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Decoratie markeringen gebruiken om tekst te markeren
 
 > [!WARNING]
-> Bing Zoeken-API's van Cognitive Services naar Bing Search-Services verplaatsen. Vanaf **30 oktober 2020** moeten nieuwe exemplaren van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove)wordt beschreven.
-> Bing Zoeken-API's ingericht met Cognitive Services wordt voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst gebeurt.
-> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration)voor migratie-instructies.
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services overgezet. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht overeenkomstig het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's die zijn ingericht met Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Raadpleeg [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Bing ondersteunt treffer markeringen, waarmee query termen (of andere termen die Bing relevant vindt) worden gemarkeerd in de weer gave-teken reeksen van een aantal antwoorden. Een voor beeld van een webpagina resultaat `name` , `displayUrl` en `snippet` velden kunnen gemarkeerde query termen bevatten. 
 
@@ -39,7 +39,7 @@ Voordat het resultaat in uw gebruikers interface wordt weer gegeven, vervangt u 
 
 ## <a name="marker-formatting"></a>Markerings opmaak
 
-Bing biedt de mogelijkheid om Unicode-tekens of HTML-tags als markeringen te gebruiken. Als u wilt opgeven welke markeringen moeten worden gebruikt, neemt u de query parameter [TextFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) op: 
+Bing biedt de mogelijkheid om Unicode-tekens of HTML-tags als markeringen te gebruiken. Als u wilt opgeven welke markeringen moeten worden gebruikt, neemt u de query parameter [TextFormat](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) op: 
 
 | Waarde             | Tijdlijnmarkeerteken                       |
 |-------------------|------------------------------|

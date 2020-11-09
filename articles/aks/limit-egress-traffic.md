@@ -4,15 +4,14 @@ description: Meer informatie over welke poorten en adressen vereist zijn voor he
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit, devx-track-azurecli
+ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: dcc015b9ff4cb9b980c7163f526eafbe5cd36119
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900483"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380208"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -39,7 +38,7 @@ _ IP-adres afhankelijkheden zijn voor niet-HTTP/S-verkeer (TCP-en UDP-verkeer)
 * FQDN HTTP/HTTPS-eind punten kunnen worden geplaatst op het apparaat van de firewall.
 * Joker tekens voor HTTP/HTTPS-eind punten zijn afhankelijkheden die kunnen variëren met uw AKS-cluster op basis van een aantal kwalificaties.
 * AKS maakt gebruik van een toegangs controller om de FQDN als een omgevings variabele in te voeren voor alle implementaties onder uitvoeren-System en gate keeper-System, waardoor alle systeem communicatie tussen knoop punten en API server de FQDN van de API-server en niet het API-server-IP-adres gebruikt. 
-* Als u een app of oplossing hebt die moet communiceren met de API-server, moet u een **extra** netwerk regel toevoegen om *TCP-communicatie toe te staan aan poort 443 van het IP-adres van uw API-server* .
+* Als u een app of oplossing hebt die moet communiceren met de API-server, moet u een **extra** netwerk regel toevoegen om *TCP-communicatie toe te staan aan poort 443 van het IP-adres van uw API-server*.
 * Als er sprake is van een onderhouds bewerking kan uw API-server-IP in zeldzame gevallen worden gewijzigd. Geplande onderhouds bewerkingen die het API server-IP-adres kunnen wijzigen, worden altijd vooraf gecommuniceerd.
 
 
@@ -63,7 +62,6 @@ De volgende FQDN/toepassings regels zijn vereist:
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | Vereist voor de > API-server communicatie van het knoop punt <. Vervang door *\<location\>* de regio waarin uw AKS-cluster is geïmplementeerd. |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). Dit REGI ster bevat afbeeldingen/grafieken van de eerste partij (bijvoorbeeld coreDNS, enzovoort). Deze installatie kopieën zijn vereist voor het correct maken en functioneren van het cluster, inclusief schaal-en upgrade bewerkingen.  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Vereist voor MCR-opslag die wordt ondersteund door de Azure Content Delivery Network (CDN). |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Vereist voor MCR-opslag die wordt ondersteund door het Azure Content Delivery Network (CDN). |
 | **`management.azure.com`**       | **`HTTPS:443`** | Vereist voor Kubernetes-bewerkingen voor de Azure-API. |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Vereist voor Azure Active Directory-verificatie. |
@@ -92,7 +90,6 @@ De volgende FQDN/toepassings regels zijn vereist:
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Vereist voor de > API-server communicatie van het knoop punt <. Vervang door *\<location\>* de regio waarin uw AKS-cluster is geïmplementeerd. |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Vereist voor de > API-server communicatie van het knoop punt <. Vervang door *\<location\>* de regio waarin uw AKS-cluster is geïmplementeerd. |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | Vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). Dit REGI ster bevat afbeeldingen/grafieken van de eerste partij (bijvoorbeeld coreDNS, enzovoort). Deze installatie kopieën zijn vereist voor het correct maken en functioneren van het cluster, inclusief schaal-en upgrade bewerkingen. |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Vereist voor MCR-opslag die wordt ondersteund door de Azure Content Delivery Network (CDN). |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Vereist voor MCR-opslag die wordt ondersteund door de Azure Content Delivery Network (CDN). |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Vereist voor Kubernetes-bewerkingen voor de Azure-API. |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Vereist voor Azure Active Directory-verificatie. |
@@ -119,7 +116,6 @@ De volgende FQDN/toepassings regels zijn vereist:
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | Vereist voor de > API-server communicatie van het knoop punt <. Vervang door *\<location\>* de regio waarin uw AKS-cluster is geïmplementeerd.|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). Dit REGI ster bevat afbeeldingen/grafieken van de eerste partij (bijvoorbeeld coreDNS, enzovoort). Deze installatie kopieën zijn vereist voor het correct maken en functioneren van het cluster, inclusief schaal-en upgrade bewerkingen. |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Vereist voor MCR-opslag die wordt ondersteund door de Azure Content Delivery Network (CDN). |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Vereist voor MCR-opslag die wordt ondersteund door het Azure Content Delivery Network (CDN). |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Vereist voor Kubernetes-bewerkingen voor de Azure-API. |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Vereist voor Azure Active Directory-verificatie. |

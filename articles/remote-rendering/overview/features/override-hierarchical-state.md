@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb120a533e4d11b34bb9712bf0164cec5a7728ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207730"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380998"
 ---
 # <a name="hierarchical-state-override"></a>Hiërarchische status overschrijven
 
@@ -28,26 +28,26 @@ Denk bijvoorbeeld aan het model van een auto en u wilt de hele auto overschakele
 
 De vaste set statussen die kunnen worden overschreven is:
 
-* **`Hidden`**: Respectievelijke mazen in het scène diagram worden verborgen of weer gegeven.
-* **`Tint color`**: Een gerenderd object kan worden voorzien van een kleur tint met de afzonderlijke tint kleur en het tinten-gewicht. De onderstaande afbeelding toont kleuren tinten van de velg van een wiel.
+* **`Hidden`** : Respectievelijke mazen in het scène diagram worden verborgen of weer gegeven.
+* **`Tint color`** : Een gerenderd object kan worden voorzien van een kleur tint met de afzonderlijke tint kleur en het tinten-gewicht. De onderstaande afbeelding toont kleuren tinten van de velg van een wiel.
   
   ![Tint kleur die wordt gebruikt om een object groen in te scha kelen](./media/color-tint.png)
 
-* **`See-through`**: De geometrie wordt semi-transparant gerenderd, bijvoorbeeld om de binnenste delen van een object zichtbaar te maken. In de volgende afbeelding ziet u dat de volledige auto wordt weer gegeven in de doorlees modus, met uitzonde ring van de rode rem Caliper:
+* **`See-through`** : De geometrie wordt semi-transparant gerenderd, bijvoorbeeld om de binnenste delen van een object zichtbaar te maken. In de volgende afbeelding ziet u dat de volledige auto wordt weer gegeven in de doorlees modus, met uitzonde ring van de rode rem Caliper:
 
   ![De Lees modus die wordt gebruikt om geselecteerde objecten transparant te maken](./media/see-through.png)
 
   > [!IMPORTANT]
   > Het effect doorkijk werkt alleen wanneer de *TileBasedComposition* - [rendering modus](../../concepts/rendering-modes.md) wordt gebruikt.
 
-* **`Selected`**: De geometrie wordt weer gegeven met een [selectie overzicht](outlines.md).
+* **`Selected`** : De geometrie wordt weer gegeven met een [selectie overzicht](outlines.md).
 
   ![Contour optie die wordt gebruikt om een geselecteerd onderdeel te markeren](./media/selection-outline.png)
 
-* **`DisableCollision`**: De geometrie wordt uitgesloten van [ruimtelijke query's](spatial-queries.md). De **`Hidden`** vlag heeft geen invloed op de status vlag voor conflicten, zodat deze twee vlaggen vaak samen worden ingesteld.
+* **`DisableCollision`** : De geometrie wordt uitgesloten van [ruimtelijke query's](spatial-queries.md). De **`Hidden`** vlag heeft geen invloed op de status vlag voor conflicten, zodat deze twee vlaggen vaak samen worden ingesteld.
 
-* **`UseCutPlaneFilterMask`**: Gebruik een afzonderlijk filter bitmasker om de selectie van het Knip vlak te beheren. Met deze markering wordt bepaald of het afzonderlijke filter masker moet worden gebruikt of overgenomen van het bovenliggende element. Het filter-bit masker zelf wordt ingesteld via de `CutPlaneFilterMask` eigenschap. Voor gedetailleerde informatie over hoe de filters werken, raadpleegt u de [alinea selectief knippen](cut-planes.md#selective-cut-planes).
-![Selectief knip schema's](./media/selective-cut-planes.png)
+* **`UseCutPlaneFilterMask`** : Gebruik een afzonderlijk filter bitmasker om de selectie van het Knip vlak te beheren. Met deze markering wordt bepaald of het afzonderlijke filter masker moet worden gebruikt of overgenomen van het bovenliggende element. Het filter-bit masker zelf wordt ingesteld via de `CutPlaneFilterMask` eigenschap. Voor gedetailleerde informatie over hoe de filters werken, raadpleegt u de [alinea selectief knippen](cut-planes.md#selective-cut-planes). Zie het volgende voor beeld, waarbij alleen de banden en de velg worden geknipt terwijl de rest van de scène ongewijzigd blijft.
+![Selectief knip schema's](./media/selective-cut-planes-hierarchical-override.png)
 
 
 > [!TIP]
@@ -101,7 +101,7 @@ De `tint color` onderdrukking is iets speciaal omdat er sprake is van een aan/ui
 
 Een exemplaar van `HierarchicalStateOverrideComponent` zichzelf voegt geen veel runtime overhead toe. Het is echter altijd een goed idee om het aantal actieve onderdelen laag te laten blijven. Bij het implementeren van een selectie systeem dat het verzamelde object markeert, is het raadzaam om het onderdeel te verwijderen wanneer de markering wordt verwijderd. Als u de onderdelen bijhoudt van neutrale functies, kunt u snel aan de slag.
 
-Transparante rendering brengt meer werk belasting op de server Gpu's dan de standaard weergave. Als grote delen van de scène grafiek worden overgeschakeld om te worden *doorzocht*, terwijl veel lagen van de geometrie zichtbaar zijn, kan dit leiden tot een prestatie knelpunt. Hetzelfde geldt voor objecten met selectie- [uitlijningen](../../overview/features/outlines.md#performance).
+Transparante rendering brengt meer werk belasting op de server Gpu's dan de standaard weergave. Als grote delen van de scène grafiek worden overgeschakeld om te worden *doorzocht* , terwijl veel lagen van de geometrie zichtbaar zijn, kan dit leiden tot een prestatie knelpunt. Hetzelfde geldt voor objecten met selectie- [uitlijningen](../../overview/features/outlines.md#performance).
 
 ## <a name="api-documentation"></a>API-documentatie
 

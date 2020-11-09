@@ -1,24 +1,20 @@
 ---
-title: DNS-instellingen Azure Firewall (preview-versie)
+title: DNS-instellingen Azure Firewall
 description: U kunt Azure Firewall configureren met DNS-server-en DNS-proxy-instellingen.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 06/30/2020
+ms.date: 11/06/2020
 ms.author: victorh
-ms.openlocfilehash: efe608437f350a29147cf10989cdb6c17a23196d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: ad0ac040b510783656617ddbf2063cd94c80aae7
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397991"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380943"
 ---
-# <a name="azure-firewall-dns-settings-preview"></a>DNS-instellingen Azure Firewall (preview-versie)
-
-> [!IMPORTANT]
-> Azure Firewall zijn DNS-instellingen momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="azure-firewall-dns-settings"></a>DNS-instellingen Azure Firewall
 
 U kunt een aangepaste DNS-server configureren en DNS-proxy inschakelen voor Azure Firewall. U kunt deze instellingen configureren wanneer u de firewall of hoger op de pagina **DNS-instellingen** implementeert.
 
@@ -29,7 +25,7 @@ Een DNS-server onderhoudt en verhelpt domein namen naar IP-adressen. Azure Firew
 > [!NOTE]
 > Voor Azure-firewalls die worden beheerd met Azure Firewall Manager, worden de DNS-instellingen geconfigureerd in het bijbehorende Azure Firewall-beleid.
 
-### <a name="configure-custom-dns-servers-preview---azure-portal"></a>Aangepaste DNS-servers configureren (preview)-Azure Portal
+### <a name="configure-custom-dns-servers---azure-portal"></a>Aangepaste DNS-servers configureren-Azure Portal
 
 1. Selecteer onder Azure Firewall **instellingen** de optie **DNS-instellingen**.
 2. Onder **DNS-servers** kunt u bestaande DNS-servers die eerder zijn opgegeven in uw Virtual Network typen of toevoegen.
@@ -38,7 +34,7 @@ Een DNS-server onderhoudt en verhelpt domein namen naar IP-adressen. Azure Firew
 
 :::image type="content" source="media/dns-settings/dns-servers.png" alt-text="DNS-servers":::
 
-### <a name="configure-custom-dns-servers-preview---azure-cli"></a>Aangepaste DNS-servers configureren (preview)-Azure CLI
+### <a name="configure-custom-dns-servers---azure-cli"></a>Aangepaste DNS-servers configureren-Azure CLI
 
 In het volgende voor beeld worden de Azure Firewall met aangepaste DNS-servers met behulp van Azure CLI bijgewerkt.
 
@@ -52,7 +48,7 @@ az network firewall update \
 > [!IMPORTANT]
 > Voor de opdracht moet `az network firewall` de Azure cli-extensie `azure-firewall` worden geïnstalleerd. Het kan worden geïnstalleerd met behulp van de opdracht `az extension add --name azure-firewall` . 
 
-### <a name="configure-custom-dns-servers-preview---azure-powershell"></a>Aangepaste DNS-servers (preview-versie) configureren-Azure PowerShell
+### <a name="configure-custom-dns-servers---azure-powershell"></a>Aangepaste DNS-servers configureren-Azure PowerShell
 
 In het volgende voor beeld worden de Azure Firewall met aangepaste DNS-servers met behulp van Azure PowerShell bijgewerkt.
 
@@ -64,22 +60,32 @@ $azFw.DNSServer = $dnsServers
 $azFw | Set-AzFirewall
 ```
 
-## <a name="dns-proxy-preview"></a>DNS-proxy (preview-versie)
+## <a name="dns-proxy"></a>DNS-proxy
 
 U kunt Azure Firewall configureren om te fungeren als een DNS-proxy. Een DNS-proxy fungeert als een intermediair voor DNS-aanvragen van virtuele client machines naar een DNS-server. Als u een aangepaste DNS-server configureert, moet u DNS-proxy inschakelen om te voor komen dat DNS-omzetting niet overeenkomen en FQDN-filtering inschakelen in netwerk regels.
 
 Als u DNS-proxy niet inschakelt, kunnen DNS-aanvragen van de client op een ander tijdstip naar een DNS-server worden getransporteerd of een andere reactie retour neren vergeleken met de firewall. De DNS-proxy plaatst Azure Firewall in het pad van de client aanvragen om inconsistentie te voor komen.
+
+Er zijn twee typen cache functies die plaatsvinden wanneer Azure Firewall een DNS-proxy is:
+
+- Positieve cache – DNS-omzetting is geslaagd. De firewall gebruikt de TTL (time-to-Live) van het pakket of het object. 
+
+- Negatieve cache – DNS-omzetting resulteert in geen reactie of geen oplossing. De firewall slaat deze informatie één uur in de cache op.
+
+De DNS-proxy slaat alle opgeloste IP-adressen op uit de FQDN-waarden in netwerk regels. Gebruik als best practice FQDN-adressen die worden omgezet in één IP-adres.  
+
+### <a name="dns-proxy-configuration"></a>Configuratie van DNS-proxy
 
 De DNS-proxy configuratie vereist drie stappen:
 1. Schakel DNS-proxy in Azure Firewall DNS-instellingen in.
 2. Configureer eventueel uw aangepaste DNS-server of gebruik de standaard waarde.
 3. Ten slotte moet u het privé-IP-adres van de Azure Firewall configureren als een aangepast DNS-adres in de instellingen van de DNS-server van uw virtuele netwerk. Dit zorgt ervoor dat DNS-verkeer wordt omgeleid naar Azure Firewall.
 
-### <a name="configure-dns-proxy-preview---azure-portal"></a>DNS-proxy configureren (preview)-Azure Portal
+#### <a name="configure-dns-proxy---azure-portal"></a>DNS-proxy-Azure Portal configureren
 
 Als u een DNS-proxy wilt configureren, moet u de instelling van de DNS-servers voor het virtuele netwerk configureren voor gebruik van het privé IP-adres van de firewall Schakel vervolgens DNS-proxy in Azure Firewall **DNS-instellingen** in.
 
-#### <a name="configure-virtual-network-dns-servers"></a>DNS-servers voor het virtuele netwerk configureren 
+##### <a name="configure-virtual-network-dns-servers"></a>DNS-servers voor het virtuele netwerk configureren 
 
 1. Selecteer het virtuele netwerk waarin het DNS-verkeer wordt doorgestuurd via de Azure Firewall.
 2. Selecteer onder **Instellingen** de optie **DNS-servers**.
@@ -88,7 +94,7 @@ Als u een DNS-proxy wilt configureren, moet u de instelling van de DNS-servers v
 5. Selecteer **Opslaan**.
 6. Start de virtuele machines die zijn verbonden met het virtuele netwerk opnieuw op, zodat deze de nieuwe DNS-server instellingen krijgen. Vm's blijven hun huidige DNS-instellingen gebruiken totdat ze opnieuw zijn opgestart.
 
-#### <a name="enable-dns-proxy-preview"></a>DNS-proxy inschakelen (preview-versie)
+##### <a name="enable-dns-proxy"></a>DNS-proxy inschakelen
 
 1. Selecteer uw Azure Firewall.
 2. Selecteer **DNS-instellingen** onder **instellingen**.
@@ -98,11 +104,11 @@ Als u een DNS-proxy wilt configureren, moet u de instelling van de DNS-servers v
 
 :::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS-proxy":::
 
-### <a name="configure-dns-proxy-preview---azure-cli"></a>DNS-proxy configureren (preview)-Azure CLI
+#### <a name="configure-dns-proxy---azure-cli"></a>DNS-proxy configureren-Azure CLI
 
-Het configureren van DNS-proxy-instellingen in Azure Firewall en het bijwerken van VNets voor gebruik van Azure Firewall als DNS-server kan worden uitgevoerd met behulp van Azure CLI.
+U kunt Azure CLI gebruiken voor het configureren van DNS-proxy-instellingen in Azure Firewall en het bijwerken van virtuele netwerken om Azure Firewall te gebruiken als de DNS-server.
 
-#### <a name="configure-virtual-network-dns-servers"></a>DNS-servers voor het virtuele netwerk configureren
+##### <a name="configure-virtual-network-dns-servers"></a>DNS-servers voor het virtuele netwerk configureren
 
 In dit voor beeld wordt het VNet zo geconfigureerd dat Azure Firewall als DNS-server wordt gebruikt.
  
@@ -113,7 +119,7 @@ az network vnet update \
     --dns-servers <firewall-private-IP>
 ```
 
-#### <a name="enable-dns-proxy-preview"></a>DNS-proxy inschakelen (preview-versie)
+##### <a name="enable-dns-proxy"></a>DNS-proxy inschakelen
 
 In dit voor beeld wordt de functie DNS-proxy in Azure Firewall ingeschakeld.
 
@@ -124,11 +130,11 @@ az network firewall update \
     --enable-dns-proxy true
 ```
 
-### <a name="configure-dns-proxy-preview---azure-powershell"></a>DNS-proxy (preview-versie) configureren-Azure PowerShell
+#### <a name="configure-dns-proxy---azure-powershell"></a>DNS-proxy-Azure PowerShell configureren
 
-Het configureren van DNS-proxy-instellingen en het bijwerken van VNets voor gebruik van Azure Firewall als DNS-server kan worden uitgevoerd met behulp van Azure PowerShell.
+U kunt Azure PowerShell gebruiken om DNS-proxy-instellingen te configureren in Azure Firewall en virtuele netwerken bij te werken om Azure Firewall als de DNS-server te gebruiken.
 
-#### <a name="configure-virtual-network-dns-servers"></a>DNS-servers voor het virtuele netwerk configureren
+##### <a name="configure-virtual-network-dns-servers"></a>DNS-servers voor het virtuele netwerk configureren
 
  In dit voor beeld wordt het VNet zo geconfigureerd dat Azure Firewall als DNS-server wordt gebruikt.
 
@@ -140,7 +146,7 @@ $VNet.DhcpOptions.DnsServers = $dnsServers
 $VNet | Set-AzVirtualNetwork
 ```
 
-#### <a name="enable-dns-proxy-preview"></a>DNS-proxy inschakelen (preview-versie)
+##### <a name="enable-dns-proxy"></a>DNS-proxy inschakelen
 
 In dit voor beeld wordt de functie DNS-proxy in Azure Firewall ingeschakeld.
 
