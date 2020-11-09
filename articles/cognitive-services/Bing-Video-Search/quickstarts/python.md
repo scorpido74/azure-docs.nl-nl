@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: e6f132db9b4c0f0310496b2e22579e18359e1573
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: de29b4bfc15fdec30acd043564e99ebe6e02454d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87847224"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094078"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Quickstart: Video's zoeken met de Bing Video's zoeken-REST-API en Python
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Gebruik deze quickstart om uw eerste aanroep naar de Bing Video’s zoeken-API te maken. Deze eenvoudige Python-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het JSON-antwoord weer. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. 
 

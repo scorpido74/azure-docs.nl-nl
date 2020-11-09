@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 093e5482896e2af8008f20826e30443bdeb9aae9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 142d4504ab12e7df5cc1e009038554a5b90dff0c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097028"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136007"
 ---
 In deze gids ontdekt u hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) kunt installeren voor 64-bits Java 8 JRE. Als u enkel de pakketnaam wilt om zelf aan de slag te gaan, dan is de Java SDK niet beschikbaar in de centrale Maven-opslagplaats. Of u nu Gradle of een `pom.xml`-afhankelijkheidsbestand gebruikt, u moet een aangepaste opslagplaats toevoegen die verwijst naar `https://csspeechstorage.blob.core.windows.net/maven/` (zie hieronder voor de pakketnaam).
 
@@ -30,7 +30,7 @@ In deze gids ontdekt u hoe u de [Speech SDK](~/articles/cognitive-services/speec
 - Het Java Speech-SDK-pakket is beschikbaar voor deze besturingssystemen:
   - Windows: Enkel 64-bits
   - Mac: macOS X-versie 10.13 of hoger
-  - Linux: Enkel 64-bits op Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 7/8, CentOS 7/8
+  - Linux: bekijk de lijst met [ondersteunde Linux-distributies en -doelarchitecturen](~/articles/cognitive-services/speech-service/speech-sdk.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,19 +39,14 @@ In deze gids ontdekt u hoe u de [Speech SDK](~/articles/cognitive-services/speec
 - [Eclips Java IDE](https://www.eclipse.org/downloads/) (hiervoor moet Java al geïnstalleerd zijn)
 - Voor ondersteunde Linux-platformen moeten bepaalde bibliotheken zijn geïnstalleerd (`libssl` voor de ondersteuning van Secure Sockets Layer en `libasound2` voor de ondersteuning van geluid). Zoek uw distributie hieronder voor de opdracht waarmee u de correcte versies van deze bibliotheken kunt installeren.
 
-  - Voer op Ubuntu de volgende opdrachten uit om de vereiste pakketten te installeren:
+  - Voer op Ubuntu/Debian de volgende opdrachten uit om de vereiste pakketten te installeren:
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - Voer op Debian 9 de volgende opdrachten uit om de vereiste pakketten te installeren:
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    Als libssl 1.0.0 niet beschikbaar is, installeert u in plaats daarvan libssl 1.0.x (waarbij x hoger is dan 0) of libssl 1.1.
 
   - Voer op RHEL/CentOS de volgende opdrachten uit om de vereiste pakketten te installeren:
 

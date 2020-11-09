@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-js
-ms.openlocfilehash: 225ab3a8ab03c507132bdfcb176aeeb706d6b115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0eef6f424c0360ba1378bafa738cbec7dbf05776
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304046"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098362"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Zelfstudie: Een web-app met één pagina maken
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Met de Bing Nieuws zoeken-API kunt u op internet zoeken en resultaten ophalen van het type nieuws dat relevant is voor een zoekquery. In deze zelfstudie bouwen we een webtoepassing met één pagina die gebruikmaakt van de Bing Nieuws zoeken-API om zoekresultaten op de pagina weer te geven. De toepassing omvat HTML-, CSS- en JavaScript-onderdelen. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
 
@@ -334,7 +339,7 @@ Zoals eerder aangetoond in `renderSearchResults()` worden alleen de `relatedItem
 
 ## <a name="rendering-result-items"></a>Resultaten weergeven
 
-In de JavaScript-code bevat het object (`searchItemRenderers`) *renderers*: functies waarmee HTML wordt gegenereerd voor elk soort zoekresultaat.
+In de JavaScript-code bevat het object (`searchItemRenderers`) *renderers* : functies waarmee HTML wordt gegenereerd voor elk soort zoekresultaat.
 
 ```javascript
 searchItemRenderers = {
@@ -413,7 +418,7 @@ U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krij
 npm install -g cors-proxy-server
 ```
 
-Wijzig vervolgens het Bing Web Search-eindpunt in het HTML-bestand in:\
+Wijzig vervolgens het Bing Web Search-eindpunt in het HTML-bestand in :\
 `http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Start ten slotte de CORS-proxy met de volgende opdracht:

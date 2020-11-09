@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d455751dcabd67213566d605e83fda297e187d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76670c6a061ce3f257d9df8cfe61b1cc020194c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316678"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100215"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Zelfstudie: Afbeeldingsdetails extraheren met de Bing Afbeeldingen zoeken-API en C#
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Er zijn meerdere [eindpunten](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint) beschikbaar via de Bing Afbeeldingen zoeken-API. Het eindpunt `/details` accepteert een POST-aanvraag met een afbeelding en kan uiteenlopende details over de afbeelding retourneren. Deze C#-toepassing verzendt een afbeelding met behulp van deze API en toont de details die door Bing worden geretourneerd. Daarbij gaat het om JSON-objecten, zoals de volgende:
 

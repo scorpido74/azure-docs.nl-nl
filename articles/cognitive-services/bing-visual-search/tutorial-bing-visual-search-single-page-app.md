@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 28f7d279d1328ff750bf7095f32fbf3ff65e591b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9458f6080759f0948d103f7fe3d131f6a4c4e37
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324519"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092718"
 ---
 # <a name="tutorial-create-a-visual-search-single-page-web-app"></a>Zelfstudie: Een Visual Search-web-app met één pagina maken
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Bing Visual Search-API retourneert inzichten over een afbeelding. U kunt een afbeelding uploaden of een URL naar een afbeelding opgeven. Inzichten zijn visueel vergelijkbare afbeeldingen, winkelbronnen, webpagina's die de afbeelding bevatten, enzovoort. Inzichten die door de Bing Visual Search-API worden geretourneerd, zijn vergelijkbaar met die van Bing.com/images.
 

@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 58bbda6d3b02042c6e512e03e108cd69fbd7ed51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fa09ee40ca646be6ee104c7b2d4428c92934337
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277322"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084626"
 ---
 # <a name="tutorial-single-page-web-app"></a>Zelfstudie: Web-app van één pagina
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Met de Bing Entiteiten zoeken-API kunt u op internet zoeken naar informatie over *entiteiten* en *plaatsen*. U kunt in een query een van beide soorten resultaten opvragen of beide. Hieronder vindt u de definities van plaatsen en entiteiten.
 
@@ -442,7 +447,7 @@ function renderSearchResults(results) {
 
 ## <a name="rendering-result-items"></a>Resultaten weergeven
 
-Onze JavaScript-code bevat een object, `searchItemRenderers`, met daarin *renderers*: functies waarmee HTML wordt weergegeven voor elk type zoekresultaat.
+Onze JavaScript-code bevat een object, `searchItemRenderers`, met daarin *renderers* : functies waarmee HTML wordt weergegeven voor elk type zoekresultaat.
 
 ```javascript
 searchItemRenderers = { 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 11/02/2020
 ms.author: aahi
 keywords: tekstanalyse, sentimentanalyse, tekst analytics
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647464"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289697"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Wat is Text Analytics-API?
 
@@ -29,7 +29,9 @@ De API maakt deel uit van [Azure Cognitive Services](https://docs.microsoft.com/
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-Gebruik [sentimentanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md) en kom erachter wat klanten van uw merk of onderwerp vinden door de tekst te analyseren op aanwijzingen over positieve of negatieve indrukken. Deze API-functie retourneert een gevoelsscore tussen 0 en 1 voor elk document, waarbij 1 het meest positief is.
+Gebruik [sentimentanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md) en kom erachter wat klanten van uw merk of onderwerp vinden door de tekst te analyseren op aanwijzingen over positieve of negatieve indrukken. 
+
+De functie biedt sentimentlabels (zoals 'negatief', 'neutraal' en 'positief') op basis van de hoogste betrouwbaarheidsscore die door de service op zin- het documentniveau is gevonden. Met deze functie worden ook betrouwbaarheidsscores geretourneerd tussen 0 en 1 voor elk document en voor alle zinnen in dat document, voor positief, neutraal en negatief sentiment. U kunt de service ook on-premises uitvoeren [met behulp van een container](how-tos/text-analytics-how-to-install-containers.md).
 
 Vanaf v.3.1-preview is meninganalyse een functie van Sentimentanalyse. Deze functie wordt ook wel op aspecten gebaseerde sentimentanalyse in natuurlijke taalverwerking (NLP) en biedt gedetailleerde informatie over de meningen over bepaalde aspecten (zoals de kenmerken van producten of diensten) in de tekst.
 

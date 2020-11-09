@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 2bdd51218c098dcd778d9a72a98fe42b96357b4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b750554ec231cddd0403c89a33f2af4349ff188
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328714"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098992"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Zelfstudie: Video's zoeken-app met één pagina
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 Met de Bing Video Search-API kunt u op internet zoeken en videoresultaten ophalen die relevant zijn voor een zoekquery. In deze zelfstudie bouwen we een webtoepassing met één pagina die gebruikmaakt van de Bing Search-API om resultaten op de pagina weer te geven. De toepassing omvat HTML-, CSS- en JavaScript-onderdelen.
 
 <!-- Remove until it can be replaced with a sanitized version.

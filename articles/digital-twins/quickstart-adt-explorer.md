@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 466129e8435ef694821b078592a100a111a43f3a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331563"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242276"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Snelstart - Een voorbeeld van een Azure Digital Twins-scenario verkennen met behulp van ADT Explorer
 
@@ -37,56 +37,40 @@ U hebt een Azure-abonnement nodig om deze quickstart te voltooien. Als u er nog 
 
 U moet ook **Node.js** op uw computer hebben. U kunt de nieuwste versie verkrijgen via deze link: [Node.js](https://nodejs.org/).
 
-Tenslotte moet u ook twee voorbeelden downloaden om te gebruiken tijdens de snelstart:
-* De voorbeeldtoepassing **ADT Explorer** . Dit voorbeeld bevat de hoofd-app die u in de quickstart gebruikt om een Azure Digital Twins-scenario te laden en te verkennen. Ga hierheen om de app te downloaden: [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klik op de knop *Download ZIP* om een *.zip* -bestand met deze voorbeeldcode naar uw machine te downloaden. Hiermee wordt een .ZIP-map gedownload naar uw computer als _**Azure_Digital_Twins_samples.zip**_ . Pak de map uit en extraheer de bestanden.
-* Het **Azure Digital Twins-voorbeeldscenario** . Dit bevat een vooraf gebouwde Azure Digital Twins-graaf die u in ADT Explorer laadt om mee te werken. Ga hierheen om het scenario te downloaden: [End-to-end-voorbeelden voor Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples). Klik op de knop *Download ZIP* om een *.zip* -bestand met deze voorbeeldcode naar uw machine te downloaden. Hiermee wordt een ZIP-map gedownload naar uw computer gedownload in de vorm van _**Azure_Digital_Twins_samples.zip**_ . Pak de map uit en extraheer de bestanden.
+Tot slot moet u ook het voorbeeld downloaden dat u nodig heeft bij de quickstart: de **ADT Explorer** -voorbeeldtoepassing. Dit voorbeeld bevat de app die u in de quickstart gebruikt om een Azure Digital Twins-scenario te laden en te verkennen, en de voorbeeldbestanden voor het scenario. Ga hierheen voor het voorbeeld: [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Klik op de knop *Download ZIP* om een *.zip* -bestand met deze voorbeeldcode naar uw machine te downloaden. Hiermee wordt een .ZIP-map gedownload naar uw computer als _**Azure_Digital_Twins_samples.zip**_. Pak de map uit en extraheer de bestanden.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure Digital Twins en ADT Explorer instellen
 
-De eerste stap bij het werken met Azure Digital Twins is het instellen van een **Azure Digital Twins-exemplaar** . Nadat u een exemplaar van de service hebt gemaakt, kunt u deze later in de quickstart vullen met de voorbeeldgegevens.
+De eerste stap bij het werken met Azure Digital Twins is het instellen van een **Azure Digital Twins-instantie**. Nadat u een instantie van de service hebt gemaakt en **uw referenties hebt ingesteld** om u te verifiëren met ADT Explorer, **kunt u verbinding maken met de instantie in ADT Explorer** en deze vervolgens vullen met de voorbeeldgegevens die verderop in quickstart worden vermeld.
 
-U stelt ook machtigingen in zodat ADT Explorer kan worden uitgevoerd op uw computer en toegang heeft tot uw exemplaar van Azure Digital Twins. Zo kunt u de voorbeeld-app gebruiken om uw exemplaar en de bijbehorende gegevens te verkennen.
+In de rest van deze sectie krijgt u stapsgewijze instructies.
 
-### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Een Azure Digital Twins-exemplaar en app-registratie instellen
+### <a name="set-up-azure-digital-twins-instance"></a>Een Azure Digital Twins-exemplaar instellen
 
-**Stel eerst een Azure Digital Twins-instantie in** en de vereiste verificatie, zodat u ermee kunt werken. Volg hiervoor de instructies in [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md). Afhankelijk van uw favoriete ervaring wordt het configuratie-artikel aangeboden voor de [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)of [geautomatiseerd voorbeeld van een Cloud Shell-implementatiescript](how-to-set-up-instance-scripted.md). Alle versies van de instructies bevatten ook stappen om te controleren of u elke stap hebt voltooid en gereed bent om door te gaan met het nieuwe exemplaar.
-* Nadat u een Azure Digital Twins-exemplaar hebt ingesteld, hebt u de **_hostnaam_** van het exemplaar nodig ([zoek in de portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-Als u de toepassing ADT Explorer wilt verifiëren, moet u ook een **app-registratie** instellen. Volg de instructies in [*Instructies: een app-registratie maken*](how-to-create-app-registration.md) om dit in te stellen. 
-* Zodra u een app-registratie hebt, hebt u de **_toepassings (client)-id_** van de registratie nodig en de **_map (tenant)-id_** ([zoek deze in de portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
+### <a name="set-up-local-azure-credentials"></a>Lokale Azure-referenties instellen
 
-### <a name="set-adt-explorer-permissions"></a>Machtigingen voor ADT Explorer instellen
+In de ADT Explorer-toepassing wordt gebruikgemaakt van [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (onderdeel van de `Azure.Identity`-bibliotheek) om gebruikers te verifiëren bij de Azure Digital Twins-instantie wanneer u deze uitvoert op uw lokale machine. Voor meer informatie over verschillende manieren waarop een client-app kan verifiëren met Azure Digital Twins, raadpleegt u [*Instructies: Verificatiecode voor app schrijven*](how-to-authenticate-client.md).
 
-Vervolgens bereidt u het exemplaar van Azure Digital Twins dat u hebt gemaakt voor om te werken met ADT Explorer, dat een lokaal gehoste webtoepassing is. Ga naar de pagina [App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) in Azure Portal en selecteer de naam van de **app-registratie** (die u in de vorige sectie hebt gemaakt) in de lijst.
+Met dit verificatietype zoekt ADT Explorer naar referenties in uw lokale omgeving, zoals een Azure-login in een lokale [Azure-CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) of in Visual Studio/Visual Studio Code. Dit betekent dat u zich **lokaal moet aanmelden bij Azure** via een van deze mechanismen om referenties in te stellen voor de ADT Explorer-app.
 
-Selecteer *Verificatie* in het menu van de registratie en klik op *+ Een platform toevoegen* .
+Als u al op een van deze manieren bent aangemeld bij Azure, kunt u doorgaan naar de [volgende sectie](#run-and-configure-adt-explorer).
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+Als dat niet het geval is, kunt u de lokale **Azure CLI** installeren met de volgende stappen:
+1. Volg het proces op [**deze installatiekoppeling**](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) om de installatie te voltooien die past bij uw besturingssysteem.
+2. Open een consolevenster op uw computer.
+3. Voer `az login` uit en volg de verificatieprompts om u aan te melden bij uw Azure-account.
 
-Selecteer *Web* op de pagina *Platforms configureren* die volgt.
-Vul de configuratiegegevens als volgt in:
-* **Omleidings-URI's** : Voeg de omleidings-URI *http://localhost:3000* toe.
-* **Impliciete toekenning** : Schakel het selectievakje voor *Toegangstokens* in.
+Nadat u dit hebt gedaan, zouden uw Azure-referenties automatisch door ADT Explorer moeten worden opgehaald wanneer u deze in de volgende sectie gaat uitvoeren.
 
-Klik op *Configureren* om te voltooien.
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden.":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-U hebt nu een webconfiguratie geconfigureerd die door ADT Explorer zal worden gebruikt. Het tabblad Verificatie in Azure Portal moet dit weerspiegelen. Nadat u de onderstaande secties hebt gecontroleerd, klikt u op *Opslaan* .
-
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden.":::
+U kunt het consolevenster voor verificatie sluiten als u dit wilt, of u kunt het open laten om het te gebruiken in de volgende stap.
 
 ### <a name="run-and-configure-adt-explorer"></a>ADT Explorer uitvoeren en configureren
 
 Voer vervolgens de toepassing ADT Explorer uit en configureer deze voor uw Azure Digital Twins-exemplaar.
 
-Ga naar de gedownloade en uitgepakte map _**Azure_Digital_Twins__ADT__explorer**_ . Open een opdrachtprompt op de maplocatie *Azure_Digital_Twins__ADT__explorer/client/src* .
+Ga naar de gedownloade en uitgepakte map _**Azure_Digital_Twins__ADT__explorer**_. Open een consolevenster op de maplocatie *Azure_Digital_Twins__ADT__explorer/client/src*.
 
 Voer `npm install` uit om alle vereiste afhankelijkheden te downloaden.
 
@@ -94,16 +78,13 @@ Start vervolgens de app met de opdracht `npm run start`.
 
 Na een paar seconden wordt een browservenster geopend en wordt de app weergegeven in de browser.
 
-:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Browservenster met een app die wordt uitgevoerd op localhost:3000. De app heet ADT Explorer en bevat de vakken Query Explorer, Model View, Graph View en Property Explorer. Er zijn nog geen gegevens op het scherm." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
 Klik bovenaan het venster (te zien in onderstaande afbeelding) op de knop *Aanmelden* om ADT Explorer zo te configureren dat het werkt met het exemplaar dat u hebt ingesteld. 
 
-:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/sign-in.png":::
+:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="ADT Explorer met het pictogram Sign In (Aanmelden) gemarkeerd bovenaan het venster. Het pictogram toont een eenvoudige omtrek van een persoon met de omtrek van een sleutel erop." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-Voer de belangrijke informatie in die u eerder hebt verzameld in de sectie [Prerequisites](#prerequisites) (Vereisten):
-* (Client-)id van de app
-* (Tenant-)id van de map
-* De URL van het Azure Digital Twins-exemplaar, in de indeling *https://{instance host name}*
+Voer de *URL van de Azure Digital Twins-instantie* in die u eerder hebt opgehaald uit de sectie [Vereiste](#prerequisites) in de indeling *https://{hostnaam instantie}* .
 
 >[!NOTE]
 > U kunt deze informatie op elk gewenst moment opnieuw bekijken/bewerken door hetzelfde pictogram te selecteren om het aanmeldingsvenster weer te openen. De waarden die u hebt doorgegeven, blijven bewaard.
@@ -115,9 +96,7 @@ Als u het pop-upvenster *Aangevraagde machtigingen* van Microsoft ziet, geeft u 
 
 ## <a name="add-the-sample-data"></a>De voorbeeldgegevens toevoegen
 
-Vervolgens importeert u het voorbeeldscenario en de graaf in ADT Explorer.
-
-Het voorbeeldscenario bevindt zich in de gedownloade en uitgepakte map _**Azure_Digital_Twins_end_to_end_samples**_ . Ga nu naar die map.
+Vervolgens importeert u het voorbeeldscenario en de graaf in ADT Explorer. Het voorbeeldscenario bevindt zich ook in de map **Azure_Digital_Twins__ADT__explorer** die u eerder hebt gedownload.
 
 ### <a name="models"></a>Modellen
 
@@ -138,21 +117,21 @@ In deze quickstart zijn de modelbestanden al voor u geschreven en gevalideerd, e
 
 Klik in het vak *MODEL VIEW* (MODELWEERGAVE) op het pictogram *Upload a Model* (Een model uploaden).
 
-:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/upload-model.png":::
+:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="In het vak Model View (Modelweergave) is het middelste pictogram gemarkeerd. Het laat een pijl zien die naar een wolk (de cloud) wijst." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
-1. Ga in het weergegeven bestandsselectievak naar de map *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp/models* in de gedownloade opslagplaats.
-2. Selecteer *Room.json* en *Floor.json* en klik op OK. (Als u wilt kunt u de andere modellen ook uploaden, maar die worden niet gebruikt in deze quickstart.)
+1. Ga in het weergegeven bestandsselectievak naar de map *Azure_Digital_Twins__ADT__explorer/client/examples* in de gedownloade opslagplaats.
+2. Selecteer *Room.json* en *Floor.json* en klik op OK. (Als u wilt kunt u ook extra modellen uploaden, maar die worden niet gebruikt in deze quickstart.)
 3. Volg het pop-upvenster waarin u wordt gevraagd u aan te melden bij uw Azure-account.
 
 >[!NOTE]
->Als u het volgende foutbericht ziet: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." border="false"::: 
+>Als u het volgende foutbericht ziet: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="Een pop-upbericht met de tekst 'Fout: Fout bij het ophalen van modellen: ClientAuthError: Fout bij openen van pop-upvenster. Dit kan gebeuren als u Internet Explorer gebruikt, of als pop-upvensters in de browser zijn geblokkeerd.' met de knop Sluiten onderaan" border="false"::: 
 > Probeer dan de pop-upblokkering uit te schakelen of gebruik een andere browser.
 
 ADT Explorer uploadt nu deze modelbestanden naar uw Azure Digital Twins-exemplaar. Deze zouden moeten worden weergegeven in het vak *MODEL VIEW* (MODELWEERGAVE) met hun beschrijvende naam en volledige model-id's. U kunt op de informatiebellen *View Model* (Model bekijken) klikken om de achterliggende DTDL-code te zien.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Een weergave van het vak 'Model View' (Modelweergave) met twee modeldefinities: Floor (dtmi:example:Floor;1) en Room (dtmi:example:Room;1). Het pictogram 'View model' (Model bekijken) met een letter 'i' in een cirkel is voor elk model gemarkeerd." lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -176,9 +155,9 @@ In deze sectie uploadt u vooraf gemaakte tweelingen die zijn verbonden met een v
 
 Klik in het vak *GRAPH VIEW* (GRAAFWEERGAVE) op het pictogram *Import Graph* (Graaf importeren).
 
-:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/import-graph.png":::
+:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="In het vak Graph View (Grafiekweergave) is een pictogram gemarkeerd. Het laat een pijl zien die naar een wolk (de cloud) wijst." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-Ga in het bestandsselectievak naar de map *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp* en kies het spreadsheetbestand _**buildingScenario.xlsx**_ . Dit bestand bevat een beschrijving van de voorbeeldgraaf. Klik op OK.
+Ga in het bestandskeuzevak naar de map *Azure_Digital_Twins__ADT__explorer/client/examples* en kies het spreadsheetbestand _**buildingScenario.xlsx**_. Dit bestand bevat een beschrijving van de voorbeeldgraaf. Klik op OK.
 
 Na een paar seconden opent ADT Explorer een *Import* -weergave met een preview van de graaf die wordt geladen.
 
@@ -186,7 +165,7 @@ Als u het uploaden van de graaf wilt bevestigen, klikt u op het pictogram *Save*
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="Het pictogram Save (Opslaan) gemarkeerd in het deelvenster Graph Preview (Graafvoorbeeld)" lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -196,7 +175,7 @@ ADT Explorer gebruikt nu het geüploade bestand om de gevraagde tweelingen en re
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="Dialoogvenster waarin wordt aangegeven dat het importeren van de graaf is voltooid. Er staat 'Import successful. 4 twins imported. 2 relationships imported.'" lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -206,7 +185,7 @@ ADT Explorer gebruikt nu het geüploade bestand om de gevraagde tweelingen en re
 
 De graaf is nu geüpload naar ADT Explorer. Om de graaf te zien, klikt u op de knop *Run Query* (Query uitvoeren) in het vak *GRAPH EXPLORER* (GRAAFVERKENNER) aan de bovenkant van het ADT Explorer-venster. 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Een knop met de tekst 'Run query' (Query uitvoeren) bovenaan het venster is gemarkeerd" lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 Hiermee wordt de standaardquery uitgevoerd waarmee alle digitale tweelingen worden geselecteerd en weergegeven. ADT Explorer haalt alle tweelingen en relaties op uit de service en tekent de daardoor gedefinieerde graaf in het vak *GRAPH VIEW* (GRAAFWEERGAVE).
 
@@ -214,9 +193,9 @@ Hiermee wordt de standaardquery uitgevoerd waarmee alle digitale tweelingen word
 
 Nu ziet u de geüploade graaf van het voorbeeldscenario:
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden.":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Weergave van het vak 'Graph View'(Grafiekweergave) met een tweelingraaf. Een cirkel met het label 'floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'room1'; een cirkel met het label 'floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'room0'.":::
 
-De cirkels (graafknooppunten) vertegenwoordigen digitale tweelingen, en de lijnen vertegenwoordigen relaties. U ziet dat de tweeling *Floor0* *Room0* bevat, en *Floor1* bevat *Room1* .
+De cirkels (graafknooppunten) vertegenwoordigen digitale tweelingen, en de lijnen vertegenwoordigen relaties. U ziet dat de tweeling *Floor0* *Room0* bevat, en *Floor1* bevat *Room1*.
 
 Als u een muis gebruikt, kunt u op delen van de grafiek klikken en deze verslepen om ze te verplaatsen.
 
@@ -228,7 +207,7 @@ Dit zijn de eigenschappen van *Room0* :
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Markering rond het vak 'Property Explorer' (Eigenschapverkenner) waarin de eigenschappen voor Room0 worden weergegeven, zoals (onder andere) het veld $dtId met de waarde 'Room0', het veld Temperature (Temperatuur) met de waarde 70 en het veld Humidity (Vochtigheidsgraad) met de waarde 30." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -240,7 +219,7 @@ Dit zijn de eigenschappen van *Room1* :
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Markering rond het vak 'Property Explorer' (Eigenschapverkenner) waarin de eigenschappen voor Room1 worden weergegeven, zoals (onder andere) het veld $dtId met de waarde 'Room1', het veld Temperature (Temperatuur) met de waarde 80 en het veld Humidity (Vochtigheidsgraad) met de waarde 60." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -252,7 +231,7 @@ U ziet dat *Room1* een temperatuur van **80** °F heeft.
 
 Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en efficiënt [query's](concepts-query-language.md) uit te voeren op uw tweelinggrafiek om vragen over uw omgeving te beantwoorden. 
 
-Een manier om de tweelingen in uw graaf op te vragen, is op basis van hun *eigenschappen* . Door query's uit te voeren op basis van eigenschappen kunt u allerlei vragen beantwoorden, en uitbijters in uw omgeving vinden die mogelijk aandacht vereisen.
+Een manier om de tweelingen in uw graaf op te vragen, is op basis van hun *eigenschappen*. Door query's uit te voeren op basis van eigenschappen kunt u allerlei vragen beantwoorden, en uitbijters in uw omgeving vinden die mogelijk aandacht vereisen.
 
 In deze sectie voert u een query uit om de volgende vraag te beantwoorden: _**Welke tweelingen in mijn omgeving hebben een temperatuur van meer dan 75 °F?**_
 
@@ -264,22 +243,22 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 Eerder hebben we in de tweelingeigenschappen gezien dat *Room0* de temperatuur **70** °F heeft, en *Room1* de temperatuur **80** °F. Daarom wordt alleen _**Room1**_ in de resultaten weergegeven.
     
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Resultaten van eigenschapquery, alleen Room1 weergegeven" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
 
 >[!TIP]
 > Andere vergelijkingsoperators ( *<* , *>* , *=* of *!=* ) worden ook ondersteund in bovenstaande query. U kunt proberen deze, andere waarden of andere tweelingen eigenschappen in te vullen in de query om te proberen uw eigen vragen te beantwoorden.
 
 ## <a name="edit-data-in-the-graph"></a>Gegevens bewerken in de graaf
 
-U kunt ADT Explorer gebruiken om de eigenschappen van de in uw graaf weergegeven tweelingen te bewerken. In deze sectie gaan we **_de temperatuur_ van Room0 verhogen naar 76** .
+U kunt ADT Explorer gebruiken om de eigenschappen van de in uw graaf weergegeven tweelingen te bewerken. In deze sectie gaan we **_de temperatuur_ van Room0 verhogen naar 76**.
 
 Selecteer *Room0* , waardoor de lijst met eigenschappen wordt weergegeven in het vak *PROPERTY EXPLORER* (EIGENSCHAPVERKENNER).
 
-De eigenschappen in deze lijst zijn bewerkbaar. Selecteer de temperatuurwaarde **70** om een nieuwe waarde te kunnen invoeren. Voer **76** in en klik op het pictogram *Save* (Opslaan) om de temperatuur bij te werken naar **76** .
+De eigenschappen in deze lijst zijn bewerkbaar. Selecteer de temperatuurwaarde **70** om een nieuwe waarde te kunnen invoeren. Voer **76** in en klik op het pictogram *Save* (Opslaan) om de temperatuur bij te werken naar **76**.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Het vak 'Property Explorer' (Eigenschapverkenner) met de eigenschappen van Room0. De temperatuurwaarde is een bewerkbaar vak met de waarde 76, en het pictogram Save (Opslaan) is gemarkeerd." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -297,7 +276,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 Nu de temperatuur van *Room0* is gewijzigd van **70** in **76** , moeten beide tweelingen in het resultaat worden weergegeven.
 
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Weergave van een graaf met vier ronde knooppunten die zijn verbonden via pijlen. Een cirkel met het label 'Floor1' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room1'; een cirkel met het label 'Floor0' is door een pijl met het label 'contains' (bevat) verbonden met een cirkel met het label 'Room0'. 'Floor1' en 'Floor0' zijn niet verbonden." lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Resultaten van eigenschapquery, zowel Room0 als Room1 weergegeven" lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
 
 ## <a name="review-and-contextualize-learnings"></a>Samenvatting en context
 
@@ -320,7 +299,7 @@ Als u van plan bent om door te gaan met de zelf studies voor Azure Digital Twins
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Verwijder tot slot de voorbeeldmappen van het project die u naar uw lokale machine hebt gedownload ( _**Azure_Digital_Twins__ADT__explorer**_ en _**Azure_Digital_Twins_end_to_end_samples**_ ). Mogelijk moet u zowel de gezipte als de uitgepakte versie verwijderen.
+Verwijder tot slot de voorbeeldmappen van het project die u hebt gedownload naar uw lokale machine ( _**Azure_Digital_Twins__ADT__explorer**_ ). Mogelijk moet u zowel de gezipte als de uitgepakte versie verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen 
 

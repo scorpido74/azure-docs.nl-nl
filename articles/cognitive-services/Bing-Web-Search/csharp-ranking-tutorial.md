@@ -12,14 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bfd7b6e5c9a2a7e3d9ed750e544036f3874271f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9131dbff9b732ecfc7f6edb62b42959abcc17da8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933219"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078676"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Een zoekclient voor console-app maken in C#
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Deze zelfstudie laat zien hoe u een eenvoudige .NET Core-console-app bouwt waarmee gebruikers query's kunnen uitvoeren op de Bing Web Search-API en gerangschikte resultaten kunnen weergeven.
 
@@ -58,12 +63,12 @@ Met JSON.net kunt u werken met de JSON-antwoorden die zijn geretourneerd door de
 In deze zelfstudie wordt gebruikgemaakt van de `System.Web`-assembly. Voeg een verwijzing toe naar deze assembly aan uw project:
 
 - Klik in **Solution Explorer** met de rechtermuisknop op **Verwijzingen** en selecteer **Verwijzing toevoegen…** .
-- Selecteer **Assembly's > Framework**, schuif omlaag en controleer **System.Web**
+- Selecteer **Assembly's > Framework** , schuif omlaag en controleer **System.Web**
 - Selecteer **OK**
 
 ## <a name="add-some-necessary-using-statements"></a>Enkele vereiste instructies toevoegen
 
-Voor de code in deze zelfstudie zijn drie extra instructies vereist. Voeg deze instructies toe onder de bestaande `using`-instructies bovenaan **Program.cs**:
+Voor de code in deze zelfstudie zijn drie extra instructies vereist. Voeg deze instructies toe onder de bestaande `using`-instructies bovenaan **Program.cs** :
 
 ```csharp
 using System.Web;
@@ -278,7 +283,7 @@ Deze methode:
 - Lussen over de `rankingResponse`-groepen die het antwoord bevat
 - De items in elke groep worden weergegeven door `DisplaySpecificResults(...)` aan te roepen
 
-Voeg de volgende twee methoden toe in **Program.cs**:
+Voeg de volgende twee methoden toe in **Program.cs** :
 
 ```csharp
 static void DisplaySpecificResults(Newtonsoft.Json.Linq.JToken resultIndex, Newtonsoft.Json.Linq.JToken items, string title, params string[] fields)

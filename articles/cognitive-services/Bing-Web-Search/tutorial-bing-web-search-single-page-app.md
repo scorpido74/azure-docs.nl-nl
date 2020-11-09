@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3c404f0028705754a68be113a331132eec02f7cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304029"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095438"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Webzoekopdrachten-API
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Deze app met één pagina laat zien hoe u zoekresultaten uit de Bing Webzoekopdrachten-API ophaalt, parseert en weergeeft. De zelfstudie gebruikt standaard HTML en CSS en is gericht op de JavaScript-code. Op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) zijn HTML-, CSS- en JS-bestanden met snelstartinstructies beschikbaar.
 
@@ -131,7 +136,7 @@ function bingSearchOptions(form) {
 
 `SafeSearch` kan worden ingesteld op `strict`, `moderate` of `off`, waarbij `moderate` de standaardinstelling voor Bing Web Search is. In dit formulier wordt een selectievakje met twee statussen gebruikt: `strict` of `moderate`.
 
-Als een van de **Promoten**-selectievakjes is geselecteerd, wordt de `answerCount`-parameter toegevoegd aan de query. `answerCount` is vereist wanneer u de `promote`-parameter gebruikt. In dit fragment is de waarde ingesteld op `9` zodat alle beschikbare resultaattypen worden geretourneerd.
+Als een van de **Promoten** -selectievakjes is geselecteerd, wordt de `answerCount`-parameter toegevoegd aan de query. `answerCount` is vereist wanneer u de `promote`-parameter gebruikt. In dit fragment is de waarde ingesteld op `9` zodat alle beschikbare resultaattypen worden geretourneerd.
 > [!NOTE]
 > Het promoten van een resultaattype kan *niet garanderen* dat dit type in de zoekresultaten komt te staan. In plaats daarvan verhoogt u met promotie de beoordeling van dat soort resultaten in vergelijking met hun normale beoordeling. Als u de zoekopdrachten wilt beperken tot een bepaald type resultaten, gebruikt u de `responseFilter`-queryparameter of roept een specifieker eindpunt aan zoals Bing Image Search of Bing News Search.
 

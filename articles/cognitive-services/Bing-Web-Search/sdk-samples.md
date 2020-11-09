@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: sample
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 36719fc8370c04e9c2d01422536502f90e124c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b31335df7c1dc48f82699aa3676561721474071d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735246"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076211"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Voorbeelden van de Bing Webzoekopdrachten-SDK
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 De Bing Webzoekopdrachten-SDK is beschikbaar voor Python, Node.js, C# en Java. Op GitHub vindt u codevoorbeelden, vereisten en bouwinstructies. De volgende scenario's worden behandeld:
 

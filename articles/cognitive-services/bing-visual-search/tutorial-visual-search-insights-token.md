@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c03800696897dc6cbb4cd793879e734366829b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acb32e2fe3dae45cc4a95cea1b9fa4ea01d576c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88925110"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102176"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Zelfstudie: Vergelijkbare afbeeldingen als in vorige zoekopdrachten vinden met behulp van inzichttokens
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Met de Visual Search-clientbibliotheek kunt u online afbeeldingen vinden op basis van eerdere zoekopdrachten die een `ImageInsightsToken` retourneren. Met deze toepassing wordt een `ImageInsightsToken` opgehaald en wordt het token gebruikt in een volgende zoekopdracht. Vervolgens wordt de `ImageInsightsToken` naar Bing verzonden en worden resultaten geretourneerd met onder meer Bing Search-URL's en URL's van vergelijkbare, online gevonden afbeeldingen.
 

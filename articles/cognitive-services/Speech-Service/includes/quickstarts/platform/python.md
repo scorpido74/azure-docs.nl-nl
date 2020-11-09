@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: 613ee87064cc3b0bbbae8b8ac2e31a5ed60d39f2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: eae4aece79cd387aaa7e708591ca31442eaa05c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097198"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136205"
 ---
 In deze gids ontdekt u hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) kunt installeren voor Python. Als u enkel de pakketnaam nodig heeft om zelf aan de slag te gaan, voer dan `pip install azure-cognitiveservices-speech` uit.
 
@@ -20,25 +20,20 @@ In deze gids ontdekt u hoe u de [Speech SDK](~/articles/cognitive-services/speec
 - Het Python Speech-SDK-pakket is beschikbaar voor deze besturingssystemen:
   - Windows: x64 en x86
   - Mac: Mac OS X-versie 10.12 of hoger
-  - Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 op x64
+  - Linux: bekijk de lijst met [ondersteunde Linux-distributies en -doelarchitecturen](~/articles/cognitive-services/speech-service/speech-sdk.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Voor ondersteunde Linux-platformen moeten bepaalde bibliotheken zijn geïnstalleerd (`libssl` voor de ondersteuning van Secure Sockets Layer en `libasound2` voor de ondersteuning van geluid). Zoek uw distributie hieronder voor de opdracht waarmee u de correcte versies van deze bibliotheken kunt installeren.
 
-  - Voer op Ubuntu de volgende opdrachten uit om de vereiste pakketten te installeren:
+  - Voer op Ubuntu/Debian de volgende opdrachten uit om de vereiste pakketten te installeren:
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - Voer op Debian 9 de volgende opdrachten uit om de vereiste pakketten te installeren:
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    Als libssl 1.0.0 niet beschikbaar is, installeert u in plaats daarvan libssl 1.0.x (waarbij x hoger is dan 0) of libssl 1.1.
 
   - Voer op RHEL/CentOS de volgende opdrachten uit om de vereiste pakketten te installeren:
 
@@ -84,7 +79,7 @@ import azure.cognitiveservices.speech as speechsdk
    ![De Python-extensie installeren](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. U kunt het Python Speech-SDK-pakket ook installeren vanuit Visual Studio Code met de geïntegreerde opdrachtregel:
-   1. Open een terminal (in de vervolgkeuzelijsten **Terminal** > **Nieuwe terminal**)
+   1. Open een terminal (in de vervolgkeuzelijsten **Terminal** > **Nieuwe terminal** )
    1. Voer in de terminal die wordt geopend de opdracht `python -m pip install azure-cognitiveservices-speech` in
 
 Als Visual Studio Code nieuw is voor u, bekijk dan de uitgebreide [Documentatie voor Visual Studio Code](https://code.visualstudio.com/docs). Zie [Zelfstudie voor Visual Studio Code Python](https://code.visualstudio.com/docs/python/python-tutorial) voor meer informatie over Visual Studio Code en Python.

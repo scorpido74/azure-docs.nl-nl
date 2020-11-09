@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 25d716513c7ceb9311588b75b0fad1c68bf71bfd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742499"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081107"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Zelfstudie: Een Aangepaste zoekopdrachten-webpagina bouwen
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoekervaringen maken voor onderwerpen die u interesseren. Als u bijvoorbeeld een website over martial arts hebt die een zoekervaring biedt, kunt u de domeinen, subsites en webpagina's opgeven waarin Bing moet zoeken. Uw gebruikers zien dan zoekresultaten die zijn afgestemd op de inhoud die ze interessant vinden in plaats van dat ze door pagina's met algemene zoekresultaten moeten bladeren die mogelijk niet-relevante inhoud bevatten. 
 
@@ -138,7 +143,7 @@ In de rest van deze zelfstudie wordt het volgende toegelicht: **Optie 1: JavaScr
   
 2. Selecteer in het menu **Bestand** de optie **Nieuw** en kies vervolgens **Project**.  
   
-3. Selecteer **Visual C# / Web / ASP.NET Core Web Application** in het venster **New Project**, geef het project een naam en klik vervolgens op **OK**.  
+3. Selecteer **Visual C# / Web / ASP.NET Core Web Application** in het venster **New Project** , geef het project een naam en klik vervolgens op **OK**.  
   
    ![Schermafbeelding van het dialoogvenster New Project](./media/custom-search-new-project.png)  
   

@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: d5dc762499342f0004073fb6c240c98c4ac2bc09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ecea9dce3509e064d9244a8b725add21747a03e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334562"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102201"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Zelfstudie: Afbeeldingen uploaden naar de Bing Visual Search-API
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Met de Bing Visual Search-API kunt u op internet zoeken naar afbeeldingen die overeenkomen met de afbeeldingen die u uploadt. Gebruik deze zelfstudie om een webtoepassing te maken waarmee een afbeelding naar de API kan worden verzonden en waarmee de inzichten die worden geretourneerd op de webpagina worden weergegeven. Deze toepassing voldoet niet aan alle [vereisten voor gebruik en weergave van Bing](../bing-web-search/use-display-requirements.md) voor het gebruik van de API.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Snelstart: Content Moderator op internet proberen'
 titleSuffix: Azure Cognitive Services
-description: Gebruik het online Content Moderator-controlehulpprogramma om de basisfunctionaliteit van Content Moderator te testen zonder dat u code hoeft te schrijven.
+description: In deze quickstart gebruikt u het online Content Moderator-controlehulpprogramma om de basisfunctionaliteit van Content Moderator te testen zonder dat u code hoeft te schrijven.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: content moderator, inhoudsbeheer
-ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596808"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143684"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Snelstart: Content Moderator op internet proberen
 
@@ -28,14 +28,13 @@ In deze quickstart gebruikt u het online Content Moderator-controlehulpprogramma
 - Een webbrowser
 
 ## <a name="set-up-the-review-tool"></a>Het controlehulpprogramma instellen
-
-Het Content Moderator beoordeling is een webhulpprogramma waarmee menselijke revisoren de cognitieve service kunnen helpen bij het nemen van beslissingen. In deze handleiding doorloopt u het korte proces voor het instellen van het controleprogramma, zodat u kunt zien hoe de Content Moderator-service werkt. Ga naar de website van het [Content Moderator-controlehulpprogramma](https://contentmoderator.cognitive.microsoft.com/) en meld u aan.
+Het Content Moderator beoordeling is een webhulpprogramma waarmee menselijke revisoren de cognitieve service kunnen helpen bij het nemen van beslissingen. In deze handleiding doorloopt u het korte proces voor het instellen van het controlehulpprogramma, zodat u kunt zien hoe de Content Moderator-service werkt. Ga naar de website van het [Content Moderator-controlehulpprogramma](https://contentmoderator.cognitive.microsoft.com/) en meld u aan.
 
 ![Startpagina van Content Moderator](images/homepage.PNG)
 
 ## <a name="create-a-review-team"></a>Een beoordelingsteam maken
 
-Maak vervolgens een beoordelingsteam. In een werkend scenario is dit de groep personen die handmatig de beheerbeslissingen van de service controleert. Als u een team wilt maken, moet u een **regio** selecteren en een **teamnaam** en een **team-id** opgeven. Als u collega's wilt uitnodigen voor het team, kunt u dit doen door hier hun e-mailadressen in te voeren.
+Maak vervolgens een beoordelingsteam. In een werkscenario is dit de groep personen die handmatig de beheerbeslissingen van de service controleert. Als u een team wilt maken, moet u een **regio** selecteren en een **teamnaam** en een **team-id** opgeven. Als u collega's wilt uitnodigen voor het team, kunt u dit doen door hier hun e-mailadressen in te voeren.
 
 > [!NOTE]
 > **Teamnaam** is een beschrijvende naam voor uw beoordelingsteam. Dit is de naam die wordt weergegeven in Azure Portal. De **team-id** wordt gebruikt ter identificatie van uw beoordelingsteam.
@@ -43,31 +42,35 @@ Maak vervolgens een beoordelingsteam. In een werkend scenario is dit de groep pe
 > [!div class="mx-imgBorder"]
 > ![Teamlid uitnodigen](images/create-team.png).
 
-Als u ervoor kiest om gegevens te versleutelen met behulp van een door klant beheerde sleutel (CMK), wordt u gevraagd om de **resource-id** voor uw Content Moderator-resource in de prijs categorie E0. De resource die u opgeeft, moet nieuw zijn. 
+Als u ervoor kiest om gegevens te versleutelen met behulp van een door klant beheerde sleutel (CMK), wordt u gevraagd om de **resource-id** voor uw Content Moderator-resource in de prijs categorie E0. De resource die u opgeeft, moet uniek zijn voor dit team. 
 
 > [!div class="mx-imgBorder"]
 > ![Teamlid uitnodigen met CMK](images/create-team-cmk.png)
 
-Als u probeert een Content Moderator resource opnieuw te gebruiken, wordt deze waarschuwing weergegeven: 
-
-> [!div class="mx-imgBorder"]
-> ![CMK-fout](images/create-team-cmk-fail.png)
-
 ## <a name="upload-sample-content"></a>Voorbeeldinhoud uploaden
 
-U bent nu klaar om voorbeeldinhoud te uploaden. Selecteer **Try > Image**, **Try > Text** of **Try > Video**.
+U bent nu klaar om voorbeeldinhoud te uploaden. Selecteer **Try > Image** , **Try > Text** of **Try > Video**.
 
-![Beheer van afbeeldingen of tekst uitproberen](images/tryimagesortext.png)
+> [!div class="mx-imgBorder"]
+> ![Beheer van afbeeldingen of tekst uitproberen](images/tryimagesortext.png)
 
-Verzend de inhoud die u wilt beheren. Intern roept het controlehulpprogramma de beheer-API's aan om uw inhoud te scannen. Zodra het scannen is voltooid, ziet u een bericht waarin wordt gemeld dat er resultaten zijn die wachten op uw beoordeling.
+Verzend de inhoud die u wilt beheren. U kunt de volgende voorbeeldtekstinhoud gebruiken:
 
-![Bestanden beheren](images/submitted.png)
+```
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 4255550111
+```
+
+Intern roept het controlehulpprogramma de beheer-API's aan om uw inhoud te scannen. Zodra het scannen is voltooid, ziet u een bericht waarin wordt gemeld dat er resultaten zijn die wachten op uw beoordeling.
+
+> [!div class="mx-imgBorder"]
+> ![Bestanden beheren](images/submitted.png)
 
 ## <a name="review-moderation-tags"></a>Beheertags controleren
 
-Controleer de toegepaste beheertags. U kunt de tags die zijn toegepast op uw inhoud en de score in elke categorie bekijken. Zie de onderwerpen over het beheer van [afbeeldingen](image-moderation-api.md), [teksten](text-moderation-api.md) en [video's](video-moderation-api.md) voor meer informatie over de betekenis van de verschillende inhoudstags.
+Controleer de toegepaste beheertags. U kunt de tags die zijn toegepast op uw inhoud en de score in elke categorie bekijken. Zie de artikelen over het beheer van [afbeeldingen](image-moderation-api.md), [teksten](text-moderation-api.md) en [video's](video-moderation-api.md) voor meer informatie over de betekenis van de verschillende inhoudstags.
 
-![Resultaten controleren](images/reviewresults_text.png)
+<!-- ![Review results](images/reviewresults_text.png) -->
 
 In een project kunt u of uw beoordelingsteam deze tags wijzigen of meer tags toevoegen, indien nodig. U verzendt deze wijzigingen met de knop **Volgende**. Als uw zakelijke toepassing de Moderator-API's aanroept, wordt de getagde inhoud hier in de wachtrij geplaatst, zodat deze kan worden gecontroleerd door de leden van de beoordelingsteams. Met deze aanpak kunt u snel grote hoeveelheden inhoud bekijken.
 

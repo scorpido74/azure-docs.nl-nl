@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: fe4c40e2c5e2b8992598125c376dc0da516e9736
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a62133737d48a8ebf454b5fab83ef52ef2daad09
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316695"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098430"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Afbeeldingen zoeken-API
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 Met de Bing Afbeeldingen zoeken-API kunt u internet doorzoeken op hoogwaardige en relevante afbeeldingen. Gebruik deze zelfstudie om een webtoepassing van één pagina te bouwen waarmee zoekquery's naar de API kunnen worden verzonden. De resultaten worden dan op de webpagina weergegeven. Deze zelfstudie is vergelijkbaar met de [bijbehorende zelfstudie](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) voor Bing Web Search.
 

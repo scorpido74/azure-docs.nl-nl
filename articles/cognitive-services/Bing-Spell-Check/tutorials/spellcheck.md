@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: b87a2cd3e6edc6a47de77f475c40d30ce1606e01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8fa86ef33fe7b0d9e97aebca96b3aa5465f24a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316610"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099858"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Zelfstudie: Een webpagina met Spellingcontrole bouwen
+
+> [!WARNING]
+> Bing Search-API's worden van Cognitive Services naar Bing Search Services verplaatst. Vanaf **30 oktober 2020** moeten nieuwe instanties van Bing Search worden ingericht volgens het proces dat [hier](https://aka.ms/cogsvcs/bingmove) is beschreven.
+> Bing Search-API's ingericht met behulp van Cognitive Services, worden voor de komende drie jaar of tot het einde van uw Enterprise Agreement ondersteund, afhankelijk van wat het eerst afloopt.
+> Zie [Bing Search Services](https://aka.ms/cogsvcs/bingmigration) voor migratie-instructies.
 
 In deze zelfstudie bouwen we een webpagina waarmee gebruikers query's kunnen uitvoeren op de Spellingcontrole-API voor Bing. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
@@ -123,7 +128,7 @@ De helperfunctie getSubscriptionKeyLocalStorage probeert eerst om de sleutel voo
     }
 ```
 
-De helperfunctie getSubscriptionKey accepteert één parameter: **invalidate**. Als **invalidate** is ingesteld op **true**, verwijdert getSubscriptionKey de cookie die de sleutel voor de Spellingcontrole-API voor Bing bevat. Als **invalidate** is ingesteld op **false**, retourneert getSubscriptionKey de waarde van de sleutel voor de Spellingcontrole-API voor Bing.
+De helperfunctie getSubscriptionKey accepteert één parameter: **invalidate**. Als **invalidate** is ingesteld op **true** , verwijdert getSubscriptionKey de cookie die de sleutel voor de Spellingcontrole-API voor Bing bevat. Als **invalidate** is ingesteld op **false** , retourneert getSubscriptionKey de waarde van de sleutel voor de Spellingcontrole-API voor Bing.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -271,7 +276,7 @@ Maak een HTML-formulier met een tekstveld. Verwerk de gebeurtenis `onsubmit` en 
 </form>
 ```
 
-Voeg de HTML-tag **div** toe, die we gebruiken om de resultaten weer te geven. In de JavaScript die we eerder hebben gedefinieerd, wordt er verwezen naar deze **div**-tag.
+Voeg de HTML-tag **div** toe, die we gebruiken om de resultaten weer te geven. In de JavaScript die we eerder hebben gedefinieerd, wordt er verwezen naar deze **div** -tag.
 
 ```html
 <h2>Results</h2>
