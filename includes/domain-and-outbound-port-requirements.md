@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: abnarain
-ms.openlocfilehash: 0b2831321c9f4d855a19605c1ce5ace9fa11c88b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79a8bc73f416c8d10d83e7ad94a727094f072b00
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596108"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331431"
 ---
 | Domeinnamen                  | Uitgaande poorten | Beschrijving                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | Vereist door de zelf-hostende Integration Runtime om verbinding te maken met services voor gegevensverplaatsing in Azure Data Factory. |
+| `*.servicebus.windows.net`    | 443            | Vereist door de zelf-hostende integration runtime voor interactief ontwerpen. |
 | `{datafactory}.{region}.datafactory.azure.net`<br> of `*.frontend.clouddatahub.net` | 443            | Vereist door de zelf-hostende Integration Runtime om verbinding te maken met de Data Factory-service. <br>Voor nieuwe Data Factory's kunt u de FQDN vinden in uw zelf-hostende Integration Runtime-sleutel, in de indeling {datafactory}.{regio}.datafactory.azure.net. Gebruik voor een oude Data factory, als u de FQDN niet ziet in uw zelf-hostende Integration-sleutel, in plaats daarvan *.frontend.clouddatahub.net. |
 | `download.microsoft.com`    | 443            | Vereist door de zelf-hostende Integration Runtime voor het downloaden van de updates. Als u automatische updates heb uitgeschakeld, kunt u het configureren van dit domein overslaan. |
 | `*.core.windows.net`          | 443            | Wordt gebruikt door de zelf-hostende Integration Runtime om verbinding te maken met het Azure-opslagaccount wanneer u de functie voor [gefaseerd kopiëren](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy) gebruikt. |

@@ -50,13 +50,13 @@
   items:
     - name: Snelstartgidsen
       items:
-        - name: Een Synapse-werkruimte maken met de Azure Portal
+        - name: Een werkruimte maken met Azure Portal
           href: quickstart-create-workspace.md
           displayName: quickstart
-        - name: Een Synapse-werkruimte maken met de Azure CLI
+        - name: Een werkruimte maken met Azure CLI
           href: quickstart-create-workspace-cli.md
           displayName: quickstart
-        - name: Een Synapse-werkruimte maken met Azure PowerShell
+        - name: Een werkruimte maken met Azure PowerShell
           href: quickstart-create-workspace-powershell.md
           displayName: quickstart
         - name: Implementeren met een sjabloon
@@ -338,6 +338,12 @@
               displayname: 'workload, management'
     - name: Instructiegidsen
       items:
+        - name: Back-ups en herstellen
+          items:
+            - name: Herstelpunten maken
+              href: ./backuprestore/sqlpool-create-restore-point.md
+            - name: Een Synapse SQL-pool herstellen
+              href: ./backuprestore/restore-sql-pool.md
         - name: Beheren en bewaken
           items:
             - name: Gen2-cache bewaken

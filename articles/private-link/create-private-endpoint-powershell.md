@@ -1,20 +1,20 @@
 ---
-title: 'Snelstartgids: een persoonlijk Azure-eind punt maken met behulp van Azure PowerShell'
-description: Gebruik deze Quick start voor meer informatie over het maken van een persoonlijk eind punt met behulp van Azure PowerShell.
+title: Quickstart - Een Azure-privé-eindpunt maken met Azure PowerShell
+description: Gebruik deze quickstart om te leren hoe u een privé-eindpunt maakt met Azure PowerShell.
 services: private-link
 author: asudbring
 ms.service: private-link
-ms.topic: how-to
+ms.topic: quickstart
 ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 147e646738df9d70355f379a9e64a52116e9f16f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
-ms.translationtype: MT
+ms.openlocfilehash: 7add424c23e430a8ca5059d45acd037fff8836ad
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233590"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368658"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Snelstartgids: een persoonlijk eind punt maken met Azure PowerShell
+# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Quickstart: Een privé-eindpunt maken met behulp van de Azure PowerShell
 
 Ga aan de slag met Azure Private Link door een privé-eindpunt te gebruiken om veilig verbinding te maken met een Azure-web-app.
 
@@ -47,7 +47,7 @@ In deze sectie leert u een virtueel netwerk, subnet en Bastion-host te maken.
 
 De Bastion-host wordt gebruikt om veilig verbinding te maken met de virtuele machine om het privé-eindpunt te testen.
 
-Maak een virtueel netwerk en een bastion-host met:
+Een virtueel netwerk en bastion-host maken met:
 
 * [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
 * [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)
@@ -147,14 +147,15 @@ New-AzVM -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Location 'eastus' -VM 
 
 ## <a name="create-private-endpoint"></a>Privé-eindpunt maken
 
-In deze sectie maakt u het persoonlijke eind punt en de verbinding met:
+In dit gedeelte maakt u het privé-eindpunt en de verbinding met:
 
 * [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)
 * [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)
 
 ```azurepowershell-interactive
-## Place web app into variable. Replace <your-webapp-name> with your server name ##
-$webapp = Get-AzWebApp -ResourceGroupName CreatePrivateEndpointQS-rg -Name <your-webapp-name>
+## Place web app into variable. Replace <webapp-resource-group-name> with the resource group of your webapp. ##
+## Replace <your-webapp-name> with your webapp name ##
+$webapp = Get-AzWebApp -ResourceGroupName <webapp-resource-group-name> -Name <your-webapp-name>
 
 ## Create private endpoint connection. ##
 $parameters1 = @{
@@ -181,9 +182,9 @@ $parameters2 = @{
 }
 New-AzPrivateEndpoint @parameters2
 ```
-## <a name="configure-the-private-dns-zone"></a>De privé-DNS-zone configureren
+## <a name="configure-the-private-dns-zone"></a>Privé-DNS-zone configureren
 
-In deze sectie maakt en configureert u de privé-DNS-zone met behulp van:
+In dit gedeelte maakt en configureert u de privé-DNS-zone met:
 
 * [New-AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone)
 * [New-AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink)
@@ -235,13 +236,13 @@ In deze sectie gebruikt u de virtuele machine die u in de vorige stap hebt gemaa
  
 2. Selecteer **Resourcegroepen** in het linkernavigatievenster.
 
-3. Selecteer **CreatePrivateEndpointQS-rg** .
+3. Selecteer **CreatePrivateEndpointQS-rg**.
 
-4. Selecteer **myVM** .
+4. Selecteer **myVM**.
 
-5. Selecteer op de overzichtspagina voor **myVM** de optie **Verbinding maken** en daarna **Bastion** .
+5. Selecteer op de overzichtspagina voor **myVM** de optie **Verbinding maken** en daarna **Bastion**.
 
-6. Selecteer de blauwe knop **Bastion gebruiken** .
+6. Selecteer de blauwe knop **Bastion gebruiken**.
 
 7. Voer de gebruikersnaam en het wachtwoord in die u hebt ingevoerd bij het maken van de virtuele machine.
 
@@ -259,20 +260,20 @@ In deze sectie gebruikt u de virtuele machine die u in de vorige stap hebt gemaa
     Aliases:  mywebapp8675.azurewebsites.net
     ```
 
-    Er wordt een privé-IP-adres van **10.0.0.5** geretourneerd voor de naam van de web-app.  Dit adres bevindt zich in het subnet van het virtuele netwerk dat u eerder hebt gemaakt.
+    Een privé IP-adres van **10.0.0.5** wordt voor de naam van de web-app geretourneerd.  Dit adres bevindt zich in het subnet van het virtuele netwerk dat u eerder hebt gemaakt.
 
-10. Open Internet Explorer in de bastionverbinding met **myVM** .
+10. Open Internet Explorer in de bastionverbinding met **myVM**.
 
-11. Voer de URL van de web-app in: **https://\<your-webapp-name>.azurewebsites.net** .
+11. Voer de URL van de web-app in: **https://\<your-webapp-name>.azurewebsites.net**.
 
 12. U ziet de standaardpagina voor web-apps als uw toepassing niet is geïmplementeerd:
 
     :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Standaardpagina van web-app." border="true":::
 
-13. Verbreek de verbinding met **myVM** .
+13. Verbreek de verbinding met **myVM**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
-Wanneer u klaar bent met het persoonlijke eind punt en de virtuele machine, gebruikt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resource groep en alle resources te verwijderen die het bevat:
+Wanneer u klaar bent met het privé-eindpunt en de VM, gebruikt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resourcegroep en alle resources daarin te verwijderen:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name CreatePrivateEndpointQS-rg -Force

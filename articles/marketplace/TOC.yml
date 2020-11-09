@@ -81,12 +81,36 @@
       href: publisher-guide-by-offer-type.md
     - name: Azure-toepassingsaanbiedingen
       items:
-        - name: Een aanbieding voor een oplossingssjabloon plannen
-          href: marketplace-solution-templates.md
-        - name: Een aanbieding voor een beheerde toepassing plannen
-          href: marketplace-managed-apps.md
+        - name: Azure-toepassingsaanbiedingen plannen
+          items:
+            - name: Een Azure-toepassingsaanbieding plannen
+              href: plan-azure-application-offer.md
+            - name: Een oplossingssjabloon plannen
+              href: plan-azure-app-solution-template.md
+            - name: Een beheerde toepassing plannen
+              href: plan-azure-app-managed-app.md
         - name: Een Azure-toepassingsaanbieding maken en publiceren
-          href: partner-center-portal/create-new-azure-apps-offer.md
+          items:
+            - name: Een Azure-toepassingsaanbieding maken
+              href: create-new-azure-apps-offer.md
+            - name: Eigenschappen van Azure-toepassingsaanbiedingen configureren
+              href: create-new-azure-apps-offer-properties.md
+            - name: Een vermelding van een Azure-toepassingsaanbieding configureren
+              href: create-new-azure-apps-offer-listing.md
+            - name: Een previewdoelgroep toevoegen
+              href: create-new-azure-apps-offer-preview.md
+            - name: Technische informatie toevoegen
+              href: create-new-azure-apps-offer-technical.md
+            - name: Plannen maken
+              href: create-new-azure-apps-offer-plans.md
+            - name: Een plan voor een oplossingssjabloon maken
+              href: create-new-azure-apps-offer-solution.md
+            - name: Een plan voor een beheerde toepassing maken
+              href: create-new-azure-apps-offer-managed.md
+            - name: Een Azure-toepassingsaanbieding testen en publiceren
+              href: create-new-azure-apps-offer-test-publish.md
+        - name: Uw Azure-toepassingsaanbieding aanprijzen
+          href: create-new-azure-apps-offer-marketing.md
         - name: Facturering voor Azure-toepassingen naar gebruik
           href: partner-center-portal/azure-app-metered-billing.md
         - name: Beoordelingsfeedback verwerken

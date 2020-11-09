@@ -19,6 +19,8 @@
       href: ../networking/working-remotely-support.md?toc=%2fazure%2fbastion%2ftoc.json
     - name: Bastion gebruiken voor extern werken
       href: work-remotely-support.md
+    - name: Bastion- en VNet-peering
+      href: vnet-peering.md
 - name: Instructiegidsen
   items:
     - name: Een host maken

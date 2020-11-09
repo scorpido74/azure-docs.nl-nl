@@ -16,3 +16,5 @@
   href: redhat-rhui.md
 - name: Aanbieding voor Red Hat Enterprise Linux BYOS-installatiekopieën
   href: byos.md
+- name: Uitgebreide levenscyclusondersteuning voor Red Hat Enterprise Linux
+  href: redhat-extended-lifecycle-support.md

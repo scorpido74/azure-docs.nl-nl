@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a38c4bb18e16a814b626a6941d626b66311cd8ea
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5d14068f6be4717f74e4917d6fccf1082cd0efd3
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329509"
+ms.locfileid: "94331754"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Welke regio's zijn beschikbaar?
 
-[!INCLUDE [region](bastion-regions-include.md)]
+[!INCLUDE [Azure Bastion region availability](bastion-regions-include.md)]
 
-### <a name="do-i-need-a-public-ip-on-my-virtual-machine"></a><a name="publicip"></a>Heb ik een openbaar IP-adres nodig op mijn virtuele machine?
+### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Heb ik een openbare IP nodig in mijn virtuele machine om verbinding te maken met Azure Bastion?
 
-Wanneer u verbinding maakt met een VM met behulp van Azure Bastion, hebt u GEEN openbaar IP-adres nodig op de virtuele Azure-machine waarmee u verbinding maakt. De Bastion-service opent de sessie/verbinding via RDP/SSH met uw virtuele machine via het privé-IP-adres van uw virtuele machine, binnen uw virtuele netwerk.
+Nee. Wanneer u verbinding maakt met een VM met behulp van Azure Bastion, hebt u geen openbaar IP-adres nodig op de virtuele Azure-machine waarmee u verbinding maakt. De Bastion-service opent de sessie/verbinding via RDP/SSH met uw virtuele machine via het privé-IP-adres van uw virtuele machine, binnen uw virtuele netwerk.
 
 ### <a name="is-ipv6-supported"></a>Wordt IPv6 ondersteund?
 
@@ -29,11 +29,11 @@ Op dit moment wordt IPv6 niet ondersteund. Azure Bastion ondersteunt alleen IPv4
 
 ### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>Heb ik een RDP- of SSH-client nodig?
 
-U hebt geen RDP- of SSH-client nodig om toegang te krijgen tot uw virtuele Azure-machine in de Azure-portal. Gebruik de [Azure-portal](https://portal.azure.com) om via RDP/SSH rechtstreeks toegang te krijgen tot uw virtuele machine.
+Nee. U hebt geen RDP- of SSH-client nodig om toegang te krijgen tot uw virtuele Azure-machine in de Azure-portal. Gebruik de [Azure-portal](https://portal.azure.com) om via RDP/SSH rechtstreeks toegang te krijgen tot uw virtuele machine.
 
 ### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Heb ik een agent nodig die wordt uitgevoerd op de virtuele Azure-machine?
 
-U hoeft geen agent of software te installeren in uw browser of op uw virtual Azure-machine. De Bastion-service werkt zonder agenten en er is geen aanvullende software vereist voor RDP/SSH.
+Nee. U hoeft geen agent of software te installeren in uw browser of op uw virtual Azure-machine. De Bastion-service werkt zonder agenten en er is geen aanvullende software vereist voor RDP/SSH.
 
 ### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>Hoeveel gelijktijdige RDP- en SSH-sessies worden ondersteund door Azure Bastion?
 
@@ -43,7 +43,7 @@ Zowel RDP als SSH is een op gebruik gebaseerde protocol. Intensief gebruik van s
 
 ### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>Welke functies worden ondersteund in een RDP-sessie?
 
-Momenteel wordt alleen het kopiëren en plakken van tekst ondersteund. Functies zoals het kopiëren van bestanden worden niet ondersteund. U kunt uw feedback over nieuwe functies delen op de pagina [Feedback over Azure Bastion](https://feedback.azure.com/forums/217313-networking?category_id=367303).
+Momenteel wordt alleen het kopiëren en plakken van tekst ondersteund. Functies, zoals het kopiëren van bestanden, worden niet ondersteund. U kunt uw feedback over nieuwe functies delen op de [feedbackpagina van Azure Bastion](https://feedback.azure.com/forums/217313-networking?category_id=367303).
 
 ### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>Werkt Bastion-versterking samen met AADJ-extensies die aan de virtuele machine zijn gekoppeld?
 
@@ -70,15 +70,17 @@ De volgende rollen zijn vereist om verbinding te maken:
 Zie de pagina [prijzen](https://aka.ms/BastionHostPricing) voor meer informatie.
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Is voor Azure Bastion een RDS CAL vereist voor administratieve doeleinden op VM's die door Azure worden gehost?
+
 Nee, voor toegang tot VM's met Windows Server door Azure Bastion is geen [RDS CAL](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) vereist wanneer dit uitsluitend voor administratieve doeleinden is.
 
-### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Welke toetsenbordindelingen worden ondersteund tijdens de externe sessie met Bastion?
+### <a name="which-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Welke toetsenbordindelingen worden ondersteund tijdens de externe sessie met Bastion?
 
 Azure Bastion ondersteunt momenteel de toetsenbordindeling en-us-qwerty op de VM.  Er wordt gewerkt aan ondersteuning voor andere landinstellingen voor toetsenbordindelingen.
 
 ### <a name="is-user-defined-routing-udr-supported-on-an-azure-bastion-subnet"></a><a name="udr"></a>Wordt door de gebruiker gedefinieerde routering (UDR) ondersteund in een subnet van Azure Bastion?
 
 Nee. UDR wordt niet ondersteund in een subnet van Azure Bastion.
+
 Voor scenario's met zowel Azure Bastion als Azure Firewall/Network Virtual Appliance (NVA) in hetzelfde virtuele netwerk, hoeft u verkeer van een Azure Bastion-subnet niet om te leiden naar Azure Firewall omdat de communicatie tussen Azure Bastion en uw VM's privé is. Zie voor meer informatie het artikel over [toegang tot VM's achter Azure Firewall met Bastion](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
 
 ### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Waarom krijg ik een foutbericht dat mijn sessie is verlopen voordat de Bastion-sessie is gestart?
@@ -87,8 +89,8 @@ Een sessie mag alleen worden gestart vanuit de Azure-portal. Meld u aan bij de A
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr">Wat doe ik met implementatiefouten?</a>
 
-Bekijk de foutberichten goed en [dien een ondersteuningsaanvraag in de Azure-portal in](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request), als dat nog nodig is. Implementatiefouten kunnen het gevolg zijn van [limieten voor Azure-abonnementen, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Klanten kunnen met name te maken krijgen met de limiet voor het aantal openbare IP-adressen dat is toegestaan per abonnement. Hierdoor kan de implementatie van Azure Bastion mislukken.
+Bekijk de foutberichten goed en [dien een ondersteuningsaanvraag in de Azure-portal in](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request), als dat nog nodig is. Implementatiefouten kunnen het gevolg zijn van [limieten voor Azure-abonnementen, quota en beperkingen](../articles/azure-resource-manager/management/azure-subscription-service-limits.md). Klanten kunnen met name te maken krijgen met de limiet voor het aantal openbare IP-adressen dat is toegestaan per abonnement. Hierdoor kan de implementatie van Azure Bastion mislukken.
 
-### <a name="how-do-i-incorporate-azure-bastion-in-my-dr-plan"></a><a name="dr"></a>Hoe neem ik Azure Bastion op in mijn plan voor herstel na noodgevallen?
+### <a name="how-do-i-incorporate-azure-bastion-in-my-disaster-recovery-plan"></a><a name="dr"></a>Hoe neem ik Azure Bastion op in mijn plan voor herstel na noodgevallen?
 
-Omdat Azure Bastion wordt gekoppeld aan een Azure-regio en geïmplementeerd binnen VNets of gepeerde VNets, bent u verantwoordelijk om Azure Bastion te implementeren in een VNet voor herstel na noodgevallen. In het geval van een Azure-regiofout, moet u een failoverbewerking uitvoeren voor virtuele machines, vervolgens de Azure Bastion-host gebruiken die is geïmplementeerd in de regio voor herstel na noodgevallen om verbinding te maken met de VM's die geïmplementeerd zijn in de regio voor herstel na noodgevallen.
+Azure Bastion wordt geïmplementeerd binnen VNets of gepeerde VNets en wordt gekoppeld aan een Azure-regio. U bent er verantwoordelijk voor om Azure Bastion te implementeren in een VNet voor herstel na noodgevallen. In het geval van een Azure-regiofout, voert u een failoverbewerking uit voor uw VM's naar de regio voor herstel na noodgevallen. Vervolgens gebruikt u de Azure Bastion-host die is geïmplementeerd in de regio voor herstel na noodgevallen om verbinding te maken met de VM's die daar nu zijn geïmplementeerd.
