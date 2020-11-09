@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbaa44fb64becee85b29cd44bee44e593ec55bf6
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448985"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372632"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Uw GCP-accounts verbinden met Azure Security Center
 
@@ -36,7 +36,7 @@ In de onderstaande schermopname ziet u de GCP-projecten die worden weergegeven i
 
 |Aspect|Details|
 |----|:----|
-|Releasestatus:|Preview|
+|Releasestatus:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
 |Vereiste rollen en machtigingen:|**Eigenaar** of **Inzender** voor het relevante Azure-abonnement|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
@@ -80,7 +80,7 @@ Meer informatie over de [Security Command Center API](https://cloud.google.com/s
     1. Selecteer **ADD** (Toevoegen).
     1. Plak in het veld **New members** (Nieuwe leden) de **E-mailwaarde** die u eerder hebt gekopieerd.
     1. Geef de Role (Rol) op als **Security Center Admin Viewer** en selecteer Save (Opslaan).
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="De relevante GCP-machtigingen instellen":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>Stap 4. Een persoonlijke sleutel voor het toegewezen serviceaccount maken
@@ -88,7 +88,7 @@ Meer informatie over de [Security Command Center API](https://cloud.google.com/s
 1. Selecteer **Service accounts** in het **Navigatiemenu** onder **IAM & Admin**.
 1. Open het toegewezen serviceaccount en selecteer Edit (Bewerken).
 1. Selecteer in de sectie **Keys** (Sleutels) **ADD KEY** (Sleutel toevoegen) en vervolgens **Create new key** (Nieuwe sleutel maken).
-1. Selecteer **JSON**in het scherm Create private key (Persoonlijke sleutel maken) en selecteer vervolgens **CREATE** (Maken).
+1. Selecteer **JSON** in het scherm Create private key (Persoonlijke sleutel maken) en selecteer vervolgens **CREATE** (Maken).
 1. Sla dit JSON-bestand op voor later gebruik.
 
 
@@ -107,7 +107,7 @@ Meer informatie over de [Security Command Center API](https://cloud.google.com/s
 Wanneer de connector is gemaakt en GCP Security Command Center correct is geconfigureerd gebeurt het volgende:
 
 - De GCP CIS-standaard wordt weergegeven in het dashboard voor wettelijke naleving van Security Center.
-- 5-10 minuten nadat de onboarding is voltooid, worden beveiligingsaanbevelingen voor uw GCP-resources weergegeven in de Security Center-portal en het dashboard voor wettelijke naleving:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
+- 5-10 minuten nadat de onboarding is voltooid, worden beveiligingsaanbevelingen voor uw GCP-resources weergegeven in de Security Center-portal en het dashboard voor wettelijke naleving:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="GCP-resources en aanbevelingen op de pagina met aanbevelingen van Security Center":::
 
 
 ## <a name="monitoring-your-gcp-resources"></a>Uw GCP-resources bewaken
@@ -116,7 +116,7 @@ Zoals hierboven wordt weergegeven, worden uw GCP-resources op de pagina met beve
 
 Als u alle actieve aanbevelingen voor uw resources op resourcetype wilt weergeven, gebruikt u de pagina Assetvoorraad van Security Center en filtert u op het GCP-resourcetype dat u wilt bekijken:
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center"::: 
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Het filter voor resourcetypen van de pagina Assetvoorraad met de opties voor GCP"::: 
 
 
 ## <a name="next-steps"></a>Volgende stappen

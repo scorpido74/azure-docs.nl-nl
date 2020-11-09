@@ -7,14 +7,14 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 347d5ac9de164f2e96340df71fd3b1b908e607c1
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532547"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372741"
 ---
-# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Een resource uitsluiten van aanbevelingen en beveiligde Score
+# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Een resource uitsluiten van aanbevelingen en de beveiligingsscore
 
 Een kern prioriteit van elk beveiligings team probeert ervoor te zorgen dat de analisten zich kunnen concentreren op de taken en incidenten die voor de organisatie van belang zijn. Security Center beschikt over een groot aantal functies voor het aanpassen van de gegevens die u het belangrijkst vindt en zorg ervoor dat uw beveiligde Score een geldige reflectie vormt van de beveiligings beslissingen van uw organisatie. Het uitsluiten van resources is een van deze functies.
 
@@ -30,7 +30,7 @@ De resource wordt weer gegeven als niet van toepassing en de reden wordt weer ge
 
 |Aspect|Details|
 |----|:----|
-|Releasestatus:|Preview|
+|Releasestatus:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Prijzen:|Dit is een Premium Azure-beleids mogelijkheid die wordt aangeboden aan Azure Defender-klanten zonder extra kosten. Voor andere gebruikers kunnen kosten in de toekomst worden toegepast.|
 |Vereiste rollen en machtigingen:|**Eigenaar van abonnement** of **beleids bijdrage** voor het maken van een uitzonde ring<br>Als u een regel wilt maken, hebt u machtigingen nodig voor het bewerken van beleid in Azure Policy.<br>Meer informatie vindt u in de [Azure RBAC-machtigingen in azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
@@ -45,7 +45,7 @@ De resource wordt weer gegeven als niet van toepassing en de reden wordt weer ge
 
     Het deel venster uitzonde ring maken wordt geopend.
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Optie uitzonde ring maken in context menu":::
+    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Het deel venster uitzonde ringen maken":::
 
 1. Voer uw criteria in en selecteer een criterium waarom deze resource moet worden uitgesloten:
     - Opgelost **: dit** probleem is niet relevant voor de resource omdat het is verwerkt door een ander hulp programma of proces dan het wordt voorgesteld
@@ -56,11 +56,11 @@ De resource wordt weer gegeven als niet van toepassing en de reden wordt weer ge
     - De resource wordt weer gegeven op het tabblad **niet van toepassing** op de pagina aanbevelings Details
     - In de informatie strook boven aan de pagina Details van aanbeveling wordt het aantal uitgesloten resources weer gegeven:
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Optie uitzonde ring maken in context menu":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Aantal vrijgestelde resources":::
 
 1. Open het tabblad **niet van toepassing** om uw uitgesloten resources te bekijken.
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Optie uitzonde ring maken in context menu":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Een uitzonde ring wijzigen":::
 
     De reden voor elke uitzonde ring is opgenomen in de tabel (1).
 
@@ -73,7 +73,7 @@ Uitzonderings regels gebruiken Azure-beleid om een uitzonde ring voor de resourc
 
 U kunt Azure Policy gebruiken om al uw uitzonde ringen bij te houden op de pagina **uitzonde ringen** :
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Optie uitzonde ring maken in context menu":::
+:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Pagina uitzonde ringen van Azure Policy":::
 
 
 

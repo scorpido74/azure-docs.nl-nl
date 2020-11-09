@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340031"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372724"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Controleren op Azure SQL Database en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ U kunt SQL Database controle gebruiken voor het volgende:
 - Rapporten **analyseren** . U kunt verdachte gebeurtenissen, ongebruikelijke activiteiten en trends vinden.
 
 > [!IMPORTANT]
-> Azure SQL Database controle is geoptimaliseerd voor Beschik baarheid en prestaties. Tijdens zeer hoge activiteiten Azure SQL Database of met Azure Synapse kunnen bewerkingen worden voortgezet en kunnen sommige gecontroleerde gebeurtenissen niet worden vastgelegd.
+> Controle voor Azure SQL Database en Azure Synapse is geoptimaliseerd voor Beschik baarheid en prestaties. Tijdens een zeer hoge activiteit of hoge netwerk belasting Azure SQL Database en Azure Synapse toestaan dat bewerkingen worden voortgezet en kunnen sommige gecontroleerde gebeurtenissen niet worden vastgelegd.
 
 ### <a name="auditing-limitations"></a>Controle beperkingen
 

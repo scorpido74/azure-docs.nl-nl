@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342090"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372656"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Waarschuwingen van Azure Defender onderdrukken
 
@@ -23,7 +23,7 @@ Op deze pagina wordt uitgelegd hoe u regels voor het onderdrukken van waarschuwi
 
 |Aspect|Details|
 |----|:----|
-|Releasestatus:|Preview|
+|Releasestatus:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Prijzen:|Gratis<br>(De meeste beveiligings waarschuwingen zijn alleen beschikbaar met Azure Defender)|
 |Vereiste rollen en machtigingen:|**Beveiligings beheerder** en- **eigenaar** kunnen regels maken/verwijderen.<br>**Beveiligings lezer** en **lezer** kunnen regels weer geven.|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) Nationaal/onafhankelijk (Overheid van de VS, China, andere overheden)|
@@ -60,11 +60,11 @@ Een regel rechtstreeks in het Azure Portal maken:
 
 1. Van de pagina Beveiligingswaarschuwingen in Security Center:
 
-    - Zoek de specifieke waarschuwing die u niet meer wilt weer geven en selecteer in het menu met het weglatings teken (...) voor de waarschuwing de optie **onderdrukkings regel maken**:
+    - Zoek de specifieke waarschuwing die u niet meer wilt weer geven en selecteer in het menu met het weglatings teken (...) voor de waarschuwing de optie **onderdrukkings regel maken** :
 
         [![* * Onderdrukkings regel maken * * optie](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
 
-    - Of selecteer de koppeling **onderdrukt regels** boven aan de pagina en selecteer op de pagina onderdrukkings regels de optie **nieuwe onderdrukkings regel maken**:
+    - Of selecteer de koppeling **onderdrukt regels** boven aan de pagina en selecteer op de pagina onderdrukkings regels de optie **nieuwe onderdrukkings regel maken** :
 
         ![Nieuwe onderdrukkings regel maken * * knop](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
@@ -127,9 +127,9 @@ U kunt regels voor het onderdrukken van waarschuwingen maken, weer geven of verw
 
 De relevante HTTP-methoden voor onderdrukkings regels in de REST API zijn:
 
-- **Put**: voor het maken of bijwerken van een onderdrukkings regel in een opgegeven abonnement.
+- **Put** : voor het maken of bijwerken van een onderdrukkings regel in een opgegeven abonnement.
 
-- **Ophalen**:
+- **Ophalen** :
 
     - Alle regels weer geven die zijn geconfigureerd voor een opgegeven abonnement. Met deze methode wordt een matrix van de toepasselijke regels geretourneerd.
 
@@ -137,7 +137,7 @@ De relevante HTTP-methoden voor onderdrukkings regels in de REST API zijn:
 
     - Om de impact van een onderdrukkings regel nog steeds in de ontwerp fase te simuleren. Deze aanroep geeft aan welke van uw bestaande waarschuwingen zouden zijn genegeerd als de regel actief was.
 
-- **Verwijderen**: Hiermee verwijdert u een bestaande regel (maar wijzigt u de status van waarschuwingen die al zijn genegeerd).
+- **Verwijderen** : Hiermee verwijdert u een bestaande regel (maar wijzigt u de status van waarschuwingen die al zijn genegeerd).
 
 Zie de [API-documentatie](/rest/api/securitycenter/)voor gedetailleerde informatie en voor beelden van gebruik. 
 

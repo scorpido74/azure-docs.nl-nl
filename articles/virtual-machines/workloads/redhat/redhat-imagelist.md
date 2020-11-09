@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 4d98323ebe973f13e654324f463ae01a8f1268c9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 66e2f70a5d55d263f7da343c0987e77a9f60c3b0
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629218"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372673"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux-installatie kopieën (RHEL) die beschikbaar zijn in azure
 Azure biedt een aantal RHEL-installatie kopieën voor verschillende use cases.
@@ -28,10 +28,10 @@ Dit is een lijst met RHEL-installatie kopieën die beschikbaar zijn in Azure. Te
 
 Aanbieding| SKU | Partitionering | Inrichten | Opmerkingen
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 6.7      | UITGANG    | Linux-agent | 
-|             | 6.8      | UITGANG    | Linux-agent | 
-|             | 6.9      | UITGANG    | Linux-agent | 
-|             | 6.10     | UITGANG    | Linux-agent | 
+RHEL          | 6.7      | UITGANG    | Linux-agent | Uitgebreide levenscyclus ondersteuning die vanaf 1 december verkrijgbaar is. [Meer informatie vindt u hier.](redhat-extended-lifecycle-support.md)
+|             | 6.8      | UITGANG    | Linux-agent | Uitgebreide levenscyclus ondersteuning die vanaf 1 december verkrijgbaar is. [Meer informatie vindt u hier.](redhat-extended-lifecycle-support.md)
+|             | 6.9      | UITGANG    | Linux-agent | Uitgebreide levenscyclus ondersteuning die vanaf 1 december verkrijgbaar is. [Meer informatie vindt u hier.](redhat-extended-lifecycle-support.md)
+|             | 6.10     | UITGANG    | Linux-agent | Uitgebreide levenscyclus ondersteuning die vanaf 1 december verkrijgbaar is. [Meer informatie vindt u hier.](redhat-extended-lifecycle-support.md)
 |             | 7-RAW    | UITGANG    | Linux-agent | RHEL 7. x-familie van installatie kopieën. <br> Standaard gekoppeld aan reguliere opslag plaatsen (niet EUS).
 |             | 7-LVM    | LVM    | Linux-agent | RHEL 7. x-familie van installatie kopieën. <br> Standaard gekoppeld aan reguliere opslag plaatsen (niet EUS). Als u op zoek bent naar een standaard RHEL-installatie kopie die u wilt implementeren, gebruikt u deze set installatie kopieën en/of de generatie 2.
 |             | 7lvm-Gen2| LVM    | Linux-agent | Generatie 2, RHEL 7. x-familie van installatie kopieën. <br> Standaard gekoppeld aan reguliere opslag plaatsen (niet EUS). Als u op zoek bent naar een standaard RHEL-installatie kopie die u wilt implementeren, gebruikt u deze set installatie kopieën en/of het equivalent van de eerste generatie.
@@ -67,9 +67,9 @@ RHEL-SAP      | 7.4      | LVM    | Linux-agent | RHEL 7,4 voor SAP HANA en zake
 |             | 7.6       | LVM    | Linux-agent | RHEL 7,6 voor SAP HANA en zakelijke apps. Aan de E4S-opslag plaatsen wordt een Premium voor SAP en RHEL, en de basis reken kosten in rekening gebracht.
 |             | 76sap-Gen2| LVM    | Linux-agent | RHEL 7,6 voor SAP HANA en zakelijke apps. Installatie kopie van de 2e generatie. Aan de E4S-opslag plaatsen wordt een Premium voor SAP en RHEL, en de basis reken kosten in rekening gebracht.
 |             | 7,7       | LVM    | Linux-agent | RHEL 7,7 voor SAP HANA en zakelijke apps. Aan de E4S-opslag plaatsen wordt een Premium voor SAP en RHEL, en de basis reken kosten in rekening gebracht.
-RHEL-SAP-HANA (te verwijderen uit Marketplace in oktober 2020) | 6.7       | UITGANG    | Linux-agent | RHEL 6,7 voor SAP HANA. Verouderd in het voor deel van de RHEL-SAP-installatie kopieën. Deze installatie kopie wordt in oktober 2020 van Azure Martketplace verwijderd. Meer informatie over de SAP-Cloud aanbiedingen van Red Hat vindt u [hier](https://access.redhat.com/articles/3751271).
-|             | 7.2       | LVM    | Linux-agent | RHEL 7,2 voor SAP HANA. Verouderd in het voor deel van de RHEL-SAP-installatie kopieën. Deze installatie kopie wordt in oktober 2020 van Azure Martketplace verwijderd. Meer informatie over de SAP-Cloud aanbiedingen van Red Hat vindt u [hier](https://access.redhat.com/articles/3751271).
-|             | 7.3       | LVM    | Linux-agent | RHEL 7,3 voor SAP HANA. Verouderd in het voor deel van de RHEL-SAP-installatie kopieën. Deze installatie kopie wordt in oktober 2020 van Azure Martketplace verwijderd. Meer informatie over de SAP-Cloud aanbiedingen van Red Hat vindt u [hier](https://access.redhat.com/articles/3751271).
+RHEL-SAP-HANA (te verwijderen in november 2020) | 6.7       | UITGANG    | Linux-agent | RHEL 6,7 voor SAP HANA. Verouderd in het voor deel van de RHEL-SAP-installatie kopieën. Deze installatie kopie wordt verwijderd in november 2020. Meer informatie over de SAP-Cloud aanbiedingen van Red Hat vindt u [hier](https://access.redhat.com/articles/3751271).
+|             | 7.2       | LVM    | Linux-agent | RHEL 7,2 voor SAP HANA. Verouderd in het voor deel van de RHEL-SAP-installatie kopieën. Deze installatie kopie wordt verwijderd in november 2020. Meer informatie over de SAP-Cloud aanbiedingen van Red Hat vindt u [hier](https://access.redhat.com/articles/3751271).
+|             | 7.3       | LVM    | Linux-agent | RHEL 7,3 voor SAP HANA. Verouderd in het voor deel van de RHEL-SAP-installatie kopieën. Deze installatie kopie wordt verwijderd in november 2020. Meer informatie over de SAP-Cloud aanbiedingen van Red Hat vindt u [hier](https://access.redhat.com/articles/3751271).
 RHEL-SAP-APPS | 6.8       | UITGANG    | Linux-agent | RHEL 6,8 voor SAP Business Applications. Verouderd in het voor deel van de RHEL-SAP-installatie kopieën.
 |             | 7.3       | LVM    | Linux-agent | RHEL 7,3 voor SAP Business Applications. Verouderd in het voor deel van de RHEL-SAP-installatie kopieën.
 |             | 7.4       | LVM    | Linux-agent | RHEL 7,4 voor SAP Business Applications.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461529"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372554"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender voor SQL-servers op computers 
 
@@ -30,7 +30,7 @@ U ziet waarschuwingen wanneer er verdachte database activiteiten, potentiële kw
 
 |Aspect|Details|
 |----|:----|
-|Releasestatus:|Preview|
+|Releasestatus:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Prijzen:|**Azure Defender voor SQL-servers op computers** wordt gefactureerd zoals wordt weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
 |Beveiligde SQL-versies:|Azure SQL Server (alle versies die worden gedekt door micro soft support)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China Gov, Other Gov|
@@ -53,7 +53,7 @@ Beide worden hieronder beschreven.
 
 - **SQL Server on-premises** : als uw SQL Server wordt gehost op een on-premises Windows-machine zonder Azure Arc, hebt u twee opties om deze te verbinden met Azure:
     
-    - **Azure-Arc implementeren** : u kunt een Windows-machine verbinden met Security Center. Azure Arc biedt echter een diep gaande integratie in *al* uw Azure-omgeving. Als u Azure Arc hebt ingesteld, ziet u de pagina **SQL Server – Azure Arc** in de portal en worden uw beveiligings waarschuwingen weer gegeven op een specifiek tabblad **beveiliging** op die pagina. De eerste en aanbevolen optie is om [Azure Arc op de host in te stellen](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) en de instructies voor **SQL Server op Azure Arc**te volgen.
+    - **Azure-Arc implementeren** : u kunt een Windows-machine verbinden met Security Center. Azure Arc biedt echter een diep gaande integratie in *al* uw Azure-omgeving. Als u Azure Arc hebt ingesteld, ziet u de pagina **SQL Server – Azure Arc** in de portal en worden uw beveiligings waarschuwingen weer gegeven op een specifiek tabblad **beveiliging** op die pagina. De eerste en aanbevolen optie is om [Azure Arc op de host in te stellen](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) en de instructies voor **SQL Server op Azure Arc** te volgen.
         
     - **De Windows-machine verbinden zonder Azure Arc** : als u ervoor kiest om verbinding te maken met een SQL Server die wordt uitgevoerd op een Windows-computer zonder Azure Arc te gebruiken, volgt u de instructies in [Windows-computers verbinden met Azure monitor](../azure-monitor/platform/agent-windows.md).
 
@@ -64,11 +64,11 @@ Beide worden hieronder beschreven.
 
     - Als u de **standaard werkruimte van Azure Security Center** gebruikt (met de naam ' defaultworkspace-[uw abonnement-id]-[regio] '), selecteert u het relevante **abonnement**.
 
-    - Als u **een niet-standaard werk ruimte**gebruikt, selecteert u de relevante **werk ruimte** (Voer indien nodig de naam van de werk ruimte in het filter in):
+    - Als u **een niet-standaard werk ruimte** gebruikt, selecteert u de relevante **werk ruimte** (Voer indien nodig de naam van de werk ruimte in het filter in):
 
         ![Uw niet-standaard werkruimte zoeken op titel](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. Stel de optie voor **Azure Defender voor SQL-servers op computers (preview)** in **op**aan. 
+1. Stel de optie voor **Azure Defender voor SQL-servers op computers (preview)** in **op** aan. 
 
     ![Security Center prijs pagina met optionele abonnementen](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -97,7 +97,7 @@ U kunt de resultaten van de evaluatie van de beveiligings problemen rechtstreeks
 
     De gedetailleerde weer gave voor deze aanbeveling wordt weer gegeven.
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="De resultaten van evaluatie van beveiligings problemen op uw SQL-servers op computers moeten worden hersteld (preview-versie)":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Gedetailleerde weer gave voor de aanbeveling":::
 
 1. Voor meer informatie, inzoomen:
 
@@ -105,7 +105,7 @@ U kunt de resultaten van de evaluatie van de beveiligings problemen rechtstreeks
 
     * Selecteer de gewenste Data Base voor een overzicht van de beveiligings problemen die zijn gegroepeerd op een specifieke SQL database.
 
-    In elke weer gave worden de beveiligings controles gesorteerd op **Ernst**. Klik op een specifieke beveiligings controle om het deel venster Details te bekijken met een **Beschrijving**, het probleem te **verhelpen** en andere gerelateerde informatie, zoals **impact** of **Bench Mark**.
+    In elke weer gave worden de beveiligings controles gesorteerd op **Ernst**. Klik op een specifieke beveiligings controle om het deel venster Details te bekijken met een **Beschrijving** , het probleem te **verhelpen** en andere gerelateerde informatie, zoals **impact** of **Bench Mark**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender voor SQL-waarschuwingen
 Waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om SQL-machines te openen of misbruik te maken. Deze gebeurtenissen kunnen waarschuwingen activeren die worden weer gegeven in de [sectie waarschuwingen voor SQL database en Azure Synapse Analytics (voorheen SQL Data Warehouse) van de pagina met waarschuwingen](alerts-reference.md#alerts-sql-db-and-warehouse).

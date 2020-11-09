@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 54f80310f274b757d118f34542c1aa2e838ca7b9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 14b9d9fe0eb9dfe2f25373c2d87d9b4af15dd0d9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082156"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371769"
 ---
 Door gebruik te maken van regionale VNet-integratie kan uw app toegang tot:
 
@@ -23,8 +23,8 @@ Door gebruik te maken van regionale VNet-integratie kan uw app toegang tot:
 
 Wanneer u VNet-integratie met VNets in dezelfde regio gebruikt, kunt u de volgende Azure-netwerk functies gebruiken:
 
-* **Netwerk beveiligings groepen (nsg's)**: u kunt uitgaand verkeer blok keren met een NSG die op uw integratie subnet is geplaatst. De regels voor binnenkomende verbindingen zijn niet van toepassing omdat u VNet-integratie niet kunt gebruiken om inkomende toegang tot uw app te bieden.
-* **Route tabellen (udr's)**: u kunt een route tabel plaatsen op het subnet met integratie om uitgaand verkeer te verzenden naar de gewenste locatie.
+* **Netwerk beveiligings groepen (nsg's)** : u kunt uitgaand verkeer blok keren met een NSG die op uw integratie subnet is geplaatst. De regels voor binnenkomende verbindingen zijn niet van toepassing omdat u VNet-integratie niet kunt gebruiken om inkomende toegang tot uw app te bieden.
+* **Route tabellen (udr's)** : u kunt een route tabel plaatsen op het subnet met integratie om uitgaand verkeer te verzenden naar de gewenste locatie.
 
 Standaard stuurt uw app alleen RFC1918-verkeer naar uw VNet. Als u al het uitgaande verkeer wilt door sturen naar uw VNet, past u de app-instelling WEBSITE_VNET_ROUTE_ALL toe op uw app. De app-instelling configureren:
 
@@ -42,7 +42,7 @@ Standaard stuurt uw app alleen RFC1918-verkeer naar uw VNet. Als u al het uitgaa
 Er zijn enkele beperkingen bij het gebruik van VNet-integratie met VNets in dezelfde regio:
 
 * U kunt geen resources bereiken via globale peering-verbindingen.
-* De functie is alleen beschikbaar vanuit nieuwere Azure App Service schaal eenheden die ondersteuning bieden voor PremiumV2 App Service-plannen. Houd er rekening mee dat *uw app niet moet worden uitgevoerd op een PremiumV2 prijs categorie*, alleen dat deze moet worden uitgevoerd op een app service plan waarbij de optie PremiumV2 beschikbaar is (wat impliceert dat het een nieuwere schaal eenheid is waar deze VNet-integratie functie vervolgens ook beschikbaar is).
+* De functie is alleen beschikbaar vanuit nieuwere Azure App Service schaal eenheden die ondersteuning bieden voor PremiumV2 App Service-plannen. Houd er rekening mee dat *uw app niet moet worden uitgevoerd op een PremiumV2 prijs categorie* , alleen dat deze moet worden uitgevoerd op een app service plan waarbij de optie PremiumV2 beschikbaar is (wat impliceert dat het een nieuwere schaal eenheid is waar deze VNet-integratie functie vervolgens ook beschikbaar is).
 * Het integratie subnet kan slechts door één App Service schema worden gebruikt.
 * De functie kan niet worden gebruikt door toepassingen van het geïsoleerde abonnement in een App Service Environment.
 * Voor de functie is een ongebruikt subnet met een/27 met 32-adressen of groter vereist in een Azure Resource Manager VNet.
@@ -82,12 +82,17 @@ Border Gateway Protocol (BGP)-routes hebben ook invloed op uw app-verkeer. Als u
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Nadat uw app met uw VNet is geïntegreerd, maakt deze gebruik van dezelfde DNS-server die is geconfigureerd voor uw VNet. Uw app werkt standaard niet met Azure DNS Private Zones. Als u wilt werken met Azure DNS Private Zones moet u de volgende app-instellingen toevoegen:
+Nadat uw app met uw VNet is geïntegreerd, maakt deze gebruik van dezelfde DNS-server die is geconfigureerd voor uw VNet. Uw app werkt standaard niet met Azure DNS Private Zones. Als u met Azure DNS Private Zones wilt werken, moet u de volgende app-instellingen toevoegen:
 
-1. WEBSITE_DNS_SERVER met waarde 168.63.129.16 
+1. WEBSITE_DNS_SERVER met waarde 168.63.129.16
 1. WEBSITE_VNET_ROUTE_ALL met waarde 1
 
-Met deze instellingen worden al uw uitgaande oproepen vanuit uw app naar uw VNet verzonden en kan uw app Azure DNS privé zones gebruiken.
+Met deze instellingen worden alle uitgaande oproepen vanuit uw app naar uw VNet verzonden. Daarnaast wordt de app in staat stellen om Azure DNS te gebruiken door de Privé-DNS zone op werk niveau te doorzoeken. Deze functionaliteit moet worden gebruikt wanneer een actieve app toegang tot een Privé-DNS zone heeft.
+
+> [!NOTE]
+>Het is niet mogelijk om een aangepast domein toe te voegen aan een web-app met behulp van Privé-DNS zone, maar niet met de VNET-integratie. De aangepaste domein validatie wordt uitgevoerd op het niveau van de controller, niet op het niveau van de werk nemer, waardoor de DNS-records niet zichtbaar zijn. Als u een aangepast domein van een Privé-DNS zone wilt gebruiken, moet de validatie worden omzeild met een Application Gateway of ILB App Service Environment.
+
+
 
 ### <a name="private-endpoints"></a>Privé-eindpunten
 

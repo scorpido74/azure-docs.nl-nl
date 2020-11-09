@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e7e1567a487dc6cadc94a42f02c597ff0e02665b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342192"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372758"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>De set normen aanpassen in uw nalevings dashboard voor regelgeving
 
@@ -41,7 +41,7 @@ Micro soft houdt ook de regelgevings normen zelf bij en verbetert de dekking in 
 
 U kunt standaarden toevoegen zoals NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK Official en UK NHS, Canada Federal PBMM en Azure CIS 1.1.0 (New)-een meer volledige weer gave van Azure CIS 1.1.0. 
 
-Daarnaast kunt u **Azure Security Bench Mark**, de door micro soft ontworpen, specifieke Azure-richt lijnen voor beveiliging en naleving aanbevolen procedures toevoegen op basis van algemene nalevings kaders. (Meer[informatie over Azure Security Bench Mark](../security/benchmarks/introduction.md).)
+Daarnaast kunt u **Azure Security Bench Mark** , de door micro soft ontworpen, specifieke Azure-richt lijnen voor beveiliging en naleving aanbevolen procedures toevoegen op basis van algemene nalevings kaders. (Meer[informatie over Azure Security Bench Mark](../security/benchmarks/introduction.md).)
 
 Er worden extra standaarden ondersteund in het dashboard zodra deze beschikbaar komen. 
 
@@ -68,6 +68,7 @@ In de volgende stappen wordt uitgelegd hoe u een pakket kunt toevoegen om te con
 
     - **Azure Security-benchmark**
     - **NIST SP 800-53 R4**
+    - **NIST SP 800 171 R2**
     - **SWIFT CSP CSCF-v2020**
     - **UKO en UK NHS**
     - **Canada PBMM**
@@ -103,9 +104,9 @@ Een standaard verwijderen:
 
     :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Het verwijderen van een regelgevings standaard van uw regelgevings dashboard voor naleving in Azure Security Center":::
 
-1. Selecteer **uitschakelen**voor de standaard die u wilt verwijderen. Er wordt een bevestigings venster weer gegeven.
+1. Selecteer **uitschakelen** voor de standaard die u wilt verwijderen. Er wordt een bevestigings venster weer gegeven.
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Het verwijderen van een regelgevings standaard van uw regelgevings dashboard voor naleving in Azure Security Center":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Bevestig dat u de geselecteerde regelgevings standaard wilt verwijderen":::
 
 1. Selecteer **Ja**. De standaard wordt verwijderd. 
 

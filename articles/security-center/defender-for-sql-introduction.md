@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 7301f6bbb33c3eedff2e8c41edeaacb3df66d4c2
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342022"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372525"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Inleiding tot Azure Defender voor SQL
 
@@ -23,7 +23,7 @@ Azure Defender voor SQL bevat twee Azure Defender-abonnementen die het [gegevens
 
 |Aspect|Details|
 |----|:----|
-|Releasestatus:|**Azure Defender voor Azure SQL-databaseservers** - algemeen beschikbaar<br>**Azure Defender voor SQL-servers op computers** - preview|
+|Releasestatus:|**Azure Defender voor Azure SQL-databaseservers** - algemeen beschikbaar<br>**Azure Defender voor SQL-servers op computers** - preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Prijzen:|De twee abonnementen die **Azure Defender voor SQL** vormen, worden gefactureerd zoals wordt weergegeven op [de pagina met prijzen](security-center-pricing.md)|
 |Beveiligde SQL-versies:|Azure SQL Database <br>Azure SQL Managed Instance<br>Azure Synapse Analytics (voorheen SQL DW)<br>SQL Server (alle ondersteunde versies)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China Gov, Other Gov|
@@ -55,8 +55,8 @@ Deze twee abonnementen bevatten functionaliteit voor het identificeren en beperk
 Beveiligingswaarschuwingen worden geactiveerd in het geval van:
 
 - **Potentiële SQL-injectieaanvallen** - inclusief beveiligingsproblemen die worden gedetecteerd bij het genereren van een mislukte SQL-instructie in de database
-- **Afwijkende databasetoegangs- en querypatronen**, bijvoorbeeld een abnormaal groot aantal mislukte aanmeldingspogingen met andere referenties (een poging tot een brute-force aanval)
-- **Verdachte databaseactiviteit**, bijvoorbeeld een wijziging in de opslagbestemming voor het exporteren van een SQL-import- en-exportbewerking
+- **Afwijkende databasetoegangs- en querypatronen** , bijvoorbeeld een abnormaal groot aantal mislukte aanmeldingspogingen met andere referenties (een poging tot een brute-force aanval)
+- **Verdachte databaseactiviteit** , bijvoorbeeld een wijziging in de opslagbestemming voor het exporteren van een SQL-import- en-exportbewerking
 
 Waarschuwingen bevatten details over het incident waardoor ze zijn geactiveerd evenals aanbevelingen voor het onderzoeken en oplossen van bedreigingen.
 

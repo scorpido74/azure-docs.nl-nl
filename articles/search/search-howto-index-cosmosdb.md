@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9b3353d3ba1af572b118001691e38af497f6f1fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf2282c5fda29cd266778a322efa4a0a33139c35
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290038"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372373"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-gegevens indexeren met behulp van een indexeerfunctie in Azure Cognitive Search 
 
@@ -32,7 +32,7 @@ Omdat de terminologie verwarrend kan zijn, is het een goed idee dat [Azure Cosmo
 
 Met de Cosmos DB Indexeer functie in azure Cognitive Search kunt u [Azure Cosmos DB-items](../cosmos-db/databases-containers-items.md#azure-cosmos-items) die toegankelijk zijn via verschillende protocollen, verkennen. 
 
-+ Voor [SQL API](../cosmos-db/sql-query-getting-started.md), die algemeen beschikbaar is, kunt u de [Portal](#cosmos-indexer-portal), [rest API](/rest/api/searchservice/indexer-operations)of [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer) gebruiken om de gegevens bron en Indexeer functie te maken.
++ Voor [SQL API](../cosmos-db/sql-query-getting-started.md), die algemeen beschikbaar is, kunt u de [Portal](#cosmos-indexer-portal), [rest API](/rest/api/searchservice/indexer-operations)of [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer) gebruiken om de gegevens bron en Indexeer functie te maken.
 
 + Voor de [MongoDb-API (preview)](../cosmos-db/mongodb-introduction.md)kunt u de [portal](#cosmos-indexer-portal) of de [rest API versie 2020-06-30-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
 
@@ -68,14 +68,14 @@ U kunt [de wizard starten](search-import-data-portal.md) vanaf de opdracht balk 
 
 ### <a name="3---set-the-data-source"></a>3: de gegevens bron instellen
 
-Op de **gegevens bron** pagina moet de bron **Cosmos DB**zijn, met de volgende specificaties:
+Op de **gegevens bron** pagina moet de bron **Cosmos DB** zijn, met de volgende specificaties:
 
 + **Naam** is de naam van het gegevens bron object. Nadat u deze hebt gemaakt, kunt u deze voor andere werk belastingen kiezen.
 
 + **Cosmos DB-account** moet een van de volgende indelingen hebben:
     1. De primaire of secundaire connection string van Cosmos DB met de volgende indeling: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;` .
         + Voor de **MongoDb-verzamelingen** van versie 3,2 en versie 3,6 gebruikt u de volgende indeling voor het Cosmos DB-account in de Azure portal: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb`
-        + Voor **Gremlin-grafieken en Cassandra-tabellen**meldt u zich aan voor de preview-versie van de [Indexeer functie](https://aka.ms/azure-cognitive-search/indexer-preview) om toegang te krijgen tot de preview-versie en informatie over het format teren van de referenties.
+        + Voor **Gremlin-grafieken en Cassandra-tabellen** meldt u zich aan voor de preview-versie van de [Indexeer functie](https://aka.ms/azure-cognitive-search/indexer-preview) om toegang te krijgen tot de preview-versie en informatie over het format teren van de referenties.
     1.  Een beheerde identiteit connection string met de volgende indeling die geen account sleutel bevat: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;(ApiKind=[api-kind];)` . Als u deze connection string notatie wilt gebruiken, volgt u de instructies voor het [instellen van een indexer-verbinding met een Cosmos DB-Data Base met behulp van een beheerde identiteit](search-howto-managed-identities-cosmos-db.md).
 
 + **Data Base** is een bestaande data base van het account. 
@@ -151,7 +151,7 @@ U kunt deze waarden vinden in de portal:
 
 2. Klik in het navigatie deel venster links op **sleutels** en kopieer vervolgens de primaire of secundaire sleutel (ze zijn equivalent).
 
-3. Ga naar de portal pagina's voor uw Cosmos-opslag account. Klik in het navigatie deel venster links onder **instellingen**op **sleutels**. Deze pagina bevat een URI, twee sets verbindings reeksen en twee sets sleutels. Kopieer een van de verbindings reeksen naar Klad blok.
+3. Ga naar de portal pagina's voor uw Cosmos-opslag account. Klik in het navigatie deel venster links onder **instellingen** op **sleutels**. Deze pagina bevat een URI, twee sets verbindings reeksen en twee sets sleutels. Kopieer een van de verbindings reeksen naar Klad blok.
 
 ### <a name="2---create-a-data-source"></a>2: een gegevens bron maken
 
@@ -185,8 +185,8 @@ De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de v
 |---------|-------------|
 | **name** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
 |**type**| Vereist. Moet zijn `cosmosdb` . |
-|**aanmeldings** | Vereist. U moet de indeling Cosmos DB connection string of een beheerde identiteit connection string notatie volgen.<br/><br/>Voor **SQL-verzamelingen**kunnen verbindings reeksen volgen op een van de volgende indelingen: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>Een beheerde identiteit connection string met de volgende indeling die geen account sleutel bevat: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` . Als u deze connection string notatie wilt gebruiken, volgt u de instructies voor het [instellen van een indexer-verbinding met een Cosmos DB-Data Base met behulp van een beheerde identiteit](search-howto-managed-identities-cosmos-db.md).<br/><br/>Voor de **MongoDb-verzamelingen** van versie 3,2 en versie 3,6 worden een van de volgende indelingen gebruikt voor de Connection String: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>Een beheerde identiteit connection string met de volgende indeling die geen account sleutel bevat: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` . Als u deze connection string notatie wilt gebruiken, volgt u de instructies voor het [instellen van een indexer-verbinding met een Cosmos DB-Data Base met behulp van een beheerde identiteit](search-howto-managed-identities-cosmos-db.md).<br/><br/>Voor **Gremlin-grafieken en Cassandra-tabellen**meldt u zich aan voor de preview-versie van de [Indexeer functie](https://aka.ms/azure-cognitive-search/indexer-preview) om toegang te krijgen tot de preview-versie en informatie over het format teren van de referenties.<br/><br/>Vermijd poort nummers in de eind punt-URL. Als u het poort nummer toevoegt, kan Azure Cognitive Search uw Azure Cosmos DB-Data Base niet indexeren.|
-| **verpakking** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor de MongoDB-API, de Gremlin-API en de Cassandra-API. |
+|**aanmeldingsgegevens** | Vereist. U moet de indeling Cosmos DB connection string of een beheerde identiteit connection string notatie volgen.<br/><br/>Voor **SQL-verzamelingen** kunnen verbindings reeksen volgen op een van de volgende indelingen: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>Een beheerde identiteit connection string met de volgende indeling die geen account sleutel bevat: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` . Als u deze connection string notatie wilt gebruiken, volgt u de instructies voor het [instellen van een indexer-verbinding met een Cosmos DB-Data Base met behulp van een beheerde identiteit](search-howto-managed-identities-cosmos-db.md).<br/><br/>Voor de **MongoDb-verzamelingen** van versie 3,2 en versie 3,6 worden een van de volgende indelingen gebruikt voor de Connection String: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>Een beheerde identiteit connection string met de volgende indeling die geen account sleutel bevat: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` . Als u deze connection string notatie wilt gebruiken, volgt u de instructies voor het [instellen van een indexer-verbinding met een Cosmos DB-Data Base met behulp van een beheerde identiteit](search-howto-managed-identities-cosmos-db.md).<br/><br/>Voor **Gremlin-grafieken en Cassandra-tabellen** meldt u zich aan voor de preview-versie van de [Indexeer functie](https://aka.ms/azure-cognitive-search/indexer-preview) om toegang te krijgen tot de preview-versie en informatie over het format teren van de referenties.<br/><br/>Vermijd poort nummers in de eind punt-URL. Als u het poort nummer toevoegt, kan Azure Cognitive Search uw Azure Cosmos DB-Data Base niet indexeren.|
+| **verpakking** | Bevat de volgende elementen: <br/>**naam** : vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query** : optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor de MongoDB-API, de Gremlin-API en de Cassandra-API. |
 | **dataChangeDetectionPolicy** | Aanbevelingen. Zie de sectie [gewijzigde documenten indexeren](#DataChangeDetectionPolicy) .|
 |**dataDeletionDetectionPolicy** | Optioneel. Zie het gedeelte [verwijderde documenten indexeren](#DataDeletionDetectionPolicy) .|
 
@@ -194,7 +194,7 @@ De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de v
 U kunt een SQL-query opgeven voor het samen voegen van geneste eigenschappen of matrices, project JSON-eigenschappen en filteren van de gegevens die moeten worden geïndexeerd. 
 
 > [!WARNING]
-> Aangepaste query's worden niet ondersteund voor **MongoDb-API**, **Gremlin-API**en **Cassandra-API**: `container.query` para meter moet worden ingesteld op null of worden wegge laten. Als u een aangepaste query wilt gebruiken, laat het ons dan weten over de stem van de [gebruiker](https://feedback.azure.com/forums/263029-azure-search).
+> Aangepaste query's worden niet ondersteund voor **MongoDb-API** , **Gremlin-API** en **Cassandra-API** : `container.query` para meter moet worden ingesteld op null of worden wegge laten. Als u een aangepaste query wilt gebruiken, laat het ons dan weten over de stem van de [gebruiker](https://feedback.azure.com/forums/263029-azure-search).
 
 Voorbeeld document:
 
@@ -307,16 +307,16 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 
 De algemeen beschik bare .NET SDK heeft volledige pariteit met de algemeen beschik bare REST API. We raden u aan de sectie voor gaande REST API te bekijken voor meer informatie over concepten, werk stromen en vereisten. U kunt vervolgens de volgende .NET API-referentie documentatie raadplegen voor het implementeren van een JSON-indexer in beheerde code.
 
-+ [micro soft. Azure. Search. Models. data source](/dotnet/api/microsoft.azure.search.models.datasource)
-+ [micro soft. Azure. Search. Models. data source type](/dotnet/api/microsoft.azure.search.models.datasourcetype)
-+ [micro soft. Azure. Search. Models. index](/dotnet/api/microsoft.azure.search.models.index)
-+ [micro soft. Azure. Search. Models. Indexeer functie](/dotnet/api/microsoft.azure.search.models.indexer)
++ [azure.search.documents. Indexes. Models. searchindexerdatasourceconnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)
++ [azure.search.documents. Indexes. Models. searchindexerdatasourcetype](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype)
++ [azure.search.documents. Indexes. Models. searchindex](/dotnet/api/azure.search.documents.indexes.models.searchindex)
++ [azure.search.documents. Indexes. Models. SearchIndexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
 <a name="DataChangeDetectionPolicy"></a>
 
 ## <a name="indexing-changed-documents"></a>Gewijzigde documenten indexeren
 
-Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel wordt het enige ondersteunde beleid [`HighWaterMarkChangeDetectionPolicy`](/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) gebruikt voor het gebruik van de `_ts` eigenschap (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
+Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel wordt het enige ondersteunde beleid [`HighWaterMarkChangeDetectionPolicy`](/dotnet/api/azure.search.documents.indexes.models.highwatermarkchangedetectionpolicy) gebruikt voor het gebruik van de `_ts` eigenschap (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
 
 ```http
     {
@@ -391,7 +391,7 @@ In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig ver
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>Volgende stappen
 
-Gefeliciteerd! U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
+Gefeliciteerd U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
 
 * Zie de [pagina Azure Cosmos DB Service](https://azure.microsoft.com/services/cosmos-db/)voor meer informatie over Azure Cosmos db.
 * Zie de [pagina zoek service](https://azure.microsoft.com/services/search/)voor meer informatie over Azure Cognitive Search.

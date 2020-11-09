@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428103"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372775"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Uw AWS-accounts verbinden met Azure Security Center
 
@@ -39,7 +39,7 @@ In de onderstaande schermopname ziet u de AWS-accounts die worden weergegeven in
 
 |Aspect|Details|
 |----|:----|
-|Releasestatus:|Preview|
+|Releasestatus:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
 |Vereiste rollen en machtigingen:|**Eigenaar** of **Inzender** voor het relevante Azure-abonnement|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
@@ -70,18 +70,18 @@ Er zijn twee manieren om Security Center te verifiëren bij AWS:
 - **Een AWS-gebruiker maken voor Security Center** : dit is een minder veilige optie als u IAM niet hebt ingeschakeld
 
 #### <a name="create-an-iam-role-for-security-center"></a>Een IAM-rol maken voor Security Center
-1. Ga in uw Amazon Web Services-console naar **Beveiliging, identiteit en naleving** en selecteer **IAM** .
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
+1. Ga in uw Amazon Web Services-console naar **Beveiliging, identiteit en naleving** en selecteer **IAM**.
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS-services":::
 
-1. Selecteer **Rollen** en **Rol maken** .
-1. Selecteer **Een ander AWS-account** .
+1. Selecteer **Rollen** en **Rol maken**.
+1. Selecteer **Een ander AWS-account**.
 1. Voer de volgende details in:
 
     - **Account-id** : voer de id van uw Microsoft-account ( **158177204117** ) in, zoals wordt weergegeven op de pagina van de AWS-connector in Security Center.
     - **Externe is vereisen** moet geselecteerd zijn
     - **Externe id** : voer de abonnements-id is zoals wordt weergegeven op de pagina van de AWS-connector in Security Center 
 
-1. Selecteer **Next** .
+1. Selecteer **Next**.
 1. Selecteer de volgende beleidsregels in de sectie **Machtigingsbeleid toevoegen** :
 
     - SecurityAudit
@@ -89,25 +89,25 @@ Er zijn twee manieren om Security Center te verifiëren bij AWS:
     - AWSSecurityHubReadOnlyAccess
 
 1. Voeg eventueel tags toe. Het toevoegen van labels aan de gebruiker heeft geen invloed op de verbinding.
-1. Selecteer **Next** .
+1. Selecteer **Next**.
 
 1. Kies in de lijst met rollen de rol die u hebt gemaakt
 
 1. Sla de naam van de Amazon-resource (ARN) op voor later. 
 
 #### <a name="create-an-aws-user-for-security-center"></a>Een AWS-gebruiker maken voor Security Center 
-1. Open het tabblad **Gebruikers** en selecteer **Gebruiker toevoegen** .
+1. Open het tabblad **Gebruikers** en selecteer **Gebruiker toevoegen**.
 1. Voer in de stap **Details** een gebruikersnaam in voor Security Center en zorg ervoor dat u **Programmatische toegang** selecteert bij het toegangstype voor AWS. 
-1. Selecteer **Next Permissions** .
+1. Selecteer **Next Permissions**.
 1. Selecteer **Bestaande beleidsregels rechtstreeks toevoegen** en pas de volgende beleidsregels toe:
     - SecurityAudit
     - AmazonSSMAutomationRole
     - AWSSecurityHubReadOnlyAccess
     
-1. Selecteer **Volgende: Tags** . Voeg eventueel tags toe. Het toevoegen van labels aan de gebruiker heeft geen invloed op de verbinding.
-1. Selecteer **Beoordelen** .
+1. Selecteer **Volgende: Tags**. Voeg eventueel tags toe. Het toevoegen van labels aan de gebruiker heeft geen invloed op de verbinding.
+1. Selecteer **Beoordelen**.
 1. Sla de automatisch gegenereerde CSV-bestanden met de **Toegangssleutel-id** en **Geheime toegangssleutel** op voor later.
-1. Controleer de samenvatting en klik vervolgens op **Gebruiker maken** .
+1. Controleer de samenvatting en klik vervolgens op **Gebruiker maken**.
 
 
 ### <a name="step-3-configure-the-ssm-agent"></a>Stap 3. De SSM-agent configureren
@@ -129,19 +129,19 @@ AWS Systems Manager is vereist voor het automatiseren van taken in uw AWS-resour
 ### <a name="step-5-connect-aws-to-security-center"></a>Stap 5. AWS verbinden met Security Center
 
 1. Selecteer **Meerdere cloudconnectors** in het menu van Security Center.
-1. Selecteer **AWS-account toevoegen** .
-    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
+1. Selecteer **AWS-account toevoegen**.
+    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Knop 'AWS-account toevoegen' op de pagina voor meerdere cloudconnectors van Security Center":::
 1. Configureer de opties op het tabblad **AWS-verificatie** :
     1. Voer een **Weergavenaam** in voor de connector.
     1. Bevestig dat het abonnement het juiste is. Dit abonnement gaat de connector en de aanbevelingen van AWS Security Hub bevatten.
     1. Dit is afhankelijk van de verificatieoptie die u hebt gekozen in [Stap 2. Verificatie instellen voor Security Center in AWS](#step-2-set-up-authentication-for-security-center-in-aws):
         - Selecteer **Rol aannemen** en plak de ARN van [Een IAM-rol maken voor Security Center](#create-an-iam-role-for-security-center).
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Het ARN-bestand in het relevante veld van de wizard AWS-verbinding in azure Portal plakken":::
 
             OF
 
         - Selecteer **Referenties** en plak de **toegangssleutel** en **geheime sleutel** uit het CSV-bestand dat u hebt opgeslagen in [Een AWS-gebruiker maken voor Security Center](#create-an-aws-user-for-security-center).
-1. Selecteer **Next** .
+1. Selecteer **Next**.
 1. Configureer de opties op het tabblad **Azure Arc-configuratie** :
 
     Security Center detecteert de EC2-instanties in het verbonden AWS-account en gebruikt SSM om ze op Azure Arc te onboarden. 
@@ -152,7 +152,7 @@ AWS Systems Manager is vereist voor het automatiseren van taken in uw AWS-resour
     1. Selecteer de **Resourcegroep** en **Azure-regio** voor de onboarding van de gedetecteerde AWS EC2's in het geselecteerde abonnement.
     1. Voer de **Service-principal-id** en het **Service-principal-clientgeheim** voor Azure Arc in, zoals hier wordt beschreven [Een service-principal maken voor onboarding op schaal](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
     1. Als de machine verbinding maakt met het internet via een proxyserver, geeft u het IP-adres van de proxyserver op of de naam en het poortnummer die de machine zal gebruiken om met de proxyserver te communiceren. Voer de waarde in de indeling ```http://<proxyURL>:<proxyport>``` in.
-    1. Selecteer **Controleren + maken** .
+    1. Selecteer **Controleren + maken**.
 
         Lees de overzichtsinformatie
 
@@ -168,7 +168,7 @@ Wanneer de connector is gemaakt en AWS Security Hub correct is geconfigureerd:
 - De ASC-service scant elke 6 uur op nieuwe AWS EC2-instanties en gaat over tot onboarding op basis van de configuratie.
 - De AWS CIS-standaard wordt weergegeven in het dashboard voor wettelijke naleving van Security Center.
 - Als Security Hub-beleid is ingeschakeld, worden aanbevelingen 5-10 minuten nadat de onboarding is voltooid, weergegeven in de Security Center-portal en het dashboard voor wettelijke naleving.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="AWS-resources en aanbevelingen op de pagina met aanbevelingen van Security Center":::
 
 
 
@@ -178,7 +178,7 @@ Zoals hierboven wordt weergegeven, worden uw AWS-resource op de pagina met bevei
 
 Als u alle actieve aanbevelingen voor uw resources op resourcetype wilt weergeven, gebruikt u de pagina Assetvoorraad van Security Center en filtert u op het AWS-resourcetype dat u wilt bekijken:
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="3 GCP-projecten worden weergegevens op het overzichtsdashboard van Security Center"::: 
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="Het filter voor resourcetypen van de pagina Assetvoorraad met de opties voor AWS"::: 
 
 
 ## <a name="aws-in-security-center-faq"></a>Veelgestelde vragen over AWS in Security Center

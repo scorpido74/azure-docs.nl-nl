@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39486b076f9284436207f823ea48fddc98bb48a0
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320622"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372843"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Met HSM beveiligde sleutels importeren in beheerde HSM (BYOK)
 
@@ -67,6 +67,9 @@ Zie [Aanmelden met Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-l
 |Fortanix|Fabrikant,<br/>HSM as a service|<ul><li>Self-Defending Key Management Service (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS-sleutels exporteren naar cloudproviders voor BYOK - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Fabrikant|Alle LiquidSecurity-HSM's met<ul><li>Firmwareversie 2.0.4 of hoger</li><li>Firmwareversie 3.2 of hoger</li></ul>|[BYOK-hulpprogramma en -documentatie van Marvell](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Meerdere HSM-merken en -modellen, inclusief<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>Zie de [site van Cryptomathic voor meer informatie](https://www.cryptomathic.com/azurebyok)|[BYOK-hulpprogramma en -documentatie van Cryptomathic](https://www.cryptomathic.com/azurebyok)|
+|Securosys SA|Fabrikant, HSM as a Service|Primus HSM-serie, Securosys Clouds HSM|[Hulp programma en documentatie voor Primus BYOK](https://www.securosys.com/primus-azure-byok)|
+||||
+
 
 ## <a name="supported-key-types"></a>Ondersteunde sleuteltypen
 
@@ -86,7 +89,7 @@ Uw sleutel genereren en overdragen naar een beheerde HSM:
 
 ### <a name="step-1-generate-a-kek"></a>Stap 1: Een KEK genereren
 
-Een KEK is een RSA-sleutel die wordt gegenereerd in een beheerde HSM. De KEK wordt gebruikt voor het versleutelen van de sleutel die u wilt importeren (de *doelsleutel*).
+Een KEK is een RSA-sleutel die wordt gegenereerd in een beheerde HSM. De KEK wordt gebruikt voor het versleutelen van de sleutel die u wilt importeren (de *doelsleutel* ).
 
 De KEK moet aan het volgende voldoen:
 - Een RSA-HSM-sleutel (2048-bits, 3072-bits of 4096-bits)
@@ -124,7 +127,7 @@ Draag het BYOK-bestand over naar de verbonden computer.
 > [!NOTE] 
 > Het importeren van 1024-bits RSA-sleutels wordt niet ondersteund. Het importeren van een EC-sleutel (Elliptic Curve) wordt momenteel niet ondersteund.
 >
-> **Bekend probleem**: Het importeren van een RSA 4K-doelsleutel van Luna-HSM's wordt alleen ondersteund met firmware 7.4.0 of nieuwer.
+> **Bekend probleem** : Het importeren van een RSA 4K-doelsleutel van Luna-HSM's wordt alleen ondersteund met firmware 7.4.0 of nieuwer.
 
 ### <a name="step-4-transfer-your-key-to-managed-hsm"></a>Stap 4: uw sleutel overdragen naar een beheerde HSM
 

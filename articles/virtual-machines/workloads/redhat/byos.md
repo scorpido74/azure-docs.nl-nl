@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 8896ed3eed291e6ec18c45df60e6079ada769b28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3a597b6454b3fb738ca192fa7750ca94fdb873ab
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993331"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372792"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure
 
@@ -21,14 +21,14 @@ Red Hat Enterprise Linux-installatie kopieën (RHEL) zijn beschikbaar in azure v
 >[!NOTE]
 > RHEL BYOS Gold-installatie kopieën zijn beschikbaar in open bare Azure (Commercial) en Azure Government Clouds. Ze zijn niet beschikbaar in azure China of Azure blackforest-Clouds.
 
-## <a name="important-points-to-consider"></a>Belang rijke punten om rekening mee te houden
+## <a name="important-points-to-consider"></a>Belangrijke punten om in overweging te nemen
 
 - De Red Hat Gold-installatie kopieën die in dit programma worden meegeleverd, zijn productie-kant-en-klare RHEL-installatie kopieën die vergelijkbaar zijn met de RHEL betalen per gebruik-installatie kopieën in azure Marketplace.
 - De installatie kopieën volgen het huidige beleid dat wordt beschreven in [Red Hat Enterprise Linux installatie kopieën op Azure](./redhat-images.md).
 - Standaard ondersteunings beleid is van toepassing op Vm's die zijn gemaakt op basis van deze installatie kopieën.
 - De Vm's die zijn ingericht op basis van Red Hat Gold-installatie kopieën, bevatten geen RHEL-vergoedingen die zijn gekoppeld aan RHEL-afbeeldingen met betalen per gebruik.
 - De installatie kopieën hebben geen recht. U moet Red Hat Subscription-Manager gebruiken om de Vm's te registreren en bij te werken om direct updates van Red Hat te krijgen.
-- Het is momenteel niet mogelijk om dynamisch te scha kelen tussen BYOS en betalen naar gebruik-facturerings modellen voor Linux-installatie kopieën. Als u het facturerings model wilt wijzigen, moet u de virtuele machine opnieuw implementeren vanuit de respectieve installatie kopie.
+- Het is mogelijk om over te scha kelen van betalen per gebruik-installatie kopieën naar BYOS met behulp van de [Azure Hybrid Benefit](../../linux/azure-hybrid-benefit-linux.md). Het is echter niet mogelijk om over te scha kelen van een aanvankelijk geïmplementeerde BYOS naar facturerings modellen voor Linux-installatie kopieën. Als u het facturerings model wilt overschakelen van BYOS naar betalen per gebruik, moet u de virtuele machine opnieuw implementeren vanuit de respectieve installatie kopie.
 
 >[!NOTE]
 > De RHEL BYOS-installatie kopieën van generatie 2 zijn momenteel niet beschikbaar via de Marketplace-aanbieding. Als u een RHEL BYOS-installatie kopie van de tweede generatie nodig hebt, gaat u naar het dash board voor Cloud toegang in Red Hat Subscription Management. Zie de [Red Hat-documentatie](https://access.redhat.com/articles/4847681)voor meer informatie.
